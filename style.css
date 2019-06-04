@@ -10,3 +10,22 @@ body > * {
     grid-column: 2 / -2;
 }
 
+#main-cta {
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+button {
+    height: 35px;
+    margin-bottom: 10px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    background: rgb(106, 148, 196);
+}
+
+button:focus {
+    outline: none;
+}
