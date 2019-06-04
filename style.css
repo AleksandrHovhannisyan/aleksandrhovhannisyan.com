@@ -42,3 +42,11 @@ button:focus {
     border-radius: 5px;
     border: 2px solid black;
 }
+
+.project a {
+    text-decoration: none;
+}
+
+.project a:hover {
+    text-decoration: underline;
+}
