@@ -16,7 +16,8 @@ body > * {
     font-size: 1.1em;
 }
 
-button {
+.social-button {
+    width: 100%;
     height: 35px;
     margin-bottom: 10px;
     font-size: 1em;
@@ -52,16 +53,41 @@ button:focus {
     text-decoration: underline;
 }
 
+
+/* Prevent buttons from stretching */
+
+@media only screen and (min-width: 400px) {
+
+    .social-button {
+        display: inline-block;
+        grid-column: span 2;
+        width: 150px;
+    }
+
+}
+
 /* Tablets and desktops */
 
 @media only screen and (min-width: 960px) {
 
-    .project:first-of-type {
+    .project {
         grid-column: 2 / 5;
     }
-    
-    .project {
+
+    .project ~ .project {
         grid-column: span 3;
     }
+}
 
+/* Fill in whitespace to right of intro */
+@media only screen and (min-width: 1000px) {
+
+    #intro {
+        grid-column: 2 / 6;
+    }
+
+    #about-me {
+        grid-row: 1;
+        grid-column: 7 / -2;
+    }
 }
