@@ -29,3 +29,16 @@ button {
 button:focus {
     outline: none;
 }
+
+/* Portfolio items */
+
+.technologies {
+    display: flex;
+}
+
+.technologies p {
+    padding: 3px;
+    margin-right: 5px;
+    border-radius: 5px;
+    border: 2px solid black;
+}
