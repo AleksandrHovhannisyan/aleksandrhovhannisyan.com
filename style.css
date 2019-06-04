@@ -2,7 +2,8 @@
 body {
     font-family: Nunito, sans-serif;
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 15px;
+    grid-template-columns: repeat(11, 1fr);
 }
 
 /* Mobile-first strategy: one column gap on either end */
@@ -49,4 +50,18 @@ button:focus {
 
 .project a:hover {
     text-decoration: underline;
+}
+
+/* Tablets and desktops */
+
+@media only screen and (min-width: 960px) {
+
+    .project:first-of-type {
+        grid-column: 2 / 5;
+    }
+    
+    .project {
+        grid-column: span 3;
+    }
+
 }
