@@ -1,0 +1,12 @@
+/* Font and CSS grid styling */
+body {
+    font-family: Nunito, sans-serif;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+/* Mobile-first strategy: one column gap on either end */
+body > * {
+    grid-column: 2 / -2;
+}
+
