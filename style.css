@@ -54,7 +54,13 @@ hr {
     width: 100%;
 }
 
-/* Portfolio items */
+/* Portfolio cards are 1-column grids with three rows */
+.project {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Header, main, footer, respectively */
+    grid-template-rows: auto 1fr auto;
+}
 
 .project a {
     text-decoration: none;
