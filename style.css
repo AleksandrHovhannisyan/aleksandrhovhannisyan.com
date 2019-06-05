@@ -87,6 +87,10 @@ hr {
 
 /* Education section */
 
+.institution {
+    margin-bottom: 20px;
+}
+
 .institution .collapsible {
     font-family: Nunito, sans-serif;
     font-size: 1em;
@@ -100,9 +104,19 @@ hr {
     color: white;
 }
 
+/* Icon to signal expanding collapsible */
+.fa-caret-down, .fa-caret-up {
+    display: block;
+    margin-top: 10px;
+}
+
+/* Course and award container; hidden by default */
 .institution-info {
+    display: none;
+    overflow: hidden;
     border: solid 1px;
-    display: grid;
+
+    /* Display changes from none to grid in javascript */
     grid-template-columns: 1fr;
 }
 
