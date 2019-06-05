@@ -53,6 +53,10 @@ button:focus {
     text-decoration: underline;
 }
 
+.project p:first-of-type {
+    margin-left: 20px;
+}
+
 
 /* Prevent buttons from stretching */
 
