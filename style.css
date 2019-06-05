@@ -41,19 +41,21 @@ h1 {
     
     margin-bottom: 10px;
     margin-right: 15px;
+    border-radius: 10px;
     
     font-size: 1em;
     font-weight: bold;
     text-decoration: none;
-    
-    border-radius: 10px;
+}
+
+.social-button:hover, .collapsible:hover {
+    background: rgb(17, 54, 95);
+}
+
+.social-button, .collapsible {
     border: none;
     color: white;
     background: rgb(106, 148, 196);
-}
-
-.social-button:hover {
-    background: rgb(17, 54, 95);
 }
 
 button:focus {
@@ -115,10 +117,10 @@ hr {
 /* Education section */
 
 .institution {
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
-.institution .collapsible {
+.collapsible {
     font-family: Nunito, sans-serif;
     font-size: 1em;
 
@@ -127,7 +129,8 @@ hr {
     width: 100%;
 
     cursor: pointer;
-    background: rgb(46, 41, 41);
+    /* background: rgb(94, 89, 89); */
+    background: rgb(106, 148, 196);
     color: white;
 }
 
