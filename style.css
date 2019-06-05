@@ -28,6 +28,10 @@ body > * {
     background: rgb(106, 148, 196);
 }
 
+.social-button:hover {
+    background: rgb(17, 54, 95);
+}
+
 button:focus {
     outline: none;
 }
