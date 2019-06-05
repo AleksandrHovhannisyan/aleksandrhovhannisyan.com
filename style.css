@@ -48,14 +48,16 @@ h1 {
     text-decoration: none;
 }
 
-.social-button:hover, .collapsible:hover {
-    background: rgb(17, 54, 95);
-}
-
 .social-button, .collapsible {
+    cursor: pointer;
+    color: white;
     border: none;
     color: white;
-    background: rgb(106, 148, 196);
+    background: rgb(39, 83, 133);
+}
+
+.social-button:hover, .collapsible:hover {
+    background: rgb(14, 48, 87);
 }
 
 button:focus {
@@ -127,11 +129,6 @@ hr {
     border: none;
     outline: none;
     width: 100%;
-
-    cursor: pointer;
-    /* background: rgb(94, 89, 89); */
-    background: rgb(106, 148, 196);
-    color: white;
 }
 
 /* Icon to signal expanding collapsible */
