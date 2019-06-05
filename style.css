@@ -6,7 +6,7 @@ body {
     grid-template-columns: repeat(11, 1fr);
 }
 
-/* Mobile-first strategy: one column gap on either end */
+/* One column gap on either end */
 body > * {
     grid-column: 2 / -2;
 }
@@ -30,6 +30,10 @@ body > * {
 
 button:focus {
     outline: none;
+}
+
+hr {
+    width: 100%;
 }
 
 /* Portfolio items */
