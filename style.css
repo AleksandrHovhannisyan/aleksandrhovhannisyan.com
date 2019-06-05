@@ -1,3 +1,13 @@
+/* General spacing stuff */
+#intro {
+    margin-bottom: 20px;
+}
+
+#about-me, #projects, #skills, #education {
+    margin-bottom: 50px;
+}
+
+
 /* Font and CSS grid styling */
 body {
     font-family: Nunito, sans-serif;
@@ -85,11 +95,27 @@ hr {
     margin-left: 20px;
 }
 
+/* Skills section */
+
+#skills {
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
+}
+
+#skills h2 {
+    grid-column: 1 / -1;
+}
+
+.skill ul {
+    padding-left: 0;
+    list-style: none;
+}
+
 /* Education section */
 
 .institution {
     margin-top: 15px;
-    margin-bottom: 15px;
 }
 
 .institution .collapsible {
@@ -177,7 +203,7 @@ hr {
     }
 }
 
-/* Tablets and desktops: projects shown in 3-column grid */
+/* Tablets and desktops */
 
 @media only screen and (min-width: 960px) {
 
@@ -190,6 +216,15 @@ hr {
     /* Header should occupy entire first row */
     #projects h2 {
         grid-column: 1 / -1;
+    }
+
+    /* Increase gap between skills */
+    #skills {
+        column-gap: 20px;
+    }
+
+    .skill {
+        margin-left: 20px;
     }
 }
 
