@@ -42,6 +42,14 @@ hr {
 
 /* Portfolio items */
 
+.project a {
+    text-decoration: none;
+}
+
+.project a:hover {
+    text-decoration: underline;
+}
+
 .technologies {
     display: flex;
 }
@@ -53,15 +61,7 @@ hr {
     border: 2px solid black;
 }
 
-.project a {
-    text-decoration: none;
-}
-
-.project a:hover {
-    text-decoration: underline;
-}
-
-.project p:first-of-type {
+.technologies p:first-of-type {
     margin-left: 20px;
 }
 
