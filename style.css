@@ -85,6 +85,32 @@ hr {
     margin-left: 20px;
 }
 
+/* Education section */
+
+.institution .collapsible {
+    font-family: Nunito, sans-serif;
+    font-size: 1em;
+
+    border: none;
+    outline: none;
+    width: 100%;
+
+    cursor: pointer;
+    background: rgb(46, 41, 41);
+    color: white;
+}
+
+.institution-info {
+    border: solid 1px;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.institution-info .awards {
+    border-top: solid 1px;
+}
+
+
 /* Position buttons next to each other */
 
 @media only screen and (min-width: 450px) {
