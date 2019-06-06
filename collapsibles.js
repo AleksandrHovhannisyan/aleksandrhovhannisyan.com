@@ -12,5 +12,7 @@ $("document").ready(function(){
             content.css("display", "grid");
             caret.toggleClass("fa-caret-down fa-caret-up");
         }
+
+        this.scrollIntoView();
     })
 });
