@@ -68,12 +68,30 @@ hr {
     width: 100%;
 }
 
-/* Portfolio cards are 1-column grids with three rows */
+/* Container for all projects */
+
+#projects {
+    display: grid;
+    column-gap: 50px;
+    row-gap: 20px;
+    /* Responsive: fill up space as it's made available */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* Header, main, footer, respectively */
+}
+
+/* Portfolio cards themselves are 1-column sub-grids with three rows */
 .project {
     display: grid;
-    grid-template-columns: 1fr;
+    /* Only one column needed for content */
+    grid-template-columns: 1;
     /* Header, main, footer, respectively */
     grid-template-rows: auto 1fr auto;
+}
+
+/* Don't treat the header as an item/card, keep it on the top row */
+#projects h2 {
+    grid-row: 1;
+    grid-column: 1 / -1;
 }
 
 .project a {
@@ -86,6 +104,7 @@ hr {
 
 .technologies {
     display: flex;
+    grid-row: 3;
 }
 
 .technologies p {
@@ -211,24 +230,9 @@ hr {
 
 @media only screen and (min-width: 960px) {
 
-    /* 3 equal-sized columns, implicit rows */
-    #projects {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    /* Header should occupy entire first row */
-    #projects h2 {
-        grid-column: 1 / -1;
-    }
-
     /* Increase gap between skills */
     #skills {
         column-gap: 20px;
-    }
-
-    .skill {
-        margin-left: 20px;
     }
 }
 
