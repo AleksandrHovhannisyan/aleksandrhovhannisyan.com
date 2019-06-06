@@ -116,6 +116,10 @@ hr {
     list-style: none;
 }
 
+.skill li {
+    margin-top: 10px;
+}
+
 /* Education section */
 
 .institution {
