@@ -39,7 +39,7 @@ h1 {
 #page-header {
     margin-top: 30px;
     display: grid;
-    column-gap: 40px;
+    column-gap: 50px;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
@@ -50,8 +50,8 @@ h1 {
 
 .social-button {
     width: 100%;
-    height: 35px;
-    line-height: 35px;
+    height: 40px;
+    line-height: 40px;
     text-align: center;
     display: block;
     
