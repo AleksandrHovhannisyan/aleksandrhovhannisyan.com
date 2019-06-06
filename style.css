@@ -1,4 +1,11 @@
-/* General spacing stuff */
+/* ============================================
+
+   General top-level styling
+
+   ============================================
+*/
+
+
 #intro {
     margin-bottom: 20px;
 }
@@ -7,24 +14,33 @@
     margin-bottom: 50px;
 }
 
-
-/* Font and CSS grid styling */
 body {
     font-family: Nunito, sans-serif;
-    display: grid;
-    column-gap: 15px;
-    grid-template-columns: repeat(11, 1fr);
-}
-
-/* One column gap on either end */
-body > * {
-    grid-column: 2 / -2;
+    
+    /* Center the page */
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 h1 {
     font-size: 2em;
     margin-block-start: 0.67em;
     margin-block-end: 0.67em;
+}
+
+/* ============================================
+
+   Page header (intro, about me, CTA buttons)
+
+   ============================================
+*/
+
+#page-header {
+    margin-top: 30px;
+    display: grid;
+    column-gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 #main-cta {
@@ -48,6 +64,7 @@ h1 {
     text-decoration: none;
 }
 
+/* Collapsible grouped here for consistent styling */
 .social-button, .collapsible {
     cursor: pointer;
     color: white;
@@ -68,7 +85,12 @@ hr {
     width: 100%;
 }
 
-/* Container for all projects */
+/* ============================================
+
+   Projects/portfolio cards 
+
+   ============================================
+*/
 
 #projects {
     display: grid;
@@ -118,7 +140,6 @@ hr {
     margin-left: 20px;
 }
 
-/* Not really a project item: just for a CTA */
 .project-placeholder {
     display: flex;
     flex-direction: column;
@@ -126,10 +147,9 @@ hr {
     justify-content: center;
 }
 
-/* For the placeholder GitHub logo */
 .github-cta {
 
-    /* For centering the icon */
+    /* Centers the GitHub icon */
     display: inline-block;    
     width: 100%;
     
@@ -140,7 +160,12 @@ hr {
     color: black;
 }
 
-/* Skills section */
+/* ============================================
+
+   Skills (responsive columns)
+
+   ============================================
+*/
 
 #skills {
     display: grid;
@@ -161,7 +186,12 @@ hr {
     margin-top: 10px;
 }
 
-/* Education section */
+/* ============================================
+
+   Education (institutions, coursework, etc.)
+
+   ============================================
+*/
 
 .institution {
     margin-top: 20px;
@@ -206,16 +236,25 @@ hr {
 }
 
 
-/* Position buttons next to each other */
+/* ============================================
 
-@media only screen and (min-width: 450px) {
+   All media queries
 
-    .social-button {
-        display: inline-block;
-        width: 150px;
+   ============================================
+*/
+
+
+@media only screen and (min-width: 400px) {
+    
+    .social-buttons {
+        display: flex;
     }
 
+    .social-button {
+        max-width: 200px; 
+    }
 }
+
 
 /* Education section: line up courses and awards side by side */
 @media only screen and (min-width: 800px) {
@@ -245,28 +284,5 @@ hr {
         margin-left: auto;
         margin-right: 10px;
         margin-top: auto;
-    }
-}
-
-/* Tablets and desktops */
-
-@media only screen and (min-width: 960px) {
-
-    /* Increase gap between skills */
-    #skills {
-        column-gap: 20px;
-    }
-}
-
-/* Fill in whitespace to right of intro */
-@media only screen and (min-width: 1000px) {
-
-    #intro {
-        grid-column: 2 / 6;
-    }
-
-    #about-me {
-        grid-row: 1;
-        grid-column: 7 / -2;
     }
 }
