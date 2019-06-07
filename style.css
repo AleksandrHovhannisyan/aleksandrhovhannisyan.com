@@ -159,12 +159,17 @@ nav {
 
 nav * {
     color: var(--nav-text-color);
+    grid-column: 2 / -2;
 }
 
 nav ul {
     padding: 0;
     list-style: none;
-    grid-column: 2 / -2;
+    display: flex;
+}
+
+.switch-container {
+    margin-right: auto;
 }
 
 /* Toggles night mode */
@@ -200,6 +205,10 @@ nav ul {
 
 .switch.night::before {
     margin-left: 21px;
+}
+
+.fa-bars {
+    font-size: 1.5em;
 }
 
 /* ============================================

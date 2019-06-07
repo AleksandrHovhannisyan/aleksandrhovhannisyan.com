@@ -4,6 +4,17 @@ function autoTransitionToNightMode(){
 
     if(today.getHours() >= 20 || today.getHours() <= 6) {
         $(document.documentElement).toggleClass('night');
+        toggleNightModeLabel();
+    }
+}
+
+// Toggles the night mode label so the text matches the mode the user is in
+function toggleNightModeLabel(){
+    if($('.switch').hasClass('night')) {
+        $('.switch-container span').html('Dark mode');
+    }
+    else {
+        $('.switch-container span').html('Light mode');
     }
 }
 
@@ -16,6 +27,7 @@ $(document).ready(function(){
         
         $(document.documentElement).toggleClass('night');
         $('.switch').toggleClass('night');
+        toggleNightModeLabel();
     })
 
     // Handles the logic for the collapsibles in the education section
