@@ -170,7 +170,7 @@ nav ul {
 /* Toggles night mode */
 .switch {
     display: inline-block;
-    width: 40px;
+    width: 35px;
     height: 15px;
     line-height: 15px;
     margin-right: 5px;
@@ -191,15 +191,15 @@ nav ul {
 
     margin-left: 2px;
     margin-bottom: 1px;
-    width: 14px;
-    height: 12px;
+    width: 12px;
+    height: 10px;
     
     background: var(--nav-text-color);
     border-radius: 50%;
 }
 
 .switch.night::before {
-    margin-left: 23px;
+    margin-left: 21px;
 }
 
 /* ============================================

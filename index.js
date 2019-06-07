@@ -2,10 +2,8 @@
 function autoTransitionToNightMode(){
     var today = new Date();
 
-    if(today.getHours() >= 20 || today.getHours() <= 6)
-    {
-        document.documentElement.classList.add('night');
-		document.documentElement.classList.remove('day');
+    if(today.getHours() >= 20 || today.getHours() <= 6) {
+        $(document.documentElement).toggleClass('night');
     }
 }
 
