@@ -17,239 +17,249 @@
         crossorigin="anonymous"></script>
         <!-- Custom javascript -->
         <script src="collapsibles.js"></script>
+        <script src="nightModeToggle.js"></script>
         <link rel="icon" href="favicon.ico" type='image/x-icon'>
         <title>Aleksandr Hovhannisyan</title>
     </head>
 
     <body>
 
-        <header id="page-header">
-            
-            <section id="intro">
-                <h1>Hey there! I'm Aleksandr &#128516;</h1>
-                <p id="main-cta">Looking for a software developer? <strong>Let's get in touch!</strong></p>
-                <div class="social-buttons">
-                    <a class="social-button" href="https://www.linkedin.com/in/aleksandr-hovhannisyan-ba154b120/" target="_blank">
-                        <i class="fab fa-linkedin-in"></i> LinkedIn</a>
-                    <a class="social-button" href="https://github.com/AleksandrHovhannisyan" target="_blank">
-                        <i class="fab fa-github"></i> GitHub</a>
-                </div>
-            </section>
-    
-            <section id="about-me">
-                <h2>About Me &#128187;</h2>
-                <p>
-                    I'm a CS undergrad at the University of Florida with a specific interest in
-                    <strong>desktop application development</strong>. When I'm not hacking away on a project, I enjoy playing video 
-                    games, solving puzzles, and working out!
-                </p>
-            </section>
-            
-        </header>
+        <nav>
+            <ul role="navigation">
+                <li class="night-mode-switch"><div class="switch"></div><span>Toggle night mode</span></li>
+            </ul>
+        </nav>
 
-        <hr>
+        <article id="content">
 
-        <section id="projects">
-            <h2>Projects &#128193;</h2>
-            <div class="project">
-                <header>
-                    <h4>
-                        <span><img src="img/scribe.ico" alt=""></span>
-                        <a href="https://github.com/AleksandrHovhannisyan/Scribe-Text-Editor" target="_blank">
-                            Scribe: Text Editor <i class="fas fa-link"></i>
-                        </a>
-                    </h4>
-                </header>
-                <main>
-                    <ul>
-                        <li>File operations, brace matching + autoindent</li>
-                        <li>Multi-tabbed and fully OOP</li>
-                        <li>Syntax highlighting support for 4 languages</li>
-                        <li>Saves user preferences (e.g., formatting)</li>
-                    </ul>
-                </main>
-                <footer class="technologies">
-                    <p>C++</p>
-                    <p>Qt5</p>
-                    <p>Qt Creator</p>
-                    <p>git</p>
-                </footer>
-            </div>
-
-            <div class="project">
-                <header>
-                    <h4>
-                        <span><img src="img/GameIcon.PNG" alt=""></span>
-                        <a href="https://github.com/AleksandrHovhannisyan/EmbodyGame" target="_blank">
-                            Embody: Video Game <i class="fas fa-link"></i>    
-                        </a>
-                    </h4>
-                </header>
-                <main>
-                    <ul>
-                        <li>Dungeon crawler inspired by Binding of Isaac</li>
-                        <li>Enemy pathfinding, wandering, detection</li>
-                        <li>FSM-driven final boss battle (+ phase two!)</li>
-                        <li>Heavily event-driven and OOP (entities, weapons)</li>
-                    </ul>
-                </main>
-                <footer class="technologies">
-                    <p>C#</p>
-                    <p>Unity 3D</p>
-                    <p>git</p>
-                </footer>
-            </div>
-            
-            <div class="project">
-                <header>
-                    <h4>
-                        <span><img src="img/cpu.png" alt=""></span>
-                        <a href="https://github.com/AleksandrHovhannisyan/MIPS-Linked-List" target="_blank">
-                            ASM Linked List <i class="fas fa-link"></i>
-                        </a>
-                    </h4>
-                </header>
-                <main>
-                    <ul>
-                        <li>Insert, delete, search, display operations</li>
-                        <li>Documented, legible, organized code</li>
-                        <li>CLI menu input/selections</li>
-                        <li>Register manipulation, working with stack frames</li>
-                    </ul>
-                </main>
-                <footer class="technologies">
-                    <p>MIPS</p>
-                    <p>Assembly</p>
-                    <p>QtSPIM</p>
-                </footer>
-            </div>
-
-            <aside class="project project-placeholder">
-                <header>
-                    <h4>Want to see more of my work?</h4>
-                </header>
-                <main>
-                    <p>Check out my other repos:</p>
-                    <a class="github-cta" href="https://github.com/AleksandrHovhannisyan?tab=repositories" target="_blank"><i class="fab fa-github"></i></a>
-                </main>
-                <footer class="technologies">
-                </footer>
-            </aside>
-
-        </section>
-
-        <hr>
-
-        <section id="skills">
-            <h2>Skills and Abilities &#129337;</h2>
-            <div class="skill">
-                <h4>Programming</h4>
-                <ul>
-                    <li>C++</li>
-                    <li>C#</li>
-                    <li>Python</li>
-                    <li>Java</li>
-                    <li>JavaScript</li>
-                    <li>MATLAB</li>
-                    <li>SQL</li>
-                    <li>R</li>
-                </ul>
-            </div>
-            <div class="skill">
-                <h4>CLI Tools</h4>
-                <ul>
-                    <li>cmd</li>
-                    <li>PowerShell</li>
-                    <li>bash</li>
-                    <li>CMake</li>
-                    <li>npm</li>
-                    <li>git</li>
-                </ul>
-            </div>
-            <div class="skill">
-                <h4>Go-to IDEs</h4>
-                <ul>
-                    <li>Visual Studio</li>
-                    <li>VS Code</li>
-                    <li>Qt Creator</li>
-                    <li>Android Studio</li>
-                </ul>
-            </div>
-            <div class="skill">
-                <h4>Collaboration</h4>
-                <ul>
-                    <li>GitHub <em>(duh)</em></li>
-                    <li>Slack</li>
-                    <li>MS Office</li>
-                    <li>Google Drive</li>
-                    <li>Pivotal Tracker</li>
-                </ul>
-            </div>
-            <div class="skill">
-                <h4>Languages</h4>
-                <ul>
-                    <li>English</li>
-                    <li>Armenian</li>
-                    <li>German</li>
-                </ul>
-            </div>
-            <div class="skill">
-                <h4>Other</h4>
-                <ul>
-                    <li>Copy editing</li>
-                    <li>Copy writing</li>
-                    <li>Email writing</li>
-                </ul>
-            </div>
-        </section>
-
-        <hr>
-
-        <section id="education">
-            <h2>Education &#127891;</h2>
-
-            <p>
-                If my track record speaks to anything, it's my <strong>commitment to excellence</strong>
-                in every endeavor I pursue.
-            </p>
-    
-            <section class="institution">
-                <button class="collapsible">
+            <header id="page-header">
+                
+                <section id="intro">
+                    <h1>Hey there! I'm Aleksandr &#128516;</h1>
+                    <p id="main-cta">Looking for a software developer? <strong>Let's get in touch!</strong></p>
+                    <div class="social-buttons">
+                        <a class="social-button" href="https://www.linkedin.com/in/aleksandr-hovhannisyan-ba154b120/" target="_blank">
+                            <i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                        <a class="social-button" href="https://github.com/AleksandrHovhannisyan" target="_blank">
+                            <i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </section>
+        
+                <section id="about-me">
+                    <h2>About Me &#128187;</h2>
                     <p>
-                        <strong>University of Florida<br></strong>
-                        B.Sc. in Computer Science (4.0)<br>
-                        2016&ndash;2019
+                        I'm a CS undergrad at the University of Florida with a specific interest in
+                        <strong>desktop application development</strong>. When I'm not hacking away on a project, I enjoy playing video 
+                        games, solving puzzles, and working out!
                     </p>
-                    <i class="fas fa-caret-down"></i>
-                </button>
-                <div class="institution-info">
-                    <section class="courses">
-                        <p><em>Notable Coursework</em></p>
+                </section>
+
+            </header>
+
+            <hr>
+
+            <section id="projects">
+                <h2>Projects &#128193;</h2>
+                <div class="project">
+                    <header>
+                        <h4>
+                            <span><img src="img/scribe.ico" alt=""></span>
+                            <a href="https://github.com/AleksandrHovhannisyan/Scribe-Text-Editor" target="_blank">
+                                Scribe: Text Editor <i class="fas fa-link"></i>
+                            </a>
+                        </h4>
+                    </header>
+                    <main>
                         <ul>
-                            <li>Data structures and algorithms</li>
-                            <li>Programming language concepts</li>
-                            <li>Intro to software engineering</li>
-                            <li>Computer architecture, operating systems</li>
-                            <li>Database management systems</li>
-                            <li>Calculus, linear algebra, numerical analysis</li>
+                            <li>File operations, brace matching + autoindent</li>
+                            <li>Multi-tabbed and fully OOP</li>
+                            <li>Syntax highlighting support for 4 languages</li>
+                            <li>Saves user preferences (e.g., formatting)</li>
                         </ul>
-                    </section>
-                    <section class="awards">
-                        <p><em>Awards and Recognitions</em></p>
+                    </main>
+                    <footer class="technologies">
+                        <p>C++</p>
+                        <p>Qt5</p>
+                        <p>Qt Creator</p>
+                        <p>git</p>
+                    </footer>
+                </div>
+
+                <div class="project">
+                    <header>
+                        <h4>
+                            <span><img src="img/GameIcon.PNG" alt=""></span>
+                            <a href="https://github.com/AleksandrHovhannisyan/EmbodyGame" target="_blank">
+                                Embody: Video Game <i class="fas fa-link"></i>    
+                            </a>
+                        </h4>
+                    </header>
+                    <main>
                         <ul>
-                            <li>
-                                <a href="https://clas.ufl.edu/undergraduate/anderson-scholars/anderson-scholars-listing/"
-                                target="_blank">Anderson Scholar Award (Highest Distinction, 2018)</a>
-                            </li>
-                            <li>Dean's List Award (2016–present)</li>
-                            <li>Bright Futures Academic Scholar (2016–present)</li>
+                            <li>Dungeon crawler inspired by Binding of Isaac</li>
+                            <li>Enemy pathfinding, wandering, detection</li>
+                            <li>FSM-driven final boss battle (+ phase two!)</li>
+                            <li>Heavily event-driven and OOP (entities, weapons)</li>
                         </ul>
-                    </section>
+                    </main>
+                    <footer class="technologies">
+                        <p>C#</p>
+                        <p>Unity 3D</p>
+                        <p>git</p>
+                    </footer>
+                </div>
+                
+                <div class="project">
+                    <header>
+                        <h4>
+                            <span><img src="img/cpu.png" alt=""></span>
+                            <a href="https://github.com/AleksandrHovhannisyan/MIPS-Linked-List" target="_blank">
+                                ASM Linked List <i class="fas fa-link"></i>
+                            </a>
+                        </h4>
+                    </header>
+                    <main>
+                        <ul>
+                            <li>Insert, delete, search, display operations</li>
+                            <li>Documented, legible, organized code</li>
+                            <li>CLI menu input/selections</li>
+                            <li>Register manipulation, working with stack frames</li>
+                        </ul>
+                    </main>
+                    <footer class="technologies">
+                        <p>MIPS</p>
+                        <p>Assembly</p>
+                        <p>QtSPIM</p>
+                    </footer>
+                </div>
+
+                <aside class="project project-placeholder">
+                    <header>
+                        <h4>Want to see more of my work?</h4>
+                    </header>
+                    <main>
+                        <p>Check out my other repos:</p>
+                        <a class="github-cta" href="https://github.com/AleksandrHovhannisyan?tab=repositories" target="_blank"><i class="fab fa-github"></i></a>
+                    </main>
+                    <footer class="technologies">
+                    </footer>
+                </aside>
+
+            </section>
+
+            <hr>
+
+            <section id="skills">
+                <h2>Skills and Abilities &#129337;</h2>
+                <div class="skill">
+                    <h4>Programming</h4>
+                    <ul>
+                        <li>C++</li>
+                        <li>C#</li>
+                        <li>Python</li>
+                        <li>Java</li>
+                        <li>JavaScript</li>
+                        <li>MATLAB</li>
+                        <li>SQL</li>
+                        <li>R</li>
+                    </ul>
+                </div>
+                <div class="skill">
+                    <h4>CLI Tools</h4>
+                    <ul>
+                        <li>cmd</li>
+                        <li>PowerShell</li>
+                        <li>bash</li>
+                        <li>CMake</li>
+                        <li>npm</li>
+                        <li>git</li>
+                    </ul>
+                </div>
+                <div class="skill">
+                    <h4>Go-to IDEs</h4>
+                    <ul>
+                        <li>Visual Studio</li>
+                        <li>VS Code</li>
+                        <li>Qt Creator</li>
+                        <li>Android Studio</li>
+                    </ul>
+                </div>
+                <div class="skill">
+                    <h4>Collaboration</h4>
+                    <ul>
+                        <li>GitHub <em>(duh)</em></li>
+                        <li>Slack</li>
+                        <li>MS Office</li>
+                        <li>Google Drive</li>
+                        <li>Pivotal Tracker</li>
+                    </ul>
+                </div>
+                <div class="skill">
+                    <h4>Languages</h4>
+                    <ul>
+                        <li>English</li>
+                        <li>Armenian</li>
+                        <li>German</li>
+                    </ul>
+                </div>
+                <div class="skill">
+                    <h4>Other</h4>
+                    <ul>
+                        <li>Copy editing</li>
+                        <li>Copy writing</li>
+                        <li>Email writing</li>
+                    </ul>
                 </div>
             </section>
 
-        </section>
+            <hr>
 
+            <section id="education">
+                <h2>Education &#127891;</h2>
+
+                <p>
+                    If my track record speaks to anything, it's my <strong>commitment to excellence</strong>
+                    in every endeavor I pursue.
+                </p>
+        
+                <section class="institution">
+                    <button class="collapsible">
+                        <p>
+                            <strong>University of Florida<br></strong>
+                            B.Sc. in Computer Science (4.0)<br>
+                            2016&ndash;2019
+                        </p>
+                        <i class="fas fa-caret-down"></i>
+                    </button>
+                    <div class="institution-info">
+                        <section class="courses">
+                            <p><em>Notable Coursework</em></p>
+                            <ul>
+                                <li>Data structures and algorithms</li>
+                                <li>Programming language concepts</li>
+                                <li>Intro to software engineering</li>
+                                <li>Computer architecture, operating systems</li>
+                                <li>Database management systems</li>
+                                <li>Calculus, linear algebra, numerical analysis</li>
+                            </ul>
+                        </section>
+                        <section class="awards">
+                            <p><em>Awards and Recognitions</em></p>
+                            <ul>
+                                <li>
+                                    <a href="https://clas.ufl.edu/undergraduate/anderson-scholars/anderson-scholars-listing/"
+                                    target="_blank">Anderson Scholar Award (Highest Distinction, 2018)</a>
+                                </li>
+                                <li>Dean's List Award (2016–present)</li>
+                                <li>Bright Futures Academic Scholar (2016–present)</li>
+                            </ul>
+                        </section>
+                    </div>
+                </section>
+
+            </section>
+
+        </article>
 
     </body>
 
