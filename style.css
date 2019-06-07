@@ -7,15 +7,9 @@
 
 :root {
     --day-bg-color: white;
-    --day-nav-color: rgb(236, 236, 236);
+    --day-nav-color: rgb(245, 244, 244);
     --day-button-background: rgb(39, 83, 133);
-    --night-bg-color: rgb(24, 24, 24);
-    --night-nav-color: rgb(37, 36, 36);
-    --night-light-text-color: rgb(179, 177, 177);
-    --night-bright-text-color: rgb(204, 204, 204);
-    --night-button-background: rgb(102, 102, 70);
 }
-
 
 #intro {
     margin-bottom: 20px;
@@ -27,12 +21,12 @@
 
 body {
     font-family: Nunito, sans-serif;
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
 }
 
-#content {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+body > * {
+    grid-column: 2 / -2;
 }
 
 h1 {
@@ -52,19 +46,22 @@ nav {
     width: 100%;
     position: fixed;
     left: 0;
+    right: 100%;
     top: 0;
     background: var(--day-nav-color);
-    box-shadow: 0 4px 2px -2px rgb(107, 107, 107);
+
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
 }
 
 nav ul {
     padding: 0;
     list-style: none;
+    grid-column: 2 / -2;
 }
 
 /* Toggles night mode */
 .switch {
-    margin-left: 30px;
     display: inline-block;
     width: 40px;
     height: 15px;
@@ -75,7 +72,6 @@ nav ul {
     border: 3px solid black;
     border-radius: 100px;
     cursor: pointer;
-    transition: 0.25s;
 }
 
 /* Switch pseudo element/orb */
@@ -92,60 +88,6 @@ nav ul {
     
     background: #00151f;
     border-radius: 50%;
-}
-
-/* ============================================
-
-   Night mode styling
-
-   ============================================
-*/
-
-/* All regular text will have a light color */
-body.night {
-    background: var(--night-bg-color);
-    color: var(--night-light-text-color);
-}
-
-body.night .collapsible p {
-    color: var(--night-light-text-color);
-}
-
-body.night nav {
-    background: var(--night-nav-color);
-}
-
-.switch.night {
-    background: var(--night-nav-color);
-    border-color: var(--night-bright-text-color);
-    transition: 0.25s;
-    box-shadow: 0 4px 2px -2px rgb(20, 20, 20);
-}
-
-.switch.night::before {
-    margin-left: 23px;
-    background: var(--night-bright-text-color);
-}
-
-/* LinkedIn and GitHub buttons */
-body.night .social-button, body.night .social-button i {
-    background: var(--night-button-background);
-}
-
-/* Collapsible buttons */
-body.night .collapsible {
-    background: var(--night-button-background);
-}
-
-/* Any important text will be slightly brighter */
-body.night a, body.night i, body.night nav, 
-body.night h1, body.night h2, body.night h4, 
-body.night strong, body.night em {
-    color: var(--night-bright-text-color);
-}
-
-body.night .technologies > p {
-    border-color: var(--night-light-text-color);
 }
 
 /* ============================================
@@ -253,6 +195,7 @@ hr {
     margin-right: 5px;
     border-radius: 5px;
     border: 2px solid black;
+    background-color: var(--day-nav-color);
 }
 
 .technologies p:first-of-type {
