@@ -12,6 +12,7 @@
 body.night {
     background: var(--night-bg-color);
     color: var(--night-light-text-color);
+    transition: 0.5s;
 }
 
 body.night nav {

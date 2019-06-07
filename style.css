@@ -23,6 +23,7 @@ body {
     font-family: Nunito, sans-serif;
     display: grid;
     grid-template-columns: repeat(11, 1fr);
+    transition: 0.5s;
 }
 
 body > * {
@@ -178,6 +179,7 @@ hr {
 }
 
 .project a {
+    color: var(--day-button-background);
     text-decoration: none;
 }
 
