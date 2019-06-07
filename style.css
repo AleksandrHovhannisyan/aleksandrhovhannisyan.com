@@ -185,6 +185,12 @@ hr {
     text-decoration: underline;
 }
 
+/* Line up the icons with their project titles */
+.project-icon {
+    display: inline-block;
+    vertical-align: middle;
+}
+
 .technologies {
     display: flex;
     grid-row: 3;
