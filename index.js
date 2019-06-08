@@ -77,6 +77,18 @@ $(document).ready(function(){
         if(navbarHamburger.css('display') != 'none'){
             navbarHamburger.click();
         }
-    })
+    });
+
+
+    /** Smoothly scrolls to the location within the document specified by the clicked anchor's
+     *  href attribute. Taken from: https://stackoverflow.com/a/7717572/10480032
+     */
+    $(document).on('click', 'a[href^="#"]', function (event) {
+        event.preventDefault();
+    
+        $('html, body').animate({
+            scrollTop: $($.attr(this, 'href')).offset().top
+        }, 500);
+    });
 
 });
