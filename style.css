@@ -215,7 +215,7 @@ button:focus {
     color: white;
 }
 
-.navbar-toggle {
+.navbar-hamburger {
     position: absolute;
     top: 10px;
     right: 15px;
@@ -311,7 +311,7 @@ button:focus {
         margin-left: 40px;
     }
 
-   .navbar-toggle {
+   .navbar-hamburger {
        display: none;
     }
 }

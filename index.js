@@ -1,39 +1,52 @@
-// Toggles night mode if it's dark out
-function autoTransitionToNightMode(){
-    var today = new Date();
-
-    if(today.getHours() >= 20 || today.getHours() <= 6) {
-        $(document.documentElement).toggleClass('night');
-        toggleNightModeLabel();
-    }
-}
-
-// Toggles the night mode label so the text matches the mode the user is in
-function toggleNightModeLabel(){
-    if($('.nightmode-switch').hasClass('night')) {
-        $('.nightmode-switch-container span').html('Dark mode');
+/** Updates the text in the given label to match whatever mode the page is in (dark, light).
+ *  @param nightModeSwitch {Node} The element the user clicks to toggle light/dark mode.
+ *  @param themeLabel {Node} The element that displays the color theme the page is currently using (light or dark).
+ */
+function updateThemeLabel(nightModeSwitch, themeLabel){
+    if(nightModeSwitch.hasClass('night')) {
+        themeLabel.html('Dark mode');
     }
     else {
-        $('.nightmode-switch-container span').html('Light mode');
+        themeLabel.html('Light mode');
     }
 }
 
-$(document).ready(function(){
-    
-    autoTransitionToNightMode();
 
-    // Give the user the option of transitioning between day/night manually
-    $('.nightmode-switch').click(function(){
+$(document).ready(function(){   
+
+    var nightModeSwitch = $('.nightmode-switch');
+    var collapsible = $('.collapsible');
+    var navbarHamburger = $('#topnav .navbar-hamburger');
+    var navbarLinkContainer = $('#topnav .nav-links');
+    var navbarLinks = navbarLinkContainer.find('a');
+
+    // Auto-transition to night mode
+    (function(){
+        var today = new Date();
+        var dusk = 20;
+        var dawn = 6;
         
+        if(today.getHours() >= dusk || today.getHours() <= dawn) {
+            $(document.documentElement).toggleClass('night');
+            updateThemeLabel(nightModeSwitch, nightModeSwitch.next());
+        }
+    })();
+
+
+    /** Called when the user clicks the night mode switch in the top-left of the navbar.
+     *  Toggles the document's class to trigger a change in the color themes. 
+     */
+    nightModeSwitch.click(function(){        
         $(document.documentElement).toggleClass('night');
-        $('.nightmode-switch').toggleClass('night');
-        toggleNightModeLabel();
+        $(this).toggleClass('night');
+        updateThemeLabel($(this), $(this).next());
     });
 
 
-    // Handles the logic for the collapsibles in the education section
-    $('.collapsible').click(function(){
-        
+    /** Called when the user clicks on a collapsible element (accordion). Expands or
+     *  collapses the button accordingly, and also updates the collapsible's icon.
+     */
+    collapsible.click(function(){        
         var content = $(this).next();
         var icon = $(this).find('i');
 
@@ -49,18 +62,20 @@ $(document).ready(function(){
     });
 
 
-    // Toggling navigation bar on mobile
-    $('#topnav .navbar-toggle').click(function(){
-        $('#topnav .nav-links').toggleClass('active');
+    /** Called when the user clicks on the hamburger icon in the navigation menu. 
+     */
+    navbarHamburger.click(function(){
+        navbarLinkContainer.toggleClass('active');
     });
 
 
-    // Hide the mobile navbar dropdown after a link is clicked
-    $('.nav-links a').click(function() {
-        var navbarToggler = $('.navbar-toggle');
-
-        if(navbarToggler.css('display') != 'none'){
-            navbarToggler.click();
+    /** Called when the user clicks on a navbar link. Checks to see if the click occured
+     *  while the mobile version of the navigation was showing. If so, it simulates a
+     *  click on the hamburger icon to hide the navigation menu.
+     */
+    navbarLinks.click(function() {
+        if(navbarHamburger.css('display') != 'none'){
+            navbarHamburger.click();
         }
     })
 
