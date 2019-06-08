@@ -210,7 +210,7 @@ button:focus {
     vertical-align: middle;
 }
 
-.nav-links a:hover {
+#topnav .nav-links a:hover {
     text-decoration: underline;
     color: white;
 }
