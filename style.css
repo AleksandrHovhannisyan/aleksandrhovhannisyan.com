@@ -160,6 +160,14 @@ button:focus {
    ============================================
 */
 
+.centered-content {
+    width: var(--page-center-percentage);
+    margin-left: auto;
+    margin-right: auto;
+    height: 45px;
+    
+}
+
 #topnav {
     width: 100%;
     min-height: 45px;
@@ -195,10 +203,6 @@ button:focus {
     color: white;
 }
 
-.active {
-    display: block;
-}
-
 .navbar-toggle {
     position: absolute;
     top: 10px;
@@ -210,8 +214,7 @@ button:focus {
 
 .nightmode-switch-container, .nightmode-switch-container * {
     display: inline-block;
-    margin-left: 5px;
-    margin-top: 7px;
+    margin-top: 5px;
 }
 
 .nightmode-switch {
@@ -244,6 +247,61 @@ button:focus {
 
 .nightmode-switch.night::before {
     margin-left: 20px;
+}
+
+.active {
+    display: block;
+    background: var(--nav-bg-color);
+    color: var(--nav-text-color);
+    
+    /* Make the dropdown take up 100% of the viewport width */
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 20px;
+}
+
+@media only screen and (min-width: 760px) {
+    
+    .centered-content {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 0;
+        height: 35px;
+        align-items: center;
+    }
+
+    #topnav {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 0;
+        height: 35px;
+        align-items: center;
+    }
+
+    .nightmode-switch-container {
+        margin-top: -8px;
+    }
+
+    .nav-links {
+        display: flex;
+        margin-right: 30px;
+        flex-direction: row;
+        justify-content: flex-end;
+        font-size: 1.1em;
+    }
+
+    .nav-links li {
+        margin: 0;
+    }
+
+    .nav-links a {
+        margin-left: 40px;
+    }
+
+   .navbar-toggle {
+       display: none;
+    }
 }
 
 /* ============================================
@@ -427,43 +485,6 @@ button:focus {
         max-width: 200px; 
     }
 }
-
-@media screen and (min-width: 730px) {
-    
-    #topnav {
-        display: flex;
-        justify-content: space-between;
-        padding-bottom: 0;
-        height: 35px;
-        align-items: center;
-    }
-
-    .nightmode-switch-container {
-        margin-top: 0px;
-    }
-
-    .nav-links {
-        display: none;
-        display: flex;
-        margin-right: 30px;
-        flex-direction: row;
-        justify-content: flex-end;
-        font-size: 1.1em;
-    }
-
-    .nav-links li {
-        margin: 0;
-    }
-
-    .nav-links a {
-        margin-left: 40px;
-    }
-
-   .navbar-toggle {
-       display: none;
-    }
-}
-
 
 /* Education section: line up courses and awards side by side */
 @media only screen and (min-width: 800px) {
