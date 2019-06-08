@@ -5,6 +5,10 @@
    ============================================
 */
 
+* {
+    box-sizing: border-box;
+}
+
 :root {
     --main-bg-color: white;
     --nav-bg-color: rgb(44, 44, 44);
@@ -18,6 +22,8 @@
     --button-bg-hover-color: rgb(14, 48, 87);
     --button-text-color: white;
     --button-text-hover-color: white;
+
+    --page-center-percentage: 80%;
 }
 
 .night {
@@ -40,19 +46,21 @@
 
 #about-me, #projects, #skills, #education {
     margin-bottom: 50px;
+    
+    /* To account for the fixed navbar */
+    margin-top: -40px;
+    padding-top: 40px;
 }
 
 body {
     font-family: Nunito, sans-serif;
-    display: grid;
-    grid-template-columns: repeat(11, 1fr);
     color: var(--text-color-normal);
     background: var(--main-bg-color);
     transition: 0.5s;
-}
-
-body > * {
-    grid-column: 2 / -2;
+    
+    width: var(--page-center-percentage);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 i, h1, h2, h4, strong, em {
@@ -147,43 +155,68 @@ button:focus {
 
 /* ============================================
 
-   Navigation (+ night mode switch)
+   Navigation (+ night mode nightmode-switch)
 
    ============================================
 */
 
-nav {
+#topnav {
     width: 100%;
+    min-height: 45px;
     position: fixed;
     left: 0;
     right: 100%;
     top: 0;
     background: var(--nav-bg-color);
-
-    display: grid;
-    grid-template-columns: repeat(11, 1fr);
 }
 
-nav * {
+#topnav * {
     color: var(--nav-text-color);
-    grid-column: 2 / -2;
 }
 
-nav ul {
+.nav-links {
     padding: 0;
-    list-style: none;
-    display: flex;
+    list-style-type: none;
+    display: none;
 }
 
-.switch-container {
-    margin-right: auto;
+.nav-links li {
+    text-align: center;
+    margin: 5px auto;
 }
 
-/* Toggles night mode */
-.switch {
+.nav-links a {
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+.active {
+    display: block;
+}
+
+.navbar-toggle {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    display: inline;
+    vertical-align: middle;
+    font-size: 1.5em;
+}
+
+.nightmode-switch-container, .nightmode-switch-container * {
     display: inline-block;
-    width: 35px;
-    height: 15px;
+    margin-left: 5px;
+    margin-top: 7px;
+}
+
+.nightmode-switch {
+    width: 40px;
+    height: 20px;
     line-height: 15px;
     margin-right: 5px;
 
@@ -194,8 +227,7 @@ nav ul {
     transition: 0.5s;
 }
 
-/* Switch pseudo element/orb */
-.switch::before {
+.nightmode-switch::before {
     content: "";
     display: inline-block;
     vertical-align: middle;
@@ -210,12 +242,8 @@ nav ul {
     border-radius: 50%;
 }
 
-.switch.night::before {
-    margin-left: 21px;
-}
-
-.fa-bars {
-    font-size: 1.5em;
+.nightmode-switch.night::before {
+    margin-left: 20px;
 }
 
 /* ============================================
@@ -397,6 +425,42 @@ nav ul {
 
     .button {
         max-width: 200px; 
+    }
+}
+
+@media screen and (min-width: 730px) {
+    
+    #topnav {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 0;
+        height: 35px;
+        align-items: center;
+    }
+
+    .nightmode-switch-container {
+        margin-top: 0px;
+    }
+
+    .nav-links {
+        display: none;
+        display: flex;
+        margin-right: 30px;
+        flex-direction: row;
+        justify-content: flex-end;
+        font-size: 1.1em;
+    }
+
+    .nav-links li {
+        margin: 0;
+    }
+
+    .nav-links a {
+        margin-left: 40px;
+    }
+
+   .navbar-toggle {
+       display: none;
     }
 }
 
