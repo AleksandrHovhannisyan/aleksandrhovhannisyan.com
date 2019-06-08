@@ -34,14 +34,14 @@ $(document).ready(function(){
     $('.collapsible').click(function(){
         
         var content = $(this).next();
-        var caret = $(this).find('i');
+        var icon = $(this).find('i');
 
         if(content.css('display') === 'grid'){
             content.css('display', 'none');
-            caret.toggleClass('fa-caret-up fa-caret-down');
+            icon.toggleClass('fa-angle-down fa-angle-right');
         } else {
             content.css('display', 'grid');
-            caret.toggleClass('fa-caret-down fa-caret-up');
+            icon.toggleClass('fa-angle-right fa-angle-down');
         }
 
         this.scrollIntoView();

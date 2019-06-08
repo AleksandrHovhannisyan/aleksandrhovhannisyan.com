@@ -105,9 +105,16 @@ hr {
 .collapsible {
     font-family: Nunito, sans-serif;
     font-size: 1em;
+    display: flex;
+    align-items: center;
     border: none;
     outline: none;
     width: 100%;
+}
+
+.collapsible p {
+    text-align: left;
+    padding-left: 10px;
 }
 
 .button, .collapsible {
@@ -132,10 +139,10 @@ button:focus {
     outline: none;
 }
 
-.fa-caret-down, .fa-caret-up {
-    display: block;
-    margin-top: 10px;
-    margin-bottom: 10px;
+.fa-angle-right, .fa-angle-down {
+    margin-left: 10px;
+    margin-right: 20px;
+    font-size: 1em;
 }
 
 /* ============================================
@@ -348,6 +355,7 @@ nav ul {
 
 .institution {
     margin-top: 20px;
+    max-width: 1000px;
 }
 
 /* Course and award container; hidden by default */
@@ -404,22 +412,5 @@ nav ul {
     .institution-info .awards {
         border-top: none;
         border-left: solid 1px;
-    }
-
-    .collapsible {
-        display: flex;
-    }
-
-    .collapsible p {
-        text-align: left;
-        padding-left: 10px;
-    }
-
-    .fa-caret-down, .fa-caret-up {
-        display: inline;
-        font-size: 1.5em;
-        margin-left: auto;
-        margin-right: 10px;
-        margin-top: auto;
     }
 }
