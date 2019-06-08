@@ -295,7 +295,8 @@ button:focus {
         margin-top: -8px;
     }
 
-    .nav-links {
+    .nav-links, .active {
+        position: static;
         display: flex;
         margin-right: 30px;
         flex-direction: row;
