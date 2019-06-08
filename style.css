@@ -153,6 +153,18 @@ button:focus {
     font-size: 1em;
 }
 
+@media only screen and (min-width: 400px) {
+    
+    .main-buttons {
+        display: flex;
+    }
+
+    .button {
+        max-width: 200px; 
+    }
+}
+
+
 /* ============================================
 
    Navigation (+ night mode nightmode-switch)
@@ -237,7 +249,7 @@ button:focus {
     line-height: normal;
 
     margin-left: 2px;
-    margin-bottom: 1px;
+    margin-bottom: 2px;
     width: 12px;
     height: 10px;
     
@@ -466,27 +478,7 @@ button:focus {
     padding-left: 10px;
 }
 
-
-/* ============================================
-
-   All media queries
-
-   ============================================
-*/
-
-
-@media only screen and (min-width: 400px) {
-    
-    .main-buttons {
-        display: flex;
-    }
-
-    .button {
-        max-width: 200px; 
-    }
-}
-
-/* Education section: line up courses and awards side by side */
+/* Line up courses and awards side by side */
 @media only screen and (min-width: 800px) {
 
     .institution-info {
