@@ -424,21 +424,48 @@ button:focus {
 
 #skills {
     display: grid;
-    column-gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
+    column-gap: 50px;
+    row-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
 }
 
 #skills h2 {
     grid-column: 1 / -1;
 }
 
-.skill ul {
-    padding-left: 0;
-    list-style: none;
+.skill-category h4 {
+    margin-bottom: 0;
 }
 
-.skill li {
+.skill-item {
     margin-top: 10px;
+    display: grid;
+    column-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.skill-name {
+    grid-column: 1;
+}
+
+.skill-rating {
+    grid-column: 2;
+}
+
+.fa-star.filled {
+    color: var(--button-bg-color);
+}
+
+.fa-star.empty {
+    color: var(--nav-text-color);
+}
+
+.night .fa-star.filled {
+    color: var(--nav-text-color);
+}
+
+.night .fa-star.empty {
+    color: var(--button-bg-color);
 }
 
 /* ============================================
@@ -450,7 +477,6 @@ button:focus {
 
 .institution {
     margin-top: 20px;
-    max-width: 1000px;
 }
 
 /* Course and award container; hidden by default */
