@@ -47,7 +47,7 @@
 #about-me, #projects, #skills, #education {
     margin-bottom: 50px;
     
-    /* To account for the fixed navbar */
+    /* So the fixed navbar doesn't cover up any content we scroll to */
     margin-top: -40px;
     padding-top: 40px;
 }
@@ -349,7 +349,6 @@ button:focus {
     row-gap: 20px;
     /* Responsive: fill up space as it's made available */
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    /* Header, main, footer, respectively */
 }
 
 /* Portfolio cards themselves are 1-column sub-grids with three rows */
@@ -407,10 +406,7 @@ button:focus {
 }
 
 .github-cta {
-
-    /* Centers the GitHub icon */
-    display: inline-block;    
-    width: 100%;
+    display: inline-block;
     
     font-size: 3em;
     margin-top: 20px;
@@ -463,7 +459,7 @@ button:focus {
     overflow: hidden;
     border: solid 1px;
 
-    /* Display changes from none to grid in javascript */
+    /* Note: the display attribute above changes from none to grid (see index.js) */
     grid-template-columns: 1fr;
 }
 
@@ -479,7 +475,7 @@ button:focus {
     padding-left: 10px;
 }
 
-/* Line up courses and awards side by side */
+/* Line up courses and awards side by side on larger screens */
 @media only screen and (min-width: 800px) {
 
     .institution-info {
