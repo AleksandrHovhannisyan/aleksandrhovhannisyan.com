@@ -24,6 +24,7 @@
     --button-text-hover-color: white;
 
     --skill-hover-bg-color: whitesmoke;
+    --form-bg-color: rgb(226, 226, 226);
 
     --page-center-percentage: 80%;
 }
@@ -42,13 +43,14 @@
     --button-text-hover-color: rgb(24, 24, 24);
 
     --skill-hover-bg-color: rgb(66, 66, 66);
+    --form-bg-color: var(--skill-hover-bg-color);
 }
 
 #intro {
     margin-bottom: 20px;
 }
 
-#about-me, #projects, #skills, #education {
+#about-me, #projects, #skills, #education, #contact {
     margin-bottom: 50px;
     
     /* So the fixed navbar doesn't cover up any content we scroll to */
@@ -523,4 +525,48 @@ button:focus {
         border-top: none;
         border-left: solid 1px;
     }
+}
+
+/* ============================================
+
+   Contact form
+
+   ============================================
+*/
+
+form {
+    margin-bottom: 50px;
+}
+
+form * {
+    color: var(--text-color-normal);
+    font-family: Nunito, sans-serif;
+    font-size: 1em;
+}
+
+form .inputs {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 0px;
+}
+
+input, textarea {
+    height: 30px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    
+    background: var(--form-bg-color);
+    padding-left: 5px;
+    border: none;
+}
+
+textarea {
+    min-height: 200px;
+    max-width: 800px;
+    width: 100%;
+}
+
+/* Yum, honey */
+input.form-class {
+    display: none;
 }
