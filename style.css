@@ -279,7 +279,7 @@ button:focus {
     top: 20px;
 }
 
-@media only screen and (min-width: 760px) {
+@media only screen and (min-width: 845px) {
     
     .centered-content {
         display: flex;
