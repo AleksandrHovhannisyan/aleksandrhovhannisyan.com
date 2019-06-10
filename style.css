@@ -57,8 +57,8 @@
 
 #about-me, #projects, #skills, #education, #contact {    
     /* So the fixed navbar doesn't cover up any content we scroll to */
-    margin-top: -40px;
-    padding-top: 40px;
+    margin-top: -60px;
+    padding-top: 60px;
 }
 
 body {
