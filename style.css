@@ -537,6 +537,7 @@ button:focus {
 
 form {
     margin-bottom: 50px;
+    margin-top: 30px;
 }
 
 form {
@@ -544,18 +545,22 @@ form {
 }
 
 form * {
-    color: var(--text-color-emphasis);
+    color: var(--text-color-normal);
     font-family: Nunito, sans-serif;
     font-size: 1em;
 }
 
-form input {
+form .flex-field {
     flex: 1 1 0;
     margin-right: var(--form-input-margins);
 }
 
-form input[type="email"] {
+form input {
     width: 100%;
+}
+
+form label {
+    margin-bottom: 5px;
 }
 
 form .flexible-inputs {
@@ -568,6 +573,11 @@ form .flexible-inputs {
     line up with the right edge of the form parent */
     margin-right: calc(var(--form-input-margins) * -1);
 }
+
+form .flex-field {
+    width: 100%;
+}
+
 
 form input, form textarea {
     height: 30px;

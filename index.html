@@ -635,15 +635,23 @@
 
             <section id="contact">
                 <h2>Get in touch!</h2>
-                <p>Thanks for taking the time to reach out :)</p>
+                <p>Thanks for taking the time to reach out :) I'll get back within 24 hrs.</p>
                 <form action="https://formspree.io/hire.aleksandr@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="Thanks for getting in touch!" />
                     <div class="flexible-inputs">
-                        <input type="hidden" name="_subject" value="Thanks for getting in touch!" />
-                        <input type="text" name="name" placeholder="First name" required>
-                        <input type="text" name="name" placeholder="Last name" required>
+                        <span class="flex-field">
+                            <label for="first-name"><strong>First name:</strong></label>
+                            <input type="text" name="name" id="first-name" required>
+                        </span>
+                        <span class="flex-field">
+                            <label for="name"><strong>Last name:</strong></label>
+                            <input type="text" name="name" id="last-name" required>
+                        </span>
                     </div>
-                    <input type="email" name="_replyto" placeholder="Email" required/>
-                    <textarea name="body" placeholder="Your message" required></textarea>
+                    <label for="email"><strong>Email:</strong></label>
+                    <input type="email" name="_replyto" id="email" required/>
+                    <label for="message"><strong>Message:</strong></label>
+                    <textarea name="body" id="message" required></textarea>
                     <input type="submit" value="Send" class="button">
                     <input type="text" name="_gotcha" class="form-class" />
                 </form>
