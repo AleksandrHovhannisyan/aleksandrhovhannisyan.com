@@ -563,6 +563,12 @@ form label {
     margin-bottom: 5px;
 }
 
+/* All inputs are required in this case, so this works */
+label:after {
+    content: " *";
+    color: red;
+}
+
 form .flexible-inputs {
     display: flex;
     justify-content: space-between;
