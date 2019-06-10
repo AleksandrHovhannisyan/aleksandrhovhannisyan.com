@@ -23,6 +23,8 @@
     --button-text-color: white;
     --button-text-hover-color: white;
 
+    --skill-hover-bg-color: whitesmoke;
+
     --page-center-percentage: 80%;
 }
 
@@ -38,6 +40,8 @@
     --button-bg-hover-color: rgb(141, 141, 114);
     --button-text-color: var(--text-color-emphasis);
     --button-text-hover-color: rgb(24, 24, 24);
+
+    --skill-hover-bg-color: rgb(66, 66, 66);
 }
 
 #intro {
@@ -442,6 +446,10 @@ button:focus {
     display: grid;
     column-gap: 10px;
     grid-template-columns: 1fr 1fr;
+}
+
+.skill-item:hover {
+    background: var(--skill-hover-bg-color);
 }
 
 .skill-name {
