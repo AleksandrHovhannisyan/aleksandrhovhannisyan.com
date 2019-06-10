@@ -434,7 +434,7 @@ button:focus {
 }
 
 .skill-category h4 {
-    margin-bottom: 0;
+    margin-bottom: 5px;
 }
 
 .skill-item {
@@ -450,6 +450,8 @@ button:focus {
 
 .skill-rating {
     grid-column: 2;
+    display: inline;
+    text-align: right;
 }
 
 .fa-star.filled {
