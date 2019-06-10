@@ -539,7 +539,7 @@ form {
 }
 
 form * {
-    color: var(--text-color-normal);
+    color: var(--text-color-emphasis);
     font-family: Nunito, sans-serif;
     font-size: 1em;
 }
