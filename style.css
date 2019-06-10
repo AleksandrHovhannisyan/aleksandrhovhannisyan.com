@@ -564,14 +564,6 @@ form .flex-field {
     margin-right: var(--form-input-margins);
 }
 
-form input {
-    width: 100%;
-}
-
-form label {
-    margin-bottom: 5px;
-}
-
 /* All inputs are required in this case, so this works */
 label:after {
     content: " *";
@@ -593,19 +585,20 @@ form .flex-field {
     width: 100%;
 }
 
-
-form input, form textarea {
+form input:not([class="button"]), form textarea {
     height: 30px;
+    width: 100%;
     margin-bottom: 10px;
+    margin-top: 5px;
+    padding-left: 5px;
     
     background: var(--form-bg-color);
-    padding-left: 5px;
-    border: none;
+    border: 1px solid rgb(156, 156, 156);
+    box-shadow: 0 0 1px 1px rgb(136, 136, 136);
 }
 
 form textarea {
     min-height: 200px;
-    width: 100%;
     resize: none;
 }
 
