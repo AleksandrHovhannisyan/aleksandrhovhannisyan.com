@@ -24,7 +24,8 @@
     --button-text-hover-color: white;
 
     --skill-hover-bg-color: whitesmoke;
-    --form-bg-color: rgb(226, 226, 226);
+    --form-bg-color: whitesmoke;
+    --form-input-margins: 10px;
 
     --page-center-percentage: 80%;
 }
@@ -538,32 +539,49 @@ form {
     margin-bottom: 50px;
 }
 
+form {
+    max-width: 800px;
+}
+
 form * {
     color: var(--text-color-emphasis);
     font-family: Nunito, sans-serif;
     font-size: 1em;
 }
 
-form .inputs {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 0px;
+form input {
+    flex: 1 1 0;
+    margin-right: var(--form-input-margins);
 }
 
-input, textarea {
+form input[type="email"] {
+    width: 100%;
+}
+
+form .flexible-inputs {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 0px;
+
+    /* This is to ensure that the inputs (which have a right margin) 
+    line up with the right edge of the form parent */
+    margin-right: calc(var(--form-input-margins) * -1);
+}
+
+form input, form textarea {
     height: 30px;
     margin-bottom: 10px;
-    margin-right: 10px;
     
     background: var(--form-bg-color);
     padding-left: 5px;
     border: none;
 }
 
-textarea {
+form textarea {
     min-height: 200px;
-    max-width: 800px;
     width: 100%;
+    resize: none;
 }
 
 /* Yum, honey */
