@@ -363,7 +363,7 @@ button:focus {
 #projects {
     display: grid;
     column-gap: 50px;
-    row-gap: 20px;
+    row-gap: 30px;
     /* Responsive: fill up space as it's made available */
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
