@@ -204,6 +204,7 @@ button:focus {
     right: 100%;
     top: 0;
     background: var(--nav-bg-color);
+    z-index: 100;
 }
 
 #topnav * {
@@ -367,28 +368,75 @@ button:focus {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-/* Portfolio cards themselves are 1-column sub-grids with three rows */
 .project {
+    /* Ensure that the project-link is absolute relative to us, not the page */
+    position: relative;
+    /* Portfolio cards themselves are grids */
     display: grid;
     /* Only one column needed for content */
     grid-template-columns: 1;
     /* Header, main, footer, respectively */
     grid-template-rows: auto 1fr auto;
+    padding: 10px;
 }
 
-/* Don't treat the header as an item/card, keep it on the top row */
+.project:not(:last-child) {
+    box-shadow: 0 0 5px 2px var(--nav-bg-color);
+    border-radius: 5px;
+}
+
+/* Links an entire project */
+.project-link {
+    /* Note that projects have position: relative */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
+/* Don't treat the project header as an item/card, keep it on the top row */
 #projects h2 {
     grid-row: 1;
     grid-column: 1 / -1;
 }
 
-.project a {
-    color: var(--link-color);
-    text-decoration: none;
+/* Displayed when a user hovers over a project card */
+.hover-content {
+    font-size: 1.2em;
+    /* Again, note that .project has position: relative */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* Center the content for the hover layer */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    /* Opacity = 0 means it's hidden by default */
+    opacity: 0;
+    background: var(--skill-hover-bg-color);
+    transition: 0.5s ease;
 }
 
-.project a:hover {
-    text-decoration: underline;
+/* Here's the transition for the hover content (0.5s as per above style) */
+.project:hover .hover-content {
+    cursor: pointer;
+    opacity: 0.92;
+}
+
+.fa-external-link-alt {
+    margin-top: 20px;
+}
+
+.project-name {
+    color: var(--link-color);
+    text-decoration: none;
 }
 
 /* Line up the icons with their project titles */
