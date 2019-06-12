@@ -424,6 +424,11 @@ button:focus {
     transition: 0.5s ease;
 }
 
+/* Make it clearer which card is hovered over (Note: Last child is the placeholder) */
+.project:hover:not(:last-child) {
+    box-shadow: 0 0 5px 4px var(--nav-bg-color);
+}
+
 /* Here's the transition for the hover content (0.5s as per above style) */
 .project:hover .hover-content {
     cursor: pointer;
