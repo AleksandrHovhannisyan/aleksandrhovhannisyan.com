@@ -434,6 +434,14 @@ button:focus {
     margin-top: 20px;
 }
 
+.project:not(.project-placeholder) header {
+    margin-left: 20px;
+}
+
+.project ul {
+    padding-right: 10px;
+}
+
 .project-name {
     color: var(--link-color);
     text-decoration: none;
