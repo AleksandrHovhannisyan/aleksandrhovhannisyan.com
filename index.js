@@ -12,6 +12,15 @@ function updateThemeLabel(nightModeSwitch, themeLabel){
 }
 
 
+/** Scrolls to the provided target destination at the given speed.
+ * @param topOfTarget - the offset().top of the target, plus/minus any additional offset
+ * @param speed - the speed at which the scrolling should be animated 
+ */
+function smoothScrollTo(topOfTarget, speed=500){
+    $('html, body').animate({scrollTop: topOfTarget}, speed);
+}
+
+
 $(document).ready(function(){   
 
     var nightModeSwitch = $('.nightmode-switch');
@@ -58,7 +67,7 @@ $(document).ready(function(){
             icon.toggleClass('fa-angle-right fa-angle-down');
         }
 
-        this.scrollIntoView();
+        smoothScrollTo($(this).offset().top - 60);
     });
 
 
@@ -85,10 +94,7 @@ $(document).ready(function(){
      */
     $(document).on('click', 'a[href^="#"]', function (event) {
         event.preventDefault();
-    
-        $('html, body').animate({
-            scrollTop: $($.attr(this, 'href')).offset().top
-        }, 500);
+        smoothScrollTo($($.attr(this, 'href')).offset().top);
     });
 
 });
