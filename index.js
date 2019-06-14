@@ -59,11 +59,13 @@ $(document).ready(function(){
         var content = $(this).next();
         var icon = $(this).find('i');
 
-        if(content.css('display') === 'grid'){
-            content.css('display', 'none');
+        if(content.css('max-height') != '0px'){
+            content.css('max-height', '0px');
             icon.toggleClass('fa-angle-down fa-angle-right');
         } else {
-            content.css('display', 'grid');
+            // Have to set the max height to some large value; auto isn't eligible for transitions/animation, unfortunately
+            // One notable downside to this is that the speed will vary depending on the amount of content in the div
+            content.css('max-height', '1000px');
             icon.toggleClass('fa-angle-right fa-angle-down');
         }
 

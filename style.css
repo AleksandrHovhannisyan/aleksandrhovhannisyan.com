@@ -30,6 +30,7 @@
     --form-input-margins: 10px;
 
     --page-center-percentage: 80%;
+    --institution-info-border-width: 2px;
 }
 
 .night {
@@ -564,16 +565,24 @@ button:focus {
 
 /* Course and award container; hidden by default */
 .institution-info {
-    display: none;
+    display: grid;
+
+    /* Will be set to a sufficiently large height by corresponding click handler for collapsible */
+    max-height: 0px;
     overflow: hidden;
-    border: solid 1px;
+
+    /* Negative margin to account for the border */
+    margin-top: calc(var(--institution-info-border-width) * -2);
+    border: solid var(--institution-info-border-width) var(--button-bg-color);
 
     /* Note: the display attribute above changes from none to grid (see index.js) */
     grid-template-columns: 1fr;
+
+    transition: max-height 0.5s;
 }
 
 .institution-info .awards {
-    border-top: solid 1px;
+    border-top: solid var(--institution-info-border-width) var(--button-bg-color);
 }
 
 .institution-info ul {
@@ -594,7 +603,7 @@ button:focus {
 
     .institution-info .awards {
         border-top: none;
-        border-left: solid 1px;
+        border-left: solid var(--institution-info-border-width) var(--button-bg-color);
     }
 }
 
