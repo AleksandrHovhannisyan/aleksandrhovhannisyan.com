@@ -216,6 +216,8 @@ button:focus {
     padding: 0;
     list-style-type: none;
     display: none;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .nav-links li {
@@ -316,7 +318,6 @@ button:focus {
     .nav-links, .active {
         position: static;
         display: flex;
-        margin-right: 30px;
         flex-direction: row;
         justify-content: flex-end;
         font-size: 1.1em;
