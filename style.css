@@ -26,6 +26,7 @@
     --button-text-hover-color: white;
 
     --skill-hover-bg-color: whitesmoke;
+    --project-card-bg-color: rgb(253, 253, 253);
     --form-bg-color: whitesmoke;
     --form-input-margins: 10px;
 
@@ -47,8 +48,9 @@
     --button-bg-hover-color: rgb(141, 141, 114);
     --button-text-color: var(--text-color-emphasis);
     --button-text-hover-color: rgb(24, 24, 24);
-
+ 
     --skill-hover-bg-color: rgb(66, 66, 66);
+    --project-card-bg-color: rgb(54, 54, 54);
     --form-bg-color: var(--skill-hover-bg-color);
 }
 
@@ -382,7 +384,13 @@ button:focus {
     padding: 10px;
 }
 
-.project:not(:last-child) {
+.project h4 {
+    margin-bottom: 10px;
+}
+
+/* All project cards except the placeholder */
+.project:not(.project-placeholder) {
+    background: var(--project-card-bg-color);
     box-shadow: 0 0 5px 2px var(--nav-bg-color);
     border-radius: 5px;
 }
@@ -449,6 +457,10 @@ button:focus {
     padding-right: 10px;
 }
 
+.project ul li {
+    margin-top: 8px;
+}
+
 .project-name {
     color: var(--link-color);
     text-decoration: none;
@@ -461,20 +473,22 @@ button:focus {
 }
 
 .technologies {
+    margin-top: 16px;
+    margin-left: 20px;
+    margin-bottom: 10px;
     display: flex;
+    flex-wrap: wrap;
     grid-row: 3;
 }
 
 .technologies p {
     padding: 3px;
-    margin-right: 5px;
+    margin-top: 0px;
+    margin-right: 8px;
+    margin-bottom: 8px;
     border-radius: 5px;
-    border: 2px solid var(--text-color-normal);
+    box-shadow: 0 0 1px 2px var(--nav-bg-color);
     background-color: var(--main-bg-color);
-}
-
-.technologies p:first-of-type {
-    margin-left: 20px;
 }
 
 .project-placeholder {
