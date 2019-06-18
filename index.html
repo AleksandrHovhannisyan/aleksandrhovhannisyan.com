@@ -79,7 +79,7 @@
                         <strong>View on GitHub</strong>
                         <i class="fas fa-external-link-alt"></i>
                     </div>
-                    <a class="project-link" href="https://github.com/AleksandrHovhannisyan/Scribe-Text-Editor" target="_blank"></a>
+                    <a class="container-link" href="https://github.com/AleksandrHovhannisyan/Scribe-Text-Editor" target="_blank"></a>
                     <header>
                         <h4>
                             <span class="project-icon"><img src="img/scribe.ico" alt=""></span>
@@ -107,7 +107,7 @@
                         <strong>View on GitHub</strong>
                         <i class="fas fa-external-link-alt"></i>
                     </div>
-                    <a class="project-link" href="https://github.com/AleksandrHovhannisyan/EmbodyGame" target="_blank"></a>
+                    <a class="container-link" href="https://github.com/AleksandrHovhannisyan/EmbodyGame" target="_blank"></a>
                     <header>
                         <h4>
                             <span class="project-icon"><img src="img/GameIcon.PNG" alt=""></span>
@@ -134,7 +134,7 @@
                         <strong>View on GitHub</strong>
                         <i class="fas fa-external-link-alt"></i>
                     </div>
-                    <a class="project-link" href="https://github.com/AleksandrHovhannisyan/MIPS-Linked-List" target="_blank"></a>
+                    <a class="container-link" href="https://github.com/AleksandrHovhannisyan/MIPS-Linked-List" target="_blank"></a>
                     <header>
                         <h4>
                             <span class="project-icon"><img src="img/cpu.png" alt=""></span>
@@ -646,27 +646,44 @@
             <hr>
 
             <section id="contact">
-                <h2>Get in touch!</h2>
-                <p>Thanks for taking the time to reach out :) I'll get back within 24 hrs.</p>
-                <form action="https://formspree.io/hire.aleksandr@gmail.com" method="POST">
-                    <input type="hidden" name="_subject" value="Thanks for getting in touch!" />
-                    <div class="flexible-inputs">
-                        <span class="flex-field">
-                            <label for="first-name" class="required-field"><strong>First name:</strong></label>
-                            <input type="text" name="name" id="first-name" required>
-                        </span>
-                        <span class="flex-field">
-                            <label for="name" class="required-field"><strong>Last name:</strong></label>
-                            <input type="text" name="name" id="last-name" required>
-                        </span>
+                <section id="contact-form">
+                    <h2>Get in touch! &#128231;</h2>
+                    <p>Thanks for taking the time to reach out :) I'll get back to you ASAP.</p>
+                    <form action="https://formspree.io/hire.aleksandr@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="Thanks for getting in touch!" />
+                        <label for="name"><strong>Name:</strong></label>
+                        <input type="text" name="name" id="name" required>
+                        <label for="email"><strong>Email:</strong></label>
+                        <input type="email" name="_replyto" id="email" required/>
+                        <label for="message"><strong>Message:</strong></label>
+                        <textarea name="body" id="message" required></textarea>
+                        <input type="submit" value="Send message" class="button">
+                        <input type="text" name="_gotcha" class="form-class" />
+                    </form>
+                </section>
+                <section id="social-networks">
+                    <h3>You can also find me on these networks:</h3>
+                    <div class="social-network">
+                        <a class="container-link" href="https://www.linkedin.com/in/aleksandr-hovhannisyan-ba154b120/" target="_blank"></a>
+                        <i class="fab fa-linkedin"></i>
+                        <span class="network-name">LinkedIn</span>
                     </div>
-                    <label for="email" class="required-field"><strong>Email:</strong></label>
-                    <input type="email" name="_replyto" id="email" required/>
-                    <label for="message" class="required-field"><strong>Message:</strong></label>
-                    <textarea name="body" id="message" required></textarea>
-                    <input type="submit" value="Send" class="button">
-                    <input type="text" name="_gotcha" class="form-class" />
-                </form>
+                    <div class="social-network">
+                        <a class="container-link" href="https://github.com/AleksandrHovhannisyan" target="_blank"></a>
+                        <i class="fab fa-github"></i>
+                        <span class="network-name">GitHub</span>
+                    </div>
+                    <div class="social-network">
+                        <a class="container-link" href="https://www.upwork.com/freelancers/~014eb3a95d4d1fd855" target="_blank"></a>
+                        <i class="fas fa-address-book"></i>
+                        <span class="network-name">Upwork</span>
+                    </div>
+                    <div class="social-network">
+                        <a class="container-link" href="https://stackexchange.com/users/6935154/aleksandrh" target="_blank"></a>
+                        <i class="fab fa-stack-exchange"></i>
+                        <span class="network-name">Stack Exchange</span>
+                    </div>
+                </section>
             </section>
 
         </article>
