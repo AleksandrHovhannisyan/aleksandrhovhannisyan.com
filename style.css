@@ -31,7 +31,7 @@
     --form-input-margins: 10px;
 
     --page-center-percentage: 80%;
-    --institution-info-border-width: 2px;
+    --institution-info-border-width: 3px;
 }
 
 .night {
@@ -587,8 +587,9 @@ button:focus {
     overflow: hidden;
 
     /* Negative margin to account for the border */
-    margin-top: calc(var(--institution-info-border-width) * -2);
+    margin-top: calc(var(--institution-info-border-width) * -1);
     border: solid var(--institution-info-border-width) var(--button-bg-color);
+    border-top: none;
 
     /* Note: the display attribute above changes from none to grid (see index.js) */
     grid-template-columns: 1fr;
