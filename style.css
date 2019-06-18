@@ -247,8 +247,6 @@ button:focus {
 }
 
 .navbar-hamburger {
-    display: inline;
-    vertical-align: middle;
     font-size: 1.5em;
 }
 
@@ -301,10 +299,6 @@ button:focus {
 }
 
 @media only screen and (min-width: 845px) {
-
-    #topnav {
-        height: var(--nav-min-height);
-    }
 
     /* This is the most important part: shows the links next to each other
     Note: .nav-links.active accounts for an edge case where you open the hamburger
@@ -363,16 +357,14 @@ button:focus {
     display: grid;
     column-gap: 50px;
     row-gap: 50px;
-    /* Responsive: fill up space as it's made available */
+    /* Fill up space as it's made available, with each card being a minimum of 250px */
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 .project {
-    /* Ensure that the project-link is absolute relative to us, not the page */
+    /* To ensure that .project-link (see below) is absolute relative to us and not the page */
     position: relative;
-    /* Portfolio cards themselves are grids */
     display: grid;
-    /* Only one column needed for content */
     grid-template-columns: 1;
     /* Header, main, footer, respectively */
     grid-template-rows: auto 1fr auto;
@@ -383,7 +375,7 @@ button:focus {
     margin-bottom: 10px;
 }
 
-/* All project cards except the placeholder */
+/* All project cards except the placeholder get a background and box shadow */
 .project:not(.project-placeholder) {
     background: var(--project-card-bg-color);
     box-shadow: 0 0 5px 2px var(--nav-bg-color);
@@ -392,7 +384,7 @@ button:focus {
 
 /* Links an entire project */
 .project-link {
-    /* Note that projects have position: relative */
+    /* Note that .project (parent of this class) has its position set to relative */
     position: absolute;
     top: 0;
     left: 0;
@@ -403,6 +395,7 @@ button:focus {
 
 /* Don't treat the project header as an item/card, keep it on the top row */
 #projects h2 {
+    /* Grid-row specification not necessary, but useful in case the order changes for some reason */
     grid-row: 1;
     grid-column: 1 / -1;
 }
@@ -430,7 +423,7 @@ button:focus {
 }
 
 /* Make it clearer which card is hovered over (Note: Last child is the placeholder) */
-.project:hover:not(:last-child) {
+.project:hover:not(.project-placeholder) {
     box-shadow: 0 0 5px 4px var(--nav-bg-color);
 }
 
@@ -518,6 +511,8 @@ button:focus {
 }
 
 #skills h2 {
+    /* Grid-row specification not necessary, but useful in case the order changes for some reason */
+    grid-row: 1;
     grid-column: 1 / -1;
 }
 
@@ -573,26 +568,24 @@ button:focus {
     margin-top: 20px;
 }
 
-/* Course and award container; hidden by default */
+/* Course and award container */
 .institution-info {
     display: grid;
+    /* Mobile first: only one column. Changes to two columns on bigger screens. See media query below. */
+    grid-template-columns: 1fr;
 
-    /* Will be set to a sufficiently large height by corresponding click handler for collapsible */
+    /* Will be set to a sufficiently large max-height by corresponding click handler for .collapsible */
     max-height: 0px;
+    transition: max-height var(--global-transition-duration);
     overflow: hidden;
 
     /* Negative margin to account for the border */
-    margin-top: calc(var(--institution-info-border-width) * -1);
     border: solid var(--institution-info-border-width) var(--button-bg-color);
     border-top: none;
-
-    /* Note: the display attribute above changes from none to grid (see index.js) */
-    grid-template-columns: 1fr;
-
-    transition: max-height var(--global-transition-duration);
 }
 
 .institution-info .awards {
+    /* Only matters on mobile, where the awards are stacked underneath courses */
     border-top: solid var(--institution-info-border-width) var(--button-bg-color);
 }
 
@@ -613,7 +606,9 @@ button:focus {
     }
 
     .institution-info .awards {
+        /* Now that it's lined up to the right of the courses, there's no need for a top border */
         border-top: none;
+        /* But there is for a left border */
         border-left: solid var(--institution-info-border-width) var(--button-bg-color);
     }
 }
