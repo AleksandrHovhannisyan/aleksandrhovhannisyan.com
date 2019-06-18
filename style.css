@@ -11,9 +11,11 @@
 
 :root {
     --main-bg-color: white;
+
     --nav-bg-color: rgb(44, 44, 44);
     --nav-text-color: rgb(179, 177, 177);
-    
+    --nav-min-height: 45px;
+
     --hr-color: rgba(143, 142, 142, 0.2);
 
     --text-color-normal: black;
@@ -31,6 +33,7 @@
     --form-input-margins: 10px;
 
     --page-center-percentage: 80%;
+    --global-transition-duration: 0.5s;
     --institution-info-border-width: 3px;
 }
 
@@ -60,15 +63,15 @@
 
 #about-me, #projects, #skills, #education, #contact {    
     /* So the fixed navbar doesn't cover up any content we scroll to */
-    margin-top: -60px;
-    padding-top: 60px;
+    margin-top: calc((var(--nav-min-height) + 20px) * -1);
+    padding-top: calc(var(--nav-min-height) + 20px);
 }
 
 body {
     font-family: Nunito, sans-serif;
     color: var(--text-color-normal);
     background: var(--main-bg-color);
-    transition: 0.5s;
+    transition: var(--global-transition-duration);
     
     width: var(--page-center-percentage);
     margin-left: auto;
@@ -191,22 +194,28 @@ button:focus {
    ============================================
 */
 
-.centered-content {
+#topnav .centered-content {
     width: var(--page-center-percentage);
     margin-left: auto;
     margin-right: auto;
-    height: 45px;
-    
+    height: var(--nav-min-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #topnav {
     width: 100%;
-    min-height: 45px;
+    min-height: var(--nav-min-height);
     position: fixed;
     left: 0;
     right: 100%;
     top: 0;
     background: var(--nav-bg-color);
+
+    /* This is to ensure that it always appears above everything. That should
+    theoretically always be the case because of position:fixed, but it isn't
+    for the project card hover layer because that's an absolute element. */
     z-index: 100;
 }
 
@@ -238,9 +247,6 @@ button:focus {
 }
 
 .navbar-hamburger {
-    position: absolute;
-    top: 10px;
-    right: 15px;
     display: inline;
     vertical-align: middle;
     font-size: 1.5em;
@@ -248,7 +254,6 @@ button:focus {
 
 .nightmode-switch-container, .nightmode-switch-container * {
     display: inline-block;
-    margin-top: 5px;
 }
 
 .nightmode-switch {
@@ -261,7 +266,7 @@ button:focus {
     border: 3px solid var(--nav-text-color);
     border-radius: 100px;
     cursor: pointer;
-    transition: 0.5s;
+    transition: var(--global-transition-duration);
 }
 
 .nightmode-switch::before {
@@ -283,7 +288,7 @@ button:focus {
     margin-left: 20px;
 }
 
-.active {
+.nav-links.active {
     display: block;
     background: var(--nav-bg-color);
     color: var(--nav-text-color);
@@ -296,32 +301,22 @@ button:focus {
 }
 
 @media only screen and (min-width: 845px) {
-    
-    .centered-content {
-        display: flex;
-        justify-content: space-between;
-        padding-bottom: 0;
-        height: 35px;
-        align-items: center;
-    }
 
     #topnav {
-        display: flex;
-        justify-content: space-between;
-        padding-bottom: 0;
-        height: 35px;
-        align-items: center;
+        height: var(--nav-min-height);
     }
 
-    .nightmode-switch-container {
-        margin-top: -8px;
-    }
-
-    .nav-links, .active {
+    /* This is the most important part: shows the links next to each other
+    Note: .nav-links.active accounts for an edge case where you open the hamburger
+    on a small view and then resize the browser so it's larger.
+    */
+    .nav-links, .nav-links.active {
+        margin: 0;
         position: static;
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
+        align-items: center;
         font-size: 1.1em;
     }
 
@@ -431,7 +426,7 @@ button:focus {
     /* Opacity = 0 means it's hidden by default */
     opacity: 0;
     background: var(--skill-hover-bg-color);
-    transition: 0.5s ease;
+    transition: var(--global-transition-duration) ease;
 }
 
 /* Make it clearer which card is hovered over (Note: Last child is the placeholder) */
@@ -439,7 +434,7 @@ button:focus {
     box-shadow: 0 0 5px 4px var(--nav-bg-color);
 }
 
-/* Here's the transition for the hover content (0.5s as per above style) */
+/* Here's the transition for the hover content */
 .project:hover .hover-content {
     cursor: pointer;
     opacity: 0.92;
@@ -594,7 +589,7 @@ button:focus {
     /* Note: the display attribute above changes from none to grid (see index.js) */
     grid-template-columns: 1fr;
 
-    transition: max-height 0.5s;
+    transition: max-height var(--global-transition-duration);
 }
 
 .institution-info .awards {
@@ -650,8 +645,7 @@ form .flex-field {
     margin-right: var(--form-input-margins);
 }
 
-/* All inputs are required in this case, so this works */
-label:after {
+.required-field:after {
     content: " *";
     color: red;
 }
