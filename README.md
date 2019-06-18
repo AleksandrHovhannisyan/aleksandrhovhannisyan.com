@@ -24,7 +24,7 @@ I built my site with a mobile-first strategy, targeting a minimum device width o
 
 I didn't really have any strategy in place for color choices; I mainly picked whatever looked good to me and tweaked things as I went along. For dark mode, I wanted to go for a "coffee"-type theme. Light mode is nice and neutral. I added both an auto and a manual transition to allow users to pick whichever theme they prefer. Again, that's obviously not too important for a portfolio site but still something I wanted to try.
 
-![](https://user-images.githubusercontent.com/19352442/59555051-c0816b80-8f7a-11e9-947d-6b2a9cebdd9b.png)
+![](https://user-images.githubusercontent.com/19352442/59712393-2409d400-91db-11e9-979e-53eaae71b4d5.png)
 
 <p align="center"><i>Dark mode theme, for those whose hiring efforts extend into the night :)</i></p>
 
