@@ -36,7 +36,11 @@ Finally, I decided I'd also include a form on my site to make it easier for peop
 
 2. CSS Grid is awesome :) I've yet to master everything it has to offer, but from what I saw personally, it has immense potential. It's quite possibly the future of layout design.
 
-3. Wireframes are indispensable. I used [MockFlow](https://www.mockflow.com/) to throw together a very rough representation of what I wanted my site to look like. Though I did ultimately change quite a lot of things, the mockup stage helped me focus on what content I wanted to have on my page—and that tied in to #1.
+3. Wireframes are indispensable. I used [MockFlow](https://www.mockflow.com/) to throw together a very rough representation of what I wanted my site to look like. Though I did ultimately change quite a lot of things, the mockup stage helped me focus on what content I wanted to have on my page—and that tied in to #1. Here's what it looked like:
+
+![](https://user-images.githubusercontent.com/19352442/59712852-0ab55780-91dc-11e9-833f-b7b660491608.png)
+
+As you can see, I ended up ditching most of my old ideas and copy. But at least I had a foundation to work with!
 
 4. Just when you think you're done making your site look good, you're not. In a way, you have to be your worst critic if you want a good result. For example, there were some things I didn't like about my site in the early stages of development—empty space that wasn't getting used efficiently on the page, or the rather bland skills section that was just plain text and was clearly missing some pizzazz (thank you, [Pascal van Gemert](http://www.pascalvangemert.nl/), for inspiring me). I was initially reluctant to address any of these problems because I was afraid I'd mess up my site, but quite the opposite—I made it better! Ultimately, I think my fear stemmed from inexperience with CSS, HTML, or both. Over time, it was replaced with confidence. I am by no means done learning HTML and CSS, but I'm *far* more competent than when I first got started.
 
