@@ -101,10 +101,20 @@ p {
 }
 
 hr {
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 60px;
+    margin-bottom: 60px;
     width: 100%;
     border-color: var(--hr-color);
+}
+
+/* Links an entire parent container, but the parent must be set to relative position */
+.container-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
 }
 
 
@@ -382,17 +392,6 @@ button:focus {
     border-radius: 5px;
 }
 
-/* Links an entire project */
-.project-link {
-    /* Note that .project (parent of this class) has its position set to relative */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    text-decoration: none;
-}
-
 /* Don't treat the project header as an item/card, keep it on the top row */
 #projects h2 {
     /* Grid-row specification not necessary, but useful in case the order changes for some reason */
@@ -620,44 +619,41 @@ button:focus {
    ============================================
 */
 
+#contact {
+    display: grid;
+    grid-template-areas: "form"
+                         "socials";
+    grid-template-rows: auto;
+    column-gap: 50px;
+}
+
+#contact-form {
+    grid-area: form;
+}
+
+#social-networks {
+    grid-area: socials;
+}
+
+@media only screen and (min-width: 700px) {
+    #contact {
+        grid-template-areas: "form form form socials";
+    }
+}
+
 form {
     margin-bottom: 50px;
     margin-top: 30px;
 }
 
 form {
-    max-width: 800px;
+    max-width: 475px;
 }
 
 form * {
     color: var(--text-color-normal);
     font-family: Nunito, sans-serif;
     font-size: 1em;
-}
-
-form .flex-field {
-    flex: 1 1 0;
-    margin-right: var(--form-input-margins);
-}
-
-.required-field:after {
-    content: " *";
-    color: red;
-}
-
-form .flexible-inputs {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-bottom: 0px;
-
-    /* This is to ensure that the inputs (which have a right margin) 
-    line up with the right edge of the form parent */
-    margin-right: calc(var(--form-input-margins) * -1);
-}
-
-form .flex-field {
-    width: 100%;
 }
 
 form input:not([class="button"]), form textarea {
@@ -677,7 +673,66 @@ form textarea {
     resize: none;
 }
 
+form .button {
+    max-width: 100%;
+    width: 100%;
+    height: 45px;
+}
+
 /* Yum, honey */
 input.form-class {
     display: none;
+}
+
+#social-networks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-rows: min-content;
+    grid-auto-rows: 50px;
+    row-gap: 50px;
+    column-gap: 30px;
+    margin-bottom: 50px;
+}
+
+#social-networks h3 {
+    grid-row: 1;
+    grid-column: 1 / -1;
+}
+
+.social-network {
+    /* Position relative because we have an absolutely 
+    positioned .container-link as a child */
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 20px;
+}
+
+.social-network:hover {
+    cursor: pointer;
+    background: var(--skill-hover-bg-color);
+}
+
+.social-network i {
+    grid-column: 1;
+    margin-left: 20px;
+    align-self: center;
+    font-size: 2em;
+}
+
+.social-network .network-name {
+    grid-column: 2;
+    align-self: center;
+}
+
+#social-networks .fa-linkedin {
+    color: #0077B5;
+}
+
+#social-networks .fa-stack-exchange {
+    color: #195398;
+}
+
+#social-networks .fa-address-book {
+    color: #37A000;
 }
