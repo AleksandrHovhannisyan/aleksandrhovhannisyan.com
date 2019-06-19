@@ -18,7 +18,7 @@ When I later discovered [Scrimba's CSS Grid tutorial series](https://scrimba.com
 
 I built my site with a mobile-first strategy, targeting a minimum device width of 320 px and working my way up to larger screens using CSS Grid's `repeat`, `auto-fit`, and `minmax`, as well as a few media queries. I also used Flexbox wherever I found it more convenient than grids (e.g., wherever the number or width of column tracks wasn't too relevant, or whenever I wanted to vertically center div content). All of my testing was done using Google Chrome's built-in dev tools.
 
-![](https://user-images.githubusercontent.com/19352442/59555024-47821400-8f7a-11e9-8168-46c33d38bd62.png)
+![](https://user-images.githubusercontent.com/19352442/59807363-948d1f80-92c5-11e9-8d3d-023b3879408d.png)
 
 <p align="center"><i>Example: responsive CSS grid layout used for project gallery</i></p>
 
