@@ -15,6 +15,7 @@
     --nav-bg-color: rgb(44, 44, 44);
     --nav-text-color: rgb(179, 177, 177);
     --nav-min-height: 45px;
+    --technology-label-bg-color: #e7e7e7;
 
     --hr-color: rgba(143, 142, 142, 0.2);
 
@@ -40,6 +41,7 @@
 .night {
     --main-bg-color: rgb(44, 44, 44);
     --nav-bg-color: rgb(10, 10, 10);
+    --technology-label-bg-color: #222222;
     
     --hr-color: rgba(255, 255, 255, 0.2);
 
@@ -477,13 +479,14 @@ button:focus {
 }
 
 .technologies p {
-    padding: 3px;
+    padding: 5px;
     margin-top: 0px;
     margin-right: 10px;
     margin-bottom: 8px;
-    border-radius: 5px;
-    box-shadow: 0 0 1px 2px var(--nav-bg-color);
-    background-color: var(--main-bg-color);
+    border-radius: 2px;
+    font-size: 0.9em;
+    background-color: var(--technology-label-bg-color);
+    box-shadow: 0 0 2px black;
 }
 
 .project-placeholder {
