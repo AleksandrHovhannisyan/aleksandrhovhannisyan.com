@@ -72,8 +72,8 @@
 body {
     font-family: Nunito, sans-serif;
     color: var(--text-color-normal);
-    background: var(--main-bg-color);
-    transition: var(--global-transition-duration);
+    background-color: var(--main-bg-color);
+    transition: background-color var(--global-transition-duration);
     
     width: var(--page-center-percentage);
     margin-left: auto;
@@ -170,7 +170,8 @@ hr {
 .button, .collapsible {
     cursor: pointer;
     border: none;
-    background: var(--button-bg-color);
+    background-color: var(--button-bg-color);
+    transition: var(--global-transition-duration);
 }
 
 .button, .button *, .collapsible * {
@@ -178,7 +179,7 @@ hr {
 }
 
 .button:hover, .collapsible:hover {
-    background: var(--button-bg-hover-color);
+    background-color: var(--button-bg-hover-color);
 }
 
 .button:hover, .button:hover *, .collapsible:hover * {
@@ -231,7 +232,7 @@ button:focus {
     left: 0;
     right: 100%;
     top: 0;
-    background: var(--nav-bg-color);
+    background-color: var(--nav-bg-color);
 
     /* This is to ensure that it always appears above everything. That should
     theoretically always be the case because of position:fixed, but it isn't
@@ -259,6 +260,7 @@ button:focus {
 .nav-links a {
     text-decoration: none;
     vertical-align: middle;
+    transition: var(--global-transition-duration);
 }
 
 #topnav .nav-links a:hover {
@@ -280,7 +282,7 @@ button:focus {
     line-height: 15px;
     margin-right: 5px;
 
-    background: var(--nav-bg-color);
+    background-color: var(--nav-bg-color);
     border: 3px solid var(--nav-text-color);
     border-radius: 100px;
     cursor: pointer;
@@ -298,8 +300,9 @@ button:focus {
     width: 12px;
     height: 10px;
     
-    background: var(--nav-text-color);
+    background-color: var(--nav-text-color);
     border-radius: 50%;
+    transition: var(--global-transition-duration);
 }
 
 .night .nightmode-switch::before {
@@ -308,7 +311,7 @@ button:focus {
 
 .nav-links.active {
     display: block;
-    background: var(--nav-bg-color);
+    background-color: var(--nav-bg-color);
     color: var(--nav-text-color);
     
     /* Make the dropdown take up 100% of the viewport width */
@@ -340,6 +343,7 @@ button:focus {
 
     .nav-links a {
         margin-left: 40px;
+        transition: var(--global-transition-duration);
     }
 
    .navbar-hamburger {
@@ -397,9 +401,10 @@ button:focus {
 
 /* All project cards except the placeholder get a background and box shadow */
 .project:not(.project-placeholder) {
-    background: var(--project-card-bg-color);
+    background-color: var(--project-card-bg-color);
     box-shadow: 0 0 5px 2px var(--nav-bg-color);
     border-radius: 5px;
+    transition: background-color var(--global-transition-duration);
 }
 
 /* Don't treat the project header as an item/card, keep it on the top row */
@@ -427,7 +432,7 @@ button:focus {
 
     /* Opacity = 0 means it's hidden by default */
     opacity: 0;
-    background: var(--skill-hover-bg-color);
+    background-color: var(--skill-hover-bg-color);
     transition: var(--global-transition-duration) ease;
 }
 
@@ -487,6 +492,7 @@ button:focus {
     font-size: 0.9em;
     background-color: var(--technology-label-bg-color);
     box-shadow: 0 0 2px black;
+    transition: background-color var(--global-transition-duration);
 }
 
 .project-placeholder {
@@ -538,7 +544,7 @@ button:focus {
 }
 
 .skill-item:hover {
-    background: var(--skill-hover-bg-color);
+    background-color: var(--skill-hover-bg-color);
 }
 
 .skill-name {
@@ -674,9 +680,10 @@ form input:not([class="button"]), form textarea {
     margin-top: 5px;
     padding-left: 5px;
     
-    background: var(--form-bg-color);
+    background-color: var(--form-bg-color);
     border: 1px solid rgb(156, 156, 156);
     box-shadow: 0 0 1px 1px rgb(136, 136, 136);
+    transition: var(--global-transition-duration);
 }
 
 form textarea {
@@ -721,7 +728,7 @@ input.form-class {
 
 .social-network:hover {
     cursor: pointer;
-    background: var(--skill-hover-bg-color);
+    background-color: var(--skill-hover-bg-color);
 }
 
 .social-network i {
