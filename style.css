@@ -302,7 +302,7 @@ button:focus {
     border-radius: 50%;
 }
 
-.nightmode-switch.night::before {
+.night .nightmode-switch::before {
     margin-left: 20px;
 }
 
