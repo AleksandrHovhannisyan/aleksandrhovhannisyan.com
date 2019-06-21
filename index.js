@@ -4,7 +4,7 @@ var nightModeSwitch = $('.nightmode-switch');
  */
 nightModeSwitch.click(function(){        
     $(document.documentElement).toggleClass('night');
-    updateThemeLabel($(this), $(this).next());
+    updateThemeLabel($(this).next());
 });
 
 
@@ -21,11 +21,10 @@ nightModeSwitch.click(function(){
 
 
 /** Updates the text in the given label to match whatever mode the page is in (dark, light).
- *  @param nightModeSwitch {Node} The element the user clicks to toggle light/dark mode.
  *  @param themeLabel {Node} The element that displays the color theme the page is currently using (light or dark).
  */
-function updateThemeLabel(nightModeSwitch, themeLabel){
-    if(nightModeSwitch.hasClass('night')) {
+function updateThemeLabel(themeLabel){
+    if($(document.documentElement).hasClass('night')) {
         themeLabel.html('Dark mode');
     }
     else {
