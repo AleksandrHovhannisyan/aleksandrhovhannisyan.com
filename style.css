@@ -396,8 +396,27 @@ button:focus {
     padding: 10px;
 }
 
+.project header {
+    display: grid;
+    grid-template-areas: "heading heading stars";
+}
+
+.project-icon i {
+    margin-right: 3px;
+    font-size: 1.5em;
+}
+
 .project h4 {
+    align-self: center;
+    grid-area: heading;
     margin-bottom: 10px;
+}
+
+.project-rating {
+    font-size: 0.85em;
+    justify-self: center;
+    align-self: center;
+    grid-area: stars;
 }
 
 /* All project cards except the placeholder get a background and box shadow */
