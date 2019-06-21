@@ -123,6 +123,7 @@ hr {
     width: 100%;
     height: 100%;
     text-decoration: none;
+    z-index: 1;
 }
 
 
@@ -595,7 +596,6 @@ button:focus {
     transition: max-height var(--global-transition-duration);
     overflow: hidden;
 
-    /* Negative margin to account for the border */
     border: solid var(--institution-info-border-width) var(--button-bg-color);
     border-top: none;
 }
@@ -681,8 +681,8 @@ form input:not([class="button"]), form textarea {
     padding-left: 5px;
     
     background-color: var(--form-bg-color);
-    border: 1px solid rgb(156, 156, 156);
-    box-shadow: 0 0 1px 1px rgb(136, 136, 136);
+    border: 1px solid rgb(56, 56, 56);
+    border-radius: 3px;
     transition: var(--global-transition-duration);
 }
 
@@ -702,11 +702,18 @@ input.form-class {
     display: none;
 }
 
+/* ============================================
+
+   Social networks
+
+   ============================================
+*/
+
 #social-networks {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     grid-template-rows: min-content;
-    grid-auto-rows: 50px;
+    grid-auto-rows: min-content;
     row-gap: 50px;
     column-gap: 30px;
     margin-bottom: 50px;
@@ -731,11 +738,25 @@ input.form-class {
     background-color: var(--skill-hover-bg-color);
 }
 
-.social-network i {
+.social-network .fa-stack {
     grid-column: 1;
-    margin-left: 20px;
+    display: grid;
+}
+
+.fa-stack i {
     align-self: center;
-    font-size: 2em;
+    justify-self: center;
+}
+
+/* Whatever icon is being used as the background one */
+.fa-stack-2x {
+    opacity: 0;
+    font-size: 1.5em;
+    color: white;
+}
+
+.night .fa-stack-2x {
+    opacity: 1;
 }
 
 .social-network .network-name {
@@ -745,6 +766,10 @@ input.form-class {
 
 #social-networks .fa-linkedin {
     color: #0077B5;
+}
+
+#social-networks .fa-github {
+    color: black;
 }
 
 #social-networks .fa-stack-exchange {
