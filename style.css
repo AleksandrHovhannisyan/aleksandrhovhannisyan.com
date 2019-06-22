@@ -30,6 +30,8 @@
 
     --skill-hover-bg-color: whitesmoke;
     --project-card-bg-color: rgb(253, 253, 253);
+    --project-card-margin: 30px;
+    
     --form-bg-color: whitesmoke;
     --form-input-margins: 10px;
 
@@ -386,37 +388,20 @@ button:focus {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
+/* Don't treat the project header as an item/card, keep it on the top row */
+#projects h2 {
+    grid-row: 1;
+    grid-column: 1 / -1;
+}
+
 .project {
     /* To ensure that .project-link (see below) is absolute relative to us and not the page */
     position: relative;
     display: grid;
     grid-template-columns: 1;
-    /* Header, main, footer, respectively */
-    grid-template-rows: auto 1fr auto;
-    padding: 10px;
-}
-
-.project header {
-    display: grid;
-    grid-template-areas: "heading heading stars";
-}
-
-.project-icon i {
-    margin-right: 3px;
-    font-size: 1.5em;
-}
-
-.project h4 {
-    align-self: center;
-    grid-area: heading;
-    margin-bottom: 10px;
-}
-
-.project-rating {
-    font-size: 0.85em;
-    justify-self: center;
-    align-self: center;
-    grid-area: stars;
+    /* Header, description, footer, respectively */
+    grid-template-rows: max-content 1fr max-content;
+    row-gap: 20px;
 }
 
 /* All project cards except the placeholder get a background and box shadow */
@@ -427,11 +412,45 @@ button:focus {
     transition: background-color var(--global-transition-duration);
 }
 
-/* Don't treat the project header as an item/card, keep it on the top row */
-#projects h2 {
-    /* Grid-row specification not necessary, but useful in case the order changes for some reason */
-    grid-row: 1;
-    grid-column: 1 / -1;
+/* Apply margins to all project headers except the placeholder's */
+.project:not(.project-placeholder) header {
+    margin-top: var(--project-card-margin);
+    margin-bottom: 0px;
+    margin-left: var(--project-card-margin);
+    margin-right: var(--project-card-margin);
+
+    display: grid;
+    grid-template-areas: "heading heading rating";
+}
+
+.project-icon {
+    margin-right: 3px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.project-icon i {
+    font-size: 1.5em;
+}
+
+.project h4 {
+    margin: 0px;
+    align-self: center;
+    grid-area: heading;
+}
+
+.project-rating {
+    font-size: 0.85em;
+    justify-self: center;
+    align-self: center;
+    grid-area: rating;
+}
+
+.project .description {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: var(--project-card-margin);
+    margin-right: var(--project-card-margin);
 }
 
 /* Displayed when a user hovers over a project card */
@@ -461,7 +480,7 @@ button:focus {
     box-shadow: 0 0 5px 4px var(--nav-bg-color);
 }
 
-/* Here's the transition for the hover content */
+/* Transition for the hover content changes its opacity */
 .project:hover .hover-content {
     cursor: pointer;
     opacity: 0.92;
@@ -471,45 +490,30 @@ button:focus {
     margin-top: 20px;
 }
 
-.project:not(.project-placeholder) header {
-    margin-left: 20px;
-}
-
-.project ul {
-    padding-right: 10px;
-}
-
-.project ul li {
-    margin-top: 8px;
-}
-
 .project-name {
     color: var(--link-color);
     text-decoration: none;
 }
 
-/* Line up the icons with their project titles */
-.project-icon {
-    display: inline-block;
-    vertical-align: middle;
-}
-
 .technologies {
-    margin-top: 16px;
-    margin-left: 20px;
-    margin-bottom: 10px;
     display: flex;
     flex-wrap: wrap;
     grid-row: 3;
+
+    margin-top: 0px;
+    margin-bottom: var(--project-card-margin);
+    margin-left: var(--project-card-margin);
+    margin-right: var(--project-card-margin);
 }
 
 .technologies p {
-    padding: 5px;
-    margin-top: 0px;
-    margin-right: 10px;
-    margin-bottom: 8px;
-    border-radius: 2px;
     font-size: 0.9em;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    margin-right: 10px;
+
+    border-radius: 2px;
     background-color: var(--technology-label-bg-color);
     box-shadow: 0 0 2px black;
     transition: background-color var(--global-transition-duration);
@@ -547,7 +551,6 @@ button:focus {
 }
 
 #skills h2 {
-    /* Grid-row specification not necessary, but useful in case the order changes for some reason */
     grid-row: 1;
     grid-column: 1 / -1;
 }
