@@ -34,6 +34,7 @@
     
     --form-bg-color: whitesmoke;
     --form-input-margins: 10px;
+    --form-max-width: 475px;
 
     --page-center-percentage: 80%;
     --global-transition-duration: 0.5s;
@@ -473,7 +474,7 @@ button:focus {
     transition: var(--global-transition-duration) ease;
 }
 
-/* Make it clearer which card is hovered over (Note: Last child is the placeholder) */
+/* Make it clearer which card is hovered over */
 .project:hover:not(.project-placeholder) {
     box-shadow: 0 0 5px 4px var(--nav-bg-color);
 }
@@ -681,10 +682,7 @@ button:focus {
 form {
     margin-bottom: 50px;
     margin-top: 30px;
-}
-
-form {
-    max-width: 475px;
+    max-width: var(--form-max-width);
 }
 
 form * {
@@ -706,9 +704,20 @@ form input:not([class="button"]), form textarea {
     transition: var(--global-transition-duration);
 }
 
+form label {
+    display: block;
+}
+
+form input:focus, form textarea:focus {
+    outline: none;
+    box-shadow: 0 0 5px 2px rgb(179, 179, 179);
+}
+
 form textarea {
+    max-width: var(--form-max-width);
     min-height: 200px;
-    resize: none;
+    transition: resize 0s;
+    transition: height 0s;
 }
 
 form .button {
