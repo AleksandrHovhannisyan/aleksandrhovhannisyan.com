@@ -237,9 +237,7 @@ button:focus {
     top: 0;
     background-color: var(--nav-bg-color);
 
-    /* This is to ensure that it always appears above everything. That should
-    theoretically always be the case because of position:fixed, but it isn't
-    for the project card hover layer because that's an absolute element. */
+    /* This is to ensure that it always appears above everything. */
     z-index: 100;
 }
 
