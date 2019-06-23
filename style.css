@@ -70,6 +70,7 @@
     /* So the fixed navbar doesn't cover up any content we scroll to */
     margin-top: calc((var(--nav-min-height) + 20px) * -1);
     padding-top: calc(var(--nav-min-height) + 20px);
+    margin-bottom: 120px;
 }
 
 body {
@@ -109,13 +110,6 @@ a {
 
 p {
     color: var(--text-color-normal);
-}
-
-hr {
-    margin-top: 60px;
-    margin-bottom: 60px;
-    width: 100%;
-    border-color: var(--hr-color);
 }
 
 /* Links an entire parent container, but the parent must be set to relative position */
