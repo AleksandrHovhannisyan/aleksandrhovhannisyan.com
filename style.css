@@ -14,7 +14,7 @@
 
     --nav-bg-color: rgb(44, 44, 44);
     --nav-text-color: rgb(179, 177, 177);
-    --nav-min-height: 45px;
+    --nav-min-height: 50px;
     --technology-label-bg-color: #e7e7e7;
 
     --hr-color: rgba(143, 142, 142, 0.2);
@@ -63,13 +63,16 @@
 }
 
 #intro {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 #about-me, #projects, #skills, #education, #contact {    
     /* So the fixed navbar doesn't cover up any content we scroll to */
     margin-top: calc((var(--nav-min-height) + 20px) * -1);
     padding-top: calc(var(--nav-min-height) + 20px);
+}
+
+#about-me, #projects, #skills, #education {
     margin-bottom: 120px;
 }
 
@@ -802,4 +805,17 @@ input.form-class {
 
 #social-networks .fa-address-book {
     color: #37A000;
+}
+
+#page-footer {
+    position: absolute;
+    left: 0;
+    height: 50px;
+    width: 100%;
+    background: var(--nav-bg-color);
+    color: var(--nav-text-color);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
