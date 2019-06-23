@@ -32,7 +32,7 @@
     --project-card-bg-color: rgb(253, 253, 253);
     --project-card-margin: 30px;
     
-    --form-bg-color: whitesmoke;
+    --form-bg-color: rgb(255, 255, 255);
     --form-input-margins: 10px;
     --form-max-width: 475px;
 
@@ -694,17 +694,18 @@ form * {
 form input:not([class="button"]), form textarea {
     height: 30px;
     width: 100%;
-    margin-bottom: 10px;
-    margin-top: 5px;
-    padding-left: 5px;
+    margin-bottom: 15px;
+    padding: 10px;
     
     background-color: var(--form-bg-color);
-    border: 1px solid rgb(56, 56, 56);
+    border: 0px solid;
+    box-shadow: 0 0 3px 1px rgb(172, 172, 172);
     border-radius: 3px;
     transition: var(--global-transition-duration);
 }
 
 form label {
+    margin-bottom: 5px;
     display: block;
 }
 
@@ -716,8 +717,8 @@ form input:focus, form textarea:focus {
 form textarea {
     max-width: var(--form-max-width);
     min-height: 200px;
-    transition: resize 0s;
     transition: height 0s;
+    transition: background-color var(--global-transition-duration);
 }
 
 form .button {
