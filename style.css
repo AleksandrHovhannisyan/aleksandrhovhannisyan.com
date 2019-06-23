@@ -320,7 +320,7 @@ button:focus {
     top: 20px;
 }
 
-@media only screen and (min-width: 845px) {
+@media only screen and (min-width: 820px) {
 
     /* This is the most important part: shows the links next to each other
     Note: .nav-links.active accounts for an edge case where you open the hamburger
