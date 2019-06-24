@@ -419,14 +419,11 @@ button:focus {
     grid-template-areas: "heading heading rating";
 }
 
-.project-icon {
+.project-icon * {
+    width: 24px;
     margin-right: 3px;
     display: inline-block;
     vertical-align: middle;
-}
-
-.project-icon i {
-    font-size: 1.5em;
 }
 
 .project h4 {
