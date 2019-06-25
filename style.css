@@ -29,7 +29,10 @@
     --button-text-hover-color: white;
 
     --skill-hover-bg-color: whitesmoke;
+    
     --project-card-bg-color: rgb(253, 253, 253);
+    --project-card-shadow: 0px 2px 4px 2px rgba(50, 50, 50, 0.4);
+    --project-card-shadow-hover: 0px 2px 6px 2px rgba(10, 10, 10, 0.6);
     --project-card-margin: 30px;
     
     --form-bg-color: rgb(255, 255, 255);
@@ -59,6 +62,10 @@
  
     --skill-hover-bg-color: rgb(66, 66, 66);
     --project-card-bg-color: rgb(54, 54, 54);
+    /* The shadows need to be a bit more prominent so they contrast well in dark mode,
+    hence the larger values for blur and spread */
+    --project-card-shadow: 0 2px 6px 4px rgba(31, 31, 31, 0.9);
+    --project-card-shadow-hover: 0px 2px 10px 5px rgba(10, 10, 10, 0.6);
     --form-bg-color: var(--skill-hover-bg-color);
 }
 
@@ -403,9 +410,9 @@ button:focus {
 /* All project cards except the placeholder get a background and box shadow */
 .project:not(.project-placeholder) {
     background-color: var(--project-card-bg-color);
-    box-shadow: 0 0 5px 2px var(--nav-bg-color);
+    box-shadow: var(--project-card-shadow);
     border-radius: 5px;
-    transition: background-color var(--global-transition-duration);
+    transition: all var(--global-transition-duration);
 }
 
 /* Apply margins to all project headers except the placeholder's */
@@ -470,7 +477,7 @@ button:focus {
 
 /* Make it clearer which card is hovered over */
 .project:hover:not(.project-placeholder) {
-    box-shadow: 0 0 5px 4px var(--nav-bg-color);
+    box-shadow: var(--project-card-shadow-hover);
 }
 
 /* Transition for the hover content changes its opacity */
