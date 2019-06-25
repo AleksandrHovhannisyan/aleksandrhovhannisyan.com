@@ -190,6 +190,11 @@ p {
     background-color: var(--button-bg-hover-color);
 }
 
+/* To get rid of Firefox's dotted lines when these are clicked */
+.button::-moz-focus-inner, .collapsible::-moz-focus-inner {
+    border: 0;
+}
+
 .button:hover, .button:hover *, .collapsible:hover * {
     color: var(--button-text-hover-color);
 }
