@@ -734,7 +734,7 @@ form .button {
 }
 
 /* Yum, honey */
-input.form-class {
+input.honeypot {
     display: none;
 }
 
