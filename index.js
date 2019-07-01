@@ -1,3 +1,5 @@
+"use strict";
+
 var repos = new Map();
 
 setupRepos();
@@ -11,33 +13,12 @@ requestRepoData();
  * Notable downside: if the name of the repo changes for whatever reason, it will need to be updated here.
  */
 function setupRepos() {
-    var scribeIcon = document.createElement('img');
-    scribeIcon.setAttribute('src', 'img/scribe.ico');
-    scribeIcon.setAttribute('alt', 'Scribe Icon');
-    addRepo("Scribe-Text-Editor", "Scribe: Text Editor", scribeIcon, ["cpp", "qt5", "qtcreator"]);
-
-    var embodyIcon = document.createElement('img');
-    embodyIcon.setAttribute('src', 'img/embody.PNG');
-    embodyIcon.setAttribute('alt', 'Embody Icon');
-    addRepo("EmbodyGame", "Embody: Game", embodyIcon, ["csharp", "unity", "ai"]);
-
-    var siteIcon = document.createElement('img');
-    siteIcon.setAttribute('src', 'favicon.ico');
-    siteIcon.setAttribute('alt', 'Site favicon');
-    addRepo("aleksandrhovhannisyan.github.io", "Personal Website", siteIcon, ["html5", "css", "javascript"]);
-
-    var steeringIcon = document.createElement('i');
-    steeringIcon.setAttribute('class', 'fas fa-expand-arrows-alt');
-    addRepo("Steering-Behaviors", "Steering Behaviors", steeringIcon, ["csharp", "unity", "ai"]);
-
-    var mipsIcon = document.createElement('img');
-    mipsIcon.setAttribute('src', 'img/cpu.png');
-    mipsIcon.setAttribute('alt', 'CPU image');
-    addRepo("MIPS-Linked-List", "ASM Linked List", mipsIcon, ["mips", "asm", "qtspim"]);
-
-    var dim35Icon = document.createElement('i');
-    dim35Icon.setAttribute('class', 'fas fa-gamepad');
-    addRepo('Dimension35', "dim35: Game", dim35Icon, ["godot", "networking"]);
+    addRepo("Scribe-Text-Editor", "Scribe: Text Editor", ["cpp", "qt5", "qtcreator"]);
+    addRepo("EmbodyGame", "Embody: Game", ["csharp", "unity", "ai"]);
+    addRepo("aleksandrhovhannisyan.github.io", "Personal Website", ["html", "css", "js", "ajax"]);
+    addRepo("Steering-Behaviors", "Steering Behaviors", ["csharp", "unity", "ai"]);
+    addRepo("MIPS-Linked-List", "ASM Linked List", ["mips", "asm", "qtspim"]);
+    addRepo('Dimension35', "dim35: Game", ["godot", "networking"]);
 }
 
 
@@ -46,16 +27,16 @@ function setupRepos() {
  * 
  * @param {string} officialName - The unique name used to identify this repository on GitHub.
  * @param {string} customName - A custom name for the repository, not necessarily the same as its official name.
- * @param {Element} icon - The DOM element representing this repo's icon, to be displayed next to the name.
  * @param {string[]} topics - An array of strings denoting the topics that correspond to this repo.
  */
-function addRepo(officialName, customName, icon, topics) {
+function addRepo(officialName, customName, topics) {
     // Note 1: We define a custom name here for two reasons: 1) some repo names are quite long, such as my website's,
-    // and 2) multi-word repos have hyphens instead of spaces, so we'd need to replace those programmatically (wasteful)
+    // and 2) multi-word repos have hyphens instead of spaces on GitHub, so we'd need to replace those (which would be wasteful)
 
     // Note 2: We define the topics here instead of parsing them dynamically because GitHub's API returns the topics
-    // as a *sorted* array, which means we'll end up displaying undesired tags. This approach gives us more control but sacrifices flexibility
-    repos.set(officialName, { "customName" : customName, "icon" : icon, "topics" : topics, "card" : null });
+    // as a *sorted* array, which means we'll end up displaying undesired tags (since we don't show all of them).
+    // This approach gives us more control but sacrifices flexibility, since we have to enter topics manually for repos of interest.
+    repos.set(officialName, { "customName" : customName, "topics" : topics, "card" : null });
 }
 
 
@@ -66,7 +47,7 @@ function addRepo(officialName, customName, icon, topics) {
  * @returns {Object} The custom object representing the given repo.
  */
 function get(repo) {
-    // Notice how this syntax is much messier; the wrapper just makes the code a bit cleaner
+    // Notice how the underlying syntax is messy; the wrapper makes it cleaner when used
     return repos.get(repo.name);
 }
 
@@ -74,8 +55,6 @@ function get(repo) {
 function requestRepoData() {
     let request = new XMLHttpRequest();
     request.open('GET', 'https://api.github.com/users/AleksandrHovhannisyan/repos', true);
-    // Required for topics: https://developer.github.com/v3/repos/#list-all-topics-for-a-repository
-    request.setRequestHeader("Accept", "application/vnd.github.mercy-preview+json");
     request.onload = parseRepos;
     request.send();
 }
@@ -88,10 +67,11 @@ function parseRepos() {
 
     // Even though we have to loop over all repos to find the ones we want, doing so is arguably
     // much faster (and easier) than making separate API requests for each repo of interest
+    // Also note that GitHub has a rate limit of 60 requests/hr for unauthenticated IPs
     for (let repo of data) {
         if (repos.has(repo.name)) {
             // We cache the card here instead of publishing it immediately so we can display
-            // the cards in our own order since the requests are processed out of order (async)
+            // the cards in our own order, since the requests are processed out of order (b/c of async)
             get(repo).card = createCardFor(repo);
         }
     }
@@ -129,7 +109,8 @@ function headerFor(repo) {
 
     var icon = document.createElement('span');
     icon.setAttribute('class', 'project-icon');
-    icon.appendChild(get(repo).icon);
+    // The emoji part of the description on GitHub
+    icon.textContent = repo.description.substring(0, 3);
     
     var h4 = document.createElement('h4');
     h4.appendChild(icon);
@@ -180,7 +161,8 @@ function stargazerLabelFor(repo) {
 function descriptionFor(repo) {
     var description = document.createElement('p');
     description.setAttribute('class', 'description');
-    description.textContent = repo.description;
+    // Non-emoji part of the description on GitHub
+    description.textContent = repo.description.substring(3);
     return description;
 }
 
@@ -194,12 +176,10 @@ function footerFor(repo) {
     var footer = document.createElement('footer');
     footer.setAttribute('class', 'topics');
 
-    const numTopicsToShow = 3;
     for(let topic of get(repo).topics) {
         let p = document.createElement('p');
         p.textContent = topic;
         footer.appendChild(p);
-        if (footer.childElementCount === numTopicsToShow) break;
     }
 
     return footer;
