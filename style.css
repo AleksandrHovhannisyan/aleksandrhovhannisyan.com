@@ -94,6 +94,10 @@ body {
     margin-right: auto;
 }
 
+#topnav *, #content * {
+    transition: var(--global-transition-duration);
+}
+
 i, h1, h2, h4, strong, em {
     color: var(--text-color-emphasis);
 }
@@ -354,7 +358,6 @@ button:focus {
 
     .nav-links a {
         margin-left: 40px;
-        transition: var(--global-transition-duration);
     }
 
    .navbar-hamburger {
@@ -417,7 +420,6 @@ button:focus {
     background-color: var(--project-card-bg-color);
     box-shadow: var(--project-card-shadow);
     border-radius: 5px;
-    transition: all var(--global-transition-duration);
 }
 
 /* Apply margins to all project headers except the placeholder's */
@@ -477,7 +479,6 @@ button:focus {
     /* Opacity = 0 means it's hidden by default */
     opacity: 0;
     background-color: var(--skill-hover-bg-color);
-    transition: var(--global-transition-duration) ease;
 }
 
 /* Make it clearer which card is hovered over */
@@ -521,7 +522,6 @@ button:focus {
     border-radius: 2px;
     background-color: var(--topic-label-bg-color);
     box-shadow: 0 0 2px black;
-    transition: background-color var(--global-transition-duration);
 }
 
 #project-placeholder {
@@ -620,7 +620,6 @@ button:focus {
 
     /* Will be set to a sufficiently large max-height by corresponding click handler for .collapsible */
     max-height: 0px;
-    transition: max-height var(--global-transition-duration);
     overflow: hidden;
 
     border: solid var(--institution-info-border-width) var(--button-bg-color);
@@ -707,7 +706,6 @@ form input:not([class="button"]), form textarea {
     border: 0px solid;
     box-shadow: 0 0 3px 1px rgb(172, 172, 172);
     border-radius: 3px;
-    transition: var(--global-transition-duration);
 }
 
 form label {
@@ -724,7 +722,6 @@ form textarea {
     max-width: var(--form-max-width);
     min-height: 200px;
     transition: height 0s;
-    transition: background-color var(--global-transition-duration);
 }
 
 form .button {
