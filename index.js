@@ -1,5 +1,6 @@
 "use strict";
 
+// Using a map instead of an object because I want to show the repos in the order in which they're inserted
 var repos = new Map();
 
 setupRepos();
@@ -15,7 +16,7 @@ requestRepoData();
 function setupRepos() {
     addRepo("Scribe-Text-Editor", "Scribe: Text Editor", ["cpp", "qt5", "qtcreator"]);
     addRepo("EmbodyGame", "Embody: Game", ["csharp", "unity", "ai"]);
-    addRepo("aleksandrhovhannisyan.github.io", "Personal Website", ["html", "css", "js", "ajax"]);
+    addRepo("aleksandrhovhannisyan.github.io", "Personal Website", ["html", "css", "javascript"]);
     addRepo("Steering-Behaviors", "Steering Behaviors", ["csharp", "unity", "ai"]);
     addRepo("MIPS-Linked-List", "ASM Linked List", ["mips", "asm", "qtspim"]);
     addRepo('Dimension35', "dim35: Game", ["godot", "networking"]);
@@ -36,7 +37,7 @@ function addRepo(officialName, customName, topics) {
     // Note 2: We define the topics here instead of parsing them dynamically because GitHub's API returns the topics
     // as a *sorted* array, which means we'll end up displaying undesired tags (since we don't show all of them).
     // This approach gives us more control but sacrifices flexibility, since we have to enter topics manually for repos of interest.
-    repos.set(officialName, { "customName" : customName, "topics" : topics, "card" : null });
+    repos.set(officialName, { customName, topics, card : null });
 }
 
 
@@ -53,7 +54,7 @@ function get(repo) {
 
 
 function requestRepoData() {
-    let request = new XMLHttpRequest();
+    const request = new XMLHttpRequest();
     request.open('GET', 'https://api.github.com/users/AleksandrHovhannisyan/repos', true);
     request.onload = parseRepos;
     request.send();
@@ -63,12 +64,12 @@ function requestRepoData() {
 function parseRepos() {
     if (this.status !== 200) return;
 
-    let data = JSON.parse(this.response);
+    const data = JSON.parse(this.response);
 
     // Even though we have to loop over all repos to find the ones we want, doing so is arguably
     // much faster (and easier) than making separate API requests for each repo of interest
     // Also note that GitHub has a rate limit of 60 requests/hr for unauthenticated IPs
-    for (let repo of data) {
+    for (const repo of data) {
         if (repos.has(repo.name)) {
             // We cache the card here instead of publishing it immediately so we can display
             // the cards in our own order, since the requests are processed out of order (b/c of async)
@@ -88,7 +89,7 @@ function parseRepos() {
  * @returns {Element} A DOM element representing a project card for the given repo.
  */
 function createCardFor(repo) {
-    let card = document.createElement('section');
+    const card = document.createElement('section');
     card.setAttribute('class', 'project');
     card.appendChild(headerFor(repo));
     card.appendChild(descriptionFor(repo));
@@ -176,8 +177,8 @@ function footerFor(repo) {
     var footer = document.createElement('footer');
     footer.setAttribute('class', 'topics');
 
-    for(let topic of get(repo).topics) {
-        let p = document.createElement('p');
+    for(const topic of get(repo).topics) {
+        const p = document.createElement('p');
         p.textContent = topic;
         footer.appendChild(p);
     }
@@ -219,7 +220,7 @@ function publishRepoCards() {
     const projects = document.getElementById('projects');
     const placeholder = document.getElementById('project-placeholder');
 
-    for (let repo of repos.values()) {
+    for (const repo of repos.values()) {
         projects.insertBefore(repo.card, placeholder);
     }
 }
