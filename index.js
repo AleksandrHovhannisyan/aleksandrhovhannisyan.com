@@ -14,7 +14,8 @@ requestRepoData();
  * Notable downside: if the name of the repo changes for whatever reason, it will need to be updated here.
  */
 function setupRepos() {
-    // I decided to pass in icons as hardcoded emoji to avoid cluttering my repo descriptions on GitHub and using weird hacks
+    // The only alternative to passing in icons as hardcoded emoji is to clutter my repo descriptions on GitHub with emoji
+    // at the start and to use substring hacks to extract the icon part, which I'd rather not do
     addRepo("Scribe-Text-Editor", "Scribe: Text Editor", '📄', ["c++", "qt5", "qtcreator"]);
     addRepo("EmbodyGame", "Embody: Game", '👻', ["c#", "unity", "inkscape", "ai"]);
     addRepo("aleksandrhovhannisyan.github.io", "Personal Website", '💾', ["html5", "css", "javascript"]);
