@@ -93,7 +93,7 @@ function parseRepos() {
  */
 function createCardFor(repo) {
     const card = document.createElement('section');
-    card.setAttribute('class', 'project');
+    card.classList.add('project');
     card.appendChild(headerFor(repo));
     card.appendChild(descriptionFor(repo));
     card.appendChild(footerFor(repo));
@@ -112,7 +112,7 @@ function headerFor(repo) {
     var header = document.createElement('header');
 
     var icon = document.createElement('span');
-    icon.setAttribute('class', 'project-icon');
+    icon.classList.add('project-icon');
     icon.textContent = get(repo).icon + ' ';
     
     var h4 = document.createElement('h4');
@@ -144,12 +144,12 @@ function stargazerLabelFor(repo) {
     var projectRating = document.createElement('span');
     
     var starIcon = document.createElement('i');
-    starIcon.setAttribute('class', 'fas fa-star filled');
+    starIcon.classList.add('fas', 'fa-star', 'filled');
     
     var starCount = document.createElement('span');
     starCount.textContent = ' ' + repo.stargazers_count;
     
-    projectRating.setAttribute('class', 'project-rating');
+    projectRating.classList.add('project-rating');
     projectRating.appendChild(starIcon);
     projectRating.appendChild(starCount);
     
@@ -163,7 +163,7 @@ function stargazerLabelFor(repo) {
  */
 function descriptionFor(repo) {
     var description = document.createElement('p');
-    description.setAttribute('class', 'description');
+    description.classList.add('description');
     description.textContent = repo.description;
     return description;
 }
@@ -176,7 +176,7 @@ function descriptionFor(repo) {
  */
 function footerFor(repo) {
     var footer = document.createElement('footer');
-    footer.setAttribute('class', 'topics');
+    footer.classList.add('topics');
 
     for(const topic of get(repo).topics) {
         const p = document.createElement('p');
@@ -194,7 +194,7 @@ function footerFor(repo) {
  */
 function anchorFor(repo) {
     var anchor = document.createElement('a');
-    anchor.setAttribute('class', 'container-link');
+    anchor.classList.add('container-link');
     anchor.setAttribute('href', repo.html_url);
     anchor.setAttribute('target', '_blank');
     return anchor;
@@ -203,13 +203,13 @@ function anchorFor(repo) {
 
 function createHoverContent() {
     var hoverContent = document.createElement('div');
-    hoverContent.setAttribute('class', 'hover-content');
+    hoverContent.classList.add('hover-content');
     
     var boldText = document.createElement('strong');
     boldText.textContent = 'View on GitHub';
 
     var externalLinkIcon = document.createElement('i');
-    externalLinkIcon.setAttribute('class', 'fas fa-external-link-alt');
+    externalLinkIcon.classList.add('fas', 'fa-external-link-alt');
     
     hoverContent.appendChild(boldText);
     hoverContent.appendChild(externalLinkIcon);
