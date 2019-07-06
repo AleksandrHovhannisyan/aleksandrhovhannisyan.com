@@ -15,7 +15,7 @@
     --nav-bg-color: rgb(44, 44, 44);
     --nav-text-color: rgb(179, 177, 177);
     --nav-min-height: 50px;
-    --technology-label-bg-color: #e7e7e7;
+    --topic-label-bg-color: #e7e7e7;
 
     --hr-color: rgba(143, 142, 142, 0.2);
 
@@ -47,7 +47,7 @@
 .night {
     --main-bg-color: rgb(44, 44, 44);
     --nav-bg-color: rgb(10, 10, 10);
-    --technology-label-bg-color: #222222;
+    --topic-label-bg-color: #222222;
     
     --hr-color: rgba(255, 255, 255, 0.2);
 
@@ -92,6 +92,10 @@ body {
     width: var(--page-center-percentage);
     margin-left: auto;
     margin-right: auto;
+}
+
+#topnav *, #content * {
+    transition: var(--global-transition-duration);
 }
 
 i, h1, h2, h4, strong, em {
@@ -354,7 +358,6 @@ button:focus {
 
     .nav-links a {
         margin-left: 40px;
-        transition: var(--global-transition-duration);
     }
 
    .navbar-hamburger {
@@ -413,15 +416,14 @@ button:focus {
 }
 
 /* All project cards except the placeholder get a background and box shadow */
-.project:not(.project-placeholder) {
+.project:not(#project-placeholder) {
     background-color: var(--project-card-bg-color);
     box-shadow: var(--project-card-shadow);
     border-radius: 5px;
-    transition: all var(--global-transition-duration);
 }
 
 /* Apply margins to all project headers except the placeholder's */
-.project:not(.project-placeholder) header {
+.project:not(#project-placeholder) header {
     margin-top: var(--project-card-margin);
     margin-bottom: 0px;
     margin-left: var(--project-card-margin);
@@ -477,11 +479,10 @@ button:focus {
     /* Opacity = 0 means it's hidden by default */
     opacity: 0;
     background-color: var(--skill-hover-bg-color);
-    transition: var(--global-transition-duration) ease;
 }
 
 /* Make it clearer which card is hovered over */
-.project:hover:not(.project-placeholder) {
+.project:hover:not(#project-placeholder) {
     box-shadow: var(--project-card-shadow-hover);
 }
 
@@ -500,7 +501,7 @@ button:focus {
     text-decoration: none;
 }
 
-.technologies {
+.topics {
     display: flex;
     flex-wrap: wrap;
     grid-row: 3;
@@ -511,7 +512,7 @@ button:focus {
     margin-right: var(--project-card-margin);
 }
 
-.technologies p {
+.topics p {
     font-size: 0.9em;
     padding: 5px;
     margin-top: 10px;
@@ -519,12 +520,11 @@ button:focus {
     margin-right: 10px;
 
     border-radius: 2px;
-    background-color: var(--technology-label-bg-color);
+    background-color: var(--topic-label-bg-color);
     box-shadow: 0 0 2px black;
-    transition: background-color var(--global-transition-duration);
 }
 
-.project-placeholder {
+#project-placeholder {
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -620,7 +620,6 @@ button:focus {
 
     /* Will be set to a sufficiently large max-height by corresponding click handler for .collapsible */
     max-height: 0px;
-    transition: max-height var(--global-transition-duration);
     overflow: hidden;
 
     border: solid var(--institution-info-border-width) var(--button-bg-color);
@@ -707,7 +706,6 @@ form input:not([class="button"]), form textarea {
     border: 0px solid;
     box-shadow: 0 0 3px 1px rgb(172, 172, 172);
     border-radius: 3px;
-    transition: var(--global-transition-duration);
 }
 
 form label {
@@ -724,7 +722,6 @@ form textarea {
     max-width: var(--form-max-width);
     min-height: 200px;
     transition: height 0s;
-    transition: background-color var(--global-transition-duration);
 }
 
 form .button {
