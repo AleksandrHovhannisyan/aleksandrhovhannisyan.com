@@ -14,12 +14,13 @@ requestRepoData();
  * Notable downside: if the name of the repo changes for whatever reason, it will need to be updated here.
  */
 function setupRepos() {
-    addRepo("Scribe-Text-Editor", "Scribe: Text Editor", ["cpp", "qt5", "qtcreator"]);
-    addRepo("EmbodyGame", "Embody: Game", ["csharp", "unity", "ai"]);
-    addRepo("aleksandrhovhannisyan.github.io", "Personal Website", ["html", "css", "javascript"]);
-    addRepo("Steering-Behaviors", "Steering Behaviors", ["csharp", "unity", "ai"]);
-    addRepo("MIPS-Linked-List", "ASM Linked List", ["mips", "asm", "qtspim"]);
-    addRepo('Dimension35', "dim35: Game", ["godot", "networking"]);
+    // I decided to pass in icons as hardcoded emoji to avoid cluttering my repo descriptions on GitHub and using weird hacks
+    addRepo("Scribe-Text-Editor", "Scribe: Text Editor", '📄', ["c++", "qt5", "qtcreator"]);
+    addRepo("EmbodyGame", "Embody: Game", '👻', ["c#", "unity", "inkscape", "ai"]);
+    addRepo("aleksandrhovhannisyan.github.io", "Personal Website", '💾', ["html5", "css", "javascript"]);
+    addRepo("Steering-Behaviors", "Steering Behaviors", '⚙️', ["c#", "unity", "ai"]);
+    addRepo("MIPS-Linked-List", "ASM Linked List", '⛓️', ["mips", "asm", "qtspim"]);
+    addRepo('Dimension35', "dim35: Game", '⚔️', ["godot", "networking"]);
 }
 
 
@@ -28,16 +29,17 @@ function setupRepos() {
  * 
  * @param {string} officialName - The unique name used to identify this repository on GitHub.
  * @param {string} customName - A custom name for the repository, not necessarily the same as its official name.
+ * @param {string} icon - A string containing the emoji to be used as the project icon.
  * @param {string[]} topics - An array of strings denoting the topics that correspond to this repo.
  */
-function addRepo(officialName, customName, topics) {
+function addRepo(officialName, customName, icon, topics) {
     // Note 1: We define a custom name here for two reasons: 1) some repo names are quite long, such as my website's,
     // and 2) multi-word repos have hyphens instead of spaces on GitHub, so we'd need to replace those (which would be wasteful)
 
     // Note 2: We define the topics here instead of parsing them dynamically because GitHub's API returns the topics
     // as a *sorted* array, which means we'll end up displaying undesired tags (since we don't show all of them).
     // This approach gives us more control but sacrifices flexibility, since we have to enter topics manually for repos of interest.
-    repos.set(officialName, { customName, topics, card : null });
+    repos.set(officialName, { customName, topics, icon, card : null });
 }
 
 
@@ -110,8 +112,7 @@ function headerFor(repo) {
 
     var icon = document.createElement('span');
     icon.setAttribute('class', 'project-icon');
-    // The emoji part of the description on GitHub
-    icon.textContent = repo.description.substring(0, 3);
+    icon.textContent = get(repo).icon + ' ';
     
     var h4 = document.createElement('h4');
     h4.appendChild(icon);
@@ -162,8 +163,7 @@ function stargazerLabelFor(repo) {
 function descriptionFor(repo) {
     var description = document.createElement('p');
     description.setAttribute('class', 'description');
-    // Non-emoji part of the description on GitHub
-    description.textContent = repo.description.substring(3);
+    description.textContent = repo.description;
     return description;
 }
 
