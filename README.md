@@ -52,7 +52,7 @@ As you can see, I ended up ditching most of my old ideas and copy. But at least 
 
 <p align="center"><i>The old skills section—so much wasted space!</i></p>
 
-5. JavaScript is cool, but also apparently expensive when overused. I think I'd like Typescript much more; aside from Python, there are few dynamically typed languages that I like working with. Coming from a C++ background, I prefer static typing because it makes your code much easier to read, and it enforces a strict contract with the compiler. In my opinion, dynamic typing is just fine for small scripts; it's when your code base grows that it becomes a nightmare to maintain. Again, for this project, that wasn't really a problem.
+5. ~~JavaScript is cool, but also apparently expensive when overused. I think I'd like Typescript much more; aside from Python, there are few dynamically typed languages that I like working with. Coming from a C++ background, I prefer static typing because it makes your code much easier to read, and it enforces a strict contract with the compiler. In my opinion, dynamic typing is just fine for small scripts; it's when your code base grows that it becomes a nightmare to maintain. Again, for this project, that wasn't really a problem.~~ Blah, blah, blah. TL;DR: JavaScript is awesome so long as you don't abuse it :)
 
 ## That's About It!
 
