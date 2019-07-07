@@ -143,7 +143,9 @@ p {
 
 /* ============================================
 
-   Buttons, collapsibles, etc.
+   Buttons and collapsibles grouped here because
+   they share many of the same styles and don't
+   necessarily belong to just X section of the page
 
    ============================================
 */
@@ -165,40 +167,51 @@ p {
     text-decoration: none;
 }
 
+.button * {
+    transition: var(--global-transition-duration);
+}
+
 .collapsible {
+    margin-top: 20px;
+    margin-bottom: 20px;
+
     font-family: Nunito, sans-serif;
     font-size: 1em;
-    display: flex;
-    align-items: center;
+    
     border: none;
     outline: none;
     width: 100%;
 }
 
-.collapsible span {
-    text-align: left;
-    padding-left: 10px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    transition: var(--global-transition-duration);
+.collapsible-header {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
 }
 
-.button, .collapsible {
+.collapsible-header * {
+    transition: var(--global-transition-duration);
+    align-self: center;
+}
+
+.collapsible-header i {
+    margin-left: 10px;
+    margin-right: 30px;
+    font-size: 1em;
+}
+
+.button, .collapsible-header {
     cursor: pointer;
     border: none;
     background-color: var(--button-bg-color);
     transition: var(--global-transition-duration);
 }
 
-.button, .button *, .collapsible * {
+.button, .button *, .collapsible-header * {
     color: var(--button-text-color);
 }
 
-.button * {
-    transition: var(--global-transition-duration);
-}
-
-.button:hover, .collapsible:hover {
+.button:hover, .collapsible-header:hover {
     background-color: var(--button-bg-hover-color);
 }
 
@@ -207,19 +220,12 @@ p {
     border: 0;
 }
 
-.button:hover, .button:hover *, .collapsible:hover * {
+.button:hover, .button:hover *, .collapsible-header:hover * {
     color: var(--button-text-hover-color);
 }
 
 button:focus {
     outline: none;
-}
-
-.fa-angle-right, .fa-angle-down {
-    margin-left: 10px;
-    margin-right: 20px;
-    font-size: 1em;
-    transition: var(--global-transition-duration);
 }
 
 @media only screen and (min-width: 400px) {

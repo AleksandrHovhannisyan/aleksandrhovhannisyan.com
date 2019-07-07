@@ -252,7 +252,7 @@ function toggleColorTheme() {
  */
 function updateThemeLabel() {
     const themeLabel = document.getElementById('theme-label');
-    
+
     if (document.documentElement.classList.contains('night')) {
         themeLabel.textContent = 'Dark mode';
     }
@@ -275,7 +275,7 @@ function smoothScrollTo(topOfTarget, speed=500){
 
 // Another closure, just to prevent variables from leaking into global scope when possible
 (function registerCollapsibleClickHandlers() {
-    const collapsibles = document.getElementsByClassName('collapsible');
+    const collapsibles = document.getElementsByClassName('collapsible-header');
     for(const collapsible of Array.from(collapsibles)) {
         collapsible.addEventListener('click', toggleCollapsible);
     }
@@ -286,7 +286,7 @@ function smoothScrollTo(topOfTarget, speed=500){
  *  collapses the button accordingly, and also updates the collapsible's icon.
  */
 function toggleCollapsible() {
-    const content = this.nextElementSibling;
+    const content = this.parentElement.querySelector('.collapsible-content');
     const icon = this.querySelector('i');
 
     function toggleIcon() {
@@ -299,9 +299,7 @@ function toggleCollapsible() {
         content.style.maxHeight = '0px';
         toggleIcon();
     } else {
-        // Have to set the max height to some large value; auto height isn't eligible for transitions/animation, unfortunately
-        // One notable downside to this is that the speed will vary depending on the amount of content in the div
-        content.style.maxHeight = '1000px';
+        content.style.maxHeight = content.scrollHeight + "px";
         toggleIcon();
     }
 
