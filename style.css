@@ -41,7 +41,7 @@
 
     --page-center-percentage: 80%;
     --global-transition-duration: 0.5s;
-    --institution-info-border-width: 3px;
+    --collapsible-content-border-width: 3px;
 }
 
 .night {
@@ -102,7 +102,7 @@ i, h1, h2, h4, strong, em {
     color: var(--text-color-emphasis);
 }
 
-.institution-info h4 {
+.collapsible-content h4 {
     margin-left: 10px;
     font-weight: normal;
     color: var(--text-color-normal);
@@ -287,11 +287,11 @@ button:focus {
     font-size: 1.5em;
 }
 
-.nightmode-switch-container, .nightmode-switch-container * {
+#nightmode-switch-container, #nightmode-switch-container * {
     display: inline-block;
 }
 
-.nightmode-switch {
+#nightmode-switch {
     width: 40px;
     height: 20px;
     line-height: 15px;
@@ -304,7 +304,7 @@ button:focus {
     transition: var(--global-transition-duration);
 }
 
-.nightmode-switch::before {
+#nightmode-switch::before {
     content: "";
     display: inline-block;
     vertical-align: middle;
@@ -320,7 +320,7 @@ button:focus {
     transition: var(--global-transition-duration);
 }
 
-.night .nightmode-switch::before {
+.night #nightmode-switch::before {
     margin-left: 20px;
 }
 
@@ -613,7 +613,7 @@ button:focus {
 }
 
 /* Course and award container */
-.institution-info {
+.collapsible-content {
     display: grid;
     /* Mobile first: only one column. Changes to two columns on bigger screens. See media query below. */
     grid-template-columns: 1fr;
@@ -622,36 +622,36 @@ button:focus {
     max-height: 0px;
     overflow: hidden;
 
-    border: solid var(--institution-info-border-width) var(--button-bg-color);
+    border: solid var(--collapsible-content-border-width) var(--button-bg-color);
     border-top: none;
 }
 
-.institution-info .awards {
+.collapsible-content .awards {
     /* Only matters on mobile, where the awards are stacked underneath courses */
-    border-top: solid var(--institution-info-border-width) var(--button-bg-color);
+    border-top: solid var(--collapsible-content-border-width) var(--button-bg-color);
 }
 
-.institution-info ul {
+.collapsible-content ul {
     padding-right: 10px;
 }
 
-.institution-info p {
+.collapsible-content p {
     padding-left: 10px;
 }
 
 /* Line up courses and awards side by side on larger screens */
 @media only screen and (min-width: 800px) {
 
-    .institution-info {
+    .collapsible-content {
         grid-template-rows: 1fr;
         grid-template-columns: auto auto;
     }
 
-    .institution-info .awards {
+    .collapsible-content .awards {
         /* Now that it's lined up to the right of the courses, there's no need for a top border */
         border-top: none;
         /* But there is for a left border */
-        border-left: solid var(--institution-info-border-width) var(--button-bg-color);
+        border-left: solid var(--collapsible-content-border-width) var(--button-bg-color);
     }
 }
 
