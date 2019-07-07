@@ -494,6 +494,7 @@ button:focus {
 
     /* Opacity = 0 means it's hidden by default */
     opacity: 0;
+    border-radius: 5px;
     background-color: var(--skill-hover-bg-color);
     transition: var(--global-transition-duration);
 }
