@@ -73,6 +73,10 @@
     margin-bottom: 40px;
 }
 
+#intro *, #about-me * {
+    transition: var(--global-transition-duration);
+}
+
 #about-me, #projects, #skills, #education, #contact {    
     /* So the fixed navbar doesn't cover up any content we scroll to */
     margin-top: calc((var(--nav-min-height) + 20px) * -1);
@@ -94,12 +98,9 @@ body {
     margin-right: auto;
 }
 
-#topnav *, #content * {
-    transition: var(--global-transition-duration);
-}
-
-i, h1, h2, h4, strong, em {
+i, h1, h2, h3, h4, h5, h6, strong, em {
     color: var(--text-color-emphasis);
+    transition: var(--global-transition-duration);
 }
 
 .collapsible-content h4 {
@@ -120,10 +121,12 @@ h1, h2 {
 
 a {
     color: var(--link-color);
+    transition: var(--global-transition-duration);
 }
 
 p {
     color: var(--text-color-normal);
+    transition: var(--global-transition-duration);
 }
 
 /* Links an entire parent container, but the parent must be set to relative position */
@@ -177,6 +180,7 @@ p {
     padding-left: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
+    transition: var(--global-transition-duration);
 }
 
 .button, .collapsible {
@@ -188,6 +192,10 @@ p {
 
 .button, .button *, .collapsible * {
     color: var(--button-text-color);
+}
+
+.button * {
+    transition: var(--global-transition-duration);
 }
 
 .button:hover, .collapsible:hover {
@@ -211,6 +219,7 @@ button:focus {
     margin-left: 10px;
     margin-right: 20px;
     font-size: 1em;
+    transition: var(--global-transition-duration);
 }
 
 @media only screen and (min-width: 400px) {
@@ -250,6 +259,7 @@ button:focus {
     right: 100%;
     top: 0;
     background-color: var(--nav-bg-color);
+    transition: background-color var(--global-transition-duration);
 
     /* This is to ensure that it always appears above everything. */
     z-index: 100;
@@ -403,6 +413,7 @@ button:focus {
 #projects h2 {
     grid-row: 1;
     grid-column: 1 / -1;
+    transition: var(--global-transition-duration);
 }
 
 .project {
@@ -413,6 +424,8 @@ button:focus {
     /* Header, description, footer, respectively */
     grid-template-rows: max-content 1fr max-content;
     row-gap: 20px;
+
+    transition: background-color var(--global-transition-duration), box-shadow var(--global-transition-duration);
 }
 
 /* All project cards except the placeholder get a background and box shadow */
@@ -444,6 +457,7 @@ button:focus {
     margin: 0px;
     align-self: center;
     grid-area: heading;
+    transition: var(--global-transition-duration);
 }
 
 .project-rating {
@@ -451,6 +465,7 @@ button:focus {
     justify-self: center;
     align-self: center;
     grid-area: rating;
+    transition: var(--global-transition-duration);
 }
 
 .project .description {
@@ -458,6 +473,7 @@ button:focus {
     margin-bottom: 0px;
     margin-left: var(--project-card-margin);
     margin-right: var(--project-card-margin);
+    transition: var(--global-transition-duration);
 }
 
 /* Displayed when a user hovers over a project card */
@@ -479,6 +495,7 @@ button:focus {
     /* Opacity = 0 means it's hidden by default */
     opacity: 0;
     background-color: var(--skill-hover-bg-color);
+    transition: var(--global-transition-duration);
 }
 
 /* Make it clearer which card is hovered over */
@@ -510,6 +527,7 @@ button:focus {
     margin-bottom: var(--project-card-margin);
     margin-left: var(--project-card-margin);
     margin-right: var(--project-card-margin);
+    transition: background-color var(--global-transition-duration);
 }
 
 .topics p {
@@ -522,6 +540,7 @@ button:focus {
     border-radius: 2px;
     background-color: var(--topic-label-bg-color);
     box-shadow: 0 0 2px black;
+    transition: var(--global-transition-duration);
 }
 
 #project-placeholder {
@@ -531,7 +550,11 @@ button:focus {
     justify-content: center;
 }
 
-.github-cta {
+#project-placeholder p {
+    transition: var(--global-transition-duration);
+}
+
+#project-placeholder .github-cta {
     display: inline-block;
     
     font-size: 3em;
@@ -539,6 +562,7 @@ button:focus {
 
     text-decoration: none;
     color: black;
+    transition: var(--global-transition-duration);
 }
 
 /* ============================================
@@ -577,6 +601,7 @@ button:focus {
 
 .skill-name {
     grid-column: 1;
+    transition: var(--global-transition-duration);
 }
 
 .skill-rating {
@@ -623,12 +648,14 @@ button:focus {
     overflow: hidden;
 
     border: solid var(--collapsible-content-border-width) var(--button-bg-color);
+    transition: var(--global-transition-duration);
     border-top: none;
 }
 
 .collapsible-content .awards {
     /* Only matters on mobile, where the awards are stacked underneath courses */
     border-top: solid var(--collapsible-content-border-width) var(--button-bg-color);
+    transition: border var(--global-transition-duration);
 }
 
 .collapsible-content ul {
@@ -652,6 +679,7 @@ button:focus {
         border-top: none;
         /* But there is for a left border */
         border-left: solid var(--collapsible-content-border-width) var(--button-bg-color);
+        transition: border var(--global-transition-duration);
     }
 }
 
@@ -708,6 +736,10 @@ form input:not([class="button"]), form textarea {
     border-radius: 3px;
 }
 
+form input:not([class="button"]) {
+    transition: background-color var(--global-transition-duration), box-shadow var(--global-transition-duration);
+}
+
 form label {
     margin-bottom: 5px;
     display: block;
@@ -721,7 +753,7 @@ form input:focus, form textarea:focus {
 form textarea {
     max-width: var(--form-max-width);
     min-height: 200px;
-    transition: height 0s;
+    transition: height 0s, background-color var(--global-transition-duration), box-shadow var(--global-transition-duration);
 }
 
 form .button {
@@ -795,6 +827,7 @@ input.honeypot {
 .social-network .network-name {
     grid-column: 2;
     align-self: center;
+    transition: var(--global-transition-duration);
 }
 
 #social-networks .fa-linkedin {
@@ -819,6 +852,7 @@ input.honeypot {
     height: 50px;
     width: 100%;
     background: var(--nav-bg-color);
+    transition: var(--global-transition-duration);
     color: var(--nav-text-color);
 
     display: flex;

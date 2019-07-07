@@ -244,14 +244,15 @@ function publishRepoCards() {
 
 function toggleColorTheme() {
     document.documentElement.classList.toggle('night');
-    updateThemeLabel(this.nextElementSibling);
+    updateThemeLabel();
 }
 
 
-/** Updates the text in the given label to match whatever mode the page is in (dark, light).
- *  @param themeLabel {Element} The element that displays the color theme the page is currently using (light or dark).
+/** Updates the text in the theme label to match whatever mode the page is in (dark, light).
  */
-function updateThemeLabel(themeLabel) {
+function updateThemeLabel() {
+    const themeLabel = document.getElementById('theme-label');
+    
     if (document.documentElement.classList.contains('night')) {
         themeLabel.textContent = 'Dark mode';
     }
