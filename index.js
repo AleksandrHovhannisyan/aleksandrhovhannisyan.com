@@ -1,10 +1,21 @@
 "use strict";
 
 // Using a map instead of an object because I want to show the repos in the order in which they're inserted
-var repos = new Map();
-
+const repos = new Map();
 setupRepos();
 requestRepoData();
+
+
+// Auto-transition to night mode, if applicable
+(function(){
+    const nightModeSwitch = document.getElementById('nightmode-switch');
+    nightModeSwitch.addEventListener('click', toggleColorTheme);
+
+    const today = new Date();    
+    if (today.getHours() >= 20 || today.getHours() <= 6) {
+        nightModeSwitch.click();
+    }
+})();
 
 
 /** Defines all repositories of interest, to be displayed in the Projects section of the page in
@@ -227,37 +238,25 @@ function publishRepoCards() {
 }
 
 
-var nightModeSwitch = $('.nightmode-switch');
 /** Called when the user clicks the night mode switch in the top-left of the navbar.
  *  Toggles the document's class to trigger a change in the color themes. 
  */
-nightModeSwitch.click(function(){        
-    $(document.documentElement).toggleClass('night');
-    updateThemeLabel($(this).next());
-});
 
-
-// Auto-transition to night mode, if applicable
-(function(){
-    var today = new Date();
-    var dusk = 20;
-    var dawn = 6;
-    
-    if(today.getHours() >= dusk || today.getHours() <= dawn) {
-        nightModeSwitch.click();
-    }
-})();
+function toggleColorTheme() {
+    document.documentElement.classList.toggle('night');
+    updateThemeLabel(this.nextElementSibling);
+}
 
 
 /** Updates the text in the given label to match whatever mode the page is in (dark, light).
- *  @param themeLabel {Node} The element that displays the color theme the page is currently using (light or dark).
+ *  @param themeLabel {Element} The element that displays the color theme the page is currently using (light or dark).
  */
-function updateThemeLabel(themeLabel){
-    if($(document.documentElement).hasClass('night')) {
-        themeLabel.html('Dark mode');
+function updateThemeLabel(themeLabel) {
+    if (document.documentElement.classList.contains('night')) {
+        themeLabel.textContent = 'Dark mode';
     }
     else {
-        themeLabel.html('Light mode');
+        themeLabel.textContent = 'Light mode';
     }
 }
 
@@ -267,57 +266,84 @@ function updateThemeLabel(themeLabel){
  * @param speed - the speed at which the scrolling should be animated 
  */
 function smoothScrollTo(topOfTarget, speed=500){
+    // Note: this is really the only place we need to use jQuery because there's
+    // no good JavaScript equivalent that isn't messy and convoluted
     $('html, body').animate({scrollTop: topOfTarget}, speed);
 }
 
 
-var collapsible = $('.collapsible');
+// Another closure, just to prevent variables from leaking into global scope when possible
+(function registerCollapsibleClickHandlers() {
+    const collapsibles = document.getElementsByClassName('collapsible');
+    for(const collapsible of Array.from(collapsibles)) {
+        collapsible.addEventListener('click', toggleCollapsible);
+    }
+})();
+
+
 /** Called when the user clicks on a collapsible element (accordion). Expands or
  *  collapses the button accordingly, and also updates the collapsible's icon.
  */
-collapsible.click(function(){        
-    var content = $(this).next();
-    var icon = $(this).find('i');
+function toggleCollapsible() {
+    const content = this.nextElementSibling;
+    const icon = this.querySelector('i');
 
-    if(content.css('max-height') != '0px'){
-        content.css('max-height', '0px');
-        icon.toggleClass('fa-angle-down fa-angle-right');
-    } else {
-        // Have to set the max height to some large value; auto isn't eligible for transitions/animation, unfortunately
-        // One notable downside to this is that the speed will vary depending on the amount of content in the div
-        content.css('max-height', '1000px');
-        icon.toggleClass('fa-angle-right fa-angle-down');
+    function toggleIcon() {
+        icon.classList.toggle('fa-angle-down');
+        icon.classList.toggle('fa-angle-right');
     }
 
-    smoothScrollTo($(this).offset().top - 60);
-});
+    // Must use computed style for initial check; it's set to 0px in style.css, not as an inline style
+    if (getComputedStyle(content).maxHeight != '0px') {
+        content.style.maxHeight = '0px';
+        toggleIcon();
+    } else {
+        // Have to set the max height to some large value; auto height isn't eligible for transitions/animation, unfortunately
+        // One notable downside to this is that the speed will vary depending on the amount of content in the div
+        content.style.maxHeight = '1000px';
+        toggleIcon();
+    }
+
+    smoothScrollTo(this.offsetTop - 60);
+};
 
 
-var navbarHamburger = $('#topnav .navbar-hamburger');
-var navbarLinkContainer = $('#topnav .nav-links');
+const navbarHamburger = document.querySelector('#topnav .navbar-hamburger');
+const navbarLinkContainer = document.querySelector('#topnav .nav-links');
+
 /** Called when the user clicks on the hamburger icon in the navigation menu. 
  */
-navbarHamburger.click(function(){
-    navbarLinkContainer.toggleClass('active');
+navbarHamburger.addEventListener('click', function toggleMobileNavbar(){
+    navbarLinkContainer.classList.toggle('active');
 });
 
 
-var navbarLinks = navbarLinkContainer.find('a');
+// Register click listeners for all the navbar links so we can hide the navbar menu
+// if the links are clicked from mobile (i.e., to hide the dropdown). Doing this in
+// a closure so we don't unnecessarily expose these variables to global scope.
+(function() {
+    const navbarLinks = navbarLinkContainer.querySelectorAll('a');
+    for (const anchor of Array.from(navbarLinks)) {
+        anchor.addEventListener('click', hideMobileNavbar);
+    }
+})();
+
+
 /** Called when the user clicks on a navbar link. Checks to see if the click occured
  *  while the mobile version of the navigation was showing. If so, it simulates a
  *  click on the hamburger icon to hide the navigation menu.
  */
-navbarLinks.click(function() {
-    if(navbarHamburger.css('display') != 'none'){
+function hideMobileNavbar() {
+    if (getComputedStyle(navbarHamburger).display != 'none'){
         navbarHamburger.click();
     }
-});
+};
 
 
 /** Smoothly scrolls to the location within the document specified by the clicked anchor's
  *  href attribute. Taken from: https://stackoverflow.com/a/7717572/10480032
  */
-$(document).on('click', 'a[href^="#"]', function (event) {
+$(document).on('click', 'a[href^="#"]', function handleAnchorClick(event) {
     event.preventDefault();
     smoothScrollTo($($.attr(this, 'href')).offset().top);
 });
