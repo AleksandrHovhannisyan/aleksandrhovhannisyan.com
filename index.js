@@ -295,15 +295,14 @@ function toggleCollapsible() {
     }
 
     // Must use computed style for initial check; it's set to 0px in style.css, not as an inline style
-    if (getComputedStyle(content).maxHeight != '0px') {
-        content.style.maxHeight = '0px';
-        toggleIcon();
-    } else {
+    if (getComputedStyle(content).maxHeight == '0px') {
         content.style.maxHeight = content.scrollHeight + "px";
         toggleIcon();
+        smoothScrollTo(this.offsetTop - 60);
+    } else {
+        content.style.maxHeight = '0px';
+        toggleIcon();
     }
-
-    smoothScrollTo(this.offsetTop - 60);
 };
 
 
