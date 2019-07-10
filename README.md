@@ -58,7 +58,9 @@ At first, as a complete JavaScript noob, I was afraid to get my feet wet with th
 
 Later, once I figured out how to work with the GitHub API (which forced me to work with the DOM itself when constructing the project cards), I refactored the rest of my code to limit jQuery use to only the functionalities that absolutely required it. In this case, the only function that uses jQuery is for smooth scroll animations, something that is not currently supported in all major browsers via pure CSS, and something that would've been far too complex (and messy) to code up in pure JavaScript.
 
-![](https://user-images.githubusercontent.com/19352442/60966888-4a58f600-a2e7-11e9-8c8c-445ba6f05b5d.png)
+![](https://user-images.githubusercontent.com/19352442/61002666-06d6aa00-a330-11e9-80f0-a09c6661ebbb.png)
+
+<p align="center"><i>The best alternative, <code>scroll-behavior: smooth</code>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-behavior">is not supported in all browsers.</a></i></p>
 
 The benefit of this refactoring was twofold:
 
