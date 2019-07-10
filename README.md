@@ -16,19 +16,54 @@ When I later discovered [Scrimba's CSS Grid tutorial series](https://scrimba.com
 
 ## Design Considerations
 
-I built my site with a mobile-first strategy, targeting a minimum device width of 320 px and working my way up to larger screens using CSS Grid's `repeat`, `auto-fit`, and `minmax`, as well as a few media queries. I also used Flexbox wherever I found it more convenient than grids (e.g., wherever the number or width of column tracks wasn't too relevant, or whenever I wanted to vertically center div content). All of my testing was done using Google Chrome's built-in dev tools.
+### Responsiveness
+I built my site with a mobile-first strategy, targeting a minimum device width of 320 px and working my way up to larger screens using CSS Grid's `repeat`, `auto-fit`, and `minmax`, as well as a few media queries. I also used Flexbox wherever I found it more convenient than grids (e.g., wherever the number or width of column tracks wasn't too relevant, ~or whenever I wanted to vertically center div content~ Edit: I learned that you can also do this with CSS grid if you use `align-self` and `justify-self`; those work for both Flexbox and CSS grid and are part of the CSS Box Module Level 3). All of my testing was done using Google Chrome's built-in dev tools.
 
-![](https://user-images.githubusercontent.com/19352442/59807363-948d1f80-92c5-11e9-8d3d-023b3879408d.png)
+![](https://user-images.githubusercontent.com/19352442/60965960-2c8a9180-a2e5-11e9-900f-52ae77934e20.png)
 
 <p align="center"><i>Example: responsive CSS grid layout used for project gallery</i></p>
 
-I didn't really have any strategy in place for color choices; I mainly picked whatever looked good to me and tweaked things as I went along. For dark mode, I wanted to go for a "coffee"-type theme. Light mode is nice and neutral. I added both an auto and a manual transition to allow users to pick whichever theme they prefer. Again, that's obviously not too important for a portfolio site but still something I wanted to try.
+### Colors and Themes
+I didn't really have any strategy in place for color choices; I mainly picked whatever looked good to me and tweaked things as I went along. Light mode is nice and neutral. For dark mode, I wanted to go for a "coffee"-type theme. I added both an auto and a manual transition via a switch on the navbar to allow users to pick whichever theme they prefer. Again, that's obviously not too important for a portfolio site, but it was still something I wanted to try.
 
-![](https://user-images.githubusercontent.com/19352442/59712393-2409d400-91db-11e9-979e-53eaae71b4d5.png)
+![](https://user-images.githubusercontent.com/19352442/60931926-8f4e3f80-a289-11e9-889f-aea7521bec73.png)
 
 <p align="center"><i>Dark mode theme, for those whose hiring efforts extend into the night :)</i></p>
 
-Finally, I decided I'd also include a form on my site to make it easier for people to reach out, even though the primary CTA buttons direct visitors to my LinkedIn and GitHub. I used [Formspree](https://github.com/formspree/formspree) for this, and it works great. One downside is that your email is publicly exposed in your HTML; to address this, I used a [hidden honeypot field](https://help.formspree.io/hc/en-us/articles/360013580813-Honeypot-spam-filtering) and a throwaway/dedicated email address.
+### Contact
+I decided I'd also include a form on my site to make it easier for people to reach out, even though the primary CTA buttons direct visitors to my LinkedIn and GitHub. I used [Formspree](https://github.com/formspree/formspree) for this, and it works great. One downside is that your email is publicly exposed in your HTML; to address this, I used a [hidden honeypot field](https://help.formspree.io/hc/en-us/articles/360013580813-Honeypot-spam-filtering) and a throwaway/dedicated email address.
+
+### To hardcode or not to hardcode?
+Originally, the Projects section of my site consisted of entirely hardcoded HTML for every single project. As you can imagine, this was useful for figuring out the CSS grid side of things and building them from the ground up. However, once I added the labels for the stargazer count, I realized that this approach was terribly inflexible in terms of growth. If my repos continued getting stars, I'd have to manually update every single project by hand, and that would be tedious.
+
+I had never worked with APIs before, so this was entirely a learning process for me. I looked into the GitHub API on user repositories and learned about AJAX. Turns out it's simpler than it seems! I created a bunch of granular routines in my JavaScript to assemble all the pieces for a project card. Now, they all load dynamically and pull data from my repositories. So if my stargazer counts ever get updated or I change a repo's description, those changes will be reflected on my website.
+
+![](https://user-images.githubusercontent.com/19352442/60967104-da973b00-a2e7-11e9-8a3d-7ca5ee606eb6.png)
+
+I did hardcode a few things, but this approach is still a lot more flexible than the original:
+
+1) The name of each repo, as displayed on the card. Some names (like this site's) are too long to fit on a card.
+2) The icon for each repo. I could've made these part of the description and extracted them out with substrings, but that's hacky.
+3) The topics for each repo. The GitHub API does provide these dynamically for each repo on your user account, but they get sorted for some reason instead of having their original order preserved (I submitted a ticket, and GitHub support confirmed).
+
+All of this info is stored in a map of custom repos that I want to show on the page. The key for a repo is its official name as it appears on GitHub. The other information is stored as a JavaScript object. That way, I can quickly pull up a repo's information at runtime once I have its name without using messy, tightly coupled logic to determine which repo I'm "looking" at (e.g., with a bunch of `if` statements).
+
+Note: One downside to this dynamic approach is that the GitHub API imposes a limit of 60 requests/hr for unauthenticated IPs. However, I can't imagine why anyone would need to refresh the page so many times.
+
+### Cleanup: Replacing jQuery where it wasn't needed
+At first, as a complete JavaScript noob, I was afraid to get my feet wet with the actual DOM itself and instead relied on jQuery for pretty much everything. This did make my code mostly readable, since jQuery is at a higher level of abstraction for the most part, but there were two problems with this:
+
+1) I was using a technology I understood only superficially in places where it wasn't actually *needed*.
+2) I wasn't actually learning proper JavaScript!
+
+Later, once I figured out how to work with the GitHub API (which forced me to work with the DOM itself when constructing the project cards), I refactored the rest of my code to limit jQuery use to only the functionalities that absolutely required it. In this case, the only function that uses jQuery is for smooth scroll animations, something that is not currently supported in all major browsers via pure CSS, and something that would've been far too complex (and messy) to code up in pure JavaScript.
+
+![](https://user-images.githubusercontent.com/19352442/60966888-4a58f600-a2e7-11e9-8c8c-445ba6f05b5d.png)
+
+The benefit of this refactoring was twofold:
+
+1) I learned a lot more about JavaScript and got more comfortable with the DOM API.
+2) In case the jQuery CDN goes down someday, for whatever reason, or there's some sort of problem on the user's end, the only functionality that will be affected is smooth scrolling, which is just an enhancement and not a core feature of the site.
 
 ## What Did I Learn?
 
