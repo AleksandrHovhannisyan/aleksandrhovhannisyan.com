@@ -263,13 +263,13 @@ function updateThemeLabel() {
 
 
 /** Scrolls to the provided target destination at the given speed.
- * @param topOfTarget - the offset().top of the target, plus/minus any additional offset.
- * @param delay - the number of milliseconds for which the transition should play.
+ * @param targetPosition - the location to which the page should scroll.
+ * @param duration - the number of milliseconds for which the scroll animation should play.
  */
-function smoothScrollTo(topOfTarget, duration=500){
+function smoothScrollTo(targetPosition, duration=500){
     // Note: this is really the only place we need to use jQuery because there's
     // no good JavaScript equivalent that isn't messy and convoluted
-    $('html, body').animate({scrollTop: topOfTarget}, duration);
+    $('html, body').animate({scrollTop: targetPosition}, duration);
 }
 
 
