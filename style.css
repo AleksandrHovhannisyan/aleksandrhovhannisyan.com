@@ -566,6 +566,10 @@ button:focus {
     text-decoration: none;
     color: black;
     transition: var(--global-transition-duration);
+    
+    border-radius: 50%;    
+    width: 60px;
+    height: 60px;
 }
 
 /* ============================================
@@ -655,29 +659,33 @@ button:focus {
     border-top: none;
 }
 
-.collapsible-content .awards {
+/* Prefixing all collapsible-content stuff here with .institution to keep things
+more generically styled for .collapsible-content on its own, since collapsibles can, in theory,
+be used anywhere on the page. */
+
+.institution .collapsible-content .awards {
     /* Only matters on mobile, where the awards are stacked underneath courses */
     border-top: solid var(--collapsible-content-border-width) var(--button-bg-color);
     transition: border var(--global-transition-duration);
 }
 
-.collapsible-content ul {
+.institution .collapsible-content ul {
     padding-right: 10px;
 }
 
-.collapsible-content p {
+.institution .collapsible-content p {
     padding-left: 10px;
 }
 
 /* Line up courses and awards side by side on larger screens */
 @media only screen and (min-width: 800px) {
 
-    .collapsible-content {
+    .institution .collapsible-content {
         grid-template-rows: 1fr;
         grid-template-columns: auto auto;
     }
 
-    .collapsible-content .awards {
+    .institution .collapsible-content .awards {
         /* Now that it's lined up to the right of the courses, there's no need for a top border */
         border-top: none;
         /* But there is for a left border */
@@ -797,8 +805,7 @@ input.honeypot {
     positioned .container-link as a child */
     position: relative;
     display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 20px;
+    grid-template-columns: 1fr 1fr;
 }
 
 .social-network:hover {
@@ -806,9 +813,9 @@ input.honeypot {
     background-color: var(--skill-hover-bg-color);
 }
 
+/* The social icon + its background icon, stacked on top of one another */
 .social-network .fa-stack {
-    grid-column: 1;
-    display: grid;
+    display: flex;
 }
 
 .fa-stack i {
@@ -816,13 +823,17 @@ input.honeypot {
     justify-self: center;
 }
 
-/* Whatever icon is being used as the background one */
+/* Whatever icon is being used as the background one; we'll keep it invisible in
+the light theme but transition its opacity in dark mode. */
 .fa-stack-2x {
     opacity: 0;
     font-size: 1.5em;
     color: white;
 }
 
+/* The background icon will appear when we transition to the
+dark theme; that way, the social icons will get a nice white fill in any
+see-through parts (like the LinkedIn logo's "ln" text) and a thick border effect. */
 .night .fa-stack-2x {
     opacity: 1;
 }
