@@ -349,6 +349,10 @@ button:focus {
     margin-left: calc(var(--switch-width) - 2 * var(--switch-border-thickness) - var(--switch-orb-width) - var(--orb-distance-from-edge));
 }
 
+#theme-label {
+    align-self: center;
+}
+
 .nav-links.active {
     display: block;
     background-color: var(--nav-bg-color);
