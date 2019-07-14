@@ -307,30 +307,37 @@ button:focus {
 
 #nightmode-switch {
     position: relative;
-    width: 40px;
+    
+    --switch-width: 40px;
+    width: var(--switch-width);
     height: 20px;
     margin-right: 5px;
     align-self: center;
 
     background-color: var(--nav-bg-color);
-    border: 3px solid var(--nav-text-color);
+    --switch-border-thickness: 3px;
+    border: var(--switch-border-thickness) solid var(--nav-text-color);
     border-radius: 100px;
+    
     cursor: pointer;
     transition: var(--global-transition-duration);
 }
 
 #nightmode-switch::before {
-    --switch-button-height: 10px;
     content: "";
 
-    margin-left: 2px;
-    width: 12px;
-    height: var(--switch-button-height);
+    --orb-distance-from-edge: 2px;
+    margin-left: var(--orb-distance-from-edge);
+
+    --switch-orb-height: 10px;
+    --switch-orb-width: 12px;
+    width: var(--switch-orb-width);
+    height: var(--switch-orb-height);
 
     position: absolute;
     /* We want to be halfway from the top, but we have to account for
     our own height to get the 'true' center position */
-    top: calc(50% - var(--switch-button-height) / 2);
+    top: calc(50% - var(--switch-orb-height) / 2);
     
     background-color: var(--nav-text-color);
     border-radius: 50%;
@@ -338,7 +345,8 @@ button:focus {
 }
 
 .night #nightmode-switch::before {
-    margin-left: 20px;
+    /* A monstrous calculation, sure, but at least it's more maintainable than hardcoding pixels */
+    margin-left: calc(var(--switch-width) - 2 * var(--switch-border-thickness) - var(--switch-orb-width) - var(--orb-distance-from-edge));
 }
 
 .nav-links.active {
