@@ -299,15 +299,18 @@ button:focus {
     font-size: 1.5em;
 }
 
-#nightmode-switch-container, #nightmode-switch-container * {
-    display: inline-block;
+#nightmode-switch-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
 }
 
 #nightmode-switch {
+    position: relative;
     width: 40px;
     height: 20px;
-    line-height: 15px;
     margin-right: 5px;
+    align-self: center;
 
     background-color: var(--nav-bg-color);
     border: 3px solid var(--nav-text-color);
@@ -317,15 +320,17 @@ button:focus {
 }
 
 #nightmode-switch::before {
+    --switch-button-height: 10px;
     content: "";
-    display: inline-block;
-    vertical-align: middle;
-    line-height: normal;
 
     margin-left: 2px;
-    margin-bottom: 2px;
     width: 12px;
-    height: 10px;
+    height: var(--switch-button-height);
+
+    position: absolute;
+    /* We want to be halfway from the top, but we have to account for
+    our own height to get the 'true' center position */
+    top: calc(50% - var(--switch-button-height) / 2);
     
     background-color: var(--nav-text-color);
     border-radius: 50%;
