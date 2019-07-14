@@ -6,14 +6,14 @@ setupRepos();
 requestRepoData();
 
 
-// Auto-transition to night mode, if applicable
+// Auto-transition to night theme, if applicable
 (function(){
-    const nightModeSwitch = document.getElementById('nightmode-switch');
-    nightModeSwitch.addEventListener('click', toggleColorTheme);
+    const themeSwitch = document.getElementById('theme-switch');
+    themeSwitch.addEventListener('click', toggleColorTheme);
 
     const today = new Date();    
     if (today.getHours() >= 20 || today.getHours() <= 6) {
-        nightModeSwitch.click();
+        themeSwitch.click();
     }
 })();
 

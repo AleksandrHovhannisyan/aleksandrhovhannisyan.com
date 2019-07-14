@@ -238,7 +238,7 @@ button:focus {
 
 /* ============================================
 
-   Navigation (+ night mode nightmode-switch)
+   Navigation (+ color theme switch)
 
    ============================================
 */
@@ -299,13 +299,13 @@ button:focus {
     font-size: 1.5em;
 }
 
-#nightmode-switch-container {
+#theme-switch-container {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
 }
 
-#nightmode-switch {
+#theme-switch {
     position: relative;
     
     --switch-width: 40px;
@@ -323,7 +323,7 @@ button:focus {
     transition: var(--global-transition-duration);
 }
 
-#nightmode-switch::before {
+#theme-switch::before {
     content: "";
 
     --orb-distance-from-edge: 2px;
@@ -344,7 +344,7 @@ button:focus {
     transition: var(--global-transition-duration);
 }
 
-.night #nightmode-switch::before {
+.night #theme-switch::before {
     /* A monstrous calculation, sure, but at least it's more maintainable than hardcoding pixels */
     margin-left: calc(var(--switch-width) - 2 * var(--switch-border-thickness) - var(--switch-orb-width) - var(--orb-distance-from-edge));
 }
