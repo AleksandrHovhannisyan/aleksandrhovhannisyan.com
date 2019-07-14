@@ -345,7 +345,9 @@ button:focus {
 }
 
 .night #theme-switch::before {
-    /* A monstrous calculation, sure, but at least it's more maintainable than hardcoding pixels */
+    /* A monstrous calculation, but at least it's more maintainable than hardcoding pixels and trying to get them right.
+    One downside: this breaks the theme-switch transition in Edge due to an unresolved "bug" with the browser. See here:
+    https://codepen.io/danwilson/details/zwqvOK/ and https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/105834/ */
     margin-left: calc(var(--switch-width) - 2 * var(--switch-border-thickness) - var(--switch-orb-width) - var(--orb-distance-from-edge));
 }
 
