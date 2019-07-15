@@ -189,7 +189,7 @@ function footerFor(repo) {
     var footer = document.createElement('footer');
     footer.classList.add('topics');
 
-    for(const topic of get(repo).topics) {
+    for (const topic of get(repo).topics) {
         const p = document.createElement('p');
         p.textContent = topic;
         footer.appendChild(p);
@@ -267,7 +267,8 @@ function updateThemeLabel() {
  */
 function smoothScrollTo(targetPosition, duration=500){
     // Note: this is really the only place we need to use jQuery because there's
-    // no good JavaScript equivalent that isn't messy and convoluted
+    // no good JavaScript equivalent that isn't messy and convoluted. The best alternative
+    // is 'scroll-behavior: smooth' via CSS, but that's not supported in all browsers.
     $('html, body').animate({scrollTop: targetPosition}, duration);
 }
 
@@ -275,7 +276,7 @@ function smoothScrollTo(targetPosition, duration=500){
 // Another closure, just to prevent variables from leaking into global scope when possible
 (function registerCollapsibleClickHandlers() {
     const collapsibles = document.getElementsByClassName('collapsible-header');
-    for(const collapsible of Array.from(collapsibles)) {
+    for (const collapsible of Array.from(collapsibles)) {
         collapsible.addEventListener('click', toggleCollapsible);
     }
 })();
