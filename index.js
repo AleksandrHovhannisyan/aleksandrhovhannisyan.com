@@ -7,7 +7,7 @@ requestRepoData();
 
 
 // Auto-transition to night theme, if applicable
-(function(){
+(function() {
     const themeSwitch = document.getElementById('theme-switch');
     themeSwitch.addEventListener('click', toggleColorTheme);
 
@@ -255,8 +255,7 @@ function updateThemeLabel() {
 
     if (document.documentElement.classList.contains('night')) {
         themeLabel.textContent = 'Dark mode';
-    }
-    else {
+    } else {
         themeLabel.textContent = 'Light mode';
     }
 }
@@ -296,8 +295,8 @@ function toggleCollapsible() {
     const icon = this.querySelector('i');
 
     // Must use computed style for initial check; it's set to 0px in style.css, not as an inline style
-    if (getComputedStyle(content).maxHeight == '0px') {
-        content.style.maxHeight = content.scrollHeight + "px";
+    if (getComputedStyle(content).maxHeight === '0px') {
+        content.style.maxHeight = content.scrollHeight + 'px';
         toggleIcon(icon);
         smoothScrollTo(this.offsetTop - 60);
     } else {
@@ -308,22 +307,29 @@ function toggleCollapsible() {
 
 
 const navbarHamburger = document.querySelector('#topnav .navbar-hamburger');
-const navbarLinkContainer = document.querySelector('#topnav .nav-links');
+const navbarLinks = document.querySelector('#topnav .nav-links');
 
 /** Called when the user clicks on the hamburger icon in the navigation menu. 
  */
-navbarHamburger.addEventListener('click', function toggleMobileNavbar(){
-    navbarLinkContainer.classList.toggle('active');
+navbarHamburger.addEventListener('click', function toggleMobileNavbar() {
+    // I'm doing this via JS because the best alternative is to set some arbitrary max-height on .nav-links
+    // via CSS, e.g. 1000 px, but that's hacky and doesn't work well with the transition duration.
+    // If I didn't want any smooth animation on the nav menu opening, this could be accomplished by
+    // simply toggling a class on .nav-links and changing the max height property via the "hacky" solution.
+    if (getComputedStyle(navbarLinks).maxHeight === '0px') {
+        navbarLinks.style.maxHeight = navbarLinks.scrollHeight + 'px';
+    } else {
+        navbarLinks.style.maxHeight = '0px';
+    }
 });
 
 
-// Register click listeners for all the navbar links so we can hide the navbar menu
-// if the links are clicked from mobile (i.e., to hide the dropdown). Doing this in
-// a closure so we don't unnecessarily expose these variables to global scope.
+// Register click listeners for all the navbar links so we can hide the mobile dropdown menu if
+// a link is clicked on. Doing this in a closure so we don't unnecessarily expose these variables to global scope.
 (function() {
-    const navbarLinks = navbarLinkContainer.querySelectorAll('a');
-    for (const anchor of Array.from(navbarLinks)) {
-        anchor.addEventListener('click', hideMobileNavbar);
+    const anchors = navbarLinks.querySelectorAll('a');
+    for (const anchor of Array.from(anchors)) {
+        anchor.addEventListener('click', hideMobileMenuOnAnchorClick);
     }
 })();
 
@@ -332,8 +338,9 @@ navbarHamburger.addEventListener('click', function toggleMobileNavbar(){
  *  while the mobile version of the navigation was showing. If so, it simulates a
  *  click on the hamburger icon to hide the navigation menu.
  */
-function hideMobileNavbar() {
-    if (getComputedStyle(navbarHamburger).display != 'none'){
+function hideMobileMenuOnAnchorClick() {
+    // Because it gets set to 'none' on larger screens
+    if (getComputedStyle(navbarHamburger).display !== 'none'){
         navbarHamburger.click();
     }
 };
