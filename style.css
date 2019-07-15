@@ -15,9 +15,7 @@
     --nav-bg-color: rgb(44, 44, 44);
     --nav-text-color: rgb(179, 177, 177);
     --nav-min-height: 50px;
-    --topic-label-bg-color: #e7e7e7;
-
-    --hr-color: rgba(143, 142, 142, 0.2);
+    --repo-topic-bg-color: #e7e7e7;
 
     --text-color-normal: black;
     --text-color-emphasis: black;
@@ -41,15 +39,12 @@
 
     --page-center-percentage: 80%;
     --global-transition-duration: 0.5s;
-    --collapsible-content-border-width: 3px;
 }
 
 .night {
     --main-bg-color: rgb(44, 44, 44);
     --nav-bg-color: rgb(10, 10, 10);
-    --topic-label-bg-color: #222222;
-    
-    --hr-color: rgba(255, 255, 255, 0.2);
+    --repo-topic-bg-color: #222222;
 
     --text-color-normal: rgb(179, 177, 177);
     --text-color-emphasis: rgb(202, 202, 202);
@@ -575,7 +570,7 @@ button:focus {
     margin-right: 10px;
 
     border-radius: 2px;
-    background-color: var(--topic-label-bg-color);
+    background-color: var(--repo-topic-bg-color);
     box-shadow: 0 0 2px black;
     transition: var(--global-transition-duration);
 }
@@ -687,6 +682,7 @@ button:focus {
     max-height: 0px;
     overflow: hidden;
 
+    --collapsible-content-border-width: 3px;
     border: solid var(--collapsible-content-border-width) var(--button-bg-color);
     transition: var(--global-transition-duration);
     border-top: none;
