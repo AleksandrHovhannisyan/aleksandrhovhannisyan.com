@@ -284,7 +284,7 @@ function smoothScrollTo(targetPosition, duration=500){
 
 function toggleIcon(icon) {
     icon.classList.toggle('fa-angle-down');
-    icon.classList.toggle('fa-angle-right');
+    icon.classList.toggle('fa-angle-up');
 }
 
 
