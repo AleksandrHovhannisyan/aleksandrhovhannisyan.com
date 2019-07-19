@@ -16,7 +16,6 @@
     --nav-bg-color: rgb(44, 44, 44);
     --nav-text-color: rgb(179, 177, 177);
     --nav-min-height: 50px;
-    --repo-topic-bg-color: #e7e7e7;
 
     --text-color-normal: black;
     --text-color-emphasis: black;
@@ -33,7 +32,8 @@
     --project-card-shadow: 0px 2px 10px rgba(0,0,0,0.25), 0 6px 6px rgba(0,0,0,0.2);
     --project-card-shadow-hover: 0px 8px 20px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.2);
     --project-card-margin: 30px;
-    
+    --repo-topic-bg-color: #e7e7e7;
+
     --form-bg-color: rgb(255, 255, 255);
     --form-input-margins: 10px;
     --form-max-width: 475px;
@@ -47,7 +47,6 @@
     --highlight-bg-color: rgb(83, 79, 63);
 
     --nav-bg-color: rgb(10, 10, 10);
-    --repo-topic-bg-color: #222222;
 
     --text-color-normal: rgb(179, 177, 177);
     --text-color-emphasis: rgb(202, 202, 202);
@@ -58,8 +57,10 @@
     --button-text-color: var(--text-color-emphasis);
     --button-text-hover-color: rgb(24, 24, 24);
  
-    --skill-hover-bg-color: rgb(66, 66, 66);
     --project-card-bg-color: rgb(54, 54, 54);
+    --repo-topic-bg-color: #222222;
+
+    --skill-hover-bg-color: rgb(66, 66, 66);
     --form-bg-color: var(--skill-hover-bg-color);
 }
 
