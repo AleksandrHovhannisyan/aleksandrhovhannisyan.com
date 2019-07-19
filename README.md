@@ -73,7 +73,7 @@ The benefit of this refactoring was twofold:
 
 2. CSS Grid is awesome :) I've yet to master everything it has to offer, but from what I saw personally, it has immense potential. It's quite possibly the future of layout design.
 
-3. Wireframes are indispensable. I used [MockFlow](https://www.mockflow.com/) to throw together a very rough representation of what I wanted my site to look like. Though I did ultimately change quite a lot of things, the mockup stage helped me focus on what content I wanted to have on my page—and that tied in to #1. Here's what it looked like:
+3. Mockups are indispensable. I used [MockFlow](https://www.mockflow.com/) to throw together a very rough representation of what I wanted my site to look like. Though I did ultimately change quite a lot of things, the mockup stage helped me focus on what content I wanted to have on my page—and that tied in to #1. Here's what it looked like:
 
 ![](https://user-images.githubusercontent.com/19352442/59712852-0ab55780-91dc-11e9-833f-b7b660491608.png)
 
