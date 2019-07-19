@@ -11,6 +11,7 @@
 
 :root {
     --main-bg-color: white;
+    --highlight-bg-color: rgb(247, 199, 207);
 
     --nav-bg-color: rgb(44, 44, 44);
     --nav-text-color: rgb(179, 177, 177);
@@ -43,6 +44,8 @@
 
 .night {
     --main-bg-color: rgb(44, 44, 44);
+    --highlight-bg-color: rgb(83, 79, 63);
+
     --nav-bg-color: rgb(10, 10, 10);
     --repo-topic-bg-color: #222222;
 
@@ -58,6 +61,11 @@
     --skill-hover-bg-color: rgb(66, 66, 66);
     --project-card-bg-color: rgb(54, 54, 54);
     --form-bg-color: var(--skill-hover-bg-color);
+}
+
+::selection {
+    background-color: var(--highlight-bg-color);
+    color: var(--text-color-emphasis);
 }
 
 #intro {
