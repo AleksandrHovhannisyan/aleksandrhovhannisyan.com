@@ -434,6 +434,10 @@ button:focus {
     flex-wrap: wrap;
 }
 
+#intro #lede {
+    margin-bottom: 15px;
+}
+
 #profile-photo {
     height: 150px;
     width: 150px;
