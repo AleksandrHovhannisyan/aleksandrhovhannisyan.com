@@ -32,7 +32,6 @@ function setupRepos() {
     addRepo("aleksandrhovhannisyan.github.io", "Personal Website", '💾', ["html5", "css", "javascript"]);
     addRepo("Steering-Behaviors", "Steering Behaviors", '⚙️', ["c#", "unity", "ai"]);
     addRepo("MIPS-Linked-List", "ASM Linked List", '⛓️', ["mips", "asm", "qtspim"]);
-    addRepo('Dimension35', "dim35: Game", '⚔️', ["godot", "networking"]);
 }
 
 

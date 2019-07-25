@@ -23,7 +23,7 @@
     <body>
 
         <nav id="topnav">
-            <div class="centered-content">
+            <div class="centered-content nav-container">
                 <div id="theme-switch-container">
                     <div id="theme-switch"></div>
                     <span id="theme-label">Light mode</span>
@@ -40,36 +40,35 @@
         </nav>
 
         <article id="content">
-
-            <header id="page-header">                
-                <section id="intro">
-                    <!-- Note: I'm using a nested image to force the emoji to conform to my preferences instead
-                    of adopting the vendor's version of the emoji (which can sometimes ruin the site's aesthetic). However,
-                    in case the image can't be rendered, I've included the emoji unicode as the alt text. -->
-                    <h1 class="heading">
-                        <span>Hey there! I'm Aleksandr</span>
-                        <img src="img/smile.png" alt="😄">
-                    </h1>
+             
+            <section id="intro" class="centered-content">
+                <div>
+                    <h1>Hey there! I'm Aleksandr</h1>
                     <p id="main-cta">Looking for a software developer? <strong>Let's get in touch!</strong></p>
                     <div class="main-buttons">
                         <a class="button" href="https://www.linkedin.com/in/aleksandr-hovhannisyan-ba154b120/" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
                         <a class="button" href="https://github.com/AleksandrHovhannisyan" target="_blank"><i class="fab fa-github"></i> GitHub</a>
                     </div>
-                </section>
-        
-                <section id="about-me">
-                    <h2 class="heading">
-                        <span>About Me</span>
-                        <img src="img/laptop.png" alt="💻">
-                    </h2>
-                    <p>
-                        I'm a CS undergrad at the University of Florida with a specific interest in <strong>front-end web development</strong>. 
-                        When I'm not hacking away on a project, I enjoy playing video games, solving puzzles, and working out!
-                    </p>
-                </section>
-            </header>
+                </div>
+                <img src="img/profile-photo.jpg" alt="" id="profile-photo">               
+            </section>
 
-            <section id="projects">
+            <section id="about-me" class="centered-content">
+                <h2 class="heading">
+                    <span>About Me</span>
+                    <img src="img/laptop.png" alt="💻">
+                </h2>
+                <p>
+                    I'm a computer science undergrad at the University of Florida with a specific interest in <strong>front-end web development</strong>. 
+                    When I'm not hacking away on a project, I enjoy playing video games, solving puzzles, and working out!
+                </p>
+                <p>
+                    This website began as a passion project to both sharpen and demonstrate my front-end skills. I'm a creative person at 
+                    heart and will spend as many painful hours as it takes perfecting something until I'm fully satisfied.
+                </p>
+            </section>
+
+            <section id="projects" class="centered-content">
                 <h2 class="heading">
                     <span>Projects</span>
                     <img src="img/folder.png" alt="📁">
@@ -89,7 +88,7 @@
 
             </section>
 
-            <section id="skills">
+            <section id="skills" class="centered-content">
                 <h2 class="heading">
                     <span>Skills and Abilities</span>
                     <img src="img/juggler.png" alt="🤹">
@@ -526,7 +525,7 @@
                 </div>
             </section>
 
-            <section id="education">
+            <section id="education" class="centered-content">
                 <h2 class="heading">
                     <span>Education</span>
                     <img src="img/graduation-cap.png" alt="🎓">
@@ -572,7 +571,7 @@
                 </div>
             </section>
 
-            <section id="contact">
+            <section id="contact" class="centered-content">
                 <section id="contact-form">
                     <h2 class="heading">
                         <span>Get in touch!</span>
@@ -628,7 +627,7 @@
                 </section>
             </section>
 
-            <footer id="page-footer">
+            <footer id="page-footer" class="centered-content">
                 <span>Made with ♥ by Aleksandr Hovhannisyan</span>
             </footer>
 

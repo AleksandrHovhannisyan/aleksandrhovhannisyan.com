@@ -38,7 +38,7 @@
     --form-input-margins: 10px;
     --form-max-width: 475px;
 
-    --page-center-percentage: 80%;
+    --page-max-width: 900px;
     --global-transition-duration: 0.5s;
 }
 
@@ -69,21 +69,13 @@
     color: var(--text-color-emphasis);
 }
 
-#intro {
-    margin-bottom: 40px;
-}
-
-#intro *, #about-me * {
-    transition: var(--global-transition-duration);
-}
-
 #about-me, #projects, #skills, #education, #contact {    
     /* So the fixed navbar doesn't cover up any content we scroll to */
     margin-top: calc((var(--nav-min-height) + 20px) * -1);
     padding-top: calc(var(--nav-min-height) + 20px);
 }
 
-#about-me, #projects, #skills, #education {
+#intro, #about-me, #projects, #skills, #education {
     margin-bottom: 120px;
 }
 
@@ -93,7 +85,7 @@ body {
     background-color: var(--main-bg-color);
     transition: background-color var(--global-transition-duration);
     
-    width: var(--page-center-percentage);
+    max-width: var(--page-max-width);
     margin-left: auto;
     margin-right: auto;
 }
@@ -149,6 +141,11 @@ p {
 .heading img {
     margin-left: 5px;
     width: 1.1em;
+}
+
+.centered-content {
+    margin: auto;
+    padding: 0 1.5rem;
 }
 
 /* ============================================
@@ -257,10 +254,8 @@ button:focus {
    ============================================
 */
 
-#topnav .centered-content {
-    width: var(--page-center-percentage);
-    margin-left: auto;
-    margin-right: auto;
+#topnav .nav-container {
+    max-width: var(--page-max-width);
     height: var(--nav-min-height);
     display: flex;
     justify-content: space-between;
@@ -432,11 +427,27 @@ button:focus {
    ============================================
 */
 
+#intro {
+    margin-top: 130px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#profile-photo {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#intro *, #about-me * {
+    transition: var(--global-transition-duration);
+}
+
 #page-header {
     margin-top: 100px;
-    display: grid;
-    column-gap: 50px;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 #main-cta {
@@ -456,7 +467,7 @@ button:focus {
     column-gap: 50px;
     row-gap: 50px;
     /* Fill up space as it's made available, with each card being a minimum of 250px */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
 /* Don't treat the project header as an item/card, keep it on the top row */
@@ -629,9 +640,9 @@ button:focus {
 
 #skills {
     display: grid;
-    column-gap: 50px;
+    column-gap: 100px;
     row-gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
 #skills h2 {
@@ -640,7 +651,7 @@ button:focus {
 }
 
 .skill-category h4 {
-    margin-bottom: 5px;
+    margin-bottom: 20px;
 }
 
 .skill-item {
@@ -754,7 +765,7 @@ be used anywhere on the page. */
     grid-template-areas: "form"
                          "socials";
     grid-template-rows: auto;
-    column-gap: 50px;
+    column-gap: 120px;
 }
 
 #contact-form {
