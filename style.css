@@ -17,7 +17,7 @@
     --nav-text-color: rgb(179, 177, 177);
     --nav-min-height: 50px;
 
-    --text-color-normal: black;
+    --text-color-normal: rgb(83, 79, 79);
     --text-color-emphasis: black;
     --link-color: rgb(39, 83, 133);
 
@@ -438,6 +438,7 @@ button:focus {
     height: 150px;
     width: 150px;
     border-radius: 50%;
+    box-shadow: 0px 0px 12px 2px var(--nav-bg-color);
     margin-left: auto;
     margin-right: auto;
 }
