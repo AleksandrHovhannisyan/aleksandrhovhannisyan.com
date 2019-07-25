@@ -116,6 +116,10 @@ a {
     transition: var(--global-transition-duration);
 }
 
+a:hover {
+    color: var(--text-color-emphasis);
+}
+
 p {
     color: var(--text-color-normal);
     transition: var(--global-transition-duration);
