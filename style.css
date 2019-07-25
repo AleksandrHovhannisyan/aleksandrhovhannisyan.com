@@ -140,6 +140,22 @@ p {
     z-index: 1;
 }
 
+/* Custom headings with heading text and a nested image */
+
+.heading * {
+    vertical-align: middle;
+}
+
+.heading img {
+    margin-left: 5px;
+    width: 30px;
+    height: 30px;
+}
+
+h1.heading img {
+    width: 37px;
+    height: 37px;
+}
 
 /* ============================================
 
