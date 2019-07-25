@@ -142,14 +142,13 @@ p {
 
 /* Custom headings with heading text and a nested image */
 
-.heading * {
+.heading, .heading * {
     vertical-align: middle;
 }
 
 .heading img {
     margin-left: 5px;
-    width: 30px;
-    height: 30px;
+    width: 1.3em;
 }
 
 h1.heading img {
