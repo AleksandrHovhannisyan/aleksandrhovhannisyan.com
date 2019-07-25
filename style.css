@@ -48,12 +48,12 @@
 
     --nav-bg-color: rgb(10, 10, 10);
 
-    --text-color-normal: rgb(161, 157, 157);
-    --text-color-emphasis: rgb(202, 202, 202);
-    --link-color: rgb(202, 183, 143);
+    --text-color-normal: rgb(168, 159, 145);
+    --text-color-emphasis: rgb(221, 207, 182);
+    --link-color: rgb(175, 157, 123);
     
-    --button-bg-color: rgb(90, 90, 66);
-    --button-bg-hover-color: rgb(141, 141, 114);
+    --button-bg-color: rgb(85, 79, 67);
+    --button-bg-hover-color: rgb(116, 110, 99);
     --button-text-color: var(--text-color-emphasis);
     --button-text-hover-color: rgb(24, 24, 24);
  
