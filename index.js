@@ -228,11 +228,11 @@ function createHoverContent() {
 
 
 function publishRepoCards() {
-    const projects = document.getElementById('projects');
+    const grid = document.getElementById('card-grid');
     const placeholder = document.getElementById('project-placeholder');
 
     for (const repo of repos.values()) {
-        projects.insertBefore(repo.card, placeholder);
+        grid.insertBefore(repo.card, placeholder);
     }
 }
 
