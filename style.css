@@ -270,7 +270,8 @@ button:focus {
     right: 100%;
     top: 0;
     background-color: var(--nav-bg-color);
-    transition: background-color var(--global-transition-duration);
+    box-shadow: 0px 0px 10px 1px var(--nav-bg-color);
+    transition: var(--global-transition-duration);
 
     /* This is to ensure that it always appears above everything. */
     z-index: 100;
