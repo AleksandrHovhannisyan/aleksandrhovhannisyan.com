@@ -238,7 +238,7 @@ button:focus {
     outline: none;
 }
 
-@media only screen and (min-width: 400px) {
+@media only screen and (min-width: 600px) {
     
     .main-buttons {
         display: flex;
@@ -439,17 +439,21 @@ button:focus {
 }
 
 #intro #lede {
-    margin-right: 20px;
+    flex: 1 1 50%;
     margin-bottom: 15px;
 }
 
 #profile-photo {
+    flex: 1 1 50%;
+    display: flex;
+    justify-content: center;
+}
+
+#profile-photo img {
     height: 150px;
     width: 150px;
     border-radius: 50%;
     box-shadow: 0px 0px 12px 2px var(--nav-bg-color);
-    margin-left: auto;
-    margin-right: auto;
 }
 
 #intro *, #about-me * {
