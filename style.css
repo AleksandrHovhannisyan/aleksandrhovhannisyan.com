@@ -772,6 +772,7 @@ be used anywhere on the page. */
                          "socials";
     grid-template-rows: auto;
     column-gap: 120px;
+    margin-bottom: 30px;
 }
 
 #contact-form {
