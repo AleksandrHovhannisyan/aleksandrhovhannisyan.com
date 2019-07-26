@@ -325,7 +325,7 @@ button:focus {
     color: white;
 }
 
-@media only screen and (min-width: 825px) {
+@media only screen and (min-width: 700px) {
 
     .nav-links {
         /* Note 1: I'm using !important here only as a last resort to cover an edge case. Suppose
