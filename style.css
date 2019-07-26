@@ -446,7 +446,8 @@ button:focus {
 #profile-photo {
     flex: 1 1 50%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 #profile-photo img {
@@ -464,8 +465,12 @@ button:focus {
     margin-top: 100px;
 }
 
-#main-cta {
+.main-buttons {
+    margin-top: 30px;
     margin-bottom: 30px;
+}
+
+#main-cta {
     font-size: 1.1em;
 }
 
