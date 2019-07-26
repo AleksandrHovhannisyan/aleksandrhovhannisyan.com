@@ -2,8 +2,6 @@
 
 This is just a little single-page site I threw together to share some of my work, skills, education, etc.
 
-![](https://user-images.githubusercontent.com/19352442/59554876-ece7b880-8f77-11e9-972c-cd5c79a99ec8.png)
-
 ## Why Build Everything from Scratch?
 
 I mainly built this site as a way to practice (and showcase) my HTML and CSS abilities, so it simply made sense to build everything from the ground up without relying on frameworks to do things for me.
@@ -26,7 +24,7 @@ I built my site with a mobile-first strategy, targeting a minimum device width o
 ### Colors and Themes
 I didn't really have any strategy in place for color choices; I mainly picked whatever looked good to me and tweaked things as I went along. Light mode is nice and neutral. For dark mode, I wanted to go for a "coffee"-type theme. I added both an auto and a manual transition via a switch on the navbar to allow users to pick whichever theme they prefer. Again, that's obviously not too important for a portfolio site, but it was still something I wanted to try.
 
-![](https://user-images.githubusercontent.com/19352442/60931926-8f4e3f80-a289-11e9-889f-aea7521bec73.png)
+![](https://user-images.githubusercontent.com/19352442/61949854-20a3fe00-af7a-11e9-8609-10920f6f6eb8.png)
 
 <p align="center"><i>Dark mode theme, for those whose hiring efforts extend into the night :)</i></p>
 
@@ -90,6 +88,12 @@ As you can see, I ended up ditching most of my old ideas and copy. But at least 
 <p align="center"><i>The old skills section—so much wasted space!</i></p>
 
 5. ~~JavaScript is cool, but also apparently expensive when overused. I think I'd like Typescript much more; aside from Python, there are few dynamically typed languages that I like working with. Coming from a C++ background, I prefer static typing because it makes your code much easier to read, and it enforces a strict contract with the compiler. In my opinion, dynamic typing is just fine for small scripts; it's when your code base grows that it becomes a nightmare to maintain. Again, for this project, that wasn't really a problem.~~ Blah, blah, blah. TL;DR: JavaScript is awesome so long as you don't abuse it :)
+
+## Inspiration: Resume Sites and Articles I Love
+
+- [https://www.taniarascia.com](https://www.taniarascia.com/) (note: [https://www.taniarascia.com/how-to-connect-to-an-api-with-javascript/](https://www.taniarascia.com/how-to-connect-to-an-api-with-javascript/) was particularly useful)
+- [http://www.pascalvangemert.nl/](http://www.pascalvangemert.nl/)
+- [https://www.kooslooijesteijn.net/blog/dark-mode-design-considerations](https://www.kooslooijesteijn.net/blog/dark-mode-design-considerations)
 
 ## That's About It!
 
