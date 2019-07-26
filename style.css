@@ -438,9 +438,13 @@ button:focus {
     flex-wrap: wrap;
 }
 
-#intro #lede {
+#lede {
     flex: 1 1 50%;
     margin-bottom: 15px;
+}
+
+#lede p {
+    font-size: 1.1em;
 }
 
 #profile-photo {
@@ -468,10 +472,6 @@ button:focus {
 .main-buttons {
     margin-top: 30px;
     margin-bottom: 30px;
-}
-
-#main-cta {
-    font-size: 1.1em;
 }
 
 /* ============================================
