@@ -227,7 +227,7 @@ p {
 
 /* To get rid of Firefox's dotted lines when these are clicked */
 .button::-moz-focus-inner, .collapsible::-moz-focus-inner {
-    border: 0;
+    outline: none;
 }
 
 .button:hover, .button:hover *, .collapsible-header:hover * {
