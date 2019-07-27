@@ -943,3 +943,7 @@ see-through parts (like the LinkedIn logo's "ln" text) and a thick border effect
     justify-content: center;
     align-items: center;
 }
+
+#page-footer span {
+    text-align: center;
+}
