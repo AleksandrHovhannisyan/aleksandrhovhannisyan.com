@@ -240,11 +240,11 @@ button:focus {
 
 @media only screen and (min-width: 600px) {
     
-    .main-buttons {
+    #main-buttons {
         display: flex;
     }
 
-    .button {
+    #main-buttons .button {
         max-width: 200px; 
     }
 }
@@ -462,7 +462,7 @@ button:focus {
     margin-top: 100px;
 }
 
-.main-buttons {
+#main-buttons {
     margin-top: 15px;
     margin-bottom: 30px;
 }
