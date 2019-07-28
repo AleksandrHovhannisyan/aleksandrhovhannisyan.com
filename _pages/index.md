@@ -11,7 +11,7 @@ permalink: /
             <p id="main-cta">I love tinkering with code and solving problems.</p>
             <p>Looking for a software developer? <strong>Let's get in touch!</strong></p>
         </div>
-        <img src="img/profile-photo.jpg" alt="My profile photo" id="profile-photo">
+        <img src="/assets/img/profile-photo.jpg" alt="My profile photo" id="profile-photo">
     </div>
     <div id="main-buttons">
         <a class="button" href="https://www.linkedin.com/in/aleksandr-hovhannisyan-ba154b120/" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
@@ -22,7 +22,7 @@ permalink: /
 <section id="about-me" class="centered-content">
     <h2 class="heading">
         <span>About Me</span>
-        <img src="img/laptop.png" alt="💻">
+        <img src="/assets/img/laptop.png" alt="💻">
     </h2>
     <p> 
         I'm a CS undergrad at the University of Florida with a passion for programming of all kinds—low-level, high-level,

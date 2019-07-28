@@ -7,7 +7,7 @@ layout: default
     <section id="contact-form">
         <h2 class="heading">
             <span>Get in touch!</span>
-            <img src="img/envelope.png" alt="📧">
+            <img src="/assets/img/envelope.png" alt="📧">
         </h2>
         <p>Thanks for taking the time to reach out&mdash;I'll get back to you ASAP.</p>
         <form action="https://formspree.io/hire.aleksandr@gmail.com" method="POST">
