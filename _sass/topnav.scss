@@ -1,0 +1,159 @@
+@import 'settings';
+
+#topnav {
+    width: 100%;
+    min-height: $topnav-min-height;
+    position: fixed;
+    left: 0;
+    right: 100%;
+    top: 0;
+    background-color: var(--bg-color-contrast);
+    box-shadow: 0px 0px 10px 1px var(--bg-color-contrast);
+    @include transition;
+    /* This is to ensure that it always appears above everything. */
+    z-index: 100;
+
+    * {
+        color: var(--text-color-softer);
+    }
+
+    .nav-container {
+        max-width: $page-max-width;
+        height: $topnav-min-height;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-links {
+        list-style-type: none;
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
+        max-height: 0px;
+        /* Otherwise, the link text will be visible (will overflow its container) when max-height is 0px */
+        overflow: hidden;
+        background-color: var(--bg-color-contrast);
+        color: var(--text-color-softer);
+        @include transition;
+        /* Mobile menu dropdown takes up 100% of the viewport width */
+        display: block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 20px;
+        font-size: 1.1em;
+
+        li {
+            text-align: center;
+            margin: 25px auto;
+        }
+
+        a {
+            text-decoration: none;
+            vertical-align: middle;
+            @include transition;
+
+            &:hover {
+                text-decoration: underline;
+                color: white;
+            }
+        }
+    }
+
+    .navbar-hamburger {
+        font-size: 1.5em;
+    }   
+}
+
+#theme-switch-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    #theme-switch {
+        position: relative;        
+        --switch-width: 40px;
+        width: var(--switch-width);
+        height: 20px;
+        margin-right: 5px;
+        align-self: center;    
+        background-color: var(--bg-color-contrast);
+        --switch-border-thickness: 3px;
+        border: var(--switch-border-thickness) solid var(--text-color-softer);
+        border-radius: 100px;        
+        cursor: pointer;
+        @include transition;
+    }
+
+    #theme-switch::before {
+        content: "";
+        --orb-distance-from-edge: 2px;
+        margin-left: var(--orb-distance-from-edge);    
+        --switch-orb-height: 10px;
+        --switch-orb-width: 12px;
+        width: var(--switch-orb-width);
+        height: var(--switch-orb-height);    
+        position: absolute;
+        /* We want to be halfway from the top, but we have to account for
+        our own height to get the 'true' center position */
+        top: calc(50% - var(--switch-orb-height) / 2);        
+        background-color: var(--text-color-softer);
+        border-radius: 50%;
+        @include transition;
+    }
+
+    #theme-label {
+        align-self: center;
+    }
+}
+
+.night #theme-switch-container {
+    #theme-switch::before {
+        /* A monstrous calculation, but at least it's more maintainable than hardcoding pixels and trying to get them right.
+        One downside: this breaks the theme-switch transition in Edge due to an unresolved "bug" with the browser. See here:
+        https://codepen.io/danwilson/details/zwqvOK/ and https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/105834/ */
+        margin-left: calc(var(--switch-width) - 2 * var(--switch-border-thickness) - var(--switch-orb-width) - var(--orb-distance-from-edge));
+    }
+}
+
+@media only screen and (min-width: 700px) {
+
+    #topnav {
+        .nav-links {
+            /* Note 1: I'm using !important here only as a last resort to cover an edge case. Suppose
+            you open the navbar on a small screen (< 820 px) and then close it. Per the JavaScript,
+            the inline style for .nav-links will be set to 'max-height: 0px' when the menu cloes. If we then switch
+            to a wider view (e.g., by flipping the device to horizontal orientation), the inline style of
+            'max-height: 0px' will end up overriding the style below, effectively making the navbar
+            links invisible. !important allows us to override the inline style set by the script. */
+    
+            /* Note 2: This is admittedly a bit hacky, but it will suffice. The first max-height is for MS Edge and IE 11,
+            which do not yet support intrinsic & extrinsic sizing (and will thus reject the second max-height). However, all other 
+            browsers that do support max-content will override the first style and instead apply the second one. */
+            max-height: 100px !important;
+            max-height: max-content !important;
+            
+            margin: 0;
+            position: static;
+            
+            /* Show the links on a single row on the navbar */
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+    
+            li {
+                margin: 0;
+            }
+    
+            a {
+                margin-left: 40px;
+            }
+        }
+    
+       .navbar-hamburger {
+           display: none;
+        }
+    }
+}

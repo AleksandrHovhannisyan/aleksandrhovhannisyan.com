@@ -18,16 +18,11 @@
 
 
 :root {
-    @include common-themed-properties;
+    @include common-theme-properties("day");
 }
 
 .night {
-    --bg-color-main: rgb(44, 44, 44);
-    --bg-color-contrast: rgb(10, 10, 10);
-    --highlight-bg-color: rgb(116, 113, 100);
-    --text-color-normal: rgb(168, 159, 145);
-    --text-color-emphasis: rgb(221, 207, 182);
-    --link-color: rgb(175, 157, 123);
+    @include common-theme-properties("night");
 }
 
 ::selection {
