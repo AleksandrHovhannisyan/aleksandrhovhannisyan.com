@@ -1,0 +1,8 @@
+@mixin common-themed-properties {
+    --bg-color-main: white;
+    --bg-color-contrast: rgb(44, 44, 44);
+    --highlight-bg-color: rgb(211, 218, 250);
+    --text-color-normal: rgb(83, 79, 79);
+    --text-color-emphasis: black;
+    --link-color: rgb(39, 83, 133);
+}

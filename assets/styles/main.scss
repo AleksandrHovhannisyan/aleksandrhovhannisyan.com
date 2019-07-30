@@ -1,22 +1,44 @@
 ---
 ---
 
+@import 'mixins';
 @import 'settings';
 @import 'fonts';
 @import 'topnav';
 @import 'footer';
 
+
+/* ==============================
+
+   General styling common to all
+   pages on the site.
+
+   ==============================
+*/
+
+
 :root {
-    --main-bg-color: white;
-    --text-color-normal: rgb(83, 79, 79);
-    --text-color-emphasis: black;
-    --link-color: rgb(39, 83, 133);
+    @include common-themed-properties;
+}
+
+.night {
+    --bg-color-main: rgb(44, 44, 44);
+    --bg-color-contrast: rgb(10, 10, 10);
+    --highlight-bg-color: rgb(116, 113, 100);
+    --text-color-normal: rgb(168, 159, 145);
+    --text-color-emphasis: rgb(221, 207, 182);
+    --link-color: rgb(175, 157, 123);
+}
+
+::selection {
+    background-color: var(--highlight-bg-color);
+    color: var(--text-color-emphasis);
 }
 
 body {
     font-family: $font-family-primary, $font-family-backup;
     color: var(--text-color-normal);
-    background-color: var(--main-bg-color);
+    background-color: var(--bg-color-main);
     transition: background-color $transition-duration;
     
     max-width: $page-max-width;
@@ -27,4 +49,42 @@ body {
 .centered-content {
     margin: auto;
     padding: 0 1.5rem;
+}
+
+i, h1, h2, h3, h4, h5, h6, strong, em {
+    color: var(--text-color-emphasis);
+    transition: $transition-duration;
+}
+
+h1 {
+    font-size: 2.2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+}
+
+h1, h2 {
+    margin-top: 0;
+}
+
+a {
+    color: var(--link-color);
+    transition: $transition-duration;
+
+    &:hover {
+        color: var(--text-color-emphasis);
+    }
+}
+
+p {
+    color: var(--text-color-normal);
+    transition: var(--global-transition-duration);
+}
+
+.heading, .heading * {
+    vertical-align: middle;
+
+    img {
+        margin-left: 5px;
+        width: 1.1em;
+    }
 }
