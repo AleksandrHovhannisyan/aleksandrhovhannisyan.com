@@ -38,10 +38,10 @@
                         </div>
                         <i class="navbar-hamburger fas fa-bars"></i>
                         <ul class="nav-links">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="/assets/src/experience.md">Experience</a></li>
-                            <li><a href="/assets/src/blog.md">Blog</a></li>
-                            <li><a href="/assets/src/contact.md">Contact</a></li>
+                            {% assign pages = site.html_pages | sort: "order" %}
+                            {% for page in pages %}
+                                <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </nav>

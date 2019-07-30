@@ -1,6 +1,8 @@
 ---
 title: Experience
 layout: default
+permalink: /experience/
+order: 2
 ---
 
 <section id="projects" class="centered-content">

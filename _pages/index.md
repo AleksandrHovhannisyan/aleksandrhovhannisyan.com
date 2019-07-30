@@ -2,6 +2,7 @@
 title: Home
 layout: default
 permalink: /
+order: 1
 ---
 
 <section id="intro" class="centered-content">
