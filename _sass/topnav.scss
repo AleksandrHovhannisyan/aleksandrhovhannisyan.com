@@ -73,9 +73,9 @@
 
     #theme-switch {
         position: relative;        
-        --switch-width: 40px;
+        --switch-width: 35px;
         width: var(--switch-width);
-        height: 20px;
+        height: 17px;
         margin-right: 5px;
         align-self: center;    
         background-color: var(--bg-color-contrast);
@@ -89,7 +89,8 @@
     #theme-switch::before {
         content: "";
         --orb-distance-from-edge: 2px;
-        margin-left: var(--orb-distance-from-edge);    
+        left: var(--orb-distance-from-edge);
+        right: calc(var(--switch-width) - var(--orb-distance-from-edge) - var(--switch-orb-width));
         --switch-orb-height: 10px;
         --switch-orb-width: 12px;
         width: var(--switch-orb-width);
@@ -110,10 +111,8 @@
 
 .night #theme-switch-container {
     #theme-switch::before {
-        /* A monstrous calculation, but at least it's more maintainable than hardcoding pixels and trying to get them right.
-        One downside: this breaks the theme-switch transition in Edge due to an unresolved "bug" with the browser. See here:
-        https://codepen.io/danwilson/details/zwqvOK/ and https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/105834/ */
-        margin-left: calc(var(--switch-width) - 2 * var(--switch-border-thickness) - var(--switch-orb-width) - var(--orb-distance-from-edge));
+        left: calc(var(--switch-width) - var(--orb-distance-from-edge) - var(--switch-orb-width));
+        right: var(--orb-distance-from-edge);
     }
 }
 
