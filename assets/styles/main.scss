@@ -1,2 +1,30 @@
 ---
 ---
+
+@import 'settings';
+@import 'fonts';
+@import 'topnav';
+@import 'footer';
+
+:root {
+    --main-bg-color: white;
+    --text-color-normal: rgb(83, 79, 79);
+    --text-color-emphasis: black;
+    --link-color: rgb(39, 83, 133);
+}
+
+body {
+    font-family: $font-family-primary, $font-family-backup;
+    color: var(--text-color-normal);
+    background-color: var(--main-bg-color);
+    transition: background-color $transition-duration;
+    
+    max-width: $page-max-width;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.centered-content {
+    margin: auto;
+    padding: 0 1.5rem;
+}
