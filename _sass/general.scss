@@ -2,14 +2,7 @@
 @import 'settings';
 @import 'fonts';
 
-/* ==============================
-
-   General styling common to all
-   pages on the site.
-
-   ==============================
-*/
-
+@include comment-banner("General styling common to all pages on the site.");
 
 :root {
     @include common-theme-properties("day");
