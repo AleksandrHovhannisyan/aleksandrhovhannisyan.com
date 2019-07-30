@@ -1,6 +1,8 @@
 ---
 title: Contact
 layout: default
+permalink: /contact/
+order: 4
 ---
 
 <section id="contact" class="centered-content">
