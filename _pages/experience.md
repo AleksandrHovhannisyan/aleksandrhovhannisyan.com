@@ -8,7 +8,7 @@ order: 2
 <section id="projects" class="centered-content">
     <h2 class="heading">
         <span>Projects</span>
-        <img src="/assets/img/folder.png" alt="📁">
+        <img src="/assets/../assets/img/folder.png" alt="📁">
     </h2>
     <div id="card-grid">
         <!-- Projects get populated here dynamically (see index.js) -->
@@ -28,7 +28,7 @@ order: 2
 <section id="skills" class="centered-content">
     <h2 class="heading">
         <span>Skills and Abilities</span>
-        <img src="img/juggler.png" alt="🤹">
+        <img src="../assets/img/juggler.png" alt="🤹">
     </h2>
     
     <div class="skill-category">
@@ -465,7 +465,7 @@ order: 2
 <section id="education" class="centered-content">
     <h2 class="heading">
         <span>Education</span>
-        <img src="/assets/img/graduation-cap.png" alt="🎓">
+        <img src="/assets/../assets/img/graduation-cap.png" alt="🎓">
     </h2>
     <p>
         If my track record speaks to anything, it's my <strong>commitment to excellence</strong>
