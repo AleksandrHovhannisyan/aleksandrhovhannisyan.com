@@ -28,11 +28,11 @@ body {
     font-family: $font-family-primary, $font-family-backup;
     color: var(--text-color-normal);
     background-color: var(--bg-color-main);
-    transition: background-color $transition-duration;
-    
+    @include transition(background-color);
     max-width: $page-max-width;
     margin-left: auto;
     margin-right: auto;
+    padding-top: calc(#{$topnav-min-height} + 20px);
 }
 
 .centered-content {
