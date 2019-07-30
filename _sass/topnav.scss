@@ -1,4 +1,7 @@
 @import 'settings';
+@import 'mixins';
+
+@include comment-banner("Top navigation used on all pages");
 
 #topnav {
     width: 100%;

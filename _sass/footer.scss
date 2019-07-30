@@ -1,0 +1,5 @@
+@import 'mixins';
+@import 'settings';
+
+@include comment-banner("Footer that appears at the bottom of every page.");
+

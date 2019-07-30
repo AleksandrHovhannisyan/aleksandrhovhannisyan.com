@@ -20,3 +20,12 @@
 @mixin transition($what: all, $duration: 0.5s) {
     transition: $what $duration;
 }
+
+@mixin comment-banner($message) {
+/* ==================================================
+
+   #{$message}
+
+   ==================================================
+*/
+}
