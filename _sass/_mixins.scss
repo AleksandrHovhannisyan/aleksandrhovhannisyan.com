@@ -1,28 +1,3 @@
-@mixin common-theme-properties($theme) {
-    @if $theme == "day" {
-        --bg-color-main: white;
-        --bg-color-contrast: rgb(44, 44, 44);
-        --highlight-bg-color: rgb(211, 218, 250);
-        --primary-color: rgb(39, 83, 133);
-        --primary-color-lighter: rgb(83, 129, 182);
-        --secondary-color: white;
-        --text-color-normal: rgb(83, 79, 79);
-        --text-color-softer: rgb(179, 177, 177);
-        --text-color-emphasis: black;
-        --link-color: rgb(39, 83, 133); 
-    } @else if $theme == "night" {
-        --bg-color-main: rgb(44, 44, 44);
-        --bg-color-contrast: rgb(10, 10, 10);
-        --highlight-bg-color: rgb(116, 113, 100);
-        --primary-color: rgb(85, 79, 67);
-        --primary-color-lighter: rgb(116, 110, 99);
-        --secondary-color: var(--text-color-emphasis);
-        --text-color-normal: rgb(168, 159, 145);
-        --text-color-emphasis: rgb(221, 207, 182);
-        --link-color: rgb(175, 157, 123);
-    }
-}
-
 @mixin transition($what: all, $duration: 0.5s) {
     transition: $what $duration;
 }
