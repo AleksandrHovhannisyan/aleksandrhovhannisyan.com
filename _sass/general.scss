@@ -4,14 +4,6 @@
 
 @include comment-banner("General styling common to all pages on the site.");
 
-:root {
-    @include common-theme-properties("day");
-}
-
-.night {
-    @include common-theme-properties("night");
-}
-
 ::selection {
     background-color: var(--highlight-bg-color);
     color: var(--text-color-emphasis);

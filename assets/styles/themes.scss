@@ -1,0 +1,24 @@
+---
+---
+
+html.day {
+    --bg-color-main: white;
+    --bg-color-contrast: rgb(44, 44, 44);
+    --highlight-bg-color: rgb(211, 218, 250);
+    
+    --text-color-normal: rgb(83, 79, 79);
+    --text-color-softer: rgb(179, 177, 177);
+    --text-color-emphasis: black;
+    --link-color: rgb(39, 83, 133); 
+}
+
+html.night {
+    --bg-color-main: rgb(44, 44, 44);
+    --bg-color-contrast: rgb(10, 10, 10);
+    --highlight-bg-color: rgb(116, 113, 100);
+
+    --text-color-normal: rgb(168, 159, 145);
+    --text-color-emphasis: rgb(221, 207, 182);
+    --text-color-softer: rgb(179, 177, 177);
+    --link-color: rgb(175, 157, 123);
+}

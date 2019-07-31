@@ -17,6 +17,7 @@
 
 function toggleColorTheme() {
     document.documentElement.classList.toggle('night');
+    document.documentElement.classList.toggle('day');
     updateThemeLabel();
 }
 
