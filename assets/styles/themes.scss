@@ -1,24 +1,39 @@
 ---
 ---
 
+@import 'colors';
+@import 'mixins';
+
+@include comment-banner("CSS custom properties used for theming the site (day and night mode)");
+
 html.day {
     --bg-color-main: white;
-    --bg-color-contrast: rgb(44, 44, 44);
-    --highlight-bg-color: rgb(211, 218, 250);
-    
-    --text-color-normal: rgb(83, 79, 79);
-    --text-color-softer: rgb(179, 177, 177);
+    --bg-color-contrast: #{$charcoal};
+    --highlight-bg-color: #{$blue-cloud};
+
+    --text-color-normal: #{$coffee-gray};
+    --text-color-gray: #{$gray-light};
     --text-color-emphasis: black;
-    --link-color: rgb(39, 83, 133); 
+    --link-color: #{$blue};
+
+    --button-bg-color: #{$blue};
+    --button-text-color: white;
+    --button-bg-hover-color: #{$blue-light};
+    --button-text-hover-color: white;
 }
 
 html.night {
-    --bg-color-main: rgb(44, 44, 44);
-    --bg-color-contrast: rgb(10, 10, 10);
-    --highlight-bg-color: rgb(116, 113, 100);
+    --bg-color-main: #{$charcoal};
+    --bg-color-contrast: #{$nearly-black};
+    --highlight-bg-color: #{$coffee-light};
 
-    --text-color-normal: rgb(168, 159, 145);
-    --text-color-emphasis: rgb(221, 207, 182);
-    --text-color-softer: rgb(179, 177, 177);
-    --link-color: rgb(175, 157, 123);
+    --text-color-normal: #{$beige};
+    --text-color-emphasis: #{$beige-light};
+    --text-color-gray: #{$gray-light};
+    --link-color: #{$beige-light};
+
+    --button-bg-color: #{$coffee};
+    --button-text-color: #{$beige-light};
+    --button-bg-hover-color: #{$coffee-light};
+    --button-text-hover-color: #{$charcoal};
 }

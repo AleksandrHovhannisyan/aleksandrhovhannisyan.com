@@ -53,21 +53,19 @@
     }
 }
 
-/* TODO figure out better way to go about these variables ... */
-
 .button, .collapsible-header {
     cursor: pointer;
     border: none;
-    background-color: var(--primary-color);
+    background-color: var(--button-bg-color);
     @include transition;
 }
 
 .button, .button *, .collapsible-header * {
-    color: var(--secondary-color);
+    color: var(--button-text-color);
 }
 
 .button:hover, .collapsible-header:hover {
-    background-color: var(--primary-color-lighter);
+    background-color: var(--button-bg-hover-color);
 }
 
 /* To get rid of Firefox's dotted lines when these are clicked */
@@ -76,5 +74,5 @@
 }
 
 .button:hover, .button:hover *, .collapsible-header:hover * {
-    color: var(--bg-color-contrast);
+    color: var(--button-text-hover-color);
 }
