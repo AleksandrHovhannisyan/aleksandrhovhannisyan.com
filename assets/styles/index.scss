@@ -1,0 +1,51 @@
+---
+---
+
+@import 'mixins';
+@import 'settings';
+@import 'buttons';
+@include comment-banner("Home page. Contains styling for intro/hero 'banner' and About Me.");
+
+
+#lede {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    p {
+        font-size: 1.1em;
+    }
+}
+
+#profile-photo {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 12px 2px var(--bg-color-contrast);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#intro *, #about-me * {
+    @include transition;
+}
+
+#page-header {
+    margin-top: 100px;
+}
+
+#main-buttons {
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+@media only screen and (min-width: 600px) {
+    
+    #main-buttons {
+        display: flex;
+    }
+
+    #main-buttons .button {
+        max-width: 200px; 
+    }
+}
