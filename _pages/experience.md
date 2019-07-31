@@ -1,6 +1,8 @@
 ---
 title: Experience
 layout: default
+custom_css: ["experience"]
+custom_js: ["repos"]
 permalink: /experience/
 order: 2
 ---
