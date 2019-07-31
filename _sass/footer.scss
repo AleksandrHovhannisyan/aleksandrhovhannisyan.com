@@ -3,3 +3,19 @@
 
 @include comment-banner("Footer that appears at the bottom of every page.");
 
+#page-footer {
+    position: absolute;
+    left: 0;
+    height: 50px;
+    width: 100%;
+    background: var(--bg-color-contrast);
+    @include transition;
+    color: var(--text-color-softer);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#page-footer span {
+    text-align: center;
+}
