@@ -17,6 +17,10 @@
     color: var(--text-color-emphasis);
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: $font-family-primary, $font-family-backup;
     color: var(--text-color-normal);
