@@ -76,9 +76,9 @@
 
     #theme-switch {
         position: relative;        
-        --switch-width: 35px;
+        --switch-width: 40px;
         width: var(--switch-width);
-        height: 17px;
+        height: 20px;
         margin-right: 5px;
         align-self: center;    
         background-color: var(--bg-color-contrast);
@@ -93,7 +93,7 @@
         content: "";
         --orb-distance-from-edge: 2px;
         left: var(--orb-distance-from-edge);
-        right: calc(var(--switch-width) - var(--orb-distance-from-edge) - var(--switch-orb-width));
+        right: calc(var(--switch-width) - var(--orb-distance-from-edge) - 1.5 * var(--switch-orb-width));
         --switch-orb-height: 10px;
         --switch-orb-width: 12px;
         width: var(--switch-orb-width);
@@ -114,7 +114,7 @@
 
 .night #theme-switch-container {
     #theme-switch::before {
-        left: calc(var(--switch-width) - var(--orb-distance-from-edge) - var(--switch-orb-width));
+        left: calc(var(--switch-width) - var(--orb-distance-from-edge) - 1.5 * var(--switch-orb-width));
         right: var(--orb-distance-from-edge);
     }
 }
