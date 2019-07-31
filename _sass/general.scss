@@ -29,7 +29,7 @@ body {
     max-width: $page-max-width;
     margin-left: auto;
     margin-right: auto;
-    padding-top: calc(#{$topnav-min-height} + 20px);
+    padding-top: calc(#{$topnav-min-height} + 60px);
 }
 
 main {
