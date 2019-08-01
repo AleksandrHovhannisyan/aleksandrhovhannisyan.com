@@ -6,7 +6,7 @@ custom_css: ["index"]
 order: 1
 ---
 
-<article id="intro" class="centered-content">
+<article id="intro" class="container">
     <div id="lede">
         <div>
             <h1>Hey there! I'm Aleksandr</h1>
@@ -21,7 +21,7 @@ order: 1
     </div>
 </article>
 
-<article id="about-me" class="centered-content">
+<article id="about-me" class="container">
     <h2 class="heading">
         <span>About Me</span>
         <img src="/assets/img/laptop.png" alt="💻">

@@ -21,15 +21,26 @@ body {
     max-width: $page-max-width;
     margin-left: auto;
     margin-right: auto;
-    padding-top: calc(#{$topnav-min-height} + 60px);
 }
 
 main {
     padding-bottom: calc(#{$topnav-min-height} + 20px);
 }
 
-.centered-content {
-    margin: auto;
+.banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner * {
+    text-align: center;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
     padding: 0 1.5rem;
 }
 
@@ -69,4 +80,13 @@ p {
         margin-left: 5px;
         width: 1.1em;
     }
+}
+
+article {
+    margin-top: 120px;
+}
+
+hr {
+    border-color: var(--text-color-gray);
+    width: 50%;
 }

@@ -7,7 +7,15 @@ permalink: /experience/
 order: 2
 ---
 
-<article id="projects" class="centered-content">
+<article class="banner container">
+    <h1>My Experience</h1>
+    <p>I try to keep busy while having fun and testing my limits. Between school, side projects, and interning, 
+    I've gained exposure to a wide variety of cool technologies and problems.</p>
+</article>
+
+<hr>
+
+<article id="projects" class="container">
     <h2 class="heading">
         <span>Projects</span>
         <img src="/assets/../assets/img/folder.png" alt="📁">
@@ -27,7 +35,7 @@ order: 2
     </div>
 </article>
 
-<article id="skills" class="centered-content">
+<article id="skills" class="container">
     <h2 class="heading">
         <span>Skills and Abilities</span>
         <img src="../assets/img/juggler.png" alt="🤹">
@@ -464,7 +472,7 @@ order: 2
     </div>
 </article>
 
-<article id="education" class="centered-content">
+<article id="education" class="container">
     <h2 class="heading">
         <span>Education</span>
         <img src="/assets/../assets/img/graduation-cap.png" alt="🎓">
