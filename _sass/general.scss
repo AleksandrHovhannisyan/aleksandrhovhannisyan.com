@@ -45,6 +45,17 @@ main {
     padding: 0 1.5rem;
 }
 
+/* Links an entire parent container, but the parent must be set to relative position */
+.container-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    z-index: 1;
+}
+
 i, h1, h2, h3, h4, h5, h6, strong, em {
     color: var(--text-color-emphasis);
     @include transition;
