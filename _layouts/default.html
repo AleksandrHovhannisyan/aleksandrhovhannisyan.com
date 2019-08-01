@@ -31,10 +31,17 @@
             <link rel="stylesheet" href="/assets/styles/{{ sheet }}.css" />
             {% endfor %}
         {% endif %}
+
+        <script>
+            if (localStorage.getItem('theme') === 'night') {
+                document.documentElement.className = 'night';
+            } else {
+                document.documentElement.className = 'day';
+            }
+        </script>
     </head>
 
     <body>
-
         <header>
             <nav id="topnav">
                     <div class="centered-content nav-container">
