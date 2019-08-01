@@ -21,7 +21,6 @@
     grid-template-columns: 1;
     /* Header, description, footer, respectively */
     grid-template-rows: max-content 1fr max-content;
-    row-gap: 20px;
 
     .project-name {
         color: var(--link-color);
@@ -62,7 +61,6 @@
         display: flex;
         flex-wrap: wrap;
         grid-row: 3;
-        margin-top: 0px;
         margin-bottom: var(--card-margin);
         margin-left: var(--card-margin);
         margin-right: var(--card-margin);

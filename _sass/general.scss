@@ -28,6 +28,7 @@ main {
 }
 
 .banner {
+    max-width: calc(#{$page-max-width} / 1.5);
     display: flex;
     flex-direction: column;
     justify-content: center;

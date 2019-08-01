@@ -17,8 +17,12 @@
 
     header {
         margin-top: var(--card-margin);
-        margin-bottom: 0px;
+        margin-bottom: calc(var(--card-margin) / 2);
         margin-left: var(--card-margin);
         margin-right: var(--card-margin);
+    }
+
+    footer {
+        margin-top: calc(var(--card-margin) / 2);
     }
 }
