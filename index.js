@@ -246,9 +246,6 @@ function toggleColorTheme() {
         html.className = 'night';
         window.localStorage.setItem('theme', 'night');
     }
-
-    console.log(window.localStorage);
-    
     updateThemeLabel();
 }
 
