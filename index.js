@@ -1,21 +1,12 @@
 "use strict";
+// To save typing
+const html = document.documentElement;
+
 
 // Using a map instead of an object because I want to show the repos in the order in which they're inserted
 const repos = new Map();
 setupRepos();
 requestRepoData();
-
-
-// Auto-transition to night theme, if applicable
-(function() {
-    const themeSwitch = document.getElementById('theme-switch');
-    themeSwitch.addEventListener('click', toggleColorTheme);
-
-    const today = new Date();    
-    if (today.getHours() >= 20 || today.getHours() <= 6) {
-        themeSwitch.click();
-    }
-})();
 
 
 /** Defines all repositories of interest, to be displayed in the Projects section of the page in
@@ -237,12 +228,27 @@ function publishRepoCards() {
 }
 
 
+(function() {
+    const themeSwitch = document.getElementById('theme-switch');
+    themeSwitch.addEventListener('click', toggleColorTheme);
+})();
+
+
 /** Called when the user clicks the night mode switch in the top-left of the navbar.
  *  Toggles the document's class to trigger a change in the color themes. 
  */
 
 function toggleColorTheme() {
-    document.documentElement.classList.toggle('night');
+    if (html.className === 'night') {
+        html.className = 'day';
+        window.localStorage.setItem('theme', 'day');
+    } else {
+        html.className = 'night';
+        window.localStorage.setItem('theme', 'night');
+    }
+
+    console.log(window.localStorage);
+    
     updateThemeLabel();
 }
 
@@ -252,7 +258,7 @@ function toggleColorTheme() {
 function updateThemeLabel() {
     const themeLabel = document.getElementById('theme-label');
 
-    if (document.documentElement.classList.contains('night')) {
+    if (html.classList.contains('night')) {
         themeLabel.textContent = 'Dark mode';
     } else {
         themeLabel.textContent = 'Light mode';

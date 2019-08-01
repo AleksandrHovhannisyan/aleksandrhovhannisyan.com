@@ -453,7 +453,7 @@ button:focus {
     margin-right: auto;
 }
 
-#intro *, #about-me * {
+#intro *, #about-me p {
     transition: var(--global-transition-duration);
 }
 

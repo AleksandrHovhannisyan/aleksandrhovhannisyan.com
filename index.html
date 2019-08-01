@@ -25,6 +25,14 @@
         <!-- Favicon -->
         <link rel="icon" href="favicon.ico" type="image/x-icon" />
         <title>Aleksandr Hovhannisyan</title>
+
+        <script>
+            if (window.localStorage.getItem('theme') === 'night') {
+                document.documentElement.className = 'night';
+            } else {
+                document.documentElement.className = 'day';
+            }
+        </script>
     </head>
 
     <body>
