@@ -5,8 +5,8 @@ permalink: /contact/
 order: 4
 ---
 
-<section id="contact" class="centered-content">
-    <section id="contact-form">
+<article id="contact" class="centered-content">
+    <div id="contact-form">
         <h2 class="heading">
             <span>Get in touch!</span>
             <img src="/assets/img/envelope.png" alt="📧">
@@ -23,8 +23,8 @@ order: 4
             <input type="submit" value="Send message" class="button">
             <input type="text" name="_gotcha" class="honeypot" />
         </form>
-    </section>
-    <section id="social-networks">
+    </div>
+    <div id="social-networks">
         <h3>You can also find me on these networks:</h3>
         <div class="social-network">
             <a class="container-link" href="https://www.linkedin.com/in/aleksandr-hovhannisyan-ba154b120/" target="_blank"></a>
@@ -58,5 +58,5 @@ order: 4
             </span>
             <span class="network-name">Stack Exchange</span>
         </div>
-    </section>
-</section>
+    </div>
+</article>
