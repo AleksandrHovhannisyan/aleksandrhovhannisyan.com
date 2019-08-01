@@ -17,20 +17,36 @@
 }
 
 .project {
-    --card-margin: 30px;
-    /* To ensure that .project-link (see below) is absolute relative to us and not the page */
-    position: relative;
     display: grid;
     grid-template-columns: 1;
     /* Header, description, footer, respectively */
     grid-template-rows: max-content 1fr max-content;
     row-gap: 20px;
-    transition: background-color $transition-duration, box-shadow $transition-duration;
+
+    .project-name {
+        color: var(--link-color);
+        text-decoration: none;
+    }
 
     h4 {
         margin: 0px;
         align-self: center;
         grid-area: heading;
+        @include transition;
+    }
+
+    .project-icon * {
+        width: 24px;
+        margin-right: 3px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    
+    .project-rating {
+        font-size: 0.85em;
+        justify-self: center;
+        align-self: center;
+        grid-area: rating;
         @include transition;
     }
 
@@ -41,101 +57,68 @@
         margin-right: var(--card-margin);
         @include transition;
     }
+
+    .topics {
+        display: flex;
+        flex-wrap: wrap;
+        grid-row: 3;
+        margin-top: 0px;
+        margin-bottom: var(--card-margin);
+        margin-left: var(--card-margin);
+        margin-right: var(--card-margin);
+        @include transition;
+    
+        p {
+            font-size: 0.9em;
+            padding: 5px;
+            margin-top: 10px;
+            margin-bottom: 0px;
+            margin-right: 10px;
+            border-radius: 2px;
+            background-color: var(--label-bg-color);
+            box-shadow: 0 0 2px black;
+            @include transition;
+        }
+    }
+
+    /* Displayed when a user hovers over a project card */
+    .hover-content {
+        font-size: 1.2em;
+        /* Note: .card has 'position: relative' set */
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* Center the content for the hover layer */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        /* Opacity = 0 means it's hidden by default */
+        opacity: 0;
+        border-radius: 5px;
+        background-color: var(--hover-color-general);
+        @include transition;
+
+        // Whatever icon is being used
+        i {
+            margin-top: 20px;
+        }
+    }
 }
 
 /* All project cards except the placeholder get a background and box shadow */
 .project:not(#project-placeholder) {
-    background-color: var(--card-bg-color);
-    @include card-shadow;
-    border-radius: 5px;
-
     header {
-        margin-top: var(--card-margin);
-        margin-bottom: 0px;
-        margin-left: var(--card-margin);
-        margin-right: var(--card-margin);    
         display: grid;
         grid-template-areas: "heading heading rating";
     }
 }
 
-.project-icon * {
-    width: 24px;
-    margin-right: 3px;
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.project-rating {
-    font-size: 0.85em;
-    justify-self: center;
-    align-self: center;
-    grid-area: rating;
-    @include transition;
-}
-
-/* Displayed when a user hovers over a project card */
-.hover-content {
-    font-size: 1.2em;
-    /* Again, note that .project has position: relative */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Center the content for the hover layer */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    /* Opacity = 0 means it's hidden by default */
-    opacity: 0;
-    border-radius: 5px;
-    background-color: var(--hover-color-general);
-    @include transition;
-
-    .fa-external-link-alt {
-        margin-top: 20px;
-    }
-}
-
-/* Make it clearer which card is hovered over */
-.project:hover:not(#project-placeholder) {
-    @include card-hover-shadow;
-}
-
 /* Transition for the hover content changes its opacity */
 .project:hover .hover-content {
-    cursor: pointer;
     opacity: 0.92;
-}
-
-.project-name {
-    color: var(--link-color);
-    text-decoration: none;
-}
-
-.topics {
-    display: flex;
-    flex-wrap: wrap;
-    grid-row: 3;
-    margin-top: 0px;
-    margin-bottom: var(--card-margin);
-    margin-left: var(--card-margin);
-    margin-right: var(--card-margin);
-    @include transition;
-
-    p {
-        font-size: 0.9em;
-        padding: 5px;
-        margin-top: 10px;
-        margin-bottom: 0px;
-        margin-right: 10px;
-        border-radius: 2px;
-        background-color: var(--label-bg-color);
-        box-shadow: 0 0 2px black;
-        @include transition;
-    }
 }
 
 #project-placeholder {
