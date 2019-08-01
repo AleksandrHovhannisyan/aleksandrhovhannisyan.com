@@ -1,0 +1,274 @@
+---
+---
+
+@import 'mixins';
+@import 'settings';
+@import 'colors';
+
+
+@include comment-banner("Project card grid.");
+
+#card-grid {
+    @include card-grid;
+}
+
+#projects h2 {
+   @include transition;
+}
+
+.project {
+    --card-margin: 30px;
+    /* To ensure that .project-link (see below) is absolute relative to us and not the page */
+    position: relative;
+    display: grid;
+    grid-template-columns: 1;
+    /* Header, description, footer, respectively */
+    grid-template-rows: max-content 1fr max-content;
+    row-gap: 20px;
+    transition: background-color $transition-duration, box-shadow $transition-duration;
+
+    h4 {
+        margin: 0px;
+        align-self: center;
+        grid-area: heading;
+        @include transition;
+    }
+
+    .description {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-left: var(--card-margin);
+        margin-right: var(--card-margin);
+        @include transition;
+    }
+}
+
+/* All project cards except the placeholder get a background and box shadow */
+.project:not(#project-placeholder) {
+    background-color: var(--card-bg-color);
+    @include card-shadow;
+    border-radius: 5px;
+
+    header {
+        margin-top: var(--card-margin);
+        margin-bottom: 0px;
+        margin-left: var(--card-margin);
+        margin-right: var(--card-margin);    
+        display: grid;
+        grid-template-areas: "heading heading rating";
+    }
+}
+
+.project-icon * {
+    width: 24px;
+    margin-right: 3px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.project-rating {
+    font-size: 0.85em;
+    justify-self: center;
+    align-self: center;
+    grid-area: rating;
+    @include transition;
+}
+
+/* Displayed when a user hovers over a project card */
+.hover-content {
+    font-size: 1.2em;
+    /* Again, note that .project has position: relative */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Center the content for the hover layer */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Opacity = 0 means it's hidden by default */
+    opacity: 0;
+    border-radius: 5px;
+    background-color: var(--hover-color-general);
+    @include transition;
+
+    .fa-external-link-alt {
+        margin-top: 20px;
+    }
+}
+
+/* Make it clearer which card is hovered over */
+.project:hover:not(#project-placeholder) {
+    @include card-hover-shadow;
+}
+
+/* Transition for the hover content changes its opacity */
+.project:hover .hover-content {
+    cursor: pointer;
+    opacity: 0.92;
+}
+
+.project-name {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+.topics {
+    display: flex;
+    flex-wrap: wrap;
+    grid-row: 3;
+    margin-top: 0px;
+    margin-bottom: var(--card-margin);
+    margin-left: var(--card-margin);
+    margin-right: var(--card-margin);
+    @include transition;
+
+    p {
+        font-size: 0.9em;
+        padding: 5px;
+        margin-top: 10px;
+        margin-bottom: 0px;
+        margin-right: 10px;
+        border-radius: 2px;
+        background-color: var(--label-bg-color);
+        box-shadow: 0 0 2px black;
+        @include transition;
+    }
+}
+
+#project-placeholder {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+
+    p {
+        @include transition;
+    }
+
+    .github-cta {
+        display: inline-block;
+        font-size: 3em;
+        margin-top: 20px;
+        text-decoration: none;
+        color: black;
+        @include transition;
+        border-radius: 50%;    
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@include comment-banner("Skills section.");
+
+#skills {
+    display: grid;
+    column-gap: 100px;
+    row-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+#skills h2 {
+    grid-row: 1;
+    grid-column: 1 / -1;
+}
+
+.skill-category h4 {
+    margin-bottom: 20px;
+}
+
+.skill-item {
+    margin-top: 10px;
+    display: grid;
+    column-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.skill-item:hover {
+    background-color: var(--hover-color-general);
+}
+
+.skill-name {
+    grid-column: 1;
+    @include transition;
+}
+
+.skill-rating {
+    grid-column: 2;
+    display: inline;
+    text-align: right;
+}
+
+.fa-star.filled {
+    color: var(--button-bg-color);
+}
+
+.fa-star.empty {
+    color: var(--text-color-gray);
+}
+
+.night .fa-star.filled {
+    color: rgb(145, 145, 145);
+}
+
+.night .fa-star.empty {
+    color: rgb(104, 98, 80);
+}
+
+@include comment-banner("Education section.");
+
+.institution {
+    margin-top: 40px;
+}
+
+.collapsible-content {
+    display: grid;
+    /* Mobile first: only one column. Changes to two columns on bigger screens. See media query below. */
+    grid-template-columns: 1fr;
+
+    /* Will be set to a sufficiently large max-height by corresponding click handler for .collapsible */
+    max-height: 0px;
+    overflow: hidden;
+
+    --collapsible-content-border-width: 3px;
+    border: solid var(--collapsible-content-border-width) var(--button-bg-color);
+    transition: var(--global-transition-duration);
+    border-top: none;
+}
+
+/* Prefixing all collapsible-content stuff here with .institution to keep things
+more generically styled for .collapsible-content on its own, since collapsibles can, in theory,
+be used anywhere on the page. */
+
+.institution .collapsible-content .awards {
+    /* Only matters on mobile, where the awards are stacked underneath courses */
+    border-top: solid var(--collapsible-content-border-width) var(--button-bg-color);
+    transition: border var(--global-transition-duration);
+}
+
+.institution .collapsible-content ul {
+    padding-right: 10px;
+}
+
+.institution .collapsible-content p {
+    padding-left: 10px;
+}
+
+/* Line up courses and awards side by side on larger screens */
+@media only screen and (min-width: 800px) {
+
+    .institution .collapsible-content {
+        grid-template-rows: 1fr;
+        grid-template-columns: auto auto;
+    }
+
+    .institution .collapsible-content .awards {
+        /* Now that it's lined up to the right of the courses, there's no need for a top border */
+        border-top: none;
+        /* But there is for a left border */
+        border-left: solid var(--collapsible-content-border-width) var(--button-bg-color);
+        transition: border var(--global-transition-duration);
+    }
+}

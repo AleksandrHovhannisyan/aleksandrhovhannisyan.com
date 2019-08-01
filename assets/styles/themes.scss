@@ -20,6 +20,10 @@ html.day {
     --button-text-color: white;
     --button-bg-hover-color: #{$blue-light};
     --button-text-hover-color: white;
+
+    --card-bg-color: #{$nearly-white};
+    --label-bg-color: #e7e7e7;
+    --hover-color-general: whitesmoke;
 }
 
 html.night {
@@ -36,4 +40,8 @@ html.night {
     --button-text-color: #{$beige-light};
     --button-bg-hover-color: #{$coffee-light};
     --button-text-hover-color: #{$charcoal};
+
+    --card-bg-color: rgb(54, 54, 54);
+    --label-bg-color: #{$charcoal};
+    --hover-color-general: rgb(66, 66, 66);
 }
