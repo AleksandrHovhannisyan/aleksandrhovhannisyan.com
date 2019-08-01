@@ -1,0 +1,155 @@
+---
+---
+
+@import 'mixins';
+@import 'fonts';
+
+
+@include comment-banner("Main contact form");
+
+#contact {
+    display: grid;
+    grid-template-areas: "form"
+                         "socials";
+    grid-template-rows: auto;
+    column-gap: 120px;
+    margin-bottom: 30px;
+}
+
+#contact-form {
+    grid-area: form;
+
+    form {
+        $form-max-width: 475px;
+        margin-bottom: 50px;
+        margin-top: 30px;
+        max-width: $form-max-width;
+    
+        * {
+            font-family: $font-family-primary, $font-family-backup;
+            font-size: 1em;
+        }
+    
+        textarea {
+            max-width: $form-max-width;
+            min-height: 200px;
+            transition: height 0s;
+        }
+    
+        input:not([class="button"]), textarea {
+            height: 30px;
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            color: var(--text-color-emphasis);
+            background-color: var(--form-bg-color);
+            border: 0px solid;
+            box-shadow: 0 0 3px 1px rgb(172, 172, 172);
+            border-radius: 3px;
+            transition: background-color $transition-duration, box-shadow $transition-duration, color $transition-duration;
+        }
+    
+        label {
+            margin-bottom: 5px;
+            display: block;
+        }
+    
+        input:focus, textarea:focus {
+            outline: none;
+            box-shadow: 0 0 5px 2px rgb(155, 155, 155);
+        }
+    
+        .button {
+            max-width: 100%;
+            width: 100%;
+            height: 45px;
+        }
+    }
+}
+
+@media only screen and (min-width: 700px) {
+    #contact {
+        grid-template-areas: "form form form socials";
+    }
+}
+
+/* Spammers begone */
+input.honeypot {
+    display: none;
+}
+
+@include comment-banner("Social networks, to be displayed alongside contact form.");
+
+#social-networks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-rows: min-content;
+    grid-auto-rows: min-content;
+    row-gap: 50px;
+    column-gap: 30px;
+    margin-bottom: 50px;
+
+    h3 {
+        grid-row: 1;
+        grid-column: 1 / -1;
+    }
+
+    .fa-linkedin {
+        color: #0077B5;
+    }
+    
+    .fa-github {
+        color: black;
+    }
+    
+    .fa-stack-exchange {
+        color: #195398;
+    }
+    
+    .fa-address-book {
+        color: #37A000;
+    }
+}
+
+.social-network {
+    /* Position relative because we have an absolutely 
+    positioned .container-link as a child */
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    &:hover {
+        cursor: pointer;
+        background-color: var(--hover-color-general);
+    }
+
+    .network-name {
+        grid-column: 2;
+        align-self: center;
+        @include transition;
+    }
+
+    .fa-stack {
+        display: flex;
+
+        i {
+            align-self: center;
+            justify-self: center;
+        }
+    }
+
+    /* Whatever icon is being used as the background one; we'll keep it invisible in
+    the light theme but transition its opacity in dark mode. */
+    .fa-stack-2x {
+        opacity: 0;
+        font-size: 1.5em;
+        color: white;
+
+        /* The background icon will appear when we transition to the
+        dark theme; that way, the social icons will get a nice white fill in any
+        see-through parts (like the LinkedIn logo's "ln" text) and a thick border effect. */
+        .night & {
+            opacity: 1;
+        }
+    }
+}

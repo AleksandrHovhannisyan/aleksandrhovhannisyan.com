@@ -1,6 +1,7 @@
 ---
 title: Contact
 layout: default
+custom_css: ["contact"]
 permalink: /contact/
 order: 4
 ---

@@ -24,6 +24,8 @@ html.day {
     --card-bg-color: #{$nearly-white};
     --label-bg-color: #e7e7e7;
     --hover-color-general: whitesmoke;
+
+    --form-bg-color: white;
 }
 
 html.night {
@@ -46,4 +48,6 @@ html.night {
     --label-bg-color: #{$charcoal};
     $hover-color-general: adjust-color($charcoal, $red: 22, $blue: 22, $green: 22);
     --hover-color-general: #{$hover-color-general};
+
+    --form-bg-color: var(--hover-color-general);
 }
