@@ -3,7 +3,6 @@
 
 @import 'mixins';
 @import 'settings';
-@import 'buttons';
 @include comment-banner("Home page. Contains styling for intro/hero 'banner' and About Me.");
 
 
@@ -26,7 +25,7 @@
     margin-right: auto;
 }
 
-#intro *, #about-me * {
+#intro *, #about-me p {
     @include transition;
 }
 
