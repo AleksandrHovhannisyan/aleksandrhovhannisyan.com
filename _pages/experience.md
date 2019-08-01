@@ -8,9 +8,9 @@ order: 2
 ---
 
 <article class="banner container">
-    <h1>My Experience</h1>
+    <h1>My experience</h1>
     <p>I try to keep busy while having fun and testing my limits. Between school, side projects, and interning, 
-    I've gained exposure to a wide variety of cool technologies and problems.</p>
+    I've gained valuable exposure to a wide variety of interesting technologies and problems.</p>
 </article>
 
 <hr>
