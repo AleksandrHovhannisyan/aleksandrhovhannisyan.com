@@ -91,7 +91,7 @@ function parseRepos() {
  */
 function createCardFor(repo) {
     const card = document.createElement('section');
-    card.classList.add('project');
+    card.classList.add('card', 'project');
     card.appendChild(headerFor(repo));
     card.appendChild(descriptionFor(repo));
     card.appendChild(footerFor(repo));
