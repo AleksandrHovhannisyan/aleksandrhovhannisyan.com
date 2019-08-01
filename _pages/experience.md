@@ -7,7 +7,7 @@ permalink: /experience/
 order: 2
 ---
 
-<section id="projects" class="centered-content">
+<article id="projects" class="centered-content">
     <h2 class="heading">
         <span>Projects</span>
         <img src="/assets/../assets/img/folder.png" alt="📁">
@@ -21,13 +21,13 @@ order: 2
             </header>
             <div>
                 <p>Check out my other repos:</p>
-                <a class="github-cta" href="https://github.com/AleksandrHovhannisyan?tab=repositories" target="_blank"><i class="fab fa-github"></i></a>
+                <a class="github-icon" href="https://github.com/AleksandrHovhannisyan?tab=repositories" target="_blank"><i class="fab fa-github"></i></a>
             </div>
         </aside>
     </div>
-</section>
+</article>
 
-<section id="skills" class="centered-content">
+<article id="skills" class="centered-content">
     <h2 class="heading">
         <span>Skills and Abilities</span>
         <img src="../assets/img/juggler.png" alt="🤹">
@@ -462,9 +462,9 @@ order: 2
             </div>
         </div>  
     </div>
-</section>
+</article>
 
-<section id="education" class="centered-content">
+<article id="education" class="centered-content">
     <h2 class="heading">
         <span>Education</span>
         <img src="/assets/../assets/img/graduation-cap.png" alt="🎓">
@@ -473,7 +473,7 @@ order: 2
         If my track record speaks to anything, it's my <strong>commitment to excellence</strong>
         in every endeavor I pursue.
     </p>
-                    
+
     <div class="institution collapsible">
         <div class="collapsible-header">
             <i class="fas fa-angle-down"></i>
@@ -484,7 +484,7 @@ order: 2
             </span>
         </div>
         <div class="collapsible-content">
-            <section class="courses">
+            <div class="courses">
                 <h4><em>Notable Coursework</em></h4>
                 <ul>
                     <li>Data structures and algorithms</li>
@@ -494,8 +494,8 @@ order: 2
                     <li>Database management systems</li>
                     <li>Calculus, linear algebra, numerical analysis</li>
                 </ul>
-            </section>
-            <section class="awards">
+            </div>
+            <div class="awards">
                 <h4><em>Awards and Recognitions</em></h4>
                 <ul>
                     <li>
@@ -505,7 +505,7 @@ order: 2
                     <li>Dean's List Award (2016–present)</li>
                     <li>Bright Futures Academic Scholar (2016–present)</li>
                 </ul>
-            </section>
+            </div>
         </div>
     </div>
-</section>
+</article>

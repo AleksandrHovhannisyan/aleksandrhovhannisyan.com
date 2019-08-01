@@ -6,7 +6,7 @@ custom_css: ["index"]
 order: 1
 ---
 
-<section id="intro" class="centered-content">
+<article id="intro" class="centered-content">
     <div id="lede">
         <div>
             <h1>Hey there! I'm Aleksandr</h1>
@@ -19,9 +19,9 @@ order: 1
         <a class="button" href="https://www.linkedin.com/in/aleksandr-hovhannisyan-ba154b120/" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
         <a class="button" href="https://github.com/AleksandrHovhannisyan" target="_blank"><i class="fab fa-github"></i> GitHub</a>
     </div>
-</section>
+</article>
 
-<section id="about-me" class="centered-content">
+<article id="about-me" class="centered-content">
     <h2 class="heading">
         <span>About Me</span>
         <img src="/assets/img/laptop.png" alt="💻">
@@ -36,4 +36,4 @@ order: 1
         working out. I'm also a creative at heart and will spend as many painful hours as it takes perfecting something until 
         I'm fully satisfied with how it looks. (I can't count how many times I've changed this site's design.)
     </p>
-</section>
+</article>
