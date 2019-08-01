@@ -1,23 +1,25 @@
 "use strict";
+const html = document.documentElement;
+
 
 // Auto-transition to night theme, if applicable
 (function() {
     const themeSwitch = document.getElementById('theme-switch');
     themeSwitch.addEventListener('click', toggleColorTheme);
-
-    const today = new Date();    
-    if (today.getHours() >= 20 || today.getHours() <= 6) {
-        themeSwitch.click();
-    }
 })();
+
 
 /** Called when the user clicks the night mode switch in the top-left of the navbar.
  *  Toggles the document's class to trigger a change in the color themes. 
  */
-
 function toggleColorTheme() {
-    document.documentElement.classList.toggle('night');
-    document.documentElement.classList.toggle('day');
+    if (html.className === 'night') {
+        html.className = 'day';
+        localStorage.setItem('theme', 'day');
+    } else {
+        html.className = 'night';
+        localStorage.setItem('theme', 'night');
+    }
     updateThemeLabel();
 }
 
