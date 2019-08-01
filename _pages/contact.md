@@ -5,7 +5,7 @@ permalink: /contact/
 order: 4
 ---
 
-<article id="contact" class="centered-content">
+<article id="contact" class="container">
     <div id="contact-form">
         <h2 class="heading">
             <span>Get in touch!</span>
