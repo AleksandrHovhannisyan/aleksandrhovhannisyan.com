@@ -25,6 +25,10 @@
     margin-right: auto;
 }
 
+article#about-me {
+    margin-top: 80px;
+}
+
 #intro *, #about-me p {
     @include transition;
 }
