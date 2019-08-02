@@ -2,7 +2,7 @@
 title: Experience
 layout: default
 custom_css: ["experience"]
-custom_js: ["repos"]
+custom_js: ["loadRepoData"]
 permalink: /experience/
 order: 2
 ---
