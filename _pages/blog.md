@@ -11,3 +11,7 @@ order: 3
 </article>
 
 <hr>
+
+<article id="post-previews" class="banner container">
+    <h2>There are no posts for now :) That'll change soon!</h2>
+</article>

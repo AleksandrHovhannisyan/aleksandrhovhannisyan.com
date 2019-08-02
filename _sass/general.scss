@@ -101,4 +101,5 @@ article {
 hr {
     border: 1.2px solid var(--text-color-emphasis);
     width: 50%;
+    @include transition;
 }
