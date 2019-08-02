@@ -47,6 +47,10 @@
         top: 20px;
         font-size: 1.1em;
 
+        .active-nav-link {
+            color: white;
+        }
+
         li {
             text-align: center;
             margin: 25px auto;

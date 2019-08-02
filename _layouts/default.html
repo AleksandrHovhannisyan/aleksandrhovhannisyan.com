@@ -52,8 +52,12 @@
                         <i class="navbar-hamburger fas fa-bars"></i>
                         <ul class="nav-links">
                             {% assign pages = site.html_pages | sort: "order" %}
-                            {% for page in pages %}
-                                <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+                            {% for p in pages %}
+                                {% if page.title == p.title %}
+                                <li><a class="active-nav-link" href="{{ p.url }}">{{ p.title }}</a></li>    
+                                {% else %}
+                                <li><a href="{{ p.url }}">{{ p.title }}</a></li>
+                                {% endif %}
                             {% endfor %}
                         </ul>
                     </div>
