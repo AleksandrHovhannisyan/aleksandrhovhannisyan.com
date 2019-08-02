@@ -53,6 +53,17 @@
     }
 }
 
+.collapsible-content {
+    /* Will be set to a sufficiently large max-height by corresponding click handler for .collapsible */
+    max-height: 0px;
+    overflow: hidden;
+
+    --collapsible-content-border-width: 3px;
+    border: solid var(--collapsible-content-border-width) var(--button-bg-color);
+    @include transition;
+    border-top: none;
+}
+
 .button, .collapsible-header {
     cursor: pointer;
     border: none;
