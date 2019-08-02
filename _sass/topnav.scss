@@ -4,6 +4,7 @@
 @include comment-banner("Top navigation used on all pages");
 
 #topnav {
+    $topnav-min-height: 50px;
     width: 100%;
     min-height: $topnav-min-height;
     position: fixed;
