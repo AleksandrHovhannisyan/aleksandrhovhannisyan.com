@@ -14,17 +14,23 @@
 }
 
 body {
+    margin: 0;
+    position: relative;
     font-family: $font-family-primary, $font-family-backup;
     color: var(--text-color-normal);
     background-color: var(--bg-color-main);
     @include transition(background-color);
+}
+
+#page-wrapper {
+    position: relative;
+    height: 100%;
+    min-height: 100vh;
     max-width: $page-max-width;
     margin-left: auto;
     margin-right: auto;
-}
-
-main {
-    padding-bottom: calc(#{$topnav-min-height} + 20px);
+    // Space between us and absolutely positioned footer
+    padding-bottom: 100px;
 }
 
 .banner {
