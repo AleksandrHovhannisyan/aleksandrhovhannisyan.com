@@ -1,0 +1,19 @@
+<nav id="topnav">
+    <div class="container nav-container">
+        <div id="theme-switch-container">
+            <div id="theme-switch"></div>
+            <span id="theme-label">Light mode</span>
+        </div>
+        <i class="navbar-hamburger fas fa-bars"></i>
+        <ul class="nav-links">
+            {% assign pages = site.html_pages | sort: "order" %}
+            {% for p in pages %}
+                {% if page.title == p.title %}
+                <li><a class="active-nav-link" href="{{ p.url }}">{{ p.title }}</a></li>    
+                {% else %}
+                <li><a href="{{ p.url }}">{{ p.title }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</nav>
