@@ -19,6 +19,7 @@ github_username: AleksandrHovhannisyan
 
 # Build settings
 markdown: kramdown
+highlighter: rouge
 theme: minima
 plugins:
   - jekyll-feed
