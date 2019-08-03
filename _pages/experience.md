@@ -22,7 +22,6 @@ order: 2
     </h2>
     <div id="card-grid">
         <!-- Projects get populated here dynamically (see index.js) -->
-
         <aside id="project-placeholder" class="project">
             <header>
                 <h4>Want to see more of my work?</h4>
@@ -40,7 +39,6 @@ order: 2
         <span>Skills and Abilities</span>
         <img src="../assets/img/juggler.png" alt="🤹">
     </h2>
-    
     <div class="skill-category">
         <h4>Programming & Markup</h4>
         <div class="skill-item">
@@ -134,7 +132,6 @@ order: 2
             </div>
         </div>
     </div>
-
     <div class="skill-category">
         <h4>Software Development</h4>
         <div class="skill-item">
@@ -208,7 +205,6 @@ order: 2
             </div>
         </div>
     </div>
-
     <div class="skill-category">
         <h4>Operating Systems</h4>
         <div class="skill-item">
@@ -262,7 +258,6 @@ order: 2
             </div>
         </div>
     </div>
-
     <div class="skill-category">
         <h4>Terminals & Tools</h4>
         <div class="skill-item">
@@ -306,7 +301,6 @@ order: 2
             </div>
         </div>
     </div>
-
     <div class="skill-category">
         <h4>Go-to IDEs</h4>
         <div class="skill-item">
@@ -350,7 +344,6 @@ order: 2
             </div>
         </div>           
     </div>
-
     <div class="skill-category">
         <h4>Collaboration</h4>
         <div class="skill-item">
@@ -481,7 +474,6 @@ order: 2
         If my track record speaks to anything, it's my <strong>commitment to excellence</strong>
         in every endeavor I pursue.
     </p>
-
     <div class="institution collapsible">
         <div class="collapsible-header">
             <i class="fas fa-angle-down"></i>
