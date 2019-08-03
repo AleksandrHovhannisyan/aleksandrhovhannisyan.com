@@ -42,7 +42,7 @@
     --global-transition-duration: 0.5s;
 }
 
-.night {
+html.night {
     --main-bg-color: rgb(44, 44, 44);
     --highlight-bg-color: rgb(116, 113, 100);
 
@@ -419,8 +419,16 @@ button:focus {
     right: var(--orb-distance-from-edge);
 }
 
-#theme-label {
+#theme-label::before {
     align-self: center;
+}
+
+html.day #theme-label::before {
+    content: "Light mode";
+}
+
+html.night #theme-label::before {
+    content: "Dark mode";
 }
 
 /* ============================================
