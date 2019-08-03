@@ -1,0 +1,101 @@
+- category: "Languages & Markup"
+  items:
+    - name: "C++"
+      rating: 5
+    - name: "Python"
+      rating: 5
+    - name: "HTML5"
+      rating: 5
+    - name: "CSS, SASS"
+      rating: 4
+    - name: "SQL"
+      rating: 4
+    - name: "R"
+      rating: 4
+    - name: "C#"
+      rating: 3
+    - name: "JavaScript"
+      rating: 3
+
+- category: "Software Development"
+  items:
+    - name: "OOP"
+      rating: 5
+    - name: "Debugging"
+      rating: 5
+    - name: "Code review"
+      rating: 4
+    - name: "Scrum"
+      rating: 4
+    - name: "Refactoring"
+      rating: 4
+    - name: "Game dev"
+      rating: 4
+    - name: "Design patterns"
+      rating: 3
+
+- category: "Operating Systems"
+  items:
+    - name: "Windows (7-10)"
+      rating: 5
+    - name: "Linux (Ubuntu)"
+      rating: 4
+    - name: "Linux kernel"
+      rating: 4
+    - name: "VMs (Virtualbox)"
+      rating: 4
+    - name: "macOS (Mojave)"
+      rating: 3
+
+- category: "Terminals & Tools"
+  items:
+    - name: "Bash"
+      rating: 4
+    - name: "PowerShell"
+      rating: 4
+    - name: "cmd"
+      rating: 3
+    - name: "npm, yarn"
+      rating: 2
+
+- category: "Go-to IDEs"
+  items:
+    - name: "VS Code"
+      rating: 5
+    - name: "Visual Studio"
+      rating: 5
+    - name: "Qt Creator"
+      rating: 5
+    - name: "Android Studio"
+      rating: 3
+
+- category: "Collaboration"
+  items:
+    - name: "Git, GitHub"
+      rating: 5
+    - name: "Slack"
+      rating: 5
+    - name: "G Suite"
+      rating: 5
+    - name: "Jira"
+      rating: 3
+    - name: "Confluence"
+      rating: 2
+
+- category: "Languages"
+  items:
+    - name: "English"
+      rating: 5
+    - name: "Armenian"
+      rating: 4
+    - name: "German"
+      rating: 3
+
+- category: "Other"
+  items:
+    - name: "Copy editing"
+      rating: 5
+    - name: "Copy writing"
+      rating: 4
+    - name: "Email writing"
+      rating: 4

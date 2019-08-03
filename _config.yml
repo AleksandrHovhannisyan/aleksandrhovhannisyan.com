@@ -18,14 +18,9 @@ url: "https://aleksandrhovhannisyan.github.io/" # the base hostname & protocol f
 github_username: AleksandrHovhannisyan
 
 # Build settings
-markdown: kramdown
-highlighter: rouge
-theme: minima
 plugins:
   - jekyll-feed
 include: ['_pages']
-sass:
-    sass_dir: _sass
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
