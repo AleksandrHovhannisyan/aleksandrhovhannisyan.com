@@ -69,38 +69,34 @@ order: 2
         If my track record speaks to anything, it's my <strong>commitment to excellence</strong>
         in every endeavor I pursue.
     </p>
+    {% for institution in site.data.education %}
     <div class="institution collapsible">
         <div class="collapsible-header">
             <i class="fas fa-angle-down"></i>
             <span>
-                <strong>University of Florida<br></strong>
-                B.Sc. in Computer Science<br>
-                4.0 GPA, 2016&ndash;2019
+                <strong>{{ institution.name }}<br></strong>
+                {{ institution.degree }}<br>
+                {{ institution.gpa }} GPA, {{ institution.years }}
             </span>
         </div>
         <div class="collapsible-content">
             <div class="courses">
                 <h4><em>Notable Coursework</em></h4>
                 <ul>
-                    <li>Data structures and algorithms</li>
-                    <li>Programming language concepts</li>
-                    <li>Intro to software engineering</li>
-                    <li>Computer architecture, operating systems</li>
-                    <li>Database management systems</li>
-                    <li>Calculus, linear algebra, numerical analysis</li>
+                    {% for course in institution.courses %}
+                    <li>{{ course }}</li>
+                    {% endfor %}
                 </ul>
             </div>
             <div class="awards">
                 <h4><em>Awards and Recognitions</em></h4>
                 <ul>
-                    <li>
-                        <a href="https://clas.ufl.edu/undergraduate/anderson-scholars/anderson-scholars-listing/"
-                        target="_blank">Anderson Scholar Award (Highest Distinction, 2018)</a>
-                    </li>
-                    <li>Dean's List Award (2016–present)</li>
-                    <li>Bright Futures Academic Scholar (2016–present)</li>
+                    {% for award in institution.awards %}
+                    <li>{{ award }}</li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
     </div>
+    {% endfor %}
 </article>
