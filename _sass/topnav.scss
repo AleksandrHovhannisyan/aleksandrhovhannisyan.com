@@ -137,7 +137,7 @@
     #topnav {
         .nav-links {
             /* Note 1: I'm using !important here only as a last resort to cover an edge case. Suppose
-            you open the navbar on a small screen (< 820 px) and then close it. Per the JavaScript,
+            you open the navbar on a small screen (< 700 px) and then close it. Per the JavaScript,
             the inline style for .nav-links will be set to 'max-height: 0px' when the menu cloes. If we then switch
             to a wider view (e.g., by flipping the device to horizontal orientation), the inline style of
             'max-height: 0px' will end up overriding the style below, effectively making the navbar
