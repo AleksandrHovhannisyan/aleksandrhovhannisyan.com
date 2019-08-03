@@ -7,13 +7,7 @@ permalink: /experience/
 order: 2
 ---
 
-<article class="banner container">
-    <h1>My experience</h1>
-    <p>I try to keep busy while having fun and testing my limits. Between school, side projects, and interning, 
-    I've gained valuable exposure to a wide variety of interesting technologies and problems.</p>
-</article>
-
-<hr>
+{% include banner.html heading="My experience" content="I try to keep busy while having fun and testing my limits. Between school, side projects, and interning, I've gained valuable exposure to a wide variety of interesting technologies and problems." %}
 
 <article id="projects" class="container">
     <h2 class="heading">
