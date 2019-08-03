@@ -12,5 +12,5 @@ order: 3
 
 <hr>
 
-<article id="post-previews" class="banner container">
+<article id="post-previews" class="container">
 </article>
