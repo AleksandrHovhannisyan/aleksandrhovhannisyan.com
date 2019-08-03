@@ -97,6 +97,10 @@ p {
     @include transition;
 }
 
+p, li {
+    line-height: 1.5em;
+}
+
 .heading, .heading * {
     vertical-align: middle;
 
