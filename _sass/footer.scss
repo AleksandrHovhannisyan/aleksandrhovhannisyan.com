@@ -14,8 +14,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
 
-#page-footer span {
-    text-align: center;
+    span {
+        text-align: center;
+    }
+
+    * {
+        font-weight: bold;
+    }
 }
