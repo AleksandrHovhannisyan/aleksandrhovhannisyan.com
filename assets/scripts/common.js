@@ -20,20 +20,6 @@ function toggleColorTheme() {
         html.className = 'night';
         localStorage.setItem('theme', 'night');
     }
-    updateThemeLabel();
-}
-
-
-/** Updates the text in the theme label to match whatever mode the page is in (dark, light).
- */
-function updateThemeLabel() {
-    const themeLabel = document.getElementById('theme-label');
-
-    if (html.classList.contains('night')) {
-        themeLabel.textContent = 'Dark mode';
-    } else {
-        themeLabel.textContent = 'Light mode';
-    }
 }
 
 

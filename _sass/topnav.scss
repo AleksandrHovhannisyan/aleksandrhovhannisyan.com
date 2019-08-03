@@ -112,17 +112,23 @@
         background-color: var(--text-color-gray);
         border-radius: 50%;
         @include transition;
+
+        html.night & {
+            left: calc(var(--switch-width) - var(--orb-distance-from-edge) - 1.5 * var(--switch-orb-width));
+            right: var(--orb-distance-from-edge);
+        }
     }
 
-    #theme-label {
+    #theme-label::before {
         align-self: center;
-    }
-}
 
-.night #theme-switch-container {
-    #theme-switch::before {
-        left: calc(var(--switch-width) - var(--orb-distance-from-edge) - 1.5 * var(--switch-orb-width));
-        right: var(--orb-distance-from-edge);
+        html.day & {
+            content: "Light mode";
+        }
+
+        html.night & {
+            content: "Dark mode";
+        }
     }
 }
 
