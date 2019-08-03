@@ -31,7 +31,7 @@ html.day {
 html.night {
     --bg-color-main: #{$charcoal};
     --bg-color-contrast: #{$nearly-black};
-    --highlight-bg-color: rgb(209, 202, 183);
+    --highlight-bg-color: rgba(125, 117, 99, 0.8);
 
     --text-color-normal: #{$beige};
     --text-color-emphasis: #{$beige-light};
