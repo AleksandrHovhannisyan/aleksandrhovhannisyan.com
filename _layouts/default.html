@@ -1,89 +1,25 @@
 <!DOCTYPE html>
 
 <html lang="en" class="day">
-
     <head>
-        <!-- Metadata, for search engines -->
-        <meta name="description" content="I'm a software developer who's passionate about tinkering with code, solving problems, and having fun. Get in touch!" />
-        <meta name="keywords" content="Aleksandr Hovhannisyan, github pages resume, github pages portfolio, github pages personal website" />
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="author" content="Aleksandr Hovhannisyan" />
-        <!-- For the contact form -->
-        <meta name="referrer" content="origin" />
-        <!-- For LinkedIn -->
-        <meta property="og:title" content="Aleksandr Hovhannisyan" />
-        <meta property="og:image" content="https://aleksandrhovhannisyan.github.io/img/profile-photo.jpg" />
-        <meta property="og:description" content="I'm a software developer who's passionate about tinkering with code, solving problems, and having fun. Get in touch!" />
-        <meta property="og:url" content="https://aleksandrhovhannisyan.github.io/" />
-        <!-- Nunito font looks amazing :) -->
+        {% include meta.html %}
+        <!-- Nunito font -->
         <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet" />
-        <!-- Font Awesome icons -->
-        <script src="https://kit.fontawesome.com/7d7dc6ad85.js"></script>
         <!-- Favicon -->
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <title>{{ page.title }} | {{ site.title }}</title>
-        <!-- Custom stylesheets -->
-        <link rel="stylesheet" href="/assets/styles/main.css" />
-        <link rel="stylesheet" href="/assets//styles/themes.css" />
-        {% if page.custom_css %}
-            {% for sheet in page.custom_css %}
-            <link rel="stylesheet" href="/assets/styles/{{ sheet }}.css" />
-            {% endfor %}
-        {% endif %}
-
-        <script>
-            if (localStorage.getItem('theme') === 'night') {
-                document.documentElement.className = 'night';
-            } else {
-                document.documentElement.className = 'day';
-            }
-        </script>
+        {% include stylesheets.html %}
+        {% include loadTheme.html %}
     </head>
-
     <body>
         <div id="page-wrapper">
-            <header>
-                <nav id="topnav">
-                        <div class="container nav-container">
-                            <div id="theme-switch-container">
-                                <div id="theme-switch"></div>
-                                <span id="theme-label">Light mode</span>
-                            </div>
-                            <i class="navbar-hamburger fas fa-bars"></i>
-                            <ul class="nav-links">
-                                {% assign pages = site.html_pages | sort: "order" %}
-                                {% for p in pages %}
-                                    {% if page.title == p.title %}
-                                    <li><a class="active-nav-link" href="{{ p.url }}">{{ p.title }}</a></li>    
-                                    {% else %}
-                                    <li><a href="{{ p.url }}">{{ p.title }}</a></li>
-                                    {% endif %}
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </nav>
-            </header>
-    
+            {% include header.html %}
             <main>
                 {{ content }}
             </main>
         </div>
-
         <!-- Note: footer is not part of page wrapper to ensure it sticks to the bottom of the page -->
-        <footer id="page-footer" class="container">
-            <span>Made with ♥ by Aleksandr Hovhannisyan, &copy; 2019</span>
-        </footer>
-
-        <!-- jQuery -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-        <!-- Custom javascript -->
-        <script src="/assets/scripts/common.js"></script>
-        {% if page.custom_js %}
-            {% for script in page.custom_js %}
-            <script src="/assets/scripts/{{ script }}.js"></script>
-            {% endfor %}
-        {% endif %}
+        {% include footer.html %}
+        {% include scriptLinks.html %}
     </body>
-
 </html>
