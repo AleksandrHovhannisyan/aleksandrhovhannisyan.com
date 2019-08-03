@@ -40,10 +40,15 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 1.1em;
-}
 
-.banner * {
-    text-align: center;
+    * {
+        text-align: center;
+    }
+
+    + hr {
+        width: 50%;
+        box-shadow: 0px 2px 5px 0px var(--text-color-normal);
+    }
 }
 
 .container {
@@ -108,9 +113,4 @@ article {
 hr {
     border: 1.2px solid var(--text-color-normal);
     @include transition;
-}
-
-.banner + hr {
-    width: 50%;
-    box-shadow: 0px 2px 5px 0px var(--text-color-normal);
 }
