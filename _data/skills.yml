@@ -1,101 +1,101 @@
-- category: "Languages & Markup"
+- category: Languages & Markup
   items:
-    - name: "C++"
+    - name: C++
       rating: 5
-    - name: "Python"
+    - name: Python
       rating: 5
-    - name: "HTML5"
+    - name: HTML5
       rating: 5
-    - name: "CSS, SASS"
+    - name: CSS, SASS
       rating: 4
-    - name: "SQL"
+    - name: SQL
       rating: 4
-    - name: "R"
+    - name: R
       rating: 4
-    - name: "C#"
+    - name: C#
       rating: 3
-    - name: "JavaScript"
+    - name: JavaScript
       rating: 3
 
-- category: "Software Development"
+- category: Software Development
   items:
-    - name: "OOP"
+    - name: OOP
       rating: 5
-    - name: "Debugging"
+    - name: Debugging
       rating: 5
-    - name: "Code review"
+    - name: Code review
       rating: 4
-    - name: "Scrum"
+    - name: Scrum
       rating: 4
-    - name: "Refactoring"
+    - name: Refactoring
       rating: 4
-    - name: "Game dev"
+    - name: Game dev
       rating: 4
-    - name: "Design patterns"
+    - name: Design patterns
       rating: 3
 
-- category: "Operating Systems"
+- category: Operating Systems
   items:
-    - name: "Windows (7-10)"
+    - name: Windows (7-10)
       rating: 5
-    - name: "Linux (Ubuntu)"
+    - name: Linux (Ubuntu)
       rating: 4
-    - name: "Linux kernel"
+    - name: Linux kernel
       rating: 4
-    - name: "VMs (Virtualbox)"
+    - name: VMs (Virtualbox)
       rating: 4
-    - name: "macOS (Mojave)"
+    - name: macOS (Mojave)
       rating: 3
 
-- category: "Terminals & Tools"
+- category: Terminals & Tools
   items:
-    - name: "Bash"
+    - name: Bash
       rating: 4
-    - name: "PowerShell"
+    - name: PowerShell
       rating: 4
-    - name: "cmd"
+    - name: cmd
       rating: 3
-    - name: "npm, yarn"
+    - name: npm, yarn
       rating: 2
 
-- category: "Go-to IDEs"
+- category: Go-to IDEs
   items:
-    - name: "VS Code"
+    - name: VS Code
       rating: 5
-    - name: "Visual Studio"
+    - name: Visual Studio
       rating: 5
-    - name: "Qt Creator"
+    - name: Qt Creator
       rating: 5
-    - name: "Android Studio"
+    - name: Android Studio
       rating: 3
 
-- category: "Collaboration"
+- category: Collaboration
   items:
-    - name: "Git, GitHub"
+    - name: Git, GitHub
       rating: 5
-    - name: "Slack"
+    - name: Slack
       rating: 5
-    - name: "G Suite"
+    - name: G Suite
       rating: 5
-    - name: "Jira"
+    - name: Jira
       rating: 3
-    - name: "Confluence"
+    - name: Confluence
       rating: 2
 
-- category: "Languages"
+- category: Languages
   items:
-    - name: "English"
+    - name: English
       rating: 5
-    - name: "Armenian"
+    - name: Armenian
       rating: 4
-    - name: "German"
+    - name: German
       rating: 3
 
-- category: "Other"
+- category: Other
   items:
-    - name: "Copy editing"
+    - name: Copy editing
       rating: 5
-    - name: "Copy writing"
+    - name: Copy writing
       rating: 4
-    - name: "Email writing"
+    - name: Email writing
       rating: 4
