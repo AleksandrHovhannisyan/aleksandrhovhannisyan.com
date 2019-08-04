@@ -1,6 +1,4 @@
 "use strict";
-// To save typing
-const html = document.documentElement;
 
 
 // Using a map instead of an object because I want to show the repos in the order in which they're inserted
