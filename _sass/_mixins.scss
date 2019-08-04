@@ -4,6 +4,20 @@
     transition: $what $duration;
 }
 
+@mixin headings {
+    h1, h2, h3, h4, h5, h6 {
+        @content;
+    }
+}
+
+@mixin banner {
+    max-width: calc(#{$page-max-width} / 1.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 @mixin comment-banner($message) {
 /* ==================================================
 
