@@ -1,5 +1,7 @@
 # My Personal Website
 
+**Update**: What originally began as a single-page site built purely with HTML5, CSS, and JavaScript has now moved over to Jekyll for blogging purposes and maintainability. While it was a great learning experience and a fun way to get my hands dirty, building the site with HTML and CSS was clearly not going to be maintainable for the long run. For one, navigating one massive stylesheet was a pain, and I often found myself unavoidably violating DRY best practices. Second, much of my HTML involved copy-pasting, especially the skills section. Each time I wanted to add a new skill, I had to copy-paste an entire div, deal with [VS Code's indentation formatting errors](https://github.com/microsoft/vscode/issues/32320#issuecomment-513562073), and then manually fill in the information. With SASS, Jekyll's site data (represented as YAML), and the wonderful Liquid templating language, I can more easily update the content without having to copy-paste chunks of HTML.
+
 This is just a little single-page site I threw together to share some of my work, skills, education, etc.
 
 ## Why Build Everything from Scratch?
