@@ -1,0 +1,25 @@
+@import 'mixins';
+@import 'settings';
+
+@include comment-banner("Footer that appears at the bottom of every page.");
+
+#page-footer {
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    background: var(--bg-color-contrast);
+    @include transition;
+    color: var(--text-color-gray);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+        text-align: center;
+    }
+
+    * {
+        font-weight: bold;
+    }
+}
