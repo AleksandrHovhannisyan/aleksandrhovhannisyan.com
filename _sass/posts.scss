@@ -33,6 +33,7 @@
     }
 
     ol li::marker {
+        @include transition;
         font-weight: bold;
         margin-right: 5px;
         color: var(--text-color-emphasis);
@@ -44,5 +45,6 @@
         font-style: italic;
         padding-left: 20px;
         border-left: 4px solid var(--text-color-normal);
+        @include transition;
     }
 }
