@@ -1,0 +1,89 @@
+@import 'mixins';
+@import 'fonts';
+
+@include comment-banner("Rules for buttons and collapsibles, which share common styles.");
+
+
+/* Note: this is an anchor with a class of button */
+.button {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    display: block;    
+    margin-bottom: 15px;
+    margin-right: 15px;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: none;
+
+    * {
+        @include transition;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.collapsible {
+    margin-top: 20px;
+    font-family: $font-family-primary, $font-family-backup;
+    font-size: 1em;    
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+.collapsible-header {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+
+    * {
+        @include transition;
+        align-self: center;
+    }
+
+    i {
+        margin-left: 10px;
+        margin-right: 20px;
+        font-size: 1em;
+    }
+}
+
+.collapsible-content {
+    /* Will be set to a sufficiently large max-height by corresponding click handler for .collapsible */
+    max-height: 0px;
+    overflow: hidden;
+
+    --collapsible-content-border-width: 3px;
+    border: solid var(--collapsible-content-border-width) var(--button-bg-color);
+    @include transition;
+    border-top: none;
+}
+
+.button, .collapsible-header {
+    cursor: pointer;
+    border: none;
+    background-color: var(--button-bg-color);
+    @include transition;
+}
+
+.button, .button *, .collapsible-header * {
+    color: var(--button-text-color);
+}
+
+.button:hover, .collapsible-header:hover {
+    background-color: var(--button-bg-hover-color);
+}
+
+/* To get rid of Firefox's dotted lines when these are clicked */
+.button::-moz-focus-inner, .collapsible::-moz-focus-inner {
+    outline: none;
+}
+
+.button:hover, .button:hover *, .collapsible-header:hover * {
+    color: var(--button-text-hover-color);
+}

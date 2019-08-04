@@ -1,0 +1,11 @@
+<!-- Font Awesome icons -->
+<script src="https://kit.fontawesome.com/7d7dc6ad85.js"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<!-- Custom javascript -->
+<script src="/assets/scripts/common.js"></script>
+{% if page.custom_js %}
+    {% for script in page.custom_js %}
+    <script src="/assets/scripts/{{ script }}.js"></script>
+    {% endfor %}
+{% endif %}

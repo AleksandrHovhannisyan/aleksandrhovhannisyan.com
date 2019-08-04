@@ -1,0 +1,53 @@
+---
+---
+
+@import 'colors';
+@import 'mixins';
+
+@include comment-banner("CSS custom properties used for theming the site (day and night mode)");
+
+html.day {
+    --bg-color-main: white;
+    --bg-color-contrast: #{$charcoal};
+    --highlight-bg-color: #{$blue-cloud};
+
+    --text-color-normal: #{$coffee-gray};
+    --text-color-gray: #{$gray-light};
+    --text-color-emphasis: black;
+    --link-color: #{$blue};
+
+    --button-bg-color: #{$blue};
+    --button-text-color: white;
+    --button-bg-hover-color: #{$blue-light};
+    --button-text-hover-color: white;
+
+    --card-bg-color: #{$nearly-white};
+    --label-bg-color: #e7e7e7;
+    --hover-color-general: whitesmoke;
+
+    --form-bg-color: white;
+}
+
+html.night {
+    --bg-color-main: #{$charcoal};
+    --bg-color-contrast: #{$nearly-black};
+    --highlight-bg-color: rgba(125, 117, 99, 0.8);
+
+    --text-color-normal: #{$beige};
+    --text-color-emphasis: #{$beige-light};
+    --text-color-gray: #{$gray-light};
+    --link-color: rgb(207, 189, 154);
+
+    --button-bg-color: #{$coffee};
+    --button-text-color: #{$beige-light};
+    --button-bg-hover-color: #{$coffee-light};
+    --button-text-hover-color: #{$nearly-black};
+
+    $card-bg-color: adjust-color($charcoal, $red: 10, $blue: 10, $green: 10);
+    --card-bg-color: #{$card-bg-color};
+    --label-bg-color: #{$charcoal};
+    $hover-color-general: adjust-color($charcoal, $red: 22, $blue: 22, $green: 22);
+    --hover-color-general: #{$hover-color-general};
+
+    --form-bg-color: var(--hover-color-general);
+}

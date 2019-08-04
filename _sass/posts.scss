@@ -1,0 +1,50 @@
+@import 'mixins';
+@include comment-banner("Styling for blog post previews.");
+
+.post-date {
+    @include transition;
+    font-size: 0.8em;
+    font-style: italic;
+}
+
+.post-title {
+    margin-bottom: 10px;
+}
+
+#post-previews {
+    @include banner;
+
+    .post-preview {
+        margin-bottom: var(--card-margin);
+
+        .post-excerpt {
+            margin-top: 0px;
+            margin-bottom: var(--card-margin);
+        }
+    }
+}
+
+.post {
+    font-size: 1.1em;
+
+    img {
+        margin: 20px auto;
+        width: 100%;
+    }
+
+    ol li::marker {
+        @include transition;
+        font-weight: bold;
+        margin-right: 5px;
+        color: var(--text-color-emphasis);
+    }
+
+    blockquote {
+        font-size: 1.2em;
+        margin: 30px auto;
+        font-style: italic;
+        padding-left: 20px;
+        border-left: 4px solid var(--text-color-normal);
+        @include transition;
+    }
+}

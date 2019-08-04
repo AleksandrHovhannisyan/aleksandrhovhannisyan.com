@@ -1,0 +1,36 @@
+@import 'settings';
+
+@mixin transition($what: all, $duration: $transition-duration) {
+    transition: $what $duration;
+}
+
+@mixin headings {
+    h1, h2, h3, h4, h5, h6 {
+        @content;
+    }
+}
+
+@mixin banner {
+    max-width: calc(#{$page-max-width} / 1.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin comment-banner($message) {
+/* ==================================================
+
+   #{$message}
+
+   ==================================================
+*/
+}
+
+@mixin card-grid {
+    display: grid;
+    column-gap: 50px;
+    row-gap: 50px;
+    /* Fill up space as it's made available, with each card being a minimum of 250px */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
