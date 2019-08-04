@@ -33,7 +33,7 @@ Note: Don't ever pick a single language and refuse to part ways with it. Instead
 
 ## Stop Wasting Money on Courses You'll Never Take
 
-Udemy, Udacity, Vertabelo Academy, Codeacaemy Pro, et al. What do these things have in common? They're predatory online platforms that target beginners who want their hands held or disillusioned working professionals who are looking to make a career change as quickly as possible. These platforms are everywhere, but I consider them detrimental to learning how to actually code because they rarely ever provide materials that are of a higher quality than free content that's readily available online.
+Udemy, Udacity, Vertabelo Academy, Codeacaemy Pro, et al. What do these things have in common? They're predatory online platforms that target beginners who feel overwhelmed or disillusioned working professionals who are looking to make a career change as quickly as possible. These platforms are everywhere, but I consider them detrimental to learning how to actually code because they rarely ever provide materials that are of a higher quality than free content that's readily available online.
 
 The biggest problem with these courses is the constant **hand-holding**&mdash;it's a disservice. Making mistakes, breaking your code, and learning how to debug all incredibly valuable experiences that will stick with you forever and ultimately make you a better programmer. Simply copying what an instructor does may help you develop muscle memory, but it won't provide you with the deep level of understanding that only first-hand experience can bring.
 
