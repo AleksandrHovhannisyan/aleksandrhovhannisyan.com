@@ -73,6 +73,10 @@ i, h1, h2, h3, h4, h5, h6, strong, em {
     @include transition;
 }
 
+ul, ol {
+    @include transition;
+}
+
 h1 {
     font-size: 2.2em;
     margin-block-start: 0.67em;
