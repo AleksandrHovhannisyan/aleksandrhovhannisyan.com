@@ -17,8 +17,6 @@
 }
 
 .project {
-    display: grid;
-    grid-template-columns: 1;
     /* Header, description, footer, respectively */
     grid-template-rows: max-content 1fr max-content;
 
@@ -28,7 +26,6 @@
     }
 
     h4 {
-        margin: 0px;
         align-self: center;
         grid-area: heading;
         @include transition;
@@ -52,8 +49,6 @@
     .description {
         margin-top: 0px;
         margin-bottom: 0px;
-        margin-left: var(--card-margin);
-        margin-right: var(--card-margin);
         @include transition;
     }
 
@@ -61,9 +56,6 @@
         display: flex;
         flex-wrap: wrap;
         grid-row: 3;
-        margin-bottom: var(--card-margin);
-        margin-left: var(--card-margin);
-        margin-right: var(--card-margin);
         @include transition;
     
         p {
