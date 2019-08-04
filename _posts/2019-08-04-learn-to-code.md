@@ -9,17 +9,21 @@ I remember reading a short story in high school about an aspiring writer who inv
 
 The same thing often happens with beginners who want to get into software development&mdash;they install an assortment of IDEs and tools whose purpose they don't really understand, scour through listicles on the best programming languages for beginners to learn, and generally spend most of their time contemplating programming and trying to come up with ideas for projects instead of... well, *programming*.
 
-## Just Pick a Language
+## Pick a Language, Any Language
 
 Instead of wasting your time comparing different languages, just pick one and start coding. It really doesn't matter. Learn Java. Learn Python. Learn PHP, JavaScript, Go, Scratch, or any language you want. Anything will do when you're a beginner as long as you actually start somewhere. What you *shouldn't* do is waste time debating the merits and drawbacks of various languages when you don't even have experience yet&mdash;that's what you really need, after all; the language is just a means to an end.
+
+YouTuber Michael Reeves puts it well in [one of his videos](https://www.youtube.com/watch?v=bZDE6I5B9-E):
+
+> Just pick one and start learning programming... All modern programming languages are wildly powerful, and they can do all kinds of shit.
 
 If we're talking preferences, my personal favorite language is C++. I like it because it's at a sufficiently low level of abstraction that it forces you to think before you code, but it's also at a high level in the sense that you don't have to concern yourself with register manipulation and managing stack frames. It's also the granddaddy of nearly every modern programming language, so it's kind of a big deal.
 
 Ironically, I actually hated C++ when I first started learning it in school. I kept running into compiler and linker errors left and right. I recall my programming fundamentals teacher imparting some very wise words in the second semester of my undergraduate studies when he heard me complain. He said that the degree wasn't intended to teach you how to program in any particular language, and that languages are merely tools for doing a programmer's job. The hope was that you'd be able to pick up any language on demand after graduating from the program. Our goal was to learn how to think like computer scientists instead of confining ourselves to the narrow context of any particular language.
 
-> Languages are merely tools for doing a programmer's job.
-
 Even assembly is extremely valuable to learn&mdash;not because it gets used on the job frequently (unless you're in systems programming) but because it forces you to actually understand how things like stack frames work or what pointers really are at the hardware level. But assembly does come with a steeper learning curve because it's closer to the hardware and is at one of the lowest levels of abstraction among programming languages. Unfortunately, this means you'll be writing more code&mdash;for that reason, it's probably best to avoid this until you have experience with a high-level language.
+
+> Languages are merely tools for doing a programmer's job.
 
 So, the question naturally arises: Are certain languages more accessible to beginners? Absolutely. Python immediately comes to mind because of its simple and legible syntax. It's a powerful language with a plethora of use cases, primarily in back-end work, data analysis, and machine learning. That said, in my opinion, your first language shouldn't have an excessively simple syntax or "hide" a lot of otherwise abstract concepts from you. This can lead you to develop a misunderstanding of how certain fundamentals really work under the hood.
 
