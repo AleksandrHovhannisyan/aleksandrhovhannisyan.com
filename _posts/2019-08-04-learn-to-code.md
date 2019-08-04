@@ -29,7 +29,7 @@ So, the question naturally arises: Are certain languages more accessible to begi
 
 Java and C++: There's a reason why so many university courses begin with these two. They're not too difficult, but they're also not trivial. A perfect balance when you're just starting out.
 
-Note: Don't ever pick single language and refuse to part ways with it. Instead, use your favorite language as a way to learn programming fundamentals, algorithms, and data structures. That knowledge is transferable and can allow you to later pick up many different languages without formally dedicating time to learning those languages individually.
+Note: Don't ever pick a single language and refuse to part ways with it. Instead, use your favorite language as a way to learn programming fundamentals, algorithms, and data structures. That knowledge is transferable and can allow you to later pick up many different languages without formally dedicating time to learning those languages individually.
 
 ## Stop Wasting Money on Courses You'll Never Take
 
