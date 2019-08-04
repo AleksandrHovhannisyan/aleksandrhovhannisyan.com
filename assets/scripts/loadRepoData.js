@@ -18,7 +18,7 @@ function setupRepos() {
     // at the start and to use substring hacks to extract the icon part, which I'd rather not do
     addRepo("Scribe-Text-Editor", "Scribe: Text Editor", '📄', ["c++", "qt5", "qtcreator"]);
     addRepo("EmbodyGame", "Embody: Game", '👻', ["c#", "unity", "inkscape", "ai"]);
-    addRepo("aleksandrhovhannisyan.github.io", "Personal Website", '💾', ["html5", "css", "javascript"]);
+    addRepo("aleksandrhovhannisyan.github.io", "Personal Website", '💾', ["jekyll", "html5", "css", "javascript"]);
     addRepo("Steering-Behaviors", "Steering Behaviors", '⚙️', ["c#", "unity", "ai"]);
     addRepo("MIPS-Linked-List", "ASM Linked List", '⛓️', ["mips", "asm", "qtspim"]);
 }
