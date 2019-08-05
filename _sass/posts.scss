@@ -1,14 +1,18 @@
 @import 'mixins';
 @include comment-banner("Styling for blog post previews.");
 
-.post-date {
-    @include transition;
-    font-size: 0.8em;
-    font-style: italic;
-}
-
 .post-title {
     margin-bottom: 10px;
+}
+
+.post-date, .post-reading-length {
+    font-size: 0.8em;
+    font-style: italic;
+    @include transition;
+}
+
+.post-reading-length:before {
+    content: " — ";
 }
 
 #post-previews {
