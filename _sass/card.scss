@@ -3,11 +3,11 @@
 @include comment-banner("Cards that look like material panels.");
 
 .card {
-    --card-margin: 30px;
-
+    --card-padding: 30px;
+    padding: var(--card-padding);
     display: grid;
     grid-template-columns: 1fr;
-    row-gap: calc(var(--card-margin) / 2);
+    row-gap: calc(var(--card-padding) / 2);
 
     position: relative;
     background-color: var(--card-bg-color);
@@ -21,21 +21,12 @@
     }
 
     header {
-        margin-top: var(--card-margin);
-        margin-bottom: 0px;
-
         @include headings {
             margin: 0px;
         }
     }
-    
-    > *:not(.hover-content):not(.container-link) {
-        margin-left: var(--card-margin);
-        margin-right: var(--card-margin);
-    }
 
     footer {
         margin-top: 0px;
-        margin-bottom: var(--card-margin);
     }
 }

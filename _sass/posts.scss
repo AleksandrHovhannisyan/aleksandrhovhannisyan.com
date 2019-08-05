@@ -19,11 +19,11 @@
     @include banner;
 
     .post-preview {
-        margin-bottom: var(--card-margin);
+        margin-bottom: var(--card-padding);
 
         .post-excerpt {
             margin-top: 0px;
-            margin-bottom: var(--card-margin);
+            margin-bottom: 0px;
         }
     }
 }
@@ -34,6 +34,12 @@
     img {
         margin: 20px auto;
         width: 100%;
+    }
+
+    iframe {
+        max-height: 400px;
+        width: 100%;
+        height: 100%; 
     }
 
     ol li::marker {
