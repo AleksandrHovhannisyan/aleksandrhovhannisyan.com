@@ -3,6 +3,7 @@
 
 @import 'mixins';
 @import 'fonts';
+@import 'settings';
 
 
 @include comment-banner("Main contact form");
@@ -67,7 +68,7 @@
     }
 }
 
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: $device-cutoff-large) {
     #contact {
         grid-template-areas: "form form form socials";
     }
