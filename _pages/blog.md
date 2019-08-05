@@ -12,7 +12,7 @@ order: 3
         <div class="card post-preview">
             <header>
                 <h3 class="post-title">{{ post.title }}</h3>
-                <div class="post-date">Posted: {{ post.date | date: "%b %-d, %Y" }}</div>
+                {% include postStats.html target=post %}
             </header>
             <p class="post-excerpt">{{ post.excerpt }}</p>
             <a class="container-link" href="{{ post.url }}"></a>

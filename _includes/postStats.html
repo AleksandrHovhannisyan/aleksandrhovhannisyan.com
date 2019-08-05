@@ -1,0 +1,5 @@
+<!-- Credit: https://github.com/johno/pixyll/commit/0979ada039a7a36b3383c0739b1e7d7edb1f34f9 -->
+{% assign minutes = content | number_of_words | divided_by: 180 %}
+{% if minutes == 0 %}{% assign minutes = 1 %}{% endif %}
+<span class="post-date">Posted on: {{ include.target.date | date: "%b %-d, %Y" }}</span>
+<span class="post-reading-length">{{ minutes }} min read</span>
