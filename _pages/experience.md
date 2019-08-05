@@ -12,7 +12,7 @@ order: 2
 <article id="projects" class="container">
     <h2 class="heading">
         <span>Projects</span>
-        <img src="/assets/../assets/img/folder.png" alt="📁">
+        <img src="/assets/img/folder.png" alt="📁">
     </h2>
     <div id="card-grid">
         <!-- Projects get populated here dynamically (see index.js) -->
@@ -31,7 +31,7 @@ order: 2
 <article id="skills" class="container">
     <h2 class="heading">
         <span>Skills and Abilities</span>
-        <img src="../assets/img/juggler.png" alt="🤹">
+        <img src="/assets/img/juggler.png" alt="🤹">
     </h2>
     {% for skill in site.data.skills %}
     <div class="skill-category">
@@ -57,7 +57,7 @@ order: 2
 <article id="education" class="container">
     <h2 class="heading">
         <span>Education</span>
-        <img src="/assets/../assets/img/graduation-cap.png" alt="🎓">
+        <img src="/assets/img/graduation-cap.png" alt="🎓">
     </h2>
     <p>
         If my track record speaks to anything, it's my <strong>commitment to excellence</strong>
