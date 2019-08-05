@@ -222,7 +222,7 @@
 }
 
 /* Line up courses and awards side by side on larger screens */
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: $device-cutoff-large) {
 
     .institution .collapsible-content {
         grid-template-rows: 1fr;
