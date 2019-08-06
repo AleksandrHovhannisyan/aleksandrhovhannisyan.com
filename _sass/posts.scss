@@ -6,7 +6,7 @@
 }
 
 .post-date, .post-reading-length {
-    font-size: 0.8em;
+    font-size: 16px;
     font-style: italic;
     @include transition;
 }
@@ -19,6 +19,7 @@
     @include banner;
 
     .post-preview {
+        width: 100%;
         margin-bottom: var(--card-padding);
 
         .post-excerpt {
@@ -29,17 +30,26 @@
 }
 
 .post {
+    $main-spacing: 40px;
+
     font-size: 1.1em;
 
-    img {
-        margin: 20px auto;
+    .post-stats {
+        margin-bottom: $main-spacing;
+    }
+
+    h2 {
+        margin-top: $main-spacing;
+    }
+
+    img, iframe {
+        margin: calc(#{$main-spacing} / 2) auto;
         width: 100%;
     }
 
     iframe {
-        max-height: 400px;
-        width: 100%;
-        height: 100%; 
+        height: 315px;
+        max-width: 560px;
     }
 
     ol li::marker {
