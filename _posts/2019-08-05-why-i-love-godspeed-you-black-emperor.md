@@ -1,8 +1,9 @@
 ---
-title: "Why I Love Godspeed You! Black Emperor"
+title: "4 Reasons Why I Love Godspeed You! Black Emperor"
 img: No image yet
 layout: post
-excerpt: A look at four amazing songs from my favorite post-rock band.
+excerpt: "A look at four amazing songs from my favorite post-rock band, Godspeed You! Black Emperor."
+keywords: [best gybe songs, best godspeed you black emperor songs, godspeed you black emperor best songs, gybe best songs, godspeed you black emperor review, godspeed you black emperor songs]
 permalink: /blog/:title/
 ---
 
