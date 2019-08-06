@@ -10,7 +10,7 @@ Of all the genres of music I've listened to, none have resonated as strongly wit
 
 The band was formed in Quebec in 1994 in the genres of post and experimental rock. And they've aged pretty well—you'll find their songs on YouTube, Spotify, the film 28 Days Later, and [in the trailer for the 2018 movie Destroyer](https://www.youtube.com/watch?v=bqHaLUoiWZU).
 
-If you've never heard of them, now's a good time to get acquainted with arguably the best post-rock band around. Here's a look at my three favorite GY!BE songs.
+If you've never heard of them, now's a good time to get acquainted with arguably the best post-rock band around. Here's a look at my four favorite GY!BE songs.
 
 ## 1. Motherfucker=Redeemer
 
