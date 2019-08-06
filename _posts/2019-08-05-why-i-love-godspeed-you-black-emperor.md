@@ -20,11 +20,9 @@ What a title. I have no clue what it means, but I'm fairly certain it's post-roc
 
 Though the first minute and a half is somewhat choppy, it builds up to one of the greatest post-rock crescendos that you'll ever hear—there's no missing it once it starts. You can sense some very palpable tension and rage in the chords, a common theme in Yanqui U.X.O. The band [describes the album](https://godspeedyoublackemperor.bandcamp.com/album/yanqui-u-x-o) as "just raw, angry, dissonant, epic instrumental rock."
 
-And then it slowly dies off about ten minutes in. What follows resembles grief and pain. People say this section is so beautiful that it's made them cry; I'll let you be the judge of that and experience it for yourself. Throughout those sorrowful notes are scattered glimpses of hope—a gradually increasing intensity that struggles to fully realize itself. The riffs that start at 13:50 are particularly amazing.
+And then it slowly dies off about ten minutes in. What follows resembles grief and pain. People say this section is so beautiful that it's made them cry; you really do have to hear it for yourself to understand what they mean. Throughout those sorrowful notes are scattered glimpses of hope—a gradually increasing intensity that struggles to fully realize itself. The riffs beginning at 13:50 are particularly amazing.
 
-The final chapter of the song—beginning at around the 23-minute mark—is like a phoenix rising from its ashes, now burning brighter and more explosively. It makes me want to barrel down an empty freeway without the slightest care for anything in the world.
-
-At long last, you arrive at 28:40 and find yourself raising the volume to deafening levels. It doesn't get more intense than these last two minutes—and when it's over, you'll feel a wave of relief wash over you. It's an emotional rollercoaster well worth the ride.
+The final chapter of the song—beginning at around the 23-minute mark—is true redemption, the peak crescendo, and can only be fully enjoyed by barreling down an empty freeway at max speed. As you arrive at 28:40, you find yourself raising the volume to deafening levels. It doesn't get more intense than these last few minutes—and when it's over, you'll feel a wave of relief wash over you. It's an emotional rollercoaster well worth the ride.
 
 ## 2. Rockets Fall on Rocket Falls
 
@@ -34,13 +32,13 @@ Let's just say that when rockets fall on Rocket Falls, you won't want to be ther
 
 Whoever made this video was able to perfectly capture the feeling that this song evokes: that of sitting at the edge of the world and witnessing an awe-inspiring catastrophe much greater than you or me or anything else on this planet: the detonation of a hydrogen bomb. It literally blows you away.
 
-When I close my eyes, I see this piece as the last few breaths of a dying universe, or a melancholy post-war composition echoing throughout the ruined streets of civilization. GY!BE manages to convey feelings of desolation and destruction without uttering a single syllable.
+When I close my eyes, I picture this song as the last explosive breaths of a dying universe, or a post-war composition echoing throughout the ruined streets of civilization. GY!BE manages to convey feelings of desolation and destruction without uttering a single syllable.
 
 ## 3. We Drift Like Worried Fire
 
 <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=1158321089/size=large/bgcol=333333/linkcol=e99708/tracklist=false/artwork=small/track=1667278398/transparent=true/" seamless><a href="http://godspeedyoublackemperor.bandcamp.com/album/allelujah-dont-bend-ascend">ALLELUJAH! DON&#39;T BEND! ASCEND! by Godspeed You! Black Emperor</a></iframe>
 
-There's one word to describe this entire song: Unpredictable. You feel happy, then sad. Happy, sad. Then you catch a fleeting glimmer of hope. And then it's back to sadness, despair, and more of that GY!BE dissonance you simply can't get enough of. The emotions drift like worried fire, a lonely little flame dancing in the wind.
+There's one word to describe this entire song: Unstable. You feel happy, then sad. Happy, sad. Then you catch a fleeting glimmer of hope at the 8- and 9-minute marks. And then it's back to sadness, despair, and more of that GY!BE dissonance you simply can't get enough of. The emotions drift like worried fire, a lonely little flame dancing in the wind.
 
 The song in general is great, but there's absolutely nothing that compares to the masterful crescendo that begins at 12:00. It paints a very vivid image of a country frantically mobilizing for war and descending into chaos. I like to think that's what the album art represents—what little remains of the aftermath, at least.
 
