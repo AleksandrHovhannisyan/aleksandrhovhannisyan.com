@@ -11,7 +11,9 @@ html.day {
     --text-color-normal: #{$coffee-gray};
     --text-color-gray: #{$gray-light};
     --text-color-emphasis: black;
+    
     --link-color: #{$blue};
+    --link-hover-color: #{$blue-light};
 
     --button-bg-color: #{$blue};
     --button-text-color: white;
@@ -33,7 +35,9 @@ html.night {
     --text-color-normal: #{$beige};
     --text-color-emphasis: #{$beige-light};
     --text-color-gray: #{$gray-light};
+
     --link-color: rgb(207, 189, 154);
+    --link-hover-color: #{$beige-light};
 
     --button-bg-color: #{$coffee};
     --button-text-color: #{$beige-light};
