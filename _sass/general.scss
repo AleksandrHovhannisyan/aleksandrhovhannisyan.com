@@ -93,7 +93,7 @@ a {
     @include transition;
 
     &:hover {
-        color: var(--text-color-emphasis);
+        color: var(--link-hover-color);
     }
 }
 
