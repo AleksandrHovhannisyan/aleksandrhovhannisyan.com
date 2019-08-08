@@ -61,6 +61,7 @@
     }
 
     ul, ol {
+        @include transition;
         padding-left: 30px;
     }
 
