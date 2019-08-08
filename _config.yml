@@ -8,6 +8,7 @@ github_username: AleksandrHovhannisyan
 # Build settings
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
 include: ['_pages']
 
 # Exclude from processing.
