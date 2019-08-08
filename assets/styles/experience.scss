@@ -137,57 +137,56 @@
 @include comment-banner("Skills section.");
 
 #skills {
-    display: grid;
-    column-gap: 100px;
-    row-gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-}
+    #skill-grid {
+        display: grid;
+        column-gap: 100px;
+        row-gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
 
-#skills h2 {
-    grid-row: 1;
-    grid-column: 1 / -1;
-}
+    .skill-category h4 {
+        margin-bottom: 20px;
+    }
 
-.skill-category h4 {
-    margin-bottom: 20px;
-}
+    .skill-item {
+        margin-top: 10px;
+        display: grid;
+        column-gap: 10px;
+        grid-template-columns: 1fr 1fr;
 
-.skill-item {
-    margin-top: 10px;
-    display: grid;
-    column-gap: 10px;
-    grid-template-columns: 1fr 1fr;
-}
+        &:hover {
+            background-color: var(--hover-color-general);
+        }
 
-.skill-item:hover {
-    background-color: var(--hover-color-general);
-}
+        .skill-name {
+            grid-column: 1;
+            @include transition;
+        }
+        
+        .skill-rating {
+            grid-column: 2;
+            display: inline;
+            text-align: right;
+        }
+    }
 
-.skill-name {
-    grid-column: 1;
-    @include transition;
-}
+    .fa-star {
+        &.filled {
+            color: var(--button-bg-color);
 
-.skill-rating {
-    grid-column: 2;
-    display: inline;
-    text-align: right;
-}
+            .night & {
+                color: rgb(145, 145, 145);
+            }
+        }
 
-.fa-star.filled {
-    color: var(--button-bg-color);
-}
+        &.empty {
+            color: var(--text-color-gray);
 
-.fa-star.empty {
-    color: var(--text-color-gray);
-}
-
-.night .fa-star.filled {
-    color: rgb(145, 145, 145);
-}
-
-.night .fa-star.empty {
-    color: rgb(104, 98, 80);
+            .night & {
+                color: rgb(104, 98, 80);
+            }
+        }
+    }    
 }
 
 @include comment-banner("Education section.");
@@ -201,11 +200,16 @@
         grid-template-columns: 1fr;
 
         h4 {
+            margin-top: 21px;
+            margin-bottom: 21px;
             margin-left: 10px;
             font-weight: normal;
         }
 
         ul {
+            margin-top: 16px;
+            margin-bottom: 16px;
+            padding-left: 40px;
             padding-right: 10px;
         }
         
