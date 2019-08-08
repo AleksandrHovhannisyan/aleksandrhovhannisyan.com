@@ -16,7 +16,7 @@ order: 2
     </h2>
     <div id="card-grid">
         <!-- Projects get populated here dynamically (see index.js) -->
-        <aside id="project-placeholder" class="project">
+        <div id="project-placeholder" class="project">
             <header>
                 <h4>Want to see more of my work?</h4>
             </header>
@@ -24,7 +24,7 @@ order: 2
                 <p>Check out my other repos:</p>
                 <a class="github-icon" href="https://github.com/AleksandrHovhannisyan?tab=repositories" target="_blank"><i class="fab fa-github"></i></a>
             </div>
-        </aside>
+        </div>
     </div>
 </article>
 
@@ -33,25 +33,27 @@ order: 2
         <span>Skills and Abilities</span>
         <img src="/assets/img/juggler.png" alt="🤹">
     </h2>
-    {% for skill in site.data.skills %}
-    <div class="skill-category">
-        <h4>{{ skill.category }}</h4>
-        {% for item in skill.items %}
-        <div class="skill-item">
-            <span class="skill-name">{{ item.name }}</span>
-            <div class="skill-rating">
-            {% for i in (1..item.rating) %}
-                <i class="fas fa-star filled"></i>
-            {% endfor %}
-            {% assign j = item.rating | plus: 1 %}
-            {% for i in (j..5) %}
-                <i class="fas fa-star empty"></i>
-            {% endfor %}
+    <div id="skill-grid">
+        {% for skill in site.data.skills %}
+        <div class="skill-category">
+            <h4>{{ skill.category }}</h4>
+            {% for item in skill.items %}
+            <div class="skill-item">
+                <span class="skill-name">{{ item.name }}</span>
+                <div class="skill-rating">
+                    {% for i in (1..item.rating) %}
+                    <i class="fas fa-star filled"></i>
+                    {% endfor %}
+                    {% assign j = item.rating | plus: 1 %}
+                    {% for i in (j..5) %}
+                    <i class="fas fa-star empty"></i>
+                    {% endfor %}
+                </div>
             </div>
+            {% endfor %}
         </div>
         {% endfor %}
     </div>
-    {% endfor %}
 </article>
 
 <article id="education" class="container">
