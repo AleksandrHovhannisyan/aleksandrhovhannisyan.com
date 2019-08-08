@@ -91,7 +91,7 @@ function parseRepos() {
  * @returns {Element} A DOM element representing a project card for the given repo.
  */
 function createCardFor(repo) {
-    const card = document.createElement('section');
+    const card = document.createElement('div');
     card.classList.add('card', 'project');
     card.appendChild(headerFor(repo));
     card.appendChild(descriptionFor(repo));
