@@ -84,10 +84,22 @@
         }
 
         background: var(--blockquote-bg-color);
-        font-size: 1.1em;
         margin: 25px auto;
         padding: 15px 15px 15px 20px;
         border-left: 4px solid var(--blockquote-text-color);
         @include transition;
+    }
+
+    .spoiler {
+        $spoiler-color: rgb(133, 133, 133);
+        background-color: $spoiler-color;
+        color: $spoiler-color;
+        padding: 1px;
+        @include transition;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0);
+            color: var(--text-color-emphasis);
+        }
     }
 }
