@@ -70,32 +70,6 @@
             @include transition;
         }
     }
-
-    /* Displayed when a user hovers over a project card */
-    .hover-content {
-        font-size: 1.2em;
-        /* Note: .card has 'position: relative' set */
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        /* Center the content for the hover layer */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        /* Opacity = 0 means it's hidden by default */
-        opacity: 0;
-        border-radius: 5px;
-        background-color: var(--hover-color-general);
-        @include transition;
-
-        // Whatever icon is being used
-        i {
-            margin-top: 20px;
-        }
-    }
 }
 
 /* All project cards except the placeholder get a background and box shadow */
@@ -104,11 +78,6 @@
         display: grid;
         grid-template-areas: "heading heading rating";
     }
-}
-
-/* Transition for the hover content changes its opacity */
-.project:hover .hover-content {
-    opacity: 0.92;
 }
 
 #project-placeholder {

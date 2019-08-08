@@ -18,5 +18,35 @@
     &:hover {
         cursor: pointer;
         box-shadow: 0px 8px 20px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.2);
+
+        .hover-content {
+            opacity: 0.92;
+        }
+    }
+
+    /* Displayed when a user hovers over a card */
+    .hover-content {
+        font-size: 1.2em;
+        /* Note: .card has 'position: relative' set */
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* Center the content for the hover layer */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        /* Opacity = 0 means it's hidden by default */
+        opacity: 0;
+        border-radius: 5px;
+        background-color: var(--hover-color-general);
+        @include transition;
+
+        // Whatever icon is being used
+        i {
+            margin-top: 20px;
+        }
     }
 }
