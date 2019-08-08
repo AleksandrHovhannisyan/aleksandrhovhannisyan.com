@@ -62,7 +62,6 @@
 
     ul, ol {
         padding-left: 30px;
-        margin: 0;
     }
 
     blockquote {
@@ -75,7 +74,6 @@
         }
 
         p, p * {
-            margin: 0px;
             color: var(--blockquote-text-color);
 
             em {
@@ -85,7 +83,7 @@
 
         background: var(--blockquote-bg-color);
         margin: 25px auto;
-        padding: 15px 15px 15px 20px;
+        padding: 1px 1px 1px 20px;
         border-left: 4px solid var(--blockquote-text-color);
         @include transition;
     }
@@ -94,7 +92,8 @@
         $spoiler-color: rgb(133, 133, 133);
         background-color: $spoiler-color;
         color: $spoiler-color;
-        padding: 1px;
+        margin-top: 10px;
+        margin-bottom: 10px;
         @include transition;
 
         &:hover {
