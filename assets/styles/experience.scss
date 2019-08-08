@@ -168,25 +168,25 @@
             display: inline;
             text-align: right;
         }
+    } 
+}
+
+.fa-star {
+    &.filled {
+        color: var(--button-bg-color);
+
+        .night & {
+            color: rgb(145, 145, 145);
+        }
     }
 
-    .fa-star {
-        &.filled {
-            color: var(--button-bg-color);
+    &.empty {
+        color: var(--text-color-gray);
 
-            .night & {
-                color: rgb(145, 145, 145);
-            }
+        .night & {
+            color: rgb(104, 98, 80);
         }
-
-        &.empty {
-            color: var(--text-color-gray);
-
-            .night & {
-                color: rgb(104, 98, 80);
-            }
-        }
-    }    
+    }
 }
 
 @include comment-banner("Education section.");
