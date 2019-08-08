@@ -66,8 +66,8 @@
     }
 
     blockquote {
-        --blockquote-bg-color: rgb(201, 201, 201);
-        --blockquote-text-color: rgb(85, 85, 85);
+        --blockquote-bg-color: rgb(216, 216, 216);
+        --blockquote-text-color: rgb(110, 110, 110);
 
         html.night & {
             --blockquote-bg-color: rgb(63, 63, 63);
@@ -77,6 +77,10 @@
         p, p * {
             margin: 0px;
             color: var(--blockquote-text-color);
+
+            em {
+                @include transition;
+            }
         }
 
         background: var(--blockquote-bg-color);
