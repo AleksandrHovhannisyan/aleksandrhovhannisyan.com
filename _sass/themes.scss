@@ -46,7 +46,7 @@ html.night {
     --button-bg-hover-color: #{$coffee-light};
     --button-text-hover-color: #{$nearly-black};
 
-    $card-bg-color: adjust-color($charcoal, $red: 10, $blue: 10, $green: 10);
+    $card-bg-color: adjust-color($charcoal, $red: 15, $blue: 15, $green: 15);
     --card-bg-color: #{$card-bg-color};
     --label-bg-color: #{$charcoal};
     $hover-color-general: adjust-color($charcoal, $red: 22, $blue: 22, $green: 22);
