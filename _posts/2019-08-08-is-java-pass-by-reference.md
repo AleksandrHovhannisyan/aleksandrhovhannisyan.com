@@ -3,6 +3,7 @@ title: Is Java Pass by Value or Pass by Reference?
 img: No image yet
 layout: post
 excerpt: "Pass by reference versus pass by value: Which one does Java use? Let's clear this up for good."
+keywords: [java pass by value vs pass by reference, pass by value vs pass by reference, does java pass by reference or value, java reference vs value, java pass by reference or value, java pass by value or reference example, pass by reference java, pass by value java, pass by reference vs pass by value, pass by value vs pass by reference]
 permalink: /blog/:title/
 ---
 
