@@ -78,8 +78,6 @@ i, strong {
 }
 
 ul, ol {
-    @include transition;
-
     li {
         line-height: 24px;
     }
