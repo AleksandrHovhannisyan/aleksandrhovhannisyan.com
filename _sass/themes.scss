@@ -25,6 +25,8 @@ html.day {
     --hover-color-general: whitesmoke;
 
     --form-bg-color: white;
+
+    --code-bg-color: rgb(235, 232, 232);
 }
 
 html.night {
@@ -51,4 +53,6 @@ html.night {
     --hover-color-general: #{$hover-color-general};
 
     --form-bg-color: var(--hover-color-general);
+
+    --code-bg-color: #{$coffee-gray};
 }

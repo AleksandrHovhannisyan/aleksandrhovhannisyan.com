@@ -64,7 +64,7 @@ body {
     z-index: 1;
 }
 
-i, strong, em {
+i, strong {
     color: var(--text-color-emphasis);
     @include transition;
 }
@@ -121,5 +121,14 @@ article {
 
 hr {
     border: 1.2px solid var(--text-color-normal);
+    @include transition;
+}
+
+code {
+    font-size: 1.1em;
+    background-color: var(--code-bg-color);
+    color: var(--text-color-emphasis);
+    padding-left: 5px;
+    padding-right: 5px;
     @include transition;
 }
