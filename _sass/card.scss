@@ -19,14 +19,4 @@
         cursor: pointer;
         box-shadow: 0px 8px 20px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.2);
     }
-
-    header {
-        @include headings {
-            margin: 0px;
-        }
-    }
-
-    footer {
-        margin-top: 0px;
-    }
 }
