@@ -6,22 +6,22 @@
     margin-bottom: 10px;
 }
 
-.post-date, .post-reading-length {
-    font-size: 16px;
+.post-stats {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 14px;
     font-style: italic;
-    @include transition;
-}
 
-.post-reading-length:before {
-    content: " — ";
+    .post-date, .post-reading-length {
+        @include transition;
+    }
 }
 
 #post-previews {
-    @include banner;
+    @include card-grid;
 
     .post-preview {
         width: 100%;
-        margin-bottom: var(--card-padding);
 
         .post-excerpt {
             margin-top: 0px;
@@ -36,7 +36,8 @@
     font-size: 1.1em;
 
     .post-stats {
-        margin-bottom: $main-spacing;
+        margin-top: calc(#{$main-spacing} / 4);
+        margin-bottom: calc(#{$main-spacing} / 2);
     }
 
     h2 {
