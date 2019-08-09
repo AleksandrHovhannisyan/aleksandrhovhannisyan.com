@@ -87,7 +87,7 @@
 
         background: var(--blockquote-bg-color);
         margin: 25px auto;
-        padding: 1px 1px 1px 20px;
+        padding: 1px 16px 1px 20px;
         border-left: 4px solid var(--blockquote-text-color);
         @include transition;
     }
