@@ -96,10 +96,6 @@ h1 {
 a {
     color: var(--link-color);
     @include transition;
-
-    &:hover {
-        color: var(--link-hover-color);
-    }
 }
 
 p {
@@ -146,4 +142,10 @@ code {
     padding-left: 5px;
     padding-right: 5px;
     @include transition;
+}
+
+p, ul, ol {
+    a:hover {
+        background-color: var(--link-bg-hover-color);
+    }
 }

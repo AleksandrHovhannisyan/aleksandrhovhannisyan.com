@@ -13,7 +13,7 @@ html.day {
     --text-color-emphasis: black;
     
     --link-color: #{$blue};
-    --link-hover-color: #{$blue-light};
+    --link-bg-hover-color: #{$blue-cloud};
 
     --button-bg-color: #{$blue};
     --button-text-color: white;
@@ -32,18 +32,20 @@ html.day {
 html.night {
     --bg-color-main: #{$charcoal};
     --bg-color-contrast: #{$nearly-black};
-    --highlight-bg-color: rgba(125, 117, 99, 0.8);
+    // Alpha applied for Chrome bug where colors meld together: https://stackoverflow.com/a/29416776/10480032
+    $highlight-bg-color: adjust-color($coffee-milky, $alpha: -0.2);
+    --highlight-bg-color: #{$highlight-bg-color};
 
     --text-color-normal: #{$beige};
     --text-color-emphasis: #{$beige-light};
     --text-color-gray: #{$gray-light};
 
     --link-color: rgb(207, 189, 154);
-    --link-hover-color: #{$beige-light};
+    --link-bg-hover-color: var(--highlight-bg-color);
 
-    --button-bg-color: #{$coffee};
+    --button-bg-color: #{$coffee-dark};
     --button-text-color: #{$beige-light};
-    --button-bg-hover-color: #{$coffee-light};
+    --button-bg-hover-color: #{$coffee-milky};
     --button-text-hover-color: #{$nearly-black};
 
     $card-bg-color: adjust-color($charcoal, $red: 15, $blue: 15, $green: 15);

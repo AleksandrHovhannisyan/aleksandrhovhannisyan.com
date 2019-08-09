@@ -3,7 +3,7 @@
 @include comment-banner("Styling for blog post previews.");
 
 .post-title {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .post-stats {
@@ -63,6 +63,8 @@
 
     ul, ol {
         @include transition;
+        margin-top: 30px;
+        margin-bottom: 30px;
         padding-left: 30px;
     }
 
@@ -91,15 +93,14 @@
     }
 
     .spoiler {
-        $spoiler-color: rgb(133, 133, 133);
-        background-color: $spoiler-color;
-        color: $spoiler-color;
+        background-color: $coffee-milky;
+        color: $coffee-milky;
         margin-top: 10px;
         margin-bottom: 10px;
         @include transition;
 
         &:hover {
-            background-color: rgba(0, 0, 0, 0);
+            background-color: transparent;
             color: var(--text-color-emphasis);
         }
     }
