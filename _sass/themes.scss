@@ -41,7 +41,8 @@ html.night {
     --text-color-nav: #{$silver};
 
     --link-color: rgb(207, 189, 154);
-    --link-bg-hover-color: var(--highlight-bg-color);
+    $coffee-milky-transparent: adjust-color($coffee-milky, $alpha: -0.25);
+    --link-bg-hover-color: #{$coffee-milky-transparent};
 
     --button-bg-color: #{$coffee-dark};
     --button-text-color: #{$beige-light};
@@ -54,7 +55,7 @@ html.night {
     $hover-color-general: adjust-color($charcoal, $red: 22, $blue: 22, $green: 22);
     --hover-color-general: #{$hover-color-general};
 
-    --form-bg-color: var(--hover-color-general);
+    --form-bg-color: #{$hover-color-general};
 
     --code-bg-color: #{$coffee-gray};
 }

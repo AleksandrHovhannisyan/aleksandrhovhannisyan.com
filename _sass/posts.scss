@@ -95,8 +95,8 @@
     .spoiler {
         background-color: $coffee-milky;
         color: $coffee-milky;
-        margin-top: 10px;
-        margin-bottom: 10px;
+        margin-top: 1px;
+        margin-bottom: 1px;
         @include transition;
 
         &:hover {
