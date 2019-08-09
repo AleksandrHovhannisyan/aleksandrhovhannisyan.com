@@ -23,6 +23,7 @@
     .project-name {
         color: var(--link-color);
         text-decoration: none;
+        @include transition;
     }
 
     h4 {
@@ -44,6 +45,10 @@
         align-self: center;
         grid-area: rating;
         @include transition;
+
+        .fa-star {
+            color: $denim;
+        }
     }
 
     .description {
@@ -142,7 +147,7 @@
 
 .fa-star {
     &.filled {
-        color: $blue;
+        color: var(--button-bg-color);
 
         .night & {
             color: $gray;

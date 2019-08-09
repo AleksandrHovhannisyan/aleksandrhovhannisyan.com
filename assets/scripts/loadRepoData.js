@@ -130,6 +130,7 @@ function headerFor(repo) {
  */
 function nameLabelFor(repo) {
     var projectName = document.createElement('span');
+    projectName.classList.add('project-name');
     projectName.textContent = get(repo).customName;
     return projectName;
 }
