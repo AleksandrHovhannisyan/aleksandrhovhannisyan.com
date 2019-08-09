@@ -58,7 +58,7 @@
         grid-row: 3;
         @include transition;
     
-        p {
+        .topic {
             font-size: 0.9em;
             padding: 5px;
             margin-top: 10px;

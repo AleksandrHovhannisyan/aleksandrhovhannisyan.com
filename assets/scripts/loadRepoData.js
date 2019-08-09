@@ -178,9 +178,10 @@ function footerFor(repo) {
     footer.classList.add('topics');
 
     for (const topic of get(repo).topics) {
-        const p = document.createElement('p');
-        p.textContent = topic;
-        footer.appendChild(p);
+        const span = document.createElement('span');
+        span.classList.add('topic');
+        span.textContent = topic;
+        footer.appendChild(span);
     }
 
     return footer;
