@@ -68,6 +68,7 @@
             &:hover {
                 text-decoration: underline;
                 color: $nearly-white;
+                background-color: var(--bg-color-contrast);
             }
         }
     }
