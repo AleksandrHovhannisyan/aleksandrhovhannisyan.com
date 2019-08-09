@@ -20,7 +20,7 @@
 
     * {
         font-weight: bold;
-        color: var(--text-color-gray);
+        color: var(--text-color-nav);
     }
 
     .nav-container {
@@ -41,7 +41,7 @@
         /* Otherwise, the link text will be visible (will overflow its container) when max-height is 0px */
         overflow: hidden;
         background-color: var(--bg-color-contrast);
-        color: var(--text-color-gray);
+        color: var(--text-color-nav);
         @include transition;
         /* Mobile menu dropdown takes up 100% of the viewport width */
         display: block;
@@ -92,7 +92,7 @@
         align-self: center;    
         background-color: var(--bg-color-contrast);
         --switch-border-thickness: 3px;
-        border: var(--switch-border-thickness) solid var(--text-color-gray);
+        border: var(--switch-border-thickness) solid var(--text-color-nav);
         border-radius: 100px;        
         cursor: pointer;
         @include transition;
@@ -111,7 +111,7 @@
         /* We want to be halfway from the top, but we have to account for
         our own height to get the 'true' center position */
         top: calc(50% - var(--switch-orb-height) / 2);        
-        background-color: var(--text-color-gray);
+        background-color: var(--text-color-nav);
         border-radius: 50%;
         @include transition;
 
