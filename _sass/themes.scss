@@ -9,7 +9,7 @@ html.day {
     --highlight-bg-color: #{$blue-cloud};
 
     --text-color-normal: #{$coffee-gray};
-    --text-color-gray: #{$gray-light};
+    --text-color-nav: #{$silver};
     --text-color-emphasis: black;
     
     --link-color: #{$blue};
@@ -38,7 +38,7 @@ html.night {
 
     --text-color-normal: #{$beige};
     --text-color-emphasis: #{$beige-light};
-    --text-color-gray: #{$gray-light};
+    --text-color-nav: #{$silver};
 
     --link-color: rgb(207, 189, 154);
     --link-bg-hover-color: var(--highlight-bg-color);

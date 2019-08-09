@@ -142,18 +142,18 @@
 
 .fa-star {
     &.filled {
-        color: var(--button-bg-color);
+        color: $blue;
 
         .night & {
-            color: rgb(145, 145, 145);
+            color: $gray;
         }
     }
 
     &.empty {
-        color: var(--text-color-gray);
+        color: $silver;
 
         .night & {
-            color: rgb(104, 98, 80);
+            color: $coffee-milky;
         }
     }
 }
@@ -189,7 +189,7 @@
         .awards {
             /* Only matters on mobile, where the awards are stacked underneath courses */
             border-top: solid var(--collapsible-content-border-width) var(--button-bg-color);
-            transition: border var(--global-transition-duration);
+            @include transition;
         }
     }
 }
