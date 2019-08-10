@@ -61,7 +61,6 @@
         display: flex;
         flex-wrap: wrap;
         grid-row: 3;
-        @include transition;
     
         .topic {
             font-size: 0.9em;
