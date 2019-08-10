@@ -40,8 +40,8 @@ html.night {
     --text-color-emphasis: #{$beige-light};
     --text-color-nav: #{$silver};
 
-    --link-color: rgb(207, 189, 154);
-    $coffee-milky-transparent: adjust-color($coffee-milky, $alpha: -0.25);
+    --link-color: rgb(167, 157, 137);
+    $coffee-milky-transparent: adjust-color($coffee-milky, $alpha: -0.5);
     --link-bg-hover-color: #{$coffee-milky-transparent};
 
     --button-bg-color: #{$coffee-dark};
