@@ -72,10 +72,7 @@ In the simplest terms, **passing by value** is *copying*. When an argument is pa
 
 Here's a diagram to illustrate passing primitives by value (I'm intentionally avoiding the case of passing references by value so you don't get confused—but don't worry, I *will* show you what that looks like):
 
-<picture>
-    <source type="image/webp" srcset="/assets/img/posts/is-java-pass-by-reference/pass-by-value-primitives.webp">
-    <img src="/assets/img/posts/is-java-pass-by-reference/pass-by-value-primitives.PNG" alt="A diagram showing passing primitive values by value in Java." />
-</picture>
+{% include postPicture.html img="pass-by-value-primitives" format="PNG" alt="A diagram showing passing primitive values by value in Java." %}
 
 ### Passing by Reference
 
@@ -89,10 +86,7 @@ If you've primarily worked with Java up until now, this notion of "aliases" may 
 
 Below is a diagram of passing by reference. The sample code to the right is C++. If you don't know C++, don't worry: ignore the code and look at the figure instead.
 
-<picture>
-    <source type="image/webp" srcset="/assets/img/posts/is-java-pass-by-reference/pass-by-reference.webp">
-    <img src="/assets/img/posts/is-java-pass-by-reference/pass-by-reference.PNG" alt="Passing by reference and what it looks like." />
-</picture>
+{% include postPicture.html img="pass-by-reference" format="PNG" alt="Passing by reference and what it looks like." %}
 
 **Side note**: You can safely ignore this, but for those who are curious: There is a difference between pass by reference and pass by pointer (argh!! so many types!). However, there's really no good way to show pass by reference without using arrows to denote some sort of shared object relationship (reference counting). The above code is pass by reference in C++, and the diagram is intended to reflect that, even though it's using arrow "pointers." References are usually implemented as an abstraction layer on top of pointers anyway, so it's not a big deal.
 
@@ -128,35 +122,23 @@ Java's references—which we're calling pointers—are passed by value. Pointers
 
 A pointer is just a variable like any other: It stores a value. In the case of a pointer, though, that value is just the memory address of some object in memory:
 
-<picture>
-    <source type="image/webp" srcset="/assets/img/posts/is-java-pass-by-reference/pointers.webp">
-    <img src="/assets/img/posts/is-java-pass-by-reference/pointers.PNG" alt="What pointers look like in memory." />
-</picture>
+{% include postPicture.html img="pointers" format="PNG" alt="What pointers look like in memory." %}
 
 Variables can be passed by value. Pointers (and Java references) can be passed by value. So far so good? If not, re-read this section a couple times until it sinks in. *Pointers are variables*. They're not magic.
 
 **This is the most important explanation**: Remember that when we pass any variable by value, the formal parameter simply receives a copy of that variable's value. That's why it's called pass by value, after all. So, when we pass a *pointer* by value, the formal parameter receives a copy of the pointer's value, just like with any other variable. And what is the pointer's value? It's the memory address of whatever object it points to:
 
-<picture>
-    <source type="image/webp" srcset="/assets/img/posts/is-java-pass-by-reference/pass-reference-by-value.webp">
-    <img src="/assets/img/posts/is-java-pass-by-reference/pass-reference-by-value.PNG" alt="Passing references by value in Java." />
-</picture>
+{% include postPicture.html img="pass-reference-by-value" format="PNG" alt="Passing references by value in Java." %}
 
 Thus, we end up having two distinct variables that point to the same object. Both can modify the object that they point to. But those two pointers are not the same. To be the same, they'd have to occupy the same memory address. They don't—they're on two different stack frames (as you can see above). One pointer is not an alias for the other.
 
 What we did in the code above is pass a pointer by value. Since the pointer stores the memory address of an object, and the formal parameter receives a copy of that memory address, we can "travel" to the address and modify the contents of whatever object is being pointed to:
 
-<picture>
-    <source type="image/webp" srcset="/assets/img/posts/is-java-pass-by-reference/pass-by-reference-modify.webp">
-    <img src="/assets/img/posts/is-java-pass-by-reference/pass-by-reference-modify.PNG" alt="Object modification using references that are passed by value." />
-</picture>
+{% include postPicture.html img="pass-by-reference-modify" format="PNG" alt="Object modification using references that are passed by value." %}
 
 What we *cannot* do is change the formal parameter to point to some other object and expect this change to be observable *outside* the function:
 
-<picture>
-    <source type="image/webp" srcset="/assets/img/posts/is-java-pass-by-reference/point-to-something-else.webp">
-    <img src="/assets/img/posts/is-java-pass-by-reference/point-to-something-else.PNG" alt="Reference reassignment in Java." />
-</picture>
+{% include postPicture.html img="point-to-something-else" format="PNG" alt="Reference reassignment in Java." %}
 
 Let's repeat this one more time to hopefully make things clear, this time using the term "reference" as Java does so that you become comfortable with it in conversation:
 
@@ -203,10 +185,7 @@ In Java (and many other languages), **arrays are implemented using pointers**. A
 
 Then, if we have the starting address of the array, and we know how big each chunk is, we can use pointer arithmetic to obtain the first, second, third, fourth, and nth chunks (elements) of the array. Here's what that looks like:
 
-<picture>
-    <source type="image/webp" srcset="/assets/img/posts/is-java-pass-by-reference/arrays.webp">
-    <img src="/assets/img/posts/is-java-pass-by-reference/arrays.PNG" alt="What arrays look like in memory." />
-</picture>
+{% include postPicture.html img="arrays" format="PNG" alt="What arrays look like in memory." %}
 
 With that in mind, if we think of arrays as pointers, the above answers should begin to make sense. Remember: Java is pass by value. So, if we pass the array by value, then we cannot force the argument to point to a different array once the function returns. We can certainly observe the new array within the scope of the function because the parameter is just a local variable like any other. But Java is not pass by reference, so the parameter is not an *alias* for the original array.
 
