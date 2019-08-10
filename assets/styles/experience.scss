@@ -113,7 +113,7 @@
     #skill-grid {
         display: grid;
         column-gap: 100px;
-        row-gap: 20px;
+        row-gap: 40px;
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     }
 
