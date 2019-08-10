@@ -44,6 +44,21 @@
         margin-top: $main-spacing;
     }
 
+    figure {
+        margin: calc(#{$main-spacing} / 2) auto;
+
+        img {
+            margin: 0;
+        }
+
+        figcaption {
+            font-size: 14px;
+            font-style: italic;
+            text-align: center;
+            @include transition;
+        }
+    }
+
     img, iframe {
         margin: calc(#{$main-spacing} / 2) auto;
         width: 100%;
