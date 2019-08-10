@@ -1,11 +1,14 @@
 ---
 ---
 
-@import 'general';
-@import 'topnav';
-@import 'footer';
-@import 'buttons';
-@import 'card';
-@import 'highlight';
-@import 'posts';
-@import 'themes';
+@import 'components/topnav';
+@import 'general/themes';
+@import 'general/general';
+@import 'pages/index';
+@import 'pages/experience';
+@import 'components/card';
+@import 'pages/contact';
+@import 'blog/posts';
+@import 'components/buttons';
+@import 'general/highlight';
+@import 'components/footer';

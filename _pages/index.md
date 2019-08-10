@@ -2,7 +2,6 @@
 title: Home
 layout: default
 permalink: /
-custom_css: ["index"]
 order: 1
 ---
 
