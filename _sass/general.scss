@@ -94,6 +94,7 @@ h1 {
 }
 
 a {
+    text-decoration: none;
     color: var(--link-color);
     @include transition;
 }
@@ -145,7 +146,11 @@ code {
 }
 
 p, ul, ol {
-    a:hover {
-        background-color: var(--link-bg-hover-color);
+    a {
+        border-bottom: 2px solid var(--link-color);
+
+        &:hover {
+            background-color: var(--link-bg-hover-color);
+        }
     }
 }
