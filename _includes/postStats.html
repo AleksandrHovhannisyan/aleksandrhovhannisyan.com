@@ -3,6 +3,6 @@
 {% if minutes == 0 %}{% assign minutes = 1 %}{% endif %}
 <div class="post-stats">
     <span class="post-date"><i class="far fa-calendar"></i>&ensp;{{ include.target.date | date: "%b %-d, %Y" }}</span>
-    &emsp;
+    <pre>  </pre>
     <span class="post-reading-length"><i class="far fa-clock"></i>&ensp;{{ minutes }} min read</span>
 </div>
