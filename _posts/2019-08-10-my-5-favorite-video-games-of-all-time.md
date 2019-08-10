@@ -17,10 +17,7 @@ From glitching under Whiterun to [trickshotting cabbages into baskets](https://w
 Plus, it brought us the classic "Arrow in the Knee" meme, so we really do have a lot to thank it for.
 
 <figure>
-    <picture>
-        <source type="image/webp" srcset="/assets/img/posts/my-favorite-games/arrow-knee.webp">
-        <img src="/assets/img/posts/my-favorite-games/arrow-knee.PNG" alt="A Dawnstar Guard saying the infamous 'Arrow in the Knee' quote."/>
-    </picture>
+    {% include postPicture.html img="arrow-knee" format="PNG" alt="A Dawnstar Guard saying the infamous 'Arrow in the Knee' quote." %}
     <figcaption>Image credits: <a href="https://www.youtube.com/watch?v=vncIBREXCwU">Asna00</a></figcaption>
 </figure>
 
@@ -39,10 +36,7 @@ It's also one of the few games that got loading screens right—even though they
 It was 2014, and my birthday was approaching. I convinced my mother to hold off on getting me anything just yet because I had my eyes set on a bigger prize: the upcoming release of Dark Souls 2. That would become my first introduction to one of this generation's greatest video game series.
 
 <figure>
-    <picture>
-        <source type="image/webp" srcset="/assets/img/posts/my-favorite-games/dark-souls-2.webp">
-        <img src="/assets/img/posts/my-favorite-games/dark-souls-2.PNG" alt="Dark Souls 2 player dressed in Knight Armor facing a dragon at Dragon Aerie." />
-    </picture>
+    {% include postPicture.html img="dark-souls-2" format="PNG" alt="Dark Souls 2 player dressed in Knight Armor facing a dragon at Dragon Aerie." %}
     <figcaption>Image credits: <a href="https://www.flickr.com/photos/bagogames/12992166263">BagoGames</a></figcaption>
 </figure>
 
@@ -60,8 +54,7 @@ Dark Souls 3 was my next purchase a couple years back (yes, I played these three
 
 <figure>
     <picture>
-        <source type="image/webp" srcset="/assets/img/posts/my-favorite-games/dark-souls-3.webp">
-        <img src="/assets/img/posts/my-favorite-games/dark-souls-3.PNG" alt="The sandy ruins of the Ringed City.">
+        {% include postPicture.html img="dark-souls-3" format="PNG" alt="The sandy ruins of the Ringed City." %}
     </picture>
     <figcaption>Image credits: <a href="https://www.express.co.uk/entertainment/gaming/585250/Dark-Souls-3-Xbox-Miyazaki-update-Xbox-One-PS4">FromSoftware</a></figcaption>
 </figure>
@@ -76,19 +69,13 @@ You really can't go wrong with Souls games. And you have the brilliant (err, *sa
 
 There are many games that seem to be regurgitating the same exact world, themes, gameplay, and story. And then there are games like Hollow Knight that, though they take inspiration from others, manage to craft an entirely unique experience that leaves you in awe.
 
-<picture>
-    <source type="image/webp" srcset="/assets/img/posts/my-favorite-games/hollow-knight.webp">
-    <img src="/assets/img/posts/my-favorite-games/hollow-knight.PNG" alt="The Memorial to the Hollow Knight. The text reads: 'In the Black Vault far above. Through its sacrifice Hallownest lasts eternal.'" />
-</picture>
+{% include postPicture.html img="hollow-knight" format="PNG" alt="The Memorial to the Hollow Knight. The text reads: 'In the Black Vault far above. Through its sacrifice Hallownest lasts eternal.'" %}
 
 Hollow Knight is a gorgeous game created by a small team of indie devs known as [Team Cherry](https://teamcherry.com.au), and it takes place in a kingdom of bugs that's humming, buzzing, and crawling with adventure, with you right at the center of everything.
 
 And you have no idea what it is that you're doing—it's about learning as you go, backtracking to explore previously inaccessible areas, interpreting the lore through whatever bits and pieces you can find, and overcoming great obstacles much harder than that tiny shell on your back.
 
-<picture>
-    <source type="image/webp" srcset="/assets/img/posts/my-favorite-games/hk-greenpath.webp">
-    <img src="/assets/img/posts/my-favorite-games/hk-greenpath.PNG" alt="Greenpath, one of the early areas in Hollow Knight. It's characterized by lush green forests and cute little bugs." />
-</picture>
+{% include postPicture.html img="hk-greenpath" format="PNG" alt="Greenpath, one of the early areas in Hollow Knight. It's characterized by lush green forests and cute little bugs." %}
 
 If Dark Souls and metroidvania games had a baby, Hollow Knight would be it. There's no mistaking the similarities:
 
@@ -122,10 +109,7 @@ But that's not the case with Dragon's Dogma: Dark Arisen, a somewhat underrated 
 
 Dragon's Dogma comes with a rather unique hook: Players can summon pawns, or followers, from an online marketplace of characters that other players have created and used as their own pawns. You can have up to three such followers in your party.
 
-<picture>
-    <source type="image/webp" srcset="/assets/img/posts/my-favorite-games/pawns.webp">
-    <img src="/assets/img/posts/my-favorite-games/pawns.PNG" alt="The Rift, a shadowy realm in Dragon's Dogma Dark Arisen from which the player can enlist Pawns to join their party." />
-</picture>
+{% include postPicture.html img="pawns" format="PNG" alt="The Rift, a shadowy realm in Dragon's Dogma Dark Arisen from which the player can enlist Pawns to join their party." %}
 
 Unlike followers in other games, though, pawns don't remain mute or only respond when you talk to them. Rather, they're constantly interacting with the world, chatting you up on your adventures, helping you to recover when you're out of stamina, and healing the party with consumables.
 
@@ -143,10 +127,7 @@ In terms of combat, if you're a fan of devastating sorcery, this is the game for
 - Envelop enemies in a thick mist of miasma.
 - Sync your spellcasting with followers to cast even more powerful spells.
 
-<picture>
-    <source type="image/webp" srcset="/assets/img/posts/my-favorite-games/bolide.webp">
-    <img src="/assets/img/posts/my-favorite-games/bolide.PNG" alt="Player casting the spell Grand Bolide, which summons meteors from the sky." />
-</picture>
+{% include postPicture.html img="bolide" format="PNG" alt="Player casting the spell Grand Bolide, which summons meteors from the sky." %}
 
 What I love most about Dragon's Dogma is that it allows you to respec into any of nine different vocations (classes) without having to start a new character from scratch. This gives you the freedom to enjoy the game's varying playstyles without the tedium of starting a new playthrough. Tired of casting spells? Mix it up—maybe become a Warrior and shatter your foes with greatswords and hammers, or rain arrows from the sky and dance circles around enemies with your daggers as a Strider. It's all up to you—the vocations are [masterworks all](https://twitter.com/DragonsDogma/status/1144672489857069056).
 
@@ -161,10 +142,7 @@ This is one of Bethesda's lesser known games, at least in comparison to the more
 Set in a steampunk industrial empire that's engulfed in war and plagued by disease-carrying rats, Dishonored tells the story of legendary Corvo Attano, Lord Protector to the royal family. That honorary title is taken from Corvo when the Empress is assassinated in his presence, right in front of her daughter, Lady Emily. Corvo is entrusted with the Empress's one parting wish: that he protect Emily from those who would do her harm. Shortly after, he's apprehended, wrongfully implicated in the murder, and sent to prison.
 
 <figure>
-    <picture>
-        <source type="image/webp" srcset="/assets/img/posts/my-favorite-games/dishonored-intro.webp">
-        <img src="/assets/img/posts/my-favorite-games/dishonored-intro.PNG" alt="Corvo Attano being apprehended and arrested for the murder of the Empress.">
-    </picture>    
+    {% include postPicture.html img="dishonored-intro" format="PNG" alt="Corvo Attano being apprehended and arrested for the murder of the Empress." %}
     <figcaption>Image credits: <a href="https://www.youtube.com/watch?v=hAjtE47QLJg">TOTO62822</a></figcaption>
 </figure>
 
@@ -175,10 +153,7 @@ It's a wonderful game with themes of loyalty, betrayal, and guardianship. It's a
 I remember returning from a particular mission to find Lady Emily drawing a picture of Corvo. If you've been playing the game the way that I believe Bethesda intended it to be completed the first time through, you'll be greeted with the portrait of a menacing shadow wielding a bloodstained dagger:
 
 <figure>
-    <picture>
-        <source type="image/webp" srcset="/assets/img/posts/my-favorite-games/corvo-drawing.webp">
-        <img src="/assets/img/posts/my-favorite-games/corvo-drawing.jpg" alt="Corvo looking over Lady Emily's shoulder as she draws a picture of him.">
-    </picture>
+    {% include postPicture.html img="corvo-drawing" format="PNG" alt="Corvo looking over Lady Emily's shoulder as she draws a picture of him." %}
     <figcaption>Image credits: <a href="https://imgur.com/gallery/5SMZT/new">caelan003</a></figcaption>
 </figure>
 

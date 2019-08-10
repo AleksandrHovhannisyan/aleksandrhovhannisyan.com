@@ -58,7 +58,7 @@ I'll admit: I do understand the appeal of a sandbox environment. It allows you t
 
 Here are two Udemy course I once purchased thinking that they were the key to achieving whatever goals I had at the time (web development and game development, apparently):
 
-![](/assets/img/posts/learn-to-code/udemy_courses.PNG)
+{% include postPicture.html img="udemy-courses" format="PNG" alt="Two of the Udemy courses I once purchased but never finished." %}
 
 I quit about 10% through both of them because I was bored out of my mind. I am not the type of person who can tolerate sitting in front of lecture after lecture, followed by intermittent "you try it" exercises that, for the most part, are very trivial. I need a context for anything I do&mdash;a genuinely relevant and interesting project that I want to work on. To-do list apps don't cut it for me because they're not something I actually want to build. Making games *your* way isn't what I want to do when I'm learning game dev. I learned just about everything I know about HTML, CSS, and (some) JavaScript by making this website&mdash;having a vision for what I wanted and then researching all the necessary parts to bring it to life.
 
@@ -118,7 +118,7 @@ This is where online programming courses tend to disappoint&mdash;once the train
 
 And then what happens? People turn to Quora, Reddit, or whatever other forums they frequent to vent and seek reassurance, to be told that coding isn’t that difficult and that they're not stupid and that they'll get better with time.
 
-![](/assets/img/posts/learn-to-code/too_stupid_for_programming.PNG)
+{% include postPicture.html img="programming-woes" format="PNG" alt="Posts on r/programming from people who feel discouraged and overwhelmed." %}
 
 The truth? You’re not stupid. Learning to code is quite literally learning to speak a new language&mdash;there's a rough transition period at the start where you're mostly doing things by rote memorization and repetition, and when few things actually make sense at an intuitive level. But there eventually comes that moment of enlightenment where you look back and realize what it is you were doing this entire time. It does eventually click and become second nature.
 
