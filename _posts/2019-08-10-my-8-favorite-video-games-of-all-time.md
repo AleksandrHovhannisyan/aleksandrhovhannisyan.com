@@ -1,14 +1,28 @@
 ---
-title: My 5 Favorite Video Games of All Time
+title: My 8 Favorite Video Games of All Time
 layout: post
 excerpt: Of all the games I've played, these are the ones I treasure most. Take a look at my favorite video games of all time.
 keywords: [favorite video games, best video games of all time, best video games of all time list, favorite video games of all time, best video games list]
 permalink: /blog/:title/
 ---
 
-Gaming is my not-so-guilty pleasure—it provides a nice escape into another world and serves as a creative outlet, a medium that lets me be who I want to be and to do what I want. In no particular order, here are my favorite games of all time.
+Gaming is my not-so-guilty pleasure—it provides a nice escape into another world and serves as a creative outlet, a medium in which I'm free to do whatever I want. Here's a discussion of my eight favorite games of all time.
 
-## 1. The Elder Scrolls Skyrim
+## 1. The Legend of Zelda: The Minish Cap
+
+This was my first-ever introduction to video games, and really the only Legend of Zelda game I've ever played. So it's kind of a big deal.
+
+{% include postPicture.html img="minish-cap-intro" format="JPG" alt="Intro text from the Legend of Zelda: The Minish Cap." %}
+
+I was five years old when my grandfather surprised me with a limited-edition Game Boy Advance SP bundle released by Nintendo of Europe: the [gold-colored handheld console](https://i.etsystatic.com/15746134/r/il/4c527f/1270950534/il_1588xN.1270950534_hzmh.jpg) with the triforce symbol on the back, along with the game in a nice little bundle.
+
+It's first on this list not only because I'm highly sentimental about it but because it's genuinely a fun game. I played it countless times—once on the original console and several more times on the Nintendo DS.
+
+My GitHub profile picture is concept art of Link and Ezlo that appears at the very end of the game's credits. It's a nice reminder of the many good memories from my early childhood.
+
+*(Fun fact: As a kid, I always thought that Link was Zelda. Oops.)*
+
+## 2. The Elder Scrolls Skyrim
 
 > *"Let me guess, someone stole your sweetroll?"* — Guards of Skyrim
 
@@ -17,26 +31,26 @@ From glitching under Whiterun to [trickshotting cabbages into baskets](https://w
 Plus, it brought us the classic "Arrow in the Knee" meme, so we really do have a lot to thank it for.
 
 <figure>
-    {% include postPicture.html img="arrow-knee" format="PNG" alt="A Dawnstar Guard saying the infamous 'Arrow in the Knee' quote." %}
+    {% include postPicture.html img="arrow-knee" format="JPG" alt="A Dawnstar Guard saying the infamous 'Arrow in the Knee' quote." %}
     <figcaption>Image credits: <a href="https://www.youtube.com/watch?v=vncIBREXCwU">Asna00</a></figcaption>
 </figure>
 
 Lackluster combat and dead memes aside, Skyrim is an awesome game, DLCs and all. I got it for Chrismas the month after it came out and became wholly absorbed in its fantasy world. I made probably over 30 characters and crashed my old Xbox 360 one too many times with all those saves—but it was worth it.
 
-To this day, Skyrim still feels like it has one of the most fleshed-out worlds—it's clear that lots of attention to detail, creativity, and passion went into crafting it. Here we are, eight years later, and it's still as good as ever, with a very active modding community on PC and a Special Edition release for consoles that's finally allowed us plebs to enjoy Skyrim with mods.
+To this day, Skyrim still feels like it has one of the most fleshed-out worlds—I mean, there are volumes of in-game books detailing the entire continent's lore. Lots of attention to detail, creativity, and passion went into crafting it all. And here we are, eight years later, and it's still as good as ever, with a very active modding community on PC and a Special Edition release for consoles that's finally allowed us plebs to enjoy Skyrim with mods.
 
 > *"Even now, the amount of people who play Skyrim seven years later—millions of people every month are playing that game.*" — Bethesda's Todd Howard on the success of Skyrim ([2018](https://www.destructoid.com/bethesda-s-todd-howard-on-the-success-of-skyrim-and-its-many-re-releases-511558.phtml)).
 
 It's also one of the few games that got loading screens right—even though they're still quite long, you at least have something to read and in-game models to fiddle with obsessively.
 
-## 2. Dark Souls et al.
+## 3. Dark Souls et al.
 
 > *"Hand it over. That thing, your dark soul."* — Slave Knight Gael
 
 It was 2014, and my birthday was approaching. I convinced my mother to hold off on getting me anything just yet because I had my eyes set on a bigger prize: the upcoming release of Dark Souls 2. That would become my first introduction to one of this generation's greatest video game series.
 
 <figure>
-    {% include postPicture.html img="dark-souls-2" format="PNG" alt="Dark Souls 2 player dressed in Knight Armor facing a dragon at Dragon Aerie." %}
+    {% include postPicture.html img="dark-souls-2" format="JPG" alt="Dark Souls 2 player dressed in Knight Armor facing a dragon at Dragon Aerie." %}
     <figcaption>Image credits: <a href="https://www.flickr.com/photos/bagogames/12992166263">BagoGames</a></figcaption>
 </figure>
 
@@ -54,7 +68,7 @@ Dark Souls 3 was my next purchase a couple years back (yes, I played these three
 
 <figure>
     <picture>
-        {% include postPicture.html img="dark-souls-3" format="PNG" alt="The sandy ruins of the Ringed City." %}
+        {% include postPicture.html img="dark-souls-3" format="JPG" alt="The sandy ruins of the Ringed City." %}
     </picture>
     <figcaption>Image credits: <a href="https://www.express.co.uk/entertainment/gaming/585250/Dark-Souls-3-Xbox-Miyazaki-update-Xbox-One-PS4">FromSoftware</a></figcaption>
 </figure>
@@ -63,19 +77,19 @@ Dark Souls is infamous for its difficulty, but veterans know with the classic cu
 
 You really can't go wrong with Souls games. And you have the brilliant (err, *sadistic*?) Hidetaka Miyazaki to thank for it.
 
-## 3. Hollow Knight
+## 4. Hollow Knight
 
-> *You shall seal the blinding light that plagues their dreams. You are the Vessel. You are the Hollow Knight.* — The Pale King
+> *"You shall seal the blinding light that plagues their dreams. You are the Vessel. You are the Hollow Knight."* — The Pale King
 
 There are many games that seem to be regurgitating the same exact world, themes, gameplay, and story. And then there are games like Hollow Knight that, though they take inspiration from others, manage to craft an entirely unique experience that leaves you in awe.
 
-{% include postPicture.html img="hollow-knight" format="PNG" alt="The Memorial to the Hollow Knight. The text reads: 'In the Black Vault far above. Through its sacrifice Hallownest lasts eternal.'" %}
+{% include postPicture.html img="hollow-knight" format="JPG" alt="The Memorial to the Hollow Knight. The text reads: 'In the Black Vault far above. Through its sacrifice Hallownest lasts eternal.'" %}
 
 Hollow Knight is a gorgeous game created by a small team of indie devs known as [Team Cherry](https://teamcherry.com.au), and it takes place in a kingdom of bugs that's humming, buzzing, and crawling with adventure, with you right at the center of everything.
 
 And you have no idea what it is that you're doing—it's about learning as you go, backtracking to explore previously inaccessible areas, interpreting the lore through whatever bits and pieces you can find, and overcoming great obstacles much harder than that tiny shell on your back.
 
-{% include postPicture.html img="hk-greenpath" format="PNG" alt="Greenpath, one of the early areas in Hollow Knight. It's characterized by lush green forests and cute little bugs." %}
+{% include postPicture.html img="hk-greenpath" format="JPG" alt="Greenpath, one of the early areas in Hollow Knight. It's characterized by lush green forests and cute little bugs." %}
 
 If Dark Souls and metroidvania games had a baby, Hollow Knight would be it. There's no mistaking the similarities:
 
@@ -99,7 +113,42 @@ It's hard to play favorites, though, because they all have their own charm: Fung
 
 I spent over 50 hours playing Hollow Knight to its end, and words can't express how pumped I am for [Hollow Knight Silksong's release](https://www.youtube.com/watch?v=pFAknD_9U7c).
 
-## 4. Dragon's Dogma: Dark Arisen
+## 5. For Honor
+
+<figure>
+{% include postPicture.html img="for-honor" format="JPG" alt="Cover art of For Honor." %}
+<figcaption>Partial cover art of For Honor. Copyright belongs to Ubisoft.</figcaption>
+</figure>
+
+I'm a big fan of medieval combat, so it should come as no surprise that this one's on the list.
+
+Developed by Ubisoft and released in 2017, For Honor is one of the most innovative action games released in the past few years. It has a unique combat system that lets you guard and attack in three primary directions, with combat featuring light attacks, heavy attacks, zone attacks, guard breaks, parries, deflects, and unblockables.
+
+*(Unless of course you're a Conqueror main, in which case your only viable tactics are shield bash spam and [vigorous taunting](https://www.youtube.com/watch?v=dJAp0wOtpgQ).)*
+
+You can customize your heroes with scavenged armor, ornaments, paint patterns, emblems, and brutal executions. I'm currently clocking in at about 430 hours, and I've yet to become bored. It's the same formula that Ubisoft successfully employed with Rainbow Six Siege: A limited number of maps with countless outcomes for each match.
+
+With all that said, I really do have a love-hate relationship with For Honor. Though Ubisoft has supported the game with free expansions and quality-of-life updates for two years now, many balance issues have fallen by the wayside. The community also tends to be quite toxic. But none of that keeps me from enjoying the game.
+
+## 6. Battles of the Prince of Persia (NDS)
+
+> *"Sindra has ensured that peace will return to this land... But will there be peace for me? I cannot rest with this beast forever at my back. I must travel on to distant places, desperate and alone. A prince without a land to call his own..."* — The Prince
+
+This one's a rather underrated Nintendo DS game that I played when I was young. I received it as a gift during a time in my childhood when I was obsessed with anything involving medieval combat and themes.
+
+{% include postPicture.html img="prince" format="JPG" alt="Opening lines from the Prince's narrative before the first mission." %}
+
+Battles of the Prince of Persia is a unique top-down strategy game by Ubisoft. You control various armies—Persian, Indian, and Daevan—as the Prince's story unfolds. Gameplay involves the player and NPC taking turns by playing cards from their decks. These cards, of which you can collect more throughout the game, dictate how many moves you can make during your turn; some of them allow you to execute an onslaught attack or fortify your defenses.
+
+It's an old game that doesn't have the best graphics in the world by a longshot, is somewhat buggy, and requires a lot of patience to get through the sometimes tedious gameplay. Despite all those flaws, it ranks among my favorites because:
+
+1. The story is surprisingly well written. Each mission is preceded by a narrative—either a monologue or an exchange between key characters of the game.
+
+2. The game actually has pretty decent music, especially considering it was developed for such old hardware.
+
+3. Its gameplay rewards patience and strategy. It's sort of like chess, really, but requiring less skill.
+
+## 7. Dragon's Dogma: Dark Arisen
 
 > *"This looks interesting."* — literally every single Pawn
 
@@ -109,7 +158,7 @@ But that's not the case with Dragon's Dogma: Dark Arisen, a somewhat underrated 
 
 Dragon's Dogma comes with a rather unique hook: Players can summon pawns, or followers, from an online marketplace of characters that other players have created and used as their own pawns. You can have up to three such followers in your party.
 
-{% include postPicture.html img="pawns" format="PNG" alt="The Rift, a shadowy realm in Dragon's Dogma Dark Arisen from which the player can enlist Pawns to join their party." %}
+{% include postPicture.html img="pawns" format="JPG" alt="The Rift, a shadowy realm in Dragon's Dogma Dark Arisen from which the player can enlist Pawns to join their party." %}
 
 Unlike followers in other games, though, pawns don't remain mute or only respond when you talk to them. Rather, they're constantly interacting with the world, chatting you up on your adventures, helping you to recover when you're out of stamina, and healing the party with consumables.
 
@@ -127,7 +176,10 @@ In terms of combat, if you're a fan of devastating sorcery, this is the game for
 - Envelop enemies in a thick mist of miasma.
 - Sync your spellcasting with followers to cast even more powerful spells.
 
-{% include postPicture.html img="bolide" format="PNG" alt="Player casting the spell Grand Bolide, which summons meteors from the sky." %}
+<figure>
+{% include postPicture.html img="bolide" format="JPG" alt="Player casting the spell Grand Bolide, which summons meteors from the sky." %}
+<figcaption>Image credits: <a href="https://www.youtube.com/watch?v=aHcBjncPAc0">Rakigako3</a></figcaption>
+</figure>
 
 What I love most about Dragon's Dogma is that it allows you to respec into any of nine different vocations (classes) without having to start a new character from scratch. This gives you the freedom to enjoy the game's varying playstyles without the tedium of starting a new playthrough. Tired of casting spells? Mix it up—maybe become a Warrior and shatter your foes with greatswords and hammers, or rain arrows from the sky and dance circles around enemies with your daggers as a Strider. It's all up to you—the vocations are [masterworks all](https://twitter.com/DragonsDogma/status/1144672489857069056).
 
@@ -135,27 +187,27 @@ Then, of course, there's the fact that Dragon's Dogma takes melee combat to anot
 
 Dragon's Dogma is a breath of fresh air and makes combat in other action RPGs feel vastly inferior. It's more than worth a play—there's enough content in the main game and DLC to last you for hundreds of hours.
 
-## 5. Dishonored
+## 8. Dishonored
 
 This is one of Bethesda's lesser known games, at least in comparison to the more popular Elder Scrolls and Fallout franchises. But it's definitely worth checking out, even if it's a bit dated by today's standards.
 
 Set in a steampunk industrial empire that's engulfed in war and plagued by disease-carrying rats, Dishonored tells the story of legendary Corvo Attano, Lord Protector to the royal family. That honorary title is taken from Corvo when the Empress is assassinated in his presence, right in front of her daughter, Lady Emily. Corvo is entrusted with the Empress's one parting wish: that he protect Emily from those who would do her harm. Shortly after, he's apprehended, wrongfully implicated in the murder, and sent to prison.
 
 <figure>
-    {% include postPicture.html img="dishonored-intro" format="PNG" alt="Corvo Attano being apprehended and arrested for the murder of the Empress." %}
+    {% include postPicture.html img="dishonored-intro" format="JPG" alt="Corvo Attano being apprehended and arrested for the murder of the Empress." %}
     <figcaption>Image credits: <a href="https://www.youtube.com/watch?v=hAjtE47QLJg">TOTO62822</a></figcaption>
 </figure>
 
 You're soon liberated by unknown allies who appear to have an interest in protecting you and Lady Emily, and so begins your quest to avenge the Empress's death and to carry out her wish.
 
-I like Dishonored mainly because it gives you a great deal of choice in how you want to execute each mission—even though the story is fairly linear, each area feels like a miniature open-world sandbox that you're free to explore and complete however you'd like. This is further evident in the gameplay, where you can employ any combination of your powers (like blinking, bending time, or possessing people/rats) and more traditional weapons and traps to lay waste to your enemies.
+I like Dishonored mainly because it gives you a great deal of choice in how you want to execute each mission—even though the story is linear, each area feels like a miniature open-world sandbox that you're free to explore and complete however you'd like. This is further evident in the gameplay, where you can employ any combination of your powers (like blinking or bending time) and more traditional weapons and traps to lay waste to your enemies.
 
-It's a wonderful game with themes of loyalty, betrayal, and guardianship. It's also one of the few games with tangible consequences to your actions. The more you kill, for example, the more hostile and unwelcoming the world becomes as the plague spreads and security is heightened on the streets of Dunwall. In that respect, you also have the option of merely knocking enemies unconscious or simply sticking to the shadows and never being seen.
+It's a wonderful game with themes of loyalty, betrayal, and guardianship. It's also one of the few games with tangible consequences to your actions. The more you kill, for example, the more hostile and unwelcoming the world becomes as the plague spreads and security is heightened on the streets of Dunwall. In that respect, you also have the option of merely knocking enemies unconscious or simply sticking to the shadows and never being seen—known in game as a "low chaos" playstyle.
 
 The story's actually pretty solid, too. I remember returning from a particular mission to find Lady Emily drawing a picture of Corvo. If you've been playing the game the way that I believe Bethesda intended it to be completed the first time through, you'll be greeted with the portrait of a menacing shadow wielding a bloodstained dagger:
 
 <figure>
-    {% include postPicture.html img="corvo-drawing" format="PNG" alt="Corvo looking over Lady Emily's shoulder as she draws a picture of him." %}
+    {% include postPicture.html img="corvo-drawing" format="JPG" alt="Corvo looking over Lady Emily's shoulder as she draws a picture of him." %}
     <figcaption>Image credits: <a href="https://imgur.com/gallery/5SMZT/new">caelan003</a></figcaption>
 </figure>
 
@@ -169,14 +221,6 @@ This brief guilt trip is when the game's message hopefully clicks: Never lose si
 
 It's worth noting that Dishonored doesn't have too much replayability to it; if you do start another playthrough, it will most likely be to get all of the achievements, as well as the different endings. Even so, it's a great game.
 
-## Honorary Mentions
+---
 
-These are games that I either have a love-hate relationship with or that I've stopped playing out of boredom:
-
-- **World of Tanks** (console edition): Tank-on-tank action in teams of 15 players. There's a high skill gap and a lot of grinding to get through, but there's no feeling like blowing the head clean off a tank with a KV-2 and "reliving" the action of World-War-II-era tank combat. Though the game is littered with microtransactions, it's free to play and especially fun with friends.
-
-- **For Honor**: A medieval action game developed by Ubisoft that I still play to this day. What originally began as a game with a very limited roster of heroes now has 25 and counting. Though Ubisoft has supported the game with free expansions and quality-of-life updates, many balance issues have fallen by the wayside. The community also tends to be quite toxic. Nevertheless, it's an enjoyable game that features an innovative combat system.
-
-- **Rainbow Six Siege**: I honestly can't name any *core* problems with Siege as a game, except that I simply grew tired of it. I have very fond memories of it dating back to my early days with the Xbox One, and there's still a decent player base on consoles and PC. But, as with other competitive games, it's had its fair share of toxicity.
-
-And that about does it—I love playing video games and likely always will.
+And that about does it! I love playing video games, and that's not going to change anytime soon.
