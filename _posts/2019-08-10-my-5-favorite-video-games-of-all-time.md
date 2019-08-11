@@ -148,9 +148,11 @@ Set in a steampunk industrial empire that's engulfed in war and plagued by disea
 
 You're soon liberated by unknown allies who appear to have an interest in protecting you and Lady Emily, and so begins your quest to avenge the Empress's death and to carry out her wish.
 
-It's a wonderful game with themes of loyalty, betrayal, and guardianship. It's also one of the few games with tangible consequences to your actions. The more you kill, for example, the more hostile and unwelcoming the world becomes as the plague spreads and security is heightened on the streets of Dunwall.
+I like Dishonored mainly because it gives you a great deal of choice in how you want to execute each mission—even though the story is fairly linear, each area feels like a miniature open-world sandbox that you're free to explore and complete however you'd like. This is further evident in the gameplay, where you can employ any combination of your powers (like blinking, bending time, or possessing people/rats) and more traditional weapons and traps to lay waste to your enemies.
 
-I remember returning from a particular mission to find Lady Emily drawing a picture of Corvo. If you've been playing the game the way that I believe Bethesda intended it to be completed the first time through, you'll be greeted with the portrait of a menacing shadow wielding a bloodstained dagger:
+It's a wonderful game with themes of loyalty, betrayal, and guardianship. It's also one of the few games with tangible consequences to your actions. The more you kill, for example, the more hostile and unwelcoming the world becomes as the plague spreads and security is heightened on the streets of Dunwall. In that respect, you also have the option of merely knocking enemies unconscious or simply sticking to the shadows and never being seen.
+
+The story's actually pretty solid, too. I remember returning from a particular mission to find Lady Emily drawing a picture of Corvo. If you've been playing the game the way that I believe Bethesda intended it to be completed the first time through, you'll be greeted with the portrait of a menacing shadow wielding a bloodstained dagger:
 
 <figure>
     {% include postPicture.html img="corvo-drawing" format="PNG" alt="Corvo looking over Lady Emily's shoulder as she draws a picture of him." %}
