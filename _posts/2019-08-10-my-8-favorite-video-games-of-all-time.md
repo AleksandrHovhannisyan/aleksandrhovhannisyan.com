@@ -221,6 +221,14 @@ This brief guilt trip is when the game's message hopefully clicks: Never lose si
 
 It's worth noting that Dishonored doesn't have too much replayability to it; if you do start another playthrough, it will most likely be to get all of the achievements, as well as the different endings. Even so, it's a great game.
 
----
+## What Else?
 
-And that about does it! I love playing video games, and that's not going to change anytime soon.
+Here are some honorable mentions that didn't make the list:
+
+- **World of Tanks** (console edition): Tank-on-tank action in teams of 15 players. There's a high skill gap and a lot of grinding to get through, but there's no feeling like blowing the head clean off a tank with a KV-2 and "reliving" the action of World-War-II-era tank combat. Though the game is littered with microtransactions, it's free to play and especially fun with friends.
+
+- **Rainbow Six Siege**: I honestly can't name any *core* problems with Siege as a game, except that I simply grew tired of it. I have very fond memories of it dating back to my early days with the Xbox One, and there's still a decent player base on consoles and PC. But, as with other competitive games, it's had its fair share of toxicity.
+
+- **Grand Theft Auto V**: Possibly the best open-world sandbox game currently available, at least until Rockstar releases its long-rumored follow-up. I only experienced it at the height of its glory on last-gen consoles, but the main player base is now essentially on PC. It's a good game if you can get past the mostly toxic player base.
+
+And that about does it—thanks for reading!
