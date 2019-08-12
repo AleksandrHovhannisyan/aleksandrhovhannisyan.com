@@ -26,11 +26,3 @@
    ==================================================
 */
 }
-
-@mixin card-grid {
-    display: grid;
-    column-gap: 50px;
-    row-gap: 50px;
-    /* Fill up space as it's made available, with each card being a minimum of 250px */
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-}

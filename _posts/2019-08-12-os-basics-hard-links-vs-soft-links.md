@@ -2,7 +2,7 @@
 title: "OS Basics: Hard Links vs. Soft Links"
 description: One sticks around for good, while the other one rots. Let's see what these two are all about.
 keywords: [linux hard link example, linux soft link example, linux hard link vs soft link, linux soft link example, hard links vs soft links, hard link vs symbolic link examples, hard links vs soft links, difference between hard link and soft link, difference between hard link and soft link linux, what is a hard link, what is a soft link, what is a symbolic link]
-categories: [Tech]
+categories: [Programming]
 ---
 
 You may have heard the terms "hard link" and "soft link" used in the context of the Linux operating system. What exactly are they? Let's find out—in plain English.
@@ -31,7 +31,7 @@ Per the definitions above, each file must have a link count of at least 1 when i
 
 To prove this, let's create a simple file and then run `ls -a -l` to show all (`-a`) files in the current directory, along with information like their permissions, author, and link count:
 
-{% include postPicture.html img="initial-link" format="JPG" alt="Creating a new file generates its first link." %}
+{% include posts/picture.html img="initial-link" format="JPG" alt="Creating a new file generates its first link." %}
 
 The 1 circled in red is the file's link count. Notice that we didn't create any other "hidden" files in the directory when we created `test`. As mentioned above, when you first create a file, the link is just the file name itself. Keep an eye on that 1, though—it'll change as we begin experimenting with soft links and hard links.
 
@@ -54,7 +54,7 @@ The Udacity YouTube channel has an excellent short video [explaining the structu
 
 Each inode has a unique number that's assigned when the file is created. Let's inspect the inode number for the `test` file we created earlier. To do so, we'll add the `-i` flag (for "inode") to our `ls` command:
 
-{% include postPicture.html img="inode" format="JPG" alt="Inspecting the inode number of a file using the ls command." %}
+{% include posts/picture.html img="inode" format="JPG" alt="Inspecting the inode number of a file using the ls command." %}
 
 This will be important when we take a look at examples of hard links and soft links.
 
@@ -68,7 +68,7 @@ A **soft link** is a special file that stores the path of the target file. The s
 
 To create a soft link in Linux, we use the `ln` ("link") command and supply the `-s` flag (for "soft"), followed by the original file name and the name of the soft link:
 
-{% include postPicture.html img="soft-link" format="JPG" alt="Creating a soft link for a file." %}
+{% include posts/picture.html img="soft-link" format="JPG" alt="Creating a soft link for a file." %}
 
 Observe the following interesting points:
 
@@ -80,7 +80,7 @@ Observe the following interesting points:
 
 Let's also look at their contents:
 
-{% include postPicture.html img="soft-link-contents" format="JPG" alt="Displaying the contents of a soft link." %}
+{% include posts/picture.html img="soft-link-contents" format="JPG" alt="Displaying the contents of a soft link." %}
 
 Even though the soft link technically contains the path of the original file, printing its contents will show us the *contents* of the original file. It follows that if the original file's contents change, the soft link's printed contents will also change!
 
@@ -97,7 +97,7 @@ Because a soft link stores the *path* of the original file, there are two natura
 
 Here's an example showing what happens when we rename the original file:
 
-{% include postPicture.html img="link-rot" format="JPG" alt="Link rot and soft links." %}
+{% include posts/picture.html img="link-rot" format="JPG" alt="Link rot and soft links." %}
 
 Notice how our terminal even changed the color of the soft link to red to indicate that it's gone "bad." This is known formally as **link rot**.
 
@@ -107,19 +107,19 @@ On the other hand, a **hard link** acts as an alias for the target file. It has 
 
 To create a hard link in Linux, we use the `ln` command and supply the `-P` flag (for "physical"). Take a look:
 
-{% include postPicture.html img="hard-link" format="JPG" alt="Creating a hard link." %}
+{% include posts/picture.html img="hard-link" format="JPG" alt="Creating a hard link." %}
 
 Notice that both files are 13 bytes in size, have the same inode number, and have a link count of 2. There are two links to the original file: the first one we created, and the hard link we just created manually.
 
 Unlike a soft link, a hard link will not rot if we change the original file's name or move it to a different directory. It also will not rot if we *delete* the original file. Below is an example of the latter:
 
-{% include postPicture.html img="hard-links-dont-rot" format="JPG" alt="Hard links don't rot when the original file is renamed or deleted." %}
+{% include posts/picture.html img="hard-links-dont-rot" format="JPG" alt="Hard links don't rot when the original file is renamed or deleted." %}
 
 > **Exercise**: Delete the original file, and `cat` the hard link. What do you expect to see?
 
 If we think back to what "deleting" a file really means, this should make sense: A file is not truly deleted until its link count reaches zero. In this case, creating a hard link for the file increments our link count to 2. When we delete the original, the link count goes down to 1. Only if we now delete the hard link will the file truly "disappear" from our directory:
 
-{% include postPicture.html img="delete-hard-link" format="JPG" alt="Deleting a hard link." %}
+{% include posts/picture.html img="delete-hard-link" format="JPG" alt="Deleting a hard link." %}
 
 ## And That's It!
 
