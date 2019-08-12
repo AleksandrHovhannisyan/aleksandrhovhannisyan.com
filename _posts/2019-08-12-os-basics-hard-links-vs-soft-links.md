@@ -1,9 +1,8 @@
 ---
 title: "OS Basics: Hard Links vs. Soft Links"
-layout: post
-excerpt: One sticks around for good, while the other one rots. Let's see what these two are all about.
+description: One sticks around for good, while the other one rots. Let's see what these two are all about.
 keywords: [linux hard link example, linux soft link example, linux hard link vs soft link, linux soft link example, hard links vs soft links, hard link vs symbolic link examples, hard links vs soft links, difference between hard link and soft link, difference between hard link and soft link linux, what is a hard link, what is a soft link, what is a symbolic link]
-permalink: /blog/:title/
+categories: [Tech]
 ---
 
 You may have heard the terms "hard link" and "soft link" used in the context of the Linux operating system. What exactly are they? Let's find out—in plain English.

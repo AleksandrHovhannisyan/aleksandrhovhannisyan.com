@@ -1,6 +1,5 @@
 ---
 title: Experience
-layout: default
 custom_js: ["loadRepoData"]
 permalink: /experience/
 order: 2

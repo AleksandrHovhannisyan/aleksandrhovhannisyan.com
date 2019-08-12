@@ -1,6 +1,5 @@
 ---
 title: Blog
-layout: default
 permalink: /blog/
 order: 3
 ---
@@ -14,7 +13,7 @@ order: 3
                 <h3 class="post-title">{{ post.title }}</h3>
                 {% include postStats.html target=post %}
             </header>
-            <p class="post-excerpt">{{ post.excerpt }}</p>
+            <p class="post-description">{{ post.description }}</p>
             <a class="container-link" href="{{ post.url }}"></a>
         </div>
     {% endfor %}

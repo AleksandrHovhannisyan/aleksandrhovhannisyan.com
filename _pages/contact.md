@@ -1,6 +1,5 @@
 ---
 title: Contact
-layout: default
 permalink: /contact/
 order: 4
 ---

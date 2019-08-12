@@ -1,10 +1,8 @@
 ---
 title: Learn to Code Without Wasting Time & Money
-img: No image yet
-layout: post
-excerpt: A discussion of the things that beginner programmers tend to get wrong, as well as concrete suggestions for what they should be doing instead.
+description: A discussion of the things that beginner programmers tend to get wrong, as well as concrete suggestions for what they should be doing instead.
 keywords: [learn to code, beginner programming mistakes, advice for beginner programmers, tips for beginner programmers, coding tips for beginners]
-permalink: /blog/:title/
+categories: [Tech]
 ---
 I remember reading a short story in high school about an aspiring writer who invested a great deal of time and money in procuring a fancy pen and an ornately bound notebook, purchasing a desk only a serious writer would sit at, furnishing his study with shelves full of old books he'd never read, and daydreaming about the prospect of writing. What was missing from this picture was any ink touching paper&mdash;he did anything but actually write.
 
