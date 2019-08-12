@@ -20,6 +20,10 @@
 
 .category {
     margin-top: $card-spacing;
+
+    .category-name {
+        @include underlined-link;
+    }
 }
 
 .post-previews {
