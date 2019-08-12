@@ -154,7 +154,7 @@ It's an old game that doesn't have the best graphics in the world by a longshot,
 
 If you've ever played an RPG, especially an action RPG, then you know that few are capable of delivering a truly satisfying combat experience—one that feels weighty and polished.
 
-But that's not the case with Dragon's Dogma: Dark Arisen, a somewhat underrated Western RPG published by Capcom in 2013. It recently got some [much-needed love](https://kotaku.com/dragons-dogma-is-getting-the-fresh-chance-it-deserves-o-1834057412) when it was released on the Nintendo Switch, and fans have been eagerly awaiting the rumored Dragons Dogma 2 release for years.
+But that's not the case with Dragon's Dogma: Dark Arisen, a somewhat underrated Western RPG published by Capcom in 2013. It recently got some [much-needed love](https://kotaku.com/dragons-dogma-is-getting-the-fresh-chance-it-deserves-o-1834057412) when it was released on the Nintendo Switch, and fans have been eagerly awaiting the rumored Dragon's Dogma 2 release for years.
 
 Dragon's Dogma comes with a rather unique hook: Players can summon pawns, or followers, from an online marketplace of characters that other players have created and used as their own pawns. You can have up to three such followers in your party.
 
