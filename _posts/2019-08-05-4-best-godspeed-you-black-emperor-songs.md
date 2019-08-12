@@ -1,10 +1,8 @@
 ---
 title: "4 Best Godspeed You! Black Emperor Songs"
-img: No image yet
-layout: post
-excerpt: "A look at four amazing songs from my favorite post-rock band, Godspeed You! Black Emperor."
+description: "A look at four amazing songs from my favorite post-rock band, Godspeed You! Black Emperor."
 keywords: [best gybe songs, best godspeed you black emperor songs, godspeed you black emperor best songs, gybe best songs, godspeed you black emperor review, godspeed you black emperor songs]
-permalink: /blog/:title/
+categories: [Personal]
 ---
 
 Of all the genres of music I've listened to, none have resonated as strongly with me as post rock has. And when it comes to post rock, there's simply no other band like *Godspeed You! Black Emperor* (aka GY!BE, or, as fans sometimes affectionately call them, God's Pee).

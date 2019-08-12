@@ -11,6 +11,21 @@ plugins:
   - jekyll-sitemap
 include: ['_pages']
 
+defaults:
+  -
+    scope:
+      path: "_pages"
+      type: "pages"
+    values:
+      layout: "default"
+  -
+    scope:
+      path: "_posts"
+      type: "posts"
+    values:
+      layout: "post"
+      permalink: /:categories/:title/
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.

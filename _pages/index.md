@@ -1,6 +1,5 @@
 ---
 title: Home
-layout: default
 permalink: /
 order: 1
 ---
