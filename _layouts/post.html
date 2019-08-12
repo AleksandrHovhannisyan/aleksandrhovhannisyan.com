@@ -7,6 +7,12 @@ layout: default
         <h1 class="post-title">{{ page.title }}</h1>
         <div class="post-stats">
         {% include posts/stats.html target=page %}
+        <span>
+            <i class="fas fa-tags"></i>&ensp;
+            {% for category in page.categories %}
+            <a href="{{ site.url }}/blog/{{ category | slugify }}">{{ category }}</a>
+            {% endfor %}
+        </span>
         </div>
     </header>
     <div class="post-body">
