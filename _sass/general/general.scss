@@ -137,11 +137,5 @@ hr {
 }
 
 p, ul, ol, figcaption {
-    a {
-        border-bottom: 2px solid var(--link-color);
-
-        &:hover {
-            background-color: var(--link-bg-hover-color);
-        }
-    }
+    @include underlined-link;
 }
