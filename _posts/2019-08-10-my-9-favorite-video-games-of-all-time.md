@@ -1,12 +1,12 @@
 ---
-title: My 8 Favorite Video Games of All Time
+title: My 9 Favorite Video Games of All Time
 layout: post
 excerpt: Of all the games I've played, these are the ones I treasure most. Take a look at my favorite video games of all time.
 keywords: [favorite video games, best video games of all time, best video games of all time list, favorite video games of all time, best video games list]
 permalink: /blog/:title/
 ---
 
-Gaming is my not-so-guilty pleasure—it provides a nice escape into another world and serves as a creative outlet, a medium in which I'm free to do whatever I want. Here's a discussion of my eight favorite games of all time.
+Gaming is my not-so-guilty pleasure—it provides a nice escape into another world and serves as a creative outlet, a medium in which I'm free to do whatever I want. Here's a discussion of my nine favorite games of all time.
 
 ## 1. The Legend of Zelda: The Minish Cap
 
@@ -187,7 +187,24 @@ Then, of course, there's the fact that Dragon's Dogma takes melee combat to anot
 
 Dragon's Dogma is a breath of fresh air and makes combat in other action RPGs feel vastly inferior. It's more than worth a play—there's enough content in the main game and DLC to last you for hundreds of hours.
 
-## 8. Dishonored
+## 8. Playdead's INSIDE
+
+Playdead's follow up to Limbo is a puzzle platformer set in a bleak, gray dystopia where most peple are enslaved minions. Everyone except you, that is, and the guards who seem so intent on killing you. And to make matters worse, you're a vulnerable child with no way to fight back. All you can do is run, hide, and blend in.
+
+Your goal? To make it inside... It's in the name, after all.
+
+<figure>
+{% include postPicture.html img="inside" format="JPG" alt="An underwater scene from the game." %}
+<figcaption>Image credits: <a href="https://inside.fandom.com/wiki/Long-Haired_Creatures?file=Long-Haired_Creature_%28slightly-edited%29.png">TheMightyAtom</a></figcaption>
+</figure>
+
+I won't spoil anything—it's really something you should play blindly to get the full experience. The game's quite short, and you could very well finish it in about 1–2 hours. But the story and atmosphere definitely make up for the length.
+
+Without being too explicit, I'll say that the story is actually really compelling despite being so open to interpretation. The endings have spawned [many, *many* theories](https://kotaku.com/the-wild-theories-behind-insides-secret-ending-1783552341).
+
+The secret ending in particular is unexpected and leaves everything up to your interpretation. Put together the pieces, and you may just land upon a sensible explanation for it all (or simply give up trying). Either way, it's a... *unique* experience.
+
+## 9. Dishonored
 
 This is one of Bethesda's lesser known games, at least in comparison to the more popular Elder Scrolls and Fallout franchises. But it's definitely worth checking out, even if it's a bit dated by today's standards.
 
