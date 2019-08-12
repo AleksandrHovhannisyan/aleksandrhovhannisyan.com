@@ -26,37 +26,15 @@ order: 4
     </div>
     <div id="social-networks">
         <h3>You can also find me on these networks:</h3>
+        {% for network in site.data.socials %}
         <div class="social-network">
-            <a class="container-link" href="https://www.linkedin.com/in/aleksandr-hovhannisyan-ba154b120/" target="_blank"></a>
+            <a class="container-link" href="{{ network.url }}" target="_blank"></a>
             <span class="fa-stack fa-2x">
                 <i class="fas fa-square fa-stack-2x"></i>
-                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                <i class="{{ network.type }} fa-{{ network.icon }} fa-stack-1x fa-inverse"></i>
             </span>
-            <span class="network-name">LinkedIn</span>
+            <span class="network-name">{{ network.name }}</span>
         </div>
-        <div class="social-network">
-            <a class="container-link" href="https://github.com/AleksandrHovhannisyan" target="_blank"></a>
-            <span class="fa-stack fa-2x">
-                <i class="fas fa-square fa-stack-2x"></i>
-                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-            </span>
-            <span class="network-name">GitHub</span>
-        </div>
-        <div class="social-network">
-            <a class="container-link" href="https://www.upwork.com/freelancers/~014eb3a95d4d1fd855" target="_blank"></a>
-            <span class="fa-stack fa-2x">
-                <i class="fas fa-square fa-stack-2x"></i>
-                <i class="fas fa-address-book fa-stack-1x fa-inverse"></i>
-            </span>
-            <span class="network-name">Upwork</span>
-        </div>
-        <div class="social-network">
-            <a class="container-link" href="https://stackexchange.com/users/6935154/aleksandrh" target="_blank"></a>
-            <span class="fa-stack fa-2x">
-                <i class="fas fa-square fa-stack-2x"></i>
-                <i class="fab fa-stack-exchange fa-stack-1x fa-inverse"></i>
-            </span>
-            <span class="network-name">Stack Exchange</span>
-        </div>
+        {% endfor %}
     </div>
 </article>
