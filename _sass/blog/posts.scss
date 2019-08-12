@@ -30,9 +30,16 @@
     }
 }
 
+.post {
+    .post-title {
+        font-size: 2.5em;
+    }
+}
+
 .post-body {
-    $main-spacing: 40px;
-    margin-top: 60px;
+    $main-spacing: 60px;
+    $img-spacing: 20px;
+    margin-top: $main-spacing;
     font-size: 1.1em;
 
     .post-stats {
@@ -40,12 +47,20 @@
         margin-bottom: calc(#{$main-spacing} / 2);
     }
 
+    @include headings {
+        margin-bottom: calc(#{$main-spacing} / 2);
+    }
+
     h2 {
         margin-top: $main-spacing;
     }
 
+    h3 {
+        margin-top: calc(#{$main-spacing} / 2);
+    }
+
     figure {
-        margin: calc(#{$main-spacing} / 2) auto;
+        margin: $img-spacing auto;
 
         img {
             margin: 0;
@@ -60,13 +75,13 @@
     }
 
     img, iframe {
-        margin: calc(#{$main-spacing} / 2) auto;
+        margin: $img-spacing auto;
         width: 100%;
     }
 
     iframe {
         height: 315px;
-        max-width: 560px;
+        width: 100%;
     }
 
     ol li::marker {
@@ -112,9 +127,28 @@
         @include transition;
     }
 
+    code {
+        font-family: Inconsolata, Courier New;
+        background-color: var(--code-bg-color);
+        color: var(--text-color-emphasis);
+        padding-left: 5px;
+        padding-right: 5px;
+        font-size: 1rem;
+        @include transition;
+    }
+
+    div.highlighter-rouge {
+        margin: calc(#{$main-spacing} / 2) auto;
+        padding: 10px auto;
+
+        code {
+            padding: 0;
+        }
+    }
+
     .spoiler {
-        background-color: $coffee-milky;
-        color: $coffee-milky;
+        background-color: $beige;
+        color: $beige;
         margin-top: 1px;
         margin-bottom: 1px;
         @include transition;

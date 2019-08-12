@@ -136,15 +136,6 @@ hr {
     @include transition;
 }
 
-code {
-    font-family: Inconsolata, Courier New;
-    background-color: var(--code-bg-color);
-    color: var(--text-color-emphasis);
-    padding-left: 5px;
-    padding-right: 5px;
-    @include transition;
-}
-
 p, ul, ol, figcaption {
     a {
         border-bottom: 2px solid var(--link-color);
