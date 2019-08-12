@@ -5,7 +5,7 @@ permalink: /blog/
 order: 3
 ---
 
-{% include banner.html heading="Welcome to my blog!" content="This is where I share my thoughts on a variety of topics. All opinions are strictly my own." %}
+{% include banner.html heading="Welcome to my blog!" content="I like to write about tech and video games, with an occasional sprinkle of personal posts. All opinions are strictly my own." %}
 
 <article id="post-previews" class="container">
     {% for post in site.posts %}
