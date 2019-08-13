@@ -4,218 +4,95 @@ The MIT License (MIT)
 
 New Moon theme Copyright (c) 2019 Tania Rascia
 
-Modified for use with Pygments. Styles generated using Pygments CSS Theme Builder: https://jwarby.github.io/jekyll-pygments-themes/builder.html
+Adopted for use with Pygments/Rouge
 
 */
 
-$bg-color: #181818;
+$background: #181818; /* Modified from original */
+$comment: #777c85;
+$text: #b3b9c5;       /* Equivalent of 'foreground' in Tania's theme */
+$function: #ffffff;
+$variable: #f2777a;
 $number: #fca369;
-
-// TODO clean up this garbo formatting >:|
+$attribute: #ffd479;
+$keyword: #ffeea6;
+$string: #92d192;
+$tag: #6AB0F3;
+$constant: #76d4d6;
+$support: #e1a6f2;
+$operator: #ac8d58;
 
 .highlight {
-  background-color: $bg-color;
-
-  code {
-    background: $bg-color;
+  &, code {
+    background-color: $background;
+    color: $text;
   }
-
-  pre.highlight {
-    margin: 0px;
-    padding: 15px;
-    white-space: pre;
-    overflow: auto;
-  }
-
+  
   /* Base Style */
   pre {
     color: transparent;
-    background-color: $bg-color;
+    background-color: $background;
+
+    &.highlight {
+      margin: 0px;
+      padding: 15px;
+      white-space: pre;
+      overflow: auto;
+    }
   }
 
-  /* Punctuation */
-  .p {
-    color: transparent;
-    background-color: $bg-color;
+  /* Comments */
+  .cm, .cp, .c1, .cs {
+    color: $comment;
   }
 
+  /* Functions. Note: .o + .na is for things like, e.g., System.[out.println] */
+  .nf, .o + .na {
+    color: $function;
+  }
+
+  /* Attributes */
+  .na {
+    color: $attribute;
+  }
+
+  /* Variables */
+  .n, .nv, .vc, .vg, .vi, .err {
+    color: $variable;
+  }
+
+  /* Numbers */
   .m, .mf, .mh, .mi, .mo, .il {
     color: $number;
   }
-}
 
-/* Error */
-.highlight .err {
-  color: transparent;
-  background-color: $bg-color;
-}
-/* Name Attribute */
-.highlight .na {
-  color: #ffffff;
-}
-/* Name Builtin */
-.highlight .nb {
-  color: #f2777a;
- 
-}
-/* Name Class */
-.highlight .nc {
-  color: #6ab0f3;
-  
-}
-/* Name Constant */
-.highlight .no {
-  color: #f2777a;
-  }
-/* Name Decorator */
-.highlight .nd {
-  color: #f2777a;
-  
-}
-/* Name Entity */
-.highlight .ni {
-  color: #f2777a;
-  
-}
-/* Name Exception */
-.highlight .ne {
-  color: #f2777a;
-  
-}
-/* Name Function */
-.highlight .nf {
-  color: #ffffff;
-  
-}
-/* Name Label */
-.highlight .nl {
-  color: #f2777a;
-  
-}
-
-.highlight .n {
-  color: #f2777a;
-}
-
-/* Name Namespace */
-.highlight .nn {
-  color: #f2777a;  
-}
-/* Name Other */
-.highlight .nx {
-  color: #f2777a;
-}
-/* Name Property */
-.highlight .py {
-  color: #f2777a;  
-}
-/* Name Tag */
-.highlight .nt {
-  color: #f2777a;  
-}
-/* Name Variable */
-.highlight .nv {
-  color: #f2777a;  
-}
-/* Name Variable Class */
-.highlight .vc {
-  color: #f2777a;  
-}
-/* Name Variable Global */
-.highlight .vg {
-  color: #f2777a;  
-}
-/* Name Variable Instance */
-.highlight .vi {
-  color: #f2777a;  
-}
-/* Name Builtin Pseudo */
-.highlight .bp {
-  color: #f2777a;  
-}
-/* Base Style */
-.highlight .g {
-  color: transparent;
-  }
-/*  */
-.highlight .gd {
-  color: transparent;
-  }
-/* Base Style */
-.highlight .o {
-  color: #b3b9cd;
-  }
-/* Operator Word */
-.highlight .ow {
-  color: #b3b9cd;
-  }
-/* Base Style */
-.highlight .c {
-  color: #777c85;
-  }
-/* Comment Multiline */
-.highlight .cm {
-  color: #777c85;
-  background-color: #874e87;
-}
-/* Comment Preproc */
-.highlight .cp {
-  color: #777c85;
-  }
-/* Comment Single */
-.highlight .c1 {
-  color: #777c85;
-  }
-/* Comment Special */
-.highlight .cs {
-  color: #777c85;
-  }
-/* Base Style */
-.highlight .k {
-  color: #ffeea6;
-  }
-/* Keyword Constant */
-.highlight .kc {
-  color: #2d2d2d;
-  }
-/* Keyword Declaration */
-.highlight .kd {
-  color: #ffeea6;
-  }
-/* Keyword Namespace */
-.highlight .kn {
-  color: #ffeea6;
-  }
-/* Keyword Pseudo */
-.highlight .kp {
-  color: #ffeea6;
-  }
-/* Keyword Reserved */
-.highlight .kr {
-  color: #ffeea6;
-  }
-/* Keyword Type */
-.highlight .kt {
-  color: #ffeea6;
-  }
-/* Base Style */
-.highlight .l {
-  color: transparent;
-  }
-/* Literal Date */
-.highlight .ld {
-  color: transparent;
+  /* Keywords */
+  .k, .kd, .kn, .kr, .kt {
+    color: $keyword;
   }
 
-/* Literal String */
-.highlight .s {
-  color: #92d192;
+  /* Constants */
+  .kc {
+    color: $constant;
   }
-/* Literal String Backtick */
-.highlight .sb {
-  color: #92d192;
+
+  /* Pseudo */
+  .kp, .nb, .bp {
+    color: $support;
   }
-/* Literal String Char */
-.highlight .sc {
-  color: #92d192;
+
+  /* Strings */
+  .s, .sb, .sc {
+    color: $string;
   }
+
+  /* Classes/tags */
+  .nc, .nt, .nl {
+    color: $tag;
+  }
+
+  /* Punctuation */
+  .p, .o {
+    color: $function;
+  }
+}
