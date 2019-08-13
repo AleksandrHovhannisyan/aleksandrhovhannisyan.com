@@ -13,8 +13,14 @@
     font-size: 14px;
     font-style: italic;
 
-    .post-date, .post-reading-length {
+    .post-date, .post-reading-length, .post-categories {
+        margin-bottom: 15px;
+        margin-right: 25px;
         @include transition;
+
+        i {
+            margin-right: 10px;
+        }
     }
 }
 
