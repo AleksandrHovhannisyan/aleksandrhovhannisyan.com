@@ -5,15 +5,7 @@ layout: default
 <article class="container post">
     <header class="post-header">
         <h1 class="post-title">{{ page.title }}</h1>
-        <div class="post-stats">
-        {% include posts/stats.html target=page %}
-        <span>
-            <i class="fas fa-tags"></i>&ensp;
-            {% for category in page.categories %}
-            <a href="{{ site.url }}/blog/{{ category | slugify }}">{{ category }}</a>
-            {% endfor %}
-        </span>
-        </div>
+        {% include posts/stats.html target=page categories=page.categories %}
     </header>
     <div class="post-body">
     {{ content }}

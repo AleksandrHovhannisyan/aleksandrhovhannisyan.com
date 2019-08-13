@@ -1,9 +1,9 @@
-<!-- Credit: https://github.com/johno/pixyll/commit/0979ada039a7a36b3383c0739b1e7d7edb1f34f9 -->
 {% assign minutes = include.target.content | number_of_words | divided_by: 180 %}
 {% if minutes == 0 %}{% assign minutes = 1 %}{% endif %}
 <div class="post-stats">
-    <span class="post-date"><i class="far fa-calendar"></i>&ensp;{{ include.target.date | date: "%b %-d, %Y" }}</span>
-    <pre>  </pre>
-    <span class="post-reading-length"><i class="far fa-clock"></i>&ensp;{{ minutes }} min read</span>
-    <pre>  </pre>
+    <span class="post-date"><i class="far fa-calendar"></i>{{ include.target.date | date: "%b %-d, %Y" }}</span>
+    <span class="post-reading-length"><i class="far fa-clock"></i>{{ minutes }} min read</span>
+    {% if include.categories %}
+    <span class="post-categories"><i class="fas fa-tags"></i>{% for category in include.categories %}<a href="{{ site.url }}/blog/{{ category | slugify }}">{{ category }}</a>&ensp;{% endfor %}</span>
+    {% endif %}
 </div>
