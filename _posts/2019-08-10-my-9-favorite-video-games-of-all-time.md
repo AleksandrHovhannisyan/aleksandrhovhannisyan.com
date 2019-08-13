@@ -11,7 +11,7 @@ Gaming is my not-so-guilty pleasure—it provides a nice escape into another wor
 
 This was my first-ever introduction to video games, and really the only Legend of Zelda game I've ever played. So it's kind of a big deal.
 
-{% include posts/picture.html img="minish-cap-intro" format="JPG" alt="Intro text from the Legend of Zelda: The Minish Cap." %}
+{% include posts/picture.html img="minish-cap-intro" alt="Intro text from the Legend of Zelda: The Minish Cap." %}
 
 I was five years old when my grandfather surprised me with a limited-edition Game Boy Advance SP bundle released by Nintendo of Europe: the [gold-colored handheld console](https://i.etsystatic.com/15746134/r/il/4c527f/1270950534/il_1588xN.1270950534_hzmh.jpg) with the triforce symbol on the back, along with the game in a nice little bundle.
 
@@ -30,7 +30,7 @@ From glitching under Whiterun to [trickshotting cabbages into baskets](https://w
 Plus, it brought us the classic "Arrow in the Knee" meme, so we really do have a lot to thank it for.
 
 <figure>
-    {% include posts/picture.html img="arrow-knee" format="JPG" alt="A Dawnstar Guard saying the infamous 'Arrow in the Knee' quote." %}
+    {% include posts/picture.html img="arrow-knee" alt="A Dawnstar Guard saying the infamous 'Arrow in the Knee' quote." %}
     <figcaption>Image credits: <a href="https://www.youtube.com/watch?v=vncIBREXCwU">Asna00</a></figcaption>
 </figure>
 
@@ -49,7 +49,7 @@ It's also one of the few games that got loading screens right—even though they
 It was 2014, and my birthday was approaching. I convinced my mother to hold off on getting me anything just yet because I had my eyes set on a bigger prize: the upcoming release of Dark Souls 2. That would become my first introduction to one of this generation's greatest video game series.
 
 <figure>
-    {% include posts/picture.html img="dark-souls-2" format="JPG" alt="Dark Souls 2 player dressed in Knight Armor facing a dragon at Dragon Aerie." %}
+    {% include posts/picture.html img="dark-souls-2" alt="Dark Souls 2 player dressed in Knight Armor facing a dragon at Dragon Aerie." %}
     <figcaption>Image credits: <a href="https://www.flickr.com/photos/bagogames/12992166263">BagoGames</a></figcaption>
 </figure>
 
@@ -67,7 +67,7 @@ Dark Souls 3 was my next purchase a couple years back (yes, I played these three
 
 <figure>
     <picture>
-        {% include posts/picture.html img="dark-souls-3" format="JPG" alt="The sandy ruins of the Ringed City." %}
+        {% include posts/picture.html img="dark-souls-3" alt="The sandy ruins of the Ringed City." %}
     </picture>
     <figcaption>Image credits: <a href="https://www.express.co.uk/entertainment/gaming/585250/Dark-Souls-3-Xbox-Miyazaki-update-Xbox-One-PS4">FromSoftware</a></figcaption>
 </figure>
@@ -82,13 +82,13 @@ You really can't go wrong with Souls games. And you have the brilliant (err, *sa
 
 There are many games that seem to be regurgitating the same exact world, themes, gameplay, and story. And then there are games like Hollow Knight that, though they take inspiration from others, manage to craft an entirely unique experience that leaves you in awe.
 
-{% include posts/picture.html img="hollow-knight" format="JPG" alt="The Memorial to the Hollow Knight. The text reads: 'In the Black Vault far above. Through its sacrifice Hallownest lasts eternal.'" %}
+{% include posts/picture.html img="hollow-knight" alt="The Memorial to the Hollow Knight. The text reads: 'In the Black Vault far above. Through its sacrifice Hallownest lasts eternal.'" %}
 
 Hollow Knight is a gorgeous game created by a small team of indie devs known as [Team Cherry](https://teamcherry.com.au), and it takes place in a kingdom of bugs that's humming, buzzing, and crawling with adventure, with you right at the center of everything.
 
 And you have no idea what it is that you're doing—it's about learning as you go, backtracking to explore previously inaccessible areas, interpreting the lore through whatever bits and pieces you can find, and overcoming great obstacles much harder than that tiny shell on your back.
 
-{% include posts/picture.html img="hk-greenpath" format="JPG" alt="Greenpath, one of the early areas in Hollow Knight. It's characterized by lush green forests and cute little bugs." %}
+{% include posts/picture.html img="hk-greenpath" alt="Greenpath, one of the early areas in Hollow Knight. It's characterized by lush green forests and cute little bugs." %}
 
 If Dark Souls and metroidvania games had a baby, Hollow Knight would be it. There's no mistaking the similarities:
 
@@ -115,7 +115,7 @@ I spent over 50 hours playing Hollow Knight to its end, and words can't express 
 ## 5. For Honor
 
 <figure>
-{% include posts/picture.html img="for-honor" format="JPG" alt="Cover art of For Honor." %}
+{% include posts/picture.html img="for-honor" alt="Cover art of For Honor." %}
 <figcaption>Partial cover art of For Honor. Copyright belongs to Ubisoft.</figcaption>
 </figure>
 
@@ -135,7 +135,7 @@ With all that said, I really do have a love-hate relationship with For Honor. Th
 
 This one's a rather underrated Nintendo DS game that I played when I was young. I received it as a gift during a time in my childhood when I was obsessed with anything involving medieval combat and themes.
 
-{% include posts/picture.html img="prince" format="JPG" alt="Opening lines from the Prince's narrative before the first mission." %}
+{% include posts/picture.html img="prince" alt="Opening lines from the Prince's narrative before the first mission." %}
 
 Battles of the Prince of Persia is a unique top-down strategy game by Ubisoft. You control various armies—Persian, Indian, and Daevan—as the Prince's story unfolds. Gameplay involves the player and NPC taking turns by playing cards from their decks. These cards, of which you can collect more throughout the game, dictate how many moves you can make during your turn; some of them allow you to execute an onslaught attack or fortify your defenses.
 
@@ -157,7 +157,7 @@ But that's not the case with Dragon's Dogma: Dark Arisen, a somewhat underrated 
 
 Dragon's Dogma comes with a rather unique hook: Players can summon pawns, or followers, from an online marketplace of characters that other players have created and used as their own pawns. You can have up to three such followers in your party.
 
-{% include posts/picture.html img="pawns" format="JPG" alt="The Rift, a shadowy realm in Dragon's Dogma Dark Arisen from which the player can enlist Pawns to join their party." %}
+{% include posts/picture.html img="pawns" alt="The Rift, a shadowy realm in Dragon's Dogma Dark Arisen from which the player can enlist Pawns to join their party." %}
 
 Unlike followers in other games, though, pawns don't remain mute or only respond when you talk to them. Rather, they're constantly interacting with the world, chatting you up on your adventures, helping you to recover when you're out of stamina, and healing the party with consumables.
 
@@ -176,7 +176,7 @@ In terms of combat, if you're a fan of devastating sorcery, this is the game for
 - Sync your spellcasting with followers to cast even more powerful spells.
 
 <figure>
-{% include posts/picture.html img="bolide" format="JPG" alt="Player casting the spell Grand Bolide, which summons meteors from the sky." %}
+{% include posts/picture.html img="bolide" alt="Player casting the spell Grand Bolide, which summons meteors from the sky." %}
 <figcaption>Image credits: <a href="https://www.youtube.com/watch?v=aHcBjncPAc0">Rakigako3</a></figcaption>
 </figure>
 
@@ -193,7 +193,7 @@ Playdead's follow up to Limbo is a puzzle platformer set in a bleak, gray dystop
 Your goal? To make it inside... It's in the name, after all.
 
 <figure>
-{% include posts/picture.html img="inside" format="JPG" alt="An underwater scene from the game." %}
+{% include posts/picture.html img="inside" alt="An underwater scene from the game." %}
 <figcaption>Image credits: <a href="https://inside.fandom.com/wiki/Long-Haired_Creatures?file=Long-Haired_Creature_%28slightly-edited%29.png">TheMightyAtom</a></figcaption>
 </figure>
 
@@ -210,7 +210,7 @@ This is one of Bethesda's lesser known games, at least in comparison to the more
 Set in a steampunk industrial empire that's engulfed in war and plagued by disease-carrying rats, Dishonored tells the story of legendary Corvo Attano, Lord Protector to the royal family. That honorary title is taken from Corvo when the Empress is assassinated in his presence, right in front of her daughter, Lady Emily. Corvo is entrusted with the Empress's one parting wish: that he protect Emily from those who would do her harm. Shortly after, he's apprehended, wrongfully implicated in the murder, and sent to prison.
 
 <figure>
-    {% include posts/picture.html img="dishonored-intro" format="JPG" alt="Corvo Attano being apprehended and arrested for the murder of the Empress." %}
+    {% include posts/picture.html img="dishonored-intro" alt="Corvo Attano being apprehended and arrested for the murder of the Empress." %}
     <figcaption>Image credits: <a href="https://www.youtube.com/watch?v=hAjtE47QLJg">TOTO62822</a></figcaption>
 </figure>
 
@@ -223,7 +223,7 @@ It's a wonderful game with themes of loyalty, betrayal, and guardianship. It's a
 The story's actually pretty solid, too. I remember returning from a particular mission to find Lady Emily drawing a picture of Corvo. If you've been playing the game the way that I believe Bethesda intended it to be completed the first time through, you'll be greeted with the portrait of a menacing shadow wielding a bloodstained dagger:
 
 <figure>
-    {% include posts/picture.html img="corvo-drawing" format="JPG" alt="Corvo looking over Lady Emily's shoulder as she draws a picture of him." %}
+    {% include posts/picture.html img="corvo-drawing" alt="Corvo looking over Lady Emily's shoulder as she draws a picture of him." %}
     <figcaption>Image credits: <a href="https://imgur.com/gallery/5SMZT/new">caelan003</a></figcaption>
 </figure>
 
