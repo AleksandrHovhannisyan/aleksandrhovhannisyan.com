@@ -1,7 +1,7 @@
 @import 'settings';
 
 @mixin transition($what: all, $duration: $transition-duration) {
-    transition: $what $duration;
+    transition: ease $what $duration;
 }
 
 @mixin headings {
