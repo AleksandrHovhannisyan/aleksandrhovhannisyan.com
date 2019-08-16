@@ -116,6 +116,10 @@
         li {
             margin-top: 5px;
             margin-bottom: 5px;
+
+            ul, ol {
+                transition: 0s;
+            }
         }
     }
 
