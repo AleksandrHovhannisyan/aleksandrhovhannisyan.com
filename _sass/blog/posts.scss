@@ -90,7 +90,7 @@
         }
     }
 
-    img, iframe {
+    img, iframe, .pro-con-table {
         margin: $img-spacing auto;
         width: 100%;
     }
@@ -120,14 +120,6 @@
     }
 
     blockquote {
-        --blockquote-bg-color: rgb(216, 216, 216);
-        --blockquote-text-color: rgb(110, 110, 110);
-
-        html.night & {
-            --blockquote-bg-color: rgb(63, 63, 63);
-            --blockquote-text-color: #{$beige};
-        }
-
         p, p * {
             color: var(--blockquote-text-color);
 
@@ -163,15 +155,48 @@
     }
 
     .spoiler {
-        background-color: $beige;
-        color: $beige;
+        &, * {
+            background-color: $beige;
+            color: $beige;
+        }
+
         margin-top: 1px;
         margin-bottom: 1px;
         @include transition;
 
         &:hover {
-            background-color: transparent;
-            color: var(--text-color-emphasis);
+            &, * {
+                background-color: transparent;
+                color: var(--blockquote-text-color);
+            }
+
+            code {
+                background-color: var(--code-bg-color);
+            }
+        }
+    }
+
+    .pro-con-table {
+        background-color: var(--blockquote-bg-color);
+        color: var(--blockquote-text-color);
+        display: flex;
+        flex-wrap: wrap;
+        border: 4px solid var(--blockquote-text-color);
+        padding: 20px;
+        transition: background-color $transition-duration, border $transition-duration;
+
+        div {
+            flex: 1 1 0;
+
+            header {
+                padding-left: 20px;
+                font-weight: bold;
+                @include transition;
+            }
+
+            li {
+                padding-left: 10px;
+            }
         }
     }
 }
