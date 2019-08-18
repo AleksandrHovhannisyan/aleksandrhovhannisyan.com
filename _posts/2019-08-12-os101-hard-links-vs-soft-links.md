@@ -72,7 +72,7 @@ To create a soft link in Linux, we use the `ln` ("link") command and supply the 
 
 Observe the following interesting points:
 
-- The original file (`test`) and the soft link (`testSoftLink`) have different inode numbers. Hence, they're different files.
+- The original file (`test`) and the soft link (`testSoftLink`) have different inode numbers. Hence, they're different files. (They also have different permissions.)
 
 - The original file's link count remained 1. This is because the soft link is merely symbolic, not a "true" link.
 
@@ -109,7 +109,7 @@ To create a hard link in Linux, we use the `ln` command and supply the `-P` flag
 
 {% include posts/picture.html img="hard-link" alt="Creating a hard link." %}
 
-Notice that both files are 13 bytes in size, have the same inode number, and have a link count of 2. There are two links to the original file: the first one we created, and the hard link we just created manually.
+Notice that both files are 13 bytes in size, have the same inode number, have the same permissions, and have a link count of 2. There are two links to the original file: the first one we created, and the hard link we just created manually.
 
 Unlike a soft link, a hard link will not rot if we change the original file's name or move it to a different directory. It also will not rot if we *delete* the original file. Below is an example of the latter:
 
