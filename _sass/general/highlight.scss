@@ -42,13 +42,19 @@ $operator: #ac8d58;
   }
 
   /* Comments */
-  .cm, .cp, .c1, .cs {
+  .c, .cm, .cp, .c1, .cs {
+    font-style: italic;
     color: $comment;
   }
 
   /* Functions. Note: .o + .na is for things like, e.g., System.[out.println] */
   .nf, .o + .na {
     color: $function;
+  }
+
+  /* */
+  .n + .o + .n {
+    color: $text;
   }
 
   /* Attributes */
@@ -94,5 +100,10 @@ $operator: #ac8d58;
   /* Punctuation */
   .p, .o {
     color: $function;
+  }
+
+  /* Operators */
+  .o, .ow {
+    color: $operator;
   }
 }
