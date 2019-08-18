@@ -1,4 +1,4 @@
-{% assign minutes = include.target.content | number_of_words | divided_by: 180 %}
+{% assign minutes = include.target.content | number_of_words | divided_by: 225 %}
 {% if minutes == 0 %}{% assign minutes = 1 %}{% endif %}
 <div class="post-stats">
     <span class="post-date"><i class="far fa-calendar"></i>{{ include.target.date | date: "%b %-d, %Y" }}</span>
