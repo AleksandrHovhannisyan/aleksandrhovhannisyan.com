@@ -1,6 +1,6 @@
 ---
-title: "Python Prefix Tree: Builing a Trie from Scratch"
-description: The trie is a beautiful and simple data structure. Let's build one using Python!
+title: "Python Prefix Tree: Building a Trie from Scratch"
+description: A simple Python trie implementation, with accompanying visuals and code.
 keywords: [python trie, python prefix tree, python trie implementation, python prefix tree implementation, python trie tutorial, python prefix tree tutorial]
 categories: [Programming]
 ---
@@ -29,7 +29,7 @@ Let's say we're building such a dictionary but want to be clever with how we do 
 
 In a prefix tree, each node contains a string. That string may be a complete word that someone entered, like `apple` or `bat`, or it may be a substring for the term the user has entered, such as the `ap-` in `ape` and `apple`.
 
-Each branch coming out of a node represents the addition of a character (in orange) to the end of that node's string. For example, if our current node is `app` and the word we want to insert is `apple`, we would concatenate an `l`.
+Each branch coming out of a node represents the addition of a character (in yellow) to the end of that node's string. For example, if our current node is `app` and the word we want to insert is `apple`, we would concatenate an `l`.
 
 This branching pattern allows us to  reduce our search space to something more efficient than just a linear search of all words. If a user has entered the substring `appl` so far, then we won't ever consider the branching paths for `ape`, let alone all the branching paths that start with `b`!
 
