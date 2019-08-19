@@ -107,7 +107,7 @@ In each iteration, if our current `TrieNode` doesn't have an entry in its `child
 
 In either case, at the end of the current iteration, we move on by setting the current node to be the child node: either the one that existed before or the new one that we just created. We repeat this process until we've iterated through the entire word.
 
-Recall that each node also has to keep track of the string that's been generated so far. For example, if we're inserting the word `apple`, then we'll need to create nodes with the following `word` entries: `a`, `ap`, `app`, `appl`, and `apple`. In Python, doing this is simply a matter of slicing the string with `word[0:i+1]`, where `i` is the current index in the word that we're inserting. Thus, if we're inserting `apple` and `i=2`, then `word_so_far = word[0:3] = 'app'`.
+Recall that each node also has to keep track of the string that's been generated so far. For example, if we're inserting the word `apple`, then we'll need to create nodes with the following `word` entries: `a`, `ap`, `app`, `appl`, and `apple`. In Python, doing this is simply a matter of slicing the string with `word[0:i+1]`, where `i` is the current index in the word that we're inserting. Thus, if we're inserting `apple` and `i=2`, then `prefix = word[0:3] = 'app'`.
 
 ### The Code: Inserting a Word Into a Trie
 
@@ -118,8 +118,8 @@ def insert(self, word):
     current = self.root
     for i, char in enumerate(word):
         if char not in current.children:
-            word_so_far = word[0:i+1]
-            current.children[char] = TrieNode(word_so_far)
+            prefix = word[0:i+1]
+            current.children[char] = TrieNode(prefix)
         current = current.children[char]
 ```
 
@@ -194,8 +194,8 @@ def insert(self, word):
     current = self.root
     for i, char in enumerate(word):
         if char not in current.children:
-            word_so_far = word[0:i+1]
-            current.children[char] = TrieNode(word_so_far)
+            prefix = word[0:i+1]
+            current.children[char] = TrieNode(prefix)
         current = current.children[char]
     current.is_word = True # New code
 ```
