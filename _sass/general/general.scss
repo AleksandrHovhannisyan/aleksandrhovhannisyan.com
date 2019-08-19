@@ -4,8 +4,8 @@
 
 @include comment-banner("General styling common to all pages on the site.");
 
-::selection {
-    background-color: var(--highlight-bg-color);
+::selection :not(.highlight) {
+    background-color: var(--selection-bg-color);
     color: var(--text-color-emphasis);
 }
 
