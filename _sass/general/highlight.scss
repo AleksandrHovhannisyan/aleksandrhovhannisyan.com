@@ -9,9 +9,10 @@ Adopted for use with Pygments/Rouge
 */
 
 $background: #181818; /* Modified from original */
+$selection: #424242;
 $comment: #777c85;
 $text: #b3b9c5;       /* Equivalent of 'foreground' in Tania's theme */
-$function: #ffffff;
+$function: #e0dfdf;   /* Modified from original */
 $variable: #f2777a;
 $number: #fca369;
 $attribute: #ffd479;
@@ -27,6 +28,10 @@ $operator: #ac8d58;
     background-color: $background;
     color: $text;
     font-size: 1em;
+  }
+
+  ::selection {
+    background-color: $selection;
   }
   
   /* Base Style */
@@ -53,18 +58,13 @@ $operator: #ac8d58;
     color: $function;
   }
 
-  /* */
-  .n + .o + .n {
-    color: $text;
-  }
-
   /* Attributes */
   .na {
     color: $attribute;
   }
 
   /* Variables */
-  .n, .nv, .vc, .vg, .vi, .err {
+  .bp, .nv, .vc, .vg, .vi, .err {
     color: $variable;
   }
 
@@ -84,7 +84,7 @@ $operator: #ac8d58;
   }
 
   /* Pseudo */
-  .kp, .nb, .bp {
+  .kp, .nb {
     color: $support;
   }
 
