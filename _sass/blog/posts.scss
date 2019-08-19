@@ -92,7 +92,7 @@
 
     img, iframe, .pro-con-table {
         margin: $img-spacing auto;
-        width: 100%;
+        max-width: 100%;
     }
 
     iframe {
@@ -201,6 +201,14 @@
             li {
                 padding-left: 10px;
             }
+        }
+    }
+
+    #fair-use-rationale {
+        margin-top: 50px;
+
+        p, ul {
+            font-style: italic;
         }
     }
 }
