@@ -1,7 +1,7 @@
 ---
 title: "Yu-Gi-Oh!—4 Fun Non-Meta Decks"
 description: Looking for some fun non-meta decks to run in Yu-Gi-Oh? These four are my favorites.
-keywords:
+keywords: [fun non meta decks, fun non meta yugioh decks, yugioh non meta decks, yugioh fun decks, fun yugioh decks]
 categories: [Gaming]
 ---
 
