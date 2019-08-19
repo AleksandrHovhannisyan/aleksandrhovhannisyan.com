@@ -200,7 +200,7 @@ def insert(self, word):
     current.is_word = True # New code
 ```
 
-And finally, to verify that the given word exists in our trie, and that the node we found isn't just a prefix node, all we need to do is return the current node's flag. If the flag is `True`, then it's a word, and we found a match; in that case, we return it. Otherwise, it's a prefix node, in which case the function returns `None` implicitly.
+And finally, to verify that the given word exists in our trie, and that the node we found isn't just a prefix node, all we need to do is check the current node's flag. If the flag is `True`, then it's a word, and we found a match; in that case, we return the node. Otherwise, it must be a prefix node, in which case we return `None` implicitly.
 
 Here's the final code for `find`:
 
