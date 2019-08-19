@@ -24,7 +24,7 @@ What used to be a joke deck can actually compete with the meta nowadays. With ex
 
 **Wightprincess** was a much-needed addition to the archetype; her effects allow you to not only send Whiteprince to the graveyard whenever she's summoned but to also drastically reduce the ATK/DEF of all enemy monsters to prep for King's attack (or protect you from OTKs).
 
-**Wightmare** is another great support card that can help you summon a banished Lady in Wight to protect King or return one banished Skull Servants or Wightmares to the graveyard. It also counts as another skull, so if you go for the second option, that's +2k attack for King. I recommend running only two of it because it can sometimes clog your hand.
+**Wightmare** is another great support card that can help you summon a banished Lady in Wight to protect King or return one banished Skull Servant or Wightmare to the graveyard. It also counts as another skull, so if you go for the second option, that's +2k attack for King. I recommend running only two of it because it can sometimes clog your hand.
 
 Some people like to combine Skull Servants with Lightsworn, but I don't recommend running a mill version of this deck simply because the archetype already has access to many other options that don't require wasting good spell or trap cards. You'll occasionally end up with a useless hand that has one too many normal Skull Servant monsters, but overall, the deck is very enjoyable.
 
