@@ -11,7 +11,10 @@ Gaming is my not-so-guilty pleasure—it provides a nice escape into another wor
 
 This was my first-ever introduction to video games, and really the only Legend of Zelda game I've ever played. So it's kind of a big deal.
 
-{% include posts/picture.html img="minish-cap-intro" alt="Intro text from the Legend of Zelda: The Minish Cap." %}
+<figure>
+    {% include posts/picture.html img="minish-cap-intro" alt="Intro text from the Legend of Zelda: The Minish Cap." %}
+    <figcaption>Intro scenes from The Legend of Zelda: The Minish Cap. Copyright Nintendo.</figcaption>
+</figure>
 
 I was five years old when my grandfather surprised me with a limited-edition Game Boy Advance SP bundle released by Nintendo of Europe: the [gold-colored handheld console](https://i.etsystatic.com/15746134/r/il/4c527f/1270950534/il_1588xN.1270950534_hzmh.jpg) with the triforce symbol on the back, along with the game in a nice little bundle.
 
@@ -116,7 +119,7 @@ I spent over 50 hours playing Hollow Knight to its end, and words can't express 
 
 <figure>
 {% include posts/picture.html img="for-honor" alt="Cover art of For Honor." %}
-<figcaption>Partial cover art of For Honor. Copyright belongs to Ubisoft.</figcaption>
+<figcaption>Partial cover art of For Honor. Copyright Ubisoft.</figcaption>
 </figure>
 
 I'm a big fan of medieval combat, so it should come as no surprise that this one's on the list.
@@ -248,3 +251,5 @@ Here are some honorable mentions that didn't make the list:
 - **Grand Theft Auto V**: Possibly the best open-world sandbox game currently available, at least until Rockstar releases its long-rumored follow-up. I only experienced it at the height of its glory on last-gen consoles, but the main player base is now essentially on PC. It's a good game if you can get past the mostly toxic player base.
 
 And that about does it—thanks for reading!
+
+{% include posts/fairUse.html %}
