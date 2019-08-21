@@ -55,7 +55,7 @@ So now that we understand what a prefix tree looks like and how it can be used, 
 
 First, like all trees, a prefix tree is going to consist of nodes. Each node will keep track of three pieces of data. I'll cover the two important ones here and bring up the third one when we get to it:
 
-- **A string**. We saw above that each node keeps track of the "prefix" that has accumulated along a specific path from the root. A node may contain a word that was inserted, like `apple` or `bat`, or it may contain a prefix, like `app-` or `b-`. So, each node will certainly need to have a member to store this string. I'll call that member `word`.
+- **A string**. We saw above that each node keeps track of the "prefix" that has accumulated along a specific path from the root. A node may contain a word that was inserted, like `apple` or `bat`, or it may contain a prefix, like `app-` or `b-`. So, each node will certainly need to have a member to store this string. I'll call that member `text`.
 
 - **Children**. As with many trees, each node of a trie will have zero or more children that are "linked" to it via the selection of a particular character (the branches). The most natural expression of this sort of relationship is a map: Each node maps a character to a child `TrieNode`.
 
@@ -63,12 +63,12 @@ Let's build the `TrieNode` class in Python:
 
 ```python
 class TrieNode:
-    def __init__(self, word = ''):
+    def __init__(self, text = ''):
         '''
-        Initializes a TrieNode with the given word and an initially
+        Initializes a TrieNode with the given string and an initially
         empty dictionary mapping strings to TrieNodes.
         '''
-        self.word = word
+        self.text = text
         self.children = dict()
 ```
 
@@ -93,7 +93,7 @@ That last one is useful for testing; it isn't required.
 
 ## 1. Inserting Words Into a Trie
 
-Let's consider how we'd build a trie from scratch. We'll always start with a root node that has an empty string as its `word` and an empty dictionary as its `children`. Then, we want to insert the words we looked at earlier: `ape`, `apple`, `bat`, and `big`. As a reminder, this is what the trie looks like once we finish inserting all of those words:
+Let's consider how we'd build a trie from scratch. We'll always start with a root node that has an empty string as its `text` and an empty dictionary as its `children`. Then, we want to insert the words we looked at earlier: `ape`, `apple`, `bat`, and `big`. As a reminder, this is what the trie looks like once we finish inserting all of those words:
 
 {% include posts/picture.html img="trie" alt="An example of a trie for the words bat, big, ape, and apple." %}
 
@@ -107,7 +107,7 @@ In each iteration, if our current `TrieNode` doesn't have an entry in its `child
 
 In either case, at the end of the current iteration, we move on by setting the current node to be the child node: either the one that existed before or the new one that we just created. We repeat this process until we've iterated through the entire word.
 
-Recall that each node also has to keep track of the string that's been generated so far. For example, if we're inserting the word `apple`, then we'll need to create nodes with the following `word` entries: `a`, `ap`, `app`, `appl`, and `apple`. In Python, doing this is simply a matter of slicing the string with `word[0:i+1]`, where `i` is the current index in the word that we're inserting. Thus, if we're inserting `apple` and `i=2`, then `prefix = word[0:3] = 'app'`.
+Recall that each node also has to keep track of the string that's been generated so far. For example, if we're inserting the word `apple`, then we'll need to create nodes with the following `text` entries: `a`, `ap`, `app`, `appl`, and `apple`. In Python, doing this is simply a matter of slicing the string with `word[0:i+1]`, where `i` is the current index in the word that we're inserting. Thus, if we're inserting `apple` and `i=2`, then `prefix = word[0:3] = 'app'`.
 
 ### The Code: Inserting a Word Into a Trie
 
@@ -165,7 +165,7 @@ Let's say we insert the word `apple` into our trie, with nothing else, and now i
 
 {% include posts/picture.html img="wrong-find" alt="An example of a false match for a word in a trie." %}
 
-Our algorithm in its current state won't return `None` as it should. It sees that our trie has a node with the string `app` and considers that a match. But notice that we never actually inserted the word `app` into the tree as a *word*. It only exists in the trie as a *prefix node* leading up to the inserted word `apple`. So clearly, there are two classes of nodes that we must distinguish between: ones that are prefixes, and ones that are "real" words that were inserted.
+Our algorithm in its current state won't return `None` as it should. It sees that our trie has a node with the string `app` and considers that a match. But notice that we never actually inserted `app` into the tree as a *word*. It only exists in the trie as a *prefix node* leading up to the inserted word `apple`. So clearly, there are two classes of nodes that we must distinguish between: ones that are prefixes, and ones that are "real" words that were inserted.
 
 Fortunately, the fix here is super simple. We need to make three changes:
 
@@ -177,12 +177,12 @@ Let's modify the `TrieNode` class:
 
 ```python
 class TrieNode:
-    def __init__(self, word = ''):
+    def __init__(self, text = ''):
         '''
-        Initializes a TrieNode with the given word and an initially
+        Initializes a TrieNode with the given string and an initially
         empty dictionary mapping strings to TrieNodes.
         '''
-        self.word = word
+        self.text = text
         self.children = dict()
         self.is_word = False # New code
 ```
@@ -267,7 +267,7 @@ def __child_words_for(self, node, words):
     constitute whole words (as opposed to merely prefixes).
     '''
     if node.is_word:
-        words.append(node.word)
+        words.append(node.text)
     for letter in node.children:
         self.__child_words_for(node.children[letter], words)
 ```
