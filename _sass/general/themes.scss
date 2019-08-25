@@ -36,8 +36,8 @@ html.night {
     --bg-color-main: #{$charcoal};
     --bg-color-contrast: #{$nearly-black};
     // Alpha applied for Chrome bug where colors meld together: https://stackoverflow.com/a/29416776/10480032
-    $highlight-bg-color: adjust-color($coffee-milky, $alpha: -0.2);
-    --selection-bg-color: #{$highlight-bg-color};
+    $selection-bg-color: adjust-color($coffee-milky, $alpha: -0.2);
+    --selection-bg-color: #{$selection-bg-color};
 
     --text-color-normal: #{$beige};
     --text-color-emphasis: #{$beige-light};
