@@ -9,7 +9,7 @@ Adopted for use with Pygments/Rouge
 */
 
 $background: #181818; /* Modified from original */
-$selection: #424242;
+$selection: rgba(80, 80, 80, 0.8);
 $comment: #777c85;
 $text: #b3b9c5;       /* Equivalent of 'foreground' in Tania's theme */
 $function: #e0dfdf;   /* Modified from original */
@@ -25,15 +25,17 @@ $operator: #ac8d58;
 
 .highlight {
   &, code {
-    background-color: $background;
     color: $text;
+    background-color: $background;
     font-size: 1em;
   }
 
-  ::selection {
+  *::selection {
+    // This will be overriden by more specific styles but retained for normal text and labels
+    color: $text;
     background-color: $selection;
   }
-  
+
   /* Base Style */
   pre {
     color: transparent;
@@ -50,61 +52,86 @@ $operator: #ac8d58;
   /* Comments */
   .c, .cm, .cp, .c1, .cs {
     font-style: italic;
-    color: $comment;
+
+    &, &::selection {
+      color: $comment;
+    }
   }
 
   /* Functions. Note: .o + .na is for things like, e.g., System.[out.println] */
   .nf, .o + .na {
-    color: $function;
+    &, &::selection {
+      color: $function;
+    }
   }
 
   /* Attributes */
   .na {
-    color: $attribute;
+    &, &::selection {
+      color: $attribute;
+    }
   }
 
   /* Variables */
   .bp, .nv, .vc, .vg, .vi, .err {
-    color: $variable;
+    &, &::selection {
+      color: $variable;
+    }
   }
 
   /* Numbers */
   .m, .mf, .mh, .mi, .mo, .il {
-    color: $number;
+    &, &::selection {
+      color: $number;
+    }
   }
 
   /* Keywords */
   .k, .kd, .kn, .kr, .kt {
-    color: $keyword;
+    &, &::selection {
+      color: $keyword;
+    }
   }
 
   /* Constants */
   .kc {
-    color: $constant;
+    &, &::selection {
+      color: $constant;
+    }
   }
 
   /* Pseudo */
   .kp, .nb {
-    color: $support;
+    &, &::selection {
+      color: $support;
+    }
   }
 
   /* Strings */
   .s, .sb, .sc {
-    color: $string;
+    &, &::selection {
+      color: $string;
+    }
   }
 
   /* Classes/tags */
   .nc, .nt, .nl {
-    color: $tag;
+    &, &::selection {
+      color: $tag;
+    }
   }
 
   /* Punctuation */
   .p, .o {
-    color: $function;
+    &, &::selection {
+      color: $function;
+    }
   }
 
   /* Operators */
   .o, .ow {
-    color: $operator;
+    &, &::selection {
+      color: $operator;
+    }
   }
 }
