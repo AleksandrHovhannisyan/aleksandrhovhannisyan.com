@@ -30,7 +30,7 @@ order: 1
         for that very reason: to sharpen my front-end skills and show off what I can do.
     </p>
     <p>
-        When I'm not hacking away on a project, I enjoy playing video games, solving puzzles, and 
+        When I'm not hacking away on a project, I enjoy playing video games, writing, learning new things, and 
         working out. I'm also a creative at heart and will spend as many painful hours as it takes perfecting something until 
         I'm fully satisfied with how it looks. (I can't count how many times I've changed this site's design.)
     </p>
