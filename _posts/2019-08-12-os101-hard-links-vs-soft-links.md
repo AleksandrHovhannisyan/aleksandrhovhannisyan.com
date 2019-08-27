@@ -5,17 +5,17 @@ keywords: [linux hard link example, linux soft link example, linux hard link vs 
 categories: [Programming]
 ---
 
-You may have heard the terms "hard link" and "soft link" used in the context of the Linux operating system. What exactly are they? Let's find out—in plain English.
+You may have heard the terms "hard link" and "soft link" used in the context of operating systems such as Linux or Windows. What exactly are they? Let's find out!
 
 ## File System Basics
 
-You can skip this section if you're familiar with the following prerequisite terminology:
+You can skip this section if you're familiar with the following terms:
 
-- **File**: a logically named and persistent medium for storing information on a computer. We say it's persistent because it survives process termination, such as if you restart your computer. This is in contrast to data stored in, say, buffers, which get cleared out.
+- **File**: a named and persistent medium for storing information on a computer. We say it's persistent because it survives process termination, such as if you restart your computer. This is unlike data stored in, say, main memory.
 
 - **Directory**: a special kind of *system* file storing metadata (information) about related files and directories. On GUI systems, directories are usually represented as "folders." However, there is no such notion of a "folder" in a file system—there are only files.
 
-That wasn't so bad, right? Onward!
+With that out of the way, let's take a look at what links are all about.
 
 ## What Is Linking in File Systems?
 
@@ -121,11 +121,27 @@ If we think back to what "deleting" a file really means, this should make sense:
 
 {% include posts/picture.html img="delete-hard-link" alt="Deleting a hard link." %}
 
+## What About Creating Links on Windows?
+
+So far, we've been creating links using the `ln` command on Linux. How can we create links on Windows?
+
+As it turns out, doing so is simply a matter of invoking the `mklink` command:
+
+{% include posts/picture.html img="mklink" alt="mklink command usage on Windows." %}
+
+By now, the terms soft link and hard link should be familiar enough that the above output makes sense.
+
+## Additional Exercises
+
+1. What do you expect will happen if you change the permissions of a hard link using `chmod`? What about changing the permissions of a soft link?
+
+2. Here's an interesting (and easy!) question: What happens if you create a hard link to a soft link? Try it out! Hint: Remember that hard links are simply aliases.
+
 ## And That's It!
 
-Soft links and hard links are super easy to understand. If you're still feeling confused, feel free to re-read this as many times as you want. Go as slowly as you need to, and practice running those commands on your own terminal so you're more comfortable with them.
+Soft links and hard links aren't as mysterious as they may seem at first. If you're still feeling confused, feel free to re-read this as many times as you want. Go as slowly as you need to, and practice running those commands on your own terminal so you're more comfortable with them.
 
-## Useful Resources
+## Further Reading
 
 - [Hard vs Soft Links in Linux (Linux Links)](https://www.youtube.com/watch?v=4-vye3QFTFo)
 
@@ -134,3 +150,5 @@ Soft links and hard links are super easy to understand. If you're still feeling 
 - [What is the difference between a symbolic link and a hard link?](https://stackoverflow.com/questions/185899/what-is-the-difference-between-a-symbolic-link-and-a-hard-link)
 
 - [Modern Operating Systems by Tanenbaum, Chapter 4.2.4](https://www.amazon.com/Modern-Operating-Systems-Andrew-Tanenbaum/dp/013359162X)
+
+- [How to take advantage of symbolic links in Windows 10](https://www.techrepublic.com/article/how-to-take-advantage-of-symbolic-links-in-window-10/)
