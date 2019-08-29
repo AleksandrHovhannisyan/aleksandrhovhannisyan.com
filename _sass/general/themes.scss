@@ -28,6 +28,8 @@ html.day {
 
     --code-bg-color: rgb(235, 232, 232);
 
+    --spoiler-bg-color: #{$blue-cloud};
+
     --blockquote-bg-color: rgb(216, 216, 216);
     --blockquote-text-color: rgb(110, 110, 110);
 }
@@ -61,6 +63,8 @@ html.night {
     --form-bg-color: #{$hover-color-general};
 
     --code-bg-color: #{$coffee-gray};
+
+    --spoiler-bg-color: #{$beige};
 
     --blockquote-bg-color: rgb(63, 63, 63);
     --blockquote-text-color: #{$beige};
