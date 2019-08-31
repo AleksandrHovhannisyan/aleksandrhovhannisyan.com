@@ -84,9 +84,7 @@ The entire strategy revolves around two key cards—**Darklord Nurse Reficule** 
 
 So, do you enjoy pissing off your opponent by dealing effect damage through "healing" cards? Are you willing to tolerate a barrage of explitives when they realize what you're doing? Then by all means, use this deck.
 
-The two cards on the far right are key. **Gift Card** is pretty much guaranteed 3k damage, and **Silent Wobby** lets you draw one card and deal 2k damage, with the added benefit of limiting your opponent's hand size to three until they get rid of it. The only downside is that it's free fodder for Link/XYZ plays.
-
-Throw in some stall cards and traps, and you're good to go. My favorite trick is using the trap **Tri-and-Guess**:
+Throw in some stall cards and traps, and you're good to go. The two cards on the far right are key. **Gift Card** is pretty much guaranteed 3k damage. But my favorite trick is using the trap **Tri-and-Guess**:
 
 > If each player has an Extra Deck: Declare 1 Extra Deck monster card type (Fusion, Synchro, or Xyz); both players reveal their Extra Deck, and the player who has more cards of the declared card type gains 3000 Life Points.
 
