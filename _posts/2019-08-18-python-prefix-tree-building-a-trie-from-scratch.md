@@ -1,6 +1,6 @@
 ---
 title: "Python Prefix Tree: Building a Trie from Scratch"
-description: A simple Python trie implementation, with accompanying visuals and code.
+description: A simple tutorial for a Python trie implementation, with accompanying visuals and code to help you understand.
 keywords: [python trie, python prefix tree, python trie implementation, python prefix tree implementation, python trie tutorial, python prefix tree tutorial]
 categories: [Programming]
 ---
