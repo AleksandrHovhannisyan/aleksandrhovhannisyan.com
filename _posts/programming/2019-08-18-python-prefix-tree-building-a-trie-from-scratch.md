@@ -2,7 +2,6 @@
 title: "Python Prefix Tree: Building a Trie from Scratch"
 description: A simple tutorial for a Python trie implementation, with accompanying visuals and code to help you understand.
 keywords: [python trie, python prefix tree, python trie implementation, python prefix tree implementation, python trie tutorial, python prefix tree tutorial]
-categories: [Programming]
 ---
 
 Of all the data structures I've encountered, the trie continues to be the one that fascinates me the most because of its simplicity, elegance, and practical applications.

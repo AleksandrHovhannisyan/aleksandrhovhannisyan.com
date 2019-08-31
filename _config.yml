@@ -25,6 +25,22 @@ defaults:
     values:
       layout: "post"
       permalink: /blog/:categories/:title/
+  -
+    scope:
+      path: "_posts/programming"
+    values:
+      categories: [Programming]
+  -
+    scope:
+      path: "_posts/gaming"
+    values:
+      categories: [Gaming]
+  -
+    scope:
+      path: "_posts/other"
+    values:
+      categories: [Other]
+
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

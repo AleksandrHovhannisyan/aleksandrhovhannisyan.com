@@ -2,7 +2,6 @@
 title: "Outer Wilds Review: Stop and Smell the Pine Trees"
 description: At its core, Outer Wilds is a space exploration game. But it's so much more than just that. Here's my in-depth Outer Wilds review.
 keywords: [outer wilds game, outer wilds review, outer wilds ending meaning, outer wilds ending explained, outer wilds game of the year, outer wilds planets, outer wilds characters, outer wilds review xbox]
-categories: ["Gaming"]
 ---
 
 <blockquote style="margin-bottom: 50px;">
