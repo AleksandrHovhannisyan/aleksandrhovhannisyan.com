@@ -1,15 +1,17 @@
 ---
 title: "Outer Wilds Review: Stop and Smell the Pine Trees"
-description: A strong contender for Game of the Year 2019, Outer Wilds is a masterpiece much more than just about exploring space.
+description: At its core, Outer Wilds is a space exploration game. But it's so much more than just that. Here's my in-depth Outer Wilds review.
 keywords: [outer wilds game, outer wilds review, outer wilds ending meaning, outer wilds ending explained, outer wilds game of the year, outer wilds planets, outer wilds characters, outer wilds review xbox]
 categories: ["Gaming"]
 ---
 
 <blockquote style="margin-bottom: 50px;">
-<p><strong>Warning</strong>: Spoilers ahead. If you haven't played Outer Wilds and don't want to ruin it for yourself, you can <a href="{{ site.url }}/blog">head back to safety</a>.</p>
+<p><strong>Warning</strong>: Some spoilers ahead. If you haven't played Outer Wilds yet, you can <a href="{{ site.url }}/blog">head back to safety</a>.</p>
 </blockquote>
 
-Produced over the course of [more than six years](https://www.youtube.com/watch?v=vRQU1o8SrAI) by a team of talented creatives, Outer Wilds is a space exploration game that thrusts you into a hand-crafted solar system packed full of mystery and intrigue, where you're ultimately driven by a single goal: to sate your curiosity and brave the unknown.
+What originally began as a thesis project [more than six years ago](https://www.youtube.com/watch?v=vRQU1o8SrAI) between two university students—Alex Beachum and Loan Verneau—is one of the best games released so far in 2019. And it's certainly come a long way, with much of the art, audio, and gameplay receiving polishes that have allowed it to shine.
+
+Produced by a team of talented creatives, Outer Wilds is a space exploration game that thrusts you into a hand-crafted solar system packed full of mystery and intrigue, where you're ultimately driven by a single goal: to sate your curiosity and brave the unknown.
 
 {% include posts/picture.html img="outer-wilds" alt="An in-game photo showing the founders of the Outer Wilds space exploration program." %}
 
