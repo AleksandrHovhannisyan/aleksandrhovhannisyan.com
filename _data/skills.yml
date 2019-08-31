@@ -1,12 +1,10 @@
-- category: Languages & Markup
+- category: General Programming
   items:
     - name: C++
       rating: 5
     - name: Python
       rating: 5
-    - name: HTML5
-      rating: 5
-    - name: CSS, SASS
+    - name: Java
       rating: 4
     - name: SQL
       rating: 4
@@ -14,7 +12,20 @@
       rating: 4
     - name: C#
       rating: 3
-    - name: JavaScript
+
+- category: Frontend Development
+  items:
+    - name: HTML5
+      rating: 5
+    - name: CSS, CSS Modules
+      rating: 5
+    - name: SASS, LESS
+      rating: 4
+    - name: JavaScript (ES6)
+      rating: 4
+    - name: TypeScript
+      rating: 3
+    - name: React (+ Redux)
       rating: 3
 
 - category: Software Development
@@ -30,7 +41,7 @@
     - name: Refactoring
       rating: 4
     - name: Game dev
-      rating: 4
+      rating: 3
     - name: Design patterns
       rating: 3
 
@@ -42,21 +53,10 @@
       rating: 4
     - name: Linux kernel
       rating: 4
-    - name: VMs (Virtualbox)
+    - name: VMs (VirtualBox)
       rating: 4
     - name: macOS (Mojave)
-      rating: 3
-
-- category: Terminals & Tools
-  items:
-    - name: Bash
       rating: 4
-    - name: PowerShell
-      rating: 4
-    - name: cmd
-      rating: 3
-    - name: npm, yarn
-      rating: 2
 
 - category: Go-to IDEs
   items:
@@ -78,9 +78,9 @@
     - name: G Suite
       rating: 5
     - name: Jira
-      rating: 3
+      rating: 4
     - name: Confluence
-      rating: 2
+      rating: 3
 
 - category: Languages
   items:
@@ -95,7 +95,7 @@
   items:
     - name: Copy editing
       rating: 5
+    - name: Creative writing
+      rating: 5 
     - name: Copy writing
-      rating: 4
-    - name: Email writing
       rating: 4
