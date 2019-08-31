@@ -2,7 +2,6 @@
 title: "Yu-Gi-Oh!—4 Fun Non-Meta Decks"
 description: Looking for some fun non-meta decks to run in Yu-Gi-Oh? These four are my favorites.
 keywords: [fun non meta decks, fun non meta yugioh decks, yugioh non meta decks, yugioh fun decks, fun yugioh decks]
-categories: [Gaming]
 ---
 
 Do you ever get tired of running meta decks like Dark World Danger, True Draco, and Salamangreat? If you're not afraid to bruise your ego and are willing to lose to—or, surprisingly, defeat—the meta, then using a non-meta deck may be just what you need to have a little fun. Here are my four personal favorites.
