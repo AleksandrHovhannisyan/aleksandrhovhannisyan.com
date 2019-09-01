@@ -108,13 +108,13 @@ function createCardFor(repo) {
  * the repo icon, the repo name, and the repo's rating (stargazers).
  */
 function headerFor(repo) {
-    var header = document.createElement('header');
+    const header = document.createElement('header');
 
-    var icon = document.createElement('span');
+    const icon = document.createElement('span');
     icon.classList.add('project-icon');
     icon.textContent = get(repo).icon + ' ';
     
-    var h4 = document.createElement('h4');
+    const h4 = document.createElement('h4');
     h4.appendChild(icon);
     h4.appendChild(nameLabelFor(repo));
     
@@ -129,7 +129,7 @@ function headerFor(repo) {
  * @returns {Element} A label for the name of the given repo.
  */
 function nameLabelFor(repo) {
-    var projectName = document.createElement('span');
+    const projectName = document.createElement('span');
     projectName.classList.add('project-name');
     projectName.textContent = get(repo).customName;
     return projectName;
@@ -141,13 +141,19 @@ function nameLabelFor(repo) {
  * @returns {Element} A label showing the number of stargazers for the given repo.
  */
 function stargazerLabelFor(repo) {
-    var projectRating = document.createElement('span');
+    const projectRating = document.createElement('span');
+    const xmlns = 'http://www.w3.org/2000/svg';
     
-    var starIcon = document.createElement('i');
-    starIcon.classList.add('fas', 'fa-star', 'filled');
+    const starIcon = document.createElementNS(xmlns, 'svg');
+    starIcon.classList.add('star', 'star-filled');
+    starIcon.setAttribute(null, 'role', 'img');
+    starIcon.setAttributeNS(null, 'viewBox', '0 0 1792 1792');
+    const starPath = document.createElementNS(xmlns, 'path');
+    starPath.setAttributeNS(null, 'd', 'M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z');
+    starIcon.appendChild(starPath);
     
-    var starCount = document.createElement('span');
-    starCount.textContent = ' ' + repo.stargazers_count;
+    const starCount = document.createElement('span');
+    starCount.textContent = repo.stargazers_count;
     
     projectRating.classList.add('project-rating');
     projectRating.appendChild(starIcon);
@@ -162,7 +168,7 @@ function stargazerLabelFor(repo) {
  * @returns {Element} An element containing the description of the given repo.
  */
 function descriptionFor(repo) {
-    var description = document.createElement('p');
+    const description = document.createElement('p');
     description.classList.add('description');
     description.textContent = repo.description;
     return description;
@@ -175,7 +181,7 @@ function descriptionFor(repo) {
  * three paragraphs denoting the topics associated with that repo.
  */
 function footerFor(repo) {
-    var footer = document.createElement('footer');
+    const footer = document.createElement('footer');
     footer.classList.add('topics');
 
     for (const topic of get(repo).topics) {
@@ -194,7 +200,7 @@ function footerFor(repo) {
  * @returns {Element} An anchor element whose href is set to the given repo's "real" URL.
  */
 function anchorFor(repo) {
-    var anchor = document.createElement('a');
+    const anchor = document.createElement('a');
     anchor.classList.add('container-link');
     anchor.setAttribute('href', repo.html_url);
     anchor.setAttribute('target', '_blank');
@@ -203,13 +209,13 @@ function anchorFor(repo) {
 
 
 function createHoverContent() {
-    var hoverContent = document.createElement('div');
+    const hoverContent = document.createElement('div');
     hoverContent.classList.add('hover-content');
     
-    var boldText = document.createElement('strong');
+    const boldText = document.createElement('strong');
     boldText.textContent = 'View on GitHub';
 
-    var externalLinkIcon = document.createElement('i');
+    const externalLinkIcon = document.createElement('i');
     externalLinkIcon.classList.add('fas', 'fa-external-link-alt');
     
     hoverContent.appendChild(boldText);

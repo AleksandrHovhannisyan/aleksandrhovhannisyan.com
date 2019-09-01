@@ -42,10 +42,15 @@
         justify-self: center;
         align-self: center;
         grid-area: rating;
+        display: flex;
+        align-items: center;
         @include transition;
 
-        .fa-star {
-            color: $denim;
+        .star {
+            width: 16px;
+            height: 16px;
+            margin-right: 2px;
+            fill: $denim;
         }
     }
 
