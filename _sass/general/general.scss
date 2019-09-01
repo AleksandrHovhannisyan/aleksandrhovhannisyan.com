@@ -67,7 +67,7 @@ body {
     z-index: 1;
 }
 
-i, strong {
+strong {
     color: var(--text-color-emphasis);
     @include transition;
 }
