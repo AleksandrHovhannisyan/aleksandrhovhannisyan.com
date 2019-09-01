@@ -2,9 +2,6 @@
 @import 'fonts';
 @import 'settings';
 
-
-@include comment-banner("Main contact form");
-
 #contact {
     display: grid;
     grid-template-areas: "form"
@@ -75,8 +72,6 @@
 input.honeypot {
     display: none;
 }
-
-@include comment-banner("Social networks, to be displayed alongside contact form.");
 
 #social-networks {
     display: grid;

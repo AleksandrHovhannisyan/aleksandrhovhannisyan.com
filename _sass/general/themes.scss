@@ -1,8 +1,6 @@
 @import 'colors';
 @import 'mixins';
 
-@include comment-banner("CSS custom properties used for theming the site (day and night mode)");
-
 html.day {
     --bg-color-main: white;
     --bg-color-contrast: #{$charcoal};

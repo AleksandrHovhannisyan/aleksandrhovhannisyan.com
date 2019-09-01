@@ -1,7 +1,6 @@
 @import 'card';
 @import 'colors';
 @import 'mixins';
-@include comment-banner("Styling for blog post previews.");
 
 .post-title {
     margin-bottom: 20px;
