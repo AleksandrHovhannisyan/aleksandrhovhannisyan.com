@@ -1,9 +1,9 @@
 {% assign minutes = include.target.content | number_of_words | divided_by: 225 %}
 {% if minutes == 0 %}{% assign minutes = 1 %}{% endif %}
 <div class="post-stats">
-    <span class="post-date"><i class="far fa-calendar"></i>{{ include.target.date | date: "%b %-d, %Y" }}</span>
-    <span class="post-reading-length"><i class="far fa-clock"></i>{{ minutes }} min read</span>
+    <span class="post-date">{% include svg.html svg="calendar" %}{{ include.target.date | date: "%b %-d, %Y" }}</span>
+    <span class="post-reading-length">{% include svg.html svg="clock" %}{{ minutes }} min read</span>
     {% if include.categories %}
-    <span class="post-categories"><i class="fas fa-tags"></i>{% for category in include.categories %}<a href="{{ site.url }}/blog/{{ category | slugify }}">{{ category }}</a>&ensp;{% endfor %}</span>
+    <span class="post-categories">{% include svg.html svg="tag" %}{% for category in include.categories %}<a href="{{ site.url }}/blog/{{ category | slugify }}">{{ category }}</a>&ensp;{% endfor %}</span>
     {% endif %}
 </div>

@@ -14,12 +14,18 @@
     font-style: italic;
 
     .post-date, .post-reading-length, .post-categories {
+        display: flex;
+        align-items: center;
         margin-bottom: 15px;
         margin-right: 25px;
         @include transition;
 
-        i {
-            margin-right: 10px;
+        svg {
+            @include transition;
+            fill: var(--text-color-normal);
+            margin-right: 5px;
+            width: 15px;
+            height: 15px;
         }
     }
 }
