@@ -162,8 +162,8 @@
 
     .spoiler {
         &, * {
-            background-color: var(--spoiler-bg-color);
-            color: var(--spoiler-bg-color);
+            background-color: $beige;
+            color: $beige;
         }
 
         margin-top: 1px;
