@@ -97,16 +97,18 @@
         @include transition;
     }
 
-    .github-icon {
+    a {
         display: inline-block;
-        font-size: 3em;
         margin-top: 20px;
         text-decoration: none;
-        color: black;
-        @include transition;
         border-radius: 50%;    
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
+
+        svg {
+            fill: var(--text-color-emphasis);
+            @include transition;
+        }
     }
 }
 
