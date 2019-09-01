@@ -1,8 +1,8 @@
-# My Personal Website
+# aleksandrhovhannisyan.github.io
 
-**Update**: What originally began as a single-page site built purely with HTML5, CSS, and JavaScript has now moved over to Jekyll for blogging purposes and maintainability. While it was a great learning experience and a fun way to get my hands dirty, building the site with HTML and CSS was clearly not going to be maintainable for the long run. For one, navigating one massive stylesheet was a pain, and I often found myself unavoidably violating DRY best practices. Second, much of my HTML involved copy-pasting, especially the skills section. Each time I wanted to add a new skill, I had to copy-paste an entire div, deal with [VS Code's indentation formatting errors](https://github.com/microsoft/vscode/issues/32320#issuecomment-513562073), and then manually fill in the information. With SASS, Jekyll's site data (represented as YAML), and the wonderful Liquid templating language, I can more easily update the content without having to copy-paste chunks of HTML.
+> My personal site, a professional resume and blog in one.
 
-This is just a little single-page site I threw together to share some of my work, skills, education, etc.
+Note: What originally began as a single-page portfolio built with HTML5, CSS, and JavaScript has now moved over to Jekyll for blogging purposes and maintainability. While building things with vanilla HTML and CSS was a great learning experience and a fun way to get my hands dirty, it was definitely not going to be maintainable in the long run.
 
 ## Why Build Everything from Scratch?
 
@@ -18,24 +18,52 @@ Per Harald Borgen, co-founder of Scrimba, has a great article on [why CSS grid i
 
 ## Design Considerations
 
-### Responsiveness
-I built my site with a mobile-first strategy, targeting a minimum device width of 320 px and working my way up to larger screens using CSS Grid's `repeat`, `auto-fit`, and `minmax`, as well as a few media queries. I also used Flexbox wherever I found it more convenient than grids (e.g., wherever the number or width of column tracks wasn't too relevant, ~or whenever I wanted to vertically center div content~ Edit: I learned that you can also do this with CSS grid if you use `align-self` and `justify-self`; those work for both Flexbox and CSS grid and are part of the CSS Box Module Level 3). All of my testing was done using Google Chrome's (and later Firefox's and MS Edge's) built-in dev tools.
+### Responsiveness and Optimization
+I built my site with a mobile-first strategy, targeting a minimum device width of 320 px and working my way up to larger screens using CSS Grid's `repeat`, `auto-fit`, and `minmax`, as well as a few media queries. I also used Flexbox wherever I found it more convenient than grids (e.g., wherever the number or width of column tracks wasn't too relevant). All of my testing was done using Google Chrome's (and later Firefox's and MS Edge's) built-in dev tools.
 
 ![](https://user-images.githubusercontent.com/19352442/60965960-2c8a9180-a2e5-11e9-900f-52ae77934e20.png)
 
 <p align="center"><i>Example: responsive CSS grid layout used for project gallery</i></p>
 
-### Colors and Themes
-I didn't really have a "strategy" in place for color choices besides pure experimentation. I mainly picked whatever looked good to me and tweaked things multiple times as I went along. Light mode is nice and neutral. For dark mode, I wanted to go for a "coffee"-type theme. I added both an auto and a manual transition via a switch on the navbar to allow users to pick whichever theme they prefer. Again, that's obviously not too important for a portfolio site, but it was still something I wanted to try.
+As the site grew—particularly when I moved over to Jekyll and began publishing blog posts—I began consulting tools like [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) and [Cloudinary's Website Speed Test](https://webspeedtest.cloudinary.com) to get a sense of how quickly my site would load, especially on mobile.
 
-![](https://user-images.githubusercontent.com/19352442/61949854-20a3fe00-af7a-11e9-8609-10920f6f6eb8.png)
+I used Google's `cwebp` tool to optimize my images (using a neat little trick with includes to make my life easier), and that alone significantly boosted my load speed for posts with lots of images.
+
+According to PageSpeed Insights, with the exception of one of my blog post's (which has iframes for songs), all others are now ranking at least 90 for mobile, with most at 99.
+
+Here's an example of a post that has lots of images:
+
+![](https://user-images.githubusercontent.com/19352442/64079851-12ed4100-ccbb-11e9-9e8e-1b38962766d3.png)
+
+#### Goodbye, Font Awesome—Hello, SVGs
+
+Font Awesome is awesome until it isn't.
+
+I began noticing that my Contact page was especially slow to load the icons for my social media accounts, which wasn't too nice to look at—they'd be invisible for one or two seconds and then suddenly pop up out of nowhere! The Experience page would also occasionally take a few seconds for all the stars to load, and the blog posts were equally slow to load their icons. Even my front page was slow for the button icons!
+
+I decided to begin using inline SVGs instead. The only downside to these is that they can't be cached, but all I care about is my user's first visit—after all, GitHub's caching policy is already [limited to just 10 minutes](https://webapps.stackexchange.com/a/119294), so there's very little to be gained from it.
+
+In some cases, I had to create SVGs in JavaScript. Just trust me when I say it'll probably make your eyes bleed. Maybe some day I'll move over to Gatsby and begin taking advantage of React so I don't have to keep creating components the old-school way.
+
+#### SVG Credits
+
+Social icons were obtained from [simpleicons.org](https://simpleicons.org).
+
+All other SVG icons were obtained as inlines from encharm's [Font-Awesome-SVG-PNG repo](https://github.com/encharm/Font-Awesome-SVG-PNG/tree/master/black/svg) (MIT license).
+
+### Colors and Themes
+I didn't really have a strategy in place for color choices besides pure experimentation (lots and lots of it). I mainly picked whatever looked good to me and tweaked things several times as I went along.
+
+Currently, light mode is nice and neutral, with the primary color being blue. For dark mode, I wanted to go for a "coffee"-type theme. I added both an auto and a manual transition via a switch on the navbar to allow users to pick whichever theme they prefer. Again, that's obviously not too important for a portfolio site, but it was still something I wanted to try.
+
+![](https://user-images.githubusercontent.com/19352442/64079928-35338e80-ccbc-11e9-9f7c-b98b0dedc87c.png)
 
 <p align="center"><i>Dark mode theme, for those whose hiring efforts extend into the night :)</i></p>
 
 ### Contact
 I decided I'd also include a form on my site to make it easier for people to reach out, even though the primary call-to-action buttons already direct visitors to my LinkedIn and GitHub. I used [Formspree](https://github.com/formspree/formspree) for this, and it works perfectly. One downside is that your email is publicly exposed in your HTML, making it possible for spammers to ruin your day. To get around this, I used a [hidden honeypot field](https://help.formspree.io/hc/en-us/articles/360013580813-Honeypot-spam-filtering) and a throwaway email address that I monitor occasionally.
 
-### To hardcode or not to hardcode?
+### To Hardcode or Not to Hardcode?
 Originally, the Projects section of my site consisted entirely of hardcoded HTML for every single project. As you can imagine, this was useful for figuring out the layout and style of the project cards and styling them because I could directly edit the HTML and CSS without worrying about dynamically rendering the content. However, once I added the labels for the stargazer count to the cards, I realized that this approach was too inflexible. If my repos continued getting stars, for example, then I'd have to manually update every single project by hand, and that would be tedious.
 
 I had never worked with APIs before, so this was a learning process for me. I looked into the [GitHub API on user repositories](https://developer.github.com/v3/repos/#list-user-repositories) and [learned about AJAX](https://www.taniarascia.com/how-to-connect-to-an-api-with-javascript/). It turns out that making API requests in JavaScript is actually quite simple.
