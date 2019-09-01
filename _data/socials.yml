@@ -1,20 +1,11 @@
 - name: LinkedIn
-  type: fab
-  icon: linkedin
   url: https://www.linkedin.com/in/aleksandr-hovhannisyan-ba154b120/
 
 - name: GitHub
-  type: fab
-  icon: github
   url: https://www.upwork.com/freelancers/~014eb3a95d4d1fd855
 
 - name: Upwork
-  type: fas
-  icon: address-book
   url: https://stackexchange.com/users/6935154/aleksandrh
 
 - name: Stack Exchange
-  type: fab
-  icon: stack-exchange
   url: https://stackexchange.com/users/6935154/aleksandrh
-

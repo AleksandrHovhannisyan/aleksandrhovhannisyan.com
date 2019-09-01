@@ -28,10 +28,8 @@ order: 4
         {% for network in site.data.socials %}
         <div class="social-network">
             <a class="container-link" href="{{ network.url }}" target="_blank"></a>
-            <span class="fa-stack fa-2x">
-                <i class="fas fa-square fa-stack-2x"></i>
-                <i class="{{ network.type }} fa-{{ network.icon }} fa-stack-1x fa-inverse"></i>
-            </span>
+            {% assign icon = network.name | replace: " ", "-" | downcase %}
+            {% include svg.html svg=icon class=icon %}
             <span class="network-name">{{ network.name }}</span>
         </div>
         {% endfor %}

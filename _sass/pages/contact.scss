@@ -81,8 +81,8 @@ input.honeypot {
 #social-networks {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    grid-template-rows: min-content;
-    grid-auto-rows: min-content;
+    grid-template-rows: 45px;
+    grid-auto-rows: 45px;
     row-gap: 50px;
     column-gap: 30px;
     margin-bottom: 50px;
@@ -92,20 +92,34 @@ input.honeypot {
         grid-column: 1 / -1;
     }
 
-    .fa-linkedin {
-        color: #0077B5;
+    svg {
+        width: 35px;
+        align-self: center;
+        justify-self: center;
+    }
+
+    .linkedin {
+        fill: #0077B5;
+        /* Nice little hack for getting a perfect fill */
+        border-radius: 5px;
+        background: white;
     }
     
-    .fa-github {
-        color: black;
+    .github {
+        @include transition;
+
+        fill: black;
+        .night & {
+            fill: white;
+        }
     }
     
-    .fa-stack-exchange {
-        color: #195398;
+    .stack-exchange {
+        fill: #195398;
     }
     
-    .fa-address-book {
-        color: #6fda44;
+    .upwork {
+        fill: #6fda44;
     }
 }
 
@@ -125,29 +139,5 @@ input.honeypot {
         grid-column: 2;
         align-self: center;
         @include transition;
-    }
-
-    .fa-stack {
-        display: flex;
-
-        i {
-            align-self: center;
-            justify-self: center;
-        }
-    }
-
-    /* Whatever icon is being used as the background one; we'll keep it invisible in
-    the light theme but transition its opacity in dark mode. */
-    .fa-stack-2x {
-        opacity: 0;
-        font-size: 1.5em;
-        color: white;
-
-        /* The background icon will appear when we transition to the
-        dark theme; that way, the social icons will get a nice white fill in any
-        see-through parts (like the LinkedIn logo's "ln" text) and a thick border effect. */
-        .night & {
-            opacity: 1;
-        }
     }
 }
