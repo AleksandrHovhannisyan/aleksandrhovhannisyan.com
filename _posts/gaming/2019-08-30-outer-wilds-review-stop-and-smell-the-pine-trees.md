@@ -34,7 +34,7 @@ Outer Wilds is about much more than just exploring space—it's about tracing th
 
 The key gameplay element in Outer Wilds is **acquiring knowledge**. In similar space exploration games like No Man's Sky, you're charting an infinite universe, blasting space cops to bits, mining planets for their resources, and building bases. In Outer Wilds, there are no guns. No weapons. There's no combat, actually. You're also not building any structures or collecting physical resources. Instead, you're using the few tools at your disposal to learn as much as you can in the limited time that you're given in each expedition.
 
-Any knowledge you acquire is cumulative and is recorded in your ship log. At first, it isn't really clear where you're supposed to go and what exactly you're searching for. You're a detective, tying together seemingly unrelated strings of information and following up on leads. Eventually, the puzzles begin to fall into place.
+Any knowledge you acquire is cumulative and is recorded in your ship log. At first, it isn't really clear where you're supposed to go and what exactly you're searching for. You're a detective, tying together seemingly unrelated strings of information and following up on leads. Eventually, the pieces begin to fall into place.
 
 {% include posts/picture.html img="ship-log" alt="The ship log charts all of your discovers and how they're related." %}
 
