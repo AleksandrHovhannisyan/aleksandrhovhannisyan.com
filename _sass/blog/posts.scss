@@ -102,11 +102,6 @@
         max-width: 100%;
     }
 
-    iframe {
-        height: 315px;
-        width: 100%;
-    }
-
     ol li::marker {
         @include transition;
         font-weight: bold;

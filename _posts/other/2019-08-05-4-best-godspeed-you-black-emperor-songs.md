@@ -24,7 +24,7 @@ The final chapter of the song—beginning at around the 23-minute mark—is true
 
 ## 2. Rockets Fall on Rocket Falls
 
-<iframe src="https://www.youtube.com/embed/tV83U4CDAx4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/tV83U4CDAx4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Let's just say that when rockets fall on Rocket Falls, you won't want to be there to see it all go down.
 
