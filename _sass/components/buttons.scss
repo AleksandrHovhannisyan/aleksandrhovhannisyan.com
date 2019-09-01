@@ -1,8 +1,6 @@
 @import 'mixins';
 @import 'fonts';
 
-@include comment-banner("Rules for buttons and collapsibles, which share common styles.");
-
 
 /* Note: this is an anchor with a class of button */
 .button {

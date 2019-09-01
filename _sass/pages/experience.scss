@@ -4,8 +4,6 @@
 @import 'card';
 
 
-@include comment-banner("Project card grid.");
-
 #card-grid {
     @include card-grid;
 }
@@ -112,8 +110,6 @@
     }
 }
 
-@include comment-banner("Skills section.");
-
 #skills {
     #skill-grid {
         display: grid;
@@ -171,8 +167,6 @@
         }
     }
 }
-
-@include comment-banner("Education section.");
 
 .institution {
     margin-top: 40px;

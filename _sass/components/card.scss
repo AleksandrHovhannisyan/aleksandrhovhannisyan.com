@@ -1,7 +1,5 @@
 @import 'mixins';
 
-@include comment-banner("Cards that look like material panels.");
-
 .card {
     --card-padding: 30px;
     padding: var(--card-padding);

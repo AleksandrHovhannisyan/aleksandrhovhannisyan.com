@@ -18,15 +18,6 @@
     align-items: center;
 }
 
-@mixin comment-banner($message) {
-/* ==================================================
-
-   #{$message}
-
-   ==================================================
-*/
-}
-
 @mixin underlined-link {
     a {
         border-bottom: 2px solid var(--link-color);
