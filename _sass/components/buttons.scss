@@ -43,10 +43,10 @@
         align-self: center;
     }
 
-    i {
+    svg {
         margin-left: 10px;
         margin-right: 20px;
-        font-size: 1em;
+        width: 18px; 
     }
 }
 
@@ -55,7 +55,7 @@
     border: none;
     background-color: var(--button-bg-color);
 
-    * {
+    &, * {
         @include transition;
         color: var(--button-text-color);
         fill: var(--button-text-color);

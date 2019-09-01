@@ -20,7 +20,7 @@ order: 2
             </header>
             <div>
                 <p>Check out my other repos:</p>
-                <a href="https://github.com/AleksandrHovhannisyan?tab=repositories" target="_blank">{% include svg.html ico="github" %}</a>
+                <a href="https://github.com/AleksandrHovhannisyan?tab=repositories" target="_blank">{% include svg.html svg="github" %}</a>
             </div>
         </div>
     </div>
@@ -40,11 +40,11 @@ order: 2
                 <span class="skill-name">{{ item.name }}</span>
                 <div class="skill-rating">
                     {% for i in (1..item.rating) %}
-                    {% include svg.html ico="star" class="star star-filled" %}
+                    {% include svg.html svg="star" class="star star-filled" %}
                     {% endfor %}
                     {% assign j = item.rating | plus: 1 %}
                     {% for i in (j..5) %}
-                    {% include svg.html ico="star" class="star star-empty" %}
+                    {% include svg.html svg="star" class="star star-empty" %}
                     {% endfor %}
                 </div>
             </div>
@@ -66,7 +66,7 @@ order: 2
     {% for institution in site.data.education %}
     <div class="institution collapsible">
         <div class="collapsible-header">
-            <i class="fas fa-angle-down"></i>
+            {% include svg.html svg="angle-down" %}
             <span>
                 <strong>{{ institution.name }}<br></strong>
                 {{ institution.degree }}<br>
