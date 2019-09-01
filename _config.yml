@@ -29,6 +29,7 @@ defaults:
     scope:
       path: "_posts/programming"
     values:
+      needsCodeFont: true
       categories: [Programming]
   -
     scope:
