@@ -22,6 +22,10 @@
         height: 20px;
         vertical-align: middle;
     }
+
+    svg {
+        margin-right: 3px;
+    }
 }
 
 .collapsible {
@@ -44,6 +48,7 @@
     }
 
     svg {
+        @include transition;
         margin-left: 10px;
         margin-right: 20px;
         width: 18px; 

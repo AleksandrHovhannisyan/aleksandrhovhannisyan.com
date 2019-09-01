@@ -45,7 +45,9 @@
         @include transition;
 
         // Whatever icon is being used
-        i {
+        svg {
+            fill: var(--text-color-emphasis);
+            width: 1.2em;
             margin-top: 20px;
         }
     }
