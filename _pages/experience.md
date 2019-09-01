@@ -40,11 +40,11 @@ order: 2
                 <span class="skill-name">{{ item.name }}</span>
                 <div class="skill-rating">
                     {% for i in (1..item.rating) %}
-                    <i class="fas fa-star filled"></i>
+                    {% include svg.html ico="star" class="star star-filled" %}
                     {% endfor %}
                     {% assign j = item.rating | plus: 1 %}
                     {% for i in (j..5) %}
-                    <i class="fas fa-star empty"></i>
+                    {% include svg.html ico="star" class="star star-empty" %}
                     {% endfor %}
                 </div>
             </div>

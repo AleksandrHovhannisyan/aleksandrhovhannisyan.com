@@ -14,8 +14,8 @@ order: 1
         <img src="/assets/img/profile-photo.jpg" alt="My profile photo" id="profile-photo">
     </div>
     <div id="main-buttons">
-        <a class="button" href="https://www.linkedin.com/in/aleksandr-hovhannisyan-ba154b120/" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
-        <a class="button" href="https://github.com/AleksandrHovhannisyan" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a class="button" href="https://www.linkedin.com/in/aleksandr-hovhannisyan-ba154b120/" target="_blank">{% include svg.html ico="linkedin" %} <span>LinkedIn</span></a>
+        <a class="button" href="https://github.com/AleksandrHovhannisyan" target="_blank">{% include svg.html ico="github" %} <span>GitHub</span></a>
     </div>
 </article>
 

@@ -142,20 +142,25 @@
     }
 }
 
-.fa-star {
-    &.filled {
-        color: var(--button-bg-color);
+.star {
+    width: 18px;
+    height: 18px;
+
+    &.star-filled {
+        fill: var(--button-bg-color);
+        @include transition;
 
         .night & {
-            color: $gray;
+            fill: $gray;
         }
     }
 
-    &.empty {
-        color: $silver;
-
+    &.star-empty {
+        fill: $silver;
+        @include transition;
+    
         .night & {
-            color: $coffee-gray;
+            fill: $coffee-gray;
         }
     }
 }

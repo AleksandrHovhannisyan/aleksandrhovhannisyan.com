@@ -19,11 +19,8 @@
     text-decoration: none;
 
     * {
-        @include transition;
-    }
-
-    &:focus {
-        outline: none;
+        height: 20px;
+        vertical-align: middle;
     }
 }
 
@@ -40,9 +37,9 @@
     display: flex;
     flex-direction: row;
     padding: 10px;
+    @include transition;
 
     * {
-        @include transition;
         align-self: center;
     }
 
@@ -50,6 +47,31 @@
         margin-left: 10px;
         margin-right: 20px;
         font-size: 1em;
+    }
+}
+
+.button, .collapsible-header {
+    cursor: pointer;
+    border: none;
+    background-color: var(--button-bg-color);
+
+    * {
+        @include transition;
+        color: var(--button-text-color);
+        fill: var(--button-text-color);
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        background-color: var(--button-bg-hover-color);
+
+        &, * {
+            color: var(--button-text-hover-color);
+            fill: var(--button-text-hover-color);
+        }
     }
 }
 
@@ -64,26 +86,7 @@
     border-top: none;
 }
 
-.button, .collapsible-header {
-    cursor: pointer;
-    border: none;
-    background-color: var(--button-bg-color);
-    @include transition;
-}
-
-.button, .button *, .collapsible-header * {
-    color: var(--button-text-color);
-}
-
-.button:hover, .collapsible-header:hover {
-    background-color: var(--button-bg-hover-color);
-}
-
 /* To get rid of Firefox's dotted lines when these are clicked */
 .button::-moz-focus-inner, .collapsible::-moz-focus-inner {
     outline: none;
-}
-
-.button:hover, .button:hover *, .collapsible-header:hover * {
-    color: var(--button-text-hover-color);
 }
