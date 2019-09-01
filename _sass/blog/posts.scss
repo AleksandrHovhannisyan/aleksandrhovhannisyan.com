@@ -82,14 +82,8 @@
     }
 
     figure {
-        margin: $img-spacing auto;
-
-        img {
-            margin: 0;
-        }
-
         figcaption {
-            margin-top: 5px;
+            margin-bottom: $img-spacing;
             font-size: 14px;
             font-style: italic;
             text-align: center;
