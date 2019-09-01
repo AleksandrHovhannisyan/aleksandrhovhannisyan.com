@@ -8,9 +8,9 @@
 .button {
     width: 100%;
     height: 40px;
-    line-height: 40px;
-    text-align: center;
-    display: block;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 15px;
     margin-right: 15px;
     border-radius: 5px;
@@ -20,11 +20,10 @@
 
     * {
         height: 20px;
-        vertical-align: middle;
     }
 
     svg {
-        margin-right: 3px;
+        margin-right: 5px;
     }
 }
 
