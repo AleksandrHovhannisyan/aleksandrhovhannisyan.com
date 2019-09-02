@@ -59,13 +59,12 @@
     
         .topic {
             font-size: 0.9em;
-            padding: 5px;
-            margin-top: 10px;
+            padding: 6px;
+            margin-top: 8px;
             margin-bottom: 0px;
-            margin-right: 10px;
+            margin-right: 8px;
             border-radius: 2px;
             background-color: var(--label-bg-color);
-            box-shadow: 0 0 2px black;
             @include transition;
         }
     }
