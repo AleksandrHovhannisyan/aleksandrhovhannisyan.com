@@ -16,6 +16,7 @@
 body {
     position: relative;
     font-family: $font-family-primary, $font-family-backup;
+    font-size: 16px;
     color: var(--text-color-normal);
     background-color: var(--bg-color-main);
     @include transition(background-color);
@@ -83,12 +84,7 @@ ul, ol {
 
 h1 {
     font-size: 2.2em;
-    margin-block-start: 0.67em;
     margin-block-end: 0.67em;
-
-    &, h2 {
-        margin-top: 0;
-    }
 }
 
 a {

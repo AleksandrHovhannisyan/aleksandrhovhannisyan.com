@@ -1,5 +1,6 @@
 @import 'mixins';
 @import 'fonts';
+@import 'colors';
 @import 'settings';
 
 #contact {
@@ -94,7 +95,7 @@ input.honeypot {
     }
 
     .linkedin {
-        fill: #0077B5;
+        fill: $brand-linkedin;
         /* Nice little hack for getting a perfect fill */
         border-radius: 5px;
         background: white;
@@ -102,19 +103,19 @@ input.honeypot {
     
     .github {
         @include transition;
+        fill: $brand-github;
 
-        fill: black;
         .night & {
-            fill: white;
+            fill: $brand-github-alt;
         }
     }
     
     .stack-exchange {
-        fill: #195398;
+        fill: $brand-stack-exchange;
     }
     
     .upwork {
-        fill: #6fda44;
+        fill: $brand-upwork;
     }
 }
 

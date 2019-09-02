@@ -114,11 +114,12 @@ function headerFor(repo) {
     icon.classList.add('project-icon');
     icon.textContent = get(repo).icon + ' ';
     
-    const h4 = document.createElement('h4');
-    h4.appendChild(icon);
-    h4.appendChild(nameLabelFor(repo));
+    const projectName = document.createElement('span');
+    projectName.classList.add('project-name');
+    projectName.appendChild(icon);
+    projectName.appendChild(nameLabelFor(repo));
     
-    header.appendChild(h4);
+    header.appendChild(projectName);
     header.appendChild(stargazerLabelFor(repo));
     return header;
 }
@@ -130,7 +131,6 @@ function headerFor(repo) {
  */
 function nameLabelFor(repo) {
     const projectName = document.createElement('span');
-    projectName.classList.add('project-name');
     projectName.textContent = get(repo).customName;
     return projectName;
 }

@@ -8,24 +8,19 @@
     @include card-grid;
 }
 
-#projects h2 {
-   @include transition;
-}
-
 .project {
     /* Header, description, footer, respectively */
     grid-template-rows: max-content 1fr max-content;
 
     .project-name {
-        color: var(--link-color);
-        text-decoration: none;
-        @include transition;
-    }
-
-    h4 {
+        font-weight: bold;
         align-self: center;
         grid-area: heading;
-        @include transition;
+
+        * {
+            color: var(--link-color);
+            @include transition;
+        }
     }
 
     .project-icon * {
@@ -75,13 +70,13 @@
             @include transition;
         }
     }
-}
 
-/* All project cards except the placeholder get a background and box shadow */
-.project:not(#project-placeholder) {
-    header {
-        display: grid;
-        grid-template-areas: "heading heading rating";
+    /* All project cards except the placeholder get a background and box shadow */
+    &:not(#project-placeholder) {
+        header {
+            display: grid;
+            grid-template-areas: "heading heading rating";
+        }
     }
 }
 
@@ -90,10 +85,6 @@
     flex-direction: column;
     text-align: center;
     justify-content: center;
-
-    p {
-        @include transition;
-    }
 
     a {
         display: inline-block;
@@ -104,8 +95,12 @@
         height: 50px;
 
         svg {
-            fill: var(--text-color-emphasis);
+            fill: $brand-github;
             @include transition;
+
+            .night & {
+                fill: $brand-github-alt;
+            }
         }
     }
 }
@@ -118,7 +113,8 @@
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     }
 
-    .skill-category h4 {
+    .skill-category {
+        font-size: 1em;
         margin-bottom: 20px;
     }
 

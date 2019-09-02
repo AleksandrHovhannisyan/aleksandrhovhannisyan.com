@@ -16,7 +16,7 @@ order: 2
         <!-- Projects get populated here dynamically (see index.js) -->
         <div id="project-placeholder" class="project">
             <header>
-                <h4>Want to see more of my work?</h4>
+                <p><strong>Want to see more of my work?</strong></p>
             </header>
             <div>
                 <p>Check out my other repos:</p>
@@ -33,8 +33,8 @@ order: 2
     </h2>
     <div id="skill-grid">
         {% for skill in site.data.skills %}
-        <div class="skill-category">
-            <h4>{{ skill.category }}</h4>
+        <div>
+            <h3 class="skill-category">{{ skill.category }}</h3>
             {% for item in skill.items %}
             <div class="skill-item">
                 <span class="skill-name">{{ item.name }}</span>

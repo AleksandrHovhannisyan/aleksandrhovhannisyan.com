@@ -5,7 +5,7 @@ order: 1
 ---
 
 <article id="intro" class="container">
-    <div id="lede">
+    <div id="hero-banner">
         <div id="main-cta">
             <h1>Hey there! I'm Aleksandr</h1>
             <p>I love tinkering with code and solving problems.</p>
