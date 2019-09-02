@@ -24,7 +24,7 @@ order: 4
         </form>
     </div>
     <div id="social-networks">
-        <h3>You can also find me on these networks:</h3>
+        <h3>You can also find me on:</h3>
         {% for network in site.data.socials %}
         <div class="social-network">
             <a class="container-link" href="{{ network.url }}" target="_blank"></a>
