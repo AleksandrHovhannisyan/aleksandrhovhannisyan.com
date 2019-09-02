@@ -135,6 +135,10 @@
             grid-column: 2;
             display: inline;
             text-align: right;
+
+            .star {
+                vertical-align: middle;
+            }
         }
     }
 }
