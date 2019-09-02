@@ -6,7 +6,7 @@
         </div>
         {% include svg.html svg="hamburger" class="navbar-hamburger" %}
         <ul class="nav-links">
-            {% assign pages = site.html_pages | sort: "order" %}
+            {% assign pages = site.html_pages | where: "showOnNavbar","true" | sort: "order" %}
             {% for p in pages %}
                 {% if page.title == p.title %}
                 <li><a class="active-nav-link" href="{{ p.url }}">{{ p.title }}</a></li>    
