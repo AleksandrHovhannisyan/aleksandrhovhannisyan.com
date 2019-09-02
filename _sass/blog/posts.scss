@@ -29,11 +29,13 @@
     }
 }
 
-.category {
+.post-category {
     margin-top: $card-spacing;
 
-    .category-name {
-        @include underlined-link;
+    .post-category-name a {
+        &:hover {
+            background-color: var(--link-bg-hover-color);
+        }
     }
 }
 
