@@ -3,7 +3,11 @@
 
 
 #intro {
-    #lede {
+    * {
+        @include transition;
+    }
+
+    #hero-banner {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -11,7 +15,6 @@
     
         #main-cta {
             flex: 1 0 0;
-            margin-bottom: 20px;
 
             p {
                 font-size: 1.1em;
@@ -19,10 +22,10 @@
         }
 
         #profile-photo {
-            flex: 1 2 0;
+            flex: 1 1 0;
             display: flex;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: $paragraph-spacing;
 
             img {
                 height: 150px;
@@ -32,26 +35,28 @@
             }
         }
     }
+
+    #cta-buttons {
+        margin-bottom: $paragraph-spacing;
+    
+        .button {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 15px;
+            margin-right: 15px;
+
+            svg {
+                margin-right: 10px;
+            }
+        }
+    }
 }
 
 article#about-me {
     margin-top: 80px;
 }
 
-#intro *, #about-me p {
-    @include transition;
-}
-
-#cta-buttons {
-    margin-bottom: 30px;
-
-    svg {
-        margin-right: 10px;
-    }
-}
-
-@media only screen and (min-width: 400px) {
-    
+@media only screen and (min-width: 400px) {    
     #cta-buttons {
         display: flex;
 
