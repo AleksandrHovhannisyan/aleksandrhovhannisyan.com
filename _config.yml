@@ -17,7 +17,14 @@ defaults:
       path: "_pages"
       type: "pages"
     values:
+      showOnNavbar: true
       layout: "default"
+  -
+    scope:
+      path: "_pages/categories"
+      type: "pages"
+    values:
+      showOnNavbar: false
   -
     scope:
       path: "_posts"
