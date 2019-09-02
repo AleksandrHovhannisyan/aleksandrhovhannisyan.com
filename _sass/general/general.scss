@@ -45,7 +45,7 @@ body {
         margin-left: auto;
         margin-right: auto;
         width: 50%;
-        box-shadow: 0px 2px 5px 0px var(--text-color-normal);
+        box-shadow: 0 2px 3px 0 $beige;
     }
 }
 
@@ -125,7 +125,7 @@ article {
 hr {
     margin-top: 8px;
     margin-bottom: 8px;
-    border: 1.2px solid var(--text-color-normal);
+    border: 1.2px solid $coffee-milky;
     @include transition;
 }
 
