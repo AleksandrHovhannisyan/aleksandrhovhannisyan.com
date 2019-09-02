@@ -171,10 +171,11 @@
         /* Mobile first: only one column. Changes to two columns on bigger screens. See media query below. */
         grid-template-columns: 1fr;
 
-        h4 {
+        h3 {
             margin-top: 21px;
             margin-bottom: 21px;
             margin-left: 10px;
+            font-size: 1em;
             font-weight: normal;
         }
 
