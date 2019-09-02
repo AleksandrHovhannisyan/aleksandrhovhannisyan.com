@@ -6,14 +6,16 @@ order: 1
 
 <article id="intro" class="container">
     <div id="lede">
-        <div>
+        <div id="main-cta">
             <h1>Hey there! I'm Aleksandr</h1>
-            <p id="main-cta">I love tinkering with code and solving problems.</p>
+            <p>I love tinkering with code and solving problems.</p>
             <p>Looking for a software developer? <strong>Let's get in touch!</strong></p>
         </div>
-        <img src="/assets/img/profile-photo.jpg" alt="My profile photo" id="profile-photo">
+        <div id="profile-photo">
+            <img src="/assets/img/profile-photo.jpg" alt="My profile photo" />
+        </div>
     </div>
-    <div id="main-buttons">
+    <div id="cta-buttons">
         <a class="button" href="https://www.linkedin.com/in/aleksandr-hovhannisyan-ba154b120/" target="_blank">{% include svg.html svg="linkedin" %} <span>LinkedIn</span></a>
         <a class="button" href="https://github.com/AleksandrHovhannisyan" target="_blank">{% include svg.html svg="github" %} <span>GitHub</span></a>
     </div>

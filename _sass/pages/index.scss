@@ -2,23 +2,36 @@
 @import 'settings';
 
 
-#lede {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+#intro {
+    #lede {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    
+        #main-cta {
+            flex: 1 0 0;
+            margin-bottom: 20px;
 
-    p {
-        font-size: 1.1em;
+            p {
+                font-size: 1.1em;
+            }
+        }
+
+        #profile-photo {
+            flex: 1 2 0;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+
+            img {
+                height: 150px;
+                width: 150px;
+                border-radius: 50%;
+                box-shadow: 0px 0px 12px 2px var(--bg-color-contrast);
+            }
+        }
     }
-}
-
-#profile-photo {
-    height: 150px;
-    width: 150px;
-    border-radius: 50%;
-    box-shadow: 0px 0px 12px 2px var(--bg-color-contrast);
-    margin-left: auto;
-    margin-right: auto;
 }
 
 article#about-me {
@@ -29,18 +42,21 @@ article#about-me {
     @include transition;
 }
 
-#main-buttons {
-    margin-top: 15px;
+#cta-buttons {
     margin-bottom: 30px;
+
+    svg {
+        margin-right: 10px;
+    }
 }
 
-@media only screen and (min-width: 612px) {
+@media only screen and (min-width: 400px) {
     
-    #main-buttons {
+    #cta-buttons {
         display: flex;
-    }
 
-    #main-buttons .button {
-        max-width: 200px; 
+        .button {
+            max-width: 200px;
+        }
     }
 }
