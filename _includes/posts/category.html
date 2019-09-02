@@ -1,6 +1,6 @@
 {% assign slug = include.name | slugify %}
-<article class="category" id="{{ slug }}">
-    <h2 class="category-name"><a href="{{ site.url }}/blog/{{ slug }}">{{ include.name }}</a></h2>
+<article class="post-category" id="{{ slug }}">
+    <h2 class="post-category-name"><a href="{{ site.url }}/blog/{{ slug }}">{{ include.name }}</a></h2>
     <div class="post-previews">
     {% for post in site.categories[include.name] %}
         <div class="card post-preview">
