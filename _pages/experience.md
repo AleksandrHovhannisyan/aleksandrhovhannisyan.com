@@ -75,7 +75,7 @@ order: 2
         </div>
         <div class="collapsible-content">
             <div class="courses">
-                <h4><em>Notable Coursework</em></h4>
+                <h3><em>Notable Coursework</em></h3>
                 <ul>
                     {% for course in institution.courses %}
                     <li>{{ course }}</li>
@@ -83,7 +83,7 @@ order: 2
                 </ul>
             </div>
             <div class="awards">
-                <h4><em>Awards and Recognitions</em></h4>
+                <h3><em>Awards and Recognitions</em></h3>
                 <ul>
                     {% for award in institution.awards %}
                     <li>{{ award }}</li>
