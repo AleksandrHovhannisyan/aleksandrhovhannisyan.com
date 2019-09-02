@@ -98,8 +98,7 @@ a {
 }
 
 p {
-    margin-top: 17px;
-    margin-bottom: 17px;
+    margin-bottom: $paragraph-spacing;
     color: var(--text-color-normal);
     @include transition;
 

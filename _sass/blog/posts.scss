@@ -1,6 +1,7 @@
 @import 'card';
 @import 'colors';
 @import 'mixins';
+@import 'settings';
 
 .post-title {
     margin-bottom: 20px;
@@ -101,6 +102,12 @@
         max-width: 100%;
     }
 
+    figure, picture, iframe, .pro-con-table {
+        & + p {
+            margin-top: $paragraph-spacing;
+        }
+    }
+
     ol li::marker {
         @include transition;
         font-weight: bold;
@@ -125,19 +132,23 @@
     }
 
     blockquote {
-        p, p * {
-            color: var(--blockquote-text-color);
-
-            em {
-                @include transition;
-            }
-        }
-
         background: var(--blockquote-bg-color);
         margin: 25px auto;
         padding: 1px 16px 1px 20px;
         border-left: 4px solid var(--blockquote-text-color);
         @include transition;
+        
+        p {
+            margin-top: $paragraph-spacing;
+
+            &, * {
+                color: var(--blockquote-text-color);
+
+                em {
+                    @include transition;
+                }
+            }
+        }
     }
 
     code {
