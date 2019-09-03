@@ -1,11 +1,15 @@
 - name: LinkedIn
+  icon: linkedin-square
   url: https://www.linkedin.com/in/aleksandr-hovhannisyan-ba154b120/
 
 - name: GitHub
+  icon: github
   url: https://github.com/AleksandrHovhannisyan
 
 - name: Upwork
+  icon: upwork
   url: https://www.upwork.com/freelancers/~014eb3a95d4d1fd855
 
 - name: Stack Exchange
+  icon: stack-exchange
   url: https://stackexchange.com/users/6935154/aleksandrh

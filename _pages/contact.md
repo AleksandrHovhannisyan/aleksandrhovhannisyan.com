@@ -29,7 +29,7 @@ order: 4
             {% for network in site.data.socials %}
             <div class="social-network">
                 <a class="container-link" href="{{ network.url }}" target="_blank"></a>
-                {% assign icon = network.name | replace: " ", "-" | downcase %}
+                {% assign icon = network.icon %}
                 {% include svg.html svg=icon class=icon %}
                 <span class="network-name">{{ network.name }}</span>
             </div>
