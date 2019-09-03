@@ -48,6 +48,11 @@
         label {
             margin-bottom: 5px;
             display: block;
+
+            &.required::after {
+                content: " *";
+                color: rgb(146, 51, 51);
+            }
         }
     
         input:focus, textarea:focus {

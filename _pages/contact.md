@@ -14,11 +14,11 @@ order: 4
             <p>Thanks for taking the time to reach out&mdash;I'll get back to you ASAP.</p>
             <form action="https://formspree.io/hire.aleksandr@gmail.com" method="POST">
                 <input type="hidden" name="_subject" value="Thanks for getting in touch!" />
-                <label for="name"><strong>Name:</strong></label>
+                <label class="required" for="name"><strong>Name:</strong></label>
                 <input type="text" name="name" id="name" required>
                 <label for="email"><strong>Email:</strong></label>
-                <input type="email" name="_replyto" id="email" required/>
-                <label for="message"><strong>Message:</strong></label>
+                <input type="email" name="_replyto" id="email"/>
+                <label class="required" for="message"><strong>Message:</strong></label>
                 <textarea name="body" id="message" required></textarea>
                 <input type="submit" value="Send message" class="button">
                 <input type="text" name="_gotcha" class="honeypot" />
