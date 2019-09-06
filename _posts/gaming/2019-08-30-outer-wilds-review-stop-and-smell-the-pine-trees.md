@@ -169,7 +169,7 @@ The first planet you always see when you wake up, Giant's Deep houses secrets th
 
 So, that's great and all—Outer Wilds is a top-notch game with lots to see and do.
 
-But what's up with that ending?
+But what's up with that ending? (The most accessible one, at least—it's one of many you can unlock.)
 
 {% include posts/picture.html img="supernova" alt="Your solar system's sun collapses under its own gravity in a violent supernova." %}
 
