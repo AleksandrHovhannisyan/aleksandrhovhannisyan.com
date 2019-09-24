@@ -118,7 +118,7 @@ I spent over 50 hours playing Hollow Knight to its end, and words can't express 
 
 <figure>
 {% include posts/picture.html img="for-honor" alt="Cover art of For Honor." %}
-<figcaption>Partial cover art of For Honor. Copyright Ubisoft.</figcaption>
+<figcaption>Season 1 heroes of For Honor. Image copyright of Ubisoft.</figcaption>
 </figure>
 
 I'm a big fan of medieval combat, so it should come as no surprise that this one's on the list.
@@ -133,13 +133,19 @@ With all that said, I really do have a love-hate relationship with For Honor. Th
 
 ## 6. Battles of the Prince of Persia (NDS)
 
-> *"Sindra has ensured that peace will return to this land... But will there be peace for me? I cannot rest with this beast forever at my back. I must travel on to distant places, desperate and alone. A prince without a land to call his own..."* — The Prince
-
-This one's a rather underrated Nintendo DS game that I played when I was young. I received it as a gift during a time in my childhood when I was obsessed with anything involving medieval combat and themes.
-
 {% include posts/picture.html img="prince" alt="Opening lines from the Prince's narrative before the first mission." %}
 
-Battles of the Prince of Persia is a unique top-down strategy game by Ubisoft. You control various armies—Persian, Indian, and Daevan—as the Prince's story unfolds. Gameplay involves the player and NPC taking turns by playing cards from their decks. These cards, of which you can collect more throughout the game, dictate how many moves you can make during your turn; some of them allow you to execute an onslaught attack or fortify your defenses.
+Speaking of medieval games, I was absolutely obsessed with those themes as a little kid. My favorite movie growing up? Troy. I also played games like Stick War and Achilles on my mom's computer whenever I had the chance.
+
+This one's a rather underrated Nintendo DS game that I received as a birthday present after convincing my mother that I was mature enough to play E10+ games. I was overjoyed when she agreed to get it for me.
+
+Battles of the Prince of Persia is a top-down, turn-based strategy game developed by Ubisoft. You control various armies—Persian, Indian, and Daevan—as the Prince's story unfolds through 24 chapters. Each of these chapters is like a mission, with certain pre-determined objectives that you need to complete in order to defeat the enemy NPC army.
+
+{% include posts/picture.html img="prince-combat" alt="The top and bottom screens of the Battles of the Prince of Persia." %}
+
+Each turn, you play a single card from your hand, which refills from your deck of cards at the start of every in-game "hour." These cards, of which you can collect more by progressing through the story, dictate how many moves you can make during your turn; some of them allow you to execute an onslaught attack or fortify your defenses. They vary in their rarity and the number of units they allow you to move.
+
+{% include posts/picture.html img="prince-card" alt="Zeal, one of the many cards that you can play in Battles of the Prince of Persia." %}
 
 It's an old game that doesn't have the best graphics in the world by a longshot, is somewhat buggy, and requires a lot of patience to get through the sometimes tedious gameplay. Despite all those flaws, it ranks among my favorites because:
 
@@ -147,7 +153,11 @@ It's an old game that doesn't have the best graphics in the world by a longshot,
 
 2. The game actually has pretty decent music, especially considering it was developed for such old hardware.
 
-3. Its gameplay rewards patience and strategy. It's sort of like chess, really, but requiring less skill.
+3. Its gameplay rewards patience and strategy. It's sort of like chess, but requiring less skill.
+
+Besides, I wasn't really bothered by its limitations when I was a kid—it fed my childhood fantasies of medieval heroism and war. All in all, it's a pretty neat game.
+
+> Fun fact: My mom once bought me a construction set—metal pieces, tools, and all—for building a remote-controlled toy truck. Unsurprisingly, I grew tired of the truck and repurposed the metal pieces into a tiny sword and makeshift shield. Many of those engineering feats were inspired by this game!
 
 ## 7. Dragon's Dogma: Dark Arisen
 
