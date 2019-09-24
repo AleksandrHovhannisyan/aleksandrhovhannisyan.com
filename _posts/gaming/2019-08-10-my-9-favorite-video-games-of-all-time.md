@@ -135,9 +135,7 @@ With all that said, I really do have a love-hate relationship with For Honor. Th
 
 {% include posts/picture.html img="prince" alt="Opening lines from the Prince's narrative before the first mission." %}
 
-Speaking of medieval games, I was absolutely obsessed with those themes as a little kid. My favorite movie growing up? Troy. I also played games like Stick War and Achilles on my mom's computer whenever I had the chance.
-
-This one's a rather underrated Nintendo DS game that I received as a birthday present after convincing my mother that I was mature enough to play E10+ games. I was overjoyed when she agreed to get it for me.
+Speaking of medieval games, I was absolutely obsessed with them as a little kid. I received this one as a birthday present after convincing my mom that I was mature enough to play E10+ games.
 
 Battles of the Prince of Persia is a top-down, turn-based strategy game developed by Ubisoft. You control various armies—Persian, Indian, and Daevan—as the Prince's story unfolds through 24 chapters. Each of these chapters is like a mission, with certain pre-determined objectives that you need to complete in order to defeat the enemy NPC army.
 
