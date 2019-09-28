@@ -6,11 +6,11 @@
       rating: 5
     - name: Java
       rating: 4
-    - name: SQL
+    - name: SQL (Oracle, postgres)
       rating: 4
-    - name: R
-      rating: 4
-    - name: C#
+    - name: Kotlin
+      rating: 3
+    - name: C# (Unity)
       rating: 3
 
 - category: Frontend Development
@@ -58,7 +58,7 @@
     - name: macOS (Mojave)
       rating: 4
 
-- category: Go-to IDEs
+- category: IDEs and Editors
   items:
     - name: VS Code
       rating: 5
