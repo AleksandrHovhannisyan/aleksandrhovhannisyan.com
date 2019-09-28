@@ -19,12 +19,12 @@
       rating: 5
     - name: CSS, CSS Modules
       rating: 5
+    - name: Ant Design (antd)
+      rating: 5
     - name: SASS, LESS
       rating: 4
-    - name: JavaScript (ES6)
+    - name: TypeScript (ES6)
       rating: 4
-    - name: TypeScript
-      rating: 3
     - name: React (+ Redux)
       rating: 3
 
