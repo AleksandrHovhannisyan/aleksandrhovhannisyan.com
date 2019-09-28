@@ -59,7 +59,7 @@ But the archetype is even better now. About a year ago, the fusion spellcaster *
 This came along with two more support cards, **Gravekeeper's Spiritualist** and **Gravekeeper's Headman**:
 
 <figure>
-    {% include posts/picture.html img="gravekeepers-support" alt="New Gravekeeper's support cards." %}
+    {% include posts/picture.html img="gravekeepers-support" extension="png" alt="New Gravekeeper's support cards." %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
