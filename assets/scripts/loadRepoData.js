@@ -112,7 +112,7 @@ function headerFor(repo) {
 
     const icon = document.createElement('span');
     icon.classList.add('project-icon');
-    icon.textContent = get(repo).icon + ' ';
+    icon.textContent = get(repo).icon;
     
     const projectName = document.createElement('span');
     projectName.classList.add('project-name');
