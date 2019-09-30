@@ -15,18 +15,18 @@
         font-weight: bold;
         align-self: center;
         grid-area: heading;
-
-        * {
-            color: var(--link-color);
-            @include transition;
-        }
+        color: var(--link-color);
+        @include transition;
     }
 
-    .project-icon * {
-        width: 24px;
-        margin-right: 3px;
+    .project-icon {
         display: inline-block;
-        vertical-align: middle;
+        margin-right: 5px;
+
+        * {
+            width: 24px;
+            vertical-align: middle;
+        }
     }
     
     .project-rating {
@@ -41,7 +41,7 @@
         .star {
             width: 16px;
             height: 16px;
-            margin-right: 2px;
+            margin-right: 3px;
             fill: $denim;
         }
     }
