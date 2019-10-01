@@ -121,6 +121,7 @@
         display: grid;
         column-gap: 10px;
         grid-template-columns: 1fr 1fr;
+        @include transition(background-color);
 
         &:hover {
             background-color: var(--hover-color-general);

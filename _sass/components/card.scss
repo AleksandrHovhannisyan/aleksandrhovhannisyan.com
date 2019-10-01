@@ -16,7 +16,7 @@
     border-radius: 5px;
     transition: background-color $transition-duration, 
                 box-shadow $transition-duration, 
-                transform 0.35s;
+                transform $transition-duration;
 
     &:hover {
         transform: translate(0, -5px);

@@ -130,6 +130,7 @@ input.honeypot {
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    @include transition(background-color);
 
     &:hover {
         cursor: pointer;
