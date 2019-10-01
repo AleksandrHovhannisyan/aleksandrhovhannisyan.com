@@ -28,7 +28,7 @@ The final chapter of the song—beginning at around the 23-minute mark—is true
 
 Let's just say that when rockets fall on Rocket Falls, you won't want to be there to see it all go down.
 
-Whoever made this video was able to perfectly capture the feeling that this song evokes: that of sitting at the edge of the world and witnessing an awe-inspiring catastrophe much greater than you or me or anything else on this planet: the detonation of a hydrogen bomb. It literally blows you away.
+Whoever made this video was able to perfectly capture the feeling that this song evokes—that of sitting at the edge of the world and witnessing an awe-inspiring catastrophe much greater than you or me or anything else on this planet: the detonation of a hydrogen bomb. It literally blows you away.
 
 When I close my eyes, I picture this song as the last explosive breaths of a dying universe, or a post-war composition echoing throughout the ruined streets of civilization. GY!BE manages to convey feelings of desolation and destruction without uttering a single syllable.
 
@@ -36,9 +36,9 @@ When I close my eyes, I picture this song as the last explosive breaths of a dyi
 
 <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=1158321089/size=large/bgcol=333333/linkcol=e99708/tracklist=false/artwork=small/track=1667278398/transparent=true/" seamless><a href="http://godspeedyoublackemperor.bandcamp.com/album/allelujah-dont-bend-ascend">ALLELUJAH! DON&#39;T BEND! ASCEND! by Godspeed You! Black Emperor</a></iframe>
 
-There's one word to describe this entire song: Unstable. You feel happy, then sad. Happy, sad. Then you catch a fleeting glimmer of hope at the 8- and 9-minute marks. And then it's back to sadness, despair, and more of that GY!BE dissonance you simply can't get enough of. The emotions drift like worried fire, a lonely little flame dancing in the wind.
+There's one word to describe this entire song: Unpredictable. The beginning carries you along with rhythmic, dreamy notes and those distinct Arabic riffs that it shares with the rest of the album; the latter part of the song descends into beautiful, orderly chaos. The emotions drift like worried fire, a lonely little flame dancing in the wind.
 
-The song in general is great, but there's absolutely nothing that compares to the masterful crescendo that begins at 12:00. It paints a very vivid image of a country frantically mobilizing for war and descending into chaos. I like to think that's what the album art represents—what little remains of the aftermath, at least.
+It turns into a raging inferno that begins at 12:00 and reaches its peak at 14:58—possibly my favorite crescendo of any song. In my mind, it paints a very vivid image of a country frantically mobilizing for war, caught in the middle of a modern Ragnarok. I like to think that's what the album cover represents—what little remains of the aftermath, at least.
 
 ## 4. Storm
 
