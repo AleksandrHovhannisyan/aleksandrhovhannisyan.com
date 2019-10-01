@@ -76,7 +76,7 @@
 
     --collapsible-content-border-width: 3px;
     border: solid var(--collapsible-content-border-width) var(--button-bg-color);
-    @include transition;
+    @include transition(all, 0.5s);
     border-top: none;
 }
 
