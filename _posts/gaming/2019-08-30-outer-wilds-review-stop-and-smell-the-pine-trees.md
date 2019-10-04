@@ -5,16 +5,16 @@ keywords: [outer wilds game, outer wilds review, outer wilds ending meaning, out
 ---
 
 <blockquote style="margin-bottom: 50px;">
-<p><strong>Warning</strong>: Some spoilers ahead. If you haven't played Outer Wilds yet, you can <a href="{{ site.url }}/blog">head back to safety</a>.</p>
+<p><strong>Warning</strong>: Spoilers ahead. If you haven't played Outer Wilds yet, you can <a href="{{ site.url }}/blog">head back to safety</a>.</p>
 </blockquote>
 
 What originally began as a thesis project [more than six years ago](https://www.youtube.com/watch?v=vRQU1o8SrAI) between two university students—Alex Beachum and Loan Verneau—is one of the best games released so far in 2019. And it's certainly come a long way, with much of the art, audio, and gameplay receiving polishes that have allowed it to shine.
 
-Produced by a team of talented creatives, Outer Wilds is a space exploration game that thrusts you into a hand-crafted solar system packed full of mystery and intrigue, where you're ultimately driven by a single goal: to sate your curiosity and brave the unknown.
+Produced by the talented creatives at Mobius Digital, Outer Wilds is an indie space exploration game that thrusts you into a hand-crafted solar system full of intrigue and wonder. Your mission? To sate your curiosity as you brave the unknown of outer space.
 
 {% include posts/picture.html img="outer-wilds" alt="An in-game photo showing the founders of the Outer Wilds space exploration program." %}
 
-A long time ago, your solar system was visited by an ancient civilization known as the Nomai, who left behind much of their work and findings. Now, as a budding astronaut, you're tasked with uncovering their past—and, in doing so, learning more about your universe and its fate.
+A long time ago, your solar system was visited by an ancient civilization known as the Nomai, who left behind much of their work and findings when they perished. Now, as a budding astronaut, you're tasked with uncovering their past—and, in doing so, learning more about your universe and its fate.
 
 {% include posts/picture.html img="rieback-nomai" alt="Rieback, an NPC, commenting on the Nomai." %}
 
@@ -78,9 +78,9 @@ Even in the face of death, one force continues to guide your expeditions: **unbr
 
 ## A Race Against Time Itself
 
-Each expedition plays out against the backdrop of the sun's impending explosion, and it never gets old no matter how many times you go through it.
+Each expedition plays out against the backdrop of the sun's impending explosion, something that never gets old no matter how many times you witness it.
 
-You have lots to see and do and learn and... well, you must squeeze every drop of value out of those precious experiences in a mere *22 minutes*. Occasionally, you'll find yourself in the middle of an important exploration when the [End Times soundtrack](https://www.youtube.com/watch?v=yJTJlieo6gk) suddenly kicks in. You feel your stomach drop as you brace yourself for the end. *Here we go again*.
+You have lots to see and do and learn. But you must squeeze every drop of value out of those precious experiences in a mere *22 minutes*. Occasionally, you'll find yourself in the middle of an important exploration when the [End Times soundtrack](https://www.youtube.com/watch?v=yJTJlieo6gk) kicks in. You feel your stomach drop as you brace yourself for the end.
 
 There are similar experiences in Outer Wilds that leave you just as breathless. The most obvious example that comes to mind is the Sunless City, built by the Nomai in the underground caverns of Ember Twin for survival, as well as to carry out experiments at the High Energy Lab.
 
