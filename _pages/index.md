@@ -12,7 +12,7 @@ order: 1
             <p>Looking for a software developer? <strong>Let's get in touch!</strong></p>
         </div>
         <div id="profile-photo">
-            <img src="/assets/img/profile-photo.jpg" alt="My profile photo" />
+            <img src="/assets/img/profile-photo.png" alt="My profile photo" />
         </div>
     </div>
     <div id="cta-buttons">
