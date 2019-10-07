@@ -27,15 +27,17 @@
             height: 15px;
         }
     }
+
+    .post-categories {
+        @include underlined-link;
+    }
 }
 
 .post-category {
     margin-top: $card-spacing;
 
-    .post-category-name a {
-        &:hover {
-            background-color: var(--link-bg-hover-color);
-        }
+    .post-category-name {
+        @include underlined-link;
     }
 }
 
@@ -136,19 +138,11 @@
         background: var(--blockquote-bg-color);
         margin: 25px auto;
         padding: 1px 16px 1px 20px;
-        border-left: 4px solid var(--blockquote-text-color);
+        border-left: 4px solid #6b6a6a;
         @include transition;
         
         p {
             margin-top: $paragraph-spacing;
-
-            &, * {
-                color: var(--blockquote-text-color);
-
-                em {
-                    @include transition;
-                }
-            }
         }
     }
 
@@ -173,8 +167,8 @@
 
     .spoiler {
         &, * {
-            background-color: $beige;
-            color: $beige;
+            background-color: var(--spoiler-color);
+            color: var(--spoiler-color);
         }
 
         margin-top: 1px;

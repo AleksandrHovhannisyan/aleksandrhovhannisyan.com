@@ -20,10 +20,10 @@
 
 @mixin underlined-link {
     a {
-        border-bottom: 2px solid var(--link-color);
+        border-bottom: 3px solid transparent;
 
         &:hover {
-            background-color: var(--link-bg-hover-color);
+            border-bottom: 3px solid var(--link-color);
         }
     }
 }
