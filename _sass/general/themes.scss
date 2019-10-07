@@ -4,18 +4,17 @@
 html.day {
     --bg-color-main: white;
     --bg-color-contrast: #{$charcoal};
-    --selection-bg-color: #{$blue-cloud};
+    --selection-bg-color: #{$primary-color-highlight};
 
-    --text-color-normal: #{$coffee-gray};
+    --text-color-normal: #{$denim};
     --text-color-nav: #{$silver};
-    --text-color-emphasis: black;
+    --text-color-emphasis: #43474b;
     
-    --link-color: #{$blue};
-    --link-bg-hover-color: #{$blue-cloud};
+    --link-color: #{$primary-color-link};
 
-    --button-bg-color: #{$blue};
+    --button-bg-color: #{$primary-color};
     --button-text-color: white;
-    --button-bg-hover-color: #{$blue-light};
+    --button-bg-hover-color: #{$primary-color-light};
     --button-text-hover-color: white;
 
     --card-bg-color: #{$nearly-white};
@@ -23,31 +22,27 @@ html.day {
     --hover-color-general: whitesmoke;
 
     --form-bg-color: white;
-
     --code-bg-color: rgb(235, 232, 232);
-
     --blockquote-bg-color: rgb(216, 216, 216);
-    --blockquote-text-color: rgb(110, 110, 110);
+    --spoiler-color: #a3a3a3;
 }
 
 html.night {
     --bg-color-main: #{$charcoal};
     --bg-color-contrast: #{$nearly-black};
     // Alpha applied for Chrome bug where colors meld together: https://stackoverflow.com/a/29416776/10480032
-    $selection-bg-color: adjust-color($coffee-milky, $alpha: -0.2);
-    --selection-bg-color: #{$selection-bg-color};
+    --selection-bg-color: #{$secondary-color-highlight};
 
-    --text-color-normal: #{$beige};
-    --text-color-emphasis: #{$beige-light};
+    --text-color-normal: #999999;
+    --text-color-emphasis: #afa89b;
     --text-color-nav: #{$silver};
 
-    --link-color: rgb(167, 157, 137);
-    $coffee-milky-transparent: adjust-color($coffee-milky, $alpha: -0.5);
-    --link-bg-hover-color: #{$coffee-milky-transparent};
+    // --link-color: #a08458;
+    --link-color: #{$secondary-color-link};
 
-    --button-bg-color: #{$coffee-dark};
-    --button-text-color: #{$beige-light};
-    --button-bg-hover-color: #{$coffee-milky};
+    --button-bg-color: #{$secondary-color};
+    --button-text-color: rgb(209, 209, 209);
+    --button-bg-hover-color: #{$secondary-color-light};
     --button-text-hover-color: #{$nearly-black};
 
     $card-bg-color: adjust-color($charcoal, $red: 15, $blue: 15, $green: 15);
@@ -57,9 +52,7 @@ html.night {
     --hover-color-general: #{$hover-color-general};
 
     --form-bg-color: #{$hover-color-general};
-
-    --code-bg-color: #{$coffee-gray};
-
-    --blockquote-bg-color: rgb(63, 63, 63);
-    --blockquote-text-color: #{$beige};
+    --code-bg-color: #{$dark-gray};
+    --blockquote-bg-color: #373434;
+    --spoiler-color: rgb(163, 158, 148);
 }

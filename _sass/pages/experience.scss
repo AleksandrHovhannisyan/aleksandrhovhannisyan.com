@@ -12,11 +12,8 @@
     grid-template-rows: max-content 1fr max-content;
 
     .project-name {
-        font-weight: bold;
         align-self: center;
         grid-area: heading;
-        color: var(--link-color);
-        @include transition;
     }
 
     .project-icon {
@@ -43,6 +40,10 @@
             height: 16px;
             margin-right: 3px;
             fill: $denim;
+
+            .night & {
+                fill: var(--text-color-normal);
+            }
         }
     }
 
@@ -153,7 +154,7 @@
         @include transition;
 
         .night & {
-            fill: $gray;
+            fill: #8c8069;
         }
     }
 
@@ -162,7 +163,7 @@
         @include transition;
     
         .night & {
-            fill: $coffee-gray;
+            fill: #414141;
         }
     }
 }

@@ -4,7 +4,7 @@
 
 ::selection {
     background-color: var(--selection-bg-color);
-    color: var(--text-color-emphasis);
+    color: black;
 }
 
 * {
@@ -45,7 +45,6 @@ body {
         margin-left: auto;
         margin-right: auto;
         width: 50%;
-        box-shadow: 0 2px 3px 0 $beige;
     }
 }
 
@@ -89,8 +88,12 @@ h1 {
 
 a {
     text-decoration: none;
-    color: var(--link-color);
-    @include transition;
+
+    &, blockquote & {
+        color: var(--link-color);
+        @include transition;
+        font-weight: bold;
+    }
 }
 
 p {
@@ -125,7 +128,7 @@ article {
 hr {
     margin-top: 8px;
     margin-bottom: 8px;
-    border: 1.2px solid $coffee-milky;
+    border: 1.2px solid $gray;
     @include transition;
 }
 
