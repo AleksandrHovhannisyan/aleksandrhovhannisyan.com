@@ -11,7 +11,7 @@ order: 4
     </h2>
     <div id="contact-information">
         <div id="contact-form">
-            <p>Thanks for taking the time to reach out&mdash;I'll get back to you ASAP.</p>
+            <p>Thanks for reaching out! I'll get back to you ASAP.</p>
             <form action="https://formspree.io/hire.aleksandr@gmail.com" method="POST">
                 <input type="hidden" name="_subject" value="Thanks for getting in touch!" />
                 <label class="required" for="name"><strong>Name:</strong></label>

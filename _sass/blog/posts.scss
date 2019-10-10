@@ -65,7 +65,6 @@
     $main-spacing: 60px;
     $img-spacing: 20px;
     margin-top: $main-spacing;
-    font-size: 1.1em;
 
     .post-stats {
         margin-top: calc(#{$main-spacing} / 4);
@@ -87,7 +86,7 @@
     figure {
         figcaption {
             margin-bottom: $img-spacing;
-            font-size: 14px;
+            font-size: 0.8em;
             font-style: italic;
             text-align: center;
             @include transition;
@@ -95,6 +94,7 @@
     }
 
     figure, picture {
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -103,6 +103,10 @@
     img, iframe, .pro-con-table {
         margin: $img-spacing auto;
         max-width: 100%;
+    }
+
+    img {
+        width: 100%;
     }
 
     figure, picture, iframe, .pro-con-table {

@@ -15,10 +15,6 @@
     
         #main-cta {
             flex: 1 0 0;
-
-            p {
-                font-size: 1.1em;
-            }
         }
 
         #profile-photo {
@@ -37,6 +33,7 @@
     }
 
     #cta-buttons {
+        margin-top: $paragraph-spacing;
         margin-bottom: $paragraph-spacing;
     
         .button {
