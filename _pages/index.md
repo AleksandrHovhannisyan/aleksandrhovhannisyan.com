@@ -27,13 +27,8 @@ order: 1
         <img src="/assets/img/laptop.png" alt="💻">
     </h2>
     <p> 
-        I'm a CS undergrad at the University of Florida with a passion for programming of all kinds—low-level, high-level,
-        and anything in between. Currently, I'm interested in <strong>front-end web development</strong>. In fact, I started this website
-        for that very reason: to sharpen my front-end skills and show off what I can do.
-    </p>
+        I'm a developer with a passion for programming of all kinds—low-level, high-level, and anything in between. Currently, I'm interested in <strong>front-end web development</strong>. I also <a href="https://www.upwork.com/freelancers/~014eb3a95d4d1fd855" target="_break">freelance on the side</a> as a copy editor!</p>
     <p>
-        When I'm not hacking away on a project, I enjoy playing video games, writing, learning new things, and 
-        working out. I'm also a creative at heart and will spend as many painful hours as it takes perfecting something until 
-        I'm fully satisfied with how it looks. (I can't count how many times I've changed this site's design.)
+        When I'm not hacking away on a project, I enjoy playing video games, writing, learning new things, and working out. I'm also a creative at heart and will spend as many painful hours as it takes perfecting something until I'm fully satisfied with how it looks. (I can't count how many times I've changed this site's design.)
     </p>
 </article>

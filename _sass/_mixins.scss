@@ -33,6 +33,9 @@ $card-spacing: 50px;
     display: grid;
     column-gap: $card-spacing;
     row-gap: $card-spacing;
-    /* Fill up space as it's made available, with each card being a minimum of 250px */
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+
+    @media only screen and (min-width: $device-cutoff-medium) {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
 }

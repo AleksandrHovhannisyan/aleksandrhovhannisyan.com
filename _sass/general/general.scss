@@ -16,7 +16,7 @@
 body {
     position: relative;
     font-family: $font-family-primary, $font-family-backup;
-    font-size: 16px;
+    font-size: 18px;
     color: var(--text-color-normal);
     background-color: var(--bg-color-main);
     @include transition(background-color);
@@ -35,7 +35,6 @@ body {
 
 .banner {
     @include banner;
-    font-size: 1.1em;
 
     * {
         text-align: center;

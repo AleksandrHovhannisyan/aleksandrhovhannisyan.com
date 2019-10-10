@@ -51,7 +51,8 @@
 
             &.required::after {
                 content: " *";
-                color: rgb(146, 51, 51);
+                color: var(--link-color);
+                @include transition;
             }
         }
     
@@ -130,6 +131,7 @@ input.honeypot {
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 50px;
     @include transition(background-color);
 
     &:hover {
