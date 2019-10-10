@@ -4,6 +4,13 @@ layout: default
 
 {% include banner.html heading="Welcome to my blog!" content="I like to write about programming and video games, with an occasional sprinkle of personal posts. All opinions are strictly my own." %}
 
-<article class="container">
-    {{ content }}
+<article class="blog-overview container">
+    <div class="category-links container">
+        <a href="{{ site.url }}/blog/programming">Programming</a>
+        <a href="{{ site.url }}/blog/gaming">Gaming</a>
+        <a href="{{ site.url }}/blog/other">Other</a>
+    </div>
+    <article class="post-previews">
+        {{ content }}
+    </article>
 </article>

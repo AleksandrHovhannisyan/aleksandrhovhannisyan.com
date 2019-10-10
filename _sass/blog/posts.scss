@@ -2,6 +2,23 @@
 @import 'mixins';
 @import 'settings';
 
+.blog-overview {
+    margin-top: 40px;
+}
+
+.category-links {
+    max-width: calc(#{$page-max-width} / 2.5);
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    @include underlined-link;
+
+    a {
+        margin-right: 10px;
+    }
+}
+
 .post-title {
     margin-bottom: 20px;
 }
@@ -43,7 +60,7 @@
 
 .post-previews {
     @include card-grid;
-    margin-top: $card-spacing;
+    margin-top: 80px;
 
     .post-preview {
         width: 100%;
