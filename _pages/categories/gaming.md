@@ -1,5 +1,6 @@
 ---
 permalink: /blog/gaming/
+title: Blog
 layout: blog
 order: -1
 ---

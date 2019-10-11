@@ -1,5 +1,6 @@
 ---
 permalink: /blog/other/
+title: Blog
 layout: blog
 order: -1
 ---
