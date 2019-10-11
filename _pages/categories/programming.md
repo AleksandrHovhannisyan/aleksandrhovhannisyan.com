@@ -1,5 +1,6 @@
 ---
 permalink: /blog/programming/
+title: Blog
 layout: blog
 order: -1
 ---
