@@ -48,7 +48,7 @@
         /* Opacity = 0 means it's hidden by default */
         opacity: 0;
         border-radius: 5px;
-        background-color: var(--hover-color-general);
+        background-color: var(--card-bg-color);
         @include transition;
 
         // Whatever icon is being used

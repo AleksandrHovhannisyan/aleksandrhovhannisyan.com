@@ -2,13 +2,15 @@
 @import 'mixins';
 
 html.day {
-    --bg-color-main: white;
-    --bg-color-contrast: #{$charcoal};
+    //--bg-color-main: #f0f2f3;
+    --bg-color-main: #ffffff;
+    --bg-color-contrast: #{$primary-color-dark};
     --selection-bg-color: #{$primary-color-highlight};
 
     --text-color-normal: #{$denim};
-    --text-color-nav: #{$silver};
-    --text-color-emphasis: #43474b;
+    --text-color-nav: #cecdcd;
+    //--text-color-emphasis: #263238;
+    --text-color-emphasis: #37474F;
     
     --link-color: #{$primary-color-link};
 
@@ -17,14 +19,14 @@ html.day {
     --button-bg-hover-color: #{$primary-color-light};
     --button-text-hover-color: white;
 
-    --card-bg-color: #{$nearly-white};
-    --label-bg-color: #dfdfdf;
-    --hover-color-general: whitesmoke;
+    --card-bg-color: #fefefe;
+    --label-bg-color: #dae3e7;
+    --hover-color-general: #ECEFF1;
 
     --form-bg-color: white;
     --code-bg-color: rgb(235, 232, 232);
     --blockquote-bg-color: rgb(216, 216, 216);
-    --spoiler-color: #a3a3a3;
+    --spoiler-color: #90A4AE;
 }
 
 html.night {

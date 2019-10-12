@@ -39,7 +39,7 @@
             width: 16px;
             height: 16px;
             margin-right: 3px;
-            fill: $denim;
+            fill: #546E7A;
 
             .night & {
                 fill: var(--text-color-normal);
@@ -159,7 +159,7 @@
     }
 
     &.star-empty {
-        fill: $silver;
+        fill: #adacac;
         @include transition;
     
         .night & {

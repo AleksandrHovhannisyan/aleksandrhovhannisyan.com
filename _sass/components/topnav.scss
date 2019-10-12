@@ -11,7 +11,7 @@
     right: 100%;
     top: 0;
     background-color: var(--bg-color-contrast);
-    box-shadow: 0px 0px 10px 1px var(--bg-color-contrast);
+    box-shadow: 0px 0px 15px 1px var(--bg-color-contrast);
     @include transition;
     /* This is to ensure that it always appears above everything. */
     z-index: 100;
