@@ -2,8 +2,9 @@
 @import 'settings';
 @import 'mixins';
 
+$topnav-min-height: 64px;
+
 #topnav {
-    $topnav-min-height: 50px;
     width: 100%;
     min-height: $topnav-min-height;
     position: fixed;
@@ -32,7 +33,7 @@
     .nav-links {
         list-style-type: none;
         padding: 0;
-        margin-top: 18px;
+        margin-top: calc(#{$topnav-min-height} / 2);
         margin-left: 0;
         margin-right: 0;
         max-height: 0px;
