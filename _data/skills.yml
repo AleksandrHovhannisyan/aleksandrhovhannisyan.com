@@ -1,31 +1,27 @@
-- category: General Programming
+- category: Programming Languages
   items:
     - name: C++
       rating: 5
     - name: Python
       rating: 5
-    - name: Java
-      rating: 4
-    - name: SQL (Oracle, postgres)
-      rating: 4
+    - name: TypeScript (ES6)
+      rating: 5
     - name: Kotlin
-      rating: 3
+      rating: 4
     - name: C# (Unity)
       rating: 3
 
-- category: Frontend Development
+- category: Frontend & Backend
   items:
     - name: HTML5
       rating: 5
-    - name: CSS, CSS Modules
+    - name: CSS/SASS/LESS
       rating: 5
-    - name: Ant Design (antd)
+    - name: React (+Ant Design)
       rating: 5
-    - name: SASS, LESS
+    - name: SQL (Oracle, postgres)
       rating: 4
-    - name: TypeScript (ES6)
-      rating: 4
-    - name: React (+ Redux)
+    - name: NodeJS, Express
       rating: 3
 
 - category: Software Development
