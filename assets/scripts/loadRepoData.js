@@ -20,7 +20,7 @@ function setupRepos() {
     addRepo("EmbodyGame", "Embody: Game", '👻', ["c#", "unity", "inkscape", "ai"]);
     addRepo("aleksandrhovhannisyan.github.io", "Personal Website", '💾', ["jekyll", "html5", "css", "javascript"]);
     addRepo("Steering-Behaviors", "Steering Behaviors", '⚙️', ["c#", "unity", "ai"]);
-    addRepo("MIPS-Linked-List", "ASM Linked List", '⛓️', ["mips", "asm", "qtspim"]);
+    addRepo("CattleLog", "CattleLog", '🐮', ["kotlin", "android", "mobile dev"]);
 }
 
 
