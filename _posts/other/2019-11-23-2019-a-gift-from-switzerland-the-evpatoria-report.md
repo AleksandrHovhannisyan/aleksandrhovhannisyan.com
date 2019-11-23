@@ -21,7 +21,7 @@ Make it to 4:30, and the electric riffs become sharper and more poignant as they
 
 And then the 5:15 bomb drops—so hard, in fact, that I just can't help but picture the whole band lighting on fire as they breathe life into their instruments. You're overcome with a head-banging, air-drumming fervor. The guitars and drums sing your body electric.
 
-They let off after a few minutes and descend into a slow, dreamy melody—until, of course, they awaken once more. Except the riffs are new this time—more *tame* and hopeful.
+It dies down after about a minute and descends into a slow, dreamy melody—until, of course, it awakens once more. Except the riffs are new towards the end—more *tame* and hopeful.
 
 One word sums it all up: explosive.
 
@@ -57,7 +57,7 @@ The rest of the song? It's decent, but definitely not as good as the intro.
 
 A song beloved by fans of The Evpatoria Report, and often cited as some of the band's best work.
 
-The notes carry the weight of the world—heavy and full of grief—as they play against the backdrop of recordings from the Columbia disaster. It's a beautiful composition, and a complete 180 from what you'd expect a post-rock band to produce.
+The notes carry the weight of the world—heavy and full of grief—as they play against the backdrop of recordings from the Columbia disaster. It's a beautiful, melancholy composition, a complete 180 from what you'd expect a post-rock band to produce.
 
 At 2:35, the song reaches in, grabs you by the soul, and shreds you to pieces as the crescendo mounts, just to check if you still have a heartbeat.
 

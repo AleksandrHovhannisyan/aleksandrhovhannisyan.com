@@ -28,20 +28,22 @@
     
         textarea {
             max-width: $form-max-width;
+            width: 100%;
             min-height: 200px;
             transition: height 0s;
             resize: none;
         }
     
         input:not([class="button"]), textarea {
-            height: 30px;
-            width: 100%;
-            margin-bottom: 20px;
-            padding: 20px;
-            color: var(--text-color-normal);
             background-color: var(--form-bg-color);
             border: 0px solid;
-            border-radius: 3px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px 2px #d7d7d7;
+            color: var(--text-color-normal);
+            margin-bottom: 20px;
+            padding: 5px 10px;
+            width: 100%;
+            
             transition: background-color $transition-duration, box-shadow $transition-duration, color $transition-duration;
             box-shadow: 0 0 5px 2px #d7d7d7;
             
@@ -66,7 +68,7 @@
             box-shadow: 0 0 5px 2px #aaaaaa;
 
             .night & {
-                box-shadow: 0 0 5px 2px rgb(0, 0, 0);
+                box-shadow: 0 0 5px 2px #838383;
             }
         }
     
