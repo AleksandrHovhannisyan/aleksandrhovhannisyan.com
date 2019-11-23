@@ -28,7 +28,7 @@ order: 4
             <h3>You can also find me on:</h3>
             {% for network in site.data.socials %}
             <div class="social-network">
-                <a class="container-link" href="{{ network.url }}" target="_blank"></a>
+                <a class="container-link" href="{{ network.url }}"></a>
                 {% assign icon = network.icon %}
                 {% include svg.html svg=icon class=icon %}
                 <span class="network-name">{{ network.name }}</span>

@@ -223,7 +223,6 @@ function anchorFor(repo) {
   const anchor = document.createElement('a');
   anchor.classList.add('container-link');
   anchor.setAttribute('href', repo.html_url);
-  anchor.setAttribute('target', '_blank');
   return anchor;
 }
 
@@ -232,7 +231,7 @@ function createHoverContent() {
   hoverContent.classList.add('hover-content');
 
   const boldText = document.createElement('strong');
-  boldText.textContent = 'View on GitHub';
+  boldText.textContent = 'Explore on GitHub';
 
   const externalLinkIcon = document.createElementNS(xmlns, 'svg');
   const svgPath = document.createElementNS(xmlns, 'path');
