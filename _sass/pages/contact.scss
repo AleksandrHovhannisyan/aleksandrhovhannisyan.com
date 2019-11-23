@@ -30,19 +30,24 @@
             max-width: $form-max-width;
             min-height: 200px;
             transition: height 0s;
+            resize: none;
         }
     
         input:not([class="button"]), textarea {
             height: 30px;
             width: 100%;
-            margin-bottom: 15px;
-            padding: 10px;
+            margin-bottom: 20px;
+            padding: 20px;
             color: var(--text-color-normal);
             background-color: var(--form-bg-color);
             border: 0px solid;
-            box-shadow: 0 0 3px 1px rgb(172, 172, 172);
             border-radius: 3px;
             transition: background-color $transition-duration, box-shadow $transition-duration, color $transition-duration;
+            box-shadow: 0 0 5px 2px #d7d7d7;
+            
+            .night & {
+                box-shadow: 0 0 5px 2px #151515;
+            }
         }
     
         label {
@@ -58,7 +63,11 @@
     
         input:focus, textarea:focus {
             outline: none;
-            box-shadow: 0 0 5px 2px rgb(155, 155, 155);
+            box-shadow: 0 0 5px 2px #aaaaaa;
+
+            .night & {
+                box-shadow: 0 0 5px 2px rgb(0, 0, 0);
+            }
         }
     
         .button {
