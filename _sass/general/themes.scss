@@ -30,21 +30,21 @@ html.day {
 }
 
 html.night {
-    --bg-color-main: #{$charcoal};
-    --bg-color-contrast: #{$nearly-black};
+    --bg-color-main: #212121;
+    --bg-color-contrast: #141414;
     // Alpha applied for Chrome bug where colors meld together: https://stackoverflow.com/a/29416776/10480032
     --selection-bg-color: #{$secondary-color-highlight};
 
-    --text-color-normal: #999999;
+    --text-color-normal: #9b9b9b;
     --text-color-emphasis: #afa89b;
     --text-color-nav: #{$silver};
 
     // --link-color: #a08458;
     --link-color: #{$secondary-color-link};
 
-    --button-bg-color: #{$secondary-color};
-    --button-text-color: rgb(209, 209, 209);
-    --button-bg-hover-color: #{$secondary-color-light};
+    --button-bg-color: #506670;
+    --button-text-color: rgb(255, 255, 255);
+    --button-bg-hover-color: #86a2af;
     --button-text-hover-color: #{$nearly-black};
 
     $card-bg-color: adjust-color($charcoal, $red: 15, $blue: 15, $green: 15);
