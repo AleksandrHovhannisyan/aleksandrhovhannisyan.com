@@ -20,7 +20,7 @@ order: 2
             </header>
             <div>
                 <p>Check out my other repos:</p>
-                <a href="https://github.com/AleksandrHovhannisyan?tab=repositories" target="_blank">{% include svg.html svg="github" %}</a>
+                <a href="https://github.com/AleksandrHovhannisyan?tab=repositories">{% include svg.html svg="github" %}</a>
             </div>
         </div>
     </div>
