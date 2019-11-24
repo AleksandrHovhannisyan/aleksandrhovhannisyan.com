@@ -5,57 +5,57 @@
 $topnav-min-height: 64px;
 
 #topnav {
-    width: 100%;
-    min-height: $topnav-min-height;
-    position: fixed;
-    left: 0;
-    right: 100%;
-    top: 0;
     background-color: var(--bg-color-contrast);
     box-shadow: 0px 0px 15px 1px var(--bg-color-contrast);
-    @include transition;
+    left: 0;
+    min-height: $topnav-min-height;
+    position: fixed;
+    right: 100%;
+    top: 0;
+    width: 100%;
     /* This is to ensure that it always appears above everything. */
     z-index: 100;
+    @include transition;
 
     * {
-        font-weight: bold;
         color: var(--text-color-nav);
+        font-weight: bold;
     }
 
     .nav-container {
-        max-width: $page-max-width;
-        height: $topnav-min-height;
-        display: flex;
-        justify-content: space-between;
         align-items: center;
+        display: flex;
+        height: $topnav-min-height;
+        justify-content: space-between;
+        max-width: $page-max-width;
     }
 
     .nav-links {
+        background-color: var(--bg-color-contrast);
+        color: var(--text-color-nav);
+        /* Mobile menu dropdown takes up 100% of the viewport width */
+        display: block;
+        left: 0;
         list-style-type: none;
-        padding: 0;
-        margin-top: calc(#{$topnav-min-height} / 2);
         margin-left: 0;
         margin-right: 0;
+        margin-top: calc(#{$topnav-min-height} / 2);
         max-height: 0px;
         /* Otherwise, the link text will be visible (will overflow its container) when max-height is 0px */
         overflow: hidden;
-        background-color: var(--bg-color-contrast);
-        color: var(--text-color-nav);
-        @include transition;
-        /* Mobile menu dropdown takes up 100% of the viewport width */
-        display: block;
+        padding: 0;
         position: absolute;
-        left: 0;
         right: 0;
         top: 20px;
+        @include transition;
 
         .active-nav-link {
             color: $nearly-white;
         }
 
         li {
-            text-align: center;
             margin: 40px auto;
+            text-align: center;
         }
 
         a {
@@ -65,17 +65,17 @@ $topnav-min-height: 64px;
             @include transition;
 
             &:hover {
-                text-decoration: underline;
-                color: $nearly-white;
                 background-color: var(--bg-color-contrast);
+                color: $nearly-white;
+                text-decoration: underline;
             }
         }
     }
 
     .navbar-hamburger {
-        width: 1.5em;
-        height: 1.5em;
         fill: var(--text-color-nav);
+        height: 1.5em;
+        width: 1.5em;
     }   
 }
 
@@ -85,35 +85,35 @@ $topnav-min-height: 64px;
     flex-wrap: nowrap;
 
     #theme-switch {
-        position: relative;        
-        --switch-width: 40px;
-        width: var(--switch-width);
-        height: 20px;
-        margin-right: 5px;
         align-self: center;    
         background-color: var(--bg-color-contrast);
-        --switch-border-thickness: 3px;
         border: var(--switch-border-thickness) solid var(--text-color-nav);
         border-radius: 100px;        
         cursor: pointer;
+        height: 20px;
+        margin-right: 5px;
+        position: relative;
+        width: var(--switch-width);        
+        --switch-width: 40px;
+        --switch-border-thickness: 3px;
         @include transition;
     }
 
-    #theme-switch::before {
-        content: "";
-        --orb-distance-from-edge: 2px;
-        left: var(--orb-distance-from-edge);
-        right: calc(var(--switch-width) - var(--orb-distance-from-edge) - 1.5 * var(--switch-orb-width));
-        --switch-orb-height: 10px;
-        --switch-orb-width: 12px;
-        width: var(--switch-orb-width);
-        height: var(--switch-orb-height);    
-        position: absolute;
-        /* We want to be halfway from the top, but we have to account for
-        our own height to get the 'true' center position */
-        top: calc(50% - var(--switch-orb-height) / 2);        
+    #theme-switch::before {        
         background-color: var(--text-color-nav);
         border-radius: 50%;
+        content: "";
+        height: var(--switch-orb-height);
+        left: var(--orb-distance-from-edge);    
+        position: absolute;
+        right: calc(var(--switch-width) - var(--orb-distance-from-edge) - 1.5 * var(--switch-orb-width));
+        /* We want to be halfway from the top, but we have to account for
+        our own height to get the 'true' center position */
+        top: calc(50% - var(--switch-orb-height) / 2);
+        width: var(--switch-orb-width);
+        --orb-distance-from-edge: 2px;
+        --switch-orb-height: 10px;
+        --switch-orb-width: 12px;
         @include transition;
 
         html.night & {
@@ -139,6 +139,14 @@ $topnav-min-height: 64px;
 
     #topnav {
         .nav-links {
+            align-items: center;
+            
+            /* Show the links on a single row on the navbar */
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            
+            margin: 0;
             /* Note 1: I'm using !important here only as a last resort to cover an edge case. Suppose
             you open the navbar on a small screen (< 700 px) and then close it. Per the JavaScript,
             the inline style for .nav-links will be set to 'max-height: 0px' when the menu cloes. If we then switch
@@ -151,15 +159,7 @@ $topnav-min-height: 64px;
             browsers that do support max-content will override the first style and instead apply the second one. */
             max-height: 100px !important;
             max-height: max-content !important;
-            
-            margin: 0;
             position: static;
-            
-            /* Show the links on a single row on the navbar */
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
-            align-items: center;
     
             li {
                 margin: 0;

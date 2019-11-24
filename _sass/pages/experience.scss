@@ -21,25 +21,25 @@
         margin-right: 5px;
 
         * {
-            width: 24px;
             vertical-align: middle;
+            width: 24px;
         }
     }
     
     .project-rating {
-        font-size: 0.85em;
-        justify-self: center;
-        align-self: center;
-        grid-area: rating;
-        display: flex;
         align-items: center;
+        align-self: center;
+        display: flex;
+        font-size: 0.85em;
+        grid-area: rating;
+        justify-self: center;
         @include transition;
 
         .star {
-            width: 16px;
+            fill: #546E7A;
             height: 16px;
             margin-right: 3px;
-            fill: #546E7A;
+            width: 16px;
 
             .night & {
                 fill: var(--text-color-normal);
@@ -48,8 +48,8 @@
     }
 
     .description {
-        margin-top: 0px;
         margin-bottom: 0px;
+        margin-top: 0px;
         @include transition;
     }
 
@@ -59,13 +59,13 @@
         grid-row: 3;
     
         .topic {
+            background-color: var(--label-bg-color);
+            border-radius: 2px;
             font-size: 0.9em;
-            padding: 6px;
-            margin-top: 5px;
             margin-bottom: 0px;
             margin-right: 5px;
-            border-radius: 2px;
-            background-color: var(--label-bg-color);
+            margin-top: 5px;
+            padding: 6px;
             @include transition;
         }
     }
@@ -82,16 +82,16 @@
 #project-placeholder {
     display: flex;
     flex-direction: column;
-    text-align: center;
     justify-content: center;
+    text-align: center;
 
     a {
+        border-radius: 50%;
         display: inline-block;
-        margin-top: 20px;
-        text-decoration: none;
-        border-radius: 50%;    
-        width: 50px;
         height: 50px;
+        margin-top: 20px;
+        text-decoration: none;    
+        width: 50px;
 
         svg {
             fill: $brand-github;
@@ -106,10 +106,10 @@
 
 #skills {
     #skill-grid {
-        display: grid;
         column-gap: 100px;
-        row-gap: 40px;
+        display: grid;
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        row-gap: 40px;
     }
 
     .skill-category {
@@ -118,10 +118,10 @@
     }
 
     .skill-item {
-        margin-top: 10px;
-        display: grid;
         column-gap: 10px;
+        display: grid;
         grid-template-columns: 1fr 1fr;
+        margin-top: 10px;
         @include transition(background-color);
 
         &:hover {
@@ -134,8 +134,8 @@
         }
         
         .skill-rating {
-            grid-column: 2;
             display: inline;
+            grid-column: 2;
             text-align: right;
 
             .star {
@@ -146,8 +146,8 @@
 }
 
 .star {
-    width: 18px;
     height: 18px;
+    width: 18px;
 
     &.star-filled {
         fill: var(--button-bg-color);
@@ -177,16 +177,16 @@
         grid-template-columns: 1fr;
 
         h3 {
-            margin-top: 21px;
-            margin-bottom: 21px;
-            margin-left: 10px;
             font-size: 1em;
             font-weight: normal;
+            margin-bottom: 21px;
+            margin-left: 10px;
+            margin-top: 21px;
         }
 
         ul {
-            margin-top: 16px;
             margin-bottom: 16px;
+            margin-top: 16px;
             padding-left: 40px;
             padding-right: 10px;
         }
@@ -207,14 +207,14 @@
 @media only screen and (min-width: $device-cutoff-large) {
 
     .institution .collapsible-content {
-        grid-template-rows: 1fr;
         grid-template-columns: auto auto;
+        grid-template-rows: 1fr;
 
         .awards {
-            /* Now that it's lined up to the right of the courses, there's no need for a top border */
-            border-top: none;
             /* But there is for a left border */
             border-left: solid var(--collapsible-content-border-width) var(--button-bg-color);
+            /* Now that it's lined up to the right of the courses, there's no need for a top border */
+            border-top: none;
             @include transition(border);
         }
     }

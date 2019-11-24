@@ -4,12 +4,12 @@
 
 /* Note: this is an anchor with a class of button */
 .button {
-    display: flex;
-    justify-content: center;
     align-items: center;
     border-radius: 5px;
+    display: flex;
     font-size: 1em;
     font-weight: bold;
+    justify-content: center;
     text-decoration: none;
 
     svg {
@@ -17,11 +17,11 @@
     }
 }
 
-.collapsible {
-    margin-top: 20px;
-    font-family: $font-family-primary, $font-family-backup;
-    font-size: 1em;    
+.collapsible {    
     border: none;
+    font-family: $font-family-primary, $font-family-backup;
+    font-size: 1em;
+    margin-top: 20px;
     outline: none;
     width: 100%;
 }
@@ -45,9 +45,9 @@
 }
 
 .button, .collapsible-header {
-    cursor: pointer;
-    border: none;
     background-color: var(--button-bg-color);
+    border: none;
+    cursor: pointer;
 
     &, * {
         @include transition;
@@ -70,14 +70,14 @@
 }
 
 .collapsible-content {
+    border: solid var(--collapsible-content-border-width) var(--button-bg-color);
+    border-top: none;
     /* Will be set to a sufficiently large max-height by corresponding click handler for .collapsible */
     max-height: 0px;
     overflow: hidden;
 
     --collapsible-content-border-width: 3px;
-    border: solid var(--collapsible-content-border-width) var(--button-bg-color);
     @include transition(all, 0.5s);
-    border-top: none;
 }
 
 /* To get rid of Firefox's dotted lines when these are clicked */

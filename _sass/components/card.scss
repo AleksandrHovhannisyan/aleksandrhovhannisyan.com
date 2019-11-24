@@ -2,29 +2,29 @@
 
 .card {
     --card-padding: 30px;
-    padding: var(--card-padding);
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: calc(var(--card-padding) / 2);
-    position: relative;
-    transform: none;
     background-color: var(--card-bg-color);
+    border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.15), 
                 0 2px 2px rgba(0,0,0,0.15), 
                 0 4px 4px rgba(0,0,0,0.15), 
                 0 8px 8px rgba(0,0,0,0.15);
-    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: var(--card-padding);
+    position: relative;
+    row-gap: calc(var(--card-padding) / 2);
+    transform: none;
     transition: background-color $transition-duration, 
                 box-shadow $transition-duration, 
                 transform $transition-duration;
 
     &:hover {
-        transform: translate(0, -5px);
-        cursor: pointer;
         box-shadow: 0 5px 13px rgba(0,0,0,0.15), 
                     0 6px 6px rgba(0,0,0,0.15), 
                     0 8px 8px rgba(0,0,0,0.15), 
                     0 12px 12px rgba(0,0,0,0.15);
+        cursor: pointer;
+        transform: translate(0, -5px);
 
         .hover-content {
             opacity: 0.92;
@@ -33,29 +33,29 @@
 
     /* Displayed when a user hovers over a card */
     .hover-content {
-        font-size: 1.2em;
-        /* Note: .card has 'position: relative' set */
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        align-items: center;
+        background-color: var(--card-bg-color);
+        border-radius: 5px;
         /* Center the content for the hover layer */
         display: flex;
         flex-direction: column;
-        align-items: center;
+        font-size: 1.2em;
+        height: 100%;
         justify-content: center;
+        left: 0;
         /* Opacity = 0 means it's hidden by default */
         opacity: 0;
-        border-radius: 5px;
-        background-color: var(--card-bg-color);
+        /* Note: .card has 'position: relative' set */
+        position: absolute;
+        top: 0;
+        width: 100%;
         @include transition;
 
         // Whatever icon is being used
         svg {
             fill: var(--text-color-emphasis);
-            width: 1.2em;
             margin-top: 20px;
+            width: 1.2em;
         }
     }
 }

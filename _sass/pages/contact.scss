@@ -4,11 +4,11 @@
 @import 'settings';
 
 #contact-information {
+    column-gap: 120px;
     display: grid;
     grid-template-areas: "form"
                          "socials";
     grid-template-rows: auto;
-    column-gap: 120px;
     margin-bottom: 30px;
 }
 
@@ -29,10 +29,10 @@
     
         textarea {
             max-width: $form-max-width;
-            width: 100%;
             min-height: 200px;
-            transition: height 0s;
             resize: none;
+            transition: height 0s;
+            width: 100%;
         }
     
         input:not([class="button"]), textarea {
@@ -43,8 +43,8 @@
             color: var(--text-color-normal);
             margin-bottom: 20px;
             padding: 5px 10px;
-            width: 100%;
             transition: background-color $transition-duration, box-shadow $transition-duration, color $transition-duration;
+            width: 100%;
             
             .night & {
                 box-shadow: 0 0 5px 2px #151515;
@@ -52,19 +52,19 @@
         }
     
         label {
-            margin-bottom: 5px;
             display: block;
+            margin-bottom: 5px;
 
             &.required::after {
-                content: " *";
                 color: var(--link-color);
+                content: " *";
                 @include transition;
             }
         }
     
         input:focus, textarea:focus {
-            outline: none;
             box-shadow: 0 0 5px 2px #979797;
+            outline: none;
 
             .night & {
                 box-shadow: 0 0 5px 2px #838383;
@@ -72,9 +72,9 @@
         }
     
         .button {
+            height: 45px;
             max-width: 100%;
             width: 100%;
-            height: 45px;
         }
     }
 }
@@ -91,30 +91,30 @@ input.honeypot {
 }
 
 #social-networks {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    grid-auto-rows: 60px;
-    row-gap: 50px;
     column-gap: 30px;
-    margin-top: 60px;
+    display: grid;
+    grid-auto-rows: 60px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     margin-bottom: 60px;
+    margin-top: 60px;
+    row-gap: 50px;
 
     h3 {
-        grid-row: 1;
         grid-column: 1 / -1;
+        grid-row: 1;
     }
 
     svg {
-        width: 35px;
         align-self: center;
         justify-self: center;
+        width: 35px;
     }
 
     .linkedin-square {
-        fill: $brand-linkedin;
+        background: white;
         /* Nice little hack for getting a perfect fill */
         border-radius: 5px;
-        background: white;
+        fill: $brand-linkedin;
     }
     
     .github {
@@ -136,22 +136,22 @@ input.honeypot {
 }
 
 .social-network {
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     /* Position relative because we have an absolutely 
     positioned .container-link as a child */
     position: relative;
-    display: grid;
-    border-radius: 5px;
-    grid-template-columns: 1fr 1fr;
     @include transition(background-color);
 
     &:hover {
-        cursor: pointer;
         background-color: var(--hover-color-general);
+        cursor: pointer;
     }
 
     .network-name {
-        grid-column: 2;
         align-self: center;
+        grid-column: 2;
         @include transition;
     }
 }

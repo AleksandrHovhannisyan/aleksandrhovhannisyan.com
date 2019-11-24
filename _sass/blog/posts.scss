@@ -7,11 +7,11 @@
 }
 
 .category-links {
-    max-width: calc(#{$page-max-width} / 2.5);
-    flex-wrap: wrap;
-    display: flex;
-    justify-content: space-evenly;
     align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    max-width: calc(#{$page-max-width} / 2.5);
     @include underlined-link;
 
     a {
@@ -30,8 +30,8 @@
     font-style: italic;
 
     .post-date, .post-reading-length, .post-categories {
-        display: flex;
         align-items: center;
+        display: flex;
         margin-bottom: 15px;
         margin-right: 20px;
         @include transition;
@@ -39,9 +39,9 @@
         svg {
             @include transition;
             fill: var(--text-color-normal);
+            height: 15px;
             margin-right: 5px;
             width: 15px;
-            height: 15px;
         }
     }
 
@@ -66,8 +66,8 @@
         width: 100%;
 
         .post-description {
-            margin-top: 0px;
             margin-bottom: 0px;
+            margin-top: 0px;
         }
     }
 }
@@ -84,8 +84,8 @@
     margin-top: $main-spacing;
 
     .post-stats {
-        margin-top: calc(#{$main-spacing} / 4);
         margin-bottom: calc(#{$main-spacing} / 2);
+        margin-top: calc(#{$main-spacing} / 4);
     }
 
     @include headings {
@@ -102,19 +102,19 @@
 
     figure {
         figcaption {
-            margin-bottom: $img-spacing;
             font-size: 0.8em;
             font-style: italic;
+            margin-bottom: $img-spacing;
             text-align: center;
             @include transition;
         }
     }
 
     figure, picture {
-        width: 100%;
+        align-items: center;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        width: 100%;
     }
 
     img, iframe, .pro-con-table {
@@ -134,20 +134,20 @@
 
     ol li::marker {
         @include transition;
+        color: var(--text-color-emphasis);
         font-weight: bold;
         margin-right: 5px;
-        color: var(--text-color-emphasis);
     }
 
     ul, ol {
         @include transition;
-        margin-top: 30px;
         margin-bottom: 30px;
+        margin-top: 30px;
         padding-left: 40px;
 
         li {
-            margin-top: 5px;
             margin-bottom: 5px;
+            margin-top: 5px;
 
             ul, ol {
                 transition: 0s;
@@ -157,9 +157,9 @@
 
     blockquote {
         background: var(--blockquote-bg-color);
+        border-left: 4px solid #6b6a6a;
         margin: 25px auto;
         padding: 1px 16px 1px 20px;
-        border-left: 4px solid #6b6a6a;
         @include transition;
         
         p {
@@ -168,12 +168,12 @@
     }
 
     code {
-        font-family: Inconsolata, Courier New;
         background-color: var(--code-bg-color);
         color: var(--text-color-emphasis);
+        font-family: Inconsolata, Courier New;
+        font-size: 1rem;
         padding-left: 5px;
         padding-right: 5px;
-        font-size: 1rem;
         @include transition;
     }
 
@@ -191,9 +191,9 @@
             background-color: var(--spoiler-color);
             color: var(--spoiler-color);
         }
+        margin-bottom: 1px;
 
         margin-top: 1px;
-        margin-bottom: 1px;
         @include transition;
 
         &:hover {
@@ -210,10 +210,10 @@
 
     .pro-con-table {
         background-color: var(--blockquote-bg-color);
+        border: 4px solid var(--blockquote-text-color);
         color: var(--blockquote-text-color);
         display: flex;
         flex-wrap: wrap;
-        border: 4px solid var(--blockquote-text-color);
         padding: 20px;
         transition: background-color $transition-duration, border $transition-duration;
 
@@ -221,8 +221,8 @@
             flex: 1 1 0;
 
             header {
-                padding-left: 20px;
                 font-weight: bold;
+                padding-left: 20px;
                 @include transition;
             }
 

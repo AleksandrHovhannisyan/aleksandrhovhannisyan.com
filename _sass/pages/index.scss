@@ -8,39 +8,39 @@
     }
 
     #hero-banner {
-        display: flex;
-        justify-content: space-between;
         align-items: center;
+        display: flex;
         flex-wrap: wrap;
+        justify-content: space-between;
     
         #main-cta {
             flex: 1 0 0;
         }
 
         #profile-photo {
-            flex: 1 1 0;
-            display: flex;
-            justify-content: center;
             align-items: center;
+            display: flex;
+            flex: 1 1 0;
+            justify-content: center;
             margin-bottom: $paragraph-spacing;
 
             img {
+                border-radius: 50%;
                 height: 150px;
                 width: 150px;
-                border-radius: 50%;
             }
         }
     }
 
     #cta-buttons {
-        margin-top: $paragraph-spacing;
         margin-bottom: $paragraph-spacing;
+        margin-top: $paragraph-spacing;
 
         .button {
-            width: 100%;
             height: 45px;
             margin-bottom: 15px;
             margin-right: 15px;
+            width: 100%;
 
             svg {
                 margin-right: 10px;

@@ -14,23 +14,23 @@
 }
 
 body {
-    position: relative;
+    background-color: var(--bg-color-main);
+    color: var(--text-color-normal);
     font-family: $font-family-primary, $font-family-backup;
     font-size: 18px;
-    color: var(--text-color-normal);
-    background-color: var(--bg-color-main);
+    position: relative;
     @include transition(background-color);
 }
 
 #page-wrapper {
-    position: relative;
     height: 100%;
-    min-height: 100vh;
-    max-width: $page-max-width;
     margin-left: auto;
     margin-right: auto;
+    max-width: $page-max-width;
+    min-height: 100vh;
     // Space between us and absolutely positioned footer
     padding-bottom: 100px;
+    position: relative;
 }
 
 .banner {
@@ -55,12 +55,12 @@ body {
 
 /* Links an entire parent container, but the parent must be set to relative position */
 .container-link {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
     height: 100%;
+    left: 0;
+    position: absolute;
     text-decoration: none;
+    top: 0;
+    width: 100%;
     z-index: 1;
 }
 
@@ -90,14 +90,14 @@ a {
 
     &, blockquote & {
         color: var(--link-color);
-        @include transition;
         font-weight: bold;
+        @include transition;
     }
 }
 
 p {
-    margin-bottom: $paragraph-spacing;
     color: var(--text-color-normal);
+    margin-bottom: $paragraph-spacing;
     @include transition;
 
     &, li {
@@ -106,8 +106,8 @@ p {
 }
 
 .heading {
-    display: flex;
     align-items: center;
+    display: flex;
     margin-bottom: 40px;
 
     &, * {
@@ -125,9 +125,9 @@ article {
 }
 
 hr {
-    margin-top: 8px;
-    margin-bottom: 8px;
     border: 1.2px solid $gray;
+    margin-bottom: 8px;
+    margin-top: 8px;
     @include transition;
 }
 
@@ -136,6 +136,6 @@ p, ul, ol, figcaption {
 }
 
 #error {
-    text-align: center;
     margin-top: 200px;
+    text-align: center;
 }
