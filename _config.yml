@@ -45,9 +45,9 @@ defaults:
       categories: [Gaming]
   -
     scope:
-      path: "_posts/other"
+      path: "_posts/music"
     values:
-      categories: [Other]
+      categories: [Music]
 
 
 # Exclude from processing.
