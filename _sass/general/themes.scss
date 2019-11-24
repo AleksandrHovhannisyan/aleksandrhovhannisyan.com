@@ -2,16 +2,13 @@
 @import 'mixins';
 
 html.day {
-    //--bg-color-main: #f0f2f3;
     --bg-color-main: #ffffff;
     --bg-color-contrast: #{$primary-color-dark};
     --selection-bg-color: #{$primary-color-highlight};
 
     --text-color-normal: #{$denim};
     --text-color-nav: #cecdcd;
-    //--text-color-emphasis: #263238;
     --text-color-emphasis: #37474F;
-    
     --link-color: #{$primary-color-link};
 
     --button-bg-color: #{$primary-color};
@@ -21,9 +18,9 @@ html.day {
 
     --card-bg-color: #fefefe;
     --label-bg-color: #dae3e7;
-    --hover-color-general: #ECEFF1;
+    --hover-color-general: #F3F3F3;
 
-    --form-bg-color: rgb(243, 243, 243);
+    --form-bg-color: #F3F3F3;
     --code-bg-color: rgb(235, 232, 232);
     --blockquote-bg-color: rgb(216, 216, 216);
     --spoiler-color: #90A4AE;
@@ -32,26 +29,23 @@ html.day {
 html.night {
     --bg-color-main: #212121;
     --bg-color-contrast: #141414;
-    // Alpha applied for Chrome bug where colors meld together: https://stackoverflow.com/a/29416776/10480032
     --selection-bg-color: #{$secondary-color-highlight};
 
     --text-color-normal: #9b9b9b;
     --text-color-emphasis: #afa89b;
     --text-color-nav: #{$silver};
-
-    // --link-color: #a08458;
     --link-color: #{$secondary-color-link};
 
-    --button-bg-color: #554f43;
-    --button-text-color: rgb(209, 209, 209);
-    --button-bg-hover-color: #867d6b;
+    --button-bg-color: #7d715b;
+    --button-text-color: #ebebeb;
+    --button-bg-hover-color: #9b907b;
     --button-text-hover-color: #{$nearly-black};
 
     $card-bg-color: adjust-color($charcoal, $red: 15, $blue: 15, $green: 15);
     --card-bg-color: #{$card-bg-color};
     --label-bg-color: #{$charcoal};
     $hover-color-general: adjust-color($charcoal, $red: 22, $blue: 22, $green: 22);
-    --hover-color-general: #{$hover-color-general};
+    --hover-color-general: #313131;
 
     --form-bg-color: #313131;
     --code-bg-color: #{$dark-gray};
