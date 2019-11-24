@@ -7,7 +7,7 @@ You know that feeling when you stumble across a band with a riveting, totally un
 
 You gradually raise the volume as your body catches up with the rhythm. It doesn't even go up high enough.
 
-That's how I felt when I first heard *Eighteen Robins Road* by The Evpatoria Report, a post-rock band that hails from Switzerland and that published most of its work before 2010. Yet here I am in 2019, engrossed in what are some of the most emotionally moving songs I've ever heard.
+That's how I felt when I first heard The Evpatoria Report, a post-rock band that hails from Switzerland and that published most of its work before 2010. Yet here I am in 2019, engrossed in what are some of the most emotionally moving songs I've ever heard.
 
 Below is a look at some of my favorites from their albums.
 
@@ -61,7 +61,7 @@ The notes carry the weight of the world—heavy and full of grief—as they play
 
 At 2:35, the song reaches in, grabs you by the soul, and shreds you to pieces as the crescendo mounts, just to check if you still have a heartbeat.
 
-> Columbia, Houston, comm check.
+> Columbia, Houston, UHF comm check.
 
 The latter half of the song drowns out all noise and paints a remarkably accurate picture of the shuttle burning up brilliantly upon re-entry, trying to convey with music the anguish that the Columbia crew's families must have felt.
 
