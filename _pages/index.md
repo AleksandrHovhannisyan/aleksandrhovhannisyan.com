@@ -27,7 +27,7 @@ order: 1
         <img src="/assets/img/laptop.png" alt="💻">
     </h2>
     <p> 
-        I'm a developer with a passion for programming of all kinds—low-level, high-level, and anything in between. Currently, I'm interested in <strong>web development</strong>. I also freelance on the side as a <a href="https://www.upwork.com/freelancers/~014eb3a95d4d1fd855" target="_break">copy editor</a>!</p>
+        I'm a developer with a passion for programming of all kinds—low-level, high-level, and anything in between. Currently, I'm interested in <strong>web development</strong>. I also freelance on the side as a <a href="https://www.upwork.com/freelancers/~014eb3a95d4d1fd855">copy editor</a>!</p>
     <p>
         When I'm not hacking away on a project, I enjoy playing video games, writing, learning new things, and working out. I'm also a creative at heart and will spend as many painful hours as it takes perfecting something until I'm fully satisfied with how it looks. (I can't count how many times I've changed this site's design.)
     </p>
