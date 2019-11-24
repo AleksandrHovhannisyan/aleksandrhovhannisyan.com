@@ -134,3 +134,8 @@ hr {
 p, ul, ol, figcaption {
     @include underlined-link;
 }
+
+#error {
+    text-align: center;
+    margin-top: 200px;
+}
