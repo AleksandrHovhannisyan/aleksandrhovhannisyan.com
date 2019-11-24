@@ -2,16 +2,16 @@
 @import 'settings';
 
 #page-footer {
-    position: absolute;
-    bottom: 0;
-    height: 55px;
-    width: 100%;
+    align-items: center;
     background: var(--bg-color-contrast);
-    @include transition;
+    bottom: 0;
     color: var(--text-color-nav);
     display: flex;
+    height: 55px;
     justify-content: center;
-    align-items: center;
+    position: absolute;
+    width: 100%;
+    @include transition;
 
     span {
         text-align: center;
