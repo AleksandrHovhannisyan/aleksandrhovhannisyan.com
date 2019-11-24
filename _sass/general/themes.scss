@@ -42,9 +42,9 @@ html.night {
     // --link-color: #a08458;
     --link-color: #{$secondary-color-link};
 
-    --button-bg-color: #506670;
-    --button-text-color: rgb(255, 255, 255);
-    --button-bg-hover-color: #86a2af;
+    --button-bg-color: #554f43;
+    --button-text-color: rgb(209, 209, 209);
+    --button-bg-hover-color: #867d6b;
     --button-text-hover-color: #{$nearly-black};
 
     $card-bg-color: adjust-color($charcoal, $red: 15, $blue: 15, $green: 15);

@@ -16,8 +16,8 @@ order: 1
         </div>
     </div>
     <div id="cta-buttons">
-        <a class="button" href="https://www.linkedin.com/in/aleksandr-hovhannisyan-ba154b120/" target="_blank">{% include svg.html svg="linkedin" %} <span>LinkedIn</span></a>
-        <a class="button" href="https://github.com/AleksandrHovhannisyan" target="_blank">{% include svg.html svg="github" %} <span>GitHub</span></a>
+        <a class="button" href="https://www.linkedin.com/in/aleksandr-hovhannisyan-ba154b120/">{% include svg.html svg="linkedin" %} <span>LinkedIn</span></a>
+        <a class="button" href="https://github.com/AleksandrHovhannisyan">{% include svg.html svg="github" %} <span>GitHub</span></a>
     </div>
 </article>
 

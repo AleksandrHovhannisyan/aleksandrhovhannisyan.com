@@ -15,15 +15,17 @@ Below is a look at some of my favorites from their albums.
 
 <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=2600588727/size=large/bgcol=333333/linkcol=e99708/tracklist=false/artwork=small/track=1025421207/transparent=true/" seamless><a href="http://the-evpatoria-report.bandcamp.com/album/maar">Maar by The Evpatoria Report</a></iframe>
 
-The soothing intro here is pretty typical in post-rock, so don't let it fool you. It's a tease—a buildup for the best that yet awaits. And as the crescendo awakens, so do you. You turn your head. Start bobbing your head. Tapping your feet. Closing your eyes and letting the sound control you.
+This is hands-down my favorite song from The Evpatoria Report.
+
+The soothing intro is pretty typical in post-rock, so don't let it fool you. It's a tease that gradually grows in intensity. And as the crescendo awakens, so do you. You turn to face the sound. Start bobbing your head. Tapping your feet. Closing your eyes and letting it take over.
 
 Make it to 4:30, and the electric riffs become sharper and more poignant as they test the boundaries of the genre. Your whole body's swinging now.
 
-And then the 5:15 bomb drops—so hard, in fact, that I just can't help but picture the whole band lighting on fire as they breathe life into their instruments. You're overcome with a head-banging, air-drumming fervor. The guitars and drums sing your body electric.
+And then the 5:15 bomb drops—so hard, in fact, that I just can't help but picture the whole band lighting on fire as they breathe a violent rage into their instruments. You're overcome with a head-banging, air-drumming fervor.
 
-It dies down after about a minute and descends into a slow, dreamy melody—until, of course, it awakens once more. Except the riffs are new towards the end—more *tame* and hopeful.
+It's a short-lived high that descends into a long and dreamy melody after about a minute—until, of course, it awakens once more. Except the riffs are new towards the end—still intense, but more hopeful and tame.
 
-One word sums it all up: explosive.
+All in all, it's a fantastic, explosive song.
 
 ## Prognoz (Golevka)
 
@@ -31,11 +33,11 @@ One word sums it all up: explosive.
 
 Down here in Florida, during the summer, the weather's quite nice and pleasant. Intolerably hot at times, sure, but pleasant for the most part.
 
-Occasionally, though, amid all those god rays, a thunderstorm will break loose, *out of nowhere*. And it only lasts a few minutes, literally stopping as if it had never begun in the first place.
+Occasionally, though, amid all the deceptive calm and sunshine, a rain shower will break loose, *out of nowhere*. And it only lasts a few minutes, stopping as if it had never begun in the first place.
 
-That's how I'd describe *Prognoz*'s chief crescendo. It's a short-lived rain shower that momentarily disturbs the peace.
+That's how I'd describe the chief crescendo of *Prognoz*—a sudden, violent downpour that momentarily disturbs the peace.
 
-The rest of the song is nothing to write home about, though—it's not *bad*, but it fails to live up to that amazing intro.
+The rest of the song is nothing to write home about, though. It's not *bad*, but it does fail to live up to that amazing intro.
 
 ## Dar Now (Maar)
 
@@ -45,7 +47,7 @@ Wow.
 
 *Have I heard this before?* That's the first thought that crossed my mind when I heard *Dar Now*.
 
-And then, as I closed my eyes, I pictured it clearly: *Stranger Things*—or at least something like it, from that genre.
+And then, as I closed my eyes, I pictured it clearly: *Stranger Things*—or at least something like it, from that genre of science fiction.
 
 If this doesn't play in Season 4, I'll be legitimately disappointed. No, seriously—the notes are perfect for the show, the setting, the characters, all of it.
 
@@ -57,13 +59,13 @@ The rest of the song? It's decent, but definitely not as good as the intro.
 
 A song beloved by fans of The Evpatoria Report, and often cited as some of the band's best work.
 
-The notes carry the weight of the world—heavy and full of grief—as they play against the backdrop of recordings from the Columbia disaster. It's a beautiful, melancholy composition, a complete 180 from what you'd expect a post-rock band to produce.
+The notes carry the weight of the world—heavy and full of grief—as they play against the backdrop of recordings from the Columbia disaster. It's a beautiful, melancholy composition, a complete 180 from the post-rock I'm used to.
 
 At 2:35, the song reaches in, grabs you by the soul, and shreds you to pieces as the crescendo mounts, just to check if you still have a heartbeat.
 
 > Columbia, Houston, UHF comm check.
 
-The latter half of the song drowns out all noise and paints a remarkably accurate picture of the shuttle burning up brilliantly upon re-entry, trying to convey with music the anguish that the Columbia crew's families must have felt.
+The latter half of the song drowns out all noise and paints a remarkably accurate picture of the Columbia shuttle burning up brilliantly upon re-entry, trying to convey with music the anguish that the crew's families must have felt.
 
 ## Voskhod Project - Bonus (Golevka)
 
@@ -71,12 +73,12 @@ Experimental post rock is the name of the game here. There's really not much els
 
 My absolute favorite part begins at 7:55—the guitar riffs are *spectacular*.
 
-The song dies off smoothly, too, giving you a much-needed respite after so much rock :)
+The song dies off gently, too, giving you a much-needed respite after so much rock :)
 
 ## Thanks, Switzerland
 
 You've spoiled me.
 
-Unfortunately, based on the band's [most recent Facebook post](https://www.facebook.com/theevpatoriareport/), it appears that they won't be getting back together anytime soon.
+Unfortunately, based on The Evpatoria Report's [most recent Facebook post](https://www.facebook.com/theevpatoriareport/), it appears that the band won't be getting back together anytime soon.
 
 But I'll be here, patiently waiting in case they ever do.
