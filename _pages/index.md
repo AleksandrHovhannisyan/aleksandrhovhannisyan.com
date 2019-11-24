@@ -8,16 +8,16 @@ order: 1
     <div id="hero-banner">
         <div id="main-cta">
             <h1>Hey there! I'm Aleksandr</h1>
-            <p>I love tinkering with code and solving problems.</p>
-            <p>Looking for a software developer? <strong>Let's get in touch!</strong></p>
+            <p>I make software and freelance as a copy editor.</p>
+            <p>Interested in working together? <strong>Get in touch!</strong></p>
         </div>
         <div id="profile-photo">
             <img src="/assets/img/profile-photo.png" alt="My profile photo" />
         </div>
     </div>
     <div id="cta-buttons">
-        <a class="button" href="https://www.linkedin.com/in/aleksandr-hovhannisyan-ba154b120/" target="_blank">{% include svg.html svg="linkedin" %} <span>LinkedIn</span></a>
-        <a class="button" href="https://github.com/AleksandrHovhannisyan" target="_blank">{% include svg.html svg="github" %} <span>GitHub</span></a>
+        <a class="button" href="https://www.linkedin.com/in/aleksandr-hovhannisyan-ba154b120/">{% include svg.html svg="linkedin" %} <span>LinkedIn</span></a>
+        <a class="button" href="https://github.com/AleksandrHovhannisyan">{% include svg.html svg="github" %} <span>GitHub</span></a>
     </div>
 </article>
 
