@@ -9,8 +9,8 @@ order: 4
         <span>Get in touch!</span>
         <img src="/assets/img/envelope.png" alt="📧">
     </h2>
-    <div id="contact-information">
-        <div id="contact-form">
+    <section id="contact-information">
+        <section id="contact-form">
             <p>Thanks for reaching out! I'll get back to you ASAP.</p>
             <form action="https://formspree.io/hire.aleksandr@gmail.com" method="POST" spellcheck="false">
                 <input type="hidden" name="_subject" value="Thanks for getting in touch!" />
@@ -23,17 +23,19 @@ order: 4
                 <input type="submit" value="Send message" class="button">
                 <input type="text" name="_gotcha" class="honeypot" />
             </form>
-        </div>
-        <div id="social-networks">
+        </section>
+        <section>
             <h3>You can also find me on:</h3>
-            {% for network in site.data.socials %}
-            <div class="social-network">
-                <a class="container-link" href="{{ network.url }}"></a>
-                {% assign icon = network.icon %}
-                {% include svg.html svg=icon class=icon %}
-                <span class="network-name">{{ network.name }}</span>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
+            <section id="social-networks">
+                {% for network in site.data.socials %}
+                <div class="social-network">
+                    <a class="container-link" href="{{ network.url }}"></a>
+                    {% assign icon = network.icon %}
+                    {% include svg.html svg=icon class=icon %}
+                    <span class="network-name">{{ network.name }}</span>
+                </div>
+                {% endfor %}
+            </section>
+        </section>
+    </section>
 </article>
