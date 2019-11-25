@@ -150,11 +150,11 @@
     width: 18px;
 
     &.star-filled {
-        fill: var(--button-bg-color);
+        fill: #{$primary-color};
         @include transition;
 
         .night & {
-            fill: #8c8069;
+            fill: #7d715a;
         }
     }
 
@@ -163,7 +163,7 @@
         @include transition;
     
         .night & {
-            fill: #414141;
+            fill: #474747;
         }
     }
 }
