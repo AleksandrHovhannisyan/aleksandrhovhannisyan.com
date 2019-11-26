@@ -27,15 +27,3 @@
         }
     }
 }
-
-$card-spacing: 50px;
-@mixin card-grid {
-    display: grid;
-    column-gap: $card-spacing;
-    row-gap: $card-spacing;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-
-    @media only screen and (min-width: $device-cutoff-medium) {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
-}

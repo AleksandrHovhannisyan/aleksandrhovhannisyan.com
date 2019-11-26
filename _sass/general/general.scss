@@ -13,11 +13,14 @@
     padding: 0;
 }
 
+html {
+    font-size: 18px;
+}
+
 body {
     background-color: var(--bg-color-main);
     color: var(--text-color-normal);
     font-family: $font-family-primary, $font-family-backup;
-    font-size: 18px;
     position: relative;
     @include transition(background-color);
 }
@@ -50,7 +53,7 @@ body {
 .container {
     margin-left: auto;
     margin-right: auto;
-    padding: 0 1.5rem;
+    padding: 0 1.35rem;
 }
 
 /* Links an entire parent container, but the parent must be set to relative position */
@@ -121,7 +124,7 @@ p {
 }
 
 article {
-    margin-top: 134px;
+    margin-top: 135px;
 }
 
 hr {

@@ -2,11 +2,6 @@
 @import 'settings';
 @import 'colors';
 
-
-#card-grid {
-    @include card-grid;
-}
-
 .project {
     /* Header, description, footer, respectively */
     grid-template-rows: max-content 1fr max-content;
@@ -154,7 +149,7 @@
         @include transition;
 
         .night & {
-            fill: #7d715a;
+            fill: #988560;
         }
     }
 
@@ -164,6 +159,93 @@
     
         .night & {
             fill: #474747;
+        }
+    }
+}
+
+#work {
+    h2 {
+        margin-bottom: 3rem;
+    }
+
+    .job {
+        display: grid;
+        grid-template-rows: max-content 1fr max-content;
+
+        .job-title {
+            font-size: 1.2rem;
+        }
+
+        .date-range {
+            color: $denim;
+            font-size: 0.95rem;
+            font-style: italic;
+
+            .night & {
+                color: #898989;
+            }
+        }
+
+        .responsibilities {
+            margin-bottom: 1rem;
+            padding-left: 20px;
+
+            li:not(:last-child) {
+                margin-bottom: $paragraph-spacing;
+            }
+        }
+
+        .technologies-used {
+            display: flex;
+            padding-left: 20px;
+
+            .tech {
+                border-radius: 5px;
+                font-weight: bold;
+                margin-right: 5px;
+                padding: 5px;
+                @include transition;
+            }
+
+            .react {
+                background-color: rgba($brand-react, 0.2);
+                color: #02728f;
+
+                .night & {
+                    background-color: $brand-react;
+                    color: #0a5c72;
+                }
+            }
+
+            .typescript {
+                background-color: rgba($brand-typescript, 0.15);
+                color: lighten($brand-typescript, 10%);
+
+                .night & {
+                    background-color: $brand-typescript;
+                    color: #d5d5d5;
+                }
+            }
+
+            .grpc {
+                background-color: rgba($brand-grpc, 0.2);
+                color: #1e6f70;
+
+                .night & {
+                    background-color: $brand-grpc;
+                    color: #e3e1e1;
+                }
+            }
+
+            .upwork {
+                background-color: rgba($brand-upwork, 0.3);
+                color: #2e7611;
+
+                .night & {
+                    background-color: #45882a;
+                    color: #cfcfcf;
+                }
+            }
         }
     }
 }

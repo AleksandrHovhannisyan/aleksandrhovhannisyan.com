@@ -12,7 +12,7 @@ order: 2
         <span>Projects</span>
         <img src="/assets/img/folder.png" alt="📁">
     </h2>
-    <div id="card-grid">
+    <div id="project-grid" class="card-grid">
         <!-- Projects get populated here dynamically (see index.js) -->
         <div id="project-placeholder" class="project">
             <header>
@@ -54,15 +54,38 @@ order: 2
     </div>
 </article>
 
+<article id="work" class="container">
+    <h2 class="heading">
+        <span>Work Experience </span>
+        <img src="/assets/img/briefcase.png" />
+    </h2>
+    <section class="card-grid">
+    {% for job in site.data.work %}
+        <section class="job">
+            <header>
+                <h3 class="job-title">{{ job.title }}, {{ job.company }}</h3>
+                <p class="date-range">{{ job.dateRange }}</p>
+            </header>
+            <ul class="responsibilities" >
+                {% for responsibility in job.responsibilities %}
+                <li>{{ responsibility }}</li>
+                {% endfor %}
+            </ul>
+            <footer class="technologies-used">
+                {% for tech in job.tech %}
+                <div class="tech {{tech}}">{{tech}}</div>
+                {% endfor %}
+            </footer>
+        </section>
+    {% endfor %}
+    </section>
+</article>
+
 <article id="education" class="container">
     <h2 class="heading">
         <span>Education</span>
         <img src="/assets/img/graduation-cap.png" alt="🎓">
     </h2>
-    <p>
-        If my track record speaks to anything, it's my <strong>commitment to excellence</strong>
-        in every endeavor I pursue.
-    </p>
     {% for institution in site.data.education %}
     <div class="institution collapsible">
         <div class="collapsible-header">

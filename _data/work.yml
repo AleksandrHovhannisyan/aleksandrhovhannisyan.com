@@ -1,0 +1,19 @@
+- title: Software Developer Intern
+  company: SharpSpring
+  dateRange: Jul. 2019–Dec. 2019 (6 months)
+  responsibilities:
+    - Recreating part of the company's web app frontend in React and TypeScript per Figma specs.
+    - Creating a new backend service for the frontend using gRPC, TypeScript, and typeorm.
+  tech:
+    - react
+    - typescript
+    - grpc
+
+- title: Freelance Copy Editor
+  company: via Upwork
+  dateRange: Nov. 2016–Present (3+ years)
+  responsibilities: 
+    - Editing a variety of technical and nontechnical content (mostly blog posts) for clients.
+    - 640+ hours, 64+ completed contracts, 5+ ongoing clients, and top-rated status.
+  tech:
+    - upwork
