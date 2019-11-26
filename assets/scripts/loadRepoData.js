@@ -207,10 +207,10 @@ function footerFor(repo) {
   footer.classList.add('topics');
 
   for (const topic of get(repo).topics) {
-    const span = document.createElement('span');
-    span.classList.add('topic');
-    span.textContent = topic;
-    footer.appendChild(span);
+    const topicDiv = document.createElement('div');
+    topicDiv.classList.add('topic');
+    topicDiv.textContent = topic;
+    footer.appendChild(topicDiv);
   }
 
   return footer;
@@ -250,7 +250,7 @@ function createHoverContent() {
 }
 
 function publishRepoCards() {
-  const grid = document.getElementById('card-grid');
+  const grid = document.getElementById('project-grid');
   const placeholder = document.getElementById('project-placeholder');
 
   for (const repo of repos.values()) {

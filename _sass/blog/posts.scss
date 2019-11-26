@@ -51,7 +51,7 @@
 }
 
 .post-category {
-    margin-top: $card-spacing;
+    margin-top: 50px;
 
     .post-category-name {
         @include underlined-link;
@@ -59,7 +59,6 @@
 }
 
 .post-previews {
-    @include card-grid;
     margin-top: 80px;
 
     .post-preview {
