@@ -26,21 +26,22 @@ function setupRepos() {
     'kotlin',
     'room-library'
   ]);
-  addRepo('EmbodyGame', 'Embody: Game', '👻', [
-    'c#',
-    'unity',
-    'inkscape',
-    'ai'
+  addRepo('U.S.-Gun-Crime', 'U.S. Gun Crimes', '⚖️', [
+    'react',
+    'typescript',
+    'express',
+    'oracle'
   ]);
   addRepo('aleksandrhovhannisyan.github.io', 'Personal Website', '💾', [
     'jekyll',
     'html5',
-    'css',
+    'sass',
     'javascript'
   ]);
-  addRepo('Steering-Behaviors', 'Steering Behaviors', '⚙️', [
+  addRepo('EmbodyGame', 'Embody: Game', '👻', [
     'c#',
     'unity',
+    'inkscape',
     'ai'
   ]);
 }
