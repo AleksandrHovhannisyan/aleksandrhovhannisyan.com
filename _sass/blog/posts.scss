@@ -64,6 +64,7 @@
     margin-top: 80px;
 
     .post-preview {
+        grid-template-rows: 1fr 1fr;
         width: 100%;
 
         .post-description {
