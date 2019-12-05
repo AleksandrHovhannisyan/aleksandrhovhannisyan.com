@@ -1,24 +1,28 @@
 ---
-title: 'How to Set Up React, TypeScript, Ant Design, LESS, CSS Modules, and ESLint'
-description: Enjoy a more pleasant dev experience by setting up React with TypeScript, Ant Design, LESS, CSS Modules, and ESLint.
-keywords: ['create react app eslint prettier typescript', 'create react app typescript ant design', 'create react app ant design', 'create react app eslint vscode', 'cra typescript css modules', 'cra typescript eslint']
+title: 'How to Set Up Create React App with TypeScript, Ant Design, LESS, CSS Modules, and ESLint'
+description: Enjoy a better dev experience by setting up React with TypeScript, customizing the Ant Design theme with LESS and CSS Modules, and formatting your code with ESLint, all without ejecting from CRA.
+keywords: ['create react app with typescript', 'customize ant design theme', 'create react app css modules and typescript']
 ---
 
 Let's skip the BS and just jump right in. I'll use VS Code to make my life easier; I recommend that you do the same.
 
 Note that I'll be using `yarn` as my package manager, but you can also use `npm`.
 
-## 1. Setting up React and TypeScript 💻
+## 1. Setting up Create React App with TypeScript 💻
 
 Switch to your target project directory and run this command:
 
 > npx create-react-app . --typescript
 
-This uses Facebook's [create-react-app](https://create-react-app.dev/) to initialize a React project with everything you need. Here's what your directory structure and `package.json` should roughly look like:
+This uses Facebook's [create-react-app](https://create-react-app.dev/) to initialize a React project with TypeScript. React by itself is pretty powerful, but React with TypeScript is a much, *much* better dev experience, in my opinion.
+
+Here's what your directory structure and `package.json` should roughly look like once that's done:
 
 {% include posts/picture.html img="structure" extension="png" alt="The directory structure of a CRA project." %}
 
 Version numbers may obviously differ.
+
+Beyond this point, most people have trouble overriding Create React App's Webpack configs without ejecting. Fortunately, as we'll see shortly, it's not all that difficult!
 
 ## 2. Setting Up Ant Design and LESS 🎨
 
@@ -124,17 +128,17 @@ Here's the result once you do that:
 
 {% include posts/picture.html img="button1" extension="png" alt="An Ant Design button and anchor." %}
 
-### Customizing Ant Design with LESS
+### Customize Ant Design Theme with LESS
 
-Let's say you want to customize Ant Design's default theme to use a different primary color or base font size.
+Let's say you want to customize the Ant Design theme to use a different primary color or base font size.
 
-Easy peasy.
+Easy peasy!
 
-Install the `less` and `less-loader` packages:
+First, install the `less` and `less-loader` packages:
 
 > yarn add less less-loader
 
-Add a LESS loader to the `config-override.js` that we created earlier:
+Then add a LESS loader to the `config-override.js` that we created earlier:
 
 ```javascript
 const { override, fixBabelImports, addLessLoader } = require('customize-cra');
@@ -156,7 +160,7 @@ module.exports = override(
 );
 ```
 
-Re-run `yarn start` to see the new results in your browser:
+That's it! Re-run `yarn start` to see the new results in your browser:
 
 {% include posts/picture.html img="button2" extension="png" alt="An Ant Design button and anchor, styled using a custom color." %}
 
@@ -237,13 +241,13 @@ Awesome! 😎
 
 Refresh the page, and you'll see that it looks exactly the same, except we now get to take advantage of CSS Modules and LESS (as well as potentially SASS or vanilla CSS, if you'd like to use those instead).
 
-## 4. Setting Up ESLint and Prettier 💅
+## 4. Using ESLint with Create React App and Prettier 💅
 
 We *could* stop there, and put up with garbo code formatting and inconsistencies, and create more work for our collaborators as they try to reconcile several people's style preferences.
 
 <img src="/assets/img/posts/how-to-set-up-react-typescript-ant-design-less-css-modules-and-eslint/but-why.gif" alt="But why, why would you do that? Why would you do any of that?" />
 
-Or we could get ESLint and Prettier up and running, too 🙂
+Or we could set up ESLint with Prettier to format our code consistently 🙂
 
 First, install these packages:
 
@@ -360,4 +364,6 @@ At this point, you can also create a separate folder for your components and rea
 
 ## That About Does It! 🎉
 
-You're all set for a more pleasant React + TypeScript + Ant Design dev experience. Good luck, and have fun!
+You're all set for a more pleasant dev experience with create-react-app.
+
+I hope you found this tutorial helpful!
