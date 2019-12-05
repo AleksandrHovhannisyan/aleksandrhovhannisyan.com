@@ -12,6 +12,7 @@ gem "jekyll", "~> 3.8.5"
 
 # For GitHub Pages
 gem "github-pages", group: :jekyll_plugins
+gem 'jekyll-sitemap'
 
 # Addressing the reported GitHub Pages severe vulnerability
 gem "nokogiri", ">= 1.10.4"

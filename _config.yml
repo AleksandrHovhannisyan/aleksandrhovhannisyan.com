@@ -34,10 +34,16 @@ defaults:
       permalink: /blog/:categories/:title/
   -
     scope:
-      path: "_posts/programming"
+      path: "_posts/dev"
     values:
       needsCodeFont: true
-      categories: [Programming]
+      categories: [Dev]
+  -
+    scope:
+      path: "_posts/cs101"
+    values:
+      needsCodeFont: true
+      categories: [CS101]
   -
     scope:
       path: "_posts/gaming"
