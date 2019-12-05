@@ -1,7 +1,7 @@
 ---
 title: 'How to Set Up React, TypeScript, Ant Design, LESS, CSS Modules, and ESLint'
 description: Enjoy a more pleasant dev experience by setting up React with TypeScript, Ant Design, LESS, CSS Modules, and ESLint.
-keywords: ['create react app eslint prettier typescript', 'create react app typescript ant design', 'create react app ant design', 'create react app eslint vscode']
+keywords: ['create react app eslint prettier typescript', 'create react app typescript ant design', 'create react app ant design', 'create react app eslint vscode', 'cra typescript css modules', 'cra typescript eslint']
 ---
 
 Let's skip the BS and just jump right in. I'll use VS Code to make my life easier; I recommend that you do the same.
