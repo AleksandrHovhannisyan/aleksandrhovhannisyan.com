@@ -300,7 +300,9 @@ Once that's done, install these two VS Code extensions:
 
 > **Important**: At this point, you may not see any linting errors show up in VS Code. And that's because we need to edit our user settings.
 
-Open up the command palette (`Ctrl+Shift+P` if you're on Windows) and type `settings`. Then, click on `Preferences: Open Settings (JSON)`:
+Open up the command palette (`Ctrl+Shift+P` if you're on Windows) and type `settings`.
+
+Then, click on `Preferences: Open Settings (JSON)`:
 
 {% include posts/picture.html img="command-palette" extension="png" alt="Opening user settings via the VS Code command palette." %}
 
@@ -316,6 +318,8 @@ Stick this in the JSON blob somewhere:
   "typescriptreact"
 ]
 ```
+
+> **Note**: You could also just put this in your workspace settings, but then you'd have to do that for every project. If you only want to lint for this project, then select `Preferences: Open Workspace Settings` instead.
 
 If all went well, VS Code should now complain whenever it sees linting errors.
 

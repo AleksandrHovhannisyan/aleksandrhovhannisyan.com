@@ -175,19 +175,14 @@
         p {
             margin-top: $paragraph-spacing;
         }
-
-        code {
-            background-color: transparent;
-        }
     }
 
     code {
         background-color: var(--code-bg-color);
-        color: var(--text-color-emphasis);
+        color: var(--code-color);
         font-family: Inconsolata, Courier New;
         font-size: 1rem;
-        padding-left: 5px;
-        padding-right: 5px;
+        padding: 3px;
         @include transition;
     }
 
