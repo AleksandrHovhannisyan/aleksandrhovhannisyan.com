@@ -32,8 +32,6 @@ Run this command:
 
 Note that `antd` already comes with type definitions, so no need to worry about installing `@types/` for it.
 
-Done! Next?
-
 ### Importing Antd Components on Demand
 
 Typically, to use an Ant Design component, you'd have to import the component from a specific directory under `antd` as well as import its accompanying stylesheet:
@@ -166,13 +164,13 @@ The best part is that Ant Design's UI is consistent, using shades of this primar
 
 If you want to customize Ant Design's theme even more, [check out their list of supported variables](https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less).
 
-## 3. Create-React-App CSS Modules and TypeScript 📦
+## 3. Create React App CSS Modules and TypeScript 📦
 
 By default, create-react-app v2 ships with CSS Modules out of the box.
 
-But... How do we make it play nicely with TypeScript and LESS?
+But... How do we use CSS Modules with TypeScript?
 
-This was an absolute headache to deal with before. But now, there's a package that does just what we want!
+This was an absolute headache to deal with before. But now, there's a package that does just what we want, and it's [made by a tech lead on Facebook's CRA team](https://github.com/mrmckeb)!
 
 > yarn add --dev typescript-plugin-css-modules
 
@@ -197,9 +195,9 @@ declare module '*.module.less' {
 
 If you want to also use SASS or CSS, simply add more module declarations and change the `.less` extension.
 
-We're almost one! Per the package's [usage instructions](https://www.npmjs.com/package/typescript-plugin-css-modules#visual-studio-code), if you want intellisense to work in VS Code, you'll need to force VS Code to use your workspace version of TypeScript instead of the globally installed version. Remember when we installed TypeScript via CRA? That's our workspace version.
+We're almost done! Per the plugin's [usage instructions](https://www.npmjs.com/package/typescript-plugin-css-modules#visual-studio-code), if you want intellisense to work in VS Code, you'll need to force VS Code to use your workspace version of TypeScript instead of the globally installed version. Remember when we installed TypeScript via CRA at the very beginning? That's our workspace version of TypeScript.
 
-Microsoft has [instructions on how to do this](https://code.visualstudio.com/docs/typescript/typescript-compiling#_using-the-workspace-version-of-typescript). But to summarize, here's how to use the workspace version of TypeScript in VS Code:
+Here's how to use the workspace version of TypeScript in VS Code:
 
 1. Open any TypeScript file.
 
@@ -211,7 +209,9 @@ Here's a screenshot to make that clearer:
 
 {% include posts/picture.html img="workspace-version" extension="png" alt="Using the workspace version of TypeScript in VS Code." %}
 
-Great! With that out of the way, let's now create a LESS stylesheet for our `App` component to move all those styles out of our JS. Name it `App.module.less` and fill it with these rules:
+Once you do that, VS Code will create a `.vscode` directory in your project for workspace settings.
+
+With that out of the way, let's now create a LESS stylesheet for our `App` component to move all the styles from before out of our JS. Name it `App.module.less` and fill it with these rules:
 
 ```css
 .app {
@@ -229,17 +229,17 @@ Then, import it like this in `App.tsx`:
 import styles from './App.module.less';
 ```
 
-Here's VS Code's intellisense in action, so you don't have to guess or remind yourself what you named your CSS selectors:
+With VS Code's intellisense, you won't have to guess or remind yourself what you named your CSS classes/IDs:
 
 {% include posts/picture.html img="intellisense" extension="png" alt="VS Code autocomplete for TypeScript CSS Modules." %}
 
 Awesome! 😎
 
-Refresh the page, and you'll see that it looks exactly the same, except we now get to take advantage of CSS Modules and LESS.
+Refresh the page, and you'll see that it looks exactly the same, except we now get to take advantage of CSS Modules and LESS (as well as potentially SASS or vanilla CSS, if you'd like to use those instead).
 
-## 4. Setting Up ESLint and Prettier (with VSCode) 💅
+## 4. Setting Up ESLint and Prettier 💅
 
-We could stop there, and put up with garbo code formatting and inconsistencies, and create more work for our collaborators as they try to reconcile several people's style preferences.
+We *could* stop there, and put up with garbo code formatting and inconsistencies, and create more work for our collaborators as they try to reconcile several people's style preferences.
 
 <img src="/assets/img/posts/how-to-set-up-react-typescript-ant-design-less-css-modules-and-eslint/but-why.gif" alt="But why, why would you do that? Why would you do any of that?" />
 
@@ -293,12 +293,32 @@ Create another file named `.prettierrc` at the root of your project directory wi
 
 This is where you'll define all your Prettier formatting rules. You *could* technically define these under `rules` in your `eslintrc` file, but I prefer to keep them separate. Also, note that you don't have to use these exact rules; you can change them if you'd like to.
 
-Once that's done, install these two VS Code extensions:
+### If You're Not Using VS Code
+
+Add a `lint:fix` script to your `package.json` so you can fix linting errors as needed (you can name this something else if you'd like to). This is what your scripts should look like if you've been following along so far:
+
+```json
+{
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-scripts eject",
+    "lint:fix": "eslint --fix './src/**/*.{ts,tsx}'"
+  }
+}
+```
+
+Then, you can simply run `yarn lint:fix` from your terminal as needed.
+
+### If You Are Using VS Code
+
+You can still use the above script, but I highly recommend that you also install these two VS Code extensions:
 
 - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
-> **Important**: At this point, you may not see any linting errors show up in VS Code. And that's because we need to edit our user settings.
+At this point, you may not see any linting errors in VS Code—that's because we need to edit our user settings.
 
 Open up the command palette (`Ctrl+Shift+P` if you're on Windows) and type `settings`.
 
@@ -309,6 +329,13 @@ Then, click on `Preferences: Open Settings (JSON)`:
 Stick this in the JSON blob somewhere:
 
 ```json
+"[typescript]": {
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2
+},
+"[typescriptreact]": {
+  "editor.formatOnSave": true
+},
 "eslint.autoFixOnSave": true,
 "eslint.enable": true,
 "eslint.validate": [
@@ -333,4 +360,4 @@ At this point, you can also create a separate folder for your components and rea
 
 ## That About Does It! 🎉
 
-You're all set for a more pleasant React + Ant Design + TypeScript dev experience. Good luck, and have fun!
+You're all set for a more pleasant React + TypeScript + Ant Design dev experience. Good luck, and have fun!
