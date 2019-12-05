@@ -29,7 +29,9 @@
     font-size: 14px;
     font-style: italic;
 
-    .post-date, .post-reading-length, .post-categories {
+    .post-date,
+    .post-reading-length,
+    .post-categories {
         align-items: center;
         display: flex;
         margin-bottom: 15px;
@@ -109,24 +111,31 @@
         }
     }
 
-    figure, picture {
+    figure,
+    picture {
         align-items: center;
         display: flex;
         flex-direction: column;
         width: 100%;
     }
 
-    img, iframe, .pro-con-table {
+    img,
+    iframe,
+    .pro-con-table {
         margin: $img-spacing auto;
         max-width: 100%;
     }
 
     img {
+        box-shadow: 0 5px 20px 10px rgba(0, 0, 0, 0.4);
         width: 100%;
     }
 
-    figure, picture, iframe, .pro-con-table {
-        & + p {
+    figure,
+    picture,
+    iframe,
+    .pro-con-table {
+        &+p {
             margin-top: $paragraph-spacing;
         }
     }
@@ -138,7 +147,8 @@
         margin-right: 5px;
     }
 
-    ul, ol {
+    ul,
+    ol {
         @include transition;
         margin-bottom: 30px;
         margin-top: 30px;
@@ -148,7 +158,8 @@
             margin-bottom: 5px;
             margin-top: 5px;
 
-            ul, ol {
+            ul,
+            ol {
                 transition: 0s;
             }
         }
@@ -160,9 +171,13 @@
         margin: 25px auto;
         padding: 1px 16px 1px 20px;
         @include transition;
-        
+
         p {
             margin-top: $paragraph-spacing;
+        }
+
+        code {
+            background-color: transparent;
         }
     }
 
@@ -186,17 +201,22 @@
     }
 
     .spoiler {
-        &, * {
+
+        &,
+        * {
             background-color: var(--spoiler-color);
             color: var(--spoiler-color);
         }
+
         margin-bottom: 1px;
 
         margin-top: 1px;
         @include transition;
 
         &:hover {
-            &, * {
+
+            &,
+            * {
                 background-color: transparent;
                 color: var(--blockquote-text-color);
             }
@@ -234,7 +254,8 @@
     #fair-use-rationale {
         margin-top: 50px;
 
-        p, ul {
+        p,
+        ul {
             font-style: italic;
         }
     }
