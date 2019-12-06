@@ -74,12 +74,6 @@
     }
 }
 
-.post {
-    .post-title {
-        font-size: 2.5em;
-    }
-}
-
 .post-body {
     $main-spacing: 60px;
     $img-spacing: 20px;
@@ -180,6 +174,7 @@
 
     code {
         background-color: var(--code-bg-color);
+        border-radius: 5px;
         color: var(--code-color);
         font-family: Inconsolata, Courier New;
         font-size: 1rem;
