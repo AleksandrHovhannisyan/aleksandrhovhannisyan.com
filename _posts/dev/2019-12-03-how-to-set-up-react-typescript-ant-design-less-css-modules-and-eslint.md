@@ -6,13 +6,15 @@ keywords: ['create react app with typescript', 'customize ant design theme', 'cr
 
 Let's skip the BS and just jump right in. I'll use VS Code to make my life easier; I recommend that you do the same.
 
-Note that I'll be using `yarn` as my package manager, but you can also use `npm`.
+Note that I'll be using yarn as my package manager, but you can also use npm.
 
 ## 1. Setting up Create React App with TypeScript 💻
 
 Switch to your target project directory and run this command:
 
-> npx create-react-app . --typescript
+```bash
+npx create-react-app . --typescript
+```
 
 This uses Facebook's [create-react-app](https://create-react-app.dev/) to initialize a React project with TypeScript. React by itself is pretty powerful, but React with TypeScript is a much, *much* better dev experience, in my opinion.
 
@@ -32,7 +34,9 @@ Ant Design is a fantastic library for React and other JavaScript frameworks that
 
 Run this command:
 
-> yarn add antd
+```bash
+yarn add antd
+```
 
 Note that `antd` already comes with type definitions, so no need to worry about installing `@types/` for it.
 
@@ -55,11 +59,15 @@ import { Button } from 'antd';
 
 First, install the `babel-plugin-import` package:
 
-> yarn add --dev babel-plugin-import
+```bash
+yarn add -D babel-plugin-import
+```
 
 Then install the `react-app-rewired` and `customize-cra` packages:
 
-> yarn add react-app-rewired customize-cra
+```bash
+yarn add react-app-rewired customize-cra
+```
 
 These allow us to customize create-react-app without ejecting.
 
@@ -136,7 +144,9 @@ Easy peasy!
 
 First, install the `less` and `less-loader` packages:
 
-> yarn add less less-loader
+```bash
+yarn add less less-loader
+```
 
 Then add a LESS loader to the `config-override.js` that we created earlier:
 
@@ -176,7 +186,9 @@ But... How do we use CSS Modules with TypeScript?
 
 This was an absolute headache to deal with before. But now, there's a package that does just what we want, and it's [made by a tech lead on Facebook's CRA team](https://github.com/mrmckeb)!
 
-> yarn add --dev typescript-plugin-css-modules
+```bash
+yarn add -D typescript-plugin-css-modules
+```
 
 After it's installed, add the plugin to your `tsconfig.json`:
 
@@ -251,7 +263,9 @@ Or we could set up ESLint with Prettier to format our code consistently 🙂
 
 First, install these packages:
 
-> yarn add --dev @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-config-react eslint-plugin-prettier prettier
+```bash
+yarn add -D @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-config-react eslint-plugin-prettier prettier
+```
 
 (Credit goes to [Ben Weiser](https://dev.to/benweiser/how-to-set-up-eslint-typescript-prettier-with-create-react-app-3675) for figuring this part out.)
 
