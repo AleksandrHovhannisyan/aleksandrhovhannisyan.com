@@ -64,7 +64,7 @@ This came along with two more support cards, **Gravekeeper's Spiritualist** and 
 </figure>
 
 
-Spiritualist is arguably the more important of the two since she basically serves as a free Polymerization, but Headman allows you to resurrect Gravekeeper's while bypassing Necrovalley's effect.
+Spiritualist is arguably the more important of the two since she basically serves as a free Polymerization, but Headman allows you to resurrect Gravekeeper's while bypassing Necrovalley's effect. Toss in two copies of **Hidden Temples of Necrovalley** for good measure since nearly every archetype special summons these days.
 
 Talk about reviving the dead—a welcome buff to one of my favorite archetypes!
 
