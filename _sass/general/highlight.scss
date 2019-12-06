@@ -65,8 +65,8 @@ $operator: #ac8d58;
     }
   }
 
-  /* Functions. Note: .o + .na is for things like, e.g., System.[out.println] */
-  .nf, .o + .na {
+  /* Functions */
+  .nf, .nx {
     &, &::selection {
       color: $function;
     }
@@ -115,7 +115,7 @@ $operator: #ac8d58;
   }
 
   /* Strings */
-  .s, .sb, .sc {
+  .s, .sb, .sc, .s1, .s2 {
     &, &::selection {
       color: $string;
     }
@@ -136,7 +136,7 @@ $operator: #ac8d58;
   }
 
   /* Operators */
-  .o, .ow {
+  .ow {
     &, &::selection {
       color: $operator;
     }
