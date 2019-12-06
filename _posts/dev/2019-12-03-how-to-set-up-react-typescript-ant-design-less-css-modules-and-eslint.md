@@ -335,7 +335,7 @@ Add a `lint:fix` script to your `package.json` so you can fix linting errors as 
 }
 ```
 
-Then, you can simply run `yarn lint:fix` from your terminal as needed.
+Then, you can simply run `yarn lint:fix` from your terminal.
 
 ### If You Are Using VS Code
 
