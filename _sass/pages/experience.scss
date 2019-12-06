@@ -35,6 +35,10 @@
             height: 16px;
             margin-right: 3px;
             width: 16px;
+
+            .night & {
+                fill: var(--text-color-normal);
+            }
         }
     }
 
@@ -146,7 +150,7 @@
         @include transition;
 
         .night & {
-            fill: #{$secondary-color-light};
+            fill: #9a8e75;
         }
     }
 
@@ -184,6 +188,7 @@
         }
 
         .responsibilities {
+            @include transition;
             margin-bottom: 1rem;
             padding-left: 20px;
 

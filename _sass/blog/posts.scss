@@ -168,6 +168,7 @@
         @include transition;
 
         p {
+            color: #aaaaaa;
             margin-top: $paragraph-spacing;
         }
     }
@@ -183,15 +184,18 @@
     }
 
     .filename {
-        background-color: rgb(0, 0, 0);
-        color: rgb(255, 255, 255);
+        background-color: black;
+        color: #bcbcbc;
         margin-bottom: calc(-1.8 * #{$paragraph-spacing});
-        padding: 5px 20px;
+        padding: 10px 20px;
+
+        &::before {
+            content: "📂";
+        }
     }
 
     div.highlighter-rouge {
         margin: calc(#{$main-spacing} / 2) auto;
-        padding: 10px auto;
 
         code {
             padding: 0;
