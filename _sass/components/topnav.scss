@@ -6,7 +6,7 @@ $topnav-min-height: 64px;
 
 #topnav {
     background-color: var(--bg-color-nav);
-    box-shadow: 0px 0px 30px 1px rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.8);
     left: 0;
     min-height: $topnav-min-height;
     position: fixed;
@@ -32,6 +32,7 @@ $topnav-min-height: 64px;
 
     .nav-links {
         background-color: var(--bg-color-nav);
+        box-shadow: 0px 15px 20px 0px rgba(0, 0, 0, 0.8);
         color: var(--text-color-nav);
         /* Mobile menu dropdown takes up 100% of the viewport width */
         display: block;
@@ -65,7 +66,7 @@ $topnav-min-height: 64px;
             @include transition;
 
             &:hover {
-                background-color: var(--bg-color-contrast);
+                background-color: var(--bg-color-nav);
                 color: $nearly-white;
                 text-decoration: underline;
             }
@@ -86,7 +87,7 @@ $topnav-min-height: 64px;
 
     #theme-switch {
         align-self: center;    
-        background-color: var(--bg-color-contrast);
+        background-color: var(--bg-color-nav);
         border: var(--switch-border-thickness) solid var(--text-color-nav);
         border-radius: 100px;        
         cursor: pointer;
@@ -140,7 +141,8 @@ $topnav-min-height: 64px;
     #topnav {
         .nav-links {
             align-items: center;
-            
+            box-shadow: none;
+
             /* Show the links on a single row on the navbar */
             display: flex;
             flex-direction: row;
