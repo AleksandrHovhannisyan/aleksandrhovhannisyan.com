@@ -30,6 +30,8 @@ $support: #e1a6f2;
 $operator: #ac8d58;
 
 .highlight {
+  border-radius: 5px;
+
   &, code {
     background-color: $background;
     color: $text;
