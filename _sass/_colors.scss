@@ -1,20 +1,19 @@
-// Primary theme: blue skies (custom)
 $primary-color: #35647a;
 $primary-color-dark: #13242c;
 $primary-color-light: #4989a7;
-$primary-color-highlight: #d3dafa;
 $primary-color-link: #205692;
 
-// Secondary theme: coffee (custom)
-$secondary-color: #635b4b;
-$secondary-color-light: #867d6b;
-$secondary-color-highlight: rgba(125, 117, 99, 0.8);
+// TODO: rename "secondary"
+$secondary-color: #354b55;
+$secondary-color-light: #527381;
 $secondary-color-link: #ae8f5d;
+
+$highlight-color: #d3dafa;
 
 // Miscellaneous colors, mostly on the gray spectrum
 $denim: #586069;
 $nearly-black: #141414;
-$charcoal: #212121;
+$charcoal: #121212;
 $nearly-white: #fdfdfd;
 
 // All brand colors

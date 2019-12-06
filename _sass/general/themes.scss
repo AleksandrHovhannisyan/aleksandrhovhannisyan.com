@@ -4,7 +4,7 @@
 html.day {
     --bg-color-main: #ffffff;
     --bg-color-contrast: #{$primary-color-dark};
-    --selection-bg-color: #{$primary-color-highlight};
+    --bg-color-nav: #{$primary-color-dark};
 
     --text-color-normal: #{$denim};
     --text-color-nav: #cecdcd;
@@ -29,11 +29,11 @@ html.day {
 
 html.night {
     --bg-color-main: #{$charcoal};
+    --bg-color-nav: #1F1F1F;
     --bg-color-contrast: #{$nearly-black};
-    --selection-bg-color: #{$secondary-color-highlight};
 
-    --text-color-normal: #9b9b9b;
-    --text-color-emphasis: #c0b9ab;
+    --text-color-normal: #9e9e9e;
+    --text-color-emphasis: #bdbdbd;
     --text-color-nav: #b3b1b1;
     --link-color: #{$secondary-color-link};
 
@@ -42,15 +42,14 @@ html.night {
     --button-bg-hover-color: #{$secondary-color-light};
     --button-text-hover-color: #{$nearly-black};
 
-    $card-bg-color: adjust-color($charcoal, $red: 15, $blue: 15, $green: 15);
-    --card-bg-color: #{$card-bg-color};
-    --label-bg-color: #{$charcoal};
+    --card-bg-color: #212121;
+    --label-bg-color: #3b3b3b;
     $hover-color-general: adjust-color($charcoal, $red: 22, $blue: 22, $green: 22);
     --hover-color-general: #313131;
 
     --form-bg-color: #313131;
     --code-color: #cacaca;
-    --code-bg-color: rgb(83, 79, 79);
-    --blockquote-bg-color: #373434;
+    --code-bg-color: rgb(48, 48, 48);
+    --blockquote-bg-color: rgb(63, 62, 62);
     --spoiler-color: rgb(163, 158, 148);
 }

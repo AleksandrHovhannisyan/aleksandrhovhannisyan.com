@@ -3,7 +3,7 @@
 @import 'fonts';
 
 ::selection {
-    background-color: var(--selection-bg-color);
+    background-color: $highlight-color;
     color: black;
 }
 
