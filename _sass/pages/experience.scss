@@ -56,6 +56,7 @@
         .topic {
             background-color: var(--label-bg-color);
             border-radius: 2px;
+            color: var(--text-color-emphasis);
             font-size: 0.9em;
             margin-bottom: 0px;
             margin-right: 5px;
@@ -149,7 +150,7 @@
         @include transition;
 
         .night & {
-            fill: #988560;
+            fill: #{$secondary-color-light};
         }
     }
 

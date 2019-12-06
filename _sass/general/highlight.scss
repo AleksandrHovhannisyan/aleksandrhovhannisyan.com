@@ -1,33 +1,23 @@
 /*
-
-The MIT License (MIT)
-
-New Moon Theme, Copyright (c) 2019 Tania Rascia
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-Adopted for use with Pygments/Rouge
-
+VS Code Dark Theme, modified for use with Rouge.
 */
 
-$background: #2d2d2d;
-$selection: rgba(80, 80, 80, 0.8);
-$comment: #777c85;
-$text: #b3b9c5;       /* Equivalent of 'foreground' in Tania's theme */
-$function: #e0dfdf;   /* Modified from original */
-$variable: #f2777a;
-$number: #fca369;
-$attribute: #ffd479;
-$keyword: #ffeea6;
-$string: #92d192;
-$tag: #6AB0F3;
-$constant: #76d4d6;
-$support: #e1a6f2;
-$operator: #ac8d58;
+$background: #1e1e1e;
+$selection: #add6ff26;
+$comment: #6A9955;
+$text: #b3b9c5;
+$function: #d4d4d4;
+$variable: #569cd6;
+$number: #b5cea8;
+$attribute: #9cdcfe;
+$keyword: #569cd6;
+$string: #ce9178;
+$tag: #569cd6;
+$constant: #569cd6;
+$support: #9cdcfe;
+$operator: #d4d4d4;
+$punctuation: #d4d4d4;
+$operator-word: #569cd6;
 
 .highlight {
   border-radius: 5px;
@@ -131,16 +121,28 @@ $operator: #ac8d58;
   }
 
   /* Punctuation */
-  .p, .o {
+  .p {
     &, &::selection {
-      color: $function;
+      color: $punctuation;
+    }
+  }
+
+  .o {
+    &, &::selection {
+      color: $operator;
     }
   }
 
   /* Operators */
   .ow {
     &, &::selection {
-      color: $operator;
+      color: $operator-word;
     }
+  }
+}
+
+.si {
+  &, &::selection {
+    color: #569cd6;
   }
 }
