@@ -1,7 +1,8 @@
 ---
 title: Home
 permalink: /
-order: 1
+showOnNavbar: false
+order: -1
 ---
 
 <article id="intro" class="container">
