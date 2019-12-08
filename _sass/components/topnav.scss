@@ -47,7 +47,7 @@ $topnav-min-height: 64px;
             }
         }
 
-        #name {
+        #my-name {
             margin-left: 10px;
     
             &:hover {
@@ -115,7 +115,7 @@ $topnav-min-height: 64px;
     #topnav {
 
         #logo {
-            #name::before {
+            #my-name::before {
                 content: "Aleksandr Hovhannisyan";
             }
         }

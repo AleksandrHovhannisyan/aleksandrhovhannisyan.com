@@ -7,8 +7,8 @@ order: 2
 
 {% include banner.html heading="My experience" content="I try to keep busy while having fun and testing my limits. Between school, side projects, freelancing, and interning, I've gained valuable exposure to a wide variety of interesting technologies and problems." %}
 
-<article id="projects" class="container">
-    <h2 class="heading">
+<section id="projects" class="container section">
+    <h2 class="heading-with-image">
         <span>Projects</span>
         <img src="/assets/img/folder.png" alt="📁">
     </h2>
@@ -24,10 +24,10 @@ order: 2
             </div>
         </div>
     </div>
-</article>
+</section>
 
-<article id="skills" class="container">
-    <h2 class="heading">
+<section id="skills" class="container section">
+    <h2 class="heading-with-image">
         <span>Skills and Abilities</span>
         <img src="/assets/img/juggler.png" alt="🤹">
     </h2>
@@ -52,12 +52,12 @@ order: 2
         </div>
         {% endfor %}
     </div>
-</article>
+</section>
 
-<article id="work" class="container">
-    <h2 class="heading">
+<section id="work" class="container section">
+    <h2 class="heading-with-image">
         <span>Work Experience </span>
-        <img src="/assets/img/briefcase.png" />
+        <img src="/assets/img/briefcase.png" alt="💼" />
     </h2>
     <section class="card-grid">
     {% for job in site.data.work %}
@@ -79,10 +79,10 @@ order: 2
         </section>
     {% endfor %}
     </section>
-</article>
+</section>
 
-<article id="education" class="container">
-    <h2 class="heading">
+<section id="education" class="container section">
+    <h2 class="heading-with-image">
         <span>Education</span>
         <img src="/assets/img/graduation-cap.png" alt="🎓">
     </h2>
@@ -116,7 +116,7 @@ order: 2
         </div>
     </div>
     {% endfor %}
-</article>
+</section>
 
 <!-- jQuery, only needed on this page -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
