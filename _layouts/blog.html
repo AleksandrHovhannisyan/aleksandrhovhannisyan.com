@@ -5,14 +5,14 @@ layout: default
 
 {% include banner.html heading="Welcome to my blog!" content="I like to write about dev, CS theory, video games, music, and whatever else comes to mind. All opinions are my own." %}
 
-<article class="blog-overview container">
+<section class="container section blog-overview">
     <div class="category-links container">
         <a href="{{ site.url }}/blog/dev">Dev</a>
         <a href="{{ site.url }}/blog/cs101">CS101</a>
         <a href="{{ site.url }}/blog/gaming">Gaming</a>
         <a href="{{ site.url }}/blog/music">Music</a>
     </div>
-    <article class="post-previews card-grid">
+    <section class="post-previews card-grid section">
         {{ content }}
-    </article>
-</article>
+    </section>
+</section>

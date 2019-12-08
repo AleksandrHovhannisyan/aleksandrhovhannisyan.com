@@ -5,7 +5,7 @@ showOnNavbar: false
 order: -1
 ---
 
-<article id="intro" class="container">
+<section id="intro" class="container section">
     <div id="hero-banner">
         <div id="main-cta">
             <h1>Hey there! I'm Aleksandr</h1>
@@ -20,10 +20,10 @@ order: -1
         <a class="button" href="https://www.linkedin.com/in/aleksandr-hovhannisyan-ba154b120/">{% include svg.html svg="linkedin" %} <span>LinkedIn</span></a>
         <a class="button" href="https://github.com/AleksandrHovhannisyan">{% include svg.html svg="github" %} <span>GitHub</span></a>
     </div>
-</article>
+</section>
 
-<article id="about-me" class="container">
-    <h2 class="heading">
+<section id="about-me" class="container section">
+    <h2 class="heading-with-image">
         <span>About Me</span>
         <img src="/assets/img/laptop.png" alt="💻">
     </h2>
@@ -32,4 +32,4 @@ order: -1
     <p>
         When I'm not hacking away on a project, I enjoy playing video games, writing, learning new things, and working out. I'm also a creative at heart and will spend as many painful hours as it takes perfecting something until I'm fully satisfied with how it looks. (I can't count how many times I've changed this site's design.)
     </p>
-</article>
+</section>

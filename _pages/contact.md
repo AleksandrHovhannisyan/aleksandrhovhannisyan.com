@@ -4,12 +4,12 @@ permalink: /contact/
 order: 4
 ---
 
-<article class="container">
-    <h2 class="heading">
+<section class="container section">
+    <h2 class="heading-with-image">
         <span>Get in touch!</span>
         <img src="/assets/img/envelope.png" alt="📧">
     </h2>
-    <section id="contact-information">
+    <div id="contact-information">
         <section id="contact-form">
             <p>Thanks for reaching out! I'll get back to you ASAP.</p>
             <form action="https://formspree.io/hire.aleksandr@gmail.com" method="POST" spellcheck="false">
@@ -37,5 +37,5 @@ order: 4
                 {% endfor %}
             </section>
         </section>
-    </section>
-</article>
+    </div>
+</section>
