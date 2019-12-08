@@ -172,7 +172,7 @@
         @include transition;
 
         p {
-            color: #aaaaaa;
+            color: var(--blockquote-text-color);
             margin-top: $paragraph-spacing;
         }
     }
