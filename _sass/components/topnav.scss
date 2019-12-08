@@ -30,32 +30,54 @@ $topnav-min-height: 64px;
         max-width: $page-max-width;
     }
     
-    #logo {
-        align-items: center;
-        display: flex;
-
-        #theme-switch {
-            cursor: pointer;
-            font-size: 1.5rem;
-    
-            &::before {
-                content: "☀️";
-            }
-    
-            .night &::before {
-                content: "🌑";
-            }
+    #my-name {
+        &:hover {
+            color: white;
         }
+    }
 
-        #my-name {
-            margin-left: 10px;
-    
-            &:hover {
-                color: white;
-            }
-    
-            &::before {
-                content: "Aleksandr H.";
+    #theme-switch-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    #theme-switch {
+        --switch-width: 55px;
+        align-self: center;    
+        background-color: rgb(85, 85, 85);
+        border-radius: 100px;        
+        cursor: pointer;
+        display: flex;
+        flex-wrap: nowrap;   
+        font-size: 0.9rem;
+        height: 25px;
+        justify-content: space-between;
+        margin-right: 5px;
+        padding-left: 3px;
+        padding-right: 3px;
+        padding-top: 1px;
+        position: relative;
+        width: var(--switch-width);     
+        @include transition;
+
+        &::before {
+            --switch-orb-height: 25px;
+            --switch-orb-width: 25px; 
+            background-color: rgb(207, 207, 207);
+            border: 1.3px solid $primary-color;
+            border-radius: 50%;
+            content: "";
+            height: var(--switch-orb-height);
+            left: 0;    
+            position: absolute;
+            right: calc(var(--switch-width) - 1.5 * var(--switch-orb-width));
+            top: -1px;
+            width: var(--switch-orb-width);
+            @include transition;
+
+            html.night & {
+                left: calc(var(--switch-width) - var(--switch-orb-width));
+                right: var(--orb-distance-from-edge);
             }
         }
     }
@@ -113,11 +135,8 @@ $topnav-min-height: 64px;
 @media only screen and (min-width: $device-cutoff-medium) {
 
     #topnav {
-
-        #logo {
-            #my-name::before {
-                content: "Aleksandr Hovhannisyan";
-            }
+        #theme-switch {
+            margin-left: 40px;
         }
 
         .nav-links {

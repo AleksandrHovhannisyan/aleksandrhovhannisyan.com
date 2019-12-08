@@ -1,7 +1,6 @@
 ---
 title: Contact
 permalink: /contact/
-order: 4
 ---
 
 <section class="container section">

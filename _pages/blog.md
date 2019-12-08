@@ -2,7 +2,6 @@
 title: Blog
 permalink: /blog/
 layout: blog
-order: 3
 ---
 
 {% for post in site.posts %}

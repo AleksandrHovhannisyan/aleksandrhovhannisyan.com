@@ -43,9 +43,9 @@ All other SVG icons were obtained as inlines from encharm's [Font-Awesome-SVG-PN
 
 I've spent a lot of time (I'd say probably more than 10 hours in total) tweaking my site's light and dark mode themes. Currently, light mode is nice and neutral, with the primary color being a shade of navy blue. For dark mode, I wanted to use a "coffee"-type theme. I added both an auto and a manual transition via a switch on the navbar to allow users to pick whichever theme they prefer. Again, that's obviously not too important for a portfolio site, but it was still something I wanted to try.
 
-![](https://user-images.githubusercontent.com/19352442/70391801-16bded00-19a7-11ea-92fc-a141a9e7faa2.png)
+![](https://user-images.githubusercontent.com/19352442/70398223-2eb56100-19e7-11ea-9fc8-a47b90cd0bf8.png)
 
-<p align="center"><i>Dark mode theme, for those whose hiring efforts extend into the night :)</i></p>
+<p align="center"><i>Dark mode theme, for those whose hiring efforts extend into the night :) Theme switch inspired by <a href="https://create-react-app.dev/">https://create-react-app.dev/</a></i></p>
 
 ### Contact
 I decided I'd also include a form on my site to make it easier for people to reach out, even though the primary call-to-action buttons already direct visitors to my LinkedIn and GitHub. I used [Formspree](https://github.com/formspree/formspree) for this, and it works perfectly. One downside is that your email is publicly exposed in your HTML, making it possible for spammers to ruin your day. To get around this, I used a [hidden honeypot field](https://help.formspree.io/hc/en-us/articles/360013580813-Honeypot-spam-filtering) and a throwaway email address that I monitor occasionally.

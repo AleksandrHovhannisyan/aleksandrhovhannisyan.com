@@ -2,7 +2,6 @@
 title: Experience
 custom_js: ["loadRepoData"]
 permalink: /experience/
-order: 2
 ---
 
 {% include banner.html heading="My experience" content="I try to keep busy while having fun and testing my limits. Between school, side projects, freelancing, and interning, I've gained valuable exposure to a wide variety of interesting technologies and problems." %}
