@@ -20,7 +20,7 @@ This is hands-down my favorite song from The Evpatoria Report.
 
 The soothing intro is pretty typical in post-rock, so don't let it fool you. It's a tease that gradually grows in intensity. And as the crescendo builds, you turn to face the sound. Start bobbing your head. Tapping your feet. Closing your eyes and letting it take over.
 
-Make it to 4:30, and the electric riffs become sharper and more poignant as they test the boundaries of the genre. Your whole body's swinging now.
+Make it to 4:30, and the electric riffs become sharper. Your whole body's swinging now.
 
 And then the 5:15 bomb drops—so hard, in fact, that I just can't help but picture the whole band lighting on fire as they breathe a violent rage into their instruments. You're overcome with a head-banging, air-drumming fervor.
 
@@ -38,7 +38,7 @@ Occasionally, though, amid all the deceptive calm and sunshine, a rain shower wi
 
 That's how I'd describe the chief crescendo of *Prognoz*—a sudden, violent downpour that momentarily disturbs the peace.
 
-The rest of the song is nothing to write home about, though. It's not *bad*, but it does fail to live up to that amazing intro.
+The main chunk of the song is nothing to write home about, but the electric guitar bit at the end is right back to the good stuff.
 
 ## Dar Now (Maar)
 
