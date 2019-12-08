@@ -1,19 +1,18 @@
 <nav id="topnav">
     <div class="container nav-container">
-        <div id="logo">
-            <div id="theme-switch"></div>
-            <a id="my-name" href="/"></a>
-        </div>
+        <a id="my-name" href="/">🏠 Aleksandr Hovhannisyan</a>
         {% include svg.html svg="hamburger" class="navbar-hamburger" %}
         <ul class="nav-links">
-            {% assign pages = site.html_pages | where: "showOnNavbar","true" | sort: "order" %}
-            {% for p in pages %}
-                {% if page.title == p.title %}
-                <li><a class="active-nav-link" href="{{ p.url }}">{{ p.title }}</a></li>    
-                {% else %}
-                <li><a href="{{ p.url }}">{{ p.title }}</a></li>
-                {% endif %}
-            {% endfor %}
+            <li><a href="/experience" {% if page.title == "Experience" %}class="active-nav-link"{% endif %}>Experience</a></li>
+            <li><a href="/blog" {% if page.title == "Blog" %}class="active-nav-link"{% endif %}>Blog</a></li>
+            <li><a href="/contact" {% if page.title == "Contact" %}class="active-nav-link"{% endif %}>Contact</a></li>
+            <li id="theme-switch-container">
+                <!-- Inspiration: https://create-react-app.dev/ -->
+                <div id="theme-switch">
+                    <div id="moon">🌜</div>
+                    <div id="sun">🌞</div>
+                </div>
+            </li>
         </ul>
     </div>
 </nav>

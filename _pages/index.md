@@ -1,8 +1,6 @@
 ---
 title: Home
 permalink: /
-showOnNavbar: false
-order: -1
 ---
 
 <section id="intro" class="container section">
