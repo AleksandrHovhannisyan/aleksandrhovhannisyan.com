@@ -39,6 +39,7 @@ $topnav-min-height: 64px;
     #theme-switch-container {
         display: flex;
         justify-content: center;
+        height: 30px;
     }
 
     #theme-switch {
@@ -60,7 +61,7 @@ $topnav-min-height: 64px;
         @include transition;
 
         .night & {
-            background-color: #6d6f81;
+            background-color: $secondary-color;
         }
 
         #knob {
@@ -79,8 +80,9 @@ $topnav-min-height: 64px;
             @include transition;
 
             html.night & {
-                background-color: #a4aac7;
-                border: 1.3px solid rgb(106, 110, 126);
+                box-shadow: 0 0 5px 0 lighten($secondary-color-light, 50%);
+                background-color: $secondary-color-light;
+                border: 1.3px solid $secondary-color;
                 left: calc(var(--switch-width) - var(--switch-orb-width));
                 right: var(--orb-distance-from-edge);
             }
