@@ -30,9 +30,19 @@ $topnav-min-height: 64px;
         max-width: $page-max-width;
     }
     
-    #my-name {
-        &:hover {
-            color: white;
+    #logo {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+
+        #my-name {
+            margin-left: 5px;
+            width: 201px;
+            @include transition;
+            
+            &:hover {
+                color: white;
+            }
         }
     }
 
@@ -56,9 +66,14 @@ $topnav-min-height: 64px;
         margin-right: 5px;
         padding-left: 3px;
         padding-right: 3px;
+        padding-top: 1px;
         position: relative;
         width: var(--switch-width);     
         @include transition;
+
+        #sun, #moon {
+            height: 20px;
+        }
 
         .night & {
             background-color: $secondary-color;
@@ -74,7 +89,7 @@ $topnav-min-height: 64px;
             height: var(--switch-orb-height);
             left: 0;    
             position: absolute;
-            right: calc(var(--switch-width) - 1.5 * var(--switch-orb-width));
+            right: calc(var(--switch-width) - var(--switch-orb-width));
             top: -1px;
             width: var(--switch-orb-width);
             @include transition;
@@ -139,7 +154,7 @@ $topnav-min-height: 64px;
     }   
 }
 
-@media only screen and (min-width: $device-cutoff-medium) {
+@media only screen and (min-width: 670px) {
 
     #topnav {
         #theme-switch {
