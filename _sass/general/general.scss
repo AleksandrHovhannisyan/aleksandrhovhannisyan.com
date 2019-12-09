@@ -6,6 +6,19 @@
     background-color: var(--selection-color);
 }
 
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--bg-color-nav);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--button-bg-hover-color);
+    border-radius: 5px;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
