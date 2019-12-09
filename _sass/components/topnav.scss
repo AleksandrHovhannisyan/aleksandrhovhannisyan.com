@@ -44,23 +44,26 @@ $topnav-min-height: 64px;
     #theme-switch {
         --switch-width: 55px;
         align-self: center;    
-        background-color: rgb(85, 85, 85);
+        background-color: rgb(116, 116, 116);
         border-radius: 100px;        
         cursor: pointer;
         display: flex;
         flex-wrap: nowrap;   
         font-size: 0.9rem;
-        height: 25px;
+        height: 23px;
         justify-content: space-between;
         margin-right: 5px;
         padding-left: 3px;
         padding-right: 3px;
-        padding-top: 1px;
         position: relative;
         width: var(--switch-width);     
         @include transition;
 
-        &::before {
+        .night & {
+            background-color: #6d6f81;
+        }
+
+        #knob {
             --switch-orb-height: 25px;
             --switch-orb-width: 25px; 
             background-color: rgb(207, 207, 207);
@@ -76,6 +79,8 @@ $topnav-min-height: 64px;
             @include transition;
 
             html.night & {
+                background-color: #a4aac7;
+                border: 1.3px solid rgb(106, 110, 126);
                 left: calc(var(--switch-width) - var(--switch-orb-width));
                 right: var(--orb-distance-from-edge);
             }
