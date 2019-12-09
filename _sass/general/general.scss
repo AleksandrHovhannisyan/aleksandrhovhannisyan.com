@@ -3,7 +3,8 @@
 @import 'fonts';
 
 ::selection {
-    background-color: var(--selection-color);
+    background-color: var(--selection-bg-color);
+    color: var(--selection-text-color);
 }
 
 ::-webkit-scrollbar {
