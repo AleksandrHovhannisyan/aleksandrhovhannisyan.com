@@ -8,7 +8,7 @@
 }
 
 ::-webkit-scrollbar {
-    width: 12px;
+    width: 15px;
 }
 
 ::-webkit-scrollbar-track {
@@ -18,6 +18,10 @@
 ::-webkit-scrollbar-thumb {
     background: var(--button-bg-hover-color);
     border-radius: 5px;
+
+    &:hover {
+        background: var(--button-bg-color);
+    }
 }
 
 * {
