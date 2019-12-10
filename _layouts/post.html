@@ -15,3 +15,13 @@ layout: default
 {% if page.needsCodeFont %}
 <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
 {% endif %}
+{% if page.needsLatex %}
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<script>
+window.MathJax = {
+  'HTML-CSS': {
+    linebreaks: { automatic: true, width: 'container' }
+  }
+};
+</script>
+{% endif %}

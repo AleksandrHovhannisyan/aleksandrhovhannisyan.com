@@ -1,6 +1,6 @@
 # aleksandrhovhannisyan.github.io
 
-> My little corner of the interwebs.
+> My little corner of the internet.
 
 Welcome to my site! 👋
 
