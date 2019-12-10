@@ -55,10 +55,6 @@
         fill: var(--button-text-color);
     }
 
-    &:focus {
-        outline: none;
-    }
-
     &:hover {
         background-color: var(--button-bg-hover-color);
 
@@ -78,9 +74,4 @@
 
     --collapsible-content-border-width: 3px;
     @include transition(all, 0.5s);
-}
-
-/* To get rid of Firefox's dotted lines when these are clicked */
-.button::-moz-focus-inner, .collapsible::-moz-focus-inner {
-    outline: none;
 }
