@@ -93,8 +93,8 @@
     }
 
     h2 {
-        margin-top: 0px;
-        padding-top: 70px;
+        margin-top: -50px;
+        padding-top: 90px;
     }
 
     h3 {
@@ -191,7 +191,7 @@
     .filename {
         background-color: #141414;
         color: #bcbcbc;
-        margin-bottom: calc(-1.8 * #{$paragraph-spacing});
+        margin-bottom: calc(-1em - 2px);
         padding: 10px 20px;
 
         &::before {
@@ -200,7 +200,7 @@
     }
 
     div.highlighter-rouge {
-        margin: calc(#{$main-spacing} / 2) auto;
+        margin: 1em auto;
 
         code {
             padding: 0;
