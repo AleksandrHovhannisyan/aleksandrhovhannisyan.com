@@ -10,11 +10,11 @@ There's a rite of passage that every beginner programmer must endure in their un
 
 Sounds simple enough to be true. But is it? Is Java pass by value or pass by reference?
 
-The short answer is that Java uses **pass by value**. Cue the objections!
+The short answer is that Java uses **pass by value**. Cue the objections...
 
 So what's the deal? And why do so many people seem to get it wrong?
 
-## A Fundamental Misunderstanding... And Confusing Terminology
+{% include linkedHeading.html heading="A Fundamental Misunderstanding... And Confusing Terminology" h=2 %}
 
 If there's one thing you should take away from this article, it's this:
 
@@ -30,7 +30,7 @@ The real problem is that people are rarely ever taught what pass by reference ac
 
 So what *does* it mean? I'm glad you asked.
 
-## Prerequisite Terminology
+{% include linkedHeading.html heading="Prerequisite Terminology" h=2 %}
 
 Before we get to that, let's define two simple terms as they relate to functions, using the following Java snippet as a reference (*yep, that word's officially ruined*):
 
@@ -55,7 +55,7 @@ In practice, you'll hear the terms "parameter" and "argument" be used interchang
 
 Now let's get to the good stuff.
 
-## Pass by Value vs. Pass by Reference
+{% include linkedHeading.html heading="Pass by Value vs. Pass by Reference" h=2 %}
 
 Just as a reminder:
 
@@ -87,7 +87,7 @@ Below is a diagram of passing by reference. The sample code to the right is C++.
 
 **Side note**: You can safely ignore this, but for those who are curious: There is a difference between pass by reference and pass by pointer (argh!! so many types!). However, there's really no good way to show pass by reference without using arrows to denote some sort of shared object relationship (reference counting). The above code is pass by reference in C++, and the diagram is intended to reflect that, even though it's using arrow "pointers." References are usually implemented as an abstraction layer on top of pointers anyway, so it's not a big deal.
 
-## The Misguided Objections (And Why They're Wrong)
+{% include linkedHeading.html heading="The Misguided Objections (And Why They're Wrong)" h=2 %}
 
 People tend to bring up a classic counter-example like the following as "proof" that Java uses pass by reference (note: assume the `Person` class has been defined with all the methods and members you'd expect):
 
@@ -143,7 +143,7 @@ The argument we passed in (the "original" reference) is not the same variable as
 
 However, whether or not *the object being pointed to* has been left intact depends on what the function did: If it modified the object... Well, as we saw earlier, then the object will have been modified!
 
-## (Optional) Advanced Example: Containers and Objects
+{% include linkedHeading.html heading="(Optional) Advanced Example: Containers and Objects" h=2 %}
 
 This section is purely optional for those who are curious and want to learn something interesting (and useful!).
 
@@ -194,7 +194,7 @@ If we pass an array of objects to a method, and we can have the array's elements
 
 **Yes**. And you can do that by [using an array of size one](https://stackoverflow.com/a/7884699/10480032). However, just because we *can* do this doesn't mean that we should. There's a reason why Java is pass by value: To prevent the accidental reassignment of objects within methods.
 
-## Repeat After Me:
+{% include linkedHeading.html heading="Repeat After Me:" h=2 %}
 
 1. What Java calls "references" are essentially pointers, with some minor differences. Technically speaking, they're two different things. But it helps to think of them as pointers to avoid confusing the term *reference* as it's used in "object reference" with how it's used in "pass by reference." That's why people find this topic so difficult in the first place.
 
@@ -202,7 +202,7 @@ If we pass an array of objects to a method, and we can have the array's elements
 
 3. Terminology needs to be precise to ensure that we're talking about the same thing. Java's `NullPointerReference` only makes things more confusing, unfortunately (thanks, Oracle).
 
-## Further Reading
+{% include linkedHeading.html heading="Further Reading" h=2 %}
 
 That was a *lot* to get through. If any of this is making sense, congratulations! If not, take some time to let it all sink in, and then re-read this post as many times as you need to.
 

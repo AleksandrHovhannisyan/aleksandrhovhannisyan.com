@@ -9,7 +9,7 @@ There's a lot of math coming up. Numerical integration error analysis isn't diff
 
 We'll do error estimates for three Newton-Cotes rules: the Midpoint rule, the Trapezoid rule, and Simpson's rule.
 
-## Midpoint Rule Error Estimate
+{% include linkedHeading.html heading="Midpoint Rule Error Estimate" h=2 %}
 
 We'd like to estimate the integral of $$f(x)$$ over the interval $$[a, b]$$ using the midpoint, $$m = \frac{a+b}{2}$$.
 
@@ -113,7 +113,7 @@ And we're essentially done! We usually label those last two terms as error terms
 
 $$I(f) = M(f) + E(f) + F(f)$$
 
-## Trapezoid Rule Error Estimate
+{% include linkedHeading.html heading="Trapezoid Rule Error Estimate" h=2 %}
 
 This time, instead of just the midpoint, we have two points for the Trapezoid rule: $$x = a$$ and $$x = b$$. This gives us two equations:
 
@@ -127,7 +127,7 @@ $$I(f) = T(f) - 2E(f) - 4E(f)$$
 
 Where $$E(f)$$ and $$F(f)$$ are the same errors as we got for the midpoint rule. I'm not going to pretend I understand how the integration is performed here. Maybe one day I'll have the patience to work it out by hand 🤷
 
-## Simpson's Rule Error Estimate
+{% include linkedHeading.html heading="Simpson's Rule Error Estimate" h=2 %}
 
 We know the following for Simpson's rule:
 
