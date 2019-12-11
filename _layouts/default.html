@@ -1,20 +1,73 @@
 <!DOCTYPE html>
 
-<html lang="en" class="day">
+<html lang="en-US" class="day">
     <head>
-        {% include head.html %}
+        <!-- Metadata for search engines -->
+        <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
+        <meta name="keywords" content="{% if page.keywords %}{{ page.keywords | join: ', ' }}{% else %}{{ site.keywords | join: ', ' }}{% endif %}" />
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="author" content="{{ site.author }}" />
+        <!-- For the contact form -->
+        <meta name="referrer" content="origin" />
+        <!-- OG properties are for social platforms with previews for shared links -->
+        <meta property="og:title" content="{{ page.title }} | Aleksandr Hovhannisyan" />
+        <meta property="og:image" content="/assets/img/profile-photo.png" />
+        <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
+        <meta property="og:url" content="{{ site.url }}" />
+        <link rel="stylesheet" href="/assets/styles/main.css" />
+        <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <title>{{ page.title }} | Aleksandr Hovhannisyan</title>
+        <!-- Load the user's last selected theme -->
+        <script>
+            if (localStorage.getItem('theme') === 'night') {
+                document.documentElement.className = 'night';
+            } else {
+                document.documentElement.className = 'day';
+            }
+        </script>
     </head>
     <body>
         <div id="page-wrapper">
             <header>
-                {% include topnav.html %}
+                <nav id="topnav">
+                    <div class="container nav-container">
+                        <a id="logo" href="/">
+                            <img src="/assets/img/house.png" height="21px" alt="🏠" />
+                            <span id="my-name">Aleksandr Hovhannisyan</span>
+                        </a>
+                        {% include svg.html svg="hamburger" class="navbar-hamburger" %}
+                        <ul class="nav-links">
+                            <li><a href="/experience" {% if page.title == "Experience" %}class="active-nav-link"{% endif %}>Experience</a></li>
+                            <li><a href="/blog" {% if page.title == "Blog" %}class="active-nav-link"{% endif %}>Blog</a></li>
+                            <li><a href="/contact" {% if page.title == "Contact" %}class="active-nav-link"{% endif %}>Contact</a></li>
+                            <li id="theme-switch-container">
+                                <!-- Inspiration: https://create-react-app.dev/ -->
+                                <div id="theme-switch">
+                                    <img id="moon" src="/assets/img/moon.png" alt="🌜" />
+                                    <img id="sun" src="/assets/img/sun.png" alt="🌞" />
+                                    <div id="knob"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
             </header>
             <main>
                 {{ content }}
             </main>
         </div>
         <!-- Note: footer is not part of page wrapper to ensure it sticks to the bottom of the page -->
-        {% include footer.html %}
-        {% include scripts.html %}
+        <footer id="page-footer" class="container">
+            <span>Made with ♥ by Aleksandr Hovhannisyan, &copy; 2019</span>
+        </footer>
+        <!-- Custom javascript -->
+        <script src="/assets/scripts/common.js"></script>
+        {% if page.custom_js %}
+            {% for script in page.custom_js %}
+            <script src="/assets/scripts/{{ script }}.js"></script>
+            {% endfor %}
+        {% endif %}
     </body>
 </html>
