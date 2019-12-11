@@ -31,13 +31,14 @@ $topnav-min-height: 64px;
     }
     
     #logo {
+        background: none;
         display: flex;
         align-items: center;
         flex-wrap: nowrap;
 
         #my-name {
             margin-left: 5px;
-            width: 201px;
+            width: 220px;
             @include transition;
             
             &:hover {
