@@ -54,11 +54,11 @@ If you're curious, here's how that works:
 
 2. Using Liquid objects, we specify the level of the heading dynamically with {% raw %}`h{{ include.h }}`{% endraw %}. So if we pass in `h=2`, then we'll get `h2`. Do this for both the opening and closing tags.
 
-3. Give the h tag an ID. The ID will be the string we passed in, but [slugified](https://jekyllrb.com/docs/liquid/filters/). You can also give it a class name if you want to style it later.
+3. Give the h tag an ID. The ID will be the string we passed in, but [slugged](https://jekyllrb.com/docs/liquid/filters/). You can also give it a class name if you want to style it later.
 
 4. Create a nested anchor that points to the same slug: {% raw %}`href="#{{ heading | slugify }}"`{% endraw %}. The anchor text can be anything you want. I was inspired by the [CSS Tricks website](https://css-tricks.com/) and used a hashtag.
 
-Then, after the anchor, we simply plug in our heading string—in its non-slugged (unslugified?) form.
+Then, after the anchor, we simply plug in our unformatted heading string.
 
 {% include linkedHeading.html heading="Sticky Navbar and Linked Headings" h=2 %}
 

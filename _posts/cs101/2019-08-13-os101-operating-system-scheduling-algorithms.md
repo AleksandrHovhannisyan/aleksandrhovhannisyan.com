@@ -1,7 +1,7 @@
 ---
 title: "OS101: Operating System Scheduling Algorithms"
 description: Sharing is caring. Let's take a look at how operating systems schedule processes to run on the CPU.
-keywords: ["os scheduling algorithms", "operating system scheduling algorithms", "scheduling algorithm examples", "scheduling algorithms in operating systems", "examples of scheduling algorithms", "explain scheduling algorithms with examples", "scheduling algorithms examples"]
+keywords: [operating system scheduling algorithms, non-preemptive scheduling algorithms, preemptive scheduling algorithms]
 ---
 
 If you're studying operating systems and looking for an in-depth explanation of the most common scheduling algorithms, you've come to the right place. In this post, we'll take a look at a number of specific scheduling algorithms. I'll provide plenty of accompanying visuals to help you understand them better. Let's get started!
