@@ -26,7 +26,7 @@ Version numbers may obviously differ.
 
 Beyond this point, most people have trouble overriding Create React App's Webpack configs without ejecting. Fortunately, as we'll see shortly, it's not all that difficult!
 
-{% include linkedHeading.html h=2 heading="2. Setting Up Ant Design and LESS 🎨" %}
+{% include linkedHeading.html heading="2. Setting Up Ant Design and LESS 🎨" h=2 %}
 
 Ant Design is a fantastic library for React and other JavaScript frameworks that provides reusable and customizable components, like date pickers, lists, SVG icons, and _lots_ of other cool stuff. Let's set it up.
 
@@ -73,7 +73,7 @@ These allow us to customize create-react-app without ejecting.
 
 Change the scripts in your `package.json` to use `react-app-rewired`:
 
-<div class="filename">package.json</div>
+{% include posts/codeHeader.html name="package.json" %}
 ```json
 {
   "scripts": {
@@ -87,7 +87,7 @@ Change the scripts in your `package.json` to use `react-app-rewired`:
 
 Create a file named `config-overrides.js` at the root of your project directory, and paste in these contents:
 
-<div class="filename">config-overrides.js</div>
+{% include posts/codeHeader.html name="config-overrides.js" %}
 ```javascript
 const { override, fixBabelImports } = require('customize-cra');
 
@@ -104,7 +104,7 @@ Now, you can import antd components in your source files like you would from any
 
 Let's try it out. Open up your `App.tsx` and replace it with the following:
 
-<div class="filename">src/App.tsx</div>
+{% include posts/codeHeader.html name="src/App.tsx" %}
 {% raw %}
 ```jsx
 import React from 'react';
@@ -151,7 +151,7 @@ yarn add less less-loader
 
 Then we add a LESS loader to our config overrides:
 
-<div class="filename">config-overrides.js</div>
+{% include posts/codeHeader.html name="config-overrides.js" %}
 ```javascript
 const { override, fixBabelImports, addLessLoader } = require('customize-cra');
 
@@ -194,7 +194,7 @@ yarn add -D typescript-plugin-css-modules
 
 After it's installed, add the plugin to your `tsconfig.json`:
 
-<div class="filename">tsconfig.json</div>
+{% include posts/codeHeader.html name="tsconfig.json" %}
 ```json
 {
   "compilerOptions": {
@@ -205,7 +205,7 @@ After it's installed, add the plugin to your `tsconfig.json`:
 
 Next, create a file named `global.d.ts` under your `src` directory. You don't have to name it `global`, by the way; you can name the file whatever you want, as long as it has the `.d.ts` extension. Enter these contents:
 
-<div class="filename">src/global.d.ts</div>
+{% include posts/codeHeader.html name="src/global.d.ts" %}
 ```javascript
 declare module '*.module.less' {
   const classes: { [key: string]: string };
@@ -233,7 +233,7 @@ Once you do that, VS Code will create a `.vscode` directory in your project for 
 
 With that out of the way, let's now create a LESS stylesheet for our `App` component to move all the styles from before out of our JS. Name it `App.module.less` and fill it with these rules:
 
-<div class="filename">src/App.module.less</div>
+{% include posts/codeHeader.html name="src/App.module.less" %}
 ```css
 .app {
     align-items: center;
@@ -276,7 +276,7 @@ yarn add -D @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-co
 
 Next, create a file named `.eslintrc.json` at the root of your project directory, and copy-paste this into it:
 
-<div class="filename">.eslintrc.json</div>
+{% include posts/codeHeader.html name=".eslintrc.json" %}
 ```json
 {
   "extends": [
@@ -307,7 +307,7 @@ Next, create a file named `.eslintrc.json` at the root of your project directory
 
 Create another file named `.prettierrc` at the root of your project directory with these contents:
 
-<div class="filename">.prettierrc</div>
+{% include posts/codeHeader.html name=".prettierrc" %}
 ```json
 {
   "singleQuote": true,
@@ -322,7 +322,7 @@ This is where you'll define all your Prettier formatting rules. You *could* tech
 
 Add a `lint:fix` script to your `package.json` so you can fix linting errors as needed (you can name this something else if you'd like to). This is what your scripts should look like if you've been following along so far:
 
-<div class="filename">package.json</div>
+{% include posts/codeHeader.html name="package.json" %}
 ```json
 {
   "scripts": {

@@ -80,7 +80,7 @@
 
 .post-body {
     $main-spacing: 60px;
-    $img-spacing: 20px;
+    $img-spacing: 1.5em;
     margin-top: $main-spacing;
 
     .post-stats {
@@ -188,19 +188,23 @@
         @include transition;
     }
 
-    .filename {
-        background-color: #141414;
-        color: #bcbcbc;
-        margin-bottom: calc(-1em - 2px);
-        padding: 10px 20px;
-
-        &::before {
-            content: "📂";
+    .code-header {
+        margin-bottom: calc(-1 * (#{$img-spacing} + 2.5px));
+        
+        .file-name {
+            background-color: #141414;
+            color: #bcbcbc;
+            margin-top: $img-spacing;
+            padding: 10px 20px;
+    
+            &::before {
+                content: "📂";
+            }
         }
     }
 
     div.highlighter-rouge {
-        margin: 1em auto;
+        margin: $img-spacing auto;
 
         code {
             padding: 0;

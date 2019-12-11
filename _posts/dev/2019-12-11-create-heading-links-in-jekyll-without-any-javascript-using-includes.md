@@ -25,7 +25,7 @@ Create a file named `linkedHeading.html` in your `_includes` folder. Here's what
 
 With Liquid and Jekyll includes, it's super simple to create linked headings. Here's the markup:
 
-<div class="filename">_includes/linkedHeading.html</div>
+{% include posts/codeHeader.html name="_includes/linkedHeading.html" %}
 {% raw %}
 ```html
 {% assign heading = include.heading %}
@@ -36,7 +36,7 @@ With Liquid and Jekyll includes, it's super simple to create linked headings. He
 ```
 {% endraw %}
 
-When you want to create a linked heading in Jekyll, simply use the following in your markdown:
+Simply use the following in your markdown wherever you want to create a linked heading in Jekyll:
 
 {% raw %}
 ```liquid
@@ -44,7 +44,9 @@ When you want to create a linked heading in Jekyll, simply use the following in 
 ```
 {% endraw %}
 
-Short and sweet! And much more legible than copy-pasting a bunch of divs and anchors all over the place.
+Short and sweet! And much more legible than copy-pasting a bunch of heading tags and anchors.
+
+> **Note**: If instead you want to link the entire heading, replace the hash symbol with {% raw %}`{{ heading }}`{% endraw %}.
 
 If you're curious, here's how that works:
 
@@ -62,7 +64,7 @@ Then, after the anchor, we simply plug in our heading string—in its non-slugge
 
 If you have a sticky/fixed navbar like I do on this site, you may run into a problem where your headings get stuck under the navbar when you click the anchor.
 
-Fortunately, the fix is a neat little trick: A negative top margin combiend with a positive top padding. I like to leave about a `40px` difference between the two for spacing:
+Fortunately, the fix is a neat little trick: a negative top margin combined with a positive top padding. I like to leave about a `40px` difference between the two for spacing:
 
 ```css
 h2 {
