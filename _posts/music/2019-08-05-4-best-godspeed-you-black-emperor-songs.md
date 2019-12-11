@@ -10,7 +10,7 @@ The band was formed in Quebec in 1994 in the genres of post and experimental roc
 
 If you've never heard of them, now's a good time to get acquainted with arguably the best post-rock band around. Here's a look at my four favorite GY!BE songs.
 
-## 1. Motherfucker=Redeemer
+{% include linkedHeading.html heading="1. Motherfucker=Redeemer" h=2 %}
 
 <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=2774839555/size=large/bgcol=333333/linkcol=e99708/tracklist=false/artwork=small/track=564703449/transparent=true/" seamless><a href="http://godspeedyoublackemperor.bandcamp.com/album/yanqui-u-x-o">Yanqui U.X.O. by Godspeed You! Black Emperor</a></iframe>
 
@@ -22,7 +22,7 @@ And then it slowly dies off about ten minutes in. What follows resembles grief a
 
 The final chapter of the song—beginning at around the 23-minute mark—is true redemption, the peak crescendo, and can only be fully enjoyed by barreling down an empty freeway at max speed. As you arrive at 28:40, you find yourself raising the volume to deafening levels. It doesn't get more intense than these last few minutes—and when it's over, you'll feel a wave of relief wash over you. It's an emotional rollercoaster well worth the ride.
 
-## 2. Rockets Fall on Rocket Falls
+{% include linkedHeading.html heading="2. Rockets Fall on Rocket Falls" h=2 %}
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/tV83U4CDAx4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -32,7 +32,7 @@ Whoever made this video was able to perfectly capture the feeling that this song
 
 When I close my eyes, I picture this song as the last explosive breaths of a dying universe, or a post-war composition echoing throughout the ruined streets of civilization. GY!BE manages to convey feelings of desolation and destruction without uttering a single syllable.
 
-## 3. We Drift Like Worried Fire
+{% include linkedHeading.html heading="3. We Drift Like Worried Fire" h=2 %}
 
 <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=1158321089/size=large/bgcol=333333/linkcol=e99708/tracklist=false/artwork=small/track=1667278398/transparent=true/" seamless><a href="http://godspeedyoublackemperor.bandcamp.com/album/allelujah-dont-bend-ascend">ALLELUJAH! DON&#39;T BEND! ASCEND! by Godspeed You! Black Emperor</a></iframe>
 
@@ -40,7 +40,7 @@ There's one word to describe this entire song: Unpredictable. The beginning carr
 
 It turns into a raging inferno that begins at 12:00 and reaches its peak at 14:58—possibly my favorite crescendo of any song. In my mind, it paints a very vivid image of a country frantically mobilizing for war, caught in the middle of a modern Ragnarok. I like to think that's what the album cover represents—what little remains of the aftermath, at least.
 
-## 4. Storm
+{% include linkedHeading.html heading="4. Storm" h=2 %}
 
 <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=1751605820/size=large/bgcol=333333/linkcol=e99708/tracklist=false/artwork=small/track=1883463992/transparent=true/" seamless><a href="http://godspeedyoublackemperor.bandcamp.com/album/lift-your-skinny-fists-like-antennas-to-heaven">Lift Your Skinny Fists Like Antennas To Heaven by Godspeed You! Black Emperor</a></iframe>
 

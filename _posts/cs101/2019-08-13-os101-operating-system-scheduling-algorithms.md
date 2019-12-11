@@ -6,7 +6,7 @@ keywords: ["os scheduling algorithms", "operating system scheduling algorithms",
 
 If you're studying operating systems and looking for an in-depth explanation of the most common scheduling algorithms, you've come to the right place. In this post, we'll take a look at a number of specific scheduling algorithms. I'll provide plenty of accompanying visuals to help you understand them better. Let's get started!
 
-## Prerequisite Terminology
+{% include linkedHeading.html heading="Prerequisite Terminology" h=2 %}
 
 Before proceeding, make sure you understand the following terms:
 
@@ -22,7 +22,7 @@ Before proceeding, make sure you understand the following terms:
 
 - **Context switch**: The collective state of memory and the CPU registers associated with a running process is known as that process's execution *context*. A context *switch* occurs when the CPU goes from executing one process to executing another. To make this possible, the scheduler stores a snapshot of the current process's state somewhere on disk or memory so we can restore it at a later time and resume execution where the process last left off.
 
-## Overview: Preemptive and Nonpreemptive Scheduling Algorithms
+{% include linkedHeading.html heading="Overview: Preemptive and Nonpreemptive Scheduling Algorithms" h=2 %}
 
 When studying scheduling algorithms, we have two high-level classifications: preemptive and nonpreemptive algorithms. Let's look at each one in turn.
 
@@ -51,7 +51,7 @@ These are the examples of non-preemptive scheduling algorithms that we'll look a
 - Shortest job first (aka shortest job next)
 - Priority scheduling
 
-> **Analogy**: Let's use the classic family TV as an analogy for a CPU. Everyone wants to use it for something: streaming movies and shows, playing video games, or surfing channels. To keep things generic, let's say we have Mom, Dad, and Kid. With non-preemption, each person will use the TV until they're completely done and will then surrender it to someone else. For example, the kid might play video games for a set period of 1 hour. During that time, he may take a bathroom break or go get a drink of water (blocking operations). Neither of his parents are allowed to interrupt his play time, though. However, once he's done with that 1 hour, he won't get back on his console, and the TV will be available for someone else to use.
+> **Analogy**: Let's use the classic family TV as an analogy for a CPU. Everyone wants to use it for something (usually streaming movies and shows or playing video games). With non-preemptive scheduling, each family member will use the TV for a set period of time and only give someone else a turn when they're finished. For example, if you plan to binge three 40-minute episodes of your favorite show on Netflix, then you'll watch all of them in succession, without giving anyone else a turn, until you're done.
 
 ### 2. Preemptive Scheduling Algorithms (P)
 
@@ -91,11 +91,11 @@ These are the examples of preemptive scheduling algorithms that we'll look at:
 - Preemptive priority scheduling
 - Proportionate scheduling
 
-> **Analogy**: Now, let's say we're dealing with siblings and a single gaming console. To encourage fairness, the mother has one simple rule: Each kid can only play for 20 minutes at a time. Once that period of time is up, it's someone else's turn to play, even if the previous sibling was already in the middle of a match. They continue taking turns like this until everyone's finished playing. This is analogous to round robin scheduling.
+> **Analogy**: Now, let's say we're dealing with siblings and a single gaming console. To encourage fairness, their mother has one simple rule: Each kid can only play for 20 minutes at a time. Once that period of time is up, it's someone else's turn to play, even if the previous sibling was already in the middle of a match. They continue taking turns like this until everyone's finished playing. This is analogous to round-robin scheduling.
 
 When we actually look at the individual scheduling algorithms in this post, I'll classify them as either (P) for preemptive or (NP) for non-preemptive.
 
-## Key Scheduling Algorithm Metrics
+{% include linkedHeading.html heading="Scheduling Algorithm Metrics" h=2 %}
 
 We use four simple metrics when studying scheduling algorithms:
 
@@ -107,7 +107,7 @@ We use four simple metrics when studying scheduling algorithms:
 
 - **CPU utilization**: the fraction of time during which the CPU is actively executing process instructions as opposed to servicing I/O operations. Suppose we have `n` independent processes. If the probability of any process requesting I/O operations is `p`, then by independence, the total probability of I/O operations occurring is `p^n`. Therefore, our CPU utilization is the total percentage of work minus the percentage of work "wasted" on I/O. Mathematically, this can be expressed as `1 - p^n` (assuming that context switches are negligible, which isn't always the case).
 
-## Categories of Scheduling Algorithm Systems
+{% include linkedHeading.html heading="Categories of Scheduling Algorithm Systems" h=2 %}
 
 So far, we've looked at the terms preemptive and non-preemptive scheduling. But there are actually three overarching categories that we'll group our scheduling algorithms into (and then classify them as either preemptive or non-preemptive). These are based on the types of systems we're working with:
 
@@ -126,7 +126,7 @@ So far, we've looked at the terms preemptive and non-preemptive scheduling. But 
     - Meet deadlines to avoid losing data or other valuable resources.
     - Predictability: behave as expected and not erratically.
 
-## 1. Batch Scheduling Algorithms
+{% include linkedHeading.html heading="1. Batch Scheduling Algorithms" h=2 %}
 
 Reminder: Batch systems have to keep up with a large number of processes. Thus, their primary goal is to increase throughput and complete as many of those jobs as possible while maximizing CPU utilization.
 
@@ -189,7 +189,7 @@ With this algorithm, some processes may end up being starved if a bunch of short
     </p>
 </blockquote>
 
-## 2. Interactive Scheduling Algorithms
+{% include linkedHeading.html heading="2. Interactive Scheduling Algorithms" h=2 %}
 
 Reminder: Interactive systems involve a lot of user input and must therefore be responsive.
 
@@ -247,7 +247,7 @@ As its name suggests, proportionate scheduling aims to ensure a fair allocation 
 
 3. **🤝 Fair-share scheduling**: So far, we've focused on ensuring fairness among *processes*. In fair-share scheduling, the focus shifts to the *user*. Specifically, on multi-user systems, the idea is to allocate a fair amount of CPU time to each user (and/or user group) to ensure that no user is being "starved" of the opportunity to use the system. The Wikipedia article on [fair-share scheduling](https://en.wikipedia.org/wiki/Fair-share_scheduling) provides excellent examples to make this clearer.
 
-## 3. Real-Time Scheduling Algorithms
+{% include linkedHeading.html heading="3. Real-Time Scheduling Algorithms" h=2 %}
 
 Real-time scheduling algorithms are grouped into two primary categories:
 
