@@ -102,6 +102,14 @@ $topnav-min-height: 64px;
                 right: var(--orb-distance-from-edge);
             }
         }
+
+        &:active {
+            #knob {
+                width: calc(var(--switch-orb-width) - 4px);
+                height: calc(var(--switch-orb-height) - 4px);
+                box-shadow: 0 0 10px 0 $secondary-color-light;
+            }
+        }
     }
 
     .nav-links {
