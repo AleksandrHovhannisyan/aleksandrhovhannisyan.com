@@ -6,7 +6,7 @@ keywords: [hard links vs soft links, what are hard links, what are soft links, w
 
 You may have heard the terms "hard link" and "soft link" used in the context of operating systems such as Linux or Windows. What exactly are they? Let's find out!
 
-{% include linkedHeading.html heading="File System Basics" h=2 %}
+{% include linkedHeading.html heading="File System Basics" level=2 %}
 
 You can skip this section if you're familiar with the following terms:
 
@@ -16,7 +16,7 @@ You can skip this section if you're familiar with the following terms:
 
 With that out of the way, let's take a look at what links are all about.
 
-{% include linkedHeading.html heading="What Are File Links?" h=2 %}
+{% include linkedHeading.html heading="What Are File Links?" level=2 %}
 
 **Linking** is the process of referencing an existing file from either its current directory or some other directory. Thus, we say that a **link** is just a reference to a file.
 
@@ -59,7 +59,7 @@ This will be important when we take a look at examples of hard links and soft li
 
 > **Note**: So far, we've looked at a link that's created by the file itself. Now, we'll look at two special types of links: soft links and hard links. These are links that we create based on an already-existing "target" file.
 
-{% include linkedHeading.html heading="1. What Are Soft Links?" h=2 %}
+{% include linkedHeading.html heading="1. What Are Soft Links?" level=2 %}
 
 You may be familiar with Windows shortcuts; these are sort of like soft links.
 
@@ -100,7 +100,7 @@ Here's an example showing what happens when we rename the original file:
 
 Notice how our terminal even changed the color of the soft link to red to indicate that it's gone "bad." This is known formally as **link rot**.
 
-{% include linkedHeading.html heading="2. What Are Hard Links?" h=2 %}
+{% include linkedHeading.html heading="2. What Are Hard Links?" level=2 %}
 
 On the other hand, a **hard link** acts as an alias for the target file. It has the same file size and the same inode number but a different name. Creating a hard link for a target file will increment that file's link count. For these reasons, hard links are also known as **physical links**.
 
@@ -120,7 +120,7 @@ If we think back to what "deleting" a file really means, this should make sense:
 
 {% include posts/picture.html img="delete-hard-link" alt="Deleting a hard link." %}
 
-{% include linkedHeading.html heading="How to Create a File Link in Windows" h=2 %}
+{% include linkedHeading.html heading="How to Create a File Link in Windows" level=2 %}
 
 So far, we've been creating links using the `ln` command on Linux. How can we create links on Windows?
 
@@ -130,13 +130,13 @@ As it turns out, doing so is simply a matter of invoking the `mklink` command:
 
 By now, the terms soft link and hard link should be familiar enough that the above output makes sense.
 
-{% include linkedHeading.html heading="Additional Exercises" h=2 %}
+{% include linkedHeading.html heading="Additional Exercises" level=2 %}
 
 1. What do you expect will happen if you change the permissions of a hard link using `chmod`? What about changing the permissions of a soft link?
 
 2. Here's an interesting (and easy!) question: What happens if you create a hard link to a soft link? Try it out! Hint: Remember that hard links are simply aliases.
 
-{% include linkedHeading.html heading="Further Reading" h=2 %}
+{% include linkedHeading.html heading="Further Reading" level=2 %}
 
 Soft links and hard links aren't as mysterious as they may seem at first. If you're still feeling confused, feel free to re-read this as many times as you want. Go as slowly as you need to, and practice running those commands on your own terminal so you're more comfortable with them.
 

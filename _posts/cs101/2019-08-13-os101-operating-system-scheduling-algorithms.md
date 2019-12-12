@@ -6,7 +6,7 @@ keywords: [operating system scheduling algorithms, non-preemptive scheduling alg
 
 If you're studying operating systems and looking for an in-depth explanation of the most common scheduling algorithms, you've come to the right place. In this post, we'll take a look at a number of specific scheduling algorithms. I'll provide plenty of accompanying visuals to help you understand them better. Let's get started!
 
-{% include linkedHeading.html heading="Prerequisite Terminology" h=2 %}
+{% include linkedHeading.html heading="Prerequisite Terminology" level=2 %}
 
 Before proceeding, make sure you understand the following terms:
 
@@ -22,7 +22,7 @@ Before proceeding, make sure you understand the following terms:
 
 - **Context switch**: The collective state of memory and the CPU registers associated with a running process is known as that process's execution *context*. A context *switch* occurs when the CPU goes from executing one process to executing another. To make this possible, the scheduler stores a snapshot of the current process's state somewhere on disk or memory so we can restore it at a later time and resume execution where the process last left off.
 
-{% include linkedHeading.html heading="Overview: Preemptive and Nonpreemptive Scheduling Algorithms" h=2 %}
+{% include linkedHeading.html heading="Overview: Preemptive and Nonpreemptive Scheduling Algorithms" level=2 %}
 
 When studying scheduling algorithms, we have two high-level classifications: preemptive and nonpreemptive algorithms. Let's look at each one in turn.
 
@@ -95,7 +95,7 @@ These are the examples of preemptive scheduling algorithms that we'll look at:
 
 When we actually look at the individual scheduling algorithms in this post, I'll classify them as either (P) for preemptive or (NP) for non-preemptive.
 
-{% include linkedHeading.html heading="Scheduling Algorithm Metrics" h=2 %}
+{% include linkedHeading.html heading="Scheduling Algorithm Metrics" level=2 %}
 
 We use four simple metrics when studying scheduling algorithms:
 
@@ -107,7 +107,7 @@ We use four simple metrics when studying scheduling algorithms:
 
 - **CPU utilization**: the fraction of time during which the CPU is actively executing process instructions as opposed to servicing I/O operations. Suppose we have `n` independent processes. If the probability of any process requesting I/O operations is `p`, then by independence, the total probability of I/O operations occurring is `p^n`. Therefore, our CPU utilization is the total percentage of work minus the percentage of work "wasted" on I/O. Mathematically, this can be expressed as `1 - p^n` (assuming that context switches are negligible, which isn't always the case).
 
-{% include linkedHeading.html heading="Categories of Scheduling Algorithm Systems" h=2 %}
+{% include linkedHeading.html heading="Categories of Scheduling Algorithm Systems" level=2 %}
 
 So far, we've looked at the terms preemptive and non-preemptive scheduling. But there are actually three overarching categories that we'll group our scheduling algorithms into (and then classify them as either preemptive or non-preemptive). These are based on the types of systems we're working with:
 
@@ -126,7 +126,7 @@ So far, we've looked at the terms preemptive and non-preemptive scheduling. But 
     - Meet deadlines to avoid losing data or other valuable resources.
     - Predictability: behave as expected and not erratically.
 
-{% include linkedHeading.html heading="1. Batch Scheduling Algorithms" h=2 %}
+{% include linkedHeading.html heading="1. Batch Scheduling Algorithms" level=2 %}
 
 Reminder: Batch systems have to keep up with a large number of processes. Thus, their primary goal is to increase throughput and complete as many of those jobs as possible while maximizing CPU utilization.
 
@@ -189,7 +189,7 @@ With this algorithm, some processes may end up being starved if a bunch of short
     </p>
 </blockquote>
 
-{% include linkedHeading.html heading="2. Interactive Scheduling Algorithms" h=2 %}
+{% include linkedHeading.html heading="2. Interactive Scheduling Algorithms" level=2 %}
 
 Reminder: Interactive systems involve a lot of user input and must therefore be responsive.
 
@@ -247,7 +247,7 @@ As its name suggests, proportionate scheduling aims to ensure a fair allocation 
 
 3. **🤝 Fair-share scheduling**: So far, we've focused on ensuring fairness among *processes*. In fair-share scheduling, the focus shifts to the *user*. Specifically, on multi-user systems, the idea is to allocate a fair amount of CPU time to each user (and/or user group) to ensure that no user is being "starved" of the opportunity to use the system. The Wikipedia article on [fair-share scheduling](https://en.wikipedia.org/wiki/Fair-share_scheduling) provides excellent examples to make this clearer.
 
-{% include linkedHeading.html heading="3. Real-Time Scheduling Algorithms" h=2 %}
+{% include linkedHeading.html heading="3. Real-Time Scheduling Algorithms" level=2 %}
 
 Real-time scheduling algorithms are grouped into two primary categories:
 
