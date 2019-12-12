@@ -1,16 +1,16 @@
 ---
-title: "Python Prefix Tree: Building a Trie from Scratch"
-description: A simple tutorial for a Python trie implementation, with accompanying visuals and code to help you understand.
-keywords: [python trie, python prefix tree, python trie implementation, python prefix tree implementation, python trie tutorial, python prefix tree tutorial]
+title: "Trie Data Structure Implementation in Python"
+description: In this tutorial, we'll implement a trie in Python from scratch. I'll provide visuals and code samples to help you understand how prefix trees work under the hood.
+keywords: [python prefix tree, python prefix tree tutorial, python trie implementation, implement a trie in Python]
 ---
 
-Of all the data structures I've encountered, the trie continues to be the one that fascinates me the most because of its simplicity, elegance, and practical applications.
+Of all the data structures I've encountered, the prefix tree ("trie") still fascinates me the most because of its simplicity and practical applications.
 
-In this Python trie tutorial, I'll guide you through implementing one from scratch. We'll test that our code works as expected using Python's `unittest` library. Let's dive right in!
+In this tutorial, we'll implement a trie in Python from scratch. We'll test that our code works using Python's `unittest` library. Let's get started!
 
 {% include linkedHeading.html heading="Overview: What Is a Prefix Tree?" level=2 %}
 
-Prefix trees are one of the easiest data structures to understand both visually and in terms of the code required to implement them. But what exactly are they, and why might we want to implement one?
+Prefix trees are one of the easiest data structures to understand both visually and in terms of the code required to implement them. But what is a prefix tree, and why might we want to implement one?
 
 First, let's run through a little exercise. Have you ever wondered how search engines like Google are able to quickly auto-fill your search box with suggestions that start with whatever you've typed? Take this as an example:
 
@@ -18,7 +18,7 @@ First, let's run through a little exercise. Have you ever wondered how search en
 
 How would you go about implementing this behavior, all other complex considerations aside? The (very) naive approach is to take the text that the user has typed so far—like `a` or `app`—and check if any words in our dictionary start with that substring, using a linear search. That would maybe work for search engines with a relatively small dictionary. But Google deals with billions of queries, so that would hardly be efficient. It gets even more inefficient the longer the substring becomes.
 
-The efficient answer to this problem is a neat little data structure known as a **prefix tree**, also called a *trie*. It's just a tree (not necessarily a *binary* tree) that serves a special purpose.
+The efficient answer to this problem is a neat little data structure known as a **prefix tree**. It's just a tree (not necessarily a *binary* tree) that serves a special purpose.
 
 Let's say we're building such a dictionary but want to be clever with how we do it so that our search doesn't take forever. Suppose we want to record the words `ape`, `apple`, `bat`, and `big` in this dictionary. The corresponding prefix tree would look like this:
 
@@ -48,9 +48,9 @@ Let's put this into the context of a search engine. A company like Google might 
 
 Or perhaps you're creating your own autocomplete widget in, say, React. You'd create the trie beforehand and subscribe to your input field's `onkeyup` event. As the user enters text, you adjust the list of options that you show to them by using your trie.
 
-{% include linkedHeading.html heading="Prefix Tree Representation in Code" level=2 %}
+{% include linkedHeading.html heading="Building a Prefix Tree in Python" level=2 %}
 
-So now that we understand what a prefix tree looks like and how it can be used, how do we represent it in code? You'll be happy to know that it's actually really simple, especially if you're comfortable with recursion.
+So now that we understand what a prefix tree looks like and how it can be used, how can we represent it in code? You'll be happy to know that it's actually really simple, especially if you're comfortable with recursion.
 
 First, like all trees, a prefix tree is going to consist of nodes. Each node will keep track of three pieces of data. I'll cover the two important ones here and bring up the third one when we get to it:
 
@@ -58,8 +58,9 @@ First, like all trees, a prefix tree is going to consist of nodes. Each node wil
 
 - **Children**. As with many trees, each node of a trie will have zero or more children that are "linked" to it via the selection of a particular character (the branches). The most natural expression of this sort of relationship is a map: Each node maps a character to a child `TrieNode`.
 
-Let's build the `TrieNode` class in Python:
+Let's build the `TrieNode` class:
 
+{% include posts/codeHeader.html name="trie.py" %}
 ```python
 class TrieNode:
     def __init__(self, text = ''):
@@ -75,7 +76,17 @@ Pretty simple, right? Again, note that there's one additional piece of data we'l
 
 Next, the prefix tree itself consists of one or more of these `TrieNodes`, so I'll add another class named `PrefixTree`:
 
+{% include posts/codeHeader.html name="trie.py" %}
 ```python
+class TrieNode:
+    def __init__(self, text = ''):
+        '''
+        Initializes a TrieNode with the given string and an initially
+        empty dictionary mapping strings to TrieNodes.
+        '''
+        self.text = text
+        self.children = dict()
+
 class PrefixTree:
     def __init__(self):
         self.root = TrieNode()
@@ -92,7 +103,7 @@ That last one is useful for testing; it isn't required.
 
 {% include linkedHeading.html heading="1. Inserting Words Into a Trie" level=2 %}
 
-Let's consider how we'd build a trie from scratch. We'll always start with a root node that has an empty string as its `text` and an empty dictionary as its `children`. Then, we want to insert the words we looked at earlier: `ape`, `apple`, `bat`, and `big`. As a reminder, this is what the trie looks like once we finish inserting all of those words:
+Let's consider how we'd build a prefix tree. We'll always start with a root node that has an empty string as its `text` and an empty dictionary as its `children`. Then, we want to insert the words we looked at earlier: `ape`, `apple`, `bat`, and `big`. As a reminder, this is what the trie looks like once we finish inserting all of those words:
 
 {% include posts/picture.html img="trie" alt="An example of a trie for the words bat, big, ape, and apple." %}
 
@@ -341,6 +352,7 @@ But this is tedious and frankly not a very rigorous way of testing our code. So 
 
 Below are eight tests covering edge cases. This is where our `size` method really comes in handy.
 
+{% include posts/codeHeader.html name="test_trie.py" %}
 ```python
 import unittest
 from trie import PrefixTree
