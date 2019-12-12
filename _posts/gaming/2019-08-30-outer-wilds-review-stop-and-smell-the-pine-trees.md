@@ -1,7 +1,7 @@
 ---
 title: "Outer Wilds Review: Stop and Smell the Pine Trees"
 description: At its core, Outer Wilds is a space exploration game. But it's so much more than just that. Here's my in-depth Outer Wilds review.
-keywords: [outer wilds game, outer wilds review, outer wilds ending meaning, outer wilds ending explained, outer wilds game of the year, outer wilds planets, outer wilds characters, outer wilds review xbox]
+keywords: [what is outer wilds about, outer wilds review, outer wilds ending explained, outer wilds meaning, outer wilds pine trees]
 ---
 
 What originally began as a thesis project [more than six years ago](https://www.youtube.com/watch?v=vRQU1o8SrAI) between two university students—Alex Beachum and Loan Verneau—is one of the best games released so far in 2019. And it's certainly come a long way, with much of the art, audio, and gameplay receiving polishes that have allowed it to shine.
@@ -9,6 +9,8 @@ What originally began as a thesis project [more than six years ago](https://www.
 Produced by the talented creatives at Mobius Digital, Outer Wilds is an indie space exploration game that thrusts you into a hand-crafted solar system full of intrigue and wonder. Your mission? To sate your curiosity as you brave the unknown of outer space.
 
 {% include posts/picture.html img="outer-wilds" alt="An in-game photo showing the founders of the Outer Wilds space exploration program." %}
+
+## What Is Outer Wilds About?
 
 A long time ago, your solar system was visited by an ancient civilization known as the Nomai, who left behind much of their work and findings when they perished. Now, as a budding astronaut, you're tasked with uncovering their past—and, in doing so, learning more about your universe and its fate.
 
