@@ -11,7 +11,7 @@ How can we create heading links in Jekyll:
 1. Without losing our sanity, and
 2. With zero lines of JavaScript?
 
-{% include linkedHeading.html heading="Answer: With the Power of Jekyll Includes!" h=2 %}
+{% include linkedHeading.html heading="Answer: With the Power of Jekyll Includes!" level=2 %}
 
 Create a file named `linkedHeading.html` in your `_includes` folder. Here's what we want to do:
 
@@ -29,10 +29,10 @@ With Liquid and Jekyll includes, it's super simple to create linked headings. He
 {% raw %}
 ```html
 {% assign heading = include.heading %}
-<h{{ include.h }} id="{{ heading | slugify }}" class="linked-heading">
+<h{{ include.level }} id="{{ heading | slugify }}" class="linked-heading">
     <a href="#{{ heading | slugify }}">#</a>
     {{ heading }}
-</h{{ include.h }}>
+</h{{ include.level }}>
 ```
 {% endraw %}
 
@@ -40,7 +40,7 @@ Simply use the following in your markdown wherever you want to create a linked h
 
 {% raw %}
 ```liquid
-{% include linkedHeading.html heading="My Heading" h=someNumber %}
+{% include linkedHeading.html heading="My Heading" level=someNumber %}
 ```
 {% endraw %}
 
@@ -52,7 +52,7 @@ If you're curious, here's how that works:
 
 1. We pass in a string to `heading`, which we access via `include.heading`. We assign this to a local variable so we don't have to keep repeating `include.heading`.
 
-2. Using Liquid objects, we specify the level of the heading dynamically with {% raw %}`h{{ include.h }}`{% endraw %}. So if we pass in `h=2`, then we'll get `h2`. Do this for both the opening and closing tags.
+2. Using Liquid objects, we specify the level of the heading dynamically with {% raw %}`h{{ include.level }}`{% endraw %}. So if we pass in `level=2`, then we'll get `h2`. Do this for both the opening and closing tags.
 
 3. Give the h tag an ID. The ID will be the string we passed in, but [slugged](https://jekyllrb.com/docs/liquid/filters/). You can also give it a class name if you want to style it later.
 
@@ -60,7 +60,7 @@ If you're curious, here's how that works:
 
 Then, after the anchor, we simply plug in our unformatted heading string.
 
-{% include linkedHeading.html heading="Sticky Navbar and Linked Headings" h=2 %}
+{% include linkedHeading.html heading="Sticky Navbar and Linked Headings" level=2 %}
 
 If you have a sticky/fixed navbar like I do on this site, you may run into a problem where your headings get stuck under the navbar when you click the anchor.
 

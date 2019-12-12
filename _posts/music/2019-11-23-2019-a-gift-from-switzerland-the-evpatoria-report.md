@@ -12,7 +12,7 @@ That's how I felt when I first heard The Evpatoria Report, a post-rock band that
 
 Below is a look at some of my favorites from their albums.
 
-{% include linkedHeading.html heading="Eighteen Robins Road (Maar)" h=2 %}
+{% include linkedHeading.html heading="Eighteen Robins Road (Maar)" level=2 %}
 
 <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=2600588727/size=large/bgcol=333333/linkcol=e99708/tracklist=false/artwork=small/track=1025421207/transparent=true/" seamless><a href="http://the-evpatoria-report.bandcamp.com/album/maar">Maar by The Evpatoria Report</a></iframe>
 
@@ -28,7 +28,7 @@ It's a short-lived high that descends into a long and dreamy melody after about 
 
 All in all, it's a fantastic song.
 
-{% include linkedHeading.html heading="Prognoz (Golevka)" h=2 %}
+{% include linkedHeading.html heading="Prognoz (Golevka)" level=2 %}
 
 <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=1735644074/size=large/bgcol=333333/linkcol=e99708/tracklist=false/artwork=small/track=453876140/transparent=true/" seamless><a href="http://the-evpatoria-report.bandcamp.com/album/golevka">Golevka by The Evpatoria Report</a></iframe>
 
@@ -40,7 +40,7 @@ That's how I'd describe the chief crescendo of *Prognoz*—a sudden, violent dow
 
 The main chunk of the song is nothing to write home about, but the electric guitar bit at the end is right back to the good stuff.
 
-{% include linkedHeading.html heading="Daar Now (Maar)" h=2 %}
+{% include linkedHeading.html heading="Daar Now (Maar)" level=2 %}
 
 <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=2600588727/size=large/bgcol=333333/linkcol=e99708/tracklist=false/artwork=small/track=1748567723/transparent=true/" seamless><a href="http://the-evpatoria-report.bandcamp.com/album/maar">Maar by The Evpatoria Report</a></iframe>
 
@@ -54,7 +54,7 @@ If this doesn't play in Season 4, I'll be legitimately disappointed. No, serious
 
 The rest of the song? It's decent, but definitely not as good as the intro.
 
-{% include linkedHeading.html heading="Taijin Kyofusho (Golevka)" h=2 %}
+{% include linkedHeading.html heading="Taijin Kyofusho (Golevka)" level=2 %}
 
 <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=1735644074/size=large/bgcol=333333/linkcol=e99708/tracklist=false/artwork=small/track=1073451937/transparent=true/" seamless><a href="http://the-evpatoria-report.bandcamp.com/album/golevka">Golevka by The Evpatoria Report</a></iframe>
 
@@ -68,7 +68,7 @@ At 2:35, the song reaches in, grabs you by the soul, and shreds you to pieces as
 
 The latter half of the song drowns out all noise and paints a remarkably accurate picture of the Columbia shuttle burning up brilliantly upon re-entry, trying to convey with music the anguish that the crew's families must have felt.
 
-{% include linkedHeading.html heading="Voskhod Project - Bonus (Golevka)" h=2 %}
+{% include linkedHeading.html heading="Voskhod Project - Bonus (Golevka)" level=2 %}
 
 Experimental post rock is the name of the game here. There's really not much else to say!
 
