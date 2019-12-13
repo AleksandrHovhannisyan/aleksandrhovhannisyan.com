@@ -31,9 +31,9 @@ $topnav-min-height: 64px;
     }
     
     #logo {
+        align-items: center;
         background: none;
         display: flex;
-        align-items: center;
         flex-wrap: nowrap;
 
         #my-name {
@@ -49,8 +49,8 @@ $topnav-min-height: 64px;
 
     #theme-switch-container {
         display: flex;
-        justify-content: center;
         height: 30px;
+        justify-content: center;
     }
 
     #theme-switch {
@@ -86,7 +86,6 @@ $topnav-min-height: 64px;
             background-color: rgb(207, 207, 207);
             border: 1.3px solid $primary-color;
             border-radius: 50%;
-            content: "";
             height: var(--switch-orb-height);
             left: 0;    
             position: absolute;
@@ -95,9 +94,9 @@ $topnav-min-height: 64px;
             @include transition;
 
             html.night & {
-                box-shadow: 0 0 5px 0 lighten($secondary-color-light, 75%);
                 background-color: $secondary-color-light;
                 border: 1.3px solid $secondary-color;
+                box-shadow: 0 0 5px 0 lighten($secondary-color-light, 75%);
                 left: calc(var(--switch-width) - var(--switch-orb-width));
                 right: var(--orb-distance-from-edge);
             }
@@ -105,9 +104,9 @@ $topnav-min-height: 64px;
 
         &:active {
             #knob {
-                width: calc(var(--switch-orb-width) - 4px);
-                height: calc(var(--switch-orb-height) - 4px);
                 box-shadow: 0 0 10px 0 $secondary-color-light;
+                height: calc(var(--switch-orb-height) - 4px);
+                width: calc(var(--switch-orb-width) - 4px);
             }
         }
     }
