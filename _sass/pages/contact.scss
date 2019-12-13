@@ -39,15 +39,16 @@
             background-color: var(--form-bg-color);
             border: 0px solid;
             border-radius: 5px;
-            box-shadow: 0 0 5px 2px #bebebe;
+            box-shadow: 0 0 2px 2px var(--form-shadow-color);
             color: var(--text-color-normal);
             margin-bottom: 20px;
             padding: 5px 10px;
             transition: background-color $transition-duration, box-shadow $transition-duration, color $transition-duration;
             width: 100%;
-            
-            .night & {
-                box-shadow: 0 0 5px 2px #151515;
+
+            &:focus {
+                box-shadow: 0 0 2px 2px var(--button-bg-hover-color);
+                outline: none;
             }
         }
     
@@ -59,15 +60,6 @@
                 color: var(--link-color);
                 content: " *";
                 @include transition;
-            }
-        }
-    
-        input:focus, textarea:focus {
-            box-shadow: 0 0 5px 2px #979797;
-            outline: none;
-
-            .night & {
-                box-shadow: 0 0 5px 2px #838383;
             }
         }
     
@@ -113,7 +105,7 @@ input.honeypot {
     .linkedin-square {
         background: white;
         /* Nice little hack for getting a perfect fill */
-        border-radius: 5px;
+        border-radius: 4px;
         fill: $brand-linkedin;
     }
     
