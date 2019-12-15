@@ -140,16 +140,13 @@ $topnav-min-height: 64px;
             text-align: center;
         }
 
+        @include underlined-link(#ffffff);
+
         a {
-            border: none;
-            text-decoration: none;
             vertical-align: middle;
-            @include transition;
 
             &:hover {
-                background-color: var(--nav-bg-color);
                 color: white;
-                text-decoration: underline;
             }
         }
     }
@@ -161,7 +158,7 @@ $topnav-min-height: 64px;
     }   
 }
 
-@media only screen and (min-width: 670px) {
+@media only screen and (min-width: 715px) {
 
     #topnav {
         #theme-switch {
