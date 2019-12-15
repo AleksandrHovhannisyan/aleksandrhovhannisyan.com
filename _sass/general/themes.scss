@@ -5,9 +5,7 @@ html.day {
     --main-bg-color: #ffffff;
     --nav-bg-color: rgb(44, 44, 44);
     --hero-bg-color: #252525;
-
     --selection-bg-color: #{$primary-color-selection};
-    --selection-text-color: #37474F;
 
     --text-color-normal: #{$denim};
     --text-color-nav: #cecdcd;
@@ -38,9 +36,7 @@ html.night {
     //--nav-bg-color: #1F1F1F;
     --nav-bg-color: rgb(44, 44, 44);
     --hero-bg-color: #282828;
-    
     --selection-bg-color: #{$secondary-color-selection};
-    --selection-text-color: #bdbdbd;
 
     --text-color-normal: #9e9e9e;
     --text-color-emphasis: #bdbdbd;
