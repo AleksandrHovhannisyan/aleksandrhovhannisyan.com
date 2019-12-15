@@ -18,12 +18,27 @@
     align-items: center;
 }
 
-@mixin underlined-link {
+@mixin underlined-link($color: var(--link-color)) {
     a {
-        border-bottom: 3px solid transparent;
+        position: relative;
+        text-decoration: none;
+        border: none;
+        @include transition;
 
-        &:hover {
-            border-bottom: 3px solid var(--link-color);
+        &::after {
+            content: '';
+            height: 3px;
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0%;
+            background-color: $color;
+            @include transition;
+        }
+
+        &:hover::after {
+            width: 100%; 
+            left: 0;
         }
     }
 }
