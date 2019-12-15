@@ -3,7 +3,7 @@ title: Contact
 permalink: /contact/
 ---
 
-<section class="container section">
+<section id="contact" class="container section">
     <h2 class="heading-with-image">
         <span>Get in touch!</span>
         <img src="/assets/img/envelope.png" alt="📧">
