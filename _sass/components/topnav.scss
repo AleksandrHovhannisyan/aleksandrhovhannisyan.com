@@ -35,15 +35,19 @@ $topnav-min-height: 64px;
         background: none;
         display: flex;
         flex-wrap: nowrap;
+    }
 
-        #my-name {
-            margin-left: 5px;
-            width: 230px;
-            @include transition;
-            
-            &:hover {
-                color: white;
-            }
+    #my-name {
+        margin-left: 5px;
+        width: 230px;
+        @include transition;
+        
+        &::after {
+            content: "Aleksandr";
+        }
+
+        &:hover {
+            color: white;
         }
     }
 
@@ -153,9 +157,18 @@ $topnav-min-height: 64px;
 
     .navbar-hamburger {
         fill: var(--text-color-nav);
-        height: 1.5em;
-        width: 1.5em;
+        height: 27px;
+        width: 27px;
+        flex-shrink: 0;
     }   
+}
+
+@media only screen and (min-width: 390px) {
+    #topnav #my-name {
+        &::after {
+            content: "Aleksandr Hovhannisyan";
+        }
+    }
 }
 
 @media only screen and (min-width: 715px) {
