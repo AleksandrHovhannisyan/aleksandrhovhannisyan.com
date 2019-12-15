@@ -64,3 +64,11 @@
         color: $bgColor;
     }
 }
+
+@mixin themed($attribute, $light, $dark) {
+    #{$attribute}: $light;
+
+    .night & {
+        #{$attribute}: $dark;
+    }
+}

@@ -146,12 +146,8 @@
     width: 18px;
 
     &.star-filled {
-        fill: #{$primary-color};
+        fill: var(--button-bg-color);
         @include transition;
-
-        .night & {
-            fill: #9a8e75;
-        }
     }
 
     &.star-empty {
@@ -281,7 +277,7 @@
 
         .awards {
             /* Only matters on mobile, where the awards are stacked underneath courses */
-            border-top: solid var(--collapsible-content-border-width) var(--button-bg-color);
+            border-top: solid var(--collapsible-content-border-width) var(--collapsible-bg-color);
             @include transition;
         }
     }
@@ -296,7 +292,7 @@
 
         .awards {
             /* But there is for a left border */
-            border-left: solid var(--collapsible-content-border-width) var(--button-bg-color);
+            border-left: solid var(--collapsible-content-border-width) var(--collapsible-bg-color);
             /* Now that it's lined up to the right of the courses, there's no need for a top border */
             border-top: none;
             @include transition(border);
