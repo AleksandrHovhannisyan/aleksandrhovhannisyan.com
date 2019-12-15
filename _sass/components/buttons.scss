@@ -1,8 +1,6 @@
 @import 'mixins';
 @import 'fonts';
 
-
-/* Note: this is an anchor with a class of button */
 .button {
     align-items: center;
     border-radius: 5px;
@@ -11,9 +9,25 @@
     font-weight: bold;
     justify-content: center;
     text-decoration: none;
+    cursor: pointer;
+    border: none;
 
     svg {
         height: 20px;
+    }
+}
+
+.hollow-button {
+    background-color: var(--card-bg-color);
+    border: 3px solid var(--link-color);
+
+    &:hover {
+        color: white;
+        background-color: var(--link-color);
+
+        .night & {
+            color: black;
+        }
     }
 }
 
@@ -46,10 +60,8 @@
     }
 }
 
-.button, .collapsible-header {
+.solid-button, .collapsible-header {
     background-color: var(--button-bg-color);
-    border: none;
-    cursor: pointer;
 
     &, * {
         @include transition;
@@ -65,6 +77,11 @@
             fill: var(--button-text-hover-color);
         }
     }
+}
+
+.collapsible-header {
+    border: none;
+    cursor: pointer;
 }
 
 .collapsible-content {

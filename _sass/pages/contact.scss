@@ -38,7 +38,7 @@
             width: 100%;
         }
     
-        input:not([class="button"]), textarea {
+        input:not([class="button solid-button"]), textarea {
             background-color: var(--form-bg-color);
             border: 0px solid;
             border-radius: 5px;
