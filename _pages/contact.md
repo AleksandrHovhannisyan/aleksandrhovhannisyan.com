@@ -19,7 +19,7 @@ permalink: /contact/
                 <input type="email" name="_replyto" id="email"/>
                 <label class="required" for="message"><strong>Message</strong></label>
                 <textarea name="body" id="message" required></textarea>
-                <input type="submit" value="Send message" class="button">
+                <input type="submit" value="Send message" class="button solid-button">
                 <input type="text" name="_gotcha" class="honeypot" />
             </form>
         </section>

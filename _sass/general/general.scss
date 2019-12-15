@@ -12,7 +12,7 @@
 }
 
 ::-webkit-scrollbar-track {
-    background-color: var(--bg-color-nav);
+    background-color: var(--nav-bg-color);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -91,7 +91,10 @@ strong {
 
 .heading {
     text-align: center;
-    margin-bottom: 3em;
+}
+
+.subtitle {
+    text-align: center;
 }
 
 ul, ol {
