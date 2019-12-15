@@ -3,13 +3,16 @@
 @import 'colors';
 @import 'settings';
 
+#contact {
+    margin-top: 50px;
+}
+
 #contact-information {
     column-gap: 120px;
     display: grid;
     grid-template-areas: "form"
                          "socials";
     grid-template-rows: auto;
-    margin-bottom: 30px;
 }
 
 #contact-form {
