@@ -27,3 +27,25 @@
         }
     }
 }
+
+@mixin solid-button($bgColor, $textColor) {
+    background-color: $bgColor;
+    color: $textColor;
+    border: 3px solid $bgColor;
+
+    &:focus, &:hover {
+        background-color: $textColor;
+        color: $bgColor;
+    }
+}
+
+@mixin hollow-button($bgColor, $textColor) {
+    background-color: $bgColor;
+    color: $textColor;
+    border: 3px solid $textColor;
+
+    &:focus, &:hover {
+        background-color: $textColor;
+        color: $bgColor;
+    }
+}
