@@ -20,7 +20,7 @@
 }
 
 .post {
-    margin-top: 135px;
+    margin-top: 75px;
 }
 
 .post-title {
@@ -30,7 +30,7 @@
 .post-stats {
     display: flex;
     flex-wrap: wrap;
-    font-size: 14px;
+    font-size: 1.4rem;
     font-style: italic;
 
     .post-date,
@@ -103,7 +103,7 @@
 
     figure {
         figcaption {
-            font-size: 0.8em;
+            font-size: 1.4rem;
             font-style: italic;
             margin-bottom: $img-spacing;
             text-align: center;
@@ -183,7 +183,6 @@
         border-radius: 5px;
         color: var(--code-color);
         font-family: Inconsolata, Courier New;
-        font-size: 1rem;
         padding: 3px;
         @include transition;
     }

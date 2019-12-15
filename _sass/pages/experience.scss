@@ -7,6 +7,7 @@
     grid-template-rows: max-content 1fr max-content;
 
     .project-name {
+        font-size: 1.8rem;
         align-self: center;
         grid-area: heading;
     }
@@ -25,7 +26,7 @@
         align-items: center;
         align-self: center;
         display: flex;
-        font-size: 0.85em;
+        font-size: 0.9em;
         grid-area: rating;
         justify-self: center;
         @include transition;
@@ -109,7 +110,7 @@
     }
 
     .skill-category {
-        font-size: 1em;
+        font-size: 1.8rem;
         margin-bottom: 20px;
     }
 
@@ -170,12 +171,12 @@
         grid-template-rows: max-content 1fr max-content;
 
         .job-title {
-            font-size: 1.2rem;
+            font-size: 2rem;
         }
 
         .date-range {
             color: $denim;
-            font-size: 0.95rem;
+            font-size: 1.6rem;
             font-style: italic;
 
             .night & {
@@ -185,7 +186,7 @@
 
         .responsibilities {
             @include transition;
-            margin-bottom: 1rem;
+            margin-bottom: 1.6rem;
             padding-left: 20px;
 
             li:not(:last-child) {
@@ -257,7 +258,7 @@
         grid-template-columns: 1fr;
 
         h3 {
-            font-size: 1em;
+            font-size: 1.8rem;
             font-weight: normal;
             margin-bottom: 21px;
             margin-left: 10px;

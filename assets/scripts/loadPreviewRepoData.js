@@ -15,11 +15,7 @@ requestRepoData();
 function setupRepos() {
   // The only alternative to passing in icons as hardcoded emoji is to clutter my repo descriptions on GitHub with emoji
   // at the start and to use substring hacks to extract the icon part, which I'd rather not do
-  addRepo('Scribe-Text-Editor', 'Scribe: Text Editor', '📄', [
-    'c++',
-    'qt5',
-    'qtcreator'
-  ]);
+  addRepo('Scribe-Text-Editor', 'Scribe', '📄', ['c++', 'qt5', 'qtcreator']);
   addRepo('CattleLog', 'CattleLog', '🐮', [
     'android',
     'mobile dev',
