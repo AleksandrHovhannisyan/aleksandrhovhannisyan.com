@@ -144,9 +144,8 @@ $topnav-min-height: 64px;
             text-align: center;
         }
 
-        @include underlined-link(#ffffff);
-
         a {
+            @include underlined-link(#ffffff);
             vertical-align: middle;
 
             &:hover {

@@ -8,7 +8,7 @@
 
     align-items: center;
     background-color: var(--hero-bg-color);
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.8);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -41,21 +41,15 @@
     }
 
     a {
-        color: #64b5f6;
-
-        border-bottom: 3px solid transparent;
-
-        &:hover {
-            border-bottom: 3px solid #64b5f6;
-        }
+        --hero-link: #64b5f6;
 
         .night & {
-            color: #cea25a;
-
-            &:hover {
-                border-bottom: 3px solid #cea25a;
-            }
+            --hero-link: #{$secondary-color-link};
         }
+
+        color: var(--hero-link);
+    
+        @include underlined-link(var(--hero-link));
     }
 }
 
