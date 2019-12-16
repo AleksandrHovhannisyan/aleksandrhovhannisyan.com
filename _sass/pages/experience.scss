@@ -87,12 +87,8 @@
         width: 50px;
 
         svg {
-            fill: $brand-github;
             @include transition;
-
-            .night & {
-                fill: $brand-github-alt;
-            }
+            @include themed(fill, $brand-github, $brand-github-alt);
         }
     }
 }
@@ -150,10 +146,7 @@
     &.star-empty {
         fill: #adacac;
         @include transition;
-    
-        .night & {
-            fill: #474747;
-        }
+        @include themed(fill, #adacac, #474747);
     }
 }
 
@@ -199,43 +192,23 @@
             }
 
             .react {
-                background-color: rgba($brand-react, 0.2);
-                color: #02728f;
-
-                .night & {
-                    background-color: $brand-react;
-                    color: #0a5c72;
-                }
+                @include themed(background-color, rgba($brand-react, 0.2), $brand-react);
+                @include themed(color, #02728f, #0a5c72);
             }
 
             .typescript {
-                background-color: rgba($brand-typescript, 0.15);
-                color: lighten($brand-typescript, 10%);
-
-                .night & {
-                    background-color: $brand-typescript;
-                    color: #d5d5d5;
-                }
+                @include themed(background-color, rgba($brand-typescript, 0.15), $brand-typescript);
+                @include themed(color, lighten($brand-typescript, 10%), #d5d5d5);
             }
 
             .grpc {
-                background-color: rgba($brand-grpc, 0.2);
-                color: #1e6f70;
-
-                .night & {
-                    background-color: $brand-grpc;
-                    color: #e3e1e1;
-                }
+                @include themed(background-color, rgba($brand-grpc, 0.2), $brand-grpc);
+                @include themed(color, #1e6f70, #e3e1e1);
             }
 
             .upwork {
-                background-color: rgba($brand-upwork, 0.3);
-                color: #2e7611;
-
-                .night & {
-                    background-color: #45882a;
-                    color: #cfcfcf;
-                }
+                @include themed(background-color, rgba($brand-upwork, 0.3), #45882a);
+                @include themed(color, #2e7611, #cfcfcf);
             }
         }
     }
@@ -288,9 +261,8 @@
         grid-template-rows: 1fr;
 
         .awards {
-            /* But there is for a left border */
-            border-left: solid var(--collapsible-content-border-width) var(--button-bg-color);
             /* Now that it's lined up to the right of the courses, there's no need for a top border */
+            border-left: solid var(--collapsible-content-border-width) var(--button-bg-color);
             border-top: none;
             @include transition(border);
         }

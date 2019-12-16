@@ -114,11 +114,7 @@ input.honeypot {
     
     .github {
         @include transition;
-        fill: $brand-github;
-
-        .night & {
-            fill: $brand-github-alt;
-        }
+        @include themed(fill, $brand-github, $brand-github-alt);
     }
     
     .stack-exchange {

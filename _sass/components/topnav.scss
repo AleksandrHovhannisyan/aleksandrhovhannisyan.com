@@ -61,7 +61,6 @@ $topnav-min-height: 64px;
         --switch-width: 52px;
         align-items: center;
         align-self: center;
-        background-color: rgb(116, 116, 116);
         border-radius: 100px;        
         cursor: pointer;
         display: flex;
@@ -75,13 +74,10 @@ $topnav-min-height: 64px;
         position: relative;
         width: var(--switch-width);     
         @include transition;
+        @include themed(background-color, #747474, #635b4b);
 
         #sun, #moon {
             height: 18px;
-        }
-
-        .night & {
-            background-color: $secondary-color;
         }
 
         #knob {
@@ -97,7 +93,7 @@ $topnav-min-height: 64px;
             width: var(--switch-orb-width);
             @include transition;
 
-            html.night & {
+            .night & {
                 background-color: $secondary-color-light;
                 border: 1.3px solid $secondary-color;
                 box-shadow: 0 0 5px 0 lighten($secondary-color-light, 75%);
