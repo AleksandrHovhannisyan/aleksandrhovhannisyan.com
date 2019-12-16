@@ -149,7 +149,9 @@ hr {
 }
 
 p, ul, ol, figcaption {
-    @include underlined-link;
+    a {
+        @include underlined-link;
+    }
 }
 
 #error {

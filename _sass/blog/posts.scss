@@ -12,9 +12,9 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     max-width: calc(#{$page-max-width} / 2.5);
-    @include underlined-link;
 
     a {
+        @include underlined-link;
         margin-right: 10px;
     }
 }
@@ -51,17 +51,13 @@
         }
     }
 
-    .post-categories {
+    .post-categories a {
         @include underlined-link;
     }
 }
 
 .post-category {
     margin-top: 50px;
-
-    .post-category-name {
-        @include underlined-link;
-    }
 }
 
 .post-previews {

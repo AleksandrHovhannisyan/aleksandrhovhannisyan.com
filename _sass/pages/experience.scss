@@ -32,14 +32,10 @@
         @include transition;
 
         .star {
-            fill: #546E7A;
+            fill: var(--button-bg-color);
             height: 16px;
             margin-right: 3px;
             width: 16px;
-
-            .night & {
-                fill: var(--text-color-normal);
-            }
         }
     }
 
@@ -60,8 +56,8 @@
             color: var(--text-color-emphasis);
             font-size: 0.9em;
             margin-bottom: 0px;
-            margin-right: 5px;
-            margin-top: 5px;
+            margin-right: 8px;
+            margin-top: 8px;
             padding: 6px;
             @include transition;
         }
