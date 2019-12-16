@@ -37,15 +37,15 @@ html.day {
 }
 
 html.night {
-    --main-bg-color: #212121;
+    --main-bg-color: #1a1a1a;
     //--nav-bg-color: #1F1F1F;
-    --nav-bg-color: #2c2c2c;
-    --hero-bg-color: #121212;
+    --nav-bg-color: #292929;
+    --hero-bg-color: #202020;
     //--hero-bg-color: black;
     --selection-bg-color: #{$secondary-color-selection};
 
-    --text-color-normal: #9e9e9e;
-    --text-color-emphasis: #bdbdbd;
+    --text-color-normal: #adadad;
+    --text-color-emphasis: #cccccc;
     --text-color-nav: #cecdcd;
     --link-color: #{$secondary-color-link};
 
@@ -55,12 +55,12 @@ html.night {
     --button-bg-hover-color: #{$secondary-color-light};
     --button-text-hover-color: #141414;
 
-    --collapsible-bg-color: #c1ac81;
-    --collapsible-text-color: black;
-    --collapsible-bg-hover-color: #e2cda4;
+    --collapsible-bg-color: #635b4b;
+    --collapsible-text-color: white;
+    --collapsible-bg-hover-color: #a79c87;
     --collapsible-text-hover-color: #141414;
 
-    --card-bg-color: #2e2e2e;
+    --card-bg-color: #292929;
     --label-bg-color: #53514b;
     --hover-color-general: #313131;
 

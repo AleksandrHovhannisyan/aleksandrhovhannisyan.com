@@ -173,7 +173,7 @@
         border-radius: 5px;
         color: var(--code-color);
         font-family: Inconsolata, Courier New;
-        padding: 3px;
+        padding: 5px;
         @include transition;
     }
 
@@ -181,7 +181,9 @@
         margin-bottom: calc(-1 * (#{$img-spacing} + 2.5px));
         
         .file-name {
-            background-color: #141414;
+            background-color: #000000;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
             color: #bcbcbc;
             margin-top: $img-spacing;
             padding: 10px 20px;
