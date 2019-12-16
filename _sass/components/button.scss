@@ -1,0 +1,20 @@
+@import 'mixins';
+
+.button {
+    align-items: center;
+    border-radius: 5px;
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    @include transition;
+}
+
+.solid-button {
+    @include solid-button(var(--button-bg-color), var(--card-bg-color));
+}
+
+.hollow-button {
+    @include hollow-button(var(--card-bg-color), var(--button-bg-color));
+}
