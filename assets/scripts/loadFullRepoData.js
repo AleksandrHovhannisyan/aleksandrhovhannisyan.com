@@ -34,12 +34,7 @@ function setupRepos() {
     'sass',
     'javascript'
   ]);
-  addRepo('EmbodyGame', 'Embody: Game', '👻', [
-    'c#',
-    'unity',
-    'inkscape',
-    'ai'
-  ]);
+  addRepo('EmbodyGame', 'Embody', '👻', ['c#', 'unity', 'inkscape', 'ai']);
 }
 
 /** Associates the given official name of a repo with an object representing custom data about that repository.

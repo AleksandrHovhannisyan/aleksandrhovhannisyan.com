@@ -13,14 +13,7 @@ html.day {
     --link-color: #{$primary-color-link};
 
     --button-bg-color: #{$primary-color};
-    --button-text-color: white;
     --button-bg-hover-color: #{$primary-color-light};
-    --button-text-hover-color: white;
-
-    --collapsible-bg-color: #{$primary-color};
-    --collapsible-text-color: white;
-    --collapsible-bg-hover-color: #{$primary-color-light};
-    --collapsible-text-hover-color: white;
 
     --card-bg-color: #ffffff;
     --label-bg-color: #dae3e7;
@@ -49,16 +42,8 @@ html.night {
     --text-color-nav: #cecdcd;
     --link-color: #{$secondary-color-link};
 
-    // TODO: get rid of unused vars
-    --button-bg-color: #c1ac81;
-    --button-text-color: #d1d1d1;
-    --button-bg-hover-color: #{$secondary-color-light};
-    --button-text-hover-color: #141414;
-
-    --collapsible-bg-color: #635b4b;
-    --collapsible-text-color: white;
-    --collapsible-bg-hover-color: #a79c87;
-    --collapsible-text-hover-color: #141414;
+    --button-bg-color: #ae9679;
+    --button-bg-hover-color: rgb(221, 188, 148);;
 
     --card-bg-color: #292929;
     --label-bg-color: #53514b;
