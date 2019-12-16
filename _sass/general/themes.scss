@@ -31,10 +31,8 @@ html.day {
 
 html.night {
     --main-bg-color: #1a1a1a;
-    //--nav-bg-color: #1F1F1F;
     --nav-bg-color: #292929;
     --hero-bg-color: #202020;
-    //--hero-bg-color: black;
     --selection-bg-color: #{$secondary-color-selection};
 
     --text-color-normal: #adadad;
@@ -43,7 +41,7 @@ html.night {
     --link-color: #{$secondary-color-link};
 
     --button-bg-color: #ae9679;
-    --button-bg-hover-color: rgb(221, 188, 148);;
+    --button-bg-hover-color: #ddbc94;
 
     --card-bg-color: #292929;
     --label-bg-color: #53514b;
