@@ -24,7 +24,7 @@ custom_js: ["loadPreviewRepoData"]
 
 <section id="cta" class="container section">
     <h2 class="heading">Want to learn more about me?</h2>
-    <p class="subtitle">Take a look at my experience and blog!</p>
+    <p class="subtitle">Check out my experience and blog!</p>
     <div id="cta-buttons">
         <a href="/experience" class="button solid-button">View experience</a>
         <a href="/blog" class="button hollow-button">Read my blog</a>

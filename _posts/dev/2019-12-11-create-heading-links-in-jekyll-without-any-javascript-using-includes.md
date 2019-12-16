@@ -15,11 +15,8 @@ Answer: with the power of Jekyll includes!
 Create a file named `linkedHeading.html` in your `_includes` folder. Here's what we want to do:
 
 1. Create a dynamic heading that can be any level we want.
-
 2. Give the heading an ID that we can reference.
-
 3. Nest an anchor inside that heading that references the ID from above.
-
 4. Fill the heading itself with some text.
 
 With Liquid and Jekyll includes, it's super simple to create linked headings. Here's the markup:

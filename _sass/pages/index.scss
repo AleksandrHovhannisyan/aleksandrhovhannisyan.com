@@ -12,8 +12,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 250px;
-    padding-bottom: 90px;
+    min-height: 350px;
+    padding-bottom: 50px;
     padding-top: 70px;
     position: relative;
 
@@ -28,6 +28,7 @@
     }
     
     .title, .subtitle {
+        text-align: center;
         color: white;
     }
 
