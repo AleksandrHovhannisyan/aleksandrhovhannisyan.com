@@ -140,6 +140,10 @@
         }
     }
 
+    li {
+        margin-bottom: calc(#{$paragraph-spacing} / 2);
+    }
+
     ol li::marker {
         @include transition;
         color: var(--text-color-emphasis);
@@ -153,16 +157,6 @@
         margin-bottom: 30px;
         margin-top: 30px;
         padding-left: 40px;
-
-        li {
-            margin-bottom: 5px;
-            margin-top: 5px;
-
-            ul,
-            ol {
-                transition: 0s;
-            }
-        }
     }
 
     blockquote {

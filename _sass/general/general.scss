@@ -37,7 +37,7 @@ body {
     background-color: var(--main-bg-color);
     color: var(--text-color-normal);
     font-family: $font-family-primary, $font-family-backup;
-    line-height: 1.6;
+    line-height: 1.7;
     position: relative;
     font-size: 1.8rem;
     @include transition(background-color);
@@ -86,7 +86,7 @@ strong {
 
 @include headings {
     color: var(--text-color-emphasis);
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
     @include transition;
 }
 

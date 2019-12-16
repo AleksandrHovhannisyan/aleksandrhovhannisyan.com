@@ -2,7 +2,7 @@
   company: SharpSpring
   dateRange: Jul. 2019–Dec. 2019 (6 months)
   responsibilities:
-    - Recreating part of the company's web app frontend in React and TypeScript per Figma specs.
+    - Recreating part of the company's web app frontend in React and TypeScript.
     - Creating a new backend service for the frontend using gRPC, TypeScript, and typeorm.
   tech:
     - react

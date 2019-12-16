@@ -175,13 +175,9 @@
         }
 
         .date-range {
-            color: $denim;
             font-size: 1.6rem;
             font-style: italic;
-
-            .night & {
-                color: #898989;
-            }
+            @include themed(color, $denim, #898989);
         }
 
         .responsibilities {
@@ -189,8 +185,8 @@
             margin-bottom: 1.6rem;
             padding-left: 20px;
 
-            li:not(:last-child) {
-                margin-bottom: $paragraph-spacing;
+            li {
+                margin-bottom: calc(#{$paragraph-spacing} / 2);
             }
         }
 
@@ -261,7 +257,7 @@
             font-size: 1.8rem;
             font-weight: normal;
             margin-bottom: 21px;
-            margin-left: 10px;
+            margin-left: 20px;
             margin-top: 21px;
         }
 
@@ -270,6 +266,10 @@
             margin-top: 16px;
             padding-left: 40px;
             padding-right: 10px;
+
+            li {
+                margin-bottom: calc(#{$paragraph-spacing} / 2);
+            }
         }
         
         p {
