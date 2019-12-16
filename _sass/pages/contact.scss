@@ -20,7 +20,7 @@
     margin-bottom: 60px;
 
     form {
-        $form-max-width: 475px;
+        $form-max-width: 450px;
         margin-bottom: 50px;
         margin-top: 30px;
         max-width: $form-max-width;
@@ -42,9 +42,9 @@
             background-color: var(--form-bg-color);
             border: 0px solid;
             border-radius: 5px;
-            box-shadow: 0 0 2px 2px var(--form-shadow-color);
+            box-shadow: 0 0 1px 1px var(--form-shadow-color);
             color: var(--text-color-emphasis);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             padding: 5px 10px;
             transition: background-color $transition-duration, box-shadow $transition-duration, color $transition-duration;
             width: 100%;
