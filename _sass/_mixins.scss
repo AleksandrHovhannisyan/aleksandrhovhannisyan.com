@@ -10,14 +10,6 @@
     }
 }
 
-@mixin banner {
-    max-width: calc(#{$page-max-width} / 1.5) !important;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
 @mixin underlined-link($color: var(--link-color)) {
     position: relative;
     text-decoration: none;

@@ -49,17 +49,12 @@ body {
 }
 
 .banner {
-    @include banner;
-
-    * {
-        text-align: center;
-    }
-
-    + hr {
-        margin-left: auto;
-        margin-right: auto;
-        width: 50%;
-    }
+    max-width: calc(#{$page-max-width} / 1.5) !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .container {
