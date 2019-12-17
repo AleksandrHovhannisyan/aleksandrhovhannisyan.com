@@ -58,7 +58,7 @@
 @mixin themed($attribute, $light, $dark) {
     #{$attribute}: $light;
 
-    .night & {
+    .dark & {
         #{$attribute}: $dark;
     }
 }
