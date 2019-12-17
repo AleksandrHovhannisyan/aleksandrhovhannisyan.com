@@ -37,24 +37,29 @@ html {
 body {
     background-color: var(--main-bg-color);
     color: var(--text-color-normal);
+    display: grid;
     font-family: $font-family-primary, $font-family-backup;
-    line-height: 1.6;
-    position: relative;
     font-size: 1.8rem;
+    grid-template-rows: 1fr 80px;
+    line-height: 1.6;
+    min-height: 100vh;
+    position: relative;
     @include transition(background-color);
 }
 
 #page-content {
+    grid-row: 1;
+    min-width: 0; // https://css-tricks.com/preventing-a-grid-blowout/
+    padding-bottom: 64px;
     padding-top: 64px;
-    padding-bottom: 150px;
 }
 
 .banner {
-    max-width: calc(#{$page-max-width} / 1.5) !important;
+    align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    max-width: calc(#{$page-max-width} / 1.5) !important;
     text-align: center;
 }
 
@@ -82,8 +87,8 @@ strong {
 
 @include headings {
     color: var(--text-color-emphasis);
-    margin-bottom: 0.5em;
     line-height: 1.4;
+    margin-bottom: 0.5em;
     @include transition;
 }
 
@@ -131,10 +136,9 @@ p {
 }
 
 .section {
-    margin-top: 100px;
-    height: 100%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 100px;
     max-width: $page-max-width;
 }
 
