@@ -51,14 +51,14 @@
         grid-row: 3;
     
         .topic {
-            background-color: var(--label-bg-color);
-            border-radius: 2px;
-            color: var(--text-color-emphasis);
-            font-size: 0.9em;
+            background-color: var(--tag-bg-color);
+            border-radius: 5px;
+            color: var(--tag-text-color);
+            font-size: 1.6rem;
             margin-bottom: 0px;
             margin-right: 8px;
             margin-top: 8px;
-            padding: 6px;
+            padding: 5px;
             @include transition;
         }
     }
