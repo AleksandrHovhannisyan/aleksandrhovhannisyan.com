@@ -169,11 +169,11 @@
     }
 
     code {
-        background-color: var(--code-bg-color);
-        border-radius: 5px;
-        color: var(--code-color);
+        background-color: var(--tag-bg-color);
+        border-radius: 3px;
+        color: var(--tag-text-color);
         font-family: Inconsolata, Courier New;
-        padding: 5px;
+        padding: 3px;
         @include transition;
     }
 
