@@ -16,7 +16,10 @@ html.light {
     --button-bg-hover-color: #{$primary-color-light};
 
     --card-bg-color: #ffffff;
-    --label-bg-color: #dae3e7;
+    
+    --tag-bg-color: #dae3e7;
+    --tag-text-color: #192226;
+
     --hover-color-general: #eaeaea;
 
     --form-bg-color: #f6f6f6;
@@ -40,11 +43,14 @@ html.dark {
     --text-color-nav: #cecdcd;
     --link-color: #{$secondary-color-link};
 
-    --button-bg-color: #ae9679;
+    --button-bg-color: #bda17f;
     --button-bg-hover-color: #ddbc94;
 
     --card-bg-color: #292929;
-    --label-bg-color: #53514b;
+
+    --tag-bg-color: #8a8175;
+    --tag-text-color: black;
+
     --hover-color-general: #313131;
 
     --form-bg-color: #313131;
