@@ -48,7 +48,6 @@ public static void main(String[] args) {
 Here we go:
 
 - A **formal parameter** (or simply parameter) is the local variable declared in a function's signature. It's like a placeholder for whatever the function accepts. Above, the only parameter is `x`.
-
 - The "things" that actually get passed in to a function are called ***actual* arguments** (or simply arguments). Above, the argument in our call to `doSomething` is the variable `y`.
 
 In practice, you'll hear the terms "parameter" and "argument" be used interchangeably, even though they're technically different. For the sake of clarity, I'll stick with these definitions throughout the rest of this article.
@@ -209,13 +208,8 @@ That was a *lot* to get through. If any of this is making sense, congratulations
 Below are some additional resources that you may find useful on this subject:
 
 - [C++ Pointers and References](https://www.ntu.edu.sg/home/ehchua/programming/cpp/cp4_pointerreference.html)
-
 - [Java Theory and Practice – Whose Object Is It, Anyway?](https://www.ibm.com/developerworks/library/j-jtp06243/index.html)
-
 - [Java Is Pass by Value and Not Pass by Reference](https://www.journaldev.com/3884/java-is-pass-by-value-and-not-pass-by-reference)
-
 - [Is Java "pass-by-reference" or "pass-by-value"?](https://stackoverflow.com/questions/40480/is-java-pass-by-reference-or-pass-by-value)
-
 - [Java is Pass-by-Value, Dammit!](http://www.javadude.com/articles/passbyvalue.htm)
-
 - [How can I simulate pass by reference in Java?](https://stackoverflow.com/questions/7884581/how-can-i-simulate-pass-by-reference-in-java)
