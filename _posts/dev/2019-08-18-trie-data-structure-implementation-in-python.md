@@ -39,9 +39,7 @@ Tracing a path from the root of a trie to a particular node produces either a pr
 A prefix tree has three main operations:
 
 - Inserting a word into the tree.
-
 - Searching for a node that matches a given string exactly.
-
 - Returning a list of all nodes (if any) that begin with a given string prefix.
 
 Let's put this into the context of a search engine. A company like Google might take an enormous list of words, insert all of them into a trie, and then use the trie to get a list of all words that begin with a certain prefix. That prefix is the partial text the user has entered into the search bar. (Of course, things are a little more complicated than that because of search term popularity and your past searches, but that's not important for our purposes here.)
@@ -55,7 +53,6 @@ So now that we understand what a prefix tree looks like and how it can be used, 
 First, like all trees, a prefix tree is going to consist of nodes. Each node will keep track of three pieces of data. I'll cover the two important ones here and bring up the third one when we get to it:
 
 - **A string**. We saw above that each node keeps track of the "prefix" that has accumulated along a specific path from the root. A node may contain a word that was inserted, like `apple` or `bat`, or it may contain a prefix, like `app-` or `b-`. So, each node will certainly need to have a member to store this string. I'll call that member `text`.
-
 - **Children**. As with many trees, each node of a trie will have zero or more children that are "linked" to it via the selection of a particular character (the branches). The most natural expression of this sort of relationship is a map: Each node maps a character to a child `TrieNode`.
 
 Let's build the `TrieNode` class:

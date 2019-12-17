@@ -11,7 +11,6 @@ You may have heard the terms "hard link" and "soft link" used in the context of 
 You can skip this section if you're familiar with the following terms:
 
 - **File**: a named and persistent medium for storing information on a computer. We say it's persistent because it survives process termination, such as if you restart your computer. This is unlike data stored in, say, main memory.
-
 - **Directory**: a special kind of *system* file storing metadata (information) about related files and directories. On GUI systems, directories are usually represented as "folders." However, there is no such notion of a "folder" in a file system—there are only files.
 
 With that out of the way, let's take a look at what links are all about.
@@ -72,9 +71,7 @@ To create a soft link in Linux, we use the `ln` ("link") command and supply the 
 Observe the following interesting points:
 
 - The original file (`test`) and the soft link (`testSoftLink`) have different inode numbers. Hence, they're different files. (They also have different permissions.)
-
 - The original file's link count remained 1. This is because the soft link is merely symbolic, not a "true" link.
-
 - The original file and the soft link have different file sizes. The original file's contents are `Hello, links` (12 characters). Including the end-of-file character, this constitutes 13 bytes (hence the 13 to the left of `test`'s date). As we mentioned above, a soft link contains the path to the original file. In this case, it's just the file name: `test`, which is 4 bytes (hence the 4 to the left of `testSoftLink`'s date).
 
 Let's also look at their contents:
@@ -133,7 +130,6 @@ By now, the terms soft link and hard link should be familiar enough that the abo
 {% include linkedHeading.html heading="Additional Exercises" level=2 %}
 
 1. What do you expect will happen if you change the permissions of a hard link using `chmod`? What about changing the permissions of a soft link?
-
 2. Here's an interesting (and easy!) question: What happens if you create a hard link to a soft link? Try it out! Hint: Remember that hard links are simply aliases.
 
 {% include linkedHeading.html heading="Further Reading" level=2 %}
@@ -143,11 +139,7 @@ Soft links and hard links aren't as mysterious as they may seem at first. If you
 Here are some additional resources on file links:
 
 - [Hard vs Soft Links in Linux (Linux Links)](https://www.youtube.com/watch?v=4-vye3QFTFo)
-
 - [Explaining Soft Link And Hard Link In Linux With Examples](https://www.ostechnix.com/explaining-soft-link-and-hard-link-in-linux-with-examples/)
-
 - [What is the difference between a symbolic link and a hard link?](https://stackoverflow.com/questions/185899/what-is-the-difference-between-a-symbolic-link-and-a-hard-link)
-
 - [Modern Operating Systems by Tanenbaum, Chapter 4.2.4](https://www.amazon.com/Modern-Operating-Systems-Andrew-Tanenbaum/dp/013359162X)
-
 - [How to take advantage of symbolic links in Windows 10](https://www.techrepublic.com/article/how-to-take-advantage-of-symbolic-links-in-window-10/)

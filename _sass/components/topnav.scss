@@ -35,6 +35,11 @@ $topnav-min-height: 64px;
         background: none;
         display: flex;
         flex-wrap: nowrap;
+
+        img {
+            height: 21px;
+            margin-bottom: 3px;
+        }
     }
 
     #my-name {

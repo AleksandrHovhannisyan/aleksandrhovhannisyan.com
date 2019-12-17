@@ -95,15 +95,10 @@ And you have no idea what it is that you're doing—it's about learning as you g
 If Dark Souls and metroidvania games had a baby, Hollow Knight would be it. There's no mistaking the similarities:
 
 - You're attempting to stop an endless cycle, though many like you have failed to do so in the past.
-
 - There are [tons of loveable characters](https://www.reddit.com/r/HollowKnight/comments/6h6cri/batamas_geo_anybody_have_a_favorite_bugism/) with their own quirks and questlines.
-
 - The bosses are hard as balls. (And as we all know, if a game is hard, [it's basically Dark Souls](https://www.youtube.com/watch?v=gPrzobGAyGo).)
-
 - Benches are oddly reminiscent of bonfires, with their warmth, comfort, and soothing music.
-
 - Each new area greets you with beautiful text. You pause momentarily to take it all in.
-
 The soundtrack is also incredibly well done, courtesy of award-winning composer Christopher Larkin:
 
 <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=2306704082/size=large/bgcol=333333/linkcol=e99708/tracklist=false/artwork=small/transparent=true/" seamless><a href="http://christopherlarkin.bandcamp.com/album/hollow-knight-original-soundtrack">Hollow Knight (Original Soundtrack) by Christopher Larkin</a></iframe>
@@ -252,9 +247,7 @@ It's worth noting that Dishonored doesn't have too much replayability to it; if 
 Here are some honorable mentions that didn't make the list:
 
 - **World of Tanks** (console edition): Tank-on-tank action in teams of 15 players. There's a high skill gap and a lot of grinding to get through, but there's no feeling like blowing the head clean off a tank with a KV-2 and "reliving" the action of World-War-II-era tank combat. Though the game is littered with microtransactions, it's free to play and especially fun with friends.
-
 - **Rainbow Six Siege**: I honestly can't name any *core* problems with Siege as a game, except that I simply grew tired of it. I have very fond memories of it dating back to my early days with the Xbox One, and there's still a decent player base on consoles and PC. But, as with other competitive games, it's had its fair share of toxicity.
-
 - **Grand Theft Auto V**: Possibly the best open-world sandbox game currently available, at least until Rockstar releases its long-rumored follow-up. I only experienced it at the height of its glory on last-gen consoles, but the main player base is now essentially on PC. It's a good game if you can get past the mostly toxic player base.
 
 And that about does it—thanks for reading!

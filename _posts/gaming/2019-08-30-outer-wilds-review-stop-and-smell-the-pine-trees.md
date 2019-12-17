@@ -39,15 +39,10 @@ Any knowledge you acquire is cumulative and is recorded in your ship log. At fir
 You're given the following equipment and tools for your expedition:
 
 - Your ship, for navigating space. Its computer logs everything that you learn on your journeys.
-
 - A flashlight. It does exactly what you'd expect it to do.
-
 - A scout, a device that doubles as both a camera and a light source. Use it to illuminate dark rooms, explore unreachable areas, or avoid ghost matter.
-
 - A signalscope, which can be used to pick up radio frequencies like distress signals or music.
-
 - Your jetpack, for traversing the uneven terrain of planets by foot.
-
 - A translator, for deciphering the text left behind by the Nomai. You'll be doing this a lot.
 
 <p>
