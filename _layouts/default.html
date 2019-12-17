@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en-US" class="day">
+<html lang="en-US" class="light">
     <head>
         <!-- Metadata for search engines -->
         <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
@@ -21,10 +21,10 @@
         <title>{{ page.title }} | Aleksandr Hovhannisyan</title>
         <!-- Load the user's last selected theme -->
         <script>
-            if (localStorage.getItem('theme') === 'night') {
-                document.documentElement.className = 'night';
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.className = 'dark';
             } else {
-                document.documentElement.className = 'day';
+                document.documentElement.className = 'light';
             }
         </script>
     </head>

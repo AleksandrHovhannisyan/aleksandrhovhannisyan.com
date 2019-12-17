@@ -43,7 +43,7 @@
     a {
         --hero-link: #64b5f6;
 
-        .night & {
+        .dark & {
             --hero-link: #{$secondary-color-link};
         }
 
