@@ -5,7 +5,7 @@ html.light {
     --main-bg-color: #ffffff;
     --nav-bg-color: #2c2c2c;
     --hero-bg-color: #1c1c1c;
-    --selection-bg-color: #{$primary-color-selection};
+    --selection-bg-color: rgba(218, 227, 231, 0.8);
 
     --text-color-normal: #{$denim};
     --text-color-nav: #cecdcd;
@@ -25,18 +25,16 @@ html.light {
     --form-bg-color: #f6f6f6;
     --form-shadow-color: #bebebe;
 
-    --code-color: #37474F;
-    --code-bg-color: #e6edf0;
     --blockquote-bg-color: rgb(216, 216, 216);
     --blockquote-text-color: #484e55;
-    --spoiler-color: #90A4AE;
+    --spoiler-color: #dae3e7;
 }
 
 html.dark {
     --main-bg-color: #1a1a1a;
     --nav-bg-color: #292929;
     --hero-bg-color: #202020;
-    --selection-bg-color: #{$secondary-color-selection};
+    --selection-bg-color: rgba(156, 147, 135, 0.8);
 
     --text-color-normal: #adadad;
     --text-color-emphasis: #cccccc;
@@ -56,9 +54,7 @@ html.dark {
     --form-bg-color: #313131;
     --form-shadow-color: #151515;
 
-    --code-color: #d9d9d9;
-    --code-bg-color: #5f5f5f;
     --blockquote-bg-color: rgb(63, 62, 62);
     --blockquote-text-color: #aaaaaa;
-    --spoiler-color: rgb(163, 158, 148);
+    --spoiler-color: #9c9387;
 }
