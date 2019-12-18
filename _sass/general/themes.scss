@@ -18,7 +18,7 @@ html.light {
     --card-bg-color: #ffffff;
     
     --tag-bg-color: #dae3e7;
-    --tag-text-color: #192226;
+    --tag-text-color: #{$primary-color};
 
     --hover-color-general: #eaeaea;
 
@@ -47,7 +47,7 @@ html.dark {
     --card-bg-color: #292929;
 
     --tag-bg-color: #9c9387;
-    --tag-text-color: black;
+    --tag-text-color: #000000;
 
     --hover-color-general: #313131;
 

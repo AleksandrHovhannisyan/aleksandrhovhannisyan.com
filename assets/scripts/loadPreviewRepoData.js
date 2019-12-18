@@ -193,6 +193,7 @@ function footerFor(repo) {
   for (const topic of get(repo).topics) {
     const topicDiv = document.createElement('div');
     topicDiv.classList.add('topic');
+    topicDiv.classList.add('tag');
     topicDiv.textContent = topic;
     footer.appendChild(topicDiv);
   }
