@@ -1,0 +1,41 @@
+.tooltip {
+    position: absolute;
+    z-index: 200;
+    width: 100%;
+    height: 100%;
+
+    .tooltip-text {
+        opacity: 0;
+        position: relative;
+        left: 0;
+        color: white;
+        font-size: 1.4rem;
+        padding: 5px;
+        background-color: #555;
+        @include transition;
+    }
+
+    .tooltip-left {
+        right: 100%;
+        margin-right: 5px;
+    }
+
+    .tooltip-right {
+        left: 100%;
+        margin-left: 5px;
+    }
+
+    .tooltip-top {
+        bottom: 100%;
+        margin-bottom: 5px;
+    }
+
+    .tooltip-bottom {
+        top: 100%;
+        margin-top: 5px;
+    }
+
+    &:hover .tooltip-text {
+        opacity: 1;
+    }
+}

@@ -105,11 +105,18 @@
         column-gap: 10px;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        margin-top: 10px;
+        margin-bottom: 10px;
+        position: relative;
         @include transition(background-color);
 
         &:hover {
             background-color: var(--hover-color-general);
+        }
+
+        .tooltip-right {
+            margin-left: 0;
+            margin-right: 5px;
+            left: 50%;
         }
 
         .skill-name {
