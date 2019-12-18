@@ -46,16 +46,14 @@ permalink: /experience/
                     {% include svg.html svg="star" class="star star-empty" %}
                     {% endfor %}
                 </div>
-                <div class="tooltip">
-                    <span class="tooltip-text tooltip-right">
-                    {% if item.rating == 1 %}Familiar
-                    {% elsif item.rating == 2 %}Basic
-                    {% elsif item.rating == 3 %}Competent
-                    {% elsif item.rating == 4 %}Skilled
-                    {% elsif item.rating == 5 %}Advanced
-                    {% endif %}
-                    </span>
-                </div>
+                {% assign rating = '' %}
+                {% if item.rating == 1 %}{% assign rating = 'Familiar' %}
+                {% elsif item.rating == 2 %}{% assign rating = 'Basic' %}
+                {% elsif item.rating == 3 %}{% assign rating = 'Intermediate' %}
+                {% elsif item.rating == 4 %}{% assign rating = 'Competent' %}
+                {% elsif item.rating == 5 %}{% assign rating = 'Advanced' %}
+                {% endif %}
+                {% include tooltip.html position='right' text=rating %}
             </div>
             {% endfor %}
         </div>

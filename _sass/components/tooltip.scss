@@ -1,23 +1,23 @@
 .tooltip {
-    position: absolute;
-    z-index: 200;
-    width: 100%;
     height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
 
     .tooltip-text {
-        opacity: 0;
-        position: relative;
-        left: 0;
+        background-color: #555;
         color: white;
         font-size: 1.4rem;
+        left: 0;
+        opacity: 0;
         padding: 5px;
-        background-color: #555;
+        position: relative;
         @include transition;
     }
 
     .tooltip-left {
-        right: 100%;
         margin-right: 5px;
+        right: 100%;
     }
 
     .tooltip-right {
@@ -31,8 +31,8 @@
     }
 
     .tooltip-bottom {
-        top: 100%;
         margin-top: 5px;
+        top: 100%;
     }
 
     &:hover .tooltip-text {
