@@ -1,0 +1,7 @@
+.tag {
+    background-color: var(--tag-bg-color);
+    border-radius: 3px;
+    color: var(--tag-text-color);
+    padding: 5px;
+    @include transition;
+}
