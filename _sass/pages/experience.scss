@@ -113,8 +113,10 @@
             background-color: var(--hover-color-general);
         }
 
-        .tooltip-right {
-            left: 50%;
+        .tooltip-text {
+            $tooltip-width: 100px;
+            max-width: $tooltip-width;
+            left: calc(100% - #{$tooltip-width});
         }
 
         .skill-name {
@@ -123,6 +125,7 @@
         }
         
         .skill-rating {
+            align-self: center;
             display: inline;
             grid-column: 2;
             text-align: right;
