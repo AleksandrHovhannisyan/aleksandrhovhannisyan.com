@@ -1,10 +1,10 @@
 ---
-title: My 9 Favorite Video Games of All Time
+title: My 10 Favorite Video Games of All Time
 description: Of all the games I've played, these are the ones I treasure most. Take a look at my favorite video games of all time.
 keywords: [favorite video games, best video games of all time, best video games of all time list, favorite video games of all time, best video games list]
 ---
 
-Gaming is my not-so-guilty pleasure—it provides a nice escape into another world and serves as a creative outlet, a medium in which I'm free to do whatever I want. Here's a discussion of my nine favorite games of all time.
+Gaming is my not-so-guilty pleasure—it provides a nice escape into another world and serves as a creative outlet, a medium in which I'm free to do whatever I want. Below are my ten favorite games of all time.
 
 ## 1. The Legend of Zelda: The Minish Cap
 
@@ -152,7 +152,28 @@ Besides, I wasn't really bothered by its limitations when I was a kid—it fed m
 
 > Fun fact: My mom once bought me a construction set—metal pieces, tools, and all—for building a remote-controlled toy truck. Unsurprisingly, I grew tired of the truck and repurposed the metal pieces into a tiny sword and makeshift shield. Many of those engineering feats were inspired by this game!
 
-## 7. Dragon's Dogma: Dark Arisen
+## 7. Battlefield 4
+
+<figure>
+{% include posts/picture.html img="shanghai-tower" extension="png" alt="The Siege of Shanghai tower falling." %}
+<figcaption>Image credits: <a href="https://www.youtube.com/watch?v=ZjSykcTGrNc">Electronic Arts</a></figcaption>
+</figure>
+
+It was June 10, 2013 when the official Battlefield YouTube channel released the Siege of Shanghai multiplayer trailer for Battlefield 4.
+
+And boy was it *glorious*.
+
+I'll never forget the first time I saw that skyscraper crumble. I'm pretty sure I re-watched that video at least three times to build up my hype for the beta release. Up until that point, there had never been any multiplayer shooter that allowed you to witness destruction at such a grand scale.
+
+Sure, the Battlefield series is known for its excellent gun play and large-scale battles in Conquest mode. But there's nothing that screams Battlefield quite like environmental demolition—most of the time, if you can see it or go inside it, you can also blow it to smithereens. And it doesn't get any bigger, louder, and bolder than toppling an entire *skyscraper*.
+
+Honestly, I hope I'm not alone when I say that Battlefield 4 is the single greatest modern military shooter of the decade. It's still going strong on consoles, with many player-owned servers ranging from 24/7 Metro to Operation Locker and other great maps.
+
+{% include posts/picture.html img="metro" extension="png" alt="Operation Metro on the Xbox One" %}
+
+Hardcore mode is my personal favorite—nearly every gun kills you in a couple shots, and every encounter is that much more exhilarating. You're also forced to rely more on environmental awareness and teamwork since run-and-gun tactics usually don't end well in this mode.
+
+## 8. Dragon's Dogma: Dark Arisen
 
 > *"This looks interesting."* — literally every single Pawn
 
@@ -191,7 +212,7 @@ Then, of course, there's the fact that Dragon's Dogma takes melee combat to anot
 
 Dragon's Dogma is a breath of fresh air and makes combat in other action RPGs feel vastly inferior. It's more than worth a play—there's enough content in the main game and DLC to last you for hundreds of hours.
 
-## 8. Playdead's INSIDE
+## 9. Playdead's INSIDE
 
 Playdead's follow up to Limbo is a puzzle platformer set in a bleak, gray dystopia where most peple are enslaved minions. Everyone except you, that is, and the guards who seem so intent on killing you. And to make matters worse, you're a vulnerable child with no way to fight back. All you can do is run, hide, and blend in.
 
@@ -208,7 +229,7 @@ Without being too explicit, I'll say that the story is actually really compellin
 
 The secret ending in particular is unexpected and leaves everything up to your interpretation. Put together the pieces, and you may just land upon a sensible explanation for it all (or simply give up trying). Either way, it's a... *unique* experience.
 
-## 9. Dishonored
+## 10. Dishonored
 
 This is one of Bethesda's lesser known games, at least in comparison to the more popular Elder Scrolls and Fallout franchises. But it's definitely worth checking out, even if it's a bit dated by today's standards.
 
