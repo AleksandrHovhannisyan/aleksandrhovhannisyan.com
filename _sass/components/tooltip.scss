@@ -5,34 +5,73 @@
     z-index: 2;
 
     .tooltip-text {
+        align-items: center;
         background-color: #555;
         color: white;
+        display: flex;
         font-size: 1.4rem;
+        justify-content: center;
         left: 0;
         opacity: 0;
+        border-radius: 5px;
         padding: 5px;
         position: relative;
         @include transition;
+
+        &::after {
+            content: "";
+            position: absolute;
+            border-width: 5px;
+            border-style: solid;
+        }
     }
 
-    .tooltip-left {
-        margin-right: 5px;
-        right: 100%;
+    $tooltip-spacing: 10px;
+
+    .tooltip-top {
+        bottom: calc(100% + #{$tooltip-spacing});
+
+        &::after {
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-color: #555 transparent transparent transparent;
+        }
     }
 
     .tooltip-right {
-        left: 100%;
-        margin-left: 5px;
-    }
+        left: calc(100% + #{$tooltip-spacing});
+        margin-left: 10px;
 
-    .tooltip-top {
-        bottom: 100%;
-        margin-bottom: 5px;
+        &::after {
+            top: 50%;
+            right: 100%;
+            margin-top: -5px;
+            border-color: transparent #555 transparent transparent;
+        }
     }
 
     .tooltip-bottom {
-        margin-top: 5px;
-        top: 100%;
+        top: calc(100% + #{$tooltip-spacing});
+        
+        &::after {
+            bottom: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-color: transparent transparent #555 transparent;
+        }
+    }
+
+    .tooltip-left {
+        margin-right: 10px;
+        right: 100%;
+
+        &::after {
+            top: 50%;
+            left: 100%;
+            margin-top: -5px;
+            border-color: transparent transparent transparent #555;
+        }
     }
 
     &:hover .tooltip-text {

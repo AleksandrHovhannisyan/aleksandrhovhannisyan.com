@@ -53,7 +53,7 @@ permalink: /experience/
                 {% elsif item.rating == 4 %}{% assign rating = 'Competent' %}
                 {% elsif item.rating == 5 %}{% assign rating = 'Advanced' %}
                 {% endif %}
-                {% include tooltip.html position='right' text=rating %}
+                {% include tooltip.html position='top' text=rating %}
             </div>
             {% endfor %}
         </div>
