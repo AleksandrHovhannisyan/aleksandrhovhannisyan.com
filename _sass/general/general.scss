@@ -44,13 +44,14 @@ body {
     line-height: 1.6;
     min-height: 100vh;
     position: relative;
+    row-gap: 64px;
     @include transition(background-color);
 }
 
 #page-content {
     grid-row: 1;
     min-width: 0; // https://css-tricks.com/preventing-a-grid-blowout/
-    padding-bottom: 64px;
+    //padding-bottom: 64px;
     padding-top: 64px;
 }
 
@@ -156,6 +157,39 @@ p, ul, ol, figcaption {
 }
 
 #error {
-    margin-top: 200px;
+    align-items: center;
+
+    animation: backgroundScroll 40s linear infinite;
+    animation-fill-mode: forwards;
+    background-color: #1a1a1a;
+    /* https://www.transparenttextures.com/stardust.html */
+    background-image: url('/assets/img/stardust.png');
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    margin-top: 0;
+    position: absolute;
     text-align: center;
+    top: 0;
+    width: 100%;
+
+    @keyframes backgroundScroll {
+        from {background-position: 0 0;}
+        to {background-position: 798px 0;}
+    }
+
+    h1 {
+        color: #cccccc;
+    }
+
+    p {
+        color: #adadad;
+    }
+
+    a {
+        color: $secondary-color-link;
+        @include underlined-link($secondary-color-link);
+    }
 }
