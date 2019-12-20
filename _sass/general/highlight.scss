@@ -52,98 +52,65 @@ $operator-word: #569cd6;
   /* Comments */
   .c, .cm, .cp, .c1, .cs {
     font-style: italic;
-
-    &, &::selection {
-      color: $comment;
-    }
+    @include fixedColor($comment);
   }
 
   /* Functions */
   .nf, .nx {
-    &, &::selection {
-      color: $function;
-    }
+    @include fixedColor($function);
   }
 
   /* Attributes */
   .na {
-    &, &::selection {
-      color: $attribute;
-    }
+    @include fixedColor($attribute);
   }
 
   /* Variables */
   .bp, .nv, .vc, .vg, .vi, .err {
-    &, &::selection {
-      color: $variable;
-    }
+    @include fixedColor($variable);
   }
 
   /* Numbers */
   .m, .mf, .mh, .mi, .mo, .il {
-    &, &::selection {
-      color: $number;
-    }
+    @include fixedColor($number);
   }
 
   /* Keywords */
   .k, .kd, .kn, .kr, .kt {
-    &, &::selection {
-      color: $keyword;
-    }
+    @include fixedColor($keyword);
   }
 
   /* Constants */
   .kc {
-    &, &::selection {
-      color: $constant;
-    }
+    @include fixedColor($constant);
   }
 
   /* Pseudo */
   .kp, .nb {
-    &, &::selection {
-      color: $support;
-    }
+    @include fixedColor($support);
   }
 
   /* Strings */
   .s, .sb, .sc, .s1, .s2 {
-    &, &::selection {
-      color: $string;
-    }
+    @include fixedColor($string);
   }
 
   /* Classes/tags */
   .nc, .nt, .nl {
-    &, &::selection {
-      color: $tag;
-    }
+    @include fixedColor($tag);
   }
 
   /* Punctuation */
   .p {
-    &, &::selection {
-      color: $punctuation;
-    }
+    @include fixedColor($punctuation);
   }
 
   .o {
-    &, &::selection {
-      color: $operator;
-    }
+    @include fixedColor($operator);
   }
 
   /* Operators */
   .ow {
-    &, &::selection {
-      color: $operator-word;
-    }
-  }
-}
-
-.si {
-  &, &::selection {
-    color: #569cd6;
+    @include fixedColor($operator-word);
   }
 }

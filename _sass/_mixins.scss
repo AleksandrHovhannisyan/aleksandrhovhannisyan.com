@@ -62,3 +62,9 @@
         #{$attribute}: $dark;
     }
 }
+
+@mixin fixedColor($color) {
+    &, &::selection {
+        color: $color;
+    }
+}
