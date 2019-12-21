@@ -1,0 +1,6 @@
+{% assign h = include.h %}
+{% assign lvl = include.lvl %}
+<h{{ lvl }} class="heading-with-image" id="{{ h | slugify }}">
+    <span>{{ h }}</span>
+    <img src="{{ include.img }}" alt="{{ include.alt }}">
+</h{{ lvl }}>
