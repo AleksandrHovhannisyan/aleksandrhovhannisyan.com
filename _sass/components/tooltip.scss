@@ -4,8 +4,14 @@
     width: 100%;
     z-index: 2;
 
+    @keyframes fadeIn {
+        from { opacity: 0; }
+          to { opacity: 1; }
+    }
+
     .tooltip-text {
         align-items: center;
+        animation: fadeIn $transition-duration;
         background-color: #555;
         border-radius: 5px;
         color: white;
@@ -15,7 +21,6 @@
         left: 0;
         padding: 5px;
         position: relative;
-        @include transition;
 
         &::after {
             border-style: solid;
