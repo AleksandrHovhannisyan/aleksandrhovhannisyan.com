@@ -105,6 +105,11 @@ h1 {
     font-size: 2.2em;
 }
 
+.heading-with-image {
+    margin-top: -90px;
+    padding-top: 90px;
+}
+
 a {
     text-decoration: none;
 
@@ -174,6 +179,7 @@ p, ul, ol, figcaption {
     text-align: center;
     top: 0;
     width: 100%;
+    text-shadow: black;
 
     @keyframes backgroundScroll {
         from {background-position: 0 0;}

@@ -12,7 +12,7 @@ custom_js: ["loadPreviewRepoData"]
     <img src="/assets/img/profile-photo.png" alt="My profile photo" />
 </section>
 
-<section id="projects" class="container section">
+<section id="featured-projects" class="container section">
     <h2 class="heading">Featured Software Projects</h2>
     <div id="project-grid" class="card-grid">
         <!-- Projects get populated here dynamically (see index.js) -->

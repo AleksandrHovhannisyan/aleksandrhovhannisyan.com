@@ -7,10 +7,7 @@ permalink: /experience/
 {% include banner.html heading="My experience" content="I try to keep busy while having fun and testing my limits. Between school, side projects, freelancing, and interning, I've gained valuable exposure to a wide variety of interesting technologies and problems." %}
 
 <section id="projects" class="container section">
-    <h2 class="heading-with-image">
-        <span>Projects</span>
-        <img src="/assets/img/folder.png" alt="📁">
-    </h2>
+    {% include headingWithImage.html h="Projects" lvl=2 img="/assets/img/folder.png" alt="📁" %}
     <div id="project-grid" class="card-grid">
         <!-- Projects get populated here dynamically (see index.js) -->
         <div id="project-placeholder" class="project">
@@ -26,10 +23,7 @@ permalink: /experience/
 </section>
 
 <section id="skills" class="container section">
-    <h2 class="heading-with-image">
-        <span>Skills and Abilities</span>
-        <img src="/assets/img/juggler.png" alt="🤹">
-    </h2>
+    {% include headingWithImage.html h="Skills and Abilities" lvl=2 img="/assets/img/juggler.png" alt="🤹" %}
     <div id="skill-grid">
         {% for skill in site.data.skills %}
         <div>
@@ -62,10 +56,7 @@ permalink: /experience/
 </section>
 
 <section id="work" class="container section">
-    <h2 class="heading-with-image">
-        <span>Work Experience </span>
-        <img src="/assets/img/briefcase.png" alt="💼" />
-    </h2>
+    {% include headingWithImage.html h="Work Experience" lvl=2 img="/assets/img/briefcase.png" alt="💼" %}
     <section class="card-grid">
     {% for job in site.data.work %}
         <section class="job">
@@ -89,10 +80,7 @@ permalink: /experience/
 </section>
 
 <section id="education" class="container section">
-    <h2 class="heading-with-image">
-        <span>Education</span>
-        <img src="/assets/img/graduation-cap.png" alt="🎓">
-    </h2>
+    {% include headingWithImage.html h="Education" lvl=2 img="/assets/img/graduation-cap.png" alt="🎓" %}
     {% for institution in site.data.education %}
     <div class="institution collapsible">
         <div class="collapsible-header">
