@@ -7,22 +7,21 @@
     .tooltip-text {
         align-items: center;
         background-color: #555;
+        border-radius: 5px;
         color: white;
-        display: flex;
+        display: none;
         font-size: 1.4rem;
         justify-content: center;
         left: 0;
-        opacity: 0;
-        border-radius: 5px;
         padding: 5px;
         position: relative;
         @include transition;
 
         &::after {
+            border-style: solid;
+            border-width: 5px;
             content: "";
             position: absolute;
-            border-width: 5px;
-            border-style: solid;
         }
     }
 
@@ -32,10 +31,10 @@
         bottom: calc(100% + #{$tooltip-spacing});
 
         &::after {
-            top: 100%;
+            border-color: #555 transparent transparent transparent;
             left: 50%;
             margin-left: -5px;
-            border-color: #555 transparent transparent transparent;
+            top: 100%;
         }
     }
 
@@ -44,10 +43,10 @@
         margin-left: 10px;
 
         &::after {
-            top: 50%;
-            right: 100%;
-            margin-top: -5px;
             border-color: transparent #555 transparent transparent;
+            margin-top: -5px;
+            right: 100%;
+            top: 50%;
         }
     }
 
@@ -55,10 +54,10 @@
         top: calc(100% + #{$tooltip-spacing});
         
         &::after {
+            border-color: transparent transparent #555 transparent;
             bottom: 100%;
             left: 50%;
             margin-left: -5px;
-            border-color: transparent transparent #555 transparent;
         }
     }
 
@@ -67,14 +66,14 @@
         right: 100%;
 
         &::after {
-            top: 50%;
+            border-color: transparent transparent transparent #555;
             left: 100%;
             margin-top: -5px;
-            border-color: transparent transparent transparent #555;
+            top: 50%;
         }
     }
 
     &:hover .tooltip-text {
-        opacity: 1;
+        display: flex;
     }
 }
