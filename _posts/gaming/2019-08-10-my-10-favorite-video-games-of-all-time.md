@@ -143,9 +143,7 @@ Each turn, you play a single card from your hand, which refills from your deck o
 It's an old game that doesn't have the best graphics in the world by a longshot, is somewhat buggy, and requires a lot of patience to get through the sometimes tedious gameplay. Despite all those flaws, it ranks among my favorites because:
 
 1. The story is surprisingly well written. Each mission is preceded by a narrative—either a monologue or an exchange between key characters of the game.
-
 2. The game actually has pretty decent music, especially considering it was developed for such old hardware.
-
 3. Its gameplay rewards patience and strategy. It's sort of like chess, but requiring less skill.
 
 Besides, I wasn't really bothered by its limitations when I was a kid—it fed my childhood fantasies of medieval heroism and war. All in all, it's a pretty neat game.

@@ -15,6 +15,7 @@ $topnav-min-height: 64px;
     width: 100%;
     /* This is to ensure that it always appears above everything. */
     z-index: 100;
+    @include centered;
     @include transition;
 
     * {
@@ -25,9 +26,9 @@ $topnav-min-height: 64px;
     .nav-container {
         align-items: center;
         display: flex;
+        grid-column: 2;
         height: $topnav-min-height;
         justify-content: space-between;
-        max-width: $page-max-width;
     }
     
     #logo {
@@ -157,9 +158,9 @@ $topnav-min-height: 64px;
 
     .navbar-hamburger {
         fill: var(--text-color-nav);
+        flex-shrink: 0;
         height: 27px;
         width: 27px;
-        flex-shrink: 0;
     }   
 }
 

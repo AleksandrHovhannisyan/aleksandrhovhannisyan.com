@@ -11,6 +11,7 @@
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.8);
     display: flex;
     flex-direction: column;
+    grid-column: 1 / 4 !important;
     justify-content: center;
     min-height: 300px;
     padding-bottom: 50px;
@@ -18,8 +19,8 @@
     position: relative;
 
     img {
-        border: 5px solid var(--hero-bg-color);
         background-color: var(--hero-bg-color);
+        border: 5px solid var(--hero-bg-color);
         border-radius: 50%;
         bottom: -70px;
         height: 140px;
@@ -28,8 +29,8 @@
     }
     
     .title, .subtitle {
-        text-align: center;
         color: white;
+        text-align: center;
     }
 
     .title {
@@ -73,9 +74,9 @@
 }
 
 #cta {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 #cta-buttons {
