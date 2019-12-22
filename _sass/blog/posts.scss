@@ -11,7 +11,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    max-width: calc(#{$page-max-width} / 2.5);
+    max-width: 400px;
 
     a {
         @include underlined-link;
@@ -19,12 +19,12 @@
     }
 }
 
-.post {
-    margin-top: 75px;
-}
-
 .post-title {
     margin-bottom: 20px;
+}
+
+.post-header {
+    margin-top: 75px;
 }
 
 .post-stats {
@@ -74,10 +74,13 @@
     }
 }
 
-.post-body {
-    $main-spacing: 60px;
-    $img-spacing: 1.5em;
-    margin-top: $main-spacing;
+.post {
+    $main-spacing: 60px; // TODO: get rid of this confusing garbo
+    $img-spacing: 2em;
+
+    & > * {
+        grid-column: 2;
+    }
 
     .post-stats {
         margin-bottom: calc(#{$main-spacing} / 2);
@@ -101,7 +104,6 @@
         figcaption {
             font-size: 1.4rem;
             font-style: italic;
-            margin-bottom: $img-spacing;
             text-align: center;
             @include transition;
         }
@@ -118,7 +120,6 @@
     img,
     iframe,
     .pro-con-table {
-        margin: $img-spacing auto;
         max-width: 100%;
     }
 
@@ -127,17 +128,23 @@
         width: 100%;
     }
 
+    p > img {
+        margin-bottom: calc(#{$img-spacing} - #{$paragraph-spacing});;
+        margin-top: calc(#{$img-spacing} - #{$paragraph-spacing});;
+    }
+
     figure,
     picture,
     iframe,
-    .pro-con-table {
-        &+p {
-            margin-top: $paragraph-spacing;
-        }
+    .pro-con-table,
+    div.highlighter-rouge {
+        margin-bottom: $img-spacing;
+        // Add the remainder so the top and bottom are spaced equally
+        margin-top: calc(#{$img-spacing} - #{$paragraph-spacing});
     }
 
-    li {
-        margin-bottom: calc(#{$paragraph-spacing} / 2);
+    li:not(:last-child) {
+        margin-bottom: $paragraph-spacing;
     }
 
     ol li::marker {
@@ -150,15 +157,15 @@
     ul,
     ol {
         @include transition;
-        margin-bottom: 30px;
-        margin-top: 30px;
+        margin-bottom: $img-spacing;
+        margin-top: calc(#{$img-spacing} - #{$paragraph-spacing});
         padding-left: 40px;
     }
 
     blockquote {
         background: var(--blockquote-bg-color);
         border-left: 4px solid #6b6a6a;
-        margin: 25px auto;
+        margin-bottom: $paragraph-spacing;
         padding: 1px 16px 1px 20px;
         @include transition;
 
@@ -178,16 +185,16 @@
     }
 
     .code-header {
-        margin-bottom: calc(-1 * (#{$img-spacing} + 2.5px));
-        
         .file-name {
             background-color: #000000;
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
             color: #bcbcbc;
-            margin-top: $img-spacing;
+            // paragraph-spacing - img-spacing will always be negative, which is what we need
+            margin-bottom: calc(#{$paragraph-spacing} - #{$img-spacing});
+            margin-top: calc(#{$img-spacing} - #{$paragraph-spacing});
             padding: 10px 20px;
-    
+
             &::before {
                 content: "📂";
             }
@@ -195,15 +202,14 @@
     }
 
     div.highlighter-rouge {
-        margin: $img-spacing auto;
-
         code {
             padding: 0;
         }
     }
 
     .MathJax_Display {
-        margin: 2em auto;
+        margin-bottom: $img-spacing;
+        margin-top: calc(#{$img-spacing} - #{$paragraph-spacing});
     }
 
     .spoiler {

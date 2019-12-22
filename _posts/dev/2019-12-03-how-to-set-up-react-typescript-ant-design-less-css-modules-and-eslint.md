@@ -218,9 +218,7 @@ We're almost done! Per the plugin's [usage instructions](https://www.npmjs.com/p
 Here's how to use the workspace version of TypeScript in VS Code:
 
 1. Open any TypeScript file.
-
 2. Click the version number on the blue status bar at the bottom of VS Code.
-
 3. Select `Use Workspace Version` (3.7.3 as of this writing).
 
 Here's a screenshot to make that clearer:

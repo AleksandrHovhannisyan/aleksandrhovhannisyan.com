@@ -46,11 +46,8 @@ Short and sweet! And much more legible than copy-pasting a bunch of heading tags
 If you're curious, here's how that works:
 
 1. We pass in a string to `heading`, which we access via `include.heading`. We assign this to a local variable so we don't have to keep repeating `include.heading`.
-
 2. Using Liquid objects, we specify the level of the heading dynamically with {% raw %}`h{{ include.level }}`{% endraw %}. So if we pass in `level=2`, then we'll get `h2`. Do this for both the opening and closing tags.
-
 3. Give the h tag an ID. The ID will be the string we passed in, but [slugged](https://jekyllrb.com/docs/liquid/filters/). You can also give it a class name if you want to style it later.
-
 4. Create a nested anchor that points to the same slug: {% raw %}`href="#{{ heading | slugify }}"`{% endraw %}. The anchor text can be anything you want. I was inspired by the [CSS Tricks website](https://css-tricks.com/) and used a hashtag.
 
 Then, after the anchor, we simply put a space followed by our unformatted heading string.
