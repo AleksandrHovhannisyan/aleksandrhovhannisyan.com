@@ -1,8 +1,13 @@
-$page-max-width: 1000px;
 $transition-duration: 0.3s;
 
 $device-cutoff-small: 320px;
 $device-cutoff-medium: 600px;
 $device-cutoff-large: 800px;
 
-$paragraph-spacing: 1.2em;
+$golden-ratio: 1.61803398875;
+$font-size: 18px;
+$page-max-width: 900px;
+
+$line-height: round($font-size * ($golden-ratio - (1 / 2 * $golden-ratio) * (1 - ($page-max-width / ($font-size * $font-size * $golden-ratio * $golden-ratio))))) + 0px;
+$paragraph-spacing: round($line-height) + 0px;
+$img-spacing: round(1.25 * $paragraph-spacing) + 0px;

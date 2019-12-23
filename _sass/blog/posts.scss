@@ -76,7 +76,6 @@
 
 .post {
     $main-spacing: 60px; // TODO: get rid of this confusing garbo
-    $img-spacing: 2em;
 
     & > * {
         grid-column: 2;
@@ -92,12 +91,8 @@
     }
 
     h2 {
-        margin-top: -50px;
+        margin-top: -60px;
         padding-top: 90px;
-    }
-
-    h3 {
-        margin-top: calc(#{$main-spacing} / 2);
     }
 
     figure {
@@ -144,7 +139,7 @@
     }
 
     li:not(:last-child) {
-        margin-bottom: $paragraph-spacing;
+        margin-bottom: 0.5 * $paragraph-spacing + 0px;
     }
 
     ol li::marker {
@@ -157,8 +152,8 @@
     ul,
     ol {
         @include transition;
-        margin-bottom: $img-spacing;
-        margin-top: calc(#{$img-spacing} - #{$paragraph-spacing});
+        margin-bottom: $paragraph-spacing;
+        margin-top: calc(30px - #{$paragraph-spacing});
         padding-left: 40px;
     }
 
