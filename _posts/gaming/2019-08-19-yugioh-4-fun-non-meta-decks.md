@@ -6,9 +6,9 @@ keywords: [fun non meta decks, fun non meta yugioh decks, yugioh non meta decks,
 
 Do you ever get tired of running meta decks like Dark World Danger, True Draco, and Salamangreat? If you're not afraid to bruise your ego and are willing to lose to—or, surprisingly, defeat—the meta, then using a non-meta deck may be just what you need to have a little fun. Here are my four personal favorites.
 
-## 1. Skull Servants
+{% include linkedHeading.html heading="1. Skull Servants" level=2 %}
 
-{% include posts/picture.html img="king" alt="The King of the Skull Servants, the boss card of the archetype." %}
+{% include posts/picture.html img="king" ext="JPG" alt="The King of the Skull Servants, the boss card of the archetype." %}
 
 Ah, good ol' *King of the Meme Servants*. The archetype's boss is a Level 1 monster with ATK equal to 1000x the number of Skull Servants in your grave. It can easily grow to 10k+ ATK, assuming your opponent lives long enough to see it get that high. If you play things smart, you'll get **The Lady in Wight** on the field before declaring an attack, guaranteeing King's safety most of the time:
 
@@ -17,7 +17,7 @@ Ah, good ol' *King of the Meme Servants*. The archetype's boss is a Level 1 mons
 What used to be a joke deck can actually compete with the meta nowadays. With excellent support cards like Uni Zombie, Shiranui Solitaire, Wightprincess, Wightprince, and Mezuki up your sleeves, you'll find that these spooky-scary skeletons are more than just bare bones. You can easily bring out powerful Synchros like PSY-Framelord Omega, Black Rose Dragon, Beelze, and Trishula. Black Rose is a particularly viable option if its effect doesn't get negated—simply clear the field, resurrect King, and it's game over.
 
 <figure>
-    {% include posts/picture.html img="skulls" alt="Key cards in the Skull Servants archetype." %}
+    {% include posts/picture.html img="skulls" ext="JPG" alt="Key cards in the Skull Servants archetype." %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
@@ -34,7 +34,7 @@ Of all the support cards that you can throw into this mix, my favorite is the qu
 This lets you easily bring out **Masked HERO Dark Law** to put a bit more pressure on your opponent, with the added bonus of potentially discarding something like a Mezuki or Wightprince for the cost.
 
 <figure>
-    {% include posts/picture.html img="skulls-support" extension="png" alt="Key cards in the Skull Servants archetype." %}
+    {% include posts/picture.html img="skulls-support" ext="png" alt="Key cards in the Skull Servants archetype." %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
@@ -44,40 +44,40 @@ Overall, this archetype's solid and very fun to play. You always have something 
 
 *Long live the king.*
 
-## 2. Gravekeeper's
+{% include linkedHeading.html heading="2. Gravekeeper's" level=2 %}
 
 We're going back with this one—*way* back. Gravekeeper's is [one of the oldest archetypes in Yu-Gi-Oh!](https://yugioh.fandom.com/wiki/Gravekeeper%27s). Its entire theme is based around ancient Egypt, particularly the civilization's belief in the afterlife and protection of the deceased. And it's got a nice surprise in store for anyone who likes to abuse the graveyard. No more tampering with the dead—with the field spell **Necrovalley** active, you'll shut down many pesky meta decks:
 
 > All "Gravekeeper's" monsters gain 500 ATK and DEF. Cards in the Graveyard cannot be banished. Negate any card effect that would move a card in the Graveyard to a different place. Negate any card effect that changes Types or Attributes in the Graveyard.
 
 <figure>
-    {% include posts/picture.html img="gravekeepers" extension="png" alt="Some of the key cards of the Gravekeeper's archetype." %}
+    {% include posts/picture.html img="gravekeepers" ext="png" alt="Some of the key cards of the Gravekeeper's archetype." %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
 I used to run a Gravekeeper's deck exclusively back when Shaddoll, Zombie, Burning Abyss, and Lightsworn decks were running rampant. Suffice it to say that people weren't too happy with milling their cards and not getting to activate their effects.
 
-But the archetype is even better now. About a year ago, the fusion spellcaster **Gravekeeper's Supernaturalist** was released, and boy is it good:
+But the archetype is even better now. About a year ago, the fusion spellcaster **Gravekeeper's Supernaturalist** (2000 ATK/DEF) was released, and boy is it good:
 
 > Gains ATK/DEF equal to the combined original Levels of the materials used for its Fusion Summon x 100. While “Necrovalley” is on the field, this card, and any card in your Field Zone, cannot be destroyed by card effects. During your Main Phase: You can activate this effect; during the End Phase of this turn, add 1 “Gravekeeper’s” monster or 1 “Necrovalley” card from your Deck to your hand. You can only this effect of "Gravekeeper's Supernaturalist" once per turn.
 
 This came along with two more support cards, **Gravekeeper's Spiritualist** and **Gravekeeper's Headman**:
 
 <figure>
-    {% include posts/picture.html img="gravekeepers-support" extension="png" alt="New Gravekeeper's support cards." %}
+    {% include posts/picture.html img="gravekeepers-support" ext="png" alt="New Gravekeeper's support cards." %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
 
 **Gravekeeper's Spiritualist** is arguably the more important of the two since she basically serves as a free Polymerization; I recommend running two of her, as three tends to clog your hand. Be sure to toss in a couple copies of **Super Polymerization** and some generic fusions.
 
-**Gravekeeper's Headman** is mostly situational, so I run only one copy of him; he allows you to resurrect a Gravekeeper's monster while bypassing Necrovalley's effect. So you could potentially resurrect Spiritualist and go for a fusion.
+**Gravekeeper's Headman** is mostly situational, so I run only one copy of him; he allows you to resurrect a Gravekeeper's monster while bypassing Necrovalley's effect. So you could potentially resurrect Spiritualist and fusion summon Supernaturalist.
 
-The spell **Royal Tribute** was also recently unlimited, so a great strategy is to run a low-monster variant of Gravekeeper's and toss in three copies of this bad boy to completely ruin your opponent's hand. This works especially well with **Card of Demise**.
+The spell **Royal Tribute** was also recently unlimited, so a great strategy is to run a low-monster variant of Gravekeeper's and toss in three copies of it to completely ruin your opponent's hand. This works especially well with **Card of Demise**.
 
 Talk about reviving the dead—a welcome buff to one of my favorite archetypes!
 
-## 3. Nurse Burn, aka Anti-Cure
+{% include linkedHeading.html heading="3. Nurse Burn, aka Anti-Cure" level=2 %}
 
 Some people just want to watch the world burn. And this is the deck for them.
 
@@ -86,7 +86,7 @@ The entire strategy revolves around two key cards—**Darklord Nurse Reficule** 
 > Any effect that would make your opponent gain LP inflicts the same amount of damage to them, instead.
 
 <figure>
-    {% include posts/picture.html img="nurse-burn" extension="png" alt="The two main cards in the Nurse Burn strategy." %}
+    {% include posts/picture.html img="nurse-burn" ext="png" alt="The two main cards in the Nurse Burn strategy." %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
@@ -104,12 +104,12 @@ You can also make the deck slightly more consistent by using support cards like 
 
 Admittedly, this deck doesn't always work well. But when it does, you'll have some good laughs.
 
-## 4. Blackwings
+{% include linkedHeading.html heading="4. Blackwings" level=2 %}
 
 Blackwings are a balanced and consistent archetype, making them a good option for a non-meta deck. They have great draw power with spells like **Black Whirlwind** and **Allure of Darkness**. All of the main Blackwing monsters have good summoning potential and synergy. And you even have hand traps like **Blackwing - Kalut the Moon Shadow** to run over bigger foes or keep your monsters alive in battle.
 
 <figure>
-    {% include posts/picture.html img="blackwing" extension="png" alt="Monsters from the Blackwing archetype." %}
+    {% include posts/picture.html img="blackwing" ext="png" alt="Monsters from the Blackwing archetype." %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 

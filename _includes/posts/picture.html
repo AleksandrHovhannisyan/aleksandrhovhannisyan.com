@@ -1,5 +1,5 @@
-{% if include.format %}{% assign extension = include.format %}{% else %}{% assign extension = "JPG" %}{% endif %}
+{% assign ext = include.ext %}
 <picture>
     <source type="image/webp" srcset="/assets/img/posts/{{ page.slug }}/{{ include.img }}.webp">
-    <img src="/assets/img/posts/{{ page.slug }}/{{ include.img }}.{{ extension }}" alt="{{ include.alt }}" />
+    <img src="/assets/img/posts/{{ page.slug }}/{{ include.img }}.{{ ext }}" alt="{{ include.alt }}" />
 </picture>

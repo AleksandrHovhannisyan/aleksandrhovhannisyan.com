@@ -8,13 +8,13 @@ What originally began as a thesis project [more than six years ago](https://www.
 
 Produced by the talented creatives at Mobius Digital, Outer Wilds is an indie space exploration game that thrusts you into a hand-crafted solar system full of intrigue and wonder. Your mission? To sate your curiosity as you brave the unknown of outer space.
 
-{% include posts/picture.html img="outer-wilds" alt="An in-game photo showing the founders of the Outer Wilds space exploration program." %}
+{% include posts/picture.html img="outer-wilds" ext="JPG" alt="An in-game photo showing the founders of the Outer Wilds space exploration program." %}
 
 ## What Is Outer Wilds About?
 
 A long time ago, your solar system was visited by an ancient civilization known as the Nomai, who left behind much of their work and findings when they perished. Now, as a budding astronaut, you're tasked with uncovering their past—and, in doing so, learning more about your universe and its fate.
 
-{% include posts/picture.html img="rieback-nomai" alt="Rieback, an NPC, commenting on the Nomai." %}
+{% include posts/picture.html img="rieback-nomai" ext="JPG" alt="Rieback, an NPC, commenting on the Nomai." %}
 
 There's just one catch: Your solar system is trapped in a time loop of 22 minutes, after which the sun goes supernova in what can only be described as the most beautiful way to die in a video game.
 
@@ -24,7 +24,7 @@ Is the time loop a curse or a blessing? Who were the Nomai, and what were they s
 
 At its core, Outer Wilds is a space exploration game with puzzling and 3D platforming elements. To progress through the story, you translate pieces of lore and writing—conversations between key Nomai characters—that can be found on several planets.
 
-{% include posts/picture.html img="nomai-writing" alt="Text written by the Nomai. The player must decipher it to learn more about them." %}
+{% include posts/picture.html img="nomai-writing" ext="JPG" alt="Text written by the Nomai. The player must decipher it to learn more about them." %}
 
 That's an accurate, literal description of the game. Unfortunately, it doesn't do it any justice.
 
@@ -34,7 +34,7 @@ The key gameplay element in Outer Wilds is **acquiring knowledge**. In similar s
 
 Any knowledge you acquire is cumulative and is recorded in your ship log. At first, it isn't really clear where you're supposed to go and what exactly you're searching for. You're a detective, tying together seemingly unrelated strings of information and following up on leads. Eventually, the pieces begin to fall into place.
 
-{% include posts/picture.html img="ship-log" alt="The ship log charts all of your discovers and how they're related." %}
+{% include posts/picture.html img="ship-log" ext="JPG" alt="The ship log charts all of your discovers and how they're related." %}
 
 You're given the following equipment and tools for your expedition:
 
@@ -49,13 +49,13 @@ You're given the following equipment and tools for your expedition:
 Oh, and you can't forget <em>the stick</em>. You can roast marshmallows at campfires, but there's really no point in doing so, unless <span class="spoiler">you want to unlock one of the secret achievements (and get cancer)</span>.
 </p>
 
-{% include posts/picture.html img="campfire" alt="Roasting marshmallows over a campfire." %}
+{% include posts/picture.html img="campfire" ext="JPG" alt="Roasting marshmallows over a campfire." %}
 
 ## Outer Wilds, or How Curiosity Killed the Hearthian
 
 What makes Outer Wilds so compelling is its ability to convey a sense of **palpable vulnerability**—the exact kind you'd expect from space exploration. Just the sheer scale of the planets themselves is enough to leave you in awe, fully aware of how fragile you are by comparison.
 
-{% include posts/picture.html img="sun" alt="The sheer scale of the planets and the sun is overwhelming." %}
+{% include posts/picture.html img="sun" ext="JPG" alt="The sheer scale of the planets and the sun is overwhelming." %}
 
 The game doesn't hesitate to remind you that the world beyond the planet you call home is an extremely dangerous place—make one wrong move, and you're dead.
 
@@ -67,7 +67,7 @@ Even in the face of death, one force continues to guide your expeditions: **unbr
 
 *Do I really want to find out?*
 
-{% include posts/picture.html img="rieback-black-hole" alt="Rieback, one of the NPCs, suggests that you not visit the black hole." %}
+{% include posts/picture.html img="rieback-black-hole" ext="JPG" alt="Rieback, one of the NPCs, suggests that you not visit the black hole." %}
 
 ## A Race Against Time Itself
 
@@ -77,7 +77,7 @@ You have lots to see and do and learn. But you must squeeze every drop of value 
 
 There are similar experiences in Outer Wilds that leave you just as breathless. The most obvious example that comes to mind is the Sunless City, built by the Nomai in the underground caverns of Ember Twin for survival, as well as to carry out experiments at the High Energy Lab.
 
-{% include posts/picture.html img="sunless-city" alt="The Sunless City, built in the caverns of Ember Twin." %}
+{% include posts/picture.html img="sunless-city" ext="JPG" alt="The Sunless City, built in the caverns of Ember Twin." %}
 
 Unfortunately, this underground oasis, ripe with knowledge and secrets for you to uncover, is also quickly being buried in rising sand. Once you realize this for the first time, you find yourself immediately overwhelmed by a greater sense of urgency unlike anything you've experienced so far.
 
@@ -85,7 +85,7 @@ Your brain scrambles to prioritize the tasks at hand. There are so many district
 
 Unless you find your way to the High Energy Lab, you'll die—crushed between sand and rock. It's one thing to fear the end of your solar system, an unavoidable fate to which you've become accustomed with time. But it's an entirely different, more dreadful feeling to realize that your death will be a consequence of your curiosity. You quickly backtrack, only to find that the entrances you came through are now sealed.
 
-{% include posts/picture.html img="sunless-city-sand" alt="When the sand rises, there's no escaping the Sunless City." %}
+{% include posts/picture.html img="sunless-city-sand" ext="JPG" alt="When the sand rises, there's no escaping the Sunless City." %}
 
 There's nothing left to do but wait—to eye the level of the sand as it inches its way closer and closer to your doom. You climb to higher platforms, but it's futile—you are only prolonging the inevitable. At long last, you hear a bone-chilling crack. Your helmet shatters under the pressure, and your vision dims.
 
@@ -100,7 +100,7 @@ But there is perhaps no more terrifying fate than death in the void of outer spa
 Is that a bad thing? Absolutely not. The game's **fantastic writing** more than compensates for its lack of traditional player-NPC interaction. Outer Wilds is a story-driven game done right. Voice acting would've killed the experience by introducing human elements that simply don't belong in its world.
 
 <figure>
-    {% include posts/picture.html img="rieback-yelling" alt="An example of the excellent use of writing to convey emotions." %}
+    {% include posts/picture.html img="rieback-yelling" ext="JPG" alt="An example of the excellent use of writing to convey emotions." %}
     <figcaption>Rieback is adorable, and proof that you don't need voice acting to convey emotion and... well, voice!</figcaption>
 </figure>
 
@@ -112,7 +112,7 @@ A review of Outer Wilds would be incomplete without a look at those big floaty t
 
 ### 1. Timber Hearth
 
-{% include posts/picture.html img="timber-hearth" alt="Timber Hearth, your home planet." %}
+{% include posts/picture.html img="timber-hearth" ext="JPG" alt="Timber Hearth, your home planet." %}
 
 It's basically Earth. From its playful audio track to its colorful vegetation and log cabins, Timber Hearth is radiating with comfort. It's a place that you and the other Hearthians proudly call home, a nice little corner of the world in which to retire after a long career of space exploration.
 
@@ -120,7 +120,7 @@ There are also *plenty* of secrets packed into just this one planet. It's a tast
 
 ### 2. Dark Bramble
 
-{% include posts/picture.html img="dark-bramble" alt="Dark Bramble is shrouded in thick mist, with bulbs of glowing light in the distance." %}
+{% include posts/picture.html img="dark-bramble" ext="JPG" alt="Dark Bramble is shrouded in thick mist, with bulbs of glowing light in the distance." %}
 
 You enter through one of the openings in this planet's exterior and feel a sense of unease wash over you. An eerie track accompanies you. You're essentially blind—a thick fog envelops everything, with jagged spikes protruding from the walls to make navigation that much more of a pain. The only things that guide you in here are the glowing orbs of light far off in the distance (Finding Nemo vibes, anyone?). You think to check your map, but it's useless—your location can't be pinpointed. Your scout is also in two places at once. *How is this possible?*
 
@@ -132,7 +132,7 @@ Dark Bramble offers a terrifying slice of the brilliant level design behind Oute
 
 Ah, the iconic duo. The closest planets to the sun, they're mostly uninhabitable due to the searing heat. They're also locked in a never-ending struggle of gravity, with the Ember Twin siphoning much of the sand from the Ash Twin.
 
-{% include posts/picture.html img="hourglass-twins" alt="The Hourglass Twins, with the Ash Twin dumping sand onto the Ember Twin." %}
+{% include posts/picture.html img="hourglass-twins" ext="JPG" alt="The Hourglass Twins, with the Ash Twin dumping sand onto the Ember Twin." %}
 
 There is *plenty* of lore to unearth from these two planets alone. The Ash Twin Project is especially important, as it defined much of the work that the Nomai carried out across a number of planets—to perfect their warp technology and generate enough power to discover the Eye of the Universe coordinates.
 
@@ -142,7 +142,7 @@ Without exploring these two thoroughly, you simply won't unlock the Outer Wilds 
 
 The first time I arrived on this planet and ventured beneath the surface, one of the wooden platforms broke off, and I came face to face with the black hole at the core of the planet. It was an exhilirating yet terrifying experience—a recurring theme in Outer Wilds. My jetpack simply didn't provide enough power to resist the pull of gravity.
 
-{% include posts/picture.html img="black-hole" alt="Falling into the Black Hole at the core of Brittle Hollow." %}
+{% include posts/picture.html img="black-hole" ext="JPG" alt="Falling into the Black Hole at the core of Brittle Hollow." %}
 
 There's not much to see above ground—most of the discoveries you'll make here are down below. Tread carefully, though, or you'll meet the same fate that I did.
 
@@ -154,7 +154,7 @@ Fun fact: Once Hollow's Lantern shrinks a bit, you can actually get inside of it
 
 You've seen Giant's Deep from the trailers, but it's even more impressive in game. Cyclones continuously ravage this stormy planet, occasionally lifting whole islands from the sea and tossing them out into space.
 
-{% include posts/picture.html img="giants-deep" alt="Giant's Deep is a planet ravaged by storms and water spouts." %}
+{% include posts/picture.html img="giants-deep" ext="JPG" alt="Giant's Deep is a planet ravaged by storms and water spouts." %}
 
 The first planet you always see when you wake up, Giant's Deep houses secrets that are key to reaching the Quantum Moon, as well as the Eye of the Universe itself. To think that all the knowledge you needed was just a current and a cyclone away!
 
@@ -164,13 +164,13 @@ So, that's great and all—Outer Wilds is a top-notch game with lots to see and 
 
 But what's up with that ending? (The most accessible one, at least—it's one of many you can unlock.)
 
-{% include posts/picture.html img="supernova" alt="Your solar system's sun collapses under its own gravity in a violent supernova." %}
+{% include posts/picture.html img="supernova" ext="JPG" alt="Your solar system's sun collapses under its own gravity in a violent supernova." %}
 
 After you reach the Eye of the Universe and make your way towards the windy chasm that lies at its end, you're teleported to what seems to be a parallel version of the Observatory back at Timber Hearth—except it's much darker (both literally and figuratively), and all of the text has changed.
 
 There, you learn that it wasn't just your sun that went supernova—many others like it have also reached the end of their lifetime. The entire universe is dying a slow and painful death.
 
-{% include posts/picture.html img="observatory" alt="An exhibit at the Observatory describing the death of our solar system's sun." %}
+{% include posts/picture.html img="observatory" ext="JPG" alt="An exhibit at the Observatory describing the death of our solar system's sun." %}
 
 Later, you're transported to a forest, where you meet your fellow Hearthians once again. You and the gang get together for one last chorus around a campfire.
 
@@ -182,7 +182,7 @@ Whatever it is, it's a beautiful series of events and leaves you with more quest
 
 I see this ending as a reflection on life in general. Will this be our fate one day? Will we, like the Nomai, pursue some great feat because science compels us—because we see it as our defining purpose—only to fail and wither away before we ever learn whether it's possible?
 
-{% include posts/picture.html img="nomai-statue" alt="A Nomai statue at the Eye of the Universe comments on your success, and the Nomai's failure." %}
+{% include posts/picture.html img="nomai-statue" ext="JPG" alt="A Nomai statue at the Eye of the Universe comments on your success, and the Nomai's failure." %}
 
 It's a depressing realization, but it's true: At some point, life will cease to exist, not just in our own solar system but also in many others like it. All of our progress—everything we've learned and built—will most likely turn to dust.
 
@@ -193,7 +193,7 @@ When will we meet the same fate? Probably never in our lifetime. We're used to o
 The saddest part is knowing that there's absolutely nothing we can do to stop it. When the universe exhales its last breath, the lights will go out, and there will be nothing left. The ending of Outer Wilds teaches you that there's no use in dwelling on this—it's just a fact of life that you must learn to accept.
 
 <figure>
-{% include posts/picture.html img="anglerfish-perish" alt="The Hearthians reflect on life without the pesky anglerfish." %}
+{% include posts/picture.html img="anglerfish-perish" ext="JPG" alt="The Hearthians reflect on life without the pesky anglerfish." %}
 <figcaption>Amen to that!</figcaption>
 </figure>
 
@@ -211,7 +211,7 @@ If you've been playing the game blindly and experiencing it for yourself, the qu
 
 The Nomai failed in their mission to locate the Eye of the Universe. But they never lost hope, even though everything suggested they would never succeed in their lifetime.
 
-{% include posts/picture.html img="hope" alt="The Nomai never gave up hope on completing their mission." %}
+{% include posts/picture.html img="hope" ext="JPG" alt="The Nomai never gave up hope on completing their mission." %}
 
 They learned to cope through humor and love—not only for each other but also for science. You learn this by piecing together the messages they left behind for each other. They remained curious until the day they died. They never stopped trying to make things work. And maybe that's all that any of us can really do.
 
@@ -229,7 +229,7 @@ The ending of Outer Wilds takes you through several stages of grief in a matter 
 
 The whole ride was an emotional experience for me—it's very rare that a game touches me on such a level. It's even rarer that I find myself sticking around throughout the entire end-game credits. Those last few minutes are definitely worth treasuring. Because what follows, for those patient enough to wait for it, is a reminder that life *will* always go on, even if it's without us.
 
-{% include posts/picture.html img="end-credits" alt="A universe begins life anew." %}
+{% include posts/picture.html img="end-credits" ext="JPG" alt="A universe begins life anew." %}
 
 A gorgeous ending to a gorgeous game. 10/10 would fly straight into the sun again.
 
