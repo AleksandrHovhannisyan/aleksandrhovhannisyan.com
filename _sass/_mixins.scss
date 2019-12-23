@@ -69,7 +69,7 @@
     }
 }
 
-@mixin centered($marginMin: 1.2rem, $contentMax: 960px) {
+@mixin centered($marginMin: 1.2rem, $contentMax: $page-max-width) {
     display: grid;
     grid-template-columns: minmax($marginMin, 1fr) minmax(0, $contentMax) minmax($marginMin, 1fr);
 }

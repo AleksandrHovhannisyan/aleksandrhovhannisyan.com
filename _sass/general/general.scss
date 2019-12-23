@@ -40,9 +40,9 @@ body {
     color: var(--text-color-normal);
     display: grid;
     font-family: $font-family-primary, $font-family-backup;
-    font-size: 1.8rem;
+    font-size: $font-size;
     grid-template-rows: 1fr 80px;
-    line-height: 1.6;
+    line-height: $line-height;
     min-height: 100vh;
     position: relative;
     row-gap: 64px;
