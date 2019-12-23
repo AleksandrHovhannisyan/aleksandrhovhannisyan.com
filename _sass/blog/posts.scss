@@ -74,20 +74,17 @@
     }
 }
 
-.post {
-    $main-spacing: 60px; // TODO: get rid of this confusing garbo
-
+#post {
     & > * {
         grid-column: 2;
     }
 
     .post-stats {
-        margin-bottom: calc(#{$main-spacing} / 2);
-        margin-top: calc(#{$main-spacing} / 4);
+        margin-bottom: 30px;
     }
 
     @include headings {
-        margin-bottom: calc(#{$main-spacing} / 2);
+        margin-bottom: $paragraph-spacing;
     }
 
     h2 {
@@ -168,15 +165,6 @@
             color: var(--blockquote-text-color);
             margin-top: $paragraph-spacing;
         }
-    }
-
-    code {
-        background-color: var(--tag-bg-color);
-        border-radius: 3px;
-        color: var(--tag-text-color);
-        font-family: Inconsolata, Courier New;
-        padding: 3px;
-        @include transition;
     }
 
     .code-header {
@@ -267,4 +255,13 @@
             font-style: italic;
         }
     }
+}
+
+code {
+    background-color: var(--tag-bg-color);
+    border-radius: 3px;
+    color: var(--tag-text-color);
+    font-family: Inconsolata, Courier New;
+    padding: 3px;
+    @include transition;
 }

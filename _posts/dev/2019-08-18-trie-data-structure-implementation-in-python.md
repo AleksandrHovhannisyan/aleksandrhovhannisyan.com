@@ -14,7 +14,7 @@ Prefix trees are one of the easiest data structures to understand both visually 
 
 First, let's run through a little exercise. Have you ever wondered how search engines like Google are able to quickly auto-fill your search box with suggestions that start with whatever you've typed? Take this as an example:
 
-{% include posts/picture.html img="google-search" alt="Google searches that begin with 'ap.'" %}
+{% include posts/picture.html img="google-search" ext="JPG" alt="Google searches that begin with 'ap.'" %}
 
 How would you go about implementing this behavior, all other complex considerations aside? The (very) naive approach is to take the text that the user has typed so far—like `a` or `app`—and check if any words in our dictionary start with that substring, using a linear search. That would maybe work for search engines with a relatively small dictionary. But Google deals with billions of queries, so that would hardly be efficient. It gets even more inefficient the longer the substring becomes.
 
@@ -22,7 +22,7 @@ The efficient answer to this problem is a neat little data structure known as a 
 
 Let's say we're building such a dictionary but want to be clever with how we do it so that our search doesn't take forever. Suppose we want to record the words `ape`, `apple`, `bat`, and `big` in this dictionary. The corresponding prefix tree would look like this:
 
-{% include posts/picture.html img="trie" alt="An example of a trie for the words bat, big, ape, and apple." %}
+{% include posts/picture.html img="trie" ext="JPG" alt="An example of a trie for the words bat, big, ape, and apple." %}
 
 > **Exercise**: Trace the path from the root of the trie to the word `apple`. Make a mental note of how each "branch" is like a particular key-value pair in a `dict`. The key is the character we add to the end of the prefix. The value is the node that the branch leads to.
 
@@ -102,7 +102,7 @@ That last one is useful for testing; it isn't required.
 
 Let's consider how we'd build a prefix tree. We'll always start with a root node that has an empty string as its `text` and an empty dictionary as its `children`. Then, we want to insert the words we looked at earlier: `ape`, `apple`, `bat`, and `big`. As a reminder, this is what the trie looks like once we finish inserting all of those words:
 
-{% include posts/picture.html img="trie" alt="An example of a trie for the words bat, big, ape, and apple." %}
+{% include posts/picture.html img="trie" ext="JPG" alt="An example of a trie for the words bat, big, ape, and apple." %}
 
 ### Detailed Explanation: How to Build a Prefix Tree
 
@@ -170,7 +170,7 @@ I kept this hidden from you on purpose so the learning experience would be more 
 
 Let's say we insert the word `apple` into our trie, with nothing else, and now invoke ```trie.find('app')```:
 
-{% include posts/picture.html img="wrong-find" alt="An example of a false match for a word in a trie." %}
+{% include posts/picture.html img="wrong-find" ext="JPG" alt="An example of a false match for a word in a trie." %}
 
 Our algorithm in its current state won't return `None` as it should. It sees that our trie has a node with the string `app` and considers that a match. But notice that we never actually inserted `app` into the tree as a *word*. It only exists in the trie as a *prefix node* leading up to the inserted word `apple`. So clearly, there are two classes of nodes that we must distinguish between: ones that are prefixes, and ones that are "real" words that were inserted.
 
@@ -230,7 +230,7 @@ And that's it!
 
 Let's go back to our earlier example of inserting just the word `apple` into a trie. What happens if we later try to insert the English word `app` (as in "application") into the trie as a word? Well, the code will go down the trie, reach the `app` prefix node, and switch its flag to `True` so that we know it's now officially an inserted word and not just a prefix node:
 
-{% include posts/picture.html img="right-find" alt="An example of inserting the words app and apple into a trie." %}
+{% include posts/picture.html img="right-find" ext="JPG" alt="An example of inserting the words app and apple into a trie." %}
 
 Technically, it's both—a prefix leading up to `apple` and a word in and of itself. Of course, that's totally fine! And what matters from a code validity standpoint is that its flag has been set to `True`.
 
@@ -417,7 +417,7 @@ The `setUp` method is something that's common in unit testing. It's a method tha
 
 And here's the output:
 
-{% include posts/picture.html img="test-output" alt="Test output: 8 cases passed" %}
+{% include posts/picture.html img="test-output" ext="JPG" alt="Test output: 8 cases passed" %}
 
 All tests ran correctly—awesome!
 

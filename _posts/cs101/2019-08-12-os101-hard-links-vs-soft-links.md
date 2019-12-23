@@ -29,7 +29,7 @@ Per the definitions above, each file must have a link count of at least 1 when i
 
 To prove this, let's create a simple file and then run `ls -a -l` to show all (`-a`) files in the current directory, along with information like their permissions, author, and link count:
 
-{% include posts/picture.html img="initial-link" alt="Creating a new file generates its first link." %}
+{% include posts/picture.html img="initial-link" ext="JPG" alt="Creating a new file generates its first link." %}
 
 The 1 circled in red is the file's link count. Notice that we didn't create any other "hidden" files in the directory when we created `test`. As mentioned above, when you first create a file, the link is just the file name itself. Keep an eye on that 1, though—it'll change as we begin experimenting with soft links and hard links.
 
@@ -52,7 +52,7 @@ The Udacity YouTube channel has an excellent short video [explaining the structu
 
 Each inode has a unique number that's assigned when the file is created. Let's inspect the inode number for the `test` file we created earlier. To do so, we'll add the `-i` flag (for "inode") to our `ls` command:
 
-{% include posts/picture.html img="inode" alt="Inspecting the inode number of a file using the ls command." %}
+{% include posts/picture.html img="inode" ext="JPG" alt="Inspecting the inode number of a file using the ls command." %}
 
 This will be important when we take a look at examples of hard links and soft links.
 
@@ -66,7 +66,7 @@ A **soft link** is a special file that stores the path of the target file. The s
 
 To create a soft link in Linux, we use the `ln` ("link") command and supply the `-s` flag (for "soft"), followed by the original file name and the name of the soft link:
 
-{% include posts/picture.html img="soft-link" alt="Creating a soft link for a file." %}
+{% include posts/picture.html img="soft-link" ext="JPG" alt="Creating a soft link for a file." %}
 
 Observe the following interesting points:
 
@@ -76,7 +76,7 @@ Observe the following interesting points:
 
 Let's also look at their contents:
 
-{% include posts/picture.html img="soft-link-contents" alt="Displaying the contents of a soft link." %}
+{% include posts/picture.html img="soft-link-contents" ext="JPG" alt="Displaying the contents of a soft link." %}
 
 Even though the soft link technically contains the path of the original file, printing its contents will show us the *contents* of the original file. It follows that if the original file's contents change, the soft link's printed contents will also change!
 
@@ -93,7 +93,7 @@ Because a soft link stores the *path* of the original file, there are two natura
 
 Here's an example showing what happens when we rename the original file:
 
-{% include posts/picture.html img="link-rot" alt="Link rot and soft links." %}
+{% include posts/picture.html img="link-rot" ext="JPG" alt="Link rot and soft links." %}
 
 Notice how our terminal even changed the color of the soft link to red to indicate that it's gone "bad." This is known formally as **link rot**.
 
@@ -103,19 +103,19 @@ On the other hand, a **hard link** acts as an alias for the target file. It has 
 
 To create a hard link in Linux, we use the `ln` command and supply the `-P` flag (for "physical"). Take a look:
 
-{% include posts/picture.html img="hard-link" alt="Creating a hard link." %}
+{% include posts/picture.html img="hard-link" ext="JPG" alt="Creating a hard link." %}
 
 Notice that both files are 13 bytes in size, have the same inode number, have the same permissions, and have a link count of 2. There are two links to the original file: the first one we created, and the hard link we just created manually.
 
 Unlike a soft link, a hard link will not rot if we change the original file's name or move it to a different directory. It also will not rot if we *delete* the original file. Below is an example of the latter:
 
-{% include posts/picture.html img="hard-links-dont-rot" alt="Hard links don't rot when the original file is renamed or deleted." %}
+{% include posts/picture.html img="hard-links-dont-rot" ext="JPG" alt="Hard links don't rot when the original file is renamed or deleted." %}
 
 > **Exercise**: Delete the original file, and `cat` the hard link. What do you expect to see?
 
 If we think back to what "deleting" a file really means, this should make sense: A file is not truly deleted until its link count reaches zero. In this case, creating a hard link for the file increments our link count to 2. When we delete the original, the link count goes down to 1. Only if we now delete the hard link will the file truly "disappear" from our directory:
 
-{% include posts/picture.html img="delete-hard-link" alt="Deleting a hard link." %}
+{% include posts/picture.html img="delete-hard-link" ext="JPG" alt="Deleting a hard link." %}
 
 {% include linkedHeading.html heading="How to Create a File Link in Windows" level=2 %}
 
@@ -123,7 +123,7 @@ So far, we've been creating links using the `ln` command on Linux. How can we cr
 
 As it turns out, doing so is simply a matter of invoking the `mklink` command:
 
-{% include posts/picture.html img="mklink" alt="mklink command usage on Windows." %}
+{% include posts/picture.html img="mklink" ext="JPG" alt="mklink command usage on Windows." %}
 
 By now, the terms soft link and hard link should be familiar enough that the above output makes sense.
 
