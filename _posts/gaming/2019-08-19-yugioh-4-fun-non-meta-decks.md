@@ -33,6 +33,11 @@ Of all the support cards that you can throw into this mix, my favorite is the qu
 
 This lets you easily bring out **Masked HERO Dark Law** to put a bit more pressure on your opponent, with the added bonus of potentially discarding something like a Mezuki or Wightprince for the cost.
 
+<figure>
+    {% include posts/picture.html img="skulls-support" extension="png" alt="Key cards in the Skull Servants archetype." %}
+    <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
+</figure>
+
 In terms of must-have spells, I recommend running 3x **Burial from a Different Dimension**, 2x **Book of Life**, 2x **Dark Allure**, 1x **One for One**, and standard spells like Raigeki, Dark Hole, Monster Reborn, and Twin Twisters.
 
 Overall, this archetype's solid and very fun to play. You always have something you can do to pressure your opponent. And if they bring out monsters that can't be destroyed by card effects, you can simply run over them with King for an easy win.
@@ -46,7 +51,7 @@ We're going back with this one—*way* back. Gravekeeper's is [one of the oldest
 > All "Gravekeeper's" monsters gain 500 ATK and DEF. Cards in the Graveyard cannot be banished. Negate any card effect that would move a card in the Graveyard to a different place. Negate any card effect that changes Types or Attributes in the Graveyard.
 
 <figure>
-    {% include posts/picture.html img="gravekeepers" alt="Some of the key cards of the Gravekeeper's archetype." %}
+    {% include posts/picture.html img="gravekeepers" extension="png" alt="Some of the key cards of the Gravekeeper's archetype." %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
@@ -64,7 +69,11 @@ This came along with two more support cards, **Gravekeeper's Spiritualist** and 
 </figure>
 
 
-Spiritualist is arguably the more important of the two since she basically serves as a free Polymerization, but Headman allows you to resurrect Gravekeeper's while bypassing Necrovalley's effect. Toss in two copies of **Hidden Temples of Necrovalley** for good measure since nearly every archetype special summons these days.
+**Gravekeeper's Spiritualist** is arguably the more important of the two since she basically serves as a free Polymerization; I recommend running two of her, as three tends to clog your hand. Be sure to toss in a couple copies of **Super Polymerization** and some generic fusions.
+
+**Gravekeeper's Headman** is mostly situational, so I run only one copy of him; he allows you to resurrect a Gravekeeper's monster while bypassing Necrovalley's effect. So you could potentially resurrect Spiritualist and go for a fusion.
+
+The spell **Royal Tribute** was also recently unlimited, so a great strategy is to run a low-monster variant of Gravekeeper's and toss in three copies of this bad boy to completely ruin your opponent's hand. This works especially well with **Card of Demise**.
 
 Talk about reviving the dead—a welcome buff to one of my favorite archetypes!
 
@@ -77,32 +86,34 @@ The entire strategy revolves around two key cards—**Darklord Nurse Reficule** 
 > Any effect that would make your opponent gain LP inflicts the same amount of damage to them, instead.
 
 <figure>
-    {% include posts/picture.html img="nurse-burn" alt="The two main cards in the Nurse Burn strategy." %}
+    {% include posts/picture.html img="nurse-burn" extension="png" alt="The two main cards in the Nurse Burn strategy." %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
 So, do you enjoy pissing off your opponent by dealing effect damage through "healing" cards? Are you willing to tolerate a barrage of explitives when they realize what you're doing? Then by all means, use this deck.
 
-Throw in some stall cards and traps, and you're good to go. The two cards on the far right are key. **Gift Card** is pretty much guaranteed 3k damage. But my favorite trick is using the trap **Tri-and-Guess**:
+Throw in some stall cards and traps, and you're good to go. **Gift Card** is pretty much guaranteed 3k damage. But my favorite trick is using the trap **Tri-and-Guess**:
 
 > If each player has an Extra Deck: Declare 1 Extra Deck monster card type (Fusion, Synchro, or Xyz); both players reveal their Extra Deck, and the player who has more cards of the declared card type gains 3000 Life Points.
 
 Pro tip: Load up your Extra Deck with fusions and declare XYZ like a troll. Unless they're running a full Link setup, you're guaranteed to deal 3k damage. You could keep one XYZ in your Extra Deck just so you end up healing yourself if it turns out that they don't have any.
 
-You can also make the deck a lot more consistent by using support cards like **Banishment of the Darklords** and **Condemned Witch** to get Reficule on the field more quickly.
+And of course, there's always Upstart Goblin—a free +1 draw, with a bonus 1k damage to your opponent.
+
+You can also make the deck slightly more consistent by using support cards like **Banishment of the Darklords** and **Condemned Witch** to get Reficule on the field more quickly.
 
 Admittedly, this deck doesn't always work well. But when it does, you'll have some good laughs.
 
 ## 4. Blackwings
 
-Blackwings are a balanced and consistent archetype, making them a good option for a non-meta deck. They have great draw power with spells like Black Whirlwind and Allure of Darkness; all of the main Blackwing monsters have good summoning potential and synergy; and you even have hand traps like **Blackwing - Kalut the Moon Shadow** to run over bigger foes or keep your monsters alive.
+Blackwings are a balanced and consistent archetype, making them a good option for a non-meta deck. They have great draw power with spells like **Black Whirlwind** and **Allure of Darkness**. All of the main Blackwing monsters have good summoning potential and synergy. And you even have hand traps like **Blackwing - Kalut the Moon Shadow** to run over bigger foes or keep your monsters alive in battle.
 
 <figure>
-    {% include posts/picture.html img="blackwing" alt="Monsters from the Blackwing archetype." %}
+    {% include posts/picture.html img="blackwing" extension="png" alt="Monsters from the Blackwing archetype." %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
-With **Blackwhing - Gale the Whirlwind** and **Blackwing - Harmattan the Dust**, you get access to some high-level synchro plays like Beelze (both variants), Trishula, and Onimaru the Divine Thunder. The archetype's main synchro monsters are also good options and play well with each other.
+With tuners like **Blackwing - Pinaki the Waxing Moon** and **Blackwhing - Gale the Whirlwind**, you get access to some high-level synchro plays like Beelze (both variants), Trishula, and Onimaru the Divine Thunder. The archetype's main synchro monsters are also good options and play well with each other.
 
 In terms of the other main monsters, **Blackwing - Kris the Crack of Dawn** is a good beatstick with 1900 ATK and can survive destruction by spells/traps once per turn. Like Bora the Spear, it gives you a guaranteed special summon if you have other Blackwings on the field. **Blackwing - Blizzard the Far North** can help you set up quick synchro plays by resurrecting Blackwings from your graveyard.
 
