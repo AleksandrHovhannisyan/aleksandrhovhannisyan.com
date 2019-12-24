@@ -4,7 +4,17 @@
 
 Welcome to my site! 👋
 
-What originally began as a single-page portfolio built with HTML5, CSS, and JavaScript was eventually moved to Jekyll for blogging purposes and maintainability. While building things with vanilla HTML and CSS was a great learning experience and a fun way to get my hands dirty, it was definitely not going to be maintainable in the long run.
+What originally began as a single-page portfolio built with HTML5, CSS, and JavaScript was eventually moved to Jekyll for blogging purposes and maintainability. While building things with vanilla HTML and CSS was a great learning experience and a fun way to get my hands dirty, it was definitely not going to be maintainable in the long run. (Note that this repo is still active.)
+
+## Building and Running the Site Locally
+
+Once you've cloned the repo:
+
+1. Run `bundle install`.
+
+2. Run `bundle exec jekyll serve --livereload`.
+
+You'll see the site on `localhost:4000`.
 
 ## Design Considerations 🎨
 
@@ -43,12 +53,12 @@ All other SVG icons were obtained as inlines from encharm's [Font-Awesome-SVG-PN
 
 I've spent a lot of time (I'd say probably more than 10 hours in total) tweaking my site's light and dark mode themes. Currently, light mode is nice and neutral, with the primary color being a shade of navy blue. For dark mode, I wanted to use a "coffee"-type theme. I added both an auto and a manual transition via a switch on the navbar to allow users to pick whichever theme they prefer. Again, that's obviously not too important for a portfolio site, but it was still something I wanted to try.
 
-![](https://user-images.githubusercontent.com/19352442/70398223-2eb56100-19e7-11ea-9fc8-a47b90cd0bf8.png)
+![](https://user-images.githubusercontent.com/19352442/71417317-ac59ad80-2632-11ea-8fdc-7e442b7196da.png)
 
 <p align="center"><i>Dark mode theme, for those whose hiring efforts extend into the night :) Theme switch inspired by <a href="https://create-react-app.dev/">https://create-react-app.dev/</a></i></p>
 
 ### Contact
-I decided I'd also include a form on my site to make it easier for people to reach out, even though the primary call-to-action buttons already direct visitors to my LinkedIn and GitHub. I used [Formspree](https://github.com/formspree/formspree) for this, and it works perfectly. One downside is that your email is publicly exposed in your HTML, making it possible for spammers to ruin your day. To get around this, I used a [hidden honeypot field](https://help.formspree.io/hc/en-us/articles/360013580813-Honeypot-spam-filtering) and a throwaway email address that I monitor occasionally.
+I decided I'd also include a form on my site to make it easier for people to reach out. I used [Formspree](https://github.com/formspree/formspree) for this, and it works perfectly. One downside is that your email is publicly exposed in your HTML, making it possible for spammers to ruin your day. To get around this, I used a [hidden honeypot field](https://help.formspree.io/hc/en-us/articles/360013580813-Honeypot-spam-filtering) and a throwaway email address that I monitor occasionally.
 
 ### To Hardcode or Not to Hardcode?
 Originally, the Projects section of my site consisted entirely of hardcoded HTML for every single project card. This was certainly useful for nailing down the layout of the cards and styling them because I could directly edit the HTML and CSS without worrying about dynamically rendering the content. However, once I added stargazer counts to the projects, I realized that this approach was too inflexible. If my repos were to continue receiving stars, for example, then I'd have to manually update every single project by hand, and that would be tedious.
@@ -62,25 +72,6 @@ In the current version of the website, all of the repo data is load dynamically 
 ![](https://user-images.githubusercontent.com/19352442/60967104-da973b00-a2e7-11e9-8a3d-7ca5ee606eb6.png)
 
 > Note: One downside to my dynamic approach is that the GitHub API imposes a limit of 60 requests/hr for unauthenticated IPs (and I can't authenticate my site's requests because the source code, the script included, is public here on GitHub). However, I can't imagine why anyone would need to refresh the page so many times, so this is a minor consideration.
-
-### Cleanup: Replacing jQuery where it wasn't needed
-At first, as a complete JavaScript beginner, I was afraid to get my feet wet with the actual DOM API itself and instead relied on jQuery for pretty much everything. This did make my code mostly readable, since jQuery introduces lots of helpful wrappers around vanilla JS, but there were two problems with this:
-
-1. I was using a technology I understood only superficially in places where it wasn't actually *needed*.
-
-2. I wasn't actually learning proper JavaScript, which was one of my goals for this project.
-
-As mentioned above, working with the GitHub API forced me to use the DOM to construct project cards. This allowed me to get more comfortable with JavaScript. With that experience, I then refactored the rest of my code to limit jQuery use to only the functionalities that absolutely required it. Currently, the only function that uses jQuery is for smooth scroll animations, something that is not currently supported in all major browsers via pure CSS, and something that would've been far too complex (and messy) to code up in pure JavaScript.
-
-![](https://user-images.githubusercontent.com/19352442/61002666-06d6aa00-a330-11e9-80f0-a09c6661ebbb.png)
-
-<p align="center"><i>The best alternative, <code>scroll-behavior: smooth</code>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-behavior">is not supported in all browsers.</a></i></p>
-
-The benefit of this refactoring was twofold:
-
-1. I learned a *lot* more about JavaScript and got comfortable with using the DOM API to create and manipulate elements.
-
-2. In case the jQuery CDN goes down someday, for whatever reason, or there's some sort of problem on the user's end, the only functionality that will be affected is smooth scrolling, which is just an enhancement and not a core feature of the site.
 
 ## What Did I Learn? 💭
 
@@ -112,6 +103,4 @@ As you can see, I ended up ditching 99% of my old ideas and copy. But at least I
 
 - [https://www.kooslooijesteijn.net/blog/dark-mode-design-considerations](https://www.kooslooijesteijn.net/blog/dark-mode-design-considerations): This article was really helpful when I was deciding on a dark mode theme. I also actually liked the color choices used on the website itself.
 
-## That's About It!
-
-Thanks for visiting my site! If you have any suggestions for improving it, I'd love to hear your thoughts 🙂
+- [http://www.rleonardi.com/interactive-resume/](http://www.rleonardi.com/interactive-resume/): *Wow*. All I can say is that I hope to one day create something as beautiful and interactive as this site!
