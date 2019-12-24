@@ -75,6 +75,9 @@
 }
 
 #post {
+    grid-column: 1 / 4;
+    @include centered;
+
     & > * {
         grid-column: 2;
     }
