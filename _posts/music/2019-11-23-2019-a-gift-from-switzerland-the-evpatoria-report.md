@@ -4,9 +4,7 @@ description: A review of some great songs from The Evpatoria Report, a fantastic
 keywords: [the evpatoria report, evpatoria report songs, evpatoria report review, evpatoria report band, post-rock band]
 ---
 
-You know that feeling when you stumble across a band with a riveting, totally unique sound? It's recommended to you on Spotify, YouTube, or whatever you're listening to these days. Doesn't matter. When the song comes on, you immediately stop what you're doing—because hell, *whatever* it is, and whoever composed it, it deserves your undivided attention.
-
-You gradually raise the volume as your body catches up with the rhythm. It doesn't even go up high enough.
+You know that feeling when you stumble across a band with a riveting, totally unique sound? It's recommended to you on Spotify, YouTube, or whatever you're listening to these days. Doesn't matter. When the song comes on, you immediately stop what you're doing—because *whatever* it is, and whoever composed it, it demands your attention.
 
 That's how I felt when I first heard The Evpatoria Report, a post-rock band that hails from Switzerland and that published most of its work before 2010. Yet here I am in 2019, engrossed in what are some of the most emotionally moving songs I've ever heard.
 
@@ -18,9 +16,7 @@ Below is a look at some of my favorites from their albums.
 
 This is hands-down my favorite song from The Evpatoria Report.
 
-The soothing intro is pretty typical in post-rock, so don't let it fool you. It's a tease that gradually grows in intensity. And as the crescendo builds, you turn to face the sound. Start bobbing your head. Tapping your feet. Closing your eyes and letting it take over.
-
-Make it to 4:30, and the electric riffs become sharper. Your whole body's swinging now.
+The soothing intro is pretty typical in post-rock, so don't let it fool you. It's a tease that gradually grows in intensity. And as the crescendo builds, you turn to face the sound. Start bobbing your head. Tapping your feet.
 
 And then the 5:15 bomb drops—so hard, in fact, that I just can't help but picture the whole band lighting on fire as they breathe a violent rage into their instruments. You're overcome with a head-banging, air-drumming fervor.
 
@@ -70,7 +66,7 @@ The latter half of the song drowns out all noise and paints a remarkably accurat
 
 {% include linkedHeading.html heading="Voskhod Project - Bonus (Golevka)" level=2 %}
 
-Experimental post rock is the name of the game here. There's really not much else to say!
+Experimental post rock is the name of the game here.
 
 My absolute favorite part begins at 7:55—the guitar riffs are *spectacular*.
 
