@@ -1,5 +1,5 @@
 ---
-title: "4 Best Godspeed You! Black Emperor Songs"
+title: "My 4 Favorite Godspeed You! Black Emperor Songs"
 description: "A look at four amazing songs from my favorite post-rock band, Godspeed You! Black Emperor."
 keywords: [best gybe songs, best godspeed you black emperor songs, godspeed you black emperor best songs, gybe best songs, godspeed you black emperor review, godspeed you black emperor songs]
 ---
@@ -46,4 +46,4 @@ It turns into a raging inferno that begins at 12:00 and reaches its peak at 14:5
 
 Having endured all of those depressing themes, you're searching for a light at the end of the post-rock tunnel. And here it is.
 
-There really isn't much to say about Storm except that it's *beautiful*. It's a reassurance that everything's going to be okay—a song of celebration, unity, and hope, and a great one at that.
+There really isn't much to say about Storm; it's hauntingly beautiful. It's a reassurance that everything's going to be okay—a song of celebration, unity, and hope, and a great one at that.
