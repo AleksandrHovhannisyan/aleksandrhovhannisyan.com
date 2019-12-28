@@ -5,6 +5,8 @@ keywords: [least squares method explained, least squares method examples, how le
 needsLatex: true
 ---
 
+> **Note**: This is the first of a two-part series on the least squares method. In this post, we'll take a deep dive into least squares theory. [Head on over to the second part](/blog/cs101/least-squares-method-explained-part-2-data-fitting) for some worked least squares problems.
+
 The least squares method is a simple and elegant technique, but it's often explained poorly. It's something that you'll remember by heart if you understand the intuition—you won't have to memorize a single equation.
 
 In this comprehensive post, we'll look at the problem that motivates the least squares method and gain an intuitive understanding for how least squares works under the hood.
