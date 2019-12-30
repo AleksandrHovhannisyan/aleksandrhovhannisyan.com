@@ -7,8 +7,8 @@
     grid-template-rows: max-content 1fr max-content;
 
     .project-name {
-        font-size: 1.8rem;
         align-self: center;
+        font-size: 1.8rem;
         grid-area: heading;
     }
 
@@ -106,17 +106,14 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         margin-bottom: 10px;
-        position: relative;
         @include transition(background-color);
 
         &:hover {
             background-color: var(--hover-color-general);
-        }
 
-        .tooltip-text {
-            $tooltip-width: 100px;
-            max-width: $tooltip-width;
-            left: calc(100% - #{$tooltip-width});
+            .tooltip {
+                display: block;
+            }
         }
 
         .skill-name {
@@ -125,13 +122,23 @@
         }
         
         .skill-rating {
+            align-items: center;
             align-self: center;
             display: inline;
             grid-column: 2;
+            height: 100%;
+            position: relative;
             text-align: right;
 
             .star {
                 vertical-align: middle;
+            }
+
+            .tooltip {
+                // Align the tooltip to the right of each skill rating
+                $tooltip-width: 100px;
+                width: $tooltip-width;
+                left: calc(100% - #{$tooltip-width});
             }
         }
     }

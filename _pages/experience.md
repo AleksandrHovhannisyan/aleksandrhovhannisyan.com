@@ -38,15 +38,15 @@ permalink: /experience/
                     {% for i in (j..5) %}
                     {% include svg.html svg="star" class="star star-empty" %}
                     {% endfor %}
+                    {% assign rating = '' %}
+                    {% if item.rating == 1 %}{% assign rating = 'Familiar' %}
+                    {% elsif item.rating == 2 %}{% assign rating = 'Basic' %}
+                    {% elsif item.rating == 3 %}{% assign rating = 'Intermediate' %}
+                    {% elsif item.rating == 4 %}{% assign rating = 'Competent' %}
+                    {% elsif item.rating == 5 %}{% assign rating = 'Advanced' %}
+                    {% endif %}
+                    {% include tooltip.html position='top' text=rating %}
                 </div>
-                {% assign rating = '' %}
-                {% if item.rating == 1 %}{% assign rating = 'Familiar' %}
-                {% elsif item.rating == 2 %}{% assign rating = 'Basic' %}
-                {% elsif item.rating == 3 %}{% assign rating = 'Intermediate' %}
-                {% elsif item.rating == 4 %}{% assign rating = 'Competent' %}
-                {% elsif item.rating == 5 %}{% assign rating = 'Advanced' %}
-                {% endif %}
-                {% include tooltip.html position='top' text=rating %}
             </div>
             {% endfor %}
         </div>
