@@ -1,11 +1,11 @@
 ---
-title: "Least Squares Method Explained Part 2: Data Fitting"
-description: "In this post, we'll look at a practical least squares method application: data fitting. We'll plot a best-fit line by hand and a polynomial fit using least squares and Python."
-keywords: [least squares method, least squares data fitting, polynomial fit using least squares]
+title: "Curve Fitting 101 Part 2: Least Squares Data Fitting"
+description: "Now that we've mastered the theory behind least squares, it's time to look at one of its most practical applications: least squares data fitting. We'll plot a best-fit line by hand and do a polynomial fit using least squares and Python."
+keywords: [least squares method data fitting, least squares method explained, polynomial fit using least squares]
 needsLatex: true
 ---
 
-With an understanding of how to solve overdetermined systems using the least squares method and QR decomposition, we're now ready to look at a practical least squares method application: data fitting. We'll plot a best-fit line by hand and a polynomial fit using least squares and Python. But first, we need a little background before we work out the problems.
+With an understanding of how to solve overdetermined systems using the least squares method and QR decomposition, we're now ready to look at one of the most practical applications of this theory: least squares data fitting. We'll plot a best-fit line by hand and a polynomial fit using least squares and Python. But first, we need a little background before we work out the problems.
 
 {% include linkedHeading.html heading="Least Squares Data Fitting" level=2 %}
 
