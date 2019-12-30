@@ -246,7 +246,7 @@ The most natural way to represent stacked modals in code is—surprise, surprise
 
 {% include posts/codeHeader.html name="index.js" %}
 ```javascript
-let currentlyOpenModals = [];
+const currentlyOpenModals = [];
 ```
 
 The topmost modal window is whatever we recently pushed onto the stack; that's the window that's eligible for closing.
