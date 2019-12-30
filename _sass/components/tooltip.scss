@@ -1,8 +1,55 @@
+$tooltip-spacing: 5px;
+
 .tooltip {
-    height: 100%;
+    bottom: 0;
+    // Flip this to `block` in whatever element is getting hovered
+    display: none;
     position: absolute;
-    width: 100%;
     z-index: 2;
+
+    &.tooltip-top {
+        bottom: calc(100% + #{$tooltip-spacing});
+
+        .tooltip-text::after {
+            border-color: #555 transparent transparent transparent;
+            left: 50%;
+            margin-left: -5px;
+            top: 100%;
+        }
+    }
+
+    &.tooltip-bottom {
+        top: calc(100% + #{$tooltip-spacing});
+
+        .tooltip-text::after {
+            border-color: transparent transparent #555 transparent;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -5px;
+        }
+    }
+
+    &.tooltip-left {
+        right: 100%;
+
+        .tooltip-text::after {
+            border-color: transparent transparent transparent #555;
+            left: 100%;
+            margin-top: -5px;
+            top: 50%;
+        }
+    }
+
+    &.tooltip-right {
+        left: 100%;
+
+        .tooltip-text::after {
+            border-color: transparent #555 transparent transparent;
+            margin-top: -5px;
+            right: 100%;
+            top: 50%;
+        }
+    }
 
     @keyframes fadeIn {
         from { opacity: 0; }
@@ -14,8 +61,9 @@
         animation: fadeIn $transition-duration;
         background-color: #555;
         border-radius: 5px;
+        box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.75);
         color: white;
-        display: none;
+        display: flex;
         font-size: 1.4rem;
         justify-content: center;
         left: 0;
@@ -28,57 +76,5 @@
             content: "";
             position: absolute;
         }
-    }
-
-    $tooltip-spacing: 10px;
-
-    .tooltip-top {
-        bottom: calc(100% + #{$tooltip-spacing});
-
-        &::after {
-            border-color: #555 transparent transparent transparent;
-            left: 50%;
-            margin-left: -5px;
-            top: 100%;
-        }
-    }
-
-    .tooltip-right {
-        left: calc(100% + #{$tooltip-spacing});
-        margin-left: 10px;
-
-        &::after {
-            border-color: transparent #555 transparent transparent;
-            margin-top: -5px;
-            right: 100%;
-            top: 50%;
-        }
-    }
-
-    .tooltip-bottom {
-        top: calc(100% + #{$tooltip-spacing});
-        
-        &::after {
-            border-color: transparent transparent #555 transparent;
-            bottom: 100%;
-            left: 50%;
-            margin-left: -5px;
-        }
-    }
-
-    .tooltip-left {
-        margin-right: 10px;
-        right: 100%;
-
-        &::after {
-            border-color: transparent transparent transparent #555;
-            left: 100%;
-            margin-top: -5px;
-            top: 50%;
-        }
-    }
-
-    &:hover .tooltip-text {
-        display: flex;
     }
 }
