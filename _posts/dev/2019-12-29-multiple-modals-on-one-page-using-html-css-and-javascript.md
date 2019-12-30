@@ -1,16 +1,16 @@
 ---
-title: Creating Modal Windows in HTML from Scratch
+title: Multiple Modals on One Page Using HTML, CSS, and JavaScript
 description: This quick tutorial shows you how to create modal windows in HTML using just a bit of markup, styling, and JavaScript. We'll also look at how you can open multiple modals on one page, stacked on top of each other.
-keywords: ["modal windows in html"]
+keywords: ["multiple modals on one page", "how to create modal windows in html"]
 ---
 
-I recently tried my hand at creating some modal windows in plain old HTML, CSS, and JavaScript. And as it turns out, doing so is actually much, *much* simpler than I thought it would be.
+I recently tried my hand at creating modal windows from scratch. And as it turns out, doing so is *much* simpler than I thought it would be.
 
-Here's a preview of what we'll be building:
+This quick tutorial shows you how to create modal windows in HTML using just a bit of markup, styling, and JavaScript. We'll also look at how you can open multiple modals on one page, stacked on top of each other. Here's a preview of what we'll be building:
 
 <img src="/assets/img/posts/{{ page.slug }}/demo.gif" alt="A demo of opening and closing modals." />
 
-## The Setup: A Basic HTML Skeleton
+## The Setup: Basic HTML
 
 Here's some basic markup to get us started:
 
@@ -33,7 +33,7 @@ Here's some basic markup to get us started:
 
 Go ahead and create `style.css` along with `index.css` while you're at it. We'll fill them in shortly.
 
-## Adding Basic Styling
+### Throw in Some Styling
 
 This'll do for now:
 
@@ -62,15 +62,7 @@ body {
 p {
     margin-bottom: 1em;
 }
-
-.modal-trigger {
-    color: rgb(10, 47, 255);
-    cursor: pointer;
-    text-decoration: underline;
-}
 ```
-
-We haven't used `.modal-trigger` just yet, but we're about to.
 
 ## Adding Modal Triggers and Modal Windows in HTML
 
@@ -133,7 +125,7 @@ Replace your `body` with this markup:
 </div>
 ```
 
-Although it's probably not the best UX, I'll make it possible to open up an arbitrary number of modals on top of each other. Doing so is easy—you just add a `modal-trigger` to an existing modal. If that trigger is then clicked while the modal is open, it'll open up a new modal on top of the previous one.
+We'll also make it possible to open up an arbitrary number of modals on top of each other. Doing so is easy—you just add a `modal-trigger` to an existing modal. If that trigger is then clicked while the container modal is open, it will open up a new modal on top of the previous one.
 
 > **Note 1**: If Modal A comes before Modal B in your document, it will appear under Modal B when both are open. Thus, for the purpose of stacking modals, the order does matter.
 
@@ -149,7 +141,7 @@ Why we did this will become obvious later in the post. We'll also take a closer 
 
 But before we do that, we'll style our modal windows so we can verify that our code works.
 
-## Styling Our Modal Windows
+## Styling Our Modals
 
 I'm going to break this up into manageable chunks. First up is the modal wrapper:
 
@@ -213,7 +205,7 @@ Let's also style the header:
 }
 ```
 
-Lastly, here's the styling for the modal contents:
+Here's the styling for the modal contents:
 
 ```css
 .modal-content {
@@ -232,7 +224,17 @@ Lastly, here's the styling for the modal contents:
 
 Scaling the transform from `0` to `1` gives us a nice pop-in animation.
 
-And we're done! You can temporarily set the primary modal to be visible by adding `modal-visible` to the class list in your markup. Here's what that will look like:
+Finally, we'll style the triggers:
+
+```css
+.modal-trigger {
+    color: rgb(10, 47, 255);
+    cursor: pointer;
+    text-decoration: underline;
+}
+```
+
+And we're done! You can temporarily set `modal1` to be visible by manually adding `modal-visible` to its class list. Here's what the modal should look like:
 
 {% include posts/picture.html img="modal" ext="png" alt="One of the modals we created, with its slightly opaque background." shadow=false %}
 
