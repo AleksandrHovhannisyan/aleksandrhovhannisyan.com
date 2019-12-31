@@ -12,7 +12,11 @@
         <meta name="referrer" content="origin" />
         <!-- OG properties are for social platforms with previews for shared links -->
         <meta property="og:title" content="{{ page.title }} | Aleksandr Hovhannisyan" />
+        {% if page.isPost %}
+        <meta property="og:image" content="{{ site.url }}/assets/img/posts/{{ page.slug }}/og.PNG" />
+        {% else %}
         <meta property="og:image" content="/assets/img/profile-photo.png" />
+        {% endif %}
         <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
         <meta property="og:url" content="{{ site.url }}" />
         <link rel="stylesheet" href="/assets/styles/main.css" />
