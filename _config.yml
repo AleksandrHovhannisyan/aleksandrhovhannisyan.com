@@ -17,12 +17,14 @@ defaults:
       path: "_pages"
       type: "pages"
     values:
+      isPost: false
       layout: "default"
   -
     scope:
       path: "_posts"
       type: "posts"
     values:
+      isPost: true
       layout: "post"
       permalink: /blog/:categories/:title/
   -
