@@ -295,7 +295,7 @@ In practice, when working with floating-point systems, you should **never** comp
 
 With a rectangular system $$Ax = b$$, it's true that the solution is $$x = A^{-1}b$$, but that's not how we actually compute it. Instead, we use a process known as Gaussian Elimination, which avoids computing $$A^{-1}$$ altogether.
 
-Similarly, with an overdetermined system $$Ax = b$$, it's again true that the least squares solution is $$x = (A^TA)^{-1}A^Tb$$. But we shouldn't use this directly. In practice, what is often done instead is to first rewrite $$A$$ as a product of two special matrices to avoid the need for computing $$A$$'s inverse. Those two matrices are:
+Similarly, with an overdetermined system $$Ax = b$$, it's again true that the least squares solution is $$x = (A^TA)^{-1}A^Tb$$. But we shouldn't use this directly. In practice, what is often done instead is to first rewrite $$A$$ as a product of two special matrices to avoid the need for computing $$A$$'s pseudoinverse. Those two matrices are:
 
 - $$Q$$, an $$m \times n$$ [orthonormal matrix](http://www.eng.fsu.edu/~dommelen/courses/aim/aim03/topics/linalg/matrices/inv/node2.html).
 - $$R$$, an $$n \times n$$ upper-triangular matrix.
