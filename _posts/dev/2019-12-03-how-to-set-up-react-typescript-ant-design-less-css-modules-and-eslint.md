@@ -2,6 +2,7 @@
 title: 'How to Set Up Create React App with TypeScript, Ant Design, LESS, CSS Modules, and ESLint'
 description: Enjoy a better dev experience by setting up React with TypeScript, customizing the Ant Design theme with LESS and CSS Modules, and formatting your code with ESLint, all without ejecting from CRA.
 keywords: ['create react app with typescript', 'customize ant design theme', 'create react app css modules and typescript']
+isCanonical: true
 ---
 
 Let's skip the BS and just jump right in. I'll use VS Code to make my life easier; I recommend that you do the same. Note that I'll be using yarn as my package manager, but you can also use npm.
@@ -358,14 +359,16 @@ Stick this in the JSON blob somewhere:
 "[typescriptreact]": {
   "editor.formatOnSave": true
 },
-"eslint.autoFixOnSave": true,
 "eslint.enable": true,
 "eslint.validate": [
   "javascript",
   "javascriptreact",
   "typescript",
   "typescriptreact"
-]
+],
+"editor.codeActionsOnSave": {
+  "source.fixAll.eslint": true
+}
 ```
 
 > **Note**: You could also just put this in your workspace settings, but then you'd have to do that for every project. If you only want to lint for this project, then select `Preferences: Open Workspace Settings` instead.

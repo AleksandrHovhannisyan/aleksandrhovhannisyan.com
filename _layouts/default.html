@@ -22,6 +22,10 @@
         <link rel="stylesheet" href="/assets/styles/main.css" />
         <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        {% if page.isCanonical %}
+        <!-- This is only needed if the post has been syndicated on other media -->
+        <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+        {% endif %}
         <title>{{ page.title }} | Aleksandr Hovhannisyan</title>
         <!-- Load the user's last selected theme -->
         <script>
