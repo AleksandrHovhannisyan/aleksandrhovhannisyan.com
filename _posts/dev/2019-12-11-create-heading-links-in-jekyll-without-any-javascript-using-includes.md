@@ -2,6 +2,7 @@
 title: Create Heading Links in Jekyll Without Any JavaScript (Using Includes)
 description: Want to make it easier for users to link to a heading in your blog, but don't want to go through the hassle manually? In this post, we'll look at how you can create heading links with Jekyll includes.
 keywords: ["heading links in jekyll", "jekyll heading anchors", "heading anchors in jekyll", "create linked headings"]
+isCanonical: true
 ---
 
 It's a common practice in blogs to make a heading a link; this makes it easier for users to share a specific part of your content without linking to the entire post.
@@ -65,7 +66,7 @@ h2 {
 }
 ```
 
-My navbar is `64px` tall, so I found that these two numbers work best. Feel free to play around with them.
+My navbar is `64px` tall, so I found that these two numbers work best. Feel free to play around with them. And of course, you can also apply this to other heading levels in case you want to link to them as well.
 
 ## And That's It!
 
