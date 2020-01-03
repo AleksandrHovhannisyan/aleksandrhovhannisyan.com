@@ -2,6 +2,7 @@
 title: Multiple Modals on One Page Using HTML, CSS, and JavaScript
 description: This quick tutorial shows you how to create modal windows in HTML using just a bit of markup, styling, and JavaScript. We'll also look at how you can open multiple modals on one page, stacked on top of each other.
 keywords: ["multiple modals on one page", "how to create modal windows in html"]
+isCanonical: true
 ---
 
 I recently tried my hand at creating modal windows from scratch. And as it turns out, doing so is *much* simpler than I thought it would be.
@@ -10,7 +11,7 @@ This quick tutorial shows you how to create modal windows in HTML using just a b
 
 <img src="/assets/img/posts/{{ page.slug }}/demo.gif" alt="A demo of opening and closing modals." />
 
-## The Setup: Basic HTML
+{% include linkedHeading.html heading="The Setup: Basic HTML" level=2 %}
 
 Here's some basic markup to get us started:
 
@@ -31,9 +32,9 @@ Here's some basic markup to get us started:
 </html>
 ```
 
-Go ahead and create `style.css` along with `index.css` while you're at it. We'll fill them in shortly.
+Go ahead and create `style.css` along with `index.js` while you're at it. We'll fill them in shortly.
 
-### Throw in Some Styling
+{% include linkedHeading.html heading="Throw in Some Styling" level=3 %}
 
 This'll do for now:
 
@@ -64,13 +65,13 @@ p {
 }
 ```
 
-## Adding Modal Triggers and Modal Windows in HTML
+{% include linkedHeading.html heading="Adding Modal Triggers and Modal Windows in HTML" level=2 %}
 
 Alright, time to add some more markup to our HTML.
 
 In our case, a modal will consist of the following:
 
-- `modal` wrapper, which creates an illusion of depth with a semi-transparent background.
+- `modal` wrapper, which creates an illusion of elevation with a semi-transparent background.
 - `modal-content`, which will contain all the elements of our modal.
 - `modal-header`, containing a title and the X button to close out of the modal window.
 
@@ -88,17 +89,7 @@ Replace your `body` with this markup:
     <section class="modal-content">
         <header class="modal-header">
             <h3>Title goes here...</h3>
-            <div class="modal-close">
-                <svg viewBox="64 64 896 896" focusable="false" 
-                data-icon="close" width="1em" height="1em" 
-                fill="currentColor" aria-hidden="true">
-                    <path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 
-                    0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H
-                    203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 
-                    203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 
-                    7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"></path>
-                </svg>
-            </div>
+            <div class="modal-close"></div>
         </header>
         <p>Congrats, you've opened a modal!</p>
         <p>Now open <span class="modal-trigger" modal-id="modal2">another modal</span>!</p>
@@ -108,28 +99,17 @@ Replace your `body` with this markup:
     <section class="modal-content">
         <header class="modal-header">
             <h3>Modalception 🤯</h3>
-            <div class="modal-close">
-                <svg viewBox="64 64 896 896" focusable="false" 
-                    data-icon="close" width="1em" height="1em" 
-                    fill="currentColor" aria-hidden="true">
-                        <path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 
-                        0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H
-                        203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 
-                        203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 
-                        7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"></path>
-                </svg>
-            </div>
+            <div class="modal-close"></div>
         </header>
         <p>Noice.</p>
     </section>
 </div>
+<script src="index.js"></script>
 ```
 
-We'll also make it possible to open up an arbitrary number of modals on top of each other. Doing so is easy—you just add a `modal-trigger` to an existing modal. If that trigger is then clicked while the container modal is open, it will open up a new modal on top of the previous one.
+We'll also make it possible to open up an arbitrary number of modals on top of each other. Doing so is easy—you just add a `modal-trigger` to an existing modal. If that trigger is then clicked while the container modal is open, it will open up a new modal on top of the current one.
 
-> **Note 1**: If Modal A comes before Modal B in your document, it will appear under Modal B when both are open. Thus, for the purpose of stacking modals, the order does matter.
-
-> **Note 2**: I borrowed the HTML for the SVG close icon by inspecting [Ant Design's modals](https://ant.design/components/modal/).
+> **Note**: If Modal A comes before Modal B in your document, it will appear under Modal B when both are open. Thus, for the purpose of stacking modals, the order does matter.
 
 Notice that we gave each `modal-trigger` an additional `modal-id` attribute:
 
@@ -141,7 +121,7 @@ Why we did this will become obvious later in the post. We'll also take a closer 
 
 But before we do that, we'll style our modal windows so we can verify that our code works.
 
-## Styling Our Modals
+{% include linkedHeading.html heading="Styling Our Modals" level=2 %}
 
 I'm going to break this up into manageable chunks. First up is the modal wrapper:
 
@@ -175,6 +155,8 @@ As you can see, the modal is hidden by default with `opacity: 0` and `visibility
 }
 ```
 
+> **Note**: I'm using the `opacity` + `visibility` trick here since visibility transitions aren't gradual and immediately snap from one state to another. Take a look at [this StackOverflow answer](https://stackoverflow.com/a/27900094/5323344) for more details.
+
 Let's also style the header:
 
 ```css
@@ -196,14 +178,17 @@ Let's also style the header:
     width: 30px;
 }
 
-.modal-close svg {
-    fill: rgb(112, 112, 112);
+.modal-close::before {
+    content: "X";
+    color: rgb(112, 112, 112);
 }
 
-.modal-close:hover svg {
-    fill: black;
+.modal-close:hover::before {
+    color: black;
 }
 ```
+
+We're simply using a pseudo-element for the close button.
 
 Here's the styling for the modal contents:
 
@@ -238,11 +223,11 @@ And we're done! You can temporarily set `modal1` to be visible by manually addin
 
 {% include posts/picture.html img="modal" ext="png" alt="One of the modals we created, with its slightly opaque background." shadow=false %}
 
-## Adding the JavaScript
+{% include linkedHeading.html heading="Adding the JavaScript" level=2 %}
 
 Alright, time to make our modal windows interactive!
 
-### Multiple Modals on One Page: Stack 'Em Up
+{% include linkedHeading.html heading="Multiple Modals on One Page: Stack 'Em Up" level=3 %}
 
 The most natural way to represent stacked modals in code is—surprise, surprise—with a stack:
 
@@ -253,7 +238,7 @@ const currentlyOpenModals = [];
 
 The topmost modal window is whatever we recently pushed onto the stack; that's the window that's eligible for closing.
 
-### Opening and Closing Modals
+{% include linkedHeading.html heading="Opening and Closing Modals" level=3 %}
 
 Let's code up the logic for opening and closing a modal:
 
@@ -278,7 +263,7 @@ const closeTopmostModal = () => {
 
 The code is pretty simple—to open a modal, we take an ID, find the modal with that ID, give it the `modal-visible` class, and push it to our stack of open modals. To close a modal, we do the opposite—we remove the class and pop the stack.
 
-### Creating Event Listeners for Our Modals
+{% include linkedHeading.html heading="Creating Event Listeners for Our Modals" level=3 %}
 
 We'll need to do the following:
 
@@ -347,7 +332,7 @@ document.body.addEventListener('keyup', keyEvent => {
 
 And that's it!
 
-## Wrap-up
+{% include linkedHeading.html heading="Wrap-up" level=2 %}
 
 Here are some ideas to make the modals more interesting:
 
