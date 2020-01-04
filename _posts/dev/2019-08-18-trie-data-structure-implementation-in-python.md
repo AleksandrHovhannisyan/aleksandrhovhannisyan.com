@@ -14,7 +14,7 @@ Prefix trees are one of the easiest data structures to understand both visually 
 
 First, let's run through a little exercise. Have you ever wondered how search engines like Google are able to quickly auto-fill your search box with suggestions that start with whatever you've typed? Take this as an example:
 
-{% include posts/picture.html img="google-search" ext="JPG" alt="Google searches that begin with 'ap.'" %}
+{% include posts/picture.html img="google-search" ext="png" alt="Google searches that begin with 'ar'" shadow=false %}
 
 How would you go about implementing this behavior, all other complex considerations aside? The (very) naive approach is to take the text that the user has typed so far—like `a` or `app`—and check if any words in our dictionary start with that substring, using a linear search. That would maybe work for search engines with a relatively small dictionary. But Google deals with billions of queries, so that would hardly be efficient. It gets even more inefficient the longer the substring becomes.
 
