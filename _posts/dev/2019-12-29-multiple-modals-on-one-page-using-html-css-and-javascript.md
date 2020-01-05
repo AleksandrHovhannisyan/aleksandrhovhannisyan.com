@@ -9,7 +9,7 @@ I recently tried my hand at creating modal windows from scratch. And as it turns
 
 This quick tutorial shows you how to create modal windows in HTML using just a bit of markup, styling, and JavaScript. We'll also look at how you can open multiple modals on one page, stacked on top of each other. Here's a preview of what we'll be building:
 
-<img src="/assets/img/posts/{{ page.slug }}/demo.gif" alt="A demo of opening and closing modals." />
+{% include posts/picture.html img="demo" ext="GIF" alt="A demo of opening and closing modals." shadow=false %}
 
 {% include linkedHeading.html heading="The Setup: Basic HTML" level=2 %}
 
@@ -221,7 +221,7 @@ Finally, we'll style the triggers:
 
 And we're done! You can temporarily set `modal1` to be visible by manually adding `modal-visible` to its class list. Here's what the modal should look like:
 
-{% include posts/picture.html img="modal" ext="png" alt="One of the modals we created, with its slightly opaque background." shadow=false %}
+{% include posts/picture.html img="modal" ext="PNG" alt="One of the modals we created, with its slightly opaque background." shadow=false %}
 
 {% include linkedHeading.html heading="Adding the JavaScript" level=2 %}
 

@@ -153,7 +153,7 @@ Besides, I wasn't really bothered by its limitations when I was a kid—it fed m
 ## 7. Battlefield 4
 
 <figure>
-{% include posts/picture.html img="shanghai-tower" ext="png" alt="The Siege of Shanghai tower falling." %}
+{% include posts/picture.html img="shanghai-tower" ext="PNG" alt="The Siege of Shanghai tower falling." %}
 <figcaption>Image credits: <a href="https://www.youtube.com/watch?v=ZjSykcTGrNc">Electronic Arts</a></figcaption>
 </figure>
 
@@ -167,7 +167,7 @@ Sure, the Battlefield series is known for its excellent gun play and large-scale
 
 Honestly, I hope I'm not alone when I say that Battlefield 4 is the single greatest modern military shooter of the decade. It's still going strong on consoles, with many player-owned servers ranging from 24/7 Metro to Operation Locker and other great maps.
 
-{% include posts/picture.html img="metro" ext="png" alt="Operation Metro on the Xbox One" %}
+{% include posts/picture.html img="metro" ext="PNG" alt="Operation Metro on the Xbox One" %}
 
 Hardcore mode is my personal favorite—nearly every gun kills you in a couple shots, and every encounter is that much more exhilarating. You're also forced to rely more on environmental awareness and teamwork since run-and-gun tactics usually don't end well in this mode.
 
