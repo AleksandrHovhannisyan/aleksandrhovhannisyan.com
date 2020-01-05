@@ -11,7 +11,7 @@ With an understanding of how to solve overdetermined systems using the least squ
 
 In **data fitting**, we have some function $$f$$ that takes $$n$$-vectors as its inputs and maps them to real numbers. We don't really know anything about the function itself, like what its shape is or what its terms are. It's your classic black box: You feed some vector $$x$$ to the function, and it spits out a $$y$$ in response:
 
-{% include posts/picture.html img="black-box" ext="png" alt="The black-box model of a function." shadow=false %}
+{% include posts/picture.html img="black-box" ext="PNG" alt="The black-box model of a function." shadow=false %}
 
 Our goal in least squares data fitting is to try to model $$f$$ as closely as possible, based on the input-output data pairs that we're given. Typically, we use the following notation for our data, with $$(x^{(i)}, y^{(i)})$$ denoting the $$i$$-th data pair:
 
@@ -137,7 +137,7 @@ We're asked to model the relationship between $$x$$ and $$y$$. Let's take it ste
 
 First, we'll plot the points:
 
-{% include posts/picture.html img="data" ext="png" alt="Plotting the three data points we were given." shadow=false %}
+{% include posts/picture.html img="data" ext="PNG" alt="Plotting the three data points we were given." shadow=false %}
 
 We note that the points, while scattered, appear to have a linear pattern. Clearly, it's not possible to fit an actual straight line to the points, so we'll do our best to get as close as possible—using least squares, of course.
 
@@ -325,7 +325,7 @@ $$ \hat{f}(x) = \frac{1}{3} + x $$
 
 Let's plot the best-fit line along with the points:
 
-{% include posts/picture.html img="best-fit" ext="png" alt="The best-fit line to the data we were given." shadow=false %}
+{% include posts/picture.html img="best-fit" ext="PNG" alt="The best-fit line to the data we were given." shadow=false %}
 
 Awesome! This is the best-line fit for the data points we were given.
 
@@ -343,7 +343,7 @@ Let's repeat the process.
 
 Here's a graph of our points:
 
-{% include posts/picture.html img="data2" ext="png" alt="Plotting the four data points we were given." shadow=false %}
+{% include posts/picture.html img="data2" ext="PNG" alt="Plotting the four data points we were given." shadow=false %}
 
 To me, that looks like a parabola. For that reason, I'm going to fit a degree-two polynomial (a quadratic).
 
@@ -491,7 +491,7 @@ $$\hat{f}(x) =1.86105904+1.80904405x+0.55014058x^{2}$$
 
 And here's the resulting graph:
 
-{% include posts/picture.html img="best-fit2" ext="png" alt="The best-fit parabola to the data we were given." shadow=false %}
+{% include posts/picture.html img="best-fit2" ext="PNG" alt="The best-fit parabola to the data we were given." shadow=false %}
 
 Looks like a pretty good fit to me!
 

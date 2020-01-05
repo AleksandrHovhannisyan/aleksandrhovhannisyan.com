@@ -212,7 +212,7 @@ $$
 
 If $$n = 2$$ like it is here, then $$Ax$$ is a plane in a 3D space:
 
-{% include posts/picture.html img="least-squares-visualized" ext="png" alt="A graph of Ax=b." shadow=false %}
+{% include posts/picture.html img="least-squares-visualized" ext="PNG" alt="A graph of Ax=b." shadow=false %}
 
 Notice that the vector $$b$$ falls outside the plane. In plain English, this means that there's no $$x$$ such that $$Ax = b$$. If we imagine for a second that we live in the 3D space of this graph, our walking surface would be limited to the plane itself. In other words, we would have no way of reaching $$b$$; the best that we could do is to navigate the plane itself.
 
@@ -267,7 +267,7 @@ Recall that the matrix $$A$$ of an overdetermined system $$Ax = b$$ is tall and 
 
 Well, if we do that, here's what will happen to the dimensions of the problem:
 
-{% include posts/picture.html img="dimensions" ext="png" alt="The dimensions of A^TAx = A^Tb" shadow=false %}
+{% include posts/picture.html img="dimensions" ext="PNG" alt="The dimensions of A^TAx = A^Tb" shadow=false %}
 
 Since this is a rectangular $$n \times n$$ system, we can solve for it by multiplying both sides by the inverse of $$A^TA$$:
 
@@ -331,7 +331,7 @@ Now, we have an upper-triangular, rectangular system of equations that can easil
 
 Once again, the dimensions work out to produce an $$n \times n$$ system. Notice how this system is conveniently set up such that all the computer has to do is work from the bottom up, first solving for $$x_n$$, then substituting that in the equation above and solving for $$x_{n-1}$$, and so on, all the way up until $$x_1$$:
 
-{% include posts/picture.html img="qr-factorization" ext="png" alt="Visualization of the equation Rx = Q^Tb" shadow=false %}
+{% include posts/picture.html img="qr-factorization" ext="PNG" alt="Visualization of the equation Rx = Q^Tb" shadow=false %}
 
 And that's a much more numerically stable process than using $$A$$'s pseudo-inverse directly. In fact, notice that factorizing $$A$$ as $$QR$$ helped us to avoid computing the pseudo-inverse altogether!
 

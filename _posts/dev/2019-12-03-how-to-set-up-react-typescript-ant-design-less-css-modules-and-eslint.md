@@ -19,7 +19,7 @@ This uses Facebook's [create-react-app](https://create-react-app.dev/) to initia
 
 Here's what your directory structure and `package.json` should roughly look like once that's done:
 
-{% include posts/picture.html img="structure" ext="png" alt="The directory structure of a CRA project." %}
+{% include posts/picture.html img="structure" ext="PNG" alt="The directory structure of a CRA project." %}
 
 Version numbers may obviously differ.
 
@@ -134,7 +134,7 @@ At this point, if you were already running `yarn start`, you'll need to restart 
 
 Here's the result once you do that:
 
-{% include posts/picture.html img="button1" ext="png" alt="An Ant Design button and anchor." %}
+{% include posts/picture.html img="button1" ext="PNG" alt="An Ant Design button and anchor." %}
 
 ### Customize Ant Design Theme with LESS
 
@@ -173,7 +173,7 @@ module.exports = override(
 
 That's it! Re-run `yarn start` to see the new results in your browser:
 
-{% include posts/picture.html img="button2" ext="png" alt="An Ant Design button and anchor, styled using a custom color." %}
+{% include posts/picture.html img="button2" ext="PNG" alt="An Ant Design button and anchor, styled using a custom color." %}
 
 The best part is that Ant Design's UI is consistent, using shades of this primary color for all of its components.
 
@@ -224,7 +224,7 @@ Here's how to use the workspace version of TypeScript in VS Code:
 
 Here's a screenshot to make that clearer:
 
-{% include posts/picture.html img="workspace-version" ext="png" alt="Using the workspace version of TypeScript in VS Code." %}
+{% include posts/picture.html img="workspace-version" ext="PNG" alt="Using the workspace version of TypeScript in VS Code." %}
 
 Once you do that, VS Code will create a `.vscode` directory in your project for workspace settings.
 
@@ -249,7 +249,7 @@ import styles from './App.module.less';
 
 With VS Code's intellisense, you won't have to guess or remind yourself what you named your CSS classes/IDs:
 
-{% include posts/picture.html img="intellisense" ext="png" alt="VS Code autocomplete for TypeScript CSS Modules." %}
+{% include posts/picture.html img="intellisense" ext="PNG" alt="VS Code autocomplete for TypeScript CSS Modules." %}
 
 Awesome! 😎
 
@@ -259,7 +259,7 @@ Refresh the page, and you'll see that it looks exactly the same, except we now g
 
 We *could* stop there, and put up with garbo code formatting and inconsistencies, and create more work for our collaborators as they try to reconcile several people's style preferences.
 
-<img src="/assets/img/posts/how-to-set-up-react-typescript-ant-design-less-css-modules-and-eslint/but-why.gif" alt="But why, why would you do that? Why would you do any of that?" />
+{% include posts/picture.html img="but-why" ext="GIF" alt="But why, why would you do that? Why would you do any of that?" shadow=false %}
 
 Or we could set up ESLint with Prettier to format our code consistently 🙂
 
@@ -347,7 +347,7 @@ Open up the command palette (`Ctrl+Shift+P` if you're on Windows) and type `sett
 
 Then, click on `Preferences: Open Settings (JSON)`:
 
-{% include posts/picture.html img="command-palette" ext="png" alt="Opening user settings via the VS Code command palette." %}
+{% include posts/picture.html img="command-palette" ext="PNG" alt="Opening user settings via the VS Code command palette." %}
 
 Stick this in the JSON blob somewhere:
 
@@ -377,7 +377,7 @@ If all went well, VS Code should now complain whenever it sees linting errors.
 
 Let's mess up `App.tsx` on purpose to see that in action:
 
-{% include posts/picture.html img="linting-errors" ext="png" alt="Linting errors in VS Code." %}
+{% include posts/picture.html img="linting-errors" ext="PNG" alt="Linting errors in VS Code." %}
 
 Go ahead and save the file to automatically fix those errors.
 
