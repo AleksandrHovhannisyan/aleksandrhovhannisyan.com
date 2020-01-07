@@ -119,17 +119,12 @@
     }
 
     img {
+        border-radius: 5px;
         width: 100%;
     }
 
     .img-with-shadow {
-        border-radius: 10px;
         box-shadow: 0 6px 20px 5px rgba(0, 0, 0, 0.4);
-    }
-
-    p > img {
-        margin-bottom: calc(#{$img-spacing} - #{$paragraph-spacing});;
-        margin-top: calc(#{$img-spacing} - #{$paragraph-spacing});;
     }
 
     figure,
@@ -175,23 +170,35 @@
     }
 
     .code-header {
+        z-index: 2;
+
         .file-name {
-            background-color: #000000;
+            background-color: #3b3b3b;
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
+            box-shadow: 0 3px 3px 0px rgba(0, 0, 0, 0.3);
             color: #bcbcbc;
             // paragraph-spacing - img-spacing will always be negative, which is what we need
             margin-bottom: calc(#{$paragraph-spacing} - #{$img-spacing});
             margin-top: calc(#{$img-spacing} - #{$paragraph-spacing});
             padding: 10px 20px;
+            @include transition;
 
             &::before {
                 content: "📂";
             }
         }
+
+        & + .highlighter-rouge .highlight {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
     }
 
     div.highlighter-rouge {
+        border-radius: 5px;
+        box-shadow: 0 4px 20px 2px rgba(0, 0, 0, 0.4);
+
         code {
             padding: 0;
         }
