@@ -25,20 +25,16 @@ When studying scheduling algorithms, we have two high-level classifications: pre
 
 In non-preemptive scheduling, a process runs to completion or until it blocks. While that process is running, its CPU time cannot be revoked by the scheduler (unless the OS forcibly kills the process for some other reason). Other processes in the ready queue must patiently wait their turn.
 
-<div class="pro-con-table">
-    <div>
-        <header><span>Benefits of non-preemptive scheduling</span></header>
-        <ul>
-            <li>CPU doesn't have to frequently perform context switches.</li>
-        </ul>
-    </div>
-    <div>
-        <header><span>Drawbacks of non-preemptive scheduling</span></header>
-        <ul>
-            <li>Greater potential for process starvation if whatever is running takes a long time.</li>
-        </ul>
-    </div>
-</div>
+<table class="pro-con-table">
+    <tr>
+        <th>Benefits of non-preemptive scheduling</th>
+        <th>Drawbacks of non-preemptive scheduling</th>
+    </tr>
+    <tr>
+        <td>CPU doesn't have to frequently perform context switches</td>
+        <td>Greater potential for process starvation if current process takes a long time to finish.</td>
+    </tr>
+</table>
 
 These are the examples of non-preemptive scheduling algorithms that we'll look at:
 
@@ -63,21 +59,19 @@ With preemptive algorithms, we follow these steps:
 
 Those steps are then repeated for as many processes as needed.
 
-<div class="pro-con-table">
-    <div>
-        <header><span>Benefits of preemptive scheduling</span></header>
-        <ul>
-            <li>Creates an illusion of no process starvation.</li>
-            <li>Good for responsiveness or whenever user input is important.</li>
-        </ul>
-    </div>
-    <div>
-        <header><span>Drawbacks of preemptive scheduling</span></header>
-        <ul>
-            <li>Involves more context switching, which can decrease CPU utilization.</li>
-        </ul>
-    </div>
-</div>
+<table class="pro-con-table">
+    <tr>
+        <th>Benefits of preemptive scheduling</th>
+        <th>Drawbacks of preemptive scheduling</th>
+    </tr>
+    <tr>
+        <td>Gives users the impression that processes are not being starved.</td>
+        <td>Involves more context switches, which can decrease CPU utilization.</td>
+    </tr>
+    <tr>
+        <td>Good for responsiveness or whenever user input is important.</td>
+    </tr>
+</table>
 
 These are the examples of preemptive scheduling algorithms that we'll look at:
 
@@ -86,7 +80,7 @@ These are the examples of preemptive scheduling algorithms that we'll look at:
 - Preemptive priority scheduling
 - Proportionate scheduling
 
-> **Analogy**: Now, let's say we're dealing with siblings and a single gaming console. To encourage fairness, their mother has one simple rule: Each kid can only play for 20 minutes at a time. Once that period of time is up, it's someone else's turn to play, even if the previous sibling was already in the middle of a match. They continue taking turns like this until everyone's finished playing. This is analogous to round-robin scheduling.
+> **Analogy**: Now, let's say we're dealing with siblings and a single gaming console. To encourage fairness, their parents have one simple rule: Each kid can only play for 20 minutes at a time. Once that period of time is up, it's someone else's turn to play, even if the previous sibling was already in the middle of a match. They continue taking turns like this until everyone's finished playing. This is analogous to round-robin scheduling.
 
 When we actually look at the individual scheduling algorithms in this post, I'll classify them as either (P) for preemptive or (NP) for non-preemptive.
 

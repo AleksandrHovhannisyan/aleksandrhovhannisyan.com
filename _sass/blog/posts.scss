@@ -123,7 +123,8 @@
     }
 
     .img-with-shadow {
-        box-shadow: 0 5px 20px 10px rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        box-shadow: 0 6px 20px 5px rgba(0, 0, 0, 0.4);
     }
 
     p > img {
@@ -164,12 +165,12 @@
         background: var(--blockquote-bg-color);
         border-left: 4px solid #6b6a6a;
         margin-bottom: $paragraph-spacing;
-        padding: 1px 16px 1px 20px;
+        padding: 1.3em;
         @include transition;
 
         p {
             color: var(--blockquote-text-color);
-            margin-top: $paragraph-spacing;
+            margin: 0;
         }
     }
 
@@ -230,26 +231,25 @@
     }
 
     .pro-con-table {
-        background-color: var(--blockquote-bg-color);
-        border: 4px solid var(--blockquote-text-color);
+        border-radius: 5px;
+        border: solid 5px var(--blockquote-bg-color);
         color: var(--blockquote-text-color);
-        display: flex;
-        flex-wrap: wrap;
-        padding: 20px;
-        transition: background-color $transition-duration, border $transition-duration;
+        @include transition;
+        table-layout: fixed;
+        text-align: center;
+        border-spacing: 0;
 
-        div {
-            flex: 1 1 0;
+        th {
+            background-color: var(--blockquote-bg-color);
+            @include transition(background-color);
+        }
 
-            header {
-                font-weight: bold;
-                padding-left: 20px;
-                @include transition;
-            }
+        td {
+            width: 50%;
+        }
 
-            li {
-                padding-left: 10px;
-            }
+        th, td {
+            padding: 20px;
         }
     }
 
@@ -268,6 +268,6 @@ code {
     border-radius: 3px;
     color: var(--code-text-color);
     font-family: Inconsolata, Courier New;
-    padding: 3px 5px;
+    padding: 3px;
     @include transition;
 }

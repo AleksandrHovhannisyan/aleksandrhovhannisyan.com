@@ -136,11 +136,9 @@ Here's the result once you do that:
 
 {% include posts/picture.html img="button1" ext="PNG" alt="An Ant Design button and anchor." %}
 
-### Customize Ant Design Theme with LESS
+### Customize the Ant Design Theme with LESS
 
-Let's say you want to customize the Ant Design theme to use a different primary color or base font size.
-
-Easy peasy!
+Let's say you want to use a different primary color or base font size. Easy peasy!
 
 First, install the `less` and `less-loader` packages:
 
@@ -148,7 +146,7 @@ First, install the `less` and `less-loader` packages:
 yarn add less less-loader
 ```
 
-Then we add a LESS loader to our config overrides:
+Then, simply add a LESS loader to your config overrides:
 
 {% include posts/codeHeader.html name="config-overrides.js" %}
 ```javascript
