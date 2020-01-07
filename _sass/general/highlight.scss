@@ -1,6 +1,6 @@
 /* VS Code Dark Theme, modified for use with Rouge. */
 
-$background: #282828;
+$background: #252525;
 $selection: #add6ff26;
 $comment: #6A9955;
 $text: #b3b9c5;
@@ -18,8 +18,7 @@ $punctuation: #d4d4d4;
 $operator-word: #569cd6;
 
 .highlight {
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-radius: 5px;
 
   &, code {
     background-color: $background;
