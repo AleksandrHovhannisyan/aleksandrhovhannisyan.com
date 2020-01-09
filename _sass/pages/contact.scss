@@ -52,7 +52,7 @@ form {
         @include transition;
 
         &:focus {
-            box-shadow: inset 0 0 4px 0 var(--button-bg-hover-color);
+            box-shadow: inset 0 0 0 2px var(--button-bg-hover-color);
             outline: none;
         }
     }
