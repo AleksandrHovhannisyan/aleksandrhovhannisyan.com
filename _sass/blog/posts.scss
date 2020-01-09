@@ -102,6 +102,11 @@
             text-align: center;
             @include transition;
         }
+
+        picture {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
     }
 
     figure,
@@ -120,7 +125,7 @@
 
     img {
         border-radius: 5px;
-        width: 100%;
+        max-width: 100%;
     }
 
     .img-with-shadow {
