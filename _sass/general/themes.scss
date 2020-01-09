@@ -9,7 +9,7 @@ html.light {
 
     --text-color-normal: #{$denim};
     --text-color-nav: #cecdcd;
-    --text-color-emphasis: #192226;
+    --text-color-emphasis: #3c4e56;
     --link-color: #{$primary-color-link};
 
     --button-bg-color: #{$primary-color};
@@ -21,7 +21,7 @@ html.light {
     --tag-text-color: #{$primary-color};
 
     --code-bg-color: #e4e4e4;
-    --code-text-color: #192226;
+    --code-text-color: #{$denim};
 
     --hover-color-general: #f6f6f6;
 
@@ -53,7 +53,7 @@ html.dark {
     --tag-text-color: #000000;
 
     --code-bg-color: #646464;
-    --code-text-color: #e3e3e3;
+    --code-text-color: #e2e1e1;
 
     --hover-color-general: #292929;
 
