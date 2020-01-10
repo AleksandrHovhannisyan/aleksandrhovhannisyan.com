@@ -24,6 +24,7 @@ defaults:
       path: "_posts"
       type: "posts"
     values:
+      custom_js: ["viewImage"]
       isPost: true
       layout: "post"
       permalink: /blog/:categories/:title/
