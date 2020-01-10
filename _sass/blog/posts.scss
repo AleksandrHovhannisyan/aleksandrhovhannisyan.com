@@ -280,6 +280,6 @@ code {
     border-radius: 3px;
     color: var(--code-text-color);
     font-family: Inconsolata, Courier New;
-    padding: 3px;
+    padding: 1px 3px;
     @include transition;
 }
