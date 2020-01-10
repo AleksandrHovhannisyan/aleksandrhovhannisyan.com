@@ -2,9 +2,11 @@
 {% assign img = include.img %}
 <picture>
     <source type="image/webp" 
-            srcset="/assets/img/posts/{{ page.slug }}/{{ img }}.webp" 
+            srcset="" 
+            data-src="/assets/img/posts/{{ page.slug }}/{{ img }}.webp"
             {% unless include.shadow == false %}class="img-with-shadow"{% endunless %} >
-    <img src="/assets/img/posts/{{ page.slug }}/{{ img }}.{{ ext }}" 
+    <img src="" 
          alt="{{ include.alt }}" 
+         data-src="/assets/img/posts/{{ page.slug }}/{{ img }}.webp"
          {% unless include.shadow == false %}class="img-with-shadow"{% endunless %} />
 </picture>
