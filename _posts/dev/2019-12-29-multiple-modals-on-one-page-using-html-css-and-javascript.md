@@ -83,7 +83,7 @@ Replace your `body` with this markup:
 
 {% include posts/codeHeader.html name="index.html" %}
 ```html
-<p>Lorem ipsum. <span class="modal-trigger" modal-id="modal1">Click this trigger</span> to open a modal.</p>
+<p>Lorem ipsum. <span class="modal-trigger" data-modal-id="modal1">Click this trigger</span> to open a modal.</p>
 <p>Close a modal by clicking off to the side, clicking the X, or pressing Escape.</p>
 <div class="modal" id="modal1">
     <section class="modal-content">
@@ -92,7 +92,7 @@ Replace your `body` with this markup:
             <div class="modal-close"></div>
         </header>
         <p>Congrats, you've opened a modal!</p>
-        <p>Now open <span class="modal-trigger" modal-id="modal2">another modal</span>!</p>
+        <p>Now open <span class="modal-trigger" data-modal-id="modal2">another modal</span>!</p>
     </section>
 </div>
 <div class="modal" id="modal2">
@@ -111,10 +111,10 @@ We'll also make it possible to open up an arbitrary number of modals on top of e
 
 > **Note**: If Modal A comes before Modal B in your document, it will appear under Modal B when both are open. Thus, for the purpose of stacking modals, the order does matter.
 
-Notice that we gave each `modal-trigger` an additional `modal-id` attribute:
+Notice that we gave each `modal-trigger` an additional `data-modal-id` attribute:
 
 ```html
-<p>...<span class="modal-trigger" modal-id="modal1">Click this link</span> to open a modal.</p>
+<p>...<span class="modal-trigger" data-modal-id="modal1">Click this link</span> to open a modal.</p>
 ```
 
 Why we did this will become obvious later in the post. We'll also take a closer look at the modal stacking logic.
@@ -281,13 +281,13 @@ const modalTriggers = document.querySelectorAll('.modal-trigger');
 modalTriggers.forEach(modalTrigger => {
   modalTrigger.addEventListener('click', clickEvent => {
     const trigger = clickEvent.target;
-    const modalId = trigger.getAttribute('modal-id');
+    const modalId = trigger.getAttribute('data-modal-id');
     openModal(modalId);
   });
 });
 ```
 
-Basically, we query all modal triggers and subscribe to their clicks. Given a click event, we get the trigger element by following `clickEvent.target`. This allows us to extract the `modal-id` attribute and open up that particular modal.
+Basically, we query all modal triggers and subscribe to their clicks. Given a click event, we get the trigger element by following `clickEvent.target`. This allows us to extract the `data-modal-id` attribute and open up that particular modal.
 
 #### 2. Closing a Modal by Clicking Off to the Side
 
