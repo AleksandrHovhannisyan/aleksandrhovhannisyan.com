@@ -12,8 +12,15 @@
     flex-wrap: wrap;
     justify-content: space-around;
     margin-bottom: 80px;
-    margin-top: 80px;
     max-width: 400px;
+
+    .active-category {
+        // underline, see underlined-link in mixins.scss
+        &::after {
+            width: 100%; 
+            left: 0;
+        }
+    }
 
     a {
         @include underlined-link;
