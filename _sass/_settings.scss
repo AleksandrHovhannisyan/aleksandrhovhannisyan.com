@@ -6,7 +6,7 @@ $device-cutoff-large: 800px;
 
 $golden-ratio: 1.61803398875;
 $font-size: 18px;
-$page-max-width: 960px;
+$page-max-width: 900px;
 
 $line-height: round($font-size * ($golden-ratio - (1 / 2 * $golden-ratio) * (1 - ($page-max-width / ($font-size * $font-size * $golden-ratio * $golden-ratio))))) + 0px;
 $paragraph-spacing: round($line-height) + 0px;
