@@ -78,9 +78,12 @@
         grid-template-columns: 400px 1fr;
     }
 
-    img {
-        width: 100%;
+    .post-thumbnail {
         align-self: center;
+
+        img {
+            width: 100%;
+        }
     }
 
     .post-preview-body {
