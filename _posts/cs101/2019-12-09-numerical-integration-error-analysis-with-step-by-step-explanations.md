@@ -17,7 +17,7 @@ That is, our goal is to estimate $$I(f) = \int_{a}^{b} f(x)dx$$.
 
 Here's what the midpoint rule looks like graphically:
 
-{% include posts/picture.html img="midpoint" ext="PNG" alt="Numerical integration using the midpoint rule." %}
+{% include posts/picture.html img="midpoint" ext="PNG" alt="Numerical integration using the midpoint rule." shadow=false %}
 
 Since we don't know what $$f(x)$$ actually is, we'll approximate the function using a Taylor series expansion centered at $$m$$:
 
