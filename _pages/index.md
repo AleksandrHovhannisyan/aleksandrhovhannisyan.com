@@ -1,7 +1,7 @@
 ---
 title: Home
 permalink: /
-custom_js: ["loadPreviewRepoData"]
+customJS: ["loadPreviewRepoData"]
 ---
 
 <section id="hero-banner">

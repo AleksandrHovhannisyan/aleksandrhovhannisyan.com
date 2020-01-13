@@ -1,6 +1,6 @@
 ---
 title: Experience
-custom_js: ["loadFullRepoData"]
+customJS: ["loadFullRepoData"]
 permalink: /experience/
 ---
 

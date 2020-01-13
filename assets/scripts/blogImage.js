@@ -21,9 +21,10 @@ const observer = new IntersectionObserver(function(entries, self) {
   });
 }, intersectionConfig);
 
-const imgs = document.querySelectorAll('#post [data-src]');
+const imgs = document.querySelectorAll('#page-content [data-src]');
 
 imgs.forEach(img => {
+  console.log(img);
   // Listen for any intersections to lazy-load
   observer.observe(img);
   // Open the image file itself if it's clicked
