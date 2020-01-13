@@ -65,11 +65,29 @@
 
     .post-preview {
         grid-template-rows: 1fr 1fr;
-        width: 100%;
 
         .post-description {
             margin-bottom: 0px;
             margin-top: 0px;
+        }
+    }
+
+    #latest-post {
+        grid-gap: 30px;
+        grid-template-rows: 1fr;
+        grid-column: 1 / -1;
+
+        @media only screen and (min-width: 770px) {
+            grid-template-columns: 400px 1fr;
+        }
+
+        img {
+            width: 100%;
+            align-self: center;
+        }
+
+        #latest-post-body {
+            grid-template-rows: 1fr 1fr;
         }
     }
 }
