@@ -7,7 +7,10 @@ category: all
 ---
 {% for post in site.posts %}
 <div class="card post-preview">
-    <img data-src="/assets/img/posts/{{ post.slug }}/og.PNG" alt="Post thumbnail" />
+    <picture class="post-thumbnail">
+        <source type="image/webp" srcset="" data-src="/assets/img/posts/{{ post.slug }}/og.webp" >
+        <img data-src="/assets/img/posts/{{ post.slug }}/og.PNG" src="" alt="Post thumbnail" />
+    </picture>
     <div class="post-preview-body">
         <header>
             <h3 class="post-title">{{ post.title }}</h3>
