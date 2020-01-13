@@ -3,15 +3,15 @@ title: Blog
 layout: default
 ---
 
+{% include banner.html heading="Welcome to my blog!" content="I like to write about dev, CS theory, video games, and whatever else comes to mind. All opinions are my own." %}
 <section class="section blog-overview">
     <div class="category-links container">
-        <a href="{{ site.url }}/blog/">All</a>
-        <a href="{{ site.url }}/blog/dev">Dev</a>
-        <a href="{{ site.url }}/blog/cs101">CS101</a>
-        <a href="{{ site.url }}/blog/gaming">Gaming</a>
-        <a href="{{ site.url }}/blog/music">Music</a>
+        <a href="{{ site.url }}/blog/" {% if page.category == 'all' %}class="active-category"{% endif %}>All</a>
+        <a href="{{ site.url }}/blog/dev" {% if page.category == 'dev' %}class="active-category"{% endif %}>Dev</a>
+        <a href="{{ site.url }}/blog/cs101" {% if page.category == 'cs101' %}class="active-category"{% endif %}>CS101</a>
+        <a href="{{ site.url }}/blog/gaming" {% if page.category == 'gaming' %}class="active-category"{% endif %}>Gaming</a>
+        <a href="{{ site.url }}/blog/music" {% if page.category == 'music' %}class="active-category"{% endif %}>Music</a>
     </div>
-
     <section class="post-previews card-grid">
         {{ content }}
     </section>

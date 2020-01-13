@@ -3,6 +3,7 @@ title: Blog
 permalink: /blog/
 layout: blog
 customJS: ["blogImage"]
+category: all
 ---
 {% for post in site.posts %}
 <div class="card post-preview">
