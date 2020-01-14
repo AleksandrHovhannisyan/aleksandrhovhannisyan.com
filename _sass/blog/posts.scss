@@ -71,19 +71,21 @@
 
 .post-preview {
     grid-gap: 30px;
-    grid-template-rows: 1fr;
-    grid-column: 1 / -1;
-
-    @media only screen and (min-width: 770px) {
-        grid-template-columns: 400px 1fr;
-    }
+    grid-template-rows: 200px auto;
 
     .post-thumbnail {
         align-self: center;
 
         img {
+            height: 200px;
             width: 100%;
+            object-fit: cover;
+            object-position: center;;
         }
+    }
+
+    .post-title {
+        color: var(--link-color);
     }
 
     .post-preview-body {
