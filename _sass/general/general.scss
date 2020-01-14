@@ -70,12 +70,6 @@ body {
     text-align: center;
 }
 
-.container {
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 1.35rem;
-}
-
 /* Links an entire parent container, but the parent must be set to relative position */
 .container-link {
     height: 100%;
@@ -156,12 +150,6 @@ hr {
     margin-bottom: 8px;
     margin-top: 8px;
     @include transition;
-}
-
-p, ul, ol, figcaption {
-    a {
-        @include underlined-link;
-    }
 }
 
 #error {

@@ -163,6 +163,10 @@
         margin-bottom: 3rem;
     }
 
+    a {
+        @include underlined-link;
+    }
+
     .job {
         display: grid;
         grid-template-rows: max-content 1fr max-content;
@@ -224,6 +228,10 @@
 
 .institution {
     margin-top: 40px;
+
+    a {
+        @include underlined-link;
+    }
 
     .collapsible-content {
         display: grid;
