@@ -8,23 +8,42 @@
 
 .category-links {
     align-items: center;
+    background-color: var(--nav-bg-color);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    list-style-type: none;
     margin-bottom: 80px;
-    max-width: 400px;
+    min-height: 64px;
+    width: 100%;
+    @include transition;
 
-    .active-category {
-        // underline, see underlined-link in mixins.scss
-        &::after {
-            width: 100%; 
-            left: 0;
+    & .category-link {
+        height: 64px;
+        flex: 1 1 0;
+        padding-left: 10px;
+        padding-right: 10px;
+        @include transition;
+
+        &:hover, &.active-category {
+            cursor: pointer;
+            background-color: var(--button-bg-color);
+
+            a {
+                @include themed(color, white, black);
+            }
         }
-    }
 
-    a {
-        @include underlined-link;
-        margin-right: 10px;
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            color: var(--text-color-nav);
+        }
     }
 }
 
@@ -80,7 +99,7 @@
             height: 200px;
             width: 100%;
             object-fit: cover;
-            object-position: center;;
+            object-position: center;
         }
     }
 
@@ -117,6 +136,10 @@
     h2, h3 {
         margin-top: -60px;
         padding-top: 90px;
+    }
+
+    a {
+        @include underlined-link;
     }
 
     figure {
