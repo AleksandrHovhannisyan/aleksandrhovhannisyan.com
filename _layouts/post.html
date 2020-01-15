@@ -17,10 +17,11 @@ layout: default
 {% if page.needsLatex %}
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 <script>
-window.MathJax = {
-  'HTML-CSS': {
-    linebreaks: { automatic: true, width: 'container' }
-  }
-};
+  // Ensures that LaTeX figures don't overflow the page horizontally
+  window.MathJax = {
+    'HTML-CSS': {
+      linebreaks: { automatic: true, width: 'container' }
+    }
+  };
 </script>
 {% endif %}
