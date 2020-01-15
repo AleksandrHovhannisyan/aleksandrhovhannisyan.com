@@ -76,7 +76,8 @@ public void LoseHealth(int amount)
 
     Health -= amount;
     
-    if (Health < 0)
+    // The player died
+    if (Health <= 0)
     {
         Health = 0;
         // Broadcast some sort of death event here before returning
@@ -122,7 +123,7 @@ private IEnumerator BecomeTemporarilyInvincible()
     isInvincible = true;
 
     // Flash on and off for roughly invincibilityDurationSeconds seconds
-    for(float i = 0; i < invincibilityDurationSeconds; i += delayBetweenInvincibilityFlashes)
+    for (float i = 0; i < invincibilityDurationSeconds; i += delayBetweenInvincibilityFlashes)
     {
         // TODO: add flashing logic here
         yield return new WaitForSeconds(delayBetweenInvincibilityFlashes);
@@ -182,7 +183,7 @@ private IEnumerator BecomeTemporarilyInvincible()
     isInvincible = true;
 
     // Flash on and off for roughly invincibilityDurationSeconds seconds
-    for(float i = 0; i < invincibilityDurationSeconds; i += delayBetweenInvincibilityFlashes)
+    for (float i = 0; i < invincibilityDurationSeconds; i += delayBetweenInvincibilityFlashes)
     {
         // Alternate between 0 and 1 scale to simulate flashing
         if (model.transform.localScale == Vector3.one)
