@@ -5,7 +5,7 @@ layout: default
 <article id="post">
   <header class="post-header">
       <h1 class="post-title">{{ page.title }}</h1>
-      {% include posts/stats.html target=page categories=page.categories %}
+      {% include posts/stats.html target=page %}
   </header>
   <!-- Don't wrap so we can take advantage of CSS grid, until subgrids become a thing at least -->
   {{ content }}

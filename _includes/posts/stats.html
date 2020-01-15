@@ -3,7 +3,5 @@
 <div class="post-stats">
     <div class="post-date">{% include svg.html svg="calendar" %}{{ include.target.date | date: "%b %-d, %Y" }}</div>
     <div class="post-reading-length">{% include svg.html svg="clock" %}{{ minutes }} min read</div>
-    {% if include.categories %}
-    <div class="post-categories">{% include svg.html svg="tag" %}{% for category in include.categories %}<a href="{{ site.url }}/blog/{{ category | slugify }}">{{ category }}</a>&ensp;{% endfor %}</div>
-    {% endif %}
+    <div class="post-categories">{% include svg.html svg="tag" %}{% for category in include.target.categories %}<a href="{{ site.url }}/blog/{{ category | slugify }}">{{ category }}</a>&ensp;{% endfor %}</div>
 </div>
