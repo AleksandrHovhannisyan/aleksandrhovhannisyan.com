@@ -9,13 +9,14 @@
 .category-links {
     align-items: center;
     background-color: var(--nav-bg-color);
-    border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
     display: flex;
     flex-wrap: wrap;
+    font-size: 1.6rem;
     justify-content: space-around;
     list-style-type: none;
-    margin-bottom: 80px;
+    margin: 0 auto 80px auto;
+    max-width: 670px;
     min-height: 64px;
     width: 100%;
     @include transition;
@@ -23,8 +24,6 @@
     & .category-link {
         height: 64px;
         flex: 1 1 0;
-        padding-left: 10px;
-        padding-right: 10px;
         @include transition;
 
         &:hover, &.active-category {
