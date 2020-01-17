@@ -9,8 +9,8 @@ permalink: /contact/
         <img src="/assets/img/envelope.png" alt="📧">
     </h2>
     <div id="contact-information">
-        <form action="https://formspree.io/hire.aleksandr@gmail.com" method="POST" spellcheck="false">
-            <input type="hidden" name="_subject" value="Thanks for getting in touch!" />
+        <form action="https://formspree.io/aleksandrhovhannisyan.github.io@gmail.com" method="POST" spellcheck="false">
+            <input type="hidden" name="_subject" value="Someone sent you a message!" />
             <label class="required" for="name"><strong>Name</strong></label>
             <input type="text" name="name" id="name" required>
             <label for="email"><strong>Email</strong></label>
