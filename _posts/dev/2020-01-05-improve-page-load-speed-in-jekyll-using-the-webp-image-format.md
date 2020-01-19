@@ -17,17 +17,17 @@ It's only when I began running my posts through the former tool, PageSpeed Insig
 
 Google even provides a useful command-line tool, `cwebp`, that allows you to convert images from other formats—like PNG, JPEG, and so on—to WebP. In this post, we'll consider Jekyll specifically and take a look at how you can improve your page load speed by using the WebP image format with just a single include.
 
-## Getting Started with WebP in Jekyll
+{% include linkedHeading.html heading="Getting Started with WebP in Jekyll" level=2 %}
 
 Now, you actually have two options here:
 
-### 1. Use a plugin
+{% include linkedHeading.html heading="1. Use a plugin" level=3 %}
 
 The [jekyll-webp](https://github.com/sverrirs/jekyll-webp) plugin generates WebP versions of your images and serves them on demand whenever they're requested; it does *not* create actual WebP image files under your `assets` folder.
 
 The downside to this approach is that some plugins—including this one—are [not supported by GitHub Pages](https://help.github.com/en/github/working-with-github-pages/about-github-pages-and-jekyll#plugins), so you'll have to run `jekyll build` and push your `_site/` to GitHub, instead of pushing your source.
 
-### 2. Use Google's CLI utility
+{% include linkedHeading.html heading="2. Use Google's CLI utility" level=3 %}
 
 Install the `cwebp` CLI utility yourself and use it to manually convert images to WebP as you add them to your site. **This is my preferred option**, and it's the one that I'll use in this blog post.
 
@@ -35,7 +35,7 @@ To get started, head on over to [Google's installation instructions page](https:
 
 > **Note**: The installation will also come with `gif2webp`, which can be used to convert GIFs to a WebP equivalent.
 
-## Converting an Image to WebP Format with `cwebp`
+{% include linkedHeading.html heading="Converting an Image to WebP Format with `cwebp`" level=2 %}
 
 Assuming the previous step worked just fine for you and that `cwebp` is now accessible from the command-line, it's time to try it out on an actual image. Here's the general syntax for the command:
 
@@ -63,7 +63,7 @@ In this case, notice that the image size was cut in a half—from 16 KB to 8 KB�
 
 > **Note**: You don't have to switch to the target directory to run the command. You could also just feed it a relative or absolute path from any directory. That said, I prefer to run it from the target directory to make my life easier.
 
-## How Do You Use the WebP Image Format?
+{% include linkedHeading.html heading="How Do You Use the WebP Image Format?" level=2 %}
 
 The good news is that [browser support for WebP](https://caniuse.com/#feat=webp) is high, excluding Internet Explorer (of course 😒) and Safari:
 
@@ -82,7 +82,7 @@ Basically, browsers that don't support WebP will fall back to the plain old `img
 
 Except... Do we really have to copy-paste this every time we want to create an image? We also want to avoid having to specify an absolute path to our image every single time we want to insert one in a blog post.
 
-## Jekyll Includes and Liquid to the Rescue
+{% include linkedHeading.html heading="Jekyll Includes and Liquid to the Rescue" level=2 %}
 
 Time to make this reusable! Create a file named `_includes/picture.html` and add this markup:
 

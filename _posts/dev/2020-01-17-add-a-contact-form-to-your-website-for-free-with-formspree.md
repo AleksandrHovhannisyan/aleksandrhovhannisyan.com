@@ -8,7 +8,7 @@ keywords: ["free contact form", "formspree"]
 
 Let's take a look at how it works!
 
-## Basic Form Structure 📧
+{% include linkedHeading.html heading="Basic Form Structure 📧" level=2 %}
 
 To get started, all you need to do is add a `form` to your site:
 
@@ -53,7 +53,7 @@ Finally, as I mentioned earlier, if you reply, the recipient's address will be f
 
 {% include posts/picture.html img="reply" ext="PNG" alt="Replying to the email auto-fills the recipient's email address." shadow=false %}
 
-## Setting Up a Honeypot Trap for Bots 🍯
+{% include linkedHeading.html heading="Setting Up a Honeypot Trap for Bots 🍯" level=2 %}
 
 While the reCAPTCHA test already provides a solid defense against spam, Formspree also [recommends adding a honeypot input field](https://help.formspree.io/hc/en-us/articles/360013580813-Honeypot-spam-filtering) for safe measure:
 
@@ -78,7 +78,7 @@ input.honeypot {
 }
 ```
 
-## Formspree Free Plan Limitations
+{% include linkedHeading.html heading="Formspree Free Plan Limitations" level=2 %}
 
 The free Formspree plan is a pretty great option for most personal websites that don't expect more than **50 submissions per month**. If you need more than that for your site, you can opt for one of their [paid plans](https://formspree.io/plans).
 
