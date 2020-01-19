@@ -18,7 +18,7 @@ To keep this tutorial simple, I'll assume that you already have:
 1. A way to detect collisions between projectiles/mobs and the player.
 2. A way to hurt the player. Let's call this method `LoseHealth(int amount)`.
 
-## How to Make a Player Flash When Taking Damage (with Coroutines!)
+{% include linkedHeading.html heading="How to Make a Player Flash When Taking Damage (with Coroutines!)" level=2 %}
 
 The naive approach is to run a `for` loop, with an intentional delay between each iteration using deltatime, in your main `Update` loop, and to try to make the player flash in each iteration. But if you do this, you won't actually observe any flashing. Why is that?
 
@@ -26,7 +26,7 @@ In game development, you have to keep in mind that everything happens within a *
 
 Instead, we want to use [coroutines](https://docs.unity3d.com/Manual/Coroutines.html) to implement invincibility frames in Unity. A coroutine is simply a method that will run in parallel to the main update loop and resume where it left off in the next update.
 
-### Invincibility Frames in Unity
+{% include linkedHeading.html heading="Invincibility Frames in Unity" level=3 %}
 
 We'll start by adding this method somewhere in our Player script:
 
@@ -63,7 +63,7 @@ Of course, this doesn't do anything (yet!). You're probably wondering:
 
 All great questions! We'll address each one in turn.
 
-## 1. Losing Health and Becoming Invincible (Starting the Coroutine)
+{% include linkedHeading.html heading="1. Losing Health and Becoming Invincible (Starting the Coroutine)" level=2 %}
 
 Ready for this? It's actually stupidly simple.
 
@@ -92,7 +92,7 @@ First, we [fail-fast](https://softwareengineering.stackexchange.com/a/230460/333
 
 > **Tip**: Is your Player script checking for collisions with hostile entities in the world and self-inflicting damage? If so, rethink your approach. Instead, try having your damage sources check for collision with a designated "enemy" layer. This makes your logic much easier to follow.
 
-## 2. Keep the Coroutine Running for a Set Amount of Time
+{% include linkedHeading.html heading="2. Keep the Coroutine Running for a Set Amount of Time" level=2 %}
 
 Here's what we want:
 
@@ -146,7 +146,7 @@ yield return new WaitForSeconds(delayBetweenInvincibilityFlashes);
 
 We pause coroutines in Unity using `WaitForSeconds` and pass in the number of seconds to wait. In this case, that's the delay beween each flash, which you've hopefully set in your inspector by now.
 
-## 3. Make the Player Flash While Invincible
+{% include linkedHeading.html heading="3. Make the Player Flash While Invincible" level=2 %}
 
 The easiest way to simulate flashing is to repeatedly scale the player's model (or sprite, for 2D) between `0` and `1` during each iteration of the loop. So first, we need to actually get ahold of the player model. We'll add a member for it:
 
@@ -207,11 +207,11 @@ Depending on the numbers you select for `invincibilityDurationSeconds` and `dela
 
 And that's it—you're all set to use invincibility frames in your game!
 
-## Can I Use This Approach in Other Game Engines?
+{% include linkedHeading.html heading="Can I Use This Approach in Other Game Engines?" level=2 %}
 
 Yes and no.
 
-In game engines like Unreal, there is unfortunately no support for coroutines. As an alternative to this approach, you can keep track of the time that has elapsed since invulnerability was initiated using simple deltatime calculations.
+In game engines like Unreal, there is unfortunately no support for coroutines. As an alternative to this approach, you can keep track of the time that has elapsed since invulnerability was initiated, across multiple `Update` frames, using simple deltatime calculations. (This approach differs from the naive one mentioned in the intro.)
 
 Godot, on the other hand, [does have them](https://docs.godotengine.org/en/3.1/getting_started/scripting/gdscript/gdscript_basics.html#coroutines-with-yield).
 
