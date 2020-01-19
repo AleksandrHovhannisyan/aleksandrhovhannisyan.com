@@ -86,21 +86,29 @@ The entire strategy revolves around two key cards—**Darklord Nurse Reficule** 
 > Any effect that would make your opponent gain LP inflicts the same amount of damage to them, instead.
 
 <figure>
-    {% include posts/picture.html img="nurse-burn" ext="PNG" alt="The two main cards in the Nurse Burn strategy." %}
+    {% include posts/picture.html img="nurse-burn" ext="PNG" alt="The main cards in the Nurse Burn strategy: Darklord Nurse Reficule and Bad Reaction to Simochi." %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
 So, do you enjoy pissing off your opponent by dealing effect damage through "healing" cards? Are you willing to tolerate a barrage of explitives when they realize what you're doing? Then by all means, use this deck.
 
-Throw in some stall cards and traps, and you're good to go. **Gift Card** is pretty much guaranteed 3k damage. But my favorite trick is using the trap **Tri-and-Guess**:
+**Gift Card** is pretty much guaranteed 3k damage. But my favorite trick is using the trap **Tri-and-Guess**:
 
 > If each player has an Extra Deck: Declare 1 Extra Deck monster card type (Fusion, Synchro, or Xyz); both players reveal their Extra Deck, and the player who has more cards of the declared card type gains 3000 Life Points.
 
 Pro tip: Load up your Extra Deck with fusions and declare XYZ like a troll. Unless they're running a full Link setup, you're guaranteed to deal 3k damage. You could keep one XYZ in your Extra Deck just so you end up healing yourself if it turns out that they don't have any.
 
-And of course, there's always Upstart Goblin—a free +1 draw, with a bonus 1k damage to your opponent.
+**The Paths of Destiny** is a bit of a gamble since you might end up taking damage if you flip tails, but it's a guaranteed 2k damage for your opponent as long as you have an anti-cure card on the field.
 
-You can also make the deck slightly more consistent by using support cards like **Banishment of the Darklords** and **Condemned Witch** to get Reficule on the field more quickly.
+You can make this deck slightly more consistent by using support cards like **Banishment of the Darklords** and **Condemned Witch** to get Reficule on the field more quickly.
+
+Additionally, even though this is primarily an anti-cure strategy, you can still throw in some burn support cards like these:
+
+{% include posts/picture.html img="burn" ext="PNG" alt="Burn support cards." %}
+
+**Dark Room of Nightmare** deals 300 damage each time your opponent takes damage, which is a nice way to slowly burn them over time. **Chain Energy** requires both players to pay 500 LP each time they want to set/activate cards or effects from their hands, for a bit of added pressure. My personal favorite card, **Dimension Wall**, is like Magic Cylinder but better, since it doesn't target. The other two cards are self-explanatory if you've ever played a burn deck.
+
+If you're crazy and are actually considering running this deck in matches, go ahead and side some copies of **There Can Be Only One** (since the only monster you really need is Darklord Nurse Reficule), **Waking the Dragon**, and any other cheesy traps people are running in this format, like **Trickstar Reincarnation**.
 
 Admittedly, this deck doesn't always work well. But when it does, you'll have some good laughs.
 
