@@ -12,10 +12,12 @@ Let's skip the BS and just jump right in. I'll use VS Code to make my life easie
 Switch to your target project directory and run this command:
 
 ```bash
-npx create-react-app . --typescript
+npx create-react-app . --template typescript
 ```
 
 This uses Facebook's [create-react-app](https://create-react-app.dev/) to initialize a React project with TypeScript. React by itself is pretty powerful, but React with TypeScript is a much, *much* better dev experience, in my opinion.
+
+> **Note**: You may come across older tutorials that simply pass in the `--typescript` flag to this command. That used to work, but [it was recently deprecated](https://github.com/facebook/create-react-app/tree/master/packages/cra-template-typescript). CRA now uses the template flag.
 
 Here's what your directory structure and `package.json` should roughly look like once that's done:
 
@@ -109,7 +111,7 @@ Let's try it out. Open up your `App.tsx` and replace it with the following:
 import React from 'react';
 import { Button } from 'antd';
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <main
       style={{
@@ -161,8 +163,8 @@ module.exports = override(
   addLessLoader({
     javascriptEnabled: true,
     modifyVars: {
-      '@primary-color': '#3c66a3', // customize as needed
-      '@link-color': '#1890ff', // customize as needed
+      '@primary-color': '#f48549', // customize as needed
+      '@link-color': '#e6a07c', // customize as needed
       '@font-size-base': '18px' // customize as needed
     }
   })
@@ -249,7 +251,27 @@ With VS Code's intellisense, you won't have to guess or remind yourself what you
 
 {% include posts/picture.html img="intellisense" ext="PNG" alt="VS Code autocomplete for TypeScript CSS Modules." %}
 
-Awesome! 😎
+Awesome! 😎 Here's what the component file should look like in the end:
+
+{% include posts/codeHeader.html name="src/App.tsx" %}
+{% raw %}
+```jsx
+import React from 'react';
+import { Button } from 'antd';
+import styles from './App.module.less';
+
+const App = () => {
+  return (
+    <main className={styles.app}>
+      <Button type="primary">Hello, Ant Design!</Button>
+      <a href="foo.bar">I'm a link. Click me, please!</a>
+    </main>
+  );
+};
+
+export default App;
+```
+{% endraw %}
 
 Refresh the page, and you'll see that it looks exactly the same, except we now get to take advantage of CSS Modules and LESS (as well as potentially SASS or vanilla CSS, if you'd like to use those instead).
 
@@ -347,7 +369,7 @@ Then, click on `Preferences: Open Settings (JSON)`:
 
 {% include posts/picture.html img="command-palette" ext="PNG" alt="Opening user settings via the VS Code command palette." %}
 
-Stick this in the JSON blob somewhere:
+Stick this somewhere inside the existing JSON blob:
 
 ```json
 "[typescript]": {
