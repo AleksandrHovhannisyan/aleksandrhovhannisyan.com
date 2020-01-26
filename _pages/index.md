@@ -1,7 +1,6 @@
 ---
 title: Home
 permalink: /
-customJS: ["loadPreviewRepoData"]
 ---
 
 <section id="hero-banner">
@@ -14,8 +13,10 @@ customJS: ["loadPreviewRepoData"]
 <section id="featured-projects" class="section">
     <h2 class="heading">Featured Software Projects</h2>
     <div id="project-grid" class="card-grid">
-        <!-- Projects get populated here dynamically (see index.js) -->
-        <div id="preview-placeholder" class="project">
+        {% for project in site.data.projects limit:3 %}
+        {% include projectCard.html project=project %}
+        {% endfor %}
+        <div id="view-more-projects" class="project">
             <a class="button hollow-button" href="/experience/#projects">View more</a>
         </div>
     </div>

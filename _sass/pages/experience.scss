@@ -8,8 +8,11 @@
 
     .project-name {
         align-self: center;
+        color: var(--text-color-emphasis);
         font-size: 1.8rem;
+        font-weight: bold;
         grid-area: heading;
+        @include transition;
     }
 
     .project-icon {
@@ -59,7 +62,7 @@
     }
 
     /* All project cards except the placeholder get a background and box shadow */
-    &:not(#project-placeholder) {
+    &:not(#github-cta) {
         header {
             display: grid;
             grid-template-areas: "heading heading rating";
@@ -67,7 +70,7 @@
     }
 }
 
-#project-placeholder {
+#github-cta {
     display: flex;
     flex-direction: column;
     justify-content: center;

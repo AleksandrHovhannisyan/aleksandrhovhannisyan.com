@@ -36,14 +36,14 @@
         align-items: center;
         background-color: var(--card-bg-color);
         border-radius: 5px;
-        /* Center the content for the hover layer */
+        color: var(--text-color-emphasis);
         display: flex;
         flex-direction: column;
         font-size: 2.2rem;
+        font-weight: bold;
         height: 100%;
         justify-content: center;
         left: 0;
-        /* Opacity = 0 means it's hidden by default */
         opacity: 0;
         /* Note: .card has 'position: relative' set */
         position: absolute;
