@@ -96,9 +96,9 @@ $topnav-min-height: 64px;
             @include transition;
 
             .dark & {
-                background-color: $secondary-color-light;
-                border: 1.3px solid $secondary-color;
-                box-shadow: 0 0 5px 0 lighten($secondary-color-light, 75%);
+                background-color: #a79c87;
+                border: 1.3px solid #635b4b;
+                box-shadow: 0 0 5px 0 lighten(#a79c87, 75%);
                 left: calc(var(--switch-width) - var(--switch-orb-width));
                 right: var(--orb-distance-from-edge);
             }

@@ -42,7 +42,7 @@
         }
     }
 
-    .description {
+    .project-description {
         margin-bottom: 0px;
         margin-top: 0px;
         @include transition;
@@ -195,33 +195,34 @@
         }
 
         .technologies-used {
+            align-items: center;
             display: flex;
             padding-left: 20px;
 
             .tech {
-                border-radius: 5px;
-                font-weight: bold;
-                margin-right: 5px;
-                padding: 5px;
-                @include transition;
+                margin-right: 8px;
             }
 
             .react {
+                //box-shadow: 0 0 2px 0 #007190;
                 @include themed(background-color, rgba($brand-react, 0.2), $brand-react);
-                @include themed(color, #02728f, #0a5c72);
+                @include themed(color, #007190, #142d34);
             }
 
             .typescript {
+                //box-shadow: 0 0 2px 0 $brand-typescript;
                 @include themed(background-color, rgba($brand-typescript, 0.15), $brand-typescript);
                 @include themed(color, lighten($brand-typescript, 10%), #d5d5d5);
             }
 
             .grpc {
+                //box-shadow: 0 0 2px 0 #1e6f70;
                 @include themed(background-color, rgba($brand-grpc, 0.2), $brand-grpc);
                 @include themed(color, #1e6f70, #e3e1e1);
             }
 
             .upwork {
+                //box-shadow: 0 0 2px 0 #2e7611;
                 @include themed(background-color, rgba($brand-upwork, 0.3), #45882a);
                 @include themed(color, #2e7611, #cfcfcf);
             }

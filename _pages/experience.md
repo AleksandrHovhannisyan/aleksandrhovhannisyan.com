@@ -70,7 +70,7 @@ permalink: /experience/
             </ul>
             <footer class="technologies-used">
                 {% for tech in job.tech %}
-                <div class="tech {{tech}}">{{tech}}</div>
+                <div class="tag tech {{tech}}">{{tech}}</div>
                 {% endfor %}
             </footer>
         </section>
