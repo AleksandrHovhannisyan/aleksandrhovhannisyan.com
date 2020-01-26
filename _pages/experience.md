@@ -1,6 +1,5 @@
 ---
 title: Experience
-customJS: ["loadFullRepoData"]
 permalink: /experience/
 ---
 
@@ -9,8 +8,10 @@ permalink: /experience/
 <section id="projects" class="section">
     {% include headingWithImage.html h="Projects" lvl=2 img="/assets/img/folder.png" alt="📁" %}
     <div id="project-grid" class="card-grid">
-        <!-- Projects get populated here dynamically (see index.js) -->
-        <div id="project-placeholder" class="project">
+        {% for project in site.data.projects %}
+        {% include projectCard.html project=project %}
+        {% endfor %}
+        <div id="github-cta" class="project">
             <header>
                 <p><strong>Want to see more of my work?</strong></p>
             </header>

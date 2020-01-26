@@ -1,0 +1,24 @@
+{% assign project = include.project %}
+<div class="card project">
+    <header>
+        <div class="project-name">
+            <span class="project-icon">{{ project.icon }}</span>
+            <span>{{ project.name }}</span>
+        </div>
+        <div class="project-rating">
+            {% include svg.html svg="star" class="star star-filled" %}
+            <span>{{ project.rating }}</span>
+        </div>
+    </header>
+    <p class="project-description">{{ project.description }}</p>
+    <footer class="topics">
+        {% for topic in project.topics %}
+        <div class="topic tag">{{ topic }}</div>
+        {% endfor %}
+    </footer>
+    <a class="container-link" href="{{ project.url }}" target="_blank"></a>
+    <div class="hover-content">
+        Explore on GitHub
+        {% include svg.html svg="external-link" %}
+    </div>
+</div>
