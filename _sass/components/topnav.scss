@@ -31,24 +31,33 @@ $topnav-min-height: 64px;
         justify-content: space-between;
     }
     
-    #logo {
+    #home-link {
         align-items: center;
         background: none;
         display: flex;
         flex-wrap: nowrap;
 
-        img {
+        #logo {
             height: 32px;
+            border-radius: 50%;
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            @include transition;
         }
-    }
 
-    #website-name {
-        margin-left: 5px;
-        width: 230px;
-        @include transition;
+        #website-name {
+            margin-left: 5px;
+            width: 230px;
+            @include transition;
+        }
 
-        &:hover {
-            color: white;
+        &:hover, &:focus {
+            #logo {
+                box-shadow: 0 0 0 2px white;
+            }
+
+            #website-name {
+                color: white;
+            }
         }
     }
 
@@ -145,7 +154,7 @@ $topnav-min-height: 64px;
             @include underlined-link(#ffffff);
             vertical-align: middle;
 
-            &:hover {
+            &:hover, &:focus {
                 color: white;
             }
         }
