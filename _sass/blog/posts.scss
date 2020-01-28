@@ -26,7 +26,7 @@
         flex: 1 1 0;
         @include transition;
 
-        &:hover, &.active-category {
+        &:hover, &:focus, &.active-category {
             cursor: pointer;
             background-color: var(--button-bg-color);
 

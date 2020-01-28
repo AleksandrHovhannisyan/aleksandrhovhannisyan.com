@@ -1,22 +1,30 @@
 'use strict';
 const html = document.documentElement;
 
-// Auto-transition to dark theme, if applicable
 (function() {
   const themeSwitch = document.getElementById('theme-switch');
   themeSwitch.addEventListener('click', toggleColorTheme);
+  // For accessibility, allow users to toggle with Enter
+  themeSwitch.addEventListener('keyup', keyEvent => {
+    if (keyEvent.keyCode === 13) {
+      toggleColorTheme();
+    }
+  });
 })();
+
+function setColorTheme(theme) {
+  html.className = theme;
+  localStorage.setItem('theme', theme);
+}
 
 /** Called when the user clicks the dark mode switch in the top-left of the navbar.
  *  Toggles the document's class to trigger a change in the color themes.
  */
 function toggleColorTheme() {
   if (html.className === 'dark') {
-    html.className = 'light';
-    localStorage.setItem('theme', 'light');
+    setColorTheme('light');
   } else {
-    html.className = 'dark';
-    localStorage.setItem('theme', 'dark');
+    setColorTheme('dark');
   }
 }
 
