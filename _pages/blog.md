@@ -7,6 +7,7 @@ category: all
 ---
 {% for post in site.posts %}
 <div class="card post-preview">
+    <a class="container-link" href="{{ post.url }}"></a>
     <picture class="post-thumbnail">
         <source type="image/webp" srcset="" data-src="/assets/img/posts/{{ post.slug }}/og.webp" >
         <img data-src="/assets/img/posts/{{ post.slug }}/og.PNG" src="" alt="Post thumbnail" />
@@ -17,7 +18,6 @@ category: all
             {% include posts/stats.html target=post %}
         </header>
         <p class="post-description">{{ post.description | truncate: 160 }}</p>
-        <a class="container-link" href="{{ post.url }}"></a>
     </div>
 </div>
 {% endfor %}
