@@ -18,7 +18,7 @@
                 box-shadow $transition-duration, 
                 transform $transition-duration;
 
-    &:hover {
+    &:hover, &:focus {
         box-shadow: 0 5px 13px rgba(0,0,0,0.15), 
                     0 6px 6px rgba(0,0,0,0.15), 
                     0 8px 8px rgba(0,0,0,0.15), 
