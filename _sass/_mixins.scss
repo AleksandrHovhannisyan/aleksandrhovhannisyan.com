@@ -27,7 +27,7 @@
         @include transition;
     }
 
-    &:hover::after {
+    &:hover::after, &:focus::after {
         width: 100%; 
         left: 0;
     }
