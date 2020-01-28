@@ -6,8 +6,8 @@ customJS: ["blogImage"]
 category: all
 ---
 {% for post in site.posts %}
-<div class="card post-preview">
-    <a class="container-link" href="{{ post.url }}"></a>
+<div class="card post-preview" tabindex="0">
+    <a class="container-link" href="{{ post.url }}" tabindex="-1"></a>
     <picture class="post-thumbnail">
         <source type="image/webp" srcset="" data-src="/assets/img/posts/{{ post.slug }}/og.webp" >
         <img data-src="/assets/img/posts/{{ post.slug }}/og.PNG" src="" alt="Post thumbnail" />

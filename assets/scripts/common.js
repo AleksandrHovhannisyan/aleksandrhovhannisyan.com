@@ -62,3 +62,12 @@ function hideMobileMenuOnAnchorClick() {
     navbarHamburger.click();
   }
 }
+
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('keyup', event => {
+    if (event.keyCode === 13) {
+      const url = card.querySelector('.container-link');
+      window.open(url.getAttribute('href'), '_self');
+    }
+  });
+})
