@@ -141,8 +141,13 @@ $topnav-min-height: 64px;
         top: 20px;
         @include transition;
 
-        .active-nav-link {
+        #active-nav-link {
             color: white;
+
+            // Force the underline
+            &::after {
+                width: 100%;
+            }
         }
 
         li {
@@ -171,10 +176,6 @@ $topnav-min-height: 64px;
 @media only screen and (min-width: 670px) {
 
     #topnav {
-        #theme-switch {
-            margin-left: 40px;
-        }
-
         .nav-links {
             align-items: center;
             box-shadow: none;
@@ -200,11 +201,18 @@ $topnav-min-height: 64px;
             position: static;
     
             li {
-                margin: 0;
+                height: $topnav-min-height;
+                margin: 0 0 0 40px;
             }
     
             a {
-                margin-left: 40px;
+                display: flex;
+                align-items: center;
+                height: 100%;
+
+                &::after {
+                    bottom: 12px;
+                }
             }
         }
     
