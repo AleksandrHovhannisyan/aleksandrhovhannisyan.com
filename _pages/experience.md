@@ -54,7 +54,7 @@ permalink: /experience/
         {% endfor %}
     </div>
 </section>
-<section id="work" class="section">
+<section id="work-experience" class="section">
     {% include headingWithImage.html h="Work Experience" lvl=2 img="/assets/img/briefcase.png" alt="💼" %}
     <section class="card-grid">
     {% for job in site.data.work %}
