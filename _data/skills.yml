@@ -1,5 +1,5 @@
 - category: Programming Languages
-  items:
+  skills:
     - name: C++
       rating: 5
     - name: Python
@@ -12,10 +12,10 @@
       rating: 3
 
 - category: Frontend & Backend
-  items:
+  skills:
     - name: HTML5
       rating: 5
-    - name: CSS/SASS/LESS
+    - name: CSS/SCSS/LESS
       rating: 5
     - name: React (+Ant Design)
       rating: 5
@@ -25,7 +25,7 @@
       rating: 3
 
 - category: Software Development
-  items:
+  skills:
     - name: OOP
       rating: 5
     - name: Debugging
@@ -42,7 +42,7 @@
       rating: 3
 
 - category: Operating Systems
-  items:
+  skills:
     - name: Windows (7-10)
       rating: 5
     - name: Linux (Ubuntu)
@@ -55,7 +55,7 @@
       rating: 4
 
 - category: IDEs and Editors
-  items:
+  skills:
     - name: VS Code
       rating: 5
     - name: Visual Studio
@@ -66,7 +66,7 @@
       rating: 3
 
 - category: Collaboration
-  items:
+  skills:
     - name: Git, GitHub
       rating: 5
     - name: Slack
@@ -79,7 +79,7 @@
       rating: 3
 
 - category: Languages
-  items:
+  skills:
     - name: English
       rating: 5
     - name: Armenian
@@ -88,7 +88,7 @@
       rating: 3
 
 - category: Other
-  items:
+  skills:
     - name: Copy editing
       rating: 5
     - name: Technical writing

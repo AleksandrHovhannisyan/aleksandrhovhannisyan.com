@@ -25,26 +25,26 @@ permalink: /experience/
 <section id="skills" class="section">
     {% include headingWithImage.html h="Skills and Abilities" lvl=2 img="/assets/img/juggler.png" alt="🤹" %}
     <div id="skill-grid">
-        {% for skill in site.data.skills %}
+        {% for item in site.data.skills %}
         <div>
-            <h3 class="skill-category">{{ skill.category }}</h3>
-            {% for item in skill.items %}
+            <h3 class="skill-category">{{ item.category }}</h3>
+            {% for skill in item.skills %}
             <div class="skill-item">
-                <span class="skill-name">{{ item.name }}</span>
+                <span class="skill-name">{{ skill.name }}</span>
                 <div class="skill-rating">
-                    {% for i in (1..item.rating) %}
+                    {% for i in (1..skill.rating) %}
                     {% include svg.html svg="star" class="star star-filled" %}
                     {% endfor %}
-                    {% assign j = item.rating | plus: 1 %}
+                    {% assign j = skill.rating | plus: 1 %}
                     {% for i in (j..5) %}
                     {% include svg.html svg="star" class="star star-empty" %}
                     {% endfor %}
                     {% assign rating = '' %}
-                    {% if item.rating == 1 %}{% assign rating = 'Familiar' %}
-                    {% elsif item.rating == 2 %}{% assign rating = 'Basic' %}
-                    {% elsif item.rating == 3 %}{% assign rating = 'Intermediate' %}
-                    {% elsif item.rating == 4 %}{% assign rating = 'Competent' %}
-                    {% elsif item.rating == 5 %}{% assign rating = 'Advanced' %}
+                    {% if skill.rating == 1 %}{% assign rating = 'Familiar' %}
+                    {% elsif skill.rating == 2 %}{% assign rating = 'Basic' %}
+                    {% elsif skill.rating == 3 %}{% assign rating = 'Intermediate' %}
+                    {% elsif skill.rating == 4 %}{% assign rating = 'Competent' %}
+                    {% elsif skill.rating == 5 %}{% assign rating = 'Advanced' %}
                     {% endif %}
                     {% include tooltip.html position='top' text=rating %}
                 </div>
