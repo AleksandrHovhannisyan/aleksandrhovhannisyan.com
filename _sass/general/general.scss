@@ -111,13 +111,10 @@ h1 {
 }
 
 a {
+    color: var(--link-color);
+    font-weight: bold;
     text-decoration: none;
-
-    &, blockquote & {
-        color: var(--link-color);
-        font-weight: bold;
-        @include transition;
-    }
+    @include transition;
 }
 
 p {
@@ -152,7 +149,7 @@ hr {
     @include transition;
 }
 
-#error {
+#page-not-found {
     align-items: center;
     animation: backgroundScroll 40s linear infinite;
     animation-fill-mode: forwards;
