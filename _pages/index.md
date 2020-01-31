@@ -17,7 +17,7 @@ permalink: /
         {% include projectCard.html project=project %}
         {% endfor %}
         <div id="view-more-projects" class="project">
-            <a class="button hollow-button" href="/experience/#projects">View more</a>
+            <a class="button hollow-button arrow-button" href="/experience/#projects">View more</a>
         </div>
     </div>
 </section>
