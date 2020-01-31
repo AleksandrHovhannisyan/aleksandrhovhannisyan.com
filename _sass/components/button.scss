@@ -18,3 +18,20 @@
 .hollow-button {
     @include hollow-button(var(--card-bg-color), var(--button-bg-color));
 }
+
+.arrow-button {    
+    &::after {
+        font-size: 25px;
+        font-weight: bold;
+        margin-left: 10px;
+        content: "→";
+        transform: translateX(0);
+        transition: transform 0.2s ease-in-out;
+    }
+    
+    &:hover {
+        &::after {
+            transform: translateX(5px);
+        }
+    }
+}
