@@ -39,19 +39,21 @@
     border: 3px solid $bgColor;
 
     &:focus, &:hover {
-        background-color: $textColor;
-        color: $bgColor;
+        background-color: var(--button-bg-hover-color);
+        border: 3px solid var(--button-bg-hover-color);
+        outline: none;
     }
 }
 
 @mixin hollow-button($bgColor, $textColor) {
     background-color: $bgColor;
     color: $textColor;
-    border: 3px solid $textColor;
+    border: 2px solid $textColor;
+    box-shadow: 0 0 0 0 $textColor;
 
     &:focus, &:hover {
-        background-color: $textColor;
-        color: $bgColor;
+        box-shadow: 0 0 0 2px $textColor;
+        outline: none;
     }
 }
 
