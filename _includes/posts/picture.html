@@ -4,11 +4,10 @@
     <source 
         srcset="/assets/img/posts/placeholder.webp" 
         type="image/webp" 
-        data-src="/assets/img/posts/{{ page.slug }}/{{ img }}.webp"
-        {% unless include.shadow == false %}class="img-with-shadow"{% endunless %} >
+        data-src="/assets/img/posts/{{ page.slug }}/{{ img }}.webp">
     <img 
          src="/assets/img/posts/placeholder.PNG"
          alt="{{ include.alt }}" 
-         data-src="/assets/img/posts/{{ page.slug }}/{{ img }}.webp"
+         data-src="/assets/img/posts/{{ page.slug }}/{{ img }}.{{ ext }}"
          {% unless include.shadow == false %}class="img-with-shadow"{% endunless %} />
 </picture>
