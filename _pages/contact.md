@@ -11,11 +11,11 @@ permalink: /contact/
     <div id="contact-information">
         <form action="https://formspree.io/aleksandrhovhannisyan.github.io@gmail.com" method="POST" spellcheck="false">
             <input type="hidden" name="_subject" value="Someone sent you a message!" />
-            <label class="required" for="name"><strong>Name</strong></label>
+            <label class="required" for="name">Name</label>
             <input type="text" name="name" id="name" required>
-            <label for="email"><strong>Email</strong></label>
+            <label for="email">Email</label>
             <input type="email" name="_replyto" id="email"/>
-            <label class="required" for="message"><strong>Message</strong></label>
+            <label class="required" for="message">Message</label>
             <textarea name="body" id="message" required></textarea>
             <input type="submit" value="Send message" class="button solid-button">
             <input type="text" name="_gotcha" class="honeypot" />

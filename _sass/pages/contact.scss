@@ -58,8 +58,11 @@ form {
     }
 
     label {
+        color: var(--text-color-emphasis);
         display: block;
+        font-weight: bold;
         margin-bottom: 5px;
+        @include transition(color);
 
         &.required::after {
             color: var(--link-color);
