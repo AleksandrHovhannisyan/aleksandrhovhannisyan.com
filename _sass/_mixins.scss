@@ -48,7 +48,7 @@
 @mixin hollow-button($bgColor, $textColor) {
     background-color: $bgColor;
     color: $textColor;
-    border: 2px solid $textColor;
+    border: 3px solid $textColor;
     box-shadow: 0 0 0 0 $textColor;
 
     &:focus, &:hover {
