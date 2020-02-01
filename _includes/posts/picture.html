@@ -1,11 +1,13 @@
 {% assign ext = include.ext %}
 {% assign img = include.img %}
 <picture>
-    <source type="image/webp" 
-            srcset="" 
-            data-src="/assets/img/posts/{{ page.slug }}/{{ img }}.webp"
-            {% unless include.shadow == false %}class="img-with-shadow"{% endunless %} >
-    <img src="" 
+    <source 
+        srcset="/assets/img/posts/placeholder.webp" 
+        type="image/webp" 
+        data-src="/assets/img/posts/{{ page.slug }}/{{ img }}.webp"
+        {% unless include.shadow == false %}class="img-with-shadow"{% endunless %} >
+    <img 
+         src="/assets/img/posts/placeholder.PNG"
          alt="{{ include.alt }}" 
          data-src="/assets/img/posts/{{ page.slug }}/{{ img }}.webp"
          {% unless include.shadow == false %}class="img-with-shadow"{% endunless %} />
