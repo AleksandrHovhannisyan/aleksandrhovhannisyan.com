@@ -80,18 +80,17 @@ permalink: /experience/
 <section id="education" class="section">
     {% include headingWithImage.html h="Education" lvl=2 img="/assets/img/graduation-cap.png" alt="🎓" %}
     {% for institution in site.data.education %}
-    <div class="institution collapsible">
-        <div class="collapsible-header">
-            {% include svg.html svg="angle-down" %}
-            <span>
-                <strong>{{ institution.name }}<br></strong>
-                {{ institution.degree }}<br>
-                {{ institution.gpa }} GPA, {{ institution.years }}
-            </span>
-        </div>
-        <div class="collapsible-content">
+    <div class="institution collapsible collapsible-closed">
+        <header class="collapsible-header" tabindex="0">
+            <div>
+                <div class="institution-name">{{ institution.name }}</div>
+                <div class="institution-degree">{{ institution.degree }}</div>
+                <div class="institution-details">{{ institution.gpa }} GPA, {{ institution.years }}</div>
+            </div>
+        </header>
+        <div class="collapsible-content" aria-hidden="true">
             <div class="courses">
-                <h3><em>Notable Coursework</em></h3>
+                <h3>Notable Coursework</h3>
                 <ul>
                     {% for course in institution.courses %}
                     <li>{{ course }}</li>
@@ -99,7 +98,7 @@ permalink: /experience/
                 </ul>
             </div>
             <div class="awards">
-                <h3><em>Awards and Recognitions</em></h3>
+                <h3>Awards and Recognitions</h3>
                 <ul>
                     {% for award in institution.awards %}
                     <li>{{ award }}</li>

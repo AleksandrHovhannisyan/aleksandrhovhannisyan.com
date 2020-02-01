@@ -7,45 +7,50 @@
     margin-top: 20px;
     outline: none;
     width: 100%;
-}
 
-.collapsible-header {
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    display: flex;
-    flex-direction: row;
-    padding: 10px;
-    @include transition;
-
-    * {
-        align-self: center;
+    &.collapsible-closed {
+        .collapsible-header::before {
+            transform: rotate(45deg);
+        }
     }
 
-    svg {
-        @include transition;
-        margin-left: 10px;
-        margin-right: 20px;
-        width: 18px; 
+    &.collapsible-open {
+        .collapsible-header::before {
+            transform: rotate(-135deg);
+        }
     }
 }
 
 .collapsible-header {
     background-color: var(--button-bg-color);
+    border: none;
+    cursor: pointer;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    @include transition;
 
     &, * {
         @include transition;
         @include themed(color, white, black);
-        @include themed(fill, white, black);
     }
 
-    &:hover {
+    &:hover, &:focus {
         background-color: var(--button-bg-hover-color);
     }
-}
 
-.collapsible-header {
-    border: none;
-    cursor: pointer;
+    &::before {
+        content: "";
+        border: solid;
+        border-width: 0 2px 2px 0;
+        margin-left: 15px;
+        margin-right: 25px;
+        padding: 3px;
+        display: inline-block;
+        @include transition(transform);
+    }
 }
 
 .collapsible-content {

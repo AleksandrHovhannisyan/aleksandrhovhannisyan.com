@@ -1,36 +1,51 @@
-(function registerCollapsibleClickHandlers() {
-  const collapsibles = document.getElementsByClassName('collapsible-header');
-  for (const collapsible of Array.from(collapsibles)) {
-    collapsible.addEventListener('click', toggleCollapsible);
-  }
+(function() {
+  const collapsibles = document.querySelectorAll('.collapsible');
+
+  collapsibles.forEach(collapsible => {
+    const header = collapsible.querySelector('.collapsible-header');
+    header.addEventListener('click', toggleCollapsible);
+    header.addEventListener('keyup', event => {
+      if (event.keyCode === 13) {
+        toggleCollapsible(event);
+      }
+    });
+
+    // Because all collapsibles are closed by default
+    disableContentAnchorFocus(collapsible);
+  });
 })();
 
-const ANGLE_UP =
-  'M1395 1184q0 13-10 23l-50 50q-10 10-23 10t-23-10l-393-393-393 393q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l466-466q10-10 23-10t23 10l466 466q10 10 10 23z';
-const ANGLE_DOWN =
-  'M1395 736q0 13-10 23l-466 466q-10 10-23 10t-23-10l-466-466q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l393 393 393-393q10-10 23-10t23 10l50 50q10 10 10 23z';
+function disableContentAnchorFocus(collapsible) {
+  collapsible.querySelectorAll('a').forEach(anchor => {
+    anchor.setAttribute('tabindex', '-1');
+  });
+}
 
-/** Called when the user clicks on a collapsible element (accordion). Expands or
- *  collapses the button accordingly, and also updates the collapsible's icon.
+function enableContentAnchorFocus(collapsible) {
+  collapsible.querySelectorAll('a').forEach(anchor => {
+    anchor.setAttribute('tabindex', '0');
+  });
+}
+
+/** Called when a user clicks on a collapsible element's header.
+ * Toggles the visibility of the collapsible's content.
  */
-function toggleCollapsible() {
-  const content = this.parentElement.querySelector('.collapsible-content');
-  const svg = this.querySelector('svg');
-
-  // Must use computed style for initial check; it's set to 0px in style.css, not as an inline style
-  const collapsibleIsBeingOpened =
-    getComputedStyle(content).maxHeight === '0px';
-  let angle = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+function toggleCollapsible(event) {
+  // Need to reference this.parentElement because the header is what's being clicked
+  const collapsible = event.target.parentElement;
+  const content = collapsible.querySelector('.collapsible-content');
+  const collapsibleIsBeingOpened = collapsible.classList.contains('collapsible-closed');
 
   if (collapsibleIsBeingOpened) {
+    collapsible.classList.replace('collapsible-closed', 'collapsible-open');
     content.style.maxHeight = content.scrollHeight + 'px';
-    angle.setAttributeNS(null, 'd', ANGLE_UP);
     content.scrollIntoView(true);
+    content.setAttribute('aria-hidden', false);
+    enableContentAnchorFocus(collapsible);
   } else {
+    collapsible.classList.replace('collapsible-open', 'collapsible-closed');
     content.style.maxHeight = '0px';
-    angle.setAttributeNS(null, 'd', ANGLE_DOWN);
+    content.setAttribute('aria-hidden', true);
+    disableContentAnchorFocus(collapsible);
   }
-
-  svg.innerHTML = '';
-  svg.appendChild(angle);
 }

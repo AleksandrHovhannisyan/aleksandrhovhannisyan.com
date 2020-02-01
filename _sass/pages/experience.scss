@@ -237,6 +237,10 @@
         @include underlined-link;
     }
 
+    .institution-name {
+        font-weight: bold;
+    }
+
     .collapsible-content {
         display: grid;
         /* Mobile first: only one column. Changes to two columns on bigger screens. See media query below. */
@@ -263,6 +267,12 @@
         
         p {
             padding-left: 10px;
+        }
+
+        .courses, .awards {
+            h3 {
+                font-style: italic;
+            }
         }
 
         .awards {
