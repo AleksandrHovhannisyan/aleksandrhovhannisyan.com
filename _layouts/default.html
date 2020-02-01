@@ -28,7 +28,11 @@
         {% endif %}
         <title>{{ page.title }} | Aleksandr Hovhannisyan</title>
         <!-- Load the user's last selected theme -->
-        <script>document.documentElement.className = localStorage.getItem('theme');</script>
+        <script>
+            if (localStorage.getItem('theme')) {
+                document.documentElement.className = localStorage.getItem('theme');
+            }
+        </script>
     </head>
     <body>
         <header>
