@@ -92,8 +92,6 @@
     grid-template-rows: 200px auto;
 
     .post-thumbnail {
-        align-self: center;
-
         img {
             height: 200px;
             width: 100%;
@@ -113,6 +111,32 @@
             margin-bottom: 0px;
             margin-top: 0px;
         }
+    }
+}
+
+.lazy-loaded-picture {
+    position: relative;
+    overflow: hidden;
+
+    .placeholder {
+        position: relative;
+        width: 100%;
+        filter: blur(10px);
+        transform: scale(1);
+    }
+
+    .real-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        transition: opacity 0.8s linear;
+    }
+
+    .loaded {
+        opacity: 1;
     }
 }
 

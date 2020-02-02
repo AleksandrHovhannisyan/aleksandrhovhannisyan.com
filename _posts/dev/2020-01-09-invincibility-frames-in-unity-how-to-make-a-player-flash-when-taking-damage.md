@@ -112,7 +112,7 @@ private float delayBetweenInvincibilityFlashes;
 
 You'll need to initialize these two members via the Inspector pane:
 
-{% include posts/picture.html img="inspector" ext="PNG" alt="Initializing serialized fields via the inspector pane in Unity." shadow=false %}
+{% include posts/picture.html img="inspector" ext="JPG" alt="Initializing serialized fields via the inspector pane in Unity." shadow=false %}
 
 Once you've done that, use them in the coroutine to run a simple loop:
 
@@ -136,7 +136,7 @@ private IEnumerator BecomeTemporarilyInvincible()
 
 I find that a duration of `1.5 s` works best, with the delay set to `0.15 s`. This means the loop will run `1.5 / 0.15 = 10` times. Since the player model transitions between two states (visible/invisible) across 10 iterations, you'll observe that there are `10 / 2 = 5` flashes in total:
 
-{% include posts/picture.html img="flashes" ext="PNG" alt="The number of flashes that occur with those settings." %}
+{% include posts/picture.html img="flashes" ext="JPG" alt="The number of flashes that occur with those settings." %}
 
 The key part here is the loop, especially the following line:
 
@@ -157,7 +157,7 @@ private GameObject model;
 
 **Note**: For this tutorial to work, the Player should consist of a root object (e.g., `MainPlayer`) that has a collision box and the Player script attached to it. Nested under that object should be the player's model (e.g., `Model`) as a separate object:
 
-{% include posts/picture.html img="model" ext="PNG" alt="The object hierarchy of the player." shadow=false %}
+{% include posts/picture.html img="model" ext="JPG" alt="The object hierarchy of the player." shadow=false %}
 
 **This is important**! You should not use the root player object as the model. If you do, this could lead to some very game-breaking bugs, as scaling the root object would also scale the player's collider.
 
