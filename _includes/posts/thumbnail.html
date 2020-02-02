@@ -1,0 +1,12 @@
+{% assign post = include.post %}
+<picture class="lazy-loaded-picture post-thumbnail">
+    <source 
+        type="image/webp" 
+        srcset="/assets/img/posts/{{ post.slug }}/og-placeholder.webp" 
+        data-src="/assets/img/posts/{{ post.slug }}/og.webp" >
+    <img 
+        data-src="/assets/img/posts/{{ post.slug }}/og.JPG" 
+        src="/assets/img/posts/{{ post.slug }}/og-placeholder.JPG" 
+        alt="Post thumbnail" 
+        class="placeholder" />
+</picture>

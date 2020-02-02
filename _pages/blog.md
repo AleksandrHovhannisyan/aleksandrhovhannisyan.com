@@ -8,10 +8,7 @@ category: all
 {% for post in site.posts %}
 <div class="card post-preview" tabindex="0">
     <a class="container-link" href="{{ post.url }}" tabindex="-1"></a>
-    <picture class="post-thumbnail">
-        <source type="image/webp" srcset="/assets/img/posts/placeholder.webp" data-src="/assets/img/posts/{{ post.slug }}/og.webp" >
-        <img data-src="/assets/img/posts/{{ post.slug }}/og.PNG" src="/assets/img/posts/placeholder.PNG" alt="Post thumbnail" />
-    </picture>
+    {% include posts/thumbnail.html post=post %}
     <div class="post-preview-body">
         <header>
             <h3 class="post-title">{{ post.title }}</h3>

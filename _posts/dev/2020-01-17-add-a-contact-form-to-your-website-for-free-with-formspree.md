@@ -39,19 +39,19 @@ Let's clarify some of the input attributes:
 
 The form's `action` attribute is the **Formspree endpoint** that I mentioned earlier; it's where the form data is going to be sent when it's submitted. As I noted earlier, to associate this endpoint with your email address, you just have to make a one-time mock submission from your live website (not from your local). Once you do that, you'll be notified that this form needs to be activated:
 
-{% include posts/picture.html img="activation-required" ext="PNG" alt="Formspree activation required." shadow=false %}
+{% include posts/picture.html img="activation-required" ext="JPG" alt="Formspree activation required." shadow=false %}
 
 > **Note**: Don't use your personal email address, as you'll have to expose that to the public in your form's markup. Instead, set up a dedicated email address for your website if you don't already have one.
 
 And here's the email you'll receive from Formspree:
 
-{% include posts/picture.html img="activation-email" ext="PNG" alt="Acivation email from Formspree." shadow=false %}
+{% include posts/picture.html img="activation-email" ext="JPG" alt="Acivation email from Formspree." shadow=false %}
 
 Again, it's important to make the mock submission from your *live* website and not from your local. It's not like doing it from your local will break anything—it's just that you'll still need to activate the form on the live website in order for it to work properly.
 
 When a user submits a message, they'll have to pass a reCAPTCHA test. You'll then get an email from Formspree with a summary of the user's submission:
 
-{% include posts/picture.html img="email" ext="PNG" alt="A sample user submission to Formspree." shadow=false %}
+{% include posts/picture.html img="email" ext="JPG" alt="A sample user submission to Formspree." shadow=false %}
 
 Notice that the subject line of this email is whatever I specified for the hidden `_subject` input. In this case, that's "Someone sent you a message!"
 
@@ -62,7 +62,7 @@ There are two useful links down at the bottom:
 
 Finally, as I mentioned earlier, if you reply, the recipient's address will be filled in automatically:
 
-{% include posts/picture.html img="reply" ext="PNG" alt="Replying to the email auto-fills the recipient's email address." shadow=false %}
+{% include posts/picture.html img="reply" ext="JPG" alt="Replying to the email auto-fills the recipient's email address." shadow=false %}
 
 {% include linkedHeading.html heading="Setting Up a Honeypot Trap for Bots 🍯" level=2 %}
 
@@ -74,7 +74,7 @@ While the reCAPTCHA test already provides a solid defense against spam, Formspre
 
 When a <s>bear</s> bot comes along and sticks its head where it doesn't belong, it'll be stuck. 
 
-{% include posts/picture.html img="honeypot" ext="PNG" alt="Pooh Bear with his head stuck in a honey pot." shadow=false %}
+{% include posts/picture.html img="honeypot" ext="JPG" alt="Pooh Bear with his head stuck in a honey pot." shadow=false %}
 
 You should give this a class and set the display to none so it doesn't confuse your human users:
 

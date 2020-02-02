@@ -34,7 +34,7 @@ Of all the support cards that you can throw into this mix, my favorite is the qu
 This lets you easily bring out **Masked HERO Dark Law** to put a bit more pressure on your opponent, with the added bonus of potentially discarding something like a Mezuki or Wightprince for the cost.
 
 <figure>
-    {% include posts/picture.html img="skulls-support" ext="PNG" alt="Key cards in the Skull Servants archetype." %}
+    {% include posts/picture.html img="skulls-support" ext="JPG" alt="Key cards in the Skull Servants archetype." %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
@@ -51,7 +51,7 @@ We're going back with this one—*way* back. Gravekeeper's is [one of the oldest
 > All "Gravekeeper's" monsters gain 500 ATK and DEF. Cards in the Graveyard cannot be banished. Negate any card effect that would move a card in the Graveyard to a different place. Negate any card effect that changes Types or Attributes in the Graveyard.
 
 <figure>
-    {% include posts/picture.html img="gravekeepers" ext="PNG" alt="Some of the key cards of the Gravekeeper's archetype." %}
+    {% include posts/picture.html img="gravekeepers" ext="JPG" alt="Some of the key cards of the Gravekeeper's archetype." %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
@@ -64,7 +64,7 @@ But the archetype is even better now. About a year ago, the fusion spellcaster *
 This came along with two more support cards, **Gravekeeper's Spiritualist** and **Gravekeeper's Headman**:
 
 <figure>
-    {% include posts/picture.html img="gravekeepers-support" ext="PNG" alt="New Gravekeeper's support cards." %}
+    {% include posts/picture.html img="gravekeepers-support" ext="JPG" alt="New Gravekeeper's support cards." %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
@@ -86,7 +86,7 @@ The entire strategy revolves around two key cards—**Darklord Nurse Reficule** 
 > Any effect that would make your opponent gain LP inflicts the same amount of damage to them, instead.
 
 <figure>
-    {% include posts/picture.html img="nurse-burn" ext="PNG" alt="The main cards in the Nurse Burn strategy: Darklord Nurse Reficule and Bad Reaction to Simochi." %}
+    {% include posts/picture.html img="nurse-burn" ext="JPG" alt="The main cards in the Nurse Burn strategy: Darklord Nurse Reficule and Bad Reaction to Simochi." %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
@@ -104,7 +104,7 @@ You can make this deck slightly more consistent by using support cards like **Ba
 
 Additionally, even though this is primarily an anti-cure strategy, you can still throw in some burn support cards like these:
 
-{% include posts/picture.html img="burn" ext="PNG" alt="Burn support cards." %}
+{% include posts/picture.html img="burn" ext="JPG" alt="Burn support cards." %}
 
 **Dark Room of Nightmare** deals 300 damage each time your opponent takes damage, which is a nice way to slowly burn them over time. **Chain Energy** requires both players to pay 500 LP each time they want to set/activate cards or effects from their hands, for a bit of added pressure. My personal favorite card, **Dimension Wall**, is like Magic Cylinder but better, since it doesn't target. The other two cards are self-explanatory if you've ever played a burn deck.
 
@@ -117,7 +117,7 @@ Admittedly, this deck doesn't always work well. But when it does, you'll have so
 Blackwings are a balanced and consistent archetype, making them a good option for a non-meta deck. They have great draw power with spells like **Black Whirlwind** and **Allure of Darkness**. All of the main Blackwing monsters have good summoning potential and synergy. And you even have hand traps like **Blackwing - Kalut the Moon Shadow** to run over bigger foes or keep your monsters alive in battle.
 
 <figure>
-    {% include posts/picture.html img="blackwing" ext="PNG" alt="Monsters from the Blackwing archetype." %}
+    {% include posts/picture.html img="blackwing" ext="JPG" alt="Monsters from the Blackwing archetype." %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 

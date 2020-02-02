@@ -221,7 +221,7 @@ Finally, we'll style the triggers:
 
 And we're done! You can temporarily set `modal1` to be visible by manually adding `modal-visible` to its class list. Here's what the modal should look like:
 
-{% include posts/picture.html img="modal" ext="PNG" alt="One of the modals we created, with its slightly opaque background." shadow=false %}
+{% include posts/picture.html img="modal" ext="JPG" alt="One of the modals we created, with its slightly opaque background." shadow=false %}
 
 {% include linkedHeading.html heading="Adding the JavaScript" level=2 %}
 

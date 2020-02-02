@@ -84,7 +84,7 @@ This leaves room for other, more specialized classes to determine the background
 
 This is what we'll be building:
 
-{% include posts/picture.html img="buttons" ext="PNG" alt="Composable buttons" shadow=false %}
+{% include posts/picture.html img="buttons" ext="JPG" alt="Composable buttons" shadow=false %}
 
 There are seven classes at play here:
 
@@ -176,7 +176,7 @@ body {
 
 Nothing fancy here—I just set up a grid for the buttons, some colors, and the font.
 
-{% include posts/picture.html img="unstyled" ext="PNG" alt="An unstyled grid of buttons" shadow=false %}
+{% include posts/picture.html img="unstyled" ext="JPG" alt="An unstyled grid of buttons" shadow=false %}
 
 Things look pretty naked at this point, but that's about to change.
 
@@ -197,7 +197,7 @@ As I mentioned earlier, we want the base button class to only define the charact
 
 And here's the result:
 
-{% include posts/picture.html img="button-style" ext="PNG" alt="Buttons with the button class enabled" shadow=false %}
+{% include posts/picture.html img="button-style" ext="JPG" alt="Buttons with the button class enabled" shadow=false %}
 
 These don't look like buttons yet, and that's the point. The `button` class only defines the minimum set of characteristics common to all buttons.
 
@@ -238,7 +238,7 @@ In the first two rows, we have some old-fashioned solid buttons. What should tho
 
 Let's check out the result:
 
-{% include posts/picture.html img="solid-buttons" ext="PNG" alt="Solid buttons" shadow=false %}
+{% include posts/picture.html img="solid-buttons" ext="JPG" alt="Solid buttons" shadow=false %}
 
 ### 4. Hollow Buttons! 🔲
 
@@ -281,7 +281,7 @@ If the previous section made sense, then this one should be fairly straightforwa
 }
 ```
 
-{% include posts/picture.html img="hollow-buttons" ext="PNG" alt="Hollow buttons" shadow=false %}
+{% include posts/picture.html img="hollow-buttons" ext="JPG" alt="Hollow buttons" shadow=false %}
 
 We're almost there!
 
@@ -305,7 +305,7 @@ Let's decorate some of our buttons with arrows that move when you hover over the
 
 Here's the final result:
 
-{% include posts/picture.html img="buttons" ext="PNG" alt="Composable buttons" shadow=false %}
+{% include posts/picture.html img="buttons" ext="JPG" alt="Composable buttons" shadow=false %}
 
 ## More Examples of Composable CSS
 
