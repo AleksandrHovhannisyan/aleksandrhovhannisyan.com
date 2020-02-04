@@ -4,8 +4,10 @@
       rating: 5
     - name: Python
       rating: 5
-    - name: TypeScript (ES6)
+    - name: JavaScript (ES6+)
       rating: 5
+    - name: TypeScript
+      rating: 4
     - name: Kotlin
       rating: 4
     - name: C# (Unity)
