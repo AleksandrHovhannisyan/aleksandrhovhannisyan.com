@@ -20,9 +20,6 @@ function preloadImage(placeholderImg) {
   sourceElement.srcset = sourceElement.getAttribute('data-src');
   
   realImg.onload = function() {
-    // Transitions opacity from 0 to 1 smoothly
-    realImg.classList.add('loaded');
-
     // Open the image if it's clicked
     realImg.addEventListener('click', clickEvent => {
       const src = clickEvent.target.src;
@@ -30,14 +27,14 @@ function preloadImage(placeholderImg) {
     });
 
     setTimeout(() => { 
-      // We don't need the placeholder anymore
+      // We don't need the placeholder anymore, so remove it after a short delay
       placeholderImg.remove();
       // Need this or else the `picture` will disappear
       realImg.style.position = 'relative';
       // For images with shadows; set to hidden initially to prevent the placeholder
       // from showing up behind the real image
       pictureElement.style.overflow = 'visible';
-    }, 800);
+    }, 500);
     
   }
 }
