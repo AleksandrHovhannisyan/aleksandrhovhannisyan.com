@@ -32,13 +32,11 @@ defaults:
     scope:
       path: "_posts/dev"
     values:
-      needsCodeFont: true
       categories: [Dev]
   -
     scope:
       path: "_posts/cs101"
     values:
-      needsCodeFont: true
       categories: [CS101]
   -
     scope:
