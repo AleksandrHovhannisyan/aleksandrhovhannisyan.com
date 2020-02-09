@@ -1,9 +1,7 @@
 @import 'mixins';
-@import 'fonts';
 
 .collapsible {    
     border: none;
-    font-family: $font-family-primary, $font-family-backup;
     margin-top: 20px;
     outline: none;
     width: 100%;

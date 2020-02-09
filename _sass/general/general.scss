@@ -1,6 +1,5 @@
 @import 'mixins';
 @import 'settings';
-@import 'fonts';
 
 ::selection {
     background-color: var(--selection-bg-color);
@@ -38,7 +37,7 @@ body {
     background-color: var(--main-bg-color);
     color: var(--text-color-normal);
     display: grid;
-    font-family: $font-family-primary, $font-family-backup;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;;
     font-size: $font-size;
     grid-template-rows: 1fr 80px;
     line-height: $line-height;
@@ -90,6 +89,7 @@ strong {
     color: var(--text-color-emphasis);
     line-height: 1.4;
     margin-bottom: 0.5em;
+    font-weight: 600;
     @include transition;
 }
 
@@ -112,7 +112,7 @@ h1 {
 
 a {
     color: var(--link-color);
-    font-weight: bold;
+    font-weight: 500;
     text-decoration: none;
     @include transition;
 }

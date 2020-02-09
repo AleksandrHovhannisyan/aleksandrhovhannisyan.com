@@ -44,7 +44,7 @@ However, I'd like to use this problem to introduce something called the **finite
 
 We'll look at two approaches to this problem. Let's get to it!
 
-{% include linkedHeading.html heading="Approach #1: Using a State Transition Table (Map)" level=3 %}
+{% include linkedHeading.html heading="Approach #1: Using a State Transition Table (Map)" level=2 %}
 
 Usually, whenever you can model a scenario with finite state machines, you can also model it with a simple **state transition table** that literally just maps the current state to the next state.
 
@@ -108,7 +108,7 @@ As I mentioned earlier, a Light starts in the off state. Calling the `toggle` me
 
 Easy enough, right?
 
-{% include linkedHeading.html heading="State Transition Table Drawbacks" level=4 %}
+{% include linkedHeading.html heading="State Transition Table Drawbacks" level=3 %}
 
 Now, we arrive at one of the limitations of a state transition table: What if we want to perform a certain action when we arrive at the next state, or before we leave the current state?
 
@@ -130,7 +130,7 @@ But usually, the actions that we want to take before and after a state transitio
 
 Hmm... There's got to be a better way. (If there weren't, I wouldn't be writing this post!)
 
-{% include linkedHeading.html heading="Approach #2: Implementing a Finite State Machine" level=3 %}
+{% include linkedHeading.html heading="Approach #2: Implementing a Finite State Machine" level=2 %}
 
 Now that we've looked at how to create a state transition table, we can implement a finite state machine.
 
@@ -229,7 +229,7 @@ One final note: Each state class typically follows the [singleton design pattern
 
 To understand how this all works in practice, we'll implement everything from scratch.
 
-{% include linkedHeading.html heading="1. The <code>LightState</code> Interface" level=4 %}
+{% include linkedHeading.html heading="1. The <code>LightState</code> Interface" level=3 %}
 
 Let's first define the abstract `LightState` class. You'll notice some forward declarations that are necessary to resolve circular includes that would otherwise throw off the C++ linker.
 
@@ -255,7 +255,7 @@ Since this is a **pure abstract class**, we cannot create an instance of it. The
 
 > **Note**: In practice, you would often take this a step further and create an abstract `Entity` class. You'd also create an abstract `EntityState` class that accepts this generic entity in its method signatures. So, instead of having `Light*` like we do above, we would have `Entity*`, and `Light` would simply extend `Entity`.
 
-{% include linkedHeading.html heading="2. Concrete State Classes" level=4 %}
+{% include linkedHeading.html heading="2. Concrete State Classes" level=3 %}
 
 Next, we'll declare all of our concrete state classes. We'll force each one to be a singleton by doing the following:
 
@@ -386,7 +386,7 @@ I'm taking advantage of static variables to create my singletons in a legible ma
 
 Notice how each `toggle` method initiates the appropriate state transition by invoking `light->setState(...)` and passing in a singleton, via a call to the next state's `getInstance` method.
 
-{% include linkedHeading.html heading="3. The <code>Light</code> Class" level=4 %}
+{% include linkedHeading.html heading="3. The <code>Light</code> Class" level=3 %}
 
 The final piece of the puzzle is the `Light` class, particularly the `setState` method:
 

@@ -10,7 +10,7 @@
         align-self: center;
         color: var(--text-color-emphasis);
         font-size: 1.8rem;
-        font-weight: bold;
+        font-weight: 500;
         grid-area: heading;
         @include transition;
     }
@@ -238,7 +238,7 @@
     }
 
     .institution-name {
-        font-weight: bold;
+        font-weight: 500;
     }
 
     .collapsible-content {

@@ -4,7 +4,7 @@
     align-items: center;
     border-radius: 5px;
     display: flex;
-    font-weight: bold;
+    font-weight: 500;
     justify-content: center;
     text-decoration: none;
     cursor: pointer;
@@ -22,14 +22,14 @@
 .arrow-button {    
     &::after {
         font-size: 25px;
-        font-weight: bold;
+        font-weight: 500;
         margin-left: 10px;
         content: "→";
         transform: translateX(0);
         transition: transform 0.2s ease-in-out;
     }
     
-    &:hover {
+    &:hover, &:focus {
         &::after {
             transform: translateX(5px);
         }
