@@ -1,7 +1,24 @@
-{% assign minutes = include.target.content | number_of_words | divided_by: 225 %}
+{% assign minutes = include.content | number_of_words | divided_by: 225 %}
 {% if minutes == 0 %}{% assign minutes = 1 %}{% endif %}
 <div class="post-stats">
-    <div class="post-date">{% include svg.html svg="calendar" %}{{ include.target.date | date: "%b %-d, %Y" }}</div>
-    <div class="post-reading-length">{% include svg.html svg="clock" %}{{ minutes }} min read</div>
-    <div class="post-categories">{% include svg.html svg="tag" %}{% for category in include.target.categories %}<a href="{{ site.url }}/blog/{{ category | slugify }}">{{ category }}</a>&ensp;{% endfor %}</div>
+    <div class="post-date">
+        <div class="stat">
+            {% include svg.html svg="calendar" %}
+            {{ include.date | date: "%b %-d, %Y" }}
+        </div>
+    </div>
+    <div class="post-reading-length">
+        <div class="stat">
+            {% include svg.html svg="clock" %}
+            {{ minutes }} min read
+        </div>
+    </div>
+    <div class="post-tags">
+        {% for tag in include.tags %}
+        <div class="post-tag stat">
+            {% include svg.html svg="tag" %}
+            <a href="{{ site.url }}/tag/{{ tag }}">{{ tag }}</a>
+        </div>
+        {% endfor %}
+    </div>
 </div>

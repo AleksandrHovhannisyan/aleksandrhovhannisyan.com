@@ -2,6 +2,7 @@
 title: "A Gift from Switzerland: The Evpatoria Report"
 description: A review of some great songs from The Evpatoria Report, a fantastic post-rock band from Switzerland.
 keywords: [the evpatoria report, evpatoria report songs, evpatoria report review, evpatoria report band, post-rock band]
+tags: [music, band-review, post-rock, evpatoria-report]
 ---
 
 You know that feeling when you stumble across a band with a riveting, totally unique sound? It's recommended to you on Spotify, YouTube, or whatever you're listening to these days. Doesn't matter. When the song comes on, you immediately stop what you're doing—because *whatever* it is, and whoever composed it, it demands your attention.

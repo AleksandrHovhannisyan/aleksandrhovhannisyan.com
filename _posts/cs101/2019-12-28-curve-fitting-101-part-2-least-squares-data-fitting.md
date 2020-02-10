@@ -2,6 +2,7 @@
 title: "Curve Fitting 101 Part 2: Least Squares Data Fitting"
 description: "Now that we've mastered the theory behind least squares, it's time to look at one of its most practical applications: least squares data fitting. We'll plot a best-fit line by hand and do a polynomial fit using least squares and Python."
 keywords: [least squares method data fitting, least squares method explained, polynomial fit using least squares]
+tags: [cs101, math, numerical-analysis]
 needsLatex: true
 ---
 

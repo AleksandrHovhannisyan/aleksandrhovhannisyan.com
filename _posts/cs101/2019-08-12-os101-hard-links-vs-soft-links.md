@@ -2,6 +2,7 @@
 title: "OS101: Hard Links vs. Soft Links"
 description: What are hard links and soft links? One of them sticks around for good, while the other one rots. Here's an in-depth look at their differences.
 keywords: [hard links vs soft links, what are hard links, what are soft links, what are file links]
+tags: [cs101, operating-systems, file-systems]
 ---
 
 You may have heard the terms "hard link" and "soft link" used in the context of operating systems such as Linux or Windows. What exactly are they? Let's find out!
