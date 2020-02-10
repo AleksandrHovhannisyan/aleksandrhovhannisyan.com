@@ -5,6 +5,7 @@
 .project {
     /* Header, description, footer, respectively */
     grid-template-rows: max-content 1fr max-content;
+    cursor: pointer;
 
     .project-name {
         align-self: center;
@@ -198,10 +199,6 @@
             align-items: center;
             display: flex;
             padding-left: 20px;
-
-            .tech {
-                margin-right: 8px;
-            }
 
             .react {
                 //box-shadow: 0 0 2px 0 #007190;
