@@ -4,7 +4,13 @@ layout: default
 ---
 
 <section class="section blog-overview">
-    <h1>{{ page.tag | capitalize }} Blog Posts</h1>
+    {% assign blogType = "" %}
+    {% assign pageTag = page.tag | split: '-' %}
+    {% for word in pageTag %}
+        {% assign capitalizedWord = word | capitalize | append: ' ' %}
+        {% assign blogType = blogType | append: capitalizedWord %}
+    {% endfor %}
+    <h1>{{ blogType }}Blog Posts</h1>
     <p>Welcome to my blog! Have a look around to see if there's something you like.</p>
     <ul class="primary-tags">
         <a href="/blog/" class="tag{% if page.tag == 'all' %} active-tag{% endif %}">all</a>
