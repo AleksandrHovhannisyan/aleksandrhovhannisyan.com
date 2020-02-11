@@ -32,22 +32,22 @@ defaults:
     scope:
       path: "_posts/dev"
     values:
-      categories: [Dev]
+      categories: dev
   -
     scope:
       path: "_posts/cs101"
     values:
-      categories: [CS101]
+      categories: cs101
   -
     scope:
       path: "_posts/gaming"
     values:
-      categories: [Gaming]
+      categories: gaming
   -
     scope:
       path: "_posts/music"
     values:
-      categories: [Music]
+      categories: music
 
 
 # Exclude from processing.

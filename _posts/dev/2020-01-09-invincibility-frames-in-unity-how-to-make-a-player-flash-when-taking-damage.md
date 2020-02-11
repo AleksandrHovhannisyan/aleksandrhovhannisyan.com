@@ -1,6 +1,7 @@
 ---
 title: "Invincibility Frames in Unity: How to Make a Player Flash When Taking Damage"
 description: "Learn how you can make a player flash when they take damage. This is the notion of invincibility frames, also known as i-frames. You can observe this in many old/retro games, as well as in games like The Binding of Isaac."
+tags: [dev, game-dev, csharp]
 isCanonical: true
 ---
 

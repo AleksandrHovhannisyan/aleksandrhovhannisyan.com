@@ -2,6 +2,7 @@
 title: My 10 Favorite Video Games of All Time
 description: Of all the games I've played, these are the ones I treasure most. Take a look at my favorite video games of all time.
 keywords: [favorite video games, best video games of all time, best video games of all time list, favorite video games of all time, best video games list]
+tags: [gaming, favorites]
 ---
 
 Gaming is my not-so-guilty pleasure—it provides a nice escape into another world and serves as a creative outlet, a medium in which I'm free to do whatever I want. Below are my ten favorite games of all time.
