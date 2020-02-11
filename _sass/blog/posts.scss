@@ -4,44 +4,22 @@
 
 .blog-overview {
     margin-top: 40px;
-}
 
-.category-links {
-    align-items: center;
-    background-color: var(--nav-bg-color);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
-    display: flex;
-    flex-wrap: wrap;
-    font-size: 1.6rem;
-    justify-content: space-around;
-    list-style-type: none;
-    margin: 0 auto 80px auto;
-    max-width: 670px;
-    min-height: 64px;
-    width: 100%;
-    @include transition;
+    .primary-tags {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 50px;
 
-    & .category-link {
-        height: 64px;
-        flex: 1 1 0;
-        @include transition;
-
-        &:hover, &:focus, &.active-category {
-            cursor: pointer;
-            background-color: var(--button-bg-color);
-
-            a {
-                @include themed(color, white, black);
-            }
+        .tag:hover, .tag:focus, a.active-tag {
+            @include themed(background-color, $primary-color, #ffcd91);
+            @include themed(color, white !important, black !important);
         }
 
-        a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            color: var(--text-color-nav);
+        .tag {
+            padding: 4px 16px;
+            color: var(--tag-text-color) !important;
+            font-weight: normal !important;
+            margin-bottom: 16px;
         }
     }
 }
@@ -60,13 +38,16 @@
     font-size: 1.4rem;
     font-style: italic;
 
-    .post-date,
-    .post-reading-length,
-    .post-categories {
-        align-items: center;
-        display: flex;
+    .stat {
         margin-bottom: 15px;
         margin-right: 20px;
+    }
+
+    .post-date,
+    .post-reading-length,
+    .post-tags {
+        align-items: center;
+        display: flex;
         @include transition;
 
         svg {
@@ -78,16 +59,23 @@
         }
     }
 
-    .post-categories a {
-        @include underlined-link;
+    .post-tags {
+        flex-wrap: wrap;
+
+        .post-tag {
+            display: flex;
+            align-items: center;
+
+            a {
+                @include underlined-link;
+            }
+        }
+
     }
 }
 
-.post-category {
-    margin-top: 50px;
-}
-
 .post-preview {
+    cursor: pointer;
     grid-gap: 30px;
     grid-template-rows: 200px auto;
 

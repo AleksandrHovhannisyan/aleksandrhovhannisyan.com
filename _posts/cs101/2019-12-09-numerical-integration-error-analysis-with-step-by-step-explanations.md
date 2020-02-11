@@ -2,6 +2,7 @@
 title: Numerical Integration Error Analysis with Step-by-Step Explanations
 description: Numerical integration error analysis tells us how well we're able to approximate the true integral of a function by using the three classical Newton-Cotes rules. Let's see how this error analysis is performed.
 keywords: ["numerical integration error analysis", "midpoint rule error estimate", "trapezoid rule error estimate", "simpson's rule error estimate"]
+tags: [cs101, math, numerical-analysis]
 needsLatex: true
 ---
 

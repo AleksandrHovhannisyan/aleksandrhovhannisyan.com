@@ -3,14 +3,21 @@ title: Blog
 layout: default
 ---
 
-{% include banner.html heading="Welcome to my blog!" content="I like to write about dev, CS theory, video games, and whatever else comes to mind. All opinions are my own." %}
 <section class="section blog-overview">
-    <ul class="category-links">
-        <li class="category-link{% if page.category == 'all' %} active-category{% endif %}"><a href="{{ site.url }}/blog/">All</a></li>
-        <li class="category-link{% if page.category == 'dev' %} active-category{% endif %}"><a href="{{ site.url }}/blog/dev">Dev</a></li>
-        <li class="category-link{% if page.category == 'cs101' %} active-category{% endif %}"><a href="{{ site.url }}/blog/cs101">CS101</a></li>
-        <li class="category-link{% if page.category == 'gaming' %} active-category{% endif %}"><a href="{{ site.url }}/blog/gaming">Gaming</a></li>
-        <li class="category-link{% if page.category == 'music' %} active-category{% endif %}"><a href="{{ site.url }}/blog/music">Music</a></li>
+    {% assign blogType = "" %}
+    {% assign pageTag = page.tag | split: '-' %}
+    {% for word in pageTag %}
+        {% assign capitalizedWord = word | capitalize | append: ' ' %}
+        {% assign blogType = blogType | append: capitalizedWord %}
+    {% endfor %}
+    <h1>{{ blogType }}Blog Posts</h1>
+    <p>Welcome to my blog! Have a look around to see if there's something you like.</p>
+    <ul class="primary-tags">
+        <a href="/blog/" class="tag{% if page.tag == 'all' %} active-tag{% endif %}">all</a>
+        <a href="/tag/dev" class="tag{% if page.tag == 'dev' %} active-tag{% endif %}">dev</a>
+        <a href="/tag/cs101" class="tag{% if page.tag == 'cs101' %} active-tag{% endif %}">cs101</a>
+        <a href="/tag/gaming" class="tag{% if page.tag == 'gaming' %} active-tag{% endif %}">gaming</a>
+        <a href="/tag/music" class="tag{% if page.tag == 'music' %} active-tag{% endif %}">music</a>
     </ul>
     <section class="post-previews card-grid">
         {{ content }}

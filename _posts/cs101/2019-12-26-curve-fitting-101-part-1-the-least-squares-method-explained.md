@@ -2,6 +2,7 @@
 title: "Curve Fitting 101 Part 1: The Least Squares Method Explained"
 description: In this comprehensive post, we'll look at the problem that motivates the least squares method and gain an intuitive understanding for how it works under the hood. This will give us the necessary skills to perform curve fitting.
 keywords: [least squares method explained]
+tags: [cs101, math, numerical-analysis]
 needsLatex: true
 ---
 
