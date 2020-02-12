@@ -2,6 +2,16 @@
 @import 'mixins';
 @import 'settings';
 
+.post-tag {
+    display: inline-block;
+    font-weight: normal;
+
+    &:hover, &:focus, &.active-tag {
+        @include themed(background-color, $primary-color, #ffcd91);
+        @include themed(color, white !important, black !important);
+    }
+}
+
 .blog-overview {
     margin-top: 75px;
 
@@ -31,6 +41,9 @@
         cursor: pointer;
         grid-gap: 30px;
         grid-template-rows: 200px auto;
+        // To ensure the spacing at the bottom of each card matches the spacing
+        // at the top, since the tag margins and card padding will combine to
+        // produce more spacing
         padding-bottom: calc(var(--card-padding) - #{$tag-margin});
     
         .post-thumbnail {
@@ -76,16 +89,6 @@
 
 .post-header {
     margin-top: 75px;
-}
-
-.post-tag {
-    display: inline-block;
-    font-weight: normal;
-
-    &:hover, &:focus, &.active-tag {
-        @include themed(background-color, $primary-color, #ffcd91);
-        @include themed(color, white !important, black !important);
-    }
 }
 
 .post-stats {
