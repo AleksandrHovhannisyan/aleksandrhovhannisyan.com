@@ -1,7 +1,7 @@
 ---
 layout: tagPage
 title: Blog
-tag: cpp
+tag: c++
 customJS: ["blogImage"]
 robots: noindex
 ---
