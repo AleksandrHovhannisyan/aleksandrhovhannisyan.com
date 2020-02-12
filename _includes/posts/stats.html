@@ -13,11 +13,11 @@
             {{ minutes }} min read
         </div>
     </div>
+    {% if include.tags %}
     <div class="post-tags">
-        {% if include.tags %}
         {% for tag in include.tags %}
         <a href="/tag/{{ tag }}" class="tag post-tag">{{ tag }}</a>
         {% endfor %}
-        {% endif %}
     </div>
+    {% endif %}
 </div>
