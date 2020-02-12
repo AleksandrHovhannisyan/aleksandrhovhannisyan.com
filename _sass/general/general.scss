@@ -149,6 +149,25 @@ hr {
     @include transition;
 }
 
+.lazy-loaded-picture {
+    position: relative;
+
+    .placeholder {
+        position: relative;
+        width: 100%;
+        transform: scale(1);
+    }
+
+    .real-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 1;
+        width: 100%;
+        height: 100%;
+    }
+}
+
 #page-not-found {
     align-items: center;
     animation: backgroundScroll 40s linear infinite;

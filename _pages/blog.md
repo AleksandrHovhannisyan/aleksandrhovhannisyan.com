@@ -12,10 +12,14 @@ tag: all
     <div class="post-preview-body">
         <header>
             <h3 class="post-title">{{ post.title }}</h3>
-            {% assign primaryTag = post.tags | slice: 0, 1 %}
-            {% include posts/stats.html content=post.content date=post.date tags=primaryTag %}
+            {% include posts/stats.html content=post.content date=post.date %}
         </header>
         <p class="post-description">{{ post.description | truncate: 160 }}</p>
+        <footer class="post-tags">
+            {% for tag in post.tags limit: 4 %}
+            <a href="/tag/{{ tag }}" class="post-tag tag">{{ tag }}</a>
+            {% endfor %}
+        </footer>
     </div>
 </div>
 {% endfor %}

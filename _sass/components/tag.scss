@@ -2,7 +2,5 @@
     background-color: var(--tag-bg-color);
     border-radius: 3px;
     color: var(--tag-text-color);
-    margin-right: 8px;
-    padding: 4px 8px;
     @include transition;
 }
