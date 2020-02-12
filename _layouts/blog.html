@@ -11,13 +11,14 @@ layout: default
         {% assign blogType = blogType | append: capitalizedWord %}
     {% endfor %}
     <h1>{{ blogType }}Blog Posts</h1>
-    <p>Welcome to my blog! Have a look around to see if there's something you like.</p>
-    <ul class="primary-tags">
+    <p>Welcome to my blog! I like to write about a variety of technical and nontechnical topics.</p>
+    <ul class="tag-navigation">
         <a href="/blog/" class="tag{% if page.tag == 'all' %} active-tag{% endif %}">all</a>
         <a href="/tag/dev" class="tag{% if page.tag == 'dev' %} active-tag{% endif %}">dev</a>
         <a href="/tag/cs101" class="tag{% if page.tag == 'cs101' %} active-tag{% endif %}">cs101</a>
         <a href="/tag/gaming" class="tag{% if page.tag == 'gaming' %} active-tag{% endif %}">gaming</a>
         <a href="/tag/music" class="tag{% if page.tag == 'music' %} active-tag{% endif %}">music</a>
+        <div class="more-tags-label">+{{ site.tags | size | minus: 4 }} other tags</div>
     </ul>
     <section class="post-previews card-grid">
         {{ content }}

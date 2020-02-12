@@ -3,9 +3,9 @@
 @import 'settings';
 
 .blog-overview {
-    margin-top: 40px;
+    margin-top: 75px;
 
-    .primary-tags {
+    .tag-navigation {
         display: flex;
         flex-wrap: wrap;
         margin-bottom: 50px;
@@ -15,11 +15,19 @@
             @include themed(color, white !important, black !important);
         }
 
-        .tag {
+        a.tag {
             padding: 4px 16px;
-            color: var(--tag-text-color) !important;
-            font-weight: normal !important;
+            color: var(--tag-text-color);
+            font-weight: normal;
             margin-bottom: 16px;
+        }
+
+        .more-tags-label {
+            align-items: center;
+            display: flex;
+            font-size: 1.6rem;
+            margin-bottom: 16px;
+            @include transition(color);
         }
     }
 }
