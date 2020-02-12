@@ -11,7 +11,13 @@ layout: default
         {% assign blogType = blogType | append: capitalizedWord %}
     {% endfor %}
     <h1>{{ blogType }}Blog Posts</h1>
-    <p>Welcome to my blog! I like to write about a variety of technical and nontechnical topics.</p>
+    <p>
+        {% if site.data.tagDescriptions[page.tag] %}
+        {{ site.data.tagDescriptions[page.tag] }}
+        {% else %}
+        {{ site.data.tagDescriptions["all"]}}
+        {% endif %}
+    </p>
     <ul class="tag-navigation">
         <a href="/blog/" class="tag{% if page.tag == 'all' %} active-tag{% endif %}">all</a>
         <a href="/tag/dev" class="tag{% if page.tag == 'dev' %} active-tag{% endif %}">dev</a>
