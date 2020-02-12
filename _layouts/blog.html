@@ -19,11 +19,11 @@ layout: default
         {% endif %}
     </p>
     <ul class="tag-navigation">
-        <a href="/blog/" class="tag{% if page.tag == 'all' %} active-tag{% endif %}">all</a>
-        <a href="/tag/dev" class="tag{% if page.tag == 'dev' %} active-tag{% endif %}">dev</a>
-        <a href="/tag/cs101" class="tag{% if page.tag == 'cs101' %} active-tag{% endif %}">cs101</a>
-        <a href="/tag/gaming" class="tag{% if page.tag == 'gaming' %} active-tag{% endif %}">gaming</a>
-        <a href="/tag/music" class="tag{% if page.tag == 'music' %} active-tag{% endif %}">music</a>
+        <a href="/blog/" class="post-tag tag{% if page.tag == 'all' %} active-tag{% endif %}">all</a>
+        <a href="/tag/dev" class="post-tag tag{% if page.tag == 'dev' %} active-tag{% endif %}">dev</a>
+        <a href="/tag/cs101" class="post-tag tag{% if page.tag == 'cs101' %} active-tag{% endif %}">cs101</a>
+        <a href="/tag/gaming" class="post-tag tag{% if page.tag == 'gaming' %} active-tag{% endif %}">gaming</a>
+        <a href="/tag/music" class="post-tag tag{% if page.tag == 'music' %} active-tag{% endif %}">music</a>
         <div class="more-tags-label">+{{ site.tags | size | minus: 4 }} other tags</div>
     </ul>
     <section class="post-previews card-grid">

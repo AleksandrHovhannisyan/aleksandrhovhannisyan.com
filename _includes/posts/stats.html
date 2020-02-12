@@ -3,22 +3,21 @@
 <div class="post-stats">
     <div class="post-date">
         <div class="stat">
-            {% include svg.html svg="calendar" %}
+            {% include svg.html svg="calendar" class="stat-icon" %}
             {{ include.date | date: "%b %-d, %Y" }}
         </div>
     </div>
     <div class="post-reading-length">
         <div class="stat">
-            {% include svg.html svg="clock" %}
+            {% include svg.html svg="clock" class="stat-icon" %}
             {{ minutes }} min read
         </div>
     </div>
     <div class="post-tags">
+        {% if include.tags %}
         {% for tag in include.tags %}
-        <div class="post-tag stat">
-            {% include svg.html svg="tag" %}
-            <a href="{{ site.url }}/tag/{{ tag }}">{{ tag }}</a>
-        </div>
+        <a href="/tag/{{ tag }}" class="tag post-tag">{{ tag }}</a>
         {% endfor %}
+        {% endif %}
     </div>
 </div>
