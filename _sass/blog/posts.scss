@@ -11,7 +11,9 @@
         margin-bottom: 50px;
 
         .post-tag {
+            margin-bottom: 16px;
             margin-right: 16px;
+            padding: 4px 16px;
         }
 
         .more-tags-label {
@@ -78,15 +80,12 @@
 
 .post-tag {
     display: inline-block;
-    padding: 4px 16px;
-    color: var(--tag-text-color);
     font-weight: normal;
-    margin-bottom: 16px;
-}
 
-.post-tag:hover, .post-tag:focus, .post-tag.active-tag {
-    @include themed(background-color, $primary-color, #ffcd91);
-    @include themed(color, white !important, black !important);
+    &:hover, &:focus, &.active-tag {
+        @include themed(background-color, $primary-color, #ffcd91);
+        @include themed(color, white !important, black !important);
+    }
 }
 
 .post-stats {
