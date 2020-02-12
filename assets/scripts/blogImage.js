@@ -31,9 +31,6 @@ function preloadImage(placeholderImg) {
       placeholderImg.remove();
       // Need this or else the `picture` will disappear
       realImg.style.position = 'relative';
-      // For images with shadows; set to hidden initially to prevent the placeholder
-      // from showing up behind the real image
-      pictureElement.style.overflow = 'visible';
     }, 500);
     
   }
