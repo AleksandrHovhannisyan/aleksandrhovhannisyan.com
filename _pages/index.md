@@ -16,7 +16,7 @@ permalink: /
         {% for project in site.data.projects limit:3 %}
         {% include projectCard.html project=project %}
         {% endfor %}
-        <div id="view-more-projects" class="project">
+        <div id="view-more-projects">
             <a class="button hollow-button arrow-button" href="/experience/#projects">View more</a>
         </div>
     </div>
