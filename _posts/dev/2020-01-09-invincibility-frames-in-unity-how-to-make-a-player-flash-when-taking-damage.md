@@ -135,10 +135,6 @@ private IEnumerator BecomeTemporarilyInvincible()
 }
 ```
 
-I find that a duration of `1.5 s` works best, with the delay set to `0.15 s`. This means the loop will run `1.5 / 0.15 = 10` times. Since the player model transitions between two states (visible/invisible) across 10 iterations, you'll observe that there are `10 / 2 = 5` flashes in total:
-
-{% include posts/picture.html img="flashes" ext="JPG" alt="The number of flashes that occur with those settings." %}
-
 The key part here is the loop, especially the following line:
 
 ```csharp
@@ -146,6 +142,10 @@ yield return new WaitForSeconds(delayBetweenInvincibilityFlashes);
 ```
 
 We pause coroutines in Unity using `WaitForSeconds` and pass in the number of seconds to wait. In this case, that's the delay beween each flash, which you've hopefully set in your inspector by now.
+
+I find that a duration of `1.5 s` works best, with the delay set to `0.15 s`. This means the loop will run `1.5 / 0.15 = 10` times. Since the player model transitions between two states (visible/invisible) across 10 iterations, you'll observe that there are `10 / 2 = 5` flashes in total:
+
+{% include posts/picture.html img="flashes" ext="JPG" alt="The number of flashes that occur with those settings." %}
 
 {% include linkedHeading.html heading="3. Make the Player Flash While Invincible" level=2 %}
 
