@@ -11,7 +11,7 @@ permalink: /experience/
         {% for project in site.data.projects %}
         {% include projectCard.html project=project %}
         {% endfor %}
-        <div id="github-cta" class="project">
+        <div id="github-cta">
             <header>
                 <p><strong>Want to see more of my work?</strong></p>
             </header>
