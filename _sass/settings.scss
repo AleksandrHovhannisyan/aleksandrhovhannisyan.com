@@ -10,4 +10,4 @@ $page-max-width: 900px;
 
 $line-height: round($font-size * ($golden-ratio - (1 / 2 * $golden-ratio) * (1 - ($page-max-width / ($font-size * $font-size * $golden-ratio * $golden-ratio))))) + 0px;
 $paragraph-spacing: round($line-height) + 0px;
-$img-spacing: round(1.25 * $paragraph-spacing) + 0px;
+$img-spacing: round(1.5 * $paragraph-spacing) + 0px;
