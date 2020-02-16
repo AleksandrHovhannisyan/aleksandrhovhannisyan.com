@@ -82,6 +82,7 @@ body {
 
 strong {
     color: var(--text-color-emphasis);
+    font-weight: 650;
     @include transition;
 }
 
@@ -147,6 +148,13 @@ hr {
     margin-bottom: 8px;
     margin-top: 8px;
     @include transition;
+}
+
+li {
+    ol, ul {
+        margin-top: 15px !important;
+        margin-bottom: 0 !important;
+    }
 }
 
 .lazy-loaded-picture {

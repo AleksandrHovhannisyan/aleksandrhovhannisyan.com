@@ -150,8 +150,28 @@
         margin-bottom: $paragraph-spacing;
     }
 
-    h2, h3 {
-        margin-top: -60px;
+    h2 {
+        margin-top: -70px;
+        padding-top: 90px;
+    }
+
+    h3 {
+        margin-top: -75px;
+        padding-top: 90px;
+    }
+
+    h4 {
+        margin-top: -80px;
+        padding-top: 90px;
+    }
+
+    h5 {
+        margin-top: -85px;
+        padding-top: 90px;
+    }
+
+    h6 {
+        margin-top: -90px;
         padding-top: 90px;
     }
 
@@ -197,6 +217,7 @@
         box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
     }
 
+    blockquote,
     figure,
     picture,
     iframe,
@@ -269,6 +290,10 @@
     div.highlighter-rouge {
         border-radius: 5px;
         box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.4);
+
+        & > .highlight {
+            padding: 30px;
+        }
 
         code {
             padding: 0;
