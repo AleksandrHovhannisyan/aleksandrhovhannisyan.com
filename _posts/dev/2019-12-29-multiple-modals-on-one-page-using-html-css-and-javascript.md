@@ -24,7 +24,6 @@ Here's some basic markup to get us started:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
     <title>Modal Demo</title>
 </head>
 <body>
@@ -55,7 +54,7 @@ body {
     align-items: center;
     display: flex;
     flex-direction: column;
-    font-family: Nunito, Arial;
+    font-family: Arial;
     font-size: 1.8rem;
     height: 100vh;
     justify-content: center;
@@ -222,7 +221,7 @@ Finally, we'll style the triggers:
 
 And we're done! You can temporarily set `modal1` to be visible by manually adding `modal-visible` to its class list. Here's what the modal should look like:
 
-{% include posts/picture.html img="modal" ext="JPG" alt="One of the modals we created, with its slightly opaque background." shadow=false %}
+{% include posts/picture.html img="modal" ext="PNG" alt="One of the modals we created, with its slightly opaque background." shadow=false %}
 
 {% include linkedHeading.html heading="Adding the JavaScript" level=2 %}
 
