@@ -201,6 +201,11 @@
             display: flex;
             padding-left: 20px;
 
+            .tech {
+                padding: 4px 8px;
+                margin-right: 8px;
+            }
+
             .react {
                 //box-shadow: 0 0 2px 0 #007190;
                 @include themed(background-color, rgba($brand-react, 0.2), $brand-react);
