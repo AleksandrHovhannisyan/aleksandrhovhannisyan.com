@@ -136,6 +136,7 @@
 
 #post {
     grid-column: 1 / 4;
+    overflow-wrap: break-word;
     @include centered;
 
     & > * {
