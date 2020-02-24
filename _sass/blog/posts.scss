@@ -21,8 +21,8 @@
         margin-bottom: 50px;
 
         .post-tag {
-            margin-bottom: 16px;
-            margin-right: 16px;
+            margin-bottom: 1rem;
+            margin-right: 1rem;
             padding: 4px 16px;
         }
 
@@ -30,13 +30,13 @@
             align-items: center;
             display: flex;
             font-size: 0.875em;
-            margin-bottom: 16px;
+            margin-bottom: 1rem;
             @include transition(color);
         }
     }
 
     .post-preview {
-        $tag-margin: 8px;
+        $tag-margin: 0.625em;
     
         cursor: pointer;
         grid-gap: 30px;
@@ -68,6 +68,8 @@
             }
     
             .post-tags {
+                display: flex;
+                flex-wrap: wrap;
                 font-size: 0.875em;
                 margin-top: 20px;
                 z-index: 2;
@@ -76,7 +78,7 @@
                 .post-tag {
                     margin-right: $tag-margin;
                     margin-bottom: $tag-margin;
-                    padding: 4px 8px;
+                    padding: 0.3em 0.5em;
                 }
             }
         }
@@ -87,21 +89,16 @@
     margin-bottom: 20px;
 }
 
-.post-header {
-    margin-top: 75px;
-}
-
 .post-stats {
     display: flex;
     flex-wrap: wrap;
     font-size: 0.8em;
-    font-style: italic;
 
     .stat {
         display: flex;
         align-items: center;
-        margin-bottom: 16px;
-        margin-right: 20px;
+        margin-bottom: 1em;
+        margin-right: 1em;
 
         .stat-icon {
             @include transition;
@@ -127,9 +124,9 @@
             display: flex;
             align-items: center;
             font-style: normal;
-            margin-bottom: 20px;
-            margin-right: 8px;
-            padding: 4px 8px;
+            margin-bottom: 1em;
+            margin-right: 0.625em;
+            padding: 0.2em 0.4em;
         }
     }
 }
@@ -144,29 +141,10 @@
         grid-column: 2;
     }
 
-    h2 {
-        margin-top: -70px;
-        padding-top: 90px;
-    }
-
-    h3 {
-        margin-top: -75px;
-        padding-top: 90px;
-    }
-
-    h4 {
-        margin-top: -80px;
-        padding-top: 90px;
-    }
-
-    h5 {
-        margin-top: -85px;
-        padding-top: 90px;
-    }
-
-    h6 {
-        margin-top: -90px;
-        padding-top: 90px;
+    @include headings {
+        // 64px = height of navbar
+        scroll-margin-top: 64px;
+        margin-top: 1.5em;
     }
 
     p {
@@ -215,6 +193,16 @@
         box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
     }
 
+    blockquote,	
+    figure,	
+    picture,	
+    iframe,	
+    .pro-con-table,	
+    div.highlighter-rouge {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
+
     ol li::marker {
         @include transition;
         color: var(--text-color-emphasis);
@@ -240,7 +228,8 @@
     }
 
     .code-header {
-        margin-bottom: calc(-1 * #{$paragraph-spacing} + -1px);
+        // -0.5em to account for top margin on code blocks
+        margin-bottom: calc(-1 * #{$paragraph-spacing} + -1px - 0.5em);
         z-index: 2;
 
         .file-name {

@@ -7,19 +7,20 @@
 }
 
 ::-webkit-scrollbar {
-    width: 15px;
+    width: 0.875em;
+    height: 0.875em;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: var(--nav-bg-color);
+    background-color: #494949;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--button-bg-hover-color);
+    background: #858585;
     border-radius: 2px;
 
     &:hover {
-        background: var(--button-bg-color);
+        background: #adadad;
     }
 }
 
@@ -41,7 +42,7 @@ html {
     }
 
     // Font between 16px (mobile) and 20px, https://css-tricks.com/simplified-fluid-typography/
-    font-size: min(max(16px, 4vw), 20px);
+    font-size: min(max(16px, 4vw), 18px);
 }
 
 body {

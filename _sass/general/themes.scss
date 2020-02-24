@@ -20,8 +20,8 @@ html.light {
     --tag-bg-color: #dae3e7;
     --tag-text-color: #{$primary-color};
 
-    --code-bg-color: #e4e4e4;
-    --code-text-color: #383d43;
+    --code-bg-color: #e8e8e8;
+    --code-text-color: #5b6169;
 
     --hover-color-general: #f6f6f6;
 
@@ -52,15 +52,15 @@ html.dark {
     --tag-bg-color: #ada08f;
     --tag-text-color: #000000;
 
-    --code-bg-color: #646464;
-    --code-text-color: #e2e1e1;
+    --code-bg-color: #4d4d4d;
+    --code-text-color: #c3c3c3;
 
     --hover-color-general: #292929;
 
     --form-bg-color: #292929;
     --form-input-color: #3b3b3b;
 
-    --blockquote-bg-color: rgb(63, 62, 62);
+    --blockquote-bg-color: #2c2c2c;
     --blockquote-text-color: #aaaaaa;
     --spoiler-color: #9c9387;
 }

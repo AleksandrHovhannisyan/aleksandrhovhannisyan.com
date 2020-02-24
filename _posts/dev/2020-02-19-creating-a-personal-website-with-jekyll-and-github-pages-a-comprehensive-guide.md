@@ -7,9 +7,7 @@ tags: [dev, jekyll, frontend, github]
 
 {% include posts/picture.html img="og-large" ext="PNG" alt="Jekyll and GitHub Pages." shadow=false %}
 
-Want to make a personal website or blog and share it with the world? Then you've come to the right place!
-
-This is the only guide you'll need to get started with Jekyll and host your site for free on GitHub Pages. I'll take you from zero to hero with Jekyll and help you understand all the fundamentals.
+Want to make a personal website or blog and share it with the world? Then you've come to the right place! This is the only guide you'll need to get started with Jekyll and host your site for free on GitHub Pages. I'll take you from zero to hero with Jekyll and help you understand all the fundamentals.
 
 I moved my old site from pure HTML and CSS to Jekyll a while back and immediately fell in love. There's very little that Jekyll doesn't allow you to accomplish, so it's a perfect, lightweight option for beginners and veterans alike.
 
@@ -59,7 +57,7 @@ Let's dig in!
 
 ## Overview: What Is Jekyll?
 
-Jekyll is a **static site generator**. That's just a fancy way of saying that it takes a bunch of HTML, Markdown, CSS, and JavaScript source files, combines them as needed based on layout files that you've specified, processes any template code that you've written, and spits out a build directory (`_site/`) that basically houses all of your website's content, ready for hosting on a web server (like GitHub Pages!).
+Jekyll is a **static site generator**. That's just a fancy way of saying that it takes a bunch of HTML, Markdown, CSS, and JavaScript source files, combines them as needed based on layout files that you've specified, processes any template code that you've written, and spits out a build directory (e.g., `_site/`) that basically houses all of your website's content, ready for hosting on a web server (like GitHub Pages!).
 
 {% include posts/picture.html img="static-site-generator" ext="PNG" alt="A static site generator spits out a compiled, well-structured, fully functioning site." shadow=false %}
 

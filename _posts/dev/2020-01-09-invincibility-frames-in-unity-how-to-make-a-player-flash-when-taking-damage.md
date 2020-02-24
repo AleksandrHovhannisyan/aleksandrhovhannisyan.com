@@ -5,9 +5,7 @@ tags: [dev, game-dev, csharp]
 isCanonical: true
 ---
 
-I learned a lot of neat tricks while working on developing one of my first "real" games, [Embody](https://github.com/cap4053-cheeky-pixels/EmbodyGame), with some classmates. So I figured why not share some of those tips to help other game devs?
-
-In this post, we'll look at how you can make a player flash when they take damage. This is the notion of **invincibility frames**, also known as i-frames. You'll find this in many retro games, as well as in games like The Binding of Isaac.
+In this post, we'll look at how you can make a player flash when they take damage. This is the notion of **invincibility frames**, also known as i-frames. You'll find this in many retro games like The Legend of Zelda, Super Mario, The Binding of Isaac, and others.
 
 <figure>
     {% include posts/picture.html img="isaac" ext="GIF" alt="Invincibility frames in the Binding of Isaac" shadow=false %}
@@ -18,6 +16,8 @@ To keep this tutorial simple, I'll assume that you already have:
 
 1. A way to detect collisions between projectiles/mobs and the player.
 2. A way to hurt the player. Let's call this method `LoseHealth(int amount)`.
+
+If you want to see this demo in action, check out [Embody](https://github.com/cap4053-cheeky-pixels/EmbodyGame), a game I developed with some classmates for the Artificial Intelligence for Games class at the University of Florida.
 
 {% include linkedHeading.html heading="How to Make a Player Flash When Taking Damage (with Coroutines!)" level=2 %}
 
