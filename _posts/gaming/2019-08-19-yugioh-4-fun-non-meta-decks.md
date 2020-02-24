@@ -122,7 +122,7 @@ Blackwings are a balanced and consistent archetype, making them a good option fo
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
-With tuners like **Blackwing - Pinaki the Waxing Moon** and **Blackwhing - Gale the Whirlwind**, you get access to some high-level synchro plays like Beelze (both variants), Trishula, and Onimaru the Divine Thunder. The archetype's main synchro monsters are also good options and play well with each other.
+With tuners like **Blackwing - Pinaki the Waxing Moon** and **Blackwing - Gale the Whirlwind**, you get access to some high-level synchro plays like Beelze (both variants), Trishula, and Onimaru the Divine Thunder. The archetype's main synchro monsters are also good options and play well with each other.
 
 In terms of the other main monsters, **Blackwing - Kris the Crack of Dawn** is a good beatstick with 1900 ATK and can survive destruction by spells/traps once per turn. Like Bora the Spear, it gives you a guaranteed special summon if you have other Blackwings on the field. **Blackwing - Blizzard the Far North** can help you set up quick synchro plays by resurrecting Blackwings from your graveyard.
 
