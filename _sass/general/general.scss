@@ -30,7 +30,18 @@
 }
 
 html {
-    font-size: 62.5%;
+    // Fallback media queries for anything that's not Chrome
+
+    @media screen and (min-width: 25em) {
+        font-size: 4vw;
+    }
+
+    @media screen and (min-width: 31.25em) {
+        font-size: 1.25em;
+    }
+
+    // Font between 16px (mobile) and 20px, https://css-tricks.com/simplified-fluid-typography/
+    font-size: min(max(16px, 4vw), 20px);
 }
 
 body {
@@ -38,9 +49,8 @@ body {
     color: var(--text-color-normal);
     display: grid;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;;
-    font-size: $font-size;
     grid-template-rows: 1fr 80px;
-    line-height: $line-height;
+    line-height: 1.6;
     min-height: 100vh;
     position: relative;
     row-gap: 64px;
@@ -88,9 +98,9 @@ strong {
 
 @include headings {
     color: var(--text-color-emphasis);
-    line-height: 1.4;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.5rem;
     font-weight: 600;
+    line-height: 1.4;
     @include transition;
 }
 
@@ -103,7 +113,7 @@ strong {
 }
 
 h1 {
-    font-size: 2.2em;
+    font-size: 2em;
 }
 
 .heading-with-image {
@@ -120,6 +130,7 @@ a {
 
 p {
     color: var(--text-color-normal);
+    line-height: 1.6;
     margin-bottom: $paragraph-spacing;
     @include transition;
 }
@@ -152,9 +163,13 @@ hr {
 
 li {
     ol, ul {
-        margin-top: 15px !important;
+        margin-top: calc(#{$paragraph-spacing} / 2);
         margin-bottom: 0 !important;
     }
+}
+
+li:not(:last-child) {
+    margin-bottom: calc(#{$paragraph-spacing} / 2);
 }
 
 .lazy-loaded-picture {

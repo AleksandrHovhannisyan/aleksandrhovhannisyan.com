@@ -10,7 +10,6 @@
     .project-name {
         align-self: center;
         color: var(--text-color-emphasis);
-        font-size: 1.8rem;
         font-weight: 500;
         grid-area: heading;
         @include transition;
@@ -30,16 +29,16 @@
         align-items: center;
         align-self: center;
         display: flex;
-        font-size: 0.9em;
+        font-size: 0.875em;
         grid-area: rating;
         justify-self: center;
         @include transition;
 
         .star {
             fill: var(--button-bg-color);
-            height: 16px;
+            height: 1em;
             margin-right: 3px;
-            width: 16px;
+            width: 1em;
         }
     }
 
@@ -55,7 +54,7 @@
         grid-row: 3;
     
         .topic {
-            font-size: 1.6rem;
+            font-size: 0.875em;
             margin-bottom: 0px;
             margin-right: 8px;
             margin-top: 8px;
@@ -102,7 +101,6 @@
     }
 
     .skill-category {
-        font-size: 1.8rem;
         margin-bottom: 20px;
     }
 
@@ -135,6 +133,8 @@
 
             .star {
                 margin-left: 4.7px;
+                width: 1em;
+                height: 1em;
             }
 
             .tooltip {
@@ -165,7 +165,7 @@
 
 #work-experience {
     h2 {
-        margin-bottom: 3rem;
+        margin-bottom: 1.5em;
     }
 
     a {
@@ -177,23 +177,19 @@
         grid-template-rows: max-content 1fr max-content;
 
         .job-title {
-            font-size: 2rem;
+            font-size: 1.1em;
         }
 
         .date-range {
-            font-size: 1.6rem;
+            font-size: 0.875em;
             font-style: italic;
             @include themed(color, $denim, #898989);
         }
 
         .responsibilities {
             @include transition;
-            margin-bottom: 1.6rem;
+            margin-bottom: $paragraph-spacing;
             padding-left: 20px;
-
-            li {
-                margin-bottom: calc(#{$paragraph-spacing} / 2);
-            }
         }
 
         .technologies-used {
@@ -250,7 +246,6 @@
         grid-template-columns: 1fr;
 
         h3 {
-            font-size: 1.8rem;
             font-weight: normal;
             margin-bottom: 21px;
             margin-left: 20px;
@@ -262,10 +257,6 @@
             margin-top: 16px;
             padding-left: 40px;
             padding-right: 10px;
-
-            li {
-                margin-bottom: calc(#{$paragraph-spacing} / 2);
-            }
         }
         
         p {
@@ -273,8 +264,10 @@
         }
 
         .courses, .awards {
-            h3 {
+            .section-title {
                 font-style: italic;
+                margin-top: 1em;
+                margin-left: 1em;
             }
         }
 
