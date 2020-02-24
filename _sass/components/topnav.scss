@@ -51,10 +51,6 @@ $topnav-min-height: 64px;
         }
 
         &:hover, &:focus {
-            #logo {
-                box-shadow: 0 0 0 2px white;
-            }
-
             #website-name {
                 color: white;
             }
@@ -75,7 +71,7 @@ $topnav-min-height: 64px;
         cursor: pointer;
         display: flex;
         flex-wrap: nowrap;   
-        font-size: 0.9rem;
+        font-size: 0.5625em;
         height: 22px;
         justify-content: space-between;
         margin-right: 5px;
@@ -173,7 +169,7 @@ $topnav-min-height: 64px;
     }   
 }
 
-@media only screen and (min-width: 670px) {
+@media only screen and (min-width: 740px) {
 
     #topnav {
         .nav-links {

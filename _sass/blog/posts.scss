@@ -29,7 +29,7 @@
         .more-tags-label {
             align-items: center;
             display: flex;
-            font-size: 1.6rem;
+            font-size: 0.875em;
             margin-bottom: 16px;
             @include transition(color);
         }
@@ -68,7 +68,7 @@
             }
     
             .post-tags {
-                font-size: 1.6rem;
+                font-size: 0.875em;
                 margin-top: 20px;
                 z-index: 2;
                 position: relative;
@@ -94,7 +94,7 @@
 .post-stats {
     display: flex;
     flex-wrap: wrap;
-    font-size: 1.4rem;
+    font-size: 0.8em;
     font-style: italic;
 
     .stat {
@@ -136,19 +136,12 @@
 
 #post {
     grid-column: 1 / 4;
+    row-gap: $paragraph-spacing;
     overflow-wrap: break-word;
     @include centered;
 
     & > * {
         grid-column: 2;
-    }
-
-    .post-stats {
-        margin-bottom: 30px;
-    }
-
-    @include headings {
-        margin-bottom: $paragraph-spacing;
     }
 
     h2 {
@@ -176,13 +169,17 @@
         padding-top: 90px;
     }
 
+    p {
+        margin: 0;
+    }
+
     a:not(.post-tag) {
         @include underlined-link;
     }
 
     figure {
         figcaption {
-            font-size: 1.4rem;
+            font-size: 0.8em;
             font-style: italic;
             text-align: center;
             @include transition;
@@ -218,21 +215,6 @@
         box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
     }
 
-    blockquote,
-    figure,
-    picture,
-    iframe,
-    .pro-con-table,
-    div.highlighter-rouge {
-        margin-bottom: $img-spacing;
-        // Add the remainder so the top and bottom are spaced equally
-        margin-top: calc(#{$img-spacing} - #{$paragraph-spacing});
-    }
-
-    li:not(:last-child) {
-        margin-bottom: 0.5 * $paragraph-spacing + 0px;
-    }
-
     ol li::marker {
         @include transition;
         color: var(--text-color-emphasis);
@@ -243,25 +225,22 @@
     ul,
     ol {
         @include transition;
-        margin-bottom: $paragraph-spacing;
-        margin-top: calc(30px - #{$paragraph-spacing});
         padding-left: 40px;
     }
 
     blockquote {
         background: var(--blockquote-bg-color);
         border-left: 4px solid #6b6a6a;
-        margin-bottom: $paragraph-spacing;
         padding: 1.3em;
         @include transition;
 
         p {
             color: var(--blockquote-text-color);
-            margin: 0;
         }
     }
 
     .code-header {
+        margin-bottom: calc(-1 * #{$paragraph-spacing} + -1px);
         z-index: 2;
 
         .file-name {
@@ -270,9 +249,6 @@
             border-top-right-radius: 5px;
             box-shadow: 0 3px 3px 0px rgba(0, 0, 0, 0.3);
             color: #bcbcbc;
-            // paragraph-spacing - img-spacing will always be negative, which is what we need
-            margin-bottom: calc(#{$paragraph-spacing} - #{$img-spacing});
-            margin-top: calc(#{$img-spacing} - #{$paragraph-spacing});
             padding: 10px 20px;
             @include transition;
 
@@ -299,11 +275,6 @@
         code {
             padding: 0;
         }
-    }
-
-    .MathJax_Display {
-        margin-bottom: $img-spacing;
-        margin-top: calc(#{$img-spacing} - #{$paragraph-spacing});
     }
 
     .spoiler {
@@ -372,7 +343,7 @@ code {
     border-radius: 3px;
     color: var(--code-text-color);
     font-family: Monaco, Consolas, 'Courier New', monospace;
-    font-size: 1.6rem;
+    font-size: 0.875em;
     padding: 2px 4px;
     @include transition;
 }
