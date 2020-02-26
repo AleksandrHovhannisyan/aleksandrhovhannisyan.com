@@ -19,6 +19,10 @@
         {% endif %}
         <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
         <meta property="og:url" content="{{ site.url }}" />
+        {% if page.noindex %}
+        <!-- Prevent this page from showing up on search engines -->
+        <meta name="robots" content="noindex">
+        {% endif %}
         <link rel="stylesheet" href="/assets/styles/main.css" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         {% if page.isCanonical %}

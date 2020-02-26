@@ -142,8 +142,8 @@
     }
 
     @include headings {
-        // 64px = height of navbar
-        scroll-margin-top: 64px;
+        // 20px more than the navbar
+        scroll-margin-top: 84px;
         margin-top: 1.5em;
     }
 

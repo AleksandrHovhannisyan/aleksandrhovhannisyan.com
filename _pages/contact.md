@@ -1,13 +1,11 @@
 ---
 title: Contact
+description: Have questions, feedback, or business inquiries? Get in touch!
 permalink: /contact/
 ---
 
 <section id="contact" class="section">
-    <h2 class="heading-with-image">
-        <span>Get in touch!</span>
-        <img src="/assets/img/envelope.png" alt="📧">
-    </h2>
+    {% include headingWithImage.html h="Get in touch!" lvl=1 img="/assets/img/envelope.png" alt="📧" %}
     <div id="contact-information">
         <form action="https://formspree.io/aleksandrhovhannisyan.github.io@gmail.com" method="POST" spellcheck="false">
             <input type="hidden" name="_subject" value="Someone sent you a message!" />
