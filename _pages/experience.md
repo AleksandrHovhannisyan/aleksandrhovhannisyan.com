@@ -1,5 +1,6 @@
 ---
 title: Experience
+description: I try to keep busy while having fun and testing my limits. Between school, side projects, freelancing, and interning, I've gained valuable exposure to a wide variety of interesting technologies and problems.
 permalink: /experience/
 ---
 

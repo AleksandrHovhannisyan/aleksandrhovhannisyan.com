@@ -1,7 +1,8 @@
 ---
 layout: tagPage
 title: Blog
+description: View all of my blog posts tagged with "gybe"
 tag: gybe
 customJS: ["blogImage"]
-robots: noindex
+noindex: true
 ---

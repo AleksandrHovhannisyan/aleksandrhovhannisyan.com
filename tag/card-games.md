@@ -1,7 +1,8 @@
 ---
 layout: tagPage
 title: Blog
+description: View all of my blog posts tagged with "card-games"
 tag: card-games
 customJS: ["blogImage"]
-robots: noindex
+noindex: true
 ---
