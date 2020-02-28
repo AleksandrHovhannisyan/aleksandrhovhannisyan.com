@@ -169,7 +169,7 @@
     }
 
     a {
-        @include underlined-link;
+        @include underlined-link($primary-color-link, $secondary-color-link);
     }
 
     .job {
@@ -233,7 +233,7 @@
     margin-top: 40px;
 
     a {
-        @include underlined-link;
+        @include underlined-link($primary-color-link, $secondary-color-link);
     }
 
     .institution-name {

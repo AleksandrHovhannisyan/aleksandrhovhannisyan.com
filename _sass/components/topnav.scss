@@ -19,8 +19,9 @@ $topnav-min-height: 64px;
     @include transition;
 
     * {
-        color: var(--text-color-nav);
-        font-weight: 500;
+        color: #dedede;
+        fill: #dedede;
+        font-weight: normal;
     }
 
     .nav-container {
@@ -46,7 +47,7 @@ $topnav-min-height: 64px;
 
         #website-name {
             margin-left: 5px;
-            width: 230px;
+            flex-shrink: 0;
             @include transition;
         }
 
@@ -137,27 +138,19 @@ $topnav-min-height: 64px;
         top: 20px;
         @include transition;
 
-        #active-nav-link {
-            color: white;
-
-            // Force the underline
-            &::after {
-                width: 100%;
-            }
+        #active-nav-link, a:hover, a:focus {
+            background-color: #4f4f4f;
         }
 
         li {
-            margin: 40px auto;
+            margin: 15px auto;
             text-align: center;
         }
 
         a {
-            @include underlined-link(#ffffff);
-            vertical-align: middle;
-
-            &:hover, &:focus {
-                color: white;
-            }
+            border-radius: 2px;
+            padding: 15px 10px;
+            display: block;
         }
     }
 
@@ -197,18 +190,15 @@ $topnav-min-height: 64px;
             position: static;
     
             li {
+                margin: 0 0 0 30px;
                 height: $topnav-min-height;
-                margin: 0 0 0 40px;
-            }
-    
-            a {
                 display: flex;
                 align-items: center;
-                height: 100%;
+            }
 
-                &::after {
-                    bottom: 12px;
-                }
+            a {
+                padding: 8px 10px;
+                display: inline;
             }
         }
     

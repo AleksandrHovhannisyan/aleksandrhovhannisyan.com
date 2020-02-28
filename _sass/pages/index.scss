@@ -41,15 +41,8 @@
     }
 
     a {
-        --hero-link: #64b5f6;
-
-        .dark & {
-            --hero-link: #{$secondary-color-link};
-        }
-
-        color: var(--hero-link);
-    
-        @include underlined-link(var(--hero-link));
+        @include themed(color, #64b5f6, $secondary-color-link);
+        @include underlined-link(#64b5f6, $secondary-color-link);
     }
 }
 

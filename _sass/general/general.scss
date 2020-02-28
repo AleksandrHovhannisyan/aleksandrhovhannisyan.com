@@ -31,8 +31,7 @@
 }
 
 html {
-    // Fallback media queries for anything that's not Chrome
-
+    // Font between 16px (mobile) and 20px, https://css-tricks.com/simplified-fluid-typography/
     @media screen and (min-width: 25em) {
         font-size: 4vw;
     }
@@ -40,9 +39,6 @@ html {
     @media screen and (min-width: 31.25em) {
         font-size: 1.25em;
     }
-
-    // Font between 16px (mobile) and 20px, https://css-tricks.com/simplified-fluid-typography/
-    font-size: min(max(16px, 4vw), 18px);
 }
 
 body {
@@ -124,7 +120,7 @@ h1 {
 
 a {
     color: var(--link-color);
-    font-weight: 500;
+    font-weight: 600;
     text-decoration: none;
     @include transition;
 }
@@ -227,6 +223,6 @@ li:not(:last-child) {
 
     a {
         color: $secondary-color-link;
-        @include underlined-link($secondary-color-link);
+        @include underlined-link($secondary-color-link, $secondary-color-link);
     }
 }

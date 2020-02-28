@@ -1,4 +1,4 @@
 {% assign heading = include.heading %}
 <h{{ include.level }} id="{{ heading | slugify }}" class="linked-heading">
-    <a href="#{{ heading | slugify }}">#</a> {{ heading }}
+    <a class="heading-anchor" href="#{{ heading | slugify }}">#</a>{{ heading }}
 </h{{ include.level }}>

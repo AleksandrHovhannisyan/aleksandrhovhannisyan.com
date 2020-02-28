@@ -151,10 +151,16 @@
         margin: 0;
     }
 
-    a:not(.post-tag) {
-        @include underlined-link;
+    a:not(.post-tag):not(.heading-anchor) {
+        @include underlined-link($primary-color-link, $secondary-color-link);
     }
 
+    .heading-anchor {
+        padding-left: 2px;
+        padding-right: 2px;
+        margin-right: 2px;
+    }
+    
     figure {
         figcaption {
             font-size: 0.8em;
