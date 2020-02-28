@@ -10,26 +10,14 @@
     }
 }
 
-@mixin underlined-link($color: var(--link-color)) {
-    position: relative;
+@mixin underlined-link($lightColor, $darkColor) {
     text-decoration: none;
-    border: none;
+    @include themed(border-bottom, 3px solid rgba($lightColor, 0.3), 3px solid rgba($darkColor, 0.5));
     @include transition;
 
-    &::after {
-        content: '';
-        height: 3px;
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        width: 0%;
-        background-color: $color;
-        @include transition;
-    }
-
-    &:hover::after, &:focus::after {
-        width: 100%; 
-        left: 0;
+    &:hover, &:focus {
+        @include themed(border-bottom, 3px solid $lightColor, 3px solid $darkColor);
+        @include themed(background-color, rgba($lightColor, 0.1), rgba($darkColor, 0.2));
     }
 }
 

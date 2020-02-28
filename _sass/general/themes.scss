@@ -8,7 +8,6 @@ html.light {
     --selection-bg-color: rgba(218, 227, 231, 0.8);
 
     --text-color-normal: #{$denim};
-    --text-color-nav: #cecdcd;
     --text-color-emphasis: #3c4e56;
     --link-color: #{$primary-color-link};
 
@@ -41,7 +40,6 @@ html.dark {
 
     --text-color-normal: #adadad;
     --text-color-emphasis: #cccccc;
-    --text-color-nav: #cecdcd;
     --link-color: #{$secondary-color-link};
 
     --button-bg-color: #bda17f;
