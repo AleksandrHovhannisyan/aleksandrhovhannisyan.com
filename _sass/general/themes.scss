@@ -19,7 +19,7 @@ html.light {
     --tag-bg-color: #dae3e7;
     --tag-text-color: #{$primary-color};
 
-    --code-bg-color: #e8e8e8;
+    --code-bg-color: rgba(234, 234, 234, 0.749);
     --code-text-color: #5b6169;
 
     --hover-color-general: #f6f6f6;
@@ -50,8 +50,8 @@ html.dark {
     --tag-bg-color: #ada08f;
     --tag-text-color: #000000;
 
-    --code-bg-color: #4d4d4d;
-    --code-text-color: #c3c3c3;
+    --code-bg-color: rgba(88, 88, 88, 0.65);
+    --code-text-color: #b2b2b2;
 
     --hover-color-general: #292929;
 
