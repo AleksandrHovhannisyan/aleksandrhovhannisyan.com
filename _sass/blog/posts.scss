@@ -339,6 +339,6 @@ code {
     color: var(--code-text-color);
     font-family: Monaco, Consolas, 'Courier New', monospace;
     font-size: 0.875em;
-    padding: 2px 4px;
+    padding: 3px 6px;
     @include transition;
 }
