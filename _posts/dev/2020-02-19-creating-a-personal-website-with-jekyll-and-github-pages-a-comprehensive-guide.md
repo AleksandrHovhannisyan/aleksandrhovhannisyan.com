@@ -3,6 +3,7 @@ title: "Creating a Personal Website with Jekyll and GitHub Pages: A Comprehensiv
 description: Jekyll is a static site generator that makes it easy for you to create a website and blog. If you're interested in getting started with Jekyll, this in-depth guide is for you.
 keywords: [jekyll and github pages, getting started with jekyll]
 tags: [dev, jekyll, frontend, github]
+isCanonical: true
 ---
 
 {% include posts/picture.html img="og-large" ext="PNG" alt="Jekyll and GitHub Pages." shadow=false %}
@@ -51,7 +52,7 @@ Let's dig in!
   - [Example 1: Skills and Abilities](#example-1-skills-and-abilities)
   - [Example 2: Author Bios](#example-2-author-bios)
   - [Example 3: Tag Descriptions](#example-3-tag-descriptions)
-- [Setting Up Google Search Console for GitHub Pages](#setting-up-google-search-console-for-github-pages)
+- [Setting Up Google Search Console](#setting-up-google-search-console)
   - [Is It Safe to Upload the Google Search Console Verification File?](#is-it-safe-to-upload-the-google-search-console-verification-file)
 - [GitHub Pages Support for Jekyll Plugins](#github-pages-support-for-jekyll-plugins)
 
@@ -61,7 +62,7 @@ Jekyll is a **static site generator**. That's just a fancy way of saying that it
 
 {% include posts/picture.html img="static-site-generator" ext="PNG" alt="A static site generator spits out a compiled, well-structured, fully functioning site." shadow=false %}
 
-In plain English, Jekyll makes it easy for you to create a website—and, more importantly, a blog—with plain old HTML and Markdown, without having to worry about things like how to tag posts or make site data accessible on all of your pages. It takes care of these things for you so you can focus on doing what you love the most: writing (or, in my case, writing *and* dev)!
+In plain English, Jekyll makes it easy for you to create a website—and, more commonly, a blog—with plain old HTML and Markdown, without having to worry about things like how to add tags to posts or make certain static data accessible on all of your pages. It takes care of these things for you so you can focus on doing what you love the most: writing (or, in my case, writing *and* dev)!
 
 [GitHub Pages](https://help.github.com/en/github/working-with-github-pages/about-github-pages), on the other hand, is a free hosting service for static sites that's offered by GitHub to all of its users. And since GitHub accounts are practically *free real estate*, there's really never been a better time to make your very own website or blog.
 
@@ -159,7 +160,7 @@ end
 gem "wdm", "~> 0.1.0", :install_if => Gem.win_platform?
 ```
 
-First, remove this line:
+First, remove this line if you intend to publish your site on GitHub Pages:
 
 ```ruby
 gem "jekyll", "~> 3.8.6"
@@ -173,14 +174,14 @@ And then uncomment the line specifying the `github-pages` gem:
 # gem "github-pages", group: :jekyll_plugins
 ```
 
-I also like to remove this line to get rid of the default `minima` theme:
+I also recommend removing this line to get rid of the default `minima` theme:
 
 ```ruby
 # This is the default theme for new Jekyll sites. You may change this to anything you like.
 gem "minima", "~> 2.0"
 ```
 
-If you decide to remove the minima theme, you'll need to also remove it from `_config.yml`:
+If you do that, you'll also need to remove it from `_config.yml` by setting the theme to `null`:
 
 ```yml
 # ...
@@ -194,7 +195,7 @@ plugins:
 # ...
 ```
 
-If you don't use `theme: null`, the `github-pages` gem will generate a default stylesheet, `/_site/assets/css/style.css`, that's about 3k lines long, and that you may not want or need for your site. I recommend setting the theme to `null` so you have control over your styling, but again, this is up to you.
+If you don't use `theme: null`, the `github-pages` gem will automatically generate a default stylesheet, `/_site/assets/css/style.css`, that's about 3k lines long, and that you may not want or need for your site. I recommend setting the theme to `null` so you have control over your styling, but this is up to you.
 
 After doing all of that, run this command to install and update all necessary gems for your site:
 
@@ -209,7 +210,7 @@ Bundle complete! 5 Gemfile dependencies, 85 gems now installed.
 Use `bundle info [gemname]` to see where a bundled gem is installed.
 ```
 
-You should also see a `Gemfile.lock` file at the root of your project. This is like the `package-lock.json` that npm generates. The lockfile gets created the first time you run `bundle install`, ensuring that anyone who runs the same command in the future installs the exact versions specified in there. That way, everyone's on the same page.
+You should also now see a `Gemfile.lock` file at the root of your project. This is like the `package-lock.json` that npm generates, if you've ever worked in a Node ecosystem. This lockfile gets created the first time you run `bundle install`, ensuring that anyone who runs the same command in the future installs the exact versions specified in there. That way, everyone's on the same page.
 
 ### 4. Running Jekyll Locally
 
@@ -233,19 +234,17 @@ The second is to add this line somewhere inside your project's `_config.yml` fil
 port: 4001
 ```
 
-> **Note**: You can leave the port as `4000` by default. This is just useful to know in case you want to run two Jekyll sites simultaneously on your local, since they can't both be on the same port.
+> **Note**: You can leave the port as `4000` by default. This is just useful to know in case you want to run two Jekyll sites simultaneously on your local since they can't both be on the same port.
 
-Head over to your localhost to see the starter page. Note that the appearance of this starter page depends on how you configured Jekyll in the earlier sections. You may see:
+Head on over to `localhost:4000` to see the starter page. Note that the appearance of this page depends on how you configured Jekyll in the earlier sections. You may see:
 
-1. The minima theme boilerplate, which has the most starter content, if you left `theme: minima` as is.
-2. A mostly blank page with a title placeholder if you deleted the line `theme: minima` from your `_config.yml`.
-3. A completely blank page, if you set `theme: null` explicitly like I did.
+1. The minima theme, which has the most starter content, if you left `theme: minima` as is.
+2. A mostly blank page with a title placeholder if you deleted the line `theme: minima`.
+3. A completely blank page, if you set `theme: null` explicitly like I recommended.
 
 {% include posts/picture.html img="themes" ext="JPG" alt="The three Jekyll starter themes." shadow=false %}
 
-At the end of the day, I suppose it's not too important which one you use. But I prefer to start with a clean slate.
-
-> **Note**: The remainder of this tutorial assumes that your theme is set to `null`. Some of the screenshots I show may not line up with what you see on your end if you decide to use the minima theme. You may also miss out on learning some useful things about how Jekyll works.
+The remainder of this tutorial assumes that your theme is set to `null`. Some of the screenshots I show may not line up with what you see on your end if you decide to use the minima theme. You may also miss out on learning some useful things about how Jekyll works if you decide to use one of the starter themes instead of writing your own CSS.
 
 ### 5. Pushing Your Site to GitHub
 
@@ -269,7 +268,7 @@ The Jekyll starter is a bare-bones site. In reality, you're going to need more J
 - `_layouts`: HTML layouts define the structure of your site and can be nested in one another.
 - `_posts`: Where you'll store all of your blog posts as Markdown files.
 - `_sass`: This is where your SASS partials go. You'll then need to import them in `_assets/main.scss`.
-- `_site`: Jekyll's auto-generated build directory. It's not pushed to GitHub because it's in `.gitignore`.
+- `_site`: Jekyll's auto-generated build directory, which houses your final, compiled site. It's not pushed to GitHub because it's in `.gitignore`.
 - `_assets`: Mainly for storing images and scripts, but it can also house a main CSS file.
 
 You may be wondering why all of these directory names are prefixed by an underscore. A directory with a leading underscore is special and won't get processed by Jekyll. As a result, it won't appear in the build directory, `_site/`.
@@ -353,9 +352,18 @@ layout: home
 ```
 {% endraw %}
 
-Files ending in `.md` are written in [Markdown](https://en.wikipedia.org/wiki/Markdown), a widely used markup language that can be thought of as a layer on top of HTML. Markdown takes a content-first approach, making it easier to define markup without having to use explicit HTML tags. For this reason, it is often favored in static site generators like Jekyll, Hugo, and GatsbyJS, especially for writing blog posts since the syntax is much friendlier than HTML's.
+Files ending in `.md` (or `.markdown`) are written in [Markdown](https://en.wikipedia.org/wiki/Markdown), a widely used markup language that just gets compiled down to HTML. Since it has such a simple syntax, Markdown is often favored in static site generators like Jekyll, Hugo, and GatsbyJS, especially for writing blog posts.
 
-You should be familiar with Markdown if you've ever created a `README.md` file for your repo or posted anything on StackOverflow, which uses a modified Markdown parser. Note that while Markdown allows you to create markup using a much simpler syntax than HTML, you can still use raw HTML in a Markdown file.
+You should be familiar with Markdown if you've ever created a `README.md` file for your repo or posted anything on StackOverflow, which uses a modified Markdown parser. Note that Markdown is, in a sense, "backwards compatible"—you can still write raw HTML in a Markdown file.
+
+Jekyll uses a modified Markdown parser called [kramdown](https://kramdown.gettalong.org/syntax.html), as noted in `_config.yml`:
+
+```yml
+# Build settings
+markdown: kramdown
+```
+
+Kramdown extends Markdown with some useful features, like adding classes and IDs to elements without having to resort to the HTML syntax.
 
 Before moving on, let's modify `index.md` as follows:
 
@@ -393,7 +401,21 @@ layout: home
 ```
 {% endraw %}
 
-Notice that we have to specify the ID explicitly with HTML, whereas Markdown does it automatically for us.
+Notice that we have to specify the ID explicitly with HTML, whereas Markdown does it automatically for us. If you wanted to, you could achieve the same result using Kramdown's ID specifier:
+
+{% include posts/codeHeader.html name="index.md" %}
+{% raw %}
+```markdown
+---
+# Feel free to add content and custom Front Matter to this file.
+# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+
+layout: home
+---
+
+# Hello, Jekyll {#hello-jekyll}
+```
+{% endraw %}
 
 To understand more about what goes on behind the scenes in Jekyll, go ahead and expand your Git-ignored `_site` directory. Remember that this is the build directory that Jekyll creates each time you change a file, while `jekyll serve` is running. You should see that there's an `index.html` in there. Open that up to see its contents:
 
@@ -425,7 +447,7 @@ Build Warning: Layout 'page' requested in about.md does not exist.
 Build Warning: Layout 'home' requested in index.md does not exist.
 ```
 
-Note that there are **predefined front matter variables** (like `layout`) that Jekyll recognizes by default and uses to change how a page looks or behaves, without you having to explicitly define that behavior yourself. In this case, Jekyll uses the `layout` variable to structure your page's HTML according to a layout file, if you've defined one (more on that later). Check out the official Jekyll docs for the full list of [predefined variables](https://jekyllrb.com/docs/variables/).
+Note that there are **predefined front matter variables** (like `layout`) that Jekyll recognizes by default and uses to change how a page looks or behaves, without you having to explicitly define what it should do with those variables. In this case, Jekyll uses the `layout` variable to structure your page's HTML according to a layout file, if you've defined one (more on that later). Check out the official Jekyll docs for the full list of [predefined variables](https://jekyllrb.com/docs/variables/).
 
 You can also define any number of **custom front matter variables** for your own use:
 
@@ -522,7 +544,7 @@ layout: post
 ---
 ```
 
-And doing this manually for each page, like our home page, experience page, contact page, and so on:
+And doing this manually for each page—like our home page, experience page, contact page, and so on—that we create under a directory named `_pages/`:
 
 {% include posts/codeHeader.html name="_pages/contact.md" %}
 ```markdown
@@ -542,7 +564,7 @@ We've already seen that our posts go under `_posts/`. So where do our files go f
 
 By default, Jekyll looks for all of your site's pages at the root of your project directory. This is to ensure that, for example, `index.html` appears under `_site/index.html` once your site is built, as we saw in the previous section.
 
-The Jekyll starter already comes with two such files at the root of the project: `index.md` (which gets compiled to `index.html`) and `about.md` (which gets compiled to `about.html`). However, as you can imagine, dumping all of your non-post page files into the root of the project directory is not ideal if you want to keep things organized, especially if you end up having lots of pages. So instead, we can store our pages in a `_pages/` directory and tell Jekyll where to look for them.
+The Jekyll starter already comes with two such files at the root of the project: `index.md` (which gets compiled to `index.html`) and `about.md` (which gets compiled to `about.html`). However, as you can imagine, dumping all of your non-post page files into the root of the project directory is not ideal if you want to keep things organized, especially if you end up having lots of pages. So instead, we can store our pages in a custom `_pages/` directory and tell Jekyll where to look for them.
 
 First, create this directory, either via a UI or Bash:
 
@@ -564,7 +586,7 @@ Now you should see the following page instead of the `index.html` from earlier:
 
 Hmm... Our `index.html` and `about.html` pages have vanished! Plus, our newly created `_pages/` directory is nowhere to be found. The latter behavior is expected because the directory has a leading underscore—and if you'll recall, Jekyll doesn't process those kinds of directories unless you tell it to.
 
-It's not Jekyll's fault that our two pages disappeared—we didn't tell it where to look for those files after we moved them to a custom directory! So when we request `index.html` by visiting our localhost's root, we're just given the project directory.
+It's not Jekyll's fault that our two pages disappeared—we didn't tell it where to look for those files after we moved them to our custom `_pages/` directory. So when we request `index.html` by visiting our localhost's root, we're just given the `_site/` directory.
 
 Open up your `_config.yml` and add this line somewhere:
 
@@ -572,13 +594,13 @@ Open up your `_config.yml` and add this line somewhere:
 include: [_pages]
 ```
 
-This tells Jekyll to include anything under `_pages/` in its build pipeline.
+This command defines an array of directories that Jekyll should process when it goes to build your site. In this case, we've defined an array of just one directory: `_pages/`.
 
-> **Note**: The opposite of `include` is, as expected, `exclude`. Check out the commented block at the very bottom of your `_config.yml`, and you'll see that some files, like `Gemfile` and others, are excluded from processing by default. You can exclude other files by explicitly defining an `exclude` list.
+> The opposite of `include` is, as expected, `exclude`. Check out the commented block at the very bottom of your `_config.yml`, and you'll see that some files, like `Gemfile` and others, are excluded from processing by default. You can exclude other files by explicitly defining an `exclude` list.
 
 Now let's restart the server:
 
-{% include posts/picture.html img="webrick2" ext="JPG" alt="The WEBrick server for our Jekyll site." %}
+{% include posts/picture.html img="webrick2" ext="PNG" alt="The WEBrick server for our Jekyll site." %}
 
 Okay, it looks like that added `_pages/` to our build directory, and we can now see an `about/` directory that presumably stores our about page. But it's still not serving our index properly when we visit `localhost:4000`.
 
@@ -752,7 +774,7 @@ So the `date` front matter variable is in fact redundant because we already have
 
 Let's try an experiment. Remove the date from the post's front matter, and replace the file with this:
 
-{% include posts/codeHeader.html name="_posts/2020-02-14-welcome-to-jekyll.md" %}
+{% include posts/codeHeader.html name="_posts/2020-02-14-welcome-to-jekyll.markdown" %}
 {% raw %}
 ```markdown
 ---
@@ -779,7 +801,7 @@ There are three predefined variables unique to Jekyll blog posts:
 - `category` and `categories`: Specify the category or categories, respectively, to which the blog post belongs. Categories can be used for grouping related blog posts in Jekyll.
 - `tags`: Tags are very similar to categories in Jekyll. In fact, there's barely any difference between the two.
 
-For example, this blog post was written in Markdown and uses the following front matter variables:
+For example, this blog post that you're reading was written in Markdown and uses the following front matter variables:
 
 ```markdown
 ---
@@ -790,7 +812,7 @@ tags: [dev, jekyll, frontend, github]
 ---
 ```
 
-Of these four variables, only `tags` is a predefined one that Jekyll recognizes and processes. The rest, like `title`, `description`, and `keywords` are for SEO and allow me to customize the page's `head` block using some Liquid templating.
+Of these four variables, only `tags` is a predefined one that Jekyll recognizes and processes. The rest—like `title`, `description`, and `keywords`—are for SEO and allow me to customize my page's `head` block using some Liquid templating. If you scroll to the top of this post, you'll see that I've used the `tags` variable to create some clickable tag elements under the post's title.
 
 ### Syntax Highlighting
 
@@ -1593,11 +1615,11 @@ Then, you can once again take advantage of YAML's associative data nature to ass
 
 Neat, right? You can extend this to a lot of other use cases.
 
-## Setting Up Google Search Console for GitHub Pages
+## Setting Up Google Search Console
 
 So you've started blogging with Jekyll. Awesome work!
 
-But how do you know if you're getting any traffic, or what pages people are clicking, or what queries they're using to find you? What is the distribution of devices being used (e.g., desktop vs. mobile)? What about your impressions, click count, click-through rate, and overall ranking on Google?
+But how do you know if you're getting any traffic, or what pages people are clicking, or what queries they're using to find you? What devices are being used? Are most of your users on mobile or desktop? What about your impressions, click count, click-through rate, and overall ranking on Google?
 
 {% include posts/picture.html img="google-search-console" ext="PNG" alt="Google Search Console statistics for my site." %}
 
@@ -1623,15 +1645,21 @@ GitHub Pages will then build your site and make this file accessible to Google f
 
 ### Is It Safe to Upload the Google Search Console Verification File?
 
-Don't worry—[there's no security risk associated with doing this](https://stackoverflow.com/questions/57384269/github-pages-blog-and-google-search-console-is-it-safe-to-follow-these-steps-fo). The file can only be used for verifying ownership, not authentication, meaning if someone downloads that file and tries to use it, they won't be able to access your Google Search Console statistics or anything else associated with your Google Account.
+Don't worry—[there's no security risk associated with doing this](https://stackoverflow.com/questions/57384269/github-pages-blog-and-google-search-console-is-it-safe-to-follow-these-steps-fo). The file can only be used for verifying ownership, not authentication. So if someone downloads your file and tries to use it, they won't be able to access your Google Search Console statistics or anything else associated with your Google Account.
 
 ## GitHub Pages Support for Jekyll Plugins
 
-One last thing to note about Jekyll is that it has lots of open-source plugins that you can use to make your workflow much easier. But GitHub Pages [only supports a limited set of plugins](https://help.github.com/en/github/working-with-github-pages/about-github-pages-and-jekyll). If you decide to use Jekyll plugins that are not supported, you'll observe that they work on your localhost but not when you push to GitHub.
+The great thing about Jekyll is that it has a large open-source community of creators who publish **Jekyll plugins**. These are just Ruby gems that extend the functionality of Jekyll and make your life easier.
 
-If you absolutely need to use a plugin for a feature on your Jekyll website, then you'll need to push `_site/` to GitHub instead of pushing your source files. This may not be ideal if you want people to see your site's source and how you organized your project.
+The bad news? GitHub Pages [only supports a limited set of plugins](https://pages.github.com/versions/). This means that if you decide to use Jekyll plugins that are not supported by GitHub Pages, they'll work on your localhost but not when you push your site to GitHub.
 
-## Time to Celebrate!
+If you absolutely need to use a plugin for a feature on your Jekyll website, then you'll need to push just the `_site/` directory to GitHub instead of pushing your source files. Basically, you'd bypass the build step on GitHub Pages and just publish your static site directly on the web server.
+
+Understandably, this may not be ideal if you want people (e.g., recruiters or other developers) to see your site's source and how you organized your project. So sometimes, you may need to reinvent the wheel to add a new feature to your site.
+
+You can learn more about this issue and its workarounds in [this StackOverflow thread](https://stackoverflow.com/a/31871892/5323344).
+
+## You're All Set!
 
 Give yourself a big pat on the back—if you made it to the end of this post, then you have a working website and a solid understanding of some Jekyll (and liquid) fundamentals 🎉.
 
