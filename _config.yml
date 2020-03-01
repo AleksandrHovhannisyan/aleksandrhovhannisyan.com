@@ -1,63 +1,59 @@
 title: Aleksandr Hovhannisyan
 author: Aleksandr Hovhannisyan
-description: "Hey there! I'm Aleksandr, a software developer who's passionate about solving problems and having fun. Get in touch!"
+description: Hey there! I'm Aleksandr, a software developer who's passionate about solving problems and having fun. Get in touch!
 keywords: [Aleksandr Hovhannisyan, github pages resume, github pages portfolio, github pages personal website]
-url: "https://aleksandrhovhannisyan.github.io/"
+url: https://aleksandrhovhannisyan.github.io/
 github_username: AleksandrHovhannisyan
 
-# Build settings
 plugins:
   - jekyll-feed
   - jekyll-sitemap
-include: ['_pages']
+include: [_pages]
 
 defaults:
   -
     scope:
-      path: "_pages"
-      type: "pages"
+      path: _pages
+      type: pages
     values:
       isPost: false
-      layout: "default"
+      layout: default
   -
     scope:
-      path: "_posts"
-      type: "posts"
+      path: _posts
+      type: posts
     values:
-      customJS: ["blogImage"]
+      customJS: [blogImage]
       isPost: true
-      layout: "post"
+      isBlogPage: true
+      layout: post
       permalink: /blog/:categories/:title/
   -
     scope:
-      path: "_posts/dev"
+      path: _posts/dev
     values:
       categories: dev
   -
     scope:
-      path: "_posts/cs101"
+      path: _posts/cs101
     values:
       categories: cs101
   -
     scope:
-      path: "_posts/gaming"
+      path: _posts/gaming
     values:
       categories: gaming
   -
     scope:
-      path: "_posts/music"
+      path: _posts/music
     values:
       categories: music
-
-
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+  -
+    scope:
+      path: tag
+      type: pages
+    values:
+      isBlogPage: true
+      layout: tagPage
+      customJS: [blogImage]
+      noindex: true

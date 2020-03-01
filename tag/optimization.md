@@ -1,8 +1,5 @@
 ---
-layout: tagPage
-title: Blog
-description: View all of my blog posts tagged with "optimization"
+title: "Tag: optimization"
+description: View all of my blog posts tagged with 'optimization.'
 tag: optimization
-customJS: ["blogImage"]
-noindex: true
 ---
