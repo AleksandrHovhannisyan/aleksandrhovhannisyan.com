@@ -1,16 +1,16 @@
 ---
-title: "Curve Fitting 101 Part 2: Least Squares Data Fitting"
-description: "Now that we've mastered the theory behind least squares, it's time to look at one of its most practical applications: least squares data fitting. We'll plot a best-fit line by hand and do a polynomial fit using least squares and Python."
-keywords: [least squares method data fitting, least squares method explained, polynomial fit using least squares]
+title: "Least Squares Method Explained Part 2: Data Fitting"
+description: "Now that we've mastered the theory behind the least squares method, it's time to look at one of its most practical applications: least squares data fitting. In this tutorial, we'll explore straight-line and polynomial least squares fitting."
+keywords: [least squares method explained, least squares data fitting, least squares polynomial fitting]
 tags: [cs101, math, numerical-analysis]
 needsLatex: true
 ---
 
-With an understanding of how to solve overdetermined systems using the least squares method and QR decomposition, we're now ready to look at one of the most practical applications of this theory: least squares data fitting. We'll plot a best-fit line by hand and a polynomial fit using least squares and Python. But first, we need a little background before we work out the problems.
+With an understanding of [how to solve overdetermined systems using the least squares method](/blog/cs101/least-squares-method-explained-part-1-mastering-least-squares-theory) and QR decomposition, we're now ready to look at one of the most practical applications of this theory: least squares data fitting. In this tutorial, we'll explore straight-line fitting and polynomial least squares fitting. But before we get to the problems, we need a little background.
 
 {% include linkedHeading.html heading="Least Squares Data Fitting" level=2 %}
 
-In **data fitting**, we have some function $$f$$ that takes $$n$$-vectors as its inputs and maps them to real numbers. We don't really know anything about the function itself, like what its shape is or what its terms are. It's your classic black box: You feed some vector $$x$$ to the function, and it spits out a $$y$$ in response:
+In **least squares data fitting**, we have some function $$f$$ that takes $$n$$-vectors as its inputs and maps them to real numbers. We don't really know anything about the function itself, like what its shape is or what its terms are. It's your classic black box: You feed some vector $$x$$ to the function, and it spits out a $$y$$ in response:
 
 {% include posts/picture.html img="black-box" ext="JPG" alt="The black-box model of a function." shadow=false %}
 
@@ -38,7 +38,7 @@ $$y^{(1)} \approx \hat{f}(x^{(1)})$$
 
 $$y^{(2)} \approx \hat{f}(x^{(2)})$$
 
-$$\dots$$
+$$\ldots$$
 
 $$y^{(N)} \approx \hat{f}(x^{(N)})$$
 
@@ -50,13 +50,13 @@ This is starting to look more like a system of equations. But we're not quite th
 
 Below is the general form of the model function $$\hat{f}$$ used in least squares data fitting:
 
-$$\hat{f}(x) = \theta_1 f_1(x) + \theta_2 f_2(x) + \dots + \theta_p f_p(x)$$
+$$\hat{f}(x) = \theta_1 f_1(x) + \theta_2 f_2(x) + \ldots + \theta_p f_p(x)$$
 
 If this looks confusing, don't worry—it's actually very simple.
 
-First, notice that the model is a function like any other. In this case, though, it's composed of $$p$$ parameters, $$\theta_1 \dots \theta_p$$, as well as $$p$$ functions, $$f_1(x), \dots, f_p(x)$$. In data fitting, these functions are called **basis functions**.
+First, notice that the model is a function like any other. In this case, though, it's composed of $$p$$ parameters, $$\theta_1, \ldots, \theta_p$$, as well as $$p$$ functions, $$f_1(x), \ldots, f_p(x)$$. In data fitting, these functions are called **basis functions**.
 
-Okay, so how can we make this model function more concrete?
+Okay, so how can we make this least squares model function more concrete?
 
 Well, the good news is that we get to pick the basis functions $$f_i$$ based on how we think the real function, $$f(x)$$, behaves. As we'll see shortly, if $$f$$ appears to be linear in behavior, then we may decide to pick our basis functions such that $$\hat{f}$$ ends up resembling a straight line. On the other hand, if $$f$$ appears to be quadratic, then we may pick our basis functions such that $$\hat{f}$$ ends up being some sort of a polynomial.
 
@@ -68,13 +68,13 @@ Well, the good news is that we get to pick the basis functions $$f_i$$ based on 
 
 Let's plug this general form of $$\hat{f}$$ into the earlier set of equations that we saw:
 
-$$y^{(1)} \approx \hat{f}(x^{(1)}) = \theta_1 f_1(x^{(1)}) + \theta_2 f_2(x^{(1)}) + \dots + \theta_p f_p(x^{(1)})$$
+$$y^{(1)} \approx \hat{f}(x^{(1)}) = \theta_1 f_1(x^{(1)}) + \theta_2 f_2(x^{(1)}) + \ldots + \theta_p f_p(x^{(1)})$$
 
-$$y^{(2)} \approx \hat{f}(x^{(2)}) = \theta_1 f_1(x^{(2)}) + \theta_2 f_2(x^{(2)}) + \dots + \theta_p f_p(x^{(2)})$$
+$$y^{(2)} \approx \hat{f}(x^{(2)}) = \theta_1 f_1(x^{(2)}) + \theta_2 f_2(x^{(2)}) + \ldots + \theta_p f_p(x^{(2)})$$
 
-$$\dots$$
+$$\ldots$$
 
-$$y^{(N)} \approx \hat{f}(x^{(N)}) = \theta_1 f_1(x^{(N)}) + \theta_2 f_2(x^{(N)}) + \dots + \theta_p f_p(x^{(N)})$$
+$$y^{(N)} \approx \hat{f}(x^{(N)}) = \theta_1 f_1(x^{(N)}) + \theta_2 f_2(x^{(N)}) + \ldots + \theta_p f_p(x^{(N)})$$
 
 Now that's more like it—this is a linear system of equations! Let's represent it in matrix form:
 
@@ -90,10 +90,10 @@ y^{(N)}
 \approx
 
 \begin{bmatrix}
-f_1(x^{(1)}) & f_2(x^{(1)}) & \dots & f_p(x^{(1)}) \\
-f_1(x^{(2)}) & f_2(x^{(2)}) & \dots & f_p(x^{(2)}) \\
-\vdots & \dots & \ddots & \vdots \\
-f_1(x^{(N)}) & f_2(x^{(N)}) & \dots & f_p(x^{(N)}) \\
+f_1(x^{(1)}) & f_2(x^{(1)}) & \ldots & f_p(x^{(1)}) \\
+f_1(x^{(2)}) & f_2(x^{(2)}) & \ldots & f_p(x^{(2)}) \\
+\vdots & \ldots & \ddots & \vdots \\
+f_1(x^{(N)}) & f_2(x^{(N)}) & \ldots & f_p(x^{(N)}) \\
 \end{bmatrix}
 
 \begin{bmatrix}
@@ -110,9 +110,9 @@ Notice that our matrix has dimensions $$N \times p$$. In practice, $$N$$ is ofte
 **To summarize**:
 
 - There exists some unknown relationship, $$f$$, between $$x^{(i)}$$ and $$y^{(i)}$$, such that $$f(x^{(i)}) = y^{(i)}$$.
-- We approximate $$f$$ using $$\hat{f}(x) = \theta_1 f_1(x) + \theta_2 f_2(x) + \dots + \theta_p f_p(x)$$.
-- We pick the basis functions $$f_1, \dots, f_p$$ based on how we think the real function $$f$$ behaves.
-- We solve for the parameters of our model—$$\theta_1, \dots, \theta_p$$—using the least squares method.
+- We approximate $$f$$ using $$\hat{f}(x) = \theta_1 f_1(x) + \theta_2 f_2(x) + \ldots + \theta_p f_p(x)$$.
+- We pick the basis functions $$f_1, \ldots, f_p$$ based on how we think the real function $$f$$ behaves.
+- We solve for the parameters of our model—$$\theta_1, \ldots, \theta_p$$—using the least squares method.
 
 {% include linkedHeading.html heading="General Strategy for Solving Least Squares Problems" level=2 %}
 
@@ -128,7 +128,7 @@ Here's a simple five-step strategy you can use to solve least squares problems:
 
 {% include linkedHeading.html heading="Example 1: Least Squares Straight-Line Fit" level=2 %}
 
-Suppose that we're given these data points:
+Suppose we're given these data points for a least squares line fitting problem:
 
 $$ (1, 1), (2, 3), (3, 3) = (x^{(1)}, y^{(1)}), (x^{(2)}, y^{(2)}), (x^{(3)}, y^{(3)}) $$
 
@@ -152,7 +152,7 @@ $$\hat{f}(x) = \theta_1 + \theta_2x$$
 
 So, we revisit our general model:
 
-$$\hat{f}(x) = \theta_1 f_1(x) + \theta_2 f_2(x) + \dots + \theta_p f_p(x)$$
+$$\hat{f}(x) = \theta_1 f_1(x) + \theta_2 f_2(x) + \ldots + \theta_p f_p(x)$$
 
 And we pick our basis functions, as promised, to give $$\hat{f}$$ a linear shape. We pick $$p$$ to be $$2$$, such that we have:
 
@@ -332,7 +332,7 @@ Awesome! This is the best-line fit for the data points we were given.
 
 As you add more points, data fitting (particularly the QR factorization portion) becomes more difficult to do by hand. Fortunately, you can use languages like MATLAB or Python to solve these problems. But now, when you do rely on computers, you'll at least know what they're doing behind the scenes.
 
-{% include linkedHeading.html heading="Example 2: Polynomial Fit Using Least Squares and Python" level=2 %}
+{% include linkedHeading.html heading="Example 2: Least Squares Polynomial Fitting (with Python!)" level=2 %}
 
 Let's not stop there! Suppose instead that we are given these five data points:
 
@@ -346,19 +346,19 @@ Here's a graph of our points:
 
 {% include posts/picture.html img="data2" ext="JPG" alt="Plotting the four data points we were given." shadow=false %}
 
-To me, that looks like a parabola. For that reason, I'm going to fit a degree-two polynomial (a quadratic).
+To me, these points seems to take on the shape of a parabola. Based on that observation, I'm going to perform a least squares polynomial fit using a polynomial of degree two (a quadratic, basically).
 
 {% include linkedHeading.html heading="Step 2: Pick an Appropriate Model" level=3 %}
 
-Well, like I said, I'm going to model this as a quadratic, so this is the general form of the model function I'm aiming for:
+Since we're modeling a quadratic equation (degree-two polynomial), this is the general form of the model function we'll aim for:
 
 $$\hat{f}(x) = \theta_1 + \theta_2 x + \theta_3 x^2$$
 
-To get that, we start with the original form again:
+To get that, we'll start with the original form again:
 
-$$\hat{f}(x) = \theta_1 f_1(x) + \theta_2 f_2(x) + \dots + \theta_p f_p(x)$$
+$$\hat{f}(x) = \theta_1 f_1(x) + \theta_2 f_2(x) + \ldots + \theta_p f_p(x)$$
 
-And we pick $$p=3$$ with:
+And we'll pick $$p=3$$ with:
 
 $$f_1(x) = 1$$
 
@@ -372,7 +372,7 @@ There we go! It's that simple.
 
 {% include linkedHeading.html heading="Step 3: Identify the Equations Involved" level=3 %}
 
-Here are all five equations for our problem:
+Here are all five equations for our polynomial fitting problem:
 
 $$ y^{(1)} = \theta_1 + \theta_2 x^{(1)} + \theta_3 (x^{(1)})^2 $$
 
@@ -428,9 +428,9 @@ $$
 
 {% include linkedHeading.html heading="Step 4: Solve the Overdetermined System Using Least Squares" level=3 %}
 
-Okay, here's where it gets kind of difficult by hand, so I'm going to "cheat" and use Python. You can use MATLAB instead if you'd prefer.
+Straight-line fitting is pretty simple by hand, but polynomial least squares fitting is where it gets kind of difficult. So I'm going to "cheat" and use Python! You can use MATLAB instead if you'd prefer; the language doesn't really matter once you know the theory.
 
-Here's the code that uses QR factorization explicitly:
+Here's a script that uses QR factorization explicitly:
 
 {% include posts/codeHeader.html name="lsq.py" %}
 ```python
@@ -484,13 +484,13 @@ $$
 
 $$
 
-Plugging this into our model, we arrive at the following function:
+Plugging this into our model, we arrive at the following polynomial function:
 
 $$\hat{f}(x) =1.86105904+1.80904405x+0.55014058x^{2}$$
 
 {% include linkedHeading.html heading="Step 5: Visualize the Solution" level=3 %}
 
-And here's the resulting graph:
+And here's the resulting graph with our polynomial fit to the data:
 
 {% include posts/picture.html img="best-fit2" ext="JPG" alt="The best-fit parabola to the data we were given." shadow=false %}
 

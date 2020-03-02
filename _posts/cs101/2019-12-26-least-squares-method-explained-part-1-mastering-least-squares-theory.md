@@ -1,16 +1,16 @@
 ---
-title: "Curve Fitting 101 Part 1: The Least Squares Method Explained"
+title: "Least Squares Method Explained Part 1: Mastering Least Squares Theory"
 description: In this comprehensive post, we'll look at the problem that motivates the least squares method and gain an intuitive understanding for how it works under the hood. This will give us the necessary skills to perform curve fitting.
 keywords: [least squares method explained]
 tags: [cs101, math, numerical-analysis]
 needsLatex: true
 ---
 
-> **Note**: This is the first of a two-part series on the least squares method. In this post, we'll take a deep dive into least squares theory. [Head on over to the second part](/blog/cs101/curve-fitting-101-part-2-least-squares-data-fitting) for some worked least squares problems.
-
 The least squares method is a simple and elegant technique, but it's often explained poorly. It's something that you'll remember by heart if you understand the intuition—you won't have to memorize a single equation.
 
 In this comprehensive post, we'll look at the problem that motivates the least squares method and gain an intuitive understanding for how least squares works under the hood.
+
+There's a lot of theory coming up, but I'll break it down into simple explanations.
 
 {% include linkedHeading.html heading="What Is the Least Squares Method?" level=2 %}
 
@@ -347,4 +347,4 @@ Here's the gist of what we covered in this post:
 
 And that's it! Hopefully things are starting to make a little more sense now.
 
-In the next post, we'll look at practical least squares applications and solve least squares data fitting problems by hand.
+[In the next post](/blog/cs101/least-squares-method-explained-part-2-data-fitting), we'll look at practical least squares applications and solve least squares data fitting problems by hand (and with Python!).

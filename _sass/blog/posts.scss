@@ -209,6 +209,48 @@
         margin-bottom: 0.5em;
     }
 
+    /* Latex (Katex) */
+    .katex {
+        font-size: 1.1em;
+    }
+
+    .inline-equation {
+        white-space: normal;
+    }
+
+    // Block-level equations
+    .block-equation {
+        text-align: center;
+        @include transition(color);
+        
+        .katex {
+            display: inline-block;
+            white-space: nowrap;
+            max-width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: 0.5em;
+            width: 100%;
+        }
+
+        .base {
+            margin-top: 0.5em;
+        }
+    }
+
+    // The first block-level equation after anything that's not itself a block-level equation
+    *:not(.block-equation) + .block-equation {
+        // This 1.5em + 0.5em margin top from the .base above = 2em total
+        margin-top: 1.5em;
+    }
+
+    // Any element coming after a block-level group of equations
+    .block-equation + *:not(.block-equation) {
+        // Need to match the 2em we got above. We have 0.5em padding bottom on .katex
+        // already, so we need 1.5em here.
+        margin-top: 1.5em;
+    }
+
     ol li::marker {
         @include transition;
         color: var(--text-color-emphasis);
@@ -263,8 +305,14 @@
         border-radius: 5px;
         box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.4);
 
-        & > .highlight {
-            padding: 30px;
+        & > div.highlight {
+            // 20px bottom + 10px from pre.highlight = 30px (see below)
+            padding: 30px 30px 20px 30px;
+
+            pre.highlight {
+                // Spacing between horizontal bar and the code, whenever we overflow horizontally
+                padding-bottom: 10px;
+            }
         }
 
         code {
