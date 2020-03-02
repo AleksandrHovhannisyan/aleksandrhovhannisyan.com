@@ -4,21 +4,41 @@ layout: default
 
 <article id="post">
   <header class="post-header">
-      <h1 class="post-title">{{ page.title }}</h1>
-      {% include posts/stats.html content=page.content date=page.date tags=page.tags %}
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% include posts/stats.html content=page.content date=page.date
+    tags=page.tags %}
   </header>
   <!-- Don't wrap so we can take advantage of CSS grid, until subgrids become a thing at least -->
   {{ content }}
 </article>
 
 {% if page.needsLatex %}
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<!-- Credit: https://xuc.me/blog/katex-and-jekyll/ -->
+<!-- Load jQuery -->
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- Load KaTeX -->
+<link
+  rel="stylesheet"
+  href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css"
+/>
+<script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
 <script>
-  // Ensures that LaTeX figures don't overflow the page horizontally
-  window.MathJax = {
-    'HTML-CSS': {
-      linebreaks: { automatic: true, width: 'container' }
-    }
-  };
+  $("script[type='math/tex']").replaceWith(function() {
+    var tex = $(this).text();
+
+    return (
+      '<span class="inline-equation">' + katex.renderToString(tex) + "</span>"
+    );
+  });
+
+  $("script[type='math/tex; mode=display']").replaceWith(function() {
+    var tex = $(this).text();
+
+    return (
+      '<div class="block-equation">' +
+      katex.renderToString("\\displaystyle " + tex) +
+      "</div>"
+    );
+  });
 </script>
 {% endif %}
