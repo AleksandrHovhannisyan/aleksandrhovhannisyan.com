@@ -6,9 +6,10 @@ tags: [dev, jekyll, frontend, github]
 isCanonical: true
 ---
 
-{% include posts/picture.html img="og-large" ext="PNG" alt="Jekyll and GitHub Pages." shadow=false %}
 
 Want to make a personal website or blog and share it with the world? Then you've come to the right place! This is the only guide you'll need to get started with Jekyll and host your site for free on GitHub Pages. I'll take you from zero to hero with Jekyll and help you understand all the fundamentals.
+
+{% include posts/picture.html img="og-large" ext="PNG" alt="Jekyll and GitHub Pages." shadow=false %}
 
 I moved my old site from pure HTML and CSS to Jekyll a while back and immediately fell in love. There's very little that Jekyll doesn't allow you to accomplish, so it's a perfect, lightweight option for beginners and veterans alike.
 
