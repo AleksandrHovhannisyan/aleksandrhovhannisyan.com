@@ -23,7 +23,7 @@ If you want to see this demo in action, check out [Embody](https://github.com/ca
 
 The naive approach is to run a `for` loop, with an intentional delay between each iteration using deltatime, in your main `Update` loop, and to try to make the player flash in each iteration. But if you do this, you won't actually observe any flashing. Why is that?
 
-In game development, you have to keep in mind that everything happens within a **frame update**. What this means is that most game engines have an `Update` method that runs the entire game's logic in "ticks." So, if you have a `for` loop inside the update loop, it'll complete all of its iterations in a single frame. Thus, any oascillating UI changes that were intended to be gradual—like the player model flashing—will be (almost) immediate, and therefore imperceptible.
+In game development, you have to keep in mind that everything happens within a **frame update**. What this means is that most game engines have an `Update` method that runs the entire game's logic in "ticks." So, if you have a `for` loop inside the update loop, it'll complete all of its iterations in a single frame. Thus, any oscillating UI changes that were intended to be gradual—like the player model flashing—will be (almost) immediate, and therefore imperceptible.
 
 Instead, we want to use [coroutines](https://docs.unity3d.com/Manual/Coroutines.html) to implement invincibility frames in Unity. A coroutine is simply a method that will run in parallel to the main update loop and resume where it left off in the next update.
 
@@ -109,7 +109,7 @@ private float invincibilityDurationSeconds;
 private float delayBetweenInvincibilityFlashes;
 ```
 
-> `SerializeField` lets you edit private members through the Unity inspector without having to make them public.
+> **Note**: `SerializeField` lets you edit private members through the Unity inspector without having to make them public in your script. This is useful if you want to change those values via the editor as you debug your game.
 
 You'll need to initialize these two members via the Inspector pane:
 
@@ -147,22 +147,26 @@ I find that a duration of `1.5 s` works best, with the delay set to `0.15 s`. Th
 
 {% include posts/picture.html img="flashes" ext="JPG" alt="The number of flashes that occur with those settings." %}
 
+Note the `TODO` comment above the yield statement—we have one final step remaining.
+
 {% include linkedHeading.html heading="3. Make the Player Flash While Invincible" level=2 %}
 
-The easiest way to simulate flashing is to repeatedly scale the player's model (or sprite, for 2D) between `0` and `1` during each iteration of the loop. So first, we need to actually get ahold of the player model. We'll add a member for it:
+Invincibility now works—you can verify this with the debug logs. But we'd like to give the player some sort of indication that they're currently invulnerable to damage. Making the player flash is the traditional approach and is a great example of **visual feedback**.
+
+The easiest way to make a player flash in Unity is to repeatedly scale the player's model (or sprite, for 2D) between `0` and `1` during each iteration of the loop. So first, we need to actually get ahold of the player model. We'll add a member variable for it:
 
 ```csharp
 [SerializeField]
 private GameObject model;
 ```
 
-**Note**: For this tutorial to work, the Player should consist of a root object (e.g., `MainPlayer`) that has a collision box and the Player script attached to it. Nested under that object should be the player's model (e.g., `Model`) as a separate object:
+**Note**: For this tutorial to work, the Player should consist of a root object (e.g., `MainPlayer`) that has a Collider and the Player script attached to it. Nested under that object should be the player's model (e.g., `Model`) as a separate object, with whatever shaders, materials, sprites, etc. that you're using (in my case, that's the angry-looking ghost):
 
 {% include posts/picture.html img="model" ext="JPG" alt="The object hierarchy of the player." shadow=false %}
 
-**This is important**! You should not use the root player object as the model. If you do, this could lead to some very game-breaking bugs, as scaling the root object would also scale the player's collider.
+**This is important**! We're going to scale the sprite/model. You should not treat the root player object as the model. If you do, this could lead to some very game-breaking bugs, as we'd effectively end up scaling the collider too.
 
-In your editor, go ahead and drag the model object into the appropriate slot in the Player script, like so:
+In your editor, drag and drop the model object into the appropriate slot in the Player script, like so:
 
 {% include posts/picture.html img="add-model" ext="GIF" alt="Adding the model object to the player script." shadow=false %}
 
