@@ -2,10 +2,7 @@
 @import 'settings';
 
 #hero-banner {
-    &, * {
-        @include transition;
-    }
-
+    $headshot-size: 140px;
     align-items: center;
     background-color: var(--hero-bg-color);
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.8);
@@ -17,42 +14,43 @@
     padding: 70px 1.2rem;
     position: relative;
 
-    img {
+    &, * {
+        @include transition;
+    }
+
+    #headshot {
         background-color: var(--hero-bg-color);
         border: 5px solid var(--hero-bg-color);
         border-radius: 50%;
         bottom: -70px;
-        height: 140px;
+        height: $headshot-size;
         position: absolute;
-        width: 140px;
+        width: $headshot-size;
     }
-    
-    .title, .subtitle {
-        color: white;
-        text-align: center;
+
+    .subtitle {
+        margin-bottom: calc(#{$headshot-size} / 4);
+        max-width: 70ch;
+        color: #c6c6c6;
     }
 
     .title {
         font-size: 1.94em;
+        color: white;
     }
 
-    img {
-        margin-top: 20px;
+    + .section {
+        margin-top: $headshot-size; 
     }
+}
 
-    a {
-        @include themed(color, #64b5f6, $secondary-color-link);
-        @include underlined-link(#64b5f6, $secondary-color-link);
+#featured-posts, #featured-projects {
+    .card-grid {
+        margin-top: 60px;
     }
 }
 
 #featured-projects {
-    margin-top: 130px;
-
-    .heading {
-        margin-bottom: 2em;
-    }
-
     #view-more-projects {
         align-items: center;
         display: flex;
@@ -69,17 +67,16 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-}
 
-#cta-buttons {
-    margin-top: 1.5em;
-    max-width: 400px;
-    width: 100%;
-
-    .button {
-        height: 60px;
-        margin-bottom: 15px;
+    #cta-buttons {
+        max-width: 400px;
         width: 100%;
+    
+        .button {
+            height: 60px;
+            margin-bottom: 15px;
+            width: 100%;
+        }
     }
 }
 

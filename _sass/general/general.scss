@@ -101,11 +101,7 @@ strong {
     @include transition;
 }
 
-.heading {
-    text-align: center;
-}
-
-.subtitle {
+.title, .subtitle, .heading {
     text-align: center;
 }
 
