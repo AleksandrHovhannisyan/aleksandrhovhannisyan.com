@@ -3,7 +3,7 @@ title: Blog
 layout: default
 ---
 
-<section class="section blog-overview">
+<section class="section blog-posts">
     {% assign blogType = "" %}
     {% assign pageTag = page.tag | split: '-' %}
     {% for word in pageTag %}
@@ -26,7 +26,7 @@ layout: default
         <a href="/tag/music" class="post-tag tag{% if page.tag == 'music' %} active-tag{% endif %}">music</a>
         <div class="more-tags-label">+{{ site.tags | size | minus: 4 }} other tags</div>
     </ul>
-    <section class="post-previews card-grid">
+    <section class="card-grid">
         {{ content }}
     </section>
 </section>

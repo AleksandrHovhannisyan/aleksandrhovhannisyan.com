@@ -1,13 +1,4 @@
----
-title: Blog
-description: Welcome to my blog! I like to write about a range of technical and nontechnical subjects. I hope you find what you're looking for!
-permalink: /blog/
-layout: blog
-customJS: [blogImage]
-isBlogPage: true
-tag: all
----
-{% for post in site.posts %}
+{% assign post = include.post %}
 <div class="card post-preview" tabindex="0" data-tags="{{ post.tags | join: ' ' }}">
     <a class="container-link" href="{{ post.url }}" tabindex="-1"></a>
     {% include posts/thumbnail.html post=post %}
@@ -24,4 +15,3 @@ tag: all
         </footer>
     </div>
 </div>
-{% endfor %}

@@ -7,7 +7,7 @@
         <meta name="keywords" content="{% if page.keywords %}{{ page.keywords | join: ', ' }}{% else %}{{ site.keywords | join: ', ' }}{% endif %}" />
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="author" content="{{ site.author }}" />
+        <meta name="author" content="Aleksandr Hovhannisyan" />
         <!-- For the contact form -->
         <meta name="referrer" content="origin" />
         <!-- OG properties are for social platforms with previews for shared links -->
@@ -29,7 +29,11 @@
         <!-- This is only needed if the post has been syndicated on other media -->
         <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
         {% endif %}
-        <title>{{ page.title }} | Aleksandr Hovhannisyan</title>
+        {% if page.url == "/" %}
+        <title>{{ site.title }}: {{ page.title }}</title>
+        {% else %}
+        <title>{{ page.title }} | {{ site.title }}</title>
+        {% endif %}
         <!-- Load the user's last selected theme -->
         <script>
             if (localStorage.getItem('theme')) {
