@@ -95,7 +95,7 @@ strong {
 
 @include headings {
     color: var(--text-color-emphasis);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.5em;
     font-weight: 600;
     line-height: 1.4;
     @include transition;

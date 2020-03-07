@@ -1,9 +1,9 @@
 title: Aleksandr Hovhannisyan
-author: Aleksandr Hovhannisyan
-description: Hey there! I'm Aleksandr, a software developer who's passionate about solving problems and having fun. Get in touch!
-keywords: [Aleksandr Hovhannisyan, github pages resume, github pages portfolio, github pages personal website]
+description: >-
+  I'm Aleksandr, a software developer who's passionate about solving problems,
+  creating beautiful user interfaces, and sharing my knowledge with others. Get in touch!
+keywords: [Aleksandr Hovhannisyan]
 url: https://aleksandrhovhannisyan.github.io/
-github_username: AleksandrHovhannisyan
 
 plugins:
   - jekyll-feed
