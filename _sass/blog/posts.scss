@@ -12,7 +12,9 @@
     }
 }
 
-.blog-posts {
+.blog-post-previews {
+    margin-top: 75px;
+
     .tag-navigation {
         display: flex;
         flex-wrap: wrap;
@@ -32,7 +34,9 @@
             @include transition(color);
         }
     }
+}
 
+.blog-post-previews, #featured-posts {
     .post-preview {
         $tag-margin: 0.625em;
     
@@ -80,7 +84,7 @@
                 }
             }
         }
-    }
+    }   
 }
 
 .post-title {
