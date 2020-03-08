@@ -282,8 +282,8 @@
     }
 
     .code-header {
-        // -0.5em to account for top margin on code blocks
-        margin-bottom: calc(-1 * #{$paragraph-spacing} + -1px - 0.5em);
+        margin-bottom: calc(-1 * #{$paragraph-spacing} + -1px);
+        margin-top: 0.5em;
         z-index: 2;
 
         .file-name {
@@ -301,9 +301,15 @@
             }
         }
 
-        & + .highlighter-rouge .highlight {
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
+        // Code blocks that have a header
+        & + .highlighter-rouge {
+            margin-top: 0;
+
+            // If we don't do this, the top-left and top-right border radii will be visible
+            & .highlight {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
         }
     }
 
