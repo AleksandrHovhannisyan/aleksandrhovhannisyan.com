@@ -16,9 +16,15 @@
     margin-top: 75px;
 
     .tag-navigation {
+        align-items: center;
         display: flex;
         flex-wrap: wrap;
+        list-style-type: none;
         margin-bottom: 50px;
+
+        li {
+            margin-bottom: 0;
+        }
 
         .post-tag {
             margin-bottom: 1rem;
@@ -27,8 +33,6 @@
         }
 
         .more-tags-label {
-            align-items: center;
-            display: flex;
             font-size: 0.875em;
             margin-bottom: 1rem;
             @include transition(color);
