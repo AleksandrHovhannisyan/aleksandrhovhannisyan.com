@@ -68,16 +68,15 @@ Now, consider this: Does every button need to have a blue background? White text
 
 So, in this case, the `button` styling should really be:
 
-```css
-.button {
+{% capture code %}.button {
     align-items: center;
     border-radius: 5px;
     display: flex;
     justify-content: center;
     padding: 20px;
     text-decoration: none;
-}
-```
+}{% endcapture %}
+{% include code.html code=code lang="css" %}
 
 This leaves room for other, more specialized classes to determine the background and foreground colors as needed, without overriding any other styles and potentially interfering with each other.
 
@@ -109,8 +108,7 @@ Pick two from the same category, and they should be mutually exclusive. Pick two
 
 I'm just going to give you the full markup now to make this tutorial easier to follow:
 
-```html
-<!DOCTYPE html>
+{% capture code %}<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -136,13 +134,12 @@ I'm just going to give you the full markup now to make this tutorial easier to f
         <a href="" class="button hollow-button arrow-button danger">Don't click me!</a>
     </div>
 </body>
-</html>
-```
+</html>{% endcapture %}
+{% include code.html file="index.html" code=code lang="css" %}
 
 And here's some basic styling to get us started:
 
-```css
-* {
+{% capture code %}* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -172,8 +169,8 @@ body {
     grid-template-rows: 64px 64px 64px 64px;
     row-gap: 30px;
     column-gap: 30px;
-}
-```
+}{% endcapture %}
+{% include code.html file="style.css" code=code lang="css" %}
 
 Nothing fancy here—I just set up a grid for the buttons, some colors, and the font.
 
@@ -185,16 +182,15 @@ Things look pretty naked at this point, but that's about to change.
 
 As I mentioned earlier, we want the base button class to only define the characteristics that are common to all of our buttons:
 
-```css
-.button {
+{% capture code %}.button {
     border-radius: 5px;
     text-decoration: none;
     padding: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-```
+}{% endcapture %}
+{% include code.html file="style.css" code=code lang="css" %}
 
 And here's the result:
 
@@ -206,8 +202,7 @@ These don't look like buttons yet, and that's the point. The `button` class only
 
 In the first two rows, we have some old-fashioned solid buttons. What should those look like? Here's where it gets interesting:
 
-```css
-.solid-button {
+{% capture code %}.solid-button {
     color: white;
     transition: background-color 0.2s ease-in-out;
 }
@@ -234,8 +229,8 @@ In the first two rows, we have some old-fashioned solid buttons. What should tho
 
 .solid-button.danger:hover {
     background-color: var(--danger-dark);
-}
-```
+}{% endcapture %}
+{% include code.html file="style.css" code=code lang="css" %}
 
 Let's check out the result:
 
@@ -245,8 +240,7 @@ Let's check out the result:
 
 If the previous section made sense, then this one should be fairly straightforward, as it follows a similar pattern:
 
-```css
-.hollow-button {
+{% capture code %}.hollow-button {
     background-color: transparent;
     transition: box-shadow 0.2s ease-in-out;
 }
@@ -279,8 +273,8 @@ If the previous section made sense, then this one should be fairly straightforwa
 .hollow-button.danger:hover {
     color: var(--danger-dark);
     border: solid 2px var(--danger-dark);
-}
-```
+}{% endcapture %}
+{% include code.html file="style.css" code=code lang="css" %}
 
 {% include posts/picture.html img="hollow-buttons" ext="JPG" alt="Hollow buttons" shadow=false %}
 
@@ -290,8 +284,7 @@ We're almost there!
 
 Let's decorate some of our buttons with arrows that move when you hover over them:
 
-```css
-.arrow-button::after {
+{% capture code %}.arrow-button::after {
     font-size: 20px;
     margin-left: 10px;
     content: "→";
@@ -301,8 +294,8 @@ Let's decorate some of our buttons with arrows that move when you hover over the
 
 .arrow-button:hover::after {
     transform: translateX(5px);
-}
-```
+}{% endcapture %}
+{% include code.html file="style.css" code=code lang="css" %}
 
 Here's the final result:
 

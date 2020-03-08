@@ -282,22 +282,72 @@
     }
 
     .code-header {
+        color: #bcbcbc;
+        display: flex;
+        background-color: #3b3b3b;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        box-shadow: 0 3px 3px 0px rgba(0, 0, 0, 0.3);
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        padding: 12px 20px;
         margin-bottom: calc(-1 * #{$paragraph-spacing} + -1px);
         margin-top: 0.5em;
         z-index: 2;
+        
+        .file-name-container {
+            display: flex;
+            flex: 1;
+            justify-content: flex-start;
+        }
 
         .file-name {
-            background-color: #3b3b3b;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-            box-shadow: 0 3px 3px 0px rgba(0, 0, 0, 0.3);
-            color: #bcbcbc;
-            padding: 10px 20px;
-            @include transition;
+            word-break: break-all;
+            @include transition(color);
 
             &::before {
                 content: "📂";
                 margin-right: 5px;
+            }
+        }
+
+        .copy-code-container {
+            display: flex;
+            flex: 1;
+            justify-content: flex-end;
+        }
+
+        .copy-code-button {
+            align-items: center;
+            cursor: pointer;
+            display: flex;
+            padding-left: 6px;
+            padding-right: 6px;
+            @include transition;
+
+            &::before {
+                content: "Copy";
+            }
+
+            &::after {
+                margin-left: 4px;
+                content: "📋";
+                width: 1em;
+            }
+
+            &:focus, &:hover {
+                color: white;
+                background-color: #858585;
+            }
+
+            &.copied {
+                &::before {
+                    content: "Copied!";
+                }
+
+                &::after {
+                    content: "✔️";
+                }
             }
         }
 

@@ -23,23 +23,17 @@ Create a file named `linkedHeading.html` in your `_includes` folder. Here's what
 
 With Liquid and Jekyll includes, it's super simple to create linked headings. Here's the markup:
 
-{% include posts/codeHeader.html name="_includes/linkedHeading.html" %}
-{% raw %}
-```html
-{% assign heading = include.heading %}
+{% capture code %}{% raw %}{% assign heading = include.heading %}
 <h{{ include.level }} id="{{ heading | slugify }}" class="linked-heading">
     <a href="#{{ heading | slugify }}">#</a> {{ heading }}
-</h{{ include.level }}>
-```
-{% endraw %}
+</h{{ include.level }}>{% endraw %}{% endcapture %}
+{% include code.html file="_includes/linkedHeading.html" code=code lang="liquid" %}
 
 Simply use the following in your markdown to create a heading anchor in Jekyll:
 
-{% raw %}
-```liquid
-{% include linkedHeading.html heading="My Heading" level=someNumber %}
-```
-{% endraw %}
+{% capture code %}{% raw %}{% include linkedHeading.html heading="My Heading" level=someNumber %}{% endraw %}{% endcapture %}
+
+{% include code.html code=code lang="liquid" %}
 
 Short and sweet! And much more legible than copy-pasting a bunch of heading tags and anchors. Plus, you don't have to introduce any unnecessary dependencies, JavaScript, or gems to get this done.
 
@@ -58,16 +52,17 @@ Then, after the anchor, we simply put a space followed by our unformatted headin
 
 If you have a sticky/fixed navbar like I do on this site, you may run into a problem where your heading anchors get stuck under the navbar when you click them.
 
-Fortunately, the fix is a neat little trick: a negative top margin combined with a positive top padding. I like to leave about a `40px` difference between the two for spacing:
+Fortunately, the fix is simple: we can add a `scroll-margin-top` to our headings equal to the height of the navbar plus a certain offset, like so:
 
-```css
-h2 {
-    margin-top: -50px;
-    padding-top: 90px;
-}
-```
+{% capture code %}h1, h2, h3, h4, h5, h6 {
+    /* 64px navbar + 20px for spacing */
+    scroll-margin-top: 84px;
+}{% endcapture %}
+{% include code.html code=code lang="css" %}
 
-My navbar is `64px` tall, so I found that these two numbers work best. Feel free to play around with them. And of course, you can also apply this to other heading levels in case you want to link to them as well.
+My navbar is `64px` tall, so I found that this works best. Feel free to play around with it on your site.
+
+The only downside is that `scroll-margin-top` is [not currently supported in Internet Explorer](https://caniuse.com/#search=scroll-padding). But it'll work in pretty much all other browsers.
 
 ## And That's It!
 

@@ -432,9 +432,7 @@ Straight-line fitting is pretty simple by hand, but polynomial least squares fit
 
 Here's a script that uses QR factorization explicitly:
 
-{% include posts/codeHeader.html name="lsq.py" %}
-```python
-import numpy as np
+{% capture code %}import numpy as np
 from numpy import linalg as LA
 
 # Our data
@@ -450,13 +448,12 @@ QT = np.transpose(Q)
 
 theta = LA.solve(R, QT.dot(y))
 
-print(theta)
-```
+print(theta){% endcapture %}
+{% include code.html file="lsq.py" code=code lang="python" %}
 
 However, this is really equivalent to the following code, which simply uses the `LA.lstsq` function:
 
-```python
-import numpy as np
+{% capture code %}import numpy as np
 from numpy import linalg as LA
 
 # Our data
@@ -466,8 +463,8 @@ y = np.array([[5], [1], [3], [9], [10]])
 
 theta = LA.lstsq(A, y)
 
-print(theta)
-```
+print(theta){% endcapture %}
+{% include code.html file="lsq.py" code=code lang="python" %}
 
 Regardless of which version we run, we'll get the same answer for the $$\theta$$ vector:
 

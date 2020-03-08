@@ -1,0 +1,15 @@
+<div class="code-header">
+    {% if include.file %}
+    <div class="file-name-container">
+        <div class="file-name">{{ include.file }}</div>
+    </div>
+    {% endif %}
+    {% unless include.copyable == false %}
+    <div class="copy-code-container">
+        <div class="copy-code-button" data-code="{{ include.code | escape }}" title="Copy to clipboard" tabindex="0"></div>
+    </div>
+    {% endunless %}
+</div>
+```{{ include.lang }}
+{{ include.code }}
+```

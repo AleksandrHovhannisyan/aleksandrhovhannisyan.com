@@ -72,12 +72,11 @@ The good news is that [browser support for WebP](https://caniuse.com/#feat=webp)
 
 Assuming you want to cover all your bases and ensure that your images are displaying properly, you can use a `picture` element with a `source` for the WebP version and a backup `img` for the regular format:
 
-```html
-<picture>
+{% capture code %}<picture>
   <source srcset="/path/to/image.webp" type="image/webp">
   <img src="/path/to/image.jpg" alt="Your alt text" />
-</picture>
-```
+</picture>{% endcapture %}
+{% include code.html code=code lang="html" %}
 
 Basically, browsers that don't support WebP will fall back to the plain old `img` element, while those that do support WebP will use the `source` element. Awesome!
 
@@ -87,15 +86,12 @@ Except... Do we really have to copy-paste this every time we want to create an i
 
 Time to make this reusable! Create a file named `_includes/picture.html` and add this markup:
 
-{% raw %}
-```html
-{% assign img = include.img %}
+{% capture code %}{% raw %}{% assign img = include.img %}
 <picture>
     <source type="image/webp" srcset="/assets/img/posts/{{ page.slug }}/{{ img }}.webp" >
     <img src="/assets/img/posts/{{ page.slug }}/{{ img }}.{{ include.ext }}" alt="{{ include.alt }}" />
-</picture>
-```
-{% endraw %}
+</picture>{% endraw %}{% endcapture %}
+{% include code.html file="_includes/picture.html" code=code lang="liquid" %}
 
 Let's try to understand this part specifically:
 
@@ -116,11 +112,8 @@ Here's a screenshot to make that clearer:
 
 That allows us to get away with this simple and legible include:
 
-{% raw %}
-```liquid
-{% include picture.html img="my-image" ext="JPG" alt="My alt text" %}
-```
-{% endraw %}
+{% capture code %}{% raw %}{% include picture.html img="my-image" ext="JPG" alt="My alt text" %}{% endraw %}{% endcapture %}
+{% include code.html code=code lang="liquid" %}
 
 Notice that we don't have to worry about explicitly stating the path! That will be filled in by Liquid when it goes to evaluate {% raw %}`{{ page.slug }}`{% endraw %}. To top that off, we get to take advantage of WebP behind the scenes, with little effort beyond converting the images.
 
