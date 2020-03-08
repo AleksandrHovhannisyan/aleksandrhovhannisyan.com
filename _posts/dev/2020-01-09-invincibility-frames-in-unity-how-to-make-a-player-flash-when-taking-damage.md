@@ -31,30 +31,27 @@ Instead, we want to use [coroutines](https://docs.unity3d.com/Manual/Coroutines.
 
 We'll start by adding this method somewhere in our Player script:
 
-```csharp
-private IEnumerator BecomeTemporarilyInvincible()
+{% capture code %}private IEnumerator BecomeTemporarilyInvincible()
 {
     // logic goes here
-}
-```
+}{% endcapture %}
+{% include code.html code=code lang="csharp" %}
 
 Notice that this method returns an `IEnumerator`; all coroutines in Unity do that.
 
 We'll use a flag to keep track of whether the player is invincible. Add this member variable to your script:
 
-```csharp
-private bool isInvincible = false;
-```
+{% capture code %}private bool isInvincible = false;{% endcapture %}
+{% include code.html code=code lang="csharp" %}
 
 Next, when the player becomes invincible, we flip this flag to true:
 
-```csharp
-private IEnumerator BecomeTemporarilyInvincible()
+{% capture code %}private IEnumerator BecomeTemporarilyInvincible()
 {
     Debug.Log("Player turned invincible!");
     isInvincible = true;
-}
-```
+}{% endcapture %}
+{% include code.html code=code lang="csharp" %}
 
 Of course, this doesn't do anything (yet!). You're probably wondering:
 
@@ -70,8 +67,7 @@ Ready for this? It's actually stupidly simple.
 
 Again, I'll assume that you're using something like `LoseHealth(int amount)`:
 
-```csharp
-public void LoseHealth(int amount)
+{% capture code %}public void LoseHealth(int amount)
 {
     if (isInvincible) return;
 
@@ -86,8 +82,8 @@ public void LoseHealth(int amount)
     }
 
     StartCoroutine(BecomeTemporarilyInvincible());
-}
-```
+}{% endcapture %}
+{% include code.html code=code lang="csharp" %}
 
 First, we [fail-fast](https://softwareengineering.stackexchange.com/a/230460/333842) if the player is already invincible. If they're not invincible, the player loses health. If the player died as a result of losing health, we set their health to zero, potentially fire off a death event, and return. Finally, if the player took damage but is still alive, we use `StartCoroutine` to initiate the coroutine that grants the player temporary invincibility.
 
@@ -102,12 +98,11 @@ Here's what we want:
 
 Add these two private members at the top of your script:
 
-```csharp
-[SerializeField]
+{% capture code %}[SerializeField]
 private float invincibilityDurationSeconds;
 [SerializeField]
-private float delayBetweenInvincibilityFlashes;
-```
+private float delayBetweenInvincibilityFlashes;{% endcapture %}
+{% include code.html code=code lang="csharp" %}
 
 > **Note**: `SerializeField` lets you edit private members through the Unity inspector without having to make them public in your script. This is useful if you want to change those values via the editor as you debug your game.
 
@@ -117,8 +112,7 @@ You'll need to initialize these two members via the Inspector pane:
 
 Once you've done that, use them in the coroutine to run a simple loop:
 
-```csharp
-private IEnumerator BecomeTemporarilyInvincible()
+{% capture code %}private IEnumerator BecomeTemporarilyInvincible()
 {
     Debug.Log("Player turned invincible!");
     isInvincible = true;
@@ -132,8 +126,8 @@ private IEnumerator BecomeTemporarilyInvincible()
 
     Debug.Log("Player is no longer invincible!");
     isInvincible = false;
-}
-```
+}{% endcapture %}
+{% include code.html code=code lang="csharp" %}
 
 The key part here is the loop, especially the following line:
 
@@ -155,10 +149,9 @@ Invincibility now works—you can verify this with the debug logs. But we'd like
 
 The easiest way to make a player flash in Unity is to repeatedly scale the player's model (or sprite, for 2D) between `0` and `1` during each iteration of the loop. So first, we need to actually get ahold of the player model. We'll add a member variable for it:
 
-```csharp
-[SerializeField]
-private GameObject model;
-```
+{% capture code %}[SerializeField]
+private GameObject model;{% endcapture %}
+{% include code.html code=code lang="csharp" %}
 
 **Note**: For this tutorial to work, the Player should consist of a root object (e.g., `MainPlayer`) that has a Collider and the Player script attached to it. Nested under that object should be the player's model (e.g., `Model`) as a separate object, with whatever shaders, materials, sprites, etc. that you're using (in my case, that's the angry-looking ghost):
 
@@ -172,17 +165,15 @@ In your editor, drag and drop the model object into the appropriate slot in the 
 
 Next, we'll add a method that lets us easily scale this model:
 
-```csharp
-private void ScaleModelTo(Vector3 scale)
+{% capture code %}private void ScaleModelTo(Vector3 scale)
 {
     model.transform.localScale = scale;
-}
-```
+}{% endcapture %}
+{% include code.html code=code lang="csharp" %}
 
 And finally, we'll actually do the scaling in our coroutine:
 
-```csharp
-private IEnumerator BecomeTemporarilyInvincible()
+{% capture code %}private IEnumerator BecomeTemporarilyInvincible()
 {
     Debug.Log("Player turned invincible!");
     isInvincible = true;
@@ -205,8 +196,8 @@ private IEnumerator BecomeTemporarilyInvincible()
     Debug.Log("Player is no longer invincible!");
     ScaleModelTo(Vector3.one);
     isInvincible = false;
-}
-```
+}{% endcapture %}
+{% include code.html code=code lang="csharp" %}
 
 Depending on the numbers you select for `invincibilityDurationSeconds` and `delayBetweenInvincibilityFlashes`, you could end up in a situation where the player's invincibility runs out on the loop iteration where we set its scale to zero. Thus, we forcibly scale the model to one at the very end for safe measure.
 

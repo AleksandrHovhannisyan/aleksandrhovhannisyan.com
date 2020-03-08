@@ -58,25 +58,21 @@ First, like all trees, a prefix tree is going to consist of nodes. Each node wil
 
 Let's build the `TrieNode` class:
 
-{% include posts/codeHeader.html name="trie.py" %}
-```python
-class TrieNode:
+{% capture code %}class TrieNode:
     def __init__(self, text = ''):
         '''
         Initializes a TrieNode with the given string and an initially
         empty dictionary mapping strings to TrieNodes.
         '''
         self.text = text
-        self.children = dict()
-```
+        self.children = dict(){% endcapture %}
+{% include code.html file="trie.py" code=code lang="python" %}
 
-Pretty simple, right? Again, note that there's one additional piece of data we'll need to add here later, but you don't have to worry about it now.
+Pretty simple, right? Again, note that there's one additional piece of data we'll need to add here later, but you don't have to worry about it right now.
 
 Next, the prefix tree itself consists of one or more of these `TrieNodes`, so I'll add another class named `PrefixTree`:
 
-{% include posts/codeHeader.html name="trie.py" %}
-```python
-class TrieNode:
+{% capture code %}class TrieNode:
     def __init__(self, text = ''):
         '''
         Initializes a TrieNode with the given string and an initially
@@ -87,8 +83,8 @@ class TrieNode:
 
 class PrefixTree:
     def __init__(self):
-        self.root = TrieNode()
-```
+        self.root = TrieNode(){% endcapture %}
+{% include code.html file="trie.py" code=code lang="python" %}
 
 Awesome! Finally, our `PrefixTree` needs the following operations, which we'll fill in step by step:
 
@@ -121,15 +117,14 @@ Recall that each node also has to keep track of the string that's been generated
 
 Here's the full* Python implementation of inserting nodes into a trie:
 
-```python
-def insert(self, word):
+{% capture code %}def insert(self, word):
     current = self.root
     for i, char in enumerate(word):
         if char not in current.children:
             prefix = word[0:i+1]
             current.children[char] = TrieNode(prefix)
-        current = current.children[char]
-```
+        current = current.children[char]{% endcapture %}
+{% include code.html file="trie.py" code=code lang="python" %}
 
 *There's one line missing that I'll mention in the next section. It's not going to complicate things at all.
 
@@ -149,8 +144,7 @@ Otherwise, if we reach the last character of the string without having returned 
 
 Here's the code:
 
-```python
-def find(self, word):
+{% capture code %}def find(self, word):
     '''
     Returns the TrieNode representing the given word if it exists
     and None otherwise.
@@ -160,8 +154,8 @@ def find(self, word):
         if char not in current.children:
             return None
         current = current.children[char]
-    return current
-```
+    return current{% endcapture %}
+{% include code.html file="trie.py" code=code lang="python" %}
 
 *Remember that little caveat I kept bringing up before? This code is mostly correct except for the `return current` line at the end. Let's discuss why this needs to change.
 
@@ -183,8 +177,7 @@ Fortunately, the fix here is super simple. We need to make three changes:
 
 Let's modify the `TrieNode` class:
 
-```python
-class TrieNode:
+{% capture code %}class TrieNode:
     def __init__(self, text = ''):
         '''
         Initializes a TrieNode with the given string and an initially
@@ -192,28 +185,26 @@ class TrieNode:
         '''
         self.text = text
         self.children = dict()
-        self.is_word = False # New code
-```
+        self.is_word = False # New code{% endcapture %}
+{% include code.html file="trie.py" code=code lang="python" %}
 
 And then the `insert` method:
 
-```python
-def insert(self, word):
+{% capture code %}def insert(self, word):
     current = self.root
     for i, char in enumerate(word):
         if char not in current.children:
             prefix = word[0:i+1]
             current.children[char] = TrieNode(prefix)
         current = current.children[char]
-    current.is_word = True # New code
-```
+    current.is_word = True # New code{% endcapture %}
+{% include code.html file="trie.py" code=code lang="python" %}
 
 And finally, to verify that the given word exists in our trie, and that the node we found isn't just a prefix node, all we need to do is check the current node's flag. If the flag is `True`, then it's a word, and we found a match; in that case, we return the node. Otherwise, it must be a prefix node, in which case we return `None` implicitly.
 
 Here's the final code for `find`:
 
-```python
-def find(self, word):
+{% capture code %}def find(self, word):
     '''
     Returns the TrieNode representing the given word if it exists
     and None otherwise.
@@ -224,8 +215,10 @@ def find(self, word):
             return None
         current = current.children[char]
 
-    if current.is_word: return current # New code, None returned implicitly if this is False
-```
+    # New code, None returned implicitly if this is False
+    if current.is_word:
+        return current{% endcapture %}
+{% include code.html file="trie.py" code=code lang="python" %}
 
 And that's it!
 
@@ -246,8 +239,7 @@ The code for finding partial matches in a trie is also really simple. Here's the
 
 The first step is simple—we just did something very similar above for finding exact matches. This time, though, instead of returning `None` when a match isn't found, we'll return an empty list.
 
-```python
-def starts_with(self, prefix):
+{% capture code %}def starts_with(self, prefix):
     '''
     Returns a list of all words beginning with the given prefix, or
     an empty list if no words begin with that prefix.
@@ -260,15 +252,14 @@ def starts_with(self, prefix):
             return list()
         current = current.children[char]
     
-    # Step 2 will go here
-```
+    # Step 2 will go here{% endcapture %}
+{% include code.html file="trie.py" code=code lang="python" %}
 
 Once we've found the prefix node (if it exists), we'll utilize a helper method for the recursion (step two). It will take two arguments: the current node (`node`) and a cumulative list that we'll add nodes to (`words`). If the current node is a word, we add it to the list. Then, for each child of that node, we make a recursive call to the same helper function, passing in the child as the new `node`.
 
 Here's the recursive helper function:
 
-```python
-def __child_words_for(self, node, words):
+{% capture code %}def __child_words_for(self, node, words):
     '''
     Private helper function. Cycles through all children
     of node recursively, adding them to words if they
@@ -277,13 +268,12 @@ def __child_words_for(self, node, words):
     if node.is_word:
         words.append(node.text)
     for letter in node.children:
-        self.__child_words_for(node.children[letter], words)
-```
+        self.__child_words_for(node.children[letter], words){% endcapture %}
+{% include code.html file="trie.py" code=code lang="python" %}
 
 And here's the completed code for `starts_with`:
 
-```python
-def starts_with(self, prefix):
+{% capture code %}def starts_with(self, prefix):
     '''
     Returns a list of all words beginning with the given prefix, or
     an empty list if no words begin with that prefix.
@@ -298,8 +288,8 @@ def starts_with(self, prefix):
     
     # Step 2
     self.__child_words_for(current, words)
-    return words
-```
+    return words{% endcapture %}
+{% include code.html file="trie.py" code=code lang="python" %}
 
 > **Note**: Here, I'm returning a list of strings. In reality, it's probably better to return a list of `TrieNode`s, but it's much easier to test our code if we return strings.
 
@@ -311,8 +301,7 @@ This one depends on your definition of "size." Is it the number of *words* that 
 
 I'll just show the code this time—hopefully you're comfortable with recursion and tries by now:
 
-```python
-def size(self, current = None):
+{% capture code %}def size(self, current = None):
     '''
     Returns the size of this prefix tree, defined
     as the total number of nodes in the tree.
@@ -323,8 +312,8 @@ def size(self, current = None):
     count = 1
     for letter in current.children:
         count += self.size(current.children[letter])
-    return count
-```
+    return count{% endcapture %}
+{% include code.html file="trie.py" code=code lang="python" %}
 
 Notice that `current` has a default value of `None`. This allows the user to simply invoke `size()` without passing in any arguments for the most common use case: the size of the entire tree. Optionally, if the user wants to check the size of a subtree, they are welcome to do so by passing in the appropriate `TrieNode`.
 
@@ -332,8 +321,7 @@ Notice that `current` has a default value of `None`. This allows the user to sim
 
 We can add this to the end of our script to manually test our code:
 
-```python
-if __name__ == '__main__':
+{% capture code %}if __name__ == '__main__':
     trie = PrefixTree()
     trie.insert('apple')
     trie.insert('app')
@@ -343,16 +331,14 @@ if __name__ == '__main__':
     trie.insert('bad')
     trie.insert('bear')
     trie.insert('bat')
-    print(trie.starts_with('app'))
-```
+    print(trie.starts_with('app')){% endcapture %}
+{% include code.html file="trie.py" code=code lang="python" %}
 
 But this is tedious and frankly not a very rigorous way of testing our code. So instead, I'll create a separate file named `test_trie.py` and use the Python `unittest` library. I'll import the `PrefixTree` class I created in `trie.py`.
 
 Below are eight tests covering edge cases. This is where our `size` method really comes in handy.
 
-{% include posts/codeHeader.html name="test_trie.py" %}
-```python
-import unittest
+{% capture code %}import unittest
 from trie import PrefixTree
 
 
@@ -409,8 +395,8 @@ class TrieTest(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main()
-```
+    unittest.main(){% endcapture %}
+{% include code.html file="test_trie.py" code=code lang="python" %}
 
 > **Note**: With `unittest`, all method names must begin with `test` in order for the library to detect and run them. This is [per the unittest docs](https://docs.python.org/3/library/unittest.html#basic-example).
 

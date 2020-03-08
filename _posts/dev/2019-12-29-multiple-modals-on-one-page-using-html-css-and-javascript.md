@@ -16,9 +16,7 @@ This quick tutorial shows you how to create modal windows in HTML using just a b
 
 Here's some basic markup to get us started:
 
-{% include posts/codeHeader.html name="index.html" %}
-```html
-<!DOCTYPE html>
+{% capture code %}<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,8 +27,8 @@ Here's some basic markup to get us started:
 <body>
     <script src="index.js"></script>
 </body>
-</html>
-```
+</html>{% endcapture %}
+{% include code.html file="index.html" code=code lang="html" %}
 
 Go ahead and create `style.css` along with `index.js` while you're at it. We'll fill them in shortly.
 
@@ -38,9 +36,7 @@ Go ahead and create `style.css` along with `index.js` while you're at it. We'll 
 
 This'll do for now:
 
-{% include posts/codeHeader.html name="style.css" %}
-```css
-* {
+{% capture code %}* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -62,8 +58,8 @@ body {
 
 p {
     margin-bottom: 1em;
-}
-```
+}{% endcapture %}
+{% include code.html file="style.css" code=code lang="css" %}
 
 {% include linkedHeading.html heading="Adding Modal Triggers and Modal Windows in HTML" level=2 %}
 
@@ -81,9 +77,7 @@ We'll also need a `modal-trigger` that, when clicked, opens up the modal with wh
 
 Replace your `body` with this markup:
 
-{% include posts/codeHeader.html name="index.html" %}
-```html
-<p>Lorem ipsum. <span class="modal-trigger" data-modal-id="modal1">Click this trigger</span> to open a modal.</p>
+{% capture code %}<p>Lorem ipsum. <span class="modal-trigger" data-modal-id="modal1">Click this trigger</span> to open a modal.</p>
 <p>Close a modal by clicking off to the side, clicking the X, or pressing Escape.</p>
 <div class="modal" id="modal1">
     <section class="modal-content">
@@ -104,8 +98,8 @@ Replace your `body` with this markup:
         <p>Noice.</p>
     </section>
 </div>
-<script src="index.js"></script>
-```
+<script src="index.js"></script>{% endcapture %}
+{% include code.html file="index.html" code=code lang="html "%}
 
 We'll also make it possible to open up an arbitrary number of modals on top of each other. Doing so is easy—you just add a `modal-trigger` to an existing modal. If that trigger is then clicked while the container modal is open, it will open up a new modal on top of the current one.
 
@@ -125,8 +119,7 @@ But before we do that, we'll style our modal windows so we can verify that our c
 
 I'm going to break this up into manageable chunks. First up is the modal wrapper:
 
-```css
-.modal {
+{% capture code %}.modal {
     align-items: center;
     background-color: rgba(100, 100, 100, 0.5);
     bottom: 0;
@@ -141,26 +134,24 @@ I'm going to break this up into manageable chunks. First up is the modal wrapper
     visibility: hidden;
     width: 100%;
     z-index: 1000;
-}
-```
+}{% endcapture %}
+{% include code.html file="style.css" code=code lang="css" %}
 
 This one's pretty straightforward. The modal wrapper is given a `fixed` position and covers the entire screen. It's also given a slightly opaque background for a nice shadow effect when the modal is open. The `z-index` is set to an arbitrarily large number (in this case, `1000`) to ensure that it's above everything else. Finally, the modal uses Flexbox to perfectly center its contents.
 
 As you can see, the modal is hidden by default with `opacity: 0` and `visibility: hidden`. We'll toggle the visibility in our JavaScript. Here's the class that we'll need to do that:
 
-```css
-.modal.modal-visible {
+{% capture code %}.modal.modal-visible {
     opacity: 1;
     visibility: visible;
-}
-```
+}{% endcapture %}
+{% include code.html file="style.css" code=code lang="css" %}
 
 > **Note**: I'm using the `opacity` + `visibility` trick here since visibility transitions aren't gradual and immediately snap from one state to another. Take a look at [this StackOverflow answer](https://stackoverflow.com/a/27900094/5323344) for more details.
 
 Let's also style the header:
 
-```css
-.modal-header {
+{% capture code %}.modal-header {
     align-items: center;
     border-bottom: 2px solid black;
     display: flex;
@@ -185,15 +176,14 @@ Let's also style the header:
 
 .modal-close:hover::before {
     color: black;
-}
-```
+}{% endcapture %}
+{% include code.html file="style.css" code=code lang="css" %}
 
 We're simply using a pseudo-element for the close button.
 
 Here's the styling for the modal contents:
 
-```css
-.modal-content {
+{% capture code %}.modal-content {
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
@@ -204,20 +194,19 @@ Here's the styling for the modal contents:
 
 .modal-visible .modal-content {
     transform: scale(1);
-}
-```
+}{% endcapture %}
+{% include code.html file="style.css" code=code lang="css" %}
 
 Scaling the transform from `0` to `1` gives us a nice pop-in animation.
 
 Finally, we'll style the triggers:
 
-```css
-.modal-trigger {
+{% capture code %}.modal-trigger {
     color: rgb(10, 47, 255);
     cursor: pointer;
     text-decoration: underline;
-}
-```
+}{% endcapture %}
+{% include code.html file="style.css" code=code lang="css" %}
 
 And we're done! You can temporarily set `modal1` to be visible by manually adding `modal-visible` to its class list. Here's what the modal should look like:
 
@@ -231,10 +220,8 @@ Alright, time to make our modal windows interactive!
 
 The most natural way to represent stacked modals in code is—surprise, surprise—with a stack:
 
-{% include posts/codeHeader.html name="index.js" %}
-```javascript
-const currentlyOpenModals = [];
-```
+{% capture code %}const currentlyOpenModals = [];{% endcapture %}
+{% include code.html file="index.js" code=code lang="javascript" %}
 
 The topmost modal window is whatever we recently pushed onto the stack; that's the window that's eligible for closing.
 
@@ -242,8 +229,7 @@ The topmost modal window is whatever we recently pushed onto the stack; that's t
 
 Let's code up the logic for opening and closing a modal:
 
-```javascript
-const openModal = modalId => {
+{% capture code %}const openModal = modalId => {
   const modal = document.getElementById(modalId);
   modal.classList.add('modal-visible');
   currentlyOpenModals.push(modal);
@@ -258,8 +244,8 @@ const closeTopmostModal = () => {
   const modal = currentlyOpenModals[currentlyOpenModals.length - 1];
   modal.classList.remove('modal-visible');
   currentlyOpenModals.pop();
-};
-```
+};{% endcapture %}
+{% include code.html file="index.js" code=code lang="javascript" %}
 
 The code is pretty simple—to open a modal, we take an ID, find the modal with that ID, give it the `modal-visible` class, and push it to our stack of open modals. To close a modal, we do the opposite—we remove the class and pop the stack.
 
@@ -276,16 +262,15 @@ Let's knock these out one at a time.
 
 #### 1. Opening a Modal When Its Trigger Is Clicked
 
-```javascript
-const modalTriggers = document.querySelectorAll('.modal-trigger');
+{% capture code %}const modalTriggers = document.querySelectorAll('.modal-trigger');
 modalTriggers.forEach(modalTrigger => {
   modalTrigger.addEventListener('click', clickEvent => {
     const trigger = clickEvent.target;
     const modalId = trigger.getAttribute('data-modal-id');
     openModal(modalId);
   });
-});
-```
+});{% endcapture %}
+{% include code.html file="index.js" code=code lang="javascript" %}
 
 Basically, we query all modal triggers and subscribe to their clicks. Given a click event, we get the trigger element by following `clickEvent.target`. This allows us to extract the `data-modal-id` attribute and open up that particular modal.
 
@@ -293,8 +278,7 @@ Basically, we query all modal triggers and subscribe to their clicks. Given a cl
 
 This is where it gets interesting:
 
-```javascript
-document.querySelectorAll('.modal-content').forEach(modalContent => {
+{% capture code %}document.querySelectorAll('.modal-content').forEach(modalContent => {
   modalContent.addEventListener('click', clickEvent => {
     clickEvent.stopPropagation();
   });
@@ -305,30 +289,28 @@ modals.forEach(modal => {
   modal.addEventListener('click', () => {
     closeTopmostModal();
   });
-});
-```
+});{% endcapture %}
+{% include code.html file="index.js" code=code lang="javascript" %}
 
 If we don't stop the event propagation for each `modal-content` element, the modals will close if we click just the content area, and that's not what we want. So, we disable propagation for the content area. Next, we simply subscribe to the click event for each `modal` and close the topmost modal when the event fires.
 
 #### 3. Closing a Modal with the X Button
 
-```javascript
-document.querySelectorAll('.modal-close').forEach(modalCloseButton => {
+{% capture code %}document.querySelectorAll('.modal-close').forEach(modalCloseButton => {
   modalCloseButton.addEventListener('click', () => {
     closeTopmostModal();
   });
-});
-```
+});{% endcapture %}
+{% include code.html file="index.js" code=code lang="javascript" %}
 
 #### 4. Closing a Modal with the Escape Key
 
-```javascript
-document.body.addEventListener('keyup', keyEvent => {
+{% capture code %}document.body.addEventListener('keyup', keyEvent => {
   if (keyEvent.key === 'Escape') {
     closeTopmostModal();
   }
-});
-```
+});{% endcapture %}
+{% include code.html file="index.js" code=code lang="javascript" %}
 
 And that's it!
 

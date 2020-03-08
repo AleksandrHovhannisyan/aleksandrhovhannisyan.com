@@ -100,10 +100,9 @@ Now that we've got the setup out of the way, it's time to actually access Google
 
 First, you'll need to install these two libraries:
 
-```bash
-pip install gspread
-pip install oauth2client
-```
+{% capture code %}pip install gspread
+pip install oauth2client{% endcapture %}
+{% include code.html code=code lang="bash" %}
 
 [Gspread](https://gspread.readthedocs.io/en/latest/) is just a Google Sheets Python API that lets you read and write data.
 
@@ -111,9 +110,7 @@ pip install oauth2client
 
 Here's a minimal example that uses these two libraries to push data to Google Sheets:
 
-{% include posts/codeHeader.html name="sheets.py" %}
-```python
-from oauth2client.service_account import ServiceAccountCredentials
+{% capture code %}from oauth2client.service_account import ServiceAccountCredentials
 import gspread
 
 # Google Sheets and Google Drive, respectively
@@ -124,8 +121,8 @@ client = gspread.authorize(creds)
 
 # Replace with your spreadsheet's name and sheet number
 sheet = client.open("Google Sheets and Python").sheet1
-sheet.append_row(["Hello", "Google", "Sheets", "from", "Python"])
-```
+sheet.append_row(["Hello", "Google", "Sheets", "from", "Python"]){% endcapture %}
+{% include code.html file="sheets.py" code=code lang="python" %}
 
 If you try running this now, you'll get the following exception:
 
@@ -137,7 +134,6 @@ For this script to actually work, you'll need to share the spreadsheet with the 
 
 If you don't remember the service account email, simply open up the JSON file that you downloaded:
 
-{% include posts/codeHeader.html name="api_key.json" %}
 ```json
 {
   "client_email": "python-scraping@sheets-api-python-270219.iam.gserviceaccount.com"

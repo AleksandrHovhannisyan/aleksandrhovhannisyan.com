@@ -23,7 +23,7 @@ defaults:
       path: _posts
       type: posts
     values:
-      customJS: [blogImage]
+      customJS: [blogImage, copyCode]
       isPost: true
       isBlogPage: true
       layout: post
