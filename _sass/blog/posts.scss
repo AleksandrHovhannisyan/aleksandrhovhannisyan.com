@@ -27,9 +27,9 @@
         }
 
         .post-tag {
-            margin-bottom: 1rem;
-            margin-right: 1rem;
-            padding: 4px 16px;
+            margin-bottom: 1em;
+            margin-right: 1em;
+            padding: 0.2em 0.8em;
         }
 
         .more-tags-label {
@@ -92,7 +92,7 @@
 }
 
 .post-title {
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
 }
 
 .post-stats {
@@ -109,9 +109,9 @@
         .stat-icon {
             @include transition;
             fill: var(--text-color-normal);
-            height: 15px;
+            height: 1em;
             margin-right: 5px;
-            width: 15px;
+            width: 1em;
         }
     }
 
@@ -224,7 +224,6 @@
         white-space: normal;
     }
 
-    // Block-level equations
     .block-equation {
         text-align: center;
         @include transition(color);

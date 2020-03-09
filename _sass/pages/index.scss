@@ -57,8 +57,8 @@
         justify-content: center;
 
         .button {
-            height: 60px;
-            width: 160px;
+            height: 3.5em;
+            width: 10em;
         }
     }
 }
@@ -69,24 +69,25 @@
     flex-direction: column;
 
     #cta-buttons {
-        max-width: 400px;
+        max-width: 22em;
         width: 100%;
     
         .button {
-            height: 60px;
-            margin-bottom: 15px;
+            height: 3.5em;
+            margin-bottom: 1em;
             width: 100%;
         }
     }
 }
 
-@media only screen and (min-width: 420px) {
+// 28.75rem = 460px
+@media only screen and (min-width: 28.75rem) {
     #cta-buttons {
         display: flex;
         justify-content: space-around;
 
         .button {
-            max-width: 175px;
+            max-width: 10em;
         }
     }
 }

@@ -34,7 +34,7 @@ form {
     textarea {
         line-height: 1.6 !important;
         max-width: $form-max-width;
-        min-height: 175px;
+        min-height: 8.75em;
         resize: none;
         transition: height 0s;
         width: 100%;
@@ -46,9 +46,9 @@ form {
         border-radius: 5px;
         box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.25);
         color: var(--text-color-emphasis);
-        height: 40px;
+        height: 2em;
         margin-bottom: 15px;
-        padding: 5px 10px;
+        padding: 0.25em 0.5em;
         width: 100%;
         @include transition;
 
@@ -73,13 +73,13 @@ form {
     }
 
     .button {
-        height: 50px;
+        height: 2.5em;
         max-width: 100%;
         width: 100%;
     }
 }
 
-@media only screen and (min-width: $device-cutoff-large) {
+@media only screen and (min-width: 800px) {
     #contact-information {
         grid-template-areas: "form form form socials";
     }
@@ -94,7 +94,7 @@ input.honeypot {
     column-gap: 30px;
     display: grid;
     grid-auto-rows: 60px;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
     margin-bottom: 60px;
     margin-top: 60px;
     row-gap: 50px;
