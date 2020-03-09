@@ -56,9 +56,9 @@
         .topic {
             font-size: 0.875em;
             margin-bottom: 0px;
-            margin-right: 8px;
-            margin-top: 8px;
-            padding: 4px 8px;
+            margin-right: 0.5em;
+            margin-top: 0.5em;
+            padding: 0.25em 0.5em;
         }
     }
 
@@ -101,13 +101,13 @@
     }
 
     .skill-category {
-        margin-bottom: 20px;
+        margin-bottom: 1em;
     }
 
     .skill-item {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        margin-bottom: 10px;
+        margin-bottom: 0.625em;
         @include transition(background-color);
 
         &:hover {
@@ -120,6 +120,7 @@
 
         .skill-name {
             grid-column: 1;
+            word-break: break-word;
             @include transition;
         }
         
@@ -189,17 +190,18 @@
         .responsibilities {
             @include transition;
             margin-bottom: $paragraph-spacing;
-            padding-left: 20px;
+            padding-left: 1em;
         }
 
         .technologies-used {
             align-items: center;
             display: flex;
-            padding-left: 20px;
+            padding-left: 1em;
 
             .tech {
-                padding: 4px 8px;
-                margin-right: 8px;
+                font-size: 0.875em;
+                padding: 0.25em 0.5em;
+                margin-right: 0.5em;
             }
 
             .react {
@@ -280,7 +282,7 @@
 }
 
 /* Line up courses and awards side by side on larger screens */
-@media only screen and (min-width: $device-cutoff-large) {
+@media only screen and (min-width: 50rem) {
 
     .institution .collapsible-content {
         grid-template-columns: auto auto;

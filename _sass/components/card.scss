@@ -1,7 +1,7 @@
 @import 'mixins';
 
 .card {
-    --card-padding: 30px;
+    --card-padding: 1.5em;
     background-color: var(--card-bg-color);
     border-radius: 5px;
     box-shadow: 0 5px 10px 0 rgba(0,0,0,0.15), 

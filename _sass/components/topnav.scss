@@ -37,6 +37,7 @@ $topnav-min-height: 64px;
         background: none;
         display: flex;
         flex-wrap: nowrap;
+        overflow: hidden;
 
         #logo {
             height: 32px;
@@ -162,8 +163,7 @@ $topnav-min-height: 64px;
     }   
 }
 
-@media only screen and (min-width: 740px) {
-
+@media only screen and (min-width: 46.25rem) {
     #topnav {
         .nav-links {
             align-items: center;
