@@ -60,7 +60,7 @@ So what went wrong?
 
 The truth is that **there is no unique solution to this system of equations**. We can verify this visually by plotting our equations, which are really just lines in 2D (you can think of $$x_2$$ as our "$$y$$" and $$x_1$$ as our "$$x$$," or vice versa):
 
-{% include posts/picture.html img="overdetermined-system" extension="png" alt="The plot of the four equations above." shadow=false %}
+{% include posts/picture.html img="overdetermined-system" ext="JPG" alt="The plot of the four equations above." shadow=false %}
 
 Clearly, there is no single point at which all of the lines intersect, meaning there's no solution that satisfies all four equations simultaneously. What we found is the red dot, $$(1, 1)$$. As we saw earlier, there are three equations for which this is a solution (blue, purple, and red in the graph above).
 
