@@ -3,6 +3,7 @@ title: "How to Add a Copy-to-Clipboard Button to Your Jekyll Blog"
 description: Copying code by hand can be tedious for long tutorials, and that's no fun. Let's look at how you can add a copy-to-clipboard button to your Jekyll blog in just a few lines of code.
 tags: [dev, frontend, jekyll, liquid, javascript]
 keywords: [copy to clipboard button]
+isCanonical: true
 ---
 
 I'm always looking for ways to improve my site's user experience without toppling the precarious house of cards that is cross-browser compatibility (Internet Explorer be damned).
@@ -29,7 +30,7 @@ Well, ask and you shall receive. In this tutorial, we'll add a copy-to-clipboard
 
 *(Psst! You can also try this out live on my blog!)*
 
-Note that this tutorial is going to be bare bones—I'm not going to introduce any CSS or irrelevant HTML. I'm just going to show you how to get this thing working at a functional level—once that's taken care of, you can throw in any styling or other elements you want.
+Note that this tutorial is going to be bare bones—I'm not going to introduce any irrelevant CSS or HTML. I'm just going to show you how to get this thing working at a functional level. Once that's taken care of, you can throw in any extra styling or elements that you want.
 
 ## Copy-to-Clipboard Button in Jekyll with Liquid and JavaScript
 
@@ -58,7 +59,39 @@ Sound good? Let's first look at the include file itself:
 
 We create a `div` and give it a well-named class. We also add a native tooltip with the `title` attribute and ensure that the button can receive focus by specifying `tabindex="0"` (for keyboard users).
 
-The interesting part is the `data-code` attribute here:
+Below is the accompanying CSS (trimmed down to the essentials). Feel free to change this to suit your needs! Note that some of this will make more sense once we make the copy-to-clipboard button interactive with JavaScript.
+
+{% capture code %}.copy-code-button {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    padding-left: 6px;
+    padding-right: 6px;
+
+    &::before {
+        content: "Copy";
+    }
+
+    &::after {
+        margin-left: 4px;
+        content: "📋";
+        width: 1em;
+    }
+
+    // This class will be toggled via JavaScript
+    &.copied {
+        &::before {
+            content: "Copied!";
+        }
+
+        &::after {
+            content: "✔️";
+        }
+    }
+}{% endcapture %}
+{% include code.html code=code lang="scss" %}
+
+If you take a closer look at `_includes/code.html`, you'll notice this interesting `data-code` attribute:
 
 ```liquid
 {% raw %}data-code="{{ include.code | escape }}"{% endraw %}
@@ -227,7 +260,10 @@ setTimeout(() => {
 
 My copy-to-clipboard button uses CSS pseudo-elements to show `Copy 📋` in the default state and `Copied! ✔️` once the `copied` class has been added. This lasts for two seconds and gives the user feedback to indicate that copying to the clipboard went through successfully.
 
-That's it! Don't forget to include your script for this to actually work.
+That's it! Don't forget to add a script tag so this code actually works. For example, you can stick this somewhere in your layout file for blog posts:
+
+{% capture code %}<script src="/assets/scripts/copyCode.js"></script>{% endcapture %}
+{% include code.html file="_layouts/post.html" code=code lang="html" %}
 
 ## Copy That!
 
