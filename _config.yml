@@ -27,6 +27,7 @@ defaults:
       isPost: true
       isBlogPage: true
       layout: post
+      excerpt: ""
       permalink: /blog/:categories/:title/
   -
     scope:
