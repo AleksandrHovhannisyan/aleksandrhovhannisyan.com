@@ -193,9 +193,32 @@ Once you've captured the code, simply use the include:
 
 Rinse and repeat for every code block that you want to insert into your blog post!
 
+#### Making Our Lives Easier with a Custom Snippet
+
+Of course, all of that may still seem like a lot of work... Which is ironic because while we're trying to make things easier for the user, we're making things harder for ourselves!
+
+If you're using VS Code, you can set up a really handy snippet to save yourself time. If you're using another editor, such as Sublime Text or Atom, there's a [site that generates snippets for those, too](https://snippet-generator.app/).
+
+On VS Code, open up your command palette (`Ctrl+Shift+P` on Windows and `Command+Shift+P` on Mac), type `user snippets`, and select `Preferences: Configure User Snippets`. Then type `markdown` in the search bar, and VS Code will open up a settings file for Markdown files. Insert this snippet:
+
+{% capture code %}{% raw %}{
+	"Code Snippet": {
+		"prefix": "code",
+		"body": [
+			"{% capture code %}$1{% endcapture %}",
+			"{% include code.html code=code lang=\"$0\" %}"
+		]
+	}
+}{% endraw %}{% endcapture %}
+{% include code.html file="markdown.json" code=code lang="json" %}
+
+Then, in any Markdown file, all you'll have to do is type the prefix `code` and hit Enter; VS Code will auto-insert this snippet for you and even move your cursor so it's between the capture tags. This reduces a potentially tedious process to just a few keystrokes. Paste in your code, tab over to `lang=""` to specify the language, and you're all set!
+
+> **Note**: If you're not seeing any suggestions when you type in Markdown files, the solution is to [enable quick suggestions for Markdown](https://github.com/Microsoft/vscode/issues/28048) in your VS Code user settings.
+
 ### 3. Copying to the Clipboard with JavaScript
 
-Can you believe it? We're already two-thirds of the way done!
+Awesome! We're already two-thirds of the way done.
 
 Now, all that's left is the JavaScript to actually do the copying. And this is actually the easy part.
 
