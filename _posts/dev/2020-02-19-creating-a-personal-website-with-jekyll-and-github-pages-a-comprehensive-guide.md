@@ -95,7 +95,7 @@ Now that we've set up GitHub Pages, we'll go over everything you need to know to
 Jekyll has an excellent, in-depth [installation guide](https://jekyllrb.com/docs/installation/) for each OS, so I'll let you read that instead of copy-pasting it all here. If you follow the Ubuntu guide, which is what I use via WSL, you'll install these three things:
 
 1. **Ruby**, the programming language that powers Jekyll.
-2. **Bundler**, a Ruby gem (think "module") that lets you manage your project's dependencies with ease.
+2. **Bundler**, a Ruby gem (think "module") that lets you easily manage your project's dependencies.
 3. **Jekyll**, obviously.
 
 If you're familiar with npm and yarn, Bundler is basically the same idea except for Ruby—it manages your dependencies (gems) via two files called `Gemfile` and `Gemfile.lock`, which we'll see shortly.
