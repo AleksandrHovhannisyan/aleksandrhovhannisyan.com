@@ -115,9 +115,7 @@
         }
     }
 
-    .post-date,
-    .post-reading-length,
-    .post-tags {
+    .stat-wrapper {
         align-items: center;
         display: flex;
         @include transition;

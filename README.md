@@ -1,8 +1,6 @@
 # aleksandrhovhannisyan.github.io
 
-> My little corner of the internet.
-
-Welcome to my site! 👋
+Welcome to my little corner of the internet!
 
 What originally began as a single-page portfolio built with HTML5, CSS, and JavaScript was eventually moved to Jekyll for blogging purposes and maintainability. While building things with vanilla HTML and CSS was a great learning experience and a fun way to get my hands dirty, it was definitely not going to be maintainable in the long run. (Note that this repo is still active.)
 
@@ -59,19 +57,6 @@ I've spent a lot of time (I'd say probably more than 10 hours in total) tweaking
 
 ### Contact
 I decided I'd also include a form on my site to make it easier for people to reach out. I used [Formspree](https://github.com/formspree/formspree) for this, and it works perfectly. One downside is that your email is publicly exposed in your HTML, making it possible for spammers to ruin your day. To get around this, I used a [hidden honeypot field](https://help.formspree.io/hc/en-us/articles/360013580813-Honeypot-spam-filtering) and a throwaway email address that I monitor occasionally.
-
-### To Hardcode or Not to Hardcode?
-Originally, the Projects section of my site consisted entirely of hardcoded HTML for every single project card. This was certainly useful for nailing down the layout of the cards and styling them because I could directly edit the HTML and CSS without worrying about dynamically rendering the content. However, once I added stargazer counts to the projects, I realized that this approach was too inflexible. If my repos were to continue receiving stars, for example, then I'd have to manually update every single project by hand, and that would be tedious.
-
-I had never worked with APIs before, so this was a learning process for me. I looked into the [GitHub API on user repositories](https://developer.github.com/v3/repos/#list-user-repositories) and [learned about AJAX](https://www.taniarascia.com/how-to-connect-to-an-api-with-javascript/). It turns out that making API requests in JavaScript is actually really simple.
-
-I began with the basics&mdash;using `curl`, and later Insomnia, to examine the contents of the JSON returned by the API for my user account&mdash;and then created several granular routines in my JavaScript to assemble all the pieces for a project card. (Note: This is actually a great place to use React components.)
-
-In the current version of the website, all of the repo data is load dynamically from my repositories. That way, most changes on GitHub are reflected immediately.
-
-![](https://user-images.githubusercontent.com/19352442/60967104-da973b00-a2e7-11e9-8a3d-7ca5ee606eb6.png)
-
-> Note: One downside to my dynamic approach is that the GitHub API imposes a limit of 60 requests/hr for unauthenticated IPs (and I can't authenticate my site's requests because the source code, the script included, is public here on GitHub). However, I can't imagine why anyone would need to refresh the page so many times, so this is a minor consideration.
 
 ## What Did I Learn? 💭
 

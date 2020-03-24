@@ -4,6 +4,7 @@ description: Enjoy a better dev experience by setting up React with TypeScript, 
 keywords: ['create react app with typescript', 'customize ant design theme', 'create react app css modules and typescript']
 tags: [dev, frontend, react]
 isCanonical: true
+lastUpdated: Mar 24, 2020
 ---
 
 Let's skip the exposition and just jump right in. I'll use VS Code to make my life easier; I recommend that you do the same. Note that I'll be using yarn as my package manager, but you can also use npm.
@@ -139,6 +140,8 @@ First, install the `less` and `less-loader` packages:
 
 {% capture code %}yarn add less less-loader{% endcapture %}
 {% include code.html code=code lang="bash" %}
+
+> **Warning**: Be sure to check [this issue on GitHub](https://github.com/arackaf/customize-cra/issues/226) regarding a conflict between `customize-cra` and `css-loader`. The temporary solution, until `customize-cra@1.0` is released, is to run `yarn upgrade customize-cra@next`. I had the same problem; the suggested solution worked for me.
 
 Then, simply add a LESS loader to your config overrides:
 
