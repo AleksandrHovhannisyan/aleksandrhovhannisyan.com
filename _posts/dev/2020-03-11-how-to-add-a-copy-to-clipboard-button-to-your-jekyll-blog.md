@@ -4,7 +4,7 @@ description: Copying code by hand can be tedious for long tutorials, and that's 
 tags: [dev, frontend, jekyll, liquid, javascript]
 keywords: [copy to clipboard button]
 isCanonical: true
-lastUpdated: Mar 17, 2020
+lastUpdated: 2020-03-17
 ---
 
 I'm always looking for ways to improve my site's user experience without toppling the precarious house of cards that is cross-browser compatibility (Internet Explorer be damned).
