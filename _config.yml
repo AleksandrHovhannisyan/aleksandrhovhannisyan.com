@@ -1,9 +1,10 @@
 title: Aleksandr Hovhannisyan
+author: Aleksandr Hovhannisyan
 description: >-
   I'm Aleksandr, a software developer who's passionate about solving problems,
   creating beautiful user interfaces, and sharing my knowledge with others. Get in touch!
 keywords: [Aleksandr Hovhannisyan]
-url: https://aleksandrhovhannisyan.github.io/
+url: https://aleksandrhovhannisyan.github.io
 
 plugins:
   - jekyll-feed

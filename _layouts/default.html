@@ -7,11 +7,11 @@
         <meta name="keywords" content="{% if page.keywords %}{{ page.keywords | join: ', ' }}{% else %}{{ site.keywords | join: ', ' }}{% endif %}" />
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="author" content="Aleksandr Hovhannisyan" />
+        <meta name="author" content="{{ site.author }}" />
         <!-- For the contact form -->
         <meta name="referrer" content="origin" />
         <!-- OG properties are for social platforms with previews for shared links -->
-        <meta property="og:title" content="{{ page.title }} | Aleksandr Hovhannisyan" />
+        <meta property="og:title" content="{{ page.title }} | {{ site.title }}" />
         {% if page.isPost %}
         <meta property="og:image" content="{{ site.url }}/assets/img/posts/{{ page.slug }}/og.JPG" />
         {% else %}
@@ -71,7 +71,7 @@
         </main>
         <!-- Note: footer is not part of page wrapper to ensure it sticks to the bottom of the page -->
         <footer id="page-footer">
-            <span>Made with ♥ by Aleksandr Hovhannisyan, &copy; 2019–2020</span>
+            <span>Made with ♥ by {{ site.author }}, &copy; 2019–2020</span>
         </footer>
         <!-- Custom javascript -->
         <script src="/assets/scripts/common.js"></script>

@@ -11,7 +11,7 @@
     <div class="last-updated stat-wrapper">
         <div class="stat">
             {% include svg.html svg="info" class="stat-icon" %}
-            Updated: {{ include.lastUpdated }}
+            Updated: {{ include.lastUpdated | date: "%b %-d, %Y" }}
         </div>
     </div>
     {% endif %}
