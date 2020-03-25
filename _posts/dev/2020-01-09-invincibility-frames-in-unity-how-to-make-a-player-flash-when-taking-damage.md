@@ -1,33 +1,44 @@
 ---
-title: "Invincibility Frames in Unity: How to Make a Player Flash When Taking Damage"
-description: "Learn how you can make a player flash when they take damage. This is the notion of invincibility frames, also known as i-frames. You can observe this in many old/retro games, as well as in games like The Binding of Isaac."
+title: "Invulnerability Frames in Unity: How to Make a Player Temporarily Invincible"
+description: "Learn how to implement invincibility frames in Unity using coroutines. This mechanic exists in many games, including The Legend of Zelda, The Binding of Isaac, and Dark Souls."
+keywords: [unity invulnerability frames, unity invincibility frames]
 tags: [dev, game-dev, csharp]
 isCanonical: true
+lastUpdated: 2020-03-25
 ---
 
-In this post, we'll look at how you can make a player flash when they take damage. This is the notion of **invincibility frames**, also known as i-frames. You'll find this in many retro games like The Legend of Zelda, Super Mario, The Binding of Isaac, and others.
+In this post, we'll look at how to implement **invulnerability frames** in Unity (also known as i-frames). You'll find this mechanic in games like Dark Souls, The Legend of Zelda, Super Mario, The Binding of Isaac, and many others.
 
 <figure>
     {% include posts/picture.html img="isaac" ext="GIF" alt="Invincibility frames in the Binding of Isaac" shadow=false %}
     <figcaption><a href="https://braintrash83.tumblr.com/post/93502135046">GIF source</a></figcaption>
 </figure>
 
-To keep this tutorial simple, I'll assume that you already have:
+We'll also make the player flash to signal the start and end of their invulnerability frames. This is optional; in certain games (e.g., Dark Souls), invulnerability frames are an "invisible" mechanic.
 
-1. A way to detect collisions between projectiles/mobs and the player.
-2. A way to hurt the player. Let's call this method `LoseHealth(int amount)`.
+To keep this tutorial simple, I'll assume that you already have a method in place that's going to grant your player temporary invulnerability (e.g., `LoseHealth`, `Roll`, `GainPowerup`, and so on).
 
-If you want to see this demo in action, check out [Embody](https://github.com/cap4053-cheeky-pixels/EmbodyGame), a game I developed with some classmates for the Artificial Intelligence for Games class at the University of Florida.
+If you want to see this mechanic in action, check out [Embody](https://github.com/cap4053-cheeky-pixels/EmbodyGame), a game I developed with some classmates for the Artificial Intelligence for Games class at the University of Florida.
 
-{% include linkedHeading.html heading="How to Make a Player Flash When Taking Damage (with Coroutines!)" level=2 %}
+{% include linkedHeading.html heading="Implementing Invulnerability Frames in Unity (with Coroutines!)" level=2 %}
 
-The naive approach is to run a `for` loop, with an intentional delay between each iteration using deltatime, in your main `Update` loop, and to try to make the player flash in each iteration. But if you do this, you won't actually observe any flashing. Why is that?
+The naive (wrong) approach is to run a `for` loop with an intentional delay between each iteration:
 
-In game development, you have to keep in mind that everything happens within a **frame update**. What this means is that most game engines have an `Update` method that runs the entire game's logic in "ticks." So, if you have a `for` loop inside the update loop, it'll complete all of its iterations in a single frame. Thus, any oscillating UI changes that were intended to be gradual—like the player model flashing—will be (almost) immediate, and therefore imperceptible.
+```csharp
+void BecomeTemporarilyInvincible()
+{
+    for (int i = 0; i < invincibilityDurationSeconds; i += Time.deltaTime)
+    {
+        // do stuff here
+    }
+}
+```
 
-Instead, we want to use [coroutines](https://docs.unity3d.com/Manual/Coroutines.html) to implement invincibility frames in Unity. A coroutine is simply a method that will run in parallel to the main update loop and resume where it left off in the next update.
+If you do this, the player's invulnerability frames will run out almost immediately as soon as they start, no matter how large of a number `invincibilityDurationSeconds` may be. Why is that?
 
-{% include linkedHeading.html heading="Invincibility Frames in Unity" level=3 %}
+In game development, you have to keep in mind that everything happens within a **frame update**. What this means is that most game engines have an `Update` method that runs the entire game's logic in "ticks." So, if you have a `for` loop like the one above, it'll complete all of its iterations in a single frame. Thus, any changes that need to last for a certain period of time—like invulnerability—will complete in a single frame and will therefore be imperceptible.
+
+Instead, we want to use [coroutines](https://docs.unity3d.com/Manual/Coroutines.html) to implement invincibility frames in Unity. A coroutine is simply a method that runs in parallel to the main update loop and resumes where it left off in the next update.
 
 We'll start by adding this method somewhere in our Player script:
 
@@ -35,37 +46,47 @@ We'll start by adding this method somewhere in our Player script:
 {
     // logic goes here
 }{% endcapture %}
-{% include code.html code=code lang="csharp" %}
+{% include code.html file="Player.cs" code=code lang="csharp" %}
 
 Notice that this method returns an `IEnumerator`; all coroutines in Unity do that.
 
-We'll use a flag to keep track of whether the player is invincible. Add this member variable to your script:
+We'll use a private member variable to keep track of whether the player is invincible:
 
 {% capture code %}private bool isInvincible = false;{% endcapture %}
-{% include code.html code=code lang="csharp" %}
+{% include code.html file="Player.cs" code=code lang="csharp" %}
 
-Next, when the player becomes invincible, we flip this flag to true:
+When the player becomes invincible, we flip this flag to true:
 
 {% capture code %}private IEnumerator BecomeTemporarilyInvincible()
 {
     Debug.Log("Player turned invincible!");
     isInvincible = true;
 }{% endcapture %}
-{% include code.html code=code lang="csharp" %}
+{% include code.html file="Player.cs" code=code lang="csharp" %}
 
-Of course, this doesn't do anything (yet!). You're probably wondering:
+Of course, our code doesn't do anything meaningful just yet. You're probably wondering:
 
 1. How do we start the coroutine in the first place?
 2. How do we keep the coroutine running for a set amount of time?
-2. How do we make the player flash while they're invulnerable to damage?
+2. How do we make the player flash while they're invulnerable to damage? (Optional)
 
 All great questions! We'll address each one in turn.
 
-{% include linkedHeading.html heading="1. Losing Health and Becoming Invincible (Starting the Coroutine)" level=2 %}
+{% include linkedHeading.html heading="1. Make the Player Invulnerable (Start the Coroutine)" level=2 %}
 
-Ready for this? It's actually stupidly simple.
+Ready for this? It's actually really simple!
 
-Again, I'll assume that you're using something like `LoseHealth(int amount)`:
+```csharp
+void MethodThatTriggersInvulnerability()
+{
+    if (!isInvincible)
+    {
+        StartCoroutine(BecomeTemporarilyInvincible());
+    }
+}
+```
+
+For example, if players become invulnerable in your game when taking damage, you might do something like this:
 
 {% capture code %}public void LoseHealth(int amount)
 {
@@ -83,77 +104,116 @@ Again, I'll assume that you're using something like `LoseHealth(int amount)`:
 
     StartCoroutine(BecomeTemporarilyInvincible());
 }{% endcapture %}
-{% include code.html code=code lang="csharp" %}
+{% include code.html file="Player.cs" code=code lang="csharp" %}
 
-First, we [fail-fast](https://softwareengineering.stackexchange.com/a/230460/333842) if the player is already invincible. If they're not invincible, the player loses health. If the player died as a result of losing health, we set their health to zero, potentially fire off a death event, and return. Finally, if the player took damage but is still alive, we use `StartCoroutine` to initiate the coroutine that grants the player temporary invincibility.
+We immediately return if the player is already invincible. If they're not invincible, the player loses health. If the player died as a result of losing health, we set their health to zero, potentially fire off a death event, and return. Finally, if the player took damage but is still alive, we use `StartCoroutine` to initiate the coroutine that grants the player temporary invincibility.
 
-> **Tip**: Is your Player script checking for collisions with hostile entities in the world and self-inflicting damage? If so, rethink your approach. Instead, try having your damage sources check for collision with a designated "enemy" layer. This makes your logic much easier to follow.
+If you want to initiate the invulnerability frames some other way, like when the player rolls or picks up a power-up, simply call `StartCoroutine` in that method like I demonstrated above.
 
-{% include linkedHeading.html heading="2. Keep the Coroutine Running for a Set Amount of Time" level=2 %}
+{% include linkedHeading.html heading="2. Remain Invulnerable for a Fixed Period of Time" level=2 %}
 
-Here's what we want:
+Our coroutine looks like this so far:
 
-1. Invincibility should only last for a set period of time.
-2. There should be a fixed delay after each invincibility frame.
+{% capture code %}private IEnumerator BecomeTemporarilyInvincible()
+{
+    Debug.Log("Player turned invincible!");
+    isInvincible = true;
+}{% endcapture %}
+{% include code.html file="Player.cs" code=code lang="csharp" %}
 
-Add these two private members at the top of your script:
+Hmm... We don't want our player to be invulnerable to damage forever—that would be a pretty game-breaking "feature"! Instead, we want invulnerability to last for a fixed number of seconds and then wear off.
+
+First, declare this private member variable at the top of your script:
 
 {% capture code %}[SerializeField]
-private float invincibilityDurationSeconds;
-[SerializeField]
-private float delayBetweenInvincibilityFlashes;{% endcapture %}
-{% include code.html code=code lang="csharp" %}
+private float invincibilityDurationSeconds;{% endcapture %}
+{% include code.html file="Player.cs" code=code lang="csharp" %}
 
-> **Note**: `SerializeField` lets you edit private members through the Unity inspector without having to make them public in your script. This is useful if you want to change those values via the editor as you debug your game.
+Note that `SerializeField` lets you edit private members through the Unity inspector without having to make them public in your script. This is useful if you want to play around with the number while your game is running. That way, you don't have to tweak it in the script and restart your game.
 
-You'll need to initialize these two members via the Inspector pane:
+Before we use this variable, we must initialize it via the inspector pane or in our `Start` method:
 
 {% include posts/picture.html img="inspector" ext="JPG" alt="Initializing serialized fields via the inspector pane in Unity." shadow=false %}
 
-Once you've done that, use them in the coroutine to run a simple loop:
+Then, we can simply use it like so:
 
 {% capture code %}private IEnumerator BecomeTemporarilyInvincible()
 {
     Debug.Log("Player turned invincible!");
     isInvincible = true;
 
-    // Flash on and off for roughly invincibilityDurationSeconds seconds
-    for (float i = 0; i < invincibilityDurationSeconds; i += delayBetweenInvincibilityFlashes)
+    yield return new WaitForSeconds(invincibilityDurationSeconds);
+
+    isInvincible = false;
+    Debug.Log("Player is no longer invincible!");
+}{% endcapture %}
+{% include code.html file="Player.cs" code=code lang="csharp" %}
+
+We pause a coroutine in Unity using `yield return new WaitForSeconds`, passing in the number of seconds to wait. After that time elapses, Unity will resume executing the coroutine, running any code after the `yield` statement. In our case, once execution resumes, the `isInvincible` flag will be set to `false`, and the coroutine will terminate until it's called again sometime in the future. Excellent!
+
+Technically, this is really all that you need to implement invincibility frames in Unity. But what if you want to split the invulnerability across several time segments (simulated frames) so you can run some logic while the player is invincible? Currently, we really only have one invulnerability "frame" that acts as a delay between when we set `isInvincible` to `true` and when we set it to `false`.
+
+If all you want to do is prevent the player from taking damage while they're invulnerable, and you don't want to run any other logic during that invulnerability, you're pretty much done—the next two sections are optional for you.
+
+Otherwise, read on to learn how to create true invulnerability frames in Unity.
+
+{% include linkedHeading.html heading="3. Creating Discrete Invulnerability Frames in Unity" level=2 %}
+
+To create discrete invulnerability frames, we're going to have to modify our coroutine slightly. Instead of yielding once for the entire duration, we're going to need to yield in increments using a loop.
+
+Before we do that, let's add a second member variable at the top of our script:
+
+{% capture code %}[SerializeField]
+private float invincibilityDeltaTime;{% endcapture %}
+{% include code.html file="Player.cs" code=code lang="csharp" %}
+
+Again, go ahead and initialize this new variable via the Unity inspector or in `Start`. I recommend using values of `invincibilityDurationSeconds = 1.5` and `invincibilityDeltaTime = 0.15`, but you can use others, too.
+
+Now, let's rewrite our coroutine to use a loop instead of just yielding once:
+
+{% capture code %}private IEnumerator BecomeTemporarilyInvincible()
+{
+    Debug.Log("Player turned invincible!");
+    isInvincible = true;
+
+    for (float i = 0; i < invincibilityDurationSeconds; i += invincibilityDeltaTime)
     {
-        // TODO: add flashing logic here
-        yield return new WaitForSeconds(delayBetweenInvincibilityFlashes);
+        // TODO: add any logic we want here
+        yield return new WaitForSeconds(invincibilityDeltaTime);
     }
 
     Debug.Log("Player is no longer invincible!");
     isInvincible = false;
 }{% endcapture %}
-{% include code.html code=code lang="csharp" %}
+{% include code.html file="Player.cs" code=code lang="csharp" %}
 
-The key part here is the loop, especially the following line:
+Notice that we're no longer yielding for the entire duration of the invulnerability but instead for whatever time increment we specified:
 
 ```csharp
-yield return new WaitForSeconds(delayBetweenInvincibilityFlashes);
+yield return new WaitForSeconds(invincibilityDeltaTime);
 ```
 
-We pause coroutines in Unity using `WaitForSeconds` and pass in the number of seconds to wait. In this case, that's the delay beween each flash, which you've hopefully set in your inspector by now.
+Essentially, we've broken up the entire invulnerability duration into discrete "frames" using a loop. The total duration still ends up being roughly* `invincibilityDurationSeconds`, assuming you split up the interval evenly.
 
-I find that a duration of `1.5 s` works best, with the delay set to `0.15 s`. This means the loop will run `1.5 / 0.15 = 10` times. Since the player model transitions between two states (visible/invisible) across 10 iterations, you'll observe that there are `10 / 2 = 5` flashes in total:
+> *I say roughly because the actual amount of time waited may not precisely match the amount of time specified. You can read more about this [in the Unity docs on WaitForSeconds](https://docs.unity3d.com/ScriptReference/WaitForSeconds.html).
 
-{% include posts/picture.html img="flashes" ext="JPG" alt="The number of flashes that occur with those settings." %}
+How many frames do we have? With `invincibilityDurationSeconds = 1.5s` and `invincibilityDeltaTime = 0.15s`, this loop will run `1.5s / 0.15s = 10` times. In other words, we get 10 invulnerability frames (i-frames).
 
-Note the `TODO` comment above the yield statement—we have one final step remaining.
+Feel free to play around with these numbers to find the sweet spot for your game. You could even change them programmatically based on the player's current stats (like how i-frames scale with your equipment load in Dark Souls 1-3).
 
-{% include linkedHeading.html heading="3. Make the Player Flash While Invincible" level=2 %}
+Now that we have discrete invulnerability frames instead of just one big "frame" that waits for the full duration in one go, we can throw in whatever logic we want—like making the player model flash!
 
-Invincibility now works—you can verify this with the debug logs. But we'd like to give the player some sort of indication that they're currently invulnerable to damage. Making the player flash is the traditional approach and is a great example of **visual feedback**.
+{% include linkedHeading.html heading="4. Making the Player Flash While Invulnerable" level=2 %}
 
-The easiest way to make a player flash in Unity is to repeatedly scale the player's model (or sprite, for 2D) between `0` and `1` during each iteration of the loop. So first, we need to actually get ahold of the player model. We'll add a member variable for it:
+Making a player flash while they're invulnerable is a classic approach in old/retro games, as well as in games like The Legend of Zelda, Super Mario, The Binding of Isaac, and more. This is a great way to provide **visual feedback** to your user so they know to take advantage of their invincibility.
+
+The easiest way to make a player flash in Unity is to repeatedly scale their model (or sprite, for 2D) between `0` and `1`. First, we need to actually get ahold of the player model:
 
 {% capture code %}[SerializeField]
 private GameObject model;{% endcapture %}
-{% include code.html code=code lang="csharp" %}
+{% include code.html file="Player.cs" code=code lang="csharp" %}
 
-**Note**: For this tutorial to work, the Player should consist of a root object (e.g., `MainPlayer`) that has a Collider and the Player script attached to it. Nested under that object should be the player's model (e.g., `Model`) as a separate object, with whatever shaders, materials, sprites, etc. that you're using (in my case, that's the angry-looking ghost):
+For this tutorial to work, the Player should consist of a root object (e.g., `MainPlayer`) that has a Collider and the Player script attached to it. Nested under that object should be the player's model (e.g., `Model`) as a separate object, with whatever shaders, materials, sprites, etc. that you're using (in my case, that's the angry-looking ghost):
 
 {% include posts/picture.html img="model" ext="JPG" alt="The object hierarchy of the player." shadow=false %}
 
@@ -169,17 +229,16 @@ Next, we'll add a method that lets us easily scale this model:
 {
     model.transform.localScale = scale;
 }{% endcapture %}
-{% include code.html code=code lang="csharp" %}
+{% include code.html file="Player.cs" code=code lang="csharp" %}
 
-And finally, we'll actually do the scaling in our coroutine:
+And finally, we'll actually do the model scaling in our coroutine:
 
 {% capture code %}private IEnumerator BecomeTemporarilyInvincible()
 {
     Debug.Log("Player turned invincible!");
     isInvincible = true;
 
-    // Flash on and off for roughly invincibilityDurationSeconds seconds
-    for (float i = 0; i < invincibilityDurationSeconds; i += delayBetweenInvincibilityFlashes)
+    for (float i = 0; i < invincibilityDurationSeconds; i += invincibilityDeltaTime)
     {
         // Alternate between 0 and 1 scale to simulate flashing
         if (model.transform.localScale == Vector3.one)
@@ -190,24 +249,36 @@ And finally, we'll actually do the scaling in our coroutine:
         {
             ScaleModelTo(Vector3.one);
         }
-        yield return new WaitForSeconds(delayBetweenInvincibilityFlashes);
+        yield return new WaitForSeconds(invincibilityDeltaTime);
     }
 
     Debug.Log("Player is no longer invincible!");
     ScaleModelTo(Vector3.one);
     isInvincible = false;
 }{% endcapture %}
-{% include code.html code=code lang="csharp" %}
+{% include code.html file="Player.cs" code=code lang="csharp" %}
 
-Depending on the numbers you select for `invincibilityDurationSeconds` and `delayBetweenInvincibilityFlashes`, you could end up in a situation where the player's invincibility runs out on the loop iteration where we set its scale to zero. Thus, we forcibly scale the model to one at the very end for safe measure.
+Depending on the numbers you select for `invincibilityDurationSeconds` and `invincibilityDeltaTime`, you could end up in a situation where the player turns invisible on the frame where we set its scale to zero. So, we forcibly scale the model to one at the very end:
 
-And that's it—you're all set to use invincibility frames in your game!
+```csharp
+Debug.Log("Player is no longer invincible!");
+ScaleModelTo(Vector3.one); // here
+isInvincible = false;
+```
+
+How many times will the player model flash? Since it alternates between two visibility states (visible or invisible) across a total of 10 invulnerability frames, there will be `10 / 2 = 5` flashes in total:
+
+{% include posts/picture.html img="flashes" ext="JPG" alt="The number of flashes that occur with those settings." %}
+
+Again, you can tweak the number of frames and flashes by playing around with the numbers.
+
+That's it—you're all set to use invincibility frames in Unity!
 
 {% include linkedHeading.html heading="Can I Use This Approach in Other Game Engines?" level=2 %}
 
 Yes and no.
 
-In game engines like Unreal, there is unfortunately no support for coroutines. As an alternative to this approach, you can keep track of the time that has elapsed since invulnerability was initiated, across multiple `Update` frames, using simple deltatime calculations. (This approach differs from the naive one mentioned in the intro.)
+In game engines like Unreal, there is unfortunately no support for coroutines. As an alternative to this approach, you can keep track of the time that has elapsed since invulnerability was initiated, across multiple `Update` frames, using simple deltatime calculations. (This approach differs from the naive one mentioned in the intro because it doesn't use a loop.)
 
 Godot, on the other hand, [does have them](https://docs.godotengine.org/en/3.1/getting_started/scripting/gdscript/gdscript_basics.html#coroutines-with-yield).
 
