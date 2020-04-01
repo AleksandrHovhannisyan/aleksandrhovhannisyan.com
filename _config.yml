@@ -37,9 +37,9 @@ defaults:
       categories: dev
   -
     scope:
-      path: _posts/cs101
+      path: _posts/computer-science
     values:
-      categories: cs101
+      categories: computer-science
   -
     scope:
       path: _posts/gaming
