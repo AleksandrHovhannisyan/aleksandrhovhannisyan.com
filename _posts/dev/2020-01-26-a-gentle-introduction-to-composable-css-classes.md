@@ -321,4 +321,6 @@ I'm not going to ignore the elephant in the room. As you introduce more speciali
 
 I used plain-old CSS in this post to keep it generic. You're more than welcome to use a CSS preprocessor like SASS or LESS and define some custom functions or mixins to reduce the amount of work that goes into composing different classes together.
 
+Better yet, you may want to look into adopting a methodology such as [BEM (Block-Element-Modifier)](http://getbem.com/introduction/).
+
 I hope you found this post helpful!
