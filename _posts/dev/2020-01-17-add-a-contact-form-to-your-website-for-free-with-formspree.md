@@ -1,7 +1,7 @@
 ---
-title: "Add a Free Contact Form to Your Website with Formspree"
-description: "Formspree is an online platform that makes it easy for you to add a free contact form to your website. Setting it up takes no more than a few minutes, and you're good to go!"
-keywords: ["free contact form", "formspree"]
+title: Create a Free Contact Form with Formspree
+description: Formspree makes it easy for you to add a free contact form to your website. Setting it up takes no more than a few minutes. Learn how to get started!
+keywords: [free contact form, formspree]
 tags: [dev, frontend, forms]
 isCanonical: true
 ---
@@ -91,6 +91,8 @@ The free Formspree plan is a good option for most personal websites that don't e
 
 ## That's It!
 
-You're all set to receive messages from your website's visitors.
+Adding a free contact form to your site is *that* easy.
+
+You're all set to receive messages from your website's visitors!
 
 (Or to hear crickets chirping in your inbox... 🦗)
