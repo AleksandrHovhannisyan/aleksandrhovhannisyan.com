@@ -1,10 +1,10 @@
 ---
 title: Multiple Modals on One Page Using HTML, CSS, and JavaScript
 description: Learn how to create modal windows in HTML using just a bit of HTML, CSS, and JavaScript. We'll look at how you can open multiple modals on one page, either stacked on top of each other or side by side.
-keywords: ["multiple modals on one page", "how to create modal windows in html"]
+keywords: [multiple modals on one page, two modals on the same page, how to create modal windows in html]
 tags: [dev, frontend, html, css, javascript]
 isCanonical: true
-lastUpdated: 2020-03-21
+lastUpdated: 2020-04-02
 ---
 
 I recently tried my hand at creating modal windows from scratch, without any libraries or dependencies. As it turns out, doing so is *much* simpler than I thought it would be!
@@ -19,7 +19,7 @@ The second is opening multiple modals on one page side by side:
 
 They'll share some of the same underlying structure and logic, but I've split them into separate sections to make it easier for you to find what you're looking for.
 
-Each one will include a CodePen demo with the full source code.
+Each one will include a CodePen demo with the full source code. The examples will show me opening just two modals on the same page to keep things simple, but you can still open more with the same code.
 
 ## Table of Contents
 - [Shared Code for Modals (Stacked + Side by Side)](#shared-code-for-modals-stacked--side-by-side)
@@ -240,6 +240,10 @@ Here's the CodePen for this section, if you'd like to test the result and take a
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 
+In this example, we have two modals on the same page, one stacked on top of the other. When you open the second modal, the background dims even more than before, signaling that an additional "layer" has been stacked on the UI.
+
+> **Note**: The order in which the modal windows are defined in your HTML does matter! For a modal window to appear on top of another one, it will need to come later in the HTML relative to the "bottom" modal.
+
 Let's get to work!
 
 ### Stack 'Em Up
@@ -347,13 +351,13 @@ By definition, we can only ever click the X button for the topmost modal window.
 });{% endcapture %}
 {% include code.html file="index.js" code=code lang="javascript" %}
 
-That's it for stacked modals!
+That's it for the code to open multiple modals stacked on top of one another. Check out the Codepen link for the relevant HTML, CSS, and JavaScript all in one place.
 
 ## Multiple Modals on One Page (Side by Side)
 
-We saw how we can create modals that are stacked on top of one another. This works because each modal has a wrapper element that gives it an increasing sense of elevation above the modal underneath (thanks to the alpha channel on each wrapper's background color).
+Okay, so we saw how we can open two modals on the same page that are stacked on top of one another. This works because each modal has a wrapper element that gives it an increasing sense of elevation above the modal underneath (thanks to the alpha channel on each wrapper's background color).
 
-Now, we want to open modals side by side instead of stacking them on top of one another:
+Now, we want to open multiple modals on one page *side by side* instead of stacking them on top of one another:
 
 <p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="result" data-user="AleksandrHovhannisyan" data-slug-hash="RwPYWWB" data-preview="true" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Demo: Multiple Modals on One Page (Side by Side)">
   <span>See the Pen <a href="https://codepen.io/AleksandrHovhannisyan/pen/RwPYWWB">
@@ -422,11 +426,13 @@ And here's the new CSS if you want to copy it over and replace what you had befo
 
 Finally, the JavaScript logic will be a little different for opening and closing modals.
 
-Perhaps the most important change is that we're **no longer going to use a stack data structure**. That made sense for stacked modals, but it won't for modals that need to be open side by side, without any relative hierarchy. Instead, we'll use an object to associate IDs with modal elements:
+Perhaps the most important change is that we're **no longer going to use a stack data structure**. That made sense for stacked modals, but it won't for modals that need to be open side by side, without any relative hierarchy*. Instead, we'll use an object to associate IDs with modal elements:
 
 {% capture code %}let currentlyOpenModals = {};
 const noModalsOpen = () => !Object.keys(currentlyOpenModals).length;{% endcapture %}
 {% include code.html file="index.js" code=code lang="javascript" %}
+
+> *You may still want to establish some sort of dependency relationship between modals that opened other modals. That way, if you close the parent modal, its children would close as well. We won't look at that in this tutorial, but it's something to keep in mind.
 
 We'll also want to get a reference to the single `.modal-wrapper` at the top of our script:
 
