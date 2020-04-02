@@ -113,9 +113,7 @@ This is an overdetermined system because there are three equations but only two 
 
 {% include linkedHeading.html heading="How Do We Solve Overdetermined Systems?" level=2 %}
 
-So far, we've seen that we can't solve an overdetermined system in the traditional sense. So what do we do?
-
-Let's look at the general form of an overdetermined system $$Ax = b$$. As a matrix equation, it looks like this:
+So far, we've seen that we can't solve an overdetermined system in the traditional sense. So what do we do? Let's look at the general form of an overdetermined system $$Ax = b$$. As a matrix equation, it looks like this:
 
 $$
 
@@ -154,9 +152,68 @@ But we don't just throw up our arms in defeat if we're given an overdetermined s
 
 > **Takeaway**: A least squares solution is an *approximate* solution to a system of equations for which a unique solution does not exist.
 
-{% include linkedHeading.html heading="What Is the Least Squares Method Doing Visually?" level=2 %}
+{% include linkedHeading.html heading="Least Squares Visualized" level=2 %}
 
-As a reminder, we have this general $$m \times n$$ system:
+Before we look at the generalized graph of the least squares method, let's look at a simple example that you'll come across frequently in statistics classes on least squares regression. Suppose you're given this one-dimensional data set of $$(x, y)$$ pairs:
+
+$$ (1, 1), (2, 3), (3, 3), (4, 5), (6, 4)$$
+
+Don't confuse these $$x$$s with the ones we saw earlier—just pretend for a second that you're back in algebra class and learning how to plot in the $$xy$$-plane.
+
+If we plot these data points, we'll get the following graph:
+
+{% include posts/picture.html img="data" ext="JPG" alt="Plotting the five data points we were given." shadow=false %}
+
+These points appear to follow a linear shape, but it's simply not possible to plot a straight line that fits all of the points. But clearly, we can draw a **best-fit line** that at least gets as close to all of the points as possible:
+
+{% include posts/picture.html img="best-fit" ext="PNG" alt="A best-fit line through the points we plotted." shadow=false %}
+
+> Spoiler: The solution is $$y = 0.59459459x + 1.2972973$$.
+
+We won't concern ourselves right now with how that equation was actually obtained. Let's just represent it in its most generic form:
+
+$$y = \theta_1(x) + \theta_2$$
+
+We were given several $$(x, y)$$ pairs, so we can plug those into the above equation to get a *set of equations* that we want to solve in order to find the values for $$\theta_1$$ and $$\theta_2$$:
+
+$$1 = \theta_1(1) + \theta_2$$
+
+$$3 = \theta_1(2) + \theta_2$$
+
+$$3 = \theta_1(3) + \theta_2$$
+
+$$5 = \theta_1(4) + \theta_2$$
+
+$$4 = \theta_1(6) + \theta_2$$
+
+Our goal is to find values for $$\theta_1$$ and $$\theta_2$$ that will minimize the error of estimating the trend in the data with the imperfect equation $$y = \theta_1x + \theta_2$$. In other words, this is a least squares problem—we can't get an exact solution, so we try to find a "solution" that's as good as possible.
+
+Let's represent this problem in matrix form:
+
+$$ \begin{bmatrix}
+1 & 1 \\
+2 & 1 \\
+3 & 1 \\
+4 & 1 \\
+6 & 1
+\end{bmatrix}
+\begin{bmatrix}
+\theta_1 \\
+\theta_2
+\end{bmatrix} = 
+\begin{bmatrix}
+1 \\
+3 \\
+3 \\
+5 \\
+4
+\end{bmatrix}$$
+
+This was really an overdetermined system, $$A\theta = b$$, disguised as a bunch of $$(x, y)$$ data pairs! We have more equations than unknowns. This alone tells us that there is no unique solution and that we must find a least squares solution instead.
+
+> Curious how I plotted the line for this particular problem? You'll learn more about [least squares curve fitting](blog/computer-science/least-squares-fitting/) in the next post in this two-part series.
+
+Let's generalize this problem. We start with an $$m \times n$$ system:
 
 $$
 
@@ -185,7 +242,7 @@ b_m
 
 $$
 
-Let's consider the case where $$n = 2$$—that is, our solution will have just two components, $$x_1$$ and $$x_2$$. Since we're looking at overdetermined systems, where $$m > n$$, we know we'll have at least three equations ($$m > 2$$). This does not change anything about the method of least squares in general. Rather, it makes it easier to visualize what we're doing, since the average person struggles with higher dimensions. Here's the system:
+And we consider the case where $$n = 2$$—that is, our solution will have just two components, $$x_1$$ and $$x_2$$ (these were $$\theta_1$$ and $$\theta_2$$ in the concrete example above):
 
 $$
 
@@ -212,11 +269,11 @@ b_m
 
 $$
 
-If $$n = 2$$ like it is here, then $$Ax$$ is a plane in a 3D space:
+If $$n = 2$$ like it is here, $$Ax$$ ends up being a plane in a 3D space:
 
 {% include posts/picture.html img="least-squares-visualized" ext="JPG" alt="A graph of Ax=b." shadow=false %}
 
-Notice that the vector $$b$$ falls outside the plane. In plain English, this means that there's no $$x$$ such that $$Ax = b$$. If we imagine for a second that we live in the 3D space of this graph, our walking surface would be limited to the plane itself. In other words, we would have no way of reaching $$b$$; the best that we could do is to navigate the plane itself.
+Notice that the vector $$b$$ falls outside this plane. In plain English, this means that there's no $$x$$ such that $$Ax = b$$. If we imagine for a second that we live in the 3D space of this graph, our walking surface would be limited to the plane itself. In other words, we would have no way of reaching $$b$$; the best that we could do is to navigate the plane itself.
 
 Okay, so we can't get to $$b$$... Bummer. But can we get close? We sure can! And in fact, geometrically, that's exactly what the method of least squares does—it finds the point in the plane $$Ax$$ that's closest to $$b$$. From the image, we see that the closest point to $$b$$ is right under it—where the orthogonal projection of $$b$$ onto the plane actually touches the plane.
 
