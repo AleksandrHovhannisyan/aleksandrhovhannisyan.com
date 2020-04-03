@@ -48,36 +48,27 @@ layout: default
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "url": "{{ site.url }}{{ page.url }}",
-    "name": {{ page.title | escape | jsonify }},
-    "headline": {{ page.title | escape | jsonify }},
-    "keywords": {{ page.tags | join: ',' | jsonify }},
-    "description": {{ page.description | strip_newlines | strip | jsonify }},
-    "articleBody": {{ page.content | strip_html | jsonify }},
-    "datePublished": {{ page.date | jsonify }},{% if page.lastUpdated %}
-    "dateModified": {{ page.lastUpdated | default: page.date | jsonify }},{% endif %}
-    "author": {
-      "@type": "Person",
-      "name": {{ site.author | jsonify }}
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": {{ site.title | jsonify }},
-      "url": "{{ site.url }}",
-      "logo": {
-        "@type": "ImageObject",
-        "width": 32,
-        "height": 32,
-        "url": "{{ site.url }}/favicon.ico"
-      }
-    },
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "{{ site.url }}{{ page.url }}"
     },
-    "image": {
-      "@type": "ImageObject",
-      "url": "{{ site.url }}/assets/img/posts/{{ page.slug }}/og.JPG"
-    }
+    "headline": {{ page.title | escape | jsonify }},
+    "image": ["{{ site.url }}/assets/img/posts/{{ page.slug }}/og.JPG"],
+    "datePublished": {{ page.date | jsonify }},{% if page.lastUpdated %}
+    "dateModified": {{ page.lastUpdated | jsonify }},{% endif %}
+    "author": {
+      "@type": "Person",
+      "name": "{{ site.author }}"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "{{ site.title }}",
+      "url": "{{ site.url }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ site.url }}/assets/img/favicon.png"
+      }
+    },
+    "description": {{ page.description | strip_newlines | strip | jsonify }}
   }
 </script>
