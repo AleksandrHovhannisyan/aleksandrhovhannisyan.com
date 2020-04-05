@@ -154,7 +154,7 @@ But we don't just throw up our arms in defeat if we're given an overdetermined s
 
 {% include linkedHeading.html heading="Least Squares Visualized" level=2 %}
 
-Before we look at the generalized graph of the least squares method, let's look at a simple example that you'll come across frequently in statistics classes on least squares regression. Suppose you're given this one-dimensional data set of $$(x, y)$$ pairs:
+Before we look at the generalized graph of the least squares method, let's look at a simple example that you'll come across frequently in statistics classes on least squares regression. Suppose you're given this two-dimensional data set of $$(x, y)$$ pairs:
 
 $$ (1, 1), (2, 3), (3, 3), (4, 5), (6, 4)$$
 
@@ -405,4 +405,4 @@ Here's the gist of what we covered in this post:
 
 And that's it! Hopefully things are starting to make a little more sense now.
 
-[In the next post](/blog/computer-science/least-squares-method-explained-part-2-data-fitting), we'll look at practical least squares applications and solve least squares data fitting problems by hand (and with Python!).
+[In the next post](/blog/computer-science/least-squares-fitting), we'll look at practical least squares applications and solve least squares data fitting problems by hand (and with Python!).
