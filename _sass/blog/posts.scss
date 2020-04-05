@@ -30,12 +30,12 @@
             margin-bottom: 1em;
             margin-right: 1em;
             padding: 0.2em 0.8em;
-        }
+            height: 2.2em;
 
-        .more-tags-label {
-            font-size: 0.875em;
-            margin-bottom: 1rem;
-            @include transition(color);
+            .tag-count {
+                font-size: 0.8em;
+                margin-left: 0.3em;
+            }
         }
     }
 }
