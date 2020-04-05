@@ -4,29 +4,33 @@ layout: default
 ---
 
 <section class="section blog-post-previews">
-    {% assign blogType = "" %}
-    {% assign pageTag = page.tag | split: '-' %}
-    {% for word in pageTag %}
-        {% assign capitalizedWord = word | capitalize | append: ' ' %}
-        {% assign blogType = blogType | append: capitalizedWord %}
+  {% assign blogType = "" %} {% assign pageTag = page.tag | split: '-' %} {% for
+  word in pageTag %} {% assign capitalizedWord = word | capitalize | append: ' '
+  %} {% assign blogType = blogType | append: capitalizedWord %} {% endfor %}
+  <h1>{{ blogType }}Blog Posts</h1>
+  <p>
+    {% if site.data.tagDescriptions[page.tag] %} {{
+    site.data.tagDescriptions[page.tag] }} {% else %} {{
+    site.data.tagDescriptions["all"]}} {% endif %}
+  </p>
+  {% assign primaryTags = "all,dev,computer-science,gaming,writing" | split: ',' %}
+  <ul class="tag-navigation">
+    {% for tag in primaryTags %}
+    <li>
+        <a
+          href="{% if tag == "all" %}/blog/{% else %}/tag/{{ tag }}{% endif %}"
+          class="post-tag tag{% if page.tag == tag %} active-tag{% endif %}"
+        >
+        <span class="tag-name">{{ tag }}</span><span class="tag-count">
+            {% assign posts = site.posts %}
+            {% if tag != "all" %}{% assign posts = site.tags[tag] %}{% endif %}
+            {{ posts | size }}
+        </span>
+        </a>
+      </li>
     {% endfor %}
-    <h1>{{ blogType }}Blog Posts</h1>
-    <p>
-        {% if site.data.tagDescriptions[page.tag] %}
-        {{ site.data.tagDescriptions[page.tag] }}
-        {% else %}
-        {{ site.data.tagDescriptions["all"]}}
-        {% endif %}
-    </p>
-    <ul class="tag-navigation">
-        <li><a href="/blog/" class="post-tag tag{% if page.tag == 'all' %} active-tag{% endif %}">all</a></li>
-        <li><a href="/tag/dev" class="post-tag tag{% if page.tag == 'dev' %} active-tag{% endif %}">dev</a></li>
-        <li><a href="/tag/computer-science" class="post-tag tag{% if page.tag == 'computer-science' %} active-tag{% endif %}">computer-science</a></li>
-        <li><a href="/tag/gaming" class="post-tag tag{% if page.tag == 'gaming' %} active-tag{% endif %}">gaming</a></li>
-        <li><a href="/tag/writing" class="post-tag tag{% if page.tag == 'writing' %} active-tag{% endif %}">writing</a></li>
-        <li class="more-tags-label">+{{ site.tags | size | minus: 4 }} other tags</li>
-    </ul>
-    <section class="card-grid">
-        {{ content }}
-    </section>
+  </ul>
+  <section class="card-grid">
+    {{ content }}
+  </section>
 </section>
