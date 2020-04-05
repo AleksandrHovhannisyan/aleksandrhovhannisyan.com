@@ -1,5 +1,5 @@
 {% assign post = include.post %}
-<div class="card post-preview" tabindex="0" data-tags="{{ post.tags | join: ' ' }}">
+<div class="card post-preview" tabindex="0">
     <a class="container-link" href="{{ post.url }}" tabindex="-1"></a>
     {% include posts/thumbnail.html post=post %}
     <div class="post-preview-body">
