@@ -52,6 +52,11 @@ defaults:
       categories: music
   -
     scope:
+      path: _posts/writing
+    values:
+      categories: writing
+  -
+    scope:
       path: tag
       type: pages
     values:
