@@ -1,12 +1,14 @@
+// Light mode
 $primary-color: #35647a;
-$primary-color-dark: #13242c;
 $primary-color-light: #4989a7;
-$primary-color-selection: #d3dafa;
+$primary-color-tag: #dae3e7;
+$primary-color-selection: rgba(218, 227, 231, 0.8);
 $primary-color-link: #216ec4;
 
+// Dark mode
 $secondary-color: #bda17f;
-$secondary-color-light: #ddbc94;
-$secondary-color-selection: rgba(95, 90, 79, 0.8);
+$secondary-color-light: #f3d5b3;
+$secondary-color-selection: rgba(156, 147, 135, 0.8);
 $secondary-color-link: #cea25a;
 
 // Miscellaneous colors

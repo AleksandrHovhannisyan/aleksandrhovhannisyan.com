@@ -1,11 +1,10 @@
 @import 'colors';
-@import 'mixins';
 
 html.light {
     --main-bg-color: #ffffff;
     --nav-bg-color: #2c2c2c;
     --hero-bg-color: #1c1c1c;
-    --selection-bg-color: rgba(218, 227, 231, 0.8);
+    --selection-bg-color: #{$primary-color-selection};
 
     --text-color-normal: #{$denim};
     --text-color-emphasis: #384950;
@@ -16,7 +15,7 @@ html.light {
 
     --card-bg-color: #ffffff;
     
-    --tag-bg-color: #dae3e7;
+    --tag-bg-color: #{$primary-color-tag};
     --tag-text-color: #{$primary-color};
 
     --code-bg-color: rgba(234, 234, 234, 0.749);
@@ -36,14 +35,14 @@ html.dark {
     --main-bg-color: #1a1a1a;
     --nav-bg-color: #292929;
     --hero-bg-color: #202020;
-    --selection-bg-color: rgba(156, 147, 135, 0.8);
+    --selection-bg-color: #{$secondary-color-selection};
 
     --text-color-normal: #adadad;
     --text-color-emphasis: #cccccc;
     --link-color: #{$secondary-color-link};
 
-    --button-bg-color: #bda17f;
-    --button-bg-hover-color: #f3d5b3;
+    --button-bg-color: #{$secondary-color};
+    --button-bg-hover-color: #{$secondary-color-light};
 
     --card-bg-color: #292929;
 
