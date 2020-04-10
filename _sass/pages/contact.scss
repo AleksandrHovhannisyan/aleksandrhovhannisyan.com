@@ -61,7 +61,7 @@ form {
     label {
         color: var(--text-color-emphasis);
         display: block;
-        font-weight: 500;
+        font-weight: map-get($font-weights, "bold");
         margin-bottom: 5px;
         @include transition(color);
 

@@ -15,7 +15,7 @@
     .project-name {
         align-self: center;
         color: var(--text-color-emphasis);
-        font-weight: 500;
+        font-weight: map-get($font-weights, "bold");
         grid-area: heading;
         @include transition;
     }
@@ -214,7 +214,7 @@
     }
 
     .institution-name {
-        font-weight: 500;
+        font-weight: map-get($font-weights, "bold");
     }
 
     .collapsible-content {
@@ -223,7 +223,7 @@
         grid-template-columns: 1fr;
 
         h3 {
-            font-weight: normal;
+            font-weight: map-get($font-weights, "normal");
             margin-bottom: 21px;
             margin-left: 20px;
             margin-top: 21px;
