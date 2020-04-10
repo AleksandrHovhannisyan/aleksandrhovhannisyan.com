@@ -82,14 +82,14 @@ body {
 
 strong {
     color: var(--text-color-emphasis);
-    font-weight: 600;
+    font-weight: map-get($font-weights, "bold");
     @include transition;
 }
 
 @include headings {
     color: var(--text-color-emphasis);
     margin-bottom: 0.5em;
-    font-weight: 600;
+    font-weight: map-get($font-weights, "bold");
     line-height: 1.4;
     @include transition;
 }
@@ -109,7 +109,7 @@ h1 {
 
 a {
     color: var(--link-color);
-    font-weight: 600;
+    font-weight: map-get($font-weights, "bold");
     text-decoration: none;
     @include transition;
 }

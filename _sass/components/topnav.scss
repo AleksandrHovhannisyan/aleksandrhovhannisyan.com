@@ -21,7 +21,7 @@ $topnav-min-height: 64px;
     * {
         color: #dedede;
         fill: #dedede;
-        font-weight: normal;
+        font-weight: map-get($font-weights, "normal");
     }
 
     .nav-container {

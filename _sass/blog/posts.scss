@@ -4,7 +4,7 @@
 
 .post-tag {
     display: inline-block;
-    font-weight: normal;
+    font-weight: map-get($font-weights, "normal");
 
     &:hover, &:focus, &.active-tag {
         @include themed(background-color, $primary-color, #ffcd91);
@@ -257,7 +257,7 @@
     ol li::marker {
         @include transition;
         color: var(--text-color-emphasis);
-        font-weight: 500;
+        font-weight: map-get($font-weights, "bold");
         margin-right: 5px;
     }
 
