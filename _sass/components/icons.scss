@@ -1,0 +1,17 @@
+@import 'mixins';
+
+.star {
+    height: 1em;
+    width: 1em;
+
+    &.star-filled {
+        fill: var(--button-bg-color);
+        @include transition;
+    }
+
+    &.star-empty {
+        fill: #adacac;
+        @include transition;
+        @include themed(fill, #adacac, #474747);
+    }
+}
