@@ -31,14 +31,7 @@
 }
 
 html {
-    // Font between 16px (mobile) and 20px, https://css-tricks.com/simplified-fluid-typography/
-    @media screen and (min-width: 25em) {
-        font-size: 4vw;
-    }
-
-    @media screen and (min-width: 31.25em) {
-        font-size: 1.25em;
-    }
+    @include maxFontSize(20px);
 }
 
 body {
