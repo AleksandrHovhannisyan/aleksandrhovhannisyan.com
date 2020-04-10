@@ -205,7 +205,7 @@ How do they gain access to this pointer? Well, recall that we invoked `toggle` i
 ```cpp
 void Light::toggle() 
 {
-	currentState.toggle(this);
+	currentState->toggle(this);
 }
 ```
 
@@ -525,7 +525,7 @@ Notice how I defined a test method for each state transition:
 - Off to Low
 - Low to Medium
 - Medium to High
-- High back to Low
+- High back to Off
 
 > **Note**: The `ToString` method at the top is needed to resolve a pretty common error that you'll run into with this unit testing framework.
 
