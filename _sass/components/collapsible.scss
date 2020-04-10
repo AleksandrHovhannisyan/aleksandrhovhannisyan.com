@@ -7,12 +7,14 @@
     width: 100%;
 
     &.collapsible-closed {
+        // Downward-pointing vector
         .collapsible-header::before {
             transform: rotate(45deg);
         }
     }
 
     &.collapsible-open {
+        // Upward-pointing vector
         .collapsible-header::before {
             transform: rotate(-135deg);
         }
@@ -39,6 +41,7 @@
         background-color: var(--button-bg-hover-color);
     }
 
+    // Vector/arrowhead
     &::before {
         content: "";
         border: solid;
