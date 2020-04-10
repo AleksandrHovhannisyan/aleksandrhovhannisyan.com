@@ -53,7 +53,7 @@
     }
 }
 
-@mixin fixedColor($color) {
+@mixin selectionResistantColor($color) {
     &, &::selection {
         color: $color;
     }

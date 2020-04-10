@@ -46,65 +46,65 @@ $operator-word: #569cd6;
   /* Comments */
   .c, .cm, .cp, .c1, .cs {
     font-style: italic;
-    @include fixedColor($comment);
+    @include selectionResistantColor($comment);
   }
 
   /* Functions */
   .nf, .nx {
-    @include fixedColor($function);
+    @include selectionResistantColor($function);
   }
 
   /* Attributes */
   .na {
-    @include fixedColor($attribute);
+    @include selectionResistantColor($attribute);
   }
 
   /* Variables */
   .bp, .nv, .vc, .vg, .vi, .err {
-    @include fixedColor($variable);
+    @include selectionResistantColor($variable);
   }
 
   /* Numbers */
   .m, .mf, .mh, .mi, .mo, .il {
-    @include fixedColor($number);
+    @include selectionResistantColor($number);
   }
 
   /* Keywords */
   .k, .kd, .kn, .kr, .kt {
-    @include fixedColor($keyword);
+    @include selectionResistantColor($keyword);
   }
 
   /* Constants */
   .kc {
-    @include fixedColor($constant);
+    @include selectionResistantColor($constant);
   }
 
   /* Pseudo */
   .kp, .nb {
-    @include fixedColor($support);
+    @include selectionResistantColor($support);
   }
 
   /* Strings */
   .s, .sb, .sc, .s1, .s2 {
-    @include fixedColor($string);
+    @include selectionResistantColor($string);
   }
 
   /* Classes/tags */
   .nc, .nt, .nl {
-    @include fixedColor($tag);
+    @include selectionResistantColor($tag);
   }
 
   /* Punctuation */
   .p {
-    @include fixedColor($punctuation);
+    @include selectionResistantColor($punctuation);
   }
 
   .o {
-    @include fixedColor($operator);
+    @include selectionResistantColor($operator);
   }
 
   /* Operators */
   .ow {
-    @include fixedColor($operator-word);
+    @include selectionResistantColor($operator-word);
   }
 }
