@@ -7,6 +7,11 @@
     grid-template-rows: max-content 1fr max-content;
     cursor: pointer;
 
+    header {
+        display: flex;
+        justify-content: space-between;
+    }
+
     .project-name {
         align-self: center;
         color: var(--text-color-emphasis);
@@ -32,13 +37,13 @@
         font-size: 0.875em;
         grid-area: rating;
         justify-self: center;
+        margin-right: 0.5em;
         @include transition;
 
         .star {
             fill: var(--button-bg-color);
-            height: 1em;
             margin-right: 3px;
-            width: 1em;
+            margin-top: 2px;
         }
     }
 
@@ -59,14 +64,6 @@
             margin-right: 0.5em;
             margin-top: 0.5em;
             padding: 0.25em 0.5em;
-        }
-    }
-
-    /* All project cards except the placeholder get a background and box shadow */
-    &:not(#github-cta) {
-        header {
-            display: grid;
-            grid-template-areas: "heading heading rating";
         }
     }
 }
@@ -134,8 +131,6 @@
 
             .star {
                 margin-left: 4.7px;
-                width: 1em;
-                height: 1em;
             }
 
             .tooltip {
@@ -149,8 +144,8 @@
 }
 
 .star {
-    height: 18px;
-    width: 18px;
+    height: 1em;
+    width: 1em;
 
     &.star-filled {
         fill: var(--button-bg-color);
