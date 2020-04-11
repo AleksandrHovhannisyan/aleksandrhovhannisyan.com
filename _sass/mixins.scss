@@ -1,7 +1,44 @@
 @import 'settings';
+@import 'functions';
 
-@mixin transition($what: all, $duration: $transition-duration) {
-    transition: ease $what $duration;
+@mixin maxFontSize($max) {
+    /*
+        For most browsers, the base font size is 16px. To increase this fluidly, we find 
+        the screen width cutoff point at which 16px = some value in vw units.
+        At 400px (25rem), for example, we find that 16px is exactly 4vw. So between 
+        0px and 400px screens we get 16px font, and beyond that we scale up gradually
+        and stop at whatever $max is.
+
+        Reference: https://www.madebymike.com.au/writing/precise-control-responsive-typography/
+    */
+    @media screen and (min-width: 25rem) {
+        font-size: 4vw;
+    }
+
+    /*
+        Now we're saying "At what screen width should our scaling 4vw font size become
+        $max?" Equation: 0.04 * screen_width = $max. Solve for screen width: $max / 0.04.
+    */
+    @media screen and (min-width: toRem($max / 0.04)) {
+        font-size: toRem($max);
+    }
+}
+
+/* Inspiration: https://stackoverflow.com/a/49437769/5323344 */
+@mixin transition($props...) {
+    $result: ();
+  
+    @for $i from 1 through length($props) {
+      $prop: nth($props, $i);
+      $result: append($result, $prop);
+      $result: append($result, ease #{$transition-duration});
+
+      @if $i != length($props) {
+        $result: append($result, unquote($string: ","));
+      }
+    }
+
+    transition: $result;
 }
 
 @mixin headings {
@@ -13,7 +50,7 @@
 @mixin underlined-link($lightColor, $darkColor) {
     text-decoration: none;
     @include themed(border-bottom, 3px solid rgba($lightColor, 0.15), 3px solid rgba($darkColor, 0.5));
-    @include transition;
+    @include transition(border, background-color, color);
 
     &:hover, &:focus {
         @include themed(border-bottom, 3px solid $lightColor, 3px solid $darkColor);
@@ -25,6 +62,7 @@
     background-color: $bgColor;
     color: $textColor;
     border: 3px solid $bgColor;
+    @include transition(color, border, background-color);
 
     &:focus, &:hover {
         background-color: var(--button-bg-hover-color);
@@ -38,6 +76,7 @@
     color: $textColor;
     border: 3px solid $textColor;
     box-shadow: 0 0 0 0 $textColor;
+    @include transition(color, border, box-shadow, background-color);
 
     &:focus, &:hover {
         box-shadow: 0 0 0 2px $textColor;
@@ -53,7 +92,7 @@
     }
 }
 
-@mixin fixedColor($color) {
+@mixin selectionResistantColor($color) {
     &, &::selection {
         color: $color;
     }

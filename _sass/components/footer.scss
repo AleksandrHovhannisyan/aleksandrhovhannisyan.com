@@ -13,7 +13,7 @@
     justify-content: center;
     position: absolute;
     width: 100%;
-    @include transition;
+    @include transition(color);
     @include centered;
 
     * {

@@ -2,5 +2,5 @@
     background-color: var(--tag-bg-color);
     border-radius: 3px;
     color: var(--tag-text-color);
-    @include transition;
+    @include transition(color, background-color);
 }

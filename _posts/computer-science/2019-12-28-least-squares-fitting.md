@@ -498,4 +498,4 @@ Looks like a pretty good fit to me!
 
 That about does it for this series on the least squares method! I hope you found this helpful.
 
-If you notice any typos or mistakes, [please let me know](https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.github.io/issues/new?assignees=&labels=bug&template=bug_report.md&title=Bug+Report%3A+%5BConcise+Summary+Here%5D).
+If you notice any typos or mistakes, [please let me know]({{ site.bugReport }}).

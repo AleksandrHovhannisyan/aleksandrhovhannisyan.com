@@ -7,12 +7,14 @@
     width: 100%;
 
     &.collapsible-closed {
+        // Downward-pointing vector
         .collapsible-header::before {
             transform: rotate(45deg);
         }
     }
 
     &.collapsible-open {
+        // Upward-pointing vector
         .collapsible-header::before {
             transform: rotate(-135deg);
         }
@@ -28,10 +30,9 @@
     display: flex;
     align-items: center;
     padding: 10px;
-    @include transition;
 
     &, * {
-        @include transition;
+        @include transition(background-color, color, fill);
         @include themed(color, white, black);
     }
 
@@ -39,6 +40,7 @@
         background-color: var(--button-bg-hover-color);
     }
 
+    // Vector/arrowhead
     &::before {
         content: "";
         border: solid;
@@ -47,7 +49,7 @@
         margin-right: 25px;
         padding: 3px;
         display: inline-block;
-        @include transition(transform);
+        @include transition(transform, border-color);
     }
 }
 
@@ -61,5 +63,5 @@
     overflow: hidden;
 
     --collapsible-content-border-width: 3px;
-    @include transition(all, 0.5s);
+    @include transition(max-height, color, border-color);
 }

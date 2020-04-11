@@ -16,12 +16,12 @@ $topnav-min-height: 64px;
     /* This is to ensure that it always appears above everything. */
     z-index: 100;
     @include centered;
-    @include transition;
+    @include transition(color, background-color);
 
     * {
         color: #dedede;
         fill: #dedede;
-        font-weight: normal;
+        font-weight: map-get($font-weights, "normal");
     }
 
     .nav-container {
@@ -43,13 +43,12 @@ $topnav-min-height: 64px;
             height: 32px;
             border-radius: 50%;
             box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-            @include transition;
         }
 
         #website-name {
             margin-left: 5px;
             flex-shrink: 0;
-            @include transition;
+            @include transition(color);
         }
 
         &:hover, &:focus {
@@ -80,8 +79,7 @@ $topnav-min-height: 64px;
         padding-left: 3px;
         padding-right: 3px;
         position: relative;
-        width: var(--switch-width);     
-        @include transition;
+        width: var(--switch-width);
         @include themed(background-color, #747474, #635b4b);
 
         #sun, #moon {
@@ -99,7 +97,7 @@ $topnav-min-height: 64px;
             position: absolute;
             right: calc(var(--switch-width) - var(--switch-orb-width));
             width: var(--switch-orb-width);
-            @include transition;
+            @include transition(all);
 
             .dark & {
                 background-color: #a79c87;
@@ -137,7 +135,7 @@ $topnav-min-height: 64px;
         position: absolute;
         right: 0;
         top: 20px;
-        @include transition;
+        @include transition(max-height);
 
         #active-nav-link, a:hover, a:focus {
             background-color: #444647;
@@ -152,6 +150,7 @@ $topnav-min-height: 64px;
             border-radius: 2px;
             padding: 15px 10px;
             display: block;
+            @include transition(background-color, color);
         }
     }
 

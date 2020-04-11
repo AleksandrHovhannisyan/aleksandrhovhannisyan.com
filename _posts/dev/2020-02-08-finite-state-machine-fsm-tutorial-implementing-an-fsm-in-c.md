@@ -548,4 +548,4 @@ That said, I'd like to briefly mention some other situations where you may wany 
 
 To gain a better understanding of finite state machines, I encourage you to reference the book titled *Programming Game AI by Example*, by Mat Buckland. Chapter 2 covers the state-driven agent design pattern, which is essentially just another name for the FSM design pattern. You can [download the companion code](https://github.com/wangchen/Programming-Game-AI-by-Example-src) and run it yourself as you work through the chapter explanations. This is how I initially learned about finite state machines.
 
-I hope you found this tutorial helpful! If you notice any bugs, [please let me know](https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.github.io/issues/new?assignees=&labels=bug&template=bug_report.md&title=Bug+Report%3A+%5BConcise+Summary+Here%5D).
+I hope you found this tutorial helpful! If you notice any bugs, [please let me know]({{ site.bugReport }}).
