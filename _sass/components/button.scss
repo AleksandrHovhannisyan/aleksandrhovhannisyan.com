@@ -8,7 +8,7 @@
     justify-content: center;
     text-decoration: none;
     cursor: pointer;
-    @include transition;
+    @include transition(color, box-shadow, background-color);
 }
 
 .solid-button {
@@ -26,7 +26,7 @@
         margin-left: 10px;
         content: "→";
         transform: translateX(0);
-        transition: transform 0.2s ease-in-out;
+        @include transition(transform);
     }
     
     &:hover, &:focus {

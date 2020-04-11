@@ -14,9 +14,7 @@
     position: relative;
     row-gap: calc(var(--card-padding) / 2);
     transform: none;
-    transition: background-color $transition-duration, 
-                box-shadow $transition-duration, 
-                transform $transition-duration;
+    @include transition(background-color, box-shadow, transform);
 
     &:hover, &:focus {
         box-shadow: 0 5px 13px rgba(0,0,0,0.15), 
@@ -48,7 +46,7 @@
         position: absolute;
         top: 0;
         width: 100%;
-        @include transition;
+        @include transition(background-color, color, opacity);
 
         // Whatever icon is being used
         svg {

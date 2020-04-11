@@ -24,7 +24,7 @@ form {
     margin-bottom: 60px;
     max-width: $form-max-width;
     padding: 30px;
-    @include transition;
+    @include transition(background-color);
 
     * {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -36,7 +36,6 @@ form {
         max-width: $form-max-width;
         min-height: 8.75em;
         resize: none;
-        transition: height 0s;
         width: 100%;
     }
 
@@ -50,7 +49,7 @@ form {
         margin-bottom: 15px;
         padding: 0.25em 0.5em;
         width: 100%;
-        @include transition;
+        @include transition(background-color, box-shadow, color);
 
         &:focus {
             box-shadow: inset 0 0 0 2px var(--button-bg-hover-color);
@@ -68,7 +67,7 @@ form {
         &.required::after {
             color: var(--link-color);
             content: " *";
-            @include transition;
+            @include transition(color);
         }
     }
 
@@ -118,7 +117,7 @@ input.honeypot {
     }
     
     .github {
-        @include transition;
+        @include transition(fill);
         @include themed(fill, $brand-github, $brand-github-alt);
     }
     
@@ -148,6 +147,6 @@ input.honeypot {
     .network-name {
         align-self: center;
         grid-column: 2;
-        @include transition;
+        @include transition(color);
     }
 }
