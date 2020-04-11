@@ -4,7 +4,7 @@
 
 .post-tag {
     display: inline-block;
-    font-weight: normal;
+    font-weight: map-get($font-weights, "normal");
 
     &:hover, &:focus, &.active-tag {
         @include themed(background-color, $primary-color, #ffcd91);
@@ -105,9 +105,10 @@
         align-items: center;
         margin-bottom: 1em;
         margin-right: 1em;
+        @include transition(color);
 
         .stat-icon {
-            @include transition;
+            @include transition(fill);
             fill: var(--text-color-normal);
             height: 1em;
             margin-right: 5px;
@@ -118,7 +119,6 @@
     .stat-wrapper {
         align-items: center;
         display: flex;
-        @include transition;
     }
 
     .post-tags {
@@ -170,7 +170,7 @@
             font-size: 0.8em;
             font-style: italic;
             text-align: center;
-            @include transition;
+            @include transition(color);
         }
 
         picture {
@@ -255,15 +255,15 @@
     }
 
     ol li::marker {
-        @include transition;
+        @include transition(color);
         color: var(--text-color-emphasis);
-        font-weight: 500;
+        font-weight: map-get($font-weights, "bold");
         margin-right: 5px;
     }
 
     ul,
     ol {
-        @include transition;
+        @include transition(color);
         padding-left: 40px;
     }
 
@@ -271,7 +271,7 @@
         background: var(--blockquote-bg-color);
         border-left: 4px solid #6b6a6a;
         padding: 1.3em;
-        @include transition;
+        @include transition(color, background-color);
 
         p {
             color: var(--blockquote-text-color);
@@ -320,7 +320,7 @@
             display: flex;
             padding-left: 6px;
             padding-right: 6px;
-            @include transition;
+            @include transition(color, background-color);
 
             &::before {
                 content: "Copy";
@@ -390,7 +390,7 @@
         margin-bottom: 1px;
 
         margin-top: 1px;
-        @include transition;
+        @include transition(color, background-color);
 
         &:hover {
 
@@ -411,7 +411,7 @@
         border-radius: 5px;
         border: solid 5px var(--blockquote-bg-color);
         color: var(--blockquote-text-color);
-        @include transition;
+        @include transition(color, border, background-color);
         table-layout: fixed;
         text-align: center;
         border-spacing: 0;
@@ -438,5 +438,5 @@ code {
     font-family: Monaco, Consolas, 'Courier New', monospace;
     font-size: 0.875em;
     padding: 3px 6px;
-    @include transition;
+    @include transition(color, background-color);
 }

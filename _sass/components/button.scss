@@ -4,11 +4,11 @@
     align-items: center;
     border-radius: 5px;
     display: flex;
-    font-weight: 500;
+    font-weight: map-get($font-weights, "bold");
     justify-content: center;
     text-decoration: none;
     cursor: pointer;
-    @include transition;
+    @include transition(color, box-shadow, background-color);
 }
 
 .solid-button {
@@ -22,11 +22,11 @@
 .arrow-button {    
     &::after {
         font-size: 25px;
-        font-weight: 500;
+        font-weight: map-get($font-weights, "bold");
         margin-left: 10px;
         content: "→";
         transform: translateX(0);
-        transition: transform 0.2s ease-in-out;
+        @include transition(transform);
     }
     
     &:hover, &:focus {

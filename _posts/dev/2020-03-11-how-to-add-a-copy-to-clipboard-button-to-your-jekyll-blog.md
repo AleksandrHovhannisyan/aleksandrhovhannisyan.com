@@ -297,4 +297,4 @@ This does require some additional (albeit negligible) effort to use in place of 
 
 Admittedly, refactoring my old posts was a pain, but I'd say it's worth it if it makes the user experience better on my site. It also makes it easier for me to verify that my tutorials work from scratch.
 
-I hope you enjoyed this tutorial! If you notice any typos or mistakes, [please let me know](https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.github.io/issues/new?assignees=&labels=bug&template=bug_report.md&title=Bug+Report%3A+%5BConcise+Summary+Here%5D).
+I hope you enjoyed this tutorial! If you notice any typos or mistakes, [please let me know]({{ site.bugReport }}).

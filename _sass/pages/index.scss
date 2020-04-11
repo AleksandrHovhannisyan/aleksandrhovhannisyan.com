@@ -15,7 +15,7 @@
     position: relative;
 
     &, * {
-        @include transition;
+        @include transition(color);
     }
 
     #headshot {
