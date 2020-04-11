@@ -17,7 +17,7 @@
   skills:
     - name: HTML5
       rating: 5
-    - name: CSS/SCSS/LESS
+    - name: CSS/Sass/Less
       rating: 5
     - name: React (+Ant Design)
       rating: 5
