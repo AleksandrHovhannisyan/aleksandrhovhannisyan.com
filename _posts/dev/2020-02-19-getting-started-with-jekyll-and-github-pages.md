@@ -1579,4 +1579,4 @@ We covered a *lot* in this tutorial—all the way from installing Jekyll and set
 
 If there's anything that this post didn't cover that you'd like to learn more about, you'll most certainly find info about it in the official Jekyll documentation.
 
-I hope you found this tutorial helpful! If you notice any bugs or typos, [please do let me know](https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.github.io/issues/new?assignees=&labels=bug&template=bug_report.md&title=Bug+Report%3A+%5BConcise+Summary+Here%5D)!
+I hope you found this tutorial helpful! If you notice any bugs or typos, [please do let me know]({{ site.bugReport }})!
