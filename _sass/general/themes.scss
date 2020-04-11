@@ -28,7 +28,7 @@ html.light {
 
     --blockquote-bg-color: rgb(206, 206, 206);
     --blockquote-text-color: #484e55;
-    --spoiler-color: #dae3e7;
+    --spoiler-color: #{$primary-color-tag};
 }
 
 html.dark {
