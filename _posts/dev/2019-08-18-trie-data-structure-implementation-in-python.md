@@ -412,6 +412,6 @@ All tests ran correctly—awesome!
 
 Prefix trees are rarely ever taught in CS curriculum, with more emphasis placed on associative data structures, linked lists, and trees. But it's good to know how to make one by hand if you want to create your own autocomplete dropdown widget from scratch, for example, or if you're looking to add another data structure to your toolkit.
 
-I hope you found this tutorial helpful! If you notice any bugs or other issues, [please let me know on GitHub](https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.github.io/issues/new?assignees=&labels=bug&template=bug_report.md&title=Bug+Report%3A+%5BConcise+Summary+Here%5D).
+I hope you found this tutorial helpful! If you notice any bugs or other issues, [please let me know on GitHub]({{ site.bugReport }}).
 
 You can find the full code for this post [in its GitHub repo](https://github.com/AleksandrHovhannisyan/Python-Trie-Implementation).
