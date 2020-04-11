@@ -2,8 +2,9 @@
   company: SharpSpring
   dateRange: Jul. 2019–Dec. 2019 (6 months)
   responsibilities:
-    - Redesigned a web app feature per Figma specs using React and TypeScript.
+    - Redesigned a web app feature using React, TypeScript, Ant Design, and Redux.
     - Worked on creating a new backend service using gRPC and TypeScript.
+    - Occasionally fixed bugs to free up my team's bandwidth during busy sprints.
   tech:
     - react
     - typescript
@@ -13,8 +14,9 @@
   company: via Upwork
   dateRange: Nov. 2016–Present (3+ years)
   responsibilities: 
-    - Editing a variety of technical and nontechnical content (mostly blog posts) for clients.
-    - 67 successfully completed jobs, 5+ regular clients, and 100% job success score (JSS).
+    - Editing a variety of technical and nontechnical content for clients.
+    - 67+ successfully completed jobs, 5+ regular clients, and 100% job success score (JSS).
+    - Experience working remotely with teams of varying sizes and composition.
   tech:
     - upwork
     - copy-editing
