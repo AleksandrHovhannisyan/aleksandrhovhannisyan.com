@@ -17,7 +17,7 @@
         color: var(--text-color-emphasis);
         font-weight: map-get($font-weights, "bold");
         grid-area: heading;
-        @include transition;
+        @include transition(color);
     }
 
     .project-icon {
@@ -38,7 +38,7 @@
         grid-area: rating;
         justify-self: center;
         margin-right: 0.5em;
-        @include transition;
+        @include transition(color);
 
         .star {
             fill: var(--button-bg-color);
@@ -50,7 +50,7 @@
     .project-description {
         margin-bottom: 0px;
         margin-top: 0px;
-        @include transition;
+        @include transition(color);
     }
 
     .topics {
@@ -83,7 +83,7 @@
         width: 50px;
 
         svg {
-            @include transition;
+            @include transition(fill);
             @include themed(fill, $brand-github, $brand-github-alt);
         }
     }
@@ -118,7 +118,7 @@
         .skill-name {
             grid-column: 1;
             word-break: break-word;
-            @include transition;
+            @include transition(color);
         }
         
         .skill-rating {
@@ -167,7 +167,7 @@
         }
 
         .responsibilities {
-            @include transition;
+            @include transition(color);
             margin-bottom: $paragraph-spacing;
             padding-left: 1em;
         }
@@ -251,7 +251,7 @@
         .awards {
             /* Only matters on mobile, where the awards are stacked underneath courses */
             border-top: solid var(--collapsible-content-border-width) var(--button-bg-color);
-            @include transition;
+            @include transition(border);
         }
     }
 }
@@ -267,7 +267,6 @@
             /* Now that it's lined up to the right of the courses, there's no need for a top border */
             border-left: solid var(--collapsible-content-border-width) var(--button-bg-color);
             border-top: none;
-            @include transition(border);
         }
     }
 }

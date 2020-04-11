@@ -83,7 +83,7 @@ body {
 strong {
     color: var(--text-color-emphasis);
     font-weight: map-get($font-weights, "bold");
-    @include transition;
+    @include transition(color);
 }
 
 @include headings {
@@ -91,7 +91,7 @@ strong {
     margin-bottom: 0.5em;
     font-weight: map-get($font-weights, "bold");
     line-height: 1.4;
-    @include transition;
+    @include transition(color);
 }
 
 .title, .subtitle, .heading {
@@ -111,14 +111,14 @@ a {
     color: var(--link-color);
     font-weight: map-get($font-weights, "bold");
     text-decoration: none;
-    @include transition;
+    @include transition(color);
 }
 
 p {
     color: var(--text-color-normal);
     line-height: 1.6;
     margin-bottom: $paragraph-spacing;
-    @include transition;
+    @include transition(color);
 }
 
 .heading-with-image {
@@ -144,7 +144,6 @@ hr {
     border: 1.2px solid rgb(145, 145, 145);
     margin-bottom: 8px;
     margin-top: 8px;
-    @include transition;
 }
 
 li {
