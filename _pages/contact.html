@@ -22,12 +22,12 @@ permalink: /contact/
             <h3>You can also find me on:</h3>
             <section id="social-networks">
                 {% for network in site.data.socials %}
-                <div class="social-network">
-                    <a class="container-link" href="{{ network.url }}"></a>
+                <a class="social-network" href="{{ network.url }}">
                     {% assign icon = network.icon %}
-                    {% include svg.html svg=icon class=icon %}
+                    {% assign iconClass = "network-icon " | append: icon %}
+                    {% include svg.html svg=icon class=iconClass %}
                     <span class="network-name">{{ network.name }}</span>
-                </div>
+                </a>
                 {% endfor %}
             </section>
         </section>
