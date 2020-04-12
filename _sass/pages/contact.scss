@@ -103,7 +103,7 @@ input.honeypot {
         grid-row: 1;
     }
 
-    svg {
+    .network-icon {
         align-self: center;
         justify-self: center;
         width: 35px;
@@ -134,17 +134,16 @@ input.honeypot {
     border-radius: 5px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* Position relative because we have an absolutely 
-    positioned .container-link as a child */
-    position: relative;
     @include transition(background-color);
 
-    &:hover {
+    &:focus, &:hover {
         background-color: var(--hover-color-general);
         cursor: pointer;
     }
 
     .network-name {
+        color: var(--text-color-normal);
+        font-weight: map-get($font-weights, "normal");
         align-self: center;
         grid-column: 2;
         @include transition(color);
