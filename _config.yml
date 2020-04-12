@@ -10,6 +10,7 @@ bugReport: https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.github
 plugins:
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-redirect-from
 include: [_pages]
 
 defaults:
