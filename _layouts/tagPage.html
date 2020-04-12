@@ -10,7 +10,7 @@ layout: blog
         <div class="post-preview-body">
             <header>
                 <h3 class="post-title">{{ post.title }}</h3>
-                {% include posts/stats.html content=post.content date=post.date %}
+                {% include posts/meta.html content=post.content date=post.date %}
             </header>
             <p class="post-description">{{ post.description | truncate: 160 }}</p>
             <footer class="post-tags">

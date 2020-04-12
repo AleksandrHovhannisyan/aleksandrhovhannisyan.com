@@ -8,9 +8,8 @@ layout: default
     {% if page.lastUpdated %}
     {% assign lastUpdated = page.lastUpdated %}
     {% endif %}
-    {% include posts/stats.html content=page.content date=page.date lastUpdated=lastUpdated tags=page.tags %}
+    {% include posts/meta.html content=page.content date=page.date lastUpdated=lastUpdated tags=page.tags showProfilePhoto=true %}
   </header>
-  <!-- Don't wrap so we can take advantage of CSS grid, until subgrids become a thing at least -->
   {{ content }}
 </article>
 
