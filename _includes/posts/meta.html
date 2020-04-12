@@ -1,0 +1,34 @@
+{% assign minutes = include.content | number_of_words | divided_by: 250 %}
+{% if minutes == 0 %}{% assign minutes = 1 %}{% endif %}
+<div class="post-meta">
+    {% if include.showProfilePhoto %}
+    <img src="/assets/img/profile-photo.png" alt="By Aleksandr Hovhannisyan" class="meta author-photo" />
+    {% endif %}
+    <div class="post-date meta-wrapper">
+        <div class="meta">
+            {% include svg.html svg="calendar" class="meta-icon" %}
+            {{ include.date | date: "%b %-d, %Y" }}
+        </div>
+    </div>
+    {% if include.lastUpdated %}
+    <div class="last-updated meta-wrapper">
+        <div class="meta">
+            {% include svg.html svg="info" class="meta-icon" %}
+            Updated: {{ include.lastUpdated | date: "%b %-d, %Y" }}
+        </div>
+    </div>
+    {% endif %}
+    <div class="post-reading-length meta-wrapper">
+        <div class="meta">
+            {% include svg.html svg="clock" class="meta-icon" %}
+            {{ minutes }} min read
+        </div>
+    </div>
+    {% if include.tags %}
+    <div class="post-tags meta-wrapper">
+        {% for tag in include.tags %}
+        <a href="/tag/{{ tag }}" class="tag post-tag">{{ tag }}</a>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
