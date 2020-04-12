@@ -131,7 +131,7 @@ In terms of the other main monsters, **Blackwing - Kris the Crack of Dawn** is a
 
 If you're looking for a non-meta deck that isn't complete trash, this is one of the better options. It strikes a good balance between flooding the field, drawing more cards, and summoning powerful Synchro monsters without going overboard.
 
-{% include linkedHeading.html heading="4. Yosenju" level=2 %}
+{% include linkedHeading.html heading="5. Yosenju" level=2 %}
 
 Next up on the list are the Yosenju, an archetype of beast and beast-warrior WIND monsters inspired by the Kamaitachi of Japanese folklore—the so-called weasel-like "dust devils" that ride the wind wielding sickles and sharp blades.
 
@@ -209,7 +209,7 @@ Of course, until these two are released, you'll have to rely on existing support
 
 In the meantime, if you're looking for something with more archetypal support, check out the [Aesir archetype](https://yugioh.fandom.com/wiki/Aesir), consisting of Nordic-themed cards that work together to summon powerful synchro gods like Odin, Thor, and Loki.
 
-{% include linkedHeading.html heading="7. RNG" level=2 %}
+{% include linkedHeading.html heading="7. RNG Deck" level=2 %}
 
 I've saved the best (translation: worst) for last.
 
