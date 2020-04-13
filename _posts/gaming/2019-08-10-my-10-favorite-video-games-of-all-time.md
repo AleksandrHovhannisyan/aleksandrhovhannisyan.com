@@ -213,7 +213,7 @@ Dragon's Dogma is a breath of fresh air and makes combat in other action RPGs fe
 
 ## 9. Playdead's INSIDE
 
-Playdead's follow up to Limbo is a puzzle platformer set in a bleak, gray dystopia where most peple are enslaved minions. Everyone except you, that is, and the guards who seem so intent on killing you. And to make matters worse, you're a vulnerable child with no way to fight back. All you can do is run, hide, and blend in.
+Playdead's follow up to Limbo is a puzzle platformer set in a bleak, gray dystopia where most people are enslaved minions. Everyone except you, that is, and the guards who seem so intent on killing you. And to make matters worse, you're a vulnerable child with no way to fight back. All you can do is run, hide, and blend in.
 
 Your goal? To make it inside... It's in the name, after all.
 
