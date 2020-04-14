@@ -211,7 +211,7 @@ $$ \begin{bmatrix}
 
 This was really an overdetermined system, $$A\theta = b$$, disguised as a bunch of $$(x, y)$$ data pairs! We have more equations than unknowns. This alone tells us that there is no unique solution and that we must find a least squares solution instead.
 
-> Curious how I plotted the line for this particular problem? You'll learn more about [least squares curve fitting](blog/computer-science/least-squares-fitting/) in the next post in this two-part series.
+> Curious how I plotted the line for this particular problem? You'll learn more about [least squares curve fitting](/blog/computer-science/least-squares-fitting) in the next post in this two-part series.
 
 Let's generalize this problem. We start with an $$m \times n$$ system:
 
