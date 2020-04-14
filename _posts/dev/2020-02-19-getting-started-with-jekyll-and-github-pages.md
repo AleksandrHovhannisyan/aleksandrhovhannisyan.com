@@ -1342,7 +1342,7 @@ Here are some example use cases for Jekyll includes:
 
 **Project cards**. My projects appear in two locations on this site: Once on the landing page, with a limited set of featured projects, and again on the Experience page, with the full set of projects. Once again, I can abstract away this component in its own include file.
 
-**Linked headings**. I wrote an article on how you can [create linked headings in Jekyll](https://aleksandrhovhannisyan.github.io/blog/dev/create-heading-links-in-jekyll-without-any-javascript-using-includes/) that goes into this in more depth. But basically, you can set up a simple include file that takes the name of a heading you want to create and the level of the heading and turns it into an anchor heading that users can click.
+**Linked headings**. I wrote an article on how you can [create linked headings in Jekyll](/blog/dev/heading-links-in-jekyll/) that goes into this in more depth. But basically, you can set up a simple include file that takes the name of a heading you want to create and the level of the heading and turns it into an anchor heading that users can click.
 
 There's a *lot* more you can do with includes, but hopefully this gives you a good idea of what's possible!
 
