@@ -144,7 +144,7 @@ This archetype focuses on maintaining field control with the following key monst
 
 > *Once per turn, during the End Phase, if this card was Normal Summoned this turn: Return it to the hand.*
 
-Some other miscellaneous monsters, like **Yosenju Tsujik**, **Yosenju Izna**, and **Yosenju Sabu** provide auxiliary effects to help support the monsters on your field, such as searching your deck for other Yosenju, protecting your Yosenju from your opponent's effects, or giving your monsters an attack boost. You can also take advantage of 
+Some other miscellaneous monsters, like **Yosenju Tsujik**, **Yosenju Izna**, and **Yosenju Sabu** provide auxiliary effects to help support the monsters on your field, such as searching your deck for other Yosenju, protecting your Yosenju from your opponent's effects, or giving your monsters an attack boost.
 
 Essentially, you're swarming the field during your turn and then safely bouncing your monsters back to your hand at the end of the turn. And while that may sound fairly risky since you're leaving yourself open to attacks, there are... ways around that. And one of them goes by the name of **Yosenju Oyam**, a level 6 hand trap that helps you stall until it's your turn:
 
