@@ -42,7 +42,7 @@
 
 .blog-post-previews, #featured-posts {
     .post-preview {
-        $tag-margin: 0.625em;
+        $tag-margin-bottom: 1em;
     
         cursor: pointer;
         grid-gap: 30px;
@@ -50,7 +50,7 @@
         // To ensure the spacing at the bottom of each card matches the spacing
         // at the top, since the tag margins and card padding will combine to
         // produce more spacing
-        padding-bottom: calc(var(--card-padding) - #{$tag-margin});
+        padding-bottom: calc(var(--card-padding) - #{$tag-margin-bottom});
     
         .post-thumbnail {
             img {
@@ -82,9 +82,9 @@
                 position: relative;
                 
                 .post-tag {
-                    margin-right: $tag-margin;
-                    margin-bottom: $tag-margin;
-                    padding: 0.3em 0.5em;
+                    margin-bottom: $tag-margin-bottom;
+                    margin-right: 0.625em;
+                    padding: 0.4em 0.8em;
                 }
             }
         }
