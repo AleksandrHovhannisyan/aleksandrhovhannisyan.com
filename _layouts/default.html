@@ -50,19 +50,21 @@
                         <span id="website-name">{{ site.title }}</span>
                     </a>
                     {% include svg.html svg="hamburger" class="navbar-hamburger" %}
-                    <ul class="nav-links">
-                        <li><a href="/experience" {% if page.title == "Experience" %}id="active-nav-link"{% endif %}>Experience</a></li>
-                        <li><a href="/blog" {% if page.isBlogPage %}id="active-nav-link"{% endif %}>Blog</a></li>
-                        <li><a href="/contact" {% if page.title == "Contact" %}id="active-nav-link"{% endif %}>Contact</a></li>
-                        <li id="theme-switch-container">
-                            <!-- Inspiration: https://create-react-app.dev/ -->
-                            <div id="theme-switch" tabindex="0" >
-                                <img id="moon" src="/assets/img/moon.png" alt="🌜" />
-                                <img id="sun" src="/assets/img/sun.png" alt="🌞" />
-                                <div id="knob"></div>
-                            </div>
-                        </li>
-                    </ul>
+                    <div class="nav-menu">
+                        <ul class="nav-links">
+                            <li><a href="/experience" {% if page.title == "Experience" %}id="active-nav-link"{% endif %}>Experience</a></li>
+                            <li><a href="/blog" {% if page.isBlogPage %}id="active-nav-link"{% endif %}>Blog</a></li>
+                            <li><a href="/contact" {% if page.title == "Contact" %}id="active-nav-link"{% endif %}>Contact</a></li>
+                            <li id="theme-switch-container">
+                                <!-- Inspiration: https://create-react-app.dev/ -->
+                                <div id="theme-switch" tabindex="0" >
+                                    <img id="moon" src="/assets/img/moon.png" alt="🌜" />
+                                    <img id="sun" src="/assets/img/sun.png" alt="🌞" />
+                                    <div id="knob"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </nav>
         </header>
