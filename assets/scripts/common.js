@@ -29,20 +29,27 @@ function toggleColorTheme() {
 }
 
 const topnav = document.getElementById('topnav');
-const navbarHamburger = topnav.querySelector('.navbar-hamburger');
-const navbarLinks = document.querySelector('#topnav .nav-links');
-navbarHamburger.addEventListener('click', function toggleMobileNavbar() {
+function toggleMobileNavbarVisibility() {
   topnav.classList.toggle('expanded');
-});
+}
+
+const navbarHamburger = topnav.querySelector('.navbar-hamburger');
+navbarHamburger.addEventListener('click', toggleMobileNavbarVisibility);
+
+const navMenu = topnav.querySelector('.nav-menu');
+const navLinks = navMenu.querySelector('.nav-links');
+
+navMenu.addEventListener('click', toggleMobileNavbarVisibility);
+navLinks.addEventListener('click', clickEvent => clickEvent.stopPropagation());
 
 (function() {
-  const anchors = Array.from(navbarLinks.querySelectorAll('a'));
+  const anchors = Array.from(navLinks.querySelectorAll('a'));
 
   let cachedActiveNavlink;
 
   // Manually listen to these events to ensure that we never underline two different links
   // simultaneously. For example, if we're on Experience but hovering over Blog, we don't want
-  // both links to have an underline. See onNavLinkHovered for how that's handled.
+  // both links to have a focus style. See onNavLinkHovered for how that's handled.
   anchors.forEach(anchor => {
     anchor.addEventListener('focusin', onNavLinkHovered);
     anchor.addEventListener('mouseenter', onNavLinkHovered);
