@@ -131,10 +131,7 @@ $topnav-min-height: 64px;
     .nav-links {
         background-color: var(--nav-bg-color);
         box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.8);
-        color: var(--text-color-nav);
-        display: block;
         list-style-type: none;
-        padding: 0;
         position: absolute;
         left: 0;
         right: 0;
@@ -160,7 +157,6 @@ $topnav-min-height: 64px;
     }
 
     .navbar-hamburger {
-        fill: var(--text-color-nav);
         flex-shrink: 0;
         height: 27px;
         width: 27px;
