@@ -28,19 +28,11 @@ function toggleColorTheme() {
   }
 }
 
-const navbarHamburger = document.querySelector('#topnav .navbar-hamburger');
+const topnav = document.getElementById('topnav');
+const navbarHamburger = topnav.querySelector('.navbar-hamburger');
 const navbarLinks = document.querySelector('#topnav .nav-links');
-
-/** Called when the user clicks on the hamburger icon in the navigation menu.
- */
 navbarHamburger.addEventListener('click', function toggleMobileNavbar() {
-  // I'm doing this via JS because the best alternative is to set some arbitrary max-height on .nav-links
-  // via CSS, e.g. 1000 px, but that's hacky and doesn't work well with the transition duration.
-  if (getComputedStyle(navbarLinks).maxHeight === '0px') {
-    navbarLinks.style.maxHeight = navbarLinks.scrollHeight + 'px';
-  } else {
-    navbarLinks.style.maxHeight = '0px';
-  }
+  topnav.classList.toggle('expanded');
 });
 
 (function() {
