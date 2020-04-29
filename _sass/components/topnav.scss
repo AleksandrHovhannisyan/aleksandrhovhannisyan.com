@@ -80,7 +80,7 @@ $topnav-min-height: 64px;
         padding-right: 3px;
         position: relative;
         width: var(--switch-width);
-        @include themed(background-color, #747474, #635b4b);
+        @include themed(background-color, #747474, $secondary-color-dark);
 
         #sun, #moon {
             height: 18px;
