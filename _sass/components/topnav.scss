@@ -13,7 +13,7 @@ $topnav-min-height: 64px;
     right: 100%;
     top: 0;
     width: 100%;
-    /* This is to ensure that it always appears above everything. */
+    /* Arbitrary, appear above everything else */
     z-index: 100;
     @include centered;
     @include transition(color, background-color);
@@ -38,6 +38,7 @@ $topnav-min-height: 64px;
         display: flex;
         flex-wrap: nowrap;
         overflow: hidden;
+        flex-shrink: 0;
 
         #logo {
             height: 32px;
@@ -47,7 +48,6 @@ $topnav-min-height: 64px;
 
         #website-name {
             margin-left: 5px;
-            flex-shrink: 0;
             @include transition(color);
         }
 
@@ -97,7 +97,7 @@ $topnav-min-height: 64px;
             position: absolute;
             right: calc(var(--switch-width) - var(--switch-orb-width));
             width: var(--switch-orb-width);
-            @include transition(all);
+            @include transition(left, right, background-color, border, width, height);
 
             .dark & {
                 background-color: #a79c87;
@@ -186,7 +186,6 @@ $topnav-min-height: 64px;
         .nav-links {
             align-items: center;
             box-shadow: none;
-            /* Show the links on a single row on the navbar */
             display: flex;
             flex-direction: row;
             justify-content: flex-end;
