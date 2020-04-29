@@ -21,11 +21,7 @@ layout: default
           href="{% if tag == "all" %}/blog/{% else %}/tag/{{ tag }}{% endif %}"
           class="post-tag tag{% if page.tag == tag %} active-tag{% endif %}"
         >
-        <span class="tag-name">{{ tag }}</span><span class="tag-count">
-            {% assign posts = site.posts %}
-            {% if tag != "all" %}{% assign posts = site.tags[tag] %}{% endif %}
-            {{ posts | size }}
-        </span>
+          {{ tag }}
         </a>
       </li>
     {% endfor %}

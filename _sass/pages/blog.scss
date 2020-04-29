@@ -31,11 +31,6 @@
             margin-right: 1em;
             padding: 0.2em 0.8em;
             height: 2.2em;
-
-            .tag-count {
-                font-size: 0.8em;
-                margin-left: 0.3em;
-            }
         }
     }
 }
@@ -43,10 +38,19 @@
 .blog-post-previews, #featured-posts {
     .post-preview {
         $tag-margin-bottom: 1em;
-        $thumbnail-height: 200px;
+        $thumbnail-height: 10em;
+        display: block;
         cursor: pointer;
         padding-top: calc(#{$thumbnail-height} + var(--card-padding));
     
+        .post-preview-header {
+            position: absolute;
+            height: $thumbnail-height;
+            left: 0;
+            right: 0;
+            top: 0;
+        }
+
         .post-thumbnail {
             position: absolute;
             left: 0;
@@ -63,28 +67,42 @@
         }
     
         .post-title {
-            color: var(--link-color);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            text-shadow: 2px 2px black;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding: 0.5em;
+            margin: 0;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 1.3em;
         }
-    
-        .post-preview-body {    
-            .post-description {
-                margin-bottom: 0px;
-                margin-top: 0px;
-            }
-    
-            .post-tags {
-                display: flex;
-                flex-wrap: wrap;
-                font-size: 0.875em;
-                margin-top: 20px;
-                z-index: 2;
-                position: relative;
-                
-                .post-tag {
-                    margin-bottom: $tag-margin-bottom;
-                    margin-right: 0.625em;
-                    padding: 0.4em 0.8em;
-                }
+
+        .post-description {
+            margin-bottom: 0px;
+            margin-top: 0px;
+        }
+
+        .post-tags {
+            display: flex;
+            flex-wrap: wrap;
+            font-size: 0.875em;
+            margin-top: 20px;
+            z-index: 2;
+            position: relative;
+            
+            .post-tag {
+                margin-bottom: $tag-margin-bottom;
+                margin-right: 0.625em;
+                padding: 0.4em 0.8em;
             }
         }
     }   
