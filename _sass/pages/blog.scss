@@ -43,18 +43,19 @@
 .blog-post-previews, #featured-posts {
     .post-preview {
         $tag-margin-bottom: 1em;
-    
+        $thumbnail-height: 200px;
         cursor: pointer;
-        grid-gap: 30px;
-        grid-template-rows: 200px auto;
-        // To ensure the spacing at the bottom of each card matches the spacing
-        // at the top, since the tag margins and card padding will combine to
-        // produce more spacing
-        padding-bottom: calc(var(--card-padding) - #{$tag-margin-bottom});
+        padding-top: calc(#{$thumbnail-height} + var(--card-padding));
     
         .post-thumbnail {
+            position: absolute;
+            left: 0;
+            right: 0;
+            
             img {
-                height: 200px;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                height: $thumbnail-height;
                 width: 100%;
                 object-fit: cover;
                 object-position: center;
@@ -65,9 +66,7 @@
             color: var(--link-color);
         }
     
-        .post-preview-body {
-            grid-template-rows: 1fr 1fr;
-    
+        .post-preview-body {    
             .post-description {
                 margin-bottom: 0px;
                 margin-top: 0px;
