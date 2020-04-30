@@ -6,3 +6,9 @@ layout: blog
 {% for post in site.tags[page.tag] %}
     {% include postPreview.html post=post %}
 {% endfor %}
+{% assign numPosts = site.tags[page.tag] | size %}
+{% if numPosts == 1 %}
+<div class="post-preview-placeholder">
+    That's it for now! More to come soon ✏️️
+</div>
+{% endif %}
