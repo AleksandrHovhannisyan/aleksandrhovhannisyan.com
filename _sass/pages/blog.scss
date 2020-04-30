@@ -111,7 +111,17 @@
                 padding: 0.4em 0.8em;
             }
         }
-    }   
+    }
+
+    .post-preview-placeholder {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.1em;
+        padding: 3em;
+        text-align: center;
+        font-style: italic;
+    }
 }
 
 .post-title {
