@@ -8,7 +8,7 @@ isCanonical: true
 
 If you're as lazy as I am, you'll come to realize at a certain point that something you've been doing by hand can easily be automated. That's the kind of laziness that makes the difference between spending hours on doing something by hand versus pressing Enter once and kicking up your feet to relax.
 
-{% include posts/picture.html img="og" ext="JPG" alt="Google Sheets and Python." shadow=false %}
+{% include posts/picture.html img="thumbnail" ext="PNG" alt="Google Sheets and Python." shadow=false %}
 
 In this short tutorial, I'll show you how to use the Python Google Sheets and Drive APIs to automate data entry tasks in your day-to-day work. This is a game-changer if you're used to manual data entry, so buckle up!
 
