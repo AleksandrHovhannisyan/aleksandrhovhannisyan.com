@@ -2,7 +2,7 @@
 title: "Hard Links vs. Soft Links"
 description: What are hard links vs. soft links? One of them sticks around for good, while the other one rots. Here's a look at their differences.
 keywords: [hard links vs soft links]
-tags: [computer-science, operating-systems, file-systems]
+tags: [computer-science, file-systems]
 isCanonical: true
 ---
 
