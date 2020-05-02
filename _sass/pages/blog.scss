@@ -37,24 +37,25 @@
 
 .blog-post-previews, #featured-posts {
     .post-preview-grid {
-        @media only screen and (min-width: 25.6rem) {
-            grid-template-columns: repeat(auto-fit, minmax(16em, 1fr));
-        }
+        @include responsiveGrid($mobileMin: 255px, $desktopMin: 16em);
     }
 
     .post-preview {
-        $tag-margin-bottom: 1em;
         $thumbnail-height: 12rem;
         display: block;
         cursor: pointer;
-        padding-top: calc(#{$thumbnail-height} + var(--card-padding));
+        padding: 0;
     
         .post-preview-header {
-            position: absolute;
             height: $thumbnail-height;
-            left: 0;
-            right: 0;
-            top: 0;
+            width: 100%;
+            position: relative;
+        }
+
+        .post-preview-body {
+            padding: var(--card-padding);
+            // - 0.875em because each .post-tag has a margin-bottom of 1em but a font size of 0.875em
+            padding-bottom: calc(var(--card-padding) - 0.875em);
         }
 
         .post-thumbnail {
@@ -99,12 +100,12 @@
             display: flex;
             flex-wrap: wrap;
             font-size: 0.875em;
-            margin-top: 20px;
+            margin-top: 1rem;
             z-index: 2;
             position: relative;
             
             .post-tag {
-                margin-bottom: $tag-margin-bottom;
+                margin-bottom: 1em;
                 margin-right: 0.625em;
                 padding: 0.4em 0.8em;
             }
