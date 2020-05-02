@@ -47,7 +47,7 @@
     }
 }
 
-@mixin underlined-link($lightColor, $darkColor) {
+@mixin underlinedLink($lightColor, $darkColor) {
     text-decoration: none;
     @include themed(border-bottom, 3px solid rgba($lightColor, 0.15), 3px solid rgba($darkColor, 0.5));
     @include transition(border, background-color, color);
@@ -58,7 +58,7 @@
     }
 }
 
-@mixin solid-button($bgColor, $textColor) {
+@mixin solidButton($bgColor, $textColor) {
     background-color: $bgColor;
     color: $textColor;
     border: 3px solid $bgColor;
@@ -71,7 +71,7 @@
     }
 }
 
-@mixin hollow-button($bgColor, $textColor) {
+@mixin hollowButton($bgColor, $textColor) {
     background-color: $bgColor;
     color: $textColor;
     border: 3px solid $textColor;

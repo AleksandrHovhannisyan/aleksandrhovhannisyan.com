@@ -193,7 +193,7 @@
     }
 
     a:not(.post-tag):not(.heading-anchor) {
-        @include underlined-link($primary-color-link, $secondary-color-link);
+        @include underlinedLink($primary-color-link, $secondary-color-link);
     }
 
     .heading-anchor {
