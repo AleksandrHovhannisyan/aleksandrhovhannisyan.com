@@ -102,3 +102,11 @@
     display: grid;
     grid-template-columns: minmax($marginMin, 1fr) minmax(0, $contentMax) minmax($marginMin, 1fr);
 }
+
+@mixin responsiveGrid($mobileMin, $desktopMin, $mobileMax: 1fr, $desktopMax: 1fr, $cutoff: 25.6rem) {
+    grid-template-columns: repeat(auto-fill, minmax($mobileMin, $mobileMax));
+
+    @media only screen and (min-width: $cutoff) {
+        grid-template-columns: repeat(auto-fit, minmax($desktopMin, $desktopMax));
+    }
+}
