@@ -31,30 +31,42 @@
             margin-right: 1em;
             padding: 0.2em 0.8em;
             height: 2.2em;
-
-            .tag-count {
-                font-size: 0.8em;
-                margin-left: 0.3em;
-            }
         }
     }
 }
 
 .blog-post-previews, #featured-posts {
+    .post-preview-grid {
+        @include responsiveGrid($mobileMin: 255px, $desktopMin: 16em);
+    }
+
     .post-preview {
-        $tag-margin-bottom: 1em;
-    
+        $thumbnail-height: 12rem;
+        display: block;
         cursor: pointer;
-        grid-gap: 30px;
-        grid-template-rows: 200px auto;
-        // To ensure the spacing at the bottom of each card matches the spacing
-        // at the top, since the tag margins and card padding will combine to
-        // produce more spacing
-        padding-bottom: calc(var(--card-padding) - #{$tag-margin-bottom});
+        padding: 0;
     
+        .post-preview-header {
+            height: $thumbnail-height;
+            width: 100%;
+            position: relative;
+        }
+
+        .post-preview-body {
+            padding: var(--card-padding);
+            // - 0.875em because each .post-tag has a margin-bottom of 1em but a font size of 0.875em
+            padding-bottom: calc(var(--card-padding) - 0.875em);
+        }
+
         .post-thumbnail {
+            position: absolute;
+            left: 0;
+            right: 0;
+            
             img {
-                height: 200px;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                height: $thumbnail-height;
                 width: 100%;
                 object-fit: cover;
                 object-position: center;
@@ -62,33 +74,53 @@
         }
     
         .post-title {
-            color: var(--link-color);
+            //background-color: rgba(50, 65, 78, 0.8);
+            @include themed(background-color, rgba(50, 65, 78, 0.8), rgba(93, 87, 73, 0.8));
+            @include transition(background);
+            color: white;
+            text-shadow: 2px 2px black;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding: 0.5em 1.5em;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            font-size: 1em;
+            min-height: 4rem;
         }
-    
-        .post-preview-body {
-            grid-template-rows: 1fr 1fr;
-    
-            .post-description {
-                margin-bottom: 0px;
-                margin-top: 0px;
-            }
-    
-            .post-tags {
-                display: flex;
-                flex-wrap: wrap;
-                font-size: 0.875em;
-                margin-top: 20px;
-                z-index: 2;
-                position: relative;
-                
-                .post-tag {
-                    margin-bottom: $tag-margin-bottom;
-                    margin-right: 0.625em;
-                    padding: 0.4em 0.8em;
-                }
+
+        .post-description {
+            margin-bottom: 0px;
+            margin-top: 0px;
+        }
+
+        .post-tags {
+            display: flex;
+            flex-wrap: wrap;
+            font-size: 0.875em;
+            margin-top: 1rem;
+            z-index: 2;
+            position: relative;
+            
+            .post-tag {
+                margin-bottom: 1em;
+                margin-right: 0.625em;
+                padding: 0.4em 0.8em;
             }
         }
-    }   
+    }
+
+    .post-preview-placeholder {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.1em;
+        padding: 3em;
+        text-align: center;
+        font-style: italic;
+    }
 }
 
 .post-title {
@@ -161,7 +193,7 @@
     }
 
     a:not(.post-tag):not(.heading-anchor) {
-        @include underlined-link($primary-color-link, $secondary-color-link);
+        @include underlinedLink($primary-color-link, $secondary-color-link);
     }
 
     .heading-anchor {

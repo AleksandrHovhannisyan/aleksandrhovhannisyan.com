@@ -1,16 +1,16 @@
 {% assign post = include.post %}
 <div class="card post-preview" tabindex="0">
     <a class="container-link" href="{{ post.url }}" tabindex="-1"></a>
-    {% include posts/thumbnail.html post=post %}
+    <header class="post-preview-header">
+        {% include posts/thumbnail.html post=post %}
+        <h2 class="post-title">{{ post.title }}</h2>
+    </header>
     <div class="post-preview-body">
-        <header>
-            <h3 class="post-title">{{ post.title }}</h3>
-            {% include posts/meta.html content=post.content date=post.date %}
-        </header>
+        {% include posts/meta.html content=post.content date=post.date %}
         <p class="post-description">{{ post.description | truncate: 160 }}</p>
         <footer class="post-tags">
             {% for tag in post.tags limit: 4 %}
-            <a href="/tag/{{ tag }}" class="post-tag tag">{{ tag }}</a>
+            <a href="/tag/{{ tag }}" class="post-tag tag" title="View posts tagged as {{ tag }}">{{ tag }}</a>
             {% endfor %}
         </footer>
     </div>

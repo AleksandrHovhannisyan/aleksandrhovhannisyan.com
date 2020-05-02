@@ -8,9 +8,5 @@
     display: grid;
     column-gap: $card-spacing;
     row-gap: $card-spacing;
-    grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
-
-    @media only screen and (min-width: 512px) {
-        grid-template-columns: repeat(auto-fit, minmax(14em, 1fr));
-    }
+    @include responsiveGrid($mobileMin: 255px, $desktopMin: 15em);
 }
