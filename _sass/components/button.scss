@@ -12,11 +12,11 @@
 }
 
 .solid-button {
-    @include solid-button(var(--button-bg-color), var(--card-bg-color));
+    @include solidButton(var(--button-bg-color), var(--card-bg-color));
 }
 
 .hollow-button {
-    @include hollow-button(var(--card-bg-color), var(--button-bg-color));
+    @include hollowButton(var(--card-bg-color), var(--button-bg-color));
 }
 
 .arrow-button {    

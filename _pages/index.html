@@ -14,7 +14,7 @@ permalink: /
 <section id="featured-posts" class="section">
     <h2 class="heading">Recent Blog Posts</h2>
     <p class="subtitle">Free dev tutorials, musings, and more. No ads whatsoever.</p>
-    <div class="card-grid">
+    <div class="post-preview-grid card-grid">
         {% for post in site.posts limit:2 %}
         {% include postPreview.html post=post %}
         {% endfor %}

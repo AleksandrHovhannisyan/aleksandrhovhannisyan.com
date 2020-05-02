@@ -3,7 +3,6 @@
 
 ::selection {
     background-color: var(--selection-bg-color);
-    color: black;
 }
 
 ::-webkit-scrollbar {
@@ -211,6 +210,6 @@ li:not(:last-child) {
 
     a {
         color: $secondary-color-link;
-        @include underlined-link($secondary-color-link, $secondary-color-link);
+        @include underlinedLink($secondary-color-link, $secondary-color-link);
     }
 }
