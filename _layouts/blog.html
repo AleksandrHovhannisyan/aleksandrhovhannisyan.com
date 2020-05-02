@@ -20,6 +20,7 @@ layout: default
         <a
           href="{% if tag == "all" %}/blog/{% else %}/tag/{{ tag }}{% endif %}"
           class="post-tag tag{% if page.tag == tag %} active-tag{% endif %}"
+          title="View posts tagged as {{ tag }}"
         >
           {{ tag }}
         </a>
