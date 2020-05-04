@@ -1,11 +1,11 @@
 'use strict';
 const html = document.documentElement;
 
-(function() {
+(function () {
   const themeSwitch = document.getElementById('theme-switch');
   themeSwitch.addEventListener('click', toggleColorTheme);
   // For accessibility, allow users to toggle with Enter
-  themeSwitch.addEventListener('keyup', keyEvent => {
+  themeSwitch.addEventListener('keyup', (keyEvent) => {
     if (keyEvent.keyCode === 13) {
       toggleColorTheme();
     }
@@ -33,16 +33,16 @@ function toggleMobileNavbarVisibility() {
   topnav.classList.toggle('expanded');
 }
 
-const navbarHamburger = topnav.querySelector('.navbar-hamburger');
-navbarHamburger.addEventListener('click', toggleMobileNavbarVisibility);
+const mobileNavbarToggle = topnav.querySelector('.navbar-toggle');
+mobileNavbarToggle.addEventListener('click', toggleMobileNavbarVisibility);
 
 const navMenu = topnav.querySelector('.nav-menu');
 const navLinks = navMenu.querySelector('.nav-links');
 
 navMenu.addEventListener('click', toggleMobileNavbarVisibility);
-navLinks.addEventListener('click', clickEvent => clickEvent.stopPropagation());
+navLinks.addEventListener('click', (clickEvent) => clickEvent.stopPropagation());
 
-(function() {
+(function () {
   const anchors = Array.from(navLinks.querySelectorAll('a'));
 
   let cachedActiveNavlink;
@@ -50,7 +50,7 @@ navLinks.addEventListener('click', clickEvent => clickEvent.stopPropagation());
   // Manually listen to these events to ensure that we never underline two different links
   // simultaneously. For example, if we're on Experience but hovering over Blog, we don't want
   // both links to have a focus style. See onNavLinkHovered for how that's handled.
-  anchors.forEach(anchor => {
+  anchors.forEach((anchor) => {
     anchor.addEventListener('focusin', onNavLinkHovered);
     anchor.addEventListener('mouseenter', onNavLinkHovered);
     anchor.addEventListener('focusout', rehighlightActiveNavLink);
@@ -66,7 +66,7 @@ navLinks.addEventListener('click', clickEvent => clickEvent.stopPropagation());
     if (!activeNavLink) return;
 
     const hoveredAnchor = mouseEvent.target;
-    
+
     if (hoveredAnchor === activeNavLink) return;
 
     cachedActiveNavlink = activeNavLink;
@@ -81,12 +81,3 @@ navLinks.addEventListener('click', clickEvent => clickEvent.stopPropagation());
     }
   }
 })();
-
-document.querySelectorAll('.card').forEach(card => {
-  card.addEventListener('keyup', event => {
-    if (event.keyCode === 13) {
-      const url = card.querySelector('.container-link');
-      window.open(url.getAttribute('href'), '_self');
-    }
-  });
-})

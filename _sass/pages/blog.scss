@@ -101,6 +101,11 @@
             font-size: 0.875em;
             z-index: 2;
             position: relative;
+            list-style-type: none;
+
+            li {
+                margin: 0;
+            }
             
             .post-tag {
                 margin-bottom: 1em;
@@ -151,13 +156,9 @@
         }
     }
 
-    .meta-wrapper {
-        align-items: center;
-        display: flex;
-    }
-
     .post-tags {
         flex-wrap: wrap;
+        margin: 0;
 
         .post-tag {
             display: flex;
@@ -321,7 +322,6 @@
     }
 
     .code-header {
-        color: #bcbcbc;
         display: flex;
         background-color: #3b3b3b;
         border-top-left-radius: 5px;
@@ -336,11 +336,16 @@
         
         .file-name-container {
             display: flex;
+            align-items: center;
             flex: 2;
             justify-content: flex-start;
         }
 
         .file-name {
+            color: #bcbcbc;
+            font-size: 1rem;
+            font-weight: map-get($font-weights, "normal");
+            margin: 0;
             word-break: break-all;
             @include transition(color);
 
@@ -357,11 +362,15 @@
         }
 
         .copy-code-button {
+            border: none;
             align-items: center;
             cursor: pointer;
             display: flex;
-            padding-left: 6px;
-            padding-right: 6px;
+            font-size: 1rem;
+            background-color: #616161;
+            color: #e7e7e7;
+            padding: 0.4em 0.5em;
+            border-radius: 5px;
             @include transition(color, background-color);
 
             &::before {
@@ -375,8 +384,8 @@
             }
 
             &:focus, &:hover {
-                color: white;
-                background-color: #858585;
+                color: black;
+                background-color: #adadad;
             }
 
             &.copied {

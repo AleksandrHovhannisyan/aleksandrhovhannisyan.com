@@ -156,6 +156,14 @@ $topnav-min-height: 64px;
         }
     }
 
+    .navbar-toggle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: transparent;
+        border: none;
+    }
+
     .navbar-hamburger {
         flex-shrink: 0;
         height: 27px;
@@ -205,7 +213,7 @@ $topnav-min-height: 64px;
             }
         }
     
-       .navbar-hamburger {
+        .navbar-toggle {
            display: none;
         }
     }
