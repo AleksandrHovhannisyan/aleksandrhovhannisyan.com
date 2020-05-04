@@ -3,6 +3,7 @@
 
 ::selection {
     background-color: var(--selection-bg-color);
+    color: black;
 }
 
 ::-webkit-scrollbar {
@@ -27,6 +28,27 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+.screen-reader-only {
+    position: absolute;
+    left: -5000px;
+    z-index: 101;
+
+    &:focus {
+        left: 0;
+    }
+}
+
+.skip-navigation {
+    padding: 0.8em;
+    color: #dedede;
+    font-weight: map-get($font-weights, "normal");
+    @include transition(color, background-color);
+
+    &:focus {
+        background-color: #444647;
+    }
 }
 
 html {

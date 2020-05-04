@@ -1,23 +1,23 @@
 {% assign project = include.project %}
-<div class="card project" tabindex="0">
+<div class="card project">
     <header>
         <div class="project-name">
-            <span class="project-icon">{{ project.icon }}</span>
-            <span>{{ project.name }}</span>
+            <span class="project-icon" aria-hidden="true">{{ project.icon }}</span>
+            <h3 class="name" aria-label="Project: {{ project.name }}">{{ project.name }}</h3>
         </div>
-        <div class="project-rating">
+        <div class="project-rating" role="img" aria-label="This project has {{ project.rating }} stars on GitHub">
             {% include svg.html svg="star" class="star star-filled" %}
             <span>{{ project.rating }}</span>
         </div>
     </header>
     <p class="project-description">{{ project.description }}</p>
-    <footer class="topics">
+    <ul class="topics" aria-label="Technologies used on this project">
         {% for topic in project.topics %}
-        <div class="topic tag">{{ topic }}</div>
+        <li class="topic tag">{{ topic }}</li>
         {% endfor %}
-    </footer>
-    <a class="container-link" href="{{ project.url }}" tabindex="-1"></a>
-    <div class="hover-content">
+    </ul>
+    <a class="container-link" href="{{ project.url }}" aria-label="Explore {{ project.name }} on GitHub"></a>
+    <div class="hover-content" aria-hidden="true">
         Explore on GitHub
         {% include svg.html svg="external-link" %}
     </div>

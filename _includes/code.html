@@ -1,12 +1,19 @@
 <div class="code-header">
     {% if include.file %}
     <div class="file-name-container">
-        <div class="file-name">{{ include.file }}</div>
+        <h6 class="file-name" 
+            role="heading" 
+            aria-label="File name: {{ include.file }}">
+            {{ include.file }}
+        </h6>
     </div>
     {% endif %}
     {% unless include.copyable == false %}
     <div class="copy-code-container">
-        <div class="copy-code-button" data-code="{{ include.code | escape }}" title="Copy to clipboard" tabindex="0"></div>
+        <button class="copy-code-button"
+             aria-label="Copy code block to your clipboard" 
+             data-code="{{ include.code | escape }}"
+        ></button>
     </div>
     {% endunless %}
 </div>
