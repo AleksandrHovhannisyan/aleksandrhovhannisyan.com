@@ -14,19 +14,22 @@ layout: default
     site.data.tagDescriptions["all"]}} {% endif %}
   </p>
   {% assign primaryTags = "all,dev,computer-science,gaming,writing" | split: ',' %}
-  <ul class="tag-navigation">
-    {% for tag in primaryTags %}
-    <li>
-        <a
-          href="{% if tag == "all" %}/blog/{% else %}/tag/{{ tag }}{% endif %}"
-          class="post-tag tag{% if page.tag == tag %} active-tag{% endif %}"
-          title="View posts tagged as {{ tag }}"
-        >
-          {{ tag }}
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
+  <nav aria-label="Primary blog post tags">
+    <ul class="tag-navigation">
+      {% for tag in primaryTags %}
+      <li>
+          <a
+            href="{% if tag == "all" %}/blog/{% else %}/tag/{{ tag }}{% endif %}"
+            class="post-tag tag{% if page.tag == tag %} active-tag{% endif %}"
+            title="View posts tagged as {{ tag }}"
+            {% if page.tag == tag %}aria-current="true"{% endif %}
+          >
+            {{ tag }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
   <section class="post-preview-grid card-grid">
     {{ content }}
   </section>

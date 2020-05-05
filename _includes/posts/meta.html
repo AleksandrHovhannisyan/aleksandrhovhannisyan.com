@@ -4,28 +4,22 @@
     {% if include.showProfilePhoto %}
     <img src="/assets/img/profile-photo.png" alt="By Aleksandr Hovhannisyan" class="meta author-photo" />
     {% endif %}
-    <div class="post-date meta-wrapper">
-        <div class="meta">
-            {% include svg.html svg="calendar" class="meta-icon" %}
-            {{ include.date | date: "%b %-d, %Y" }}
-        </div>
+    <div class="meta post-date-published">
+        {% include svg.html svg="calendar" class="meta-icon" %}
+        <time datetime="{{ include.date | date: "%Y-%m-%d" }}">{{ include.date | date: "%b %-d, %Y" }}</time>
     </div>
     {% if include.lastUpdated %}
-    <div class="last-updated meta-wrapper">
-        <div class="meta">
-            {% include svg.html svg="info" class="meta-icon" %}
-            Updated: {{ include.lastUpdated | date: "%b %-d, %Y" }}
-        </div>
+    <div class="meta post-date-updated">
+        {% include svg.html svg="info" class="meta-icon" %}
+        <time datetime="{{ include.lastUpdated | date: "%Y-%m-%d" }}">Updated: {{ include.lastUpdated | date: "%b %-d, %Y" }}</time>
     </div>
     {% endif %}
-    <div class="post-reading-length meta-wrapper">
-        <div class="meta">
-            {% include svg.html svg="clock" class="meta-icon" %}
-            {{ minutes }} min read
-        </div>
+    <div class="meta post-reading-length">
+        {% include svg.html svg="clock" class="meta-icon" %}
+        <span>{{ minutes }} min read</span>
     </div>
     {% if include.tags %}
-    <div class="post-tags meta-wrapper">
+    <div class="meta post-tags" role="list" aria-label="Tags belonging to this blog post.">
         {% for tag in include.tags %}
         <a href="/tag/{{ tag }}" class="tag post-tag">{{ tag }}</a>
         {% endfor %}
