@@ -47,27 +47,31 @@ Sound good? Let's first look at the include file itself:
 
 ### 1. Copy-to-Clipboard Include: `_includes/code.html`
 
-{% capture code %}{% raw %}<div
+{% capture code %}{% raw %}<button
   class="copy-code-button"
+  aria-label="Copy code block to your clipboard"
   data-code="{{ include.code | escape }}"
-  title="Copy to clipboard"
-  tabindex="0"
-></div>
+></button>
 ```{{ include.lang }}
 {{ include.code }}
 ```{% endraw %}{% endcapture %}
 {% include code.html file="_includes/code.html" code=code lang="liquid" %}
 
-We create a `div` and give it a well-named class. We also add a native tooltip with the `title` attribute and ensure that the button can receive focus by specifying `tabindex="0"` (for keyboard users).
+We create a `button` and give it a well-named class. We also add an `aria-label` for screen readers.
 
-Below is the accompanying CSS (trimmed down to the essentials). Feel free to change this to suit your needs! Note that some of this will make more sense once we make the copy-to-clipboard button interactive with JavaScript.
+Below is the accompanying Sass (trimmed down to the essentials). Feel free to change this to suit your needs. Note that some of this will make more sense once we make the copy-to-clipboard button interactive with JavaScript.
 
 {% capture code %}.copy-code-button {
-    align-items: center;
-    cursor: pointer;
     display: flex;
-    padding-left: 6px;
-    padding-right: 6px;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    background-color: #616161;
+    color: #e7e7e7;
+    padding: 0.4em 0.5em;
+    border-radius: 5px;
 
     &::before {
         content: "Copy";
@@ -104,7 +108,7 @@ Here's a real example, from this very blog post, of what the escaped code would 
 
 {% include posts/picture.html img="escaped-code" ext="PNG" alt="Inspecting an HTML element with Chrome dev tools." shadow=false %}
 
-Neat! That way, the embedded quotes in the code don't break our HTML. And since we have a valid, plaintext copy of the code in an attribute, we can use JavaScript to copy that to the clipboard (more on that later).
+Cool! That way, the embedded quotes in the code don't break our HTML. And since we have a plaintext copy of the code in an attribute, we can use JavaScript to copy that to the clipboard (more on that later).
 
 This part is hopefully self-explanatory:
 
@@ -124,12 +128,11 @@ These two arguments will become accessible under `{% raw %}include.code{% endraw
 
 So when Jekyll goes to evaluate the Liquid template, it'll perform the following substitutions:
 
-{% capture code %}{% raw %}<div
+{% capture code %}{% raw %}<button
   class="copy-code-button"
+  aria-label="Copy code block to your clipboard"
   data-code="const foo = new Bar();"
-  title="Copy to clipboard"
-  tabindex="0"
-></div>
+></button>
 ```javascript
 const foo = new Bar();
 ```{% endraw %}{% endcapture %}
@@ -169,6 +172,8 @@ console.log("I love Jekyll!");{% endcapture %}{% endraw %}
 
 Everything inside the capture tag is stored in a multi-line string and can later be referenced by the variable `code` (you could name this something else if you wanted to, by the way).
 
+> **Note**: I recommend that you keep the capture start tag (`{% raw %}{% capture code %}{% endraw %}`) inline with the first line of code and the end tag (`{% raw %}{% endcapture %}{% endraw %}`) inline with the last line of code. If you don't, your code will get two extra newlines: one at the start and one at the end.
+
 If this seems like too much work, it really isn't. There are only three simple steps:
 
 1. Type `{% raw %}{% capture code %}{% endcapture %}{% endraw %}`.
@@ -184,8 +189,6 @@ What if your blog post is about Jekyll and your code contains Liquid templates, 
 
 And just replace the ellipsis with your code.
 
-> **Note**: I recommend that you keep the capture start tag (`{% raw %}{% capture X %}{% endraw %}`) inline with the first line of code and the end tag (`{% raw %}{% endcapture %}{% endraw %}`) inline with the last line of code. If you don't, your code will get two extra newlines: one at the start and one at the end.
-
 Once you've captured the code, simply use the include:
 
 ```liquid
@@ -196,7 +199,7 @@ Rinse and repeat for every code block that you want to insert into your blog pos
 
 #### Making Our Lives Easier with a Custom Snippet
 
-Of course, all of that may still seem like a lot of work... Which is ironic because while we're trying to make things easier for the user, we're making things harder for ourselves!
+Of course, all of that may still seem like a lot of work... Which is unfortunate—because while we're trying to make things easier for the user, we're making things harder for ourselves!
 
 If you're using VS Code, you can set up a really handy snippet to save yourself time. If you're using another editor, such as Sublime Text or Atom, there's a [site that generates snippets for those, too](https://snippet-generator.app/).
 
@@ -219,66 +222,49 @@ Then, in any Markdown file, all you'll have to do is type the prefix `code` and 
 
 ### 3. Copying to the Clipboard with JavaScript
 
-Awesome! We're already two-thirds of the way done.
+Awesome! We're already two-thirds of the way done. Now, all that's left is the JavaScript to actually do the copying. And this is actually the easy part.
 
-Now, all that's left is the JavaScript to actually do the copying. And this is actually the easy part.
+We'll start by defining a skeleton for the function:
 
-We'll start by defining a skeleton for the function and registering two event handlers:
-
-{% capture code %}const copyCode = copyCodeButton => {
+{% capture code %}const copyCode = (clickEvent) => {
   // The magic happens here
 };
 
-document.addEventListener("keyup", keyEvent => {
-  if (keyEvent.keyCode === 13) {
-    copyCode(keyEvent.target);
-  }
-});
-
-document.querySelectorAll(".copy-code-button").forEach(copyCodeButton => {
-  copyCodeButton.addEventListener("click", clickEvent =>
-    copyCode(clickEvent.target)
-  );
+document.querySelectorAll('.copy-code-button').forEach((copyCodeButton) => {
+  copyCodeButton.addEventListener('click', copyCode);
 });{% endcapture %}
 {% include code.html file="assets/scripts/copyCode.js" code=code lang="javascript" %}
 
-Pretty straightforward! Note that we handle the keyup event to listen for the `Enter` key, in case users are clicking the button with their keyboard instead of their mouse.
+Pretty straightforward! We're just registering click handlers on all of the buttons on the current page.
 
 The meat of the copy-to-clipboard logic is taken from [this StackOverflow answer](https://stackoverflow.com/a/46822033/5323344), which creates a temporary textarea element, adds it to the DOM, executes `document`'s copy command, and then removes the textarea:
 
-{% capture code %}const copyCode = copyCodeButton => {
-  const tempTextArea = document.createElement("textarea");
-  tempTextArea.textContent = copyCodeButton.getAttribute("data-code");
+{% capture code %}const copyCode = (clickEvent) => {
+  const copyCodeButton = clickEvent.target;
+  const tempTextArea = document.createElement('textarea');
+  tempTextArea.textContent = copyCodeButton.getAttribute('data-code');
   document.body.appendChild(tempTextArea);
 
   const selection = document.getSelection();
   selection.removeAllRanges();
   tempTextArea.select();
-  document.execCommand("copy");
+  document.execCommand('copy');
   selection.removeAllRanges();
   document.body.removeChild(tempTextArea);
 
   // TODO more stuff here :)
 };
 
-document.addEventListener("keyup", keyEvent => {
-  if (keyEvent.keyCode === 13) {
-    copyCode(keyEvent.target);
-  }
-});
-
-document.querySelectorAll(".copy-code-button").forEach(copyCodeButton => {
-  copyCodeButton.addEventListener("click", clickEvent =>
-    copyCode(clickEvent.target)
-  );
+document.querySelectorAll('.copy-code-button').forEach((copyCodeButton) => {
+  copyCodeButton.addEventListener('click', copyCode);
 });{% endcapture %}
 {% include code.html file="assets/scripts/copyCode.js" code=code lang="javascript" %}
 
 That's really all you need to get this to work, but I also have the following on the TODO line:
 
-{% capture code %}copyCodeButton.classList.add("copied");
-setTimeout(() => {
-  copyCodeButton.classList.remove("copied");
+{% capture code %}copyCodeButton.classList.add('copied');
+  setTimeout(() => {
+    copyCodeButton.classList.remove('copied');
 }, 2000);{% endcapture %}
 {% include code.html code=code lang="javascript" %}
 
@@ -291,10 +277,8 @@ That's it! Don't forget to add a script tag so this code actually works. For exa
 
 ## Copy That!
 
-This took me a while to figure out, but once I did, it felt amazing to see it actually work!
+It's amazing just how much you can get away with in Jekyll using simple Liquid templates and JavaScript! If you've been following along, you should now be all set to use copy-to-clipboard buttons in your Jekyll blog posts.
 
-This does require some additional (albeit negligible) effort to use in place of Markdown code blocks.
-
-Admittedly, refactoring my old posts was a pain, but I'd say it's worth it if it makes the user experience better on my site. It also makes it easier for me to verify that my tutorials work from scratch.
+Admittedly, this does require some additional (albeit negligible) effort to use in place of regular Markdown code blocks. Refactoring my old posts was a pain, yes, but I'd say it's worth it if it makes the user experience better on my site. It also makes it easier for me to verify that my tutorials work when followed from scratch since I don't have to manually copy-paste all of the code.
 
 I hope you enjoyed this tutorial! If you notice any typos or mistakes, [please let me know]({{ site.bugReport }}).
