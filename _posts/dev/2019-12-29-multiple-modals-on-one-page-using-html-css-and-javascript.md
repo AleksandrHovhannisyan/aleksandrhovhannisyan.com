@@ -4,7 +4,7 @@ description: Learn how to create modal windows in HTML using just a bit of HTML,
 keywords: [multiple modals on one page, two modals on the same page, how to create modal windows in html]
 tags: [dev, frontend, html, css, javascript]
 isCanonical: true
-lastUpdated: 2020-04-02
+lastUpdated: 2020-05-07
 ---
 
 I recently tried my hand at creating modal windows from scratch, without any libraries or dependencies. As it turns out, doing so is *much* simpler than I thought it would be!
@@ -81,9 +81,9 @@ p {
 }{% endcapture %}
 {% include code.html file="style.css" code=code lang="css" %}
 
-Now, let's take a look at what constitutes a "modal."
+Note that these styles are not necessary; they just make my demos look nicer.
 
-In our case, a modal window will consist of the following:
+Now, let's take a look at what constitutes a "modal." In our case, a modal window will consist of the following:
 
 - `.modal-wrapper`, which has a semi-transparent background to create a sense of depth.
 - `.modal-window`, containing all of the modal's actual contents (header and body).
@@ -91,17 +91,17 @@ In our case, a modal window will consist of the following:
 
 Let's add two modals to our HTML:
 
-{% capture code %}<p>Lorem ipsum. <span class="modal-trigger" data-modal-id="modal1">Click this trigger</span> to open a modal.</p>
+{% capture code %}<p>Lorem ipsum. <a href="#" class="modal-trigger" data-modal-id="modal1">Click this trigger</a> to open a modal.</p>
 <p>Close a modal by clicking off to the side, clicking the X, or pressing Escape.</p>
 
 <div class="modal-wrapper" id="modal1">
     <section class="modal-window">
         <header class="modal-header">
             <h3>Title goes here...</h3>
-            <div class="close-modal-button"></div>
+            <button type="button" class="close-modal-button" aria-label="Close modal window">X</button>
         </header>
         <p>Congrats, you've opened a modal!</p>
-        <p>Now open <span class="modal-trigger" data-modal-id="modal2">another modal</span>!</p>
+        <p>Now open <a href="#" class="modal-trigger" data-modal-id="modal2">another modal</a>!</p>
     </section>
 </div>
 
@@ -109,7 +109,7 @@ Let's add two modals to our HTML:
     <section class="modal-window">
         <header class="modal-header">
             <h3>Modalception 🤯</h3>
-            <div class="close-modal-button"></div>
+            <button type="button" class="close-modal-button" aria-label="Close modal window">X</button>
         </header>
         <p>Noice.</p>
     </section>
@@ -119,10 +119,10 @@ Let's add two modals to our HTML:
 We also need a way to open modals on our page. We'll do that with a `modal-trigger`:
 
 ```html
-<p>Lorem ipsum. <span class="modal-trigger" data-modal-id="modal1">Click this trigger</span> to open a modal.</p>
+<p>Lorem ipsum. <a href="#" class="modal-trigger" data-modal-id="modal1">Click this trigger</a> to open a modal.</p>
 ```
 
-A trigger can be any element on your page, as long as it has two things:
+A trigger can be any interactive element on your page, such as an anchor, as long as it has two things:
 
 - A class of `modal-trigger`.
 - A `data-modal-id` attribute specifying the ID of the modal to open.
@@ -195,27 +195,20 @@ Next up is the modal header:
 }
 
 .close-modal-button {
-    align-items: center;
-    cursor: pointer;
-    display: flex;
-    height: 30px;
-    justify-content: center;
-    width: 30px;
-}
-
-.close-modal-button::before {
-    content: "X";
+    border: none;
+    background-color: transparent;
     color: rgb(112, 112, 112);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.2em;
 }
 
-.close-modal-button:hover::before {
+.close-modal-button:hover {
     color: black;
 }{% endcapture %}
 {% include code.html file="style.css" code=code lang="css" %}
 
-We're simply using a pseudo-element for the close button.
-
-Finally, we'll style the triggers to make them look like links:
+Finally, we'll style the triggers:
 
 {% capture code %}.modal-trigger {
     color: rgb(10, 47, 255);
@@ -369,22 +362,22 @@ Some things will need to change in order for this to work.
 
 First, we will no longer nest each modal inside a `.modal-wrapper`. Instead, we'll have a single wrapper (container) that houses all of the modals:
 
-{% capture code %}<p>Lorem ipsum. <span class="modal-trigger" data-modal-id="modal1">Click this trigger</span> to open a modal.</p>
+{% capture code %}<p>Lorem ipsum. <a href="#" class="modal-trigger" data-modal-id="modal1">Click this trigger</a> to open a modal.</p>
 <p>Close a modal by clicking off to the side, clicking the X, or pressing Escape.</p>
 
 <div class="modal-wrapper">
     <section class="modal-window" id="modal1">
         <header class="modal-header">
             <h3>Title goes here...</h3>
-            <div class="close-modal-button"></div>
+            <button type="button" class="close-modal-button" aria-label="Close modal window">X</button>
         </header>
         <p>Congrats, you've opened a modal!</p>
-        <p>Now open <span class="modal-trigger" data-modal-id="modal2">another modal</span>!</p>
+        <p>Now open <a href="#" class="modal-trigger" data-modal-id="modal2">another modal</a>!</p>
     </section>
     <section class="modal-window" id="modal2">
         <header class="modal-header">
             <h3>Modalception 🤯</h3>
-            <div class="close-modal-button"></div>
+            <button type="button" class="close-modal-button" aria-label="Close modal window">X</button>
         </header>
         <p>Noice.</p>
     </section>
