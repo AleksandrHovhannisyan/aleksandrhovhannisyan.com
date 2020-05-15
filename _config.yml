@@ -66,3 +66,4 @@ defaults:
       layout: tagPage
       customJS: [blogImage]
       noindex: true
+      sitemap: false
