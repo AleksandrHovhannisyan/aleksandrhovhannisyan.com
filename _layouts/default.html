@@ -25,9 +25,9 @@
         {% endif %}
         <link rel="stylesheet" href="/assets/styles/main.css" />
         <link rel="icon" href="/favicon.png" type="image/x-icon" />
-        {% if page.isCanonical %}
+        {% if page.canonical_url %}
         <!-- This is only needed if the post has been syndicated on other media -->
-        <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+        <link rel="canonical" href="{{ page.canonical_url }}" />
         {% endif %}
         {% if page.url == "/" %}
         <title>{{ site.title }}: {{ page.title }}</title>

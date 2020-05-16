@@ -3,6 +3,8 @@ title: "How to Escape Tutorial Purgatory"
 description: Tutorials can help you grow as a developer. But they can also hold you back if relied upon excessively. Stuck in tutorial purgatory? Here's how to get out.
 keywords: [tutorial purgatory]
 tags: [dev, beginners]
+canonical_url: https://www.aleksandrhovhannisyan.com/blog/dev/how-to-escape-tutorial-purgatory/
+redirect_to: https://www.aleksandrhovhannisyan.com/blog/dev/how-to-escape-tutorial-purgatory/
 ---
 
 We've all been there before: You follow one tutorial after another hoping to find some sense of accomplishment or fulfillment as a developer. Instead, you walk away feeling unsated—hungry for something practical to sink your teeth into. But you never really find it. What you do find is existential panic: Am I cut out for this? When will I actually amount to something as a developer?

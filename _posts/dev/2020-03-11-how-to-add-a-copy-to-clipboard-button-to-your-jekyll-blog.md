@@ -3,8 +3,9 @@ title: "How to Add a Copy-to-Clipboard Button to Your Jekyll Blog"
 description: Learn how to add a copy-to-clipboard button to your Jekyll blog using some clever Liquid templating and just a few lines of JavaScript.
 tags: [dev, frontend, jekyll, liquid, javascript]
 keywords: [copy to clipboard button]
-isCanonical: true
 lastUpdated: 2020-03-17
+canonical_url: https://www.aleksandrhovhannisyan.com/blog/dev/how-to-add-a-copy-to-clipboard-button-to-your-jekyll-blog/
+redirect_to: https://www.aleksandrhovhannisyan.com/blog/dev/how-to-add-a-copy-to-clipboard-button-to-your-jekyll-blog/
 ---
 
 I'm always looking for ways to improve my site's user experience without toppling the precarious house of cards that is cross-browser compatibility (Internet Explorer be damned).

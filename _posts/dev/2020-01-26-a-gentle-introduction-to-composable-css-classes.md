@@ -3,6 +3,8 @@ title: A Gentle Introduction to Composable CSS Classes
 description: Composable CSS is an approach to styling that minimizes the overlap between different classes, allowing you to create legible, maintainable stylesheets. In this tutorial, we'll look at how you can compose CSS classes to create unique components.
 keywords: ["composable CSS classes", "compose CSS classes", "composable CSS"]
 tags: [dev, design, frontend, css]
+redirect_to: https://www.aleksandrhovhannisyan.com/blog/dev/a-gentle-introduction-to-composable-css-classes/
+canonical_url: https://www.aleksandrhovhannisyan.com/blog/dev/a-gentle-introduction-to-composable-css-classes/
 ---
 
 Let's say you create a button on your website. You give it a class of `button` and throw in a bunch of awesome styling, including some colors and animations. Great!

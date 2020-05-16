@@ -3,8 +3,9 @@ title: Multiple Modals on One Page Using HTML, CSS, and JavaScript
 description: Learn how to create modal windows in HTML using just a bit of HTML, CSS, and JavaScript. We'll look at how you can open multiple modals on one page, either stacked on top of each other or side by side.
 keywords: [multiple modals on one page, two modals on the same page, how to create modal windows in html]
 tags: [dev, frontend, html, css, javascript]
-isCanonical: true
 lastUpdated: 2020-05-07
+redirect_to: https://www.aleksandrhovhannisyan.com/blog/dev/multiple-modals-on-one-page-using-html-css-and-javascript/
+canonical_url: https://www.aleksandrhovhannisyan.com/blog/dev/multiple-modals-on-one-page-using-html-css-and-javascript/
 ---
 
 I recently tried my hand at creating modal windows from scratch, without any libraries or dependencies. As it turns out, doing so is *much* simpler than I thought it would be!
@@ -22,6 +23,7 @@ They'll share some of the same underlying structure and logic, but I've split th
 Each one will include a CodePen demo with the full source code. The examples will show me opening just two modals on the same page to keep things simple, but you can still open more with the same code.
 
 ## Table of Contents
+- [Table of Contents](#table-of-contents)
 - [Shared Code for Modals (Stacked + Side by Side)](#shared-code-for-modals-stacked--side-by-side)
   - [Styling Our Modal Windows](#styling-our-modal-windows)
 - [Multiple Modals on One Page (Stacked)](#multiple-modals-on-one-page-stacked)
@@ -37,6 +39,7 @@ Each one will include a CodePen demo with the full source code. The examples wil
     - [2. Closing a Particular Modal with Its X Button](#2-closing-a-particular-modal-with-its-x-button)
     - [3. Closing All Modals by Clicking Off to the Side](#3-closing-all-modals-by-clicking-off-to-the-side)
     - [4. Closing All Modals with the Escape Key](#4-closing-all-modals-with-the-escape-key)
+- [Wrap-up](#wrap-up)
 
 ## Shared Code for Modals (Stacked + Side by Side)
 

@@ -3,9 +3,10 @@ title: "7 Fun Non-Meta Decks in Yu-Gi-Oh!"
 description: Looking for some fun non-meta decks to run in Yu-Gi-Oh? Look no further than this list. Have fun!
 keywords: [fun non meta decks, fun non meta yugioh decks, yugioh non meta decks, yugioh fun decks, fun yugioh decks]
 tags: [gaming, yugioh, card-games]
-isCanonical: true
 redirect_from: /blog/gaming/yugioh-4-fun-non-meta-decks/
 lastUpdated: 2020-04-12
+redirect_to: https://www.aleksandrhovhannisyan.com/blog/gaming/yugioh-7-fun-non-meta-decks/
+canonical_url: https://www.aleksandrhovhannisyan.com/blog/gaming/yugioh-7-fun-non-meta-decks/
 ---
 
 Do you ever get tired of running meta decks in Yu-Gi-Oh? If you're not afraid to bruise your ego and are willing to lose to—or, surprisingly, defeat—the meta, then using a non-meta deck may be just what you need to have a little fun. Here are my favorites.

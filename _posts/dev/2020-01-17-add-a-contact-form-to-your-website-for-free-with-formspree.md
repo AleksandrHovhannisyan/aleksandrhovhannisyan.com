@@ -3,7 +3,8 @@ title: Create a Free Contact Form with Formspree
 description: Formspree makes it easy for you to add a free contact form to your website. Setting it up takes no more than a few minutes. Learn how to get started!
 keywords: [free contact form, formspree]
 tags: [dev, frontend, forms]
-isCanonical: true
+redirect_to: https://www.aleksandrhovhannisyan.com/blog/dev/add-a-contact-form-to-your-website-for-free-with-formspree/
+canonical_url: https://www.aleksandrhovhannisyan.com/blog/dev/add-a-contact-form-to-your-website-for-free-with-formspree/
 ---
 
 [Formspree](https://formspree.io/) is an online platform that makes it easy for you to add a free contact form to your website. It even has paid plans and integrations with other apps, like Slack, Mailchimp, and more. Setting it up takes no more than a few minutes, so let's get started!

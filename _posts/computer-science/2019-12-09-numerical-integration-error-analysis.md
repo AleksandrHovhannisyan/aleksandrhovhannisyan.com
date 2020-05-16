@@ -4,7 +4,8 @@ description: Learn how to perform numerical integration error analysis to unders
 keywords: ["numerical integration error analysis", "midpoint rule error estimate", "trapezoid rule error estimate", "simpson's rule error estimate"]
 tags: [computer-science, math]
 needsLatex: true
-isCanonical: true
+redirect_to: https://www.aleksandrhovhannisyan.com/blog/computer-science/numerical-integration-error-analysis/
+canonical_url: https://www.aleksandrhovhannisyan.com/blog/computer-science/numerical-integration-error-analysis/
 ---
 
 There's a lot of math coming up. Numerical integration error analysis isn't difficult conceptually—the key is to work very slowly to avoid getting lost in the sea of notation.

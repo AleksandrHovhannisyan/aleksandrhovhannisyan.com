@@ -5,6 +5,8 @@ keywords: [hard links vs soft links]
 tags: [dev, unix, file-systems]
 redirect_from: /blog/computer-science/hard-links-vs-soft-links/
 lastUpdated: 2020-05-11
+redirect_to: https://www.aleksandrhovhannisyan.com/blog/dev/hard-links-vs-soft-links/
+canonical_url: https://www.aleksandrhovhannisyan.com/blog/dev/hard-links-vs-soft-links/
 ---
 
 You may have heard the terms "hard link" and "soft link" used in the context of Unix and Unix-like operating systems. But do you know what they are and how you create them? In this post, we'll look at the differences between hard links and soft links and understand how to create them.
