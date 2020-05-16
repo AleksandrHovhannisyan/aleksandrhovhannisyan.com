@@ -1,0 +1,12 @@
+@import 'mixins';
+@import 'settings';
+@import 'colors';
+
+
+.card-grid {
+    $card-spacing: 50px;
+    display: grid;
+    column-gap: $card-spacing;
+    row-gap: $card-spacing;
+    @include responsiveGrid($mobileMin: 255px, $desktopMin: 15em);
+}

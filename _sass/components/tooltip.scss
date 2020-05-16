@@ -1,0 +1,80 @@
+$tooltip-spacing: 5px;
+
+.tooltip {
+    bottom: 0;
+    // Flip this to `block` in whatever element is getting hovered
+    display: none;
+    position: absolute;
+    z-index: 99;
+
+    &.tooltip-top {
+        bottom: calc(100% + #{$tooltip-spacing});
+
+        .tooltip-text::after {
+            border-color: #555 transparent transparent transparent;
+            left: 50%;
+            margin-left: -5px;
+            top: 100%;
+        }
+    }
+
+    &.tooltip-bottom {
+        top: calc(100% + #{$tooltip-spacing});
+
+        .tooltip-text::after {
+            border-color: transparent transparent #555 transparent;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -5px;
+        }
+    }
+
+    &.tooltip-left {
+        right: 100%;
+
+        .tooltip-text::after {
+            border-color: transparent transparent transparent #555;
+            left: 100%;
+            margin-top: -5px;
+            top: 50%;
+        }
+    }
+
+    &.tooltip-right {
+        left: 100%;
+
+        .tooltip-text::after {
+            border-color: transparent #555 transparent transparent;
+            margin-top: -5px;
+            right: 100%;
+            top: 50%;
+        }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+          to { opacity: 1; }
+    }
+
+    .tooltip-text {
+        align-items: center;
+        animation: fadeIn $transition-duration;
+        background-color: #555;
+        border-radius: 5px;
+        box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.75);
+        color: white;
+        display: flex;
+        font-size: 0.8em;
+        justify-content: center;
+        left: 0;
+        padding: 5px;
+        position: relative;
+
+        &::after {
+            border-style: solid;
+            border-width: 5px;
+            content: "";
+            position: absolute;
+        }
+    }
+}

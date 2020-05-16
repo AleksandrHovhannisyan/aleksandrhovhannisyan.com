@@ -1,0 +1,37 @@
+@import 'mixins';
+
+.button {
+    align-items: center;
+    border-radius: 5px;
+    display: flex;
+    font-weight: map-get($font-weights, "bold");
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    @include transition(color, box-shadow, background-color);
+}
+
+.solid-button {
+    @include solidButton(var(--button-bg-color), var(--card-bg-color));
+}
+
+.hollow-button {
+    @include hollowButton(var(--card-bg-color), var(--button-bg-color));
+}
+
+.arrow-button {    
+    &::after {
+        font-size: 25px;
+        font-weight: map-get($font-weights, "bold");
+        margin-left: 10px;
+        content: "→";
+        transform: translateX(0);
+        @include transition(transform);
+    }
+    
+    &:hover, &:focus {
+        &::after {
+            transform: translateX(5px);
+        }
+    }
+}

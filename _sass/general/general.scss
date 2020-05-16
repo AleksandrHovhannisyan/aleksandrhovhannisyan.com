@@ -1,0 +1,237 @@
+@import 'mixins';
+@import 'settings';
+
+::selection {
+    background-color: var(--selection-bg-color);
+    color: black;
+}
+
+::-webkit-scrollbar {
+    width: 0.875em;
+    height: 0.875em;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #494949;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #858585;
+    border-radius: 2px;
+
+    &:hover {
+        background: #adadad;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.screen-reader-only {
+    position: absolute;
+    left: -5000px;
+    z-index: 101;
+
+    &:focus {
+        left: 0;
+    }
+}
+
+.skip-navigation {
+    padding: 0.8em;
+    color: #dedede;
+    font-weight: map-get($font-weights, "normal");
+    @include transition(color, background-color);
+
+    &:focus {
+        background-color: #444647;
+    }
+}
+
+html {
+    @include maxFontSize(20px);
+}
+
+body {
+    background-color: var(--main-bg-color);
+    color: var(--text-color-normal);
+    display: grid;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;;
+    grid-template-rows: 1fr 80px;
+    line-height: 1.6;
+    min-height: 100vh;
+    position: relative;
+    row-gap: 64px;
+    @include transition(background-color);
+}
+
+#page-content {
+    grid-row: 1;
+    min-width: 0; // https://css-tricks.com/preventing-a-grid-blowout/
+    padding-top: 64px;
+    @include centered;
+    
+    & > * {
+        grid-column: 2;
+    }
+}
+
+.banner {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 670px;
+    text-align: center;
+}
+
+/* Links an entire parent container, but the parent must be set to relative position */
+.container-link {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    text-decoration: none;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+strong {
+    color: var(--text-color-emphasis);
+    font-weight: map-get($font-weights, "bold");
+    @include transition(color);
+}
+
+@include headings {
+    color: var(--text-color-emphasis);
+    margin-bottom: 0.5em;
+    font-weight: map-get($font-weights, "bold");
+    line-height: 1.4;
+    @include transition(color);
+}
+
+.title, .subtitle, .heading {
+    text-align: center;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+.heading-with-image {
+    font-size: 1.5em;
+    scroll-margin-top: 84px;
+}
+
+a {
+    color: var(--link-color);
+    font-weight: map-get($font-weights, "bold");
+    text-decoration: none;
+    @include transition(color);
+}
+
+p {
+    color: var(--text-color-normal);
+    line-height: 1.6;
+    margin-bottom: $paragraph-spacing;
+    @include transition(color);
+}
+
+.heading-with-image {
+    align-items: center;
+    display: flex;
+    margin-bottom: 40px;
+
+    &, * {
+        vertical-align: middle;
+    }
+
+    img {
+        margin-left: 10px;
+        width: 1.1em;
+    }
+}
+
+.section {
+    margin-top: 100px;
+}
+
+hr {
+    border: 1.2px solid rgb(145, 145, 145);
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+
+li {
+    ol, ul {
+        margin-top: calc(#{$paragraph-spacing} / 2);
+        margin-bottom: 0 !important;
+    }
+}
+
+li:not(:last-child) {
+    margin-bottom: calc(#{$paragraph-spacing} / 2);
+}
+
+.lazy-loaded-picture {
+    position: relative;
+
+    .placeholder {
+        position: relative;
+        width: 100%;
+        transform: scale(1);
+    }
+
+    .real-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 1;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+#page-not-found {
+    align-items: center;
+    animation: backgroundScroll 40s linear infinite;
+    animation-fill-mode: forwards;
+    background-color: #1a1a1a;
+    /* https://www.transparenttextures.com/stardust.html */
+    background-image: url('/assets/img/stardust.png');
+    display: flex;
+    flex-direction: column;
+    grid-column: 1;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    margin-top: 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    text-shadow: black;
+
+    @keyframes backgroundScroll {
+        from {background-position: 0 0;}
+        to {background-position: 798px 0;}
+    }
+
+    h1 {
+        color: #cccccc;
+    }
+
+    p {
+        color: #adadad;
+    }
+
+    a {
+        color: $secondary-color-link;
+        @include underlinedLink($secondary-color-link, $secondary-color-link);
+    }
+}

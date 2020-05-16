@@ -1,0 +1,26 @@
+@import 'mixins';
+@import 'settings';
+
+#page-footer {
+    align-items: center;
+    background: var(--nav-bg-color);
+    bottom: 0;
+    // box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.8);
+    color: #dedede;
+    display: flex;
+    grid-row: 2;
+    height: 80px;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    @include transition(color);
+    @include centered;
+
+    * {
+        grid-column: 2;
+    }
+
+    span {
+        text-align: center;
+    }
+}

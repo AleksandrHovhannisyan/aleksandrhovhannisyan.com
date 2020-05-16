@@ -1,0 +1,90 @@
+@import 'mixins';
+
+.collapsible {    
+    border: none;
+    margin-top: 20px;
+    outline: none;
+    width: 100%;
+
+    &.collapsible-closed {
+        // Downward-pointing vector
+        .collapsible-header::before {
+            transform: rotate(45deg);
+        }
+
+        .collapsible-content {
+            visibility: hidden;
+        }
+    }
+
+    &.collapsible-open {
+        .collapsible-header {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+
+            // Upward-pointing vector
+            &::before {
+                transform: rotate(-135deg);
+            }
+        }
+
+        .collapsible-content {
+            visibility: visible;
+        }
+    }
+}
+
+.collapsible-header {
+    background-color: var(--button-bg-color);
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 0.5em;
+    position: relative;
+
+    .collapsible-toggle {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    &, * {
+        @include transition(background-color, color, fill);
+        @include themed(color, white, black);
+    }
+
+    &:hover, &:focus {
+        background-color: var(--button-bg-hover-color);
+    }
+
+    // Vector/arrowhead
+    &::before {
+        content: "";
+        border: solid;
+        border-width: 0 2px 2px 0;
+        margin-left: 0.75em;
+        margin-right: 1.25em;
+        padding: 3px;
+        display: inline-block;
+        @include transition(transform, border-color);
+    }
+}
+
+.collapsible-content {
+    --collapsible-content-border-width: 3px;
+    border: solid var(--collapsible-content-border-width) var(--button-bg-color);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: none;
+    /* Will be set to a sufficiently large max-height by corresponding click handler for .collapsible */
+    max-height: 0px;
+    overflow: hidden;
+    @include transition(max-height, color, border-color, visibility);
+}

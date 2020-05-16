@@ -1,9 +1,0 @@
-[submodule "_posts"]
-	path = _posts
-	url = git@github.com:AleksandrHovhannisyan/posts
-[submodule "assets"]
-	path = assets
-	url = git@github.com:AleksandrHovhannisyan/assets
-[submodule "_sass"]
-	path = _sass
-	url = git@github.com:AleksandrHovhannisyan/sass

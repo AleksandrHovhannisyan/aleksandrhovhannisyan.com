@@ -1,0 +1,220 @@
+@import 'colors';
+@import 'settings';
+@import 'mixins';
+
+$topnav-min-height: 64px;
+
+#topnav {
+    background-color: var(--nav-bg-color);
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.8);
+    left: 0;
+    min-height: $topnav-min-height;
+    position: fixed;
+    right: 100%;
+    top: 0;
+    width: 100%;
+    /* Arbitrary, appear above everything else */
+    z-index: 100;
+    @include centered;
+    @include transition(color, background-color);
+
+    * {
+        color: #dedede;
+        fill: #dedede;
+        font-weight: map-get($font-weights, "normal");
+    }
+
+    .nav-container {
+        align-items: center;
+        display: flex;
+        grid-column: 2;
+        height: $topnav-min-height;
+        justify-content: space-between;
+    }
+    
+    #home-link {
+        align-items: center;
+        background: none;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow: hidden;
+        flex-shrink: 0;
+
+        #logo {
+            height: 32px;
+            border-radius: 50%;
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        }
+
+        #website-name {
+            margin-left: 5px;
+            @include transition(color);
+        }
+
+        &:hover, &:focus {
+            #website-name {
+                color: white;
+            }
+        }
+    }
+
+    #theme-switch-container {
+        display: flex;
+        height: 30px;
+        justify-content: center;
+    }
+
+    #theme-switch {
+        --switch-width: 52px;
+        align-items: center;
+        align-self: center;
+        border-radius: 100px;        
+        cursor: pointer;
+        display: flex;
+        flex-wrap: nowrap;   
+        font-size: 0.5625em;
+        height: 22px;
+        justify-content: space-between;
+        margin-right: 5px;
+        padding-left: 3px;
+        padding-right: 3px;
+        position: relative;
+        width: var(--switch-width);
+        @include themed(background-color, #747474, $secondary-color-dark);
+
+        #sun, #moon {
+            height: 18px;
+        }
+
+        #knob {
+            --switch-orb-height: 25px;
+            --switch-orb-width: 25px; 
+            background-color: rgb(207, 207, 207);
+            border: 1.3px solid $primary-color;
+            border-radius: 50%;
+            height: var(--switch-orb-height);
+            left: 0;    
+            position: absolute;
+            right: calc(var(--switch-width) - var(--switch-orb-width));
+            width: var(--switch-orb-width);
+            @include transition(left, right, background-color, border, width, height);
+
+            .dark & {
+                background-color: #a79c87;
+                border: 1.3px solid #635b4b;
+                box-shadow: 0 0 5px 0 lighten(#a79c87, 75%);
+                left: calc(var(--switch-width) - var(--switch-orb-width));
+                right: var(--orb-distance-from-edge);
+            }
+        }
+
+        &:active {
+            #knob {
+                box-shadow: 0 0 10px 0 $secondary-color-light;
+                height: calc(var(--switch-orb-height) - 4px);
+                width: calc(var(--switch-orb-width) - 4px);
+            }
+        }
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: 0;
+        top: $topnav-min-height;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        visibility: hidden;
+        @include transition(opacity, visibility);
+    }
+
+    .nav-links {
+        background-color: var(--nav-bg-color);
+        box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.8);
+        list-style-type: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+
+        #active-nav-link, 
+        a:hover, 
+        a:focus {
+            background-color: #444647;
+        }
+
+        li {
+            margin: 15px auto;
+            text-align: center;
+        }
+
+        a {
+            border-radius: 2px;
+            padding: 15px 10px;
+            display: block;
+            @include transition(background-color, color);
+        }
+    }
+
+    .navbar-toggle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: transparent;
+        border: none;
+    }
+
+    .navbar-hamburger {
+        flex-shrink: 0;
+        height: 27px;
+        width: 27px;
+        cursor: pointer;
+    }  
+    
+    /* For mobile */
+    &.expanded {
+        .nav-menu {
+            background-color: rgba(0, 0, 0, 0.4);
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+@media only screen and (min-width: 46.25rem) {
+    #topnav {
+        .nav-menu {
+            position: static;
+            display: block;
+            height: 100%;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .nav-links {
+            align-items: center;
+            box-shadow: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            margin: 0;
+            position: static;
+    
+            li {
+                margin: 0 0 0 30px;
+                height: $topnav-min-height;
+                display: flex;
+                align-items: center;
+            }
+
+            a {
+                padding: 8px 10px;
+                display: inline;
+            }
+        }
+    
+        .navbar-toggle {
+           display: none;
+        }
+    }
+}
