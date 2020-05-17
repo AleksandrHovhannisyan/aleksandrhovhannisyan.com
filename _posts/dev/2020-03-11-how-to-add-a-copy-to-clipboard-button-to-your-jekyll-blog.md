@@ -1,10 +1,10 @@
 ---
 title: "How to Add a Copy-to-Clipboard Button to Your Jekyll Blog"
 description: Learn how to add a copy-to-clipboard button to your Jekyll blog using some clever Liquid templating and just a few lines of JavaScript.
-tags: [dev, frontend, jekyll, liquid, javascript]
+tags: [dev, jekyll, liquid, javascript]
 keywords: [copy to clipboard button]
 isCanonical: true
-lastUpdated: 2020-03-17
+lastUpdated: 2020-05-17
 ---
 
 I'm always looking for ways to improve my site's user experience without toppling the precarious house of cards that is cross-browser compatibility (Internet Explorer be damned).
@@ -47,11 +47,12 @@ Sound good? Let's first look at the include file itself:
 
 ### 1. Copy-to-Clipboard Include: `_includes/code.html`
 
-{% capture code %}{% raw %}<button
-  class="copy-code-button"
-  aria-label="Copy code block to your clipboard"
-  data-code="{{ include.code | escape }}"
-></button>
+{% capture code %}{% raw %}<div class="copy-code-container">
+    <button class="copy-code-button"
+         aria-label="Copy code block to your clipboard" 
+         data-code="{{ include.code | escape }}"
+    ></button>
+</div>
 ```{{ include.lang }}
 {{ include.code }}
 ```{% endraw %}{% endcapture %}
@@ -61,7 +62,14 @@ We create a `button` and give it a well-named class. We also add an `aria-label`
 
 Below is the accompanying Sass (trimmed down to the essentials). Feel free to change this to suit your needs. Note that some of this will make more sense once we make the copy-to-clipboard button interactive with JavaScript.
 
-{% capture code %}.copy-code-button {
+{% capture code %}.copy-code-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1em;
+  background: #3b3b3b;
+}
+
+.copy-code-button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -96,6 +104,8 @@ Below is the accompanying Sass (trimmed down to the essentials). Feel free to ch
 }{% endcapture %}
 {% include code.html code=code lang="scss" %}
 
+> **Note**: Feel free to change the text and background colors to suit your own needs.
+
 If you take a closer look at `_includes/code.html`, you'll notice this interesting `data-code` attribute:
 
 ```liquid
@@ -128,11 +138,13 @@ These two arguments will become accessible under `{% raw %}include.code{% endraw
 
 So when Jekyll goes to evaluate the Liquid template, it'll perform the following substitutions:
 
-{% capture code %}{% raw %}<button
-  class="copy-code-button"
-  aria-label="Copy code block to your clipboard"
-  data-code="const foo = new Bar();"
-></button>
+{% capture code %}{% raw %}<div class="copy-code-container">
+    <button
+      class="copy-code-button"
+      aria-label="Copy code block to your clipboard"
+      data-code="const foo = new Bar();"
+    ></button>
+</div>
 ```javascript
 const foo = new Bar();
 ```{% endraw %}{% endcapture %}
@@ -275,9 +287,80 @@ That's it! Don't forget to add a script tag so this code actually works. For exa
 {% capture code %}<script src="/assets/scripts/copyCode.js"></script>{% endcapture %}
 {% include code.html file="_layouts/post.html" code=code lang="html" %}
 
+## Further Improvements: File Name and Copy-to-Clipboard Button
+
+Of course, you may have noticed that the code blocks on my own website have four variants:
+
+1. No code block header (no file name or copy-to-clipboard button). These are your standard Markdown code blocks rendered with triple backticks.
+2. Code block header with the file name only (for illustrative code that shouldn't be copied).
+3. Copy-to-clipboard button only (whenever there isn't a file name, like for terminal commands).
+4. Both a file name and a copy-to-clipboard button.
+
+This layout isn't actually as complicated as it may seem; you just need a top-level wrapper `div` for the header, with two nested flex containers: one for the file name and another for the button:
+
+{% include posts/picture.html img="improvements" ext="GIF" alt="Inspecting the code block headers on my website" shadow=false %}
+
+All of these variations still use the same include file that we looked at in this blog post, except some elements are **conditionally rendered** based on a flag parameter that I pass in whenever I don't want to render something. Here's what my full `_includes/code.html` file looks like:
+
+{% capture code %}{% raw %}<div class="code-header">
+    {% if include.file %}
+    <div class="file-name-container">
+        <h6 class="file-name"
+            aria-label="File name: {{ include.file }}">
+            {{ include.file }}
+        </h6>
+    </div>
+    {% endif %}
+    {% unless include.copyable == false %}
+    <div class="copy-code-container">
+        <button class="copy-code-button"
+             aria-label="Copy code block to your clipboard" 
+             data-code="{{ include.code | escape }}"
+        ></button>
+    </div>
+    {% endunless %}
+</div>
+```{{ include.lang }}
+{{ include.code }}
+```{% endraw %}{% endcapture %}
+{% include code.html file="_includes/code.html" code=code lang="liquid" %}
+
+For example, using the `unless` Liquid tag and a flag passed in as an argument, I can regulate when the copy button should appear:
+
+```liquid
+{% raw %}{% unless include.copyable == false %}
+    <div class="copy-code-container">
+        <button class="copy-code-button"
+             aria-label="Copy code block to your clipboard" 
+             data-code="{{ include.code | escape }}"
+        ></button>
+    </div>
+{% endunless %}{% endraw %}
+```
+
+This means I can later import the file as follows, and it won't render the copy-to-clipboard button:
+
+{% capture code %}{% raw %}{% include code.html code=code lang="myFavoriteLanguage" copyable=false %}{% endraw %}{% endcapture %}
+{% include code.html code=code lang="liquid" %}
+
+If you're wondering why I used `unless` instead of `if`, it's because this allows me to specify the default behavior as "always include a copy-to-clipboard button unless I say otherwise."
+
+Likewise, if I want to specify a file name, I just need to pass in `file="myFileName"`, and that'll conditionally render the div for the file container with a simple `if` tag:
+
+```liquid
+{% raw %}{% if include.file %}
+    <div class="file-name-container">
+        <h6 class="file-name"
+            aria-label="File name: {{ include.file }}">
+            {{ include.file }}
+        </h6>
+    </div>
+{% endif %}{% endraw %}
+```
+
 ## Copy That!
 
-It's amazing just how much you can get away with in Jekyll using simple Liquid templates and JavaScript! If you've been following along, you should now be all set to use copy-to-clipboard buttons in your Jekyll blog posts.
+It's amazing just how much you can get away with in Jekyll using simple Liquid templates and JavaScript! If you've been following along, you should now be all set to use copy-to-clipboard buttons in your Jekyll blog posts. I'll leave it up to you to make the code block header look nicer than what I've presented here. Get creative!
 
 Admittedly, this does require some additional (albeit negligible) effort to use in place of regular Markdown code blocks. Refactoring my old posts was a pain, yes, but I'd say it's worth it if it makes the user experience better on my site. It also makes it easier for me to verify that my tutorials work when followed from scratch since I don't have to manually copy-paste all of the code.
 
