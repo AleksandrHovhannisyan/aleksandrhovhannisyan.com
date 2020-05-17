@@ -52,7 +52,7 @@ It's also one of the few games that got loading screens right—even though they
 It was 2014, and my birthday was approaching. I convinced my mother to hold off on getting me anything just yet because I had my eyes set on a bigger prize: the upcoming release of Dark Souls 2. That would become my first introduction to one of this generation's greatest video game series.
 
 <figure>
-    {% include posts/picture.html img="dark-souls-2" alt="Dark Souls 2 player dressed in Knight Armor facing a dragon at Dragon Aerie." %}
+    {% include posts/picture.html img="dark-souls-2" ext="JPG" alt="Dark Souls 2 player dressed in Knight Armor facing a dragon at Dragon Aerie." %}
     <figcaption>Image credits: <a href="https://www.flickr.com/photos/bagogames/12992166263">BagoGames</a></figcaption>
 </figure>
 
@@ -70,7 +70,7 @@ Dark Souls 3 was my next purchase a couple years back (yes, I played these three
 
 <figure>
     <picture>
-        {% include posts/picture.html img="dark-souls-3" alt="The sandy ruins of the Ringed City." %}
+        {% include posts/picture.html img="dark-souls-3" ext="JPG" alt="The sandy ruins of the Ringed City." %}
     </picture>
     <figcaption>Image credits: <a href="https://www.express.co.uk/entertainment/gaming/585250/Dark-Souls-3-Xbox-Miyazaki-update-Xbox-One-PS4">FromSoftware</a></figcaption>
 </figure>
