@@ -3,12 +3,11 @@ title: Blog
 layout: default
 ---
 
-{% assign pagePath = paginator["page_path"] %}
+{% assign pagePath = paginator["page_path"] | remove: 'index.html' %}
 <section class="section blog-post-previews">
-  {% assign pagePathParts = pagePath | split: '/' %}
-  {% assign pageTag = pagePathParts[2] %}
-  {% if pageTag == 'index.html' %}
-    {% assign pageTag = 'all' %}
+  {% if page.autopages %}
+  {% assign pageTag = page.autopages.display_name %}
+  {% else %}{% assign pageTag = 'all' %}
   {% endif %}
   {% assign blogType = "" %}
   {% assign pageTagWords = pageTag | split: '-' %}
@@ -47,13 +46,13 @@ layout: default
   {% if paginator.page_trail %}
   <ul class="pagination-trail" role="navigation" aria-label="Pages for {{ pageTag }} blog posts.">
     {% for trail in paginator.page_trail %}
-      {% assign totalPages = paginator["total_pages"] %}
+      {% assign trailPath = trail.path | remove: 'index.html' %}
       <li>
         <a 
-          href="{{ trail.path | prepend: site.baseurl }}" 
-          title="{% if pagePath == trail.path %}Page {{ trail.num }}{% else %}Go to page {{ trail.num }}{% endif %}"
-          aria-label="{% if pagePath == trail.path %}You are currently viewing page {{ trail.num }} of {{ totalPages }} for  {{ pageTag }} blog posts{% else %}Go to page {{ trail.num }}{% endif %}"
-          class="page{% if pagePath == trail.path %} active-page{% endif %}"
+          href="{{ trailPath | prepend: site.baseurl }}" 
+          title="{% if pagePath == trailPath %}Page {{ trail.num }}{% else %}Go to page {{ trail.num }}{% endif %}"
+          aria-label="{% if pagePath == trailPath %}You are currently viewing page {{ trail.num }} of {{ totalPages }} for  {{ pageTag }} blog posts{% else %}Go to page {{ trail.num }}{% endif %}"
+          class="page{% if pagePath == trailPath %} active-page{% endif %}"
         >
         {{ trail.num }}
         </a>
