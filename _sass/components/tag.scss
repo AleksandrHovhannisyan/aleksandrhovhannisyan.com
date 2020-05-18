@@ -1,6 +1,14 @@
+@import 'settings';
+
 .tag {
     background-color: var(--tag-bg-color);
     border-radius: 3px;
     color: var(--tag-text-color);
+    font-weight: map-get($font-weights, "normal");
     @include transition(color, background-color);
+
+    &:hover, &:focus, &.active-tag {
+        @include themed(background-color, $primary-color, #ffcd91);
+        @include themed(color, white !important, black !important);
+    }
 }

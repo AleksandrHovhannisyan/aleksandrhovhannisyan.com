@@ -4,12 +4,6 @@
 
 .post-tag {
     display: inline-block;
-    font-weight: map-get($font-weights, "normal");
-
-    &:hover, &:focus, &.active-tag {
-        @include themed(background-color, $primary-color, #ffcd91);
-        @include themed(color, white !important, black !important);
-    }
 }
 
 .blog-post-previews {
@@ -123,6 +117,25 @@
         padding: 3em;
         text-align: center;
         font-style: italic;
+    }
+}
+
+.pagination-trail {
+    margin-top: 3em;
+    display: flex;
+    justify-content: flex-end;
+    list-style-type: none;
+
+    .page {
+        @extend .tag;
+        margin-bottom: 1em;
+        margin-right: 0.625em;
+        padding: 0.4em 0.8em;
+        font-size: 0.875em;
+    }
+
+    .active-page {
+        @extend .active-tag;
     }
 }
 

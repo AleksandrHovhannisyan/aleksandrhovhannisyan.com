@@ -6,7 +6,10 @@ layout: blog
 customJS: [blogImage]
 isBlogPage: true
 tag: all
+pagination: 
+  enabled: true
 ---
-{% for post in site.posts %}
+
+{% for post in paginator.posts %}
 {% include postPreview.html post=post %}
 {% endfor %}

@@ -3,15 +3,26 @@ title: Blog
 layout: default
 ---
 
+{% assign pagePath = paginator["page_path"] %}
 <section class="section blog-post-previews">
-  {% assign blogType = "" %} {% assign pageTag = page.tag | split: '-' %} {% for
-  word in pageTag %} {% assign capitalizedWord = word | capitalize | append: ' '
-  %} {% assign blogType = blogType | append: capitalizedWord %} {% endfor %}
+  {% assign pagePathParts = pagePath | split: '/' %}
+  {% assign pageTag = pagePathParts[2] %}
+  {% if pageTag == 'index.html' %}
+    {% assign pageTag = 'all' %}
+  {% endif %}
+  {% assign blogType = "" %}
+  {% assign pageTagWords = pageTag | split: '-' %}
+  {% for word in pageTagWords %}
+    {% assign capitalizedWord = word | capitalize | append: ' '%}
+    {% assign blogType = blogType | append: capitalizedWord %}
+  {% endfor %}
   <h1>{{ blogType }}Blog Posts</h1>
   <p>
-    {% if site.data.tagDescriptions[page.tag] %} {{
-    site.data.tagDescriptions[page.tag] }} {% else %} {{
-    site.data.tagDescriptions["all"]}} {% endif %}
+    {% if site.data.tagDescriptions[pageTag] %} 
+    {{site.data.tagDescriptions[pageTag] }}
+    {% else %}
+    {{site.data.tagDescriptions["all"]}}
+    {% endif %}
   </p>
   {% assign primaryTags = "all,dev,computer-science,gaming,writing" | split: ',' %}
   <nav aria-label="Primary blog post tags">
@@ -20,9 +31,9 @@ layout: default
       <li>
           <a
             href="{% if tag == "all" %}/blog/{% else %}/tag/{{ tag }}{% endif %}"
-            class="post-tag tag{% if page.tag == tag %} active-tag{% endif %}"
-            title="View posts tagged as {{ tag }}"
-            {% if page.tag == tag %}aria-current="true"{% endif %}
+            class="post-tag tag{% if pageTag == tag %} active-tag{% endif %}"
+            title="{% if pageTag != tag %}View{% endif %} {% if tag == "all" %}all posts{% else %}posts tagged as {{ tag }}{% endif %}"
+            {% if pageTag == tag %}aria-current="true"{% endif %}
           >
             {{ tag }}
           </a>
@@ -33,4 +44,21 @@ layout: default
   <section class="post-preview-grid card-grid">
     {{ content }}
   </section>
+  {% if paginator.page_trail %}
+  <ul class="pagination-trail" role="navigation" aria-label="Pages for {{ pageTag }} blog posts.">
+    {% for trail in paginator.page_trail %}
+      {% assign totalPages = paginator["total_pages"] %}
+      <li>
+        <a 
+          href="{{ trail.path | prepend: site.baseurl }}" 
+          title="{% if pagePath == trail.path %}Page {{ trail.num }}{% else %}Go to page {{ trail.num }}{% endif %}"
+          aria-label="{% if pagePath == trail.path %}You are currently viewing page {{ trail.num }} of {{ totalPages }} for  {{ pageTag }} blog posts{% else %}Go to page {{ trail.num }}{% endif %}"
+          class="page{% if pagePath == trail.path %} active-page{% endif %}"
+        >
+        {{ trail.num }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
 </section>
