@@ -32,7 +32,7 @@ layout: default
             href="{% if tag == "all" %}/blog/{% else %}/tag/{{ tag }}{% endif %}"
             class="post-tag tag{% if pageTag == tag %} active-tag{% endif %}"
             title="{% if pageTag != tag %}View{% endif %} {% if tag == "all" %}all posts{% else %}posts tagged as {{ tag }}{% endif %}"
-            {% if pageTag == tag %}aria-current="true"{% endif %}
+            {% if pageTag == tag %}aria-current="tag"{% endif %}
           >
             {{ tag }}
           </a>
@@ -44,14 +44,16 @@ layout: default
     {{ content }}
   </section>
   {% if paginator.page_trail %}
-  <ul class="pagination-trail" role="navigation" aria-label="Pages for {{ pageTag }} blog posts.">
+  <ul class="pagination-trail" aria-label="Page navigation for {{ pageTag }} blog posts.">
     {% for trail in paginator.page_trail %}
       {% assign trailPath = trail.path | remove: 'index.html' %}
+      {% assign totalPages = paginator["total_pages"] %}
       <li>
         <a 
-          href="{{ trailPath | prepend: site.baseurl }}" 
+          href="{{ trailPath | prepend: site.baseurl }}"
+          {% if pagePath == trailPath %}aria-current="page"{% endif %}
           title="{% if pagePath == trailPath %}Page {{ trail.num }}{% else %}Go to page {{ trail.num }}{% endif %}"
-          aria-label="{% if pagePath == trailPath %}You are currently viewing page {{ trail.num }} of {{ totalPages }} for  {{ pageTag }} blog posts{% else %}Go to page {{ trail.num }}{% endif %}"
+          aria-label="{% if pagePath == trailPath %}Viewing page {{ trail.num }} of {{ totalPages }}{% else %}Go to page {{ trail.num }}{% endif %}"
           class="page{% if pagePath == trailPath %} active-page{% endif %}"
         >
         {{ trail.num }}
