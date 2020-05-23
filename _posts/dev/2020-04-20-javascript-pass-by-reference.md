@@ -27,6 +27,7 @@ If you'd like the TL;DR answer, go ahead and jump to [Passing Pointers ("Referen
 
 ## Table of Contents
 
+- [Table of Contents](#table-of-contents)
 - [Prerequisite Terminology: Arguments vs. Parameters](#prerequisite-terminology-arguments-vs-parameters)
 - [JavaScript Doesn't Pass by Reference](#javascript-doesnt-pass-by-reference)
   - [What Are Object References in JavaScript?](#what-are-object-references-in-javascript)
@@ -371,4 +372,4 @@ Let's recap what we covered in this post:
 5. In pass by reference, the formal parameters are aliases for the arguments that are passed in.
 6. When we pass a pointer by value, the formal parameter receives a copy of the memory address to which the argument is pointing. This lets us modify the underlying object being pointed to.
 
-And that about does it! I hope you now understand why JavaScript is pass by value and not pass by reference. If you notice any typos or mistakes in this post, [please let me know]({{ site.bugReport }}).
+And that about does it! I hope you now understand why JavaScript is pass by value and not pass by reference.

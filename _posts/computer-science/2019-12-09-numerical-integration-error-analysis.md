@@ -160,6 +160,3 @@ $$\frac{2}{3}M(f) + \frac{1}{3}T(f) = S(f) = I(f) + \frac{2}{3}F(f)$$
 ## That's It!
 
 I hope you found this helpful in understanding how we get numerical integration error estimates.
-
-If you notice a typo in any of that LaTeX, [please let me know about it!]({{ site.bugReport }})
-

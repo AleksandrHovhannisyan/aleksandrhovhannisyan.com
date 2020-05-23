@@ -259,5 +259,5 @@ That's about it for scheduling algorithms!
 
 The best way to master scheduling algorithms is to work through the examples on your own using pen and paper. This is especially true for problems involving preemptive priority or round robin scheduling.
 
-I hope you found this post helpful. If not, please [let me know how I can improve it]({{ site.bugReport }}).
+I hope you found this post helpful!
 

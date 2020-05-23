@@ -568,6 +568,6 @@ Here are some ideas to make the modals more interesting:
 - Make closing a modal with escape/clicking off to the side optional by using separate classes.
 - Make the modals draggable.
 
-I hope you found this tutorial helpful! If you run into any problems, [please let me know]({{ site.bugReport }}).
+I hope you found this tutorial helpful! If you run into any problems, please let me know.
 
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>

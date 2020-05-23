@@ -497,5 +497,3 @@ Looks like a pretty good fit to me!
 ## Conclusion
 
 That about does it for this series on the least squares method! I hope you found this helpful.
-
-If you notice any typos or mistakes, [please let me know]({{ site.bugReport }}).

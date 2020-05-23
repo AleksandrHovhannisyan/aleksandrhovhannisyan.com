@@ -364,4 +364,4 @@ It's amazing just how much you can get away with in Jekyll using simple Liquid t
 
 Admittedly, this does require some additional (albeit negligible) effort to use in place of regular Markdown code blocks. Refactoring my old posts was a pain, yes, but I'd say it's worth it if it makes the user experience better on my site. It also makes it easier for me to verify that my tutorials work when followed from scratch since I don't have to manually copy-paste all of the code.
 
-I hope you enjoyed this tutorial! If you notice any typos or mistakes, [please let me know]({{ site.bugReport }}).
+I hope you enjoyed this tutorial!
