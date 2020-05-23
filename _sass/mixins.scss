@@ -49,12 +49,11 @@
 
 @mixin underlinedLink($lightColor, $darkColor) {
     text-decoration: none;
-    @include themed(border-bottom, 3px solid rgba($lightColor, 0.15), 3px solid rgba($darkColor, 0.5));
-    @include transition(border, background-color, color);
+    @include themed(border-bottom, 3px solid transparent, 3px solid transparent);
+    @include transition(border, color);
 
     &:hover, &:focus {
         @include themed(border-bottom, 3px solid $lightColor, 3px solid $darkColor);
-        @include themed(background-color, rgba($lightColor, 0.1), rgba($darkColor, 0.2));
     }
 }
 

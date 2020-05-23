@@ -35,3 +35,12 @@
         }
     }
 }
+
+.plus-button {
+    &::before {
+        font-size: 0.875em;
+        content: "+";
+        margin-right: 10px;
+        font-weight: map-get($font-weights, "bold");
+    }
+}

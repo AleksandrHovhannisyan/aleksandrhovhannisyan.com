@@ -11,6 +11,9 @@ layout: default
     {% include posts/meta.html content=page.content date=page.date lastUpdated=lastUpdated tags=page.tags showProfilePhoto=true %}
   </header>
   {{ content }}
+  {% if page.commentsId %}
+    {% include posts/comments.html id=page.commentsId %}
+  {% endif %}
 </article>
 
 {% if page.needsLatex %}

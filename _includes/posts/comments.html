@@ -1,0 +1,53 @@
+{% assign id = include.id %}
+<div class="comment-actions">
+    <h2>Comments <span id="comment-count"></span></h2>
+    <a href="https://github.com/{{ site.issuesRepo }}/issues/{{ id }}" class="button solid-button plus-button add-comment">Add comment</a>
+</div>
+<div id="comments-wrapper"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+    const commentsWrapper = document.getElementById("comments-wrapper");
+    const commentCount = document.getElementById("comment-count");
+
+    fetch("https://api.github.com/repos/{{ site.issuesRepo }}/issues/{{ id }}/comments")
+    .then(blob => blob.json())
+    .then(renderComments);
+
+    function renderComments(comments) {
+        // No comments yet
+        if (!comments.length) {
+            commentsWrapper.innerHTML = '<p>No comments 👀 Why not post one?</p>'
+            return;
+        }
+
+        commentCount.innerHTML = `(${comments.length})`;
+        const commentList = document.createElement('ul');
+        commentList.className = 'comments';
+        commentList.setAttribute('aria-label', 'Comments on this blog post');
+
+        commentList.innerHTML = comments.sort((comment1, comment2) => {
+            return comment1.created_at < comment2.created_at ? 1 : -1;
+        }).map((comment) => {
+            const user = comment.user;
+            const postDate = comment.created_at;
+            const today = moment();
+            const datePosted = moment(comment.created_at).fromNow();
+
+            return `<li class="comment">
+                <header class="comment-header">
+                        <div class="user">
+                            <img src="${user.avatar_url}" alt="" aria-hidden="true" class="avatar" />
+                            <a href="${user.url}" class="name" aria-label="Comment by ${user.login}">${user.login}</a>
+                            ${comment.author_association === 'OWNER' ? '<span class="author">Author</span>' : ''}
+                        </div>
+                        <time class="date-posted" datetime="${comment.created_at}">${datePosted}</time>
+                </header>
+                <div class="comment-body">${marked(comment.body)}</div>
+            </li>`;
+        }).join("");
+
+        commentsWrapper.appendChild(commentList);
+    }
+</script>

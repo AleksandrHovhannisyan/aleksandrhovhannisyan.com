@@ -206,7 +206,7 @@
         margin: 0;
     }
 
-    a:not(.post-tag):not(.heading-anchor) {
+    a:not(.post-tag):not(.heading-anchor):not(.button) {
         @include underlinedLink($primary-color-link, $secondary-color-link);
     }
 
