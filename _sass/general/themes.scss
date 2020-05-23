@@ -26,8 +26,8 @@ html.light {
     --form-bg-color: #f6f6f6;
     --form-input-color: white;
     
-    --blockquote-bg-color: rgb(206, 206, 206);
-    --blockquote-text-color: #484e55;
+    --blockquote-bg-color: transparent;
+    --blockquote-text-color: var(--text-color-normal);
     --spoiler-color: #{$primary-color-tag};
     --comment-bg-color: #f6f6f6;
 }
