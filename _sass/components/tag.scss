@@ -6,7 +6,9 @@
     color: var(--tag-text-color);
     font-weight: map-get($font-weights, "normal");
     @include transition(color, background-color);
+}
 
+a.tag {
     &:hover, &:focus, &.active-tag {
         @include themed(background-color, $primary-color, #ffcd91);
         @include themed(color, white !important, black !important);

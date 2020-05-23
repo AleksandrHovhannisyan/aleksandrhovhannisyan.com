@@ -1,53 +1,78 @@
-{% assign id = include.id %}
-<div class="comment-actions">
-    <h2>Comments <span id="comment-count"></span></h2>
-    <a href="https://github.com/{{ site.issuesRepo }}/issues/{{ id }}" class="button solid-button plus-button add-comment">Add comment</a>
-</div>
-<div id="comments-wrapper"></div>
-
+{% assign title = include.title %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
-    const commentsWrapper = document.getElementById("comments-wrapper");
-    const commentCount = document.getElementById("comment-count");
+    const post = document.getElementById('post');
 
-    fetch("https://api.github.com/repos/{{ site.issuesRepo }}/issues/{{ id }}/comments")
-    .then(blob => blob.json())
-    .then(renderComments);
+    fetch('https://api.github.com/search/issues?q={{ title | slugify }}+author:AleksandrHovhannisyan+in:title+state:open+repo:{{ site.issuesRepo }}')
+    .then((blob) => blob.json())
+    .then((data) => {
+        if (!data.items.length) return;
 
-    function renderComments(comments) {
-        // No comments yet
+        const issue = data.items[0];
+
+        fetch(issue.comments_url)
+        .then((blob) => blob.json())
+        .then((comments) => {
+            renderComments(comments, issue);
+        });
+    });
+
+    function renderComments(comments, issue) {
+        const commentActions = document.createElement('div');
+        commentActions.className = 'comment-actions';
+
+        const commentHeading = document.createElement('h2');
+        commentHeading.innerText = 'Comments ';
+        const commentCount = document.createElement('span');
+        commentCount.id = 'comment-count';
+        mount(commentHeading, commentCount);
+
+        const addCommentButton = document.createElement('a');
+        addCommentButton.href = `https://github.com/{{ site.issuesRepo }}/issues/${issue.number}`;
+        addCommentButton.classList.add('button', 'solid-button', 'plus-button', 'add-comment');
+        addCommentButton.innerText = 'Post comment';
+        mount(commentActions, commentHeading, addCommentButton);
+
+        const commentsWrapper = document.createElement('div');
+        commentsWrapper.id = 'comments-wrapper';
+
         if (!comments.length) {
-            commentsWrapper.innerHTML = '<p>No comments 👀 Why not post one?</p>'
+            commentsWrapper.innerHTML = `<p>No comments yet 👀</p>`;
+            mount(post, commentActions, commentsWrapper);
             return;
         }
 
-        commentCount.innerHTML = `(${comments.length})`;
+        commentCount.innerText = `(${comments.length})`;
         const commentList = document.createElement('ul');
         commentList.className = 'comments';
         commentList.setAttribute('aria-label', 'Comments on this blog post');
 
-        commentList.innerHTML = comments.sort((comment1, comment2) => {
-            return comment1.created_at < comment2.created_at ? 1 : -1;
-        }).map((comment) => {
-            const user = comment.user;
-            const postDate = comment.created_at;
-            const today = moment();
-            const datePosted = moment(comment.created_at).fromNow();
+        commentList.innerHTML = comments
+            .sort((comment1, comment2) => {
+                return comment1.created_at < comment2.created_at ? 1 : -1;
+            })
+            .map((comment) => {
+                console.log(comment);
+                const user = comment.user;
+                const datePosted = moment(comment.created_at).fromNow();
 
-            return `<li class="comment">
-                <header class="comment-header">
-                        <div class="user">
-                            <img src="${user.avatar_url}" alt="" aria-hidden="true" class="avatar" />
-                            <a href="${user.url}" class="name" aria-label="Comment by ${user.login}">${user.login}</a>
-                            ${comment.author_association === 'OWNER' ? '<span class="author">Author</span>' : ''}
-                        </div>
-                        <time class="date-posted" datetime="${comment.created_at}">${datePosted}</time>
-                </header>
-                <div class="comment-body">${marked(comment.body)}</div>
-            </li>`;
-        }).join("");
+                return `<li class="comment">
+                            <header class="comment-header">
+                                    <div class="user">
+                                        <img src="${user.avatar_url}" alt="" aria-hidden="true" class="avatar" />
+                                        <a href="https://github.com/${user.login}" class="name" aria-label="Comment by ${user.login}">${user.login}</a>
+                                        ${comment.author_association === 'OWNER' ? '<span class="tag author-badge">Author</span>' : ''}
+                                        ${comment.created_at !== comment.updated_at ? `<span class="comment-edited">Edited</span>` : ''}
+                                    </div>
+                                    <time class="date-posted" datetime="${comment.created_at}">${datePosted}</time>
+                            </header>
+                            <div class="comment-body">${marked(comment.body)}</div>
+                        </li>`;
+            })
+            .join('');
 
-        commentsWrapper.appendChild(commentList);
+        mount(commentsWrapper, commentList);
+        mount(post, commentActions, commentsWrapper);
     }
 </script>

@@ -22,13 +22,14 @@ html.light {
     --code-text-color: #5b6169;
 
     --hover-color-general: #f6f6f6;
-
+    
     --form-bg-color: #f6f6f6;
     --form-input-color: white;
-
+    
     --blockquote-bg-color: rgb(206, 206, 206);
     --blockquote-text-color: #484e55;
     --spoiler-color: #{$primary-color-tag};
+    --comment-bg-color: #f6f6f6;
 }
 
 html.dark {
@@ -60,4 +61,5 @@ html.dark {
     --blockquote-bg-color: #2c2c2c;
     --blockquote-text-color: #aaaaaa;
     --spoiler-color: #9c9387;
+    --comment-bg-color: #292929;
 }

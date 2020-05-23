@@ -1,6 +1,10 @@
 'use strict';
 const html = document.documentElement;
 
+function mount(root, ...nodes) {
+  nodes.forEach((node) => root.appendChild(node));
+}
+
 (function () {
   const themeSwitch = document.getElementById('theme-switch');
   themeSwitch.addEventListener('click', toggleColorTheme);
