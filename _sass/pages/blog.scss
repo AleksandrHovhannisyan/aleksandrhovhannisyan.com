@@ -245,11 +245,6 @@
             display: flex;
             margin-left: 4px;
             @include transition(visibility, opacity);
-
-            &:active {
-                visibility: visible;
-                opacity: 1;
-            }
         }
     }
     

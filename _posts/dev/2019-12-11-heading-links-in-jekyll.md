@@ -4,13 +4,12 @@ description: Want to make it easier for users to link to a heading in your blog?
 keywords: [heading links in jekyll]
 tags: [dev, frontend, liquid, jekyll]
 isCanonical: true
+lastUpdated: 2020-05-24
 ---
 
 It's a common practice in blogs to link your headings; this makes it easier for users to share a specific part of your content without having to share the entire post's URL.
 
-How can we create heading links in Jekyll without losing our sanity and without resorting to JavaScript?
-
-Answer: with the power of Jekyll includes!
+How can we create heading links in Jekyll without losing our sanity and without resorting to JavaScript? Answer: with the power of **Jekyll includes**!
 
 {% include linkedHeading.html heading="How to Create Heading Links in Jekyll" level=2 %}
 
@@ -21,13 +20,68 @@ Create a file named `linkedHeading.html` in your `_includes` folder. Here's what
 3. Nest an anchor inside that heading that references the ID from above.
 4. Fill the heading itself with some text.
 
+Then, we want two states:
+
+1. When we hover over the heading, the anchor becomes visible.
+2. When we hover over the anchor itself, it becomes visible.
+
 With Liquid and Jekyll includes, it's super simple to create linked headings. Here's the markup:
 
 {% capture code %}{% raw %}{% assign heading = include.heading %}
 <h{{ include.level }} id="{{ heading | slugify }}" class="linked-heading">
-    <a href="#{{ heading | slugify }}">#</a> {{ heading }}
+    <div class="heading-anchor-wrapper">
+        <a
+          class="heading-anchor"
+          aria-hidden="true"
+          href="#{{ heading | slugify }}"
+        >
+          #
+        </a>
+    </div>
+    {{ heading }}
 </h{{ include.level }}>{% endraw %}{% endcapture %}
 {% include code.html file="_includes/linkedHeading.html" code=code lang="liquid" %}
+
+And here's the Sass:
+
+{% capture code %}.linked-heading {
+    position: relative;
+
+    .heading-anchor-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 1em;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        transform: translateX(-100%);
+
+        &:hover {
+            .heading-anchor {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+    }
+
+    &:hover {
+        .heading-anchor {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+
+    .heading-anchor {
+        visibility: hidden;
+        opacity: 0;
+        display: flex;
+        margin-left: 4px;
+        transition: visibility 0.2s ease, opacity 0.2s ease;
+    }
+}{% endcapture %}
+{% include code.html code=code lang="sass" %}
 
 Simply use the following in your markdown to create a heading anchor in Jekyll:
 
@@ -43,8 +97,8 @@ If you're curious, here's how that works:
 
 1. We pass in a string to `heading`, which we access via `include.heading`. We assign this to a local variable so we don't have to keep repeating `include.heading`.
 2. Using Liquid objects, we specify the level of the heading dynamically with {% raw %}`h{{ include.level }}`{% endraw %}. So if we pass in `level=2`, then we'll get `h2`. Do this for both the opening and closing tags.
-3. Give the h tag an ID. The ID will be the string we passed in, but [slugged](https://jekyllrb.com/docs/liquid/filters/). You can also give it a class name if you want to style it later.
-4. Create a nested anchor that points to the same slug: {% raw %}`href="#{{ heading | slugify }}"`{% endraw %}. The anchor text can be anything you want. I was inspired by the [CSS Tricks website](https://css-tricks.com/) and used a hashtag.
+3. Give the heading tag an ID. The ID will be the string we passed in, but [slugged](https://jekyllrb.com/docs/liquid/filters/).
+4. Create a nested anchor that points to the same slug: {% raw %}`href="#{{ heading | slugify }}"`{% endraw %}. The anchor text can be anything you want.
 
 Then, after the anchor, we simply put a space followed by our unformatted heading string.
 
@@ -62,10 +116,39 @@ Fortunately, the fix is simple: we can add a `scroll-margin-top` to our headings
 
 My navbar is `64px` tall, so I found that this works best. Feel free to play around with it on your site.
 
-The only downside is that `scroll-margin-top` is [not currently supported in Internet Explorer](https://caniuse.com/#search=scroll-padding). But it'll work in pretty much all other browsers.
+The only downside is that `scroll-margin-top` is [not currently supported in Internet Explorer](https://caniuse.com/#search=scroll-padding), so bear that in mind if you need to support this browser.
 
-{% include linkedHeading.html heading="And That's It!" level=2 %}
+{% include linkedHeading.html heading="Making Things Easier" level=2 %}
 
-The best part is that you can pick which headings you want to link to. As an example, for this conclusion, I decided not to create a heading link because there's not really any valuable content to share.
+Arguably the most annoying part is having to type out those include statements by hand.
 
-I hope you found this post helpful 🙂
+There are two solutions to this:
+
+1. If you're using an editor like VS Code that supports snippets, create one for heading links.
+2. Type out all your headings in Markdown and then replace them all with regex at the end.
+
+{% include linkedHeading.html heading="Option 1: VS Code Snippet" level=3 %}
+
+Here's the one I use:
+
+{% capture code %}{% raw %}"Linked Heading": {
+    "prefix": "heading",
+    "body": [
+        "{% include linkedHeading.html heading=\"$1\" level=$2 %}"
+    ]
+}{% endraw %}{% endcapture %}
+{% include code.html file="markdown.json" code=code lang="json" %}
+
+{% include linkedHeading.html heading="Option 2: Regex Replacement" level=3 %}
+
+Start at heading level `6` and work your way down, using the following regex search and replacement:
+
+**Search**: `###### (.*)`
+
+**Replace**: {% raw %}`{% include linkedHeading.html heading="$1" level=6 %}`{% endraw %}
+
+Work your way down, replacing the `6` with a `5`, `4`, `3`, and so on.
+
+{% include linkedHeading.html heading="That's It!" level=2 %}
+
+I hope you found this post helpful 🙂 If you run into any issues implementing this on your own site, let me know down below and I'll try to help as best as I can.
