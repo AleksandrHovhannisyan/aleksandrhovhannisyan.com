@@ -1,6 +1,6 @@
 - name: Scribe
   icon: 📄
-  rating: 7
+  rating: 8
   description: Text editor developed with the Qt framework. Features standard file operations, syntax highlighting, brace autocomplete, and auto-indentation.
   url: https://github.com/AleksandrHovhannisyan/Scribe-Text-Editor
   topics:
@@ -21,7 +21,7 @@
 
 - name: U.S. Gun Crimes
   icon: ⚖️
-  rating: 3
+  rating: 4
   description: A database-driven web app that lets you explore U.S. gun crimes for 2013–2018.
   url: https://github.com/CIS4301-Project-University-of-Florida/U.S.-Gun-Crime/
   topics:
@@ -34,7 +34,7 @@
   icon: 💾
   rating: 2
   description: My online resume and blog, developed with Jekyll, HTML5, Sass, and JavaScript. Built with a mobile-first responsive design.
-  url: https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com
+  url: https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.github.io
   topics:
     - jekyll
     - html5
