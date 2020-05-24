@@ -19,8 +19,8 @@ $topnav-min-height: 64px;
     @include transition(color, background-color);
 
     * {
-        color: #dedede;
-        fill: #dedede;
+        color: var(--nav-text-color);
+        fill: var(--nav-text-color);
         font-weight: map-get($font-weights, "normal");
     }
 
@@ -43,7 +43,6 @@ $topnav-min-height: 64px;
         #logo {
             height: 32px;
             border-radius: 50%;
-            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
         }
 
         #website-name {
@@ -156,33 +155,73 @@ $topnav-min-height: 64px;
         }
     }
 
-    .navbar-toggle {
+    #navbar-toggle {
+        $button-size: 27px;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         background: transparent;
         border: none;
-    }
-
-    .navbar-hamburger {
+        height: $button-size;
+        width: $button-size;
         flex-shrink: 0;
-        height: 27px;
-        width: 27px;
         cursor: pointer;
-    }  
+
+        .icon-bar {
+            display: block;
+            width: $button-size;
+            height: 3px;
+            margin: 2px;
+            background: var(--nav-text-color);
+            @include transition(background-color, transform, opacity);
+        }
+        
+
+        &:focus,
+        &:hover {
+            .icon-bar {
+                background-color: white;
+            }
+        }
+    } 
     
     /* For mobile */
-    &.expanded {
+    &.opened {
         .nav-menu {
             background-color: rgba(0, 0, 0, 0.4);
             opacity: 1;
             visibility: visible;
         }
+
+        #navbar-toggle {
+            .icon-bar {
+                &:first-child,
+                &:last-child {
+                    position: absolute;
+                    margin: 0;
+                    width: 30px;
+                }
+
+                &:first-child {
+                    transform: rotate(45deg);
+                }
+
+                &:nth-child(2) {
+                    opacity: 0;
+                }
+
+                &:last-child {
+                    transform: rotate(-45deg);
+                }
+            }
+        }
     }
 }
 
 @media only screen and (min-width: 46.25rem) {
-    #topnav {
+    #topnav, 
+    #topnav.opened {
         .nav-menu {
             position: static;
             display: block;
@@ -213,7 +252,7 @@ $topnav-min-height: 64px;
             }
         }
     
-        .navbar-toggle {
+        #navbar-toggle {
            display: none;
         }
     }

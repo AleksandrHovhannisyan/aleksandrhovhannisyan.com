@@ -3,6 +3,7 @@
 html.light {
     --main-bg-color: #ffffff;
     --nav-bg-color: #2c2c2c;
+    --nav-text-color: #dedede;
     --hero-bg-color: #1c1c1c;
     --selection-bg-color: #{$primary-color-selection};
 
@@ -35,6 +36,7 @@ html.light {
 html.dark {
     --main-bg-color: #1a1a1a;
     --nav-bg-color: #292929;
+    --nav-text-color: #dedede;
     --hero-bg-color: #202020;
     --selection-bg-color: #{$secondary-color-selection};
 

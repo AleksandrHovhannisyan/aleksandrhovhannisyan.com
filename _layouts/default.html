@@ -42,36 +42,7 @@
         </script>
     </head>
     <body>
-        <a href="#page-content" class="screen-reader-only skip-navigation">Skip main navigation</a>
-        <header>
-            <nav id="topnav">
-                <div class="nav-container">
-                    <a id="home-link" href="/">
-                        <img src="/favicon.png" alt="Logo" id="logo" />
-                        <span id="website-name">{{ site.title }}</span>
-                    </a>
-                    <button class="navbar-toggle" aria-label="Toggle navigation menu.">
-                        {% include svg.html svg="hamburger" class="navbar-hamburger" %}
-                    </button>
-                    <div class="nav-menu">
-                        <ul class="nav-links">
-                            {% assign navLinks = "Experience,Blog,Contact" | split: ',' %}
-                            {% for link in navLinks %}
-                                <li><a href="/{{ link | downcase }}" {% if page.title == link %}aria-current="page" id="active-nav-link"{% endif %}>{{ link }}</a></li>
-                            {% endfor %}
-                            <li id="theme-switch-container">
-                                <!-- Inspiration: https://create-react-app.dev/ -->
-                                <div id="theme-switch" tabindex="0" title="Switch theme" role="button">
-                                    <img aria-hidden="true" id="moon" src="/assets/img/moon.png" alt="🌜" />
-                                    <img aria-hidden="true" id="sun" src="/assets/img/sun.png" alt="🌞" />
-                                    <div id="knob"></div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
+        {% include nav.html %}
         <main id="page-content">
             {{ content }}
         </main>
