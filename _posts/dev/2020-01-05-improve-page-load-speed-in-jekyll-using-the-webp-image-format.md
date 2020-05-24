@@ -117,7 +117,7 @@ That allows us to get away with this simple and legible include:
 
 Notice that we don't have to worry about explicitly stating the path! That will be filled in by Liquid when it goes to evaluate {% raw %}`{{ page.slug }}`{% endraw %}. To top that off, we get to take advantage of WebP behind the scenes, with little effort beyond converting the images.
 
-## And That's It!
+{% include linkedHeading.html heading="And That's It!" level=2 %}
 
 Of course, it would be even more convenient if there were a Jekyll plugin that generates output files from `cwebp` and dumps them in your assets folder. That way, you don't have to use the CLI tool manually.
 

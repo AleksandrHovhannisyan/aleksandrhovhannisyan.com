@@ -44,7 +44,7 @@ To make matters worse, the more that your classes overlap and meddle in each oth
 
 But there *is* an alternative that doesn't suffer from the drawbacks of specificity and rule overriding. In this tutorial, we'll look at how you can compose CSS classes to create unique components.
 
-## Composable CSS to the Rescue
+{% include linkedHeading.html heading="Composable CSS to the Rescue" level=2 %}
 
 When I use the term **composable CSS**, I'm referring to a practice where each class only defines the styles that it needs at a minimum. Basically, you trim any unnecessary styling to minimize overlap with other styles.
 
@@ -80,7 +80,7 @@ So, in this case, the `button` styling should really be:
 
 This leaves room for other, more specialized classes to determine the background and foreground colors as needed, without overriding any other styles and potentially interfering with each other.
 
-## Tutorial: Composable Button Classes
+{% include linkedHeading.html heading="Tutorial: Composable Button Classes" level=2 %}
 
 This is what we'll be building:
 
@@ -104,7 +104,7 @@ Along the way, we'll group these into three distinct categories:
 
 Pick two from the same category, and they should be mutually exclusive. Pick two from different categories, and they shouldn't interfere with each other. That's the beauty of this approach—we *compose* classes to create specialized buttons.
 
-### 1. Setup: Basic Markup and Styling
+{% include linkedHeading.html heading="1. Setup: Basic Markup and Styling" level=3 %}
 
 I'm just going to give you the full markup now to make this tutorial easier to follow:
 
@@ -178,7 +178,7 @@ Nothing fancy here—I just set up a grid for the buttons, some colors, and the 
 
 Things look pretty naked at this point, but that's about to change.
 
-### 2. What Does a Button Look Like? 🤔
+{% include linkedHeading.html heading="2. What Does a Button Look Like? 🤔" level=3 %}
 
 As I mentioned earlier, we want the base button class to only define the characteristics that are common to all of our buttons:
 
@@ -198,7 +198,7 @@ And here's the result:
 
 These don't look like buttons yet, and that's the point. The `button` class only defines the minimum set of characteristics common to all buttons.
 
-### 3. Solid Buttons! 🟦
+{% include linkedHeading.html heading="3. Solid Buttons! 🟦" level=3 %}
 
 In the first two rows, we have some old-fashioned solid buttons. What should those look like? Here's where it gets interesting:
 
@@ -236,7 +236,7 @@ Let's check out the result:
 
 {% include picture.html img="solid-buttons" ext="JPG" alt="Solid buttons" shadow=false %}
 
-### 4. Hollow Buttons! 🔲
+{% include linkedHeading.html heading="4. Hollow Buttons! 🔲" level=3 %}
 
 If the previous section made sense, then this one should be fairly straightforward, as it follows a similar pattern:
 
@@ -280,7 +280,7 @@ If the previous section made sense, then this one should be fairly straightforwa
 
 We're almost there!
 
-### 5. Arrow Buttons! ➡️
+{% include linkedHeading.html heading="5. Arrow Buttons! ➡️" level=3 %}
 
 Let's decorate some of our buttons with arrows that move when you hover over them:
 
@@ -301,7 +301,7 @@ Here's the final result:
 
 {% include picture.html img="buttons" ext="JPG" alt="Composable buttons" shadow=false %}
 
-## More Examples of Composable CSS
+{% include linkedHeading.html heading="More Examples of Composable CSS" level=2 %}
 
 You can extend this practice for different use cases:
 
@@ -309,13 +309,13 @@ You can extend this practice for different use cases:
 - **Tags**: Skills, blog post categories, project topics, etc.
 - **Images**: Images with shadows, regular images, rounded images, etc.
 
-## Don't Get Carried Away 🧂
+{% include linkedHeading.html heading="Don't Get Carried Away 🧂" level=2 %}
 
 As with all things in life, moderation is key. Composable CSS isn't really a design pattern, and it's not something I would encourage following religiously. But it does have its use cases, and it can create some very clean and organized CSS.
 
 Don't get carried away with breaking down your components into so many lego blocks that you create convoluted inheritance hierarchies, where it's really difficult to keep track of all the little specialized classes and cover all of your bases.
 
-## Keeping Things Maintainable
+{% include linkedHeading.html heading="Keeping Things Maintainable" level=2 %}
 
 I'm not going to ignore the elephant in the room. As you introduce more specialized classes, you end up having to account for exponentially more variations in your stylesheet. And that's no fun.
 

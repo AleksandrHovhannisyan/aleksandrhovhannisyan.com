@@ -22,7 +22,7 @@ But I've also done some independent reading and research to improve my own blog'
 
 Let's look at some ways you can drive more traffic to your site.
 
-## 1. Create Useful, High-Quality Content
+{% include linkedHeading.html heading="1. Create Useful, High-Quality Content" level=2 %}
 
 At the end of the day, one of the best SEO blogging tips is a recommendation straight from Google itself: **Create high-quality content**. After all, what use is there in repeating what countless other people have already documented ad nauseam, or churning out low-quality posts for the sake of inflating your blog's apparent value?
 
@@ -36,7 +36,7 @@ While we're on the topic of creating quality content, you'll also want to sprink
 
 Finally, ask yourself a second, equally important question: Am I rushing my content just for the sake of getting it published as soon as possible, or am I putting in as much time and effort as it takes to really dig deep and provide value to my readers, even if it means delaying a post until it's truly ready to go live? Quality is far more important than quantity for an SEO-friendly blog. It's not a race—put in the time and effort, and you'll reap the rewards.
 
-## 2. Use Your Primary Keyword Naturally
+{% include linkedHeading.html heading="2. Use Your Primary Keyword Naturally" level=2 %}
 
 Your **primary keyword** is the keyword that you've selected that you want your site to rank well for. It should be used wherever it's natural to do so—in your title tag, URL, meta description, headings, and, of course, the actual body itself. This increases that keyword's **density** on your page—the number of times it's used as a percentage of all words—which helps search engines like Google to perceive the relevancy of your content.
 
@@ -55,7 +55,7 @@ To create SEO-friendly content, focus on using your primary and secondary keywor
 
 Speaking of keywords... How do you pick the right ones for your blog post?
 
-## 3. Use Keyword Research Tools
+{% include linkedHeading.html heading="3. Use Keyword Research Tools" level=2 %}
 
 Do you just compose the first title that comes to mind and hope that you'll somehow show up on the first page of Google? If so, you need to rethink you approach—because chances are that you could be trying to compete with sharks that have been swimming in those waters far longer than you have.
 
@@ -97,7 +97,7 @@ However, there are still lots of [free SEO tools](https://neilpatel.com/blog/fre
 
 The really great thing about Ubersuggest is the **Keyword Ideas** section, where you'll see related variations of the keyword that you searched for. This is super handy for finding better keywords and identifying potentially lucrative long-tail keywords.
 
-## 4. Set Up a Google Search Console Account
+{% include linkedHeading.html heading="4. Set Up a Google Search Console Account" level=2 %}
 
 Even before your site starts getting traffic, it's a good idea to set up a Google Search Console Account. It's 100% free and allows you to claim ownership of your website so you can track metrics like the number of impressions, number of clicks, your click-through rate, and your average position in Google search results.
 
@@ -113,7 +113,7 @@ You also get a breakdown of the following by number of impressions and clicks:
 
 The first metric in that list—the queries that are generating impressions and clicks—is especially useful because you may sometimes find that you're still getting impressions and clicks for a related keyword that you're not yet targeting. This can allow you to tweak your SEO for one or more blog posts and try to rank for secondary keywords [without disrupting your position on your primary keywords](https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6600036584249262080).
 
-## 5. Create SEO-Friendly Title Tags
+{% include linkedHeading.html heading="5. Create SEO-Friendly Title Tags" level=2 %}
 
 The title tag is what shows up in search engine results and in the browser tab when your page is opened. It's one of the most important elements for SEO because it tells users—and search engines—what your page is about. This helps Google to determine how relevant your blog post is to a user's search intent.
 
@@ -132,13 +132,13 @@ Learn more about writing effective title tags:
 - [Moz SEO Learning Center - Title Tag](https://moz.com/learn/seo/title-tag)
 - [What Are Title Tags and Do They Matter?](https://www.woorank.com/en/edu/seo-guides/title-tag-seo#how-do-i-use-title-tags-for-seo)
 
-## 6. Improve Your Site's Load Speed and Mobile Usability
+{% include linkedHeading.html heading="6. Improve Your Site's Load Speed and Mobile Usability" level=2 %}
 
 If you want to run an SEO-friendly blog, you shouldn't just focus on the quality of your content and all of the other considerations we've looked at so far; you also need to monitor your site's performance and user experience (UX). You never know who your reader is going to be tomorrow—you don't want to introduce any unnecessary barriers that could make them bounce and hurt your traffic!
 
 To improve your blog's SEO, you'll want to make sure that it loads quickly on all devices (mobile, desktop, tablet) and remains usable on all devices, especially mobile.
 
-### Page Load Speed SEO
+{% include linkedHeading.html heading="Page Load Speed SEO" level=3 %}
 
 **Page load speed** is an important metric considered by search engines like Google, and optimizing it is definitely important for an SEO-friendly website. Use a free tool like [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) to identify performance bottlenecks on your site:
 
@@ -155,7 +155,7 @@ Here's how to improve page load speed on your blog:
 
 Of course, this is just for starters—there's a lot more that you can do beyond this.
 
-### SEO Blogging Tips for Mobile Usability
+{% include linkedHeading.html heading="SEO Blogging Tips for Mobile Usability" level=3 %}
 
 While we're on the topic of improving your blog's user experience, you also shouldn't ignore mobile users just because you're developing primarily on a desktop device. An SEO-friendly blog definitely needs to provide a frictionless, responsive mobile experience.
 
@@ -181,7 +181,7 @@ Finally, you should keep in mind that there are thousands of device vendors out 
 
 As a final word of caution, don't forget to always test any changes that you introduce on a mobile device, no matter how miniscule they may seem. When developing your site, it's far too tempting to forget about mobile and focus on the desktop experience. Use your browser's dev tools to select specific mobile device resolutions with which to test your site.
 
-## 7. Repurpose Old Content
+{% include linkedHeading.html heading="7. Repurpose Old Content" level=2 %}
 
 Do you feel like you've run out of content ideas?
 
@@ -200,11 +200,11 @@ Here are some ideas for repurposing your blog content:
 
 Learn more about [repurposing old content for SEO](https://neilpatel.com/blog/does-repurposing-content-work-heres-a-data-driven-answer/).
 
-## 8. Cross-Post Your Articles on Other Sites
+{% include linkedHeading.html heading="8. Cross-Post Your Articles on Other Sites" level=2 %}
 
 You definitely want to drive organic search traffic to your blog through SEO, but this is by no means the only way to grow your reader base. Another effective strategy is to syndicate your content on other sites and link back to the post on your own website. But there are some important factors to consider before you do this.
 
-### Give Google Time to Index Your Blog Post
+{% include linkedHeading.html heading="Give Google Time to Index Your Blog Post" level=3 %}
 
 You published your latest masterpiece. Do you immediately run off to other sites and repost it? If so, you could very well be killing traffic to your site because Google will flag those pieces as **duplicate content**. It'll have to pick which one it considers to be the original piece, and that may end up not being your own blog post, which is not what you want.
 
@@ -214,7 +214,7 @@ Instead, what you want to do is give Google time to index your site and only rep
 <link rel="canonical" href="myawesomeblog.com/blog/a-blog-post" />
 ```
 
-### Target Niche Forums and Social Media
+{% include linkedHeading.html heading="Target Niche Forums and Social Media" level=3 %}
 
 Some of the best places to link back to your own content include StackExchange, Quora, and Reddit.
 
@@ -233,7 +233,7 @@ And then, of course, you have certain social media like Twitter, Medium, and Lin
 
 At the end of the day, this SEO blogging tip is only effective if you target the right audiences with the right kinds of tailored content. Don't expect to just advertise yourself in some corner of the internet and strike gold the next day. Be patient, and you'll be rewarded.
 
-## 9. Add Schema Markup (JSON-LD) to Your Blog
+{% include linkedHeading.html heading="9. Add Schema Markup (JSON-LD) to Your Blog" level=2 %}
 
 Sometimes, search engines need a helping hand to understand what a piece of content is about.
 
@@ -310,7 +310,7 @@ If you're using a static site generator like Gatsby or Jekyll, you should be abl
 
 Use Google's [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/u/0/) to verify that your schema markup is free of errors.
 
-## Wrap-Up: How to Get More Traffic with SEO
+{% include linkedHeading.html heading="Wrap-Up: How to Get More Traffic with SEO" level=2 %}
 
 So clearly, there's quite a bit involved in creating an SEO-friendly blog, and it's certainly not something you can roll out overnight. But everyone has to start somewhere! Put these best practices to use and keep an eye on your key metrics. Be wary of trying too many things at once, especially if there's chance that you may introduce breaking changes.
 

@@ -21,26 +21,14 @@ They'll share some of the same underlying structure and logic, but I've split th
 
 Each one will include a CodePen demo with the full source code. The examples will show me opening just two modals on the same page to keep things simple, but you can still open more with the same code.
 
-## Table of Contents
+{% include linkedHeading.html heading="Table of Contents" level=2 %}
 - [Table of Contents](#table-of-contents)
 - [Shared Code for Modals (Stacked + Side by Side)](#shared-code-for-modals-stacked--side-by-side)
-  - [Styling Our Modal Windows](#styling-our-modal-windows)
 - [Multiple Modals on One Page (Stacked)](#multiple-modals-on-one-page-stacked)
-  - [Stack 'Em Up](#stack-em-up)
-  - [Opening and Closing Stacked Modals](#opening-and-closing-stacked-modals)
-  - [Creating Event Listeners for Our Stacked Modals](#creating-event-listeners-for-our-stacked-modals)
-    - [1. Opening a Modal When Its Trigger Is Clicked](#1-opening-a-modal-when-its-trigger-is-clicked)
-    - [2. Closing a Stacked Modal by Clicking Off to the Side](#2-closing-a-stacked-modal-by-clicking-off-to-the-side)
-    - [3. Closing a Stacked Modal with the X Button](#3-closing-a-stacked-modal-with-the-x-button)
-    - [4. Closing a Stacked Modal with the Escape Key](#4-closing-a-stacked-modal-with-the-escape-key)
 - [Multiple Modals on One Page (Side by Side)](#multiple-modals-on-one-page-side-by-side)
-    - [1. Opening a Modal When Its Trigger Is Clicked](#1-opening-a-modal-when-its-trigger-is-clicked-1)
-    - [2. Closing a Particular Modal with Its X Button](#2-closing-a-particular-modal-with-its-x-button)
-    - [3. Closing All Modals by Clicking Off to the Side](#3-closing-all-modals-by-clicking-off-to-the-side)
-    - [4. Closing All Modals with the Escape Key](#4-closing-all-modals-with-the-escape-key)
 - [Wrap-up](#wrap-up)
 
-## Shared Code for Modals (Stacked + Side by Side)
+{% include linkedHeading.html heading="Shared Code for Modals (Stacked + Side by Side)" level=2 %}
 
 Here's the basic HTML skeleton that we need for our page:
 
@@ -131,7 +119,7 @@ A trigger can be any interactive element on your page, such as an anchor, as lon
 
 In the example above, our trigger is associated with the modal wrapper that has the ID of `modal1`. When this trigger is clicked, we'll want to open up `modal1`. We'll look at the logic behind this when we get to the JavaScript. For now, just know that we have two things: modals and modal triggers.
 
-### Styling Our Modal Windows
+{% include linkedHeading.html heading="Styling Our Modal Windows" level=3 %}
 
 I'm going to break this up into manageable chunks. First up is the modal wrapper:
 
@@ -225,7 +213,7 @@ That's it for now. You can temporarily make `modal1` visible by manually adding 
 
 From here, things start to diverge depending on what whether you want to open multiple modals stacked on top of each other or side by side. We'll look at both versions.
 
-## Multiple Modals on One Page (Stacked)
+{% include linkedHeading.html heading="Multiple Modals on One Page (Stacked)" level=2 %}
 
 Here's the CodePen for this section, if you'd like to test the result and take a peek at the code:
 
@@ -241,7 +229,7 @@ In this example, we have two modals on the same page, one stacked on top of the 
 
 Let's get to work!
 
-### Stack 'Em Up
+{% include linkedHeading.html heading="Stack 'Em Up" level=3 %}
 
 The most natural way to represent stacked modals in code is—surprise, surprise—with a stack:
 
@@ -257,7 +245,7 @@ We'll also add a helper function that tells us if we have no modals open:
 
 This is just to reduce code repetition later on.
 
-### Opening and Closing Stacked Modals
+{% include linkedHeading.html heading="Opening and Closing Stacked Modals" level=3 %}
 
 Let's code up the logic for opening and closing stacked modals:
 
@@ -281,7 +269,7 @@ const closeTopmostModal = () => {
 
 The code is pretty simple—to open a modal, we take an ID, find the modal wrapper with that ID, give it the `visible` class, and push it to our stack of open modals. To close a modal wrapper, we do the opposite: We remove the class and pop the stack.
 
-### Creating Event Listeners for Our Stacked Modals
+{% include linkedHeading.html heading="Creating Event Listeners for Our Stacked Modals" level=3 %}
 
 We'll need to do the following:
 
@@ -292,7 +280,7 @@ We'll need to do the following:
 
 Let's knock these out one at a time.
 
-#### 1. Opening a Modal When Its Trigger Is Clicked
+{% include linkedHeading.html heading="1. Opening a Modal When Its Trigger Is Clicked" level=4 %}
 
 {% capture code %}const modalTriggers = document.querySelectorAll(".modal-trigger");
 modalTriggers.forEach(modalTrigger => {
@@ -306,7 +294,7 @@ modalTriggers.forEach(modalTrigger => {
 
 Basically, we query all modal triggers and subscribe to their clicks. Given a click event, we get the trigger element by following `clickEvent.target`. This allows us to extract the `data-modal-id` attribute and open up that particular modal wrapper.
 
-#### 2. Closing a Stacked Modal by Clicking Off to the Side
+{% include linkedHeading.html heading="2. Closing a Stacked Modal by Clicking Off to the Side" level=4 %}
 
 This is where it gets interesting:
 
@@ -326,7 +314,7 @@ modalWrappers.forEach(modalWrapper => {
 
 If we don't stop the event propagation for each `modal-window` element, the modal wrappers will close if we click just the content area, and that's not what we want. So, we disable propagation for the content area. Next, we simply subscribe to the click event for each `modal-wrapper` and close the topmost modal whenever the event fires.
 
-#### 3. Closing a Stacked Modal with the X Button
+{% include linkedHeading.html heading="3. Closing a Stacked Modal with the X Button" level=4 %}
 
 By definition, we can only ever click the X button for the topmost modal window. Thus, we don't have to check which modal window the button belongs to—we can safely assume that it belongs to the topmost modal and just close that window.
 
@@ -337,7 +325,7 @@ By definition, we can only ever click the X button for the topmost modal window.
 });{% endcapture %}
 {% include code.html file="index.js" code=code lang="javascript" %}
 
-#### 4. Closing a Stacked Modal with the Escape Key
+{% include linkedHeading.html heading="4. Closing a Stacked Modal with the Escape Key" level=4 %}
 
 {% capture code %}document.body.addEventListener("keyup", keyEvent => {
   if (keyEvent.key === "Escape") {
@@ -348,7 +336,7 @@ By definition, we can only ever click the X button for the topmost modal window.
 
 That's it for the code to open multiple modals stacked on top of one another. Check out the Codepen link for the relevant HTML, CSS, and JavaScript all in one place.
 
-## Multiple Modals on One Page (Side by Side)
+{% include linkedHeading.html heading="Multiple Modals on One Page (Side by Side)" level=2 %}
 
 Okay, so we saw how we can open two modals on the same page that are stacked on top of one another. This works because each modal has a wrapper element that gives it an increasing sense of elevation above the modal underneath (thanks to the alpha channel on each wrapper's background color).
 
@@ -443,7 +431,7 @@ We'll still need to do all of the following, but with slight differences:
 
 Let's knock these out one at a time, just like we did before.
 
-#### 1. Opening a Modal When Its Trigger Is Clicked
+{% include linkedHeading.html heading="1. Opening a Modal When Its Trigger Is Clicked" level=4 %}
 
 The code for subscribing to trigger clicks hasn't changed:
 
@@ -475,7 +463,7 @@ Notice that we check if we're opening a modal for the first time at the top. If 
 
 Since we're using an associative data structure now instead of a stack, we'll hash into it with the modal ID that we were provided. Since it's assumed that you don't have any duplicate IDs on your page, each entry in this object will have a unique key used to identify a particular modal window.
 
-#### 2. Closing a Particular Modal with Its X Button
+{% include linkedHeading.html heading="2. Closing a Particular Modal with Its X Button" level=4 %}
 
 Since we're no longer working with stacked modals, there is no notion of the "topmost" modal. Instead, our `closeModal` function will now need to accept an ID to find the right modal to close.
 
@@ -509,7 +497,7 @@ And here's the code for closing a modal window with the X button:
 
 We use the DOM's `closest` method to figure out which modal the clicked close button belongs to. Then, we get that modal's ID and close it.
 
-#### 3. Closing All Modals by Clicking Off to the Side
+{% include linkedHeading.html heading="3. Closing All Modals by Clicking Off to the Side" level=4 %}
 
 Just like before, we'll stop click propagation whenever we click on the modal window itself:
 
@@ -547,7 +535,7 @@ What's going on here? Well, `Object.keys(currentlyOpenModals)` gives us an array
 
 If that's the case, then `Object.keys(currentlyOpenModals)` will return `["modal1", "modal2", "modal9000"]`. Then, we invoke `closeModal` for each modal ID in this array.
 
-#### 4. Closing All Modals with the Escape Key
+{% include linkedHeading.html heading="4. Closing All Modals with the Escape Key" level=4 %}
 
 Basically, the code is 99% the same except we now call `closeAllModals` instead of `closeTopmostModal`:
 
@@ -560,7 +548,7 @@ Basically, the code is 99% the same except we now call `closeAllModals` instead 
 
 That's it!
 
-## Wrap-up
+{% include linkedHeading.html heading="Wrap-up" level=2 %}
 
 Here are some ideas to make the modals more interesting:
 

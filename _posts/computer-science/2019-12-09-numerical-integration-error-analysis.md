@@ -157,6 +157,6 @@ Now add these two equations to each other:
 
 $$\frac{2}{3}M(f) + \frac{1}{3}T(f) = S(f) = I(f) + \frac{2}{3}F(f)$$
 
-## That's It!
+{% include linkedHeading.html heading="That's It!" level=2 %}
 
 I hope you found this helpful in understanding how we get numerical integration error estimates.

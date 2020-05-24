@@ -25,22 +25,21 @@ So why do so many people get this wrong? We're about to find out.
 
 If you'd like the TL;DR answer, go ahead and jump to [Passing Pointers ("References") by Value](#passing-pointers-references-by-value).
 
-## Table of Contents
+{% include linkedHeading.html heading="Table of Contents" level=2 %}
 
-- [Table of Contents](#table-of-contents)
 - [Prerequisite Terminology: Arguments vs. Parameters](#prerequisite-terminology-arguments-vs-parameters)
 - [JavaScript Doesn't Pass by Reference](#javascript-doesnt-pass-by-reference)
   - [What Are Object References in JavaScript?](#what-are-object-references-in-javascript)
-- ["True" References Are Aliases](#%22true%22-references-are-aliases)
-- ["Object References" Are Pointers](#%22object-references%22-are-pointers)
+- ["True" References Are Aliases](#true-references-are-aliases)
+- ["Object References" Are Pointers](#object-references-are-pointers)
   - [How Are Objects Stored in Memory?](#how-are-objects-stored-in-memory)
 - [Pass by Value vs. Pass by Reference](#pass-by-value-vs-pass-by-reference)
   - [What Is Pass by Reference?](#what-is-pass-by-reference)
   - [What Is Pass by Value?](#what-is-pass-by-value)
-  - [Passing Pointers ("References") by Value](#passing-pointers-%22references%22-by-value)
+  - [Passing Pointers ("References") by Value](#passing-pointers-references-by-value)
 - [Summary: JavaScript Is Not Pass by Reference](#summary-javascript-is-not-pass-by-reference)
 
-## Prerequisite Terminology: Arguments vs. Parameters
+{% include linkedHeading.html heading="Prerequisite Terminology: Arguments vs. Parameters" level=2 %}
 
 Before we move on, we'll need a quick terminology primer:
 
@@ -61,7 +60,7 @@ Diagrammatically, here's what the stack would look like once `doSomething` has b
 
 With that out of the way, let's get into the meat of this post.
 
-## JavaScript Doesn't Pass by Reference
+{% include linkedHeading.html heading="JavaScript Doesn't Pass by Reference" level=2 %}
 
 If there's one thing you need to take away from this post, it's this:
 
@@ -69,7 +68,7 @@ If there's one thing you need to take away from this post, it's this:
 
 This muddied terminology is the main source of confusion in understanding pass by value vs. pass by reference in JavaScript and other languages. It's something that trips up lots of developers.
 
-### What Are Object References in JavaScript?
+{% include linkedHeading.html heading="What Are Object References in JavaScript?" level=3 %}
 
 In JavaScript, variables that "refer to" an object somewhere in memory are called **object references** ("references" for short). The term "reference" is a natural way to talk about variables in English because we say that a variable *refers to* an object in memory, sort of like how an essay might *reference* a literary source, for example.
 
@@ -82,7 +81,7 @@ To clear up that confusion, we'll need to understand two things:
 1. What the "reference" in "pass by reference" really means.
 2. The difference between pass by value and pass by reference in JavaScript.
 
-## "True" References Are Aliases
+{% include linkedHeading.html heading='"True" References Are Aliases' level=2 %}
 
 Let's get one thing straight: **JavaScript does not have references**.
 
@@ -186,7 +185,7 @@ console.log(alias); // { name: 'Alex' }
 
 If `alias` were a reference, then the change on line 3 *would've* been reflected in `me`. But it wasn't!
 
-## "Object References" Are Pointers
+{% include linkedHeading.html heading='"Object References" Are Pointers' level=2 %}
 
 Above, you may have noticed that I used the term "point" quite a lot, and one of my footnotes even mentioned something called a "pointer." What's up with that? What—pardon the awful pun—is the *point* I'm trying to get across?
 
@@ -205,7 +204,7 @@ An analogy may help to illustrate this: A pointer is like keeping record of a pe
 
 It may not be immediately obvious why we need pointers in the first place and how they're even relevant in JavaScript. This deserves some elaboration. If you're already familiar with pointers, feel free to skip forward to the section on [pass by value vs. pass by reference](#pass-by-value-vs-pass-by-reference).
 
-### How Are Objects Stored in Memory?
+{% include linkedHeading.html heading="How Are Objects Stored in Memory?" level=3 %}
 
 Computers are good at one thing: Storing, retrieving, and manipulating **numbers**. That's it.
 
@@ -244,13 +243,13 @@ Thus, our string "variable" is really a pointer to the first character of the st
 
 The key takeaway here is that pointers are a fundamental tool in programming that exists in the implementation of nearly every language. Whether they are hidden from plain sight or made explicit by a special syntax is not important. What matters is that you understand how memory works and that most languages do not have "references."
 
-## Pass by Value vs. Pass by Reference
+{% include linkedHeading.html heading="Pass by Value vs. Pass by Reference" level=2 %}
 
 Okay, we've established that "object references" in JavaScript are really pointers and that pointers are good at one thing: storing memory addresses. Objects reside at these memory addresses. We can visit those addresses and modify the objects that live there, or we can have a variable point to an entirely new object at some other location in memory.
 
 With this background, we're ready to understand why pass by reference does not exist in JavaScript.
 
-### What Is Pass by Reference?
+{% include linkedHeading.html heading="What Is Pass by Reference?" level=3 %}
 
 We've learned what references really are: *aliases*. And as it turns out, this is precisely the kind of "reference" in "pass by reference."
 
@@ -306,7 +305,7 @@ int main()
 
 Let's break this down: `x` and `y` are the arguments that we pass into `swap`. The method signature of `swap` defines two reference parameters, `a` and `b`. Since these are reference variables, they serve as aliases for whatever two variables are passed in as arguments (`x` and `y`, respectively). Thus, the swap succeeds.
 
-### What Is Pass by Value?
+{% include linkedHeading.html heading="What Is Pass by Value?" level=3 %}
 
 In the simplest terms, **passing by value** is about *copying*. We already saw this above with the failed JavaScript swap:
 
@@ -330,7 +329,7 @@ console.log(y);
 
 When an argument is passed by value, the formal parameter receives a copy of the argument's value. The formal parameter and the argument are two different variables that happen to share the same value. The formal parameter is a local variable on the function's stack frame. The argument we passed in is a variable residing at a completely different memory address, in the caller's stack frame.
 
-### Passing Pointers ("References") by Value
+{% include linkedHeading.html heading='Passing Pointers ("References") by Value' level=3 %}
 
 Now comes the most important discussion, and the key to understanding why JavaScript is not pass by reference: What happens when we pass "object references" (pointers) by value?
 
@@ -361,7 +360,7 @@ What we cannot do is have the formal parameter point to a different location in 
 
 Notice that within the scope of the `changeName` function, we can indeed observe that `person` points to this object: `{ name: 'Jane' }`. But of course, this doesn't affect the pointer argument—it's still pointing to the original location in memory, and the object there is left untouched.
 
-## Summary: JavaScript Is Not Pass by Reference
+{% include linkedHeading.html heading="Summary: JavaScript Is Not Pass by Reference" level=2 %}
 
 Let's recap what we covered in this post:
 

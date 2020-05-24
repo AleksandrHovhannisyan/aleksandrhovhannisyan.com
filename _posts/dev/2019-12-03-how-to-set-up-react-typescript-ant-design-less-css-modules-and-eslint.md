@@ -37,7 +37,7 @@ Beyond this point, most people have trouble overriding Create React App's Webpac
 
 Ant Design is a fantastic library for React and other JavaScript frameworks that provides reusable and customizable components, like date pickers, lists, SVG icons, and _lots_ of other cool stuff. Let's set it up.
 
-### Installing Ant Design
+{% include linkedHeading.html heading="Installing Ant Design" level=3 %}
 
 Run this command:
 
@@ -46,7 +46,7 @@ Run this command:
 
 Note that `antd` already comes with type definitions, so there's no need to install `@types/` for it.
 
-### Importing Antd Components on Demand
+{% include linkedHeading.html heading="Importing Antd Components on Demand" level=3 %}
 
 Typically, to use an Ant Design component, you'd have to import the component from a specific directory under `antd` as well as import its accompanying stylesheet:
 
@@ -132,7 +132,7 @@ Here's the result once you do that:
 
 {% include picture.html img="button1" ext="JPG" alt="An Ant Design button and anchor." %}
 
-### Customize the Ant Design Theme with LESS
+{% include linkedHeading.html heading="Customize the Ant Design Theme with LESS" level=3 %}
 
 Let's say you want to use a different primary color or base font size. Easy peasy!
 
@@ -321,7 +321,7 @@ Create another file named `.prettierrc` at the root of your project directory wi
 
 This is where you'll define all your Prettier formatting rules. You *could* technically define these under `rules` in your `eslintrc` file, but I prefer to keep them separate. Also, note that you don't have to use these exact rules; you can change them if you'd like to.
 
-### If You're Not Using VS Code
+{% include linkedHeading.html heading="If You're Not Using VS Code" level=3 %}
 
 Add a `lint:fix` script to your `package.json` so you can fix linting errors as needed (you can name this script something else if you'd like to). This is what your scripts should look like:
 
@@ -336,7 +336,7 @@ Add a `lint:fix` script to your `package.json` so you can fix linting errors as 
 
 Then, you can simply run `yarn lint:fix` from your terminal.
 
-### If You Are Using VS Code
+{% include linkedHeading.html heading="If You Are Using VS Code" level=3 %}
 
 You can still use the above script, but I highly recommend that you also install these two VS Code extensions:
 
@@ -380,7 +380,7 @@ Let's mess up `App.tsx` on purpose to see this in action:
 
 Note that some linting errors may still need to be corrected manually if there are no automatic fixes available. But this works for a majority of errors you'll come across, allowing you to code much more quickly and in whatever style you prefer.
 
-## That About Does It! 🎉
+{% include linkedHeading.html heading="That About Does It! 🎉" level=2 %}
 
 You're all set for a more pleasant dev experience with create-react-app.
 

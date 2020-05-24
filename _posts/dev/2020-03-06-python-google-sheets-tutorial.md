@@ -12,7 +12,7 @@ If you're as lazy as I am, you'll come to realize at a certain point that someth
 
 In this short tutorial, I'll show you how to use the Python Google Sheets and Drive APIs to automate data entry tasks in your day-to-day work. This is a game-changer if you're used to manual data entry, so buckle up!
 
-## Creating a Google Cloud Platform Project
+{% include linkedHeading.html heading="Creating a Google Cloud Platform Project" level=2 %}
 
 If you want to access Google Sheets from Python or use any other Google API, you're going to need to create a **Google Cloud Platform project**. This lets you enable Google APIs through a single dashboard, as well as generate a private key for authorizing your script.
 
@@ -22,7 +22,7 @@ By default, you're in the [free tier of the Google Cloud Platform](https://cloud
 
 I don't know about you, but that sounds like a great deal to me! Let's get started.
 
-### 1. Create a New Google Cloud Platform Project
+{% include linkedHeading.html heading="1. Create a New Google Cloud Platform Project" level=3 %}
 
 {% include picture.html img="create-project" ext="GIF" alt="Creating a Google Cloud Platform project." shadow=false %}
 
@@ -34,7 +34,7 @@ Click `Create Project`. Enter a project name; you don't need to specify an organ
 
 When you're done, simply click `Create`.
 
-### 2. Enable the Google Sheets API
+{% include linkedHeading.html heading="2. Enable the Google Sheets API" level=3 %}
 
 {% include picture.html img="enable-sheets-api" ext="GIF" alt="Enabling the Google Sheets API." shadow=false %}
 
@@ -44,13 +44,13 @@ Click the blue `Enable APIs and Services` button at the top of this view.
 
 Search for `Google Sheets API` and click the result card. Then click the blue `Enable` button.
 
-### 3. Create Credentials to Use the Google Sheets API
+{% include linkedHeading.html heading="3. Create Credentials to Use the Google Sheets API" level=3 %}
 
 {% include picture.html img="create-credentials" ext="GIF" alt="Creating Google API credentials." shadow=false %}
 
 You'll need to create credentials for authorizaion to use Google APIs. You'll usually only need to create a credential once, for the first API that you enable. For all future APIs that you enable, you can simply reuse the same credentials you set up before. We'll see this in a future section.
 
-#### Find out what credentials you need
+{% include linkedHeading.html heading="Find out what credentials you need" level=4 %}
 
 Make sure you're on the `Credentials` page, and click the `Create Credentials` button.
 
@@ -60,7 +60,7 @@ Make sure you're on the `Credentials` page, and click the `Create Credentials` b
 
 When you're done, click the `What credentials do I need?` button.
 
-#### Create a service account
+{% include linkedHeading.html heading="Create a service account" level=4 %}
 
 Next, you need to create a service account to associate with these credentials. You can use any service account name you want. For the role, `Project > Editor` will suffice, unless you'd like to assign a different one. Leave the key type as JSON.
 
@@ -83,7 +83,7 @@ Click `Continue`, and your browser will download a JSON file with the following 
 
 Move this to your project directory and name it whatever you like. I'll name it `api_key.json`. If your project is being hosted publicly on GitHub, be sure to add this file to your `.gitignore`. Do NOT share your private key with anyone.
 
-### 4. Enable the Google Drive API
+{% include linkedHeading.html heading="4. Enable the Google Drive API" level=3 %}
 
 {% include picture.html img="enable-drive-api" ext="GIF" alt="Enabling the Google Drive API." shadow=false %}
 
@@ -93,7 +93,7 @@ To do so, go to `APIs & Services > Library` and search for the Google Drive API.
 
 Since we're not going to be using the Drive API differently from the Sheets API, we don't need to create a new set of credentials; the credentials we created before authorize us to use both APIs.
 
-## How to Access Google Sheets from Python
+{% include linkedHeading.html heading="How to Access Google Sheets from Python" level=2 %}
 
 Now that we've got the setup out of the way, it's time to actually access Google Sheets from Python and write some data to a custom spreadsheet.
 

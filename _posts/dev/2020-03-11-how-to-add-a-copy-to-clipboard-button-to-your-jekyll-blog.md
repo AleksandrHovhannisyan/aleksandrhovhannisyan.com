@@ -33,7 +33,7 @@ Well, ask and you shall receive. In this tutorial, we'll add a copy-to-clipboard
 
 Note that this tutorial is going to be bare bones—I'm not going to introduce any irrelevant CSS or HTML. I'm just going to show you how to get this thing working at a functional level. Once that's taken care of, you can throw in any extra styling or elements that you want.
 
-## Copy-to-Clipboard Button in Jekyll with Liquid and JavaScript
+{% include linkedHeading.html heading="Copy-to-Clipboard Button in Jekyll with Liquid and JavaScript" level=2 %}
 
 Let's run through how this is going to work at a high level:
 
@@ -45,7 +45,7 @@ Let's run through how this is going to work at a high level:
 
 Sound good? Let's first look at the include file itself:
 
-### 1. Copy-to-Clipboard Include: `_includes/code.html`
+{% include linkedHeading.html heading="1. Copy-to-Clipboard Include: `_includes/code.html`" level=3 %}
 
 {% capture code %}{% raw %}<div class="copy-code-container">
     <button class="copy-code-button"
@@ -154,7 +154,7 @@ This begs the following question: How do we store the code in a string variable?
 
 How do we... say, *capture* it?
 
-### 2. Liquid Capture Tag to the Rescue
+{% include linkedHeading.html heading="2. Liquid Capture Tag to the Rescue" level=3 %}
 
 Let's say you want to store the following code in a variable, with all special characters preserved:
 
@@ -209,7 +209,7 @@ Once you've captured the code, simply use the include:
 
 Rinse and repeat for every code block that you want to insert into your blog post!
 
-#### Making Our Lives Easier with a Custom Snippet
+{% include linkedHeading.html heading="Making Our Lives Easier with a Custom Snippet" level=4 %}
 
 Of course, all of that may still seem like a lot of work... Which is unfortunate—because while we're trying to make things easier for the user, we're making things harder for ourselves!
 
@@ -232,7 +232,7 @@ Then, in any Markdown file, all you'll have to do is type the prefix `code` and 
 
 > **Note**: If you're not seeing any suggestions when you type in Markdown files, the solution is to [enable quick suggestions for Markdown](https://github.com/Microsoft/vscode/issues/28048) in your VS Code user settings.
 
-### 3. Copying to the Clipboard with JavaScript
+{% include linkedHeading.html heading="3. Copying to the Clipboard with JavaScript" level=3 %}
 
 Awesome! We're already two-thirds of the way done. Now, all that's left is the JavaScript to actually do the copying. And this is actually the easy part.
 
@@ -287,7 +287,7 @@ That's it! Don't forget to add a script tag so this code actually works. For exa
 {% capture code %}<script src="/assets/scripts/copyCode.js"></script>{% endcapture %}
 {% include code.html file="_layouts/post.html" code=code lang="html" %}
 
-## Further Improvements: File Name and Copy-to-Clipboard Button
+{% include linkedHeading.html heading="Further Improvements: File Name and Copy-to-Clipboard Button" level=2 %}
 
 Of course, you may have noticed that the code blocks on my own website have four variants:
 
@@ -358,7 +358,7 @@ Likewise, if I want to specify a file name, I just need to pass in `file="myFile
 {% endif %}{% endraw %}
 ```
 
-## Copy That!
+{% include linkedHeading.html heading="Copy That!" level=2 %}
 
 It's amazing just how much you can get away with in Jekyll using simple Liquid templates and JavaScript! If you've been following along, you should now be all set to use copy-to-clipboard buttons in your Jekyll blog posts. I'll leave it up to you to make the code block header look nicer than what I've presented here. Get creative!
 

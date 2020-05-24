@@ -7,7 +7,7 @@ tags: [gaming, favorites]
 
 Gaming is my not-so-guilty pleasure—it provides a nice escape into another world and serves as a creative outlet, a medium in which I'm free to do whatever I want. Below are my ten favorite games of all time.
 
-## 1. The Legend of Zelda: The Minish Cap
+{% include linkedHeading.html heading="1. The Legend of Zelda: The Minish Cap" level=2 %}
 
 This was my first-ever introduction to video games, and really the only Legend of Zelda game I've ever played. So it's kind of a big deal.
 
@@ -24,7 +24,7 @@ My GitHub profile picture is concept art of Link and Ezlo that appears at the ve
 
 *(Fun fact: As a kid, I always thought that Link was Zelda. Oops.)*
 
-## 2. The Elder Scrolls Skyrim
+{% include linkedHeading.html heading="2. The Elder Scrolls Skyrim" level=2 %}
 
 > *"Let me guess, someone stole your sweetroll?"* — Guards of Skyrim
 
@@ -45,7 +45,7 @@ To this day, Skyrim still feels like it has one of the most fleshed-out worlds�
 
 It's also one of the few games that got loading screens right—even though they're still quite long, you at least have something to read and in-game models to fiddle with obsessively.
 
-## 3. Dark Souls et al.
+{% include linkedHeading.html heading="3. Dark Souls et al." level=2 %}
 
 > *"Hand it over. That thing, your dark soul."* — Slave Knight Gael
 
@@ -79,7 +79,7 @@ Dark Souls is infamous for its difficulty, but veterans know with the classic cu
 
 You really can't go wrong with Souls games. And you have the brilliant (err, *sadistic*?) Hidetaka Miyazaki to thank for it.
 
-## 4. Hollow Knight
+{% include linkedHeading.html heading="4. Hollow Knight" level=2 %}
 
 > *"You shall seal the blinding light that plagues their dreams. You are the Vessel. You are the Hollow Knight."* — The Pale King
 
@@ -110,7 +110,7 @@ It's hard to play favorites, though, because they all have their own charm: Fung
 
 I spent over 50 hours playing Hollow Knight to its end, and words can't express how pumped I am for [Hollow Knight Silksong's release](https://www.youtube.com/watch?v=pFAknD_9U7c).
 
-## 5. For Honor
+{% include linkedHeading.html heading="5. For Honor" level=2 %}
 
 <figure>
 {% include picture.html img="for-honor" ext="JPG" alt="Cover art of For Honor." %}
@@ -127,7 +127,7 @@ You can customize your heroes with scavenged armor, ornaments, paint patterns, e
 
 With all that said, I really do have a love-hate relationship with For Honor. Though Ubisoft has supported the game with free expansions and quality-of-life updates for two years now, many balance issues have fallen by the wayside. The community also tends to be quite toxic. But none of that keeps me from enjoying the game.
 
-## 6. Battles of the Prince of Persia (NDS)
+{% include linkedHeading.html heading="6. Battles of the Prince of Persia (NDS)" level=2 %}
 
 {% include picture.html img="prince" ext="JPG" alt="Opening lines from the Prince's narrative before the first mission." %}
 
@@ -151,7 +151,7 @@ Besides, I wasn't really bothered by its limitations when I was a kid—it fed m
 
 > Fun fact: My mom once bought me a construction set—metal pieces, tools, and all—for building a remote-controlled toy truck. Unsurprisingly, I grew tired of the truck and repurposed the metal pieces into a tiny sword and makeshift shield. Many of those engineering feats were inspired by this game!
 
-## 7. Battlefield 4
+{% include linkedHeading.html heading="7. Battlefield 4" level=2 %}
 
 <figure>
 {% include picture.html img="shanghai-tower" ext="JPG" alt="The Siege of Shanghai tower falling." %}
@@ -172,7 +172,7 @@ Honestly, I hope I'm not alone when I say that Battlefield 4 is the single great
 
 Hardcore mode is my personal favorite—nearly every gun kills you in a couple shots, and every encounter is that much more exhilarating. You're also forced to rely more on environmental awareness and teamwork since run-and-gun tactics usually don't end well in this mode.
 
-## 8. Dragon's Dogma: Dark Arisen
+{% include linkedHeading.html heading="8. Dragon's Dogma: Dark Arisen" level=2 %}
 
 > *"This looks interesting."* — literally every single Pawn
 
@@ -211,7 +211,7 @@ Then, of course, there's the fact that Dragon's Dogma takes melee combat to anot
 
 Dragon's Dogma is a breath of fresh air and makes combat in other action RPGs feel vastly inferior. It's more than worth a play—there's enough content in the main game and DLC to last you for hundreds of hours.
 
-## 9. Playdead's INSIDE
+{% include linkedHeading.html heading="9. Playdead's INSIDE" level=2 %}
 
 Playdead's follow up to Limbo is a puzzle platformer set in a bleak, gray dystopia where most people are enslaved minions. Everyone except you, that is, and the guards who seem so intent on killing you. And to make matters worse, you're a vulnerable child with no way to fight back. All you can do is run, hide, and blend in.
 
@@ -228,7 +228,7 @@ Without being too explicit, I'll say that the story is actually really compellin
 
 The secret ending in particular is unexpected and leaves everything up to your interpretation. Put together the pieces, and you may just land upon a sensible explanation for it all (or simply give up trying). Either way, it's a... *unique* experience.
 
-## 10. Dishonored
+{% include linkedHeading.html heading="10. Dishonored" level=2 %}
 
 This is one of Bethesda's lesser known games, at least in comparison to the more popular Elder Scrolls and Fallout franchises. But it's definitely worth checking out, even if it's a bit dated by today's standards.
 
@@ -262,7 +262,7 @@ This brief guilt trip is when the game's message hopefully clicks: Never lose si
 
 It's worth noting that Dishonored doesn't have too much replayability to it; if you do start another playthrough, it will most likely be to get all of the achievements, as well as the different endings. Even so, it's a great game.
 
-## What Else?
+{% include linkedHeading.html heading="What Else?" level=2 %}
 
 Here are some honorable mentions that didn't make the list:
 

@@ -64,7 +64,7 @@ My navbar is `64px` tall, so I found that this works best. Feel free to play aro
 
 The only downside is that `scroll-margin-top` is [not currently supported in Internet Explorer](https://caniuse.com/#search=scroll-padding). But it'll work in pretty much all other browsers.
 
-## And That's It!
+{% include linkedHeading.html heading="And That's It!" level=2 %}
 
 The best part is that you can pick which headings you want to link to. As an example, for this conclusion, I decided not to create a heading link because there's not really any valuable content to share.
 

@@ -217,7 +217,7 @@ Fair warning: This deck is essentially a guaranteed L. You will rarely win—but
 
 The goal is simple: Use only cards that include effects like dice rolls, coin flips, and other RNG mechanisms. Can't really complain about RNGesus if you *are* RNGesus, can you?
 
-### Monsters
+{% include linkedHeading.html heading="Monsters" level=3 %}
 
 <figure>
     {% include picture.html img="rng-monsters" ext="JPG" alt="RNG monster cards." shadow=false %}
@@ -248,7 +248,7 @@ The goal is simple: Use only cards that include effects like dice rolls, coin fl
 > ● 2, 3, 4, 5: Discard 1 card.
 > ● 6: Discard your entire hand.
 
-### Spells
+{% include linkedHeading.html heading="Spells" level=3 %}
 
 <figure>
     {% include picture.html img="rng-spells" ext="JPG" alt="RNG spell cards." shadow=false %}
@@ -274,7 +274,7 @@ The goal is simple: Use only cards that include effects like dice rolls, coin fl
 > ● 5 or 6: You can Special Summon 1 Level 5 or higher monster from your hand.
 > You can only activate 1 "Summon Dice" per turn.
 
-### Traps
+{% include linkedHeading.html heading="Traps" level=3 %}
 
 <figure>
     {% include picture.html img="rng-traps" ext="JPG" alt="RNG trap cards." shadow=false %}
@@ -315,7 +315,7 @@ The goal is simple: Use only cards that include effects like dice rolls, coin fl
 > ● 1, 3, or 5: The die result is treated as 6.
 > ● 2, 4, or 6: The die result is treated as 1.
 
-## Want to Have Fun? Stop Taking Things So Seriously
+{% include linkedHeading.html heading="Want to Have Fun? Stop Taking Things So Seriously" level=2 %}
 
 Meta decks have their place in competitive Yu-Gi-Oh!, but sometimes, all that matters is having fun. These are my favorite non-meta decks to run whenever I'm bored of playing the same old archetypes.
 

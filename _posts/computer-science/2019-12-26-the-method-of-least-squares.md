@@ -314,11 +314,11 @@ $$A^TA\hat{x} = A^Tb$$
 
 At this point, you may have two related questions:
 
-### 1. Why didn't we just multiply both sides of $$Ax = b$$ with $$A^T$$ and replace $$x$$ with $$\hat{x}$$ in the first place?
+{% include linkedHeading.html heading="1. Why didn't we just multiply both sides of $$Ax = b$$ with $$A^T$$ and replace $$x$$ with $$\hat{x}$$ in the first place?" level=3 %}
 
 Well, sure—we could've done that. And in fact, now that we know that $$A^TA\hat{x} = A^Tb$$ gives us the least squares solution $$\hat{x}$$, this is indeed what we'll do in the future. In hindsight, though, we had no good reason to do so from the get-go. We only arrived at this trivial conclusion after considering the geometry of the problem, and by working through some algebraic substitution and simplification.
 
-### 2. How does this actually change the problem?
+{% include linkedHeading.html heading="2. How does this actually change the problem?" level=3 %}
 
 This is a good question! After all, we simply multiplied both sides by the same quantity, $$A^T$$.
 

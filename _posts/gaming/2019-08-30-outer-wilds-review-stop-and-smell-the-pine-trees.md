@@ -11,7 +11,7 @@ Produced by the talented creatives at Mobius Digital, Outer Wilds is an indie sp
 
 {% include picture.html img="outer-wilds" ext="JPG" alt="An in-game photo showing the founders of the Outer Wilds space exploration program." shadow=false %}
 
-## What Is Outer Wilds About?
+{% include linkedHeading.html heading="What Is Outer Wilds About?" level=2 %}
 
 A long time ago, your solar system was visited by an ancient civilization known as the Nomai, who left behind much of their work and findings when they perished. Now, as a budding astronaut, you're tasked with uncovering their past—and, in doing so, learning more about your universe and its fate.
 
@@ -21,7 +21,7 @@ There's just one catch: Your solar system is trapped in a time loop of 22 minute
 
 Is the time loop a curse or a blessing? Who were the Nomai, and what were they searching for? Should you finish what they started? The truth is out there—and it's up to you to find it.
 
-## What Do You Do in Outer Wilds?
+{% include linkedHeading.html heading="What Do You Do in Outer Wilds?" level=2 %}
 
 At its core, Outer Wilds is a space exploration game with puzzling and 3D platforming elements. To progress through the story, you translate pieces of lore and writing—conversations between key Nomai characters—that can be found on several planets.
 
@@ -52,7 +52,7 @@ Oh, and you can't forget <em>the stick</em>. You can roast marshmallows at campf
 
 {% include picture.html img="campfire" ext="JPG" alt="Roasting marshmallows over a campfire." shadow=false %}
 
-## Outer Wilds, or How Curiosity Killed the Hearthian
+{% include linkedHeading.html heading="Outer Wilds, or How Curiosity Killed the Hearthian" level=2 %}
 
 What makes Outer Wilds so compelling is its ability to convey a sense of **palpable vulnerability**—the exact kind you'd expect from space exploration. Just the sheer scale of the planets themselves is enough to leave you in awe, fully aware of how fragile you are by comparison.
 
@@ -70,7 +70,7 @@ Even in the face of death, one force continues to guide your expeditions: **unbr
 
 {% include picture.html img="rieback-black-hole" ext="JPG" alt="Rieback, one of the NPCs, suggests that you not visit the black hole." shadow=false %}
 
-## A Race Against Time Itself
+{% include linkedHeading.html heading="A Race Against Time Itself" level=2 %}
 
 Each expedition plays out against the backdrop of the sun's impending explosion, something that never gets old no matter how many times you witness it.
 
@@ -94,7 +94,7 @@ But there is perhaps no more terrifying fate than death in the void of outer spa
 
 > *60 seconds of oxygen remaining*
 
-## Dialogue and Audio Done Right
+{% include linkedHeading.html heading="Dialogue and Audio Done Right" level=2 %}
 
 <p>I was initially disappointed when I realized that the NPCs in Outer Wilds are, for the most part, static—they remain in the same spot and loop through the same actions, such as observing their surroundings or playing musical instruments. Notably, the game also doesn't have any voice acting—you cycle through each NPC's textual dialogue trees (with the one exception being <span class="spoiler">Solanum, who interacts with you through Nomai projection stones and writing</span>).</p>
 
@@ -107,11 +107,11 @@ Is that a bad thing? Absolutely not. The game's **fantastic writing** more than 
 
 The sounds you *do* hear are limited to the world itself—the distant sound of music, the howling cyclones of Giant's Deep, the bubbling heat of the sun, or the deafening roar of an approaching column of sand on Ash Twin. The audio breathes life into Outer Wilds and gives it its charm. And it's all thanks to the work of Andrew Prahlow, who's also credited with composing the fantastic [Outer Wilds soundtrack](https://open.spotify.com/album/1U0A6RPNJB05PtuBcaTM7o)—without which the game would *completely* lose its identity.
 
-## Unique Planetary Experiences
+{% include linkedHeading.html heading="Unique Planetary Experiences" level=2 %}
 
 A review of Outer Wilds would be incomplete without a look at those big floaty things in the sky. I'll omit the Attlerock, as it's more or less dull.
 
-### 1. Timber Hearth
+{% include linkedHeading.html heading="1. Timber Hearth" level=3 %}
 
 {% include picture.html img="timber-hearth" ext="JPG" alt="Timber Hearth, your home planet." shadow=false %}
 
@@ -119,7 +119,7 @@ It's basically Earth. From its playful audio track to its colorful vegetation an
 
 There are also *plenty* of secrets packed into just this one planet. It's a taste of what's to come throughout the rest of your experience—minus the comfort, that is.
 
-### 2. Dark Bramble
+{% include linkedHeading.html heading="2. Dark Bramble" level=3 %}
 
 {% include picture.html img="dark-bramble" ext="JPG" alt="Dark Bramble is shrouded in thick mist, with bulbs of glowing light in the distance." shadow=false %}
 
@@ -129,7 +129,7 @@ There's one word to describe this planet: unsettling, and in more ways than one.
 
 Dark Bramble offers a terrifying slice of the brilliant level design behind Outer Wilds. It also houses the Vessel, which the Nomai used to arrive at your solar system. As the game progresses, you learn of the crew's terrible fate. Two escape pods managed to survive the Bramble, carrying the remaining passengers to the other planets. And that's how it all began.
 
-### 3. The Hourglass Twins (Ash Twin + Ember Twin)
+{% include linkedHeading.html heading="3. The Hourglass Twins (Ash Twin + Ember Twin)" level=3 %}
 
 Ah, the iconic duo. The closest planets to the sun, they're mostly uninhabitable due to the searing heat. They're also locked in a never-ending struggle of gravity, with the Ember Twin siphoning much of the sand from the Ash Twin.
 
@@ -139,7 +139,7 @@ There is *plenty* of lore to unearth from these two planets alone. The Ash Twin 
 
 Without exploring these two thoroughly, you simply won't unlock the Outer Wilds ending.
 
-### 4. Brittle Hollow
+{% include linkedHeading.html heading="4. Brittle Hollow" level=3 %}
 
 The first time I arrived on this planet and ventured beneath the surface, one of the wooden platforms broke off, and I came face to face with the black hole at the core of the planet. It was an exhilirating yet terrifying experience—a recurring theme in Outer Wilds. My jetpack simply didn't provide enough power to resist the pull of gravity.
 
@@ -151,7 +151,7 @@ The fiery moon that circles above, aply named Hollow's Lantern, fires off volcan
 
 Fun fact: Once Hollow's Lantern shrinks a bit, you can actually get inside of it and safely land on some cooled magma rock—not that there's anything to see there.
 
-### 5. Giant's Deep
+{% include linkedHeading.html heading="5. Giant's Deep" level=3 %}
 
 You've seen Giant's Deep from the trailers, but it's even more impressive in game. Cyclones continuously ravage this stormy planet, occasionally lifting whole islands from the sea and tossing them out into space.
 
@@ -159,7 +159,7 @@ You've seen Giant's Deep from the trailers, but it's even more impressive in gam
 
 The first planet you always see when you wake up, Giant's Deep houses secrets that are key to reaching the Quantum Moon, as well as the Eye of the Universe itself. To think that all the knowledge you needed was just a current and a cyclone away!
 
-## Outer Wilds Ending Explained: Accept Your Fate and Learn to Cope
+{% include linkedHeading.html heading="Outer Wilds Ending Explained: Accept Your Fate and Learn to Cope" level=2 %}
 
 So, that's great and all—Outer Wilds is a top-notch game with lots to see and do.
 
@@ -179,7 +179,7 @@ It isn't exactly clear where you are, though, and what happened after you exited
 
 Whatever it is, it's a beautiful series of events and leaves you with more questions than answers. Outer Wilds manages to capture those last few moments elegantly.
 
-### There's Nothing You Can Do
+{% include linkedHeading.html heading="There's Nothing You Can Do" level=3 %}
 
 I see this ending as a reflection on life in general. Will this be our fate one day? Will we, like the Nomai, pursue some great feat because science compels us—because we see it as our defining purpose—only to fail and wither away before we ever learn whether it's possible?
 
@@ -198,7 +198,7 @@ The saddest part is knowing that there's absolutely nothing we can do to stop it
 <figcaption>Amen to that!</figcaption>
 </figure>
 
-### Make the Most of What You're Given
+{% include linkedHeading.html heading="Make the Most of What You're Given" level=3 %}
 
 <blockquote>
     <p>
@@ -216,7 +216,7 @@ The Nomai failed in their mission to locate the Eye of the Universe. But they ne
 
 They learned to cope through humor and love—not only for each other but also for science. You learn this by piecing together the messages they left behind for each other. They remained curious until the day they died. They never stopped trying to make things work. And maybe that's all that any of us can really do.
 
-### Nothing Is Permanent—Not Even the End of Life Itself
+{% include linkedHeading.html heading="Nothing Is Permanent—Not Even the End of Life Itself" level=3 %}
 
 <blockquote>
     <p>

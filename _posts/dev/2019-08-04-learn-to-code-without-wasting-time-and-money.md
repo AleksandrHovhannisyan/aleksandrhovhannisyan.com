@@ -86,7 +86,7 @@ There's immense value to be found in this exercise because it's something that a
 
 A big part of this is learning how to ease your way into a terminal environment and relying less on traditional GUIs. In particular, knowing how to work with the Bash shell and its most popular commands will make your life a whole lot easier as a developer. If you want the best of both worlds, consider using [Visual Studio Code](https://code.visualstudio.com/) as your IDE&mdash;it's free, has built-in support for terminals, features a marketplace of free extensions, and provides fluid integration with version control software like Git. All of these are things you'll eventually need to use as a programmer.
 
-### A Note on Git
+{% include linkedHeading.html heading="A Note on Git" level=3 %}
 
 Speaking of version control, if you're feeling lost with Git, then know this: There's no better way to "study" or learn Git than to actually use it for a real project. There are tons of online tutorials and videos that claim to help you understand Git in as little as 15 minutes, but they all ironically miss the key point: Git is an *applied technology* that's difficult to understand or appreciate when it's used in isolation. Things may appear to click when you watch a video, but unless you use Git yourself, you'll forget it the next day.
 
