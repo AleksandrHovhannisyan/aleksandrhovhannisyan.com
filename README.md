@@ -1,6 +1,8 @@
 # aleksandrhovhannisyan.github.io
 
-My personal website and blog, built with Jekyll and hosted live on GitHub Pages.
+> My online resume and blog, developed with Jekyll, HTML5, SASS, and JavaScript. Built with a mobile-first responsive design.
+
+**Note**: This domain now redirects to [aleksandrhovhannisyan.com](aleksandrhovhannisyan.com), hosted on Netlify.
 
 ## Licensing
 
