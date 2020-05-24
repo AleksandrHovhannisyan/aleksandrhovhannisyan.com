@@ -26,7 +26,7 @@ You may be surprised to learn that there's actually not a lot of HTML involved. 
 
 Here's a GIF demonstrating the responsive navbar states and behavior:
 
-{% include posts/picture.html img="demo" ext="GIF" alt="A responsive navbar" shadow=false %}
+{% include picture.html img="demo" ext="GIF" alt="A responsive navbar" shadow=false %}
 
 We'll design this with a mobile-first approach and simply take care of the desktop case with a media query. Note that I'm not designing with any minimum device width in mind, but this works all the way down to `320px`, one of the narrowest mobile resolutions that you typically need to account for.
 
@@ -78,11 +78,11 @@ Before I vomit a bunch of CSS on your screen and leave you clueless as to what's
 
 First up, we're using a `header` landmark element with an ID of `topnav`:
 
-{% include posts/picture.html img="header" ext="PNG" alt="A header element" shadow=false %}
+{% include picture.html img="header" ext="PNG" alt="A header element" shadow=false %}
 
 Inside of that is a nested `nav` landmark element, which signals the start of a navigation menu to screen readers and browsers. This container/wrapper element ensures that the contents of our navbar are horizontally aligned with whatever content is on the page itself, so long as that content is also wrapped in a `container`:
 
-{% include posts/picture.html img="nav" ext="PNG" alt="A nav landmark element with left and right padding and auto margins" shadow=false %}
+{% include picture.html img="nav" ext="PNG" alt="A nav landmark element with left and right padding and auto margins" shadow=false %}
 
 As you may have probably guessed, this is a flex container; it has three children:
 
@@ -92,13 +92,13 @@ As you may have probably guessed, this is a flex container; it has three childre
 
 Let's take a closer look at that last element:
 
-{% include posts/picture.html img="nav-menu" ext="PNG" alt="The nav-menu fixed wrapper" shadow=false %}
+{% include picture.html img="nav-menu" ext="PNG" alt="The nav-menu fixed wrapper" shadow=false %}
 
 This wrapper is given a fixed position and covers the entire screen. It also has a semi-transparent background that elevates it visually above the main content of the page.
 
 Within that is an unordered list with some padding, margins, and a box shadow:
 
-{% include posts/picture.html img="nav-links" ext="PNG" alt="The nav-links unordered list element" shadow=false %}
+{% include picture.html img="nav-links" ext="PNG" alt="The nav-links unordered list element" shadow=false %}
 
 In the demo, you may have noticed that users can close the navigation menu not only by clicking the X icon but also by clicking off to the side. The code for that is actually very simple, as we'll see later.
 
@@ -170,7 +170,7 @@ Alright, time to actually style our responsive navbar. We'll work in a top-down 
 
 **Result**:
 
-{% include posts/picture.html img="step1" ext="PNG" alt="Styled topnav header element" shadow=false %}
+{% include picture.html img="step1" ext="PNG" alt="Styled topnav header element" shadow=false %}
 
 Why we need the CSS variable will become obvious later on. The entire element is given a fixed position so it sticks to the top of the page as the user scrolls. It's also given a slight box shadow. Don't worry about the fact that the links are currently overflowing their parent; we'll fix this soon enough.
 
@@ -186,7 +186,7 @@ Moving on, we have the nested container element:
 
 **Result**:
 
-{% include posts/picture.html img="step2" ext="PNG" alt="Styled nav-container element" shadow=false %}
+{% include picture.html img="step2" ext="PNG" alt="Styled nav-container element" shadow=false %}
 
 As I mentioned earlier, this is simply a flex container. We use `justify-content: space-between` to position the home link and hamburger icon on opposite ends of the navbar. But right now, it's positioning all three children: the home link, the hamburger button, and the navigation links themselves; we'll fix this shortly.
 
@@ -209,7 +209,7 @@ Next up is some general styling for anchors:
 
 **Result**:
 
-{% include posts/picture.html img="step3" ext="PNG" alt="Styled anchor elements" shadow=false %}
+{% include picture.html img="step3" ext="PNG" alt="Styled anchor elements" shadow=false %}
 
 Pretty straightforward. The links themselves are flex containers.
 
@@ -226,7 +226,7 @@ Here's the logo styling (this is just a placeholder for my demo—you'll want to
 
 **Result**:
 
-{% include posts/picture.html img="step4" ext="PNG" alt="Styled logo" shadow=false %}
+{% include picture.html img="step4" ext="PNG" alt="Styled logo" shadow=false %}
 
 Time for the toggle button.
 
@@ -276,7 +276,7 @@ I'm not using `div`s because it's invalid HTML to put divs inside buttons. Here'
 
 **Result**:
 
-{% include posts/picture.html img="step5" ext="PNG" alt="Styled hamburger button" shadow=false %}
+{% include picture.html img="step5" ext="PNG" alt="Styled hamburger button" shadow=false %}
 
 There are lots of ways to do this, but I think this is the most straightforward to understand. I'm sure you can take advantage of pseudo-elements instead. But this works just fine, so we'll leave it at that.
 
@@ -343,7 +343,7 @@ We also take care of an accessibility issue here and apply a different `aria-lab
 
 At this point, you can hop on over to your browser and test that the button works.
 
-{% include posts/picture.html img="button" ext="GIF" alt="Toggling the navigation menu button" shadow=false %}
+{% include picture.html img="button" ext="GIF" alt="Toggling the navigation menu button" shadow=false %}
 
 The menu, of course, is still not functional. Let's fix that!
 
@@ -365,7 +365,7 @@ As I mentioned earlier, the navigation menu wrapper has fixed positioning, with 
 
 **Result**:
 
-{% include posts/picture.html img="step6" ext="PNG" alt="Styled nav-menu wrapper" shadow=false %}
+{% include picture.html img="step6" ext="PNG" alt="Styled nav-menu wrapper" shadow=false %}
 
 While `opacity: 0` and `visibility: hidden` may seem redundant, it's a good idea to animate both of these properties because `visibility` alone tends to snap/animate very rapidly, whereas `opacity` is more gradual.
 
@@ -380,7 +380,7 @@ Here's its opened state:
 
 Click the hamburger icon to see the following result:
 
-{% include posts/picture.html img="step7" ext="PNG" alt="Navigation menu in its opened state, with links visible below the navigation bar" shadow=false %}
+{% include picture.html img="step7" ext="PNG" alt="Navigation menu in its opened state, with links visible below the navigation bar" shadow=false %}
 
 The container for the navigation links is an unordered list:
 
@@ -409,7 +409,7 @@ The container for the navigation links is an unordered list:
 
 **Result**:
 
-{% include posts/picture.html img="step8" ext="PNG" alt="Styled nav-links container" shadow=false %}
+{% include picture.html img="step8" ext="PNG" alt="Styled nav-links container" shadow=false %}
 
 This is the actual, physical "menu" part of our navigation. The margin ensures that the menu appears detached from the rest of the navbar, as if it's floating on the page. If instead you'd like it to appear as a physical extension of the navigation bar, simply get rid of the margin and border radius and shift the shadow down:
 
@@ -430,7 +430,7 @@ This is the actual, physical "menu" part of our navigation. The margin ensures t
 
 **Result**:
 
-{% include posts/picture.html img="attached-menu" ext="PNG" alt="An attached navigation menu that's been opened" shadow=false %}
+{% include picture.html img="attached-menu" ext="PNG" alt="An attached navigation menu that's been opened" shadow=false %}
 
 Finally, here's the CSS for all of the navbar links:
 
@@ -456,7 +456,7 @@ Finally, here's the CSS for all of the navbar links:
 
 **Result**:
 
-{% include posts/picture.html img="step9" ext="PNG" alt="Styled anchor links" shadow=false %}
+{% include picture.html img="step9" ext="PNG" alt="Styled anchor links" shadow=false %}
 
 And that's it for the mobile version's CSS!
 
@@ -523,7 +523,7 @@ So first up is this:
 
 **Result**:
 
-{% include posts/picture.html img="step10" ext="PNG" alt="Hamburger menu button hidden" shadow=false %}
+{% include picture.html img="step10" ext="PNG" alt="Hamburger menu button hidden" shadow=false %}
 
 Obviously, we don't want the hamburger button to be visible on desktop, so we remove it altogether.
 
@@ -560,7 +560,7 @@ And finally, `.nav-links` now uses a flex direction of `row` instead of `column`
 
 **Result**:
 
-{% include posts/picture.html img="step11" ext="PNG" alt="Fully styled desktop version of the navbar" shadow=false %}
+{% include picture.html img="step11" ext="PNG" alt="Fully styled desktop version of the navbar" shadow=false %}
 
 We're officially done! But you may be wondering if there's room for customization—there sure is!
 

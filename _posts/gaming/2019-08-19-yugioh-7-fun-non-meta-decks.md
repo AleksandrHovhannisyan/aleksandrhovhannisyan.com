@@ -12,7 +12,7 @@ Do you ever get tired of running meta decks in Yu-Gi-Oh? If you're not afraid to
 
 {% include linkedHeading.html heading="1. Skull Servants" level=2 %}
 
-{% include posts/picture.html img="king" ext="JPG" alt="The King of the Skull Servants, the boss card of the archetype." shadow=false %}
+{% include picture.html img="king" ext="JPG" alt="The King of the Skull Servants, the boss card of the archetype." shadow=false %}
 
 Ah, good ol' *King of the Meme Servants*. The archetype's boss is a Level 1 monster with ATK equal to 1000x the number of Skull Servants in your grave. It can easily grow to 10k+ ATK, assuming your opponent lives long enough to see it get that high. If you play things smart, you'll get **The Lady in Wight** on the field before declaring an attack, guaranteeing King's safety most of the time:
 
@@ -21,7 +21,7 @@ Ah, good ol' *King of the Meme Servants*. The archetype's boss is a Level 1 mons
 What used to be a joke deck can actually compete with the meta nowadays. With excellent support cards like Uni Zombie, Shiranui Solitaire, Wightprincess, Wightprince, and Mezuki up your sleeves, you'll find that these spooky-scary skeletons are more than just bare bones. You can easily bring out powerful Synchros like PSY-Framelord Omega, Black Rose Dragon, Beelze, and Trishula. Black Rose is a particularly viable option if its effect doesn't get negated—simply clear the field, resurrect King, and it's game over.
 
 <figure>
-    {% include posts/picture.html img="skulls" ext="JPG" alt="Key cards in the Skull Servants archetype." %}
+    {% include picture.html img="skulls" ext="JPG" alt="Key cards in the Skull Servants archetype." %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
@@ -38,7 +38,7 @@ Of all the support cards that you can throw into this mix, my favorite is the qu
 This lets you easily bring out **Masked HERO Dark Law** to put a bit more pressure on your opponent, with the added bonus of potentially discarding something like a Mezuki or Wightprince for the cost.
 
 <figure>
-    {% include posts/picture.html img="skulls-support" ext="JPG" alt="Key cards in the Skull Servants archetype." %}
+    {% include picture.html img="skulls-support" ext="JPG" alt="Key cards in the Skull Servants archetype." %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
@@ -55,7 +55,7 @@ We're going back with this one—*way* back. Gravekeeper's is [one of the oldest
 > All "Gravekeeper's" monsters gain 500 ATK and DEF. Cards in the Graveyard cannot be banished. Negate any card effect that would move a card in the Graveyard to a different place. Negate any card effect that changes Types or Attributes in the Graveyard.
 
 <figure>
-    {% include posts/picture.html img="gravekeepers" ext="JPG" alt="Some of the key cards of the Gravekeeper's archetype." %}
+    {% include picture.html img="gravekeepers" ext="JPG" alt="Some of the key cards of the Gravekeeper's archetype." %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
@@ -68,7 +68,7 @@ But the archetype is even better now. About a year ago, the fusion spellcaster *
 This came along with two more support cards, **Gravekeeper's Spiritualist** and **Gravekeeper's Headman**:
 
 <figure>
-    {% include posts/picture.html img="gravekeepers-support" ext="JPG" alt="New Gravekeeper's support cards." %}
+    {% include picture.html img="gravekeepers-support" ext="JPG" alt="New Gravekeeper's support cards." %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
@@ -90,7 +90,7 @@ The entire strategy revolves around two key cards—**Darklord Nurse Reficule** 
 > Any effect that would make your opponent gain LP inflicts the same amount of damage to them, instead.
 
 <figure>
-    {% include posts/picture.html img="nurse-burn" ext="JPG" alt="The main cards in the Nurse Burn strategy: Darklord Nurse Reficule and Bad Reaction to Simochi." %}
+    {% include picture.html img="nurse-burn" ext="JPG" alt="The main cards in the Nurse Burn strategy: Darklord Nurse Reficule and Bad Reaction to Simochi." %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
@@ -108,7 +108,7 @@ You can make this deck slightly more consistent by using support cards like **Ba
 
 Additionally, even though this is primarily an anti-cure strategy, you can still throw in some burn support cards like these:
 
-{% include posts/picture.html img="burn" ext="JPG" alt="Burn support cards." %}
+{% include picture.html img="burn" ext="JPG" alt="Burn support cards." %}
 
 **Dark Room of Nightmare** deals 300 damage each time your opponent takes damage, which is a nice way to slowly burn them over time. **Chain Energy** requires both players to pay 500 LP each time they want to set/activate cards or effects from their hands, for a bit of added pressure. My personal favorite card, **Dimension Wall**, is like Magic Cylinder but better, since it doesn't target. The other two cards are self-explanatory if you've ever played a burn deck.
 
@@ -121,7 +121,7 @@ Admittedly, this deck doesn't always work well. But when it does, you'll have so
 Blackwings are a balanced and consistent archetype, making them a good option for a non-meta deck. They have great draw power with spells like **Black Whirlwind** and **Allure of Darkness**. All of the main Blackwing monsters have good summoning potential and synergy. And you even have hand traps like **Blackwing - Kalut the Moon Shadow** to run over bigger foes or keep your monsters alive in battle.
 
 <figure>
-    {% include posts/picture.html img="blackwing" ext="JPG" alt="Monsters from the Blackwing archetype." %}
+    {% include picture.html img="blackwing" ext="JPG" alt="Monsters from the Blackwing archetype." %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
@@ -136,7 +136,7 @@ If you're looking for a non-meta deck that isn't complete trash, this is one of 
 Next up on the list are the Yosenju, an archetype of beast and beast-warrior WIND monsters inspired by the Kamaitachi of Japanese folklore—the so-called weasel-like "dust devils" that ride the wind wielding sickles and sharp blades.
 
 <figure>
-    {% include posts/picture.html img="yosenju" ext="JPG" alt="The key monsters of the Yosenju archetype." %}
+    {% include picture.html img="yosenju" ext="JPG" alt="The key monsters of the Yosenju archetype." %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
@@ -153,7 +153,7 @@ Essentially, you're swarming the field during your turn and then safely bouncing
 The archetype also supports Pendulums with a scale of 3/5 (but effectively 3/11) thanks to **Yosenju Shinchu L** and **Yosenju Shinchu R**, boasting two boss pendulums: **Mayosenju Daibak** (3000 ATK / 300 DEF) and **Mayosenju Hitot** (2000 ATK / 3000 DEF). 
 
 <figure>
-    {% include posts/picture.html img="yosenju-pendulum" ext="JPG" alt="The key pendulum monsters of the Yosenju archetype." %}
+    {% include picture.html img="yosenju-pendulum" ext="JPG" alt="The key pendulum monsters of the Yosenju archetype." %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
@@ -164,7 +164,7 @@ The card on the far-right is **Yosenju Misak**, and it packs a punch:
 Finally, the Yosenju boast several powerful support spells and traps:
 
 <figure>
-    {% include posts/picture.html img="yosenju-support" ext="JPG" alt="Yosenju support spells and traps." %}
+    {% include picture.html img="yosenju-support" ext="JPG" alt="Yosenju support spells and traps." %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
@@ -182,7 +182,7 @@ Overall, this can make for a pretty solid (and annoying) non-meta deck.
 
 {% include linkedHeading.html heading="6. God decks" level=2 %}
 
-{% include posts/picture.html img="gods" ext="JPG" alt="Yu-Gi-Oh! god cards: Ra, Obelisk, Slifer, Divine Serpent Geh, and Vennominaga." shadow=false %}
+{% include picture.html img="gods" ext="JPG" alt="Yu-Gi-Oh! god cards: Ra, Obelisk, Slifer, Divine Serpent Geh, and Vennominaga." shadow=false %}
 
 What better way to have fun with your friends than to sacrifice a couple lambs and bring forth powerful deities from your hand? This isn't a single deck so much as it is a class of fun non-meta decks in Yu-Gi-Oh!
 
@@ -193,7 +193,7 @@ However, this doesn't mean that you still can't run them (or any other god cards
 In particular, **The Winged Dragon of Ra** has some pretty strong support:
 
 <figure>
-    {% include posts/picture.html img="ra" ext="JPG" alt="The Winged Dragon of Ra support cards." shadow=false %}
+    {% include picture.html img="ra" ext="JPG" alt="The Winged Dragon of Ra support cards." shadow=false %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
@@ -220,7 +220,7 @@ The goal is simple: Use only cards that include effects like dice rolls, coin fl
 ### Monsters
 
 <figure>
-    {% include posts/picture.html img="rng-monsters" ext="JPG" alt="RNG monster cards." shadow=false %}
+    {% include picture.html img="rng-monsters" ext="JPG" alt="RNG monster cards." shadow=false %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
@@ -251,7 +251,7 @@ The goal is simple: Use only cards that include effects like dice rolls, coin fl
 ### Spells
 
 <figure>
-    {% include posts/picture.html img="rng-spells" ext="JPG" alt="RNG spell cards." shadow=false %}
+    {% include picture.html img="rng-spells" ext="JPG" alt="RNG spell cards." shadow=false %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
@@ -277,7 +277,7 @@ The goal is simple: Use only cards that include effects like dice rolls, coin fl
 ### Traps
 
 <figure>
-    {% include posts/picture.html img="rng-traps" ext="JPG" alt="RNG trap cards." shadow=false %}
+    {% include picture.html img="rng-traps" ext="JPG" alt="RNG trap cards." shadow=false %}
     <figcaption>All images assembled from the Yu-Gi-Oh! FANDOM wiki.</figcaption>
 </figure>
 
@@ -319,4 +319,4 @@ The goal is simple: Use only cards that include effects like dice rolls, coin fl
 
 Meta decks have their place in competitive Yu-Gi-Oh!, but sometimes, all that matters is having fun. These are my favorite non-meta decks to run whenever I'm bored of playing the same old archetypes.
 
-{% include posts/fairUse.html %}
+{% include fairUse.html %}

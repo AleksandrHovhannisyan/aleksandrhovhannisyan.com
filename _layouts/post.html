@@ -8,10 +8,10 @@ layout: default
     {% if page.lastUpdated %}
     {% assign lastUpdated = page.lastUpdated %}
     {% endif %}
-    {% include posts/meta.html content=page.content date=page.date lastUpdated=lastUpdated tags=page.tags showProfilePhoto=true %}
+    {% include meta.html content=page.content date=page.date lastUpdated=lastUpdated tags=page.tags showProfilePhoto=true %}
   </header>
   {{ content }}
-  {% include posts/comments.html title=page.title %}
+  {% include comments.html title=page.title %}
 </article>
 
 {% if page.needsLatex %}

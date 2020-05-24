@@ -6,7 +6,7 @@ tags: [dev, frontend, jekyll]
 isCanonical: true
 ---
 
-{% include posts/picture.html img="pagespeed-insights" ext="JPG" alt="The PageSpeed Insights score for one of my blog posts." shadow=false %}
+{% include picture.html img="pagespeed-insights" ext="JPG" alt="The PageSpeed Insights score for one of my blog posts." shadow=false %}
 
 Run the blog posts on my site through Google's [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) or [Cloudinary's Image Analysis tool](https://webspeedtest.cloudinary.com/), and you'll find that most of them (with the exception of a few that load iframes) get around 99 on mobile and 100 on desktop. Some of these are packed full of images.
 
@@ -56,7 +56,7 @@ cwebp img.png -o img.webp
 
 And that's it! Here's a quick demo of that in action:
 
-{% include posts/picture.html img="demo" ext="GIF" alt="Converting a traditional image format to a webp image." %}
+{% include picture.html img="demo" ext="GIF" alt="Converting a traditional image format to a webp image." %}
 
 You can ignore the output from the tool, as it's not too important.
 
@@ -68,7 +68,7 @@ In this case, notice that the image size was cut in a half—from 16 KB to 8 KB�
 
 The good news is that [browser support for WebP](https://caniuse.com/#feat=webp) is high, excluding Internet Explorer (of course 😒) and Safari:
 
-{% include posts/picture.html img="caniuse" ext="JPG" alt="The caniuse results for WebP" shadow=false %}
+{% include picture.html img="caniuse" ext="JPG" alt="The caniuse results for WebP" shadow=false %}
 
 Assuming you want to cover all your bases and ensure that your images are displaying properly, you can use a `picture` element with a `source` for the WebP version and a backup `img` for the regular format:
 
@@ -108,7 +108,7 @@ Before I explain why this works, you need to know how I like to structure my blo
 
 Here's a screenshot to make that clearer:
 
-{% include posts/picture.html img="assets" ext="JPG" alt="My assets/img/posts folder." %}
+{% include picture.html img="assets" ext="JPG" alt="My assets/img/posts folder." %}
 
 That allows us to get away with this simple and legible include:
 

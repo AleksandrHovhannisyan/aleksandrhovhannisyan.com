@@ -27,7 +27,7 @@ Why not make it possible to click a button that magically copies the code to you
 
 Well, ask and you shall receive. In this tutorial, we'll add a copy-to-clipboard button to your Jekyll blog in just a few lines of code. Here's what we'll be building:
 
-{% include posts/picture.html img="demo" ext="GIF" alt="A demo of clicking a copy-to-clipboard button." shadow=false %}
+{% include picture.html img="demo" ext="GIF" alt="A demo of clicking a copy-to-clipboard button." shadow=false %}
 
 *(Psst! You can also try this out live on my blog!)*
 
@@ -116,7 +116,7 @@ Later on, we're going to pass in a block of code with newlines, quotation marks,
 
 Here's a real example, from this very blog post, of what the escaped code would look like in HTML:
 
-{% include posts/picture.html img="escaped-code" ext="PNG" alt="Inspecting an HTML element with Chrome dev tools." shadow=false %}
+{% include picture.html img="escaped-code" ext="PNG" alt="Inspecting an HTML element with Chrome dev tools." shadow=false %}
 
 Cool! That way, the embedded quotes in the code don't break our HTML. And since we have a plaintext copy of the code in an attribute, we can use JavaScript to copy that to the clipboard (more on that later).
 
@@ -298,7 +298,7 @@ Of course, you may have noticed that the code blocks on my own website have four
 
 This layout isn't actually as complicated as it may seem; you just need a top-level wrapper `div` for the header, with two nested flex containers: one for the file name and another for the button:
 
-{% include posts/picture.html img="improvements" ext="GIF" alt="Inspecting the code block headers on my website" shadow=false %}
+{% include picture.html img="improvements" ext="GIF" alt="Inspecting the code block headers on my website" shadow=false %}
 
 All of these variations still use the same include file that we looked at in this blog post, except some elements are **conditionally rendered** based on a flag parameter that I pass in whenever I don't want to render something. Here's what my full `_includes/code.html` file looks like:
 

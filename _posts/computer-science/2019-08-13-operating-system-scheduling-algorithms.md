@@ -122,7 +122,7 @@ Reminder: Batch systems have to keep up with a large number of processes. Thus, 
 
 First come first serve is a fair and simple non-preemptive algorithm that runs jobs in the order in which they arrived. However, because this algorithm is so naive, it doesn't always guarantee the best results.
 
-{% include posts/picture.html img="first-come" ext="JPG" alt="First come first serve scheduling algorithm." %}
+{% include picture.html img="first-come" ext="JPG" alt="First come first serve scheduling algorithm." %}
 
 Notice that while B arrives at `t = 2s`, it does not get to run until A finishes its work at `t = 8s` because this is a non-preemptive algorithm. Here are the calculations for each process:
 
@@ -139,7 +139,7 @@ In this algorithm, when deciding which process to run next, we pick the one whos
 
 If all jobs arrive at the same time, then this algorithm is always optimal in terms of mean turnaround time. This is because we're able to minimize the amount of idle CPU time across the board by picking an *optimal sequence of execution* for processes.
 
-{% include posts/picture.html img="shortest-job" ext="JPG" alt="Shortest job first scheduling algorithm." %}
+{% include picture.html img="shortest-job" ext="JPG" alt="Shortest job first scheduling algorithm." %}
 
 - A's turnaround time = `8s - 0s = 8s`
 - B's turnaround time = `14s - 2s = 12s`
@@ -160,7 +160,7 @@ This algorithm is the shortest job first algorithm above but with preemption. Wh
 
 If the process that's currently running is tied with another during this selection process, we'll obviously always prefer to continue running the current process so we don't waste time on performing a context switch.
 
-{% include posts/picture.html img="shortest-remaining" ext="JPG" alt="Shortest remaining time first scheduling algorithm." %}
+{% include picture.html img="shortest-remaining" ext="JPG" alt="Shortest remaining time first scheduling algorithm." %}
 
 For example, we swap A out for B at `t = 2s` because B has the least amount of time remaining among all processes that have arrived so far (only `4s` as opposed to A's remaining `6s`).
 
@@ -192,7 +192,7 @@ This is a classic and straightforward scheduling algorithm. Here's how it works:
 
 Steps 1-4 repeat until no more processes remain.
 
-{% include posts/picture.html img="round-robin" ext="JPG" alt="Round robin scheduling algorithm." %}
+{% include picture.html img="round-robin" ext="JPG" alt="Round robin scheduling algorithm." %}
 
 I used dashed vertical lines here to denote the times at which each process arrived in the queue, just to make things easier to understand. Notice that even though C arrives at time `t = 5s`, it does not begin working until after B gets to run again. Why? Because of step 3: When B finishes its work at time `t = 4s`, it is put back on the queue (because it is not yet finished with all of its work). Thus, B precedes C on the queue.
 
@@ -210,7 +210,7 @@ The scheduler runs the Round Robin algorithm on processes within the same queue,
 
 > **Note**: If at any point a process arrives in a queue with a higher priority than whatever queue we are currently working on, then the scheduler will give preference to that higher priority process upon the next quantum "tick."
 
-{% include posts/picture.html img="preemptive-priority" ext="JPG" alt="Preemptive priority scheduling algorithm." %}
+{% include picture.html img="preemptive-priority" ext="JPG" alt="Preemptive priority scheduling algorithm." %}
 
 In this example, A and B take turns alternating on the CPU in classic Round Robin fashion because both have a higher priority than any other process (C has a lower priority of `2`). Once they're both fully exhausted, the CPU sees that the only queue left is the one with C. So C gets scheduled and runs to completion.
 

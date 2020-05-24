@@ -27,7 +27,7 @@ This uses Facebook's [create-react-app](https://create-react-app.dev/) to initia
 
 Here's what your directory structure and `package.json` should roughly look like once that's done:
 
-{% include posts/picture.html img="structure" ext="JPG" alt="The directory structure of a CRA project." %}
+{% include picture.html img="structure" ext="JPG" alt="The directory structure of a CRA project." %}
 
 Version numbers may obviously differ.
 
@@ -130,7 +130,7 @@ If your app was already running, you'll need to restart it to observe these new 
 
 Here's the result once you do that:
 
-{% include posts/picture.html img="button1" ext="JPG" alt="An Ant Design button and anchor." %}
+{% include picture.html img="button1" ext="JPG" alt="An Ant Design button and anchor." %}
 
 ### Customize the Ant Design Theme with LESS
 
@@ -166,7 +166,7 @@ module.exports = override(
 
 That's it! Restart your app again to see the new results in your browser:
 
-{% include posts/picture.html img="button2" ext="JPG" alt="An Ant Design button and anchor, styled using a custom color." %}
+{% include picture.html img="button2" ext="JPG" alt="An Ant Design button and anchor, styled using a custom color." %}
 
 The best part is that Ant Design's UI is consistent, using shades of your primary color for all components to give your app a cohesive, branded look.
 
@@ -213,7 +213,7 @@ Here's how to use the workspace version of TypeScript in VS Code:
 
 Here's a screenshot to make that clearer:
 
-{% include posts/picture.html img="workspace-version" ext="JPG" alt="Using the workspace version of TypeScript in VS Code." %}
+{% include picture.html img="workspace-version" ext="JPG" alt="Using the workspace version of TypeScript in VS Code." %}
 
 Once you do that, VS Code will create a `.vscode` directory in your project for workspace settings.
 
@@ -237,11 +237,11 @@ If you now try to access `styles.app` or `styles.whateverClassOrIDYouWant`, you 
 
 The solution is to simply open up the VS Code command palette (`Ctrl+Shift+P` on Windows and `Cmd+Shift+P` on Mac) and do `Developer: Reload Window`. Then simply wait for VS Code to re-initialize TypeScript intellisense (keep an eye on the bottom-left of the status bar). Here's a demo:
 
-{% include posts/picture.html img="reload" ext="GIF" alt="Reloading VS Code and waiting for TypeScript to initialize." %}
+{% include picture.html img="reload" ext="GIF" alt="Reloading VS Code and waiting for TypeScript to initialize." %}
 
 Once that's done, you won't have to guess or remind yourself what you named your CSS classes/IDs:
 
-{% include posts/picture.html img="intellisense" ext="JPG" alt="VS Code autocomplete for TypeScript CSS Modules." %}
+{% include picture.html img="intellisense" ext="JPG" alt="VS Code autocomplete for TypeScript CSS Modules." %}
 
 Awesome! 😎 Here's what `App.tsx` should look like if you've been following along:
 
@@ -267,7 +267,7 @@ Refresh the page, and you'll see that it looks exactly the same, except we now g
 
 We *could* stop there, and put up with garbo code formatting and inconsistencies, and create more work for our collaborators as they try to reconcile several people's style preferences.
 
-{% include posts/picture.html img="but-why" ext="GIF" alt="But why, why would you do that? Why would you do any of that?" shadow=false %}
+{% include picture.html img="but-why" ext="GIF" alt="But why, why would you do that? Why would you do any of that?" shadow=false %}
 
 Or we could set up ESLint with Prettier to format our code consistently 🙂
 
@@ -347,7 +347,7 @@ At this point, you may not see any linting errors highlighted in VS Code, no mat
 
 Open up your command palette again (`Ctrl+Shift+P` on Windows and `Cmd+Shift+P` on Mac) and type `settings`. Then, click on `Preferences: Open Settings (JSON)`:
 
-{% include posts/picture.html img="command-palette" ext="JPG" alt="Opening user settings via the VS Code command palette." %}
+{% include picture.html img="command-palette" ext="JPG" alt="Opening user settings via the VS Code command palette." %}
 
 Stick this somewhere inside the existing JSON blob:
 
@@ -376,7 +376,7 @@ If all went well, VS Code should now underline linting errors with red squiggly 
 
 Let's mess up `App.tsx` on purpose to see this in action:
 
-{% include posts/picture.html img="fix-on-save" ext="GIF" alt="Auto-fixing linting errors in VS Code." %}
+{% include picture.html img="fix-on-save" ext="GIF" alt="Auto-fixing linting errors in VS Code." %}
 
 Note that some linting errors may still need to be corrected manually if there are no automatic fixes available. But this works for a majority of errors you'll come across, allowing you to code much more quickly and in whatever style you prefer.
 

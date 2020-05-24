@@ -52,7 +52,7 @@ File (Name) --> Inode
 
 Let's create a file with `echo Hello, links > file` and view information about its inode using the `stat` command:
 
-{% include posts/picture.html img="file" ext="PNG" alt="A file created on a Unix operating system" shadow=false %}
+{% include picture.html img="file" ext="PNG" alt="A file created on a Unix operating system" shadow=false %}
 
 Observe the line that reads `Inode: 4785074605327413`. This is an **inode number**. Each inode has a unique numerical ID associated with it that's generated when the inode is created.
 
@@ -70,11 +70,11 @@ A **symbolic link** (also known as a "soft link" or "symlink") is a file like an
 
 To create a soft link on a Unix system, you use the `ln` (link) command and supply the `-s` flag (for "symbolic"), followed by the original file name and the name of the soft link, in that order:
 
-{% include posts/picture.html img="soft-link" ext="PNG" alt="Creating a soft link for a file." shadow=false %}
+{% include picture.html img="soft-link" ext="PNG" alt="Creating a soft link for a file." shadow=false %}
 
 Now, let's run the stat command again on both files:
 
-{% include posts/picture.html img="stat-soft-link" ext="PNG" alt="Running the stat command on the original file and the soft link" shadow=false %}
+{% include picture.html img="stat-soft-link" ext="PNG" alt="Running the stat command on the original file and the soft link" shadow=false %}
 
 Observe the following:
 
@@ -84,7 +84,7 @@ Observe the following:
 
 Let's also look at their contents using the `cat` command:
 
-{% include posts/picture.html img="cat-soft-link" ext="PNG" alt="Running cat on a soft link" shadow=false %}
+{% include picture.html img="cat-soft-link" ext="PNG" alt="Running cat on a soft link" shadow=false %}
 
 Even though the symbolic link's underlying data is the *path* of the original file, running the cat command effectively *resolves* or *follows* the symbolic link and prints the contents of the original file: `Hello, links` instead of `file`. Naturally, this implies that if the original file's contents change, the result of running `cat softLink` will also change.
 
@@ -96,7 +96,7 @@ Even though the symbolic link's underlying data is the *path* of the original fi
 
 Let's see what happens if you create a soft link to a file that's not in the same directory:
 
-{% include posts/picture.html img="soft-link-from-another-dir" ext="PNG" alt="Creating a soft link from another directory" shadow=false %}
+{% include picture.html img="soft-link-from-another-dir" ext="PNG" alt="Creating a soft link from another directory" shadow=false %}
 
 This time, the symbolic link's file size is no longer `4` bytes. Rather, it's `10`: the length of the string `links/` (which is `6`) plus the length of the target file name itself (`4`).
 
@@ -109,7 +109,7 @@ Because a symbolic link's data is the *path* to the original file, there are two
 
 Here's an example showing what happens when we move the original file up one directory:
 
-{% include posts/picture.html img="moved-file" ext="PNG" alt="File was moved to a different directory" shadow=false %}
+{% include picture.html img="moved-file" ext="PNG" alt="File was moved to a different directory" shadow=false %}
 
 Notice these two lines:
 
@@ -120,13 +120,13 @@ Size: 4
 
 The symbolic link is unaware of the change that occurred! So what happens if we `cat` the two files?
 
-{% include posts/picture.html img="cat-link-rot" ext="PNG" alt="Running the cat command after having moved the original file" shadow=false %}
+{% include picture.html img="cat-link-rot" ext="PNG" alt="Running the cat command after having moved the original file" shadow=false %}
 
 While the original file's contents are printed just fine, the terminal hints that something is wrong. We can see this with the `ls` command—the soft link's name now appears in red to indicate that it's gone "bad." This is known formally as **link rot**.
 
 Before we move on to discussing hard links, note that there's an additional command you can use: `readlink`. According to the [man page for readlink](https://linux.die.net/man/1/readlink), this command prints the value of the symbolic link, which we know to be the path of the target file. Let's run this on our rotten symlink:
 
-{% include posts/picture.html img="readlink" ext="PNG" alt="Running the readlink command" shadow=false %}
+{% include picture.html img="readlink" ext="PNG" alt="Running the readlink command" shadow=false %}
 
 And there's our problem! The symbolic link is still pointing to the original (now non-existent) file.
 
@@ -136,17 +136,17 @@ On the other hand, a **hard link** acts as an alias for the target file. It has 
 
 To create a hard link in Linux, we use the `ln` command and supply the `-P` flag (for "physical"):
 
-{% include posts/picture.html img="hard-link" ext="PNG" alt="Creating a hard link." shadow=false %}
+{% include picture.html img="hard-link" ext="PNG" alt="Creating a hard link." shadow=false %}
 
 Notice that both files are `13` bytes in size, have the same inode number, have the same permissions, and have a link count of `2`. There are two links to the original file's inode: the first one we created, and the hard link we just created manually. In fact, notice that the results of `stat`-ing both the original file and the hard link are identical.
 
 Unlike a soft link, a hard link will not rot if we change the original file's name or move it to a different directory because it points to that file's inode, whereas a soft link references the file's path. It also will not rot if we *delete* the original file. Here's an example of moving the file:
 
-{% include posts/picture.html img="hard-links-dont-rot" ext="PNG" alt="Hard links don't rot when the original file is renamed or deleted." shadow=false %}
+{% include picture.html img="hard-links-dont-rot" ext="PNG" alt="Hard links don't rot when the original file is renamed or deleted." shadow=false %}
 
 Let's delete the target file and `cat` the hard link:
 
-{% include posts/picture.html img="deleting-file" ext="PNG" alt="Deleting the original file" shadow=false %}
+{% include picture.html img="deleting-file" ext="PNG" alt="Deleting the original file" shadow=false %}
 
 Interesting...
 
@@ -169,11 +169,11 @@ Recall from before that running `cat` on a soft link or hard link would essentia
 
 If you take a look at `/usr/bin/`, you'll find many soft links to executables:
 
-{% include posts/picture.html img="executables" ext="PNG" alt="Soft links to Python executables" shadow=false %}
+{% include picture.html img="executables" ext="PNG" alt="Soft links to Python executables" shadow=false %}
 
 You can also create a custom link:
 
-{% include posts/picture.html img="python-symlink" ext="PNG" alt="Creating a symlink to Python" shadow=false %}
+{% include picture.html img="python-symlink" ext="PNG" alt="Creating a symlink to Python" shadow=false %}
 
 As expected, invoking the symlink invokes the underlying executable.
 
