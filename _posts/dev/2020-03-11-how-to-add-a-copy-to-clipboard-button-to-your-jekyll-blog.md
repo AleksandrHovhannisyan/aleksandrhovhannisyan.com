@@ -104,8 +104,6 @@ Below is the accompanying Sass (trimmed down to the essentials). Feel free to ch
 }{% endcapture %}
 {% include code.html code=code lang="scss" %}
 
-> **Note**: Feel free to change the text and background colors to suit your own needs.
-
 If you take a closer look at `_includes/code.html`, you'll notice this interesting `data-code` attribute:
 
 ```liquid
