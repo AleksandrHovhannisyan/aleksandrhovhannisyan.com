@@ -3,7 +3,7 @@ title: Create a Free Contact Form with Formspree
 description: Formspree makes it easy for you to add a free contact form to your website. Setting it up takes no more than a few minutes. Learn how to get started!
 keywords: [free contact form, formspree]
 tags: [dev, frontend, forms]
-lastUpdated: 2020-05-27
+last_updated: 2020-05-27
 ---
 
 > **Update**: This blog post was originally written before Formspree gave you the option of generating unique/random endpoints, allowing you to hide your email from your HTML. The new process simply requires that you [register with Formspree](https://formspree.io/register). It's still free :)

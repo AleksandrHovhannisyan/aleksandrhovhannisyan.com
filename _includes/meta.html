@@ -8,10 +8,10 @@
         {% include svg.html svg="calendar" class="meta-icon" %}
         <time datetime="{{ include.date | date: "%Y-%m-%d" }}">{{ include.date | date: "%b %-d, %Y" }}</time>
     </div>
-    {% if include.lastUpdated %}
+    {% if include.last_updated %}
     <div class="meta post-date-updated">
         {% include svg.html svg="info" class="meta-icon" %}
-        <time datetime="{{ include.lastUpdated | date: "%Y-%m-%d" }}">Updated: {{ include.lastUpdated | date: "%b %-d, %Y" }}</time>
+        <time datetime="{{ include.last_updated | date: "%Y-%m-%d" }}">Updated: {{ include.last_updated | date: "%b %-d, %Y" }}</time>
     </div>
     {% endif %}
     <div class="meta post-reading-length">

@@ -5,10 +5,10 @@ layout: default
 <article id="post">
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
-    {% if page.lastUpdated %}
-    {% assign lastUpdated = page.lastUpdated %}
+    {% if page.last_updated %}
+    {% assign last_updated = page.last_updated %}
     {% endif %}
-    {% include meta.html content=page.content date=page.date lastUpdated=lastUpdated tags=page.tags showProfilePhoto=true %}
+    {% include meta.html content=page.content date=page.date last_updated=last_updated tags=page.tags showProfilePhoto=true %}
   </header>
   {{ content }}
   {% include comments.html title=page.title %}
@@ -54,8 +54,8 @@ layout: default
     },
     "headline": {{ page.title | escape | jsonify }},
     "image": ["{{ site.url }}/assets/img/posts/{{ page.slug }}/thumbnail.PNG"],
-    "datePublished": {{ page.date | jsonify }},{% if page.lastUpdated %}
-    "dateModified": {{ page.lastUpdated | jsonify }},{% endif %}
+    "datePublished": {{ page.date | jsonify }},{% if page.last_updated %}
+    "dateModified": {{ page.last_updated | jsonify }},{% endif %}
     "author": {
       "@type": "Person",
       "name": "{{ site.author }}"

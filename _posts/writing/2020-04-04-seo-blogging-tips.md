@@ -288,8 +288,8 @@ If you're using a static site generator like Gatsby or Jekyll, you should be abl
     },
     "headline": {{ page.title | escape | jsonify }},
     "image": ["{{ site.url }}/assets/img/posts/{{ page.slug }}/thumbnail.PNG"],
-    "datePublished": {{ page.date | jsonify }},{% if page.lastUpdated %}
-    "dateModified": {{ page.lastUpdated | jsonify }},{% endif %}
+    "datePublished": {{ page.date | jsonify }},{% if page.last_updated %}
+    "dateModified": {{ page.last_updated | jsonify }},{% endif %}
     "author": {
       "@type": "Person",
       "name": "{{ site.author }}"
