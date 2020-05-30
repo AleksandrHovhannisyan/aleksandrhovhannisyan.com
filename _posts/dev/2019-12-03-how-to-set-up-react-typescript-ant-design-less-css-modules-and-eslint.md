@@ -3,7 +3,7 @@ title: 'How to Set up Create React App with TypeScript, Ant Design, LESS, CSS Mo
 description: Enjoy a better dev experience by setting up React with TypeScript, customizing the Ant Design theme with LESS and CSS Modules, and formatting your code with ESLint, all without ejecting from CRA.
 keywords: ['create react app with typescript', 'customize ant design theme', 'create react app css modules and typescript']
 tags: [dev, frontend, react]
-last_updated: 2020-03-24
+last_updated: 2020-05-30
 comments_id: 30
 ---
 
@@ -141,28 +141,30 @@ First, install the `less` and `less-loader` packages:
 {% capture code %}yarn add less less-loader{% endcapture %}
 {% include code.html code=code lang="bash" %}
 
-> **Warning**: Be sure to check [this issue on GitHub](https://github.com/arackaf/customize-cra/issues/226) regarding a conflict between `customize-cra` and `css-loader`. The temporary solution, until `customize-cra@1.0` is released, is to run `yarn upgrade customize-cra@next`. I had the same problem; the suggested solution worked for me.
-
 Then, simply add a LESS loader to your config overrides:
 
-{% capture code %}const { override, fixBabelImports, addLessLoader } = require('customize-cra');
+{% capture code %}const { override, fixBabelImports, addLessLoader } = require("customize-cra");
 
 module.exports = override(
-  fixBabelImports('import', {
-    libraryName: 'antd',
-    libraryDirectory: 'es',
-    style: true
+  fixBabelImports("import", {
+    libraryName: "antd",
+    libraryDirectory: "es",
+    style: true,
   }),
   addLessLoader({
-    javascriptEnabled: true,
-    modifyVars: {
-      '@primary-color': '#f48549', // customize as needed
-      '@link-color': '#e6a07c', // customize as needed
-      '@font-size-base': '18px' // customize as needed
-    }
+    lessOptions: {
+      javascriptEnabled: true,
+      modifyVars: {
+        "@primary-color": "#f48549", // customize as needed
+        "@link-color": "#e6a07c", // customize as needed
+        "@font-size-base": "18px", // customize as needed
+      },
+    },
   })
 );{% endcapture %}
 {% include code.html file="config-overrides.js" code=code lang="javascript" %}
+
+> **Note**: Be sure to check [this issue](https://github.com/arackaf/customize-cra/issues/253) if you run into any problems. `customize-cra` and `less-loader` have had compatibility issues in the past.
 
 That's it! Restart your app again to see the new results in your browser:
 
