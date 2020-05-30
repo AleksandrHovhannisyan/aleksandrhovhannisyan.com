@@ -82,5 +82,9 @@
         display: grid;
         row-gap: $paragraph-spacing;
         @include transition(color);
+
+        > * {
+            min-width: 0;
+        }
     }
 }
