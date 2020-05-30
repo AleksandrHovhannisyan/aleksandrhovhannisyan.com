@@ -419,6 +419,9 @@
             color: #e7e7e7;
             padding: 0.4em 0.5em;
             border-radius: 5px;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+            top: 0;
+            position: relative;
             @include transition(color, background-color);
 
             &::before {
@@ -431,9 +434,15 @@
                 width: 1em;
             }
 
-            &:focus, &:hover {
+            &:focus, 
+            &:hover {
                 color: black;
                 background-color: #adadad;
+            }
+
+            &:active {
+                box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
+                top: 2px;
             }
 
             &.copied {
