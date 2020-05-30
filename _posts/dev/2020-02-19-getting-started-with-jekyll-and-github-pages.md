@@ -1056,7 +1056,7 @@ title: Blog
 permalink: /blog
 ---
 
-{% include linkedHeading.html heading="My Blog Posts" level=2 %}
+## My Blog Posts
 
 <ul>
   {% for post in site.posts %}
