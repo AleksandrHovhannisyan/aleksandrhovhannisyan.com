@@ -4,6 +4,7 @@ description: Enjoy a better dev experience by setting up React with TypeScript, 
 keywords: ['create react app with typescript', 'customize ant design theme', 'create react app css modules and typescript']
 tags: [dev, frontend, react]
 last_updated: 2020-03-24
+comments_id: 30
 ---
 
 Let's skip the exposition and just jump right in. I'll use VS Code to make my life easier; I recommend that you do the same. Note that I'll be using yarn as my package manager, but you can also use npm.

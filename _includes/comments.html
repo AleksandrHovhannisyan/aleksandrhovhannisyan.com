@@ -1,59 +1,45 @@
-{% assign title = include.title %}
+{% assign issue_id = include.issue_id %}
+<footer>
+    <div class="comment-actions">
+        <h2>Comments <span id="comment-count"></span></h2>
+        <a
+          class="button solid-button plus-button post-comment"
+          href="https://github.com/{{ site.issues_repo }}/issues/{{ issue_id }}"
+          >Post comment</a
+        >
+    </div>
+    <div id="comments-wrapper">
+        <ul class="comments" aria-label="Comments on this blog post"></ul>
+    </div>
+</footer>
+
+<!-- Dependencies for comments -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<!-- Comments script -->
 <script>
     const post = document.getElementById('post');
+    const commentsWrapper = document.getElementById('comments-wrapper');
+    const commentList = commentsWrapper.querySelector('.comments');
+    const commentCount = document.getElementById('comment-count');
 
-    fetch('https://api.github.com/search/issues?q={{ title | slugify }}+author:AleksandrHovhannisyan+in:title+state:open+repo:{{ site.issues_repo }}')
-    .then((blob) => blob.json())
-    .then((data) => {
-        if (!data.items.length) return;
+    fetch('https://api.github.com/repos/{{ site.issues_repo }}/issues/{{ issue_id }}/comments')
+    .then(blob => blob.json())
+    .then(renderComments);
 
-        const issue = data.items[0];
-
-        fetch(issue.comments_url)
-        .then((blob) => blob.json())
-        .then((comments) => {
-            renderComments(comments, issue);
-        });
-    });
-
-    function renderComments(comments, issue) {
-        const commentActions = document.createElement('div');
-        commentActions.className = 'comment-actions';
-
-        const commentHeading = document.createElement('h2');
-        commentHeading.innerText = 'Comments ';
-        const commentCount = document.createElement('span');
-        commentCount.id = 'comment-count';
-        mount(commentHeading, commentCount);
-
-        const addCommentButton = document.createElement('a');
-        addCommentButton.href = `https://github.com/{{ site.issues_repo }}/issues/${issue.number}`;
-        addCommentButton.classList.add('button', 'solid-button', 'plus-button', 'add-comment');
-        addCommentButton.innerText = 'Post comment';
-        mount(commentActions, commentHeading, addCommentButton);
-
-        const commentsWrapper = document.createElement('div');
-        commentsWrapper.id = 'comments-wrapper';
-
+    function renderComments(comments) {
         if (!comments.length) {
-            commentsWrapper.innerHTML = `<p>No comments yet 👀</p>`;
-            mount(post, commentActions, commentsWrapper);
+            commentsWrapper.innerHTML = `<p>No comments yet 👀 Be the first to post!</p>`;
             return;
         }
 
         commentCount.innerText = `(${comments.length})`;
-        const commentList = document.createElement('ul');
-        commentList.className = 'comments';
-        commentList.setAttribute('aria-label', 'Comments on this blog post');
-
         commentList.innerHTML = comments
             .sort((comment1, comment2) => {
                 return comment1.created_at < comment2.created_at ? 1 : -1;
             })
             .map((comment) => {
-                console.log(comment);
                 const user = comment.user;
                 const datePosted = moment(comment.created_at).fromNow();
 
@@ -71,8 +57,5 @@
                         </li>`;
             })
             .join('');
-
-        mount(commentsWrapper, commentList);
-        mount(post, commentActions, commentsWrapper);
     }
 </script>

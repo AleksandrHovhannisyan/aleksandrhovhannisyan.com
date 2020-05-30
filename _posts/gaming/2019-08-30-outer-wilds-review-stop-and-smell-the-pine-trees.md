@@ -3,6 +3,7 @@ title: "Outer Wilds Review: Stop and Smell the Pine Trees"
 description: At its core, Outer Wilds is a space exploration game. But it's so much more than just that. Here's my in-depth Outer Wilds review.
 keywords: [what is outer wilds about, outer wilds review, outer wilds ending explained, outer wilds meaning, outer wilds pine trees]
 tags: [gaming, game-review, outer-wilds]
+comments_id: 40
 ---
 
 What originally began as a thesis project [more than six years ago](https://www.youtube.com/watch?v=vRQU1o8SrAI) between two university students—Alex Beachum and Loan Verneau—is one of the best games released so far in 2019. And it's certainly come a long way, with much of the art, audio, and gameplay receiving polishes that have allowed it to shine.

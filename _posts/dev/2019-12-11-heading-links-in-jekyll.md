@@ -4,6 +4,7 @@ description: Want to make it easier for users to link to a heading in your blog?
 keywords: [heading links in jekyll]
 tags: [dev, frontend, liquid, jekyll]
 last_updated: 2020-05-24
+comments_id: 42
 ---
 
 It's a common practice in blogs to link your headings; this makes it easier for users to share a specific part of your content without having to share the entire post's URL.

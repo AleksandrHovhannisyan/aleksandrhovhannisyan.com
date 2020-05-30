@@ -11,7 +11,9 @@ layout: default
     {% include meta.html content=page.content date=page.date last_updated=last_updated tags=page.tags showProfilePhoto=true %}
   </header>
   {{ content }}
-  {% include comments.html title=page.title %}
+  {% if page.comments_id %}
+    {% include comments.html issue_id=page.comments_id %}
+  {% endif %}
 </article>
 
 {% if page.needsLatex %}

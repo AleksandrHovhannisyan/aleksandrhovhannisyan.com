@@ -3,6 +3,7 @@ title: Create a Responsive Navbar Without Bootstrap
 description: Want to create a navbar that works on mobile and desktop? Ditch the frameworks—in this tutorial, we'll create a responsive navbar using HTML, CSS, and JS.
 keywords: [responsive navbar]
 tags: [dev, frontend, html, css, javascript]
+comments_id: 28
 ---
 
 **Navigation bars** ("navbars") are everywhere on modern websites, so it's definitely good to know how to create one by hand without relying on a component library.

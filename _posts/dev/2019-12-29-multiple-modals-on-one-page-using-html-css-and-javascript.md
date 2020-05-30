@@ -4,6 +4,7 @@ description: Learn how to create modal windows in HTML using just a bit of HTML,
 keywords: [multiple modals on one page, two modals on the same page, how to create modal windows in html]
 tags: [dev, frontend, html, css, javascript]
 last_updated: 2020-05-07
+comments_id: 31
 ---
 
 I recently tried my hand at creating modal windows from scratch, without any libraries or dependencies. As it turns out, doing so is *much* simpler than I thought it would be!
