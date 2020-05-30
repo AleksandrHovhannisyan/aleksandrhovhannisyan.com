@@ -3,7 +3,6 @@ title: "How to Add a Copy-to-Clipboard Button to Your Jekyll Blog"
 description: Learn how to add a copy-to-clipboard button to your Jekyll blog using some clever Liquid templating and just a few lines of JavaScript.
 tags: [dev, jekyll, liquid, javascript]
 keywords: [copy to clipboard button]
-isCanonical: true
 lastUpdated: 2020-05-17
 ---
 

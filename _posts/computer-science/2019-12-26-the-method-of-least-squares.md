@@ -4,7 +4,6 @@ description: Learn how the method of least squares works under the hood. Applica
 keywords: [method of least squares]
 tags: [computer-science, math]
 needsLatex: true
-isCanonical: true
 ---
 
 The method of least squares is a simple and elegant technique, but it's often explained poorly. It's something that you'll remember by heart if you understand the intuition—you won't have to memorize a single equation.

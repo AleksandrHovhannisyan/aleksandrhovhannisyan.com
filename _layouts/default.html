@@ -12,7 +12,7 @@
         <meta name="referrer" content="origin" />
         <!-- OG properties are for social platforms with previews for shared links -->
         <meta property="og:title" content="{{ page.title }} | {{ site.title }}" />
-        {% if page.isPost %}
+        {% if page.is_post %}
         <meta property="og:image" content="{{ site.url }}/assets/img/posts/{{ page.slug }}/thumbnail.PNG" />
         {% else %}
         <meta property="og:image" content="{{ site.url }}/assets/img/preview.PNG" />
@@ -25,9 +25,8 @@
         {% endif %}
         <link rel="stylesheet" href="/assets/styles/main.css" />
         <link rel="icon" href="/favicon.png" type="image/x-icon" />
-        {% if page.isCanonical %}
-        <!-- This is only needed if the post has been syndicated on other media -->
-        <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+        {% if page.canonical_url %}
+        <link rel="canonical" href="{{ page.canonical_url }}" />
         {% endif %}
         {% if page.url == "/" %}
         <title>{{ site.title }}: {{ page.title }}</title>
@@ -52,8 +51,8 @@
         </footer>
         <!-- Custom javascript -->
         <script src="/assets/scripts/common.js"></script>
-        {% if page.customJS %}
-            {% for script in page.customJS %}
+        {% if page.custom_js %}
+            {% for script in page.custom_js %}
             <script src="/assets/scripts/{{ script }}.js"></script>
             {% endfor %}
         {% endif %}

@@ -5,8 +5,8 @@ description: >-
   creating beautiful user interfaces, and sharing my knowledge with others. Get in touch!
 keywords: [Aleksandr Hovhannisyan]
 url: https://aleksandrhovhannisyan.com
-issuesRepo: AleksandrHovhannisyan/aleksandrhovhannisyan.github.io
-bugReport: https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.github.io/issues/new?assignees=&labels=bug&template=bug_report.md&title=Bug+Report%3A+%5BConcise+Summary+Here%5D
+issues_repo: AleksandrHovhannisyan/aleksandrhovhannisyan.github.io
+bug_report: https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.github.io/issues/new?assignees=&labels=bug&template=bug_report.md&title=Bug+Report%3A+%5BConcise+Summary+Here%5D
 
 plugins:
   - jekyll-feed
@@ -88,16 +88,15 @@ defaults:
       path: _pages
       type: pages
     values:
-      isPost: false
+      is_post: false
       layout: default
   -
     scope:
       path: _posts
       type: posts
     values:
-      customJS: [blogImage, copyCode]
-      isPost: true
-      isBlogPage: true
+      custom_js: [blogImage, copyCode]
+      is_post: true
       layout: post
       excerpt: ""
       permalink: /blog/:categories/:title/

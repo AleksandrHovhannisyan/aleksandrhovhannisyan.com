@@ -3,7 +3,6 @@ title: 'How to Set up Create React App with TypeScript, Ant Design, LESS, CSS Mo
 description: Enjoy a better dev experience by setting up React with TypeScript, customizing the Ant Design theme with LESS and CSS Modules, and formatting your code with ESLint, all without ejecting from CRA.
 keywords: ['create react app with typescript', 'customize ant design theme', 'create react app css modules and typescript']
 tags: [dev, frontend, react]
-isCanonical: true
 lastUpdated: 2020-03-24
 ---
 

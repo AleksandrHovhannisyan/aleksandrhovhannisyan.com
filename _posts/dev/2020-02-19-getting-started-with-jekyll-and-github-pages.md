@@ -3,7 +3,6 @@ title: "Getting Started with Jekyll and GitHub Pages: Your First Website"
 description: Jekyll is a static site generator that makes it easy for you to create a website and blog. If you're interested in getting started with Jekyll and GitHub Pages, this in-depth guide is for you.
 keywords: [getting started with jekyll, jekyll and github pages]
 tags: [dev, jekyll, frontend, github]
-isCanonical: true
 ---
 
 Want to make a personal website or blog and share it with the world? Then you've come to the right place! This is the only guide you'll need for getting started with Jekyll. I'll take you from zero to hero with Jekyll and help you understand all the fundamentals.
@@ -489,14 +488,14 @@ Nope! Open up your `_config.yml`, and add this YAML somewhere (anywhere):
       type: posts
       path: _posts
     values:
-      isPost: true
+      is_post: true
       layout: post
   -
     scope:
       type: pages
       path: _pages
     values:
-      isPost: false
+      is_post: false
       layout: default{% endcapture %}
 {% include code.html code=code lang="yml" %}
 
@@ -505,7 +504,7 @@ And then restart your server.
 Jekyll allows you to define **front matter defaults** like we've done here by scope, which you can narrow down using either a path or file type. The above defaults are equivalent to doing this manually in each post that we create under `_posts/`:
 
 {% capture code %}---
-isPost: true
+is_post: true
 layout: post
 ---{% endcapture %}
 {% include code.html file="_posts/2020-02-14-an-awesome-post.md" code=code lang="markdown" copyable=false %}
@@ -513,7 +512,7 @@ layout: post
 And doing this manually for each page—like our home page, experience page, contact page, and so on—that we create under a directory named `_pages/`:
 
 {% capture code %}---
-isPost: false
+is_post: false
 layout: default
 ---{% endcapture %}
 {% include code.html file="_pages/contact.md" code=code lang="markdown" copyable=false %}
@@ -653,7 +652,7 @@ We can give each blog post a permalink, too, just like we did with our pages abo
       type: posts
       path: _posts
     values:
-      isPost: true
+      is_post: true
       layout: post
       permalink: /blog/:categories/:title/
   -
@@ -661,7 +660,7 @@ We can give each blog post a permalink, too, just like we did with our pages abo
       type: pages
       path: _pages
     values:
-      isPost: false
+      is_post: false
       layout: default{% endcapture %}
 {% include code.html code=code lang="yml" %}
 
@@ -786,7 +785,6 @@ title: "Getting Started with Jekyll and GitHub Pages: Your First Website"
 description: Jekyll is a static site generator that makes it easy for you to create a website and blog. If you're interested in getting started with Jekyll and GitHub Pages, this in-depth guide is for you.
 keywords: [getting started with jekyll, jekyll and github pages]
 tags: [dev, jekyll, frontend, github]
-isCanonical: true
 ---
 ```
 

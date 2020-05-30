@@ -4,7 +4,7 @@
 <script>
     const post = document.getElementById('post');
 
-    fetch('https://api.github.com/search/issues?q={{ title | slugify }}+author:AleksandrHovhannisyan+in:title+state:open+repo:{{ site.issuesRepo }}')
+    fetch('https://api.github.com/search/issues?q={{ title | slugify }}+author:AleksandrHovhannisyan+in:title+state:open+repo:{{ site.issues_repo }}')
     .then((blob) => blob.json())
     .then((data) => {
         if (!data.items.length) return;
@@ -29,7 +29,7 @@
         mount(commentHeading, commentCount);
 
         const addCommentButton = document.createElement('a');
-        addCommentButton.href = `https://github.com/{{ site.issuesRepo }}/issues/${issue.number}`;
+        addCommentButton.href = `https://github.com/{{ site.issues_repo }}/issues/${issue.number}`;
         addCommentButton.classList.add('button', 'solid-button', 'plus-button', 'add-comment');
         addCommentButton.innerText = 'Post comment';
         mount(commentActions, commentHeading, addCommentButton);

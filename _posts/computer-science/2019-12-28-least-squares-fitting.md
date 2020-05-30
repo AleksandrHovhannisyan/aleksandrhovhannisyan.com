@@ -4,7 +4,6 @@ description: "Having mastered the method of least squares, we're now ready to le
 keywords: [least squares fitting, least squares method]
 tags: [computer-science, math]
 needsLatex: true
-isCanonical: true
 ---
 
 With an understanding of [the method of least squares](/blog/computer-science/the-method-of-least-squares) and QR decomposition, we're now ready to look at one of its most practical applications: least squares fitting. In this tutorial, we'll explore straight-line fitting and polynomial least squares fitting, both by hand and with Python. But before we get to the problems, we need a little background and some more theory.

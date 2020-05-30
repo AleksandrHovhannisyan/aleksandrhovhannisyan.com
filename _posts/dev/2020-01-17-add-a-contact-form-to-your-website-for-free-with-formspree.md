@@ -3,7 +3,6 @@ title: Create a Free Contact Form with Formspree
 description: Formspree makes it easy for you to add a free contact form to your website. Setting it up takes no more than a few minutes. Learn how to get started!
 keywords: [free contact form, formspree]
 tags: [dev, frontend, forms]
-isCanonical: true
 lastUpdated: 2020-05-27
 ---
 
