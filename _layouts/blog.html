@@ -17,16 +17,17 @@ layout: default
   {% endfor %}
   <h1>{{ blogType }}Blog Posts</h1>
   <p>
-    {% if site.data.tagDescriptions[pageTag] %} 
-    {{site.data.tagDescriptions[pageTag] }}
+    {% if site.data.tags[pageTag] %} 
+    {{site.data.tags[pageTag] }}
     {% else %}
-    {{site.data.tagDescriptions["all"]}}
+    {{site.data.tags["all"]}}
     {% endif %}
   </p>
-  {% assign primaryTags = "all,dev,computer-science,gaming,writing" | split: ',' %}
   <nav aria-label="Primary blog post tags">
     <ul class="tag-navigation">
-      {% for tag in primaryTags %}
+      {% for key in site.data.tags %}
+      {% assign tag = key[0] %}
+      {% assign tagDescription = key[1] %}
       <li>
           <a
             href="{% if tag == "all" %}/blog/{% else %}/tag/{{ tag }}{% endif %}"
