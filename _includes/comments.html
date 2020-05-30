@@ -13,9 +13,12 @@
     </div>
 </footer>
 
-<!-- Dependencies for comments -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<!-- Expressing comment post dates relative to today -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+<!-- Parsing comment bodies as Markdown -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<!-- Sanitizing comments to prevent against XSS -->
+<script type="text/javascript" src="/assets/scripts/purify.min.js"></script>
 
 <!-- Comments script -->
 <script>
@@ -41,18 +44,26 @@
             .map((comment) => {
                 const user = comment.user;
                 const datePosted = moment(comment.created_at).fromNow();
+                const body = DOMPurify.sanitize(marked(comment.body));
+                const postedByAuthor = comment.author_association === 'OWNER';
+                const edited = comment.created_at !== comment.updated_at;
 
                 return `<li class="comment">
                             <header class="comment-header">
-                                    <div class="user">
-                                        <img src="${user.avatar_url}" alt="" aria-hidden="true" class="avatar" />
-                                        <a href="https://github.com/${user.login}" class="name" aria-label="Comment by ${user.login}">${user.login}</a>
-                                        ${comment.author_association === 'OWNER' ? '<span class="tag author-badge">Author</span>' : ''}
-                                        ${comment.created_at !== comment.updated_at ? `<span class="comment-edited">Edited</span>` : ''}
-                                    </div>
-                                    <time class="date-posted" datetime="${comment.created_at}">${datePosted}</time>
+                                <div class="user">
+                                    <img src="${user.avatar_url}" alt="" aria-hidden="true" class="avatar" />
+                                    <a
+                                        href="https://github.com/${user.login}"
+                                        class="name"
+                                        aria-label="Comment by ${user.login}"
+                                        >${user.login}</a
+                                    >
+                                    ${postedByAuthor ? '<span class="tag author-badge">Author</span>' : ''}
+                                    ${edited ? `<span class="comment-edited">Edited</span>` : ''}
+                                </div>
+                                <time class="date-posted" datetime="${comment.created_at}">${datePosted}</time>
                             </header>
-                            <div class="comment-body">${marked(comment.body)}</div>
+                            <div class="comment-body">${body}</div>
                         </li>`;
             })
             .join('');
