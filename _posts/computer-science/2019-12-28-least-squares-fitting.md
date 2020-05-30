@@ -3,7 +3,7 @@ title: "Least Squares Fitting: How to Fit a Curve to Data"
 description: "Having mastered the method of least squares, we're now ready to learn how to solve least squares fitting problems, both by hand and with Python."
 keywords: [least squares fitting, least squares method]
 tags: [computer-science, math]
-needsLatex: true
+needs_latex: true
 comments_id: 39
 ---
 
