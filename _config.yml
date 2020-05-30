@@ -112,16 +112,6 @@ defaults:
       categories: computer-science
   -
     scope:
-      path: _posts/gaming
+      path: _posts/off-topic
     values:
-      categories: gaming
-  -
-    scope:
-      path: _posts/music
-    values:
-      categories: music
-  -
-    scope:
-      path: _posts/writing
-    values:
-      categories: writing
+      categories: off-topic

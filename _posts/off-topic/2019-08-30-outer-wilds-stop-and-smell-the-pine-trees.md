@@ -1,8 +1,9 @@
 ---
-title: "Outer Wilds Review: Stop and Smell the Pine Trees"
-description: At its core, Outer Wilds is a space exploration game. But it's so much more than just that. Here's my in-depth Outer Wilds review.
+title: "Outer Wilds: Stop and Smell the Pine Trees"
+description: On the surface, Outer Wilds is a space exploration game. But peel back the layers, and it's a captivating and philosophical story about life and our universe.
 keywords: [what is outer wilds about, outer wilds review, outer wilds ending explained, outer wilds meaning, outer wilds pine trees]
-tags: [gaming, game-review, outer-wilds]
+tags: [off-topic, gaming, outer-wilds]
+redirect_from: /blog/gaming/outer-wilds-review-stop-and-smell-the-pine-trees/
 comments_id: 40
 ---
 
@@ -160,11 +161,9 @@ You've seen Giant's Deep from the trailers, but it's even more impressive in gam
 
 The first planet you always see when you wake up, Giant's Deep houses secrets that are key to reaching the Quantum Moon, as well as the Eye of the Universe itself. To think that all the knowledge you needed was just a current and a cyclone away!
 
-{% include linkedHeading.html heading="Outer Wilds Ending Explained: Accept Your Fate and Learn to Cope" level=2 %}
+{% include linkedHeading.html heading="Outer Wilds Ending Explained: Accepting Your Fate" level=2 %}
 
-So, that's great and all—Outer Wilds is a top-notch game with lots to see and do.
-
-But what's up with that ending? (The most accessible one, at least—it's one of many you can unlock.)
+On the surface, Outer Wilds is "just another space exploration game." But peel back the layers, and it's a captivating and philosophical story about life and death.
 
 {% include picture.html img="supernova" ext="JPG" alt="Your solar system's sun collapses under its own gravity in a violent supernova." shadow=false %}
 

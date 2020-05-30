@@ -2,8 +2,9 @@
 title: "9 SEO Blogging Tips for How to Get More Traffic"
 description: Learn how to use some tried-and-true SEO blogging tips to get more traffic on your website and rank higher in search engine results.
 keywords: [SEO blogging best practices]
-tags: [writing, seo, blogging]
+tags: [off-topic, blogging, seo]
 comments_id: 41
+redirect_from: /blog/writing/seo-blogging-tips/
 ---
 
 **Search engine optimization** (SEO) is the art of making strategic improvements to a site's content or performance in order to rank higher in search results and attract more traffic.

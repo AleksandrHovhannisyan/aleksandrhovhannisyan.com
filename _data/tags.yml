@@ -1,5 +1,4 @@
-all: Welcome to my blog! I like to write about a range of technical and nontechnical topics.
+all: Welcome to my blog! I write dev tutorials and the occasional off-topic post.
 dev: Technical posts and tutorials covering a range of languages, technologies, and concepts.
 computer-science: Posts focused on computer science fundamentals and topics typically covered in CS curricula.
-gaming: I love playing video games and writing about them!
-writing: Tips for writing, blogging, SEO, and an assortment of other topics.
+off-topic: Miscellaneous blog posts and musings on a variety of subjects unrelated to software development.
