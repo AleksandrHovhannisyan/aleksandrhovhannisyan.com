@@ -1,0 +1,39 @@
+@import 'colors';
+@import 'mixins';
+
+table {
+    border-collapse: collapse;
+    max-width: 100%;
+    overflow-x: auto;
+    display: block;
+}
+
+thead {
+    background-color: var(--table-header-bg-color);
+    color: var(--table-header-text-color);
+    @include transition(background-color, color);
+}
+
+td,
+th {
+    text-align: left;
+    padding: 0.5em 1em;
+}
+
+tr:not(:first-child) {
+    border-top: solid 2px var(--table-row-border-color);
+    @include transition(border-color);
+}
+
+tbody {
+    tr:nth-child(even) {
+        // background-color: hsl(0, 0%, 98%);
+        background-color: var(--table-row-stripe-color);
+        @include transition(background-color);
+    }
+    
+    tr:last-child {
+        border-bottom: solid 2px var(--table-row-border-color);
+        @include transition(border-color);
+    }
+}

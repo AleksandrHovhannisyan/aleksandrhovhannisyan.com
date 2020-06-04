@@ -22,6 +22,11 @@ html.light {
     --code-bg-color: rgba(234, 234, 234, 0.749);
     --code-text-color: #5b6169;
 
+    --table-header-bg-color: #4d4d4d;
+    --table-header-text-color: #e6e6e6;
+    --table-row-stripe-color: hsl(0, 0%, 98%);
+    --table-row-border-color: hsl(0, 0%, 92%);
+
     --hover-color-general: #f6f6f6;
     
     --form-bg-color: #f6f6f6;
@@ -54,6 +59,11 @@ html.dark {
 
     --code-bg-color: rgba(88, 88, 88, 0.65);
     --code-text-color: #b2b2b2;
+
+    --table-header-bg-color: #292929;
+    --table-header-text-color: #dedede;
+    --table-row-stripe-color: #2a2a2a;
+    --table-row-border-color: #2a2a2a;
 
     --hover-color-general: #292929;
 
