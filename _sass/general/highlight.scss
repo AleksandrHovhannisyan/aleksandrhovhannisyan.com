@@ -1,39 +1,23 @@
 /* VS Code Dark Theme, modified for use with Rouge. */
-
-$background: #252525;
-$selection: #add6ff26;
-$comment: #6A9955;
-$text: #b3b9c5;
-$function: #d4d4d4;
-$variable: #569cd6;
-$number: #b5cea8;
-$attribute: #9cdcfe;
-$keyword: #569cd6;
-$string: #ce9178;
-$tag: #569cd6;
-$constant: #569cd6;
-$support: #9cdcfe;
-$operator: #d4d4d4;
-$punctuation: #d4d4d4;
-$operator-word: #569cd6;
+@import 'colors';
 
 .highlight {
   border-radius: 5px;
 
   &, code {
-    background-color: $background;
-    color: $text;
+    background-color: $code-background;
+    color: $code-text;
   }
 
   *::selection {
-    background-color: $selection;
+    background-color: $code-selection;
     // This will be overriden by more specific styles but retained for normal text and labels
-    color: $text;
+    color: $code-text;
   }
 
   /* Base Style */
   pre {
-    background-color: $background;
+    background-color: $code-background;
     color: transparent;
 
     &.highlight {
@@ -46,65 +30,65 @@ $operator-word: #569cd6;
   /* Comments */
   .c, .cm, .cp, .c1, .cs {
     font-style: italic;
-    @include selectionResistantColor($comment);
+    @include selectionResistantColor($code-comment);
   }
 
   /* Functions */
   .nf, .nx {
-    @include selectionResistantColor($function);
+    @include selectionResistantColor($code-function);
   }
 
   /* Attributes */
   .na {
-    @include selectionResistantColor($attribute);
+    @include selectionResistantColor($code-attribute);
   }
 
   /* Variables */
   .bp, .nv, .vc, .vg, .vi, .err {
-    @include selectionResistantColor($variable);
+    @include selectionResistantColor($code-variable);
   }
 
   /* Numbers */
   .m, .mf, .mh, .mi, .mo, .il {
-    @include selectionResistantColor($number);
+    @include selectionResistantColor($code-number);
   }
 
   /* Keywords */
   .k, .kd, .kn, .kr, .kt {
-    @include selectionResistantColor($keyword);
+    @include selectionResistantColor($code-keyword);
   }
 
   /* Constants */
   .kc {
-    @include selectionResistantColor($constant);
+    @include selectionResistantColor($code-constant);
   }
 
   /* Pseudo */
   .kp, .nb {
-    @include selectionResistantColor($support);
+    @include selectionResistantColor($code-support);
   }
 
   /* Strings */
   .s, .sb, .sc, .s1, .s2 {
-    @include selectionResistantColor($string);
+    @include selectionResistantColor($code-string);
   }
 
   /* Classes/tags */
   .nc, .nt, .nl {
-    @include selectionResistantColor($tag);
+    @include selectionResistantColor($code-tag);
   }
 
   /* Punctuation */
   .p {
-    @include selectionResistantColor($punctuation);
+    @include selectionResistantColor($code-punctuation);
   }
 
   .o {
-    @include selectionResistantColor($operator);
+    @include selectionResistantColor($code-operator);
   }
 
   /* Operators */
   .ow {
-    @include selectionResistantColor($operator-word);
+    @include selectionResistantColor($code-operator-word);
   }
 }
