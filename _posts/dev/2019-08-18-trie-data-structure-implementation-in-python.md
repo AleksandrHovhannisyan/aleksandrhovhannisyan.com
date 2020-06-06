@@ -101,7 +101,7 @@ Let's consider how we'd build a prefix tree. We'll always start with a root node
 
 {% include picture.html img="trie" ext="JPG" alt="An example of a trie for the words bat, big, ape, and apple." %}
 
-{% include linkedHeading.html heading="Detailed Explanation: How to Build a Prefix Tree" level=3 %}
+### Detailed Explanation: How to Build a Prefix Tree
 
 How would we go about building this structure from the ground up? I encourage you to grab a pen and paper to work through this by hand, starting with an empty trie and inserting one word at a time (in no particular order, as that doesn't change things).
 
@@ -113,7 +113,7 @@ In either case, at the end of the current iteration, we move on by setting the c
 
 Recall that each node also has to keep track of the string that's been generated so far. For example, if we're inserting the word `apple`, then we'll need to create nodes with the following `text` entries: `a`, `ap`, `app`, `appl`, and `apple`. In Python, doing this is simply a matter of slicing the string with `word[0:i+1]`, where `i` is the current index in the word that we're inserting. Thus, if we're inserting `apple` and `i=2`, then `prefix = word[0:3] = 'app'`.
 
-{% include linkedHeading.html heading="The Code: Inserting a Word Into a Trie" level=3 %}
+### The Code: Inserting a Word Into a Trie
 
 Here's the full* Python implementation of inserting nodes into a trie:
 
@@ -159,7 +159,7 @@ Here's the code:
 
 *Remember that little caveat I kept bringing up before? This code is mostly correct except for the `return current` line at the end. Let's discuss why this needs to change.
 
-{% include linkedHeading.html heading="Fixing Our Code: Learning from Mistakes" level=3 %}
+### Fixing Our Code: Learning from Mistakes
 
 I kept this hidden from you on purpose so the learning experience would be more memorable. If you figured out what's wrong with the last line of the code and why, then great! If not, I'll help you understand.
 
@@ -408,7 +408,7 @@ And here's the output:
 
 All tests ran correctly—awesome!
 
-{% include linkedHeading.html heading="And We're Done!" level=2 %}
+## And We're Done!
 
 Prefix trees are rarely ever taught in CS curriculum, with more emphasis placed on associative data structures, linked lists, and trees. But it's good to know how to make one by hand if you want to create your own autocomplete dropdown widget from scratch, for example, or if you're looking to add another data structure to your toolkit.
 

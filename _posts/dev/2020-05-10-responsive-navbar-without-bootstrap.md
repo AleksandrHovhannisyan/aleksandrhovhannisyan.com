@@ -12,7 +12,7 @@ People often turn to CSS frameworks like Bootstrap to build navbars because they
 
 In this tutorial, we'll create a **responsive navbar** using nothing but HTML, CSS, and JavaScript. That's right—no frameworks needed :) It'll work on both mobile and desktop devices. Let's dig in!
 
-{% include linkedHeading.html heading="What We're Building" level=2 %}
+## What We're Building
 
 Here's the codepen for this tutorial:
 
@@ -33,7 +33,7 @@ We'll design this with a mobile-first approach and simply take care of the deskt
 
 > **Note**: I'll also offer alternative design options wherever it's possible with just a few changes. For example, if you don't like the detached/floating navigation menu, I'll show you how to keep it attached or get it to behave like a sidebar.
 
-{% include linkedHeading.html heading="Responsive Navbar HTML" level=2 %}
+## Responsive Navbar HTML
 
 Below is all of the HTML that we're going to need to create our responsive navbar, complete with semantic and legible markup and none of that Bootstrap nonsense:
 
@@ -73,7 +73,7 @@ Below is all of the HTML that we're going to need to create our responsive navba
 
 We're going to need two more files: `style.css` and `index.js`. Go ahead and create those before moving on. Note that you can place them under an assets folder if you'd like; just be sure to update the link and script in the above HTML to point to the correct files.
 
-{% include linkedHeading.html heading="How Does It Work?" level=2 %}
+## How Does It Work?
 
 Before I vomit a bunch of CSS on your screen and leave you clueless as to what's going on, it's worth taking a closer look at the components at play here.
 
@@ -107,7 +107,7 @@ That's it! When we hit the `700px` breakpoint, our media query kicks in and styl
 
 With all of these insights, we're ready to begin creating our responsive navbar.
 
-{% include linkedHeading.html heading="Responsive Navbar CSS and JavaScript" level=2 %}
+## Responsive Navbar CSS and JavaScript
 
 We're going to take this slowly. I'll add explanations for each bit of CSS and JavaScript that I introduce so you understand what's going on. I'll also show screenshots with each major change we introduce.
 
@@ -231,7 +231,7 @@ Here's the logo styling (this is just a placeholder for my demo—you'll want to
 
 Time for the toggle button.
 
-{% include linkedHeading.html heading="Navbar Hamburger Icon" level=3 %}
+### Navbar Hamburger Icon
 
 {% capture code %}#topnav .menu-toggle {
     cursor: pointer;
@@ -305,7 +305,7 @@ When the button is clicked, we'll apply a class name to `#topnav` in our JavaScr
 
 Basically, the middle bar disappears, the top and bottom bars get absolute positioning at the center of the button, the top bar rotates 45 degrees clockwise, and the bottom bar rotates 45 degrees counter-clockwise.
 
-{% include linkedHeading.html heading="Toggling the Hamburger Icon" level=3 %}
+### Toggling the Hamburger Icon
 
 Now's a good time to code up the logic for toggling the navigation menu:
 
@@ -348,7 +348,7 @@ At this point, you can hop on over to your browser and test that the button work
 
 The menu, of course, is still not functional. Let's fix that!
 
-{% include linkedHeading.html heading="Responsive Navbar Menu" level=3 %}
+### Responsive Navbar Menu
 
 As I mentioned earlier, the navigation menu wrapper has fixed positioning, with a `top` offset equal to precisely the height of the navbar itself:
 
@@ -478,7 +478,7 @@ Basically, this lets the user close the navigation menu when they click on `.nav
 
 Go ahead and test this on your end to make sure the mobile version works.
 
-{% include linkedHeading.html heading="Responsive Navbar: Desktop Layout" level=2 %}
+## Responsive Navbar: Desktop Layout
 
 I'll show the media query in its entirety and then we'll look at what each piece is doing:
 
@@ -565,7 +565,7 @@ And finally, `.nav-links` now uses a flex direction of `row` instead of `column`
 
 We're officially done! But you may be wondering if there's room for customization—there sure is!
 
-{% include linkedHeading.html heading="Alternative Responsive Navbar Designs" level=2 %}
+## Alternative Responsive Navbar Designs
 
 For the purposes of this tutorial, I made lots of assumptions about the default state, appearance, and behavior of the navigation bar. In reality, what you'll want to do is use separate, specialized class names to customize this navbar to your liking.
 
@@ -585,7 +585,7 @@ The CSS now involves these classes, which get applied to `.nav-menu`:
 - `sidebar left`: The menu opens as a sidebar from the left.
 - `sidebar right`: The menu opens as a sidebar from the right.
 
-{% include linkedHeading.html heading="That's It!" level=2 %}
+## That's It!
 
 Creating responsive navbars in HTML isn't really all that difficult once you master basic positioning and Flexbox, as those two account for a majority of the CSS. The rest is just there to space the content and make things look pretty.
 

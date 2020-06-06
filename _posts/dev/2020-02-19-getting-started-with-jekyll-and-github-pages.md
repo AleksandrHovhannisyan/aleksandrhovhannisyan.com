@@ -16,7 +16,7 @@ Note that some parts of this tutorial assume that you'll be hosting your site wi
 
 All right, enough chit-chat—let's dig in!
 
-{% include linkedHeading.html heading="Table of Contents" level=2 %}
+## Table of Contents
 
 - [Overview: What Is Jekyll?](#overview-what-is-jekyll)
 - [How to Set Up GitHub Pages](#how-to-set-up-github-pages)
@@ -58,7 +58,7 @@ All right, enough chit-chat—let's dig in!
   - [Is It Safe to Upload the Google Search Console Verification File?](#is-it-safe-to-upload-the-google-search-console-verification-file)
 - [GitHub Pages Support for Jekyll Plugins](#github-pages-support-for-jekyll-plugins)
 
-{% include linkedHeading.html heading="Overview: What Is Jekyll?" level=2 %}
+## Overview: What Is Jekyll?
 
 Jekyll is a **static site generator**. That's just a fancy way of saying that it takes a bunch of HTML, Markdown, CSS, and JavaScript source files, combines them as needed based on layout files that you've specified, processes any template code that you've written, and spits out a build directory (e.g., `_site/`) that basically houses all of your website's content, ready for hosting on a web server (like GitHub Pages!).
 
@@ -70,7 +70,7 @@ In plain English, Jekyll makes it easy for you to create a website—and, more c
 
 The best part? GitHub Pages supports ([and even recommends](https://help.github.com/en/github/working-with-github-pages/about-github-pages-and-jekyll)) Jekyll out of the box, meaning you can set up a Jekyll project *right now*, push the source code to a GitHub repository, and view the live website!
 
-{% include linkedHeading.html heading="How to Set Up GitHub Pages" level=2 %}
+## How to Set Up GitHub Pages
 
 If you've already set up your GitHub Pages repo, feel free to [skip this section](#getting-started-with-jekyll).
 
@@ -88,11 +88,11 @@ That's literally all you have to do to get started with GitHub Pages! As with ot
 
 If you want to use any starter themes, GitHub goes over those [in its documentation for GitHub Pages](https://guides.github.com/features/pages/). Disclaimer: I'm not sure how these work with Jekyll, so you're on your own if you take that route.
 
-{% include linkedHeading.html heading="Getting Started with Jekyll" level=2 %}
+## Getting Started with Jekyll
 
 Now that we've set up GitHub Pages, we'll go over everything you need to know to get started with Jekyll. For the remainder of this tutorial, I'll assume you're using Bash as your terminal, either on a Mac/Linux or with the [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/learn/modules/get-started-with-windows-subsystem-for-linux/). I'm sure there's a reasonably painful way to do this all on a Windows terminal like PowerShell, but I wouldn't advise it... because Windows.
 
-{% include linkedHeading.html heading="1. Installing Jekyll" level=3 %}
+### 1. Installing Jekyll
 
 Jekyll has an excellent, in-depth [installation guide](https://jekyllrb.com/docs/installation/) for each OS, so I'll let you read that instead of copy-pasting it all here. If you follow the Ubuntu guide, which is what I use via WSL, you'll install these three things:
 
@@ -102,7 +102,7 @@ Jekyll has an excellent, in-depth [installation guide](https://jekyllrb.com/docs
 
 If you're familiar with npm and yarn, Bundler is basically the same idea except for Ruby—it manages your dependencies (gems) via two files called `Gemfile` and `Gemfile.lock`, which we'll see shortly.
 
-{% include linkedHeading.html heading="2. Setting Up Your First Jekyll Site" level=3 %}
+### 2. Setting Up Your First Jekyll Site
 
 Assuming that everything went well, it's time to make your first Jekyll site.
 
@@ -123,7 +123,7 @@ The end result should be this simple directory structure:
 
 {% include picture.html img="directory-structure" ext="JPG" alt="Jekyll starter files." shadow=false %}
 
-{% include linkedHeading.html heading="3. Configuring Jekyll with GitHub Pages" level=3 %}
+### 3. Configuring Jekyll with GitHub Pages
 
 Go ahead and open up the Gemfile at the root of your project. You'll find useful comments in there to help you configure Jekyll with GitHub Pages:
 
@@ -209,7 +209,7 @@ Use `bundle info [gemname]` to see where a bundled gem is installed.
 
 You should also now see a `Gemfile.lock` file at the root of your project. This is like the `package-lock.json` that npm generates, if you've ever worked in a Node ecosystem. This lockfile gets created the first time you run `bundle install`, ensuring that anyone who runs the same command in the future installs the exact versions specified in there. That way, everyone's on the same page.
 
-{% include linkedHeading.html heading="4. Running Jekyll Locally" level=3 %}
+### 4. Running Jekyll Locally
 
 Let's fire her up and see what we've got:
 
@@ -240,7 +240,7 @@ Head on over to `localhost:4000` to see the starter page. Note that the appearan
 
 The remainder of this tutorial assumes that your theme is set to `null`. Some of the screenshots I show may not line up with what you see on your end if you decide to use the minima theme. You may also miss out on learning some useful things about how Jekyll works if you decide to use one of the starter themes instead of writing your own CSS.
 
-{% include linkedHeading.html heading="5. Pushing Your Site to GitHub" level=3 %}
+### 5. Pushing Your Site to GitHub
 
 If you haven't already done so, push your Jekyll site to GitHub Pages:
 
@@ -251,7 +251,7 @@ Then, simply visit `https://yourUsername.github.io` to view the live version of 
 
 Congratulations! If you're with me so far, you're done with the hard part. Now, it's time to actually learn how to customize your site. It's important to step out of your comfort zone. Don't worry if you accidentally "break" a file—just undo those changes with Git.
 
-{% include linkedHeading.html heading="Typical Jekyll Directory Structure" level=2 %}
+## Typical Jekyll Directory Structure
 
 The Jekyll starter is a bare-bones site. In reality, you're going to need more Jekyll-supported directories for different kinds of tasks:
 
@@ -268,7 +268,7 @@ You may be wondering why all of these directory names are prefixed by an undersc
 
 If none of this makes sense to you right now, or if all of this seems overwhelming, don't worry—I'm going to walk you through most of it step by step. Also note that you are free to add any other directories that you need. 
 
-{% include linkedHeading.html heading="Configuring Your Jekyll Site" level=2 %}
+## Configuring Your Jekyll Site
 
 We already saw that you can edit your Jekyll starter theme in `_config.yml`, but that's not all that this file allows you to do. In fact, this file houses your entire site's configuration settings. Here's what mine looks like so far:
 
@@ -325,7 +325,7 @@ Go ahead and fill in most of these setings (you could also do this later—there
 
 We'll come back to `_config.yml` in a later section once we've looked at some other Jekyll basics.
 
-{% include linkedHeading.html heading="How to Create Pages in Jekyll" level=2 %}
+## How to Create Pages in Jekyll
 
 If you have any experience working with plain old HTML to create sites, you should be familiar with creating an `index.html` file and placing it at the root of your project directory. This is the page that your web server will send back when the client requests your site's root URL (e.g., `https://myawesomesite.github.io/`).
 
@@ -399,7 +399,7 @@ To understand more about what goes on behind the scenes in Jekyll, go ahead and 
 
 This reveals an interesting point that will become important later: Where a file ends up in `_site/` depends on where it is placed in your project directory. In our case, the `index.md` at the root of our project directory becomes `index.html` at the root of `_site/`.
 
-{% include linkedHeading.html heading="What Is Markdown Front Matter?" level=3 %}
+### What Is Markdown Front Matter?
 
 Notice that the comments at the top of `index.md` mention that you can add custom "front matter" to the file. What exactly does that mean?
 
@@ -475,7 +475,7 @@ categories: jekyll update
 
 This time, we define variables for the title of the post, the date when the post was published, and any categories that this post belongs to. We've also declared its layout (but again, that layout file does not yet exist, so it has no effect). All of these variables can be used later on to customize our post pages, like showing the post title in the browser tab. You can learn more about how to use front matter in the [Jekyll docs](https://jekyllrb.com/docs/front-matter/).
 
-{% include linkedHeading.html heading="Front Matter Defaults" level=4 %}
+#### Front Matter Defaults
 
 So far, we've seen two pages that have used the [predefined global variable](https://jekyllrb.com/docs/front-matter/#predefined-global-variables) named `layout`, even though we don't yet know what this does or what layouts are in Jekyll.
 
@@ -520,7 +520,7 @@ layout: default
 
 This is a common pattern that you'll run into in Jekyll: If you find yourself repeating something tediously, there's probably a better, less redundant way to do it.
 
-{% include linkedHeading.html heading="Where Do I Put My Pages in Jekyll?" level=2 %}
+## Where Do I Put My Pages in Jekyll?
 
 This is one of the first questions I asked when I was just getting started with Jekyll, and it's one that I hope to answer here in as much detail as possible.
 
@@ -639,11 +639,11 @@ _site
 
 Interesting! Now you can continue creating other pages using Markdown under `_pages/`, remembering to add permalinks to each one—like `/experience/`, `/contact/`, and so on. Jekyll will generate separate directories for each of these pages under `_site/` using your specified permalinks, just like it did with `about/`, and plop in an `index.html` with your compiled Markdown. You'll then be able to navigate to each page.
 
-{% include linkedHeading.html heading="Jekyll Blog Posts" level=2 %}
+## Jekyll Blog Posts
 
 I want to take a second to demystify some things about blog posts in Jekyll. Most of the lessons here carry over from what we learned about pages; we're just building on what we already know.
 
-{% include linkedHeading.html heading="Permalinks to Blog Posts in Jekyll" level=3 %}
+### Permalinks to Blog Posts in Jekyll
 
 We can give each blog post a permalink, too, just like we did with our pages above. But again, we don't want to have to repeat this every single time we create a post. Let's add a permalink to the defaults in our `_config.yml`:
 
@@ -727,7 +727,7 @@ By the way, you don't necessarily have to follow this format. You could just hav
 permalink: /blog/:title/
 ```
 
-{% include linkedHeading.html heading="You Don't Need an Explicit Date Variable" level=3 %}
+### You Don't Need an Explicit Date Variable
 
 The example blog post that Jekyll created for us has this date in its front matter block:
 
@@ -770,7 +770,7 @@ Open up the post on your local to see the result:
 
 This is our first look at the syntax of Liquid, the templating language that Jekyll uses to make development easier. You'll see that `page.date` is among the list of [page variables in Jekyll](https://jekyllrb.com/docs/variables/#page-variables), among many others that you can use.
 
-{% include linkedHeading.html heading="Blog Post Front Matter Variables" level=3 %}
+### Blog Post Front Matter Variables
 
 There are three predefined variables unique to Jekyll blog posts:
 
@@ -791,7 +791,7 @@ tags: [dev, jekyll, frontend, github]
 
 Of these four variables, only `tags` is a predefined one that Jekyll recognizes and processes. The rest—like `title`, `description`, and `keywords`—are for SEO and allow me to customize my page's `head` block using some Liquid templating. If you scroll to the top of this post, you'll see that I've used the `tags` variable to create some clickable tag elements under the post's title.
 
-{% include linkedHeading.html heading="Syntax Highlighting" level=3 %}
+### Syntax Highlighting
 
 Since blog posts use Markdown, and Markdown has support for code blocks, you get syntax highlighting support out of the box with Jekyll.
 
@@ -801,7 +801,7 @@ Alternatively, you can define your own syntax highlighting theme like I did. Act
 
 Not sure how to get started with this? Check out [some sample themes](https://gist.github.com/nicolashery/5765395) to see what selectors are being used. Then substitute the colors with your own for whatever highlighter you'd like to use.
 
-{% include linkedHeading.html heading="Dr. Jekyll and Mr. Liquid" level=2 %}
+## Dr. Jekyll and Mr. Liquid
 
 We now arrive at the long-awaited topic that I've been teasing: Liquid. Fluids. *H2O*.
 
@@ -814,7 +814,7 @@ That's it! Liquid is super simple to use and understand. If you've ever worked w
 
 While it's technically not a "programming" language, Liquid has many familiar programming constructs. Let's review some of the features of the Liquid templating language so you know what's available to you.
 
-{% include linkedHeading.html heading="Data Types" level=3 %}
+### Data Types
 
 Strings? `"Check"`. Numbers? `1`. You also get Booleans, Nil, and arrays.
 
@@ -822,7 +822,7 @@ Arrays are really powerful in Liquid because they allow you to write more reusab
 
 It's a bit tricky to give examples of any of these because they require an understanding of other Liquid concepts.
 
-{% include linkedHeading.html heading="Template Tags" level=3 %}
+### Template Tags
 
 **Template tags** ({% raw %}`{% ... %}`{% endraw %}) allow you to declare variables, evaluate conditions, loop over arrays, and do lots of other essential things in Liquid without any of that code actually showing up on the rendered HTML page. In other words, tags are how you embed template logic into your markup.
 
@@ -840,7 +840,7 @@ Like HTML tags, most template tags in Liquid have a matching end tag, often expl
 
 Speaking of which...
 
-{% include linkedHeading.html heading="Variables" level=3 %}
+### Variables
 
 Yup, Liquid has variables! Declare them, modify them, reassign them—usual variable stuff.
 
@@ -854,7 +854,7 @@ You use the `assign` tag to declare, or assign a value to, a variable:
 
 As I mentioned in the previous section, the `assign` tag doesn't need an explicit end tag. This is similar to self-closing vs. explicitly closed tags in HTML.
 
-{% include linkedHeading.html heading="Control Flow" level=3 %}
+### Control Flow
 
 If and case statements? You bet!
 
@@ -904,7 +904,7 @@ And [lots of other neat tricks](https://shopify.github.io/liquid/tags/iteration/
 
 By the way, what's up with those double curly braces in the last example? You're about to find out!
 
-{% include linkedHeading.html heading="Objects" level=3 %}
+### Objects
 
 No, not like the "objects" in other types of languages.
 
@@ -938,11 +938,11 @@ Since objects evaluate their contents, the output will be the following HTML:
 <h3>This is an h3 tag!</h3>
 ```
 
-{% include linkedHeading.html heading="Operators" level=3 %}
+### Operators
 
 Liquid has many of your standard comparison operators, like `==`, `>`, `<=`, and so on, as well as logical operators like `and` and `or`. You also have access to some special operators, like `contains`, for operating on strings, as well as `in` for iterating over arrays (which we've already seen).
 
-{% include linkedHeading.html heading="Filters" level=3 %}
+### Filters
 
 Liquid also has **filters**, which allow you to mutate or process data. They're like the built-in functions you get in many other languages. First comes the data you want to modify, then the piping operator (`|`), and finally the filter itself, which may or may not take an argument.
 
@@ -995,7 +995,7 @@ Seriously, Liquid is **fantastic**. I highly recommend that you [check out Shopi
 
 Just be aware that when Googling for certain things, you may need to append "shopify" to your query to avoid seeing physics results for actual *liquids* :)
 
-{% include linkedHeading.html heading="Using Jekyll Layout Files to Structure Pages" level=2 %}
+## Using Jekyll Layout Files to Structure Pages
 
 I mentioned layouts several times in the section on front matter variables. Now that we've covered the basics, it's time to finally understand what layouts are all about!
 
@@ -1070,7 +1070,7 @@ title: Contact
 permalink: /contact
 ---
 
-{% include linkedHeading.html heading="Contact" level=2 %}
+## Contact
 
 Get in touch!
 
@@ -1125,7 +1125,7 @@ One final note: If you want to change the site title that appears after the dash
 title: Your awesome title{% endcapture %}
 {% include code.html file="_config.yml" code=code lang="yml" %}
 
-{% include linkedHeading.html heading="Using More Than One Layout" level=3 %}
+### Using More Than One Layout
 
 If you open up the starter blog post that we saw earlier, you'll notice that it has a different layout set:
 
@@ -1168,7 +1168,7 @@ Awesome!
 
 You've essentially mastered 90% of Jekyll at this point. Only a few topics remain!
 
-{% include linkedHeading.html heading="Writing CSS in Jekyll Using SASS" level=2 %}
+## Writing CSS in Jekyll Using SASS
 
 What's a great site without some CSS to make it look pretty?
 
@@ -1176,7 +1176,7 @@ Jekyll has [built-in support for SASS](https://jekyllrb.com/docs/assets/), a CSS
 
 If you don't want to use SASS, you're more than welcome to use plain CSS. The only downside is that you won't be able to take advantage of the many great features that SASS brings to the table.
 
-{% include linkedHeading.html heading="Modular CSS with SASS Imports" level=3 %}
+### Modular CSS with SASS Imports
 
 Like pure CSS, SASS allows you to use `@import` directives to assemble your stylesheets in a modular manner. But it's actually better because it doesn't trigger an additional HTTP call—it's merely for your convenience so you can split up your styles across well-named, more manageable files. The contents of those imports will be plugged in as-is and *then* transpiled to CSS.
 
@@ -1293,7 +1293,7 @@ Here's what your site should now look like:
 
 Need to add more styles? Simply create a new SASS stylesheet under `_sass/`, possibly in a nested subdirectory to keep things organized, and then just import it into your manifest. It's that easy.
 
-{% include linkedHeading.html heading="Creating Reusable Components with Includes" level=2 %}
+## Creating Reusable Components with Includes
 
 With other static site generators like Gatsby, you can take advantage of frameworks such as React to create reusable components. But what if I told you that you can still create components in Jekyll?
 
@@ -1345,7 +1345,7 @@ Here are some example use cases for Jekyll includes:
 
 There's a *lot* more you can do with includes, but hopefully this gives you a good idea of what's possible!
 
-{% include linkedHeading.html heading="Taking Advantage of Jekyll Data Files" level=2 %}
+## Taking Advantage of Jekyll Data Files
 
 Consider your online resume or personal website: You likely want to have a page, or at least a section of a page, dedicated to your projects, skills, education, work history, and any relevant hobbies or interests. *Within* each of those categories, you'll probably have multiple entries, such as:
 
@@ -1375,7 +1375,7 @@ Once you've created a data file in Jekyll, it becomes accessible under `site.dat
 
 You can then loop over that data using Liquid tags and finally give the data its structure. The key benefit here is that you only need to **define the structure once**; the data merely gets plugged into your templates when Jekyll goes to process your HTML or Markdown files. You can combine data files with includes to take your experience with Jekyll to a whole new level.
 
-{% include linkedHeading.html heading="Example 1: Skills and Abilities" level=3 %}
+### Example 1: Skills and Abilities
 
 Let's say you have a simple file named `_data/skills.yml`. Suppose it looks something like this:
 
@@ -1427,7 +1427,7 @@ And again, we can give this data more structure:
 {% endfor %}{% endraw %}{% endcapture %}
 {% include code.html file="_pages/experience.md" code=code lang="liquid" %}
 
-{% include linkedHeading.html heading="Example 2: Author Bios" level=3 %}
+### Example 2: Author Bios
 
 Now let's suppose you run a blog that has multiple authors, not just you.
 
@@ -1490,7 +1490,7 @@ layout: default
 
 Jekyll will process these templates, use the author's name as a key into the `authors.yml` data file, retrieve the relevant information about that author, and substitute it into the template. How cool is that?
 
-{% include linkedHeading.html heading="Example 3: Tag Descriptions" level=3 %}
+### Example 3: Tag Descriptions
 
 Let's say each post on your site has tags, like the ones on my blog:
 
@@ -1526,7 +1526,7 @@ Then, you can once again take advantage of YAML's associative data nature to ass
 
 Neat, right? You can extend this to a lot of other use cases.
 
-{% include linkedHeading.html heading="Setting Up Google Search Console" level=2 %}
+## Setting Up Google Search Console
 
 So you've started blogging with Jekyll. Awesome work!
 
@@ -1554,11 +1554,11 @@ You'll be asked to verify that you are in fact the owner of this website. Google
 
 GitHub Pages will then build your site and make this file accessible to Google for verification. Once you've uploaded the file, click `Verify`.
 
-{% include linkedHeading.html heading="Is It Safe to Upload the Google Search Console Verification File?" level=3 %}
+### Is It Safe to Upload the Google Search Console Verification File?
 
 Don't worry—[there's no security risk associated with doing this](https://stackoverflow.com/questions/57384269/github-pages-blog-and-google-search-console-is-it-safe-to-follow-these-steps-fo). The file can only be used for verifying ownership, not authentication. So if someone downloads your file and tries to use it, they won't be able to access your Google Search Console statistics or anything else associated with your Google Account.
 
-{% include linkedHeading.html heading="GitHub Pages Support for Jekyll Plugins" level=2 %}
+## GitHub Pages Support for Jekyll Plugins
 
 The great thing about Jekyll is that it has a large open-source community of creators who publish **Jekyll plugins**. These are just Ruby gems that extend the functionality of Jekyll and make your life easier.
 
@@ -1570,7 +1570,7 @@ Understandably, this may not be ideal if you want people (e.g., recruiters or ot
 
 You can learn more about this issue and its workarounds in [this StackOverflow thread](https://stackoverflow.com/a/31871892/5323344).
 
-{% include linkedHeading.html heading="You're All Set!" level=2 %}
+## You're All Set!
 
 Give yourself a big pat on the back—if you made it to the end of this post, then you have a working website and a solid understanding of some Jekyll (and liquid) fundamentals 🎉.
 

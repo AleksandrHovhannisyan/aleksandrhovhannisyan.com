@@ -9,7 +9,7 @@ last_updated: 2020-05-11
 
 You may have heard the terms "hard link" and "soft link" used in the context of Unix and Unix-like operating systems. But do you know what they are and how you create them? In this post, we'll look at the differences between hard links and soft links and understand how to create them.
 
-{% include linkedHeading.html heading="Commands We'll Be Using" level=2 %}
+## Commands We'll Be Using
 
 It helps to know these Unix commands, but if you don't, we'll look at how to use them:
 
@@ -22,7 +22,7 @@ It helps to know these Unix commands, but if you don't, we'll look at how to use
 
 We'll use these to explore hard links and symbolic links in this blog post.
 
-{% include linkedHeading.html heading="But First... What Are File Links?" level=2 %}
+## But First... What Are File Links?
 
 When we talk about files in English, we typically picture a folder, binder, or some other container that directly stores documents or information. But files in the *computer* sense are nothing more than named entries in a directory.
 
@@ -64,7 +64,7 @@ Keep an eye on that `1`—it'll change as we begin experimenting with soft links
 
 > **Fun fact 2**: Directories themselves are special kinds of files—a sort of catalog of files. As it turns out, the starting link count for a new directory is actually `2`, not `1`. This is because **`.`** (which you can observe using `ls -a`) is a reference to the current directory. Thus, there are two references to every new directory: The directory name itself, and then the link **`.`** within that directory. Confused? [Take a look at this answer](https://Unix.stackexchange.com/a/101516/311005).
 
-{% include linkedHeading.html heading="1. What Are Symbolic Links?" level=2 %}
+## 1. What Are Symbolic Links?
 
 A **symbolic link** (also known as a "soft link" or "symlink") is a file like any other, but its data is special. Whereas regular files can be created at will—initially empty or with some contents—symbolic links cannot be created out of thin air. Rather, to create a symbolic link, you must associate it with some other file. Thus, a symbolic link's raw data is actually the path (relative or absolute) to its target file.
 
@@ -92,7 +92,7 @@ Even though the symbolic link's underlying data is the *path* of the original fi
 
 > **Exercise 2**: Create a file with a longer name. Then, create a symbolic link to that file. Can you determine what the size of the symbolic link will be in bytes?
 
-{% include linkedHeading.html heading="Symbolic Links to Files in a Different Directory" level=3 %}
+### Symbolic Links to Files in a Different Directory
 
 Let's see what happens if you create a soft link to a file that's not in the same directory:
 
@@ -100,7 +100,7 @@ Let's see what happens if you create a soft link to a file that's not in the sam
 
 This time, the symbolic link's file size is no longer `4` bytes. Rather, it's `10`: the length of the string `links/` (which is `6`) plus the length of the target file name itself (`4`).
 
-{% include linkedHeading.html heading="Symbolic Links and Link Rot" level=3 %}
+### Symbolic Links and Link Rot
 
 Because a symbolic link's data is the *path* to the original file, there are two natural consequences:
 
@@ -130,7 +130,7 @@ Before we move on to discussing hard links, note that there's an additional comm
 
 And there's our problem! The symbolic link is still pointing to the original (now non-existent) file.
 
-{% include linkedHeading.html heading="2. What Are Hard Links?" level=2 %}
+## 2. What Are Hard Links?
 
 On the other hand, a **hard link** acts as an alias for the target file. It has the same file size and the same inode number but a different name. Creating a hard link for a target file will increment the link count for that file's inode. For these reasons, hard links are also known as **physical links**.
 
@@ -152,7 +152,7 @@ Interesting...
 
 If we think back to what "deleting" a file really means, this should make sense: A file is not truly deleted until its corresponding inode's link count reaches zero. In this case, creating a hard link for the file increments its inode's link count to `2`. When we delete the original file, the link count goes down to `1`. Only if we now delete the hard link will the file reach a link count of zero and disappear.
 
-{% include linkedHeading.html heading="Limitations of Hard Links" level=3 %}
+### Limitations of Hard Links
 
 It's worth mentioning that [hard links have two limitations](http://blog.serverbuddies.com/hard-links-have-two-limitations/) that symbolic links do not:
 
@@ -161,7 +161,7 @@ It's worth mentioning that [hard links have two limitations](http://blog.serverb
 
 It's a tradeoff: While symbolic links do not face these limitations, they are prone to rotting if the original file is renamed, moved, or deleted.
 
-{% include linkedHeading.html heading="Hard Links and Symbolic Links to Executable Files" level=2 %}
+## Hard Links and Symbolic Links to Executable Files
 
 So far, we've looked at creating hard links and soft links to plaintext files. More often, you'll be creating links to executables in Unix.
 
@@ -177,14 +177,14 @@ You can also create a custom link:
 
 As expected, invoking the symlink invokes the underlying executable.
 
-{% include linkedHeading.html heading="Additional Exercises" level=2 %}
+## Additional Exercises
 
 Try these out on your end:
 
 1. What do you expect will happen if you change the permissions of a hard link using `chmod`? What about changing the permissions of a soft link?
 2. What happens if you create a hard link to a soft link?
 
-{% include linkedHeading.html heading="Further Reading" level=2 %}
+## Further Reading
 
 Soft links and hard links aren't as mysterious as they may seem at first—they just offer two similar (but notably different) ways to reference files on an operating system.
 

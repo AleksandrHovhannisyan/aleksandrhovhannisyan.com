@@ -12,7 +12,7 @@ Welcome to **tutorial purgatory**, friend. It's a bit like being chained to a po
 
 Stuck in tutorial purgatory? Here are my suggestions for how to escape this hell.
 
-{% include linkedHeading.html heading="Use Tutorials as a Guide" level=2 %}
+## Use Tutorials as a Guide
 
 > "Thou follow me, and I will be thy guide" —Virgil, *The Divine Comedy*
 
@@ -35,7 +35,7 @@ This approach teaches you a fundamental, invaluable skill: **learning independen
 
 Who knows? Maybe your solution is even better than the tutorial's. And if it's worse, or you overlooked certain edge cases, then you'll learn from those mistakes, and the entire experience will be far more memorable than if you had just blindly followed the tutorial from the beginning.
 
-{% include linkedHeading.html heading="Stop Trying to Learn Things That Don't Interest You" level=2 %}
+## Stop Trying to Learn Things That Don't Interest You
 
 I recently came across a [fantastic article by Dave Geddes](https://gedd.ski/post/when-tech-makes-you-feel-dumb/) about an experience that developers are all too familiar with: Trying to learn a new technology without any particular goal in mind, struggling to understand why that technology is needed in the first place or how it's supposed to be used, and then venting on the internet because the entire experience has made them feel stupid.
 
@@ -52,7 +52,7 @@ Haven't you ever wondered how things were done *without* these fancy new technol
 
 You are, of course, free to learn whatever you want and whenever you want. But pace yourself, and understand the utility of whatever you are learning—these are two of the many keys to escaping tutorial purgatory.
 
-{% include linkedHeading.html heading="Stop Splurging Money on Courses" level=2 %}
+## Stop Splurging Money on Courses
 
 > For just *several hundred dollars*, and sometimes *thousands* over the course of a year, you too can learn Python, React, everything—*all the things*—and land your very first job as a software developer!
 
@@ -64,7 +64,7 @@ Some people learn best with courses, and that's fine. But there's a certain type
 
 [I've written about this before](/blog/dev/learn-to-code-without-wasting-time-and-money/#stop-wasting-money-on-courses-you-ll-never-finish), and I'll say it again: Don't waste money buying courses when there's such a wealth of free information available online. Price tags don't imply any inherent value.
 
-{% include linkedHeading.html heading="Take a Break" level=2 %}
+## Take a Break
 
 You know what's so great about software development? The fact that there's something in it for everyone. You know what's not so great? It's... really difficult to find that thing.
 

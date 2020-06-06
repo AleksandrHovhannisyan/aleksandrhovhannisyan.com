@@ -91,7 +91,7 @@ You should give this a class and set the display to none so it doesn't confuse y
 
 The free Formspree plan is a good option for most personal websites that don't expect more than **50 submissions per month**. If you need more than that for your site, you can opt for one of their [paid plans](https://formspree.io/plans).
 
-{% include linkedHeading.html heading="That's It!" level=2 %}
+## That's It!
 
 Adding a free contact form to your site is *that* easy.
 

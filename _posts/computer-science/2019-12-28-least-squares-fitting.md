@@ -494,6 +494,6 @@ And here's the resulting graph with our polynomial fit to the data:
 
 Looks like a pretty good fit to me!
 
-{% include linkedHeading.html heading="Conclusion" level=2 %}
+## Conclusion
 
 That about does it for this series on the least squares method! I hope you found this helpful.

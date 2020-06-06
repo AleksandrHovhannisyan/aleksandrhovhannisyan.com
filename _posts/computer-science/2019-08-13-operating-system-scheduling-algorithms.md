@@ -22,7 +22,7 @@ Before proceeding, make sure you understand the following terms:
 
 When studying scheduling algorithms, we have two high-level classifications: preemptive and nonpreemptive algorithms. Let's look at each one in turn.
 
-{% include linkedHeading.html heading="1. Non-preemptive Scheduling Algorithms (NP)" level=3 %}
+### 1. Non-preemptive Scheduling Algorithms (NP)
 
 In non-preemptive scheduling, a process runs to completion or until it blocks. While that process is running, its CPU time cannot be revoked by the scheduler (unless the OS forcibly kills the process for some other reason). Other processes in the ready queue must patiently wait their turn.
 
@@ -45,7 +45,7 @@ These are the examples of non-preemptive scheduling algorithms that we'll look a
 
 > **Analogy**: Let's use the classic family TV as an analogy for a CPU. Everyone wants to use it for something (usually streaming movies and shows or playing video games). With non-preemptive scheduling, each family member will use the TV for a set period of time and only give someone else a turn when they're finished. For example, if you plan to binge three 40-minute episodes of your favorite show on Netflix, then you'll watch all of them in succession, without giving anyone else a turn, until you're done.
 
-{% include linkedHeading.html heading="2. Preemptive Scheduling Algorithms (P)" level=3 %}
+### 2. Preemptive Scheduling Algorithms (P)
 
 On the other hand, with preemptive scheduling, a process executes for set increments of time that are allocated by the scheduler. Once the time is up, if the process still has work remaining, it will be temporarily taken off the CPU to allow other processes to run. This results in a context switch.
 
@@ -117,7 +117,7 @@ So far, we've looked at the terms preemptive and non-preemptive scheduling. But 
 
 Reminder: Batch systems have to keep up with a large number of processes. Thus, their primary goal is to increase throughput and complete as many of those jobs as possible while maximizing CPU utilization.
 
-{% include linkedHeading.html heading="First Come First Serve (NP)" level=3 %}
+### First Come First Serve (NP)
 
 First come first serve is a fair and simple non-preemptive algorithm that runs jobs in the order in which they arrived. However, because this algorithm is so naive, it doesn't always guarantee the best results.
 
@@ -132,7 +132,7 @@ Notice that while B arrives at `t = 2s`, it does not get to run until A finishes
 
 > **Note**: When we look at specific examples of scheduling algorithms, as we did here, you'll see a precise number listed under "CPU time" in the accompanying table. In practice, the best we can do is to predict how much time a process is going to use; we can't know a process's expected CPU time for certain.
 
-{% include linkedHeading.html heading="Shortest Job First (NP), aka Shortest Job Next" level=3 %}
+### Shortest Job First (NP), aka Shortest Job Next
 
 In this algorithm, when deciding which process to run next, we pick the one whose estimated total duration is the lowest among all processes currently in the queue; we then allow that process to run to completion without any preemption.
 
@@ -153,7 +153,7 @@ At `t = 0s`, A was the only "shortest" process we knew of, so we allowed it to e
     </p>
 </blockquote>
 
-{% include linkedHeading.html heading="Shortest Remaining Time First (P)" level=3 %}
+### Shortest Remaining Time First (P)
 
 This algorithm is the shortest job first algorithm above but with preemption. Whenever a new process arrives in the queue, we check all processes to see which one has the least amount of estimated time remaining until 100% completion. That's the process we'll run next.
 
@@ -180,7 +180,7 @@ With this algorithm, some processes may end up being starved if a bunch of short
 
 Reminder: Interactive systems involve a lot of user input and must therefore be responsive.
 
-{% include linkedHeading.html heading="Round Robin Scheduling (P)" level=3 %}
+### Round Robin Scheduling (P)
 
 This is a classic and straightforward scheduling algorithm. Here's how it works:
 
@@ -199,7 +199,7 @@ I used dashed vertical lines here to denote the times at which each process arri
 
 > **Note 2**: It's important to select a good quantum. If we select one that's too short, then we'll be frequently performing context switches, which can become expensive (decreasing CPU utilization). On the other hand, if the quantum we select is too large, then the system will be unresponsive to user input until the current process finishes executing for its quantum of time.
 
-{% include linkedHeading.html heading="Preemptive Priority (P)" level=3 %}
+### Preemptive Priority (P)
 
 The preemptive priority scheduling algorithm is a variation of Round Robin scheduling. Whereas the traditional Round Robin algorithm puts all processes in the same queue, this algorithm uses multiple priority queues *separately*.
 
@@ -224,7 +224,7 @@ In this example, A and B take turns alternating on the CPU in classic Round Robi
     </p>
 </blockquote>
 
-{% include linkedHeading.html heading="Proportionate Scheduling (P)" level=3 %}
+### Proportionate Scheduling (P)
 
 As its name suggests, proportionate scheduling aims to ensure a fair allocation of CPU time among processes. There are three types of proportionate scheduling that we can use:
 
@@ -236,14 +236,14 @@ As its name suggests, proportionate scheduling aims to ensure a fair allocation 
 
 Real-time scheduling algorithms are grouped into two primary categories:
 
-{% include linkedHeading.html heading="Static Scheduling" level=3 %}
+### Static Scheduling
 
 With static scheduling, decisions about what to run next are not made in real time. We can do this by:
 
 1. Feeding the system a pre-made list of processes and the order in which they should run. This can help us save time that would otherwise be lost due to an inefficient scheduling algorithm or real-time decision-making (if there are lots of processes to run).
 2. Building scheduling decisions into our code by means of control mechanisms like locks and semaphores to allow [threads](https://docs.microsoft.com/en-us/windows/win32/procthread/processes-and-threads) to take turns and to share resources like the CPU, RAM, buffers, files, and so on. When a thread attempts to claim a lock on a resource that's currently in use, it will simply be blocked until that resource is freed.
 
-{% include linkedHeading.html heading="Dynamic Scheduling" level=3 %}
+### Dynamic Scheduling
 
 Dynamic scheduling is a broad category of scheduling that employs any of the algorithms we've looked at so far. However, in the context of real-time systems, it prioritizes scheduling according to the system's deadlines:
 
@@ -252,7 +252,7 @@ Dynamic scheduling is a broad category of scheduling that employs any of the alg
 
 Thus, while static scheduling is employed before the system ever receives its first process, dynamic scheduling is employed on the fly, making decisions about which processes to schedule as they arrive in real time. Leaving things up to the hardware like this can have its advantages. For one, it guarantees some sort of scheduling optimization among threads regardless of how the code was originally written.
 
-{% include linkedHeading.html heading="Wrap-up" level=2 %}
+## Wrap-up
 
 That's about it for scheduling algorithms!
 
