@@ -21,11 +21,14 @@
     #headshot {
         background-color: var(--hero-bg-color);
         border: 5px solid var(--hero-bg-color);
-        border-radius: 50%;
         bottom: -70px;
         height: $headshot-size;
         position: absolute;
         width: $headshot-size;
+        
+        &, * {
+            border-radius: 50%;
+        }
     }
 
     .subtitle {
