@@ -1,21 +1,21 @@
 ---
-title: "Number Systems: The ABCs of 0s and 1s"
-description: Number systems underlie many of the things that we do in our daily lives. But what exactly are they? And what's the deal with binary?
-keywords: [number systems, binary number system]
+title: "Binary Numbers: The ABCs of 0s and 1s"
+description: The binary number system underlies pretty much everything in computation. So what's the deal with all those 0s and 1s, and how is binary used?
+keywords: [binary numbers, binary number system, number systems]
 tags: [computer-science, math, binary]
 needs_latex: true
 comments_id: 44
 ---
 
-What is $$10$$? Ten? Eight? Sixteen? If this is your first time exploring number systems in depth, then this question may seem pretty silly. Of course it's ten!
+What is $$10$$? If this is your first time learning about the binary number system, then this question may seem pretty silly. Of course it's ten, right?
 
 Let's try something different. Have you ever heard this joke?
 
 > There are $$10$$ types of people in the world: those who understand binary and those who don't.
 
-Unless you're familiar with the binary number system, this probably doesn't make much sense. But by the end of this post, you'll come to appreciate this and many other awful developer jokes 🙂
+Unless you're familiar with binary numbers, this probably doesn't make much sense. But by the end of this post, you'll come to appreciate this and many other awful developer jokes 🙂
 
-In this beginner's tutorial, we'll look at everything you need to know about number systems, especially binary and hexadecimal. I'll include relevant bits of code and real-life examples to help you appreciate the beauty of number systems.
+In this beginner's tutorial, we'll look at everything you need to know about the binary number system, but we'll also take a quick look at decimal and hexadecimal, as they're closely related. I'll include relevant bits of code and real-life examples to help you appreciate the beauty of binary.
 
 <!-- omit in toc -->
 ## Table of Contents
@@ -33,23 +33,27 @@ In this beginner's tutorial, we'll look at everything you need to know about num
   - [Real-World Application: Representing Colors with RGB/Hex](#real-world-application-representing-colors-with-rgbhex)
     - [How Many Colors Are There?](#how-many-colors-are-there)
     - [What Are 8-Bit Colors?](#what-are-8-bit-colors)
-- [The Binary Number System: Two's Complement](#the-binary-number-system-twos-complement)
+- [Signed Binary Numbers: Two's Complement](#signed-binary-numbers-twos-complement)
   - [How Does Two's Complement Work?](#how-does-twos-complement-work)
-    - [The Intuitive Approach: What Is a Leading 1?](#the-intuitive-approach-what-is-a-leading-1)
+    - [The Intuitive Approach: What Does a Leading 1 Denote?](#the-intuitive-approach-what-does-a-leading-1-denote)
     - [Two's Complement Shortcut: Flip the Bits and Add a 1](#twos-complement-shortcut-flip-the-bits-and-add-a-1)
     - [How Many Signed Binary Numbers Are There?](#how-many-signed-binary-numbers-are-there)
     - [What Is the Largest Signed 32-bit Integer?](#what-is-the-largest-signed-32-bit-integer)
       - [Real-World Application: Video Game Currency](#real-world-application-video-game-currency)
     - [What Is the Smallest Signed 32-bit Integer?](#what-is-the-smallest-signed-32-bit-integer)
-- [Number Systems: Basic Binary Arithmetic](#number-systems-basic-binary-arithmetic)
+- [Basic Binary Arithmetic](#basic-binary-arithmetic)
   - [Adding Binary Numbers](#adding-binary-numbers)
   - [Subtracting Binary Numbers](#subtracting-binary-numbers)
-  - [Integer Overflow and Underflow](#integer-overflow-and-underflow)
+  - [Multiplying Binary Numbers](#multiplying-binary-numbers)
+  - [Dividing Binary Numbers](#dividing-binary-numbers)
+  - [Integer Overflow and Underflow in Binary](#integer-overflow-and-underflow-in-binary)
 - [Wrap-Up: Additional Topics for Exploration](#wrap-up-additional-topics-for-exploration)
 
 ## What Is a Number System?
 
-It may be strange to think of number "systems" in the plural if this is your first time learning about them. That's because the majority of the world is familiar with just one: the **decimal number system** (aka "base ten"), also known as the **Arabic number system**. This system has digits ranging from $$0$$ to $$9$$, which we use to form numbers in our daily lives.
+Before we look at binary, let's take a step back and discuss number systems *in general*.
+
+Now, it may be strange to think of number "systems" in the plural if this is your first time learning about them. That's because the majority of the world is familiar with just one: the **decimal number system** (aka "base ten"), also known as the **Arabic number system**. This system has digits ranging from $$0$$ to $$9$$, which we use to form numbers in our daily lives.
 
 For example, in the decimal number system, $$579$$ expands to this:
 
@@ -132,15 +136,15 @@ For this reason, when discussing number systems, we usually subscript a number w
 
 ## The Binary Number System (Base 2)
 
-The binary number system is especially interesting. By definition, it has a base of $$2$$, and thus we can only work with two digits to compose numbers: $$0$$ and $$1$$. Technically speaking, we don't call these digits—they're called **bits** in binary.
+The binary number system is especially interesting and the primary topic of this post. By definition, it has a base of $$2$$, and thus we can only work with two digits to compose numbers: $$0$$ and $$1$$. Technically speaking, we don't call these digits—they're called **bits** in binary.
 
-Each "bucket" or position in a string of bits represents a power of two. From right to left, those are $$2^0$$, $$2^1$$, $$2^2$$, and so on:
+Each "bucket" in a binary string represents a power of two. From right to left, those are $$2^0$$, $$2^1$$, $$2^2$$, and so on:
 
 {% include picture.html img="binary" ext="PNG" alt="The binary number system uses powers of two" shadow=false %}
 
 The leftmost bit is called the **most significant bit (MSB)**, while the rightmost bit is called the **least significant bit (LSB)**.
 
-Here are some examples of decimal numbers represented in binary:
+Here are some examples of decimal numbers represented as binary numbers:
 
 - Zero: $$0_{10} = 0_2$$. Expansion: $$0 (2^0)$$
 - One: $$1_{10} = 1_2$$. Expansion: $$1 (2^0)$$
@@ -151,7 +155,7 @@ Here are some examples of decimal numbers represented in binary:
 
 > **Note**: Like in the decimal number system, leading zeros are usually stripped from binary strings. The only exception is if you're working with [signed binary numbers](#the-binary-number-system-twos-complement), where a leading zero indicates that a number is positive and a leading one indicates that it's negative.
 
-With a basic understanding of binary, you should now understand the joke from earlier:
+With a basic understanding of binary numbers, you should now get the joke from earlier:
 
 > There are $$10$$ types of people in the world: those who understand binary and those who don't.
 
@@ -250,11 +254,13 @@ By the way, what's up with the numbers along the left-hand side of the output? W
 
 ## The Hexademical Number System (Base 16)
 
+As I mentioned in the table from earlier, the hexadecimal number system is closely related to binary because it's often used to express binary numbers more compactly, instead of writing out a whole bunch of zeros and ones.
+
 The **hexadecimal number system** has a base of $$16$$, meaning its digits range from $$0–15$$.
 
 > **Note**: In technical terms, a hexadecimal digit is called a **nibble**, but you'll commonly hear people just call them "hex digits."
 
-Hmm... That's strange. This is our first time encountering a number system whose digits are made up of more than two characters. How do we squeeze $$10$$, $$11$$, or $$15$$ into a single "bucket" or "slot" for a digit? To be clear, **this is perfectly doable** if you have clear delimiters between digits. But in reality, that's not practical.
+This is our first time encountering a number system whose digits are made up of more than two characters. How do we squeeze $$10$$, $$11$$, or $$15$$ into a single "bucket" or "slot" for a digit? To be clear, **this is perfectly doable** if you have clear delimiters between digits. But in reality, that's not practical.
 
 Let's take a step back and consider a simple hexadecimal number:
 
@@ -314,7 +320,7 @@ Let's do a bit of a thought exercise:
 
 The answer is four because $$2^4 = 16$$. With four "buckets," we can create the numbers zero ($$0000$$), one ($$0001$$), ten ($$1010$$), all the way up to fifteeen ($$1111$$).
 
-This means that when you're given a binary string, all you have to do is visually split it into groups of four bits and evaluate them to get your hexadecimal digits!
+This means that when you're given a binary string, all you have to do is **split it into groups of four bits** and evaluate them to convert binary to hexadecimal!
 
 $$011011100101$$
 
@@ -388,13 +394,13 @@ Naturally, you may be wondering: How did they split $$8$$ bits evenly among red,
 
 Well, the answer is that *they didn't*. The process of splitting these bits among the color components is called [color quantization](https://en.wikipedia.org/wiki/8-bit_color#Color_quantization), and the most common method (known as **8-bit truecolor**) split the bits as 3-3-2 red-green-blue. Apparently, this is because the human eye is less sensitive to blue light than the other two, and thus it simply made sense to distribute the bits heavily in favor of red and green and leave blue with one less bit to work with.
 
-## The Binary Number System: Two's Complement
+## Signed Binary Numbers: Two's Complement
 
 Now that we've covered decimal, binary, and hexadecimal, I'd like us to revisit the binary number system and learn how to represent negative numbers. Because so far, we've only looked at positive numbers. How do we store the negative sign?
 
 To give us some context, I'll assume that we're working with standard $$32$$-bit integers that most (all?) modern computers support. We could just as well look at $$64$$-bit or $$\text{N}$$-bit integers, but it's good to have a concrete basis for a discussion.
 
-If we have $$32$$ bits to fiddle with, that means we can represent a total of $$4,294,967,296$$ (4 billion) numbers. More generally, if you have $$\text{N}$$ bits to work with, you can represent $$2^{\text{N}}$$ values. But we'd like to split this number range evenly between negatives and positives.
+If we have $$32$$ bits to fiddle with, that means we can represent a total of $$2^{32} = 4,294,967,296$$ (4 billion) numbers. More generally, if you have $$\text{N}$$ bits to work with, you can represent $$2^{\text{N}}$$ values. But we'd like to split this number range evenly between negatives and positives.
 
 Positive or negative... positive or negative. One thing or another thing—ring a bell? That sounds like it's binary in nature. And hey—we're already using binary to *store* our numbers! Why not reserve just a single bit to represent *the sign*? We can have the most significant (leading) bit be a $$0$$ when our number is positive and a $$1$$ when it's negative!
 
@@ -420,7 +426,7 @@ Okay, so this is positive $$22_{10}$$. How do we represent $$-22_{10}$$ in binar
 
 There are two ways we can do this: the intuitive (longer) approach and the "shortcut" approach. I'll show you both, but I'll start with the more intuitive one.
 
-#### The Intuitive Approach: What Is a Leading 1?
+#### The Intuitive Approach: What Does a Leading 1 Denote?
 
 Given an $$\text{N}$$-bit binary string, a leading $$1$$ in two's complement represents $$-1$$ multiplied by its corresponding power of two ($$2^{\text{N}-1}$$). A digit of $$1$$ in any other slot represents $$+1$$ times its corresponding power of two.
 
@@ -486,7 +492,9 @@ Bits:    31 30 29 28 ... 0
 
 This is $$2^{31} - 1$$, which is $$2,147,483,647$$. In Java, this number is stored in `Integer.MAX_VALUE`, and in C++, it's `std::numeric_limits<int>::max()`.
 
-Why did we subtract a one? Because as I mentioned in the previous section, the number zero gets grouped along with the positives when we split our number range:
+More generally, for an $$\text{N}$$-bit system, the largest signed integer is $$2^{\text{N}-1}-1$$.
+
+Why did we subtract a one at the end? Because as I mentioned in the previous section, the number zero gets grouped along with the positives when we split our number range:
 
 ```
 Signed zero:  0  0  0  0 ... 0 0 0 0
@@ -523,9 +531,11 @@ In Java, this value is stored in `Integer.MIN_VALUE`.
 
 In C++, it's in `std::numeric_limits<int>::min()`.
 
-## Number Systems: Basic Binary Arithmetic
+Generalizing things once again, if we have an $$\text{N}$$-bit system, the smallest representable signed int is $$-2^{\text{N}-1}$$.
 
-Adding and subtracting two numbers in binary is **exactly the same** as the process for adding and subtracting two numbers in the decimal number system. In fact, multiplication and division are pretty much the same, too, except the process is slightly more involved if you look at the specifics of those algorithms.
+## Basic Binary Arithmetic
+
+Spoiler: Adding, subtracting, multiplying, and dividing numbers in binary is **exactly the same** as it is in the decimal number system!
 
 ### Adding Binary Numbers
 
@@ -632,7 +642,7 @@ Flipped:      100101
 Add one:      100110  = -26
 ```
 
-Now Stack up your operands and add them like we did before:
+Stack up your operands and add them like we did before:
 
 ```
      11    <-- carry bits
@@ -648,9 +658,145 @@ $$-1(2^5) + 1(2^4) + 1(2^1) = -32_{10} + 16_{10} + 2_{10} = -14_{10}$$
 
 See what I mean? Adding and subtracting numbers in the binary number system is just as easy as it is over in decimal.
 
-### Integer Overflow and Underflow
+### Multiplying Binary Numbers
 
-What happens if you try to add one to the largest possible $$\text{N}$$-bit integer? Let's give it a shot:
+Let's remind ourselves how we multiply numbers in decimal:
+
+```
+  21
+x 12
+————
+```
+
+Remember the process? We multiply the $$2$$ by each digit in the first multiplicand and write out the result under the bar:
+
+```
+  21
+x 12
+————
+  42
+```
+
+Then we move on to the $$1$$ in $$12$$ and repeat the process, but adding a $$0$$ in the right column of the result. Add the two intermediate products to get the answer:
+
+```
+   21
+x  12
+—————
+   42
++ 210
+—————
+  252
+```
+
+Well, guess what? The process is exactly the same in binary! Let's multiply these same two numbers in binary. They are $$21_{10} = 010101$$ and $$12_{10} = 01100$$:
+
+```
+   010101
+x   01100
+—————————
+```
+
+Obviously, this is going to be more involved in binary since we're working with more digits, but the logic is still the same. In fact, beyond having to write out so many intermediate results, we actually have it much easier over in binary. Whenever a digit is $$1$$, you simply copy down the first multiplicand, padded with zeros. Whenever it's a zero times the first multiplicand, the result is zero!
+
+```
+      010101
+x      01100
+————————————
+      000000
+     0000000
+    01010100
+   010101000
++ 0000000000
+————————————
+  0011111100
+```
+
+Expanding this in binary, we get:
+
+$$0011111100_{2} = 1(2^7) + 1(2^6) + 1(2^5) + 1(2^4) + 1(2^3) + 1(2^2) = 252_{10}$$
+
+Easy peasy. The same process applies regardless of whether your multiplicands are signed or unsigned.
+
+### Dividing Binary Numbers
+
+Let's divide $$126_{10}$$ by $$12_{10}$$ using long division:
+
+```
+    0 1 0 . 5
+   _______
+12 |1 2 6
+  - 1 2
+   ————
+      0 6
+    -   0
+   ——————
+        6 0
+      - 6 0
+      —————
+          0
+```
+
+Answer: $$10.5$$.
+
+Now let's repeat the process using binary. Note that I'm going to strip leading zeros to make my life easier since we're working with two unsigned numbers:
+
+```
+    
+      _______
+1100 |1111110
+```
+
+Take things one digit at a time, and [reference this useful YouTube video](https://www.youtube.com/watch?v=VKemv9u40gc) if you get stuck:
+
+```
+         0 0 0 1 0 1 0 . 1
+        ______________
+1 1 0 0 |1 1 1 1 1 1 0 . 0
+        -0
+        ——
+         1 1
+        -  0
+        ————
+         1 1 1
+        -    0
+        ——————
+         1 1 1 1
+       - 1 1 0 0
+        ————————
+             1 1 1
+          -      0
+        ——————————
+             1 1 1 1
+           - 1 1 0 0
+           —————————
+             0 0 1 1 0
+             -       0
+             —————————
+                 1 1 0
+                 -   0
+                 —————
+                 1 1 0 0
+              -  1 1 0 0
+                 ———————
+                 0 0 0 0
+```
+
+Answer: $$01010.1$$.
+
+What does the $$1$$ to the right of the decimal point represent? Well, in the decimal number system, anything to the right of the decimal point represents a negative power of ten: $$10^{-1}$$, $$10^{-2}$$, and so on. 
+
+As you may have guessed, in the binary number system, these are $$2^{-1}$$, $$2^{-2}$$, and so on. So $$.1$$ above really means $$1(2^{-1})$$, which is $$1 / 2 = 0.5_{10}$$ in decimal. And of course, the part in front of the decimal point evaluates to $$10_{10}$$.
+
+That gives us $$10_{10} + 0.5_{10} = 10.5$$. So our answer using binary long division is **exactly the same** as the one we got over in decimal!
+
+### Integer Overflow and Underflow in Binary
+
+What happens if you try to add one to the largest representable $$\text{N}$$-bit signed integer?
+
+For example, if $$\text{N} = 32$$, we're really asking what happens if we try adding one to the largest representable $$32$$-bit signed int.
+
+Let's give it a shot:
 
 ```
     0111...11111
@@ -662,15 +808,15 @@ In the rightmost column, we'll get $$1_{2} + 1_{2} = 10_{2}$$, so that's a zero 
 
 ```
     11111111111  <-- carry bits
-    0111...11111
-  + 0000...00001
+    0111...11111     (2^{N-1} - 1)
+  + 0000...00001     (1)
 ————————————————
-    1000...00000
+    1000...00000     (-2^{N-1})
 ```
 
 And what number is that in signed binary? Hmm... Looks like it's the smallest representable negative number! What we've observed here is called **integer overflow**. When you try to go past the largest representable signed integer in a given $$\text{N}$$-bit system, the result *overflows* or *wraps around*.
 
-What if we try to subtract one from the smallest representable $$\text{N}$$-bit integer? First, we'll represent $$-1_{10}$$ as a signed integer in binary:
+What if we try to subtract one from the smallest representable $$\text{N}$$-bit signed integer? First, we'll represent $$-1_{10}$$ as a signed integer in binary:
 
 ```
 1 in binary: 0000...00001
@@ -678,27 +824,25 @@ Flipped:     1111...11110
 Add one:     1111...11111  <-- -1
 ```
 
-Now let's add this to the smallest representable integer:
+Now let's add this to the smallest representable signed integer:
 
 ```
-   1  <-- carry bits
-    1000...00000
-  + 1111...11111
+   1             <-- carry bits
+    1000...00000     (-2^{N-1})
+  + 1111...11111     (-1)
 ————————————————
-  1|0111...11111
+  1|0111...11111     (2^{N-1} - 1)
 ```
 
-For bits $$0$$ through $$\text{N}-2$$, we add a zero to a one to get a one. When we get to bit $$\text{N}-1$$, we get $$10_{2}$$, and the one is carried over to the $$\text{N}$$th bit. But our system only supports $$\text{N}$$ bits, so that leading $$1$$ is actually discarded.
-
-The result is, paradoxically, the largest representable $$\text{N}$$-bit integer! This phenomenon is known as **integer underflow**.
+Notice that the result carries an additional bit over, yielding a result that has $$\text{N}+1$$ bits. But our system only supports $$\text{N}$$ bits, so that leading $$1$$ is actually discarded. The result is the largest representable $$\text{N}$$-bit signed integer, and this is known as **integer underflow**.
 
 Overflow and underflow are things you should be mindful of in programs that are performing lots of computations, as you may end up getting unexpected results.
 
 ## Wrap-Up: Additional Topics for Exploration
 
-That about does it for this introduction to number systems! We looked at decimal, binary, and hexadecimal, and I hope you now have a greater appreciation for numbers and the role that they play in computing.
+That about does it for this introduction to the binary number system! We took a pretty in-depth look at decimal, binary, and hexadecimal, and I hope you now have a greater appreciation for binary numbers and the role that they play in computing.
 
-In reality, there's much more to learn beyond what we covered here. If you're curious, I encourage you to look into [representing floating point numbers in binary](https://en.wikipedia.org/wiki/Floating-point_arithmetic) and other number systems.
+In reality, there's much more to learn beyond what we covered here. If you're curious, I encourage you to look into [representing floating point numbers in binary](https://en.wikipedia.org/wiki/Floating-point_arithmetic) using the IEE754 format.
 
 I hope you found this helpful! If you struggled with anything in particular, please let me know and I'll try my best to help you out.
 
