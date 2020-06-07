@@ -59,26 +59,27 @@ technologies and problems." %}
 </section>
 <section id="work-experience" class="section">
   {% include headingWithImage.html h="Work Experience" lvl=2 img="/assets/img/briefcase.png" alt="💼" %}
-  <section class="card-grid">
+  <ul class="jobs card-grid">
     {% for job in site.data.work %}
-    <section class="job">
-      <header>
-        <h3 class="job-title" aria-label="Position: {{ job.title}} at {{ job.company }}">{{ job.title }}, {{ job.company }}</h3>
-        <p class="date-range">{{ job.dateRange }}</p>
+    <li class="job">
+      <header class="job-header">
+        <img src="/assets/img/brands/{{ job.logo }}" alt="" class="company-logo" />
+        <div class="job-details">
+          <h3 class="job-title" aria-label="Position: {{ job.title}} at {{ job.company }}">{{ job.title }}, {{ job.company }}</h3>
+          <p class="date-range">{{ job.dateRange }}</p>
+        </div>
       </header>
-      <ul class="responsibilities" aria-label="Responsibilities and work completed">
-        {% for responsibility in job.responsibilities %}
-        <li>{{ responsibility }}</li>
-        {% endfor %}
-      </ul>
+      <p class="responsibilities">
+        {{ job.responsibilities }}
+      </p>
       <ul class="technologies-used" aria-label="Technologies used on this job">
         {% for tech in job.tech %}
         <li class="tag tech {{tech}}">{{tech}}</li>
         {% endfor %}
       </ul>
-    </section>
+    </li>
     {% endfor %}
-  </section>
+  </ul>
 </section>
 <section id="education" class="section">
   {% include headingWithImage.html h="Education" lvl=2 img="/assets/img/graduation-cap.png" alt="🎓" %}

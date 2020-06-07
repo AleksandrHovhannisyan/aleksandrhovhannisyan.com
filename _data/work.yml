@@ -1,10 +1,8 @@
 - title: Software Developer Intern
   company: SharpSpring
+  logo: sharpspring.png
   dateRange: Jul. 2019–Dec. 2019 (6 months)
-  responsibilities:
-    - Redesigned a web app feature using React, TypeScript, Ant Design, and Redux.
-    - Worked on creating a new backend service using gRPC and TypeScript.
-    - Occasionally fixed bugs to free up my team's bandwidth during busy sprints.
+  responsibilities: Front-end role (React) with some back-end work. Redesigned a web app feature per requirements and feedback from the design team. Fixed bugs to familiarize myself with the codebase and free up my team's bandwidth.
   tech:
     - react
     - typescript
@@ -12,11 +10,9 @@
 
 - title: Freelance Copy Editor
   company: via Upwork
+  logo: upwork.png
   dateRange: Nov. 2016–Present (3+ years)
-  responsibilities: 
-    - Editing a variety of technical and nontechnical content for clients.
-    - 67+ successfully completed jobs, 5+ regular clients, and 100% job success score (JSS).
-    - Experience working remotely with teams of varying sizes and composition.
+  responsibilities: Copy editing various documents for clients. 70+ successfully completed jobs, 5+ regular clients, and 100% job success score (JSS). Experience working remotely with teams of varying sizes and composition.
   tech:
-    - upwork
     - copy-editing
+    - freelance

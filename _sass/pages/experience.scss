@@ -161,9 +161,36 @@
         @include underlinedLink($primary-color-link, $secondary-color-link);
     }
 
+    .jobs {
+        list-style-type: none;
+        //display: flex;
+        flex-wrap: wrap;
+    }
+
     .job {
         display: grid;
+        row-gap: $paragraph-spacing;
         grid-template-rows: max-content 1fr max-content;
+        padding: 1.5em;
+        border-radius: 5px;
+        width: 100%;
+        margin: 0;
+        @include themed(background-color, hsl(0, 0%, 98%), #292929);
+        @include transition(background-color);
+
+        &:not(:last-child) {
+            //margin-bottom: 2.5em;
+        }
+
+        .job-header {
+            display: flex;
+        }
+
+        .company-logo {
+            margin-right: 0.625em;
+            width: 2.5rem;
+            height: 2.5rem;
+        }
 
         .job-title {
             font-size: 1.1em;
@@ -172,19 +199,19 @@
         .date-range {
             font-size: 0.875em;
             font-style: italic;
+            margin: 0;
             @include themed(color, $denim, #898989);
         }
 
         .responsibilities {
-            @include transition(color);
-            margin-bottom: $paragraph-spacing;
-            padding-left: 1em;
+            margin: 0;
         }
 
         .technologies-used {
+            margin: 0;
             align-items: center;
             display: flex;
-            padding-left: 1em;
+            flex-wrap: wrap;
             list-style-type: none;
 
             .tech {
@@ -206,11 +233,6 @@
             .grpc {
                 @include themed(background-color, rgba($brand-grpc, 0.2), $brand-grpc);
                 @include themed(color, #1e6f70, #e3e1e1);
-            }
-
-            .upwork {
-                @include themed(background-color, rgba($brand-upwork, 0.3), #45882a);
-                @include themed(color, #2e7611, #cfcfcf);
             }
         }
     }
