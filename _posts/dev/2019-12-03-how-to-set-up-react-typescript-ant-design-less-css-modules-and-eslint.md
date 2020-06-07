@@ -269,7 +269,7 @@ Refresh the page, and you'll see that it looks exactly the same, except we now g
 
 We *could* stop there, and put up with garbo code formatting and inconsistencies, and create more work for our collaborators as they try to reconcile several people's style preferences.
 
-{% include picture.html img="but-why" ext="GIF" alt="But why, why would you do that? Why would you do any of that?" shadow=false %}
+{% include picture.html img="but-why" ext="GIF" alt="But why, why would you do that? Why would you do any of that?" %}
 
 Or we could set up ESLint with Prettier to format our code consistently 🙂
 

@@ -84,7 +84,7 @@ This leaves room for other, more specialized classes to determine the background
 
 This is what we'll be building:
 
-{% include picture.html img="buttons" ext="JPG" alt="Composable buttons" shadow=false %}
+{% include picture.html img="buttons" ext="JPG" alt="Composable buttons" %}
 
 There are seven classes at play here:
 
@@ -174,7 +174,7 @@ body {
 
 Nothing fancy here—I just set up a grid for the buttons, some colors, and the font.
 
-{% include picture.html img="unstyled" ext="JPG" alt="An unstyled grid of buttons" shadow=false %}
+{% include picture.html img="unstyled" ext="JPG" alt="An unstyled grid of buttons" %}
 
 Things look pretty naked at this point, but that's about to change.
 
@@ -194,7 +194,7 @@ As I mentioned earlier, we want the base button class to only define the charact
 
 And here's the result:
 
-{% include picture.html img="button-style" ext="JPG" alt="Buttons with the button class enabled" shadow=false %}
+{% include picture.html img="button-style" ext="JPG" alt="Buttons with the button class enabled" %}
 
 These don't look like buttons yet, and that's the point. The `button` class only defines the minimum set of characteristics common to all buttons.
 
@@ -234,7 +234,7 @@ In the first two rows, we have some old-fashioned solid buttons. What should tho
 
 Let's check out the result:
 
-{% include picture.html img="solid-buttons" ext="JPG" alt="Solid buttons" shadow=false %}
+{% include picture.html img="solid-buttons" ext="JPG" alt="Solid buttons" %}
 
 ### 4. Hollow Buttons! 🔲
 
@@ -276,7 +276,7 @@ If the previous section made sense, then this one should be fairly straightforwa
 }{% endcapture %}
 {% include code.html file="style.css" code=code lang="css" %}
 
-{% include picture.html img="hollow-buttons" ext="JPG" alt="Hollow buttons" shadow=false %}
+{% include picture.html img="hollow-buttons" ext="JPG" alt="Hollow buttons" %}
 
 We're almost there!
 
@@ -299,7 +299,7 @@ Let's decorate some of our buttons with arrows that move when you hover over the
 
 Here's the final result:
 
-{% include picture.html img="buttons" ext="JPG" alt="Composable buttons" shadow=false %}
+{% include picture.html img="buttons" ext="JPG" alt="Composable buttons" %}
 
 ## More Examples of Composable CSS
 

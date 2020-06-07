@@ -61,7 +61,7 @@ So what went wrong?
 
 The truth is that **there is no unique solution to this system of equations**. We can verify this visually by plotting our equations, which are really just lines in 2D (you can think of $$x_2$$ as our "$$y$$" and $$x_1$$ as our "$$x$$," or vice versa):
 
-{% include picture.html img="overdetermined-system" ext="JPG" alt="The plot of the four equations above." shadow=false %}
+{% include picture.html img="overdetermined-system" ext="JPG" alt="The plot of the four equations above." %}
 
 Clearly, there is no single point at which all of the lines intersect, meaning there's no solution that satisfies all four equations simultaneously. What we found is the red dot, $$(1, 1)$$. As we saw earlier, there are three equations for which this is a solution (blue, purple, and red in the graph above).
 
@@ -162,11 +162,11 @@ Don't confuse these $$x$$s with the ones we saw earlier—just pretend for a sec
 
 If we plot these data points, we'll get the following graph:
 
-{% include picture.html img="data" ext="JPG" alt="Plotting the five data points we were given." shadow=false %}
+{% include picture.html img="data" ext="JPG" alt="Plotting the five data points we were given." %}
 
 These points appear to follow a linear shape, but it's simply not possible to plot a straight line that fits all of the points. But clearly, we can draw a **best-fit line** that at least gets as close to all of the points as possible:
 
-{% include picture.html img="best-fit" ext="PNG" alt="A best-fit line through the points we plotted." shadow=false %}
+{% include picture.html img="best-fit" ext="PNG" alt="A best-fit line through the points we plotted." %}
 
 > Spoiler: The solution is $$y = 0.59459459x + 1.2972973$$.
 
@@ -271,7 +271,7 @@ $$
 
 If $$n = 2$$ like it is here, $$Ax$$ ends up being a plane in a 3D space:
 
-{% include picture.html img="least-squares-visualized" ext="JPG" alt="A graph of Ax=b." shadow=false %}
+{% include picture.html img="least-squares-visualized" ext="JPG" alt="A graph of Ax=b." %}
 
 Notice that the vector $$b$$ falls outside this plane. In plain English, this means that there's no $$x$$ such that $$Ax = b$$. If we imagine for a second that we live in the 3D space of this graph, our walking surface would be limited to the plane itself. In other words, we would have no way of reaching $$b$$; the best that we could do is to navigate the plane itself.
 
@@ -326,7 +326,7 @@ Recall that the matrix $$A$$ of an overdetermined system $$Ax = b$$ is tall and 
 
 Well, if we do that, here's what will happen to the dimensions of the problem:
 
-{% include picture.html img="dimensions" ext="JPG" alt="The dimensions of A^TAx = A^Tb" shadow=false %}
+{% include picture.html img="dimensions" ext="JPG" alt="The dimensions of A^TAx = A^Tb" %}
 
 Since this is a rectangular $$n \times n$$ system, we can solve for it by multiplying both sides by the inverse of $$A^TA$$:
 
@@ -390,7 +390,7 @@ Now, we have an upper-triangular, rectangular system of equations that can easil
 
 Once again, the dimensions work out to produce an $$n \times n$$ system. Notice how this system is conveniently set up such that all the computer has to do is work from the bottom up, first solving for $$x_n$$, then substituting that in the equation above and solving for $$x_{n-1}$$, and so on, all the way up until $$x_1$$:
 
-{% include picture.html img="qr-factorization" ext="JPG" alt="Visualization of the equation Rx = Q^Tb" shadow=false %}
+{% include picture.html img="qr-factorization" ext="JPG" alt="Visualization of the equation Rx = Q^Tb" %}
 
 And that's a much more numerically stable process than using $$A$$'s pseudo-inverse directly. In fact, notice that factorizing $$A$$ as $$QR$$ helped us to avoid computing the pseudo-inverse altogether!
 

@@ -152,8 +152,11 @@
 
     .author-photo {
         height: 2.5rem;
-        width: 2.5rem;
-        border-radius: 50% !important;
+        width: 2.5rem !important;
+
+        * {
+            border-radius: 50% !important;
+        }
     }
 
     .meta {
@@ -281,17 +284,13 @@
         max-width: 100%;
     }
 
-    .img-with-shadow {
-        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
-    }
-
-    .lazy-loaded-picture img {
+    .clickable-picture img {
         cursor: zoom-in;
     }
 
     blockquote,	
     figure,	
-    picture,	
+    picture:not(.author-photo),	
     iframe,	
     table,
     div.highlighter-rouge {

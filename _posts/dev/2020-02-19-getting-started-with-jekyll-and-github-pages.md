@@ -8,7 +8,7 @@ comments_id: 34
 
 Want to make a personal website or blog and share it with the world? Then you've come to the right place! This is the only guide you'll need for getting started with Jekyll. I'll take you from zero to hero with Jekyll and help you understand all the fundamentals.
 
-{% include picture.html img="thumbnail-large" ext="PNG" alt="Jekyll and GitHub Pages." shadow=false %}
+{% include picture.html img="thumbnail-large" ext="PNG" alt="Jekyll and GitHub Pages." %}
 
 I moved my old site from pure HTML and CSS to Jekyll a while back and immediately fell in love. There's very little that Jekyll doesn't allow you to accomplish, so it's a perfect, lightweight option for beginners and veterans alike.
 
@@ -62,7 +62,7 @@ All right, enough chit-chat—let's dig in!
 
 Jekyll is a **static site generator**. That's just a fancy way of saying that it takes a bunch of HTML, Markdown, CSS, and JavaScript source files, combines them as needed based on layout files that you've specified, processes any template code that you've written, and spits out a build directory (e.g., `_site/`) that basically houses all of your website's content, ready for hosting on a web server (like GitHub Pages!).
 
-{% include picture.html img="static-site-generator" ext="PNG" alt="A static site generator spits out a compiled, well-structured, fully functioning site." shadow=false %}
+{% include picture.html img="static-site-generator" ext="PNG" alt="A static site generator spits out a compiled, well-structured, fully functioning site." %}
 
 In plain English, Jekyll makes it easy for you to create a website—and, more commonly, a blog—with plain old HTML and Markdown, without having to worry about things like how to add tags to posts or make certain static data accessible on all of your pages. It takes care of these things for you so you can focus on doing what you love the most: writing (or, in my case, writing *and* dev)!
 
@@ -78,11 +78,11 @@ You can create as many GitHub Pages sites as you want. Each user can only create
 
 To get started, visit [https://github.com/](https://github.com/), sign in, and click the green `New` button to create a new repo:
 
-{% include picture.html img="new-repo" ext="PNG" alt="Click the green new button to create a repository." shadow=false %}
+{% include picture.html img="new-repo" ext="PNG" alt="Click the green new button to create a repository." %}
 
 Enter the name of your repository. It needs to be your GitHub username followed by `.github.io`:
 
-{% include picture.html img="create-repo" ext="PNG" alt="Type in the name of your new repository." shadow=false %}
+{% include picture.html img="create-repo" ext="PNG" alt="Type in the name of your new repository." %}
 
 That's literally all you have to do to get started with GitHub Pages! As with other repos you own, you'll want to clone it locally and set up your origin remote.
 
@@ -121,7 +121,7 @@ bundle exec jekyll new . --force{% endcapture %}
 
 The end result should be this simple directory structure:
 
-{% include picture.html img="directory-structure" ext="JPG" alt="Jekyll starter files." shadow=false %}
+{% include picture.html img="directory-structure" ext="JPG" alt="Jekyll starter files." %}
 
 ### 3. Configuring Jekyll with GitHub Pages
 
@@ -236,7 +236,7 @@ Head on over to `localhost:4000` to see the starter page. Note that the appearan
 2. A mostly blank page with a title placeholder if you deleted the line `theme: minima`.
 3. A completely blank page, if you set `theme: null` explicitly like I recommended.
 
-{% include picture.html img="themes" ext="JPG" alt="The three Jekyll starter themes." shadow=false %}
+{% include picture.html img="themes" ext="JPG" alt="The three Jekyll starter themes." %}
 
 The remainder of this tutorial assumes that your theme is set to `null`. Some of the screenshots I show may not line up with what you see on your end if you decide to use the minima theme. You may also miss out on learning some useful things about how Jekyll works if you decide to use one of the starter themes instead of writing your own CSS.
 
@@ -1357,7 +1357,7 @@ Consider your online resume or personal website: You likely want to have a page,
 
 Here's a mockup for two of those:
 
-{% include picture.html img="mockup" ext="PNG" alt="Mockups of project cards and skills" shadow=false %}
+{% include picture.html img="mockup" ext="PNG" alt="Mockups of project cards and skills" %}
 
 You get the general idea—all websites have static, mostly unchanging data that is often repeated in slightly different ways while retaining the same underlying *structure*.
 
