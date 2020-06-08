@@ -16,10 +16,6 @@
     @include transition(color);
     @include centered;
 
-    * {
-        grid-column: 2;
-    }
-
     span {
         text-align: center;
     }

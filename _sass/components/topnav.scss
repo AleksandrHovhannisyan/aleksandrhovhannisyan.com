@@ -27,7 +27,6 @@ $topnav-min-height: 64px;
     .nav-container {
         align-items: center;
         display: flex;
-        grid-column: 2;
         height: $topnav-min-height;
         justify-content: space-between;
     }

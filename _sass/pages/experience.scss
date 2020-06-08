@@ -175,7 +175,8 @@
         border-radius: 5px;
         width: 100%;
         margin: 0;
-        @include themed(background-color, hsl(0, 0%, 98%), #292929);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+        @include themed(background-color, white, #292929);
         @include transition(background-color);
 
         &:not(:last-child) {
@@ -239,7 +240,10 @@
 }
 
 .institution {
-    margin-top: 40px;
+    
+    &:not(:last-child) {
+        margin-bottom: 40px;
+    }
 
     a {
         @include underlinedLink($primary-color-link, $secondary-color-link);

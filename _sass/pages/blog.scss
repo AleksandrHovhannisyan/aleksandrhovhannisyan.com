@@ -195,10 +195,6 @@
     overflow-wrap: break-word;
     @include centered;
 
-    & > * {
-        grid-column: 2;
-    }
-
     @include headings {
         // 20px more than the navbar
         scroll-margin-top: 84px;

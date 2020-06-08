@@ -57,29 +57,31 @@ technologies and problems." %}
     {% endfor %}
   </div>
 </section>
-<section id="work-experience" class="section">
-  {% include headingWithImage.html h="Work Experience" lvl=2 img="/assets/img/briefcase.png" alt="💼" %}
-  <ul class="jobs card-grid">
-    {% for job in site.data.work %}
-    <li class="job">
-      <header class="job-header">
-        <img src="/assets/img/brands/{{ job.logo }}" alt="" class="company-logo" />
-        <div class="job-details">
-          <h3 class="job-title" aria-label="Position: {{ job.title}} at {{ job.company }}">{{ job.title }}, {{ job.company }}</h3>
-          <p class="date-range">{{ job.dateRange }}</p>
-        </div>
-      </header>
-      <p class="responsibilities">
-        {{ job.responsibilities }}
-      </p>
-      <ul class="technologies-used" aria-label="Technologies used on this job">
-        {% for tech in job.tech %}
-        <li class="tag tech {{tech}}">{{tech}}</li>
-        {% endfor %}
-      </ul>
-    </li>
-    {% endfor %}
-  </ul>
+<section id="work-experience" class="section feature-section">
+  <div>
+    {% include headingWithImage.html h="Work Experience" lvl=2 img="/assets/img/briefcase.png" alt="💼" %}
+    <ul class="jobs card-grid">
+      {% for job in site.data.work %}
+      <li class="job">
+        <header class="job-header">
+          <img src="/assets/img/brands/{{ job.logo }}" alt="" class="company-logo" />
+          <div class="job-details">
+            <h3 class="job-title" aria-label="Position: {{ job.title}} at {{ job.company }}">{{ job.title }}, {{ job.company }}</h3>
+            <p class="date-range">{{ job.dateRange }}</p>
+          </div>
+        </header>
+        <p class="responsibilities">
+          {{ job.responsibilities }}
+        </p>
+        <ul class="technologies-used" aria-label="Technologies used on this job">
+          {% for tech in job.tech %}
+          <li class="tag tech {{tech}}">{{tech}}</li>
+          {% endfor %}
+        </ul>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
 </section>
 <section id="education" class="section">
   {% include headingWithImage.html h="Education" lvl=2 img="/assets/img/graduation-cap.png" alt="🎓" %}
