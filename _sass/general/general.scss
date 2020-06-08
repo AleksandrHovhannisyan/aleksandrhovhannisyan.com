@@ -169,7 +169,7 @@ p {
     padding: 2.5rem 0;
     @include centered;
     @include transition(background-color);
-    @include themed(background-color, hsl(0, 0%, 98%), transparent);
+    @include themed(background-color, #fafafa, transparent);
 }
 
 hr {

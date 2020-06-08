@@ -9,7 +9,7 @@ having fun and testing my limits. Between school, side projects, freelancing,
 and interning, I've gained valuable exposure to a wide variety of interesting
 technologies and problems." %}
 <section id="projects" class="section">
-  {% include headingWithImage.html h="Projects" lvl=2 img="/assets/img/folder.png" alt="📁" %}
+  <h2>Software Projects</h2>
   <div id="project-grid" class="card-grid">
     {% for project in site.data.projects %}
         {% include projectCard.html project=project %}
@@ -29,8 +29,7 @@ technologies and problems." %}
   </div>
 </section>
 <section id="skills" class="section">
-  {% include headingWithImage.html h="Skills and Abilities" lvl=2
-  img="/assets/img/juggler.png" alt="🤹" %}
+  <h2>Skills and Abilities</h2>
   <div id="skill-grid">
     {% assign skillMap = "Familiar,Basic,Intermediate,Competent,Advanced" | split: ',' %}
     {% for item in site.data.skills %}
@@ -59,7 +58,7 @@ technologies and problems." %}
 </section>
 <section id="work-experience" class="section feature-section">
   <div>
-    {% include headingWithImage.html h="Work Experience" lvl=2 img="/assets/img/briefcase.png" alt="💼" %}
+    <h2>Work Experience</h2>
     <ul class="jobs card-grid">
       {% for job in site.data.work %}
       <li class="job">
@@ -84,7 +83,7 @@ technologies and problems." %}
   </div>
 </section>
 <section id="education" class="section">
-  {% include headingWithImage.html h="Education" lvl=2 img="/assets/img/graduation-cap.png" alt="🎓" %}
+  <h2>Education</h2>
   {% for institution in site.data.education %}
   <div class="institution collapsible collapsible-closed">
     <header class="collapsible-header">
