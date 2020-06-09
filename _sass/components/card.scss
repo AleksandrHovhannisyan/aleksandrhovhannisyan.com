@@ -16,15 +16,19 @@
     transform: none;
     @include transition(background-color, box-shadow, transform);
 
-    &:hover, &:focus {
-        box-shadow: 0 2px 2px rgba(0,0,0,0.15), 
-                    0 4px 4px rgba(0,0,0,0.15), 
-                    0 8px 8px rgba(0,0,0,0.15), 
-                    0 8px 12px rgba(0,0,0,0.15);
-        transform: translate(0, -5px);
+    &.interactive {
+        cursor: pointer;
 
-        .hover-content {
-            opacity: 0.92;
+        &:hover, &:focus {
+            box-shadow: 0 2px 2px rgba(0,0,0,0.15), 
+                        0 4px 4px rgba(0,0,0,0.15), 
+                        0 8px 8px rgba(0,0,0,0.15), 
+                        0 8px 12px rgba(0,0,0,0.15);
+            transform: translate(0, -5px);
+
+            .hover-content {
+                opacity: 0.92;
+            }
         }
     }
 
