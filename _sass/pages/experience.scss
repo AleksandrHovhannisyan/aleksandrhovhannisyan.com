@@ -5,7 +5,6 @@
 .project {
     /* Header, description, footer, respectively */
     grid-template-rows: max-content 1fr max-content;
-    cursor: pointer;
 
     header {
         display: flex;
@@ -168,23 +167,16 @@
     }
 
     .job {
-        display: grid;
-        row-gap: $paragraph-spacing;
         grid-template-rows: max-content 1fr max-content;
-        padding: 1.5em;
-        border-radius: 5px;
         width: 100%;
         margin: 0;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
-        @include themed(background-color, white, #292929);
-        @include transition(background-color);
 
         .job-header {
             display: flex;
         }
 
         .company-logo {
-            margin-right: $paragraph-spacing;
+            margin-right: 1.5em;
             width: 2.5rem;
             height: 2.5rem;
         }
