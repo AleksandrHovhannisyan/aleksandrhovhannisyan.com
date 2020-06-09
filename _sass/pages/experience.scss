@@ -179,16 +179,12 @@
         @include themed(background-color, white, #292929);
         @include transition(background-color);
 
-        &:not(:last-child) {
-            //margin-bottom: 2.5em;
-        }
-
         .job-header {
             display: flex;
         }
 
         .company-logo {
-            margin-right: 0.625em;
+            margin-right: $paragraph-spacing;
             width: 2.5rem;
             height: 2.5rem;
         }
@@ -197,11 +193,14 @@
             font-size: 1.1em;
         }
 
+        .job-company {
+            font-size: 0.875em;
+        }
+
         .date-range {
             font-size: 0.875em;
             font-style: italic;
             margin: 0;
-            @include themed(color, $denim, #898989);
         }
 
         .responsibilities {
