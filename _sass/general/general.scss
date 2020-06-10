@@ -61,18 +61,18 @@ body {
     color: var(--text-color-normal);
     display: grid;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;;
-    grid-template-rows: 1fr 80px;
+    grid-template-rows: 1fr $footer-height;
     line-height: 1.6;
     min-height: 100vh;
     position: relative;
-    row-gap: 64px;
+    row-gap: $nav-height;
     @include transition(background-color);
 }
 
 #page-content {
     grid-row: 1;
     min-width: 0; // https://css-tricks.com/preventing-a-grid-blowout/
-    padding-top: 64px;
+    padding-top: $nav-height;
     @include centered;
 }
 

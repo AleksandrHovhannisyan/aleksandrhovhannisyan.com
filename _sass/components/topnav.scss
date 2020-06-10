@@ -2,13 +2,11 @@
 @import 'settings';
 @import 'mixins';
 
-$topnav-min-height: 64px;
-
 #topnav {
     background-color: var(--nav-bg-color);
     box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.8);
     left: 0;
-    min-height: $topnav-min-height;
+    min-height: $nav-height;
     position: fixed;
     right: 100%;
     top: 0;
@@ -27,7 +25,7 @@ $topnav-min-height: 64px;
     .nav-container {
         align-items: center;
         display: flex;
-        height: $topnav-min-height;
+        height: $nav-height;
         justify-content: space-between;
     }
     
@@ -118,7 +116,7 @@ $topnav-min-height: 64px;
     .nav-menu {
         position: fixed;
         left: 0;
-        top: $topnav-min-height;
+        top: $nav-height;
         right: 0;
         bottom: 0;
         opacity: 0;
@@ -135,22 +133,23 @@ $topnav-min-height: 64px;
         right: 0;
         top: 0;
 
-        #active-nav-link, 
-        a:hover, 
-        a:focus {
-            background-color: #444647;
-        }
-
-        li {
-            margin: 15px auto;
+        .nav-item {
+            margin: 1.5em auto;
             text-align: center;
-        }
 
-        a {
-            border-radius: 2px;
-            padding: 15px 10px;
-            display: block;
-            @include transition(background-color, color);
+            .nav-link {
+                border-radius: 2px;
+                padding: 0.75em;
+                margin: 0 1.2rem;
+                display: block;
+                @include transition(background-color, color);
+            }
+
+            #active-nav-link, 
+            .nav-link:hover, 
+            .nav-link:focus {
+                background-color: #444647;
+            }
         }
     }
 
@@ -238,16 +237,17 @@ $topnav-min-height: 64px;
             margin: 0;
             position: static;
     
-            li {
-                margin: 0 0 0 30px;
-                height: $topnav-min-height;
+            .nav-item {
+                margin: 0 0 0 1.5em;
+                height: $nav-height;
                 display: flex;
                 align-items: center;
-            }
 
-            a {
-                padding: 8px 10px;
-                display: inline;
+                .nav-link {
+                    padding: 0.4em 0.5em;
+                    display: inline;
+                    margin: 0;
+                }
             }
         }
     
