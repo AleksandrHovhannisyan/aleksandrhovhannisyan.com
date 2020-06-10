@@ -1,7 +1,7 @@
 @import 'colors';
 
 html.light {
-    --main-bg-color: #ffffff;
+    --main-bg-color: #fbfbfb;
     --nav-bg-color: #2c2c2c;
     --nav-text-color: #dedede;
     --hero-bg-color: #1c1c1c;
@@ -19,12 +19,12 @@ html.light {
     --tag-bg-color: #{$primary-color-tag};
     --tag-text-color: #{$primary-color};
 
-    --code-bg-color: rgba(234, 234, 234, 0.749);
+    --code-bg-color: rgba(230, 230, 230, 0.749);
     --code-text-color: #5b6169;
 
     --table-header-bg-color: #4d4d4d;
     --table-header-text-color: #e6e6e6;
-    --table-row-stripe-color: hsl(0, 0%, 98%);
+    --table-row-stripe-color: hsl(0, 0%, 96%);
     --table-row-border-color: hsl(0, 0%, 92%);
 
     --hover-color-general: #f6f6f6;
