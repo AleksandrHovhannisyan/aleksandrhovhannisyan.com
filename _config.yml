@@ -95,7 +95,7 @@ defaults:
       path: _posts
       type: posts
     values:
-      custom_js: [blogImage, copyCode]
+      custom_js: [lazyLoad, copyCode]
       is_post: true
       layout: post
       excerpt: ""
