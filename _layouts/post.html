@@ -20,21 +20,7 @@ layout: default
   <!-- Load KaTeX -->
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" />
   <script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
-  <script>
-    document.querySelectorAll("script[type='math/tex']").forEach(inlineLatex => {
-      const inlineEquationElement = document.createElement('span');
-      inlineEquationElement.className = 'inline-equation';
-      inlineEquationElement.innerHTML = katex.renderToString(inlineLatex.textContent);
-      inlineLatex.replaceWith(inlineEquationElement);
-    });
-
-    document.querySelectorAll("script[type='math/tex; mode=display']").forEach(blockLatex => {
-      const blockEquationElement = document.createElement('div');
-      blockEquationElement.className = 'block-equation';
-      blockEquationElement.innerHTML = katex.renderToString("\\displaystyle " + blockLatex.textContent);
-      blockLatex.replaceWith(blockEquationElement);
-    });
-  </script>
+  <script src="/assets/scripts/formatKatex.js"></script>
 {% endif %}
 
 <script type="application/ld+json">
