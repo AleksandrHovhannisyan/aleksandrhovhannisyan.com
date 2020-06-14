@@ -31,7 +31,7 @@
 
 .blog-post-previews, #featured-posts {
     .post-preview-grid {
-        @include responsiveGrid($mobileMin: 255px, $desktopMin: 16em);
+        @include responsiveGrid($mobileMin: 255px, $desktopMin: 20em);
     }
 
     .post-preview {
