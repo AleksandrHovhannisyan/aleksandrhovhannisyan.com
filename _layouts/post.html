@@ -17,35 +17,26 @@ layout: default
 </article>
 
 {% if page.needs_latex %}
-  <!-- Credit: https://xuc.me/blog/katex-and-jekyll/ -->
-  <!-- Load jQuery -->
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   <!-- Load KaTeX -->
-  <link
-    rel="stylesheet"
-    href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css"
-  />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" />
   <script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
   <script>
-    $("script[type='math/tex']").replaceWith(function() {
-      var tex = $(this).text();
-
-      return (
-        '<span class="inline-equation">' + katex.renderToString(tex) + "</span>"
-      );
+    document.querySelectorAll("script[type='math/tex']").forEach(inlineLatex => {
+      const inlineEquationElement = document.createElement('span');
+      inlineEquationElement.className = 'inline-equation';
+      inlineEquationElement.innerHTML = katex.renderToString(inlineLatex.textContent);
+      inlineLatex.replaceWith(inlineEquationElement);
     });
 
-    $("script[type='math/tex; mode=display']").replaceWith(function() {
-      var tex = $(this).text();
-
-      return (
-        '<div class="block-equation">' +
-        katex.renderToString("\\displaystyle " + tex) +
-        "</div>"
-      );
+    document.querySelectorAll("script[type='math/tex; mode=display']").forEach(blockLatex => {
+      const blockEquationElement = document.createElement('div');
+      blockEquationElement.className = 'block-equation';
+      blockEquationElement.innerHTML = katex.renderToString("\\displaystyle " + blockLatex.textContent);
+      blockLatex.replaceWith(blockEquationElement);
     });
   </script>
 {% endif %}
+
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
