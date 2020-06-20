@@ -1,7 +1,8 @@
 @import 'colors';
 
 html.light {
-    --main-bg-color: #fbfbfb;
+//    --main-bg-color: #fafafd;
+    --main-bg-color: #fdfdfd;
     --nav-bg-color: #2c2c2c;
     --nav-text-color: #dedede;
     --hero-bg-color: #1c1c1c;
@@ -27,7 +28,7 @@ html.light {
     --table-row-stripe-color: hsl(0, 0%, 96%);
     --table-row-border-color: hsl(0, 0%, 92%);
 
-    --hover-color-general: #f6f6f6;
+    --hover-color-general: #e8ecee;
     
     --form-bg-color: #f6f6f6;
     --form-input-color: white;
