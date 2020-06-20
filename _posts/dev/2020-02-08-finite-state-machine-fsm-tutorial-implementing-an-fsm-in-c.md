@@ -127,7 +127,9 @@ Now that we've looked at how to create a state transition table, we can implemen
 
 Here's a bit of a thought exercise before we get to the actual implementation details:
 
-Instead of using a state transition table, what if we could delegate the task of determining the next state to the *current state* that our light is in? In other words, I'm proposing that we do something like this, where invoking a light's `toggle` method in turn invokes the current state's `toggle` method:
+Instead of using a state transition table and a `LightState` *enum*, what if we make each concrete light state its own *class*? That way, we can delegate the task of determining the next state to the *current state* that a light is in.
+
+In other words, I'm proposing that we do something like this, where invoking a light's `toggle` method in turn invokes the current state's `toggle` method (because remember—we're now going to use classes instead of enums for the states):
 
 {% capture code %}#pragma once
 #include "LightState.h"
@@ -159,13 +161,13 @@ Light::Light()
 void Light::setState(LightState& newState)
 {
 	currentState->exit(this);  // do stuff before we change state
-	currentState = &newState;
+	currentState = &newState;  // change state
 	currentState->enter(this); // do stuff after we change state
 }
 
 void Light::toggle()
 {
-	// Delegate the task of determining the next state to the current state
+	// Delegate the task of determining the next state to the current state!
 	currentState->toggle(this);
 }{% endcapture %}
 {% include code.html file="Light.cpp" code=code lang="cpp" copyable=false %}
@@ -179,9 +181,9 @@ void SomeLightState::toggle(Light* light)
 }
 ```
 
-If none of that code makes sense right now, don't worry—I'm about to break it all down step by step.
+Confused? Don't worry—I'm about to break it all down step by step.
 
-This is known as the **finite state design pattern**. Per this pattern, each state is modeled as a concrete class. So we'll need need the following four states for our lightbulb:
+This is known as the **finite state design pattern**. In this pattern, each state is modeled as a concrete class. So we'll need need the following four states for our lightbulb:
 
 - `LightOff`
 - `LowIntensity`
@@ -192,15 +194,13 @@ Let's model this finite state machine with a simple diagram:
 
 {% include picture.html img="light-fsm" ext="JPG" alt="Modeling our lightbulb's FSM." %}
 
-Each class implements a common `LightState` interface that provides the following three methods:
+Each class implements a common `LightState` interface (or, in C++ terms, an *abstract class*) that exposes the following three methods:
 
 - `enter(Light*)`: What should happen as we enter this state?
 - `toggle(Light*)`: What should happen when we're in this state?
 - `exit(Light*)`: What should happen as we're exiting this state?
 
-All three methods accept a pointer to the `Light` object with which the state is associated.
-
-How do they gain access to this pointer? Well, recall that we invoked `toggle` in our `Light` class like so:
+All three methods accept a pointer to the `Light` object with which the state is associated. How do they gain access to this pointer? Well, recall that we invoked `toggle` in our `Light` class like so:
 
 ```cpp
 void Light::toggle() 
@@ -209,9 +209,9 @@ void Light::toggle()
 }
 ```
 
-Basically, we pass in a pointer to ourselves (`this`). While doing so may seem pointless, it becomes more important in game development because it allows the state to ask the entity certain questions, like how much health it currently has and so on. The state can then use that information to decide what state the entity should transition to. Clearly, in the case of a lightbulb, there isn't really any information to poll.
+Basically, a `Light` passes in a pointer to itself (`this`). While doing so may seem pointless, it becomes more important in game development because it allows the state to ask the entity certain questions, like how much health it currently has and so on. The state can then use that information to decide what state the entity should transition to. Health is too low? Transition to a more defensive/fleeing state. Health is high? Be more aggressive. Clearly, in the case of a lightbulb, there isn't really any information that we need to poll the `Light` instance that gets passed in.
 
-One final note: Each state class typically follows the [singleton design pattern](https://refactoring.guru/design-patterns/singleton) to avoid unnecessary memory allocations and deallocations as we transition from one state to another, and then potentially back to a state that we were already in at one point. With our lights, if we didn't use singletons, we'd have to recreate our states every time we made a transition, and that would be wasteful.
+One final note: Each state class typically follows the [singleton design pattern](https://refactoring.guru/design-patterns/singleton) to avoid unnecessary memory allocations and deallocations as we transition from one state to another, and then potentially back to a state that we were already in at one point. With our lights, if we didn't use singletons, we'd have to recreate our states every time we made a transition, and that would be wasteful. Plus, this design pattern is more efficient if we have multiple lights since the states are not tied to any particular instance—remember, they accept a pointer to an instance whenever any of their methods are called!
 
 To understand how this all works in practice, we'll implement everything from scratch.
 
@@ -235,9 +235,9 @@ public:
 };{% endcapture %}
 {% include code.html file="LightState.h" code=code lang="cpp" %}
 
-Since this is a **pure abstract class**, we cannot create an instance of it. The `LightState` interface allows us to take advantage of polymorphism so we can refer to a generic "state" without having to specify the true type of state that we're working with.
+Since this is a **pure abstract class**, we cannot create an instance of it. The `LightState` interface allows us to take advantage of polymorphism so we can refer to a generic state without having to specify the true type of state that a `Light` is currently in.
 
-> **Note**: In practice, you would often take this a step further and create an abstract `Entity` class. You'd also create an abstract `EntityState` class that accepts this generic entity in its method signatures. So, instead of having `Light*` like we do above, we would have `Entity*`, and `Light` would simply extend `Entity`.
+> **Note**: In practice, you would often take this a step further and create an abstract `EntityState` class that accepts a pointer to some generic `Entity` instance. `LightState` would extend `EntityState`, and `Light` would extend `Entity`.
 
 {% include linkedHeading.html heading="2. Concrete State Classes" level=3 %}
 
@@ -362,7 +362,7 @@ LightState& HighIntensity::getInstance()
 }{% endcapture %}
 {% include code.html file="ConcreteLightStates.cpp" code=code lang="cpp" %}
 
-I'm taking advantage of static variables to create my singletons in a legible manner. Moreover, note that I'm returning references, and not pointers, [to avoid leaking memory](https://gamedev.stackexchange.com/questions/141884/can-this-singleton-class-cause-a-memory-leak).
+I'm taking advantage of static variables to create my singletons in a legible manner. Moreover, note that I'm returning references, and not pointers, [to avoid leaking memory](https://stackoverflow.com/questions/13047526/difference-between-singleton-implemention-using-pointer-and-using-static-object).
 
 Notice how each `toggle` method initiates the appropriate state transition by invoking `light->setState(...)` and passing in a singleton, via a call to the next state's `getInstance` method.
 
