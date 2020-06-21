@@ -18,7 +18,7 @@ form {
     $form-max-width: 475px;
     
     background-color: var(--form-bg-color);
-    border-radius: 5px;
+    border-radius: 2px;
     box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.25);
     grid-area: form;
     margin-bottom: 60px;
@@ -41,21 +41,20 @@ form {
 
     .input {
         background-color: var(--form-input-color);
-        border: solid 1px;
-        border-radius: 5px;
-        box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0);
+        border: solid 1px var(--input-border-color);
+        border-radius: 2px;
+        box-shadow: var(--input-box-shadow);
         color: var(--text-color-emphasis);
         height: 2em;
         margin-bottom: 15px;
         padding: 0.25em 0.5em;
         width: 100%;
-        @include themed(border-color, hsl(0, 0%, 85%), hsl(0, 0%, 25%));
-        @include transition(background-color, box-shadow, color);
+        @include transition(background-color, border-color, box-shadow, color);
 
         &:focus {
             outline: none;
-            @include themed(box-shadow, 0 0 6px 0 #7ed6ff, 0 0 6px 0 #fcd876);
-            @include themed(border-color, #288bba, var(--button-bg-color));
+            border-color: var(--input-border-color-focus);
+            box-shadow: var(--input-box-shadow-focus);
         }
     }
 
@@ -67,13 +66,14 @@ form {
         @include transition(color);
 
         &.required::after {
-            color: var(--link-color);
+            color: var(--danger-color);
             content: " *";
             @include transition(color);
         }
     }
 
     .button {
+        border-radius: 2px;
         height: 2.5em;
         max-width: 100%;
         width: 100%;
@@ -133,7 +133,7 @@ input.honeypot {
 }
 
 .social-network {
-    border-radius: 5px;
+    border-radius: 2px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     @include transition(background-color);
