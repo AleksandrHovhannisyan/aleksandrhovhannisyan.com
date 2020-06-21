@@ -70,7 +70,7 @@
     
         .post-title {
             //background-color: rgba(50, 65, 78, 0.8);
-            @include themed(background-color, rgba(50, 65, 78, 0.8), rgba(93, 87, 73, 0.8));
+            @include themed(background-color, #5B6771, #6b675d);
             @include transition(background);
             color: white;
             text-shadow: 2px 2px black;

@@ -39,21 +39,23 @@ form {
         width: 100%;
     }
 
-    input:not([class="button solid-button"]), textarea {
+    .input {
         background-color: var(--form-input-color);
-        border: 0;
+        border: solid 1px;
         border-radius: 5px;
-        box-shadow: inset 0 0 4px 0 rgba(0, 0, 0, 0.25);
+        box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0);
         color: var(--text-color-emphasis);
         height: 2em;
         margin-bottom: 15px;
         padding: 0.25em 0.5em;
         width: 100%;
+        @include themed(border-color, hsl(0, 0%, 85%), hsl(0, 0%, 25%));
         @include transition(background-color, box-shadow, color);
 
         &:focus {
-            box-shadow: inset 0 0 5px 0 var(--button-bg-hover-color);
             outline: none;
+            @include themed(box-shadow, 0 0 6px 0 #7ed6ff, 0 0 6px 0 #fcd876);
+            @include themed(border-color, #288bba, var(--button-bg-color));
         }
     }
 
