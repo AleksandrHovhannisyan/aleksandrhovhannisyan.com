@@ -46,7 +46,7 @@ form {
         box-shadow: var(--input-box-shadow);
         color: var(--text-color-emphasis);
         height: 2em;
-        margin-bottom: 15px;
+        margin-bottom: 0.75em;
         padding: 0.25em 0.5em;
         width: 100%;
         @include transition(background-color, border-color, box-shadow, color);
@@ -62,7 +62,7 @@ form {
         color: var(--text-color-emphasis);
         display: block;
         font-weight: map-get($font-weights, "bold");
-        margin-bottom: 5px;
+        margin-bottom: 0.3125em;
         @include transition(color);
 
         &.required::after {
