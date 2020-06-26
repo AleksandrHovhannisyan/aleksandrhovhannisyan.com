@@ -1,19 +1,20 @@
 ---
-title: "Binary Numbers: The ABCs of 0s and 1s"
-description: The binary number system underlies pretty much everything in computation. So what's the deal with all those 0s and 1s, and how is binary used?
-keywords: [binary numbers, binary number system, number systems]
+title: "The Binary Number System"
+description: The binary number system underlies pretty much everything in computation. But what's the deal with all those 0s and 1s, and how are binary numbers used?
+keywords: [binary number system, binary numbers]
 tags: [computer-science, math, binary]
 needs_latex: true
 comments_id: 44
+redirect_from: /blog/computer-science/binary-numbers/
 ---
 
-What is $$10$$? If this is your first time learning about the binary number system, then this question may seem pretty silly. Of course it's ten, right?
+What is $$10$$? If this is your first time learning about the binary number system, then this question may seem odd. Of course it's ten, right?
 
 Let's try something different. Have you ever heard this joke?
 
 > There are $$10$$ types of people in the world: those who understand binary and those who don't.
 
-Unless you're familiar with binary numbers, this probably doesn't make much sense. But by the end of this post, you'll come to appreciate this and many other awful developer jokes 🙂
+Unless you're familiar with binary numbers, this probably doesn't make much sense. But by the end of this post, you'll come to appreciate this and many other awful developer jokes!
 
 In this beginner's tutorial, we'll look at everything you need to know about the binary number system, but we'll also take a quick look at decimal and hexadecimal, as they're closely related. I'll include relevant bits of code and real-life examples to help you appreciate the beauty of binary.
 
@@ -33,7 +34,7 @@ In this beginner's tutorial, we'll look at everything you need to know about the
   - [Real-World Application: Representing Colors with RGB/Hex](#real-world-application-representing-colors-with-rgbhex)
     - [How Many Colors Are There?](#how-many-colors-are-there)
     - [What Are 8-Bit Colors?](#what-are-8-bit-colors)
-- [Signed Binary Numbers: Two's Complement](#signed-binary-numbers-twos-complement)
+- [Signed Binary Number System: Two's Complement](#signed-binary-number-system-twos-complement)
   - [How Does Two's Complement Work?](#how-does-twos-complement-work)
     - [The Intuitive Approach: What Does a Leading 1 Denote?](#the-intuitive-approach-what-does-a-leading-1-denote)
     - [Two's Complement Shortcut: Flip the Bits and Add a 1](#twos-complement-shortcut-flip-the-bits-and-add-a-1)
@@ -41,13 +42,13 @@ In this beginner's tutorial, we'll look at everything you need to know about the
     - [What Is the Largest Signed 32-bit Integer?](#what-is-the-largest-signed-32-bit-integer)
       - [Real-World Application: Video Game Currency](#real-world-application-video-game-currency)
     - [What Is the Smallest Signed 32-bit Integer?](#what-is-the-smallest-signed-32-bit-integer)
-- [Basic Binary Arithmetic](#basic-binary-arithmetic)
+- [Basic Arithmetic in the Binary Number System](#basic-arithmetic-in-the-binary-number-system)
   - [Adding Binary Numbers](#adding-binary-numbers)
   - [Subtracting Binary Numbers](#subtracting-binary-numbers)
   - [Multiplying Binary Numbers](#multiplying-binary-numbers)
   - [Dividing Binary Numbers](#dividing-binary-numbers)
   - [Integer Overflow and Underflow in Binary](#integer-overflow-and-underflow-in-binary)
-- [Wrap-Up: Additional Topics for Exploration](#wrap-up-additional-topics-for-exploration)
+- [The Binary Number System: Additional Topics for Exploration](#the-binary-number-system-additional-topics-for-exploration)
 
 ## What Is a Number System?
 
@@ -136,15 +137,17 @@ For this reason, when discussing number systems, we usually subscript a number w
 
 ## The Binary Number System (Base 2)
 
-The binary number system is especially interesting and the primary topic of this post. By definition, it has a base of $$2$$, and thus we can only work with two digits to compose numbers: $$0$$ and $$1$$. Technically speaking, we don't call these digits—they're called **bits** in binary.
+So far so good—we're all familiar with decimal numbers because we use them everyday. But what's the deal with the binary number system?
 
-Each "bucket" in a binary string represents a power of two. From right to left, those are $$2^0$$, $$2^1$$, $$2^2$$, and so on:
+By definition, the **binary number system** has a base of $$2$$, and thus we can only work with two digits to compose numbers: $$0$$ and $$1$$. Technically speaking, we don't call these digits—they're called **bits** in binary lingo.
+
+Each "bucket" in a binary string represents an increasing power of two: $$2^0$$, $$2^1$$, $$2^2$$, and so on.
 
 {% include picture.html img="binary" ext="PNG" alt="The binary number system uses powers of two" %}
 
 The leftmost bit is called the **most significant bit (MSB)**, while the rightmost bit is called the **least significant bit (LSB)**.
 
-Here are some examples of decimal numbers represented as binary numbers:
+Here are some examples of representing decimal numbers in the binary number system:
 
 - Zero: $$0_{10} = 0_2$$. Expansion: $$0 (2^0)$$
 - One: $$1_{10} = 1_2$$. Expansion: $$1 (2^0)$$
@@ -153,9 +156,9 @@ Here are some examples of decimal numbers represented as binary numbers:
 - Four: $$4_{10} = 100_2$$. Expansion: $$1 (2^2) + 0 (2^1) + 0 (2^0)$$
 - Five: $$5_{10} = 101_2$$. Expansion: $$1 (2^2) + 0 (2^1) + 1 (2^0)$$
 
-> **Note**: Like in the decimal number system, leading zeros are usually stripped from binary strings. The only exception is if you're working with [signed binary numbers](#the-binary-number-system-twos-complement), where a leading zero indicates that a number is positive and a leading one indicates that it's negative.
+> **Note**: Like in the decimal number system, leading zeros are usually stripped from binary strings. The only exception is if you're working with [a signed binary number system](#the-binary-number-system-twos-complement), where a leading zero indicates that a number is positive and a leading one indicates that it's negative.
 
-With a basic understanding of binary numbers, you should now get the joke from earlier:
+Having learned the binary number system, you should now understand the joke from earlier:
 
 > There are $$10$$ types of people in the world: those who understand binary and those who don't.
 
@@ -394,7 +397,7 @@ Naturally, you may be wondering: How did they split $$8$$ bits evenly among red,
 
 Well, the answer is that *they didn't*. The process of splitting these bits among the color components is called [color quantization](https://en.wikipedia.org/wiki/8-bit_color#Color_quantization), and the most common method (known as **8-bit truecolor**) split the bits as 3-3-2 red-green-blue. Apparently, this is because the human eye is less sensitive to blue light than the other two, and thus it simply made sense to distribute the bits heavily in favor of red and green and leave blue with one less bit to work with.
 
-## Signed Binary Numbers: Two's Complement
+## Signed Binary Number System: Two's Complement
 
 Now that we've covered decimal, binary, and hexadecimal, I'd like us to revisit the binary number system and learn how to represent negative numbers. Because so far, we've only looked at positive numbers. How do we store the negative sign?
 
@@ -533,13 +536,13 @@ In C++, it's in `std::numeric_limits<int>::min()`.
 
 Generalizing things once again, if we have an $$\text{N}$$-bit system, the smallest representable signed int is $$-2^{\text{N}-1}$$.
 
-## Basic Binary Arithmetic
+## Basic Arithmetic in the Binary Number System
 
-Spoiler: Adding, subtracting, multiplying, and dividing numbers in binary is **exactly the same** as it is in the decimal number system!
+Spoiler: Adding, subtracting, multiplying, and dividing numbers in the binary number system is **exactly the same** as it is in decimal!
 
 ### Adding Binary Numbers
 
-We'll first revisit what we learned in elementary school for decimal numbers and then consider the case of binary.
+We'll first revisit what we learned in elementary school for decimal numbers and then look at how to add two binary numbers.
 
 To add two numbers in the decimal number system, you stack them on top of one another visually and work your way from right to left, adding two digits and "carrying the one" as needed.
 
@@ -564,7 +567,7 @@ We first add the $$4$$ and $$8$$ to get $$12$$, which is not a digit we support 
       42
 ```
 
-Now, let's add these same two numbers ($$24_{10}$$ and $$18_{10}$$) using their binary representations:
+Now, let's add these same two numbers ($$24_{10}$$ and $$18_{10}$$) using the binary number system:
 
 ```
   11000
@@ -626,15 +629,15 @@ $$1(2^5) + 1(2^2) = 32_{10} + 4_{10} = 36_{10}$$
 
 ### Subtracting Binary Numbers
 
-Subtraction is addition with a negative operand: $$\text{a} - \text{b} = \text{a} + (-\text{b})$$. Now that we know how to represent negative numbers in binary thanks to two's complement, this should be a piece of cake: **represent the second operand in its negative form and perform addition**.
+Subtraction is addition with a negative operand: $$\text{a} - \text{b} = \text{a} + (-\text{b})$$. Now that we know how to represent negative numbers in the binary system thanks to two's complement, this should be a piece of cake: **negate the second operand and perform addition**.
 
 For example, what's $$12_{10} - 26_{10}$$? In decimal, we know this to be $$-14_{10}$$. Over in binary, we know that $$12_{10}$$ is $$01100$$. What about $$-26_{10}$$? We'll represent that using two's complement.
 
-We start by first representing $$26_{10}$$:
+We start by first representing $$26_{10}$$ in binary:
 
 $$+26_{10} = 011010_{2}$$
 
-Now we represent it in two's complement by flipping the bits and adding one:
+Now we negate it by flipping the bits and adding one:
 
 ```
 26 in binary: 011010
@@ -652,7 +655,7 @@ Stack up your operands and add them like we did before:
     110010
 ```
 
-Notice that the result has a leading one, which we know denotes negative numbers in signed binary. So we at least got the sign part right! Let's check the magnitude:
+Notice that the result has a leading one, which we know denotes a negative number in signed binary. So we at least got the sign part right! Let's check the magnitude:
 
 $$-1(2^5) + 1(2^4) + 1(2^1) = -32_{10} + 16_{10} + 2_{10} = -14_{10}$$
 
@@ -689,7 +692,9 @@ x  12
   252
 ```
 
-Well, guess what? The process is exactly the same in binary! Let's multiply these same two numbers in binary. They are $$21_{10} = 010101$$ and $$12_{10} = 01100$$:
+Guess what? The process is exactly the same in the binary number system!
+
+Let's multiply these same two numbers in binary. They are $$21_{10} = 010101$$ and $$12_{10} = 01100$$:
 
 ```
    010101
@@ -697,7 +702,7 @@ x   01100
 —————————
 ```
 
-Obviously, this is going to be more involved in binary since we're working with more digits, but the logic is still the same. In fact, beyond having to write out so many intermediate results, we actually have it much easier over in binary. Whenever a digit is $$1$$, you simply copy down the first multiplicand, padded with zeros. Whenever it's a zero times the first multiplicand, the result is zero!
+Obviously, this is going to be more involved in binary since we're working with bits (and thus longer strings), but the logic is still the same. In fact, beyond having to write out so many intermediate results, we actually have it much easier over in binary. Whenever a digit is $$1$$, you simply copy down the first multiplicand, padded with zeros. Whenever it's a zero times the first multiplicand, the result is zero!
 
 ```
       010101
@@ -739,7 +744,7 @@ Let's divide $$126_{10}$$ by $$12_{10}$$ using long division:
 
 Answer: $$10.5$$.
 
-Now let's repeat the process using binary. Note that I'm going to strip leading zeros to make my life easier since we're working with two unsigned numbers:
+Now let's repeat the process over in the binary number system. Note that I'm going to strip leading zeros to make my life easier since we're working with two unsigned numbers:
 
 ```
     
@@ -838,9 +843,9 @@ Notice that the result carries an additional bit over, yielding a result that ha
 
 Overflow and underflow are things you should be mindful of in programs that are performing lots of computations, as you may end up getting unexpected results.
 
-## Wrap-Up: Additional Topics for Exploration
+## The Binary Number System: Additional Topics for Exploration
 
-That about does it for this introduction to the binary number system! We took a pretty in-depth look at decimal, binary, and hexadecimal, and I hope you now have a greater appreciation for binary numbers and the role that they play in computing.
+That about does it for this introduction to the binary number system! We took a pretty in-depth look at decimal, binary, and hexadecimal, and I hope you now have a greater appreciation for the binary number system and the role that it plays in computing.
 
 In reality, there's much more to learn beyond what we covered here. If you're curious, I encourage you to look into [representing floating point numbers in binary](https://en.wikipedia.org/wiki/Floating-point_arithmetic) using the IEE754 format.
 
