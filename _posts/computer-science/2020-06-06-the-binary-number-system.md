@@ -1,5 +1,5 @@
 ---
-title: "The Binary Number System"
+title: "Binary for Beginners: The ABCs of 0s and 1s"
 description: The binary number system underlies pretty much everything in computation. But what's the deal with all those 0s and 1s, and how are binary numbers used?
 keywords: [binary number system, binary numbers]
 tags: [computer-science, math, binary]
