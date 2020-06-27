@@ -35,15 +35,9 @@
     }
 
     .post-preview {
-        $thumbnail-height: 12rem;
+        --thumbnail-height: 8rem;
         display: block;
         padding: 0;
-    
-        .post-preview-header {
-            height: $thumbnail-height;
-            width: 100%;
-            position: relative;
-        }
 
         .post-preview-body {
             padding: var(--card-padding);
@@ -52,33 +46,29 @@
         }
 
         .post-thumbnail {
-            position: absolute;
-            bottom: 0;
-            top: 0;
-            left: 0;
-            right: 0;
+            position: relative;
+            display: block;
+            width: 100%;
+            height: var(--thumbnail-height);
             
             img {
                 border-top-left-radius: 5px;
                 border-top-right-radius: 5px;
-                height: $thumbnail-height;
+                height: var(--thumbnail-height);
                 width: 100%;
                 object-fit: cover;
                 object-position: center;
+                position: absolute;
             }
         }
     
         .post-title {
             //background-color: rgba(50, 65, 78, 0.8);
-            @include themed(background-color, rgba(50, 65, 78, 0.8), rgba(93, 87, 73, 0.8));
-            //@include themed(background-color, #5B6771, #6b675d);
-            @include transition(background);
+            //@include themed(background-color, rgba(50, 65, 78, 0.8), rgba(93, 87, 73, 0.8));
+            @include themed(background-color, #5B6771, #6b675d);
+            @include transition(background-color);
             color: white;
             text-shadow: 2px 2px black;
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            left: 0;
             padding: 0.5em 1.5em;
             margin: 0;
             display: flex;
@@ -257,7 +247,7 @@
 
         picture {
             margin-top: 0;
-            margin-bottom: 15px;
+            margin-bottom: 1em;
         }
     }
 

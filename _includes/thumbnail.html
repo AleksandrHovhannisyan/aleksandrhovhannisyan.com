@@ -1,12 +1,18 @@
 {% assign post = include.post %}
+{% assign thumbnail = 'thumbnail' %}
+{% assign thumbnail_ext = 'PNG' %}
+{% assign placeholder = 'thumbnail-placeholder' %}
+{% if post.thumbnail_ext %}
+    {% assign thumbnail_ext = post.thumbnail_ext %}
+{% endif %}
 <picture class="lazy-loaded-picture post-thumbnail">
     <source 
         type="image/webp" 
         srcset="/assets/img/posts/{{ post.slug }}/thumbnail-placeholder.webp" 
         data-src="/assets/img/posts/{{ post.slug }}/thumbnail.webp" >
     <img 
-        data-src="/assets/img/posts/{{ post.slug }}/thumbnail.PNG" 
-        src="/assets/img/posts/{{ post.slug }}/thumbnail-placeholder.PNG" 
+        data-src="/assets/img/posts/{{ post.slug }}/{{ thumbnail }}.{{ thumbnail_ext }}" 
+        src="/assets/img/posts/{{ post.slug }}/{{ placeholder }}.{{ thumbnail_ext }}" 
         alt=""
         aria-hidden="true"
         class="placeholder" />

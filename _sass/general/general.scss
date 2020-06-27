@@ -191,6 +191,7 @@ li:not(:last-child) {
 
 .lazy-loaded-picture {
     position: relative;
+    display: block;
 
     .placeholder {
         position: relative;

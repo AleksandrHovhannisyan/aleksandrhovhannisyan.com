@@ -5,6 +5,7 @@ tags: [dev, jekyll, liquid, javascript]
 keywords: [copy to clipboard button]
 last_updated: 2020-05-17
 comments_id: 35
+thumbnail_ext: GIF
 ---
 
 I'm always looking for ways to improve my site's user experience without toppling the precarious house of cards that is cross-browser compatibility (Internet Explorer be damned).
