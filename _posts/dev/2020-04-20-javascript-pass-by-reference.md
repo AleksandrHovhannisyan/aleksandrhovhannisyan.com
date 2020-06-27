@@ -1,6 +1,6 @@
 ---
 title: "Is JavaScript Pass by Reference?"
-description: Developers are often taught that JavaScript passes objects by reference. But this simply isn't true. Here's why JavaScript is actually a pass by value language.
+description: Developers are often taught that JavaScript passes objects by reference. But this isn't true. Here's why JavaScript is actually a pass by value language.
 keywords: [javascript pass by reference]
 tags: [dev, javascript, memory]
 comments_id: 36
@@ -32,13 +32,13 @@ If you'd like the TL;DR answer, go ahead and jump to [Passing Pointers ("Referen
 - [Prerequisite Terminology: Arguments vs. Parameters](#prerequisite-terminology-arguments-vs-parameters)
 - [JavaScript Doesn't Pass by Reference](#javascript-doesnt-pass-by-reference)
   - [What Are Object References in JavaScript?](#what-are-object-references-in-javascript)
-- ["True" References Are Aliases](#%22true%22-references-are-aliases)
-- ["Object References" Are Pointers](#%22object-references%22-are-pointers)
+- ["True" References Are Aliases](#true-references-are-aliases)
+- ["Object References" Are Pointers](#object-references-are-pointers)
   - [How Are Objects Stored in Memory?](#how-are-objects-stored-in-memory)
 - [Pass by Value vs. Pass by Reference](#pass-by-value-vs-pass-by-reference)
   - [What Is Pass by Reference?](#what-is-pass-by-reference)
   - [What Is Pass by Value?](#what-is-pass-by-value)
-  - [Passing Pointers ("References") by Value](#passing-pointers-%22references%22-by-value)
+  - [Passing Pointers ("References") by Value](#passing-pointers-references-by-value)
 - [Summary: JavaScript Is Not Pass by Reference](#summary-javascript-is-not-pass-by-reference)
 
 ## Prerequisite Terminology: Arguments vs. Parameters
