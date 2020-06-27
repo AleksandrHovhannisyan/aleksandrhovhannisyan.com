@@ -29,9 +29,9 @@
     - name: OOP
       rating: 5
     - name: Code reviews
-      rating: 4
+      rating: 5
     - name: Refactoring
-      rating: 4
+      rating: 5
     - name: Game dev
       rating: 3
     - name: Design patterns
