@@ -1,0 +1,65 @@
+@import 'colors';
+@import 'mixins';
+@import 'settings';
+
+#til {
+    .postit-notes {
+        list-style: none;
+        padding: 1em;
+        border: solid 0.5em #e3c19d;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+        background-color: #cc8f4e;
+        background-image: url("https://www.transparenttextures.com/patterns/wine-cork.png");
+        border-radius: 10px;
+    }
+
+    .postit {
+        margin: 1em;
+        background-color: #ffc;
+        box-shadow: 4px 4px 8px rgba(33, 33, 33, 0.7);
+        position: relative;
+        @include transition(transform, top, box-shadow);
+        
+        &:nth-child(even) {
+            -o-transform:rotate(2deg);
+            -webkit-transform:rotate(2deg);
+            -moz-transform:rotate(2deg);
+            transform: rotate(2deg);
+            top: 5px;
+        }
+        
+        &:nth-child(3n) {
+            -o-transform:rotate(-3deg);
+            -webkit-transform:rotate(-3deg);
+            -moz-transform:rotate(-3deg);
+            transform: rotate(-3deg);
+            top: -5px;
+        }
+        
+        &:hover {
+            transform: scale(1.1);
+            box-shadow: 8px 8px 16px rgba(33, 33, 33, 0.7);
+            top: 0;
+        }
+        
+        a {
+            display: block;
+            height: 100%;
+            width: 100%;
+            padding: 1.5em;
+        }
+
+        .postit-title {
+            font-family: 'Reenie Beanie', cursive;
+            font-weight: map-get($map: $font-weights, $key: "bold");
+            font-size: 1.25em;
+        }
+
+        .postit-description {
+            font-size: 1em;
+            font-weight: map-get($font-weights, "normal");
+            font-family: 'Reenie Beanie', cursive;
+        }
+    }
+}

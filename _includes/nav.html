@@ -13,7 +13,7 @@
             </button>
             <div class="nav-menu">
                 <ul class="nav-links">
-                    {% assign navLinks = "Experience,Blog,Contact" | split: ',' %}
+                    {% assign navLinks = "Experience,TIL,Blog,Contact" | split: ',' %}
                     {% for link in navLinks %}
                         <li class="nav-item"><a class="nav-link" href="/{{ link | downcase }}/" {% if page.title == link %}aria-current="page" id="active-nav-link"{% endif %}>{{ link }}</a></li>
                     {% endfor %}
