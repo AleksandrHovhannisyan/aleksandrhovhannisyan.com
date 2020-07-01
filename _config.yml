@@ -19,7 +19,7 @@ include: [_pages]
 collections:
   notes:
     output: true
-    permalink: /:collection/:title/
+    permalink: /:title/
 
 autopages:
   enabled: true
