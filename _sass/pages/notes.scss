@@ -17,16 +17,31 @@
         padding: 1em;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+        position: relative;
+        z-index: 1;
     }
 
     .note {
         margin: 1em;
         height: fit-content;
+        transform-style: preserve-3d;
         max-width: 250px;
         background-color: #ffc;
-        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         position: relative;
-        @include transition(transform, top, box-shadow);
+        @include transition(transform, top, box-shadow, border-radius);
+
+        &::after {
+            content: "";
+            position: absolute;
+            transform: translateZ(-1px);
+            right: 3px;
+            bottom: 15px;
+            width: 200px;
+            height: 25px;
+            background: rgba(0, 0, 0, 0.2);
+            box-shadow: 2px 15px 5px rgba(0, 0, 0, 0.40);
+        }
         
         &:nth-child(2n) {
             background-color: #ffdcdc;
@@ -42,9 +57,26 @@
             -webkit-transform:rotate(-3deg);
             -moz-transform:rotate(-3deg);
             transform: rotate(-3deg);
-            box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.3);
+            box-shadow: -1px 1px 2px rgba(0, 0, 0, 0.3);
             top: -5px;
             background-color: #f1f2f2;
+
+            &::after {
+                content: "";
+                position: absolute;
+                transform: translateZ(-1px);
+                left: 0px;
+                right: unset;
+                width: 200px;
+                height: 25px;
+                background: rgba(0, 0, 0, 0.2);
+                box-shadow:2px 15px 5px rgba(0, 0, 0, 0.40);
+            }
+
+            &:hover {
+                border-bottom-left-radius: 100px 15px;
+                border-bottom-right-radius: 0px;
+            }
         }
 
         &:nth-child(5n) {
@@ -61,9 +93,7 @@
         }
         
         &:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
-            top: 0;
+            border-bottom-right-radius: 100px 15px;
         }
         
         a {
