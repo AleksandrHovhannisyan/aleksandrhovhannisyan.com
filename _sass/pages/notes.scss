@@ -9,6 +9,7 @@
         background-image: url("/assets/img/cardboard.png");
         border-radius: 10px;
         box-shadow: inset 0 2px 4px 0px rgba(0, 0, 0, 0.15);
+        margin-top: 2.5rem;
     }
 
     .notes-list {
@@ -23,7 +24,7 @@
         height: fit-content;
         max-width: 250px;
         background-color: #ffc;
-        box-shadow: 2px 2px 4px rgba(33, 33, 33, 0.7);
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         position: relative;
         @include transition(transform, top, box-shadow);
         
@@ -41,7 +42,7 @@
             -webkit-transform:rotate(-3deg);
             -moz-transform:rotate(-3deg);
             transform: rotate(-3deg);
-            box-shadow: -2px 2px 4px rgba(33, 33, 33, 0.7);
+            box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.3);
             top: -5px;
             background-color: #f1f2f2;
         }
@@ -61,7 +62,7 @@
         
         &:hover {
             transform: scale(1.05);
-            box-shadow: 0 4px 4px rgba(33, 33, 33, 0.4);
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
             top: 0;
         }
         

@@ -105,6 +105,7 @@ defaults:
       layout: post
       excerpt: ""
       permalink: /blog/:categories/:title/
+      img_path: /assets/img/posts/
   - 
     scope:
       path: _notes
@@ -113,6 +114,7 @@ defaults:
       is_post: true
       layout: post
       excerpt: ""
+      img_path: /assets/img/notes/
   -
     scope:
       path: _posts/dev

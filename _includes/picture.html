@@ -4,7 +4,7 @@
 {% assign id = include.id %}
 {% assign clickable = include.clickable %}
 {% assign path = include.path %}
-{% if path == Nil %}{% assign path = '/assets/img/posts/' | append: page.slug %}{% endif %}
+{% if path == Nil %}{% assign path = page.img_path | append: page.slug %}{% endif %}
 <picture 
 class="lazy-loaded-picture{% unless clickable == false %} clickable-picture{% endunless %}{% if class %} {{ class }}{% endif %}" 
 {% if id %}id="{{ id }}"{% endif %} {% unless clickable == false %}data-clickable{% endunless %}>
