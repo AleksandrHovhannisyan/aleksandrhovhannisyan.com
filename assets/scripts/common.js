@@ -5,33 +5,6 @@ function mount(root, ...nodes) {
   nodes.forEach((node) => root.appendChild(node));
 }
 
-(function () {
-  const themeSwitch = document.getElementById('theme-switch');
-  themeSwitch.addEventListener('click', toggleColorTheme);
-  // For accessibility, allow users to toggle with Enter
-  themeSwitch.addEventListener('keyup', (keyEvent) => {
-    if (keyEvent.keyCode === 13) {
-      toggleColorTheme();
-    }
-  });
-})();
-
-function setColorTheme(theme) {
-  html.className = theme;
-  localStorage.setItem('theme', theme);
-}
-
-/** Called when the user clicks the dark mode switch in the top-left of the navbar.
- *  Toggles the document's class to trigger a change in the color themes.
- */
-function toggleColorTheme() {
-  if (html.className === 'dark') {
-    setColorTheme('light');
-  } else {
-    setColorTheme('dark');
-  }
-}
-
 const topnav = document.getElementById('topnav');
 const mobileNavbarToggle = topnav.querySelector('#navbar-toggle');
 mobileNavbarToggle.addEventListener('click', toggleMobileNavbarVisibility);
