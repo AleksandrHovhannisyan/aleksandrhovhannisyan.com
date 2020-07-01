@@ -16,6 +16,11 @@ plugins:
   
 include: [_pages]
 
+collections:
+  notes:
+    output: true
+    permalink: /:collection/:title/
+
 autopages:
   enabled: true
 
@@ -100,6 +105,14 @@ defaults:
       layout: post
       excerpt: ""
       permalink: /blog/:categories/:title/
+  - 
+    scope:
+      path: _notes
+    values:
+      custom_js: [lazyLoad, copyCode]
+      is_post: true
+      layout: post
+      excerpt: ""
   -
     scope:
       path: _posts/dev

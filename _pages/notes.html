@@ -9,48 +9,14 @@ permalink: /notes/
     <p class="subtitle">A collection of thoughts, discoveries, and code snippets.</p>
     <section class="postit-board section">
         <ol class="postit-notes">
+            {% for note in site.notes %}
             <li class="postit">
-                <a href="#">
-                    <h2 class="postit-title">Title 1</h2>
-                    <p class="postit-description">Text content #1. This is a longer description than the others.</p>
+                <a href="{{ note.url }}">
+                    <h2 class="postit-title">{{ note.title }}</h2>
+                    <p class="postit-description">{{ note.description }}</p>
                 </a>
             </li>
-            <li class="postit">
-                <a href="#">
-                    <h2 class="postit-title">Title 2</h2>
-                    <p class="postit-description">Text content #2</p>
-                </a>
-            </li>
-            <li class="postit">
-                <a href="#">
-                    <h2 class="postit-title">Title 3: The Titling</h2>
-                    <p class="postit-description">Text content #3. Memes are whack.</p>
-                </a>
-            </li>
-            <li class="postit">
-                <a href="#">
-                    <h2 class="postit-title">Title 4</h2>
-                    <p class="postit-description">Text content #4</p>
-                </a>
-            </li>
-            <li class="postit">
-                <a href="#">
-                    <h2 class="postit-title">Title 5</h2>
-                    <p class="postit-description">Text content #5</p>
-                </a>
-            </li>
-            <li class="postit">
-                <a href="#">
-                    <h2 class="postit-title">Title 6</h2>
-                    <p class="postit-description">Text content #6</p>
-                </a>
-            </li>
-            <li class="postit">
-                <a href="#">
-                    <h2 class="postit-title">Title 7</h2>
-                    <p class="postit-description">Text content #7</p>
-                </a>
-            </li>
+            {% endfor %}
         </ol>
     </section>
 </article>
