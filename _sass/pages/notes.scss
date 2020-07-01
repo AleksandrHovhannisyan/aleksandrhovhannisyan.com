@@ -38,7 +38,7 @@
             transform: translateZ(-1px);
             right: 3px;
             bottom: 15px;
-            width: 200px;
+            width: calc(100% - 3px);
             height: 25px;
             background: rgba(0, 0, 0, 0.2);
             box-shadow: 2px 15px 5px rgba(0, 0, 0, 0.40);
@@ -68,10 +68,10 @@
                 transform: translateZ(-1px);
                 left: 0px;
                 right: unset;
-                width: 200px;
+                width: calc(100% - 3px);
                 height: 25px;
                 background: rgba(0, 0, 0, 0.2);
-                box-shadow:2px 15px 5px rgba(0, 0, 0, 0.40);
+                box-shadow: 2px 15px 5px rgba(0, 0, 0, 0.40);
             }
 
             &:hover {
