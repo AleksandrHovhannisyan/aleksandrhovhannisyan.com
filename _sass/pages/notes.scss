@@ -26,7 +26,7 @@
         height: fit-content;
         transform-style: preserve-3d;
         max-width: 250px;
-        background-color: #ffc;
+        background: linear-gradient(180deg, #ffc, 90%, #f1f1dd);
         box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         position: relative;
         @include transition(transform, top, box-shadow, border-radius);
@@ -44,7 +44,7 @@
         }
         
         &:nth-child(2n) {
-            background-color: #ffdcdc;
+            background: linear-gradient(180deg, #ffdcdc, 90%, #fae5e5);
             -o-transform:rotate(2deg);
             -webkit-transform:rotate(2deg);
             -moz-transform:rotate(2deg);
@@ -59,7 +59,7 @@
             transform: rotate(-3deg);
             box-shadow: -1px 1px 2px rgba(0, 0, 0, 0.3);
             top: -5px;
-            background-color: #f1f2f2;
+            background: linear-gradient(180deg, #f1f2f2, 90%, #faffff);
 
             &::after {
                 content: "";
@@ -81,15 +81,15 @@
 
         &:nth-child(5n) {
             top: -10px;
-            background-color: #e0f8e1;
+            background: linear-gradient(180deg, #e0f8e1, 90%, #f0fdf1);
         }
 
         &:nth-child(6n) {
-            background-color: #ffc;
+            background: linear-gradient(180deg, #ffc, 90%, #f1f1dd);
         }
 
         &:nth-child(7n) {
-            background-color: #f1f2f2;
+            background: linear-gradient(180deg, #f1f2f2, 90%, #faffff);
         }
         
         &:hover {
