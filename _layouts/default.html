@@ -13,7 +13,9 @@
         <!-- OG properties are for social platforms with previews for shared links -->
         <meta property="og:title" content="{{ page.title }} | {{ site.title }}" />
         {% if page.is_post %}
-        <meta property="og:image" content="{{ site.url }}/assets/img/posts/{{ page.slug }}/thumbnail.PNG" />
+        {% assign thumbnail_ext = 'PNG' %}
+        {% if page.thumbnail_ext %}{% assign thumbnail_ext = page.thumbnail_ext %}{% endif %}
+        <meta property="og:image" content="{{ site.url }}/{{ page.img_path }}/{{ page.slug }}/thumbnail.{{ thumbnail_ext }}" />
         {% else %}
         <meta property="og:image" content="{{ site.url }}/assets/img/preview.PNG" />
         {% endif %}

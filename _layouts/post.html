@@ -32,7 +32,7 @@ layout: default
       "@id": "{{ site.url }}{{ page.url }}"
     },
     "headline": {{ page.title | escape | jsonify }},
-    "image": ["{{ site.url }}/assets/img/posts/{{ page.slug }}/thumbnail.PNG"],
+    "image": ["{{ site.url }}{{ page.img_path }}/{{ page.slug }}/thumbnail.PNG"],
     "datePublished": {{ page.date | jsonify }},{% if page.last_updated %}
     "dateModified": {{ page.last_updated | jsonify }},{% endif %}
     "author": {
