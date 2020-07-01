@@ -26,12 +26,13 @@
         position: relative;
         @include transition(transform, top, box-shadow);
         
-        &:nth-child(even) {
+        &:nth-child(2n) {
+            background-color: #ffdcdc;
             -o-transform:rotate(2deg);
             -webkit-transform:rotate(2deg);
             -moz-transform:rotate(2deg);
             transform: rotate(2deg);
-            top: 5px;
+            top: 12px;
         }
         
         &:nth-child(3n) {
@@ -41,6 +42,20 @@
             transform: rotate(-3deg);
             box-shadow: -2px 2px 4px rgba(33, 33, 33, 0.7);
             top: -5px;
+            background-color: #f1f2f2;
+        }
+
+        &:nth-child(5n) {
+            top: -10px;
+            background-color: #e0f8e1;
+        }
+
+        &:nth-child(6n) {
+            background-color: #ffc;
+        }
+
+        &:nth-child(7n) {
+            background-color: #f1f2f2;
         }
         
         &:hover {
