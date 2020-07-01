@@ -3,7 +3,7 @@
 @import 'settings';
 
 #notes {
-    .postit-board {
+    .notes-board {
         border: solid 0.5em #e3c19d;
         background-color: #cc8f4e;
         background-image: url("/assets/img/cardboard.png");
@@ -11,14 +11,14 @@
         box-shadow: inset 0 2px 4px 0px rgba(0, 0, 0, 0.15);
     }
 
-    .postit-notes {
+    .notes-list {
         list-style: none;
         padding: 1em;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
     }
 
-    .postit {
+    .note {
         margin: 1em;
         height: fit-content;
         max-width: 250px;
@@ -60,7 +60,7 @@
         }
         
         &:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
             box-shadow: 0 4px 4px rgba(33, 33, 33, 0.4);
             top: 0;
         }
@@ -69,19 +69,27 @@
             display: block;
             height: 100%;
             width: 100%;
-            padding: 1.5em;
+            padding: 2em 1.5em 1.5em 1.5em;
         }
 
-        .postit-title {
+        .note-date {
+            position: absolute;
+            right: 1.5em;
+            font-size: 1em;
+            top: 0.25em;
             font-family: 'Reenie Beanie', cursive;
-            font-weight: map-get($map: $font-weights, $key: "bold");
-            font-size: 1.5em;
         }
 
-        .postit-description {
+        .note-title {
+            font-weight: map-get($map: $font-weights, $key: "bold");
+            font-size: 1.25em;
+        }
+
+        .note-description {
+            font-family: 'Reenie Beanie', cursive;
+            margin: 0;
             font-size: 1.25em;
             font-weight: map-get($font-weights, "normal");
-            font-family: 'Reenie Beanie', cursive;
         }
     }
 }

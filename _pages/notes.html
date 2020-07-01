@@ -7,13 +7,14 @@ permalink: /notes/
 <articcle id="notes" class="section">
     <h1 class="heading">Notes 'n Stuff</h1>
     <p class="subtitle">A collection of thoughts, discoveries, and code snippets.</p>
-    <section class="postit-board section">
-        <ol class="postit-notes">
+    <section class="notes-board section">
+        <ol class="notes-list">
             {% for note in site.notes %}
-            <li class="postit">
+            <li class="note">
+                <time datetime="{{ note.date }}" class="note-date">{{ note.date | date: "%m/%d/%Y" }}</time>
                 <a href="{{ note.url }}">
-                    <h2 class="postit-title">{{ note.title }}</h2>
-                    <p class="postit-description">{{ note.description }}</p>
+                    <h2 class="note-title">{{ note.title }}</h2>
+                    <p class="note-description">{{ note.description }}</p>
                 </a>
             </li>
             {% endfor %}
