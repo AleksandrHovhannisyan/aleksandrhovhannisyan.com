@@ -1,6 +1,7 @@
 @import 'colors';
 
-html {
+html.light {
+//    --main-bg-color: #fafafd;
     --main-bg-color: #fdfdfd;
     --nav-bg-color: #2c2c2c;
     --nav-text-color: #dedede;
@@ -45,7 +46,6 @@ html {
     --danger-color: #{$primary-danger-color};
 }
 
-/*
 html.dark {
     --main-bg-color: #1a1a1a;
     --nav-bg-color: #292929;
@@ -90,4 +90,3 @@ html.dark {
     
     --danger-color: #{$secondary-danger-color};
 }
-*/
