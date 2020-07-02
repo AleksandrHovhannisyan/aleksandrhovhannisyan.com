@@ -23,7 +23,7 @@
 
     .note {
         margin: 1em;
-        height: fit-content;
+        height: min-content;
         transform-style: preserve-3d;
         max-width: 250px;
         background: linear-gradient(180deg, #ffc, 90%, #f1f1dd);
