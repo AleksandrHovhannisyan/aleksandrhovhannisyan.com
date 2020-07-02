@@ -9,13 +9,20 @@ $string-height: 3em;
 $string-thickness: 3px;
 
 #notes {
+    .notes-by-year {
+        margin-top: 2.5rem;
+
+        .year {
+            margin-bottom: 1.5em;
+        }
+    }
+
     .notes-board {
         border: solid 0.5em #e3c19d;
         background-color: #cc8f4e;
         background-image: url("/assets/img/cardboard.png");
         border-radius: 10px;
         box-shadow: inset 0 2px 4px 0px rgba(0, 0, 0, 0.15);
-        margin-top: 2.5rem;
         position: relative;
 
         /*

@@ -4,46 +4,54 @@ description: A collection of thoughts, discoveries, and code snippets.
 permalink: /notes/
 ---
 
+
+
 <articcle id="notes" class="section">
     <h1 class="heading">Notes 'n Stuff</h1>
     <p class="subtitle">A collection of thoughts, discoveries, and code snippets.</p>
-    <section class="notes-board">
-        <ol class="notes-list">
-            {% for note in site.notes %}
-            <li class="note">
-                <time datetime="{{ note.date }}" class="note-date">{{ note.date | date: "%m/%d/%Y" }}</time>
-                <a href="{{ note.url }}">
-                    <h2 class="note-title">{{ note.title }}</h2>
-                    <p class="note-description">{{ note.description }}</p>
-                </a>
-            </li>
-            {% endfor %}
-            <li class="note">
-                <a href="#">
-                    <h2 class="note-title">Placeholder</h2>
-                    <p class="note-description">An awesome description goes here</p>
-                </a>
-            </li>
-            <li class="note">
-                <a href="#">
-                    <h2 class="note-title">Placeholder</h2>
-                    <p class="note-description">An awesome description goes here</p>
-                </a>
-            </li>
-            <li class="note">
-                <a href="#">
-                    <h2 class="note-title">Placeholder</h2>
-                    <p class="note-description">An awesome description goes here</p>
-                </a>
-            </li>
-            <li class="note">
-                <a href="#">
-                    <h2 class="note-title">Placeholder</h2>
-                    <p class="note-description">An awesome description goes here</p>
-                </a>
-            </li>
-        </ol>
+    {% assign notesByYear = site.notes | group_by_exp: "note", "note.date | date: '%Y'" %}
+    {% for year in notesByYear %}
+    <section class="notes-by-year section">
+        <h3 class="year heading">📅 {{ year.name }}</h3>
+        <div class="notes-board">
+            <ol class="notes-list">
+                {% for note in year.items %}
+                    <li class="note">
+                        <time datetime="{{ note.date }}" class="note-date">{{ note.date | date: "%m/%d/%Y" }}</time>
+                        <a href="{{ note.url }}">
+                            <h2 class="note-title">{{ note.title }}</h2>
+                            <p class="note-description">{{ note.description }}</p>
+                        </a>
+                    </li>
+                {% endfor %}
+                <li class="note">
+                    <a href="#">
+                        <h2 class="note-title">Placeholder</h2>
+                        <p class="note-description">An awesome description goes here</p>
+                    </a>
+                </li>
+                <li class="note">
+                    <a href="#">
+                        <h2 class="note-title">Placeholder</h2>
+                        <p class="note-description">An awesome description goes here</p>
+                    </a>
+                </li>
+                <li class="note">
+                    <a href="#">
+                        <h2 class="note-title">Placeholder</h2>
+                        <p class="note-description">An awesome description goes here</p>
+                    </a>
+                </li>
+                <li class="note">
+                    <a href="#">
+                        <h2 class="note-title">Placeholder</h2>
+                        <p class="note-description">An awesome description goes here</p>
+                    </a>
+                </li>
+            </ol>
+        </div>
     </section>
+    {% endfor %}
 </article>
 
 <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
