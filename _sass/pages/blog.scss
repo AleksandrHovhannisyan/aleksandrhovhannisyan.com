@@ -272,7 +272,10 @@
     img {
         border-radius: 5px;
         max-width: 100%;
-        filter: brightness(.9) contrast(1.2);
+        
+        html.dark & {
+            filter: brightness(.9) contrast(1.2);
+        }
     }
 
     .clickable-picture img {
