@@ -15,7 +15,8 @@ permalink: /notes/
         <h3 class="year heading">📅 {{ year.name }}</h3>
         <div class="notes-board">
             <ol class="notes-list">
-                {% for note in year.items %}
+                {% assign notes = year.items | sort: 'date' | reverse %}
+                {% for note in notes %}
                     <li class="note">
                         <time datetime="{{ note.date }}" class="note-date">{{ note.date | date: "%m/%d/%Y" }}</time>
                         <a href="{{ note.url }}">
