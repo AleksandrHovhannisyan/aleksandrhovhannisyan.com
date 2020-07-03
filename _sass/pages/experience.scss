@@ -179,6 +179,10 @@
             margin-right: 1.5em;
             width: 2.5rem;
             height: 2.5rem;
+
+            html.dark & {
+                filter: brightness(.8) contrast(1.2);
+            }
         }
 
         .job-title {
