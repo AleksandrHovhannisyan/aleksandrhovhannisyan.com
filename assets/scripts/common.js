@@ -16,19 +16,20 @@ function mount(root, ...nodes) {
   });
 })();
 
-function setColorTheme(theme) {
-  html.className = theme;
-  localStorage.setItem('theme', theme);
+function setColorTheme(newTheme, oldTheme) {
+  html.classList.add(newTheme);
+  html.classList.remove(oldTheme);
+  localStorage.setItem('theme', newTheme);
 }
 
 /** Called when the user clicks the dark mode switch in the top-left of the navbar.
  *  Toggles the document's class to trigger a change in the color themes.
  */
 function toggleColorTheme() {
-  if (html.className === 'dark') {
-    setColorTheme('light');
+  if (html.classList.contains('dark')) {
+    setColorTheme('light', 'dark');
   } else {
-    setColorTheme('dark');
+    setColorTheme('dark', 'light');
   }
 }
 
