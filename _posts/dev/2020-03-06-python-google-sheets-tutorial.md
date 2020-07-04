@@ -7,7 +7,7 @@ tags: [dev, python, apis, automation]
 
 If you're as lazy as I am, you'll come to realize at a certain point that something you've been doing by hand can easily be automated. That's the kind of laziness that makes the difference between spending hours on doing something by hand versus pressing Enter once and kicking up your feet to relax.
 
-{% include picture.html img="thumbnail" ext="PNG" alt="Google Sheets and Python." %}
+{% include picture.html img="thumbnail" ext="png" alt="Google Sheets and Python." %}
 
 In this short tutorial, I'll show you how to use the Python Google Sheets and Drive APIs to automate data entry tasks in your day-to-day work. This is a game-changer if you're used to manual data entry, so buckle up!
 
@@ -23,7 +23,7 @@ I don't know about you, but that sounds like a great deal to me! Let's get start
 
 ### 1. Create a New Google Cloud Platform Project
 
-{% include picture.html img="create-project" ext="GIF" alt="Creating a Google Cloud Platform project." %}
+{% include picture.html img="create-project" ext="gif" alt="Creating a Google Cloud Platform project." %}
 
 Visit the [Google Cloud Platform](https://console.cloud.google.com/cloud-resource-manager) and create an account. As noted earlier, you'll need to provide a credit or debit card if you're new, but you won't be charged for the first 12 months.
 
@@ -35,7 +35,7 @@ When you're done, simply click `Create`.
 
 ### 2. Enable the Google Sheets API
 
-{% include picture.html img="enable-sheets-api" ext="GIF" alt="Enabling the Google Sheets API." %}
+{% include picture.html img="enable-sheets-api" ext="gif" alt="Enabling the Google Sheets API." %}
 
 Click the menu icon in the top-left of the page to access the sidebar, and go to `APIs & Services`.
 
@@ -45,7 +45,7 @@ Search for `Google Sheets API` and click the result card. Then click the blue `E
 
 ### 3. Create Credentials to Use the Google Sheets API
 
-{% include picture.html img="create-credentials" ext="GIF" alt="Creating Google API credentials." %}
+{% include picture.html img="create-credentials" ext="gif" alt="Creating Google API credentials." %}
 
 You'll need to create credentials for authorizaion to use Google APIs. You'll usually only need to create a credential once, for the first API that you enable. For all future APIs that you enable, you can simply reuse the same credentials you set up before. We'll see this in a future section.
 
@@ -84,7 +84,7 @@ Move this to your project directory and name it whatever you like. I'll name it 
 
 ### 4. Enable the Google Drive API
 
-{% include picture.html img="enable-drive-api" ext="GIF" alt="Enabling the Google Drive API." %}
+{% include picture.html img="enable-drive-api" ext="gif" alt="Enabling the Google Drive API." %}
 
 You may think that's enough, but in order to access Google Sheets from Python, we're actually also going to need to enable the Google Drive API. This will allow our script to actually access the spreadsheet that we want to work with.
 
@@ -140,15 +140,15 @@ If you don't remember the service account email, simply open up the JSON file th
 
 Alternatively, you can look it up on the Google Cloud Platform. Simply go to your project, navigate to `APIs & Services > Credentials`, and scroll down until you see `Service Accounts`:
 
-{% include picture.html img="service-accounts" ext="PNG" alt="Google Cloud service accounts for a project." %}
+{% include picture.html img="service-accounts" ext="png" alt="Google Cloud service accounts for a project." %}
 
 Once you have the email, click `Share` in your spreadsheet and paste it in:
 
-{% include picture.html img="share" ext="GIF" alt="Sharing your spreadsheet with the client email you set up earlier." %}
+{% include picture.html img="share" ext="gif" alt="Sharing your spreadsheet with the client email you set up earlier." %}
 
 You may get a mail delivery failure message in your Gmail inbox shortly after you do this:
 
-{% include picture.html img="mail-delivery-failure" ext="PNG" alt="Mail delivery failure." %}
+{% include picture.html img="mail-delivery-failure" ext="png" alt="Mail delivery failure." %}
 
 **That's normal** and doesn't mean that the authorization failed, so don't panic.
 
@@ -156,7 +156,7 @@ At long last, we've arrived at the moment of truth...
 
 Run the script to see the magic happen before your very eyes!
 
-{% include picture.html img="run" ext="GIF" alt="Running a Python script that pushes data to Google Sheets." %}
+{% include picture.html img="run" ext="gif" alt="Running a Python script that pushes data to Google Sheets." %}
 
 The world's your oyster now—you can access Google Sheets from Python and perform automated data entry tasks, like scraping the web, reformatting the data, and pushing it to a custom spreadsheet.
 

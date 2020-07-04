@@ -66,7 +66,7 @@ Here, the number $$10$$ is what we call the **base** (aka **radix**) of our numb
 
 In the decimal number system, a number is represented by placing digits into "buckets" that represent **increasing powers of ten**, starting with $$10^0$$ in the rightmost "bucket," followed by $$10^1$$ to its immediate left, and so on infinitely:
 
-{% include picture.html img="buckets" ext="PNG" alt="Increasing powers of ten" %}
+{% include picture.html img="buckets" ext="png" alt="Increasing powers of ten" %}
 
 Any unused buckets to the far left have an implicit value of $$0$$ in them. We usually trim leading zeros because there is no use in saying $$00579$$ when that's mathematically identical to $$579$$.
 
@@ -84,11 +84,11 @@ $$d_1 b^{n-1} + d_2 b^{n-2} + \dots + d_n b^0$$
 
 And you can visualize that like this:
 
-{% include picture.html img="bases" ext="PNG" alt="A generic base of b with digits d" %}
+{% include picture.html img="bases" ext="png" alt="A generic base of b with digits d" %}
 
 Using our same example, $$ d_1 b^{n-1} + d_2 b^{n-2} + \dots + d_n b^0 = 5 (10^2) + 7 (10^1) + 9 (10^0)$$
 
-{% include picture.html img="579" ext="PNG" alt="Expanding 579 in terms of powers of 10" %}
+{% include picture.html img="579" ext="png" alt="Expanding 579 in terms of powers of 10" %}
 
 Again, we have buckets from right to left in increasing powers of our base ($$10$$).
 
@@ -143,7 +143,7 @@ By definition, the **binary number system** has a base of $$2$$, and thus we can
 
 Each "bucket" in a binary string represents an increasing power of two: $$2^0$$, $$2^1$$, $$2^2$$, and so on.
 
-{% include picture.html img="binary" ext="PNG" alt="The binary number system uses powers of two" %}
+{% include picture.html img="binary" ext="png" alt="The binary number system uses powers of two" %}
 
 The leftmost bit is called the **most significant bit (MSB)**, while the rightmost bit is called the **least significant bit (LSB)**.
 
@@ -187,7 +187,7 @@ Formally, ASCII is referred to as a **character encoding standard**. Put more si
 
 Here is a typical [ASCII chart](http://www.asciitable.com/) that you may have seen before:
 
-{% include picture.html img="ascii" ext="PNG" alt="An ASCII table showing characters and their numerical representations" %}
+{% include picture.html img="ascii" ext="png" alt="An ASCII table showing characters and their numerical representations" %}
 
 In the ASCII standard, there are a total of 128 characters, each mapped to a unique number in binary (with an equivalent representation in decimal that we humans understand more naturally):
 
@@ -363,7 +363,7 @@ Now, we simply interpret the decimal equivalent for each part:
 
 That means `#4287f5` is really `rgb(66, 135, 245)`! You can verify this using a [Color Converter](https://www.w3schools.com/colors/colors_converter.asp):
 
-{% include picture.html img="color-converter" ext="PNG" alt="A color converter verifying that #4287f5 is really rgb(66, 135, 245)" %}
+{% include picture.html img="color-converter" ext="png" alt="A color converter verifying that #4287f5 is really rgb(66, 135, 245)" %}
 
 For practice, let's convert this to binary as well. I'll mark the groups of four bits to make it easier to see how I did this (note: you can also convert from the decimal RGB representation if you want to):
 
@@ -391,7 +391,7 @@ Or, if you're using the decimal RGB format, the math still pans out: $$256 \time
 
 On older systems with limited memory, colors were represented using just eight bits (one byte). These **8-bit colors** had a very limited palette, which meant that most computer graphics didn't have gradual color transitions (so images looked very pixelated/grainy). With only $$8$$ bits to work with, you are limited to just $$2^8 =256$$ colors!
 
-{% include picture.html img="8-bit" ext="PNG" alt="An 8-bit color palette" %}
+{% include picture.html img="8-bit" ext="png" alt="An 8-bit color palette" %}
 
 Naturally, you may be wondering: How did they split $$8$$ bits evenly among red, green, and blue? After all, $$8$$ isn't divisible by three!
 
@@ -511,7 +511,7 @@ So to get our largest signed integer, we need to subtract one—we've effectivel
 In video games like RuneScape that use $$32$$-bit signed integers to represent in-game currency, the max "cash stack" that you can have caps out at exactly $$2^{31} - 1$$, which is roughly 2.1 billion.
 
 <figure>
-    {% include picture.html img="max-cash-stack" ext="PNG" alt="The max cash stack you can have in Runescape is 2147m, or 2.1 billion." %}
+    {% include picture.html img="max-cash-stack" ext="png" alt="The max cash stack you can have in Runescape is 2147m, or 2.1 billion." %}
     <figcaption>Image source: <a href="https://www.youtube.com/watch?v=c2ZsPPDH08g">YouTube</a></figcaption>
 </figure>
 
