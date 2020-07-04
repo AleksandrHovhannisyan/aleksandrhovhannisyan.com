@@ -25,7 +25,7 @@ Think about whether you do any of these things when watching or reading dev tuto
 
 **These are fatal mistakes** that will only prolong your sentence in tutorial purgatory. If you're looking to learn something new or to find inspiration to start your own projects or sandboxes, then a tutorial should merely be treated like an answer key on an exam: It shows you the answer, but it should only be referenced once you've made an attempt to solve the problem yourself.
 
-Let's consider [WesBos's JavaScript30 course](https://javascript30.com/), which is actually a pretty well-made series of tutorials (with only minor slip-ups here and there with regard to best practices). It's a great way for JavaScript developers to sharpen their vanilla JS skills. But you shouldn't just watch the videos and code along. And you certainly shouldn't use the starter files that Wes provides, except for assets like audio files that you'd have to obtain yourself.
+Let's consider [WesBos's JavaScript30 course](https://javascript30.com/)—it's a great way for JavaScript developers to sharpen their vanilla JS skills. But you shouldn't just watch the videos and code along. And you certainly shouldn't use the starter files that Wes provides, except for assets like audio files that you'd have to obtain yourself.
 
 What should you do instead? Use the tutorial for inspiration: Watch the first few minutes to understand what you're tasked with building, but pause it as soon as it starts diving into the implementation details. At this point, you have a rough UI "mockup" to work toward building yourself.
 
