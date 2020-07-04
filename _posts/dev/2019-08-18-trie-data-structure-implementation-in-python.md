@@ -5,35 +5,41 @@ keywords: [python prefix tree, python prefix tree tutorial, python trie implemen
 tags: [dev, data-structures, python]
 ---
 
-Of all the data structures I've encountered, the prefix tree ("trie") still fascinates me the most because of its simplicity and practical applications.
+Of all the data structures I've encountered, the **prefix tree** (also known as a *trie*) still fascinates me the most because of its simplicity, elegance, and practical applications.
 
 In this tutorial, we'll implement a trie in Python from scratch. We'll test that our code works using Python's `unittest` library. Let's get started!
 
 {% include linkedHeading.html heading="Overview: What Is a Prefix Tree?" level=2 %}
 
-Prefix trees are one of the easiest data structures to understand both visually and in terms of the code required to implement them. But what is a prefix tree, and why might we want to implement one?
+The **prefix tree** is one of the easiest data structures to understand both visually and in terms of the code required to implement it. But what is a prefix tree, and why might we want to create one?
 
 First, let's run through a little exercise. Have you ever wondered how search engines like Google are able to quickly auto-fill your search box with suggestions that start with whatever you've typed? Take this as an example:
 
 {% include picture.html img="google-search" ext="jpg" alt="Google searches that begin with 'ar'" %}
 
-How would you go about implementing this behavior, all other complex considerations aside? The (very) naive approach is to take the text that the user has typed so far—like `a` or `app`—and check if any words in our dictionary start with that substring, using a linear search. That would maybe work for search engines with a relatively small dictionary. But Google deals with billions of queries, so that would hardly be efficient. It gets even more inefficient the longer the substring becomes.
+How would you go about implementing this behavior, all other complex considerations aside? The (very) naive approach is to take the text that the user has typed so far—like `a` or `app`—and check if any words in our database start with that substring, using a linear search. That would maybe work for search engines with a relatively small database. But Google deals with billions of queries, so that would hardly be efficient. It gets even more inefficient the longer the substring becomes.
 
 The efficient answer to this problem is a neat little data structure known as a **prefix tree**. It's just a tree (not necessarily a *binary* tree) that serves a special purpose.
 
-Let's say we're building such a dictionary but want to be clever with how we do it so that our search doesn't take forever. Suppose we want to record the words `ape`, `apple`, `bat`, and `big` in this dictionary. The corresponding prefix tree would look like this:
+{% include linkedHeading.html heading="Example Prefix Tree" level=3 %}
+
+Let's say we're building such a database of words, but we want to be clever with how we do it so that our search doesn't take forever. Suppose we want to record the words `ape`, `apple`, `bat`, and `big` in this catalog.
+
+Instead of storing these four words as-is, what we'll do is create a tree. This tree will consist of branching **prefix nodes** that, when followed in the right sequence, will lead us to a **complete word**.
+
+It helps to look at a picture of this and break it down. The corresponding prefix tree for these words would look like this:
 
 {% include picture.html img="trie" ext="jpg" alt="An example of a trie for the words bat, big, ape, and apple." %}
 
-> **Exercise**: Trace the path from the root of the trie to the word `apple`. Make a mental note of how each "branch" is like a particular key-value pair in a `dict`. The key is the character we add to the end of the prefix. The value is the node that the branch leads to.
+Each node in a prefix tree represents a string, with the root node always being the empty string (`''`). That string may be a complete word that someone entered into the prefix tree—like `apple` or `bat`—or it may be a prefix that leads to a word, such as the `ap-` in `ape` and `apple`.
 
-In a prefix tree, each node contains a string. That string may be a complete word that someone entered, like `apple` or `bat`, or it may be a substring for the term the user has entered, such as the `ap-` in `ape` and `apple`.
+Each branch coming out of a node represents the addition of a character (in yellow) to the end of that node's string. For example, if our current node is `app` and the word we're trying to insert is `apple`, we'd simply tack on an `l` to get the next node: `appl`. From there, we'd append an `e` to get the node representing our complete word: `apple`.
 
-Each branch coming out of a node represents the addition of a character (in yellow) to the end of that node's string. For example, if our current node is `app` and the word we want to insert is `apple`, we would concatenate an `l`.
+> Trace the path from the root of the trie to the word `apple`. Make a mental note of how each branch coming out of a node is like a key-value pair in a `dict`. The key is the character that we add to the end of the current prefix. The corresponding value is the node that the branch leads to!
 
-This branching pattern allows us to  reduce our search space to something more efficient than just a linear search of all words. If a user has entered the substring `appl` so far, then we won't ever consider the branching paths for `ape`, let alone all the branching paths that start with `b`!
+This branching pattern allows us to reduce our search space to something much more efficient than just a linear search of all words. If a user has entered the substring `appl` so far, then we won't ever consider the branching paths for `ape`, let alone all the branching paths that start with `b`!
 
-Tracing a path from the root of a trie to a particular node produces either a prefix for a word we entered (e.g., the `app-` in `apple`) or the word itself (e.g., `apple`). This distinction is important because our dictionary doesn't actually contain the word `app` just yet; that node is merely a substring node. You'll see why this is important later on, but for now, just keep it in mind.
+Tracing a path from the root of a trie to a particular node produces either a prefix for a word that we know (e.g., the `app-` in `apple`) or the word itself (e.g., `apple`). This distinction is important because our dictionary doesn't actually contain the word `app` just yet; that node is merely a prefix. You'll see why this is important later on, but for now, just keep that in mind.
 
 {% include linkedHeading.html heading="Trie Methods and Operations" level=2 %}
 
@@ -54,16 +60,12 @@ So now that we understand what a prefix tree looks like and how it can be used, 
 First, like all trees, a prefix tree is going to consist of nodes. Each node will keep track of three pieces of data. I'll cover the two important ones here and bring up the third one when we get to it:
 
 - **A string**. We saw above that each node keeps track of the "prefix" that has accumulated along a specific path from the root. A node may contain a word that was inserted, like `apple` or `bat`, or it may contain a prefix, like `app-` or `b-`. So, each node will certainly need to have a member to store this string. I'll call that member `text`.
-- **Children**. As with many trees, each node of a trie will have zero or more children that are "linked" to it via the selection of a particular character (the branches). The most natural expression of this sort of relationship is a map: Each node maps a character to a child `TrieNode`.
+- **Children**. The nodes of a prefix tree, like those of many other trees, branch out, leading to child nodes. Thus, each node of a trie will have zero or more children. The most natural way to represent this relationship is with a map data structure (`dict` in Python): Each node maps a character to a child `TrieNode`.
 
 Let's build the `TrieNode` class:
 
 {% capture code %}class TrieNode:
     def __init__(self, text = ''):
-        '''
-        Initializes a TrieNode with the given string and an initially
-        empty dictionary mapping strings to TrieNodes.
-        '''
         self.text = text
         self.children = dict(){% endcapture %}
 {% include code.html file="trie.py" code=code lang="python" %}
@@ -74,10 +76,6 @@ Next, the prefix tree itself consists of one or more of these `TrieNodes`, so I'
 
 {% capture code %}class TrieNode:
     def __init__(self, text = ''):
-        '''
-        Initializes a TrieNode with the given string and an initially
-        empty dictionary mapping strings to TrieNodes.
-        '''
         self.text = text
         self.children = dict()
 
@@ -179,10 +177,6 @@ Let's modify the `TrieNode` class:
 
 {% capture code %}class TrieNode:
     def __init__(self, text = ''):
-        '''
-        Initializes a TrieNode with the given string and an initially
-        empty dictionary mapping strings to TrieNodes.
-        '''
         self.text = text
         self.children = dict()
         self.is_word = False # New code{% endcapture %}
