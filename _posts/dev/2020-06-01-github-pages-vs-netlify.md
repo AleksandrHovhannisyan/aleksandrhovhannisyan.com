@@ -27,7 +27,7 @@ Netlify also has a bunch of other cool features, like [split A/B testing](https:
 
 With Netlify, you have **much more control over the deployment process**. Your dashboard provides a clear view of your deploy history and even allows you to manually revert your site to a prior state with its **one-click rollback**. You can also stop auto-publishing new versions of your site, in case that's something you're interested in, and even access a live preview of your deployment to make sure nothing broke.
 
-{% include picture.html img="dashboard" ext="PNG" alt="The Netlify dashboard for my personal website" %}
+{% include picture.html img="dashboard" ext="png" alt="The Netlify dashboard for my personal website" %}
 
 On the other hand, with GitHub Pages, [you can only deploy to two branches](https://help.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source), one of which is `master` by default. Want to revert your site? Have fun resetting to a previous commit with git on your second branch and fiddling with your repo settings to change the deploy branch.
 
@@ -35,7 +35,7 @@ On the other hand, with GitHub Pages, [you can only deploy to two branches](http
 
 Netlify builds my site in 30 seconds, on average:
 
-{% include picture.html img="faster-deploys" ext="PNG" alt="Netlify deploys my site very quickly" %}
+{% include picture.html img="faster-deploys" ext="png" alt="Netlify deploys my site very quickly" %}
 
 With GitHub Pages, things are much slower, and you sometimes have to do a hard refresh to see the results. Their own documentation says you may have to wait up to 10 minutes to see the changes go live on your site (this is a worst-case scenario, though).
 
@@ -53,7 +53,7 @@ I recommend that you keep your old GitHub Pages repository around and separate f
 
 You can also use the [Change of Address Tool](https://support.google.com/webmasters/answer/9370220?hl=en) right there in Google Search Console to migrate your old site's traffic to your new one, once you've set up 301 redirects.
 
-{% include picture.html img="migration" ext="PNG" alt="Migrating my old search engine results to my new domain" %}
+{% include picture.html img="migration" ext="png" alt="Migrating my old search engine results to my new domain" %}
 
 Currently, I host my new site's content under a private GitHub repo, with a custom domain configured in Netlify. My `.github.io` domain is still up and visible in Google, but it redirects to my new site.
 

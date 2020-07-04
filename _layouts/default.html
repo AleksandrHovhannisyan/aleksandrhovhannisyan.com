@@ -13,11 +13,13 @@
         <!-- OG properties are for social platforms with previews for shared links -->
         <meta property="og:title" content="{{ page.title }} | {{ site.title }}" />
         {% if page.is_post %}
-        {% assign thumbnail_ext = 'PNG' %}
-        {% if page.thumbnail_ext %}{% assign thumbnail_ext = page.thumbnail_ext %}{% endif %}
+        {% assign thumbnail_ext = 'png' %}
+        {% if page.thumbnail_ext %}
+            {% assign thumbnail_ext = page.thumbnail_ext %}
+        {% endif %}
         <meta property="og:image" content="{{ site.url }}/{{ page.img_path }}/{{ page.slug }}/thumbnail.{{ thumbnail_ext }}" />
         {% else %}
-        <meta property="og:image" content="{{ site.url }}/assets/img/preview.PNG" />
+        <meta property="og:image" content="{{ site.url }}/assets/img/preview.png" />
         {% endif %}
         <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
         <meta property="og:url" content="{{ site.url }}" />

@@ -5,7 +5,7 @@ keywords: ["improve page load speed", "webp image format"]
 tags: [dev, frontend, jekyll]
 ---
 
-{% include picture.html img="pagespeed-insights" ext="JPG" alt="The PageSpeed Insights score for one of my blog posts." %}
+{% include picture.html img="pagespeed-insights" ext="jpg" alt="The PageSpeed Insights score for one of my blog posts." %}
 
 Run the blog posts on my site through Google's [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) or [Cloudinary's Image Analysis tool](https://webspeedtest.cloudinary.com/), and you'll find that most of them (with the exception of a few that load iframes) get around 99 on mobile and 100 on desktop. Some of these are packed full of images.
 
@@ -55,7 +55,7 @@ cwebp img.png -o img.webp
 
 And that's it! Here's a quick demo of that in action:
 
-{% include picture.html img="demo" ext="GIF" alt="Converting a traditional image format to a webp image." %}
+{% include picture.html img="demo" ext="gif" alt="Converting a traditional image format to a webp image." %}
 
 You can ignore the output from the tool, as it's not too important.
 
@@ -67,7 +67,7 @@ In this case, notice that the image size was cut in a half—from 16 KB to 8 KB�
 
 The good news is that [browser support for WebP](https://caniuse.com/#feat=webp) is high, excluding Internet Explorer (of course 😒) and Safari:
 
-{% include picture.html img="caniuse" ext="JPG" alt="The caniuse results for WebP" %}
+{% include picture.html img="caniuse" ext="jpg" alt="The caniuse results for WebP" %}
 
 Assuming you want to cover all your bases and ensure that your images are displaying properly, you can use a `picture` element with a `source` for the WebP version and a backup `img` for the regular format:
 
@@ -107,11 +107,11 @@ Before I explain why this works, you need to know how I like to structure my blo
 
 Here's a screenshot to make that clearer:
 
-{% include picture.html img="assets" ext="JPG" alt="My assets/img/posts folder." %}
+{% include picture.html img="assets" ext="jpg" alt="My assets/img/posts folder." %}
 
 That allows us to get away with this simple and legible include:
 
-{% capture code %}{% raw %}{% include picture.html img="my-image" ext="JPG" alt="My alt text" %}{% endraw %}{% endcapture %}
+{% capture code %}{% raw %}{% include picture.html img="my-image" ext="jpg" alt="My alt text" %}{% endraw %}{% endcapture %}
 {% include code.html code=code lang="liquid" %}
 
 Notice that we don't have to worry about explicitly stating the path! That will be filled in by Liquid when it goes to evaluate {% raw %}`{{ page.slug }}`{% endraw %}. To top that off, we get to take advantage of WebP behind the scenes, with little effort beyond converting the images.

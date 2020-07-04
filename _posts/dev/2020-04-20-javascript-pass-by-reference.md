@@ -58,7 +58,7 @@ A **formal parameter** (parameter for short) is the local variable declared in a
 
 Diagrammatically, here's what the stack would look like once `doSomething` has been called:
 
-{% include picture.html img="stack" ext="PNG" alt="Two stack frames." %}
+{% include picture.html img="stack" ext="png" alt="Two stack frames." %}
 
 With that out of the way, let's get into the meat of this post.
 
@@ -74,7 +74,7 @@ This muddied terminology is the main source of confusion in understanding pass b
 
 In JavaScript, variables that "refer to" an object somewhere in memory are called **object references** ("references" for short). The term "reference" is a natural way to talk about variables in English because we say that a variable *refers to* an object in memory, sort of like how an essay might *reference* a literary source, for example.
 
-{% include picture.html img="object-reference" ext="PNG" alt="An object reference in JavaScript." %}
+{% include picture.html img="object-reference" ext="png" alt="An object reference in JavaScript." %}
 
 Most beginners assume that a language that has "object references" must naturally support "pass by reference" since they both have "reference" in their name. This is, understandably, confusing.
 
@@ -192,7 +192,7 @@ If `alias` were a reference, then the change on line 3 *would've* been reflected
 Above, you may have noticed that I used the term "point" quite a lot, and one of my footnotes even mentioned something called a "pointer." What's up with that? What—pardon the awful pun—is the *point* I'm trying to get across?
 
 <figure>
-    {% include picture.html img="pointers" ext="PNG" alt="Comic about pointers. Someone asks for pointers, and another person fires off a bunch of memory addresses." %}
+    {% include picture.html img="pointers" ext="png" alt="Comic about pointers. Someone asks for pointers, and another person fires off a bunch of memory addresses." %}
     <figcaption>Source: <a href="https://xkcd.com/138/">xkcd</a></figcaption>
 </figure>
 
@@ -202,7 +202,7 @@ We've established that JavaScript does not have references in the true sense of 
 
 An analogy may help to illustrate this: A pointer is like keeping record of a person's home address instead of directly logging that person's information somewhere. If you later visit that address, you'll find *data* living there (a person with a name, age, and so forth). The person at that address may change their name, grow older with each passing year, or decide to leave the property and be replaced by another tenant with an entirely different name, age, and so on. As long as we point to the same address, we can visit it to find out what data (person) lives there. We may also one day decide to point to a completely different home address with different residents or, if we're the landlord, legally evict someone from their home.
 
-{% include picture.html img="houses" ext="PNG" alt="Two houses with two residents." %}
+{% include picture.html img="houses" ext="png" alt="Two houses with two residents." %}
 
 It may not be immediately obvious why we need pointers in the first place and how they're even relevant in JavaScript. This deserves some elaboration. If you're already familiar with pointers, feel free to skip forward to the section on [pass by value vs. pass by reference](#pass-by-value-vs-pass-by-reference).
 
@@ -235,11 +235,11 @@ Strings in particular are really interesting because they may *seem* like a prim
 
 In reality, a string is made up of `char`s that are stored in consecutive memory addresses. Recall that in the ASCII standard, a `char` has an equivalent numerical representation:
 
-{% include picture.html img="ascii" ext="GIF" alt="An ASCII character table." %}
+{% include picture.html img="ascii" ext="gif" alt="An ASCII character table." %}
 
 On most modern computers, a `char` is 1 byte wide. As it so happens, a single memory address is also 1 byte wide. This means one memory address can potentially store one character. Translation? A string of length `n` can be stored in a computer's memory by allocating `n` consecutive bytes and storing one `char` in each, using its numerical representation:
 
-{% include picture.html img="strings" ext="PNG" alt="How strings are stored in memory." %}
+{% include picture.html img="strings" ext="png" alt="How strings are stored in memory." %}
 
 Thus, our string "variable" is really a pointer to the first character of the string. Using **pointer arithmetic**, we can figure out what the string is since we already have the base address and the number of characters that were stored. In the example above, the first character was stored at address `0x1a09d68`. Unsurprisingly, the next character is located one byte away at address `0x1a09d69`.
 
@@ -350,15 +350,15 @@ If we're passing a pointer into a function as an argument, what "value" does the
 
 So, when we pass a pointer into a function as an argument, the formal parameter receives a copy of the *memory address* to which the argument was pointing. We essentially end up having two different variables, on two different stack frames (caller and callee), that point to the same location in memory.
 
-{% include picture.html img="pass-pointer-by-value" ext="PNG" alt="Passing a pointer by value." %}
+{% include picture.html img="pass-pointer-by-value" ext="png" alt="Passing a pointer by value." %}
 
 At that memory address is an object. We can "trace" (dereference) either the formal parameter pointer or the argument pointer and visit that memory address to modify the object located there. In the case of the code above, we're tracing the formal parameter pointer:
 
-{% include picture.html img="modifying-object" ext="PNG" alt="Modifying an object pointed to in memory." %}
+{% include picture.html img="modifying-object" ext="png" alt="Modifying an object pointed to in memory." %}
 
 What we cannot do is have the formal parameter point to a different location in memory and expect the argument to point to that new location once the function returns. This *would* be the case if the argument were passed in by reference. But JavaScript is pass by value!
 
-{% include picture.html img="point-to-new-object" ext="PNG" alt="Pointing the formal parameter to a new object." %}
+{% include picture.html img="point-to-new-object" ext="png" alt="Pointing the formal parameter to a new object." %}
 
 Notice that within the scope of the `changeName` function, we can indeed observe that `person` points to this object: `{ name: 'Jane' }`. But of course, this doesn't affect the pointer argument—it's still pointing to the original location in memory, and the object there is left untouched.
 
