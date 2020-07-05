@@ -1,19 +1,10 @@
 {% assign post = include.post %}
-{% assign thumbnail = 'thumbnail' %}
 {% assign thumbnail_ext = 'png' %}
-{% assign placeholder = 'thumbnail-placeholder' %}
 {% if post.thumbnail_ext %}
     {% assign thumbnail_ext = post.thumbnail_ext %}
 {% endif %}
-<picture class="lazy-loaded-picture post-thumbnail">
-    <source 
-        type="image/webp" 
-        srcset="/assets/img/posts/{{ post.slug }}/thumbnail-placeholder.webp" 
-        data-src="/assets/img/posts/{{ post.slug }}/thumbnail.webp" >
-    <img 
-        data-src="/assets/img/posts/{{ post.slug }}/{{ thumbnail }}.{{ thumbnail_ext }}" 
-        src="/assets/img/posts/{{ post.slug }}/{{ placeholder }}.{{ thumbnail_ext }}" 
-        alt=""
-        aria-hidden="true"
-        class="placeholder" />
-</picture>
+{% assign path = post.img_path | append: '/' | append: post.slug %}
+{% if include.path %}
+    {% assign path = include.path %}
+{% endif %}
+{% include picture.html img="thumbnail" ext=thumbnail_ext alt="" path=path class="post-thumbnail" clickable=false %}
