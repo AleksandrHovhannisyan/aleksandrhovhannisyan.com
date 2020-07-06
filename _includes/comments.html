@@ -1,5 +1,5 @@
 {% assign issue_id = include.issue_id %}
-<footer>
+<footer id="comments">
     <div class="comment-actions">
         <h2>Comments <span id="comment-count"></span></h2>
         <a
@@ -9,63 +9,137 @@
         >
     </div>
     <div id="comments-wrapper">
-        <ul class="comments" aria-label="Comments on this blog post"></ul>
+        <ol class="comments" aria-label="Comments on this blog post"></ol>
     </div>
 </footer>
 
-<!-- Expressing comment post dates relative to today -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
-<!-- Parsing comment bodies as Markdown -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<!-- Sanitizing comments to prevent against XSS -->
-<script type="text/javascript" src="/assets/scripts/purify.min.js"></script>
-
 <!-- Comments script -->
 <script>
-    const commentsWrapper = document.getElementById('comments-wrapper');
-    const commentList = commentsWrapper.querySelector('.comments');
-    const commentCount = document.getElementById('comment-count');
+  const commentsFooter = document.getElementById('comments');
+  const commentsWrapper = commentsFooter.querySelector('#comments-wrapper');
+  const commentList = commentsFooter.querySelector('.comments');
+  const commentCount = commentsFooter.querySelector('#comment-count');
 
-    fetch('https://api.github.com/repos/{{ site.issues_repo }}/issues/{{ issue_id }}/comments')
-    .then(blob => blob.json())
-    .then(renderComments);
+  // These dependencies are loaded async, so we keep track of the ones that have loaded so we can
+  // render the comments only after all of them have loaded
+  const commentScripts = {
+    moment: {
+      src: 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js',
+      loaded: false,
+    },
+    marked: {
+      src: 'https://cdn.jsdelivr.net/npm/marked/marked.min.js',
+      loaded: false,
+    },
+    purify: {
+      src: '/assets/scripts/purify.min.js',
+      loaded: false,
+    },
+  };
 
-    function renderComments(comments) {
-        if (!comments.length) {
-            commentsWrapper.innerHTML = `<p>No comments yet 👀 Be the first to post!</p>`;
-            return;
-        }
+  // Defer the XHR to GitHub's API until users reach the comments footer (-200px)
+  const commentsObserver = new IntersectionObserver(function (entries, self) {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        fetchComments();
+        self.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '200px 0px 0px 0px' });
+  commentsObserver.observe(commentsFooter);
 
-        commentCount.innerText = `(${comments.length})`;
-        commentList.innerHTML = comments
-            .sort((comment1, comment2) => {
-                return comment1.created_at < comment2.created_at ? 1 : -1;
-            })
-            .map((comment) => {
-                const user = comment.user;
-                const datePosted = moment(comment.created_at).fromNow();
-                const body = DOMPurify.sanitize(marked(comment.body));
-                const postedByAuthor = comment.author_association === 'OWNER';
-                const edited = comment.created_at !== comment.updated_at;
+  /**
+  * Makes an XHR request to the GitHub comments API to fetch all comments for the current post.
+  */
+  function fetchComments() {
+    fetch(
+      'https://api.github.com/repos/{{ site.issues_repo }}/issues/{{ issue_id }}/comments'
+    )
+      .then(blob => blob.json())
+      .then(initRenderComments)
+      .catch(e => {
+        commentsWrapper.innerHTML = `<p>Unable to retrieve the comments for this post. Check back later.</p>`;
+      });
+  }
 
-                return `<li class="comment">
-                            <header class="comment-header">
-                                <div class="user">
-                                    <img src="${user.avatar_url}" alt="" aria-hidden="true" class="avatar" />
-                                    <a
-                                        href="https://github.com/${user.login}"
-                                        class="name"
-                                        aria-label="Comment by ${user.login}"
-                                        >${user.login}</a
-                                    >
-                                    ${postedByAuthor ? '<span class="tag author-badge">Author</span>' : ''}
-                                    ${edited ? `<span class="comment-edited">Edited</span>` : ''}
-                                </div>
-                                <time class="date-posted" datetime="${comment.created_at}">${datePosted}</time>
-                            </header>
-                            <div class="comment-body">${body}</div>
-                        </li>`;
-            })
-            .join('');
+  /**
+  * Called after the GitHub API request finishes.
+  * @param {Array<Object>} comments - an array of objects representing GitHub comments
+  */
+  function initRenderComments(comments) {
+    if (!comments.length) {
+      commentsWrapper.innerHTML = `<p>No comments yet 👀 Be the first to post!</p>`;
+      return;
     }
+
+    // Load all comment script dependencies async
+    Object.keys(commentScripts).forEach(script =>
+      loadCommentScript(commentScripts[script], () => renderComments(comments))
+    );
+  }
+
+  /**
+  *
+  * @param {Object} script - the script to load async
+  * @param {*} callback - a function to call once the script has loaded
+  */
+  function loadCommentScript(script, callback) {
+    const scriptElement = document.createElement('script');
+    scriptElement.src = script.src;
+    document.body.appendChild(scriptElement);
+
+    scriptElement.onload = () => {
+      // console.log(`LOADED: ${script.src}`);
+      script.loaded = true;
+      callback();
+    };
+  }
+
+  /**
+  * @returns {Boolean} true if all comment script dependencies have loaded, and false otherwise
+  */
+  function allCommentScriptsLoaded() {
+    return Object.keys(commentScripts).every(scriptName => commentScripts[scriptName].loaded);
+  }
+
+  /**
+  * @param {Array<Object>} comments - an array of objects representing GitHub comments
+  */
+  function renderComments(comments) {
+    if (!allCommentScriptsLoaded()) return;
+
+    // console.log('ALL SCRIPTS LOADED');
+
+    commentCount.innerText = `(${comments.length})`;
+    commentList.innerHTML = comments
+      .sort((comment1, comment2) => {
+        return comment1.created_at < comment2.created_at ? 1 : -1;
+      })
+      .map(comment => {
+        const user = comment.user;
+        const datePosted = moment(comment.created_at).fromNow();
+        const body = DOMPurify.sanitize(marked(comment.body));
+        const postedByAuthor = comment.author_association === 'OWNER';
+        const edited = comment.created_at !== comment.updated_at;
+
+        return `<li class="comment">
+                    <header class="comment-header">
+                        <div class="user">
+                            <img src="${user.avatar_url}" alt="" aria-hidden="true" class="avatar" />
+                            <a
+                                href="https://github.com/${user.login}"
+                                class="name"
+                                aria-label="Comment by ${user.login}"
+                                >${user.login}</a
+                            >
+                            ${postedByAuthor ? '<span class="tag author-badge">Author</span>' : ''}
+                            ${edited ? `<span class="comment-edited">Edited</span>` : ''}
+                        </div>
+                        <time class="date-posted" datetime="${comment.created_at}">${datePosted}</time>
+                    </header>
+                    <div class="comment-body">${body}</div>
+                </li>`;
+      })
+      .join('');
+  }
 </script>
