@@ -1,10 +1,11 @@
+{% assign issues_repo = site.issues_repo %}
 {% assign issue_id = include.issue_id %}
-<footer id="post-comments">
+<footer id="comments-footer">
     <div class="comment-actions">
         <h2>Comments <span id="comments-count"></span></h2>
         <a
           class="button solid-button plus-button post-comment"
-          href="https://github.com/{{ site.issues_repo }}/issues/{{ issue_id }}"
+          href="https://github.com/{{ issues_repo }}/issues/{{ issue_id }}"
           >Post comment</a
         >
     </div>
@@ -15,7 +16,7 @@
 
 <!-- Comments script -->
 <script>
-  const commentsFooter = document.getElementById('post-comments');
+  const commentsFooter = document.getElementById('comments-footer');
   const commentsWrapper = commentsFooter.querySelector('#comments-wrapper');
   const commentsCount = commentsFooter.querySelector('#comments-count');
 
@@ -52,7 +53,7 @@
   */
   function fetchComments() {
     fetch(
-      'https://api.github.com/repos/{{ site.issues_repo }}/issues/{{ issue_id }}/comments'
+      'https://api.github.com/repos/{{ issues_repo }}/issues/{{ issue_id }}/comments'
     )
       .then(blob => blob.json())
       .then(initRenderComments)
@@ -80,7 +81,7 @@
   /**
   *
   * @param {Object} script - the script to load async
-  * @param {*} callback - a function to call once the script has loaded
+  * @param {function} callback - a function to call once the script has loaded
   */
   function loadCommentScript(script, callback) {
     const scriptElement = document.createElement('script');

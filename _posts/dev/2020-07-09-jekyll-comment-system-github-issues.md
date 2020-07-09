@@ -1,42 +1,42 @@
 ---
 title: Creating a Jekyll Comment System with the GitHub Issues API
-description: In this quick tutorial, I'll show you how to create a comment system for your Jekyll blog using the GitHub issues API.
+description: Learn how to create a simple comment system for your Jekyll blog. We'll use the GitHub issues API and defer loading our comments for a better user experience.
 keywords: [jekyll comment system]
 tags: [jekyll, github, javascript]
 comments_id: 45
 ---
 
-A while back, [Ari Stathopoulos wrote a tutorial](https://aristath.github.io/blog/static-site-comments-using-github-issues-api) on how to use the GitHub Issues API as a comment system. And you know what? It works like a charm! It's actually what I use on this very blog.
+A while back, [Ari Stathopoulos wrote a tutorial](https://aristath.github.io/blog/static-site-comments-using-github-issues-api) on how to use the GitHub Issues API as a comment system. And you know what? It works like a charm! It's actually what I use on this very blog. The only notable downside is that unauthenticated requests have a [rate limit of 60 requests/hour](https://developer.github.com/v3/#rate-limiting).
 
 In this tutorial, I'd like to introduce a modified version of Ari's approach that:
 
 1. Only loads the comment system once the user has scrolled to the end of the page.
-2. Purifies each comment to escape special characters and prevent XSS attacks.
+2. Sanitizes each comment to escape special characters and prevent XSS attacks.
 3. Uses moment.js to display relative dates, like you see on most comment systems.
 
 That last point is really optional. My two key concerns were to improve my comment system's performance and to ensure that users can't get away with XSS via GitHub comments.
 
 ## How to Add Comments to a Jekyll Blog
 
-This section is a bit of a recap on how to use the GitHub Issues API as a comment system in Jekyll.
+This section is a bit of a recap on how to use the GitHub Issues API as a comment system in Jekyll. Most of this is covered in Ari's post, save for some differences in the markup itself.
 
 First, you'll need a public repo for your comments. Add this variable to your `_config.yml`:
    
 {% capture code %}issues_repo: YourUsername/RepoName{% endcapture %}
 {% include code.html file="_config.yml" code=code lang="yml" %}
 
-We'll use this a few times throughout the tutorial, so this is better than hardcoding it.
+We'll use this a few times in our code, so it's a good idea to define it in one place instead of copy-pasting it. That way, if the repo name ever changes, you'll only have to update it in `_config.yml`.
 
-If a particular blog post needs comments, simply open an issue for it in that repo and note the ID:
+If a particular blog post needs comments, simply open an issue for it in that repo and note its ID:
 
 {% include picture.html img="issue-id" ext="png" alt="The ID of an issue on my GitHub repo." %}
 
-Add this front matter variable to the blog post and fill it in with the ID from above:
+Add the following front matter variable to the blog post and assign it the ID from above:
 
 {% capture code %}comments_id: 35{% endcapture %}
 {% include code.html file="_posts/2020-07-07-my-post.md" code=code lang="markdown" %}
 
-In your `post.html` layout file, what we'll do is check to see if this front matter variable was specified. If it wasn't, then comments are turned off for that post. If it was, we'll want to include a file containing our HTML and JavaScript for the comment system:
+In your `post.html` layout file, we'll check to see if this front matter variable was specified. If it wasn't, then the comment system is turned off for that post. If it was, then we'll want to include a file containing our HTML and JavaScript for the comment system:
 
 {% capture code %}{% raw %}{% if page.comments_id %}
     {% include comments.html issue_id=page.comments_id %}
@@ -45,18 +45,20 @@ In your `post.html` layout file, what we'll do is check to see if this front mat
 
 And here's the include file itself (or at least part of it—we'll fill in the script shortly):
 
-{% capture code %}{% raw %}{% assign issue_id = include.issue_id %}
-<footer id="comments">
+{% capture code %}{% raw %}{% assign issues_repo = site.issues_repo %}
+{% assign issue_id = include.issue_id %}
+
+<footer id="comments-footer">
     <div class="comment-actions">
-        <h2>Comments <span id="comment-count"></span></h2>
+        <h2>Comments <span id="comments-count"></span></h2>
         <a
           class="button solid-button plus-button post-comment"
-          href="https://github.com/{{ site.issues_repo }}/issues/{{ issue_id }}"
+          href="https://github.com/{{ issues_repo }}/issues/{{ issue_id }}"
           >Post comment</a
         >
     </div>
     <div id="comments-wrapper">
-        <ol class="comments" aria-label="Comments on this blog post"></ol>
+      Loading...
     </div>
 </footer>
 
@@ -64,27 +66,24 @@ And here's the include file itself (or at least part of it—we'll fill in the s
 <script></script>{% endraw %}{% endcapture %}
 {% include code.html file="_includes/comments.html" code=code lang="html" %}
 
-Up at the top, I'm simply assigning the include argument to a local variable so I don't have to repeat {% raw %}`include.issue_id`{% endraw %}. Next, I've defined some basic HTML for my blog post. Notice that the anchor element (button) has the following `href` that points to the corresponding GitHub issue URL:
+Up at the top, I'm simply creating local variables so I don't have to repeat {% raw %}`include.issue_id`{% endraw %} and {% raw %}`site.issues_repo`{% endraw %} in my markup. Next, I've defined some basic HTML for the comment system itself. Notice that the anchor element (button) has the following `href` that points to the corresponding GitHub issue URL:
 
 ```
-{% raw %}https://github.com/{{ site.issues_repo }}/issues/{{ issue_id }}{% endraw %}
+{% raw %}https://github.com/{{ issues_repo }}/issues/{{ issue_id }}{% endraw %}
 ```
 
-We defined `issues_repo` early on in this tutorial, and `issue_id` gets passed in to the include file. So when users click this link, they'll be directed to the "comment system" for a given post.
+When users click this link, they'll be directed to the "comment system" for a given post.
 
 ## Using the GitHub Issues API as a Comment System
 
-Time to start writing some JavaScript! 
-
-We won't stick our code in its own `.js` file because we need the include argument in order to hit the right GitHub API endpoint, and that issue ID is only accessible in `_includes/comments.html`. So we'll have to put up with an inline script.
+Time to start writing some JavaScript. We won't put our code in its own `.js` file because we need the include argument in order to hit the right GitHub API endpoint, and that issue ID is only accessible in `_includes/comments.html`. So we'll have to put up with an inline script.
 
 First, we'll create some variables for ourselves at the top of this script to reference a few of the elements on the page:
 
 {% capture code %}{% raw %}<script>
-  const commentsFooter = document.getElementById('comments');
+  const commentsFooter = document.getElementById('comments-footer');
   const commentsWrapper = commentsFooter.querySelector('#comments-wrapper');
-  const commentList = commentsFooter.querySelector('.comments');
-  const commentCount = commentsFooter.querySelector('#comment-count');
+  const commentsCount = commentsFooter.querySelector('#comments-count');
 </script>{% endraw %}{% endcapture %}
 {% include code.html file="_includes/comments.html" code=code lang="html" %}
 
@@ -120,7 +119,7 @@ Here's the `fetchComments` function that gets fired off when an intersection is 
 
 {% capture code %}{% raw %}function fetchComments() {
   fetch(
-    'https://api.github.com/repos/{{ site.issues_repo }}/issues/{{ issue_id }}/comments'
+    'https://api.github.com/repos/{{ issues_repo }}/issues/{{ issue_id }}/comments'
   )
     .then(blob => blob.json())
     .then(initRenderComments)
@@ -142,7 +141,7 @@ First, note that we'll need these three scripts for our comment system:
 - `DOMPurify`, for sanitizing `marked`'s HTML output (e.g., to prevent XSS attacks).
 - `moment`, for rendering comment timestamps relative to now (e.g., "3 hours ago").
 
-You can load these with simple script elements, before your custom script:
+Now, you can certainly load these using script elements like so:
 
 ```html
 <!-- HTML up at the top -->
@@ -153,17 +152,16 @@ You can load these with simple script elements, before your custom script:
 
 <!-- Our custom comments script -->
 <script>
-  const commentsFooter = document.getElementById('comments');
+  const commentsFooter = document.getElementById('comments-footer');
   const commentsWrapper = commentsFooter.querySelector('#comments-wrapper');
-  const commentList = commentsFooter.querySelector('.comments');
-  const commentCount = commentsFooter.querySelector('#comment-count');
-
+  const commentsCount = commentsFooter.querySelector('#comments-count');
+  
   // more code
 
 </script>
 ```
 
-**But I don't recommend doing this** for the same reason that we're deferring our API request until the user scrolls to the bottom of the page: Why fetch resources that we don't need unless a user expects the comments to show up? In other words, we shouldn't just stick these directly in the HTML—we should load them in our JavaScript only after a user has scrolled to the comments section. Better yet, if the GitHub API returns no comments, we won't even bother loading these scripts, saving the user even more bandwidth and making Lighthouse happy.
+**However, I don't recommend doing this** for the same reason that we're deferring our API request until the user scrolls to the bottom of the page: Why fetch resources that we don't need unless a user expects the comments to show up? In other words, we shouldn't just stick these directly in the HTML—we should load them in our JavaScript only after a user has scrolled to the comments section. Better yet, if the GitHub API returns no comments, we won't even bother loading these scripts, saving the user even more bandwidth and making Lighthouse happy.
 
 So, we'll load these scripts using JavaScript by creating `script` elements, setting their `src` attributes, and appending them to the DOM body. However, since scripts are loaded asynchronously, they may get loaded out of order. This means we'll need some way to hold off on rendering the comments until *all* of the dependencies have loaded, in whatever order that may be. To do that, we'll use a simple object like this to keep track of which dependencies have loaded:
 
@@ -219,9 +217,8 @@ function initRenderComments(comments) {
 And here's the `loadCommentScript` helper:
 
 {% capture code %}/**
-*
 * @param {Object} script - the script to load async
-* @param {*} callback - a function to call once the script has loaded
+* @param {function} callback - a function to call once the script has loaded
 */
 function loadCommentScript(script, callback) {
   const scriptElement = document.createElement('script');
@@ -235,7 +232,7 @@ function loadCommentScript(script, callback) {
 }{% endcapture %}
 {% include code.html file="_includes/comments.html" code=code lang="javascript" %}
 
-Basically, it creates a script element and registers an `onload` listener that tags the script object as loaded and invokes a callback. What's that callback? If you look above, we're passing in an arrow function that invokes `renderComments(comments)`:
+Basically, it creates a script element and registers an `onload` listener that tags the script object as loaded and invokes a callback. What's that callback? If you look above in `initRenderComments`, we're passing in an arrow function that invokes `renderComments(comments)`:
 
 ```javascript
 Object.keys(commentScripts).forEach(script =>
@@ -245,7 +242,7 @@ Object.keys(commentScripts).forEach(script =>
 
 And that's the last thing we need for our Jekyll comment system to work.
 
-### 3. Rendering Comments in Jekyll
+### 3. Rendering the Comments
 
 {% capture code %}{% raw %}/**
 * @param {Array<Object>} comments - an array of objects representing GitHub comments
@@ -253,8 +250,13 @@ And that's the last thing we need for our Jekyll comment system to work.
 function renderComments(comments) {
   if (!allCommentScriptsLoaded()) return;
 
-  commentCount.innerText = `(${comments.length})`;
-  commentList.innerHTML = comments
+    commentsCount.innerText = `(${comments.length})`;
+
+    const commentsList = document.createElement('ol');
+    commentsList.className = 'comments';
+    commentsList.setAttribute('aria-label', 'Comments on this blog post');
+
+    commentsList.innerHTML = comments
     .sort((comment1, comment2) => {
       return comment1.created_at < comment2.created_at ? 1 : -1;
     })
@@ -294,19 +296,23 @@ We're doing several things here, so let's break it all down.
 This sets a counter that tells users how many total comments there are:
 
 ```javascript
-commentCount.innerText = `(${comments.length})`;
+commentsCount.innerText = `(${comments.length})`;
 ``` 
 
-The next few lines of code sort the comments to show the most recently posted ones first:
+The next few lines of code create an `ol` element and give it a meaningful aria label. We also sort the comments to show the most recently posted ones first and chain a call to `Array.prototype.map` to create an array of comments:
 
 ```javascript
-commentList.innerHTML = comments
-    .sort((comment1, comment2) => {
-        return comment1.created_at < comment2.created_at ? 1 : -1;
-    })
-```
+const commentsList = document.createElement("ol");
+commentsList.className = "comments";
+commentsList.setAttribute("aria-label", "Comments on this blog post");
 
-After that, we chain a call to `Array.prototype.map` to create an array of comments.
+commentsList.innerHTML = comments
+  .sort((comment1, comment2) => {
+    return comment1.created_at < comment2.created_at ? 1 : -1;
+  })
+  .map(comment => { ... })
+  .join('');
+```
 
 These two lines use our loaded dependencies:
 
@@ -315,11 +321,11 @@ const datePosted = moment(comment.created_at).fromNow();
 const body = DOMPurify.sanitize(marked(comment.body));
 ```
 
-We're using `DOMPurify.sanitize` per the warning in `marked`'s own README, since `marked` does not sanitize the output HTML to prevent things like XSS attacks:
+We're using `DOMPurify.sanitize` per `marked`'s [README suggestion](https://github.com/markedjs/marked#warning--marked-does-not-sanitize-the-output-html-please-use-a-sanitize-library-like-dompurify-recommended-sanitize-html-or-insane-on-the-output-html-):
 
-{% include picture.html img="marked-warning" ext="png" alt="Marked encourages sanitizing the output HTML" %}
+> Warning: 🚨 Marked does not sanitize the output HTML. Please use a sanitize library, like DOMPurify (recommended), sanitize-html or insane on the output HTML! 🚨
 
-Hopefully, the rest of the code is self-explanatory. You can change any of these class names and remove any markup that you don't need for your purposes. For example, these lines are optional:
+Hopefully the rest of the code is self-explanatory. You can change any of these class names and remove any markup that you don't need for your purposes. For example, these lines are optional:
 
 ```javascript
 const postedByAuthor = comment.author_association === 'OWNER';
