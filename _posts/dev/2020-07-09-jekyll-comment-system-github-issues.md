@@ -286,6 +286,9 @@ function renderComments(comments) {
               </li>`;
     })
     .join('');
+    
+    commentsWrapper.innerHTML = '';
+    commentsWrapper.appendChild(commentsList);
 }{% endraw %}{% endcapture %}
 {% include code.html file="_includes/comments.html" code=code lang="javascript" %}
 

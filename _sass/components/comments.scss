@@ -29,7 +29,7 @@
         border-radius: 5px;
         margin-bottom: 2em;
         background-color: var(--comment-bg-color);
-        padding: 1.5em;
+        padding: 1em 1.5em 1.5em 1.5em;
         @include transition(background-color);
     }
 
@@ -39,16 +39,16 @@
         align-items: center;
         flex-wrap: wrap;
         margin-bottom: 1em;
+
+        .meta {
+            margin: 0.5em 0.5em 0.5em 0;
+        }
     }
 
     .user {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-
-        * {
-            margin-right: 10px;
-        }
 
         .avatar {
             width: 2em;
@@ -75,7 +75,6 @@
 
     .date-posted {
         font-size: 0.875em;
-        margin-right: 8px;
     }
 
     .comment-body {

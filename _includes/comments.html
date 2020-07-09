@@ -128,17 +128,17 @@
         return `<li class="comment">
                     <header class="comment-header">
                         <div class="user">
-                            <img src="${user.avatar_url}" alt="" aria-hidden="true" class="avatar" />
+                            <img src="${user.avatar_url}" alt="" aria-hidden="true" class="meta avatar" />
                             <a
                                 href="https://github.com/${user.login}"
-                                class="name"
+                                class="meta name"
                                 aria-label="Comment by ${user.login}"
                                 >${user.login}</a
                             >
-                            ${postedByAuthor ? '<span class="tag author-badge">Author</span>' : ''}
-                            ${edited ? `<span class="comment-edited">Edited</span>` : ''}
+                            ${postedByAuthor ? '<span class="meta tag author-badge">Author</span>' : ''}
+                            ${edited ? `<span class="meta comment-edited">Edited</span>` : ''}
                         </div>
-                        <time class="date-posted" datetime="${comment.created_at}">${datePosted}</time>
+                        <time class="meta date-posted" datetime="${comment.created_at}">${datePosted}</time>
                     </header>
                     <div class="comment-body">${body}</div>
                 </li>`;
