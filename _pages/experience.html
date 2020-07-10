@@ -10,11 +10,11 @@ and interning, I've gained valuable exposure to a wide variety of interesting
 technologies and problems." %}
 <section id="projects" class="section">
   <h2>Software Projects</h2>
-  <div id="project-grid" class="card-grid">
+  <ol class="project-grid card-grid">
     {% for project in site.data.projects %}
         {% include projectCard.html project=project %}
     {% endfor %}
-    <div id="github-cta">
+    <li id="github-cta">
       <header>
         <p><strong>Want to see more of my work?</strong></p>
       </header>
@@ -25,8 +25,8 @@ technologies and problems." %}
           href="https://github.com/AleksandrHovhannisyan?tab=repositories"
           >{% include svg.html svg="github" %}</a>
       </div>
-    </div>
-  </div>
+    </li>
+  </ol>
 </section>
 <section id="skills" class="section">
   <h2>Skills and Abilities</h2>
@@ -59,7 +59,7 @@ technologies and problems." %}
 <section id="work-experience" class="section">
   <div>
     <h2>Work Experience</h2>
-    <ul class="jobs card-grid">
+    <ol class="jobs card-grid">
       {% for job in site.data.work %}
       <li class="job card">
         <header class="job-header">
@@ -80,7 +80,7 @@ technologies and problems." %}
         </ul>
       </li>
       {% endfor %}
-    </ul>
+    </ol>
   </div>
 </section>
 <section id="education" class="section">

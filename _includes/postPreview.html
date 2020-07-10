@@ -1,5 +1,5 @@
 {% assign post = include.post %}
-<div class="card interactive post-preview">
+<li class="card interactive post-preview">
     <header>
         {% include thumbnail.html post=post %}
         <h2 class="post-title" aria-label="Title: {{ post.title }}">{{ post.title }}</h2>
@@ -14,4 +14,4 @@
             {% endfor %}
         </ul>
     </div>
-</div>
+</li>

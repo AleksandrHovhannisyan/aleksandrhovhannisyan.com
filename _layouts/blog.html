@@ -33,7 +33,7 @@ layout: default
             href="{% if tag == "all" %}/blog/{% else %}/tag/{{ tag }}{% endif %}"
             class="post-tag tag{% if pageTag == tag %} active-tag{% endif %}"
             title="{% if pageTag != tag %}View{% endif %} {% if tag == "all" %}all posts{% else %}posts tagged as {{ tag }}{% endif %}"
-            {% if pageTag == tag %}aria-current="tag"{% endif %}
+            {% if pageTag == tag %}aria-current="page"{% endif %}
           >
             {{ tag }}
           </a>
@@ -41,11 +41,11 @@ layout: default
       {% endfor %}
     </ul>
   </nav>
-  <section class="post-preview-grid card-grid">
+  <ol class="post-preview-grid card-grid">
     {{ content }}
-  </section>
+  </ol>
   {% if paginator.page_trail %}
-  <ul class="pagination-trail" aria-label="Page navigation for {{ pageTag }} blog posts.">
+  <ol class="pagination-trail" aria-label="Page navigation for {{ pageTag }} blog posts.">
     {% for trail in paginator.page_trail %}
       {% assign trailPath = trail.path | remove: 'index.html' %}
       {% assign totalPages = paginator["total_pages"] %}
@@ -61,6 +61,6 @@ layout: default
         </a>
       </li>
     {% endfor %}
-  </ul>
+  </ol>
   {% endif %}
 </section>

@@ -14,23 +14,23 @@ permalink: /
 <section id="featured-posts" class="section">
     <h2 class="heading">Recent Blog Posts</h2>
     <p class="subtitle">Free dev tutorials, musings, and more. No ads whatsoever.</p>
-    <div class="post-preview-grid card-grid">
+    <ol class="post-preview-grid card-grid">
         {% for post in site.posts limit:2 %}
         {% include postPreview.html post=post %}
         {% endfor %}
-    </div>
+    </ol>
 </section>
 <section id="featured-projects" class="section">
     <h2 class="heading">Featured Software Projects</h2>
     <p class="subtitle">I have experience with a range of stacks and languages.</p>
-    <div id="project-grid" class="card-grid">
+    <ol class="project-grid card-grid">
         {% for project in site.data.projects limit:3 %}
         {% include projectCard.html project=project %}
         {% endfor %}
-        <div id="view-more-projects">
+        <li id="view-more-projects">
             <a class="button hollow-button arrow-button" href="/experience/#projects" aria-label="View more of my projects">View more</a>
-        </div>
-    </div>
+        </li>
+    </ol>
 </section>
 <section id="cta" class="section">
     <h2 class="heading">Want to learn more about me?</h2>

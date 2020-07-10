@@ -2,74 +2,79 @@
 @import 'settings';
 @import 'colors';
 
-.project {
-    /* Header, description, footer, respectively */
-    grid-template-rows: max-content 1fr max-content;
+.project-grid {
+    list-style-type: none;
 
-    header {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .project-name {
-        align-self: center;
-        grid-area: heading;
-        @include transition(color);
-
-        .name {
-            display: inline;
-            color: var(--text-color-emphasis);
-            font-size: 1rem;
-            margin: 0;
-            font-weight: map-get($font-weights, "bold");
-        }
-    }
-
-    .project-icon {
-        display: inline-block;
-        margin-right: 5px;
-
-        * {
-            vertical-align: middle;
-            width: 24px;
-        }
-    }
+    .project {
+        grid-template-rows: max-content 1fr max-content;
+        margin-bottom: 0;
     
-    .project-rating {
-        align-items: center;
-        align-self: center;
-        display: flex;
-        font-size: 0.875em;
-        grid-area: rating;
-        justify-self: center;
-        margin-right: 0.5em;
-        @include transition(color);
-
-        .star {
-            fill: var(--button-bg-color);
-            margin-right: 3px;
-            margin-top: 2px;
+        header {
+            display: flex;
+            justify-content: space-between;
         }
-    }
-
-    .project-description {
-        margin-bottom: 0px;
-        margin-top: 0px;
-        @include transition(color);
-    }
-
-    .topics {
-        display: flex;
-        flex-wrap: wrap;
-        grid-row: 3;
-        list-style-type: none;
     
-        .topic {
+        .project-name {
+            align-self: center;
+            grid-area: heading;
+            @include transition(color);
+    
+            .name {
+                display: inline;
+                color: var(--text-color-emphasis);
+                font-size: 1rem;
+                margin: 0;
+                font-weight: map-get($font-weights, "bold");
+            }
+        }
+    
+        .project-icon {
+            display: inline-block;
+            margin-right: 5px;
+    
+            * {
+                vertical-align: middle;
+                width: 24px;
+            }
+        }
+        
+        .project-rating {
+            align-items: center;
+            align-self: center;
+            display: flex;
             font-size: 0.875em;
-            margin-bottom: 0px;
+            grid-area: rating;
+            justify-self: center;
             margin-right: 0.5em;
-            margin-top: 0.5em;
-            padding: 0.25em 0.5em;
+            @include transition(color);
+    
+            .star {
+                fill: var(--button-bg-color);
+                margin-right: 3px;
+                margin-top: 2px;
+            }
+        }
+    
+        .project-description {
+            margin-bottom: 0px;
+            margin-top: 0px;
+            @include transition(color);
+        }
+    
+        .topics {
+            display: flex;
+            flex-wrap: wrap;
+            grid-row: 3;
+            list-style-type: none;
+            margin: 0;
+        
+            .topic {
+                font-size: 0.875em;
+                margin-bottom: 0px;
+                margin-right: 0.5em;
+                margin-top: 0.5em;
+                padding: 0.25em 0.5em;
+            }
         }
     }
 }

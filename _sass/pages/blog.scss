@@ -29,22 +29,22 @@
     }
 }
 
-.blog-post-previews, #featured-posts {
-    .post-preview-grid {
-        @include responsiveGrid($mobileMin: 255px, $desktopMin: 20em);
-    }
+.post-preview-grid {
+    @include responsiveGrid($mobileMin: 255px, $desktopMin: 20em);
+    list-style-type: none;
 
     .post-preview {
         --thumbnail-height: 8rem;
         display: block;
         padding: 0;
-
+        margin: 0;
+    
         .post-preview-body {
             padding: var(--card-padding);
             // - 0.875em because each .post-tag has a margin-bottom of 1em but a font size of 0.875em
             padding-bottom: calc(var(--card-padding) - 0.875em);
         }
-
+    
         .post-thumbnail {
             position: relative;
             display: block;
@@ -59,9 +59,9 @@
                 object-fit: cover;
                 object-position: center;
                 position: absolute;
-
+    
                 html.dark & {
-                    filter: brightness(.9) contrast(1.2);
+                    filter: brightness(.8) contrast(1.2);
                 }
             }
         }
@@ -80,11 +80,11 @@
             font-size: 1em;
             min-height: 4rem;
         }
-
+    
         .post-description {
             margin-bottom: 1em;
         }
-
+    
         .post-tags {
             display: flex;
             flex-wrap: wrap;
@@ -92,7 +92,8 @@
             z-index: 2;
             position: relative;
             list-style-type: none;
-
+            margin: 0;
+    
             li {
                 margin: 0;
             }
@@ -104,16 +105,16 @@
             }
         }
     }
+}
 
-    .post-preview-placeholder {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.1em;
-        padding: 3em;
-        text-align: center;
-        font-style: italic;
-    }
+.post-preview-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1em;
+    padding: 3em;
+    text-align: center;
+    font-style: italic;
 }
 
 .pagination-trail {
@@ -274,7 +275,7 @@
         max-width: 100%;
         
         html.dark & {
-            filter: brightness(.9) contrast(1.2);
+            filter: brightness(.8) contrast(1.2);
         }
     }
 
