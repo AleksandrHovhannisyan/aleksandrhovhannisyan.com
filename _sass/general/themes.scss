@@ -36,7 +36,6 @@ html.light {
     --blockquote-bg-color: transparent;
     --blockquote-text-color: var(--text-color-normal);
     --spoiler-color: #{$primary-color-tag};
-    --comment-bg-color: #f6f6f6;
 
     --input-border-color: hsl(0, 0%, 85%);
     --input-border-color-focus: #288bba;
@@ -81,7 +80,6 @@ html.dark {
     --blockquote-bg-color: #2c2c2c;
     --blockquote-text-color: #aaaaaa;
     --spoiler-color: #9c9387;
-    --comment-bg-color: #292929;
     
     --input-border-color: hsl(0, 0%, 25%);
     --input-border-color-focus: #{$secondary-color};

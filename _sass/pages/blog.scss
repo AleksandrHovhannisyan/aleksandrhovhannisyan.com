@@ -198,10 +198,10 @@
 
     p {
         margin: 0;
-    }
-
-    a:not(.post-tag):not(.heading-anchor):not(.button) {
-        @include underlinedLink($primary-color-link, $secondary-color-link);
+        
+        a {
+            @include underlinedLink($primary-color-link, $secondary-color-link);
+        }
     }
 
     .linked-heading {

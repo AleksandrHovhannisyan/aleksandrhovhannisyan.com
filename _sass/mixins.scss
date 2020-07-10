@@ -45,7 +45,7 @@
 }
 
 @mixin underlinedLink($lightColor, $darkColor) {
-    text-decoration: none;
+    @include themed(color, $lightColor, $darkColor);
     @include themed(border-bottom, 3px solid transparent, 3px solid transparent);
     @include transition(border, color);
 

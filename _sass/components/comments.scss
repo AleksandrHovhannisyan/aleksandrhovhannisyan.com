@@ -4,13 +4,13 @@
     justify-content: space-between;
     flex-wrap: wrap;
     margin-top: 2.25rem;
-    margin-bottom: 0.75em;
+    margin-bottom: 4em;
 
     h2 {
         margin: 0 !important;
     }
 
-    .post-comment {
+    .post-comment-button {
         padding: 0.4em 0.8em;
         margin: 1em 0;
     }
@@ -26,19 +26,13 @@
     padding: 0 !important;
 
     .comment {
-        border-radius: 5px;
-        margin-bottom: 2em;
-        background-color: var(--comment-bg-color);
-        padding: 1em 1.5em 1.5em 1.5em;
-        @include transition(background-color);
+        margin-bottom: 4em;
     }
 
     .comment-header {
         display: flex;
-        justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
-        margin-bottom: 1em;
 
         .meta {
             margin: 0.5em 0.5em 0.5em 0;
@@ -57,8 +51,9 @@
 
         .name {
             font-size: 1.1em;
+            @include underlinedLink(#384950, #cccccc);
         }
-    
+
         .author-badge {
             font-size: 0.75em;
             display: flex;
@@ -66,11 +61,11 @@
             padding: 0 0.4em;
             height: 1.5rem;
         }
+    }
 
-        .comment-edited {
-            font-size: 0.875em;
-            font-style: italic;
-        }
+    .comment-edited {
+        font-size: 0.875em;
+        font-style: italic;
     }
 
     .date-posted {
