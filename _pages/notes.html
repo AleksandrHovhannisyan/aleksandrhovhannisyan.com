@@ -6,7 +6,7 @@ permalink: /notes/
 
 
 
-<articcle id="notes" class="section">
+<article id="notes" class="section">
     <h1 class="heading">Notes 'n Stuff</h1>
     <p class="subtitle">A collection of thoughts, discoveries, and code snippets.</p>
     {% assign notesByYear = site.notes | group_by_exp: "note", "note.date | date: '%Y'" %}
