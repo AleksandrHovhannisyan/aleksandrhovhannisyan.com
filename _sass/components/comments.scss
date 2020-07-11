@@ -39,7 +39,7 @@
         }
     }
 
-    .user {
+    .commenter {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
@@ -49,7 +49,7 @@
             border-radius: 50% !important;
         }
 
-        .name {
+        .username {
             font-size: 1.1em;
             @include underlinedLink(#384950, #cccccc);
         }

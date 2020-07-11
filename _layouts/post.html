@@ -10,10 +10,12 @@ layout: default
     {% endif %}
     {% include meta.html content=page.content date=page.date last_updated=last_updated tags=page.tags showProfilePhoto=true %}
   </header>
-  {{ content }}
-  {% if page.comments_id %}
-    {% include comments.html issue_id=page.comments_id %}
-  {% endif %}
+  <div class="post-content">
+    {{ content }}
+    {% if page.comments_id %}
+      {% include comments.html issue_id=page.comments_id %}
+    {% endif %}
+  </div>
 </article>
 
 {% if page.needs_latex %}
