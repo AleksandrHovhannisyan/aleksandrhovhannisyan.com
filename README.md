@@ -1,6 +1,6 @@
 # aleksandrhovhannisyan.com
 
-My personal website and blog, built with Jekyll and hosted live on GitHub Pages.
+My personal website and blog, built with Jekyll.
 
 ## Licensing
 
