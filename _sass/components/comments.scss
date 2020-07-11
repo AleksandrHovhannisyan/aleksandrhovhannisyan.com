@@ -20,6 +20,9 @@
     display: flex;
 }
 
+$avatar-size: 2em;
+$meta-spacing: 0.5em;
+
 .comments-list {
     list-style-type: none;
     width: 100%;
@@ -27,6 +30,7 @@
 
     .comment {
         margin-bottom: 4em;
+        margin-left: $avatar-size + $meta-spacing;
     }
 
     .comment-header {
@@ -35,7 +39,7 @@
         flex-wrap: wrap;
 
         .meta {
-            margin: 0.5em 0.5em 0.5em 0;
+            margin: $meta-spacing $meta-spacing $meta-spacing 0;
         }
     }
 
@@ -43,9 +47,13 @@
         display: flex;
         flex-wrap: wrap;
         align-items: center;
+        position: relative;
 
         .avatar {
-            width: 2em;
+            position: absolute;
+            width: $avatar-size;
+            left: -1 * $avatar-size - $meta-spacing;
+            top: 0;
             border-radius: 50% !important;
         }
 
