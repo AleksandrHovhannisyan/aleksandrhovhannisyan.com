@@ -1,6 +1,6 @@
 {% assign issues_repo = site.issues_repo %}
 {% assign issue_id = include.issue_id %}
-<footer id="comments-footer">
+<footer id="comments">
     <div class="comment-actions">
         <h2>💬 Comments <span id="comments-count"></span></h2>
         <a
@@ -16,7 +16,7 @@
 
 <!-- Comments script -->
 <script>
-  const commentsFooter = document.getElementById('comments-footer');
+  const commentsFooter = document.getElementById('comments');
   const commentsWrapper = commentsFooter.querySelector('#comments-wrapper');
   const commentsCount = commentsFooter.querySelector('#comments-count');
 
@@ -111,7 +111,7 @@
     commentsCount.innerText = `(${comments.length})`;
 
     const commentsList = document.createElement('ol');
-    commentsList.className = 'comments';
+    commentsList.className = 'comments-list';
     commentsList.setAttribute('aria-label', 'Comments on this blog post');
 
     commentsList.innerHTML = comments
