@@ -8,9 +8,7 @@ comments_id: 35
 thumbnail_ext: gif
 ---
 
-I'm always looking for ways to improve my site's user experience without toppling the precarious house of cards that is cross-browser compatibility (Internet Explorer be damned).
-
-And one thing that recently drew my attention is the fact that many of my tutorials require copy-pasting code, especially for anything that's not too important to type out by hand (like CSS or terminal commands).
+I'm always looking for ways to improve my site's user experience without toppling the precarious house of cards that is cross-browser compatibility. And one thing that recently drew my attention is the fact that many of my tutorials require copy-pasting code, especially for anything that's not too important to type out by hand (e.g., terminal commands).
 
 You're working with Jekyll, so you're probably using Markdown code blocks like this:
 
@@ -22,15 +20,16 @@ cd my-awesome-project && npm install
 ```
 ````
 
-And that works. But let's face it: Copying this is just *too much work*—precious time that could be spent doing more productive things, like checking Slack or surfing Reddit. Plus, you have to, like, *drag your mouse* and Ctrl+C and stuff. *Ugh* 😫.
+And that works, sure. But copy-pasting this can get tedious really quickly, and it's barely accessible.
 
-Why not make it possible to click a button that magically copies the code to your clipboard?
+Why not create a button that magically copies Markdown code blocks to your clipboard?
 
-Well, ask and you shall receive. In this tutorial, we'll add a copy-to-clipboard button to your Jekyll blog in just a few lines of code. Here's what we'll be building:
+Well, ask and you shall receive! In this tutorial, we'll add a copy-to-clipboard button to your Jekyll blog in just a few lines of code. Here's a sneak peek at what we'll be building:
 
-{% include picture.html img="demo" ext="gif" alt="A demo of clicking a copy-to-clipboard button." %}
-
-*(Psst! You can also try this out live on my blog!)*
+<figure>
+    {% include picture.html img="demo" ext="gif" alt="A demo of clicking a copy-to-clipboard button." %}
+    <figcaption>Psst! You can also try this out live on my blog!</figcaption>
+</figure>
 
 Note that this tutorial is going to be bare bones—I'm not going to introduce any irrelevant CSS or HTML. I'm just going to show you how to get this thing working at a functional level. Once that's taken care of, you can throw in any extra styling or elements that you want.
 
