@@ -3,10 +3,8 @@
 
 #page-footer {
     align-items: center;
-    background: var(--nav-bg-color);
+    background: var(--footer-bg-color);
     bottom: 0;
-    // box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.8);
-    color: #dedede;
     display: flex;
     grid-row: 2;
     height: $footer-height;
@@ -15,8 +13,9 @@
     width: 100%;
     @include transition(color);
     @include centered;
-
-    span {
+    
+    * {
+        color: var(--footer-text-color);
         text-align: center;
     }
 }

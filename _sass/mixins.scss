@@ -44,6 +44,18 @@
     }
 }
 
+//
+// @mixin underlinedLink($color) {
+//    color: color;
+//    border-bottom: 3px solid transparent;
+//    @include transition(border, color);
+//
+//    &:hover, 
+//    &:focus {
+//        border-color: $color;
+//    }
+// }
+
 @mixin underlinedLink($lightColor, $darkColor) {
     @include themed(color, $lightColor, $darkColor);
     @include themed(border-bottom, 3px solid transparent, 3px solid transparent);
@@ -61,8 +73,8 @@
     @include transition(color, border, background-color);
 
     &:focus, &:hover {
-        background-color: var(--button-bg-hover-color);
-        border: 3px solid var(--button-bg-hover-color);
+        background-color: var(--button-bg-color-hover);
+        border: 3px solid var(--button-bg-color-hover);
         outline: none;
     }
 }

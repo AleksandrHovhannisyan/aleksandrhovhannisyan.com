@@ -8,12 +8,6 @@ function mount(root, ...nodes) {
 (function () {
   const themeSwitch = document.getElementById('theme-switch');
   themeSwitch.addEventListener('click', toggleColorTheme);
-  // For accessibility, allow users to toggle with Enter
-  themeSwitch.addEventListener('keyup', (keyEvent) => {
-    if (keyEvent.keyCode === 13) {
-      toggleColorTheme();
-    }
-  });
 })();
 
 function setColorTheme(newTheme, oldTheme) {

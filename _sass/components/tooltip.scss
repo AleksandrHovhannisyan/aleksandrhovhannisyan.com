@@ -5,7 +5,7 @@ $tooltip-spacing: 5px;
     // Flip this to `block` in whatever element is getting hovered
     display: none;
     position: absolute;
-    z-index: 99;
+    z-index: $nav-z-index - 1;
 
     &.tooltip-top {
         bottom: calc(100% + #{$tooltip-spacing});

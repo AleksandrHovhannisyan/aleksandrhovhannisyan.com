@@ -40,7 +40,7 @@ form {
     }
 
     .input {
-        background-color: var(--form-input-color);
+        background-color: var(--input-bg-color);
         border: solid 1px var(--input-border-color);
         border-radius: 2px;
         box-shadow: var(--input-box-shadow);
@@ -66,7 +66,7 @@ form {
         @include transition(color);
 
         &.required::after {
-            color: var(--danger-color);
+            color: var(--input-required-asterisk-color);
             content: " *";
             @include transition(color);
         }
@@ -139,7 +139,7 @@ input.honeypot {
     @include transition(background-color);
 
     &:focus, &:hover {
-        background-color: var(--hover-color-general);
+        background-color: var(--hover-bg-color);
         cursor: pointer;
     }
 

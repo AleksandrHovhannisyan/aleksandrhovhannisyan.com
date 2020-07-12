@@ -6,10 +6,10 @@
     @include transition(fill);
 
     &.star-filled {
-        fill: var(--button-bg-color);
+        fill: var(--star-fill-color-filled);
     }
 
     &.star-empty {
-        @include themed(fill, #adacac, #474747);
+        fill: var(--star-fill-color-empty);
     }
 }

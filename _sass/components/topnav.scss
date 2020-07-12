@@ -4,17 +4,16 @@
 
 #topnav {
     background-color: var(--nav-bg-color);
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.8);
+    box-shadow: var(--nav-box-shadow);
     left: 0;
     min-height: $nav-height;
     position: fixed;
     right: 100%;
     top: 0;
     width: 100%;
-    /* Arbitrary, appear above everything else */
-    z-index: 100;
+    z-index: $nav-z-index;
     @include centered;
-    @include transition(color, background-color);
+    @include transition(color, box-shadow, background-color);
 
     * {
         color: var(--nav-text-color);
@@ -64,6 +63,7 @@
         --switch-width: 52px;
         align-items: center;
         align-self: center;
+        border: none;
         border-radius: 100px;        
         cursor: pointer;
         display: flex;
@@ -76,7 +76,7 @@
         padding-right: 3px;
         position: relative;
         width: var(--switch-width);
-        @include themed(background-color, #747474, $secondary-color-dark);
+        background-color: var(--theme-switch-bg-color);
 
         #sun, #moon {
             height: 18px;
@@ -85,8 +85,9 @@
         #knob {
             --switch-orb-height: 25px;
             --switch-orb-width: 25px; 
-            background-color: rgb(207, 207, 207);
-            border: 1.3px solid $primary-color;
+            background-color: var(--theme-switch-knob-bg-color);
+            border: 1.3px solid var(--theme-switch-knob-border-color);
+            box-shadow: var(--theme-switch-knob-shadow);
             border-radius: 50%;
             height: var(--switch-orb-height);
             left: 0;    
@@ -96,9 +97,7 @@
             @include transition(left, right, background-color, border, width, height);
 
             .dark & {
-                background-color: #a79c87;
-                border: 1.3px solid #635b4b;
-                box-shadow: 0 0 5px 0 lighten(#a79c87, 75%);
+                box-shadow: 0 0 5px 0 white;
                 left: calc(var(--switch-width) - var(--switch-orb-width));
                 right: var(--orb-distance-from-edge);
             }
@@ -106,7 +105,6 @@
 
         &:active {
             #knob {
-                box-shadow: 0 0 10px 0 $secondary-color-light;
                 height: calc(var(--switch-orb-height) - 4px);
                 width: calc(var(--switch-orb-width) - 4px);
             }
@@ -148,7 +146,7 @@
             #active-nav-link, 
             .nav-link:hover, 
             .nav-link:focus {
-                background-color: #444647;
+                background-color: var(--nav-link-bg-color-hover);
             }
         }
     }
