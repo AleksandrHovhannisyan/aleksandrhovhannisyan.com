@@ -11,6 +11,7 @@
     @include transition(color, box-shadow, background-color);
 }
 
+// TODO: fix this nonsense
 .solid-button {
     @include solidButton(var(--button-bg-color), var(--card-bg-color));
 }

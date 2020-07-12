@@ -69,8 +69,7 @@
         .post-title {
             //background-color: rgba(50, 65, 78, 0.8);
             //@include themed(background-color, rgba(50, 65, 78, 0.8), rgba(93, 87, 73, 0.8));
-            @include themed(background-color, #5B6771, #6b675d);
-            @include transition(background-color);
+            background-color: var(--post-title-bg-color);
             color: white;
             text-shadow: 2px 2px black;
             padding: 0.5em 1.5em;
@@ -79,6 +78,7 @@
             align-items: center;
             font-size: 1em;
             min-height: 4rem;
+            @include transition(background-color);
         }
     
         .post-description {
@@ -487,12 +487,11 @@
             }
         }
     
-        .spoiler {
-    
+        .spoiler {    
             &,
             * {
-                background-color: var(--spoiler-color);
-                color: var(--spoiler-color);
+                background-color: var(--spoiler-bg-color);
+                color: var(--spoiler-bg-color);
             }
     
             margin-bottom: 1px;
@@ -509,7 +508,7 @@
                 }
     
                 code {
-                    background-color: var(--code-bg-color);
+                    background-color: var(--inline-code-bg-color);
                     color: var(--code-text-color);
                 }
             }
@@ -541,11 +540,11 @@
 }
 
 code {
-    background-color: var(--code-bg-color);
+    background-color: var(--inline-code-bg-color);
     border-radius: 3px;
     color: var(--code-text-color);
     font-family: Monaco, Consolas, 'Courier New', monospace;
     font-size: 0.875em;
     padding: 3px 6px;
-    @include transition(color, background-color);
+    @include transition(background-color);
 }

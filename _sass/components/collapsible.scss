@@ -55,13 +55,14 @@
         z-index: 2;
     }
 
-    &, * {
+    &, 
+    * {
         @include transition(background-color, color, fill);
         @include themed(color, white, black);
     }
 
     &:hover, &:focus {
-        background-color: var(--button-bg-hover-color);
+        background-color: var(--button-bg-color-hover);
     }
 
     // Vector/arrowhead

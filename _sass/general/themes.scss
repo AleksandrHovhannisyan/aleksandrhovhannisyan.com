@@ -1,90 +1,101 @@
 @import 'colors';
 
 html.light {
-//    --main-bg-color: #fafafd;
+    --blockquote-bg-color: transparent;
+    --blockquote-text-color: #586069;
+    --button-bg-color-hover: #4989a7;
+    --button-bg-color: #35647a;
+    --card-bg-color: white;
+    --code-text-color-inline: #5b6169;
+    --footer-bg-color: var(--nav-bg-color);
+    --footer-text-color: var(--nav-text-color);
+    --form-bg-color: #f6f6f6;
+    --hero-bg-color: #1c1c1c;
+    --hover-bg-color: #f3f5f7;
+    --inline-code-bg-color: rgba(230, 230, 230, 0.749);
+    --input-bg-color: white;
+    --input-border-color-focus: #288bba;
+    --input-border-color: hsl(0, 0%, 85%);
+    --input-box-shadow-focus: 0 0 6px 0 #7ed6ff;
+    --input-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0);
+    --input-required-asterisk-color: #98434B;
+    --link-color: #216ec4;
     --main-bg-color: #fdfdfd;
     --nav-bg-color: #2c2c2c;
+    --nav-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.8);
+    --nav-link-bg-color-hover: #444647;
     --nav-text-color: #dedede;
-    --hero-bg-color: #1c1c1c;
-    --selection-bg-color: #{$primary-color-selection};
-
-    --text-color-normal: #{$denim};
-    --text-color-emphasis: #384950;
-    --link-color: #{$primary-color-link};
-
-    --button-bg-color: #{$primary-color};
-    --button-bg-hover-color: #{$primary-color-light};
-
-    --card-bg-color: #ffffff;
-    
-    --tag-bg-color: #{$primary-color-tag};
-    --tag-text-color: #{$primary-color};
-
-    --code-bg-color: rgba(230, 230, 230, 0.749);
-    --code-text-color: #5b6169;
-
+    --post-title-bg-color: #5B6771;
+    --scrollbar-thumb-bg-color-hover: #adadad;
+    --scrollbar-thumb-bg-color: #858585;
+    --scrollbar-track-bg-color: var(--nav-bg-color);
+    --selection-bg-color: rgba(218, 227, 231, 0.8);
+    --selection-text-color: black;
+    --spoiler-bg-color: #dae3e7;
+    --star-fill-color: #35647a;
     --table-header-bg-color: #4d4d4d;
     --table-header-text-color: #e6e6e6;
-    --table-row-stripe-color: hsl(0, 0%, 96%);
+    --table-row-bg-color-striped: hsl(0, 0%, 96%);
     --table-row-border-color: hsl(0, 0%, 92%);
-
-    --hover-color-general: #e8ecee;
-    
-    --form-bg-color: #f6f6f6;
-    --form-input-color: white;
-    
-    --blockquote-bg-color: transparent;
-    --blockquote-text-color: var(--text-color-normal);
-    --spoiler-color: #{$primary-color-tag};
-
-    --input-border-color: hsl(0, 0%, 85%);
-    --input-border-color-focus: #288bba;
-    --input-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0);
-    --input-box-shadow-focus: 0 0 6px 0 #7ed6ff;
-
-    --danger-color: #{$primary-danger-color};
+    --tag-bg-color-hover: #35647a;
+    --tag-bg-color: #dae3e7;
+    --tag-text-color-hover: white;
+    --tag-text-color: #35647a;
+    --text-color-emphasis: #384950;
+    --text-color-normal: #586069;
+    --theme-switch-bg-color: #747474;
+    --theme-switch-knob-active-shadow: none;
+    --theme-switch-knob-bg-color: rgb(207, 207, 207);
+    --theme-switch-knob-border-color: #35647a;
+    --theme-switch-knob-shadow: none;
 }
 
 html.dark {
-    --main-bg-color: #1a1a1a;
-    --nav-bg-color: #292929;
-    --nav-text-color: #dedede;
-    --hero-bg-color: #202020;
-    --selection-bg-color: #{$secondary-color-selection};
-    
-    --text-color-normal: #adadad;
-    --text-color-emphasis: #cccccc;
-    --link-color: #{$secondary-color-link};
-    
-    --button-bg-color: #{$secondary-color};
-    --button-bg-hover-color: #{$secondary-color-light};
-    
-    --card-bg-color: #292929;
-    
-    --tag-bg-color: #ada08f;
-    --tag-text-color: #000000;
-    
-    --code-bg-color: rgba(88, 88, 88, 0.65);
-    --code-text-color: #b2b2b2;
-    
-    --table-header-bg-color: #292929;
-    --table-header-text-color: #dedede;
-    --table-row-stripe-color: #2a2a2a;
-    --table-row-border-color: #2a2a2a;
-    
-    --hover-color-general: #292929;
-    
-    --form-bg-color: #292929;
-    --form-input-color: #3b3b3b;
-    
     --blockquote-bg-color: #2c2c2c;
     --blockquote-text-color: #aaaaaa;
-    --spoiler-color: #9c9387;
-    
+    --button-bg-color-hover: #f3d5b3;
+    --button-bg-color: #bda17f;
+    --card-bg-color: #292929;
+    --code-text-color-inline: #b2b2b2;
+    --footer-bg-color: var(--nav-bg-color);
+    --footer-text-color: var(--nav-text-color);
+    --form-bg-color: #292929;
+    --hero-bg-color: #202020;
+    --hover-bg-color: #292929;
+    --inline-code-bg-color: rgba(88, 88, 88, 0.65);
+    --input-bg-color: #3b3b3b;
+    --input-border-color-focus: #bda17f;
     --input-border-color: hsl(0, 0%, 25%);
-    --input-border-color-focus: #{$secondary-color};
-    --input-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0);
     --input-box-shadow-focus: 0 0 6px 0 #fcd876;
-    
-    --danger-color: #{$secondary-danger-color};
+    --input-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0);
+    --input-required-asterisk-color: #C25450;
+    --link-color: #cea25a;
+    --main-bg-color: #1a1a1a;
+    --nav-bg-color: #292929;
+    --nav-box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.8);
+    --nav-link-bg-color-hover: #444647;
+    --nav-text-color: #dedede;
+    --post-title-bg-color: #6b675d;
+    --scrollbar-thumb-bg-color-hover: #adadad;
+    --scrollbar-thumb-bg-color: #858585;
+    --scrollbar-track-bg-color: var(--nav-bg-color);
+    --selection-bg-color: rgba(156, 147, 135, 0.8);
+    --selection-text-color: black;
+    --spoiler-bg-color: #9c9387;
+    --star-fill-color: #bda17f;
+    --table-header-bg-color: #292929;
+    --table-header-text-color: #dedede;
+    --table-row-bg-color-striped: #2a2a2a;
+    --table-row-border-color: #2a2a2a;
+    --tag-bg-color-hover: #ffcd91;
+    --tag-bg-color: #ada08f;
+    --tag-text-color-hover: black;
+    --tag-text-color: black;
+    --text-color-emphasis: #cccccc;
+    --text-color-normal: #adadad;
+    --theme-switch-bg-color: #6e5f4b;
+    --theme-switch-knob-active-shadow: 0 0 10px 0 #f3d5b3;
+    --theme-switch-knob-bg-color: #a79c87;
+    --theme-switch-knob-border-color: #635b4b;
+    --theme-switch-knob-shadow: 0 0 5px 0 lighten(#a79c87, 75%);
 }

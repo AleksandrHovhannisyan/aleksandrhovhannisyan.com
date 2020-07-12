@@ -27,8 +27,7 @@ tr:not(:first-child) {
 
 tbody {
     tr:nth-child(even) {
-        // background-color: hsl(0, 0%, 98%);
-        background-color: var(--table-row-stripe-color);
+        background-color: var(--table-row-bg-color-striped);
         @include transition(background-color);
     }
     
