@@ -49,7 +49,6 @@
             @include transition(color);
     
             .star {
-                fill: var(--star-fill-color);
                 margin-right: 3px;
                 margin-top: 2px;
             }

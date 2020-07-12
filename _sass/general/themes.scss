@@ -32,7 +32,8 @@ html.light {
     --selection-bg-color: rgba(218, 227, 231, 0.8);
     --selection-text-color: black;
     --spoiler-bg-color: #dae3e7;
-    --star-fill-color: #35647a;
+    --star-fill-color-filled: #35647a;
+    --star-fill-color-empty: #adacac;
     --table-header-bg-color: #4d4d4d;
     --table-header-text-color: #e6e6e6;
     --table-row-bg-color-striped: hsl(0, 0%, 96%);
@@ -82,7 +83,8 @@ html.dark {
     --selection-bg-color: rgba(156, 147, 135, 0.8);
     --selection-text-color: black;
     --spoiler-bg-color: #9c9387;
-    --star-fill-color: #bda17f;
+    --star-fill-color-filled: #bda17f;
+    --star-fill-color-empty: #474747;
     --table-header-bg-color: #292929;
     --table-header-text-color: #dedede;
     --table-row-bg-color-striped: #2a2a2a;
