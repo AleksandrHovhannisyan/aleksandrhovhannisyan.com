@@ -167,16 +167,6 @@ p {
     }
 }
 
-.featured-section {
-    grid-column: 1 / -1 !important;
-    margin-top: 2.5rem;
-    margin-bottom: -2.5rem;
-    padding: 2.5rem 0;
-    @include centered;
-    @include transition(background-color);
-    @include themed(background-color, #fafafa, transparent);
-}
-
 hr {
     border: 1.2px solid rgb(145, 145, 145);
     margin-bottom: 8px;
