@@ -77,12 +77,17 @@
 
     #cta-buttons {
         max-width: 22em;
+        display: flex;
+        flex-wrap: wrap;
         width: 100%;
     
         .button {
             height: 3.5em;
-            margin-bottom: 1em;
-            width: 100%;
+            flex: 1;
+
+            &:first-child {
+                margin-right: 0.875em;
+            }
         }
     }
 }
