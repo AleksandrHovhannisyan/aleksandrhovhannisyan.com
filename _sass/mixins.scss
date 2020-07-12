@@ -54,32 +54,6 @@
    }
 }
 
-@mixin solidButton($bgColor, $textColor) {
-    background-color: $bgColor;
-    color: $textColor;
-    border: 3px solid $bgColor;
-    @include transition(color, border, background-color);
-
-    &:focus, &:hover {
-        background-color: var(--button-bg-color-hover);
-        border: 3px solid var(--button-bg-color-hover);
-        outline: none;
-    }
-}
-
-@mixin hollowButton($bgColor, $textColor) {
-    background-color: $bgColor;
-    color: $textColor;
-    border: 3px solid $textColor;
-    box-shadow: 0 0 0 0 $textColor;
-    @include transition(color, border, box-shadow, background-color);
-
-    &:focus, &:hover {
-        box-shadow: 0 0 0 2px $textColor;
-        outline: none;
-    }
-}
-
 @mixin themed($attribute, $light, $dark) {
     #{$attribute}: $light;
 

@@ -11,13 +11,29 @@
     @include transition(color, box-shadow, background-color);
 }
 
-// TODO: fix this nonsense
 .solid-button {
-    @include solidButton(var(--button-bg-color), var(--card-bg-color));
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    border: 3px solid var(--button-bg-color);
+    @include transition(color, border, background-color);
+
+    &:focus, &:hover {
+        background-color: var(--button-bg-color-hover);
+        border: 3px solid var(--button-bg-color-hover);
+    }
 }
 
 .hollow-button {
-    @include hollowButton(var(--card-bg-color), var(--button-bg-color));
+    color: var(--button-bg-color);
+    background-color: transparent;
+    border: 3px solid;
+    box-shadow: 0 0 0 0 transparent;
+    @include transition(color, border, box-shadow);
+
+    &:focus, 
+    &:hover {
+        box-shadow: 0 0 0 2px var(--button-bg-color);
+    }
 }
 
 .arrow-button {    

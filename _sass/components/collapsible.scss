@@ -58,7 +58,7 @@
     &, 
     * {
         @include transition(background-color, color, fill);
-        @include themed(color, white, black);
+        color: var(--button-text-color);
     }
 
     &:hover, &:focus {
