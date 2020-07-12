@@ -160,10 +160,6 @@
         margin-bottom: 1.5em;
     }
 
-    a {
-        @include underlinedLink($primary-color-link, $secondary-color-link);
-    }
-
     .jobs {
         list-style-type: none;
         //display: flex;
@@ -242,10 +238,6 @@
     
     &:not(:last-child) {
         margin-bottom: 40px;
-    }
-
-    a {
-        @include underlinedLink($primary-color-link, $secondary-color-link);
     }
 
     .institution-name {

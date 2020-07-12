@@ -75,7 +75,11 @@ $string-thickness: 3px;
         position: relative;
         justify-self: center;
         @include transition(transform, top, box-shadow, border-radius);
-
+        
+        a {
+            border: none;
+        }
+        
         /*
         // Pin
         &::before {

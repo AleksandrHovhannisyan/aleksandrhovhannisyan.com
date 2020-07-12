@@ -59,7 +59,7 @@ $meta-spacing: 0.5em;
 
         .username {
             font-size: 1.1em;
-            @include underlinedLink(#384950, #cccccc);
+            color: var(--text-color-emphasis);
         }
 
         .author-badge {

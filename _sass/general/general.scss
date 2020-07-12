@@ -21,7 +21,7 @@
     border-radius: 2px;
 
     &:hover {
-        background: var(--scrollbar-thumb-bg-hover);
+        background: var(--scrollbar-thumb-bg-color-hover);
     }
 }
 
@@ -35,13 +35,14 @@
     position: absolute;
     left: -5000px;
     z-index: $nav-z-index + 1;
-
+    
     &:focus {
         left: 0;
     }
 }
 
 .skip-navigation {
+    border: none;
     padding: 0.8em;
     color: #dedede;
     font-weight: map-get($font-weights, "normal");
@@ -87,8 +88,9 @@ body {
     text-align: center;
 }
 
-/* Links an entire parent container, but the parent must be set to relative position */
+// Links an entire parent container, but the parent must be set to relative position
 .container-link {
+    border: none;
     height: 100%;
     left: 0;
     position: absolute;
@@ -134,7 +136,7 @@ a {
     color: var(--link-color);
     font-weight: map-get($font-weights, "bold");
     text-decoration: none;
-    @include transition(color);
+    @include underlinedLink;
 }
 
 p {
@@ -239,6 +241,5 @@ li:not(:last-child) {
 
     a {
         color: $secondary-color-link;
-        @include underlinedLink($secondary-color-link, $secondary-color-link);
     }
 }

@@ -205,10 +205,6 @@
         p {
             margin: 0;
         }
-        
-        a:not(.button):not(.username) {
-            @include underlinedLink($primary-color-link, $secondary-color-link);
-        }
     
         .linked-heading {
             position: relative;
