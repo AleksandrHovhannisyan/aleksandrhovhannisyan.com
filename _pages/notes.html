@@ -18,7 +18,7 @@ permalink: /notes/
                 {% assign notes = year.items | sort: 'date' | reverse %}
                 {% for note in notes %}
                     <li class="note">
-                        <time datetime="{{ note.date }}" class="note-date">{{ note.date | date: "%m/%d/%Y" }}</time>
+                        <time datetime="{{ note.date | date: "%Y-%m-%d" }}" class="note-date">{{ note.date | date: "%m/%d/%Y" }}</time>
                         <a href="{{ note.url }}">
                             <h2 class="note-title">{{ note.title }}</h2>
                             <p class="note-description">{{ note.description }}</p>
