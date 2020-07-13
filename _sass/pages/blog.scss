@@ -505,7 +505,7 @@
     
                 code {
                     background-color: var(--inline-code-bg-color);
-                    color: var(--code-text-color);
+                    color: var(--inline-code-text-color);
                 }
             }
         }
@@ -538,9 +538,9 @@
 code {
     background-color: var(--inline-code-bg-color);
     border-radius: 3px;
-    color: var(--code-text-color);
+    color: var(--inline-code-text-color);
     font-family: Monaco, Consolas, 'Courier New', monospace;
     font-size: 0.875em;
     padding: 3px 6px;
-    @include transition(background-color);
+    @include transition(color, background-color);
 }
