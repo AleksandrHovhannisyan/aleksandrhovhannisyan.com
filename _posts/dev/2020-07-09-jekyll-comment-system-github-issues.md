@@ -1,6 +1,6 @@
 ---
-title: Creating a Jekyll Comment System with the GitHub Issues API
-description: Learn how to create a simple comment system for your Jekyll blog. We'll use the GitHub issues API and defer loading our comments for a better user experience.
+title: Add Comments to a Jekyll Blog with the GitHub Issues API
+description: Learn how to add comments to your Jekyll blog. We'll use the GitHub issues API as our comment system and lazy load it for a better user experience.
 keywords: [jekyll comment system]
 tags: [jekyll, github, javascript]
 comments_id: 45
@@ -18,7 +18,7 @@ That last point is really optional. My two key concerns were to improve my comme
 
 ## How to Add Comments to a Jekyll Blog
 
-This section is a bit of a recap on how to use the GitHub Issues API as a comment system in Jekyll. Most of this is covered in Ari's post, save for some differences in the markup itself.
+This section is a bit of a recap on how to use the GitHub Issues API to add comments to a Jekyll blog. Most of this is covered in Ari's post, save for some differences in the markup itself.
 
 First, you'll need a public repo for your comments. Add this variable to your `_config.yml`:
    
@@ -337,6 +337,6 @@ const edited = comment.created_at !== comment.updated_at;
 
 I use the first line to make my own comments stand out with an `Author` badge and the second to indicate that a comment has been edited. Neither functionality is super important; it's just there to make this look even more like a true comment system. 
 
-And that's it! Enjoy your Jekyll comment system :)
+And that's it! You can now add comments to your Jekyll blog with relative ease.
 
 Drop me a line down below if you run into any problems or if you see any areas for improvement.
