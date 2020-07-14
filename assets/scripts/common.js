@@ -16,9 +16,6 @@ function setColorTheme(newTheme, oldTheme) {
   localStorage.setItem('theme', newTheme);
 }
 
-/** Called when the user clicks the dark mode switch in the top-left of the navbar.
- *  Toggles the document's class to trigger a change in the color themes.
- */
 function toggleColorTheme() {
   if (html.classList.contains('dark')) {
     setColorTheme('light', 'dark');
