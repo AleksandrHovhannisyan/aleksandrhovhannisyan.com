@@ -2,7 +2,7 @@
 title: Add Comments to a Jekyll Blog with the GitHub Issues API
 description: Learn how to add comments to your Jekyll blog. We'll use the GitHub issues API as our comment system and lazy load it for a better user experience.
 keywords: [jekyll comment system]
-tags: [jekyll, github, javascript]
+tags: [dev, jekyll, github, javascript]
 comments_id: 45
 ---
 
