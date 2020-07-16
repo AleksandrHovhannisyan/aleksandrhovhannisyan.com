@@ -1,14 +1,19 @@
 ---
-title: Add Comments to a Jekyll Blog with the GitHub Issues API
+title: Add Comments to Your Jekyll Blog with the GitHub Issues API
 description: Learn how to add comments to your Jekyll blog. We'll use the GitHub issues API as our comment system and lazy load it for a better user experience.
 keywords: [jekyll comment system]
 tags: [dev, jekyll, github, javascript]
 comments_id: 45
+last_updated: 2020-07-16
 ---
 
-A while back, [Ari Stathopoulos wrote a tutorial](https://aristath.github.io/blog/static-site-comments-using-github-issues-api) on how to use the GitHub Issues API as a comment system. And you know what? It works like a charm! It's actually what I use on this very blog. The only notable downside is that unauthenticated requests have a [rate limit of 60 requests/hour](https://developer.github.com/v3/#rate-limiting).
+A while back, [Ari Stathopoulos wrote a tutorial](https://aristath.github.io/blog/static-site-comments-using-github-issues-api) on how to add comments to a Jekyll blog using the GitHub Issues API. And you know what? It works like a charm! Ever since I added comments to my Jekyll blog, I've seen a noticeable increase in engagement from my readers:
 
-In this tutorial, I'd like to introduce a modified version of Ari's approach that:
+{% include picture.html img="comments" ext="png" alt="A list of comments on one of my blog posts" %}
+
+That said, this approach isn't without its drawbacks. For one, the GitHub API has a [rate limit of 60 requests/hour](https://developer.github.com/v3/#rate-limiting). But more importantly, rendering all comments on the initial page load isn't a great user experience.
+
+So, in this tutorial, I'd like to introduce a modified version of Ari's approach that:
 
 1. Only loads the comment system once the user has scrolled to the end of the page.
 2. Sanitizes each comment to escape special characters and prevent XSS attacks.
@@ -48,11 +53,11 @@ And here's the include file itself (or at least part of it—we'll fill in the s
 {% capture code %}{% raw %}{% assign issues_repo = site.issues_repo %}
 {% assign issue_id = include.issue_id %}
 
-<footer id="comments-footer">
+<section id="comments">
     <div class="comment-actions">
         <h2>Comments <span id="comments-count"></span></h2>
         <a
-          class="button solid-button plus-button post-comment"
+          class="button solid-button plus-button post-comment-button"
           href="https://github.com/{{ issues_repo }}/issues/{{ issue_id }}"
           >Post comment</a
         >
@@ -60,7 +65,7 @@ And here's the include file itself (or at least part of it—we'll fill in the s
     <div id="comments-wrapper">
       Loading...
     </div>
-</footer>
+</section>
 
 <!-- Comments script -->
 <script></script>{% endraw %}{% endcapture %}
@@ -81,9 +86,9 @@ Time to start writing some JavaScript. We won't put our code in its own `.js` fi
 First, we'll create some variables for ourselves at the top of this script to reference a few of the elements on the page:
 
 {% capture code %}{% raw %}<script>
-  const commentsFooter = document.getElementById('comments-footer');
-  const commentsWrapper = commentsFooter.querySelector('#comments-wrapper');
-  const commentsCount = commentsFooter.querySelector('#comments-count');
+  const commentsSection = document.getElementById('comments');
+  const commentsWrapper = commentsSection.querySelector('#comments-wrapper');
+  const commentsCount = commentsSection.querySelector('#comments-count');
 </script>{% endraw %}{% endcapture %}
 {% include code.html file="_includes/comments.html" code=code lang="html" %}
 
@@ -108,12 +113,12 @@ To detect when a user has scrolled to the end of our blog post, we'll use the wi
   });
 }, { rootMargin: '200px 0px 0px 0px' });
 
-commentsObserver.observe(commentsFooter);{% endcapture %}
+commentsObserver.observe(commentsSection);{% endcapture %}
 {% include code.html file="_includes/comments.html" code=code lang="javascript" %}
 
-Basically, the observer checks to see if it's intersecting with the `commentsFooter` element. If it is, it calls a `fetchComments` routine that we'll set up in a second.
+Basically, the observer checks to see if it's intersecting with the `commentsSection` element. If it is, it calls a `fetchComments` routine that we'll set up in a second.
 
-Note that an `IntersectionObserver` accepts a function as its first argument and an optional configuration object as its second argument. Here, the config I've passed in sets a `rootMargin` option. You can think of this as a margin (really padding) around an invisible "intersection rectangle" that follows the user around the page as they scroll. A top margin of `200px` here essentially treats an intersection as 200px *before* a user has reached the comments section (i.e., we **preload the comments** so that there's very little, if any, visible delay in rendering the comments).
+Note that an `IntersectionObserver` accepts a function as its first argument and an optional configuration object as its second argument. Here, the config I've passed in sets a `rootMargin` option. You can think of this as a margin around an invisible "intersection rectangle" that follows the user around the page as they scroll. A top margin of `200px` here essentially treats an intersection as 200px *before* a user has reached the comments section (i.e., we **preload the comments** so that there's very little, if any, visible delay in rendering the comments).
 
 Here's the `fetchComments` function that gets fired off when an intersection is detected:
 
@@ -152,9 +157,9 @@ Now, you can certainly load these using script elements like so:
 
 <!-- Our custom comments script -->
 <script>
-  const commentsFooter = document.getElementById('comments-footer');
-  const commentsWrapper = commentsFooter.querySelector('#comments-wrapper');
-  const commentsCount = commentsFooter.querySelector('#comments-count');
+  const commentsSection = document.getElementById('comments');
+  const commentsWrapper = commentsSection.querySelector('#comments-wrapper');
+  const commentsCount = commentsSection.querySelector('#comments-count');
   
   // more code
 
@@ -253,7 +258,7 @@ function renderComments(comments) {
     commentsCount.innerText = `(${comments.length})`;
 
     const commentsList = document.createElement('ol');
-    commentsList.className = 'comments';
+    commentsList.className = 'comments-list';
     commentsList.setAttribute('aria-label', 'Comments on this blog post');
 
     commentsList.innerHTML = comments
@@ -268,20 +273,17 @@ function renderComments(comments) {
       const edited = comment.created_at !== comment.updated_at;
 
       return `<li class="comment">
-                  <header class="comment-header">
-                      <div class="user">
-                          <img src="${user.avatar_url}" alt="" aria-hidden="true" class="avatar" />
-                          <a
-                              href="https://github.com/${user.login}"
-                              class="name"
-                              aria-label="Comment by ${user.login}"
-                              >${user.login}</a
-                          >
-                          ${postedByAuthor ? '<span class="tag author-badge">Author</span>' : ''}
-                          ${edited ? `<span class="comment-edited">Edited</span>` : ''}
-                      </div>
-                      <time class="date-posted" datetime="${comment.created_at}">${datePosted}</time>
-                  </header>
+                  <div class="commenter">
+                      <img src="${user.avatar_url}" alt="" aria-hidden="true" class="meta avatar" />
+                      <a
+                          href="https://github.com/${user.login}"
+                          class="meta username"
+                          >${user.login}</a
+                      >
+                      <div class="meta date-posted">commented <time datetime="${comment.created_at}">${datePosted}</time></div>
+                      ${postedByAuthor ? '<span class="meta tag author-badge">Author</span>' : ''}
+                      ${edited ? `<span class="meta comment-edited">Edited</span>` : ''}
+                  </div>
                   <div class="comment-body">${body}</div>
               </li>`;
     })
@@ -306,7 +308,7 @@ The next few lines of code create an `ol` element and give it a meaningful aria 
 
 ```javascript
 const commentsList = document.createElement("ol");
-commentsList.className = "comments";
+commentsList.className = 'comments-list';
 commentsList.setAttribute("aria-label", "Comments on this blog post");
 
 commentsList.innerHTML = comments
@@ -337,6 +339,6 @@ const edited = comment.created_at !== comment.updated_at;
 
 I use the first line to make my own comments stand out with an `Author` badge and the second to indicate that a comment has been edited. Neither functionality is super important; it's just there to make this look even more like a true comment system. 
 
-And that's it! You can now add comments to your Jekyll blog with relative ease.
+And that's it! You can now add comments to your Jekyll blog with relative ease. All that's left now is for you to add your own styling and even rearrange the HTML as you please.
 
 Drop me a line down below if you run into any problems or if you see any areas for improvement.

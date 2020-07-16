@@ -1,6 +1,6 @@
 {% assign issues_repo = site.issues_repo %}
 {% assign issue_id = include.issue_id %}
-<footer id="comments">
+<section id="comments">
     <div class="comment-actions">
         <h2>💬 Comments <span id="comments-count"></span></h2>
         <a
@@ -12,13 +12,13 @@
     <div id="comments-wrapper">
       Loading...
     </div>
-</footer>
+</section>
 
 <!-- Comments script -->
 <script>
-  const commentsFooter = document.getElementById('comments');
-  const commentsWrapper = commentsFooter.querySelector('#comments-wrapper');
-  const commentsCount = commentsFooter.querySelector('#comments-count');
+  const commentsSection = document.getElementById('comments');
+  const commentsWrapper = commentsSection.querySelector('#comments-wrapper');
+  const commentsCount = commentsSection.querySelector('#comments-count');
 
   // These dependencies are loaded async, so we keep track of the ones that have loaded so we can
   // render the comments only after all of them have loaded
@@ -46,7 +46,7 @@
       }
     });
   }, { rootMargin: '200px 0px 0px 0px' });
-  commentsObserver.observe(commentsFooter);
+  commentsObserver.observe(commentsSection);
 
   /**
   * Makes an XHR request to the GitHub comments API to fetch all comments for the current post.
@@ -126,20 +126,17 @@
         const edited = comment.created_at !== comment.updated_at;
 
         return `<li class="comment">
-                    <header class="comment-header">
-                        <div class="commenter">
-                            <img src="${user.avatar_url}" alt="" aria-hidden="true" class="meta avatar" />
-                            <a
-                                href="https://github.com/${user.login}"
-                                class="meta username"
-                                aria-label="Comment by ${user.login}"
-                                >${user.login}</a
-                            >
-                            <span class="meta date-posted">commented <time datetime="${comment.created_at}">${datePosted}</time></span>
-                            ${postedByAuthor ? '<span class="meta tag author-badge">Author</span>' : ''}
-                            ${edited ? `<span class="meta comment-edited">Edited</span>` : ''}
-                        </div>
-                    </header>
+                    <div class="commenter">
+                        <img src="${user.avatar_url}" alt="" aria-hidden="true" class="meta avatar" />
+                        <a
+                            href="https://github.com/${user.login}"
+                            class="meta username"
+                            >${user.login}</a
+                        >
+                        <div class="meta date-posted">commented <time datetime="${comment.created_at}">${datePosted}</time></div>
+                        ${postedByAuthor ? '<span class="meta tag author-badge">Author</span>' : ''}
+                        ${edited ? `<span class="meta comment-edited">Edited</span>` : ''}
+                    </div>
                     <div class="comment-body">${body}</div>
                 </li>`;
       })

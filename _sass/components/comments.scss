@@ -33,21 +33,15 @@ $meta-spacing: 0.5em;
         margin-left: $avatar-size + $meta-spacing;
     }
 
-    .comment-header {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-
-        .meta {
-            margin: $meta-spacing $meta-spacing $meta-spacing 0;
-        }
-    }
-
     .commenter {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         position: relative;
+
+        .meta {
+            margin: $meta-spacing $meta-spacing $meta-spacing 0;
+        }
 
         .avatar {
             position: absolute;
@@ -62,6 +56,15 @@ $meta-spacing: 0.5em;
             color: var(--text-color-emphasis);
         }
 
+        .comment-edited {
+            font-size: 0.875em;
+            font-style: italic;
+        }
+    
+        .date-posted {
+            font-size: 0.875em;
+        }
+
         .author-badge {
             font-size: 0.75em;
             display: flex;
@@ -69,15 +72,6 @@ $meta-spacing: 0.5em;
             padding: 0 0.4em;
             height: 1.5rem;
         }
-    }
-
-    .comment-edited {
-        font-size: 0.875em;
-        font-style: italic;
-    }
-
-    .date-posted {
-        font-size: 0.875em;
     }
 
     .comment-body {
