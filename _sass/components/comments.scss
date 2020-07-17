@@ -38,16 +38,17 @@ $meta-spacing: 0.5em;
         flex-wrap: wrap;
         align-items: center;
         position: relative;
+        margin-bottom: calc(#{$paragraph-spacing} - #{$meta-spacing} / 2);
 
         .meta {
-            margin: $meta-spacing $meta-spacing $meta-spacing 0;
+            margin: 0 $meta-spacing $meta-spacing / 2 0;
         }
 
         .avatar {
             position: absolute;
             width: $avatar-size;
             left: -1 * $avatar-size - $meta-spacing;
-            top: 0;
+            top: calc(-1 * #{$meta-spacing} / 4);
             border-radius: 50% !important;
         }
 
