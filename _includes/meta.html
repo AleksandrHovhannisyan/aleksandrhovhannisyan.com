@@ -19,10 +19,10 @@
         <span>{{ minutes }} min read</span>
     </div>
     {% if include.tags %}
-    <div class="meta post-tags" role="list" aria-label="Tags belonging to this blog post.">
+    <ul class="meta post-tags" aria-label="Tags belonging to this blog post.">
         {% for tag in include.tags %}
-        <a href="/tag/{{ tag }}" class="tag post-tag">{{ tag }}</a>
+        <li><a href="/tag/{{ tag }}" class="tag post-tag">{{ tag }}</a></li>
         {% endfor %}
-    </div>
+    </ul>
     {% endif %}
 </div>
