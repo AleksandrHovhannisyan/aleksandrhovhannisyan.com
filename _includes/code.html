@@ -1,10 +1,7 @@
-<div class="code-header">
+<header class="code-header">
     {% if include.file %}
     <div class="file-name-container">
-        <h6 class="file-name"
-            aria-label="File name: {{ include.file }}">
-            {{ include.file }}
-        </h6>
+        <span class="file-name">{{ include.file }}</span>
     </div>
     {% endif %}
     {% unless include.copyable == false %}
@@ -15,7 +12,7 @@
         ></button>
     </div>
     {% endunless %}
-</div>
+</header>
 ````{{ include.lang }}
 {{ include.code }}
 ````
