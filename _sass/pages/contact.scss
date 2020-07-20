@@ -99,10 +99,32 @@ input.honeypot {
     margin-bottom: 60px;
     margin-top: 60px;
     row-gap: 50px;
+    list-style-type: none;
 
-    h3 {
-        grid-column: 1 / -1;
-        grid-row: 1;
+    .social-network {
+        margin: 0;
+    }
+
+    .social-network-link {
+        height: 100%;
+        border: none;
+        border-radius: 2px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        @include transition(background-color);
+    
+        &:focus, &:hover {
+            background-color: var(--hover-bg-color);
+            cursor: pointer;
+        }
+    
+        .network-name {
+            color: var(--text-color-normal);
+            font-weight: map-get($font-weights, "normal");
+            align-self: center;
+            grid-column: 2;
+            @include transition(color);
+        }
     }
 
     .network-icon {
@@ -129,26 +151,5 @@ input.honeypot {
     
     .upwork {
         fill: $brand-upwork;
-    }
-}
-
-.social-network {
-    border: none;
-    border-radius: 2px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    @include transition(background-color);
-
-    &:focus, &:hover {
-        background-color: var(--hover-bg-color);
-        cursor: pointer;
-    }
-
-    .network-name {
-        color: var(--text-color-normal);
-        font-weight: map-get($font-weights, "normal");
-        align-self: center;
-        grid-column: 2;
-        @include transition(color);
     }
 }
