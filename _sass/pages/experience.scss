@@ -166,59 +166,64 @@
     }
 
     .jobs {
-        list-style-type: none;
-        //display: flex;
-        flex-wrap: wrap;
+        list-style: none;
     }
 
     .job {
         grid-template-rows: max-content 1fr max-content;
         width: 100%;
-        margin: 0;
+        
+        &:not(:last-child) {
+            margin-bottom: 3em;
+        }
 
         .job-header {
             display: flex;
+            flex-wrap: wrap;
         }
 
         .company-logo {
-            margin-right: 1.5em;
             width: 2.5rem;
             height: 2.5rem;
+            border-radius: 50%;
+            margin: 0 0.5em 0.25em 0;
 
-            html.dark & {
-                filter: brightness(.8) contrast(1.2);
+            img {
+                border-radius: 50%;
             }
         }
 
         .job-title {
             font-size: 1.1em;
+            display: block;
         }
 
-        .job-company {
+        .job-details {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 0.5em;
+        }
+
+        .job-detail {
+            display: flex;
+            align-items: center;
             font-size: 0.875em;
+            margin: 0 1em 0.25em 0;
         }
 
         .date-range {
-            font-size: 0.875em;
             font-style: italic;
-            margin: 0;
-        }
-
-        .responsibilities {
-            margin: 0;
         }
 
         .technologies-used {
             margin: 0;
-            align-items: center;
-            display: flex;
             flex-wrap: wrap;
             list-style-type: none;
 
             .tech {
-                font-size: 0.875em;
                 padding: 0.4em 0.8em;
-                margin: 0 0.5em 0.5em 0;
+                margin: 0.25em 0.5em 0.25em 0;
             }
 
             .react {
@@ -229,11 +234,6 @@
             .typescript {
                 @include themed(background-color, rgba($brand-typescript, 0.15), $brand-typescript);
                 @include themed(color, lighten($brand-typescript, 10%), #d5d5d5);
-            }
-
-            .grpc {
-                @include themed(background-color, rgba($brand-grpc, 0.2), $brand-grpc);
-                @include themed(color, #1e6f70, #e3e1e1);
             }
         }
     }

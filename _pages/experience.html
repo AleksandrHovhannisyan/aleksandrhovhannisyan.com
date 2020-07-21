@@ -2,6 +2,7 @@
 title: Experience
 description: I try to keep busy while having fun and testing my limits. Between school, side projects, freelancing, and interning, I've gained valuable exposure to a wide variety of interesting technologies and problems.
 permalink: /experience/
+custom_js: [lazyLoad]
 ---
 
 {% include banner.html heading="My experience" content="I try to keep busy while
@@ -61,25 +62,26 @@ technologies and problems." %}
 <section id="work-experience" class="section">
   <div>
     <h2>Work Experience</h2>
-    <ol class="jobs card-grid">
+    <ol class="jobs">
       {% for job in site.data.work %}
-      <li class="job card">
+      <li class="job">
         <header class="job-header">
-          <img src="/assets/img/brands/{{ job.logo }}" alt="" class="company-logo" />
-          <div class="job-details">
-            <h3 class="job-title" aria-label="Position: {{ job.title}}">{{ job.title }}</h3>
-            <h4 class="job-company" aria-label="Company: {{ job.company }}">{{ job.company }}</h4>
-            <p class="date-range">{{ job.dateRange }}</p>
-          </div>
+          {% include picture.html img=job.logo path="/assets/img/brands" alt="" class="company-logo" %}
+          <section>
+            <h3 class="job-title">{{ job.title }} at {{ job.company }}</h3>
+            <div class="job-details">
+              <span class="job-detail date-range">{{ job.dateRange }}</span>
+              <ul class="job-detail technologies-used" aria-label="Technologies used on this job">
+                {% for tech in job.tech %}
+                <li class="tag tech {{tech}}">{{tech}}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          </section>
         </header>
         <p class="responsibilities">
           {{ job.responsibilities }}
-        </p>
-        <ul class="technologies-used" aria-label="Technologies used on this job">
-          {% for tech in job.tech %}
-          <li class="tag tech {{tech}}">{{tech}}</li>
-          {% endfor %}
-        </ul>
+        </p>        
       </li>
       {% endfor %}
     </ol>
