@@ -219,9 +219,19 @@ Have you ever used a lower heading level, like `h5` or `h6`, simply because you 
 
 ### Use the `time` Element for Dates
 
-This is another underrated semantic HTML element. Basically, use the `time` element for dates and times. For example, you can wrap the publication date in a `time` for a forum post, blog post, article, video, and so on. GitHub uses [web component extensions for the `time` element](https://github.com/github/time-elements) in its UI:
+This is another underrated semantic HTML element. Basically, use the `time` element for dates and times. For example, you can wrap the publication date in a `time` for a forum post, blog post, article, video, and so on.
+
+GitHub uses [web component extensions for the `time` element](https://github.com/github/time-elements) in its UI:
 
 {% include picture.html img="github-time" ext="png" alt="Inspecting a relative date time on GitHub" %}
+
+StackOverflow uses `time`:
+
+{% include picture.html img="stackoverflow-time" ext="png" alt="StackOverflow uses the time element for the dates of posts" %}
+
+And so does Twitter:
+
+{% include picture.html img="twitter-time" ext="png" alt="Twitter uses the time element for the date a tweet was posted" %}
 
 It's certainly not the end of the world if you don't use `time`, so long as the date itself is part of some other semantic element (e.g., a paragraph or heading) that will make sense in the context in which it's narrated.
 
