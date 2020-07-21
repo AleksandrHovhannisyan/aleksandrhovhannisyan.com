@@ -105,9 +105,14 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
         row-gap: 40px;
+        list-style: none;
     }
 
     .skill-category {
+        margin: 0;
+    }
+
+    .skill-category-name {
         margin-bottom: 1em;
     }
 

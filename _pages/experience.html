@@ -30,31 +30,33 @@ technologies and problems." %}
 </section>
 <section id="skills" class="section">
   <h2>Skills and Abilities</h2>
-  <div id="skill-grid">
+  <ul id="skill-grid">
     {% assign skillMap = "Familiar,Basic,Intermediate,Competent,Advanced" | split: ',' %}
     {% for item in site.data.skills %}
-    <div>
-      <h3 class="skill-category" aria-label="Skill category: {{ item.category }}">{{ item.category }}</h3>
-      {% for skill in item.skills %}
-      {% assign skillLabelIndex = skill.rating | minus: 1 %}
-      <div class="skill-item">
-        <span class="skill-name">{{ skill.name }}</span>
-        <div class="skill-rating" role="img" aria-label="Experience level: {{ skillMap[skillLabelIndex] }}">
-            {% for i in (1..skill.rating) %}
-                {% include svg.html svg="star" class="star star-filled" %}
-            {% endfor %}
-            {% assign j = skill.rating | plus: 1 %}
-            {% for i in (j..5) %}
-                {% include svg.html svg="star" class="star star-empty" %}
-            {% endfor %}
-            {% assign rating = skillMap[skillLabelIndex] %}
-            {% include tooltip.html position='top' text=rating %}
-        </div>
-      </div>
-      {% endfor %}
-    </div>
+    <li class="skill-category">
+      <h3 class="skill-category-name" aria-label="Skill category: {{ item.category }}">{{ item.category }}</h3>
+      <ol>
+        {% for skill in item.skills %}
+        {% assign skillLabelIndex = skill.rating | minus: 1 %}
+        <li class="skill-item">
+          <span class="skill-name">{{ skill.name }}</span>
+          <div class="skill-rating" role="img" aria-label="Experience level: {{ skillMap[skillLabelIndex] }}">
+              {% for i in (1..skill.rating) %}
+                  {% include svg.html svg="star" class="star star-filled" %}
+              {% endfor %}
+              {% assign j = skill.rating | plus: 1 %}
+              {% for i in (j..5) %}
+                  {% include svg.html svg="star" class="star star-empty" %}
+              {% endfor %}
+              {% assign rating = skillMap[skillLabelIndex] %}
+              {% include tooltip.html position='top' text=rating %}
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+    </li>
     {% endfor %}
-  </div>
+  </ul>
 </section>
 <section id="work-experience" class="section">
   <div>
