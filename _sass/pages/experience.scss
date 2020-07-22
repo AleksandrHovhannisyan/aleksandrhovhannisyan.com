@@ -233,15 +233,10 @@
                 margin: 0.25em 0.5em 0.25em 0;
             }
 
-            .react {
-                @include themed(background-color, rgba($brand-react, 0.2), $brand-react);
-                @include themed(color, #007190, #142d34);
-            }
-
-            .typescript {
-                @include themed(background-color, rgba($brand-typescript, 0.15), $brand-typescript);
-                @include themed(color, lighten($brand-typescript, 10%), #d5d5d5);
-            }
+            // .react {
+            //     @include themed(background-color, rgba($brand-react, 0.2), $brand-react);
+            //     @include themed(color, #007190, #142d34);
+            // }
         }
 
         .responsibilities {
