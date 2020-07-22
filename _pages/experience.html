@@ -66,19 +66,17 @@ technologies and problems." %}
       {% for job in site.data.work %}
       <li class="job">
         <header class="job-header">
-          {% include picture.html img=job.logo path="/assets/img/brands" alt="" class="company-logo" %}
-          <section>
+            {% include picture.html img=job.logo path="/assets/img/brands" alt="" class="company-logo" %}
             <h3 class="job-title">{{ job.title }} at {{ job.company }}</h3>
-            <div class="job-details">
-              <span class="job-detail date-range">{{ job.dateRange }}</span>
-              <ul class="job-detail technologies-used" aria-label="Technologies used on this job">
-                {% for tech in job.tech %}
-                <li class="tag tech {{tech}}">{{tech}}</li>
-                {% endfor %}
-              </ul>
-            </div>
-          </section>
         </header>
+        <div class="job-details">
+          <span class="job-detail date-range">{{ job.dateRange }}</span>
+          <ul class="job-detail technologies-used" aria-label="Technologies used on this job">
+            {% for tech in job.tech %}
+            <li class="tag tech {{tech}}">{{tech}}</li>
+            {% endfor %}
+          </ul>
+        </div>
         <p class="responsibilities">
           {{ job.responsibilities }}
         </p>        
