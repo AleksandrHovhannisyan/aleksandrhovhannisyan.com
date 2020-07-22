@@ -1,6 +1,7 @@
 - title: Front-End Software Developer
   company: RB Technologies
   logo: rbtechnologies
+  location: Gainesville, FL (Remote)
   dateRange: Apr. 2020–Present
   responsibilities: Refactored a substantial portion of the frontend (React+Redux) app to improve maintainability. Took an app that was overflowing on mobile/tablet and made it fully responsive, down to 320px. Engineering new front-end features for customers and fixing various bugs. Experience working in a startup environment and collaborating directly with the CEO and CTO.
   tech:
@@ -11,6 +12,7 @@
 - title: Freelance Copy Editor
   company: Upwork
   logo: upwork
+  location: Remote
   dateRange: Nov. 2016–Present (3+ years)
   responsibilities: Copy editing various documents for clients. 70+ successfully completed jobs, 5+ regular clients, and 100% job success score (JSS). Experience working remotely with teams of varying sizes and composition.
   tech:
@@ -20,6 +22,7 @@
 - title: Software Developer Intern
   company: SharpSpring
   logo: sharpspring
+  location: Gainesville, FL
   dateRange: Jul. 2019–Dec. 2019 (6 months)
   responsibilities: Redesigned a web app feature using React, TypeScript, Ant Design, and Redux. Worked on creating a new backend service using TypeScript. Occasionally helped with bug fixing to free up my team's bandwidth during busy sprints.
   tech:

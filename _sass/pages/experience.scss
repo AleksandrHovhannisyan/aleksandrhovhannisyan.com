@@ -214,6 +214,13 @@
             margin: 0 1em 0.25em 0;
         }
 
+        .job-detail-icon {
+            width: 1em;
+            margin-right: 0.5em;
+            fill: var(--text-color-normal);
+            @include transition(fill);
+        }
+
         .date-range {
             font-style: italic;
         }
