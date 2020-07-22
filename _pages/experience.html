@@ -72,9 +72,9 @@ technologies and problems." %}
         <div class="job-details">
           <div class="job-detail location">{% include svg.html svg="map" class="job-detail-icon" %}{{ job.location }}</div>
           <div class="job-detail date-range">{% include svg.html svg="calendar" class="job-detail-icon" %}{{ job.dateRange }}</div>
-          <ul class="job-detail technologies-used" aria-label="Technologies used on this job">
+          <ul class="technologies-used" aria-label="Technologies used on this job">
             {% for tech in job.tech %}
-            <li class="tag tech {{tech}}">{{tech}}</li>
+            <li class="job-detail tag tech {{tech}}">{{tech}}</li>
             {% endfor %}
           </ul>
         </div>

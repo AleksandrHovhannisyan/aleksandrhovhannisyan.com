@@ -162,7 +162,7 @@
 
 #work-experience {
     h2 {
-        margin-bottom: 1.5em;
+        margin-bottom: 3rem;
     }
 
     .jobs {
@@ -174,7 +174,7 @@
         width: 100%;
         
         &:not(:last-child) {
-            margin-bottom: 3em;
+            margin-bottom: 3rem;
         }
 
         .job-header {
@@ -221,12 +221,10 @@
             @include transition(fill);
         }
 
-        .date-range {
-            font-style: italic;
-        }
-
         .technologies-used {
             margin: 0;
+            display: flex;
+            align-items: center;
             flex-wrap: wrap;
             list-style-type: none;
 
