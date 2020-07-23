@@ -42,9 +42,8 @@
 }
 
 .skip-navigation {
-    border: none;
     padding: 0.8em;
-    color: #dedede;
+    color: var(--nav-text-color);
     font-weight: map-get($font-weights, "normal");
     @include transition(color, background-color);
 
@@ -90,11 +89,9 @@ body {
 
 // Links an entire parent container, but the parent must be set to relative position
 .container-link {
-    border: none;
     height: 100%;
     left: 0;
     position: absolute;
-    text-decoration: none;
     top: 0;
     width: 100%;
     z-index: 1;
@@ -132,11 +129,14 @@ h1 {
     scroll-margin-top: 84px;
 }
 
+.underlined-link {
+    @include underlinedLink;
+}
+
 a {
     color: var(--link-color);
     font-weight: map-get($font-weights, "bold");
     text-decoration: none;
-    @include underlinedLink;
 }
 
 p {

@@ -45,13 +45,15 @@
 }
 
 @mixin underlinedLink {
-   border-bottom: 3px solid transparent;
-   @include transition(border, color);
+    $underline-thickness: 3px;
+    padding-top: $underline-thickness;
+    border-bottom: $underline-thickness solid transparent;
+    @include transition(border, color);
 
-   &:hover, 
-   &:focus {
-       border-color: currentColor;
-   }
+    &:hover, 
+    &:focus {
+        border-color: currentColor;
+    }
 }
 
 @mixin themed($attribute, $light, $dark) {

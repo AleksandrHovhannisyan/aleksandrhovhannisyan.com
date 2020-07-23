@@ -10,8 +10,6 @@
 
 // Because not all tags are links/interactive (see project cards)
 a.tag {
-    border: none;
-
     &:hover, 
     &:focus, 
     &.active-tag {

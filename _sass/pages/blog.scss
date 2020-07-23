@@ -212,6 +212,10 @@
             margin: 0;
         }
     
+        a:not(.button) {
+            @include underlinedLink;
+        }
+
         .linked-heading {
             position: relative;
     

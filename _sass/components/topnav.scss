@@ -35,7 +35,6 @@
         flex-wrap: nowrap;
         overflow: hidden;
         flex-shrink: 0;
-        border: none;
 
         #logo {
             height: 32px;
@@ -137,7 +136,6 @@
             text-align: center;
 
             .nav-link {
-                border: none;
                 border-radius: 2px;
                 padding: 0.75em;
                 margin: 0 1.2rem;
