@@ -5,17 +5,17 @@
         {% include picture.html path="/assets/img" img="profile-photo" ext="png" alt="" class="meta author-photo" clickable=false %}
     {% endif %}
     <div class="meta post-date-published">
-        {% include svg.html svg="calendar" class="meta-icon" %}
+        {% include icon.html icon="calendar" class="meta-icon" %}
         <time datetime="{{ include.date | date: "%Y-%m-%d" }}">{{ include.date | date: "%b %-d, %Y" }}</time>
     </div>
     {% if include.last_updated %}
     <div class="meta post-date-updated">
-        {% include svg.html svg="info" class="meta-icon" %}
+        {% include icon.html icon="info" class="meta-icon" %}
         <time datetime="{{ include.last_updated | date: "%Y-%m-%d" }}">Updated: {{ include.last_updated | date: "%b %-d, %Y" }}</time>
     </div>
     {% endif %}
     <div class="meta post-reading-length">
-        {% include svg.html svg="clock" class="meta-icon" %}
+        {% include icon.html icon="clock" class="meta-icon" %}
         <span>{{ minutes }} min read</span>
     </div>
     {% if include.tags %}

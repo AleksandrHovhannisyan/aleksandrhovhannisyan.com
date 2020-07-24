@@ -24,7 +24,7 @@ technologies and problems." %}
         <a
           aria-label="Aleksandr Hovhannisyan's GitHub profile."
           href="https://github.com/AleksandrHovhannisyan?tab=repositories"
-          >{% include svg.html svg="github" %}</a>
+          >{% include icon.html icon="github" %}</a>
       </div>
     </li>
   </ol>
@@ -43,11 +43,11 @@ technologies and problems." %}
           <span class="skill-name">{{ skill.name }}</span>
           <div class="skill-rating" role="img" aria-label="Experience level: {{ skillMap[skillLabelIndex] }}">
               {% for i in (1..skill.rating) %}
-                  {% include svg.html svg="star" class="star star-filled" %}
+                  {% include icon.html icon="star" class="star star-filled" %}
               {% endfor %}
               {% assign j = skill.rating | plus: 1 %}
               {% for i in (j..5) %}
-                  {% include svg.html svg="star" class="star star-empty" %}
+                  {% include icon.html icon="star" class="star star-empty" %}
               {% endfor %}
               {% assign rating = skillMap[skillLabelIndex] %}
               {% include tooltip.html position='top' text=rating %}
@@ -70,8 +70,8 @@ technologies and problems." %}
             <h3 class="job-title">{{ job.title }} at {{ job.company }}</h3>
         </header>
         <div class="job-details">
-          <div class="job-detail location">{% include svg.html svg="map" class="job-detail-icon" %}{{ job.location }}</div>
-          <div class="job-detail date-range">{% include svg.html svg="calendar" class="job-detail-icon" %}{{ job.dateRange }}</div>
+          <div class="job-detail location">{% include icon.html icon="map" class="job-detail-icon" %}{{ job.location }}</div>
+          <div class="job-detail date-range">{% include icon.html icon="calendar" class="job-detail-icon" %}{{ job.dateRange }}</div>
           <ul class="technologies-used" aria-label="Technologies used on this job">
             {% for tech in job.tech %}
             <li class="job-detail tag tech {{tech}}">{{tech}}</li>

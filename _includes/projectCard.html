@@ -6,7 +6,7 @@
             <h3 class="name" aria-label="Project: {{ project.name }}">{{ project.name }}</h3>
         </div>
         <div class="project-rating" role="img" aria-label="This project has {{ project.rating }} stars on GitHub">
-            {% include svg.html svg="star" class="star star-filled" %}
+            {% include icon.html icon="star" class="star star-filled" %}
             <span>{{ project.rating }}</span>
         </div>
     </header>
@@ -19,6 +19,6 @@
     <a class="container-link" href="{{ project.url }}" aria-label="Explore {{ project.name }} on GitHub"></a>
     <div class="hover-content" aria-hidden="true">
         Explore on GitHub
-        {% include svg.html svg="external-link" %}
+        {% include icon.html icon="external-link" %}
     </div>
 </li>
