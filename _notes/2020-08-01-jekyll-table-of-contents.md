@@ -34,7 +34,9 @@ The markup specific to the Jekyll table of contents is this bit, which uses some
 {:toc}
 ```
 
-The following code just creates a `Table of Contents` heading level two that's excluded from the table of contents itself:
+In order for this to work, you'll need to use Kramdown as your Markdown parser in Jekyll. Fortunately, [it's the default Markdown renderer](https://jekyllrb.com/docs/configuration/markdown/), so unless you've changed that, the code in this tutorial will work.
+
+The following markup just creates a `Table of Contents` heading level two that's excluded from the table of contents itself:
 
 ```markdown
 ## Table of Contents
