@@ -21,23 +21,31 @@ permalink: /
     </ol>
 </section>
 <section id="featured-projects" class="section">
-    <h2 class="heading">Featured Software Projects</h2>
+    <h2 class="heading">Software Projects</h2>
     <p class="subtitle">I have experience with a range of stacks and languages.</p>
     <ol class="project-grid card-grid">
-        {% for project in site.data.projects limit:3 %}
-        {% include projectCard.html project=project %}
+        {% for project in site.data.projects %}
+            {% include projectCard.html project=project %}
         {% endfor %}
-        <li id="view-more-projects">
-            <a class="button hollow-button arrow-button" href="/experience/#projects" aria-label="View more of my projects">View more</a>
+        <li id="github-cta">
+          <header>
+            <p><strong>Want to see more of my work?</strong></p>
+          </header>
+          <div>
+            <p>Check out my other repos:</p>
+            <a
+              aria-label="Aleksandr Hovhannisyan's GitHub profile."
+              href="https://github.com/AleksandrHovhannisyan?tab=repositories"
+              >{% include icon.html icon="github" %}</a>
+          </div>
         </li>
-    </ol>
+      </ol>
 </section>
 <section id="cta" class="section">
     <h2 class="heading">Want to learn more about me?</h2>
-    <p class="subtitle">Check out my full experience and blog!</p>
     <div id="cta-buttons">
-        <a href="/experience" class="button solid-button">View experience</a>
-        <a href="/blog" class="button hollow-button">Read my blog</a>
+        <a href="/about/" class="button solid-button">Get to know me</a>
+        <a href="/blog/" class="button hollow-button">Read my blog</a>
     </div>
 </section>
 <script type="application/ld+json">
