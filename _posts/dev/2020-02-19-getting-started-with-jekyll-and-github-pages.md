@@ -16,47 +16,7 @@ Note that some parts of this tutorial assume that you'll be hosting your site wi
 
 All right, enough chit-chat—let's dig in!
 
-## Table of Contents
-
-- [Overview: What Is Jekyll?](#overview-what-is-jekyll)
-- [How to Set Up GitHub Pages](#how-to-set-up-github-pages)
-- [Getting Started with Jekyll](#getting-started-with-jekyll)
-  - [1. Installing Jekyll](#1-installing-jekyll)
-  - [2. Setting Up Your First Jekyll Site](#2-setting-up-your-first-jekyll-site)
-  - [3. Configuring Jekyll with GitHub Pages](#3-configuring-jekyll-with-github-pages)
-  - [4. Running Jekyll Locally](#4-running-jekyll-locally)
-  - [5. Pushing Your Site to GitHub](#5-pushing-your-site-to-github)
-- [Typical Jekyll Directory Structure](#typical-jekyll-directory-structure)
-- [Configuring Your Jekyll Site](#configuring-your-jekyll-site)
-- [How to Create Pages in Jekyll](#how-to-create-pages-in-jekyll)
-  - [What Is Markdown Front Matter?](#what-is-markdown-front-matter)
-    - [Front Matter Defaults](#front-matter-defaults)
-- [Where Do I Put My Pages in Jekyll?](#where-do-i-put-my-pages-in-jekyll)
-- [Jekyll Blog Posts](#jekyll-blog-posts)
-  - [Permalinks to Blog Posts in Jekyll](#permalinks-to-blog-posts-in-jekyll)
-  - [You Don't Need an Explicit Date Variable](#you-dont-need-an-explicit-date-variable)
-  - [Blog Post Front Matter Variables](#blog-post-front-matter-variables)
-  - [Syntax Highlighting](#syntax-highlighting)
-- [Dr. Jekyll and Mr. Liquid](#dr-jekyll-and-mr-liquid)
-  - [Data Types](#data-types)
-  - [Template Tags](#template-tags)
-  - [Variables](#variables)
-  - [Control Flow](#control-flow)
-  - [Objects](#objects)
-  - [Operators](#operators)
-  - [Filters](#filters)
-- [Using Jekyll Layout Files to Structure Pages](#using-jekyll-layout-files-to-structure-pages)
-  - [Using More Than One Layout](#using-more-than-one-layout)
-- [Writing CSS in Jekyll Using SASS](#writing-css-in-jekyll-using-sass)
-  - [Modular CSS with SASS Imports](#modular-css-with-sass-imports)
-- [Creating Reusable Components with Includes](#creating-reusable-components-with-includes)
-- [Taking Advantage of Jekyll Data Files](#taking-advantage-of-jekyll-data-files)
-  - [Example 1: Skills and Abilities](#example-1-skills-and-abilities)
-  - [Example 2: Author Bios](#example-2-author-bios)
-  - [Example 3: Tag Descriptions](#example-3-tag-descriptions)
-- [Setting Up Google Search Console](#setting-up-google-search-console)
-  - [Is It Safe to Upload the Google Search Console Verification File?](#is-it-safe-to-upload-the-google-search-console-verification-file)
-- [GitHub Pages Support for Jekyll Plugins](#github-pages-support-for-jekyll-plugins)
+{% include toc.md %}
 
 ## Overview: What Is Jekyll?
 

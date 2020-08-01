@@ -18,37 +18,7 @@ Unless you're familiar with binary numbers, this probably doesn't make much sens
 
 In this beginner's tutorial, we'll look at everything you need to know about the binary number system, but we'll also take a quick look at decimal and hexadecimal, as they're closely related. I'll include relevant bits of code and real-life examples to help you appreciate the beauty of binary.
 
-<!-- omit in toc -->
-## Table of Contents
-
-- [What Is a Number System?](#what-is-a-number-system)
-  - [Bases, Exponents, and Digits](#bases-exponents-and-digits)
-- [The Binary Number System (Base 2)](#the-binary-number-system-base-2)
-  - [Binary Is Close to the Hardware of a Computer](#binary-is-close-to-the-hardware-of-a-computer)
-  - [The ASCII Standard](#the-ascii-standard)
-  - [1 Character = 1 Byte](#1-character--1-byte)
-- [The Hexademical Number System (Base 16)](#the-hexademical-number-system-base-16)
-  - [How to Convert Between Binary and Hexadecimal](#how-to-convert-between-binary-and-hexadecimal)
-    - [Binary to Hexadecimal](#binary-to-hexadecimal)
-    - [Hexadecimal to Binary](#hexadecimal-to-binary)
-  - [Real-World Application: Representing Colors with RGB/Hex](#real-world-application-representing-colors-with-rgbhex)
-    - [How Many Colors Are There?](#how-many-colors-are-there)
-    - [What Are 8-Bit Colors?](#what-are-8-bit-colors)
-- [Signed Binary Number System: Two's Complement](#signed-binary-number-system-twos-complement)
-  - [How Does Two's Complement Work?](#how-does-twos-complement-work)
-    - [The Intuitive Approach: What Does a Leading 1 Denote?](#the-intuitive-approach-what-does-a-leading-1-denote)
-    - [Two's Complement Shortcut: Flip the Bits and Add a 1](#twos-complement-shortcut-flip-the-bits-and-add-a-1)
-    - [How Many Signed Binary Numbers Are There?](#how-many-signed-binary-numbers-are-there)
-    - [What Is the Largest Signed 32-bit Integer?](#what-is-the-largest-signed-32-bit-integer)
-      - [Real-World Application: Video Game Currency](#real-world-application-video-game-currency)
-    - [What Is the Smallest Signed 32-bit Integer?](#what-is-the-smallest-signed-32-bit-integer)
-- [Basic Arithmetic in the Binary Number System](#basic-arithmetic-in-the-binary-number-system)
-  - [Adding Binary Numbers](#adding-binary-numbers)
-  - [Subtracting Binary Numbers](#subtracting-binary-numbers)
-  - [Multiplying Binary Numbers](#multiplying-binary-numbers)
-  - [Dividing Binary Numbers](#dividing-binary-numbers)
-  - [Integer Overflow and Underflow in Binary](#integer-overflow-and-underflow-in-binary)
-- [The Binary Number System: Additional Topics for Exploration](#the-binary-number-system-additional-topics-for-exploration)
+{% include toc.md %}
 
 ## What Is a Number System?
 

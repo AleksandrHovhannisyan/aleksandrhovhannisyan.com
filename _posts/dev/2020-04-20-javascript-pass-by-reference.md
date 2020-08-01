@@ -26,20 +26,7 @@ So why do so many people get this wrong? We're about to find out.
 
 If you'd like the TL;DR answer, go ahead and jump to [Passing Pointers ("References") by Value](#passing-pointers-references-by-value).
 
-## Table of Contents
-
-- [Table of Contents](#table-of-contents)
-- [Prerequisite Terminology: Arguments vs. Parameters](#prerequisite-terminology-arguments-vs-parameters)
-- [JavaScript Doesn't Pass by Reference](#javascript-doesnt-pass-by-reference)
-  - [What Are Object References in JavaScript?](#what-are-object-references-in-javascript)
-- ["True" References Are Aliases](#true-references-are-aliases)
-- ["Object References" Are Pointers](#object-references-are-pointers)
-  - [How Are Objects Stored in Memory?](#how-are-objects-stored-in-memory)
-- [Pass by Value vs. Pass by Reference](#pass-by-value-vs-pass-by-reference)
-  - [What Is Pass by Reference?](#what-is-pass-by-reference)
-  - [What Is Pass by Value?](#what-is-pass-by-value)
-  - [Passing Pointers ("References") by Value](#passing-pointers-references-by-value)
-- [Summary: JavaScript Is Not Pass by Reference](#summary-javascript-is-not-pass-by-reference)
+{% include toc.md %}
 
 ## Prerequisite Terminology: Arguments vs. Parameters
 

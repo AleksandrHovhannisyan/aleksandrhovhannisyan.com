@@ -207,6 +207,12 @@
         grid-template-columns: minmax(0, $page-max-width);
         row-gap: $paragraph-spacing;
         overflow-wrap: break-word;
+
+        #markdown-toc {
+            li:not(:last-child) {
+                margin-bottom: calc(#{$paragraph-spacing} / 2);
+            }
+        }
     
         p {
             margin: 0;
@@ -352,7 +358,7 @@
         ul,
         ol {
             @include transition(color);
-            padding-left: 40px;
+            padding-left: 2em;
         }
     
         blockquote {

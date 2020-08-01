@@ -21,24 +21,7 @@ They'll share some of the same underlying structure and logic, but I've split th
 
 Each one will include a CodePen demo with the full source code. The examples will show me opening just two modals on the same page to keep things simple, but you can still open more with the same code.
 
-## Table of Contents
-- [Table of Contents](#table-of-contents)
-- [Shared Code for Modals (Stacked + Side by Side)](#shared-code-for-modals-stacked--side-by-side)
-  - [Styling Our Modal Windows](#styling-our-modal-windows)
-- [Multiple Modals on One Page (Stacked)](#multiple-modals-on-one-page-stacked)
-  - [Stack 'Em Up](#stack-em-up)
-  - [Opening and Closing Stacked Modals](#opening-and-closing-stacked-modals)
-  - [Creating Event Listeners for Our Stacked Modals](#creating-event-listeners-for-our-stacked-modals)
-    - [1. Opening a Modal When Its Trigger Is Clicked](#1-opening-a-modal-when-its-trigger-is-clicked)
-    - [2. Closing a Stacked Modal by Clicking Off to the Side](#2-closing-a-stacked-modal-by-clicking-off-to-the-side)
-    - [3. Closing a Stacked Modal with the X Button](#3-closing-a-stacked-modal-with-the-x-button)
-    - [4. Closing a Stacked Modal with the Escape Key](#4-closing-a-stacked-modal-with-the-escape-key)
-- [Multiple Modals on One Page (Side by Side)](#multiple-modals-on-one-page-side-by-side)
-    - [1. Opening a Modal When Its Trigger Is Clicked](#1-opening-a-modal-when-its-trigger-is-clicked-1)
-    - [2. Closing a Particular Modal with Its X Button](#2-closing-a-particular-modal-with-its-x-button)
-    - [3. Closing All Modals by Clicking Off to the Side](#3-closing-all-modals-by-clicking-off-to-the-side)
-    - [4. Closing All Modals with the Escape Key](#4-closing-all-modals-with-the-escape-key)
-- [Wrap-up](#wrap-up)
+{% include toc.md %}
 
 ## Shared Code for Modals (Stacked + Side by Side)
 

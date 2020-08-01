@@ -12,30 +12,7 @@ In this guide, we'll take a look at everything you need to know about **browser 
 
 The only prerequisite is a basic understanding of how the web works. In particular, we'll be referring to things like HTTP requests, browsers, and servers. Let's dig in!
 
-<!-- omit in toc -->
-## Table of Contents
-
-- [How Does a Website Remember Who You Are?](#how-does-a-website-remember-who-you-are)
-- [What Is a Cookie?](#what-is-a-cookie)
-  - [Types of Cookies: Session vs. Permanent](#types-of-cookies-session-vs-permanent)
-    - [1. Session Cookies](#1-session-cookies)
-    - [2. Permanent Cookies](#2-permanent-cookies)
-- [How Do Cookies Get Set in a Browser?](#how-do-cookies-get-set-in-a-browser)
-  - [HTTP Request and Response Headers](#http-request-and-response-headers)
-  - [The `Set-Cookie` HTTP Response Header](#the-set-cookie-http-response-header)
-  - [Reading and Creating Cookies via JavaScript](#reading-and-creating-cookies-via-javascript)
-    - [HTTPOnly Cookies: Protecting Sensitive Data](#httponly-cookies-protecting-sensitive-data)
-- [The Same-Origin Policy and Session Hijacking](#the-same-origin-policy-and-session-hijacking)
-- [Why Do Websites Ask for My Permission to Store Cookies?](#why-do-websites-ask-for-my-permission-to-store-cookies)
-  - [How Advertising Cookies Work](#how-advertising-cookies-work)
-- [Where Are Cookies Stored on My Computer?](#where-are-cookies-stored-on-my-computer)
-  - [Chrome](#chrome)
-  - [Firefox](#firefox)
-  - [Microsoft Edge](#microsoft-edge)
-- [How Do I Clear My Cookies?](#how-do-i-clear-my-cookies)
-  - [What Happens if I Clear My Cookies?](#what-happens-if-i-clear-my-cookies)
-- [Alternatives to Cookies](#alternatives-to-cookies)
-- [Final Thoughts](#final-thoughts)
+{% include toc.md %}
 
 ## How Does a Website Remember Who You Are?
 
