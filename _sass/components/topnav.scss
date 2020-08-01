@@ -237,13 +237,13 @@
             position: static;
     
             .nav-item {
-                margin: 0 0 0 1.5em;
+                margin: 0 0 0 1em;
                 height: $nav-height;
                 display: flex;
                 align-items: center;
 
                 .nav-link {
-                    padding: 0.25em 0.5em;
+                    padding: 0.25em 0.8em;
                     display: inline;
                     margin: 0;
                 }
