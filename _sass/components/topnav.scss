@@ -146,6 +146,7 @@
             #active-nav-link, 
             .nav-link:hover, 
             .nav-link:focus {
+                color: white;
                 background-color: var(--nav-link-bg-color-hover);
             }
         }
