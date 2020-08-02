@@ -8,34 +8,33 @@
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="author" content="{{ site.author }}" />
-        <!-- For the contact form -->
         <meta name="referrer" content="origin" />
-        <!-- OG properties are for social platforms with previews for shared links -->
+        <!-- og: properties are for social media previews -->
         <meta property="og:title" content="{{ page.title }} | {{ site.title }}" />
         {% if page.is_post %}
-        {% assign thumbnail_ext = 'png' %}
-        {% if page.thumbnail_ext %}
-            {% assign thumbnail_ext = page.thumbnail_ext %}
-        {% endif %}
-        <meta property="og:image" content="{{ site.url }}/{{ page.img_path }}/{{ page.slug }}/thumbnail.{{ thumbnail_ext }}" />
-        {% else %}
-        <meta property="og:image" content="{{ site.url }}/assets/img/preview.png" />
+            {% assign thumbnail_ext = 'png' %}
+            {% if page.thumbnail_ext %}
+                {% assign thumbnail_ext = page.thumbnail_ext %}
+            {% endif %}
+            <meta property="og:image" content="{{ site.url }}/{{ page.img_path }}/{{ page.slug }}/thumbnail.{{ thumbnail_ext }}" />
+            {% else %}
+            <meta property="og:image" content="{{ site.url }}/assets/img/preview.png" />
         {% endif %}
         <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
         <meta property="og:url" content="{{ site.url }}" />
         {% if page.noindex %}
-        <!-- Prevent this page from showing up on search engines -->
-        <meta name="robots" content="noindex">
+            <!-- Prevent this page from showing up on search engines -->
+            <meta name="robots" content="noindex">
         {% endif %}
         <link rel="stylesheet" href="/assets/styles/main.css" />
         <link rel="icon" href="/favicon.png" type="image/x-icon" />
         {% if page.canonical_url %}
-        <link rel="canonical" href="{{ page.canonical_url }}" />
+            <link rel="canonical" href="{{ page.canonical_url }}" />
         {% endif %}
         {% if page.url == "/" %}
-        <title>{{ site.title }}: {{ page.title }}</title>
+            <title>{{ site.title }}: {{ page.title }}</title>
         {% else %}
-        <title>{{ page.title }} | {{ site.title }}</title>
+            <title>{{ page.title }} | {{ site.title }}</title>
         {% endif %}
         <!-- Load the user's last selected theme -->
         <script>
