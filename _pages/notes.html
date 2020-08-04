@@ -4,49 +4,20 @@ description: A collection of thoughts, discoveries, and code snippets.
 permalink: /notes/
 ---
 
-
-
 <article id="notes" class="section">
-    <h1 class="heading">Notes 'n Stuff</h1>
-    <p class="subtitle">A collection of thoughts, discoveries, and code snippets.</p>
-    {% assign notesByYear = site.notes | group_by_exp: "note", "note.date | date: '%Y'" %}
-    {% for year in notesByYear %}
-    <section class="notes-by-year section">
-        <h3 class="year heading">📅 {{ year.name }}</h3>
-        <div class="notes-board">
-            <ol class="notes-list">
-                {% assign notes = year.items | sort: 'date' | reverse %}
-                {% for note in notes %}
-                    <li class="note">
-                        <time datetime="{{ note.date | date: "%Y-%m-%d" }}" class="note-date">{{ note.date | date: "%m/%d/%Y" }}</time>
-                        <a href="{{ note.url }}">
-                            <h2 class="note-title">{{ note.title }}</h2>
-                            <p class="note-description">{{ note.description }}</p>
-                        </a>
-                    </li>
-                {% endfor %}
+    <div class="notes-board">
+        <ol class="notes-list">
+            {% assign notes = site.notes | sort: 'date' | reverse %}
+            {% for note in notes %}
                 <li class="note">
-                    <a href="#">
-                        <h2 class="note-title">Placeholder</h2>
-                        <p class="note-description">An awesome description goes here</p>
-                    </a>
+                    <h2 class="note-title">{{ note.title }}</h2>
+                    {% include meta.html content=note.content date=note.date %}
+                    <p class="note-description">{{ note.description | truncate: 160 }}</p>
+                    <a class="container-link" href="{{ note.url }}" aria-label="Read this note"></a>
                 </li>
-                <li class="note">
-                    <a href="#">
-                        <h2 class="note-title">Placeholder</h2>
-                        <p class="note-description">An awesome description goes here</p>
-                    </a>
-                </li>
-                <li class="note">
-                    <a href="#">
-                        <h2 class="note-title">Placeholder</h2>
-                        <p class="note-description">An awesome description goes here</p>
-                    </a>
-                </li>
-            </ol>
-        </div>
-    </section>
-    {% endfor %}
+            {% endfor %}
+        </ol>
+    </div>
 </article>
 
 <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
