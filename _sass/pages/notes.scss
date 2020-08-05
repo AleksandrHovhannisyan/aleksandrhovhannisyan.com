@@ -1,4 +1,5 @@
 @import 'colors';
+@import 'fonts';
 @import 'mixins';
 @import 'settings';
 
@@ -30,7 +31,6 @@
 }
 
 .note {
-    --cursive-font: 'Reenie Beanie', cursive;
     height: min-content;
     transform-style: preserve-3d;
     background: linear-gradient(180deg, #ffc, 90%, #f1f1dd);
@@ -112,7 +112,7 @@
 
     .post-meta {
         font-size: 1.125em;
-        font-family: var(--cursive-font);
+        font-family: $font-family-cursive;
         font-weight: map-get($font-weights, "normal");
         color: #3e464d;
 
@@ -129,7 +129,7 @@
         color: #3e464d;
         margin: 0;
         font-size: 1.3em;
-        font-family: var(--cursive-font);
+        font-family: $font-family-cursive;
         font-weight: map-get($font-weights, "normal");
     }
 }
