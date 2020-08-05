@@ -11,7 +11,7 @@ permalink: /notes/
             {% for note in notes %}
                 <li class="note">
                     <h2 class="note-title">{{ note.title }}</h2>
-                    {% include meta.html class="note-meta" content=note.content date=note.date %}
+                    <time class="note-date" datetime="{{ note.date | date: "%Y-%m-%d" }}">{{ note.date | date: "%b %-d, %Y" }}</time>
                     <p class="note-description">{{ note.description | truncate: 160 }}</p>
                     <a class="container-link" href="{{ note.url }}" aria-label="Read this note"></a>
                 </li>

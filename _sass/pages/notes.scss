@@ -3,6 +3,8 @@
 @import 'mixins';
 @import 'settings';
 
+$note-text-color: #3e464d;
+
 #notes {
     grid-column: 1 / -1 !important;
     margin-top: 0;
@@ -37,7 +39,7 @@
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
     position: relative;
     justify-self: center;
-    padding: 1.8em;
+    padding: 2.5em 1.8em 1.8em 1.8em;
     @include transition(transform, top, box-shadow, border-radius);
 
     &::after {
@@ -102,34 +104,29 @@
     &:nth-child(6n) {
         background: linear-gradient(180deg, #f1f2f2, 90%, #faffff);
     }
+}
 
-    .note-title {
-        font-weight: map-get($map: $font-weights, $key: "bolder");
-        font-size: 1.125em;
-        font-family: cursive;
-        color: #384950;
-    }
+.note-title {
+    font-weight: map-get($map: $font-weights, $key: "bolder");
+    font-size: 1.125em;
+    font-family: cursive;
+    color: #384950;
+    margin-bottom: 0.8em;
+}
 
-    .note-meta {
-        font-size: 1.125em;
-        font-family: $font-family-cursive;
-        font-weight: map-get($font-weights, "normal");
-        
-        * {
-            color: #3e464d;
-            fill: #3e464d;
-        }
+.note-date {
+    position: absolute;
+    top: 0.5em;
+    right: 1em;
+    color: $note-text-color;
+    font-family: $font-family-cursive;
+    font-size: 1.125em;
+}
 
-        .meta {
-            margin: 0 0.5em 0.5em 0;
-        }
-    }
-
-    .note-description {
-        color: #3e464d;
-        margin: 0;
-        font-size: 1.3em;
-        font-family: $font-family-cursive;
-        font-weight: map-get($font-weights, "normal");
-    }
+.note-description {
+    color: $note-text-color;
+    margin: 0;
+    font-size: 1.3em;
+    font-family: $font-family-cursive;
+    font-weight: map-get($font-weights, "normal");
 }
