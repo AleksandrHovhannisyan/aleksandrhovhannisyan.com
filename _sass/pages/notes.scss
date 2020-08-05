@@ -110,18 +110,18 @@
         color: #384950;
     }
 
-    .post-meta {
+    .note-meta {
         font-size: 1.125em;
         font-family: $font-family-cursive;
         font-weight: map-get($font-weights, "normal");
-        color: #3e464d;
+        
+        * {
+            color: #3e464d;
+            fill: #3e464d;
+        }
 
         .meta {
             margin: 0 0.5em 0.5em 0;
-        }
-
-        svg {
-            fill: #3e464d !important;
         }
     }
 

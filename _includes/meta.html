@@ -1,28 +1,35 @@
-{% assign minutes = include.content | number_of_words | divided_by: 250 %}
+{% assign reading_length = include.content | number_of_words | divided_by: 250 %}
+{% assign showProfilePhoto = include.showProfilePhoto %}
+{% assign date = include.date %}
+{% assign last_updated = include.last_updated %}
+{% assign tags = include.tags %}
+{% assign class = include.class %}
 {% if minutes == 0 %}{% assign minutes = 1 %}{% endif %}
-<div class="post-meta">
+<ul class="post-meta{% if class %} {{ class }}{% endif %}">
     {% if include.showProfilePhoto %}
         {% include picture.html path="/assets/img" img="profile-photo" ext="png" alt="" class="meta author-photo" clickable=false %}
     {% endif %}
-    <div class="meta post-date-published">
+    <li class="meta post-date-published">
         {% include icon.html icon="calendar" class="meta-icon" %}
         <time datetime="{{ include.date | date: "%Y-%m-%d" }}">{{ include.date | date: "%b %-d, %Y" }}</time>
-    </div>
+    </li>
     {% if include.last_updated %}
-    <div class="meta post-date-updated">
+    <li class="meta post-date-updated">
         {% include icon.html icon="info" class="meta-icon" %}
         <time datetime="{{ include.last_updated | date: "%Y-%m-%d" }}">Updated: {{ include.last_updated | date: "%b %-d, %Y" }}</time>
-    </div>
+    </li>
     {% endif %}
-    <div class="meta post-reading-length">
+    <li class="meta post-reading-length">
         {% include icon.html icon="clock" class="meta-icon" %}
-        <span>{{ minutes }} min read</span>
-    </div>
+        <span>{{ reading_length }} min read</span>
+    </li>
     {% if include.tags %}
-    <ul class="meta post-tags" aria-label="Tags belonging to this blog post.">
-        {% for tag in include.tags %}
-        <li><a href="/tag/{{ tag }}" class="tag post-tag">{{ tag }}</a></li>
-        {% endfor %}
-    </ul>
+    <li>
+        <ul class="meta post-tags" aria-label="Tags belonging to this blog post.">
+            {% for tag in include.tags %}
+            <li><a href="/tag/{{ tag }}" class="tag post-tag">{{ tag }}</a></li>
+            {% endfor %}
+        </ul>
+    </li>
     {% endif %}
-</div>
+</ul>

@@ -144,6 +144,8 @@
     display: flex;
     flex-wrap: wrap;
     font-size: 0.8em;
+    list-style: none;
+    margin: 0;
 
     .author-photo {
         height: 2.5rem;
@@ -174,6 +176,7 @@
         margin: 0;
         padding: 0;
         list-style: none;
+        height: 100%;
 
         li {
             margin: 0;
