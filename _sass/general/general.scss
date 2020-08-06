@@ -128,11 +128,6 @@ h1 {
     font-size: 2em;
 }
 
-.heading-with-image {
-    font-size: 1.5em;
-    scroll-margin-top: 84px;
-}
-
 .underlined-link {
     @include underlinedLink;
 }
@@ -151,6 +146,8 @@ p {
 }
 
 .heading-with-image {
+    font-size: 1.5em;
+    scroll-margin-top: $nav-height + 20px;
     align-items: center;
     display: flex;
     margin-bottom: 40px;
@@ -173,36 +170,10 @@ p {
     }
 }
 
-hr {
-    border: 1.2px solid rgb(145, 145, 145);
-    margin-bottom: 8px;
-    margin-top: 8px;
-}
-
 li {
     ol, ul {
         margin-top: calc(#{$paragraph-spacing} / 2);
         margin-bottom: 0 !important;
-    }
-}
-
-.lazy-loaded-picture {
-    position: relative;
-    display: block;
-
-    .placeholder {
-        position: relative;
-        width: 100%;
-        transform: scale(1);
-    }
-
-    .real-image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 1;
-        width: 100%;
-        height: 100%;
     }
 }
 

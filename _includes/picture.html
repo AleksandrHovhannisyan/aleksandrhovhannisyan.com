@@ -8,7 +8,7 @@
     {% assign path = include.path %}
 {% endif %}
 <picture 
-class="lazy-loaded-picture{% unless clickable == false %} clickable-picture{% endunless %}{% if class %} {{ class }}{% endif %}" 
+class="lazily-loaded-picture{% unless clickable == false %} clickable-picture{% endunless %}{% if class %} {{ class }}{% endif %}" 
 {% if id %}id="{{ id }}"{% endif %} {% unless clickable == false %}data-clickable{% endunless %}>
     <source 
         srcset="{{ path }}/{{ img }}-placeholder.webp" 
