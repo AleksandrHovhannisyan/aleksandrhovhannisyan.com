@@ -7,4 +7,5 @@
 {% if include.path %}
     {% assign path = include.path %}
 {% endif %}
-{% include picture.html img="thumbnail" ext=thumbnail_ext alt="" path=path class="post-thumbnail" clickable=false %}
+{% assign class = include.class %}
+{% include picture.html img="thumbnail" ext=thumbnail_ext alt="" path=path class="post-thumbnail" clickable=false class=class %}

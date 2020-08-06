@@ -8,103 +8,101 @@
 
 .blog-post-previews {
     margin-top: 75px;
+}
 
-    .tag-navigation {
-        align-items: center;
-        display: flex;
-        flex-wrap: wrap;
-        list-style-type: none;
-        margin-bottom: 50px;
+.tag-navigation {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin-bottom: 50px;
 
-        li {
-            margin-bottom: 0;
-        }
+    li {
+        margin-bottom: 0;
+    }
 
-        .post-tag {
-            margin-bottom: 1em;
-            margin-right: 1em;
-            padding: 0.2em 0.8em;
-            height: 2.2em;
-        }
+    .post-tag {
+        margin-bottom: 1em;
+        margin-right: 1em;
+        padding: 0.2em 0.8em;
+        height: 2.2em;
     }
 }
 
 .post-preview-grid {
     @include responsiveGrid($mobileMin: 255px, $desktopMin: 20em);
     list-style-type: none;
+}
 
-    .post-preview {
-        --thumbnail-height: 8rem;
-        display: block;
-        padding: 0;
-        margin: 0;
+.post-preview {
+    --thumbnail-height: 8rem;
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+.post-preview-body {
+    padding: var(--card-padding);
+    // - 0.875em because each .post-tag has a margin-bottom of 1em but a font size of 0.875em
+    padding-bottom: calc(var(--card-padding) - 0.875em);
+}
+
+.post-preview-thumbnail {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: var(--thumbnail-height);
     
-        .post-preview-body {
-            padding: var(--card-padding);
-            // - 0.875em because each .post-tag has a margin-bottom of 1em but a font size of 0.875em
-            padding-bottom: calc(var(--card-padding) - 0.875em);
-        }
-    
-        .post-thumbnail {
-            position: relative;
-            display: block;
-            width: 100%;
-            height: var(--thumbnail-height);
-            
-            img {
-                border-top-left-radius: 5px;
-                border-top-right-radius: 5px;
-                height: var(--thumbnail-height);
-                width: 100%;
-                object-fit: cover;
-                object-position: center;
-                position: absolute;
-    
-                html.dark & {
-                    filter: brightness(.8) contrast(1.2);
-                }
-            }
-        }
-    
-        .post-title {
-            //background-color: rgba(50, 65, 78, 0.8);
-            //@include themed(background-color, rgba(50, 65, 78, 0.8), rgba(93, 87, 73, 0.8));
-            background-color: var(--post-title-bg-color);
-            color: white;
-            text-shadow: 2px 2px black;
-            padding: 0.5em 1.5em;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            font-size: 1em;
-            min-height: 4rem;
-            @include transition(background-color);
-        }
-    
-        .post-description {
-            margin-bottom: 1em;
-        }
-    
-        .post-tags {
-            display: flex;
-            flex-wrap: wrap;
-            font-size: 0.875em;
-            z-index: 2;
-            position: relative;
-            list-style-type: none;
-            margin: 0;
-    
-            li {
-                margin: 0;
-            }
-            
-            .post-tag {
-                margin-bottom: 1em;
-                margin-right: 0.625em;
-                padding: 0.4em 0.8em;
-            }
+    img {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        height: var(--thumbnail-height);
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        position: absolute;
+
+        html.dark & {
+            filter: brightness(.8) contrast(1.2);
         }
     }
+}
+
+.post-preview-title {
+    background-color: var(--post-title-bg-color);
+    color: white;
+    text-shadow: 2px 2px black;
+    padding: 0.5em 1.5em;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    min-height: 4rem;
+    @include transition(background-color);
+}
+
+.post-preview-description {
+    margin-bottom: 1em;
+}
+
+.post-preview-tags {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.875em;
+    z-index: 2;
+    position: relative;
+    list-style-type: none;
+    margin: 0;
+
+    li {
+        margin: 0;
+    }
+}
+
+.post-preview-tag {
+    margin-bottom: 1em;
+    margin-right: 0.625em;
+    padding: 0.4em 0.8em;
 }
 
 .post-preview-placeholder {
