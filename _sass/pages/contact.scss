@@ -13,11 +13,15 @@
     grid-template-areas: "form"
                          "socials";
     grid-template-rows: auto;
+
+    @media only screen and (min-width: 800px) {
+        grid-template-areas: "form form form socials";
+    }
 }
 
-form {
+.contact-form {
     $form-max-width: 475px;
-    
+
     background-color: var(--form-bg-color);
     border-radius: 2px;
     box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.25);
@@ -40,39 +44,6 @@ form {
         width: 100%;
     }
 
-    .input {
-        background-color: var(--input-bg-color);
-        border: solid 1px var(--input-border-color);
-        border-radius: 2px;
-        box-shadow: var(--input-box-shadow);
-        color: var(--text-color-emphasis);
-        height: 2em;
-        margin-bottom: 0.75em;
-        padding: 0.25em 0.5em;
-        width: 100%;
-        @include transition(background-color, border-color, box-shadow, color);
-
-        &:focus {
-            outline: none;
-            border-color: var(--input-border-color-focus);
-            box-shadow: var(--input-box-shadow-focus);
-        }
-    }
-
-    label {
-        color: var(--text-color-emphasis);
-        display: block;
-        font-weight: map-get($font-weights, "bold");
-        margin-bottom: 0.3125em;
-        @include transition(color);
-
-        &.required::after {
-            color: var(--input-required-asterisk-color);
-            content: " *";
-            @include transition(color);
-        }
-    }
-
     .button {
         border-radius: 2px;
         height: 2.5em;
@@ -81,13 +52,7 @@ form {
     }
 }
 
-@media only screen and (min-width: 800px) {
-    #contact-information {
-        grid-template-areas: "form form form socials";
-    }
-}
-
-/* Spammers begone */
+// Spammers begone
 input.honeypot {
     display: none;
 }
@@ -101,55 +66,55 @@ input.honeypot {
     margin-top: 60px;
     row-gap: 50px;
     list-style-type: none;
+}
 
-    .social-network {
-        margin: 0;
+.social-network {
+    margin: 0;
+}
+
+.social-network-link {
+    height: 100%;
+    border-radius: 2px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    @include transition(background-color);
+
+    &:focus, &:hover {
+        background-color: var(--hover-bg-color);
+        cursor: pointer;
     }
 
-    .social-network-link {
-        height: 100%;
-        border-radius: 2px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        @include transition(background-color);
-    
-        &:focus, &:hover {
-            background-color: var(--hover-bg-color);
-            cursor: pointer;
-        }
-    
-        .network-name {
-            color: var(--text-color-normal);
-            font-weight: map-get($font-weights, "normal");
-            align-self: center;
-            grid-column: 2;
-            @include transition(color);
-        }
-    }
-
-    .network-icon {
+    .network-name {
+        color: var(--text-color-normal);
+        font-weight: map-get($font-weights, "normal");
         align-self: center;
-        justify-self: center;
-        width: 35px;
+        grid-column: 2;
+        @include transition(color);
     }
+}
 
-    .linkedin-square {
-        background: white;
-        /* Nice little hack for getting a perfect fill */
-        border-radius: 4px;
-        fill: $brand-linkedin;
-    }
-    
-    .github {
-        @include transition(fill);
-        @include themed(fill, $brand-github, $brand-github-alt);
-    }
-    
-    .stack-exchange {
-        fill: $brand-stack-exchange;
-    }
-    
-    .upwork {
-        fill: $brand-upwork;
-    }
+.network-icon {
+    align-self: center;
+    justify-self: center;
+    width: 35px;
+}
+
+.linkedin-square {
+    background: white;
+    /* Nice little hack for getting a perfect fill */
+    border-radius: 4px;
+    fill: $brand-linkedin;
+}
+
+.github {
+    @include transition(fill);
+    @include themed(fill, $brand-github, $brand-github-alt);
+}
+
+.stack-exchange {
+    fill: $brand-stack-exchange;
+}
+
+.upwork {
+    fill: $brand-upwork;
 }

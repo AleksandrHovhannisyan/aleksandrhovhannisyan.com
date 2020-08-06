@@ -220,3 +220,36 @@ li {
         margin-bottom: calc(#{$paragraph-spacing} / 2);
     }
 }
+
+.input {
+    background-color: var(--input-bg-color);
+    border: solid 1px var(--input-border-color);
+    border-radius: 2px;
+    box-shadow: var(--input-box-shadow);
+    color: var(--text-color-emphasis);
+    height: 2em;
+    margin-bottom: 0.75em;
+    padding: 0.25em 0.5em;
+    width: 100%;
+    @include transition(background-color, border-color, box-shadow, color);
+
+    &:focus {
+        outline: none;
+        border-color: var(--input-border-color-focus);
+        box-shadow: var(--input-box-shadow-focus);
+    }
+}
+
+label {
+    color: var(--text-color-emphasis);
+    display: block;
+    font-weight: map-get($font-weights, "bold");
+    margin-bottom: 0.3125em;
+    @include transition(color);
+
+    &.required::after {
+        color: var(--input-required-asterisk-color);
+        content: " *";
+        @include transition(color);
+    }
+}
