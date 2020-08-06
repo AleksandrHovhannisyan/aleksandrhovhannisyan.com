@@ -1,4 +1,4 @@
-/* VS Code Dark Theme, modified for use with Rouge. */
+// VS Code Dark Theme, modified for use with Rouge. 
 @import 'colors';
 
 .highlight {
@@ -15,7 +15,7 @@
     color: $code-text;
   }
 
-  /* Base Style */
+  // Base Style 
   pre {
     background-color: $code-background;
     color: transparent;
@@ -27,58 +27,58 @@
     }
   }
 
-  /* Comments */
+  // Comments 
   .c, .cm, .cp, .c1, .cs {
     font-style: italic;
     @include selectionResistantColor($code-comment);
   }
 
-  /* Functions */
+  // Functions 
   .nf, .nx {
     @include selectionResistantColor($code-function);
   }
 
-  /* Attributes */
+  // Attributes 
   .na {
     @include selectionResistantColor($code-attribute);
   }
 
-  /* Variables */
+  // Variables 
   .bp, .nv, .vc, .vg, .vi, .err {
     @include selectionResistantColor($code-variable);
   }
 
-  /* Numbers */
+  // Numbers 
   .m, .mf, .mh, .mi, .mo, .il {
     @include selectionResistantColor($code-number);
   }
 
-  /* Keywords */
+  // Keywords 
   .k, .kd, .kn, .kr, .kt {
     @include selectionResistantColor($code-keyword);
   }
 
-  /* Constants */
+  // Constants 
   .kc {
     @include selectionResistantColor($code-constant);
   }
 
-  /* Pseudo */
+  // Pseudo 
   .kp, .nb {
     @include selectionResistantColor($code-support);
   }
 
-  /* Strings */
+  // Strings 
   .s, .sb, .sc, .s1, .s2 {
     @include selectionResistantColor($code-string);
   }
 
-  /* Classes/tags */
+  // Classes/tags 
   .nc, .nt, .nl {
     @include selectionResistantColor($code-tag);
   }
 
-  /* Punctuation */
+  // Punctuation 
   .p {
     @include selectionResistantColor($code-punctuation);
   }
@@ -87,7 +87,7 @@
     @include selectionResistantColor($code-operator);
   }
 
-  /* Operators */
+  // Operators 
   .ow {
     @include selectionResistantColor($code-operator-word);
   }
