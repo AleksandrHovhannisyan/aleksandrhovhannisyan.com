@@ -168,27 +168,27 @@
             width: 1em;
         }
     }
+}
 
-    .post-tags {
-        flex-wrap: wrap;
+.post-meta-tags {
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: 100%;
+
+    li {
         margin: 0;
-        padding: 0;
-        list-style: none;
-        height: 100%;
-
-        li {
-            margin: 0;
-        }
-
-        .post-tag {
-            display: flex;
-            align-items: center;
-            font-style: normal;
-            margin-bottom: 1em;
-            margin-right: 0.625em;
-            padding: 0.4em 0.8em;
-        }
     }
+}
+
+.post-meta-tag {
+    display: flex;
+    align-items: center;
+    font-style: normal;
+    margin-bottom: 1em;
+    margin-right: 0.625em;
+    padding: 0.4em 0.8em;
 }
 
 #post {
@@ -197,7 +197,6 @@
     }
 
     @include headings {
-        // 20px more than the navbar
         scroll-margin-top: $nav-height + 20px;
         margin-top: 1.5em;
     }

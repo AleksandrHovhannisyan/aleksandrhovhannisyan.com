@@ -25,9 +25,9 @@
     </li>
     {% if include.tags %}
     <li>
-        <ul class="meta post-tags" aria-label="Tags belonging to this blog post.">
+        <ul class="meta post-meta-tags" aria-label="Tags belonging to this blog post.">
             {% for tag in include.tags %}
-            <li><a href="/tag/{{ tag }}" class="tag post-tag">{{ tag }}</a></li>
+            <li><a href="/tag/{{ tag }}" class="tag post-meta-tag">{{ tag }}</a></li>
             {% endfor %}
         </ul>
     </li>
