@@ -16,14 +16,13 @@ $note-text-color: #3e464d;
     background-color: #b7814a;
     background-image: url("/assets/img/cardboard.png");
     box-shadow: inset 0 2px 4px 0px rgba(0, 0, 0, 0.15);
-    padding: 3em 0;
     @include centered;
 }
 
 .notes-list {
     grid-column: 2;
     list-style: none;
-    padding: 1em;
+    padding: 3em 1em 3em 1em;
     position: relative;
     z-index: 1;
     display: grid;
