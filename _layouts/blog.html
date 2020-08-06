@@ -55,7 +55,7 @@ layout: default
           {% if pagePath == trailPath %}aria-current="page"{% endif %}
           title="{% if pagePath == trailPath %}Page {{ trail.num }}{% else %}Go to page {{ trail.num }}{% endif %}"
           aria-label="{% if pagePath == trailPath %}Viewing page {{ trail.num }} of {{ totalPages }}{% else %}Go to page {{ trail.num }}{% endif %}"
-          class="page{% if pagePath == trailPath %} active-page{% endif %}"
+          class="pagination-page{% if pagePath == trailPath %} pagination-page-current{% endif %}"
         >
         {{ trail.num }}
         </a>

@@ -120,18 +120,18 @@
     display: flex;
     justify-content: flex-end;
     list-style-type: none;
+}
 
-    .page {
-        @extend .tag;
-        margin-bottom: 1em;
-        margin-right: 0.625em;
-        padding: 0.4em 0.8em;
-        font-size: 0.875em;
-    }
+.pagination-page {
+    @extend .tag;
+    margin-bottom: 1em;
+    margin-right: 0.625em;
+    padding: 0.4em 0.8em;
+    font-size: 0.875em;
+}
 
-    .active-page {
-        @extend .active-tag;
-    }
+.pagination-page-current {
+    @extend .active-tag;
 }
 
 .post-title {
@@ -159,14 +159,14 @@
         align-items: center;
         margin: 0 1em 1em 0;
         @include transition(color);
+    }
 
-        .meta-icon {
-            @include transition(fill);
-            fill: var(--text-color-normal);
-            height: 1em;
-            margin-right: 5px;
-            width: 1em;
-        }
+    .meta-icon {
+        @include transition(fill);
+        fill: var(--text-color-normal);
+        height: 1em;
+        margin-right: 5px;
+        width: 1em;
     }
 }
 

@@ -7,7 +7,9 @@
 {% if minutes == 0 %}{% assign minutes = 1 %}{% endif %}
 <ul class="post-meta{% if class %} {{ class }}{% endif %}">
     {% if include.showProfilePhoto %}
-        {% include picture.html path="/assets/img" img="profile-photo" ext="png" alt="" class="meta author-photo" clickable=false %}
+        <li>
+            {% include picture.html path="/assets/img" img="profile-photo" ext="png" alt="" class="meta author-photo" clickable=false %}
+        </li>
     {% endif %}
     <li class="meta post-date-published">
         {% include icon.html icon="calendar" class="meta-icon" %}
