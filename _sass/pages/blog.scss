@@ -192,353 +192,314 @@
 }
 
 #post {
-    .post-header {
-        margin-bottom: $paragraph-spacing;
-    }
-
     @include headings {
         scroll-margin-top: $nav-height + 20px;
         margin-top: 1.5em;
     }
+}
 
-    .post-content {
-        // Mainly using CSS grid here for consistent spacing between elements via row gap
-        display: grid;
-        grid-template-columns: minmax(0, $page-max-width);
-        row-gap: $paragraph-spacing;
-        overflow-wrap: break-word;
+.post-header {
+    margin-bottom: $paragraph-spacing;
+}
 
-        #markdown-toc {
-            li:not(:last-child) {
-                margin-bottom: calc(#{$paragraph-spacing} / 2);
-            }
+.post-content {
+    display: grid;
+    grid-template-columns: minmax(0, $page-max-width);
+    row-gap: $paragraph-spacing;
+    overflow-wrap: break-word;
+
+    #markdown-toc {
+        li:not(:last-child) {
+            margin-bottom: calc(#{$paragraph-spacing} / 2);
         }
+    }
+
+    p {
+        margin: 0;
+    }
+
+    a:not(.button) {
+        @include underlinedLink;
+    }
     
-        p {
-            margin: 0;
-        }
-    
-        a:not(.button) {
-            @include underlinedLink;
+    figure {
+        figcaption {
+            font-size: 0.875em;
+            font-style: italic;
+            text-align: center;
+            @include transition(color);
         }
 
-        .linked-heading {
-            position: relative;
-    
-            .heading-anchor-wrapper {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                position: absolute;
-                width: 1em;
-                top: 0;
-                left: 0;
-                bottom: 0;
-                transform: translateX(-100%);
-    
-                &:hover {
-                    .heading-anchor {
-                        visibility: visible;
-                        opacity: 1;
-                    }
-                }
-            }
-    
-            &:hover {
-                .heading-anchor {
-                    visibility: visible;
-                    opacity: 1;
-                }
-            }
-    
-            .heading-anchor {
-                visibility: hidden;
-                opacity: 0;
-                display: flex;
-                margin-left: 4px;
-                @include transition(visibility, opacity, border, color);
-            }
-        }
-        
-        figure {
-            figcaption {
-                font-size: 0.875em;
-                font-style: italic;
-                text-align: center;
-                @include transition(color);
-            }
-    
-            picture {
-                margin-top: 0;
-                margin-bottom: 1em;
-            }
-        }
-    
-        figure,
         picture {
-            align-items: center;
-            display: flex;
-            flex-direction: column;
+            margin-top: 0;
+            margin-bottom: 1em;
+        }
+    }
+
+    figure,
+    picture {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    img,
+    iframe,
+    .pro-con-table {
+        max-width: 100%;
+    }
+
+    img {
+        border-radius: 5px;
+        max-width: 100%;
+    }
+
+    blockquote,	
+    figure,	
+    picture:not(.author-photo),	
+    iframe,	
+    table,
+    div.highlighter-rouge {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
+
+    // Latex (Katex)
+    .katex {
+        font-size: 1.1em;
+    }
+
+    .inline-equation {
+        white-space: normal;
+    }
+
+    .block-equation {
+        text-align: center;
+        @include transition(color);
+        
+        .katex {
+            display: inline-block;
+            white-space: nowrap;
+            max-width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: 0.5em;
             width: 100%;
         }
-    
-        img,
-        iframe,
-        .pro-con-table {
-            max-width: 100%;
-        }
-    
-        img {
-            border-radius: 5px;
-            max-width: 100%;
-        }
-    
-        blockquote,	
-        figure,	
-        picture:not(.author-photo),	
-        iframe,	
-        table,
-        div.highlighter-rouge {
+
+        .base {
             margin-top: 0.5em;
-            margin-bottom: 0.5em;
         }
-    
-        /* Latex (Katex) */
-        .katex {
-            font-size: 1.1em;
-        }
-    
-        .inline-equation {
-            white-space: normal;
-        }
-    
-        .block-equation {
-            text-align: center;
-            @include transition(color);
+    }
+
+    // The first block-level equation after anything that's not itself a block-level equation
+    *:not(.block-equation) + .block-equation {
+        // This 1.5em + 0.5em margin top from the .base above = 2em total
+        margin-top: 1.5em;
+    }
+
+    // Any element coming after a block-level group of equations
+    .block-equation + *:not(.block-equation) {
+        // Need to match the 2em we got above. We have 0.5em padding bottom on .katex
+        // already, so we need 1.5em here.
+        margin-top: 1.5em;
+    }
+
+    ol li::marker {
+        @include transition(color);
+        color: var(--text-color-emphasis);
+        font-weight: map-get($font-weights, "bold");
+        margin-right: 5px;
+    }
+
+    ul,
+    ol {
+        @include transition(color);
+        padding-left: 2em;
+    }
+
+    blockquote {
+        background: var(--blockquote-bg-color);
+        border-left: 4px solid #6b6a6a;
+        margin-left: 1.2rem;
+        padding: 0.5em 1.2em;
+        @include transition(color, background-color);
+
+        p {
+            color: var(--blockquote-text-color);
             
-            .katex {
-                display: inline-block;
-                white-space: nowrap;
-                max-width: 100%;
-                overflow-x: auto;
-                overflow-y: hidden;
-                padding-bottom: 0.5em;
-                width: 100%;
-            }
-    
-            .base {
-                margin-top: 0.5em;
+            &:not(:last-child) {
+                margin-bottom: $paragraph-spacing;
             }
         }
-    
-        // The first block-level equation after anything that's not itself a block-level equation
-        *:not(.block-equation) + .block-equation {
-            // This 1.5em + 0.5em margin top from the .base above = 2em total
-            margin-top: 1.5em;
-        }
-    
-        // Any element coming after a block-level group of equations
-        .block-equation + *:not(.block-equation) {
-            // Need to match the 2em we got above. We have 0.5em padding bottom on .katex
-            // already, so we need 1.5em here.
-            margin-top: 1.5em;
-        }
-    
-        ol li::marker {
-            @include transition(color);
-            color: var(--text-color-emphasis);
-            font-weight: map-get($font-weights, "bold");
-            margin-right: 5px;
-        }
-    
-        ul,
-        ol {
-            @include transition(color);
-            padding-left: 2em;
-        }
-    
-        blockquote {
-            background: var(--blockquote-bg-color);
-            border-left: 4px solid #6b6a6a;
-            margin-left: 1.2rem;
-            padding: 0.5em 1.2em;
-            @include transition(color, background-color);
-    
-            p {
-                color: var(--blockquote-text-color);
-                
-                &:not(:last-child) {
-                    margin-bottom: $paragraph-spacing;
-                }
+    }
+
+    div.highlighter-rouge {
+        border-radius: 5px;
+        box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.4);
+
+        & > div.highlight {
+            // 20px bottom + 10px from pre.highlight = 30px (see below)
+            padding: 30px 30px 20px 30px;
+
+            pre.highlight {
+                // Spacing between horizontal bar and the code, whenever we overflow horizontally
+                padding-bottom: 10px;
             }
         }
-    
-        .code-header {
-            display: flex;
-            background-color: #3b3b3b;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-            box-shadow: 0 3px 3px 0px rgba(0, 0, 0, 0.3);
-            flex-wrap: wrap;
-            justify-content: flex-end;
-            padding: 12px 20px;
-            margin-bottom: calc(-1 * #{$paragraph-spacing} + -1px);
-            margin-top: 0.5em;
-            z-index: 2;
-            
-            .file-name-container {
-                display: flex;
-                align-items: center;
-                flex: 2;
-                justify-content: flex-start;
-            }
-    
-            .file-name {
-                color: #bcbcbc;
-                font-size: 1rem;
-                font-weight: map-get($font-weights, "normal");
-                margin: 0;
-                word-break: break-all;
-                @include transition(color);
-    
-                &::before {
-                    content: "📂";
-                    margin-right: 5px;
-                }
-            }
-    
-            .copy-code-container {
-                display: flex;
-                flex: 1;
-                justify-content: flex-end;
-            }
-    
-            .copy-code-button {
-                border: none;
-                align-items: center;
-                cursor: pointer;
-                display: flex;
-                font-size: 1rem;
-                background-color: #616161;
-                color: #e7e7e7;
-                padding: 0.4em 0.5em;
-                border-radius: 5px;
-                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-                top: 0;
-                position: relative;
-                @include transition(color, background-color);
-    
-                &::before {
-                    content: "Copy";
-                }
-    
-                &::after {
-                    margin-left: 4px;
-                    content: "📋";
-                    width: 1em;
-                }
-    
-                &:focus, 
-                &:hover {
-                    color: black;
-                    background-color: #adadad;
-                }
-    
-                &:active {
-                    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
-                    top: 2px;
-                }
-    
-                &.copied {
-                    &::before {
-                        content: "Copied!";
-                    }
-    
-                    &::after {
-                        content: "✔️";
-                    }
-                }
-            }
-    
-            // Code blocks that have a header
-            & + .highlighter-rouge {
-                margin-top: 0;
-    
-                // If we don't do this, the top-left and top-right border radii will be visible
-                & .highlight {
-                    border-top-left-radius: 0;
-                    border-top-right-radius: 0;
-                }
-            }
+
+        code {
+            padding: 0;
         }
-    
-        div.highlighter-rouge {
-            border-radius: 5px;
-            box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.4);
-    
-            & > div.highlight {
-                // 20px bottom + 10px from pre.highlight = 30px (see below)
-                padding: 30px 30px 20px 30px;
-    
-                pre.highlight {
-                    // Spacing between horizontal bar and the code, whenever we overflow horizontally
-                    padding-bottom: 10px;
-                }
-            }
-    
-            code {
-                padding: 0;
-            }
+    }
+
+    .spoiler {    
+        &,
+        * {
+            background-color: var(--spoiler-bg-color);
+            color: var(--spoiler-bg-color);
         }
-    
-        .spoiler {    
+
+        margin-bottom: 1px;
+
+        margin-top: 1px;
+        @include transition(color, background-color);
+
+        &:hover {
+
             &,
             * {
-                background-color: var(--spoiler-bg-color);
-                color: var(--spoiler-bg-color);
+                background-color: transparent;
+                color: var(--blockquote-text-color);
             }
-    
-            margin-bottom: 1px;
-    
-            margin-top: 1px;
-            @include transition(color, background-color);
-    
-            &:hover {
-    
-                &,
-                * {
-                    background-color: transparent;
-                    color: var(--blockquote-text-color);
-                }
-    
-                code {
-                    background-color: var(--inline-code-bg-color);
-                    color: var(--inline-code-text-color);
-                }
+
+            code {
+                background-color: var(--inline-code-bg-color);
+                color: var(--inline-code-text-color);
             }
         }
-    
-        .pro-con-table {
-            border-radius: 5px;
-            border: solid 5px var(--blockquote-bg-color);
-            color: var(--blockquote-text-color);
-            @include transition(color, border, background-color);
-            table-layout: fixed;
-            text-align: center;
-            border-spacing: 0;
-    
-            th {
-                background-color: var(--blockquote-bg-color);
-                @include transition(background-color);
-            }
-    
-            td {
-                width: 50%;
-            }
-    
-            th, td {
-                padding: 20px;
-            }
+    }
+
+    .pro-con-table {
+        border-radius: 5px;
+        border: solid 5px var(--blockquote-bg-color);
+        color: var(--blockquote-text-color);
+        @include transition(color, border, background-color);
+        table-layout: fixed;
+        text-align: center;
+        border-spacing: 0;
+
+        th {
+            background-color: var(--blockquote-bg-color);
+            @include transition(background-color);
+        }
+
+        td {
+            width: 50%;
+        }
+
+        th, td {
+            padding: 20px;
+        }
+    }
+}
+
+.code-header {
+    display: flex;
+    background-color: #3b3b3b;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow: 0 3px 3px 0px rgba(0, 0, 0, 0.3);
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    padding: 12px 20px;
+    margin-bottom: calc(-1 * #{$paragraph-spacing} + -1px);
+    margin-top: 0.5em;
+    z-index: 2;
+
+    // Code blocks that have a header
+    & + .highlighter-rouge {
+        margin-top: 0 !important;
+
+        // If we don't do this, the top-left and top-right border radii will be visible
+        & .highlight {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    }
+}
+
+.code-file-name-container {
+    display: flex;
+    align-items: center;
+    flex: 2;
+    justify-content: flex-start;
+}
+
+.code-file-name {
+    color: #bcbcbc;
+    font-size: 1rem;
+    font-weight: map-get($font-weights, "normal");
+    margin: 0;
+    word-break: break-all;
+    @include transition(color);
+
+    &::before {
+        content: "📂";
+        margin-right: 5px;
+    }
+}
+
+.copy-code-container {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.copy-code-button {
+    border: none;
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    font-size: 1rem;
+    background-color: #616161;
+    color: #e7e7e7;
+    padding: 0.4em 0.5em;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+    top: 0;
+    position: relative;
+    @include transition(color, background-color);
+
+    &::before {
+        content: "Copy";
+    }
+
+    &::after {
+        margin-left: 4px;
+        content: "📋";
+        width: 1em;
+    }
+
+    &:focus, 
+    &:hover {
+        color: black;
+        background-color: #adadad;
+    }
+
+    &:active {
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
+        top: 2px;
+    }
+
+    &.copied {
+        &::before {
+            content: "Copied!";
+        }
+
+        &::after {
+            content: "✔️";
         }
     }
 }

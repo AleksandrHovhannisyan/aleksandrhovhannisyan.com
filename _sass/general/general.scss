@@ -162,6 +162,44 @@ p {
     }
 }
 
+.linked-heading {
+    position: relative;
+
+    .heading-anchor-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 1em;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        transform: translateX(-100%);
+
+        &:hover {
+            .heading-anchor {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+    }
+
+    &:hover {
+        .heading-anchor {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+
+    .heading-anchor {
+        visibility: hidden;
+        opacity: 0;
+        display: flex;
+        margin-left: 4px;
+        @include transition(visibility, opacity, border, color);
+    }
+}
+
 .section {
     margin-top: 5rem;
 
