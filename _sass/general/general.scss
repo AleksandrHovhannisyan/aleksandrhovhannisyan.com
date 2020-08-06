@@ -214,3 +214,9 @@ li {
         margin-bottom: 0 !important;
     }
 }
+
+#markdown-toc {
+    li:not(:last-child) {
+        margin-bottom: calc(#{$paragraph-spacing} / 2);
+    }
+}

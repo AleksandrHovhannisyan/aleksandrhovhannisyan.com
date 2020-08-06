@@ -208,12 +208,6 @@
     row-gap: $paragraph-spacing;
     overflow-wrap: break-word;
 
-    #markdown-toc {
-        li:not(:last-child) {
-            margin-bottom: calc(#{$paragraph-spacing} / 2);
-        }
-    }
-
     p {
         margin: 0;
     }
@@ -245,8 +239,7 @@
     }
 
     img,
-    iframe,
-    .pro-con-table {
+    iframe {
         max-width: 100%;
     }
 
@@ -257,53 +250,12 @@
 
     blockquote,	
     figure,	
-    picture:not(.author-photo),	
+    picture,	
     iframe,	
     table,
     div.highlighter-rouge {
         margin-top: 0.5em;
         margin-bottom: 0.5em;
-    }
-
-    // Latex (Katex)
-    .katex {
-        font-size: 1.1em;
-    }
-
-    .inline-equation {
-        white-space: normal;
-    }
-
-    .block-equation {
-        text-align: center;
-        @include transition(color);
-        
-        .katex {
-            display: inline-block;
-            white-space: nowrap;
-            max-width: 100%;
-            overflow-x: auto;
-            overflow-y: hidden;
-            padding-bottom: 0.5em;
-            width: 100%;
-        }
-
-        .base {
-            margin-top: 0.5em;
-        }
-    }
-
-    // The first block-level equation after anything that's not itself a block-level equation
-    *:not(.block-equation) + .block-equation {
-        // This 1.5em + 0.5em margin top from the .base above = 2em total
-        margin-top: 1.5em;
-    }
-
-    // Any element coming after a block-level group of equations
-    .block-equation + *:not(.block-equation) {
-        // Need to match the 2em we got above. We have 0.5em padding bottom on .katex
-        // already, so we need 1.5em here.
-        margin-top: 1.5em;
     }
 
     ol li::marker {
@@ -355,19 +307,16 @@
     }
 
     .spoiler {    
+        margin-bottom: 1px 0;
+        @include transition(color, background-color);
+        
         &,
         * {
             background-color: var(--spoiler-bg-color);
             color: var(--spoiler-bg-color);
         }
 
-        margin-bottom: 1px;
-
-        margin-top: 1px;
-        @include transition(color, background-color);
-
         &:hover {
-
             &,
             * {
                 background-color: transparent;
@@ -378,29 +327,6 @@
                 background-color: var(--inline-code-bg-color);
                 color: var(--inline-code-text-color);
             }
-        }
-    }
-
-    .pro-con-table {
-        border-radius: 5px;
-        border: solid 5px var(--blockquote-bg-color);
-        color: var(--blockquote-text-color);
-        @include transition(color, border, background-color);
-        table-layout: fixed;
-        text-align: center;
-        border-spacing: 0;
-
-        th {
-            background-color: var(--blockquote-bg-color);
-            @include transition(background-color);
-        }
-
-        td {
-            width: 50%;
-        }
-
-        th, td {
-            padding: 20px;
         }
     }
 }

@@ -26,15 +26,19 @@ When studying scheduling algorithms, we have two high-level classifications: pre
 
 In non-preemptive scheduling, a process runs to completion or until it blocks. While that process is running, its CPU time cannot be revoked by the scheduler (unless the OS forcibly kills the process for some other reason). Other processes in the ready queue must patiently wait their turn.
 
-<table class="pro-con-table">
-    <tr>
-        <th>Benefits of non-preemptive scheduling</th>
-        <th>Drawbacks of non-preemptive scheduling</th>
-    </tr>
-    <tr>
-        <td>CPU doesn't have to frequently perform context switches</td>
-        <td>Greater potential for process starvation if current process takes a long time to finish.</td>
-    </tr>
+<table>
+    <thead>
+        <tr>
+            <th>Benefits of non-preemptive scheduling</th>
+            <th>Drawbacks of non-preemptive scheduling</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>CPU doesn't have to frequently perform context switches</td>
+            <td>Greater potential for process starvation if current process takes a long time to finish.</td>
+        </tr>
+    </tbody>
 </table>
 
 These are the examples of non-preemptive scheduling algorithms that we'll look at:
@@ -60,18 +64,22 @@ With preemptive algorithms, we follow these steps:
 
 Those steps are then repeated for as many processes as needed.
 
-<table class="pro-con-table">
-    <tr>
-        <th>Benefits of preemptive scheduling</th>
-        <th>Drawbacks of preemptive scheduling</th>
-    </tr>
-    <tr>
-        <td>Gives users the impression that processes are not being starved.</td>
-        <td>Involves more context switches, which can decrease CPU utilization.</td>
-    </tr>
-    <tr>
-        <td>Good for responsiveness or whenever user input is important.</td>
-    </tr>
+<table>
+    <thead>
+        <tr>
+            <th>Benefits of preemptive scheduling</th>
+            <th>Drawbacks of preemptive scheduling</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Gives users the impression that processes are not being starved.</td>
+            <td>Involves more context switches, which can decrease CPU utilization.</td>
+        </tr>
+        <tr>
+            <td>Good for responsiveness or whenever user input is important.</td>
+        </tr>
+    </tbody>
 </table>
 
 These are the examples of preemptive scheduling algorithms that we'll look at:
