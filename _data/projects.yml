@@ -3,7 +3,7 @@
   rating: 8
   description: Text editor developed with the Qt framework. Features standard file operations, syntax highlighting, brace autocomplete, and auto-indentation.
   url: https://github.com/AleksandrHovhannisyan/Scribe-Text-Editor
-  topics:
+  tech:
     - c++
     - qt5
     - qtcreator
@@ -13,7 +13,7 @@
   rating: 0
   description: A mobile app that provides easy access to cattle records for the VanWagner Cattle farm.
   url: https://github.com/Camoen/CattleLog/
-  topics:
+  tech:
     - android
     - mobile dev
     - kotlin
@@ -24,7 +24,7 @@
   rating: 4
   description: A database-driven web app that lets you explore U.S. gun crimes for 2013–2018.
   url: https://github.com/CIS4301-Project-University-of-Florida/U.S.-Gun-Crime/
-  topics:
+  tech:
     - react
     - typescript
     - express
@@ -35,7 +35,7 @@
   rating: 3
   description: My online resume and blog, developed with Jekyll, HTML5, Sass, and JavaScript. Built with a mobile-first responsive design.
   url: https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com
-  topics:
+  tech:
     - jekyll
     - html5
     - sass
@@ -46,7 +46,7 @@
   rating: 1
   description: Embody is a top-down dungeon crawler inspired by the Binding of Isaac where you can possess slain enemies to assume their model, stats, and weapon.
   url: https://github.com/cap4053-cheeky-pixels/EmbodyGame
-  topics:
+  tech:
     - c#
     - unity
     - game-ai
