@@ -11,15 +11,11 @@
         <meta name="referrer" content="origin" />
         <!-- og: properties are for social media previews -->
         <meta property="og:title" content="{{ page.title }} | {{ site.title }}" />
-        {% if page.is_post %}
-            {% assign thumbnail_ext = 'png' %}
-            {% if page.thumbnail_ext %}
-                {% assign thumbnail_ext = page.thumbnail_ext %}
-            {% endif %}
-            <meta property="og:image" content="{{ site.url }}/{{ page.img_path }}/{{ page.slug }}/thumbnail.{{ thumbnail_ext }}" />
-            {% else %}
-            <meta property="og:image" content="{{ site.url }}/assets/img/preview.png" />
+        {% assign thumbnail_ext = 'png' %}
+        {% if page.thumbnail_ext %}
+            {% assign thumbnail_ext = page.thumbnail_ext %}
         {% endif %}
+        <meta property="og:image" content="{{ site.url }}/{{ page.img_path }}/{{ page.slug }}thumbnail.{{ thumbnail_ext }}" />
         <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
         <meta property="og:url" content="{{ site.url }}" />
         {% if page.noindex %}
