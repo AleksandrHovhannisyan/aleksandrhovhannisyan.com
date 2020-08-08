@@ -3,16 +3,15 @@ title: "Binary for Beginners: The ABCs of 0s and 1s"
 description: The binary number system underlies pretty much everything in computation. But what's the deal with all those 0s and 1s, and how are binary numbers used?
 keywords: [binary number system, binary numbers]
 tags: [computer-science, math, binary]
-needs_latex: true
 comments_id: 44
 redirect_from: /blog/computer-science/binary-numbers/
 ---
 
-What is $$10$$? If this is your first time learning about the binary number system, then this question may seem odd. Of course it's ten, right?
+What is <code>10</code>? If this is your first time learning about the binary number system, then this question may seem odd. Of course it's ten, right?
 
 Let's try something different. Have you ever heard this joke?
 
-> There are $$10$$ types of people in the world: those who understand binary and those who don't.
+> There are <code>10</code> types of people in the world: those who understand binary and those who don't.
 
 Unless you're familiar with binary numbers, this probably doesn't make much sense. But by the end of this post, you'll come to appreciate this and many other awful developer jokes!
 
@@ -24,47 +23,47 @@ In this beginner's tutorial, we'll look at everything you need to know about the
 
 Before we look at binary, let's take a step back and discuss number systems *in general*.
 
-Now, it may be strange to think of number "systems" in the plural if this is your first time learning about them. That's because the majority of the world is familiar with just one: the **decimal number system** (aka "base ten"), also known as the **Arabic number system**. This system has digits ranging from $$0$$ to $$9$$, which we use to form numbers in our daily lives.
+Now, it may be strange to think of number "systems" in the plural if this is your first time learning about them. That's because the majority of the world is familiar with just one: the **decimal number system** (aka "base ten"), also known as the **Arabic number system**. This system has digits ranging from <code>0</code> to <code>9</code>, which we use to form numbers in our daily lives.
 
-For example, in the decimal number system, $$579$$ expands to this:
+For example, in the decimal number system, <code>579</code> expands to this:
 
-$$579 = 5 (10^2) + 7 (10^1) + 9 (10^0) = 500 + 70 + 9$$
+<code>579 = 5(10<sup>2</sup>) + 7(10<sup>1</sup>) + 9(10<sup>0</sup>) = 500 + 70 + 9</code>
 
-As a kid, you were taught that the $$5$$ in $$579$$ is in the "hundreds place," the $$7$$ is in the "tens place," and the $$9$$ is in the ones place. Notice that the $$5$$ is multiplied by one hundred ($$10^2$$), the $$7$$ by ten ($$10^1$$), and the $$9$$ by one ($$10^0$$) to form the decimal number $$579$$. Makes sense, right?
+As a kid, you were taught that the <code>5</code> in <code>579</code> is in the "hundreds place," the <code>7</code> is in the "tens place," and the <code>9</code> is in the ones place. Notice that the <code>5</code> is multiplied by one hundred (<code>10<sup>2</sup></code>), the <code>7</code> by ten (<code>10<sup>1</sup></code>), and the <code>9</code> by one (<code>10<sup>0</sup></code>) to form the decimal number <code>579</code>. Makes sense, right?
 
-Here, the number $$10$$ is what we call the **base** (aka **radix**) of our number system. Notice the powers of $$10$$ in the expanded expression above: $$10^2$$, $$10^1$$, and $$10^0$$. For this reason, the terms *decimal* and *base 10* are interchangeable.
+Here, the number <code>10</code> is what we call the **base** (aka **radix**) of our number system. Notice the powers of <code>10</code> in the expanded expression above: <code>10<sup>2</sup></code>, <code>10<sup>1</sup></code>, and <code>10<sup>0</sup></code>. For this reason, the terms *decimal* and *base 10* are interchangeable.
 
-In the decimal number system, a number is represented by placing digits into "buckets" that represent **increasing powers of ten**, starting with $$10^0$$ in the rightmost "bucket," followed by $$10^1$$ to its immediate left, and so on infinitely:
+In the decimal number system, a number is represented by placing digits into "buckets" that represent **increasing powers of ten**, starting with <code>10<sup>0</sup></code> in the rightmost "bucket," followed by <code>10<sup>1</sup></code> to its immediate left, and so on infinitely:
 
 {% include picture.html img="buckets" ext="png" alt="Increasing powers of ten" %}
 
-Any unused buckets to the far left have an implicit value of $$0$$ in them. We usually trim leading zeros because there is no use in saying $$00579$$ when that's mathematically identical to $$579$$.
+Any unused buckets to the far left have an implicit value of <code>0</code> in them. We usually trim leading zeros because there is no use in saying <code>00579</code> when that's mathematically identical to <code>579</code>.
 
-Why did humans pick $$10$$ to be the base of their preferred number system? Most likely because we're born with ten fingers and ten toes, and we're used to counting with our fingers when we're young. So it's simply natural for us to use this number system!
+Why did humans pick <code>10</code> to be the base of their preferred number system? Most likely because we're born with ten fingers and ten toes, and we're used to counting with our fingers when we're young. So it's simply natural for us to use this number system!
 
 ### Bases, Exponents, and Digits
 
-As I've already hinted, the decimal number system (base $$10$$) isn't the only one in existence. Let's use a more general mathematical notation to represent number systems beyond just our familiar one.
+As I've already hinted, the decimal number system (base <code>10</code>) isn't the only one in existence. Let's use a more general mathematical notation to represent number systems beyond just our familiar one.
 
-In a number system with a fixed base of $$b$$, the available digits range from $$0$$ to $$b - 1$$. For example, in the decimal number system ($$b = 10$$), we can only use the digits $$0, 1, 2, ..., 9$$. When you "run out" of digits in a single bucket, you carry over a one to the next power of the base. For example, to get to the number after $$99$$, you carry a one to the next power of ten: $$100$$.
+In a number system with a fixed base of <code>b</code>, the available digits range from <code>0</code> to <code>b - 1</code>. For example, in the decimal number system (<code>b = 10</code>), we can only use the digits <code>0, 1, 2, ..., 9</code>. When you "run out" of digits in a single bucket, you carry over a one to the next power of the base. For example, to get to the number after <code>99</code>, you carry a one to the next power of ten: <code>100</code>.
 
-Now, suppose that we have a string of digits $$d_1 d_2 \dots d_n$$ (where $$\text{n}$$ is just the number of digits). Maybe that's $$d_1 d_2 d_3 = 579$$ from our earlier example. That string expands like this:
+Now, suppose that we have a string of digits <code>d<sub>1</sub> d<sub>2</sub> ... d<sub>n</sub></code> (where <code>n</code> is just the number of digits). Maybe that's <code>d<sub>1</sub> d<sub>2</sub> ... d<sub>n</sub> = 579</code> from our earlier example. That string expands like this:
 
-$$d_1 b^{n-1} + d_2 b^{n-2} + \dots + d_n b^0$$
+<code>d<sub>1</sub>b<sup>n-1</sup> + d<sub>2</sub>b<sup>n-2</sup> + ... + d<sub>n</sub>b<sup>0</sup></code>
 
 And you can visualize that like this:
 
 {% include picture.html img="bases" ext="png" alt="A generic base of b with digits d" %}
 
-Using our same example, $$ d_1 b^{n-1} + d_2 b^{n-2} + \dots + d_n b^0 = 5 (10^2) + 7 (10^1) + 9 (10^0)$$
+Using our same example, <code>d<sub>1</sub>b<sup>n-1</sup> + d<sub>2</sub>b<sup>n-2</sup> + ... + d<sub>n</sub>b<sup>0</sup> = 5(10<sup>2</sup>) + 7(10<sup>1</sup>) + 9(10<sup>0</sup>)</code>
 
 {% include picture.html img="579" ext="png" alt="Expanding 579 in terms of powers of 10" %}
 
-Again, we have buckets from right to left in increasing powers of our base ($$10$$).
+Again, we have buckets from right to left in increasing powers of our base (<code>10</code>).
 
-> **Note**: The rightmost bucket will always represent $$d_n$$ in any number system. Why? Because any base raised to the power of $$0$$ is just $$1$$.
+> **Note**: The rightmost bucket will always represent <code>d<sub>n</sub></code> in any number system. Why? Because any base raised to the power of <code>0</code> is just <code>1</code>.
 
-Now, in reality, you can have a number system that uses a base of $$2$$, $$3$$, $$4$$, $$120$$, and so on. Some of these have special names because they're used more often than others:
+Now, in reality, you can have a number system that uses a base of <code>2</code>, <code>3</code>, <code>4</code>, <code>120</code>, and so on. Some of these have special names because they're used more often than others:
 
 <table>
     <thead>
@@ -101,7 +100,7 @@ Now, in reality, you can have a number system that uses a base of $$2$$, $$3$$, 
     </tbody>
 </table>
 
-For this reason, when discussing number systems, we usually subscript a number with its base to clarify its value. Alternatively, you can prepend a number with a certain string (usually `0b` for binary or `0x`/`#` for hexadecimal). So we'd write $$579$$ as $$579_{10}$$, or the binary number $$1001$$ as $$1001_{2}$$ (or $$\text{0b}1001$$). Otherwise, if we were to merely write the number $$1001$$ without providing any context, nobody would know whether that's in binary, octal, decimal, hexadecimal, and so on because the digits $$0$$ and $$1$$ are valid in all of those number systems, too!
+For this reason, when discussing number systems, we usually subscript a number with its base to clarify its value. Alternatively, you can prepend a number with a certain string (usually <code>0b</code> for binary or <code>0x</code>/<code>#</code> for hexadecimal). So we'd write <code>579</code> as <code>579<sub>10</sub></code>, or the binary number <code>1001</code> as <code>1001<sub>2</sub></code> (or <code>0b1001</code>). Otherwise, if we were to merely write the number <code>1001</code> without providing any context, nobody would know whether that's in binary, octal, decimal, hexadecimal, and so on because the digits <code>0</code> and <code>1</code> are valid in all of those number systems, too!
 
 > **Note**: When not comparing number systems, we usually assume that a given number is in decimal unless otherwise noted, and thus the subscript is omitted.
 
@@ -109,9 +108,9 @@ For this reason, when discussing number systems, we usually subscript a number w
 
 So far so good—we're all familiar with decimal numbers because we use them everyday. But what's the deal with the binary number system?
 
-By definition, the **binary number system** has a base of $$2$$, and thus we can only work with two digits to compose numbers: $$0$$ and $$1$$. Technically speaking, we don't call these digits—they're called **bits** in binary lingo.
+By definition, the **binary number system** has a base of <code>2</code>, and thus we can only work with two digits to compose numbers: <code>0</code> and <code>1</code>. Technically speaking, we don't call these digits—they're called **bits** in binary lingo.
 
-Each "bucket" in a binary string represents an increasing power of two: $$2^0$$, $$2^1$$, $$2^2$$, and so on.
+Each "bucket" in a binary string represents an increasing power of two: <code>2<sup>0</sup></code>, <code>2<sup>1</sup></code>, <code>2<sup>2</sup></code>, and so on.
 
 {% include picture.html img="binary" ext="png" alt="The binary number system uses powers of two" %}
 
@@ -119,28 +118,28 @@ The leftmost bit is called the **most significant bit (MSB)**, while the rightmo
 
 Here are some examples of representing decimal numbers in the binary number system:
 
-- Zero: $$0_{10} = 0_2$$. Expansion: $$0 (2^0)$$
-- One: $$1_{10} = 1_2$$. Expansion: $$1 (2^0)$$
-- Two: $$2_{10} = 10_2$$. Expansion: $$1 (2^1) + 0 (2^0)$$
-- Three: $$3_{10} = 11_2$$. Expansion: $$1 (2^1) + 1 (2^0)$$
-- Four: $$4_{10} = 100_2$$. Expansion: $$1 (2^2) + 0 (2^1) + 0 (2^0)$$
-- Five: $$5_{10} = 101_2$$. Expansion: $$1 (2^2) + 0 (2^1) + 1 (2^0)$$
+- Zero: <code>0<sub>10</sub> = 0<sub>2</sub></code>. Expansion: <code>0 (2<sup>0</sup>)</code>
+- One: <code>1<sub>10</sub> = 1<sub>2</sub></code>. Expansion: <code>1(2<sup>0</sup>)</code>
+- Two: <code>2<sub>10</sub> = 10<sub>2</sub></code>. Expansion: <code>1(2<sup>1</sup>) + 0(2<sup>0</sup>)</code>
+- Three: <code>3<sub>10</sub> = 11<sub>2</sub></code>. Expansion: <code>1(2<sup>1</sup>) + 1(2<sup>0</sup>)</code>
+- Four: <code>4<sub>10</sub> = 100<sub>2</sub></code>. Expansion: <code>1(2<sup>2</sup>) + 0(2<sup>1</sup>) + 0(2<sup>0</sup>)</code>
+- Five: <code>5<sub>10</sub> = 101<sub>2</sub></code>. Expansion: <code>1(2<sup>2</sup>) + 0(2<sup>1</sup>) + 1(2<sup>0</sup>)</code>
 
 > **Note**: Like in the decimal number system, leading zeros are usually stripped from binary strings. The only exception is if you're working with [a signed binary number system](#the-binary-number-system-twos-complement), where a leading zero indicates that a number is positive and a leading one indicates that it's negative.
 
 Having learned the binary number system, you should now understand the joke from earlier:
 
-> There are $$10$$ types of people in the world: those who understand binary and those who don't.
+> There are <code>10</code> types of people in the world: those who understand binary and those who don't.
 
-Here, we really mean the binary equivalent of two, which *looks* like ten to our eyes when it's not properly subscripted: $$10_2 = 1 \times 2^1 = 2_{10}$$.
+Here, we really mean the binary equivalent of two, which *looks* like ten to our eyes when it's not properly subscripted: <code>10<sub>2</sub> = 1 × 2<sup>1</sup> = 2<sub>10</sub></code>.
 
 ### Binary Is Close to the Hardware of a Computer
 
 Why do we bother with using the binary number system in the first place? Doesn't it seem like a whole lot of extra work to represent numbers in this manner when we could instead use the decimal number system? Well, yes—if you're writing these out by hand, it's certainly more work to represent (and manipulate) binary numbers.
 
-You may not see any point in using binary if you haven't learned about computer architecture at a low level. Internally, computers are nothing more than electrical circuits tied to hardware. Current either flows through a wire or doesn't—a **binary state**. Likewise, computers use **logic gates** (AND/OR/NOR/XOR) to control the flow of a program's execution, and these take binary inputs (`true`/`false`). The best way to represent these low-level interactions is to use the binary number system: $$0$$ means OFF (or `false` in its logical form) and $$1$$ means ON (or `true`).
+You may not see any point in using binary if you haven't learned about computer architecture at a low level. Internally, computers are nothing more than electrical circuits tied to hardware. Current either flows through a wire or doesn't—a **binary state**. Likewise, computers use **logic gates** (AND/OR/NOR/XOR) to control the flow of a program's execution, and these take binary inputs (<code>true</code>/<code>false</code>). The best way to represent these low-level interactions is to use the binary number system: <code>0</code> means OFF (or <code>false</code> in its logical form) and <code>1</code> means ON (or <code>true</code>).
 
-> **Note**: If the whole world were to agree to it, we could just as well instead treat $$0$$ as ON and $$1$$ as OFF. However, it just makes more sense to treat $$0$$ as OFF/false—after all, zero denotes the absence of a value. Hence, it's a natural candidate for representing things like falsehood or the lack of a current flowing through a wire.
+> **Note**: If the whole world were to agree to it, we could just as well instead treat <code>0</code> as ON and <code>1</code> as OFF. However, it just makes more sense to treat <code>0</code> as OFF/false—after all, zero denotes the absence of a value. Hence, it's a natural candidate for representing things like falsehood or the lack of a current flowing through a wire.
 
 Everything on your computer—the files you save and the software you install—is represented as nothing more than zeros and ones. But how is this possible?
 
@@ -151,9 +150,9 @@ Suppose you create a file on your computer and store some basic text in it:
 {% capture code %}echo Hello, Binary > file{% endcapture %}
 {% include code.html code=code lang="bash" %}
 
-At the end of the day, your computer can't store a character like `H`, `e`, `l`, or `o` (or even the space between two words) *literally*. Computers only know how to work with *binary*. Thus, we need some way to convert these characters to numbers. And that's why the ASCII standard was introduced.
+At the end of the day, your computer can't store a character like <code>H</code>, <code>e</code>, <code>l</code>, or <code>o</code> (or even the space between two words) *literally*. Computers only know how to work with *binary*. Thus, we need some way to convert these characters to numbers. And that's why the ASCII standard was introduced.
 
-Formally, ASCII is referred to as a **character encoding standard**. Put more simply, it's a method of representing human-readable characters like `H`, `e`, `,`, `?`, and `9` numerically so that computers can understand and use them like we do.
+Formally, ASCII is referred to as a **character encoding standard**. Put more simply, it's a method of representing human-readable characters like <code>H</code>, <code>e</code>, <code>,</code>, <code>?</code>, and <code>9</code> numerically so that computers can understand and use them like we do.
 
 Here is a typical [ASCII chart](http://www.asciitable.com/) that you may have seen before:
 
@@ -161,9 +160,9 @@ Here is a typical [ASCII chart](http://www.asciitable.com/) that you may have se
 
 In the ASCII standard, there are a total of 128 characters, each mapped to a unique number in binary (with an equivalent representation in decimal that we humans understand more naturally):
 
-- Arabic digits: `0-9` (10)
-- Capital letters of the English alphabet: `A-Z` (26)
-- Lowercase letters of the English alphabet: `a-z` (26)
+- Arabic digits: <code>0-9</code> (10)
+- Capital letters of the English alphabet: <code>A-Z</code> (26)
+- Lowercase letters of the English alphabet: <code>a-z</code> (26)
 - Punctuation and special characters (66)
 
 ### 1 Character = 1 Byte
@@ -179,34 +178,34 @@ Here are some examples of valid bytes:
 11111111
 ```
 
-... and any other valid permutation of eight $$0$$s and $$1$$s that you can think of.
+... and any other valid permutation of eight <code>0</code>s and <code>1</code>s that you can think of.
 
 Why is this relevant? Because on modern computers, **characters are represented using bytes**.
 
-Recall that the ASCII standard needs to support a total of **128 characters**. So how many unique number can we represent with $$8$$ bits (a byte)?
+Recall that the ASCII standard needs to support a total of **128 characters**. So how many unique number can we represent with <code>8</code> bits (a byte)?
 
-Well, using the product rule from combinatorics, we have eight "buckets," each with two possible values: either a $$0$$ or a $$1$$. Thus, we have $$2 \times 2 \times \dots \times 2 = 2^8$$ possible values.
+Well, using the product rule from combinatorics, we have eight "buckets," each with two possible values: either a <code>0</code> or a <code>1</code>. Thus, we have <code>2 × 2 × ... × 2 = 2<sup>8</sup></code> possible values.
 
-In decimal, this is $$2^8 = 256$$ possible values. By comparison, $$2^7 = 128$$. And $$128$$ happens to be the number of characters that we want to represent.
+In decimal, this is <code>2<sup>8</sup> = 256</code> possible values. By comparison, <code>2<sup>7</sup> = 128</code>. And <code>128</code> happens to be the number of characters that we want to represent.
 
-So... That's weird, and seemingly wasteful, right? Why do we use $$8$$ bits (one byte) to represent a character when we could use $$7$$ bits instead and meet the precise character count that we need?
+So... That's weird, and seemingly wasteful, right? Why do we use <code>8</code> bits (one byte) to represent a character when we could use <code>7</code> bits instead and meet the precise character count that we need?
 
-Good question! We use bytes because **it's not possible to evenly divide a group of $$7$$ bits**, making certain low-level computations difficult if we decide to use $$7$$ bits to represent a character. In contrast, a byte can be evenly split into powers of two:
+Good question! We use bytes because **it's not possible to evenly divide a group of <code>7</code> bits**, making certain low-level computations difficult if we decide to use <code>7</code> bits to represent a character. In contrast, a byte can be evenly split into powers of two:
 
-$$11101011$$
+```
+11101011
+[1110][1011]
+[11][10][10][11]
+```
 
-$$[1110] \space [1011]$$
+The key takeaway here is that we only need one byte to store one character on a computer. This means that a string of five characters—like <code>Hello</code>—occupies five bytes of space, with each byte being the numerical representation of the corresponding character per the ASCII standard.
 
-$$[11] \space [10] \space [10] \space [11]$$
-
-The key takeaway here is that we only need one byte to store one character on a computer. This means that a string of five characters—like `Hello`—occupies five bytes of space, with each byte being the numerical representation of the corresponding character per the ASCII standard.
-
-Remember the file we created earlier? Let's view its binary representation using the `xxd` Unix tool:
+Remember the file we created earlier? Let's view its binary representation using the <code>xxd</code> Unix tool:
 
 {% capture code %}xxd -b file{% endcapture %}
 {% include code.html code=code lang="bash" %}
 
-The `-b` flag stands for binary. Here's the output that you'll get:
+The <code>-b</code> flag stands for binary. Here's the output that you'll get:
 
 ```
 00000000: 01001000 01100101 01101100 01101100 01101111 00101100  Hello,
@@ -214,58 +213,58 @@ The `-b` flag stands for binary. Here's the output that you'll get:
 0000000c: 01111001 00001010                                      y.
 ```
 
-The first line shows a sequence of six bytes, each corresponding to one character in `Hello,`.
+The first line shows a sequence of six bytes, each corresponding to one character in <code>Hello,</code>.
 
 Let's decode the first two bytes using our knowledge of the binary number system and ASCII:
 
-- $$01001000 = 1(2^6) + 1 (2^3) = 72_{10}$$. Per our ASCII table, this corresponds to `H`.
-- $$01100101 = 1 (2^6) + 1 (2^5) + 1 (2^2) + 1(2^0) = 101_{10}$$, which is `e` in ASCII.
+- <code>01001000 = 1(2<sup>6</sup>) + 1(2<sup>3</sup>) = 72<sub>10</sub></code>. Per our ASCII table, this corresponds to <code>H</code>.
+- <code>01100101 = 1(2<sup>6</sup>) + 1(2<sup>5</sup>) + 1(2<sup>2</sup>) + 1(2<sup>0</sup>) = 101<sub>10</sub></code>, which is <code>e</code> in ASCII.
 
-Cool! Looks like the logic pans out. You can repeat this for all of the other bytes as well. Notice that on the second line, we have a leading space (from `Hello, Binary`), represented as $$2^5 = 32_{10}$$ in ASCII (which is indeed `Space` per the lookup table!).
+Cool! Looks like the logic pans out. You can repeat this for all of the other bytes as well. Notice that on the second line, we have a leading space (from <code>Hello, Binary</code>), represented as <code>2<sup>5</sup> = 32<sub>10</sub></code> in ASCII (which is indeed <code>Space</code> per the lookup table!).
 
-By the way, what's up with the numbers along the left-hand side of the output? What does `0000000c` even mean? Time to explore another important number system!
+By the way, what's up with the numbers along the left-hand side of the output? What does <code>0000000c</code> even mean? Time to explore another important number system!
 
 ## The Hexademical Number System (Base 16)
 
 As I mentioned in the table from earlier, the hexadecimal number system is closely related to binary because it's often used to express binary numbers more compactly, instead of writing out a whole bunch of zeros and ones.
 
-The **hexadecimal number system** has a base of $$16$$, meaning its digits range from $$0–15$$.
+The **hexadecimal number system** has a base of <code>16</code>, meaning its digits range from <code>0–15</code>.
 
 > **Note**: In technical terms, a hexadecimal digit is called a **nibble**, but you'll commonly hear people just call them "hex digits."
 
-This is our first time encountering a number system whose digits are made up of more than two characters. How do we squeeze $$10$$, $$11$$, or $$15$$ into a single "bucket" or "slot" for a digit? To be clear, **this is perfectly doable** if you have clear delimiters between digits. But in reality, that's not practical.
+This is our first time encountering a number system whose digits are made up of more than two characters. How do we squeeze <code>10</code>, <code>11</code>, or <code>15</code> into a single "bucket" or "slot" for a digit? To be clear, **this is perfectly doable** if you have clear delimiters between digits. But in reality, that's not practical.
 
 Let's take a step back and consider a simple hexadecimal number:
 
-$$\text{0x}42$$
+<code>0x42</code>
 
-What does this mean to us humans in our decimal number system? Well, all we have to do is multiply each digit by its corresponding power of $$16$$:
+What does this mean to us humans in our decimal number system? Well, all we have to do is multiply each digit by its corresponding power of <code>16</code>:
 
-$$\text{0x}42 = 4(16^1) + 2(16^0) = 64_{10} + 2_{10} = 66_{10}$$
+<code>0x42 = 4(16<sup>1</sup>) + 2(16<sup>0</sup>) = 64<sub>10</sub> + 2<sub>10</sub> = 66<sub>10</sub></code>
 
-Okay, so that's a simple hex number. Back to the problem at hand: How do we represent the hex digits $$10$$, $$11$$, and so on? Here's an example that's pretty confusing unless we introduce some alternative notation:
+Okay, so that's a simple hex number. Back to the problem at hand: How do we represent the hex digits <code>10</code>, <code>11</code>, and so on? Here's an example that's pretty confusing unless we introduce some alternative notation:
 
-$$\text{0x}15$$
+<code>0x15</code>
 
-Is this a $$15$$ in a single slot or a $$1$$ and a $$5$$ in two separate slots? One way to make this less ambiguous is to use some kind of delimiter between slots, but again, that's not very practical:
+Is this a <code>15</code> in a single slot or a <code>1</code> and a <code>5</code> in two separate slots? One way to make this less ambiguous is to use some kind of delimiter between slots, but again, that's not very practical:
 
-$$\text{0x}8[15]29$$
+<code>0x8[15]29</code>
 
-The better solution that people came up with is to map $$10–15$$ to the the English letters `a–f`.
+The better solution that people came up with is to map <code>10–15</code> to the the English letters <code>a–f</code>.
 
-> **Note**: Capitalization doesn't matter, so you can use `a-f` or `A-F`. Just be consistent.
+> **Note**: Capitalization doesn't matter, so you can use <code>a-f</code> or <code>A-F</code>. Just be consistent.
 
 Here's an example of a hexadecimal number that uses one of these digits:
 
-$$\text{0x}f4$$
+<code>0xf4</code>
 
 And here's its expansion:
 
-$$\text{0x}f4 = 15(16^1) + 4(16^0) = 240_{10} + 4_{10} = 244_{10}$$
+<code>0xf4 = 15(16<sup>1</sup>) + 4(16<sup>0</sup>) = 240<sub>10</sub> + 4<sub>10</sub> = 244<sub>10</sub></code>
 
 There's nothing magical about the hexadecimal number system—it works just like unary, binary, decimal, and others. All that's different is the base!
 
-Before we move on, let's revisit the output from earlier when we used `xxd` on our sample file:
+Before we move on, let's revisit the output from earlier when we used <code>xxd</code> on our sample file:
 
 ```
 00000000: 01001000 01100101 01101100 01101100 01101111 00101100  Hello,
@@ -273,7 +272,7 @@ Before we move on, let's revisit the output from earlier when we used `xxd` on o
 0000000c: 01111001 00001010                                      y.
 ```
 
-The numbers along the left-hand side mark the starting byte for each line of text on the far right. For example, the first line of text (`Hello,`) ranges from byte #0 (`H`) to byte #5 (`,`). The next line is marked as `00000006`, meaning we're now looking at bytes #6 through 11 (`B` to `r`). Finally, the last label should make sense now that you know the hexadecimal number system: `c` maps to $$12$$, meaning the byte that follows corresponds to the twelfth character in our file.
+The numbers along the left-hand side mark the starting byte for each line of text on the far right. For example, the first line of text (<code>Hello,</code>) ranges from byte #0 (<code>H</code>) to byte #5 (<code>,</code>). The next line is marked as <code>00000006</code>, meaning we're now looking at bytes #6 through 11 (<code>B</code> to <code>r</code>). Finally, the last label should make sense now that you know the hexadecimal number system: <code>c</code> maps to <code>12</code>, meaning the byte that follows corresponds to the twelfth character in our file.
 
 ### How to Convert Between Binary and Hexadecimal
 
@@ -283,33 +282,33 @@ Now that we know a bit about binary and hexadecimal, let's look at how we can co
 
 Say you're given this binary string and you'd like to represent it in hexadecimal:
 
-$$011011100101$$
+<code>011011100101</code>
 
 While at first this may seem like a pretty difficult task, it's actually **very easy**.
 
 Let's do a bit of a thought exercise:
 
-> In the hexadecimal number system, we have $$16$$ digits from $$0$$ to $$15$$. Over in binary land, how many bits do we need to represent these $$16$$ values?
+> In the hexadecimal number system, we have <code>16</code> digits from <code>0</code> to <code>15</code>. Over in binary land, how many bits do we need to represent these <code>16</code> values?
 
-The answer is four because $$2^4 = 16$$. With four "buckets," we can create the numbers zero ($$0000$$), one ($$0001$$), ten ($$1010$$), all the way up to fifteeen ($$1111$$).
+The answer is four because <code>2<sup>4</sup> = 16</code>. With four "buckets," we can create the numbers zero (<code>0000</code>), one (<code>0001</code>), ten (<code>1010</code>), all the way up to fifteeen (<code>1111</code>).
 
 This means that when you're given a binary string, all you have to do is **split it into groups of four bits** and evaluate them to convert binary to hexadecimal!
 
-$$011011100101$$
+```
+011011100101
+[0110][1110][0101]
+6 14 5
+```
 
-$$[0110] \space [1110] \space [0101]$$
-
-$$ 6 \space 14 \space 5 $$
-
-Now we just replace $$10–15$$ with `a-f` and we're done: $$\text{0x}6e5$$.
+Now we just replace <code>10–15</code> with <code>a-f</code> and we're done: <code>0x6e5</code>.
 
 #### Hexadecimal to Binary
 
 What about the reverse process? How do you convert a hexadecimal number to binary?
 
-Say you're given the hexadecimal number $$\text{0x}ad$$. What do we know about each hexadecimal digit? Well, from our earlier thought exercise, we know that four bits = one hex digit. So now we just have to convert each indiviual digit to its $$4$$-bit binary representation and then stick each group together!
+Say you're given the hexadecimal number <code>0xad</code>. What do we know about each hexadecimal digit? Well, from our earlier thought exercise, we know that four bits = one hex digit. So now we just have to convert each indiviual digit to its <code>4</code>-bit binary representation and then stick each group together!
 
-$$\text{0x}ad = \text{0b}10101101$$
+<code>0xad = 0b10101101</code>
 
 Super easy, just like I promised.
 
@@ -317,53 +316,53 @@ Super easy, just like I promised.
 
 While we're on the topic of binary and hexadecimal, it's worth taking a look at one real-world use case for the things we've learned so far: **RGB and hex colors**.
 
-Colors have three components: red, green, and blue (RGB). With LED (light-emitting diode) displays, each pixel is really split into these three components using a color diode. If a color component is set to $$0$$, then it's effectively turned off. Otherwise, its intensity is modulated between $$0$$ and $$255$$, giving us a color format like `rgb(0-255, 0-255, 0-255)`.
+Colors have three components: red, green, and blue (RGB). With LED (light-emitting diode) displays, each pixel is really split into these three components using a color diode. If a color component is set to <code>0</code>, then it's effectively turned off. Otherwise, its intensity is modulated between <code>0</code> and <code>255</code>, giving us a color format like <code>rgb(0-255, 0-255, 0-255)</code>.
 
-Let's consider this hex color: `#4287f5`. What is it in the RGB format?
+Let's consider this hex color: <code>#4287f5</code>. What is it in the RGB format?
 
 Well, we need to split this hex string evenly between red, green, and blue. That's two digits per color:
 
-$$[42][87][f5]$$
+<code>[42][87][f5]</code>
 
 Now, we simply interpret the decimal equivalent for each part:
 
-- **Red**: $$42_{16} = 4(16^1) + 2(16^0) = 66$$
-- **Green**: $$87_{16} = 8(16^1) + 7(16^0) = 135$$
-- **Blue**: $$f5_{16} = 15(16^1) + 5(16^0) = 245$$
+- **Red**: <code>42<sub>16</sub> = 4(16<sup>1</sup>) + 2(16<sup>0</sup>) = 66</code>
+- **Green**: <code>87<sub>16</sub> = 8(16<sup>1</sup>) + 7(16<sup>0</sup>) = 135</code>
+- **Blue**: <code>f5<sub>16</sub> = 15(16<sup>1</sup>) + 5(16<sup>0</sup>) = 245</code>
 
-That means `#4287f5` is really `rgb(66, 135, 245)`! You can verify this using a [Color Converter](https://www.w3schools.com/colors/colors_converter.asp):
+That means <code>#4287f5</code> is really <code>rgb(66, 135, 245)</code>! You can verify this using a [Color Converter](https://www.w3schools.com/colors/colors_converter.asp):
 
 {% include picture.html img="color-converter" ext="png" alt="A color converter verifying that #4287f5 is really rgb(66, 135, 245)" %}
 
 For practice, let's convert this to binary as well. I'll mark the groups of four bits to make it easier to see how I did this (note: you can also convert from the decimal RGB representation if you want to):
 
-$$\text{0x}4287f5 = \text{0b}[0100][0010][1000][0111][1111][0101]$$
+<code>0x4287f5 = 0b[0100][0010][1000][0111][1111][0101]</code>
 
 Now, two groups of four bits will represent one component of the color (red/green/blue):
 
-$$\text{0b}[01000010][10000111][11110101]$$
+<code>0b[01000010][10000111][11110101]</code>
 
-Notice that each color *component* takes up a byte ($$8$$ bits) of space.
+Notice that each color *component* takes up a byte (<code>8</code> bits) of space.
 
 #### How Many Colors Are There?
 
 As an additional exercise, how many unique colors can you possibly have in the modern RGB format?
 
-We know that each component (red/green/blue) is represented using one byte ($$8$$ bits). So the colors we're used to are really $$24$$-bit colors.
+We know that each component (red/green/blue) is represented using one byte (<code>8</code> bits). So the colors we're used to are really <code>24</code>-bit colors.
 
-That means there are a whopping $$2^{24} = 16,777,216$$ possible unique colors that you can generate using hex/rgb! The $$24$$-bit color system is known simply as **truecolor**. And as you can see, it's capable of representing millions of colors.
+That means there are a whopping <code>2<sup>24</sup> = 16,777,216</code> possible unique colors that you can generate using hex/rgb! The <code>24</code>-bit color system is known simply as **truecolor**. And as you can see, it's capable of representing millions of colors.
 
-Note that you could just as well have performed this calculation using hex: `#4287f5`. There are six slots, each capable of taking on a value from $$0$$ to $$\text{f}$$. That gives us a total of $$16 \times 16 \times ... \times 16 = 16^6 = 16,777,216$$ values—the same result as before.
+Note that you could just as well have performed this calculation using hex: <code>#4287f5</code>. There are six slots, each capable of taking on a value from <code>0</code> to <code>f</code>. That gives us a total of <code>16 × 16 × ... × 16 = 16<sup>6</sup> = 16,777,216</code> values—the same result as before.
 
-Or, if you're using the decimal RGB format, the math still pans out: $$256 \times 256 \times 256 = 16,777,216$$.
+Or, if you're using the decimal RGB format, the math still pans out: <code>256 × 256 × 256 = 16,777,216</code>.
 
 #### What Are 8-Bit Colors?
 
-On older systems with limited memory, colors were represented using just eight bits (one byte). These **8-bit colors** had a very limited palette, which meant that most computer graphics didn't have gradual color transitions (so images looked very pixelated/grainy). With only $$8$$ bits to work with, you are limited to just $$2^8 =256$$ colors!
+On older systems with limited memory, colors were represented using just eight bits (one byte). These **8-bit colors** had a very limited palette, which meant that most computer graphics didn't have gradual color transitions (so images looked very pixelated/grainy). With only <code>8</code> bits to work with, you are limited to just <code>2<sup>8</sup> = 256</code> colors!
 
 {% include picture.html img="8-bit" ext="png" alt="An 8-bit color palette" %}
 
-Naturally, you may be wondering: How did they split $$8$$ bits evenly among red, green, and blue? After all, $$8$$ isn't divisible by three!
+Naturally, you may be wondering: How did they split <code>8</code> bits evenly among red, green, and blue? After all, <code>8</code> isn't divisible by three!
 
 Well, the answer is that *they didn't*. The process of splitting these bits among the color components is called [color quantization](https://en.wikipedia.org/wiki/8-bit_color#Color_quantization), and the most common method (known as **8-bit truecolor**) split the bits as 3-3-2 red-green-blue. Apparently, this is because the human eye is less sensitive to blue light than the other two, and thus it simply made sense to distribute the bits heavily in favor of red and green and leave blue with one less bit to work with.
 
@@ -371,52 +370,52 @@ Well, the answer is that *they didn't*. The process of splitting these bits amon
 
 Now that we've covered decimal, binary, and hexadecimal, I'd like us to revisit the binary number system and learn how to represent negative numbers. Because so far, we've only looked at positive numbers. How do we store the negative sign?
 
-To give us some context, I'll assume that we're working with standard $$32$$-bit integers that most (all?) modern computers support. We could just as well look at $$64$$-bit or $$\text{N}$$-bit integers, but it's good to have a concrete basis for a discussion.
+To give us some context, I'll assume that we're working with standard <code>32</code>-bit integers that most (all?) modern computers support. We could just as well look at <code>64</code>-bit or <code>N</code>-bit integers, but it's good to have a concrete basis for a discussion.
 
-If we have $$32$$ bits to fiddle with, that means we can represent a total of $$2^{32} = 4,294,967,296$$ (4 billion) numbers. More generally, if you have $$\text{N}$$ bits to work with, you can represent $$2^{\text{N}}$$ values. But we'd like to split this number range evenly between negatives and positives.
+If we have <code>32</code> bits to fiddle with, that means we can represent a total of <code>2<sup>32</sup> = 4,294,967,296</code> (4 billion) numbers. More generally, if you have <code>N</code> bits to work with, you can represent <code>2<sup>N</sup></code> values. But we'd like to split this number range evenly between negatives and positives.
 
-Positive or negative... positive or negative. One thing or another thing—ring a bell? That sounds like it's binary in nature. And hey—we're already using binary to *store* our numbers! Why not reserve just a single bit to represent *the sign*? We can have the most significant (leading) bit be a $$0$$ when our number is positive and a $$1$$ when it's negative!
+Positive or negative... positive or negative. One thing or another thing—ring a bell? That sounds like it's binary in nature. And hey—we're already using binary to *store* our numbers! Why not reserve just a single bit to represent *the sign*? We can have the most significant (leading) bit be a <code>0</code> when our number is positive and a <code>1</code> when it's negative!
 
 > **Note**: This is once again one of those situations where you could just as well do the opposite, except you'd have to convince the whole world to follow your chosen convention.
 
-Earlier, when we were first looking at the binary number systems, I mentioned that you can strip leading zeros because they are meaningless. This is true except when you actually care about distinguishing between positive and negative numbers in binary. Now, we need to be careful—if you strip all leading zeros, you my be left with a leading $$1$$, and that would imply that your number is negative (in a signed number system).
+Earlier, when we were first looking at the binary number systems, I mentioned that you can strip leading zeros because they are meaningless. This is true except when you actually care about distinguishing between positive and negative numbers in binary. Now, we need to be careful—if you strip all leading zeros, you my be left with a leading <code>1</code>, and that would imply that your number is negative (in a signed number system).
 
-You can think of two's complement as a new *perspective* or lens through which we look at binary numbers. The number $$100_{2}$$ ordinarily means $$4_{10}$$ if we don't care about its sign (i.e., we assume it's **unsigned**). But if we do care, then we have to ask ourselves (or whoever provided us this number) whether it's a signed number.
+You can think of two's complement as a new *perspective* or lens through which we look at binary numbers. The number <code>100<sub>2</sub></code> ordinarily means <code>4<sub>10</sub></code> if we don't care about its sign (i.e., we assume it's **unsigned**). But if we do care, then we have to ask ourselves (or whoever provided us this number) whether it's a signed number.
 
 ### How Does Two's Complement Work?
 
-What does a leading $$1$$ actually represent when you expand a signed binary number, and how do we convert a positive number to a negative one, and vice versa?
+What does a leading <code>1</code> actually represent when you expand a signed binary number, and how do we convert a positive number to a negative one, and vice versa?
 
-For example, suppose we're looking at the number $$22_{10}$$, which is represented like this in unsigned binary:
+For example, suppose we're looking at the number <code>22<sub>10</sub></code>, which is represented like this in unsigned binary:
 
-$$10110_{2}$$
+<code>10110<sub>2</sub></code>
 
-Since we're looking at signed binary, we need to pad this number with an extra $$0$$ out in front (or else a leading $$1$$ would imply that it's negative):
+Since we're looking at signed binary, we need to pad this number with an extra <code>0</code> out in front (or else a leading <code>1</code> would imply that it's negative):
 
-$$010110_{2}$$
+<code>010110<sub>2</sub></code>
 
-Okay, so this is positive $$22_{10}$$. How do we represent $$-22_{10}$$ in binary?
+Okay, so this is positive <code>22<sub>10</sub></code>. How do we represent <code>-22<sub>10</sub></code> in binary?
 
 There are two ways we can do this: the intuitive (longer) approach and the "shortcut" approach. I'll show you both, but I'll start with the more intuitive one.
 
 #### The Intuitive Approach: What Does a Leading 1 Denote?
 
-Given an $$\text{N}$$-bit binary string, a leading $$1$$ in two's complement represents $$-1$$ multiplied by its corresponding power of two ($$2^{\text{N}-1}$$). A digit of $$1$$ in any other slot represents $$+1$$ times its corresponding power of two.
+Given an <code>N</code>-bit binary string, a leading <code>1</code> in two's complement represents <code>-1</code> multiplied by its corresponding power of two (<code>2<sup>N-1</sup></code>). A digit of <code>1</code> in any other slot represents <code>+1</code> times its corresponding power of two.
 
-For example, the signed number $$11010_{2}$$ has this expansion:
+For example, the signed number <code>11010<sub>2</sub></code> has this expansion:
 
-$$11010_{2} = -1(2^4) + 1(2^3) + 1(2^1) = -16_{10} + 8_{10} + 2_{10} = -6_{10}$$
+<code>11010<sub>2</sub> = -1(2<sup>4</sup>) + 1(2<sup>3</sup>) + 1(2<sup>1</sup>) = -16<sub>10</sub> + 8<sub>10</sub> + 2<sub>10</sub> = -6<sub>10</sub></code>
 
-We simply treat the leading $$1$$ as a negative, and that changes the resulting sum in our expansion.
+We simply treat the leading <code>1</code> as a negative, and that changes the resulting sum in our expansion.
 
 #### Two's Complement Shortcut: Flip the Bits and Add a 1
 
 To convert a number represented in two's complement binary to its opposite sign, follow these two simple steps:
 
-1. Flip all of the bits ($$0$$ becomes $$1$$ and vice versa).
-2. Add $$1$$ to the result.
+1. Flip all of the bits (<code>0</code> becomes <code>1</code> and vice versa).
+2. Add <code>1</code> to the result.
 
-For example, let's convert $$43_{10}$$ to $$-43_{10}$$ in binary:
+For example, let's convert <code>43<sub>10</sub></code> to <code>-43<sub>10</sub></code> in binary:
 
 ```
 +43 in binary: 0101011
@@ -424,9 +423,9 @@ Flipped:       1010100
 Add one:       1010101
 ```
 
-What is this number? It should be $$-43_{10}$$, so let's expand it by hand to verify:
+What is this number? It should be <code>-43<sub>10</sub></code>, so let's expand it by hand to verify:
 
-$$-1(2^6) + 1(2^4) + 1(2^2) + 1(2^0) = -64_{10} + 16_{10} + 4_{10} + 1_{10} = -43$$
+<code>-1(2<sup>6</sup>) + 1(2<sup>4</sup>) + 1(2<sup>2</sup>) + 1(2<sup>0</sup>) = -64<sub>10</sub> + 16<sub>10</sub> + 4<sub>10</sub> + 1<sub>10</sub> = -43</code>
 
 Sure enough, the process works!
 
@@ -434,16 +433,16 @@ Sure enough, the process works!
 
 We've seen that in a signed binary system, the most significant bit is reserved for the sign. What does this do to our number range? Effectively, it halves it!
 
-Let's consider $$32$$-bit integers to give us a concrete basis for discussion. Whereas before we had $$32$$ bits to work with for the magnitude of an unsigned number, we now have only $$31$$ for the magnitude of a signed number:
+Let's consider <code>32</code>-bit integers to give us a concrete basis for discussion. Whereas before we had <code>32</code> bits to work with for the magnitude of an unsigned number, we now have only <code>31</code> for the magnitude of a signed number:
 
 ```
 Unsigned magnitude bits:  [31 30 29 ... 0]
 Signed magnitude bits:    31 [30 29 ... 0]
 ```
 
-We went from having $$2^{32}$$ numbers to $$2^{31}$$ positive and negative numbers, which is precisely half of what we started with!
+We went from having <code>2<sup>32</sup></code> numbers to <code>2<sup>31</sup></code> positive and negative numbers, which is precisely half of what we started with!
 
-More generally, if you have an $$\text{N}$$-bit signed binary string, there are going to be $$2^{\text{N}}$$ values, split evenly between $$2^{\text{N}-1}$$ positives and $$2^{\text{N}-1}$$ negatives.
+More generally, if you have an <code>N</code>-bit signed binary string, there are going to be <code>2<sup>N</sup></code> values, split evenly between <code>2<sup>N-1</sup></code> positives and <code>2<sup>N-1</sup></code> negatives.
 
 Notice that the number zero gets bunched in with the positives and not the negatives:
 
@@ -463,9 +462,9 @@ Num:      0  1  1  1 ... 1
 Bits:    31 30 29 28 ... 0
 ```
 
-This is $$2^{31} - 1$$, which is $$2,147,483,647$$. In Java, this number is stored in `Integer.MAX_VALUE`, and in C++, it's `std::numeric_limits<int>::max()`.
+This is <code>2<sup>31</sup> - 1</code>, which is <code>2,147,483,647</code>. In Java, this number is stored in <code>Integer.MAX_VALUE</code>, and in C++, it's <code>std::numeric_limits<int>::max()</code>.
 
-More generally, for an $$\text{N}$$-bit system, the largest signed integer is $$2^{\text{N}-1}-1$$.
+More generally, for an <code>N</code>-bit system, the largest signed integer is <code>2<sup>N-1</sup>-1</code>.
 
 Why did we subtract a one at the end? Because as I mentioned in the previous section, the number zero gets grouped along with the positives when we split our number range:
 
@@ -478,7 +477,7 @@ So to get our largest signed integer, we need to subtract one—we've effectivel
 
 ##### Real-World Application: Video Game Currency
 
-In video games like RuneScape that use $$32$$-bit signed integers to represent in-game currency, the max "cash stack" that you can have caps out at exactly $$2^{31} - 1$$, which is roughly 2.1 billion.
+In video games like RuneScape that use <code>32</code>-bit signed integers to represent in-game currency, the max "cash stack" that you can have caps out at exactly <code>2<sup>31</sup> - 1</code>, which is roughly 2.1 billion.
 
 <figure>
     {% include picture.html img="max-cash-stack" ext="png" alt="The max cash stack you can have in Runescape is 2147m, or 2.1 billion." %}
@@ -489,22 +488,22 @@ Now you know why! If you're wondering why they don't just use unsigned ints, it'
 
 #### What Is the Smallest Signed 32-bit Integer?
 
-This occurs when we set the leading bit to be a $$1$$ and set all remaining bits to be a $$0$$:
+This occurs when we set the leading bit to be a <code>1</code> and set all remaining bits to be a <code>0</code>:
 
 ```
 Num:      1  0  0  0 ... 0
 Bits:    31 30 29 28 ... 0
 ```
 
-Why? Because recall that in the expansion of negative numbers in two's complement binary, the leading $$1$$ is a $$-1$$ times $$2^{\text{N}-1}$$, and a $$1$$ in any other position will be treated as $$+1$$ times its corresponding power of two. Since we want the smallest negative number, we don't want any positive terms, as those take away from our magnitude. So we set all remaining bits to be $$0$$.
+Why? Because recall that in the expansion of negative numbers in two's complement binary, the leading <code>1</code> is a <code>-1</code> times <code>2<sup>N-1</sup></code>, and a <code>1</code> in any other position will be treated as <code>+1</code> times its corresponding power of two. Since we want the smallest negative number, we don't want any positive terms, as those take away from our magnitude. So we set all remaining bits to be <code>0</code>.
 
-**Answer**: $$-2^{31}$$
+**Answer**: <code>-2<sup>31</sup></code>
 
-In Java, this value is stored in `Integer.MIN_VALUE`.
+In Java, this value is stored in <code>Integer.MIN_VALUE</code>.
 
-In C++, it's in `std::numeric_limits<int>::min()`.
+In C++, it's in <code>std::numeric_limits<int>::min()</code>.
 
-Generalizing things once again, if we have an $$\text{N}$$-bit system, the smallest representable signed int is $$-2^{\text{N}-1}$$.
+Generalizing things once again, if we have an <code>N</code>-bit system, the smallest representable signed int is <code>-2<sup>N-1</sup></code>.
 
 ## Basic Arithmetic in the Binary Number System
 
@@ -516,9 +515,9 @@ We'll first revisit what we learned in elementary school for decimal numbers and
 
 To add two numbers in the decimal number system, you stack them on top of one another visually and work your way from right to left, adding two digits and "carrying the one" as needed.
 
-Now you should know what carrying the one really means: When you run out of digits to represent something in your fixed-base number system (e.g., $$13$$ isn't a digit in base $$10$$), you represent the part that you can in the current digits place and move over to the next power of your base (the "column" to the left of your current one).
+Now you should know what carrying the one really means: When you run out of digits to represent something in your fixed-base number system (e.g., <code>13</code> isn't a digit in base <code>10</code>), you represent the part that you can in the current digits place and move over to the next power of your base (the "column" to the left of your current one).
 
-For example, let's add $$24$$ and $$18$$ in decimal:
+For example, let's add <code>24</code> and <code>18</code> in decimal:
 
 ```
   24
@@ -527,7 +526,7 @@ For example, let's add $$24$$ and $$18$$ in decimal:
   42
 ```
 
-We first add the $$4$$ and $$8$$ to get $$12$$, which is not a digit we support in the decimal number system. So we represent the part that we can ($$2$$) and carry the remaining value (ten) over to the next column as a $$1$$ ($$1 \times 10^1 = 10_{10}$$). There, we have $$1 + 2 + 1 = 4$$:
+We first add the <code>4</code> and <code>8</code> to get <code>12</code>, which is not a digit we support in the decimal number system. So we represent the part that we can (<code>2</code>) and carry the remaining value (ten) over to the next column as a <code>1</code> (<code>1 × 10<sup>1</sup> = 10<sub>10</sub></code>). There, we have <code>1 + 2 + 1 = 4</code>:
 
 ```
       1  <-- carried
@@ -537,7 +536,7 @@ We first add the $$4$$ and $$8$$ to get $$12$$, which is not a digit we support 
       42
 ```
 
-Now, let's add these same two numbers ($$24_{10}$$ and $$18_{10}$$) using the binary number system:
+Now, let's add these same two numbers (<code>24<sub>10</sub></code> and <code>18<sub>10</sub></code>) using the binary number system:
 
 ```
   11000
@@ -548,13 +547,13 @@ Now, let's add these same two numbers ($$24_{10}$$ and $$18_{10}$$) using the bi
 
 We work from right to left:
 
-- Ones place: $$0 + 0 = 0$$
-- Twos place: $$0 + 1 = 1$$
-- Fours place: $$0 + 0 = 0$$
-- Eights place: $$1 + 0 = 1$$
-- Sixteens place: $$1 + 1 = 10_{2}$$ (two)
+- Ones place: <code>0 + 0 = 0</code>
+- Twos place: <code>0 + 1 = 1</code>
+- Fours place: <code>0 + 0 = 0</code>
+- Eights place: <code>1 + 0 = 1</code>
+- Sixteens place: <code>1 + 1 = 10<sub>2</sub></code> (two)
 
-That last step deserves some clarification: When we try to add the two ones, we get $$1_{2} + 1_{2} = 10_{2}$$ (two), so we put a $$0$$ in the current column and carry over the $$1$$ to the next power of two, where we have a bunch of implicit leading zeros:
+That last step deserves some clarification: When we try to add the two ones, we get <code>1<sub>2</sub> + 1<sub>2</sub> = 10<sub>2</sub></code> (two), so we put a <code>0</code> in the current column and carry over the <code>1</code> to the next power of two, where we have a bunch of implicit leading zeros:
 
 ```
                1      <-- carry bits
@@ -564,13 +563,13 @@ That last step deserves some clarification: When we try to add the two ones, we 
 0000  ...    00101010
 ```
 
-In that column, $$1 (\text{carried}) + 0 (\text{implicit}) = 1$$.
+In that column, <code>1 (carried) + 0(implicit) = 1</code>.
 
 If we expand the result, we'll find that it's the same answer we got over in decimal:
 
-$$1(2^5) + 1(2^3) + 1(2^1) = 32 + 8 + 2 = 42_{10}$$
+<code>1(2<sup>5</sup>) + 1(2<sup>3</sup>) + 1(2<sup>1</sup>) = 32 + 8 + 2 = 42<sub>10</sub></code>
 
-Let's look at one more example to get comfortable with carrying bits in binary addition: $$22_{10} + 14_{10}$$, which we know to be $$36_{10}$$:
+Let's look at one more example to get comfortable with carrying bits in binary addition: <code>22<sub>10</sub> + 14<sub>10</sub></code>, which we know to be <code>36<sub>10</sub></code>:
 
 ```
   10110
@@ -579,9 +578,9 @@ Let's look at one more example to get comfortable with carrying bits in binary a
  100100
 ```
 
-Something interesting happens when we look at the twos place (the $$2^1$$ column): We add $$1_{2}$$ to $$1_{2}$$, giving us two ($$10_{2}$$), so we put a zero in the $$2^1$$ column and carry the remaining one.
+Something interesting happens when we look at the twos place (the <code>2<sup>1</sup></code> column): We add <code>1<sub>2</sub></code> to <code>1<sub>2</sub></code>, giving us two (<code>10<sub>2</sub></code>), so we put a zero in the <code>2<sup>1</sup></code> column and carry the remaining one.
 
-Now we have three ones in the $$2^2$$ column: $$1_{2}(\text{carried}) + 1_{2}(\text{operand1}) + 1_{2}(\text{operand2}) = 11_{2}$$ (three). So we put a one in the $$2^2$$ column and carry a one yet again. Rinse and repeat!
+Now we have three ones in the <code>2<sup>2</sup></code> column: <code>1<sub>2</sub>(carried) + 1<sub>2</sub>(operand1) + 1<sub>2</sub>(operand2) = 11<sub>2</sub></code> (three). So we put a one in the <code>2<sup>2</sup></code> column and carry a one yet again. Rinse and repeat!
 
 ```
                1111    <-- carry bits
@@ -593,19 +592,19 @@ Now we have three ones in the $$2^2$$ column: $$1_{2}(\text{carried}) + 1_{2}(\t
 
 Once again, it's a good idea to expand the result so you can verify your work:
 
-$$1(2^5) + 1(2^2) = 32_{10} + 4_{10} = 36_{10}$$
+<code>1(2<sup>5</sup>) + 1(2<sup>2</sup>) = 32<sub>10</sub> + 4<sub>10</sub> = 36<sub>10</sub></code>
 
-> **Note**: We've only looked at examples of adding two binary numbers, but you could just as well stack $$x$$ numbers on top of one another and add them in binary, just like you would in decimal. How far ahead you need to carry your ones depends on the result that you get in a particular column, represented as a binary string.
+> **Note**: We've only looked at examples of adding two binary numbers, but you could just as well stack <code>x</code> numbers on top of one another and add them in binary, just like you would in decimal. How far ahead you need to carry your ones depends on the result that you get in a particular column, represented as a binary string.
 
 ### Subtracting Binary Numbers
 
-Subtraction is addition with a negative operand: $$\text{a} - \text{b} = \text{a} + (-\text{b})$$. Now that we know how to represent negative numbers in the binary system thanks to two's complement, this should be a piece of cake: **negate the second operand and perform addition**.
+Subtraction is addition with a negative operand: <code>a - b = a + (-b)</code>. Now that we know how to represent negative numbers in the binary system thanks to two's complement, this should be a piece of cake: **negate the second operand and perform addition**.
 
-For example, what's $$12_{10} - 26_{10}$$? In decimal, we know this to be $$-14_{10}$$. Over in binary, we know that $$12_{10}$$ is $$01100$$. What about $$-26_{10}$$? We'll represent that using two's complement.
+For example, what's <code>12<sub>10</sub> - 26<sub>10</sub></code>? In decimal, we know this to be <code>-14<sub>10</sub></code>. Over in binary, we know that <code>12<sub>10</sub></code> is <code>01100</code>. What about <code>-26<sub>10</sub></code>? We'll represent that using two's complement.
 
-We start by first representing $$26_{10}$$ in binary:
+We start by first representing <code>26<sub>10</sub></code> in binary:
 
-$$+26_{10} = 011010_{2}$$
+<code>+26<sub>10</sub> = 011010<sub>2</sub></code>
 
 Now we negate it by flipping the bits and adding one:
 
@@ -627,7 +626,7 @@ Stack up your operands and add them like we did before:
 
 Notice that the result has a leading one, which we know denotes a negative number in signed binary. So we at least got the sign part right! Let's check the magnitude:
 
-$$-1(2^5) + 1(2^4) + 1(2^1) = -32_{10} + 16_{10} + 2_{10} = -14_{10}$$
+<code>-1(2<sup>5</sup>) + 1(2<sup>4</sup>) + 1(2<sup>1</sup>) = -32<sub>10</sub> + 16<sub>10</sub> + 2<sub>10</sub> = -14<sub>10</sub></code>
 
 See what I mean? Adding and subtracting numbers in the binary number system is just as easy as it is over in decimal.
 
@@ -641,7 +640,7 @@ x 12
 ————
 ```
 
-Remember the process? We multiply the $$2$$ by each digit in the first multiplicand and write out the result under the bar:
+Remember the process? We multiply the <code>2</code> by each digit in the first multiplicand and write out the result under the bar:
 
 ```
   21
@@ -650,7 +649,7 @@ x 12
   42
 ```
 
-Then we move on to the $$1$$ in $$12$$ and repeat the process, but adding a $$0$$ in the right column of the result. Add the two intermediate products to get the answer:
+Then we move on to the <code>1</code> in <code>12</code> and repeat the process, but adding a <code>0</code> in the right column of the result. Add the two intermediate products to get the answer:
 
 ```
    21
@@ -664,7 +663,7 @@ x  12
 
 Guess what? The process is exactly the same in the binary number system!
 
-Let's multiply these same two numbers in binary. They are $$21_{10} = 010101$$ and $$12_{10} = 01100$$:
+Let's multiply these same two numbers in binary. They are <code>21<sub>10</sub> = 010101</code> and <code>12<sub>10</sub> = 01100</code>:
 
 ```
    010101
@@ -672,7 +671,7 @@ x   01100
 —————————
 ```
 
-Obviously, this is going to be more involved in binary since we're working with bits (and thus longer strings), but the logic is still the same. In fact, beyond having to write out so many intermediate results, we actually have it much easier over in binary. Whenever a digit is $$1$$, you simply copy down the first multiplicand, padded with zeros. Whenever it's a zero times the first multiplicand, the result is zero!
+Obviously, this is going to be more involved in binary since we're working with bits (and thus longer strings), but the logic is still the same. In fact, beyond having to write out so many intermediate results, we actually have it much easier over in binary. Whenever a digit is <code>1</code>, you simply copy down the first multiplicand, padded with zeros. Whenever it's a zero times the first multiplicand, the result is zero!
 
 ```
       010101
@@ -689,13 +688,13 @@ x      01100
 
 Expanding this in binary, we get:
 
-$$0011111100_{2} = 1(2^7) + 1(2^6) + 1(2^5) + 1(2^4) + 1(2^3) + 1(2^2) = 252_{10}$$
+<code>0011111100<sub>2</sub> = 1(2<sup>7</sup>) + 1(2<sup>6</sup>) + 1(2<sup>5</sup>) + 1(2<sup>4</sup>) + 1(2<sup>3</sup>) + 1(2<sup>2</sup>) = 252<sub>10</sub></code>
 
 Easy peasy. The same process applies regardless of whether your multiplicands are signed or unsigned.
 
 ### Dividing Binary Numbers
 
-Let's divide $$126_{10}$$ by $$12_{10}$$ using long division:
+Let's divide <code>126<sub>10</sub></code> by <code>12<sub>10</sub></code> using long division:
 
 ```
     0 1 0 . 5
@@ -712,7 +711,7 @@ Let's divide $$126_{10}$$ by $$12_{10}$$ using long division:
           0
 ```
 
-Answer: $$10.5$$.
+Answer: <code>10.5</code>.
 
 Now let's repeat the process over in the binary number system. Note that I'm going to strip leading zeros to make my life easier since we're working with two unsigned numbers:
 
@@ -757,19 +756,19 @@ Take things one digit at a time, and [reference this useful YouTube video](https
                  0 0 0 0
 ```
 
-Answer: $$01010.1$$.
+Answer: <code>01010.1</code>.
 
-What does the $$1$$ to the right of the decimal point represent? Well, in the decimal number system, anything to the right of the decimal point represents a negative power of ten: $$10^{-1}$$, $$10^{-2}$$, and so on. 
+What does the <code>1</code> to the right of the decimal point represent? Well, in the decimal number system, anything to the right of the decimal point represents a negative power of ten: <code>10<sup>-1</sup></code>, <code>10<sup>-2</sup></code>, and so on. 
 
-As you may have guessed, in the binary number system, these are $$2^{-1}$$, $$2^{-2}$$, and so on. So $$.1$$ above really means $$1(2^{-1})$$, which is $$1 / 2 = 0.5_{10}$$ in decimal. And of course, the part in front of the decimal point evaluates to $$10_{10}$$.
+As you may have guessed, in the binary number system, these are <code>2<sup>-1</sup></code>, <code>2<sup>-2</sup></code>, and so on. So <code>.1</code> above really means <code>1(2<sup>-1</sup>)</code>, which is <code>1 / 2 = 0.5<sub>10</sub></code> in decimal. And of course, the part in front of the decimal point evaluates to <code>10<sub>10</sub></code>.
 
-That gives us $$10_{10} + 0.5_{10} = 10.5$$. So our answer using binary long division is **exactly the same** as the one we got over in decimal!
+That gives us <code>10<sub>10</sub> + 0.5<sub>10</sub> = 10.5</code>. So our answer using binary long division is **exactly the same** as the one we got over in decimal!
 
 ### Integer Overflow and Underflow in Binary
 
-What happens if you try to add one to the largest representable $$\text{N}$$-bit signed integer?
+What happens if you try to add one to the largest representable <code>N</code>-bit signed integer?
 
-For example, if $$\text{N} = 32$$, we're really asking what happens if we try adding one to the largest representable $$32$$-bit signed int.
+For example, if <code>N = 32</code>, we're really asking what happens if we try adding one to the largest representable <code>32</code>-bit signed int.
 
 Let's give it a shot:
 
@@ -779,7 +778,7 @@ Let's give it a shot:
 ————————————————
 ```
 
-In the rightmost column, we'll get $$1_{2} + 1_{2} = 10_{2}$$, so that's a zero carry a one. But as a result, all of the remaining additions will be $$1_{2} + 1_{2}$$ since we'll always carry a one until we get to the leading bit:
+In the rightmost column, we'll get <code>1<sub>2</sub> + 1<sub>2</sub> = 10<sub>2</sub></code>, so that's a zero carry a one. But as a result, all of the remaining additions will be <code>1<sub>2</sub> + 1<sub>2</sub></code> since we'll always carry a one until we get to the leading bit:
 
 ```
     11111111111  <-- carry bits
@@ -789,9 +788,9 @@ In the rightmost column, we'll get $$1_{2} + 1_{2} = 10_{2}$$, so that's a zero 
     1000...00000     (-2^{N-1})
 ```
 
-And what number is that in signed binary? Hmm... Looks like it's the smallest representable negative number! What we've observed here is called **integer overflow**. When you try to go past the largest representable signed integer in a given $$\text{N}$$-bit system, the result *overflows* or *wraps around*.
+And what number is that in signed binary? Hmm... Looks like it's the smallest representable negative number! What we've observed here is called **integer overflow**. When you try to go past the largest representable signed integer in a given <code>N</code>-bit system, the result *overflows* or *wraps around*.
 
-What if we try to subtract one from the smallest representable $$\text{N}$$-bit signed integer? First, we'll represent $$-1_{10}$$ as a signed integer in binary:
+What if we try to subtract one from the smallest representable <code>N</code>-bit signed integer? First, we'll represent <code>-1<sub>10</sub></code> as a signed integer in binary:
 
 ```
 1 in binary: 0000...00001
@@ -809,7 +808,7 @@ Now let's add this to the smallest representable signed integer:
   1|0111...11111     (2^{N-1} - 1)
 ```
 
-Notice that the result carries an additional bit over, yielding a result that has $$\text{N}+1$$ bits. But our system only supports $$\text{N}$$ bits, so that leading $$1$$ is actually discarded. The result is the largest representable $$\text{N}$$-bit signed integer, and this is known as **integer underflow**.
+Notice that the result carries an additional bit over, yielding a result that has <code>N+1</code> bits. But our system only supports <code>N</code> bits, so that leading <code>1</code> is actually discarded. The result is the largest representable <code>N</code>-bit signed integer, and this is known as **integer underflow**.
 
 Overflow and underflow are things you should be mindful of in programs that are performing lots of computations, as you may end up getting unexpected results.
 
