@@ -17,18 +17,5 @@ td,
 th {
     text-align: left;
     padding: 0.5em 1em;
-}
-
-tr:not(:first-child) {
-    border-top: solid 2px var(--table-row-border-color);
-}
-
-tbody {
-    tr:nth-child(even) {
-        background-color: var(--table-row-bg-color-striped);
-    }
-    
-    tr:last-child {
-        border-bottom: solid 2px var(--table-row-border-color);
-    }
+    border: solid 3px var(--table-border-color);
 }

@@ -40,10 +40,9 @@
     --spoiler-bg-color: #eedbdb;
     --star-fill-color-filled: #49393B;
     --star-fill-color-empty: #adacac;
-    --table-header-bg-color: #4d4d4d;
-    --table-header-text-color: #e6e6e6;
-    --table-row-bg-color-striped: hsl(0, 0%, 96%);
-    --table-row-border-color: hsl(0, 0%, 92%);
+    --table-header-bg-color: #f8e8e8;
+    --table-header-text-color: var(--text-color-normal);
+    --table-border-color: var(--tag-bg-color);
     --tag-bg-color-hover: #49392D;
     --tag-bg-color: #eedbdb;
     // --tag-bg-color: #e6d0d0;
