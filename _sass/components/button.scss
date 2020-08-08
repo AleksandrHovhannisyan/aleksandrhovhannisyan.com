@@ -8,7 +8,6 @@
     justify-content: center;
     text-decoration: none;
     cursor: pointer;
-    @include transition(color, box-shadow, background-color);
 }
 
 .solid-button {

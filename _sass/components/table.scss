@@ -11,7 +11,6 @@ table {
 thead {
     background-color: var(--table-header-bg-color);
     color: var(--table-header-text-color);
-    @include transition(background-color, color);
 }
 
 td,
@@ -22,17 +21,14 @@ th {
 
 tr:not(:first-child) {
     border-top: solid 2px var(--table-row-border-color);
-    @include transition(border-color);
 }
 
 tbody {
     tr:nth-child(even) {
         background-color: var(--table-row-bg-color-striped);
-        @include transition(background-color);
     }
     
     tr:last-child {
         border-bottom: solid 2px var(--table-row-border-color);
-        @include transition(border-color);
     }
 }
