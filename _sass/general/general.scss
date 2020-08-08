@@ -44,11 +44,11 @@
 
 .skip-navigation {
     padding: 0.8em;
-    color: var(--nav-text-color);
     font-weight: map-get($font-weights, "normal");
     @include transition(color, background-color);
 
     &:focus {
+        color: white;
         background-color: var(--nav-link-bg-color-hover);
     }
 }
