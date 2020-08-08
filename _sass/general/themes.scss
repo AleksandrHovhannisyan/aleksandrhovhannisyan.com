@@ -9,6 +9,10 @@
     --button-text-color: white;
     // --card-bg-color: #fffdfd;
     --card-bg-color: #fffcfc;
+    --code-block-header-bg-color: #443334;
+    --code-block-bg-color: #312728;
+    --copy-code-button-bg-color: var(--scrollbar-thumb-bg-color);
+    --copy-code-button-bg-color-hover: var(--scrollbar-thumb-bg-color-hover);
     --footer-bg-color: var(--nav-bg-color);
     --footer-text-color: var(--nav-text-color);
     --form-bg-color: #f8e8e8;
@@ -32,7 +36,7 @@
     --nav-link-bg-color-hover: #4e4546;
     --nav-text-color: hsl(0deg 0% 90%);
     --post-title-bg-color: #4a4040;
-    --scrollbar-thumb-bg-color-hover: #977c7c;
+    --scrollbar-thumb-bg-color-hover: #bb9a9a;
     --scrollbar-thumb-bg-color: #796363;
     --scrollbar-track-bg-color: var(--nav-bg-color);
     --selection-bg-color: rgba(236, 208, 208, 0.749);

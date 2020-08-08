@@ -5,7 +5,7 @@
   border-radius: 5px;
 
   &, code {
-    background-color: $code-background;
+    background-color: var(--code-block-bg-color);
     color: $code-text;
   }
 
@@ -17,7 +17,7 @@
 
   // Base Style 
   pre {
-    background-color: $code-background;
+    background-color: var(--code-block-bg-color);
     color: transparent;
 
     &.highlight {

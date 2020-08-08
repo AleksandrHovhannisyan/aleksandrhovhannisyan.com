@@ -323,7 +323,7 @@
 
 .code-header {
     display: flex;
-    background-color: #3b3b3b;
+    background-color: var(--code-block-header-bg-color);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     box-shadow: 0 3px 3px 0px rgba(0, 0, 0, 0.3);
@@ -377,9 +377,10 @@
     align-items: center;
     cursor: pointer;
     display: flex;
+    font-family: $font-family-normal;
     font-size: 1rem;
-    background-color: #616161;
-    color: #e7e7e7;
+    background-color: var(--copy-code-button-bg-color);
+    color: #ffffff;
     padding: 0.4em 0.5em;
     border-radius: 5px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
@@ -398,9 +399,10 @@
     }
 
     &:focus, 
-    &:hover {
+    &:hover,
+    &.copied {
         color: black;
-        background-color: #adadad;
+        background-color: var(--copy-code-button-bg-color-hover);
     }
 
     &:active {
