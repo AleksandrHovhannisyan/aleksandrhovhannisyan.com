@@ -8,7 +8,7 @@ redirect_from: /blog/dev/github-pages-vs-netlify/
 
 Back when I had no clue what I was doing with this site, and it was nothing more than an HTML file with a single CSS stylesheet and some jQuery that I absolutely did not need, I was hosting it for free on GitHub Pages.
 
-Why? Because it was the most accessible option to me at the time. It also made sense—I didn't have to pay anything, and I already had a free domain right at my fingertips. It's a great option for people who just want to [create a personal website](/blog/getting-started-with-jekyll-and-github-pages) or document their software.
+Why? Because it was the most accessible option to me at the time. It also made sense—I didn't have to pay anything, and I already had a free domain right at my fingertips. It's a great option for people who just want to [create a personal website](/blog/dev/getting-started-with-jekyll-and-github-pages/) or document their software.
 
 But with time, I came to realize that GitHub Pages is actually fairly limited as a hosting service. Now, my site is hosted on Netlify under a custom domain, and I honestly couldn't be happier about having made the switch.
 
