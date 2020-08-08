@@ -67,16 +67,12 @@ body {
     min-height: 100vh;
     position: relative;
     @include transition(background-color);
-
-    section:last-of-type {
-        margin-bottom: $nav-height;
-    }
 }
 
 #page-content {
     grid-row: 1;
     min-width: 0; // https://css-tricks.com/preventing-a-grid-blowout/
-    padding-top: $nav-height;
+    padding: $nav-height 0;
     @include centered;
 }
 

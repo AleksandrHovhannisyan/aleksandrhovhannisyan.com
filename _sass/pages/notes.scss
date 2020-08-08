@@ -6,9 +6,9 @@
 $note-text-color: #3e464d;
 
 #notes {
-    grid-column: 1 / -1 !important;
+    grid-column: 1 / -1;
     margin-top: 0;
-    margin-bottom: 0 !important;
+    margin-bottom: -$nav-height;
 }
 
 .notes-board {
