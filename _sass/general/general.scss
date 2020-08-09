@@ -108,6 +108,7 @@ body {
     line-height: 1.6;
     min-height: 100vh;
     position: relative;
+    @include transition(background-color);
 }
 
 #page-content {
@@ -141,6 +142,7 @@ body {
 strong {
     color: var(--text-color-emphasis);
     font-weight: map-get($font-weights, "bold");
+    @include transition(color);
 }
 
 @include headings {
@@ -148,6 +150,7 @@ strong {
     margin-bottom: 0.5em;
     font-weight: map-get($font-weights, "bold");
     line-height: 1.4;
+    @include transition(color);
 }
 
 .title, .subtitle, .heading {
@@ -177,6 +180,7 @@ p {
     color: var(--text-color-normal);
     line-height: 1.6;
     margin-bottom: $paragraph-spacing;
+    @include transition(color);
 }
 
 .heading-with-image {
@@ -230,7 +234,7 @@ p {
         opacity: 0;
         display: flex;
         margin-left: 4px;
-        @include transition(visibility, opacity, border);
+        @include transition(visibility, opacity, border, color);
     }
 }
 
@@ -265,7 +269,7 @@ li {
     margin-bottom: 0.75em;
     padding: 0.25em 0.5em;
     width: 100%;
-    @include transition(border-color, box-shadow);
+    @include transition(background-color, border-color, box-shadow, color);
 
     &:focus {
         outline: none;
@@ -279,9 +283,11 @@ label {
     display: block;
     font-weight: map-get($font-weights, "bold");
     margin-bottom: 0.3125em;
+    @include transition(color);
 
     &.required::after {
         color: var(--input-required-asterisk-color);
         content: " *";
+        @include transition(color);
     }
 }

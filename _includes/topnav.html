@@ -17,6 +17,14 @@
                     {% for link in navLinks %}
                         <li class="nav-item"><a class="nav-link" href="/{{ link | downcase }}/" {% if page.title == link %}aria-current="page" id="active-nav-link"{% endif %}>{{ link }}</a></li>
                     {% endfor %}
+                    <li class="nav-item" id="theme-switch-container">
+                        <!-- Inspiration: https://create-react-app.dev/ -->
+                        <button id="theme-switch" title="Toggle theme">
+                            <img aria-hidden="true" id="moon" src="/assets/img/moon.png" alt="🌜" />
+                            <img aria-hidden="true" id="sun" src="/assets/img/sun.png" alt="🌞" />
+                            <span id="knob"></span>
+                        </button>
+                    </li>
                 </ul>
             </div>
         </div>

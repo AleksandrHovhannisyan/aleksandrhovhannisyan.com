@@ -11,6 +11,7 @@ table {
 thead {
     background-color: var(--table-header-bg-color);
     color: var(--table-header-text-color);
+    @include transition(background-color, color);
 }
 
 td,

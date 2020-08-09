@@ -29,6 +29,7 @@
     margin-bottom: 60px;
     max-width: $form-max-width;
     padding: 30px;
+    @include transition(background-color);
 
     * {
         font-family: $font-family-normal;
@@ -88,6 +89,7 @@ input.honeypot {
         font-weight: map-get($font-weights, "normal");
         align-self: center;
         grid-column: 2;
+        @include transition(color);
     }
 }
 
@@ -99,12 +101,14 @@ input.honeypot {
 
 .linkedin-square {
     background: white;
+    /* Nice little hack for getting a perfect fill */
     border-radius: 4px;
     fill: $brand-linkedin;
 }
 
 .github {
-    fill: $brand-github;
+    @include transition(fill);
+    @include themed(fill, $brand-github, $brand-github-alt);
 }
 
 .stack-exchange {
