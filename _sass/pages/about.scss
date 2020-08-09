@@ -5,7 +5,6 @@
     display: grid;
     grid-template-columns: minmax(0, $page-max-width);
     row-gap: $paragraph-spacing;
-    margin-bottom: $nav-height;
 
     a {
         @include underlinedLink;
