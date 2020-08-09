@@ -191,7 +191,7 @@
         --switch-orb-height: 25px;
         --switch-orb-width: 25px; 
         background-color: var(--theme-switch-knob-bg-color);
-        border: 1.3px solid var(--theme-switch-knob-border-color);
+        border: 1.2px solid var(--theme-switch-knob-border-color);
         box-shadow: var(--theme-switch-knob-shadow);
         border-radius: 50%;
         height: var(--switch-orb-height);
@@ -202,7 +202,6 @@
         @include transition(left, right, background-color, border, width, height);
 
         .dark & {
-            box-shadow: 0 0 5px 0 white;
             left: calc(var(--switch-width) - var(--switch-orb-width));
             right: var(--orb-distance-from-edge);
         }
