@@ -5,25 +5,6 @@ function mount(root, ...nodes) {
   nodes.forEach((node) => root.appendChild(node));
 }
 
-(function () {
-  const themeSwitch = document.getElementById('theme-switch');
-  themeSwitch.addEventListener('click', toggleColorTheme);
-})();
-
-function setColorTheme(newTheme, oldTheme) {
-  html.classList.add(newTheme);
-  html.classList.remove(oldTheme);
-  localStorage.setItem('theme', newTheme);
-}
-
-function toggleColorTheme() {
-  if (html.classList.contains('dark')) {
-    setColorTheme('light', 'dark');
-  } else {
-    setColorTheme('dark', 'light');
-  }
-}
-
 const topnav = document.getElementById('topnav');
 const mobileNavbarToggle = topnav.querySelector('#navbar-toggle');
 mobileNavbarToggle.addEventListener('click', toggleMobileNavbarVisibility);

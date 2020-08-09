@@ -8,7 +8,6 @@
 
 .block-equation {
     text-align: center;
-    @include transition(color);
     
     .katex {
         display: inline-block;

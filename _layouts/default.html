@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en-US" class="light">
+<html lang="en-US">
     <head>
         <!-- Metadata for search engines -->
         <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
@@ -32,12 +32,11 @@
         {% else %}
             <title>{{ page.title }} | {{ site.title }}</title>
         {% endif %}
-        <!-- Load the user's last selected theme -->
-        <script>
-            if (localStorage.getItem('theme')) {
-                document.documentElement.className = localStorage.getItem('theme');
-            }
-        </script>
+        <!-- For performance (https://medium.com/clio-calliope/making-google-fonts-faster-aadf3c02a36d) -->
+        <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Karla-Regular.ttf" crossorigin>
+        <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Karla-Italic.ttf" crossorigin>
+        <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Karla-Bold.ttf" crossorigin>
+        <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Karla-BoldItalic.ttf" crossorigin>
     </head>
     <body>
         {% include topnav.html %}

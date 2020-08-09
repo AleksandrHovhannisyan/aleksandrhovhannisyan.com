@@ -2,6 +2,48 @@
 @import 'fonts';
 @import 'settings';
 
+// For performance (https://medium.com/clio-calliope/making-google-fonts-faster-aadf3c02a36d)
+/* karla-regular - latin */
+@font-face {
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Karla'), local('Karla-Regular'), url('/assets/fonts/Karla-Regular.ttf') format('truetype');
+    font-display: swap;
+}
+/* karla-italic - latin */
+@font-face {
+    font-family: 'Karla';
+    font-style: italic;
+    font-weight: 400;
+    src: local('Karla Italic'), local('Karla-Italic'), url('/assets/fonts/Karla-Italic.ttf') format('truetype');
+    font-display: swap;
+}
+/* karla-700 - latin */
+@font-face {
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Karla Bold'), local('Karla-Bold'), url('/assets/fonts/Karla-Bold.ttf') format('truetype');
+    font-display: swap;
+}
+/* karla-700italic - latin */
+@font-face {
+    font-family: 'Karla';
+    font-style: italic;
+    font-weight: 700;
+    src: local('Karla Bold Italic'), local('Karla-BoldItalic'), url('/assets/fonts/Karla-BoldItalic.ttf') format('truetype');
+    font-display: swap;
+}
+/* reenie-beanie-regular - latin */
+@font-face {
+    font-family: 'Reenie Beanie';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Reenie Beanie'), local('ReenieBeanie'), url('/assets/fonts/ReenieBeanie-Regular.ttf') format('truetype');
+    font-display: swap;
+}
+
 ::selection {
     background-color: var(--selection-bg-color);
     color: var(--selection-text-color);
@@ -44,11 +86,11 @@
 
 .skip-navigation {
     padding: 0.8em;
-    color: var(--nav-text-color);
     font-weight: map-get($font-weights, "normal");
     @include transition(color, background-color);
 
     &:focus {
+        color: white;
         background-color: var(--nav-link-bg-color-hover);
     }
 }
@@ -66,7 +108,6 @@ body {
     line-height: 1.6;
     min-height: 100vh;
     position: relative;
-    @include transition(background-color);
 }
 
 #page-content {
@@ -100,7 +141,6 @@ body {
 strong {
     color: var(--text-color-emphasis);
     font-weight: map-get($font-weights, "bold");
-    @include transition(color);
 }
 
 @include headings {
@@ -108,7 +148,6 @@ strong {
     margin-bottom: 0.5em;
     font-weight: map-get($font-weights, "bold");
     line-height: 1.4;
-    @include transition(color);
 }
 
 .title, .subtitle, .heading {
@@ -138,7 +177,6 @@ p {
     color: var(--text-color-normal);
     line-height: 1.6;
     margin-bottom: $paragraph-spacing;
-    @include transition(color);
 }
 
 .heading-with-image {
@@ -192,7 +230,7 @@ p {
         opacity: 0;
         display: flex;
         margin-left: 4px;
-        @include transition(visibility, opacity, border, color);
+        @include transition(visibility, opacity, border);
     }
 }
 
@@ -227,7 +265,7 @@ li {
     margin-bottom: 0.75em;
     padding: 0.25em 0.5em;
     width: 100%;
-    @include transition(background-color, border-color, box-shadow, color);
+    @include transition(border-color, box-shadow);
 
     &:focus {
         outline: none;
@@ -241,11 +279,9 @@ label {
     display: block;
     font-weight: map-get($font-weights, "bold");
     margin-bottom: 0.3125em;
-    @include transition(color);
 
     &.required::after {
         color: var(--input-required-asterisk-color);
         content: " *";
-        @include transition(color);
     }
 }

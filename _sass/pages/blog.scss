@@ -39,6 +39,7 @@
     display: block;
     padding: 0;
     margin: 0;
+    height: fit-content;
 }
 
 .post-preview-body {
@@ -61,10 +62,6 @@
         object-fit: cover;
         object-position: center;
         position: absolute;
-
-        html.dark & {
-            filter: brightness(.8) contrast(1.2);
-        }
     }
 }
 
@@ -78,7 +75,6 @@
     align-items: center;
     font-size: 1em;
     min-height: 4rem;
-    @include transition(background-color);
 }
 
 .post-preview-description {
@@ -158,11 +154,9 @@
         display: flex;
         align-items: center;
         margin: 0 1em 1em 0;
-        @include transition(color);
     }
 
     .meta-icon {
-        @include transition(fill);
         fill: var(--text-color-normal);
         height: 1em;
         margin-right: 5px;
@@ -221,7 +215,6 @@
             font-size: 0.875em;
             font-style: italic;
             text-align: center;
-            @include transition(color);
         }
 
         picture {
@@ -259,7 +252,6 @@
     }
 
     ol li::marker {
-        @include transition(color);
         color: var(--text-color-emphasis);
         font-weight: map-get($font-weights, "bold");
         margin-right: 5px;
@@ -267,16 +259,14 @@
 
     ul,
     ol {
-        @include transition(color);
         padding-left: 2em;
     }
 
     blockquote {
         background: var(--blockquote-bg-color);
-        border-left: 4px solid #6b6a6a;
+        border-left: 4px solid;
         margin-left: 1.2rem;
         padding: 0.5em 1.2em;
-        @include transition(color, background-color);
 
         p {
             color: var(--blockquote-text-color);
@@ -307,7 +297,6 @@
     }
 
     .spoiler {    
-        margin-bottom: 1px 0;
         @include transition(color, background-color);
         
         &,
@@ -320,7 +309,7 @@
             &,
             * {
                 background-color: transparent;
-                color: var(--blockquote-text-color);
+                color: var(--text-color-normal);
             }
 
             code {
@@ -333,7 +322,7 @@
 
 .code-header {
     display: flex;
-    background-color: #3b3b3b;
+    background-color: var(--code-block-header-bg-color);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     box-shadow: 0 3px 3px 0px rgba(0, 0, 0, 0.3);
@@ -369,7 +358,6 @@
     font-weight: map-get($font-weights, "normal");
     margin: 0;
     word-break: break-all;
-    @include transition(color);
 
     &::before {
         content: "📂";
@@ -388,9 +376,10 @@
     align-items: center;
     cursor: pointer;
     display: flex;
+    font-family: $font-family-normal;
     font-size: 1rem;
-    background-color: #616161;
-    color: #e7e7e7;
+    background-color: var(--copy-code-button-bg-color);
+    color: #ffffff;
     padding: 0.4em 0.5em;
     border-radius: 5px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
@@ -409,9 +398,10 @@
     }
 
     &:focus, 
-    &:hover {
+    &:hover,
+    &.copied {
         color: black;
-        background-color: #adadad;
+        background-color: var(--copy-code-button-bg-color-hover);
     }
 
     &:active {
@@ -437,5 +427,4 @@ code {
     font-family: Monaco, Consolas, 'Courier New', monospace;
     font-size: 0.875em;
     padding: 3px 6px;
-    @include transition(color, background-color);
 }

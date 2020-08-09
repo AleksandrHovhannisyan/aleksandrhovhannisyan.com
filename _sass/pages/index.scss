@@ -14,10 +14,6 @@
     padding: 70px 1.2rem;
     position: relative;
 
-    &, * {
-        @include transition(color);
-    }
-
     #headshot {
         background-color: var(--hero-bg-color);
         border: 5px solid var(--hero-bg-color);

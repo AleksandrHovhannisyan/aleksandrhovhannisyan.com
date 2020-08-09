@@ -56,14 +56,6 @@
     }
 }
 
-@mixin themed($attribute, $light, $dark) {
-    #{$attribute}: $light;
-
-    .dark & {
-        #{$attribute}: $dark;
-    }
-}
-
 @mixin selectionResistantColor($color) {
     &, &::selection {
         color: $color;

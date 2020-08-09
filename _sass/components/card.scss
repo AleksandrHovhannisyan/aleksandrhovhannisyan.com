@@ -14,7 +14,7 @@
     position: relative;
     row-gap: calc(var(--card-padding) / 2);
     transform: none;
-    @include transition(background-color, box-shadow, transform);
+    @include transition(box-shadow, transform);
 
     &.interactive {
         cursor: pointer;
@@ -50,7 +50,7 @@
         position: absolute;
         top: 0;
         width: 100%;
-        @include transition(background-color, color, opacity);
+        @include transition(opacity);
 
         // Whatever icon is being used
         svg {
