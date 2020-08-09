@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en-US">
+<html lang="en-US" class="light">
     <head>
         <!-- Metadata for search engines -->
         <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
@@ -37,6 +37,12 @@
         <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Karla-Italic.ttf" crossorigin>
         <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Karla-Bold.ttf" crossorigin>
         <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Karla-BoldItalic.ttf" crossorigin>
+        <!-- Load the user's last selected theme -->
+        <script>
+            if (localStorage.getItem('theme')) {
+                document.documentElement.className = localStorage.getItem('theme');
+            }
+        </script>
     </head>
     <body>
         {% include topnav.html %}
