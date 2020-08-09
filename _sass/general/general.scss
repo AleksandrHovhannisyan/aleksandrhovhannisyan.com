@@ -2,6 +2,48 @@
 @import 'fonts';
 @import 'settings';
 
+// For performance (https://medium.com/clio-calliope/making-google-fonts-faster-aadf3c02a36d)
+/* karla-regular - latin */
+@font-face {
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Karla'), local('Karla-Regular'), url('/assets/fonts/Karla-Regular.ttf') format('truetype');
+    font-display: swap;
+}
+/* karla-italic - latin */
+@font-face {
+    font-family: 'Karla';
+    font-style: italic;
+    font-weight: 400;
+    src: local('Karla Italic'), local('Karla-Italic'), url('/assets/fonts/Karla-Italic.ttf') format('truetype');
+    font-display: swap;
+}
+/* karla-700 - latin */
+@font-face {
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Karla Bold'), local('Karla-Bold'), url('/assets/fonts/Karla-Bold.ttf') format('truetype');
+    font-display: swap;
+}
+/* karla-700italic - latin */
+@font-face {
+    font-family: 'Karla';
+    font-style: italic;
+    font-weight: 700;
+    src: local('Karla Bold Italic'), local('Karla-BoldItalic'), url('/assets/fonts/Karla-BoldItalic.ttf') format('truetype');
+    font-display: swap;
+}
+/* reenie-beanie-regular - latin */
+@font-face {
+    font-family: 'Reenie Beanie';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Reenie Beanie'), local('ReenieBeanie'), url('/assets/fonts/ReenieBeanie-Regular.ttf') format('truetype');
+    font-display: swap;
+}
+
 ::selection {
     background-color: var(--selection-bg-color);
     color: var(--selection-text-color);
