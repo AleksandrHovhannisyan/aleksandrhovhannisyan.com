@@ -308,7 +308,6 @@
     }
 
     .spoiler {    
-        margin-bottom: 1px 0;
         @include transition(color, background-color);
         
         &,
