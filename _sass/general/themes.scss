@@ -26,7 +26,7 @@ html.light {
     --nav-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.8);
     --nav-link-bg-color-hover: #444647;
     --nav-text-color: hsl(0, 0%, 85%);
-    --post-title-bg-color: #5B6771;
+    --post-title-bg-color: #465058;
     --scrollbar-thumb-bg-color-hover: #adadad;
     --scrollbar-thumb-bg-color: #858585;
     --scrollbar-track-bg-color: var(--nav-bg-color);
@@ -42,8 +42,8 @@ html.light {
     --tag-bg-color-hover: #35647a;
     --tag-bg-color: #dae3e7;
     --tag-text-color-hover: white;
-    --tag-text-color: #35647a;
-    --text-color-emphasis: #384950;
+    --tag-text-color: var(--text-color-emphasis);
+    --text-color-emphasis: #2e3c42;
     --text-color-normal: #586069;
     --theme-switch-bg-color: #747474;
     --theme-switch-knob-active-shadow: none;
