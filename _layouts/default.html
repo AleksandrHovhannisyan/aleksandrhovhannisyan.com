@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en-US" class="light">
+<html lang="en-US">
     <head>
         <!-- Metadata for search engines -->
         <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
@@ -32,12 +32,6 @@
         {% else %}
             <title>{{ page.title }} | {{ site.title }}</title>
         {% endif %}
-        <!-- Load the user's last selected theme -->
-        <script>
-            if (localStorage.getItem('theme')) {
-                document.documentElement.className = localStorage.getItem('theme');
-            }
-        </script>
     </head>
     <body>
         {% include topnav.html %}
