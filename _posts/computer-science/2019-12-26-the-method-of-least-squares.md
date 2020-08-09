@@ -1,6 +1,6 @@
 ---
 title: "Mastering the Method of Least Squares"
-description: Learn how the method of least squares works under the hood. Applications of the least squares method include linear and polynomial regression (data fitting).
+description: Learn how the method of least squares works under the hood. Applications of the least squares method include linear and polynomial regression.
 keywords: [method of least squares]
 tags: [computer-science, math]
 needs_latex: true

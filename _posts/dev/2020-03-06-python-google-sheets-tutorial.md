@@ -2,7 +2,7 @@
 title: "Python Google Sheets Tutorial"
 description: In this quick tutorial, you'll learn how to automate data entry tasks using the Google Cloud Platform and the Python Google Sheets API, with minimal setup.
 keywords: [python google sheets]
-tags: [dev, python, apis, automation]
+tags: [dev, python, apis, gcp]
 ---
 
 If you're as lazy as I am, you'll come to realize at a certain point that something you've been doing by hand can easily be automated. That's the kind of laziness that makes the difference between spending hours on doing something by hand versus pressing Enter once and kicking up your feet to relax.
