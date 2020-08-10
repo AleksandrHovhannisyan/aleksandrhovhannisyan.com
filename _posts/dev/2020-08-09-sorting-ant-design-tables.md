@@ -283,7 +283,7 @@ const Table = props => {
       };
     }
 
-    return { ...otherColumnProps, dataIndex };
+    return column;
   });
 
   return (
