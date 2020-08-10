@@ -7,18 +7,25 @@ tags: [computer-science, algorithms]
 
 If you're studying operating systems and looking for an in-depth explanation of the most common scheduling algorithms, you've come to the right place. In this post, we'll take a look at a number of specific scheduling algorithms. I'll provide plenty of accompanying visuals to help you understand them better. Let's get started!
 
-{% include linkedHeading.html heading="Prerequisite Terminology" level=2 %}
+{% include toc.md %}
+
+## Prerequisite Terminology
 
 Before proceeding, make sure you understand the following terms:
 
-- **Scheduler**: A special system program that manages the allocation of resources to processes. Those resources are usually a computer's CPU and main memory.
-- **Suspension**: A computer has a limited amount of main memory. Thus, schedulers may decide to swap out idle processes from memory onto the disk to temporarily free up space for other processes. This is known as suspending the process.
-- **Ready queue**: A queue of all processes that are waiting to be scheduled to run on the CPU. Processes line up in the ready queue as they arrive. If a process still has work remaining when it is taken off the CPU by the scheduler, it may be put back on the ready queue for re-scheduling at a later time; alternatively, it may be suspended.
-- **Blocking**: A process that is blocked is waiting on the completion of a certain event. Usually, that event is some input/output (I/O) operation. Since I/O operations are privileged and require switching to kernel mode, the process must wait for the CPU to attend to those tasks before it can resume execution. Blocked processes are unblocked by the scheduler and either placed back on the ready queue or swapped out of main memory (suspended). By definition, a blocked process is not currently running on the CPU.
-- **Starvation**: We say that a process that needs to use a computing resource (e.g., the CPU) but has been unable to do so for a considerable amount of time (relative to other processes) is being *starved*. One of the primary goals of a scheduler is to circumvent starvation.
-- **Context switch**: The collective state of memory and the CPU registers associated with a running process is known as that process's execution *context*. A context *switch* occurs when the CPU goes from executing one process to executing another. To make this possible, the scheduler stores a snapshot of the current process's state somewhere on disk or memory so we can restore it at a later time and resume execution where the process last left off.
+**Scheduler**: A special system program that manages the allocation of resources to processes. Those resources are usually a computer's CPU and main memory.
 
-{% include linkedHeading.html heading="Overview: Preemptive and Nonpreemptive Scheduling Algorithms" level=2 %}
+**Suspension**: A computer has a limited amount of main memory. Thus, schedulers may decide to swap out idle processes from memory onto the disk to temporarily free up space for other processes. This is known as suspending the process.
+
+**Ready queue**: A queue of all processes that are waiting to be scheduled to run on the CPU. Processes line up in the ready queue as they arrive. If a process still has work remaining when it is taken off the CPU by the scheduler, it may be put back on the ready queue for re-scheduling at a later time; alternatively, it may be suspended.
+
+**Blocking**: A process that is blocked is waiting on the completion of a certain event. Usually, that event is some input/output (I/O) operation. Since I/O operations are privileged and require switching to kernel mode, the process must wait for the CPU to attend to those tasks before it can resume execution. Blocked processes are unblocked by the scheduler and either placed back on the ready queue or swapped out of main memory (suspended). By definition, a blocked process is not currently running on the CPU.
+
+**Starvation**: We say that a process that needs to use a computing resource (e.g., the CPU) but has been unable to do so for a considerable amount of time (relative to other processes) is being *starved*. One of the primary goals of a scheduler is to circumvent starvation.
+
+**Context switch**: The collective state of memory and the CPU registers associated with a running process is known as that process's execution *context*. A context *switch* occurs when the CPU goes from executing one process to executing another. To make this possible, the scheduler stores a snapshot of the current process's state somewhere on disk or memory so we can restore it at a later time and resume execution where the process last left off.
+
+## Overview: Preemptive and Nonpreemptive Scheduling Algorithms
 
 When studying scheduling algorithms, we have two high-level classifications: preemptive and nonpreemptive algorithms. Let's look at each one in turn.
 
@@ -94,14 +101,25 @@ These are the examples of preemptive scheduling algorithms that we'll look at:
 
 When we actually look at the individual scheduling algorithms in this post, I'll classify them as either (P) for preemptive or (NP) for non-preemptive.
 
-{% include linkedHeading.html heading="Scheduling Algorithm Metrics" level=2 %}
+## Scheduling Algorithm Metrics
 
-We use four simple metrics when studying scheduling algorithms:
+We use four simple metrics when studying scheduling algorithms. Let's look at each one in turn.
 
-- **Throughput**: in the context of scheduling, this refers to the number of jobs completed per unit of time. More generally, throughput is just a measure of how much "work" we're getting done per unit of time. For example, if we completed `5` jobs in a total period of `60s`, then our scheduler's throughput can be expressed as `5/60 = 0.08 jobs/s`.
-- **Turnaround time**: the difference between the time at which a process finishes all of its work and the time at which the process arrived in the ready queue. The wording here is very important: It is not the difference between the time when the process finishes all of its work and the time at which the process *began* its work; a process may arrive and then immediately have to wait its turn. Thus, turnaround time is *not* a measure of how much *CPU time* a process uses; it includes periods of inactivity when a process is waiting its turn. For example, if process C arrives at time `t = 5s` and finishes all of its work at time `t = 60s`, then its turnaround time, regardless of how much of it was spent active or idle, is `60 - 5 = 55s`.
-- **Mean turnaround time (MTT)**: the average turnaround time for all processes. For example, suppose we have processes A, B, and C with turnaround times of `10s`, `5s`, and `12s`, respectively. Our mean turnaround time is then `(10 + 5 + 12) / 3 = 9s`.
-- **CPU utilization**: the fraction of time during which the CPU is actively executing process instructions as opposed to servicing I/O operations. Suppose we have `n` independent processes. If the probability of any process requesting I/O operations is `p`, then by independence, the total probability of I/O operations occurring is `p^n`. Therefore, our CPU utilization is the total percentage of work minus the percentage of work "wasted" on I/O. Mathematically, this can be expressed as `1 - p^n` (assuming that context switches are negligible, which isn't always the case).
+### Throughput
+
+In the context of operating system scheduling algorithms, **throughput** refers to the number of jobs completed per unit of time. More generally, throughput is just a measure of how much "work" we're getting done per unit of time. For example, if we completed `5` jobs in a total period of `60s`, then our scheduler's throughput can be expressed as `5/60 = 0.08 jobs/s`.
+
+### Turnaround Time
+
+An operating system scheduling algorithm's **turnaround time** is the difference between the time at which a process finishes all of its work and the time at which the process arrived in the ready queue. The wording here is very important: It is not the difference between the time when the process finishes all of its work and the time at which the process *began* its work; a process may arrive and then immediately have to wait its turn. Thus, turnaround time is *not* a measure of how much *CPU time* a process uses; it includes periods of inactivity when a process is waiting its turn. For example, if process C arrives at time `t = 5s` and finishes all of its work at time `t = 60s`, then its turnaround time, regardless of how much of it was spent active or idle, is `60 - 5 = 55s`.
+
+### Mean Turnaround Time (MTT)
+
+A scheduling algorithm's **mean turnaround time (MTT)** is the average turnaround time for all processes. For example, suppose we have processes A, B, and C with turnaround times of `10s`, `5s`, and `12s`, respectively. Our mean turnaround time is then `(10 + 5 + 12) / 3 = 9s`.
+
+### CPU Utilization
+
+**CPU utilization** refers to the fraction of time during which the CPU is actively executing process instructions as opposed to servicing I/O operations. Suppose we have `n` independent processes. If the probability of any process requesting I/O operations is `p`, then by independence, the total probability of I/O operations occurring is `p^n`. Therefore, our CPU utilization is the total percentage of work minus the percentage of work "wasted" on I/O. Mathematically, this can be expressed as `1 - p^n` (assuming that context switches are negligible, which isn't always the case).
 
 {% include linkedHeading.html heading="Categories of Scheduling Algorithm Systems" level=2 %}
 
@@ -122,7 +140,7 @@ So far, we've looked at the terms preemptive and non-preemptive scheduling. But 
     - Meet deadlines to avoid losing data or other valuable resources.
     - Predictability: behave as expected and not erratically.
 
-{% include linkedHeading.html heading="1. Batch Scheduling Algorithms" level=2 %}
+## 1. Batch Scheduling Algorithms
 
 Reminder: Batch systems have to keep up with a large number of processes. Thus, their primary goal is to increase throughput and complete as many of those jobs as possible while maximizing CPU utilization.
 
@@ -185,7 +203,7 @@ With this algorithm, some processes may end up being starved if a bunch of short
     </p>
 </blockquote>
 
-{% include linkedHeading.html heading="2. Interactive Scheduling Algorithms" level=2 %}
+## 2. Interactive Scheduling Algorithms
 
 Reminder: Interactive systems involve a lot of user input and must therefore be responsive.
 
@@ -241,7 +259,7 @@ As its name suggests, proportionate scheduling aims to ensure a fair allocation 
 2. **🎲 Lottery scheduling**: Each process is allocated a certain number of virtual "tickets." At set intervals, the scheduler will draw a ticket at random and allow the winning process to run on the CPU. This solves the problem of starvation: As long as we give at least one ticket to each process, then we're able to guarantee a non-zero probability of selection. The idea here is that a process with a fraction `f` of the total tickets will get to use the CPU for a fraction `f` of the time. Notice that if we assign each process the same number of tickets, then we're using guaranteed scheduling!
 3. **🤝 Fair-share scheduling**: So far, we've focused on ensuring fairness among *processes*. In fair-share scheduling, the focus shifts to the *user*. Specifically, on multi-user systems, the idea is to allocate a fair amount of CPU time to each user (and/or user group) to ensure that no user is being "starved" of the opportunity to use the system. The Wikipedia article on [fair-share scheduling](https://en.wikipedia.org/wiki/Fair-share_scheduling) provides excellent examples to make this clearer.
 
-{% include linkedHeading.html heading="3. Real-Time Scheduling Algorithms" level=2 %}
+## 3. Real-Time Scheduling Algorithms
 
 Real-time scheduling algorithms are grouped into two primary categories:
 
@@ -261,7 +279,7 @@ Dynamic scheduling is a broad category of scheduling that employs any of the alg
 
 Thus, while static scheduling is employed before the system ever receives its first process, dynamic scheduling is employed on the fly, making decisions about which processes to schedule as they arrive in real time. Leaving things up to the hardware like this can have its advantages. For one, it guarantees some sort of scheduling optimization among threads regardless of how the code was originally written.
 
-## Wrap-up
+## Final Thoughts
 
 That's about it for scheduling algorithms!
 
