@@ -11,6 +11,8 @@ canonical_url: "https://www.aleksandrhovhannisyan.com/blog/dev/semantic-html-acc
 
 In this guide, we'll take a look at everything you need to know about building a more accessible user experience through semantic HTML. We'll also touch on some more general accessibility best practices towards the end of the guide.
 
+{% include toc.md %}
+
 ## What Makes HTML Accessible?
 
 Accessibility is a hot topic in front-end development, yet it's also frequently overlooked or executed poorly, even on some of the world's most popular apps and websites. Developers tend to design a user experience with *sighted* users in mind, forgetting about users who rely on screen readers. Worse still, they may end up using color combinations that have too low of a contrast, or violating a number of other HTML accessibility best practices.
