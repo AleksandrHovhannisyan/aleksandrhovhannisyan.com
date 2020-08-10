@@ -151,6 +151,4 @@ Work your way down, replacing the `6` with a `5`, `4`, `3`, and so on.
 
 ## And That's It!
 
-{% include linkedHeading.html heading="That's It!" level=2 %}
-
 I hope you found this post helpful 🙂 If you run into any issues implementing this on your own site, let me know down below and I'll try to help as best as I can.
