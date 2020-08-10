@@ -78,6 +78,7 @@ Those steps are then repeated for as many processes as needed.
         </tr>
         <tr>
             <td>Good for responsiveness or whenever user input is important.</td>
+            <td></td>
         </tr>
     </tbody>
 </table>

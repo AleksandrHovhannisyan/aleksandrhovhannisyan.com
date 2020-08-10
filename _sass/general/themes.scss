@@ -35,10 +35,9 @@ html.light {
     --spoiler-bg-color: #dae3e7;
     --star-fill-color-filled: #35647a;
     --star-fill-color-empty: #adacac;
-    --table-header-bg-color: #4d4d4d;
-    --table-header-text-color: #e6e6e6;
-    --table-row-bg-color-striped: hsl(0, 0%, 96%);
-    --table-row-border-color: hsl(0, 0%, 92%);
+    --table-header-bg-color: hsl(0, 0%, 90%);
+    --table-header-text-color: black;
+    --table-border-color: hsl(0, 0%, 80%);
     --tag-bg-color-hover: #35647a;
     --tag-bg-color: #dae3e7;
     --tag-text-color-hover: white;
@@ -89,8 +88,7 @@ html.dark {
     --star-fill-color-empty: #474747;
     --table-header-bg-color: #292929;
     --table-header-text-color: #dedede;
-    --table-row-bg-color-striped: #2a2a2a;
-    --table-row-border-color: #2a2a2a;
+    --table-border-color: #575757;
     --tag-bg-color-hover: #ffcd91;
     --tag-bg-color: #ada08f;
     --tag-text-color-hover: black;
