@@ -52,14 +52,14 @@
     position: relative;
     display: block;
     width: 100%;
-    height: var(--thumbnail-height);
+    height: auto;
     
     img {
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
-        height: var(--thumbnail-height);
         width: 100%;
-        object-fit: cover;
+        height: 100%;
+        display: block;
         object-position: center;
         position: absolute;
 
