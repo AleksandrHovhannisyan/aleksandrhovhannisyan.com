@@ -4,6 +4,7 @@ description: Want to create a navbar that works on mobile and desktop? Ditch the
 keywords: [responsive navbar]
 tags: [dev, frontend, html, css, javascript]
 comments_id: 28
+is_popular: true
 ---
 
 **Navigation bars** ("navbars") are everywhere on modern websites, so it's definitely good to know how to create one by hand without relying on a component library.

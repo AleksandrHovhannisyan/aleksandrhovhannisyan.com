@@ -4,6 +4,7 @@ description: Jekyll is a static site generator that makes it easy for you to cre
 keywords: [getting started with jekyll, jekyll and github pages]
 tags: [dev, jekyll, frontend, github]
 comments_id: 34
+is_popular: true
 ---
 
 Want to make a personal website or blog and share it with the world? Then you've come to the right place! This is the only guide you'll need for getting started with Jekyll. I'll take you from zero to hero with Jekyll and help you understand all the fundamentals.

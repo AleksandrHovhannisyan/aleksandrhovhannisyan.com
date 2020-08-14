@@ -5,6 +5,7 @@ keywords: [what is outer wilds about, outer wilds review, outer wilds ending exp
 tags: [off-topic, gaming, outer-wilds]
 redirect_from: /blog/gaming/outer-wilds-review-stop-and-smell-the-pine-trees/
 comments_id: 40
+is_popular: true
 ---
 
 What originally began as a thesis project [more than six years ago](https://www.youtube.com/watch?v=vRQU1o8SrAI) between two university students—Alex Beachum and Loan Verneau—is one of the best games released so far in 2019. And it's certainly come a long way, with much of the art, audio, and gameplay receiving polishes that have allowed it to shine.

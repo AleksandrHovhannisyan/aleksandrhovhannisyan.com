@@ -35,7 +35,7 @@
 }
 
 .post-preview {
-    --thumbnail-height: 8rem;
+    --thumbnail-height: 9rem;
     display: block;
     padding: 0;
     margin: 0;
@@ -52,14 +52,14 @@
     position: relative;
     display: block;
     width: 100%;
-    height: auto;
+    height: var(--thumbnail-height);
     
     img {
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
+        height: var(--thumbnail-height);
         width: 100%;
-        height: 100%;
-        display: block;
+        object-fit: cover;
         object-position: center;
         position: absolute;
 

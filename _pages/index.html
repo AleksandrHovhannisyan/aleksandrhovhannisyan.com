@@ -12,7 +12,7 @@ img_path: assets/img
     </div>
     {% include picture.html path="/assets/img" img="profile-photo" ext="png" alt="" id="headshot" clickable=false %}
 </section>
-<section id="featured-posts" class="section">
+<section id="recent-posts" class="section posts">
     <h2 class="heading">Recent Blog Posts</h2>
     <p class="subtitle">Free dev tutorials, musings, and more. No ads whatsoever.</p>
     <ol class="post-preview-grid card-grid">
@@ -21,9 +21,19 @@ img_path: assets/img
         {% endfor %}
     </ol>
 </section>
+<section id="popular-posts" class="section posts">
+    <h2 class="heading">Popular Posts</h2>
+    <p class="subtitle">Naturally, some of my posts have attracted more attention than others on my blog. Here are some of the more popular ones that people like to read.</p>
+    <ol class="post-preview-grid card-grid">
+        {% assign popular_posts = site.posts | where: "is_popular", true %}
+        {% for post in popular_posts %}
+            {% include postPreview.html post=post %}
+        {% endfor %}
+    </ol>
+</section>
 <section id="featured-projects" class="section">
     <h2 class="heading">Software Projects</h2>
-    <p class="subtitle">I have experience with a range of stacks and languages.</p>
+    <p class="subtitle">I have experience with a range of stacks and languages and enjoy creating beautiful user experiences. Got a project in mind? <a href="/contact/" class="underlined-link">Get in touch!</a></p>
     <ol class="project-grid card-grid">
         {% for project in site.data.projects %}
             {% include projectCard.html project=project %}

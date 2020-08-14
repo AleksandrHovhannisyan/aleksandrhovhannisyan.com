@@ -5,6 +5,7 @@ keywords: [multiple modals on one page, two modals on the same page, how to crea
 tags: [dev, frontend, html, css, javascript]
 last_updated: 2020-05-07
 comments_id: 31
+is_popular: true
 ---
 
 I recently tried my hand at creating modal windows from scratch, without any libraries or dependencies. As it turns out, doing so is *much* simpler than I thought it would be!
