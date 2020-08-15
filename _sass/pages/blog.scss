@@ -1,4 +1,5 @@
 @import 'colors';
+@import 'fonts';
 @import 'mixins';
 @import 'settings';
 
@@ -436,7 +437,7 @@ code {
     background-color: var(--inline-code-bg-color);
     border-radius: 3px;
     color: var(--inline-code-text-color);
-    font-family: Monaco, Consolas, 'Courier New', monospace;
+    font-family: $font-family-code;
     font-size: 0.875em;
     padding: 3px 6px;
     @include transition(color, background-color);
