@@ -77,21 +77,10 @@
 .screen-reader-only {
     position: absolute;
     left: -5000px;
-    z-index: $nav-z-index + 1;
+    z-index: $navbar-z-index + 1;
     
     &:focus {
         left: 0;
-    }
-}
-
-.skip-navigation {
-    padding: 0.8em;
-    color: var(--nav-text-color);
-    font-weight: map-get($font-weights, "normal");
-    @include transition(color, background-color);
-
-    &:focus {
-        background-color: var(--nav-link-bg-color-hover);
     }
 }
 
@@ -114,7 +103,7 @@ body {
 #page-content {
     grid-row: 1;
     min-width: 0; // https://css-tricks.com/preventing-a-grid-blowout/
-    padding: $nav-height 0;
+    padding: $navbar-height 0;
     @include centered;
 }
 
@@ -185,7 +174,7 @@ p {
 
 .heading-with-image {
     font-size: 1.5em;
-    scroll-margin-top: $nav-height + 20px;
+    scroll-margin-top: $navbar-height + 20px;
     align-items: center;
     display: flex;
     margin-bottom: 40px;

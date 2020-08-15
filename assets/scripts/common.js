@@ -24,22 +24,22 @@ function toggleColorTheme() {
   }
 }
 
-const topnav = document.getElementById('topnav');
-const mobileNavbarToggle = topnav.querySelector('#navbar-toggle');
+const navbar = document.getElementById('navbar');
+const mobileNavbarToggle = navbar.querySelector('#navbar-toggle');
 mobileNavbarToggle.addEventListener('click', toggleMobileNavbarVisibility);
 
 function toggleMobileNavbarVisibility() {
-  if (topnav.classList.contains('opened')) {
-    topnav.classList.remove('opened');
+  if (navbar.classList.contains('opened')) {
+    navbar.classList.remove('opened');
     mobileNavbarToggle.setAttribute('aria-label', 'Open navigation menu');
   } else {
-    topnav.classList.add('opened');
+    navbar.classList.add('opened');
     mobileNavbarToggle.setAttribute('aria-label', 'Close navigation menu');
   }
 }
 
-const navMenu = topnav.querySelector('.nav-menu');
-const navLinks = navMenu.querySelector('.nav-links');
+const navMenu = navbar.querySelector('.navbar-menu');
+const navLinks = navMenu.querySelector('.navbar-links');
 
 navMenu.addEventListener('click', toggleMobileNavbarVisibility);
 navLinks.addEventListener('click', (clickEvent) => clickEvent.stopPropagation());
@@ -62,7 +62,7 @@ navLinks.addEventListener('click', (clickEvent) => clickEvent.stopPropagation())
   // Ensures that only one navbar link has the active state at a time. Otherwise, if there's
   // an active link and we hover another link, both will have an underline.
   function onNavLinkHovered(mouseEvent) {
-    const activeNavLink = document.getElementById('active-nav-link');
+    const activeNavLink = document.getElementById('active-navbar-link');
 
     // Happens if we're on the home page
     if (!activeNavLink) return;
@@ -75,11 +75,11 @@ navLinks.addEventListener('click', (clickEvent) => clickEvent.stopPropagation())
     activeNavLink.id = '';
   }
 
-  // Once we stop hovering a link, simply re-apply the active-nav-link
+  // Once we stop hovering a link, simply re-apply the active-navbar-link
   // ID to the cached anchor, if there is one.
   function rehighlightActiveNavLink() {
     if (cachedActiveNavlink) {
-      cachedActiveNavlink.id = 'active-nav-link';
+      cachedActiveNavlink.id = 'active-navbar-link';
     }
   }
 })();
