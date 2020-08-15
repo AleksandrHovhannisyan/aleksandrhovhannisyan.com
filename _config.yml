@@ -11,10 +11,11 @@ bug_report: https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com/i
 plugins:
   - jekyll-feed
   - jekyll-sitemap
-  - jekyll-redirect-from
   - jekyll-paginate-v2
   
-include: [_pages]
+include:
+  - _pages
+  - _redirects
 
 collections:
   notes:

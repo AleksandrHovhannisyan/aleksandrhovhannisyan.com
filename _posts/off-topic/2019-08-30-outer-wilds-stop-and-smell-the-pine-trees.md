@@ -3,7 +3,6 @@ title: "Outer Wilds: Stop and Smell the Pine Trees"
 description: On the surface, Outer Wilds is a space exploration game. But peel back the layers, and it's a captivating and philosophical story about life and our universe.
 keywords: [what is outer wilds about, outer wilds review, outer wilds ending explained, outer wilds meaning, outer wilds pine trees]
 tags: [off-topic, gaming, outer-wilds]
-redirect_from: /blog/gaming/outer-wilds-review-stop-and-smell-the-pine-trees/
 comments_id: 40
 is_popular: true
 ---
