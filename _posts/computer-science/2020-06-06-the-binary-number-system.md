@@ -125,7 +125,7 @@ Here are some examples of representing decimal numbers in the binary number syst
 - Four: <code>4<sub>10</sub> = 100<sub>2</sub></code>. Expansion: <code>1(2<sup>2</sup>) + 0(2<sup>1</sup>) + 0(2<sup>0</sup>)</code>
 - Five: <code>5<sub>10</sub> = 101<sub>2</sub></code>. Expansion: <code>1(2<sup>2</sup>) + 0(2<sup>1</sup>) + 1(2<sup>0</sup>)</code>
 
-> **Note**: Like in the decimal number system, leading zeros are usually stripped from binary strings. The only exception is if you're working with [a signed binary number system](#the-binary-number-system-twos-complement), where a leading zero indicates that a number is positive and a leading one indicates that it's negative.
+> **Note**: Like in the decimal number system, leading zeros are usually stripped from binary strings. The only exception is if you're working with [a signed binary number system](#signed-binary-number-system-twos-complement), where a leading zero indicates that a number is positive and a leading one indicates that it's negative.
 
 Having learned the binary number system, you should now understand the joke from earlier:
 

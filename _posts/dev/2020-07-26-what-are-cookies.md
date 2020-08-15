@@ -105,7 +105,7 @@ Here's the key: A server may also send along a **`Set-Cookie` response header** 
 
 Here's an example of monitoring XHR requests with the Firefox Dev Tools on Reddit and intercepting the `Set-Cookie` response header:
 
-{% include picture.html img="set-cookie" ext="png" alt="Reddit sets the redesign_optout cookie to be true when I opt out of the new user interface" %}
+{% include picture.html img="set-cookie" ext="gif" alt="Reddit sets the redesign_optout cookie to be true when I opt out of the new user interface" %}
 
 Now, if you inspect future requests, you'll find that this cookie is included in the **`Cookie` HTTP request header**:
 

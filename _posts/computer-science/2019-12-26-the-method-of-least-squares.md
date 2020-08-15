@@ -162,7 +162,7 @@ Don't confuse these $$x$$s with the ones we saw earlier—just pretend for a sec
 
 If we plot these data points, we'll get the following graph:
 
-{% include picture.html img="data" ext="jpg" alt="Plotting the five data points we were given." %}
+{% include picture.html img="data" ext="png" alt="Plotting the five data points we were given." %}
 
 These points appear to follow a linear shape, but it's simply not possible to plot a straight line that fits all of the points. But clearly, we can draw a **best-fit line** that at least gets as close to all of the points as possible:
 
