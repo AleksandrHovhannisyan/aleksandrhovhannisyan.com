@@ -1,8 +1,6 @@
 @import 'colors';
 
 html.light {
-    --blockquote-bg-color: transparent;
-    --blockquote-text-color: #586069;
     --button-bg-color-hover: #4989a7;
     --button-bg-color: #35647a;
     --button-text-color: white;
@@ -52,8 +50,6 @@ html.light {
 }
 
 html.dark {
-    --blockquote-bg-color: #2c2c2c;
-    --blockquote-text-color: #aaaaaa;
     --button-bg-color-hover: #f3d5b3;
     --button-bg-color: #bda17f;
     --button-text-color: #292929;
