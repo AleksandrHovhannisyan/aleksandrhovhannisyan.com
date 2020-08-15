@@ -13,7 +13,7 @@ In this comprehensive post, we'll look at the problem that motivates the least s
 
 There's a lot of theory coming up, but I'll break it down into simple explanations.
 
-{% include linkedHeading.html heading="What Is the Least Squares Method" level=2 %}
+{% include linkedHeading.html heading="What Is the Least Squares Method?" level=2 %}
 
 In simple terms, the **method of least squares** finds an approximate solution to a system of equations for which there is no exact solution. Let's look at why we need least squares with this simple example:
 
