@@ -409,6 +409,7 @@
         width: 1em;
     }
 
+    &.copied,
     &:focus, 
     &:hover {
         color: black;
