@@ -3,21 +3,21 @@
 <html lang="en-US" class="light">
     <head>
         <!-- Metadata for search engines -->
-        <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
-        <meta name="keywords" content="{% if page.keywords %}{{ page.keywords | join: ', ' }}{% else %}{{ site.keywords | join: ', ' }}{% endif %}" />
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="author" content="{{ site.author }}" />
-        <meta name="referrer" content="origin" />
-        <!-- og: properties are for social media previews -->
-        <meta property="og:title" content="{{ page.title }} | {{ site.title }}" />
+        <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+        <meta name="keywords" content="{% if page.keywords %}{{ page.keywords | join: ', ' }}{% else %}{{ site.keywords | join: ', ' }}{% endif %}">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="{{ site.author }}">
+        <meta name="referrer" content="origin">
+        <!-- Open Graph social media previews -->
+        <meta property="og:title" content="{{ page.title }} | {{ site.title }}">
         {% assign thumbnail_ext = 'png' %}
         {% if page.thumbnail_ext %}
             {% assign thumbnail_ext = page.thumbnail_ext %}
         {% endif %}
-        <meta property="og:image" content="{{ site.url }}/{{ page.img_path }}/{{ page.slug }}thumbnail.{{ thumbnail_ext }}" />
-        <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
-        <meta property="og:url" content="{{ site.url }}" />
+        <meta property="og:image" content="{{ site.url }}/{{ page.img_path }}/{{ page.slug }}thumbnail.{{ thumbnail_ext }}">
+        <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+        <meta property="og:url" content="{{ site.url }}">
         {% if page.noindex %}
             <!-- Prevent this page from showing up on search engines -->
             <meta name="robots" content="noindex">
