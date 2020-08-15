@@ -9,7 +9,7 @@ comments_id: 39
 
 With an understanding of [the method of least squares](/blog/computer-science/the-method-of-least-squares) and QR decomposition, we're now ready to look at one of its most practical applications: least squares fitting. In this tutorial, we'll explore straight-line fitting and polynomial least squares fitting, both by hand and with Python. But before we get to the problems, we need a little background and some more theory.
 
-{% include linkedHeading.html heading="What Is Least Squares Fitting?" level=2 %}
+## What Is Least Squares Fitting?
 
 In **least squares fitting**, we have some function $$f$$ that takes $$n$$-vectors as its inputs and maps them to real numbers. We don't really know anything about the function itself and what it does under the hood. It's your classic black box: You feed some vector $$x$$ to the function, and it spits out a $$y$$ in response:
 
@@ -47,7 +47,7 @@ This is starting to look more like a system of equations. But we're not quite th
 
 > **Summary**: Our goal in data fitting is to model the relationship between the inputs, $$x^{(i)}$$, and the outputs, $$y^{(i)}$$, as closely as possible using a model function, $$\hat{f}$$. Because remember, we don't know the *true* relationship, $$f$$.
 
-{% include linkedHeading.html heading="Picking a Model Function for Data Fitting" level=2 %}
+## Picking a Model Function for Data Fitting
 
 Below is the general form of the model function $$\hat{f}$$ used in least squares fitting:
 
@@ -65,7 +65,7 @@ Well, the good news is that we get to pick the basis functions $$f_i$$ based on 
 
 *We* pick the basis functions. The $$\theta$$ values—the **model parameters**—are what we need to solve for.
 
-{% include linkedHeading.html heading="Data Fitting: The System of Equations" level=3 %}
+### Data Fitting: The System of Equations
 
 Let's plug this general form of $$\hat{f}$$ into the earlier set of equations that we saw:
 
@@ -115,7 +115,7 @@ Notice that our matrix has dimensions $$N \times p$$. In practice, $$N$$ is ofte
 - We pick the basis functions $$f_1, \ldots, f_p$$ based on how we think the real function $$f$$ behaves.
 - We solve for the parameters of our model—$$\theta_1, \ldots, \theta_p$$—using the least squares method.
 
-{% include linkedHeading.html heading="General Strategy for Solving Least Squares Problems" level=2 %}
+## General Strategy for Solving Least Squares Problems
 
 Here's a simple five-step strategy you can use to solve least squares problems:
 
@@ -127,7 +127,7 @@ Here's a simple five-step strategy you can use to solve least squares problems:
 
 > **Note**: For all the examples that follow, we'll let $$n = 1$$. That is, our input $$x^{(i)}$$s will just be scalar values. In reality, this changes nothing about the least squares method.
 
-{% include linkedHeading.html heading="Example 1: Least Squares Straight-Line Fit" level=2 %}
+## Example 1: Least Squares Straight-Line Fit
 
 Suppose we're given these data points for a least squares line fitting problem:
 
@@ -135,7 +135,7 @@ $$ (1, 1), (2, 3), (3, 3) = (x^{(1)}, y^{(1)}), (x^{(2)}, y^{(2)}), (x^{(3)}, y^
 
 We're asked to model the relationship between $$x$$ and $$y$$. Let's take it step by step.
 
-{% include linkedHeading.html heading="Step 1: Visualize the Problem" level=3 %}
+### Step 1: Visualize the Problem
 
 First, we'll plot the points:
 
@@ -143,7 +143,7 @@ First, we'll plot the points:
 
 We note that the points, while scattered, appear to have a linear pattern. Clearly, it's not possible to fit an actual straight line to the points, so we'll do our best to get as close as possible—using least squares, of course.
 
-{% include linkedHeading.html heading="Step 2: Pick an Appropriate Model" level=3 %}
+### Step 2: Pick an Appropriate Model
 
 We know $$f$$ appears linear, like a $$y = mx + b$$ equation. We want our model function to look something like this:
 
@@ -173,7 +173,7 @@ That gives us precisely the function we wanted.
 
 > **Note**: You don't have to be this explicit about how you select your basis functions. However, I recommend doing so because it allows you to verify that your reasoning is sound.
 
-{% include linkedHeading.html heading="Step 3: Identify the Equations Involved" level=3 %}
+### Step 3: Identify the Equations Involved
 
 Here are all three equations for our problem:
 
@@ -216,7 +216,7 @@ $$
 
 $$
 
-{% include linkedHeading.html heading="Step 4: Solve the Overdetermined System Using Least Squares" level=3 %}
+### Step 4: Solve the Overdetermined System Using Least Squares
 
 Three equations and two unknowns—this is an overdetermined system. How do we solve this system? Well, as we know, there's no exact solution. But we can get the least squares solution by solving for $$\theta$$ in this equation:
 
@@ -311,7 +311,7 @@ $$ \sqrt{3}\theta_1 + \frac{6}{\sqrt{3}}\theta_2 = \sqrt{3}\theta_1 + \frac{6}{\
 
 Solving yields $$\theta_1 = \frac{1}{3}$$. Excellent!
 
-{% include linkedHeading.html heading="Step 5: Visualize the Solution" level=3 %}
+### Step 5: Visualize the Solution
 
 We have the following solution:
 
@@ -333,7 +333,7 @@ Awesome! This is the best-line fit for the data points we were given.
 
 As you add more points, data fitting (particularly the QR factorization portion) becomes more difficult to do by hand. Fortunately, you can use languages like MATLAB or Python to solve these problems. But now, when you do rely on computers, you'll at least know what they're doing behind the scenes.
 
-{% include linkedHeading.html heading="Example 2: Least Squares Polynomial Fitting (with Python!)" level=2 %}
+## Example 2: Least Squares Polynomial Fitting (with Python!)
 
 Let's not stop there! Suppose instead that we are given these five data points:
 
@@ -341,7 +341,7 @@ $$(-4, 5), (0, 1), (1, 3), (2, 9), (-6, 10) = (x^{(1)}, y^{(1)}), (x^{(2)}, y^{(
 
 Let's repeat the process.
 
-{% include linkedHeading.html heading="Step 1: Visualize the Problem" level=3 %}
+### Step 1: Visualize the Problem
 
 Here's a graph of our points:
 
@@ -349,7 +349,7 @@ Here's a graph of our points:
 
 To me, these points seems to take on the shape of a parabola. Based on that observation, I'm going to perform a least squares polynomial fit using a polynomial of degree two (a quadratic, basically).
 
-{% include linkedHeading.html heading="Step 2: Pick an Appropriate Model" level=3 %}
+### Step 2: Pick an Appropriate Model
 
 Since we're modeling a quadratic equation (degree-two polynomial), this is the general form of the model function we'll aim for:
 
@@ -371,7 +371,7 @@ There we go! It's that simple.
 
 > **Note**: Again, you could reverse the order of the polynomial to be $$\hat{f}(x) = \theta_1x^2 + \theta_2 x + \theta_3$$. This would change nothing except the order of the elements in your resulting matrix. 
 
-{% include linkedHeading.html heading="Step 3: Identify the Equations Involved" level=3 %}
+### Step 3: Identify the Equations Involved
 
 Here are all five equations for our polynomial fitting problem:
 
@@ -427,7 +427,7 @@ $$
 
 $$
 
-{% include linkedHeading.html heading="Step 4: Solve the Overdetermined System Using Least Squares" level=3 %}
+### Step 4: Solve the Overdetermined System Using Least Squares
 
 Straight-line fitting is pretty simple by hand, but polynomial least squares fitting is where it gets kind of difficult. So I'm going to "cheat" and use Python! You can use MATLAB instead if you'd prefer; the language doesn't really matter once you know the theory.
 
@@ -486,7 +486,7 @@ Plugging this into our model, we arrive at the following polynomial function:
 
 $$\hat{f}(x) =1.86105904+1.80904405x+0.55014058x^{2}$$
 
-{% include linkedHeading.html heading="Step 5: Visualize the Solution" level=3 %}
+### Step 5: Visualize the Solution
 
 And here's the resulting graph with our polynomial fit to the data:
 
