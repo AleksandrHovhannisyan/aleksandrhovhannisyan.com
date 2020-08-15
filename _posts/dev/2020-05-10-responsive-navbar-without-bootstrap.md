@@ -25,7 +25,6 @@ Here's the codepen for this tutorial:
   Responsive Navbar</a> by Aleksandr Hovhannisyan (<a href="https://codepen.io/AleksandrHovhannisyan">@AleksandrHovhannisyan</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 Interestingly, there's actually not a lot of HTML involved! Navigation bars aren't all that difficult to create once you go through the process yourself.
 
@@ -581,7 +580,6 @@ Here's a codepen with options that you can toggle:
   Responsive Navbar (Customizable)</a> by Aleksandr Hovhannisyan (<a href="https://codepen.io/AleksandrHovhannisyan">@AleksandrHovhannisyan</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 The CSS now involves these classes, which get applied to `.navbar-menu`:
 
@@ -595,3 +593,5 @@ The CSS now involves these classes, which get applied to `.navbar-menu`:
 Creating responsive navbars in HTML isn't really all that difficult once you master basic positioning and Flexbox, as those two account for a majority of the CSS. The rest is just there to space the content and make things look pretty.
 
 I hope you found this tutorial helpful!
+
+<script defer src="https://static.codepen.io/assets/embed/ei.js"></script>

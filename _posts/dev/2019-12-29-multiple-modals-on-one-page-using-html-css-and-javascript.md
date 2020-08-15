@@ -554,4 +554,4 @@ Here are some ideas to make the modals more interesting:
 
 I hope you found this tutorial helpful! If you run into any problems, please let me know.
 
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<script defer src="https://static.codepen.io/assets/embed/ei.js"></script>
