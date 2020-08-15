@@ -29,7 +29,7 @@ With Liquid and Jekyll includes, it's super simple to create linked headings. He
 
 {% capture code %}{% raw %}{% assign heading = include.heading %}
 <h{{ include.level }} id="{{ heading | slugify }}" class="linked-heading">
-    <div class="heading-anchor-wrapper">
+    <span class="heading-anchor-wrapper">
         <a
           class="heading-anchor"
           aria-hidden="true"
@@ -37,7 +37,7 @@ With Liquid and Jekyll includes, it's super simple to create linked headings. He
         >
           #
         </a>
-    </div>
+    </span>
     {{ heading }}
 </h{{ include.level }}>{% endraw %}{% endcapture %}
 {% include code.html file="_includes/linkedHeading.html" code=code lang="liquid" %}
