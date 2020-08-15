@@ -36,8 +36,8 @@ In non-preemptive scheduling, a process runs to completion or until it blocks. W
 <table>
     <thead>
         <tr>
-            <th>Benefits of non-preemptive scheduling</th>
-            <th>Drawbacks of non-preemptive scheduling</th>
+            <th scope="col">Benefits of non-preemptive scheduling</th>
+            <th scope="col">Drawbacks of non-preemptive scheduling</th>
         </tr>
     </thead>
     <tbody>
@@ -74,8 +74,8 @@ Those steps are then repeated for as many processes as needed.
 <table>
     <thead>
         <tr>
-            <th>Benefits of preemptive scheduling</th>
-            <th>Drawbacks of preemptive scheduling</th>
+            <th scope="col">Benefits of preemptive scheduling</th>
+            <th scope="col">Drawbacks of preemptive scheduling</th>
         </tr>
     </thead>
     <tbody>

@@ -10,7 +10,5 @@ sitemap: false
     {% include postPreview.html post=post %}
 {% endfor %}
 {% if paginator["total_posts"] == 1 %}
-<div class="post-preview-placeholder">
-    That's it for now! More to come soon ✏️️
-</div>
+<li class="post-preview-placeholder" aria-hidden="true"></li>
 {% endif %}

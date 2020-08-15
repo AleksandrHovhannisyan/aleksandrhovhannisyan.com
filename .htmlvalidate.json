@@ -2,7 +2,11 @@
     "extends": ["html-validate:recommended"],
     "rules": {
         "no-trailing-whitespace": "off",
-        "long-title": "off",
-        "svg-focusable": "off"
+        "long-title": "warn",
+        "svg-focusable": "off",
+        "no-inline-style": "off",
+        "void-style": "off",
+        "no-raw-characters": "warn",
+        "attribute-boolean-style": "warn"
     }
 }

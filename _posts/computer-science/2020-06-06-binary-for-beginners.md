@@ -4,6 +4,7 @@ description: The binary number system underlies pretty much everything in comput
 keywords: [binary number system, binary numbers]
 tags: [computer-science, math, binary]
 comments_id: 44
+canonical_url: https://www.aleksandrhovhannisyan.com/blog/computer-science/binary-for-beginners/
 ---
 
 What is <code>10</code>? If this is your first time learning about the binary number system, then this question may seem odd. Of course it's ten, right?
@@ -66,9 +67,11 @@ Now, in reality, you can have a number system that uses a base of <code>2</code>
 
 <table>
     <thead>
-        <th>Base</th>
-        <th>Name</th>
-        <th>Description</th>
+      <tr>
+        <th scope="col">Base</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+      </tr>
     </thead>
     <tbody>
         <tr>
@@ -461,7 +464,7 @@ Num:      0  1  1  1 ... 1
 Bits:    31 30 29 28 ... 0
 ```
 
-This is <code>2<sup>31</sup> - 1</code>, which is <code>2,147,483,647</code>. In Java, this number is stored in <code>Integer.MAX_VALUE</code>, and in C++, it's <code>std::numeric_limits<int>::max()</code>.
+This is <code>2<sup>31</sup> - 1</code>, which is <code>2,147,483,647</code>. In Java, this number is stored in <code>Integer.MAX_VALUE</code>, and in C++, it's `std::numeric_limits<int>::max()`.
 
 More generally, for an <code>N</code>-bit system, the largest signed integer is <code>2<sup>N-1</sup>-1</code>.
 
@@ -500,7 +503,7 @@ Why? Because recall that in the expansion of negative numbers in two's complemen
 
 In Java, this value is stored in <code>Integer.MIN_VALUE</code>.
 
-In C++, it's in <code>std::numeric_limits<int>::min()</code>.
+In C++, it's in `std::numeric_limits<int>::min()`.
 
 Generalizing things once again, if we have an <code>N</code>-bit system, the smallest representable signed int is <code>-2<sup>N-1</sup></code>.
 
