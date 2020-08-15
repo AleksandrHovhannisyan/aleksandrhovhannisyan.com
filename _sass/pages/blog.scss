@@ -62,6 +62,7 @@
         object-fit: cover;
         object-position: center;
         position: absolute;
+        @include transition(filter);
 
         html.dark & {
             filter: brightness(.8) contrast(1.2);
