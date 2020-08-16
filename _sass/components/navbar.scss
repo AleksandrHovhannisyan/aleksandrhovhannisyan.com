@@ -2,6 +2,15 @@
 @import 'settings';
 @import 'mixins';
 
+.navbar-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: $navbar-height;
+    z-index: $navbar-z-index;
+}
+
 .skip-navigation {
     padding: 0.8em;
     color: var(--navbar-text-color);
@@ -9,16 +18,9 @@
     @include transition(color, background-color);
 }
 
-#navbar {
+.navbar {
     background-color: var(--navbar-bg-color);
     box-shadow: var(--navbar-box-shadow);
-    left: 0;
-    min-height: $navbar-height;
-    position: fixed;
-    right: 100%;
-    top: 0;
-    width: 100%;
-    z-index: $navbar-z-index;
     @include centered;
     @include transition(color, box-shadow, background-color);
     
@@ -108,6 +110,7 @@
     left: 0;
     right: 0;
     top: 0;
+    @include transition(background-color);
 }
 
 .navbar-item {
@@ -222,8 +225,8 @@
 }
 
 @media only screen and (min-width: 870px) {
-    #navbar, 
-    #navbar.opened {
+    .navbar, 
+    .navbar.opened {
         .navbar-menu {
             position: static;
             display: block;

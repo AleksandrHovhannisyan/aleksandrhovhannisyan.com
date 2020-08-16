@@ -1,30 +1,32 @@
-<a href="#page-content" class="screen-reader-only skip-navigation">Skip main navigation</a>
-<nav id="navbar">
-    <div class="navbar-container">
-        <a id="home-link" href="/">
-            <img src="/favicon.png" alt="Logo" id="logo">
-            <span id="website-name">{{ site.title }}</span>
-        </a>
-        <button id="navbar-toggle" aria-label="Open navigation menu" type="button">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <div class="navbar-menu">
-            <ul class="navbar-links">
-                {% assign nav_links = "About,Notes,Blog,Contact" | split: ',' %}
-                {% for link in nav_links %}
-                    <li class="navbar-item"><a class="navbar-link" href="/{{ link | downcase }}/" {% if page.title == link %}aria-current="page" id="active-navbar-link"{% endif %}>{{ link }}</a></li>
-                {% endfor %}
-                <li class="navbar-item" id="theme-switch-container">
-                    <!-- Inspiration: https://create-react-app.dev/ -->
-                    <button id="theme-switch" title="Toggle theme" type="button">
-                        <img aria-hidden="true" class="theme-icon dark-mode-icon" src="/assets/img/moon.png" alt="🌜">
-                        <img aria-hidden="true" class="theme-icon light-mode-icon" src="/assets/img/sun.png" alt="🌞">
-                        <span class="theme-switch-knob"></span>
-                    </button>
-                </li>
-            </ul>
+<header class="navbar-header">
+    <a href="#page-content" class="screen-reader-only skip-navigation">Skip main navigation</a>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a id="home-link" href="/">
+                <img src="/favicon.png" alt="Logo" id="logo">
+                <span id="website-name">{{ site.title }}</span>
+            </a>
+            <button id="navbar-toggle" aria-label="Open navigation menu" type="button">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-menu">
+                <ul class="navbar-links">
+                    {% assign nav_links = "About,Notes,Blog,Contact" | split: ',' %}
+                    {% for link in nav_links %}
+                        <li class="navbar-item"><a class="navbar-link" href="/{{ link | downcase }}/" {% if page.title == link %}aria-current="page" id="active-navbar-link"{% endif %}>{{ link }}</a></li>
+                    {% endfor %}
+                    <li class="navbar-item" id="theme-switch-container">
+                        <!-- Inspiration: https://create-react-app.dev/ -->
+                        <button id="theme-switch" title="Toggle theme" type="button">
+                            <img aria-hidden="true" class="theme-icon dark-mode-icon" src="/assets/img/moon.png" alt="🌜">
+                            <img aria-hidden="true" class="theme-icon light-mode-icon" src="/assets/img/sun.png" alt="🌞">
+                            <span class="theme-switch-knob"></span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+</header>

@@ -24,7 +24,7 @@ function toggleColorTheme() {
   }
 }
 
-const navbar = document.getElementById('navbar');
+const navbar = document.querySelector('.navbar');
 const mobileNavbarToggle = navbar.querySelector('#navbar-toggle');
 mobileNavbarToggle.addEventListener('click', toggleMobileNavbarVisibility);
 
