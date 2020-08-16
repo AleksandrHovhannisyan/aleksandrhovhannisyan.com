@@ -1,4 +1,14 @@
 all: Welcome to my blog! I write dev tutorials and the occasional off-topic post.
 dev: Technical posts and tutorials covering a range of languages, technologies, and concepts.
 computer-science: Posts focused on computer science fundamentals and topics typically covered in CS curricula.
-off-topic: Miscellaneous blog posts and musings on a variety of subjects unrelated to software development.
+off-topic: Miscellaneous blog posts and musings on a variety of subjects.
+jekyll: Jekyll is a static site generator that lets you use HTML, Sass, and Liquid. But don't underestimate its power—hidden beneath that simple exterior is an elegant, template-based workflow.
+math: Love it or hate it, math is all around us!
+frontend: Tutorials and guides on front-end development.
+css: Love it or hate it, CSS is amazing. Use it wisely, and you can create stunning user experiences. Misuse it, and... well... the results may not look too pretty 😅.
+accessibility: All kinds of people will visit your website. So how do you ensure that your user experience remains... well... usable? 
+gaming: Video games have always been one of my favorite pastimes. There's nothing quite like being immersed in a different world!
+seo: "How do you get in front of the right audiences and take that coveted number-one spot on Google? Answer: with SEO. It's the art and science of optimizing your pages to attract the right traffic."
+react: React is a JavaScript framework that's used to create modern websites and apps. Here are some of my tutorials and posts related to React.
+antd: Ant Design (known by its package name, antd) is a UI library for JavaScript frameworks like React and Vue, containing hundreds of pre-built components that can be styled and customized to your liking.
+liquid: Liquid is Shopify's templating language, written as a Ruby gem. It's used on the Shopify platform as well as in the Jekyll static site generator.

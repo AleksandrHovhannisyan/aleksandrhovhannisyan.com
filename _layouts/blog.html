@@ -25,9 +25,9 @@ layout: default
   </p>
   <nav aria-label="Primary blog post tags">
     <ul class="tag-navigation">
-      {% for key in site.data.tags %}
-      {% assign tag = key[0] %}
-      {% assign tagDescription = key[1] %}
+      {% assign tags = "all,dev,computer-science,off-topic" | split: ',' %}
+      {% for tag in tags %}
+      {% assign tagDescription = site.data.tags[tag][1] %}
       <li>
           <a
             href="{% if tag == "all" %}/blog/{% else %}/tag/{{ tag }}{% endif %}"
