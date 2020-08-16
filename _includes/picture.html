@@ -4,9 +4,12 @@
 {% assign class = include.class %}
 {% assign id = include.id %}
 {% assign clickable = include.clickable %}
-{% assign path = page.img_path | append: '/' | append: page.slug %}
 {% if include.path %}
     {% assign path = include.path %}
+{% elsif page.is_post %}
+    {% assign path = page.img_path | append: '/' | append: page.slug %}
+{% else %}
+    {% assign path = page.img_path %}
 {% endif %}
 <picture 
 class="lazily-loaded-picture{% unless clickable == false %} clickable-picture{% endunless %}{% if class %} {{ class }}{% endif %}" 
