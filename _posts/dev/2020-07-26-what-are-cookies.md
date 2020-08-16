@@ -53,7 +53,7 @@ Over on the far right, you'll see a `Size` column. The size of a cookie is the t
 
 ### Types of Cookies: Session vs. Permanent
 
-There's another column in the table above that deserves our attention: `Expires / Max-Age`. This basically tells your browser for how long a cookie should be kept around. There are two types of cookies that we'll look at, each defined by its expiration/max age.
+There's another column in the table above that deserves our attention: `Expires / Max-Age`. These two attributes basically tell your browser for how long a cookie should be kept around. There are two types of cookies that we'll look at, each defined by its expiration/max age.
 
 #### 1. Session Cookies
 
@@ -291,7 +291,38 @@ I use the first option on my blog to store your selected theme (light mode or da
 
 {% include picture.html img="local-storage.png" alt="Exploring localStorage for my website" %}
 
-**However**, you must be careful when storing sensitive data in `localStorage`, as it can be accessed via JavaScript.
+You can also clear `localStorage` via the same tab in dev tools or via JavaScript.
+
+### Cookies vs. `localStorage` vs. `sessionStorage`
+
+Here's a brief look at the major differences between cookies and the Web Storage API:
+
+<table>
+    <thead>
+        <tr>
+            <th scope="col">Storage</th>
+            <th scope="col">Expiration</th>
+            <th scope="col">Use cases</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>localStorage</td>
+            <td>None, but users can manually clear it via dev tools or the console (<code>localStorage.clear()</code>).</td>
+            <td>Storing data on the client side that the server does not need (e.g., preferences, settings).</td>
+        </tr>
+        <tr>
+            <td>sessionStorage</td>
+            <td>Until the end of the current browsing session (i.e., until you shut down your browser).</td>
+            <td>Storing data specific to the user's current browsing session.</td>
+        </tr>
+        <tr>
+            <td>Cookies</td>
+            <td>Current browsing session, if an expiration/max age is not specified.</td>
+            <td>Storing data received in a response header. Included in all future request headers.</td>
+        </tr>
+    </tbody>
+</table>
 
 ## Final Thoughts
 
