@@ -11,12 +11,12 @@
 class="lazily-loaded-picture{% unless clickable == false %} clickable-picture{% endunless %}{% if class %} {{ class }}{% endif %}" 
 {% if id %}id="{{ id }}"{% endif %} {% unless clickable == false %}data-clickable{% endunless %}>
     <source 
-        srcset="{{ path }}/{{ img }}-placeholder.webp" 
+        srcset="/{{ path }}/{{ img }}-placeholder.webp" 
         type="image/webp" 
-        data-src="{{ path }}/{{ img }}.webp">
+        data-src="/{{ path }}/{{ img }}.webp">
     <img 
-        src="{{ path }}/{{ img }}-placeholder.{{ ext }}"
+        src="/{{ path }}/{{ img }}-placeholder.{{ ext }}"
         alt="{{ include.alt }}" 
-        data-src="{{ path }}/{{ img }}.{{ ext }}"
+        data-src="/{{ path }}/{{ img }}.{{ ext }}"
         class="placeholder">
 </picture>

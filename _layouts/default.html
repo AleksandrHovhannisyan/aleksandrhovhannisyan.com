@@ -15,9 +15,13 @@
         {% if page.thumbnail_ext %}
             {% assign thumbnail_ext = page.thumbnail_ext %}
         {% endif %}
-        <meta property="og:image" content="{{ site.url }}/{{ page.img_path }}/{{ page.slug }}thumbnail.{{ thumbnail_ext }}">
+        {% assign img_path = page.img_path %}
+        {% if page.is_post %}
+            {% assign img_path = img_path | append: '/' | append: page.slug %}
+        {% endif %}
+        <meta property="og:image" content="{{ site.url }}/{{ img_path }}/thumbnail.{{ thumbnail_ext }}">
         <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-        <meta property="og:url" content="{{ site.url }}">
+        <meta property="og:url" content="{{ site.url }}{{ page.url }}">
         {% if page.noindex %}
             <!-- Prevent this page from showing up on search engines -->
             <meta name="robots" content="noindex">
