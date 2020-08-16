@@ -1,7 +1,7 @@
 {% assign post = include.post %}
 <li class="card interactive post-preview">
     <header>
-        {% include thumbnail.html post=post class="post-preview-thumbnail" %}
+        {% include thumbnail.html post=post %}
         <h2 class="post-preview-title" aria-label="Title: {{ post.title }}">{{ post.title }}</h2>
     </header>
     <a class="container-link" href="{{ post.url }}" aria-label="Read this blog post"></a>

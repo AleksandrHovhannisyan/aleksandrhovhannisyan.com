@@ -1,5 +1,6 @@
-{% assign img = include.img %}
-{% assign ext = include.ext %}
+{% assign img_parts = include.img | split: '.' %}
+{% assign img = img_parts[0] %}
+{% assign ext = img_parts[1] %}
 {% assign class = include.class %}
 {% assign id = include.id %}
 {% assign clickable = include.clickable %}

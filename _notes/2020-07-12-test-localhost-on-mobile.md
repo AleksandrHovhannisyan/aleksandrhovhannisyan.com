@@ -42,11 +42,11 @@ And just replace `portNumber` with your port (e.g., `3000`).
 
 Once ngrok starts up, you'll see your HTTP and HTTPS endpoints and the localhost variants that they point to. Now, simply navigate to either one of these public URLs.
 
-{% include picture.html img="ngrok" ext="png" alt="Running the ngrok process in a terminal." %}
+{% include picture.html img="ngrok.png" alt="Running the ngrok process in a terminal." %}
 
 To view the URL on mobile, you can certainly just type it out. However, if you're logged in to Chrome with your Google account, you can simply right-click the page and choose `Send to [your phone]`:
 
-{% include picture.html img="send-to-phone" ext="png" alt="Right-clicking a page in Google Chrome to send it to your phone." %}
+{% include picture.html img="send-to-phone.png" alt="Right-clicking a page in Google Chrome to send it to your phone." %}
 
 ## Sharing Is Caring
 
@@ -61,7 +61,7 @@ As before, replace `portNumber` with your own. Be sure to also replace `user` an
 
 This time, when you or someone else visit one of the endpoints, you'll be prompted to enter the username and password that were set:
 
-{% include picture.html img="auth" ext="png" alt="Ngrok authentication with a prompt for a username and password." %}
+{% include picture.html img="auth.png" alt="Ngrok authentication with a prompt for a username and password." %}
 
 So here, you'd type `user` and `password`.
 

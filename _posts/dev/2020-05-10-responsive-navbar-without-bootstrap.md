@@ -30,7 +30,7 @@ Interestingly, there's actually not a lot of HTML involved! Navigation bars aren
 
 Here's a GIF demonstrating the responsive navbar states and behavior:
 
-{% include picture.html img="demo" ext="gif" alt="A responsive navbar" %}
+{% include picture.html img="demo.gif" alt="A responsive navbar" %}
 
 We'll design this with a mobile-first approach and simply take care of the desktop case with a media query. Note that I'm not designing with any minimum device width in mind, but this works all the way down to `320px`, one of the narrowest mobile resolutions that you typically need to account for.
 
@@ -83,11 +83,11 @@ Before I vomit a bunch of CSS on your screen and leave you clueless as to what's
 
 First up, we're using a `<header>` landmark element with an ID of `navbar` as the outermost parent:
 
-{% include picture.html img="header" ext="png" alt="A header element" %}
+{% include picture.html img="header.png" alt="A header element" %}
 
 Inside of that is a nested `<nav>` landmark element, which signals the start of a navigation menu to screen readers and browsers. This container's main purpose is to align the left and right ends of our navbar with the page's left and right margins. This assumes that the page content itself is also wrapped with a `.container` for horizontal centering.
 
-{% include picture.html img="nav" ext="png" alt="A nav landmark element with left and right padding and auto margins" %}
+{% include picture.html img="nav.png" alt="A nav landmark element with left and right padding and auto margins" %}
 
 As you may have probably guessed, this is a flex container. It has three children:
 
@@ -97,17 +97,17 @@ As you may have probably guessed, this is a flex container. It has three childre
 
 Let's take a closer look at that last element:
 
-{% include picture.html img="navbar-menu" ext="png" alt="The navbar-menu fixed wrapper" %}
+{% include picture.html img="navbar-menu.png" alt="The navbar-menu fixed wrapper" %}
 
 This wrapper is given a fixed position and covers the entire screen. It also has a semi-transparent background that elevates it visually above the main content of the page. In some UI libraries, this is known as a **mask layer**. It's a common approach used with things like modal windows and menus.
 
 Within `.navbar-menu` is an unordered list with some padding, margins, and a box shadow:
 
-{% include picture.html img="navbar-links" ext="png" alt="The navbar-links unordered list element" %}
+{% include picture.html img="navbar-links.png" alt="The navbar-links unordered list element" %}
 
 And finally, that list houses the actual navigation links:
 
-{% include picture.html img="navbar-link" ext="png" alt="A navigation bar link being inspected in Chrome dev tools" %}
+{% include picture.html img="navbar-link.png" alt="A navigation bar link being inspected in Chrome dev tools" %}
 
 That's it! When we hit the `700px` breakpoint, our media query kicks in and styles the desktop navbar. This media query was determined based on the number of navbar links in this particular setup. If you have more content, you may wish to adjust this breakpoint.
 
@@ -177,7 +177,7 @@ Alright, time to actually style our responsive navbar. We'll work in a top-down 
 
 **Result**:
 
-{% include picture.html img="step1" ext="png" alt="Styled navbar header element" %}
+{% include picture.html img="step1.png" alt="Styled navbar header element" %}
 
 Why we need the CSS variable will become obvious later on. The entire element is given a fixed position so it sticks to the top of the page as the user scrolls. It's also given a slight box shadow. Don't worry about the fact that the links are currently overflowing their parent; we'll fix this soon enough.
 
@@ -193,7 +193,7 @@ Moving on, we have the nested container element:
 
 **Result**:
 
-{% include picture.html img="step2" ext="png" alt="Styled navbar-container element" %}
+{% include picture.html img="step2.png" alt="Styled navbar-container element" %}
 
 As I mentioned earlier, this is simply a flex container. We use `justify-content: space-between` to position the home link and hamburger icon on opposite ends of the navbar. But right now, it's positioning all three children: the home link, the hamburger button, and the navigation links themselves; we'll fix this shortly.
 
@@ -237,7 +237,7 @@ Next up is some general styling for the navbar anchors:
 
 **Result**:
 
-{% include picture.html img="step3" ext="png" alt="Styled anchor elements" %}
+{% include picture.html img="step3.png" alt="Styled anchor elements" %}
 
 Pretty straightforward.
 
@@ -254,7 +254,7 @@ Here's the logo styling (this is just a placeholder for my demo—in reality, yo
 
 **Result**:
 
-{% include picture.html img="step4" ext="png" alt="Styled logo" %}
+{% include picture.html img="step4.png" alt="Styled logo" %}
 
 Time for the toggle button.
 
@@ -306,7 +306,7 @@ Here's the CSS for that:
 
 **Result**:
 
-{% include picture.html img="step5" ext="png" alt="Styled hamburger button" %}
+{% include picture.html img="step5.png" alt="Styled hamburger button" %}
 
 There are lots of ways to do this, but I think this is the most straightforward to understand. I'm sure you can take advantage of pseudo-elements instead.
 
@@ -373,7 +373,7 @@ We also take care of an accessibility issue here and apply a different `aria-lab
 
 At this point, you can hop on over to your browser and test that the button works.
 
-{% include picture.html img="button" ext="gif" alt="Toggling the navigation menu button" %}
+{% include picture.html img="button.gif" alt="Toggling the navigation menu button" %}
 
 The menu, of course, is still not functional. Let's fix that!
 
@@ -396,7 +396,7 @@ As I mentioned earlier, the navigation menu wrapper has fixed positioning, with 
 
 **Result**:
 
-{% include picture.html img="step6" ext="png" alt="Styled navbar-menu wrapper" %}
+{% include picture.html img="step6.png" alt="Styled navbar-menu wrapper" %}
 
 While `opacity: 0` and `visibility: hidden` may seem redundant, it's a good idea to animate both of these properties because `visibility` alone tends to snap/animate very rapidly, whereas `opacity` is more gradual.
 
@@ -411,7 +411,7 @@ Here's the code for the menu's opened state:
 
 Click the hamburger icon to see the following result:
 
-{% include picture.html img="step7" ext="png" alt="Navigation menu in its opened state, with links visible below the navigation bar" %}
+{% include picture.html img="step7.png" alt="Navigation menu in its opened state, with links visible below the navigation bar" %}
 
 The container for the navigation links is an unordered list:
 
@@ -439,7 +439,7 @@ The container for the navigation links is an unordered list:
 
 **Result**:
 
-{% include picture.html img="step8" ext="png" alt="Styled navbar-links container" %}
+{% include picture.html img="step8.png" alt="Styled navbar-links container" %}
 
 This is the actual, physical "menu" part of our navigation. The margin ensures that the menu appears detached from the rest of the navbar, as if it's floating on the page. If instead you'd like it to appear as a physical extension of the navigation bar, simply get rid of the margin and border radius and shift the shadow down:
 
@@ -460,7 +460,7 @@ This is the actual, physical "menu" part of our navigation. The margin ensures t
 
 **Result**:
 
-{% include picture.html img="attached-menu" ext="png" alt="An attached navigation menu that's been opened" %}
+{% include picture.html img="attached-menu.png" alt="An attached navigation menu that's been opened" %}
 
 And that's it for the mobile version's CSS!
 
@@ -527,7 +527,7 @@ So first up is this:
 
 **Result**:
 
-{% include picture.html img="step9" ext="png" alt="Hamburger menu button hidden" %}
+{% include picture.html img="step9.png" alt="Hamburger menu button hidden" %}
 
 Obviously, we don't want the hamburger button to be visible on desktop, so we hide it with `display: none`.
 
@@ -565,7 +565,7 @@ And finally, `.navbar-links` now uses a flex direction of `row` instead of `colu
 
 **Result**:
 
-{% include picture.html img="step10" ext="png" alt="Fully styled desktop version of the navbar" %}
+{% include picture.html img="step10.png" alt="Fully styled desktop version of the navbar" %}
 
 We're officially done! But you may be wondering if there's room for customization—there sure is!
 

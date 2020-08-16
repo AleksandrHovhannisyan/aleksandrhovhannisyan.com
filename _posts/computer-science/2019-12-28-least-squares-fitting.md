@@ -13,7 +13,7 @@ With an understanding of [the method of least squares](/blog/computer-science/th
 
 In **least squares fitting**, we have some function $$f$$ that takes $$n$$-vectors as its inputs and maps them to real numbers. We don't really know anything about the function itself and what it does under the hood. It's your classic black box: You feed some vector $$x$$ to the function, and it spits out a $$y$$ in response:
 
-{% include picture.html img="black-box" ext="jpg" alt="The black-box model of a function." %}
+{% include picture.html img="black-box.jpg" alt="The black-box model of a function." %}
 
 Our goal in least squares fitting is to try to model $$f$$ as closely as possible, based on the input-output data pairs that we're given. Typically, we use the following notation for our data, with $$(x^{(i)}, y^{(i)})$$ denoting the $$i$$-th data pair:
 
@@ -139,7 +139,7 @@ We're asked to model the relationship between $$x$$ and $$y$$. Let's take it ste
 
 First, we'll plot the points:
 
-{% include picture.html img="data" ext="jpg" alt="Plotting the three data points we were given." %}
+{% include picture.html img="data.jpg" alt="Plotting the three data points we were given." %}
 
 We note that the points, while scattered, appear to have a linear pattern. Clearly, it's not possible to fit an actual straight line to the points, so we'll do our best to get as close as possible—using least squares, of course.
 
@@ -327,7 +327,7 @@ $$ \hat{f}(x) = \frac{1}{3} + x $$
 
 Let's plot the best-fit line along with the points:
 
-{% include picture.html img="best-fit" ext="jpg" alt="The best-fit line to the data we were given." %}
+{% include picture.html img="best-fit.jpg" alt="The best-fit line to the data we were given." %}
 
 Awesome! This is the best-line fit for the data points we were given.
 
@@ -345,7 +345,7 @@ Let's repeat the process.
 
 Here's a graph of our points:
 
-{% include picture.html img="data2" ext="jpg" alt="Plotting the four data points we were given." %}
+{% include picture.html img="data2.jpg" alt="Plotting the four data points we were given." %}
 
 To me, these points seems to take on the shape of a parabola. Based on that observation, I'm going to perform a least squares polynomial fit using a polynomial of degree two (a quadratic, basically).
 
@@ -490,7 +490,7 @@ $$\hat{f}(x) =1.86105904+1.80904405x+0.55014058x^{2}$$
 
 And here's the resulting graph with our polynomial fit to the data:
 
-{% include picture.html img="best-fit2" ext="jpg" alt="The best-fit parabola to the data we were given." %}
+{% include picture.html img="best-fit2.jpg" alt="The best-fit parabola to the data we were given." %}
 
 Looks like a pretty good fit to me!
 

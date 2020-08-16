@@ -1,11 +1,14 @@
 {% assign post = include.post %}
-{% assign thumbnail_ext = 'png' %}
-{% if post.thumbnail_ext %}
-    {% assign thumbnail_ext = post.thumbnail_ext %}
+{% assign thumbnail = 'thumbnail.png' %}
+{% if post.thumbnail %}
+    {% assign thumbnail = post.thumbnail %}
 {% endif %}
 {% assign path = post.img_path | append: '/' | append: post.slug %}
 {% if include.path %}
     {% assign path = include.path %}
 {% endif %}
-{% assign class = include.class %}
-{% include picture.html img="thumbnail" ext=thumbnail_ext alt="" path=path class="post-thumbnail" clickable=false class=class %}
+{% assign class = "post-preview-thumbnail" %}
+{% if include.class %}
+    {% assign class = class | append: ' ' | append: include.class %}
+{% endif %}
+{% include picture.html img=thumbnail alt="" path=path class=class clickable=false %}

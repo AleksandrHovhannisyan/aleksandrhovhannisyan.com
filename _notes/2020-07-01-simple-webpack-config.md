@@ -148,6 +148,6 @@ If you're using VS Code, you can take this one step further and create a `jsconf
 
 So now, if you start typing the name of a non-imported module, VS Code will look it up and automatically import it for you.
 
-{% include picture.html path="/assets/img/notes/simple-webpack-config/" img="vscode" ext="gif" alt="Auto-importing modules in VS Code" shadow=false %}
+{% include picture.html img="vscode.gif" alt="Auto-importing modules in VS Code" shadow=false %}
 
 I hope this helps!

@@ -25,9 +25,9 @@ layout: default
   <script src="/assets/scripts/formatKatex.js"></script>
 {% endif %}
 
-{% assign thumbnail_ext = 'png' %}
-{% if page.thumbnail_ext %}
-    {% assign thumbnail_ext = page.thumbnail_ext %}
+{% assign thumbnail = 'thumbnail.png' %}
+{% if page.thumbnail %}
+    {% assign thumbnail = page.thumbnail %}
 {% endif %}
 
 <script type="application/ld+json">
@@ -39,7 +39,7 @@ layout: default
       "@id": "{{ site.url }}{{ page.url }}"
     },
     "headline": {{ page.title | escape | jsonify }},
-    "image": ["{{ site.url }}{{ page.img_path }}/{{ page.slug }}/thumbnail.{{ thumbnail_ext }}"],
+    "image": ["{{ site.url }}/{{ page.img_path }}/{{ page.slug }}/{{ thumbnail }}"],
     "datePublished": {{ page.date | jsonify }},{% if page.last_updated %}
     "dateModified": {{ page.last_updated | jsonify }},{% endif %}
     "author": {

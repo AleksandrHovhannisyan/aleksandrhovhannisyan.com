@@ -87,7 +87,7 @@ ReactDOM.render(<Table columns={columns} dataSource={data} onChange={onChange} /
 
 That renders a table like this, whose columns can either be sorted individually or in combination with one another, based on the precedence/priority you've defined for each column:
 
-{% include picture.html img="table" ext="png" alt="An Ant Design Table component, with one column being sorted." %}
+{% include picture.html img="table.png" alt="An Ant Design Table component, with one column being sorted." %}
 
 Let's zoom in on this piece of code to understand how columns are actually sorted in Ant Design:
 

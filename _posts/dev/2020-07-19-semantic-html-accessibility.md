@@ -25,7 +25,7 @@ Unfortunately, developers tend to fall into a number of common traps that violat
 
 So let's just clear this up now—there are only two non-semantic HTML elements: `<div>` and `<span>`. By definition, this means that anything else is **semantic HTML**: an element that has some sort of inherent meaning. Some of these are depicted below:
 
-{% include picture.html img="semantic-html" ext="png" alt="The main pieces of a website can be broken down into semantic elements and groupings" %}
+{% include picture.html img="semantic-html.png" alt="The main pieces of a website can be broken down into semantic elements and groupings" %}
 
 Think of `<div>`s and `<span>`s as generic containers: They're simply there for grouping things at either the block or inline level. Beyond that, you can't really attach any meaning to a div: It's just a box.
 
@@ -39,13 +39,13 @@ Before we move on, let's do a quick recap of the most notable semantic HTML elem
 
 The `<main>` element represents the main content region of a website:
 
-{% include picture.html img="main" ext="png" alt="The main content region of a website" %}
+{% include picture.html img="main.png" alt="The main content region of a website" %}
 
 Typically, you'll want to wrap everything in `<main>` except for your navigation header and footer. Also, note that a page should only ever have one `<main>` present to avoid confusing screen readers and search engine crawlers.
 
 ### Header and Footer
 
-{% include picture.html img="header-footer" ext="png" alt="The header and footer HTML elements" %}
+{% include picture.html img="header-footer.png" alt="The header and footer HTML elements" %}
 
 You can think of the `<header>` element as a container for certain "visible metadata" on your page. For example, you can use it at the top of an article to group your title, publication date, tags, and so on. You can also use header elements at the top of material cards, where you'll usually find things like thumbnails, titles, and other descriptive information about the card and its contents. Finally, you can also wrap your site's navbar in a `<header>` to set it apart from the main content of your site. If a `<header>` element is at the very top level of your HTML and is not a descendant of other semantic HTML elements, it'll have an implicit aria role of `banner`, meaning screen readers will say something like "banner landmark" when they encounter it.
 
@@ -57,7 +57,7 @@ The only thing to keep in mind is that `<header>` and `<footer>` should never ap
 
 Simply put, an `<article>` is a self-contained piece of content that people would understand if you were to redistribute it externally. This means that blog posts, articles, and forum threads are a perfect use case for the `<article>` element.
 
-{% include picture.html img="article" ext="png" alt="The article HTML element" %}
+{% include picture.html img="article.png" alt="The article HTML element" %}
 
 On the other hand, `<section>` represents... well, a section. This one typically confuses people because they're not sure what the difference is between a `<section>` and a plain old `<div>`. What makes a section inherently semantic? Well, for one, sections typically have a heading. And if you omit one, you'll get an HTML validation warning. Sections are good for things like:
 
@@ -114,25 +114,25 @@ Unfortunately, this rule is broken frequently on the web, mainly because of Java
 
 Twitter's buttons are *divs all the way down* (they're using `role="button"` here):
 
-{% include picture.html img="twitter-button" ext="png" alt="Inspecting the Twitter heart button" %}
+{% include picture.html img="twitter-button.png" alt="Inspecting the Twitter heart button" %}
 
 Gmail also uses divs for its buttons:
 
-{% include picture.html img="gmail" ext="png" alt="Inspecting Gmail's refresh button" %}
+{% include picture.html img="gmail.png" alt="Inspecting Gmail's refresh button" %}
 
 Facebook's like button is a div with an image inside it:
 
-{% include picture.html img="facebook-like" ext="png" alt="Inspecting Facebook's like button" %}
+{% include picture.html img="facebook-like.png" alt="Inspecting Facebook's like button" %}
 
 But there are sites that do get this right!
 
 The StackExchange network uses `<button>` elements with nested SVGs:
 
-{% include picture.html img="stackoverflow-buttons" ext="png" alt="Inspecting StackOverflow's upvote button" %}
+{% include picture.html img="stackoverflow-buttons.png" alt="Inspecting StackOverflow's upvote button" %}
 
 As does the new Reddit interface (the old one is still using divs):
 
-{% include picture.html img="reddit" ext="png" alt="Inspecting the Reddit upvote button" %}
+{% include picture.html img="reddit.png" alt="Inspecting the Reddit upvote button" %}
 
 #### Q: Should I Use an Anchor or a Button?
 
@@ -174,29 +174,29 @@ Let's take another look around the web!
 
 Google renders search results using divs, but an ordered list would probably make more sense here since the top search results are not there by coincidence (i.e., the ordering matters):
 
-{% include picture.html img="google" ext="png" alt="Inspecting the Google search results page" %}
+{% include picture.html img="google.png" alt="Inspecting the Google search results page" %}
 
 > Note: Google has hidden elements that provide accessibility guidance to users with screen readers and other assistive technologies, so this "violation" isn't really a big deal. That may apply to some of the other sites and apps, too, though I haven't tested them.
 
 Twitter uses divs for replies:
 
-{% include picture.html img="twitter-replies" ext="png" alt="Inspecting Twitter replies" %}
+{% include picture.html img="twitter-replies.png" alt="Inspecting Twitter replies" %}
 
 So does Reddit, both for its old and new interfaces:
 
-{% include picture.html img="reddit-comments" ext="png" alt="Inspecting Reddit comments" %}
+{% include picture.html img="reddit-comments.png" alt="Inspecting Reddit comments" %}
 
 StackOverflow gets it right again, using an unordered list for comments (though an ordered list may make more sense here since comments are sorted by the date they're posted):
 
-{% include picture.html img="stackoverflow-comments" ext="png" alt="Inspecting comments on a StackOverflow post" %}
+{% include picture.html img="stackoverflow-comments.png" alt="Inspecting comments on a StackOverflow post" %}
 
 And so does Spotify, where songs are rendered in an ordered list:
 
-{% include picture.html img="spotify" ext="png" alt="Inspecting a list of songs on Spotify" %}
+{% include picture.html img="spotify.png" alt="Inspecting a list of songs on Spotify" %}
 
 Here's another great example of using a list properly, this time from GitHub:
 
-{% include picture.html img="github-repo-results" ext="png" alt="Inspecting repository search results on GitHub" %}
+{% include picture.html img="github-repo-results.png" alt="Inspecting repository search results on GitHub" %}
 
 Notice from these examples that a "list" is really an abstract concept. You shouldn't view `<li>` as an element that can only contain text. Clearly, it can also contain links, buttons, more lists, images, and anything else that you can think of.
 
@@ -209,7 +209,7 @@ Another common mistake is to use `<span>`s to achieve inline positioning. Develo
 
 A good example of the second case is if you have text with placeholders, like `X comments` or `X posts`, and those placeholder counts need to get set via JavaScript (e.g., once an API call finishes). You'd isolate the placeholders with spans and give them IDs so their text can get set. Here's a real example of that from GitHub's own UI:
 
-{% include picture.html img="github-counter" ext="png" alt="Inspecting a GitHub counter via the Chrome dev tools" %}
+{% include picture.html img="github-counter.png" alt="Inspecting a GitHub counter via the Chrome dev tools" %}
 
 > In addition, note again how the tabs themselves are rendered in a list. Yay!
 
@@ -227,7 +227,7 @@ However, as I mentioned before, just because something is available to you doesn
 
 Here, "strong native semantics" refers to the fact that semantic HTML elements have intrinsic ARIA roles. You can explore these in the [MDN Web Docs](https://developer.mozilla.org/en-US/) for a particular element. For example, the `<ol>` tag has an implicit ARIA role of `list`:
 
-{% include picture.html img="mdn" ext="png" alt="Table describing the various attribute constraints for the ordered list element" %}
+{% include picture.html img="mdn.png" alt="Table describing the various attribute constraints for the ordered list element" %}
 
 Notice that elements also have a set of **permitted ARIA roles** and **permitted content**. For example, the descendant of an `<ol>` or `<ul>` should only ever be one of `<li>`, `<script>`, or `<template>`—anything else, and an [HTML validator](https://validator.w3.org/) will give you an error. Here's an example of such an error:
 
@@ -245,15 +245,15 @@ This is another underrated semantic HTML element. Basically, use the `<time>` el
 
 GitHub uses [web component extensions for the `<time>` element](https://github.com/github/time-elements) in its UI:
 
-{% include picture.html img="github-time" ext="png" alt="Inspecting a relative date time on GitHub" %}
+{% include picture.html img="github-time.png" alt="Inspecting a relative date time on GitHub" %}
 
 StackOverflow uses `<time>`:
 
-{% include picture.html img="stackoverflow-time" ext="png" alt="StackOverflow uses the time element for the dates of posts" %}
+{% include picture.html img="stackoverflow-time.png" alt="StackOverflow uses the time element for the dates of posts" %}
 
 And so does Twitter:
 
-{% include picture.html img="twitter-time" ext="png" alt="Twitter uses the time element for the date a tweet was posted" %}
+{% include picture.html img="twitter-time.png" alt="Twitter uses the time element for the date a tweet was posted" %}
 
 It's certainly not the end of the world if you don't use `<time>`, so long as the date itself is part of some other semantic element (e.g., a paragraph or heading) that will make sense in the context in which it's narrated.
 

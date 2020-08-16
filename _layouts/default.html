@@ -11,15 +11,15 @@
         <meta name="referrer" content="origin">
         <!-- Open Graph social media previews -->
         <meta property="og:title" content="{{ page.title }} | {{ site.title }}">
-        {% assign thumbnail_ext = 'png' %}
-        {% if page.thumbnail_ext %}
-            {% assign thumbnail_ext = page.thumbnail_ext %}
+        {% assign thumbnail = 'thumbnail.png' %}
+        {% if page.thumbnail %}
+            {% assign thumbnail = page.thumbnail %}
         {% endif %}
         {% assign img_path = page.img_path %}
         {% if page.is_post %}
             {% assign img_path = img_path | append: '/' | append: page.slug %}
         {% endif %}
-        <meta property="og:image" content="{{ site.url }}/{{ img_path }}/thumbnail.{{ thumbnail_ext }}">
+        <meta property="og:image" content="{{ site.url }}/{{ img_path }}/{{ thumbnail }}">
         <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
         <meta property="og:url" content="{{ site.url }}{{ page.url }}">
         {% if page.noindex %}
