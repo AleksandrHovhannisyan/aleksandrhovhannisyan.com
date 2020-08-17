@@ -1,71 +1,73 @@
 ---
 title: Software Developer & Tech Writer
-custom_js: [lazyLoad]
 permalink: /
+custom_js: [lazyLoad]
 img_path: assets/img
 ---
 
-<section id="hero-banner">
-    <div id="hero-text">
-        <h1 class="title">Hey there! I'm Aleksandr.</h1>
-        <p class="subtitle">I'm a software developer with an eye for creating beautiful, responsive designs. I love learning new things and sharing my discoveries with others through writing.</p>
-    </div>
+<section id="hero-banner" class="section">
+  <div id="hero-text">
     {% include picture.html img="profile-photo.png" alt="" id="headshot" clickable=false %}
+    <h1 class="title">Hey there! I'm Aleksandr.</h1>
+    <p class="subtitle">
+      I'm a software developer with an eye for creating beautiful, responsive designs. I love learning new things and
+      sharing my discoveries with others through writing. You can
+      <a class="underlined-link" href="/about/">learn more about me</a>,
+      <a class="underlined-link" href="/blog/">read my blog</a>, or
+      <a class="underlined-link" href="/contact/">get in touch</a>.
+    </p>
+  </div>
 </section>
-<section id="recent-posts" class="section posts">
-    <h2 class="heading">Recent Blog Posts</h2>
-    <p class="subtitle">Free dev tutorials, musings, and more. No ads whatsoever.</p>
-    <ol class="post-preview-grid card-grid">
-        {% for post in site.posts limit:2 %}
-        {% include postPreview.html post=post %}
-        {% endfor %}
+<section id="recent-blog-posts" class="section">
+    {% include linkedHeading.html heading="📰 Recent Blog Posts" class="heading" level=2 %}
+    <ol class="post-preview-grid">
+        {% for post in site.posts limit:5 %} {% include postPreview.html post=post %} {% endfor %}
     </ol>
 </section>
-<section id="popular-posts" class="section posts">
-    <h2 class="heading">Popular Posts</h2>
-    <p class="subtitle">Naturally, some of my posts have attracted more attention than others on my blog. Here are some of the more popular ones that people like to read.</p>
-    <ol class="post-preview-grid card-grid">
-        {% assign popular_posts = site.posts | where: "is_popular", true %}
-        {% for post in popular_posts %}
-            {% include postPreview.html post=post %}
-        {% endfor %}
-    </ol>
+<section id="popular-blog-posts" class="section">
+    {% include linkedHeading.html heading="🔥 Popular Posts" class="heading" level=2 %}
+  <ol class="post-preview-grid">
+    {% assign popular_posts = site.posts | where: "is_popular", true %} {% for post in popular_posts %} {% include
+    postPreview.html post=post %} {% endfor %}
+  </ol>
 </section>
-<section id="featured-projects" class="section">
-    <h2 class="heading">Software Projects</h2>
-    <p class="subtitle">I have experience with a range of stacks and languages and enjoy creating beautiful user experiences. Got a project in mind? <a href="/contact/" class="underlined-link">Get in touch!</a></p>
-    <ol class="project-grid card-grid">
-        {% for project in site.data.projects %}
-            {% include projectCard.html project=project %}
-        {% endfor %}
-        <li id="github-cta">
-          <header>
-            <p><strong>Want to see more of my work?</strong></p>
-          </header>
-          <div>
-            <p>Check out my other repos:</p>
-            <a
-              aria-label="Aleksandr Hovhannisyan's GitHub profile."
-              href="https://github.com/AleksandrHovhannisyan?tab=repositories"
-              >{% include icon.html icon="github" %}</a>
-          </div>
-        </li>
-      </ol>
-</section>
-<section id="cta" class="section">
-    <h2 class="heading">Want to learn more about me?</h2>
-    <div id="cta-buttons">
-        <a href="/about/" class="button solid-button">Get to know me</a>
-        <a href="/blog/" class="button hollow-button">Read my blog</a>
-    </div>
+<section id="projects" class="section">
+  <header class="heading">
+    {% include linkedHeading.html heading="📽 Software Projects" level=2 %}    
+    <p>
+      I have experience with a wide range of stacks and enjoy working on projects that have a strong visual and UI/UX
+      component. Below are just some of the projects that I'm proud of.
+    </p>
+  </header>
+  <ul class="project-grid card-grid">
+    {% for project in site.data.projects %}
+        {% include projectCard.html project=project %}
+    {% endfor %}
+    <li id="github-cta">
+      <header>
+        <p><strong>Want to see more of my work?</strong></p>
+      </header>
+      <div>
+        <p>Check out my other repos:</p>
+        <a
+          aria-label="Aleksandr Hovhannisyan's GitHub profile."
+          href="https://github.com/AleksandrHovhannisyan?tab=repositories"
+          >{% include icon.html icon="github" %}</a>
+      </div>
+    </li>
+  </ul>
 </section>
 <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "Person",
-      "image": "{{ site.url }}/assets/img/profile-photo.png",
-      "jobTitle": "Software Developer",
-      "name": "Aleksandr Hovhannisyan",
-      "sameAs": ["https://github.com/AleksandrHovhannisyan", "https://www.upwork.com/freelancers/~014eb3a95d4d1fd855", "https://www.linkedin.com/in/aleksandr-hovhannisyan-ba154b120/"]
-    }
+  {
+    "@context": "http://schema.org",
+    "@type": "Person",
+    "image": "{{ site.url }}/assets/img/profile-photo.png",
+    "jobTitle": "Software Developer",
+    "name": "Aleksandr Hovhannisyan",
+    "sameAs": [
+      "https://github.com/AleksandrHovhannisyan",
+      "https://www.upwork.com/freelancers/~014eb3a95d4d1fd855",
+      "https://www.linkedin.com/in/aleksandr-hovhannisyan-ba154b120/"
+    ]
+  }
 </script>

@@ -3,38 +3,38 @@
 @import 'settings';
 
 // For performance (https://medium.com/clio-calliope/making-google-fonts-faster-aadf3c02a36d)
-// /* karla-regular - latin */
-// @font-face {
-//     font-family: 'Karla';
-//     font-style: normal;
-//     font-weight: 400;
-//     src: local('Karla'), local('Karla-Regular'), url('/assets/fonts/Karla-Regular.ttf') format('truetype');
-//     font-display: swap;
-// }
-// /* karla-italic - latin */
-// @font-face {
-//     font-family: 'Karla';
-//     font-style: italic;
-//     font-weight: 400;
-//     src: local('Karla Italic'), local('Karla-Italic'), url('/assets/fonts/Karla-Italic.ttf') format('truetype');
-//     font-display: swap;
-// }
-// /* karla-700 - latin */
-// @font-face {
-//     font-family: 'Karla';
-//     font-style: normal;
-//     font-weight: 700;
-//     src: local('Karla Bold'), local('Karla-Bold'), url('/assets/fonts/Karla-Bold.ttf') format('truetype');
-//     font-display: swap;
-// }
-// /* karla-700italic - latin */
-// @font-face {
-//     font-family: 'Karla';
-//     font-style: italic;
-//     font-weight: 700;
-//     src: local('Karla Bold Italic'), local('Karla-BoldItalic'), url('/assets/fonts/Karla-BoldItalic.ttf') format('truetype');
-//     font-display: swap;
-// }
+/* karla-regular - latin */
+@font-face {
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Karla'), local('Karla-Regular'), url('/assets/fonts/Karla-Regular.ttf') format('truetype');
+    font-display: swap;
+}
+/* karla-italic - latin */
+@font-face {
+    font-family: 'Karla';
+    font-style: italic;
+    font-weight: 400;
+    src: local('Karla Italic'), local('Karla-Italic'), url('/assets/fonts/Karla-Italic.ttf') format('truetype');
+    font-display: swap;
+}
+/* karla-700 - latin */
+@font-face {
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Karla Bold'), local('Karla-Bold'), url('/assets/fonts/Karla-Bold.ttf') format('truetype');
+    font-display: swap;
+}
+/* karla-700italic - latin */
+@font-face {
+    font-family: 'Karla';
+    font-style: italic;
+    font-weight: 700;
+    src: local('Karla Bold Italic'), local('Karla-BoldItalic'), url('/assets/fonts/Karla-BoldItalic.ttf') format('truetype');
+    font-display: swap;
+}
 /* reenie-beanie-regular - latin */
 @font-face {
     font-family: 'Reenie Beanie';
@@ -93,17 +93,17 @@ body {
     color: var(--text-color-normal);
     display: grid;
     font-family: $font-family-normal;
-    grid-template-rows: 1fr $footer-height;
+    grid-template-rows: $navbar-height 1fr $footer-height;
     line-height: 1.6;
     min-height: 100vh;
     position: relative;
+    row-gap: $navbar-height;
     @include transition(background-color);
 }
 
 #page-content {
-    grid-row: 1;
+    grid-row: 2;
     min-width: 0; // https://css-tricks.com/preventing-a-grid-blowout/
-    padding: $navbar-height 0;
     @include centered;
 }
 
@@ -142,13 +142,8 @@ strong {
     @include transition(color);
 }
 
-.title, .subtitle, .heading {
-    text-align: center;
-}
-
 .subtitle {
     max-width: 70ch;
-    margin: 0 auto;
 }
 
 h1 {
@@ -211,10 +206,10 @@ p {
 }
 
 .section {
-    margin-top: 5rem;
+    scroll-margin-top: $navbar-height + 20px;
 
-    .heading {
-        margin-bottom: 1em;
+    &:not(:last-of-type) {
+        margin-bottom: 2 * $navbar-height;
     }
 }
 

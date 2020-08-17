@@ -3,12 +3,16 @@
 @import 'mixins';
 @import 'settings';
 
+.blog-page-title {
+    font-size: 2em;
+}
+
 .post-tag {
     display: inline-block;
 }
 
-.blog-post-previews {
-    margin-top: 75px;
+.post-preview-grid {
+    margin-top: 3em;
 }
 
 .tag-navigation {
@@ -16,7 +20,6 @@
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
-    margin-bottom: 50px;
 
     li {
         margin-bottom: 0;
@@ -30,62 +33,56 @@
     }
 }
 
-.post-preview-grid {
-    @include responsiveGrid($mobileMin: 255px, $desktopMin: 20em);
-    list-style-type: none;
-}
-
 .post-preview {
-    --thumbnail-height: 9rem;
-    display: block;
-    padding: 0;
-    margin: 0;
-    // height: fit-content;
-}
-
-.post-preview-body {
-    padding: var(--card-padding);
-    // - 0.875em because each .post-tag has a margin-bottom of 1em but a font size of 0.875em
-    padding-bottom: calc(var(--card-padding) - 0.875em);
-}
-
-.post-preview-thumbnail {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: var(--thumbnail-height);
-    
-    img {
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        height: var(--thumbnail-height);
-        width: 100%;
-        object-fit: cover;
-        object-position: center;
-        position: absolute;
-        @include transition(filter);
-
-        html.dark & {
-            filter: brightness(.8) contrast(1.2);
-        }
-    }
+    list-style: none;
+    margin: 4em 0;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .post-preview-title {
-    background-color: var(--post-title-bg-color);
-    color: white;
-    text-shadow: 2px 2px black;
-    padding: 0.5em 1.5em;
-    margin: 0;
+    font-size: 1.125em;
+
+    a {
+        color: var(--text-color-emphasis);
+    }
+}
+
+.post-preview-thumbnail-container {
     display: flex;
     align-items: center;
-    font-size: 1em;
-    min-height: 4rem;
-    @include transition(background-color);
+}
+
+.post-preview-thumbnail {
+    flex-shrink: 0;
+    height: auto;
+    min-width: 250px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-right: 0;
+    margin-bottom: 1.5em;
+
+    img {
+        height: auto !important;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .post-preview {
+        flex-wrap: nowrap;
+    }
+
+    .post-preview-thumbnail {
+        min-width: inherit;
+        width: 382px;
+        margin-right: 1.5em;
+        margin-bottom: 0;
+    }
 }
 
 .post-preview-description {
-    margin-bottom: 1em;
+    margin-bottom: 0;
 }
 
 .post-preview-tags {
@@ -134,6 +131,7 @@
 }
 
 .post-title {
+    margin-top: 0 !important;
     margin-bottom: 1rem;
 }
 
@@ -432,3 +430,5 @@ code {
     padding: 3px 6px;
     @include transition(color, background-color);
 }
+
+
