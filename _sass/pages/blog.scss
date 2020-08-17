@@ -56,6 +56,8 @@
 .post-preview-thumbnail-container {
     display: flex;
     align-items: center;
+    margin-right: 0;
+    margin-bottom: 1.5em;
 }
 
 .post-preview-thumbnail {
@@ -65,8 +67,6 @@
     width: 100%;
     display: flex;
     align-items: center;
-    margin-right: 0;
-    margin-bottom: 1.5em;
 
     img {
         height: auto !important;
@@ -78,11 +78,14 @@
         flex-wrap: nowrap;
     }
 
+    .post-preview-thumbnail-container {
+        margin-right: 1.5em;
+        margin-bottom: 0;
+    }
+
     .post-preview-thumbnail {
         min-width: inherit;
         width: 382px;
-        margin-right: 1.5em;
-        margin-bottom: 0;
     }
 }
 
