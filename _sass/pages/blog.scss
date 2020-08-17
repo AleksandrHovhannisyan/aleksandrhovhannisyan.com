@@ -40,7 +40,7 @@
     flex-wrap: wrap;
 
     &:not(:last-of-type) {
-        margin-bottom: 4em;
+        margin-bottom: 6em;
     }
 }
 
@@ -80,6 +80,10 @@
 @media screen and (min-width: 900px) {
     .post-preview {
         flex-wrap: nowrap;
+    
+        &:not(:last-of-type) {
+            margin-bottom: 4em;
+        }
     }
 
     .post-preview-thumbnail-container {
