@@ -131,7 +131,7 @@ body {
 
 strong {
     color: var(--text-color-emphasis);
-    font-weight: map-get($font-weights, "bold");
+    font-weight: map-get($font-weights, "bolder");
     @include transition(color);
 }
 
