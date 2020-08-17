@@ -49,6 +49,11 @@
                 document.documentElement.className = localStorage.getItem('theme');
             }
         </script>
+        <!-- For performance (https://medium.com/clio-calliope/making-google-fonts-faster-aadf3c02a36d) -->
+        <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Karla-Regular.ttf" crossorigin>
+        <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Karla-Italic.ttf" crossorigin>
+        <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Karla-Bold.ttf" crossorigin>
+        <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Karla-BoldItalic.ttf" crossorigin>
     </head>
     <body>
         {% include navbar.html %}
