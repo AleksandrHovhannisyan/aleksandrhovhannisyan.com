@@ -93,6 +93,7 @@ body {
     color: var(--text-color-normal);
     display: grid;
     font-family: $font-family-normal;
+    -webkit-font-smoothing: antialiased;
     grid-template-rows: $navbar-height 1fr $footer-height;
     line-height: 1.6;
     min-height: 100vh;
