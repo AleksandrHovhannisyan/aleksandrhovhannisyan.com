@@ -7,9 +7,9 @@ html.light {
     --card-bg-color: white;
     --footer-bg-color: var(--navbar-bg-color);
     --footer-text-color: var(--navbar-text-color);
-    --form-bg-color: #f6f6f6;
+    --form-bg-color: var(--hover-bg-color);
     --hero-bg-color: #1c1c1c;
-    --hover-bg-color: #f3f5f7;
+    --hover-bg-color: hsl(0, 0%, 96%);
     --inline-code-bg-color: rgba(231, 231, 231, 0.75);
     --inline-code-text-color: #424850;
     --input-bg-color: white;
@@ -57,7 +57,7 @@ html.dark {
     --card-bg-color: #292929;
     --footer-bg-color: var(--navbar-bg-color);
     --footer-text-color: var(--navbar-text-color);
-    --form-bg-color: #292929;
+    --form-bg-color: var(--hover-bg-color);
     --hero-bg-color: #202020;
     --hover-bg-color: #292929;
     --inline-code-bg-color: rgba(88, 88, 88, 0.65);
