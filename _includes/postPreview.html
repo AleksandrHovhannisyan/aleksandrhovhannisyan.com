@@ -10,7 +10,7 @@
     {% include meta.html content=post.content date=post.date tags=post.tags %}
     <p class="post-preview-description">
       {{ post.description | truncate: 160 }}
-      <a class="underlined-link" href="{{ post.url }}" aria-label="Read this blog post">Continue reading</a>
+      <a class="underlined-link" href="{{ post.url }}">Read this post &rarr;</a>
     </p>
   </div>
 </li>
