@@ -86,7 +86,7 @@
 
 #website-name {
     color: var(--navbar-text-color);
-    font-weight: map-get($font-weights, "normal");
+    font-weight: map-get($font-weights, "bold");
     margin-left: 5px;
     @include transition(color);
 }
