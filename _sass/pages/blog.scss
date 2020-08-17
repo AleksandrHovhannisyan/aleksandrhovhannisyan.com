@@ -73,6 +73,10 @@
     }
 }
 
+.post-preview-read-post-link {
+    font-weight: map-get($font-weights, "bold");
+}
+
 @media screen and (min-width: 900px) {
     .post-preview {
         flex-wrap: nowrap;
