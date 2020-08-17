@@ -35,9 +35,13 @@
 
 .post-preview {
     list-style: none;
-    margin: 4em 0;
+    margin: 0;
     display: flex;
     flex-wrap: wrap;
+
+    &:not(:last-of-type) {
+        margin-bottom: 4em;
+    }
 }
 
 .post-preview-title {
