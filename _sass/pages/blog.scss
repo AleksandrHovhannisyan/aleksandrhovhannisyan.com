@@ -4,7 +4,7 @@
 @import 'settings';
 
 .blog-page-title {
-    font-size: 2em;
+    font-size: 1.8em;
 }
 
 .post-tag {
@@ -45,9 +45,10 @@
 }
 
 .post-preview-title {
-    font-size: 1.125em;
-
+    font-size: 1em;
+    
     a {
+        font-weight: map-get($font-weights, "bolder");
         color: var(--text-color-emphasis);
     }
 }

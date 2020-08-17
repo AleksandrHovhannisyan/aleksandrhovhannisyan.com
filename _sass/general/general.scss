@@ -137,7 +137,7 @@ strong {
 @include headings {
     color: var(--text-color-emphasis);
     margin-bottom: 0.5em;
-    font-weight: map-get($font-weights, "bold");
+    font-weight: map-get($font-weights, "bolder");
     line-height: 1.4;
     @include transition(color);
 }
@@ -147,7 +147,7 @@ strong {
 }
 
 h1 {
-    font-size: 2em;
+    font-size: 1.8em;
 }
 
 .underlined-link {
