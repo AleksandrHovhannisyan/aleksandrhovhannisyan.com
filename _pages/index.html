@@ -25,7 +25,7 @@ img_path: assets/img
     </ol>
 </section>
 <section id="popular-blog-posts" class="section">
-    {% include linkedHeading.html heading="🔥 Popular Posts" class="heading" level=2 %}
+    {% include linkedHeading.html heading="Popular Posts" class="heading" level=2 %}
   <ol class="post-preview-grid">
     {% assign popular_posts = site.posts | where: "is_popular", true %} {% for post in popular_posts %} {% include
     postPreview.html post=post %} {% endfor %}
