@@ -37,6 +37,7 @@
     list-style: none;
     margin: 0;
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
 
     &:not(:last-of-type) {
@@ -77,15 +78,15 @@
     font-weight: map-get($font-weights, "bold");
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 750px) {
     .post-preview {
         flex-wrap: nowrap;
-    
+
         &:not(:last-of-type) {
             margin-bottom: 4em;
         }
     }
-
+    
     .post-preview-thumbnail-container {
         margin-right: 1.5em;
         margin-bottom: 0;
@@ -93,7 +94,13 @@
 
     .post-preview-thumbnail {
         min-width: inherit;
-        width: 382px;
+        width: 150px;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .post-preview-thumbnail {
+        width: 220px;
     }
 }
 
