@@ -134,6 +134,7 @@ p {
 
 .linked-heading {
     position: relative;
+    scroll-margin-top: calc(#{$navbar-height} + 1em);
     
     &:hover {
         .heading-anchor {
@@ -170,12 +171,8 @@ p {
     @include transition(visibility, opacity, border, color);
 }
 
-.section {
-    scroll-margin-top: $navbar-height + 20px;
-
-    &:not(:last-of-type) {
-        margin-bottom: 2 * $navbar-height;
-    }
+.section:not(:last-of-type) {
+    margin-bottom: 2 * $navbar-height;
 }
 
 li {

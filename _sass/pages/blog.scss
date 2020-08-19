@@ -206,7 +206,7 @@
 
 #post {
     @include headings {
-        scroll-margin-top: $navbar-height + 20px;
+        scroll-margin-top: calc(#{$navbar-height} + 1em);
         margin-top: 1.5em;
     }
 }
