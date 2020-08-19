@@ -1,7 +1,7 @@
 {% assign post = include.post %}
 <li class="post-preview">
   <a href="{{ post.url }}" aria-hidden="true" tabindex="-1" class="post-preview-thumbnail-container">
-    {% include thumbnail.html post=post class="post-preview-thumbnail" %}
+    {% include thumbnail.html post=post %}
   </a>
   <h3 class="post-preview-title" aria-label="Title: {{ post.title }}">
     <a class="underlined-link" href="{{ post.url }}">{{ post.title }}</a>
