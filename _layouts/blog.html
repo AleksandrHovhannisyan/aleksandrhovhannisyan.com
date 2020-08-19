@@ -15,7 +15,7 @@ layout: default
     {% assign capitalizedWord = word | capitalize | append: ' '%}
     {% assign blogType = blogType | append: capitalizedWord %}
   {% endfor %}
-  <h1>{{ blogType }}Blog Posts</h1>
+  <h2 class="blog-page-title">{{ blogType }}Blog Posts</h2>
   <p>
     {% if site.data.tags[pageTag] %} 
     {{site.data.tags[pageTag] }}
@@ -41,7 +41,7 @@ layout: default
       {% endfor %}
     </ul>
   </nav>
-  <ol class="post-preview-grid card-grid">
+  <ol class="post-preview-grid">
     {{ content }}
   </ol>
   {% if paginator.page_trail %}

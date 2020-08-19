@@ -3,38 +3,6 @@
 @import 'settings';
 
 // For performance (https://medium.com/clio-calliope/making-google-fonts-faster-aadf3c02a36d)
-// /* karla-regular - latin */
-// @font-face {
-//     font-family: 'Karla';
-//     font-style: normal;
-//     font-weight: 400;
-//     src: local('Karla'), local('Karla-Regular'), url('/assets/fonts/Karla-Regular.ttf') format('truetype');
-//     font-display: swap;
-// }
-// /* karla-italic - latin */
-// @font-face {
-//     font-family: 'Karla';
-//     font-style: italic;
-//     font-weight: 400;
-//     src: local('Karla Italic'), local('Karla-Italic'), url('/assets/fonts/Karla-Italic.ttf') format('truetype');
-//     font-display: swap;
-// }
-// /* karla-700 - latin */
-// @font-face {
-//     font-family: 'Karla';
-//     font-style: normal;
-//     font-weight: 700;
-//     src: local('Karla Bold'), local('Karla-Bold'), url('/assets/fonts/Karla-Bold.ttf') format('truetype');
-//     font-display: swap;
-// }
-// /* karla-700italic - latin */
-// @font-face {
-//     font-family: 'Karla';
-//     font-style: italic;
-//     font-weight: 700;
-//     src: local('Karla Bold Italic'), local('Karla-BoldItalic'), url('/assets/fonts/Karla-BoldItalic.ttf') format('truetype');
-//     font-display: swap;
-// }
 /* reenie-beanie-regular - latin */
 @font-face {
     font-family: 'Reenie Beanie';
@@ -93,17 +61,18 @@ body {
     color: var(--text-color-normal);
     display: grid;
     font-family: $font-family-normal;
-    grid-template-rows: 1fr $footer-height;
+    -webkit-font-smoothing: antialiased;
+    grid-template-rows: $navbar-height 1fr $footer-height;
     line-height: 1.6;
     min-height: 100vh;
     position: relative;
+    row-gap: $navbar-height;
     @include transition(background-color);
 }
 
 #page-content {
-    grid-row: 1;
+    grid-row: 2;
     min-width: 0; // https://css-tricks.com/preventing-a-grid-blowout/
-    padding: $navbar-height 0;
     @include centered;
 }
 
@@ -130,29 +99,20 @@ body {
 
 strong {
     color: var(--text-color-emphasis);
-    font-weight: map-get($font-weights, "bold");
+    font-weight: map-get($font-weights, "bolder");
     @include transition(color);
 }
 
 @include headings {
     color: var(--text-color-emphasis);
     margin-bottom: 0.5em;
-    font-weight: map-get($font-weights, "bold");
+    font-weight: map-get($font-weights, "bolder");
     line-height: 1.4;
     @include transition(color);
 }
 
-.title, .subtitle, .heading {
-    text-align: center;
-}
-
-.subtitle {
-    max-width: 70ch;
-    margin: 0 auto;
-}
-
 h1 {
-    font-size: 2em;
+    font-size: 1.8em;
 }
 
 .underlined-link {
@@ -174,6 +134,7 @@ p {
 
 .linked-heading {
     position: relative;
+    scroll-margin-top: calc(#{$navbar-height} + 1em);
     
     &:hover {
         .heading-anchor {
@@ -210,12 +171,8 @@ p {
     @include transition(visibility, opacity, border, color);
 }
 
-.section {
-    margin-top: 5rem;
-
-    .heading {
-        margin-bottom: 1em;
-    }
+.section:not(:last-of-type) {
+    margin-bottom: 2 * $navbar-height;
 }
 
 li {

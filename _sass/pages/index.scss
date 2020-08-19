@@ -2,104 +2,60 @@
 @import 'settings';
 
 #hero-banner {
-    $headshot-size: 140px;
-    align-items: center;
-    background-color: var(--hero-bg-color);
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.8);
-    display: flex;
-    flex-direction: column;
-    grid-column: 1 / 4 !important;
-    justify-content: center;
-    min-height: 300px;
-    padding: 70px 1.2rem;
-    position: relative;
+    margin-top: $navbar-height / 2;
+    display: grid;
+    column-gap: 1em;
+    grid-template-areas:
+        "title title headshot"
+        "subtitle subtitle subtitle";
 
-    &, * {
-        @include transition(color);
+    .title {
+        grid-area: title;
+    }
+    
+    .subtitle {
+        margin: 0;
+        grid-area: subtitle;
+    }
+}
+
+.heading {
+    margin-bottom: 3rem;
+
+    p {
+        margin: 0;
+    }
+}
+
+#headshot {
+    --headshot-size: 5rem;
+    width: var(--headshot-size);
+    height: var(--headshot-size);
+    grid-area: headshot;
+    justify-self: center;
+
+    img {
+        border-radius: 50%;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    #hero-banner {
+        grid-template-areas: 
+            "title title headshot"
+            "subtitle subtitle subtitle";
+    }
+}
+
+@media screen and (min-width: 600px) {
+    #hero-banner {
+        grid-template-areas: 
+            "title title headshot"
+            "subtitle subtitle headshot";
     }
 
     #headshot {
-        background-color: var(--hero-bg-color);
-        border: 5px solid var(--hero-bg-color);
-        bottom: -70px;
-        height: $headshot-size;
-        position: absolute;
-        width: $headshot-size;
-        
-        &, * {
-            border-radius: 50%;
-        }
-    }
-
-    .subtitle {
-        margin-bottom: calc(#{$headshot-size} / 4);
-        color: #c6c6c6;
-    }
-
-    .title {
-        font-size: 1.94em;
-        color: white;
-    }
-
-    + .section {
-        margin-top: $headshot-size; 
-    }
-}
-
-.posts, 
-#featured-projects {
-    .card-grid {
-        margin-top: 3em;
-    }
-}
-
-#featured-projects {
-    #view-more-projects {
-        align-items: center;
-        display: flex;
-        justify-content: center;
-
-        .button {
-            height: 3.5em;
-            width: 10em;
-        }
-    }
-}
-
-#cta {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-
-    .subtitle {
-        margin-bottom: $paragraph-spacing;
-    }
-
-    #cta-buttons {
-        max-width: 22em;
-        display: flex;
-        flex-wrap: wrap;
-        width: 100%;
-    
-        .button {
-            height: 3.5em;
-            flex: 1;
-
-            &:first-child {
-                margin-right: 0.875em;
-            }
-        }
-    }
-}
-
-// 28.75rem = 460px
-@media only screen and (min-width: 28.75rem) {
-    #cta-buttons {
-        display: flex;
-        justify-content: space-around;
-
-        .button {
-            max-width: 10em;
-        }
+        --headshot-size: 7.5rem;
+        margin-left: 1rem;
     }
 }

@@ -3,12 +3,16 @@
 @import 'mixins';
 @import 'settings';
 
+.blog-page-title {
+    font-size: 1.8em;
+}
+
 .post-tag {
     display: inline-block;
 }
 
-.blog-post-previews {
-    margin-top: 75px;
+.post-preview-grid {
+    margin-top: 3em;
 }
 
 .tag-navigation {
@@ -16,7 +20,6 @@
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
-    margin-bottom: 50px;
 
     li {
         margin-bottom: 0;
@@ -30,82 +33,91 @@
     }
 }
 
-.post-preview-grid {
-    @include responsiveGrid($mobileMin: 255px, $desktopMin: 20em);
-    list-style-type: none;
-}
-
 .post-preview {
-    --thumbnail-height: 9rem;
-    display: block;
-    padding: 0;
+    list-style: none;
     margin: 0;
-    // height: fit-content;
-}
+    display: grid;
+    align-items: center;
+    grid-template-areas:
+        "thumbnail"
+        "title"
+        "meta"
+        "description";
 
-.post-preview-body {
-    padding: var(--card-padding);
-    // - 0.875em because each .post-tag has a margin-bottom of 1em but a font size of 0.875em
-    padding-bottom: calc(var(--card-padding) - 0.875em);
-}
+    &:not(:last-of-type) {
+        margin-bottom: 6em;
+    }
 
-.post-preview-thumbnail {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: var(--thumbnail-height);
-    
-    img {
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        height: var(--thumbnail-height);
-        width: 100%;
-        object-fit: cover;
-        object-position: center;
-        position: absolute;
-        @include transition(filter);
-
-        html.dark & {
-            filter: brightness(.8) contrast(1.2);
-        }
+    .post-meta {
+        grid-area: meta;
     }
 }
 
 .post-preview-title {
-    background-color: var(--post-title-bg-color);
-    color: white;
-    text-shadow: 2px 2px black;
-    padding: 0.5em 1.5em;
-    margin: 0;
+    font-size: 1em;
+    margin-bottom: 1em;
+    grid-area: title;
+    
+    a {
+        font-weight: map-get($font-weights, "bolder");
+        color: var(--text-color-emphasis);
+    }
+}
+
+.post-preview-thumbnail-container {
     display: flex;
     align-items: center;
-    font-size: 1em;
-    min-height: 4rem;
-    @include transition(background-color);
+    margin-right: 0;
+    margin-bottom: 1.5em;
+    grid-area: thumbnail;
+}
+
+.post-preview-thumbnail {
+    flex-shrink: 0;
+    height: auto;
+    min-width: calc(100vw - 2.7 * 1.2rem);
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    img {
+        height: auto !important;
+    }
 }
 
 .post-preview-description {
     margin-bottom: 1em;
+    grid-area: description;
 }
 
-.post-preview-tags {
-    display: flex;
-    flex-wrap: wrap;
-    font-size: 0.875em;
-    z-index: 2;
-    position: relative;
-    list-style-type: none;
-    margin: 0;
+@media screen and (min-width: 750px) {
+    .post-preview {
+        flex-wrap: nowrap;
+        grid-template-areas:
+            "thumbnail title"
+            "thumbnail description"
+            "thumbnail meta";
 
-    li {
-        margin: 0;
+        &:not(:last-of-type) {
+            margin-bottom: 4em;
+        }
+    }
+    
+    .post-preview-thumbnail-container {
+        margin-right: 1.8em;
+        margin-bottom: 0;
+    }
+
+    .post-preview-thumbnail {
+        min-width: inherit;
+        width: 150px;
     }
 }
 
-.post-preview-tag {
-    margin-bottom: 1em;
-    margin-right: 0.625em;
-    padding: 0.4em 0.8em;
+@media screen and (min-width: 900px) {
+    .post-preview-thumbnail {
+        width: 275px;
+    }
 }
 
 .post-preview-placeholder {
@@ -134,6 +146,7 @@
 }
 
 .post-title {
+    margin-top: 0 !important;
     margin-bottom: 1rem;
 }
 
@@ -141,8 +154,10 @@
     display: flex;
     flex-wrap: wrap;
     font-size: 0.8em;
+    font-weight: map-get($font-weights, "light");
     list-style: none;
     margin: 0;
+    color: var(--post-meta-text-color);
 
     .author-photo {
         height: 2.5rem;
@@ -162,7 +177,7 @@
 
     .meta-icon {
         @include transition(fill);
-        fill: var(--text-color-normal);
+        fill: var(--post-meta-icon-fill);
         height: 1em;
         margin-right: 5px;
         width: 1em;
@@ -184,15 +199,14 @@
 .post-meta-tag {
     display: flex;
     align-items: center;
-    font-style: normal;
     margin-bottom: 1em;
     margin-right: 0.625em;
-    padding: 0.4em 0.8em;
+    padding: 0.3em 0.8em;
 }
 
 #post {
     @include headings {
-        scroll-margin-top: $navbar-height + 20px;
+        scroll-margin-top: calc(#{$navbar-height} + 1em);
         margin-top: 1.5em;
     }
 }
@@ -432,3 +446,5 @@ code {
     padding: 3px 6px;
     @include transition(color, background-color);
 }
+
+
