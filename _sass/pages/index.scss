@@ -2,17 +2,20 @@
 @import 'settings';
 
 #hero-banner {
-    display: flex;
-    flex-wrap: wrap;
     margin-top: $navbar-height / 2;
+    display: grid;
+    column-gap: 1em;
+    grid-template-areas:
+        "title title headshot"
+        "subtitle subtitle subtitle";
 
     .title {
-        display: flex;
-        justify-content: space-between;
+        grid-area: title;
     }
     
     .subtitle {
         margin: 0;
+        grid-area: subtitle;
     }
 }
 
@@ -28,29 +31,31 @@
     --headshot-size: 5rem;
     width: var(--headshot-size);
     height: var(--headshot-size);
-    float: right;
+    grid-area: headshot;
+    justify-self: center;
 
     img {
         border-radius: 50%;
     }
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 500px) {
     #hero-banner {
-        flex-wrap: nowrap;
-
-        .subtitle {
-            margin-right: 8rem;
-        }
-    }
-
-    #headshot {
-        margin-left: 1.5em;
+        grid-template-areas: 
+            "title title headshot"
+            "subtitle subtitle subtitle";
     }
 }
 
-@media screen and (min-width: 25rem) {
+@media screen and (min-width: 600px) {
+    #hero-banner {
+        grid-template-areas: 
+            "title title headshot"
+            "subtitle subtitle headshot";
+    }
+
     #headshot {
         --headshot-size: 7.5rem;
+        margin-left: 1rem;
     }
 }
