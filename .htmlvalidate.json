@@ -7,6 +7,7 @@
         "no-inline-style": "off",
         "void-style": "off",
         "no-raw-characters": "warn",
-        "attribute-boolean-style": "warn"
+        "attribute-boolean-style": "warn",
+        "wcag/h30": "warn"
     }
 }
