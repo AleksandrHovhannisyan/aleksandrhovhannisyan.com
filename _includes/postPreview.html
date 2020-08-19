@@ -3,14 +3,12 @@
   <a href="{{ post.url }}" aria-hidden="true" tabindex="-1" class="post-preview-thumbnail-container">
     {% include thumbnail.html post=post class="post-preview-thumbnail" %}
   </a>
-  <div class="post-preview-body">
-    <h3 class="post-preview-title" aria-label="Title: {{ post.title }}">
-      <a class="underlined-link" href="{{ post.url }}">{{ post.title }}</a>
-    </h3>
-    <p class="post-preview-description">
-      {{ post.description | truncate: 122 }}
-      <a class="underlined-link" href="{{ post.url }}" class="post-preview-read-post-link">Read this post &rarr;</a>
-    </p>
-    {% include meta.html content=post.content date=post.date tags=post.tags tag_class="post-preview-tag" %}
-  </div>
+  <h3 class="post-preview-title" aria-label="Title: {{ post.title }}">
+    <a class="underlined-link" href="{{ post.url }}">{{ post.title }}</a>
+  </h3>
+  <p class="post-preview-description">
+    {{ post.description | truncate: 122 }}
+    <a class="underlined-link" href="{{ post.url }}" class="post-preview-read-post-link">Read this post &rarr;</a>
+  </p>
+  {% include meta.html content=post.content date=post.date tags=post.tags tag_class="post-preview-tag" %}
 </li>
