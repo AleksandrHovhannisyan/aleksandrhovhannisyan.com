@@ -109,28 +109,6 @@
     margin-bottom: 1em;
 }
 
-.post-preview-tags {
-    display: flex;
-    flex-wrap: wrap;
-    font-size: 0.875em;
-    z-index: 2;
-    position: relative;
-    list-style-type: none;
-    margin: 0;
-
-    li {
-        margin: 0;
-    }
-}
-
-.post-preview-tag {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1em;
-    margin-right: 0.625em;
-    padding: 0.3em 0.8em;
-}
-
 .post-preview-placeholder {
     display: flex;
     justify-content: center;
@@ -210,10 +188,9 @@
 .post-meta-tag {
     display: flex;
     align-items: center;
-    font-style: normal;
     margin-bottom: 1em;
     margin-right: 0.625em;
-    padding: 0.4em 0.8em;
+    padding: 0.3em 0.8em;
 }
 
 #post {
