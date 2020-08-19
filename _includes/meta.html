@@ -4,6 +4,7 @@
 {% assign last_updated = include.last_updated %}
 {% assign tags = include.tags %}
 {% assign class = include.class %}
+{% assign tag_class = include.tag_class %}
 {% if minutes == 0 %}{% assign minutes = 1 %}{% endif %}
 <ul class="post-meta{% if class %} {{ class }}{% endif %}">
     {% if include.showProfilePhoto %}
@@ -29,7 +30,7 @@
     <li>
         <ul class="meta post-meta-tags" aria-label="Tags belonging to this blog post.">
             {% for tag in include.tags %}
-            <li><a href="/tag/{{ tag }}" class="tag post-meta-tag">{{ tag }}</a></li>
+            <li><a href="/tag/{{ tag }}" class="tag{% if tag_class %} {{ tag_class }}{% else %} post-meta-tag{% endif %}">{{ tag }}</a></li>
             {% endfor %}
         </ul>
     </li>
