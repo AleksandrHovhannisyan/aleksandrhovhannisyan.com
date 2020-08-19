@@ -90,10 +90,6 @@
     grid-area: description;
 }
 
-.post-preview-read-post-link {
-    font-weight: map-get($font-weights, "bold");
-}
-
 @media screen and (min-width: 750px) {
     .post-preview {
         flex-wrap: nowrap;
