@@ -4,7 +4,6 @@
 #hero-banner {
     margin-top: $navbar-height / 2;
     display: grid;
-    column-gap: 1em;
     grid-template-areas:
         "title title headshot"
         "subtitle subtitle subtitle";
@@ -44,6 +43,10 @@
         grid-template-areas: 
             "title title headshot"
             "subtitle subtitle subtitle";
+    }
+
+    #headshot {
+        margin-left: 1em;
     }
 }
 
