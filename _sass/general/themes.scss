@@ -25,7 +25,8 @@ html.light {
     --navbar-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.8);
     --navbar-link-bg-color-hover: #444647;
     --navbar-text-color: hsl(0, 0%, 85%);
-    --post-title-bg-color: #465058;
+    --post-meta-text-color: black;
+    --post-meta-icon-fill: #696c6f;
     --scrollbar-thumb-bg-color-hover: #adadad;
     --scrollbar-thumb-bg-color: #858585;
     --scrollbar-track-bg-color: var(--navbar-bg-color);
@@ -74,7 +75,8 @@ html.dark {
     --navbar-box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.8);
     --navbar-link-bg-color-hover: #444647;
     --navbar-text-color: hsl(0, 0%, 85%);
-    --post-title-bg-color: #6b675d;
+    --post-meta-text-color: #c7c7c7;
+    --post-meta-icon-fill: #919191;
     --scrollbar-thumb-bg-color-hover: #adadad;
     --scrollbar-thumb-bg-color: #858585;
     --scrollbar-track-bg-color: var(--navbar-bg-color);

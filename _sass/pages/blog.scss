@@ -163,8 +163,10 @@
     display: flex;
     flex-wrap: wrap;
     font-size: 0.8em;
+    font-weight: map-get($font-weights, "light");
     list-style: none;
     margin: 0;
+    color: var(--post-meta-text-color);
 
     .author-photo {
         height: 2.5rem;
@@ -184,7 +186,7 @@
 
     .meta-icon {
         @include transition(fill);
-        fill: var(--text-color-normal);
+        fill: var(--post-meta-icon-fill);
         height: 1em;
         margin-right: 5px;
         width: 1em;
