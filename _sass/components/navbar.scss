@@ -197,8 +197,7 @@
 
     &:active {
         .theme-switch-knob {
-            height: calc(var(--switch-orb-height) - 4px);
-            width: calc(var(--switch-orb-width) - 4px);
+            transform: scale(0.85);
         }
     }
 }
@@ -215,7 +214,8 @@
     position: absolute;
     right: calc(var(--switch-width) - var(--switch-orb-width));
     width: var(--switch-orb-width);
-    @include transition(left, right, background-color, border, width, height);
+    transform: scale(1);
+    @include transition(transform, left, right, background-color, border);
 
     .dark & {
         box-shadow: 0 0 5px 0 white;
