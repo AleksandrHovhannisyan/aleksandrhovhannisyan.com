@@ -191,7 +191,7 @@
 }
 
 .skip-post-meta-tags-target {
-    scroll-margin-top: calc(#{$navbar-height} + 1em);
+    scroll-margin-top: $scroll-margin-top;
 }
 
 .post-meta-tags {
@@ -218,7 +218,7 @@
 
 #post {
     @include headings {
-        scroll-margin-top: calc(#{$navbar-height} + 1em);
+        scroll-margin-top: $scroll-margin-top;
         margin-top: 1.5em;
     }
 }

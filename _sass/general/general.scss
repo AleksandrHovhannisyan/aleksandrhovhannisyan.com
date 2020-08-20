@@ -71,6 +71,7 @@ body {
 }
 
 #page-content {
+    scroll-margin-top: $scroll-margin-top;
     grid-row: 2;
     min-width: 0; // https://css-tricks.com/preventing-a-grid-blowout/
     @include centered;
@@ -134,7 +135,7 @@ p {
 
 .linked-heading {
     position: relative;
-    scroll-margin-top: calc(#{$navbar-height} + 1em);
+    scroll-margin-top: $scroll-margin-top;
     
     &:hover {
         .heading-anchor {

@@ -6,3 +6,4 @@ $font-weights: ("light": 300, "normal": 400, "bold": 600, "bolder": 700);
 $navbar-height: 64px;
 $navbar-z-index: 100;
 $footer-height: 80px;
+$scroll-margin-top: calc(#{$navbar-height} + 1em);
