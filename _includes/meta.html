@@ -29,7 +29,11 @@
     <li>
         <ul class="meta post-meta-tags" aria-label="Tags belonging to this blog post.">
             {% for tag in include.tags %}
-            <li><a href="/tag/{{ tag }}" class="tag post-meta-tag">{{ tag }}</a></li>
+            <li class="post-meta-tag-wrapper">
+                <a href="/tag/{{ tag }}" class="tag post-meta-tag">
+                    {{ tag }}
+                </a>
+            </li>
             {% endfor %}
         </ul>
     </li>
