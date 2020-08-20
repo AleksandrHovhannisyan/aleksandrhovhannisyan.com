@@ -8,7 +8,7 @@ permalink: /contact/
     <h1 class="contact-heading">Get in touch! 📧</h1>
     <div id="contact-information">
         <form class="contact-form" action="https://formspree.io/xrgypaol" method="post" spellcheck="false">
-            <input type="hidden" name="_subject" value="Someone sent you a message!" />
+            <input aria-hidden="true" type="hidden" name="_subject" value="Someone sent you a message!" />
             <label class="required" for="name">Name</label>
             <input class="input" type="text" name="name" id="name" required>
             <label for="email">Email</label>
@@ -16,7 +16,7 @@ permalink: /contact/
             <label class="required" for="message">Message</label>
             <textarea class="input" name="body" id="message" required></textarea>
             <button type="submit" class="button solid-button">Send message</button>
-            <input type="text" name="_gotcha" class="honeypot" />
+            <input aria-hidden="true" type="text" name="_gotcha" class="honeypot" />
         </form>
         <section>
             <h2 class="social-networks-heading">You can also find me on:</h2>
