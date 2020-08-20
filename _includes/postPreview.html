@@ -3,8 +3,8 @@
   <a href="{{ post.url }}" aria-hidden="true" tabindex="-1" class="post-preview-thumbnail-container">
     {% include thumbnail.html post=post %}
   </a>
-  <h3 class="post-preview-title" aria-label="Title: {{ post.title }}">
-    <a class="underlined-link" href="{{ post.url }}">{{ post.title }}</a>
+  <h3 class="post-preview-title">
+    <a class="underlined-link" href="{{ post.url }}" tabindex="-1">{{ post.title }}</a>
   </h3>
   <p class="post-preview-description">
     {{ post.description | truncate: 122 }}
