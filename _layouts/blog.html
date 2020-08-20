@@ -15,7 +15,7 @@ layout: default
     {% assign capitalizedWord = word | capitalize | append: ' '%}
     {% assign blogType = blogType | append: capitalizedWord %}
   {% endfor %}
-  <h2 class="blog-page-title">{{ blogType }}Blog Posts</h2>
+  <h1 class="blog-page-title">{{ blogType }}Blog Posts</h1>
   <p>
     {% if site.data.tags[pageTag] %} 
     {{site.data.tags[pageTag] }}
