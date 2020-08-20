@@ -1,41 +1,41 @@
-{% assign reading_length = include.content | number_of_words | divided_by: 250 %}
+{% assign post = include.post %}
+{% assign reading_length = post.content | number_of_words | divided_by: 250 %}
 {% assign showProfilePhoto = include.showProfilePhoto %}
-{% assign date = include.date %}
 {% assign last_updated = include.last_updated %}
-{% assign tags = include.tags %}
-{% assign class = include.class %}
 {% if minutes == 0 %}{% assign minutes = 1 %}{% endif %}
-<ul class="post-meta{% if class %} {{ class }}{% endif %}">
-    {% if include.showProfilePhoto %}
+<ul class="post-meta">
+    {% if showProfilePhoto %}
         <li>
             {% include picture.html path="assets/img" img="profile-photo.png" alt="" class="meta author-photo" clickable=false %}
         </li>
     {% endif %}
     <li class="meta post-date-published">
         {% include icon.html icon="calendar" class="meta-icon" %}
-        <time datetime="{{ include.date | date: "%Y-%m-%d" }}">{{ include.date | date: "%b %-d, %Y" }}</time>
+        <time datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date: "%b %-d, %Y" }}</time>
     </li>
-    {% if include.last_updated %}
-    <li class="meta post-date-updated">
-        {% include icon.html icon="info" class="meta-icon" %}
-        <time datetime="{{ include.last_updated | date: "%Y-%m-%d" }}">Updated: {{ include.last_updated | date: "%b %-d, %Y" }}</time>
-    </li>
+    {% if last_updated %}
+        <li class="meta post-date-updated">
+            {% include icon.html icon="info" class="meta-icon" %}
+            <time datetime="{{ last_updated | date: "%Y-%m-%d" }}">Updated: {{ last_updated | date: "%b %-d, %Y" }}</time>
+        </li>
     {% endif %}
     <li class="meta post-reading-length">
         {% include icon.html icon="clock" class="meta-icon" %}
         <span>{{ reading_length }} min read</span>
     </li>
-    {% if include.tags %}
-    <li>
-        <ul class="meta post-meta-tags" aria-label="Tags belonging to this blog post.">
-            {% for tag in include.tags %}
-            <li class="post-meta-tag-wrapper">
-                <a href="/tag/{{ tag }}" class="tag post-meta-tag">
-                    {{ tag }}
-                </a>
-            </li>
-            {% endfor %}
-        </ul>
-    </li>
+    {% if post.tags %}
+        <li>
+            <a href="#skip-tags-{{ post.title | slugify }}" class="screen-reader-only skip-post-meta-tags">Skip tag navigation</a>
+            <ul class="meta post-meta-tags" aria-label="Tags belonging to this blog post.">
+                {% for tag in post.tags %}
+                <li class="post-meta-tag-wrapper">
+                    <a href="/tag/{{ tag }}" class="tag post-meta-tag">
+                        {{ tag }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            <div id="skip-tags-{{ post.title | slugify }}" class="skip-post-meta-tags-target"></div>
+        </li>
     {% endif %}
 </ul>

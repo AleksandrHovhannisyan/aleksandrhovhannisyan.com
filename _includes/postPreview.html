@@ -14,5 +14,5 @@
     {{ post.description | truncate: 122 }}
     <a href="{{ post.url }}" class="underlined-link">Read this post &rarr;</a>
   </p>
-  {% include meta.html content=post.content date=post.date tags=post.tags tag_class="post-preview-tag" %}
+  {% include meta.html post=post %}
 </li>
