@@ -7,8 +7,8 @@
   <a href="{{ post.url }}" aria-hidden="true" tabindex="-1" class="post-preview-thumbnail-container">
     {% include thumbnail.html post=post %}
   </a>
-  <h{{ title_level }} class="post-preview-title">
-    <a class="underlined-link" href="{{ post.url }}" tabindex="-1">{{ post.title }}</a>
+  <h{{ title_level }} class="post-preview-title" aria-label="{{ post.title }}">
+    <a class="underlined-link" href="{{ post.url }}" aria-hidden="true" tabindex="-1">{{ post.title }}</a>
   </h{{ title_level }}>
   <p class="post-preview-description">
     {{ post.description | truncate: 122 }}
