@@ -427,7 +427,7 @@ We'll still need to do all of the following, but with slight differences:
 
 Let's knock these out one at a time, just like we did before.
 
-#### 1. Opening a Modal When Its Trigger Is Clicked
+### 1. Opening a Modal When Its Trigger Is Clicked
 
 The code for subscribing to trigger clicks hasn't changed:
 
@@ -459,7 +459,7 @@ Notice that we check if we're opening a modal for the first time at the top. If 
 
 Since we're using an associative data structure now instead of a stack, we'll hash into it with the modal ID that we were provided. Since it's assumed that you don't have any duplicate IDs on your page, each entry in this object will have a unique key used to identify a particular modal window.
 
-#### 2. Closing a Particular Modal with Its X Button
+### 2. Closing a Particular Modal with Its X Button
 
 Since we're no longer working with stacked modals, there is no notion of the "topmost" modal. Instead, our `closeModal` function will now need to accept an ID to find the right modal to close.
 
@@ -493,7 +493,7 @@ And here's the code for closing a modal window with the X button:
 
 We use the DOM's `closest` method to figure out which modal the clicked close button belongs to. Then, we get that modal's ID and close it.
 
-#### 3. Closing All Modals by Clicking Off to the Side
+### 3. Closing All Modals by Clicking Off to the Side
 
 Just like before, we'll stop click propagation whenever we click on the modal window itself:
 
@@ -531,7 +531,7 @@ What's going on here? Well, `Object.keys(currentlyOpenModals)` gives us an array
 
 If that's the case, then `Object.keys(currentlyOpenModals)` will return `["modal1", "modal2", "modal9000"]`. Then, we invoke `closeModal` for each modal ID in this array.
 
-#### 4. Closing All Modals with the Escape Key
+### 4. Closing All Modals with the Escape Key
 
 Basically, the code is 99% the same except we now call `closeAllModals` instead of `closeTopmostModal`:
 
