@@ -82,6 +82,10 @@
 
     img {
         height: auto !important;
+        
+        .light & {
+            filter: brightness(0.97);
+        }
     }
 }
 
