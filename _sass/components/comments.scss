@@ -29,8 +29,11 @@ $meta-spacing: 0.5em;
     padding: 0 !important;
 
     .comment {
-        margin-bottom: 4em;
         margin-left: $avatar-size + $meta-spacing;
+        
+        &:not(:last-of-type) {
+            margin-bottom: 4em;
+        }
     }
 
     .commenter {
