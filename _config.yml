@@ -8,6 +8,9 @@ url: https://aleksandrhovhannisyan.com
 issues_repo: AleksandrHovhannisyan/aleksandrhovhannisyan.com
 bug_report: https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com/issues/new?assignees=&labels=bug&template=bug_report.md&title=Bug+Report%3A+%5BConcise+Summary+Here%5D
 
+destination: _site
+source: src
+
 plugins:
   - jekyll-feed
   - jekyll-sitemap
@@ -16,6 +19,10 @@ plugins:
 include:
   - _pages
   - _redirects
+
+exclude:
+  - webpack
+  - node_modules
 
 collections:
   notes:
