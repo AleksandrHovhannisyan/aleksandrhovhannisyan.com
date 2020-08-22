@@ -1,6 +1,6 @@
 // Some credit goes to Florida Ivanne Elago for the logic here:
 // https://medium.com/caspertechteam/simple-image-placeholders-for-lazy-loading-images-unknown-size-19f0866ceced
-function preloadImage(placeholderImg) {
+function lazyLoad(placeholderImg) {
   const pictureElement = placeholderImg.parentElement;
 
   // Create a new img element and add it to the picture element
@@ -34,18 +34,4 @@ function preloadImage(placeholderImg) {
   };
 }
 
-const observer = new IntersectionObserver(function (entries, self) {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      preloadImage(entry.target);
-      self.unobserve(entry.target);
-    }
-  });
-});
-
-const imgs = document.querySelectorAll('#page-content img.placeholder');
-
-imgs.forEach((img) => {
-  // Listen for any intersections to lazy-load
-  observer.observe(img);
-});
+export default lazyLoad;

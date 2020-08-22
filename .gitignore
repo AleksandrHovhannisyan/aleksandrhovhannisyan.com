@@ -4,3 +4,5 @@ _site
 _drafts
 post_diagrams
 experimental
+node_modules
+/src/assets/scripts/bundle.js
