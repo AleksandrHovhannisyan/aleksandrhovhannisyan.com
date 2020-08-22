@@ -19,6 +19,4 @@ const copyCode = (clickEvent) => {
   }, 2000);
 };
 
-document.querySelectorAll('.copy-code-button').forEach((copyCodeButton) => {
-  copyCodeButton.addEventListener('click', copyCode);
-});
+export default copyCode;

@@ -108,7 +108,6 @@ defaults:
       path: _posts
       type: posts
     values:
-      custom_js: [lazyLoad, copyCode]
       is_post: true
       layout: post
       excerpt: ""
@@ -118,7 +117,6 @@ defaults:
     scope:
       path: _notes
     values:
-      custom_js: [lazyLoad, copyCode]
       is_post: true
       layout: post
       excerpt: ""
