@@ -9,12 +9,7 @@ source "https://rubygems.org"
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
 gem "jekyll", "~> 3.8.5"
-
-# For GitHub Pages
-gem "github-pages", group: :jekyll_plugins
 gem 'jekyll-sitemap'
-
-# Addressing the reported GitHub Pages severe vulnerability
 gem "nokogiri", ">= 1.10.4"
 
 # If you have any plugins, put them here!
