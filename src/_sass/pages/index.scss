@@ -4,6 +4,7 @@
 #hero-banner {
     margin-top: $navbar-height / 2;
     display: grid;
+    margin-bottom: 1.5 * $navbar-height;
     grid-template-areas:
         "title title headshot"
         "subtitle subtitle subtitle";

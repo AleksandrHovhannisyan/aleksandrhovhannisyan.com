@@ -12,7 +12,9 @@
 }
 
 .post-preview-grid {
-    margin-top: 3em;
+    margin-top: 4em;
+    display: grid;
+    row-gap: 3em;
 }
 
 .tag-navigation {
@@ -37,16 +39,11 @@
     list-style: none;
     margin: 0;
     display: grid;
-    align-items: center;
     grid-template-areas:
         "thumbnail"
         "title"
         "meta"
         "description";
-
-    &:not(:last-of-type) {
-        margin-bottom: 3em;
-    }
 
     .post-meta {
         grid-area: meta;
@@ -66,23 +63,25 @@
 
 .post-preview-thumbnail-container {
     display: flex;
-    align-items: center;
     margin-right: 0;
-    margin-bottom: 1.5em;
+    margin-bottom: 1em;
     grid-area: thumbnail;
 }
 
 .post-preview-thumbnail {
+    $thumbnail-height: 13rem;
     flex-shrink: 0;
     height: auto;
-    min-width: calc(100vw - 2.7 * 1.2rem);
     width: 100%;
+    height: $thumbnail-height;
     display: flex;
     align-items: center;
 
-    img {
-        height: auto !important;
-        
+    img {   
+        height: $thumbnail-height;
+        object-fit: cover;
+        object-position: center;
+     
         .light & {
             filter: brightness(0.97);
         }
@@ -90,37 +89,36 @@
 }
 
 .post-preview-description {
-    margin-bottom: 1em;
+    margin: 0;
     grid-area: description;
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 800px) {
     .post-preview {
         flex-wrap: nowrap;
         grid-template-areas:
             "thumbnail title"
             "thumbnail description"
             "thumbnail meta";
-
-        &:not(:last-of-type) {
-            margin-bottom: 4em;
-        }
     }
     
     .post-preview-thumbnail-container {
-        margin-right: 1.8em;
-        margin-bottom: 0;
+        margin: 0 1.8em 1em 0;
     }
 
     .post-preview-thumbnail {
-        min-width: inherit;
-        width: 150px;
-    }
-}
+        height: 100%;
+        width: 225px;
 
-@media screen and (min-width: 900px) {
-    .post-preview-thumbnail {
-        width: 275px;
+        img {
+            height: 100%;
+            object-fit: cover;
+            object-position: center;    
+        }
+    }
+
+    .post-preview-description {
+        margin-bottom: 0.8em;
     }
 }
 
