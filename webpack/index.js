@@ -1,10 +1,10 @@
-import toggleColorTheme from './theme';
+import toggleTheme from './toggleTheme';
 import { rehighlightActiveNavLink, toggleMobileNavbarVisibility, onNavLinkHovered } from './navbar';
 import lazyLoad from './lazyLoad';
 import copyCode from './copyCode';
 
 const themeSwitch = document.getElementById('theme-switch');
-themeSwitch.addEventListener('click', toggleColorTheme);
+themeSwitch.addEventListener('click', toggleTheme);
 
 const navbar = document.querySelector('.navbar');
 

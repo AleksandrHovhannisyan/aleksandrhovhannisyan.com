@@ -6,7 +6,7 @@ function setColorTheme(newTheme, oldTheme) {
   localStorage.setItem('theme', newTheme);
 }
 
-function toggleColorTheme() {
+function toggleTheme() {
   if (html.classList.contains('dark')) {
     setColorTheme('light', 'dark');
   } else {
@@ -14,4 +14,4 @@ function toggleColorTheme() {
   }
 }
 
-export default toggleColorTheme;
+export default toggleTheme;
