@@ -11,8 +11,8 @@
 {% else %}
     {% assign path = page.img_path %}
 {% endif %}
-<picture 
-class="lazily-loaded-picture{% unless clickable == false %} clickable-picture{% endunless %}{% if class %} {{ class }}{% endif %}" 
+{% unless clickable == false %}<a href="/{{ path }}/{{ img }}.{{ ext }}" class="clickable-picture-anchor">{% endunless %}<picture 
+class="lazily-loaded-picture{% if class %} {{ class }}{% endif %}" 
 {% if id %}id="{{ id }}"{% endif %} {% unless clickable == false %}data-clickable{% endunless %}>
     <source 
         srcset="/{{ path }}/{{ img }}-placeholder.webp" 
@@ -23,4 +23,4 @@ class="lazily-loaded-picture{% unless clickable == false %} clickable-picture{% 
         alt="{{ include.alt }}" 
         data-src="/{{ path }}/{{ img }}.{{ ext }}"
         class="placeholder">
-</picture>
+</picture>{% unless clickable == false %}</a>{% endunless %}

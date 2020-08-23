@@ -241,7 +241,7 @@
         margin: 0;
     }
 
-    a:not(.button) {
+    a:not(.button):not(.clickable-picture-anchor) {
         @include underlinedLink;
     }
     
