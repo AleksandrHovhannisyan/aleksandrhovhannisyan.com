@@ -20,7 +20,7 @@ mobileNavbarToggle.addEventListener('click', toggleMobileNavbarVisibility);
 // Manually listen to these events to ensure that we never underline two different links
 // simultaneously. For example, if we're on Experience but hovering over Blog, we don't want
 // both links to have a focus style. See onNavLinkHovered for how that's handled.
-Array.from(navLinks.querySelectorAll('a')).forEach((anchor) => {
+navLinks.querySelectorAll('.navbar-link').forEach((anchor) => {
   anchor.addEventListener('focusin', onNavLinkHovered);
   anchor.addEventListener('mouseenter', onNavLinkHovered);
   anchor.addEventListener('focusout', rehighlightActiveNavLink);
@@ -36,9 +36,7 @@ const imgObserver = new IntersectionObserver(function (entries, self) {
   });
 });
 
-const imgs = document.querySelectorAll('#page-content img.placeholder');
-
-imgs.forEach((img) => {
+document.querySelectorAll('#page-content img.placeholder').forEach((img) => {
   imgObserver.observe(img);
 });
 
