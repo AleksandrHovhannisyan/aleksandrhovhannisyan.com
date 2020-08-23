@@ -5,6 +5,7 @@
   "repository": "git@github.com:AleksandrHovhannisyan/aleksandrhovhannisyan.com.git",
   "author": "AleksandrHovhannisyan <aleksandrhovhannisyan@gmail.com>",
   "scripts": {
+    "@comment start": "Yes, this has a race condition where Jekyll may start building before webpack :( Have yet to find an alternative.",
     "start": "concurrently \"./node_modules/.bin/webpack --watch\" \"bundle exec jekyll serve --livereload --port=4001\"",
     "build": "./node_modules/.bin/webpack && bundle exec jekyll build"
   },
