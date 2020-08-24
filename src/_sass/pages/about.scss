@@ -6,7 +6,7 @@
     grid-template-columns: minmax(0, $page-max-width);
     row-gap: $paragraph-spacing;
 
-    a {
+    a:not(.button):not(.clickable-picture-anchor) {
         @include underlinedLink;
     }
 

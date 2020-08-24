@@ -11,7 +11,7 @@
     <a class="underlined-link" href="{{ post.url }}" aria-hidden="true" tabindex="-1">{{ post.title }}</a>
   </h{{ title_level }}>
   <p class="post-preview-description">
-    {{ post.description | truncate: 118 }}
+    {{ post.description | truncate: 115 }}
     <a href="{{ post.url }}" class="underlined-link">Read this post &rarr;</a>
   </p>
   {% include meta.html post=post %}
