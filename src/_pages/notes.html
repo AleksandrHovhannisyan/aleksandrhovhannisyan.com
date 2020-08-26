@@ -1,23 +1,31 @@
 ---
 title: Notes
-description: A collection of thoughts, discoveries, and code snippets.
+description: A collection of thoughts, TILs, and code snippets.
 permalink: /notes/
 img_path: assets/img/notes
 ---
 
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/ReenieBeanie-Regular.ttf" crossorigin>
 <article id="notes" class="section">
-    <div class="notes-board">
-        <ol class="notes-list">
-            {% assign notes = site.notes | sort: 'date' | reverse %}
-            {% for note in notes %}
-                <li class="note">
-                    <h2 class="note-title">{{ note.title }}</h2>
-                    <time class="note-date" datetime="{{ note.date | date: "%Y-%m-%d" }}">{{ note.date | date: "%b %-d, %Y" }}</time>
-                    <p class="note-description">{{ note.description | truncate: 160 }}</p>
-                    <a class="container-link" href="{{ note.url }}" aria-label="Read this note"></a>
-                </li>
-            {% endfor %}
-        </ol>
-    </div>
+    <h1 class="heading">Notes 'n Stuff</h1>
+    <p class="subtitle">A collection of thoughts, TILs, and code snippets.</p>
+    {% assign notesByYear = site.notes | group_by_exp: "note", "note.date | date: '%Y'" %}
+    {% for year in notesByYear %}
+    <section class="notes-by-year">
+        <h2 class="year heading">📅 {{ year.name }}</h2>
+        <div class="notes-board">
+            <ol class="notes-list">
+                {% assign notes = year.items | sort: 'date' | reverse %}
+                {% for note in notes %}
+                    <li class="note">
+                        <h3 class="note-title">{{ note.title }}</h3>
+                        <time class="note-date" datetime="{{ note.date | date: "%Y-%m-%d" }}">{{ note.date | date: "%b %-d, %Y" }}</time>
+                        <p class="note-description">{{ note.description | truncate: 160 }}</p>
+                        <a class="container-link" href="{{ note.url }}" aria-label="Read this note"></a>
+                    </li>
+                {% endfor %}
+            </ol>
+        </div>
+    </section>
+    {% endfor %}
 </article>

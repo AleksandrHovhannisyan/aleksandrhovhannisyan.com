@@ -3,12 +3,22 @@
 @import 'mixins';
 @import 'settings';
 
-$note-text-color: #3e464d;
+$note-text-color: #3e464d;    
 
 #notes {
-    grid-column: 1 / -1;
-    margin-top: -$navbar-height;
-    margin-bottom: -$navbar-height;
+    .heading,
+    .subtitle {
+        text-align: center;
+    }
+}
+
+.notes-by-year {
+    margin-top: 2.5rem;
+
+    .year {
+        margin-bottom: 1.5em;
+        font-size: 1.25em;
+    }
 }
 
 .notes-board {
@@ -16,23 +26,20 @@ $note-text-color: #3e464d;
     background-color: #b7814a;
     background-image: url("/assets/img/notes/cardboard.png");
     box-shadow: inset 0 2px 4px 0px rgba(0, 0, 0, 0.15);
-    height: 100%;
-    @include centered;
+    position: relative;
 }
 
 .notes-list {
-    grid-column: 2;
     list-style: none;
-    padding: 3em 1em;
+    padding: 1em;
+    display: flex;
+    flex-wrap: wrap;
     position: relative;
     z-index: 1;
-    display: grid;
-    @include responsiveGrid($mobileMin: 200px, $desktopMin: 300px, $cutoff: 500px);
-    row-gap: 3em;
-    column-gap: 3em;
 }
 
 .note {
+    flex: 1 0;
     height: min-content;
     transform-style: preserve-3d;
     background: linear-gradient(180deg, #ffc, 90%, #f1f1dd);
@@ -40,7 +47,12 @@ $note-text-color: #3e464d;
     position: relative;
     justify-self: center;
     padding: 2.5em 1.8em 1.8em 1.8em;
+    margin: 1em;
     @include transition(transform, top, box-shadow, border-radius);
+
+    @media screen and (min-width: 500px) {
+        flex: 1 0 250px;
+    }
 
     &::after {
         content: "";

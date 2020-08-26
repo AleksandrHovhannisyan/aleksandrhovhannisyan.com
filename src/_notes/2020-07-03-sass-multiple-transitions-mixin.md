@@ -1,6 +1,6 @@
 ---
 title: Sass Multiple Transitions Mixin
-description: A Sass mixin to easily define multiple CSS transitions.
+description: A Sass mixin for easily defining multiple CSS transitions.
 keywords: [sass multiple transitions mixin]
 ---
 

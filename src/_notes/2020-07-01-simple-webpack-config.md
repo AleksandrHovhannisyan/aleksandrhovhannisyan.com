@@ -1,6 +1,6 @@
 ---
 title: A Simple Webpack Config
-description: Bundle your JavaScript code with this simple Webpack config.
+description: For all of your JavaScript bundling needs.
 keywords: [simple webpack config]
 ---
 
