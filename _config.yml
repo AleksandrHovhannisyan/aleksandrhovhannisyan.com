@@ -27,7 +27,7 @@ exclude:
 collections:
   notes:
     output: true
-    permalink: /:title/
+    permalink: /notes/:title/
 
 autopages:
   enabled: true

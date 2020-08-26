@@ -1,6 +1,6 @@
 ---
 title: Sass Multiple Transitions Mixin
-description: A simple Sass mixin for multiple CSS transitions, to make your life easier.
+description: A Sass mixin to easily define multiple CSS transitions.
 keywords: [sass multiple transitions mixin]
 ---
 
@@ -26,9 +26,7 @@ $transition: 0.2s ease;
 }
 ```
 
-But that still doesn't fully eliminate the repetition—we just have to type fewer characters now. What I was searching for is a **Sass mixin for multiple CSS transitions**. And I eventually found it in [a StackOverflow answer by user yspreen](https://stackoverflow.com/a/49437769/5323344).
-
-The credit for this wonderful little mixin goes to that user. It goes something like this:
+But that still doesn't fully eliminate the repetition—we just have to type fewer characters now. What I was searching for is a **Sass mixin for multiple CSS transitions**. And I eventually found it in [a StackOverflow answer by user yspreen](https://stackoverflow.com/a/49437769/5323344):
 
 {% capture code %}@mixin transition($props...) {
     $result: ();

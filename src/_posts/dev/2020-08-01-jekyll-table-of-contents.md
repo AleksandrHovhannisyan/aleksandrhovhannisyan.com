@@ -1,6 +1,6 @@
 ---
 title: An Accessible Jekyll Table of Contents
-description: Easily create a table of contents in Jekyll with one simple include.
+description: Easily create a table of contents in your Jekyll blog posts with one simple include, with a skip navigation link to make things accessible for keyboard users.
 keywords: [jekyll table of contents]
 tags: [dev, jekyll, accessibility]
 comments_id: 50
