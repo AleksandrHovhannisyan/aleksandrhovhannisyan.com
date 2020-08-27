@@ -29,13 +29,11 @@ img_path: assets/img
   </ol>
 </section>
 <section id="projects" class="section">
-  <header class="heading">
-    {% include linkedHeading.html heading="Software Projects" level=2 %}    
-    <p>
-      I have experience with a wide range of stacks and enjoy working on projects that have a strong UI/UX
-      component. Below is just some of the work that I'm proud of. Got a project in mind? <a href="/contact/">Get in touch!</a>
-    </p>
-  </header>
+  {% include linkedHeading.html heading="Software Projects" level=2 %}    
+  <p>
+    I have experience with a wide range of stacks and enjoy working on projects that have a strong UI/UX
+    component. Below is just some of the work that I'm proud of. Got a project in mind? <a href="/contact/">Get in touch!</a>
+  </p>
   <ul class="project-grid card-grid">
     {% for project in site.data.projects %}
         {% include projectCard.html project=project %}
