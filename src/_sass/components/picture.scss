@@ -1,24 +1,13 @@
 .lazily-loaded-picture {
-    position: relative;
     display: block;
+}
 
-    .placeholder {
-        position: relative;
-        width: 100%;
-        transform: scale(1);
-    }
-
-    .real-image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 1;
-        width: 100%;
-        height: 100%;
-    }
+.lazy-img {
+    width: 100%;
 }
 
 .clickable-picture-anchor {
+    width: 100%;
     display: block;
     cursor: zoom-in;
 }

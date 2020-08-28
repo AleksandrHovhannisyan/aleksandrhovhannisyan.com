@@ -12,15 +12,15 @@
     {% assign path = page.img_path %}
 {% endif %}
 {% unless clickable == false %}<a href="/{{ path }}/{{ img }}.{{ ext }}" class="clickable-picture-anchor">{% endunless %}<picture 
-class="lazily-loaded-picture{% if class %} {{ class }}{% endif %}" 
-{% if id %}id="{{ id }}"{% endif %} {% unless clickable == false %}data-clickable{% endunless %}>
+class="lazily-loaded-picture{% if class %} {{ class }}{% endif %}" {% if id %}id="{{ id }}"{% endif %}>
     <source 
         srcset="/{{ path }}/{{ img }}-placeholder.webp" 
         type="image/webp" 
-        data-src="/{{ path }}/{{ img }}.webp">
+        data-srcset="/{{ path }}/{{ img }}.webp"
+        class="lazy-source">
     <img 
         src="/{{ path }}/{{ img }}-placeholder.{{ ext }}"
         alt="{{ include.alt }}" 
         data-src="/{{ path }}/{{ img }}.{{ ext }}"
-        class="placeholder">
+        class="lazy-img">
 </picture>{% unless clickable == false %}</a>{% endunless %}

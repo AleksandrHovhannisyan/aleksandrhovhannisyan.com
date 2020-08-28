@@ -36,7 +36,7 @@ const imgObserver = new IntersectionObserver(function (entries, self) {
   });
 });
 
-document.querySelectorAll('#page-content img.placeholder').forEach((img) => {
+document.querySelectorAll('#page-content .lazy-img').forEach((img) => {
   imgObserver.observe(img);
 });
 
