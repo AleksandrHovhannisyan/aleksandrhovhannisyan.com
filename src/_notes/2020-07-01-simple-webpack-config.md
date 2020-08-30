@@ -25,7 +25,7 @@ And all you want is a simple webpack config that creates a single bundled JavaSc
 
 First, install webpack if you haven't already done so:
 
-{% capture code %}yarn add webpack webpack-cli{% endcapture %}
+{% capture code %}yarn add -D webpack webpack-cli{% endcapture %}
 {% include code.html code=code lang="bash" %}
 
 Once that's done, add this script to your `package.json`:
