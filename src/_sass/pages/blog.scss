@@ -266,17 +266,18 @@
     }
 
     img,
-    iframe {
+    iframe,
+    video {
         max-width: 100%;
     }
 
     img {
         border-radius: 5px;
-        max-width: 100%;
     }
 
     blockquote,	
-    figure,	
+    figure,
+    video,	
     picture,	
     iframe,	
     table,
