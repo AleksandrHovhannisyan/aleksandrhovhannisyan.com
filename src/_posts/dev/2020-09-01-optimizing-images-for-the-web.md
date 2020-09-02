@@ -76,7 +76,7 @@ You've started using the WebP image format—awesome! But is that enough?
 
 Suppose you have a page with around 15–20 images. No matter how much you optimize these images with WebP, you will reach a point of **diminishing returns**, where the sheer number and size of your images will outweigh the performance gains from having used WebP compression.
 
-So what can you do? One strategy that's popular on blogging platforms like Medium—and that I use on my own website—is known as **lazy loading**, where images that are not yet visible in the user's viewport aren't loaded until the user scrolls to them. That way, when the page *initially* loads, the bandwidth used is only as much as the size of the images that are currently visible. And usually, that's just going to consume a few kB of data.
+So what can you do? One strategy that's popular on blogging platforms like Medium—and that I use on my own website—is known as **lazy loading**, where images that are not yet visible in the user's viewport aren't loaded until the user scrolls to them. That way, when the page initially loads, the bandwidth used is capped to just a few kB.
 
 There are two ways you can lazily load images in modern browsers:
 
