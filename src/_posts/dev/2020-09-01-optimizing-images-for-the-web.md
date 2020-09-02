@@ -121,6 +121,8 @@ First, we'll modify our markup to store the paths to our WebP image and the orig
 </picture>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
+> Notice that the `src` and `srcset` attributes now point to placeholder images. We'll discuss how that works in a bit.
+
 I'm naming these attributes `data-srcset` and `data-src`, respectively, but you can name them anything you want since they're just [custom data attributes](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes).
 
 While we're at it, here's some CSS you may find useful:
