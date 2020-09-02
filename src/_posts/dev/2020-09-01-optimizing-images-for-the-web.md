@@ -3,6 +3,7 @@ title: Optimizing Images for the Web with WebP and Lazy Loading
 description: Images make the web a more beautiful place, but this sometimes comes at a price. Learn how to optimize images for the web using the WebP image format and lazy loading with JavaScript.
 keywords: [optimizing images for the web, optimize images for the web]
 tags: [dev, javascript, webperf, webp]
+comments_id: 56
 ---
 
 You're a fan of images—who isn't? But those adorable puppy photos, memes, and GIFs don't come without a price. Often, these images range anywhere from a few hundred kB to several megabytes in size. And while that's practically nothing in terms of *storage* space, it's quite a significant cost in terms of network data usage, especially on mobile.
