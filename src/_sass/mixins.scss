@@ -45,7 +45,7 @@
 }
 
 @mixin underlinedLink {
-    $underline-thickness: 3px;
+    $underline-thickness: 4px;
     padding-top: $underline-thickness;
     border-bottom: $underline-thickness solid transparent;
     @include transition(border, color);
