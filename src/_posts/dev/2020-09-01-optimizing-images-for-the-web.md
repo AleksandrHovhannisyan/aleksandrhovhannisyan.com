@@ -13,9 +13,11 @@ It's the reality of the web: The more data that your server needs to return, the
 
 But let's say you've decided to firmly stand your ground and defend your right to stuff every page with cat photos and GIFs. Or perhaps you're building an image-intensive user interface like GIPHY's. What are your options then?
 
-Two of the best ways to optimize images for the web are by using the WebP image format and lazy loading images with JavaScript. Combine the two, and you may very well score a solid 100 on Lighthouse for even the most image-heavy pages on your website:
+Two of the best ways to optimize images for the web are by using the WebP image format and lazy loading images with JavaScript. Combine the two, and you'll make Lighthouse happy on even the most image-heavy pages on your website:
 
 {% include picture.html img="lighthouse.png" alt="Lighthouse audit for aleksandrhovhannisyan.com/blog/" %}
+
+{% include toc.md %}
 
 ## The WebP Image Format
 
@@ -25,7 +27,7 @@ Google [describes WebP](https://developers.google.com/speed/webp) in its documen
 
 > WebP is a modern image format that provides **superior lossless and lossy compression** for images on the web.
 
-You can learn more about the technical specifics of [how WebP works](https://developers.google.com/speed/webp#how_webp_works) if you're curious about that sort of thing, but suffice it to say that WebP provides nearly the same quality of images as PNG and JPEG while requiring **25–34% less space**.
+You can learn more about [how WebP works](https://developers.google.com/speed/webp#how_webp_works) if you're curious, but suffice it to say that it provides nearly the same quality of images as PNG and JPEG while requiring **25–34% less space**.
 
 Optimizing images for the web using the WebP format:
 
@@ -41,7 +43,15 @@ That last point is especially important since Google uses [mobile-first indexing
 
 {% include picture.html img="caniuse.png" alt="The caniuse report for the WebP image format." %}
 
-The typical way to render WebP images is with the `<picture>`, `<source>`, and `<img>` tags:
+### How to Create WebP Images
+
+Okay, so let's say you're hooked on the idea. Now how do you actually create WebP images? For that, Google provides a library of [command-line utilities](https://developers.google.com/speed/webp/docs/precompiled) known as `libwebp` that can be used to compress images to WebP.
+
+Most images, like PNGs and JPEGs, can be compressed with the `cwebp` executable. You can also use the `gif2webp` utility to convert animated GIFs to animated WebP images.
+
+> If you want to convert all images in a directory to WebP without doing so by hand, I wrote [a simple Python script](https://github.com/AleksandrHovhannisyan/webp) that'll do that for you.
+
+Then, the typical way to render WebP images is with the `<picture>`, `<source>`, and `<img>` tags:
 
 {% capture code %}<picture>
     <source 
@@ -54,14 +64,6 @@ The typical way to render WebP images is with the `<picture>`, `<source>`, and `
 {% include code.html code=code lang="html" %}
 
 Browsers that support the WebP image format will request and render only the `<source>` image, while browsers that don't yet support it will fall back to the `<img>` element.
-
-### How to Create WebP Images
-
-Okay, so let's say you're hooked on the idea. Now how do you actually create WebP images? For that, Google provides a library of [command-line utilities](https://developers.google.com/speed/webp/docs/precompiled) known as `libwebp` that can be used to compress images to WebP.
-
-Most images, like PNGs and JPEGs, can be compressed with the `cwebp` executable. You can also use the `gif2webp` utility to convert animated GIFs to animated WebP images.
-
-> If you want to convert all images in a directory to WebP without doing so by hand, I wrote [a simple Python script](https://github.com/AleksandrHovhannisyan/webp) that'll do that for you.
 
 ### Other Optimized Image Formats
 
