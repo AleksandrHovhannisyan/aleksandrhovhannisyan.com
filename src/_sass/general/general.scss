@@ -63,7 +63,7 @@ body {
     font-family: $font-family-normal;
     -webkit-font-smoothing: antialiased;
     grid-template-rows: $navbar-height 1fr $footer-height;
-    line-height: 1.6;
+    line-height: $line-height-paragraphs;
     min-height: 100vh;
     position: relative;
     row-gap: $navbar-height;
@@ -108,7 +108,7 @@ strong {
     color: var(--text-color-emphasis);
     margin-bottom: 0.5em;
     font-weight: map-get($font-weights, "bolder");
-    line-height: 1.4;
+    line-height: $line-height-headings;
     @include transition(color);
 }
 
@@ -128,7 +128,6 @@ a {
 
 p {
     color: var(--text-color-normal);
-    line-height: 1.6;
     margin-bottom: $paragraph-spacing;
     @include transition(color);
 }
@@ -174,19 +173,6 @@ p {
 
 .section:not(:last-of-type) {
     margin-bottom: 2 * $navbar-height;
-}
-
-li {
-    ol, ul {
-        margin-top: calc(#{$paragraph-spacing} / 2);
-        margin-bottom: 0 !important;
-    }
-}
-
-#markdown-toc {
-    li:not(:last-child) {
-        margin-bottom: calc(#{$paragraph-spacing} / 2);
-    }
 }
 
 .input {

@@ -1,6 +1,8 @@
 $transition-duration: 0.2s;
 $page-max-width: 900px;
-$paragraph-spacing: calc(1em + 0.5vw);
+$paragraph-spacing: 1.7em;
+$line-height-paragraphs: 1.7;
+$line-height-headings: 1.4;
 $font-weights: ("light": 300, "normal": 400, "bold": 600, "bolder": 700);
 
 $navbar-height: 64px;

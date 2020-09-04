@@ -9,8 +9,8 @@ html.light {
     --footer-text-color: var(--navbar-text-color);
     --form-bg-color: var(--hover-bg-color);
     --hover-bg-color: hsl(0, 0%, 96%);
-    --inline-code-bg-color: rgba(231, 231, 231, 0.75);
-    --inline-code-text-color: #424850;
+    --inline-code-bg-color: hsl(210, 25%, 9%, 0.05);
+    --inline-code-text-color: var(--text-color-normal);
     --input-bg-color: white;
     --input-border-color-focus: #288bba;
     --input-border-color: hsl(0, 0%, 85%);
