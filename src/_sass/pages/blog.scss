@@ -221,7 +221,7 @@
 #post {
     @include headings {
         scroll-margin-top: $scroll-margin-top;
-        margin-top: 1.5em;
+        margin-top: 1em;
     }
 }
 
@@ -234,6 +234,21 @@
     grid-template-columns: minmax(0, $page-max-width);
     row-gap: $paragraph-spacing;
     overflow-wrap: break-word;
+
+    @include headings {
+        margin-bottom: 0;
+    }
+
+    li {
+        &:not(:last-child) {
+            margin-bottom: $paragraph-spacing / 2;
+        }
+
+        ol, ul {
+            margin-top: $paragraph-spacing / 2;
+            margin-bottom: 0 !important;
+        }
+    }
 
     p {
         margin: 0;
@@ -274,16 +289,16 @@
     img {
         border-radius: 5px;
     }
-
-    blockquote,	
+    
+    blockquote,
     figure,
     video,	
     picture,	
     iframe,	
     table,
     div.highlighter-rouge {
-        margin-top: 0.5em;
-        margin-bottom: 0.5em;
+        margin-top: $paragraph-spacing / 2;
+        margin-bottom: $paragraph-spacing / 2;
     }
 
     ol li::marker {
@@ -458,7 +473,7 @@ code {
     color: var(--inline-code-text-color);
     font-family: $font-family-code;
     font-size: 0.875em;
-    padding: 3px 6px;
+    padding: 0.15em 0.3em;
     @include transition(color, background-color);
 }
 
