@@ -195,32 +195,29 @@
         height: 18px;
     }
 
-    &:active {
-        .theme-switch-knob {
-            transform: scale(0.85);
-        }
+    &:active::before {
+        transform: scale(0.85);
     }
 }
 
-.theme-switch-knob {
-    --switch-orb-height: 25px;
-    --switch-orb-width: 25px; 
+#theme-switch::before {
+    --switch-orb-height: 24px;
+    --switch-orb-width: 24px;
+    content: "";
     background-color: var(--theme-switch-knob-bg-color);
     border: 1.3px solid var(--theme-switch-knob-border-color);
     box-shadow: var(--theme-switch-knob-shadow);
     border-radius: 50%;
     height: var(--switch-orb-height);
-    left: 0;    
-    position: absolute;
-    right: calc(var(--switch-width) - var(--switch-orb-width));
     width: var(--switch-orb-width);
+    left: -3%;
+    position: absolute;
     transform: scale(1);
-    @include transition(transform, left, right, background-color, border);
+    @include transition(transform, left, background-color, border);
 
     .dark & {
         box-shadow: 0 0 5px 0 white;
-        left: calc(var(--switch-width) - var(--switch-orb-width));
-        right: var(--orb-distance-from-edge);
+        left: 53%;
     }
 }
 
