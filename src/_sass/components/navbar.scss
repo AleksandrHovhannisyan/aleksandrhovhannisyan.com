@@ -201,15 +201,14 @@
 }
 
 #theme-switch::before {
-    --switch-orb-height: 24px;
-    --switch-orb-width: 24px;
+    --switch-orb-size: 24px;
     content: "";
     background-color: var(--theme-switch-knob-bg-color);
     border: 1.3px solid var(--theme-switch-knob-border-color);
     box-shadow: var(--theme-switch-knob-shadow);
     border-radius: 50%;
-    height: var(--switch-orb-height);
-    width: var(--switch-orb-width);
+    height: var(--switch-orb-size);
+    width: var(--switch-orb-size);
     left: -3%;
     position: absolute;
     transform: scale(1);
