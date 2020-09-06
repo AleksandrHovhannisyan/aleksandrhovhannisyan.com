@@ -300,17 +300,6 @@
     img {
         border-radius: 5px;
     }
-    
-    blockquote,
-    figure,
-    video,	
-    picture,	
-    iframe,	
-    table,
-    div.highlighter-rouge {
-        margin-top: 0.5em;
-        margin-bottom: 0.5em;
-    }
 
     ol li::marker {
         @include transition(color);
