@@ -1,8 +1,9 @@
 $transition-duration: 0.2s;
 $page-max-width: 900px;
-$paragraph-spacing: 1.7em;
 $line-height-paragraphs: 1.7;
 $line-height-headings: 1.5;
+$paragraph-spacing: $line-height-paragraphs + unquote("em");
+$list-item-spacing: 0.25em;
 $font-weights: ("light": 300, "normal": 400, "bold": 600, "bolder": 700);
 
 $navbar-height: 64px;

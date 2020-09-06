@@ -239,13 +239,24 @@
         margin-bottom: 0;
     }
 
-    li {
+    #markdown-toc li {
         &:not(:last-child) {
-            margin-bottom: $paragraph-spacing / 2;
+            margin-bottom: 1em;
         }
 
         ol, ul {
-            margin-top: $paragraph-spacing / 2;
+            margin-top: 1em;
+            margin-bottom: 0 !important;
+        }
+    }
+
+    li {
+        &:not(:last-child) {
+            margin-bottom: $list-item-spacing;
+        }
+
+        ol, ul {
+            margin-top: $list-item-spacing;
             margin-bottom: 0 !important;
         }
     }
@@ -297,8 +308,8 @@
     iframe,	
     table,
     div.highlighter-rouge {
-        margin-top: $paragraph-spacing / 2;
-        margin-bottom: $paragraph-spacing / 2;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
     }
 
     ol li::marker {
