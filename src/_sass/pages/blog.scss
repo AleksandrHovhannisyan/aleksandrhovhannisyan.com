@@ -317,27 +317,31 @@
     blockquote {
         border-left: 4px solid;
         margin-left: 1.2rem;
-        padding: 0.5em 1.2em;
-
+        padding: 0.25em $paragraph-spacing;
+        @include transition(border-color);
+    
         p:not(:last-child) {
             margin-bottom: $paragraph-spacing;
         }
     }
-
+    
     div.highlighter-rouge {
+        $code-block-padding-bottom: 0.5em;
+        $code-block-padding: 1.5em;
         border-radius: 5px;
         box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.4);
-
+    
         & > div.highlight {
-            // 20px bottom + 10px from pre.highlight = 30px (see below)
-            padding: 30px 30px 20px 30px;
-
+            padding: $code-block-padding;
+            padding-bottom: $code-block-padding - $code-block-padding-bottom;
+    
             pre.highlight {
-                // Spacing between horizontal bar and the code, whenever we overflow horizontally
-                padding-bottom: 10px;
+                // Spacing between the horizontal scroll bar and the code itself.
+                // This only matters whenever the content overflows horizontally.
+                padding-bottom: $code-block-padding-bottom;
             }
         }
-
+    
         code {
             padding: 0;
         }
