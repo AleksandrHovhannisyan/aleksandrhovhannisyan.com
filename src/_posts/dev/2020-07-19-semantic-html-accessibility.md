@@ -211,7 +211,7 @@ A good example of the second case is if you have text with placeholders, like `X
 
 {% include picture.html img="github-counter.png" alt="Inspecting a GitHub counter via the Chrome dev tools" %}
 
-> In addition, note again how the tabs themselves are rendered in a list. Yay!
+> In addition, note again how the tabs themselves are rendered in a list.
 
 If you want inline positioning on block-level elements, `<span>` is not the right tool for the job. Instead, use CSS to position your elements inline (e.g., with Flexbox).
 
