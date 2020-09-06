@@ -158,7 +158,7 @@ Formally, ASCII is referred to as a **character encoding standard**. Put more si
 
 Here is a typical [ASCII chart](http://www.asciitable.com/) that you may have seen before:
 
-{% include picture.html img="ascii.png" alt="An ASCII table showing characters and their numerical representations" %}
+{% include picture.html img="ascii.gif" alt="An ASCII table showing characters and their numerical representations" %}
 
 In the ASCII standard, there are a total of 128 characters, each mapped to a unique number in binary (with an equivalent representation in decimal that we humans understand more naturally):
 
