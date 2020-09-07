@@ -58,6 +58,8 @@ $meta-spacing: 0.5em;
         .username {
             font-size: 1.1em;
             color: var(--text-color-emphasis);
+            font-weight: map-get($font-weights, "bold");
+            @include underlinedLink;
         }
 
         .comment-edited {

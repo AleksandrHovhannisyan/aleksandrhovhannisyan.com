@@ -44,15 +44,22 @@
     }
 }
 
-@mixin underlinedLink {
-    $underline-thickness: 4px;
-    padding-top: $underline-thickness;
-    border-bottom: $underline-thickness solid transparent;
-    @include transition(border, color);
-
-    &:hover, 
-    &:focus {
-        border-color: currentColor;
+@mixin underlinedLink($initiallyUnderlined: false) {
+    @if $initiallyUnderlined {
+        text-decoration: underline;
+        
+        &:hover, 
+        &:focus {
+            text-decoration: none;
+        }
+    }
+    @else {
+        text-decoration: none;
+        
+        &:hover, 
+        &:focus {
+            text-decoration: underline;
+        }
     }
 }
 

@@ -248,6 +248,10 @@
             margin-top: 1em;
             margin-bottom: 0 !important;
         }
+
+        a {
+            font-weight: map-get($font-weights, "bold");
+        }
     }
 
     li {
@@ -265,8 +269,8 @@
         margin: 0;
     }
 
-    a:not(.button):not(.clickable-picture-anchor) {
-        @include underlinedLink;
+    a:not(.button):not(.clickable-picture-anchor):not(.username) {
+        @include underlinedLink($initiallyUnderlined: true);
     }
     
     figure {
