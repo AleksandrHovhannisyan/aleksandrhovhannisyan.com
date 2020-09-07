@@ -21,9 +21,7 @@ cd my-awesome-project && npm install
 ```
 ````
 
-And that works, sure. But copy-pasting this can get tedious really quickly, and it's barely accessible.
-
-Why not create a button that magically copies Markdown code blocks to your clipboard?
+And that works, sure. But copy-pasting this can get tedious really quickly, and it's barely accessible. Why not create a button that magically copies Markdown code blocks to your clipboard?
 
 Well, ask and you shall receive! In this tutorial, we'll add a copy-to-clipboard button to your Jekyll blog in just a few lines of code. Here's a sneak peek at what we'll be building:
 
@@ -117,7 +115,7 @@ Here's a real example, from this very blog post, of what the escaped code would 
 
 {% include picture.html img="escaped-code.png" alt="Inspecting an HTML element with Chrome dev tools." %}
 
-Cool! That way, the embedded quotes in the code don't break our HTML. And since we have a plaintext copy of the code in an attribute, we can use JavaScript to copy that to the clipboard (more on that later).
+Cool! That way, the embedded quotes in the code don't break our HTML. And since we've stored the code in an HTML attribute, we can use JavaScript to copy that to the clipboard later on.
 
 This part is hopefully self-explanatory:
 
@@ -133,9 +131,7 @@ Let's pretend that we've already stored our code as a literal string in a variab
 {% raw %}{% include code.html code=code lang="javascript" %}{% endraw %}
 ```
 
-These two arguments will become accessible under `{% raw %}include.code{% endraw %}` and `{% raw %}include.lang{% endraw %}`, respectively.
-
-So when Jekyll goes to evaluate the Liquid template, it'll perform the following substitutions:
+These two arguments will become accessible under `{% raw %}include.code{% endraw %}` and `{% raw %}include.lang{% endraw %}`, respectively. So when Jekyll goes to evaluate the Liquid template, it'll perform the following substitutions:
 
 {% capture code %}{% raw %}<div class="copy-code-container">
     <button
@@ -198,9 +194,7 @@ What if your blog post is about Jekyll and your code contains Liquid templates, 
 {% raw %}{% capture code %}{% endraw %}{{ openTag }} raw %}...{{ openTag }} endraw %}{% raw %}{% endcapture %}{% endraw %}
 ```
 
-And just replace the ellipsis with your code.
-
-Once you've captured the code, simply use the include:
+And just replace the ellipsis with your code. Once you've captured the code, simply use the include:
 
 ```liquid
 {% raw %}{% include code.html code=code lang="javascript" %}{% endraw %}

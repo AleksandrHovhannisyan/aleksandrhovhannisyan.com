@@ -87,11 +87,9 @@ It's important to note that these are NOT mutually exclusive—you can use both.
 
 ### 1. Native Lazy Loading
 
-The `loading="lazy"` attribute offers [native lazy loading](https://web.dev/native-lazy-loading/) for images in Chromium browsers and in Firefox. It tells a browser when to start loading images, allowing you to defer network requests until a later point in time.
+The `loading="lazy"` attribute offers [native lazy loading](https://web.dev/native-lazy-loading/) for images in Chromium browsers and in Firefox. It tells a browser when to start loading images, allowing you to defer network requests until a later point in time. Here's a demo of [native lazy loading in action](https://mathiasbynens.be/demo/img-loading-lazy) (credit goes to Mathias Bynens):
 
-Here's a demo of [native lazy loading in action](https://mathiasbynens.be/demo/img-loading-lazy) (credit goes to Mathias Bynens):
-
-<video controls="" loop="" muted="">
+<video controls loop muted>
   <source src="https://storage.googleapis.com/web-dev-assets/native-lazy-loading/lazyload.webm" type="video/webm">
   <source src="https://storage.googleapis.com/web-dev-assets/native-lazy-loading/lazyload.mp4" type="video/mp4">
 </video>

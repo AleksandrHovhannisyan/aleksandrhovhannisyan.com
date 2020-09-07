@@ -124,13 +124,9 @@ Hmm... There's got to be a better way. (If there weren't, I wouldn't be writing 
 
 {% include linkedHeading.html heading="Approach #2: Implementing a Finite State Machine" level=2 %}
 
-Now that we've looked at how to create a state transition table, we can implement a finite state machine.
+Now that we've looked at how to create a state transition table, we can implement a finite state machine. But before we get to the implementation details, let's consider the following thought exercise:
 
-Here's a bit of a thought exercise before we get to the actual implementation details:
-
-Instead of using a state transition table and a `LightState` *enum*, what if we make each concrete light state its own *class*? That way, we can delegate the task of determining the next state to the *current state* that a light is in.
-
-In other words, I'm proposing that we do something like this, where invoking a light's `toggle` method in turn invokes the current state's `toggle` method (because remember—we're now going to use classes instead of enums for the states):
+Instead of using a state transition table and a `LightState` *enum*, what if we make each concrete light state its own *class*? That way, we can delegate the task of determining the next state to the *current state* that a light is in. In other words, I'm proposing that we do something like this, where invoking a light's `toggle` method in turn invokes the current state's `toggle` method (because remember—we're now going to use classes instead of enums for the states):
 
 {% capture code %}#pragma once
 #include "LightState.h"
@@ -242,7 +238,7 @@ Since this is a **pure abstract class**, we cannot create an instance of it. The
 
 {% include linkedHeading.html heading="2. Concrete State Classes" level=3 %}
 
-Next, we'll declare all of our concrete state classes. We'll force each one to be a singleton by doing the following:
+Next, we'll declare all of our concrete state classes. We'll force each one to be a singleton by:
 
 1. Defining a static `getInstance` method that returns a pointer to the singleton.
 2. Declaring all constructors, copy constructors, and assignment operators as private.
@@ -538,12 +534,11 @@ Awesome!
 
 {% include linkedHeading.html heading="More Finite State Machine Examples" level=2 %}
 
-As I mentioned earlier, this was a pretty trivial use case for finite state machines. In fact, you don't really need the finite state design pattern to solve this particular problem. However, because the problem itself is so simple—a lightbulb that simply changes from one state to another—I felt it was a perfect way to introduce FSMs without overcomplicating things.
+As I mentioned earlier, this was a pretty trivial use case for finite state machines. In fact, you don't really need the finite state design pattern to solve this particular problem. However, because the problem itself is so simple—a lightbulb that simply changes from one state to another—I felt it was a perfect way to introduce FSMs without overcomplicating things. That said, I'd like to briefly mention two situations where you may want to use a finite state machine:
 
-That said, I'd like to briefly mention some other situations where you may wany to use a finite state machine:
+[Modeling a vending machine](https://stackoverflow.com/questions/14676709/c-code-for-state-machine). This StackOverflow thread offers a pretty good discussion of some design approaches to a real-world interview problem. The accepted answer suggests using the finite state design pattern because of how extensible it is. Interestingly, the second highest rated answer suggests using a state transition table as an alternative.
 
-- [Modeling a vending machine](https://stackoverflow.com/questions/14676709/c-code-for-state-machine). This StackOverflow thread offers a pretty good discussion of some design approaches to a real-world interview problem. The accepted answer suggests using the finite state design pattern because of how extensible it is. Interestingly, the second highest rated answer suggests using a state transition table as an alternative.
-- [Modeling AI in a game](https://gameprogrammingpatterns.com/state.html). This post goes into great detail in the context of game dev. In particular, it highlights one advantage of finite state machines in game dev that I mentioned earlier in this post: The ability to query or "poll" the entity from the state in order to determine what state transition should take place.
+[Modeling AI in a game](https://gameprogrammingpatterns.com/state.html). This post goes into great detail in the context of game dev and even touches on one advantage of finite state machines that I mentioned earlier in this post: the ability to query or "poll" the entity to determine what state transition should take place.
 
 {% include linkedHeading.html heading="Further Reading" level=2 %}
 

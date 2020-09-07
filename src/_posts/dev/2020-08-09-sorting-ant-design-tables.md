@@ -128,8 +128,8 @@ Basically, an Ant Design table can accept a `columns` prop, which is just an arr
 
 In particular, if a column is sortable, it can specify a `sorter` prop, consisting of:
 
-- `compare`: The comparison function that Ant Design should use to decide how to order two rows relative to one another.
-- `multiple`: The priority that a given column should take when multiple columns are being sorted simultaneously.
+- `compare`: the comparison function that's used to order two rows relative to one another.
+- `multiple`: the priority that a column should take for multi-column sorting.
 
 Every time you want to sort a column, you need to specify a sorting routine that accepts two arguments (the rows being compared). That function should behave like a standard **comparator function**, returning a negative result if the first argument precedes the second, zero if they're equal, or a positive number if the second argument precedes the first.
 
@@ -343,4 +343,4 @@ Need to handle other kinds of comparisons? Simply define a new sorting routine i
 
 You can check out the [CodeSandbox for this tutorial](https://codesandbox.io/s/sorting-ant-design-tables-in-react-the-easy-way-f856v) to play around with the result.
 
-I hope you found this helpful! Let me know in the comments if you ran into any difficulties, and I'll try my best to help you out.
+I hope you found this tutorial helpful! Let me know if you run into any problems, and I'll try my best to help you out.

@@ -241,7 +241,7 @@ Next up is some general styling for the navbar anchors:
 
 Pretty straightforward.
 
-Here's the logo styling (this is just a placeholder for my demo—in reality, you'll want to use an image or SVG):
+Here's the CSS for the website logo. Note that this is just a placeholder for my demo; in reality, you'll probably want to use an image or SVG:
 
 {% capture code %}.navbar-logo {
     background-color: var(--navbar-text-color-focus);
@@ -256,7 +256,7 @@ Here's the logo styling (this is just a placeholder for my demo—in reality, yo
 
 {% include picture.html img="step4.png" alt="Styled logo" %}
 
-Time for the toggle button.
+Time for the toggle button!
 
 ### Navbar Hamburger Icon
 
@@ -529,7 +529,7 @@ So first up is this:
 
 {% include picture.html img="step9.png" alt="Hamburger menu button hidden" %}
 
-Obviously, we don't want the hamburger button to be visible on desktop, so we hide it with `display: none`.
+We don't want the hamburger button to be visible on desktop, so we hide it with `display: none`.
 
 Now we get to the most important part of making this navbar responsive:
 

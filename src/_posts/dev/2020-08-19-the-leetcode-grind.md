@@ -38,9 +38,7 @@ You've never truly experienced Leetcode unless this sounds familiar:
 5. Google "Leetcode sucks" and read some encouraging rants on Reddit.
 6. Revisit step 1 about a month later.
 
-Trust me—I've gone through this process myself.
-
-And yet... It's not exactly healthy when you think about it, is it? At least, it's not any healthier than the actual "grind" mentality itself. Rage-quitting Leetcode is just about as bad as not trying in the first place.
+And yet, it's not exactly healthy when you think about it—not any healthier than the actual "grind" mentality itself. Rage-quitting Leetcode is just about as bad as not trying in the first place.
 
 ## The Truth About Leetcode
 
@@ -88,9 +86,7 @@ In the real world, unless your solutions are always on the order of <code>O(N<su
 
 ## Is the Leetcode Grind Making You Miserable?
 
-Then just stop—that's all there is to it.
-
-Leetcode is only a grind if you let it become one (which I don't).
+Then just stop—that's all there is to it. Leetcode is only a grind if you let it become one.
 
 Lately, I've made it a habit to practice one or two Leetcode problems a day, for the sake of preparing myself to solve these kinds of problems more proficiently over the long term. If one day I don't feel like practicing Leetcode, then I simply don't.
 
