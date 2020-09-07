@@ -20,7 +20,6 @@
     }
 }
 
-
 // Inspiration: https://stackoverflow.com/a/49437769/5323344
 @mixin transition($props...) {
     $result: ();
@@ -44,7 +43,7 @@
     }
 }
 
-@mixin underlinedLink($initiallyUnderlined: false) {
+@mixin underlinedLink($initiallyUnderlined: true) {
     @if $initiallyUnderlined {
         text-decoration: underline;
         

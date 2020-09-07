@@ -4,7 +4,7 @@
     background-color: var(--tag-bg-color);
     border-radius: 3px;
     color: var(--tag-text-color);
-    font-weight: map-get($font-weights, "normal");
+    font-weight: map-get($font-weights, "regular");
     @include transition(color, background-color);
 }
 

@@ -140,5 +140,5 @@ $note-text-color: #3e464d;
     margin: 0;
     font-size: 1.3em;
     font-family: $font-family-cursive;
-    font-weight: map-get($font-weights, "normal");
+    font-weight: map-get($font-weights, "regular");
 }

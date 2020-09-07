@@ -89,7 +89,7 @@ input.honeypot {
 
     .network-name {
         color: var(--text-color-normal);
-        font-weight: map-get($font-weights, "normal");
+        font-weight: map-get($font-weights, "regular");
         align-self: center;
         grid-column: 2;
         @include transition(color);

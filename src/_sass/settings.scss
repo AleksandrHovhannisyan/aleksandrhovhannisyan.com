@@ -4,7 +4,7 @@ $line-height-paragraphs: 1.7;
 $line-height-headings: 1.5;
 $paragraph-spacing: $line-height-paragraphs + unquote("em");
 $list-item-spacing: 0.25em;
-$font-weights: ("light": 300, "normal": 400, "bold": 600, "bolder": 700);
+$font-weights: ("light": 300, "regular": 400, "bold": 600, "bolder": 700);
 
 $navbar-height: 64px;
 $navbar-z-index: 100;

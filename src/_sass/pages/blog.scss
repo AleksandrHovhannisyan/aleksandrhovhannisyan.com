@@ -58,6 +58,7 @@
     a {
         font-weight: map-get($font-weights, "bolder");
         color: var(--text-color-emphasis);
+        @include underlinedLink($initiallyUnderlined: false);
     }
 }
 
@@ -93,6 +94,15 @@
     grid-area: description;
 }
 
+.read-this-post-link {
+    text-decoration: none;
+
+    &:focus,
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
 @media screen and (min-width: 800px) {
     .post-preview {
         flex-wrap: nowrap;
@@ -108,7 +118,7 @@
 
     .post-preview-thumbnail {
         height: 100%;
-        width: 225px;
+        width: 11.25em;
 
         img {
             height: 100%;
@@ -148,6 +158,7 @@
 }
 
 .post-title {
+    font-size: 1.8em;
     margin-top: 0 !important;
     margin-bottom: 1rem;
 }
@@ -156,7 +167,7 @@
     display: flex;
     flex-wrap: wrap;
     font-size: 0.8em;
-    font-weight: map-get($font-weights, "light");
+    font-weight: map-get($font-weights, "regular");
     list-style: none;
     margin: 0;
     color: var(--post-meta-text-color);
@@ -247,6 +258,11 @@
         ol, ul {
             margin-top: 1em;
             margin-bottom: 0 !important;
+        }
+
+        a {
+            font-weight: map-get($font-weights, "bold");
+            @include underlinedLink($initiallyUnderlined: true);
         }
     }
 
@@ -406,7 +422,7 @@
 .code-file-name {
     color: #bcbcbc;
     font-size: 1rem;
-    font-weight: map-get($font-weights, "normal");
+    font-weight: map-get($font-weights, "regular");
     margin: 0;
     word-break: break-all;
     @include transition(color);

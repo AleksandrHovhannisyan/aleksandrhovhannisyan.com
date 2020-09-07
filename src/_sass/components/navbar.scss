@@ -14,7 +14,7 @@
 .skip-navigation {
     padding: 0.8em;
     color: var(--navbar-text-color);
-    font-weight: map-get($font-weights, "normal");
+    font-weight: map-get($font-weights, "regular");
     @include transition(color, background-color);
 }
 
@@ -86,7 +86,7 @@
 
 #website-name {
     color: var(--navbar-text-color);
-    font-weight: map-get($font-weights, "normal");
+    font-weight: map-get($font-weights, "regular");
     margin-left: 5px;
     @include transition(color);
 }
@@ -124,7 +124,7 @@
     margin: 0 1.2rem;
     display: block;
     color: var(--navbar-text-color);
-    font-weight: map-get($font-weights, "normal");
+    font-weight: map-get($font-weights, "regular");
     @include transition(background-color, color);
 }
 
@@ -220,7 +220,7 @@
     }
 }
 
-@media only screen and (min-width: 870px) {
+@media only screen and (min-width: 800px) {
     .navbar, 
     .navbar.opened {
         .navbar-menu {
