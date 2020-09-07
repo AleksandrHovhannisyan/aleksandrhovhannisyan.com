@@ -10,7 +10,7 @@ You're a fan of images—who isn't? But those adorable puppy photos, memes, and 
 
 Which... may mean that you'll have to part ways with some of your beloved GIFs.
 
-It's the reality of the web: The more data that your server needs to return, the longer it will take for your user's browser to receive a response and render the content. If you're not too bothered by this, think again: [Page load speed is one of many factors influencing your search engine ranking](https://moz.com/learn/seo/page-speed). Faster pages tend to rank better than sluggish websites.
+It's the reality of the web: The more data that your server needs to return, the longer it will take for your user's browser to receive a response and render the content. If you're not too bothered by this, think again: [Page load speed](https://moz.com/learn/seo/page-speed) is one of many factors influencing your search engine ranking. Faster pages tend to rank better than sluggish websites.
 
 But let's say you've decided to firmly stand your ground and defend your right to stuff every page with cat photos and GIFs. Or perhaps you're building an image-intensive user interface like GIPHY's. What are your options then?
 
@@ -22,9 +22,7 @@ Two of the best ways to optimize images for the web are by using the WebP image 
 
 ## The WebP Image Format
 
-Certain image formats require less storage space than others, trading some image quality in return for significant performance gains. The most notable and widely supported of these is the **WebP image format**, developed by Google.
-
-Google [describes WebP](https://developers.google.com/speed/webp) in its documentation as follows:
+Certain image formats require less storage space than others, trading some image quality in return for significant performance gains. The most notable and widely supported of these is the **WebP image format**. It was developed by Google and is [described as follows](https://developers.google.com/speed/webp):
 
 > WebP is a modern image format that provides **superior lossless and lossy compression** for images on the web.
 
