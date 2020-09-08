@@ -4,17 +4,6 @@
 
 // For performance (https://medium.com/clio-calliope/making-google-fonts-faster-aadf3c02a36d)
 // Font-face declarations generated with https://google-webfonts-helper.herokuapp.com/
-
-/* titillium-web-200 - latin */
-@font-face {
-    font-family: 'Titillium Web';
-    font-style: normal;
-    font-weight: 200;
-    src: local('Titillium Web ExtraLight'), local('TitilliumWeb-ExtraLight'),
-         url('/assets/fonts/titillium-web-v8-latin-200.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-         url('/assets/fonts/titillium-web-v8-latin-200.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-    font-display: swap;
-  }
   
   /* titillium-web-regular - latin */
   @font-face {
