@@ -66,7 +66,7 @@ Browsers that support the WebP image format will request and render only the `<s
 
 ### Other Optimized Image Formats
 
-While WebP isn't the only performant image format on the market, it's the only one that's *widely supported*. A new image format that's on the web's horizons is AVIF, [developed by Netflix](https://netflixtechblog.com/avif-for-next-generation-image-coding-b1d75675fe4) for its image-intensive user interfaces. As of this writing, [the only browser supporting it is Chrome 85+](https://caniuse.com/#search=avif).
+While WebP isn't the only performant image format on the market, it's the only one that's *widely supported* by modern browsers. A new image format that's on the web's horizons is AVIF, which is based on the AV1 video coding format developed by the [Alliance for Open Media](https://en.wikipedia.org/wiki/Alliance_for_Open_Media). It was recently [adopted by Netflix](https://netflixtechblog.com/avif-for-next-generation-image-coding-b1d75675fe4) for its image-intensive user interfaces and apparently offers *even more* compression than WebP. However, as of this writing, [the only browser supporting it is Chrome 85](https://caniuse.com/#search=avif).
 
 ## Lazy Loading Images with JavaScript
 
