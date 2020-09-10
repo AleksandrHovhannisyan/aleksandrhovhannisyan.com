@@ -4,6 +4,7 @@ description: Images make the web a more beautiful place, but this sometimes come
 keywords: [optimizing images for the web, optimize images for the web]
 tags: [dev, javascript, webperf, webp]
 comments_id: 56
+last_updated: 2020-09-10
 ---
 
 You're a fan of images—who isn't? But those adorable puppy photos, memes, and GIFs don't come without a price. Often, these images range anywhere from a few hundred kB to several megabytes in size. And while that's practically nothing in terms of *storage* space, it's quite a significant cost in terms of network data usage, especially on mobile.
@@ -44,13 +45,17 @@ That last point is especially important since Google uses [mobile-first indexing
 
 ### How to Create WebP Images
 
-Okay, so let's say you're hooked on the idea. Now how do you actually create WebP images? For that, Google provides a library of [command-line utilities](https://developers.google.com/speed/webp/docs/precompiled) known as `libwebp` that can be used to compress images to WebP.
+Okay, so let's say you're hooked on the idea. Now how do you actually create WebP images? For that, Google provides a library of [command-line utilities](https://developers.google.com/speed/webp/docs/precompiled) known as `libwebp` that can be used to compress images to WebP. Most images, like PNGs and JPEGs, can be compressed with the `cwebp` executable. You can also use the `gif2webp` utility to convert animated GIFs to animated WebP images.
 
-Most images, like PNGs and JPEGs, can be compressed with the `cwebp` executable. You can also use the `gif2webp` utility to convert animated GIFs to animated WebP images.
+If you're in the Node ecosystem, you're in luck—there are plenty of packages that'll convert images to WebP for you. Currently, the most popular package is [imagemin-webp](https://github.com/imagemin/imagemin-webp#readme). If you're building a site with Gatsby, you can alternatively use [gatsby-image](https://using-gatsby-image.gatsbyjs.org/prefer-webp/). All of these are just wrappers around Google's WebP utilities.
 
-> If you want to convert all images in a directory to WebP without doing so by hand, I wrote [a simple Python script](https://github.com/AleksandrHovhannisyan/webp) that'll do that for you.
+Outside the Node ecosystem, there are still libraries that'll do the job for you, like the [jekyll-picture-tag](https://github.com/rbuchberger/jekyll_picture_tag) gem for Jekyll. But it does get pretty limited from there. My site runs on Jekyll, but I prefer to generate all of my WebP images by hand so I have more granular control over the process.
 
-Then, the typical way to render WebP images is with the `<picture>`, `<source>`, and `<img>` tags:
+> If you want to quickly generate WebP copies of all images in a directory, I wrote [a simple Python script](https://github.com/AleksandrHovhannisyan/webp) that'll do that for you.
+
+### Rendering WebP Images
+
+Now, assuming you've generated your WebP images, the typical way to render them is with the `<picture>`, `<source>`, and `<img>` tags:
 
 {% capture code %}<picture>
     <source 
@@ -63,6 +68,8 @@ Then, the typical way to render WebP images is with the `<picture>`, `<source>`,
 {% include code.html code=code lang="html" %}
 
 Browsers that support the WebP image format will request and render only the `<source>` image, while browsers that don't yet support it will fall back to the `<img>` element.
+
+It's important that you set the `type` attribute of the source element to `image/webp` like we did here so that browsers know what media type you're requesting. You can also view the full list of [supported MIME types for images](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#Image_types) and other files in the MDN docs.
 
 ### Other Optimized Image Formats
 
