@@ -138,7 +138,7 @@ While we're at it, here's some CSS you may find useful:
 
 Next, we'll create an `IntersectionObserver` instance and use it to detect when our images intersect with the browser viewport:
 
-{% capture code %}const imgObserver = new IntersectionObserver(function (entries, self) {
+{% capture code %}const imgObserver = new IntersectionObserver((entries, self) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       lazyLoad(entry.target);

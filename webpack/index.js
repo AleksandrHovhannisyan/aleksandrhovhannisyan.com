@@ -27,7 +27,7 @@ navLinks.querySelectorAll('.navbar-link').forEach((anchor) => {
   anchor.addEventListener('mouseleave', rehighlightActiveNavLink);
 });
 
-const imgObserver = new IntersectionObserver(function (entries, self) {
+const imgObserver = new IntersectionObserver((entries, self) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       lazyLoad(entry.target);
