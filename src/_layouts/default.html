@@ -2,6 +2,12 @@
 
 <html lang="en-US" class="light">
     <head>
+        <!-- Preload optimizations -->
+        <link rel="preload" as="style" type="text/css" href="/assets/styles/main.css">
+        <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/titillium-web-v8-latin-regular.woff2" crossorigin>
+        <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/titillium-web-v8-latin-600.woff2" crossorigin>
+        <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/titillium-web-v8-latin-700.woff2" crossorigin>
+        <link rel="preload" as="script" type="text/javascript" href="/assets/scripts/bundle.js">
         <!-- Metadata for search engines -->
         <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
         <meta name="keywords" content="{% if page.keywords %}{{ page.keywords | join: ', ' }}{% else %}{{ site.keywords | join: ', ' }}{% endif %}">
@@ -49,9 +55,6 @@
                 document.documentElement.className = localStorage.getItem('theme');
             }
         </script>
-        <!-- Only preload these two since they're the most commonly used font weights on most pages -->
-        <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/titillium-web-v8-latin-regular.woff2" crossorigin>
-        <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/titillium-web-v8-latin-700.woff2" crossorigin>
     </head>
     <body>
         {% include navbar.html %}
