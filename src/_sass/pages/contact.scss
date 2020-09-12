@@ -9,7 +9,7 @@
 }
 
 #contact-information {
-    column-gap: 120px;
+    column-gap: 6em;
     display: grid;
     grid-template-areas: "form"
                          "socials";
@@ -21,15 +21,15 @@
 }
 
 .contact-form {
-    $form-max-width: 475px;
+    $form-max-width: 24em;
 
     background-color: var(--form-bg-color);
     border-radius: 2px;
     box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.25);
     grid-area: form;
-    margin-bottom: 60px;
+    margin-bottom: 3em;
     max-width: $form-max-width;
-    padding: 30px;
+    padding: 1.5em;
     @include transition(background-color);
 
     * {
@@ -63,11 +63,11 @@ input.honeypot {
 #social-networks {
     column-gap: 30px;
     display: grid;
-    grid-auto-rows: 60px;
+    grid-auto-rows: 3em;
     grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
-    margin-bottom: 60px;
-    margin-top: 60px;
-    row-gap: 50px;
+    margin-bottom: 3em;
+    margin-top: 3em;
+    row-gap: 2.5em;
     list-style-type: none;
 }
 

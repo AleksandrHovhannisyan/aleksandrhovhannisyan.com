@@ -1,12 +1,13 @@
 $transition-duration: 0.2s;
-$page-max-width: 900px;
+$page-max-width: 45em;
 $line-height-paragraphs: 1.7;
 $line-height-headings: 1.5;
 $paragraph-spacing: $line-height-paragraphs + unquote("em");
 $list-item-spacing: 0.25em;
 $font-weights: ("light": 300, "regular": 400, "bold": 600, "bolder": 700);
 
-$navbar-height: 64px;
+$navbar-height: 3.2em;
 $navbar-z-index: 100;
-$footer-height: 80px;
+$navbar-toggle-size: 1.6em;
+$footer-height: 4em;
 $scroll-margin-top: calc(#{$navbar-height} + 1em);
