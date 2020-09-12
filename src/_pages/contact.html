@@ -20,7 +20,9 @@ permalink: /contact/
       <input aria-hidden="true" type="text" name="_gotcha" class="honeypot" />
     </form>
     <section>
-      <h2 class="social-networks-heading">You can also find me on:</h2>
+      <h2 class="social-networks-heading" aria-label="You can also find me on the following social platforms">
+        You can also find me on:
+      </h2>
       <ul id="social-networks">
         {% for network in site.data.socials %}
         <li class="social-network">
