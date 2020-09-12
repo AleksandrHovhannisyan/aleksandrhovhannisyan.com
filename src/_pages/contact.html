@@ -5,34 +5,33 @@ permalink: /contact/
 ---
 
 <article id="contact" class="section">
-    <h1 class="contact-heading">Get in touch! 📧</h1>
-    <p>Fields marked with an asterisk are required.</p>
-    <div id="contact-information">
-        <form class="contact-form" action="https://formspree.io/xrgypaol" method="post" spellcheck="false">
-            <input aria-hidden="true" type="hidden" name="_subject" value="Someone sent you a message!" />
-            <label class="required" for="name">Name</label>
-            <input class="input" type="text" name="name" id="name" required>
-            <label for="email">Email</label>
-            <input class="input" type="email" name="_replyto" id="email"/>
-            <label class="required" for="message">Message</label>
-            <textarea class="input" name="body" id="message" required></textarea>
-            <button type="submit" class="button solid-button">Send message</button>
-            <input aria-hidden="true" type="text" name="_gotcha" class="honeypot" />
-        </form>
-        <section>
-            <h2 class="social-networks-heading">You can also find me on:</h2>
-            <ul id="social-networks">
-                {% for network in site.data.socials %}
-                <li class="social-network">
-                    <a class="social-network-link" href="{{ network.url }}">
-                        {% assign icon = network.icon %}
-                        {% assign iconClass = "network-icon " | append: icon %}
-                        {% include icon.html icon=icon class=iconClass %}
-                        <span class="network-name">{{ network.name }}</span>
-                    </a>
-                </li>
-                {% endfor %}
-            </ul>
-        </section>
-    </div>
+  <h1 class="contact-heading">Get in touch! 📧</h1>
+  <p>Fields marked with an asterisk are required.</p>
+  <div id="contact-information">
+    <form class="contact-form" action="https://formspree.io/xrgypaol" method="post" spellcheck="false">
+      <input aria-hidden="true" type="hidden" name="_subject" value="Someone sent you a message!" />
+      <label class="required" for="name">Name</label>
+      <input class="input" type="text" name="name" id="name" required />
+      <label for="email">Email</label>
+      <input class="input" type="email" name="_replyto" id="email" />
+      <label class="required" for="message">Message</label>
+      <textarea class="input" name="body" id="message" required></textarea>
+      <button type="submit" class="button solid-button">Send message</button>
+      <input aria-hidden="true" type="text" name="_gotcha" class="honeypot" />
+    </form>
+    <section>
+      <h2 class="social-networks-heading">You can also find me on:</h2>
+      <ul id="social-networks">
+        {% for network in site.data.socials %}
+        <li class="social-network">
+          <a class="social-network-link" href="{{ network.url }}">
+            {% assign icon = network.icon %} {% assign iconClass = "network-icon " | append: icon %} {% include
+            icon.html icon=icon class=iconClass %}
+            <span class="network-name">{{ network.name }}</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+  </div>
 </article>
