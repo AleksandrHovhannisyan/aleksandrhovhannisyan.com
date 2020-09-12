@@ -5,7 +5,6 @@
 
 .contact-heading {
     font-size: 1.5em;
-    margin-bottom: 2rem;
 }
 
 #contact-information {
@@ -14,8 +13,10 @@
     grid-template-areas: "form"
                          "socials";
     grid-template-rows: auto;
+    row-gap: 3em;
 
     @media only screen and (min-width: 800px) {
+        row-gap: 0;
         grid-template-areas: "form form form socials";
     }
 }
@@ -27,13 +28,12 @@
     border-radius: 2px;
     box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.25);
     grid-area: form;
-    margin-bottom: 3em;
     max-width: $form-max-width;
     padding: 1.5em;
     @include transition(background-color);
 
     * {
-        font-family: $font-family-normal;
+        font-family: inherit;
         font-size: 1em;
     }
 
