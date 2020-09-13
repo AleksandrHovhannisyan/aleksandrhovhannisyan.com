@@ -39,16 +39,12 @@ img_path: assets/img
         {% include projectCard.html project=project %}
     {% endfor %}
     <li id="github-cta">
-      <header>
-        <p><strong>Want to see more of my work?</strong></p>
-      </header>
-      <div>
-        <p>Check out my other repos:</p>
-        <a
-          aria-label="Aleksandr Hovhannisyan's GitHub profile."
-          href="https://github.com/AleksandrHovhannisyan?tab=repositories"
-          >{% include icon.html icon="github" %}</a>
-      </div>
+      <h3 class="github-cta-heading"><strong>Want to see more of my work?</strong></h3>
+      <p class="github-cta-subheading">Check out my other repos:</p>
+      <a
+        aria-label="Aleksandr Hovhannisyan's GitHub profile."
+        href="https://github.com/AleksandrHovhannisyan?tab=repositories"
+        >{% include icon.html icon="github" class="icon-github" %}</a>
     </li>
   </ul>
 </section>
