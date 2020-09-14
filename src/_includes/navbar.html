@@ -18,10 +18,10 @@
                         <li class="navbar-item"><a class="navbar-link" href="/{{ link | downcase }}/" {% if page.title == link %}aria-current="page" id="active-navbar-link"{% endif %}>{{ link }}</a></li>
                     {% endfor %}
                     <li class="navbar-item" id="theme-switch-container">
-                        <!-- Inspiration: https://create-react-app.dev/ -->
-                        <button id="theme-switch" title="Toggle theme" type="button">
-                            <img aria-hidden="true" class="theme-icon dark-mode-icon" src="/assets/img/theme-switch/moon.png" alt="🌜">
-                            <img aria-hidden="true" class="theme-icon light-mode-icon" src="/assets/img/theme-switch/sun.png" alt="🌞">
+                        <button id="theme-switch" class="lamp" title="Toggle theme" aria-label="Toggle theme" type="button">
+                            <span class="lamp-base"></span>
+                            <span class="lamp-neck"></span>
+                            <span class="lamp-head"></span>
                         </button>
                     </li>
                 </ul>

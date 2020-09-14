@@ -51,8 +51,11 @@
         {% endif %}
         <!-- Load the user's last selected theme -->
         <script>
-            if (localStorage.getItem('theme')) {
-                document.documentElement.className = localStorage.getItem('theme');
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.className = savedTheme;
+            } else {
+                localStorage.setItem('theme', 'light');
             }
         </script>
     </head>

@@ -43,11 +43,6 @@ html.light {
     --tag-text-color: var(--text-color-emphasis);
     --text-color-emphasis: #2e3c42;
     --text-color-normal: #3b4249;
-    --theme-switch-bg-color: #747474;
-    --theme-switch-knob-active-shadow: none;
-    --theme-switch-knob-bg-color: rgb(207, 207, 207);
-    --theme-switch-knob-border-color: #35647a;
-    --theme-switch-knob-shadow: none;
 }
 
 html.dark {
@@ -92,9 +87,4 @@ html.dark {
     --tag-text-color: black;
     --text-color-emphasis: #cccccc;
     --text-color-normal: #adadad;
-    --theme-switch-bg-color: #6e5f4b;
-    --theme-switch-knob-active-shadow: 0 0 10px 0 #f3d5b3;
-    --theme-switch-knob-bg-color: #a79c87;
-    --theme-switch-knob-border-color: #635b4b;
-    --theme-switch-knob-shadow: 0 0 5px 0 lighten(#a79c87, 75%);
 }

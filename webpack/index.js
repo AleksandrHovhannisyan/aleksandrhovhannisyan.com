@@ -1,10 +1,11 @@
-import toggleTheme from './toggleTheme';
+import toggleTheme, { updateThemeSwitchAriaLabel } from './toggleTheme';
 import { rehighlightActiveNavLink, toggleMobileNavbarVisibility, onNavLinkHovered } from './navbar';
 import lazyLoad from './lazyLoad';
 import copyCode from './copyCode';
 
 const themeSwitch = document.getElementById('theme-switch');
 themeSwitch.addEventListener('click', toggleTheme);
+updateThemeSwitchAriaLabel();
 
 const navbar = document.querySelector('.navbar');
 
