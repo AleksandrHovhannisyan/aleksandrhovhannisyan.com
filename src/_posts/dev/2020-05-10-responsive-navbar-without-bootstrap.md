@@ -5,7 +5,7 @@ keywords: [responsive navbar]
 tags: [dev, frontend, html, css, javascript]
 comments_id: 28
 is_popular: true
-last_updated: 2020-08-15
+last_updated: 2020-09-16
 ---
 
 **Navigation bars** (aka *navbars*) are everywhere on modern websites, so it's definitely good to know how to create one by hand without relying on a component library that does all of the heavy lifting for you. But if you've never created one from scratch, you may find it intimidating to get started.
@@ -132,10 +132,6 @@ First up are some standard CSS resets and base styling:
     padding: 0;
 }
 
-html {
-    font-size: 18px;
-}
-
 body {
     height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
@@ -143,7 +139,7 @@ body {
 }{% endcapture %}
 {% include code.html file="style.css" code=code lang="css" %}
 
-Feel free to remove any of the CSS that doesn't apply to your situation; this is just for the tutorial itself. The variables up at the top will help us avoid copy-pasting colors in our CSS. We reset paddings and margins and use `box-sizing: border-box` to ensure that widths/heights take border and padding into account. Finally, we set the base font size to `18px` and ensure that the body takes up the entire vertical height of the device with `height: 100vh`.
+Feel free to remove any of the CSS that doesn't apply to your situation; this is just for the tutorial itself. The variables up at the top will help us avoid copy-pasting colors in our CSS. We reset paddings and margins and use `box-sizing: border-box` to ensure that widths/heights take border and padding into account. Finally, we ensure that the body takes up the entire vertical height of the device with `height: 100vh`.
 
 Before we look at the CSS specific to the responsive navbar, I'd like to introduce one more selector:
 
