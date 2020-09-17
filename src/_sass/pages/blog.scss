@@ -317,6 +317,26 @@
         border-radius: 5px;
     }
 
+    .embed-container {
+        position: relative;
+        // 16:9 apect ratio trick since this is based on width.
+        // 16 / 9 = 1.777...8, and 1 / 0.5625 is also 1.777...8.
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+
+        iframe,
+        object,
+        embed {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
     ol li::marker {
         @include transition(color);
         color: var(--text-color-emphasis);
