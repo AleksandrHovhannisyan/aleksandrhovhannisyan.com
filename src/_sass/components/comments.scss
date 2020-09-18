@@ -1,3 +1,5 @@
+@import 'fonts';
+
 .comment-actions {
     display: flex;
     align-items: center;
@@ -41,7 +43,7 @@ $meta-spacing: 0.5em;
         flex-wrap: wrap;
         align-items: center;
         position: relative;
-        margin-bottom: calc(#{$paragraph-spacing} - #{$meta-spacing} / 2);
+        margin-bottom: calc(#{var(--paragraph-spacing)} - #{$meta-spacing} / 2);
 
         .meta {
             margin: 0 $meta-spacing $meta-spacing / 2 0;
@@ -82,7 +84,7 @@ $meta-spacing: 0.5em;
 
     .comment-body {
         display: grid;
-        row-gap: $paragraph-spacing;
+        row-gap: var(--paragraph-spacing);
         @include transition(color);
 
         > * {

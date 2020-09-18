@@ -1,7 +1,5 @@
-@import 'colors';
 @import 'fonts';
 @import 'mixins';
-@import 'settings';
 
 .blog-page-title {
     font-size: 1.8em;
@@ -204,7 +202,7 @@
 }
 
 .skip-post-meta-tags-target {
-    scroll-margin-top: $scroll-margin-top;
+    scroll-margin-top: var(--scroll-margin-top);
 }
 
 .post-meta-tags {
@@ -231,19 +229,19 @@
 
 #post {
     @include headings {
-        scroll-margin-top: $scroll-margin-top;
+        scroll-margin-top: var(--scroll-margin-top);
         margin-top: 1em;
     }
 }
 
 .post-header {
-    margin-bottom: $paragraph-spacing;
+    margin-bottom: var(--paragraph-spacing);
 }
 
 .post-content {
     display: grid;
-    grid-template-columns: minmax(0, $page-max-width);
-    row-gap: $paragraph-spacing;
+    grid-template-columns: minmax(0, var(--page-max-width));
+    row-gap: var(--paragraph-spacing);
     overflow-wrap: break-word;
 
     @include headings {
@@ -268,11 +266,11 @@
 
     li {
         &:not(:last-child) {
-            margin-bottom: $list-item-spacing;
+            margin-bottom: var(--list-item-spacing);
         }
 
         ol, ul {
-            margin-top: $list-item-spacing;
+            margin-top: var(--list-item-spacing);
             margin-bottom: 0 !important;
         }
     }
@@ -353,11 +351,11 @@
     blockquote {
         border-left: 4px solid;
         margin-left: 1.2rem;
-        padding: 0.25em $paragraph-spacing;
+        padding: 0.25em var(--paragraph-spacing);
         @include transition(border-color);
     
         p:not(:last-child) {
-            margin-bottom: $paragraph-spacing;
+            margin-bottom: var(--paragraph-spacing);
         }
     }
     
@@ -416,7 +414,7 @@
     flex-wrap: wrap;
     justify-content: flex-end;
     padding: 12px 20px;
-    margin-bottom: calc(-1 * #{$paragraph-spacing} + -1px);
+    margin-bottom: calc(-1 * #{var(--paragraph-spacing)} + -1px);
     margin-top: 0.5em;
     z-index: 2;
 
@@ -516,5 +514,3 @@ code {
     padding: 0.15em 0.3em;
     @include transition(color, background-color);
 }
-
-

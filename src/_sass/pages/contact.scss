@@ -1,7 +1,6 @@
 @import 'mixins';
 @import 'fonts';
 @import 'colors';
-@import 'settings';
 
 .contact-heading {
     font-size: 1.5em;
@@ -38,7 +37,7 @@
     }
 
     textarea {
-        line-height: $line-height-paragraphs !important;
+        line-height: var(--line-height-paragraphs) !important;
         min-height: 8.75em;
         width: 100%;
     }

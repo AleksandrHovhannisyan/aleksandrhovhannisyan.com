@@ -1,0 +1,15 @@
+:root {
+    $line-height-paragraphs: 1.7;
+
+    --transition-duration: 0.2s;
+    --page-max-width: 45em;
+    --line-height-paragraphs: #{$line-height-paragraphs};
+    --line-height-headings: 1.5;
+    --paragraph-spacing: #{$line-height-paragraphs + unquote("em")};
+    --list-item-spacing: 0.25em;
+    --navbar-height: 3.2em;
+    --navbar-z-index: 100;
+    --navbar-toggle-size: 1.6em;
+    --footer-height: 4em;
+    --scroll-margin-top: calc(var(--navbar-height) + 1em);
+}

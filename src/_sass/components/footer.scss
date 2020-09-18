@@ -1,5 +1,4 @@
 @import 'mixins';
-@import 'settings';
 
 #page-footer {
     align-items: center;
@@ -7,7 +6,7 @@
     bottom: 0;
     display: flex;
     grid-row: 2;
-    height: $footer-height;
+    height: var(--footer-height);
     justify-content: center;
     position: absolute;
     width: 100%;

@@ -1,6 +1,5 @@
 @import 'mixins';
 @import 'fonts';
-@import 'settings';
 
 // For performance (https://medium.com/clio-calliope/making-google-fonts-faster-aadf3c02a36d)
 // Font-face declarations generated with https://google-webfonts-helper.herokuapp.com/
@@ -93,7 +92,7 @@
 .screen-reader-only {
     position: absolute;
     left: -5000px;
-    z-index: $navbar-z-index + 1;
+    z-index: var(--navbar-z-index) + 1;
     
     &:focus {
         left: 0;
@@ -110,16 +109,16 @@ body {
     display: grid;
     font-family: $font-family-normal;
     -webkit-font-smoothing: antialiased;
-    grid-template-rows: $navbar-height 1fr $footer-height;
-    line-height: $line-height-paragraphs;
+    grid-template-rows: var(--navbar-height) 1fr var(--footer-height);
+    line-height: var(--line-height-paragraphs);
     min-height: 100vh;
     position: relative;
-    row-gap: $navbar-height;
+    row-gap: var(--navbar-height);
     @include transition(background-color);
 }
 
 #page-content {
-    scroll-margin-top: $scroll-margin-top;
+    scroll-margin-top: var(--scroll-margin-top);
     grid-row: 2;
     min-width: 0; // https://css-tricks.com/preventing-a-grid-blowout/
     @include centered;
@@ -156,7 +155,7 @@ strong {
     color: var(--text-color-emphasis);
     margin-bottom: 0.5em;
     font-weight: map-get($font-weights, "bolder");
-    line-height: $line-height-headings;
+    line-height: var(--line-height-headings);
     @include transition(color);
 }
 
@@ -177,13 +176,13 @@ a {
 
 p {
     color: var(--text-color-normal);
-    margin-bottom: $paragraph-spacing;
+    margin-bottom: var(--paragraph-spacing);
     @include transition(color);
 }
 
 .linked-heading {
     position: relative;
-    scroll-margin-top: $scroll-margin-top;
+    scroll-margin-top: var(--scroll-margin-top);
     
     &:hover {
         .heading-anchor {
@@ -221,7 +220,7 @@ p {
 }
 
 .section:not(:last-of-type) {
-    margin-bottom: 2 * $navbar-height;
+    margin-bottom: calc(2 * var(--navbar-height));
 }
 
 .input {

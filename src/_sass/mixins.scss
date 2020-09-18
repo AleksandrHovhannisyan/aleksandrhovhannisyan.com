@@ -1,4 +1,3 @@
-@import 'settings';
 @import 'functions';
 
 @mixin maxFontSize($max) {
@@ -27,7 +26,7 @@
     @for $i from 1 through length($props) {
       $prop: nth($props, $i);
       $result: append($result, $prop);
-      $result: append($result, ease #{$transition-duration});
+      $result: append($result, ease #{var(--transition-duration)});
 
       @if $i != length($props) {
         $result: append($result, unquote($string: ","));
@@ -76,7 +75,7 @@
     }
 }
 
-@mixin centered($marginMin: 1.2rem, $contentMax: $page-max-width) {
+@mixin centered($marginMin: 1.2rem, $contentMax: var(--page-max-width)) {
     display: grid;
     grid-template-columns: minmax($marginMin, 1fr) minmax(0, $contentMax) minmax($marginMin, 1fr);
 

@@ -1,10 +1,9 @@
 @import 'mixins';
-@import 'settings';
 
 #hero-banner {
-    margin-top: $navbar-height / 2;
+    margin-top: calc(var(--navbar-height) / 2);
     display: grid;
-    margin-bottom: 1.5 * $navbar-height;
+    margin-bottom: calc(1.5 * var(--navbar-height));
     grid-template-areas:
         "title title headshot"
         "subtitle subtitle subtitle";

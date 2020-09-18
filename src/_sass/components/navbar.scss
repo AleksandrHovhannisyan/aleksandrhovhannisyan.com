@@ -1,14 +1,13 @@
-@import 'colors';
-@import 'settings';
 @import 'mixins';
+@import 'fonts';
 
 .navbar-header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: $navbar-height;
-    z-index: $navbar-z-index;
+    height: var(--navbar-height);
+    z-index: var(--navbar-z-index);
 }
 
 .skip-navigation {
@@ -39,7 +38,7 @@
                 &:last-child {
                     position: absolute;
                     margin: 0;
-                    width: $navbar-toggle-size;
+                    width: var(--navbar-toggle-size);
                     height: 5%;
                 }
 
@@ -96,7 +95,7 @@
 .navbar-menu {
     position: fixed;
     left: 0;
-    top: $navbar-height;
+    top: var(--navbar-height);
     right: 0;
     bottom: 0;
     opacity: 0;
@@ -146,8 +145,8 @@
     background: transparent;
     border: none;
     font-size: 1em;
-    height: $navbar-toggle-size;
-    width: $navbar-toggle-size;
+    height: var(--navbar-toggle-size);
+    width: var(--navbar-toggle-size);
     flex-shrink: 0;
     cursor: pointer;
 
@@ -320,7 +319,7 @@
 
         .navbar-item {
             margin: 0 0 0 1em;
-            height: $navbar-height;
+            height: var(--navbar-height);
             display: flex;
             align-items: center;
         }
