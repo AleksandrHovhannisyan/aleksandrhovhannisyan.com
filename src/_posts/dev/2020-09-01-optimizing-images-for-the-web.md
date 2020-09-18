@@ -11,7 +11,7 @@ You're a fan of images—who isn't? But those adorable puppy photos, memes, and 
 
 Which... may mean that you'll have to part ways with some of your beloved GIFs.
 
-It's the reality of the web: The more data that your server needs to return, the longer it will take for your user's browser to receive a response and render the content. If you're not too bothered by this, think again: [Page load speed](https://moz.com/learn/seo/page-speed) is one of many factors influencing your search engine ranking. Faster pages tend to rank better than sluggish websites.
+It's the reality of the web: The more data that your server needs to return, the longer it will take for your user's browser to receive a response and render the content. If you're not too bothered by this, think again: [Page load speed](https://moz.com/learn/seo/page-speed) is one of many factors influencing your search engine ranking.
 
 But let's say you've decided to firmly stand your ground and defend your right to stuff every page with cat photos and GIFs. Or perhaps you're building an image-intensive user interface like GIPHY's. What are your options then?
 
