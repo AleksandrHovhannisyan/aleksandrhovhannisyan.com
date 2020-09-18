@@ -37,7 +37,6 @@ $note-text-color: #3e464d;
 }
 
 .note {
-    flex: 1 0;
     height: min-content;
     transform-style: preserve-3d;
     background: linear-gradient(180deg, #ffc, 90%, #f1f1dd);
@@ -47,9 +46,9 @@ $note-text-color: #3e464d;
     padding: 2.5em 1.8em 1.8em 1.8em;
     margin: 1em;
     @include transition(transform, top, box-shadow, border-radius);
-
-    @media screen and (min-width: 500px) {
-        flex: 1 0 250px;
+    
+    @media screen and (min-width: 800px) {
+        flex: 0 0 calc(50% - 2em);
     }
 
     &::after {
