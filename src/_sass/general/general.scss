@@ -92,7 +92,6 @@
 .screen-reader-only {
     position: absolute;
     left: -5000px;
-    z-index: var(--navbar-z-index) + 1;
     
     &:focus {
         left: 0;
