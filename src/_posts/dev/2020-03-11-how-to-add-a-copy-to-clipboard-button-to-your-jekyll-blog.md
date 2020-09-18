@@ -3,7 +3,7 @@ title: "How to Add a Copy-to-Clipboard Button to Your Jekyll Blog"
 description: Learn how to add a copy-to-clipboard button to your Jekyll blog using some clever Liquid templating and just a few lines of JavaScript.
 tags: [dev, jekyll, liquid, javascript]
 keywords: [copy to clipboard button]
-last_updated: 2020-05-17
+last_updated: 2020-09-18
 comments_id: 35
 thumbnail: thumbnail.gif
 is_popular: true
@@ -30,7 +30,7 @@ Well, ask and you shall receive! In this tutorial, we'll add a copy-to-clipboard
     <figcaption>Psst! You can also try this out live on my blog!</figcaption>
 </figure>
 
-Note that this tutorial is going to be bare bones—I'm not going to introduce any irrelevant CSS or HTML. I'm just going to show you how to get this thing working at a functional level. Once that's taken care of, you can throw in any extra styling or elements that you want.
+Note that this tutorial won't introduce any optional CSS or HTML. I'm just going to show you how to get this thing working at a functional level. Once that's taken care of, you can throw in any extra styling or elements that you want.
 
 ## Copy-to-Clipboard Button in Jekyll with Liquid and JavaScript
 
@@ -57,9 +57,11 @@ Sound good? Let's first look at the include file itself:
 ```{% endraw %}{% endcapture %}
 {% include code.html file="_includes/code.html" code=code lang="liquid" %}
 
+> **Note**: If you need to show fenced code blocks in your tutorials and want the triple backticks to show up as-is in the output HTML (e.g., like I did above), you should use *four* backticks in your `code.html` file. That way, the nested `include.code` object (which is assumed to house the triple backticks) won't break the Markdown processor.
+
 We create a `button` and give it a well-named class. We also add an `aria-label` for screen readers.
 
-Below is the accompanying Sass (trimmed down to the essentials). Feel free to change this to suit your needs. Note that some of this will make more sense once we make the copy-to-clipboard button interactive with JavaScript.
+Below is the essential CSS (I'm using SCSS). Feel free to change this to suit your needs. Note that some of this will make more sense once we make the copy-to-clipboard button interactive with JavaScript.
 
 {% capture code %}.copy-code-container {
   display: flex;
@@ -297,11 +299,8 @@ All of these variations still use the same include file that we looked at in thi
 
 {% capture code %}{% raw %}<div class="code-header">
     {% if include.file %}
-    <div class="file-name-container">
-        <h6 class="file-name"
-            aria-label="File name: {{ include.file }}">
-            {{ include.file }}
-        </h6>
+    <div class="code-file-name-container">
+        <span class="code-file-name">{{ include.file }}</span>
     </div>
     {% endif %}
     {% unless include.copyable == false %}
@@ -309,6 +308,7 @@ All of these variations still use the same include file that we looked at in thi
         <button class="copy-code-button"
              aria-label="Copy code block to your clipboard" 
              data-code="{{ include.code | escape }}"
+             type="button"
         ></button>
     </div>
     {% endunless %}
@@ -326,6 +326,7 @@ For example, using the `unless` Liquid tag and a flag passed in as an argument, 
         <button class="copy-code-button"
              aria-label="Copy code block to your clipboard" 
              data-code="{{ include.code | escape }}"
+             type="button"
         ></button>
     </div>
 {% endunless %}{% endraw %}
@@ -342,11 +343,8 @@ Likewise, if I want to specify a file name, I just need to pass in `file="myFile
 
 ```liquid
 {% raw %}{% if include.file %}
-    <div class="file-name-container">
-        <h6 class="file-name"
-            aria-label="File name: {{ include.file }}">
-            {{ include.file }}
-        </h6>
+    <div class="code-file-name-container">
+        <span class="code-file-name">{{ include.file }}</span>
     </div>
 {% endif %}{% endraw %}
 ```
