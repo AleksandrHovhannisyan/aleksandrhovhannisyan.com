@@ -126,7 +126,7 @@
         const edited = comment.created_at !== comment.updated_at;
 
         return `<li class="comment">
-                    <div class="commenter">
+                    <header class="comment-header">
                         <img src="${user.avatar_url}" alt="" aria-hidden="true" class="avatar">
                         <a
                             href="https://github.com/${user.login}"
@@ -136,7 +136,7 @@
                         <div class="meta date-posted">commented&nbsp;<time datetime="${comment.created_at}">${datePosted}</time></div>
                         ${postedByAuthor ? '<span class="meta tag author-badge">Author</span>' : ''}
                         ${edited ? `<span class="meta comment-edited">Edited</span>` : ''}
-                    </div>
+                    </header>
                     <div class="comment-body">${body}</div>
                 </li>`;
       })
