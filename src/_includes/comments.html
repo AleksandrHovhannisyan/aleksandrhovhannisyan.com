@@ -23,21 +23,25 @@
   // These dependencies are loaded async, so we keep track of the ones that have loaded so we can
   // render the comments only after all of them have loaded
   const commentScripts = {
-    moment: {
-      src: 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js',
-      loaded: false,
-    },
     marked: {
-      src: 'https://cdn.jsdelivr.net/npm/marked/marked.min.js',
+      src: 'https://unpkg.com/marked@0.3.6/marked.min.js',
       loaded: false,
     },
-    purify: {
-      src: '/assets/scripts/purify.min.js',
+    DOMPurify: {
+      src: 'https://unpkg.com/dompurify@1.0.8/dist/purify.min.js',
+      loaded: false,
+    },
+    dayjs: {
+      src: 'https://unpkg.com/dayjs@1.8.21/dayjs.min.js',
+      loaded: false,
+    },
+    dayJsRelativeTimePlugin: {
+      src: 'https://unpkg.com/dayjs@1.7.8/plugin/relativeTime.js',
       loaded: false,
     },
   };
 
-  // Defer the XHR to GitHub's API until users reach the comments footer (-200px)
+  // Defer GitHub API request until users reach the comments footer (-200px)
   const commentsObserver = new IntersectionObserver(function (entries, self) {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -48,9 +52,6 @@
   }, { rootMargin: '200px 0px 0px 0px' });
   commentsObserver.observe(commentsSection);
 
-  /**
-  * Makes an XHR request to the GitHub comments API to fetch all comments for the current post.
-  */
   function fetchComments() {
     fetch(
       'https://api.github.com/repos/{{ issues_repo }}/issues/{{ issue_id }}/comments'
@@ -99,7 +100,7 @@
   * @returns {Boolean} true if all comment script dependencies have loaded, and false otherwise
   */
   function allCommentScriptsLoaded() {
-    return Object.keys(commentScripts).every(scriptName => commentScripts[scriptName].loaded);
+    return Object.keys(commentScripts).every(script => commentScripts[script].loaded);
   }
 
   /**
@@ -119,8 +120,11 @@
         return comment1.created_at < comment2.created_at ? 1 : -1;
       })
       .map(comment => {
+        // load the relativeTime plugin
+        dayjs.extend(dayjs_plugin_relativeTime);
+        const datePosted = dayjs(comment.created_at).fromNow();
+        
         const user = comment.user;
-        const datePosted = moment(comment.created_at).fromNow();
         const body = DOMPurify.sanitize(marked(comment.body));
         const postedByAuthor = comment.author_association === 'OWNER';
         const edited = comment.created_at !== comment.updated_at;

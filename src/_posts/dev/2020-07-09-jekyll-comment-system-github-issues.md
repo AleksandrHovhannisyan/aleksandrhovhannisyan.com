@@ -4,7 +4,7 @@ description: Learn how to add comments to your Jekyll blog. We'll use the GitHub
 keywords: [jekyll comment system]
 tags: [dev, jekyll, github, javascript]
 comments_id: 45
-last_updated: 2020-07-16
+last_updated: 2020-09-18
 ---
 
 A while back, [Ari Stathopoulos wrote a tutorial](https://aristath.github.io/blog/static-site-comments-using-github-issues-api) on how to add comments to a Jekyll blog using the GitHub Issues API. And you know what? It works like a charm! Ever since I added comments to my Jekyll blog, I've seen a noticeable increase in engagement from my readers:
@@ -17,7 +17,7 @@ So, in this tutorial, I'd like to introduce a modified version of Ari's approach
 
 1. Only loads the comment system once the user has scrolled to the end of the page.
 2. Sanitizes each comment to escape special characters and prevent XSS attacks.
-3. Uses moment.js to display relative dates, like you see on most comment systems.
+3. Displays relative dates (e.g., `X hours ago`), like you see on most comment systems.
 
 That last point is really optional. My two key concerns were to improve my comment system's performance and to ensure that users can't get away with XSS via GitHub comments.
 
@@ -71,7 +71,7 @@ And here's the include file itself (or at least part of it—we'll fill in the s
 <script></script>{% endraw %}{% endcapture %}
 {% include code.html file="_includes/comments.html" code=code lang="html" %}
 
-Up at the top, I'm simply creating local variables so I don't have to repeat {% raw %}`include.issue_id`{% endraw %} and {% raw %}`site.issues_repo`{% endraw %} in my markup. Next, I've defined some basic HTML for the comment system itself. Notice that the anchor element (button) has the following `href` that points to the corresponding GitHub issue URL:
+Up at the top, I'm simply creating local variables so I don't have to repeat {% raw %}`include.issue_id`{% endraw %} and {% raw %}`site.issues_repo`{% endraw %} in my markup. Next, I've defined some basic HTML for the comment system itself. Notice that the anchor element (button) points to the corresponding GitHub issue URL:
 
 ```
 {% raw %}https://github.com/{{ issues_repo }}/issues/{{ issue_id }}{% endraw %}
@@ -83,7 +83,7 @@ When users click this link, they'll be directed to the "comment system" for a gi
 
 Time to start writing some JavaScript. We won't put our code in its own `.js` file because we need the include argument in order to hit the right GitHub API endpoint, and that issue ID is only accessible in `_includes/comments.html`. So we'll have to put up with an inline script.
 
-First, we'll create some variables for ourselves at the top of this script to reference a few of the elements on the page:
+First, we'll create some variables up at the top to reference a few of the elements on the page:
 
 {% capture code %}{% raw %}<script>
   const commentsSection = document.getElementById('comments');
@@ -116,11 +116,9 @@ To detect when a user has scrolled to the end of our blog post, we'll use the wi
 commentsObserver.observe(commentsSection);{% endcapture %}
 {% include code.html file="_includes/comments.html" code=code lang="javascript" %}
 
-Basically, the observer checks to see if it's intersecting with the `commentsSection` element. If it is, it calls a `fetchComments` routine that we'll set up in a second.
+Basically, the observer checks to see if it's intersecting with the `commentsSection` element. If it is, it calls a `fetchComments` routine that we'll set up in a second. It takes an optional configuration object as its second argument. Here, the config I've passed in sets a `rootMargin` option, which you can think of as a margin around an invisible "intersection rectangle" for the `commentsSection` element's box model. A top margin of `200px` essentially treats an intersection as 200px *before* a user has reached the comments section.
 
-Note that an `IntersectionObserver` accepts a function as its first argument and an optional configuration object as its second argument. Here, the config I've passed in sets a `rootMargin` option. You can think of this as a margin around an invisible "intersection rectangle" that follows the user around the page as they scroll. A top margin of `200px` here essentially treats an intersection as 200px *before* a user has reached the comments section (i.e., we **preload the comments** so that there's very little, if any, visible delay in rendering the comments).
-
-Here's the `fetchComments` function that gets fired off when an intersection is detected:
+Here's the `fetchComments` function that fires when an intersection occurs:
 
 {% capture code %}{% raw %}function fetchComments() {
   fetch(
@@ -134,7 +132,7 @@ Here's the `fetchComments` function that gets fired off when an intersection is 
 }{% endraw %}{% endcapture %}
 {% include code.html file="_includes/comments.html" code=code lang="javascript" %}
 
-This uses the `fetch` browser API to make a Promise-based XHR request. On failure, we set a message informing the user that we were unable to fetch the comments. If the data is returned and processed, we invoke an `initRenderComments` function that we'll define in a bit. That function will initiate the process of loading the dependency scripts for our comment system.
+This uses the `fetch` API. On failure, we set a message informing the user that we were unable to fetch the comments. If the data is returned and processed, we invoke an `initRenderComments` function, which we'll define in a bit. That function begins loading the third-party JavaScript for our comment system.
 
 Speaking of which...
 
@@ -144,16 +142,17 @@ First, note that we'll need these three scripts for our comment system:
 
 - `marked`, for processing markdown from GitHub comments and spitting out HTML.
 - `DOMPurify`, for sanitizing `marked`'s HTML output (e.g., to prevent XSS attacks).
-- `moment`, for rendering comment timestamps relative to now (e.g., "3 hours ago").
+- `Day.js`, for rendering comment timestamps relative to now (e.g., `3 hours ago`).
 
-Now, you can certainly load these using script elements like so:
+Now, you could certainly load these dependencies using script elements like so:
 
 ```html
 <!-- HTML up at the top -->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script src="/assets/scripts/purify.min.js"></script>
+<script src="https://unpkg.com/marked@0.3.6/marked.min.js"></script>
+<script src="https://unpkg.com/dompurify@1.0.8/dist/purify.min.js"></script>
+<script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+<script src="https://unpkg.com/dayjs@1.7.8/plugin/relativeTime.js"></script>
 
 <!-- Our custom comments script -->
 <script>
@@ -171,34 +170,38 @@ Now, you can certainly load these using script elements like so:
 So, we'll load these scripts using JavaScript by creating `script` elements, setting their `src` attributes, and appending them to the DOM body. However, since scripts are loaded asynchronously, they may get loaded out of order. This means we'll need some way to hold off on rendering the comments until *all* of the dependencies have loaded, in whatever order that may be. To do that, we'll use a simple object like this to keep track of which dependencies have loaded:
 
 {% capture code %}const commentScripts = {
-  moment: {
-    src: 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js',
-    loaded: false,
-  },
   marked: {
-    src: 'https://cdn.jsdelivr.net/npm/marked/marked.min.js',
+    src: 'https://unpkg.com/marked@0.3.6/marked.min.js',
     loaded: false,
   },
-  purify: {
-    src: '/assets/scripts/purify.min.js',
+  DOMPurify: {
+    src: 'https://unpkg.com/dompurify@1.0.8/dist/purify.min.js',
+    loaded: false,
+  },
+  dayjs: {
+    src: 'https://unpkg.com/dayjs@1.8.21/dayjs.min.js',
+    loaded: false,
+  },
+  dayJsRelativeTimePlugin: {
+    src: 'https://unpkg.com/dayjs@1.7.8/plugin/relativeTime.js',
     loaded: false,
   },
 };{% endcapture %}
 {% include code.html file="_includes/comments.html" code=code lang="javascript" %}
 
-And we'll define a helper function to go along with it that checks if all scripts have loaded:
+> Feel free to use a different CDN or serve these files locally if you'd like to.
+
+We'll also define a helper function to go along with it that checks if all scripts have loaded:
 
 {% capture code %}{% raw %}/**
-* @returns {Boolean} true if all comment script dependencies have loaded, and false otherwise
+* @returns {Boolean} true if all comment dependencies have loaded, and false otherwise
 */
 function allCommentScriptsLoaded() {
-  return Object.keys(commentScripts).every(scriptName => commentScripts[scriptName].loaded);
+  return Object.keys(commentScripts).every(script => commentScripts[script].loaded);
 }{% endraw %}{% endcapture %}
 {% include code.html file="_includes/comments.html" code=code lang="javascript" %}
 
-> **Note**: Alternatively, you could increment a counter and compare it to the length of the `commentScripts` object. My approach, while not necessarily efficient, is good enough and fairly easy to understand.
-
-Two of the scripts will be loaded via CDNs, but the third just has a distribution folder on GitHub. Go ahead and grab the `purify.min.js` script [from DOMPurify's GitHub repo](https://github.com/cure53/DOMPurify/tree/main/dist) and put it somewhere in your assets folder (I like to keep all my JS under `/assets/scripts/`). If you put it somewhere different, just be sure to update the `src` path above.
+> **Note**: Alternatively, you could increment a counter and compare it to the length of the `commentScripts` object. My approach, while not necessarily efficient, is good enough.
 
 Here's the `initRenderComments` function that gets called by `fetchComments` once it finishes:
 
@@ -266,8 +269,11 @@ function renderComments(comments) {
       return comment1.created_at < comment2.created_at ? 1 : -1;
     })
     .map(comment => {
+      // load the relativeTime plugin
+      dayjs.extend(dayjs_plugin_relativeTime);
+      const datePosted = dayjs(comment.created_at).fromNow();
+        
       const user = comment.user;
-      const datePosted = moment(comment.created_at).fromNow();
       const body = DOMPurify.sanitize(marked(comment.body));
       const postedByAuthor = comment.author_association === 'OWNER';
       const edited = comment.created_at !== comment.updated_at;
@@ -296,15 +302,13 @@ function renderComments(comments) {
 
 Up at the top of this function, we're using the fail-fast approach and returning if there are some scripts that have not yet loaded. This ensures that all of the remaining code will only get called once all three scripts have loaded.
 
-We're doing several things here, so let's break it all down.
-
-This sets a counter that tells users how many total comments there are:
+We're doing several things here, so let's break it all down. For example, this just sets a counter that tells users how many total comments there are:
 
 ```javascript
 commentsCount.innerText = `(${comments.length})`;
 ``` 
 
-The next few lines of code create an `ol` element and give it a meaningful aria label. We also sort the comments to show the most recently posted ones first and chain a call to `Array.prototype.map` to create an array of comments:
+The next few lines of code create an ordered list. We sort the comments to show the most recently posted ones first and chain a call to `Array.prototype.map` to create an array of comments, mapping each one to a list item as a template string:
 
 ```javascript
 const commentsList = document.createElement("ol");
@@ -319,14 +323,13 @@ commentsList.innerHTML = comments
   .join('');
 ```
 
-These two lines use our loaded dependencies:
+This line translates GitHub's markdown for a comment into HTML output:
 
 ```javascript
-const datePosted = moment(comment.created_at).fromNow();
 const body = DOMPurify.sanitize(marked(comment.body));
 ```
 
-We're using `DOMPurify.sanitize` per `marked`'s [README suggestion](https://github.com/markedjs/marked#warning--marked-does-not-sanitize-the-output-html-please-use-a-sanitize-library-like-dompurify-recommended-sanitize-html-or-insane-on-the-output-html-):
+We're sanitizing the output HTML per `marked`'s [README suggestion](https://github.com/markedjs/marked#warning--marked-does-not-sanitize-the-output-html-please-use-a-sanitize-library-like-dompurify-recommended-sanitize-html-or-insane-on-the-output-html-):
 
 > Warning: 🚨 Marked does not sanitize the output HTML. Please use a sanitize library, like DOMPurify (recommended), sanitize-html or insane on the output HTML! 🚨
 
