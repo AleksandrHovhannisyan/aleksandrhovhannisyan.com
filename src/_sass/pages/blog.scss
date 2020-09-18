@@ -324,9 +324,7 @@
         overflow: hidden;
         max-width: 100%;
 
-        iframe,
-        object,
-        embed {
+        > * {
             position: absolute;
             top: 0;
             left: 0;
