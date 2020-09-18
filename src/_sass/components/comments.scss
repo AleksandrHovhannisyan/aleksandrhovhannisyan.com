@@ -88,5 +88,9 @@ $meta-spacing: 0.5em;
         > * {
             min-width: 0;
         }
+
+        @include headings {
+            margin-top: 0 !important;
+        }
     }
 }
