@@ -1,5 +1,9 @@
 {% assign post = include.post %}
-{% assign reading_length = post.content | number_of_words | divided_by: 250 %}
+{% if post.reading_length %}
+    {% assign reading_length = post.reading_length %}
+{% else %}
+    {% assign reading_length = post.content | number_of_words | divided_by: 250 %}
+{% endif %}
 {% assign showProfilePhoto = include.showProfilePhoto %}
 {% assign last_updated = include.last_updated %}
 {% if minutes == 0 %}{% assign minutes = 1 %}{% endif %}

@@ -5,6 +5,7 @@ keywords: [least squares fitting, least squares method]
 tags: [computer-science, math]
 needs_latex: true
 comments_id: 39
+reading_length: 15
 ---
 
 With an understanding of [the method of least squares](/blog/computer-science/the-method-of-least-squares) and QR decomposition, we're now ready to look at one of its most practical applications: least squares fitting. In this tutorial, we'll explore straight-line fitting and polynomial least squares fitting, both by hand and with Python. But before we get to the problems, we need a little background and some more theory.
@@ -17,9 +18,9 @@ In **least squares fitting**, we have some function $$f$$ that takes $$n$$-vecto
 
 Our goal in least squares fitting is to try to model $$f$$ as closely as possible, based on the input-output data pairs that we're given. Typically, we use the following notation for our data, with $$(x^{(i)}, y^{(i)})$$ denoting the $$i$$-th data pair:
 
-$$x^{(1)}, x^{(2)}, ..., x^{(N)}$$
+$$x^{(1)}, x^{(2)}, ..., x^{(N)}\\
 
-$$y^{(1)}, y^{(2)}, ..., y^{(N)}$$
+y^{(1)}, y^{(2)}, ..., y^{(N)}$$
 
 Here, $$N$$ is the number of data points (i.e., the size of our data set), while $$n$$ is the size of each input vector, $$x^{(i)}$$. Keep that in mind because these two are not necessarily the same.
 
@@ -35,13 +36,13 @@ $$y \approx \hat{f}(x)$$
 
 Note that $$y$$ and $$x$$ are simply placeholders. Since we're really given $$N$$ data points—$$x^{(i)}$$  and $$y^{(i)}$$—we should write out the expanded form of the above by plugging in each data pair. That'll give us a clearer picture of what's going on:
 
-$$y^{(1)} \approx \hat{f}(x^{(1)})$$
+$$y^{(1)} \approx \hat{f}(x^{(1)})\\
 
-$$y^{(2)} \approx \hat{f}(x^{(2)})$$
+y^{(2)} \approx \hat{f}(x^{(2)})\\
 
-$$\ldots$$
+\ldots\\
 
-$$y^{(N)} \approx \hat{f}(x^{(N)})$$
+y^{(N)} \approx \hat{f}(x^{(N)})$$
 
 This is starting to look more like a system of equations. But we're not quite there yet. How exactly do we pick $$\hat{f}$$?
 
@@ -69,13 +70,13 @@ Well, the good news is that we get to pick the basis functions $$f_i$$ based on 
 
 Let's plug this general form of $$\hat{f}$$ into the earlier set of equations that we saw:
 
-$$y^{(1)} \approx \hat{f}(x^{(1)}) = \theta_1 f_1(x^{(1)}) + \theta_2 f_2(x^{(1)}) + \ldots + \theta_p f_p(x^{(1)})$$
+$$y^{(1)} \approx \hat{f}(x^{(1)}) = \theta_1 f_1(x^{(1)}) + \theta_2 f_2(x^{(1)}) + \ldots + \theta_p f_p(x^{(1)})\\
 
-$$y^{(2)} \approx \hat{f}(x^{(2)}) = \theta_1 f_1(x^{(2)}) + \theta_2 f_2(x^{(2)}) + \ldots + \theta_p f_p(x^{(2)})$$
+y^{(2)} \approx \hat{f}(x^{(2)}) = \theta_1 f_1(x^{(2)}) + \theta_2 f_2(x^{(2)}) + \ldots + \theta_p f_p(x^{(2)})\\
 
-$$\ldots$$
+\ldots\\
 
-$$y^{(N)} \approx \hat{f}(x^{(N)}) = \theta_1 f_1(x^{(N)}) + \theta_2 f_2(x^{(N)}) + \ldots + \theta_p f_p(x^{(N)})$$
+y^{(N)} \approx \hat{f}(x^{(N)}) = \theta_1 f_1(x^{(N)}) + \theta_2 f_2(x^{(N)}) + \ldots + \theta_p f_p(x^{(N)})$$
 
 Now that's more like it—this is a linear system of equations! Let's represent it in matrix form:
 
@@ -161,9 +162,8 @@ $$\hat{f}(x) = \theta_1 f_1(x) + \theta_2 f_2(x)$$
 
 Next, we define our basis functions:
 
-$$f_1(x) = 1$$
-
-$$f_2(x) = x$$
+$$f_1(x) = 1\\
+f_2(x) = x$$
 
 What does this do for us? Let's plug them into the general formula:
 
@@ -177,19 +177,15 @@ That gives us precisely the function we wanted.
 
 Here are all three equations for our problem:
 
-$$ y^{(1)} = \theta_1 + \theta_2 x^{(1)} $$
-
-$$ y^{(2)} = \theta_1 + \theta_2 x^{(2)} $$
-
-$$ y^{(3)} = \theta_1 + \theta_2 x^{(3)} $$
+$$ y^{(1)} = \theta_1 + \theta_2 x^{(1)} \\
+y^{(2)} = \theta_1 + \theta_2 x^{(2)} \\
+y^{(3)} = \theta_1 + \theta_2 x^{(3)} $$
 
 Let's plug in our points:
 
-$$ 1 = \theta_1 + \theta_2 (1) $$
-
-$$ 3 = \theta_1 + \theta_2 (2) $$
-
-$$ 3 = \theta_1 + \theta_2 (3) $$
+$$ 1 = \theta_1 + \theta_2 (1) \\
+3 = \theta_1 + \theta_2 (2) \\
+3 = \theta_1 + \theta_2 (3) $$
 
 And, in matrix form, this looks like the following:
 
@@ -299,9 +295,9 @@ $$
 
 This is a square system! Even better, it's an upper-triangular system—this means we can solve for $$\theta_2$$ really easily and then plug it back into the first equation to solve for $$\theta_1$$ (recall that this strategy is known as **back-substitution**). First, let's explicitly write out the two equations:
 
-$$ \sqrt{3}\theta_1 + \frac{6}{\sqrt{3}}\theta_2 = \frac{7}{\sqrt{3}} $$
+$$ \sqrt{3}\theta_1 + \frac{6}{\sqrt{3}}\theta_2 = \frac{7}{\sqrt{3}} \\
 
-$$ 0\theta_1 + \sqrt{2}\theta_2 = \frac{2}{\sqrt{2}} $$
+ 0\theta_1 + \sqrt{2}\theta_2 = \frac{2}{\sqrt{2}} $$
 
 Solving the second equation, we get that $$\theta_2 = 1$$.
 
@@ -361,11 +357,11 @@ $$\hat{f}(x) = \theta_1 f_1(x) + \theta_2 f_2(x) + \ldots + \theta_p f_p(x)$$
 
 And we'll pick $$p=3$$ with:
 
-$$f_1(x) = 1$$
+$$f_1(x) = 1\\
 
-$$f_2(x) = x$$
+f_2(x) = x\\
 
-$$f_3(x) = x^2$$
+f_3(x) = x^2$$
 
 There we go! It's that simple.
 
@@ -375,27 +371,27 @@ There we go! It's that simple.
 
 Here are all five equations for our polynomial fitting problem:
 
-$$ y^{(1)} = \theta_1 + \theta_2 x^{(1)} + \theta_3 (x^{(1)})^2 $$
+$$ y^{(1)} = \theta_1 + \theta_2 x^{(1)} + \theta_3 (x^{(1)})^2 \\
 
-$$ y^{(2)} = \theta_1 + \theta_2 x^{(2)} + \theta_3 (x^{(2)})^2 $$
+ y^{(2)} = \theta_1 + \theta_2 x^{(2)} + \theta_3 (x^{(2)})^2 \\
 
-$$ y^{(3)} = \theta_1 + \theta_2 x^{(3)} + \theta_3 (x^{(3)})^2 $$
+ y^{(3)} = \theta_1 + \theta_2 x^{(3)} + \theta_3 (x^{(3)})^2 \\
 
-$$ y^{(4)} = \theta_1 + \theta_2 x^{(4)} + \theta_3 (x^{(4)})^2 $$
+ y^{(4)} = \theta_1 + \theta_2 x^{(4)} + \theta_3 (x^{(4)})^2 \\
 
-$$ y^{(5)} = \theta_1 + \theta_2 x^{(5)} + \theta_3 (x^{(5)})^2 $$
+ y^{(5)} = \theta_1 + \theta_2 x^{(5)} + \theta_3 (x^{(5)})^2 $$
 
 Let's plug in the data we were given:
 
-$$ 5 = \theta_1 + \theta_2 (-4) + \theta_3 (-4)^2 $$
+$$ 5 = \theta_1 + \theta_2 (-4) + \theta_3 (-4)^2 \\
 
-$$ 1 = \theta_1 + \theta_2 (0) + \theta_3 (0)^2 $$
+ 1 = \theta_1 + \theta_2 (0) + \theta_3 (0)^2 \\
 
-$$ 3 = \theta_1 + \theta_2 (1) + \theta_3 (1)^2 $$
+ 3 = \theta_1 + \theta_2 (1) + \theta_3 (1)^2 \\
 
-$$ 9 = \theta_1 + \theta_2 (2) + \theta_3 (2)^2 $$
+ 9 = \theta_1 + \theta_2 (2) + \theta_3 (2)^2 \\
 
-$$ 10 = \theta_1 + \theta_2 (-6) + \theta_3 (-6)^2 $$
+ 10 = \theta_1 + \theta_2 (-6) + \theta_3 (-6)^2 $$
 
 I'll simplify things a bit and represent this as a matrix equation:
 

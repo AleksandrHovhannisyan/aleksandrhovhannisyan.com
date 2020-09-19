@@ -24,6 +24,9 @@ exclude:
   - webpack
   - node_modules
 
+kramdown:
+  math_engine: katex
+
 collections:
   notes:
     output: true

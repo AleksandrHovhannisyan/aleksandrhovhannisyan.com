@@ -5,6 +5,7 @@ keywords: [method of least squares]
 tags: [computer-science, math]
 needs_latex: true
 comments_id: 38
+reading_length: 20
 ---
 
 The method of least squares is a simple and elegant technique, but it's often explained poorly. It's something that you'll remember by heart if you understand the intuition—you won't have to memorize a single equation.
@@ -17,13 +18,13 @@ There's a lot of theory coming up, but I'll break it down into simple explanatio
 
 In simple terms, the **method of least squares** finds an approximate solution to a system of equations for which there is no exact solution. Let's look at why we need least squares with this simple example:
 
-$$ x_1 + x_2 = 2 $$
+$$ x_1 + x_2 = 2 \\
 
-$$ x_1 + 2x_2 = 3 $$
+ x_1 + 2x_2 = 3 \\
 
-$$ x_1 + 3x_2 = 3 $$
+ x_1 + 3x_2 = 3 \\
 
-$$ x_1 + 4x_2 = 5 $$
+ x_1 + 4x_2 = 5 $$
 
 We have four equations and two unknowns. We could perform row reduction, but since we only have two unknowns in this case ($$x_1$$ and $$x_2$$), we can also solve by substitution.
 
@@ -35,19 +36,19 @@ $$x_1 = 2 - x_2$$
 
 Then, let's plug this into the second equation:
 
-$$(x_1) + 2x_2 = 3$$
+$$(x_1) + 2x_2 = 3\\
 
-$$(2 - x_2) + 2x_2 = 3$$
+(2 - x_2) + 2x_2 = 3\\
 
-$$2 + x_2 = 3$$
+2 + x_2 = 3\\
 
-$$x_2 = 1$$
+x_2 = 1$$
 
 We have $$x_2$$, so now let's find $$x_1$$:
 
-$$x_1 = 2 - x_2$$
+$$x_1 = 2 - x_2\\
 
-$$x_1 = 1$$
+x_1 = 1$$
 
 At this point, we may be tempted to conclude that our solution is the following:
 
@@ -103,11 +104,11 @@ As a direct consequence of this, an overdetermined system can either have:
 
 Here's an example where there are infinitely many solutions, if you're wondering how that's possible:
 
-$$x_1 + x_2 = 3$$
+$$x_1 + x_2 = 3\\
 
-$$2x_1 + 2x_2 = 6$$
+2x_1 + 2x_2 = 6\\
 
-$$3x_1 + 3x_2 = 9$$
+3x_1 + 3x_2 = 9$$
 
 This is an overdetermined system because there are three equations but only two unknowns. Notice that the second and third equations are just scaled up ($$\times 2$$ and $$\times 3$$) versions of the first one. This means that they're all the same line, and thus there are infinitely many points of "intersection."
 
@@ -176,15 +177,15 @@ $$y = \theta_1(x) + \theta_2$$
 
 We were given several $$(x, y)$$ pairs, so we can plug those into the above equation to get a *set of equations* that we want to solve in order to find the values for $$\theta_1$$ and $$\theta_2$$:
 
-$$1 = \theta_1(1) + \theta_2$$
+$$1 = \theta_1(1) + \theta_2\\
 
-$$3 = \theta_1(2) + \theta_2$$
+3 = \theta_1(2) + \theta_2\\
 
-$$3 = \theta_1(3) + \theta_2$$
+3 = \theta_1(3) + \theta_2\\
 
-$$5 = \theta_1(4) + \theta_2$$
+5 = \theta_1(4) + \theta_2\\
 
-$$4 = \theta_1(6) + \theta_2$$
+4 = \theta_1(6) + \theta_2$$
 
 Our goal is to find values for $$\theta_1$$ and $$\theta_2$$ that will minimize the error of estimating the trend in the data with the imperfect equation $$y = \theta_1x + \theta_2$$. In other words, this is a least squares problem—we can't get an exact solution, so we try to find a "solution" that's as good as possible.
 
@@ -290,9 +291,9 @@ As we saw in the image earlier, the vector $$r$$ is clearly orthogonal to the pl
 
 Now, if two vectors are orthogonal, then their dot product is zero. So let's write that out explicitly (using the [matrix notation for a dot product](https://mathinsight.org/dot_product_matrix_notation)):
 
-$$a_1^T r = 0$$
+$$a_1^T r = 0\\
 
-$$a_2^T r = 0$$
+a_2^T r = 0$$
 
 These two are simultaneously true. We can express this using the following equivalent notation:
 
@@ -300,11 +301,11 @@ $$\begin{bmatrix} a_1 & a_2 \end{bmatrix}^T r = A^T r = 0$$
 
 Time to start plugging some things in. Recall from above that we defined $$r$$ to be $$b - A\hat{x}$$:
 
-$$A^T r = 0$$
+$$A^T r = 0\\
 
-$$A^T(b - A\hat{x}) = 0$$
+A^T(b - A\hat{x}) = 0\\
 
-$$A^Tb - A^TA\hat{x} = 0$$
+A^Tb - A^TA\hat{x} = 0$$
 
 Now move $$A^TA\hat{x}$$ to the other side. Doing so gives us this important equation:
 
@@ -330,9 +331,9 @@ Well, if we do that, here's what will happen to the dimensions of the problem:
 
 Since this is a rectangular $$n \times n$$ system, we can solve for it by multiplying both sides by the inverse of $$A^TA$$:
 
-$$A^TA\hat{x} = A^Tb$$
+$$A^TA\hat{x} = A^Tb\\
 
-$$\hat{x} = (A^TA)^{-1}A^Tb$$
+\hat{x} = (A^TA)^{-1}A^Tb$$
 
 {% include linkedHeading.html heading="The Pseudoinverse of a Matrix" level=3 %}
 
@@ -365,9 +366,9 @@ There's a pretty good [YouTube tutorial on QR factorization](https://www.youtube
 
 But here's the important takeaway: Once you perform QR factorization and get $$A = QR$$, you can substitute this into the equation we saw earlier.
 
-$$ A^TAx = A^Tb $$
+$$ A^TAx = A^Tb \\
 
-$$ (QR)^T(QR)x = (QR)^Tb $$
+ (QR)^T(QR)x = (QR)^Tb $$
 
 Recall that $$(XY)^T = Y^TX^T$$:
 
