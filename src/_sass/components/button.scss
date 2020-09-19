@@ -9,14 +9,12 @@
     justify-content: center;
     text-decoration: none;
     cursor: pointer;
-    @include transition(color, box-shadow, background-color);
 }
 
 .solid-button {
     background-color: var(--button-bg-color);
     color: var(--button-text-color);
     border: 3px solid var(--button-bg-color);
-    @include transition(color, border, background-color);
 
     &:focus, &:hover {
         background-color: var(--button-bg-color-hover);
@@ -29,7 +27,6 @@
     background-color: transparent;
     border: 3px solid;
     box-shadow: 0 0 0 0 transparent;
-    @include transition(color, border, box-shadow);
 
     &:focus, 
     &:hover {

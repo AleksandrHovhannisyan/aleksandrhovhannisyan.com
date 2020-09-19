@@ -19,7 +19,6 @@
 .project-name-wrapper {
     align-self: center;
     grid-area: heading;
-    @include transition(color);
 }
 
 .project-name {
@@ -48,7 +47,6 @@
     grid-area: rating;
     justify-self: center;
     margin-right: 0.5em;
-    @include transition(color);
 
     .star {
         margin-right: 3px;
@@ -59,7 +57,6 @@
 .project-description {
     margin-bottom: 0px;
     margin-top: 0px;
-    @include transition(color);
 }
 
 .project-technologies {
@@ -92,7 +89,6 @@
         width: 50px;
 
         .icon-github {
-            @include transition(fill);
             @include themed(fill, $brand-github, $brand-github-alt);
         }
     }

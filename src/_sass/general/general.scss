@@ -113,7 +113,6 @@ body {
     min-height: 100vh;
     position: relative;
     row-gap: var(--navbar-height);
-    @include transition(background-color);
 }
 
 #page-content {
@@ -147,7 +146,6 @@ body {
 strong {
     color: var(--text-color-emphasis);
     font-weight: map-get($font-weights, "bolder");
-    @include transition(color);
 }
 
 @include headings {
@@ -155,7 +153,6 @@ strong {
     margin-bottom: 0.5em;
     font-weight: map-get($font-weights, "bolder");
     line-height: var(--line-height-headings);
-    @include transition(color);
 }
 
 h1 {
@@ -170,13 +167,11 @@ a {
     color: var(--link-color);
     font-weight: inherit;
     text-decoration: none;
-    @include transition(color);
 }
 
 p {
     color: var(--text-color-normal);
     margin-bottom: var(--paragraph-spacing);
-    @include transition(color);
 }
 
 .linked-heading {
@@ -215,7 +210,6 @@ p {
     opacity: 0;
     display: flex;
     margin-left: 4px;
-    @include transition(visibility, opacity, border, color);
 }
 
 .section:not(:last-of-type) {
@@ -232,7 +226,6 @@ p {
     margin-bottom: 0.75em;
     padding: 0.25em 0.5em;
     width: 100%;
-    @include transition(background-color, border-color, box-shadow, color);
 
     &:focus {
         outline: none;
@@ -246,11 +239,9 @@ label {
     display: block;
     font-weight: map-get($font-weights, "bold");
     margin-bottom: 0.3125em;
-    @include transition(color);
 
     &.required::after {
         color: var(--input-required-asterisk-color);
         content: " *";
-        @include transition(color);
     }
 }

@@ -5,7 +5,6 @@
 
 .katex-display {
     margin: 0 !important;
-    @include transition(color);
     
     .katex {
         display: inline-block;

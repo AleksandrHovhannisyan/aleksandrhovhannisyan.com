@@ -184,11 +184,9 @@
     display: flex;
     align-items: center;
     margin: 0 1em 1em 0;
-    @include transition(color);
 }
 
 .meta-icon {
-    @include transition(fill);
     fill: var(--post-meta-icon-fill);
     height: 1em;
     margin-right: 5px;
@@ -287,7 +285,6 @@
             font-size: 0.875em;
             font-style: italic;
             text-align: center;
-            @include transition(color);
         }
 
         picture {
@@ -332,13 +329,8 @@
         }
     }
 
-    ol li::marker {
-        @include transition(color);
-    }
-
     ul,
     ol {
-        @include transition(color);
         padding-left: 2em;
     }
 
@@ -346,7 +338,6 @@
         border-left: 4px solid;
         margin-left: 1.2rem;
         padding: 0.25em var(--paragraph-spacing);
-        @include transition(border-color);
 
         p:not(:last-child) {
             margin-bottom: var(--paragraph-spacing);
@@ -376,8 +367,6 @@
     }
 
     .spoiler {
-        @include transition(color, background-color);
-
         &,
         * {
             background-color: var(--spoiler-bg-color);
@@ -437,7 +426,6 @@
     font-weight: map-get($font-weights, "regular");
     margin: 0;
     word-break: break-all;
-    @include transition(color);
 
     &::before {
         content: "📂";
@@ -464,7 +452,6 @@
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
     top: 0;
     position: relative;
-    @include transition(color, background-color);
 
     &::before {
         content: "Copy";
@@ -506,5 +493,4 @@ code {
     font-family: $font-family-code;
     font-size: 0.875em;
     padding: 0.15em 0.3em;
-    @include transition(color, background-color);
 }

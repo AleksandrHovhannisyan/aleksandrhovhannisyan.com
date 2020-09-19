@@ -29,7 +29,6 @@
     grid-area: form;
     max-width: $form-max-width;
     padding: 1.5em;
-    @include transition(background-color);
 
     * {
         font-family: inherit;
@@ -79,7 +78,6 @@ input.honeypot {
     border-radius: 2px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    @include transition(background-color);
 
     &:focus, &:hover {
         background-color: var(--hover-bg-color);
@@ -91,7 +89,6 @@ input.honeypot {
         font-weight: map-get($font-weights, "regular");
         align-self: center;
         grid-column: 2;
-        @include transition(color);
     }
 }
 
@@ -109,7 +106,6 @@ input.honeypot {
 }
 
 .github {
-    @include transition(fill);
     @include themed(fill, $brand-github, $brand-github-alt);
 }
 

@@ -5,7 +5,6 @@
     border-radius: 3px;
     color: var(--tag-text-color);
     font-weight: map-get($font-weights, "regular");
-    @include transition(color, background-color);
 }
 
 // Because not all tags are links/interactive (see project cards)

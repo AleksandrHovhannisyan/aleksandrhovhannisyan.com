@@ -26,7 +26,7 @@
     list-style-type: none;
     width: 100%;
     padding: 0 !important;
-    
+
 }
 
 $avatar-size: 2em;
@@ -34,7 +34,7 @@ $meta-spacing: 0.5em;
 
 .comment {
     margin-left: $avatar-size + $meta-spacing;
-    
+
     &:not(:last-of-type) {
         margin-bottom: 4em !important;
     }
@@ -88,7 +88,6 @@ $meta-spacing: 0.5em;
 .comment-body {
     display: grid;
     row-gap: var(--paragraph-spacing);
-    @include transition(color);
 
     > * {
         min-width: 0;
