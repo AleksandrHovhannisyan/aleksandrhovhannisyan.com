@@ -51,10 +51,11 @@ Thus, given a width, all we have to do is multiply that by the percentage we wor
 
 Unfortunately, we can't just do this:
 
-{% capture code %}.element {
+```css
+.element {
     height: 56.25%;
-}{% endcapture %}
-{% include code.html code=code lang="css" %}
+}
+```
 
 Percentage values for the `height` CSS property are relative to the height of an element's [containing block](https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block), or its nearest block-level parent. What we want, though, is for an element's height to be expressed as a percentage of its own width. How do we do that?
 
