@@ -1,5 +1,5 @@
 ---
-title: "Creating Responsive Aspect Ratios with CSS"
+title: "Responsive Aspect Ratios in CSS with Percent Padding"
 description: Learn how to give any element on your page a responsive aspect ratio, using a CSS trick with percentage padding.
 keywords: [aspect ratio, padding percentage]
 tags: [dev, frontend, css, math]
