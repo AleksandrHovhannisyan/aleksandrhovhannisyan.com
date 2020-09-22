@@ -169,7 +169,25 @@ That gives us a perfect 3x3 grid of squares:
   <li></li>
 </ol>
 
-You can now put whatever absolutely positioned content you want in these squares (like images), relatively position the list items, and hide any overflowing content. If the children of the list items happen to be images, you may want to center the images using `object-fit: cover` and `object-position: center`.
+You can now put whatever absolutely positioned content you want in these squares (like images), relatively position the list items, and hide any overflowing content.
+
+### Example 3: A 3x3 Square Grid of Images (Cropped)
+
+One of the more common use cases you'll run into is a square image grid, where each image is cropped to fit a perfect `1:1` aspect ratio. This simply builds on the previous example, where we created a generic `3x3` square grid. Here, we'll set our list items to be relatively positioned, absolutely position a nested `<picture>` element, and insert `<img>` and `<source>` elements that are given `object-fit: cover` and `object-position: center`:
+
+<ol class="square-grid" aria-hidden="true">
+  <li>{% include picture.html img="puppy.png" alt="" clickable=false %}</li>
+  <li>{% include picture.html img="puppy.png" alt="" clickable=false %}</li>
+  <li>{% include picture.html img="puppy.png" alt="" clickable=false %}</li>
+  <li>{% include picture.html img="kitten.png" alt="" clickable=false %}</li>
+  <li>{% include picture.html img="kitten.png" alt="" clickable=false %}</li>
+  <li>{% include picture.html img="kitten.png" alt="" clickable=false %}</li>
+  <li>{% include picture.html img="parakeet.png" alt="" clickable=false %}</li>
+  <li>{% include picture.html img="parakeet.png" alt="" clickable=false %}</li>
+  <li>{% include picture.html img="parakeet.png" alt="" clickable=false %}</li>
+</ol>
+
+You can even set a breakpoint to have the grid flow into a `9x1` grid for mobile, or you could just use CSS grid instead of flexbox. It's up to you!
 
 ### Question: Why Do We Keep Saying "Containing Block" and Not "Parent"?
 
@@ -330,7 +348,9 @@ I hope you found this helpful!
     .aspect-ratio-3-2 { padding-bottom: 66.67%; }
     .aspect-ratio-16-9 { padding-bottom: 56.25%; }
     .square-grid { display: flex; flex-wrap: wrap; list-style: none; padding: 0 !important; }
-    .square-grid li { height: 0; flex-basis: calc(33.33% - 1em); padding-bottom: calc(33.33% - 1em); background-color: var(--tag-bg-color); color: var(--tag-text-color); margin: 0.5em !important; }
+    .square-grid li { height: 0; flex-basis: calc(33.33% - 1em); padding-bottom: calc(33.33% - 1em); background-color: var(--tag-bg-color); color: var(--tag-text-color); margin: 0.5em !important; position: relative; }
+    .square-grid li > * { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    .square-grid img, .square-grid source { object-fit: cover; max-width: 100%; }
     .document { writing-mode: vertical-rl; width: 100%; height: 200px; }
     .parent { width: 100%; display: flex; align-items: center; flex-direction: column; justify-content: space-evenly; background-color: var(--navbar-bg-color); color: white; height: 100%; }
     .child { padding: 10%; background-color: white; color: black; }
