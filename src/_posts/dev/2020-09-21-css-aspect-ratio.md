@@ -68,9 +68,9 @@ Now, consider a practical example. Let's say you want to embed a YouTube video o
 
 <div class="square aspect-ratio-16-9" data-ratio="Pretend this is a YouTube iframe" aria-hidden="true"></div>
 
-We can do this using the padding trick that we learned: percentage values for padding reference the containing block's width. So, we can set an element's height to be `x` percent, where `x` just comes from the aspect ratio. For example, if the aspect ratio is `w:h`, then we'd compute `h / w * 100`. This expresses the height as a percentage of the width. The final step is to forcibly zero-out the element's height and absolutely position any children so that they don't change the element's dimensions.
+We can do this using the padding trick that we learned: percentage values for padding reference the containing block's width. So, we can set an element's height to be zero and its vertical padding to be `x` percent, where `x` just comes from the aspect ratio. For example, if the aspect ratio is `w:h`, then we'd compute `h / w * 100`. This expresses the height as a percentage of the width. The final step is to relativly position the element and absolutely position any children so that they don't influence the element's height.
 
-So, to create an aspect ratio of `16:9`, we'd set the element's height to be zero and the vertical padding to be `9 / 16 * 100 = 0.5625 * 100 = 56.25%`. Again, in plain English, this just says that the element's height should be `56.25%` of its containing block's width.
+Going back to our example, to create an aspect ratio of `16:9`, we'd set the element's height to be zero and the vertical padding to be `9 / 16 * 100 = 0.5625 * 100 = 56.25%`. Again, in plain English, this just says that the element's height should be `56.25%` of its containing block's width.
 
 Here's the HTML and CSS that'll do that for us:
 
@@ -169,11 +169,11 @@ That gives us a perfect 3x3 grid of squares:
   <li></li>
 </ol>
 
-You can now put whatever absolutely positioned content you want in these squares (like images), relatively position the list items, and hide any overflowing content.
+You can now put whatever absolutely positioned content you want in these squares, relatively position the list items, and hide any overflowing content. Speaking of which...
 
 ### Example 3: A 3x3 Square Grid of Images (Cropped)
 
-One of the more common use cases you'll run into is a square image grid, where each image is cropped to fit a perfect `1:1` aspect ratio. This simply builds on the previous example, where we created a generic `3x3` square grid. Here, we'll set our list items to be relatively positioned, absolutely position a nested `<picture>` element, and insert `<img>` and `<source>` elements that are given `object-fit: cover` and `object-position: center`:
+One of the more common use cases you'll run into is creating a square image grid with CSS, where each image is cropped to fit a perfect `1:1` aspect ratio. This simply builds on the previous example, where we created a generic square grid. Here, we'll set our list items to be relatively positioned, absolutely position a nested `<picture>` element, and insert `<img>` and `<source>` elements that are given `object-fit: cover` and `object-position: center`:
 
 <ol class="square-grid" aria-hidden="true">
   <li>{% include picture.html img="puppy.png" alt="" clickable=false %}</li>
@@ -187,7 +187,7 @@ One of the more common use cases you'll run into is a square image grid, where e
   <li>{% include picture.html img="parakeet.png" alt="" clickable=false %}</li>
 </ol>
 
-You can even set a breakpoint to have the grid flow into a `9x1` grid for mobile, or you could just use CSS grid instead of flexbox. It's up to you!
+You can even set a breakpoint to have the grid flow into a `9x1` grid for mobile, or you could just use CSS Grid instead of flexbox. It's up to you!
 
 ### Question: Why Do We Keep Saying "Containing Block" and Not "Parent"?
 
