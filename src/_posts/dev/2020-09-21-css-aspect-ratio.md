@@ -10,11 +10,11 @@ Here's a neat CSS trick I learned recently: Using percentage `padding`, we can g
 
 Here are some examples of common aspect ratios, rendered using plain old HTML and CSS:
 
-<ul class="squares">
-    <li class="square aspect-ratio-1-1" data-ratio="1:1"></li>
-    <li class="square aspect-ratio-4-3" data-ratio="4:3"></li>
-    <li class="square aspect-ratio-3-2" data-ratio="3:2"></li>
-    <li class="square aspect-ratio-16-9" data-ratio="16:9"></li>
+<ul class="tiles">
+    <li class="tile aspect-ratio-1-1" data-ratio="1:1"></li>
+    <li class="tile aspect-ratio-4-3" data-ratio="4:3"></li>
+    <li class="tile aspect-ratio-3-2" data-ratio="3:2"></li>
+    <li class="tile aspect-ratio-16-9" data-ratio="16:9"></li>
 </ul>
 
 In the sections that follow, we'll look at what *aspect ratio* means and how to define one using CSS.
@@ -56,48 +56,27 @@ Unfortunately, we can't just do this:
 }{% endcapture %}
 {% include code.html code=code lang="css" %}
 
-Percentage values for the `height` CSS property are relative to the height of an element's **[containing block](https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block)**, or its nearest block-level parent. What we want, though, is for an element's height to be expressed as a percentage of its own width. How do we do that?
+Percentage values for the `height` CSS property are relative to the height of an element's [containing block](https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block), or its nearest block-level parent. What we want, though, is for an element's height to be expressed as a percentage of its own width. How do we do that?
 
 Interestingly, it turns out that percentage values for `padding` and `margin` are relative to the width of an element's containing block. For example, if an element's containing block has a width of `500px`, then a child element with `padding: 10%` will get `50px` of padding on all four of its sides.
 
-So clearly, we have a way to define an element's height as a percentage of its *containing block's* width. As long as the child element stretches to fill `100%` of its containing block's width, this will be the same as **defining the element's height as a percentage of its own width** (which is what we're really trying to do!).
+So clearly, we have a way to define an element's height as a percentage of its *containing block's* width. As long as the child element stretches to fill `100%` of its containing block's width, this will be the same as *defining the element's height as a percentage of its own width* (which is what we're really trying to do!).
+
+### Question: What's the Difference Between a Containing Block and a Parent?
+
+An element's **containing block** is its nearest block-level parent. This could be any block element—like a `<div>`, a paragraph, a heading, a `<section>`, and so on—or even an inline element like a `<span>` that has `display: block`. An element's parent need not *always* define a containing block. This could happen if the parent is an inline element, or if it's a block-level element that's set to `display: inline`. The distinction is important; the W3 specs explicitly use the term *containing block* instead of *parent* when referring to percentage padding and how it works. So I've decided to follow that convention for absolute clarity.
 
 ### Example 1: YouTube Videos
 
 Now, consider a practical example. Let's say you want to embed a YouTube video on your page, and you know that YouTube videos have an aspect ratio of `16:9`. But you don't want to give the iframe a *fixed* width and height—rather, you want its width to fill its container and for its height to scale responsively, maintaining the element's `16:9` aspect ratio:
 
-<div class="square aspect-ratio-16-9" data-ratio="Pretend this is a YouTube iframe" aria-hidden="true"></div>
+<div class="tile aspect-ratio-16-9" data-ratio="Pretend this is a YouTube iframe" aria-hidden="true"></div>
 
 We can do this using the padding trick that we learned: percentage values for padding reference the containing block's width. So, we can set an element's height to be zero and its vertical padding to be `x` percent, where `x` just comes from the aspect ratio. For example, if the aspect ratio is `w:h`, then we'd compute `h / w * 100`. This expresses the height as a percentage of the width. The final step is to relativly position the element and absolutely position any children so that they don't influence the element's height.
 
 Going back to our example, to create an aspect ratio of `16:9`, we'd set the element's height to be zero and the vertical padding to be `9 / 16 * 100 = 0.5625 * 100 = 56.25%`. Again, in plain English, this just says that the element's height should be `56.25%` of its containing block's width.
 
 Here's the HTML and CSS that'll do that for us:
-
-{% capture code %}<div class="element aspect-ratio-16-9"></div>{% endcapture %}
-{% include code.html file="test.html" code=code lang="html" %}
-
-{% capture code %}.element {
-    position: relative;
-    height: 0;
-    /* Not needed if it's a block element */
-    width: 100%;
-}
-
-.element > * {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-}
-
-.aspect-ratio-16-9 {
-    padding-bottom: 56.25%;
-}{% endcapture %}
-{% include code.html file="styles.css" code=code lang="css" %}
-
-Going back to the YouTube iframe example, here's what you'd do:
 
 {% capture code %}<div class="embed-container">
   <iframe>...</iframe>
@@ -109,9 +88,11 @@ Going back to the YouTube iframe example, here's what you'd do:
     height: 0;
     padding-bottom: 56.25%;
     overflow: hidden;
+    /* Not needed if it's a block element, like a div */
+    width: 100%;
 }
 
-.embed-container > * {
+.embed-container * {
     position: absolute;
     top: 0;
     left: 0;
@@ -120,22 +101,22 @@ Going back to the YouTube iframe example, here's what you'd do:
 }{% endcapture %}
 {% include code.html file="test.css" code=code lang="css" %}
 
-That's it! Your iframe will now maintain its intrinsic `16:9` aspect ratio on all device widths.
+That's it! Your YouTube iframe will now maintain its intrinsic `16:9` aspect ratio on all device widths.
 
 ### Example 2: Creating a 3x3 Square Grid with CSS
 
 Now that we know how to define an element's height as a percentage of its containing block's width, we can easily create a [3x3 square layout](https://tobiasahlin.com/blog/common-flexbox-patterns/#3x3-grid-constrained-proportions-11) with Flexbox or CSS Grid. All you have to do is give each element a `padding-top` or `padding-bottom` that's equal to its width/flex-basis, expressed as a percentage:
 
 {% capture code %}<ul class="square-grid">
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
+  <li class="square"></li>
+  <li class="square"></li>
+  <li class="square"></li>
+  <li class="square"></li>
+  <li class="square"></li>
+  <li class="square"></li>
+  <li class="square"></li>
+  <li class="square"></li>
+  <li class="square"></li>
 </ul>{% endcapture %}
 {% include code.html file="grid.html" code=code lang="html" %}
 
@@ -146,7 +127,7 @@ Now that we know how to define an element's height as a percentage of its contai
     padding: 0;
 }
 
-.square-grid li {
+.square {
     height: 0;
     margin: 0.5em;
     /* Subtract 1em for left and right 0.5em margins */
@@ -158,44 +139,64 @@ Now that we know how to define an element's height as a percentage of its contai
 That gives us a perfect 3x3 grid of squares:
 
 <ol class="square-grid" aria-hidden="true">
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
+  <li class="square"></li>
+  <li class="square"></li>
+  <li class="square"></li>
+  <li class="square"></li>
+  <li class="square"></li>
+  <li class="square"></li>
+  <li class="square"></li>
+  <li class="square"></li>
+  <li class="square"></li>
 </ol>
 
 You can now put whatever absolutely positioned content you want in these squares, relatively position the list items, and hide any overflowing content. Speaking of which...
 
 ### Example 3: A 3x3 Square Grid of Images (Cropped)
 
-One of the more common use cases you'll run into is creating a square image grid with CSS, where each image is cropped to fit a perfect `1:1` aspect ratio. This simply builds on the previous example, where we created a generic square grid. Here, we'll set our list items to be relatively positioned, absolutely position a nested `<picture>` element, and insert `<img>` and `<source>` elements that are given `object-fit: cover` and `object-position: center`:
+One of the more common use cases you'll run into is creating a square image grid with CSS, where each image is cropped to fit a perfect `1:1` aspect ratio. This simply builds on the previous example, where we created a generic square grid. Here, we'll relatively position our squares and absolutely position all children:
+
+{% capture code %}.square {
+  height: 0;
+  margin: 0.5em;
+  flex-basis: calc(33.33% - 1em);
+  padding-bottom: calc(33.33% - 1em);
+  position: relative;
+}
+
+.square * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}{% endcapture %}
+{% include code.html file="image-grid.css" code=code lang="css" %}
+
+Each square will nest a `<picture>` child element that in turn contains `<img>` and `<source>` elements. You could also just use an `<img>` tag here instead of a `<picture>`. In any case, the image and source elements will be styled as follows:
+
+{% capture code %}.square img,
+.square source {
+  object-fit: cover;
+  object-position: center;
+}{% endcapture %}
+{% include code.html file="img-grid.css" code=code lang="css" %}
+
+Putting it all together, we get a `3x3` grid of images that are perfectly centered to a `1:1` (square) aspect ratio. If some of the images don't have an intrinsic `1:1` aspect ratio—as is the case with the puppies below, which have intrinsic dimensions of `500x300`—they'll simply be cropped and centered:
 
 <ol class="square-grid" aria-hidden="true">
-  <li>{% include picture.html img="puppy.png" alt="" clickable=false %}</li>
-  <li>{% include picture.html img="puppy.png" alt="" clickable=false %}</li>
-  <li>{% include picture.html img="puppy.png" alt="" clickable=false %}</li>
-  <li>{% include picture.html img="kitten.png" alt="" clickable=false %}</li>
-  <li>{% include picture.html img="kitten.png" alt="" clickable=false %}</li>
-  <li>{% include picture.html img="kitten.png" alt="" clickable=false %}</li>
-  <li>{% include picture.html img="parakeet.png" alt="" clickable=false %}</li>
-  <li>{% include picture.html img="parakeet.png" alt="" clickable=false %}</li>
-  <li>{% include picture.html img="parakeet.png" alt="" clickable=false %}</li>
+  <li class="square">{% include picture.html img="puppy.png" alt="" clickable=false %}</li>
+  <li class="square">{% include picture.html img="puppy.png" alt="" clickable=false %}</li>
+  <li class="square">{% include picture.html img="puppy.png" alt="" clickable=false %}</li>
+  <li class="square">{% include picture.html img="kitten.png" alt="" clickable=false %}</li>
+  <li class="square">{% include picture.html img="kitten.png" alt="" clickable=false %}</li>
+  <li class="square">{% include picture.html img="kitten.png" alt="" clickable=false %}</li>
+  <li class="square">{% include picture.html img="parakeet.png" alt="" clickable=false %}</li>
+  <li class="square">{% include picture.html img="parakeet.png" alt="" clickable=false %}</li>
+  <li class="square">{% include picture.html img="parakeet.png" alt="" clickable=false %}</li>
 </ol>
 
-You can even set a breakpoint to have the grid flow into a `9x1` grid for mobile, or you could just use CSS Grid instead of flexbox. It's up to you!
-
-### Question: Why Do We Keep Saying "Containing Block" and Not "Parent"?
-
-As a reminder, an element's **containing block** is its nearest block-level parent. This could be any block element—like a `<div>`, a `<p>`, headings, `<section>`s, and so on—or even an inline element like a `<span>` that has `display: block`.
-
-Observe that an element's parent need not *always* define a containing block. This could happen if the parent is, for example, an inline element, or if it's a block-level element that's set to `display: inline`.
-
-The distinction here is important, and the W3 specs explicitly use the term *containing block* instead of *parent* when referring to percentage padding and how it works. So, I've decided to follow that convention for absolute clarity.
+Taking this a step further, you could even set a breakpoint to have the grid flow into a `9x1` grid for mobile, or you could just use CSS Grid instead of flexbox. It's up to you!
 
 ## Why It Works: Padding Percentages and Aspect Ratios
 
@@ -340,17 +341,17 @@ I hope you found this helpful!
 - [Common CSS Flexbox Layout Patterns with Example Code](https://tobiasahlin.com/blog/common-flexbox-patterns/)
 
 <style>
-    .squares { display: grid; padding: 0 !important; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); row-gap: 1em; column-gap: 1em; }
-    .square { position: relative; height: 0; background-color: var(--tag-bg-color); color: var(--tag-text-color); font-weight: 700; font-size: 1.2em; list-style: none; margin: 0 !important; border-radius: 4px; }
-    .square::after { position: absolute; left: 0; top: 0; width: 100%; height: 100%; content: attr(data-ratio); display: flex; align-items: center; justify-content: center; }
+    .tiles { display: grid; padding: 0 !important; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); row-gap: 1em; column-gap: 1em; }
+    .tile { position: relative; height: 0; background-color: var(--tag-bg-color); color: var(--tag-text-color); font-weight: 700; font-size: 1.2em; list-style: none; margin: 0 !important; border-radius: 4px; }
+    .tile::after { position: absolute; left: 0; top: 0; width: 100%; height: 100%; content: attr(data-ratio); display: flex; align-items: center; justify-content: center; }
     .aspect-ratio-1-1 { padding-bottom: 100%; }
     .aspect-ratio-4-3 { padding-bottom: 75%; }
     .aspect-ratio-3-2 { padding-bottom: 66.67%; }
     .aspect-ratio-16-9 { padding-bottom: 56.25%; }
     .square-grid { display: flex; flex-wrap: wrap; list-style: none; padding: 0 !important; }
-    .square-grid li { height: 0; flex-basis: calc(33.33% - 1em); padding-bottom: calc(33.33% - 1em); background-color: var(--tag-bg-color); color: var(--tag-text-color); margin: 0.5em !important; position: relative; }
-    .square-grid li > * { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-    .square-grid img, .square-grid source { object-fit: cover; max-width: 100%; }
+    .square { height: 0; flex-basis: calc(33.33% - 1em); padding-bottom: calc(33.33% - 1em); background-color: var(--tag-bg-color); color: var(--tag-text-color); margin: 0.5em !important; position: relative; }
+    .square * { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    .square img, .square source { object-fit: cover; object-position: center; }
     .document { writing-mode: vertical-rl; width: 100%; height: 200px; }
     .parent { width: 100%; display: flex; align-items: center; flex-direction: column; justify-content: space-evenly; background-color: var(--navbar-bg-color); color: white; height: 100%; }
     .child { padding: 10%; background-color: white; color: black; }
