@@ -72,9 +72,11 @@ In plain English, all we're doing is setting an element's height using padding a
 
 ### Question: What's the Difference Between a Containing Block and a Parent?
 
-Above, you may have noticed that I used the term *containing block* instead of parent. Most tutorials will use the term parent, but this is slightly inaccurate in the context of percentage padding.
+Above, you may have noticed that I used the term *containing block* instead of *parent*. Most tutorials will use the term parent, but this is slightly inaccurate in the context of percentage padding.
 
-An element's **containing block** is its nearest block-level parent. This could be any block element—like a `<div>`, a paragraph, a heading, a `<section>`, and so on—or even an inline element like a `<span>` that has `display: block`. An element's parent need not *always* define a containing block. This could happen if the parent is an inline element, or if it's a block-level element that's set to `display: inline`. The distinction is important; the W3 specs explicitly use the term *containing block* instead of *parent* when referring to percentage padding and how it works. So I've decided to follow that convention for absolute clarity.
+An element's **containing block** is its nearest block-level parent. This could be any block element—like a `<div>`, a paragraph, a heading, a `<section>`, and so on—or even an inline element like a `<span>` that has `display: block`. An element's parent need not *always* define a containing block. This could happen if the parent is an inline element, or if it's a block-level element that's set to `display: inline`.
+
+The distinction is important; the W3 specs explicitly use the term *containing block* instead of *parent* when discussing percentage padding. So I've decided to follow that convention for accuracy and consistency.
 
 ### Example 1: YouTube Videos
 
@@ -214,14 +216,43 @@ One possible reason for this is that using a single reference axis (the containi
 
 A more logical reason is the [causality dilemma](https://en.wikipedia.org/wiki/Chicken_or_the_egg) (aka the chicken or the egg). Let's pretend that percentage values for vertical padding actually referenced the containing block's height, rather than its width. If that were the case, we'd get an infinite loop:
 
-1. A containing block's height is affected by the heights of its children<sup>2</sup>.
+1. A containing block's height is affected by the heights of its children<sup>1</sup>.
 2. A child sets its `padding-top` to be some percentage (e.g., `50%`).
 3. The height of the containing block must change since the child now takes up more vertical space.
 4. If the height of the containing block increases, the child's padding must increase, too.
 
-> <sup>2</sup>The same does NOT apply for the width of a containing block. By definition, a block-level element such as a `<div>` will fill up 100% of the available width in the [inline direction](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Block_and_Inline_Layout_in_Normal_Flow#Elements_participating_in_a_block_formatting_context). If children exceed this width, they will simply overflow—the parent will not stretch. Hence, the infinite calculation problem does not exist in the horizontal axis.
+> <sup>1</sup>The same does NOT apply to the width of a containing block. By definition, a block-level element such as a `<div>` will fill up 100% of the available width in the [inline direction](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Block_and_Inline_Layout_in_Normal_Flow#Elements_participating_in_a_block_formatting_context). If children exceed this width, they will simply overflow—the parent will not stretch. Hence, the infinite calculation problem does not exist in the horizontal axis.
 
 Another compelling reason is that this CSS "hack" allows us to define responsive aspect ratios. If percentage values for vertical padding were based on the containing block's height and not its width, then we'd have no way of doing this with responsive units—we'd have to rely on hardcoded units.
+
+### The Curious Case of Flexbox and CSS Grid
+
+We learned that percentage padding for an element will reference the width of its containing block. But what happens if the element in question is a flex item or grid item? In that case, is the containing block the flex container or the grid itself?
+
+The simple answer is no. And the key to understanding this is to learn about **block formatting contexts** (BFCs). From the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Intro_to_formatting_contexts):
+
+> Everything on a page is part of a formatting context, or an area which has been defined to lay out content in a particular way. A block formatting context (BFC) will lay child elements out according to block layout rules, a flex formatting context will lay its children out as flex items, etc. Each formatting context has specific rules about how layout behaves when in that context.
+
+In its documentation on [identifying the containing block](https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#Identifying_the_containing_block), MDN notes that flex items and grid items create their own block formatting context, separate from the flex container or grid container:
+
+> If the position property is static, relative, or sticky, the containing block is formed by the edge of the content box of the nearest ancestor element that is either a block container (such as an inline-block, block, or list-item element) or establishes a formatting context (such as a table container, flex container, grid container, or the block container itself).
+
+[And the W3 specs back this up](https://www.w3.org/TR/css-flexbox-1/#flex-items):
+
+> A flex item establishes an independent formatting context for its contents. However, flex items themselves are flex-level boxes, not block-level boxes: they participate in their container’s flex formatting context, not in a block formatting context.
+
+Thus, for flex and grid items, you can think of the containing block as an invisible content region that wraps the items. With CSS grid, this grid formatting context is very easy to identify in your dev tools, appearing as a dotted outline around each item:
+
+{% include picture.html img="grid.png" alt="Inspecting a grid of four items with the Chrome dev tools reveals that each grid items has its own block formatting context, shown with a dashed outline." %}
+
+You can prove this with a simple experiment with two grid items that have the same aspect ratio but whose formatting contexts have differing widths, as defined by the `grid-template-columns` property:
+
+<ul class="grid" aria-label="A grid of two items, one of which is 1fr and the other is 2fr">
+  <li class="tile aspect-ratio-16-9" data-ratio="16:9"></li>
+  <li class="tile aspect-ratio-16-9" data-ratio="16:9"></li>
+</ul>
+
+If the formatting context for grid items were the grid parent itself, then the two items would have the same padding-based height. But they don't because each item has its own formatting context.
 
 ### Percentage Padding in Horizontal vs. Vertical Writing Modes
 
@@ -306,6 +337,7 @@ To verify this, run the following code:
   padding: 10%;
   background-color: white;
   color: black;
+  border: solid 1px;
 }{% endcapture %}
 {% include code.html file="test.css" code=code lang="css" %}
 
@@ -363,4 +395,5 @@ I hope you found this helpful!
     .document { writing-mode: vertical-rl; width: 100%; height: 200px; }
     .parent { width: 100%; display: flex; align-items: center; flex-direction: column; justify-content: space-evenly; background-color: var(--navbar-bg-color); color: white; height: 100%; }
     .child { padding: 10%; background-color: white; color: black; }
+    .grid { padding: 0 !important; display: grid; grid-template-columns: 1fr 2fr; width: 100%; column-gap: 1em; }
 </style>
