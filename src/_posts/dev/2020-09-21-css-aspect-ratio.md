@@ -47,7 +47,7 @@ This shift in perspective allows us to answer the following question: How many u
 
 Thus, given a width, all we have to do is multiply that by the percentage we worked out above, and we'll get precisely the height that we need for the element to fit a given aspect ratio (in this case, `16:9`). Now, all we need is some way to define an element's height as a percentage of its width, using CSS.
 
-## Using Padding Percentages to Define Aspect Ratios in CSS
+## How to Define Aspect Ratios in CSS (with Percentage Padding)
 
 Unfortunately, we can't just do this:
 
@@ -59,11 +59,20 @@ Unfortunately, we can't just do this:
 
 Percentage values for the `height` CSS property are relative to the height of an element's [containing block](https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block), or its nearest block-level parent. What we want, though, is for an element's height to be expressed as a percentage of its own width. How do we do that?
 
-Interestingly, it turns out that percentage values for `padding` and `margin` are relative to the width of an element's containing block. For example, if an element's containing block has a width of `500px`, then a child element with `padding: 10%` will get `50px` of padding on all four of its sides.
+Interestingly, for reasons that we'll explore later, percentage values for `padding` (and `margin`) are relative to the width of an element's containing block. For example, if an element's containing block has a width of `500px`, then a child element with `padding: 10%` will get `50px` of padding on all four of its sides. What we're interested in specifically is vertical padding since it influences an element's height.
 
-So clearly, we have a way to define an element's height as a percentage of its *containing block's* width. As long as the child element stretches to fill `100%` of its containing block's width, this will be the same as *defining the element's height as a percentage of its own width* (which is what we're really trying to do!).
+With that in mind, we can give an element an aspect ratio in CSS using just four simple steps:
+
+1. Set the element's width to be `100%` of its containing block's width.
+2. Forcibly set the element's height to be zero so that only padding influences its height.
+3. Set the element's vertical padding to be `h / w * 100` percent (for an aspect ratio of `w:h`).
+4. Relatively position the element and absolutely position its children so they don't influence its height.
+
+In plain English, all we're doing is setting an element's height using padding alone. Step three just expresses the aspect ratio's height as a percentage of the width. Since the child element stretches to fill `100%` of its containing block's width, this will be the same as defining the element's own height as a percentage of *its own width*. This is precisely the definition of aspect ratio!
 
 ### Question: What's the Difference Between a Containing Block and a Parent?
+
+Above, you may have noticed that I used the term *containing block* instead of parent. Most tutorials will use the term parent, but this is slightly inaccurate in the context of percentage padding.
 
 An element's **containing block** is its nearest block-level parent. This could be any block element—like a `<div>`, a paragraph, a heading, a `<section>`, and so on—or even an inline element like a `<span>` that has `display: block`. An element's parent need not *always* define a containing block. This could happen if the parent is an inline element, or if it's a block-level element that's set to `display: inline`. The distinction is important; the W3 specs explicitly use the term *containing block* instead of *parent* when referring to percentage padding and how it works. So I've decided to follow that convention for absolute clarity.
 
@@ -73,9 +82,7 @@ Now, consider a practical example. Let's say you want to embed a YouTube video o
 
 <div class="tile aspect-ratio-16-9" data-ratio="Pretend this is a YouTube iframe" aria-hidden="true"></div>
 
-We can do this using the padding trick that we learned: percentage values for padding reference the containing block's width. So, we can set an element's height to be zero and its vertical padding to be `x` percent, where `x` just comes from the aspect ratio. For example, if the aspect ratio is `w:h`, then we'd compute `h / w * 100`. This expresses the height as a percentage of the width. The final step is to relativly position the element and absolutely position any children so that they don't influence the element's height.
-
-Going back to our example, to create an aspect ratio of `16:9`, we'd set the element's height to be zero and the vertical padding to be `9 / 16 * 100 = 0.5625 * 100 = 56.25%`. Again, in plain English, this just says that the element's height should be `56.25%` of its containing block's width.
+We can do this using the padding trick that we learned. To create an aspect ratio of `16:9`, we simply set the element's height to be zero and the vertical padding to be `9 / 16 * 100 = 0.5625 * 100 = 56.25%`. Again, this just says that the element's height should be `56.25%` of its containing block's width. Note that if the element in question is a block-level element, like a `<div>`, then it already fills `100%` of its containing block's width. The final step is to relativly position the element and absolutely position any children so that they don't influence the element's height.
 
 Here's the HTML and CSS that'll do that for us:
 
