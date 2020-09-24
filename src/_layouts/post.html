@@ -24,15 +24,10 @@ preloads:
   </div>
 </article>
 
-{% if page.needs_latex %}
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
-{% endif %}
-
 {% assign thumbnail = 'thumbnail.png' %}
 {% if page.thumbnail %}
     {% assign thumbnail = page.thumbnail %}
 {% endif %}
-
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
