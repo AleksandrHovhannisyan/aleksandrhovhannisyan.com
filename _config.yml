@@ -49,7 +49,7 @@ autopages:
   # Tag pages, omit to disable
   tags:
     layouts: [tagPage.html]
-    title: 'Blog'
+    title: 'Posts tagged as :tag'
     permalink: '/tag/:tag'
     slugify:
       mode: 'default'   # :tag is slugified.
@@ -74,7 +74,7 @@ pagination:
   #permalink: '/page/:num' # Pages are html files, linked jekyll extensionless permalink style.
 
   # Optional the title format for the paginated pages (supports :title for original page title, :num for pagination page number, :max for total number of pages)
-  title: 'Blog'
+  title: ':title (Page :num/:max)'
 
   # Limit how many pagenated pages to create (default: 0, means all)
   limit: 0
