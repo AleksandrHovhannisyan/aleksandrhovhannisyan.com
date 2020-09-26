@@ -131,15 +131,15 @@
 
         return `<li class="comment">
                     <header class="comment-header">
-                        <img src="${user.avatar_url}" alt="" aria-hidden="true" class="avatar">
+                        <img src="${user.avatar_url}" alt="" aria-hidden="true" class="comment-avatar">
                         <a
                             href="https://github.com/${user.login}"
-                            class="meta username"
+                            class="comment-meta comment-username"
                             >${user.login}</a
                         >
-                        <div class="meta date-posted">commented&nbsp;<time datetime="${comment.created_at}">${datePosted}</time></div>
-                        ${postedByAuthor ? '<span class="meta tag author-badge">Author</span>' : ''}
-                        ${edited ? `<span class="meta comment-edited">Edited</span>` : ''}
+                        <div class="comment-meta comment-date-posted">commented&nbsp;<time datetime="${comment.created_at}">${datePosted}</time></div>
+                        ${postedByAuthor ? '<span class="comment-meta tag comment-author-badge">Author</span>' : ''}
+                        ${edited ? `<span class="comment-meta comment-edited">Edited</span>` : ''}
                     </header>
                     <div class="comment-body">${body}</div>
                 </li>`;

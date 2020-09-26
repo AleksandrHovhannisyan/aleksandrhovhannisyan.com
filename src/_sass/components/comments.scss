@@ -11,88 +11,90 @@
     h2 {
         margin: 0 !important;
     }
+}
 
-    .post-comment-button {
-        padding: 0.4em 0.8em;
-        margin: 1em 0;
-    }
+.post-comment-button {
+    padding: 0.4em 0.8em;
+    margin: 1em 0;
 }
 
 #comments-wrapper {
     display: flex;
 }
 
-$avatar-size: 2em;
-$meta-spacing: 0.5em;
-
 .comments-list {
     list-style-type: none;
     width: 100%;
     padding: 0 !important;
-
-    .comment {
-        margin-left: $avatar-size + $meta-spacing;
-        
-        &:not(:last-of-type) {
-            margin-bottom: 4em;
-        }
-    }
-
-    .comment-header {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        position: relative;
-        margin-bottom: calc(#{var(--paragraph-spacing)} - #{$meta-spacing} / 2);
-
-        .meta {
-            margin: 0 $meta-spacing $meta-spacing / 2 0;
-        }
-
-        .avatar {
-            position: absolute;
-            width: $avatar-size;
-            left: -1 * $avatar-size - $meta-spacing;
-            top: calc(-1 * #{$meta-spacing} / 4);
-            border-radius: 50% !important;
-        }
-
-        .username {
-            font-size: 1.1em;
-            color: var(--text-color-emphasis);
-            font-weight: map-get($font-weights, "bold");
-            @include underlinedLink;
-        }
-
-        .comment-edited {
-            font-size: 0.875em;
-            font-style: italic;
-        }
     
-        .date-posted {
-            font-size: 0.875em;
-        }
+}
 
-        .author-badge {
-            font-size: 0.75em;
-            display: flex;
-            align-items: center;
-            padding: 0 0.4em;
-            height: 1.5rem;
-        }
+$avatar-size: 2em;
+$meta-spacing: 0.5em;
+
+.comment {
+    margin-left: $avatar-size + $meta-spacing;
+    
+    &:not(:last-of-type) {
+        margin-bottom: 4em !important;
+    }
+}
+
+.comment-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+    margin-bottom: calc(#{var(--paragraph-spacing)} - #{$meta-spacing} / 2);
+
+}
+
+.comment-meta {
+    margin: 0 $meta-spacing $meta-spacing / 2 0;
+}
+
+.comment-avatar {
+    position: absolute;
+    width: $avatar-size;
+    left: -1 * $avatar-size - $meta-spacing;
+    top: calc(-1 * #{$meta-spacing} / 4);
+    border-radius: 50% !important;
+}
+
+.comment-username {
+    font-size: 1.1em;
+    color: var(--text-color-emphasis);
+    font-weight: map-get($font-weights, "bold");
+    @include underlinedLink;
+}
+
+.comment-edited {
+    font-size: 0.875em;
+    font-style: italic;
+}
+
+.comment-date-posted {
+    font-size: 0.875em;
+}
+
+.comment-author-badge {
+    font-size: 0.75em;
+    display: flex;
+    align-items: center;
+    padding: 0 0.4em;
+    height: 1.5rem;
+}
+
+.comment-body {
+    display: grid;
+    row-gap: var(--paragraph-spacing);
+    @include transition(color);
+
+    > * {
+        min-width: 0;
     }
 
-    .comment-body {
-        display: grid;
-        row-gap: var(--paragraph-spacing);
-        @include transition(color);
-
-        > * {
-            min-width: 0;
-        }
-
-        @include headings {
-            margin-top: 0 !important;
-        }
+    @include headings {
+        margin-top: 0 !important;
     }
 }
