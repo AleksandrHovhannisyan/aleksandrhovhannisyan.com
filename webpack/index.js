@@ -1,10 +1,12 @@
-import copyCode from './copyCode/copyCode';
-import Navbar from './Navbar/Navbar';
-import ThemeToggle from './ThemeToggle/ThemeToggle';
-import lazyLoad from './lazyLoad/lazyLoad';
+import Navbar from 'components/Navbar/Navbar';
+import ThemeToggle from 'components/ThemeToggle/ThemeToggle';
+import copyCode from 'utils/copyCode/copyCode';
+import lazyLoad from 'utils/lazyLoad/lazyLoad';
 
+// eslint-disable-next-line no-unused-vars
 const navbar = new Navbar();
 
+// eslint-disable-next-line no-unused-vars
 const themeToggle = new ThemeToggle({
   toggleSelector: '#theme-toggle',
   storageKey: 'theme',
