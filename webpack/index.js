@@ -1,7 +1,7 @@
-import copyCode from './copyCode';
-import Navbar from './navbar';
-import ThemeToggle from './ThemeToggle';
-import lazyLoad from './lazyLoad';
+import copyCode from './copyCode/copyCode';
+import Navbar from './Navbar/Navbar';
+import ThemeToggle from './ThemeToggle/ThemeToggle';
+import lazyLoad from './lazyLoad/lazyLoad';
 
 const navbar = new Navbar();
 
