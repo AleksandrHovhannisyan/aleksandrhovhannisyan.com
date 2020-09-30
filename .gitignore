@@ -2,6 +2,7 @@ _site
 .sass-cache
 .jekyll-cache
 .jekyll-metadata
+.eslintcache
 _drafts
 post_diagrams
 experimental
