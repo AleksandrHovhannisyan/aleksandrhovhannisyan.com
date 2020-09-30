@@ -1,9 +1,13 @@
-function lazyLoad(img) {
-  const pictureElement = img.parentElement;
-  const source = pictureElement.querySelector('.lazy-source');
+export default function lazyLoad(targets, onIntersection) {
+  const observer = new IntersectionObserver((entries, self) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        onIntersection(entry.target);
+        self.unobserve(entry.target);
+      }
+    });
+  });
 
-  source.srcset = source.getAttribute('data-srcset');
-  img.src = img.getAttribute('data-src');
+  document.querySelectorAll(targets).forEach((target) => observer.observe(target));
+  return observer;
 }
-
-export default lazyLoad;
