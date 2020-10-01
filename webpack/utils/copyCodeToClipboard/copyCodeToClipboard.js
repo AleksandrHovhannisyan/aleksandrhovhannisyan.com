@@ -1,8 +1,6 @@
-// Temporary text area hack: https://stackoverflow.com/a/46822033/5323344
-const copyCode = (clickEvent) => {
-  const copyCodeButton = clickEvent.target;
+const copyToClipboard = (text) => {
   const tempTextArea = document.createElement('textarea');
-  tempTextArea.textContent = copyCodeButton.getAttribute('data-code');
+  tempTextArea.textContent = text;
   document.body.appendChild(tempTextArea);
 
   const selection = document.getSelection();
@@ -11,6 +9,12 @@ const copyCode = (clickEvent) => {
   document.execCommand('copy');
   selection.removeAllRanges();
   document.body.removeChild(tempTextArea);
+};
+
+// Temporary text area hack: https://stackoverflow.com/a/46822033/5323344
+const copyCodeToClipboard = (clickEvent, copyFn = copyToClipboard) => {
+  const copyCodeButton = clickEvent.target;
+  copyFn(copyCodeButton.getAttribute('data-code'));
 
   // Show "Copied!" and green checkmark
   copyCodeButton.classList.add('copied');
@@ -19,4 +23,4 @@ const copyCode = (clickEvent) => {
   }, 2000);
 };
 
-export default copyCode;
+export default copyCodeToClipboard;

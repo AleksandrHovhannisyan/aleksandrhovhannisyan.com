@@ -1,6 +1,6 @@
 import Navbar from 'components/Navbar/Navbar';
 import ThemeToggle from 'components/ThemeToggle/ThemeToggle';
-import copyCode from 'utils/copyCode/copyCode';
+import copyCodeToClipboard from 'utils/copyCodeToClipboard/copyCodeToClipboard';
 import lazyLoad from 'utils/lazyLoad/lazyLoad';
 
 // eslint-disable-next-line no-unused-vars
@@ -22,5 +22,5 @@ lazyLoad('.lazy-img', (img) => {
 });
 
 document.querySelectorAll('.copy-code-button').forEach((copyCodeButton) => {
-  copyCodeButton.addEventListener('click', copyCode);
+  copyCodeButton.addEventListener('click', copyCodeToClipboard);
 });
