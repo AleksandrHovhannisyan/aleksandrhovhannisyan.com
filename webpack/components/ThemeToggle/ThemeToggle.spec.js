@@ -1,15 +1,17 @@
 import ThemeToggle from './ThemeToggle';
 
-global.themeMap = {
-  light: 'dark',
-  dark: 'light',
-};
+let toggleButton;
+let themeMap;
 
 beforeEach(() => {
   document.body.innerHTML = '';
-  const toggleButton = document.createElement('button');
+  toggleButton = document.createElement('button');
   toggleButton.id = 'theme-toggle';
   document.body.appendChild(toggleButton);
+  themeMap = {
+    light: 'dark',
+    dark: 'light',
+  };
   localStorage.clear();
 });
 
@@ -22,6 +24,22 @@ describe('ThemeToggle component', () => {
     });
 
     expect(toggle.currentTheme).toEqual('light');
+  });
+
+  it('calls toggle when the button is clicked', () => {
+    // eslint-disable-next-line no-unused-vars
+    const toggle = new ThemeToggle({
+      toggleSelector: '#theme-toggle',
+      themeOwner: document.documentElement,
+      storageKey: 'theme',
+    });
+
+    const toggleFn = jest.fn();
+    ThemeToggle.toggle = toggleFn();
+
+    toggleButton.click();
+    expect(toggleFn).toHaveBeenCalled();
+    expect(toggleFn).toHaveBeenCalledTimes(1);
   });
 
   it('toggles from light to dark', () => {
@@ -68,12 +86,8 @@ describe('ThemeToggle component', () => {
     });
 
     const toggleButton = document.getElementById('theme-toggle');
-    expect(toggleButton.getAttribute('aria-label')).toEqual(
-      `Switch to ${global.themeMap[toggle.currentTheme]} mode theme`
-    );
+    expect(toggleButton.getAttribute('aria-label')).toEqual(`Switch to ${themeMap[toggle.currentTheme]} mode theme`);
     toggle.toggle();
-    expect(toggleButton.getAttribute('aria-label')).toEqual(
-      `Switch to ${global.themeMap[toggle.currentTheme]} mode theme`
-    );
+    expect(toggleButton.getAttribute('aria-label')).toEqual(`Switch to ${themeMap[toggle.currentTheme]} mode theme`);
   });
 });
