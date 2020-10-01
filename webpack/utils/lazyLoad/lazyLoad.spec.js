@@ -74,5 +74,6 @@ describe('lazyLoad utility', () => {
     expect(onIntersection).toHaveBeenCalledWith(img2);
     expect(onIntersection).toHaveBeenCalledWith(img3);
     expect(onIntersection).not.toHaveBeenCalledWith(img1);
+    expect(unobserveFn).toHaveBeenCalledTimes(2);
   });
 });
