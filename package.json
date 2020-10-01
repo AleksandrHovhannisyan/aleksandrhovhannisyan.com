@@ -9,7 +9,7 @@
     "build": "./node_modules/.bin/webpack && bundle exec jekyll build",
     "lint:fix": "eslint --cache --fix 'webpack/**/*.js'",
     "test": "jest",
-    "test:watch": "yarn run test --verbose --watch"
+    "test:watch": "yarn run test --watch --silent=false"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",

@@ -1,5 +1,5 @@
-export default function lazyLoad(targets, onIntersection) {
-  const observer = new IntersectionObserver((entries, self) => {
+export default function lazyLoad(targets, onIntersection, Observer = IntersectionObserver) {
+  const observer = new Observer((entries, self) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         onIntersection(entry.target);
