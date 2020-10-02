@@ -1,10 +1,12 @@
-import copyCode from './copyCode';
-import Navbar from './navbar';
-import ThemeToggle from './ThemeToggle';
-import lazyLoad from './lazyLoad';
+import Navbar from 'components/Navbar/Navbar';
+import ThemeToggle from 'components/ThemeToggle/ThemeToggle';
+import copyCodeToClipboard from 'utils/copyCodeToClipboard/copyCodeToClipboard';
+import lazyLoad from 'utils/lazyLoad/lazyLoad';
 
+// eslint-disable-next-line no-unused-vars
 const navbar = new Navbar();
 
+// eslint-disable-next-line no-unused-vars
 const themeToggle = new ThemeToggle({
   toggleSelector: '#theme-toggle',
   storageKey: 'theme',
@@ -20,5 +22,5 @@ lazyLoad('.lazy-img', (img) => {
 });
 
 document.querySelectorAll('.copy-code-button').forEach((copyCodeButton) => {
-  copyCodeButton.addEventListener('click', copyCode);
+  copyCodeButton.addEventListener('click', copyCodeToClipboard);
 });

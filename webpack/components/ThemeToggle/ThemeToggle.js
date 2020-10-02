@@ -9,25 +9,28 @@ export default class ThemeToggle {
     this.toggleElement.addEventListener('click', () => this.toggle());
     this.themeOwner = themeOwner;
     this.storageKey = storageKey;
+    this.theme = localStorage.getItem(storageKey) || 'light';
     this.syncAriaLabelWithStorage();
   }
 
-  toggle() {
-    const oldTheme = this.themeOwner.classList.value;
-    const newTheme = themeMap[oldTheme];
-    this.setColorTheme(oldTheme, newTheme);
+  get currentTheme() {
+    return this.theme;
   }
 
-  setColorTheme(oldTheme, newTheme) {
+  toggle() {
+    const oldTheme = this.currentTheme;
+    const newTheme = themeMap[oldTheme];
+
     this.themeOwner.classList.remove(oldTheme);
     this.themeOwner.classList.add(newTheme);
+
     localStorage.setItem(this.storageKey, newTheme);
+    this.theme = newTheme;
     this.syncAriaLabelWithStorage();
   }
 
   syncAriaLabelWithStorage() {
-    const currentTheme = localStorage.getItem(this.storageKey);
-    const nextTheme = themeMap[currentTheme];
+    const nextTheme = themeMap[this.currentTheme];
     this.toggleElement.setAttribute('aria-label', `Switch to ${nextTheme} mode theme`);
   }
 }

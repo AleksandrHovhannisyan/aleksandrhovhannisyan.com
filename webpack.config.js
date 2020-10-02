@@ -1,6 +1,12 @@
 const path = require('path');
 
 module.exports = {
+  resolve: {
+    alias: {
+      components: path.resolve(__dirname, 'webpack/components'),
+      utils: path.resolve(__dirname, 'webpack/utils'),
+    },
+  },
   entry: './webpack/index.js',
   output: {
     path: path.resolve(__dirname, 'src/assets/scripts/'),
