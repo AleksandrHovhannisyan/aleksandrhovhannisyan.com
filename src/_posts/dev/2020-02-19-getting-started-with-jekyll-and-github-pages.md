@@ -5,6 +5,7 @@ keywords: [getting started with jekyll, jekyll and github pages]
 tags: [dev, jekyll, frontend, github]
 comments_id: 34
 is_popular: true
+last_updated: 2020-10-02
 ---
 
 Want to make a personal website or blog and share it with the world? Then you've come to the right place! This is the only guide you'll need for getting started with Jekyll. I'll take you from zero to hero with Jekyll and help you understand all the fundamentals.
@@ -227,7 +228,7 @@ The Jekyll starter is a bare-bones site. In reality, you're going to need more J
 
 You may be wondering why all of these directory names are prefixed by an underscore. A directory with a leading underscore is special and won't get processed by Jekyll. As a result, it won't appear in the build directory, `_site/`.
 
-If none of this makes sense to you right now, or if all of this seems overwhelming, don't worry—I'm going to walk you through most of it step by step. Also note that you are free to add any other directories that you need. 
+If none of this makes sense to you right now, or if all of this seems overwhelming, don't worry—I'm going to walk you through most of it step by step. Also note that you are free to add any other directories that you need.
 
 ## Configuring Your Jekyll Site
 
@@ -302,7 +303,7 @@ layout: home
 
 Files ending in `.md` (or `.markdown`) are written in [Markdown](https://en.wikipedia.org/wiki/Markdown), a widely used markup language that just gets compiled down to HTML. Since it has such a simple syntax, Markdown is often favored in static site generators like Jekyll, Hugo, and GatsbyJS, especially for writing blog posts.
 
-You should be familiar with Markdown if you've ever created a `README.md` file for your repo or posted anything on StackOverflow, which uses a modified Markdown parser. Note that Markdown is, in a sense, "backwards compatible"—you can still write raw HTML in a Markdown file.
+You should be familiar with Markdown if you've ever created a `README.md` file for a GitHub repo, posted anything on StackOverflow or Reddit, or used Slack's formatting. All of these use Markdown processors under the hood. Note that Markdown is, in a sense, a backwards-compatible language—you can still define raw HTML in a Markdown file.
 
 Jekyll uses a modified Markdown parser called [kramdown](https://kramdown.gettalong.org/syntax.html), as noted in `_config.yml`:
 
@@ -360,11 +361,24 @@ To understand more about what goes on behind the scenes in Jekyll, go ahead and 
 
 This reveals an interesting point that will become important later: Where a file ends up in `_site/` depends on where it is placed in your project directory. In our case, the `index.md` at the root of our project directory becomes `index.html` at the root of `_site/`.
 
-### What Is Markdown Front Matter?
+One final note before we move on: Your pages don't *have* to be written in Markdown, even though they *can* be (since you can write HTML in Markdown files). You could just as well use a `.html` file extension for all of your pages, and you'd get the same result. This is what I do for all of my pages. As we'll see later in this guide, Markdown is more convenient for writing blog posts since it allows you to focus on your content rather than the markup.
 
-Notice that the comments at the top of `index.md` mention that you can add custom "front matter" to the file. What exactly does that mean?
+### What Is Front Matter?
 
-This is once again a common feature in static site generators. Anything between the triple-hyphen block at the top of a page is known as **YAML front matter**, which is just a fancy way of saying it defines certain metadata that you can later use to customize your pages, using YAML as the language. Note that you can add front matter to HTML files, too, not just to Markdown files.
+The comments at the top of `index.md` mention that you can add something called "front matter":
+
+{% raw %}
+```yaml
+---
+# Feel free to add content and custom Front Matter to this file.
+# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+
+layout: home
+---
+```
+{% endraw %}
+
+This is once again a common feature in static site generators. Anything between the triple-hyphen block at the top of a file is known as **YAML front matter**, which is just a fancy way of saying it defines certain metadata that you can later use to customize your pages, using YAML as the language. Note that you can add front matter to HTML files, too, not just to Markdown files.
 
 ```yml
 ---
@@ -376,7 +390,7 @@ Currently, `index.md` defines a variable named `layout` that's assigned a value 
 
 ```
 Build Warning: Layout 'post' requested in _posts/2020-02-14-welcome-to-jekyll.markdown does not exist.
-Build Warning: Layout 'default' requested in 404.html does not exist.      
+Build Warning: Layout 'default' requested in 404.html does not exist.
 Build Warning: Layout 'page' requested in about.md does not exist.
 Build Warning: Layout 'home' requested in index.md does not exist.
 ```
@@ -499,7 +513,7 @@ First, create this directory, either via a UI or Bash:
 After doing that, go ahead and move `index.md` and `about.md` into this directory:
 
 ```
-├── _pages      
+├── _pages
 │   ├── about.md
 │   └── index.md
 ```
@@ -1254,6 +1268,17 @@ Here's what your site should now look like:
 
 Need to add more styles? Simply create a new SASS stylesheet under `_sass/`, possibly in a nested subdirectory to keep things organized, and then just import it into your manifest. It's that easy.
 
+### Minifying Jekyll's Compiled CSS
+
+Minifying CSS is one of the many things you can do to improve your page load speed. And fortunately, doing so is really easy in Jekyll. All you have to do is add this somewhere in your `_config.yml`:
+
+{% capture code %}
+sass:
+  style: compressed{% endcapture %}
+{% include code.html file="_config.yml" code=code lang="yaml" %}
+
+This will eliminate every bit of unnecessary whitespace (like spaces and newlines) in your *compiled* CSS file while leaving your Sass *source* styles untouched.
+
 ## Creating Reusable Components with Includes
 
 With other static site generators like Gatsby, you can take advantage of frameworks such as React to create reusable components. But what if I told you that you can still create components in Jekyll?
@@ -1292,17 +1317,15 @@ One last thing worth noting is that includes can be nested, just like layouts ca
 
 Here are some example use cases for Jekyll includes:
 
-**Inlined SVGs**: You can use something like [Font-Awesome-SVG-PNG](https://github.com/encharm/Font-Awesome-SVG-PNG) to find SVG icons that you want to use on your site and stick those in an include file. That include could take two arguments: the name of the SVG and an optional class name to apply to it. You can then insert SVGs into any of your pages, without having to copy-paste a huge chunk of HTML.
+**Inline SVGs**: You can use something like [Font-Awesome-SVG-PNG](https://github.com/encharm/Font-Awesome-SVG-PNG) to find SVG icons that you want to use on your site and stick those in an include file. That include could take two arguments: the name of the SVG and an optional class name to apply to it. You can then insert SVGs into any of your pages, without having to copy-paste a huge chunk of HTML.
 
-**Lazily loaded, WebP-compatible images and thumbnails**. On my website, I have an include that allows me to conveniently insert images into my blog posts with just a single, legible line of markup. You can learn more about how I do this in my blog post on [using WebP images in Jekyll](/blog/dev/improve-page-load-speed-in-jekyll-using-the-webp-image-format/).
+**Lazily loaded, WebP-compatible images**. On my website, I have an include that allows me to conveniently insert images into my blog posts with just a single, legible line of markup. You can learn more about how I do this in my blog post on [using WebP images in Jekyll](/blog/dev/improve-page-load-speed-in-jekyll-using-the-webp-image-format/).
 
 **Post statistics**. On my blog, each post shows the date when it was published and a measure of its reading length. This appears on both the preview cards for the posts as well as in the posts themselves. I *could* copy-paste the same markup in both locations, but if I need to change something later on, I'd need to remember to update it in both pages. Instead, I just create an include file.
 
 **Fair use disclosures**. Some of my blogs use images from the web for which I do not own the rights. Even though I always disclose the source of these images, Wikipedia still advises that you add a fair-use disclosure to your site as an additional protection against any copyright strikes. I don't find myself needing to use this very often, but when I do, I can simply drop in the include without having to copy-paste a wall of text.
 
-**Project cards**. My projects appear in two locations on this site: Once on the landing page, with a limited set of featured projects, and again on the Experience page, with the full set of projects. Once again, I can abstract away this component in its own include file.
-
-**Linked headings**. I wrote an article on how you can [create linked headings in Jekyll](/blog/dev/heading-links-in-jekyll/) that goes into this in more depth. But basically, you can set up a simple include file that takes the name of a heading you want to create and the level of the heading and turns it into an anchor heading that users can click.
+**Linked headings**. I wrote a separate tutorial on how you can [create linked headings in Jekyll](/blog/dev/heading-links-in-jekyll/) that goes into this in more depth. But basically, you can set up a simple include file that takes the name of a heading you want to create and the level of the heading and turns it into an anchor heading that users can click.
 
 There's a *lot* more you can do with includes, but hopefully this gives you a good idea of what's possible!
 
@@ -1359,7 +1382,7 @@ You can access this data using `site.data.skills`. If your YAML defines an array
 
 This is a fairly simple example—in reality, you'd probably want to do more than just render a simple list of elements. But you get the idea—once you have access to the array, you can let your creative juices flow and create all kinds of neat stuff.
 
-Also, note that you can nest arrays in YAML and in Liquid, so you could—like I do on my personal site—define skill *categories* and nest the actual skills within them:
+Also, note that you can nest arrays in YAML and in Liquid. This would allow you to, for example, define skill *categories* and nest the actual skills within them:
 
 {% capture code %}- category: Blogging
   skills:
@@ -1464,7 +1487,7 @@ tags: [dev, jekyll]
 ```
 {% endraw %}
 
-Now you want to assign descriptions to each tag to dynamically update a page's description based on which tag a user selected. This is what I currently do on my website for the four primary topics I like to write about (dev, CS theory, gaming, and music).
+Now you want to assign descriptions to each tag to dynamically update a page's description based on which tag a user selected. This is what I currently do on my website for the main topics I write about.
 
 Create a data file named `tagDescriptions.yml` (or something else) and define key-value pairs in the YAML, where the key is the tag name and the value is the description for that particular tag:
 
@@ -1476,8 +1499,8 @@ tag: This is a tag. How exciting!{% endcapture %}
 Then, you can once again take advantage of YAML's associative data nature to assign descriptions to each tag:
 
 {% capture code %}{% raw %}{% for tag in site.tags %}
-<a 
-    class="tag" 
+<a
+    class="tag"
     href="/tag/{{ tag }}"
     title="{{ site.data.tagDescriptions[tag] }}">
     {{ tag }}
@@ -1528,6 +1551,8 @@ The bad news? GitHub Pages [only supports a limited set of plugins](https://page
 If you absolutely need to use a plugin for a feature on your Jekyll website, then you'll need to push just the `_site/` directory to GitHub instead of pushing your source files. Basically, you'd bypass the build step on GitHub Pages and just publish your static site directly on the web server.
 
 Understandably, this may not be ideal if you want people (e.g., recruiters or other developers) to see your site's source and how you organized your project. So sometimes, you may need to reinvent the wheel to add a new feature to your site.
+
+> This is one of the many reasons why I now [host my site on Netlify instead of GitHub Pages](/blog/dev/github-pages-vs-netlify/). Netlify has no restrictions on Jekyll plugins, so you can use any that you want.
 
 You can learn more about this issue and its workarounds in [this StackOverflow thread](https://stackoverflow.com/a/31871892/5323344).
 
