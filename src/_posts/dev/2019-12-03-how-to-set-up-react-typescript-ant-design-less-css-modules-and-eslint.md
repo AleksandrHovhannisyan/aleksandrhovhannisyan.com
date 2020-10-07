@@ -343,7 +343,7 @@ Then, you can simply run `yarn lint:fix` from your terminal.
 
 You can still use the above script, but I highly recommend that you also install these two VS Code extensions:
 
-- [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
 At this point, you may not see any linting errors highlighted in VS Code, no matter how much you try to mess up your files—and that's because we need to add some rules to our VS Code settings.
