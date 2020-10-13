@@ -37,7 +37,28 @@ Feel free to follow along and run these commands—the best way to learn git is 
 
 (Also, if you're concerned that we added an `.env` to git, good eye! We'll delete that later.)
 
+## A Note on Modifying Public Branches in Git
+
+For me to come up with reproducible code samples for this tutorial—and for you to be able to easily run them on your end—we'll be executing most git commands directly on `master` itself.
+
+With git tutorials, it's often difficult to accurately simulate the real world, where you most likely will not be committing directly to master, and where you'll be working with other developers. Public branches like `master` are ones that your team regularly merges work into via pull requests and that nobody commits to directly. These branches provide an untouched history of your repository, documenting your features and software releases. But there are also the so-called "personal" (feature) branches that individual developers create and commit to directly, and that later get merged into milestone branches (or directly into your `master` branch, depending on your workflow).
+
+Everything you'll learn in this tutorial is still practical and can be extended to the real world, so long as you keep in mind that you should never try to undo changes in git on public branches, unless you know what you're doing. As for your own branches, you are free to do whatever you want—like deleting old commits you introduced on that branch. The same holds if you're the only developer in your repo since you're in full control of your own work and won't interfere with anyone else.
+
+> **Note**: Most of the time, you won't even have direct write access to public branches if your team's admins have configured the repo properly, so this is not an issue.
+
+With that boring preface out of the way, let's finally get to the good stuff!
+
 ## 1. Amending the Most Recent Commit
+
+You have this commit history:
+
+```
+* 4753e23 - (HEAD -> master) Add .gitignore (4 seconds ago) <AleksandrHovhannisyan>
+* 893d18d - Add README (4 seconds ago) <AleksandrHovhannisyan>
+* 2beb7c7 - Add .env (4 seconds ago) <AleksandrHovhannisyan>
+* 0beebfb - Add package.json (5 seconds ago) <AleksandrHovhannisyan>
+```
 
 Shortly after creating your `.gitignore` and committing it, you decide to change the file:
 
@@ -98,11 +119,11 @@ and have 1 and 1 different commits each, respectively.
 
 That makes sense—your remote branch has the old commit, and your local branch has the amended one. Their hashes are different since amending a commit changes its timestamp, which forces git to compute a new hash. To update your remote branch with the new commit, all you need to do is force push it: `git push -f`. This will overwrite your remote branch's history with your local one.
 
-### A Note on Force Pushing
+### Be Careful with Force Pushes
 
-Don't worry about doing force pushes to feature branches, or personal branches in general. You should only be concerned about doing that on shared public branches, like `master` or `dev`, or any others that your team members are always committing to. Your local branch is *yours*, and if you rewrite its commit history since the beginning of your iteration of work, then you won't really break anything (unless other people have branched off of you, which they shouldn't be doing anyway). The absolute worst case is if someone checks out your feature branch locally to test it (e.g., for a code review), and their local copy of your feature branch gets out of sync with the real one. But that's easy to fix.
+Don't worry about doing force pushes to feature branches, or personal branches in general. You should only be concerned about doing so on shared branches (e.g., `master`) that your team members are always branching off of to create new features. Your local branch is *yours*, and if you rewrite its commit history since the beginning of your iteration of work, you won't really break anything. The absolute "worst" case is if someone checks out your feature branch locally to test it (e.g., for a code review), and their local copy of your feature branch gets out of sync with the real one. But that's easy to fix.
 
-In this toy example, we force-pushed to `master`, but we're the only ones touching this sandbox repo, so there's no issue. In the real world, you should never force-push to public branches, unless everyone's on board with doing so, and unless you know what you're doing.
+In this toy example, we force-pushed to `master`, but we're the only ones touching this sandbox repo, so there's no issue whatsoever. In the real world, you should never force-push to public branches; if you do this, everyone's local copy of `master` will have diverged from the remote one, and any new features that are based on the old master will now have an incompatible commit history.
 
 ## 2. Resetting a Branch to an Older Commit
 
