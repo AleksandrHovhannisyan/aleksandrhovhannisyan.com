@@ -122,7 +122,7 @@ That makes sense—your remote branch has the old commit, and your local branch 
 
 Don't worry about doing force pushes to feature branches, or personal branches in general. You should only be concerned about doing so on shared branches (e.g., `master`) that your team members are always branching off of to create new features. Your local branch is *yours*, and if you rewrite its commit history since the beginning of your iteration of work, you won't really break anything. The absolute "worst" case is if someone checks out your feature branch locally to test it (e.g., for a code review), and their local copy of your feature branch gets out of sync with the real one. But that's easy to fix.
 
-In this toy example, we force-pushed to `master`, but we're the only ones touching this sandbox repo, so there's no issue whatsoever. In the real world, you should never force-push to public branches; if you do this, everyone's local copy of `master` will have diverged from the remote one, and any new features that are based on the old master will now have an incompatible commit history.
+In this toy example, we force-pushed to `master`, but we're the only ones touching this sandbox repo, so there's no issue whatsoever. In the real world, you should never force-push to public branches; if you do this, everyone's local copy of `master` will have diverged from the remote one, and any new features that are based on the old `master` will now have an incompatible commit history.
 
 ## 2. Resetting a Branch to an Older Commit
 
@@ -187,7 +187,7 @@ Or even to a remote branch:
 {% capture code %}git reset --hard origin/master{% endcapture %}
 {% include code.html code=code lang="bash" %}
 
-That last one's useful if, for example, you ever accidentally commit things to your local master branch. Let's say you were supposed to start working on a `feat/X` branch, but you forgot to actually create it, and you've really been committing things to your local master all along.
+That last one's useful if, for example, you ever accidentally commit things to your local `master` branch. Let's say you were supposed to start working on a `feat/X` branch, but you forgot to actually create it, and you've really been committing things to your local `master` all along.
 
 Sure, you can use `git cherry-pick` to fix this, but what if you have tens or hundreds of commits? That's kind of painful. Resetting makes this a piece of cake.
 
@@ -532,7 +532,7 @@ Assuming our pull request has been reviewed, we can squash all of these into one
 {% capture code %}git rebase -i master{% endcapture %}
 {% include code.html code=code lang="bash" %}
 
-This rebases our feature branch against the master branch. Note that `master` is a reference to a particular commit just like any other:
+This rebases our feature branch against the `master` branch. Note that `master` is a reference to a particular commit just like any other:
 
 ```
 * 436e421 - (HEAD -> master) Add name and author to package.json (6 seconds ago) <AleksandrHovhannisyan>
@@ -616,7 +616,7 @@ We've already learned two ways that we can remove commits from our history in gi
 1. Soft- or hard-resetting the `HEAD` pointer to a commit before the range of commits we want to delete.
 2. Performing an interactive rebase and changing `pick` to `drop` for any commits we don't want to keep.
 
-Unfortunately, as we've seen, both of these will **rewrite your commit history**. Take the example of removing the `.env` file from our `master` branch with an interactive rebase. If we were to do that in the real world, on a shared branch like master, deleting the commit would make quite a mess of things. For starters, everyone on our team would have to hard-reset their local master branches to match the upstream master.
+Unfortunately, as we've seen, both of these will **rewrite your commit history**. Take the example of removing the `.env` file from our `master` branch with an interactive rebase. If we were to do that in the real world, on a shared branch like master, deleting the commit would make quite a mess of things. For starters, everyone on our team would have to hard-reset their local `master` branches to match `origin/master`.
 
 Easy enough, right? Sure, but the problem arises if there's any work in progress on people's feature branches, especially if they had branched off of the old master—**where the file you deleted still exists**. See where this is going? A rebase won't work because it may actually reintroduce the file that was deleted on `master`; you can try this out locally to see what I mean. Similarly, a merge of `master` into your feature branch won't work because there's no common history for git to resolve:
 
