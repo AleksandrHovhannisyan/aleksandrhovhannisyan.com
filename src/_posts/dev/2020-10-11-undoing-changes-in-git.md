@@ -1,6 +1,6 @@
 ---
-title: 5 Ways to Undo Changes in Git
-description: If you ever find yourself in a sticky situation with git, don't panic. Here are five simple ways you can undo changes in git and clean up your commit history.
+title: 6 Ways to Undo Changes in Git
+description: If you ever find yourself in a sticky situation with git, don't panic. Here are six simple ways you can undo changes in git and clean up your commit history.
 keywords: [undo changes in git, git]
 tags: [dev, git, github]
 comments_id: 60
@@ -163,7 +163,7 @@ Output:
 HEAD is now at 7598875 Add .gitignore
 ```
 
-Hard resetting is a handy way to undo changes in git, but do note that this is a destructive process—all changes in that commit will be lost. The only way to get them back is through the magic of `git reflog` ([more on that later](#5-using-git-reflog)).
+Hard resetting is a handy way to undo changes in git, but do note that this is a destructive process—all changes in that commit will be lost. The only way to get them back is through the magic of `git reflog` ([more on that later](#6-using-git-reflog)).
 
 You can also reset to the `HEAD~n`th commit, in which case all work *at and after that commit* will be lost:
 
@@ -172,14 +172,14 @@ You can also reset to the `HEAD~n`th commit, in which case all work *at and afte
 
 Or even to a specific commit, if you have its hash:
 
-{% capture code %}git reset --hard hash-id{% endcapture %}
+{% capture code %}git reset --hard <hash-id>{% endcapture %}
 {% include code.html code=code lang="bash" %}
 
 You're also not limited to just resetting against commits in the current branch...
 
 For example, you can reset a local branch to point to another local branch:
 
-{% capture code %}git reset --hard someOtherBranch{% endcapture %}
+{% capture code %}git reset --hard <someOtherBranch>{% endcapture %}
 {% include code.html code=code lang="" %}
 
 Or even to a remote branch:
@@ -229,7 +229,7 @@ You're probably already comfortable with branching for new iterations of work. B
 {% capture code %}git reset --hard backup{% endcapture %}
 {% include code.html code=code lang="bash" %}
 
-As an alternative, you can just [dig through git's reflog](#5-using-git-reflog) and undo your changes. We'll learn about that at the end of this tutorial. But it never hurts to create a backup branch for safe measure.
+As an alternative, you can just [dig through git's reflog](#6-using-git-reflog) and undo your changes. We'll learn about that at the end of this tutorial. But it never hurts to create a backup branch for safe measure.
 
 ## 3. Interactive Rebases
 
@@ -628,7 +628,7 @@ Yikes.
 
 That's precisely why `git revert` exists. Unlike deleting commits via rebases or hard/soft resets, the revert command creates a new commit to undo any changes introduced by the target commit:
 
-{% capture code %}git revert hash-id{% endcapture %}
+{% capture code %}git revert <hash-id>{% endcapture %}
 {% include code.html code=code lang="bash" %}
 
 Let's say we're on our `master` branch and want to revert the commit with a hash of `beb7c13`:
@@ -679,7 +679,43 @@ So, reverting a commit is noisier than an interactive rebase or reset because it
 
 Of course, if you need to remove sensitive information that was accidentally committed to your repository, reverting it won't be enough—people will still be able to check out the earlier commit and view the files you "removed." Keep this in mind in case you ever run into a situation like that in the future.
 
-## 5. Using Git Reflog
+## 5. Checking Out Files
+
+The `git checkout` command is another basic way to undo changes in git. It serves three purposes:
+
+- Creating new branches: `git checkout -b <newBranch>`.
+- Switching to branches or commits: `git checkout <existingBranch>`.
+- Restoring different versions of files.
+
+We'll focus on the third use case here.
+
+If you have local changes to files, you can easily undo those changes using the checkout command:
+
+{% capture code %}git checkout <pathspec>{% endcapture %}
+{% include code.html code=code lang="bash" %}
+
+Here, `<pathspec>` can be any valid path specifier, like `.` for the current directory, `path/to/file`, `file.extension`, or even a regular expression.
+
+This will clear all changes to the specified files and restore the current branch's **untouched version(s) of the file(s)**. Note that this command will not affect *staged* files—only unstaged changes will be cleared.
+
+For example, if you want to clear *all* unstaged changes in the current directory and start from scratch, the easy way to do that is using the `git checkout` command with `.` as the pathspec:
+
+{% capture code %}git checkout .{% endcapture %}
+{% include code.html file="" code=code lang="bash" %}
+
+You can also use `git checkout` to restore local or remote versions of a file. For example, you can check out your remote master's copy of a file:
+
+{% capture code %}git checkout origin/master -- <pathspec>{% endcapture %}
+{% include code.html code=code lang="bash" %}
+
+Let's say you need to undo your local changes to a particular file, but those changes span multiple commits that you can't easily revert because they include unrelated changes. So in that case, your best bet is to just check out the old (remote) version of the file.
+
+Similarly, you can check out another local branch's copy of a file:
+
+{% capture code %}git checkout localBranchName -- <pathspec>{% endcapture %}
+{% include code.html code=code lang="bash" %}
+
+## 6. Using Git Reflog
 
 If you thought git's interactive rebase was cool, wait till you see `git reflog` in action.
 
@@ -752,7 +788,7 @@ This tells the story of your entire repo, showing all of the different commits t
 
 You can quickly peek at any of these states by checking out those commit hashes:
 
-{% capture code %}git checkout hash-id{% endcapture %}
+{% capture code %}git checkout <hash-id>{% endcapture %}
 {% include code.html code=code lang="bash" %}
 
 Or, better yet, you can **reset your branch to those points in history**. Check it out:
