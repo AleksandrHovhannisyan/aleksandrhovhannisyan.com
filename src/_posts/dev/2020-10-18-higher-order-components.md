@@ -46,15 +46,7 @@ Said differently, a higher-order component is basically just a **component facto
 
 ## Example of Higher-Order Components
 
-Suppose we're using React to create a blog (e.g., with a static site generator like Gatsby). You can follow along with the code in this tutorial or view the companion CodeSandbox demo:
-
-<iframe
-  src="https://codesandbox.io/embed/higher-order-components-demoexample-fvlhy?codemirror=1&view=preview"
-  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-  title="Higher-Order Components Demo/Example"
-  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-></iframe>
+Suppose we're using React to create a blog (e.g., with a static site generator like Gatsby). You can follow along with the code in this tutorial or view the [companion CodeSandbox demo](https://codesandbox.io/embed/higher-order-components-demoexample-fvlhy).
 
 To kick things off, we'll create a basic presentational component named `PostList` that represents a generic list of posts. Nothing fancy here:
 
@@ -564,19 +556,11 @@ In practice, higher-order components are especially useful when combined with Re
 
 By **combining higher-order components with the Context API**, we can give any deeply nested component in our app access to a particular context's value, without having to write tedious boilerplate or drilling props.
 
-Here's a CodeSandbox demonstrating this. We have an app where every component needs a `theme` variable, as well as potentially the ability to toggle that theme (e.g., for light and dark modes):
-
-<iframe
-  src="https://codesandbox.io/embed/ecstatic-wiles-0c2qv?codemirror=1&view=preview"
-  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-  title="Higher-Order Components + Context API"
-  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-></iframe>
+[Here's a CodeSandbox demonstrating this](https://codesandbox.io/embed/ecstatic-wiles-0c2qv). We have an app where every component needs a `theme` variable, as well as potentially the ability to toggle that theme (e.g., for light and dark modes).
 
 We *could* define the theme in our App as a local state variable and simply drill it down to every component in the app that needs it. But that's not maintainable at all. Another option is to use a state management library like Redux, although one could argue it's a bit overkill for this scenario, especially now that we can take advantage of React's powerful Context API.
 
-So, let's break down how this demo code works.
+So, let's break down how the demo code works.
 
 We've created a theme context here:
 
