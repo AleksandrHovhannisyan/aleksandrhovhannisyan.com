@@ -689,14 +689,14 @@ The `git checkout` command is another basic way to undo changes in git. It serve
 
 We'll focus on the third use case here.
 
-If you have local changes to files, you can easily undo those changes using the checkout command:
+If you have unstaged changes to local files, you can easily undo those changes using the checkout command:
 
 {% capture code %}git checkout <pathspec>{% endcapture %}
 {% include code.html code=code lang="bash" %}
 
 Here, `<pathspec>` can be any valid path specifier, like `.` for the current directory, `path/to/file`, `file.extension`, or even a regular expression.
 
-This will clear all changes to the specified files and restore the current branch's **untouched version(s) of the file(s)**. Note that this command will not affect *staged* files—only unstaged changes will be cleared.
+This will clear all unstaged changes to the specified files and restore the current branch's **untouched version(s) of the file(s)**. It's worth emphasizing again that this command will not affect *staged* files—only unstaged changes will be cleared.
 
 For example, if you want to clear *all* unstaged changes in the current directory and start from scratch, the easy way to do that is using the `git checkout` command with `.` as the pathspec:
 
