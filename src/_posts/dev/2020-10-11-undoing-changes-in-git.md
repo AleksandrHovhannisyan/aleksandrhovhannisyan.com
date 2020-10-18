@@ -390,9 +390,9 @@ And now your commit history looks like this:
 
 ### Editing Old Commits
 
-Don't confuse this with `reword`ing old commit messages. To edit a commit means to go to the point in history before that commit was made but while its changes were still staged in git. This allows you to add or remove changes as needed before making the commit official.
+Don't confuse this with `reword`ing old commit messages. To edit a commit means to go to the point in history right after that commit was made. This allows you to amend the commit and include (or remove) any changes you want.
 
-Our commit history looks like this so far:
+So far, our commit history looks like this:
 
 ```
 * ba88fb0 - (HEAD -> master) Add name and author to package.json (31 seconds ago) <AleksandrHovhannisyan>
