@@ -701,7 +701,7 @@ This will clear all unstaged changes to the specified files and restore the curr
 For example, if you want to clear *all* unstaged changes in the current directory and start from scratch, the easy way to do that is using the `git checkout` command with `.` as the pathspec:
 
 {% capture code %}git checkout .{% endcapture %}
-{% include code.html file="" code=code lang="bash" %}
+{% include code.html code=code lang="bash" %}
 
 You can also use `git checkout` to restore local or remote versions of a file. For example, you can check out your remote master's copy of a file:
 
