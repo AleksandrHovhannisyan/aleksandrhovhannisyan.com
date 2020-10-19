@@ -13,7 +13,7 @@ Why? Because it was the most accessible option to me at the time. It also made s
 
 But with time, I realized that GitHub Pages is actually fairly limited as a hosting service. Now, my site is hosted on Netlify under a custom domain, and I honestly couldn't be happier about having made the switch.
 
-Note that this post is not sponsored by Netlify. I'm just a happy customer who recommends their services. With that out of the way, let's look at exactly *why* I prefer Netlify to GitHub Pages.
+Note that this post is not sponsored by Netlify. I'm just a happy user who recommends their services. With that out of the way, let's look at exactly *why* I prefer Netlify to GitHub Pages.
 
 {% include toc.md %}
 
