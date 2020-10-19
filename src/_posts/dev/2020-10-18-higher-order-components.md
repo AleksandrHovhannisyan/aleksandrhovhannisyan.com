@@ -49,6 +49,21 @@ In other words, a higher-order component is essentially a **component factory**.
 
 Don't get confused—an HOC is not itself a component. Remember: Components are functions that return a React element; higher-order components are functions that return *components*.
 
+At a high level, without going into any specifics, here's what a higher-order component might look like:
+
+```jsx
+// A higher-order component...
+function hoc(SomeComponent, other, args) {
+  // ... returns a component...
+  return function(props) {
+    // ...which is just a function that returns an element!
+    return <div>Awesome!</div>
+  }
+}
+```
+
+Of course, this doesn't tell you much about why you might want to use a higher-order component. To truly see the benefits, we'll now look at a practical example of higher-order components.
+
 ## Example of Higher-Order Components
 
 Suppose we're using React to create a blog (e.g., with a static site generator like Gatsby). You can follow along with the code in this tutorial or view the [companion CodeSandbox demo](https://codesandbox.io/embed/higher-order-components-demoexample-fvlhy).
