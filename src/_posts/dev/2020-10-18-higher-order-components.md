@@ -3,6 +3,7 @@ title: What Are Higher-Order Components in React?
 description: Higher-order components are one of React's most popular design patterns, allowing you to define reusable stateful logic and create powerful, flexible components.
 keywords: [higher-order components]
 tags: [dev, react, design-patterns]
+comments_id: 61
 ---
 
 If you're new to React, or even if you've been using it for a while, you may have heard about these things called **higher-order components (HOCs)**, and shuddered at the apparent complexity of the term. It certainly *sounds* like something fancy that's beyond a beginner's comprehension. But that's not the case at all—the truth is that higher-order components in React are a very intuitive (and powerful!) design pattern.
@@ -34,15 +35,19 @@ That's all you really need to know before moving on.
 
 ## What Are Higher-Order Components?
 
-First, understand that a higher-order component is *just a function*. That's the first point that you'll need to internalize if you want to get comfortable with this concept. Don't let this polysyllable, hyphenated term intimidate you—a higher-order component is **just a function**.
+Simply put, a **higher-order component** is a function that returns a component. At the end of the day, it's *just a function*, like any other that you're used to working with by now in JavaScript and other languages.
 
-More accurately, a **higher-order component** is a special kind of function that:
+To go a bit more into detail, a higher-order component is a special kind of function that:
 
 1. Accepts a React component as one of its arguments (among others, potentially).
-2. Injects certain props into the component to decorate it.
-3. Returns this "decorated" component so that others can render it.
+2. Injects certain props into the component to "decorate" it or extend its behavior.
+3. Returns this "decorated" component so that others can render it later on.
 
-Said differently, a higher-order component is basically just a **component factory**. It's a design pattern that allows you to create new versions of existing components by injecting additional props into them. Notably, higher-order components are used to consolidate reusable, **stateful logic** in a single place.
+In other words, a higher-order component is essentially a **component factory**. It's a design pattern that allows you to create new versions of existing components by injecting additional props into them. Notably, higher-order components are used to consolidate reusable, **stateful logic** in a single place.
+
+{% include picture.html img="diagram.png" alt="A higher-order component returns a component, which returns a React element." %}
+
+Don't get confused—an HOC is not itself a component. Remember: Components are functions that return a React element; higher-order components are functions that return *components*.
 
 ## Example of Higher-Order Components
 
