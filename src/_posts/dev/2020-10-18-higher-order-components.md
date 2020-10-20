@@ -57,7 +57,7 @@ function hoc(SomeComponent, other, args) {
   // ... returns a component...
   return function(props) {
     // ...which is just a function that returns an element!
-    return <div>Awesome!</div>
+    return <Component someProp="someValue" {...props}>Awesome!</Component>
   }
 }
 ```
@@ -523,25 +523,23 @@ We'll actually look at a concrete example of one of these in the section on [usi
 Throughout this tutorial, I described higher-order components as factories that accept a reference to a component and decorate it with certain props. How does this differ from wrapper components, which accept props and return a component? The two certainly sound similar, but consider this example:
 
 ```jsx
-const Div = (props) => <div {...props} />;
-
 // Option 1: Wrapper component
 const Wrapper = (props) => {
   const [state, setState] = useState("");
 
   // ... mounts and useEffect logic here somewhere (optional)
 
-  return <Div prop1={state} {...props} />;
+  return <Component prop1={state} {...props} />;
 }
 
 // Option 2: Higher-order component
-const HOC = (Component) => {
+const HOC = (SomeComponent) => {
   const [state, setState] = useState("");
 
   // ... mounts and useEffect logic here somewhere (optional)
 
   return function (props) {
-    return <Div prop1={state} {...props} />;
+    return <Component prop1={state} {...props} />;
   }
 }
 ```
@@ -552,16 +550,16 @@ The higher-order component doesn't render anything—it just returns a **compone
 
 ```jsx
 return function (props) {
-  return <Div prop1={state} {...props} />;
+  return <Component prop1={state} {...props} />;
 }
 ```
 
 That component instance can be rendered later.
 
-In contrast, the wrapper component returns the result of actually rendering the `Div`:
+In contrast, the wrapper component returns the result of actually rendering the `Component`:
 
 ```jsx
-return <Div prop1={state} {...props} />;
+return <Component prop1={state} {...props} />;
 ```
 
 That's the [key distinction between higher-order components and wrapper components](https://stackoverflow.com/questions/36960675/difference-between-using-a-hoc-vs-component-wrapping#comment75670399_36970073):
