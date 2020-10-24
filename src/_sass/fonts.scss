@@ -1,4 +1,44 @@
-$font-family-normal: Titillium Web, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+$font-family-normal: Titillium Web, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+  'Open Sans', 'Helvetica Neue', sans-serif;
 $font-family-cursive: 'Reenie Beanie', cursive;
 $font-family-code: Monaco, Consolas, 'Courier New', monospace;
-$font-weights: ("light": 300, "regular": 400, "bold": 600, "bolder": 700);
+$font-weights: (
+  'light': 300,
+  'regular': 400,
+  'bold': 600,
+  'bolder': 700,
+);
+$fontSizes: (
+  -2: (
+    'font-size': 0.79,
+    'line-height': 1.813
+  ),
+  -1: (
+    'font-size': 0.889,
+    'line-height': 1.778,
+    ),
+  0: (
+    'font-size': 1,
+    'line-height': 1.75,
+  ),
+  1: (
+    'font-size': 1.125,
+    'line-height': 1.739,
+  ),
+  2: (
+    'font-size': 1.266,
+    'line-height': 1.68,
+  ),
+  3: (
+    'font-size': 1.424,
+    'line-height': 1.679,
+  ),
+  4: (
+    'font-size': 1.602,
+    'line-height': 1.656,
+  ),
+  5: (
+    'font-size': 1.802,
+    'line-height': 1.611,
+  )
+);

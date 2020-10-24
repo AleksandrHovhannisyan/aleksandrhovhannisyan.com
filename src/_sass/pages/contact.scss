@@ -3,7 +3,7 @@
 @import 'colors';
 
 .contact-heading {
-    font-size: 1.5em;
+  @include fontSize(3);
 }
 
 #contact-information {
@@ -32,11 +32,11 @@
 
     * {
         font-family: inherit;
-        font-size: 1em;
+        @include fontSize(0);
     }
 
     textarea {
-        line-height: var(--line-height-paragraphs) !important;
+        line-height: inherit;
         min-height: 8.75em;
         width: 100%;
     }
@@ -55,7 +55,7 @@ input.honeypot {
 }
 
 .social-networks-heading {
-    font-size: 1.17em;
+    @include fontSize(1);
 }
 
 #social-networks {

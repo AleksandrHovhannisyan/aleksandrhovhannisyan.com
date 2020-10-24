@@ -62,23 +62,22 @@ $meta-spacing: 0.5em;
 }
 
 .comment-username {
-    font-size: 1.1em;
     color: var(--text-color-emphasis);
     font-weight: map-get($font-weights, "bold");
     @include underlinedLink;
 }
 
 .comment-edited {
-    font-size: 0.875em;
     font-style: italic;
+    @include fontSize(-1);
 }
 
 .comment-date-posted {
-    font-size: 0.875em;
+    @include fontSize(-1);
 }
 
 .comment-author-badge {
-    font-size: 0.75em;
+    @include fontSize(-1);
     display: flex;
     align-items: center;
     padding: 0 0.4em;

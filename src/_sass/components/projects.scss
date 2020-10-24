@@ -24,9 +24,9 @@
 .project-name {
     display: inline;
     color: var(--text-color-emphasis);
-    font-size: 1rem;
     margin: 0;
     font-weight: map-get($font-weights, "bold");
+    @include fontSize(0);
 }
 
 .project-icon {
@@ -43,10 +43,10 @@
     align-items: center;
     align-self: center;
     display: flex;
-    font-size: 0.875em;
     grid-area: rating;
     justify-self: center;
     margin-right: 0.5em;
+    @include fontSize(-1);
 
     .star {
         margin-right: 3px;
@@ -68,11 +68,11 @@
 }
 
 .project-technology {
-    font-size: 0.875em;
     margin-bottom: 0px;
     margin-right: 0.5em;
     margin-top: 0.5em;
-    padding: 0.25em 0.5em;
+    padding: 0.25em 0.8em;
+    @include fontSize(-2);
 }
 
 #github-cta {
@@ -95,8 +95,8 @@
 }
 
 .github-cta-heading {
-    font-size: 1em;
     margin-bottom: 0.5em;
+    @include fontSize(0);
 }
 
 .github-cta-subheading {

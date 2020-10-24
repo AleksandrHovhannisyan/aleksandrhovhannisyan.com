@@ -1,93 +1,114 @@
 @import 'functions';
+@import 'fonts';
 
 @mixin maxFontSize($max) {
-    // For most browsers, the base font size is 16px. To increase this fluidly, we find 
-    // the screen width cutoff point at which 16px = some value in vw units.
-    // At 400px (25rem), for example, we find that 16px is exactly 4vw. So between 
-    // 0px and 400px screens we get 16px font, and beyond that we scale up gradually
-    // and stop at whatever $max is.
-    // Reference: https://www.madebymike.com.au/writing/precise-control-responsive-typography/
-    //
-    @media screen and (min-width: 25rem) {
-        font-size: 4vw;
-    }
+  // For most browsers, the base font size is 16px. To increase this fluidly, we find
+  // the screen width cutoff point at which 16px = some value in vw units.
+  // At 400px (25rem), for example, we find that 16px is exactly 4vw. So between
+  // 0px and 400px screens we get 16px font, and beyond that we scale up gradually
+  // and stop at whatever $max is.
+  // Reference: https://www.madebymike.com.au/writing/precise-control-responsive-typography/
+  //
+  @media screen and (min-width: 25rem) {
+    font-size: 4vw;
+  }
 
-    // Now we're saying "At what screen width should our scaling 4vw font size become
-    // $max?" Equation: 0.04 * screen_width = $max. Solve for screen width: $max / 0.04.
-    @media screen and (min-width: toRem($max / 0.04)) {
-        font-size: toRem($max);
-    }
+  // Now we're saying "At what screen width should our scaling 4vw font size become
+  // $max?" Equation: 0.04 * screen_width = $max. Solve for screen width: $max / 0.04.
+  @media screen and (min-width: toRem($max / 0.04)) {
+    font-size: toRem($max);
+  }
 }
 
 // Inspiration: https://stackoverflow.com/a/49437769/5323344
 @mixin transition($props...) {
-    $result: ();
-  
-    @for $i from 1 through length($props) {
-      $prop: nth($props, $i);
-      $result: append($result, $prop);
-      $result: append($result, ease #{var(--transition-duration)});
+  $result: ();
 
-      @if $i != length($props) {
-        $result: append($result, unquote($string: ","));
-      }
+  @for $i from 1 through length($props) {
+    $prop: nth($props, $i);
+    $result: append($result, $prop);
+    $result: append($result, ease #{var(--transition-duration)});
+
+    @if $i != length($props) {
+      $result: append(
+        $result,
+        unquote(
+          $string: ',',
+        )
+      );
     }
+  }
 
-    transition: $result;
+  transition: $result;
 }
 
 @mixin headings {
-    h1, h2, h3, h4, h5, h6 {
-        @content;
-    }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @content;
+  }
+}
+
+@mixin fontSize($size, $unit: 'rem') {
+  $styles: map-get($fontSizes, $size);
+  $fontSize: map-get($styles, "font-size");
+  $lineHeight: map-get($styles, "line-height");
+
+  font-size: $fontSize + unquote($unit);
+  line-height: $lineHeight;
+  --paragraph-spacing: #{$lineHeight + unquote("em")};
 }
 
 @mixin underlinedLink($initiallyUnderlined: true) {
-    @if $initiallyUnderlined {
-        text-decoration: underline;
-        
-        &:hover, 
-        &:focus {
-            text-decoration: none;
-        }
+  @if $initiallyUnderlined {
+    text-decoration: underline;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
     }
-    @else {
-        text-decoration: none;
-        
-        &:hover, 
-        &:focus {
-            text-decoration: underline;
-        }
+  } @else {
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
     }
+  }
 }
 
 @mixin themed($attribute, $light, $dark) {
-    #{$attribute}: $light;
+  #{$attribute}: $light;
 
-    .dark & {
-        #{$attribute}: $dark;
-    }
+  .dark & {
+    #{$attribute}: $dark;
+  }
 }
 
 @mixin selectionResistantColor($color) {
-    &, &::selection {
-        color: $color;
-    }
+  &,
+  &::selection {
+    color: $color;
+  }
 }
 
 @mixin centered($marginMin: 1.2rem, $contentMax: var(--page-max-width)) {
-    display: grid;
-    grid-template-columns: minmax($marginMin, 1fr) minmax(0, $contentMax) minmax($marginMin, 1fr);
+  display: grid;
+  grid-template-columns: minmax($marginMin, 1fr) minmax(0, $contentMax) minmax($marginMin, 1fr);
 
-    > * {
-        grid-column: 2;
-    }
+  > * {
+    grid-column: 2;
+  }
 }
 
 @mixin responsiveGrid($mobileMin, $desktopMin, $mobileMax: 1fr, $desktopMax: 1fr, $cutoff: 600px) {
-    grid-template-columns: repeat(auto-fill, minmax($mobileMin, $mobileMax));
+  grid-template-columns: repeat(auto-fill, minmax($mobileMin, $mobileMax));
 
-    @media only screen and (min-width: $cutoff) {
-        grid-template-columns: repeat(auto-fit, minmax($desktopMin, $desktopMax));
-    }
+  @media only screen and (min-width: $cutoff) {
+    grid-template-columns: repeat(auto-fit, minmax($desktopMin, $desktopMax));
+  }
 }

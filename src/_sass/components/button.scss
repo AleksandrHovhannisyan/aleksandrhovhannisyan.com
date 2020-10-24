@@ -28,34 +28,17 @@
     border: 3px solid;
     box-shadow: 0 0 0 0 transparent;
 
-    &:focus, 
+    &:focus,
     &:hover {
         box-shadow: 0 0 0 2px var(--button-bg-color);
     }
 }
 
-.arrow-button {    
-    &::after {
-        font-size: 25px;
-        font-weight: map-get($font-weights, "bold");
-        margin-left: 10px;
-        content: "→";
-        transform: translateX(0);
-        @include transition(transform);
-    }
-    
-    &:hover, &:focus {
-        &::after {
-            transform: translateX(5px);
-        }
-    }
-}
-
 .plus-button {
     &::before {
-        font-size: 0.875em;
-        content: "+";
-        margin-right: 10px;
-        font-weight: map-get($font-weights, "bold");
+      content: "+";
+      margin-right: 10px;
+      font-weight: map-get($font-weights, "bold");
+      @include fontSize(-1);
     }
 }

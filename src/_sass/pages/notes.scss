@@ -1,7 +1,7 @@
 @import 'fonts';
 @import 'mixins';
 
-$note-text-color: #3e464d;    
+$note-text-color: #3e464d;
 
 #notes {
     .heading,
@@ -15,7 +15,7 @@ $note-text-color: #3e464d;
 
     .year {
         margin-bottom: 1.5em;
-        font-size: 1.25em;
+        @include fontSize(2);
     }
 }
 
@@ -46,7 +46,7 @@ $note-text-color: #3e464d;
     padding: 2.5em 1.8em 1.8em 1.8em;
     margin: 1em;
     @include transition(transform, top, box-shadow, border-radius);
-    
+
     @media screen and (min-width: 800px) {
         flex: 0 0 calc(50% - 2em);
     }
@@ -62,7 +62,7 @@ $note-text-color: #3e464d;
         background: rgba(0, 0, 0, 0.2);
         box-shadow: 2px 15px 5px rgba(0, 0, 0, 0.40);
     }
-    
+
     &:focus-within,
     &:hover {
         border-bottom-right-radius: 100px 15px;
@@ -90,7 +90,7 @@ $note-text-color: #3e464d;
             border-bottom-right-radius: 0px;
         }
     }
-    
+
     &:nth-child(3n) {
         -o-transform:rotate(-2deg);
         -webkit-transform:rotate(-2deg);
@@ -117,10 +117,10 @@ $note-text-color: #3e464d;
 
 .note-title {
     font-weight: map-get($map: $font-weights, $key: "bolder");
-    font-size: 1.125em;
     font-family: cursive;
     color: #384950;
     margin-bottom: 0.8em;
+    @include fontSize(1);
 }
 
 .note-date {
@@ -129,13 +129,13 @@ $note-text-color: #3e464d;
     right: 1em;
     color: $note-text-color;
     font-family: $font-family-cursive;
-    font-size: 1.125em;
+    @include fontSize(1);
 }
 
 .note-description {
     color: $note-text-color;
     margin: 0;
-    font-size: 1.3em;
     font-family: $font-family-cursive;
     font-weight: map-get($font-weights, "regular");
+    @include fontSize(2);
 }

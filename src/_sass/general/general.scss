@@ -3,7 +3,7 @@
 
 // For performance (https://medium.com/clio-calliope/making-google-fonts-faster-aadf3c02a36d)
 // Font-face declarations generated with https://google-webfonts-helper.herokuapp.com/
-  
+
   /* titillium-web-regular - latin */
   @font-face {
     font-family: 'Titillium Web';
@@ -92,7 +92,7 @@
 .screen-reader-only {
     position: absolute;
     left: -5000px;
-    
+
     &:focus {
         left: 0;
     }
@@ -107,9 +107,8 @@ body {
     color: var(--text-color-normal);
     display: grid;
     font-family: $font-family-normal;
-    -webkit-font-smoothing: antialiased;
+    @include fontSize(0);
     grid-template-rows: var(--navbar-height) 1fr var(--footer-height);
-    line-height: var(--line-height-paragraphs);
     min-height: 100vh;
     position: relative;
     row-gap: var(--navbar-height);
@@ -152,11 +151,35 @@ strong {
     color: var(--text-color-emphasis);
     margin-bottom: 0.5em;
     font-weight: map-get($font-weights, "bolder");
-    line-height: var(--line-height-headings);
 }
 
 h1 {
-    font-size: 1.8em;
+  @include fontSize(5);
+}
+
+h2 {
+  @include fontSize(4);
+}
+
+h3 {
+  @include fontSize(3);
+}
+
+h4 {
+  @include fontSize(2);
+}
+
+h5 {
+  @include fontSize(1);
+}
+
+h6 {
+  @include fontSize(0);
+}
+
+p {
+  color: var(--text-color-normal);
+  margin-bottom: var(--paragraph-spacing);
 }
 
 .underlined-link {
@@ -169,15 +192,10 @@ a {
     text-decoration: none;
 }
 
-p {
-    color: var(--text-color-normal);
-    margin-bottom: var(--paragraph-spacing);
-}
-
 .linked-heading {
     position: relative;
     scroll-margin-top: var(--scroll-margin-top);
-    
+
     &:hover {
         .heading-anchor {
             visibility: visible;

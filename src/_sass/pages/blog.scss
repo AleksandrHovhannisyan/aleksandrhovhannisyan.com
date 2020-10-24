@@ -1,10 +1,6 @@
 @import 'fonts';
 @import 'mixins';
 
-.blog-page-title {
-    font-size: 1.8em;
-}
-
 .post-tag {
     display: inline-block;
 }
@@ -49,8 +45,8 @@
 }
 
 .post-preview-title {
-    font-size: 1em;
     grid-area: title;
+    @include fontSize(0);
 
     a {
         font-weight: map-get($font-weights, "bolder");
@@ -147,7 +143,7 @@
     margin-bottom: 1em;
     margin-right: 0.625em;
     padding: 0.4em 0.8em;
-    font-size: 0.875em;
+    @include fontSize(-1);
 }
 
 .pagination-page-current {
@@ -155,7 +151,6 @@
 }
 
 .post-title {
-    font-size: 1.8em;
     margin-top: 0 !important;
     margin-bottom: 1rem;
 }
@@ -163,12 +158,12 @@
 .post-meta {
     display: flex;
     flex-wrap: wrap;
-    font-size: 0.8em;
     font-weight: map-get($font-weights, "regular");
     list-style: none;
     margin: 0;
     color: var(--post-meta-text-color);
     position: relative;
+    @include fontSize(-2);
 }
 
 .author-photo {
@@ -232,7 +227,7 @@
 }
 
 .post-header {
-    margin-bottom: var(--paragraph-spacing);
+    margin-bottom: calc(var(--paragraph-spacing) / 2);
 }
 
 .post-content {
@@ -282,7 +277,7 @@
 
     figure {
         figcaption {
-            font-size: 0.875em;
+            @include fontSize(-1);
             font-style: italic;
             text-align: center;
         }
@@ -313,8 +308,7 @@
 
     .embed-container {
         position: relative;
-        // 16:9 apect ratio trick since this is based on width.
-        // 16 / 9 = 1.777...8, and 1 / 0.5625 is also 1.777...8.
+        // 9 / 16 = 0.5625 (16:9 aspect ratio for YT videos)
         padding-bottom: 56.25%;
         height: 0;
         overflow: hidden;
@@ -422,10 +416,10 @@
 
 .code-file-name {
     color: #bcbcbc;
-    font-size: 1rem;
     font-weight: map-get($font-weights, "regular");
     margin: 0;
     word-break: break-all;
+    @include fontSize(0);
 
     &::before {
         content: "📂";
@@ -444,7 +438,6 @@
     align-items: center;
     cursor: pointer;
     display: flex;
-    font-size: 1rem;
     background-color: #616161;
     color: #e7e7e7;
     padding: 0.4em 0.5em;
@@ -452,6 +445,7 @@
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
     top: 0;
     position: relative;
+    @include fontSize(0);
 
     &::before {
         content: "Copy";
@@ -490,7 +484,7 @@ code {
     background-color: var(--inline-code-bg-color);
     border-radius: 3px;
     color: var(--inline-code-text-color);
-    font-family: $font-family-code;
-    font-size: 0.875em;
     padding: 0.15em 0.3em;
+    font-family: $font-family-code;
+    @include fontSize($size: -1, $unit: 'em');
 }
