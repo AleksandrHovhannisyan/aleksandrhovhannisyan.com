@@ -53,7 +53,7 @@ At a high level, without going into any specifics, here's what a higher-order co
 
 ```jsx
 // A higher-order component...
-function hoc(SomeComponent, other, args) {
+function hoc(Component, other, args) {
   // ... returns a component...
   return function(props) {
     // ...which is just a function that returns an element!
@@ -533,7 +533,7 @@ const Wrapper = (props) => {
 }
 
 // Option 2: Higher-order component
-const HOC = (SomeComponent) => {
+const HOC = (Component) => {
   const [state, setState] = useState("");
 
   // ... mounts and useEffect logic here somewhere (optional)
