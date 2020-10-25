@@ -8,4 +8,4 @@ This repository is **not a template for reuse** and has no open-source license. 
 
 Per GitHub's Terms of Service, with regarded to copyrighted works, you are more than welcome to fork/clone this repo and explore the code. However, you may not redistribute any content in this repo without my permission.
 
-> Note: *Some* things in this repo (e.g., certain JavaScript files or SVG icons) are licensed separately by a third party. Please see the [LICENSE folder](/src/_licenses/) for those licenses.
+> Note: *Some* things in this repo (e.g., SVG icons) are licensed separately by a third party. Please see the [LICENSE folder](/src/_licenses/) for copies of those licenses.
