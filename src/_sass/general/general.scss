@@ -4,60 +4,74 @@
 // For performance (https://medium.com/clio-calliope/making-google-fonts-faster-aadf3c02a36d)
 // Font-face declarations generated with https://google-webfonts-helper.herokuapp.com/
 
-  /* titillium-web-regular - latin */
-  @font-face {
-    font-family: 'Titillium Web';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Titillium Web Regular'), local('TitilliumWeb-Regular'),
-         url('/assets/fonts/titillium-web-v8-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-         url('/assets/fonts/titillium-web-v8-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-    font-display: swap;
-  }
-
-  /* titillium-web-italic - latin */
-  @font-face {
-    font-family: 'Titillium Web';
-    font-style: italic;
-    font-weight: 400;
-    src: local('Titillium Web Italic'), local('TitilliumWeb-Italic'),
-         url('/assets/fonts/titillium-web-v8-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-         url('/assets/fonts/titillium-web-v8-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-    font-display: swap;
-  }
-
-  /* titillium-web-600 - latin */
-  @font-face {
-    font-family: 'Titillium Web';
-    font-style: normal;
-    font-weight: 600;
-    src: local('Titillium Web SemiBold'), local('TitilliumWeb-SemiBold'),
-         url('/assets/fonts/titillium-web-v8-latin-600.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-         url('/assets/fonts/titillium-web-v8-latin-600.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-    font-display: swap;
-  }
-
-  /* titillium-web-700 - latin */
-  @font-face {
-    font-family: 'Titillium Web';
-    font-style: normal;
-    font-weight: 700;
-    src: local('Titillium Web Bold'), local('TitilliumWeb-Bold'),
-         url('/assets/fonts/titillium-web-v8-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-         url('/assets/fonts/titillium-web-v8-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-    font-display: swap;
-  }
-
+/* titillium-web-regular - latin */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Titillium Web Regular'), local('TitilliumWeb-Regular'),
+        url('/assets/fonts/titillium-web-v8-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('/assets/fonts/titillium-web-v8-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-display: swap;
+}
+/* titillium-web-italic - latin */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Titillium Web Italic'), local('TitilliumWeb-Italic'),
+        url('/assets/fonts/titillium-web-v8-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('/assets/fonts/titillium-web-v8-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-display: swap;
+}
+/* titillium-web-600 - latin */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Titillium Web SemiBold'), local('TitilliumWeb-SemiBold'),
+        url('/assets/fonts/titillium-web-v8-latin-600.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('/assets/fonts/titillium-web-v8-latin-600.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-display: swap;
+}
+/* titillium-web-700 - latin */
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Titillium Web Bold'), local('TitilliumWeb-Bold'),
+        url('/assets/fonts/titillium-web-v8-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('/assets/fonts/titillium-web-v8-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-display: swap;
+}
 /* reenie-beanie-regular - latin */
 @font-face {
-    font-family: 'Reenie Beanie';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Reenie Beanie'), local('ReenieBeanie'),
-         url('/assets/fonts/reenie-beanie-v11-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-         url('/assets/fonts/reenie-beanie-v11-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-    font-display: swap;
-  }
+  font-family: 'Reenie Beanie';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Reenie Beanie'), local('ReenieBeanie'),
+        url('/assets/fonts/reenie-beanie-v11-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('/assets/fonts/reenie-beanie-v11-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-display: swap;
+}
+/* inconsolata-500 - latin */
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 500;
+  src: local(''),
+       url('/assets/fonts/inconsolata-v20-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/inconsolata-v20-latin-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* inconsolata-700 - latin */
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 700;
+  src: local(''),
+       url('/assets/fonts/inconsolata-v20-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('/assets/fonts/inconsolata-v20-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
 
 ::selection {
     background-color: var(--selection-bg-color);
