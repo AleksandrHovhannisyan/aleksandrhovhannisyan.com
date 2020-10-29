@@ -482,9 +482,9 @@
 
 code {
     background-color: var(--inline-code-bg-color);
-    border-radius: 3px;
+    border-radius: 4px;
     color: var(--inline-code-text-color);
-    padding: 0.15em 0.3em;
+    padding: 0.2em 0.4em;
     font-family: $font-family-code;
     @include fontSize($size: -1, $unit: 'em');
 }
