@@ -87,8 +87,12 @@
 }
 
 #logo {
-    height: 1.6em;
-    border-radius: 50%;
+  // height: 1.6em;
+  // border-radius: 50%;
+  height: 1em;
+  width: 2em;
+  margin: 0.4em;
+  background: linear-gradient(to bottom, #d90012 33.33%, #0033a0 33.33%, #0033a0 66.66%, #f2a800 66.66%)
 }
 
 #website-name {
