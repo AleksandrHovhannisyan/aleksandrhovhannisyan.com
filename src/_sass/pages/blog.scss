@@ -486,5 +486,6 @@ code {
     color: var(--inline-code-text-color);
     padding: 0.2em 0.4em;
     font-family: $font-family-code;
-    @include fontSize($size: -1, $unit: 'em');
+    // TODO: set type scale for code family later
+    font-size: 0.925em;
 }
