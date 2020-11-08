@@ -42,7 +42,6 @@
         color: var(--text-color-emphasis);
         display: flex;
         flex-direction: column;
-        font-weight: map-get($font-weights, "bold");
         height: 100%;
         justify-content: center;
         left: 0;
@@ -51,7 +50,7 @@
         top: 0;
         width: 100%;
         @include transition(opacity);
-        @include fontSize(1);
+        @include font(1, "semiBold");
 
         svg {
             fill: var(--text-color-emphasis);

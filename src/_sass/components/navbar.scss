@@ -13,7 +13,7 @@
 .skip-navigation {
     padding: 0 0.8em;
     color: var(--navbar-text-color);
-    font-weight: map-get($font-weights, "regular");
+    @include weight("regular");
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,7 +97,6 @@
 
 #website-name {
     color: var(--navbar-text-color);
-    font-weight: map-get($font-weights, "regular");
     margin-left: 5px;
 }
 
@@ -133,7 +132,7 @@
     margin: 0 1.2rem;
     display: block;
     color: var(--navbar-text-color);
-    font-weight: map-get($font-weights, "regular");
+    @include weight("regular");
 }
 
 #active-navbar-link,
@@ -155,7 +154,7 @@
     width: var(--navbar-toggle-size);
     flex-shrink: 0;
     cursor: pointer;
-    @include fontSize(0);
+    @include font(0);
 
     .icon-bar {
         display: block;
@@ -191,7 +190,7 @@
     position: relative;
     transform: scale(0.8);
     transform-style: preserve-3d;
-    @include fontSize(0);
+    @include font(0);
 
     > * {
         display: block;

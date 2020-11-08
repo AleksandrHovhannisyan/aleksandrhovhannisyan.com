@@ -15,7 +15,7 @@ $note-text-color: #3e464d;
 
     .year {
         margin-bottom: 1.5em;
-        @include fontSize(2);
+        @include font(2);
     }
 }
 
@@ -116,11 +116,10 @@ $note-text-color: #3e464d;
 }
 
 .note-title {
-    font-weight: map-get($map: $font-weights, $key: "bolder");
     font-family: cursive;
     color: #384950;
     margin-bottom: 0.8em;
-    @include fontSize(1);
+    @include font(1, "bold");
 }
 
 .note-date {
@@ -129,13 +128,12 @@ $note-text-color: #3e464d;
     right: 1em;
     color: $note-text-color;
     font-family: $font-family-cursive;
-    @include fontSize(1);
+    @include font(1);
 }
 
 .note-description {
     color: $note-text-color;
     margin: 0;
     font-family: $font-family-cursive;
-    font-weight: map-get($font-weights, "regular");
-    @include fontSize(2);
+    @include font(2);
 }

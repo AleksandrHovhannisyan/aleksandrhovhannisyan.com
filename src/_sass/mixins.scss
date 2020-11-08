@@ -53,12 +53,17 @@
   }
 }
 
-@mixin fontSize($size, $unit: 'rem') {
+@mixin weight($humanReadableWeight: inherit) {
+  font-weight: map-get($font-weights, $humanReadableWeight);
+}
+
+@mixin font($size, $weight: inherit, $sizeUnit: 'rem') {
   $styles: map-get($fontSizes, $size);
   $fontSize: map-get($styles, "font-size");
   $lineHeight: map-get($styles, "line-height");
 
-  font-size: $fontSize + unquote($unit);
+  font-size: $fontSize + unquote($sizeUnit);
+  @include weight($weight);
   line-height: $lineHeight;
   --paragraph-spacing: #{$lineHeight + unquote("em")};
 }

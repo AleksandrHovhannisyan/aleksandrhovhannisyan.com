@@ -13,7 +13,7 @@ thead {
     color: var(--table-header-text-color);
 
     th {
-        font-weight: map-get($font-weights, "bold");
+        @include weight("semiBold");
     }
 }
 

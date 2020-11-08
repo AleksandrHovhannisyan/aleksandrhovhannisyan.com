@@ -121,11 +121,11 @@ body {
     color: var(--text-color-normal);
     display: grid;
     font-family: $font-family-normal;
-    @include fontSize(0);
     grid-template-rows: var(--navbar-height) 1fr var(--footer-height);
     min-height: 100vh;
     position: relative;
     row-gap: var(--navbar-height);
+    @include font(0);
 }
 
 #page-content {
@@ -158,37 +158,36 @@ body {
 
 strong {
     color: var(--text-color-emphasis);
-    font-weight: map-get($font-weights, "bolder");
+    @include weight("bold");
 }
 
 @include headings {
     color: var(--text-color-emphasis);
     margin-bottom: 0.5em;
-    font-weight: map-get($font-weights, "bolder");
 }
 
 h1 {
-  @include fontSize(5);
+  @include font(5, "bold");
 }
 
 h2 {
-  @include fontSize(4);
+  @include font(4, "bold");
 }
 
 h3 {
-  @include fontSize(3);
+  @include font(3, "bold");
 }
 
 h4 {
-  @include fontSize(2);
+  @include font(2, "bold");
 }
 
 h5 {
-  @include fontSize(1);
+  @include font(1, "bold");
 }
 
 h6 {
-  @include fontSize(0);
+  @include font(0, "bold");
 }
 
 p {
@@ -269,7 +268,7 @@ a {
 label {
     color: var(--text-color-emphasis);
     display: block;
-    font-weight: map-get($font-weights, "bold");
+    @include weight("semiBold");
     margin-bottom: 0.3125em;
 
     &.required::after {

@@ -25,8 +25,7 @@
     display: inline;
     color: var(--text-color-emphasis);
     margin: 0;
-    font-weight: map-get($font-weights, "bold");
-    @include fontSize(0);
+    @include font(0, "bold");
 }
 
 .project-icon {
@@ -46,7 +45,7 @@
     grid-area: rating;
     justify-self: center;
     margin-right: 0.5em;
-    @include fontSize(-1);
+    @include font(-1);
 
     .star {
         margin-right: 3px;
@@ -72,7 +71,7 @@
     margin-right: 0.5em;
     margin-top: 0.5em;
     padding: 0.25em 0.8em;
-    @include fontSize(-2);
+    @include font(-2);
 }
 
 #github-cta {
@@ -96,7 +95,7 @@
 
 .github-cta-heading {
     margin-bottom: 0.5em;
-    @include fontSize(0);
+    @include font(0, "bold");
 }
 
 .github-cta-subheading {

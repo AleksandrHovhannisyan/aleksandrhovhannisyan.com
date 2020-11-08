@@ -3,7 +3,7 @@
 @import 'colors';
 
 .contact-heading {
-  @include fontSize(3);
+  @include font(3);
 }
 
 #contact-information {
@@ -32,7 +32,7 @@
 
     * {
         font-family: inherit;
-        @include fontSize(0);
+        @include font(0);
     }
 
     textarea {
@@ -55,7 +55,7 @@ input.honeypot {
 }
 
 .social-networks-heading {
-    @include fontSize(1);
+    @include font(1);
 }
 
 #social-networks {
@@ -86,7 +86,7 @@ input.honeypot {
 
     .network-name {
         color: var(--text-color-normal);
-        font-weight: map-get($font-weights, "regular");
+        @include weight("regular");
         align-self: center;
         grid-column: 2;
     }

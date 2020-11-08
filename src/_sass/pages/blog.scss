@@ -46,10 +46,9 @@
 
 .post-preview-title {
     grid-area: title;
-    @include fontSize(0);
+    @include font(0, "bold");
 
     a {
-        font-weight: map-get($font-weights, "bolder");
         color: var(--text-color-emphasis);
         @include underlinedLink($initiallyUnderlined: false);
     }
@@ -143,7 +142,7 @@
     margin-bottom: 1em;
     margin-right: 0.625em;
     padding: 0.4em 0.8em;
-    @include fontSize(-1);
+    @include font(-1);
 }
 
 .pagination-page-current {
@@ -158,12 +157,11 @@
 .post-meta {
     display: flex;
     flex-wrap: wrap;
-    font-weight: map-get($font-weights, "regular");
     list-style: none;
     margin: 0;
     color: var(--post-meta-text-color);
     position: relative;
-    @include fontSize(-2);
+    @include font(-2);
 }
 
 .author-photo {
@@ -251,7 +249,7 @@
         }
 
         a {
-            font-weight: map-get($font-weights, "bold");
+            @include weight("semiBold");
             @include underlinedLink($initiallyUnderlined: true);
         }
     }
@@ -277,7 +275,7 @@
 
     figure {
         figcaption {
-            @include fontSize(-1);
+            @include font(-1);
             font-style: italic;
             text-align: center;
         }
@@ -416,10 +414,10 @@
 
 .code-file-name {
     color: #bcbcbc;
-    font-weight: map-get($font-weights, "regular");
+    @include weight("regular");
     margin: 0;
     word-break: break-all;
-    @include fontSize(0);
+    @include font(0);
 
     &::before {
         content: "📂";
@@ -445,7 +443,7 @@
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
     top: 0;
     position: relative;
-    @include fontSize(0);
+    @include font(0);
 
     &::before {
         content: "Copy";

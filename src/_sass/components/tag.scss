@@ -4,13 +4,13 @@
     background-color: var(--tag-bg-color);
     border-radius: 3px;
     color: var(--tag-text-color);
-    font-weight: map-get($font-weights, "regular");
+    @include weight("regular");
 }
 
 // Because not all tags are links/interactive (see project cards)
 a.tag {
-    &:hover, 
-    &:focus, 
+    &:hover,
+    &:focus,
     &.active-tag {
         background-color: var(--tag-bg-color-hover);
         color: var(--tag-text-color-hover);

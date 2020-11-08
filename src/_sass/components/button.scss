@@ -5,7 +5,7 @@
     align-items: center;
     border-radius: 5px;
     display: flex;
-    font-weight: map-get($font-weights, "bold");
+    @include weight("semiBold");
     justify-content: center;
     text-decoration: none;
     cursor: pointer;
@@ -38,7 +38,6 @@
     &::before {
       content: "+";
       margin-right: 10px;
-      font-weight: map-get($font-weights, "bold");
-      @include fontSize(-1);
+      @include font(-1, "bold");
     }
 }
