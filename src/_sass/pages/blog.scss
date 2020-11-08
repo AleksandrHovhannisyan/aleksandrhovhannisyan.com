@@ -275,9 +275,9 @@
 
     figure {
         figcaption {
-            @include font(-1);
-            font-style: italic;
-            text-align: center;
+          font-style: italic;
+          text-align: center;
+          @include font(-1);
         }
 
         picture {
@@ -414,10 +414,9 @@
 
 .code-file-name {
     color: #bcbcbc;
-    @include weight("regular");
     margin: 0;
     word-break: break-all;
-    @include font(0);
+    @include font(0, "regular");
 
     &::before {
         content: "📂";

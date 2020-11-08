@@ -86,9 +86,9 @@ input.honeypot {
 
     .network-name {
         color: var(--text-color-normal);
-        @include weight("regular");
         align-self: center;
         grid-column: 2;
+        @include weight("regular");
     }
 }
 

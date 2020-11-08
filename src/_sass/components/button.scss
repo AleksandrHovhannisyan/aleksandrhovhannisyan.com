@@ -5,10 +5,10 @@
     align-items: center;
     border-radius: 5px;
     display: flex;
-    @include weight("semiBold");
     justify-content: center;
     text-decoration: none;
     cursor: pointer;
+    @include weight("semiBold");
 }
 
 .solid-button {

@@ -77,11 +77,11 @@ $meta-spacing: 0.5em;
 }
 
 .comment-author-badge {
-    @include font(-1);
-    display: flex;
-    align-items: center;
-    padding: 0 0.4em;
-    height: 1.5rem;
+  display: flex;
+  align-items: center;
+  padding: 0 0.4em;
+  height: 1.5rem;
+  @include font(-1);
 }
 
 .comment-body {

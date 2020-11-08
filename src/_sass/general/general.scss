@@ -268,8 +268,8 @@ a {
 label {
     color: var(--text-color-emphasis);
     display: block;
-    @include weight("semiBold");
     margin-bottom: 0.3125em;
+    @include weight("semiBold");
 
     &.required::after {
         color: var(--input-required-asterisk-color);

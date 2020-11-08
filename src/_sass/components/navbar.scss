@@ -13,10 +13,10 @@
 .skip-navigation {
     padding: 0 0.8em;
     color: var(--navbar-text-color);
-    @include weight("regular");
     display: flex;
     justify-content: center;
     align-items: center;
+    @include weight("regular");
 
     &:focus {
       top: 0;
