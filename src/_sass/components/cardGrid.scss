@@ -1,9 +1,9 @@
 @import 'mixins';
 
 .card-grid {
-    $card-spacing: 2.5em;
-    display: grid;
-    column-gap: $card-spacing;
-    row-gap: $card-spacing;
-    @include responsiveGrid($mobileMin: 255px, $desktopMin: 15em);
+  $card-spacing: 2.5em;
+  display: grid;
+  column-gap: $card-spacing;
+  row-gap: $card-spacing;
+  @include responsiveGrid($mobileMin: 255px, $desktopMin: 15em);
 }

@@ -2,102 +2,102 @@
 @import 'fonts';
 
 .project-grid {
-    list-style-type: none;
-    margin-top: 3rem;
+  list-style-type: none;
+  margin-top: 3rem;
 }
 
 .project {
-    grid-template-rows: max-content 1fr max-content;
-    margin-bottom: 0;
+  grid-template-rows: max-content 1fr max-content;
+  margin-bottom: 0;
 }
 
 .project-header {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .project-name-wrapper {
-    align-self: center;
-    grid-area: heading;
+  align-self: center;
+  grid-area: heading;
 }
 
 .project-name {
-    display: inline;
-    color: var(--text-color-emphasis);
-    margin: 0;
-    @include font(0, "bold");
+  display: inline;
+  color: var(--text-color-emphasis);
+  margin: 0;
+  @include font(0, 'bold');
 }
 
 .project-icon {
-    display: inline-block;
-    margin-right: 5px;
+  display: inline-block;
+  margin-right: 5px;
 
-    * {
-        vertical-align: middle;
-        width: 24px;
-    }
+  * {
+    vertical-align: middle;
+    width: 24px;
+  }
 }
 
 .project-rating {
-    align-items: center;
-    align-self: center;
-    display: flex;
-    grid-area: rating;
-    justify-self: center;
-    margin-right: 0.5em;
-    @include font(-1);
+  align-items: center;
+  align-self: center;
+  display: flex;
+  grid-area: rating;
+  justify-self: center;
+  margin-right: 0.5em;
+  @include font(-1);
 
-    .star {
-        margin-right: 3px;
-        margin-top: 2px;
-    }
+  .star {
+    margin-right: 3px;
+    margin-top: 2px;
+  }
 }
 
 .project-description {
-    margin-bottom: 0px;
-    margin-top: 0px;
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 .project-technologies {
-    display: flex;
-    flex-wrap: wrap;
-    grid-row: 3;
-    list-style-type: none;
-    margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  grid-row: 3;
+  list-style-type: none;
+  margin: 0;
 }
 
 .project-technology {
-    margin-bottom: 0px;
-    margin-right: 0.5em;
-    margin-top: 0.5em;
-    padding: 0.25em 0.8em;
-    @include font(-2);
+  margin-bottom: 0px;
+  margin-right: 0.5em;
+  margin-top: 0.5em;
+  padding: 0.25em 0.8em;
+  @include font(-2);
 }
 
 #github-cta {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-    a {
-        border-radius: 50%;
-        display: inline-block;
-        height: 50px;
-        margin-top: 20px;
-        width: 50px;
+  a {
+    border-radius: 50%;
+    display: inline-block;
+    height: 50px;
+    margin-top: 20px;
+    width: 50px;
 
-        .icon-github {
-            @include themed(fill, $brand-github, $brand-github-alt);
-        }
+    .icon-github {
+      @include themed(fill, $brand-github, $brand-github-alt);
     }
+  }
 }
 
 .github-cta-heading {
-    margin-bottom: 0.5em;
-    @include font(0, "bold");
+  margin-bottom: 0.5em;
+  @include font(0, 'bold');
 }
 
 .github-cta-subheading {
-    margin: 0;
+  margin: 0;
 }

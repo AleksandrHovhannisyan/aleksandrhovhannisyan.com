@@ -2,60 +2,60 @@
 @import 'fonts';
 
 .card {
-    --card-padding: 1.5em;
+  --card-padding: 1.5em;
+  background-color: var(--card-bg-color);
+  border-radius: 5px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.15),
+              0 2px 2px rgba(0,0,0,0.15),
+              0 4px 4px rgba(0,0,0,0.15),
+              0 6px 12px rgba(0,0,0,0.15);
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: var(--card-padding);
+  position: relative;
+  row-gap: calc(var(--card-padding) / 2);
+  transform: none;
+  @include transition(box-shadow, transform);
+
+  &.interactive {
+    cursor: pointer;
+
+    &:hover,
+    &:focus-within {
+      box-shadow: 0 2px 2px rgba(0,0,0,0.15),
+                  0 4px 4px rgba(0,0,0,0.15),
+                  0 8px 8px rgba(0,0,0,0.15),
+                  0 8px 12px rgba(0,0,0,0.15);
+      transform: translate(0, -5px);
+
+      .hover-content {
+          opacity: 0.92;
+      }
+    }
+  }
+
+  // Displayed when a user hovers over a card
+  .hover-content {
+    align-items: center;
     background-color: var(--card-bg-color);
     border-radius: 5px;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.15),
-                0 2px 2px rgba(0,0,0,0.15),
-                0 4px 4px rgba(0,0,0,0.15),
-                0 6px 12px rgba(0,0,0,0.15);
-    display: grid;
-    grid-template-columns: 1fr;
-    padding: var(--card-padding);
-    position: relative;
-    row-gap: calc(var(--card-padding) / 2);
-    transform: none;
-    @include transition(box-shadow, transform);
+    color: var(--text-color-emphasis);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    @include transition(opacity);
+    @include font(1, "semiBold");
 
-    &.interactive {
-        cursor: pointer;
-
-        &:hover,
-        &:focus-within {
-            box-shadow: 0 2px 2px rgba(0,0,0,0.15),
-                        0 4px 4px rgba(0,0,0,0.15),
-                        0 8px 8px rgba(0,0,0,0.15),
-                        0 8px 12px rgba(0,0,0,0.15);
-            transform: translate(0, -5px);
-
-            .hover-content {
-                opacity: 0.92;
-            }
-        }
+    svg {
+        fill: var(--text-color-emphasis);
+        margin-top: 20px;
+        width: 1.2em;
     }
-
-    // Displayed when a user hovers over a card
-    .hover-content {
-        align-items: center;
-        background-color: var(--card-bg-color);
-        border-radius: 5px;
-        color: var(--text-color-emphasis);
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        justify-content: center;
-        left: 0;
-        opacity: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        @include transition(opacity);
-        @include font(1, "semiBold");
-
-        svg {
-            fill: var(--text-color-emphasis);
-            margin-top: 20px;
-            width: 1.2em;
-        }
-    }
+  }
 }

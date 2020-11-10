@@ -1,18 +1,18 @@
 @import 'fonts';
 
 .tag {
-    background-color: var(--tag-bg-color);
-    border-radius: 3px;
-    color: var(--tag-text-color);
-    @include weight("regular");
+  background-color: var(--tag-bg-color);
+  border-radius: 3px;
+  color: var(--tag-text-color);
+  @include weight("regular");
 }
 
 // Because not all tags are links/interactive (see project cards)
 a.tag {
-    &:hover,
-    &:focus,
-    &.active-tag {
-        background-color: var(--tag-bg-color-hover);
-        color: var(--tag-text-color-hover);
-    }
+  &:hover,
+  &:focus,
+  &.active-tag {
+      background-color: var(--tag-bg-color-hover);
+      color: var(--tag-text-color-hover);
+  }
 }

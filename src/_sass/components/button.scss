@@ -2,42 +2,42 @@
 @import 'fonts';
 
 .button {
-    align-items: center;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    text-decoration: none;
-    cursor: pointer;
-    @include weight("semiBold");
+  align-items: center;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  @include weight("semiBold");
 }
 
 .solid-button {
-    background-color: var(--button-bg-color);
-    color: var(--button-text-color);
-    border: 3px solid var(--button-bg-color);
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: 3px solid var(--button-bg-color);
 
-    &:focus, &:hover {
-        background-color: var(--button-bg-color-hover);
-        border: 3px solid var(--button-bg-color-hover);
-    }
+  &:focus, &:hover {
+      background-color: var(--button-bg-color-hover);
+      border: 3px solid var(--button-bg-color-hover);
+  }
 }
 
 .hollow-button {
-    color: var(--button-bg-color);
-    background-color: transparent;
-    border: 3px solid;
-    box-shadow: 0 0 0 0 transparent;
+  color: var(--button-bg-color);
+  background-color: transparent;
+  border: 3px solid;
+  box-shadow: 0 0 0 0 transparent;
 
-    &:focus,
-    &:hover {
-        box-shadow: 0 0 0 2px var(--button-bg-color);
-    }
+  &:focus,
+  &:hover {
+      box-shadow: 0 0 0 2px var(--button-bg-color);
+  }
 }
 
 .plus-button {
-    &::before {
-      content: "+";
-      margin-right: 10px;
-      @include font(-1, "bold");
-    }
+  &::before {
+    content: "+";
+    margin-right: 10px;
+    @include font(-1, "bold");
+  }
 }

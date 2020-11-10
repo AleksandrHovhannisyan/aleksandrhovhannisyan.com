@@ -2,25 +2,24 @@
 @import 'fonts';
 
 table {
-    border-collapse: collapse;
-    max-width: 100%;
-    overflow-x: auto;
-    display: block;
+  border-collapse: collapse;
+  max-width: 100%;
+  overflow-x: auto;
+  display: block;
 }
 
 thead {
-    background-color: var(--table-header-bg-color);
-    color: var(--table-header-text-color);
+  background-color: var(--table-header-bg-color);
+  color: var(--table-header-text-color);
 
-    th {
-        @include weight("semiBold");
-    }
+  th {
+    @include weight('semiBold');
+  }
 }
 
 td,
 th {
-    text-align: left;
-    padding: 0.5em 1em;
-    border: solid 3px var(--table-border-color);
+  text-align: left;
+  padding: 0.5em 1em;
+  border: solid 3px var(--table-border-color);
 }
-

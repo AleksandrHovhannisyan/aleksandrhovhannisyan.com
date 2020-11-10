@@ -59,13 +59,13 @@
 
 @mixin font($size, $weight: inherit, $sizeUnit: 'rem') {
   $styles: map-get($fontSizes, $size);
-  $fontSize: map-get($styles, "font-size");
-  $lineHeight: map-get($styles, "line-height");
+  $fontSize: map-get($styles, 'font-size');
+  $lineHeight: map-get($styles, 'line-height');
 
   font-size: $fontSize + unquote($sizeUnit);
   @include weight($weight);
   line-height: $lineHeight;
-  --paragraph-spacing: #{$lineHeight + unquote("em")};
+  --paragraph-spacing: #{$lineHeight + unquote('em')};
 }
 
 @mixin underlinedLink($initiallyUnderlined: true) {

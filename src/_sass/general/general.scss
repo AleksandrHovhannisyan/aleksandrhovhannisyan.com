@@ -2,102 +2,102 @@
 @import 'fonts';
 
 ::selection {
-    background-color: var(--selection-bg-color);
-    color: var(--selection-text-color);
-    text-shadow: none;
+  background-color: var(--selection-bg-color);
+  color: var(--selection-text-color);
+  text-shadow: none;
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .screen-reader-only {
-    position: absolute;
-    left: -5000px;
+  position: absolute;
+  left: -5000px;
 
-    &:focus {
-        left: 0;
-    }
+  &:focus {
+    left: 0;
+  }
 }
 
 html {
-    @include maxFontSize(20px);
+  @include maxFontSize(20px);
 }
 
 body {
-    background-color: var(--main-bg-color);
-    color: var(--text-color-normal);
-    display: grid;
-    font-family: $font-family-normal;
-    grid-template-rows: var(--navbar-height) 1fr var(--footer-height);
-    min-height: 100vh;
-    position: relative;
-    row-gap: var(--navbar-height);
-    @include font(0);
+  background-color: var(--main-bg-color);
+  color: var(--text-color-normal);
+  display: grid;
+  font-family: $font-family-normal;
+  grid-template-rows: var(--navbar-height) 1fr var(--footer-height);
+  min-height: 100vh;
+  position: relative;
+  row-gap: var(--navbar-height);
+  @include font(0);
 }
 
 #page-content {
-    scroll-margin-top: var(--scroll-margin-top);
-    grid-row: 2;
-    min-width: 0; // https://css-tricks.com/preventing-a-grid-blowout/
-    @include centered;
+  scroll-margin-top: var(--scroll-margin-top);
+  grid-row: 2;
+  min-width: 0; // https://css-tricks.com/preventing-a-grid-blowout/
+  @include centered;
 }
 
 .banner {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 670px;
-    text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 670px;
+  text-align: center;
 }
 
 // Links an entire parent container, but the parent must be set to relative position
 .container-link {
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 1;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
 }
 
 strong {
-    color: var(--text-color-emphasis);
-    @include weight("bold");
+  color: var(--text-color-emphasis);
+  @include weight('bold');
 }
 
 @include headings {
-    color: var(--text-color-emphasis);
-    margin-bottom: 0.5em;
+  color: var(--text-color-emphasis);
+  margin-bottom: 0.5em;
 }
 
 h1 {
-  @include font(5, "bold");
+  @include font(5, 'bold');
 }
 
 h2 {
-  @include font(4, "bold");
+  @include font(4, 'bold');
 }
 
 h3 {
-  @include font(3, "bold");
+  @include font(3, 'bold');
 }
 
 h4 {
-  @include font(2, "bold");
+  @include font(2, 'bold');
 }
 
 h5 {
-  @include font(1, "bold");
+  @include font(1, 'bold');
 }
 
 h6 {
-  @include font(0, "bold");
+  @include font(0, 'bold');
 }
 
 p {
@@ -106,83 +106,83 @@ p {
 }
 
 .underlined-link {
-    @include underlinedLink;
+  @include underlinedLink;
 }
 
 a {
-    color: var(--link-color);
-    font-weight: inherit;
-    text-decoration: none;
+  color: var(--link-color);
+  font-weight: inherit;
+  text-decoration: none;
 }
 
 .linked-heading {
-    position: relative;
-    scroll-margin-top: var(--scroll-margin-top);
+  position: relative;
+  scroll-margin-top: var(--scroll-margin-top);
 
-    &:hover {
-        .heading-anchor {
-            visibility: visible;
-            opacity: 1;
-        }
+  &:hover {
+    .heading-anchor {
+      visibility: visible;
+      opacity: 1;
     }
+  }
 }
 
 .heading-anchor-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    width: 1em;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    transform: translateX(-100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 1em;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  transform: translateX(-100%);
 
-    &:hover {
-        .heading-anchor {
-            visibility: visible;
-            opacity: 1;
-        }
+  &:hover {
+    .heading-anchor {
+      visibility: visible;
+      opacity: 1;
     }
+  }
 }
 
 .heading-anchor {
-    visibility: hidden;
-    opacity: 0;
-    display: flex;
-    margin-left: 4px;
+  visibility: hidden;
+  opacity: 0;
+  display: flex;
+  margin-left: 4px;
 }
 
 .section:not(:last-of-type) {
-    margin-bottom: calc(2 * var(--navbar-height));
+  margin-bottom: calc(2 * var(--navbar-height));
 }
 
 .input {
-    background-color: var(--input-bg-color);
-    border: solid 1px var(--input-border-color);
-    border-radius: 2px;
-    box-shadow: var(--input-box-shadow);
-    color: var(--text-color-emphasis);
-    height: 2em;
-    margin-bottom: 0.75em;
-    padding: 0.25em 0.5em;
-    width: 100%;
+  background-color: var(--input-bg-color);
+  border: solid 1px var(--input-border-color);
+  border-radius: 2px;
+  box-shadow: var(--input-box-shadow);
+  color: var(--text-color-emphasis);
+  height: 2em;
+  margin-bottom: 0.75em;
+  padding: 0.25em 0.5em;
+  width: 100%;
 
-    &:focus {
-        outline: none;
-        border-color: var(--input-border-color-focus);
-        box-shadow: var(--input-box-shadow-focus);
-    }
+  &:focus {
+    outline: none;
+    border-color: var(--input-border-color-focus);
+    box-shadow: var(--input-box-shadow-focus);
+  }
 }
 
 label {
-    color: var(--text-color-emphasis);
-    display: block;
-    margin-bottom: 0.3125em;
-    @include weight("semiBold");
+  color: var(--text-color-emphasis);
+  display: block;
+  margin-bottom: 0.3125em;
+  @include weight('semiBold');
 
-    &.required::after {
-        color: var(--input-required-asterisk-color);
-        content: " *";
-    }
+  &.required::after {
+    color: var(--input-required-asterisk-color);
+    content: ' *';
+  }
 }

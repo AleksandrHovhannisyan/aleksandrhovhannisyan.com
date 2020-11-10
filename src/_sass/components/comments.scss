@@ -1,79 +1,77 @@
 @import 'fonts';
 
 .comment-actions {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-top: 2em;
-    margin-bottom: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 2em;
+  margin-bottom: 2em;
 
-    h2 {
-        margin: 0 !important;
-    }
+  h2 {
+    margin: 0 !important;
+  }
 }
 
 .post-comment-button {
-    padding: 0.4em 0.8em;
-    margin: 1em 0;
+  padding: 0.4em 0.8em;
+  margin: 1em 0;
 }
 
 #comments-wrapper {
-    display: flex;
+  display: flex;
 }
 
 .comments-list {
-    list-style-type: none;
-    width: 100%;
-    padding: 0 !important;
-
+  list-style-type: none;
+  width: 100%;
+  padding: 0 !important;
 }
 
 $avatar-size: 2em;
 $meta-spacing: 0.5em;
 
 .comment {
-    margin-left: $avatar-size + $meta-spacing;
+  margin-left: $avatar-size + $meta-spacing;
 
-    &:not(:last-of-type) {
-        margin-bottom: 4em !important;
-    }
+  &:not(:last-of-type) {
+    margin-bottom: 4em !important;
+  }
 }
 
 .comment-header {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    position: relative;
-    margin-bottom: calc(#{var(--paragraph-spacing)} - #{$meta-spacing} / 2);
-
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  position: relative;
+  margin-bottom: calc(#{var(--paragraph-spacing)} - #{$meta-spacing} / 2);
 }
 
 .comment-meta {
-    margin: 0 $meta-spacing $meta-spacing / 2 0;
+  margin: 0 $meta-spacing $meta-spacing / 2 0;
 }
 
 .comment-avatar {
-    position: absolute;
-    width: $avatar-size;
-    left: -1 * $avatar-size - $meta-spacing;
-    top: calc(-1 * #{$meta-spacing} / 4);
-    border-radius: 50% !important;
+  position: absolute;
+  width: $avatar-size;
+  left: -1 * $avatar-size - $meta-spacing;
+  top: calc(-1 * #{$meta-spacing} / 4);
+  border-radius: 50% !important;
 }
 
 .comment-username {
-    color: var(--text-color-emphasis);
-    @include weight("semiBold");
-    @include underlinedLink;
+  color: var(--text-color-emphasis);
+  @include weight('semiBold');
+  @include underlinedLink;
 }
 
 .comment-edited {
-    font-style: italic;
-    @include font(-1);
+  font-style: italic;
+  @include font(-1);
 }
 
 .comment-date-posted {
-    @include font(-1);
+  @include font(-1);
 }
 
 .comment-author-badge {
@@ -85,14 +83,14 @@ $meta-spacing: 0.5em;
 }
 
 .comment-body {
-    display: grid;
-    row-gap: var(--paragraph-spacing);
+  display: grid;
+  row-gap: var(--paragraph-spacing);
 
-    > * {
-        min-width: 0;
-    }
+  > * {
+    min-width: 0;
+  }
 
-    @include headings {
-        margin-top: 0 !important;
-    }
+  @include headings {
+    margin-top: 0 !important;
+  }
 }

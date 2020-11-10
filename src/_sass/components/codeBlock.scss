@@ -7,18 +7,18 @@ div.highlighter-rouge {
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.4);
 
   & > div.highlight {
-      padding: $code-block-padding;
-      padding-bottom: $code-block-padding - $code-block-padding-bottom;
+    padding: $code-block-padding;
+    padding-bottom: $code-block-padding - $code-block-padding-bottom;
 
-      pre.highlight {
-          // Spacing between the horizontal scroll bar and the code itself.
-          // This only matters whenever the content overflows horizontally.
-          padding-bottom: $code-block-padding-bottom;
-      }
+    pre.highlight {
+      // Spacing between the horizontal scroll bar and the code itself.
+      // This only matters whenever the content overflows horizontally.
+      padding-bottom: $code-block-padding-bottom;
+    }
   }
 
   code {
-      padding: 0;
+    padding: 0;
   }
 }
 
@@ -37,13 +37,13 @@ div.highlighter-rouge {
 
   // Code blocks that have a header
   & + .highlighter-rouge {
-      margin-top: 0 !important;
+    margin-top: 0 !important;
 
-      // If we don't do this, the top-left and top-right border radii will be visible
-      & .highlight {
-          border-top-left-radius: 0;
-          border-top-right-radius: 0;
-      }
+    // If we don't do this, the top-left and top-right border radii will be visible
+    & .highlight {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
   }
 }
 
@@ -58,11 +58,11 @@ div.highlighter-rouge {
   color: #bcbcbc;
   margin: 0;
   word-break: break-all;
-  @include font(0, "regular");
+  @include font(0, 'regular');
 
   &::before {
-      content: "📂";
-      margin-right: 5px;
+    content: '📂';
+    margin-right: 5px;
   }
 }
 
@@ -87,35 +87,35 @@ div.highlighter-rouge {
   @include font(0);
 
   &::before {
-      content: "Copy";
+    content: 'Copy';
   }
 
   &::after {
-      margin-left: 4px;
-      content: "📋";
-      width: 1em;
+    margin-left: 4px;
+    content: '📋';
+    width: 1em;
   }
 
   &.copied,
   &:focus,
   &:hover {
-      color: black;
-      background-color: #adadad;
+    color: black;
+    background-color: #adadad;
   }
 
   &:active {
-      box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
-      top: 2px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
+    top: 2px;
   }
 
   &.copied {
-      &::before {
-          content: "Copied!";
-      }
+    &::before {
+      content: 'Copied!';
+    }
 
-      &::after {
-          content: "✔️";
-      }
+    &::after {
+      content: '✔️';
+    }
   }
 }
 
@@ -133,7 +133,8 @@ code {
 .highlight {
   border-radius: 5px;
 
-  &, code {
+  &,
+  code {
     background-color: $code-background;
     color: $code-text;
   }
@@ -157,13 +158,18 @@ code {
   }
 
   // Comments
-  .c, .cm, .cp, .c1, .cs {
+  .c,
+  .cm,
+  .cp,
+  .c1,
+  .cs {
     font-style: italic;
     @include selectionResistantColor($code-comment);
   }
 
   // Functions
-  .nf, .nx {
+  .nf,
+  .nx {
     @include selectionResistantColor($code-function);
   }
 
@@ -173,17 +179,31 @@ code {
   }
 
   // Variables
-  .bp, .nv, .vc, .vg, .vi, .err {
+  .bp,
+  .nv,
+  .vc,
+  .vg,
+  .vi,
+  .err {
     @include selectionResistantColor($code-variable);
   }
 
   // Numbers
-  .m, .mf, .mh, .mi, .mo, .il {
+  .m,
+  .mf,
+  .mh,
+  .mi,
+  .mo,
+  .il {
     @include selectionResistantColor($code-number);
   }
 
   // Keywords
-  .k, .kd, .kn, .kr, .kt {
+  .k,
+  .kd,
+  .kn,
+  .kr,
+  .kt {
     @include selectionResistantColor($code-keyword);
   }
 
@@ -193,17 +213,24 @@ code {
   }
 
   // Pseudo
-  .kp, .nb {
+  .kp,
+  .nb {
     @include selectionResistantColor($code-support);
   }
 
   // Strings
-  .s, .sb, .sc, .s1, .s2 {
+  .s,
+  .sb,
+  .sc,
+  .s1,
+  .s2 {
     @include selectionResistantColor($code-string);
   }
 
   // Classes/tags
-  .nc, .nt, .nl {
+  .nc,
+  .nt,
+  .nl {
     @include selectionResistantColor($code-tag);
   }
 
