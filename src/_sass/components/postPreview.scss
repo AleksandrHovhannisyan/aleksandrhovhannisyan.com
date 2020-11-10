@@ -82,7 +82,6 @@
 
 @media screen and (min-width: 700px) {
   .post-preview {
-    flex-wrap: nowrap;
     grid-template-areas:
       'thumbnail title'
       'thumbnail description'
