@@ -3,6 +3,7 @@ title: What Are Higher-Order Components in React?
 description: Higher-order components are one of React's most popular design patterns, allowing you to define reusable stateful logic and create powerful, flexible components.
 keywords: [higher-order components]
 tags: [dev, react, design-patterns]
+last_updated: 2020-11-10
 comments_id: 61
 ---
 
@@ -192,7 +193,11 @@ export default Posts;{% endcapture %}
 Of course, the three components you see here don't exist just yet, so let's go ahead and create them now. We'll use the fetch functions we defined just a few seconds ago to do that. Keep in mind that in the real world, you'd probably use some Promise-based fetch function to get your data, and thus you'd need to either `await` your data or chain `then`s:
 
 {% capture code %}import React, { useEffect, useState } from "react";
-import { getArchivedPosts, getPopularPosts, getRecentPosts } from "../../containers/Posts/api";
+import {
+  getArchivedPosts,
+  getPopularPosts,
+  getRecentPosts,
+} from "../../containers/Posts/api";
 
 // Same as before
 const PostList = ({ posts }) => (
@@ -664,6 +669,107 @@ As I mentioned earlier, other real-world examples of higher-order components inc
 - ... and much, *much* more.
 
 One thing worth noting is that when the value of the context changes, all components that consume it will re-render. But you'd get the same behavior if you were to use a state management library like Redux. When you map state to props in Redux, a state change triggers a prop change, and a prop change causes your connected components to re-render.
+
+## Are Higher-Order Components Still Relevant?
+
+One question that comes up often is whether higher-order components are relevant in the age of React hooks. Truth be told, higher-order components *are* an older design pattern in React, dating back to a time when class components were all that we had. With the introduction of hooks, HOCs are not nearly as relevant as they once were. Previously, they were the only way to dynamically inject stateful logic as props into components. With hooks, this is a matter of creating a custom hook, managing your stateful logic in there, returning whatever values are relevant for your purposes, and using the hook in your function component. Hooks can do everything that HOCs could, but they're arguably easier to understand and read.
+
+Returning to our blog example, we could instead create a reusable `usePosts` hook to consolidate the fetching logic and return the list of posts and a method to optionally update those posts:
+
+{% capture code %}import React, { useState, useEffect } from "react";
+
+export default function usePosts(getPosts) {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    // again, you'd use promises in the real world
+    setPosts(getPosts());
+  });
+
+  return [posts, setPosts];
+}{% endcapture %}
+{% include code.html file="components/PostList/usePosts.js" code=code lang="jsx" %}
+
+And here's how we might use that:
+
+{% capture code %}import React from "react";
+import usePosts from "./usePosts";
+import {
+  getArchivedPosts,
+  getPopularPosts,
+  getRecentPosts,
+} from "../../containers/Posts/api";
+
+const PostList = ({ posts }) => (
+  <ol>
+    {posts.map((post) => (
+      <li key={post.id}>
+        <a href={post.href}>{post.title}</a>
+        <p>{post.description}</p>
+      </li>
+    ))}
+  </ol>
+);
+
+export const RecentPosts = (props) => {
+  const [posts] = usePosts(getRecentPosts);
+  return <PostList posts={posts} {...props} />;
+};
+
+export const PopularPosts = (props) => {
+  const [posts] = usePosts(getPopularPosts);
+  return <PostList posts={posts} {...props} />;
+};
+
+export const ArchivedPosts = (props) => {
+  const [posts] = usePosts(getArchivedPosts);
+  return <PostList posts={posts} {...props} />;
+};
+
+export default PostList;{% endcapture %}
+{% include code.html file="components/PostList/index.js" code=code lang="jsx" %}
+
+Naturally, hooks can also be combined with the React Context API. The hooks version of our theme example is much simpler than the one with higher-order components:
+
+```jsx
+import React, { createContext, useContext } from "react";
+
+const ThemeContext = createContext("light");
+
+// And that's it! Just call this hook in your component.
+export const useThemeContext = () => useContext(ThemeContext);
+
+export default class App extends React.Component {
+  state = {
+    theme: "light",
+    setTheme: (theme) => this.setState({ theme })
+  };
+
+  render() {
+    return (
+      <ThemeContext.Provider value={this.state}>
+        <Article />
+        <Div />
+        <ThemeToggle />
+      </ThemeContext.Provider>
+    );
+  }
+}
+```
+
+Here's how you'd use the hook:
+
+```jsx
+const ThemeToggle = (props) => {
+  const { theme, setTheme } = useThemeContext();
+
+  return (<button onClick={() => setTheme(themeMap[theme])}>
+    Toggle theme (current: {theme})
+  </button>);
+};
+```
+
+One thing worth noting is that higher-order components are still relevant if your code base uses class components since they cannot utilize hooks. Sometimes, you may actually see a code base exporting both higher-order components and hooks to give developers the option of creating either class or function components.
 
 {:.no_toc}
 ## Conclusion
