@@ -2,7 +2,7 @@
 title: What Are Cookies?
 description: You've heard the term before, but maybe you're still lost. What are cookies? How are they used? And how do they affect online privacy?
 keywords: [cookies in browsers, cookies, browser cookies]
-tags: [dev, web-dev, http, cookies]
+tags: [dev, http, cookies]
 comments_id: 49
 ---
 

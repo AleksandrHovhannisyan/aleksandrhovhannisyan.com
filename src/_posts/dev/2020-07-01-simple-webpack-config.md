@@ -1,7 +1,8 @@
 ---
 title: A Simple Webpack Config
-description: For all of your JavaScript bundling needs.
+description: Webpack is one of the most popular code bundlers available. Here's a simple webpack config to bundle your JavaScript.
 keywords: [simple webpack config]
+tags: [dev, webpack, javascript]
 ---
 
 Let's assume your directory structure looks like this for a JavaScript project:
@@ -88,7 +89,7 @@ Now you can include the bundled code in your HTML file:
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Simple Webpack Config</title>
 </head>
-<body>    
+<body>
     <script src="dist/app.bundle.js"></script>
 </body>
 </html>{% endcapture %}

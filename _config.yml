@@ -15,7 +15,7 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-paginate-v2
-  
+
 include:
   - _pages
   - _redirects
@@ -30,33 +30,28 @@ sass:
 kramdown:
   math_engine: katex
 
-collections:
-  notes:
-    output: true
-    permalink: /notes/:title/
-
 autopages:
   enabled: true
 
-  categories: 
+  categories:
     # Optional, the list of layouts that should be processed for every category found in the site
     layouts: []
 
   # Collection pages, omit to disable
   collections:
     layouts: []
-  
+
   # Tag pages, omit to disable
   tags:
     layouts: [tagPage.html]
     title: 'Posts tagged as :tag'
     permalink: '/tag/:tag'
     slugify:
-      mode: 'default'   # :tag is slugified.
+      mode: 'default' # :tag is slugified.
       case: false
 
 pagination:
-  # Site-wide kill switch, disabled here it doesn't run at all 
+  # Site-wide kill switch, disabled here it doesn't run at all
   enabled: true
 
   # Set to 'true' to enable pagination debugging. This can be enabled in the site config or only for individual pagination pages
@@ -70,7 +65,7 @@ pagination:
 
   # The permalink structure for the paginated pages (this can be any level deep)
   permalink: '/page/:num/' # Pages are index.html inside this folder (default)
-  #permalink: '/page/:num.html' # Pages are simple html files 
+  #permalink: '/page/:num.html' # Pages are simple html files
   #permalink: '/page/:num' # Pages are html files, linked jekyll extensionless permalink style.
 
   # Optional the title format for the paginated pages (supports :title for original page title, :num for pagination page number, :max for total number of pages)
@@ -78,7 +73,7 @@ pagination:
 
   # Limit how many pagenated pages to create (default: 0, means all)
   limit: 0
-  
+
   # Optional, defines the field that the posts should be sorted on (omit to default to 'date')
   sort_field: 'date'
 
@@ -91,9 +86,9 @@ pagination:
   # Optional, the default tag to use, omit to disable
   tag: ''
 
- # Optional,omit or set both before and after to zero to disable. 
- # Controls how the pagination trail for the paginated pages look like. 
-  trail: 
+  # Optional,omit or set both before and after to zero to disable.
+  # Controls how the pagination trail for the paginated pages look like.
+  trail:
     before: 2
     after: 2
 
@@ -102,43 +97,30 @@ pagination:
   extension: html
 
 defaults:
-  -
-    scope:
+  - scope:
       path: _pages
       type: pages
     values:
       is_post: false
       layout: default
-  -
-    scope:
+  - scope:
       path: _posts
       type: posts
     values:
       is_post: true
       layout: post
-      excerpt: ""
+      excerpt: ''
       permalink: /blog/:categories/:title/
       img_path: assets/img/posts
-  - 
-    scope:
-      path: _notes
-    values:
-      is_post: true
-      layout: post
-      excerpt: ""
-      img_path: assets/img/notes
-  -
-    scope:
+  - scope:
       path: _posts/dev
     values:
       categories: dev
-  -
-    scope:
+  - scope:
       path: _posts/computer-science
     values:
       categories: computer-science
-  -
-    scope:
+  - scope:
       path: _posts/off-topic
     values:
       categories: off-topic

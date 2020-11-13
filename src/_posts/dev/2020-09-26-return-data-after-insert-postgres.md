@@ -1,7 +1,8 @@
 ---
 title: Returning Data After an Insert in PostgreSQL
-description: Easily return auto-generated and serial IDs after inserting new rows in PostgreSQL.
+description: Easily return auto-generated and serial IDs after inserting new rows into a table with PostgreSQL's RETURNING clause.
 keywords: [returning data after insert, postgres]
+tags: [dev, postgresql, sql]
 ---
 
 You've successfully inserted one or more rows into a table using a standard `INSERT` statement in PostgreSQL. Now, suppose that your schema contains an auto-generated `UUID` or `SERIAL` column:
