@@ -116,10 +116,13 @@
   left: 0;
   right: 0;
   top: 0;
+  display: grid;
+  grid-auto-flow: row;
+  grid-row-gap: 1.5rem;
+  padding: 1.5rem 0;
 }
 
 .navbar-item {
-  margin: 1.5em auto;
   text-align: center;
 }
 
@@ -307,18 +310,18 @@
     }
 
     .navbar-links {
+      grid-row-gap: 0;
+      grid-column-gap: 1rem;
+      grid-auto-flow: column;
       align-items: center;
       box-shadow: none;
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-end;
       margin: 0;
+      padding: 0;
       position: static;
     }
 
     .navbar-item {
-      margin: 0 0 0 1em;
-      height: var(--navbar-height);
+      height: 100%;
       display: flex;
       align-items: center;
     }
@@ -335,6 +338,6 @@
   }
 
   #theme-toggle-container {
-    margin-left: 1.5em;
+    margin-left: 0.5em;
   }
 }
