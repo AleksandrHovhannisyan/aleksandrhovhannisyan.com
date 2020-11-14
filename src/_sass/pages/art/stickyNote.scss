@@ -1,0 +1,50 @@
+@import 'fonts';
+@import 'mixins';
+
+.sticky-note-board {
+  border: solid 0.8em #e3c19d;
+  background-color: #b7814a;
+  background-image: url('/assets/img/art/cardboard.png');
+  box-shadow: inset 0 2px 4px 0px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.sticky-note {
+  height: min-content;
+  transform-style: preserve-3d;
+  background: linear-gradient(180deg, #ffc, 90%, #f1f1dd);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  position: relative;
+  justify-self: center;
+  padding: 2.5em 1.8em 1.8em 1.8em;
+  margin: 2rem;
+  cursor: pointer;
+  @include transition(transform, top, box-shadow, border-radius);
+
+  @media screen and (min-width: 800px) {
+    flex: 0 0 calc(50% - 2em);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    transform: translateZ(-1px);
+    right: 3px;
+    bottom: 15px;
+    width: calc(100% - 3px);
+    height: 25px;
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 15px 5px rgba(0, 0, 0, 0.4);
+  }
+
+  &:hover {
+    border-bottom-right-radius: 100px 15px;
+  }
+}
+
+.sticky-note-description {
+  color: #3e464d;
+  margin: 0;
+  font-family: $font-family-cursive;
+  @include font(2);
+}

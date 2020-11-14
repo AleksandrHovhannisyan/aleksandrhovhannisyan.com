@@ -1,0 +1,164 @@
+.thinking-emoji {
+  --face-color: #ffca3b;
+  --eyebrow-color: #d58d00;
+  --hand-color: #d58d00;
+  --face-border-color: black;
+  --eye-color: black;
+  --mouth-color: black;
+
+  width: 50vmin;
+  height: 50vmin;
+  border-radius: 50%;
+  background-color: var(--face-color);
+  border: solid 3vmin var(--face-border-color);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  transform: scale(0.5);
+}
+
+.thinking-emoji-eyes {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 11vmin;
+}
+
+.thinking-emoji-eye {
+  background-color: black;
+  border-radius: 3vmin;
+  position: relative;
+  width: 5vmin;
+  height: 8vmin;
+
+  &::before {
+    content: '';
+    position: absolute;
+  }
+
+  &.left {
+    width: 5vmin;
+    height: 8vmin;
+  }
+
+  &.right {
+    width: 8vmin;
+    height: 5vmin;
+  }
+}
+
+.thinking-emoji-eyebrow {
+  width: 20vmin;
+  height: 20vmin;
+  background-color: transparent;
+  align-self: flex-end;
+  margin-bottom: 0vmin;
+  border-radius: 46%;
+  border: 3vmin solid transparent;
+  border-bottom: 3vmin solid var(--eyebrow-color);
+  position: absolute;
+
+  &::before,
+  &::after {
+    content: '';
+    width: 3vmin;
+    height: 3vmin;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -1vmin;
+    background-color: var(--eyebrow-color);
+  }
+
+  &::before {
+    left: -0.5vmin;
+  }
+
+  &::after {
+    right: -0.5vmin;
+  }
+
+  &.left {
+    transform: rotate(150deg) translate(30%, 0%);
+  }
+
+  &.right {
+    transform: rotate(210deg) translate(-45%, 0%);
+  }
+}
+
+.thinking-emoji-mouth {
+  width: 30vmin;
+  height: 30vmin;
+  background-color: transparent;
+  align-self: flex-end;
+  margin-bottom: 9vmin;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border: 3vmin solid transparent;
+  border-bottom: 3vmin solid var(--mouth-color);
+  position: relative;
+  transform: rotate(145deg) translate(20%, -60%);
+
+  &::before {
+    content: '';
+    width: 6vmin;
+    height: 3vmin;
+    border-radius: 40%;
+    position: absolute;
+    bottom: 0.9vmin;
+    left: -0.5vmin;
+    background-color: var(--mouth-color);
+    transform: rotate(40deg);
+  }
+}
+
+.thinking-emoji-hand {
+  position: absolute;
+  width: 15vmin;
+  height: 13vmin;
+  background-color: var(--hand-color);
+  border-radius: 2vmin;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  bottom: 2vmin;
+  left: 3vmin;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    background-color: var(--hand-color);
+    border-radius: 45%;
+  }
+
+  &::before {
+    height: 6vmin;
+    width: 5vmin;
+    left: 0;
+    top: -4vmin;
+  }
+
+  &::after {
+    width: 15vmin;
+    height: 5vmin;
+    right: -10vmin;
+    top: 0;
+    border-radius: 40%;
+  }
+}
+
+.thinking-emoji-hand-outline {
+  z-index: -1;
+  background-color: var(--face-border-color);
+  width: 15vmin;
+  height: 13vmin;
+  position: absolute;
+  border-radius: 2vmin;
+  bottom: -0.5vmin;
+  left: 0.5vmin;
+}
