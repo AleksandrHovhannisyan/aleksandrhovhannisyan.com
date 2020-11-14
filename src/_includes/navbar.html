@@ -2,9 +2,9 @@
     <a href="#page-content" class="screen-reader-only skip-navigation">Skip main navigation</a>
     <nav class="navbar">
         <div class="navbar-container">
-            <a id="home-link" href="/">
+            <a id="home-link" href="/" aria-label="Home page">
               <img src="/assets/img/favicon/favicon-228.png" aria-hidden="true" alt="" id="logo">
-              <span id="website-name" aria-label="Home page">{{ site.title }}</span>
+              <span id="website-name">{{ site.title }}</span>
             </a>
             <button id="navbar-toggle" aria-label="Open navigation menu" type="button">
                 <span class="icon-bar"></span>
@@ -27,7 +27,7 @@
                         </li>
                     {% endfor %}
                     <li class="navbar-item" id="theme-toggle-container">
-                        <button id="theme-toggle" class="lamp" title="Toggle theme" aria-label="Toggle theme" type="button">
+                        <button id="theme-toggle" class="lamp" aria-label="Toggle theme" type="button">
                             <span class="lamp-base"></span>
                             <span class="lamp-neck"></span>
                             <span class="lamp-head"></span>
