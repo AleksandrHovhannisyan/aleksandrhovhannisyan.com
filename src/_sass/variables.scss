@@ -1,4 +1,14 @@
-@import 'colors';
+:root {
+  --transition-duration: 0.2s;
+  --page-max-width: 45em;
+  --line-height-headings: 1.5;
+  --list-item-spacing: 0.25em;
+  --navbar-height: 3.2em;
+  --navbar-z-index: 100;
+  --navbar-toggle-size: 1.6em;
+  --footer-height: 4em;
+  --scroll-margin-top: calc(var(--navbar-height) + 1em);
+}
 
 html.light {
   --button-bg-color-hover: #4989a7;
@@ -18,25 +28,24 @@ html.light {
   --input-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0);
   --input-required-asterisk-color: #98434b;
   --link-color: #216ec4;
-  //--main-bg-color: #fdfdfd;
   --main-bg-color: white;
   --navbar-bg-color: #2c2c2c;
   --navbar-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.8);
   --navbar-link-bg-color-hover: #444647;
   --navbar-text-color: hsl(0, 0%, 85%);
-  --post-meta-text-color: #4e4e4e;
   --post-meta-icon-fill: #696c6f;
+  --post-meta-text-color: #4e4e4e;
   --scrollbar-thumb-bg-color-hover: #adadad;
   --scrollbar-thumb-bg-color: #858585;
   --scrollbar-track-bg-color: var(--navbar-bg-color);
   --selection-bg-color: rgba(218, 227, 231, 0.8);
   --selection-text-color: black;
   --spoiler-bg-color: #dae3e7;
-  --star-fill-color-filled: #35647a;
   --star-fill-color-empty: #adacac;
+  --star-fill-color-filled: #35647a;
+  --table-border-color: hsl(0, 0%, 80%);
   --table-header-bg-color: hsl(0, 0%, 90%);
   --table-header-text-color: black;
-  --table-border-color: hsl(0, 0%, 80%);
   --tag-bg-color-hover: #35647a;
   --tag-bg-color: #dae3e7;
   --tag-text-color-hover: white;
@@ -68,19 +77,19 @@ html.dark {
   --navbar-box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.8);
   --navbar-link-bg-color-hover: #444647;
   --navbar-text-color: hsl(0, 0%, 85%);
-  --post-meta-text-color: #c7c7c7;
   --post-meta-icon-fill: #aaa9a9;
+  --post-meta-text-color: #c7c7c7;
   --scrollbar-thumb-bg-color-hover: #adadad;
   --scrollbar-thumb-bg-color: #858585;
   --scrollbar-track-bg-color: var(--navbar-bg-color);
   --selection-bg-color: rgba(209, 201, 191, 80%);
   --selection-text-color: black;
   --spoiler-bg-color: #9c9387;
-  --star-fill-color-filled: #bda17f;
   --star-fill-color-empty: #474747;
+  --star-fill-color-filled: #bda17f;
+  --table-border-color: #575757;
   --table-header-bg-color: #292929;
   --table-header-text-color: #dedede;
-  --table-border-color: #575757;
   --tag-bg-color-hover: #ffcd91;
   --tag-bg-color: #ada08f;
   --tag-text-color-hover: black;
