@@ -1,0 +1,62 @@
+@import 'mixins';
+@import 'fonts';
+@import 'pages/art/cube/index';
+@import 'pages/art/smirkingEmoji/index';
+@import 'pages/art/thinkingEmoji/index';
+@import 'pages/art/smileEmoji/index';
+@import 'pages/art/stickyNotes/index';
+@import 'pages/art/heartbeat/index';
+@import 'pages/art/loadingOrbs/index';
+
+#art-page-header {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  .title {
+    font-size: 3rem;
+    font-family: Rock Salt, $font-family-normal;
+  }
+
+  .subtitle {
+    font-style: italic;
+    max-width: 40ch;
+    margin: 0 auto;
+    font-family: $font-family-cursive;
+    @include font(4);
+  }
+}
+
+#art-list {
+  list-style: none;
+  grid-row-gap: 1rem;
+  grid-column-gap: 1rem;
+  grid-auto-rows: 1fr;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @media screen and (min-width: 900px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  $captionSize: -2;
+  $captionHeight: map-get(map-get($map: $fontSizes, $key: $captionSize), 'line-height') + unquote('rem');
+
+  figure {
+    display: grid;
+    grid-template-rows: 1fr $captionHeight;
+    grid-row-gap: 1rem;
+  }
+
+  figcaption {
+    text-align: center;
+    @include underlinedLink($initiallyUnderlined: false);
+    @include font($captionSize, 'light');
+  }
+}

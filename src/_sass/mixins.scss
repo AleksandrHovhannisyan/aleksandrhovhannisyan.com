@@ -111,6 +111,7 @@
 }
 
 @mixin responsiveGrid($mobileMin, $desktopMin, $mobileMax: 1fr, $desktopMax: 1fr, $cutoff: 600px) {
+  display: grid;
   grid-template-columns: repeat(auto-fill, minmax($mobileMin, $mobileMax));
 
   @media only screen and (min-width: $cutoff) {
