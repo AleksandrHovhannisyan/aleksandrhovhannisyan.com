@@ -45,20 +45,4 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-  $captionSize: 2;
-  $captionHeight: map-get(map-get($map: $fontSizes, $key: $captionSize), 'line-height') + unquote('rem');
-
-  figure {
-    display: grid;
-    grid-template-rows: 1fr $captionHeight;
-    grid-row-gap: 1rem;
-  }
-
-  figcaption {
-    text-align: center;
-    font-family: $font-family-cursive;
-    @include underlinedLink($initiallyUnderlined: false);
-    @include font($captionSize, 'bold');
-  }
 }
