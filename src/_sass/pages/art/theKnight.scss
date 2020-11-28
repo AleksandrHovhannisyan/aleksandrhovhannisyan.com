@@ -201,6 +201,21 @@
   transform: rotate(-5deg) scaleX(-1);
 }
 
+/* Top white bit */
+.theKnight-horn.right .hornHalf::before {
+  content: '';
+  display: block;
+  position: absolute;
+  background-color: white;
+  border-right: 0.2vmin solid transparent;
+  border-radius: 100%;
+  height: 3.9vmin;
+  width: 0.5vmin;
+  right: -1.2vmin;
+  bottom: 3vmin;
+  transform: rotate(-15deg) scaleX(-1);
+}
+
 /* The pincer bit of the horn */
 .theKnight-horn.right .hornHalf::after {
   content: '';
