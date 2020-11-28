@@ -38,9 +38,9 @@ Either way, does the body of the `if` statement execute? Take a second to think 
 
 ## Async Functions, Booleans, and Truthiness: A Slippery Bug
 
-The `if` statement in this code will *always* execute its body, regardless of what the async function returns. Your linter won't flag this as an error, nor will TypeScript if you're using it. Why? Because it's perfectly valid JavaScript—as far as they're concerned, your intent is in fact to check the truthiness of the async function's return value. But why is it always `true`?
+The `if` statement in this code will *always* execute its body, regardless of what the async function returns. ESLint won't flag this as an error. TypeScript technically *should*, [but it has not yet implemented this warning](https://github.com/microsoft/TypeScript/issues/25330) for un-awaited async functions.
 
-To understand why this happens, remember that `async/await` is just syntactic sugar for Promises. In JavaScript, an `async` function actually wraps its return value in a `Promise` object—even if it seems like the function is directly returning a value, and even if the function does not `await` anything.
+To understand why the expression always evaluates to `true`, recall that `async/await` is just syntactic sugar for Promises. In JavaScript, an `async` function actually wraps its return value in a `Promise` object—even if it seems like the function is directly returning a value, and even if the function does not `await` anything.
 
 We can verify this by logging the function call:
 
