@@ -7,7 +7,7 @@ tags: [dev, accessibility, html]
 
 All kinds of people use the web—a good developer's job is to create not only beautiful but also *accessible* user experiences. You can fix some basic accessibility issues by [writing semantic HTML](/blog/dev/semantic-html-accessibility/), but this will only get you so far. Eventually, you'll come to realize that web accessibility isn't just about checking off a few boxes on an audit or scoring 100 on your Lighthouse report.
 
-More importantly, you'll find that accessibility auditing tools like Lighthouse only do a superficial review of the most common accessibility issues, like skipped heading levels, anchors without text, or images without alt text. In reality, you can get away with [building the most inaccessible site possible with a perfect Lighthouse score](https://www.matuzo.at/blog/building-the-most-inaccessible-site-possible-with-a-perfect-lighthouse-score/), and Google won't bat an eye.
+More importantly, you'll find that accessibility auditing tools like Lighthouse only do a superficial review of the most common accessibility issues, like skipped heading levels, anchors without text, or images without alt text. In fact, you can [build an inaccessible site with a perfect Lighthouse score](https://www.matuzo.at/blog/building-the-most-inaccessible-site-possible-with-a-perfect-lighthouse-score/), so it's certainly not a perfect tool.
 
 Clearly, there are more subtle accessibility issues that you'll need to address if you want to create the best possible user experience on your website. This is even more important if your business needs to abide by [web accessibility laws and policies](https://www.w3.org/WAI/policies/), where accessibility is not a choice but rather a requirement.
 
