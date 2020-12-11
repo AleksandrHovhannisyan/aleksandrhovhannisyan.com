@@ -6,43 +6,37 @@ tags: [dev, react, typescript]
 comments_id: 62
 ---
 
-In React, you'll sometimes need to allow users to pass along a dynamic tag name as a prop to a component, changing the rendered tag in the output HTML. Admittedly, this is a somewhat rare pattern in React. But it does exist in the wild. For example, you may have seen it if you've ever worked with the [`react-intl` library for internationalization](https://formatjs.io/docs/react-intl/components/#formattedmessage), where `<FormattedMessage>` can optionally render strings in the specified tag:
+In React, you'll sometimes want to allow users to pass in a dynamic tag name as a prop to a component. While this is a somewhat rare pattern, you may still come across it in the wild. For example, you may have seen it if you've ever worked with the [`react-intl` library for internationalized strings](https://formatjs.io/docs/react-intl/components/#formattedmessage), where the `<FormattedMessage>` component accepts an optional `tagName` prop:
 
 ```tsx
 <FormattedMessage id="common.close" tagName="p" />
 ```
 
-For the purposes of this demo, let's say you want to create a reusable `CenteredContainer` wrapper component to center content on your page:
+To keep this demo simple, let's say we want to create a reusable `CenteredContainer` component to encapsulate some CSS or other logic (I won't show any of that here):
 
-{% capture code %}const CenteredContainer: FC = (props) => {
-  const { className, children } = props;
-  return <div className={classnames('centered', className)}>{children}</div>;
-}{% endcapture %}
+{% capture code %}import React, { FC } from 'react';
+
+interface CenteredContainerProps {
+  className?: string;
+}
+
+const CenteredContainer: FC<CenteredContainerProps> = (props) => <div {...props} />;{% endcapture %}
 {% include code.html file="components/CenteredContainer/index.tsx" code=code lang="tsx" %}
 
-You *could* always render a `<div>` like we're doing here, but that's not a great idea. Not only does it pollute your DOM with an extra decorative `<div>`, but it also makes it more difficult for you to write [semantic HTML markup](/blog/dev/semantic-html-accessibility/) that's accessible and easy to parse at a glance. Plus, there's no reason why a centered container should *always* be a `<div>`.
+You *could* always render a `<div>` like we're doing here, but that's not a great idea. It pollutes your DOM with an extra decorative `<div>`, making it difficult to write [semantic HTML markup](/blog/dev/semantic-html-accessibility/). Plus, there's no reason why a centered container should *always* be a `<div>`. This may even be invalid HTML depending on where you intend to use the container.
 
-One potential solution is to just create a reusable, globally scoped `.centered` class name and style it accordingly. Instead of using a component, simply slap that class name on any component that needs it. This certainly works, but it also has its downsides. Namely, if you're working with Next.js or any React project that enforces CSS modules or scoped styling, this is somewhat of an anti-pattern since you're introducing global styling that may or may not conflict with class names elsewhere in the DOM.
+Fortunately, we can take advantage of TypeScript's intellisense and pass a dynamic tag name as a prop to change the rendered tag:
 
-A better solution is to take advantage of TypeScript's intellisense and pass a dynamic tag name as a prop to change the rendered tag:
+{% capture code %}import React, { FC } from 'react';
 
-{% capture code %}import { FC } from 'react';
-import classnames from 'classnames';
-
-export interface CenteredContainerProps
-  extends React.HTMLAttributes<HTMLOrSVGElement> {
+interface CenteredContainerProps extends React.HTMLAttributes<HTMLOrSVGElement> {
   tagName?: keyof JSX.IntrinsicElements;
   className?: string;
 }
 
-const CenteredContainer: FC<CenteredContainerProps> = (props) => {
-  const { className, children, tagName } = props;
+const CenteredContainer: FC<CenteredContainerProps> = ({ tagName, ...otherProps }) => {
   const Tag = tagName as keyof JSX.IntrinsicElements;
-  return (
-    <Tag className={classnames('centered', className)}>
-      {children}
-    </Tag>
-  );
+  return <Tag {...otherProps} />;
 };
 
 CenteredContainer.defaultProps = {
@@ -51,8 +45,6 @@ CenteredContainer.defaultProps = {
 
 export default CenteredContainer;{% endcapture %}
 {% include code.html file="components/CenteredContainer/index.tsx" code=code lang="tsx" %}
-
-> **Note**: If you're not using the [`classnames` package](https://www.npmjs.com/package/classnames), I highly recommend that you install it. It's a nice little utility that generates class strings and takes care of undefined/nullish values for you.
 
 There are two things worth noting here.
 
@@ -84,26 +76,22 @@ CenteredContainer.defaultProps = {
 
 But you can override this by passing in a custom `tagName`:
 
-{% capture code %}import CenteredContainer from '@components/CenteredContainer';
-import { FC } from 'react';
+{% capture code %}import CenteredContainer from 'components/CenteredContainer';
+import React, { FC } from 'react';
 
-const MyComponent: FC = (props) => {
-  return (<CenteredContainer tagName="nav">
-    {props.children}
-  </CenteredContainer>);
-}{% endcapture %}
+const MyComponent: FC = ({ children }) => {
+  return <CenteredContainer tagName="nav">{children}</CenteredContainer>
+};{% endcapture %}
 {% include code.html file="components/Navbar/index.tsx" code=code lang="tsx" %}
 
 Since we've specified that `tagName` is `keyof JSX.IntrinsicElements`, we'll get auto-complete intellisense whenever we try to set this prop:
 
 {% include picture.html img="example.png" alt="An example of using the CenteredContainer component and passing in a concrete tagName. VS Code's intellisense shows an auto-complete dropdown for you as you type." %}
 
-Note that [render props](https://reactjs.org/docs/render-props.html) are yet another alternative pattern, but they're not always needed. You typically only need to use render props if the element being rendered depends on some state. Here, we're just telling the component what to render by passing in a plain string. The syntax is shorter and easier to read.
+In some cases, you may want to instead use [render props](https://reactjs.org/docs/render-props.html), but they're not always needed—sometimes, all you really want is to be able to specify a tag name as a string. You typically only need to use render props if the element being rendered depends on some state. Here, we're just telling the component what to render by passing in a plain string. The syntax is shorter and easier to read.
 
-That said, you may want to use render props if you want to pass any other dynamic props to your component, aside from a class and some children. Otherwise, you'll need to spread those remaining props in your component and extend the appropriate interfaces.
-
-That's it! I hope you found this helpful.
+And that's all there is to it! I hope you found this mini-tutorial helpful.
 
 ## Attributions
 
-Thumbnail photo by [Paolo Chiabrando](https://unsplash.com/@chiabra) via [Unsplash](https://unsplash.com/photos/do7VUvKBOsg).
+The photo used in this post's social media preview was taken by [Paolo Chiabrando](https://unsplash.com/@chiabra) and uploaded to [Unsplash](https://unsplash.com/photos/do7VUvKBOsg).
