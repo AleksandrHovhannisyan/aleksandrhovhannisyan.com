@@ -9,6 +9,7 @@ const navbar = new Navbar();
 // eslint-disable-next-line no-unused-vars
 const themeToggle = new ThemeToggle({
   toggleSelector: '#theme-toggle',
+  toggleAudioSrc: '/assets/audio/click.ogg',
   storageKey: 'theme',
   themeOwner: document.documentElement,
 });
