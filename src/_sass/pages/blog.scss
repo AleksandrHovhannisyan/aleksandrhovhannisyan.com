@@ -43,8 +43,7 @@
 }
 
 .post-title {
-    margin-top: 0 !important;
-    margin-bottom: 1rem;
+    margin: 0;
 }
 
 .post-meta {
@@ -111,14 +110,15 @@
 }
 
 #post {
-    @include headings {
-        scroll-margin-top: var(--scroll-margin-top);
-        margin-top: 1em;
-    }
+  display: grid;
+  grid-auto-flow: row;
+  grid-row-gap: 1rem;
 }
 
 .post-header {
-    margin-bottom: calc(var(--paragraph-spacing) / 2);
+  display: grid;
+  grid-auto-flow: row;
+  grid-row-gap: 1rem;
 }
 
 .post-content {
@@ -128,7 +128,9 @@
     overflow-wrap: break-word;
 
     @include headings {
-        margin-bottom: 0;
+      scroll-margin-top: var(--scroll-margin-top);
+      margin-top: 1em;
+      margin-bottom: 0;
     }
 
     #markdown-toc li {
