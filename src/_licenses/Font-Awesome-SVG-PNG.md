@@ -1,6 +1,10 @@
-This license applies to the SVG and path elements in /_includes/icon.html
+## Font-Awesome-SVG-PNG
 
-The MIT License (MIT)
+> Repository: [https://github.com/encharm/Font-Awesome-SVG-PNG](https://github.com/encharm/Font-Awesome-SVG-PNG)
+
+This license applies to the SVG elements defined in [`_includes/icon.html`](https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com/blob/master/src/_includes/icon.html).
+
+### The MIT License (MIT)
 
 Copyright (c) 2014 Code Charm Ltd
 
