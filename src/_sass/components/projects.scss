@@ -20,6 +20,9 @@
 .project-name-wrapper {
   align-self: center;
   grid-area: heading;
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 0.25rem;
 }
 
 .project-name {
@@ -31,7 +34,6 @@
 
 .project-icon {
   display: inline-block;
-  margin-right: 5px;
 
   * {
     vertical-align: middle;
@@ -40,18 +42,14 @@
 }
 
 .project-rating {
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 0.15rem;
   align-items: center;
   align-self: center;
-  display: flex;
   grid-area: rating;
   justify-self: center;
-  margin-right: 0.5em;
   @include font(-1);
-
-  .star {
-    margin-right: 3px;
-    margin-top: 2px;
-  }
 }
 
 .project-description {
