@@ -10,12 +10,18 @@ permalink: /contact/
   <div id="contact-information">
     <form class="contact-form" action="https://formspree.io/xrgypaol" method="post" spellcheck="false">
       <input aria-hidden="true" type="hidden" name="_subject" value="Someone sent you a message!" />
-      <label class="required" for="name">Name</label>
-      <input class="input" type="text" name="name" id="name" required />
-      <label for="email">Email</label>
-      <input class="input" type="email" name="_replyto" id="email" />
-      <label class="required" for="message">Message</label>
-      <textarea class="input" name="body" id="message" required></textarea>
+      <div class="labeled-input">
+        <label class="required" for="name">Name</label>
+        <input class="input" type="text" name="name" id="name" required />
+      </div>
+      <div class="labeled-input">
+        <label for="email">Email</label>
+        <input class="input" type="email" name="_replyto" id="email" />
+      </div>
+      <div class="labeled-input">
+        <label class="required" for="message">Message</label>
+        <textarea class="input" name="body" id="message" required></textarea>
+      </div>
       <button type="submit" class="button solid-button">Send message</button>
       <input aria-hidden="true" type="text" name="_gotcha" class="honeypot" />
     </form>

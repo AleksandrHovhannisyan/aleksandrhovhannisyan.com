@@ -164,7 +164,6 @@ a {
   box-shadow: var(--input-box-shadow);
   color: var(--text-color-emphasis);
   height: 2em;
-  margin-bottom: 0.75em;
   padding: 0.25em 0.5em;
   width: 100%;
 
@@ -178,7 +177,6 @@ a {
 label {
   color: var(--text-color-emphasis);
   display: block;
-  margin-bottom: 0.3125em;
   @include weight('semiBold');
 
   &.required::after {
