@@ -133,6 +133,11 @@
       margin-bottom: 0;
     }
 
+    // Heading, not the actual table
+    #table-of-contents {
+      margin-top: 0;
+    }
+
     #markdown-toc li {
         &:not(:last-child) {
             margin-bottom: 1em;
@@ -147,6 +152,10 @@
             @include weight("semiBold");
             @include underlinedLink($initiallyUnderlined: true);
         }
+    }
+
+    #toc-skipped + * {
+      margin-top: 0;
     }
 
     li {
