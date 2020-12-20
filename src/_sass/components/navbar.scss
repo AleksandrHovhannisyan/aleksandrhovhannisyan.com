@@ -72,6 +72,7 @@
 }
 
 #home-link {
+  position: relative;
   flex-shrink: 0;
   display: grid;
   grid-auto-flow: column;
@@ -84,6 +85,63 @@
       color: white;
     }
   }
+}
+
+.santa-hat {
+    position: absolute;
+    width: 1.9rem;
+    border-radius: 50% 50% 0 0;
+    border: solid 0.1rem black;
+    transform: rotate(-30deg);
+    transform-style: preserve-3d;
+    left: -0.35rem;
+    top: 0.15rem;
+    height: 0.6rem;
+    background: white;
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+    }
+
+    &::before {
+      width: 1.7rem;
+      height: 1.3rem;
+      background-color: #C70C0D;
+      border: solid 0.15rem black;
+      top: -1.2rem;
+      left: -0.1rem;
+      z-index: -1;
+      border-radius: 10% 100% 0 0;
+      transform: translateZ(-1px);
+    }
+
+    &::after {
+      width: 0.4rem;
+      height: 1rem;
+      box-shadow: 0px 0.1rem 0 0.1rem black;
+      border-top: transparent;
+      border-right: transparent;
+      background-color: #C70C0D;
+      border-radius: 20% 0 20% 100%;
+      z-index: -2;
+      transform: translateZ(0px) rotate(48deg);
+      top: -1.1rem;
+      left: -0.3rem;
+    }
+}
+
+.santa-hat-pompom {
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid black;
+  left: -45%;
+  top: -47%;
 }
 
 #logo {
