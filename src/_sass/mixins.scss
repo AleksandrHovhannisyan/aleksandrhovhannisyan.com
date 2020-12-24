@@ -1,25 +1,6 @@
 @import 'functions';
 @import 'fonts';
 
-@mixin maxFontSize($max) {
-  // For most browsers, the base font size is 16px. To increase this fluidly, we find
-  // the screen width cutoff point at which 16px = some value in vw units.
-  // At 400px (25rem), for example, we find that 16px is exactly 4vw. So between
-  // 0px and 400px screens we get 16px font, and beyond that we scale up gradually
-  // and stop at whatever $max is.
-  // Reference: https://www.madebymike.com.au/writing/precise-control-responsive-typography/
-  //
-  @media screen and (min-width: 25rem) {
-    font-size: 4vw;
-  }
-
-  // Now we're saying "At what screen width should our scaling 4vw font size become
-  // $max?" Equation: 0.04 * screen_width = $max. Solve for screen width: $max / 0.04.
-  @media screen and (min-width: toRem($max / 0.04)) {
-    font-size: toRem($max);
-  }
-}
-
 // Inspiration: https://stackoverflow.com/a/49437769/5323344
 @mixin transition($props...) {
   $result: ();

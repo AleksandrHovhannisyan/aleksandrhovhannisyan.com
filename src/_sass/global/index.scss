@@ -23,7 +23,8 @@
 }
 
 html {
-  @include maxFontSize(20px);
+  /* Scale linearly from 16px to 20px */
+  font-size: clamp(1rem, calc(0.04rem + 4vw), 1.25rem);
 }
 
 body {
