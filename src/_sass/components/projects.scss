@@ -8,7 +8,10 @@
 }
 
 .project {
+  display: grid;
   grid-template-rows: max-content 1fr max-content;
+  grid-template-columns: 1fr;
+  row-gap: calc(var(--card-padding) / 2);
   margin-bottom: 0;
 }
 

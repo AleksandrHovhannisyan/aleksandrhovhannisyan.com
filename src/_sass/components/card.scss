@@ -3,17 +3,14 @@
 
 .card {
   --card-padding: 1.5em;
+  padding: var(--card-padding);
   background-color: var(--card-bg-color);
   border-radius: 5px;
   box-shadow: 0 1px 1px rgba(0,0,0,0.15),
               0 2px 2px rgba(0,0,0,0.15),
               0 4px 4px rgba(0,0,0,0.15),
               0 6px 12px rgba(0,0,0,0.15);
-  display: grid;
-  grid-template-columns: 1fr;
-  padding: var(--card-padding);
   position: relative;
-  row-gap: calc(var(--card-padding) / 2);
   transform: none;
   @include transition(box-shadow, transform);
 
