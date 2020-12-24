@@ -66,15 +66,16 @@
 }
 
 .meta {
-    display: flex;
+    display: grid;
+    grid-auto-flow: column;
     align-items: center;
+    grid-column-gap: 0.25rem;
     margin: 0 1em 1em 0;
 }
 
 .meta-icon {
     fill: var(--post-meta-icon-fill);
     height: 1em;
-    margin-right: 5px;
     width: 1em;
 }
 

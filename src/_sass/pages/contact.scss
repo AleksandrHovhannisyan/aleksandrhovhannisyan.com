@@ -27,7 +27,7 @@
     grid-auto-flow: row;
     grid-row-gap: 0.75rem;
     background-color: var(--form-bg-color);
-    border-radius: 2px;
+    border-radius: 0.1rem;
     box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.25);
     grid-area: form;
     max-width: $form-max-width;
@@ -53,7 +53,7 @@
     }
 
     .button {
-        border-radius: 2px;
+        border-radius: 0.1rem;
         height: 2.5rem;
         max-width: 100%;
         width: 100%;
@@ -71,13 +71,13 @@ input.honeypot {
 }
 
 #social-networks {
-    column-gap: 30px;
+    column-gap: 1.5rem;
     display: grid;
-    grid-auto-rows: 3em;
-    grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
-    margin-bottom: 3em;
-    margin-top: 3em;
-    row-gap: 2.5em;
+    grid-auto-rows: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    grid-row-gap: 2.5rem;
     list-style-type: none;
 }
 
@@ -87,7 +87,7 @@ input.honeypot {
 
 .social-network-link {
     height: 100%;
-    border-radius: 2px;
+    border-radius: 0.1rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
 

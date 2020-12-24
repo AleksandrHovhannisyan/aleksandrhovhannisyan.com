@@ -35,15 +35,6 @@
   @include font(0, 'bold');
 }
 
-.project-icon {
-  display: inline-block;
-
-  * {
-    vertical-align: middle;
-    width: 24px;
-  }
-}
-
 .project-rating {
   display: grid;
   grid-auto-flow: column;
@@ -56,8 +47,7 @@
 }
 
 .project-description {
-  margin-bottom: 0px;
-  margin-top: 0px;
+  margin: 0;
 }
 
 .project-technologies {
