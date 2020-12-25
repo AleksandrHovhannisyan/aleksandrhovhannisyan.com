@@ -139,14 +139,16 @@
       margin-top: 0;
     }
 
-    #markdown-toc li {
-        &:not(:last-child) {
-            margin-bottom: 1em;
+    #markdown-toc {
+        &, ol, ul {
+          display: grid;
+          grid-row-gap: 1rem;
         }
 
-        ol, ul {
-            margin-top: 1em;
-            margin-bottom: 0 !important;
+        li {
+          ol, ul {
+            margin-top: 1rem;
+          }
         }
 
         a {
@@ -159,15 +161,10 @@
       margin-top: 0;
     }
 
-    li {
-        &:not(:last-child) {
-            margin-bottom: var(--list-item-spacing);
-        }
-
-        ol, ul {
-            margin-top: var(--list-item-spacing);
-            margin-bottom: 0 !important;
-        }
+    ol,
+    ul {
+      display: grid;
+      grid-row-gap: var(--list-item-spacing);
     }
 
     p {
