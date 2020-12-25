@@ -388,7 +388,7 @@ I hope you found this helpful!
     .aspect-ratio-4-3 { padding-bottom: 75%; }
     .aspect-ratio-3-2 { padding-bottom: 66.67%; }
     .aspect-ratio-16-9 { padding-bottom: 56.25%; }
-    .square-grid { display: flex; flex-wrap: wrap; list-style: none; padding: 0 !important; }
+    .square-grid { display: flex !important; grid-row-gap: 0; flex-wrap: wrap; list-style: none; padding: 0 !important; }
     .square { height: 0; flex-basis: calc(33.33% - 1em); padding-bottom: calc(33.33% - 1em); background-color: var(--tag-bg-color); color: var(--tag-text-color); margin: 0.5em !important; position: relative; }
     .square * { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
     .square img, .square source { object-fit: cover; object-position: center; }
