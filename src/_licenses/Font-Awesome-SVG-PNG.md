@@ -2,7 +2,7 @@
 
 > Repository: [https://github.com/encharm/Font-Awesome-SVG-PNG](https://github.com/encharm/Font-Awesome-SVG-PNG)
 
-This license applies to the SVG elements defined in [`_includes/icon.html`](https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com/blob/master/src/_includes/icon.html).
+This license applies to all SVG elements defined in [`_includes/icon.html`](https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com/blob/master/src/_includes/icon.html) except for social media icons.
 
 ### The MIT License (MIT)
 
