@@ -163,7 +163,7 @@
     ol,
     ul {
       display: grid;
-      grid-row-gap: var(--list-item-spacing);
+      grid-row-gap: 0.25em;
     }
 
     p {
