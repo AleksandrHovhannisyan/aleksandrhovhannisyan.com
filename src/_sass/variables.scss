@@ -58,7 +58,7 @@ html.light {
   --form-bg-color: var(--gray-100);
   --hover-bg-color: var(--gray-100);
   --inline-code-bg-color: hsl(210, 25%, 9%, 0.07);
-  --inline-code-text-color: var(--blue-800);
+  --inline-code-text-color: var(--gray-800);
   --input-bg-color: white;
   --input-border-color-focus: var(--accent-blue-light);
   --input-border-color: var(--gray-200);
@@ -101,7 +101,7 @@ html.dark {
   --form-bg-color: var(--hover-bg-color);
   --hover-bg-color: var(--black-700);
   --inline-code-bg-color: rgba(88, 88, 88, 0.65);
-  --inline-code-text-color: #c4c4c4;
+  --inline-code-text-color: var(--black-300);
   --input-bg-color: var(--black-600);
   --input-border-color-focus: #bda17f;
   --input-border-color: var(--black-600);
