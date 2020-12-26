@@ -45,6 +45,6 @@
 .sticky-note-description {
   color: #3e464d;
   margin: 0;
-  font-family: $font-family-cursive;
+  font-family: var(--font-family-cursive);
   @include font(2);
 }

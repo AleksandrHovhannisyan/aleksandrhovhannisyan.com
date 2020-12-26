@@ -19,7 +19,7 @@
 
   .title {
     font-size: 3rem;
-    font-family: Rock Salt, $font-family-normal;
+    font-family: Rock Salt, var(--font-family-normal);
     text-shadow: 4px 4px black;
   }
 
@@ -27,7 +27,7 @@
     font-style: italic;
     max-width: 50ch;
     margin: 0 auto;
-    font-family: $font-family-cursive;
+    font-family: var(--font-family-cursive);
     @include font(4);
   }
 }

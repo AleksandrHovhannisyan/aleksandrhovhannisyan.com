@@ -31,7 +31,7 @@ body {
   background-color: var(--main-bg-color);
   color: var(--text-color-normal);
   display: grid;
-  font-family: $font-family-normal;
+  font-family: var(--font-family-normal);
   grid-template-rows: var(--navbar-height) 1fr var(--footer-height);
   min-height: 100vh;
   position: relative;
