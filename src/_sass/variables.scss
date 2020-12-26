@@ -8,11 +8,21 @@ html {
   --navbar-toggle-size: 1.6em;
   --footer-height: 4em;
   --scroll-margin-top: calc(var(--navbar-height) + 1em);
+
+  --blue-900: #1E3A46;
+  --blue-800: #21404D;
+  --blue-700: #244655;
+  --blue-600: #284D5E;
+  --blue-500: #35647A;
+  --blue-400: #5F8496;
+  --blue-300: #88A4B1;
+  --blue-200: #B1C4CC;
+  --blue-100: #DAE3E7;
 }
 
 html.light {
-  --button-bg-color-hover: #4989a7;
-  --button-bg-color: #35647a;
+  --button-bg-color-hover: var(--blue-300);
+  --button-bg-color: var(--blue-500);
   --button-text-color: white;
   --card-bg-color: white;
   --footer-bg-color: var(--navbar-bg-color);
@@ -40,16 +50,16 @@ html.light {
   --scrollbar-track-bg-color: var(--navbar-bg-color);
   --selection-bg-color: rgba(218, 227, 231, 0.8);
   --selection-text-color: black;
-  --spoiler-bg-color: #dae3e7;
+  --spoiler-bg-color: var(--blue-100);
   --star-fill-color-empty: #adacac;
-  --star-fill-color-filled: #35647a;
+  --star-fill-color-filled: var(--blue-500);
   --table-border-color: hsl(0, 0%, 80%);
   --table-header-bg-color: hsl(0, 0%, 90%);
   --table-header-text-color: black;
-  --tag-bg-color-hover: #35647a;
-  --tag-bg-color: #dae3e7;
+  --tag-bg-color-hover: var(--blue-500);
+  --tag-bg-color: var(--blue-100);
   --tag-text-color-hover: white;
-  --tag-text-color: var(--text-color-emphasis);
+  --tag-text-color: var(--blue-800);
   --text-color-emphasis: #2e3c42;
   --text-color-normal: #3b4249;
 }
