@@ -34,7 +34,7 @@ body {
   grid-template-rows: var(--navbar-height) 1fr var(--footer-height);
   min-height: 100vh;
   position: relative;
-  row-gap: var(--navbar-height);
+  grid-row-gap: var(--navbar-height);
   @include font(0);
 }
 

@@ -124,7 +124,7 @@
 .post-content {
     display: grid;
     grid-template-columns: minmax(0, var(--page-max-width));
-    row-gap: var(--paragraph-spacing);
+    grid-row-gap: var(--paragraph-spacing);
     overflow-wrap: break-word;
 
     @include headings {

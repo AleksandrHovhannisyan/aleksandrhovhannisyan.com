@@ -82,7 +82,7 @@ $meta-spacing: 0.5em;
 
 .comment-body {
   display: grid;
-  row-gap: var(--paragraph-spacing);
+  grid-row-gap: var(--paragraph-spacing);
 
   > * {
     min-width: 0;
