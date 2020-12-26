@@ -34,8 +34,12 @@
   }
 }
 
+@mixin zIndex($key) {
+  z-index: zIndex($key);
+}
+
 @mixin weight($humanReadableWeight: inherit) {
-  font-weight: map-get($font-weights, $humanReadableWeight);
+  font-weight: map-get($fontWeights, $humanReadableWeight);
 }
 
 @mixin font($size, $weight: inherit, $sizeUnit: 'rem') {

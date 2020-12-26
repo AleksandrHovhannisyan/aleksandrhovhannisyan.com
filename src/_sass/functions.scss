@@ -1,4 +1,10 @@
+@import 'zIndex';
+
 @function toRem($px) {
   $rem: $px / 16px;
   @return #{$rem}rem;
+}
+
+@function zIndex($key) {
+  @return map-get($zIndex, $key);
 }

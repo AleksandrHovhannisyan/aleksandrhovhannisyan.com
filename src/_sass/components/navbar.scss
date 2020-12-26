@@ -6,7 +6,7 @@
   left: 0;
   width: 100%;
   height: var(--navbar-height);
-  z-index: var(--navbar-z-index);
+  @include zIndex(navbar);
 }
 
 .skip-navigation {
@@ -199,6 +199,7 @@
 }
 
 #navbar-toggle {
+  --navbar-toggle-size: 1.6em;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
