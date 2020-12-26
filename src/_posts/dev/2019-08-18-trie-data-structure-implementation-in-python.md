@@ -1,6 +1,6 @@
 ---
 title: "Trie Data Structure Implementation in Python"
-description: In this tutorial, we'll implement a trie in Python from scratch. I'll provide visuals and code samples to help you understand how prefix trees work under the hood.
+description: Learn how to implement a trie in Python, with plenty of visuals and code samples to help you understand how prefix trees work.
 keywords: [python prefix tree, python prefix tree tutorial, python trie implementation, implement a trie in Python]
 tags: [dev, data-structures, python]
 ---
@@ -245,7 +245,7 @@ The first step is simple—we just did something very similar above for finding 
             # Could also just return words since it's empty by default
             return list()
         current = current.children[char]
-    
+
     # Step 2 will go here{% endcapture %}
 {% include code.html file="trie.py" code=code lang="python" %}
 
@@ -279,7 +279,7 @@ And here's the completed code for `starts_with`:
             # Could also just return words since it's empty by default
             return list()
         current = current.children[char]
-    
+
     # Step 2
     self.__child_words_for(current, words)
     return words{% endcapture %}

@@ -2,7 +2,7 @@
 title: Multiple Modals on One Page Using HTML, CSS, and JavaScript
 description: Learn how to create modal windows in HTML using just a bit of HTML, CSS, and JavaScript. We'll look at how you can open multiple modals on one page, either stacked on top of each other or side by side.
 keywords: [multiple modals on one page, two modals on the same page, how to create modal windows in html]
-tags: [dev, frontend, html, css, javascript]
+tags: [dev, html, css, javascript]
 last_updated: 2020-09-07
 comments_id: 31
 is_popular: true

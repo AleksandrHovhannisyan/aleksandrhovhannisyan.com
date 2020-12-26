@@ -2,7 +2,7 @@
 title: Create a Free Contact Form with Formspree
 description: Formspree makes it easy for you to add a free contact form to your website. Setting it up takes no more than a few minutes. Learn how to get started!
 keywords: [free contact form, formspree]
-tags: [dev, frontend, forms]
+tags: [dev, forms]
 last_updated: 2020-05-27
 ---
 
@@ -73,7 +73,7 @@ While the reCAPTCHA test already provides a solid defense against spam, Formspre
 {% capture code %}<input type="text" name="_gotcha" />{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-When a <s>bear</s> bot comes along and sticks its head where it doesn't belong, it'll be stuck. 
+When a <s>bear</s> bot comes along and sticks its head where it doesn't belong, it'll be stuck.
 
 {% include picture.html img="honeypot.jpg" alt="Pooh Bear with his head stuck in a honey pot." %}
 

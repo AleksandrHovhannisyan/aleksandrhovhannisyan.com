@@ -2,7 +2,7 @@
 title: Creating a Responsive Navbar Without Bootstrap
 description: Want to create a navbar that works on mobile and desktop? Ditch the frameworks—in this tutorial, we'll create a responsive navbar using HTML, CSS, and JS.
 keywords: [responsive navbar]
-tags: [dev, frontend, html, css, javascript]
+tags: [dev, html, css, javascript]
 comments_id: 28
 is_popular: true
 last_updated: 2020-09-16
@@ -280,7 +280,7 @@ Basically, we reset some of the default `<button>` styles and give the button fi
 ```
 
 > **Note**: I'm not using `div`s because it's invalid HTML to put divs inside buttons.
- 
+
 Here's the CSS for that:
 
 {% capture code %}.icon-bar {
@@ -484,7 +484,7 @@ I'll show the media query in its entirety and then we'll look at what each piece
     .navbar-toggle {
         display: none;
     }
-    
+
     #navbar .navbar-menu,
     #navbar.opened .navbar-menu {
         visibility: visible;

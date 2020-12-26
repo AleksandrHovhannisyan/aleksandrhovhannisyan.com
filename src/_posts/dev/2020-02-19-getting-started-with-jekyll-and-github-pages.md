@@ -2,7 +2,7 @@
 title: "Getting Started with Jekyll and GitHub Pages: Your First Website"
 description: Jekyll is a static site generator that makes it easy for you to create a website. Learn how to get started with Jekyll and GitHub Pages.
 keywords: [getting started with jekyll, jekyll and github pages]
-tags: [dev, jekyll, frontend, github]
+tags: [dev, jekyll, github]
 comments_id: 34
 is_popular: true
 last_updated: 2020-10-02
@@ -760,7 +760,7 @@ For example, this blog post that you're reading was written in Markdown and uses
 title: "Getting Started with Jekyll and GitHub Pages: Your First Website"
 description: Jekyll is a static site generator that makes it easy for you to create a website and blog. If you're interested in getting started with Jekyll and GitHub Pages, this in-depth guide is for you.
 keywords: [getting started with jekyll, jekyll and github pages]
-tags: [dev, jekyll, frontend, github]
+tags: [dev, jekyll, github]
 ---
 ```
 
