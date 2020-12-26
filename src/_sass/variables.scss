@@ -19,6 +19,10 @@ html {
   --blue-200: #B1C4CC;
   --blue-100: #DAE3E7;
 
+  --accent-blue: #216ec4;
+  --accent-blue-light: #288bba;
+  --accent-blue-lighter: #7ed6ff;
+
   --gray-900: #2E3C42;
   --gray-800: #3B4249;
   --gray-700: #444647;
@@ -52,12 +56,12 @@ html.light {
   --inline-code-bg-color: hsl(210, 25%, 9%, 0.07);
   --inline-code-text-color: var(--blue-800);
   --input-bg-color: white;
-  --input-border-color-focus: #288bba;
+  --input-border-color-focus: var(--accent-blue-light);
   --input-border-color: var(--gray-200);
-  --input-box-shadow-focus: 0 0 6px 0 #7ed6ff;
+  --input-box-shadow-focus: 0 0 6px 0 var(--accent-blue-lighter);
   --input-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0);
   --input-required-asterisk-color: #98434b;
-  --link-color: #216ec4;
+  --link-color: var(--accent-blue);
   --main-bg-color: white;
   --navbar-bg-color: var(--black-800);
   --navbar-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.8);
