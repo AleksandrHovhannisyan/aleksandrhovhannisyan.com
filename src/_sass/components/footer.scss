@@ -1,14 +1,11 @@
 @import 'mixins';
 
 #page-footer {
-  align-items: center;
+  grid-area: footer;
   background: var(--footer-bg-color);
-  bottom: 0;
-  display: flex;
-  grid-row: 2;
-  height: var(--footer-height);
+  height: 4rem;
+  align-items: center;
   justify-content: center;
-  position: absolute;
   width: 100%;
   @include centered;
 

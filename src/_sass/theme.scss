@@ -40,8 +40,13 @@ html {
   --transition-duration: 0.2s;
   --page-max-width: 45rem;
   --navbar-height: 3.2rem;
-  --footer-height: 4rem;
   --scroll-margin-top: calc(var(--navbar-height) + 1em);
+
+  @media screen and (min-width: 800px) {
+    html {
+      --scroll-margin-top: 0;
+    }
+  }
 }
 
 html.light {

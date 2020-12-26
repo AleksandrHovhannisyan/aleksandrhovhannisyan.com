@@ -31,7 +31,11 @@ body {
   color: var(--text-color-normal);
   display: grid;
   font-family: var(--font-family-normal);
-  grid-template-rows: var(--navbar-height) 1fr var(--footer-height);
+  grid-template-rows: var(--navbar-height) 1fr auto;
+  grid-template-areas:
+    'navbar'
+    'content'
+    'footer';
   min-height: 100vh;
   position: relative;
   grid-row-gap: var(--navbar-height);
@@ -39,7 +43,8 @@ body {
 }
 
 #page-content {
-  scroll-margin-top: var(--scroll-margin-top);
+  grid-area: content;
+  scroll-margin-top: var(--navbar-height);
   grid-row: 2;
   min-width: 0; // https://css-tricks.com/preventing-a-grid-blowout/
   @include centered;
