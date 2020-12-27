@@ -16,7 +16,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  @include weight('regular');
+  @include fontWeight('regular');
 
   &:focus {
     top: 0;
@@ -188,7 +188,7 @@
   margin: 0 1.2rem;
   display: block;
   color: var(--navbar-text-color);
-  @include weight('regular');
+  @include fontWeight('regular');
 }
 
 #active-navbar-link,
@@ -211,7 +211,7 @@
   width: var(--navbar-toggle-size);
   flex-shrink: 0;
   cursor: pointer;
-  @include font(0);
+  @include fontSize(0);
 
   .icon-bar {
     display: block;
@@ -246,7 +246,7 @@
   position: relative;
   transform: scale(0.8);
   transform-style: preserve-3d;
-  @include font(0);
+  @include fontSize(0);
 
   > * {
     display: block;

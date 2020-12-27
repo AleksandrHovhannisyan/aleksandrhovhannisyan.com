@@ -59,17 +59,17 @@ $meta-spacing: 0.5em;
 
 .comment-username {
   color: var(--text-color-emphasis);
-  @include weight('semiBold');
+  @include fontWeight('semiBold');
   @include underlinedLink;
 }
 
 .comment-edited {
   font-style: italic;
-  @include font(-1);
+  @include fontSize(-1);
 }
 
 .comment-date-posted {
-  @include font(-1);
+  @include fontSize(-1);
 }
 
 .comment-author-badge {
@@ -77,7 +77,7 @@ $meta-spacing: 0.5em;
   align-items: center;
   padding: 0 0.4em;
   height: 1.5rem;
-  @include font(-1);
+  @include fontSize(-1);
 }
 
 .comment-body {

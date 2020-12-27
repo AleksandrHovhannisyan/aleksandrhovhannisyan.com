@@ -27,7 +27,7 @@
     max-width: 50ch;
     margin: 0 auto;
     font-family: var(--font-family-cursive);
-    @include font(4);
+    @include fontSize(4);
   }
 }
 

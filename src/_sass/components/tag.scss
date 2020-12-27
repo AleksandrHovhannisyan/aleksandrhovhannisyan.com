@@ -2,7 +2,7 @@
   background-color: var(--tag-bg-color);
   border-radius: 3px;
   color: var(--tag-text-color);
-  @include weight("regular");
+  @include fontWeight("regular");
 }
 
 // Because not all tags are links/interactive (see project cards)

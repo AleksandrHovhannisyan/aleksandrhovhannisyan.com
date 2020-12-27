@@ -1,7 +1,7 @@
 @import 'mixins';
 
 .contact-heading {
-  @include font(3);
+  @include fontSize(3);
 }
 
 #contact-information {
@@ -41,7 +41,7 @@
     textarea,
     button {
       font-family: inherit;
-      @include font(0);
+      @include fontSize(0);
     }
 
     textarea {
@@ -55,7 +55,7 @@
         height: 2.5rem;
         max-width: 100%;
         width: 100%;
-        @include font(0);
+        @include fontSize(0);
     }
 }
 
@@ -65,7 +65,7 @@ input.honeypot {
 }
 
 .social-networks-heading {
-    @include font(1);
+    @include fontSize(1);
 }
 
 #social-networks {
@@ -98,7 +98,7 @@ input.honeypot {
         color: var(--text-color-normal);
         align-self: center;
         grid-column: 2;
-        @include weight("regular");
+        @include fontWeight("regular");
     }
 }
 

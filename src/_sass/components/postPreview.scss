@@ -21,7 +21,8 @@
 
 .post-preview-title {
   grid-area: title;
-  @include font(0, 'bold');
+  @include fontSize(0);
+  @include fontWeight('bold');
 
   a {
     color: var(--text-color-emphasis);

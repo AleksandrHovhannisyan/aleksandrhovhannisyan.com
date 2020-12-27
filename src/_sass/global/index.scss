@@ -39,7 +39,7 @@ body {
   min-height: 100vh;
   position: relative;
   grid-row-gap: var(--navbar-height);
-  @include font(0);
+  @include fontSize(0);
 }
 
 #page-content {
@@ -73,36 +73,37 @@ body {
 
 strong {
   color: var(--text-color-emphasis);
-  @include weight('bold');
+  @include fontWeight('bold');
 }
 
 @include headings {
   color: var(--text-color-emphasis);
   margin-bottom: 0.5em;
+  @include fontWeight('bold');
 }
 
 h1 {
-  @include font(5, 'bold');
+  @include fontSize(5);
 }
 
 h2 {
-  @include font(4, 'bold');
+  @include fontSize(4);
 }
 
 h3 {
-  @include font(3, 'bold');
+  @include fontSize(3);
 }
 
 h4 {
-  @include font(2, 'bold');
+  @include fontSize(2);
 }
 
 h5 {
-  @include font(1, 'bold');
+  @include fontSize(1);
 }
 
 h6 {
-  @include font(0, 'bold');
+  @include fontSize(0);
 }
 
 p {
@@ -182,7 +183,7 @@ a {
 label {
   color: var(--text-color-emphasis);
   display: block;
-  @include weight('semiBold');
+  @include fontWeight('semiBold');
 
   &.required::after {
     color: var(--input-required-asterisk-color);

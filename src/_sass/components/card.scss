@@ -46,7 +46,8 @@
     top: 0;
     width: 100%;
     @include transition(opacity);
-    @include font(1, "semiBold");
+    @include fontSize(1);
+    @include fontWeight("semiBold");
 
     svg {
         fill: var(--text-color-emphasis);

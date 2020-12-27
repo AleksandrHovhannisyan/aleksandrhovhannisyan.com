@@ -58,7 +58,8 @@ div.highlighter-rouge {
   color: #bcbcbc;
   margin: 0;
   word-break: break-all;
-  @include font(0, 'regular');
+  @include fontSize(0);
+  @include fontWeight('regular');
 
   &::before {
     content: '📂';
@@ -84,7 +85,7 @@ div.highlighter-rouge {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   top: 0;
   position: relative;
-  @include font(0);
+  @include fontSize(0);
 
   &::before {
     content: 'Copy';

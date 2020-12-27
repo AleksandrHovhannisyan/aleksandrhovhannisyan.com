@@ -12,7 +12,7 @@ thead {
   color: var(--table-header-text-color);
 
   th {
-    @include weight('semiBold');
+    @include fontWeight('semiBold');
   }
 }
 

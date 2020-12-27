@@ -38,19 +38,19 @@
   z-index: zIndex($key);
 }
 
-@mixin weight($humanReadableWeight: inherit) {
+@mixin fontWeight($humanReadableWeight: inherit) {
   font-weight: map-get($fontWeights, $humanReadableWeight);
 }
 
-@mixin font($size, $weight: inherit, $sizeUnit: 'rem') {
+@mixin fontSize($size) {
   $styles: map-get($fontSizes, $size);
   $fontSize: map-get($styles, 'font-size');
   $lineHeight: map-get($styles, 'line-height');
 
-  font-size: $fontSize + unquote($sizeUnit);
-  @include weight($weight);
+  font-size: $fontSize;
   line-height: $lineHeight;
   --paragraph-spacing: #{$lineHeight + unquote('em')};
+
 }
 
 @mixin underlinedLink($initiallyUnderlined: true) {

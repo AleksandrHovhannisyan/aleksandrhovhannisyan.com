@@ -34,7 +34,7 @@
     margin-bottom: 1em;
     margin-right: 0.625em;
     padding: 0.4em 0.8em;
-    @include font(-1);
+    @include fontSize(-1);
 }
 
 .pagination-page-current {
@@ -52,7 +52,7 @@
     margin: 0;
     color: var(--post-meta-text-color);
     position: relative;
-    @include font(-2);
+    @include fontSize(-2);
 }
 
 .author-photo {
@@ -151,7 +151,7 @@
         }
 
         a {
-            @include weight("semiBold");
+            @include fontWeight("semiBold");
             @include underlinedLink($initiallyUnderlined: true);
         }
     }
@@ -178,7 +178,7 @@
         figcaption {
           font-style: italic;
           text-align: center;
-          @include font(-1);
+          @include fontSize(-1);
         }
 
         picture {
