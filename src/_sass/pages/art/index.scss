@@ -1,4 +1,5 @@
 @import 'mixins';
+@import 'fonts';
 @import 'pages/art/theKnight';
 @import 'pages/art/wanderingHusk';
 @import 'pages/art/cuphead';
@@ -18,7 +19,7 @@
 
   .title {
     font-size: 3rem;
-    font-family: Rock Salt, var(--font-family-normal);
+    font-family: Rock Salt, unquote(map-get($fontFamilies, 'cursive'));
     text-shadow: 4px 4px black;
   }
 
@@ -26,7 +27,7 @@
     font-style: italic;
     max-width: 50ch;
     margin: 0 auto;
-    font-family: var(--font-family-cursive);
+    @include fontFamily('cursive');
     @include fontSize(4);
   }
 }

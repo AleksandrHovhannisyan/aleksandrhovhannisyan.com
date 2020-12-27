@@ -38,6 +38,10 @@
   z-index: zIndex($key);
 }
 
+@mixin fontFamily($family) {
+  font-family: unquote(map-get($fontFamilies, $family));
+}
+
 @mixin fontWeight($humanReadableWeight: inherit) {
   font-weight: map-get($fontWeights, $humanReadableWeight);
 }

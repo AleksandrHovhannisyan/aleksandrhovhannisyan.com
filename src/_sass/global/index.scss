@@ -30,7 +30,7 @@ body {
   background-color: var(--main-bg-color);
   color: var(--text-color-normal);
   display: grid;
-  font-family: var(--font-family-normal);
+  @include fontFamily('normal');
   grid-template-rows: var(--navbar-height) 1fr auto;
   grid-template-areas:
     'navbar'

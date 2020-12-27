@@ -125,7 +125,7 @@ code {
   border-radius: 4px;
   color: var(--inline-code-text-color);
   padding: 0.2em 0.4em;
-  font-family: var(--font-family-code);
+  @include fontFamily('code');
   // TODO: set type scale for code family later
   font-size: 0.925em;
 }
