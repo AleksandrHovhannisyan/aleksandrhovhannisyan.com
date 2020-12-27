@@ -22,7 +22,11 @@
 }
 
 html {
-  font-size: 62.5%;
+  font-size: 55.56%;
+
+  @media screen and (min-width: 700px) {
+    font-size: 62.5%;
+  }
 }
 
 body {
