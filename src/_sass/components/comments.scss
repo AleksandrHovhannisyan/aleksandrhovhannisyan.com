@@ -3,8 +3,8 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-top: 2em;
-  margin-bottom: 2em;
+  margin-top: 4.8rem;
+  margin-bottom: 4.8rem;
 
   h2 {
     margin: 0 !important;
@@ -24,17 +24,15 @@
   list-style-type: none;
   width: 100%;
   padding: 0 !important;
+  display: grid;
+  grid-row-gap: 7.2rem !important;
 }
 
-$avatar-size: 2em;
-$meta-spacing: 0.5em;
+$avatar-size: 3.2rem;
+$meta-spacing: 0.8rem;
 
 .comment {
   margin-left: $avatar-size + $meta-spacing;
-
-  &:not(:last-of-type) {
-    margin-bottom: 4em !important;
-  }
 }
 
 .comment-header {
@@ -75,9 +73,8 @@ $meta-spacing: 0.5em;
 .comment-author-badge {
   display: flex;
   align-items: center;
-  padding: 0 0.4rem;
-  height: 2.4rem;
-  @include fontSize(-1);
+  padding: 0.2rem 0.4rem;
+  @include fontSize(-2);
 }
 
 .comment-body {
