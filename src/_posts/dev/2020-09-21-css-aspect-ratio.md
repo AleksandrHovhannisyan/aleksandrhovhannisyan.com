@@ -70,7 +70,7 @@ With that in mind, we can give an element an aspect ratio in CSS using just four
 
 In plain English, all we're doing is setting an element's height using padding alone. Step three just expresses the aspect ratio's height as a percentage of the width. Since the child element stretches to fill `100%` of its containing block's width, this will be the same as defining the element's own height as a percentage of *its own width*. This is precisely the definition of aspect ratio!
 
-### Question: What's the Difference Between a Containing Block and a Parent?
+### What's the Difference Between a Containing Block and a Parent?
 
 Above, you may have noticed that I used the term *containing block* instead of *parent*. Most tutorials will use the term parent, but this is slightly inaccurate in the context of percentage padding.
 
