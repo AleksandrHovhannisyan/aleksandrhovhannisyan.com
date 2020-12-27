@@ -2,9 +2,9 @@
 
 html {
   --transition-duration: 0.2s;
-  --page-max-width: 45rem;
-  --navbar-height: 3.2rem;
-  --scroll-margin-top: calc(var(--navbar-height) + 1em);
+  --page-max-width: 815px;
+  --navbar-height: 6.4rem;
+  --scroll-margin-top: var(--navbar-height);
 
   @media screen and (min-width: 800px) {
     html {

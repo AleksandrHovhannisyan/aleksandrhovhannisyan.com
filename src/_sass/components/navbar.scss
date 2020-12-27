@@ -355,7 +355,7 @@
   }
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 700px) {
   .navbar-header {
     position: relative;
   }
@@ -371,7 +371,7 @@
 
     .navbar-links {
       grid-row-gap: 0;
-      grid-column-gap: 1rem;
+      grid-column-gap: 1.6rem;
       grid-auto-flow: column;
       align-items: center;
       box-shadow: none;
@@ -387,7 +387,7 @@
     }
 
     .navbar-link {
-      padding: 0.25em 0.8em;
+      padding: 0.4rem 1.6rem;
       display: inline;
       margin: 0;
     }

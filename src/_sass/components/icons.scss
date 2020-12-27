@@ -1,8 +1,8 @@
 @import 'mixins';
 
 .star {
-  height: 1em;
-  width: 1em;
+  height: 1.6rem;
+  width: 1.6rem;
 
   &.star-filled {
     fill: var(--star-fill-color-filled);

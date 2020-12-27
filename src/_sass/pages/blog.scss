@@ -1,5 +1,12 @@
 @import 'mixins';
 
+.blog-page-title {
+  margin-bottom: 0.8rem;
+}
+.blog-page-description {
+  margin-bottom: 1.6rem;
+}
+
 .post-tag {
     display: inline-block;
 }
@@ -15,10 +22,9 @@
     }
 
     .post-tag {
-        margin-bottom: 1em;
-        margin-right: 1em;
-        padding: 0.2em 0.8em;
-        height: 2.2em;
+        margin-bottom: 1.6rem;
+        margin-right: 1.6rem;
+        padding: 0.4rem 1.6rem;
     }
 }
 
@@ -32,8 +38,8 @@
 .pagination-page {
     @extend .tag;
     margin-bottom: 1em;
-    margin-right: 0.625em;
-    padding: 0.4em 0.8em;
+    margin-right: 1.2rem;
+    padding: 0.4rem 1.6rem;
     @include fontSize(-1);
 }
 
@@ -52,12 +58,12 @@
     margin: 0;
     color: var(--post-meta-text-color);
     position: relative;
-    @include fontSize(-2);
+    @include fontSize(-1);
 }
 
 .author-photo {
-    height: 2.5rem;
-    width: 2.5rem;
+    height: 50px;
+    width: 50px;
 
     * {
         border-radius: 50%;
@@ -68,19 +74,19 @@
     display: grid;
     grid-auto-flow: column;
     align-items: center;
-    grid-column-gap: 0.25rem;
-    margin: 0 1em 1em 0;
+    grid-column-gap: 0.4rem;
+    margin: 0 1.6rem 1.6rem 0;
 }
 
 .meta-icon {
     fill: var(--post-meta-icon-fill);
-    height: 1em;
-    width: 1em;
+    height: 1.6rem;
+    width: 1.6rem;
 }
 
 .skip-post-meta-tags {
     background: var(--main-bg-color);
-    padding: 0.3em 0.6em;
+    padding: 0.8rem 1.6rem;
 }
 
 .skip-post-meta-tags-target {
@@ -96,40 +102,40 @@
 }
 
 .post-meta-tag-wrapper {
-    margin-bottom: 1em;
+    margin-bottom: 1.6rem;
 
     &:not(:last-child) {
-        margin-right: 0.625em;
+        margin-right: 0.8rem;
     }
 }
 
 .post-meta-tag {
     display: flex;
     align-items: center;
-    padding: 0.3em 0.8em;
+    padding: 0.4rem 1.2rem;
 }
 
 #post {
   display: grid;
   grid-auto-flow: row;
-  grid-row-gap: 1rem;
+  grid-row-gap: 2.4rem;
 }
 
 .post-header {
   display: grid;
   grid-auto-flow: row;
-  grid-row-gap: 1rem;
+  grid-row-gap: 2.4rem;
 }
 
 .post-content {
     display: grid;
     grid-template-columns: minmax(0, var(--page-max-width));
-    grid-row-gap: var(--paragraph-spacing);
+    grid-row-gap: 3.2rem;
     overflow-wrap: break-word;
 
     @include headings {
       scroll-margin-top: var(--scroll-margin-top);
-      margin-top: 1em;
+      margin-top: 3.2rem;
       margin-bottom: 0;
     }
 
@@ -141,12 +147,12 @@
     #markdown-toc {
         &, ol, ul {
           display: grid;
-          grid-row-gap: 1rem;
+          grid-row-gap: 2.4rem;
         }
 
         li {
           ol, ul {
-            margin-top: 1rem;
+            margin-top: 2.4rem;
           }
         }
 
@@ -230,10 +236,10 @@
     blockquote {
         border-left: 4px solid;
         margin-left: 1.2rem;
-        padding: 0.25em var(--paragraph-spacing);
+        padding: 0.4rem 3.2rem;
 
         p:not(:last-child) {
-            margin-bottom: var(--paragraph-spacing);
+            margin-bottom: 2.4rem;
         }
     }
 

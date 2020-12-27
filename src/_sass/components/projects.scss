@@ -3,7 +3,7 @@
 
 .project-grid {
   list-style-type: none;
-  margin-top: 3rem;
+  margin-top: 6.4rem;
 }
 
 .project {
@@ -24,7 +24,7 @@
   grid-area: heading;
   display: grid;
   grid-auto-flow: column;
-  grid-column-gap: 0.25rem;
+  grid-column-gap: 0.4rem;
 }
 
 .project-name {
@@ -38,7 +38,7 @@
 .project-rating {
   display: grid;
   grid-auto-flow: column;
-  grid-column-gap: 0.15rem;
+  grid-column-gap: 0.4rem;
   align-items: center;
   align-self: center;
   grid-area: rating;
@@ -59,10 +59,10 @@
 }
 
 .project-technology {
-  margin-bottom: 0px;
-  margin-right: 0.5em;
-  margin-top: 0.5em;
-  padding: 0.25em 0.8em;
+  margin-bottom: 0;
+  margin-right: 0.8rem;
+  margin-top: 0.8rem;
+  padding: 0.4rem 1.2rem;
   @include fontSize(-2);
 }
 
@@ -75,9 +75,9 @@
   a {
     border-radius: 50%;
     display: inline-block;
-    height: 50px;
-    margin-top: 20px;
-    width: 50px;
+    height: 4.8rem;
+    width: 4.8rem;
+    margin-top: 1.6rem;
 
     .icon-github {
       @include themed(fill, $brand-github, $brand-github-alt);
@@ -86,7 +86,7 @@
 }
 
 .github-cta-heading {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.8rem;
   @include fontSize(0);
   @include fontWeight('bold');
 }

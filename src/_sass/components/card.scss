@@ -1,10 +1,10 @@
 @import 'mixins';
 
 .card {
-  --card-padding: 1.5em;
+  --card-padding: 3.2rem;
   padding: var(--card-padding);
   background-color: var(--card-bg-color);
-  border-radius: 5px;
+  border-radius: 0.4rem;
   box-shadow: 0 1px 1px rgba(0,0,0,0.15),
               0 2px 2px rgba(0,0,0,0.15),
               0 4px 4px rgba(0,0,0,0.15),
@@ -34,7 +34,7 @@
   .hover-content {
     align-items: center;
     background-color: var(--card-bg-color);
-    border-radius: 5px;
+    border-radius: 0.4rem;
     color: var(--text-color-emphasis);
     display: flex;
     flex-direction: column;
@@ -51,7 +51,7 @@
 
     svg {
         fill: var(--text-color-emphasis);
-        margin-top: 20px;
+        margin-top: 1.6rem;
         width: 1.2em;
     }
   }

@@ -42,7 +42,7 @@ $meta-spacing: 0.5em;
   flex-wrap: wrap;
   align-items: center;
   position: relative;
-  margin-bottom: calc(#{var(--paragraph-spacing)} - #{$meta-spacing} / 2);
+  margin-bottom: 1.6rem;
 }
 
 .comment-meta {
@@ -75,14 +75,14 @@ $meta-spacing: 0.5em;
 .comment-author-badge {
   display: flex;
   align-items: center;
-  padding: 0 0.4em;
-  height: 1.5rem;
+  padding: 0 0.4rem;
+  height: 2.4rem;
   @include fontSize(-1);
 }
 
 .comment-body {
   display: grid;
-  grid-row-gap: var(--paragraph-spacing);
+  grid-row-gap: 2.4rem;
 
   > * {
     min-width: 0;

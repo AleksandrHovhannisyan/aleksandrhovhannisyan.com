@@ -8,9 +8,7 @@ is_popular: true
 last_updated: 2020-10-02
 ---
 
-Want to make a personal website or blog and share it with the world? Then you've come to the right place! This is the only guide you'll need for getting started with Jekyll. I'll take you from zero to hero with Jekyll and help you understand all the fundamentals.
-
-{% include picture.html img="thumbnail-large.png" alt="Jekyll and GitHub Pages." %}
+Want to make a personal website or blog and share it with the world? Then you've come to the right place! This is the only guide you'll need on getting started with Jekyll. I'll take you from zero to hero with Jekyll and help you understand all the fundamentals.
 
 I moved my old site from pure HTML and CSS to Jekyll a while back and immediately fell in love. There's very little that Jekyll doesn't allow you to accomplish, so it's a perfect, lightweight option for beginners and veterans alike.
 

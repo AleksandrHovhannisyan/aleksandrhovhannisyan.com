@@ -22,23 +22,22 @@
 }
 
 html {
-  /* Scale linearly from 16px to 20px */
-  font-size: clamp(1rem, calc(0.04rem + 4vw), 1.25rem);
+  font-size: 62.5%;
 }
 
 body {
   background-color: var(--main-bg-color);
   color: var(--text-color-normal);
   display: grid;
-  @include fontFamily('normal');
   grid-template-rows: var(--navbar-height) 1fr auto;
   grid-template-areas:
-    'navbar'
-    'content'
-    'footer';
+  'navbar'
+  'content'
+  'footer';
   min-height: 100vh;
   position: relative;
   grid-row-gap: var(--navbar-height);
+  @include fontFamily('normal');
   @include fontSize(0);
 }
 
@@ -78,7 +77,6 @@ strong {
 
 @include headings {
   color: var(--text-color-emphasis);
-  margin-bottom: 0.5em;
   @include fontWeight('bold');
 }
 
@@ -108,7 +106,6 @@ h6 {
 
 p {
   color: var(--text-color-normal);
-  margin-bottom: var(--paragraph-spacing);
 }
 
 .underlined-link {
@@ -160,7 +157,7 @@ a {
 }
 
 .section:not(:last-of-type) {
-  margin-bottom: calc(2 * var(--navbar-height));
+  margin-bottom: 12.8rem;
 }
 
 .input {

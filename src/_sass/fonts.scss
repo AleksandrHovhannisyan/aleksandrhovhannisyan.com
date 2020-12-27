@@ -11,37 +11,40 @@ $fontFamilies: (
   'code': 'Inconsolata, Monaco, Consolas, Courier New, monospace'
 );
 
+$fontScale: 1.125;
+$baseRem: 1.8rem;
+
 $fontSizes: (
   -2: (
-      'font-size': 0.79rem,
+      'font-size': $baseRem / ($fontScale * $fontScale),
       'line-height': 1.813,
     ),
   -1: (
-      'font-size': 0.889rem,
+      'font-size': $baseRem / $fontScale,
       'line-height': 1.778,
     ),
   0: (
-    'font-size': 1rem,
+    'font-size': $baseRem,
     'line-height': 1.75,
   ),
   1: (
-    'font-size': 1.125rem,
+    'font-size': $baseRem * $fontScale,
     'line-height': 1.739,
   ),
   2: (
-    'font-size': 1.266rem,
+    'font-size': $baseRem * $fontScale * $fontScale,
     'line-height': 1.68,
   ),
   3: (
-    'font-size': 1.424rem,
+    'font-size': $baseRem * $fontScale * $fontScale * $fontScale,
     'line-height': 1.679,
   ),
   4: (
-    'font-size': 1.602rem,
+    'font-size': $baseRem * $fontScale * $fontScale * $fontScale * $fontScale,
     'line-height': 1.656,
   ),
   5: (
-    'font-size': 1.802rem,
+    'font-size': $baseRem * $fontScale * $fontScale * $fontScale * $fontScale * $fontScale,
     'line-height': 1.611,
   )
 );

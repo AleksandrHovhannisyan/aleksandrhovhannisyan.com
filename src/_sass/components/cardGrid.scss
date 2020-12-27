@@ -1,7 +1,7 @@
 @import 'mixins';
 
 .card-grid {
-  $card-spacing: 2.5em;
+  $card-spacing: 4.8rem;
   display: grid;
   column-gap: $card-spacing;
   grid-row-gap: $card-spacing;

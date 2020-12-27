@@ -1,17 +1,18 @@
 @import 'mixins';
 
 #hero-banner {
-    margin-top: calc(var(--navbar-height) / 2);
+    margin-top: 3.2rem;
     display: grid;
-    margin-bottom: calc(1.5 * var(--navbar-height));
+    margin-bottom: 9.6rem;
     grid-template-areas:
         "title title headshot"
         "subtitle subtitle subtitle";
 
     .title {
         grid-area: title;
+        margin-bottom: 0.8rem;
     }
-    
+
     .subtitle {
         margin: 0;
         grid-area: subtitle;
@@ -19,11 +20,12 @@
 }
 
 #headshot {
-    --headshot-size: 5rem;
+    --headshot-size: 7rem;
     width: var(--headshot-size);
     height: var(--headshot-size);
     grid-area: headshot;
     justify-self: center;
+    align-self: center;
 
     img {
         border-radius: 50%;
@@ -32,25 +34,29 @@
 
 @media screen and (min-width: 500px) {
     #hero-banner {
-        grid-template-areas: 
+        grid-template-areas:
             "title title headshot"
             "subtitle subtitle subtitle";
     }
 
     #headshot {
-        margin-left: 1em;
+        margin-left: 1.6rem;
     }
 }
 
 @media screen and (min-width: 600px) {
     #hero-banner {
-        grid-template-areas: 
+        grid-template-areas:
             "title title headshot"
             "subtitle subtitle headshot";
     }
 
     #headshot {
-        --headshot-size: 7.5rem;
-        margin-left: 1rem;
+        --headshot-size: 14rem;
+        margin-left: 1.6rem;
     }
+}
+
+#software-projects {
+  margin-bottom: 0.8rem;
 }

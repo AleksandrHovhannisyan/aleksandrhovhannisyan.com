@@ -2,7 +2,7 @@
 
 .button {
   align-items: center;
-  border-radius: 5px;
+  border-radius: 0.4rem;
   display: flex;
   justify-content: center;
   text-decoration: none;
@@ -13,18 +13,18 @@
 .solid-button {
   background-color: var(--button-bg-color);
   color: var(--button-text-color);
-  border: 3px solid var(--button-bg-color);
+  border: 0.4rem solid var(--button-bg-color);
 
   &:focus, &:hover {
       background-color: var(--button-bg-color-hover);
-      border: 3px solid var(--button-bg-color-hover);
+      border: 0.4rem solid var(--button-bg-color-hover);
   }
 }
 
 .hollow-button {
   color: var(--button-bg-color);
   background-color: transparent;
-  border: 3px solid;
+  border: 0.4rem solid;
   box-shadow: 0 0 0 0 transparent;
 
   &:focus,

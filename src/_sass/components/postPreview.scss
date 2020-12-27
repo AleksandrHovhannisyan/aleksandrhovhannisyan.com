@@ -1,7 +1,7 @@
 .post-preview-grid {
-  margin-top: 4em;
+  margin-top: 6.4rem;
   display: grid;
-  grid-row-gap: 3em;
+  grid-row-gap: 6.4rem;
 }
 
 .post-preview {
@@ -21,6 +21,7 @@
 
 .post-preview-title {
   grid-area: title;
+  margin-bottom: 1.6rem;
   @include fontSize(0);
   @include fontWeight('bold');
 
@@ -33,7 +34,7 @@
 .post-preview-thumbnail-container {
   position: relative;
   margin-right: 0;
-  margin-bottom: 1em;
+  margin-bottom: 1.6rem;
   grid-area: thumbnail;
   height: 0;
   // 16:9 aspect ratio
@@ -49,6 +50,13 @@
   left: 0;
   height: 100%;
   width: 100%;
+
+  picture {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+  }
 
   img,
   source {
@@ -86,14 +94,17 @@
       'thumbnail title'
       'thumbnail description'
       'thumbnail meta';
+    grid-column-gap: 2.4rem;
   }
 
   .post-preview-thumbnail-container {
-    margin: 0 1.8em 1em 0;
-    width: 12em;
+    height: unset;
+    padding-bottom: 0;
+    margin: 0 0 1.6rem 0;
+    width: 200px;
   }
 
   .post-preview-description {
-    margin-bottom: 0.8em;
+    margin-bottom: 1.6rem;
   }
 }

@@ -1,10 +1,10 @@
 @import 'colors';
 
 div.highlighter-rouge {
-  $code-block-padding-bottom: 0.5em;
-  $code-block-padding: 1.5em;
-  border-radius: 5px;
-  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.4);
+  $code-block-padding-bottom: 0.4rem;
+  $code-block-padding: 3.2rem;
+  border-radius: 0.4rem;
+  box-shadow: 0 0.2rem 0.8rem 0 rgba(0, 0, 0, 0.4);
 
   & > div.highlight {
     padding: $code-block-padding;
@@ -25,14 +25,13 @@ div.highlighter-rouge {
 .code-header {
   display: flex;
   background-color: $black-600;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  box-shadow: 0 3px 3px 0px rgba(0, 0, 0, 0.3);
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+  box-shadow: 0 0.4rem 0.4rem 0px rgba(0, 0, 0, 0.3);
   flex-wrap: wrap;
   justify-content: flex-end;
-  padding: 12px 20px;
-  margin-bottom: calc(-1 * #{var(--paragraph-spacing)} + -1px);
-  margin-top: 0.5em;
+  padding: 0.8rem 1.6rem;
+  margin-bottom: -3.2rem;
   z-index: 2;
 
   // Code blocks that have a header
@@ -63,7 +62,7 @@ div.highlighter-rouge {
 
   &::before {
     content: '📂';
-    margin-right: 5px;
+    margin-right: 0.4rem;
   }
 }
 
@@ -77,12 +76,14 @@ div.highlighter-rouge {
   border: none;
   align-items: center;
   cursor: pointer;
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 0.4rem;
   background-color: $black-500;
   color: $black-200;
-  padding: 0.4em 0.5em;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+  box-shadow: 0 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.5);
   top: 0;
   position: relative;
   @include fontSize(0);
@@ -92,9 +93,8 @@ div.highlighter-rouge {
   }
 
   &::after {
-    margin-left: 4px;
     content: '📋';
-    width: 1em;
+    display: block;
   }
 
   &.copied,
@@ -105,8 +105,8 @@ div.highlighter-rouge {
   }
 
   &:active {
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
-    top: 2px;
+    box-shadow: 0 0 0.4rem 0 rgba(0, 0, 0, 0.5);
+    top: 0.2rem;
   }
 
   &.copied {
@@ -122,7 +122,7 @@ div.highlighter-rouge {
 
 code {
   background-color: var(--inline-code-bg-color);
-  border-radius: 4px;
+  border-radius: 0.4rem;
   color: var(--inline-code-text-color);
   padding: 0.2em 0.4em;
   @include fontFamily('code');
@@ -132,7 +132,7 @@ code {
 
 // VS Code Dark Theme, modified for use with Rouge.
 .highlight {
-  border-radius: 5px;
+  border-radius: 0.4rem;
 
   &,
   code {

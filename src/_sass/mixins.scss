@@ -53,8 +53,6 @@
 
   font-size: $fontSize;
   line-height: $lineHeight;
-  --paragraph-spacing: #{$lineHeight + unquote('em')};
-
 }
 
 @mixin underlinedLink($initiallyUnderlined: true) {
@@ -90,7 +88,7 @@
   }
 }
 
-@mixin centered($marginMin: 1.2rem, $contentMax: var(--page-max-width)) {
+@mixin centered($marginMin: 2.4rem, $contentMax: var(--page-max-width)) {
   display: grid;
   grid-template-columns: minmax($marginMin, 1fr) minmax(0, $contentMax) minmax($marginMin, 1fr);
 

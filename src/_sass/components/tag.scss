@@ -1,6 +1,6 @@
 .tag {
   background-color: var(--tag-bg-color);
-  border-radius: 3px;
+  border-radius: 0.2rem;
   color: var(--tag-text-color);
   @include fontWeight("regular");
 }

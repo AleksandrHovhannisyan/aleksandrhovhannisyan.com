@@ -16,7 +16,7 @@ is_blog_page: true
     {% assign blogType = blogType | append: capitalizedWord %}
   {% endfor %}
   <h1 class="blog-page-title">{{ blogType }}Blog Posts</h1>
-  <p>
+  <p class="blog-page-description">
     {% if site.data.tags[pageTag] %}
     {{site.data.tags[pageTag] }}
     {% else %}
