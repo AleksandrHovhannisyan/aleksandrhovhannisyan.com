@@ -15,36 +15,12 @@ $fontScale: 1.125;
 $baseRem: 1.8rem;
 
 $fontSizes: (
-  -2: (
-      'font-size': $baseRem / ($fontScale * $fontScale),
-      'line-height': 1.813,
-    ),
-  -1: (
-      'font-size': $baseRem / $fontScale,
-      'line-height': 1.778,
-    ),
-  0: (
-    'font-size': $baseRem,
-    'line-height': 1.75,
-  ),
-  1: (
-    'font-size': $baseRem * $fontScale,
-    'line-height': 1.739,
-  ),
-  2: (
-    'font-size': $baseRem * $fontScale * $fontScale,
-    'line-height': 1.68,
-  ),
-  3: (
-    'font-size': $baseRem * $fontScale * $fontScale * $fontScale,
-    'line-height': 1.679,
-  ),
-  4: (
-    'font-size': $baseRem * $fontScale * $fontScale * $fontScale * $fontScale,
-    'line-height': 1.656,
-  ),
-  5: (
-    'font-size': $baseRem * $fontScale * $fontScale * $fontScale * $fontScale * $fontScale,
-    'line-height': 1.611,
-  )
+  -2: $baseRem / ($fontScale * $fontScale),
+  -1: $baseRem / $fontScale,
+   0: $baseRem,
+   1: $baseRem * $fontScale,
+   2: $baseRem * $fontScale * $fontScale,
+   3: $baseRem * $fontScale * $fontScale * $fontScale,
+   4: $baseRem * $fontScale * $fontScale * $fontScale * $fontScale,
+   5: $baseRem * $fontScale * $fontScale * $fontScale * $fontScale * $fontScale,
 );

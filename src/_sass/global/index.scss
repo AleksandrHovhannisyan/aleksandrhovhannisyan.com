@@ -37,6 +37,7 @@ body {
   min-height: 100vh;
   position: relative;
   grid-row-gap: var(--navbar-height);
+  line-height: 1.75;
   @include fontFamily('normal');
   @include fontSize(0);
 }

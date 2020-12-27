@@ -46,13 +46,8 @@
   font-weight: map-get($fontWeights, $humanReadableWeight);
 }
 
-@mixin fontSize($size) {
-  $styles: map-get($fontSizes, $size);
-  $fontSize: map-get($styles, 'font-size');
-  $lineHeight: map-get($styles, 'line-height');
-
-  font-size: $fontSize;
-  line-height: $lineHeight;
+@mixin fontSize($step) {
+  font-size: map-get($fontSizes, $step);
 }
 
 @mixin underlinedLink($initiallyUnderlined: true) {
