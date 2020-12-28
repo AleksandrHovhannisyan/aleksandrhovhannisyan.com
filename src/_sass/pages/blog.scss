@@ -118,13 +118,13 @@
 #post {
   display: grid;
   grid-auto-flow: row;
-  grid-row-gap: 2.4rem;
+  grid-row-gap: 1.6rem;
 }
 
 .post-header {
   display: grid;
   grid-auto-flow: row;
-  grid-row-gap: 2.4rem;
+  grid-row-gap: 1.6rem;
 }
 
 .post-content {
@@ -169,7 +169,7 @@
     ol,
     ul {
       display: grid;
-      grid-row-gap: 0.25em;
+      grid-row-gap: 0.4rem;
     }
 
     p {
