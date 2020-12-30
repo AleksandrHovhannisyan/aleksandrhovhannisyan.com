@@ -24,7 +24,7 @@ div.highlighter-rouge {
 
 .code-header {
   display: flex;
-  background-color: #3b3b3b;
+  background-color: $black-600;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   box-shadow: 0 3px 3px 0px rgba(0, 0, 0, 0.3);
@@ -55,7 +55,7 @@ div.highlighter-rouge {
 }
 
 .code-file-name {
-  color: #bcbcbc;
+  color: $black-200;
   margin: 0;
   word-break: break-all;
   @include fontSize(0);
@@ -78,8 +78,8 @@ div.highlighter-rouge {
   align-items: center;
   cursor: pointer;
   display: flex;
-  background-color: #616161;
-  color: #e7e7e7;
+  background-color: $black-500;
+  color: $black-200;
   padding: 0.4em 0.5em;
   border-radius: 5px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
@@ -100,8 +100,8 @@ div.highlighter-rouge {
   &.copied,
   &:focus,
   &:hover {
-    color: black;
-    background-color: #adadad;
+    color: $black;
+    background-color: $black-400;
   }
 
   &:active {
