@@ -6,7 +6,7 @@
 }
 
 .contact-subtitle {
-  margin-bottom: 1.6rem;
+  margin-bottom: 2.4rem;
 }
 
 #contact-information {
@@ -19,13 +19,12 @@
 
     @media only screen and (min-width: 800px) {
         grid-row-gap: 0;
-        grid-template-areas: "form form form socials";
+        grid-template-areas: "form socials";
+        grid-template-columns: 42.5rem auto;
     }
 }
 
 .contact-form {
-    $form-max-width: 475px;
-
     display: grid;
     grid-auto-flow: row;
     grid-row-gap: 1.6rem;
@@ -33,7 +32,6 @@
     border-radius: 0.2rem;
     box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.25);
     grid-area: form;
-    max-width: $form-max-width;
     padding: 2.4rem;
     height: fit-content;
 
@@ -53,7 +51,7 @@
 
     textarea {
         line-height: inherit;
-        min-height: 150px;
+        min-height: 17.5rem;
         width: 100%;
     }
 

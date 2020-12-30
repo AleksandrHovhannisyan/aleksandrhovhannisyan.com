@@ -1,4 +1,5 @@
 @import 'mixins';
+@import 'fonts';
 
 ::selection {
   background-color: var(--selection-bg-color);
@@ -22,9 +23,9 @@
 }
 
 html {
-  font-size: 55.56%;
+  font-size: 50%;
 
-  @media screen and (min-width: 700px) {
+  @media screen and (min-width: 500px) {
     font-size: 62.5%;
   }
 }
@@ -41,7 +42,7 @@ body {
   min-height: 100vh;
   position: relative;
   grid-row-gap: var(--navbar-height);
-  line-height: 1.75;
+  line-height: $line-height;
   @include fontFamily('normal');
   @include fontSize(0);
 }

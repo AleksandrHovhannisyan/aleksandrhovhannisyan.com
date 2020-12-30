@@ -371,7 +371,7 @@
 
     .navbar-links {
       grid-row-gap: 0;
-      grid-column-gap: 1.6rem;
+      grid-column-gap: 2rem;
       grid-auto-flow: column;
       align-items: center;
       box-shadow: none;
@@ -398,6 +398,6 @@
   }
 
   #theme-toggle-container {
-    margin-left: 0.5em;
+    margin-left: 1.2rem;
   }
 }

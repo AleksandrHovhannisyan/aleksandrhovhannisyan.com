@@ -12,7 +12,7 @@ $fontFamilies: (
 );
 
 $fontScale: 1.125;
-$baseRem: 1.8rem;
+$baseRem: 2rem;
 
 $fontSizes: (
   -2: $baseRem / ($fontScale * $fontScale),
@@ -24,3 +24,5 @@ $fontSizes: (
    4: $baseRem * $fontScale * $fontScale * $fontScale * $fontScale,
    5: $baseRem * $fontScale * $fontScale * $fontScale * $fontScale * $fontScale,
 );
+
+$line-height: 1.75;

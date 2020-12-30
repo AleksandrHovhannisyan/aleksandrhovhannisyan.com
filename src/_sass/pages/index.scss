@@ -20,7 +20,7 @@
 }
 
 #headshot {
-    --headshot-size: 7rem;
+    --headshot-size: 10rem;
     width: var(--headshot-size);
     height: var(--headshot-size);
     grid-area: headshot;
@@ -32,7 +32,7 @@
     }
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 400px) {
     #hero-banner {
         grid-template-areas:
             "title title headshot"
@@ -40,11 +40,11 @@
     }
 
     #headshot {
-        margin-left: 1.6rem;
+      margin-left: 1.6rem;
     }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 500px) {
     #hero-banner {
         grid-template-areas:
             "title title headshot"
