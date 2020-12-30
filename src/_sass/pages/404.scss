@@ -1,8 +1,10 @@
+@import 'colors';
+
 #page-not-found {
     align-items: center;
     animation: backgroundScroll 40s linear infinite;
     animation-fill-mode: forwards;
-    background-color: #1a1a1a;
+    background-color: $black-900;
     // https://www.transparenttextures.com/stardust.html
     background-image: url('/assets/img/404/stardust.png');
     display: flex;
@@ -16,7 +18,7 @@
     text-align: center;
     top: 0;
     width: 100%;
-    text-shadow: black;
+    text-shadow: $black;
 
     @keyframes backgroundScroll {
         from {background-position: 0 0;}
@@ -24,11 +26,13 @@
     }
 
     h1 {
-        color: #cccccc;
+        color: $black-400;
+        margin-bottom: 1.6rem;
     }
 
     p {
-        color: #adadad;
+        color: $black-200;
+        margin-bottom: 1.6rem;
     }
 
     a {
