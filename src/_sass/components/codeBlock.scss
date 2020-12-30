@@ -1,4 +1,5 @@
 @import 'colors';
+@import 'fonts';
 
 div.highlighter-rouge {
   $code-block-padding-bottom: 1.6rem;
@@ -31,7 +32,7 @@ div.highlighter-rouge {
   flex-wrap: wrap;
   justify-content: flex-end;
   padding: 1.6rem;
-  margin-bottom: -1.75em;
+  margin-bottom: -1 * $line-height + unquote('em');
   z-index: 2;
 
   // Code blocks that have a header
