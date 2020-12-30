@@ -60,6 +60,7 @@
     color: var(--post-meta-text-color);
     position: relative;
     @include fontSize(-2);
+    @include fontWeight('light');
 }
 
 .author-photo {
