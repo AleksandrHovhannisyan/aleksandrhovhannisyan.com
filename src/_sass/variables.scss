@@ -6,6 +6,12 @@ html {
   --navbar-height: 6.4rem;
   --scroll-margin-top: var(--navbar-height);
 
+  --font-line-height: 1.6;
+
+  @media screen and (min-width: 500px) {
+    --font-line-height: 1.75;
+  }
+
   @media screen and (min-width: 800px) {
     html {
       --scroll-margin-top: 0;
