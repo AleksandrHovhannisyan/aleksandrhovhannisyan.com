@@ -110,7 +110,7 @@
 .post-meta-tag {
     display: flex;
     align-items: center;
-    padding: 0.8rem 1.6rem;
+    padding: 0.6rem 1.2rem;
 }
 
 .post-header {
@@ -124,8 +124,10 @@
     iframe,
     blockquote,
     figure,
+    table,
     ol,
     ul,
+    .embed-container,
     .katex-display {
       margin-top: 0;
       margin-bottom: 3.2rem;
