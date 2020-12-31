@@ -82,7 +82,7 @@ The distinction is important; the W3 specs explicitly use the term *containing b
 
 Now, consider a practical example. Let's say you want to embed a YouTube video on your page, and you know that YouTube videos have an aspect ratio of `16:9`. But you don't want to give the iframe a *fixed* width and height—rather, you want its width to fill its container and for its height to scale responsively, maintaining the element's `16:9` aspect ratio:
 
-<div class="tile aspect-ratio-16-9" data-ratio="Pretend this is a YouTube iframe" aria-hidden="true"></div>
+<div class="tile aspect-ratio-16-9" data-ratio="Pretend this is a YouTube iframe" aria-hidden="true" style="margin-bottom: 3.2rem !important;"></div>
 
 We can do this using the padding trick that we learned. To create an aspect ratio of `16:9`, we simply set the element's height to be zero and the vertical padding to be `9 / 16 * 100 = 0.5625 * 100 = 56.25%`. Again, this just says that the element's height should be `56.25%` of its containing block's width. Note that if the element in question is a block-level element, like a `<div>`, then it already fills `100%` of its containing block's width. The final step is to relativly position the element and absolutely position any children so that they don't influence the element's height.
 
@@ -392,7 +392,7 @@ I hope you found this helpful!
     .square { height: 0; flex-basis: calc(33.33% - 1em); padding-bottom: calc(33.33% - 1em); background-color: var(--tag-bg-color); color: var(--tag-text-color); margin: 0.5em !important; position: relative; }
     .square * { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
     .square img, .square source { object-fit: cover; object-position: center; }
-    .document { writing-mode: vertical-rl; width: 100%; height: 200px; }
+    .document { margin-bottom: 3.2rem; writing-mode: vertical-rl; width: 100%; height: 200px; }
     .parent { width: 100%; display: flex; align-items: center; flex-direction: column; justify-content: space-evenly; background-color: var(--navbar-bg-color); color: white; height: 100%; }
     .child { padding: 10%; background-color: white; color: black; }
     .grid { padding: 0 !important; display: grid; grid-template-columns: 1fr 2fr; width: 100%; column-gap: 1em; }
