@@ -22,7 +22,7 @@ I've also worked as a freelance copy editor for over four years now, with my cli
 
 ## Hobbies and Interests
 
-Outside of work, you'll find me [writing on my blog](/blog/) and [praising till I'm hollow](https://www.youtube.com/watch?v=mp28JPs25ek). I'm a die-hard [Soulsborne](https://en.wikipedia.org/wiki/Souls_(series)) fan and love playing video games to relax and escape reality. As a kid, I was practically [raised by Flash games](https://www.youtube.com/watch?v=uhvey_FjtXA) (may they rest in peace) and an unhealthy amount of Old School Runescape, and these experiences with video games have shaped my interests and personality to this day.
+Outside of work, you'll find me [writing on my blog](/blog/) and [praising till I'm hollow](https://www.youtube.com/watch?v=mp28JPs25ek). I'm a die-hard [Soulsborne](https://en.wikipedia.org/wiki/Souls_(series)) fan and love playing video games to relax and escape reality. As a kid, I was practically raised by Flash games (may they [rest in peace](/blog/off-topic/rest-in-peace-flash/)) and an unhealthy amount of Old School Runescape, and these experiences with video games have shaped my interests and personality to this day.
 
 Gaming is just one of the many ways I like to spend my free time. I also enjoy listening to music; it's an incredibly therapeutic and creative outlet for me, especially when I'm working. Some of my favorite genres include classic rock, alt and post rock, and indie (if that's even a genre anymore). I especially like music written by Lana Del Rey, Arctic Monkeys, Radiohead, certain songs from Nirvana, Godspeed You! Black Emperor, God Is an Astronaut, Pink Floyd, and a few others.
 
