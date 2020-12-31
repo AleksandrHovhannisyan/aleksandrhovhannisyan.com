@@ -24,14 +24,14 @@ is_blog_page: true
     {% endif %}
   </p>
   <nav aria-label="Primary blog post tags">
-    <ul class="tag-navigation">
+    <ul class="navigation-tags">
       {% assign tags = "all,react,accessibility,css,off-topic" | split: ',' %}
       {% for tag in tags %}
       {% assign tagDescription = site.data.tags[tag][1] %}
       <li>
           <a
             href="{% if tag == "all" %}/blog/{% else %}/tag/{{ tag }}{% endif %}"
-            class="post-tag tag{% if pageTag == tag %} active-tag{% endif %}"
+            class="tag post-tag navigation-tag{% if pageTag == tag %} active-tag{% endif %}"
             title="{% if pageTag != tag %}View{% endif %} {% if tag == "all" %}all posts{% else %}posts tagged as {{ tag }}{% endif %}"
             {% if pageTag == tag %}aria-current="page"{% endif %}
           >

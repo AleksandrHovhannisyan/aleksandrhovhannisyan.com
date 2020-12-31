@@ -4,8 +4,9 @@
 div.highlighter-rouge {
   $code-block-padding-bottom: 1.6rem;
   $code-block-padding: 3.2rem;
+  margin-bottom: 3.2rem;
   border-radius: 0.4rem;
-  box-shadow: 0 0.2rem 0.8rem 0 rgba(0, 0, 0, 0.4);
+  box-shadow: var(--code-block-box-shadow);
 
   & > div.highlight {
     padding: $code-block-padding;
@@ -32,13 +33,10 @@ div.highlighter-rouge {
   flex-wrap: wrap;
   justify-content: flex-end;
   padding: 1.6rem;
-  margin-bottom: -1 * $line-height + unquote('em');
   z-index: 2;
 
   // Code blocks that have a header
   & + .highlighter-rouge {
-    margin-top: 0 !important;
-
     // If we don't do this, the top-left and top-right border radii will be visible
     & .highlight {
       border-top-left-radius: 0;

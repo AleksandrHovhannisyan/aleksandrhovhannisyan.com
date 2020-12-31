@@ -4,6 +4,7 @@
 .blog-page-title {
   margin-bottom: 0.8rem;
 }
+
 .blog-page-description {
   margin-bottom: 2.4rem;
 }
@@ -12,21 +13,17 @@
     display: inline-block;
 }
 
-.tag-navigation {
+.navigation-tags {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
+}
 
-    li {
-        margin-bottom: 0;
-    }
-
-    .post-tag {
-        margin-bottom: 1.6rem;
-        margin-right: 1.6rem;
-        padding: 0.4rem 1.6rem;
-    }
+.navigation-tag {
+  margin-bottom: 1.6rem;
+  margin-right: 1.6rem;
+  padding: 0.8rem 1.6rem;
 }
 
 .pagination-trail {
@@ -49,7 +46,7 @@
 }
 
 .post-title {
-    margin: 0;
+    margin-bottom: 1.6rem;
 }
 
 .post-meta {
@@ -114,68 +111,52 @@
 .post-meta-tag {
     display: flex;
     align-items: center;
-    padding: 0.6rem 1.2rem;
-}
-
-#post {
-  display: grid;
-  grid-auto-flow: row;
-  grid-row-gap: 1.6rem;
+    padding: 0.8rem 1.6rem;
 }
 
 .post-header {
-  display: grid;
-  grid-auto-flow: row;
-  grid-row-gap: 1.6rem;
+  margin-bottom: 1.6rem;
 }
 
 .post-content {
-    display: grid;
-    grid-template-columns: minmax(0, var(--page-max-width));
-    grid-row-gap: $line-height + unquote("em");
     overflow-wrap: break-word;
+
+    p,
+    blockquote,
+    figure,
+    ol,
+    ul,
+    .katex-display {
+      margin-top: 0;
+      margin-bottom: 3.2rem;
+    }
 
     @include headings {
       scroll-margin-top: var(--scroll-margin-top);
-      margin-top: 3.2rem;
-      margin-bottom: 0;
-    }
-
-    // Heading, not the actual table
-    #table-of-contents {
-      margin-top: 0;
+      margin-top: 4.8rem;
+      margin-bottom: 1.6rem;
     }
 
     #markdown-toc {
-        &, ol, ul {
-          display: grid;
-          grid-row-gap: 2.4rem;
-        }
+      li {
+        margin-bottom: 2.4rem;
 
-        li {
-          ol, ul {
-            margin-top: 2.4rem;
-          }
+        ol, ul {
+          margin-top: 2.4rem;
         }
+      }
 
-        a {
-            @include fontWeight("semiBold");
-            @include underlinedLink($initiallyUnderlined: true);
-        }
-    }
-
-    #toc-skipped + * {
-      margin-top: 0;
+      a {
+          @include fontWeight("semiBold");
+          @include underlinedLink($initiallyUnderlined: true);
+      }
     }
 
     ol,
     ul {
-      display: grid;
-      grid-row-gap: 0.4rem;
-    }
-
-    p {
-        margin: 0;
+      li {
+        margin-bottom: 0.8rem;
+      }
     }
 
     a:not(.button):not(.clickable-picture-anchor):not(.username) {
@@ -191,7 +172,7 @@
 
         picture {
             margin-top: 0;
-            margin-bottom: 1em;
+            margin-bottom: 0.8rem;
         }
     }
 
@@ -210,7 +191,7 @@
     }
 
     img {
-        border-radius: 5px;
+        border-radius: 0.4rem;
     }
 
     .embed-container {
@@ -232,16 +213,16 @@
 
     ul,
     ol {
-        padding-left: 2em;
+        padding-left: 4.8rem;
     }
 
     blockquote {
-        border-left: 4px solid;
-        margin-left: 1.2rem;
+        border-left: 0.4rem solid;
+        margin-left: 2.4rem;
         padding: 0.4rem 3.2rem;
 
-        p:not(:last-child) {
-            margin-bottom: 2.4rem;
+        p:last-child {
+            margin-bottom: 0;
         }
     }
 

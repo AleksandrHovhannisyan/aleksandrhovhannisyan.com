@@ -18,6 +18,7 @@ html.light {
   --button-bg-color: #{$blue-500};
   --button-text-color: #{$white};
   --card-bg-color: #{$white};
+  --code-block-box-shadow: none;
   --footer-bg-color: #{$black-800};
   --footer-text-color: #{$black-200};
   --form-bg-color: #{$black-100};
@@ -61,6 +62,7 @@ html.dark {
   --button-bg-color: #bda17f;
   --button-text-color: #{$black-700};
   --card-bg-color: #{$black-700};
+  --code-block-box-shadow: 0 0.2rem 0.8rem 0 rgba(0,0,0,0.4);
   --footer-bg-color: var(--navbar-bg-color);
   --footer-text-color: var(--navbar-text-color);
   --form-bg-color: #{$black-700};
