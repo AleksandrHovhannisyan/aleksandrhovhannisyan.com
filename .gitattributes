@@ -1,1 +1,2 @@
-webpack/**/*.js text eol=lf
+* text=auto eol=lf
+*.{png,jpg,jpeg,gif,webp} binary
