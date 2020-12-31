@@ -1,8 +1,6 @@
-## Titillium Web
+## Fira Sans
 
-> Google Fonts: [https://fonts.google.com/specimen/Titillium+Web](https://fonts.google.com/specimen/Titillium+Web)
-
-Copyright (c) 2009-2011 by Accademia di Belle Arti di Urbino and students of MA course of Visual design. Some rights reserved.
+> Google Fonts: [https://fonts.google.com/specimen/Fira+Sans](https://fonts.google.com/specimen/Fira+Sans)
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:

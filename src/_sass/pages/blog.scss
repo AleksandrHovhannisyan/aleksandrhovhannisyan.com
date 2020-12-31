@@ -27,7 +27,7 @@
 }
 
 .pagination-trail {
-    margin-top: 3em;
+    margin-top: 3.2rem;
     display: flex;
     justify-content: flex-end;
     list-style-type: none;
@@ -35,9 +35,9 @@
 
 .pagination-page {
     @extend .tag;
-    margin-bottom: 1em;
+    margin-bottom: 0.6rem;
     margin-right: 1.2rem;
-    padding: 0.4rem 1.6rem;
+    padding: 0.6rem 1.2rem;
     @include fontSize(-1);
 }
 
@@ -56,31 +56,41 @@
     list-style: none;
     margin: 0;
     position: relative;
-    @include fontSize(-2);
+    @include fontSize(-1);
     @include fontWeight('light');
-}
 
-.author-photo {
-    height: 50px;
-    width: 50px;
-
-    * {
-        border-radius: 50%;
+    @media screen and (min-width: 500px) {
+      @include fontSize(-2);
     }
 }
 
 .meta {
-    display: grid;
-    grid-auto-flow: column;
-    align-items: center;
-    grid-column-gap: 0.4rem;
-    margin: 0 1.6rem 1.6rem 0;
+  margin: 0 1.6rem 1.6rem 0;
 }
 
 .meta-icon {
-    fill: var(--post-meta-icon-fill);
-    height: 1.6rem;
-    width: 1.6rem;
+  fill: var(--post-meta-icon-fill);
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.author-photo {
+  grid-column-gap: 0;
+  height: 5rem;
+  width: 5rem;
+
+  * {
+      border-radius: 50%;
+  }
+}
+
+.post-date-published,
+.post-date-updated,
+.post-reading-length {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  grid-column-gap: 0.4rem;
 }
 
 .skip-post-meta-tags {
@@ -94,6 +104,7 @@
 
 .post-meta-tags {
   display: grid;
+  grid-auto-flow: column;
   grid-column-gap: 1.2rem;
   list-style: none;
   padding: 0;

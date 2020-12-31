@@ -10,18 +10,13 @@
 }
 
 #contact-information {
-    column-gap: 12.8rem;
-    display: grid;
-    grid-template-areas: "form"
-                         "socials";
-    grid-template-rows: auto;
-    grid-row-gap: 4.8rem;
-
-    @media only screen and (min-width: 800px) {
-        grid-row-gap: 0;
-        grid-template-areas: "form socials";
-        grid-template-columns: 42.5rem auto;
-    }
+  display: grid;
+  grid-template-areas:
+    "form"
+    "socials";
+  grid-template-rows: auto;
+  grid-column-gap: 9.6rem;
+  grid-row-gap: 4.8rem;
 }
 
 .contact-form {
@@ -91,6 +86,7 @@ input.honeypot {
 .social-network {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    justify-content: center;
     padding: 1.6rem;
     border-radius: 0.2rem;
 
@@ -130,4 +126,12 @@ input.honeypot {
 
 .upwork {
     fill: $brand-upwork;
+}
+
+@media only screen and (min-width: 800px) {
+  #contact-information {
+    grid-row-gap: 0;
+    grid-template-areas: "form socials";
+    grid-template-columns: 40rem auto;
+  }
 }

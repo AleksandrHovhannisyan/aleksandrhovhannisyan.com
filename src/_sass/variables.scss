@@ -2,14 +2,14 @@
 
 html {
   --transition-duration: 0.2s;
-  --page-max-width: 90rem;
+  --page-max-width: 80rem;
   --navbar-height: 6.4rem;
   --scroll-margin-top: var(--navbar-height);
 
   --font-line-height: 1.6;
 
   @media screen and (min-width: 500px) {
-    --font-line-height: 1.75;
+    --font-line-height: 1.8;
   }
 
   @media screen and (min-width: 800px) {

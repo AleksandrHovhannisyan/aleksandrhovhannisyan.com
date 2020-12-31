@@ -166,7 +166,7 @@
 
 .navbar-links {
   background-color: var(--navbar-bg-color);
-  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.8);
   list-style-type: none;
   position: absolute;
   left: 0;
@@ -174,8 +174,8 @@
   top: 0;
   display: grid;
   grid-auto-flow: row;
-  grid-row-gap: 1.5rem;
-  padding: 1.5rem 0;
+  grid-row-gap: 3.2rem;
+  padding: 3.2rem 0;
 }
 
 .navbar-item {
@@ -184,7 +184,7 @@
 
 .navbar-link {
   border-radius: 0.2rem;
-  padding: 0.75em;
+  padding: 1.6rem;
   margin: 0 1.2rem;
   display: block;
   color: var(--navbar-text-color);
@@ -200,7 +200,7 @@
 }
 
 #navbar-toggle {
-  --navbar-toggle-size: 1.6em;
+  --navbar-toggle-size: 3.2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -231,7 +231,7 @@
 
 #theme-toggle-container {
   display: flex;
-  height: 3em;
+  height: 4.8rem;
   justify-content: center;
 }
 

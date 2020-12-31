@@ -7,16 +7,16 @@
     grid-template-areas:
         "title title headshot"
         "subtitle subtitle subtitle";
+    grid-row-gap: 0.8rem;
+}
 
-    .title {
-        grid-area: title;
-        margin-bottom: 0.8rem;
-    }
+.hero-banner-title {
+  grid-area: title;
+}
 
-    .subtitle {
-        margin: 0;
-        grid-area: subtitle;
-    }
+.hero-banner-subtitle {
+  margin: 0;
+  grid-area: subtitle;
 }
 
 #headshot {
@@ -49,6 +49,11 @@
         grid-template-areas:
             "title title headshot"
             "subtitle subtitle headshot";
+        grid-row-gap: 0;
+    }
+
+    .hero-banner-title {
+      margin-bottom: 0.8rem;
     }
 
     #headshot {

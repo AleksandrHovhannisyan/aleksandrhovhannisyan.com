@@ -1,18 +1,18 @@
 $fontWeights: (
   'light': 300,
   'regular': 400,
-  'semiBold': 600,
+  'semiBold': 500,
   'bold': 700,
 );
 
 $fontFamilies: (
-  'normal': 'Titillium Web, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif',
+  'normal': 'Fira Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif',
   'cursive': 'Reenie Beanie, cursive',
   'code': 'Inconsolata, Monaco, Consolas, Courier New, monospace'
 );
 
 $fontScale: 1.125;
-$baseRem: 2rem;
+$baseRem: 1.8rem;
 
 $fontSizes: (
   -2: $baseRem / ($fontScale * $fontScale),
