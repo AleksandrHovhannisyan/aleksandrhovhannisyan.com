@@ -82,7 +82,7 @@ The distinction is important; the W3 specs explicitly use the term *containing b
 
 Now, consider a practical example. Let's say you want to embed a YouTube video on your page, and you know that YouTube videos have an aspect ratio of `16:9`. But you don't want to give the iframe a *fixed* width and height—rather, you want its width to fill its container and for its height to scale responsively, maintaining the element's `16:9` aspect ratio:
 
-<div class="tile aspect-ratio-16-9" data-ratio="Pretend this is a YouTube iframe" aria-hidden="true" style="margin-bottom: 3.2rem !important;"></div>
+<div class="tile aspect-ratio-16-9" data-ratio="Pretend this is a YouTube iframe" aria-hidden="true"></div>
 
 We can do this using the padding trick that we learned. To create an aspect ratio of `16:9`, we simply set the element's height to be zero and the vertical padding to be `9 / 16 * 100 = 0.5625 * 100 = 56.25%`. Again, this just says that the element's height should be `56.25%` of its containing block's width. Note that if the element in question is a block-level element, like a `<div>`, then it already fills `100%` of its containing block's width. The final step is to relativly position the element and absolutely position any children so that they don't influence the element's height.
 

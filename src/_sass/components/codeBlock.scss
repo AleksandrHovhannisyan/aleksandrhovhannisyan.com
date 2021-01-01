@@ -4,7 +4,6 @@
 div.highlighter-rouge {
   $code-block-padding-bottom: 1.6rem;
   $code-block-padding: 3.2rem;
-  margin-bottom: 3.2rem;
   border-radius: 0.4rem;
   box-shadow: var(--code-block-box-shadow);
 
@@ -25,6 +24,7 @@ div.highlighter-rouge {
 }
 
 .code-header {
+  margin-bottom: -3.2rem;
   display: flex;
   background-color: $black-600;
   border-top-left-radius: 0.4rem;
