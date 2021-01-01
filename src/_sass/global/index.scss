@@ -1,5 +1,4 @@
 @import 'mixins';
-@import 'fonts';
 
 ::selection {
   background-color: var(--selection-bg-color);
@@ -43,7 +42,7 @@ body {
   position: relative;
   grid-row-gap: var(--navbar-height);
   line-height: var(--font-line-height);
-  @include fontFamily('normal');
+  @include fontFamily('sans');
   @include fontWeight('regular');
   @include fontSize(0);
 }

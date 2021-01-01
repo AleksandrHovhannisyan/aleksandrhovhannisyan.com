@@ -1,5 +1,4 @@
 @import 'functions';
-@import 'fonts';
 
 // Inspiration: https://stackoverflow.com/a/49437769/5323344
 @mixin transition($props...) {
@@ -39,15 +38,15 @@
 }
 
 @mixin fontFamily($family) {
-  font-family: unquote(map-get($fontFamilies, $family));
+  font-family: var(--font-family-#{$family});
 }
 
 @mixin fontWeight($humanReadableWeight: inherit) {
-  font-weight: map-get($fontWeights, $humanReadableWeight);
+  font-weight: var(--font-weight-#{$humanReadableWeight});
 }
 
 @mixin fontSize($step) {
-  font-size: map-get($fontSizes, $step);
+  font-size: var(--font-size-#{$step});
 }
 
 @mixin underlinedLink($initiallyUnderlined: true) {

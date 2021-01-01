@@ -1,5 +1,4 @@
 @import 'colors';
-@import 'fonts';
 
 div.highlighter-rouge {
   $code-block-padding-bottom: 1.6rem;
@@ -124,7 +123,7 @@ code {
   border-radius: 0.4rem;
   color: var(--inline-code-text-color);
   padding: 0.4rem 0.8rem;
-  @include fontFamily('code');
+  @include fontFamily('mono');
   font-size: 0.925em;
 }
 
