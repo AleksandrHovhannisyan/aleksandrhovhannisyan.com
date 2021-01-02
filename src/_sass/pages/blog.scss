@@ -223,10 +223,8 @@
         border-left: 0.4rem solid;
         margin-left: 2.4rem;
         padding: 0.4rem 3.2rem;
-
-        p:last-child {
-            margin-bottom: 0;
-        }
+        display: grid;
+        grid-row-gap: 3.2rem;
     }
 
     .spoiler {
