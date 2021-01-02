@@ -50,7 +50,6 @@ body {
 #page-content {
   grid-area: content;
   scroll-margin-top: var(--navbar-height);
-  grid-row: 2;
   min-width: 0; // https://css-tricks.com/preventing-a-grid-blowout/
   @include centered;
 }
