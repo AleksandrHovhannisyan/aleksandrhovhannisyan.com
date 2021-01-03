@@ -27,12 +27,12 @@
         <meta name="referrer" content="origin">
         <!-- Open Graph social media previews -->
         <meta property="og:title" content="{{ page.title }} | {{ site.title }}">
-        {% assign og_image = '/assets/img/favicons/favicon-228.png' %}
+        {% assign og_image = '/assets/images/favicons/favicon-228.png' %}
         {% if page.og_image %}
           {% assign og_image = page.og_image %}
         {% endif %}
         {% if page.is_post %}
-            {% assign og_image = '/assets/img/posts/' | append: page.slug | append: '/thumbnail.png' %}
+            {% assign og_image = '/assets/images/posts/' | append: page.slug | append: '/thumbnail.png' %}
         {% endif %}
         <meta property="og:image" content="{{ site.url }}{{ og_image }}">
         <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
@@ -43,13 +43,13 @@
         {% endif %}
         <link rel="stylesheet" href="/assets/styles/main.css">
         <!-- Favicons -->
-        <link rel="icon" href="/assets/img/favicons/favicon-32.png" sizes="32x32">
-        <link rel="icon" href="/assets/img/favicons/favicon-57.png" sizes="57x57">
-        <link rel="icon" href="/assets/img/favicons/favicon-76.png" sizes="76x76">
-        <link rel="icon" href="/assets/img/favicons/favicon-96.png" sizes="96x96">
-        <link rel="icon" href="/assets/img/favicons/favicon-128.png" sizes="128x128">
-        <link rel="icon" href="/assets/img/favicons/favicon-192.png" sizes="192x192">
-        <link rel="icon" href="/assets/img/favicons/favicon-228.png" sizes="228x228">
+        <link rel="icon" href="/assets/images/favicons/favicon-32.png" sizes="32x32">
+        <link rel="icon" href="/assets/images/favicons/favicon-57.png" sizes="57x57">
+        <link rel="icon" href="/assets/images/favicons/favicon-76.png" sizes="76x76">
+        <link rel="icon" href="/assets/images/favicons/favicon-96.png" sizes="96x96">
+        <link rel="icon" href="/assets/images/favicons/favicon-128.png" sizes="128x128">
+        <link rel="icon" href="/assets/images/favicons/favicon-192.png" sizes="192x192">
+        <link rel="icon" href="/assets/images/favicons/favicon-228.png" sizes="228x228">
         {% if page.canonical_url %}
             <link rel="canonical" href="{{ page.canonical_url }}">
         {% endif %}

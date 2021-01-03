@@ -47,7 +47,7 @@ You can specify a number of options, including the compression factor for conver
 
 > You can learn more about the available options in [Google's documentation for cwebp](https://developers.google.com/speed/webp/docs/cwebp).
 
-For example, let's say you have an image under `/assets/img/posts`. To convert that to WebP, simply switch to the target directory and execute this command:
+For example, let's say you have an image under `/assets/images/posts`. To convert that to WebP, simply switch to the target directory and execute this command:
 
 ```bash
 cwebp img.png -o img.webp
@@ -87,8 +87,8 @@ Time to make this reusable! Create a file named `_includes/picture.html` and add
 
 {% capture code %}{% raw %}{% assign img = include.img %}
 <picture>
-    <source type="image/webp" srcset="/assets/img/posts/{{ page.slug }}/{{ img }}.webp" >
-    <img src="/assets/img/posts/{{ page.slug }}/{{ img }}.{{ include.ext }}" alt="{{ include.alt }}" />
+    <source type="image/webp" srcset="/assets/images/posts/{{ page.slug }}/{{ img }}.webp" >
+    <img src="/assets/images/posts/{{ page.slug }}/{{ img }}.{{ include.ext }}" alt="{{ include.alt }}" />
 </picture>{% endraw %}{% endcapture %}
 {% include code.html file="_includes/picture.html" code=code lang="liquid" %}
 
@@ -96,13 +96,13 @@ Let's try to understand this part specifically:
 
 {% raw %}
 ```html
-<source type="image/webp" srcset="/assets/img/posts/{{ page.slug }}/{{ img }}.webp" >
+<source type="image/webp" srcset="/assets/images/posts/{{ page.slug }}/{{ img }}.webp" >
 ```
 {% endraw %}
 
 Before I explain why this works, you need to know how I like to structure my blog:
 
-- All blog post images are under `/assets/img/posts/`.
+- All blog post images are under `/assets/images/posts/`.
 - Under that directory, each post has its own folder whose name matches the slugged version of the post's title.
 
 Here's a screenshot to make that clearer:

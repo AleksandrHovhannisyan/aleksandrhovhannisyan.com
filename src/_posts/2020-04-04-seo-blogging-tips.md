@@ -288,7 +288,7 @@ If you're using a static site generator like Gatsby or Jekyll, you should be abl
       "@id": "{{ site.url }}{{ page.url }}"
     },
     "headline": {{ page.title | escape | jsonify }},
-    "image": ["{{ site.url }}/assets/img/posts/{{ page.slug }}/thumbnail.png"],
+    "image": ["{{ site.url }}/assets/images/posts/{{ page.slug }}/thumbnail.png"],
     "datePublished": {{ page.date | jsonify }},{% if page.last_updated %}
     "dateModified": {{ page.last_updated | jsonify }},{% endif %}
     "author": {
@@ -301,7 +301,7 @@ If you're using a static site generator like Gatsby or Jekyll, you should be abl
       "url": "{{ site.url }}",
       "logo": {
         "@type": "ImageObject",
-        "url": "{{ site.url }}/assets/img/favicon.png"
+        "url": "{{ site.url }}/assets/images/favicon.png"
       }
     },
     "description": {{ page.description | strip_newlines | strip | jsonify }}

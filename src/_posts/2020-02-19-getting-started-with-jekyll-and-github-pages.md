@@ -1461,7 +1461,7 @@ layout: default
 
 {% assign authorData = site.data.authors[page.author] %}
 <div class="author-bio">
-    <img src="/assets/img/authors/{{ authorData.image }}" alt="{{ page.author }}'s profile picture." />
+    <img src="/assets/images/authors/{{ authorData.image }}" alt="{{ page.author }}'s profile picture." />
     <div class="author-name">{{ page.author }}</div>
     <p class="bio">{{ authorData.bio }}</p>
     {% for social in authorData.socials %}
