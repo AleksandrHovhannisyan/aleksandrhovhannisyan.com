@@ -8,7 +8,7 @@ comments_id: 39
 reading_length: 15
 ---
 
-With an understanding of [the method of least squares](/blog/computer-science/the-method-of-least-squares) and QR decomposition, we're now ready to look at one of its most practical applications: least squares fitting. In this tutorial, we'll explore straight-line fitting and polynomial least squares fitting, both by hand and with Python. But before we get to the problems, we need a little background and some more theory.
+With an understanding of [the method of least squares](/blog/the-method-of-least-squares) and QR decomposition, we're now ready to look at one of its most practical applications: least squares fitting. In this tutorial, we'll explore straight-line fitting and polynomial least squares fitting, both by hand and with Python. But before we get to the problems, we need a little background and some more theory.
 
 ## What Is Least Squares Fitting?
 
@@ -220,9 +220,9 @@ $$ (A^TA)\theta = A^Ty $$
 
 Of course, we shouldn't solve this directly without first using QR decomposition. If you perform the necessary steps for QR decomposition, you'll get that:
 
-$$A = QR = 
+$$A = QR =
 
-\begin{bmatrix} 
+\begin{bmatrix}
 \frac{1}{\sqrt{3}} & -\frac{1}{\sqrt{2}} \\
 \frac{1}{\sqrt{3}} & 0 \\
 \frac{1}{\sqrt{3}} & \frac{1}{\sqrt{2}}
@@ -257,7 +257,7 @@ $$
 
 =
 
-\begin{bmatrix} 
+\begin{bmatrix}
 \frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}} \\
 -\frac{1}{\sqrt{2}} & 0 & \frac{1}{\sqrt{2}}
 \end{bmatrix}
@@ -365,7 +365,7 @@ f_3(x) = x^2$$
 
 There we go! It's that simple.
 
-> **Note**: Again, you could reverse the order of the polynomial to be $$\hat{f}(x) = \theta_1x^2 + \theta_2 x + \theta_3$$. This would change nothing except the order of the elements in your resulting matrix. 
+> **Note**: Again, you could reverse the order of the polynomial to be $$\hat{f}(x) = \theta_1x^2 + \theta_2 x + \theta_3$$. This would change nothing except the order of the elements in your resulting matrix.
 
 ### Step 3: Identify the Equations Involved
 
@@ -466,7 +466,7 @@ print(theta){% endcapture %}
 Regardless of which version we run, we'll get the same answer for the $$\theta$$ vector:
 
 $$
-\theta 
+\theta
 
 =
 

@@ -23,7 +23,7 @@ interface CenteredContainerProps {
 const CenteredContainer: FC<CenteredContainerProps> = (props) => <div {...props} />;{% endcapture %}
 {% include code.html file="components/CenteredContainer/index.tsx" code=code lang="tsx" %}
 
-You *could* always render a `<div>` like we're doing here, but that's not a great idea. It pollutes your DOM with an extra decorative `<div>`, making it difficult to write [semantic HTML markup](/blog/dev/semantic-html-accessibility/). Plus, there's no reason why a centered container should *always* be a `<div>`. This may even be invalid HTML depending on where you intend to use the container.
+You *could* always render a `<div>` like we're doing here, but that's not a great idea. It pollutes your DOM with an extra decorative `<div>`, making it difficult to write [semantic HTML markup](/blog/semantic-html-accessibility/). Plus, there's no reason why a centered container should *always* be a `<div>`. This may even be invalid HTML depending on where you intend to use the container.
 
 Fortunately, we can take advantage of TypeScript's intellisense and pass a dynamic tag name as a prop to change the rendered tag:
 

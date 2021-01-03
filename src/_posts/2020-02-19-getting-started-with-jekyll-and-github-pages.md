@@ -1317,13 +1317,13 @@ Here are some example use cases for Jekyll includes:
 
 **Inline SVGs**: You can use something like [Font-Awesome-SVG-PNG](https://github.com/encharm/Font-Awesome-SVG-PNG) to find SVG icons that you want to use on your site and stick those in an include file. That include could take two arguments: the name of the SVG and an optional class name to apply to it. You can then insert SVGs into any of your pages, without having to copy-paste a huge chunk of HTML.
 
-**Lazily loaded, WebP-compatible images**. On my website, I have an include that allows me to conveniently insert images into my blog posts with just a single, legible line of markup. You can learn more about how I do this in my blog post on [using WebP images in Jekyll](/blog/dev/improve-page-load-speed-in-jekyll-using-the-webp-image-format/).
+**Lazily loaded, WebP-compatible images**. On my website, I have an include that allows me to conveniently insert images into my blog posts with just a single, legible line of markup. You can learn more about how I do this in my blog post on [using WebP images in Jekyll](/blog/improve-page-load-speed-in-jekyll-using-the-webp-image-format/).
 
 **Post statistics**. On my blog, each post shows the date when it was published and a measure of its reading length. This appears on both the preview cards for the posts as well as in the posts themselves. I *could* copy-paste the same markup in both locations, but if I need to change something later on, I'd need to remember to update it in both pages. Instead, I just create an include file.
 
 **Fair use disclosures**. Some of my blogs use images from the web for which I do not own the rights. Even though I always disclose the source of these images, Wikipedia still advises that you add a fair-use disclosure to your site as an additional protection against any copyright strikes. I don't find myself needing to use this very often, but when I do, I can simply drop in the include without having to copy-paste a wall of text.
 
-**Linked headings**. I wrote a separate tutorial on how you can [create linked headings in Jekyll](/blog/dev/heading-links-in-jekyll/) that goes into this in more depth. But basically, you can set up a simple include file that takes the name of a heading you want to create and the level of the heading and turns it into an anchor heading that users can click.
+**Linked headings**. I wrote a separate tutorial on how you can [create linked headings in Jekyll](/blog/heading-links-in-jekyll/) that goes into this in more depth. But basically, you can set up a simple include file that takes the name of a heading you want to create and the level of the heading and turns it into an anchor heading that users can click.
 
 There's a *lot* more you can do with includes, but hopefully this gives you a good idea of what's possible!
 
@@ -1550,7 +1550,7 @@ If you absolutely need to use a plugin for a feature on your Jekyll website, the
 
 Understandably, this may not be ideal if you want people (e.g., recruiters or other developers) to see your site's source and how you organized your project. So sometimes, you may need to reinvent the wheel to add a new feature to your site.
 
-> This is one of the many reasons why I now [host my site on Netlify instead of GitHub Pages](/blog/dev/github-pages-vs-netlify/). Netlify has no restrictions on Jekyll plugins, so you can use any that you want.
+> This is one of the many reasons why I now [host my site on Netlify instead of GitHub Pages](/blog/github-pages-vs-netlify/). Netlify has no restrictions on Jekyll plugins, so you can use any that you want.
 
 You can learn more about this issue and its workarounds in [this StackOverflow thread](https://stackoverflow.com/a/31871892/5323344).
 

@@ -1,5 +1,5 @@
 ---
-title: "How to Add a Copy-to-Clipboard Button to Your Jekyll Blog"
+title: How to Add a Copy-to-Clipboard Button to Jekyll
 description: Learn how to add a copy-to-clipboard button to your Jekyll blog using some clever Liquid templating and just a few lines of JavaScript.
 tags: [dev, jekyll, liquid, javascript]
 keywords: [copy to clipboard button]
@@ -48,7 +48,7 @@ Sound good? Let's first look at the include file itself:
 
 {% capture code %}{% raw %}<div class="copy-code-container">
     <button class="copy-code-button"
-         aria-label="Copy code block to your clipboard" 
+         aria-label="Copy code block to your clipboard"
          data-code="{{ include.code | escape }}"
     ></button>
 </div>
@@ -306,7 +306,7 @@ All of these variations still use the same include file that we looked at in thi
     {% unless include.copyable == false %}
     <div class="copy-code-container">
         <button class="copy-code-button"
-             aria-label="Copy code block to your clipboard" 
+             aria-label="Copy code block to your clipboard"
              data-code="{{ include.code | escape }}"
              type="button"
         ></button>
@@ -324,7 +324,7 @@ For example, using the `unless` Liquid tag and a flag passed in as an argument, 
 {% raw %}{% unless include.copyable == false %}
     <div class="copy-code-container">
         <button class="copy-code-button"
-             aria-label="Copy code block to your clipboard" 
+             aria-label="Copy code block to your clipboard"
              data-code="{{ include.code | escape }}"
              type="button"
         ></button>

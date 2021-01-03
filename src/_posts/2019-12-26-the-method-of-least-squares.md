@@ -81,7 +81,7 @@ $$ Ax = b: \begin{bmatrix}
 \begin{bmatrix}
 x_1 \\
 x_2
-\end{bmatrix} = 
+\end{bmatrix} =
 \begin{bmatrix}
 1 \\
 3 \\
@@ -201,7 +201,7 @@ $$ \begin{bmatrix}
 \begin{bmatrix}
 \theta_1 \\
 \theta_2
-\end{bmatrix} = 
+\end{bmatrix} =
 \begin{bmatrix}
 1 \\
 3 \\
@@ -212,7 +212,7 @@ $$ \begin{bmatrix}
 
 This was really an overdetermined system, $$A\theta = b$$, disguised as a bunch of $$(x, y)$$ data pairs! We have more equations than unknowns. This alone tells us that there is no unique solution and that we must find a least squares solution instead.
 
-> Curious how I plotted the line for this particular problem? You'll learn more about [least squares curve fitting](/blog/computer-science/least-squares-fitting) in the next post in this two-part series.
+> Curious how I plotted the line for this particular problem? You'll learn more about [least squares curve fitting](/blog/least-squares-fitting) in the next post in this two-part series.
 
 Let's generalize this problem. We start with an $$m \times n$$ system:
 
@@ -406,4 +406,4 @@ Here's the gist of what we covered in this post:
 
 And that's it! Hopefully things are starting to make a little more sense now.
 
-[In the next post](/blog/computer-science/least-squares-fitting), we'll look at practical least squares applications and solve least squares data fitting problems by hand (and with Python!).
+[In the next post](/blog/least-squares-fitting), we'll look at practical least squares applications and solve least squares data fitting problems by hand (and with Python!).

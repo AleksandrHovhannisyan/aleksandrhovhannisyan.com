@@ -9,7 +9,7 @@ is_popular: true
 
 Back when I had no clue what I was doing with this site, and it was nothing more than an HTML file with a single CSS stylesheet and some jQuery I absolutely did not need, I was hosting it for free on GitHub Pages.
 
-Why? Because it was the most accessible option to me at the time. It also made sense—I didn't have to pay anything, and I already had a free domain right at my fingertips. It's a great option for people who just want to [create a personal website](/blog/dev/getting-started-with-jekyll-and-github-pages/) or publish documentation.
+Why? Because it was the most accessible option to me at the time. It also made sense—I didn't have to pay anything, and I already had a free domain right at my fingertips. It's a great option for people who just want to [create a personal website](/blog/getting-started-with-jekyll-and-github-pages/) or publish documentation.
 
 But with time, I realized that GitHub Pages is actually fairly limited as a hosting service. Now, my site is hosted on Netlify under a custom domain, and I honestly couldn't be happier about having made the switch.
 
@@ -38,7 +38,7 @@ With Netlify, you have **much more control over the deployment process**. Your d
 
 {% include picture.html img="dashboard.png" alt="The Netlify dashboard for my personal website" %}
 
-On the other hand, with GitHub Pages, [you can only deploy to two branches](https://help.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source), one of which is `master` by default. Want to revert your site? Have fun [resetting to a previous commit with git](/blog/dev/undoing-changes-in-git/#2-resetting-a-branch-to-an-older-commit) on your second branch and fiddling with your repo settings to change the deploy branch. There are also no deploy previews, so whatever you push will go live as soon as it builds.
+On the other hand, with GitHub Pages, [you can only deploy to two branches](https://help.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source), one of which is `master` by default. Want to revert your site? Have fun [resetting to a previous commit with git](/blog/undoing-changes-in-git/#2-resetting-a-branch-to-an-older-commit) on your second branch and fiddling with your repo settings to change the deploy branch. There are also no deploy previews, so whatever you push will go live as soon as it builds.
 
 ### Faster Deployments
 

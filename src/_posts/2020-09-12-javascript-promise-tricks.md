@@ -71,7 +71,7 @@ The solution? Use Promises to create a mock API in your frontend:
 
     if (successRoll <= successRate) {
       setTimeout(() => resolve(data), latency);
-    } else {        
+    } else {
       setTimeout(() => reject('API failed to return data'), latency);
     }
 });{% endcapture %}
@@ -337,7 +337,7 @@ And now we can use either `async`/`await` or `then` to read settings in a much m
 
 In programming languages like C++ and Java, you can pause a thread's execution with a call to some sleep function, which usually takes a number of milliseconds as its argument and then blocks the executing thread for that set amount of time.
 
-Normally, an [operating system's scheduler](/blog/computer-science/operating-system-scheduling-algorithms/) is responsible for deciding when a program's execution should stop and when another process should get its turn on the CPU. However, a program can also voluntarily request to be blocked, allowing it to resume execution in the future (once an internal clock goes off).
+Normally, an [operating system's scheduler](/blog/operating-system-scheduling-algorithms/) is responsible for deciding when a program's execution should stop and when another process should get its turn on the CPU. However, a program can also voluntarily request to be blocked, allowing it to resume execution in the future (once an internal clock goes off).
 
 Why would you want to do this? Sleeping is useful if you want to regulate **the rate at which code is executed**. And just to be clear, you can definitely do this in vanilla JavaScript without Promises:
 

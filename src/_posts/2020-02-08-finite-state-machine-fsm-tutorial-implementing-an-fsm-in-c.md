@@ -79,7 +79,7 @@ public:
 	Light();
 	void toggle();
 	inline LightState getCurrentState() const { return currentState; }
-	
+
 private:
 	LightState currentState;
 };{% endcapture %}
@@ -200,7 +200,7 @@ Each class implements a common `LightState` interface (or, in C++ terms, an *abs
 All three methods accept a pointer to the `Light` object with which the state is associated. How do they gain access to this pointer? Well, recall that we invoked `toggle` in our `Light` class like so:
 
 ```cpp
-void Light::toggle() 
+void Light::toggle()
 {
 	currentState->toggle(this);
 }

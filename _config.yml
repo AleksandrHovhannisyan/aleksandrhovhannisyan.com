@@ -110,17 +110,5 @@ defaults:
       is_post: true
       layout: post
       excerpt: ''
-      permalink: /blog/:categories/:title/
+      permalink: /blog/:title/
       img_path: assets/img/posts
-  - scope:
-      path: _posts/dev
-    values:
-      categories: dev
-  - scope:
-      path: _posts/computer-science
-    values:
-      categories: computer-science
-  - scope:
-      path: _posts/off-topic
-    values:
-      categories: off-topic

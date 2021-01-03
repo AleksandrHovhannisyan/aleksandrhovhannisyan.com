@@ -5,7 +5,7 @@ keywords: [web accessibility]
 tags: [dev, accessibility, html]
 ---
 
-All kinds of people use the web—a good developer's job is to create not only beautiful but also *accessible* user experiences. You can fix some basic accessibility issues by [writing semantic HTML](/blog/dev/semantic-html-accessibility/), but this will only get you so far. Eventually, you'll come to realize that web accessibility isn't just about checking off a few boxes on an audit or scoring 100 on your Lighthouse report.
+All kinds of people use the web—a good developer's job is to create not only beautiful but also *accessible* user experiences. You can fix some basic accessibility issues by [writing semantic HTML](/blog/semantic-html-accessibility/), but this will only get you so far. Eventually, you'll come to realize that web accessibility isn't just about checking off a few boxes on an audit or scoring 100 on your Lighthouse report.
 
 More importantly, you'll find that accessibility auditing tools like Lighthouse only do a superficial review of the most common accessibility issues, like skipped heading levels, anchors without text, or images without alt text. In fact, you can [build an inaccessible site with a perfect Lighthouse score](https://www.matuzo.at/blog/building-the-most-inaccessible-site-possible-with-a-perfect-lighthouse-score/), so it's certainly not a perfect tool.
 
@@ -65,7 +65,7 @@ Since they're aesthetically intrusive, skip-navigation links are typically hidde
 
 A word of caution: Don't hide skip-navigation links with `display: none` or `visibility: hidden`. These will remove the links from your site's [accessibility tree](https://developers.google.com/web/fundamentals/accessibility/semantics-builtin/the-accessibility-tree), so they'll be ignored by screen readers. Moreover, users won't be able to tab over to them, which defeats the purpose of having skip-navigation links.
 
-Developers usually stop here at the navbar and don't consider other navigation-intensive regions of their UIs. For example, if a blog post has a [table of contents](/blog/dev/jekyll-table-of-contents/), a user shouldn't have to tab through ever single link just to skip this section and get to the content. In fact, any time you present a user with content that serves as an aside, you need to ensure that it's *truly* optional.
+Developers usually stop here at the navbar and don't consider other navigation-intensive regions of their UIs. For example, if a blog post has a [table of contents](/blog/jekyll-table-of-contents/), a user shouldn't have to tab through ever single link just to skip this section and get to the content. In fact, any time you present a user with content that serves as an aside, you need to ensure that it's *truly* optional.
 
 Audit your website and identify areas of the user interface that have lots of interactive elements or links and that momentarily trap the user's focus in a region of content. Users should be able to skip these so they can jump around your site more easily.
 
