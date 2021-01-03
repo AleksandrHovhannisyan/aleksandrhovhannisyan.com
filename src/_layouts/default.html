@@ -32,7 +32,11 @@
           {% assign og_image = page.og_image %}
         {% endif %}
         {% if page.is_post %}
-            {% assign og_image = '/assets/images/posts/' | append: page.slug | append: '/thumbnail.png' %}
+            {% assign img = 'thumbnail.png' %}
+            {% if page.thumbnail %}
+              {% assign img = page.thumbnail %}
+            {% endif %}
+            {% assign og_image = '/assets/images/posts/' | append: page.slug | append: '/' | append: img %}
         {% endif %}
         <meta property="og:image" content="{{ site.url }}{{ og_image }}">
         <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
