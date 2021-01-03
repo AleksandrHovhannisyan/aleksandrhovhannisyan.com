@@ -1,8 +1,8 @@
 ---
 title: About
 description: Hey! I'm Aleksandr, a software engineer and tech writer. Here's a quick look at my background and interests.
+og_image: /assets/img/profile-photo.png
 permalink: /about/
-img_path: assets/img/about
 layout: about
 ---
 
@@ -10,7 +10,7 @@ Thanks for dropping by! My name's Aleksandr—and yes, that's spelled *without* 
 
 Speaking of last names, if mine hasn't already [betrayed me](http://www.armeniapedia.org/wiki/Armenian_Last_Names), I was originally born in Armenia, a beautiful country nestled between Europe, Asia, and [a bunch of biblically old mountains](https://en.wikipedia.org/wiki/Mount_Ararat). You can almost spot it on a world map if you squint hard enough:
 
-{% include picture.html img="armenia.png" alt="A map of Armenia" %}
+{% include picture.html img="/assets/img/about/armenia.png" alt="A map of Armenia" %}
 
 Long story short, I moved to the U.S. when I was little and have lived here for over 15 years now. I currently reside in Gainesville, Florida, where you'll find plenty of friendly gators, lovebugs whose carcasses will eat away at your car's paint, the infamous Florida Man, and, of course, the University of Florida.
 

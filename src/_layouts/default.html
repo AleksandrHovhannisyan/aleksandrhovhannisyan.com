@@ -27,15 +27,14 @@
         <meta name="referrer" content="origin">
         <!-- Open Graph social media previews -->
         <meta property="og:title" content="{{ page.title }} | {{ site.title }}">
-        {% assign thumbnail = 'thumbnail.png' %}
-        {% if page.thumbnail %}
-            {% assign thumbnail = page.thumbnail %}
+        {% assign og_image = '/assets/img/favicons/favicon-228.png' %}
+        {% if page.og_image %}
+          {% assign og_image = page.og_image %}
         {% endif %}
-        {% assign img_path = page.img_path %}
         {% if page.is_post %}
-            {% assign img_path = img_path | append: '/' | append: page.slug %}
+            {% assign og_image = '/assets/img/posts/' | append: page.slug | append: '/thumbnail.png' %}
         {% endif %}
-        <meta property="og:image" content="{{ site.url }}/{{ img_path }}/{{ thumbnail }}">
+        <meta property="og:image" content="{{ site.url }}{{ og_image }}">
         <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
         <meta property="og:url" content="{{ site.url }}{{ page.url }}">
         {% if page.noindex %}

@@ -46,7 +46,7 @@ To go a bit more into detail, a higher-order component is a special kind of func
 
 In other words, a higher-order component is essentially a **component factory**. It's a design pattern that allows you to create new versions of existing components by injecting additional props into them. Notably, higher-order components are used to consolidate reusable, **stateful logic** in a single place.
 
-{% include picture.html img="diagram.png" alt="A higher-order component returns a component, which returns a React element." %}
+{% include img.html img="diagram.png" alt="A higher-order component returns a component, which returns a React element." %}
 
 Don't get confused—an HOC is not itself a component. Remember: Components are functions that return a React element; higher-order components are functions that return *components*.
 
@@ -454,7 +454,7 @@ However, this isn't a good idea in general, as you may run into a situation late
 If you're with me so far, you may have noticed an interesting fact: Higher-order components accept a component as one of their arguments, but they also *return* a component. Naturally, this means we can pass the result of one higher-order component as an argument to another, like nested Matryoshka dolls:
 
 <figure>
-  {% include picture.html img="matryoshka-dolls.png" alt="The classic Russian Matryoshka dolls, in decreasing size, can be nested in one another." %}
+  {% include img.html img="matryoshka-dolls.png" alt="The classic Russian Matryoshka dolls, in decreasing size, can be nested in one another." %}
   <figcaption>Image source: <a href="https://en.wikipedia.org/wiki/Matryoshka_doll#/media/File:Russian-Matroshka.jpg">Wikimedia Commons user Fanghong</a></figcaption>
 </figure>
 

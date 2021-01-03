@@ -42,7 +42,7 @@ I recently came across a [fantastic article by Dave Geddes](https://gedd.ski/pos
 All tools that humans created have one thing in common: **They solve a problem**. And they're mainly intended to be used by people who have already struggled with said problem. Otherwise, their importance is lost upon the user.
 
 <figure>
-    {% include picture.html img="tools.png" alt="xkcd comic about tools" %}
+    {% include img.html img="tools.png" alt="xkcd comic about tools" %}
     <figcaption>Source: <a href="https://xkcd.com/1629/">xkcd</a></figcaption>
 </figure>
 
@@ -58,7 +58,7 @@ You are, of course, free to learn whatever you want and whenever you want. But p
 
 Paid subscriptions to courses are, in my honest opinion and personal experience, the absolute worst thing to ever happen to the Learn to Code industry. They're built for instant gratification—to reward buyers with a sense of accomplishment at checkout and to make them feel like they've taken their first step toward mastering a new skill.
 
-{% include picture.html img="udemy.png" alt="Software development courses on sale on Udemy." %}
+{% include img.html img="udemy.png" alt="Software development courses on sale on Udemy." %}
 
 Some people learn best with courses, and that's fine. But there's a certain type of junior developer who doesn't know any better—who equates learning with spending money and earning certifications.
 
@@ -70,7 +70,7 @@ You know what's so great about software development? The fact that there's somet
 
 I sometimes feel like this industry is a sea of oddly shaped locks, and in my hands I hold a pair of keys that don't appear to fully fit in any of them. Most days, I'm passionate about frontend and everything CSS. Other days, my mind is tempted by the allure of mobile app development, machine learning, networking, game dev, and a host of other distractions that I dabble in for minutes at a time, and then quickly abandon.
 
-{% include picture.html img="distractions.png" alt="Distractions, distractions everywhere." %}
+{% include img.html img="distractions.png" alt="Distractions, distractions everywhere." %}
 
 Does it help that technology is moving so quickly? You've heard this before, so pardon the repetition, but there's a new JavaScript framework born every minute. Will React still be relevant in a few years? What about Vue? Insert X language, framework, etc., and you're confronted with the same problem. Now WebAssembly is the new kid on the block. How do you keep up with all of it?
 

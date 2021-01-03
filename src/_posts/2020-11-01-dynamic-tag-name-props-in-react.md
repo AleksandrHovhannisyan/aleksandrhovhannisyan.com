@@ -86,7 +86,7 @@ const MyComponent: FC = ({ children }) => {
 
 Since we've specified that `tagName` is `keyof JSX.IntrinsicElements`, we'll get auto-complete intellisense whenever we try to set this prop:
 
-{% include picture.html img="example.png" alt="An example of using the CenteredContainer component and passing in a concrete tagName. VS Code's intellisense shows an auto-complete dropdown for you as you type." %}
+{% include img.html img="example.png" alt="An example of using the CenteredContainer component and passing in a concrete tagName. VS Code's intellisense shows an auto-complete dropdown for you as you type." %}
 
 In some cases, you may want to instead use [render props](https://reactjs.org/docs/render-props.html), but they're not always needed—sometimes, all you really want is to be able to specify a tag name as a string. You typically only need to use render props if the element being rendered depends on some state. Here, we're just telling the component what to render by passing in a plain string. The syntax is shorter and easier to read.
 

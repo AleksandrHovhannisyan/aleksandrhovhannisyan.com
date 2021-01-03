@@ -22,7 +22,7 @@ Below are my thoughts on these two books, accompanied by quotes. Hopefully it go
 The Discworld is a flat-Earther's dream: a planet that rests upon the backs of four giant elephants—which, in turn, stand atop the meteor-pocked carapace of Great A'Tuin the World Turtle. It's a pretty clear reference to the [World Turtle of various mythologies](https://en.wikipedia.org/wiki/World_Turtle).
 
 <figure>
-    {% include picture.html img="great-atuin.png" alt="Great A'Tuin the World Turtle, upon whose back rest four elephants carrying the Discworld." shadow=false %}
+    {% include img.html img="great-atuin.png" alt="Great A'Tuin the World Turtle, upon whose back rest four elephants carrying the Discworld." shadow=false %}
     <figcaption>Image source: <a href="https://discworld.com/products/temporary-tattoos/great-atuin-temporary-tattoo/">Discworld.com shop</a></figcaption>
 </figure>
 
@@ -51,14 +51,14 @@ I especially like that *The Colour of Magic* and *The Light Fantastic* don't bur
 Thus begins our story—on the back of Great A'Tuin, on the Discworld, in the city of **Ankh-Morpork**.
 
 <figure>
-    {% include picture.html img="ankh-morpork.jpg" alt="The city of Ankh Morpork" shadow=false %}
+    {% include img.html img="ankh-morpork.jpg" alt="The city of Ankh Morpork" shadow=false %}
     <figcaption>Painting by <a href="https://www.artstation.com/artwork/KarlV4">Andrei Stef</a></figcaption>
 </figure>
 
 It's here that we meet the failed wizard **Rincewind**, the main protagonist of the story. Shortly before Rincewind was expelled from Unseen University, one of the eight spells of the Octavo—an ancient grimoire housing unbelievable power—managed to lodge itself inextricably in his mind. This unfortunate incident prevented Rincewind from learning any useful spells and earned him a reputation for magical ineptitude. In short, Rincewind is a wizard without any of the implications and with all of the vulnerabilities.
 
 <figure>
-    {% include picture.html img="rincewind.png" alt="The character Rincewind from the Discworld books." %}
+    {% include img.html img="rincewind.png" alt="The character Rincewind from the Discworld books." %}
     <figcaption>Image source: <a href="https://en.wikipedia.org/wiki/File:Rincewind.png">The Art of Discworld</a></figcaption>
 </figure>
 
@@ -67,7 +67,7 @@ Life is great for Rincewind—until he meets Twoflower, a wealthy tourist who ha
 *Excitement*.
 
 <figure>
-    {% include picture.html img="twoflower.jpg" alt="Twoflower, with the picture box around his neck." shadow=false %}
+    {% include img.html img="twoflower.jpg" alt="Twoflower, with the picture box around his neck." shadow=false %}
     <figcaption><a href="https://discworld.fandom.com/wiki/Twoflower?file=Twoflower_by_amianna.jpg">Image source</a></figcaption>
 </figure>
 
@@ -102,7 +102,7 @@ The Luggage is featured on the cover art of *The Colour of Magic* and houses all
 The Luggage is, in my opinion, the most lovable character—none of Pratchett's humor brings as wide a smile to my face as when he's writing about the Luggage. It's an overprotective, indestructible little chest that swallows men whole. It behaves, in many ways, like a guard dog—vicious when it needs to be, but otherwise gentle and *cuddly*.
 
 <figure>
-    {% include picture.html img="luggage.png" alt="The Luggage from The Colour of Magic." shadow=false %}
+    {% include img.html img="luggage.png" alt="The Luggage from The Colour of Magic." shadow=false %}
     <figcaption>Image source: <a href="https://vsbattles.fandom.com/wiki/The_Luggage?file=The_Luggage_%28Discworld%29.jpg">The Colour of Magic cover art, by Josh Kirby</a></figcaption>
 </figure>
 
@@ -137,7 +137,7 @@ I'm not crying, you are...
 ## Librarians Go Ook
 
 <figure>
-    {% include picture.html img="librarian.jpg" alt="The librarians are apes that spend their entire lives in libraries." %}
+    {% include img.html img="librarian.jpg" alt="The librarians are apes that spend their entire lives in libraries." %}
     <figcaption>Painting by <a href="https://www.davidwyattillustration.com/illustration/the-librarian/">David Wyatt</a></figcaption>
 </figure>
 
@@ -247,7 +247,7 @@ But one of the more obvious examples of religion gone wrong can be found towards
 These scenes reminded me of Rick and Morty's *Get Schwifty* episode, where the people of Earth react to the presence of the Giant Heads by adopting Headism as their official religion.
 
 <figure>
-    {% include picture.html img="headism.png" alt="The believers of headism tie criminals to balloons as a sacrifice, to appease the heads." %}
+    {% include img.html img="headism.png" alt="The believers of headism tie criminals to balloons as a sacrifice, to appease the heads." %}
     <figcaption>Image source: <a href="https://rickandmorty.fandom.com/wiki/Headism?file=Ascension.png">Rick and Morty Fandom</a>. Copyright of Adult Swim.</figcaption>
 </figure>
 
@@ -256,7 +256,7 @@ Certain characters use this as an opportunity to gain influence and manipulate o
 Of course, any discussion of religion would be incomplete without mentioning gods. In your typical fantasy world, gods are portrayed as higher beings who do not meddle in human affairs. On the Discworld, the gods play *Dungeons & Dragons*—or at least the Disc's equivalent... And the pieces on their board happen to be Rincewind, Twoflower, and the various friends and foes they encounter.
 
 <figure>
-    {% include picture.html img="gods.jpg" alt="The gods play D&D with Rincewind, Twoflower, Hrun the Barbarian, and various enemies as pieces." shadow=false %}
+    {% include img.html img="gods.jpg" alt="The gods play D&D with Rincewind, Twoflower, Hrun the Barbarian, and various enemies as pieces." shadow=false %}
     <figcaption>Drawing by <a href="https://discworld.fandom.com/wiki/Gods?file=Discworld_gods.jpg">Paul Kidby</a></figcaption>
 </figure>
 

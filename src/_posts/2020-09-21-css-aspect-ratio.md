@@ -195,15 +195,15 @@ Each square will nest a `<picture>` child element that in turn contains `<img>` 
 Putting it all together, we get a `3x3` grid of images that are perfectly centered to a `1:1` (square) aspect ratio. If some of the images don't have an intrinsic `1:1` aspect ratio—as is the case with the puppies below, which have intrinsic dimensions of `500x300`—they'll simply be cropped and centered:
 
 <ol class="square-grid" aria-hidden="true">
-  <li class="square">{% include picture.html img="puppy.png" alt="" clickable=false %}</li>
-  <li class="square">{% include picture.html img="puppy.png" alt="" clickable=false %}</li>
-  <li class="square">{% include picture.html img="puppy.png" alt="" clickable=false %}</li>
-  <li class="square">{% include picture.html img="kitten.png" alt="" clickable=false %}</li>
-  <li class="square">{% include picture.html img="kitten.png" alt="" clickable=false %}</li>
-  <li class="square">{% include picture.html img="kitten.png" alt="" clickable=false %}</li>
-  <li class="square">{% include picture.html img="parakeet.png" alt="" clickable=false %}</li>
-  <li class="square">{% include picture.html img="parakeet.png" alt="" clickable=false %}</li>
-  <li class="square">{% include picture.html img="parakeet.png" alt="" clickable=false %}</li>
+  <li class="square">{% include img.html img="puppy.png" alt="" clickable=false %}</li>
+  <li class="square">{% include img.html img="puppy.png" alt="" clickable=false %}</li>
+  <li class="square">{% include img.html img="puppy.png" alt="" clickable=false %}</li>
+  <li class="square">{% include img.html img="kitten.png" alt="" clickable=false %}</li>
+  <li class="square">{% include img.html img="kitten.png" alt="" clickable=false %}</li>
+  <li class="square">{% include img.html img="kitten.png" alt="" clickable=false %}</li>
+  <li class="square">{% include img.html img="parakeet.png" alt="" clickable=false %}</li>
+  <li class="square">{% include img.html img="parakeet.png" alt="" clickable=false %}</li>
+  <li class="square">{% include img.html img="parakeet.png" alt="" clickable=false %}</li>
 </ol>
 
 Taking this a step further, you could even set a breakpoint to have the grid flow into a `9x1` grid for mobile, or you could just use CSS Grid instead of flexbox. It's up to you!
@@ -243,7 +243,7 @@ In its documentation on [identifying the containing block](https://developer.moz
 
 Thus, for flex and grid items, you can think of the containing block as an invisible content region that wraps the items. With CSS grid, this grid formatting context is very easy to identify in your dev tools, appearing as a dotted outline around each item:
 
-{% include picture.html img="grid.png" alt="Inspecting a grid of four items with the Chrome dev tools reveals that each grid items has its own block formatting context, shown with a dashed outline." %}
+{% include img.html img="grid.png" alt="Inspecting a grid of four items with the Chrome dev tools reveals that each grid items has its own block formatting context, shown with a dashed outline." %}
 
 You can prove this with a simple experiment with two grid items that have the same aspect ratio but whose formatting contexts have differing widths, as defined by the `grid-template-columns` property:
 
@@ -292,12 +292,12 @@ With vertical layouts, paragraphs appear sideways—you'll have to tilt your hea
 [The MDN docs](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Block_and_Inline_Layout_in_Normal_Flow#Elements_participating_in_a_block_formatting_context) provide the following diagrams to clarify the difference between these two writing modes:
 
 <figure>
-  {% include picture.html img="horizontal-mode.png" alt="A horizontal writing mode, with text flowing vertically from top to bottom. An arrow points from left to right at the top of the document and is labeled as the inline direction. Another arrow points from top to bottom and is labeled as the block direction." %}
+  {% include img.html img="horizontal-mode.png" alt="A horizontal writing mode, with text flowing vertically from top to bottom. An arrow points from left to right at the top of the document and is labeled as the inline direction. Another arrow points from top to bottom and is labeled as the block direction." %}
   <figcaption>Horizontal writing mode (default)</figcaption>
 </figure>
 
 <figure>
-  {% include picture.html img="vertical-mode.png" alt="A vertical writing mode, with text flowing horizontally. The horizontal axis is labeled as the block direction, whereas the vertical axis is now labeled as the inline direction. Text is rendered sideways." %}
+  {% include img.html img="vertical-mode.png" alt="A vertical writing mode, with text flowing horizontally. The horizontal axis is labeled as the block direction, whereas the vertical axis is now labeled as the inline direction. Text is rendered sideways." %}
   <figcaption>Vertical writing mode</figcaption>
 </figure>
 

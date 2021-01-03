@@ -12,7 +12,7 @@ Sound familiar? That's because it's been the defining mark of many new brands th
 
 Everyone and their grandmother has seen them by now—blue people, [purple people](https://ux.shopify.com/you-cant-just-draw-purple-people-and-call-it-diversity-e2aa30f0c0e8), people without faces, polygons dressed as humans... There's no shortage of it going around.
 
-{% include picture.html img="undraw.png" alt="Undraw illustrations showing blue people in different settings, like freelancing or pointing at charts and graphs." %}
+{% include img.html img="undraw.png" alt="Undraw illustrations showing blue people in different settings, like freelancing or pointing at charts and graphs." %}
 
 And it's all thanks to free illustration libraries like Humaaans, unDraw, and Shape.
 
@@ -24,7 +24,7 @@ Some companies (startups in particular) have it rough. Their budget's stretched 
 
 So they turn to free libraries like Humaaans and unDraw, which offer a plethora of customization options and colors for SVG illustrations of people from all walks of life.
 
-{% include picture.html img="humaaans.png" alt="Humaaans illustrations showing faceless people in blue clothing" %}
+{% include img.html img="humaaans.png" alt="Humaaans illustrations showing faceless people in blue clothing" %}
 
 Sure, there's demand for these kinds of illustrations, especially among companies that are still in their early stages and are prototyping their websites.
 
@@ -50,13 +50,13 @@ Here are just a few of the more memorable and unique landing pages from brands t
 
 ### Slack
 
-{% include picture.html img="slack.png" alt="Slack's landing page shows a colorful demo of two people using the app" %}
+{% include img.html img="slack.png" alt="Slack's landing page shows a colorful demo of two people using the app" %}
 
 Slack's website is the first that comes to mind of brand identity done right. The graphics have an illustrated feel to them, but they're not some generic, faceless people devoid of life and soul—they're happy users and happy customers who love to use the app. The colors, type, and illustrations give Slack's landing page a very strong and memorable brand identity.
 
 ### Medium
 
-{% include picture.html img="medium.png" alt="Medium's landing page cuts straight to the chase by allowing you to pick the topics that you're interested in reading, with a simple 'Get Started' call-to-action button." %}
+{% include img.html img="medium.png" alt="Medium's landing page cuts straight to the chase by allowing you to pick the topics that you're interested in reading, with a simple 'Get Started' call-to-action button." %}
 
 When I hear serif font, I think of Medium—it's one of the most memorable parts of the platform in a web that's increasingly developed with sans-serif fonts.
 
@@ -64,25 +64,25 @@ Medium's landing page is simple and to the point, making it easy for you to get 
 
 ### Visual Studio Code
 
-{% include picture.html img="vscode.png" alt="Visual Studio Code's landing page has a download button to the left and a screenshot of the editor to the right" %}
+{% include img.html img="vscode.png" alt="Visual Studio Code's landing page has a download button to the left and a screenshot of the editor to the right" %}
 
 The screenshot of the IDE shows the three key selling points for most developers who use VS Code: extensions, intellisense, and built-in terminal integrations.
 
 ### Shopify
 
-{% include picture.html img="shopify.png" alt="Shopify's landing page shows a woman at her laptop, presumably on her Shopify account, with shelves stocked full of jars behind her." %}
+{% include img.html img="shopify.png" alt="Shopify's landing page shows a woman at her laptop, presumably on her Shopify account, with shelves stocked full of jars behind her." %}
 
 Again, there's no need to use abstract shapes and people. Just show real people using or engaging with your product, like Shopify does with its landing page. The colors are sharp and perfect for the e-commerce space. And the call to action couldn't be clearer: "Build an online business" in the heading, and "Join Shopify" as the button. It doesn't get any simpler than that!
 
 ### Khan Academy
 
-{% include picture.html img="khanacademy.png" alt="KhanAcademy's landing page shows children of all ages and backgrounds at their laptops, smiling and engaged in learning" %}
+{% include img.html img="khanacademy.png" alt="KhanAcademy's landing page shows children of all ages and backgrounds at their laptops, smiling and engaged in learning" %}
 
 Khan Academy's landing page is yet another good example of showing real people who use your product. For one, the site shows kids from all kinds of backgrounds who are learning and having fun. But it also switches up the classic "text on the left, graphics on the right" layout to create a more memorable look.
 
 ### Gmail
 
-{% include picture.html img="gmail.png" alt="Gmail's landing page has a call to action on the left to create an account, with a graphic on the right for Google Meet showing a bunch of people in a conference" %}
+{% include img.html img="gmail.png" alt="Gmail's landing page has a call to action on the left to create an account, with a graphic on the right for Google Meet showing a bunch of people in a conference" %}
 
 Ah, Google—one of the first brands to pioneer blue in the tech world. And yet, the landing page for Gmail is anything but generic or unrecognizable.
 
@@ -90,7 +90,7 @@ Sense a pattern here? Some of the best brands aren't afraid of showing **real pe
 
 ### Quora
 
-{% include picture.html img="quora.png" alt="Quora's landing page background shows an assortment of colorful and quirky illustrations reminiscent of a Where's Waldo type of setting" %}
+{% include img.html img="quora.png" alt="Quora's landing page background shows an assortment of colorful and quirky illustrations reminiscent of a Where's Waldo type of setting" %}
 
 Quora's landing page is proof that you can have the **best of both worlds**—illustrations that are colorful and quirky *and* that make sense in the context in which they're used.
 

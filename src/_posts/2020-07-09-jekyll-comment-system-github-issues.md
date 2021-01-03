@@ -9,7 +9,7 @@ last_updated: 2020-09-18
 
 A while back, [Ari Stathopoulos wrote a tutorial](https://aristath.github.io/blog/static-site-comments-using-github-issues-api) on how to add comments to a Jekyll blog using the GitHub Issues API. And you know what? It works like a charm! Ever since I added comments to my Jekyll blog, I've seen a noticeable increase in engagement from my readers:
 
-{% include picture.html img="comments.png" alt="A list of comments on one of my blog posts" %}
+{% include img.html img="comments.png" alt="A list of comments on one of my blog posts" %}
 
 That said, this approach isn't without its drawbacks. For one, the GitHub API has a [rate limit of 60 requests/hour](https://developer.github.com/v3/#rate-limiting). But more importantly, rendering all comments on the initial page load isn't a great user experience.
 
@@ -26,7 +26,7 @@ That last point is really optional. My two key concerns were to improve my comme
 This section is a bit of a recap on how to use the GitHub Issues API to add comments to a Jekyll blog. Most of this is covered in Ari's post, save for some differences in the markup itself.
 
 First, you'll need a public repo for your comments. Add this variable to your `_config.yml`:
-   
+
 {% capture code %}issues_repo: YourUsername/RepoName{% endcapture %}
 {% include code.html file="_config.yml" code=code lang="yml" %}
 
@@ -34,7 +34,7 @@ We'll use this a few times in our code, so it's a good idea to define it in one 
 
 If a particular blog post needs comments, simply open an issue for it in that repo and note its ID:
 
-{% include picture.html img="issue-id.png" alt="The ID of an issue on my GitHub repo." %}
+{% include img.html img="issue-id.png" alt="The ID of an issue on my GitHub repo." %}
 
 Add the following front matter variable to the blog post and assign it the ID from above:
 
@@ -159,7 +159,7 @@ Now, you could certainly load these dependencies using script elements like so:
   const commentsSection = document.getElementById('comments');
   const commentsWrapper = commentsSection.querySelector('#comments-wrapper');
   const commentsCount = commentsSection.querySelector('#comments-count');
-  
+
   // more code
 
 </script>
@@ -272,7 +272,7 @@ function renderComments(comments) {
       // load the relativeTime plugin
       dayjs.extend(dayjs_plugin_relativeTime);
       const datePosted = dayjs(comment.created_at).fromNow();
-        
+
       const user = comment.user;
       const body = DOMPurify.sanitize(marked(comment.body));
       const postedByAuthor = comment.author_association === 'OWNER';
@@ -294,7 +294,7 @@ function renderComments(comments) {
               </li>`;
     })
     .join('');
-    
+
     commentsWrapper.innerHTML = '';
     commentsWrapper.appendChild(commentsList);
 }{% endraw %}{% endcapture %}
@@ -306,7 +306,7 @@ We're doing several things here, so let's break it all down. For example, this j
 
 ```javascript
 commentsCount.innerText = `(${comments.length})`;
-``` 
+```
 
 The next few lines of code create an ordered list. We sort the comments to show the most recently posted ones first and chain a call to `Array.prototype.map` to create an array of comments, mapping each one to a list item as a template string:
 
@@ -340,7 +340,7 @@ const postedByAuthor = comment.author_association === 'OWNER';
 const edited = comment.created_at !== comment.updated_at;
 ```
 
-I use the first line to make my own comments stand out with an `Author` badge and the second to indicate that a comment has been edited. Neither functionality is super important; it's just there to make this look even more like a true comment system. 
+I use the first line to make my own comments stand out with an `Author` badge and the second to indicate that a comment has been edited. Neither functionality is super important; it's just there to make this look even more like a true comment system.
 
 And that's it! You can now add comments to your Jekyll blog with relative ease. All that's left now is for you to add your own styling and even rearrange the HTML as you please.
 

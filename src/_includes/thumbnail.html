@@ -1,11 +1,7 @@
 {% assign post = include.post %}
-{% assign thumbnail = 'thumbnail.png' %}
+{% assign thumbnail = '/assets/img/posts/' | append: post.slug | append: '/thumbnail.png' %}
 {% if post.thumbnail %}
-    {% assign thumbnail = post.thumbnail %}
-{% endif %}
-{% assign path = post.img_path | append: '/' | append: post.slug %}
-{% if include.path %}
-    {% assign path = include.path %}
+    {% assign thumbnail = '/assets/img/posts/' | append: post.slug | append: post.thumbnail %}
 {% endif %}
 {% assign class = "post-preview-thumbnail" %}
 {% if include.class %}

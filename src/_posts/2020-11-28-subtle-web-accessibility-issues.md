@@ -27,15 +27,15 @@ This is one of those accessibility concerns that certain tools like Lighthouse w
 
 To help you test this accessibility issue on your site, Google Chrome (v83) recently released a pretty handy dev tool that allows you to [emulate vision deficiencies](https://developers.google.com/web/updates/2020/03/devtools). You can access this tool by clicking the triple-orb menu in your dev tools, navigating to `More tools`, and then selecting `Rendering`:
 
-{% include picture.html img="rendering.png" alt="Opening the Rendering pane in the Chrome dev tools." %}
+{% include img.html img="rendering.png" alt="Opening the Rendering pane in the Chrome dev tools." %}
 
 This will open the `Rendering` tab in your drawer pane (you may need to drag it up to see it). There, you'll want to scroll all the way down to find the section for emulating vision deficiencies:
 
-{% include picture.html img="emulate-vision-deficiencies.png" alt="The Rendering pane in the Chrome dev tools allows you to emulate vision deficiencies via a dropdown." %}
+{% include img.html img="emulate-vision-deficiencies.png" alt="The Rendering pane in the Chrome dev tools allows you to emulate vision deficiencies via a dropdown." %}
 
 Click the dropdown, and pick any from the list to test your site for that particular vision deficiency. For example, this is what my blog page looks like if I emulate protanopia (full red-green color blindness):
 
-{% include picture.html img="protanopia.png" alt="Emulating red-green color blindness on my website." %}
+{% include img.html img="protanopia.png" alt="Emulating red-green color blindness on my website." %}
 
 Now, assuming you've tested this on your site and identified links that rely on color alone, there are a few ways you can make your anchors more accessible to people with vision deficiencies (I currently do #1):
 
@@ -61,7 +61,7 @@ To address this web accessibility issue, sites like GitHub, Dev.to, Slack, and l
 
 Since they're aesthetically intrusive, skip-navigation links are typically hidden from view using either negative absolute positioning or the `clip` CSS property. They are later made visible once they receive `:focus` (from keyboard navigation).
 
-{% include picture.html img="skip-navigation-link.png" alt="GitHub's skip navigation link appears on the navigation bar as a blue square with white text that reads 'Skip to content.'" %}
+{% include img.html img="skip-navigation-link.png" alt="GitHub's skip navigation link appears on the navigation bar as a blue square with white text that reads 'Skip to content.'" %}
 
 A word of caution: Don't hide skip-navigation links with `display: none` or `visibility: hidden`. These will remove the links from your site's [accessibility tree](https://developers.google.com/web/fundamentals/accessibility/semantics-builtin/the-accessibility-tree), so they'll be ignored by screen readers. Moreover, users won't be able to tab over to them, which defeats the purpose of having skip-navigation links.
 
@@ -75,7 +75,7 @@ Audit your website and identify areas of the user interface that have lots of in
 
 Developers: Please don't post screenshots of your code. They may look pretty, but that's about it. It's a trend popularized by Twitter and Medium, two platforms that have a large developer user base but whose text editors don't support proper syntax highlighting. And on Twitter in particular, you have a character limit to contend with. So, to get around this, people use tools like [Carbon](https://carbon.now.sh/) to create beautiful screenshots of their code, which they can drop into blog posts, tweets, and more:
 
-{% include picture.html img="carbon.png" alt="Pseudocode written using the Carbon web app, to illustrate how inaccessible this approach is." %}
+{% include img.html img="carbon.png" alt="Pseudocode written using the Carbon web app, to illustrate how inaccessible this approach is." %}
 
 But obviously, this isn't accessible—your alt text can't be the code itself because of special characters, and you rarely even have control over alt text on these platforms to begin with. It's especially egregious if you're using one of these screenshots in a tutorial, where readers will be keen on copying and pasting your code. Congratulations—you've now forced both your sighted and blind users to type things out by hand in an excruciating test of patience.
 

@@ -17,7 +17,7 @@ But let's say you've decided to firmly stand your ground and defend your right t
 
 Two of the best ways to optimize images for the web are by using the WebP image format and lazy loading images with JavaScript. Combine the two, and you'll make Lighthouse happy on even the most image-heavy pages on your website:
 
-{% include picture.html img="lighthouse.png" alt="Lighthouse audit for aleksandrhovhannisyan.com/blog/" %}
+{% include img.html img="lighthouse.png" alt="Lighthouse audit for aleksandrhovhannisyan.com/blog/" %}
 
 {% include toc.md %}
 
@@ -41,7 +41,7 @@ That last point is especially important since Google uses [mobile-first indexing
 
 [Most browsers support WebP](https://caniuse.com/#search=webp), so there's really no reason not to use it:
 
-{% include picture.html img="caniuse.png" alt="The caniuse report for the WebP image format." %}
+{% include img.html img="caniuse.png" alt="The caniuse report for the WebP image format." %}
 
 ### How to Create WebP Images
 
@@ -58,10 +58,10 @@ Outside the Node ecosystem, there are still libraries that'll do the job for you
 Now, assuming you've generated your WebP images, the typical way to render them is with the `<picture>`, `<source>`, and `<img>` tags:
 
 {% capture code %}<picture>
-    <source 
-        srcset="/path/to/img.webp" 
+    <source
+        srcset="/path/to/img.webp"
         type="image/webp">
-    <img 
+    <img
         src="/path/to/img.png"
         alt="Your image's alt">
 </picture>{% endcapture %}
@@ -110,12 +110,12 @@ The second option is to use the **IntersectionObserver API**, which is [supporte
 First, we'll modify our markup to store the paths to our WebP image and the original image in `data-` attributes. That way, we can look up these paths with JavaScript for any given image:
 
 {% capture code %}<picture class="lazily-loaded-picture">
-    <source 
-        srcset="/path/to/img-placeholder.webp" 
+    <source
+        srcset="/path/to/img-placeholder.webp"
         data-srcset="/path/to/img.webp"
         type="image/webp"
         class="lazy-source">
-    <img 
+    <img
         src="/path/to/img-placeholder.png"
         data-src="/path/to/img.png"
         alt="Your image's alt"
@@ -157,7 +157,7 @@ And here's how you might implement the `lazyLoad` function:
 {% capture code %}function lazyLoad(img) {
   const picture = img.parentElement;
   const source = picture.querySelector('.lazy-source');
-  
+
   source.srcset = source.getAttribute('data-srcset');
   img.src = img.getAttribute('data-src');
 }{% endcapture %}
@@ -167,7 +167,7 @@ Super simple! You don't need any libraries to lazily load images in JavaScript.
 
 Here's what that will look like when you inspect the page and start scrolling:
 
-{% include picture.html img="demo.gif" alt="Lazily loading images on my blog page and inspecting the images as they load in using Chrome Dev Tools" %}
+{% include img.html img="demo.gif" alt="Lazily loading images on my blog page and inspecting the images as they load in using Chrome Dev Tools" %}
 
 As you scroll down the page, the `src` and `srcset` attributes get replaced with the data attributes that we defined. This initiates a new HTTP request to load the images from your server.
 
@@ -175,12 +175,12 @@ Note that most lazy-loading tutorials will set the `src` and `srcset` attributes
 
 ```html
 <picture class="lazily-loaded-picture">
-    <source 
-        srcset="" 
+    <source
+        srcset=""
         data-srcset="/path/to/img.webp"
         type="image/webp"
         class="lazy-source">
-    <img 
+    <img
         src=""
         data-src="/path/to/img.png"
         alt="Your image's alt"
@@ -195,7 +195,7 @@ Note that most lazy-loading tutorials will set the `src` and `srcset` attributes
 
 The solution is to use a fuzzy placeholder—the original image but scaled down to some lower resolution, like `32x32px`:
 
-{% include picture.html img="placeholders.png" alt="Blog posts whose thumbnails are fuzzy placeholder images" %}
+{% include img.html img="placeholders.png" alt="Blog posts whose thumbnails are fuzzy placeholder images" %}
 
 Since there are fewer pixels to work with, the image ends up being blurry, with chunks of color that vaguely resemble the original image's shape. Then, when the viewport intersects with the `<img>` element, you load in the real image with JavaScript. This is precisely what we did in the code above, with the assumption that you have **four variations for each image**:
 
@@ -216,7 +216,7 @@ Instead, think about how wasteful it is to load in several megabytes' worth of d
 
 Below is a real example from [my website's blog page](/blog/). Notice that when the page loads, only 60 kB of network data get transferred. Once we scroll all the way down, we can see that the total network data usage eventually exceeds 5 MB. **That's a world of difference**!
 
-{% include picture.html img="network.gif" alt="Inspecting the Network tab of Chrome Dev Tools as my blog's cache is cleared and the page is reloaded" %}
+{% include img.html img="network.gif" alt="Inspecting the Network tab of Chrome Dev Tools as my blog's cache is cleared and the page is reloaded" %}
 
 Finally, note that the IntersectionObserver API can be used to lazily load more than just images. For example, you could use it to defer loading comment systems, ads, and even videos.
 

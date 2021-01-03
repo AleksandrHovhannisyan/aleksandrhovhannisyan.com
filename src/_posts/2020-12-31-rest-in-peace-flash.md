@@ -15,11 +15,11 @@ Anyway, Runescape runs on Java, and this post isn't about Java—it's about **Ad
 
 ArmorGames, CrazyMonkeyGames, Kongregate, Addicting Games, Newgrounds—I'm sure I'm missing a few names. These sites featured classic Flash games like Kingdom Rush, The Last Stand saga, Bowman 1 and 2, Interactive Buddy, Feudalism II, Learn to Fly, Kitten Cannon, Stick War, Age of War, the Bloons TD saga, the Epic Battle Fantasy games made by the incredibly talented [Matt Roszak](http://kupogames.com/), and a treasure trove of far too many other games to enumerate here.
 
-{% include picture.html img="bowman2.png" alt="Bowman 2, a Flash game featuring archery combat." %}
+{% include img.html img="bowman2.png" alt="Bowman 2, a Flash game featuring archery combat." %}
 
 If you didn't own a console, you played Flash spin-offs like *Portal: The Flash Version*, *Super Smash Flash*, and hundreds of low-quality Super Mario clones made with—you guessed it—Flash.
 
-{% include picture.html img="super-smash-flash.png" alt="Super Smash Flash's title screen." %}
+{% include img.html img="super-smash-flash.png" alt="Super Smash Flash's title screen." %}
 
 If you didn't infect your mom's computer with a virus while browsing a sketchy Flash game site, you were doing something wrong. Skirting malware to fuel your addiction was half the thrill of playing Flash games.
 
@@ -29,7 +29,7 @@ And all of that is now a distant past—a precious little slice of the Internet 
 
 Today, December 31, 2020, marks the end of Flash as we know it.
 
-{% include picture.html img="flash-end-of-life.png" alt="Adobe announces Flash's end of life in a popup dialog window." %}
+{% include img.html img="flash-end-of-life.png" alt="Adobe announces Flash's end of life in a popup dialog window." %}
 
 In the words of Monica Bing, *it's the end of an era*.
 
@@ -37,7 +37,7 @@ I don't even know why Flash isn't safe. I can't be bothered to Google it because
 
 The limited hardware of the time, combined with the genius of pre-historic Internet content creators, gave birth to thousands upon thousands of hours of addictive browser games, along with animated classics like [Salad Fingers](https://www.youtube.com/watch?v=M3iOROuTuMA), [The End of the World](https://www.youtube.com/watch?v=kCpjgl2baLs), and a metric ton of Zelda, Mario, Yu-Gi-Oh!, and Pokémon parodies.
 
-{% include picture.html img="newgrounds.png" alt="Salad Fingers 1 and 2, uploaded to Newgrounds.com." %}
+{% include img.html img="newgrounds.png" alt="Salad Fingers 1 and 2, uploaded to Newgrounds.com." %}
 
 Flash games were my first and earliest exposure to technology—and, more specifically, the wonders of the web. Inspired by Flash games like Stick War and the Sniper Assassin series, I'd run off to [Pivot Animator](https://pivotanimator.net/) and sow bloody chaos among my own little world of stickmen and women. For me, Flash was a source of immense creativity and fun, and I'll miss it dearly.
 
@@ -46,7 +46,7 @@ There's some good news, though: While browsers are discontinuing support for Fla
 Starting today, though, browsers like Chrome and Firefox will officially block Flash content from running, so archives like this one will be your only option for reliving the glory days of Flash gaming. Any games that weren't already ported over to Unity or JavaScript simply won't work.
 
 <figure>
-  {% include picture.html img="chrome.png" alt="Chrome prompts you to unblock Flash by default." clickable=false %}
+  {% include img.html img="chrome.png" alt="Chrome prompts you to unblock Flash by default." clickable=false %}
   <figcaption>Why are you like this, Chrome?</figcaption>
 </figure>
 
@@ -60,4 +60,4 @@ Anyway, I suppose that's it. I wish I had more to say, but I don't think there's
 
 RIP, Flash—you will be missed.
 
-{% include picture.html img="press-f.jpg" alt="Press F to pay respects." %}
+{% include img.html img="press-f.jpg" alt="Press F to pay respects." %}

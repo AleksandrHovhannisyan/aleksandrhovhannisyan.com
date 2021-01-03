@@ -35,7 +35,7 @@ Here, the number <code>10</code> is what we call the **base** (aka **radix**) of
 
 In the decimal number system, a number is represented by placing digits into "buckets" that represent **increasing powers of ten**, starting with <code>10<sup>0</sup></code> in the rightmost "bucket," followed by <code>10<sup>1</sup></code> to its immediate left, and so on infinitely:
 
-{% include picture.html img="buckets.png" alt="Increasing powers of ten" %}
+{% include img.html img="buckets.png" alt="Increasing powers of ten" %}
 
 Any unused buckets to the far left have an implicit value of <code>0</code> in them. We usually trim leading zeros because there is no use in saying <code>00579</code> when that's mathematically identical to <code>579</code>.
 
@@ -53,11 +53,11 @@ Now, suppose that we have a string of digits <code>d<sub>1</sub> d<sub>2</sub> .
 
 And you can visualize that like this:
 
-{% include picture.html img="bases.png" alt="A generic base of b with digits d" %}
+{% include img.html img="bases.png" alt="A generic base of b with digits d" %}
 
 Using our same example, <code>d<sub>1</sub>b<sup>n-1</sup> + d<sub>2</sub>b<sup>n-2</sup> + ... + d<sub>n</sub>b<sup>0</sup> = 5(10<sup>2</sup>) + 7(10<sup>1</sup>) + 9(10<sup>0</sup>)</code>
 
-{% include picture.html img="579.png" alt="Expanding 579 in terms of powers of 10" %}
+{% include img.html img="579.png" alt="Expanding 579 in terms of powers of 10" %}
 
 Again, we have buckets from right to left in increasing powers of our base (<code>10</code>).
 
@@ -114,7 +114,7 @@ By definition, the **binary number system** has a base of <code>2</code>, and th
 
 Each "bucket" in a binary string represents an increasing power of two: <code>2<sup>0</sup></code>, <code>2<sup>1</sup></code>, <code>2<sup>2</sup></code>, and so on.
 
-{% include picture.html img="binary.png" alt="The binary number system uses powers of two" %}
+{% include img.html img="binary.png" alt="The binary number system uses powers of two" %}
 
 The leftmost bit is called the **most significant bit (MSB)**, while the rightmost bit is called the **least significant bit (LSB)**.
 
@@ -158,7 +158,7 @@ Formally, ASCII is referred to as a **character encoding standard**. Put more si
 
 Here is a typical [ASCII chart](http://www.asciitable.com/) that you may have seen before:
 
-{% include picture.html img="ascii.gif" alt="An ASCII table showing characters and their numerical representations" %}
+{% include img.html img="ascii.gif" alt="An ASCII table showing characters and their numerical representations" %}
 
 In the ASCII standard, there are a total of 128 characters, each mapped to a unique number in binary (with an equivalent representation in decimal that we humans understand more naturally):
 
@@ -334,7 +334,7 @@ Now, we simply interpret the decimal equivalent for each part:
 
 That means <code>#4287f5</code> is really <code>rgb(66, 135, 245)</code>! You can verify this using a [Color Converter](https://www.w3schools.com/colors/colors_converter.asp):
 
-{% include picture.html img="color-converter.png" alt="A color converter verifying that #4287f5 is really rgb(66, 135, 245)" %}
+{% include img.html img="color-converter.png" alt="A color converter verifying that #4287f5 is really rgb(66, 135, 245)" %}
 
 For practice, let's convert this to binary as well. I'll mark the groups of four bits to make it easier to see how I did this (note: you can also convert from the decimal RGB representation if you want to):
 
@@ -362,7 +362,7 @@ Or, if you're using the decimal RGB format, the math still pans out: <code>256 Ã
 
 On older systems with limited memory, colors were represented using just eight bits (one byte). These **8-bit colors** had a very limited palette, which meant that most computer graphics didn't have gradual color transitions (so images looked very pixelated/grainy). With only <code>8</code> bits to work with, you are limited to just <code>2<sup>8</sup> = 256</code> colors!
 
-{% include picture.html img="8-bit.png" alt="An 8-bit color palette" %}
+{% include img.html img="8-bit.png" alt="An 8-bit color palette" %}
 
 Naturally, you may be wondering: How did they split <code>8</code> bits evenly among red, green, and blue? After all, <code>8</code> isn't divisible by three!
 
@@ -482,7 +482,7 @@ So to get our largest signed integer, we need to subtract oneâ€”we've effectivel
 In video games like RuneScape that use <code>32</code>-bit signed integers to represent in-game currency, the max "cash stack" that you can have caps out at exactly <code>2<sup>31</sup> - 1</code>, which is roughly 2.1 billion.
 
 <figure>
-    {% include picture.html img="max-cash-stack.png" alt="The max cash stack you can have in Runescape is 2147m, or 2.1 billion." %}
+    {% include img.html img="max-cash-stack.png" alt="The max cash stack you can have in Runescape is 2147m, or 2.1 billion." %}
     <figcaption>Image source: <a href="https://www.youtube.com/watch?v=c2ZsPPDH08g">YouTube</a></figcaption>
 </figure>
 
@@ -718,7 +718,7 @@ Answer: <code>10.5</code>.
 Now let's repeat the process over in the binary number system. Note that I'm going to strip leading zeros to make my life easier since we're working with two unsigned numbers:
 
 ```
-    
+
       _______
 1100 |1111110
 ```
@@ -760,7 +760,7 @@ Take things one digit at a time, and [reference this useful YouTube video](https
 
 Answer: <code>01010.1</code>.
 
-What does the <code>1</code> to the right of the decimal point represent? Well, in the decimal number system, anything to the right of the decimal point represents a negative power of ten: <code>10<sup>-1</sup></code>, <code>10<sup>-2</sup></code>, and so on. 
+What does the <code>1</code> to the right of the decimal point represent? Well, in the decimal number system, anything to the right of the decimal point represents a negative power of ten: <code>10<sup>-1</sup></code>, <code>10<sup>-2</sup></code>, and so on.
 
 As you may have guessed, in the binary number system, these are <code>2<sup>-1</sup></code>, <code>2<sup>-2</sup></code>, and so on. So <code>.1</code> above really means <code>1(2<sup>-1</sup>)</code>, which is <code>1 / 2 = 0.5<sub>10</sub></code> in decimal. And of course, the part in front of the decimal point evaluates to <code>10<sub>10</sub></code>.
 

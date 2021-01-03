@@ -8,7 +8,7 @@ comments_id: 41
 
 **Search engine optimization** (SEO) is the art of making strategic improvements to a site's content or performance in order to rank higher in search results and attract more traffic.
 
-{% include picture.html img="metrics.png" alt="Tracking metrics for a website." %}
+{% include img.html img="metrics.png" alt="Tracking metrics for a website." %}
 
 If you're just getting started with blogging—and even if you've been doing it for a while—you may not know how to get more traffic on your website. You may have heard about SEO before or done a bit of reading on the subject. It's a massive industry, and trying to write an exhaustive guide on SEO blogging best practices would require an entire book (or two... or lots).
 
@@ -17,7 +17,7 @@ Instead, what I hope to do here is share some SEO blogging tips based on my own 
 But I've also done some independent reading and research to improve my own blog's SEO. Some of those attempts have led to a substantial increase in traffic to my blog posts:
 
 <figure>
-  {% include picture.html img="trending.png" alt="One of my pages is trending up in search results after recent SEO efforts." %}
+  {% include img.html img="trending.png" alt="One of my pages is trending up in search results after recent SEO efforts." %}
   <figcaption>March 25th happened to be the day on which I used <a href="#9-add-schema-markup-json-ld-to-your-blog">tip #9</a>.</figcaption>
 </figure>
 
@@ -44,7 +44,7 @@ Your **primary keyword** is the keyword that you've selected that you want your 
 However, what you shouldn't do is stuff your keyword anywhere and *everywhere*. Treat your primary keyword like you would salt: Use it excessively, and your dish will be ruined. Use it sparingly and judiciously, and it'll add flavor to an otherwise bland meal.
 
 <figure>
-    {% include picture.html img="keyword-stuffing.png" alt="An example of keyword stuffing, straight from Google." %}
+    {% include img.html img="keyword-stuffing.png" alt="An example of keyword stuffing, straight from Google." %}
     <figcaption>Google's exaggerated (but nonethelss illustrative) example of <a href="https://support.google.com/webmasters/answer/66358?hl=en">keyword stuffing</a>.</figcaption>
 </figure>
 
@@ -61,14 +61,14 @@ Speaking of keywords... How do you pick the right ones for your blog post?
 Do you just compose the first title that comes to mind and hope that you'll somehow show up on the first page of Google? If so, you need to rethink you approach—because chances are that you could be trying to compete with sharks that have been swimming in those waters far longer than you have.
 
 <figure>
-    {% include picture.html img="difficult-keyword.png" alt="A keyword that would be very difficult to rank for." %}
+    {% include img.html img="difficult-keyword.png" alt="A keyword that would be very difficult to rank for." %}
     <figcaption>Good luck ranking for this keyword, unless you have tons of backlinks and a good domain score.</figcaption>
 </figure>
 
 You need to first gauge the demand for a particular topic of interest. You want to try to rank for keywords that have high volume and low competition. Alternatively, you can try to rank for keywords that have low volume and low-to-medium competition that are still related to your primary topic, but with a much narrower scope. Try using **long-tail keywords**—search phrases that are multiple words in length. They're effective in competitive spaces because they target a very specific **search intent**.
 
 <figure>
-    {% include picture.html img="easier-keyword.png" alt="A keyword that's much easier to rank for." %}
+    {% include img.html img="easier-keyword.png" alt="A keyword that's much easier to rank for." %}
     <figcaption>You're much more likely to rank for this granular, long-tail keyword.</figcaption>
 </figure>
 
@@ -78,7 +78,7 @@ Of course, this isn't a skill you'll develop overnight, and all of this is much 
 
 A good first step is to use Google itself and enter a few phrases that you would use as a reader if you were to search for whatever topic you're writing about. To some extent, you can rely on Google's search suggestions for keyword inspiration, but this has one notable drawback: It doesn't give you any numbers for *how many* people are searching for those topics.
 
-{% include picture.html img="google-search-suggestions.png" alt="Google Search suggestions for 'best workouts.'" %}
+{% include img.html img="google-search-suggestions.png" alt="Google Search suggestions for 'best workouts.'" %}
 
 Your next best bet is to use either a free or paid keyword research tool to glean keyword volume and cost-per-click (CPC) data as a rough estimate of a keyword's value and competitiveness.
 
@@ -90,11 +90,11 @@ However, there are still lots of [free SEO tools](https://neilpatel.com/blog/fre
 
 [Google Trends](https://trends.google.com/trends/?geo=US) is actually a hidden gem. It's a free SEO tool that you can use to gauge interest in a search term. You can narrow this down by geography, compare multiple keywords side by side, specify a time frame, and even narrow down the search method (e.g., Web Search vs. Image vs. YouTube). While this is far from being a sophisticated tool, it's nonetheless insightful.
 
-{% include picture.html img="google-trends.png" alt="Google Trends results comparing two search terms" %}
+{% include img.html img="google-trends.png" alt="Google Trends results comparing two search terms" %}
 
 [Ubersuggest](https://app.neilpatel.com/en/ubersuggest/) is also useful because it lets you run SEO audits to see if your site has any critical errors that could be hurting your ranking. It also has a basic keyword planner and research tool built in that gives you volume and CPC data, as well as a rough estimate of a keyword's search difficulty (that is, the difficulty of trying to rank for that keyword without paying for ads).
 
-{% include picture.html img="ubersuggest.png" alt="Ubersuggest gives you a detailed breakdown of keyword data." %}
+{% include img.html img="ubersuggest.png" alt="Ubersuggest gives you a detailed breakdown of keyword data." %}
 
 The really great thing about Ubersuggest is the **Keyword Ideas** section, where you'll see related variations of the keyword that you searched for. This is super handy for finding better keywords and identifying potentially lucrative long-tail keywords.
 
@@ -102,7 +102,7 @@ The really great thing about Ubersuggest is the **Keyword Ideas** section, where
 
 Even before your site starts getting traffic, it's a good idea to set up a Google Search Console Account. It's 100% free and allows you to claim ownership of your website so you can track metrics like the number of impressions, number of clicks, your click-through rate, and your average position in Google search results.
 
-{% include picture.html img="google-search-console.png" alt="Google Search Console results for my site over the past 3 months." %}
+{% include img.html img="google-search-console.png" alt="Google Search Console results for my site over the past 3 months." %}
 
 You also get a breakdown of the following by number of impressions and clicks:
 
@@ -143,7 +143,7 @@ To improve your blog's SEO, you'll want to make sure that it loads quickly on al
 
 **Page load speed** is an important metric considered by search engines like Google, and optimizing it is definitely important for an SEO-friendly website. Use a free tool like [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) to identify performance bottlenecks on your site:
 
-{% include picture.html img="pagespeed-insights.png" alt="PageSpeed Insights results for a post from my website." %}
+{% include img.html img="pagespeed-insights.png" alt="PageSpeed Insights results for a post from my website." %}
 
 Here's how to improve page load speed on your blog:
 
@@ -168,7 +168,7 @@ Not sure about your blog's mobile user experience? The first obvious step is to 
 
 Beyond manual testing, you can take advantage of the free [Mobile Usability Report](https://support.google.com/webmasters/answer/9063469?hl=en) right there in your Google Search Console account:
 
-{% include picture.html img="mobile-issues.png" alt="Mobile issues flagged in Google Search Console." %}
+{% include img.html img="mobile-issues.png" alt="Mobile issues flagged in Google Search Console." %}
 
 If clickable elements are too close on the mobile version of your site, or if the font size is too small to be read, or if there are any other issues affecting your site, those will be flagged as errors, and they could end up hurting your ranking on Google if they remain unfixed.
 
@@ -188,7 +188,7 @@ Do you feel like you've run out of content ideas?
 
 There's a pervasive belief among bloggers, entrepreneurs, and artists that their work needs to be truly novel to be received well by their audiences and users. The truth is that there's very little untapped innovation out there waiting to be discovered.
 
-{% include picture.html img="ideas.png" alt="All ideas grow out of other ideas." %}
+{% include img.html img="ideas.png" alt="All ideas grow out of other ideas." %}
 
 Just because you've already written about a certain topic doesn't mean that you can't *continue* writing about it. Break up your existing content into bite-sized blog posts offering advice, sharing mini-tutorials, or providing value in some shape or form. SEO-friendly content isn't just about providing one-off gems that do really well: They're about developing a strategy that provides *continuous* value to your readers.
 
@@ -221,8 +221,8 @@ Some of the best places to link back to your own content include StackExchange, 
 
 **StackExchange** and **Quora** both have very, very high domain authority for anything that seems like a question—so high that you'll usually see their links pop up in the #1 and #2 positions in Google search results. This is especially true for StackOverflow questions.
 
-{% include picture.html img="quora-authority.png" alt="Quora has a very high domain authority." %}
-{% include picture.html img="stackoverflow-authority.png" alt="StackOverflow also has a very high domain authority." %}
+{% include img.html img="quora-authority.png" alt="Quora has a very high domain authority." %}
+{% include img.html img="stackoverflow-authority.png" alt="StackOverflow also has a very high domain authority." %}
 
 If you've written a blog post answering a question that doesn't seem to have many high-quality answers on Quora or StackExchange, you could post your own answer on an existing question that's attracted considerable traffic (e.g., in the thousands). If you provide an insightful answer, you may end up driving some traffic to your blog.
 

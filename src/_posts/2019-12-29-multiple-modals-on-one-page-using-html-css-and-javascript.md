@@ -12,11 +12,11 @@ is_popular: true
 
 This tutorial shows you how to create multiple modals on one page using nothing but HTML, CSS, and JavaScript. We'll look at two versions; the first is stacking multiple modals on top of one another:
 
-{% include picture.html img="demo.gif" alt="A demo of opening and closing stacked modals." %}
+{% include img.html img="demo.gif" alt="A demo of opening and closing stacked modals." %}
 
 The second is opening multiple modals on one page side by side:
 
-{% include picture.html img="side-by-side-demo.gif" alt="A demo of opening and closing side-by-side modals." %}
+{% include img.html img="side-by-side-demo.gif" alt="A demo of opening and closing side-by-side modals." %}
 
 They'll share some of the same underlying structure and logic, but I've split them into separate sections to make it easier for you to find what you're looking for.
 
@@ -205,7 +205,7 @@ Finally, we'll style the triggers:
 
 That's it for now. You can temporarily make `modal1` visible by manually adding `visible` to its class list. Here's what that will look like:
 
-{% include picture.html img="modal.png" alt="One of the modals we created, with its slightly opaque background." %}
+{% include img.html img="modal.png" alt="One of the modals we created, with its slightly opaque background." %}
 
 From here, things start to diverge depending on what whether you want to open multiple modals stacked on top of each other or side by side. We'll look at both versions.
 
@@ -382,7 +382,7 @@ Additionally, because of this change, the modal IDs will now need to belong to e
 
 Only three lines will need to change in our CSS. Here's a diff between the two versions:
 
-{% include picture.html img="diff.png" alt="New lines of code added." %}
+{% include img.html img="diff.png" alt="New lines of code added." %}
 
 And here's the new CSS if you want to copy it over and replace what you had before:
 

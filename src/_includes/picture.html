@@ -4,23 +4,16 @@
 {% assign class = include.class %}
 {% assign id = include.id %}
 {% assign clickable = include.clickable %}
-{% if include.path %}
-    {% assign path = include.path %}
-{% elsif page.is_post %}
-    {% assign path = page.img_path | append: '/' | append: page.slug %}
-{% else %}
-    {% assign path = page.img_path %}
-{% endif %}
-{% unless clickable == false %}<a href="/{{ path }}/{{ img }}.{{ ext }}" class="clickable-picture-anchor">{% endunless %}<picture 
+{% unless clickable == false %}<a href="{{ img }}.{{ ext }}" class="clickable-picture-anchor">{% endunless %}<picture
 class="lazily-loaded-picture{% if class %} {{ class }}{% endif %}" {% if id %}id="{{ id }}"{% endif %}>
-    <source 
-        srcset="/{{ path }}/{{ img }}-placeholder.webp" 
-        type="image/webp" 
-        data-srcset="/{{ path }}/{{ img }}.webp"
+    <source
+        srcset="{{ img }}-placeholder.webp"
+        type="image/webp"
+        data-srcset="{{ img }}.webp"
         class="lazy-source">
-    <img 
-        src="/{{ path }}/{{ img }}-placeholder.{{ ext }}"
-        alt="{{ include.alt }}" 
-        data-src="/{{ path }}/{{ img }}.{{ ext }}"
+    <img
+        src="{{ img }}-placeholder.{{ ext }}"
+        alt="{{ include.alt }}"
+        data-src="{{ img }}.{{ ext }}"
         class="lazy-img">
 </picture>{% unless clickable == false %}</a>{% endunless %}

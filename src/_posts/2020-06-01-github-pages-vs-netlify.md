@@ -36,7 +36,7 @@ GitHub Pages has **none of these things**—no customization, and certainly no p
 
 With Netlify, you have **much more control over the deployment process**. Your dashboard provides a clear view of your deploy history and even allows you to manually revert your site to a prior state with its **one-click rollback**. You can also stop auto-publishing new versions of your site, in case that's something you're interested in, and even access a live preview of your deployment to make sure nothing broke. You can also share your deployment history (and deploy previews) with other people; this is useful if you're working as part of a team and not just a single dev, or if you want design input from others.
 
-{% include picture.html img="dashboard.png" alt="The Netlify dashboard for my personal website" %}
+{% include img.html img="dashboard.png" alt="The Netlify dashboard for my personal website" %}
 
 On the other hand, with GitHub Pages, [you can only deploy to two branches](https://help.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source), one of which is `master` by default. Want to revert your site? Have fun [resetting to a previous commit with git](/blog/undoing-changes-in-git/#2-resetting-a-branch-to-an-older-commit) on your second branch and fiddling with your repo settings to change the deploy branch. There are also no deploy previews, so whatever you push will go live as soon as it builds.
 
@@ -44,7 +44,7 @@ On the other hand, with GitHub Pages, [you can only deploy to two branches](http
 
 Netlify builds my site in 30 seconds, on average:
 
-{% include picture.html img="faster-deploys.png" alt="Netlify deploys my site very quickly" %}
+{% include img.html img="faster-deploys.png" alt="Netlify deploys my site very quickly" %}
 
 With GitHub Pages, things are much slower, and you sometimes have to do a hard refresh to see the results. Their own documentation says you may have to [wait up to 20 minutes](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/about-jekyll-build-errors-for-github-pages-sites) to see the changes:
 
@@ -56,7 +56,7 @@ Even worse, GitHub Pages caps you at **only 10 builds per hour**. So if you're f
 
 Netlify has a much more generous soft cap of **3 builds per minute**. You also get **300 build minutes per month** and **100 GB data usage** with its free tier, which is more than enough for most needs. To clarify, build minutes are basically Netlify's currency for a billing cycle. If you're a free user, this means that your builds can't exceed the 300-minute total for one month. Next month, your usage resets to 0. My cycle resets on the 15th of each month, and I don't pay anything as long as my usage doesn't exceed this limit:
 
-{% include picture.html img="billing.png" alt="Netlify's dashboard shows billing information for things such as data usage and build minutes used." %}
+{% include img.html img="billing.png" alt="Netlify's dashboard shows billing information for things such as data usage and build minutes used." %}
 
 ### Proper 301 Redirects
 
@@ -80,7 +80,7 @@ I recommend that you keep your old GitHub Pages repository around temporarily, s
 
 You can also use the [Change of Address Tool](https://support.google.com/webmasters/answer/9370220?hl=en) right there in Google Search Console to migrate your old site's traffic to your new one, once you've set up 301 redirects:
 
-{% include picture.html img="migration.png" alt="Migrating my old search engine results to my new domain" %}
+{% include img.html img="migration.png" alt="Migrating my old search engine results to my new domain" %}
 
 Currently, I host my new site's content under a private GitHub repo, with a custom domain configured in Netlify. My `.github.io` domain is still up and visible in Google, but it redirects to my new site.
 

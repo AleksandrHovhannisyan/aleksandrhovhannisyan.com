@@ -22,7 +22,7 @@ All right, enough chit-chat—let's dig in!
 
 Jekyll is a **static site generator**. That's just a fancy way of saying that it takes a bunch of HTML, Markdown, CSS, and JavaScript source files, combines them as needed based on layout files that you've specified, processes any template code that you've written, and spits out a build directory (e.g., `_site/`) that basically houses all of your website's content, ready for hosting on a web server (like GitHub Pages!).
 
-{% include picture.html img="static-site-generator.png" alt="A static site generator spits out a compiled, well-structured, fully functioning site." %}
+{% include img.html img="static-site-generator.png" alt="A static site generator spits out a compiled, well-structured, fully functioning site." %}
 
 In plain English, Jekyll makes it easy for you to create a website—and, more commonly, a blog—with plain old HTML and Markdown, without having to worry about things like how to add tags to posts or make certain static data accessible on all of your pages. It takes care of these things for you so you can focus on doing what you love the most: writing (or, in my case, writing *and* dev)!
 
@@ -38,11 +38,11 @@ You can create as many GitHub Pages sites as you want. Each user can only create
 
 To get started, visit [https://github.com/](https://github.com/), sign in, and click the green `New` button to create a new repo:
 
-{% include picture.html img="new-repo.png" alt="Click the green new button to create a repository." %}
+{% include img.html img="new-repo.png" alt="Click the green new button to create a repository." %}
 
 Enter the name of your repository. It needs to be your GitHub username followed by `.github.io`:
 
-{% include picture.html img="create-repo.png" alt="Type in the name of your new repository." %}
+{% include img.html img="create-repo.png" alt="Type in the name of your new repository." %}
 
 That's literally all you have to do to get started with GitHub Pages! As with other repos you own, you'll want to clone it locally and set up your origin remote.
 
@@ -81,7 +81,7 @@ bundle exec jekyll new . --force{% endcapture %}
 
 The end result should be this simple directory structure:
 
-{% include picture.html img="directory-structure.jpg" alt="Jekyll starter files." %}
+{% include img.html img="directory-structure.jpg" alt="Jekyll starter files." %}
 
 ### 3. Configuring Jekyll with GitHub Pages
 
@@ -196,7 +196,7 @@ Head on over to `localhost:4000` to see the starter page. Note that the appearan
 2. A mostly blank page with a title placeholder if you deleted the line `theme: minima`.
 3. A completely blank page, if you set `theme: null` explicitly like I recommended.
 
-{% include picture.html img="themes.jpg" alt="The three Jekyll starter themes." %}
+{% include img.html img="themes.jpg" alt="The three Jekyll starter themes." %}
 
 The remainder of this tutorial assumes that your theme is set to `null`. Some of the screenshots I show may not line up with what you see on your end if you decide to use the minima theme. You may also miss out on learning some useful things about how Jekyll works if you decide to use one of the starter themes instead of writing your own CSS.
 
@@ -326,7 +326,7 @@ layout: home
 
 If live-reloading is enabled, you should see your page update automatically to display an `h1` tag. Otherwise, you may need to refresh manually to see this change.
 
-{% include picture.html img="hello-jekyll.png" alt="Hello, Jekyll" %}
+{% include img.html img="hello-jekyll.png" alt="Hello, Jekyll" %}
 
 As I noted earlier, you can optionally also use plain HTML to get the same result:
 
@@ -518,7 +518,7 @@ After doing that, go ahead and move `index.md` and `about.md` into this director
 
 Now you should see the following page instead of the `index.html` from earlier:
 
-{% include picture.html img="webrick.png" alt="The WEBrick server for our Jekyll site." %}
+{% include img.html img="webrick.png" alt="The WEBrick server for our Jekyll site." %}
 
 Hmm... Our `index.html` and `about.html` pages have vanished! Plus, our newly created `_pages/` directory is nowhere to be found. The latter behavior is expected because the directory has a leading underscore—and if you'll recall, Jekyll doesn't process those kinds of directories unless you tell it to.
 
@@ -535,7 +535,7 @@ This command defines an array of directories that Jekyll should process when it 
 
 Now let's restart the server:
 
-{% include picture.html img="webrick2.png" alt="The WEBrick server for our Jekyll site." %}
+{% include img.html img="webrick2.png" alt="The WEBrick server for our Jekyll site." %}
 
 Okay, it looks like that added `_pages/` to our build directory, and we can now see an `about/` directory that presumably stores our about page. But it's still not serving our index properly when we visit `localhost:4000`.
 
@@ -589,7 +589,7 @@ Check out these other pages:
 
 Result:
 
-{% include picture.html img="about.gif" alt="Navigating to the About page." %}
+{% include img.html img="about.gif" alt="Navigating to the About page." %}
 
 Awesome! To make sure you understand how all of this works under the hood, let's take a peek at the `_site/` directory that Jekyll generated for us automatically:
 
@@ -656,7 +656,7 @@ categories: jekyll update
 
 So now, if we navigate to `localhost:4000/blog/jekyll/update/welcome-to-jekyll`, we should see the blog post:
 
-{% include picture.html img="post.png" alt="A sample blog post." %}
+{% include img.html img="post.png" alt="A sample blog post." %}
 
 Here's what `_site/` looked like before this:
 
@@ -739,7 +739,7 @@ Welcome to my post! This was published on {{ page.date }}.{% endraw %}{% endcapt
 
 Open up the post on your local to see the result:
 
-{% include picture.html img="date.png" alt="A sample blog post showing its date in the body." %}
+{% include img.html img="date.png" alt="A sample blog post showing its date in the body." %}
 
 This is our first look at the syntax of Liquid, the templating language that Jekyll uses to make development easier. You'll see that `page.date` is among the list of [page variables in Jekyll](https://jekyllrb.com/docs/variables/#page-variables), among many others that you can use.
 
@@ -1082,7 +1082,7 @@ Next, create the `_layouts/` directory and add a file to it named `default.html`
 
 It's your typical HTML file. Let's check it out:
 
-{% include picture.html img="default-layout.gif" alt="The default layout." %}
+{% include img.html img="default-layout.gif" alt="The default layout." %}
 
 Notice how we take advantage of Liquid several times to customize our pages. For example, the layout file customizes the title bar of each page using front matter variables we defined. The navigation bar applies a class of `active-page` selectively, depending on what page we're currently on. You can then select this element with CSS and style it accordingly to make it more prominent than the other links.
 
@@ -1111,7 +1111,7 @@ categories: jekyll update
 
 The blog post collapses to a "flat" layout and doesn't have the same HTML structure as the other pages:
 
-{% include picture.html img="collapsed-layout.png" alt="The starter blog post has a collapsed layout." %}
+{% include img.html img="collapsed-layout.png" alt="The starter blog post has a collapsed layout." %}
 
 This is because the `post` layout doesn't exist. Let's go ahead and create this layout file. This time around, you'll notice that a layout file can itself specify a layout:
 
@@ -1135,7 +1135,7 @@ layout: default
 
 Open up the post, and you'll now see that it has the same base layout as all your other pages, but it also has a nested layout specific to blog posts:
 
-{% include picture.html img="post-layout.png" alt="The post layout." %}
+{% include img.html img="post-layout.png" alt="The post layout." %}
 
 Awesome!
 
@@ -1262,7 +1262,7 @@ Finally, don't forget to link the stylesheet to your `default.html` layout. Just
 
 Here's what your site should now look like:
 
-{% include picture.html img="styled.png" alt="The styled version of the site." %}
+{% include img.html img="styled.png" alt="The styled version of the site." %}
 
 Need to add more styles? Simply create a new SASS stylesheet under `_sass/`, possibly in a nested subdirectory to keep things organized, and then just import it into your manifest. It's that easy.
 
@@ -1339,7 +1339,7 @@ Consider your online resume or personal website: You likely want to have a page,
 
 Here's a mockup for two of those:
 
-{% include picture.html img="mockup.png" alt="Mockups of project cards and skills" %}
+{% include img.html img="mockup.png" alt="Mockups of project cards and skills" %}
 
 You get the general idea—all websites have static, mostly unchanging data that is often repeated in slightly different ways while retaining the same underlying *structure*.
 
@@ -1514,7 +1514,7 @@ So you've started blogging with Jekyll. Awesome work!
 
 But how do you know if you're getting any traffic, or what pages people are clicking, or what queries they're using to find you? What devices are being used? Are most of your users on mobile or desktop? What about your impressions, click count, click-through rate, and overall ranking on Google?
 
-{% include picture.html img="google-search-console.png" alt="Google Search Console statistics for my site." %}
+{% include img.html img="google-search-console.png" alt="Google Search Console statistics for my site." %}
 
 If you're a complete beginner getting started with Jekyll and don't yet have much (or any) traffic to your website, this should be the least of your concerns. Focus first and foremost on creating quality content, and then go ahead and set this up so you can grow your blog.
 
@@ -1524,15 +1524,15 @@ First, head on over to the [Google Search Console](https://search.google.com/sea
 
 Once you've done that, click `Add property`:
 
-{% include picture.html img="add-property.png" alt="Adding a Google Search Console property." %}
+{% include img.html img="add-property.png" alt="Adding a Google Search Console property." %}
 
 When prompted to select a property type, choose the `URL prefix` option and enter the full URL of your site on GitHub Pages:
 
-{% include picture.html img="property-type.png" alt="Selecting the type of property in Google Search Console." %}
+{% include img.html img="property-type.png" alt="Selecting the type of property in Google Search Console." %}
 
 You'll be asked to verify that you are in fact the owner of this website. Google generates a unique file that you'll need to download, add to your website's repo, and push to GitHub:
 
-{% include picture.html img="verify-ownership.png" alt="Verify ownership of your Google Search Console property." %}
+{% include img.html img="verify-ownership.png" alt="Verify ownership of your Google Search Console property." %}
 
 GitHub Pages will then build your site and make this file accessible to Google for verification. Once you've uploaded the file, click `Verify`.
 

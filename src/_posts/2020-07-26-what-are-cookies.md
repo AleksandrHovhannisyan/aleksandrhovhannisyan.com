@@ -43,7 +43,7 @@ Cookies are literally inert pieces of textual data. And the best way to understa
 
 For the purposes of this tutorial, I'll be using Reddit as an example. Here are the cookies associated with my Reddit account (I've intentionally obfuscated potentially sensitive values out of an abundance of caution):
 
-{% include picture.html img="reddit-cookies.png" alt="Examining the cookies associated with my Reddit user account" %}
+{% include img.html img="reddit-cookies.png" alt="Examining the cookies associated with my Reddit user account" %}
 
 True to its definition, a cookie is in fact "just a piece of data" stored on your computer. Each site may store zero or more cookies. Here, Reddit is storing 15 different cookies. A cookie consists of a name, a value, an expiration date or "age," a size in bytes, and so on.
 
@@ -59,7 +59,7 @@ There's another column in the table above that deserves our attention: `Expires 
 
 Notice that some cookies have `Session` as their value under the `Expires / Max-Age` column:
 
-{% include picture.html img="session-cookies.png" alt="Exploring session cookies on Reddit via Firefox dev tools" %}
+{% include img.html img="session-cookies.png" alt="Exploring session cookies on Reddit via Firefox dev tools" %}
 
 These are known as **session cookies**, also called **temporary cookies** because they're only kept around for your *current browsing session*. It's up to the browser itself to define what constitutes a "current browsing session." In Chrome and Firefox, this is when you fully shut down your browser (i.e., close all tabs). At that point, the cookie may get cleared.
 
@@ -105,11 +105,11 @@ Here's the key: A server may also send along a **`Set-Cookie` response header** 
 
 Here's an example of monitoring XHR requests with the Firefox Dev Tools on Reddit and intercepting the `Set-Cookie` response header:
 
-{% include picture.html img="set-cookie.gif" alt="Reddit sets the redesign_optout cookie to be true when I opt out of the new user interface" %}
+{% include img.html img="set-cookie.gif" alt="Reddit sets the redesign_optout cookie to be true when I opt out of the new user interface" %}
 
 Now, if you inspect future requests, you'll find that this cookie is included in the **`Cookie` HTTP request header**:
 
-{% include picture.html img="response-cookie.png" alt="Inspecting a response header in the Firefox dev tools for Reddit" %}
+{% include img.html img="response-cookie.png" alt="Inspecting a response header in the Firefox dev tools for Reddit" %}
 
 ### Reading and Creating Cookies via JavaScript
 
@@ -127,7 +127,7 @@ Here's an example of creating a cookie with JavaScript:
 
 Now, this API is a little weird. While you would expect the above line of code to replace the whole cookie string, this new cookie will actually get *concatenated* to the existing cookie string (or take the place of an existing cookie, if it has the same name). Here's an example of creating three cookies:
 
-{% include picture.html img="creating-cookies-with-javascript.png" alt="Creating cookies with JavaScript via the Google Chrome console" %}
+{% include img.html img="creating-cookies-with-javascript.png" alt="Creating cookies with JavaScript via the Google Chrome console" %}
 
 Note that you can't create multiple cookies in one go, like `document.cookie = 'foo=bar; hello=world; id=123'`. You have to call `document.cookie = ...` separately for each cookie.
 
@@ -149,7 +149,7 @@ We'll take a closer look at how to delete cookies cookies later in this guide.
 
 If you compare the output of `document.cookie` to the table that we looked at earlier, you may be surprised to find that some cookies are missing from the output string. And that's because of an additional property that we haven't yet covered: **HTTPOnly cookies**:
 
-{% include picture.html img="http-only-cookies.png" alt="A list of http-only cookies for my Reddit account" %}
+{% include img.html img="http-only-cookies.png" alt="A list of http-only cookies for my Reddit account" %}
 
 A cookie that is marked as HTTPOnly cannot be read via JavaScript. Usually, you'll find that session cookies are marked as HTTPOnly. This is a safety precaution to protect you against session hijacking, where a malicious actor may try to read your cookie via JavaScript and use it to masquerade as you.
 
@@ -199,7 +199,7 @@ This is one of the reasons why people sometimes find that ads are following them
 
 Here's a real-world example of inspecting that very `IDE` advertising cookie that Google mentions. This is on StackOverflow, one of the few sites where I felt it would be safe to temporarily disable my adblocker for this tutorial:
 
-{% include picture.html img="stackoverflow-cookies.png" alt="Examining the cookies associated with doubleclick.net" %}
+{% include img.html img="stackoverflow-cookies.png" alt="Examining the cookies associated with doubleclick.net" %}
 
 Time for a fun experiment, assuming you're willing to accept cookies and sell your soul to advertisers:
 
@@ -211,7 +211,7 @@ Time for a fun experiment, assuming you're willing to accept cookies and sell yo
 
 In particular, you'll want to look for the `IDE` cookie. And what you'll find is that it's exactly the same on the second site as it is on the first one that you visited. I tested this with Quora:
 
-{% include picture.html img="quora-cookies.png" alt="Inspecting Quora cookies via Chrome dev tools" %}
+{% include img.html img="quora-cookies.png" alt="Inspecting Quora cookies via Chrome dev tools" %}
 
 **Everything** is the same, down to the cookie's expiration date and time.
 
@@ -233,11 +233,11 @@ Chrome stores its cookies in an SQLite database file named `Cookies`, which is l
 
 Apparently, Chrome maintains two separate database tables for cookies—a `cookies` table and a `meta` table:
 
-{% include picture.html img="schemas.png" alt="Exploring the schemas of the two tables in Chrome's cookies database" %}
+{% include img.html img="schemas.png" alt="Exploring the schemas of the two tables in Chrome's cookies database" %}
 
 And here's what the data looks like for the `cookies` table:
 
-{% include picture.html img="cookie-data.png" alt="Exploring Chrome's cookies table" %}
+{% include img.html img="cookie-data.png" alt="Exploring Chrome's cookies table" %}
 
 ### Firefox
 
@@ -254,7 +254,7 @@ For example, on Windows 10, you'll find your Firefox cookies under `C:\Users\<yo
 
 Edge stores its cookies not in a single file but rather as separate files under `C:\Users\<your_username>\AppData\Local\Microsoft\Windows\INetCookies`:
 
-{% include picture.html img="edge-cookies.png" alt="Viewing a list of cookies stored by Microsoft Edge, via File Explorer" %}
+{% include img.html img="edge-cookies.png" alt="Viewing a list of cookies stored by Microsoft Edge, via File Explorer" %}
 
 You can open these files with a plain text editor.
 
@@ -267,7 +267,7 @@ There are two ways you can clear your cookies:
 
 The first one is the more flexible option of the two, as it allows you to only delete cookies from a particular domain as opposed to all cookies across all domains. You can either right-click a cookie and delete it or simply click the clear icon (a trashcan in Firefox) to delete all cookies:
 
-{% include picture.html img="deleting-cookies.png" alt="Deleting cookies either by right-clicking a cookie or clearing all cookies at once, via browser dev tools" %}
+{% include img.html img="deleting-cookies.png" alt="Deleting cookies either by right-clicking a cookie or clearing all cookies at once, via browser dev tools" %}
 
 And as we saw in an earlier section, you can also clear a cookie via JavaScript by setting its expiration date to be sometime in the past.
 
@@ -289,7 +289,7 @@ Cookies are just one way that websites can save information on the client side. 
 
 I use the first option on my blog to store your selected theme (light mode or dark mode). You can explore `localStorage` just like you would any other storage option in your browser's dev tools:
 
-{% include picture.html img="local-storage.png" alt="Exploring localStorage for my website" %}
+{% include img.html img="local-storage.png" alt="Exploring localStorage for my website" %}
 
 You can also clear `localStorage` via the same tab in dev tools or via JavaScript.
 
