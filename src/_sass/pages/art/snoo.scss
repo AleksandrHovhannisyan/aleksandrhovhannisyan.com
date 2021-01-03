@@ -1,0 +1,60 @@
+// Reference image at 90% zoom: https://i.redd.it/2qy7unjo2j331.png
+
+.snoo {
+  --snoo-orange: #FF4500;
+  border-radius: 50%;
+  width: 42vmin;
+  height: 42vmin;
+  transform: scale(0.5);
+  background-color: var(--snoo-orange);
+  position: relative;
+  background-image:
+      radial-gradient(circle at 70% 26%, white 5%, transparent 5.3%),
+      radial-gradient(circle at 23% 52%, white 7.6%, transparent 7.9%),
+      radial-gradient(circle at 76% 52%, white 7.6%, transparent 7.9%);
+}
+
+.snoo-face {
+  position: absolute;
+  width: 25vmin;
+  height: 17vmin;
+  border-radius: 50%;
+  background-color: white;
+  left: 50%;
+  transform: translateX(-51%);
+  bottom: 8vmin;
+  background-image:
+      radial-gradient(circle at 28% 41%, var(--snoo-orange) 10.5%, transparent 10.8%),
+      radial-gradient(circle at 69% 41%, var(--snoo-orange) 10.5%, transparent 10.8%),
+      radial-gradient(circle at 29% 69%, var(--snoo-orange) 2%, transparent 2.3%),
+      radial-gradient(circle at 71% 70%, var(--snoo-orange) 2%, transparent 2.3%);
+}
+
+.snoo-face::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -8vmin;
+  left: 12vmin;
+  width: 7vmin;
+  height: 10vmin;
+  border-left: solid 1.5vmin white;
+  border-top: solid 1.5vmin white;
+  transform: rotate(13deg);
+  border-radius: 10% 0 0 0;
+}
+
+.snoo-face::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  bottom: 0.7vmin;
+  width: 7vmin;
+  height: 7vmin;
+  border-radius: 0%;
+  border-bottom: solid 1.1vmin var(--snoo-orange);
+  border-right: solid 1.1vmin var(--snoo-orange);
+  border-radius: 0% 0 100% 0;
+}
