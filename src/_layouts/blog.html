@@ -25,7 +25,7 @@ is_blog_page: true
   </p>
   <nav aria-label="Primary blog post tags">
     <ul class="navigation-tags">
-      {% assign tags = "all,react,accessibility,css,off-topic" | split: ',' %}
+      {% assign tags = "all,accessibility,css,webperf,off-topic" | split: ',' %}
       {% for tag in tags %}
       {% assign tagDescription = site.data.tags[tag][1] %}
       <li>
