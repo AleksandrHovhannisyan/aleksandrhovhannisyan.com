@@ -11,7 +11,14 @@ html {
   --font-family-cursive: Reenie Beanie, cursive;
 
   --font-size-scale: 1.125;
-  --font-size-base: 1.8rem;
+  --font-size-base: 1.6rem;
+  --font-line-height: 1.6;
+
+  @media screen and (min-width: 500px) {
+    --font-size-base: 1.8rem;
+    --font-line-height: 1.8;
+  }
+
   --font-size--2: calc(var(--font-size--1) / var(--font-size-scale));
   --font-size--1: calc(var(--font-size-base) / var(--font-size-scale));
   --font-size-0: var(--font-size-base);
@@ -20,12 +27,6 @@ html {
   --font-size-3: calc(var(--font-size-2) * var(--font-size-scale));
   --font-size-4: calc(var(--font-size-3) * var(--font-size-scale));
   --font-size-5: calc(var(--font-size-4) * var(--font-size-scale));
-
-  --font-line-height: 1.6;
-
-  @media screen and (min-width: 500px) {
-    --font-line-height: 1.8;
-  }
 
   --transition-duration: 0.2s;
   --page-max-width: 80rem;
