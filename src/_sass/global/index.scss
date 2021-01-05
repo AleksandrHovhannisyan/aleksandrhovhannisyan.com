@@ -54,17 +54,6 @@ body {
   @include centered;
 }
 
-.banner {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 670px;
-  text-align: center;
-}
-
 // Links an entire parent container, but the parent must be set to relative position
 .container-link {
   height: 100%;
