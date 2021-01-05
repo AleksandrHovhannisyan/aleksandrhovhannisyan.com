@@ -27,12 +27,6 @@ html {
     --font-line-height: 1.8;
   }
 
-  @media screen and (min-width: 800px) {
-    html {
-      --scroll-margin-top: 0;
-    }
-  }
-
   --transition-duration: 0.2s;
   --page-max-width: 80rem;
   --navbar-height: 6.4rem;
