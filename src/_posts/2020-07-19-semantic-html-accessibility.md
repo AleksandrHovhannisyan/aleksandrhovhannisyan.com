@@ -4,7 +4,7 @@ description: Accessibility is a hot topic, yet it's also frequently overlooked o
 keywords: [semantic html, html accessibility]
 tags: [dev, html, accessibility]
 comments_id: 48
-canonical_url: "https://www.aleksandrhovhannisyan.com/blog/dev/semantic-html-accessibility/"
+canonical_url: "https://www.aleksandrhovhannisyan.com/blog/semantic-html-accessibility/"
 ---
 
 **Semantic HTML** isn't just some buzzword that people throw around for no good reason—it's an important concept in front-end development that gives meaning to your HTML markup. When you use semantic HTML, you not only make it easier for sighted users to understand your markup, but you also help *unsighted* users who rely on screen readers to make sense of your *content organization*. This is just one part of creating a more accessible user experience.
