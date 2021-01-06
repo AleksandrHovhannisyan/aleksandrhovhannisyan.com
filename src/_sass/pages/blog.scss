@@ -120,9 +120,8 @@
 }
 
 .post-content {
-    display: grid;
+    @include rhythm;
     grid-template-columns: minmax(0, var(--page-max-width));
-    grid-row-gap: 3.2rem;
     overflow-wrap: break-word;
 
     @include headings {

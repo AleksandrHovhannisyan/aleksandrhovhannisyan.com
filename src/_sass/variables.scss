@@ -21,6 +21,8 @@ html {
     --font-line-height: 1.8;
   }
 
+  --font-rhythm: calc(var(--font-line-height) * 1em);
+
   --font-size--2: calc(var(--font-size--1) / var(--font-size-scale));
   --font-size--1: calc(var(--font-size-base) / var(--font-size-scale));
   --font-size-0: var(--font-size-base);

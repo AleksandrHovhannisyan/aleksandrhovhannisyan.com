@@ -99,3 +99,8 @@
     grid-template-columns: repeat(auto-fit, minmax($desktopMin, $desktopMax));
   }
 }
+
+@mixin rhythm() {
+  display: grid;
+  grid-row-gap: var(--font-rhythm);
+}

@@ -1,3 +1,5 @@
+@import 'mixins';
+
 .comment-actions {
   display: flex;
   align-items: center;
@@ -78,8 +80,7 @@ $meta-spacing: 0.8rem;
 }
 
 .comment-body {
-  display: grid;
-  grid-row-gap: 3.2rem;
+  @include rhythm;
 
   @include headings {
     @include fontSize(0);
