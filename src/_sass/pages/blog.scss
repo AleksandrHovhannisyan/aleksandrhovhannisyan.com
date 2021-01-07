@@ -135,10 +135,15 @@
     }
 
     #markdown-toc {
-      grid-row-gap: 2.4rem;
-
-      ol, ul {
+      &,
+      ol,
+      ul {
+        display: grid;
         grid-row-gap: 2.4rem;
+      }
+
+      ol,
+      ul {
         margin-top: 2.4rem;
       }
 
@@ -148,14 +153,8 @@
       }
     }
 
-    #toc-skipped + h2 {
-      margin-top: 0;
-    }
-
     ol,
     ul {
-      display: grid;
-      grid-row-gap: 0.8rem;
       padding-left: 4.8rem;
     }
 
