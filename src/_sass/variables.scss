@@ -84,13 +84,13 @@ html.light {
 html.dark {
   --button-bg-color-hover: #f3d5b3;
   --button-bg-color: #bda17f;
-  --button-text-color: #{$black-700};
-  --card-bg-color: #{$black-700};
+  --button-text-color: #{$black-800};
+  --card-bg-color: #{$black-800};
   --code-block-box-shadow: 0 0.2rem 0.8rem 0 rgba(0,0,0,0.4);
   --footer-bg-color: var(--navbar-bg-color);
   --footer-text-color: var(--navbar-text-color);
-  --form-bg-color: #{$black-700};
-  --hover-bg-color: #{$black-700};
+  --form-bg-color: #{$black-800};
+  --hover-bg-color: #{$black-800};
   --inline-code-bg-color: rgba(88, 88, 88, 0.65);
   --inline-code-text-color: #{$black-300};
   --input-bg-color: #{$black-600};
@@ -101,7 +101,7 @@ html.dark {
   --input-required-asterisk-color: #c25450;
   --link-color: #cea25a;
   --main-bg-color: #{$black-900};
-  --navbar-bg-color: #{$black-700};
+  --navbar-bg-color: #{$black-800};
   --navbar-box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.8);
   --navbar-link-bg-color-hover: #{$gray-700};
   --navbar-text-color: #{$black-200};
@@ -114,7 +114,7 @@ html.dark {
   --spoiler-bg-color: #9c9387;
   --star-fill-color-filled: #bda17f;
   --table-border-color: #{$black-500};
-  --table-header-bg-color: #{$black-700};
+  --table-header-bg-color: #{$black-800};
   --table-header-text-color: #{$black-200};
   --tag-bg-color-hover: #ffcd91;
   --tag-bg-color: #ada08f;
