@@ -82,6 +82,10 @@ $meta-spacing: 0.8rem;
 .comment-body {
   @include rhythm;
 
+  pre {
+    white-space: pre-wrap;
+  }
+
   @include headings {
     @include fontSize(0);
     margin-top: 0;
