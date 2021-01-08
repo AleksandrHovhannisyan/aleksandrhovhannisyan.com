@@ -11,16 +11,18 @@
 }
 
 .skip-navigation {
-  padding: 0 0.8em;
+  padding: 0.8rem;
   color: var(--navbar-text-color);
   display: flex;
   justify-content: center;
   align-items: center;
+  @include fontSize(-1);
   @include fontWeight('regular');
 
   &:focus {
-    top: 0;
-    bottom: 0;
+    left: 0.8rem !important;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
 
