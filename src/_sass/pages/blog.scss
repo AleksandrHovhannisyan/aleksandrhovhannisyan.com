@@ -221,8 +221,7 @@
         border-left: 0.4rem solid;
         margin-left: 2.4rem;
         padding: 0.4rem 3.2rem;
-        display: grid;
-        grid-row-gap: 3.2rem;
+        @include rhythm;
     }
 
     .spoiler {
