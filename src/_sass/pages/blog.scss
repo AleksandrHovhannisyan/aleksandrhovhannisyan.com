@@ -1,5 +1,8 @@
 @import 'mixins';
 
+$meta-spacing: 1.6rem;
+$meta-tag-spacing: 1.2rem;
+
 .blog-page-title {
   margin-bottom: 0.8rem;
 }
@@ -64,7 +67,7 @@
 }
 
 .meta {
-  margin: 0 1.6rem 1.6rem 0;
+  margin: 0 $meta-spacing $meta-spacing 0;
 }
 
 .meta-icon {
@@ -102,17 +105,21 @@
 }
 
 .post-meta-tags {
-  display: grid;
-  grid-auto-flow: column;
-  grid-column-gap: 1.2rem;
+  display: flex;
+  flex-wrap: wrap;
   list-style: none;
-  padding: 0;
+  margin-bottom: $meta-spacing - $meta-tag-spacing;
+}
+
+.post-meta-tag-wrapper {
+  margin-right: $meta-tag-spacing;
+  margin-bottom: $meta-tag-spacing;
 }
 
 .post-meta-tag {
-    display: flex;
-    align-items: center;
-    padding: 0.6rem 1.2rem;
+  display: flex;
+  align-items: center;
+  padding: 0.6rem 1.2rem;
 }
 
 .post-header {
