@@ -4,10 +4,9 @@ const themeMap = {
 };
 
 export default class ThemeToggle {
-  constructor({ toggleSelector, toggleAudioSrc, themeOwner, storageKey }) {
+  constructor({ toggleSelector, themeOwner, storageKey }) {
     this.toggleElement = document.querySelector(toggleSelector);
     this.toggleElement.addEventListener('click', () => this.toggle());
-    this.sfx = new Audio(toggleAudioSrc);
     this.themeOwner = themeOwner;
     this.storageKey = storageKey;
     this.theme = localStorage.getItem(storageKey) || 'light';
@@ -19,11 +18,6 @@ export default class ThemeToggle {
   }
 
   toggle() {
-    if (this.sfx.src) {
-      this.sfx.currentTime = 0;
-      this.sfx.play();
-    }
-
     const oldTheme = this.currentTheme;
     const newTheme = themeMap[oldTheme];
 
