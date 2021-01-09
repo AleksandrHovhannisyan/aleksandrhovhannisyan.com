@@ -39,11 +39,11 @@
 }
 
 @mixin fontFamily($family) {
-  font-family: var(--font-family-#{$family});
+  font-family: unquote(map-get($font-families, $family));
 }
 
 @mixin fontWeight($humanReadableWeight: inherit) {
-  font-weight: var(--font-weight-#{$humanReadableWeight});
+  font-weight: map-get($font-weights, $humanReadableWeight);
 }
 
 @mixin fontSize($step) {
