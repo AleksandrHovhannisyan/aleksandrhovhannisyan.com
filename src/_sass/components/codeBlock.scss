@@ -31,7 +31,7 @@ div.highlighter-rouge {
   box-shadow: 0 0.4rem 0.4rem 0px rgba(0, 0, 0, 0.3);
   flex-wrap: wrap;
   justify-content: flex-end;
-  padding: 1.6rem;
+  padding: 1.2rem;
   z-index: 2;
 
   // Code blocks that have a header
@@ -55,7 +55,7 @@ div.highlighter-rouge {
   color: $black-200;
   margin: 0;
   word-break: break-all;
-  @include fontSize(0);
+  @include fontSize(-1);
   @include fontWeight('regular');
 
   &::before {
@@ -79,12 +79,12 @@ div.highlighter-rouge {
   grid-column-gap: 0.4rem;
   background-color: $black-500;
   color: $black-200;
-  padding: 0.8rem;
+  padding: 0.6rem 1.2rem;
   border-radius: 0.4rem;
   box-shadow: 0 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.5);
   top: 0;
   position: relative;
-  @include fontSize(0);
+  @include fontSize(-1);
 
   &::before {
     content: 'Copy';
