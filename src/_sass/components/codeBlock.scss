@@ -23,7 +23,7 @@ div.highlighter-rouge {
 }
 
 .code-header {
-  margin-bottom: calc(-1 * var(--font-rhythm));
+  margin-bottom: calc(-1em * var(--line-height));
   display: flex;
   background-color: $black-600;
   border-top-left-radius: 0.4rem;

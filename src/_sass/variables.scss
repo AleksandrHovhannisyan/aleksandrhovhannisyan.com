@@ -1,7 +1,8 @@
+@import 'fonts';
 @import 'colors';
 
 html {
-  font-size: 62.5%;
+  font-size: 1rem / $font-size-base * 100%;
 
   --font-weight-light: 300;
   --font-weight-regular: 400;
@@ -12,30 +13,14 @@ html {
   --font-family-mono: Inconsolata, Monaco, Consolas, Courier New, monospace;
   --font-family-cursive: Reenie Beanie, cursive;
 
-  --font-size-scale: 1.125;
-  --font-size-base: 1.6rem;
-  --font-line-height: 1.75;
-
-  @media screen and (min-width: 500px) {
-    --font-size-base: 1.8rem;
-    --font-line-height: 1.8;
-  }
-
-  --font-rhythm: calc(var(--font-line-height) * 1em);
-
-  --font-size--2: calc(var(--font-size--1) / var(--font-size-scale));
-  --font-size--1: calc(var(--font-size-base) / var(--font-size-scale));
-  --font-size-0: var(--font-size-base);
-  --font-size-1: calc(var(--font-size-0) * var(--font-size-scale));
-  --font-size-2: calc(var(--font-size-1) * var(--font-size-scale));
-  --font-size-3: calc(var(--font-size-2) * var(--font-size-scale));
-  --font-size-4: calc(var(--font-size-3) * var(--font-size-scale));
-  --font-size-5: calc(var(--font-size-4) * var(--font-size-scale));
-
   --transition-duration: 0.2s;
   --page-max-width: 80rem;
   --navbar-height: 6.4rem;
   --scroll-margin-top: var(--navbar-height);
+
+  @media screen and (min-width: 500px) {
+    font-size: 62.5%;
+  }
 }
 
 html.light {

@@ -1,4 +1,5 @@
 @import 'functions';
+@import 'fonts';
 
 // Inspiration: https://stackoverflow.com/a/49437769/5323344
 @mixin transition($props...) {
@@ -46,7 +47,12 @@
 }
 
 @mixin fontSize($step) {
-  font-size: var(--font-size-#{$step});
+  $font-size: $font-size-base * pow($font-size-scale, $step);
+  $line-height: -0.027 * ($font-size / 1rem * 10) + 2.266;
+  // expose CSS var to later compute other things, e.g., spacing
+  --line-height: #{$line-height};
+  font-size: $font-size;
+  line-height: var(--line-height);
 }
 
 @mixin underlinedLink($initiallyUnderlined: true) {
@@ -102,5 +108,5 @@
 
 @mixin rhythm() {
   display: grid;
-  grid-row-gap: var(--font-rhythm);
+  grid-row-gap: calc(var(--line-height) * 1em);
 }

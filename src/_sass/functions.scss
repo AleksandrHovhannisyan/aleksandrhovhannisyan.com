@@ -8,3 +8,19 @@
 @function zIndex($key) {
   @return map-get($zIndex, $key);
 }
+
+@function pow($base, $exponent) {
+  $result: 1;
+
+  @if $exponent > 0 {
+    @for $i from 1 through $exponent {
+      $result: $result * $base;
+    }
+  } @else if $exponent < 0 {
+    @for $i from $exponent to 0 {
+      $result: $result / $base;
+    }
+  }
+
+  @return $result;
+}
