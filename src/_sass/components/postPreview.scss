@@ -6,7 +6,6 @@
 
 .post-preview {
   list-style: none;
-  margin: 0;
   display: grid;
   grid-template-areas:
     'thumbnail'
@@ -75,7 +74,6 @@
 }
 
 .post-preview-description {
-  margin: 0;
   grid-area: description;
 }
 

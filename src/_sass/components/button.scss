@@ -1,11 +1,7 @@
 @import 'mixins';
 
 .button {
-  align-items: center;
   border-radius: 0.4rem;
-  display: flex;
-  justify-content: center;
-  text-decoration: none;
   cursor: pointer;
   @include font-weight("semiBold");
 }

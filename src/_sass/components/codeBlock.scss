@@ -53,7 +53,6 @@ div.highlighter-rouge {
 
 .code-file-name {
   color: $black-200;
-  margin: 0;
   word-break: break-all;
   @include font-size(-1);
   @include font-weight('regular');
@@ -149,7 +148,7 @@ code {
     color: transparent;
 
     &.highlight {
-      margin: 0px;
+      margin: 0;
       overflow: auto;
       white-space: pre;
     }

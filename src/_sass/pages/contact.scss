@@ -80,7 +80,7 @@ input.honeypot {
     grid-auto-rows: 4.8rem;
     grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
     grid-row-gap: 4.8rem;
-    list-style-type: none;
+    list-style: none;
 }
 
 .social-network {
@@ -98,13 +98,10 @@ input.honeypot {
 
 .social-network-name {
   color: var(--text-color-normal);
-  align-self: center;
-  grid-column: 2;
   @include font-weight("regular");
 }
 
 .social-network-icon {
-    align-self: center;
     justify-self: center;
     width: 3.2rem;
 }

@@ -1,4 +1,5 @@
 @import 'mixins';
+@import 'functions';
 
 .navbar-header {
   grid-area: navbar;
@@ -13,9 +14,7 @@
 .skip-navigation {
   padding: 0.8rem;
   color: var(--navbar-text-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  z-index: z-index('navbar') + 1;
   @include font-size(-1);
   @include font-weight('regular');
 
@@ -169,7 +168,7 @@
 .navbar-links {
   background-color: var(--navbar-bg-color);
   box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.8);
-  list-style-type: none;
+  list-style: none;
   position: absolute;
   left: 0;
   right: 0;
@@ -374,7 +373,6 @@
       grid-auto-flow: column;
       align-items: center;
       box-shadow: none;
-      margin: 0;
       padding: 0;
       position: static;
     }
