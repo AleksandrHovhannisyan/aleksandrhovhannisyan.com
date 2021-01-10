@@ -34,19 +34,19 @@
   }
 }
 
-@mixin zIndex($key) {
-  z-index: zIndex($key);
+@mixin z-index($key) {
+  z-index: z-index($key);
 }
 
-@mixin fontFamily($family) {
+@mixin font-family($family) {
   font-family: unquote(map-get($font-families, $family));
 }
 
-@mixin fontWeight($humanReadableWeight: inherit) {
+@mixin font-weight($humanReadableWeight: inherit) {
   font-weight: map-get($font-weights, $humanReadableWeight);
 }
 
-@mixin fontSize($step) {
+@mixin font-size($step) {
   $font-size: $font-size-base * pow($font-size-scale, $step);
   $line-height: -0.027 * ($font-size / 1rem * 10) + 2.266;
   // expose CSS var to later compute other things, e.g., spacing
@@ -55,8 +55,8 @@
   line-height: var(--line-height);
 }
 
-@mixin underlinedLink($initiallyUnderlined: true) {
-  @if $initiallyUnderlined {
+@mixin underlined-link($initially-underlined: true) {
+  @if $initially-underlined {
     text-decoration: underline;
 
     &:hover,
@@ -81,28 +81,28 @@
   }
 }
 
-@mixin selectionResistantColor($color) {
+@mixin selection-resistant-color($color) {
   &,
   &::selection {
     color: $color;
   }
 }
 
-@mixin centered($marginMin: 2.4rem, $contentMax: var(--page-max-width)) {
+@mixin centered($margin-min: 2.4rem, $content-max: var(--page-max-width)) {
   display: grid;
-  grid-template-columns: minmax($marginMin, 1fr) minmax(0, $contentMax) minmax($marginMin, 1fr);
+  grid-template-columns: minmax($margin-min, 1fr) minmax(0, $content-max) minmax($margin-min, 1fr);
 
   > * {
     grid-column: 2;
   }
 }
 
-@mixin responsiveGrid($mobileMin, $desktopMin, $mobileMax: 1fr, $desktopMax: 1fr, $cutoff: 600px) {
+@mixin responsive-grid($mobile-min, $desktop-min, $mobile-max: 1fr, $desktop-max: 1fr, $desktop-breakpoint: 600px) {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax($mobileMin, $mobileMax));
+  grid-template-columns: repeat(auto-fill, minmax($mobile-min, $mobile-max));
 
-  @media only screen and (min-width: $cutoff) {
-    grid-template-columns: repeat(auto-fit, minmax($desktopMin, $desktopMax));
+  @media only screen and (min-width: $desktop-breakpoint) {
+    grid-template-columns: repeat(auto-fit, minmax($desktop-min, $desktop-max));
   }
 }
 

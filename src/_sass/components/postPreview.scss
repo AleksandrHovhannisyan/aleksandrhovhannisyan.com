@@ -22,12 +22,12 @@
 .post-preview-title {
   grid-area: title;
   margin-bottom: 1.6rem;
-  @include fontSize(0);
-  @include fontWeight('bold');
+  @include font-size(0);
+  @include font-weight('bold');
 
   a {
     color: var(--text-color-emphasis);
-    @include underlinedLink($initiallyUnderlined: false);
+    @include underlined-link($initially-underlined: false);
   }
 }
 

@@ -30,8 +30,8 @@
     font-style: italic;
     max-width: 50ch;
     margin: 0 auto;
-    @include fontFamily('cursive');
-    @include fontSize(4);
+    @include font-family('cursive');
+    @include font-size(4);
   }
 }
 

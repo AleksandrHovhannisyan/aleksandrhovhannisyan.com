@@ -40,7 +40,7 @@ $meta-tag-spacing: 1.2rem;
     margin-bottom: 0.6rem;
     margin-right: 1.2rem;
     padding: 0.6rem 1.2rem;
-    @include fontSize(-1);
+    @include font-size(-1);
 }
 
 .pagination-page-current {
@@ -58,11 +58,11 @@ $meta-tag-spacing: 1.2rem;
     list-style: none;
     margin: 0;
     position: relative;
-    @include fontSize(-1);
-    @include fontWeight('light');
+    @include font-size(-1);
+    @include font-weight('light');
 
     @media screen and (min-width: 500px) {
-      @include fontSize(-2);
+      @include font-size(-2);
     }
 }
 
@@ -155,8 +155,8 @@ $meta-tag-spacing: 1.2rem;
       }
 
       a {
-          @include fontWeight("semiBold");
-          @include underlinedLink($initiallyUnderlined: true);
+          @include font-weight("semiBold");
+          @include underlined-link($initially-underlined: true);
       }
     }
 
@@ -166,14 +166,14 @@ $meta-tag-spacing: 1.2rem;
     }
 
     a:not(.button):not(.clickable-picture-anchor):not(.username) {
-        @include underlinedLink($initiallyUnderlined: true);
+        @include underlined-link($initially-underlined: true);
     }
 
     figure {
         figcaption {
           font-style: italic;
           text-align: center;
-          @include fontSize(-1);
+          @include font-size(-1);
         }
 
         .clickable-picture-anchor {

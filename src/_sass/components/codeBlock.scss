@@ -55,8 +55,8 @@ div.highlighter-rouge {
   color: $black-200;
   margin: 0;
   word-break: break-all;
-  @include fontSize(-1);
-  @include fontWeight('regular');
+  @include font-size(-1);
+  @include font-weight('regular');
 
   &::before {
     content: '📂';
@@ -84,7 +84,7 @@ div.highlighter-rouge {
   box-shadow: 0 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.5);
   top: 0;
   position: relative;
-  @include fontSize(-1);
+  @include font-size(-1);
 
   &::before {
     content: 'Copy';
@@ -123,7 +123,7 @@ code {
   border-radius: 0.4rem;
   color: var(--inline-code-text-color);
   padding: 0.4rem 0.8rem;
-  @include fontFamily('mono');
+  @include font-family('mono');
   font-size: 0.925em;
 }
 
@@ -162,18 +162,18 @@ code {
   .c1,
   .cs {
     font-style: italic;
-    @include selectionResistantColor($code-comment);
+    @include selection-resistant-color($code-comment);
   }
 
   // Functions
   .nf,
   .nx {
-    @include selectionResistantColor($code-function);
+    @include selection-resistant-color($code-function);
   }
 
   // Attributes
   .na {
-    @include selectionResistantColor($code-attribute);
+    @include selection-resistant-color($code-attribute);
   }
 
   // Variables
@@ -183,7 +183,7 @@ code {
   .vg,
   .vi,
   .err {
-    @include selectionResistantColor($code-variable);
+    @include selection-resistant-color($code-variable);
   }
 
   // Numbers
@@ -193,7 +193,7 @@ code {
   .mi,
   .mo,
   .il {
-    @include selectionResistantColor($code-number);
+    @include selection-resistant-color($code-number);
   }
 
   // Keywords
@@ -202,18 +202,18 @@ code {
   .kn,
   .kr,
   .kt {
-    @include selectionResistantColor($code-keyword);
+    @include selection-resistant-color($code-keyword);
   }
 
   // Constants
   .kc {
-    @include selectionResistantColor($code-constant);
+    @include selection-resistant-color($code-constant);
   }
 
   // Pseudo
   .kp,
   .nb {
-    @include selectionResistantColor($code-support);
+    @include selection-resistant-color($code-support);
   }
 
   // Strings
@@ -222,27 +222,27 @@ code {
   .sc,
   .s1,
   .s2 {
-    @include selectionResistantColor($code-string);
+    @include selection-resistant-color($code-string);
   }
 
   // Classes/tags
   .nc,
   .nt,
   .nl {
-    @include selectionResistantColor($code-tag);
+    @include selection-resistant-color($code-tag);
   }
 
   // Punctuation
   .p {
-    @include selectionResistantColor($code-punctuation);
+    @include selection-resistant-color($code-punctuation);
   }
 
   .o {
-    @include selectionResistantColor($code-operator);
+    @include selection-resistant-color($code-operator);
   }
 
   // Operators
   .ow {
-    @include selectionResistantColor($code-operator-word);
+    @include selection-resistant-color($code-operator-word);
   }
 }

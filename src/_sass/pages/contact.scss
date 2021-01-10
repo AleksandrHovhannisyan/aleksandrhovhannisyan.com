@@ -2,7 +2,7 @@
 
 .contact-title {
   margin-bottom: 0.8rem;
-  @include fontSize(3);
+  @include font-size(3);
 }
 
 .contact-subtitle {
@@ -41,7 +41,7 @@
     textarea,
     button {
       font-family: inherit;
-      @include fontSize(0);
+      @include font-size(0);
     }
 
     textarea {
@@ -55,7 +55,7 @@
         height: 4.8rem;
         max-width: 100%;
         width: 100%;
-        @include fontSize(0);
+        @include font-size(0);
     }
 }
 
@@ -71,7 +71,7 @@ input.honeypot {
 }
 
 .social-networks-heading {
-  @include fontSize(1);
+  @include font-size(1);
 }
 
 .social-networks-list {
@@ -100,7 +100,7 @@ input.honeypot {
   color: var(--text-color-normal);
   align-self: center;
   grid-column: 2;
-  @include fontWeight("regular");
+  @include font-weight("regular");
 }
 
 .social-network-icon {

@@ -7,7 +7,7 @@
   justify-content: center;
   text-decoration: none;
   cursor: pointer;
-  @include fontWeight("semiBold");
+  @include font-weight("semiBold");
 }
 
 .solid-button {
@@ -37,7 +37,7 @@
   &::before {
     content: "+";
     margin-right: 10px;
-    @include fontSize(-1);
-    @include fontWeight("bold");
+    @include font-size(-1);
+    @include font-weight("bold");
   }
 }

@@ -5,7 +5,7 @@
   @return #{$rem}rem;
 }
 
-@function zIndex($key) {
+@function z-index($key) {
   @return map-get($zIndex, $key);
 }
 

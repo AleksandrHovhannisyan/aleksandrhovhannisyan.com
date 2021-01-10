@@ -33,9 +33,9 @@ body {
   min-height: 100vh;
   position: relative;
   grid-row-gap: var(--navbar-height);
-  @include fontFamily('sans');
-  @include fontWeight('regular');
-  @include fontSize(0);
+  @include font-family('sans');
+  @include font-weight('regular');
+  @include font-size(0);
 }
 
 #page-content {
@@ -57,36 +57,36 @@ body {
 
 strong {
   color: var(--text-color-emphasis);
-  @include fontWeight('bold');
+  @include font-weight('bold');
 }
 
 @include headings {
   color: var(--text-color-emphasis);
-  @include fontWeight('bold');
+  @include font-weight('bold');
 }
 
 h1 {
-  @include fontSize(5);
+  @include font-size(5);
 }
 
 h2 {
-  @include fontSize(4);
+  @include font-size(4);
 }
 
 h3 {
-  @include fontSize(3);
+  @include font-size(3);
 }
 
 h4 {
-  @include fontSize(2);
+  @include font-size(2);
 }
 
 h5 {
-  @include fontSize(1);
+  @include font-size(1);
 }
 
 h6 {
-  @include fontSize(0);
+  @include font-size(0);
 }
 
 p {
@@ -94,7 +94,7 @@ p {
 }
 
 .underlined-link {
-  @include underlinedLink;
+  @include underlined-link;
 }
 
 a {
@@ -165,7 +165,7 @@ a {
 label {
   color: var(--text-color-emphasis);
   display: block;
-  @include fontWeight('semiBold');
+  @include font-weight('semiBold');
 
   &.required::after {
     color: var(--input-required-asterisk-color);
