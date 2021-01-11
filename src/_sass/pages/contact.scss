@@ -106,25 +106,6 @@ input.honeypot {
     width: 3.2rem;
 }
 
-.linkedin-square {
-    background: white;
-    /* Nice little hack for getting a perfect fill */
-    border-radius: 4px;
-    fill: $brand-linkedin;
-}
-
-.github {
-    @include themed(fill, $brand-github, $brand-github-alt);
-}
-
-.stack-exchange {
-    fill: $brand-stack-exchange;
-}
-
-.upwork {
-    fill: $brand-upwork;
-}
-
 @media only screen and (min-width: 800px) {
   #contact-information {
     grid-row-gap: 0;
