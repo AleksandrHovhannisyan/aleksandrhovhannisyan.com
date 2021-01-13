@@ -31,7 +31,6 @@ body {
   'content'
   'footer';
   min-height: 100vh;
-  position: relative;
   grid-row-gap: var(--navbar-height);
   @include font-family('sans');
   @include font-weight('regular');
@@ -116,9 +115,6 @@ a {
 }
 
 .heading-anchor-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: absolute;
   width: 1em;
   top: 0;
@@ -137,8 +133,7 @@ a {
 .heading-anchor {
   visibility: hidden;
   opacity: 0;
-  display: flex;
-  margin-left: 4px;
+  margin-left: 0.4rem;
 }
 
 .section:not(:last-of-type) {
