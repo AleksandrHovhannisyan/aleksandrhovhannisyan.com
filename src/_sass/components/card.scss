@@ -5,10 +5,10 @@
   padding: var(--card-padding);
   background-color: var(--card-bg-color);
   border-radius: 0.4rem;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.15),
-              0 2px 2px rgba(0,0,0,0.15),
-              0 4px 4px rgba(0,0,0,0.15),
-              0 6px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.12),
+              0 2px 2px rgba(0,0,0,0.12),
+              0 4px 4px rgba(0,0,0,0.12),
+              0 5px 12px rgba(0,0,0,0.12);
   position: relative;
   transform: none;
   @include transition(box-shadow, transform);
@@ -18,10 +18,10 @@
 
     &:hover,
     &:focus-within {
-      box-shadow: 0 2px 2px rgba(0,0,0,0.15),
-                  0 4px 4px rgba(0,0,0,0.15),
-                  0 8px 8px rgba(0,0,0,0.15),
-                  0 8px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 2px 2px rgba(0,0,0,0.12),
+                  0 4px 4px rgba(0,0,0,0.12),
+                  0 8px 8px rgba(0,0,0,0.12),
+                  0 8px 12px rgba(0,0,0,0.12);
       transform: translate(0, -5px);
 
       .hover-content {
