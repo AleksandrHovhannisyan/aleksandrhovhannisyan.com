@@ -37,7 +37,6 @@ html.light {
   --navbar-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.8);
   --navbar-link-bg-color-hover: #{$gray-700};
   --navbar-text-color: #{$black-200};
-  --post-meta-icon-fill: #{$gray-600};
   --scrollbar-thumb-bg-color-hover: #{$gray-200};
   --scrollbar-thumb-bg-color: #{$gray-300};
   --scrollbar-track-bg-color: #{$gray-100};
@@ -80,7 +79,6 @@ html.dark {
   --navbar-box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.8);
   --navbar-link-bg-color-hover: #{$gray-700};
   --navbar-text-color: #{$black-200};
-  --post-meta-icon-fill: #{$black-400};
   --scrollbar-thumb-bg-color-hover: #{$black-400};
   --scrollbar-thumb-bg-color: #{$black-500};
   --scrollbar-track-bg-color: var(--navbar-bg-color);

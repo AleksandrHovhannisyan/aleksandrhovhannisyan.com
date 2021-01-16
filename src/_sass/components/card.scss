@@ -48,11 +48,5 @@
     @include transition(opacity);
     @include font-size(1);
     @include font-weight("semiBold");
-
-    svg {
-        fill: var(--text-color-emphasis);
-        margin-top: 1.6rem;
-        width: 1.2em;
-    }
   }
 }
