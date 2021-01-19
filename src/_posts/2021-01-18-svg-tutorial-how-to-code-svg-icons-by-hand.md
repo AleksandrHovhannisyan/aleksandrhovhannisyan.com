@@ -1431,11 +1431,23 @@ That gives us the classic external-link icon:
 
 The arrow bit should be familiar from when we created the rightward-facing arrow; now, it's just a diagonal arrow pointing to the top-right. The body of the icon should also be familiar from the calendar, except here it's not closed off and starts at a different location.
 
+And that's it!
+
+## Further Exploration: Advanced SVG Topics
+
+Now that you've learned how to code SVG icons by hand, I recommend also learning about:
+
+- SVG's [`<defs>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/defs) and [`<use>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use) elements.
+- [SVG masks](http://tutorials.jenkov.com/svg/mask.html#:~:text=The%20SVG%20masking%20feature%20makes,version%20of%20a%20clip%20path.), which are used to control the opacity of parts of SVGs.
+- [SVG curve commands](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths#curve_commands).
+
+All of these build on the concepts that you're already familiar with.
+
 ## Conclusion
 
 Coding SVG icons by hand isn't too difficult, but it can certainly feel that way when you're just getting started. There's a lot of new syntax to learn, but it's definitely worth it! Now that you've worked through this tutorial, you should be able to read and interpret SVG markup more confidently and understand how the SVG icon libraries you use really work under the hood.
 
-I guess that does it for this tutorial! I hope you learned something new (and had fun!).
+That does it for this tutorial! I hope you learned something new (and had fun!).
 
 <style>
   .svg-tutorial__icon-grid {
