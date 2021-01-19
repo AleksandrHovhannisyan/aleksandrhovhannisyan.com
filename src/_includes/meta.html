@@ -32,7 +32,7 @@
             <a href="#skip-tags-{{ post.title | slugify }}" class="screen-reader-only skip-post-meta-tags">Skip tag navigation</a>
             <ul class="meta post-meta-tags" aria-label="Tags belonging to this blog post.">
                 {% for tag in post.tags %}
-                <li class="post-meta-tag-wrapper">
+                <li>
                     <a href="/tag/{{ tag }}" class="tag post-meta-tag">
                         {{ tag }}
                     </a>
