@@ -13,7 +13,7 @@ For as long as I can remember, I avoided touching SVGs when working with front-e
 </svg>
 ```
 
-If I needed icons for a project, I'd install one of the many icon libraries that are available, but that always left me unsatisfied. Sure, there's nothing wrong with using libraries, but it's always a good idea to know how the tools you use really work under the hood. So why not also learn how to draw your own SVG icons by hand, even if you end up using a library at the end of the day?
+If I needed icons for a project, I'd install one of the many icon libraries that are available, but that always left me unsatisfied. Sure, there's nothing wrong with using libraries, but it's always a good idea to know how the tools you use really work under the hood. So why not also learn how to draw your own SVG icons by hand, even if you end up using a library in the end?
 
 As you'll see in this tutorial, coding SVG icons by hand is actually fairly straightforward once you master the basic shapes and syntax. We'll draw a bunch of icons to help you hone your SVG skills. Here's a sneak peek at all of the icons we'll create:
 
@@ -111,13 +111,21 @@ I hope you're excited to get started! Feel free to jump around if you want, but 
 
 {% include toc.md %}
 
-## What Is SVG?
+## What Is an SVG?
 
-**SVG** stands for **Scalable Vector Graphics**, and it's a vector image format in XML that allows us to draw shapes using a standard markup syntax. The "scalable" part of the name is a key characteristic of SVGs—unlike other image formats, they don't lose quality when you scale them beyond their original size. Whereas images store their data as pixels, SVGs store them as XML definitions for shapes, which can easily be scaled responsively to any size.
+**SVG** stands for **Scalable Vector Graphics**; it's a vector image format that allows you to draw shapes using a standard markup (XML) syntax. The "scalable" part of the name is a key characteristic of SVGs—unlike other image formats, they don't lose quality when you scale them beyond their original size. Whereas images store their data using fixed-size pixels, SVGs store them as XML definitions for shapes, which can easily be scaled responsively to any size.
 
 It's also worth noting that you can animate SVGs; [Joshua Comeau](https://www.joshwcomeau.com/react/boop/) uses this to great effect on his site, creating a delightful and interactive user experience.
 
-## SVG 101: How to Code an SVG Element by Hand
+### How Are SVGs Drawn?
+
+There are two ways to draw SVGs: by hand, where you define the markup explicitly using HTML, or through a **vector image program** like [Inkscape](https://inkscape.org/):
+
+{% include img.html img="inkscape.png" alt="Inkscape's user interface consists of drawing tools on the left-hand side, page alignment and setup options on the right, and a canvas in the center." %}
+
+These programs come with basic shapes, color pickers, drawing tools, and path manipulation, allowing you to create complex drawings with greater ease than if you were to do them by hand. You'll typically see designers and logo artists using GUIs like Inkscape rather than coding SVGs by hand. Still, understanding how SVG markup works is a valuable learning experience. At the end of the day, these programs output `.svg` files; if you inspect those files, you'll find that their markup is just XML, and you can make sense of it if you understand how SVGs work.
+
+## SVG 101: How to Code SVGs by Hand
 
 I know you're itching to get to the examples, but first things first!
 
@@ -133,7 +141,7 @@ Of course, there's more to it than just that. Let's explore the basic anatomy of
 
 ### SVG Namespace Declarations
 
-If you've ever inspected the contents of an `.svg` file, you may have seen this `xmlns` attribute:
+If you've ever inspected the contents of an `.svg` file, like one created by Inkscape or some other vector image program, you may have seen this `xmlns` attribute on the `svg` element itself:
 
 ```html
 <svg xmlns="http://www.w3.org/2000/svg"></svg>
@@ -153,7 +161,7 @@ You've probably also seen these three attributes: `width`, `height`, and `viewBo
 ></svg>
 ```
 
-[Envato Tuts+](https://webdesign.tutsplus.com/tutorials/svg-viewport-and-viewbox-for-beginners--cms-30844) does an excellent job of explaining the `viewBox` attribute. Basically, you can think of it as a sort of viewport that defines **the dimensions of the "canvas" for our SVG**. The first two numbers allow us to pan the SVG canvas horizontally or vertically, giving it an appearance of some sort of inner offset. Here, we have an offset of `0 0`, meaning the origin of our drawing is the top-left corner of the SVG element. The last two numbers control how much we're zoomed into the SVG canvas. As the numbers get smaller, we zoom in to the SVG image; conversely, as they get bigger, we zoom out, and the image shrinks.
+[Envato Tuts+](https://webdesign.tutsplus.com/tutorials/svg-viewport-and-viewbox-for-beginners--cms-30844) does an excellent job of explaining the `viewBox` attribute. Basically, you can think of it as defining **the dimensions of the canvas for our SVG**. The first two numbers allow us to pan the SVG canvas horizontally or vertically, giving it an appearance of some sort of inner offset. Here, we have an offset of `0 0`, meaning the origin of our drawing is the top-left corner of the SVG element. The last two numbers control how much we're zoomed into the SVG canvas. As the numbers get smaller, we zoom in to the SVG image; conversely, as they get bigger, we zoom out, and the image shrinks.
 
 The other two attributes, `width` and `height`, work just as you'd expect: They define the width and height of your SVG element, in pixels. You can also change an SVG's size with CSS using `width` and `height`, so while the SVG here has a starting width and height of `24px`, it doesn't *always* have to be that size. That's the whole point of SVG, after all—they can scale to any size!
 
@@ -163,7 +171,9 @@ For this tutorial, I'll use a `viewBox` of `0 0 24 24`, but dimensions of `64x64
 
 ### SVGs and "Pixels"
 
-Before we move on, a clarifying note on pixels and SVGs: With the most basic SVG canvas, one pixel unit maps to exactly one unit on your screen. But as noted on the MDN docs, [this isn't always the case](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Positions#what_are_pixels). SVGs are scalable, after all, so `1px` in the SVG definition may actually map to `4px` if the SVG has been scaled to a larger size with `width` and `height`. Wherever I use `px` as a unit in this tutorial, don't take that to mean one literal output pixel like in CSS.
+Before we move on, a clarifying note on pixels and SVGs: With the most basic SVG canvas, one pixel unit maps to exactly one unit on your screen. But as noted on the MDN docs, [this isn't always the case](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Positions#what_are_pixels). SVGs are scalable, after all, so `1px` in the SVG definition may actually map to `4px` if the SVG has been scaled to a larger size with `width` and `height`. This is unlike the behavior of images, where one "pixel" is always a fixed-size unit of measurement.
+
+Wherever I use `px` as a unit, don't take that to mean one literal output pixel like in CSS.
 
 ## Creating Basic Shapes with SVG
 
@@ -1423,11 +1433,9 @@ The arrow bit should be familiar from when we created the rightward-facing arrow
 
 ## Conclusion
 
-Coding SVG icons by hand isn't too difficult, but it can certainly feel that way when you're just getting started. There's a lot of new syntax to learn, but it's definitely worth it! At the end of the day, you'll be able to read SVG code more confidently and understand how the SVG icon libraries you use really work under the hood.
+Coding SVG icons by hand isn't too difficult, but it can certainly feel that way when you're just getting started. There's a lot of new syntax to learn, but it's definitely worth it! Now that you've worked through this tutorial, you should be able to read and interpret SVG markup more confidently and understand how the SVG icon libraries you use really work under the hood.
 
-In reality, while you can certainly code SVG icons by hand like we did here, you'll typically use a **vector drawing program** that allows you to more easily lay out shapes, change colors, create complex paths, and more using a GUI. Logo designers usually work with these kinds of programs rather than coding SVGs by hand. One of the most popular vector drawing programs is [Inkscape](https://inkscape.org/), which is available on Windows, Mac, and Linux.
-
-Anyway, I guess that does it for this tutorial! I hope you learned something new (and had fun!).
+I guess that does it for this tutorial! I hope you learned something new (and had fun!).
 
 <style>
   .svg-tutorial__icon-grid {
