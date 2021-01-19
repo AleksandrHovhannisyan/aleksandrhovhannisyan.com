@@ -1,6 +1,6 @@
 ---
 title: "SVG Tutorial: How to Code SVG Icons by Hand"
-description: SVGs can be intimidating to understand. But once you learn their syntax, coding SVG icons by hand is a piece of cake.
+description: Learn the basics of SVGs so you can code your own SVG icons by hand, without always relying on icon libraries.
 keywords: [svg tutorial, svg icons, how to code svg]
 tags: [dev, svg, html, css]
 ---
@@ -15,10 +15,10 @@ For as long as I can remember, I avoided touching SVGs when working with front-e
 
 If I needed icons for a project, I'd install one of the many icon libraries that are available, but that always left me unsatisfied. Sure, there's nothing wrong with using libraries, but it's always a good idea to know how the tools you use really work under the hood. So why not also learn how to draw your own SVG icons by hand, even if you end up using a library at the end of the day?
 
-As you'll see in this tutorial, drawing SVG icons is actually fairly straightforward once you master the basic shapes and syntax. We'll draw a bunch of icons to help you hone your SVG skills. Here's a sneak peek at all of the icons we'll create:
+As you'll see in this tutorial, coding SVG icons by hand is actually fairly straightforward once you master the basic shapes and syntax. We'll draw a bunch of icons to help you hone your SVG skills. Here's a sneak peek at all of the icons we'll create:
 
-<ul class="icon-grid">
-  <li class="icon">
+<ul class="svg-tutorial__icon-grid">
+  <li class="svg-tutorial__icon">
     <svg viewBox="0 0 24 24" width="32" height="32">
       <line x1="2" y1="4.2" x2="22" y2="4.2"/>
       <line x1="2" y1="9.4" x2="16" y2="9.4"/>
@@ -26,41 +26,41 @@ As you'll see in this tutorial, drawing SVG icons is actually fairly straightfor
       <line x1="2" y1="19.8" x2="16" y2="19.8"/>
     </svg>
   </li>
-  <li class="icon">
+  <li class="svg-tutorial__icon">
     <svg viewBox="0 0 24 24" width="32" height="32">
       <polyline points="3 8, 3 4, 21 4, 21 8" />
       <line x1="12" y1="4" x2="12" y2="20" />
       <line x1="8" y1="20" x2="16" y2="20" />
     </svg>
   </li>
-  <li class="icon">
+  <li class="svg-tutorial__icon">
     <svg viewBox="0 0 24 24" width="32" height="32">
       <circle cx="12" cy="12" r="10" />
       <polyline points="13 7, 13 14, 9 14" />
     </svg>
   </li>
-  <li class="icon">
+  <li class="svg-tutorial__icon">
     <svg viewBox="0 0 24 24" width="32" height="32">
       <circle cx="12" cy="12" r="10" />
       <circle cx="12" cy="8" r="0.5" fill="currentColor" />
       <line x1="12" y1="12" x2="12" y2="16" />
     </svg>
   </li>
-  <li class="icon">
+  <li class="svg-tutorial__icon">
     <svg viewBox="0 0 24 24" width="32" height="32">
         <circle cx="12" cy="12" r="10" />
         <line x1="8" y1="12" x2="16" y2="12" />
         <polyline points="12 8, 16 12, 12 16" />
     </svg>
   </li>
-  <li class="icon">
+  <li class="svg-tutorial__icon">
     <svg viewBox="0 0 24 24" width="32" height="32">
       <polygon points="12 2, 22 22, 2 22" />
       <line x1="12" y1="10" x2="12" y2="14" />
       <circle cx="12" cy="18" r="0.5" fill="currentColor" />
     </svg>
   </li>
-  <li class="icon">
+  <li class="svg-tutorial__icon">
     <svg viewBox="0 0 24 24" width="32" height="32">
       <path
         d="
@@ -79,7 +79,7 @@ As you'll see in this tutorial, drawing SVG icons is actually fairly straightfor
       <line x1="17" y1="2" x2="17" y2="6" />
     </svg>
   </li>
-  <li class="icon">
+  <li class="svg-tutorial__icon">
     <svg viewBox="0 0 24 24" width="32" height="32">
       <path
         d="M 18 14
@@ -173,8 +173,8 @@ The best way to learn how to draw SVG icons by hand is to work with basic shapes
 
 We'll practice our line-drawing skills by recreating the three icons below. You'll find these in lots of text editors that offer text alignment options, so while this exercise may seem trivial, it's actually very practical:
 
-<ul class="icon-grid">
-  <li class="icon">
+<ul class="svg-tutorial__icon-grid">
+  <li class="svg-tutorial__icon">
     <svg viewBox="0 0 24 24" width="64" height="64">
       <line x1="2" y1="4.2" x2="22" y2="4.2"/>
       <line x1="2" y1="9.4" x2="16" y2="9.4"/>
@@ -182,7 +182,7 @@ We'll practice our line-drawing skills by recreating the three icons below. You'
       <line x1="2" y1="19.8" x2="16" y2="19.8"/>
     </svg>
   </li>
-  <li class="icon">
+  <li class="svg-tutorial__icon">
     <svg viewBox="0 0 24 24" width="64" height="64">
       <line x1="2" y1="4.2" x2="22" y2="4.2"/>
       <line x1="6" y1="9.4" x2="18" y2="9.4"/>
@@ -190,7 +190,7 @@ We'll practice our line-drawing skills by recreating the three icons below. You'
       <line x1="6" y1="19.8" x2="18" y2="19.8"/>
     </svg>
   </li>
-  <li class="icon">
+  <li class="svg-tutorial__icon">
     <svg viewBox="0 0 24 24" width="64" height="64">
       <line x1="2" y1="4.2" x2="22" y2="4.2"/>
       <line x1="8" y1="9.4" x2="22" y2="9.4"/>
@@ -237,7 +237,7 @@ In CSS, `currentColor` always references the current text `color`, which is eith
 
 With the stroke color set, we can finally view our line:
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" style="stroke-width: 1;">
     <line x1="0" y1="4.2" x2="24" y2="4.2"/>
   </svg>
@@ -252,7 +252,7 @@ When you scale this down, that line may actually look a bit thin. That's because
 
 And the resulting line is thicker:
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64">
     <line x1="0" y1="4.2" x2="24" y2="4.2"/>
   </svg>
@@ -295,8 +295,8 @@ By the way, you may find it useful to temporarily give your SVG elements a borde
 
 That'll look like this:
 
-<ul class="icon-grid">
-  <li class="icon">
+<ul class="svg-tutorial__icon-grid">
+  <li class="svg-tutorial__icon">
    <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
       <line x1="2" y1="4.2" x2="22" y2="4.2"/>
       <line x1="2" y1="9.4" x2="16" y2="9.4"/>
@@ -304,7 +304,7 @@ That'll look like this:
       <line x1="2" y1="19.8" x2="16" y2="19.8"/>
     </svg>
   </li>
-  <li class="icon">
+  <li class="svg-tutorial__icon">
     <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
       <line x1="2" y1="4.2" x2="22" y2="4.2"/>
       <line x1="6" y1="9.4" x2="18" y2="9.4"/>
@@ -312,7 +312,7 @@ That'll look like this:
       <line x1="6" y1="19.8" x2="18" y2="19.8"/>
     </svg>
   </li>
-  <li class="icon">
+  <li class="svg-tutorial__icon">
     <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
       <line x1="2" y1="4.2" x2="22" y2="4.2"/>
       <line x1="8" y1="9.4" x2="22" y2="9.4"/>
@@ -331,7 +331,7 @@ Before we move on, note that you don't have to draw lines that are perfectly hor
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <line x1="12" y1="2" x2="12" y2="22" />
   </svg>
@@ -344,7 +344,7 @@ Or even slanted/diagonal lines:
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <line x1="2" y1="2" x2="22" y2="22" />
   </svg>
@@ -356,7 +356,7 @@ And that's all that you really need to know about SVG lines. As an exercise, I'l
 
 Imagine that we want to draw several line segments, like for the letter `T` in this text icon:
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64">
     <polyline points="3 8, 3 4, 21 4, 21 8" />
     <line x1="12" y1="4" x2="12" y2="20" />
@@ -377,7 +377,7 @@ A `<polyline>` is defined with the help of the `points` attribute, like this:
 
 This is the simplest possible `<polyline>` that you can create, and it defines a horizontal line from `(3, 4)` to `(21, 4)`:
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64">
     <polyline points="3 4, 21 4" />
   </svg>
@@ -400,7 +400,7 @@ We can draw the text icon I showed earlier by combining `<polyline>` and a basic
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <polyline points="3 8, 3 4" />
   </svg>
@@ -413,7 +413,7 @@ From `(3, 4)`, we'll travel horizontally until we're an equal distance from the 
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <polyline points="3 8, 3 4, 21 4" />
   </svg>
@@ -426,7 +426,7 @@ And then we'll drop down an equal vertical distance to complete the top portion 
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <polyline points="3 8, 3 4, 21 4, 21 8" />
   </svg>
@@ -441,7 +441,7 @@ From here, we just need to complete the stem and base of the letter:
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <polyline points="3 8, 3 4, 21 4, 21 8" />
     <line x1="12" y1="4" x2="12" y2="20" />
@@ -466,7 +466,7 @@ Before we move on, I want to discuss some SVG attributes that I kept hidden from
 
 When you take a closer look, the text icon above should have rounded edges and ends:
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="96" height="96" class="bordered">
     <polyline points="3 8, 3 4, 21 4, 21 8" />
     <line x1="12" y1="4" x2="12" y2="20" />
@@ -476,7 +476,7 @@ When you take a closer look, the text icon above should have rounded edges and e
 
 But if you copy-paste the markup on your end, you'll probably see a text icon whose top-left and top-right corners are sharp, and whose terminal ends (like for the serifs) are flat:
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="96" height="96" class="bordered">
     <polyline points="3 8, 3 4, 21 4, 21 8" stroke-linejoin="miter" stroke-linecap="butt" />
     <line x1="12" y1="4" x2="12" y2="20" stroke-linejoin="miter" stroke-linecap="butt" />
@@ -503,21 +503,21 @@ You don't have to use these if you don't want to. You can also apply them condit
 
 Let's now draw these SVG icons:
 
-<ul class="icon-grid">
-  <li class="icon">
+<ul class="svg-tutorial__icon-grid">
+  <li class="svg-tutorial__icon">
     <svg viewBox="0 0 24 24" width="64" height="64">
       <circle cx="12" cy="12" r="10" />
       <polyline points="13 7, 13 14, 9 14" />
     </svg>
   </li>
-  <li class="icon">
+  <li class="svg-tutorial__icon">
     <svg viewBox="0 0 24 24" width="64" height="64">
       <circle cx="12" cy="12" r="10" />
       <circle cx="12" cy="8" r="0.5" fill="currentColor" />
       <line x1="12" y1="12" x2="12" y2="16" />
     </svg>
   </li>
-  <li class="icon">
+  <li class="svg-tutorial__icon">
     <svg viewBox="0 0 24 24" width="64" height="64">
         <circle cx="12" cy="12" r="10" />
         <line x1="8" y1="12" x2="16" y2="12" />
@@ -540,7 +540,7 @@ Well, it's exactly the same with SVGs! Here's a simple circle:
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <circle cx="12" cy="12" r="10" />
   </svg>
@@ -548,7 +548,7 @@ Well, it's exactly the same with SVGs! Here's a simple circle:
 
 I chose a radius of `10` to leave `2px` of space on all sides of the circle; otherwise, if we pick a radius of `12`, it'll extend right until the very edge of the SVG and get cut off:
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64">
     <circle cx="12" cy="12" r="12" />
   </svg>
@@ -556,23 +556,23 @@ I chose a radius of `10` to leave `2px` of space on all sides of the circle; oth
 
 Alternatively, you can set `overflow: visible` on your SVGs, but I prefer the first method since it gives my SVG icons a bit of padding, and overflows can throw off the spacing in your CSS.
 
-Now that we know how to draw circles in SVG, we can draw the three icons that I showed you earlier: a clock, an info icon, and a rightward-pointing arrow inside a circle.
+Now that we know how to draw circles in SVG, we can draw the three icons that I showed you earlier: a clock, an info icon, and a rightward-pointing arrow inside a circle. Here they are again:
 
-<ul class="icon-grid">
-  <li class="icon">
+<ul class="svg-tutorial__icon-grid">
+  <li class="svg-tutorial__icon">
     <svg viewBox="0 0 24 24" width="64" height="64">
       <circle cx="12" cy="12" r="10" />
       <polyline points="13 7, 13 14, 9 14" />
     </svg>
   </li>
-  <li class="icon">
+  <li class="svg-tutorial__icon">
     <svg viewBox="0 0 24 24" width="64" height="64">
       <circle cx="12" cy="12" r="10" />
       <circle cx="12" cy="8" r="0.5" fill="currentColor" />
       <line x1="12" y1="12" x2="12" y2="16" />
     </svg>
   </li>
-  <li class="icon">
+  <li class="svg-tutorial__icon">
     <svg viewBox="0 0 24 24" width="64" height="64">
         <circle cx="12" cy="12" r="10" />
         <line x1="8" y1="12" x2="16" y2="12" />
@@ -590,7 +590,7 @@ We'll start with the face of the clock as a circle:
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <circle cx="12" cy="12" r="10" />
   </svg>
@@ -604,7 +604,7 @@ The only thing left is to draw the hands, and for that we'll use a polyline:
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <circle cx="12" cy="12" r="10" />
     <polyline points="13 7, 13 14, 9 14" />
@@ -622,7 +622,7 @@ Just as before, we'll first create the circle:
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <circle cx="12" cy="12" r="10" />
   </svg>
@@ -636,7 +636,7 @@ The rest of the info icon consists of a line and a circle. Here's the body of th
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <circle cx="12" cy="12" r="10" />
     <line x1="12" y1="12" x2="12" y2="16" />
@@ -652,7 +652,7 @@ And here's the dot in the `i`; we give it a fill so it's solid:
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <circle cx="12" cy="12" r="10" />
     <circle cx="12" cy="8" r="0.5" fill="currentColor" />
@@ -673,7 +673,7 @@ Last one! For this icon, I'll just give you the full markup; it's a circle, a li
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
       <circle cx="12" cy="12" r="10" />
       <line x1="8" y1="12" x2="16" y2="12" />
@@ -694,7 +694,7 @@ For example, `<polygon>` allows us to draw a triangle using just three points:
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <polygon points="12 2, 22 22, 2 22" />
   </svg>
@@ -709,7 +709,7 @@ Cool! Building on this, we can now create the warning indicator icon that I show
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <polygon points="12 2, 22 22, 2 22" />
     <line x1="12" y1="10" x2="12" y2="14" />
@@ -724,7 +724,7 @@ By the way, I mentioned above that we can use `<polygon>` to create all kinds of
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <polygon points="3 5, 21 5, 21 21, 3 21" />
   </svg>
@@ -737,7 +737,7 @@ But they can also be created with `<rect>`, which takes an `x` and a `y` coordin
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <rect x="3" y="5" width="18" height="16" />
   </svg>
@@ -755,7 +755,7 @@ While we're here, why don't we draw a calendar icon? That one is technically cre
 
 This is fine, except the corners are still a bit too sharp:
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <rect x="3" y="5" width="18" height="16" />
     <line x1="4" y1="10" x2="20" y2="10" />
@@ -766,7 +766,7 @@ This is fine, except the corners are still a bit too sharp:
 
 The original shape has much rounder corners:
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <path
       d="
@@ -862,7 +862,7 @@ If you're with me so far, then you should understand the first two commands in t
 
 That gives us this line, extending from `(4, 4)` to `(20, 4)`:
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <path
       d="
@@ -874,7 +874,7 @@ That gives us this line, extending from `(4, 4)` to `(20, 4)`:
 
 To help this sink in, let's also make a pause icon with two parallel vertical lines:
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <path
       d="
@@ -921,7 +921,7 @@ Notice how we mixed relative and absolute commands. We could've also said this:
 
 And that gives us the same exact shape, but requires that we specify absolute coordinates:
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <path
       d="
@@ -955,7 +955,7 @@ Let's draw a self-closing square with `<path>`:
 
 Voila:
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <path
       d="
@@ -974,8 +974,8 @@ Once you get the hang of these basic movement commands, it's actually really eas
 
 I've saved the trickiest command for last, but once you understand how this one works, you can create almost any icon you want. By the end of this section, we'll create these two final icons:
 
-<ul class="icon-grid">
-  <li class="icon">
+<ul class="svg-tutorial__icon-grid">
+  <li class="svg-tutorial__icon">
     <svg viewBox="0 0 24 24" width="64" height="64">
       <path
         d="
@@ -994,7 +994,7 @@ I've saved the trickiest command for last, but once you understand how this one 
       <line x1="17" y1="2" x2="17" y2="6" />
     </svg>
   </li>
-  <li class="icon">
+  <li class="svg-tutorial__icon">
     <svg viewBox="0 0 24 24" width="64" height="64">
       <path
         d="M 18 14
@@ -1066,7 +1066,7 @@ As before, it helps to look at a concrete example. Here's a very simple arc in Q
 
 Notice that it's counter-clockwise because we've set `sweep-flag` to be `0`:
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <path
       d="
@@ -1090,7 +1090,7 @@ And, as you may have guessed, we can chain four arcs to create a circle:
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <path
       d="
@@ -1122,7 +1122,7 @@ First, we'll draw the top portion of the calendar (you could start elsewhere, th
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <path
       d="
@@ -1144,7 +1144,7 @@ Then, we draw a `2x2` clockwise arc, moving `2px` to the right and `2px` down:
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <path
       d="
@@ -1168,7 +1168,7 @@ From there, we go down `14px`:
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <path
       d="
@@ -1194,7 +1194,7 @@ Draw the bottom-right corner's arc:
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <path
       d="
@@ -1222,7 +1222,7 @@ Move left by `16px`:
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <path
       d="
@@ -1252,7 +1252,7 @@ Draw the arc for the bottom-left corner:
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <path
       d="
@@ -1284,7 +1284,7 @@ Move up `14px`:
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <path
       d="
@@ -1318,7 +1318,7 @@ And finally, close off the shape with an explicit arc rather than `z` (which wil
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <path
       d="
@@ -1356,7 +1356,7 @@ And that's all there is to the rounded rectangle bit! Now, we just throw on a fe
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64">
     <path
       d="
@@ -1402,7 +1402,7 @@ Hopefully, you're now comfortable enough with SVG paths to interpret the code he
 
 That gives us the classic external-link icon:
 
-<div class="icon">
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <path
       d="M 18 14
@@ -1430,7 +1430,7 @@ In reality, while you can certainly code SVG icons by hand like we did here, you
 Anyway, I guess that does it for this tutorial! I hope you learned something new (and had fun!).
 
 <style>
-  .icon-grid {
+  .svg-tutorial__icon-grid {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -1438,17 +1438,12 @@ Anyway, I guess that does it for this tutorial! I hope you learned something new
     padding: 0 !important;
     max-width: 100%;
   }
-  .icon {
+  .svg-tutorial__icon {
     margin: 0 1.6rem;
     padding: 0 1.6rem;
     display: flex;
   }
-  .icon-grid .icon {
-    margin: 1.6rem;
-    padding: 1.6rem;
-    height: auto;
-  }
-  .icon svg {
+  .svg-tutorial__icon svg {
     stroke: currentColor;
     stroke-width: 2;
     stroke-linecap: round;
