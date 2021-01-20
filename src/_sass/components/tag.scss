@@ -8,7 +8,7 @@
 a.tag {
   &:hover,
   &:focus,
-  &.active-tag {
+  &.active {
       background-color: var(--tag-bg-color-hover);
       color: var(--tag-text-color-hover);
   }
