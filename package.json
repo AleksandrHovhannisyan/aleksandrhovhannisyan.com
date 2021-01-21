@@ -5,9 +5,9 @@
   "repository": "git@github.com:AleksandrHovhannisyan/aleksandrhovhannisyan.com.git",
   "author": "AleksandrHovhannisyan <aleksandrhovhannisyan@gmail.com>",
   "scripts": {
-    "dev": "concurrently \"./node_modules/.bin/webpack --watch --mode=development\" \"JEKYLL_ENV=development bundle exec jekyll serve --livereload --port=4001\"",
-    "dev:prod": "concurrently \"./node_modules/.bin/webpack --watch --mode=production\" \"JEKYLL_ENV=production bundle exec jekyll serve --livereload --port=4001\"",
-    "build": "./node_modules/.bin/webpack --mode=production && JEKYLL_ENV=production bundle exec jekyll build",
+    "dev": "concurrently \"webpack --watch --mode=development\" \"JEKYLL_ENV=development bundle exec jekyll serve --livereload --port=4001\"",
+    "dev:prod": "concurrently \"webpack --watch --mode=production\" \"JEKYLL_ENV=production bundle exec jekyll serve --livereload --port=4001\"",
+    "build": "webpack --mode=production && JEKYLL_ENV=production bundle exec jekyll build",
     "lint:fix": "eslint --cache --fix 'webpack/**/*.js'",
     "test": "jest",
     "test:watch": "yarn run test --watch --silent=false"
