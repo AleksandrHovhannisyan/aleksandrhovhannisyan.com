@@ -161,19 +161,21 @@ You've probably also seen these three attributes: `width`, `height`, and `viewBo
 ></svg>
 ```
 
-[Envato Tuts+](https://webdesign.tutsplus.com/tutorials/svg-viewport-and-viewbox-for-beginners--cms-30844) does an excellent job of explaining the `viewBox` attribute. Basically, you can think of it as defining **the dimensions of the canvas for our SVG**. The first two numbers allow us to pan the SVG canvas horizontally or vertically, giving it an appearance of some sort of inner offset. Here, we have an offset of `0 0`, meaning the origin of our drawing is the top-left corner of the SVG element. The last two numbers control how much we're zoomed into the SVG canvas. As the numbers get smaller, we zoom in to the SVG image; conversely, as they get bigger, we zoom out, and the image shrinks.
+Basically, the `viewBox` attribute defines **the dimensions of the viewport ("canvas") for our SVG**. The first two numbers allow us to pan the SVG viewport horizontally or vertically, giving it an appearance of some sort of inner offset relative to the origin, `(0, 0)`. Here, we have an offset of `0 0`, meaning the top-left corner of the viewport *is* the origin, `(0, 0)`. The last two numbers control the base size of the viewport, before the SVG is scaled. Larger numbers lead to a larger viewport and more space to work with, while smaller numbers lead to a smaller viewport and less space to work with. Here, the viewport size is declared to be `24x24`, so our coordinates range from `(0, 0)` (top-left) to `(24, 24)` (bottom-right):
 
-The other two attributes, `width` and `height`, work just as you'd expect: They define the width and height of your SVG element, in pixels. You can also change an SVG's size with CSS using `width` and `height`, so while the SVG here has a starting width and height of `24px`, it doesn't *always* have to be that size. That's the whole point of SVG, after all—they can scale to any size!
+{% include img.html img="coordinates.png" alt="An SVG's coordinate system has an origin of (0, 0) at the top-left corner. For an SVG whose viewBox is 0 0 24 24, the bottom-right corner is at (24, 24)." %}
 
-Moreover, note that the the width and height of an SVG don't have to match the `viewBox`'s canvas size. In fact, the coordinates of all SVG shapes that we draw are relative to the `viewBox`, not to the `width` and `height` of the SVG. For example, if our `viewBox` is `0 0 24 24` but we've set the width and height to be `32`, then we're still working within a base canvas of `24x24`, so there's no point like `(25, 25)`, for example. The canvas will just get scaled up by a factor of `1.3` to give us a bigger element. This is really useful because it means we can draw all of our icons using a fixed canvas, and if we later want to scale it up, we don't have to adjust the shapes and their coordinates—the `width` and `height` will scale everything for us.
+The other two attributes, `width` and `height`, work just as you'd expect: They define the width and height of your SVG element, in pixels. You can also change an SVG's size with CSS using `width` and `height`, so while the SVG above has a starting width and height of `24px`, it doesn't *always* have to be that size. That's the whole point of SVG, after all—they can scale to *any* size!
+
+Moreover, note that the the width and height of an SVG don't need to match the `viewBox`'s size. In fact, the coordinates of all SVG shapes that we draw are relative to the `viewBox`, not to the `width` and `height` of the SVG.
+
+For example, if our `viewBox` is `0 0 24 24` but we've set the width and height to be `32`, or some other number, then we're still working within a base viewport size of `24x24`, so there's no visible point like `(25, 25)`. Everything will just get scaled up by a factor of `1.3` to give us a bigger SVG drawing. This is really useful because it means we can draw all of our icons using a fixed viewport size, and if we later want to scale it up, we don't have to adjust the shapes and their coordinates—the `width` and `height` will scale everything for us.
 
 For this tutorial, I'll use a `viewBox` of `0 0 24 24`, but dimensions of `64x64` so they're easier to see. You can use any values that you want, though, so long as you adjust your markup accordingly.
 
 ### SVGs and "Pixels"
 
-Before we move on, a clarifying note on pixels and SVGs: With the most basic SVG canvas, one pixel unit maps to exactly one unit on your screen. But as noted on the MDN docs, [this isn't always the case](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Positions#what_are_pixels). SVGs are scalable, after all, so `1px` in the SVG definition may actually map to `4px` if the SVG has been scaled to a larger size with `width` and `height`. This is unlike the behavior of images, where one "pixel" is always a fixed-size unit of measurement.
-
-Wherever I use `px` as a unit, don't take that to mean one literal output pixel like in CSS.
+Before we move on, a clarifying note on pixels and SVGs: With the most basic SVG, one pixel unit maps to exactly one unit on your screen. But as noted on the MDN docs, [this isn't always the case](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Positions#what_are_pixels). SVGs are scalable, after all, so `1px` in the SVG definition may actually map to `4px` if the SVG has been scaled to a larger size with `width` and `height`. This is unlike the behavior of images, where one "pixel" is always a fixed-size unit of measurement. Key takeaway: Wherever I use `px` as a unit, don't take that to mean one literal output pixel on the user's screen.
 
 ## Creating Basic Shapes with SVG
 
@@ -217,9 +219,7 @@ To draw a line in SVG, we need two things:
 - A starting point: `(x1, y1)`.
 - An ending point: `(x2, y2)`.
 
-An SVG's coordinate system starts with `(0, 0)` at the top-left corner. The `x`-values increase as you move to the right, and the `y`-values increase as you move down:
-
-{% include img.html img="coordinates.png" alt="An SVG's coordinate system has an origin of (0, 0) at the top-left corner. For an SVG whose viewBox is 0 0 24 24, the bottom-right corner is at (24, 24)." %}
+As a reminder, an SVG's coordinate system starts with `(0, 0)` at the top-left corner. The `x`-values increase as you move to the right, and the `y`-values increase as you move down.
 
 SVGs allow us to specify the starting and ending points for lines using four attributes: `x1`, `y1`, `x2`, and `y2`. So, to draw a simple horizontal line, we could do the following:
 
