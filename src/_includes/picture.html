@@ -1,11 +1,11 @@
-{% assign img_parts = include.img | split: '.' %}
-{% assign img = img_parts[0] %}
-{% assign ext = img_parts[1] %}
-{% assign class = include.class %}
-{% assign id = include.id %}
-{% assign clickable = include.clickable %}
-{% unless clickable == false %}<a href="{{ img }}.{{ ext }}" class="clickable-picture-anchor">{% endunless %}<picture
-class="lazily-loaded-picture{% if class %} {{ class }}{% endif %}" {% if id %}id="{{ id }}"{% endif %}>
+{%- assign img_parts = include.img | split: '.' -%}
+{%- assign img = img_parts[0] -%}
+{%- assign ext = img_parts[1] -%}
+{%- assign class = include.class -%}
+{%- assign id = include.id -%}
+{%- assign clickable = include.clickable -%}
+{%- unless clickable == false %}<a href="{{ img }}.{{ ext }}" class="clickable-picture-anchor">{%- endunless -%}
+  <picture class="lazily-loaded-picture{% if class %} {{ class }}{% endif %}" {% if id %}id="{{ id }}"{% endif %}>
     <source
         srcset="{{ img }}-placeholder.webp"
         type="image/webp"
@@ -16,4 +16,5 @@ class="lazily-loaded-picture{% if class %} {{ class }}{% endif %}" {% if id %}id
         alt="{{ include.alt }}"
         data-src="{{ img }}.{{ ext }}"
         class="lazy-img">
-</picture>{% unless clickable == false %}</a>{% endunless %}
+  </picture>
+{%- unless clickable == false -%}</a>{%- endunless -%}

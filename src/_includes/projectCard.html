@@ -1,4 +1,4 @@
-{% assign project = include.project %}
+{%- assign project = include.project -%}
 <li class="card interactive project">
     <header class="project-header">
         <div class="project-name-wrapper">
@@ -6,19 +6,19 @@
             <h3 class="project-name" aria-label="Project: {{ project.name }}">{{ project.name }}</h3>
         </div>
         <div class="project-rating" role="img" aria-label="This project has {{ project.rating }} stars on GitHub">
-            {% include icon.html icon="star" class="star star-filled" %}
+            {%- include icon.html icon="star" class="star star-filled" -%}
             <span>{{ project.rating }}</span>
         </div>
     </header>
     <p class="project-description">{{ project.description }}</p>
     <ul class="project-technologies" aria-label="Technologies used on this project">
-        {% for tech in project.tech %}
+      {%- for tech in project.tech -%}
         <li class="tag project-technology">{{ tech }}</li>
-        {% endfor %}
+      {%- endfor -%}
     </ul>
     <a class="container-link" href="{{ project.url }}" aria-label="Explore {{ project.name }} on GitHub"></a>
     <div class="hover-content" aria-hidden="true">
         Explore on GitHub
-        {% include icon.html icon="external-link" class="project-external-link" %}
+        {%- include icon.html icon="external-link" class="project-external-link" -%}
     </div>
 </li>

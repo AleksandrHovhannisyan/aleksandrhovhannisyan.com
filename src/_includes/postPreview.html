@@ -1,18 +1,18 @@
-{% assign post = include.post %}
-{% assign title_level = 3 %}
-{% if include.title_level %}
-  {% assign title_level = include.title_level %}
-{% endif %}
+{%- assign post = include.post -%}
+{%- assign title_level = 3 -%}
+{%- if include.title_level -%}
+  {%- assign title_level = include.title_level -%}
+{%- endif -%}
 <li class="post-preview">
   <a href="{{ post.url }}" aria-hidden="true" tabindex="-1" class="post-preview-thumbnail-container">
-    {% include thumbnail.html post=post %}
+    {%- include thumbnail.html post=post -%}
   </a>
   <h{{ title_level }} class="post-preview-title" aria-label="{{ post.title }}">
     <a class="underlined-link" href="{{ post.url }}" aria-hidden="true" tabindex="-1">{{ post.title }}</a>
   </h{{ title_level }}>
   <p class="post-preview-description">
-    {{ post.description | truncate: 118 }}
+    {{- post.description | truncate: 118 -}}{{  }}
     <a href="{{ post.url }}" class="read-this-post-link">Read this post &rarr;</a>
   </p>
-  {% include meta.html post=post %}
+  {%- include meta.html post=post -%}
 </li>

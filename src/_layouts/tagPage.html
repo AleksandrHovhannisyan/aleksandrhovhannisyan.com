@@ -6,6 +6,6 @@ noindex: true
 sitemap: false
 ---
 
-{% for post in paginator.posts %}
-    {% include postPreview.html post=post title_level=2 %}
-{% endfor %}
+{%- for post in paginator.posts -%}
+    {%- include postPreview.html post=post title_level=2 -%}
+{%- endfor -%}

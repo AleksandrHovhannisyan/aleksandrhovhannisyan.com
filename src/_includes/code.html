@@ -1,18 +1,15 @@
 <div class="code-header">
-    {% if include.file %}
+  {%- if include.file -%}
     <div class="code-file-name-container">
-        <span class="code-file-name">{{ include.file }}</span>
+      <span class="code-file-name">{{- include.file -}}</span>
     </div>
-    {% endif %}
-    {% unless include.copyable == false %}
+  {%- endif -%}
+  {%- unless include.copyable == false -%}
     <div class="copy-code-container">
-        <button class="copy-code-button"
-             aria-label="Copy code block to your clipboard"
-             data-code="{{ include.code | escape }}"
-             type="button"
-        ></button>
+      <button class="copy-code-button" aria-label="Copy code block to your clipboard"
+        data-code="{{ include.code | escape }}" type="button"></button>
     </div>
-    {% endunless %}
+  {%- endunless -%}
 </div>
 ````{{ include.lang }}
 {{ include.code }}

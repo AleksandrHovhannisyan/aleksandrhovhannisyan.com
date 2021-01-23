@@ -30,14 +30,15 @@ permalink: /contact/
         You can also find me on:
       </h2>
       <ul class="social-networks-list">
-        {% for network in site.data.socials %}
-        <li>
-          <a class="social-network" href="{{ network.url }}">
-            {% assign icon = network.icon %} {% assign iconClass = "social-network-icon " | append: "icon-" | append: icon %} {% include
-            icon.html icon=icon class=iconClass %}
-            <span class="social-network-name">{{ network.name }}</span>
-          </a>
-        </li>
+        {%- for network in site.data.socials -%}
+          <li>
+            <a class="social-network" href="{{ network.url }}">
+              {%- assign icon = network.icon -%}
+              {%- assign iconClass = "social-network-icon " | append: "icon-" | append: icon -%}
+              {%- include icon.html icon=icon class=iconClass -%}
+              <span class="social-network-name">{{ network.name }}</span>
+            </a>
+          </li>
         {% endfor %}
       </ul>
     </section>
