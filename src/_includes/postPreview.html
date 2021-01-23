@@ -12,7 +12,7 @@
   </h{{ title_level }}>
   <p class="post-preview-description">
     {{- post.description | truncate: 118 -}}{{  }}
-    <a href="{{ post.url }}" class="read-this-post-link">Read this post &rarr;</a>
+    <a href="{{ post.url }}" class="read-this-post-link">Read this post <span aria-hidden="true">&rarr;</span></a>
   </p>
   {%- include meta.html post=post -%}
 </li>
