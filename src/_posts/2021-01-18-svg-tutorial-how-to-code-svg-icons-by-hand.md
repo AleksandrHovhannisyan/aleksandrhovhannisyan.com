@@ -3,6 +3,7 @@ title: "SVG Tutorial: How to Code SVG Icons by Hand"
 description: Learn the basics of SVGs so you can code your own SVG icons by hand, without always relying on icon libraries.
 keywords: [svg tutorial, svg icons, how to code svg]
 tags: [dev, svg, html, css]
+last_updated: 2021-01-26
 ---
 
 For as long as I can remember, I avoided touching SVGs when working with front-end code. I'd have no trouble with HTML, CSS, or JavaScript, but SVGs always intimidated me with their bizarre syntax and those weird, indecipherable strings of letters and numbers. You know the ones:
@@ -424,12 +425,31 @@ From `(3, 4)`, we'll travel horizontally until we're an equal distance from the 
 {% include code.html code=code lang="html" %}
 
 <div class="svg-tutorial__icon">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" style="fill: black !important;">
+    <polyline points="3 8, 3 4, 21 4" />
+  </svg>
+</div>
+
+Hmm, that doesn't look quite right (though if you're viewing this tutorial in dark mode, the issue may not be noticeable). Did we do something wrong?
+
+There *is* one more SVG property worth mentioning briefly before we move on, and that's `fill`. Just like `stroke` defines the color of the lines of an SVG shape, `fill` defines the background color of the SVG. By default, for most shapes, `fill` is set to `black`. In this case, though, since we only want to draw lines and don't want any fill for our icon, we can set the fill to be `none`, either using the `fill` attribute on the SVG element or a property of the same name in CSS.
+
+Note that certain icons may actually benefit from having a custom fill, so you wouldn't want to *always* disable this globally in your app. But for our purposes, it's going to get in the way of drawing shapes like polylines, polygons, etc. since we don't actually *need* a fill. So, for the rest of this tutorial, I'll use this additional CSS to clear the fill for all icons:
+
+{% capture code %}svg {
+  fill: none;
+}{% endcapture %}
+{% include code.html code=code lang="css" %}
+
+With that set, our shape should look correct now:
+
+<div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <polyline points="3 8, 3 4, 21 4" />
   </svg>
 </div>
 
-And then we'll drop down an equal vertical distance to complete the top portion of our letter `T`:
+After that step, we'll drop down an equal vertical distance to complete the top portion of our letter `T`:
 
 {% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
   <polyline points="3 8, 3 4, 21 4, 21 8" />
