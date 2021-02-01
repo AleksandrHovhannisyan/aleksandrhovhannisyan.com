@@ -1,7 +1,7 @@
 ---
 title: Why I Don't Like Tailwind CSS
 description: On paper, Tailwind CSS sounds like a great idea. In reality, it suffers from the same problems that it tries to solve.
-keywords: [tailwind css]
+keywords: [tailwind css, tailwind, don't like tailwind]
 tags: [dev, css, tailwind, frameworks]
 ---
 
@@ -115,11 +115,19 @@ Another complaint I have with Tailwind is that, unlike CSS, it doesn't allow you
 }
 ```
 
-### 2. Tailwind Is Effectively Vendor Lock-in
+While we're on the topic of semantics and legibility, let's address one last elephant in the room: **code reviews**. I am fortunate to have only worked with Tailwind CSS in local sandboxes, and not in any production projects or on an actual team of other devs.
 
-**Vendor lock-in** is by far my biggest concern with Tailwind CSS. It's why I don't want to invest time in migrating existing projects to it, and why I'd be reluctant to use it for any new projects.
+I'm comfortable reading other people's code, and making sense of their logic and relating their markup to their CSS. But if I have to look at ~1000 LOC changes in a PR, and most of that is coming from long strings of class names, I'm not going to be happy. It's also going to be more difficult for me to make suggestions that could eliminate redundant CSS or simplify your markup.
 
-Once you build an app with Tailwind, moving it to any other CSS framework or library in the future is going to be quite a challenge. There are tools for [converting existing CSS to Tailwind](https://transform.tools/css-to-tailwind), which sounds like a fairly easy thing to do. After all, Tailwind just breaks "compound" semantic classes down into "atomic" utility classes that have single responsibilities. If you have `.some-thing` that applies a bunch of CSS, then you can easily map `.some-thing`'s CSS rules to Tailwind classes.
+It's information overload—in the Semantic CSS world, we first make sense of the markup with the help of well-named classes or IDs, and then we mentally associate these "things" with concrete CSS rules. Everything is easier to parse because we're taking it one thing at a time, and semantic classes help us to make sense of what we're looking at.
+
+With Tailwind, you're forced to **interpret semantics on the fly**. The person who originally wrote the code probably had some idea of what they were creating, somewhere in the back of their mind. But they've probably forgotten it by now, and you have to guess what a particular slice of markup is responsible for just by reading an alphabet soup of classes.
+
+### 2. Tailwind Is Vendor Lock-in
+
+Look, I don't like Tailwind for *lots* of reasons. But none of them are nearly as concerning to me as **vendor lock-in**. It's why I don't want to invest time in migrating existing projects to Tailwind, and why I'd be reluctant to use it for any new projects.
+
+Once you build an app with Tailwind, moving it to any other CSS framework or library in the future is going to be grueling. There are tools like Windy for [converting existing CSS to Tailwind](https://usewindy.com/), which sounds like a fairly easy thing to do. After all, Tailwind just breaks "compound" semantic classes down into "atomic" utility classes that have single responsibilities. If you have `.some-thing` that applies a bunch of CSS, then you can easily map `.some-thing`'s CSS rules to Tailwind classes.
 
 But I can't imagine that it's possible to create a tool that does the reverse: **converting Tailwind to semantic HTML and CSS**. The only thing you could realistically convert Tailwind to is some other utility framework (e.g., Bootstrap) that locks you in with its own syntax and class names.
 
@@ -127,13 +135,23 @@ Because Tailwind classes are atomic building blocks that only do one thing, you 
 
 If you use Tailwind, **you're stuck with it**, unless you can tolerate converting all of that CSS to semantic CSS by hand. If you want to move to anything in the future that's not Tailwind, good luck. You'll either need to create your own in-house utility framework or use another one. Either way, it's never a good thing when a tool locks you into a particular paradigm, with no way out.
 
-### 3. Tailwind Creates the Very Problems It Tries to Solve
+### 3. Tailwind Is Bloated
 
-All Tailwind classes do just one thing, and that's DRY, which is a good thing because someone said so. But that's not telling the full story.
+Utility CSS is inherently broken and bloated. Why? Because every new class name that you introduce could have potentially hundreds of property-value combinations, and that translates to more compiled CSS—which, of course, means a larger network request, and potentially slower performance.
 
-For one, the great thing about CSS classes is that they usually *don't* do just one thing. After all, that's why classes exist in the first place—to help you group related styles together so you can reuse them for more than just a single element.
+Look no further than pseudo-class selectors like `:hover`, `:focus`, `:active`, and `:focus-within` to see why this is such a big deal. In fact, it's a problem that Tailwind is *very well aware of*. [Just read its documentation](https://v1.tailwindcss.com/docs/pseudo-class-variants):
 
-With Tailwind, if you want to group related styles together under a single name, you need to use [`@apply` directives](https://tailwindcss.com/docs/extracting-components#extracting-component-classes-with-apply) inside a custom class, like this (example taken from the docs):
+> Not all pseudo-class variants are enabled for all utilities by default due to file-size considerations, but we've tried our best to enable the most commonly used combinations out of the box.
+
+Translation: Tailwind is a costly abstraction, and its creators have tried their very best to hide this fact from you.
+
+### 4. Tailwind Is an Unnecessary Abstraction
+
+All Tailwind classes do just one thing, and that's DRY, which is a good thing because someone said so. But... let's think about this for a second: Is Tailwind as reusable and "clean" as it's marketed?
+
+For one, the great thing about ordinary CSS classes is that they usually *don't* do just one thing. After all, that's why classes exist in the first place—to help you group related styles together so you can reuse them.
+
+With Tailwind, if you want to group related styles together under a reusable class name, you need to use [`@apply` directives](https://tailwindcss.com/docs/extracting-components#extracting-component-classes-with-apply), like in this example taken from the docs:
 
 ```html
 <button class="btn-indigo">
@@ -147,7 +165,7 @@ With Tailwind, if you want to group related styles together under a single name,
 </style>
 ```
 
-If it's not obvious, `@apply` is completely antithetical to Tailwind's founding and guiding principles. The fact that it even exists is troubling. What exactly is the difference between using `@apply` and just using the CSS rules that correspond to your utility classes? There is no difference—except now, you've defeated the point of using a utility CSS framework, and you're better off just writing vanilla CSS.
+If it's not already obvious, `@apply` **completely violates Tailwind's founding and guiding principles**. The fact that this jailbreak even exists is troubling. What exactly is the difference between using `@apply` and just using the CSS rules that correspond to your utility classes? There *is* no difference—except now, you've defeated the point of using a utility CSS framework in the first place, and you're better off just writing vanilla CSS to begin with.
 
 Tailwind adds this weird layer of redundancy to your code, forcing you to repeat `flex`, `mx`, and `py` in your HTML classes rather than repeating the *same exact things* but in CSS. What do you gain from this, except that you don't have to give your components meaningful class names? Your utility classes are atomic building blocks, sure, but so are CSS property-value pairs. This is a classic case of creating unnecessary abstractions to solve problems that don't exist.
 
@@ -157,7 +175,7 @@ But you're lying to yourself if you think this is any better than writing CSS di
 
 It's a classic party trick of misdirection. While the audience's eyes are fixed on one hand, the other works its magic, and viewers are amazed. Sure, you're no longer writing all that nasty semantic CSS, but... you're still writing *the exact same amount of CSS*, disguised as class names.
 
-### 4. Semantics Is Important. Tailwind Forgoes It.
+### 5. Semantics Is Important. Tailwind Forgoes It.
 
 One of the most frequently cited arguments in favor of Tailwind is that Semantic CSS is difficult to achieve in practice because naming things is hard. Adam argues that this violates the principle of Separation of Concerns because now your HTML markup dictates your CSS. Effectively, you're making decisions in your HTML that really belong in your CSS. But let's think about this for a second: Is that really a problem?
 
@@ -173,7 +191,7 @@ But I bring this up here because if you're using components, then you've likely 
 
 In short, Tailwind pretends to solve a problem that isn't really a problem in the first place.
 
-### 5. Tailwind and Dev Tools Don't Play Nicely
+### 6. Tailwind and Dev Tools Don't Play Nicely
 
 A minor note, but one that matters to me personally, because I've tried this whole "utility CSS" thing and am not convinced that it makes my job easier. As a front-end developer, I often find myself making little tweaks here and there in my browser through dev tools (which is especially useful when combined with `document.designMode = "on"`).
 
@@ -181,19 +199,11 @@ With Tailwind, tweaking styles is either very difficult or impossible, depending
 
 It's worth noting that [there is a package called UI Devtools for Tailwind CSS](https://ui-devtools.com/) that aims to solve this problem. But unfortunately, it's sponsorware, meaning you have to sponsor the project on GitHub to be able to use it.
 
-### 6. Tailwind Is Still Missing Some Features
+### 7. Tailwind Is Still Missing Some Key Features
 
-Almost two years after its initial release, Tailwind CSS [still doesn't support pseudo elements](https://github.com/tailwindlabs/tailwindcss/discussions/2119), something that basic CSS and CSS preprocessors have supported for years. Imagine having to write `before:content-empty-string` (or something like that) in your HTML when the CSS equivalent is much, much more legible. I also suspect this is one of those features (like `background-image`) that will be very difficult to implement or maintain—you'd need to configure Tailwind CSS to recognize a pre-defined set of valid `content` values for pseudo-elements.
+Almost two years after its initial release, Tailwind CSS [still doesn't support pseudo elements](https://github.com/tailwindlabs/tailwindcss/discussions/2119) (among other features), something that basic CSS and CSS preprocessors have supported for years. Imagine having to write `before:content-empty-string` in your HTML when the CSS equivalent is much, much more legible.
 
-### 7. Tailwind Complicates Code Reviews
-
-While we're on the topic of semantics and legibility, I can't imagine what a nightmare code reviews are like with Tailwind CSS. I am fortunate to have only worked with Tailwind in local sandboxes, and not in any production projects or on an actual team of other devs.
-
-I'm comfortable reading other people's code, and making sense of their logic and relating their markup to their CSS. But if I have to look at ~1000 LOC changes in a PR, and most of that is coming from long strings of class names, I'm not going to be happy. It's also going to be more difficult for me to make suggestions that could eliminate redundant CSS or simplify your markup.
-
-It's information overload—in the Semantic CSS world, we first make sense of the markup with the help of well-named classes or IDs, and then we mentally associate these "things" with concrete CSS rules. Everything is easier to parse because we're taking it one thing at a time, and semantic classes help us to make sense of what we're looking at.
-
-With Tailwind, you're forced to **interpret semantics on the fly**. The person who originally wrote the code probably had some idea of what they were creating, somewhere in the back of their mind. But they've probably forgotten it by now, and you have to guess what a particular slice of markup is responsible for just by reading an alphabet soup of classes.
+I suspect this feature will be very costly to implement. For both `::before` and `::after`, you would need possibly thousands of unique class names just so you could style your pseudo-elements as needed. That's simply not realistic. It's the same reason why Tailwind is such a bloated mess—all those innumerable prefixed class names are costly. The more classes that Tailwind decides to introduce, the more its complexity will grow—to the point that it will not be usable.
 
 ## Fine, But What Should You Use Instead?
 
