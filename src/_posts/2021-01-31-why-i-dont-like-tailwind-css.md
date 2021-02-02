@@ -12,7 +12,7 @@ When the waiter approaches your table, you inquire about the dish; he notes that
 
 When your meal arrives, it looks just as unpleasant as it did in the menu. But you're not one to judge—you're willing to try new things. You carve into a slice of it and take a reluctant bite. And... well, it's really not that great.
 
-In a nutshell, this was my experience with Tailwind CSS. It's not the worst thing to happen to CSS, but it's certainly not the panacea that its supporters claim it is, and it has a *lot* of issues that nobody seems to want to discuss openly.
+In a nutshell, this was my experience with Tailwind CSS. It's not the worst thing to happen to CSS, but it's certainly not the panacea that its supporters claim it is—and, in fact, it has a *lot* of problems.
 
 See, the strange thing is that I actually read through all of [Adam Wathan's article on semantic CSS](https://adamwathan.me/css-utility-classes-and-separation-of-concerns/), and I found myself initially agreeing with his points. Adam argues that the whole "semantic CSS" paradigm does not pan out in practice, and that developers tend to gravitate towards a **Utility CSS** approach over the course of their careers. According to this paradigm, your class names should be as granular as possible, responsible for one main task. These utility classes serve as the basic building blocks ("tokens") of your UI, allowing you to chain them together to implement complex designs. For example, if you find yourself repeating `display: flex` or `flex-wrap: wrap` in your CSS, you may want to abstract these out into utility classes, like `flex` or `flex-wrap`, that you can apply to any element.
 
