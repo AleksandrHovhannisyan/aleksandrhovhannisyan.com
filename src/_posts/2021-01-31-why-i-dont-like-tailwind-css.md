@@ -3,6 +3,7 @@ title: Why I Don't Like Tailwind CSS
 description: On paper, Tailwind CSS sounds like a great idea. In reality, it suffers from the same problems that it tries to solve.
 keywords: [tailwind css, tailwind, don't like tailwind]
 tags: [dev, css, tailwind, frameworks]
+canonical_url: https://www.aleksandrhovhannisyan.com/blog/why-i-dont-like-tailwind-css/
 ---
 
 You're at a restaurant, and there's an odd item on the menu that you've never heard of before, but it piques your interest. It sounds like it might be worth a try, though you're not sure.
