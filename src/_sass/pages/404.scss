@@ -1,11 +1,10 @@
-@import 'colors';
 @import 'mixins';
 
 #page-not-found {
   align-items: center;
   animation: backgroundScroll 40s linear infinite;
   animation-fill-mode: forwards;
-  background-color: $black-900;
+  background-color: var(--black-900);
   // https://www.transparenttextures.com/stardust.html
   background-image: url('/assets/images/404/stardust.png');
   display: flex;
@@ -25,19 +24,19 @@
   }
 
   h1 {
-    color: $black-200;
+    color: var(--black-200);
     margin-bottom: 2.4rem;
-    text-shadow: 3px 3px $black;
+    text-shadow: 3px 3px var(--black);
     @include font-size(7);
   }
 
   p {
-    color: $black-400;
+    color: var(--black-400);
     margin-bottom: 1.6rem;
     @include font-size(2);
   }
 
   a {
-    color: #cea25a;
+    color: var(--accent-orange-500);
   }
 }

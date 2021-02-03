@@ -1,19 +1,17 @@
-@import 'colors';
-
 div.highlighter-rouge {
-  $code-block-padding-bottom: 1.6rem;
-  $code-block-padding: 3.2rem;
+  --code-block-padding-bottom: 1.6rem;
+  --code-block-padding: 3.2rem;
   border-radius: 0.4rem;
   box-shadow: var(--code-block-box-shadow);
 
   & > div.highlight {
-    padding: $code-block-padding;
-    padding-bottom: $code-block-padding - $code-block-padding-bottom;
+    padding: var(--code-block-padding);
+    padding-bottom: calc(var(--code-block-padding) - var(--code-block-padding-bottom));
 
     pre.highlight {
       // Spacing between the horizontal scroll bar and the code itself.
       // This only matters whenever the content overflows horizontally.
-      padding-bottom: $code-block-padding-bottom;
+      padding-bottom: var(--code-block-padding-bottom);
     }
   }
 
@@ -25,7 +23,7 @@ div.highlighter-rouge {
 .code-header {
   margin-bottom: calc(-1em * var(--line-height));
   display: flex;
-  background-color: $black-600;
+  background-color: var(--black-600);
   border-top-left-radius: 0.4rem;
   border-top-right-radius: 0.4rem;
   box-shadow: 0 0.4rem 0.4rem 0px rgba(0, 0, 0, 0.3);
@@ -52,7 +50,7 @@ div.highlighter-rouge {
 }
 
 .code-file-name {
-  color: $black-200;
+  color: var(--black-200);
   word-break: break-all;
   @include font-size(-1);
   @include font-weight('regular');
@@ -76,8 +74,8 @@ div.highlighter-rouge {
   display: grid;
   grid-auto-flow: column;
   grid-column-gap: 0.4rem;
-  background-color: $black-500;
-  color: $black-200;
+  background-color: var(--black-500);
+  color: var(--black-200);
   padding: 0.6rem 1.2rem;
   border-radius: 0.4rem;
   box-shadow: 0 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.5);
@@ -97,8 +95,8 @@ div.highlighter-rouge {
   &.copied,
   &:focus,
   &:hover {
-    color: $black;
-    background-color: $black-400;
+    color: var(--black);
+    background-color: var(--black-400);
   }
 
   &:active {
@@ -132,19 +130,19 @@ code {
 
   &,
   code {
-    background-color: $code-background;
-    color: $code-text;
+    background-color: var(--code-background);
+    color: var(--code-text);
   }
 
   *::selection {
-    background-color: $code-selection;
+    background-color: var(--code-selection);
     // This will be overriden by more specific styles but retained for normal text and labels
-    color: $code-text;
+    color: var(--code-text);
   }
 
   // Base Style
   pre {
-    background-color: $code-background;
+    background-color: var(--code-background);
     color: transparent;
 
     &.highlight {
@@ -161,18 +159,18 @@ code {
   .c1,
   .cs {
     font-style: italic;
-    @include selection-resistant-color($code-comment);
+    @include selection-resistant-color(var(--code-comment));
   }
 
   // Functions
   .nf,
   .nx {
-    @include selection-resistant-color($code-function);
+    @include selection-resistant-color(var(--code-function));
   }
 
   // Attributes
   .na {
-    @include selection-resistant-color($code-attribute);
+    @include selection-resistant-color(var(--code-attribute));
   }
 
   // Variables
@@ -182,7 +180,7 @@ code {
   .vg,
   .vi,
   .err {
-    @include selection-resistant-color($code-variable);
+    @include selection-resistant-color(var(--code-variable));
   }
 
   // Numbers
@@ -192,7 +190,7 @@ code {
   .mi,
   .mo,
   .il {
-    @include selection-resistant-color($code-number);
+    @include selection-resistant-color(var(--code-number));
   }
 
   // Keywords
@@ -201,18 +199,18 @@ code {
   .kn,
   .kr,
   .kt {
-    @include selection-resistant-color($code-keyword);
+    @include selection-resistant-color(var(--code-keyword));
   }
 
   // Constants
   .kc {
-    @include selection-resistant-color($code-constant);
+    @include selection-resistant-color(var(--code-constant));
   }
 
   // Pseudo
   .kp,
   .nb {
-    @include selection-resistant-color($code-support);
+    @include selection-resistant-color(var(--code-support));
   }
 
   // Strings
@@ -221,27 +219,27 @@ code {
   .sc,
   .s1,
   .s2 {
-    @include selection-resistant-color($code-string);
+    @include selection-resistant-color(var(--code-string));
   }
 
   // Classes/tags
   .nc,
   .nt,
   .nl {
-    @include selection-resistant-color($code-tag);
+    @include selection-resistant-color(var(--code-tag));
   }
 
   // Punctuation
   .p {
-    @include selection-resistant-color($code-punctuation);
+    @include selection-resistant-color(var(--code-punctuation));
   }
 
   .o {
-    @include selection-resistant-color($code-operator);
+    @include selection-resistant-color(var(--code-operator));
   }
 
   // Operators
   .ow {
-    @include selection-resistant-color($code-operator-word);
+    @include selection-resistant-color(var(--code-operator-word));
   }
 }

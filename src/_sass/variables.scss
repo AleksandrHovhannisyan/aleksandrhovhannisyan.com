@@ -1,12 +1,81 @@
 @import 'fonts';
-@import 'colors';
 
 html {
+  // Palette
+  --white: hsl(0, 0%, 100%);
+  --black: hsl(0, 0%, 0%);
+
+  --blue-900: hsl(198, 40%, 20%);
+  --blue-800: hsl(198, 40%, 22%);
+  --blue-700: hsl(198, 40%, 24%);
+  --blue-600: hsl(199, 40%, 26%);
+  --blue-500: hsl(199, 39%, 34%);
+  --blue-400: hsl(200, 22%, 48%);
+  --blue-300: hsl(199, 21%, 61%);
+  --blue-200: hsl(198, 21%, 75%);
+  --blue-100: hsl(198, 21%, 88%);
+
+  --accent-blue-500: hsl(212, 71%, 45%);
+  --accent-blue-400: hsl(212, 65%, 44%);
+  --accent-blue-300: hsl(212, 100%, 75%);
+
+  --accent-orange-500: hsl(37, 54%, 58%);
+  --accent-orange-400: hsl(33, 100%, 78%);
+  --accent-orange-300: hsl(37, 54%, 78%);
+  --accent-orange-200: hsl(34, 15%, 62%);
+
+  --accent-red-500: hsl(354, 39%, 43%);
+  --accent-red-400: hsl(354, 39%, 54%);
+
+  --gray-900: hsl(198, 18%, 22%);
+  --gray-800: hsl(210, 11%, 26%);
+  --gray-700: hsl(200, 2%, 27%);
+  --gray-600: hsl(208, 7%, 34%);
+  --gray-500: hsl(207, 5%, 43%);
+  --gray-400: hsl(207, 4%, 59%);
+  --gray-300: hsl(210, 5%, 67%);
+  --gray-200: hsl(206, 6%, 75%);
+  --gray-100: hsl(180, 7%, 94%);
+
+  --black-900: hsl(0, 0%, 10%);
+  --black-800: hsl(0, 0%, 16%);
+  --black-700: hsl(0, 0%, 17%);
+  --black-600: hsl(0, 0%, 23%);
+  --black-500: hsl(0, 0%, 35%);
+  --black-400: hsl(0, 0%, 68%);
+  --black-300: hsl(0, 0%, 80%);
+  --black-200: hsl(0, 0%, 87%);
+  --black-100: hsl(0, 0%, 96%);
+
+  // Third-party brand colors
+  --brand-github: hsl(210, 12%, 16%);
+  --brand-github-alt: hsl(220, 2%, 75%);
+  --brand-linkedin: hsl(201, 100%, 35%);
+  --brand-upwork: hsl(103, 67%, 56%);
+  --brand-stack-exchange: hsl(213, 72%, 35%);
+
+  // Code
+  --code-background: hsl(0, 0%, 15%);
+  --code-selection: hsla(210, 100%, 84%, 0.15);
+  --code-comment: hsl(101, 29%, 47%);
+  --code-text: hsl(220, 13%, 74%);
+  --code-function: hsl(0, 0%, 83%);
+  --code-keyword: hsl(207, 61%, 59%);
+  --code-variable: var(--code-keyword);
+  --code-number: hsl(99, 28%, 73%);
+  --code-attribute: hsl(201, 98%, 80%);
+  --code-string: hsl(17, 47%, 64%);
+  --code-tag: var(--code-keyword);
+  --code-constant:--code-keyword;
+  --code-support: hsl(201, 98%, 80%);
+  --code-operator: hsl(0, 0%, 83%);
+  --code-punctuation: hsl(0, 0%, 83%);
+  --code-operator-word: var(--code-keyword);
+
   font-size: 1rem / $font-size-base * 100%;
   @media screen and (min-width: 500px) {
     font-size: 62.5%;
   }
-
   --transition-duration: 0.2s;
   --page-max-width: 80rem;
   --navbar-height: 6.4rem;
@@ -14,85 +83,85 @@ html {
 }
 
 html.light {
-  --button-bg-color-hover: #{$blue-400};
-  --button-bg-color: #{$blue-500};
-  --button-text-color: #{$white};
-  --card-bg-color: #{$white};
+  --button-bg-color-hover: var(--blue-400);
+  --button-bg-color: var(--blue-500);
+  --button-text-color: var(--white);
+  --card-bg-color: var(--white);
   --code-block-box-shadow: none;
-  --footer-bg-color: #{$black-800};
-  --footer-text-color: #{$black-200};
-  --form-bg-color: #{$black-100};
-  --hover-bg-color: #{$black-100};
-  --inline-code-bg-color: hsl(210 57% 24% / 0.09);
-  --inline-code-text-color: #{$gray-700};
-  --input-bg-color: #{$white};
-  --input-border-color-focus: #{$accent-blue-light};
-  --input-border-color: #{$gray-200};
-  --input-box-shadow-focus: 0 0 6px 0 #{$accent-blue-lighter};
+  --footer-bg-color: var(--black-800);
+  --footer-text-color: var(--black-200);
+  --form-bg-color: var(--black-100);
+  --hover-bg-color: var(--black-100);
+  --inline-code-bg-color: hsla(210, 57%, 24%, 0.09);
+  --inline-code-text-color: var(--gray-700);
+  --input-bg-color: var(--white);
+  --input-border-color-focus: var(--accent-blue-400);
+  --input-border-color: var(--gray-200);
+  --input-box-shadow-focus: 0 0 6px 0 var(--accent-blue-300);
   --input-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0);
-  --input-required-asterisk-color: #98434b;
-  --link-color: #{$accent-blue};
-  --main-bg-color: #{$white};
-  --navbar-bg-color: #{$black-800};
+  --input-required-asterisk-color: var(--accent-red-500);
+  --link-color: var(--accent-blue-500);
+  --main-bg-color: var(--white);
+  --navbar-bg-color: var(--black-800);
   --navbar-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.8);
-  --navbar-link-bg-color-hover: #{$gray-700};
-  --navbar-text-color: #{$black-200};
-  --scrollbar-thumb-bg-color-hover: #{$gray-200};
-  --scrollbar-thumb-bg-color: #{$gray-300};
-  --scrollbar-track-bg-color: #{$gray-100};
-  --selection-bg-color: rgba(218, 227, 231, 0.8);
-  --selection-text-color: #{$blue-900};
-  --spoiler-bg-color: #{$blue-100};
-  --star-fill-color-filled: #{$blue-500};
-  --table-border-color: #{$gray-200};
-  --table-header-bg-color: #{$gray-100};
-  --table-header-text-color: #{$gray-900};
-  --tag-bg-color-hover: #{$blue-500};
-  --tag-bg-color: #{$blue-100};
-  --tag-text-color-hover: #{$white};
-  --tag-text-color: #{$blue-800};
-  --text-color-emphasis: #{$gray-900};
-  --text-color-normal: #{$gray-800};
+  --navbar-link-bg-color-hover: var(--gray-700);
+  --navbar-text-color: var(--black-200);
+  --scrollbar-thumb-bg-color-hover: var(--gray-200);
+  --scrollbar-thumb-bg-color: var(--gray-300);
+  --scrollbar-track-bg-color: var(--gray-100);
+  --selection-bg-color: hsla(198, 21%, 88%, 0.8);
+  --selection-text-color: var(--blue-900);
+  --spoiler-bg-color: var(--blue-100);
+  --star-fill-color-filled: var(--blue-500);
+  --table-border-color: var(--gray-200);
+  --table-header-bg-color: var(--gray-100);
+  --table-header-text-color: var(--gray-900);
+  --tag-bg-color-hover: var(--blue-500);
+  --tag-bg-color: var(--blue-100);
+  --tag-text-color-hover: var(--white);
+  --tag-text-color: var(--blue-800);
+  --text-color-emphasis: var(--gray-900);
+  --text-color-normal: var(--gray-800);
 }
 
 html.dark {
-  --button-bg-color-hover: #f3d5b3;
-  --button-bg-color: #bda17f;
-  --button-text-color: #{$black-800};
-  --card-bg-color: #{$black-800};
+  --button-bg-color-hover: var(--accent-orange-300);
+  --button-bg-color: var(--accent-orange-400);
+  --button-text-color: var(--black-800);
+  --card-bg-color: var(--black-800);
   --code-block-box-shadow: 0 0.2rem 0.8rem 0 rgba(0,0,0,0.4);
   --footer-bg-color: var(--navbar-bg-color);
   --footer-text-color: var(--navbar-text-color);
-  --form-bg-color: #{$black-800};
-  --hover-bg-color: #{$black-800};
-  --inline-code-bg-color: rgba(88, 88, 88, 0.65);
-  --inline-code-text-color: #{$black-300};
-  --input-bg-color: #{$black-600};
-  --input-border-color-focus: #bda17f;
-  --input-border-color: #{$black-600};
-  --input-box-shadow-focus: 0 0 6px 0 #fcd876;
-  --input-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0);
-  --input-required-asterisk-color: #c25450;
-  --link-color: #cea25a;
-  --main-bg-color: #{$black-900};
-  --navbar-bg-color: #{$black-800};
-  --navbar-box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.8);
-  --navbar-link-bg-color-hover: #{$gray-700};
-  --navbar-text-color: #{$black-200};
-  --scrollbar-thumb-bg-color-hover: #{$black-400};
-  --scrollbar-thumb-bg-color: #{$black-500};
+  --form-bg-color: var(--black-800);
+  --hover-bg-color: var(--black-800);
+  --inline-code-bg-color: hsla(0, 0%, 35%, 0.65);
+  --inline-code-text-color: var(--black-300);
+  --input-bg-color: var(--black-600);
+  --input-border-color-focus: var(--accent-orange-400);
+  --input-border-color: var(--black-600);
+  --input-box-shadow-focus: 0 0 6px 0 var(--accent-orange-300);
+  --input-box-shadow: 0 0 5px 0 hsla(0, 0%, 0%, 0);
+  --input-required-asterisk-color: var(--accent-red-400);
+  --link-color: var(--accent-orange-500);
+  --main-bg-color: var(--black-900);
+  --navbar-bg-color: var(--black-800);
+  --navbar-box-shadow: 0 0 8px 0 hsla(0, 0%, 0%, 0.8);
+  --navbar-link-bg-color-hover: var(--gray-700);
+  --navbar-text-color: var(--black-200);
+  --scrollbar-thumb-bg-color-hover: var(--black-400);
+  --scrollbar-thumb-bg-color: var(--black-500);
   --scrollbar-track-bg-color: var(--navbar-bg-color);
-  --selection-bg-color: rgba(209, 201, 191, 80%);
-  --selection-text-color: #{$black};
-  --spoiler-bg-color: #9c9387;
-  --star-fill-color-filled: #bda17f;
-  --table-border-color: #{$black-500};
-  --table-header-bg-color: #{$black-800};
-  --table-header-text-color: #{$black-200};
-  --tag-bg-color-hover: #ffcd91;
-  --tag-bg-color: #ada08f;
-  --tag-text-color-hover: #{$black};
-  --tag-text-color: #{$black};
-  --text-color-emphasis: #{$black-200};
-  --text-color-normal: #{$black-400};
+  --selection-bg-color: hsla(33, 16%, 78%, 80%);
+  --selection-text-color: var(--black);
+  --spoiler-bg-color: var(--accent-orange-200);
+  --star-fill-color-filled: var(--accent-orange-400);
+  --table-border-color: var(--black-500);
+  --table-header-bg-color: var(--black-800);
+  --table-header-text-color: var(--black-200);
+  --tag-bg-color-hover: var(--accent-orange-400);
+  --tag-bg-color: var(--accent-orange-200);
+  --tag-text-color-hover: var(--black);
+  --tag-text-color: var(--black);
+  --text-color-emphasis: var(--black-200);
+  --text-color-normal: var(--black-400);
 }
