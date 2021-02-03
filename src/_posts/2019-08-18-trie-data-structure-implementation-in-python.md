@@ -134,11 +134,7 @@ We'll loop over the word like we did before, one character at a time. At any poi
 
 Otherwise, if we reach the last character of the string without having returned `None`, then that must mean that the current node is the word we were searching for*. So in that case, we return the current node.
 
-<blockquote>
-    <p>
-        <strong>Exercise</strong>: Using the diagram from earlier, try to find the word <code>appreciate</code>, going down the trie one node at a time. What do you return, and at what point in the loop? Answer: <span class="spoiler">Everything is fine for the common <code>app-</code> substring. But when we look at the letter <code>r</code>, we find that the current node, <code>app</code>, doesn't have that letter in its dictionary; it only has the letter <code>l</code>. Thus, we return <code>None</code>.</span>
-    </p>
-</blockquote>
+> **Exercise**: Using the diagram from earlier, try to find the word `appreciate`, going down the trie one node at a time. What do you return, and at what point in the loop? Answer: Everything is fine for the common `app-` substring. But when we look at the letter `r`, we find that the current node, `app`, doesn't have that letter in its dictionary; it only has the letter `l`. Thus, we return `None`.
 
 Here's the code:
 

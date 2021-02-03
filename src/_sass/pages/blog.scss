@@ -223,25 +223,4 @@ $meta-tag-spacing: 0.8rem;
         padding: 0.4rem 3.2rem;
         @include rhythm;
     }
-
-    .spoiler {
-        &,
-        * {
-            background-color: var(--spoiler-bg-color);
-            color: var(--spoiler-bg-color);
-        }
-
-        &:hover {
-            &,
-            * {
-                background-color: transparent;
-                color: var(--text-color-normal);
-            }
-
-            code {
-                background-color: var(--inline-code-bg-color);
-                color: var(--inline-code-text-color);
-            }
-        }
-    }
 }

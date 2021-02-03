@@ -48,9 +48,7 @@ You're given the following equipment and tools for your expedition:
 - Your jetpack, for traversing the uneven terrain of planets by foot.
 - A translator, for deciphering the text left behind by the Nomai. You'll be doing this a lot.
 
-<p>
-Oh, and you can't forget <em>the stick</em>. You can roast marshmallows at campfires, but there's really no point in doing so, unless <span class="spoiler">you want to unlock one of the secret achievements (and get cancer)</span>.
-</p>
+Oh, and you can't forget *the stick*. You can roast marshmallows at campfires, but there's really no point in doing so, unless you want to unlock one of the secret achievements (and get cancer).
 
 {% include img.html img="campfire.jpg" alt="Roasting marshmallows over a campfire." %}
 
@@ -98,7 +96,7 @@ But there is perhaps no more terrifying fate than death in the void of outer spa
 
 ## Dialogue and Audio Done Right
 
-<p>I was initially disappointed when I realized that the NPCs in Outer Wilds are, for the most part, static—they remain in the same spot and loop through the same actions, such as observing their surroundings or playing musical instruments. Notably, the game also doesn't have any voice acting—you cycle through each NPC's textual dialogue trees (with the one exception being <span class="spoiler">Solanum, who interacts with you through Nomai projection stones and writing</span>).</p>
+I was initially disappointed when I realized that the NPCs in Outer Wilds are, for the most part, static—they remain in the same spot and loop through the same actions, such as observing their surroundings or playing musical instruments. Notably, the game also doesn't have any voice acting—you cycle through each NPC's textual dialogue trees (with the one exception being Solanum, who interacts with you through Nomai projection stones and writing).
 
 Is that a bad thing? Absolutely not. The game's **fantastic writing** more than compensates for its lack of traditional player-NPC interaction. Outer Wilds is a story-driven game done right. Voice acting would've killed the experience by introducing human elements that simply don't belong in its world.
 
