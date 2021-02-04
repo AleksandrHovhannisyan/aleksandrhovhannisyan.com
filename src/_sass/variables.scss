@@ -98,12 +98,12 @@ html.light {
   --input-border-color-focus: var(--accent-blue-400);
   --input-border-color: var(--gray-200);
   --input-box-shadow-focus: 0 0 6px 0 var(--accent-blue-300);
-  --input-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0);
+  --input-box-shadow: 0 0 5px 0 hsla(0, 0%, 0%, 0);
   --input-required-asterisk-color: var(--accent-red-500);
   --link-color: var(--accent-blue-500);
   --main-bg-color: var(--white);
   --navbar-bg-color: var(--black-800);
-  --navbar-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.8);
+  --navbar-box-shadow: 0 0 4px 0 hsla(0, 0%, 0%, 0.8);
   --navbar-link-bg-color-hover: var(--gray-700);
   --navbar-text-color: var(--black-200);
   --scrollbar-thumb-bg-color-hover: var(--gray-200);
@@ -128,7 +128,7 @@ html.dark {
   --button-bg-color: var(--accent-orange-400);
   --button-text-color: var(--black-800);
   --card-bg-color: var(--black-800);
-  --code-block-box-shadow: 0 0.2rem 0.8rem 0 rgba(0,0,0,0.4);
+  --code-block-box-shadow: 0 0.2rem 0.8rem 0 hsla(0, 0%, 0%, 0.4);
   --footer-bg-color: var(--navbar-bg-color);
   --footer-text-color: var(--navbar-text-color);
   --form-bg-color: var(--black-800);
