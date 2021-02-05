@@ -13,17 +13,17 @@
   background: white;
   /* Nice little hack for getting a perfect fill */
   border-radius: 4px;
-  fill: var(--brand-linkedin);
+  fill: var(--color-brand-linkedin);
 }
 
 .icon-github {
-  @include themed(fill, var(--brand-github), var(--brand-github-alt));
+  @include themed(fill, var(--color-brand-github), var(--color-brand-github-alt));
 }
 
 .icon-stack-exchange {
-  fill: var(--brand-stack-exchange);
+  fill: var(--color-brand-stack-exchange);
 }
 
 .icon-upwork {
-  fill: var(--brand-upwork);
+  fill: var(--color-brand-upwork);
 }
