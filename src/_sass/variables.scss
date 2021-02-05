@@ -41,7 +41,7 @@ html {
 
   --color-accent-orange-5: hsl(37, 54%, 58%);
   --color-accent-orange-4: hsl(33, 100%, 78%);
-  --color-accent-orange-3: hsl(37, 54%, 78%);
+  --color-accent-orange-3: hsl(33, 32%, 62%);
   --color-accent-orange-2: hsl(34, 15%, 62%);
 
   --color-accent-red-5: hsl(354, 39%, 43%);
@@ -124,8 +124,8 @@ html.light {
 }
 
 html.dark {
-  --button-bg-color-hover: var(--color-accent-orange-3);
-  --button-bg-color: var(--color-accent-orange-4);
+  --button-bg-color-hover: var(--color-accent-orange-4);
+  --button-bg-color: var(--color-accent-orange-3);
   --button-text-color: var(--color-black-800);
   --card-bg-color: var(--color-black-800);
   --code-block-box-shadow: 0 0.2rem 0.8rem 0 hsla(0, 0%, 0%, 0.4);
@@ -138,7 +138,7 @@ html.dark {
   --input-bg-color: var(--color-black-600);
   --input-border-color-focus: var(--color-accent-orange-4);
   --input-border-color: var(--color-black-600);
-  --input-box-shadow-focus: 0 0 6px 0 var(--color-accent-orange-3);
+  --input-box-shadow-focus: 0 0 6px 0 var(--color-accent-orange-4);
   --input-box-shadow: 0 0 5px 0 hsla(0, 0%, 0%, 0);
   --input-required-asterisk-color: var(--color-accent-red-4);
   --link-color: var(--color-accent-orange-5);
@@ -152,7 +152,7 @@ html.dark {
   --scrollbar-track-bg-color: var(--navbar-bg-color);
   --selection-bg-color: hsla(33, 16%, 78%, 80%);
   --selection-text-color: var(--color-black);
-  --star-fill-color-filled: var(--color-accent-orange-4);
+  --star-fill-color-filled: var(--color-accent-orange-3);
   --table-border-color: var(--color-black-500);
   --table-header-bg-color: var(--color-black-800);
   --table-header-text-color: var(--color-black-200);
