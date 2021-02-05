@@ -79,7 +79,7 @@ html {
   --transition-duration: 0.2s;
   --page-max-width: 80rem;
   --navbar-height: 6.4rem;
-  --scroll-margin-top: var(--navbar-height);
+  --scroll-margin-top: calc(var(--navbar-height) + 3.2rem);
 }
 
 html.light {
