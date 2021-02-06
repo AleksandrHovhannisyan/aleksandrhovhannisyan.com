@@ -30,16 +30,16 @@ html {
   --color-black-700: hsl(0, 0%, 17%);
   --color-black-600: hsl(0, 0%, 23%);
   --color-black-500: hsl(0, 0%, 35%);
-  --color-black-400: hsl(0, 0%, 68%);
+  --color-black-400: hsl(0, 0%, 70%);
   --color-black-300: hsl(0, 0%, 80%);
   --color-black-200: hsl(0, 0%, 87%);
   --color-black-100: hsl(0, 0%, 96%);
 
-  --color-accent-blue-5: hsl(212, 71%, 45%);
+  --color-accent-blue-5: hsl(212, 71%, 44%);
   --color-accent-blue-4: hsl(212, 65%, 60%);
   --color-accent-blue-3: hsl(212, 100%, 75%);
 
-  --color-accent-orange-5: hsl(37, 54%, 58%);
+  // --color-accent-orange-5: hsl(37, 54%, 58%);
   --color-accent-orange-4: hsl(33, 100%, 78%);
   --color-accent-orange-3: hsl(33, 32%, 62%);
   --color-accent-orange-2: hsl(34, 15%, 62%);
@@ -93,7 +93,7 @@ html.light {
   --form-bg-color: var(--color-black-100);
   --hover-bg-color: var(--color-black-100);
   --inline-code-bg-color: hsla(210, 57%, 24%, 0.09);
-  --inline-code-text-color: var(--color-gray-7);
+  // --inline-code-text-color: var(--color-gray-7);
   --input-bg-color: var(--color-white);
   --input-border-color-focus: var(--color-accent-blue-4);
   --input-border-color: var(--color-gray-2);
@@ -134,14 +134,14 @@ html.dark {
   --form-bg-color: var(--color-black-800);
   --hover-bg-color: var(--color-black-800);
   --inline-code-bg-color: hsla(0, 0%, 35%, 0.65);
-  --inline-code-text-color: var(--color-black-300);
+  // --inline-code-text-color: var(--color-black-300);
   --input-bg-color: var(--color-black-600);
   --input-border-color-focus: var(--color-accent-orange-4);
   --input-border-color: var(--color-black-600);
   --input-box-shadow-focus: 0 0 6px 0 var(--color-accent-orange-4);
   --input-box-shadow: 0 0 5px 0 hsla(0, 0%, 0%, 0);
   --input-required-asterisk-color: var(--color-accent-red-4);
-  --link-color: var(--color-accent-orange-5);
+  --link-color: var(--color-accent-orange-4);
   --main-bg-color: var(--color-black-900);
   --navbar-bg-color: var(--color-black-800);
   --navbar-box-shadow: 0 0 8px 0 hsla(0, 0%, 0%, 0.8);
