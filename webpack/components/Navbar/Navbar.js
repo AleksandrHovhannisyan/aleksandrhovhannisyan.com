@@ -2,12 +2,14 @@ export default class Navbar {
   constructor() {
     this.navbar = document.querySelector('.navbar');
     this.menu = this.navbar.querySelector('.navbar-menu');
+    this.links = this.menu.querySelector('.navbar-links');
     this.mobileNavbarToggle = this.navbar.querySelector('#navbar-toggle');
     this.registerListeners();
   }
 
   registerListeners() {
     this.menu.addEventListener('click', () => this.closeMenu());
+    this.links.addEventListener('click', (e) => e.stopPropagation());
     this.mobileNavbarToggle.addEventListener('click', () => this.toggleMobileMenu());
   }
 
