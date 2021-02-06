@@ -3,7 +3,7 @@ title: "SVG Tutorial: How to Code SVG Icons by Hand"
 description: Learn the basics of SVGs so you can code your own SVG icons by hand, without always relying on icon libraries.
 keywords: [svg tutorial, svg icons, how to code svg]
 tags: [dev, svg, html, css]
-last_updated: 2021-01-26
+last_updated: 2021-02-06
 canonical_url: https://www.aleksandrhovhannisyan.com/blog/svg-tutorial-how-to-code-svg-icons-by-hand/
 comments_id: 68
 ---
@@ -879,7 +879,7 @@ Here are examples of these two:
 - `M 4 4`: Browser, please lift up your imaginary pen and move it to the point `(4, 4)`.
 - `h 16`: From the location where you currently are, draw a line extending `16px` to the right.
 
-This is easier to remember than it looks: `M` for **m**oving, `H/h` for **h**orizontal drawing, `V/v` for **v**ertical drawing, `A/a` for **a**rcs, and so on.
+This is easier to remember than it looks: `M` for **m**oving, `H/h` for **h**orizontal lines, `V/v` for **v**ertical lines, `A/a` for **a**rcs, `L/l` for lines in any direction, and so on.
 
 If you're with me so far, then you should understand the first two commands in this path:
 
@@ -967,13 +967,40 @@ And that gives us the same exact shape, but requires that we specify absolute co
 
 Relative commands are usually easier to work with, but it really depends on what you're drawing.
 
+Finally, note that `L/l` is the more generic version of `H/h` and `V/v`. Whereas the latter two are used to draw lines in a single direction (horizontally or vertically), `L/l` can be used to draw lines in *any direction*. Thus, it always takes two numbers.
+
+Here's an example of drawing a diagonal line with a relative `LineTo` command:
+
+{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+  <path
+    d="
+      M 2 2
+      l 22 22"
+  />
+</svg>{% endcapture %}
+{% include code.html code=code lang="html" %}
+
+<div class="svg-tutorial__icon">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+    <path
+      d="
+        M 2 2
+        l 20 20"
+    />
+  </svg>
+</div>
+
+This says: "Move to `(2, 2)` and draw a line `20` units over to the right and `20` units down."
+
+Note that we *could* always use the `L/l` command to draw all lines, but the shortcut variants save us some typing. For example, to draw horizontal lines with `l`, we have to explicitly zero-out the `y`-value, but we don't need to do that with `h`.
+
 #### SVG Path Commands: `ClosePath`
 
-Before we loop at creating elliptical arcs with `<path>`, let's also look at `Z` (or `z`). This is the `ClosePath` command. Remember when we learned about `<polygon>` and how it automatically closes itself? Well, `Z` is the command to automatically close a `<path>`. The lowercase and uppercase version of the command are identical, so just pick one and stick with it (I'll use `z`).
+The command `Z` (or `z`) stands for `ClosePath`. Remember when we learned about `<polygon>` and how it automatically closes itself? Well, `Z` is the command used to automatically close a `<path>`. Unlike the other commands that we've looked at so far, `ClosePath`'s lowercase and uppercase version are identical, so just pick one and stick with it (I'll use `z`).
 
-Let's draw a self-closing square with `<path>`:
+For example, to draw a self-closing square with `<path>`, we only need to draw three of the four lines explicitly; the fourth can be drawn automatically for us with the `ClosePath` command:
 
-{% capture code %}  <svg viewBox="0 0 24 24" width="64" height="64">
+{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
       M 2 2
@@ -1058,21 +1085,24 @@ The parameters for SVG arcs are covered in the table below:
     <tbody>
         <tr>
             <td><code>A</code></td>
-            <td><code>rx ry angle large-arc-flag sweep-flag x y</code></td>
+            <td><code>rx ry x-axis-rotation large-arc-flag sweep-flag x y</code></td>
         </tr>
         <tr>
             <td><code>a</code></td>
-            <td><code>rx ry angle large-arc-flag sweep-flag dx dy</code></td>
+            <td><code>rx ry x-axis-rotation large-arc-flag sweep-flag dx dy</code></td>
         </tr>
     </tbody>
 </table>
 
 - `rx`: The x-radius of the ellipse that forms the arc.
 - `ry`: The y-radius of the ellipse that forms the arc.
+- `x-axis-rotation`: How much to rotate the arc relative to the x-axis (usually, this is just `0`).
 - `large-arc-flag`: if `1`, draws a large arc; otherwise, draws a small one.
 - `sweep-flag`: if `1`, draws a clockwise arc; if `0`, draws a counter-clockwise arc.
 
-One thing you'll notice is that `A` and `a` are almost identical except those last two parameters. Whereas an `A` arc has an absolute `x` and a `y` that tell the browser where the arc ends, the relative arc takes a delta-x and a delta-y relative to the starting position of the arc.
+One thing you'll notice is that `A` and `a` are almost identical except those last two parameters. Whereas an `A` arc has an absolute `x` and a `y` that tell you where the arc ends, the relative arc specifies a delta-x and a delta-y displacement relative to the starting position of the arc.
+
+> **Note**: "Delta" is how we denote a change in a value in formal mathematical notation (typically using the Greek letter, &Delta;). So "delta-x" (&Delta;x) means "a change in x."
 
 The first two parameters, `rx` and `ry`, should be familiar if you've worked with border radii in CSS. Since we're drawing an ellipse and not necessarily always a circle, we need to specify two radii. If our arc is circular, then `rx = ry`.
 
