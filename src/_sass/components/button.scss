@@ -2,6 +2,7 @@
 
 .button {
   border-radius: 0.4rem;
+  border: none;
   cursor: pointer;
   @include font-weight("semiBold");
 }
@@ -9,31 +10,9 @@
 .solid-button {
   background-color: var(--button-bg-color);
   color: var(--button-text-color);
-  border: 0.4rem solid var(--button-bg-color);
-
-  &:focus, &:hover {
-      background-color: var(--button-bg-color-hover);
-      border: 0.4rem solid var(--button-bg-color-hover);
-  }
-}
-
-.hollow-button {
-  color: var(--button-bg-color);
-  background-color: transparent;
-  border: 0.4rem solid;
-  box-shadow: 0 0 0 0 transparent;
 
   &:focus,
   &:hover {
-      box-shadow: 0 0 0 2px var(--button-bg-color);
-  }
-}
-
-.plus-button {
-  &::before {
-    content: "+";
-    margin-right: 10px;
-    @include font-size(-1);
-    @include font-weight("bold");
+    background-color: var(--button-bg-color-hover);
   }
 }
