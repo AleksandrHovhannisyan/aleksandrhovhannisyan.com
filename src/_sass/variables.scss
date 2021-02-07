@@ -1,6 +1,3 @@
-@import 'fonts';
-@import 'functions';
-
 html {
   // Palette
   --color-white: hsl(0, 0%, 100%);
@@ -73,10 +70,6 @@ html {
   --color-code-punctuation: hsl(0, 0%, 83%);
   --color-code-operator-word: var(--color-code-keyword);
 
-  font-size: rnd(1rem / map-get($type-scale, 'font-size-base') * 100%);
-  @media screen and (min-width: 500px) {
-    font-size: 62.5%;
-  }
   --transition-duration: 0.2s;
   --page-max-width: 80rem;
   --navbar-height: 6.4rem;
