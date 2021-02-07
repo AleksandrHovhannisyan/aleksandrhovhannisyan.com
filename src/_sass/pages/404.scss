@@ -26,8 +26,7 @@
   h1 {
     color: var(--color-black-200);
     margin-bottom: 2.4rem;
-    text-shadow: 3px 3px var(--color-black);
-    @include font-size(7);
+    text-shadow: 0.1em 0.1em var(--color-black);
   }
 
   p {
