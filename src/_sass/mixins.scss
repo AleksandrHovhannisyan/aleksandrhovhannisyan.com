@@ -47,12 +47,17 @@
 }
 
 @mixin font-size($step) {
-  $config: map-get($font-sizes, $step);
-  $font-size: map-get($config, 'font-size');
-  $line-height: map-get($config, 'line-height');
+  $multiplier: map-get($type-scale, 'scale');
+  $font-size-base: map-get($type-scale, 'font-size-base');
+  $step-config: map-get(map-get($type-scale, 'steps'), $step);
+
+  $font-size: rnd($font-size-base * pow($multiplier, $step), 2);
+  $line-height: map-get($step-config, 'line-height');
   // expose CSS var to later compute other things, e.g., spacing
   --line-height: #{$line-height};
-  font-size: $font-size;
+  --font-size: #{$font-size};
+
+  font-size: var(--font-size);
   line-height: var(--line-height);
 }
 

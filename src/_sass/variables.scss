@@ -1,4 +1,5 @@
 @import 'fonts';
+@import 'functions';
 
 html {
   // Palette
@@ -72,7 +73,7 @@ html {
   --color-code-punctuation: hsl(0, 0%, 83%);
   --color-code-operator-word: var(--color-code-keyword);
 
-  font-size: 1rem / $font-size-base * 100%;
+  font-size: rnd(1rem / map-get($type-scale, 'font-size-base') * 100%);
   @media screen and (min-width: 500px) {
     font-size: 62.5%;
   }
