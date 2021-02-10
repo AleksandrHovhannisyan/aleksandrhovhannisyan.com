@@ -29,17 +29,26 @@ html {
   }
 }
 
+.centered {
+  display: grid;
+  grid-template-columns: minmax(2.4rem, 1fr) minmax(0, var(--page-max-width)) minmax(2.4rem, 1fr);
+
+  > * {
+    grid-column: 2;
+  }
+}
+
 body {
   background-color: var(--main-bg-color);
   color: var(--text-color-normal);
-  display: grid;
   grid-template-rows: var(--navbar-height) 1fr auto;
   grid-template-areas:
-  'navbar'
-  'content'
-  'footer';
-  min-height: 100vh;
+    'navbar navbar navbar'
+    '. content .'
+    'footer footer footer';
   grid-row-gap: var(--navbar-height);
+  min-width: 0; // https://css-tricks.com/preventing-a-grid-blowout/
+  min-height: 100vh;
   @include font-family('sans');
   @include font-weight('regular');
   @include font-size(0);
@@ -48,8 +57,6 @@ body {
 #page-content {
   grid-area: content;
   scroll-margin-top: var(--navbar-height);
-  min-width: 0; // https://css-tricks.com/preventing-a-grid-blowout/
-  @include centered;
 }
 
 // Links an entire parent container, but the parent must be set to relative position

@@ -94,15 +94,6 @@
   }
 }
 
-@mixin centered($margin-min: 2.4rem, $content-max: var(--page-max-width)) {
-  display: grid;
-  grid-template-columns: minmax($margin-min, 1fr) minmax(0, $content-max) minmax($margin-min, 1fr);
-
-  > * {
-    grid-column: 2;
-  }
-}
-
 @mixin responsive-grid($mobile-min, $desktop-min, $mobile-max: 1fr, $desktop-max: 1fr, $desktop-breakpoint: 600px) {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax($mobile-min, $mobile-max));

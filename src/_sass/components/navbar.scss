@@ -29,7 +29,6 @@
   background-color: var(--navbar-bg-color);
   box-shadow: var(--navbar-box-shadow);
   height: 100%;
-  @include centered;
 
   // Mobile only
   &.opened {
