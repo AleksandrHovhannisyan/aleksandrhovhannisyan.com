@@ -59,16 +59,16 @@ html {
   --color-code-text: hsl(220, 13%, 74%);
   --color-code-function: hsl(0, 0%, 83%);
   --color-code-keyword: hsl(207, 61%, 59%);
-  --color-code-variable: var(--color-code-keyword);
   --color-code-number: hsl(99, 28%, 73%);
   --color-code-attribute: hsl(201, 98%, 80%);
   --color-code-string: hsl(17, 47%, 64%);
+  --color-code-variable: var(--color-code-keyword);
   --color-code-tag: var(--color-code-keyword);
   --color-code-constant:--color-code-keyword;
-  --color-code-support: hsl(201, 98%, 80%);
-  --color-code-operator: hsl(0, 0%, 83%);
-  --color-code-punctuation: hsl(0, 0%, 83%);
   --color-code-operator-word: var(--color-code-keyword);
+  --color-code-operator: var(--color-code-function);
+  --color-code-punctuation: var(--color-code-function);
+  --color-code-support: var(--color-code-attribute);
 
   --transition-duration: 0.2s;
   --page-max-width: 80rem;
