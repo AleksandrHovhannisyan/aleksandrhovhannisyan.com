@@ -157,12 +157,11 @@ a {
 
 .input {
   background-color: var(--input-bg-color);
-  border: solid 1px var(--input-border-color);
-  border-radius: 2px;
+  border: solid 0.1rem var(--input-border-color);
+  border-radius: 0.2rem;
   box-shadow: var(--input-box-shadow);
   color: var(--text-color-emphasis);
-  height: 2em;
-  padding: 0.25em 0.5em;
+  padding: 0.2rem 0.8rem;
   width: 100%;
 
   &:focus {
