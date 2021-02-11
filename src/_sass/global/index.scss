@@ -75,8 +75,11 @@ strong {
 }
 
 @include headings {
-  color: var(--text-color-emphasis);
   @include font-weight('bold');
+
+  &, code {
+    color: var(--text-color-emphasis);
+  }
 }
 
 h1 {
@@ -112,9 +115,12 @@ p {
 }
 
 a {
-  color: var(--link-color);
   font-weight: inherit;
   text-decoration: none;
+
+  &, code {
+    color: var(--link-color);
+  }
 }
 
 .linked-heading {
