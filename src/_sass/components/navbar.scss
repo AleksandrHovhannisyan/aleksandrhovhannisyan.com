@@ -339,7 +339,7 @@
     position: absolute;
     width: 20px;
     height: 40px;
-    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.1));
+    background: linear-gradient(rgba(255,255,255,0.8), rgba(255, 255, 255, 0.35), rgba(255,255,255,0.05));
     clip-path: polygon(30% 0, 70% 0, 100% 100%, 0 100%);
     transform: translateZ(-1px);
     right: 0;
