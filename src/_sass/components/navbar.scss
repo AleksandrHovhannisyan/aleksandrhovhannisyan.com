@@ -227,6 +227,13 @@
   }
 }
 
+.navbar-link,
+#navbar-toggle,
+#theme-toggle,
+#home-link {
+  outline-color: var(--navbar-text-color);
+}
+
 #theme-toggle-container {
   display: flex;
   height: 4.8rem;
