@@ -1,10 +1,19 @@
+@import 'mixins';
+
 .lazily-loaded-picture {
   display: block;
 }
 
 .lazy-img {
+  --transition-duration: 0.8s;
   max-width: 100%;
   width: 100%;
+  filter: blur(0.8rem);
+  @include transition(filter);
+}
+
+.loaded .lazy-img {
+  filter: initial;
 }
 
 .clickable-picture-anchor {

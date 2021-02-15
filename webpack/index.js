@@ -19,6 +19,7 @@ lazyLoad('.lazy-img', (img) => {
 
   source.srcset = source.getAttribute('data-srcset');
   img.src = img.getAttribute('data-src');
+  pictureElement.classList.add('loaded');
 });
 
 document.querySelectorAll('.copy-code-button').forEach((copyCodeButton) => {

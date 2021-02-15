@@ -53,10 +53,10 @@
     object-position: center;
     width: 100%;
     height: 100%;
+  }
 
-    .light & {
-      filter: contrast(0.95);
-    }
+  .light &.loaded img {
+    filter: blur(0) contrast(0.95);
   }
 }
 
