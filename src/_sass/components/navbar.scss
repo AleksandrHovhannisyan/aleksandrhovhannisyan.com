@@ -206,11 +206,9 @@
   justify-content: space-evenly;
   align-items: center;
   background: transparent;
-  border: none;
   height: var(--navbar-toggle-size);
   width: var(--navbar-toggle-size);
   flex-shrink: 0;
-  cursor: pointer;
   @include font-size(0);
 
   .icon-bar {
@@ -241,8 +239,6 @@
   width: 45px;
   height: 45px;
   background-color: transparent;
-  border: none;
-  cursor: pointer;
   position: relative;
   transform: scale(0.8);
   transform-style: preserve-3d;
