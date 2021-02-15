@@ -53,6 +53,11 @@ body {
   scroll-margin-top: var(--navbar-height);
 }
 
+.logo {
+  height: 3.2rem;
+  border-radius: 50%;
+}
+
 // Links an entire parent container, but the parent must be set to relative position
 .container-link {
   height: 100%;
