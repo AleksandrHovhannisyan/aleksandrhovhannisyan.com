@@ -148,8 +148,8 @@ $meta-tag-spacing: 0.8rem;
       }
 
       a {
-          @include font-weight("semiBold");
-          @include underlined-link($initially-underlined: true);
+        @include font-weight("semiBold");
+        @include underlined-link($initially-underlined: true);
       }
     }
 
@@ -158,8 +158,8 @@ $meta-tag-spacing: 0.8rem;
       padding-left: 4.8rem;
     }
 
-    a:not(.button):not(.clickable-picture-anchor):not(.username) {
-        @include underlined-link($initially-underlined: true);
+    a:not([class]) {
+      @include underlined-link($initially-underlined: true);
     }
 
     figure {
