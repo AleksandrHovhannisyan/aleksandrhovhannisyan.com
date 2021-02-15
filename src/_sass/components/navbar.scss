@@ -87,62 +87,62 @@
   }
 }
 
-.santa-hat {
-    position: absolute;
-    width: 1.9rem;
-    border-radius: 50% 50% 0 0;
-    border: solid 0.1rem black;
-    transform: rotate(-30deg);
-    transform-style: preserve-3d;
-    left: -0.35rem;
-    top: 0.15rem;
-    height: 0.6rem;
-    background: white;
+// .santa-hat {
+//     position: absolute;
+//     width: 1.9rem;
+//     border-radius: 50% 50% 0 0;
+//     border: solid 0.1rem black;
+//     transform: rotate(-30deg);
+//     transform-style: preserve-3d;
+//     left: -0.35rem;
+//     top: 0.15rem;
+//     height: 0.6rem;
+//     background: white;
 
-    &::before,
-    &::after {
-      content: '';
-      display: block;
-      position: absolute;
-    }
+//     &::before,
+//     &::after {
+//       content: '';
+//       display: block;
+//       position: absolute;
+//     }
 
-    &::before {
-      width: 1.6rem;
-      height: 1.3rem;
-      background-color: #C70C0D;
-      border: solid 0.15rem black;
-      top: -1.2rem;
-      left: -0.1rem;
-      z-index: -1;
-      border-radius: 30% 100% 0 0;
-      transform: translateZ(-1px);
-    }
+//     &::before {
+//       width: 1.6rem;
+//       height: 1.3rem;
+//       background-color: #C70C0D;
+//       border: solid 0.15rem black;
+//       top: -1.2rem;
+//       left: -0.1rem;
+//       z-index: -1;
+//       border-radius: 30% 100% 0 0;
+//       transform: translateZ(-1px);
+//     }
 
-    &::after {
-      width: 0.4rem;
-      height: 1rem;
-      background-color: #C70C0D;
-      border-radius: 50% 50% 20% 100%;
-      z-index: -2;
-      transform: translateZ(0px) rotate(45deg);
-      top: -1.12rem;
-      left: -0.35rem;
-      border-left: solid 0.1rem black;
-      border-bottom: solid 0.1rem black;
-      border-right: solid 0.1rem black;
-    }
-}
+//     &::after {
+//       width: 0.4rem;
+//       height: 1rem;
+//       background-color: #C70C0D;
+//       border-radius: 50% 50% 20% 100%;
+//       z-index: -2;
+//       transform: translateZ(0px) rotate(45deg);
+//       top: -1.12rem;
+//       left: -0.35rem;
+//       border-left: solid 0.1rem black;
+//       border-bottom: solid 0.1rem black;
+//       border-right: solid 0.1rem black;
+//     }
+// }
 
-.santa-hat-pompom {
-  position: absolute;
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 50%;
-  background-color: white;
-  border: 1px solid black;
-  left: -37%;
-  top: -55%;
-}
+// .santa-hat-pompom {
+//   position: absolute;
+//   width: 0.5rem;
+//   height: 0.5rem;
+//   border-radius: 50%;
+//   background-color: white;
+//   border: 1px solid black;
+//   left: -37%;
+//   top: -55%;
+// }
 
 #website-name {
   color: var(--navbar-text-color);
