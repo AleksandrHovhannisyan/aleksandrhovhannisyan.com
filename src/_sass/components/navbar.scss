@@ -209,6 +209,7 @@
   height: var(--navbar-toggle-size);
   width: var(--navbar-toggle-size);
   flex-shrink: 0;
+  outline-offset: 0.4rem;
   @include font-size(0);
 
   .icon-bar {
