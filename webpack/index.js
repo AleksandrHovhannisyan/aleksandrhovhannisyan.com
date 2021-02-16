@@ -1,7 +1,5 @@
-import Navbar from 'components/Navbar/Navbar';
-import ThemeToggle from 'components/ThemeToggle/ThemeToggle';
-import copyCodeToClipboard from 'utils/copyCodeToClipboard/copyCodeToClipboard';
-import lazyLoad from 'utils/lazyLoad/lazyLoad';
+import { Navbar, ThemeToggle } from 'components';
+import { lazyLoad, copyToClipboard } from 'utils';
 
 // eslint-disable-next-line no-unused-vars
 const navbar = new Navbar();
@@ -23,5 +21,13 @@ lazyLoad('.lazy-img', (img) => {
 });
 
 document.querySelectorAll('.copy-code-button').forEach((copyCodeButton) => {
-  copyCodeButton.addEventListener('click', copyCodeToClipboard);
+  copyCodeButton.addEventListener('click', () => {
+    const code = copyCodeButton.getAttribute('data-code');
+    copyToClipboard(code);
+    copyCodeButton.classList.add('copied');
+
+    setTimeout(() => {
+      copyCodeButton.classList.remove('copied');
+    }, 2000);
+  });
 });

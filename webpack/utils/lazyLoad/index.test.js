@@ -1,4 +1,4 @@
-import lazyLoad from './lazyLoad';
+import lazyLoad from '.';
 
 let entries;
 let observeFn;
