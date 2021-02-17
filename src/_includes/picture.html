@@ -3,6 +3,8 @@
 {%- assign ext = img_parts[1] -%}
 {%- assign class = include.class -%}
 {%- assign id = include.id -%}
+{%- assign width = include.width -%}
+{%- assign height = include.height -%}
 {%- assign clickable = include.clickable -%}
 {%- unless clickable == false %}<a href="{{ img }}.{{ ext }}" class="clickable-picture-anchor">{%- endunless -%}
   <picture class="lazily-loaded-picture{% if class %} {{ class }}{% endif %}" {% if id %}id="{{ id }}"{% endif %}>
@@ -15,6 +17,8 @@
         src="{{ img }}-placeholder.{{ ext }}"
         alt="{{ include.alt }}"
         data-src="{{ img }}.{{ ext }}"
-        class="lazy-img">
+        class="lazy-img"
+        {% if width %}width="{{ width }}"{%- endif -%}
+        {% if height %}height="{{ height }}"{%- endif -%}>
   </picture>
 {%- unless clickable == false -%}</a>{%- endunless -%}

@@ -21,14 +21,15 @@
 
 #headshot {
     --headshot-size: 10rem;
-    width: var(--headshot-size);
-    height: var(--headshot-size);
     grid-area: headshot;
     justify-self: center;
     align-self: center;
 
     img {
-        border-radius: 50%;
+      max-width: var(--headshot-size);
+      width: var(--headshot-size);
+      height: var(--headshot-size);
+      border-radius: 50%;
     }
 }
 
