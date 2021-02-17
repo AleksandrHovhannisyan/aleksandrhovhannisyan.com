@@ -38,18 +38,15 @@
         grid-template-areas:
             "title title headshot"
             "subtitle subtitle subtitle";
-    }
-
-    #headshot {
-      margin-left: 1.6rem;
+        grid-column-gap: 1.6rem;
     }
 }
 
 @media screen and (min-width: 600px) {
     #hero-banner {
         grid-template-areas:
-            "title title headshot"
-            "subtitle subtitle headshot";
+            "title headshot"
+            "subtitle headshot";
         grid-row-gap: 0;
     }
 
@@ -59,7 +56,6 @@
 
     #headshot {
         --headshot-size: 14rem;
-        margin-left: 1.6rem;
     }
 }
 
