@@ -1,6 +1,8 @@
 {%- assign icon = include.icon -%}
 {%- assign class = include.class -%}
-{%- capture props -%}viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"{%- endcapture -%}
+{% assign width = include.width %}
+{% assign height = include.height %}
+{%- capture props -%}viewBox="0 0 24 24" {% if width %}width="{{ width }}"{% endif %} {% if height %}height="{{ height }}"{% endif %} fill="none" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"{%- endcapture -%}
 {%- comment -%}Custom/hand-drawn icons.{%- endcomment -%}
 {%- if icon == "calendar" -%}
 <svg {% if class %}class="{{ class }}"{% endif %} {{ props }}>
