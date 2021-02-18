@@ -1,54 +1,27 @@
 @import 'mixins';
 
 .card {
+  // Expose these to consumers so we don't hard-code the logic here
   --card-padding: 3.2rem;
+  --card-box-shadow-default: 0 0.1rem 0.1rem hsla(0, 0%, 0%, 0.12),
+                             0 0.2rem 0.2rem hsla(0, 0%, 0%, 0.12),
+                             0 0.4rem 0.4rem hsla(0, 0%, 0%, 0.12),
+                             0 0.5rem 1.2rem hsla(0, 0%, 0%, 0.12);
+
+  --card-box-shadow-focus:   0 0.2rem 0.2rem hsla(0, 0%, 0%, 0.12),
+                             0 0.4rem 0.4rem hsla(0, 0%, 0%, 0.12),
+                             0 0.8rem 0.8rem hsla(0, 0%, 0%, 0.12),
+                             0 0.8rem 1.2rem hsla(0, 0%, 0%, 0.12);
+  --card-offset-y-focus: translateY(-0.8rem);
+  position: relative;
   padding: var(--card-padding);
   background-color: var(--card-bg-color);
   border-radius: 0.4rem;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.12),
-              0 2px 2px rgba(0,0,0,0.12),
-              0 4px 4px rgba(0,0,0,0.12),
-              0 5px 12px rgba(0,0,0,0.12);
-  position: relative;
+  box-shadow: var(--card-box-shadow-default);
   transform: none;
+  cursor: pointer;
+  // Fixes jankiness on Windows
+  will-change: transform, box-shadow;
   @include transition(box-shadow, transform);
-
-  &.interactive {
-    // Fixes jankiness on Windows
-    will-change: transform, box-shadow;
-    cursor: pointer;
-
-    &:hover,
-    &:focus-within {
-      box-shadow: 0 2px 2px rgba(0,0,0,0.12),
-                  0 4px 4px rgba(0,0,0,0.12),
-                  0 8px 8px rgba(0,0,0,0.12),
-                  0 8px 12px rgba(0,0,0,0.12);
-      transform: translateY(-0.8rem);
-
-      .hover-content {
-          opacity: 0.92;
-      }
-    }
-  }
-
-  // Displayed when a user hovers over a card
-  .hover-content {
-    align-items: center;
-    background-color: var(--card-bg-color);
-    border-radius: 0.4rem;
-    color: var(--text-color-emphasis);
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: center;
-    left: 0;
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    @include transition(opacity);
-    @include font-size(1);
-    @include font-weight("semiBold");
-  }
 }
+

@@ -36,7 +36,9 @@ permalink: /
     </p>
     <ul class="project-grid card-grid">
       {%- for project in site.data.projects -%}
+        <li class="project-wrapper">
           {%- include projectCard.html project=project -%}
+        </li>
       {%- endfor -%}
       <li id="github-cta">
         <h3 class="github-cta-heading">Want to see more of my work?</h3>

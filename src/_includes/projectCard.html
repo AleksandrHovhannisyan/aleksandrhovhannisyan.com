@@ -1,5 +1,5 @@
 {%- assign project = include.project -%}
-<li class="card interactive project">
+<div class="card project">
     <header class="project-header">
         <div class="project-name-wrapper">
             <span class="project-icon" aria-hidden="true">{{ project.icon }}</span>
@@ -17,8 +17,8 @@
       {%- endfor -%}
     </ul>
     <a class="container-link" href="{{ project.url }}" aria-label="Explore {{ project.name }} on GitHub"></a>
-    <div class="hover-content" aria-hidden="true">
+    <div class="explore-project-on-github" aria-hidden="true">
         Explore on GitHub
         {%- include icon.html icon="external-link" class="project-external-link" -%}
     </div>
-</li>
+</div>
