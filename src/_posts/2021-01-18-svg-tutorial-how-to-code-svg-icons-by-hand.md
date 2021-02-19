@@ -3,7 +3,7 @@ title: "SVG Tutorial: How to Code SVG Icons by Hand"
 description: Learn the basics of SVGs so you can code your own SVG icons by hand, without always relying on icon libraries.
 keywords: [svg tutorial, svg icons, how to code svg]
 tags: [dev, svg, html, css]
-last_updated: 2021-02-06
+last_updated: 2021-02-19
 canonical_url: https://www.aleksandrhovhannisyan.com/blog/svg-tutorial-how-to-code-svg-icons-by-hand/
 comments_id: 68
 ---
@@ -975,7 +975,7 @@ Here's an example of drawing a diagonal line with a relative `LineTo` command:
   <path
     d="
       M 2 2
-      l 22 22"
+      l 20 20"
   />
 </svg>{% endcapture %}
 {% include code.html code=code lang="html" %}
