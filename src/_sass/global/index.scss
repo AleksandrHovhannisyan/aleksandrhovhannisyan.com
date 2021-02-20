@@ -18,7 +18,8 @@
 
 html {
   font-size: 1rem / map-get($type-scale, 'font-size-base') * 100%;
-  @media screen and (min-width: 500px) {
+
+  @include mobile-lg {
     font-size: 62.5%;
   }
 }

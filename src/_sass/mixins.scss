@@ -1,5 +1,6 @@
 @import 'functions';
 @import 'fonts';
+@import 'breakpoints';
 
 // Inspiration: https://stackoverflow.com/a/49437769/5323344
 @mixin transition($props...) {
@@ -94,11 +95,11 @@
   }
 }
 
-@mixin responsive-grid($mobile-min, $desktop-min, $mobile-max: 1fr, $desktop-max: 1fr, $desktop-breakpoint: 600px) {
+@mixin responsive-grid($mobile-min, $desktop-min, $mobile-max: 1fr, $desktop-max: 1fr, $breakpoint: 600px) {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax($mobile-min, $mobile-max));
 
-  @media only screen and (min-width: $desktop-breakpoint) {
+  @media only screen and (min-width: $breakpoint) {
     grid-template-columns: repeat(auto-fit, minmax($desktop-min, $desktop-max));
   }
 }
@@ -106,4 +107,40 @@
 @mixin rhythm() {
   display: grid;
   grid-row-gap: calc(var(--line-height) * 1em);
+}
+
+// Breakpoint mixins
+@mixin mobile {
+  $bp: map-get($media-breakpoints, mobile);
+  @media screen and (min-width: $bp) {
+    @content;
+  }
+}
+
+@mixin mobile-lg {
+  $bp: map-get($media-breakpoints, mobile-lg);
+  @media screen and (min-width: $bp) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  $bp: map-get($media-breakpoints, tablet);
+  @media screen and (min-width: $bp) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  $bp: map-get($media-breakpoints, desktop);
+  @media screen and (min-width: $bp) {
+    @content;
+  }
+}
+
+@mixin desktop-lg {
+  $bp: map-get($media-breakpoints, desktop-lg);
+  @media screen and (min-width: $bp) {
+    @content;
+  }
 }

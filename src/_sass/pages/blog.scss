@@ -57,7 +57,7 @@ $meta-tag-spacing: 0.8rem;
     @include font-size(-1);
     @include font-weight('light');
 
-    @media screen and (min-width: 500px) {
+    @include mobile-lg {
       @include font-size(-2);
     }
 }

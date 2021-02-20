@@ -33,30 +33,30 @@
     }
 }
 
-@media screen and (min-width: 400px) {
-    #hero-banner {
-        grid-template-areas:
-            "title title headshot"
-            "subtitle subtitle subtitle";
-        grid-column-gap: 1.6rem;
-    }
+@include mobile {
+  #hero-banner {
+      grid-template-areas:
+          "title title headshot"
+          "subtitle subtitle subtitle";
+      grid-column-gap: 1.6rem;
+  }
 }
 
 @media screen and (min-width: 600px) {
-    #hero-banner {
-        grid-template-areas:
-            "title headshot"
-            "subtitle headshot";
-        grid-row-gap: 0;
-    }
+  #hero-banner {
+      grid-template-areas:
+          "title headshot"
+          "subtitle headshot";
+      grid-row-gap: 0;
+  }
 
-    .hero-banner-title {
-      margin-bottom: 1.6rem;
-    }
+  .hero-banner-title {
+    margin-bottom: 1.6rem;
+  }
 
-    #headshot {
-        --headshot-size: 14rem;
-    }
+  #headshot {
+      --headshot-size: 14rem;
+  }
 }
 
 #software-projects {

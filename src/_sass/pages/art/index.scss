@@ -43,13 +43,13 @@
   grid-template-columns: 1fr;
   grid-auto-flow: dense;
 
-  @media screen and (min-width: 900px) {
+  @include tablet {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 .artwork {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
+  grid-template-columns: minmax(0, 1fr);
 }

@@ -102,10 +102,10 @@ input.honeypot {
     width: 3.2rem;
 }
 
-@media only screen and (min-width: 800px) {
+@include tablet {
   #contact-information {
     grid-row-gap: 0;
     grid-template-areas: "form socials";
-    grid-template-columns: 40rem auto;
+    grid-template-columns: minmax(0, 40rem) auto;
   }
 }

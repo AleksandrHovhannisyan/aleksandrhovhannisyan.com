@@ -68,7 +68,7 @@
   @include underlined-link($initially-underlined: false);
 }
 
-@media screen and (min-width: 700px) {
+@include tablet {
   .post-preview {
     grid-template-areas:
       'thumbnail title'
