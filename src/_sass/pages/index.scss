@@ -23,7 +23,6 @@
     --headshot-size: 10rem;
     grid-area: headshot;
     justify-self: center;
-    align-self: center;
 
     img {
       max-width: var(--headshot-size);
@@ -47,15 +46,18 @@
       grid-template-areas:
           "title headshot"
           "subtitle headshot";
-      grid-row-gap: 0;
-  }
-
-  .hero-banner-title {
-    margin-bottom: 1.6rem;
+      grid-column-gap: 3.2rem;
+      grid-row-gap: 1.6rem;
   }
 
   #headshot {
       --headshot-size: 14rem;
+  }
+}
+
+@include tablet {
+  #headshot {
+    align-self: center;
   }
 }
 
