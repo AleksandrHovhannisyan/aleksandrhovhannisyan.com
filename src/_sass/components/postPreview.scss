@@ -65,12 +65,7 @@
 }
 
 .read-this-post-link {
-  text-decoration: none;
-
-  &:focus,
-  &:hover {
-    text-decoration: underline;
-  }
+  @include underlined-link($initially-underlined: false);
 }
 
 @media screen and (min-width: 700px) {
