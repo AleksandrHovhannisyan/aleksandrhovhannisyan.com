@@ -37,7 +37,7 @@ Aspect ratios are useful because they allow us to change one dimension of an ele
 
 Sound familiar? If you've ever worked with images in a browser, then you know that this is their default behavior—if you change the width or height of an image with CSS but don't touch the other dimension, it will scale accordingly such that the image maintains its **intrinsic aspect ratio**, which is the image's original width divided by its original height. For example, an image that's originally `500px x 300px` has an intrinsic aspect ratio of `500 / 300 = 5/3`, or `5:3`.
 
-With the release of the `aspect-ratio` property in Chrome 88, you can view this behavior in your browser using dev tools by resizing an image. You'll observe that the aspect ratio remains fixed:
+With the release of the `aspect-ratio` property in Chrome 88, you can view this behavior in your browser using dev tools by inspecting an image that has an explicit `width` and `height` set. The browser preserves the image's aspect ratio as you resize the page:
 
 {% include img.html img="default-aspect-ratio.png" alt="The default aspect ratio for an image is observed to be 500 / 300 in Chrome dev tools." %}
 
@@ -47,11 +47,11 @@ While images are the most popular example where aspect ratios come in handy, the
 
 ## Responsive Heights in CSS with Aspect Ratios
 
-In this tutorial, we'd like to give an element a height that will allow it to maintain a certain aspect ratio **regardless of its width**, which we'll allow to scale responsively with the device width. For this reason, it helps to flip the aspect ratio numbers and express the element's *height* as a fraction of its *width*. For an aspect ratio of `16:9`, this means we're looking at the inverse ratio `9 / 16`, which translates to the following:
+In this tutorial, we'd like to allow an element's width to change dynamically as the screen width shrinks or widens, but we'd also like to give the element a height that will allow it to maintain a certain aspect ratio **regardless of its width**. For this reason, it helps to invert the aspect ratio and express the element's *height* as a fraction of its *width*. For an aspect ratio of `16:9`, this means we're looking at the inverse ratio `9:16`, which translates to the following:
 
 > *For every 9 units of height, there should be 16 units of width.*
 
-Notice that **we haven't actually changed the definition of aspect ratio**—it's just two sides to the same coin. We can either think of aspect ratio as expressing an element's width relative to its height, or we can think of it as expressing the height relative to the width. The latter is going to be more useful for our purposes because the width changes with the device and is beyond our control, so we need some way to express the height relative to the width.
+Notice that **we haven't actually changed the definition of aspect ratio**—it's just two sides to the same coin. We can either think of aspect ratio as expressing an element's width relative to its height, or we can think of it as expressing the height relative to the width. The latter is going to be more useful for our purposes because we want to let the width of our element change with the device width, but we need some way to express the height relative to that dynamic width so that the aspect ratio is preserved.
 
 In particular, this shift in perspective allows us to answer the following question: How many units of height do we need *per units of width*? Well, for an aspect ratio of `16:9`, we know that this is just `9 height / 16 width`, which comes out to `0.5625 height/width`. Expressed as a percentage, this ratio tells us that the height of the element will always be `56.25%` of its width.
 
@@ -67,11 +67,11 @@ For starters, we can't just do this:
 }
 ```
 
-Percentage values for the `height` CSS property are relative to the height of an element's [containing block](https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block), or its nearest block-level parent. What we want, though, is for an element's height to be expressed as a percentage of *its own width*. How do we do that if there's no way for an element to reference its own width in CSS?
+Percentage values for the `height` CSS property are relative to the height of an element's [containing block](https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block), or its nearest block-level parent. What we want, though, is for an element's height to be expressed as a percentage of *its own width*. How do we do that if there's no way for an element to reference its own width in CSS? Plus, we intentionally want the element's width to be *dynamic*, rather than some hard-coded, fixed value like `500px`.
 
 Interestingly, for reasons that we'll [explore later](#why-it-works-padding-percentages-and-aspect-ratios), percentage values for `padding` (and also `margin`!) are relative to the width of an element's containing block—which, again, is just the nearest block-level parent. For example, if an element's containing block has a width of `500px`, then a child element with `padding: 10%` will get `50px` of padding all around.
 
-What we're interested in specifically is vertical padding since it influences an element's height. See where this is going? We can zero-out an element's height and give it a vertical padding equal to the aspect ratio percentage. For example, for an aspect ratio of `16:9`, we'd do:
+Specifically, we're interested in **vertical padding** since it influences an element's height. See where this is going? We can zero-out an element's height and give it a vertical padding equal to the aspect ratio percentage. For example, for an aspect ratio of `16:9`, we'd do:
 
 ```css
 .element {
@@ -87,7 +87,7 @@ More generally, we can define an element's aspect ratio using four simple steps:
 3. Set the element's vertical padding to be `(h / w) * 100` percent, for an aspect ratio of `w:h`.
 4. Relatively position the element and absolutely position all of its children so they don't influence its height.
 
-In plain English, all we're doing is setting an element's height using padding alone. Step one is optional if the element we're sizing is already a block-level element, like a `<div>`. Step three just expresses the element's height as a percentage of the containing block's width. Since the child element stretches to fill `100%` of its containing block, this will be the same as defining the element's own height as a percentage of *its own width*. This is the definition of aspect ratio!
+In plain English, all we're doing is setting an element's height using padding alone. Step one is optional if the element we're sizing is already a block-level element, like a `<div>`. Step three just expresses the element's height as a percentage of the containing block's width. Since the child element stretches to fill `100%` of its containing block, this is the same as **defining the element's height as a percentage of its own width**. This is the definition of aspect ratio!
 
 ### What's the Difference Between a Containing Block and a Parent?
 
@@ -138,7 +138,7 @@ That's it! Your YouTube iframe will now maintain a `16:9` aspect ratio on all de
 
 ### Example 2: Creating a 3x3 Square Grid with CSS
 
-Now that we know how to define an element's height as a percentage of its containing block's width, we can easily create a [3x3 square layout](https://tobiasahlin.com/blog/common-flexbox-patterns/#3x3-grid-constrained-proportions-11) with Flexbox or CSS Grid. All you have to do is give each element vertical padding equal to 100% of its width. This is straightforward with CSS Grid:
+Now that we know how to define an element's height as a percentage of its own width, we can easily create a [3x3 square layout](https://tobiasahlin.com/blog/common-flexbox-patterns/#3x3-grid-constrained-proportions-11) with Flexbox or CSS Grid. As we learned before, squares have an aspect ratio of `1:1`, so all you have to do is give each element vertical padding equal to `100%` of its width. This is straightforward with CSS Grid:
 
 {% capture code %}<ul class="square-grid">
   <li class="square"></li>
@@ -244,14 +244,15 @@ A more logical reason is the [causality dilemma](https://en.wikipedia.org/wiki/C
 2. A child sets its `padding-top` to be some percentage (e.g., `50%`).
 3. The height of the containing block must change since the child is now taller.
 4. If the height of the containing block increases, the child's padding must increase, too.
+5. Repeat steps 2-4 infinitely.
 
 > <sup>1</sup>The same does NOT apply to the width of a containing block. By definition, a block-level element such as a `<div>` will fill up 100% of the available width in the [inline direction](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Block_and_Inline_Layout_in_Normal_Flow#Elements_participating_in_a_block_formatting_context). If children exceed this width, they will simply overflow—the parent will not stretch. Hence, the infinite calculation problem does not exist in the horizontal axis.
 
-Another compelling reason is that this CSS "hack" allows us to define responsive aspect ratios. If percentage values for vertical padding were based on the containing block's height and not its width, then we'd have no way of doing this with responsive units—we'd have to rely on hardcoded units.
+Another reason is that this CSS trick allows us to define responsive aspect ratios. If percentage values for vertical padding were based on the containing block's height and not its width, then we'd have no way of doing this with responsive units—we'd have to rely on hardcoded units.
 
 ### The Curious Case of Flexbox and CSS Grid
 
-We learned that percentage padding for an element will reference the width of its containing block. But what happens if the element in question is a flex item or grid item? In that case, is the containing block the flex container or the grid itself?
+We learned that percentage padding for an element will reference the width of its containing block. But what happens if the element in question is a flex item or grid item? In that case, is the containing block the grid itself?
 
 The simple answer is no. And the key to understanding this is to learn about **block formatting contexts** (BFCs). From the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Intro_to_formatting_contexts):
 
@@ -282,7 +283,7 @@ If the formatting context for grid items were the grid parent itself, then the t
 
 So far, I've asserted that percentage padding and margins reference the width of their containing block. While this is true, it only tells half the story. Percentages may also refer to the height of the containing block, depending on the document's **writing mode**.
 
-By default, a web page is set up to use a **horizontal writing mode**, where text flows from left to right (LTR). This is thanks to the `writing-mode` CSS property, which can take on the following values:
+By default, a web page is set up to use a **horizontal writing mode**, where text flows from left to right (LTR). This is thanks to the `writing-mode` CSS property, which can take on these values:
 
 <table>
   <thead>
@@ -313,7 +314,7 @@ With vertical layouts, paragraphs appear sideways—you'll have to tilt your hea
   Hello, World! This is a paragraph with writing-mode: vertical-rl set in its CSS. Neat, huh? Notice how the text flows from the right side of the page to the left.
 </p>
 
-[The MDN docs](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Block_and_Inline_Layout_in_Normal_Flow#Elements_participating_in_a_block_formatting_context) provide the following diagrams to clarify the difference between these two writing modes:
+[The MDN docs](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Block_and_Inline_Layout_in_Normal_Flow#Elements_participating_in_a_block_formatting_context) use the following diagrams to clarify the difference between these two writing modes:
 
 <figure>
   {% include img.html img="horizontal-mode.png" alt="A horizontal writing mode, with text flowing vertically from top to bottom. An arrow points from left to right at the top of the document and is labeled as the inline direction. Another arrow points from top to bottom and is labeled as the block direction." %}
