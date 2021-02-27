@@ -11,8 +11,8 @@
 {%- endif -%}
 <ul class="post-meta">
   {% if showProfilePhoto %}
-    <li>
-      {%- include picture.html img="/assets/images/profile-photo.png" alt="" class="meta author-photo" clickable=false -%}
+    <li class="meta">
+      {%- include picture.html img="/assets/images/profile-photo.png" alt="" class="author-photo" width=50 height=50 clickable=false -%}
     </li>
   {%- endif -%}
   <li class="meta post-date-published">

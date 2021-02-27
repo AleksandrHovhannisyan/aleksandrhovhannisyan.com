@@ -7,6 +7,7 @@
     grid-template-areas:
         "title title headshot"
         "subtitle subtitle subtitle";
+    grid-template-columns: auto auto min-content;
     grid-row-gap: 0.8rem;
 }
 
@@ -46,6 +47,7 @@
       grid-template-areas:
           "title headshot"
           "subtitle headshot";
+      grid-template-columns: auto min-content;
       grid-column-gap: 3.2rem;
       grid-row-gap: 1.6rem;
   }
