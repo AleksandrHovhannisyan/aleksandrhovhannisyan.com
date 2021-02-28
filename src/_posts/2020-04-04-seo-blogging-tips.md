@@ -8,8 +8,6 @@ comments_id: 41
 
 **Search engine optimization** (SEO) is the art of making strategic improvements to a site's content or performance in order to rank higher in search results and attract more traffic.
 
-{% include img.html img="metrics.png" alt="Tracking metrics for a website." %}
-
 If you're just getting started with blogging—and even if you've been doing it for a while—you may not know how to get more traffic on your website. You may have heard about SEO before or done a bit of reading on the subject. It's a massive industry, and trying to write an exhaustive guide on SEO blogging best practices would require an entire book (or two... or lots).
 
 Instead, what I hope to do here is share some SEO blogging tips based on my own experience and knowledge of SEO. I do regular freelance editing work with digital marketing agencies, and most of their content happens to be about SEO best practices in their industry. So I've certainly picked up some solid tips here and there as I've read their content.

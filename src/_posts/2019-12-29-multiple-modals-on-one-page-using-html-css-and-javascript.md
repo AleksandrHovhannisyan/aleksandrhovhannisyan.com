@@ -12,11 +12,11 @@ is_popular: true
 
 This tutorial shows you how to create multiple modals on one page using nothing but HTML, CSS, and JavaScript. We'll look at two versions; the first is stacking multiple modals on top of one another:
 
-{% include img.html img="demo.gif" alt="A demo of opening and closing stacked modals." %}
+{% include img.html img="demo.gif" alt="A demo of opening and closing stacked modals." width=1126 height=525 %}
 
 The second is opening multiple modals on one page side by side:
 
-{% include img.html img="side-by-side-demo.gif" alt="A demo of opening and closing side-by-side modals." %}
+{% include img.html img="side-by-side-demo.gif" alt="A demo of opening and closing side-by-side modals." width=1126 height=524 %}
 
 They'll share some of the same underlying structure and logic, but I've split them into separate sections to make it easier for you to find what you're looking for.
 

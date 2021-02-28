@@ -12,7 +12,7 @@ Sound familiar? That's because it's been the defining mark of many new brands th
 
 Everyone and their grandmother has seen them by now—blue people, [purple people](https://ux.shopify.com/you-cant-just-draw-purple-people-and-call-it-diversity-e2aa30f0c0e8), people without faces, polygons dressed as humans... There's no shortage of it going around.
 
-{% include img.html img="undraw.png" alt="Undraw illustrations showing blue people in different settings, like freelancing or pointing at charts and graphs." %}
+{% include img.html img="undraw.png" alt="Undraw illustrations showing blue people in different settings, like freelancing or pointing at charts and graphs." width=1578 height=647 %}
 
 And it's all thanks to free illustration libraries like Humaaans, unDraw, and Shape.
 

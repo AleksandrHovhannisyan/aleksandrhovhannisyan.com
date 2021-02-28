@@ -7,8 +7,6 @@ tags: [dev, python, apis, gcp]
 
 If you're as lazy as I am, you'll come to realize at a certain point that something you've been doing by hand can easily be automated. That's the kind of laziness that makes the difference between spending hours on doing something by hand versus pressing Enter once and kicking up your feet to relax.
 
-{% include img.html img="thumbnail.png" alt="Google Sheets and Python." %}
-
 In this short tutorial, I'll show you how to use the Python Google Sheets and Drive APIs to automate data entry tasks in your day-to-day work. This is a game-changer if you're used to manual data entry, so buckle up!
 
 ## Creating a Google Cloud Platform Project

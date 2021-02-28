@@ -11,7 +11,7 @@ What originally began as a thesis project [more than six years ago](https://www.
 
 Produced by the talented creatives at Mobius Digital, Outer Wilds is an indie space exploration game that thrusts you into a hand-crafted solar system full of intrigue and wonder. Your mission? To sate your curiosity as you brave the unknown of outer space.
 
-{% include img.html img="outer-wilds.jpg" alt="An in-game photo showing the founders of the Outer Wilds space exploration program." %}
+{% include img.html img="outer-wilds.jpg" alt="An in-game photo showing the founders of the Outer Wilds space exploration program." width=795 height=446 %}
 
 ## What Is Outer Wilds About?
 

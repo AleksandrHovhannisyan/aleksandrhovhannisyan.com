@@ -5,7 +5,7 @@ keywords: ["improve page load speed", "webp image format"]
 tags: [dev, jekyll, webperf, webp]
 ---
 
-{% include img.html img="pagespeed-insights.png" alt="The PageSpeed Insights score for one of my blog posts." %}
+{% include img.html img="pagespeed-insights.png" alt="The PageSpeed Insights score for one of my blog posts." width=1268 height=624 %}
 
 Run the blog posts on my site through Google's [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) or [Cloudinary's Image Analysis tool](https://webspeedtest.cloudinary.com/), and you'll find that most of them (with the exception of a few that load iframes) get around 99 on mobile and 100 on desktop. Some of these are packed full of images.
 
