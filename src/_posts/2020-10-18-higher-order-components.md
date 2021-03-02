@@ -71,7 +71,9 @@ Suppose we're using React to create a blog (e.g., with a static site generator l
 
 To kick things off, we'll create a basic presentational component named `PostList` that represents a generic list of posts. Nothing fancy here:
 
-{% capture code %}import React from "react";
+{% include codeHeader.html file="components/PostList/index.js" %}
+```jsx
+import React from "react";
 
 const PostList = ({ posts }) => (
   <ol>
@@ -84,12 +86,14 @@ const PostList = ({ posts }) => (
   </ol>
 );
 
-export default PostList;{% endcapture %}
-{% include code.html file="components/PostList/index.js" code=code lang="jsx" %}
+export default PostList;
+```
 
 Your blog is going to have three different kinds of posts: recent, popular, and archived. Since we don't actually have any real data to work with here, we'll create some fake data and use that for this tutorial:
 
-{% capture code %}const recentPosts = [
+{% include codeHeader.html file="containers/Posts/api.js" %}
+```js
+const recentPosts = [
   {
     id: 1,
     title: "Recent Post 1",
@@ -154,14 +158,16 @@ const archivedPosts = [
 
 export const getRecentPosts = () => recentPosts;
 export const getPopularPosts = () => popularPosts;
-export const getArchivedPosts = () => archivedPosts;{% endcapture %}
-{% include code.html file="containers/Posts/api.js" code=code lang="js" %}
+export const getArchivedPosts = () => archivedPosts;
+```
 
 In the real world, you'd hit an actual API endpoint rather than returning local, static data. For the purposes of this tutorial, though, we've hardcoded our data for recent, popular, and archived posts in arrays. And at the bottom, we've exported three functions that return these arrays.
 
 Our blog will consist of the following container component:
 
-{% capture code %}import React from "react";
+{% include codeHeader.html file="containers/Posts/index.js" %}
+```jsx
+import React from "react";
 import {
   ArchivedPosts,
   PopularPosts,
@@ -187,12 +193,14 @@ const Posts = (props) => {
   );
 };
 
-export default Posts;{% endcapture %}
-{% include code.html file="containers/Posts/index.js" code=code lang="jsx" %}
+export default Posts;
+```
 
 Of course, the three components you see here don't exist just yet, so let's go ahead and create them now. We'll use the fetch functions we defined just a few seconds ago to do that. Keep in mind that in the real world, you'd probably use some Promise-based fetch function to get your data, and thus you'd need to either `await` your data or chain `then`s:
 
-{% capture code %}import React, { useEffect, useState } from "react";
+{% include codeHeader.html file="components/PostList/index.js" %}
+```jsx
+import React, { useEffect, useState } from "react";
 import {
   getArchivedPosts,
   getPopularPosts,
@@ -241,8 +249,8 @@ export const ArchivedPosts = (props) => {
   return <PostList posts={posts} {...props} />;
 };
 
-export default PostList;{% endcapture %}
-{% include code.html file="components/PostList/index.js" code=code lang="jsx" %}
+export default PostList;
+```
 
 Basically, each component fetches its respective type of posts after it mounts and renders a `PostList`, passing along the result of our fake API call to the `posts` prop.
 
@@ -260,7 +268,9 @@ That's precisely the idea behind higher-order components in React.
 
 I'll show the higher-order component for this scenario now, in its entirety, and then explain how it works:
 
-{% capture code %}import React, { useState, useEffect } from "react";
+{% include codeHeader.html file="components/PostList/withPosts.js" %}
+```jsx
+import React, { useState, useEffect } from "react";
 
 function withPosts(Component, getPosts) {
   return function (props) {
@@ -274,8 +284,8 @@ function withPosts(Component, getPosts) {
   };
 }
 
-export default withPosts;{% endcapture %}
-{% include code.html file="components/PostList/withPosts.js" code=code lang="jsx" %}
+export default withPosts;
+```
 
 Again, it's worth reiterating that a higher-order component is just a function like any other in JavaScript:
 
@@ -299,7 +309,9 @@ function withPosts(Component, getPosts) {
 
 In fact, if we had wanted to, we could've used the legacy React syntax and returned a class instead, to make it perfectly clear that a higher-order component returns a React component:
 
-{% capture code %}import React, { useState, useEffect } from "react";
+{% include codeHeader.html file="components/PostList/withPosts.js" %}
+```jsx
+import React, { useState, useEffect } from "react";
 
 function withPosts(Component, getPosts) {
   // Same as before, but more verbose without hooks
@@ -323,17 +335,19 @@ function withPosts(Component, getPosts) {
   };
 }
 
-export default withPosts;{% endcapture %}
-{% include code.html file="components/PostList/withPosts.js" code=code lang="jsx" %}
+export default withPosts;
+```
 
 In both versions of the code, the inner component accepts props (just like all React components do), initializes an empty array of posts as its state, and calls the fetch function on mount. Once the API call finishes, the component updates its state. Finally, it returns the original `Component` that we passed in, but injecting the `posts` array as an additional prop and spreading the remaining props.
 
 Now, using this higher-order component couldn't be easier:
 
-{% capture code %}export const RecentPosts = withPosts(PostList, getRecentPosts);
+{% include codeHeader.html file="components/PostList/index.js" %}
+```jsx
+export const RecentPosts = withPosts(PostList, getRecentPosts);
 export const PopularPosts = withPosts(PostList, getPopularPosts);
-export const ArchivedPosts = withPosts(PostList, getArchivedPosts);{% endcapture %}
-{% include code.html file="components/PostList/index.js" code=code lang="jsx" %}
+export const ArchivedPosts = withPosts(PostList, getArchivedPosts);
+```
 
 Notice that we're calling the higher-order component three times here, once for each type of post. Each time, we're passing in two things:
 
@@ -342,7 +356,9 @@ Notice that we're calling the higher-order component three times here, once for 
 
 Since the result of a call to a higher-order component is just another component, these exported variables can be rendered. Thus, the code from earlier should make sense:
 
-{% capture code %}import React from "react";
+{% include codeHeader.html file="containers/Posts/Posts.js" %}
+```jsx
+import React from "react";
 import {
   ArchivedPosts,
   PopularPosts,
@@ -368,12 +384,14 @@ const Posts = (props) => {
   );
 };
 
-export default Posts;{% endcapture %}
-{% include code.html file="containers/Posts/Posts.js" code=code lang="jsx" %}
+export default Posts;
+```
 
 Additionally, if we had wanted to, we could've also passed along more props to these components:
 
-{% capture code %}import React from "react";
+{% include codeHeader.html file="containers/Posts/Posts.js" %}
+```jsx
+import React from "react";
 import {
   RecentPosts,
   ArchivedPosts,
@@ -399,8 +417,8 @@ const Posts = (props) => {
   );
 };
 
-export default Posts;{% endcapture %}
-{% include code.html file="containers/Posts/Posts.js" code=code lang="jsx" %}
+export default Posts;
+```
 
 We're able to do this because of the following two lines of code in our higher-order component:
 
@@ -422,7 +440,9 @@ One last thing worth noting with this example: You may be wondering why we didn'
 
 In other words, why not do this:
 
-{% capture code %}import React, { useState, useEffect } from "react";
+{% include codeHeader.html file="components/PostList/withPosts.js" %}
+```jsx
+import React, { useState, useEffect } from "react";
 import PostList from "./PostList";
 
 function withPosts(getPosts) {
@@ -437,15 +457,17 @@ function withPosts(getPosts) {
   };
 }
 
-export default withPosts;{% endcapture %}
-{% include code.html file="components/PostList/withPosts.js" code=code lang="jsx" %}
+export default withPosts;
+```
 
 That would certainly save us some typing here, as we'd no longer have to specify `PostList` as the first argument to each function call:
 
-{% capture code %}export const RecentPosts = withPosts(getRecentPosts);
+{% include codeHeader.html file="components/PostList/index.js" %}
+```jsx
+export const RecentPosts = withPosts(getRecentPosts);
 export const PopularPosts = withPosts(getPopularPosts);
-export const ArchivedPosts = withPosts(getArchivedPosts);{% endcapture %}
-{% include code.html file="components/PostList/index.js" code=code lang="jsx" %}
+export const ArchivedPosts = withPosts(getArchivedPosts);
+```
 
 However, this isn't a good idea in general, as you may run into a situation later on where you actually want to pass in a more customized version of `PostList`—like one that only shows the first five posts, or one that renders posts as cards instead of in a list, and so on. By accepting a generic reference to a component, our higher-order component is not only more flexible but also easier to test, as we've no longer hard-coded a dependency in the implementation. Instead, we allow the consumer to specify the component to render.
 
@@ -460,7 +482,9 @@ If you're with me so far, you may have noticed an interesting fact: Higher-order
 
 Consider this toy example:
 
-{% capture code %}const Div = (props) => <div {...props} />;
+{% include codeHeader.html %}
+```jsx
+const Div = (props) => <div {...props} />;
 
 function withX(Component) {
   return function(props) {
@@ -494,8 +518,8 @@ function withY(Component) {
   }
 }
 
-export default withY(withX(Div));{% endcapture %}
-{% include code.html code=code lang="jsx" %}
+export default withY(withX(Div));
+```
 
 The composition happens here:
 
@@ -645,7 +669,9 @@ export default withTheme(MyComponent);
 
 Check it out—here's the code for the `ThemeToggle` button:
 
-{% capture code %}import React from "react";
+{% include codeHeader.html file="ThemeToggle/index.js" copyable=false %}
+```jsx
+import React from "react";
 import { themeMap, withTheme } from "../App";
 
 const ThemeToggle = (props) => (
@@ -655,8 +681,8 @@ const ThemeToggle = (props) => (
 );
 
 // This gives us access to two additional props: theme and setTheme
-export default withTheme(ThemeToggle);{% endcapture %}
-{% include code.html file="ThemeToggle/index.js" code=code lang="jsx" copyable=false %}
+export default withTheme(ThemeToggle);
+```
 
 We've defined a simple functional component like any other that you're used to by now, except we inject the theme variables into this component before exporting it. This gives the button access to the theme value as well as the ability to toggle said theme. We do precisely that in the button's `onClick` handler.
 
@@ -676,7 +702,9 @@ One question that comes up often is whether higher-order components are relevant
 
 Returning to our blog example, we could instead create a reusable `usePosts` hook to consolidate the fetching logic and return the list of posts and a method to optionally update those posts:
 
-{% capture code %}import React, { useState, useEffect } from "react";
+{% include codeHeader.html file="components/PostList/usePosts.js" %}
+```jsx
+import React, { useState, useEffect } from "react";
 
 export default function usePosts(getPosts) {
   const [posts, setPosts] = useState([]);
@@ -687,12 +715,14 @@ export default function usePosts(getPosts) {
   });
 
   return [posts, setPosts];
-}{% endcapture %}
-{% include code.html file="components/PostList/usePosts.js" code=code lang="jsx" %}
+}
+```
 
 And here's how we might use that:
 
-{% capture code %}import React from "react";
+{% include codeHeader.html file="components/PostList/index.js" %}
+```jsx
+import React from "react";
 import usePosts from "./usePosts";
 import {
   getArchivedPosts,
@@ -726,8 +756,8 @@ export const ArchivedPosts = (props) => {
   return <PostList posts={posts} {...props} />;
 };
 
-export default PostList;{% endcapture %}
-{% include code.html file="components/PostList/index.js" code=code lang="jsx" %}
+export default PostList;
+```
 
 Naturally, hooks can also be combined with the React Context API. The hooks version of our theme example is much simpler than the one with higher-order components:
 

@@ -20,9 +20,13 @@ lazyLoad('.lazy-img', (img) => {
   pictureElement.classList.add('loaded');
 });
 
-document.querySelectorAll('.copy-code-button').forEach((copyCodeButton) => {
+const copyableCodeBlocks = document.querySelectorAll('.code-header.with-copy-button + .highlighter-rouge');
+const copyCodeButtons = document.querySelectorAll('.copy-code-button');
+
+copyCodeButtons.forEach((copyCodeButton, index) => {
+  const code = copyableCodeBlocks[index].innerText;
+
   copyCodeButton.addEventListener('click', () => {
-    const code = copyCodeButton.getAttribute('data-code');
     copyToClipboard(code);
     copyCodeButton.classList.add('copied');
 

@@ -240,7 +240,9 @@ Google already relies on the structure of your page—your title tag, the descri
 
 But you can also include **schema markup** in your HTML to inform search engines of the type of content you've published and any of its particular details, such as the headline, the author, the date published or modified, and so on. Here's an example from [Google's docs on structured data](https://developers.google.com/search/docs/data-types/article#examples):
 
-{% capture code %}<script type="application/ld+json">
+{% include codeHeader.html %}
+```html
+<script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "NewsArticle",
@@ -270,14 +272,17 @@ But you can also include **schema markup** in your HTML to inform search engines
       },
       "description": "A most wonderful article"
     }
-</script>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</script>
+```
 
 Simply stick this anywhere in your HTML for each blog post that you publish.
 
 If you're using a static site generator like Gatsby or Jekyll, you should be able to define this as a template in one place so you don't have to copy-paste it for every single blog post. For example, my website was built with Jekyll, and I have the following in my `_layouts/post.html` layout file:
 
-{% capture code %}{% raw %}<script type="application/ld+json">
+{% include codeHeader.html file="_layouts/post.html" %}
+{% raw %}
+```html
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -304,8 +309,9 @@ If you're using a static site generator like Gatsby or Jekyll, you should be abl
     },
     "description": {{ page.description | strip_newlines | strip | jsonify }}
   }
-</script>{% endraw %}{% endcapture %}
-{% include code.html file="_layouts/post.html" code=code lang="html" %}
+</script>
+```
+{% endraw %}
 
 Use Google's [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/u/0/) to verify that your schema markup is free of errors.
 

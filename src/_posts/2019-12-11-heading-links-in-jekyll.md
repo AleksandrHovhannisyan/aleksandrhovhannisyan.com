@@ -27,7 +27,10 @@ Then, we want two states:
 
 With Liquid and Jekyll includes, it's super simple to create linked headings. Here's the markup:
 
-{% capture code %}{% raw %}{% assign heading = include.heading %}
+{% include codeHeader.html file="_includes/linkedHeading.html" %}
+{% raw %}
+```liquid
+{% assign heading = include.heading %}
 <h{{ include.level }} id="{{ heading | slugify }}" class="linked-heading">
     <span class="heading-anchor-wrapper">
         <a
@@ -39,12 +42,15 @@ With Liquid and Jekyll includes, it's super simple to create linked headings. He
         </a>
     </span>
     {{ heading }}
-</h{{ include.level }}>{% endraw %}{% endcapture %}
-{% include code.html file="_includes/linkedHeading.html" code=code lang="liquid" %}
+</h{{ include.level }}>
+```
+{% endraw %}
 
 And here's the Sass:
 
-{% capture code %}.linked-heading {
+{% include codeHeader.html %}
+```sass
+.linked-heading {
     position: relative;
 
     .heading-anchor-wrapper {
@@ -80,14 +86,17 @@ And here's the Sass:
         margin-left: 4px;
         transition: visibility 0.2s ease, opacity 0.2s ease;
     }
-}{% endcapture %}
-{% include code.html code=code lang="sass" %}
+}
+```
 
 Simply use the following in your markdown to create a heading anchor in Jekyll:
 
-{% capture code %}{% raw %}{% include linkedHeading.html heading="My Heading" level=someNumber %}{% endraw %}{% endcapture %}
-
-{% include code.html code=code lang="liquid" %}
+{% include codeHeader.html %}
+{% raw %}
+```liquid
+{% include linkedHeading.html heading="My Heading" level=someNumber %}
+```
+{% endraw %}
 
 Short and sweet! And much more legible than copy-pasting a bunch of heading tags and anchors. Plus, you don't have to introduce any unnecessary dependencies, JavaScript, or gems to get this done.
 
@@ -108,11 +117,13 @@ If you have a sticky/fixed navbar like I do on this site, you may run into a pro
 
 Fortunately, the fix is simple: we can add a `scroll-margin-top` to our headings equal to the height of the navbar plus a certain offset, like so:
 
-{% capture code %}h1, h2, h3, h4, h5, h6 {
+{% include codeHeader.html %}
+```css
+h1, h2, h3, h4, h5, h6 {
     /* 64px navbar + 20px for spacing */
     scroll-margin-top: 84px;
-}{% endcapture %}
-{% include code.html code=code lang="css" %}
+}
+```
 
 My navbar is `64px` tall, so I found that this works best. Feel free to play around with it on your site.
 
@@ -131,13 +142,17 @@ There are two solutions to this:
 
 Here's the one I use:
 
-{% capture code %}{% raw %}"Linked Heading": {
+{% include codeHeader.html file="markdown.json" %}
+{% raw %}
+```json
+"Linked Heading": {
     "prefix": "heading",
     "body": [
         "{% include linkedHeading.html heading=\"$1\" level=$2 %}"
     ]
-}{% endraw %}{% endcapture %}
-{% include code.html file="markdown.json" code=code lang="json" %}
+}
+```
+{% endraw %}
 
 {% include linkedHeading.html heading="Option 2: Regex Replacement" level=3 %}
 

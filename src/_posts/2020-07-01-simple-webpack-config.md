@@ -26,19 +26,25 @@ And all you want is a simple webpack config that creates a single bundled JavaSc
 
 First, install webpack if you haven't already done so:
 
-{% capture code %}yarn add -D webpack webpack-cli{% endcapture %}
-{% include code.html code=code lang="bash" %}
+{% include codeHeader.html %}
+```bash
+yarn add -D webpack webpack-cli
+```
 
 Once that's done, add this script to your `package.json`:
 
-{% capture code %}"scripts": {
+{% include codeHeader.html file="package.json" %}
+```json
+"scripts": {
     "build": "webpack --config config/webpack.config.js --mode production"
-}{% endcapture %}
-{% include code.html file="package.json" code=code lang="json" %}
+}
+```
 
 And then create this simple webpack config under `config/`:
 
-{% capture code %}const path = require('path');
+{% include codeHeader.html file="webpack.config.js" %}
+```javascript
+const path = require('path');
 
 module.exports = {
   context: path.resolve('src/'),
@@ -52,8 +58,8 @@ module.exports = {
     filename: 'app.bundle.js',
   },
 };
-{% endcapture %}
-{% include code.html file="webpack.config.js" code=code lang="javascript" %}
+
+```
 
 Here's how it works:
 
@@ -82,7 +88,9 @@ Done in 2.47s.
 
 Now you can include the bundled code in your HTML file:
 
-{% capture code %}<!DOCTYPE html>
+{% include codeHeader.html file="index.html" %}
+```html
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -92,8 +100,8 @@ Now you can include the bundled code in your HTML file:
 <body>
     <script src="dist/app.bundle.js"></script>
 </body>
-</html>{% endcapture %}
-{% include code.html file="index.html" code=code lang="html" %}
+</html>
+```
 
 And that's all you need for a simple webpack config!
 
@@ -103,7 +111,9 @@ Relative imports can get pretty nasty: `import X from '../../../'`.
 
 To use absolute imports in webpack, we'll set up import aliases. Here's the new webpack config:
 
-{% capture code %}const path = require('path');
+{% include codeHeader.html file="config/webpack.config.js" %}
+```javascript
+const path = require('path');
 
 module.exports = {
   resolve: {
@@ -119,8 +129,8 @@ module.exports = {
     path: path.resolve(__dirname, '../dist/'),
     filename: 'app.bundle.js',
   },
-};{% endcapture %}
-{% include code.html file="config/webpack.config.js" code=code lang="javascript" %}
+};
+```
 
 So imports like this:
 
@@ -136,7 +146,9 @@ import Module from 'components/Module';
 
 If you're using VS Code, you can take this one step further and create a `jsconfig.json`:
 
-{% capture code %}{
+{% include codeHeader.html file="jsconfig.json" %}
+```json
+{
     "compilerOptions": {
         "baseUrl": "./src/",
         "paths": {
@@ -144,8 +156,8 @@ If you're using VS Code, you can take this one step further and create a `jsconf
             "util/*": ["util/*"],
         }
     }
-}{% endcapture %}
-{% include code.html file="jsconfig.json" code=code lang="json" %}
+}
+```
 
 So now, if you start typing the name of a non-imported module, VS Code will look it up and automatically import it for you.
 

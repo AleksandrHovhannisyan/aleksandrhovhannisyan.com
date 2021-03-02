@@ -96,9 +96,11 @@ Now that we've got the setup out of the way, it's time to actually access Google
 
 First, you'll need to install these two libraries:
 
-{% capture code %}pip install gspread
-pip install oauth2client{% endcapture %}
-{% include code.html code=code lang="bash" %}
+{% include codeHeader.html %}
+```bash
+pip install gspread
+pip install oauth2client
+```
 
 [Gspread](https://gspread.readthedocs.io/en/latest/) is a Python Google Sheets API that lets you read and write data to spreadsheets saved in Google Drive.
 
@@ -106,7 +108,9 @@ pip install oauth2client{% endcapture %}
 
 Here's a minimal example that uses these two libraries to push data to Google Sheets:
 
-{% capture code %}from oauth2client.service_account import ServiceAccountCredentials
+{% include codeHeader.html file="sheets.py" %}
+```python
+from oauth2client.service_account import ServiceAccountCredentials
 import gspread
 
 # Google Sheets and Google Drive, respectively
@@ -117,8 +121,8 @@ client = gspread.authorize(creds)
 
 # Replace with your spreadsheet's name and sheet number
 sheet = client.open("Google Sheets and Python").sheet1
-sheet.append_row(["Hello", "Google", "Sheets", "from", "Python"]){% endcapture %}
-{% include code.html file="sheets.py" code=code lang="python" %}
+sheet.append_row(["Hello", "Google", "Sheets", "from", "Python"])
+```
 
 If you try running this now, you'll get the following exception:
 

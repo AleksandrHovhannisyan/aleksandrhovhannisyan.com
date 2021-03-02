@@ -68,14 +68,18 @@ Assuming that everything went well, it's time to make your first Jekyll site.
 
 Running this command will set up a folder named `mysite` with all of the necessary starter files and directories:
 
-{% capture code %}bundle exec jekyll new mysite{% endcapture %}
-{% include code.html code=code lang="bash" %}
+{% include codeHeader.html %}
+```bash
+bundle exec jekyll new mysite
+```
 
 If you already have existing source files in a project directory for your site, you can instead run this:
 
-{% capture code %}cd mysite
-bundle exec jekyll new . --force{% endcapture %}
-{% include code.html code=code lang="bash"%}
+{% include codeHeader.html file="Gemfile" copyable=false %}
+```bash
+cd mysite
+bundle exec jekyll new . --force
+```
 
 > **Warning**: The second option may end up overwriting existing files. Alternatively, you could set up the project in a different directory and copy over the files when it's done so you have more control.
 
@@ -87,7 +91,9 @@ The end result should be this simple directory structure:
 
 Go ahead and open up the Gemfile at the root of your project. You'll find useful comments in there to help you configure Jekyll with GitHub Pages:
 
-{% capture code %}source "https://rubygems.org"
+{% include codeHeader.html file="_Gemfile" %}
+```ruby
+source "https://rubygems.org"
 
 # Hello! This is where you manage which Jekyll version is used to run.
 # When you want to use a different version, change it below, save the
@@ -115,8 +121,8 @@ install_if -> { RUBY_PLATFORM =~ %r!mingw|mswin|java! } do
 end
 
 # Performance-booster for watching directories on Windows
-gem "wdm", "~> 0.1.0", :install_if => Gem.win_platform?{% endcapture %}
-{% include code.html file="Gemfile" code=code lang="ruby" copyable=false %}
+gem "wdm", "~> 0.1.0", :install_if => Gem.win_platform?
+```
 
 First, remove this line if you intend to publish your site on GitHub Pages:
 
@@ -157,8 +163,10 @@ If you don't use `theme: null`, the `github-pages` gem will automatically genera
 
 After doing all of that, run this command to install and update all necessary gems for your site:
 
-{% capture code %}bundle install{% endcapture %}
-{% include code.html code=code lang="bash" %}
+{% include codeHeader.html %}
+```bash
+bundle install
+```
 
 If all went well, you should see output similar to this:
 
@@ -173,20 +181,26 @@ You should also now see a `Gemfile.lock` file at the root of your project. This 
 
 Let's fire her up and see what we've got:
 
-{% capture code %}bundle exec jekyll serve --livereload{% endcapture %}
-{% include code.html code=code lang="bash" %}
+{% include codeHeader.html %}
+```bash
+bundle exec jekyll serve --livereload
+```
 
 By default, this runs your site on `localhost:4000` with live-reloading enabled, so if you make changes to your files, Jekyll will regenerate the build directory and automatically refresh your page.
 
 You can change the port in one of two ways. The first is to specify the `--port` argument:
 
-{% capture code %}bundle exec jekyll serve --livereload --port 4001{% endcapture %}
-{% include code.html code=code lang="bash" %}
+{% include codeHeader.html %}
+```bash
+bundle exec jekyll serve --livereload --port 4001
+```
 
 The second is to add this line somewhere inside your project's `_config.yml` file:
 
-{% capture code %}port: 4001{% endcapture %}
-{% include code.html code=code lang="yml" %}
+{% include codeHeader.html %}
+```yml
+port: 4001
+```
 
 > **Note**: You can leave the port as `4000` by default. This is just useful to know in case you want to run two Jekyll sites simultaneously on your local since they can't both be on the same port.
 
@@ -204,8 +218,10 @@ The remainder of this tutorial assumes that your theme is set to `null`. Some of
 
 If you haven't already done so, push your Jekyll site to GitHub Pages:
 
-{% capture code %}git add . && git push{% endcapture %}
-{% include code.html code=code lang="bash" %}
+{% include codeHeader.html %}
+```bash
+git add . && git push
+```
 
 Then, simply visit `https://yourUsername.github.io` to view the live version of your website.
 
@@ -232,7 +248,9 @@ If none of this makes sense to you right now, or if all of this seems overwhelmi
 
 We already saw that you can edit your Jekyll starter theme in `_config.yml`, but that's not all that this file allows you to do. In fact, this file houses your entire site's configuration settings. Here's what mine looks like so far:
 
-{% capture code %}# Welcome to Jekyll!
+{% include codeHeader.html file="_config.yml" copyable=false %}
+```yml
+# Welcome to Jekyll!
 #
 # This config file is meant for settings that affect your whole blog, values
 # which you are expected to set up once and rarely edit after that. If you find
@@ -274,8 +292,8 @@ plugins:
 #   - vendor/bundle/
 #   - vendor/cache/
 #   - vendor/gems/
-#   - vendor/ruby/{% endcapture %}
-{% include code.html file="_config.yml" code=code lang="yml" copyable=false %}
+#   - vendor/ruby/
+```
 
 We'll understand how all of these settings are used once we cover the Liquid templating language. For now, just keep in mind that you can access most of these settings on all of your pages via a globally exposed `site` variable in a language called Liquid: `site.title`, `site.description`, `site.url`, and so on.
 
@@ -291,13 +309,15 @@ If you have any experience working with plain old HTML to create sites, you shou
 
 In your project directory, you should see a mostly empty file named `index.md` that looks something like this:
 
-{% capture code %}---
+{% include codeHeader.html file="index.md" copyable=false %}
+```markdown
+---
 # Feel free to add content and custom Front Matter to this file.
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: home
----{% endcapture %}
-{% include code.html file="index.md" code=code lang="markdown" copyable=false %}
+---
+```
 
 Files ending in `.md` (or `.markdown`) are written in [Markdown](https://en.wikipedia.org/wiki/Markdown), a widely used markup language that just gets compiled down to HTML. Since it has such a simple syntax, Markdown is often favored in static site generators like Jekyll, Hugo, and GatsbyJS, especially for writing blog posts.
 
@@ -314,15 +334,17 @@ Kramdown extends Markdown with some useful features, like adding classes and IDs
 
 Before moving on, let's modify `index.md` as follows:
 
-{% capture code %}---
+{% include codeHeader.html file="index.md" %}
+```markdown
+---
 # Feel free to add content and custom Front Matter to this file.
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: home
 ---
 
-# Hello, Jekyll!{% endcapture %}
-{% include code.html file="index.md" code=code lang="markdown" %}
+# Hello, Jekyll!
+```
 
 If live-reloading is enabled, you should see your page update automatically to display an `h1` tag. Otherwise, you may need to refresh manually to see this change.
 
@@ -330,32 +352,38 @@ If live-reloading is enabled, you should see your page update automatically to d
 
 As I noted earlier, you can optionally also use plain HTML to get the same result:
 
-{% capture code %}---
+{% include codeHeader.html file="index.md" %}
+```markdown
+---
 # Feel free to add content and custom Front Matter to this file.
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: home
 ---
 
-<h1 id="hello-jekyll">Hello, Jekyll!</h1>{% endcapture %}
-{% include code.html file="index.md" code=code lang="markdown" %}
+<h1 id="hello-jekyll">Hello, Jekyll!</h1>
+```
 
 Notice that we have to specify the ID explicitly with HTML, whereas Markdown does it automatically for us. If you wanted to, you could achieve the same result using Kramdown's ID specifier:
 
-{% capture code %}---
+{% include codeHeader.html file="index.md" %}
+```markdown
+---
 # Feel free to add content and custom Front Matter to this file.
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: home
 ---
 
-# Hello, Jekyll {#hello-jekyll}{% endcapture %}
-{% include code.html file="index.md" code=code lang="markdown" %}
+# Hello, Jekyll {#hello-jekyll}
+```
 
 To understand more about what goes on behind the scenes in Jekyll, go ahead and expand your Git-ignored `_site` directory. Remember that this is the build directory that Jekyll creates each time you change a file, while `jekyll serve` is running. You should see that there's an `index.html` in there. Open that up to see its contents:
 
-{% capture code %}<h1 id="hello-jekyll">Hello, Jekyll!</h1>{% endcapture %}
-{% include code.html file="_site/index.html" code=code lang="html" %}
+{% include codeHeader.html file="_site/index.html" %}
+```html
+<h1 id="hello-jekyll">Hello, Jekyll!</h1>
+```
 
 This reveals an interesting point that will become important later: Where a file ends up in `_site/` depends on where it is placed in your project directory. In our case, the `index.md` at the root of our project directory becomes `index.html` at the root of `_site/`.
 
@@ -408,7 +436,10 @@ Since these are not among the predefined front matter variables that Jekyll reco
 
 While we're on the topic of front matter, go ahead and open up the starter blog post that Jekyll created for us. On my end, it's located under `_posts/2020-02-14-welcome-to-jekyll.markdown` and has this content:
 
-{% capture code %}{% raw %}---
+{% include codeHeader.html file="_posts/2020-02-14-welcome-to-jekyll.markdown" %}
+{% raw %}
+```markdown
+---
 layout: post
 title:  "Welcome to Jekyll!"
 date:   2020-02-14 07:40:59 -0500
@@ -432,8 +463,9 @@ Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most ou
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/{% endraw %}{% endcapture %}
-{% include code.html file="_posts/2020-02-14-welcome-to-jekyll.markdown" code=code lang="markdown" %}
+[jekyll-talk]: https://talk.jekyllrb.com/
+```
+{% endraw %}
 
 There's a lot of useful information in this template, so give that a read if you're interested. But note once again the front matter block at the top of the file:
 
@@ -456,7 +488,9 @@ The starter post that we saw earlier has a layout of `post`. Surely all of our o
 
 Nope! Open up your `_config.yml`, and add this YAML somewhere (anywhere):
 
-{% capture code %}defaults:
+{% include codeHeader.html %}
+```yml
+defaults:
   -
     scope:
       type: posts
@@ -470,26 +504,30 @@ Nope! Open up your `_config.yml`, and add this YAML somewhere (anywhere):
       path: _pages
     values:
       is_post: false
-      layout: default{% endcapture %}
-{% include code.html code=code lang="yml" %}
+      layout: default
+```
 
 And then restart your server.
 
 Jekyll allows you to define **front matter defaults** like we've done here by scope, which you can narrow down using either a path or file type. The above defaults are equivalent to doing this manually in each post that we create under `_posts/`:
 
-{% capture code %}---
+{% include codeHeader.html file="_posts/2020-02-14-an-awesome-post.md" copyable=false %}
+```markdown
+---
 is_post: true
 layout: post
----{% endcapture %}
-{% include code.html file="_posts/2020-02-14-an-awesome-post.md" code=code lang="markdown" copyable=false %}
+---
+```
 
 And doing this manually for each page—like our home page, experience page, contact page, and so on—that we create under a directory named `_pages/`:
 
-{% capture code %}---
+{% include codeHeader.html file="_pages/contact.md" copyable=false %}
+```markdown
+---
 is_post: false
 layout: default
----{% endcapture %}
-{% include code.html file="_pages/contact.md" code=code lang="markdown" copyable=false %}
+---
+```
 
 This is a common pattern that you'll run into in Jekyll: If you find yourself repeating something tediously, there's probably a better, less redundant way to do it.
 
@@ -505,8 +543,10 @@ The Jekyll starter already comes with two such files at the root of the project:
 
 First, create this directory, either via a UI or Bash:
 
-{% capture code %}mkdir _pages{% endcapture %}
-{% include code.html code=code lang="bash" %}
+{% include codeHeader.html %}
+```bash
+mkdir _pages
+```
 
 After doing that, go ahead and move `index.md` and `about.md` into this directory:
 
@@ -526,8 +566,10 @@ It's not Jekyll's fault that our two pages disappeared—we didn't tell it where
 
 Open up your `_config.yml` and add this line somewhere:
 
-{% capture code %}include: [_pages]{% endcapture %}
-{% include code.html code=code lang="yml" %}
+{% include codeHeader.html %}
+```yml
+include: [_pages]
+```
 
 This command defines an array of directories that Jekyll should process when it goes to build your site. In this case, we've defined an array of just one directory: `_pages/`.
 
@@ -541,16 +583,20 @@ Okay, it looks like that added `_pages/` to our build directory, and we can now 
 
 The final step is to [specify permalinks to our pages](https://jekyllrb.com/docs/permalinks/) using a predefined front matter variable named `permalink`:
 
-{% capture code %}---
+{% include codeHeader.html file="_pages/index.md" %}
+```markdown
+---
 permalink: /
 ---
 
-# Hello, Jekyll!{% endcapture %}
-{% include code.html file="_pages/index.md" code=code lang="markdown" %}
+# Hello, Jekyll!
+```
 
 If you open up `about.md`, you'll notice that it already had a relative permalink defined in its front matter block:
 
-{% capture code %}---
+{% include codeHeader.html file="_pages/about.md" copyable=false %}
+```markdown
+---
 layout: page
 title: About
 permalink: /about/
@@ -567,8 +613,8 @@ You can find the source code for Jekyll at GitHub:
 [jekyll](https://github.com/jekyll/jekyll)
 
 
-[jekyll-organization]: https://github.com/jekyll{% endcapture %}
-{% include code.html file="_pages/about.md" code=code lang="markdown" copyable=false %}
+[jekyll-organization]: https://github.com/jekyll
+```
 
 This explains why we saw the `about/` directory in an earlier screenshot.
 
@@ -576,7 +622,9 @@ Save your changes, and Jekyll will rebuild the `_site/` directory. If you refres
 
 If you want to navigate to the About page, simply add `/about/` to the end of `localhost:4000` in your browser's navigation bar. Or you can use navigation links on your page:
 
-{% capture code %}---
+{% include codeHeader.html file="_pages/index.md" %}
+```markdown
+---
 permalink: /
 ---
 
@@ -584,8 +632,8 @@ permalink: /
 
 Check out these other pages:
 
-- [About](/about/){% endcapture %}
-{% include code.html file="_pages/index.md" code=code lang="markdown" %}
+- [About](/about/)
+```
 
 Result:
 
@@ -620,7 +668,9 @@ I want to take a second to demystify some things about blog posts in Jekyll. Mos
 
 We can give each blog post a permalink, too, just like we did with our pages above. But again, we don't want to have to repeat this every single time we create a post. Let's add a permalink to the defaults in our `_config.yml`:
 
-{% capture code %}defaults:
+{% include codeHeader.html %}
+```yml
+defaults:
   -
     scope:
       type: posts
@@ -635,8 +685,8 @@ We can give each blog post a permalink, too, just like we did with our pages abo
       path: _pages
     values:
       is_post: false
-      layout: default{% endcapture %}
-{% include code.html code=code lang="yml" %}
+      layout: default
+```
 
 This is the first instance where we see other front matter variables being referenced. In this case, we reference the `categories` and `title` variables defined by each post and use those to create a permalink to each blog post:
 
@@ -646,13 +696,15 @@ permalink: /blog/:categories/:title/
 
 Recall that the starter blog post defines two categories, `jekyll` and `update`, plus the title `Welcome to Jekyll!`:
 
-{% capture code %}---
+{% include codeHeader.html file="_posts/2020-02-14-welcome-to-jekyll.markdown" %}
+```markdown
+---
 layout: post
 title:  "Welcome to Jekyll!"
 date:   2020-02-14 07:40:59 -0500
 categories: jekyll update
----{% endcapture %}
-{% include code.html file="_posts/2020-02-14-welcome-to-jekyll.markdown" code=code lang="markdown" %}
+---
+```
 
 So now, if we navigate to `localhost:4000/blog/jekyll/update/welcome-to-jekyll`, we should see the blog post:
 
@@ -728,14 +780,18 @@ So the `date` front matter variable is in fact redundant because we already have
 
 To verify this, let's try an experiment. Remove the date from the post's front matter, and replace the file with this:
 
-{% capture code %}{% raw %}---
+{% include codeHeader.html file="_posts/2020-02-14-welcome-to-jekyll.markdown" %}
+{% raw %}
+```markdown
+---
 title:  "Welcome to Jekyll!"
 layout: post
 categories: jekyll update
 ---
 
-Welcome to my post! This was published on {{ page.date }}.{% endraw %}{% endcapture %}
-{% include code.html file="_posts/2020-02-14-welcome-to-jekyll.markdown" code=code lang="markdown" %}
+Welcome to my post! This was published on {{ page.date }}.
+```
+{% endraw %}
 
 Open up the post on your local to see the result:
 
@@ -991,25 +1047,31 @@ Layout files in Jekyll are housed under the `_layouts/` directory. Recall that t
 
 It's easier to understand this with an example. If we go back to `_pages/about.md`, we'll find a layout declared in its front matter block:
 
-{% capture code %}---
+{% include codeHeader.html file="_pages/about.md" copyable=false %}
+```markdown
+---
 layout: page
 title: About
 permalink: /about/
----{% endcapture %}
-{% include code.html file="_pages/about.md" code=code lang="markdown" copyable=false %}
+---
+```
 
 Let's rename the layout to `default`. Functionally, it doesn't make a difference what we name it, as long as there's a layout file with the same name. It's just that `default` is more idiomatic—it's our website's "default layout."
 
-{% capture code %}---
+{% include codeHeader.html file="_pages/about.md" %}
+```markdown
+---
 layout: default
 title: About
 permalink: /about/
----{% endcapture %}
-{% include code.html file="_pages/about.md" code=code lang="markdown" %}
+---
+```
 
 Let's do the same for `_pages/index.md` and give the page a title as well, while we're at it:
 
-{% capture code %}---
+{% include codeHeader.html file="_pages/index.md" %}
+```markdown
+---
 layout: default
 title: Home
 permalink: /
@@ -1017,12 +1079,15 @@ permalink: /
 
 # Hello, Jekyll!
 
-This is the home page.{% endcapture %}
-{% include code.html file="_pages/index.md" code=code lang="markdown" %}
+This is the home page.
+```
 
 Let's also create two other pages, `blog.md` and `contact.md`:
 
-{% capture code %}{% raw %}---
+{% include codeHeader.html file="_pages/blog.md" %}
+{% raw %}
+```markdown
+---
 layout: default
 title: Blog
 permalink: /blog
@@ -1034,10 +1099,13 @@ permalink: /blog
   {% for post in site.posts %}
   <li><a href="{{ post.url }}" class="post-preview">{{ post.title }}</a></li>
   {% endfor %}
-</ul>{% endraw %}{% endcapture %}
-{% include code.html file="_pages/blog.md" code=code lang="markdown" %}
+</ul>
+```
+{% endraw %}
 
-{% capture code %}---
+{% include codeHeader.html file="_pages/contact.md" %}
+```markdown
+---
 layout: default
 title: Contact
 permalink: /contact
@@ -1049,12 +1117,15 @@ Get in touch!
 
 <form>
   <!-- Form stuff -->
-</form>{% endcapture %}
-{% include code.html file="_pages/contact.md" code=code lang="markdown" %}
+</form>
+```
 
 Next, create the `_layouts/` directory and add a file to it named `default.html` with these contents:
 
-{% capture code %}{% raw %}<!DOCTYPE html>
+{% include codeHeader.html file="_layouts/default.html" %}
+{% raw %}
+```html
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -1077,8 +1148,9 @@ Next, create the `_layouts/` directory and add a file to it named `default.html`
         Proudly made with Jekyll
     </footer>
 </body>
-</html>{% endraw %}{% endcapture %}
-{% include code.html file="_layouts/default.html" code=code lang="html" %}
+</html>
+```
+{% endraw %}
 
 It's your typical HTML file. Let's check it out:
 
@@ -1090,24 +1162,28 @@ The most important part is {% raw %}`{{ content }}`{% endraw %}, which you shoul
 
 One final note: If you want to change the site title that appears after the dash in the address bar, then simply change that variable in your `_config.yml` as I mentioned before:
 
-{% capture code %}# Site settings
+{% include codeHeader.html file="_config.yml" %}
+```yml
+# Site settings
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Your awesome title{% endcapture %}
-{% include code.html file="_config.yml" code=code lang="yml" %}
+title: Your awesome title
+```
 
 ### Using More Than One Layout
 
 If you open up the starter blog post that we saw earlier, you'll notice that it has a different layout set:
 
-{% capture code %}---
+{% include codeHeader.html file="_posts/2020-02-14-welcome-to-jekyll.markdown" copyable=false %}
+```markdown
+---
 layout: post
 title:  "Welcome to Jekyll!"
 categories: jekyll update
----{% endcapture %}
-{% include code.html file="_posts/2020-02-14-welcome-to-jekyll.markdown" code=code lang="markdown" copyable=false %}
+---
+```
 
 The blog post collapses to a "flat" layout and doesn't have the same HTML structure as the other pages:
 
@@ -1115,7 +1191,10 @@ The blog post collapses to a "flat" layout and doesn't have the same HTML struct
 
 This is because the `post` layout doesn't exist. Let's go ahead and create this layout file. This time around, you'll notice that a layout file can itself specify a layout:
 
-{% capture code %}{% raw %}---
+{% include codeHeader.html file="_layouts/post.html" %}
+{% raw %}
+```html
+---
 layout: default
 ---
 
@@ -1130,8 +1209,9 @@ layout: default
         </ul>
     </header>
     {{ content }}
-</article>{% endraw %}{% endcapture %}
-{% include code.html file="_layouts/post.html" code=code lang="html" %}
+</article>
+```
+{% endraw %}
 
 Open up the post, and you'll now see that it has the same base layout as all your other pages, but it also has a nested layout specific to blog posts:
 
@@ -1167,7 +1247,9 @@ Notice that we reference the compiled version (`.css`) that's going to live unde
 
 Meanwhile, this is what my manifest looks like:
 
-{% capture code %}---
+{% include codeHeader.html file="/assets/styles/main.scss" %}
+```sass
+---
 ---
 
 @import 'components/topnav';
@@ -1184,8 +1266,8 @@ Meanwhile, this is what my manifest looks like:
 @import 'components/tag';
 @import 'components/tooltip';
 @import 'general/highlight';
-@import 'components/footer';{% endcapture %}
-{% include code.html file="/assets/styles/main.scss" code=code lang="sass" %}
+@import 'components/footer';
+```
 
 **The empty front matter block at the top is crucial**—if you don't include it, Jekyll won't process this file, and we *need* Jekyll to process the file so that it generates `/assets/styles/main.css`.
 
@@ -1221,7 +1303,9 @@ Creating modular stylesheets and importing them into a SASS manifest makes it mu
 
 Let's give this a shot. Create a file named `_sass/_general.scss` with this styling (or really anything you want):
 
-{% capture code %}* {
+{% include codeHeader.html file="_sass/_general.scss" %}
+```scss
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -1230,16 +1314,18 @@ Let's give this a shot. Create a file named `_sass/_general.scss` with this styl
 body {
   font-size: 18px;
   font-family: Arial;
-}{% endcapture %}
-{% include code.html file="_sass/_general.scss" code=code lang="scss" %}
+}
+```
 
 And then create this file:
 
-{% capture code %}---
+{% include codeHeader.html file="assets/styles/main.scss" %}
+```scss
+---
 ---
 
-@import 'general';{% endcapture %}
-{% include code.html file="assets/styles/main.scss" code=code lang="scss" %}
+@import 'general';
+```
 
 Once your site rebuilds, you'll find this new file:
 
@@ -1250,15 +1336,19 @@ _site/assets/styles
 
 Here's what the transpiled, minified stylesheet looks like:
 
-{% capture code %}* { box-sizing: border-box; margin: 0; padding: 0; }
+{% include codeHeader.html file="_site/assets/styles/main.css" copyable=false %}
+```css
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-body { font-size: 18px; font-family: Arial; }{% endcapture %}
-{% include code.html file="_site/assets/styles/main.css" code=code lang="css" copyable=false %}
+body { font-size: 18px; font-family: Arial; }
+```
 
 Finally, don't forget to link the stylesheet to your `default.html` layout. Just add this to your `head`:
 
-{% capture code %}<link rel="stylesheet" type="text/css" href="/assets/styles/main.css">{% endcapture %}
-{% include code.html file="_layouts/default.html" code=code lang="html" %}
+{% include codeHeader.html file="_layouts/default.html" %}
+```html
+<link rel="stylesheet" type="text/css" href="/assets/styles/main.css">
+```
 
 Here's what your site should now look like:
 
@@ -1270,10 +1360,12 @@ Need to add more styles? Simply create a new SASS stylesheet under `_sass/`, pos
 
 Minifying CSS is one of the many things you can do to improve your page load speed. And fortunately, doing so is really easy in Jekyll. All you have to do is add this somewhere in your `_config.yml`:
 
-{% capture code %}
+{% include codeHeader.html file="_config.yml" %}
+```yaml
+
 sass:
-  style: compressed{% endcapture %}
-{% include code.html file="_config.yml" code=code lang="yaml" %}
+  style: compressed
+```
 
 This will eliminate every bit of unnecessary whitespace (like spaces and newlines) in your *compiled* CSS file while leaving your Sass *source* styles untouched.
 
@@ -1287,17 +1379,25 @@ Includes are created under the `_includes/` directory. An include file is simply
 
 For example, let's say you want to use tooltips on your site but don't want to have to copy-paste the same HTML each time you want to use one on a page. This is a perfect use case for includes:
 
-{% capture code %}{% raw %}<div class="tooltip tooltip-{{ include.position }}">
+{% include codeHeader.html file="_includes/tooltip.html" %}
+{% raw %}
+```html
+<div class="tooltip tooltip-{{ include.position }}">
     <div class="tooltip-text">
         {{ include.text }}
     </div>
-</div>{% endraw %}{% endcapture %}
-{% include code.html file="_includes/tooltip.html" code=code lang="html" %}
+</div>
+```
+{% endraw %}
 
 Here's how we might include a tooltip in another file:
 
-{% capture code %}{% raw %}{% include tooltip.html position="top" text="This is a tooltip!" %}{% endraw %}{% endcapture %}
-{% include code.html code=code lang="liquid" %}
+{% include codeHeader.html %}
+{% raw %}
+```liquid
+{% include tooltip.html position="top" text="This is a tooltip!" %}
+```
+{% endraw %}
 
 The processed HTML will look like this:
 
@@ -1361,28 +1461,36 @@ You can then loop over that data using Liquid tags and finally give the data its
 
 Let's say you have a simple file named `_data/skills.yml`. Suppose it looks something like this:
 
-{% capture code %}- name: Writing
+{% include codeHeader.html file="_data/skills.yml" %}
+```yml
+- name: Writing
   rating: 5
 - name: Jekyll
   rating: 5
 - name: Frontend
-  rating: 4{% endcapture %}
-{% include code.html file="_data/skills.yml" code=code lang="yml" %}
+  rating: 4
+```
 
 You can access this data using `site.data.skills`. If your YAML defines an array of skills like above, you can iterate over it and define template markup for each element:
 
-{% capture code %}{% raw %}<ul>
+{% include codeHeader.html file="_pages/experience.md" %}
+{% raw %}
+```liquid
+<ul>
     {% for skill in site.data.skills %}
     <li class="skill">{{ skill.name }} - {{ skill.rating }}</li>
     {% endfor %}
-</ul>{% endraw %}{% endcapture %}
-{% include code.html file="_pages/experience.md" code=code lang="liquid" %}
+</ul>
+```
+{% endraw %}
 
 This is a fairly simple example—in reality, you'd probably want to do more than just render a simple list of elements. But you get the idea—once you have access to the array, you can let your creative juices flow and create all kinds of neat stuff.
 
 Also, note that you can nest arrays in YAML and in Liquid. This would allow you to, for example, define skill *categories* and nest the actual skills within them:
 
-{% capture code %}- category: Blogging
+{% include codeHeader.html file="_data/skills.yml" %}
+```yml
+- category: Blogging
   skills:
     - name: Writing
       rating: 5
@@ -1394,20 +1502,24 @@ Also, note that you can nest arrays in YAML and in Liquid. This would allow you 
     - name: English
       rating: 5
     - name: Spanish
-      rating: 3{% endcapture %}
-{% include code.html file="_data/skills.yml" code=code lang="yml" %}
+      rating: 3
+```
 
 And again, we can give this data more structure:
 
-{% capture code %}{% raw %}{% for item in site.data.skills %}
+{% include codeHeader.html file="_pages/experience.md" %}
+{% raw %}
+```liquid
+{% for item in site.data.skills %}
 <h4>{{ item.category }}</h4>
 <ul>
     {% for skill in item.skills %}
     <li class="skill">{{ skill.name }} - {{ skill.rating }}</li>
     {% endfor %}
 </ul>
-{% endfor %}{% endraw %}{% endcapture %}
-{% include code.html file="_pages/experience.md" code=code lang="liquid" %}
+{% endfor %}
+```
+{% endraw %}
 
 ### Example 2: Author Bios
 
@@ -1415,7 +1527,9 @@ Now let's suppose you run a blog that has multiple authors, not just you.
 
 You can create a data file for each author and define the path to their profile photo, their name, their bio, and a fixed set of social media links, like Twitter, GitHub, and whatnot:
 
-{% capture code %}John Doe:
+{% include codeHeader.html file="_data/authors.yml" %}
+```yml
+John Doe:
   photo: john-doe.JPG
   bio: John is a... Well, we don't actually know what he does. Actually, we're not even sure we know who he is.
   socials:
@@ -1431,14 +1545,17 @@ Jane Doe:
     - type: Twitter
       url: https://twitter.com/datJaneDoeDoe
     - type: GitHub
-      url: https://github.com/JaneDoe{% endcapture %}
-{% include code.html file="_data/authors.yml" code=code lang="yml" %}
+      url: https://github.com/JaneDoe
+```
 
 Notice how your Jekyll data files can be as complex as you need, with nested arrays.
 
 Let's assume each post defines an author in its front matter:
 
-{% capture code %}{% raw %}---
+{% include codeHeader.html file="_posts/2020-02-13-a-really-awesome-post.md" %}
+{% raw %}
+```markdown
+---
 title: A Really Awesome Post
 author: Jane Doe
 layout: post
@@ -1446,12 +1563,16 @@ layout: post
 
 Usual lorem ipsum stuff.
 
-The end!{% endraw %}{% endcapture %}
-{% include code.html file="_posts/2020-02-13-a-really-awesome-post.md" code=code lang="markdown" %}
+The end!
+```
+{% endraw %}
 
 We can now add a bio at the end of each post, ideally in the `post.html` layout file so we don't have to repeat it for every single post that we publish:
 
-{% capture code %}{% raw %}---
+{% include codeHeader.html file="_layouts/post.html" %}
+{% raw %}
+```html
+---
 layout: default
 ---
 
@@ -1467,8 +1588,9 @@ layout: default
     {% for social in authorData.socials %}
     <a href="{{ social.url }}" class="social-link {{ social.type }}-link">{{ social.type }}</a>
     {% endfor %}
-</div>{% endraw %}{% endcapture %}
-{% include code.html file="_layouts/post.html" code=code lang="html" %}
+</div>
+```
+{% endraw %}
 
 Jekyll will process these templates, use the author's name as a key into the `authors.yml` data file, retrieve the relevant information about that author, and substitute it into the template. How cool is that?
 
@@ -1489,22 +1611,28 @@ Now you want to assign descriptions to each tag to dynamically update a page's d
 
 Create a data file named `tagDescriptions.yml` (or something else) and define key-value pairs in the YAML, where the key is the tag name and the value is the description for that particular tag:
 
-{% capture code %}dev: Technical posts. Yay dev!
+{% include codeHeader.html file="_data/tagDescriptions.yml" %}
+```yml
+dev: Technical posts. Yay dev!
 life: As in, the thing I like to pretend to have...
-tag: This is a tag. How exciting!{% endcapture %}
-{% include code.html file="_data/tagDescriptions.yml" code=code lang="yml" %}
+tag: This is a tag. How exciting!
+```
 
 Then, you can once again take advantage of YAML's associative data nature to assign descriptions to each tag:
 
-{% capture code %}{% raw %}{% for tag in site.tags %}
+{% include codeHeader.html file="_layouts/blog.html" %}
+{% raw %}
+```html
+{% for tag in site.tags %}
 <a
     class="tag"
     href="/tag/{{ tag }}"
     title="{{ site.data.tagDescriptions[tag] }}">
     {{ tag }}
 </a>
-{% endfor %}{% endraw %}{% endcapture %}
-{% include code.html file="_layouts/blog.html" code=code lang="html" %}
+{% endfor %}
+```
+{% endraw %}
 
 Neat, right? You can extend this to a lot of other use cases.
 

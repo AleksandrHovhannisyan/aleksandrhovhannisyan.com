@@ -13,7 +13,9 @@ Margins are the gold standard for spacing paragraphs, images, and block-level el
 
 Suppose we have this markup for an article:
 
-{% capture code %}<article id="post">
+{% include codeHeader.html %}
+```html
+<article id="post">
   <h1>My Awesome Post Title</h1>
   <p>
     Lorem Khaled Ipsum is a major key to success. You see the hedges, how I got it
@@ -24,14 +26,16 @@ Suppose we have this markup for an article:
     How’s business? Boomin. Find peace, life is like a water fall, you’ve gotta
     flow. Hammock talk come soon.
   </p>
-</article>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</article>
+```
 
 > *That's [Khaled Ipsum](http://khaledipsum.com/), for all you Lorem Ipsum normies out there.*
 
 Nice and simple. Now, let's apply a line height to our body and some margins to those paragraphs to establish a vertical rhythm. Note that the choice of font size and line height is entirely dependent on the font. I recommend picking a `line-height` that gives you some multiple of your base spacing unit (I prefer to use a `4px` [linear scale](https://www.designsystems.com/space-grids-and-layouts/)). In this particular example, I'll go with a font size of `1.125rem = 18px` and a `line-height` of `1.33 = 24px`.
 
-{% capture code %}body {
+{% include codeHeader.html %}
+```css
+body {
   font-size: 1.125rem;
   line-height: 1.33;
 }
@@ -42,8 +46,8 @@ Nice and simple. Now, let's apply a line height to our body and some margins to 
 
 #post p {
   margin-bottom: 24px; /* same as line height */
-}{% endcapture %}
-{% include code.html code=code lang="css" %}
+}
+```
 
 (I recommend using `rem` or `em` units for margins, but pixels will keep this tutorial simple. In this case, we could've used `1.33em` for paragraphs since that works out to precisely `24px`.)
 
@@ -53,7 +57,9 @@ That's all well and good:
 
 But a few minutes later, you decide to spice things up with some headings and maybe an image.
 
-{% capture code %}<article id="post">
+{% include codeHeader.html %}
+```html
+<article id="post">
   <h1>My Awesome Post Title</h1>
   <p>
     Lorem Khaled Ipsum is a major key to success. You see the hedges, how I got it
@@ -70,8 +76,8 @@ But a few minutes later, you decide to spice things up with some headings and ma
     Let me be clear, you have to make it through the jungle to make it to
     paradise, that’s the key, Lion!
   </p>
-</article>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</article>
+```
 
 And that gives us this:
 
@@ -79,7 +85,9 @@ And that gives us this:
 
 The image doesn't have any bottom margin, and neither does the subheading. Let's fix that!
 
-{% capture code %}#post img {
+{% include codeHeader.html %}
+```css
+#post img {
   display: block;
 }
 
@@ -95,8 +103,8 @@ The image doesn't have any bottom margin, and neither does the subheading. Let's
 #post h5,
 #post h6 {
   margin-bottom: 16px;
-}{% endcapture %}
-{% include code.html code=code lang="css" %}
+}
+```
 
 Beautiful:
 

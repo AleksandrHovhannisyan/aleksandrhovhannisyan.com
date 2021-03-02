@@ -26,15 +26,17 @@ Suppose we have a lightbulb that can have the following states:
 
 We can model this using an enum:
 
-{% capture code %}#pragma once
+{% include codeHeader.html file="LightState.h" %}
+```cpp
+#pragma once
 
 enum class LightState {
 	Off,
 	Low,
 	Medium,
 	High
-};{% endcapture %}
-{% include code.html file="LightState.h" code=code lang="cpp" %}
+};
+```
 
 Every light is initially off. Calling a light's `toggle` method should advance it to the next state. A light that is off goes to low when toggled. A light that is low goes to medium. And so on. When we toggle a light that is high, it cycles back to off. How would you implement this?
 
@@ -50,7 +52,9 @@ Usually, whenever you can model a scenario with finite state machines, you can a
 
 So, we'll model our light's state transitions with an actual map data structure, where the key is the current state and the value is the next state:
 
-{% capture code %}#pragma once
+{% include codeHeader.html file="LightState.h" %}
+```cpp
+#pragma once
 #include <map>
 
 enum class LightState {
@@ -65,12 +69,14 @@ std::map<LightState, LightState> lightTransitions = {
 	{LightState::Low, LightState::Medium},
 	{LightState::Medium, LightState::High},
 	{LightState::High, LightState::Off}
-};{% endcapture %}
-{% include code.html file="LightState.h" code=code lang="cpp" %}
+};
+```
 
 Let's also create our simple `Light` class:
 
-{% capture code %}#pragma once
+{% include codeHeader.html file="Light.h" %}
+```cpp
+#pragma once
 #include "LightState.h"
 
 class Light
@@ -82,10 +88,12 @@ public:
 
 private:
 	LightState currentState;
-};{% endcapture %}
-{% include code.html file="Light.h" code=code lang="cpp" %}
+};
+```
 
-{% capture code %}#include "Light.h"
+{% include codeHeader.html file="Light.cpp" %}
+```cpp
+#include "Light.h"
 
 Light::Light()
 {
@@ -95,8 +103,8 @@ Light::Light()
 void Light::toggle()
 {
 	currentState = lightTransitions[currentState];
-}{% endcapture %}
-{% include code.html file="Light.cpp" code=code lang="cpp" %}
+}
+```
 
 As I mentioned earlier, a Light starts in the off state. Calling the `toggle` method advances the light to its next state, using the `lightTransitions` transition table.
 
@@ -110,13 +118,15 @@ For example, maybe we want to toggle the intensity of the lightbulb with each st
 
 We could certainly do this—just add some code before and after the line where we're changing the state:
 
-{% capture code %}void Light::toggle()
+{% include codeHeader.html file="Light.cpp" %}
+```cpp
+void Light::toggle()
 {
 	// ... do something here before the transition
 	currentState = lightTransitions[currentState];
 	// ... do something here after the transition
-}{% endcapture %}
-{% include code.html file="Light.cpp" code=code lang="cpp" %}
+}
+```
 
 But usually, the actions that we want to take before and after a state transition are *state dependent*. This means that we'll need to use a `switch` statement, or a bunch of conditionals, to check what state we're currently in so we can act accordingly. That will become very difficult to maintain if the number of states increases!
 
@@ -128,7 +138,9 @@ Now that we've looked at how to create a state transition table, we can implemen
 
 Instead of using a state transition table and a `LightState` *enum*, what if we make each concrete light state its own *class*? That way, we can delegate the task of determining the next state to the *current state* that a light is in. In other words, I'm proposing that we do something like this, where invoking a light's `toggle` method in turn invokes the current state's `toggle` method (because remember—we're now going to use classes instead of enums for the states):
 
-{% capture code %}#pragma once
+{% include codeHeader.html file="Light.h" copyable=false %}
+```cpp
+#pragma once
 #include "LightState.h"
 
 class Light
@@ -145,10 +157,12 @@ public:
 private:
 	// LightState here is now a class, not the enum that we saw earlier
 	LightState* currentState;
-};{% endcapture %}
-{% include code.html file="Light.h" code=code lang="cpp" copyable=false %}
+};
+```
 
-{% capture code %}#include "Light.h"
+{% include codeHeader.html file="Light.cpp" copyable=false %}
+```cpp
+#include "Light.h"
 
 // TODO: set the initial state here
 Light::Light()
@@ -166,8 +180,8 @@ void Light::toggle()
 {
 	// Delegate the task of determining the next state to the current state!
 	currentState->toggle(this);
-}{% endcapture %}
-{% include code.html file="Light.cpp" code=code lang="cpp" copyable=false %}
+}
+```
 
 Then, somewhere inside the current state's `toggle` method, we call the light's `setState` method and pass in the new state that we want to go to:
 
@@ -216,7 +230,9 @@ To understand how this all works in practice, we'll implement everything from sc
 
 Let's first define the abstract `LightState` class. You'll notice some forward declarations that are necessary to resolve circular includes that would otherwise throw off the C++ linker.
 
-{% capture code %}#pragma once
+{% include codeHeader.html file="LightState.h" %}
+```cpp
+#pragma once
 #include "Light.h"
 
 // Forward declaration to resolve circular dependency/include
@@ -229,8 +245,8 @@ public:
 	virtual void toggle(Light* light) = 0;
 	virtual void exit(Light* light) = 0;
 	virtual ~LightState() {}
-};{% endcapture %}
-{% include code.html file="LightState.h" code=code lang="cpp" %}
+};
+```
 
 Since this is a **pure abstract class**, we cannot create an instance of it. The `LightState` interface allows us to take advantage of polymorphism so we can refer to a generic state without having to specify the true type of state that a `Light` is currently in.
 
@@ -243,7 +259,9 @@ Next, we'll declare all of our concrete state classes. We'll force each one to b
 1. Defining a static `getInstance` method that returns a pointer to the singleton.
 2. Declaring all constructors, copy constructors, and assignment operators as private.
 
-{% capture code %}#pragma once
+{% include codeHeader.html file="ConcreteLightStates.h" %}
+```cpp
+#pragma once
 #include "LightState.h"
 #include "Light.h"
 
@@ -301,14 +319,16 @@ private:
 	HighIntensity() {}
 	HighIntensity(const HighIntensity& other);
 	HighIntensity& operator=(const HighIntensity& other);
-};{% endcapture %}
-{% include code.html file="ConcreteLightStates.h" code=code lang="cpp" %}
+};
+```
 
 I created inlined, empty definitions for the `enter` and `exit` methods, as these are not essential for our purposes. They are merely there as placeholders, to show that you could fill those in if you wanted to. For example, you could fill these with print statements, or you could invoke some method on the light object that got passed in, such as `light->increaseGlow()`.
 
 Let's also create definitions for all of the `toggle` and `getInstance` methods, to make things clearer:
 
-{% capture code %}#include "ConcreteLightStates.h"
+{% include codeHeader.html file="ConcreteLightStates.cpp" %}
+```cpp
+#include "ConcreteLightStates.h"
 
 void LightOff::toggle(Light* light)
 {
@@ -356,8 +376,8 @@ LightState& HighIntensity::getInstance()
 {
 	static HighIntensity singleton;
 	return singleton;
-}{% endcapture %}
-{% include code.html file="ConcreteLightStates.cpp" code=code lang="cpp" %}
+}
+```
 
 I'm taking advantage of static variables to create my singletons in a legible manner. Moreover, note that I'm returning references, and not pointers, [to avoid leaking memory](https://stackoverflow.com/questions/13047526/difference-between-singleton-implemention-using-pointer-and-using-static-object).
 
@@ -367,7 +387,9 @@ Notice how each `toggle` method initiates the appropriate state transition by in
 
 The final piece of the puzzle is the `Light` class, particularly the `setState` method:
 
-{% capture code %}#pragma once
+{% include codeHeader.html file="Light.h" %}
+```cpp
+#pragma once
 #include "LightState.h"
 
 // Forward declaration to resolve circular dependency/include
@@ -384,10 +406,12 @@ public:
 
 private:
 	LightState* currentState;
-};{% endcapture %}
-{% include code.html file="Light.h" code=code lang="cpp" %}
+};
+```
 
-{% capture code %}#include "Light.h"
+{% include codeHeader.html file="Light.cpp" %}
+```cpp
+#include "Light.h"
 #include "ConcreteLightStates.h"
 
 Light::Light()
@@ -407,8 +431,8 @@ void Light::toggle()
 {
 	// Delegate the task of determining the next state to the current state
 	currentState->toggle(this);
-}{% endcapture %}
-{% include code.html file="Light.cpp" code=code lang="cpp" %}
+}
+```
 
 This is where the `enter` and `exit` methods come into play. Before we change states, we call the exit method on the previous state. Then, we set the current state to the new state and invoke the enter method. But again, since we haven't defined the behavior for these two methods, they won't really do anything; they're just here to show you that you *could* do those things if you wanted to.
 
@@ -420,7 +444,9 @@ I use Visual Studio whenever I work with C++, so naturally, I'm also going to us
 
 Below is my test file. Note that you may need to change some of your includes if you named your primary project differently:
 
-{% capture code %}#include "stdafx.h"
+{% include codeHeader.html %}
+```cpp
+#include "stdafx.h"
 #include "CppUnitTest.h"
 #include "../LightbulbFSM/Light.h"
 #include "../LightbulbFSM/Light.cpp"
@@ -513,8 +539,8 @@ namespace Microsoft
 			}
 		}
 	}
-}{% endcapture %}
-{% include code.html code=code lang="cpp" %}
+}
+```
 
 Notice how I defined a test method for each state transition:
 

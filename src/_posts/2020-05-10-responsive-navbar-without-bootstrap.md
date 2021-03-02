@@ -40,7 +40,9 @@ We'll design this with a mobile-first approach and simply take care of the deskt
 
 Below is all of the HTML that we're going to need to create our responsive navbar, complete with semantic and legible markup and none of that Bootstrap nonsense:
 
-{% capture code %}<!DOCTYPE html>
+{% include codeHeader.html file="index.html" %}
+```html
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -72,8 +74,8 @@ Below is all of the HTML that we're going to need to create our responsive navba
     </header>
     <script src="index.js"></script>
 </body>
-</html>{% endcapture %}
-{% include code.html file="index.html" code=code lang="html" %}
+</html>
+```
 
 We're going to need two more files: `style.css` and `index.js`. Go ahead and create those before moving on. Note that you can place them under an assets folder if you'd like; just be sure to update the link and script in the above HTML to point to the correct files.
 
@@ -119,7 +121,9 @@ We're going to take this slowly. I'll add explanations for each bit of CSS and J
 
 First up are some standard CSS resets and base styling:
 
-{% capture code %}:root {
+{% include codeHeader.html file="style.css" %}
+```css
+:root {
     --navbar-bg-color: hsl(0, 0%, 15%);
     --navbar-text-color: hsl(0, 0%, 85%);
     --navbar-text-color-focus: white;
@@ -136,21 +140,23 @@ body {
     height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
-}{% endcapture %}
-{% include code.html file="style.css" code=code lang="css" %}
+}
+```
 
 Feel free to remove any of the CSS that doesn't apply to your situation; this is just for the tutorial itself. The variables up at the top will help us avoid copy-pasting colors in our CSS. We reset paddings and margins and use `box-sizing: border-box` to ensure that widths/heights take border and padding into account. Finally, we ensure that the body takes up the entire vertical height of the device with `height: 100vh`.
 
 Before we look at the CSS specific to the responsive navbar, I'd like to introduce one more selector:
 
-{% capture code %}.container {
+{% include codeHeader.html file="style.css" %}
+```css
+.container {
     max-width: 1000px;
     padding-left: 1.4rem;
     padding-right: 1.4rem;
     margin-left: auto;
     margin-right: auto;
-}{% endcapture %}
-{% include code.html file="style.css" code=code lang="css" %}
+}
+```
 
 This is a pretty popular approach for centering things horizontally in CSS. Basically, you can just slap a class name of `container` on anything that should be horizontally centered on the page. Here, the page is centered to a maximum width of `1000px`. If you'll recall, we applied this class to the `<nav>` element:
 
@@ -160,7 +166,9 @@ This is a pretty popular approach for centering things horizontally in CSS. Basi
 
 Alright, time to actually style our responsive navbar. We'll work in a top-down fashion. First up is the outermost `#navbar` element:
 
-{% capture code %}#navbar {
+{% include codeHeader.html file="style.css" %}
+```css
+#navbar {
     --navbar-height: 64px;
     position: fixed;
     height: var(--navbar-height);
@@ -168,8 +176,8 @@ Alright, time to actually style our responsive navbar. We'll work in a top-down 
     left: 0;
     right: 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-}{% endcapture %}
-{% include code.html file="style.css" code=code lang="css" %}
+}
+```
 
 **Result**:
 
@@ -179,13 +187,15 @@ Why we need the CSS variable will become obvious later on. The entire element is
 
 Moving on, we have the nested container element:
 
-{% capture code %}.navbar-container {
+{% include codeHeader.html file="style.css" %}
+```css
+.navbar-container {
     display: flex;
     justify-content: space-between;
     height: 100%;
     align-items: center;
-}{% endcapture %}
-{% include code.html file="style.css" code=code lang="css" %}
+}
+```
 
 **Result**:
 
@@ -195,7 +205,9 @@ As I mentioned earlier, this is simply a flex container. We use `justify-content
 
 Next up is some general styling for the navbar anchors:
 
-{% capture code %}.navbar-item {
+{% include codeHeader.html file="style.css" %}
+```css
+.navbar-item {
     margin: 0.4em;
     width: 100%;
 }
@@ -228,8 +240,8 @@ Next up is some general styling for the navbar anchors:
 .navbar-link:hover {
     color: var(--navbar-text-color-focus);
     background-color: var(--navbar-bg-contrast);
-}{% endcapture %}
-{% include code.html file="style.css" code=code lang="css" %}
+}
+```
 
 **Result**:
 
@@ -239,14 +251,16 @@ Pretty straightforward.
 
 Here's the CSS for the website logo. Note that this is just a placeholder for my demo; in reality, you'll probably want to use an image or SVG:
 
-{% capture code %}.navbar-logo {
+{% include codeHeader.html file="style.css" %}
+```css
+.navbar-logo {
     background-color: var(--navbar-text-color-focus);
     border-radius: 50%;
     width: 30px;
     height: 30px;
     margin-right: 0.5em;
-}{% endcapture %}
-{% include code.html file="style.css" code=code lang="css" %}
+}
+```
 
 **Result**:
 
@@ -256,7 +270,9 @@ Time for the toggle button!
 
 ### Navbar Hamburger Icon
 
-{% capture code %}.navbar-toggle {
+{% include codeHeader.html file="style.css" %}
+```css
+.navbar-toggle {
     cursor: pointer;
     border: none;
     background-color: transparent;
@@ -266,8 +282,8 @@ Time for the toggle button!
     align-items: center;
     justify-content: center;
     flex-direction: column;
-}{% endcapture %}
-{% include code.html file="style.css" code=code lang="css" %}
+}
+```
 
 Basically, we reset some of the default `<button>` styles and give the button fixed dimensions. It's also a flex container. Note that the actual bars of the hamburger icon are three `<span>`s:
 
@@ -283,7 +299,9 @@ Basically, we reset some of the default `<button>` styles and give the button fi
 
 Here's the CSS for that:
 
-{% capture code %}.icon-bar {
+{% include codeHeader.html file="style.css" %}
+```css
+.icon-bar {
     display: block;
     width: 25px;
     height: 4px;
@@ -297,8 +315,8 @@ Here's the CSS for that:
 .navbar-toggle:focus .icon-bar,
 .navbar-toggle:hover .icon-bar {
     background-color: var(--navbar-text-color-focus);
-}{% endcapture %}
-{% include code.html file="style.css" code=code lang="css" %}
+}
+```
 
 **Result**:
 
@@ -308,7 +326,9 @@ There are lots of ways to do this, but I think this is the most straightforward 
 
 When the toggle button is clicked, we'll apply a class name of `.opened` to the navbar via JavaScript. Here's how we'll animate the hamburger icon to become a close icon (X):
 
-{% capture code %}#navbar.opened .navbar-toggle .icon-bar:first-child,
+{% include codeHeader.html file="style.css" %}
+```css
+#navbar.opened .navbar-toggle .icon-bar:first-child,
 #navbar.opened .navbar-toggle .icon-bar:last-child {
     position: absolute;
     margin: 0;
@@ -325,8 +345,8 @@ When the toggle button is clicked, we'll apply a class name of `.opened` to the 
 
 #navbar.opened .navbar-toggle .icon-bar:last-child {
     transform: rotate(-45deg);
-}{% endcapture %}
-{% include code.html file="style.css" code=code lang="css" %}
+}
+```
 
 Basically, the middle bar disappears, the top and bottom bars get centered, the top bar rotates 45 degrees clockwise, and the bottom bar rotates 45 degrees counter-clockwise.
 
@@ -334,7 +354,9 @@ Basically, the middle bar disappears, the top and bottom bars get centered, the 
 
 Now's a good time to code up the logic for toggling the navigation menu so we can test that the toggle button works:
 
-{% capture code %}const navbar = document.getElementById("navbar");
+{% include codeHeader.html file="index.js" %}
+```javascript
+const navbar = document.getElementById("navbar");
 const navbarToggle = navbar.querySelector(".navbar-toggle");
 
 function openMobileNavbar() {
@@ -353,8 +375,8 @@ navbarToggle.addEventListener("click", () => {
   } else {
     openMobileNavbar();
   }
-});{% endcapture %}
-{% include code.html file="index.js" code=code lang="javascript" %}
+});
+```
 
 Now, I know what you're thinking:
 
@@ -377,7 +399,9 @@ The menu, of course, is still not functional. Let's fix that!
 
 As I mentioned earlier, the navigation menu wrapper has fixed positioning, with a `top` offset equal to precisely the height of the navbar itself:
 
-{% capture code %}.navbar-menu {
+{% include codeHeader.html file="style.css" %}
+```css
+.navbar-menu {
     position: fixed;
     top: var(--navbar-height);
     bottom: 0;
@@ -387,8 +411,8 @@ As I mentioned earlier, the navigation menu wrapper has fixed positioning, with 
     visibility: hidden;
     left: 0;
     right: 0;
-}{% endcapture %}
-{% include code.html file="style.css" code=code lang="css" %}
+}
+```
 
 **Result**:
 
@@ -398,12 +422,14 @@ While `opacity: 0` and `visibility: hidden` may seem redundant, it's a good idea
 
 Here's the code for the menu's opened state:
 
-{% capture code %}#navbar.opened .navbar-menu {
+{% include codeHeader.html file="style.css" %}
+```css
+#navbar.opened .navbar-menu {
     background-color: rgba(0, 0, 0, 0.4);
     opacity: 1;
     visibility: visible;
-}{% endcapture %}
-{% include code.html file="style.css" code=code lang="css" %}
+}
+```
 
 Click the hamburger icon to see the following result:
 
@@ -411,7 +437,9 @@ Click the hamburger icon to see the following result:
 
 The container for the navigation links is an unordered list:
 
-{% capture code %}.navbar-links {
+{% include codeHeader.html file="style.css" %}
+```css
+.navbar-links {
     list-style-type: none;
     max-height: 0;
     overflow: hidden;
@@ -430,8 +458,8 @@ The container for the navigation links is an unordered list:
 #navbar.opened .navbar-links {
     padding: 1em;
     max-height: none;
-}{% endcapture %}
-{% include code.html file="style.css" code=code lang="css" %}
+}
+```
 
 **Result**:
 
@@ -439,7 +467,9 @@ The container for the navigation links is an unordered list:
 
 This is the actual, physical "menu" part of our navigation. The margin ensures that the menu appears detached from the rest of the navbar, as if it's floating on the page. If instead you'd like it to appear as a physical extension of the navigation bar, simply get rid of the margin and border radius and shift the shadow down:
 
-{% capture code %}.navbar-links {
+{% include codeHeader.html file="style.css" %}
+```css
+.navbar-links {
     list-style-type: none;
     max-height: 0;
     overflow: hidden;
@@ -451,8 +481,8 @@ This is the actual, physical "menu" part of our navigation. The margin ensures t
     flex-direction: column;
     align-items: center;
     box-shadow: 0 20px 20px rgba(0, 0, 0, 0.3);
-}{% endcapture %}
-{% include code.html file="style.css" code=code lang="css" %}
+}
+```
 
 **Result**:
 
@@ -462,15 +492,17 @@ And that's it for the mobile version's CSS!
 
 One last thing before we style the desktop version. Add this to your JavaScript:
 
-{% capture code %}const navbarMenu = navbar.querySelector(".navbar-menu");
+{% include codeHeader.html file="index.js" %}
+```javascript
+const navbarMenu = navbar.querySelector(".navbar-menu");
 const navbarLinksContainer = navbar.querySelector(".navbar-links");
 
 navbarLinksContainer.addEventListener("click", (clickEvent) => {
   clickEvent.stopPropagation();
 });
 
-navbarMenu.addEventListener("click", closeMobileNavbar);{% endcapture %}
-{% include code.html file="index.js" code=code lang="javascript" %}
+navbarMenu.addEventListener("click", closeMobileNavbar);
+```
 
 Basically, this lets the user close the navigation menu when they click on `.navbar-menu`. But we need to stop click propagation so that any clicks on `.navbar-links` don't [bubble up](https://www.sitepoint.com/event-bubbling-javascript/) and trigger a close.
 
@@ -480,7 +512,9 @@ Go ahead and test this on your end to make sure the mobile version works.
 
 I'll show the media query in its entirety and then we'll look at what each piece is doing:
 
-{% capture code %}@media screen and (min-width: 700px) {
+{% include codeHeader.html file="style.css" %}
+```css
+@media screen and (min-width: 700px) {
     .navbar-toggle {
         display: none;
     }
@@ -510,8 +544,8 @@ I'll show the media query in its entirety and then we'll look at what each piece
     #navbar .navbar-link:last-child {
         margin-right: 0;
     }
-}{% endcapture %}
-{% include code.html file="style.css" code=code lang="css" %}
+}
+```
 
 So first up is this:
 

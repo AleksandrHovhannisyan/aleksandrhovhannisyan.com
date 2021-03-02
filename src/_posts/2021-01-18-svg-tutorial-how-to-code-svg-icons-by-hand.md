@@ -226,10 +226,12 @@ As a reminder, an SVG's coordinate system starts with `(0, 0)` at the top-left c
 
 SVGs allow us to specify the starting and ending points for lines using four attributes: `x1`, `y1`, `x2`, and `y2`. So, to draw a simple horizontal line, we could do the following:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <line x1="0" y1="4.2" x2="24" y2="4.2"/>
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 You can think of this as telling the browser to put an imaginary pen down at `(0px, 4.2px)` and move it right until it reaches `(24px, 4.2px)`.
 
@@ -258,10 +260,12 @@ With the stroke color set, we can finally view our line:
 
 When you scale this down, that line may actually look a bit thin. That's because it's using a default stroke width of `1` unit. Fortunately, we can change its thickness with the `stroke-width` attribute, either on the parent SVG element or any individual shape. If you set it on the SVG parent, all shapes will inherit that value. Like with the stroke color, though, you can also do this via a CSS property of the same name, like this:
 
-{% capture code %}svg {
+{% include codeHeader.html %}
+```css
+svg {
   stroke-width: 2;
-}{% endcapture %}
-{% include code.html code=code lang="css" %}
+}
+```
 
 And the resulting line is thicker:
 
@@ -275,7 +279,9 @@ I'll use a stroke width of `2` for the rest of this tutorial. You can pick a dif
 
 And that's all we need to know to draw the three icons we saw earlier! We'll just tweak the `x` coordinates to get shorter or longer lines, as needed. Here's the full markup for all three icons:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <line x1="2" y1="4.2" x2="22" y2="4.2"/>
   <line x1="2" y1="9.4" x2="16" y2="9.4"/>
   <line x1="2" y1="14.6" x2="22" y2="14.6"/>
@@ -292,8 +298,8 @@ And that's all we need to know to draw the three icons we saw earlier! We'll jus
   <line x1="8" y1="9.4" x2="22" y2="9.4"/>
   <line x1="2" y1="14.6" x2="22" y2="14.6"/>
   <line x1="8" y1="19.8" x2="22" y2="19.8"/>
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 You may be wondering how I picked the `y` values. They do seem arbitrary, don't they? It turns out that we just have to do a bit of math.
 
@@ -301,10 +307,12 @@ We have four lines, each with a stroke width of `2`; together, they occupy a tot
 
 By the way, you may find it useful to temporarily give your SVG elements a border as you're drawing them so you can better visualize the constraints you're working with:
 
-{% capture code %}svg {
+{% include codeHeader.html %}
+```css
+svg {
   border: 1px solid;
-}{% endcapture %}
-{% include code.html code=code lang="css" %}
+}
+```
 
 That'll look like this:
 
@@ -339,10 +347,12 @@ I'll do that for most demonstrations in this tutorial.
 
 Before we move on, note that you don't have to draw lines that are perfectly horizontal. You can also draw perfectly vertical lines:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <line x1="12" y1="2" x2="12" y2="22" />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
@@ -352,10 +362,12 @@ Before we move on, note that you don't have to draw lines that are perfectly hor
 
 Or even slanted/diagonal lines:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <line x1="2" y1="2" x2="22" y2="22" />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
@@ -383,10 +395,12 @@ Fortunately for us, that's why `<polyline>` exists! It basically lets us define 
 
 A `<polyline>` is defined with the help of the `points` attribute, like this:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <polyline points="3 4, 21 4" />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 This is the simplest possible `<polyline>` that you can create, and it defines a horizontal line from `(3, 4)` to `(21, 4)`:
 
@@ -408,10 +422,12 @@ Anyway, your browser draws a solid line between the first pair of coordinates, a
 
 We can draw the text icon I showed earlier by combining `<polyline>` and a basic `<line>` shape. We'll start by creating the top-left serif of the letter `T`:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <polyline points="3 8, 3 4" />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
@@ -421,10 +437,12 @@ We can draw the text icon I showed earlier by combining `<polyline>` and a basic
 
 From `(3, 4)`, we'll travel horizontally until we're an equal distance from the right edge as we were from the left:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <polyline points="3 8, 3 4, 21 4" />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" style="fill: black !important;">
@@ -438,10 +456,12 @@ There *is* one more SVG property worth mentioning briefly before we move on, and
 
 Note that certain icons may actually benefit from having a custom fill, so you wouldn't want to *always* disable this globally in your app. But for our purposes, it's going to get in the way of drawing shapes like polylines, polygons, etc. since we don't actually *need* a fill. So, for the rest of this tutorial, I'll use this additional CSS to clear the fill for all icons:
 
-{% capture code %}svg {
+{% include codeHeader.html %}
+```css
+svg {
   fill: none;
-}{% endcapture %}
-{% include code.html code=code lang="css" %}
+}
+```
 
 With that set, our shape should look correct now:
 
@@ -453,10 +473,12 @@ With that set, our shape should look correct now:
 
 After that step, we'll drop down an equal vertical distance to complete the top portion of our letter `T`:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <polyline points="3 8, 3 4, 21 4, 21 8" />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
@@ -466,12 +488,14 @@ After that step, we'll drop down an equal vertical distance to complete the top 
 
 From here, we just need to complete the stem and base of the letter:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <polyline points="3 8, 3 4, 21 4, 21 8" />
   <line x1="12" y1="4" x2="12" y2="20" />
   <line x1="8" y1="20" x2="16" y2="20" />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
@@ -483,12 +507,14 @@ From here, we just need to complete the stem and base of the letter:
 
 Note that you could just as well use polylines for the two lines; you'll get the same shape:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <polyline points="3 8, 3 4, 21 4, 21 8" />
   <polyline points="12 4, 12 20" />
   <polyline points="8 20, 16 20" />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 Awesome! You've now created four icons.
 
@@ -523,11 +549,13 @@ This is because of two related SVG attributes (and their equivalent CSS properti
 
 For the remainder of this tutorial, all examples will use the following CSS:
 
-{% capture code %}svg {
+{% include codeHeader.html %}
+```css
+svg {
   stroke-linejoin: round;
   stroke-linecap: round;
-}{% endcapture %}
-{% include code.html code=code lang="css" %}
+}
+```
 
 You don't have to use these if you don't want to. You can also apply them conditionally, to certain SVG elements but not to others, using attributes instead of CSS properties.
 
@@ -567,10 +595,12 @@ In geometry class, you probably learned that in order to draw a circle, you need
 
 Well, it's exactly the same with SVGs! Here's a simple circle:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <circle cx="12" cy="12" r="10" />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
@@ -617,10 +647,12 @@ Now that we know how to draw circles in SVG, we can draw the three icons that I 
 
 We'll start with the face of the clock as a circle:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <circle cx="12" cy="12" r="10" />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
@@ -630,11 +662,13 @@ We'll start with the face of the clock as a circle:
 
 The only thing left is to draw the hands, and for that we'll use a polyline:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <circle cx="12" cy="12" r="10" />
   <polyline points="13 7, 13 14, 9 14" />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
@@ -649,10 +683,12 @@ One down, two to go!
 
 Just as before, we'll first create the circle:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <circle cx="12" cy="12" r="10" />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
@@ -662,11 +698,13 @@ Just as before, we'll first create the circle:
 
 The rest of the info icon consists of a line and a circle. Here's the body of the `i`:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <circle cx="12" cy="12" r="10" />
   <line x1="12" y1="12" x2="12" y2="16" />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
@@ -677,12 +715,14 @@ The rest of the info icon consists of a line and a circle. Here's the body of th
 
 And here's the dot in the `i`; we give it a fill so it's solid:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <circle cx="12" cy="12" r="10" />
   <circle cx="12" cy="8" r="0.5" fill="currentColor" />
   <line x1="12" y1="12" x2="12" y2="16" />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
@@ -698,12 +738,14 @@ Observe that the radius is `0.5` because the circle is filled, and we don't want
 
 Last one! For this icon, I'll just give you the full markup; it's a circle, a line, and a polyline:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
   <circle cx="12" cy="12" r="10" />
   <line x1="8" y1="12" x2="16" y2="12" />
   <polyline points="12 8, 16 12, 12 16" />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
@@ -721,10 +763,12 @@ Remember how I mentioned that `<polyline>`s are not self-closing? Well, the natu
 
 For example, `<polygon>` allows us to draw a triangle using just three points:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <polygon points="12 2, 22 22, 2 22" />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
@@ -734,12 +778,14 @@ For example, `<polygon>` allows us to draw a triangle using just three points:
 
 Cool! Building on this, we can now create the warning indicator icon that I showed you at the start of this tutorial. This should be familiar if you recall how we created the info icon before:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <polygon points="12 2, 22 22, 2 22" />
   <line x1="12" y1="10" x2="12" y2="14" />
   <circle cx="12" cy="18" r="0.5" fill="currentColor" />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
@@ -751,10 +797,12 @@ Cool! Building on this, we can now create the warning indicator icon that I show
 
 By the way, I mentioned above that we can use `<polygon>` to create all kinds of shapes, but some come as pre-built shapes. For example, rectangles *can* be created with `<polygon>`:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <polygon points="2 4, 22 4, 22 22, 2 22" />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
@@ -764,10 +812,12 @@ By the way, I mentioned above that we can use `<polygon>` to create all kinds of
 
 But they can also be created with `<rect>`, which takes an `x` and a `y` coordinate for its top-left corner along with a `width` and `height`. This is all that's needed to draw a rectangle:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <rect x="4" y="4" width="18" height="18" />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
@@ -777,13 +827,15 @@ But they can also be created with `<rect>`, which takes an `x` and a `y` coordin
 
 While we're here, why don't we draw a calendar icon? That one is technically created using a `<path>`, which we'll learn about in the very next section. For now, we can use a `<rect>` and see how that looks.
 
-{% capture code %}  <svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+  <svg viewBox="0 0 24 24" width="64" height="64">
     <rect x="3" y="5" width="18" height="16" />
     <line x1="4" y1="10" x2="20" y2="10" />
     <line x1="7" y1="3" x2="7" y2="7" />
     <line x1="17" y1="3" x2="17" y2="7" />
-  </svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+  </svg>
+```
 
 This is fine, except the corners are still a bit too sharp:
 
@@ -883,14 +935,16 @@ This is easier to remember than it looks: `M` for **m**oving, `H/h` for **h**ori
 
 If you're with me so far, then you should understand the first two commands in this path:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
       M 4 4
       h 16"
   />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 That gives us this line, extending from `(4, 4)` to `(20, 4)`:
 
@@ -920,7 +974,9 @@ To help this sink in, let's also make a pause icon with two parallel vertical li
 
 Here's the code that does that:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
       M 8 8
@@ -928,8 +984,8 @@ Here's the code that does that:
       m 8 0
       v -8"
   />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 Let's interpret these commands one at a time:
 
@@ -940,7 +996,9 @@ Let's interpret these commands one at a time:
 
 Notice how we mixed relative and absolute commands. We could've also said this:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
       M 8 8
@@ -948,8 +1006,8 @@ Notice how we mixed relative and absolute commands. We could've also said this:
       M 16 16
       V 16 8"
   />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 And that gives us the same exact shape, but requires that we specify absolute coordinates:
 
@@ -971,14 +1029,16 @@ Finally, note that `L/l` is the more generic version of `H/h` and `V/v`. Whereas
 
 Here's an example of drawing a diagonal line with a relative `LineTo` command:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
       M 2 2
       l 20 20"
   />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
@@ -1000,7 +1060,9 @@ The command `Z` (or `z`) stands for `ClosePath`. Remember when we learned about 
 
 For example, to draw a self-closing square with `<path>`, we only need to draw three of the four lines explicitly; the fourth can be drawn automatically for us with the `ClosePath` command:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
       M 2 2
@@ -1009,8 +1071,8 @@ For example, to draw a self-closing square with `<path>`, we only need to draw t
       h -20
       z"
   />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 Voila:
 
@@ -1117,14 +1179,16 @@ The `large-arc-flag` and `sweep-flag` parameters are probably the more confusing
 
 As before, it helps to look at a concrete example. Here's a very simple arc in Quadrant 1:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
       M 22 12
       a 10 10 0 0 0 -10 -10"
     />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 Notice that it's counter-clockwise because we've set `sweep-flag` to be `0`:
 
@@ -1140,7 +1204,9 @@ Notice that it's counter-clockwise because we've set `sweep-flag` to be `0`:
 
 And, as you may have guessed, we can chain four arcs to create a circle:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
       M 22 12
@@ -1149,8 +1215,8 @@ And, as you may have guessed, we can chain four arcs to create a circle:
       a 10 10 0 0 0 10 10
       a 10 10 0 0 0 10 -10"
     />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
@@ -1175,14 +1241,16 @@ I'll take this one step at a time so you can visualize the process.
 
 First, we'll draw the top portion of the calendar (you could start elsewhere, though):
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
       M 4 4
       h 16"
     />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
@@ -1196,15 +1264,17 @@ First, we'll draw the top portion of the calendar (you could start elsewhere, th
 
 Then, we draw a `2x2` clockwise arc, moving `2px` to the right and `2px` down:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
       M 4 4
       h 16
       a 2 2 0 0 1 2 2"
     />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
@@ -1219,7 +1289,9 @@ Then, we draw a `2x2` clockwise arc, moving `2px` to the right and `2px` down:
 
 From there, we go down `14px`:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
       M 4 4
@@ -1227,8 +1299,8 @@ From there, we go down `14px`:
       a 2 2 0 0 1 2 2
       v 14"
     />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
@@ -1244,7 +1316,9 @@ From there, we go down `14px`:
 
 Draw the bottom-right corner's arc:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
       M 4 4
@@ -1253,8 +1327,8 @@ Draw the bottom-right corner's arc:
       v 14
       a 2 2 0 0 1 -2 2"
     />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
@@ -1271,7 +1345,9 @@ Draw the bottom-right corner's arc:
 
 Move left by `16px`:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
       M 4 4
@@ -1281,8 +1357,8 @@ Move left by `16px`:
       a 2 2 0 0 1 -2 2
       h -16"
     />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
@@ -1300,7 +1376,9 @@ Move left by `16px`:
 
 Draw the arc for the bottom-left corner:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
       M 4 4
@@ -1311,8 +1389,8 @@ Draw the arc for the bottom-left corner:
       h -16
       a 2 2 0 0 1 -2 -2"
     />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
@@ -1331,7 +1409,9 @@ Draw the arc for the bottom-left corner:
 
 Move up `14px`:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
       M 4 4
@@ -1343,8 +1423,8 @@ Move up `14px`:
       a 2 2 0 0 1 -2 -2
       v -14"
     />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
@@ -1364,7 +1444,9 @@ Move up `14px`:
 
 And finally, close off the shape with an explicit arc rather than `z` (which will draw a line).
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
       M 4 4
@@ -1377,8 +1459,8 @@ And finally, close off the shape with an explicit arc rather than `z` (which wil
       v -14
       a 2 2 0 0 1 2 -2"
     />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
@@ -1399,7 +1481,9 @@ And finally, close off the shape with an explicit arc rather than `z` (which wil
 
 And that's all there is to the rounded rectangle bit! Now, we just throw on a few lines:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
       M 4 4
@@ -1415,8 +1499,8 @@ And that's all there is to the rounded rectangle bit! Now, we just throw on a fe
   <line x1="2" y1="10" x2="22" y2="10" />
   <line x1="7" y1="2" x2="7" y2="6" />
   <line x1="17" y1="2" x2="17" y2="6" />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64">
@@ -1446,7 +1530,9 @@ We're almost done!
 
 Hopefully, you're now comfortable enough with SVG paths to interpret the code here:
 
-{% capture code %}<svg viewBox="0 0 24 24" width="64" height="64">
+{% include codeHeader.html %}
+```html
+<svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="M 18 14
       v 6
@@ -1459,8 +1545,8 @@ Hopefully, you're now comfortable enough with SVG paths to interpret the code he
     />
   <line x1="12" y1="14" x2="20" y2="6" />
   <polyline points="16 5.5, 20 5.5, 20 9.5" />
-</svg>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</svg>
+```
 
 That gives us the classic external-link icon:
 

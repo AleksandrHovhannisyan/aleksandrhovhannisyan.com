@@ -14,13 +14,17 @@ Let's skip the exposition and just jump right in. I'll use VS Code to make my li
 
 Switch to your target project directory and run this command:
 
-{% capture code %}npx create-react-app . --template typescript{% endcapture %}
-{% include code.html code=code lang="bash" %}
+{% include codeHeader.html %}
+```bash
+npx create-react-app . --template typescript
+```
 
 Alternatively, if your project directory does not yet exist, you can create it in one go:
 
-{% capture code %}npx create-react-app new-project-dir-name --template typescript{% endcapture %}
-{% include code.html code=code lang="bash" %}
+{% include codeHeader.html %}
+```bash
+npx create-react-app new-project-dir-name --template typescript
+```
 
 This uses Facebook's [create-react-app](https://create-react-app.dev/) to initialize a React project with TypeScript. React by itself is pretty powerful, but React with TypeScript is a much, *much* better dev experience, in my opinion.
 
@@ -42,8 +46,10 @@ Ant Design is a fantastic library for React and other JavaScript frameworks that
 
 Run this command:
 
-{% capture code %}yarn add antd{% endcapture %}
-{% include code.html code=code lang="bash" %}
+{% include codeHeader.html %}
+```bash
+yarn add antd
+```
 
 Note that `antd` already comes with type definitions, so there's no need to install `@types/` for it.
 
@@ -66,29 +72,39 @@ import { Button } from 'antd';
 
 First, install the `babel-plugin-import` package:
 
-{% capture code %}yarn add -D babel-plugin-import{% endcapture %}
-{% include code.html code=code lang="bash" %}
+{% include codeHeader.html %}
+```bash
+yarn add -D babel-plugin-import
+```
 
 Then install the `react-app-rewired` and `customize-cra` packages:
 
-{% capture code %}yarn add react-app-rewired customize-cra{% endcapture %}
-{% include code.html code=code lang="bash" %}
+{% include codeHeader.html %}
+```bash
+yarn add react-app-rewired customize-cra
+```
 
 These allow us to customize create-react-app without ejecting.
 
 Change the scripts in your `package.json` to use `react-app-rewired`:
 
-{% capture code %}"scripts": {
+{% include codeHeader.html file="package.json" %}
+```json
+{
+  "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
-}{% endcapture %}
-{% include code.html file="package.json" code=code lang="json" %}
+  }
+}
+```
 
 Create a file named `config-overrides.js` at the root of your project directory with this code:
 
-{% capture code %}const { override, fixBabelImports } = require('customize-cra');
+{% include codeHeader.html file="config-overrides.js"%}
+```javascript
+const { override, fixBabelImports } = require('customize-cra');
 
 module.exports = override(
   fixBabelImports('import', {
@@ -96,14 +112,18 @@ module.exports = override(
     libraryDirectory: 'es',
     style: 'css'
   })
-);{% endcapture %}
-{% include code.html file="config-overrides.js" code=code lang="javascript" %}
+);
+```
 
 Now, you can import antd components in your source files like you would from any other package, without having to additionally specify the stylesheet or the specific lib path to import from.
 
 Let's try it out. Open up your `App.tsx` and replace it with the following:
 
-{% capture code %}{% raw %}import React from 'react';
+
+{% include codeHeader.html file="src/App.tsx" %}
+{% raw %}
+```jsx
+import React from 'react';
 import { Button } from 'antd';
 
 const App = () => {
@@ -123,9 +143,9 @@ const App = () => {
   );
 };
 
-export default App;{% endraw %}{% endcapture %}
-
-{% include code.html file="src/App.tsx" code=code lang="jsx" %}
+export default App;
+```
+{% endraw %}
 
 If your app was already running, you'll need to restart it to observe these new changes.
 
@@ -139,12 +159,16 @@ Let's say you want to use a different primary color or base font size. Easy peas
 
 First, install the `less` and `less-loader` packages:
 
-{% capture code %}yarn add less less-loader{% endcapture %}
-{% include code.html code=code lang="bash" %}
+{% include codeHeader.html %}
+```bash
+yarn add less less-loader
+```
 
 Then, simply add a LESS loader to your config overrides:
 
-{% capture code %}const { override, fixBabelImports, addLessLoader } = require("customize-cra");
+{% include codeHeader.html file="config-overrides.js" %}
+```javascript
+const { override, fixBabelImports, addLessLoader } = require("customize-cra");
 
 module.exports = override(
   fixBabelImports("import", {
@@ -162,8 +186,8 @@ module.exports = override(
       },
     },
   })
-);{% endcapture %}
-{% include code.html file="config-overrides.js" code=code lang="javascript" %}
+);
+```
 
 > **Note**: Be sure to check [this issue](https://github.com/arackaf/customize-cra/issues/253) if you run into any problems. `customize-cra` and `less-loader` have had compatibility issues in the past.
 
@@ -183,26 +207,31 @@ But how do we use CSS Modules with TypeScript?
 
 This was an absolute headache to deal with before. But now, there's a package that does just what we want, and it's [made by a tech lead on Facebook's CRA team](https://github.com/mrmckeb)!
 
-{% capture code %}yarn add -D typescript-plugin-css-modules{% endcapture %}
-{% include code.html code=code lang="bash" %}
+{% include codeHeader.html %}
+```bash
+yarn add -D typescript-plugin-css-modules
+```
 
 After it's installed, add the plugin to your `tsconfig.json`:
 
-{% capture code %}{
+{% include codeHeader.html file="tsconfig.json" %}
+```json
+{
   "compilerOptions": {
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   }
-}{% endcapture %}
-{% include code.html file="tsconfig.json" code=code lang="json" %}
+}
+```
 
 Next, create a file named `global.d.ts` under your `src` directory. You can actually name this file whatever you want, as long as it has the `.d.ts` extension. Paste in this module declaration:
 
-{% capture code %}declare module '*.module.less' {
+{% include codeHeader.html file="src/global.d.ts" %}
+```javascript
+declare module '*.module.less' {
   const classes: { [key: string]: string };
   export default classes;
-}{% endcapture %}
-
-{% include code.html file="src/global.d.ts" code=code lang="javascript" %}
+}
+```
 
 Want to use Sass or CSS instead of Less? No problem! Simply replace the `.less` extension.
 
@@ -222,19 +251,23 @@ Once you do that, VS Code will create a `.vscode` directory in your project for 
 
 With that out of the way, let's now create a LESS stylesheet for our `App` component to move all the styles from before out of our JS. Name it `App.module.less` and fill it with these rules:
 
-{% capture code %}.app {
+{% include codeHeader.html file="src/App.module.less" %}
+```css
+.app {
     align-items: center;
     display: flex;
     flex-direction: column;
     height: 500px;
     justify-content: center;
-}{% endcapture %}
-{% include code.html file="src/App.module.less" code=code lang="css" %}
+}
+```
 
 Then, import the stylesheet like this in your component file:
 
-{% capture code %}import styles from './App.module.less';{% endcapture %}
-{% include code.html file="src/App.tsx" code=code lang="javascript" %}
+{% include codeHeader.html file="src/App.tsx" %}
+```javascript
+import styles from './App.module.less';
+```
 
 If you now try to access `styles.app` or `styles.whateverClassOrIDYouWant`, you may not see the auto-complete suggestions immediately. That doesn't mean that your installation is broken, though—this is just a known VS Code issue.
 
@@ -248,7 +281,10 @@ Once that's done, you won't have to guess or remind yourself what you named your
 
 Awesome! 😎 Here's what `App.tsx` should look like if you've been following along:
 
-{% capture code %}{% raw %}import React from 'react';
+{% include codeHeader.html file="src/App.tsx" %}
+{% raw %}
+```jsx
+import React from 'react';
 import { Button } from 'antd';
 import styles from './App.module.less';
 
@@ -261,8 +297,9 @@ const App = () => {
   );
 };
 
-export default App;{% endraw %}{% endcapture %}
-{% include code.html file="src/App.tsx" code=code lang="jsx" %}
+export default App;
+```
+{% endraw %}
 
 Refresh the page, and you'll see that it looks exactly the same, except we now get to take advantage of CSS Modules and LESS (as well as potentially SASS or vanilla CSS, if you'd like to use those instead).
 
@@ -276,14 +313,18 @@ Or we could set up ESLint with Prettier to format our code consistently 🙂
 
 First, install these packages:
 
-{% capture code %}yarn add -D @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-config-react eslint-plugin-prettier prettier{% endcapture %}
-{% include code.html code=code lang="bash" %}
+{% include codeHeader.html %}
+```bash
+yarn add -D @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-config-react eslint-plugin-prettier prettier
+```
 
 (Credit goes to [Ben Weiser](https://dev.to/benweiser/how-to-set-up-eslint-typescript-prettier-with-create-react-app-3675) for figuring this part out.)
 
 Next, create a file named `.eslintrc.json` at the root of your project directory with this JSON:
 
-{% capture code %}{
+{% include codeHeader.html file=".eslintrc.json" %}
+```json
+{
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
@@ -310,17 +351,19 @@ Next, create a file named `.eslintrc.json` at the root of your project directory
     }
   },
   "parser": "@typescript-eslint/parser"
-}{% endcapture %}
-{% include code.html file=".eslintrc.json" code=code lang="json" %}
+}
+```
 
 Create another file named `.prettierrc` at the root of your project directory with these contents:
 
-{% capture code %}{
+{% include codeHeader.html file=".prettierrc" %}
+```json
+{
   "singleQuote": true,
   "printWidth": 80,
   "trailingComma": "es5"
-}{% endcapture %}
-{% include code.html file=".prettierrc" code=code lang="json" %}
+}
+```
 
 This is where you'll define all your Prettier formatting rules. You *could* technically define these under `rules` in your `eslintrc` file, but I prefer to keep them separate. Also, note that you don't have to use these exact rules; you can change them if you'd like to.
 
@@ -328,14 +371,18 @@ This is where you'll define all your Prettier formatting rules. You *could* tech
 
 Add a `lint:fix` script to your `package.json` so you can fix linting errors as needed (you can name this script something else if you'd like to). This is what your scripts should look like:
 
-{% capture code %}"scripts": {
+{% include codeHeader.html file="package.json" %}
+```json
+{
+  "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
     "lint:fix": "eslint --fix './src/**/*.{ts,tsx}'"
-}{% endcapture %}
-{% include code.html file="package.json" code=code lang="json" %}
+  }
+}
+```
 
 Then, you can simply run `yarn lint:fix` from your terminal.
 
@@ -354,7 +401,9 @@ Open up your command palette again (`Ctrl+Shift+P` on Windows and `Cmd+Shift+P` 
 
 Stick this somewhere inside the existing JSON blob:
 
-{% capture code %}"[typescript]": {
+{% include codeHeader.html %}
+```json
+"[typescript]": {
   "editor.formatOnSave": true,
   "editor.tabSize": 2
 },
@@ -370,8 +419,8 @@ Stick this somewhere inside the existing JSON blob:
 ],
 "editor.codeActionsOnSave": {
   "source.fixAll.eslint": true
-}{% endcapture %}
-{% include code.html code=code lang="json" %}
+}
+```
 
 > **Note**: You could also just put this in your workspace settings, but then you'd have to do that for every project. If you only want to lint for this project, select `Preferences: Open Workspace Settings` instead.
 

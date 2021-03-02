@@ -111,12 +111,16 @@ We can do this using the padding trick that we learned. To create an aspect rati
 
 Here's the HTML and CSS that'll do that for us:
 
-{% capture code %}<div class="embed-container">
+{% include codeHeader.html file="test.html" %}
+```html
+<div class="embed-container">
   <iframe>...</iframe>
-</div>{% endcapture %}
-{% include code.html file="test.html" code=code lang="html" %}
+</div>
+```
 
-{% capture code %}.embed-container {
+{% include codeHeader.html file="test.css" %}
+```css
+.embed-container {
   position: relative;
   height: 0;
   padding-bottom: 56.25%;
@@ -131,8 +135,8 @@ Here's the HTML and CSS that'll do that for us:
   left: 0;
   width: 100%;
   height: 100%;
-}{% endcapture %}
-{% include code.html file="test.css" code=code lang="css" %}
+}
+```
 
 That's it! Your YouTube iframe will now maintain a `16:9` aspect ratio on all device widths.
 
@@ -140,7 +144,9 @@ That's it! Your YouTube iframe will now maintain a `16:9` aspect ratio on all de
 
 Now that we know how to define an element's height as a percentage of its own width, we can easily create a [3x3 square layout](https://tobiasahlin.com/blog/common-flexbox-patterns/#3x3-grid-constrained-proportions-11) with Flexbox or CSS Grid. As we learned before, squares have an aspect ratio of `1:1`, so all you have to do is give each element vertical padding equal to `100%` of its width. This is straightforward with CSS Grid:
 
-{% capture code %}<ul class="square-grid">
+{% include codeHeader.html file="grid.html" %}
+```html
+<ul class="square-grid">
   <li class="square"></li>
   <li class="square"></li>
   <li class="square"></li>
@@ -150,10 +156,12 @@ Now that we know how to define an element's height as a percentage of its own wi
   <li class="square"></li>
   <li class="square"></li>
   <li class="square"></li>
-</ul>{% endcapture %}
-{% include code.html file="grid.html" code=code lang="html" %}
+</ul>
+```
 
-{% capture code %}.square-grid {
+{% include codeHeader.html file="grid.css" %}
+```css
+.square-grid {
   --gap: 16px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -166,8 +174,8 @@ Now that we know how to define an element's height as a percentage of its own wi
 .square {
   height: 0;
   padding-bottom: 100%;
-}{% endcapture %}
-{% include code.html file="grid.css" code=code lang="css" %}
+}
+```
 
 That gives us a perfect 3x3 grid of squares:
 
@@ -189,7 +197,9 @@ You can now put whatever absolutely positioned content you want in these squares
 
 One of the more common use cases you'll run into is creating a square image grid with CSS, where each image is cropped to fit a perfect `1:1` aspect ratio. This simply builds on the previous example, where we created a generic square grid with CSS grid and percentage padding. Here, we'll relatively position our squares and absolutely position all of its children (images) to get a nice little image gallery:
 
-{% capture code %}.square-grid {
+{% include codeHeader.html file="image-grid.css" %}
+```css
+.square-grid {
   --gap: 16px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -213,8 +223,8 @@ One of the more common use cases you'll run into is creating a square image grid
   height: 100%;
   object-fit: cover;
   object-position: center;
-}{% endcapture %}
-{% include code.html file="image-grid.css" code=code lang="css" %}
+}
+```
 
 Putting it all together, we get a `3x3` grid of images that are perfectly centered to a `1:1` (square) aspect ratio. If some of the images don't have an intrinsic `1:1` aspect ratio—as is the case with the puppies below, which have intrinsic dimensions of `500x300`—they'll simply be cropped and centered:
 
@@ -336,16 +346,20 @@ Here, **inline size** is defined as follows:
 
 To verify this, run the following code:
 
-{% capture code %}<div class="document">
+{% include codeHeader.html file="test.html" %}
+```html
+<div class="document">
   <div class="parent">
   <div class="child">
     Child
   </div>
   </div>
-</div>{% endcapture %}
-{% include code.html file="test.html" code=code lang="html" %}
+</div>
+```
 
-{% capture code %}.document {
+{% include codeHeader.html file="test.css" %}
+```css
+.document {
   writing-mode: vertical-rl;
   width: 100%;
   height: 100vh;
@@ -363,8 +377,8 @@ To verify this, run the following code:
   background-color: white;
   color: black;
   border: solid 1px;
-}{% endcapture %}
-{% include code.html file="test.css" code=code lang="css" %}
+}
+```
 
 The result is shown below, with some additional CSS to make things prettier and easier to identify. Using your dev tools, you can verify that the child `<div>` has a padding of `20px`, which is precisely `10%` of the containing block's height (`200px`):
 
@@ -385,10 +399,12 @@ So padding percentages are not always relative to the containing block's width! 
 
 Early on in this article, I mentioned that CSS has a new property on the horizon: [`aspect-ratio`](https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio). And it couldn't be easier to use:
 
-{% capture code %}.element {
+{% include codeHeader.html %}
+```css
+.element {
   aspect-ratio: 16 / 9;
-}{% endcapture %}
-{% include code.html code=code lang="css" %}
+}
+```
 
 Based on what you've learned so far, it should be clear what this will do: As the element is resized, the browser will ensure that the element maintains a `16:9` aspect ratio.
 

@@ -28,7 +28,9 @@ Each one will include a CodePen demo with the full source code. The examples wil
 
 Here's the basic HTML skeleton that we need for our page:
 
-{% capture code %}<!DOCTYPE html>
+{% include codeHeader.html file="index.html" %}
+```html
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -39,14 +41,16 @@ Here's the basic HTML skeleton that we need for our page:
 <body>
     <script src="index.js"></script>
 </body>
-</html>{% endcapture %}
-{% include code.html file="index.html" code=code lang="html" %}
+</html>
+```
 
 Go ahead and create `style.css` along with `index.js` while you're at it.
 
 And here's some CSS to get us started:
 
-{% capture code %}* {
+{% include codeHeader.html file="style.css" %}
+```css
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -64,8 +68,8 @@ body {
 
 p {
     margin-bottom: 1em;
-}{% endcapture %}
-{% include code.html file="style.css" code=code lang="css" %}
+}
+```
 
 Note that these styles are not necessary; they just make my demos look nicer.
 
@@ -77,7 +81,9 @@ Now, let's take a look at what constitutes a "modal." In our case, a modal windo
 
 Let's add two modals to our HTML:
 
-{% capture code %}<p>Lorem ipsum. <a href="#" class="modal-trigger" data-modal-id="modal1">Click this trigger</a> to open a modal.</p>
+{% include codeHeader.html file="index.html" %}
+```html
+<p>Lorem ipsum. <a href="#" class="modal-trigger" data-modal-id="modal1">Click this trigger</a> to open a modal.</p>
 <p>Close a modal by clicking off to the side, clicking the X, or pressing Escape.</p>
 
 <div class="modal-wrapper" id="modal1">
@@ -99,8 +105,8 @@ Let's add two modals to our HTML:
         </header>
         <p>Noice.</p>
     </section>
-</div>{% endcapture %}
-{% include code.html file="index.html" code=code lang="html" %}
+</div>
+```
 
 We also need a way to open modals on our page. We'll do that with a `modal-trigger`:
 
@@ -119,7 +125,9 @@ In the example above, our trigger is associated with the modal wrapper that has 
 
 I'm going to break this up into manageable chunks. First up is the modal wrapper:
 
-{% capture code %}.modal-wrapper {
+{% include codeHeader.html file="style.css" %}
+```css
+.modal-wrapper {
     align-items: center;
     background-color: rgba(100, 100, 100, 0.5);
     bottom: 0;
@@ -135,43 +143,51 @@ I'm going to break this up into manageable chunks. First up is the modal wrapper
     visibility: hidden;
     width: 100%;
     z-index: 1000;
-}{% endcapture %}
-{% include code.html file="style.css" code=code lang="css" %}
+}
+```
 
 This one's pretty straightforward. The modal wrapper is given a `fixed` position and covers the entire screen. It's also given a slightly opaque background for a nice shadow effect when the modal is open. The `z-index` is set to an arbitrarily large number (in this case, `1000`) to ensure that it appears above everything else. Finally, the modal uses Flexbox to perfectly center its contents.
 
 As you can see, the modal wrapper is hidden by default with `opacity: 0` and `visibility: hidden`. We'll toggle the visibility in our JavaScript. Here's the class that we'll need to do that:
 
-{% capture code %}.modal-wrapper.visible {
+{% include codeHeader.html file="style.css" %}
+```css
+.modal-wrapper.visible {
     opacity: 1;
     visibility: visible;
-}{% endcapture %}
-{% include code.html file="style.css" code=code lang="css" %}
+}
+```
 
 > **Note**: I'm using the `opacity` + `visibility` trick here since visibility transitions aren't gradual and immediately snap from one state to another. Take a look at [this StackOverflow answer](https://stackoverflow.com/a/27900094/5323344) for more details.
 
 Okay, that's it for the wrapper. What about the modal window itself?
 
-{% capture code %}.modal-window {
+{% include codeHeader.html file="style.css" %}
+```css
+.modal-window {
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
     padding: 20px;
     transform: scale(0);
     transition: 0.2s ease-in-out all;
-}{% endcapture %}
-{% include code.html file="style.css" code=code lang="css" %}
+}
+```
 
 Notice that the initial transform is set to `scale(0)`. When we open the modal, we want to scale it up to give us a nice pop-in animation:
 
-{% capture code %}.modal-wrapper.visible .modal-window {
+{% include codeHeader.html file="style.css" %}
+```css
+.modal-wrapper.visible .modal-window {
     transform: scale(1);
-}{% endcapture %}
-{% include code.html file="style.css" code=code lang="css" %}
+}
+```
 
 Next up is the modal header:
 
-{% capture code %}.modal-header {
+{% include codeHeader.html file="style.css" %}
+```css
+.modal-header {
     align-items: center;
     border-bottom: 2px solid black;
     display: flex;
@@ -191,17 +207,19 @@ Next up is the modal header:
 
 .close-modal-button:hover {
     color: black;
-}{% endcapture %}
-{% include code.html file="style.css" code=code lang="css" %}
+}
+```
 
 Finally, we'll style the triggers:
 
-{% capture code %}.modal-trigger {
+{% include codeHeader.html file="style.css" %}
+```css
+.modal-trigger {
     color: rgb(10, 47, 255);
     cursor: pointer;
     text-decoration: underline;
-}{% endcapture %}
-{% include code.html file="style.css" code=code lang="css" %}
+}
+```
 
 That's it for now. You can temporarily make `modal1` visible by manually adding `visible` to its class list. Here's what that will look like:
 
@@ -229,15 +247,19 @@ Let's get to work!
 
 The most natural way to represent stacked modals in code is—surprise, surprise—with a stack:
 
-{% capture code %}const currentlyOpenModals = [];{% endcapture %}
-{% include code.html file="index.js" code=code lang="javascript" %}
+{% include codeHeader.html file="index.js" %}
+```javascript
+const currentlyOpenModals = [];
+```
 
 The topmost modal window is whatever we recently pushed onto the stack; that's the window that's eligible for closing.
 
 We'll also add a helper function that tells us if we have no modals open:
 
-{% capture code %}const noModalsOpen = () => !currentlyOpenModals.length;{% endcapture %}
-{% include code.html file="index.js" code=code lang="javascript" %}
+{% include codeHeader.html file="index.js" %}
+```javascript
+const noModalsOpen = () => !currentlyOpenModals.length;
+```
 
 This is just to reduce code repetition later on.
 
@@ -245,7 +267,9 @@ This is just to reduce code repetition later on.
 
 Let's code up the logic for opening and closing stacked modals:
 
-{% capture code %}const openModal = modalId => {
+{% include codeHeader.html file="index.js" %}
+```javascript
+const openModal = modalId => {
   const modalWrapper = document.getElementById(modalId);
   modalWrapper.classList.add("visible");
   currentlyOpenModals.push(modalWrapper);
@@ -260,8 +284,8 @@ const closeTopmostModal = () => {
   const modalWrapper = currentlyOpenModals[currentlyOpenModals.length - 1];
   modalWrapper.classList.remove("visible");
   currentlyOpenModals.pop();
-};{% endcapture %}
-{% include code.html file="index.js" code=code lang="javascript" %}
+};
+```
 
 The code is pretty simple—to open a modal, we take an ID, find the modal wrapper with that ID, give it the `visible` class, and push it to our stack of open modals. To close a modal wrapper, we do the opposite: We remove the class and pop the stack.
 
@@ -278,15 +302,17 @@ Let's knock these out one at a time.
 
 #### 1. Opening a Modal When Its Trigger Is Clicked
 
-{% capture code %}const modalTriggers = document.querySelectorAll(".modal-trigger");
+{% include codeHeader.html file="index.js" %}
+```javascript
+const modalTriggers = document.querySelectorAll(".modal-trigger");
 modalTriggers.forEach(modalTrigger => {
   modalTrigger.addEventListener("click", clickEvent => {
     const trigger = clickEvent.target;
     const modalId = trigger.getAttribute("data-modal-id");
     openModal(modalId);
   });
-});{% endcapture %}
-{% include code.html file="index.js" code=code lang="javascript" %}
+});
+```
 
 Basically, we query all modal triggers and subscribe to their clicks. Given a click event, we get the trigger element by following `clickEvent.target`. This allows us to extract the `data-modal-id` attribute and open up that particular modal wrapper.
 
@@ -294,7 +320,9 @@ Basically, we query all modal triggers and subscribe to their clicks. Given a cl
 
 This is where it gets interesting:
 
-{% capture code %}document.querySelectorAll(".modal-window").forEach(modal => {
+{% include codeHeader.html file="index.js" %}
+```javascript
+document.querySelectorAll(".modal-window").forEach(modal => {
   modal.addEventListener("click", clickEvent => {
     clickEvent.stopPropagation();
   });
@@ -305,8 +333,8 @@ modalWrappers.forEach(modalWrapper => {
   modalWrapper.addEventListener("click", () => {
     closeTopmostModal();
   });
-});{% endcapture %}
-{% include code.html file="index.js" code=code lang="javascript" %}
+});
+```
 
 If we don't stop the event propagation for each `modal-window` element, the modal wrappers will close if we click just the content area, and that's not what we want. So, we disable propagation for the content area. Next, we simply subscribe to the click event for each `modal-wrapper` and close the topmost modal whenever the event fires.
 
@@ -314,21 +342,25 @@ If we don't stop the event propagation for each `modal-window` element, the moda
 
 By definition, we can only ever click the X button for the topmost modal window. Thus, we don't have to check which modal window the button belongs to—we can safely assume that it belongs to the topmost modal and just close that window.
 
-{% capture code %}document.querySelectorAll(".close-modal-button").forEach(closeModalButton => {
+{% include codeHeader.html file="index.js" %}
+```javascript
+document.querySelectorAll(".close-modal-button").forEach(closeModalButton => {
   closeModalButton.addEventListener("click", () => {
     closeTopmostModal();
   });
-});{% endcapture %}
-{% include code.html file="index.js" code=code lang="javascript" %}
+});
+```
 
 #### 4. Closing a Stacked Modal with the Escape Key
 
-{% capture code %}document.body.addEventListener("keyup", keyEvent => {
+{% include codeHeader.html file="index.js" %}
+```javascript
+document.body.addEventListener("keyup", keyEvent => {
   if (keyEvent.key === "Escape") {
     closeTopmostModal();
   }
-});{% endcapture %}
-{% include code.html file="index.js" code=code lang="javascript" %}
+});
+```
 
 That's it for the code to open multiple modals stacked on top of one another. Check out the Codepen link for the relevant HTML, CSS, and JavaScript all in one place.
 
@@ -348,7 +380,9 @@ Some things will need to change in order for this to work.
 
 First, we will no longer nest each modal inside a `.modal-wrapper`. Instead, we'll have a single wrapper (container) that houses all of the modals:
 
-{% capture code %}<p>Lorem ipsum. <a href="#" class="modal-trigger" data-modal-id="modal1">Click this trigger</a> to open a modal.</p>
+{% include codeHeader.html file="index.html" %}
+```html
+<p>Lorem ipsum. <a href="#" class="modal-trigger" data-modal-id="modal1">Click this trigger</a> to open a modal.</p>
 <p>Close a modal by clicking off to the side, clicking the X, or pressing Escape.</p>
 
 <div class="modal-wrapper">
@@ -367,8 +401,8 @@ First, we will no longer nest each modal inside a `.modal-wrapper`. Instead, we'
         </header>
         <p>Noice.</p>
     </section>
-</div>{% endcapture %}
-{% include code.html file="index.html" code=code lang="html" %}
+</div>
+```
 
 When we open the very first modal, we'll make the wrapper visible. When we close the very last modal, we'll make the wrapper disappear. This will give us the appearance of each modal "sharing" a single semi-transparent background that's elevated above the page.
 
@@ -386,7 +420,9 @@ Only three lines will need to change in our CSS. Here's a diff between the two v
 
 And here's the new CSS if you want to copy it over and replace what you had before:
 
-{% capture code %}.modal-window {
+{% include codeHeader.html file="style.css" %}
+```css
+.modal-window {
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
@@ -400,23 +436,27 @@ And here's the new CSS if you want to copy it over and replace what you had befo
 .modal-window.visible {
     transform: scale(1);
     position: relative;
-}{% endcapture %}
-{% include code.html file="style.css" code=code lang="css" %}
+}
+```
 
 Finally, the JavaScript logic will be a little different for opening and closing modals.
 
 Perhaps the most important change is that we're **no longer going to use a stack data structure**. That made sense for stacked modals, but it won't for modals that need to be open side by side, without any relative hierarchy*. Instead, we'll use an object to associate IDs with modal elements:
 
-{% capture code %}let currentlyOpenModals = {};
-const noModalsOpen = () => !Object.keys(currentlyOpenModals).length;{% endcapture %}
-{% include code.html file="index.js" code=code lang="javascript" %}
+{% include codeHeader.html file="index.js" %}
+```javascript
+let currentlyOpenModals = {};
+const noModalsOpen = () => !Object.keys(currentlyOpenModals).length;
+```
 
 > *You may still want to establish some sort of dependency relationship between modals that opened other modals. That way, if you close the parent modal, its children would close as well. We won't look at that in this tutorial, but it's something to keep in mind.
 
 We'll also want to get a reference to the single `.modal-wrapper` at the top of our script:
 
-{% capture code %}const modalWrapper = document.querySelector(".modal-wrapper");{% endcapture %}
-{% include code.html file="index.js" code=code lang="javascript" %}
+{% include codeHeader.html file="index.js" %}
+```javascript
+const modalWrapper = document.querySelector(".modal-wrapper");
+```
 
 We'll still need to do all of the following, but with slight differences:
 
@@ -431,19 +471,23 @@ Let's knock these out one at a time, just like we did before.
 
 The code for subscribing to trigger clicks hasn't changed:
 
-{% capture code %}const modalTriggers = document.querySelectorAll(".modal-trigger");
+{% include codeHeader.html file="index.js" %}
+```javascript
+const modalTriggers = document.querySelectorAll(".modal-trigger");
 modalTriggers.forEach(modalTrigger => {
   modalTrigger.addEventListener("click", clickEvent => {
     const trigger = clickEvent.target;
     const modalId = trigger.getAttribute("data-modal-id");
     openModal(modalId);
   });
-});{% endcapture %}
-{% include code.html file="index.js" code=code lang="javascript" %}
+});
+```
 
 What *does* need to change is the code for `openModal`:
 
-{% capture code %}const openModal = modalId => {
+{% include codeHeader.html file="index.js" %}
+```javascript
+const openModal = modalId => {
   // If we're opening the first modal, make sure the wrapper becomes visible too
   if (noModalsOpen()) {
     modalWrapper.classList.add("visible");
@@ -452,8 +496,8 @@ What *does* need to change is the code for `openModal`:
   const modal = document.getElementById(modalId);
   modal.classList.add("visible");
   currentlyOpenModals[modalId] = modal;
-};{% endcapture %}
-{% include code.html file="index.js" code=code lang="javascript" %}
+};
+```
 
 Notice that we check if we're opening a modal for the first time at the top. If that's the case, then we also make sure that the wrapper becomes visible.
 
@@ -465,7 +509,9 @@ Since we're no longer working with stacked modals, there is no notion of the "to
 
 First, here's the new `closeModal` code:
 
-{% capture code %}const closeModal = modalId => {
+{% include codeHeader.html file="index.js" %}
+```javascript
+const closeModal = modalId => {
   if (noModalsOpen()) {
     return;
   }
@@ -478,18 +524,20 @@ First, here's the new `closeModal` code:
   if (noModalsOpen()) {
     modalWrapper.classList.remove("visible");
   }
-};{% endcapture %}
-{% include code.html file="index.js" code=code lang="javascript" %}
+};
+```
 
 And here's the code for closing a modal window with the X button:
 
-{% capture code %}document.querySelectorAll(".close-modal-button").forEach(closeModalButton => {
+{% include codeHeader.html file="index.js" %}
+```javascript
+document.querySelectorAll(".close-modal-button").forEach(closeModalButton => {
   closeModalButton.addEventListener("click", clickEvent => {
     const modalToClose = clickEvent.target.closest(".modal-window");
     closeModal(modalToClose.id);
   });
-});{% endcapture %}
-{% include code.html file="index.js" code=code lang="javascript" %}
+});
+```
 
 We use the DOM's `closest` method to figure out which modal the clicked close button belongs to. Then, we get that modal's ID and close it.
 
@@ -497,27 +545,33 @@ We use the DOM's `closest` method to figure out which modal the clicked close bu
 
 Just like before, we'll stop click propagation whenever we click on the modal window itself:
 
-{% capture code %}document.querySelectorAll(".modal-window").forEach(modal => {
+{% include codeHeader.html file="index.js" %}
+```javascript
+document.querySelectorAll(".modal-window").forEach(modal => {
   modal.addEventListener("click", clickEvent => {
     clickEvent.stopPropagation();
   });
-});{% endcapture %}
-{% include code.html file="index.js" code=code lang="javascript" %}
+});
+```
 
 But we'll need to add a click listener to the single `.modal-wrapper` for when we click off to the side:
 
-{% capture code %}modalWrapper.addEventListener("click", () => {
+{% include codeHeader.html file="index.js" %}
+```javascript
+modalWrapper.addEventListener("click", () => {
   closeAllModals();
-});{% endcapture %}
-{% include code.html file="index.js" code=code lang="javascript" %}
+});
+```
 
 Notice that we're now calling a new function named `closeAllModals`, but we haven't yet implemented that. Let's define it somewhere at the top of our script, preferably under `closeModal` to keep things organized:
 
-{% capture code %}const closeAllModals = () => {
+{% include codeHeader.html file="index.js" %}
+```javascript
+const closeAllModals = () => {
   // Iterate over the IDs in our map and close each modal with that ID
   Object.keys(currentlyOpenModals).forEach(closeModal);
-};{% endcapture %}
-{% include code.html file="index.js" code=code lang="javascript" %}
+};
+```
 
 What's going on here? Well, `Object.keys(currentlyOpenModals)` gives us an array of modal IDs. For example, suppose `currentlyOpenModals` looks like this:
 
@@ -535,12 +589,14 @@ If that's the case, then `Object.keys(currentlyOpenModals)` will return `["modal
 
 Basically, the code is 99% the same except we now call `closeAllModals` instead of `closeTopmostModal`:
 
-{% capture code %}document.body.addEventListener("keyup", keyEvent => {
+{% include codeHeader.html file="index.js" %}
+```javascript
+document.body.addEventListener("keyup", keyEvent => {
   if (keyEvent.key === "Escape") {
     closeAllModals();
   }
-});{% endcapture %}
-{% include code.html file="index.js" code=code lang="javascript" %}
+});
+```
 
 That's it!
 

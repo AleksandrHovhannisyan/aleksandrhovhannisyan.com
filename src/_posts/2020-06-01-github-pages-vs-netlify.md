@@ -66,9 +66,11 @@ If one of your URLs changes, Google will need to know that the old and new versi
 
 On the other hand, redirects in Netlify are [super easy to set up](https://docs.netlify.com/routing/redirects/#syntax-for-the-netlify-configuration-file). All you need to do is create a plaintext `_redirects` file that maps old URLs to new ones, separating the two with a tab:
 
-{% capture code %}/old-url/   /new-url/
-/another-old-url /another-new-url{% endcapture %}
-{% include code.html file="_redirects" code=code %}
+{% include codeHeader.html file="_redirects" %}
+```
+/old-url/   /new-url/
+/another-old-url /another-new-url
+```
 
 Make sure this file is included in your site's build output, and Netlify will handle the rest for you.
 

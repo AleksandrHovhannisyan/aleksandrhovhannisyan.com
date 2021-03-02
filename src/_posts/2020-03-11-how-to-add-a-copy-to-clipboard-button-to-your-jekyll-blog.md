@@ -46,7 +46,10 @@ Sound good? Let's first look at the include file itself:
 
 ### 1. Copy-to-Clipboard Include: `_includes/code.html`
 
-{% capture code %}{% raw %}<div class="copy-code-container">
+{% include codeHeader.html file="_includes/code.html" %}
+{% raw %}
+````liquid
+<div class="copy-code-container">
     <button class="copy-code-button"
          aria-label="Copy code block to your clipboard"
          data-code="{{ include.code | escape }}"
@@ -54,8 +57,9 @@ Sound good? Let's first look at the include file itself:
 </div>
 ```{{ include.lang }}
 {{ include.code }}
-```{% endraw %}{% endcapture %}
-{% include code.html file="_includes/code.html" code=code lang="liquid" %}
+```
+````
+{% endraw %}
 
 > **Note**: If you need to show fenced code blocks in your tutorials and want the triple backticks to show up as-is in the output HTML (e.g., like I did above), you should use *four* backticks in your `code.html` file. That way, the nested `include.code` object (which is assumed to house the triple backticks) won't break the Markdown processor.
 
@@ -63,7 +67,9 @@ We create a `button` and give it a well-named class. We also add an `aria-label`
 
 Below is the essential CSS (I'm using SCSS). Feel free to change this to suit your needs. Note that some of this will make more sense once we make the copy-to-clipboard button interactive with JavaScript.
 
-{% capture code %}.copy-code-container {
+{% include codeHeader.html %}
+```scss
+.copy-code-container {
   display: flex;
   justify-content: flex-end;
   padding: 1em;
@@ -102,8 +108,8 @@ Below is the essential CSS (I'm using SCSS). Feel free to change this to suit yo
             content: "✔️";
         }
     }
-}{% endcapture %}
-{% include code.html code=code lang="scss" %}
+}
+```
 
 If you take a closer look at `_includes/code.html`, you'll notice this interesting `data-code` attribute:
 
@@ -135,7 +141,10 @@ Let's pretend that we've already stored our code as a literal string in a variab
 
 These two arguments will become accessible under `{% raw %}include.code{% endraw %}` and `{% raw %}include.lang{% endraw %}`, respectively. So when Jekyll goes to evaluate the Liquid template, it'll perform the following substitutions:
 
-{% capture code %}{% raw %}<div class="copy-code-container">
+{% include codeHeader.html file="_includes/code.html" copyable=false %}
+{% raw %}
+````markdown
+<div class="copy-code-container">
     <button
       class="copy-code-button"
       aria-label="Copy code block to your clipboard"
@@ -144,8 +153,9 @@ These two arguments will become accessible under `{% raw %}include.code{% endraw
 </div>
 ```javascript
 const foo = new Bar();
-```{% endraw %}{% endcapture %}
-{% include code.html file="_includes/code.html" code=code lang="markdown" copyable=false %}
+```
+````
+{% endraw %}
 
 This begs the following question: How do we store the code in a string variable?
 
@@ -212,7 +222,10 @@ If you're using VS Code, you can set up a really handy snippet to save yourself 
 
 On VS Code, open up your command palette (`Ctrl+Shift+P` on Windows and `Command+Shift+P` on Mac), type `user snippets`, and select `Preferences: Configure User Snippets`. Then type `markdown` in the search bar, and VS Code will open up a settings file for Markdown files. Insert this snippet:
 
-{% capture code %}{% raw %}{
+{% include codeHeader.html file="markdown.json" %}
+{% raw %}
+```json
+{
 	"Code Snippet": {
 		"prefix": "code",
 		"body": [
@@ -220,8 +233,9 @@ On VS Code, open up your command palette (`Ctrl+Shift+P` on Windows and `Command
 			"{% include code.html code=code lang=\"$0\" %}"
 		]
 	}
-}{% endraw %}{% endcapture %}
-{% include code.html file="markdown.json" code=code lang="json" %}
+}
+```
+{% endraw %}
 
 Then, in any Markdown file, all you'll have to do is type the prefix `code` and hit Enter; VS Code will auto-insert this snippet for you and even move your cursor so it's between the capture tags. This reduces a potentially tedious process to just a few keystrokes. Paste in your code, tab over to `lang=""` to specify the language, and you're all set!
 
@@ -233,20 +247,24 @@ Awesome! We're already two-thirds of the way done. Now, all that's left is the J
 
 We'll start by defining a skeleton for the function:
 
-{% capture code %}const copyCode = (clickEvent) => {
+{% include codeHeader.html file="assets/scripts/copyCode.js" %}
+```javascript
+const copyCode = (clickEvent) => {
   // The magic happens here
 };
 
 document.querySelectorAll('.copy-code-button').forEach((copyCodeButton) => {
   copyCodeButton.addEventListener('click', copyCode);
-});{% endcapture %}
-{% include code.html file="assets/scripts/copyCode.js" code=code lang="javascript" %}
+});
+```
 
 Pretty straightforward! We're just registering click handlers on all of the buttons on the current page.
 
 The meat of the copy-to-clipboard logic is taken from [this StackOverflow answer](https://stackoverflow.com/a/46822033/5323344), which creates a temporary textarea element, adds it to the DOM, executes `document`'s copy command, and then removes the textarea:
 
-{% capture code %}const copyCode = (clickEvent) => {
+{% include codeHeader.html file="assets/scripts/copyCode.js" %}
+```javascript
+const copyCode = (clickEvent) => {
   const copyCodeButton = clickEvent.target;
   const tempTextArea = document.createElement('textarea');
   tempTextArea.textContent = copyCodeButton.getAttribute('data-code');
@@ -264,23 +282,27 @@ The meat of the copy-to-clipboard logic is taken from [this StackOverflow answer
 
 document.querySelectorAll('.copy-code-button').forEach((copyCodeButton) => {
   copyCodeButton.addEventListener('click', copyCode);
-});{% endcapture %}
-{% include code.html file="assets/scripts/copyCode.js" code=code lang="javascript" %}
+});
+```
 
 That's really all you need to get this to work, but I also have the following on the TODO line:
 
-{% capture code %}copyCodeButton.classList.add('copied');
+{% include codeHeader.html code=code %}
+```javascript
+copyCodeButton.classList.add('copied');
   setTimeout(() => {
     copyCodeButton.classList.remove('copied');
-}, 2000);{% endcapture %}
-{% include code.html code=code lang="javascript" %}
+}, 2000);
+```
 
 My copy-to-clipboard button uses CSS pseudo-elements to show `Copy 📋` in the default state and `Copied! ✔️` once the `copied` class has been added. This lasts for two seconds and gives the user feedback to indicate that copying to the clipboard went through successfully.
 
 That's it! Don't forget to add a script tag so this code actually works. For example, you can stick this somewhere in your layout file for blog posts:
 
-{% capture code %}<script src="/assets/scripts/copyCode.js"></script>{% endcapture %}
-{% include code.html file="_layouts/post.html" code=code lang="html" %}
+{% include codeHeader.html file="_layouts/post.html" %}
+```html
+<script src="/assets/scripts/copyCode.js"></script>
+```
 
 ## Further Improvements: File Name and Copy-to-Clipboard Button
 
@@ -297,7 +319,10 @@ This layout isn't actually as complicated as it may seem; you just need a top-le
 
 All of these variations still use the same include file that we looked at in this blog post, except some elements are **conditionally rendered** based on a flag parameter that I pass in whenever I don't want to render something. Here's what my full `_includes/code.html` file looks like:
 
-{% capture code %}{% raw %}<div class="code-header">
+{% include codeHeader.html file="_includes/code.html" %}
+{% raw %}
+````liquid
+<div class="code-header">
     {% if include.file %}
     <div class="code-file-name-container">
         <span class="code-file-name">{{ include.file }}</span>
@@ -315,8 +340,9 @@ All of these variations still use the same include file that we looked at in thi
 </div>
 ```{{ include.lang }}
 {{ include.code }}
-```{% endraw %}{% endcapture %}
-{% include code.html file="_includes/code.html" code=code lang="liquid" %}
+```
+````
+{% endraw %}
 
 For example, using the `unless` Liquid tag and a flag passed in as an argument, I can regulate when the copy button should appear:
 
@@ -334,8 +360,13 @@ For example, using the `unless` Liquid tag and a flag passed in as an argument, 
 
 This means I can later import the file as follows, and it won't render the copy-to-clipboard button:
 
-{% capture code %}{% raw %}{% include code.html code=code lang="myFavoriteLanguage" copyable=false %}{% endraw %}{% endcapture %}
-{% include code.html code=code lang="liquid" %}
+{% include codeHeader.html code=code %}
+
+{% raw %}
+```liquid
+{% include code.html code=code lang="myFavoriteLanguage" copyable=false %}
+```
+{% endraw %}
 
 If you're wondering why I used `unless` instead of `if`, it's because this allows me to specify the default behavior as "always include a copy-to-clipboard button unless I say otherwise."
 
