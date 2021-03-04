@@ -3,7 +3,7 @@ title: How to Add a Copy-to-Clipboard Button to Jekyll
 description: Add a copy-to-clipboard button to your Jekyll blog with a simple include and a few lines of JavaScript.
 tags: [dev, jekyll, liquid, javascript]
 keywords: [copy to clipboard button]
-last_updated: 2021-03-02
+last_updated: 2021-03-04
 comments_id: 35
 thumbnail: thumbnail.gif
 is_popular: true
@@ -40,7 +40,7 @@ At a high level, all we need is a simple include file that we can stick in front
 
 {% include codeHeader.html file="_includes/codeHeader.html" %}
 ```html
-<div class="copy-code-container">
+<div class="code-header">
     <button class="copy-code-button" aria-label="Copy code to clipboard"></button>
 </div>
 ```
@@ -64,7 +64,7 @@ Below is some CSS to get you started (I'm using SCSS). Styling this to make it l
 
 {% include codeHeader.html %}
 ```scss
-.copy-code-container {
+.code-header {
   display: flex;
   justify-content: flex-end;
 }
