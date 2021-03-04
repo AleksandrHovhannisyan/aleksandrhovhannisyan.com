@@ -16,16 +16,20 @@ permalink: /
     {%- include picture.html img="/assets/images/profile-photo.png" alt="" id="headshot" width="140" height="140" clickable=false -%}
   </section>
   <section id="recent-posts" class="section">
-      {%- include linkedHeading.html heading="Recent Blog Posts" class="heading" level=2 -%}
+      {%- include linkedHeading.html heading="Recent Blog Posts" level=2 -%}
       <ol class="post-preview-grid">
-          {%- for post in site.posts limit:5 -%} {%- include postPreview.html post=post -%} {%- endfor -%}
+          {%- for post in site.posts limit:5 -%}
+            {%- include postPreview.html post=post -%}
+          {%- endfor -%}
       </ol>
   </section>
   <section id="popular-posts" class="section">
-      {%- include linkedHeading.html heading="Popular Blog Posts" class="heading" level=2 -%}
+      {%- include linkedHeading.html heading="Popular Blog Posts" level=2 -%}
     <ol class="post-preview-grid">
-      {%- assign popular_posts = site.posts | where: "is_popular", true -%} {%- for post in popular_posts -%} {%- include
-      postPreview.html post=post -%} {%- endfor -%}
+      {%- assign popular_posts = site.posts | where: "is_popular", true -%}
+      {%- for post in popular_posts -%}
+        {%- include postPreview.html post=post -%}
+      {%- endfor -%}
     </ol>
   </section>
   <section id="projects" class="section">
