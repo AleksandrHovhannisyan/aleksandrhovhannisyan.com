@@ -62,10 +62,7 @@
 
 .post-preview-description {
   grid-area: description;
-}
-
-.read-this-post-link {
-  @include underlined-link($initially-underlined: false);
+  @include line-clamp(3);
 }
 
 @include tablet {
@@ -86,5 +83,7 @@
 
   .post-preview-description {
     margin-bottom: 1.6rem;
+
+    @include line-clamp(2);
   }
 }

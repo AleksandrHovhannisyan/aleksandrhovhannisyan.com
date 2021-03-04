@@ -109,6 +109,23 @@
   grid-row-gap: calc(var(--line-height) * 1em);
 }
 
+@mixin line-clamp($lines, $font-size: var(--font-size), $line-height: var(--line-height)) {
+  // Fallbacks for non-webkit browsers (see prefixes below)
+  display: block;
+  height: calc(#{$font-size} * #{$line-height} * #{$lines});
+
+  // Common to both
+  font-size: $font-size;
+  line-height: $line-height;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  // Modern way of doing it (in Webkit browsers)
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+}
+
 // Breakpoint mixins
 @mixin mobile {
   $bp: map-get($media-breakpoints, mobile);
