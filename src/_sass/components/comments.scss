@@ -83,6 +83,7 @@ $meta-spacing: 0.8rem;
 
 .comment-body {
   @include rhythm;
+  grid-template-columns: minmax(0, 1fr);
 
   pre {
     white-space: pre-wrap;
