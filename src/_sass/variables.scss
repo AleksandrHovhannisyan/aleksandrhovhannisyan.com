@@ -13,8 +13,8 @@ html {
   --color-blue-2: hsl(198, 21%, 75%);
   --color-blue-1: hsl(198, 21%, 88%);
 
-  --color-gray-9: hsl(198, 18%, 22%);
-  --color-gray-8: hsl(210, 11%, 26%);
+  --color-gray-9: hsl(198, 18%, 15%);
+  --color-gray-8: hsl(210, 11%, 20%);
   --color-gray-7: hsl(200, 2%, 27%);
   --color-gray-6: hsl(208, 7%, 34%);
   --color-gray-5: hsl(207, 5%, 43%);
@@ -114,7 +114,7 @@ html.light {
   --tag-text-color-hover: var(--color-white);
   --tag-text-color: var(--color-blue-8);
   --text-color-emphasis: var(--color-gray-9);
-  --text-color-normal: var(--color-gray-8);
+  --text-color-normal: var(--color-gray-9);
 }
 
 html.dark {
