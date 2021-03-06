@@ -148,6 +148,7 @@
 
 #website-name {
   color: var(--navbar-text-color);
+  @include font-size(-1);
 }
 
 .navbar-menu {
@@ -185,6 +186,7 @@
   margin: 0 1.2rem;
   display: block;
   color: var(--navbar-text-color);
+  @include font-size(-1);
   @include font-weight('regular');
 }
 
@@ -246,7 +248,7 @@
   height: 45px;
   background-color: transparent;
   position: relative;
-  transform: scale(0.8);
+  transform: scale(0.711);
   transform-style: preserve-3d;
   @include font-size(0);
 
