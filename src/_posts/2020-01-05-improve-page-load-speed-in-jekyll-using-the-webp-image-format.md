@@ -2,7 +2,7 @@
 title: Improve Page Load Speed in Jekyll with the WebP Image Format
 description: Do your blog posts suffer from slow load speeds because of all those images you've been using? In this post, we'll look at how you can improve your page load speed in Jekyll using the WebP image format and just a single useful include.
 keywords: ["improve page load speed", "webp image format"]
-tags: [dev, jekyll, webperf, webp]
+tags: [dev, jekyll, webperf, images]
 ---
 
 {% include img.html img="pagespeed-insights.png" alt="The PageSpeed Insights score for one of my blog posts." width=1268 height=624 %}

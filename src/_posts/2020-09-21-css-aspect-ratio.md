@@ -39,7 +39,10 @@ Sound familiar? If you've ever worked with images in a browser, then you know th
 
 With the release of the `aspect-ratio` property in Chrome 88, you can view this behavior in your browser using dev tools by inspecting an image that has an explicit `width` and `height` set. The browser preserves the image's aspect ratio as you resize the page:
 
-{% include img.html img="default-aspect-ratio.png" alt="The default aspect ratio for an image is observed to be 500 / 300 in Chrome dev tools." %}
+<figure>
+  {% include img.html img="default-aspect-ratio.png" alt="The default aspect ratio for an image is observed to be 500 / 300 in Chrome dev tools." width="1290" height="414" %}
+  <figcaption>Photo credit: <a href="https://unsplash.com/photos/og0C_9Mz6RA">Bill Stephan, Unsplash</a></figcaption>
+</figure>
 
 > We'll briefly look at this new CSS property [in a future section](#the-future-of-css-aspect-ratios-aspect-ratio). For now, we'll learn how to enforce an element's aspect ratio the old-fashioned way since it's the only one that's supported by all browsers, as of this writing.
 
