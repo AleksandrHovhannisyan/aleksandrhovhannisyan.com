@@ -93,6 +93,8 @@ $meta-tag-spacing: 0.8rem;
 .skip-post-meta-tags {
     background: var(--main-bg-color);
     padding: 0.8rem 1.6rem;
+    color: var(--text-color-normal);
+    @include font-weight('semiBold');
 }
 
 .skip-post-meta-tags-target {
@@ -128,6 +130,12 @@ $meta-tag-spacing: 0.8rem;
       scroll-margin-top: var(--scroll-margin-top);
       margin-top: 2.4rem;
       margin-bottom: -0.8rem;
+    }
+
+    #skip-toc {
+      transform: translateY(-50%);
+      padding: 0.2rem 0.8rem;
+      @include font-weight('semiBold');
     }
 
     #table-of-contents {

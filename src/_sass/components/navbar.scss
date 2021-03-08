@@ -19,13 +19,14 @@
   @include font-weight('regular');
 
   &:focus {
-    left: 0.8rem !important;
+    left: 0.8rem;
     top: 50%;
     transform: translateY(-50%);
   }
 }
 
 .navbar {
+  position: relative;
   background-color: var(--navbar-bg-color);
   box-shadow: var(--navbar-box-shadow);
   height: 100%;
