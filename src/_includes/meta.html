@@ -17,12 +17,12 @@
   {%- endif -%}
   <li class="meta post-date-published">
     {%- include icon.html icon="calendar" class="meta-icon" -%}
-    <time datetime="{{ post.date | date: " %Y-%m-%d" }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+    <time datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date: "%b %-d, %Y" }}</time>
   </li>
   {% if last_updated %}
     <li class="meta post-date-updated">
       {%- include icon.html icon="info" class="meta-icon" -%}
-      <time datetime="{{ last_updated | date: " %Y-%m-%d" }}">Updated: {{ last_updated | date: "%b %-d, %Y" }}</time>
+      <time datetime="{{ last_updated | date: "%Y-%m-%d" }}">Updated: {{ last_updated | date: "%b %-d, %Y" }}</time>
     </li>
   {%- endif -%}
   <li class="meta post-reading-length">

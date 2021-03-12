@@ -7,7 +7,9 @@ canonical_url: https://www.aleksandrhovhannisyan.com/blog/why-i-dont-like-tailwi
 last_updated: 2021-03-12
 ---
 
-> **Update** (<time>3/12/2021</time>): This post has received a lot more attention than I either expected or wanted. I've updated it to clarify some points based on feedback I've received from many folks and to offer a more balanced perspective. Thanks for reading!
+<aside>
+  <strong>Update</strong> (<time datetime="{{ "2021-03-12" | date: "%Y-%m-%d" }}">3/12/2021</time>): Based on feedback, I've updated this post to clarify some points and to offer a more balanced perspective. Thanks for reading!
+</aside>
 
 You're at a restaurant, and there's an odd item on the menu that you've never heard of before, but it piques your interest. It sounds like it might be worth a try, though you're not sure.
 
@@ -141,7 +143,7 @@ If you use Tailwind, **you're stuck with it**, unless you can tolerate convertin
 
 ### 3. Tailwind Is Bloated
 
-**Edit** (<time>3/12/2021</time>): I'm wrong here. I should have done more research into Tailwind to understand that it is in fact *not* as slow as I originally thought. Tailwind uses [PurgeCSS](https://purgecss.com/), which removes any unused styles from your compiled stylesheet. The Tailwind docs [note the following](https://tailwindcss.com/docs/optimizing-for-production):
+**Edit** (<time datetime="{{ "2021-03-12" | date: "%Y-%m-%d" }}">3/12/2021</time>): I'm wrong here. I should have done more research into Tailwind to understand that it is in fact *not* as slow as I originally thought. Tailwind uses [PurgeCSS](https://purgecss.com/), which removes any unused styles from your compiled stylesheet. The Tailwind docs [note the following](https://tailwindcss.com/docs/optimizing-for-production):
 
 > *When removing unused styles with Tailwind, it's very hard to end up with more than 10kb of compressed CSS.*
 
@@ -200,7 +202,7 @@ It's a classic party trick of misdirection. While the audience's eyes are fixed 
 
 <hr>
 
-**Edit** (<time>3/12/2021</time>): I still stand by my original points here, but I'd like to note that Tailwind has a very strong appeal for one key reason: It reduces a set of infinitely many property-value pairs to a strict set of finite design tokens to keep you in check so that you're not plucking arbitrary values out of thin air. This is always a good thing. However, consider whether you really need Tailwind. Vanilla CSS (and CSS preprocessors) already offer variables (in CSS land, we call them custom properties). As long as you create your own design tokens/theme variables, you shouldn't ever run into this issue. In fact, this is how Tailwind operates under the hood.
+**Edit** (<time datetime="{{ "2021-03-12" | date: "%Y-%m-%d" }}">3/12/2021</time>): I still stand by my original points here, but I'd like to note that Tailwind has a very strong appeal for one key reason: It reduces a set of infinitely many property-value pairs to a strict set of finite design tokens to keep you in check so that you're not plucking arbitrary values out of thin air. This is always a good thing. However, consider whether you really need Tailwind. Vanilla CSS (and CSS preprocessors) already offer variables (in CSS land, we call them custom properties). As long as you create your own design tokens/theme variables, you shouldn't ever run into this issue. In fact, this is how Tailwind operates under the hood.
 
 ### 5. Semantics Is Important. Tailwind Forgoes It.
 
@@ -220,7 +222,7 @@ In short, Tailwind pretends to solve a problem that isn't really a problem in th
 
 <hr>
 
-**Edit** (<time>3/12/2021</time>): Tailwind is not completely devoid of any semantics. It just has *its own kind* of semantics. However, I would argue that it's always better to be able to name your sub-components, even at the most atomic level. Naming things is hard, but my point is that this difficulty is not something to shy away from: It's a good thing. It forces you to think about what you're building and to give your markup semantics that is otherwise not there. That said, Semantic CSS does have its own drawbacks. If you don't have consistent naming standards, everyone on your team may come up with their own creative variation of BEM.
+**Edit** (<time datetime="{{ "2021-03-12" | date: "%Y-%m-%d" }}">3/12/2021</time>): Tailwind is not completely devoid of any semantics. It just has *its own kind* of semantics. However, I would argue that it's always better to be able to name your sub-components, even at the most atomic level. Naming things is hard, but my point is that this difficulty is not something to shy away from: It's a good thing. It forces you to think about what you're building and to give your markup semantics that is otherwise not there. That said, Semantic CSS does have its own drawbacks. If you don't have consistent naming standards, everyone on your team may come up with their own creative variation of BEM.
 
 ### 6. Tailwind and Dev Tools Don't Play Nicely
 
@@ -238,7 +240,7 @@ I suspect this feature will be very costly to implement. For both `::before` and
 
 <hr>
 
-**Edit** (<time>3/12/2021</time>): In a similar vein, Tailwind's support for CSS grid is lacking; you need to [configure a custom set of limited grids upfront](https://www.npmjs.com/package/@savvywombat/tailwindcss-grid-areas) and reuse those across your site. The same goes for background gradients, animations, and many other bleeding-edge features that you can easily use in vanilla CSS without any mental overhead or configuration.
+**Edit** (<time datetime="{{ "2021-03-12" | date: "%Y-%m-%d" }}">3/12/2021</time>): In a similar vein, Tailwind's support for CSS grid is lacking; you need to [configure a custom set of limited grids upfront](https://www.npmjs.com/package/@savvywombat/tailwindcss-grid-areas) and reuse those across your site. The same goes for background gradients, animations, and many other bleeding-edge features that you can easily use in vanilla CSS without any mental overhead or configuration.
 
 ## Fine, But What Should You Use Instead?
 
