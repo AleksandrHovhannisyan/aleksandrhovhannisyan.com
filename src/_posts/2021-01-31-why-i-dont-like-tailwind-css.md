@@ -4,7 +4,10 @@ description: On paper, Tailwind CSS sounds like a great idea. In reality, it suf
 keywords: [tailwind css, tailwind, don't like tailwind]
 tags: [dev, css, tailwind, frameworks]
 canonical_url: https://www.aleksandrhovhannisyan.com/blog/why-i-dont-like-tailwind-css/
+last_updated: 2021-03-12
 ---
+
+> **Update** (<time>3/12/2021</time>): This post has received a lot more attention than I either expected or wanted. I've updated it to clarify some points based on feedback I've received from many folks and to offer a more balanced perspective. Thanks for reading!
 
 You're at a restaurant, and there's an odd item on the menu that you've never heard of before, but it piques your interest. It sounds like it might be worth a try, though you're not sure.
 
@@ -138,6 +141,25 @@ If you use Tailwind, **you're stuck with it**, unless you can tolerate convertin
 
 ### 3. Tailwind Is Bloated
 
+**Edit** (<time>3/12/2021</time>): I'm wrong here. I should have done more research into Tailwind to understand that it is in fact *not* as slow as I originally thought. Tailwind uses [PurgeCSS](https://purgecss.com/), which removes any unused styles from your compiled stylesheet. The Tailwind docs [note the following](https://tailwindcss.com/docs/optimizing-for-production):
+
+> *When removing unused styles with Tailwind, it's very hard to end up with more than 10kb of compressed CSS.*
+
+This is true for sites that don't need too many styles (e.g., blogs). You can browse some of the [popular sites built with Tailwind](https://builtwithtailwind.com/popular) and inspect their Network requests to get a sense for how large a typical Tailwind stylesheet may be. Here are some examples (these may change in the future):
+
+- [https://adamwathan.me/](https://adamwathan.me/): 4.9 kB (Brotli)
+- [https://www.swyx.io/](https://www.swyx.io/): 593 bytes (Brotli)
+- [https://laracasts.com/](https://laracasts.com/): 26.1 kB (Brotli)
+- [https://tailwindcss.com/](https://tailwindcss.com/): 25.6 kB (Brotli)
+
+You can see that sites range quite a bit from the very low end to somewhere around `30 kB`. My own site's CSS is written in SCSS and is `12.9 kB` (also Brotli compressed), which is somewhere in the middle of all those examples.
+
+I do want to note that even if your CSS ends up being smaller with Tailwind, the network request for your HTML will probably be larger than if you had used BEM. It's not like things disappear into nowhere, after all—you've shifted the weight to your HTML, where class names are repeated several times, just like `property: value` pairs are repeated in a typical CSS stylesheet written without Tailwind.
+
+But at the end of the day, you shouldn't worry about optimizing your CSS if your numbers are somewhere in this range. You can improve your site's performance in more impactful ways, like optimizing your images and font loading.
+
+**Original**:
+
 Utility CSS is inherently broken and bloated. Why? Because every new class name that you introduce could have potentially hundreds of property-value combinations, and that translates to more compiled CSS—which, of course, means a larger network request, and potentially slower performance.
 
 Look no further than pseudo-class selectors like `:hover`, `:focus`, `:active`, and `:focus-within` to see why this is such a big deal. In fact, it's a problem that Tailwind is *very well aware of*. [Just read its documentation](https://v1.tailwindcss.com/docs/pseudo-class-variants):
@@ -176,6 +198,10 @@ But you're lying to yourself if you think this is any better than writing CSS di
 
 It's a classic party trick of misdirection. While the audience's eyes are fixed on one hand, the other works its magic, and viewers are amazed. Sure, you're no longer writing all that nasty semantic CSS, but... you're still writing *the exact same amount of CSS*, disguised as class names.
 
+<hr>
+
+**Edit** (<time>3/12/2021</time>): I still stand by my original points here, but I'd like to note that Tailwind has a very strong appeal for one key reason: It reduces a set of infinitely many property-value pairs to a strict set of finite design tokens to keep you in check so that you're not plucking arbitrary values out of thin air. This is always a good thing. However, consider whether you really need Tailwind. Vanilla CSS (and CSS preprocessors) already offer variables (in CSS land, we call them custom properties). As long as you create your own design tokens/theme variables, you shouldn't ever run into this issue. In fact, this is how Tailwind operates under the hood.
+
 ### 5. Semantics Is Important. Tailwind Forgoes It.
 
 One of the most frequently cited arguments in favor of Tailwind is that Semantic CSS is difficult to achieve in practice because naming things is hard. Adam argues that this violates the principle of Separation of Concerns because now your HTML markup dictates your CSS. Effectively, you're making decisions in your HTML that really belong in your CSS. But let's think about this for a second: Is that really a problem?
@@ -192,6 +218,10 @@ But I bring this up here because if you're using components, then you've likely 
 
 In short, Tailwind pretends to solve a problem that isn't really a problem in the first place.
 
+<hr>
+
+**Edit** (<time>3/12/2021</time>): Tailwind is not completely devoid of any semantics. It just has *its own kind* of semantics. However, I would argue that it's always better to be able to name your sub-components, even at the most atomic level. Naming things is hard, but my point is that this difficulty is not something to shy away from: It's a good thing. It forces you to think about what you're building and to give your markup semantics that is otherwise not there. That said, Semantic CSS does have its own drawbacks. If you don't have consistent naming standards, everyone on your team may come up with their own creative variation of BEM.
+
 ### 6. Tailwind and Dev Tools Don't Play Nicely
 
 A minor note, but one that matters to me personally, because I've tried this whole "utility CSS" thing and am not convinced that it makes my job easier. As a front-end developer, I often find myself making little tweaks here and there in my browser through dev tools (which is especially useful when combined with `document.designMode = "on"`).
@@ -205,6 +235,10 @@ It's worth noting that [there is a package called UI Devtools for Tailwind CSS](
 Almost two years after its initial release, Tailwind CSS [still doesn't support pseudo elements](https://github.com/tailwindlabs/tailwindcss/discussions/2119) (among other features), something that basic CSS and CSS preprocessors have supported for years. Imagine having to write `before:content-empty-string` in your HTML when the CSS equivalent is much, much more legible.
 
 I suspect this feature will be very costly to implement. For both `::before` and `::after`, you would need possibly thousands of unique class names just so you could style your pseudo-elements as needed. That's simply not realistic. It's the same reason why Tailwind is such a bloated mess—all those innumerable prefixed class names are costly. The more classes that Tailwind decides to introduce, the more its complexity will grow—to the point that it will not be usable.
+
+<hr>
+
+**Edit** (<time>3/12/2021</time>): In a similar vein, Tailwind's support for CSS grid is lacking; you need to [configure a custom set of limited grids upfront](https://www.npmjs.com/package/@savvywombat/tailwindcss-grid-areas) and reuse those across your site. The same goes for background gradients, animations, and many other bleeding-edge features that you can easily use in vanilla CSS without any mental overhead or configuration.
 
 ## Fine, But What Should You Use Instead?
 
