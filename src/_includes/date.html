@@ -1,0 +1,10 @@
+{%- assign datetimeFormat = "%Y-%m-%d" -%}
+{%- if include.datetimeFormat -%}
+  {%- assign datetimeFormat = include.datetimeFormat -%}
+{%- endif -%}
+{%- assign date = include.date -%}
+{%- assign dateFormat = "%m/%d/%Y" -%}
+{%- if include.dateFormat -%}
+  {%- assign dateFormat = include.dateFormat -%}
+{%- endif -%}
+<time datetime="{{ date | date: datetimeFormat }}">{{ date | date: dateFormat }}</time>
