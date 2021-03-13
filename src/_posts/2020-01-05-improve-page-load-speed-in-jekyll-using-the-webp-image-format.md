@@ -35,7 +35,7 @@ To get started, head on over to [Google's installation instructions page](https:
 
 > **Note**: The installation will also come with `gif2webp`, which can be used to convert GIFs to a WebP equivalent.
 
-{% include linkedHeading.html heading="Converting an Image to WebP Format with `cwebp`" level=2 %}
+{% include linkedHeading.html heading="Converting an Image to WebP Format with <code>cwebp</code>" level=2 %}
 
 Assuming the previous step worked just fine for you and that `cwebp` is now accessible from the command-line, it's time to try it out on an actual image. Here's the general syntax for the command:
 
