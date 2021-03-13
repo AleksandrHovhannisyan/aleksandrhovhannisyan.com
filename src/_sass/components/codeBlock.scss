@@ -23,7 +23,7 @@ div.highlighter-rouge {
 .code-header {
   margin-bottom: calc(-1em * var(--line-height));
   display: flex;
-  background-color: var(--color-black-6);
+  background-color: var(--color-black-5);
   border-top-left-radius: 0.4rem;
   border-top-right-radius: 0.4rem;
   box-shadow: 0 0.4rem 0.4rem 0px rgba(0, 0, 0, 0.3);
@@ -50,7 +50,7 @@ div.highlighter-rouge {
 }
 
 .code-file-name {
-  color: var(--color-black-2);
+  color: var(--color-black-18);
   word-break: break-all;
   @include font-size(-1);
   @include font-weight('regular');
@@ -72,8 +72,8 @@ div.highlighter-rouge {
   display: grid;
   grid-auto-flow: column;
   grid-column-gap: 0.4rem;
-  background-color: var(--color-black-5);
-  color: var(--color-black-2);
+  background-color: var(--color-black-7);
+  color: var(--color-black-18);
   padding: 0.6rem 1.2rem;
   border-radius: 0.4rem;
   box-shadow: 0 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.5);
@@ -94,7 +94,7 @@ div.highlighter-rouge {
   &:focus,
   &:hover {
     color: var(--color-black);
-    background-color: var(--color-black-4);
+    background-color: var(--color-black-14);
   }
 
   &:active {

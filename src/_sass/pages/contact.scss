@@ -85,21 +85,24 @@ input.honeypot {
     justify-content: center;
     padding: 1.6rem;
     border-radius: 0.2rem;
+    color: var(--text-color-normal);
 
-    &:focus, &:hover {
+    &:focus,
+    &:hover {
         background-color: var(--hover-bg-color);
         cursor: pointer;
+        color: var(--text-color-emphasis);
     }
 }
 
 .social-network-name {
-  color: var(--text-color-normal);
   @include font-weight("regular");
 }
 
 .social-network-icon {
     justify-self: center;
     width: 3.2rem;
+    fill: currentColor;
 }
 
 @include tablet {

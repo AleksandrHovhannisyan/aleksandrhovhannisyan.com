@@ -22,3 +22,7 @@
   display: block;
   cursor: zoom-in;
 }
+
+.dark .loaded .lazy-img {
+  filter: blur(0) brightness(0.85);
+}
