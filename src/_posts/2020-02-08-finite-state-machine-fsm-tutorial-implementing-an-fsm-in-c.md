@@ -226,7 +226,7 @@ One final note: Each state class typically follows the [singleton design pattern
 
 To understand how this all works in practice, we'll implement everything from scratch.
 
-{% include linkedHeading.html heading="1. The <code>LightState</code> Interface" level=3 %}
+{% include linkedHeading.html heading="1. The `LightState` Interface" level=3 %}
 
 Let's first define the abstract `LightState` class. You'll notice some forward declarations that are necessary to resolve circular includes that would otherwise throw off the C++ linker.
 
@@ -383,7 +383,7 @@ I'm taking advantage of static variables to create my singletons in a legible ma
 
 Notice how each `toggle` method initiates the appropriate state transition by invoking `light->setState(...)` and passing in a singleton, via a call to the next state's `getInstance` method.
 
-{% include linkedHeading.html heading="3. The <code>Light</code> Class" level=3 %}
+{% include linkedHeading.html heading="3. The `Light` Class" level=3 %}
 
 The final piece of the puzzle is the `Light` class, particularly the `setState` method:
 
