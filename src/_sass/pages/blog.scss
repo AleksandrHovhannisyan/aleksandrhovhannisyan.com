@@ -156,7 +156,6 @@ $meta-tag-spacing: 0.8rem;
       }
 
       a {
-        @include font-weight("semiBold");
         @include underlined-link($initially-underlined: true);
       }
     }
