@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-
 <html lang="en-US" class="light">
-
 <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   <!-- Preload optimizations -->
   <link rel="preload" as="style" type="text/css" href="/assets/styles/main.css">
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-300.woff2" crossorigin>
@@ -23,7 +22,6 @@
   <!-- Metadata for search engines -->
   <meta name="description" content="{%- if page.description -%}{{ page.description }}{%- else -%}{{ site.description }}{%- endif -%}">
   <meta name="keywords" content="{%- if page.keywords -%}{{ page.keywords | join: ', ' }}{%- else -%}{{ site.keywords | join: ', ' }}{%- endif -%}">
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="{{ site.author }}">
   <meta name="referrer" content="origin">
@@ -74,7 +72,6 @@
     }
   </script>
 </head>
-
 <body class="centered">
   {%- include navbar.html -%}
   <main id="page-content">
@@ -87,5 +84,4 @@
   </footer>
   <script src="/assets/scripts/bundle.js" charset="utf-8"></script>
 </body>
-
 </html>
