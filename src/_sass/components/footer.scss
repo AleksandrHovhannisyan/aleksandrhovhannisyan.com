@@ -8,8 +8,9 @@
   width: 100%;
   padding: 1.6rem;
 
-  * {
+  .copyright-notice {
     color: var(--footer-text-color);
     text-align: center;
+    @include font-size(-1);
   }
 }
