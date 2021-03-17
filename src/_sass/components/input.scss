@@ -1,0 +1,24 @@
+.input {
+  background-color: var(--input-bg-color);
+  border: solid 0.1rem var(--input-border-color);
+  border-radius: 0.2rem;
+  color: var(--text-color-emphasis);
+  padding: 0.2rem 0.8rem;
+  width: 100%;
+
+  &:focus {
+    outline: solid 0.2rem var(--input-border-color-focus);
+    border-color: var(--input-border-color-focus);
+  }
+}
+
+label {
+  color: var(--text-color-emphasis);
+  display: block;
+  @include font-weight('semiBold');
+
+  &.required::after {
+    color: var(--input-required-asterisk-color);
+    content: ' *';
+  }
+}

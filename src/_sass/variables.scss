@@ -61,8 +61,6 @@ html.light {
   --input-bg-color: var(--color-white);
   --input-border-color-focus: var(--color-black-10);
   --input-border-color: var(--color-black-16);
-  --input-box-shadow-focus: 0 0 6px 0 var(--color-black-10);
-  --input-box-shadow: 0 0 5px 0 hsla(0, 0%, 0%, 0);
   --input-required-asterisk-color: var(--color-black-2);
   --link-color: var(--color-black);
   --main-bg-color: var(--color-white);
@@ -88,21 +86,19 @@ html.light {
 
 html.dark {
   --button-bg-color-hover: var(--color-black-16);
-  --button-bg-color: var(--color-black-14);
+  --button-bg-color: var(--color-black-12);
   --button-text-color: var(--color-black);
   --card-bg-color: var(--color-black-3);
   --code-block-box-shadow: 0 0.2rem 0.8rem 0 hsla(0, 0%, 0%, 0.4);
   --footer-bg-color: var(--navbar-bg-color);
   --footer-text-color: var(--navbar-text-color);
-  --form-bg-color: var(--color-black-4);
-  --hover-bg-color: var(--color-black-4);
+  --form-bg-color: var(--color-black-3);
+  --hover-bg-color: var(--color-black-3);
   --inline-code-bg-color: var(--color-black-6);
   --inline-code-text-color: var(--color-black-18);
-  --input-bg-color: var(--color-black-6);
-  --input-border-color-focus: var(--color-black-16);
-  --input-border-color: var(--color-black-5);
-  --input-box-shadow-focus: 0 0 6px 0 var(--color-black-16);
-  --input-box-shadow: 0 0 5px 0 hsla(0, 0%, 0%, 0);
+  --input-bg-color: var(--color-black-4);
+  --input-border-color-focus: var(--color-black-14);
+  --input-border-color: var(--input-bg-color);
   --input-required-asterisk-color: var(--color-black-18);
   --link-color: var(--color-white);
   --main-bg-color: var(--color-black-2);
@@ -119,7 +115,7 @@ html.dark {
   --table-header-bg-color: var(--color-black-3);
   --table-header-text-color: var(--color-black-18);
   --tag-bg-color-hover: var(--color-black-14);
-  --tag-bg-color: var(--color-black-6);
+  --tag-bg-color: var(--color-black-5);
   --tag-text-color-hover: var(--color-black);
   --tag-text-color: var(--color-white);
   --text-color-emphasis: var(--color-white);

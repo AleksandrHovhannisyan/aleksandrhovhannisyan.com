@@ -1,0 +1,33 @@
+.linked-heading {
+  position: relative;
+  scroll-margin-top: var(--scroll-margin-top);
+
+  &:hover {
+    .heading-anchor {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+.heading-anchor-wrapper {
+  position: absolute;
+  width: 1em;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  transform: translateX(-100%);
+
+  &:hover {
+    .heading-anchor {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+.heading-anchor {
+  visibility: hidden;
+  opacity: 0;
+  margin-left: 0.4rem;
+}

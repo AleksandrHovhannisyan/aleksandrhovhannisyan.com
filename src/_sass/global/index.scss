@@ -7,30 +7,11 @@
   text-shadow: none;
 }
 
-.screen-reader-only {
-  position: absolute;
-  left: 0;
-  clip: rect(0, 0, 0, 0);
-
-  &:focus {
-    clip: auto;
-  }
-}
-
 html {
   font-size: 1rem / map-get($type-scale, 'font-size-base') * 100%;
 
   @include mobile-lg {
     font-size: 62.5%;
-  }
-}
-
-.centered {
-  display: grid;
-  grid-template-columns: minmax(2.4rem, 1fr) minmax(0, var(--page-max-width)) minmax(2.4rem, 1fr);
-
-  > * {
-    grid-column: 2;
   }
 }
 
@@ -59,16 +40,6 @@ body {
   width: 2.8rem;
   height: 2.8rem;
   border-radius: 50%;
-}
-
-// Links an entire parent container, but the parent must be set to relative position
-.container-link {
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 1;
 }
 
 strong {
@@ -112,10 +83,6 @@ p {
   color: var(--text-color-normal);
 }
 
-.underlined-link {
-  @include underlined-link;
-}
-
 a {
   font-weight: inherit;
   text-decoration: none;
@@ -125,67 +92,6 @@ a {
   }
 }
 
-.linked-heading {
-  position: relative;
-  scroll-margin-top: var(--scroll-margin-top);
-
-  &:hover {
-    .heading-anchor {
-      visibility: visible;
-      opacity: 1;
-    }
-  }
-}
-
-.heading-anchor-wrapper {
-  position: absolute;
-  width: 1em;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  transform: translateX(-100%);
-
-  &:hover {
-    .heading-anchor {
-      visibility: visible;
-      opacity: 1;
-    }
-  }
-}
-
-.heading-anchor {
-  visibility: hidden;
-  opacity: 0;
-  margin-left: 0.4rem;
-}
-
 .section:not(:last-of-type) {
   margin-bottom: 12.8rem;
-}
-
-.input {
-  background-color: var(--input-bg-color);
-  border: solid 0.1rem var(--input-border-color);
-  border-radius: 0.2rem;
-  box-shadow: var(--input-box-shadow);
-  color: var(--text-color-emphasis);
-  padding: 0.2rem 0.8rem;
-  width: 100%;
-
-  &:focus {
-    outline: none;
-    border-color: var(--input-border-color-focus);
-    box-shadow: var(--input-box-shadow-focus);
-  }
-}
-
-label {
-  color: var(--text-color-emphasis);
-  display: block;
-  @include font-weight('semiBold');
-
-  &.required::after {
-    color: var(--input-required-asterisk-color);
-    content: ' *';
-  }
 }
