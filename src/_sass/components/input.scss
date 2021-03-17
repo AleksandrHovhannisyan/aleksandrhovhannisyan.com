@@ -13,12 +13,13 @@
 }
 
 label {
+  display: grid;
+  grid-template-columns: min-content min-content;
+  grid-column-gap: 0.4rem;
   color: var(--text-color-emphasis);
-  display: block;
   @include font-weight('semiBold');
 
   &.required::after {
-    color: var(--input-required-asterisk-color);
-    content: ' *';
+    content: '*';
   }
 }

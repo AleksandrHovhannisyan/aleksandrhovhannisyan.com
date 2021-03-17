@@ -85,7 +85,7 @@
   &:hover,
   &:focus {
     #website-name {
-      color: white;
+      color: var(--color-white);
     }
   }
 }
@@ -195,7 +195,7 @@
 .skip-navigation:focus,
 .navbar-link:hover,
 .navbar-link:focus {
-  color: white;
+  color: var(--color-white);
   background-color: var(--navbar-link-bg-color-hover);
 }
 
@@ -224,7 +224,7 @@
   &:focus,
   &:hover {
     .icon-bar {
-      background-color: white;
+      background-color: var(--color-white);
     }
   }
 }
@@ -233,7 +233,7 @@
 #navbar-toggle,
 #theme-toggle,
 #home-link {
-  outline-color: var(--navbar-text-color);
+  outline-color: var(--color-white);
 }
 
 #theme-toggle-container {
@@ -287,7 +287,7 @@
     top: -2px;
     left: 4px;
     border-radius: 1px 1px 0 0;
-    background-color: white;
+    background-color: var(--color-white);
   }
 }
 

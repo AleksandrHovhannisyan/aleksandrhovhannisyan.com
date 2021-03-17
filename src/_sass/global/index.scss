@@ -90,6 +90,10 @@ a {
   &, code {
     color: var(--link-color);
   }
+
+  &:focus {
+    outline: solid 0.2rem currentColor;
+  }
 }
 
 .section:not(:last-of-type) {

@@ -53,6 +53,11 @@
   max-width: 100%;
   width: 100%;
   @include font-size(0);
+
+  &:focus {
+    outline: solid 0.2rem var(--button-bg-color-hover);
+    outline-offset: 0.2rem;
+  }
 }
 
 // Spammers begone
