@@ -50,6 +50,9 @@ div.highlighter-rouge {
 }
 
 .code-file-name {
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 0.4rem;
   color: var(--color-black-18);
   word-break: break-all;
   @include font-size(-1);
@@ -57,12 +60,12 @@ div.highlighter-rouge {
 
   &::before {
     content: '📂';
-    margin-right: 0.4rem;
   }
 }
 
 .copy-code-container {
   display: flex;
+  align-items: center;
   flex: 1;
   justify-content: flex-end;
 }
