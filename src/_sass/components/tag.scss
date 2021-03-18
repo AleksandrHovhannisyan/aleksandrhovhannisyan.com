@@ -9,7 +9,12 @@ a.tag {
   &:hover,
   &:focus,
   &.active {
-      background-color: var(--tag-bg-color-hover);
-      color: var(--tag-text-color-hover);
+    background-color: var(--tag-bg-color-hover);
+    color: var(--tag-text-color-hover);
+  }
+
+  &:focus {
+    outline: solid 0.2rem var(--tag-bg-color-hover);
+    outline-offset: 0.2rem;
   }
 }
