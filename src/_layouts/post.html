@@ -52,7 +52,7 @@ preloads:
       "@id": "{{ site.url }}{{ page.url }}"
     },
     "headline": {{ page.title | escape | jsonify }},
-    "image": ["{{ site.url }}/{{ page.img_path }}/{{ page.slug }}/{{ thumbnail }}"],
+    "image": ["{{ site.url }}/assets/images/posts/{{ page.slug }}/{{ thumbnail }}"],
     "datePublished": {{ page.date | jsonify }},{% if page.last_updated %}
     "dateModified": {{ page.last_updated | jsonify }},{% endif %}
     "author": {

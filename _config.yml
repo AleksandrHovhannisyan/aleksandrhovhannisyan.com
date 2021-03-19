@@ -111,4 +111,3 @@ defaults:
       layout: post
       excerpt: ''
       permalink: /blog/:title/
-      img_path: assets/img/posts
