@@ -3,11 +3,11 @@ title: Blog
 description: Welcome to my blog! I like to write about a range of technical and nontechnical subjects. I hope you find what you're looking for!
 permalink: /blog/
 layout: blog
-tag: all
 pagination:
   enabled: true
 ---
 
-{%- for post in paginator.posts -%}
+{% assign posts = paginator.posts | where: 'is_archived', Nil %}
+{%- for post in posts -%}
   {% include postPreview.html post=post title_level=2 %}
 {%- endfor -%}

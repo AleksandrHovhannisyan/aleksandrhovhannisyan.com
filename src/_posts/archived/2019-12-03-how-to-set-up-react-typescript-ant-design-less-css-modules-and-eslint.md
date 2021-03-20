@@ -2,10 +2,10 @@
 title: 'How to Set up Create React App with TypeScript, Ant Design, LESS, CSS Modules, and ESLint'
 description: Enjoy a better dev experience by setting up React with TypeScript, customizing the Ant Design theme with LESS and CSS Modules, and linting your code.
 keywords: ['create react app with typescript', 'customize ant design theme', 'create react app css modules and typescript']
-tags: [dev, react, antd, typescript]
 last_updated: 2020-05-30
-comments_id: 30
-is_popular: true
+# comments_id: 30
+# is_popular: true
+archive_note: I no longer use or support this setup. I instead prefer to use CSS-in-JS and no UI libraries, as they tend to introduce more bloat and issues later down the road.
 ---
 
 Let's skip the exposition and just jump right in. I'll use VS Code to make my life easier; I recommend that you do the same. Note that I'll be using yarn as my package manager, but you can also use npm.

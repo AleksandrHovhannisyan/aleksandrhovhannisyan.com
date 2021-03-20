@@ -18,7 +18,8 @@ permalink: /
   <section id="recent-posts" class="section">
       {%- include linkedHeading.html heading="Recent Blog Posts" level=2 -%}
       <ol class="post-preview-grid">
-          {%- for post in site.posts limit:5 -%}
+          {%- assign posts = site.posts | where: "is_archived", Nil -%}
+          {%- for post in posts limit:5 -%}
             {%- include postPreview.html post=post -%}
           {%- endfor -%}
       </ol>
