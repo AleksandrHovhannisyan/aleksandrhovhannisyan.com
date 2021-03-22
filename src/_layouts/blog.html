@@ -24,7 +24,7 @@ is_blog_page: true
       {{- site.data.tags["all"] -}}
     {%- endif -%}
   </p>
-  <nav aria-label="Primary blog post tags">
+  <nav aria-label="Popular tags">
     <ul class="navigation-tags">
       {%- assign tags = "all,accessibility,css,webperf,off-topic" | split: ',' -%}
       {%- for tag in tags %}
