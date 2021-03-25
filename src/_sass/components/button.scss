@@ -15,9 +15,13 @@
 }
 
 .plus-button {
+  display: grid;
+  align-items: center;
+  grid-template-columns: min-content auto;
+  grid-column-gap: 0.8rem;
+
   &::before {
     content: "+";
-    margin-right: 10px;
     @include font-size(-1);
     @include font-weight("bold");
   }

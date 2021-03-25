@@ -71,26 +71,17 @@ div.highlighter-rouge {
 }
 
 .copy-code-button {
-  align-items: center;
-  display: grid;
-  grid-auto-flow: column;
-  grid-column-gap: 0.4rem;
   background-color: var(--color-black-35);
   color: var(--color-black-90);
   padding: 0.6rem 1.2rem;
   border-radius: 0.4rem;
-  box-shadow: 0 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0.2rem 0.4rem 0 hsla(0, 0%, 0%, 0.5);
   top: 0;
   position: relative;
   @include font-size(-1);
 
   &::before {
-    content: 'Copy';
-  }
-
-  &::after {
-    content: '📋';
-    display: block;
+    content: 'Copy 📋';
   }
 
   &.copied,
@@ -101,17 +92,13 @@ div.highlighter-rouge {
   }
 
   &:active {
-    box-shadow: 0 0 0.4rem 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0.4rem 0 hsla(0, 0%, 0%, 0.5);
     top: 0.2rem;
   }
 
   &.copied {
     &::before {
-      content: 'Copied!';
-    }
-
-    &::after {
-      content: '✔️';
+      content: 'Copied! ✔️';
     }
   }
 }
