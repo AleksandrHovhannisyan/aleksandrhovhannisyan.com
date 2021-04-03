@@ -170,31 +170,22 @@ $meta-tag-spacing: 0.8rem;
     }
 
     figure {
-        figcaption {
-          font-style: italic;
-          text-align: center;
-          @include font-size(-1);
-        }
+      display: grid;
+      grid-auto-flow: row;
+      grid-row-gap: 0.8rem;
 
-        .clickable-picture-anchor {
-            margin-bottom: 0.8rem;
-
-            picture {
-              margin-bottom: 0;
-            }
-        }
-
-        picture {
-          margin-bottom: 0.8rem;
-        }
+      figcaption {
+        font-style: italic;
+        text-align: center;
+        @include font-size(-1);
+      }
     }
 
-    figure,
     picture {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
     }
 
     img,
