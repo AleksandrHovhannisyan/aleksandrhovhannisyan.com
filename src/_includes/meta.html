@@ -22,7 +22,7 @@
   {% if last_updated %}
     <li class="meta post-date-updated">
       {%- include icon.html icon="info" class="meta-icon" -%}
-      {%- include date.html date=last_updated dateFormat="%b %-d, %Y" -%}
+      Updated: {%- include date.html date=last_updated dateFormat="%b %-d, %Y" -%}
     </li>
   {%- endif -%}
   <li class="meta post-reading-length">
