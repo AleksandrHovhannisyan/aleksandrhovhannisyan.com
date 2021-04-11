@@ -93,6 +93,15 @@ a {
   }
 }
 
+code {
+  background-color: var(--inline-code-bg-color);
+  color: var(--inline-code-text-color);
+  border-radius: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.925em;
+  @include font-family('mono');
+}
+
 .section:not(:last-of-type) {
   margin-bottom: 12.8rem;
 }
