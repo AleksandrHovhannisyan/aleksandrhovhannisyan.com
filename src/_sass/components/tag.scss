@@ -1,3 +1,5 @@
+@import 'mixins';
+
 .tag {
   background-color: var(--tag-bg-color);
   color: var(--tag-text-color);
@@ -13,8 +15,5 @@ a.tag {
     color: var(--tag-text-color-hover);
   }
 
-  &:focus {
-    outline: solid 0.2rem var(--tag-bg-color-hover);
-    outline-offset: 0.2rem;
-  }
+  @include focus-outline($color: var(--tag-bg-color-hover), $style: solid, $thickness: 0.2rem, $offset: 0.2rem);
 }

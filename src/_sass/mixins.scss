@@ -95,6 +95,17 @@
   }
 }
 
+@mixin focus-outline($color, $style: solid, $thickness: 0.2rem, $offset: 0) {
+  &:focus {
+    outline: $style $thickness $color;
+    outline-offset: $offset;
+
+    &:not(:focus-visible) {
+      outline: none;
+    }
+  }
+}
+
 @mixin responsive-grid($mobile-min, $desktop-min, $mobile-max: 1fr, $desktop-max: 1fr, $breakpoint: 600px) {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax($mobile-min, $mobile-max));
