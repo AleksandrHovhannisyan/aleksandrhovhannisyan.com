@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US" class="light">
+<html lang="en-US">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   <!-- Preload optimizations -->
@@ -64,12 +64,17 @@
   {%- endif -%}
   <!-- Load the user's last selected theme -->
   <script>
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      document.documentElement.className = savedTheme;
-    } else {
-      localStorage.setItem('theme', 'light');
-    }
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.className = savedTheme;
+      } else {
+        const userPrefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const preferredTheme = userPrefersDarkMode ? 'dark' : 'light';
+        document.documentElement.className = preferredTheme;
+        localStorage.setItem('theme', preferredTheme);
+      }
+    })();
   </script>
 </head>
 <body class="centered">

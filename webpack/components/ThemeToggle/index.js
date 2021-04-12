@@ -1,15 +1,15 @@
-const themeMap = {
-  light: 'dark',
-  dark: 'light',
-};
-
 export default class ThemeToggle {
-  constructor({ toggleSelector, themeOwner, storageKey }) {
-    this.toggleElement = document.querySelector(toggleSelector);
-    this.toggleElement.addEventListener('click', () => this.toggle());
+  constructor({ toggleElement, themeOwner, storageKey, defaultTheme, themeMap }) {
     this.themeOwner = themeOwner;
+    this.toggleElement = toggleElement;
+    this.toggleElement.addEventListener('click', () => this.toggle());
     this.storageKey = storageKey;
-    this.theme = localStorage.getItem(storageKey) || 'light';
+    this.themeMap = themeMap;
+    this.theme = localStorage.getItem(storageKey) ?? defaultTheme;
+
+    // On init, only update the class names and sync the aria label. The main
+    // init logic comes from the IIFE in src/_layouts/default.html.
+    this.updateClassNames(defaultTheme, this.theme);
     this.syncAriaLabelWithStorage();
   }
 
@@ -17,20 +17,27 @@ export default class ThemeToggle {
     return this.theme;
   }
 
-  toggle() {
-    const oldTheme = this.currentTheme;
-    const newTheme = themeMap[oldTheme];
+  get nextTheme() {
+    return this.themeMap[this.theme];
+  }
 
+  updateClassNames(oldTheme, newTheme) {
     this.themeOwner.classList.remove(oldTheme);
     this.themeOwner.classList.add(newTheme);
-
-    localStorage.setItem(this.storageKey, newTheme);
-    this.theme = newTheme;
-    this.syncAriaLabelWithStorage();
   }
 
   syncAriaLabelWithStorage() {
-    const nextTheme = themeMap[this.currentTheme];
-    this.toggleElement.setAttribute('aria-label', `Switch to ${nextTheme} mode theme`);
+    this.toggleElement.setAttribute('aria-label', `Switch to ${this.nextTheme} mode theme`);
+  }
+
+  setTheme(newTheme) {
+    this.updateClassNames(this.theme, newTheme);
+    this.theme = newTheme;
+    localStorage.setItem(this.storageKey, newTheme);
+    this.syncAriaLabelWithStorage();
+  }
+
+  toggle() {
+    this.setTheme(this.nextTheme);
   }
 }

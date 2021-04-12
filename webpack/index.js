@@ -6,9 +6,14 @@ const navbar = new Navbar();
 
 // eslint-disable-next-line no-unused-vars
 const themeToggle = new ThemeToggle({
-  toggleSelector: '#theme-toggle',
+  toggleElement: document.getElementById('theme-toggle'),
   storageKey: 'theme',
   themeOwner: document.documentElement,
+  defaultTheme: 'light',
+  themeMap: {
+    light: 'dark',
+    dark: 'light',
+  },
 });
 
 lazyLoad('.lazy-img', (img) => {
