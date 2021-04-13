@@ -9,13 +9,13 @@
     "dev:prod": "concurrently \"webpack --watch --mode=production\" \"JEKYLL_ENV=production bundle exec jekyll serve --livereload --port=4001\"",
     "build": "yarn test && webpack --mode=production && JEKYLL_ENV=production bundle exec jekyll build",
     "lint:fix": "eslint --cache --fix 'webpack/**/*.js'",
-    "test": "jest",
-    "test:watch": "yarn run test --watch --silent=false"
+    "test": "jest --config jest.config.js",
+    "test:watch": "yarn run test --watch --silent=false --verbose=true"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
     "@babel/plugin-transform-modules-commonjs": "^7.10.4",
-    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-env": "^7.13.15",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
