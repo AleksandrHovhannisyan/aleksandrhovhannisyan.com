@@ -26,10 +26,7 @@ preloads:
 <article id="post">
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
-    {%- if page.last_updated -%}
-      {%- assign last_updated = page.last_updated -%}
-    {%- endif -%}
-    {% include meta.html post=page last_updated=last_updated showProfilePhoto=true %}
+    {% include meta.html post=page last_updated=page.last_updated show_profile_photo=true %}
   </header>
   <div class="post-content">
     {{ content }}
@@ -39,10 +36,7 @@ preloads:
   </div>
 </article>
 
-{%- assign thumbnail = 'thumbnail.png' -%}
-{%- if page.thumbnail -%}
-  {%- assign thumbnail = page.thumbnail -%}
-{%- endif -%}
+{%- assign thumbnail = page.thumbnail | default: 'thumbnail.png' -%}
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",

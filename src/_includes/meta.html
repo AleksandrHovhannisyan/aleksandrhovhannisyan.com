@@ -4,22 +4,22 @@
 {%- else -%}
   {%- assign reading_length = post.content | number_of_words | divided_by: 250.0 | ceil -%}
 {%- endif -%}
-{%- assign showProfilePhoto = include.showProfilePhoto -%}
+{%- assign show_profile_photo = include.show_profile_photo -%}
 {%- assign last_updated = include.last_updated -%}
 <ul class="post-meta">
-  {% if showProfilePhoto %}
+  {% if show_profile_photo %}
     <li class="post-meta-item">
       {%- include picture.html img="/assets/images/profile-photo.png" alt="" class="author-photo" width=50 height=50 clickable=false -%}
     </li>
   {%- endif -%}
   <li class="post-meta-item post-date-published">
     {%- include icon.html icon="calendar" class="post-meta-icon" -%}
-    {%- include date.html date=post.date dateFormat="%b %-d, %Y" -%}
+    {%- include date.html date=post.date date_format="%b %-d, %Y" -%}
   </li>
   {% if last_updated %}
     <li class="post-meta-item post-date-updated">
       {%- include icon.html icon="info" class="post-meta-icon" -%}
-      Updated: {%- include date.html date=last_updated dateFormat="%b %-d, %Y" -%}
+      Updated: {%- include date.html date=last_updated date_format="%b %-d, %Y" -%}
     </li>
   {%- endif -%}
   <li class="post-meta-item post-reading-length">

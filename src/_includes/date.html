@@ -1,10 +1,4 @@
-{%- assign datetimeFormat = "%Y-%m-%d" -%}
-{%- if include.datetimeFormat -%}
-  {%- assign datetimeFormat = include.datetimeFormat -%}
-{%- endif -%}
+{%- assign datetime_format = include.datetime_format | default: "%Y-%m-%d" -%}
 {%- assign date = include.date -%}
-{%- assign dateFormat = "%m/%d/%Y" -%}
-{%- if include.dateFormat -%}
-  {%- assign dateFormat = include.dateFormat -%}
-{%- endif -%}
-<time datetime="{{ date | date: datetimeFormat }}">{{ date | date: dateFormat }}</time>
+{%- assign date_format = include.date_format | default: "%m/%d/%Y" -%}
+<time datetime="{{ date | date: datetime_format }}">{{ date | date: date_format }}</time>

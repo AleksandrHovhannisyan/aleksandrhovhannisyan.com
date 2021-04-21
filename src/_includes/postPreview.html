@@ -1,8 +1,5 @@
 {%- assign post = include.post -%}
-{%- assign title_level = 3 -%}
-{%- if include.title_level -%}
-  {%- assign title_level = include.title_level -%}
-{%- endif -%}
+{%- assign title_level = include.title_level | default: 3 -%}
 <li class="post-preview">
   <a href="{{ post.url }}" aria-hidden="true" tabindex="-1" class="post-preview-thumbnail-container">
     {%- include thumbnail.html post=post -%}
