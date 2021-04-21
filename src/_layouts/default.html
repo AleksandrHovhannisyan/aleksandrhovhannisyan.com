@@ -42,7 +42,11 @@
     <!-- Prevent this page from showing up on search engines -->
     <meta name="robots" content="noindex">
   {%- endif -%}
+  <!-- CSS-->
   <link rel="stylesheet" href="/assets/styles/main.css">
+  {%- for stylesheet in layout.stylesheets -%}
+    <link rel="stylesheet" href="{{ stylesheet.href }}">
+  {%- endfor -%}
   <!-- Favicons -->
   <link rel="icon" href="/assets/images/favicons/favicon-32.png" sizes="32x32">
   <link rel="icon" href="/assets/images/favicons/favicon-57.png" sizes="57x57">
