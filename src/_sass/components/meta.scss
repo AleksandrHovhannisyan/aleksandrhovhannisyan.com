@@ -1,8 +1,5 @@
 @import 'mixins';
 
-$meta-spacing: 1.6rem;
-$meta-tag-spacing: 0.8rem;
-
 .post-meta {
   --post-meta-item-spacing: 1.6rem;
   display: flex;
@@ -69,7 +66,7 @@ $meta-tag-spacing: 0.8rem;
   display: flex;
   align-items: center;
   padding: 0.6rem 1.2rem;
-  margin-right: $meta-tag-spacing;
-  margin-bottom: $meta-tag-spacing;
+  margin-right: var(--post-meta-tag-spacing);
+  margin-bottom: var(--post-meta-tag-spacing);
   border-radius: 0.4rem;
 }
