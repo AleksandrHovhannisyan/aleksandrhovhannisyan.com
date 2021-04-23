@@ -20,9 +20,11 @@ lazyLoad('.lazy-img', (img) => {
   const pictureElement = img.parentElement;
   const source = pictureElement.querySelector('.lazy-source');
 
+  img.onload = () => {
+    pictureElement.classList.add('loaded');
+  };
   source.srcset = source.getAttribute('data-srcset');
   img.src = img.getAttribute('data-src');
-  pictureElement.classList.add('loaded');
 });
 
 const copyableCodeBlocks = document.querySelectorAll('.code-header.with-copy-button + .highlighter-rouge');
