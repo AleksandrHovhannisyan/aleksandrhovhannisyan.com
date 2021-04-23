@@ -70,7 +70,8 @@
     &:focus {
       text-decoration: none;
     }
-  } @else {
+  }
+  @else {
     text-decoration: none;
 
     &:hover,
