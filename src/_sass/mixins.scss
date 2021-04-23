@@ -9,7 +9,7 @@
   @for $i from 1 through length($props) {
     $prop: nth($props, $i);
     $result: append($result, $prop);
-    $result: append($result, ease #{var(--transition-duration)});
+    $result: append($result, #{var(--transition-timing-function)} #{var(--transition-duration)});
 
     @if $i != length($props) {
       $result: append(
