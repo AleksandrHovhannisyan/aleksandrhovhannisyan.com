@@ -37,7 +37,7 @@ yarn add -D eslint prettier eslint-plugin-prettier eslint-config-prettier
 If you're linting TypeScript, you'll also want these packages in addition to the ones above:
 
 - `@typescript-eslint/eslint-plugin` (rules specific to TypeScript)
-- `@typescript-eslint/parser` (the ESLint formatter for TypeScript)
+- `@typescript-eslint/parser` (the ESLint parser for TypeScript)
 
 Install them like so:
 
@@ -48,8 +48,8 @@ yarn add -D @typescript-eslint/eslint-plugin @typescript-eslint/parser
 
 And if you're linting React, throw these must-haves into the mix:
 
-- `eslint-plugin-react`
-- `eslint-plugin-react-hooks`
+- `eslint-plugin-react` (rules specific to React and JSX)
+- `eslint-plugin-react-hooks` (ESLint rules to enforce the rules of hooks)
 
 You get the idea:
 
@@ -307,6 +307,8 @@ One important change needs to be made to the `parserOptions` object: We'll need 
   ]
 }
 ```
+
+I've turned off the `react-in-jsx-scope` rule, as it tends to be annoying if you're using React 17+ (where you [don't have to explicitly import React](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-a-jsx-transform)). If you're working with a lower version number, you'll want to turn off this rule and import React anytime you need to render JSX.
 
 #### 3. Configure VS Code to Auto-Format Code on Save
 
