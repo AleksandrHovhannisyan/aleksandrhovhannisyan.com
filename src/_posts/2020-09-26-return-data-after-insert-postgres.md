@@ -106,3 +106,7 @@ LIMIT 3;
 ```
 
 Again, this only works if your IDs form a discrete sequence, which is the case with the `SERIAL` auto-incrementing integer type. Furthermore, note that this option requires writing two separate queries, whereas PostgreSQL's `RETURNING` clause allows you to return data after an insert with just one query. The `RETURNING` syntax is more convenient if you need to [use the returned IDs or values in a subsequent query](https://medium.com/@nieldw/use-postgresql-returning-and-with-to-return-updated-rows-f5354de7b45f).
+
+## Attributions
+
+The photo used in this post's social media preview was taken by [Nam Anh](https://unsplash.com/@bepnamanh) ([Unsplash](https://unsplash.com/photos/QJbyG6O0ick)).
