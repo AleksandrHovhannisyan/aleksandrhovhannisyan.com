@@ -323,7 +323,13 @@ The first step is easy—just head over to the extensions tab in VS Code's sideb
 
 {% include img.html img="eslint-extension.png" alt="Viewing the ESLint extension in the VS Code extension marketplace." width=1312 height=542 %}
 
-You may need to reload VS Code. Also, you may be asked if you want to load and use the ESLint executable installed in `node_modules` for the VS Code extension—say `Yes` if this dialog pops up.
+You may need to reload VS Code.
+
+At this point, you may be asked if you want to load and use the ESLint executable installed in `node_modules` for the VS Code extension. A dialog window will pop up saying something like this:
+
+> *The ESLint extension will use node_modules/eslint for validation, which is installed locally in folder 'your-folder'. Do you allow the execution of the ESLint version including all plugins and configuration files it will load on your behalf?*
+
+Click `Allow` (or `Allow everywhere`). If the dialog doesn't pop up and you're seeing squiggly lines in a file, you may need to just open the lightbulb menu (put your cursor on the squiggly lines and do `Ctrl+.`/`Cmd+.`) and choose `ESLint: Manage Library Execution`.
 
 One last thing worth mentioning: If you're working with other developers, you can configure the recommended extensions for your workspace. This will prompt other team members to install the ESLint extension if they don't already have it when they open your workspace in VS Code.
 
