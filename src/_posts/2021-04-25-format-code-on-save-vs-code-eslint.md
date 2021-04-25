@@ -200,7 +200,7 @@ If you're working in a vanilla JavaScript or Node environment, you may need to i
 
 This should cover most bases. You can extend the rules and environments as needed or even install additional ESLint plugins. See the ESLint docs for [the full list of rules](https://eslint.org/docs/rules/).
 
-> **Heads up**: If you're used to adding trailing commas to JSON in JavaScript, be careful. This can break your ESLint config. VS Code should warn you if you add a trailing comma.
+> **Heads up**: Don't add trailing commas to your ESLint config if you're writing it in JSON.
 
 ##### TypeScript ESLint Config
 
