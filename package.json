@@ -8,9 +8,12 @@
     "dev": "concurrently \"webpack --watch --mode=development\" \"JEKYLL_ENV=development bundle exec jekyll serve --livereload --port=4001\"",
     "dev:prod": "concurrently \"webpack --watch --mode=production\" \"JEKYLL_ENV=production bundle exec jekyll serve --livereload --port=4001\"",
     "build": "yarn test && webpack --mode=production && JEKYLL_ENV=production bundle exec jekyll build",
-    "lint:css": "stylelint --fix \"src/_sass/**/*.scss\"",
-    "lint:js": "eslint --cache --fix \"webpack/**/*.js\"",
+    "lint:css": "stylelint \"src/_sass/**/*.scss\"",
+    "lint:css:fix": "stylelint --fix \"src/_sass/**/*.scss\"",
+    "lint:js": "eslint --cache \"webpack/**/*.js\"",
+    "lint:js:fix": "eslint --cache --fix \"webpack/**/*.js\"",
     "lint:all": "yarn lint:css && yarn lint:js",
+    "lint:all:fix": "yarn lint:css:fix && yarn lint:js:fix",
     "test": "jest --config jest.config.js",
     "test:watch": "yarn run test --watch --silent=false --verbose=true"
   },
@@ -40,7 +43,8 @@
     }
   },
   "lint-staged": {
-    "*.(js|scss)": "yarn run lint:all"
+    "*.js": "yarn run lint:js:fix",
+    "*.scss": "yarn run lint:css:fix"
   },
   "jest": {
     "moduleDirectories": [
