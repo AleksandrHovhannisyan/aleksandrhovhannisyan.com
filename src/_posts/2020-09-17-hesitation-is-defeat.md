@@ -64,11 +64,6 @@ For me, this was the single most rewarding experience that a game has ever offer
 
 So, farewell, Isshin—and thank you, Miyazaki, for yet another stellar Soulsborne title.
 
-<div class="embed-container">
-    <lite-youtube
-    videoid="Ewu-Evc_qNc"
-    videotitle="I Beat Sekiro: Shadows Die Twice! (And It Only Took Me 1 Year...)"
-    ></lite-youtube>
-</div>
+{% include youtubeEmbed.html id="Ewu-Evc_qNc" title="I Beat Sekiro: Shadows Die Twice! (And It Only Took Me 1 Year...)" %}
 
-<script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@0.6.2/lite-youtube.js" defer>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@0.6.2/lite-youtube.js" defer></script>

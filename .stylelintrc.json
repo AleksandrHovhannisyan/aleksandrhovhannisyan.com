@@ -1,5 +1,7 @@
 {
-  "plugins": ["stylelint-scss"],
+  "plugins": [
+    "stylelint-scss"
+  ],
   "rules": {
     "at-rule-no-unknown": null,
     "scss/at-rule-no-unknown": true,
@@ -9,5 +11,8 @@
     "block-closing-brace-newline-after": "always",
     "block-closing-brace-empty-line-before": "never",
     "indentation": 2
-  }
+  },
+  "ignoreFiles": [
+    "**/*main.scss"
+  ]
 }
