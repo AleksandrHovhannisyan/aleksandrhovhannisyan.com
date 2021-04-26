@@ -48,7 +48,7 @@ html {
 }
 
 html.light {
-  --button-bg-color-hover: var(--color-black-35);
+  --button-bg-color-focus: var(--color-black-35);
   --button-bg-color: var(--color-black-25);
   --button-text-color: var(--color-white);
   --card-bg-color: var(--color-white);
@@ -66,9 +66,9 @@ html.light {
   --main-bg-color: var(--color-white);
   --navbar-bg-color: var(--color-black-15);
   --navbar-box-shadow: 0 0 0.2rem 0 hsla(0, 0%, 0%, 0.8);
-  --navbar-link-bg-color-hover: var(--color-black-25);
+  --navbar-link-bg-color-focus: var(--color-black-25);
   --navbar-text-color: var(--color-black-85);
-  --scrollbar-thumb-bg-color-hover: var(--color-black-85);
+  --scrollbar-thumb-bg-color-focus: var(--color-black-85);
   --scrollbar-thumb-bg-color: var(--color-black-70);
   --scrollbar-track-bg-color: var(--color-black-90);
   --selection-bg-color: var(--color-black-10);
@@ -76,16 +76,16 @@ html.light {
   --table-border-color: var(--color-black-70);
   --table-header-bg-color: var(--color-black-90);
   --table-header-text-color: var(--color-black-25);
-  --tag-bg-color-hover: var(--color-black-15);
+  --tag-bg-color-focus: var(--color-black-15);
   --tag-bg-color: var(--color-black-90);
-  --tag-text-color-hover: var(--color-white);
+  --tag-text-color-focus: var(--color-white);
   --tag-text-color: var(--color-black-10);
   --text-color-emphasis: var(--color-black-10);
   --text-color-normal: var(--color-black-10);
 }
 
 html.dark {
-  --button-bg-color-hover: var(--color-black-80);
+  --button-bg-color-focus: var(--color-black-80);
   --button-bg-color: var(--color-black-60);
   --button-text-color: var(--color-black);
   --card-bg-color: var(--color-black-15);
@@ -103,9 +103,9 @@ html.dark {
   --main-bg-color: var(--color-black-10);
   --navbar-bg-color: var(--color-black-15);
   --navbar-box-shadow: 0 0 8px 0 hsla(0, 0%, 0%, 0.8);
-  --navbar-link-bg-color-hover: var(--color-black-25);
+  --navbar-link-bg-color-focus: var(--color-black-25);
   --navbar-text-color: var(--color-black-90);
-  --scrollbar-thumb-bg-color-hover: var(--color-black-70);
+  --scrollbar-thumb-bg-color-focus: var(--color-black-70);
   --scrollbar-thumb-bg-color: var(--color-black-50);
   --scrollbar-track-bg-color: var(--navbar-bg-color);
   --selection-bg-color: var(--color-white);
@@ -113,9 +113,9 @@ html.dark {
   --table-border-color: var(--color-black-30);
   --table-header-bg-color: var(--color-black-15);
   --table-header-text-color: var(--color-black-90);
-  --tag-bg-color-hover: var(--color-black-70);
+  --tag-bg-color-focus: var(--color-black-70);
   --tag-bg-color: var(--color-black-25);
-  --tag-text-color-hover: var(--color-black);
+  --tag-text-color-focus: var(--color-black);
   --tag-text-color: var(--color-white);
   --text-color-emphasis: var(--color-white);
   --text-color-normal: var(--color-black-75);

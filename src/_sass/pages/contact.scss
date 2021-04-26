@@ -55,7 +55,7 @@
   @include font-size(0);
 
   &:focus {
-    outline: solid 0.2rem var(--button-bg-color-hover);
+    outline: solid 0.2rem var(--button-bg-color-focus);
     outline-offset: 0.2rem;
   }
 }
