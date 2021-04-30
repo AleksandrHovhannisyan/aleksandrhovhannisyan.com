@@ -35,8 +35,10 @@ Check out the [ngrok documentation on how to get started](https://dashboard.ngro
 
 Once you've set up ngrok, using it is a piece of cake. If you've spun up a simple web server on a localhost port (e.g., `jekyll`), simply run this command from your terminal to expose it as a public URL:
 
-{% capture code %}ngrok http portNumber{% endcapture %}
-{% include code.html code=code lang="bash" %}
+{% include codeHeader.html %}
+```bash
+ngrok http portNumber
+```
 
 And just replace `portNumber` with your port (e.g., `3000`).
 
@@ -54,8 +56,10 @@ As a bonus, this means that you can also share your localhost changes with other
 
 If you'd like to, you can also enforce a username and password combo when testing localhost on mobile so that only people with those secret credentials can access your URL:
 
-{% capture code %}ngrok http -auth "user:password" portNumber{% endcapture %}
-{% include code.html code=code lang="bash" %}
+{% include codeHeader.html %}
+```bash
+ngrok http -auth "user:password" portNumber
+```
 
 As before, replace `portNumber` with your own. Be sure to also replace `user` and `password` with any username or password combination that you want other people to enter when visiting your site. These should **NOT** be your actual ngrok credentials. Just make up whatever username and password you want to use.
 

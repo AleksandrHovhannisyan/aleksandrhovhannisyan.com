@@ -149,8 +149,10 @@ Everything on your computer—the files you save and the software you install—
 
 Suppose you create a file on your computer and store some basic text in it:
 
-{% capture code %}echo Hello, Binary > file{% endcapture %}
-{% include code.html code=code lang="bash" %}
+{% include codeHeader.html %}
+```bash
+echo Hello, Binary > file
+```
 
 At the end of the day, your computer can't store a character like <code>H</code>, <code>e</code>, <code>l</code>, or <code>o</code> (or even the space between two words) *literally*. Computers only know how to work with *binary*. Thus, we need some way to convert these characters to numbers. And that's why the ASCII standard was introduced.
 
@@ -204,8 +206,10 @@ The key takeaway here is that we only need one byte to store one character on a 
 
 Remember the file we created earlier? Let's view its binary representation using the <code>xxd</code> Unix tool:
 
-{% capture code %}xxd -b file{% endcapture %}
-{% include code.html code=code lang="bash" %}
+{% include codeHeader.html %}
+```bash
+xxd -b file
+```
 
 The <code>-b</code> flag stands for binary. Here's the output that you'll get:
 

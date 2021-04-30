@@ -1,19 +1,19 @@
 .heart {
   @keyframes heartbeat {
     0% {
-        transform: scale(1.0) rotate(45deg);
+      transform: scale(1.0) rotate(45deg);
     }
     10% {
-        transform: scale(0.95) rotate(45deg);
+      transform: scale(0.95) rotate(45deg);
     }
     20% {
-        transform: scale(1.0) rotate(45deg);
+      transform: scale(1.0) rotate(45deg);
     }
     90% {
-        transform: scale(0.95) rotate(45deg);
+      transform: scale(0.95) rotate(45deg);
     }
     100% {
-        transform: scale(1.0) rotate(45deg);
+      transform: scale(1.0) rotate(45deg);
     }
   }
 
@@ -27,7 +27,7 @@
 
   &, &::before, &::after {
     background-color: rgb(190, 27, 27);
-  transition: all 0.1s;
+    transition: all 0.1s;
   }
 
   &::before, &::after {

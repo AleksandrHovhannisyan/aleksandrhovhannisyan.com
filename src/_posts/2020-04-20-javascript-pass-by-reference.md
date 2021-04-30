@@ -84,7 +84,9 @@ By analogy, a reference is like a person's nickname. My real name is Aleksandr, 
 
 Here's some C++ code to illustrate true reference variables in action:
 
-{% capture code %}#include <iostream>
+{% include codeHeader.html %}
+```cpp
+#include <iostream>
 #include <string>
 
 int main()
@@ -99,19 +101,21 @@ int main()
 
     std::cout << myName << std::endl; // "Alex"
     std::cout << myNickname << std::endl; // "Alex"
-}{% endcapture %}
-{% include code.html code=code lang="cpp" %}
+}
+```
 
 In languages that don't support reference variables (e.g., JavaScript), two variables may share a copy of a value, but it's guaranteed that those variables will occupy different memory addresses. Here's an attempt at the above in JavaScript:
 
-{% capture code %}let myName = "Aleksandr";
+{% include codeHeader.html %}
+```javascript
+let myName = "Aleksandr";
 let myNickname = myName;
 
 myNickname = "Alex";
 
 console.log(myName); // "Aleksandr"
-console.log(myNickname); // "Alex"{% endcapture %}
-{% include code.html code=code lang="javascript" %}
+console.log(myNickname); // "Alex"
+```
 
 On the second line, what I'm doing is creating a copy of the string `"Aleksandr"` and storing it in a new variable named `myNickname`<sup>1</sup>. These two variables occupy *different memory addresses*. Assigning a new value to one variable does not affect the value referred to by the other variable.
 
@@ -119,7 +123,9 @@ On the second line, what I'm doing is creating a copy of the string `"Aleksandr"
 
 Unlike a variable that receives a copy of a value, [a reference variable does not have its own memory address](https://stackoverflow.com/a/1950998/10480032)—it shares the same exact memory address as the original variable. Strange, isn't it? We can verify this in C++ using something called the address-of operator (`&`), which returns the memory address of a variable:
 
-{% capture code %}#include <iostream>
+{% include codeHeader.html %}
+```cpp
+#include <iostream>
 #include <string>
 
 int main()
@@ -132,8 +138,8 @@ int main()
 
     // Print the memory address of myNickname
     std::cout << &myNickname << std::endl;
-}{% endcapture %}
-{% include code.html code=code lang="cpp" %}
+}
+```
 
 If you [run this code](http://cpp.sh/), you'll see that the same exact memory address is logged twice.
 
@@ -250,7 +256,9 @@ In **pass by reference**, the formal parameter is a reference variable (alias) f
 
 There's a classic **litmus test** to check if a language supports passing by reference: whether you can swap two numbers (the following is JavaScript):
 
-{% capture code %}function swap(a, b) {
+{% include codeHeader.html %}
+```javascript
+function swap(a, b) {
     const temp = a;
     a = b;
     b = temp;
@@ -264,8 +272,8 @@ let y = 2;
 swap(x, y);
 
 console.log(x); // 4
-console.log(y); // 2{% endcapture %}
-{% include code.html code=code lang="javascript" %}
+console.log(y); // 2
+```
 
 Of course, if you run this in your browser, you'll find that `x` and `y` do not swap, whereas `a` and `b` do. This alone is proof that JavaScript does not support pass by reference. If it did support this mechanism, then `a` would be an alias for `x` and `b` would be an alias for `y`. Any changes to `a` and `b` would be reflected back to `x` and `y`, respectively. But they're not.
 

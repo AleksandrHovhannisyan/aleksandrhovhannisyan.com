@@ -7,20 +7,24 @@ tags: [dev, postgresql, sql]
 
 You've successfully inserted one or more rows into a table using a standard `INSERT` statement in PostgreSQL. Now, suppose that your schema contains an auto-generated `UUID` or `SERIAL` column:
 
-{% capture code %}CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+{% include codeHeader.html file="createFooSchema.sql" %}
+```sql
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE foo
 (
 	id UUID PRIMARY KEY DEFAULT uuid_generate_v1(),
 	bar VARCHAR NOT NULL
-);{% endcapture %}
-{% include code.html file="createFooSchema.sql" code=code lang="sql" %}
+);
+```
 
 You want to retrieve the auto-generated IDs for your newly inserted rows. To do that, you can simply use the `RETURNING` clause, like so:
 
-{% capture code %}INSERT INTO foo VALUES (DEFAULT, 'a'), (DEFAULT, 'b'), (DEFAULT, 'c')
-RETURNING id;{% endcapture %}
-{% include code.html code=code lang="sql" %}
+{% include codeHeader.html %}
+```sql
+INSERT INTO foo VALUES (DEFAULT, 'a'), (DEFAULT, 'b'), (DEFAULT, 'c')
+RETURNING id;
+```
 
 Here's one possible result:
 
@@ -41,9 +45,11 @@ Here's one possible result:
 
 Now, you don't actually have to return the ID or a key—you can return the values under any column:
 
-{% capture code %}INSERT INTO foo VALUES (DEFAULT, 'e'), (DEFAULT, 'f'), (DEFAULT, 'g')
-RETURNING bar;{% endcapture %}
-{% include code.html code=code lang="sql" %}
+{% include codeHeader.html %}
+```sql
+INSERT INTO foo VALUES (DEFAULT, 'e'), (DEFAULT, 'f'), (DEFAULT, 'g')
+RETURNING bar;
+```
 
 Result:
 
@@ -64,9 +70,11 @@ Result:
 
 You can even use aliases:
 
-{% capture code %}INSERT INTO foo VALUES (DEFAULT, 'e'), (DEFAULT, 'f'), (DEFAULT, 'g')
-RETURNING bar AS baz;{% endcapture %}
-{% include code.html code=code lang="sql" %}
+{% include codeHeader.html %}
+```sql
+INSERT INTO foo VALUES (DEFAULT, 'e'), (DEFAULT, 'f'), (DEFAULT, 'g')
+RETURNING bar AS baz;
+```
 
 Result:
 
@@ -89,10 +97,16 @@ Result:
 
 If the table in question uses a `SERIAL` primary key, then you can retrieve values for the last `N` inserted rows by writing a separate Top-N query with a `LIMIT` clause equal to `N`:
 
-{% capture code %}SELECT id
+{% include codeHeader.html %}
+```sql
+SELECT id
 FROM foo
 ORDER BY id DESC
-LIMIT 3;{% endcapture %}
-{% include code.html code=code lang="sql" %}
+LIMIT 3;
+```
 
 Again, this only works if your IDs form a discrete sequence, which is the case with the `SERIAL` auto-incrementing integer type. Furthermore, note that this option requires writing two separate queries, whereas PostgreSQL's `RETURNING` clause allows you to return data after an insert with just one query. The `RETURNING` syntax is more convenient if you need to [use the returned IDs or values in a subsequent query](https://medium.com/@nieldw/use-postgresql-returning-and-with-to-return-updated-rows-f5354de7b45f).
+
+## Attributions
+
+The photo used in this post's social media preview was taken by [Nam Anh](https://unsplash.com/@bepnamanh) ([Unsplash](https://unsplash.com/photos/QJbyG6O0ick)).

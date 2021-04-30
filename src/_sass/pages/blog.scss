@@ -1,8 +1,5 @@
 @import 'mixins';
 
-$meta-spacing: 1.6rem;
-$meta-tag-spacing: 1.2rem;
-
 .blog-page-title {
   margin-bottom: 1.6rem;
 }
@@ -11,244 +8,32 @@ $meta-tag-spacing: 1.2rem;
   margin-bottom: 2.4rem;
 }
 
-.post-tag {
-    display: inline-block;
-}
-
 .navigation-tags {
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    list-style-type: none;
-}
-
-.navigation-tag {
-  margin-bottom: 1.6rem;
-  margin-right: 1.6rem;
-  padding: 0.8rem 1.6rem;
-}
-
-.pagination-trail {
-    margin-top: 3.2rem;
-    display: flex;
-    justify-content: flex-end;
-    list-style-type: none;
-}
-
-.pagination-page {
-    @extend .tag;
-    margin-bottom: 0.6rem;
-    margin-right: 1.2rem;
-    padding: 0.6rem 1.2rem;
-    @include fontSize(-1);
-}
-
-.pagination-page-current {
-    @extend .active-tag;
-}
-
-.post-title {
-    margin-bottom: 1.6rem;
-}
-
-.post-meta {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    list-style: none;
-    margin: 0;
-    position: relative;
-    @include fontSize(-1);
-    @include fontWeight('light');
-
-    @media screen and (min-width: 500px) {
-      @include fontSize(-2);
-    }
-}
-
-.meta {
-  margin: 0 $meta-spacing $meta-spacing 0;
-}
-
-.meta-icon {
-  fill: var(--post-meta-icon-fill);
-  height: 1.6rem;
-  width: 1.6rem;
-}
-
-.author-photo {
-  grid-column-gap: 0;
-  height: 5rem;
-  width: 5rem;
-
-  * {
-      border-radius: 50%;
-  }
-}
-
-.post-date-published,
-.post-date-updated,
-.post-reading-length {
-  display: grid;
-  grid-auto-flow: column;
   align-items: center;
-  grid-column-gap: 0.4rem;
-}
-
-.skip-post-meta-tags {
-    background: var(--main-bg-color);
-    padding: 0.8rem 1.6rem;
-}
-
-.skip-post-meta-tags-target {
-    scroll-margin-top: var(--scroll-margin-top);
-}
-
-.post-meta-tags {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
-  margin-bottom: $meta-spacing - $meta-tag-spacing;
 }
 
-.post-meta-tag-wrapper {
-  margin-right: $meta-tag-spacing;
-  margin-bottom: $meta-tag-spacing;
-}
-
-.post-meta-tag {
+.navigation-tag {
   display: flex;
-  align-items: center;
+  border-radius: 0.4rem;
+  margin-bottom: 1.2rem;
+  margin-right: 1.2rem;
+  padding: 0.6rem 1.6rem;
+}
+
+.pagination-trail {
+  margin-top: 3.2rem;
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+}
+
+.pagination-page {
+  margin-bottom: 0.6rem;
+  margin-right: 1.2rem;
   padding: 0.6rem 1.2rem;
-}
-
-.post-header {
-  margin-bottom: 1.6rem;
-}
-
-.post-content {
-    @include rhythm;
-    grid-template-columns: minmax(0, var(--page-max-width));
-    overflow-wrap: break-word;
-
-    @include headings {
-      scroll-margin-top: var(--scroll-margin-top);
-      margin-top: 2.4rem;
-      margin-bottom: -0.8rem;
-    }
-
-    #table-of-contents {
-      margin-top: 0;
-    }
-
-    #markdown-toc {
-      &,
-      ol,
-      ul {
-        display: grid;
-        grid-row-gap: 2.4rem;
-      }
-
-      ol,
-      ul {
-        margin-top: 2.4rem;
-      }
-
-      a {
-          @include fontWeight("semiBold");
-          @include underlinedLink($initiallyUnderlined: true);
-      }
-    }
-
-    ol,
-    ul {
-      padding-left: 4.8rem;
-    }
-
-    a:not(.button):not(.clickable-picture-anchor):not(.username) {
-        @include underlinedLink($initiallyUnderlined: true);
-    }
-
-    figure {
-        figcaption {
-          font-style: italic;
-          text-align: center;
-          @include fontSize(-1);
-        }
-
-        .clickable-picture-anchor {
-            margin-bottom: 0.8rem;
-
-            picture {
-              margin-bottom: 0;
-            }
-        }
-
-        picture {
-          margin-bottom: 0.8rem;
-        }
-    }
-
-    figure,
-    picture {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    img,
-    iframe,
-    video {
-        max-width: 100%;
-    }
-
-    img {
-        border-radius: 0.4rem;
-    }
-
-    .embed-container {
-        position: relative;
-        // 9 / 16 = 0.5625 (16:9 aspect ratio for YT videos)
-        padding-bottom: 56.25%;
-        height: 0;
-        overflow: hidden;
-        max-width: 100%;
-
-        > * {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-    }
-
-    blockquote {
-        border-left: 0.4rem solid;
-        margin-left: 2.4rem;
-        padding: 0.4rem 3.2rem;
-        @include rhythm;
-    }
-
-    .spoiler {
-        &,
-        * {
-            background-color: var(--spoiler-bg-color);
-            color: var(--spoiler-bg-color);
-        }
-
-        &:hover {
-            &,
-            * {
-                background-color: transparent;
-                color: var(--text-color-normal);
-            }
-
-            code {
-                background-color: var(--inline-code-bg-color);
-                color: var(--inline-code-text-color);
-            }
-        }
-    }
+  border-radius: 0.4rem;
+  @include font-size(-1);
 }

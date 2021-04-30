@@ -1,2 +1,2 @@
-{% assign img = '/assets/images/posts/' | append: page.slug | append: '/' | append: include.img %}
-{% include picture.html img=img alt=include.alt clickable=include.clickable %}
+{%- assign img = '/assets/images/posts/' | append: page.slug | append: '/' | append: include.img -%}
+{%- include picture.html img=img alt=include.alt width=include.width height=include.height clickable=include.clickable -%}

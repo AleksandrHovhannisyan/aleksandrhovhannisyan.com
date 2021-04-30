@@ -2,7 +2,7 @@
 title: "Operating System Scheduling Algorithms"
 description: Only one process can run at a time on a single CPU. Operating system scheduling algorithms are what allow these processes to take turns running.
 keywords: [operating system scheduling algorithms]
-tags: [computer-science, algorithms]
+tags: [computer-science, os, algorithms]
 ---
 
 If you're studying operating systems and looking for an in-depth explanation of the most common scheduling algorithms, you've come to the right place. In this post, we'll take a look at a number of specific scheduling algorithms. I'll provide plenty of accompanying visuals to help you understand them better. Let's get started!
@@ -174,11 +174,7 @@ If all jobs arrive at the same time, then this algorithm is always optimal in te
 
 At `t = 0s`, A was the only "shortest" process we knew of, so we allowed it to execute for its full duration. But by the time we arrived at `t = 8s`, we already had B and C lined up in the ready queue, so we then picked the shorter of the two (C) to run next.
 
-<blockquote>
-    <p>
-        <strong>Exercise</strong>: What would the mean turnaround time have been if A had instead arrived at <code>t = 5s</code> and C had arrived at <code>t = 0s</code>? Answer: <span class="spoiler">C's turnaround = <code>2s</code>, B's turnaround = <code>4s</code>, and A's turnaround = <code>9s</code>, for a mean turnaround time of <code>5s</code>.</span>
-    </p>
-</blockquote>
+> **Exercise**: What would the mean turnaround time have been if A had instead arrived at `t = 5s` and C had arrived at `t = 0s`? Answer: C's turnaround = `2s`, B's turnaround = `4s`, and A's turnaround = `9s`, for a mean turnaround time of `5s`.
 
 ### Shortest Remaining Time First (P)
 
@@ -197,12 +193,8 @@ For example, we swap A out for B at `t = 2s` because B has the least amount of t
 
 With this algorithm, some processes may end up being starved if a bunch of shorter processes continue to arrive. That's the case here with A—it arrived at `t = 0s` but didn't get to finish its work until the very end, at `t = 14s`.
 
-<blockquote>
-    <p>
-        <strong>Question</strong>: Why didn't we swap out B for C when C arrived at <code>t = 5s</code>? Answer: <span class="spoiler">Because at <code>t = 5s</code>, B had a remaining time of <code>1s</code>, whereas C, which just arrived, has a remaining time of <code>2s</code>. We continue executing B because it has the shorter remaining time.</span>
-    </p>
-</blockquote>
-
+> **Question**: Why didn't we swap out B for C when C arrived at `t = 5s`? Answer: Because at `t = 5s`, B had a remaining time of `1s`, whereas C, which just arrived, has a remaining time of `2s`. We continue executing B because it has the shorter remaining time.
+>
 ## 2. Interactive Scheduling Algorithms
 
 Reminder: Interactive systems involve a lot of user input and must therefore be responsive.
@@ -245,11 +237,7 @@ In this example, A and B take turns alternating on the CPU in classic Round Robi
 - C's turnaround time = `14s - 5s = 9s`
 - Mean turnaround time = `(12s + 6s + 9s) / 3 = 9s`
 
-<blockquote>
-    <p>
-        <strong>Question</strong>: What would happen at <code>t = 2s</code> if A instead had a priority level of <code>2</code>? Answer: <span class="spoiler">A would still run from <code>t = 0s</code> to <code>t = 2s</code> because there are no other processes present during that time. However, as soon as B arrives at <code>t = 2s</code>, we have a higher priority queue that must be attended to. Therefore, A's remaining work will be put on hold until B finishes.</span>
-    </p>
-</blockquote>
+> **Question**: What would happen at `t = 2s` if A instead had a priority level of `2`? Answer: A would still run from `t = 0s` to `t = 2s` because there are no other processes present during that time. However, as soon as B arrives at `t = 2s`, we have a higher priority queue that must be attended to. Therefore, A's remaining work will be put on hold until B finishes.
 
 ### Proportionate Scheduling (P)
 

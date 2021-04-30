@@ -1,43 +1,28 @@
 @import 'mixins';
 
 .button {
-  align-items: center;
-  border-radius: 0.4rem;
-  display: flex;
-  justify-content: center;
-  text-decoration: none;
-  cursor: pointer;
-  @include fontWeight("semiBold");
+  @include font-weight("semiBold");
 }
 
 .solid-button {
   background-color: var(--button-bg-color);
   color: var(--button-text-color);
-  border: 0.4rem solid var(--button-bg-color);
-
-  &:focus, &:hover {
-      background-color: var(--button-bg-color-hover);
-      border: 0.4rem solid var(--button-bg-color-hover);
-  }
-}
-
-.hollow-button {
-  color: var(--button-bg-color);
-  background-color: transparent;
-  border: 0.4rem solid;
-  box-shadow: 0 0 0 0 transparent;
 
   &:focus,
   &:hover {
-      box-shadow: 0 0 0 2px var(--button-bg-color);
+    background-color: var(--button-bg-color-focus);
   }
 }
 
 .plus-button {
+  display: grid;
+  align-items: center;
+  grid-template-columns: min-content auto;
+  grid-column-gap: 0.8rem;
+
   &::before {
     content: "+";
-    margin-right: 10px;
-    @include fontSize(-1);
-    @include fontWeight("bold");
+    @include font-size(-1);
+    @include font-weight("bold");
   }
 }

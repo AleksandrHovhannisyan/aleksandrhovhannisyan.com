@@ -1,16 +1,19 @@
+@import 'mixins';
+
 .tag {
   background-color: var(--tag-bg-color);
-  border-radius: 0.2rem;
   color: var(--tag-text-color);
-  @include fontWeight("regular");
+  @include font-weight("regular");
 }
 
 // Because not all tags are links/interactive (see project cards)
 a.tag {
   &:hover,
   &:focus,
-  &.active-tag {
-      background-color: var(--tag-bg-color-hover);
-      color: var(--tag-text-color-hover);
+  &.active {
+    background-color: var(--tag-bg-color-focus);
+    color: var(--tag-text-color-focus);
   }
+
+  @include focus-outline($color: var(--tag-bg-color-focus), $style: solid, $thickness: 0.2rem, $offset: 0.2rem);
 }

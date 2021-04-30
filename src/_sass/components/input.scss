@@ -1,0 +1,25 @@
+.input {
+  background-color: var(--input-bg-color);
+  border: solid 0.1rem var(--input-border-color);
+  border-radius: 0.2rem;
+  color: var(--text-color-emphasis);
+  padding: 0.2rem 0.8rem;
+  width: 100%;
+
+  &:focus {
+    outline: solid 0.2rem var(--input-border-color-focus);
+    border-color: var(--input-border-color-focus);
+  }
+}
+
+label {
+  display: grid;
+  grid-template-columns: min-content min-content;
+  grid-column-gap: 0.4rem;
+  color: var(--text-color-emphasis);
+  @include font-weight('semiBold');
+
+  &.required::after {
+    content: '*';
+  }
+}

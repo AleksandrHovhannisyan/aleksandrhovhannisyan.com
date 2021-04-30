@@ -1,11 +1,10 @@
 ---
 layout: blog
 description: Welcome to my blog! I like to write about a range of technical and nontechnical subjects. I hope you find what you're looking for!
-img_path: assets/img/posts
 noindex: true
 sitemap: false
 ---
 
-{% for post in paginator.posts %}
-    {% include postPreview.html post=post title_level=2 %}
-{% endfor %}
+{%- for post in paginator.posts -%}
+    {%- include postPreview.html post=post title_level=2 -%}
+{%- endfor -%}

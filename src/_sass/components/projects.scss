@@ -1,9 +1,7 @@
 @import 'mixins';
-@import 'colors';
 
 .project-grid {
-  list-style-type: none;
-  margin-top: 6.4rem;
+  list-style: none;
 }
 
 .project {
@@ -11,7 +9,42 @@
   grid-template-rows: max-content 1fr max-content;
   grid-template-columns: 1fr;
   grid-row-gap: calc(var(--card-padding) / 2);
-  margin-bottom: 0;
+}
+
+.explore-project-on-github {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  border-radius: 0.4rem;
+  color: var(--text-color-emphasis);
+  background-color: var(--card-bg-color);
+  @include transition(opacity);
+  @include font-size(1);
+  @include font-weight("semiBold");
+}
+
+.project-wrapper {
+  display: grid;
+
+  // Prevents the dreaded "doom flicker": https://www.joshwcomeau.com/animation/css-transitions/#doom-flicker
+  &:hover,
+  &:focus-within {
+    .project {
+      box-shadow: var(--card-box-shadow-focus);
+      transform: var(--card-offset-y-focus);
+    }
+
+    .explore-project-on-github {
+      opacity: 0.92;
+    }
+  }
 }
 
 .project-header {
@@ -20,19 +53,15 @@
 }
 
 .project-name-wrapper {
-  align-self: center;
-  grid-area: heading;
   display: grid;
   grid-auto-flow: column;
   grid-column-gap: 0.4rem;
 }
 
 .project-name {
-  display: inline;
   color: var(--text-color-emphasis);
-  margin: 0;
-  @include fontSize(0);
-  @include fontWeight('bold');
+  @include font-size(0);
+  @include font-weight('bold');
 }
 
 .project-rating {
@@ -40,30 +69,21 @@
   grid-auto-flow: column;
   grid-column-gap: 0.4rem;
   align-items: center;
-  align-self: center;
-  grid-area: rating;
-  justify-self: center;
-  @include fontSize(-1);
-}
-
-.project-description {
-  margin: 0;
+  @include font-size(-1);
 }
 
 .project-technologies {
   display: flex;
   flex-wrap: wrap;
-  grid-row: 3;
-  list-style-type: none;
-  margin: 0;
+  list-style: none;
 }
 
 .project-technology {
-  margin-bottom: 0;
-  margin-right: 0.8rem;
+  border-radius: 0.2rem;
   margin-top: 0.8rem;
+  margin-right: 0.8rem;
   padding: 0.4rem 1.2rem;
-  @include fontSize(-2);
+  @include font-size(-2);
 }
 
 #github-cta {
@@ -73,24 +93,22 @@
   align-items: center;
 
   a {
-    border-radius: 50%;
-    display: inline-block;
     height: 4.8rem;
     width: 4.8rem;
-    margin-top: 1.6rem;
+    color: var(--text-color-normal);
+  }
 
-    .icon-github {
-      @include themed(fill, $brand-github, $brand-github-alt);
-    }
+  .icon-github {
+    fill: currentColor;
   }
 }
 
 .github-cta-heading {
   margin-bottom: 0.8rem;
-  @include fontSize(0);
-  @include fontWeight('bold');
+  @include font-size(0);
+  @include font-weight('bold');
 }
 
 .github-cta-subheading {
-  margin: 0;
+  margin-bottom: 1.6rem;
 }

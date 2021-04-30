@@ -29,7 +29,9 @@ $transition: 0.2s ease;
 
 But that still doesn't fully eliminate the repetition—we just have to type fewer characters now. What I was searching for is a **Sass mixin for multiple CSS transitions**. And I eventually found it in [a StackOverflow answer by user yspreen](https://stackoverflow.com/a/49437769/5323344):
 
-{% capture code %}@mixin transition($props...) {
+{% include codeHeader.html file="mixins.scss" %}
+```scss
+@mixin transition($props...) {
     $result: ();
 
     @for $i from 1 through length($props) {
@@ -43,8 +45,8 @@ But that still doesn't fully eliminate the repetition—we just have to type few
     }
 
     transition: $result;
-}{% endcapture %}
-{% include code.html file="mixins.scss" code=code lang="scss" %}
+}
+```
 
 Of course, you can replace `ease 0.2s` with whatever standard transition you want all elements on your site to have.
 

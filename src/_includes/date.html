@@ -1,0 +1,4 @@
+{%- assign datetime_format = include.datetime_format | default: "%Y-%m-%d" -%}
+{%- assign date = include.date -%}
+{%- assign date_format = include.date_format | default: "%m/%d/%Y" -%}
+<time datetime="{{ date | date: datetime_format }}">{{ date | date: date_format }}</time>

@@ -2,7 +2,7 @@
 
 .contact-title {
   margin-bottom: 0.8rem;
-  @include fontSize(3);
+  @include font-size(3);
 }
 
 .contact-subtitle {
@@ -20,48 +20,49 @@
 }
 
 .contact-form {
+  display: grid;
+  grid-auto-flow: row;
+  grid-row-gap: 1.6rem;
+  background-color: var(--form-bg-color);
+  border-radius: 0.2rem;
+  border: solid 1px hsla(0, 0%, 0%, 0.08);
+  grid-area: form;
+  padding: 2.4rem;
+  height: fit-content;
+
+  .labeled-input {
     display: grid;
     grid-auto-flow: row;
-    grid-row-gap: 1.6rem;
-    background-color: var(--form-bg-color);
-    border-radius: 0.2rem;
-    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.25);
-    grid-area: form;
-    padding: 2.4rem;
-    height: fit-content;
+    grid-row-gap: 0.4rem;
+  }
 
-    .labeled-input {
-      display: grid;
-      grid-auto-flow: row;
-      grid-row-gap: 0.4rem;
-    }
+  label,
+  input,
+  textarea {
+    @include font-size(0);
+  }
 
-    label,
-    input,
-    textarea,
-    button {
-      font-family: inherit;
-      @include fontSize(0);
-    }
+  textarea {
+    min-height: 17.5rem;
+  }
+}
 
-    textarea {
-        line-height: inherit;
-        min-height: 17.5rem;
-        width: 100%;
-    }
+.contact-submit-button {
+  border-radius: 0.2rem;
+  height: 4.8rem;
+  max-width: 100%;
+  width: 100%;
+  @include font-size(0);
 
-    .button {
-        border-radius: 0.2rem;
-        height: 4.8rem;
-        max-width: 100%;
-        width: 100%;
-        @include fontSize(0);
-    }
+  &:focus {
+    outline: solid 0.2rem var(--button-bg-color-focus);
+    outline-offset: 0.2rem;
+  }
 }
 
 // Spammers begone
 input.honeypot {
-    display: none;
+  display: none;
 }
 
 #social-networks {
@@ -71,67 +72,48 @@ input.honeypot {
 }
 
 .social-networks-heading {
-  @include fontSize(1);
+  @include font-size(1);
 }
 
 .social-networks-list {
-    grid-column-gap: 3.2rem;
-    display: grid;
-    grid-auto-rows: 4.8rem;
-    grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
-    grid-row-gap: 4.8rem;
-    list-style-type: none;
+  grid-column-gap: 3.2rem;
+  display: grid;
+  grid-auto-rows: 4.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+  grid-row-gap: 4.8rem;
+  list-style: none;
 }
 
 .social-network {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: center;
-    padding: 1.6rem;
-    border-radius: 0.2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  padding: 1.6rem;
+  border-radius: 0.2rem;
+  color: var(--text-color-normal);
 
-    &:focus, &:hover {
-        background-color: var(--hover-bg-color);
-        cursor: pointer;
-    }
+  &:focus,
+  &:hover {
+    background-color: var(--hover-bg-color);
+    cursor: pointer;
+    color: var(--text-color-emphasis);
+  }
 }
 
 .social-network-name {
-  color: var(--text-color-normal);
-  align-self: center;
-  grid-column: 2;
-  @include fontWeight("regular");
+  @include font-weight("regular");
 }
 
 .social-network-icon {
-    align-self: center;
-    justify-self: center;
-    width: 3.2rem;
+  justify-self: center;
+  width: 3.2rem;
+  fill: currentColor;
 }
 
-.linkedin-square {
-    background: white;
-    /* Nice little hack for getting a perfect fill */
-    border-radius: 4px;
-    fill: $brand-linkedin;
-}
-
-.github {
-    @include themed(fill, $brand-github, $brand-github-alt);
-}
-
-.stack-exchange {
-    fill: $brand-stack-exchange;
-}
-
-.upwork {
-    fill: $brand-upwork;
-}
-
-@media only screen and (min-width: 800px) {
+@include tablet {
   #contact-information {
     grid-row-gap: 0;
     grid-template-areas: "form socials";
-    grid-template-columns: 40rem auto;
+    grid-template-columns: minmax(0, 40rem) auto;
   }
 }

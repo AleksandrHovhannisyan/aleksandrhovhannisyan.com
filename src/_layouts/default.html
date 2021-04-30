@@ -1,86 +1,93 @@
 <!DOCTYPE html>
-
-<html lang="en-US" class="light">
-    <head>
-        <!-- Preload optimizations -->
-        <link rel="preload" as="style" type="text/css" href="/assets/styles/main.css">
-        <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-300.woff2" crossorigin>
-        <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-regular.woff2" crossorigin>
-        <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-500.woff2" crossorigin>
-        <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-700.woff2" crossorigin>
-        <link rel="preload" as="script" type="text/javascript" href="/assets/scripts/bundle.js">
-        {% if layout.preloads %}
-            {% for preload in layout.preloads %}
-                <link rel="preload" as="{{ preload.as }}" type="{{ preload.type }}" href="{{ preload.href }}"{% if preload.crossorigin %} crossorigin{% endif %}>
-            {% endfor %}
-        {% endif %}
-        {% if page.preloads %}
-            {% for preload in page.preloads %}
-                <link rel="preload" as="{{ preload.as }}" type="{{ preload.type }}" href="{{ preload.href }}"{% if preload.crossorigin %} crossorigin{% endif %}>
-            {% endfor %}
-        {% endif %}
-        <!-- Metadata for search engines -->
-        <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-        <meta name="keywords" content="{% if page.keywords %}{{ page.keywords | join: ', ' }}{% else %}{{ site.keywords | join: ', ' }}{% endif %}">
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="author" content="{{ site.author }}">
-        <meta name="referrer" content="origin">
-        <!-- Open Graph social media previews -->
-        <meta property="og:title" content="{{ page.title }} | {{ site.title }}">
-        {% assign og_image = '/assets/images/favicons/favicon-228.png' %}
-        {% if page.og_image %}
-          {% assign og_image = page.og_image %}
-        {% endif %}
-        {% if page.is_post %}
-            {% assign img = 'thumbnail.png' %}
-            {% if page.thumbnail %}
-              {% assign img = page.thumbnail %}
-            {% endif %}
-            {% assign og_image = '/assets/images/posts/' | append: page.slug | append: '/' | append: img %}
-        {% endif %}
-        <meta property="og:image" content="{{ site.url }}{{ og_image }}">
-        <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-        <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-        {% if page.noindex %}
-            <!-- Prevent this page from showing up on search engines -->
-            <meta name="robots" content="noindex">
-        {% endif %}
-        <link rel="stylesheet" href="/assets/styles/main.css">
-        <!-- Favicons -->
-        <link rel="icon" href="/assets/images/favicons/favicon-32.png" sizes="32x32">
-        <link rel="icon" href="/assets/images/favicons/favicon-57.png" sizes="57x57">
-        <link rel="icon" href="/assets/images/favicons/favicon-76.png" sizes="76x76">
-        <link rel="icon" href="/assets/images/favicons/favicon-96.png" sizes="96x96">
-        <link rel="icon" href="/assets/images/favicons/favicon-128.png" sizes="128x128">
-        <link rel="icon" href="/assets/images/favicons/favicon-192.png" sizes="192x192">
-        <link rel="icon" href="/assets/images/favicons/favicon-228.png" sizes="228x228">
-        {% if page.canonical_url %}
-            <link rel="canonical" href="{{ page.canonical_url }}">
-        {% endif %}
-        {% if page.url == "/" %}
-            <title>{{ site.title }}: {{ page.title }}</title>
-        {% else %}
-            <title>{{ page.title }} | {{ site.title }}</title>
-        {% endif %}
-        <!-- Load the user's last selected theme -->
-        <script>
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                document.documentElement.className = savedTheme;
-            } else {
-                localStorage.setItem('theme', 'light');
-            }
-        </script>
-    </head>
-    <body>
-        {% include navbar.html %}
-        <main id="page-content">
-            {{ content }}
-        </main>
-        <footer id="page-footer">
-            <span>&copy; Copyright {{ site.author }}, 2019–Present</span>
-        </footer>
-        <script src="/assets/scripts/bundle.js" charset="utf-8"></script>
-    </body>
+<html lang="en-US">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <!-- Preload optimizations -->
+  <link rel="preload" as="style" type="text/css" href="/assets/styles/main.css">
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-300.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-regular.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-500.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-700.woff2" crossorigin>
+  <link rel="modulepreload" as="script" type="text/javascript" href="/assets/scripts/bundle.js">
+  {%- if layout.preloads -%}
+    {% for preload in layout.preloads %}
+      <link rel="preload" as="{{ preload.as }}" type="{{ preload.type }}" href="{{ preload.href }}" {% if preload.crossorigin %}crossorigin{% endif %}>
+    {%- endfor -%}
+  {% endif %}
+  {%- if page.preloads -%}
+    {% for preload in page.preloads %}
+      <link rel="preload" as="{{ preload.as }}" type="{{ preload.type }}" href="{{ preload.href }}" {% if preload.crossorigin %}crossorigin{% endif %}>
+    {%- endfor -%}
+  {% endif %}
+  <!-- Metadata for search engines -->
+  <meta name="description" content="{%- if page.description -%}{{ page.description }}{%- else -%}{{ site.description }}{%- endif -%}">
+  <meta name="keywords" content="{%- if page.keywords -%}{{ page.keywords | join: ', ' }}{%- else -%}{{ site.keywords | join: ', ' }}{%- endif -%}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="{{ site.author }}">
+  <meta name="referrer" content="origin">
+  <!-- Open Graph social media previews -->
+  <meta property="og:title" content="{{ page.title }} | {{ site.title }}">
+  {%- assign og_image = page.og_image | default: '/assets/images/favicons/favicon-228.png' -%}
+  {%- if page.is_post -%}
+    {%- assign img = 'thumbnail.png' -%}
+    {%- if page.thumbnail -%}
+      {%- assign img = page.thumbnail -%}
+    {%- endif -%}
+    {%- assign og_image = '/assets/images/posts/' | append: page.slug | append: '/' | append: img -%}
+  {%- endif -%}
+  <meta property="og:image" content="{{ site.url }}{{ og_image }}">
+  <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  {%- if page.noindex -%}
+    <!-- Prevent this page from showing up on search engines -->
+    <meta name="robots" content="noindex">
+  {%- endif -%}
+  <!-- CSS-->
+  <link rel="stylesheet" href="/assets/styles/main.css">
+  {%- for stylesheet in layout.stylesheets -%}
+    <link rel="stylesheet" href="{{ stylesheet.href }}">
+  {%- endfor -%}
+  <!-- Favicons -->
+  <link rel="icon" href="/assets/images/favicons/favicon-32.png" sizes="32x32">
+  <link rel="icon" href="/assets/images/favicons/favicon-57.png" sizes="57x57">
+  <link rel="icon" href="/assets/images/favicons/favicon-76.png" sizes="76x76">
+  <link rel="icon" href="/assets/images/favicons/favicon-96.png" sizes="96x96">
+  <link rel="icon" href="/assets/images/favicons/favicon-128.png" sizes="128x128">
+  <link rel="icon" href="/assets/images/favicons/favicon-192.png" sizes="192x192">
+  <link rel="icon" href="/assets/images/favicons/favicon-228.png" sizes="228x228">
+  {%- if page.canonical_url -%}
+    <link rel="canonical" href="{{ page.canonical_url }}">
+  {%- endif -%}
+  {%- if page.url == "/" -%}
+    <title>{{ site.title }}: {{ page.title }}</title>
+  {%- else -%}
+    <title>{{ page.title }} | {{ site.title }}</title>
+  {%- endif -%}
+  <!-- Load the user's last selected theme -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.className = savedTheme;
+      } else {
+        const userPrefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const preferredTheme = userPrefersDarkMode ? 'dark' : 'light';
+        document.documentElement.className = preferredTheme;
+        localStorage.setItem('theme', preferredTheme);
+      }
+    })();
+  </script>
+</head>
+<body class="centered">
+  {%- include navbar.html -%}
+  <main id="page-content">
+    {{ content }}
+  </main>
+  <footer id="page-footer" class="centered">
+    <div class="copyright-notice">
+      <span aria-hidden="true">&copy;</span> Copyright {{ site.author }}, 2019–Present
+    </div>
+  </footer>
+  <script type="module" src="/assets/scripts/bundle.js"></script>
+</body>
 </html>

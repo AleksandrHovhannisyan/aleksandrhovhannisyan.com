@@ -5,5 +5,5 @@
   display: grid;
   column-gap: $card-spacing;
   grid-row-gap: $card-spacing;
-  @include responsiveGrid($mobileMin: 255px, $desktopMin: 15em);
+  @include responsive-grid($mobile-min: 255px, $desktop-min: 30rem);
 }

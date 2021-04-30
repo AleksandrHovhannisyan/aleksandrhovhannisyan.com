@@ -24,14 +24,16 @@ It's actually really simple! Here's a quick rundown of how Formspree works:
 
 To get started, all you need to do is add a `form` like this to your site:
 
-{% capture code %}<form action="https://formspree.io/your-email" method="POST">
+{% include codeHeader.html %}
+```html
+<form action="https://formspree.io/your-email" method="POST">
     <input type="hidden" name="_subject" value="Someone sent you a message!" />
     <input type="text" name="name" id="name" />
     <input type="email" name="_replyto" id="email" />
     <textarea name="body" id="message"></textarea>
     <input type="submit" value="Send message" />
-</form>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</form>
+```
 
 Let's clarify some of the input attributes:
 
@@ -70,8 +72,10 @@ Finally, as I mentioned earlier, if you reply, the recipient's address will be f
 
 While the reCAPTCHA test already provides a solid defense against spam, Formspree also [recommends adding a honeypot input field](https://help.formspree.io/hc/en-us/articles/360013580813-Honeypot-spam-filtering) to your form for safe measure:
 
-{% capture code %}<input type="text" name="_gotcha" />{% endcapture %}
-{% include code.html code=code lang="html" %}
+{% include codeHeader.html %}
+```html
+<input type="text" name="_gotcha" />
+```
 
 When a <s>bear</s> bot comes along and sticks its head where it doesn't belong, it'll be stuck.
 
@@ -79,13 +83,17 @@ When a <s>bear</s> bot comes along and sticks its head where it doesn't belong, 
 
 You should give this a class and set the display to none so it doesn't confuse your human users:
 
-{% capture code %}<input type="text" name="_gotcha" class="honeypot" />{% endcapture %}
-{% include code.html code=code lang="html" %}
+{% include codeHeader.html %}
+```html
+<input type="text" name="_gotcha" class="honeypot" />
+```
 
-{% capture code %}input.honeypot {
+{% include codeHeader.html %}
+```css
+input.honeypot {
     display: none;
-}{% endcapture %}
-{% include code.html code=code lang="css" %}
+}
+```
 
 {% include linkedHeading.html heading="Formspree Free Plan Limitations" level=2 %}
 

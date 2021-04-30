@@ -3,7 +3,6 @@ title: Blue People Illustrations, or How to Kill a Brand
 description: There's a recent trend in web design of using illustrations of blue, generic, faceless people. And it's killing brands.
 keywords: [blue people illustrations]
 tags: [dev, design, frontend]
-is_popular: true
 ---
 
 You stumble upon a landing page with a white background, some faceless blue people doing typical blue-human things somewhere off to the right, and a lonely little call-to-action button that's floating hopelessly in a sea of blue and white.
@@ -12,7 +11,7 @@ Sound familiar? That's because it's been the defining mark of many new brands th
 
 Everyone and their grandmother has seen them by now—blue people, [purple people](https://ux.shopify.com/you-cant-just-draw-purple-people-and-call-it-diversity-e2aa30f0c0e8), people without faces, polygons dressed as humans... There's no shortage of it going around.
 
-{% include img.html img="undraw.png" alt="Undraw illustrations showing blue people in different settings, like freelancing or pointing at charts and graphs." %}
+{% include img.html img="undraw.png" alt="Undraw illustrations showing blue people in different settings, like freelancing or pointing at charts and graphs." width=1578 height=647 %}
 
 And it's all thanks to free illustration libraries like Humaaans, unDraw, and Shape.
 

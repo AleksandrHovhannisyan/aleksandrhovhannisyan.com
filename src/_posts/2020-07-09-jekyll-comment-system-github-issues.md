@@ -9,7 +9,7 @@ last_updated: 2020-09-18
 
 A while back, [Ari Stathopoulos wrote a tutorial](https://aristath.github.io/blog/static-site-comments-using-github-issues-api) on how to add comments to a Jekyll blog using the GitHub Issues API. And you know what? It works like a charm! Ever since I added comments to my Jekyll blog, I've seen a noticeable increase in engagement from my readers:
 
-{% include img.html img="comments.png" alt="A list of comments on one of my blog posts" %}
+{% include img.html img="comments.png" alt="A list of comments on one of my blog posts" width=1114 height=699 %}
 
 That said, this approach isn't without its drawbacks. For one, the GitHub API has a [rate limit of 60 requests/hour](https://developer.github.com/v3/#rate-limiting). But more importantly, rendering all comments on the initial page load isn't a great user experience.
 
@@ -27,8 +27,10 @@ This section is a bit of a recap on how to use the GitHub Issues API to add comm
 
 First, you'll need a public repo for your comments. Add this variable to your `_config.yml`:
 
-{% capture code %}issues_repo: YourUsername/RepoName{% endcapture %}
-{% include code.html file="_config.yml" code=code lang="yml" %}
+{% include codeHeader.html file="_config.yml" %}
+```yml
+issues_repo: YourUsername/RepoName
+```
 
 We'll use this a few times in our code, so it's a good idea to define it in one place instead of copy-pasting it. That way, if the repo name ever changes, you'll only have to update it in `_config.yml`.
 
@@ -38,19 +40,28 @@ If a particular blog post needs comments, simply open an issue for it in that re
 
 Add the following front matter variable to the blog post and assign it the ID from above:
 
-{% capture code %}comments_id: 35{% endcapture %}
-{% include code.html file="_posts/2020-07-07-my-post.md" code=code lang="markdown" %}
+{% include codeHeader.html file="_posts/2020-07-07-my-post.md" %}
+```markdown
+comments_id: 35
+```
 
 In your `post.html` layout file, we'll check to see if this front matter variable was specified. If it wasn't, then the comment system is turned off for that post. If it was, then we'll want to include a file containing our HTML and JavaScript for the comment system:
 
-{% capture code %}{% raw %}{% if page.comments_id %}
+{% include codeHeader.html file="_layouts/post.html" %}
+{% raw %}
+```liquid
+{% if page.comments_id %}
     {% include comments.html issue_id=page.comments_id %}
-{% endif %}{% endraw %}{% endcapture %}
-{% include code.html file="_layouts/post.html" code=code lang="liquid" %}
+{% endif %}
+```
+{% endraw %}
 
 And here's the include file itself (or at least part of it—we'll fill in the script shortly):
 
-{% capture code %}{% raw %}{% assign issues_repo = site.issues_repo %}
+{% include codeHeader.html file="_includes/comments.html" %}
+{% raw %}
+```html
+{% assign issues_repo = site.issues_repo %}
 {% assign issue_id = include.issue_id %}
 
 <section id="comments">
@@ -68,8 +79,9 @@ And here's the include file itself (or at least part of it—we'll fill in the s
 </section>
 
 <!-- Comments script -->
-<script></script>{% endraw %}{% endcapture %}
-{% include code.html file="_includes/comments.html" code=code lang="html" %}
+<script></script>
+```
+{% endraw %}
 
 Up at the top, I'm simply creating local variables so I don't have to repeat {% raw %}`include.issue_id`{% endraw %} and {% raw %}`site.issues_repo`{% endraw %} in my markup. Next, I've defined some basic HTML for the comment system itself. Notice that the anchor element (button) points to the corresponding GitHub issue URL:
 
@@ -85,12 +97,16 @@ Time to start writing some JavaScript. We won't put our code in its own `.js` fi
 
 First, we'll create some variables up at the top to reference a few of the elements on the page:
 
-{% capture code %}{% raw %}<script>
+{% include codeHeader.html file="_includes/comments.html" %}
+{% raw %}
+```html
+<script>
   const commentsSection = document.getElementById('comments');
   const commentsWrapper = commentsSection.querySelector('#comments-wrapper');
   const commentsCount = commentsSection.querySelector('#comments-count');
-</script>{% endraw %}{% endcapture %}
-{% include code.html file="_includes/comments.html" code=code lang="html" %}
+</script>
+```
+{% endraw %}
 
 We'll want to:
 
@@ -104,7 +120,9 @@ If you simply load the comment system every time a user opens one of your blog p
 
 To detect when a user has scrolled to the end of our blog post, we'll use the widely supported [IntersectionObserver API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API). Here's all the code that we need to defer loading the comments section:
 
-{% capture code %}const commentsObserver = new IntersectionObserver(function (entries, self) {
+{% include codeHeader.html file="_includes/comments.html" %}
+```javascript
+const commentsObserver = new IntersectionObserver(function (entries, self) {
   entries.forEach(entry => {
       if (entry.isIntersecting) {
           fetchComments(); // this is the important part
@@ -113,14 +131,17 @@ To detect when a user has scrolled to the end of our blog post, we'll use the wi
   });
 }, { rootMargin: '200px 0px 0px 0px' });
 
-commentsObserver.observe(commentsSection);{% endcapture %}
-{% include code.html file="_includes/comments.html" code=code lang="javascript" %}
+commentsObserver.observe(commentsSection);
+```
 
 Basically, the observer checks to see if it's intersecting with the `commentsSection` element. If it is, it calls a `fetchComments` routine that we'll set up in a second. It takes an optional configuration object as its second argument. Here, the config I've passed in sets a `rootMargin` option, which you can think of as a margin around an invisible "intersection rectangle" for the `commentsSection` element's box model. A top margin of `200px` essentially treats an intersection as 200px *before* a user has reached the comments section.
 
 Here's the `fetchComments` function that fires when an intersection occurs:
 
-{% capture code %}{% raw %}function fetchComments() {
+{% include codeHeader.html file="_includes/comments.html" %}
+{% raw %}
+```javascript
+function fetchComments() {
   fetch(
     'https://api.github.com/repos/{{ issues_repo }}/issues/{{ issue_id }}/comments'
   )
@@ -129,8 +150,9 @@ Here's the `fetchComments` function that fires when an intersection occurs:
     .catch(e => {
       commentsWrapper.innerHTML = `<p>Unable to retrieve the comments for this post. Check back later.</p>`;
     });
-}{% endraw %}{% endcapture %}
-{% include code.html file="_includes/comments.html" code=code lang="javascript" %}
+}
+```
+{% endraw %}
 
 This uses the `fetch` API. On failure, we set a message informing the user that we were unable to fetch the comments. If the data is returned and processed, we invoke an `initRenderComments` function, which we'll define in a bit. That function begins loading the third-party JavaScript for our comment system.
 
@@ -169,7 +191,9 @@ Now, you could certainly load these dependencies using script elements like so:
 
 So, we'll load these scripts using JavaScript by creating `script` elements, setting their `src` attributes, and appending them to the DOM body. However, since scripts are loaded asynchronously, they may get loaded out of order. This means we'll need some way to hold off on rendering the comments until *all* of the dependencies have loaded, in whatever order that may be. To do that, we'll use a simple object like this to keep track of which dependencies have loaded:
 
-{% capture code %}const commentScripts = {
+{% include codeHeader.html file="_includes/comments.html" %}
+```javascript
+const commentScripts = {
   marked: {
     src: 'https://unpkg.com/marked@0.3.6/marked.min.js',
     loaded: false,
@@ -186,26 +210,32 @@ So, we'll load these scripts using JavaScript by creating `script` elements, set
     src: 'https://unpkg.com/dayjs@1.7.8/plugin/relativeTime.js',
     loaded: false,
   },
-};{% endcapture %}
-{% include code.html file="_includes/comments.html" code=code lang="javascript" %}
+};
+```
 
 > Feel free to use a different CDN or serve these files locally if you'd like to.
 
 We'll also define a helper function to go along with it that checks if all scripts have loaded:
 
-{% capture code %}{% raw %}/**
+{% include codeHeader.html file="_includes/comments.html" %}
+{% raw %}
+```javascript
+/**
 * @returns {Boolean} true if all comment dependencies have loaded, and false otherwise
 */
 function allCommentScriptsLoaded() {
   return Object.keys(commentScripts).every(script => commentScripts[script].loaded);
-}{% endraw %}{% endcapture %}
-{% include code.html file="_includes/comments.html" code=code lang="javascript" %}
+}
+```
+{% endraw %}
 
 > **Note**: Alternatively, you could increment a counter and compare it to the length of the `commentScripts` object. My approach, while not necessarily efficient, is good enough.
 
 Here's the `initRenderComments` function that gets called by `fetchComments` once it finishes:
 
-{% capture code %}/**
+{% include codeHeader.html file="_includes/comments.html" %}
+```javascript
+/**
 * Called after the GitHub API request finishes.
 * @param {Array<Object>} comments - an array of objects representing GitHub comments
 */
@@ -219,12 +249,14 @@ function initRenderComments(comments) {
   Object.keys(commentScripts).forEach(script =>
     loadCommentScript(commentScripts[script], () => renderComments(comments))
   );
-}{% endcapture %}
-{% include code.html file="_includes/comments.html" code=code lang="javascript" %}
+}
+```
 
 And here's the `loadCommentScript` helper:
 
-{% capture code %}/**
+{% include codeHeader.html file="_includes/comments.html" %}
+```javascript
+/**
 * @param {Object} script - the script to load async
 * @param {function} callback - a function to call once the script has loaded
 */
@@ -237,8 +269,8 @@ function loadCommentScript(script, callback) {
       script.loaded = true;
       callback();
   };
-}{% endcapture %}
-{% include code.html file="_includes/comments.html" code=code lang="javascript" %}
+}
+```
 
 Basically, it creates a script element and registers an `onload` listener that tags the script object as loaded and invokes a callback. What's that callback? If you look above in `initRenderComments`, we're passing in an arrow function that invokes `renderComments(comments)`:
 
@@ -252,7 +284,10 @@ And that's the last thing we need for our Jekyll comment system to work.
 
 ### 3. Rendering the Comments
 
-{% capture code %}{% raw %}/**
+{% include codeHeader.html file="_includes/comments.html" %}
+{% raw %}
+```javascript
+/**
 * @param {Array<Object>} comments - an array of objects representing GitHub comments
 */
 function renderComments(comments) {
@@ -297,8 +332,9 @@ function renderComments(comments) {
 
     commentsWrapper.innerHTML = '';
     commentsWrapper.appendChild(commentsList);
-}{% endraw %}{% endcapture %}
-{% include code.html file="_includes/comments.html" code=code lang="javascript" %}
+}
+```
+{% endraw %}
 
 Up at the top of this function, we're using the fail-fast approach and returning if there are some scripts that have not yet loaded. This ensures that all of the remaining code will only get called once all three scripts have loaded.
 

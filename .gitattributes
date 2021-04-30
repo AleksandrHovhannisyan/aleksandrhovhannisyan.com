@@ -1,2 +1,6 @@
+# We'll let Git's auto-detection algorithm infer if a file is text. If it is,
+# enforce LF line endings regardless of OS or git configurations.
 * text=auto eol=lf
-*.{png,jpg,jpeg,gif,webp} binary
+
+# Don't brick binary files by changing their line endings
+*.{png,jpg,jpeg,gif,webp,woff,woff2} binary

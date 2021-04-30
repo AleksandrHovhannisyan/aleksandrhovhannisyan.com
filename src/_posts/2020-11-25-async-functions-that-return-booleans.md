@@ -3,18 +3,21 @@ title: Be Careful with Async Functions that Return Booleans
 description: Suppose an async function returns a boolean. What happens if you check the return value without awaiting it?
 keywords: [async functions]
 tags: [dev, javascript, promises]
+is_popular: true
 ---
 
 Here's a fun bug I recently encountered... Let's say we have this `async` JavaScript function:
 
-{% capture code %}const isBroken = async () => {
+{% include codeHeader.html %}
+```javascript
+const isBroken = async () => {
   return false;
 }
 
 if (isBroken()) {
   throw new Error("Oopsie woopsie");
-}{% endcapture %}
-{% include code.html code=code lang="javascript" %}
+}
+```
 
 I've kept the code simple for this post; in reality, you'll probably fetch data asynchronously in the function (otherwise, there's no need to mark it as `async`):
 
@@ -51,20 +54,24 @@ Promise {<fulfilled>: false}
 
 Our async function's return value is not `false` itself but rather a Promise object that *resolved* with the value `false`. In other words, it's the same as doing this:
 
-{% capture code %}const isBroken = () => {
+{% include codeHeader.html %}
+```javascript
+const isBroken = () => {
   return Promise.resolve(false);
 }
 
 if (isBroken()) {
   throw new Error("Oopsie woopsie");
-}{% endcapture %}
-{% include code.html code=code lang="javascript" %}
+}
+```
 
 Spot the problem? This is an issue of **truthiness**: a `Promise` object is not one of the [eight falsy values](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) in JavaScript, so checking its truthiness is pointless: When coerced to a boolean, a Promise is *always* `true`.
 
 For the code above to work as intended, you'll need to `await` the result in another `async` function (or, equivalently, chain a `.then` call on the returned Promise object):
 
-{% capture code %}const isBroken = async () => {
+{% include codeHeader.html %}
+```javascript
+const isBroken = async () => {
   return false;
 }
 
@@ -74,7 +81,7 @@ const foo = async () => {
   if (somethingIsWrong) {
     throw new Error("Oopsie woopsie");
   }
-}{% endcapture %}
-{% include code.html code=code lang="javascript" %}
+}
+```
 
 This is a pretty interesting bug that you may run into, though some basic tests will probably catch it before you need to go looking for it yourself. However, in the absence of tests, unless you remember that the function is async (and that async functions return Promises), this bug could easily slip right past you.

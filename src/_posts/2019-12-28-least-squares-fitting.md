@@ -14,7 +14,7 @@ With an understanding of [the method of least squares](/blog/the-method-of-least
 
 In **least squares fitting**, we have some function $$f$$ that takes $$n$$-vectors as its inputs and maps them to real numbers. We don't really know anything about the function itself and what it does under the hood. It's your classic black box: You feed some vector $$x$$ to the function, and it spits out a $$y$$ in response:
 
-{% include img.html img="black-box.jpg" alt="The black-box model of a function." %}
+{% include img.html img="black-box.jpg" alt="The black-box model of a function." width=1257 height=168 %}
 
 Our goal in least squares fitting is to try to model $$f$$ as closely as possible, based on the input-output data pairs that we're given. Typically, we use the following notation for our data, with $$(x^{(i)}, y^{(i)})$$ denoting the $$i$$-th data pair:
 
@@ -429,7 +429,9 @@ Straight-line fitting is pretty simple by hand, but polynomial least squares fit
 
 Here's a script that uses QR factorization explicitly:
 
-{% capture code %}import numpy as np
+{% include codeHeader.html file="lsq.py" %}
+```python
+import numpy as np
 from numpy import linalg as LA
 
 # Our data
@@ -445,12 +447,14 @@ QT = np.transpose(Q)
 
 theta = LA.solve(R, QT.dot(y))
 
-print(theta){% endcapture %}
-{% include code.html file="lsq.py" code=code lang="python" %}
+print(theta)
+```
 
 However, this is really equivalent to the following code, which simply uses the `LA.lstsq` function:
 
-{% capture code %}import numpy as np
+{% include codeHeader.html file="lsq.py" %}
+```python
+import numpy as np
 from numpy import linalg as LA
 
 # Our data
@@ -460,8 +464,8 @@ y = np.array([[5], [1], [3], [9], [10]])
 
 theta = LA.lstsq(A, y)
 
-print(theta){% endcapture %}
-{% include code.html file="lsq.py" code=code lang="python" %}
+print(theta)
+```
 
 Regardless of which version we run, we'll get the same answer for the $$\theta$$ vector:
 

@@ -2,10 +2,10 @@
 title: Improve Page Load Speed in Jekyll with the WebP Image Format
 description: Do your blog posts suffer from slow load speeds because of all those images you've been using? In this post, we'll look at how you can improve your page load speed in Jekyll using the WebP image format and just a single useful include.
 keywords: ["improve page load speed", "webp image format"]
-tags: [dev, jekyll, webperf, webp]
+tags: [dev, jekyll, webperf, images]
 ---
 
-{% include img.html img="pagespeed-insights.png" alt="The PageSpeed Insights score for one of my blog posts." %}
+{% include img.html img="pagespeed-insights.png" alt="The PageSpeed Insights score for one of my blog posts." width=1268 height=624 %}
 
 Run the blog posts on my site through Google's [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) or [Cloudinary's Image Analysis tool](https://webspeedtest.cloudinary.com/), and you'll find that most of them (with the exception of a few that load iframes) get around 99 on mobile and 100 on desktop. Some of these are packed full of images.
 
@@ -71,11 +71,13 @@ The good news is that [browser support for WebP](https://caniuse.com/#feat=webp)
 
 Assuming you want to cover all your bases and ensure that your images are displaying properly, you can use a `picture` element with a `source` for the WebP version and a backup `img` for the regular format:
 
-{% capture code %}<picture>
+{% include codeHeader.html %}
+```html
+<picture>
   <source srcset="/path/to/image.webp" type="image/webp">
   <img src="/path/to/image.jpg" alt="Your alt text" />
-</picture>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</picture>
+```
 
 Basically, browsers that don't support WebP will fall back to the plain old `img` element, while those that do support WebP will use the `source` element. Awesome!
 
@@ -85,12 +87,16 @@ Except... Do we really have to copy-paste this every time we want to create an i
 
 Time to make this reusable! Create a file named `_includes/picture.html` and add this markup:
 
-{% capture code %}{% raw %}{% assign img = include.img %}
+{% include codeHeader.html file="_includes/picture.html" %}
+{% raw %}
+```liquid
+{% assign img = include.img %}
 <picture>
     <source type="image/webp" srcset="/assets/images/posts/{{ page.slug }}/{{ img }}.webp" >
     <img src="/assets/images/posts/{{ page.slug }}/{{ img }}.{{ include.ext }}" alt="{{ include.alt }}" />
-</picture>{% endraw %}{% endcapture %}
-{% include code.html file="_includes/picture.html" code=code lang="liquid" %}
+</picture>
+```
+{% endraw %}
 
 Let's try to understand this part specifically:
 
@@ -111,8 +117,12 @@ Here's a screenshot to make that clearer:
 
 That allows us to get away with this simple and legible include:
 
-{% capture code %}{% raw %}{% include picture.html img="my-image.jpg" alt="My alt text" %}{% endraw %}{% endcapture %}
-{% include code.html code=code lang="liquid" %}
+{% include codeHeader.html %}
+{% raw %}
+```liquid
+{% include picture.html img="my-image.jpg" alt="My alt text" %}
+```
+{% endraw %}
 
 Notice that we don't have to worry about explicitly stating the path! That will be filled in by Liquid when it goes to evaluate {% raw %}`{{ page.slug }}`{% endraw %}. To top that off, we get to take advantage of WebP behind the scenes, with little effort beyond converting the images.
 

@@ -14,20 +14,24 @@ In React, you'll sometimes want to allow users to pass in a dynamic tag name as 
 
 To keep this demo simple, let's say we want to create a reusable `CenteredContainer` component to encapsulate some CSS or other logic (I won't show any of that here):
 
-{% capture code %}import React, { FC } from 'react';
+{% include codeHeader.html file="components/CenteredContainer/index.tsx" %}
+```tsx
+import React, { FC } from 'react';
 
 interface CenteredContainerProps {
   className?: string;
 }
 
-const CenteredContainer: FC<CenteredContainerProps> = (props) => <div {...props} />;{% endcapture %}
-{% include code.html file="components/CenteredContainer/index.tsx" code=code lang="tsx" %}
+const CenteredContainer: FC<CenteredContainerProps> = (props) => <div {...props} />;
+```
 
 You *could* always render a `<div>` like we're doing here, but that's not a great idea. It pollutes your DOM with an extra decorative `<div>`, making it difficult to write [semantic HTML markup](/blog/semantic-html-accessibility/). Plus, there's no reason why a centered container should *always* be a `<div>`. This may even be invalid HTML depending on where you intend to use the container.
 
 Fortunately, we can take advantage of TypeScript's intellisense and pass a dynamic tag name as a prop to change the rendered tag:
 
-{% capture code %}import React, { FC } from 'react';
+{% include codeHeader.html file="components/CenteredContainer/index.tsx" %}
+```tsx
+import React, { FC } from 'react';
 
 interface CenteredContainerProps extends React.HTMLAttributes<HTMLOrSVGElement> {
   tagName?: keyof JSX.IntrinsicElements;
@@ -43,8 +47,8 @@ CenteredContainer.defaultProps = {
   tagName: 'div',
 };
 
-export default CenteredContainer;{% endcapture %}
-{% include code.html file="components/CenteredContainer/index.tsx" code=code lang="tsx" %}
+export default CenteredContainer;
+```
 
 There are two things worth noting here.
 
@@ -76,13 +80,15 @@ CenteredContainer.defaultProps = {
 
 But you can override this by passing in a custom `tagName`:
 
-{% capture code %}import CenteredContainer from 'components/CenteredContainer';
+{% include codeHeader.html file="components/Navbar/index.tsx" %}
+```tsx
+import CenteredContainer from 'components/CenteredContainer';
 import React, { FC } from 'react';
 
 const MyComponent: FC = ({ children }) => {
   return <CenteredContainer tagName="nav">{children}</CenteredContainer>
-};{% endcapture %}
-{% include code.html file="components/Navbar/index.tsx" code=code lang="tsx" %}
+};
+```
 
 Since we've specified that `tagName` is `keyof JSX.IntrinsicElements`, we'll get auto-complete intellisense whenever we try to set this prop:
 

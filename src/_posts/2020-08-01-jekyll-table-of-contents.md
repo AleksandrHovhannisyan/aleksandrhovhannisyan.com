@@ -14,7 +14,10 @@ Alright, let's cut to the chase: You want to create a table of contents in Jekyl
 
 Create an include file named `toc.md` and fill it with this markup:
 
-{% capture code %}{% raw %}<div style="position: relative;">
+{% include codeHeader.html file="_includes/toc.md" %}
+{% raw %}
+```markdown
+<div style="position: relative;">
     <a href="#toc-skipped" class="screen-reader-only">Skip table of contents</a>
 </div>
 
@@ -24,8 +27,9 @@ Create an include file named `toc.md` and fill it with this markup:
 * TOC
 {:toc}
 
-<div id="toc-skipped"></div>{% endraw %}{% endcapture %}
-{% include code.html file="_includes/toc.md" code=code lang="markdown" %}
+<div id="toc-skipped"></div>
+```
+{% endraw %}
 
 The markup specific to the Jekyll table of contents is this bit, which uses some Kramdown magic to automatically generate a table of contents based on the post in which this file is included:
 
@@ -45,8 +49,12 @@ The following markup just creates a `Table of Contents` heading level two that's
 
 Then, in your post, all you have to do is insert this one-liner wherever you want your table of contents to appear:
 
-{% capture code %}{% raw %}{% include toc.md %}{% endraw %}{% endcapture %}
-{% include code.html code=code lang="liquid" %}
+{% include codeHeader.html %}
+{% raw %}
+```liquid
+{% include toc.md %}
+```
+{% endraw %}
 
 ## Making the Table of Contents Accessible
 
@@ -74,15 +82,17 @@ One last thing: You typically don't want "skip to content" links like this to be
 
 So, here's the Sass that'll get the job done:
 
-{% capture code %}.screen-reader-only {
+{% include codeHeader.html file="_sass/someSassFile.scss" %}
+```scss
+.screen-reader-only {
     position: absolute;
     left: -5000px;
-    
+
     &:focus {
         left: 0;
     }
-}{% endcapture %}
-{% include code.html file="_sass/someSassFile.scss" code=code lang="scss" %}
+}
+```
 
 And that's it! Since we've set `position: relative` on the anchor's container `div`, the anchor will be positioned relative to that element but out of sight. When a user tabs over it or a screen reader gets to that point in the markup, the user will be given the option to skip the table of contents altogether.
 

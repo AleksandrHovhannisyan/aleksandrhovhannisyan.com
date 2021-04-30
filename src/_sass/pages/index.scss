@@ -1,13 +1,14 @@
 @import 'mixins';
 
 #hero-banner {
-    margin-top: 3.2rem;
-    display: grid;
-    margin-bottom: 9.6rem;
-    grid-template-areas:
-        "title title headshot"
-        "subtitle subtitle subtitle";
-    grid-row-gap: 0.8rem;
+  margin-top: 3.2rem;
+  display: grid;
+  margin-bottom: 9.6rem;
+  grid-template-areas:
+    "title title headshot"
+    "subtitle subtitle subtitle";
+  grid-template-columns: auto auto min-content;
+  grid-row-gap: 0.8rem;
 }
 
 .hero-banner-title {
@@ -20,48 +21,51 @@
 }
 
 #headshot {
-    --headshot-size: 10rem;
-    width: var(--headshot-size);
-    height: var(--headshot-size);
-    grid-area: headshot;
-    justify-self: center;
-    align-self: center;
+  --headshot-size: 10rem;
+  /* padding-bottom used to size the height correctly and reserve space; see _includes/picture.html */
+  width: var(--headshot-size);
+  grid-area: headshot;
+  justify-self: center;
 
-    img {
-        border-radius: 50%;
-    }
+  img {
+    border-radius: 50%;
+  }
 }
 
-@media screen and (min-width: 400px) {
-    #hero-banner {
-        grid-template-areas:
-            "title title headshot"
-            "subtitle subtitle subtitle";
-    }
-
-    #headshot {
-      margin-left: 1.6rem;
-    }
+@include mobile {
+  #hero-banner {
+    grid-template-areas:
+      "title title headshot"
+      "subtitle subtitle subtitle";
+    grid-column-gap: 1.6rem;
+  }
 }
 
 @media screen and (min-width: 600px) {
-    #hero-banner {
-        grid-template-areas:
-            "title title headshot"
-            "subtitle subtitle headshot";
-        grid-row-gap: 0;
-    }
+  #hero-banner {
+    grid-template-areas:
+      "title headshot"
+      "subtitle headshot";
+    grid-template-columns: auto min-content;
+    grid-column-gap: 3.2rem;
+    grid-row-gap: 1.6rem;
+  }
 
-    .hero-banner-title {
-      margin-bottom: 1.6rem;
-    }
+  #headshot {
+    --headshot-size: 14rem;
+  }
+}
 
-    #headshot {
-        --headshot-size: 14rem;
-        margin-left: 1.6rem;
-    }
+@include tablet {
+  #headshot {
+    align-self: center;
+  }
 }
 
 #software-projects {
   margin-bottom: 0.8rem;
+}
+
+.projects-subheading {
+  margin-bottom: 4.8rem;
 }

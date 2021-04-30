@@ -1,3 +1,5 @@
+@import 'functions';
+
 $font-weights: (
   light: 300,
   regular: 400,
@@ -11,5 +13,33 @@ $font-families: (
   cursive: 'Reenie Beanie, cursive'
 );
 
-$font-size-scale: 1.125;
-$font-size-base: 1.8rem;
+$type-scale: (
+  font-size-base: 1.8rem,
+  scale: 1.125,
+  steps: (
+    -2: (
+      line-height: 1.88,
+    ),
+    -1: (
+      line-height: 1.83,
+    ),
+    0: (
+      line-height: 1.78,
+    ),
+    1: (
+      line-height: 1.71,
+    ),
+    2: (
+      line-height: 1.65,
+    ),
+    3: (
+      line-height: 1.57,
+    ),
+    4: (
+      line-height: 1.48,
+    ),
+    5: (
+      line-height: 1.39,
+    ),
+  )
+)

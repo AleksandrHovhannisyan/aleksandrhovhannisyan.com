@@ -1,11 +1,13 @@
-{% assign img_parts = include.img | split: '.' %}
-{% assign img = img_parts[0] %}
-{% assign ext = img_parts[1] %}
-{% assign class = include.class %}
-{% assign id = include.id %}
-{% assign clickable = include.clickable %}
-{% unless clickable == false %}<a href="{{ img }}.{{ ext }}" class="clickable-picture-anchor">{% endunless %}<picture
-class="lazily-loaded-picture{% if class %} {{ class }}{% endif %}" {% if id %}id="{{ id }}"{% endif %}>
+{%- assign img_parts = include.img | split: '.' -%}
+{%- assign img = img_parts[0] -%}
+{%- assign ext = img_parts[1] -%}
+{%- assign class = include.class -%}
+{%- assign id = include.id -%}
+{%- assign width = include.width -%}
+{%- assign height = include.height -%}
+{%- assign clickable = include.clickable -%}
+{%- unless clickable == false %}<a href="{{ img }}.{{ ext }}" class="clickable-picture-anchor">{%- endunless -%}
+  <picture class="lazily-loaded-picture{% if class %} {{ class }}{% endif %}" {% if id %}id="{{ id }}"{% endif %} {% if width and height %}style="height: 0; padding-bottom: {{ height | times: 1.0 | divided_by: width | times: 100 }}%;"{% endif %}>
     <source
         srcset="{{ img }}-placeholder.webp"
         type="image/webp"
@@ -15,5 +17,6 @@ class="lazily-loaded-picture{% if class %} {{ class }}{% endif %}" {% if id %}id
         src="{{ img }}-placeholder.{{ ext }}"
         alt="{{ include.alt }}"
         data-src="{{ img }}.{{ ext }}"
-        class="lazy-img">
-</picture>{% unless clickable == false %}</a>{% endunless %}
+        class="lazy-img" {% if width %}width="{{ width }}"{% endif %} {% if height %}height="{{ height }}"{% endif %}>
+  </picture>
+{%- unless clickable == false -%}</a>{%- endunless -%}

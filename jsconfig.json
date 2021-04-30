@@ -1,6 +1,11 @@
 {
     "compilerOptions": {
-      "module": "es2015",
-      "baseUrl": "./webpack/"
+      "module": "commonJS",
+      "target": "es6",
+      "baseUrl": "./webpack/",
+      "paths": {
+        "@components": ["./webpack/components"],
+        "@utils": ["./webpack/utils"]
+      }
     }
 }

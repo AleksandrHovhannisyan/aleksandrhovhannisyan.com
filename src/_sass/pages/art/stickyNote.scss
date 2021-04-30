@@ -20,10 +20,6 @@
   cursor: pointer;
   @include transition(transform, top, box-shadow, border-radius);
 
-  @media screen and (min-width: 800px) {
-    flex: 0 0 calc(50% - 2em);
-  }
-
   &::after {
     content: '';
     position: absolute;
@@ -42,8 +38,8 @@
 }
 
 .sticky-note-description {
-  color: #3e464d;
+  color: var(--color-black);
   margin: 0;
-  @include fontFamily('cursive');
-  @include fontSize(2);
+  @include font-family('cursive');
+  @include font-size(2);
 }

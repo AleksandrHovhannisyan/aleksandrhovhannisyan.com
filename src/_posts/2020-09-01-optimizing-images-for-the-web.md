@@ -2,7 +2,7 @@
 title: Optimizing Images for the Web with WebP and Lazy Loading
 description: Images make the web a more beautiful place, but this sometimes comes at a price. Learn how to optimize images for the web using the WebP image format and lazy loading with JavaScript.
 keywords: [optimizing images for the web, optimize images for the web]
-tags: [dev, javascript, webperf, webp]
+tags: [dev, javascript, webperf, images]
 comments_id: 56
 last_updated: 2020-09-10
 ---
@@ -57,15 +57,17 @@ Outside the Node ecosystem, there are still libraries that'll do the job for you
 
 Now, assuming you've generated your WebP images, the typical way to render them is with the `<picture>`, `<source>`, and `<img>` tags:
 
-{% capture code %}<picture>
+{% include codeHeader.html %}
+```html
+<picture>
     <source
         srcset="/path/to/img.webp"
         type="image/webp">
     <img
         src="/path/to/img.png"
         alt="Your image's alt">
-</picture>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</picture>
+```
 
 Browsers that support the WebP image format will request and render only the `<source>` image, while browsers that don't yet support it will fall back to the `<img>` element.
 
@@ -109,7 +111,9 @@ The second option is to use the **IntersectionObserver API**, which is [supporte
 
 First, we'll modify our markup to store the paths to our WebP image and the original image in `data-` attributes. That way, we can look up these paths with JavaScript for any given image:
 
-{% capture code %}<picture class="lazily-loaded-picture">
+{% include codeHeader.html %}
+```html
+<picture class="lazily-loaded-picture">
     <source
         srcset="/path/to/img-placeholder.webp"
         data-srcset="/path/to/img.webp"
@@ -121,8 +125,8 @@ First, we'll modify our markup to store the paths to our WebP image and the orig
         alt="Your image's alt"
         loading="lazy"
         class="lazy-img">
-</picture>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</picture>
+```
 
 > Notice that the `src` and `srcset` attributes now point to placeholder images. We'll discuss how that works in a bit.
 
@@ -130,15 +134,19 @@ I'm naming these attributes `data-srcset` and `data-src`, respectively, but you 
 
 While we're at it, here's some CSS you may find useful:
 
-{% capture code %}.lazy-img {
+{% include codeHeader.html %}
+```css
+.lazy-img {
     max-width: 100%;
     width: 100%;
-}{% endcapture %}
-{% include code.html code=code lang="css" %}
+}
+```
 
 Next, we'll create an `IntersectionObserver` instance and use it to detect when our images intersect with the browser viewport:
 
-{% capture code %}const imgObserver = new IntersectionObserver((entries, self) => {
+{% include codeHeader.html %}
+```javascript
+const imgObserver = new IntersectionObserver((entries, self) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       lazyLoad(entry.target);
@@ -149,19 +157,21 @@ Next, we'll create an `IntersectionObserver` instance and use it to detect when 
 
 document.querySelectorAll('.lazy-img').forEach(img => {
   imgObserver.observe(img);
-});{% endcapture %}
-{% include code.html code=code lang="javascript" %}
+});
+```
 
 And here's how you might implement the `lazyLoad` function:
 
-{% capture code %}function lazyLoad(img) {
+{% include codeHeader.html %}
+```javascript
+function lazyLoad(img) {
   const picture = img.parentElement;
   const source = picture.querySelector('.lazy-source');
 
   source.srcset = source.getAttribute('data-srcset');
   img.src = img.getAttribute('data-src');
-}{% endcapture %}
-{% include code.html code=code lang="javascript" %}
+}
+```
 
 Super simple! You don't need any libraries to lazily load images in JavaScript.
 

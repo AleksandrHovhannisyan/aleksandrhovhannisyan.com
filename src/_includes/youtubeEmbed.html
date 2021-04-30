@@ -1,0 +1,9 @@
+{%- assign title = include.title -%}
+{%- assign id = include.id -%}
+<div class="youtube-embed">
+  <lite-youtube
+    videoid="{{ id }}"
+    videotitle="{{ title }}"
+    style="background-image: url('https://i.ytimg.com/vi/{{ id }}/hqdefault.jpg'); background-position: center; background-repeat: no-repeat;">
+  </lite-youtube>
+</div>

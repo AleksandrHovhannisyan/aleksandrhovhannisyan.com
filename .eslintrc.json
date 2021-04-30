@@ -3,7 +3,9 @@
     "eslint:recommended",
     "plugin:prettier/recommended"
   ],
-  "plugins": ["prettier"],
+  "plugins": [
+    "prettier"
+  ],
   "env": {
     "browser": true,
     "jasmine": true,
@@ -11,11 +13,13 @@
     "jest": true,
     "es6": true
   },
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
     "sourceType": "module"
   },
   "rules": {
-    "prettier/prettier": ["error"]
+    "prettier/prettier": [
+      "error"
+    ]
   }
 }

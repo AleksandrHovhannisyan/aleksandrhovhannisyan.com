@@ -1,5 +1,5 @@
-{% assign issues_repo = site.issues_repo %}
-{% assign issue_id = include.issue_id %}
+{%- assign issues_repo = site.issues_repo -%}
+{%- assign issue_id = include.issue_id -%}
 <section id="comments">
     <div class="comment-actions">
         <h2>💬 Comments <span id="comments-count"></span></h2>
@@ -123,7 +123,7 @@
         // load the relativeTime plugin
         dayjs.extend(dayjs_plugin_relativeTime);
         const datePosted = dayjs(comment.created_at).fromNow();
-        
+
         const user = comment.user;
         const body = DOMPurify.sanitize(marked(comment.body));
         const postedByAuthor = comment.author_association === 'OWNER';
@@ -145,7 +145,7 @@
                 </li>`;
       })
       .join('');
-    
+
     commentsWrapper.innerHTML = '';
     commentsWrapper.appendChild(commentsList);
   }

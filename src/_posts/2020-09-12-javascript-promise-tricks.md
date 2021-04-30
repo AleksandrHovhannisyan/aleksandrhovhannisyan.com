@@ -20,7 +20,9 @@ Sometimes, you'll find yourself working on a front-end feature for which an API 
 
 Now, you *could* just hard-code your data in the UI, like mapping a fixed array of objects to some HTML output (either with vanilla JavaScript or, in this case, React):
 
-{% capture code %}import React from 'react';
+{% include codeHeader.html file="App.js" %}
+```jsx
+import React from 'react';
 
 const BookList = ({ books }) => {
   return (
@@ -56,14 +58,16 @@ const App = () => {
   );
 };
 
-export default App;{% endcapture %}
-{% include code.html file="App.js" code=code lang="jsx" %}
+export default App;
+```
 
 While it's tempting to take this route, it's not a good idea because it neglects the asynchronous nature of a real-world API call. What if the API fails to return the data? Naturally, your UI will need to handle that error state. But it's not possible to test this edge case with a hard-coded array of values that will always exist.
 
 The solution? Use Promises to create a mock API in your frontend:
 
-{% capture code %}export const getData = (data, successRate = 0.98, maxLatencyMs = 1000) =>
+{% include codeHeader.html file="utils/getData.js" %}
+```javascript
+export const getData = (data, successRate = 0.98, maxLatencyMs = 1000) =>
   new Promise((resolve, reject) => {
     const successRoll = Math.random();
     // interval: [0, maxLatencyMs]
@@ -74,14 +78,16 @@ The solution? Use Promises to create a mock API in your frontend:
     } else {
       setTimeout(() => reject('API failed to return data'), latency);
     }
-});{% endcapture %}
-{% include code.html file="utils/getData.js" code=code lang="javascript" %}
+});
+```
 
 This function accepts one required argument: your fake data. The remaining arguments are optional and have certain defaults. The function returns a Promise and uses a pseudorandom dice roll to simulate a real API call that may or may not succeed. By default, it's assumed that the API has an arbitrary success rate of `0.98`, or 98%. Finally, the mock API will resolve or reject within a certain window of latency.
 
 Now, instead of hardcoding data in our frontend, we can pass along our fake data to the mock API, which will either bounce it back to us after some time or fail:
 
-{% capture code %}import React, { useState, useEffect } from "react";
+{% include codeHeader.html file="App.js" %}
+```jsx
+import React, { useState, useEffect } from "react";
 
 const BookList = ({ books }) => {
   return (
@@ -122,8 +128,8 @@ const App = () => {
   );
 };
 
-export default App;{% endcapture %}
-{% include code.html file="App.js" code=code lang="jsx" %}
+export default App;
+```
 
 Later, we can easily replace the mocked call with a real API call, and voila!
 
@@ -135,14 +141,16 @@ Older JavaScript APIs (e.g., the now-deprecated [request](https://github.com/req
 
 Here's a simulated callback using a simple `setTimeout`:
 
-{% capture code %}function doSomething(arg1, callback) {
+{% include codeHeader.html %}
+```javascript
+function doSomething(arg1, callback) {
   // In reality, the function would do something else and then
   // invoke the callback. The timeout is for demo purposes.
   setTimeout(() => callback('foo'), 1000);
 }
 
-doSomething('arg1', console.log);{% endcapture %}
-{% include code.html code=code lang="javascript" %}
+doSomething('arg1', console.log);
+```
 
 Promises are, by comparison, much easier to read since they don't lead to the deeply nested **callback hell** that you may have seen in some legacy JavaScript codebases:
 
@@ -190,7 +198,9 @@ Our `getSetting` function takes two arguments: the key to use for looking up dat
 
 To convert this to a simpler Promise-based syntax, we just create our own wrapper function that returns a Promise and either resolves or rejects, depending on the result of `getSetting`:
 
-{% capture code %}function getSettingAsync(key) {
+{% include codeHeader.html file="getSettingAsync.js" %}
+```javascript
+function getSettingAsync(key) {
     return new Promise((resolve, reject) => {
         try {
             getSetting(key, value => {
@@ -200,15 +210,17 @@ To convert this to a simpler Promise-based syntax, we just create our own wrappe
             reject(e.message);
         }
     });
-}{% endcapture %}
-{% include code.html file="getSettingAsync.js" code=code lang="javascript" %}
+}
+```
 
 That's it! Now, we can just do this:
 
-{% capture code %}getSettingAsync('foo')
+{% include codeHeader.html %}
+```javascript
+getSettingAsync('foo')
   .then(console.log)
-  .catch(e => setErrorState(true));{% endcapture %}
-{% include code.html code=code lang="javascript" %}
+  .catch(e => setErrorState(true));
+```
 
 Notice that our new function no longer accepts a callback argument—that's taken care of by the Promise wrapper. The function signature is now much cleaner to look at, and our code reads like plain English. But more importantly, we can now chain Promises instead of nesting callbacks.
 
@@ -222,7 +234,9 @@ For whatever reason, let's say you need to load a script (or image, or any other
 
 The naive approach uses nested `onload` handlers, like so:
 
-{% capture code %}const script2 = document.createElement('script');
+{% include codeHeader.html %}
+```javascript
+const script2 = document.createElement('script');
 script2.src = 'two.js';
 document.body.appendChild(script2);
 
@@ -242,8 +256,8 @@ script2.onload = () => {
       console.log('three.js loaded');
     };
   };
-};{% endcapture %}
-{% include code.html code=code lang="javascript" %}
+};
+```
 
 > Again, you could just as well use images or any other asset with `onload` and `onerror` handlers. Scripts are just easier to work with for the purposes of this demo.
 
@@ -259,7 +273,9 @@ But the nesting only gets worse from here, and there's already a lot of hard-cod
 
 Instead, we can use Promises to regulate the order in which our scripts are loaded:
 
-{% capture code %}function loadScript(url) {
+{% include codeHeader.html file="loadScript.js" %}
+```javascript
+function loadScript(url) {
   const script = document.createElement('script');
   script.src = url;
   document.body.appendChild(script);
@@ -274,16 +290,18 @@ Instead, we can use Promises to regulate the order in which our scripts are load
       reject(`Error loading script at ${url}`);
     };
   });
-}{% endcapture %}
-{% include code.html file="loadScript.js" code=code lang="javascript" %}
+}
+```
 
 Now, all we need to do is chain Promises:
 
-{% capture code %}loadScript('two.js')
+{% include codeHeader.html %}
+```javascript
+loadScript('two.js')
   .then(() => loadScript('one.js'))
   .then(() => loadScript('three.js'))
-  .catch(console.log);{% endcapture %}
-{% include code.html code=code lang="javascript" %}
+  .catch(console.log);
+```
 
 And we'll get the same order of output:
 
@@ -299,20 +317,24 @@ Note that there are very few situations in the real world where you'd actually n
 
 The Chrome extension API allows you to save and read user preferences. The read operation is performed asynchronously, so you need to pass in a callback for when the data becomes ready:
 
-{% capture code %}chrome.storage.sync.get({ 'foo' }, setting => {
+{% include codeHeader.html %}
+```javascript
+chrome.storage.sync.get({ 'foo' }, setting => {
     if (chrome.runtime.lastError) {
         throw new Error(`Failed to read setting.`);
     } else {
         console.log(setting['foo']);
     }
-});{% endcapture %}
-{% include code.html code=code lang="javascript" %}
+});
+```
 
 That works, but you'll soon grow tired of passing in a callback every single time you want to read a setting.
 
 We can easily convert this to a Promise-based syntax. We'll create a utility function named `readSetting` that abstracts away the callback and either resolves with the value of the setting or rejects if the Chrome runtime encounters an error:
 
-{% capture code %}export default function readSetting(settingName) {
+{% include codeHeader.html file="readSetting.js" %}
+```javascript
+export default function readSetting(settingName) {
   return new Promise((resolve, reject) => {
     chrome.storage.sync.get(
       { [settingName]: defaultSettings[settingName] },
@@ -325,13 +347,15 @@ We can easily convert this to a Promise-based syntax. We'll create a utility fun
       }
     );
   });
-}{% endcapture %}
-{% include code.html file="readSetting.js" code=code lang="javascript" %}
+}
+```
 
 And now we can use either `async`/`await` or `then` to read settings in a much more legible manner:
 
-{% capture code %}const bar = await readSetting('foo');{% endcapture %}
-{% include code.html code=code lang="javascript" %}
+{% include codeHeader.html %}
+```javascript
+const bar = await readSetting('foo');
+```
 
 ## 3. Sleeping in JavaScript
 
@@ -341,44 +365,52 @@ Normally, an [operating system's scheduler](/blog/operating-system-scheduling-al
 
 Why would you want to do this? Sleeping is useful if you want to regulate **the rate at which code is executed**. And just to be clear, you can definitely do this in vanilla JavaScript without Promises:
 
-{% capture code %}for (let i = 1; i <= 10; i++) {
+{% include codeHeader.html %}
+```javascript
+for (let i = 1; i <= 10; i++) {
     setTimeout(() => console.log(i), i * 1000);
-}{% endcapture %}
-{% include code.html code=code lang="javascript" %}
+}
+```
 
 > **Note**: You can't just do `setTimeout(() => console.log(i), 1000)`. Since the timeouts don't actually block the loop's execution, each iteration will push a new callback onto the event queue after roughly 1 second *since the start of the loop*, as opposed to *spaced 1 second apart*.
 
 This works, but it's a little difficult to understand compared to the following C++ code:
 
-{% capture code %}#include <chrono>
+{% include codeHeader.html %}
+```cpp
+#include <chrono>
 #include <thread>
 
 for (int i = 1; i <= 10; i++) {
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     std::cout << i << "\n";
-}{% endcapture %}
-{% include code.html code=code lang="cpp" %}
+}
+```
 
 > Also, the JavaScript version doesn't actually block the thread, whereas the C++ version does.
 
 Fortunately, we can achieve something similar using a Promise that resolves after `ms` time elapses:
 
-{% capture code %}export default function sleep(ms) {
+{% include codeHeader.html file="utils/sleep.js" %}
+```javascript
+export default function sleep(ms) {
     return new Promise(resolve => {
         setTimeout(resolve, ms);
     });
-}{% endcapture %}
-{% include code.html file="utils/sleep.js" code=code lang="javascript" %}
+}
+```
 
 Now, with ES7's `async`/`await`, we can write the following:
 
-{% capture code %}import sleep from 'utils/sleep';
+{% include codeHeader.html %}
+```javascript
+import sleep from 'utils/sleep';
 
 for (let i = 1; i <= 10; i++) {
     await sleep(1000);
     console.log(i);
-}{% endcapture %}
-{% include code.html code=code lang="javascript" %}
+}
+```
 
 > **Note**: The loop should be wrapped in a function that's marked as `async`. However, you can run this code in your browser's dev tools as-is (without the import statement).
 

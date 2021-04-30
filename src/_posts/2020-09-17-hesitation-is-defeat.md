@@ -3,6 +3,7 @@ title: Hesitation Is Defeat
 description: After a one-year hiatius from Sekiro, I returned to face the final boss—and, through painful persistence, triumphed.
 keywords: [sekiro, hesitation is defeat]
 tags: [off-topic, sekiro, gaming]
+is_popular: true
 ---
 
 If your experience with *Sekiro: Shadows Die Twice™* was anything like mine, you grew accustomed to hearing the old man taunt you with this pithy adage as he sheathed his blade for the hundredth time.
@@ -11,7 +12,7 @@ Isshin, the Sword Saint—the revered kensei of Ashina returns from the afterlif
 
 > *"Pitiful grandchild... This was your last wish. To see Ashina returned from the great beyond... which means, Sekiro, I must destroy you."* —Isshin, the Sword Saint
 
-{% include img.html img="isshin.png" alt="Isshin Ashina readies his blade as he prepares to fight Sekiro in the final cutscene. The words 'I must destroy you' are captioned on screen." %}
+{% include img.html img="isshin.png" alt="Isshin Ashina readies his blade as he prepares to fight Sekiro in the final cutscene. The words 'I must destroy you' are captioned on screen." width=1143 height=632 %}
 
 The only thing standing in his way? A fangless Wolf, sworn to defend his lord's life at all costs.
 
@@ -63,11 +64,6 @@ For me, this was the single most rewarding experience that a game has ever offer
 
 So, farewell, Isshin—and thank you, Miyazaki, for yet another stellar Soulsborne title.
 
-<div class="embed-container">
-    <lite-youtube
-    videoid="Ewu-Evc_qNc"
-    videotitle="I Beat Sekiro: Shadows Die Twice! (And It Only Took Me 1 Year...)"
-    ></lite-youtube>
-</div>
+{% include youtubeEmbed.html id="Ewu-Evc_qNc" title="I Beat Sekiro: Shadows Die Twice! (And It Only Took Me 1 Year...)" %}
 
-<script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@0.6.2/lite-youtube.js" defer>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@0.6.2/lite-youtube.js" defer></script>

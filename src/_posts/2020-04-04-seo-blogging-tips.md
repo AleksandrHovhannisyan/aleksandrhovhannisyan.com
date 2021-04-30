@@ -8,8 +8,6 @@ comments_id: 41
 
 **Search engine optimization** (SEO) is the art of making strategic improvements to a site's content or performance in order to rank higher in search results and attract more traffic.
 
-{% include img.html img="metrics.png" alt="Tracking metrics for a website." %}
-
 If you're just getting started with blogging—and even if you've been doing it for a while—you may not know how to get more traffic on your website. You may have heard about SEO before or done a bit of reading on the subject. It's a massive industry, and trying to write an exhaustive guide on SEO blogging best practices would require an entire book (or two... or lots).
 
 Instead, what I hope to do here is share some SEO blogging tips based on my own experience and knowledge of SEO. I do regular freelance editing work with digital marketing agencies, and most of their content happens to be about SEO best practices in their industry. So I've certainly picked up some solid tips here and there as I've read their content.
@@ -242,7 +240,9 @@ Google already relies on the structure of your page—your title tag, the descri
 
 But you can also include **schema markup** in your HTML to inform search engines of the type of content you've published and any of its particular details, such as the headline, the author, the date published or modified, and so on. Here's an example from [Google's docs on structured data](https://developers.google.com/search/docs/data-types/article#examples):
 
-{% capture code %}<script type="application/ld+json">
+{% include codeHeader.html %}
+```html
+<script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "NewsArticle",
@@ -272,14 +272,17 @@ But you can also include **schema markup** in your HTML to inform search engines
       },
       "description": "A most wonderful article"
     }
-</script>{% endcapture %}
-{% include code.html code=code lang="html" %}
+</script>
+```
 
 Simply stick this anywhere in your HTML for each blog post that you publish.
 
 If you're using a static site generator like Gatsby or Jekyll, you should be able to define this as a template in one place so you don't have to copy-paste it for every single blog post. For example, my website was built with Jekyll, and I have the following in my `_layouts/post.html` layout file:
 
-{% capture code %}{% raw %}<script type="application/ld+json">
+{% include codeHeader.html file="_layouts/post.html" %}
+{% raw %}
+```html
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -306,8 +309,9 @@ If you're using a static site generator like Gatsby or Jekyll, you should be abl
     },
     "description": {{ page.description | strip_newlines | strip | jsonify }}
   }
-</script>{% endraw %}{% endcapture %}
-{% include code.html file="_layouts/post.html" code=code lang="html" %}
+</script>
+```
+{% endraw %}
 
 Use Google's [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool/u/0/) to verify that your schema markup is free of errors.
 

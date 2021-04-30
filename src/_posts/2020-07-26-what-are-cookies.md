@@ -115,15 +115,19 @@ Now, if you inspect future requests, you'll find that this cookie is included in
 
 Before we move on, note that there's a second way to view cookies in your developer tools. Simply navigate to the `Console` tab, enter the following code, and press enter:
 
-{% capture code %}document.cookie{% endcapture %}
-{% include code.html code=code lang="javascript" %}
+{% include codeHeader.html %}
+```javascript
+document.cookie
+```
 
 You'll see one big output string containing `name=value` pairs of cookies strung together with semicolons. Here, `document.cookie` is how you create, update, and delete cookies via JavaScript. Notice that some of the supplementary information—like the expiration date or size of the cookie—does not appear in this string. However, those values *will* get set internally in the browser.
 
 Here's an example of creating a cookie with JavaScript:
 
-{% capture code %}document.cookie = 'foo=bar'{% endcapture %}
-{% include code.html code=code lang="javascript" %}
+{% include codeHeader.html %}
+```javascript
+document.cookie = 'foo=bar'
+```
 
 Now, this API is a little weird. While you would expect the above line of code to replace the whole cookie string, this new cookie will actually get *concatenated* to the existing cookie string (or take the place of an existing cookie, if it has the same name). Here's an example of creating three cookies:
 
@@ -133,15 +137,19 @@ Note that you can't create multiple cookies in one go, like `document.cookie = '
 
 When you just specify the name and value of a cookie, it gets created as a session cookie by default. You can also optionally specify an expiration:
 
-{% capture code %}document.cookie = 'foo=bar; expires=Su, 20 Dec 2020 20:20:20 UTC'{% endcapture %}
-{% include code.html code=code lang="javascript" %}
+{% include codeHeader.html %}
+```javascript
+document.cookie = 'foo=bar; expires=Su, 20 Dec 2020 20:20:20 UTC'
+```
 
 > Note: If "today" is past the above date when you're reading this, the code won't work. And that's because of the next point.
 
 To delete a cookie with JavaScript, you need to set its expiration date to be sometime in the past:
 
-{% capture code %}document.cookie = 'foo=bar; expires=Fri, 24 Jul 2020 04:00:00 UTC'{% endcapture %}
-{% include code.html code=code lang="javascript" %}
+{% include codeHeader.html %}
+```javascript
+document.cookie = 'foo=bar; expires=Fri, 24 Jul 2020 04:00:00 UTC'
+```
 
 We'll take a closer look at how to delete cookies cookies later in this guide.
 

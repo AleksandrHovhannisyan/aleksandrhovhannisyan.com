@@ -1,3 +1,4 @@
+@import 'fonts';
 @import 'mixins';
 
 ::selection {
@@ -6,169 +7,101 @@
   text-shadow: none;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+html {
+  font-size: 1rem / map-get($type-scale, 'font-size-base') * 100%;
 
-.screen-reader-only {
-  position: absolute;
-  left: -5000px;
-
-  &:focus {
-    left: 0;
+  @include mobile-lg {
+    font-size: 62.5%;
   }
 }
 
 body {
   background-color: var(--main-bg-color);
   color: var(--text-color-normal);
-  display: grid;
   grid-template-rows: var(--navbar-height) 1fr auto;
   grid-template-areas:
-  'navbar'
-  'content'
-  'footer';
-  min-height: 100vh;
-  position: relative;
+    'navbar navbar navbar'
+    '. content .'
+    'footer footer footer';
   grid-row-gap: var(--navbar-height);
-  @include fontFamily('sans');
-  @include fontWeight('regular');
-  @include fontSize(0);
+  min-width: 0; // https://css-tricks.com/preventing-a-grid-blowout/
+  min-height: 100vh;
+  @include font-family('sans');
+  @include font-weight('regular');
+  @include font-size(0);
 }
 
 #page-content {
   grid-area: content;
   scroll-margin-top: var(--navbar-height);
-  min-width: 0; // https://css-tricks.com/preventing-a-grid-blowout/
-  @include centered;
 }
 
-// Links an entire parent container, but the parent must be set to relative position
-.container-link {
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 1;
+.logo {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
 }
 
 strong {
   color: var(--text-color-emphasis);
-  @include fontWeight('bold');
+  @include font-weight('bold');
 }
 
 @include headings {
-  color: var(--text-color-emphasis);
-  @include fontWeight('bold');
+  @include font-weight('bold');
+
+  &, code {
+    color: var(--text-color-emphasis);
+  }
 }
 
 h1 {
-  @include fontSize(5);
+  @include font-size(5);
 }
 
 h2 {
-  @include fontSize(4);
+  @include font-size(4);
 }
 
 h3 {
-  @include fontSize(3);
+  @include font-size(3);
 }
 
 h4 {
-  @include fontSize(2);
+  @include font-size(2);
 }
 
 h5 {
-  @include fontSize(1);
+  @include font-size(1);
 }
 
 h6 {
-  @include fontSize(0);
+  @include font-size(0);
 }
 
 p {
   color: var(--text-color-normal);
 }
 
-.underlined-link {
-  @include underlinedLink;
-}
-
 a {
-  color: var(--link-color);
   font-weight: inherit;
   text-decoration: none;
-}
+  @include focus-outline($color: currentColor, $style: solid, $thickness: 0.2rem);
 
-.linked-heading {
-  position: relative;
-  scroll-margin-top: var(--scroll-margin-top);
-
-  &:hover {
-    .heading-anchor {
-      visibility: visible;
-      opacity: 1;
-    }
+  &, code {
+    color: var(--link-color);
   }
 }
 
-.heading-anchor-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  width: 1em;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  transform: translateX(-100%);
-
-  &:hover {
-    .heading-anchor {
-      visibility: visible;
-      opacity: 1;
-    }
-  }
-}
-
-.heading-anchor {
-  visibility: hidden;
-  opacity: 0;
-  display: flex;
-  margin-left: 4px;
+code {
+  background-color: var(--inline-code-bg-color);
+  color: var(--inline-code-text-color);
+  border-radius: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.925em;
+  @include font-family('mono');
 }
 
 .section:not(:last-of-type) {
   margin-bottom: 12.8rem;
-}
-
-.input {
-  background-color: var(--input-bg-color);
-  border: solid 1px var(--input-border-color);
-  border-radius: 2px;
-  box-shadow: var(--input-box-shadow);
-  color: var(--text-color-emphasis);
-  height: 2em;
-  padding: 0.25em 0.5em;
-  width: 100%;
-
-  &:focus {
-    outline: none;
-    border-color: var(--input-border-color-focus);
-    box-shadow: var(--input-box-shadow-focus);
-  }
-}
-
-label {
-  color: var(--text-color-emphasis);
-  display: block;
-  @include fontWeight('semiBold');
-
-  &.required::after {
-    color: var(--input-required-asterisk-color);
-    content: ' *';
-  }
 }

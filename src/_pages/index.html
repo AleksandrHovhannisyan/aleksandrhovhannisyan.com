@@ -13,38 +13,45 @@ permalink: /
       <a class="underlined-link" href="/about/">learn more about me</a>, or
       <a class="underlined-link" href="/contact/">get in touch</a>.
     </p>
-    {% include picture.html img="/assets/images/profile-photo.png" alt="" id="headshot" clickable=false %}
+    {%- include picture.html img="/assets/images/profile-photo.png" alt="" id="headshot" width="140" height="140" clickable=false -%}
   </section>
   <section id="recent-posts" class="section">
-      {% include linkedHeading.html heading="Recent Blog Posts" class="heading" level=2 %}
+      {%- include linkedHeading.html heading="Recent Blog Posts" level=2 -%}
       <ol class="post-preview-grid">
-          {% for post in site.posts limit:5 %} {% include postPreview.html post=post %} {% endfor %}
+          {%- assign posts = site.posts | where: "is_archived", Nil -%}
+          {%- for post in posts limit:5 -%}
+            {%- include postPreview.html post=post -%}
+          {%- endfor -%}
       </ol>
   </section>
   <section id="popular-posts" class="section">
-      {% include linkedHeading.html heading="Popular Blog Posts" class="heading" level=2 %}
+      {%- include linkedHeading.html heading="Popular Blog Posts" level=2 -%}
     <ol class="post-preview-grid">
-      {% assign popular_posts = site.posts | where: "is_popular", true %} {% for post in popular_posts %} {% include
-      postPreview.html post=post %} {% endfor %}
+      {%- assign popular_posts = site.posts | where: "is_popular", true -%}
+      {%- for post in popular_posts -%}
+        {%- include postPreview.html post=post -%}
+      {%- endfor -%}
     </ol>
   </section>
   <section id="projects" class="section">
-    {% include linkedHeading.html heading="Software Projects" level=2 %}
-    <p>
+    {%- include linkedHeading.html heading="Software Projects" level=2 -%}
+    <p class="projects-subheading">
       I have experience with a wide range of stacks and enjoy working on projects that have a strong UI/UX
       component. Below are just some of my software projects that I'm most proud of.
     </p>
     <ul class="project-grid card-grid">
-      {% for project in site.data.projects %}
-          {% include projectCard.html project=project %}
-      {% endfor %}
+      {%- for project in site.data.projects -%}
+        <li class="project-wrapper">
+          {%- include projectCard.html project=project -%}
+        </li>
+      {%- endfor -%}
       <li id="github-cta">
-        <h3 class="github-cta-heading"><strong>Want to see more of my work?</strong></h3>
+        <h3 class="github-cta-heading">Want to see more of my work?</h3>
         <p class="github-cta-subheading">Check out my other repos:</p>
         <a
           aria-label="Aleksandr Hovhannisyan's GitHub profile."
           href="https://github.com/AleksandrHovhannisyan?tab=repositories"
-          >{% include icon.html icon="github" class="icon-github" %}</a>
+          >{%- include icon.html icon="github" class="icon-github" -%}</a>
       </li>
     </ul>
   </section>

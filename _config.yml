@@ -111,4 +111,15 @@ defaults:
       layout: post
       excerpt: ''
       permalink: /blog/:title/
-      img_path: assets/img/posts
+  - scope:
+      path: _posts/archived
+      type: posts
+    values:
+      layout: archivedPost
+      permalink: /blog/archived/:title/
+      is_popular: false
+      is_archived: true
+      tags: [archived]
+      noindex: true
+      sitemap: false
+
