@@ -1,14 +1,14 @@
 @import 'mixins';
 
 #hero-banner {
-    margin-top: 3.2rem;
-    display: grid;
-    margin-bottom: 9.6rem;
-    grid-template-areas:
-        "title title headshot"
-        "subtitle subtitle subtitle";
-    grid-template-columns: auto auto min-content;
-    grid-row-gap: 0.8rem;
+  margin-top: 3.2rem;
+  display: grid;
+  margin-bottom: 9.6rem;
+  grid-template-areas:
+    "title title headshot"
+    "subtitle subtitle subtitle";
+  grid-template-columns: auto auto min-content;
+  grid-row-gap: 0.8rem;
 }
 
 .hero-banner-title {
@@ -21,38 +21,38 @@
 }
 
 #headshot {
-    --headshot-size: 10rem;
-    /* padding-bottom used to size the height correctly and reserve space; see _includes/picture.html */
-    width: var(--headshot-size);
-    grid-area: headshot;
-    justify-self: center;
+  --headshot-size: 10rem;
+  /* padding-bottom used to size the height correctly and reserve space; see _includes/picture.html */
+  width: var(--headshot-size);
+  grid-area: headshot;
+  justify-self: center;
 
-    img {
-      border-radius: 50%;
-    }
+  img {
+    border-radius: 50%;
+  }
 }
 
 @include mobile {
   #hero-banner {
-      grid-template-areas:
-          "title title headshot"
-          "subtitle subtitle subtitle";
-      grid-column-gap: 1.6rem;
+    grid-template-areas:
+      "title title headshot"
+      "subtitle subtitle subtitle";
+    grid-column-gap: 1.6rem;
   }
 }
 
 @media screen and (min-width: 600px) {
   #hero-banner {
-      grid-template-areas:
-          "title headshot"
-          "subtitle headshot";
-      grid-template-columns: auto min-content;
-      grid-column-gap: 3.2rem;
-      grid-row-gap: 1.6rem;
+    grid-template-areas:
+      "title headshot"
+      "subtitle headshot";
+    grid-template-columns: auto min-content;
+    grid-column-gap: 3.2rem;
+    grid-row-gap: 1.6rem;
   }
 
   #headshot {
-      --headshot-size: 14rem;
+    --headshot-size: 14rem;
   }
 }
 

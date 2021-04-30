@@ -4,6 +4,7 @@ description: The Ant Design UI library lets you sort tables by one or more colum
 keywords: [sort ant design tables]
 tags: [dev, antd, react, frontend]
 comments_id: 53
+is_popular: true
 ---
 
 Want to sort tables in Ant Design but without putting in much effort? Then you're in luck—in this post, we'll look at how you can automate this process to easily sort any column (even multiple ones in combination).

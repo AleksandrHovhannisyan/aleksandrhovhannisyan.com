@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US" class="light">
+<html lang="en-US">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   <!-- Preload optimizations -->
@@ -8,16 +8,16 @@
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-regular.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-500.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-700.woff2" crossorigin>
-  <link rel="preload" as="script" type="text/javascript" href="/assets/scripts/bundle.js">
+  <link rel="modulepreload" as="script" type="text/javascript" href="/assets/scripts/bundle.js">
   {%- if layout.preloads -%}
-  {% for preload in layout.preloads %}
-  <link rel="preload" as="{{ preload.as }}" type="{{ preload.type }}" href="{{ preload.href }}" {% if preload.crossorigin %}crossorigin{% endif %}>
-  {%- endfor -%}
+    {% for preload in layout.preloads %}
+      <link rel="preload" as="{{ preload.as }}" type="{{ preload.type }}" href="{{ preload.href }}" {% if preload.crossorigin %}crossorigin{% endif %}>
+    {%- endfor -%}
   {% endif %}
   {%- if page.preloads -%}
-  {% for preload in page.preloads %}
-  <link rel="preload" as="{{ preload.as }}" type="{{ preload.type }}" href="{{ preload.href }}" {% if preload.crossorigin %}crossorigin{% endif %}>
-  {%- endfor -%}
+    {% for preload in page.preloads %}
+      <link rel="preload" as="{{ preload.as }}" type="{{ preload.type }}" href="{{ preload.href }}" {% if preload.crossorigin %}crossorigin{% endif %}>
+    {%- endfor -%}
   {% endif %}
   <!-- Metadata for search engines -->
   <meta name="description" content="{%- if page.description -%}{{ page.description }}{%- else -%}{{ site.description }}{%- endif -%}">
@@ -27,15 +27,12 @@
   <meta name="referrer" content="origin">
   <!-- Open Graph social media previews -->
   <meta property="og:title" content="{{ page.title }} | {{ site.title }}">
-  {%- assign og_image = '/assets/images/favicons/favicon-228.png' -%}
-  {%- if page.og_image -%}
-    {%- assign og_image = page.og_image -%}
-  {%- endif -%}
+  {%- assign og_image = page.og_image | default: '/assets/images/favicons/favicon-228.png' -%}
   {%- if page.is_post -%}
     {%- assign img = 'thumbnail.png' -%}
-  {%- if page.thumbnail -%}
-    {%- assign img = page.thumbnail -%}
-  {%- endif -%}
+    {%- if page.thumbnail -%}
+      {%- assign img = page.thumbnail -%}
+    {%- endif -%}
     {%- assign og_image = '/assets/images/posts/' | append: page.slug | append: '/' | append: img -%}
   {%- endif -%}
   <meta property="og:image" content="{{ site.url }}{{ og_image }}">
@@ -45,7 +42,11 @@
     <!-- Prevent this page from showing up on search engines -->
     <meta name="robots" content="noindex">
   {%- endif -%}
+  <!-- CSS-->
   <link rel="stylesheet" href="/assets/styles/main.css">
+  {%- for stylesheet in layout.stylesheets -%}
+    <link rel="stylesheet" href="{{ stylesheet.href }}">
+  {%- endfor -%}
   <!-- Favicons -->
   <link rel="icon" href="/assets/images/favicons/favicon-32.png" sizes="32x32">
   <link rel="icon" href="/assets/images/favicons/favicon-57.png" sizes="57x57">
@@ -64,12 +65,17 @@
   {%- endif -%}
   <!-- Load the user's last selected theme -->
   <script>
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      document.documentElement.className = savedTheme;
-    } else {
-      localStorage.setItem('theme', 'light');
-    }
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.className = savedTheme;
+      } else {
+        const userPrefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const preferredTheme = userPrefersDarkMode ? 'dark' : 'light';
+        document.documentElement.className = preferredTheme;
+        localStorage.setItem('theme', preferredTheme);
+      }
+    })();
   </script>
 </head>
 <body class="centered">
@@ -82,6 +88,6 @@
       <span aria-hidden="true">&copy;</span> Copyright {{ site.author }}, 2019–Present
     </div>
   </footer>
-  <script src="/assets/scripts/bundle.js" charset="utf-8"></script>
+  <script type="module" src="/assets/scripts/bundle.js"></script>
 </body>
 </html>

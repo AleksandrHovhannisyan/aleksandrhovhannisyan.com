@@ -6,18 +6,25 @@ const navbar = new Navbar();
 
 // eslint-disable-next-line no-unused-vars
 const themeToggle = new ThemeToggle({
-  toggleSelector: '#theme-toggle',
+  toggleElement: document.getElementById('theme-toggle'),
   storageKey: 'theme',
   themeOwner: document.documentElement,
+  defaultTheme: 'light',
+  themeMap: {
+    light: 'dark',
+    dark: 'light',
+  },
 });
 
 lazyLoad('.lazy-img', (img) => {
   const pictureElement = img.parentElement;
   const source = pictureElement.querySelector('.lazy-source');
 
+  img.onload = () => {
+    pictureElement.classList.add('loaded');
+  };
   source.srcset = source.getAttribute('data-srcset');
   img.src = img.getAttribute('data-src');
-  pictureElement.classList.add('loaded');
 });
 
 const copyableCodeBlocks = document.querySelectorAll('.code-header.with-copy-button + .highlighter-rouge');

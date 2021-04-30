@@ -1,0 +1,6 @@
+[[plugins]]
+package="netlify-plugin-checklinks"
+
+[build]
+  publish = "_site/"
+  command = "yarn build"

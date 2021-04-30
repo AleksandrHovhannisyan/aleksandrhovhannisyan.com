@@ -20,31 +20,31 @@
 }
 
 .contact-form {
+  display: grid;
+  grid-auto-flow: row;
+  grid-row-gap: 1.6rem;
+  background-color: var(--form-bg-color);
+  border-radius: 0.2rem;
+  border: solid 1px hsla(0, 0%, 0%, 0.08);
+  grid-area: form;
+  padding: 2.4rem;
+  height: fit-content;
+
+  .labeled-input {
     display: grid;
     grid-auto-flow: row;
-    grid-row-gap: 1.6rem;
-    background-color: var(--form-bg-color);
-    border-radius: 0.2rem;
-    border: solid 1px hsla(0, 0%, 0%, 0.08);
-    grid-area: form;
-    padding: 2.4rem;
-    height: fit-content;
+    grid-row-gap: 0.4rem;
+  }
 
-    .labeled-input {
-      display: grid;
-      grid-auto-flow: row;
-      grid-row-gap: 0.4rem;
-    }
+  label,
+  input,
+  textarea {
+    @include font-size(0);
+  }
 
-    label,
-    input,
-    textarea {
-      @include font-size(0);
-    }
-
-    textarea {
-      min-height: 17.5rem;
-    }
+  textarea {
+    min-height: 17.5rem;
+  }
 }
 
 .contact-submit-button {
@@ -55,14 +55,14 @@
   @include font-size(0);
 
   &:focus {
-    outline: solid 0.2rem var(--button-bg-color-hover);
+    outline: solid 0.2rem var(--button-bg-color-focus);
     outline-offset: 0.2rem;
   }
 }
 
 // Spammers begone
 input.honeypot {
-    display: none;
+  display: none;
 }
 
 #social-networks {
@@ -76,28 +76,28 @@ input.honeypot {
 }
 
 .social-networks-list {
-    grid-column-gap: 3.2rem;
-    display: grid;
-    grid-auto-rows: 4.8rem;
-    grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
-    grid-row-gap: 4.8rem;
-    list-style: none;
+  grid-column-gap: 3.2rem;
+  display: grid;
+  grid-auto-rows: 4.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+  grid-row-gap: 4.8rem;
+  list-style: none;
 }
 
 .social-network {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: center;
-    padding: 1.6rem;
-    border-radius: 0.2rem;
-    color: var(--text-color-normal);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  padding: 1.6rem;
+  border-radius: 0.2rem;
+  color: var(--text-color-normal);
 
-    &:focus,
-    &:hover {
-        background-color: var(--hover-bg-color);
-        cursor: pointer;
-        color: var(--text-color-emphasis);
-    }
+  &:focus,
+  &:hover {
+    background-color: var(--hover-bg-color);
+    cursor: pointer;
+    color: var(--text-color-emphasis);
+  }
 }
 
 .social-network-name {
@@ -105,9 +105,9 @@ input.honeypot {
 }
 
 .social-network-icon {
-    justify-self: center;
-    width: 3.2rem;
-    fill: currentColor;
+  justify-self: center;
+  width: 3.2rem;
+  fill: currentColor;
 }
 
 @include tablet {

@@ -19,7 +19,15 @@ module.exports = {
         exclude: [path.resolve(__dirname, 'node_modules')],
         loader: 'babel-loader',
         query: {
-          presets: ['@babel/env'],
+          presets: [
+            [
+              '@babel/preset-env',
+              {
+                "bugfixes": true
+              }
+            ]
+          ],
+          plugins: ['@babel/plugin-proposal-nullish-coalescing-operator'],
         },
       },
     ],

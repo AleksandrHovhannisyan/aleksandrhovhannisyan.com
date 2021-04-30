@@ -14,7 +14,7 @@ With an understanding of [the method of least squares](/blog/the-method-of-least
 
 In **least squares fitting**, we have some function $$f$$ that takes $$n$$-vectors as its inputs and maps them to real numbers. We don't really know anything about the function itself and what it does under the hood. It's your classic black box: You feed some vector $$x$$ to the function, and it spits out a $$y$$ in response:
 
-{% include img.html img="black-box.jpg" alt="The black-box model of a function." %}
+{% include img.html img="black-box.jpg" alt="The black-box model of a function." width=1257 height=168 %}
 
 Our goal in least squares fitting is to try to model $$f$$ as closely as possible, based on the input-output data pairs that we're given. Typically, we use the following notation for our data, with $$(x^{(i)}, y^{(i)})$$ denoting the $$i$$-th data pair:
 

@@ -9,9 +9,9 @@
   background-color: var(--snoo-orange);
   position: relative;
   background-image:
-      radial-gradient(circle at 70% 26%, white 5%, transparent 5.3%),
-      radial-gradient(circle at 23% 52%, white 7.6%, transparent 7.9%),
-      radial-gradient(circle at 76% 52%, white 7.6%, transparent 7.9%);
+    radial-gradient(circle at 70% 26%, white 5%, transparent 5.3%),
+    radial-gradient(circle at 23% 52%, white 7.6%, transparent 7.9%),
+    radial-gradient(circle at 76% 52%, white 7.6%, transparent 7.9%);
 }
 
 .snoo-face {
@@ -24,10 +24,10 @@
   transform: translateX(-51%);
   bottom: 8vmin;
   background-image:
-      radial-gradient(circle at 28% 41%, var(--snoo-orange) 10.5%, transparent 10.8%),
-      radial-gradient(circle at 69% 41%, var(--snoo-orange) 10.5%, transparent 10.8%),
-      radial-gradient(circle at 29% 69%, var(--snoo-orange) 2%, transparent 2.3%),
-      radial-gradient(circle at 71% 70%, var(--snoo-orange) 2%, transparent 2.3%);
+    radial-gradient(circle at 28% 41%, var(--snoo-orange) 10.5%, transparent 10.8%),
+    radial-gradient(circle at 69% 41%, var(--snoo-orange) 10.5%, transparent 10.8%),
+    radial-gradient(circle at 29% 69%, var(--snoo-orange) 2%, transparent 2.3%),
+    radial-gradient(circle at 71% 70%, var(--snoo-orange) 2%, transparent 2.3%);
 }
 
 .snoo-face::before {

@@ -5,18 +5,23 @@
   "repository": "git@github.com:AleksandrHovhannisyan/aleksandrhovhannisyan.com.git",
   "author": "AleksandrHovhannisyan <aleksandrhovhannisyan@gmail.com>",
   "scripts": {
-    "dev": "concurrently \"webpack --watch --mode=development\" \"JEKYLL_ENV=development bundle exec jekyll serve --livereload --port=4001\"",
-    "dev:prod": "concurrently \"webpack --watch --mode=production\" \"JEKYLL_ENV=production bundle exec jekyll serve --livereload --port=4001\"",
-    "build": "webpack --mode=production && JEKYLL_ENV=production bundle exec jekyll build",
-    "lint:fix": "eslint --cache --fix 'webpack/**/*.js'",
-    "test": "jest",
-    "test:watch": "yarn run test --watch --silent=false"
+    "dev": "concurrently \"yarn run webpack --watch --mode=development\" \"JEKYLL_ENV=development bundle exec jekyll serve --livereload --port=4001\"",
+    "dev:prod": "concurrently \"yarn run webpack --watch --mode=production\" \"JEKYLL_ENV=production bundle exec jekyll serve --livereload --port=4001\"",
+    "build": "yarn test && yarn run webpack --mode=production && JEKYLL_ENV=production bundle exec jekyll build",
+    "lint:css": "stylelint \"src/_sass/**/*.scss\"",
+    "lint:css:fix": "stylelint --fix \"src/_sass/**/*.scss\"",
+    "lint:js": "eslint --cache \"webpack/**/*.js\"",
+    "lint:js:fix": "eslint --cache --fix \"webpack/**/*.js\"",
+    "lint:all": "yarn lint:css && yarn lint:js",
+    "lint:all:fix": "yarn lint:css:fix && yarn lint:js:fix",
+    "test": "jest --config jest.config.js",
+    "test:watch": "yarn run test --watch --silent=false --verbose=true"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
-    "@babel/plugin-transform-modules-commonjs": "^7.10.4",
-    "@babel/preset-env": "^7.11.0",
-    "babel-eslint": "^10.1.0",
+    "@babel/eslint-parser": "^7.13.14",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.13.8",
+    "@babel/preset-env": "^7.13.15",
     "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
     "concurrently": "^5.3.0",
@@ -27,16 +32,22 @@
     "jest": "^26.4.2",
     "lint-staged": "^10.4.0",
     "prettier": "^2.1.2",
+    "stylelint": "^13.12.0",
+    "stylelint-scss": "^3.19.0",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   },
+  "browserslist": [
+    "defaults and supports es6-module and not IE <= 11"
+  ],
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
-    "*.js": "yarn run lint:fix"
+    "*.js": "yarn run lint:js:fix",
+    "*.scss": "yarn run lint:css:fix"
   },
   "jest": {
     "moduleDirectories": [

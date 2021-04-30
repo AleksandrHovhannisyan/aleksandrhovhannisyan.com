@@ -103,15 +103,6 @@ div.highlighter-rouge {
   }
 }
 
-code {
-  background-color: var(--inline-code-bg-color);
-  color: var(--inline-code-text-color);
-  border-radius: 0.4rem;
-  padding: 0.4rem 0.8rem;
-  @include font-family('mono');
-  font-size: 0.925em;
-}
-
 // VS Code Dark Theme, modified for use with Rouge.
 .highlight {
   border-radius: 0.4rem;

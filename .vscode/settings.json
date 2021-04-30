@@ -1,6 +1,21 @@
 {
+  // Exclude these files from Ctrl+P search
   "search.exclude": {
     "**/node_modules": true,
     "**/*.{png,gif,jpg,jpeg,webp}": true
   },
+  "eslint.validate": [
+    "javascript",
+  ],
+  "stylelint.enable": true,
+  "stylelint.validate": [
+    "scss",
+  ],
+  "stylelint.configFile": ".stylelintrc.json",
+  // Apply formatters' --fix on save
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+		"source.fixAll.stylelint": true
+	},
 }

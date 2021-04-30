@@ -19,8 +19,12 @@
   padding: 0 1.2rem;
 
   @keyframes backgroundScroll {
-    from {background-position: 0 0;}
-    to {background-position: 798px 0;}
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 798px 0;
+    }
   }
 
   h1 {

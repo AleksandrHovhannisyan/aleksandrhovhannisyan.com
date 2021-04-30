@@ -9,7 +9,7 @@
   @for $i from 1 through length($props) {
     $prop: nth($props, $i);
     $result: append($result, $prop);
-    $result: append($result, ease #{var(--transition-duration)});
+    $result: append($result, #{var(--transition-timing-function)} #{var(--transition-duration)});
 
     @if $i != length($props) {
       $result: append(
@@ -70,7 +70,8 @@
     &:focus {
       text-decoration: none;
     }
-  } @else {
+  }
+  @else {
     text-decoration: none;
 
     &:hover,
@@ -92,6 +93,17 @@
   &,
   &::selection {
     color: $color;
+  }
+}
+
+@mixin focus-outline($color, $style: solid, $thickness: 0.2rem, $offset: 0) {
+  &:focus {
+    outline: $style $thickness $color;
+    outline-offset: $offset;
+
+    &:not(:focus-visible) {
+      outline: none;
+    }
   }
 }
 
