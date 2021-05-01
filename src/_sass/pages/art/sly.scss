@@ -1,0 +1,211 @@
+.sly {
+  --color-sly-skin-dark: #99919C;
+  --color-sly-skin-light: #DAC6CE;
+  --color-sly-eye-dark: black;
+  --color-sly-eye-light: #7783a7;
+  --color-sly-body: black;
+  --color-sly-wing-dark: #2F4258;
+  --color-sly-wing-light: #5b7188;
+  width: 19vmin;
+  height: 30vmin;
+  position: relative;
+}
+
+.sly-head {
+  position: absolute;
+  top: 6.5vmin;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 13vmin;
+  height: 9.7vmin;
+  border-radius: 70% 70% 75% 75%;
+  background-color: var(--color-sly-skin-dark);
+  border: solid 0.8vmin black;
+  box-shadow: inset 0 2vmin 1vmin 0vmin var(--color-sly-skin-light);
+}
+
+// Left antenna
+.sly-head::before {
+  content: '';
+  position: absolute;
+  top: -6.5vmin;
+  background-color: black;
+  border-radius: 100% 70% 20% 90%;
+  height: 6.5vmin;
+  width: 1.2vmin;
+  transform: rotate(-18deg);
+  left: 2.6vmin;
+}
+
+// Right antenna
+.sly-head::after {
+  content: '';
+  position: absolute;
+  top: -6.8vmin;
+  background-color: black;
+  border-radius: 70% 100% 90% 0%;
+  height: 6.8vmin;
+  width: 1.2vmin;
+  transform: rotate(22deg);
+  right: 3.2vmin;
+}
+
+.sly-eyes::before,
+.sly-eyes::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+}
+
+// Left eye
+.sly-eyes::before {
+  top: -1vmin;
+  left: -2.8vmin;
+  width: 6.3vmin;
+  height: 7.4vmin;
+  background-image: radial-gradient(circle at 70% 28%, white 7%, var(--color-sly-eye-dark) 13%, var(--color-sly-eye-dark) 95%);
+  box-shadow: inset 1.5vmin -2vmin 1vmin -2vmin var(--color-sly-eye-dark),
+    inset 5vmin -6.5vmin 1vmin -7vmin var(--color-sly-eye-light);
+}
+
+// Right eye
+.sly-eyes::after {
+  top: -1vmin;
+  right: -2.8vmin;
+  width: 7.8vmin;
+  height: 7.8vmin;
+  border-radius: 50% 55% 50% 50%;
+  background-image: radial-gradient(circle at 65% 28%, white 7%, var(--color-sly-eye-dark) 13%, var(--color-sly-eye-dark) 95%);
+  box-shadow: inset 1.5vmin -2vmin 1vmin -1.7vmin var(--color-sly-eye-dark),
+    inset 3.5vmin -5vmin 1vmin -5vmin var(--color-sly-eye-light);
+}
+
+.sly-nose::before,
+.sly-nose::after {
+  content: '';
+  position: absolute;
+  background-color: black;
+  border-radius: 50%;
+}
+
+// Left nose
+.sly-nose::before {
+  left: 2.6vmin;
+  bottom: 1.3vmin;
+  width: 1vmin;
+  height: 1.3vmin;
+  transform: rotate(45deg);
+}
+
+// Right nose
+.sly-nose::after {
+  right: 5.4vmin;
+  bottom: 1vmin;
+  width: 1.2vmin;
+  height: 1.7vmin;
+  transform: rotate(-45deg);
+}
+
+.sly-wing {
+  position: absolute;
+}
+
+.sly-wing.left {
+  left: 4.5vmin;
+  top: 14vmin;
+  background-color: var(--color-sly-wing-dark);
+  width: 4vmin;
+  height: 13vmin;
+  border-radius: 50% 50% 50% 100% / 50% 50% 100% 100%;
+  transform: rotate(18deg);
+  border: solid 0.7vmin black;
+  background-image: radial-gradient(ellipse at 100% 65%, transparent 30%, black 30%, black 46%, transparent 46%);
+}
+
+.sly-wing.right {
+  right: 1.2vmin;
+  top: 16.3vmin;
+  background-color: var(--color-sly-wing-dark);
+  width: 13vmin;
+  height: 8vmin;
+  border-radius: 100% 0% 100% 0%;
+  transform: rotate(-85deg);
+  border: solid 0.7vmin black;
+  overflow: hidden;
+}
+
+// Tint/shading
+.sly-wing.right::after {
+  content: '';
+  position: absolute;
+  right: 7vmin;
+  top: 0.6vmin;
+  width: 1.4vmin;
+  height: 10vmin;
+  background: radial-gradient(circle at 479% 50%, var(--color-sly-wing-light) 50%, transparent);
+  border-radius: 100% 100% 0 0;
+  transform: rotate(69deg);
+}
+
+.sly-body {
+  position: absolute;
+  bottom: 4.5vmin;
+  left: 6.2vmin;
+  width: 5.5vmin;
+  height: 7.5vmin;
+  border-radius: 60% 50% 50% 50%;
+  background-color: black;
+}
+
+// Rounding near left leg
+.sly-body::before {
+  content: '';
+  position: absolute;
+  width: 1.5vmin;
+  height: 5vmin;
+  background-color: black;
+  border-radius: 100% 50% 50% 50%;
+  left: 0.2vmin;
+  bottom: -0.5vmin;
+  transform: rotate(-15deg);
+}
+
+// Pelvis arch
+.sly-body::after {
+  content: '';
+  position: absolute;
+  left: -10vmin;
+  border-top: solid 1vmin black;
+  border-left: solid 1vmin black;
+  padding: 1vmin;
+  border-radius: 100%;
+  transform: rotate(45deg);
+  bottom: -2vmin;
+  left: 1.5vmin;
+}
+
+.sly-legs::before,
+.sly-legs::after {
+  content: '';
+  position: absolute;
+  width: 1.5vmin;
+  height: 8vmin;
+}
+
+// Left leg
+.sly-legs::before {
+  top: 4vmin;
+  left: 1.2vmin;
+  background-color: black;
+  border-radius: 0 0 5% 70%;
+  transform: rotate(-7deg) scaleX(-1);
+}
+
+// Right leg
+.sly-legs::after {
+  top: 4vmin;
+  left: 3.5vmin;
+  background-color: black;
+  border-radius: 0 0 5% 70%;
+  transform: rotate(-2deg) scaleX(-1);
+}
