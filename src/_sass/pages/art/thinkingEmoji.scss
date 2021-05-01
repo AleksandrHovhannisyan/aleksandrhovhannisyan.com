@@ -6,15 +6,14 @@
   --eye-color: black;
   --mouth-color: black;
 
-  width: 50vmin;
-  height: 50vmin;
+  width: 25vmin;
+  height: 25vmin;
   border-radius: 50%;
   background-color: var(--face-color);
-  border: solid 3vmin var(--face-border-color);
+  border: solid 1.5vmin var(--face-border-color);
   position: relative;
   display: flex;
   justify-content: center;
-  transform: scale(0.5);
 }
 
 .thinking-emoji-eyes {
@@ -26,15 +25,15 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 0 11vmin;
+  padding: 0 5.5vmin;
 }
 
 .thinking-emoji-eye {
   background-color: black;
-  border-radius: 3vmin;
+  border-radius: 1.5vmin;
   position: relative;
-  width: 5vmin;
-  height: 8vmin;
+  width: 2.5vmin;
+  height: 4vmin;
 
   &::before {
     content: '';
@@ -42,44 +41,44 @@
   }
 
   &.left {
-    width: 5vmin;
-    height: 8vmin;
+    width: 2.5vmin;
+    height: 4vmin;
   }
 
   &.right {
-    width: 8vmin;
-    height: 5vmin;
+    width: 4vmin;
+    height: 2.5vmin;
   }
 }
 
 .thinking-emoji-eyebrow {
-  width: 20vmin;
-  height: 20vmin;
+  width: 10vmin;
+  height: 10vmin;
   background-color: transparent;
   align-self: flex-end;
-  margin-bottom: 0vmin;
+  margin-bottom: 0;
   border-radius: 46%;
-  border: 3vmin solid transparent;
-  border-bottom: 3vmin solid var(--eyebrow-color);
+  border: 1.5vmin solid transparent;
+  border-bottom: 1.5vmin solid var(--eyebrow-color);
   position: absolute;
 
   &::before,
   &::after {
     content: '';
-    width: 3vmin;
-    height: 3vmin;
+    width: 1.5vmin;
+    height: 1.5vmin;
     border-radius: 50%;
     position: absolute;
-    bottom: -1vmin;
+    bottom: -0.5vmin;
     background-color: var(--eyebrow-color);
   }
 
   &::before {
-    left: -0.5vmin;
+    left: -0.25vmin;
   }
 
   &::after {
-    right: -0.5vmin;
+    right: -0.25vmin;
   }
 
   &.left {
@@ -92,26 +91,26 @@
 }
 
 .thinking-emoji-mouth {
-  width: 30vmin;
-  height: 30vmin;
+  width: 15vmin;
+  height: 15vmin;
   background-color: transparent;
   align-self: flex-end;
-  margin-bottom: 9vmin;
+  margin-bottom: 4.5vmin;
   border-bottom-left-radius: 50%;
   border-bottom-right-radius: 50%;
-  border: 3vmin solid transparent;
-  border-bottom: 3vmin solid var(--mouth-color);
+  border: 1.5vmin solid transparent;
+  border-bottom: 1.5vmin solid var(--mouth-color);
   position: relative;
   transform: rotate(145deg) translate(20%, -60%);
 
   &::before {
     content: '';
-    width: 6vmin;
-    height: 3vmin;
+    width: 3vmin;
+    height: 1.5vmin;
     border-radius: 40%;
     position: absolute;
-    bottom: 0.9vmin;
-    left: -0.5vmin;
+    bottom: 0.45vmin;
+    left: -0.25vmin;
     background-color: var(--mouth-color);
     transform: rotate(40deg);
   }
@@ -119,14 +118,14 @@
 
 .thinking-emoji-hand {
   position: absolute;
-  width: 15vmin;
-  height: 13vmin;
+  width: 7.5vmin;
+  height: 6.5vmin;
   background-color: var(--hand-color);
-  border-radius: 2vmin;
+  border-radius: 1vmin;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  bottom: 2vmin;
-  left: 3vmin;
+  bottom: 1vmin;
+  left: 1.5vmin;
 
   &::before,
   &::after {
@@ -137,16 +136,16 @@
   }
 
   &::before {
-    height: 6vmin;
-    width: 5vmin;
+    height: 3vmin;
+    width: 2.5vmin;
     left: 0;
-    top: -4vmin;
+    top: -2vmin;
   }
 
   &::after {
-    width: 15vmin;
-    height: 5vmin;
-    right: -10vmin;
+    width: 7.5vmin;
+    height: 2.5vmin;
+    right: -5vmin;
     top: 0;
     border-radius: 40%;
   }
@@ -155,10 +154,10 @@
 .thinking-emoji-hand-outline {
   z-index: -1;
   background-color: var(--face-border-color);
-  width: 15vmin;
-  height: 13vmin;
+  width: 7.5vmin;
+  height: 6.5vmin;
   position: absolute;
-  border-radius: 2vmin;
-  bottom: -0.5vmin;
-  left: 0.5vmin;
+  border-radius: 1vmin;
+  bottom: -0.25vmin;
+  left: 0.25vmin;
 }

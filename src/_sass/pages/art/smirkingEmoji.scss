@@ -5,15 +5,14 @@
   --eye-color: black;
   --mouth-color: black;
 
-  width: 50vmin;
-  height: 50vmin;
+  width: 25vmin;
+  height: 25vmin;
   border-radius: 50%;
   background-color: var(--face-color);
-  border: solid 3vmin var(--face-border-color);
+  border: solid 1.5vmin var(--face-border-color);
   position: relative;
   display: flex;
   justify-content: center;
-  transform: scale(0.5);
 }
 
 .smirking-emoji-eyes {
@@ -25,108 +24,108 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 0 11vmin;
+  padding: 0 5.5vmin;
 }
 
 .smirking-emoji-eye {
   background-color: black;
-  border-radius: 3vmin;
+  border-radius: 1.5vmin;
   position: relative;
-  width: 5vmin;
-  height: 8vmin;
-  top: 4vmin;
-  left: 2vmin;
+  width: 2.5vmin;
+  height: 4vmin;
+  top: 2vmin;
+  left: 1vmin;
   border-top-left-radius: 0;
 
   &::before {
     content: '';
     position: absolute;
-    width: 6vmin;
-    height: 8vmin;
-    border: 2vmin solid transparent;
-    border-top: 2vmin solid var(--eye-color);
-    border-left: 2vmin solid var(--eye-color);
-    left: -5.8vmin;
-    top: -2.2vmin;
+    width: 3vmin;
+    height: 4vmin;
+    border: 1vmin solid transparent;
+    border-top: 1vmin solid var(--eye-color);
+    border-left: 1vmin solid var(--eye-color);
+    left: -2.9vmin;
+    top: -1.1vmin;
     border-radius: 50%;
     transform: rotate(45deg);
   }
 }
 
 .smirking-emoji-eyebrow {
-  width: 18vmin;
-  height: 13vmin;
+  width: 9vmin;
+  height: 6.5vmin;
   background-color: transparent;
   align-self: flex-end;
-  margin-bottom: 9vmin;
+  margin-bottom: 4.5vmin;
   border-radius: 46%;
-  border: 3vmin solid transparent;
-  border-bottom: 3vmin solid var(--eyebrow-color);
+  border: 1.5vmin solid transparent;
+  border-bottom: 1.5vmin solid var(--eyebrow-color);
   position: absolute;
   transform: scaleY(-1);
 
   &::before,
   &::after {
     content: '';
-    width: 3vmin;
-    height: 3vmin;
+    width: 1.5vmin;
+    height: 1.5vmin;
     border-radius: 50%;
     position: absolute;
-    bottom: -1.2vmin;
+    bottom: -0.6vmin;
     background-color: var(--eyebrow-color);
   }
 
   &::before {
-    left: -1.6vmin;
+    left: -0.8vmin;
   }
 
   &::after {
-    right: -1.6vmin;
+    right: -0.8vmin;
   }
 
   &.left {
     transform: rotate(150deg);
-    top: -8vmin;
-    left: 5vmin;
+    top: -4vmin;
+    left: 2.5vmin;
   }
 
   &.right {
     transform: rotate(210deg);
-    right: 5vmin;
-    top: -8vmin;
+    right: 2.5vmin;
+    top: -4vmin;
   }
 }
 
 .smirking-emoji-mouth {
-  width: 18vmin;
-  height: 10vmin;
+  width: 9vmin;
+  height: 5vmin;
   background-color: transparent;
   align-self: flex-end;
   border-bottom-right-radius: 100%;
-  border-bottom: 3vmin solid var(--mouth-color);
-  border-right: 3vmin solid var(--mouth-color);
+  border-bottom: 1.5vmin solid var(--mouth-color);
+  border-right: 1.5vmin solid var(--mouth-color);
   position: relative;
-  bottom: 5vmin;
-  left: 4vmin;
+  bottom: 2.5vmin;
+  left: 2vmin;
   transform: rotate(5deg);
 
   &::before,
   &::after {
     content: '';
-    width: 3vmin;
-    height: 3vmin;
+    width: 1.5vmin;
+    height: 1.5vmin;
     border-radius: 50%;
     position: absolute;
     background-color: var(--mouth-color);
   }
 
   &::before {
-    left: -1.5vmin;
-    top: 7vmin;
+    left: -0.75vmin;
+    top: 3.5vmin;
   }
 
   &::after {
-    right: -2.9vmin;
-    top: -1.8vmin;
+    right: -1.45vmin;
+    top: -0.9vmin;
   }
 }
