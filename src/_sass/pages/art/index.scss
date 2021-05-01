@@ -15,16 +15,16 @@
     position: relative;
     @include font-family('cursive-title');
 
-    @keyframes subtitle-pulse {
-      from {
-        transform: scale(1);
-      }
-      to {
-        transform: scale(1.1);
-      }
-    }
-
     &::after {
+      @keyframes subtitle-pulse {
+        from {
+          transform: scale(1);
+        }
+        to {
+          transform: scale(1.1);
+        }
+      }
+
       content: 'Best viewed in Chrome!';
       text-shadow: none;
       vertical-align: top;
@@ -33,6 +33,7 @@
       bottom: -2em;
       left: 0;
       animation: subtitle-pulse 1s ease infinite alternate-reverse;
+      will-change: transform;
       @include font-size(1);
       @include font-weight('regular');
       @include font-family('cursive-body');
@@ -81,9 +82,11 @@
     @keyframes popin {
       0% {
         transform: scale(0);
+        opacity: 0;
       }
       60% {
         transform: scale(1.1);
+        opacity: 0.6;
       }
     }
 
@@ -96,6 +99,8 @@
     max-width: 30ch;
     line-height: 1.2;
     font-size: 2.4rem;
+    will-change: transform, opacity;
+    @include transition('opacity', 'transform');
     @include font-family('cursive-body');
   }
 
@@ -104,6 +109,7 @@
     &::after {
       animation: popin 0.3s ease-in;
       transform: scale(1);
+      opacity: 1;
     }
   }
 }
