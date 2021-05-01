@@ -373,7 +373,6 @@ Either way, you'll want to add these keys to your JSON:
     "typescript",
     "typescriptreact",
   ],
-  "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
   },
@@ -383,31 +382,12 @@ Either way, you'll want to add these keys to your JSON:
 Here's how it works:
 
 - `eslint.validate` tells the ESLint extension which languages it should check.
-- `editor.formatOnSave` enables formatting in VS Code whenever you save a file.
 - `editor.codeActionsOnSave` is like a hook into VS Code's save event.
 - `source.fixAll.eslint` says to fix any issues in the file being saved.
 
-You can remove any languages you don't want ESLint to check from the validation list. If you'd like to, you can also remove `editor.formatOnSave` and tell VS Code what to do for each language:
+You can remove any languages you don't want ESLint to check from the validation list.
 
-{% include codeHeader.html %}
-```json
-{
-  "[javascript]": {
-    "editor.formatOnSave": true,
-  },
-  "[javascriptreact]": {
-    "editor.formatOnSave": true,
-  },
-  "[typescript]": {
-    "editor.formatOnSave": true,
-  },
-  "[typescriptreact]": {
-    "editor.formatOnSave": true
-  },
-}
-```
-
-Either way, to make sure these settings kick in for your project, you'll want to:
+To make sure these settings kick in for your project, you'll want to:
 
 1. Open a JavaScript or TypeScript file (doesn't matter which).
 2. Open your VS Code command palette.
