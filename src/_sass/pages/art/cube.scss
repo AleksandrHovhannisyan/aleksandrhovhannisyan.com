@@ -1,3 +1,7 @@
+#cube {
+  row-gap: 3.2rem;
+}
+
 .cube {
   --cube-size: 9vw;
   --cube-border-thickness: calc(var(--cube-size) / 100);
