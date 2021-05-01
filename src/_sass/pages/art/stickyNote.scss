@@ -40,6 +40,6 @@
 .sticky-note-description {
   color: var(--color-black);
   margin: 0;
-  @include font-family('cursive');
+  @include font-family('cursive-body');
   @include font-size(2);
 }

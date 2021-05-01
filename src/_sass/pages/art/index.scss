@@ -20,17 +20,52 @@
 
   .title {
     font-size: 4.8rem;
-    font-family: Rock Salt, unquote(map-get($font-families, 'cursive'));
-    text-shadow: 0.4rem 0.4rem black;
-    margin-bottom: 1.6rem;
     line-height: 1.8;
-  }
+    text-shadow: 0.4rem 0.4rem black;
+    max-width: fit-content;
+    margin: 0 auto 1.6rem auto;
+    position: relative;
+    @include font-family('cursive-title');
 
-  .subtitle {
-    max-width: 50ch;
-    margin: 0 auto;
-    @include font-family('cursive');
-    @include font-size(4);
+    @keyframes subtitle-pulse {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(1.1);
+      }
+    }
+
+    &::after {
+      content: 'Best viewed in Chrome!';
+      text-shadow: none;
+      vertical-align: top;
+      position: absolute;
+      right: 0;
+      bottom: -2em;
+      left: 0;
+      animation: subtitle-pulse 1s ease infinite alternate-reverse;
+      @include font-size(1);
+      @include font-weight('regular');
+      @include font-family('cursive-body');
+
+      @include mobile-lg {
+        @keyframes subtitle-pulse {
+          from {
+            transform: rotate(2deg) scale(1);
+          }
+          to {
+            transform: rotate(2deg) scale(1.1);
+          }
+        }
+
+        left: unset;
+        bottom: unset;
+        top: -0.8rem;
+        right: -10rem;
+        transform: rotate(2deg);
+      }
+    }
   }
 }
 
@@ -52,4 +87,35 @@
   display: grid;
   place-items: center;
   grid-template-columns: minmax(0, 1fr);
+  position: relative;
+
+  &::after {
+    @keyframes popin {
+      0% {
+        transform: scale(0);
+      }
+      60% {
+        transform: scale(1.1);
+      }
+    }
+
+    content: attr(aria-label);
+    transform: scale(0);
+    display: block;
+    position: absolute;
+    bottom: 0.25vw;
+    text-align: center;
+    max-width: 30ch;
+    line-height: 1.2;
+    font-size: 2.4rem;
+    @include font-family('cursive-body');
+  }
+
+  &:hover,
+  &:focus-within {
+    &::after {
+      animation: popin 0.3s ease-in;
+      transform: scale(1);
+    }
+  }
 }
