@@ -14,6 +14,7 @@
     "indentation": 2
   },
   "ignoreFiles": [
-    "**/*main.scss"
+    "./src/assets/styles/main.scss",
+    "./src/assets/styles/art.scss"
   ]
 }

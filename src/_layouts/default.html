@@ -47,6 +47,9 @@
   {%- for stylesheet in layout.stylesheets -%}
     <link rel="stylesheet" href="{{ stylesheet.href }}">
   {%- endfor -%}
+  {%- for stylesheet in page.stylesheets -%}
+    <link rel="stylesheet" href="{{ stylesheet.href }}">
+  {%- endfor -%}
   <!-- Favicons -->
   <link rel="icon" href="/assets/images/favicons/favicon-32.png" sizes="32x32">
   <link rel="icon" href="/assets/images/favicons/favicon-57.png" sizes="57x57">
