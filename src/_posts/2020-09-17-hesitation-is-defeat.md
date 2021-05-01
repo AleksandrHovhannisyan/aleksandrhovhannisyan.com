@@ -36,7 +36,7 @@ When patience runs dry, you accept your defeat and walk away. And sometimes, all
 
 ## Nothing Is Truly Impossible
 
-> *"This... will only take a moment"* —Wolf to Lord Kuro
+> *"...One last time."* —Wolf to Genichiro
 
 In my case, that break lasted roughly a year.
 
