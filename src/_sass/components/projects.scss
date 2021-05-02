@@ -75,13 +75,12 @@
 .project-technologies {
   display: flex;
   flex-wrap: wrap;
+  gap: 0.8rem;
   list-style: none;
 }
 
 .project-technology {
   border-radius: 0.2rem;
-  margin-top: 0.8rem;
-  margin-right: 0.8rem;
   padding: 0.4rem 1.2rem;
   @include font-size(-2);
 }

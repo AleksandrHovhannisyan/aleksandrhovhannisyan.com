@@ -4,7 +4,7 @@ is_blog_page: true
 ---
 
 {%- assign pagePath = paginator["page_path"] | remove: 'index.html' -%}
-<section class="section blog-post-previews">
+<article class="section blog-page">
   {%- if page.autopages -%}
     {%- assign pageTag = page.autopages.display_name -%}
   {% else %}
@@ -16,32 +16,34 @@ is_blog_page: true
     {%- assign capitalizedWord = word | capitalize | append: ' ' -%}
     {%- assign blogType = blogType | append: capitalizedWord -%}
   {%- endfor -%}
-  <h1 class="blog-page-title">{{ blogType }}Blog Posts</h1>
-  <p class="blog-page-description">
-    {%- if site.data.tags[pageTag] -%}
-      {{- site.data.tags[pageTag] -}}
-    {% else %}
-      {{- site.data.tags["all"] -}}
-    {%- endif -%}
-  </p>
-  <nav aria-label="Popular tags">
-    <ul class="navigation-tags">
-      {%- assign tags = "all,accessibility,css,webperf,off-topic" | split: ',' -%}
-      {%- for tag in tags %}
-        {%- assign tagDescription = site.data.tags[tag][1] -%}
-        <li>
-          <a
-            href="{% if tag == "all" %}/blog/{% else %}/tag/{{ tag }}{% endif %}"
-            class="tag post-tag navigation-tag{% if pageTag == tag %} active{% endif %}"
-            title="{% if pageTag != tag %}View{% endif %} {% if tag == "all" %}all posts{% else %}posts tagged as {{ tag }}{% endif %}"
-            {%- if pageTag == tag -%}aria-current="page"{%- endif -%}
-          >
-            {{- tag -}}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </nav>
+  <header class="blog-page-header">
+    <h1 class="blog-page-title">{{ blogType }}Blog Posts</h1>
+    <p class="blog-page-description">
+      {%- if site.data.tags[pageTag] -%}
+        {{- site.data.tags[pageTag] -}}
+      {% else %}
+        {{- site.data.tags["all"] -}}
+      {%- endif -%}
+    </p>
+    <nav aria-label="Popular tags">
+      <ul class="navigation-tags">
+        {%- assign tags = "all,accessibility,css,webperf,off-topic" | split: ',' -%}
+        {%- for tag in tags %}
+          {%- assign tagDescription = site.data.tags[tag][1] -%}
+          <li>
+            <a
+              href="{% if tag == "all" %}/blog/{% else %}/tag/{{ tag }}{% endif %}"
+              class="tag post-tag navigation-tag{% if pageTag == tag %} active{% endif %}"
+              title="{% if pageTag != tag %}View{% endif %} {% if tag == "all" %}all posts{% else %}posts tagged as {{ tag }}{% endif %}"
+              {%- if pageTag == tag -%}aria-current="page"{%- endif -%}
+            >
+              {{- tag -}}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </header>
   <ol class="post-preview-grid">
     {{- content -}}
   </ol>
@@ -64,4 +66,4 @@ is_blog_page: true
     {%- endfor -%}
   </ol>
   {%- endif -%}
-</section>
+</article>

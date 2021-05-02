@@ -1,5 +1,9 @@
 @import 'mixins';
 
+.blog-page-header {
+  margin-bottom: 7.6rem;
+}
+
 .blog-page-title {
   margin-bottom: 1.6rem;
 }
@@ -11,6 +15,7 @@
 .navigation-tags {
   align-items: center;
   display: flex;
+  gap: 1.2rem;
   flex-wrap: wrap;
   list-style: none;
 }
@@ -18,21 +23,19 @@
 .navigation-tag {
   display: flex;
   border-radius: 0.4rem;
-  margin-bottom: 1.2rem;
-  margin-right: 1.2rem;
   padding: 0.6rem 1.6rem;
 }
 
 .pagination-trail {
-  margin-top: 3.2rem;
+  margin-top: 4.8rem;
   display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
   justify-content: flex-end;
   list-style: none;
 }
 
 .pagination-page {
-  margin-bottom: 0.6rem;
-  margin-right: 1.2rem;
   padding: 0.6rem 1.2rem;
   border-radius: 0.4rem;
   @include font-size(-1);
