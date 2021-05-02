@@ -15,7 +15,8 @@
     "lint:all": "yarn lint:css && yarn lint:js",
     "lint:all:fix": "yarn lint:css:fix && yarn lint:js:fix",
     "test": "jest --config jest.config.js",
-    "test:watch": "yarn run test --watch --silent=false --verbose=true"
+    "test:watch": "yarn run test --watch --silent=false --verbose=true",
+    "update-browserslist": "npx browserslist@latest --update-db"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
