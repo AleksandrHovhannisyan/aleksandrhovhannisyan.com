@@ -91,6 +91,7 @@
     }
 
     content: attr(aria-label);
+    color: var(--text-color-emphasis);
     transform: scale(0);
     text-align: center;
     max-width: 30ch;
