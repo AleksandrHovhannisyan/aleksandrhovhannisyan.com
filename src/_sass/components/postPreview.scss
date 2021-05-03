@@ -1,13 +1,12 @@
 .post-preview-grid {
   margin-top: 6.4rem;
   display: grid;
-  grid-row-gap: 8rem;
+  grid-row-gap: 6.4rem;
 }
 
 .post-preview {
   list-style: none;
   display: grid;
-  row-gap: 1.6rem;
   grid-template-areas:
     'thumbnail'
     'title'
@@ -21,6 +20,7 @@
 
 .post-preview-title {
   grid-area: title;
+  margin-bottom: 1.6rem;
   @include font-size(0);
   @include font-weight('bold');
 
@@ -32,6 +32,8 @@
 
 .post-preview-thumbnail-container {
   position: relative;
+  margin-right: 0;
+  margin-bottom: 1.6rem;
   grid-area: thumbnail;
   height: 0;
   // 16:9 aspect ratio
@@ -75,10 +77,13 @@
   .post-preview-thumbnail-container {
     height: unset;
     padding-bottom: 0;
+    margin: 0 0 1.6rem 0;
     width: 20rem;
   }
 
   .post-preview-description {
+    margin-bottom: 1.6rem;
+
     @include line-clamp(2);
   }
 }
