@@ -8,6 +8,6 @@ export default function lazyLoad(targets, onIntersection, Observer = Intersectio
     });
   });
 
-  document.querySelectorAll(targets).forEach((target) => observer.observe(target));
+  targets.forEach((target) => observer.observe(target));
   return observer;
 }

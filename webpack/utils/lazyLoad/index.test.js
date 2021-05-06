@@ -1,5 +1,6 @@
 import lazyLoad from '.';
 
+let targets;
 let entries;
 let observeFn;
 let unobserveFn;
@@ -18,7 +19,7 @@ class MockObserver {
 }
 
 beforeEach(() => {
-  document.body.innerHTML = '';
+  targets = [];
   entries = [];
   observeFn = jest.fn();
   unobserveFn = jest.fn();
@@ -29,10 +30,10 @@ describe('lazyLoad utility', () => {
     for (let i = 0; i < 3; i++) {
       const target = document.createElement('img');
       target.className = 'lazy-img';
-      document.body.appendChild(target);
+      targets.push(target);
     }
 
-    lazyLoad('.lazy-img', jest.fn(), MockObserver);
+    lazyLoad(targets, jest.fn(), MockObserver);
     expect(observeFn).toHaveBeenCalledTimes(3);
   });
 
@@ -49,9 +50,9 @@ describe('lazyLoad utility', () => {
     img3.id = 'img3';
     img3.className = '.lazy-img';
 
-    document.body.appendChild(img1);
-    document.body.appendChild(img2);
-    document.body.appendChild(img3);
+    targets.push(img1);
+    targets.push(img2);
+    targets.push(img3);
 
     entries = [
       {
@@ -69,7 +70,7 @@ describe('lazyLoad utility', () => {
     ];
 
     const onIntersection = jest.fn();
-    lazyLoad('.lazy-img', onIntersection, MockObserver);
+    lazyLoad(targets, onIntersection, MockObserver);
     expect(onIntersection).toHaveBeenCalledTimes(2);
     expect(onIntersection).toHaveBeenCalledWith(img2);
     expect(onIntersection).toHaveBeenCalledWith(img3);
