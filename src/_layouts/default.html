@@ -8,7 +8,7 @@
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-regular.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-500.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-700.woff2" crossorigin>
-  <link rel="modulepreload" as="script" type="text/javascript" href="/assets/scripts/bundle.js">
+  <link rel="modulepreload" as="script" type="text/javascript" href="/assets/scripts/main.bundle.js">
   {%- if layout.preloads -%}
     {% for preload in layout.preloads %}
       <link rel="preload" as="{{ preload.as }}" type="{{ preload.type }}" href="{{ preload.href }}" {% if preload.crossorigin %}crossorigin{% endif %}>
@@ -91,6 +91,6 @@
       <span aria-hidden="true">&copy;</span> Copyright {{ site.author }}, 2019–Present
     </div>
   </footer>
-  <script type="module" src="/assets/scripts/bundle.js"></script>
+  <script type="module" src="/assets/scripts/main.bundle.js"></script>
 </body>
 </html>

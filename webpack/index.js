@@ -1,5 +1,5 @@
-import { Navbar, ThemeToggle } from 'components';
-import { lazyLoad, copyToClipboard } from 'utils';
+import { Navbar, ThemeToggle } from '@components';
+import { lazyLoad, copyToClipboard } from '@utils';
 
 // eslint-disable-next-line no-unused-vars
 const navbar = new Navbar();

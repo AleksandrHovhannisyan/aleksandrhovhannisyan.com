@@ -4,8 +4,9 @@
       "target": "es6",
       "baseUrl": "./webpack/",
       "paths": {
-        "@components": ["./webpack/components"],
-        "@utils": ["./webpack/utils"]
+        "@components": ["components/index.js"],
+        "@utils": ["utils/index.js"]
       }
-    }
-}
+    },
+    "exclude": ["_site", "node_modules"]
+  }

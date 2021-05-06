@@ -3,29 +3,31 @@ const path = require('path');
 module.exports = {
   resolve: {
     alias: {
-      components: path.resolve(__dirname, 'webpack/components'),
-      utils: path.resolve(__dirname, 'webpack/utils'),
+      '@components': path.resolve(__dirname, 'webpack/components'),
+      '@utils': path.resolve(__dirname, 'webpack/utils'),
     },
   },
-  entry: './webpack/index.js',
+  entry: {
+    main: path.resolve(__dirname, 'webpack/index.js'),
+  },
   output: {
     path: path.resolve(__dirname, 'src/assets/scripts/'),
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
   },
   module: {
     rules: [
       {
         test: /.js$/,
-        exclude: [path.resolve(__dirname, 'node_modules')],
+        exclude: path.resolve(__dirname, 'node_modules'),
         loader: 'babel-loader',
         query: {
           presets: [
             [
               '@babel/preset-env',
               {
-                "bugfixes": true
-              }
-            ]
+                bugfixes: true,
+              },
+            ],
           ],
           plugins: ['@babel/plugin-proposal-nullish-coalescing-operator'],
         },
