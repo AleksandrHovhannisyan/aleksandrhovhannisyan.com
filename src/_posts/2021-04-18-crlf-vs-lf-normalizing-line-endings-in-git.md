@@ -15,7 +15,7 @@ History can be boring, though, so if you stumbled upon this post after hours of 
 
 {% include toc.md %}
 
-### CRLF vs. LF: What Are Line Endings, Anyway?
+## CRLF vs. LF: What Are Line Endings, Anyway?
 
 To *really* understand the problem of CRLF vs. LF line endings, we need to brush up on a bit of typesetting history.
 
@@ -25,11 +25,11 @@ Interestingly, the ASCII standard isn't just for *visible* characters like lette
 
 `LF` and `CR` are two such control characters, and they're both related to line endings in files. Their history dates back to the era of the typewriter, so we'll briefly look at how that works so you understand why we have two different control characters rather than just one. Then, we'll look at how this affects the typical developer experience on a multi-OS codebase.
 
-#### `LF`: Line Feed
+### `LF`: Line Feed
 
 **LF** stands for "line feed," but you're probably more familiar with the term **newline** (the escape sequence `\n`). Simply put, this character represents the end of a line of text. On Linux and Mac, this is equivalent to the start of a new line of text. That distinction is important because Windows does not follow this convention. We'll talk about why once we learn about carriage returns.
 
-#### `CR`: Carriage Return
+### `CR`: Carriage Return
 
 **CR** (the escape sequence `\r`) stands for **carriage return**, which moves the cursor to the start of the current line. You might be wondering: Where did the need for such a character originate? Good question!
 
@@ -48,7 +48,7 @@ Of course, once you run out of space on the current line, you'll need to go down
 
 This is all good and well, but you're probably wondering how this is relevant in the world of computers, where carriages, levers, and all these contraptions seem obsolete. We're getting there!
 
-### Teletypewriters and the Birth of `CRLF`
+## Teletypewriters and the Birth of `CRLF`
 
 Moving on to the early 20th century, we arrive at the **teletypewriter**, yet another device predating the modern computer. Basically, it works exactly the same way that a typewriter does, except instead of printing to a physical sheet of paper, it sends your message to a receiving party via a transmitter, either over a physical wire or radio waves.
 
@@ -78,7 +78,7 @@ While we learned that `CRLF` may be redundant for newlines and that you could ge
 
 As you can probably guess, the lack of a universal line ending presents a dilemma for software like git, which relies on very precise character comparisons to determine if a file has changed since the last time it was checked in. If one developer uses Windows and another uses Mac or Linux, and they each save and commit the same files, they may see line ending changes in their git diffs—a conversion from `CRLF` to `LF` or vice versa. This leads to unnecessary noise due to single-character changes and can be quite annoying.
 
-## Configuring Line Endings in Git with `core.autocrlf`
+### Configuring Line Endings in Git with `core.autocrlf`
 
 You can tell git how you'd like it to handle line endings on your system with the `core.autocrlf` configuration. This is done with the following command:
 
@@ -90,7 +90,7 @@ Note that a value of `false` turns off any line ending conversions, which is usu
 
 That leaves us with just two options: `autocrlf true` and `autocrlf input`. What's the difference between these two?
 
-### `autocrlf true`
+#### `autocrlf true`
 
 With `autocrlf true`, files will be checked out as `CRLF` locally with git, but whenever you commit files, all instances of `CRLF` will be replaced with `LF`. Basically, this setting ensures that your codebase always uses `LF` in the final version of all files but `CRLF` locally when checked out. This is the recommended setting for Windows developers since `CRLF` is the native line ending for Windows.
 
@@ -103,7 +103,7 @@ The file will have its original line endings in your working directory
 
 This doesn't mean that something went wrong, so there's no need to panick. Git is just warning you that your `CRLF` line endings will be normalized to `LF` on commit, per this setting's intended behavior.
 
-### `autocrlf input`
+#### `autocrlf input`
 
 With `autocrlf input`, files are converted to `LF` when they get committed, but they are not converted to anything when checked out. Hence the name "input"—you get what you originally put in. If a file was originally committed as `CRLF` on accident by a Windows developer, you'll see it as `CRLF` locally (and if you modify it, you'll force it back to `LF`). If a file was originally added as `LF`, you'll see it as such. This is usually a good thing because it means that you'll always get `LF` line endings in your codebase (assuming you use this from the get-go).
 
@@ -150,7 +150,7 @@ git add --renormalize .
 
 This reformats all your files according to the rules defined in your `.gitattributes` config. If any files were originally in `CRLF` and were converted to `LF` as a result of this renormalization, they'll be updated and staged for a commit. The only thing left to do is to commit those changes and push them to your repo. From that point onward, anytime a new file is introduced, its line endings will be forcibly set to `LF`.
 
-## `.gitattributes` Template Starters
+### `.gitattributes` Template Starters
 
 If you're looking for a list of common `.gitattributes` templates, there's [a GitHub repo](https://github.com/alexkaratarakis/gitattributes) with a bunch of examples for popular languages. Note that you can use a `.gitattributes` file to specify more than just line endings. For example, you can specify what language git should use when performing a diff on a particular type of file (e.g., `c` vs `cpp`).
 
