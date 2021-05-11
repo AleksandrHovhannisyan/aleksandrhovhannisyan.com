@@ -3,6 +3,7 @@ title: How to Format Code on Save in VS Code with ESlint
 description: Improve your developer experience by setting up ESLint and configuring VS Code to format code on save for JavaScript, TypeScript, and React projects.
 keywords: [format code on save, auto-format code on save, auto-formatting code, eslint, vs code, prettier]
 tags: [dev, eslint, vscode, javascript]
+comments_id: 80
 ---
 
 I've read my fair share of StackOverflow posts, GitHub issues, and Reddit threads on what you'd think would be a simple task: how to format code with ESLint (in VS Code). Eventually, I happen upon an answer that actually works, copy-paste the code, and move on with my life... That is, until I need to start a new project, when the whole cycle begins anew.

@@ -5,6 +5,7 @@ keywords: [tailwind css, tailwind, don't like tailwind]
 tags: [dev, css, tailwind, frameworks]
 canonical_url: https://www.aleksandrhovhannisyan.com/blog/why-i-dont-like-tailwind-css/
 last_updated: 2021-03-12
+comments_id: 77
 ---
 
 <aside>
