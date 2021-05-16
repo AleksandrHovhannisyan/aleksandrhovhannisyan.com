@@ -5,8 +5,9 @@
   "repository": "git@github.com:AleksandrHovhannisyan/aleksandrhovhannisyan.com.git",
   "author": "AleksandrHovhannisyan <aleksandrhovhannisyan@gmail.com>",
   "scripts": {
-    "dev": "concurrently \"yarn run webpack --watch --mode=development\" \"JEKYLL_ENV=development bundle exec jekyll serve --livereload --port=4001\"",
-    "dev:prod": "concurrently \"yarn run webpack --watch --mode=production\" \"JEKYLL_ENV=production bundle exec jekyll serve --livereload --port=4001\"",
+    "clean:jekyll": "rm -rf _site src/.jekyll-cache",
+    "dev": "yarn clean:jekyll && concurrently \"yarn run webpack --watch --mode=development\" \"JEKYLL_ENV=development bundle exec jekyll serve --livereload --port=4001\"",
+    "dev:prod": "yarn clean:jekyll && concurrently \"yarn run webpack --watch --mode=production\" \"JEKYLL_ENV=production bundle exec jekyll serve --livereload --port=4001\"",
     "build": "yarn test && yarn run webpack --mode=production && JEKYLL_ENV=production bundle exec jekyll build",
     "lint:css": "stylelint \"src/_sass/**/*.scss\"",
     "lint:css:fix": "stylelint --fix \"src/_sass/**/*.scss\"",
