@@ -96,6 +96,9 @@ pagination:
   # Internally this is set to html by default
   extension: html
 
+collections:
+  - art
+
 defaults:
   - scope:
       path: _pages
