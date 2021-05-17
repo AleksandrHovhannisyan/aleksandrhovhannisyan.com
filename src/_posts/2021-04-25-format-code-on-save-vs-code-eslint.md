@@ -154,11 +154,9 @@ Since we're using Prettier to supplement ESLint's formatting rules, we'll need t
 }
 ```
 
-You can find an [exhaustive list of Prettier options](https://prettier.io/docs/en/options.html) in their docs.
+You can find an [exhaustive list of Prettier options](https://prettier.io/docs/en/options.html) in their docs. Note that you can also specify these Prettier rules in your ESLint `rules` section, but [the plugin maintainers do not recommend doing this](https://www.npmjs.com/package/eslint-plugin-prettier) (see the section on `Options`).
 
 With that out of the way, let's now look at how to configure ESLint for different types of projects. This assumes that you've already installed the correct plugins and formatters as instructed in an earlier section.
-
-Finally, note that you can also specify these Prettier rules in your ESLint `rules` section, but [the plugin maintainers do not recommend doing this](https://www.npmjs.com/package/eslint-plugin-prettier) (see the section on `Options`).
 
 ##### JavaScript (or Node) ESLint Config
 
@@ -309,7 +307,7 @@ One important change needs to be made to the `parserOptions` object: We'll need 
 }
 ```
 
-I've turned off the `react-in-jsx-scope` rule, as it tends to be annoying if you're using React 17+ (where you [don't have to explicitly import React](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-a-jsx-transform)). If you're working with a lower version number, you'll want to turn off this rule and import React anytime you need to render JSX.
+I've disabled the `react-in-jsx-scope` rule, as it tends to be annoying if you're using React 17+ (where you [don't have to explicitly import React](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-a-jsx-transform)). If you're working with a lower version number, you'll want to enable this rule and import React anytime you need to render JSX.
 
 #### 3. Configure VS Code to Auto-Format Code on Save
 
