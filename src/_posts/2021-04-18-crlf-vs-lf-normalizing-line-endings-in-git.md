@@ -102,7 +102,7 @@ warning: CRLF will be replaced by LF in <file-name>.
 The file will have its original line endings in your working directory
 ```
 
-This doesn't mean that something went wrong, so there's no need to panick. Git is just warning you that your `CRLF` line endings will be normalized to `LF` on commit, per this setting's intended behavior.
+This doesn't mean that something went wrong, so there's no need to panic. Git is just warning you that your `CRLF` line endings will be normalized to `LF` on commit, per this setting's intended behavior.
 
 #### `autocrlf input`
 
