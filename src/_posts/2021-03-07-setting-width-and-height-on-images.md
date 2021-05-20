@@ -260,8 +260,4 @@ While you're at it, I also recommend giving these articles a read:
 - Web.dev: [Optimize Cumulative Layout Shift](https://web.dev/optimize-cls/)
 - Web.dev: [Displays images with incorrect aspect ratio](https://web.dev/image-aspect-ratio/#check-the-image's-width-and-height-attributes-in-the-html)
 
-{:.no_toc}
-## Attributions
-
-The photo used in this post's social media preview was taken by [Rumman Amin](https://unsplash.com/@rumanamin) ([Unsplash](https://unsplash.com/photos/5zoLQUZaWgA)).
-
+{% include unsplashAttribution.md name="Rumman Amin" username="rumanamin" photo_id="5zoLQUZaWgA" %}

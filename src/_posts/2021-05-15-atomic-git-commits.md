@@ -105,8 +105,4 @@ And that's really all there is to say about this. Some teams enforce other conve
 
 Writing atomic Git commits can seem annoying at first—it slows you down and forces you to split your work into smaller pieces. And it also requires that you write meaningful, descriptive commit messages. But while this may seem inconvenient at first, it can actually improve the quality of your work and make life easier for you and other developers on your team.
 
-{:.no_toc}
-## Attributions
-
-The photo used in this post's social media preview was taken by [Gabriella Clare Marino](https://unsplash.com/@gabiontheroad) ([Unsplash](https://unsplash.com/photos/j_puSkFWmPI)).
-
+{% include unsplashAttribution.md name="Gabriella Clare Marino" username="gabiontheroad" photo_id="j_puSkFWmPI" %}

@@ -159,7 +159,4 @@ If you're looking for a list of common `.gitattributes` templates, there's [a Gi
 
 That was a lot to take in, but hopefully you now have a better understanding of the whole CRLF vs. LF debate and why this causes so many problems for teams that use a mixture of Windows and other operating systems. Whereas Windows follows the original convention of a carriage return plus a line feed (`CRLF`) for line endings, operating systems like Linux and Mac use only the line feed (`LF`) character. The history of these two control characters dates back to the era of the typewriter. While this tends to cause problems with software like git, you can specify settings at the repo level with a `.gitattributes` file to normalize your line endings regardless of what operating systems your developers are using.
 
-{:.no_toc}
-## Attributions
-
-The photo used in this post's social media preview was taken by [Katrin Hauf](https://unsplash.com/@trine) ([Unsplash](https://unsplash.com/photos/jpkvklXwt98)).
+{% include unsplashAttribution.md name="Katrin Hauf" username="trine" photo_id="jpkvklXwt98" %}

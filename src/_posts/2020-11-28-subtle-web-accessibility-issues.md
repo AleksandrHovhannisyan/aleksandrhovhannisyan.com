@@ -119,3 +119,5 @@ Don't abuse this, though. Images that actually convey meaning—like those used 
 ## Final Thoughts
 
 So, those are just some of the accessibility issues that you may run into on the web. There are obviously more that I can't cover in a single post, but I hope this at least gives you a good starting point for making your site more accessible.
+
+{% include unsplashAttribution.md name="Joanna Kosinska" username="joannakosinska" photo_id="AYxVEG2Zywk" %}

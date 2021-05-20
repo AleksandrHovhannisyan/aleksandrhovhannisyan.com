@@ -61,7 +61,4 @@ Reading isn't like social media—it requires patience, creativity, and, most im
 
 If you enjoy reading, great! If you don't, consider whether you check any of these boxes. If you're reading for other people, or you care too much about what other people think of a book, or if you view reading as a chore, then you're going to burn yourself out and hate reading. You should treat reading as one of the many, *many* ways that you can pass time. You shouldn't ever read at the expense of doing something more important or worthwhile, but you also shouldn't completely cut reading from your life just because of a few bad experiences.
 
-{:.no_toc}
-## Attributions
-
-The photo used in this post's social media preview was uploaded to [Unsplash](https://unsplash.com/photos/XT-o5O458as) by [Ugur Akdemir](https://unsplash.com/@ugur).
+{% include unsplashAttribution.md name="Ugur Akdemir" username="ugur" photo_id="XT-o5O458as" %}

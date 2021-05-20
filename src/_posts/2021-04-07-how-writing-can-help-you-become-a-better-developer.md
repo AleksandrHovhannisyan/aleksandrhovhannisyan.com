@@ -82,6 +82,4 @@ Writing isn't something that too many developers do in their free time. You can 
 
 So, if you're a developer who's on the fence about writing in their free time, know this: You have nothing to lose (and potentially a whole lot to gain) by writing, whether for yourself or for others. It can feel a bit scary to put yourself out there, knowing that hundreds or thousands of eyes may one day read your work or visit your site. But like all things, writing is a learning process, and you'll hone your craft with time and develop your voice and confidence. Plus, you may open yourself up to new opportunities that may have previously been out of reach.
 
-## Attributions
-
-The photo used in this post's social media preview was taken by [Yannick Pulver](https://unsplash.com/@yanu) ([Unsplash](https://unsplash.com/photos/hopX_jpVtRM)).
+{% include unsplashAttribution.md name="Yannick Pulver" username="yanu" photo_id="hopX_jpVtRM" %}

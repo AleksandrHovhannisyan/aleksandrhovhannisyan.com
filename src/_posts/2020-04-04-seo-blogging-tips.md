@@ -320,3 +320,5 @@ Use Google's [Structured Data Testing Tool](https://search.google.com/structured
 So clearly, there's quite a bit involved in creating an SEO-friendly blog, and it's certainly not something you can roll out overnight. But everyone has to start somewhere! Put these best practices to use and keep an eye on your key metrics. Be wary of trying too many things at once, especially if there's chance that you may introduce breaking changes.
 
 I hope these tips help you get more traffic on your website. Good luck!
+
+{% include unsplashAttribution.md name="Stephen Dawson" username="srd844" photo_id="qwtCeJ5cLYs" %}

@@ -98,6 +98,4 @@ In some cases, you may want to instead use [render props](https://reactjs.org/do
 
 And that's all there is to it! I hope you found this mini-tutorial helpful.
 
-## Attributions
-
-The photo used in this post's social media preview was taken by [Paolo Chiabrando](https://unsplash.com/@chiabra) and uploaded to [Unsplash](https://unsplash.com/photos/do7VUvKBOsg).
+{% include unsplashAttribution.md name="Paolo Chiabrando" username="chiabra" image_id="do7VUvKBOsg" %}

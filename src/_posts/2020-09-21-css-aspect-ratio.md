@@ -437,6 +437,8 @@ I hope you found this helpful!
 - [How to set the margin or padding as percentage of height of parent container?](https://stackoverflow.com/questions/4982480/how-to-set-the-margin-or-padding-as-percentage-of-height-of-parent-container#:~:text=If%20you%20set%20an%20element's,to%20height%20instead%20of%20width.)
 - [Common CSS Flexbox Layout Patterns with Example Code](https://tobiasahlin.com/blog/common-flexbox-patterns/)
 
+{% include unsplashAttribution.md name="Rolands Zilvinskis" username="rolzay" photo_id="cPxRBHechRc" %}
+
 <style>
   .tiles {
     display: grid;

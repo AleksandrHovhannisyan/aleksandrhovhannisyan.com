@@ -85,3 +85,5 @@ const foo = async () => {
 ```
 
 This is a pretty interesting bug that you may run into, though some basic tests will probably catch it before you need to go looking for it yourself. However, in the absence of tests, unless you remember that the function is async (and that async functions return Promises), this bug could easily slip right past you.
+
+{% include unsplashAttribution.md name="STIL" username="stilclassics" photo_id="wtqe5nd5MYk" %}
