@@ -13,7 +13,7 @@ Finite state machines (FSMs) are used in lots of different situations to model c
 
 An entity may transition from one state to another, or it may remain in its current state. The arrows denote transitions. The conditions under which a transition should take place will need to be coded into the FSM itself.
 
-In this finite state machine tutorial, I'll help you understand the state design pattern by building an FSM from the ground up for a simple problem, using C++ as the primary development language. However, note that you could just as well use a different object-oriented language, like Java or Python. Let's get started!
+In this finite state machine tutorial, I'll help you understand the state design pattern by building an FSM with C++ for a simple problem. Note that you could just as well use a different programming language if you wanted to. Let's get started!
 
 {% include linkedHeading.html heading="Finite State Machine Use Case: Modeling a Lightbulb" level=2 %}
 
@@ -436,127 +436,7 @@ void Light::toggle()
 
 This is where the `enter` and `exit` methods come into play. Before we change states, we call the exit method on the previous state. Then, we set the current state to the new state and invoke the enter method. But again, since we haven't defined the behavior for these two methods, they won't really do anything; they're just here to show you that you *could* do those things if you wanted to.
 
-And we're done! This is a pretty standard finite state machine implementation, and you can easily extend this to any other object-oriented language, or even to JavaScript.
-
-{% include linkedHeading.html heading="Testing Our Code" level=2 %}
-
-I use Visual Studio whenever I work with C++, so naturally, I'm also going to use the [Microsoft Unit Testing Framework for C++](https://docs.microsoft.com/en-us/visualstudio/test/how-to-use-microsoft-test-framework-for-cpp?view=vs-2019) to verify that my finite state machine works as intended. This framework is built into Visual Studio 2017 and 2019. If you're not using Visual Studio, feel free to use a different IDE and whatever framework is available to you; the logic should be similar.
-
-Below is my test file. Note that you may need to change some of your includes if you named your primary project differently:
-
-{% include codeHeader.html %}
-```cpp
-#include "stdafx.h"
-#include "CppUnitTest.h"
-#include "../LightbulbFSM/Light.h"
-#include "../LightbulbFSM/Light.cpp"
-#include "../LightbulbFSM/ConcreteLightStates.h"
-#include "../LightbulbFSM/ConcreteLightStates.cpp"
-
-class LightState;
-
-namespace Microsoft
-{
-	namespace VisualStudio
-	{
-		namespace CppUnitTestFramework
-		{
-			template<> static std::wstring ToString<LightState>(LightState* state)
-			{
-				if (state == &LightOff::getInstance())
-				{
-					return L"Off";
-				}
-				else if (state == &LowIntensity::getInstance())
-				{
-					return L"Low";
-				}
-				else if (state == &MediumIntensity::getInstance())
-				{
-					return L"Medium";
-				}
-				else if (state == &HighIntensity::getInstance())
-				{
-					return L"High";
-				}
-
-				return L"nullptr";
-			}
-
-			namespace TestLightbulbFSM
-			{
-				TEST_CLASS(TestLightbulbFSM)
-				{
-				public:
-					TEST_METHOD_INITIALIZE(Initialize)
-					{
-						light = new Light();
-					}
-
-					TEST_METHOD_CLEANUP(Cleanup)
-					{
-						delete light;
-					}
-
-					TEST_METHOD(InitialStateIsOff)
-					{
-						Assert::AreEqual(&LightOff::getInstance(), light->getCurrentState());
-					}
-
-					TEST_METHOD(OffGoesToLow)
-					{
-						light->toggle();
-						Assert::AreEqual(&LowIntensity::getInstance(), light->getCurrentState());
-					}
-
-					TEST_METHOD(LowGoesToMedium)
-					{
-						light->toggle();
-						light->toggle();
-						Assert::AreEqual(&MediumIntensity::getInstance(), light->getCurrentState());
-					}
-
-					TEST_METHOD(MediumGoesToHigh)
-					{
-						light->toggle();
-						light->toggle();
-						light->toggle();
-						Assert::AreEqual(&HighIntensity::getInstance(), light->getCurrentState());
-					}
-
-					TEST_METHOD(HighGoesToOff)
-					{
-						light->toggle();
-						light->toggle();
-						light->toggle();
-						light->toggle();
-						Assert::AreEqual(&LightOff::getInstance(), light->getCurrentState());
-					}
-
-				private:
-					Light* light;
-				};
-			}
-		}
-	}
-}
-```
-
-Notice how I defined a test method for each state transition:
-
-- Initially Off
-- Off to Low
-- Low to Medium
-- Medium to High
-- High back to Off
-
-> **Note**: The `ToString` method at the top is needed to resolve a pretty common error that you'll run into with this unit testing framework.
-
-If we run our test suite, we can verify that all of the tests passed:
-
-{% include img.html img="tests.jpg" alt="All tests passed successfully in Visual Studio." %}
-
-Awesome!
+And we're done! This is a pretty standard finite state machine implementation, and you can easily extend this to any other language you want.
 
 {% include linkedHeading.html heading="More Finite State Machine Examples" level=2 %}
 
