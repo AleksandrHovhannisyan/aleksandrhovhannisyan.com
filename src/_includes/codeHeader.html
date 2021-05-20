@@ -1,12 +1,12 @@
-<div class="code-header{% unless include.copyable == false %} with-copy-button{% endunless %}">
-  {%- if include.file -%}
-    <div class="code-file-name-container">
-      <span class="code-file-name">{{- include.file -}}</span>
+{%- assign filename = include.file -%}
+{%- assign copyable = include.copyable -%}
+<div class="code-header{% unless copyable == false %} with-copy-button{% endunless %}{% if filename %} with-file-name{% endif %}">
+  {%- if filename -%}
+    <div class="code-file-name">
+      {{ filename }}
     </div>
   {%- endif -%}
-  {%- unless include.copyable == false -%}
-    <div class="copy-code-container">
-      <button class="button copy-code-button" aria-label="Copy code to clipboard" type="button"></button>
-    </div>
+  {%- unless copyable == false -%}
+    <button class="button copy-code-button" aria-label="Copy code to clipboard" type="button"></button>
   {%- endunless -%}
 </div>
