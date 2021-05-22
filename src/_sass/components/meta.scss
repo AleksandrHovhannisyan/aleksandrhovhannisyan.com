@@ -25,9 +25,10 @@
 }
 
 .author-photo {
+  --author-photo-size: 4.4rem;
   grid-column-gap: 0;
-  height: 5rem;
-  width: 5rem;
+  height: var(--author-photo-size);
+  width: var(--author-photo-size);
 
   * {
     border-radius: 50%;
