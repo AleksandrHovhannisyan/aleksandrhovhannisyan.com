@@ -1,6 +1,7 @@
 {
   "name": "aleksandrhovhannisyan.com",
   "version": "1.0.0",
+  "license": "UNLICENSED",
   "main": "index.js",
   "repository": "git@github.com:AleksandrHovhannisyan/aleksandrhovhannisyan.com.git",
   "author": "AleksandrHovhannisyan <aleksandrhovhannisyan@gmail.com>",
