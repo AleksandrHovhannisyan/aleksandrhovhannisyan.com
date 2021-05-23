@@ -58,7 +58,7 @@ div.highlighter-rouge {
 }
 
 .copy-code-button {
-  --copy-code-bg-color: var(--color-black-30);
+  --copy-code-bg-color: var(--color-black-25);
   --copy-code-text-color: var(--color-black-90);
   position: absolute;
   right: 2.4rem;
@@ -81,8 +81,8 @@ div.highlighter-rouge {
   &.copied,
   &:focus,
   &:hover {
-    color: var(--color-black);
-    background-color: var(--color-black-70);
+    --copy-code-bg-color: var(--color-black-70);
+    --copy-code-text-color: var(--color-black);
   }
 
   &:not(.copied):not(:hover):focus:not(:focus-visible) {

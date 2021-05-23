@@ -2,7 +2,9 @@ html {
   // Palette
   --color-black: hsl(0, 0%, 0%);
   --color-black-5: hsl(0, 0%, 5%);
+  --color-black-8: hsl(0, 0%, 8%);
   --color-black-10: hsl(0, 0%, 10%);
+  --color-black-12: hsl(0, 0%, 12%);
   --color-black-15: hsl(0, 0%, 15%);
   --color-black-20: hsl(0, 0%, 20%);
   --color-black-25: hsl(0, 0%, 25%);
@@ -23,7 +25,7 @@ html {
   --color-white: hsl(0, 0%, 100%);
 
   // Code
-  --color-code-background: var(--color-black-15);
+  --color-code-background: var(--color-black-12);
   --color-code-selection: hsla(210, 100%, 84%, 0.15);
   --color-code-comment: hsl(101, 29%, 47%);
   --color-code-text: hsl(0, 0%, 83%);
@@ -88,33 +90,33 @@ html.dark {
   --button-bg-color-focus: var(--color-black-80);
   --button-bg-color: var(--color-black-60);
   --button-text-color: var(--color-black);
-  --card-bg-color: var(--color-black-15);
+  --card-bg-color: var(--color-black-12);
   --code-block-box-shadow: 0 0.2rem 0.8rem 0 hsla(0, 0%, 0%, 0.4);
   --footer-bg-color: var(--navbar-bg-color);
   --footer-text-color: var(--navbar-text-color);
-  --form-bg-color: var(--color-black-15);
-  --hover-bg-color: var(--color-black-15);
+  --form-bg-color: var(--color-black-12);
+  --hover-bg-color: var(--color-black-12);
   --inline-code-bg-color: var(--color-black-25);
   --inline-code-text-color: var(--color-white);
   --input-bg-color: var(--color-black-20);
   --input-border-color-focus: var(--color-black-70);
   --input-border-color: var(--input-bg-color);
   --link-color: var(--color-white);
-  --main-bg-color: var(--color-black-10);
-  --navbar-bg-color: var(--color-black-15);
+  --main-bg-color: var(--color-black-8);
+  --navbar-bg-color: var(--color-black-12);
   --navbar-box-shadow: 0 0 8px 0 hsla(0, 0%, 0%, 0.8);
-  --navbar-link-bg-color-focus: var(--color-black-25);
-  --navbar-text-color: var(--color-black-90);
-  --scrollbar-thumb-bg-color-focus: var(--color-black-70);
-  --scrollbar-thumb-bg-color: var(--color-black-50);
+  --navbar-link-bg-color-focus: var(--color-black-20);
+  --navbar-text-color: var(--color-black-80);
+  --scrollbar-thumb-bg-color-focus: var(--color-black-45);
+  --scrollbar-thumb-bg-color: var(--color-black-35);
   --scrollbar-track-bg-color: var(--navbar-bg-color);
   --selection-bg-color: var(--color-white);
   --selection-text-color: var(--color-black);
   --table-border-color: var(--color-black-30);
-  --table-header-bg-color: var(--color-black-15);
+  --table-header-bg-color: var(--color-black-12);
   --table-header-text-color: var(--color-black-90);
-  --tag-bg-color-focus: var(--color-black-70);
-  --tag-bg-color: var(--color-black-25);
+  --tag-bg-color-focus: var(--color-black-75);
+  --tag-bg-color: var(--color-black-20);
   --tag-text-color-focus: var(--color-black);
   --tag-text-color: var(--color-white);
   --text-color-emphasis: var(--color-white);
