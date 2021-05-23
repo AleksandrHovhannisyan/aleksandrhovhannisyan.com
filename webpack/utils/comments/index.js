@@ -13,7 +13,7 @@ export const renderComments = async (comments) => {
 
   // Dynamic imports to reduce the main bundle size.
   const marked = (await import(/* webpackChunkName: "marked" */ 'marked')).default;
-  const DOMPurify = (await import(/* webpackChunkName: "dompurify" */ 'dompurify')).default;
+  const { sanitize } = await import(/* webpackChunkName: "dompurify" */ 'dompurify');
   const dayjs = (await import(/* webpackChunkName: "dayjs" */ 'dayjs')).default;
   const dayjsRelativeTimePlugin = (await import(/* webpackChunkName: "relativeTime" */ 'dayjs/plugin/relativeTime'))
     .default;
@@ -34,7 +34,7 @@ export const renderComments = async (comments) => {
     .map((comment) => {
       const datePosted = dayjs(comment.created_at).fromNow();
       const user = comment.user;
-      const body = DOMPurify.sanitize(marked(comment.body));
+      const body = sanitize(marked(comment.body));
       const postedByAuthor = comment.author_association === 'OWNER';
       const edited = comment.created_at !== comment.updated_at;
 
