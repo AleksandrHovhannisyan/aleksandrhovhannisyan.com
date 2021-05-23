@@ -30,11 +30,28 @@ preloads:
   </header>
   <div class="post-content">
     {{ content }}
-    {%- if page.comments_id -%}
-      {%- include comments.html issue_id=page.comments_id -%}
+    {%- assign comments_repo = site.issues_repo -%}
+    {%- assign comments_id = page.comments_id -%}
+    {%- if comments_id -%}
+      <section id="comments" data-comments-id="{{ comments_id }}" data-comments-repo="{{ comments_repo }}">
+        <div class="comment-actions">
+          <h2>💬 Comments <span id="comments-count"></span></h2>
+          <a
+            class="button solid-button plus-button post-comment-button"
+            href="https://github.com/{{ comments_repo }}/issues/{{ comments_id }}"
+            >Post comment</a
+          >
+        </div>
+        <div id="comments-wrapper">
+          Loading...
+        </div>
+      </section>
     {%- endif -%}
   </div>
 </article>
+{%- if comments_id -%}
+  <script src="/assets/scripts/comments.bundle.js" type="module"></script>
+{%- endif -%}
 
 {%- assign thumbnail = page.thumbnail | default: 'thumbnail.png' -%}
 <script type="application/ld+json">

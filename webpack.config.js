@@ -1,4 +1,5 @@
 const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   resolve: {
@@ -9,10 +10,13 @@ module.exports = {
   },
   entry: {
     main: path.resolve(__dirname, 'webpack/index.js'),
+    comments: path.resolve(__dirname, 'webpack/comments.js'),
   },
   output: {
+    publicPath: '/assets/scripts/',
     path: path.resolve(__dirname, 'src/assets/scripts/'),
     filename: '[name].bundle.js',
+    chunkFilename: '[name].bundle.js',
   },
   module: {
     rules: [
@@ -33,5 +37,14 @@ module.exports = {
         },
       },
     ],
+  },
+  plugins: [
+    new CleanWebpackPlugin(),
+  ],
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      chunks: 'all',
+    },
   },
 };

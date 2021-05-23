@@ -2,7 +2,6 @@
   "name": "aleksandrhovhannisyan.com",
   "version": "1.0.0",
   "license": "UNLICENSED",
-  "main": "index.js",
   "repository": "git@github.com:AleksandrHovhannisyan/aleksandrhovhannisyan.com.git",
   "author": "AleksandrHovhannisyan <aleksandrhovhannisyan@gmail.com>",
   "scripts": {
@@ -20,6 +19,13 @@
     "test:watch": "yarn run test --watch --silent=false --verbose=true",
     "update-browserslist": "npx browserslist@latest --update-db"
   },
+  "@comment:sideEffects": "For proper tree shaking of re-exports: https://www.jonathancreamer.com/webpack-tree-shaking-in-3-easy-steps/",
+  "sideEffects": false,
+  "dependencies": {
+    "dayjs": "^1.10.4",
+    "dompurify": "^2.2.8",
+    "marked": "^2.0.5"
+  },
   "devDependencies": {
     "@babel/core": "^7.11.4",
     "@babel/eslint-parser": "^7.13.14",
@@ -27,6 +33,7 @@
     "@babel/preset-env": "^7.13.15",
     "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
     "concurrently": "^5.3.0",
     "eslint": "^7.10.0",
     "eslint-config-prettier": "^6.12.0",
