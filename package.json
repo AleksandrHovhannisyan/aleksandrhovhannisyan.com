@@ -19,6 +19,11 @@
     "test:watch": "yarn run test --watch --silent=false --verbose=true",
     "update-browserslist": "npx browserslist@latest --update-db"
   },
+  "dependencies": {
+    "dayjs": "^1.10.4",
+    "dompurify": "^2.2.8",
+    "marked": "^2.0.5"
+  },
   "devDependencies": {
     "@babel/core": "^7.11.4",
     "@babel/eslint-parser": "^7.13.14",
@@ -57,10 +62,5 @@
       "node_modules",
       "webpack"
     ]
-  },
-  "dependencies": {
-    "dayjs": "^1.10.4",
-    "dompurify": "^2.2.8",
-    "marked": "^2.0.5"
   }
 }
