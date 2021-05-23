@@ -18,6 +18,8 @@
     "test:watch": "yarn run test --watch --silent=false --verbose=true",
     "update-browserslist": "npx browserslist@latest --update-db"
   },
+  "@comment:sideEffects": "For proper tree shaking of re-exports: https://www.jonathancreamer.com/webpack-tree-shaking-in-3-easy-steps/",
+  "sideEffects": false,
   "dependencies": {
     "dayjs": "^1.10.4",
     "dompurify": "^2.2.8",
