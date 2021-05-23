@@ -51,10 +51,6 @@
   @include font-weight('semiBold');
 }
 
-.skip-post-meta-tags-target {
-  scroll-margin-top: var(--scroll-margin-top);
-}
-
 .post-meta-tags {
   --post-meta-tag-spacing: 0.8rem;
   display: flex;

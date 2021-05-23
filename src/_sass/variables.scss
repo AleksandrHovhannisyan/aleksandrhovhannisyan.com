@@ -46,7 +46,7 @@ html {
   --transition-timing-function: ease;
   --page-max-width: 80rem;
   --navbar-height: 6.4rem;
-  --scroll-margin-top: calc(var(--navbar-height) + 3.2rem);
+  --scroll-margin-top: calc(var(--navbar-height) + 2ex);
 }
 
 html.light {

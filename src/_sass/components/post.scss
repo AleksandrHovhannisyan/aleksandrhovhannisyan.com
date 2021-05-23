@@ -14,7 +14,6 @@
   @include rhythm;
 
   @include headings {
-    scroll-margin-top: var(--scroll-margin-top);
     margin-top: 2.4rem;
     margin-bottom: -0.8rem;
   }
