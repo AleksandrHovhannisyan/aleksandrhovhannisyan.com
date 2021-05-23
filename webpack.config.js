@@ -9,10 +9,13 @@ module.exports = {
   },
   entry: {
     main: path.resolve(__dirname, 'webpack/index.js'),
+    comments: path.resolve(__dirname, 'webpack/comments.js'),
   },
   output: {
+    publicPath: '/assets/scripts/',
     path: path.resolve(__dirname, 'src/assets/scripts/'),
     filename: '[name].bundle.js',
+    chunkFilename: '[name].[chunkhash].js',
   },
   module: {
     rules: [

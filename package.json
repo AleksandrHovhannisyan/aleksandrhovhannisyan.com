@@ -56,5 +56,10 @@
       "node_modules",
       "webpack"
     ]
+  },
+  "dependencies": {
+    "dayjs": "^1.10.4",
+    "dompurify": "^2.2.8",
+    "marked": "^2.0.5"
   }
 }
