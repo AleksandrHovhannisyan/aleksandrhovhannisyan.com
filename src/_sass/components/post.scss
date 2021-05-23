@@ -50,6 +50,8 @@
   ol,
   ul {
     padding-left: 4.8rem;
+    display: grid;
+    grid-row-gap: 0.4rem;
   }
 
   a:not([class]) {

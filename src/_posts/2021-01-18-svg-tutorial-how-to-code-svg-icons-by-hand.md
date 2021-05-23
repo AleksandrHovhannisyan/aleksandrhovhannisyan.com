@@ -1589,7 +1589,7 @@ Coding SVG icons by hand isn't too difficult, but it can certainly feel that way
 That does it for this tutorial! I hope you learned something new (and had fun!).
 
 <style>
-  .svg-tutorial__icon-grid {
+  .post-content .svg-tutorial__icon-grid {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -1597,19 +1597,19 @@ That does it for this tutorial! I hope you learned something new (and had fun!).
     padding: 0 !important;
     max-width: 100%;
   }
-  .svg-tutorial__icon {
+  .post-content .svg-tutorial__icon {
     margin: 0 1.6rem;
     padding: 0 1.6rem;
     display: flex;
   }
-  .svg-tutorial__icon svg {
+  .post-content .svg-tutorial__icon svg {
     stroke: currentColor;
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
     fill: none;
   }
-  svg.bordered {
+  .post-content svg.bordered {
     border: solid 1px;
   }
 </style>

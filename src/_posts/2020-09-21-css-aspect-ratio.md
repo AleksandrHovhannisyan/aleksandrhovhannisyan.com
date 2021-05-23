@@ -440,14 +440,14 @@ I hope you found this helpful!
 {% include unsplashAttribution.md name="Rolands Zilvinskis" username="rolzay" photo_id="cPxRBHechRc" %}
 
 <style>
-  .tiles {
+  .post-content .tiles {
     display: grid;
     padding: 0 !important;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     row-gap: 1em;
     column-gap: 1em;
   }
-  .tile {
+  .post-content .tile {
     position: relative;
     height: 0;
     background-color: var(--tag-bg-color);
@@ -458,7 +458,7 @@ I hope you found this helpful!
     margin: 0 !important;
     border-radius: 4px;
   }
-  .tile::after {
+  .post-content .tile::after {
     position: absolute;
     left: 0;
     top: 0;
@@ -481,16 +481,16 @@ I hope you found this helpful!
   .aspect-ratio-16-9 {
     padding-bottom: 56.25%;
   }
-  .square-grid {
+  .post-content .square-grid {
     --gap: 1.6rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-row-gap: var(--gap);
     grid-column-gap: var(--gap);
     list-style: none;
-    padding: 0 !important;
+    padding: 0;
   }
-  .square {
+  .post-content .square {
     height: 0;
     padding-bottom: 100%;
     background-color: var(--tag-bg-color);
@@ -529,8 +529,8 @@ I hope you found this helpful!
     background-color: white;
     color: black;
   }
-  .grid {
-    padding: 0 !important;
+  .post-content .grid {
+    padding: 0;
     display: grid;
     grid-template-columns: 1fr 2fr;
     width: 100%;
