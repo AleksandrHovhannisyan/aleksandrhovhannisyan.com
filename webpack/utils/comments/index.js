@@ -1,15 +1,13 @@
 /**
- * Returns all comments from the GitHub issues API, using the provided issue ID.
+ * Returns all comments from the GitHub issues API using the provided issue ID and repo.
  */
-export const fetchComments = async (commentsIssueId) => {
-  return fetch(
-    `https://api.github.com/repos/AleksandrHovhannisyan/aleksandrhovhannisyan.com/issues/${commentsIssueId}/comments`
-  ).then((blob) => blob.json());
+export const fetchComments = async ({ repo, issueId }) => {
+  return fetch(`https://api.github.com/repos/${repo}/issues/${issueId}/comments`).then((blob) => blob.json());
 };
 
 /** Renders the given list of comments, converting markdown to HTML. */
 export const renderComments = async (comments) => {
-  const commentsSection = document.getElementById('comments');
+  const commentsSection = document.querySelector('#comments');
   const commentsWrapper = commentsSection.querySelector('#comments-wrapper');
   const commentsCounter = commentsSection.querySelector('#comments-count');
 
