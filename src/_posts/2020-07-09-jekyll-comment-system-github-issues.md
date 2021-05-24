@@ -4,7 +4,7 @@ description: Learn how to add comments to your Jekyll blog. We'll use the GitHub
 keywords: [jekyll comment system]
 tags: [dev, jekyll, github, javascript]
 comments_id: 45
-last_updated: 2020-09-18
+last_updated: 2021-05-24
 ---
 
 A while back, [Ari Stathopoulos wrote a tutorial](https://aristath.github.io/blog/static-site-comments-using-github-issues-api) on how to add comments to a Jekyll blog using the GitHub Issues API. And you know what? It works like a charm! Ever since I added comments to my Jekyll blog, I've seen a noticeable increase in engagement from my readers:
@@ -189,7 +189,9 @@ Now, you could certainly load these dependencies using script elements like so:
 
 **However, I don't recommend doing this** for the same reason that we're deferring our API request until the user scrolls to the bottom of the page: Why fetch resources that we don't need unless a user expects the comments to show up? In other words, we shouldn't just stick these directly in the HTML—we should load them in our JavaScript only after a user has scrolled to the comments section. Better yet, if the GitHub API returns no comments, we won't even bother loading these scripts, saving the user even more bandwidth and making Lighthouse happy.
 
-So, we'll load these scripts using JavaScript by creating `script` elements, setting their `src` attributes, and appending them to the DOM body. However, since scripts are loaded asynchronously, they may get loaded out of order. This means we'll need some way to hold off on rendering the comments until *all* of the dependencies have loaded, in whatever order that may be. To do that, we'll use a simple object like this to keep track of which dependencies have loaded:
+There are two approaches you can take here to defer loading dependencies, depending on whether you're using a module bundler like Webpack or if you're just using vanilla JS without any bundler. The first approach is the more universal one and doesn't involve Webpack, but it can feel a bit hacky and old-fashioned. The better approach is to install these packages as node modules and use dynamic imports to load them as chunks at run time.
+
+To keep this post accessible to most readers, I'll load these scripts using JavaScript by creating `script` elements, setting their `src` attributes, and appending them to the DOM body. However, since scripts are loaded asynchronously, they may get loaded out of order. This means we'll need some way to hold off on rendering the comments until *all* of the dependencies have loaded, in whatever order that may be. To do that, we'll use a simple object like this to keep track of which dependencies have loaded:
 
 {% include codeHeader.html file="_includes/comments.html" %}
 ```javascript
@@ -272,7 +274,7 @@ function loadCommentScript(script, callback) {
 }
 ```
 
-Basically, it creates a script element and registers an `onload` listener that tags the script object as loaded and invokes a callback. What's that callback? If you look above in `initRenderComments`, we're passing in an arrow function that invokes `renderComments(comments)`:
+It creates a script element and registers an `onload` listener that tags the script object as loaded and invokes a callback. What's that callback? If you look above in `initRenderComments`, we're passing in an arrow function that invokes `renderComments(comments)`:
 
 ```javascript
 Object.keys(commentScripts).forEach(script =>
@@ -282,7 +284,11 @@ Object.keys(commentScripts).forEach(script =>
 
 And that's the last thing we need for our Jekyll comment system to work.
 
+Before we move on, I want to reiterate: If all of this seems weird and hacky, that's because it *technically* is. It *works*, and it *will* defer loading the dependencies until a user has scrolled to the end of the page, which is great. But all of this is much simpler if you're using Webpack to bundle your JavaScript in Jekyll since you can just use dynamic imports and node modules. That's a topic for a different blog post, though. If you *are* using Webpack or some other bundler, I encourage you to take that route—write your comment script in an actual JS file, looking up the issue ID as a `data-` attribute set in your HTML. Then, simply stick the bundled script somewhere in your post layout, and you should be good to go.
+
 ### 3. Rendering the Comments
+
+Okay, we've loaded our dependencies dynamically—either using Promises like I showed above or with dynamic imports and a module bundler that can load the chunks at runtime. Either way, our dependencies are now ready to be used, and the only task that remains is actually rendering the comments:
 
 {% include codeHeader.html file="_includes/comments.html" %}
 {% raw %}
@@ -292,6 +298,9 @@ And that's the last thing we need for our Jekyll comment system to work.
 */
 function renderComments(comments) {
   if (!allCommentScriptsLoaded()) return;
+
+    // load the relativeTime plugin for dayjs so we can express dates relative to now
+    dayjs.extend(dayjs_plugin_relativeTime);
 
     commentsCount.innerText = `(${comments.length})`;
 
@@ -304,10 +313,7 @@ function renderComments(comments) {
       return comment1.created_at < comment2.created_at ? 1 : -1;
     })
     .map(comment => {
-      // load the relativeTime plugin
-      dayjs.extend(dayjs_plugin_relativeTime);
       const datePosted = dayjs(comment.created_at).fromNow();
-
       const user = comment.user;
       const body = DOMPurify.sanitize(marked(comment.body));
       const postedByAuthor = comment.author_association === 'OWNER';
