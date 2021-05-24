@@ -11,6 +11,11 @@ export const renderComments = async (comments) => {
   const commentsWrapper = commentsSection.querySelector('#comments-wrapper');
   const commentsCounter = commentsSection.querySelector('#comments-count');
 
+  if (comments.length === 0) {
+    commentsWrapper.innerHTML = 'No comments yet 👀 Be the first to post!';
+    return;
+  }
+
   // Dynamic imports to reduce the main bundle size.
   const marked = (await import(/* webpackChunkName: "marked" */ 'marked')).default;
   const { sanitize } = await import(/* webpackChunkName: "dompurify" */ 'dompurify');
