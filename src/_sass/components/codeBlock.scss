@@ -81,8 +81,8 @@ div.highlighter-rouge {
   &.copied,
   &:focus,
   &:hover {
-    --copy-code-bg-color: var(--color-black-70);
-    --copy-code-text-color: var(--color-black);
+    color: var(--color-black);
+    background-color: var(--color-black-70);
   }
 
   &:not(.copied):not(:hover):focus:not(:focus-visible) {
