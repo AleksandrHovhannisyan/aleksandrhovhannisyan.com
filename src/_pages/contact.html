@@ -35,7 +35,7 @@ permalink: /contact/
             <a class="social-network" href="{{ network.url }}">
               {%- assign icon = network.icon -%}
               {%- assign iconClass = "social-network-icon " | append: "icon-" | append: icon -%}
-              {%- include icon.html icon=icon class=iconClass -%}
+              {%- include icon.html icon=icon class=iconClass fill="currentColor" stroke="none" -%}
               <span class="social-network-name">{{ network.name }}</span>
             </a>
           </li>
