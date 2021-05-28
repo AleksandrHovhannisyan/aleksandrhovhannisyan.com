@@ -4,6 +4,7 @@
   "license": "UNLICENSED",
   "repository": "git@github.com:AleksandrHovhannisyan/aleksandrhovhannisyan.com.git",
   "author": "AleksandrHovhannisyan <aleksandrhovhannisyan@gmail.com>",
+  "type": "module",
   "scripts": {
     "clean:jekyll": "rm -rf _site src/.jekyll-cache",
     "dev": "yarn clean:jekyll && concurrently \"yarn run webpack --watch --mode=development\" \"JEKYLL_ENV=development bundle exec jekyll serve --livereload --port=4001\"",
@@ -15,7 +16,7 @@
     "lint:js:fix": "eslint --cache --fix \"webpack/**/*.js\"",
     "lint:all": "yarn lint:css && yarn lint:js",
     "lint:all:fix": "yarn lint:css:fix && yarn lint:js:fix",
-    "test": "jest --config jest.config.js",
+    "test": "jest --config jest.config.cjs",
     "test:watch": "yarn run test --watch --silent=false --verbose=true",
     "update-browserslist": "npx browserslist@latest --update-db"
   },
@@ -29,7 +30,6 @@
   "devDependencies": {
     "@babel/core": "^7.11.4",
     "@babel/eslint-parser": "^7.13.14",
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.13.8",
     "@babel/preset-env": "^7.13.15",
     "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",

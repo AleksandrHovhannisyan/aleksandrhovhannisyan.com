@@ -21,20 +21,13 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /.js$/,
+        test: /.m?js$/,
+        resolve: {
+          // https://github.com/webpack/webpack/issues/11467#issuecomment-691873586
+          fullySpecified: false,
+        },
         exclude: path.resolve(__dirname, 'node_modules'),
         loader: 'babel-loader',
-        options: {
-          presets: [
-            [
-              '@babel/preset-env',
-              {
-                bugfixes: true,
-              },
-            ],
-          ],
-          plugins: ['@babel/plugin-proposal-nullish-coalescing-operator'],
-        },
       },
     ],
   },
