@@ -3,7 +3,7 @@ title: Goodbye, GitHub Pages—Hello, Netlify
 description: GitHub Pages is a great option for hosting your site... until it isn't. Here's why I moved to Netlify.
 keywords: [github pages vs netlify]
 tags: [dev, blogging, github, netlify]
-last_updated: 2020-10-17
+last_updated: 2021-05-28
 is_popular: true
 ---
 
@@ -21,42 +21,52 @@ Note that this post is not sponsored by Netlify. I'm just a happy user who recom
 
 ### Hosting Private Repos
 
-If you're a free GitHub user, then GitHub Pages will only be able to build your **public repos**. You can get it to also build private repos, but you'll have to purchase one of the Pro plans, the least expensive of which is GitHub Teams at $4/month. That's $48/year. Netlify, on the other hand, can build **both public and private repos** for free. Slap on a custom .com domain from Google Domains for just $12/year, and you're all set.
+If you're a free GitHub user, then GitHub Pages will only be able to build your public repos. You can get it to also build private repos, but you'll have to purchase one of the Pro plans, the least expensive of which is GitHub Teams at $4/month. That's $48/year. Netlify, on the other hand, can build **both public and private repos** for free. Slap on a custom .com domain from Google Domains for just $12/year, and you're all set.
+
+This may not matter to you much if you don't intend to publish any private repos, but some people do make their sites closed source, so it's a nice added bonus of using Netlify. If you ever want to make your source code private, it won't affect Netlify so long as you've [set up your repo's permissions](https://docs.netlify.com/configure-builds/repo-permissions-linking/).
 
 ### Jekyll Plugins, Netlify Plugins, and Other Goodies
 
-This was honestly a deal-breaker for me as my site began to grow in complexity. GitHub Pages only supports [a limited set of Jekyll plugins](https://pages.github.com/versions/). If you want to use any plugin not listed there, you'll need to instead push your build output directory (`_site/` in Jekyll) to your repo instead of pushing your source code, or push both but to different branches. With Netlify, there are no such restrictions: You can use whatever plugins you want, and your site will build just fine.
+This was a deal-breaker for me as my site grew. If you're using a static site generator like Jekyll, GitHub Pages is only flexible up to a certain point. For example, it only supports [a limited set of Jekyll plugins](https://pages.github.com/versions/); if you want to use unsupported plugins, you'll need to build your site locally and push the build directory to your repo. With Netlify, there are no such restrictions: You can use whatever plugins you want, and your site will build just fine.
 
-Netlify also has a bunch of other cool features, like [split A/B testing](https://docs.netlify.com/site-deploys/split-testing/#use-snippet-injection-for-more-flexibility) (currently in Beta), [free contact forms](https://docs.netlify.com/forms/setup/#html-forms), detailed site analytics, and more. You can even add **free Netlify build plugins** to your site; these run as part of your website's build process, and if any of them fail, your build will fail. For example, there's one that will [check all links on your site](https://www.npmjs.com/package/netlify-plugin-checklinks) to ensure that none of them are broken before you publish new content, another that will run [a11y checks](https://www.npmjs.com/package/netlify-plugin-a11y) for accessibility, and [many others](https://docs.netlify.com/configure-builds/build-plugins/).
+Netlify also has a bunch of other neat framework-agnostic features, including:
+
+- [Split A/B testing](https://docs.netlify.com/site-deploys/split-testing/#use-snippet-injection-for-more-flexibility), where it serves multiple branches to users at random.
+- [Free contact forms](https://docs.netlify.com/forms/setup/#html-forms) that work with static sites and offer spam protection via a honeypot field. You can even create a custom page for form submissions!
+- [Netlify Functions](https://www.netlify.com/products/functions/), which allow you to go serverless.
+
+You can even add **free Netlify build plugins** to your site. These plugins run as part of your website's build process, and if any of them fail, your entire build will fail. For example, there's one that will [check all links on your site](https://www.npmjs.com/package/netlify-plugin-checklinks) to ensure that none of them are broken before you publish new content, another that will run [a11y checks](https://www.npmjs.com/package/netlify-plugin-a11y) for accessibility, and [many others](https://docs.netlify.com/configure-builds/build-plugins/).
 
 
-GitHub Pages has **none of these things**—no customization, and certainly no plugins. It *can* take advantage of GitHub Actions, but [so can Netlify](https://github.com/netlify/actions) if your code lives on GitHub.
+GitHub Pages has none of these things—no customization, and certainly no plugins. It *can* take advantage of GitHub Actions, but [so can Netlify](https://github.com/netlify/actions) if your code lives on GitHub.
 
 ### More Control Over Deployments
 
-With Netlify, you have **much more control over the deployment process**. Your dashboard provides a clear view of your deploy history and even allows you to manually revert your site to a prior state with its **one-click rollback**. You can also stop auto-publishing new versions of your site, in case that's something you're interested in, and even access a live preview of your deployment to make sure nothing broke. You can also share your deployment history (and deploy previews) with other people; this is useful if you're working as part of a team and not just a single dev, or if you want design input from others.
+With Netlify, you have **greater control over the deployment process**. Your dashboard provides a clear view of your deploy history and even allows you to manually revert your site to a prior state with its **one-click rollback**. You can also stop auto-publishing new versions of your site, in case that's something you're interested in, and even access a live preview of your deployment to make sure nothing broke. You can also share your deployment history (and deploy previews) with other people; this is useful if you're working as part of a team and not just a single dev, or if you want design input from others.
 
-{% include img.html img="dashboard.png" alt="The Netlify dashboard for my personal website" %}
+{% include img.html img="dashboard.png" alt="The Netlify dashboard for my personal website, showing a list of recent deployments and their git hash IDs." width=1883 height=774 %}
 
 On the other hand, with GitHub Pages, [you can only deploy to two branches](https://help.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source), one of which is `master` by default. Want to revert your site? Have fun [resetting to a previous commit with git](/blog/undoing-changes-in-git/#2-resetting-a-branch-to-an-older-commit) on your second branch and fiddling with your repo settings to change the deploy branch. There are also no deploy previews, so whatever you push will go live as soon as it builds.
 
 ### Faster Deployments
 
-Netlify builds my site in 30 seconds, on average:
+Netlify builds my site in just 1–2 minutes, on average:
 
-{% include img.html img="faster-deploys.png" alt="Netlify deploys my site very quickly" %}
+{% include img.html img="faster-deploys.png" alt="A list of recent deployments in my Netlify dashboard, along with the time it took each one to deploy from start to finish." width=1112 height=464 %}
 
-With GitHub Pages, things are much slower, and you sometimes have to do a hard refresh to see the results. Their own documentation says you may have to [wait up to 20 minutes](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/about-jekyll-build-errors-for-github-pages-sites) to see the changes:
+Back when I was hosting it on GitHub Pages, things were much slower, and I'd sometimes have to do a hard refresh to see any updates. GitHub's own documentation notes that you may have to [wait up to 20 minutes](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/about-jekyll-build-errors-for-github-pages-sites) to see your changes go live:
 
 > *It can take up to 20 minutes for changes to your site to publish after you push the changes to GitHub.*
 
-Even worse, GitHub Pages caps you at **only 10 builds per hour**. So if you're frequently pushing to your deployment branch (which you probably shouldn't be doing anyway), [you may run into trouble](https://help.github.com/en/github/working-with-github-pages/about-github-pages#guidelines-for-using-github-pages):
+Unfortunately, GitHub Pages also caps you at **only 10 builds per hour**. So if you're frequently pushing to your deployment branch (which you probably shouldn't be doing anyway), [you may run into trouble](https://help.github.com/en/github/working-with-github-pages/about-github-pages#guidelines-for-using-github-pages):
 
 > If your site exceeds these usage quotas, we may not be able to serve your site, or you may receive a polite email from GitHub Support or GitHub Premium Support suggesting strategies for reducing your site's impact on our servers, including putting a third-party content distribution network (CDN) in front of your site, making use of other GitHub features such as releases, or moving to a different hosting service that might better fit your needs.
 
-Netlify has a much more generous soft cap of **3 builds per minute**. You also get **300 build minutes per month** and **100 GB data usage** with its free tier, which is more than enough for most needs. To clarify, build minutes are basically Netlify's currency for a billing cycle. If you're a free user, this means that your builds can't exceed the 300-minute total for one month. Next month, your usage resets to 0. My cycle resets on the 15th of each month, and I don't pay anything as long as my usage doesn't exceed this limit:
+Netlify has a much more generous soft cap of **3 builds per minute**. You also get **300 build minutes per month** and **100 GB data usage** with its free tier, which is more than enough for most needs.
 
-{% include img.html img="billing.png" alt="Netlify's dashboard shows billing information for things such as data usage and build minutes used." %}
+To clarify: Build minutes are Netlify's currency for a billing cycle. If you're a free user, this means that your builds can't exceed the 300-minute total for one month. Next month, your usage resets to 0. My cycle resets on the 15th of each month, and I don't pay anything as long as my usage doesn't exceed this limit:
+
+{% include img.html img="billing.png" alt="Netlify's dashboard shows billing information for things such as data usage and build minutes used." width=1185 height=395 %}
 
 ### Proper 301 Redirects
 
@@ -82,13 +92,11 @@ I recommend that you keep your old GitHub Pages repository around temporarily, s
 
 You can also use the [Change of Address Tool](https://support.google.com/webmasters/answer/9370220?hl=en) right there in Google Search Console to migrate your old site's traffic to your new one, once you've set up 301 redirects:
 
-{% include img.html img="migration.png" alt="Migrating my old search engine results to my new domain" %}
-
-Currently, I host my new site's content under a private GitHub repo, with a custom domain configured in Netlify. My `.github.io` domain is still up and visible in Google, but it redirects to my new site.
+{% include img.html img="migration.png" alt="Migrating my old search engine results to my new domain using Google Search Console's change of address tool." width=1052 height=320 %}
 
 Keep an eye on your Google Search Console over the next few months following your migration. Once things stabilize, you can make your old repo private or delete it altogether, taking it off of GitHub Pages.
 
-> **Update 10/17/2020**: After a few months, I took down my `.github.io` domain. My search engine rankings were stable throughout this migration period, thanks to the redirects I set up.
+A few months after migrating my site this way, I took down my `.github.io` domain. My search engine rankings were stable throughout this migration period thanks to the redirects I had set up.
 
 ## Here's to a New Era
 
