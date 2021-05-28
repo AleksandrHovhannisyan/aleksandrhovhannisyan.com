@@ -1,46 +1,27 @@
 ---
 title: Contact
 description: Have questions, feedback, or business inquiries? Get in touch!
+layout: contact
 permalink: /contact/
 ---
 
-<article id="contact" class="section">
+<div>
   <h1 class="contact-title">Get in touch! 📧</h1>
   <p class="contact-subtitle">Fields marked with an asterisk are required.</p>
-  <div id="contact-information">
-    <form class="contact-form" action="https://formspree.io/xrgypaol" method="post" spellcheck="false">
-      <input aria-hidden="true" type="hidden" name="_subject" value="Someone sent you a message!" />
-      <div class="labeled-input">
-        <label class="required" for="name">Name</label>
-        <input class="input" type="text" name="name" id="name" required />
-      </div>
-      <div class="labeled-input">
-        <label for="email">Email</label>
-        <input class="input" type="email" name="_replyto" id="email" />
-      </div>
-      <div class="labeled-input">
-        <label class="required" for="message">Message</label>
-        <textarea class="input" name="body" id="message" required></textarea>
-      </div>
-      <button type="submit" class="button solid-button contact-submit-button">Send message</button>
-      <input aria-hidden="true" type="text" name="_gotcha" class="honeypot" />
-    </form>
-    <section id="social-networks">
-      <h2 class="social-networks-heading" aria-label="You can also find me on the following social platforms">
-        You can also find me on:
-      </h2>
-      <ul class="social-networks-list">
-        {%- for network in site.data.socials -%}
-          <li>
-            <a class="social-network" href="{{ network.url }}">
-              {%- assign icon = network.icon -%}
-              {%- assign iconClass = "social-network-icon " | append: "icon-" | append: icon -%}
-              {%- include icon.html icon=icon class=iconClass fill="currentColor" stroke="none" -%}
-              <span class="social-network-name">{{ network.name }}</span>
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
-    </section>
-  </div>
-</article>
+  <form class="contact-form" method="POST" action="/contact/submitted/" spellcheck="false" name="contact" netlify netlify-honeypot="_gotcha">
+    <div class="labeled-input">
+      <label class="required" for="name">Name</label>
+      <input class="input" type="text" name="name" id="name" required />
+    </div>
+    <div class="labeled-input">
+      <label for="email">Email</label>
+      <input class="input" type="email" name="_replyto" id="email" />
+    </div>
+    <div class="labeled-input">
+      <label class="required" for="message">Message</label>
+      <textarea class="input" name="body" id="message" required></textarea>
+    </div>
+    <button type="submit" class="button solid-button contact-submit-button">Send message</button>
+    <input aria-hidden="true" type="text" name="_gotcha" class="honeypot" />
+  </form>
+</div>

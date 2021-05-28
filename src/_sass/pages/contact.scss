@@ -1,22 +1,33 @@
 @import 'mixins';
 
+#contact {
+  height: 100%;
+}
+
+.contact-content {
+  height: 100%;
+  display: grid;
+  align-items: center;
+  grid-auto-flow: row;
+  grid-column-gap: 9.6rem;
+  grid-row-gap: 4.8rem;
+}
+
 .contact-title {
   margin-bottom: 0.8rem;
   @include font-size(3);
+
+  .submitted & {
+    @include font-size(5);
+  }
 }
 
 .contact-subtitle {
   margin-bottom: 2.4rem;
-}
 
-#contact-information {
-  display: grid;
-  grid-template-areas:
-    "form"
-    "socials";
-  grid-template-rows: auto;
-  grid-column-gap: 9.6rem;
-  grid-row-gap: 4.8rem;
+  .submitted & {
+    margin: 0;
+  }
 }
 
 .contact-form {
@@ -26,7 +37,6 @@
   background-color: var(--form-bg-color);
   border-radius: 0.2rem;
   border: solid 1px hsla(0, 0%, 0%, 0.08);
-  grid-area: form;
   padding: 2.4rem;
   height: fit-content;
 
@@ -54,11 +64,6 @@
   width: 100%;
   @include focus-outline((color: var(--button-bg-color-focus), offset: 0.2rem)...);
   @include font-size(0);
-
-  &:focus {
-    outline: solid 0.2rem var(--button-bg-color-focus);
-    outline-offset: 0.2rem;
-  }
 }
 
 // Spammers begone
@@ -66,7 +71,7 @@ input.honeypot {
   display: none;
 }
 
-#social-networks {
+.social-networks {
   display: grid;
   grid-row-gap: 4.8rem;
   grid-template-rows: min-content auto;
@@ -112,9 +117,9 @@ input.honeypot {
 }
 
 @include tablet {
-  #contact-information {
+  .contact-content {
     grid-row-gap: 0;
-    grid-template-areas: "form socials";
+    grid-auto-flow: column;
     grid-template-columns: minmax(0, 40rem) auto;
   }
 }
