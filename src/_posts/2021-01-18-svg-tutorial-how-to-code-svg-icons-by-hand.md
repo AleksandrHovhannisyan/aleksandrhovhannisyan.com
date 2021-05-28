@@ -1593,13 +1593,12 @@ That does it for this tutorial! I hope you learned something new (and had fun!).
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    gap: 4.8rem;
     list-style: none;
-    padding: 0 !important;
+    padding: 0;
     max-width: 100%;
   }
   .post-content .svg-tutorial__icon {
-    margin: 0 1.6rem;
-    padding: 0 1.6rem;
     display: flex;
   }
   .post-content .svg-tutorial__icon svg {
