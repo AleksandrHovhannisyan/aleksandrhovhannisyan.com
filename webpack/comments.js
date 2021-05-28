@@ -14,7 +14,8 @@ const commentsObserver = new IntersectionObserver(
 
         fetchComments({ repo, issueId: commentsId })
           .then(renderComments)
-          .catch(() => {
+          .catch((e) => {
+            console.error(e);
             commentsWrapper.innerHTML = `<p>Unable to retrieve the comments for this post. Check back later.</p>`;
           });
         self.unobserve(entry.target);
