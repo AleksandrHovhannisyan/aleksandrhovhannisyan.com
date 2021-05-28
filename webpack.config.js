@@ -1,5 +1,4 @@
 const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   resolve: {
@@ -13,6 +12,7 @@ module.exports = {
     comments: path.resolve(__dirname, 'webpack/comments.js'),
   },
   output: {
+    clean: true,
     publicPath: '/assets/scripts/',
     path: path.resolve(__dirname, 'src/assets/scripts/'),
     filename: '[name].bundle.js',
@@ -24,7 +24,7 @@ module.exports = {
         test: /.js$/,
         exclude: path.resolve(__dirname, 'node_modules'),
         loader: 'babel-loader',
-        query: {
+        options: {
           presets: [
             [
               '@babel/preset-env',
@@ -38,9 +38,6 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new CleanWebpackPlugin(),
-  ],
   optimization: {
     runtimeChunk: 'single',
     splitChunks: {
