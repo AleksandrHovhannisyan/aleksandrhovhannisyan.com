@@ -80,6 +80,13 @@
       }
     })();
   </script>
+  {%- comment -%}Common bundles.{%- endcomment -%}
+  <script type="module" src="/assets/scripts/main.bundle.js" defer></script>
+  <script type="module" src="/assets/scripts/runtime.bundle.js" defer></script>
+  {%- comment -%}Posts with comments.{%- endcomment -%}
+  {%- if page.comments_id -%}
+    <script type="module" src="/assets/scripts/comments.bundle.js" defer></script>
+  {%- endif -%}
 </head>
 <body class="centered">
   {%- include navbar.html -%}
@@ -87,7 +94,5 @@
     {{ content }}
   </main>
   {%- include footer.html -%}
-  <script type="module" src="/assets/scripts/main.bundle.js"></script>
-  <script type="module" src="/assets/scripts/runtime.bundle.js"></script>
 </body>
 </html>

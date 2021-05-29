@@ -48,10 +48,6 @@ preloads:
     {%- endif -%}
   </div>
 </article>
-{%- if comments_id -%}
-  <script src="/assets/scripts/comments.bundle.js" type="module"></script>
-{%- endif -%}
-
 {%- assign thumbnail = page.thumbnail | default: 'thumbnail.png' -%}
 <script type="application/ld+json">
   {
