@@ -30,7 +30,6 @@ export const renderComments = async (comments) => {
 
   const commentsList = document.createElement('ol');
   commentsList.className = 'comments-list';
-  commentsList.setAttribute('aria-label', 'Comments on this blog post');
 
   commentsList.innerHTML = comments
     .sort((comment1, comment2) => {

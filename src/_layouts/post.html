@@ -35,16 +35,15 @@ preloads:
     {%- if comments_id -%}
       <section id="comments" data-comments-id="{{ comments_id }}" data-comments-repo="{{ comments_repo }}">
         <div class="comment-actions">
-          <h2>💬 Comments <span id="comments-count"></span></h2>
+          <h2><span aria-hidden="true">💬</span> Comments <span id="comments-count"></span></h2>
           <a
             class="button solid-button plus-button post-comment-button"
             href="https://github.com/{{ comments_repo }}/issues/{{ comments_id }}"
+            aria-label="Post a comment on GitHub"
             >Post comment</a
           >
         </div>
-        <div id="comments-wrapper">
-          Loading...
-        </div>
+        <div id="comments-wrapper">Loading...</div>
       </section>
     {%- endif -%}
   </div>
