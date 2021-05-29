@@ -145,6 +145,7 @@ Git's auto-detection algorithm is fairly accurate, but in case it fails to corre
 
 And that's it! The final step is to renormalize all your line endings for any files that were checked into git prior to the addition of your `.gitattributes` config:
 
+{% include codeHeader.html %}
 ```
 git add --renormalize .
 ```
