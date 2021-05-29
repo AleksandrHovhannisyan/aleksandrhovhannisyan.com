@@ -1,8 +1,8 @@
 ## Font-Awesome-SVG-PNG
 
-> Repository: [https://github.com/simple-icons/simple-icons](https://github.com/simple-icons/simple-icons)
+[View repository](https://github.com/simple-icons/simple-icons).
 
-This license applies to all SVG social media icons defined in [`_includes/icon.html`](https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com/blob/master/src/_includes/icon.html).
+This license applies to all SVG social media icons defined in [`_includes/icon.html`](https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com/blob/master/src/_includes/icon.html). See comments.
 
 ## CC0 1.0 Universal
 
