@@ -2,7 +2,7 @@
 <html lang="en-US">
 <head>
   <meta charset="utf-8">
-  <!-- Preload optimizations -->
+  {%- comment -%}Preload optimizations{%- endcomment -%}
   <link rel="preload" as="style" type="text/css" href="/assets/styles/main.css">
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-300.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-regular.woff2" crossorigin>
@@ -19,13 +19,13 @@
       <link rel="preload" as="{{ preload.as }}" type="{{ preload.type }}" href="{{ preload.href }}" {% if preload.crossorigin %}crossorigin{% endif %}>
     {%- endfor -%}
   {% endif %}
-  <!-- Metadata for search engines -->
+  {%- comment -%}Metadata for search engines{%- endcomment -%}
   <meta name="description" content="{%- if page.description -%}{{ page.description }}{%- else -%}{{ site.description }}{%- endif -%}">
   <meta name="keywords" content="{%- if page.keywords -%}{{ page.keywords | join: ', ' }}{%- else -%}{{ site.keywords | join: ', ' }}{%- endif -%}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="{{ site.author }}">
   <meta name="referrer" content="origin">
-  <!-- Open Graph social media previews -->
+  {%- comment -%}Open Graph social media previews{%- endcomment -%}
   <meta property="og:title" content="{{ page.title }} | {{ site.title }}">
   {%- assign og_image = page.og_image | default: '/assets/images/favicons/favicon-228.png' -%}
   {%- if page.is_post -%}
@@ -39,10 +39,10 @@
   <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   {%- if page.noindex -%}
-    <!-- Prevent this page from showing up on search engines -->
+    {%- comment -%}Prevent this page from showing up on search engines{%- endcomment -%}
     <meta name="robots" content="noindex">
   {%- endif -%}
-  <!-- CSS-->
+  {%- comment -%}Global and page/layout-specific CSS{%- endcomment -%}
   <link rel="stylesheet" href="/assets/styles/main.css">
   {%- for stylesheet in layout.stylesheets -%}
     <link rel="stylesheet" href="{{ stylesheet.href }}">
@@ -50,7 +50,7 @@
   {%- for stylesheet in page.stylesheets -%}
     <link rel="stylesheet" href="{{ stylesheet.href }}">
   {%- endfor -%}
-  <!-- Favicons -->
+  {%- comment -%}Favicons{%- endcomment -%}
   <link rel="icon" href="/assets/images/favicons/favicon-32.png" sizes="32x32">
   <link rel="icon" href="/assets/images/favicons/favicon-57.png" sizes="57x57">
   <link rel="icon" href="/assets/images/favicons/favicon-76.png" sizes="76x76">
@@ -66,7 +66,7 @@
   {%- else -%}
     <title>{{ page.title }} | {{ site.title }}</title>
   {%- endif -%}
-  <!-- Load the user's last selected theme -->
+  {%- comment -%}Load the user's last selected theme{%- endcomment -%}
   <script>
     (function() {
       const savedTheme = localStorage.getItem('theme');
