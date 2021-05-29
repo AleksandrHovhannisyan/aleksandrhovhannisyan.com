@@ -90,4 +90,4 @@ And voila—page navigation is now in sync with the iframe:
 
 I hope you learned something new—I sure did when I first encountered this bug! It's a good reminder that the `key` prop isn't just useful inside loops, like when you're mapping an array to elements. Sometimes, you also need to give an element a key to forcibly remount it.
 
-{% include unsplashAttribution.md name="Mike Erskine" username="mikejerskine" photo_id="M4e0WAc0Yf4" %}
+{% include unsplashAttribution.md name="Jan Huber" username="jan_huber" photo_id="4MDXq_aqHY4" %}
