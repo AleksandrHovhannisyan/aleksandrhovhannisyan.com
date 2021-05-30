@@ -18,17 +18,17 @@ is_blog_page: true
   {%- endfor -%}
   <h1 class="blog-page-title">{{ blogType }}Blog Posts</h1>
   <p class="blog-page-description">
-    {%- if site.data.tags[pageTag] -%}
-      {{- site.data.tags[pageTag] -}}
+    {%- if site.data.tagDescriptions[pageTag] -%}
+      {{- site.data.tagDescriptions[pageTag] -}}
     {% else %}
-      {{- site.data.tags["all"] -}}
+      {{- site.data.tagDescriptions["all"] -}}
     {%- endif -%}
   </p>
   <nav aria-label="Popular tags">
     <ul class="navigation-tags">
       {%- assign tags = "all,accessibility,css,webperf,off-topic" | split: ',' -%}
       {%- for tag in tags %}
-        {%- assign tagDescription = site.data.tags[tag][1] -%}
+        {%- assign tagDescription = site.data.tagDescriptions[tag][1] -%}
         <li>
           <a
             href="{% if tag == "all" %}/blog/{% else %}/tag/{{ tag }}{% endif %}"
