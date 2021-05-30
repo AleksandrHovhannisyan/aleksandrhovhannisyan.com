@@ -89,7 +89,7 @@
   {%- endif -%}
 </head>
 <body class="centered">
-  {%- include navbar.html -%}
+  {%- include navbar.html skip_links=page.skip_links -%}
   <main id="page-content">
     {{ content }}
   </main>
