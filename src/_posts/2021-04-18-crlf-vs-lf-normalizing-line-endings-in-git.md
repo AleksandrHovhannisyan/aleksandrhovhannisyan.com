@@ -2,7 +2,7 @@
 title: "CRLF vs. LF: Normalizing Line Endings in Git"
 description: Line endings can differ from one OS to another. Learn the history behind CRLF and LF line endings and how to enforce line endings in git.
 keywords: [line endings, git, gitattributes, carriage return, line feed, crlf vs lf]
-tags: [dev, git, os, typography]
+tags: [dev, git, os, tooling]
 comments_id: 79
 ---
 
