@@ -1,47 +1,15 @@
 ---
 title: "Premature Optimization: Code First, Optimize Later"
 description: Premature optimization may be hurting the quality of your work. Focus on writing legible code first; optimize it later if you need to.
-keywords: [big-o notation, micro-optimization, premature optimization]
+keywords: [premature optimization, optimization, micro-optimization, big-o]
 tags: [dev, math, algorithms, javascript]
 layout: latexPost
 reading_length: 20
 ---
 
-Recently, there was a [Twitter thread going around](https://twitter.com/maxfmckay/status/1396252890721918979) where developers compared the time complexity of iterating over an array multiple times to that of using a single `Array.reduce` call and the ES6 spread operator in JavaScript. The two code samples looked like this:
+Recently, there was a [Twitter thread going around](https://twitter.com/maxfmckay/status/1396252890721918979) that compared two approaches to the same problem in JavaScript: 1) using a single `Array.reduce` call with the ES6 spread operator, or 2) chaining array methods. The two code samples looked something like this (I've renamed the variables to clarify what's going on):
 
 {% include codeHeader.html %}
-```javascript
-// Version 1: reduce with ES6 spread
-users.reduce((acc, curr) => {
-  if (curr.active) {
-    return acc;
-  }
-  return { ...acc, [curr.id]: curr.name };
-});
-```
-
-{% include codeHeader.html %}
-```javascript
-// Version 2 (corrected): chaining filter and map, followed by reduce
-users
-  .filter(user => !user.active)
-  .map(user => ({[user.id]: user.name}))
-  .reduce((acc, curr) => Object.assign(acc, curr), {});
-```
-
-Both of these do the same thing: They take an array of users and turn it into an object of only the offline users, mapping each user's ID to their name. The result might look something like this:
-
-```json
-{
-  "id1": "Bob",
-  "id2": "Alice"
-}
-```
-
-Before we even discuss performance, there's a more obvious problem: the use of shorthand variable names like `acc` and `curr`. Someone who's familiar with `reduce` likely understands what these arguments denote (accumulator and current, respectively), but there is no good reason to use abbreviated names since they make the code harder to read.
-
-Let's clean things up before we move on:
-
 ```javascript
 // Version 1: reduce with ES6 spread
 users.reduce((offlineUsers, user) => {
@@ -58,11 +26,20 @@ users
   .reduce((offlineUsers, user) => Object.assign(offlineUsers, user), {});
 ```
 
-Now for the question of which code sample is better: I personally think the second version is slightly harder to understand because of the awkward `reduce` logic, where we combine $$n$$ separate objects into one at the end with `Object.assign`. By comparison, once we've rewritten the first code sample to use clearer variable names, it's a little easier to follow at a glance.
+Both of these do the same thing: They take an array of users and turn it into an object that maps each offline user's ID to their name. The result might look something like this:
 
-In this article, I want argue in favor of writing legible code that serves its intended purpose and only optimizing it when you really need to. I realize that the tweet was not originally about performance. But Tech Twitter, being the highly opinionated group that it is, decided to turn this innocent tweet into a (surprisingly civil!) debate.
+```json
+{
+  "id1": "Bob",
+  "id2": "Alice"
+}
+```
 
-Below are some of the noteworthy responses I saw; they touch on some really important points about optimizing front-end code (or code in general).
+Naturally, a question arose: Which version is better? The original tweet favored the second approach, where most of the work is done in chained array methods. I personally think the second version is slightly harder to understand because of the awkward `reduce` logic, where we combine $$n$$ separate objects into one at the end with `Object.assign`. By comparison, once we've rewritten the first code sample to use clearer variable names, it's a little easier to follow at a glance.
+
+The original tweet was not about performance. But Tech Twitter, being the highly opinionated group that it is, decided to turn this innocent tweet into a (surprisingly civil!) debate about runtime complexity and benchmarking. So, in this article, I want to use this as an opportunity to argue in favor of writing legible code that gets the job done and only optimizing it when you really need to.
+
+Below are just a handful of the noteworthy responses that I saw; they touch on important points about optimizing front-end code (and code in general, really).
 
 {% include quote.html quote='Beware of "smart" coding tricks' source="@jaffathecake" cite="https://twitter.com/jaffathecake/status/1396447037915336705" %}
 
@@ -77,13 +54,13 @@ I wanna dig into that a bit…{% endcapture %}
 
 Based on these and many other responses, the key takeaway appears to be this: You shouldn't try to optimize your code unless you have a good reason for doing so. You may think you need to worry about an algorithm's performance, but unless you have evidence that it's slow, you're wasting time doing micro-optimizations for little gain.
 
-Right then—let's try to make sense of all of this.
+That's the gist of it, anyway. Let's try to make sense of it all!
 
 {% include toc.md %}
 
 ## The Premature Optimization Trap
 
-Optimizing your code too early can make it more difficult to reason about and potentially more error prone—you waste time optimizing your code rather than making sure it does what it's supposed to. Interestingly, this was the case in the original tweet (which was later corrected)—the proposed reduce logic with `Object.assign` was invalid:
+In some cases, optimizing your code or trying to rewrite it with clever tricks can make it more error prone and difficult to understand. Interestingly, this was the case in the original tweet (which was later corrected)—the proposed reduce logic with `Object.assign` was invalid:
 
 ```javascript
 users
@@ -92,7 +69,7 @@ users
   .reduce(Object.assign, {});
 ```
 
-The corrected form is what I showed at the beginning of this post. Note that it's just one option; [you could also use `Object.fromEntries`](https://twitter.com/Marty_Rosenberg/status/1396308254276390917), although that version is less readable.
+The corrected form is what I showed at the beginning of this post. Note that this is just one option; you could also use `Object.fromEntries`, although that version is even less readable.
 
 ```javascript
 users
@@ -101,15 +78,15 @@ users
   .reduce((offlineUsers, user) => Object.assign(offlineUsers, user), {});
 ```
 
-I blame this on the fact that the code tries to prioritize brevity over clarity. But clever code isn't so clever if it doesn't work!
+I blame this on the fact that the code prioritizes brevity over clarity. It tries to be clever, and in doing so, it introduces a mistake. Clever code isn't clever if it doesn't work.
 
-Moreover, premature optimization can actually present *more* optimization problems. Every additional line of code you write incurs a cost—whether that's wrapping a function component's closure in a `useCallback` when you don't need to or memoizing a component with `React.memo`. You have to be able to justify *why* you're optimizing your code.
+Moreover, premature optimization can actually present *more* performance issues. Every additional line of code you write incurs a cost—whether that's wrapping a function component's closure in a `useCallback` when you don't need to or memoizing a component with `React.memo`. You have to be able to justify *why* you're optimizing your code.
 
 {% include quote.html quote="Performance optimizations ALWAYS come with a cost but do NOT always come with a benefit." source="Kent C. Dodds" cite="https://kentcdodds.com/blog/usememo-and-usecallback" %}
 
 There's a harmful trend in our industry where developers try to cram every ounce of performance out of all the code that they write, citing algorithm theory and Big-O notation to justify their decisions. In all of this, they lose sight of the most important short-term concern: Writing code that works and that other people will understand.
 
-## Optimization, Benchmarking, and Human Reaction Times
+## Optimization, Benchmarking, and Reaction Times
 
 [One of the responses](https://twitter.com/JosiahDahl/status/1396337033262428162) to the original tweet even benchmarked the two code samples in a sandbox environment; the results were as follows:
 
@@ -125,39 +102,42 @@ This means that it's very difficult for you to notice (or react to) something th
 
 ## Premature Optimization and Missing the Bigger Picture
 
-Putting the numbers aside, notice that we've already lost sight of the bigger picture: writing legible and functional code. Instead, we got dragged into a rabbit hole of micro-optimizations, bickering over whether we should use an algorithm that takes $$0.2$$ seconds to run (on average) or one that takes a fraction of the time. We didn't stop to ask the questions that matter:
+Putting the numbers aside, notice that we've already lost sight of the bigger picture: writing legible and functional code. Instead, we got dragged into a rabbit hole of micro-optimizations, bickering over whether we should use an algorithm that takes $$0.2$$ seconds to run (on average) or one that takes a fraction of that time. We didn't stop to ask the questions that *really* matter:
 
-- What is a realistic upper bound for the number of items in the `users` array, in practice?
+- What is a realistic upper bound for the length of the `users` array, in practice?
+- If that number is high, why are we querying such large amounts of data on the frontend?
 - How many consecutive times is this algorithm going to run during a single page view?
-- If it's more than once, why? And can we cache the result somehow?
+- If it runs more than once, why? Could we cache the result somehow?
 - Are there more important concerns in our UX that need to be addressed?
 
-We've wasted time arguing with each other and have gained very little in the way of noticeable performance in our code. We went to great lengths to argue in favor of one side or another, even benchmarking the code to see who's right. If this was at work, we've wasted our time and our employer's money.
+We spent a whole lot of time and effort on arguing about low-level implementation details, even benchmarking the code to see who's right. Meanwhile, we gained very little in the way of performance. If this happened at work, we essentially wasted our time and our employer's money.
 
 ## (Mis)Understanding Big-O Analysis
 
-Many responses to the original tweet cited Big-O notation when comparing the performance of the two algorithms. It's a popular metric for measuring an algorithm's performance. Unfortunately, it's also often misunderstood and misused in practice. So, before we look at some additional code samples, let's take a moment to understand what Big-O is and how it's used.
+Many responses to the original tweet cited Big-O notation when comparing these two algorithms. It's a popular metric for measuring an algorithm's performance. Unfortunately, it's also often misunderstood and misused in practice. So, before we look at some additional code samples, let's take a moment to understand what Big-O is and how it's used.
 
 ### What Is Big-O Notation?
 
+> Note: There's some math theory up ahead. I've tried to keep things as short and simple as possible. Feel free to skip this section if you're already familiar with Big-O.
+
 **Big-O analysis** approximates the worst-case performance of an algorithm, in terms of runtime (CPU) or space (RAM) complexity. These two computational resources are competing in an endless tug of war: If you make an algorithm faster in terms of time complexity, you'll likely need to rely on auxiliary data structures that may increase its memory usage.
 
-Mathematically, we can think of an algorithm as a function $$f$$ that takes some input data of size $$n$$ and does something to it. In our case, the input is the `users` array over which we're iterating, which we assume to have a length of $$n$$. Big-O gives us an upper bound for our function $$f(n)$$, telling us how poorly we can expect it to perform when we increase the size of its inputs (in this case, if we pass in longer and longer arrays).
+Mathematically, we can think of an algorithm as a function $$f$$ that operates on some input data of size $$n$$. In our case, the input is the `users` array (of length $$n$$). Big-O gives us an upper bound for our function $$f(n)$$, telling us how poorly we can expect it to perform when we increase the size of the input (in this case, if we pass in longer and longer arrays).
 
-Usually, you'll see notations like the following:
+These are some of the most popular Big-O functions that you may have seen:
 
 - $$O(1)$$: constant time
 - $$O(n)$$: linear time
 - $$O(n^2)$$: polynomial (quadratic) time
 - $$O(log_{2}(n))$$: logarithmic time
 
-What do these mean? What's the bit between parentheses in Big-O notation?
+But what do these mean?
 
-As a reminder, we're trying to express an upper bound for our algorithm $$f(n)$$. We can do this by introducing a second function. If we say that $$f(n)$$ has a time complexity of $$O(n)$$, what we're really saying is that there's some other function out there—let's call it $$g(n) = n$$—such that our algorithm's performance will never breach this "ceiling":
+As a reminder, we're trying to express an upper bound for our algorithm $$f(n)$$. It turns out that we can do this by introducing a second function as a point of reference. For example, if we say that $$f(n)$$ has a time complexity of $$O(n)$$, what we're really saying is that there's some other function out there—let's call it $$g(n) = n$$—such that our algorithm's performance will never breach some constant multiple of this upper bound:
 
 $$f(n) \leq k \times n$$
 
-So, $$O(n)$$ says that our algorithm runs in linear time in the worst case (i.e., it's bounded from above by a linear function). As the input grows in size, the time it takes for our algorithm to finish its work grows linearly, too.
+So, $$O(n)$$ says that our algorithm runs in linear time in the worst case—i.e., it's bounded from above by a linear function. As the input grows in size, the time that it takes for our algorithm to finish its work grows linearly, too.
 
 More accurately, Big-O measures how well your algorithm scales when it's given *infinitely* large inputs. That is, Big-O expresses the limit of $$f(n)$$ as $$n$$ approaches infinity: $$\lim_{n \to \infty} f(n)$$. This makes it a little impractical in real-world use cases, even though the theory is still important to understand. It's very rare that you'll ever be working with large arrays in JavaScript. And if you are, that's a problem—JavaScript is a single-threaded language, so your app may become unresponsive no matter how efficient your algorithm happens to be.
 
@@ -206,7 +186,7 @@ users
   .reduce((offlineUsers, user) => Object.assign(offlineUsers, user), {});
 ```
 
-However, this algorithm still has a runtime complexity of $$O(n)$$. This means that it's not any better than if we were to use a single loop (at least from a Big-O perspective—actual mileage may vary).
+However, this algorithm still has a runtime complexity of $$O(n)$$. This means that it's not any better than if we were to use a single loop (at least from a Big-O perspective).
 
 Technically, the algorithm's time complexity is $$O(3n)$$—but with the limit definition of Big-O, we strip any leading constants from our function because they never scale with the size of the input. What impacts our algorithm's performance is not how many times we iterate over the array ($$3$$) but rather how big the array can be ($$n$$). The length of the array is variable and has a much bigger impact on the algorithm's performance; the number of iterations is always a constant.
 
@@ -236,7 +216,7 @@ However, the inner loop has a fixed number of iterations—it never scales with 
 
 Sure, $$1,000,000,000$$ is technically huge, but that's irrelevant—it's a constant, just like $$3$$ or $$100$$. Remember: Big-O considers our algorithm to be a function of its input, $$f(n)$$. Here, $$n$$ is the length of the array. Notice that the constant term in the inner loop is not present anywhere in this notation.  What Big-O notation measures is how well (or poorly) your algorithm scales with an input that's variable in size, not how it's impacted by extraneous constants.
 
-For example, in theory, I could pass in an array with hundreds of billions of elements, and that inner loop would still always run a fixed number of times. In fact, the inner loop would now run *fewer* times than the outer loop! So while this code may in fact be *slow*, it's not *inefficient* in terms of Big-O notation.
+For example, in theory, I could pass in an array with hundreds of billions of elements, and that inner loop would still always run a fixed number of times. In fact, the inner loop would now run *fewer* times than the outer loop! So while this code may in fact be *slow*, it's not *inefficient* in terms of Big-O analysis.
 
 > Mathematically speaking, given a constant $$k$$, $$O(kn)$$ always just collapses to $$O(n)$$ when you take its limit as $$n$$ approaches $$\infty$$, no matter how big $$k$$ may be.
 
