@@ -49,7 +49,7 @@
 
   ol,
   ul {
-    padding-left: 4.8rem;
+    padding-left: clamp(1.2rem, 8vw, 4.8rem);
     display: grid;
     grid-row-gap: 0.4rem;
 
@@ -95,8 +95,8 @@
 
   blockquote {
     border-left: 0.4rem solid;
-    margin-left: 2.4rem;
-    padding: 0.4rem 3.2rem;
+    margin-left: clamp(1.2rem, 4vw, 2.4rem);
+    padding: 0.4rem clamp(2rem, 6vw, 3.2rem);
     @include rhythm;
   }
 }
