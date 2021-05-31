@@ -76,7 +76,7 @@ Below are some of the noteworthy responses I saw; they touch on some really impo
 >
 > —[@svencodes](https://twitter.com/svencodes/status/1396839189543587843)
 
-Based on these and many other responses, the key takeaway appears to be this: You shouldn't try to optimize your code unless you have a good reason for doing so. You may think you need to worry about an algorithm's performance, but unless you're confident that it's slow, you're wasting time on micro-optimizations—time that could be better spent doing other things.
+Based on these and many other responses, the key takeaway appears to be this: You shouldn't try to optimize your code unless you have a good reason for doing so. You may think you need to worry about an algorithm's performance, but unless you have evidence that it's slow, you're wasting time doing micro-optimizations for little gain.
 
 Right then—let's try to make sense of all of this.
 
@@ -192,17 +192,15 @@ if (allowedValues.includes(value)) {
 
 Technically, the first version *should* be faster, and you can benchmark this if you'd like to. But what we care about is Big-O theory since that's what usually motivates arguments in favor of one algorithm or another, and this does not involve any concrete benchmarking. So I'll leave that up to you if you're interested.
 
-First, as we learned above, we need to identify the worst case when we're doing Big-O analysis. Here, that's if `value` doesn't exist in the list of possible values (or if it's the last one that we check). This means we have to check all conditions (in the first code sample) or iterate over the entire array (second code sample).
+If you're not experienced with Big-O notation, you may think that the second algorithm has a worse Big-O time complexity than the first. But that's not true! In this case, the array always has a fixed size of four elements. We're not passing in a *dynamic* array as a dependency to our algorithm—it's just a static, hard-coded array of items that we look up in an `if` statement.
 
-If you don't fully understand Big-O notation, you may think that the second algorithm is slower or that it performs on the order of $$O(n)$$. But that's not the case! The array that we're looping over always has a **fixed size** of four elements. We're not passing in a *dynamic* array as a dependency to our algorithm—it's just a static, hard-coded array of items that we look up in an `if` statement.
-
-Moreover, it's unlikely that we'll be adding so many items to this array in the future that the performance penalty of iterating over an array will be perceivable to the end user (if it is, we have bigger problems to worry about—like why we're doing this in the first place, or what exactly is slowing down the app to the point that this is noticeable). Plus, if we ever *do* have to add lots of new values, the second version of the code will actually be more maintainable and legible at a glance. Thus, we can conclude that both algorithms perform on the order of $$O(1)$$, with the second having *barely perceptible* time and space penalties because it's using an array.
+Moreover, it's unlikely that we'll ever add so many items to this array in the future that the performance penalty of iterating over an array will be perceivable to the end user (if it is, we have bigger problems to worry about—like why we're doing this in the first place). Thus, we can conclude that both algorithms perform on the order of $$O(1)$$, with the second having *barely perceptible* time and space penalties because it's using an array.
 
 Taking things a step further, we *could* optimize this algorithm to use a set (or, equivalently, an object/map) instead of an array. This would still give us $$O(1)$$ lookups thanks to hashing. In fact, there's nothing wrong with using an object or set from the get-go. But if doing so harms your code's legibility, or if it means you need to spend more time comparing algorithms, then consider whether you really gained anything meaningful from optimizing your code.
 
 #### 2. Multiple Array Iterations Aren't Inherently Slow
 
-In response to the original tweet, some developers took issue with the fact that the second (proposed) code sample iterates several times over an array. They argued that this is slower than if we were to iterate over the array just once:
+In response to the original tweet, some developers took issue with the fact that the second (proposed) code sample iterates several times over an array. Intuitively, it seems like this should be slower than if we were to iterate over the array just once:
 
 ```javascript
 users
@@ -211,7 +209,7 @@ users
   .reduce((offlineUsers, user) => Object.assign(offlineUsers, user), {});
 ```
 
-This is another misunderstanding of Big-O notation and how it relates to mathematical limits. This algorithm still has a runtime complexity of $$O(n)$$, so it's not any better than if we were to use a single loop (at least in Big-O theory).
+However, this algorithm still has a runtime complexity of $$O(n)$$. This means that it's not any better than if we were to use a single loop (at least from a Big-O perspective—actual mileage may vary).
 
 Technically, the algorithm's time complexity is $$O(3n)$$—but with the limit definition of Big-O, we strip any leading constants from our function because they never scale with the size of the input. What impacts our algorithm's performance is not how many times we iterate over the array ($$3$$) but rather how big the array can be ($$n$$). The length of the array is variable and has a much bigger impact on the algorithm's performance; the number of iterations is always a constant.
 
@@ -221,14 +219,14 @@ So we *could* try to optimize this code by iterating only once over the array, b
 
 #### 3. Two Nested Loops Aren't Always $$O(n^2)$$
 
-Nested loops are not inherently slow, and their time complexity depends on a careful analysis of the algorithm's inputs.
+Contrary to what you may have been taught, nested loops aren't always $$O(n^2)$$. Their time complexity depends on a careful analysis of the algorithm's inputs.
 
 For example, what's the time complexity of this code?
 
 ```javascript
 const logElements = (array) => {
   array.forEach((element) => {
-    for (let i = 0; i < Number.MAX_SAFE_INTEGER; i++) {
+    for (let i = 0; i < 1000000000; i++) {
       console.log(i);
     }
   });
@@ -237,11 +235,11 @@ const logElements = (array) => {
 
 Most people will see two loops and think that this algorithm has a time complexity of $$O(n^2)$$. But it's actually $$O(n)$$. To understand why, we have to remember that the $$n$$ in Big-O denotes the size of the input. In this case, the input is the array over which we're iterating in the outer loop. This accounts for the $$n$$ in our answer.
 
-However, the inner loop has a fixed number of iterations—it never scales with the size of the input like the outer loop does. This gives us a time complexity of `O(Number.MAX_SAFE_INTEGER * n)`. But per the limit definition of Big-O, this collapses to just $$O(n)$$.
+However, the inner loop has a fixed number of iterations—it never scales with the size of the input like the outer loop does. This gives us a time complexity of $$O(1000000000n)$$. But per the limit definition of Big-O, this collapses to just $$O(n)$$.
 
-Sure, `Number.MAX_SAFE_INTEGER` is technically huge, but that's irrelevant—it's a constant, just like $$3$$ or $$100$$. Remember: Big-O considers our algorithm to be a function of its input, $$f(n)$$. Here, $$n$$ is the length of the array. Notice that the constant term in the inner loop is not present anywhere in this notation.  What Big-O notation measures is how well (or poorly) your algorithm scales with an input that's variable in size, not how it's impacted by extraneous constants.
+Sure, $$1,000,000,000$$ is technically huge, but that's irrelevant—it's a constant, just like $$3$$ or $$100$$. Remember: Big-O considers our algorithm to be a function of its input, $$f(n)$$. Here, $$n$$ is the length of the array. Notice that the constant term in the inner loop is not present anywhere in this notation.  What Big-O notation measures is how well (or poorly) your algorithm scales with an input that's variable in size, not how it's impacted by extraneous constants.
 
-For example, in theory, I could pass in an array with $$10$$ quadrillion elements, and that inner loop would still always run a fixed number of times (roughly $$9$$ quadrillion). In fact, the inner loop would now run *fewer* times than the outer loop! So while this code may in fact be *slow*, it's not *inefficient* in terms of Big-O notation.
+For example, in theory, I could pass in an array with hundreds of billions of elements, and that inner loop would still always run a fixed number of times. In fact, the inner loop would now run *fewer* times than the outer loop! So while this code may in fact be *slow*, it's not *inefficient* in terms of Big-O notation.
 
 > Mathematically speaking, given a constant $$k$$, $$O(kn)$$ always just collapses to $$O(n)$$ when you take its limit as $$n$$ approaches $$\infty$$, no matter how big $$k$$ may be.
 
@@ -255,15 +253,15 @@ const doStuff = (array1, array2) => {
 }
 ```
 
-Again, you might be tempted to say that this algorithm's time complexity is $$O(n^2)$$ because of the nested loops. But the correct answer is that *it depends*. It's only $$O(n^2)$$ if the two arrays always have the same number of elements ($$n$$). The more accurate notation is $$O(nm)$$, where $$n$$ is the size of one array and $$m$$ is the size of the other.
+Again, you might think that this algorithm's time complexity is $$O(n^2)$$ because of the nested loops. But the correct answer is that *it depends*. It's only $$O(n^2)$$ if the two arrays always have the same number of elements ($$n$$). The more accurate notation is $$O(nm)$$, where $$n$$ is the size of one array and $$m$$ is the size of the other.
 
 It may seem like I'm being pedantic, but I'm not. If one array has a fixed size or is always very small, we can ignore its impact on the algorithm's performance for larger inputs because the other array will always overtake it. This is just a generalized form of the first code sample we saw above.
 
 ### Example: Reduce with Spread Operator vs. Chaining Array Methods
 
-Now that we've reviewed some sample problems on Big-O analysis and have a better understanding of how it all works, we can revisit the original problem to understand why the second code sample is technically faster (which, again, does not mean that that it's *better*!).
+Now that we've reviewed some sample problems on Big-O analysis and have a better understanding of how it all works and some of the gotchas that you might encounter, we can revisit the original problem to understand why the second code sample is technically faster. Of course, this does not mean that that it's *better*.
 
-As always, whenever we're doing Big-O analysis, we need to identify the worst-case scenario for the given problem. Here, the worst case is if every single user is offline, meaning we never skip a user. This means that in the first code sample, we'll always invoke the spread operator, once for every element of the array.
+As usual, whenever we're doing Big-O analysis, we need to identify the worst-case scenario for the given problem. Here, the worst case is if every single user is offline, meaning we never skip a user. This means that in the first code sample, we'll always invoke the spread operator, once for every element of the array.
 
 #### 1. Reduce and ES6 Spread
 
