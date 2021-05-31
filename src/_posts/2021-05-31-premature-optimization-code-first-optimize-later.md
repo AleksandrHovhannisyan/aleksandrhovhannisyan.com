@@ -1,6 +1,6 @@
 ---
 title: "Premature Optimization: Code First, Optimize Later"
-description: Premature optimization is a big problem in our industry, but it's rarely talked about. Focus on writing legible code; optimize it later.
+description: Premature optimization may be hurting the quality of your work. Focus on writing legible code first; optimize it later if you need to.
 keywords: [big-o notation, micro-optimization, premature optimization]
 tags: [dev, math, algorithms, javascript]
 layout: latexPost
