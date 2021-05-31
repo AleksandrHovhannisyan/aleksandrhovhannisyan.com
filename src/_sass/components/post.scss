@@ -52,6 +52,12 @@
     padding-left: 4.8rem;
     display: grid;
     grid-row-gap: 0.4rem;
+
+    li {
+      ol, ul {
+        margin-top: 0.4rem;
+      }
+    }
   }
 
   a:not([class]) {
