@@ -1,11 +1,8 @@
-.quote {
+figure.quote {
   position: relative;
   font-style: italic;
-  padding-bottom: 2em;
 
   figcaption {
-    position: absolute;
-    bottom: 0;
-    right: 0;
+    text-align: start;
   }
 }
