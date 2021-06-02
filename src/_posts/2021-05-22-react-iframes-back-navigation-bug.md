@@ -33,11 +33,11 @@ Notice that the iframe has a dynamic `src` attribute, meaning its content change
 
 At first glance, everything seems to be working correctly:
 
-{% include img.html img="forward-navigation.gif" alt="A page is shown with four navigation links in a sidebar and a central iframe widget. The iframe renders a number that corresponds to the page the user is on. As the user navigates from page 1 to page 2, the iframe updates its content accordingly." width=994 height=470 %}
+{% include img.html img="forward-navigation.gif" alt="A page is shown with four navigation links in a sidebar and a central iframe widget. The iframe renders a number that corresponds to the page the user is on. As the user navigates from page 1 to page 2, the iframe updates its content accordingly." %}
 
 Let's try going back to the previous page using our browser's back button:
 
-{% include img.html img="back-navigation.gif" alt="A page is shown with four navigation links in a sidebar and a central iframe widget. The iframe renders a number that corresponds to the page the user is on. The user returns to the previous page by clicking their browser's back button. The first time they do this, the iframe updates. The second time they do this, the app itself navigates to the previous page." width=994 height=470 %}
+{% include img.html img="back-navigation.gif" alt="A page is shown with four navigation links in a sidebar and a central iframe widget. The iframe renders a number that corresponds to the page the user is on. The user returns to the previous page by clicking their browser's back button. The first time they do this, the iframe updates. The second time they do this, the app itself navigates to the previous page." %}
 
 Hmm... It doesn't work as expected! When you first click the back button in your browser, the iframe *itself* navigates backward, pointing to the embedded content that you saw on the previous page. But the app didn't navigate—it's still on the old page! In other words, the page and its corresponding iframe are out of sync by one step. When you press back again, you're finally routed to the correct page. Effectively, you have to press the back button *twice* whenever you want a legitimate page navigation.
 
@@ -83,7 +83,7 @@ To solve this problem, we need to **remount the entire iframe** instead of only 
 
 And voila—page navigation is now in sync with the iframe:
 
-{% include img.html img="with-key.gif" alt="A page is shown with four navigation links in a sidebar and a central iframe widget. The iframe renders a number that corresponds to the page the user is on. As the user navigates to the previous page using their browser's back button, the iframe and page navigation remain in sync." width=994 height=470 %}
+{% include img.html img="with-key.gif" alt="A page is shown with four navigation links in a sidebar and a central iframe widget. The iframe renders a number that corresponds to the page the user is on. As the user navigates to the previous page using their browser's back button, the iframe and page navigation remain in sync." %}
 
 {:.no_toc}
 ## And That's It!

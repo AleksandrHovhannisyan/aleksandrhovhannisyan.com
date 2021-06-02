@@ -1,11 +1,20 @@
 @import 'mixins';
 
 .lazily-loaded-picture {
+  position: relative;
   display: block;
+  height: 0;
+  // See picture.html for where this CSS var gets set as an inline style
+  padding-bottom: var(--aspect-ratio);
 }
 
 .lazy-img {
   --transition-duration: 0.8s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  object-position: center;
   height: auto;
   max-width: 100%;
   width: 100%;

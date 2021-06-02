@@ -31,30 +31,13 @@
 }
 
 .post-preview-thumbnail-container {
-  position: relative;
   margin-right: 0;
   margin-bottom: 1.6rem;
   grid-area: thumbnail;
-  height: 0;
-  // 16:9 aspect ratio
-  padding-bottom: 56.25%;
   width: 100%;
 }
 
 .post-preview-thumbnail {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-
-  img {
-    object-fit: cover;
-    object-position: center;
-    width: 100%;
-    height: 100%;
-  }
-
   .light &.loaded img {
     filter: blur(0) contrast(0.95);
   }
@@ -75,10 +58,17 @@
   }
 
   .post-preview-thumbnail-container {
-    height: unset;
-    padding-bottom: 0;
     margin: 0 0 1.6rem 0;
+  }
+
+  .post-preview-thumbnail {
+    --aspect-ratio: unset !important;
+    height: 100%;
     width: 20rem;
+
+    img {
+      height: 100%;
+    }
   }
 
   .post-preview-description {

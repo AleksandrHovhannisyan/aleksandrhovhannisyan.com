@@ -10,6 +10,7 @@ GEM
       http_parser.rb (~> 0.6.0)
     eventmachine (1.2.7)
     execjs (2.7.0)
+    fastimage (2.2.3)
     ffi (1.13.1)
     forwardable-extended (2.6.0)
     http_parser.rb (0.6.0)
@@ -78,6 +79,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  fastimage
   jekyll (~> 4.1.0)
   jekyll-feed (~> 0.6)
   jekyll-paginate-v2

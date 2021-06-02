@@ -26,11 +26,11 @@ If so, great! But while this CSS gives you responsive widths and heights, it doe
 
 If you don't give an image a width and height, it will initially collapse to a height of zero until it has loaded in and the browser is able to calculate the right height for it. If an image is in the viewport when the page loads in, then an initial height of zero means that any content after the image will initially be painted above where it's actually supposed to go, like the second paragraph in this diagram:
 
-{% include img.html img="not-loaded.png" alt="A mock browser window with two paragraphs of text spaced a short distance apart." width="886" height="470" %}
+{% include img.html img="not-loaded.png" alt="A mock browser window with two paragraphs of text spaced a short distance apart." %}
 
 Once the image finishes loading, it will push that content down and take its rightful place:
 
-{% include img.html img="loaded.png" alt="A mock browser window with two paragraphs of text and a large image in between." width="886" height="470" %}
+{% include img.html img="loaded.png" alt="A mock browser window with two paragraphs of text and a large image in between." %}
 
 This is known as a **layout shift**. As its name implies, a layout shift is... well, a *shift in layout*. In other words, a layout shift occurs when elements jump around on a page. Common sources of layout shifts include:
 
@@ -75,7 +75,7 @@ img {
 Here's an example from my article that I linked to earlier, where an image is given width and height attributes of `500` and `300`, respectively; Chrome uses these attributes to compute the image's aspect ratio and applies that CSS, which you can inspect in your dev tools:
 
 <figure>
-  {% include img.html img="default-aspect-ratio.png" alt="The default aspect ratio for an image is observed to be 500 / 300 in Chrome dev tools." width="1290" height="414" %}
+  {% include img.html img="default-aspect-ratio.png" alt="The default aspect ratio for an image is observed to be 500 / 300 in Chrome dev tools." %}
   <figcaption>Photo credit: <a href="https://unsplash.com/photos/og0C_9Mz6RA">Bill Stephan, Unsplash</a></figcaption>
 </figure>
 
@@ -91,11 +91,11 @@ Aspect ratios solve this problem by reserving the right amount of height ahead o
 
 Using the same diagrams as before, we would have an initial frame with two paragraphs and a collapsed image. The colored rectangle between the paragraphs represents the space that the browser has reserved for the image that has not yet loaded. It knows precisely how much space to reserve thanks to the image's aspect ratio:
 
-{% include img.html img="space-reserved.png" alt="A mock browser window with two paragraphs of text spaced a fixed distance apart. That distance is the height that the image between them will occupy once it has loaded in." width="886" height="470" %}
+{% include img.html img="space-reserved.png" alt="A mock browser window with two paragraphs of text spaced a fixed distance apart. That distance is the height that the image between them will occupy once it has loaded in." %}
 
 Once the image loads in, it simply occupies that placeholder space without shifting any of the surrounding content:
 
-{% include img.html img="loaded.png" alt="A mock browser window with two paragraphs of text and a large image in between. The spacing between the two paragraphs is the same as it was before the image loaded in." width="886" height="470" %}
+{% include img.html img="loaded.png" alt="A mock browser window with two paragraphs of text and a large image in between. The spacing between the two paragraphs is the same as it was before the image loaded in." %}
 
 Lighthouse is happy, and so are your users!
 
@@ -221,7 +221,7 @@ You'd use it like this:
 
 {% raw %}
 ```liquid
-{% include img.html src="path/to/img.png" alt="" width="1280" height="750" %}
+{% include img.html src="path/to/img.png" alt="" %}
 ```
 {% endraw %}
 
@@ -242,7 +242,7 @@ Chrome will use the image's `width` and `height` to apply the `aspect-ratio` pro
 
 You can verify this by rendering an example and deleting the nested `<img>` tag via devtools. You'll find that the `<picture>` aspect ratio container won't collapse its width and height—it will remain sized correctly, just as if you hadn't deleted the image. Here's an example from my site:
 
-{% include img.html img="deleting.gif" alt="A demonstration of deleting an image nested inside a picture tag that serves as an aspect ratio container. When the image is deleted, the picture tag continues to occupy the same amount of space as it did before." width="1681" height="372" %}
+{% include img.html img="deleting.gif" alt="A demonstration of deleting an image nested inside a picture tag that serves as an aspect ratio container. When the image is deleted, the picture tag continues to occupy the same amount of space as it did before." %}
 
 In this case, I used an aspect ratio container whose vertical padding is `100%`, meaning it's a square. That's because the width and height of my image are the same. And that's all there is to it!
 

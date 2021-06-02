@@ -320,7 +320,7 @@ We're almost done! You've installed ESLint and configured it according to your n
 
 The first step is easy—just head over to the extensions tab in VS Code's sidebar and search for the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) (`dbaeumer.vscode-eslint`):
 
-{% include img.html img="eslint-extension.png" alt="Viewing the ESLint extension in the VS Code extension marketplace." width=1312 height=542 %}
+{% include img.html img="eslint-extension.png" alt="Viewing the ESLint extension in the VS Code extension marketplace." %}
 
 You may need to reload VS Code.
 
@@ -357,7 +357,7 @@ Open up your command palette (`Ctrl+Shift+P` on Windows and `Cmd+Shift+P` on Mac
 - User settings: `Preferences: Open Settings (JSON)`
 - Workspace settings: `Preferences: Open Workspace Settings (JSON)`
 
-{% include img.html img="settings.png" alt="Searching for 'settings' via VS Code's command palette." width=935 height=512 %}
+{% include img.html img="settings.png" alt="Searching for 'settings' via VS Code's command palette." %}
 
 Select either one. I recommend configuring this in both your user and workspace settings; the latter is a good option if other developers on your team use VS Code. That way, they don't have to update their user settings manually—when you push these changes, VS Code will load their workspace settings. User settings are handy if you want to set them once and be done with it.
 
@@ -394,7 +394,7 @@ To make sure these settings kick in for your project, you'll want to:
 
 Run the command; you should see a loader pop up on VS Code's status bar saying `Initializing JS/TS language features`. Once it disappears, you should be good to go:
 
-{% include img.html img="initializing-language-features.png" alt="The VS Code status bar displays the text Initializing JS/TS language features next to a loading spinner." width=1246 height=168 %}
+{% include img.html img="initializing-language-features.png" alt="The VS Code status bar displays the text Initializing JS/TS language features next to a loading spinner." %}
 
 Now, just open up a file and mess it up on purpose; you should see squiggly red lines if the violation is treated as an error and orange if it's a warning. VS Code will auto-format your code with ESLint when you save the file.
 

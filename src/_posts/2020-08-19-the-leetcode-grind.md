@@ -11,7 +11,7 @@ tags: [dev, leetcode, algorithms]
 
 The "grind" bit aside, **Leetcode** is just a platform where you can solve programming puzzles of varying difficulty that cover a wide range of data structures and algorithms (DSA) topics, like trees, dynamic programming, linked lists, string manipulation, and much more. Many of these problems require that you find an optimal solution, in terms of time or space complexity (or both).
 
-{% include img.html img="leetcode.png" alt="Leetcode has a list of DSA problems that you can solve" width=1567 height=605 %}
+{% include img.html img="leetcode.png" alt="Leetcode has a list of DSA problems that you can solve" %}
 
 Used generally, the term "Leetcode" (or, in its verb form, *to Leetcode*) doesn't necessarily refer to *that particular platform*. Rather, it refers to a range of platforms—including Hackerrank, Geeksforgeeks, CodeChef, and more—that are meant to help you practice solving technical interview problems and coding puzzles.
 

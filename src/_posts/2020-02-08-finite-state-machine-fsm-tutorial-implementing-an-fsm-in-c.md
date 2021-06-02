@@ -9,7 +9,7 @@ is_popular: true
 
 Finite state machines (FSMs) are used in lots of different situations to model complex entity state. They're especially relevant in game dev for modeling dynamic AI behavior and decision-making. Here's a very rough sketch of what a finite state machine might look like:
 
-{% include img.html img="fsm.jpg" alt="A finite state machine representation." width=1094 height=555 %}
+{% include img.html img="fsm.jpg" alt="A finite state machine representation." %}
 
 An entity may transition from one state to another, or it may remain in its current state. The arrows denote transitions. The conditions under which a transition should take place will need to be coded into the FSM itself.
 

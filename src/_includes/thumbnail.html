@@ -1,6 +1,6 @@
 {%- assign post = include.post -%}
 {%- assign thumbnail_file_name = post.thumbnail | default: 'thumbnail.png' -%}
-{%- assign thumbnail_path = '/assets/images/posts/' | append: post.slug | append: '/' | append: thumbnail_file_name -%}
+{%- assign thumbnail_path = site.source | append: '/assets/images/posts/' | append: post.slug | append: '/' | append: thumbnail_file_name -%}
 {%- assign class = "post-preview-thumbnail" -%}
 {%- if include.class -%}
   {%- assign class = class | append: ' ' | append: include.class -%}

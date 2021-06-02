@@ -12,7 +12,7 @@ Isshin, the Sword Saint—the revered kensei of Ashina returns from the afterlif
 
 > *"Pitiful grandchild... This was your last wish. To see Ashina returned from the great beyond... which means, Sekiro, I must destroy you."* —Isshin, the Sword Saint
 
-{% include img.html img="isshin.png" alt="Isshin Ashina readies his blade as he prepares to fight Sekiro in the final cutscene. The words 'I must destroy you' are captioned on screen." width=1143 height=632 %}
+{% include img.html img="isshin.png" alt="Isshin Ashina readies his blade as he prepares to fight Sekiro in the final cutscene. The words 'I must destroy you' are captioned on screen." %}
 
 The only thing standing in his way? A fangless Wolf, sworn to defend his lord's life at all costs.
 

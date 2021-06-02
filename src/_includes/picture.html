@@ -1,22 +1,30 @@
-{%- assign img_parts = include.img | split: '.' -%}
-{%- assign img = img_parts[0] -%}
-{%- assign ext = img_parts[1] -%}
+{%- assign source_dir = site.source | append: '/' -%}
+{%- assign source_img_path = include.img -%}
+{%- assign public_img_path = source_img_path | replace: source_dir, '/' | split: '.' -%}
+{%- assign path_and_name = public_img_path[0] -%}
+{%- assign extension = public_img_path[1] -%}
 {%- assign class = include.class -%}
 {%- assign id = include.id -%}
-{%- assign width = include.width -%}
-{%- assign height = include.height -%}
 {%- assign clickable = include.clickable -%}
-{%- unless clickable == false %}<a href="{{ img }}.{{ ext }}" class="clickable-picture-anchor">{%- endunless -%}
-  <picture class="lazily-loaded-picture{% if class %} {{ class }}{% endif %}" {% if id %}id="{{ id }}"{% endif %} {% if width and height %}style="height: 0; padding-bottom: {{ height | times: 1.0 | divided_by: width | times: 100 }}%;"{% endif %}>
+{%- assign img_dimensions = source_img_path | image_size -%}
+{%- assign width = img_dimensions[0] -%}
+{%- assign height = img_dimensions[1] -%}
+{%- assign aspect_ratio_percentage = height | times: 100.0 | divided_by: width -%}
+{%- assign loading = include.loading | default: 'lazy' -%}
+{%- unless clickable == false %}<a href="{{ path_and_name }}.{{ extension }}" class="clickable-picture-anchor">{%- endunless -%}
+  <picture class="lazily-loaded-picture{% if class %} {{ class }}{% endif %}" {% if id %}id="{{ id }}"{% endif %} style="--aspect-ratio: {{ aspect_ratio_percentage }}%;">
     <source
-        srcset="{{ img }}-placeholder.webp"
+        srcset="{{ path_and_name }}-placeholder.webp"
         type="image/webp"
-        data-srcset="{{ img }}.webp"
+        data-srcset="{{ path_and_name }}.webp"
         class="lazy-source">
     <img
-        src="{{ img }}-placeholder.{{ ext }}"
+        src="{{ path_and_name }}-placeholder.{{ extension }}"
         alt="{{ include.alt }}"
-        data-src="{{ img }}.{{ ext }}"
-        class="lazy-img" {% if width %}width="{{ width }}"{% endif %} {% if height %}height="{{ height }}"{% endif %}>
+        data-src="{{ path_and_name }}.{{ extension }}"
+        width="{{ width }}"
+        height="{{ height }}"
+        loading="{{ loading }}"
+        class="lazy-img">
   </picture>
 {%- unless clickable == false -%}</a>{%- endunless -%}

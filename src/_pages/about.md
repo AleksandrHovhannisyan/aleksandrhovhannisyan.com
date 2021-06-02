@@ -10,7 +10,8 @@ Thanks for dropping by! My name's Aleksandr—and yes, that's spelled *without* 
 
 Speaking of last names, if mine hasn't already [betrayed me](http://www.armeniapedia.org/wiki/Armenian_Last_Names), I was originally born in Armenia, a beautiful country nestled between Europe, Asia, and [a bunch of biblically old mountains](https://en.wikipedia.org/wiki/Mount_Ararat). You can almost spot it on a world map if you squint hard enough.
 
-{% include picture.html img="/assets/images/about/armenia.png" alt="A map of Armenia" width=1021 height=503 %}
+{% assign armenia_img = site.source | append: '/assets/images/about/armenia.png' %}
+{% include picture.html img=armenia_img alt="A map of Armenia" clickable=false %}
 
 Long story short, I moved to the U.S. when I was little and have lived in the states for most of my life. I currently reside in Gainesville, Florida, where you'll find plenty of friendly gators, lovebugs whose carcasses will eat away at your car's paint, the infamous Florida Man, and, of course, the University of Florida.
 

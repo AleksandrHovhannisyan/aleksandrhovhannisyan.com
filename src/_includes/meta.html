@@ -9,7 +9,8 @@
 <ul class="post-meta">
   {% if show_profile_photo %}
     <li class="post-meta-item">
-      {%- include picture.html img="/assets/images/profile-photo-78.png" alt="" class="author-photo" width=78 height=78 clickable=false -%}
+      {%- assign author_photo = site.source | append: '/assets/images/profile-photo-78.png' -%}
+      {%- include picture.html img=author_photo alt="" class="author-photo" width=78 height=78 clickable=false -%}
     </li>
   {%- endif -%}
   <li class="post-meta-item post-date-published">

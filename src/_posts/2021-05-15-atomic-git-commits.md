@@ -95,7 +95,7 @@ Making atomic commits is a good practice, but you'll also want to write meaningf
 Here's an example from the TypeScript repo of what that last tip might look like in practice:
 
 <figure>
-  {% include img.html img="typescript-repo.png" alt="The TypeScript repository on GitHub, with the main view of folders, the recent commits that changed them, and basic information about the repository. Some commits mention issues, which get hyperlinked automatically." width=1516 height=608 %}
+  {% include img.html img="typescript-repo.png" alt="The TypeScript repository on GitHub, with the main view of folders, the recent commits that changed them, and basic information about the repository. Some commits mention issues, which get hyperlinked automatically." %}
   <figcaption aria-hidden="true">Some commits mention issues, which get hyperlinked automatically.</figcaption>
 </figure>
 

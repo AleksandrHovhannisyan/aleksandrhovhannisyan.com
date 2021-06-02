@@ -37,7 +37,7 @@ Interestingly, the ASCII standard isn't just for *visible* characters like lette
 Back in the old days, people used to lug around these chunky devices called *typewriters*.
 
 <figure>
-  {% include img.html img="typewriter.png" alt="Top-down view of a typewriter, with paper fed into the carriage." width=1084 height=713 %}
+  {% include img.html img="typewriter.png" alt="Top-down view of a typewriter, with paper fed into the carriage." %}
   <figcaption>Photo credit: <a href="https://unsplash.com/photos/59lC6TgZAbQ">Patrick Fore, Unsplash</a></figcaption>
 </figure>
 
@@ -222,7 +222,7 @@ A `.gitattributes` file is technically all that you need in order to enforce the
 
 Again, this doesn't mean that Git's normalization process isn't working; it's just the expected behavior. However, this can get annoying if you're also linting your code with ESLint and Prettier, in which case they'll constantly throw errors and tell you to delete those extra `CR`s:
 
-{% include img.html img="prettier.png" alt="A user's mouse hovers over red squiggly lines in a file that's using CRLF line endings. A prettier warning tells the user to remove the carriage return character." width=919 height=206 %}
+{% include img.html img="prettier.png" alt="A user's mouse hovers over red squiggly lines in a file that's using CRLF line endings. A prettier warning tells the user to remove the carriage return character." %}
 
 Fortunately, you can take things a step further with an `.editorconfig` file; this is an [editor-agnostic project](https://editorconfig.org/) that aims to create a standardized format for customizing the behavior of any given text editor. Lots of text editors (including VS Code) support and automatically read this file if it's present. You can put something like this in the root of your workspace:
 
