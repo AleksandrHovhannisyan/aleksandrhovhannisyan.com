@@ -28,13 +28,17 @@ Interestingly, the ASCII standard isn't just for *visible* characters like lette
 
 ### `LF`: Line Feed
 
-**LF** stands for "line feed," but you're probably more familiar with the term **newline** (the escape sequence `\n`). Simply put, this character represents the end of a line of text. On Linux and Mac, this is equivalent to the start of a new line of text. That distinction is important because Windows does not follow this convention. We'll talk about why once we learn about carriage returns.
+**LF** stands for "line feed," but you're probably more familiar with the term **newline** (the escape sequence `\n`). Simply put, this character represents the end of a line of text. On Linux and Mac, this is equivalent to the start of a new line of text. That distinction is important because Windows does not follow this convention. We'll discuss why once we learn about carriage returns.
 
 ### `CR`: Carriage Return
 
-**CR** (the escape sequence `\r`) stands for **carriage return**, which moves the cursor to the start of the current line. You might be wondering: Where did the need for such a character originate? Good question!
+**CR** (the escape sequence `\r`) stands for **carriage return**, which moves the cursor to the start of the current line. If you've ever seen a download progress bar on your terminal, this is how it works its magic! By using the carriage return, your terminal can animate text in place by returning the cursor to the start of the current line and overwriting any previously rendered text.
 
-Back in the old days, people used to lug around these chunky devices called *typewriters*.
+That's cool, but you may be wondering where the need for such a character originated (beyond just animating text, which happens to be a niche application). It's a good question—and the answer will help us better understand why Windows uses `CRLF`.
+
+#### Typewriters and the Carriage Return
+
+Back when dinosaurs roamed the earth, people used to lug around these chunky devices called *typewriters*.
 
 <figure>
   {% include img.html img="typewriter.png" alt="Top-down view of a typewriter, with paper fed into the carriage." %}
@@ -47,9 +51,9 @@ Of course, once you run out of space on the current line, you'll need to go down
 
 > **Fun Fact**: You may be familiar with the characteristic *ding* sound that a typewriter makes from movies or video games (thanks, *Dishonored*!). This is known as the margin bell, which is triggered as soon as your text approaches the very right margin to signal that you need to move on to the next line.
 
-This is all good and well, but you're probably wondering how this is relevant in the world of computers, where carriages, levers, and all these contraptions seem obsolete. We're getting there!
+That's all good and well, but you're probably wondering how this is relevant in the world of computers, where carriages, levers, and all these contraptions seem obsolete. We're getting there!
 
-## Teletypewriters and the Birth of `CRLF`
+#### Teletypewriters and the Birth of `CRLF`
 
 Moving on to the early 20th century, we arrive at the **teletypewriter**, yet another device predating the modern computer. Basically, it works exactly the same way that a typewriter does, except instead of printing to a physical sheet of paper, it sends your message to a receiving party via a transmitter, either over a physical wire or radio waves.
 
@@ -71,11 +75,38 @@ It's easy to see why `CRLF` is redundant by today's standards—using both a car
 
 While it may seem like a harmless difference between operating systems, this issue of CRLF vs. LF has been causing people headaches for a long time now. For example, basic Windows text editors like Notepad used to not be able to properly interpret `LF` alone as a true line ending. Thus, if you opened a file created on Linux or Mac with Notepad, the line endings would not get rendered correctly. Notepad was later [updated in 2018 to support `LF`](https://devblogs.microsoft.com/commandline/extended-eol-in-notepad/).
 
-### A Note on the Utility of Carriage Returns
+## Inspecting and Converting Line Endings (in Bash)
 
-While we learned that `CRLF` may be redundant for newlines and that you could get away with a simple line feed, this doesn't mean that the carriage return is useless. Carriage returns can actually be *really useful* on their own. In fact, you see them in action every time you run something like `yarn` in your terminal. Ever wondered how certain terminal commands are able to animate text in-place, like for download progress bars? Recall that the carriage return moves your cursor to the start of the current line. Naturally, this means you can use a carriage return to overwrite a line of text in place. It's like if you were to paint a wall, then paint over it with a fresh layer, and keep repainting it at set intervals.
+Cool! Now that we know how line endings originated, it's worth learning something practical.
+
+In bash (or, equivalently, WSL if you're using Windows), you can view line endings for a specific file using `cat` with the `A` flag:
+
+{% include codeHeader.html %}
+```
+cat -A myFile
+```
+
+If a file is using `CRLF`, you'll see the string `^M$` at the end of each line, where `^M` denotes a carriage return and `$` a line feed. Here's an example of what that might look like:
+
+```
+line one^M$
+line two^M$
+line three^M$
+```
+
+If a file is using `LF`, then you'll only see dollar signs:
+
+```
+line one$
+line two$
+line three$
+```
+
+You can also use the [`dos2unix` command-line utility](https://linux.die.net/man/1/dos2unix) to convert a file from DOS format (Windows, using `CRLF`) to UNIX (`LF`).
 
 ## Line Endings in Git
+
+Admittedly, that was a lot of background to get through! But it was worth it because we're finally ready to talk about line endings as they relate to git (and how to solve the problem of `CRLF` vs. `LF` in any given code base).
 
 As you can probably guess, the lack of a universal line ending presents a dilemma for software like git, which relies on very precise character comparisons to determine if a file has changed since the last time it was checked in. If one developer uses Windows and another uses Mac or Linux, and they each save and commit the same files, they may see line ending changes in their git diffs—a conversion from `CRLF` to `LF` or vice versa. This leads to unnecessary noise due to single-character changes and can be quite annoying.
 
@@ -135,9 +166,9 @@ Commit the file and push it to your remote.
 
 You can learn more about how this works in the answer to this StackOverflow question: [What's the difference between “* text=auto eol=lf” and “* text eol=lf” in .gitattributes?](https://stackoverflow.com/a/56858538/5323344). I've provided a condensed summary below.
 
-First, you need to understand that Git uses a simple algorithm to detect whether a particular file in your repo is a text file or a binary file (e.g., an executable, image, or font file). By default, this algorithm is used for the purpose of diffing files that have changed, but it can also come in handy for the purpose of enforcing line ending conventions (as we're doing here).
+First, you need to understand that git uses a simple algorithm to detect whether a particular file in your repo is a text file or a binary file (e.g., an executable, image, or font file). By default, this algorithm is used for the purpose of diffing files that have changed, but it can also come in handy for the purpose of enforcing line ending conventions (as we're doing here).
 
-That's what `text=auto` does in the config above—it tells Git to apply its auto-detection algorithm to determine whether a file is a text file. Then, `eol=lf` tells Git to enforce `LF` line endings for text files **on both checkout and commit**. This should work well on both Windows and Linux since a majority of cross-platform text editors support `LF`. (But as I mentioned earlier, historically, some Windows text editors like Notepad would struggle to interpret `LF` alone. Nowadays, this is less of a problem.)
+That's what `text=auto` does in the config above—it tells git to apply its auto-detection algorithm to determine whether a file is a text file. Then, `eol=lf` tells git to enforce `LF` line endings for text files **on both checkout and commit**. This should work well on both Windows and Linux since a majority of cross-platform text editors support `LF`. (But as I mentioned earlier, historically, some Windows text editors like Notepad would struggle to interpret `LF` alone. Nowadays, this is less of a problem.)
 
 Git's auto-detection algorithm is fairly accurate, but in case it fails to correctly distinguish between a text file and a binary file (like an image or font file), we can also explicitly mark a subset of our files as binary files to avoid bricking them. That's what we're doing here:
 
@@ -145,14 +176,14 @@ Git's auto-detection algorithm is fairly accurate, but in case it fails to corre
 *.{png,jpg,jpeg,gif,webp,woff,woff2} binary
 ```
 
-Now, after committing this file, the final step is to renormalize all your line endings for any files that were checked into git **prior** to the addition of `.gitattributes`. You can do that with the following command [since Git 2.16](https://stackoverflow.com/a/50645024/5323344):
+Now, after committing this file, the final step is to renormalize all your line endings for any files that were checked into git **prior** to the addition of `.gitattributes`. You can do that with the following command [since git 2.16](https://stackoverflow.com/a/50645024/5323344):
 
 {% include codeHeader.html %}
 ```
 git add --renormalize .
 ```
 
-This reformats all your files according to the rules defined in your `.gitattributes` config. If previously committed files are using `CRLF` in Git's index and are converted to `LF` as a result of this renormalization, their line endings will be updated in the index, and those files will be staged for a commit. The only thing left to do is to commit those changes and push them to your repo. From that point onward, anytime a new file is introduced, its line endings will be checked in (and checked out) as `LF`.
+This reformats all your files according to the rules defined in your `.gitattributes` config. If previously committed files are using `CRLF` in git's index and are converted to `LF` as a result of this renormalization, their line endings will be updated in the index, and those files will be staged for a commit. The only thing left to do is to commit those changes and push them to your repo. From that point onward, anytime a new file is introduced, its line endings will be checked in (and checked out) as `LF`.
 
 #### Git Line Endings: Working Tree vs. Index
 
@@ -165,7 +196,7 @@ The file will have its original line endings in your working directory.
 
 This is the expected behavior—`CRLF` will become `LF` in Git's index, meaning when you push those files to your repo, they'll have `LF` line endings in the remote copy of your code. Anyone who later pulls or checks out that code will see `LF` line endings locally.
 
-But Git doesn't actually change line endings for the **local copies** of your files (i.e., the ones in its working tree). Hence the last bit of the message, which informs you that the files you just renormalized may still continue to use `CRLF` locally.
+But git doesn't actually change line endings for the **local copies** of your files (i.e., the ones in its working tree). Hence the last bit of the message, which informs you that the files you just renormalized may still continue to use `CRLF` locally.
 
 Rest assured that these files will never use `CRLF` in the *remote* copy of your code if you've specified `LF` as your desired line ending convention in the `.gitattributes` file.
 
@@ -191,36 +222,13 @@ From left to right, these are:
 - `attr`: The `.gitattributes` rule that applies to this file.
 - The file name itself.
 
-If you just want to view line endings for a single file, you can do so with the following command in Bash (or, equivalently, WSL if you're on Windows):
-
-{% include codeHeader.html %}
-```
-cat -A myFile
-```
-
-If a file is using `CRLF` locally, you'll see the corresponding meta characters `^M$`: `^M` for carriage return and `$` for line feed. So something like this:
-
-```
-line one^M$
-line two^M$
-line three^M$
-```
-
-If a file is using `LF`, then you'll only see dollar signs:
-
-```
-line one$
-line two$
-line three$
-```
-
-Finally, you can double-check that Git's renormalization process worked by re-cloning your repository on a Windows machine after you've pushed your code to the remote. You should see that both the index and working-tree copies of your files are using `LF` and not `CRLF`.
+Alternatively, you can double-check that git normalized your line endings correctly by re-cloning your repository on a Windows machine after you've pushed your code to the remote. You should see that both the index and working-tree copies of your files are using `LF` and not `CRLF` (assuming this is how you chose to normalize your line endings).
 
 ## Bonus: Create an `.editorconfig` File
 
-A `.gitattributes` file is technically all that you need in order to enforce the line endings that show up on the remote copy of your codebase. However, as we saw above, you may still see `CRLF` line endings locally for files that you created because `.gitattributes` doesn't tell Git to change the working copies of your files.
+A `.gitattributes` file is technically all that you need in order to enforce the line endings that show up on the remote copy of your codebase. However, as we saw above, you may still see `CRLF` line endings locally for files that you created because `.gitattributes` doesn't tell git to change the working copies of your files.
 
-Again, this doesn't mean that Git's normalization process isn't working; it's just the expected behavior. However, this can get annoying if you're also linting your code with ESLint and Prettier, in which case they'll constantly throw errors and tell you to delete those extra `CR`s:
+Again, this doesn't mean that git's normalization process isn't working; it's just the expected behavior. However, this can get annoying if you're also linting your code with ESLint and Prettier, in which case they'll constantly throw errors and tell you to delete those extra `CR`s:
 
 {% include img.html img="prettier.png" alt="A user's mouse hovers over red squiggly lines in a file that's using CRLF line endings. A prettier warning tells the user to remove the carriage return character." %}
 
