@@ -179,68 +179,9 @@ img {
 }
 ```
 
-If you're using a static site generator that supports shortcodes/includes, you can create a reusable image component like the following that takes an optional width and height and applies an inline style on the image's container to give it the right aspect ratio:
+Chrome will use the image's `width` and `height` to apply the `aspect-ratio` property in its CSS, whereas browsers like Firefox, Safari, and any others that don't yet support this behavior will fall back to the padding we've defined. Either way, the right amount of space will get reserved for your images, ensuring that they don't shift any content as they load in.
 
-{% include codeHeader.html file="_includes/img.html" %}
-{% raw %}
-```liquid
-{% assign width = include.width %}
-{% assign height = include.height %}
-<picture
-  {%- if width and height -%}
-  style="height: 0; padding-bottom: {{ height | times: 1.0 | divided_by: width | times: 100 }}%;"
-  {%- endif -%}
->
-  <!-- maybe a source tag here for WebP/AVIF images -->
-  <img
-    src="{{ include.src }}"
-    alt="{{ include.alt }}"
-    {% if width %}width="{{ width }}"{% endif %}
-    {% if height %}height="{{ height }}"{% endif %}
-  />
-</picture>
-```
-{% endraw %}
-
-And here's the accompanying CSS:
-
-```css
-picture {
-  display: block;
-  width: 100%;
-}
-
-picture img {
-  height: auto;
-  max-width: 100%;
-  width: 100%;
-}
-```
-
-You'd use it like this:
-
-{% raw %}
-```liquid
-{% include img.html src="path/to/img.png" alt="" %}
-```
-{% endraw %}
-
-And that would generate this output HTML:
-
-```html
-<picture style="height: 0; padding-bottom: 58.59375%;">
-  <img
-    src="path/to/img.png"
-    alt=""
-    width="1280"
-    height="750"
-  />
-</picture>
-```
-
-Chrome will use the image's `width` and `height` to apply the `aspect-ratio` property in its CSS, whereas browsers like Firefox, Safari, and any others that don't yet support this behavior will use the `picture` tag as an aspect ratio container. Either way, the right amount of space will get reserved for your images, ensuring that they don't shift any content as they load in.
-
-You can verify this by rendering an example and deleting the nested `<img>` tag via devtools. You'll find that the `<picture>` aspect ratio container won't collapse its width and height—it will remain sized correctly, just as if you hadn't deleted the image. Here's an example from my site:
+You can verify this by rendering one of the examples above locally and deleting the nested `<img>` tag via devtools. You'll find that the parent aspect ratio container won't collapse its width and height—it will remain sized correctly, just as if you hadn't deleted the image. Here's an example from my site:
 
 {% include img.html img="deleting.gif" alt="A demonstration of deleting an image nested inside a picture tag that serves as an aspect ratio container. When the image is deleted, the picture tag continues to occupy the same amount of space as it did before." %}
 
