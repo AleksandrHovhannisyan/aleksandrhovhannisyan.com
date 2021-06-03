@@ -24,8 +24,9 @@ lazyLoad(lazyImages, (img) => {
   img.onload = () => {
     pictureElement.classList.add('loaded');
   };
-  source.srcset = source.getAttribute('data-srcset');
-  img.src = img.getAttribute('data-src');
+
+  source.srcset = source.dataset.srcset;
+  img.src = img.dataset.src;
 });
 
 const copyableCodeBlocks = document.querySelectorAll('.code-header.with-copy-button + .highlighter-rouge');
