@@ -453,6 +453,8 @@ Or even slanted/diagonal lines:
 
 And that's all that you really need to know about SVG lines. As an exercise, I'll challenge you to draw a hamburger icon, like you'd see for a mobile navigation menu.
 
+By the way, have you noticed how all my lines have rounded ends? If you've been following along on your end, you may be seeing flat terminal ends, not round ones. You're not doing anything wrong! We'll go over this in the next section ([`stroke-linejoin` and `stroke-linecap`](#stroke-linejoin-and-stroke-linecap)).
+
 ### 2. Polylines
 
 Imagine that we want to draw several line segments, like for the letter `T` in a text icon:
