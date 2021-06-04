@@ -30,7 +30,7 @@ preloads:
     {% include meta.html post=page last_updated=page.last_updated show_profile_photo=true %}
   </header>
   <div class="post-content">
-    {{ content }}
+    {{ content | replace: '<a href="http', '<a rel="nofollow noopener noreferrer" target="_blank" href="http' }}
     {%- assign comments_repo = site.issues_repo -%}
     {%- assign comments_id = page.comments_id -%}
     {%- if comments_id -%}

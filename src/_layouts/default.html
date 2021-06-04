@@ -24,7 +24,7 @@
   <meta name="keywords" content="{%- if page.keywords -%}{{ page.keywords | join: ', ' }}{%- else -%}{{ site.keywords | join: ', ' }}{%- endif -%}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="{{ site.author }}">
-  <meta name="referrer" content="origin">
+  <meta name="referrer" content="same-origin">
   {%- comment -%}Open Graph social media previews{%- endcomment -%}
   <meta property="og:title" content="{{ page.title }} | {{ site.title }}">
   {%- assign og_image = page.og_image | default: '/assets/images/favicons/favicon-228.png' -%}
