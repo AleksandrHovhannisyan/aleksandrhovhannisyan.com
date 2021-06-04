@@ -21,6 +21,7 @@ html {
   --color-black-80: hsl(0, 0%, 80%);
   --color-black-85: hsl(0, 0%, 85%);
   --color-black-90: hsl(0, 0%, 90%);
+  --color-black-92: hsl(0, 0%, 92%);
   --color-black-95: hsl(0, 0%, 95%);
   --color-white: hsl(0, 0%, 100%);
 
@@ -59,7 +60,7 @@ html.light {
   --footer-text-color: var(--navbar-text-color);
   --form-bg-color: var(--color-black-95);
   --hover-bg-color: var(--color-black-95);
-  --inline-code-bg-color: var(--color-black-90);
+  --inline-code-bg-color: var(--color-black-92);
   --inline-code-text-color: var(--text-color-normal);
   --input-bg-color: var(--color-white);
   --input-border-color-focus: var(--color-black-30);
@@ -75,11 +76,11 @@ html.light {
   --scrollbar-track-bg-color: var(--color-black-90);
   --selection-bg-color: var(--color-black-10);
   --selection-text-color: var(--color-white);
-  --table-border-color: var(--color-black-70);
-  --table-header-bg-color: var(--color-black-90);
+  --table-border-color: var(--color-black-80);
+  --table-header-bg-color: var(--color-black-92);
   --table-header-text-color: var(--color-black-25);
   --tag-bg-color-focus: var(--color-black-15);
-  --tag-bg-color: var(--color-black-90);
+  --tag-bg-color: var(--color-black-92);
   --tag-text-color-focus: var(--color-white);
   --tag-text-color: var(--color-black-10);
   --text-color-emphasis: var(--color-black-10);
