@@ -3,7 +3,7 @@ title: "SVG Tutorial: How to Code SVG Icons by Hand"
 description: Learn the basics of SVGs so you can code your own SVG icons by hand, without always relying on icon libraries.
 keywords: [svg tutorial, svg icons, how to code svg]
 tags: [dev, svg, html, css]
-last_updated: 2021-02-19
+last_updated: 2021-06-04
 canonical_url: https://www.aleksandrhovhannisyan.com/blog/svg-tutorial-how-to-code-svg-icons-by-hand/
 comments_id: 68
 is_popular: true
@@ -101,7 +101,7 @@ As you'll see in this tutorial, coding SVG icons by hand is actually fairly stra
   </li>
 </ul>
 
-If you're curious, I took inspiration for these SVG icons from [Feather Icons](https://feathericons.com/), a fantastic library created by [Cole Bemis](https://colebemis.com/). These icons will help us learn how to draw the following shapes with SVG:
+If you're curious, I took inspiration for these SVG icons from [Feather Icons](https://feathericons.com/), a fantastic library created by [Cole Bemis](https://colebemis.com/). These icons will help us learn how to draw the following SVG shapes:
 
 - Lines
 - Polylines
@@ -117,9 +117,61 @@ I hope you're excited to get started! Feel free to jump around if you want, but 
 
 ## What Is an SVG?
 
-**SVG** stands for **Scalable Vector Graphics**; it's a vector image format that allows you to draw shapes using a standard markup (XML) syntax. The "scalable" part of the name is a key characteristic of SVGs—unlike other image formats, they don't lose quality when you scale them beyond their original size. Whereas images store their data using fixed-size pixels, SVGs store them as XML definitions for shapes, which can easily be scaled responsively to any size.
+**SVG** stands for Scalable Vector Graphics; it's a **vector image format** that allows you to draw shapes using a markup language (XML). The "scalable" part of the name is a key characteristic of SVGs—unlike raster image formats (e.g., PNG, JPEG), vector images don't lose quality when you scale them beyond their original size. Whereas raster images store their data using fixed-size pixels, vector images like SVGs store their data as XML definitions for shapes, which can easily be scaled responsively to any size.
 
-It's also worth noting that you can animate SVGs; [Joshua Comeau](https://www.joshwcomeau.com/react/boop/) uses this to great effect on his site, creating a delightful and interactive user experience.
+<ul class="svg-tutorial__icon-grid" aria-hidden="true">
+  <li class="svg-tutorial__icon">
+    <svg viewBox="0 0 24 24" width="16" height="16">
+      <polyline points="3 8, 3 4, 21 4, 21 8" />
+      <line x1="12" y1="4" x2="12" y2="20" />
+      <line x1="8" y1="20" x2="16" y2="20" />
+    </svg>
+  </li>
+  <li class="svg-tutorial__icon">
+    <svg viewBox="0 0 24 24" width="24" height="24">
+      <polyline points="3 8, 3 4, 21 4, 21 8" />
+      <line x1="12" y1="4" x2="12" y2="20" />
+      <line x1="8" y1="20" x2="16" y2="20" />
+    </svg>
+  </li>
+  <li class="svg-tutorial__icon">
+    <svg viewBox="0 0 24 24" width="32" height="32">
+      <polyline points="3 8, 3 4, 21 4, 21 8" />
+      <line x1="12" y1="4" x2="12" y2="20" />
+      <line x1="8" y1="20" x2="16" y2="20" />
+    </svg>
+  </li>
+  <li class="svg-tutorial__icon">
+    <svg viewBox="0 0 24 24" width="48" height="48">
+      <polyline points="3 8, 3 4, 21 4, 21 8" />
+      <line x1="12" y1="4" x2="12" y2="20" />
+      <line x1="8" y1="20" x2="16" y2="20" />
+    </svg>
+  </li>
+  <li class="svg-tutorial__icon">
+    <svg viewBox="0 0 24 24" width="64" height="64">
+      <polyline points="3 8, 3 4, 21 4, 21 8" />
+      <line x1="12" y1="4" x2="12" y2="20" />
+      <line x1="8" y1="20" x2="16" y2="20" />
+    </svg>
+  </li>
+  <li class="svg-tutorial__icon">
+    <svg viewBox="0 0 24 24" width="96" height="96">
+      <polyline points="3 8, 3 4, 21 4, 21 8" />
+      <line x1="12" y1="4" x2="12" y2="20" />
+      <line x1="8" y1="20" x2="16" y2="20" />
+    </svg>
+  </li>
+</ul>
+
+By analogy, this is the difference between drawing something on screen (raster images) and giving your browser *instructions* for how to draw something on screen, relative to a coordinate system (vector images). Vector images give your browser more flexibility since they can be rescaled to any size with a bit of simple math.
+
+As a bonus, you can even fluidly animate SVGs to create really fun and engaging user experiences. Here are a few noteworthy developer blogs that do this:
+
+- [Joshua Comeau](https://www.joshwcomeau.com/react/boop/)
+- [Cassie Evans](https://www.cassie.codes/)
+- [George Francis](https://georgefrancis.dev/)
+- [Will Boyd](https://codersblock.com/)
 
 ### How Are SVGs Drawn?
 
@@ -165,21 +217,44 @@ You've probably also seen these three attributes: `width`, `height`, and `viewBo
 ></svg>
 ```
 
-Basically, the `viewBox` attribute defines **the dimensions of the viewport ("canvas") for our SVG**. The first two numbers allow us to pan the SVG viewport horizontally or vertically, giving it an appearance of some sort of inner offset relative to the origin, `(0, 0)`. Here, we have an offset of `0 0`, meaning the top-left corner of the viewport *is* the origin, `(0, 0)`. The last two numbers control the base size of the viewport, before the SVG is scaled. Larger numbers lead to a larger viewport and more space to work with, while smaller numbers lead to a smaller viewport and less space to work with. Here, the viewport size is declared to be `24x24`, so our coordinates range from `(0, 0)` (top-left) to `(24, 24)` (bottom-right):
+The `viewBox` attribute defines **the dimensions of the viewport ("canvas") for an SVG**. The first two numbers allow you to pan the SVG viewport horizontally or vertically, giving it an appearance of some sort of inner offset relative to the origin, `(0, 0)`. In the code sample above, we have an offset of `0 0`, meaning the top-left corner of the viewport *is* the origin.
+
+Below are two SVG icons. The one on the left has a `viewBox` of `0 0 24 24`. The one on the right has a `viewBox` of `6 6 24 24`. As a result, the origin of the second viewport is offset by `6` units horizontally and vertically. So instead of being `(0, 0)`, the origin is now `(6, 6)`. This means that the image shifts to the left relative to the `viewBox`. It's as if we've panned our canvas towards the bottom-right corner.
+
+<ul class="svg-tutorial__icon-grid" aria-hidden="true">
+  <li class="svg-tutorial__icon">
+    <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+      <polyline points="3 8, 3 4, 21 4, 21 8" />
+      <line x1="12" y1="4" x2="12" y2="20" />
+      <line x1="8" y1="20" x2="16" y2="20" />
+    </svg>
+  </li>
+  <li class="svg-tutorial__icon">
+    <svg viewBox="6 6 24 24" width="64" height="64" class="bordered">
+      <polyline points="3 8, 3 4, 21 4, 21 8" />
+      <line x1="12" y1="4" x2="12" y2="20" />
+      <line x1="8" y1="20" x2="16" y2="20" />
+    </svg>
+  </li>
+</ul>
+
+The last two numbers control the size (horizontal and vertical, respectively) of this coordinate system, before any scaling is done. Larger numbers lead to a larger viewport and more space to work with, while smaller numbers lead to a smaller viewport and less space to work with. In the examples above, the viewport size is declared to be `24 24`, so our coordinates range from `(0, 0)` (top-left corner) to `(24, 24)` (bottom-right corner):
 
 {% include img.html img="coordinates.png" alt="An SVG's coordinate system has an origin of (0, 0) at the top-left corner. For an SVG whose viewBox is 0 0 24 24, the bottom-right corner is at (24, 24)." %}
 
-The other two attributes, `width` and `height`, work just as you'd expect: They define the width and height of your SVG element, in pixels. You can also change an SVG's size with CSS using `width` and `height`, so while the SVG above has a starting width and height of `24px`, it doesn't *always* have to be that size. That's the whole point of SVG, after all—they can scale to *any* size!
+Finally, the `width` and `height` attributes work just as you'd expect them to: They define the final (scaled) width and height of your SVG element, in pixels. Alternatively, you can change an SVG's size with CSS using `width` and `height`.
 
-Moreover, note that the the width and height of an SVG don't need to match the `viewBox`'s size. In fact, the coordinates of all SVG shapes that we draw are relative to the `viewBox`, not to the `width` and `height` of the SVG.
+#### Scaling SVGs: `viewBox` vs. `width` and `height`
+
+All SVG shapes are drawn relative to the `viewBox` coordinate system, not to the final `width` and `height` of the SVG. This means that your canvas size may be `24x24`, and any shapes you draw will be confined within this base `576` pixel coordinate space, but you can later scale the vector image as needed.
 
 For example, if our `viewBox` is `0 0 24 24` but we've set the width and height to be `32`, or some other number, then we're still working within a base viewport size of `24x24`, so there's no visible point like `(25, 25)`. Everything will just get scaled up by a factor of `1.3` to give us a bigger SVG drawing. This is really useful because it means we can draw all of our icons using a fixed viewport size, and if we later want to scale it up, we don't have to adjust the shapes and their coordinates—the `width` and `height` will scale everything for us.
 
-For this tutorial, I'll use a `viewBox` of `0 0 24 24`, but dimensions of `64x64` so they're easier to see. You can use any values that you want, though, so long as you adjust your markup accordingly.
+For this tutorial, I'll use a `viewBox` of `0 0 24 24` but dimensions of `64x64` so that the icons are easier to see. You can use any values that you want, though, as long as you adjust your markup accordingly.
 
 ### SVGs and "Pixels"
 
-Before we move on, a clarifying note on pixels and SVGs: With the most basic SVG, one pixel unit maps to exactly one unit on your screen. But as noted on the MDN docs, [this isn't always the case](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Positions#what_are_pixels). SVGs are scalable, after all, so `1px` in the SVG definition may actually map to `4px` if the SVG has been scaled to a larger size with `width` and `height`. This is unlike the behavior of images, where one "pixel" is always a fixed-size unit of measurement. Key takeaway: Wherever I use `px` as a unit, don't take that to mean one literal output pixel on the user's screen.
+Before we move on, a clarifying note on pixels and SVGs: With the most basic SVG, one pixel unit maps to exactly one unit on your screen. But as noted on the MDN docs, [this isn't always the case](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Positions#what_are_pixels). SVGs are scalable, after all, so `1px` in the SVG coordinate space may actually map to `4px` if the SVG has been scaled to a larger size with `width` and `height`. This is unlike the behavior of raster images, where one "pixel" is always a fixed-size unit of measurement. Key takeaway: Wherever I use `px` as a unit, don't take that to mean one literal output pixel on the user's screen.
 
 ## Creating Basic Shapes with SVG
 
@@ -380,7 +455,7 @@ And that's all that you really need to know about SVG lines. As an exercise, I'l
 
 ### 2. Polylines
 
-Imagine that we want to draw several line segments, like for the letter `T` in this text icon:
+Imagine that we want to draw several line segments, like for the letter `T` in a text icon:
 
 <div class="svg-tutorial__icon">
   <svg viewBox="0 0 24 24" width="64" height="64">
@@ -1169,14 +1244,7 @@ One thing you'll notice is that `A` and `a` are almost identical except those la
 
 The first two parameters, `rx` and `ry`, should be familiar if you've worked with border radii in CSS. Since we're drawing an ellipse and not necessarily always a circle, we need to specify two radii. If our arc is circular, then `rx = ry`.
 
-The `large-arc-flag` and `sweep-flag` parameters are probably the more confusing of all the parameters. Together, they're used to control the arc length and directionality. Here's a good Codepen demo you can mess around with to get a better feel for how this works:
-
-<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="lingtalfi" data-slug-hash="yaLWJG" data-preview="true" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="svg arc demo">
-  <span>See the Pen <a href="https://codepen.io/lingtalfi/pen/yaLWJG">
-  svg arc demo</a> by lingtalfi (<a href="https://codepen.io/lingtalfi">@lingtalfi</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script defer src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+The `large-arc-flag` and `sweep-flag` parameters are probably the more confusing of all the parameters. Together, they're used to control the arc length and directionality. There's a good [Codepen demo](https://codepen.io/lingtalfi/pen/yaLWJG) that you can mess around with to get a better feel for how these parameters work.
 
 As before, it helps to look at a concrete example. Here's a very simple arc in Quadrant 1:
 
@@ -1592,6 +1660,7 @@ That does it for this tutorial! I hope you learned something new (and had fun!).
   .post-content .svg-tutorial__icon-grid {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     gap: 4.8rem;
     list-style: none;
