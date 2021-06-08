@@ -845,7 +845,7 @@ While it's technically not a "programming" language, Liquid has many familiar pr
 
 ### Data Types
 
-Strings? `"Check"`. Numbers? `1`. You also get Booleans, Nil, and arrays.
+Strings? `"Check"`. Numbers? `1`. You also get Booleans, nil, and arrays.
 
 Arrays are really powerful in Liquid because they allow you to write more reusable markup—more on that later!
 
@@ -1409,7 +1409,7 @@ The processed HTML will look like this:
 </div>
 ```
 
-Note that if `var` is not provided, `include.var` will default to Nil (undefined).
+Note that if `var` is not provided, `include.var` will default to nil (undefined).
 
 One last thing worth noting is that includes can be nested, just like layouts can be. So that means you can include as many includes as you want... in your includes 😅.
 

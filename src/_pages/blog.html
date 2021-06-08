@@ -7,7 +7,7 @@ pagination:
   enabled: true
 ---
 
-{% assign posts = paginator.posts | where: 'is_archived', Nil %}
+{% assign posts = paginator.posts | where: 'is_archived', nil %}
 {%- for post in posts -%}
   {% include postPreview.html post=post title_level=2 %}
 {%- endfor -%}

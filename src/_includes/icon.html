@@ -9,7 +9,7 @@
 {%- if include.class -%}
   {%- assign class = 'class="' | append: include.class | append: '"' -%}
 {%- else -%}
-  {%- assign class = Nil -%}
+  {%- assign class = nil -%}
 {%- endif -%}
 {%- capture props -%}{{ class }} width="{{ width }}" height="{{ height }}" fill="{{ fill }}" stroke-width="{{ stroke_width }}" stroke="{{ stroke }}" stroke-linecap="{{ stroke_linecap }}" stroke-linejoin="{{ stroke_linejoin }}"{%- endcapture -%}
 {%- comment -%}Custom/hand-drawn icons.{%- endcomment -%}
