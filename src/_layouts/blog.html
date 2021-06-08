@@ -10,13 +10,13 @@ is_blog_page: true
   {% else %}
     {%- assign pageTag = 'all' -%}
   {%- endif -%}
-  {%- assign blogType = "" -%}
-  {%- assign pageTagWords = pageTag | split: '-' -%}
-  {%- for word in pageTagWords -%}
-    {%- assign capitalizedWord = word | capitalize | append: ' ' -%}
-    {%- assign blogType = blogType | append: capitalizedWord -%}
+  {%- assign page_tag_words = page_tag | split: '-' -%}
+  {%- assign page_tag_readable = '' -%}
+  {%- for word in page_tag_words -%}
+    {%- assign capitalized_word = word | capitalize -%}
+    {%- assign page_tag_readable = page_tag_readable | append: capitalized_word | append: ' ' -%}
   {%- endfor -%}
-  <h1 class="blog-page-title">{{ blogType }}Blog Posts</h1>
+  <h1 class="blog-page-title">{{ page_tag_readable }} Blog Posts</h1>
   <p class="blog-page-description">
     {%- if site.data.tagDescriptions[pageTag] -%}
       {{- site.data.tagDescriptions[pageTag] -}}
