@@ -5,25 +5,16 @@ is_blog_page: true
 
 {%- assign page_path = paginator["page_path"] | remove: 'index.html' -%}
 <section class="section blog-post-previews">
-  {%- if page.autopages -%}
-    {%- assign page_tag = page.autopages.display_name -%}
-  {% else %}
-    {%- assign page_tag = 'all' -%}
-  {%- endif -%}
+  {%- assign page_tag = page.autopages.display_name | default: 'all' -%}
   {%- assign page_tag_words = page_tag | split: '-' -%}
   {%- assign page_tag_readable = '' -%}
   {%- for word in page_tag_words -%}
     {%- assign capitalized_word = word | capitalize -%}
     {%- assign page_tag_readable = page_tag_readable | append: capitalized_word | append: ' ' -%}
   {%- endfor -%}
+  {%- assign page_tag_description = site.data.tagDescriptions[page_tag] | default: site.data.tagDescriptions['all'] -%}
   <h1 class="blog-page-title">{{ page_tag_readable }} Blog Posts</h1>
-  <p class="blog-page-description">
-    {%- if site.data.tagDescriptions[page_tag] -%}
-      {{- site.data.tagDescriptions[page_tag] -}}
-    {% else %}
-      {{- site.data.tagDescriptions["all"] -}}
-    {%- endif -%}
-  </p>
+  <p class="blog-page-description">{{- page_tag_description -}}</p>
   <nav aria-label="Popular tags">
     <ul class="navigation-tags">
       {%- assign tags = "all,accessibility,css,webperf,off-topic" | split: ',' -%}
@@ -46,9 +37,9 @@ is_blog_page: true
   </ol>
   {%- if paginator.page_trail -%}
   <ol class="pagination-trail" aria-label="Page navigation for {{ page_tag }} blog posts.">
+    {%- assign total_pages = paginator["total_pages"] -%}
     {%- for trail in paginator.page_trail -%}
       {%- assign trail_path = trail.path | remove: 'index.html' -%}
-      {%- assign total_pages = paginator["total_pages"] -%}
       <li>
         <a
           href="{{ trail_path | prepend: site.baseurl }}"
