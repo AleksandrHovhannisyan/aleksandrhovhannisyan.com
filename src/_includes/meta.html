@@ -17,12 +17,6 @@
     {%- include icon.html icon="calendar" class="post-meta-icon" -%}
     {%- include date.html date=post.date date_format="%b %-d, %Y" -%}
   </li>
-  {% if last_updated %}
-    <li class="post-meta-item post-date-updated">
-      {%- include icon.html icon="info" class="post-meta-icon" -%}
-      Updated: {%- include date.html date=last_updated date_format="%b %-d, %Y" -%}
-    </li>
-  {%- endif -%}
   <li class="post-meta-item post-reading-length">
     {%- include icon.html icon="clock" class="post-meta-icon" -%}
     <span>{{ reading_length }} min read</span>
