@@ -75,17 +75,28 @@
 }
 
 #home-link {
-  position: relative;
   flex-shrink: 0;
   display: grid;
   grid-auto-flow: column;
   grid-column-gap: 0.4rem;
   align-items: center;
+  @include focus-outline((color: var(--color-white), offset: 0.4rem)...);
+
+  .logotype {
+    height: 2.2rem;
+    width: auto;
+
+    path {
+      fill: var(--navbar-text-color);
+      stroke: var(--navbar-text-color);
+    }
+  }
 
   &:hover,
   &:focus {
-    #website-name {
-      color: var(--color-white);
+    .logotype path {
+      stroke: var(--color-white);
+      fill: var(--color-white);
     }
   }
 }
@@ -146,11 +157,6 @@
 //   left: -37%;
 //   top: -55%;
 // }
-
-#website-name {
-  color: var(--navbar-text-color);
-  @include font-size(-1);
-}
 
 .navbar-menu {
   position: fixed;
@@ -230,8 +236,7 @@
 
 .navbar-link,
 #navbar-toggle,
-#theme-toggle,
-#home-link {
+#theme-toggle {
   outline-color: var(--color-white);
 }
 
