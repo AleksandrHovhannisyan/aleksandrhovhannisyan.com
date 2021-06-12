@@ -52,13 +52,13 @@ That's the short answer, at least—but let's also dig deeper into how this real
 
 ### What Is an Aspect Ratio?
 
-An **aspect ratio** describes the relationship between an element's width and height. Common aspect ratios include `16:9`, `4:3`, and `1:1`. For example, an aspect ratio of `1:1` tells us that the width and height of an element are always the same (i.e., it's a square), whereas an aspect ratio of `16:9` tells us that the element has `16` units of width for every `9` units of height. Intuitively, this means that such an element is roughly twice as wide as it is tall.
+An **aspect ratio** describes the relationship between an element's width and height. Common aspect ratios include `16:9`, `4:3`, and `1:1`. For example, an aspect ratio of `1:1` tells us that the width and height of an element are always the same (i.e., it's a square), whereas an aspect ratio of `16:9` tells us that the element has `16` units of width for every `9` units of height.
 
 You may not have considered how aspect ratios impact web performance, but they're *really* important, especially now that Core Web Vitals is part of Google's ranking algorithm. In short, aspect ratios allow us to size our images properly so that they don't cause layout shifts once they finish loading. Let's take a closer look at how this works.
 
 ### A Glimpse Into the Future of CSS: `aspect-ratio`
 
-As of Version 88, Chrome automatically applies a new CSS property—aptly named [`aspect-ratio`](/blog/css-aspect-ratio/#the-future-of-css-aspect-ratios-aspect-ratio)—to any element that has `width` and `height` attributes. For example, if your image is `1280x750`, then you'd set its width and height to be those values via HTML attributes:
+As of Version 88, Chrome automatically applies a new CSS property—aptly named `aspect-ratio`—to any element that has `width` and `height` attributes. For example, if your image is `1280x750`, then you'd set its width and height to be those values via HTML attributes:
 
 ```html
 <img src="path/to/img.png" alt="" width="1280" height="750" />
@@ -126,62 +126,43 @@ In other words, you can think of setting an image's width and height as **initia
 It's a win-win: Your CLS score improves because you're no longer shifting content after images once they load in, but you still get to size your images responsively so that they always assume the width of the content area and size their height automatically based on their aspect ratio.
 
 That's why the `aspect-ratio` property is so exciting—once more browsers support it, it'll allow us to easily create aspect ratios without resorting to hacks.
-
-Wait a minute... *What hacks?*
-
-There's *always* a hack <span aria-hidden="true">;)</span>
-
 ## Fallback: Aspect Ratio Containers with Percentage Padding
 
-So Chrome (and, by extension, Chromium Edge) supports this new CSS property. Great! But what about others browsers, like Firefox or Safari? Unfortunately, as of this writing, [they do not yet support `aspect-ratio`](https://caniuse.com/mdn-css_properties_aspect-ratio). This means that if you set an explicit width and height on your images, browsers other than Chrome won't automatically calculate an aspect ratio for you. Thus, you could still see some layout shifts as your images load in. Bummer.
+Chrome supports this new CSS property, but what about others browsers? Unfortunately, as of this writing, [they do not yet support `aspect-ratio`](https://caniuse.com/mdn-css_properties_aspect-ratio). This means that if you set an explicit width and height on your images, browsers other than Chrome won't automatically calculate an aspect ratio for you. Thus, you could still see some layout shifts as your images load in.
 
-Fortunately, we can use a fallback for browsers that don't yet support `aspect-ratio`: percentage padding and **aspect ratio containers**. In my post that I linked to earlier, I discuss [how percentage padding works](/blog/css-aspect-ratio/#why-it-works-padding-percentages-and-aspect-ratios) and how we can use this "hack" to create aspect ratio containers that work in all browsers. This is an age-old trick, so it's not a hack in your typical sense—it works, and there are good reasons for *why* it works.
-
-Here's the important part: When you give an element a percentage value for padding, that percentage is defined relative to the width of the element's parent. So, when you give an element a padding value like `5%`, that's going to be `5%` of the width of the parent<sup>1</sup>. If your element takes up `100%` of its parent's width, then percentage values for its padding are technically also defined relative to *its own width*.
-
-> <sup>1</sup>There are some nuances to how this works that I [explore in my other article](/blog/css-aspect-ratio/#percentage-padding-in-horizontal-vs-vertical-writing-modes), especially with regard to terminology (like "parent" vs. "containing block"). I won't discuss them here to avoid confusing beginners, but you're more than welcome to read it if you're interested!
-
-As a reminder, we're trying to create aspect ratio containers using just vanilla CSS and no fancy new properties. We just learned that we can use percentage padding to reference the width of an element's parent. By extension, if we size the element so that it takes up 100% of its parent's width, then we can really use percentage padding to reference that element's *own width*.
-
-We can follow these steps to create an aspect ratio container using the percentage padding trick:
-
-1. Zero-out the element's height so that only padding influences it.
-2. Ensure that the element takes up 100% of its parent's width.
-3. Set vertical padding on the element equal to the aspect ratio percentage.
-
-What do I mean by "aspect ratio percentage" in that last step? Well, let's suppose your image's intrinsic dimensions are `1280x750` like before. This means that there are `750` units of height for every `1280` units of width. In other words, we can express the image's height as a percentage of its width: `750/1280 = 0.5859375 = 58.6%`.
-
-Knowing this, we can wrap the image in an aspect ratio container whose vertical padding is that percentage (in this case, `58.6%`). Either top or bottom padding (or some combination of the two) will work since all we need is for the total vertical padding to be equal to this percentage:
+Fortunately, we can use a fallback for browsers that don't yet support `aspect-ratio`: [percentage padding and **aspect ratio containers**](/blog/css-aspect-ratio/#approach-2-aspect-ratios-with-percentage-padding). To create these aspect ratio containers, we need an outer div to wrap the image:
 
 ```html
-<div class="aspect-ratio-container" style="height: 0; padding-bottom: 58.6%">
+<div class="aspect-ratio-container">
   <img src="path/to/img.png" alt="" width="1280" height="750" />
 </div>
 ```
 
-As we learned, this percentage is relative to the width of the aspect ratio container's parent, like an article:
-
-```html
-<article>
-  <div class="aspect-ratio-container" style="height: 0; padding-bottom: 58.6%">
-    <img src="path/to/img.png" alt="" width="1280" height="750" />
-  </div>
-</article>
-```
-
-As long as the aspect ratio container takes up `100%` of its parent's width—which block-level elements like `<div>`s do by default—this will be the same as defining the aspect ratio container's height *as a percentage of its own width*. And that's the very definition of aspect ratio! The last step is to apply our responsive CSS from earlier to the nested image:
+And the following CSS, which uses vertical padding to create an aspect ratio:
 
 ```css
+.aspect-ratio-container {
+  position: relative;
+  height: 0;
+  padding-bottom: 58.6%;
+}
+
 img {
-  max-width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 ```
 
-Chrome will use the image's `width` and `height` to apply the `aspect-ratio` property in its CSS, whereas browsers like Firefox, Safari, and any others that don't yet support this behavior will fall back to the padding we've defined. Either way, the right amount of space will get reserved for your images, ensuring that they don't shift any content as they load in.
+This works because percentage padding is relative to the width of an element's nearest block-level parent. If the element itself takes up 100% of its parent's width, then we've defined its height as a percentage of its width, and that's the very definition of aspect ratio.
 
-You can verify this by rendering one of the examples above locally and deleting the nested `<img>` tag via devtools. You'll find that the parent aspect ratio container won't collapse its width and height—it will remain sized correctly, just as if you hadn't deleted the image. Here's an example from my site:
+Browsers like Firefox, Safari, and any others that don't yet support `aspect-ratio` will fall back to this aspect ratio container. Either way, regardless of which approach you take, the right amount of space will get reserved for your images, ensuring that they don't shift any content as they load in.
+
+You can verify this by rendering one of the examples above locally and deleting the nested `<img>` tag via devtools. You'll notice that the parent aspect ratio container won't collapse its width and height—it will remain sized correctly, just as if you hadn't deleted the image. Here's an example from my site:
 
 {% include img.html img="deleting.gif" alt="A demonstration of deleting an image nested inside a picture tag that serves as an aspect ratio container. When the image is deleted, the picture tag continues to occupy the same amount of space as it did before." %}
 
