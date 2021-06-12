@@ -85,6 +85,7 @@ html.light {
   --tag-text-color: var(--color-black-10);
   --text-color-emphasis: var(--color-black-10);
   --text-color-normal: var(--color-black-10);
+  --text-color-caption: var(--color-black-35);
 }
 
 html.dark {
@@ -122,4 +123,5 @@ html.dark {
   --tag-text-color: var(--color-white);
   --text-color-emphasis: var(--color-white);
   --text-color-normal: var(--color-black-75);
+  --text-color-caption: var(--color-black-60);
 }
