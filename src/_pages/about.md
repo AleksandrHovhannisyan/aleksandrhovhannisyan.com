@@ -1,7 +1,6 @@
 ---
 title: About
 description: A look at my background and interests.
-og_image: /assets/images/profile-photo.png
 permalink: /about/
 layout: about
 ---

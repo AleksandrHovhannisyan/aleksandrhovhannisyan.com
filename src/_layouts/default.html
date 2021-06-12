@@ -1,3 +1,19 @@
+{%- comment -%}Global variables for reuse in meta tags{%- endcomment -%}
+{%- if page.url == "/" -%}
+  {%- assign title = site.title -%}
+{%- else -%}
+  {%- assign title = page.title | append: ' | ' | append: site.title -%}
+{%- endif -%}
+{%- assign description = page.description | default: site.description -%}
+{%- assign keywords = page.keywords | default: site.keywords -%}
+{%- assign og_image = page.og_image -%}
+{%- if page.is_post -%}
+  {%- assign thumbnail = page.thumbnail | default: 'thumbnail.png' -%}
+  {%- assign og_image = '/assets/images/posts/' | append: page.slug | append: '/' | append: thumbnail -%}
+{%- endif -%}
+{%- if og_image -%}
+  {%- assign og_image = site.url | append: og_image -%}
+{%- endif -%}
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -20,8 +36,9 @@
     {%- endfor -%}
   {% endif %}
   {%- comment -%}Metadata for search engines{%- endcomment -%}
-  <meta name="description" content="{%- if page.description -%}{{ page.description }}{%- else -%}{{ site.description }}{%- endif -%}">
-  <meta name="keywords" content="{%- if page.keywords -%}{{ page.keywords | join: ', ' }}{%- else -%}{{ site.keywords | join: ', ' }}{%- endif -%}">
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}">
+  <meta name="keywords" content="{{ keywords | join: ', ' }}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="{{ site.author }}">
   <meta name="referrer" content="same-origin">
@@ -48,11 +65,6 @@
   {%- if page.canonical_url -%}
     <link rel="canonical" href="{{ page.canonical_url }}">
   {%- endif -%}
-  {%- if page.url == "/" -%}
-    <title>{{ site.title }}: {{ page.title }}</title>
-  {%- else -%}
-    <title>{{ page.title }} | {{ site.title }}</title>
-  {%- endif -%}
   {%- comment -%}Load the user's last selected theme{%- endcomment -%}
   <script>
     (function() {
@@ -75,25 +87,20 @@
     <script type="module" src="/assets/scripts/comments.bundle.js" defer></script>
   {%- endif -%}
   {%- comment -%}Open Graph social media previews{%- endcomment -%}
-  <meta property="og:title" content="{{ page.title }} | {{ site.title }}">
-  {%- assign og_image = page.og_image | default: '/assets/images/favicons/favicon-228.png' -%}
-  {%- if page.is_post -%}
-  {%- assign img = 'thumbnail.png' -%}
-  {%- if page.thumbnail -%}
-  {%- assign img = page.thumbnail -%}
+  <meta property="og:title" content="{{ title }}">
+  {%- if og_image -%}
+    <meta property="og:image" content="{{ og_image }}">
   {%- endif -%}
-  {%- assign og_image = '/assets/images/posts/' | append: page.slug | append: '/' | append: img -%}
-  {%- endif -%}
-  {%- assign og_image = site.url | append: og_image -%}
-  {%- assign description = page.description | default: site.description -%}
-  <meta property="og:image" content="{{ og_image }}">
-  <meta property="og:description" content="{{ descrition }}">
+  <meta property="og:description" content="{{ description }}">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  {%- comment -%}Twitter card meta tags{%- endcomment -%}
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator" content="@hovhaDovah">
-  <meta name="twitter:title" content="{{ page.title }} | {{ site.title }}">
+  <meta name="twitter:title" content="{{ title }}">
   <meta name="twitter:description" content="{{ description }}">
-  <meta name="twitter:image" content="{{ og_image }}">
+  {%- if og_image -%}
+    <meta name="twitter:image" content="{{ og_image }}">
+  {%- endif -%}
 </head>
 <body class="centered">
   {%- include navbar.html skip_links=page.skip_links -%}
