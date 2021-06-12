@@ -25,19 +25,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="{{ site.author }}">
   <meta name="referrer" content="same-origin">
-  {%- comment -%}Open Graph social media previews{%- endcomment -%}
-  <meta property="og:title" content="{{ page.title }} | {{ site.title }}">
-  {%- assign og_image = page.og_image | default: '/assets/images/favicons/favicon-228.png' -%}
-  {%- if page.is_post -%}
-    {%- assign img = 'thumbnail.png' -%}
-    {%- if page.thumbnail -%}
-      {%- assign img = page.thumbnail -%}
-    {%- endif -%}
-    {%- assign og_image = '/assets/images/posts/' | append: page.slug | append: '/' | append: img -%}
-  {%- endif -%}
-  <meta property="og:image" content="{{ site.url }}{{ og_image }}">
-  <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   {%- if page.noindex -%}
     {%- comment -%}Prevent this page from showing up on search engines{%- endcomment -%}
     <meta name="robots" content="noindex">
@@ -87,6 +74,26 @@
   {%- if page.comments_id -%}
     <script type="module" src="/assets/scripts/comments.bundle.js" defer></script>
   {%- endif -%}
+  {%- comment -%}Open Graph social media previews{%- endcomment -%}
+  <meta property="og:title" content="{{ page.title }} | {{ site.title }}">
+  {%- assign og_image = page.og_image | default: '/assets/images/favicons/favicon-228.png' -%}
+  {%- if page.is_post -%}
+  {%- assign img = 'thumbnail.png' -%}
+  {%- if page.thumbnail -%}
+  {%- assign img = page.thumbnail -%}
+  {%- endif -%}
+  {%- assign og_image = '/assets/images/posts/' | append: page.slug | append: '/' | append: img -%}
+  {%- endif -%}
+  {%- assign og_image = site.url | append: og_image -%}
+  {%- assign description = page.description | default: site.description -%}
+  <meta property="og:image" content="{{ og_image }}">
+  <meta property="og:description" content="{{ descrition }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@hovhaDovah">
+  <meta name="twitter:title" content="{{ page.title }} | {{ site.title }}">
+  <meta name="twitter:description" content="{{ description }}">
+  <meta name="twitter:image" content="{{ og_image }}">
 </head>
 <body class="centered">
   {%- include navbar.html skip_links=page.skip_links -%}
