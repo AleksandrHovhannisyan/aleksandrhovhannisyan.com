@@ -1,5 +1,5 @@
 const commentsSection = document.querySelector('#comments');
-const commentsWrapper = document.querySelector('#comments-wrapper');
+const commentsPlaceholder = document.querySelector('#comments-placeholder');
 const repo = commentsSection.getAttribute('data-comments-repo');
 const commentsId = commentsSection.getAttribute('data-comments-id');
 
@@ -16,7 +16,7 @@ const commentsObserver = new IntersectionObserver(
           .then(renderComments)
           .catch((e) => {
             console.error(e);
-            commentsWrapper.innerHTML = `<p>Unable to retrieve the comments for this post. Check back later.</p>`;
+            commentsPlaceholder.innerHTML = `Unable to retrieve the comments for this post. Check back later.`;
           });
         self.unobserve(entry.target);
       }
