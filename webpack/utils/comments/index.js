@@ -12,7 +12,7 @@ export const renderComments = async (comments) => {
   const commentsCounter = commentsSection.querySelector('#comments-count');
 
   if (comments.length === 0) {
-    commentsWrapper.innerHTML = 'No comments yet 👀 Be the first to post!';
+    commentsWrapper.innerHTML = `<p>No comments yet 👀 This comment system is powered by the <a href="https://docs.github.com/en/rest/reference/issues" target="_blank" rel="noreferrer noopener">GitHub Issues API</a>. You can learn more about <a href="/blog/jekyll-comment-system-github-issues/">how I built it</a> or post a comment, and it'll show up here once you reload the page.</p>`;
     return;
   }
 
