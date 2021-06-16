@@ -11,7 +11,7 @@ It's a common practice in blogs to link your headings; this makes it easier for 
 
 How can we create heading links in Jekyll without losing our sanity and without resorting to JavaScript? Answer: with the power of **Jekyll includes**!
 
-{% include linkedHeading.html heading="How to Create Heading Links in Jekyll" level=2 %}
+## How to Create Heading Links in Jekyll
 
 Create a file named `linkedHeading.html` in your `_includes` folder. Here's what we want to do:
 
@@ -111,7 +111,7 @@ If you're curious, here's how that works:
 
 Then, after the anchor, we simply put a space followed by our unformatted heading string.
 
-{% include linkedHeading.html heading="Sticky Navbar and Linked Headings" level=2 %}
+## Sticky Navbar and Linked Headings
 
 If you have a sticky/fixed navbar like I do on this site, you may run into a problem where your heading anchors get stuck under the navbar when you click them.
 
@@ -129,7 +129,7 @@ My navbar is `64px` tall, so I found that this works best. Feel free to play aro
 
 The only downside is that `scroll-margin-top` is [not currently supported in Internet Explorer](https://caniuse.com/#search=scroll-padding), so bear that in mind if you need to support this browser.
 
-{% include linkedHeading.html heading="Making Things Easier" level=2 %}
+## Making Things Easier
 
 Arguably the most annoying part is having to type out those include statements by hand.
 
@@ -138,7 +138,7 @@ There are two solutions to this:
 1. If you're using an editor like VS Code that supports snippets, create one for heading links.
 2. Type out all your headings in Markdown and then replace them all with regex at the end.
 
-{% include linkedHeading.html heading="Option 1: VS Code Snippet" level=3 %}
+### Option 1: VS Code Snippet
 
 Here's the one I use:
 
@@ -154,7 +154,7 @@ Here's the one I use:
 ```
 {% endraw %}
 
-{% include linkedHeading.html heading="Option 2: Regex Replacement" level=3 %}
+### Option 2: Regex Replacement
 
 Start at heading level `6` and work your way down, using the following regex search and replacement:
 

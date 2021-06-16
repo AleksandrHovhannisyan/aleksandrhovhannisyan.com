@@ -9,7 +9,7 @@ Of all the data structures I've encountered, the **prefix tree** (also known as 
 
 In this tutorial, we'll implement a trie in Python from scratch. We'll test that our code works using Python's `unittest` library. Let's get started!
 
-{% include linkedHeading.html heading="Overview: What Is a Prefix Tree?" level=2 %}
+## Overview: What Is a Prefix Tree?
 
 The **prefix tree** is one of the easiest data structures to understand both visually and in terms of the code required to implement it. But what is a prefix tree, and why might we want to create one?
 
@@ -21,7 +21,7 @@ How would you go about implementing this behavior, all other complex considerati
 
 The efficient answer to this problem is a neat little data structure known as a **prefix tree**. It's just a tree (not necessarily a *binary* tree) that serves a special purpose.
 
-{% include linkedHeading.html heading="Example Prefix Tree" level=3 %}
+### Example Prefix Tree
 
 Let's say we're building such a database of words, but we want to be clever with how we do it so that our search doesn't take forever. Suppose we want to record the words `ape`, `apple`, `bat`, and `big` in this catalog.
 
@@ -41,7 +41,7 @@ This branching pattern allows us to reduce our search space to something much mo
 
 Tracing a path from the root of a trie to a particular node produces either a prefix for a word that we know (e.g., the `app-` in `apple`) or the word itself (e.g., `apple`). This distinction is important because our dictionary doesn't actually contain the word `app` just yet; that node is merely a prefix. You'll see why this is important later on, but for now, just keep that in mind.
 
-{% include linkedHeading.html heading="Trie Methods and Operations" level=2 %}
+## Trie Methods and Operations
 
 A prefix tree has three main operations:
 
@@ -53,7 +53,7 @@ Let's put this into the context of a search engine. A company like Google might 
 
 Or perhaps you're creating your own autocomplete widget in, say, React. You'd create the trie beforehand and subscribe to your input field's `onkeyup` event. As the user enters text, you adjust the list of options that you show to them by using your trie.
 
-{% include linkedHeading.html heading="Building a Prefix Tree in Python" level=2 %}
+## Building a Prefix Tree in Python
 
 So now that we understand what a prefix tree looks like and how it can be used, how can we represent it in code? You'll be happy to know that it's actually really simple, especially if you're comfortable with recursion.
 
@@ -97,7 +97,7 @@ Awesome! Finally, our `PrefixTree` needs the following operations, which we'll f
 
 That last one is useful for testing; it isn't required.
 
-{% include linkedHeading.html heading="1. Inserting Words Into a Trie" level=2 %}
+## 1. Inserting Words Into a Trie
 
 Let's consider how we'd build a prefix tree. We'll always start with a root node that has an empty string as its `text` and an empty dictionary as its `children`. Then, we want to insert the words we looked at earlier: `ape`, `apple`, `bat`, and `big`. As a reminder, this is what the trie looks like once we finish inserting all of those words:
 
@@ -132,7 +132,7 @@ def insert(self, word):
 
 *There's one line missing that I'll mention in the next section. It's not going to complicate things at all.
 
-{% include linkedHeading.html heading="2. Checking if a Word Exists in a Trie" level=2 %}
+## 2. Checking if a Word Exists in a Trie
 
 This operation proceeds in a manner similar to insert, except we're not creating new nodes.
 
@@ -234,7 +234,7 @@ Technically, it's both—a prefix leading up to `apple` and a word in and of its
 
 That's another one down, with two more to go. We're almost done!
 
-{% include linkedHeading.html heading="3. Return a List of All Nodes Starting with a Given Prefix" level=2 %}
+## 3. Return a List of All Nodes Starting with a Given Prefix
 
 The code for finding partial matches in a trie is also really simple. Here's the algorithm spelled out in English:
 
@@ -305,7 +305,7 @@ def starts_with(self, prefix):
 
 That's all we need! Feel free to run through this algorithm by hand to better understand how it works.
 
-{% include linkedHeading.html heading="4. (Optional) Size of a Prefix Tree" level=2 %}
+## 4. (Optional) Size of a Prefix Tree
 
 This one depends on your definition of "size." Is it the number of *words* that were inserted into the tree, or is it the total number of *nodes* in the tree? I'll use the latter definition for consistency with how "size" is defined for trees in general.
 
@@ -329,7 +329,7 @@ def size(self, current = None):
 
 Notice that `current` has a default value of `None`. This allows the user to simply invoke `size()` without passing in any arguments for the most common use case: the size of the entire tree. Optionally, if the user wants to check the size of a subtree, they are welcome to do so by passing in the appropriate `TrieNode`.
 
-{% include linkedHeading.html heading="Testing Our Code" level=2 %}
+## Testing Our Code
 
 We can add this to the end of our script to manually test our code:
 

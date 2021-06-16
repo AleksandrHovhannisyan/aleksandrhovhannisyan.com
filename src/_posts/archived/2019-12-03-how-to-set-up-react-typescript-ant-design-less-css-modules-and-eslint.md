@@ -10,7 +10,7 @@ archive_note: I no longer use or support this setup. I instead prefer to use CSS
 
 Let's skip the exposition and just jump right in. I'll use VS Code to make my life easier; I recommend that you do the same. Note that I'll be using yarn as my package manager, but you can also use npm.
 
-{% include linkedHeading.html heading="1. Setting up Create React App with TypeScript 💻" level=2 %}
+## 1. Setting up Create React App with TypeScript 💻
 
 Switch to your target project directory and run this command:
 
@@ -38,7 +38,7 @@ Version numbers may obviously differ.
 
 Beyond this point, most people have trouble overriding Create React App's Webpack configs without ejecting. Fortunately, as we'll see shortly, it's not all that difficult!
 
-{% include linkedHeading.html heading="2. Setting Up Ant Design and LESS 🎨" level=2 %}
+## 2. Setting Up Ant Design and LESS 🎨
 
 Ant Design is a fantastic library for React and other JavaScript frameworks that provides reusable and customizable components, like date pickers, lists, SVG icons, and _lots_ of other cool stuff. Let's set it up.
 
@@ -199,7 +199,7 @@ The best part is that Ant Design's UI is consistent, using shades of your primar
 
 If you want to customize Ant Design's theme even more, [check out their list of supported variables](https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less).
 
-{% include linkedHeading.html heading="3. Create React App CSS Modules and TypeScript 📦" level=2 %}
+## 3. Create React App CSS Modules and TypeScript 📦
 
 By default, create-react-app v2 ships with CSS Modules out of the box.
 
@@ -303,7 +303,7 @@ export default App;
 
 Refresh the page, and you'll see that it looks exactly the same, except we now get to take advantage of CSS Modules and LESS (as well as potentially SASS or vanilla CSS, if you'd like to use those instead).
 
-{% include linkedHeading.html heading="4. Using ESLint with Create React App and Prettier 💅" level=2 %}
+## 4. Using ESLint with Create React App and Prettier 💅
 
 We *could* stop there, and put up with garbo code formatting and inconsistencies, and create more work for our collaborators as they try to reconcile several people's style preferences.
 

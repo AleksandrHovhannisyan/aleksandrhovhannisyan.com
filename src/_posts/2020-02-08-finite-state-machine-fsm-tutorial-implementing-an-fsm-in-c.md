@@ -15,7 +15,7 @@ An entity may transition from one state to another, or it may remain in its curr
 
 In this finite state machine tutorial, I'll help you understand the state design pattern by building an FSM with C++ for a simple problem. Note that you could just as well use a different programming language if you wanted to. Let's get started!
 
-{% include linkedHeading.html heading="Finite State Machine Use Case: Modeling a Lightbulb" level=2 %}
+## Finite State Machine Use Case: Modeling a Lightbulb
 
 Suppose we have a lightbulb that can have the following states:
 
@@ -46,7 +46,7 @@ However, I'd like to use this problem to introduce something called the **finite
 
 We'll look at two approaches to this problem. Let's get to it!
 
-{% include linkedHeading.html heading="Approach #1: Using a State Transition Table (Map)" level=2 %}
+## Approach #1: Using a State Transition Table (Map)
 
 Usually, whenever you can model a scenario with finite state machines, you can also model it with a simple **state transition table** that literally just maps the current state to the next state.
 
@@ -110,7 +110,7 @@ As I mentioned earlier, a Light starts in the off state. Calling the `toggle` me
 
 Easy enough, right?
 
-{% include linkedHeading.html heading="State Transition Table Drawbacks" level=3 %}
+### State Transition Table Drawbacks
 
 Now, we arrive at one of the limitations of a state transition table: What if we want to perform a certain action when we arrive at the next state, or before we leave the current state?
 
@@ -132,7 +132,7 @@ But usually, the actions that we want to take before and after a state transitio
 
 Hmm... There's got to be a better way. (If there weren't, I wouldn't be writing this post!)
 
-{% include linkedHeading.html heading="Approach #2: Implementing a Finite State Machine" level=2 %}
+## Approach #2: Implementing a Finite State Machine
 
 Now that we've looked at how to create a state transition table, we can implement a finite state machine. But before we get to the implementation details, let's consider the following thought exercise:
 
@@ -226,7 +226,7 @@ One final note: Each state class typically follows the [singleton design pattern
 
 To understand how this all works in practice, we'll implement everything from scratch.
 
-{% include linkedHeading.html heading="1. The <code>LightState</code> Interface" level=3 %}
+### 1. The <code>LightState</code> Interface
 
 Let's first define the abstract `LightState` class. You'll notice some forward declarations that are necessary to resolve circular includes that would otherwise throw off the C++ linker.
 
@@ -252,7 +252,7 @@ Since this is a **pure abstract class**, we cannot create an instance of it. The
 
 > **Note**: In practice, you would often take this a step further and create an abstract `EntityState` class that accepts a pointer to some generic `Entity` instance. `LightState` would extend `EntityState`, and `Light` would extend `Entity`.
 
-{% include linkedHeading.html heading="2. Concrete State Classes" level=3 %}
+### 2. Concrete State Classes
 
 Next, we'll declare all of our concrete state classes. We'll force each one to be a singleton by:
 
@@ -383,7 +383,7 @@ I'm taking advantage of static variables to create my singletons in a legible ma
 
 Notice how each `toggle` method initiates the appropriate state transition by invoking `light->setState(...)` and passing in a singleton, via a call to the next state's `getInstance` method.
 
-{% include linkedHeading.html heading="3. The <code>Light</code> Class" level=3 %}
+### 3. The <code>Light</code> Class
 
 The final piece of the puzzle is the `Light` class, particularly the `setState` method:
 
@@ -438,7 +438,7 @@ This is where the `enter` and `exit` methods come into play. Before we change st
 
 And we're done! This is a pretty standard finite state machine implementation, and you can easily extend this to any other language you want.
 
-{% include linkedHeading.html heading="More Finite State Machine Examples" level=2 %}
+## More Finite State Machine Examples
 
 As I mentioned earlier, this was a pretty trivial use case for finite state machines. In fact, you don't really need the finite state design pattern to solve this particular problem. However, because the problem itself is so simple—a lightbulb that simply changes from one state to another—I felt it was a perfect way to introduce FSMs without overcomplicating things. That said, I'd like to briefly mention two situations where you may want to use a finite state machine:
 
@@ -446,7 +446,7 @@ As I mentioned earlier, this was a pretty trivial use case for finite state mach
 
 [Modeling AI in a game](https://gameprogrammingpatterns.com/state.html). This post goes into great detail in the context of game dev and even touches on one advantage of finite state machines that I mentioned earlier in this post: the ability to query or "poll" the entity to determine what state transition should take place.
 
-{% include linkedHeading.html heading="Further Reading" level=2 %}
+## Further Reading
 
 To gain a better understanding of finite state machines, I encourage you to reference the book titled *Programming Game AI by Example*, by Mat Buckland. Chapter 2 covers the state-driven agent design pattern, which is essentially just another name for the FSM design pattern. You can [download the companion code](https://github.com/wangchen/Programming-Game-AI-by-Example-src) and run it yourself as you work through the chapter explanations. This is how I initially learned about finite state machines.
 

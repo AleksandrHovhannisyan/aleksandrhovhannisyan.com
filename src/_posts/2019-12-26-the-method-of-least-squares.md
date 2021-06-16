@@ -14,7 +14,7 @@ In this comprehensive post, we'll look at the problem that motivates the least s
 
 There's a lot of theory coming up, but I'll break it down into simple explanations.
 
-{% include linkedHeading.html heading="What Is the Least Squares Method?" level=2 %}
+## What Is the Least Squares Method?
 
 In simple terms, the **method of least squares** finds an approximate solution to a system of equations for which there is no exact solution. Let's look at why we need least squares with this simple example:
 
@@ -66,7 +66,7 @@ The truth is that **there is no unique solution to this system of equations**. W
 
 Clearly, there is no single point at which all of the lines intersect, meaning there's no solution that satisfies all four equations simultaneously. What we found is the red dot, $$(1, 1)$$. As we saw earlier, there are three equations for which this is a solution (blue, purple, and red in the graph above).
 
-{% include linkedHeading.html heading="Overdetermined Systems Don't Have a Unique Solution" level=2 %}
+## Overdetermined Systems Don't Have a Unique Solution
 
 The system of equations above is called an **overdetermined system**; such a system has more equations ($$4$$) than unknowns ($$2$$). If we denote the matrix's dimensions as $$m \times n$$, then an overdetermined system is one where $$m > n$$. Visually, this looks like a tall and thin matrix.
 
@@ -112,7 +112,7 @@ $$x_1 + x_2 = 3\\
 
 This is an overdetermined system because there are three equations but only two unknowns. Notice that the second and third equations are just scaled up ($$\times 2$$ and $$\times 3$$) versions of the first one. This means that they're all the same line, and thus there are infinitely many points of "intersection."
 
-{% include linkedHeading.html heading="How Do We Solve Overdetermined Systems?" level=2 %}
+## How Do We Solve Overdetermined Systems?
 
 So far, we've seen that we can't solve an overdetermined system in the traditional sense. So what do we do? Let's look at the general form of an overdetermined system $$Ax = b$$. As a matrix equation, it looks like this:
 
@@ -153,7 +153,7 @@ But we don't just throw up our arms in defeat if we're given an overdetermined s
 
 > **Takeaway**: A least squares solution is an *approximate* solution to a system of equations for which a unique solution does not exist.
 
-{% include linkedHeading.html heading="Least Squares Visualized" level=2 %}
+## Least Squares Visualized
 
 Before we look at the generalized graph of the least squares method, let's look at a simple example that you'll come across frequently in statistics classes on least squares regression. Suppose you're given this two-dimensional data set of $$(x, y)$$ pairs:
 
@@ -335,7 +335,7 @@ $$A^TA\hat{x} = A^Tb\\
 
 \hat{x} = (A^TA)^{-1}A^Tb$$
 
-{% include linkedHeading.html heading="The Pseudoinverse of a Matrix" level=3 %}
+### The Pseudoinverse of a Matrix
 
 And on that note, it's time for a quick definition.
 
@@ -349,7 +349,7 @@ $$x = (A^{-1})b$$
 
 Notice the similarity? For this reason, we call $$(A^TA)^{-1}A^T$$ the **pseudo-inverse** of $$A$$.
 
-{% include linkedHeading.html heading="Least Squares and QR Decomposition" level=2 %}
+## Least Squares and QR Decomposition
 
 In practice, when working with floating-point systems, you should **never** compute the inverse of a matrix; doing so can result in a considerable [loss of significance](https://en.wikipedia.org/wiki/Loss_of_significance).
 
@@ -395,7 +395,7 @@ Once again, the dimensions work out to produce an $$n \times n$$ system. Notice 
 
 And that's a much more numerically stable process than using $$A$$'s pseudo-inverse directly. In fact, notice that factorizing $$A$$ as $$QR$$ helped us to avoid computing the pseudo-inverse altogether!
 
-{% include linkedHeading.html heading="Summary" level=2 %}
+## Summary
 
 Here's the gist of what we covered in this post:
 

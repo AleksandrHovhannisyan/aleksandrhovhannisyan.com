@@ -62,7 +62,7 @@ Paid subscriptions to courses are, in my honest opinion and personal experience,
 
 Some people learn best with courses, and that's fine. But there's a certain type of junior developer who doesn't know any better—who equates learning with spending money and earning certifications.
 
-[I've written about this before](/blog/learn-to-code-without-wasting-time-and-money/#stop-wasting-money-on-courses-you-ll-never-finish), and I'll say it again: Don't waste money buying courses when there's such a wealth of free information available online. Price tags don't imply any inherent value.
+[I've written about this before](/blog/learn-to-code-without-wasting-time-and-money/#stop-wasting-money-on-courses-youll-never-finish), and I'll say it again: Don't waste money buying courses when there's such a wealth of free information available online. Price tags don't imply any inherent value.
 
 ## Take a Break
 

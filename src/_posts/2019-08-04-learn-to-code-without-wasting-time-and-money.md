@@ -10,7 +10,7 @@ I remember reading a short story in high school about an aspiring writer who inv
 
 The same thing often happens with beginners who want to get into software development&mdash;they install an assortment of IDEs and tools whose purpose they don't really understand, scour through listicles on the best programming languages for beginners to learn, and generally spend most of their time contemplating programming and trying to come up with ideas for projects instead of... well, *programming*.
 
-{% include linkedHeading.html heading="Pick a Language, Any Language" level=2 %}
+## Pick a Language, Any Language
 
 Instead of wasting your time comparing different languages, just pick one and start coding. It really doesn't matter. Learn Java. Learn Python. Learn PHP, JavaScript, Go, Scratch, or any language you want. Anything will do when you're a beginner as long as you actually start somewhere. What you *shouldn't* do is waste time debating the merits and drawbacks of various languages when you don't even have experience yet&mdash;that's what you really need, after all; the language is just a means to an end.
 
@@ -30,7 +30,7 @@ Here's my advice: Don't pick a single language and refuse to part ways with it. 
 
 Instead, I recommend using your favorite language as a way to learn programming fundamentals, algorithms, and data structures, and to gradually step out of your comfort zone. All of those things are language agnostic and easily transferable. Once you master those skills, you'll find that learning new programming languages will be a matter of getting used to a new syntax (and maybe a new way of thinking, like going from an OOP language to a functional one).
 
-{% include linkedHeading.html heading="Stop Wasting Money on Courses You'll Never Finish" level=2 %}
+## Stop Wasting Money on Courses You'll Never Finish
 
 Udemy, Udacity, Lynda, Vertabelo Academy, Codeacademy Pro, et al. What do these things have in common? They're online platforms that target beginners who feel overwhelmed or disillusioned working professionals who are looking to make a career change as quickly as possible. These platforms are everywhere, but I consider them detrimental to learning how to actually code because they rarely ever provide materials that are of a higher quality than free content that's readily available online.
 
@@ -66,7 +66,7 @@ Going into the Artificial Intelligence for Games class at the University of Flor
 
 What do you want to make? Figure that out, and just start Googling. If you decide that taking a course is the right path for you, at least don't waste your money on purchasing one&mdash;there are plenty of free resources online to get you where you need to go.
 
-{% include linkedHeading.html heading="Learn to Code by Reading Code" level=2 %}
+## Learn to Code by Reading Code
 
 Becoming comfortable with reading other people's code is an essential skill for any developer. Much like how reading books can help you become a better writer by exposing you to different literary styles, techniques, genres, and overarching themes, reading code can make you a better programmer by exposing you to different solutions, architectures, design patterns, and language paradigms.
 
@@ -79,7 +79,7 @@ Here are my recommendations for how to improve your code reading skills:
 
 I found the second tip to be especially useful when learning CSS from scratch. Initially, I was quite afraid to read other people's stylesheets because I never really understood what their rules were doing. So what did I do? I read [W3Schools](https://www.w3schools.com/), [MDN](https://developer.mozilla.org/en-US/), [CSS-Tricks](https://css-tricks.com/), and other sites to find multiple ways to do the same thing in front-end. Then, for each line of CSS that was presented to me, I would enter the code locally, refresh my browser, and make a mental note of the visual change that occurred. If something was unclear, I would stop right then and Google that particular CSS property to see what exactly it does. All of this involved reading, and reading, and... more reading. It never stops&mdash;and it's an important skill to develop if you're serious about dev, regardless of what specialization you choose to pursue.
 
-{% include linkedHeading.html heading="Get Comfortable with Setting up a Dev Environment" level=2 %}
+## Get Comfortable with Setting up a Dev Environment
 
 When it comes to working on large code bases, especially ones that are not your own, it's important that you know how to set up your local dev environment correctly, with all the right tools and dependencies. If you're new to this, consider the following exercise: Find an interesting project using [GitHub's Explore section](https://github.com/explore) and clone it onto your own machine. Then, follow whatever directions they have in their README to set up your dev environment and successfully build the project locally.
 
@@ -95,7 +95,7 @@ You absolutely need to associate Git with a hands-on project—ideally one that 
 
 I also highly recommend that you avoid using a GUI client for Git, as they prevent you from mastering and remembering common Git commands. The command-line is your friend, not your enemy. If you struggle to remember what a certain command does, or how to achieve something in Git, feel free to reference [the Atlassian docs](https://www.atlassian.com/git)—they're very well written. You'll also find many excellent answers to common Git questions on StackOverflow.
 
-{% include linkedHeading.html heading="Know that Leetcode Is Not the Answer" level=2 %}
+## Know that Leetcode Is Not the Answer
 
 Remember the SATs and ACTs? Most people would rather not. It's a time when you're cramming material and vocabulary that you'll likely never need to use in your future, just for the sake of validating your intelligence so you can get into college. I hated the entire process and only appreciated one or two math tricks I learned along the way.
 
@@ -113,7 +113,7 @@ With all that said, I will admit that there are some rather interesting Leetcode
 
 So, if you're curious about solving these problems, do give them a shot. But don't waste your time *exclusively* practicing Leetcode thinking that will somehow make you a better programmer (or a more qualified candidate for whatever position you're seeking). It's a very minor part of the overall picture.
 
-{% include linkedHeading.html heading="Stop Beating Yourself Up" level=2 %}
+## Stop Beating Yourself Up
 
 Failure sucks. *A lot*. But you need to get used to the feeling of frustration that programming generally brings because it's inevitable.
 

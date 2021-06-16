@@ -121,7 +121,7 @@ A scheduling algorithm's **mean turnaround time (MTT)** is the average turnaroun
 
 **CPU utilization** refers to the fraction of time during which the CPU is actively executing process instructions as opposed to servicing I/O operations. Suppose we have `n` independent processes. If the probability of any process requesting I/O operations is `p`, then by independence, the total probability of I/O operations occurring is `p^n`. Therefore, our CPU utilization is the total percentage of work minus the percentage of work "wasted" on I/O. Mathematically, this can be expressed as `1 - p^n` (assuming that context switches are negligible, which isn't always the case).
 
-{% include linkedHeading.html heading="Categories of Scheduling Algorithm Systems" level=2 %}
+## Categories of Scheduling Algorithm Systems
 
 So far, we've looked at the terms preemptive and non-preemptive scheduling. But there are actually three overarching categories that we'll group our scheduling algorithms into (and then classify them as either preemptive or non-preemptive). These are based on the types of systems we're working with:
 

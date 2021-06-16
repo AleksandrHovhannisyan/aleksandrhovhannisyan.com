@@ -10,7 +10,7 @@ last_updated: 2020-05-27
 
 [Formspree](https://formspree.io/) is an online platform that makes it easy for you to add a free contact form to your website. It even has paid plans and integrations with other apps, like Slack, Mailchimp, and more. Setting it up takes no more than a few minutes, so let's get started!
 
-{% include linkedHeading.html heading="Overview: How Does Formspree Work?" level=2 %}
+## Overview: How Does Formspree Work?
 
 It's actually really simple! Here's a quick rundown of how Formspree works:
 
@@ -20,7 +20,7 @@ It's actually really simple! Here's a quick rundown of how Formspree works:
 
 3. Once the form has been activated, all future form submissions on your website will trigger a Formspree notification that's sent to your email address, with the form's contents and any other details.
 
-{% include linkedHeading.html heading="How to Set Up Formspree 📧" level=2 %}
+## How to Set Up Formspree 📧
 
 To get started, all you need to do is add a `form` like this to your site:
 
@@ -68,7 +68,7 @@ Finally, as I mentioned earlier, if you reply, the recipient's address will be f
 
 {% include img.html img="reply.jpg" alt="Replying to the email auto-fills the recipient's email address." %}
 
-{% include linkedHeading.html heading="Setting Up a Honeypot Trap for Bots 🍯" level=2 %}
+## Setting Up a Honeypot Trap for Bots 🍯
 
 While the reCAPTCHA test already provides a solid defense against spam, Formspree also [recommends adding a honeypot input field](https://help.formspree.io/hc/en-us/articles/360013580813-Honeypot-spam-filtering) to your form for safe measure:
 
@@ -95,7 +95,7 @@ input.honeypot {
 }
 ```
 
-{% include linkedHeading.html heading="Formspree Free Plan Limitations" level=2 %}
+## Formspree Free Plan Limitations
 
 The free Formspree plan is a good option for most personal websites that don't expect more than **50 submissions per month**. If you need more than that for your site, you can opt for one of their [paid plans](https://formspree.io/plans).
 

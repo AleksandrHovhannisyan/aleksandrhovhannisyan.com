@@ -22,8 +22,8 @@ skip_links:
     {%- assign profile_photo = site.source | append: '/assets/images/profile-photo.png' -%}
     {%- include picture.html img=profile_photo alt="" id="headshot" width="140" height="140" clickable=false -%}
   </section>
-  <section id="recent-posts" class="section">
-      {%- include linkedHeading.html heading="Recent Blog Posts" level=2 -%}
+  <section class="section">
+      <h2 id="recent-posts">Recent Blog Posts</h2>
       <ol class="post-preview-grid">
           {%- assign posts = site.posts | where: "is_archived", nil -%}
           {%- for post in posts limit:5 -%}
@@ -31,8 +31,8 @@ skip_links:
           {%- endfor -%}
       </ol>
   </section>
-  <section id="popular-posts" class="section">
-      {%- include linkedHeading.html heading="Popular Blog Posts" level=2 -%}
+  <section class="section">
+    <h2 id="popular-posts">Popular Blog Posts</h2>
     <ol class="post-preview-grid">
       {%- assign popular_posts = site.posts | where: "is_popular", true -%}
       {%- for post in popular_posts -%}
@@ -40,8 +40,8 @@ skip_links:
       {%- endfor -%}
     </ol>
   </section>
-  <section id="projects" class="section">
-    {%- include linkedHeading.html heading="Software Projects" level=2 -%}
+  <section class="section">
+    <h2 id="projects">Software Projects</h2>
     <p class="projects-subheading">
       I have experience with a wide range of stacks and enjoy working on projects that have a strong UI/UX
       component. Below are just some of my software projects that I'm most proud of.
