@@ -102,9 +102,9 @@
     <meta name="twitter:image" content="{{ og_image }}">
   {%- endif -%}
 </head>
-<body class="centered">
+<body>
   {%- include navbar.html skip_links=page.skip_links -%}
-  <main id="page-content">
+  <main id="page-content" class="centered">
     {{ content }}
   </main>
   {%- include footer.html -%}

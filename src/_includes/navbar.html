@@ -5,8 +5,8 @@
   {%- for link in skip_links -%}
     <a href="{{ link.href }}" class="screen-reader-only skip-navigation">{{ link.text }}</a>
   {%- endfor -%}
-  <nav class="navbar centered">
-    <div class="navbar-container">
+  <nav class="navbar">
+    <div class="navbar-container centered">
       <a id="home-link" href="/" aria-label="Home page">
         <img src="/assets/images/favicons/favicon-228.png" width="32" height="32" aria-hidden="true" alt="" class="logo">
         {%- include logotype.html -%}

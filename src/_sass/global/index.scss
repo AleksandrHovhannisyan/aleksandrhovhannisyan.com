@@ -16,16 +16,17 @@ html {
 }
 
 body {
+  display: grid;
+  grid-template-areas:
+    'navbar'
+    'content'
+    'footer';
+  grid-template-rows: var(--navbar-height) 1fr auto;
+  row-gap: var(--navbar-height);
+  min-width: 0;
+  min-height: 100vh;
   background-color: var(--main-bg-color);
   color: var(--text-color-normal);
-  grid-template-rows: var(--navbar-height) 1fr auto;
-  grid-template-areas:
-    'navbar navbar navbar'
-    '. content .'
-    'footer footer footer';
-  grid-row-gap: var(--navbar-height);
-  min-width: 0; // https://css-tricks.com/preventing-a-grid-blowout/
-  min-height: 100vh;
   @include font-family('sans');
   @include font-weight('regular');
   @include font-size(0);
