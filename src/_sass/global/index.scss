@@ -33,7 +33,8 @@ body {
 }
 
 #page-content {
-  grid-area: content;
+  padding-top: calc(2 * var(--navbar-height));
+  padding-bottom: calc(1.5 * var(--navbar-height));
 }
 
 .logo {
