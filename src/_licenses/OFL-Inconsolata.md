@@ -5,7 +5,7 @@
 Copyright 2006 The Inconsolata Project Authors
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
-This license is copied below, and is also available with a FAQ at:
+This license is copied below, and is also available with an FAQ at:
 http://scripts.sil.org/OFL
 
 
