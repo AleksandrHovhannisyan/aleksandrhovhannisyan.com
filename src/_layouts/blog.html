@@ -21,7 +21,7 @@ is_blog_page: true
       {%- for tag in tags %}
         <li>
           <a
-            href="{% if tag == "all" %}/blog/{% else %}/tag/{{ tag }}{% endif %}"
+            href="{% if tag == "all" %}/blog/{% else %}/tag/{{ tag }}/{% endif %}"
             class="tag post-tag navigation-tag{% if page_tag == tag %} active{% endif %}"
             title="{% if page_tag != tag %}View{% endif %} {% if tag == "all" %}all posts{% else %}posts tagged as {{ tag }}{% endif %}"
             {%- if page_tag == tag -%}aria-current="page"{%- endif -%}
