@@ -89,13 +89,6 @@
   }
 }
 
-@mixin selection-resistant-color($color) {
-  &,
-  &::selection {
-    color: $color;
-  }
-}
-
 @mixin focus-outline($color: currentColor, $style: solid, $thickness: 0.2rem, $offset: 0) {
   &:focus {
     outline: $style $thickness $color;

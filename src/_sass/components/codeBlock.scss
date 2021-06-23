@@ -106,8 +106,7 @@ div.highlighter-rouge {
 
   *::selection {
     background-color: var(--color-code-selection);
-    // This will be overriden by more specific styles but retained for normal text and labels
-    color: var(--color-code-text);
+    color: unset;
   }
 
   // Base Style
@@ -128,18 +127,18 @@ div.highlighter-rouge {
   .c1,
   .cs {
     font-style: italic;
-    @include selection-resistant-color(var(--color-code-comment));
+    color: var(--color-code-comment);
   }
 
   // Functions
   .nf,
   .nx {
-    @include selection-resistant-color(var(--color-code-function));
+    color: var(--color-code-function);
   }
 
   // Attributes
   .na {
-    @include selection-resistant-color(var(--color-code-attribute));
+    color: var(--color-code-attribute);
   }
 
   // Variables
@@ -149,7 +148,7 @@ div.highlighter-rouge {
   .vg,
   .vi,
   .err {
-    @include selection-resistant-color(var(--color-code-variable));
+    color: var(--color-code-variable);
   }
 
   // Numbers
@@ -159,7 +158,7 @@ div.highlighter-rouge {
   .mi,
   .mo,
   .il {
-    @include selection-resistant-color(var(--color-code-number));
+    color: var(--color-code-number);
   }
 
   // Keywords
@@ -168,18 +167,18 @@ div.highlighter-rouge {
   .kn,
   .kr,
   .kt {
-    @include selection-resistant-color(var(--color-code-keyword));
+    color: var(--color-code-keyword);
   }
 
   // Constants
   .kc {
-    @include selection-resistant-color(var(--color-code-constant));
+    color: var(--color-code-constant);
   }
 
   // Pseudo
   .kp,
   .nb {
-    @include selection-resistant-color(var(--color-code-support));
+    color: var(--color-code-support);
   }
 
   // Strings
@@ -188,27 +187,27 @@ div.highlighter-rouge {
   .sc,
   .s1,
   .s2 {
-    @include selection-resistant-color(var(--color-code-string));
+    color: var(--color-code-string);
   }
 
   // Classes/tags
   .nc,
   .nt,
   .nl {
-    @include selection-resistant-color(var(--color-code-tag));
+    color: var(--color-code-tag);
   }
 
   // Punctuation
   .p {
-    @include selection-resistant-color(var(--color-code-punctuation));
+    color: var(--color-code-punctuation);
   }
 
   .o {
-    @include selection-resistant-color(var(--color-code-operator));
+    color: var(--color-code-operator);
   }
 
   // Operators
   .ow {
-    @include selection-resistant-color(var(--color-code-operator-word));
+    color: var(--color-code-operator-word);
   }
 }
