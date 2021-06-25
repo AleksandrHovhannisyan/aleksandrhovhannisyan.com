@@ -12,7 +12,7 @@ permalink: /
       <a class="underlined-link" href="/about/">learn more about me</a>, or
       <a class="underlined-link" href="/contact/">get in touch</a>.
     </p>
-    {%- assign profile_photo = site.source | append: '/assets/images/profile-photo.png' -%}
+    {%- assign profile_photo = site.source | append: '/assets/images/profile-photo.jpg' -%}
     {%- include picture.html img=profile_photo alt="" id="headshot" width="140" height="140" clickable=false -%}
   </section>
   <section class="section">
@@ -60,7 +60,7 @@ permalink: /
   {
     "@context": "http://schema.org",
     "@type": "Person",
-    "image": "{{ site.url }}/assets/images/profile-photo.png",
+    "image": "{{ site.url }}/assets/images/profile-photo.jpg",
     "jobTitle": "Software Developer",
     "name": "Aleksandr Hovhannisyan",
     "sameAs": [
