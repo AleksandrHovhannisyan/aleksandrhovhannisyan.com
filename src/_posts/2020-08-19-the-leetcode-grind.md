@@ -119,3 +119,7 @@ The greatest athletes, chess players, and actors of the world didn't achieve the
 My submissions fail pretty frequently, with only a 40% acceptance rate for the 60 problems that I've solved to date. And I'm okay with that, as long as the number doesn't continue to drop over time.
 
 So forget the grind—just focus on the **value of practicing Leetcode**, not on doing as many problems as you can in one sitting.
+
+## Attributions
+
+This post's social media preview image uses the Leetcode logo under fair use; it is under the copyright of LeetCode. I am not affiliated with LeetCode.
