@@ -2,14 +2,14 @@
 title: "Finite State Machine (FSM) Tutorial: Implementing an FSM in C++"
 description: "Finite state machines (FSMs) are used in lots of different situations to model complex entity state. In this finite state machine tutorial, I'll help you understand the FSM design pattern by building one from the ground up for a simple use case."
 keywords: ["finite state machine tutorial", "implement a finite state machine"]
-tags: [dev, design-patterns, cpp]
+categories: [dev, design-patterns, cpp]
 comments_id: 33
 is_popular: true
 ---
 
 Finite state machines (FSMs) are used in lots of different situations to model complex entity state. They're especially relevant in game dev for modeling dynamic AI behavior and decision-making. Here's a very rough sketch of what a finite state machine might look like:
 
-{% include img.html img="fsm.jpg" alt="A finite state machine representation." %}
+{% include img.html src: "fsm.jpg", alt: "A finite state machine representation." %}
 
 An entity may transition from one state to another, or it may remain in its current state. The arrows denote transitions. The conditions under which a transition should take place will need to be coded into the FSM itself.
 
@@ -26,7 +26,7 @@ Suppose we have a lightbulb that can have the following states:
 
 We can model this using an enum:
 
-{% include codeHeader.html file="LightState.h" %}
+{% include codeHeader.html file: "LightState.h" %}
 ```cpp
 #pragma once
 
@@ -52,7 +52,7 @@ Usually, whenever you can model a scenario with finite state machines, you can a
 
 So, we'll model our light's state transitions with an actual map data structure, where the key is the current state and the value is the next state:
 
-{% include codeHeader.html file="LightState.h" %}
+{% include codeHeader.html file: "LightState.h" %}
 ```cpp
 #pragma once
 #include <map>
@@ -74,7 +74,7 @@ std::map<LightState, LightState> lightTransitions = {
 
 Let's also create our simple `Light` class:
 
-{% include codeHeader.html file="Light.h" %}
+{% include codeHeader.html file: "Light.h" %}
 ```cpp
 #pragma once
 #include "LightState.h"
@@ -91,7 +91,7 @@ private:
 };
 ```
 
-{% include codeHeader.html file="Light.cpp" %}
+{% include codeHeader.html file: "Light.cpp" %}
 ```cpp
 #include "Light.h"
 
@@ -118,7 +118,7 @@ For example, maybe we want to toggle the intensity of the lightbulb with each st
 
 We could certainly do this—just add some code before and after the line where we're changing the state:
 
-{% include codeHeader.html file="Light.cpp" %}
+{% include codeHeader.html file: "Light.cpp" %}
 ```cpp
 void Light::toggle()
 {
@@ -138,7 +138,7 @@ Now that we've looked at how to create a state transition table, we can implemen
 
 Instead of using a state transition table and a `LightState` *enum*, what if we make each concrete light state its own *class*? That way, we can delegate the task of determining the next state to the *current state* that a light is in. In other words, I'm proposing that we do something like this, where invoking a light's `toggle` method in turn invokes the current state's `toggle` method (because remember—we're now going to use classes instead of enums for the states):
 
-{% include codeHeader.html file="Light.h" copyable=false %}
+{% include codeHeader.html file: "Light.h", copyable: false %}
 ```cpp
 #pragma once
 #include "LightState.h"
@@ -160,7 +160,7 @@ private:
 };
 ```
 
-{% include codeHeader.html file="Light.cpp" copyable=false %}
+{% include codeHeader.html file: "Light.cpp", copyable: false %}
 ```cpp
 #include "Light.h"
 
@@ -203,7 +203,7 @@ This is known as the **finite state design pattern**. In this pattern, each stat
 
 Let's model this finite state machine with a simple diagram:
 
-{% include img.html img="light-fsm.jpg" alt="Modeling our lightbulb's FSM." %}
+{% include img.html src: "light-fsm.jpg", alt: "Modeling our lightbulb's FSM." %}
 
 Each class implements a common `LightState` interface (or, in C++ terms, an *abstract class*) that exposes the following three methods:
 
@@ -230,7 +230,7 @@ To understand how this all works in practice, we'll implement everything from sc
 
 Let's first define the abstract `LightState` class. You'll notice some forward declarations that are necessary to resolve circular includes that would otherwise throw off the C++ linker.
 
-{% include codeHeader.html file="LightState.h" %}
+{% include codeHeader.html file: "LightState.h" %}
 ```cpp
 #pragma once
 #include "Light.h"
@@ -259,7 +259,7 @@ Next, we'll declare all of our concrete state classes. We'll force each one to b
 1. Defining a static `getInstance` method that returns a pointer to the singleton.
 2. Declaring all constructors, copy constructors, and assignment operators as private.
 
-{% include codeHeader.html file="ConcreteLightStates.h" %}
+{% include codeHeader.html file: "ConcreteLightStates.h" %}
 ```cpp
 #pragma once
 #include "LightState.h"
@@ -326,7 +326,7 @@ I created inlined, empty definitions for the `enter` and `exit` methods, as thes
 
 Let's also create definitions for all of the `toggle` and `getInstance` methods, to make things clearer:
 
-{% include codeHeader.html file="ConcreteLightStates.cpp" %}
+{% include codeHeader.html file: "ConcreteLightStates.cpp" %}
 ```cpp
 #include "ConcreteLightStates.h"
 
@@ -387,7 +387,7 @@ Notice how each `toggle` method initiates the appropriate state transition by in
 
 The final piece of the puzzle is the `Light` class, particularly the `setState` method:
 
-{% include codeHeader.html file="Light.h" %}
+{% include codeHeader.html file: "Light.h" %}
 ```cpp
 #pragma once
 #include "LightState.h"
@@ -409,7 +409,7 @@ private:
 };
 ```
 
-{% include codeHeader.html file="Light.cpp" %}
+{% include codeHeader.html file: "Light.cpp" %}
 ```cpp
 #include "Light.h"
 #include "ConcreteLightStates.h"

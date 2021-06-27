@@ -1,0 +1,22 @@
+[
+  {
+     "name": "LinkedIn",
+     "icon": "linkedin",
+     "url": "https://www.linkedin.com/in/aleksandr-hovhannisyan-ba154b120/"
+  },
+  {
+     "name": "GitHub",
+     "icon": "github",
+     "url": "https://github.com/AleksandrHovhannisyan"
+  },
+  {
+     "name": "Upwork",
+     "icon": "upwork",
+     "url": "https://www.upwork.com/o/profiles/users/~014eb3a95d4d1fd855/?s=1110580755107926016"
+  },
+  {
+     "name": "Stack Exchange",
+     "icon": "stackexchange",
+     "url": "https://stackexchange.com/users/6935154/aleksandrh"
+  }
+]

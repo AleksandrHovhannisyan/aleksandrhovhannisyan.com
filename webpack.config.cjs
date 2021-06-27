@@ -1,22 +1,23 @@
 const path = require('path');
 
 module.exports = {
+  context: path.resolve(__dirname, './src/assets/scripts'),
   resolve: {
     alias: {
-      '@components': path.resolve(__dirname, 'webpack/components'),
-      '@utils': path.resolve(__dirname, 'webpack/utils'),
+      '@components': path.resolve(__dirname, './src/assets/scripts/components/index.mjs'),
+      '@utils': path.resolve(__dirname, './src/assets/scripts/utils/index.mjs'),
     },
   },
   entry: {
-    main: path.resolve(__dirname, 'webpack/index.js'),
-    comments: path.resolve(__dirname, 'webpack/comments.js'),
+    main: './index.mjs',
+    comments: './comments.mjs',
   },
   output: {
     clean: true,
     publicPath: '/assets/scripts/',
-    path: path.resolve(__dirname, 'src/assets/scripts/'),
-    filename: '[name].bundle.js',
-    chunkFilename: '[name].bundle.js',
+    path: path.resolve(__dirname, './_site/assets/scripts/'),
+    filename: '[name].bundle.mjs',
+    chunkFilename: '[name].bundle.mjs',
   },
   module: {
     rules: [

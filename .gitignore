@@ -1,10 +1,6 @@
 _site
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
-.eslintcache
-_drafts
-post_diagrams
-experimental
+.cache
 node_modules
-/src/assets/scripts/
+.sass-cache
+.eslintcache
+src/_drafts

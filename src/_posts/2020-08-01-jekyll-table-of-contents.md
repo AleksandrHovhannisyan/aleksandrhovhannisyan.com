@@ -2,7 +2,7 @@
 title: An Accessible Jekyll Table of Contents
 description: Easily create a table of contents in your Jekyll blog posts with one simple include, with a skip navigation link to make things accessible for keyboard users.
 keywords: [jekyll table of contents]
-tags: [dev, jekyll, accessibility]
+categories: [dev, jekyll, accessibility]
 comments_id: 50
 ---
 
@@ -14,7 +14,7 @@ Alright, let's cut to the chase: You want to create a table of contents in Jekyl
 
 Create an include file named `toc.md` and fill it with this markup:
 
-{% include codeHeader.html file="_includes/toc.md" %}
+{% include codeHeader.html file: "_includes/toc.md" %}
 {% raw %}
 ```markdown
 <div style="position: relative;">
@@ -82,7 +82,7 @@ One last thing: You typically don't want "skip to content" links like this to be
 
 So, here's the Sass that'll get the job done:
 
-{% include codeHeader.html file="_sass/someSassFile.scss" %}
+{% include codeHeader.html file: "_sass/someSassFile.scss" %}
 ```scss
 .screen-reader-only {
     position: absolute;

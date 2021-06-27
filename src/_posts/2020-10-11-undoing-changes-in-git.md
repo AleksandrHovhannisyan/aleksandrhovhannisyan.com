@@ -2,7 +2,7 @@
 title: 6 Ways to Undo Changes in Git
 description: If you ever find yourself in a sticky situation with git, don't panic. Here are six simple ways you can undo changes in git and clean up your commit history.
 keywords: [undo changes in git, git]
-tags: [dev, git, github]
+categories: [dev, git, github]
 comments_id: 60
 ---
 
@@ -25,7 +25,7 @@ touch .gitignore && git add . && git commit -m "Add .gitignore"
 
 On my end, that gives me this history:
 
-```
+```text
 * 4753e23 - (HEAD -> master) Add .gitignore (4 seconds ago) <AleksandrHovhannisyan>
 * 893d18d - Add README (4 seconds ago) <AleksandrHovhannisyan>
 * 2beb7c7 - Add .env (4 seconds ago) <AleksandrHovhannisyan>
@@ -54,7 +54,7 @@ With that boring preface out of the way, let's finally get to the good stuff!
 
 You have this commit history:
 
-```
+```text
 * 4753e23 - (HEAD -> master) Add .gitignore (4 seconds ago) <AleksandrHovhannisyan>
 * 893d18d - Add README (4 seconds ago) <AleksandrHovhannisyan>
 * 2beb7c7 - Add .env (4 seconds ago) <AleksandrHovhannisyan>
@@ -108,7 +108,7 @@ Change the commit message in your editor, and close and save the file. That's it
 
 In any case, after amending the most recent commit, you'll have a log that looks something like this:
 
-```
+```text
 * 7598875 - (HEAD -> master) Add .gitignore (31 seconds ago) <AleksandrHovhannisyan>
 * 893d18d - Add README (79 seconds ago) <AleksandrHovhannisyan>
 * 2beb7c7 - Add .env (79 seconds ago) <AleksandrHovhannisyan>
@@ -117,7 +117,7 @@ In any case, after amending the most recent commit, you'll have a log that looks
 
 Now, suppose you had already pushed the old commit to your remote branch before amending it. If you run `git status`, you'll be told that your local branch and the remote branch have diverged by one commit:
 
-```
+```text
 On branch master
 Your branch and 'origin/master' have diverged,
 and have 1 and 1 different commits each, respectively.
@@ -136,7 +136,7 @@ In this toy example, we force-pushed to `master`, but we're the only ones touchi
 
 As a reminder, we have this commit history so far:
 
-```
+```text
 * 7598875 - (HEAD -> master) Add .gitignore (31 seconds ago) <AleksandrHovhannisyan>
 * 893d18d - Add README (79 seconds ago) <AleksandrHovhannisyan>
 * 2beb7c7 - Add .env (79 seconds ago) <AleksandrHovhannisyan>
@@ -152,7 +152,7 @@ touch file && git add . && git commit -m "Add a file"
 
 So now we have this commit history:
 
-```
+```text
 * b494f6f - (HEAD -> master) Add a file (5 seconds ago) <AleksandrHovhannisyan>
 * 7598875 - Add .gitignore (3 minutes ago) <AleksandrHovhannisyan>
 * 893d18d - Add README (4 minutes ago) <AleksandrHovhannisyan>
@@ -171,7 +171,7 @@ The tilde character (`~`) followed by a number tells git how many commits it sho
 
 Output:
 
-```
+```text
 HEAD is now at 7598875 Add .gitignore
 ```
 
@@ -196,7 +196,7 @@ You're also not limited to just resetting against commits in the current branch.
 For example, you can reset a local branch to point to another local branch:
 
 {% include codeHeader.html %}
-```
+```text
 git reset --hard <someOtherBranch>
 ```
 
@@ -275,7 +275,7 @@ All interactive rebases start with the `git rebase -i` command and must specify 
 
 So far, we have this commit history:
 
-```
+```text
 * 7598875 - (HEAD -> master) Add .gitignore (20 minutes ago) <AleksandrHovhannisyan>
 * 893d18d - Add README (21 minutes ago) <AleksandrHovhannisyan>
 * 2beb7c7 - Add .env (21 minutes ago) <AleksandrHovhannisyan>
@@ -299,7 +299,7 @@ pick 7598875 Add .gitignore
 
 To delete `2beb7c7`, change the `pick` command to `drop` (or just `d`) and leave the other ones untouched:
 
-```
+```text
 drop 2beb7c7 Add .env
 pick 893d18d Add README
 pick 7598875 Add .gitignore
@@ -313,7 +313,7 @@ Successfully rebased and updated refs/heads/master.
 
 And now, if you do a `git log`, you'll no longer see that commit:
 
-```
+```text
 * 11221d4 - (HEAD -> master) Add .gitignore (6 seconds ago) <AleksandrHovhannisyan>
 * 9ed001a - Add README (6 seconds ago) <AleksandrHovhannisyan>
 * 0beebfb - Add package.json (50 minutes ago) <AleksandrHovhannisyan>
@@ -330,7 +330,7 @@ git push -f
 
 Let's continue working from where we left off, adding two more commits. We're in a rush, though, so we just throw together whatever commit messages come to mind rather than being descriptive:
 
-```
+```text
 * 094f8cb - (HEAD -> master) Do more stuff (1 second ago) <AleksandrHovhannisyan>
 * 74dab36 - Do something idk (59 seconds ago) <AleksandrHovhannisyan>
 * 11221d4 - Add .gitignore (3 minutes ago) <AleksandrHovhannisyan>
@@ -407,7 +407,7 @@ Add name and author to package.json
 
 You'll get this output confirmation:
 
-```
+```text
 [detached HEAD 665034d] Update README with getting started instructions
  Date: Sun Oct 11 09:17:41 2020 -0400
  1 file changed, 5 insertions(+)
@@ -418,7 +418,7 @@ Successfully rebased and updated refs/heads/master.
 
 And now your commit history looks like this:
 
-```
+```text
 * ba88fb0 - (HEAD -> master) Add name and author to package.json (31 seconds ago) <AleksandrHovhannisyan>
 * 665034d - Update README with getting started instructions (53 seconds ago) <AleksandrHovhannisyan>
 * 11221d4 - Add .gitignore (6 minutes ago) <AleksandrHovhannisyan>
@@ -432,7 +432,7 @@ Don't confuse this with `reword`ing old commit messages. To edit a commit means 
 
 So far, our commit history looks like this:
 
-```
+```text
 * ba88fb0 - (HEAD -> master) Add name and author to package.json (31 seconds ago) <AleksandrHovhannisyan>
 * 665034d - Update README with getting started instructions (53 seconds ago) <AleksandrHovhannisyan>
 * 11221d4 - Add .gitignore (6 minutes ago) <AleksandrHovhannisyan>
@@ -456,7 +456,7 @@ git rebase -i --root
 
 That'll open up our classic editor, showing the commits chronologically:
 
-```
+```text
 pick 0beebfb Add package.json
 pick 9ed001a Add README
 pick 11221d4 Add .gitignore
@@ -466,7 +466,7 @@ pick ba88fb0 Add name and author to package.json
 
 And all we need to do is replace `pick` with `edit` for the very first commit in that list:
 
-```
+```text
 edit 0beebfb Add package.json
 pick 9ed001a Add README
 pick 11221d4 Add .gitignore
@@ -476,7 +476,7 @@ pick ba88fb0 Add name and author to package.json
 
 Close and save the file. You should see this message from git:
 
-```
+```text
 Stopped at 0beebfb... Add package.json
 You can amend the commit now, with
 
@@ -530,7 +530,7 @@ git rebase --continue
 
 And that's it! Our commit history now looks like this:
 
-```
+```text
 * 436e421 - (HEAD -> master) Add name and author to package.json (6 seconds ago) <AleksandrHovhannisyan>
 * beb7c13 - Update README with getting started instructions (6 seconds ago) <AleksandrHovhannisyan>
 * 1c75f66 - Add .gitignore (6 seconds ago) <AleksandrHovhannisyan>
@@ -544,7 +544,7 @@ And that's it! Our commit history now looks like this:
 
 Again, for reference, we have this commit history:
 
-```
+```text
 * 436e421 - (HEAD -> master) Add name and author to package.json (6 seconds ago) <AleksandrHovhannisyan>
 * beb7c13 - Update README with getting started instructions (6 seconds ago) <AleksandrHovhannisyan>
 * 1c75f66 - Add .gitignore (6 seconds ago) <AleksandrHovhannisyan>
@@ -564,7 +564,7 @@ touch file3 && git add . && git commit -m "Add file3"
 
 New commit history:
 
-```
+```text
 * 6afa3ac - (HEAD -> feature) Add file3 (4 seconds ago) <AleksandrHovhannisyan>
 * c16cbc6 - Add file2 (4 seconds ago) <AleksandrHovhannisyan>
 * 0832e96 - Add file1 (4 seconds ago) <AleksandrHovhannisyan>
@@ -584,7 +584,7 @@ git rebase -i master
 
 This rebases our feature branch against the `master` branch. Note that `master` is a reference to a particular commit just like any other:
 
-```
+```text
 * 436e421 - (HEAD -> master) Add name and author to package.json (6 seconds ago) <AleksandrHovhannisyan>
 ```
 
@@ -648,7 +648,7 @@ Add file3
 
 You can now change `Add file1` to be `Add files 1, 2, and 3`, for example, or whatever other commit message you want. Save and close the file, and now your commit history is nice and compact:
 
-```
+```text
 * b646cf6 - (HEAD -> feature) Add files 1, 2, and 3 (70 seconds ago) <AleksandrHovhannisyan>
 * 436e421 - (master) Add name and author to package.json (14 minutes ago) <AleksandrHovhannisyan>
 * beb7c13 - Update README with getting started instructions (14 minutes ago) <AleksandrHovhannisyan>
@@ -659,7 +659,7 @@ You can now change `Add file1` to be `Add files 1, 2, and 3`, for example, or wh
 
 **Fun fact**: If you're worried about losing all the hard work you put into creating your commit messages along the way, don't be. Those other two commit messages will still be visible whenever you view the squashed commit on GitHub, so it still tells a story. Basically, it's just a multi-line commit message:
 
-{% include img.html img="squashed-commit.png" alt="Viewing a squashed commit on GitHub, with three commit messages visible in total." %}
+{% include img.html src: "squashed-commit.png", alt: "Viewing a squashed commit on GitHub, with three commit messages visible in total." %}
 
 ## 4. Reverting Commits
 
@@ -672,7 +672,7 @@ Unfortunately, as we've seen, both of these will **rewrite your commit history**
 
 Easy enough, right? Sure, but the problem arises if there's any work in progress on people's feature branches, especially if they had branched off of the old master—**where the file you deleted still exists**. See where this is going? A rebase won't work because it may actually reintroduce the file that was deleted on `master`; you can try this out locally to see what I mean. Similarly, a merge of `master` into your feature branch won't work because there's no common history for git to resolve:
 
-```
+```text
 fatal: refusing to merge unrelated histories
 ```
 
@@ -687,7 +687,7 @@ git revert <hash-id>
 
 Let's say we're on our `master` branch and want to revert the commit with a hash of `beb7c13`:
 
-```
+```text
 * 436e421 - (HEAD -> master) Add name and author to package.json (8 hours ago) <AleksandrHovhannisyan>
 * beb7c13 - Update README with getting started instructions (8 hours ago) <AleksandrHovhannisyan>
 * 1c75f66 - Add .gitignore (8 hours ago) <AleksandrHovhannisyan>
@@ -720,7 +720,7 @@ This reverts commit beb7c132882ff1e3214dbd380514559fed0ef38f.
 
 You can change the message if you'd like to, but it's usually best to leave it as-is to make it clear what happened. Save and close the file, and run a `git log` to see this history:
 
-```
+```text
 * e1e6e06 - (HEAD -> master) Revert "Update README with getting started instructions" (58 seconds ago) <AleksandrHovhannisyan>
 * 436e421 - Add name and author to package.json (8 hours ago) <AleksandrHovhannisyan>
 * beb7c13 - Update README with getting started instructions (8 hours ago) <AleksandrHovhannisyan>
@@ -805,7 +805,7 @@ git checkout -b feature2
 
 Reflog:
 
-```
+```text
 b646cf6 (HEAD -> feature2, origin/feature, feature) HEAD@{0}: checkout: moving from feature to feature2
 ```
 
@@ -813,7 +813,7 @@ This was logged because the `HEAD` pointer was redirected from the tip of the `f
 
 We can also view **all of our changes from this tutorial** if we dig deeper in the reflog:
 
-```
+```text
 b646cf6 (HEAD -> feature2, origin/feature, feature) HEAD@{0}: checkout: moving from feature to feature2
 b646cf6 (HEAD -> feature2, origin/feature, feature) HEAD@{1}: rebase -i (finish): returning to refs/heads/feature
 b646cf6 (HEAD -> feature2, origin/feature, feature) HEAD@{2}: rebase -i (squash): Add files 1, 2, and 3
@@ -870,7 +870,7 @@ git reset --soft 7598875
 
 That soft-resets my current `feature2` branch to this history:
 
-```
+```text
 * 7598875 - (HEAD -> feature2) Add .gitignore (84 minutes ago) <AleksandrHovhannisyan>
 * 893d18d - Add README (85 minutes ago) <AleksandrHovhannisyan>
 * 2beb7c7 - Add .env (85 minutes ago) <AleksandrHovhannisyan>
@@ -879,7 +879,7 @@ That soft-resets my current `feature2` branch to this history:
 
 And I can even run another `reflog` to see *that* change!
 
-```
+```text
 7598875 (HEAD -> feature2) HEAD@{0}: reset: moving to 7598875
 ```
 
@@ -892,7 +892,7 @@ git reset --hard b646cf6
 
 Which takes us right back to where we were before:
 
-```
+```text
 * b646cf6 - (HEAD -> feature2, origin/feature, feature) Add files 1, 2, and 3 (13 minutes ago) <AleksandrHovhannisyan>
 * 436e421 - (master) Add name and author to package.json (26 minutes ago) <AleksandrHovhannisyan>
 * beb7c13 - Update README with getting started instructions (26 minutes ago) <AleksandrHovhannisyan>
@@ -912,14 +912,12 @@ git reflog delete HEAD@{n}
 
 Replacing `n` with whatever line you want to delete from the reflog. `HEAD@{0}` refers to the most recent line in the `reflog`, `HEAD@{1}` refers to the one before that, and so on.
 
-{:.no_toc}
 ## Wrap Up
 
 There you have it! You now know five powerful ways to undo changes in git. It's not so scary after all! My personal favorite command is `reflog`—it's extremely versatile and can help you get out of sticky situations, if you ever find yourself in trouble.
 
 When in doubt, don't be afraid to ask others for help. There's also a wealth of information online about git, so you're bound to find a question on StackOverflow that's relevant to your needs.
 
-{:.no_toc}
 ## Attributions
 
 > The git logo used in this article's thumbnail was created by [Jason Long](https://git-scm.com/downloads/logos), licensed under the Creative Commons Attribution 3.0 Unported License.

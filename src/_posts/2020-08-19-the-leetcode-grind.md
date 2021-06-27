@@ -2,7 +2,7 @@
 title: Don't Mind the Leetcode Grind
 description: Leetcode is one of those polarizing topics that you either love or hate. But what exactly is it? And does it even deserve your attention?
 keywords: [leetcode, leetcode grind]
-tags: [dev, leetcode, algorithms]
+categories: [dev, leetcode, algorithms]
 ---
 
 **Leetcode** is one of those polarizing topics that you either love or hate. But what exactly is it? And does it even deserve your attention?
@@ -11,7 +11,7 @@ tags: [dev, leetcode, algorithms]
 
 The "grind" bit aside, **Leetcode** is just a platform where you can solve programming puzzles of varying difficulty that cover a wide range of data structures and algorithms (DSA) topics, like trees, dynamic programming, linked lists, string manipulation, and much more. Many of these problems require that you find an optimal solution, in terms of time or space complexity (or both).
 
-{% include img.html img="leetcode.png" alt="Leetcode has a list of DSA problems that you can solve" %}
+{% include img.html src: "leetcode.png", alt: "Leetcode has a list of DSA problems that you can solve" %}
 
 Used generally, the term "Leetcode" (or, in its verb form, *to Leetcode*) doesn't necessarily refer to *that particular platform*. Rather, it refers to a range of platforms—including Hackerrank, Geeksforgeeks, CodeChef, and more—that are meant to help you practice solving technical interview problems and coding puzzles.
 
@@ -23,7 +23,7 @@ Unfortunately, most of the tech industry has adopted Leetcode as its unofficial 
 
 Due to how frequently these types of questions are asked during technical interviews, certain online circles—especially subreddits like r/cscareerquestions—have come to develop an almost religious obsession with the so-called "Leetcode grind." It's way of life wherein you devote a majority of your time to cranking out Leetcode or Hackerrank problems in preparation for technical interviews at **FAANGs**: the **F**acebooks, **A**mazons, **A**pples, **N**etflixes, and **G**oogles of the tech world.
 
-{% include img.html img="reddit.png" alt="Reddit is obssessed with the Leetcode grind" %}
+{% include img.html src: "reddit.png", alt: "Reddit is obssessed with the Leetcode grind" %}
 
 And like any obsession, the Leetcode grind is nothing short of unhealthy.
 

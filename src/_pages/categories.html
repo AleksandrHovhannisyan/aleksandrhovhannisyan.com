@@ -1,0 +1,35 @@
+---
+layout: blog
+pagination:
+  data: collections.postsByCategory
+  size: 1
+  alias: category
+permalink: "/categories/{{ category.slug }}/"
+noindex: true
+excludeFromSitemap: true
+renderData:
+  title: "Posts tagged as {{ category.title }}{% if category.pageNumber > 0 %} (Page {{ category.pageNumber | plus: 1 }}){% endif %}"
+---
+
+<ol class="post-preview-grid">
+  {% for post in category.items %}
+    {% include postPreview.html post: post, title_level: 2 %}
+  {% endfor %}
+</ol>
+{%- if category.totalPages > 1 -%}
+<ol class="pagination-trail" aria-label="Page navigation">
+  {%- for page_slug in category.pageSlugs.all -%}
+    {%- assign category_url = "/categories/" | append: page_slug | append: "/" -%}
+    <li>
+      <a
+        href="{{ category_url}}"
+        class="tag pagination-page{% if category_url == page.url %} active{% endif %}"
+        aria-label="Page {{ page_num }}"
+        {% if category_url == page.url %}aria-current="page"{% endif %}
+      >
+        {{- forloop.index -}}
+      </a>
+    </li>
+  {%- endfor -%}
+</ol>
+{%- endif -%}

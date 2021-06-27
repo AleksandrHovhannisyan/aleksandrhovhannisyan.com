@@ -1,4 +1,5 @@
 .sass-cache
 node_modules
 _site
-src
+**/*.cjs
+config

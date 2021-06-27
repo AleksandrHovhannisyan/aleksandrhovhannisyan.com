@@ -2,7 +2,7 @@
 title: "SVG Tutorial: How to Code SVG Icons by Hand"
 description: Learn the basics of SVGs so you can code your own SVG icons by hand, without always relying on icon libraries.
 keywords: [svg tutorial, svg icons, how to code svg]
-tags: [dev, svg, html, css]
+categories: [dev, svg, html, css]
 last_updated: 2021-06-04
 canonical_url: https://www.aleksandrhovhannisyan.com/blog/svg-tutorial-how-to-code-svg-icons-by-hand/
 comments_id: 68
@@ -177,7 +177,7 @@ As a bonus, you can even fluidly animate SVGs to create really fun and engaging 
 
 There are two ways to draw SVGs: by hand, where you define the markup explicitly using HTML, or through a **vector image program** like [Inkscape](https://inkscape.org/):
 
-{% include img.html img="inkscape.png" alt="Inkscape's user interface consists of drawing tools on the left-hand side, page alignment and setup options on the right, and a canvas in the center." %}
+{% include img.html src: "inkscape.png", alt: "Inkscape's user interface consists of drawing tools on the left-hand side, page alignment and setup options on the right, and a canvas in the center." %}
 
 These programs come with basic shapes, color pickers, drawing tools, and path manipulation, allowing you to create complex drawings with greater ease than if you were to do them by hand. You'll typically see designers and logo artists using GUIs like Inkscape rather than coding SVGs by hand. Still, understanding how SVG markup works is a valuable learning experience. At the end of the day, these programs output `.svg` files; if you inspect those files, you'll find that their markup is just XML, and you can make sense of it if you understand how SVGs work.
 
@@ -240,7 +240,7 @@ Below are two SVG icons. The one on the left has a `viewBox` of `0 0 24 24`. The
 
 The last two numbers control the size (horizontal and vertical, respectively) of this coordinate system, before any scaling is done. Larger numbers lead to a larger viewport and more space to work with, while smaller numbers lead to a smaller viewport and less space to work with. In the examples above, the viewport size is declared to be `24 24`, so our coordinates range from `(0, 0)` (top-left corner) to `(24, 24)` (bottom-right corner):
 
-{% include img.html img="coordinates.png" alt="An SVG's coordinate system has an origin of (0, 0) at the top-left corner. For an SVG whose viewBox is 0 0 24 24, the bottom-right corner is at (24, 24)." %}
+{% include img.html src: "coordinates.png", alt: "An SVG's coordinate system has an origin of (0, 0) at the top-left corner. For an SVG whose viewBox is 0 0 24 24, the bottom-right corner is at (24, 24)." %}
 
 Finally, the `width` and `height` attributes work just as you'd expect them to: They define the final (scaled) width and height of your SVG element, in pixels. Alternatively, you can change an SVG's size with CSS using `width` and `height`.
 

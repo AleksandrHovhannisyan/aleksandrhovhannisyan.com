@@ -1,0 +1,27 @@
+@import '../mixins';
+
+.card {
+  // Expose these to consumers so we don't hard-code the logic here
+  --card-padding: 3.2rem;
+  --card-box-shadow-default: 0 0.1rem 0.1rem hsla(0, 0%, 0%, 0.12),
+    0 0.2rem 0.2rem hsla(0, 0%, 0%, 0.12),
+    0 0.4rem 0.4rem hsla(0, 0%, 0%, 0.12),
+    0 0.5rem 1.2rem hsla(0, 0%, 0%, 0.12);
+
+  --card-box-shadow-focus:   0 0.2rem 0.2rem hsla(0, 0%, 0%, 0.12),
+    0 0.4rem 0.4rem hsla(0, 0%, 0%, 0.12),
+    0 0.8rem 0.8rem hsla(0, 0%, 0%, 0.12),
+    0 0.8rem 1.2rem hsla(0, 0%, 0%, 0.12);
+  --card-offset-y-focus: translateY(-0.8rem);
+  position: relative;
+  padding: var(--card-padding);
+  background-color: var(--card-bg-color);
+  border-radius: 0.4rem;
+  box-shadow: var(--card-box-shadow-default);
+  transform: none;
+  cursor: pointer;
+  // Fixes jankiness on Windows
+  will-change: transform, box-shadow;
+  @include transition(box-shadow, transform);
+}
+

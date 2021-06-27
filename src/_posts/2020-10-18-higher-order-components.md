@@ -2,7 +2,7 @@
 title: What Are Higher-Order Components in React?
 description: Higher-order components are one of React's most popular design patterns, allowing you to define reusable stateful logic and create powerful, flexible components.
 keywords: [higher-order components]
-tags: [dev, react, design-patterns]
+categories: [dev, react, design-patterns]
 last_updated: 2020-11-10
 comments_id: 61
 ---
@@ -46,7 +46,7 @@ To go a bit more into detail, a higher-order component is a special kind of func
 
 In other words, a higher-order component is essentially a **component factory**. It's a design pattern that allows you to create new versions of existing components by injecting additional props into them. Notably, higher-order components are used to consolidate reusable, **stateful logic** in a single place.
 
-{% include img.html img="diagram.png" alt="A higher-order component returns a component, which returns a React element." %}
+{% include img.html src: "diagram.png", alt: "A higher-order component returns a component, which returns a React element." %}
 
 Don't get confused—an HOC is not itself a component. Remember: Components are functions that return a React element; higher-order components are functions that return *components*.
 
@@ -71,7 +71,7 @@ Suppose we're using React to create a blog (e.g., with a static site generator l
 
 To kick things off, we'll create a basic presentational component named `PostList` that represents a generic list of posts. Nothing fancy here:
 
-{% include codeHeader.html file="components/PostList/index.js" %}
+{% include codeHeader.html file: "components/PostList/index.js" %}
 ```jsx
 import React from "react";
 
@@ -91,7 +91,7 @@ export default PostList;
 
 Your blog is going to have three different kinds of posts: recent, popular, and archived. Since we don't actually have any real data to work with here, we'll create some fake data and use that for this tutorial:
 
-{% include codeHeader.html file="containers/Posts/api.js" %}
+{% include codeHeader.html file: "containers/Posts/api.js" %}
 ```js
 const recentPosts = [
   {
@@ -165,7 +165,7 @@ In the real world, you'd hit an actual API endpoint rather than returning local,
 
 Our blog will consist of the following container component:
 
-{% include codeHeader.html file="containers/Posts/index.js" %}
+{% include codeHeader.html file: "containers/Posts/index.js" %}
 ```jsx
 import React from "react";
 import {
@@ -198,7 +198,7 @@ export default Posts;
 
 Of course, the three components you see here don't exist just yet, so let's go ahead and create them now. We'll use the fetch functions we defined just a few seconds ago to do that. Keep in mind that in the real world, you'd probably use some Promise-based fetch function to get your data, and thus you'd need to either `await` your data or chain `then`s:
 
-{% include codeHeader.html file="components/PostList/index.js" %}
+{% include codeHeader.html file: "components/PostList/index.js" %}
 ```jsx
 import React, { useEffect, useState } from "react";
 import {
@@ -268,7 +268,7 @@ That's precisely the idea behind higher-order components in React.
 
 I'll show the higher-order component for this scenario now, in its entirety, and then explain how it works:
 
-{% include codeHeader.html file="components/PostList/withPosts.js" %}
+{% include codeHeader.html file: "components/PostList/withPosts.js" %}
 ```jsx
 import React, { useState, useEffect } from "react";
 
@@ -309,7 +309,7 @@ function withPosts(Component, getPosts) {
 
 In fact, if we had wanted to, we could've used the legacy React syntax and returned a class instead, to make it perfectly clear that a higher-order component returns a React component:
 
-{% include codeHeader.html file="components/PostList/withPosts.js" %}
+{% include codeHeader.html file: "components/PostList/withPosts.js" %}
 ```jsx
 import React, { useState, useEffect } from "react";
 
@@ -342,7 +342,7 @@ In both versions of the code, the inner component accepts props (just like all R
 
 Now, using this higher-order component couldn't be easier:
 
-{% include codeHeader.html file="components/PostList/index.js" %}
+{% include codeHeader.html file: "components/PostList/index.js" %}
 ```jsx
 export const RecentPosts = withPosts(PostList, getRecentPosts);
 export const PopularPosts = withPosts(PostList, getPopularPosts);
@@ -356,7 +356,7 @@ Notice that we're calling the higher-order component three times here, once for 
 
 Since the result of a call to a higher-order component is just another component, these exported variables can be rendered. Thus, the code from earlier should make sense:
 
-{% include codeHeader.html file="containers/Posts/Posts.js" %}
+{% include codeHeader.html file: "containers/Posts/Posts.js" %}
 ```jsx
 import React from "react";
 import {
@@ -389,7 +389,7 @@ export default Posts;
 
 Additionally, if we had wanted to, we could've also passed along more props to these components:
 
-{% include codeHeader.html file="containers/Posts/Posts.js" %}
+{% include codeHeader.html file: "containers/Posts/Posts.js" %}
 ```jsx
 import React from "react";
 import {
@@ -440,7 +440,7 @@ One last thing worth noting with this example: You may be wondering why we didn'
 
 In other words, why not do this:
 
-{% include codeHeader.html file="components/PostList/withPosts.js" %}
+{% include codeHeader.html file: "components/PostList/withPosts.js" %}
 ```jsx
 import React, { useState, useEffect } from "react";
 import PostList from "./PostList";
@@ -462,7 +462,7 @@ export default withPosts;
 
 That would certainly save us some typing here, as we'd no longer have to specify `PostList` as the first argument to each function call:
 
-{% include codeHeader.html file="components/PostList/index.js" %}
+{% include codeHeader.html file: "components/PostList/index.js" %}
 ```jsx
 export const RecentPosts = withPosts(getRecentPosts);
 export const PopularPosts = withPosts(getPopularPosts);
@@ -475,10 +475,7 @@ However, this isn't a good idea in general, as you may run into a situation late
 
 If you're with me so far, you may have noticed an interesting fact: Higher-order components accept a component as one of their arguments, but they also *return* a component. Naturally, this means we can pass the result of one higher-order component as an argument to another, like nested Matryoshka dolls:
 
-<figure>
-  {% include img.html img="matryoshka-dolls.png" alt="The classic Russian Matryoshka dolls, in decreasing size, can be nested in one another." %}
-  <figcaption>Image source: <a href="https://en.wikipedia.org/wiki/Matryoshka_doll#/media/File:Russian-Matroshka.jpg">Wikimedia Commons user Fanghong</a></figcaption>
-</figure>
+{% include figure.html src: "matryoshka-dolls.png", alt: "The classic Russian Matryoshka dolls, in decreasing size, can be nested in one another.", caption: "Image source: [Wikimedia Commons user Fanghong](https://en.wikipedia.org/wiki/Matryoshka_doll#/media/File:Russian-Matroshka.jpg)" %}
 
 Consider this toy example:
 
@@ -669,7 +666,7 @@ export default withTheme(MyComponent);
 
 Check it out—here's the code for the `ThemeToggle` button:
 
-{% include codeHeader.html file="ThemeToggle/index.js" copyable=false %}
+{% include codeHeader.html file: "ThemeToggle/index.js", copyable: false %}
 ```jsx
 import React from "react";
 import { themeMap, withTheme } from "../App";
@@ -702,7 +699,7 @@ One question that comes up often is whether higher-order components are relevant
 
 Returning to our blog example, we could instead create a reusable `usePosts` hook to consolidate the fetching logic and return the list of posts and a method to optionally update those posts:
 
-{% include codeHeader.html file="components/PostList/usePosts.js" %}
+{% include codeHeader.html file: "components/PostList/usePosts.js" %}
 ```jsx
 import React, { useState, useEffect } from "react";
 
@@ -720,7 +717,7 @@ export default function usePosts(getPosts) {
 
 And here's how we might use that:
 
-{% include codeHeader.html file="components/PostList/index.js" %}
+{% include codeHeader.html file: "components/PostList/index.js" %}
 ```jsx
 import React from "react";
 import usePosts from "./usePosts";
@@ -801,12 +798,10 @@ const ThemeToggle = (props) => {
 
 One thing worth noting is that higher-order components are still relevant if your code base uses class components since they cannot utilize hooks. Sometimes, you may actually see a code base exporting both higher-order components and hooks to give developers the option of creating either class or function components.
 
-{:.no_toc}
 ## Conclusion
 
 The higher-order component design pattern is pretty powerful once you get comfortable with it and realize what it's doing. In a nutshell, higher-order components are **component factories** that take a component, inject props into it, and return the modified component. As we saw, you can compose higher-order components and even combine them with React's Context API to write powerful, reusable code.
 
-{:.no_toc}
 ## Attributions
 
 The copyright for the React logo used in this blog post's thumbnail [belongs to Facebook](https://commons.wikimedia.org/wiki/File:React-icon.svg).

@@ -2,7 +2,7 @@
 title: Why I Don't Like Tailwind CSS
 description: On paper, Tailwind CSS sounds like a great idea. In reality, it suffers from the same problems that it tries to solve.
 keywords: [tailwind css, tailwind, don't like tailwind]
-tags: [dev, css, tailwind, frameworks]
+categories: [dev, css, tailwind, frameworks]
 canonical_url: https://www.aleksandrhovhannisyan.com/blog/why-i-dont-like-tailwind-css/
 last_updated: 2021-06-14
 comments_id: 77
@@ -10,7 +10,7 @@ is_popular: true
 ---
 
 <aside>
-  <strong>Update</strong> ({%- include date.html date="2021-03-12" -%}): Based on feedback, I've updated this post to clarify some points and to offer a more balanced perspective. This isn't a hill I'd die on; at the end of the day, what matters is that you're productive writing CSS. If that means using Tailwind, nobody's stopping you. Below are just some reasons why <em>I</em> don't enjoy using it.
+  <strong>Update</strong> ({%- include date.html date: "2021-03-12" -%}): Based on feedback, I've updated this post to clarify some points and to offer a more balanced perspective. This isn't a hill I'd die on; at the end of the day, what matters is that you're productive writing CSS. If that means using Tailwind, nobody's stopping you. Below are just some reasons why <em>I</em> don't enjoy using it.
 </aside>
 
 <hr>
@@ -245,7 +245,7 @@ If you use Tailwind, you're stuck with it, unless you convert all of that CSS to
 
 ### 4. Tailwind Is Bloated
 
-**Edit** ({%- include date.html date="2021-03-12" -%}): I'm wrong here. I should have done more research into Tailwind to understand that it is in fact *not* as slow as I originally thought. I've kept the original writing below for transparency.
+**Edit** ({%- include date.html date: "2021-03-12" -%}): I'm wrong here. I should have done more research into Tailwind to understand that it is in fact *not* as slow as I originally thought. I've kept the original writing below for transparency.
 
 Tailwind uses [PurgeCSS](https://purgecss.com/), which removes any unused styles from your compiled stylesheet. The Tailwind docs [note the following](https://tailwindcss.com/docs/optimizing-for-production):
 
@@ -304,7 +304,7 @@ But this really isn't any better than writing CSS directly, and it's no more mai
 
 <hr>
 
-**Edit** ({%- include date.html date="2021-03-12" -%}): I still stand by my original points here, but I'd like to note that Tailwind has a very strong appeal for one key reason: It reduces a set of infinitely many property-value pairs to a strict set of finite design tokens to keep you in check so that you're not plucking arbitrary values out of thin air. This is always a good thing. However, consider whether you really need Tailwind. Vanilla CSS (and CSS preprocessors) already offer variables (in CSS land, we call them custom properties). As long as you create your own design tokens/theme variables, you shouldn't ever run into this issue. In fact, this is how Tailwind operates under the hood.
+**Edit** ({%- include date.html date: "2021-03-12" -%}): I still stand by my original points here, but I'd like to note that Tailwind has a very strong appeal for one key reason: It reduces a set of infinitely many property-value pairs to a strict set of finite design tokens to keep you in check so that you're not plucking arbitrary values out of thin air. This is always a good thing. However, consider whether you really need Tailwind. Vanilla CSS (and CSS preprocessors) already offer variables (in CSS land, we call them custom properties). As long as you create your own design tokens/theme variables, you shouldn't ever run into this issue. In fact, this is how Tailwind operates under the hood.
 
 ### 6. Semantics Is Important. Tailwind Forgoes It.
 
@@ -324,7 +324,7 @@ In short, Tailwind pretends to solve a problem that isn't really a problem in th
 
 <hr>
 
-**Edit** ({%- include date.html date="2021-03-12" -%}): Tailwind is not completely devoid of any semantics. It just has *its own kind* of semantics. However, I would argue that it's always better to be able to name your sub-components, even at the most atomic level. Naming things is hard, but my point is that this difficulty is not something to shy away from: It's a good thing. It forces you to think about what you're building and to give your markup semantics that is otherwise not there. That said, Semantic CSS does have its own drawbacks. If you don't have consistent naming standards, everyone on your team may come up with their own creative variation of BEM.
+**Edit** ({%- include date.html date: "2021-03-12" -%}): Tailwind is not completely devoid of any semantics. It just has *its own kind* of semantics. However, I would argue that it's always better to be able to name your sub-components, even at the most atomic level. Naming things is hard, but my point is that this difficulty is not something to shy away from: It's a good thing. It forces you to think about what you're building and to give your markup semantics that is otherwise not there. That said, Semantic CSS does have its own drawbacks. If you don't have consistent naming standards, everyone on your team may come up with their own creative variation of BEM.
 
 ### 7. Tailwind Makes It Difficult to Tweak Styles in Dev Tools
 
@@ -485,7 +485,6 @@ And voila—just like that, you've solved all of the problems that Tailwind clai
 
 Tailwind allows you to prototype UI very rapidly, without having to slow down and make important naming decisions. This is an obvious plus for developers who need to move quickly and create proofs-of-concept. However, if you're at all concerned about the long-term maintenance of your code base, or the cost of onboarding new developers and expecting them to understand what your code does, then Tailwind is just additional tech debt. And for that reason, and the others that I touched on, I would not recommend using this CSS framework.
 
-{:.no_toc}
 ## Attributions
 
 This article's social media preview uses Tailwind CSS's logotype, which is [under the copyright of Tailwind Labs Inc](https://tailwindcss.com/brand#assets).

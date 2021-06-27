@@ -2,7 +2,7 @@
 title: Why You No Longer Enjoy Reading
 description: Reading books isn't something that everyone enjoys. But if you used to like reading but can no longer get past the first chapter of a new book, there may be a few reasons why.
 keywords: [reading, reading books]
-tags: [off-topic, reading, books]
+categories: [off-topic, reading, books]
 ---
 
 Reading books isn't something that everyone enjoys. But regardless of how you feel about them, there's no denying that books are amazing—they can tap into your imagination to create new thoughts and experiences, transporting you to an entirely different (or sometimes familiar) world. Books are also one of the few media capable of capturing the full range of human emotions and documenting our experience on this lonely little planet we call home. They've predicted the future time and time again, and they've cataloged the past for posterity.
@@ -61,4 +61,4 @@ Reading isn't like social media—it requires patience, creativity, and, most im
 
 If you enjoy reading, great! If you don't, consider whether you check any of these boxes. If you're reading for other people, or you care too much about what other people think of a book, or if you view reading as a chore, then you're going to burn yourself out and hate reading. You should treat reading as one of the many, *many* ways that you can pass time. You shouldn't ever read at the expense of doing something more important or worthwhile, but you also shouldn't completely cut reading from your life just because of a few bad experiences.
 
-{% include unsplashAttribution.md name="Ugur Akdemir" username="ugur" photo_id="XT-o5O458as" %}
+{% include unsplashAttribution.md name: "Ugur Akdemir", username: "ugur", photo_id: "XT-o5O458as" %}

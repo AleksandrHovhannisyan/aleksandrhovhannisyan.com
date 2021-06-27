@@ -2,14 +2,15 @@
 {%- if page.url == "/" -%}
   {%- assign title = site.title -%}
 {%- else -%}
-  {%- assign title = page.title | append: ' | ' | append: site.title -%}
+  {%- assign title = title | default: renderData.title -%}
+  {%- assign pipe = " | " -%}
+  {%- assign title = title | append: pipe | append: site.title -%}
 {%- endif -%}
-{%- assign description = page.description | default: site.description -%}
-{%- assign keywords = page.keywords | default: site.keywords -%}
-{%- assign og_image = page.og_image -%}
-{%- if page.is_post -%}
-  {%- assign thumbnail = page.thumbnail | default: 'thumbnail.png' -%}
-  {%- assign og_image = '/assets/images/posts/' | append: page.slug | append: '/' | append: thumbnail -%}
+{%- assign description = description | default: site.description -%}
+{%- assign keywords = keywords | default: site.keywords -%}
+{%- if is_post -%}
+  {%- assign thumbnail = thumbnail | default: "thumbnail-1280.webp" -%}
+  {%- assign og_image = "/assets/images/posts/" | append: page.fileSlug | append: "/" | append: thumbnail -%}
 {%- endif -%}
 {%- if og_image -%}
   {%- assign og_image = site.url | append: og_image -%}
@@ -18,89 +19,81 @@
 <html lang="en-US">
 <head>
   <meta charset="utf-8">
-  {%- comment -%}Preload optimizations{%- endcomment -%}
-  <link rel="preload" as="style" type="text/css" href="/assets/styles/main.css">
-  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-300.woff2" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-regular.woff2" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-500.woff2" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-700.woff2" crossorigin>
-  <link rel="modulepreload" as="script" type="text/javascript" href="/assets/scripts/main.bundle.js">
-  {%- if layout.preloads -%}
-    {% for preload in layout.preloads %}
-      <link rel="preload" as="{{ preload.as }}" type="{{ preload.type }}" href="{{ preload.href }}" {% if preload.crossorigin %}crossorigin{% endif %}>
-    {%- endfor -%}
-  {% endif %}
-  {%- if page.preloads -%}
-    {% for preload in page.preloads %}
-      <link rel="preload" as="{{ preload.as }}" type="{{ preload.type }}" href="{{ preload.href }}" {% if preload.crossorigin %}crossorigin{% endif %}>
-    {%- endfor -%}
-  {% endif %}
-  {%- comment -%}Metadata for search engines{%- endcomment -%}
-  <title>{{ title }}</title>
-  <meta name="description" content="{{ description }}">
-  <meta name="keywords" content="{{ keywords | join: ', ' }}">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="{{ site.author }}">
-  <meta name="referrer" content="same-origin">
-  {%- if page.noindex -%}
+    {%- comment -%}Preload optimizations{%- endcomment -%}
+    <link rel="preload" as="style" type="text/css" href="/assets/styles/main.css">
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-300.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-regular.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-500.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-700.woff2" crossorigin>
+    <link rel="modulepreload" as="script" type="text/javascript" href="/assets/scripts/main.bundle.mjs">
+    {%- if preloads -%}
+      {% for preload in preloads %}
+        <link rel="preload" as="{{ preload.as }}" type="{{ preload.type }}" href="{{ preload.href }}" {% if preload.crossorigin %}crossorigin{% endif %}>
+      {%- endfor -%}
+    {% endif %}
+    {%- comment -%}Metadata for search engines{%- endcomment -%}
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}">
+    <meta name="keywords" content="{{ keywords | join: ', ' }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="{{ site.author }}">
+    <meta name="referrer" content="same-origin">
     {%- comment -%}Prevent this page from showing up on search engines{%- endcomment -%}
-    <meta name="robots" content="noindex">
-  {%- endif -%}
-  {%- comment -%}Global and page/layout-specific CSS{%- endcomment -%}
-  <link rel="stylesheet" href="/assets/styles/main.css">
-  {%- for stylesheet in layout.stylesheets -%}
-    <link rel="stylesheet" href="{{ stylesheet.href }}">
-  {%- endfor -%}
-  {%- for stylesheet in page.stylesheets -%}
-    <link rel="stylesheet" href="{{ stylesheet.href }}">
-  {%- endfor -%}
-  {%- comment -%}Favicons{%- endcomment -%}
-  <link rel="icon" href="/assets/images/favicons/favicon-32.png" sizes="32x32">
-  <link rel="icon" href="/assets/images/favicons/favicon-57.png" sizes="57x57">
-  <link rel="icon" href="/assets/images/favicons/favicon-76.png" sizes="76x76">
-  <link rel="icon" href="/assets/images/favicons/favicon-96.png" sizes="96x96">
-  <link rel="icon" href="/assets/images/favicons/favicon-128.png" sizes="128x128">
-  <link rel="icon" href="/assets/images/favicons/favicon-192.png" sizes="192x192">
-  <link rel="icon" href="/assets/images/favicons/favicon-228.png" sizes="228x228">
-  {%- if page.canonical_url -%}
-    <link rel="canonical" href="{{ page.canonical_url }}">
-  {%- endif -%}
-  {%- comment -%}Load the user's last selected theme{%- endcomment -%}
-  <script>
-    (function() {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
-        document.documentElement.className = savedTheme;
-      } else {
-        const userPrefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const preferredTheme = userPrefersDarkMode ? 'dark' : 'light';
-        document.documentElement.className = preferredTheme;
-        localStorage.setItem('theme', preferredTheme);
-      }
-    })();
-  </script>
-  {%- comment -%}Common bundles.{%- endcomment -%}
-  <script type="module" src="/assets/scripts/main.bundle.js" defer></script>
-  <script type="module" src="/assets/scripts/runtime.bundle.js" defer></script>
-  {%- comment -%}Posts with comments.{%- endcomment -%}
-  {%- if page.comments_id -%}
-    <script type="module" src="/assets/scripts/comments.bundle.js" defer></script>
-  {%- endif -%}
-  {%- comment -%}Open Graph social media previews{%- endcomment -%}
-  <meta property="og:title" content="{{ title }}">
-  {%- if og_image -%}
-    <meta property="og:image" content="{{ og_image }}">
-  {%- endif -%}
-  <meta property="og:description" content="{{ description }}">
-  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-  {%- comment -%}Twitter card meta tags{%- endcomment -%}
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:creator" content="@hovhaDovah">
-  <meta name="twitter:title" content="{{ title }}">
-  <meta name="twitter:description" content="{{ description }}">
-  {%- if og_image -%}
-    <meta name="twitter:image" content="{{ og_image }}">
-  {%- endif -%}
+    {%- if noindex -%}
+      <meta name="robots" content="noindex">
+    {%- endif -%}
+    {%- comment -%}Global and page/layout-specific CSS{%- endcomment -%}
+    <link rel="stylesheet" href="/assets/styles/main.css">
+    {%- for stylesheet in stylesheets -%}
+      <link rel="stylesheet" href="{{ stylesheet.href }}">
+    {%- endfor -%}
+    {%- comment -%}Favicons{%- endcomment -%}
+    <link rel="icon" href="/assets/images/favicons/favicon-32.png" sizes="32x32">
+    <link rel="icon" href="/assets/images/favicons/favicon-57.png" sizes="57x57">
+    <link rel="icon" href="/assets/images/favicons/favicon-76.png" sizes="76x76">
+    <link rel="icon" href="/assets/images/favicons/favicon-96.png" sizes="96x96">
+    <link rel="icon" href="/assets/images/favicons/favicon-128.png" sizes="128x128">
+    <link rel="icon" href="/assets/images/favicons/favicon-192.png" sizes="192x192">
+    <link rel="icon" href="/assets/images/favicons/favicon-228.png" sizes="228x228">
+    {%- if canonical_url -%}
+      <link rel="canonical" href="{{ canonical_url }}">
+    {%- endif -%}
+    {%- comment -%}Load the user's last selected theme{%- endcomment -%}
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+          document.documentElement.className = savedTheme;
+        } else {
+          const userPrefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const preferredTheme = userPrefersDarkMode ? 'dark' : 'light';
+          document.documentElement.className = preferredTheme;
+          localStorage.setItem('theme', preferredTheme);
+        }
+      })();
+    </script>
+    {%- comment -%}Common bundles.{%- endcomment -%}
+    <script type="module" src="/assets/scripts/main.bundle.mjs" defer></script>
+    <script type="module" src="/assets/scripts/runtime.bundle.mjs" defer></script>
+    {%- comment -%}Posts with comments.{%- endcomment -%}
+    {%- if comments_id -%}
+      <script type="module" src="/assets/scripts/comments.bundle.mjs" defer></script>
+    {%- endif -%}
+    {%- comment -%}Open Graph social media previews{%- endcomment -%}
+    <meta property="og:title" content="{{ title }}">
+    {%- if og_image -%}
+      <meta property="og:image" content="{{ og_image }}">
+    {%- endif -%}
+    <meta property="og:description" content="{{ description }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    {%- comment -%}Twitter card meta tags{%- endcomment -%}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@hovhaDovah">
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="{{ description }}">
+    {%- if og_image -%}
+      <meta name="twitter:image" content="{{ og_image }}">
+    {%- endif -%}
 </head>
 <body>
   {%- include navbar.html -%}

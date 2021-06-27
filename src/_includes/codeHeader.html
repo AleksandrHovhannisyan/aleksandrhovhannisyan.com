@@ -1,5 +1,4 @@
-{%- assign filename = include.file -%}
-{%- assign copyable = include.copyable -%}
+{%- assign filename = file -%}
 <div class="code-header{% unless copyable == false %} with-copy-button{% endunless %}{% if filename %} with-file-name{% endif %}">
   {%- if filename -%}
     <div class="code-file-name">

@@ -2,7 +2,7 @@
 title: Creating a Responsive Navbar Without Bootstrap
 description: Want to create a navbar that works on mobile and desktop? Ditch the frameworks—in this tutorial, we'll create a responsive navbar using HTML, CSS, and JS.
 keywords: [responsive navbar]
-tags: [dev, html, css, javascript]
+categories: [dev, html, css, javascript]
 comments_id: 28
 is_popular: true
 last_updated: 2020-09-16
@@ -26,11 +26,7 @@ Here's the codepen for this tutorial:
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 
-Interestingly, there's actually not a lot of HTML involved! Navigation bars aren't all that difficult to create once you go through the process yourself.
-
-Here's a GIF demonstrating the responsive navbar states and behavior:
-
-{% include img.html img="demo.gif" alt="A responsive navbar" %}
+There's actually not a lot of HTML involved! Navbars aren't all that difficult to create once you go through the process yourself.
 
 We'll design this with a mobile-first approach and simply take care of the desktop case with a media query. Note that I'm not designing with any minimum device width in mind, but this works all the way down to `320px`, one of the narrowest mobile resolutions that you typically need to account for.
 
@@ -40,7 +36,7 @@ We'll design this with a mobile-first approach and simply take care of the deskt
 
 Below is all of the HTML that we're going to need to create our responsive navbar, complete with semantic and legible markup and none of that Bootstrap nonsense:
 
-{% include codeHeader.html file="index.html" %}
+{% include codeHeader.html file: "index.html" %}
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -85,11 +81,11 @@ Before I vomit a bunch of CSS on your screen and leave you clueless as to what's
 
 First up, we're using a `<header>` landmark element with an ID of `navbar` as the outermost parent:
 
-{% include img.html img="header.png" alt="A header element" %}
+{% include img.html src: "header.png", alt: "A header element" %}
 
 Inside of that is a nested `<nav>` landmark element, which signals the start of a navigation menu to screen readers and browsers. This container's main purpose is to align the left and right ends of our navbar with the page's left and right margins. This assumes that the page content itself is also wrapped with a `.container` for horizontal centering.
 
-{% include img.html img="nav.png" alt="A nav landmark element with left and right padding and auto margins" %}
+{% include img.html src: "nav.png", alt: "A nav landmark element with left and right padding and auto margins" %}
 
 As you may have probably guessed, this is a flex container. It has three children:
 
@@ -99,17 +95,17 @@ As you may have probably guessed, this is a flex container. It has three childre
 
 Let's take a closer look at that last element:
 
-{% include img.html img="navbar-menu.png" alt="The navbar-menu fixed wrapper" %}
+{% include img.html src: "navbar-menu.png", alt: "The navbar-menu fixed wrapper" %}
 
 This wrapper is given a fixed position and covers the entire screen. It also has a semi-transparent background that elevates it visually above the main content of the page. In some UI libraries, this is known as a **mask layer**. It's a common approach used with things like modal windows and menus.
 
 Within `.navbar-menu` is an unordered list with some padding, margins, and a box shadow:
 
-{% include img.html img="navbar-links.png" alt="The navbar-links unordered list element" %}
+{% include img.html src: "navbar-links.png", alt: "The navbar-links unordered list element" %}
 
 And finally, that list houses the actual navigation links:
 
-{% include img.html img="navbar-link.png" alt="A navigation bar link being inspected in Chrome dev tools" %}
+{% include img.html src: "navbar-link.png", alt: "A navigation bar link being inspected in Chrome dev tools" %}
 
 That's it! When we hit the `700px` breakpoint, our media query kicks in and styles the desktop navbar. This media query was determined based on the number of navbar links in this particular setup. If you have more content, you may wish to adjust this breakpoint.
 
@@ -121,7 +117,7 @@ We're going to take this slowly. I'll add explanations for each bit of CSS and J
 
 First up are some standard CSS resets and base styling:
 
-{% include codeHeader.html file="style.css" %}
+{% include codeHeader.html file: "style.css" %}
 ```css
 :root {
     --navbar-bg-color: hsl(0, 0%, 15%);
@@ -147,7 +143,7 @@ Feel free to remove any of the CSS that doesn't apply to your situation; this is
 
 Before we look at the CSS specific to the responsive navbar, I'd like to introduce one more selector:
 
-{% include codeHeader.html file="style.css" %}
+{% include codeHeader.html file: "style.css" %}
 ```css
 .container {
     max-width: 1000px;
@@ -166,7 +162,7 @@ This is a pretty popular approach for centering things horizontally in CSS. Basi
 
 Alright, time to actually style our responsive navbar. We'll work in a top-down fashion. First up is the outermost `#navbar` element:
 
-{% include codeHeader.html file="style.css" %}
+{% include codeHeader.html file: "style.css" %}
 ```css
 #navbar {
     --navbar-height: 64px;
@@ -181,13 +177,13 @@ Alright, time to actually style our responsive navbar. We'll work in a top-down 
 
 **Result**:
 
-{% include img.html img="step1.png" alt="Styled navbar header element" %}
+{% include img.html src: "step1.png", alt: "Styled navbar header element" %}
 
 Why we need the CSS variable will become obvious later on. The entire element is given a fixed position so it sticks to the top of the page as the user scrolls. It's also given a slight box shadow. Don't worry about the fact that the links are currently overflowing their parent; we'll fix this soon enough.
 
 Moving on, we have the nested container element:
 
-{% include codeHeader.html file="style.css" %}
+{% include codeHeader.html file: "style.css" %}
 ```css
 .navbar-container {
     display: flex;
@@ -199,13 +195,13 @@ Moving on, we have the nested container element:
 
 **Result**:
 
-{% include img.html img="step2.png" alt="Styled navbar-container element" %}
+{% include img.html src: "step2.png", alt: "Styled navbar-container element" %}
 
 As I mentioned earlier, this is simply a flex container. We use `justify-content: space-between` to position the home link and hamburger icon on opposite ends of the navbar. But right now, it's positioning all three children: the home link, the hamburger button, and the navigation links themselves; we'll fix this shortly.
 
 Next up is some general styling for the navbar anchors:
 
-{% include codeHeader.html file="style.css" %}
+{% include codeHeader.html file: "style.css" %}
 ```css
 .navbar-item {
     margin: 0.4em;
@@ -245,13 +241,13 @@ Next up is some general styling for the navbar anchors:
 
 **Result**:
 
-{% include img.html img="step3.png" alt="Styled anchor elements" %}
+{% include img.html src: "step3.png", alt: "Styled anchor elements" %}
 
 Pretty straightforward.
 
 Here's the CSS for the website logo. Note that this is just a placeholder for my demo; in reality, you'll probably want to use an image or SVG:
 
-{% include codeHeader.html file="style.css" %}
+{% include codeHeader.html file: "style.css" %}
 ```css
 .navbar-logo {
     background-color: var(--navbar-text-color-focus);
@@ -264,13 +260,13 @@ Here's the CSS for the website logo. Note that this is just a placeholder for my
 
 **Result**:
 
-{% include img.html img="step4.png" alt="Styled logo" %}
+{% include img.html src: "step4.png", alt: "Styled logo" %}
 
 Time for the toggle button!
 
 ### Navbar Hamburger Icon
 
-{% include codeHeader.html file="style.css" %}
+{% include codeHeader.html file: "style.css" %}
 ```css
 .navbar-toggle {
     cursor: pointer;
@@ -299,7 +295,7 @@ Basically, we reset some of the default `<button>` styles and give the button fi
 
 Here's the CSS for that:
 
-{% include codeHeader.html file="style.css" %}
+{% include codeHeader.html file: "style.css" %}
 ```css
 .icon-bar {
     display: block;
@@ -320,13 +316,13 @@ Here's the CSS for that:
 
 **Result**:
 
-{% include img.html img="step5.png" alt="Styled hamburger button" %}
+{% include img.html src: "step5.png", alt: "Styled hamburger button" %}
 
 There are lots of ways to do this, but I think this is the most straightforward to understand. I'm sure you can take advantage of pseudo-elements instead.
 
 When the toggle button is clicked, we'll apply a class name of `.opened` to the navbar via JavaScript. Here's how we'll animate the hamburger icon to become a close icon (X):
 
-{% include codeHeader.html file="style.css" %}
+{% include codeHeader.html file: "style.css" %}
 ```css
 #navbar.opened .navbar-toggle .icon-bar:first-child,
 #navbar.opened .navbar-toggle .icon-bar:last-child {
@@ -354,7 +350,7 @@ Basically, the middle bar disappears, the top and bottom bars get centered, the 
 
 Now's a good time to code up the logic for toggling the navigation menu so we can test that the toggle button works:
 
-{% include codeHeader.html file="index.js" %}
+{% include codeHeader.html file: "index.js" %}
 ```javascript
 const navbar = document.getElementById("navbar");
 const navbarToggle = navbar.querySelector(".navbar-toggle");
@@ -389,17 +385,13 @@ Because:
 
 We also take care of an accessibility issue here and apply a different `aria-label` depending on the current state of the button. If the navigation menu is open, the user's screen reader will indicate that clicking the button again will close the menu. And vice versa.
 
-At this point, you can hop on over to your browser and test that the button works.
-
-{% include img.html img="button.gif" alt="Toggling the navigation menu button" %}
-
-The menu, of course, is still not functional. Let's fix that!
+At this point, you can hop on over to your browser and test that the button works. But the menu is still not functional, so let's fix that.
 
 ### Responsive Navbar Menu
 
 As I mentioned earlier, the navigation menu wrapper has fixed positioning, with a `top` offset equal to precisely the height of the navbar itself:
 
-{% include codeHeader.html file="style.css" %}
+{% include codeHeader.html file: "style.css" %}
 ```css
 .navbar-menu {
     position: fixed;
@@ -416,13 +408,13 @@ As I mentioned earlier, the navigation menu wrapper has fixed positioning, with 
 
 **Result**:
 
-{% include img.html img="step6.png" alt="Styled navbar-menu wrapper" %}
+{% include img.html src: "step6.png", alt: "Styled navbar-menu wrapper" %}
 
 While `opacity: 0` and `visibility: hidden` may seem redundant, it's a good idea to animate both of these properties because `visibility` alone tends to snap/animate very rapidly, whereas `opacity` is more gradual.
 
 Here's the code for the menu's opened state:
 
-{% include codeHeader.html file="style.css" %}
+{% include codeHeader.html file: "style.css" %}
 ```css
 #navbar.opened .navbar-menu {
     background-color: rgba(0, 0, 0, 0.4);
@@ -433,11 +425,11 @@ Here's the code for the menu's opened state:
 
 Click the hamburger icon to see the following result:
 
-{% include img.html img="step7.png" alt="Navigation menu in its opened state, with links visible below the navigation bar" %}
+{% include img.html src: "step7.png", alt: "Navigation menu in its opened state, with links visible below the navigation bar" %}
 
 The container for the navigation links is an unordered list:
 
-{% include codeHeader.html file="style.css" %}
+{% include codeHeader.html file: "style.css" %}
 ```css
 .navbar-links {
     list-style-type: none;
@@ -463,11 +455,11 @@ The container for the navigation links is an unordered list:
 
 **Result**:
 
-{% include img.html img="step8.png" alt="Styled navbar-links container" %}
+{% include img.html src: "step8.png", alt: "Styled navbar-links container" %}
 
 This is the actual, physical "menu" part of our navigation. The margin ensures that the menu appears detached from the rest of the navbar, as if it's floating on the page. If instead you'd like it to appear as a physical extension of the navigation bar, simply get rid of the margin and border radius and shift the shadow down:
 
-{% include codeHeader.html file="style.css" %}
+{% include codeHeader.html file: "style.css" %}
 ```css
 .navbar-links {
     list-style-type: none;
@@ -486,13 +478,13 @@ This is the actual, physical "menu" part of our navigation. The margin ensures t
 
 **Result**:
 
-{% include img.html img="attached-menu.png" alt="An attached navigation menu that's been opened" %}
+{% include img.html src: "attached-menu.png", alt: "An attached navigation menu that's been opened" %}
 
 And that's it for the mobile version's CSS!
 
 One last thing before we style the desktop version. Add this to your JavaScript:
 
-{% include codeHeader.html file="index.js" %}
+{% include codeHeader.html file: "index.js" %}
 ```javascript
 const navbarMenu = navbar.querySelector(".navbar-menu");
 const navbarLinksContainer = navbar.querySelector(".navbar-links");
@@ -512,7 +504,7 @@ Go ahead and test this on your end to make sure the mobile version works.
 
 I'll show the media query in its entirety and then we'll look at what each piece is doing:
 
-{% include codeHeader.html file="style.css" %}
+{% include codeHeader.html file: "style.css" %}
 ```css
 @media screen and (min-width: 700px) {
     .navbar-toggle {
@@ -557,7 +549,7 @@ So first up is this:
 
 **Result**:
 
-{% include img.html img="step9.png" alt="Hamburger menu button hidden" %}
+{% include img.html src: "step9.png", alt: "Hamburger menu button hidden" %}
 
 We don't want the hamburger button to be visible on desktop, so we hide it with `display: none`.
 
@@ -595,7 +587,7 @@ And finally, `.navbar-links` now uses a flex direction of `row` instead of `colu
 
 **Result**:
 
-{% include img.html img="step10.png" alt="Fully styled desktop version of the navbar" %}
+{% include img.html src: "step10.png", alt: "Fully styled desktop version of the navbar" %}
 
 We're officially done! But you may be wondering if there's room for customization—there sure is!
 

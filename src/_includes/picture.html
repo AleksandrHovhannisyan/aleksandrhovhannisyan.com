@@ -1,30 +1,3 @@
-{%- assign source_dir = site.source | append: '/' -%}
-{%- assign source_img_path = include.img -%}
-{%- assign public_img_path = source_img_path | replace: source_dir, '/' | split: '.' -%}
-{%- assign path_and_name = public_img_path[0] -%}
-{%- assign extension = public_img_path[1] -%}
-{%- assign class = include.class -%}
-{%- assign id = include.id -%}
-{%- assign clickable = include.clickable -%}
-{%- assign img_dimensions = source_img_path | image_size -%}
-{%- assign width = img_dimensions[0] -%}
-{%- assign height = img_dimensions[1] -%}
-{%- assign aspect_ratio_percentage = height | times: 100.0 | divided_by: width -%}
-{%- assign loading = include.loading | default: 'lazy' -%}
-{%- unless clickable == false %}<a href="{{ path_and_name }}.{{ extension }}" class="clickable-picture-anchor">{%- endunless -%}
-  <picture class="lazily-loaded-picture{% if class %} {{ class }}{% endif %}" {% if id %}id="{{ id }}"{% endif %} style="--aspect-ratio: {{ aspect_ratio_percentage }}%;">
-    <source
-        srcset="{{ path_and_name }}-placeholder.webp"
-        type="image/webp"
-        data-srcset="{{ path_and_name }}.webp"
-        class="lazy-source">
-    <img
-        src="{{ path_and_name }}-placeholder.{{ extension }}"
-        alt="{{ include.alt }}"
-        data-src="{{ path_and_name }}.{{ extension }}"
-        width="{{ width }}"
-        height="{{ height }}"
-        loading="{{ loading }}"
-        class="lazy-img">
-  </picture>
-{%- unless clickable == false -%}</a>{%- endunless -%}
+{%- comment -%}Unless overridden, all images will get wrapped in an anchor linking to the largest resolution WebP image.{%- endcomment -%}
+{%- unless clickable == false -%}{%- assign clickable = true -%}{%- endunless -%}
+{% image src, alt, className, id, clickable %}

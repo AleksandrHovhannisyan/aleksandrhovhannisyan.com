@@ -2,7 +2,7 @@
 title: Be Careful with Async Functions that Return Booleans
 description: Suppose an async function returns a boolean. What happens if you check the return value without awaiting it?
 keywords: [async functions]
-tags: [dev, javascript, promises]
+categories: [dev, javascript, promises]
 is_popular: true
 ---
 
@@ -47,7 +47,7 @@ To understand why the expression always evaluates to `true`, recall that `async/
 
 We can verify this by logging the function call:
 
-```
+```text
 > console.log(isBroken())
 Promise {<fulfilled>: false}
 ```
@@ -86,4 +86,4 @@ const foo = async () => {
 
 This is a pretty interesting bug that you may run into, though some basic tests will probably catch it before you need to go looking for it yourself. However, in the absence of tests, unless you remember that the function is async (and that async functions return Promises), this bug could easily slip right past you.
 
-{% include unsplashAttribution.md name="STIL" username="stilclassics" photo_id="wtqe5nd5MYk" %}
+{% include unsplashAttribution.md name: "STIL", username: "stilclassics", photo_id: "wtqe5nd5MYk" %}

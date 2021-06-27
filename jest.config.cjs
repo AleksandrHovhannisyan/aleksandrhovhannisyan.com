@@ -1,6 +1,8 @@
 module.exports = {
-  rootDir: './webpack/',
+  rootDir: './src/assets/scripts/',
+  testMatch: ['**/__tests__/**/*.?(m)js', '**/?(*.)(spec|test).?(m)js'],
+  moduleFileExtensions: ['js', 'json', 'node', 'mjs'],
   transform: {
-    '^.+\\.js?$': 'babel-jest',
+    '^.+.m?js$': 'babel-jest',
   },
 };

@@ -1,0 +1,97 @@
+@import '../mixins';
+
+.post-title {
+  margin-bottom: 1.6rem;
+}
+
+.post-header {
+  margin-bottom: 1.6rem;
+}
+
+.post-content {
+  grid-template-columns: minmax(0, var(--page-max-width));
+  overflow-wrap: break-word;
+  @include rhythm;
+
+  @include headings {
+    margin-top: 2.4rem;
+    margin-bottom: -0.8rem;
+  }
+
+  #skip-toc {
+    transform: translateY(-50%);
+    padding: 0.2rem 0.8rem;
+    @include font-weight('semiBold');
+  }
+
+  #table-of-contents {
+    margin-top: 0;
+  }
+
+  .toc-list {
+    display: grid;
+    grid-row-gap: 2.4rem;
+    list-style: disc; // some headings have numbers already
+  }
+
+  .toc-list .toc-list {
+    margin-top: 2.4rem;
+  }
+
+  ol,
+  ul {
+    padding-left: clamp(1.2rem, 8vw, 4.8rem);
+    display: grid;
+    grid-row-gap: 0.4rem;
+
+    li {
+      ol, ul {
+        margin-top: 0.4rem;
+      }
+    }
+  }
+
+  a:not([class]) {
+    @include underlined-link($initially-underlined: true);
+  }
+
+  figure {
+    display: grid;
+    grid-auto-flow: row;
+    grid-row-gap: 0.8rem;
+
+    figcaption {
+      font-style: italic;
+      text-align: center;
+      @include font-size(-1);
+
+      &, a {
+        color: var(--text-color-caption);
+      }
+    }
+  }
+
+  picture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  img,
+  iframe,
+  video {
+    max-width: 100%;
+  }
+
+  img {
+    border-radius: 0.4rem;
+  }
+
+  blockquote {
+    border-left: 0.4rem solid;
+    margin-left: clamp(1.2rem, 4vw, 2.4rem);
+    padding: 0.4rem clamp(2rem, 6vw, 3.2rem);
+    @include rhythm;
+  }
+}
