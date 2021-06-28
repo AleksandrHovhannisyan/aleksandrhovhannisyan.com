@@ -227,4 +227,4 @@ If you think optimizing images for the web requires some fancy tooling and exper
 
 I hope you found this tutorial helpful!
 
-{% include unsplashAttribution.md name: "Annie Spratt", username: "anniespratt", photo_id: "EvBPSTn-p5U" %}
+{% include unsplashAttribution.md name: "Sarandy Westfall", username: "sarandywestfall_photo", photo_id: "qqd8APhaOg4" %}
