@@ -63,7 +63,7 @@ preloads:
     {%- endif -%}
   </div>
 </article>
-{%- assign thumbnail = thumbnail | default: 'thumbnail-1280.jpeg' -%}
+{%- assign thumbnail = "thumbnail-1280.webp" -%}
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -74,8 +74,10 @@ preloads:
     },
     "headline": {{ title | escape | jsonify }},
     "image": ["{{ site.url }}/assets/images/posts/{{ page.fileSlug }}/{{ thumbnail }}"],
-    "datePublished": {{ page.date | jsonify }},{% if last_updated %}
-    "dateModified": {{ last_updated | jsonify }},{% endif %}
+    "datePublished": {{ page.date | jsonify }},
+    {% if last_updated -%}
+    "dateModified": {{ last_updated | jsonify }},
+    {% endif -%}
     "author": {
       "@type": "Person",
       "name": "{{ site.author }}"
