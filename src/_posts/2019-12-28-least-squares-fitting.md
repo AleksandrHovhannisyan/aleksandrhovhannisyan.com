@@ -5,7 +5,7 @@ keywords: [least squares fitting, least squares method]
 categories: [computer-science, math]
 layout: mathPost
 comments_id: 39
-reading_length: 15
+last_updated: 2021-06-28
 ---
 
 In a previous post, I introduced the theory behind [the method of least squares](/blog/the-method-of-least-squares) and showed how it can be used to solve systems of equations with no unique solution.
