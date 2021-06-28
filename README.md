@@ -1,6 +1,6 @@
 # aleksandrhovhannisyan.com
 
-My personal website and blog, built with Jekyll.
+My personal website and blog, built with 11ty.
 
 ## Licensing
 
