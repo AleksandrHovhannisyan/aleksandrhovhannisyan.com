@@ -7,7 +7,7 @@ const { slugifyString } = require('../utils');
 
 const markdownLib = markdownIt({
   html: true,
-  breaks: true,
+  breaks: false,
 })
   .use(markdownItAnchor, {
     slugify: slugifyString,
