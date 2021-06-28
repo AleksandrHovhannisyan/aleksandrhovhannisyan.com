@@ -7792,9 +7792,9 @@ rechoir@^0.7.0:
     resolve "^1.9.0"
 
 recursive-copy@^2.0.11:
-  version "2.0.12"
-  resolved "https://registry.yarnpkg.com/recursive-copy/-/recursive-copy-2.0.12.tgz#8e1094116b4e6131e09cef103ae2c03e0cce7c90"
-  integrity sha512-gvXvP6Dp++LPgHvwjnOo4qU9vbjkAVOvwOkvNZORH9vuNmDSLtnLdmRNPYhC3EwDYdSO5Dd3O7ZQWH5KsnC+NA==
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/recursive-copy/-/recursive-copy-2.0.13.tgz#ace471459650f379d4127dd64aa2a4ceca808aa2"
+  integrity sha512-BjmE6R/dOImStEku+017L3Z0I6u/lA+SVr1sySWbTLjmQKDTESNmJ9WBZP8wbN5FuvqNvSYvRKA/IKQhAjqnpQ==
   dependencies:
     del "^2.2.0"
     errno "^0.1.2"
