@@ -1,6 +1,6 @@
 module.exports = {
   // Change which Eleventy template formats use syntax highlighters
-  templateFormats: ['*'], // default
+  templateFormats: ['md'], // default
   // Added in 3.0, set to true to always wrap lines in `<span class="highlight-line">`
   // The default (false) only wraps when line numbers are passed in.
   alwaysWrapLineHighlights: false,
@@ -8,7 +8,7 @@ module.exports = {
   // and trailing whitespace
   trim: true,
   // Added in 3.0.4, change the separator between lines (you may want "\n")
-  lineSeparator: '<br>',
+  lineSeparator: '\n',
   // Added in 3.1.1, add HTML attributes to the <pre> or <code> tags
   preAttributes: {},
   codeAttributes: {},
