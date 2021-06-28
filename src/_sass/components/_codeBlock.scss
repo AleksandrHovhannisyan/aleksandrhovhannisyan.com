@@ -104,7 +104,7 @@ pre[class*="language-"] *::selection,
 code[class*="language-"] *::selection {
   text-shadow: none;
   color: unset;
-  background: var(--color-code-selection);
+  background: hsla(210, 100%, 84%, 0.15);
 }
 
 @media print {
