@@ -2,7 +2,7 @@
 title: Creating a Vertical Rhythm with CSS Grid
 description: Margins are what you typically use to define a layout's vertical rhythm. But CSS Grid offers a better alternative.
 keywords: [css grid, vertical rhythm]
-tags: [dev, css, css-grid, typography]
+categories: [dev, css, css-grid, typography]
 ---
 
 Margins are the gold standard for spacing paragraphs, images, and block-level elements in a typical web layout. But what if I told you that CSS Grid offers a much better alternative for creating a consistent [vertical rhythm](https://24ways.org/2006/compose-to-a-vertical-rhythm)? Let's take a look at how you can use CSS Grid as a drop-in replacement for margin-based spacing.
@@ -53,7 +53,7 @@ body {
 
 That's all well and good:
 
-{% include img.html img="0.png" alt="A basic article layout with a title and two paragraphs." %}
+{% include img.html src: "0.png", alt: "A basic article layout with a title and two paragraphs." %}
 
 But a few minutes later, you decide to spice things up with some headings and maybe an image.
 
@@ -81,7 +81,7 @@ But a few minutes later, you decide to spice things up with some headings and ma
 
 And that gives us this:
 
-{% include img.html img="1.png" alt="An article with some headings, paragraphs, and an image of DJ Khaled." %}
+{% include img.html src: "1.png", alt: "An article with some headings, paragraphs, and an image of DJ Khaled." %}
 
 The image doesn't have any bottom margin, and neither does the subheading. Let's fix that!
 
@@ -108,7 +108,7 @@ The image doesn't have any bottom margin, and neither does the subheading. Let's
 
 Beautiful:
 
-{% include img.html img="2.png" alt="An article with spaced paragraphs and an image." %}
+{% include img.html src: "2.png", alt: "An article with spaced paragraphs and an image." %}
 
 Honestly, the CSS isn't bad at all, and it'll serve you well most of the time. But as you introduce more elements to your page, you'll have to remember to go back into your CSS and give them margins to maintain your article's vertical rhythm. Chances are that you'll eventually forget to style some element, and it'll slip past you into production.
 
@@ -188,11 +188,11 @@ Watch as we reduce all of those lines of CSS to just a few, all thanks to CSS Gr
 
 And we're done:
 
-{% include img.html img="final.png" alt="The final result of styling our article with CSS grid." %}
+{% include img.html src: "final.png", alt: "The final result of styling our article with CSS grid." %}
 
 Here's what it looks like when we inspect it using dev tools:
 
-{% include img.html img="3.png" alt="An article layout whose elements are spaced with grid gutters." %}
+{% include img.html src: "3.png", alt: "An article layout whose elements are spaced with grid gutters." %}
 
 Now, you can add **whatever elements you want** to your article layout, and they'll get spaced automatically with CSS Grid row gutters. This is more intuitive than using margins because it establishes a consistent baseline of spacing at the *parent* level, without you worrying about which immediate children need to have a margin. Every single child will get at least `24px` of spacing around it, thus enforcing your vertical rhythm and future-proofing your site.
 
@@ -212,7 +212,7 @@ This may be a bit of a strawman argument because I can't actually think of a sce
 
 Want to see this used in a real site? Inspect this very article's CSS! And if you're not convinced that this is realistic or worth pursuing for a production site, consider that [Smashing Magazine](https://www.smashingmagazine.com/) uses this very technique for its desktop article layouts:
 
-{% include img.html img="smashing-magazine.png" alt="Inspecting a Smashing Magazine article in Chrome dev tools reveals that paragraphs and other elements are spaced using CSS Grid gutters." %}
+{% include img.html src: "smashing-magazine.png", alt: "Inspecting a Smashing Magazine article in Chrome dev tools reveals that paragraphs and other elements are spaced using CSS Grid gutters." %}
 
 I'm sure that there are more examples of this out in the wild. Will your site will join the ranks? Give it a try—I guarantee that you won't want to go back to using margins for article layouts.
 
@@ -226,7 +226,7 @@ The best thing about using CSS Grid is that it lets you do some really awesome s
 
 Another drawback is that Chrome's dev tools apparently don't like to paint a hundred or so of these pretty purple gutters:
 
-{% include img.html img="gutter.png" alt="Chrome's dev tools show grid gutters using a purple hatch pattern." clickable=false %}
+{% include img.html src: "gutter.png", alt: "Chrome's dev tools show grid gutters using a purple hatch pattern.", clickable: false %}
 
 Translation? Your browser may lag a bit as you open your dev tools to inspect large grids. This can get annoying when debugging CSS, but it has no impact on your user experience, like your [cumulative layout shift](https://web.dev/cls/) score or load times—everything is just as if you had used margins instead. This is mainly a developer experience issue.
 

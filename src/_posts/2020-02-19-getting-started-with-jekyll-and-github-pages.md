@@ -2,7 +2,7 @@
 title: "Getting Started with Jekyll and GitHub Pages: Your First Website"
 description: Jekyll is a static site generator that makes it easy for you to create a website. Learn how to get started with Jekyll and GitHub Pages.
 keywords: [getting started with jekyll, jekyll and github pages]
-tags: [dev, jekyll, github]
+categories: [dev, jekyll, github]
 comments_id: 34
 is_popular: true
 last_updated: 2020-10-02
@@ -22,7 +22,7 @@ All right, enough chit-chat—let's dig in!
 
 Jekyll is a **static site generator**. That's just a fancy way of saying that it takes a bunch of HTML, Markdown, CSS, and JavaScript source files, combines them as needed based on layout files that you've specified, processes any template code that you've written, and spits out a build directory (e.g., `_site/`) that basically houses all of your website's content, ready for hosting on a web server (like GitHub Pages!).
 
-{% include img.html img="static-site-generator.png" alt="A static site generator spits out a compiled, well-structured, fully functioning site." %}
+{% include img.html src: "static-site-generator.png", alt: "A static site generator spits out a compiled, well-structured, fully functioning site." %}
 
 In plain English, Jekyll makes it easy for you to create a website—and, more commonly, a blog—with plain old HTML and Markdown, without having to worry about things like how to add tags to posts or make certain static data accessible on all of your pages. It takes care of these things for you so you can focus on doing what you love the most: writing (or, in my case, writing *and* dev)!
 
@@ -38,11 +38,11 @@ You can create as many GitHub Pages sites as you want. Each user can only create
 
 To get started, visit [https://github.com/](https://github.com/), sign in, and click the green `New` button to create a new repo:
 
-{% include img.html img="new-repo.png" alt="Click the green new button to create a repository." %}
+{% include img.html src: "new-repo.png", alt: "Click the green new button to create a repository." %}
 
 Enter the name of your repository. It needs to be your GitHub username followed by `.github.io`:
 
-{% include img.html img="create-repo.png" alt="Type in the name of your new repository." %}
+{% include img.html src: "create-repo.png", alt: "Type in the name of your new repository." %}
 
 That's literally all you have to do to get started with GitHub Pages! As with other repos you own, you'll want to clone it locally and set up your origin remote.
 
@@ -75,7 +75,7 @@ bundle exec jekyll new mysite
 
 If you already have existing source files in a project directory for your site, you can instead run this:
 
-{% include codeHeader.html file="Gemfile" copyable=false %}
+{% include codeHeader.html file: "Gemfile", copyable: false %}
 ```bash
 cd mysite
 bundle exec jekyll new . --force
@@ -85,13 +85,13 @@ bundle exec jekyll new . --force
 
 The end result should be this simple directory structure:
 
-{% include img.html img="directory-structure.jpg" alt="Jekyll starter files." %}
+{% include img.html src: "directory-structure.jpg", alt: "Jekyll starter files." %}
 
 ### 3. Configuring Jekyll with GitHub Pages
 
 Go ahead and open up the Gemfile at the root of your project. You'll find useful comments in there to help you configure Jekyll with GitHub Pages:
 
-{% include codeHeader.html file="_Gemfile" %}
+{% include codeHeader.html file: "_Gemfile" %}
 ```ruby
 source "https://rubygems.org"
 
@@ -170,7 +170,7 @@ bundle install
 
 If all went well, you should see output similar to this:
 
-```
+```text
 Bundle complete! 5 Gemfile dependencies, 85 gems now installed.
 Use `bundle info [gemname]` to see where a bundled gem is installed.
 ```
@@ -210,7 +210,7 @@ Head on over to `localhost:4000` to see the starter page. Note that the appearan
 2. A mostly blank page with a title placeholder if you deleted the line `theme: minima`.
 3. A completely blank page, if you set `theme: null` explicitly like I recommended.
 
-{% include img.html img="themes.jpg" alt="The three Jekyll starter themes." %}
+{% include img.html src: "themes.jpg", alt: "The three Jekyll starter themes." %}
 
 The remainder of this tutorial assumes that your theme is set to `null`. Some of the screenshots I show may not line up with what you see on your end if you decide to use the minima theme. You may also miss out on learning some useful things about how Jekyll works if you decide to use one of the starter themes instead of writing your own CSS.
 
@@ -248,7 +248,7 @@ If none of this makes sense to you right now, or if all of this seems overwhelmi
 
 We already saw that you can edit your Jekyll starter theme in `_config.yml`, but that's not all that this file allows you to do. In fact, this file houses your entire site's configuration settings. Here's what mine looks like so far:
 
-{% include codeHeader.html file="_config.yml" copyable=false %}
+{% include codeHeader.html file: "_config.yml", copyable: false %}
 ```yml
 # Welcome to Jekyll!
 #
@@ -309,7 +309,7 @@ If you have any experience working with plain old HTML to create sites, you shou
 
 In your project directory, you should see a mostly empty file named `index.md` that looks something like this:
 
-{% include codeHeader.html file="index.md" copyable=false %}
+{% include codeHeader.html file: "index.md", copyable: false %}
 ```markdown
 ---
 # Feel free to add content and custom Front Matter to this file.
@@ -334,7 +334,7 @@ Kramdown extends Markdown with some useful features, like adding classes and IDs
 
 Before moving on, let's modify `index.md` as follows:
 
-{% include codeHeader.html file="index.md" %}
+{% include codeHeader.html file: "index.md" %}
 ```markdown
 ---
 # Feel free to add content and custom Front Matter to this file.
@@ -348,11 +348,11 @@ layout: home
 
 If live-reloading is enabled, you should see your page update automatically to display an `h1` tag. Otherwise, you may need to refresh manually to see this change.
 
-{% include img.html img="hello-jekyll.png" alt="Hello, Jekyll" %}
+{% include img.html src: "hello-jekyll.png", alt: "Hello, Jekyll" %}
 
 As I noted earlier, you can optionally also use plain HTML to get the same result:
 
-{% include codeHeader.html file="index.md" %}
+{% include codeHeader.html file: "index.md" %}
 ```markdown
 ---
 # Feel free to add content and custom Front Matter to this file.
@@ -366,7 +366,7 @@ layout: home
 
 Notice that we have to specify the ID explicitly with HTML, whereas Markdown does it automatically for us. If you wanted to, you could achieve the same result using Kramdown's ID specifier:
 
-{% include codeHeader.html file="index.md" %}
+{% include codeHeader.html file: "index.md" %}
 ```markdown
 ---
 # Feel free to add content and custom Front Matter to this file.
@@ -380,7 +380,7 @@ layout: home
 
 To understand more about what goes on behind the scenes in Jekyll, go ahead and expand your Git-ignored `_site` directory. Remember that this is the build directory that Jekyll creates each time you change a file, while `jekyll serve` is running. You should see that there's an `index.html` in there. Open that up to see its contents:
 
-{% include codeHeader.html file="_site/index.html" %}
+{% include codeHeader.html file: "_site/index.html" %}
 ```html
 <h1 id="hello-jekyll">Hello, Jekyll!</h1>
 ```
@@ -414,7 +414,7 @@ layout: home
 
 Currently, `index.md` defines a variable named `layout` that's assigned a value of `home`. This doesn't actually do anything yet because we haven't created any layout files (don't worry—we'll learn how to do that in a later section). We even get build warnings for this and a few of our other files:
 
-```
+```text
 Build Warning: Layout 'post' requested in _posts/2020-02-14-welcome-to-jekyll.markdown does not exist.
 Build Warning: Layout 'default' requested in 404.html does not exist.
 Build Warning: Layout 'page' requested in about.md does not exist.
@@ -436,14 +436,14 @@ Since these are not among the predefined front matter variables that Jekyll reco
 
 While we're on the topic of front matter, go ahead and open up the starter blog post that Jekyll created for us. On my end, it's located under `_posts/2020-02-14-welcome-to-jekyll.markdown` and has this content:
 
-{% include codeHeader.html file="_posts/2020-02-14-welcome-to-jekyll.markdown" %}
+{% include codeHeader.html file: "_posts/2020-02-14-welcome-to-jekyll.markdown" %}
 {% raw %}
 ```markdown
 ---
 layout: post
 title:  "Welcome to Jekyll!"
 date:   2020-02-14 07:40:59 -0500
-categories: jekyll update
+tags: jekyll update
 ---
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
@@ -474,7 +474,7 @@ There's a lot of useful information in this template, so give that a read if you
 layout: post
 title:  "Welcome to Jekyll!"
 date:   2020-02-14 07:40:59 -0500
-categories: jekyll update
+tags: jekyll update
 ---
 ```
 
@@ -511,7 +511,7 @@ And then restart your server.
 
 Jekyll allows you to define **front matter defaults** like we've done here by scope, which you can narrow down using either a path or file type. The above defaults are equivalent to doing this manually in each post that we create under `_posts/`:
 
-{% include codeHeader.html file="_posts/2020-02-14-an-awesome-post.md" copyable=false %}
+{% include codeHeader.html file: "_posts/2020-02-14-an-awesome-post.md", copyable: false %}
 ```markdown
 ---
 is_post: true
@@ -521,7 +521,7 @@ layout: post
 
 And doing this manually for each page—like our home page, experience page, contact page, and so on—that we create under a directory named `_pages/`:
 
-{% include codeHeader.html file="_pages/contact.md" copyable=false %}
+{% include codeHeader.html file: "_pages/contact.md", copyable: false %}
 ```markdown
 ---
 is_post: false
@@ -550,7 +550,7 @@ mkdir _pages
 
 After doing that, go ahead and move `index.md` and `about.md` into this directory:
 
-```
+```text
 ├── _pages
 │   ├── about.md
 │   └── index.md
@@ -558,7 +558,7 @@ After doing that, go ahead and move `index.md` and `about.md` into this director
 
 Now you should see the following page instead of the `index.html` from earlier:
 
-{% include img.html img="webrick.png" alt="The WEBrick server for our Jekyll site." %}
+{% include img.html src: "webrick.png", alt: "The WEBrick server for our Jekyll site." %}
 
 Hmm... Our `index.html` and `about.html` pages have vanished! Plus, our newly created `_pages/` directory is nowhere to be found. The latter behavior is expected because the directory has a leading underscore—and if you'll recall, Jekyll doesn't process those kinds of directories unless you tell it to.
 
@@ -577,13 +577,13 @@ This command defines an array of directories that Jekyll should process when it 
 
 Now let's restart the server:
 
-{% include img.html img="webrick2.png" alt="The WEBrick server for our Jekyll site." %}
+{% include img.html src: "webrick2.png", alt: "The WEBrick server for our Jekyll site." %}
 
 Okay, it looks like that added `_pages/` to our build directory, and we can now see an `about/` directory that presumably stores our about page. But it's still not serving our index properly when we visit `localhost:4000`.
 
 The final step is to [specify permalinks to our pages](https://jekyllrb.com/docs/permalinks/) using a predefined front matter variable named `permalink`:
 
-{% include codeHeader.html file="_pages/index.md" %}
+{% include codeHeader.html file: "_pages/index.md" %}
 ```markdown
 ---
 permalink: /
@@ -594,7 +594,7 @@ permalink: /
 
 If you open up `about.md`, you'll notice that it already had a relative permalink defined in its front matter block:
 
-{% include codeHeader.html file="_pages/about.md" copyable=false %}
+{% include codeHeader.html file: "_pages/about.md", copyable: false %}
 ```markdown
 ---
 layout: page
@@ -622,7 +622,7 @@ Save your changes, and Jekyll will rebuild the `_site/` directory. If you refres
 
 If you want to navigate to the About page, simply add `/about/` to the end of `localhost:4000` in your browser's navigation bar. Or you can use navigation links on your page:
 
-{% include codeHeader.html file="_pages/index.md" %}
+{% include codeHeader.html file: "_pages/index.md" %}
 ```markdown
 ---
 permalink: /
@@ -635,13 +635,11 @@ Check out these other pages:
 - [About](/about/)
 ```
 
-Result:
+Navigate to `localhost:4000/about/` to see the result.
 
-{% include img.html img="about.gif" alt="Navigating to the About page." %}
+To make sure you understand how all of this works under the hood, let's take a peek at the `_site/` directory that Jekyll generated for us automatically:
 
-Awesome! To make sure you understand how all of this works under the hood, let's take a peek at the `_site/` directory that Jekyll generated for us automatically:
-
-```
+```text
 _site
 _site
 ├── 404.html
@@ -696,23 +694,23 @@ permalink: /blog/:categories/:title/
 
 Recall that the starter blog post defines two categories, `jekyll` and `update`, plus the title `Welcome to Jekyll!`:
 
-{% include codeHeader.html file="_posts/2020-02-14-welcome-to-jekyll.markdown" %}
+{% include codeHeader.html file: "_posts/2020-02-14-welcome-to-jekyll.markdown" %}
 ```markdown
 ---
 layout: post
 title:  "Welcome to Jekyll!"
 date:   2020-02-14 07:40:59 -0500
-categories: jekyll update
+tags: jekyll update
 ---
 ```
 
 So now, if we navigate to `localhost:4000/blog/jekyll/update/welcome-to-jekyll`, we should see the blog post:
 
-{% include img.html img="post.png" alt="A sample blog post." %}
+{% include img.html src: "post.png", alt: "A sample blog post." %}
 
 Here's what `_site/` looked like before this:
 
-```
+```text
 _site
 ├── 404.html
 ├── about
@@ -730,7 +728,7 @@ _site
 
 And here's what it looks like now:
 
-```
+```text
 _site
 ├── 404.html
 ├── about
@@ -746,7 +744,7 @@ _site
 
 Notice that instead of creating subdirectories for the year, month, and day when a post was published (which is the default permalink if one isn't specified), Jekyll now created subdirectories by nesting categories, then one more directory with the post title, and finally placed `index.html` in there.
 
-By the way, you don't necessarily have to follow this format. You could just have the title if you wanted to, without the categories:
+By the way, you don't necessarily have to follow this format. You could just have the title if you wanted to, without the tags:
 
 ```yml
 permalink: /blog/:title/
@@ -766,7 +764,7 @@ date:   2020-02-14 07:40:59 -0500
 
 Even though you are free to define a date explicitly like this, you don't actually *need* to. By default, Jekyll expects your blog post files to use this naming convention and extracts the date information from it, using that date to sort your posts:
 
-```
+```text
 yyyy-mm-dd-title-of-the-post-slugged.md
 ```
 
@@ -774,19 +772,19 @@ yyyy-mm-dd-title-of-the-post-slugged.md
 
 So the `date` front matter variable is in fact redundant because we already have `2020-02-14` in the file name:
 
-```
+```text
 2020-02-14-welcome-to-jekyll.markdown
 ```
 
 To verify this, let's try an experiment. Remove the date from the post's front matter, and replace the file with this:
 
-{% include codeHeader.html file="_posts/2020-02-14-welcome-to-jekyll.markdown" %}
+{% include codeHeader.html file: "_posts/2020-02-14-welcome-to-jekyll.markdown" %}
 {% raw %}
 ```markdown
 ---
 title:  "Welcome to Jekyll!"
 layout: post
-categories: jekyll update
+tags: jekyll update
 ---
 
 Welcome to my post! This was published on {{ page.date }}.
@@ -795,7 +793,7 @@ Welcome to my post! This was published on {{ page.date }}.
 
 Open up the post on your local to see the result:
 
-{% include img.html img="date.png" alt="A sample blog post showing its date in the body." %}
+{% include img.html src: "date.png", alt: "A sample blog post showing its date in the body." %}
 
 This is our first look at the syntax of Liquid, the templating language that Jekyll uses to make development easier. You'll see that `page.date` is among the list of [page variables in Jekyll](https://jekyllrb.com/docs/variables/#page-variables), among many others that you can use.
 
@@ -853,7 +851,7 @@ It's a bit tricky to give examples of any of these because they require an under
 
 ### Template Tags
 
-**Template tags** ({% raw %}`{% ... %}`{% endraw %}) allow you to declare variables, evaluate conditions, loop over arrays, and do lots of other essential things in Liquid without any of that code actually showing up on the rendered HTML page. In other words, tags are how you embed template logic into your markup.
+**Template tags** ({% raw %}`{% stuff like this %}`{% endraw %}) allow you to declare variables, evaluate conditions, loop over arrays, and do lots of other essential things in Liquid without any of that code actually showing up on the rendered HTML page. In other words, tags are how you embed template logic into your markup.
 
 Here's an exampe of a template tag:
 
@@ -1030,7 +1028,7 @@ I mentioned layouts several times in the section on front matter variables. Now 
 
 First, let's remind ourselves of these build warnings that Jekyll has been giving us:
 
-```
+```text
 Build Warning: Layout 'post' requested in _posts/2020-02-14-welcome-to-jekyll.markdown does not exist.
 Build Warning: Layout 'default' requested in 404.html does not exist.
 Build Warning: Layout 'page' requested in _pages/about.md does not exist.
@@ -1047,7 +1045,7 @@ Layout files in Jekyll are housed under the `_layouts/` directory. Recall that t
 
 It's easier to understand this with an example. If we go back to `_pages/about.md`, we'll find a layout declared in its front matter block:
 
-{% include codeHeader.html file="_pages/about.md" copyable=false %}
+{% include codeHeader.html file: "_pages/about.md", copyable: false %}
 ```markdown
 ---
 layout: page
@@ -1058,7 +1056,7 @@ permalink: /about/
 
 Let's rename the layout to `default`. Functionally, it doesn't make a difference what we name it, as long as there's a layout file with the same name. It's just that `default` is more idiomatic—it's our website's "default layout."
 
-{% include codeHeader.html file="_pages/about.md" %}
+{% include codeHeader.html file: "_pages/about.md" %}
 ```markdown
 ---
 layout: default
@@ -1069,7 +1067,7 @@ permalink: /about/
 
 Let's do the same for `_pages/index.md` and give the page a title as well, while we're at it:
 
-{% include codeHeader.html file="_pages/index.md" %}
+{% include codeHeader.html file: "_pages/index.md" %}
 ```markdown
 ---
 layout: default
@@ -1084,7 +1082,7 @@ This is the home page.
 
 Let's also create two other pages, `blog.md` and `contact.md`:
 
-{% include codeHeader.html file="_pages/blog.md" %}
+{% include codeHeader.html file: "_pages/blog.md" %}
 {% raw %}
 ```markdown
 ---
@@ -1103,7 +1101,7 @@ permalink: /blog
 ```
 {% endraw %}
 
-{% include codeHeader.html file="_pages/contact.md" %}
+{% include codeHeader.html file: "_pages/contact.md" %}
 ```markdown
 ---
 layout: default
@@ -1122,7 +1120,7 @@ Get in touch!
 
 Next, create the `_layouts/` directory and add a file to it named `default.html` with these contents:
 
-{% include codeHeader.html file="_layouts/default.html" %}
+{% include codeHeader.html file: "_layouts/default.html" %}
 {% raw %}
 ```html
 <!DOCTYPE html>
@@ -1152,9 +1150,7 @@ Next, create the `_layouts/` directory and add a file to it named `default.html`
 ```
 {% endraw %}
 
-It's your typical HTML file. Let's check it out:
-
-{% include img.html img="default-layout.gif" alt="The default layout." %}
+It's your typical HTML file, so you can open up `localhost:4000` and play around with it to see the rendered result.
 
 Notice how we take advantage of Liquid several times to customize our pages. For example, the layout file customizes the title bar of each page using front matter variables we defined. The navigation bar applies a class of `active-page` selectively, depending on what page we're currently on. You can then select this element with CSS and style it accordingly to make it more prominent than the other links.
 
@@ -1162,7 +1158,7 @@ The most important part is {% raw %}`{{ content }}`{% endraw %}, which you shoul
 
 One final note: If you want to change the site title that appears after the dash in the address bar, then simply change that variable in your `_config.yml` as I mentioned before:
 
-{% include codeHeader.html file="_config.yml" %}
+{% include codeHeader.html file: "_config.yml" %}
 ```yml
 # Site settings
 # These are used to personalize your new site. If you look in the HTML files,
@@ -1176,22 +1172,22 @@ title: Your awesome title
 
 If you open up the starter blog post that we saw earlier, you'll notice that it has a different layout set:
 
-{% include codeHeader.html file="_posts/2020-02-14-welcome-to-jekyll.markdown" copyable=false %}
+{% include codeHeader.html file: "_posts/2020-02-14-welcome-to-jekyll.markdown", copyable: false %}
 ```markdown
 ---
 layout: post
 title:  "Welcome to Jekyll!"
-categories: jekyll update
+tags: jekyll update
 ---
 ```
 
 The blog post collapses to a "flat" layout and doesn't have the same HTML structure as the other pages:
 
-{% include img.html img="collapsed-layout.png" alt="The starter blog post has a collapsed layout." %}
+{% include img.html src: "collapsed-layout.png", alt: "The starter blog post has a collapsed layout." %}
 
 This is because the `post` layout doesn't exist. Let's go ahead and create this layout file. This time around, you'll notice that a layout file can itself specify a layout:
 
-{% include codeHeader.html file="_layouts/post.html" %}
+{% include codeHeader.html file: "_layouts/post.html" %}
 {% raw %}
 ```html
 ---
@@ -1215,7 +1211,7 @@ layout: default
 
 Open up the post, and you'll now see that it has the same base layout as all your other pages, but it also has a nested layout specific to blog posts:
 
-{% include img.html img="post-layout.png" alt="The post layout." %}
+{% include img.html src: "post-layout.png", alt: "The post layout." %}
 
 Awesome!
 
@@ -1247,7 +1243,7 @@ Notice that we reference the compiled version (`.css`) that's going to live unde
 
 Meanwhile, this is what my manifest looks like:
 
-{% include codeHeader.html file="/assets/styles/main.scss" %}
+{% include codeHeader.html file: "/assets/styles/main.scss" %}
 ```sass
 ---
 ---
@@ -1273,7 +1269,7 @@ Meanwhile, this is what my manifest looks like:
 
 And here's what my `_sass/` directory looks like, in case you're curious:
 
-```
+```text
 _sass
 ├── blog
 │   └── posts.scss
@@ -1303,7 +1299,7 @@ Creating modular stylesheets and importing them into a SASS manifest makes it mu
 
 Let's give this a shot. Create a file named `_sass/_general.scss` with this styling (or really anything you want):
 
-{% include codeHeader.html file="_sass/_general.scss" %}
+{% include codeHeader.html file: "_sass/_general.scss" %}
 ```scss
 * {
   box-sizing: border-box;
@@ -1319,7 +1315,7 @@ body {
 
 And then create this file:
 
-{% include codeHeader.html file="assets/styles/main.scss" %}
+{% include codeHeader.html file: "assets/styles/main.scss" %}
 ```scss
 ---
 ---
@@ -1329,14 +1325,14 @@ And then create this file:
 
 Once your site rebuilds, you'll find this new file:
 
-```
+```text
 _site/assets/styles
 └── main.css
 ```
 
 Here's what the transpiled, minified stylesheet looks like:
 
-{% include codeHeader.html file="_site/assets/styles/main.css" copyable=false %}
+{% include codeHeader.html file: "_site/assets/styles/main.css", copyable: false %}
 ```css
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -1345,14 +1341,14 @@ body { font-size: 18px; font-family: Arial; }
 
 Finally, don't forget to link the stylesheet to your `default.html` layout. Just add this to your `head`:
 
-{% include codeHeader.html file="_layouts/default.html" %}
+{% include codeHeader.html file: "_layouts/default.html" %}
 ```html
 <link rel="stylesheet" type="text/css" href="/assets/styles/main.css">
 ```
 
 Here's what your site should now look like:
 
-{% include img.html img="styled.png" alt="The styled version of the site." %}
+{% include img.html src: "styled.png", alt: "The styled version of the site." %}
 
 Need to add more styles? Simply create a new SASS stylesheet under `_sass/`, possibly in a nested subdirectory to keep things organized, and then just import it into your manifest. It's that easy.
 
@@ -1360,7 +1356,7 @@ Need to add more styles? Simply create a new SASS stylesheet under `_sass/`, pos
 
 Minifying CSS is one of the many things you can do to improve your page load speed. And fortunately, doing so is really easy in Jekyll. All you have to do is add this somewhere in your `_config.yml`:
 
-{% include codeHeader.html file="_config.yml" %}
+{% include codeHeader.html file: "_config.yml" %}
 ```yaml
 
 sass:
@@ -1379,7 +1375,7 @@ Includes are created under the `_includes/` directory. An include file is simply
 
 For example, let's say you want to use tooltips on your site but don't want to have to copy-paste the same HTML each time you want to use one on a page. This is a perfect use case for includes:
 
-{% include codeHeader.html file="_includes/tooltip.html" %}
+{% include codeHeader.html file: "_includes/tooltip.html" %}
 {% raw %}
 ```html
 <div class="tooltip tooltip-{{ include.position }}">
@@ -1439,7 +1435,7 @@ Consider your online resume or personal website: You likely want to have a page,
 
 Here's a mockup for two of those:
 
-{% include img.html img="mockup.png" alt="Mockups of project cards and skills" %}
+{% include img.html src: "mockup.png", alt: "Mockups of project cards and skills" %}
 
 You get the general idea—all websites have static, mostly unchanging data that is often repeated in slightly different ways while retaining the same underlying *structure*.
 
@@ -1461,7 +1457,7 @@ You can then loop over that data using Liquid tags and finally give the data its
 
 Let's say you have a simple file named `_data/skills.yml`. Suppose it looks something like this:
 
-{% include codeHeader.html file="_data/skills.yml" %}
+{% include codeHeader.html file: "_data/skills.yml" %}
 ```yml
 - name: Writing
   rating: 5
@@ -1473,7 +1469,7 @@ Let's say you have a simple file named `_data/skills.yml`. Suppose it looks some
 
 You can access this data using `site.data.skills`. If your YAML defines an array of skills like above, you can iterate over it and define template markup for each element:
 
-{% include codeHeader.html file="_pages/experience.md" %}
+{% include codeHeader.html file: "_pages/experience.md" %}
 {% raw %}
 ```liquid
 <ul>
@@ -1488,7 +1484,7 @@ This is a fairly simple example—in reality, you'd probably want to do more tha
 
 Also, note that you can nest arrays in YAML and in Liquid. This would allow you to, for example, define skill *categories* and nest the actual skills within them:
 
-{% include codeHeader.html file="_data/skills.yml" %}
+{% include codeHeader.html file: "_data/skills.yml" %}
 ```yml
 - category: Blogging
   skills:
@@ -1507,7 +1503,7 @@ Also, note that you can nest arrays in YAML and in Liquid. This would allow you 
 
 And again, we can give this data more structure:
 
-{% include codeHeader.html file="_pages/experience.md" %}
+{% include codeHeader.html file: "_pages/experience.md" %}
 {% raw %}
 ```liquid
 {% for item in site.data.skills %}
@@ -1527,7 +1523,7 @@ Now let's suppose you run a blog that has multiple authors, not just you.
 
 You can create a data file for each author and define the path to their profile photo, their name, their bio, and a fixed set of social media links, like Twitter, GitHub, and whatnot:
 
-{% include codeHeader.html file="_data/authors.yml" %}
+{% include codeHeader.html file: "_data/authors.yml" %}
 ```yml
 John Doe:
   photo: john-doe.JPG
@@ -1552,7 +1548,7 @@ Notice how your Jekyll data files can be as complex as you need, with nested arr
 
 Let's assume each post defines an author in its front matter:
 
-{% include codeHeader.html file="_posts/2020-02-13-a-really-awesome-post.md" %}
+{% include codeHeader.html file: "_posts/2020-02-13-a-really-awesome-post.md" %}
 {% raw %}
 ```markdown
 ---
@@ -1569,7 +1565,7 @@ The end!
 
 We can now add a bio at the end of each post, ideally in the `post.html` layout file so we don't have to repeat it for every single post that we publish:
 
-{% include codeHeader.html file="_layouts/post.html" %}
+{% include codeHeader.html file: "_layouts/post.html" %}
 {% raw %}
 ```html
 ---
@@ -1611,7 +1607,7 @@ Now you want to assign descriptions to each tag to dynamically update a page's d
 
 Create a data file named `tagDescriptions.yml` (or something else) and define key-value pairs in the YAML, where the key is the tag name and the value is the description for that particular tag:
 
-{% include codeHeader.html file="_data/tagDescriptions.yml" %}
+{% include codeHeader.html file: "_data/tagDescriptions.yml" %}
 ```yml
 dev: Technical posts. Yay dev!
 life: As in, the thing I like to pretend to have...
@@ -1620,7 +1616,7 @@ tag: This is a tag. How exciting!
 
 Then, you can once again take advantage of YAML's associative data nature to assign descriptions to each tag:
 
-{% include codeHeader.html file="_layouts/blog.html" %}
+{% include codeHeader.html file: "_layouts/blog.html" %}
 {% raw %}
 ```html
 {% for tag in site.tags %}
@@ -1642,7 +1638,7 @@ So you've started blogging with Jekyll. Awesome work!
 
 But how do you know if you're getting any traffic, or what pages people are clicking, or what queries they're using to find you? What devices are being used? Are most of your users on mobile or desktop? What about your impressions, click count, click-through rate, and overall ranking on Google?
 
-{% include img.html img="google-search-console.png" alt="Google Search Console statistics for my site." %}
+{% include img.html src: "google-search-console.png", alt: "Google Search Console statistics for my site." %}
 
 If you're a complete beginner getting started with Jekyll and don't yet have much (or any) traffic to your website, this should be the least of your concerns. Focus first and foremost on creating quality content, and then go ahead and set this up so you can grow your blog.
 
@@ -1652,15 +1648,15 @@ First, head on over to the [Google Search Console](https://search.google.com/sea
 
 Once you've done that, click `Add property`:
 
-{% include img.html img="add-property.png" alt="Adding a Google Search Console property." %}
+{% include img.html src: "add-property.png", alt: "Adding a Google Search Console property." %}
 
 When prompted to select a property type, choose the `URL prefix` option and enter the full URL of your site on GitHub Pages:
 
-{% include img.html img="property-type.png" alt="Selecting the type of property in Google Search Console." %}
+{% include img.html src: "property-type.png", alt: "Selecting the type of property in Google Search Console." %}
 
 You'll be asked to verify that you are in fact the owner of this website. Google generates a unique file that you'll need to download, add to your website's repo, and push to GitHub:
 
-{% include img.html img="verify-ownership.png" alt="Verify ownership of your Google Search Console property." %}
+{% include img.html src: "verify-ownership.png", alt: "Verify ownership of your Google Search Console property." %}
 
 GitHub Pages will then build your site and make this file accessible to Google for verification. Once you've uploaded the file, click `Verify`.
 

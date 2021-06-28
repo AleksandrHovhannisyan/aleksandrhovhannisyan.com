@@ -1,0 +1,33 @@
+---
+permalink: /feed.xml
+layout: null
+eleventyExcludeFromCollections: true
+excludeFromSitemap: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ site.title }}</title>
+  <subtitle>{{ site.description }}</subtitle>
+  <link href="{{ site.url }}/feed.xml" rel="self"/>
+  <link href="{{ site.url }}/" rel="alternate" type="text/html"/>
+  <updated>{{ collections.posts | getNewestCollectionItemDate | to_iso_string }}</updated>
+  <id>{{ site.url }}/</id>
+  <author>
+    <name>{{ site.author }}</name>
+    <email>{{ site.email }}</email>
+  </author>
+  {% for post in collections.posts %}
+  {%- assign absolute_post_url = site.url | append: post.url -%}
+  <entry>
+    <title>{{ post.data.title | escape }}</title>
+    <link href="{{ absolute_post_url }}"/>
+    {%- comment -%}TODO: detect last_updated{%- endcomment -%}
+    <updated>{{ post.date | to_iso_string }}</updated>
+    <id>{{ absolute_post_url }}</id>
+    {%- for category in post.data.categories %}
+      <category term="{{ category }}" />
+    {%- endfor %}
+    <content type="html">{{ post.data.description | escape }}</content>
+  </entry>
+  {% endfor %}
+</feed>

@@ -2,7 +2,7 @@
 title: "Trie Data Structure Implementation in Python"
 description: Learn how to implement a trie in Python, with plenty of visuals and code samples to help you understand how prefix trees work.
 keywords: [python prefix tree, python prefix tree tutorial, python trie implementation, implement a trie in Python]
-tags: [dev, data-structures, python]
+categories: [dev, data-structures, python]
 ---
 
 Of all the data structures I've encountered, the **prefix tree** (also known as a *trie*) still fascinates me the most because of its simplicity, elegance, and practical applications.
@@ -15,7 +15,7 @@ The **prefix tree** is one of the easiest data structures to understand both vis
 
 First, let's run through a little exercise. Have you ever wondered how search engines like Google are able to quickly auto-fill your search box with suggestions that start with whatever you've typed? Take this as an example:
 
-{% include img.html img="google-search.jpg" alt="Google searches that begin with 'ar'" %}
+{% include img.html src: "google-search.jpg", alt: "Google searches that begin with 'ar'" %}
 
 How would you go about implementing this behavior, all other complex considerations aside? The (very) naive approach is to take the text that the user has typed so far—like `a` or `app`—and check if any words in our database start with that substring, using a linear search. That would maybe work for search engines with a relatively small database. But Google deals with billions of queries, so that would hardly be efficient. It gets even more inefficient the longer the substring becomes.
 
@@ -29,7 +29,7 @@ Instead of storing these four words as-is, what we'll do is create a tree. This 
 
 It helps to look at a picture of this and break it down. The corresponding prefix tree for these words would look like this:
 
-{% include img.html img="trie.jpg" alt="An example of a trie for the words bat, big, ape, and apple." %}
+{% include img.html src: "trie.jpg", alt: "An example of a trie for the words bat, big, ape, and apple." %}
 
 Each node in a prefix tree represents a string, with the root node always being the empty string (`''`). That string may be a complete word that someone entered into the prefix tree—like `apple` or `bat`—or it may be a prefix that leads to a word, such as the `ap-` in `ape` and `apple`.
 
@@ -64,7 +64,7 @@ First, like all trees, a prefix tree is going to consist of nodes. Each node wil
 
 Let's build the `TrieNode` class:
 
-{% include codeHeader.html file="trie.py" %}
+{% include codeHeader.html file: "trie.py" %}
 ```python
 class TrieNode:
     def __init__(self, text = ''):
@@ -76,7 +76,7 @@ Pretty simple, right? Again, note that there's one additional piece of data we'l
 
 Next, the prefix tree itself consists of one or more of these `TrieNodes`, so I'll add another class named `PrefixTree`:
 
-{% include codeHeader.html file="trie.py" %}
+{% include codeHeader.html file: "trie.py" %}
 ```python
 class TrieNode:
     def __init__(self, text = ''):
@@ -101,7 +101,7 @@ That last one is useful for testing; it isn't required.
 
 Let's consider how we'd build a prefix tree. We'll always start with a root node that has an empty string as its `text` and an empty dictionary as its `children`. Then, we want to insert the words we looked at earlier: `ape`, `apple`, `bat`, and `big`. As a reminder, this is what the trie looks like once we finish inserting all of those words:
 
-{% include img.html img="trie.jpg" alt="An example of a trie for the words bat, big, ape, and apple." %}
+{% include img.html src: "trie.jpg", alt: "An example of a trie for the words bat, big, ape, and apple." %}
 
 ### Detailed Explanation: How to Build a Prefix Tree
 
@@ -119,7 +119,7 @@ Recall that each node also has to keep track of the string that's been generated
 
 Here's the full* Python implementation of inserting nodes into a trie:
 
-{% include codeHeader.html file="trie.py" %}
+{% include codeHeader.html file: "trie.py" %}
 ```python
 def insert(self, word):
     current = self.root
@@ -144,7 +144,7 @@ Otherwise, if we reach the last character of the string without having returned 
 
 Here's the code:
 
-{% include codeHeader.html file="trie.py" %}
+{% include codeHeader.html file: "trie.py" %}
 ```python
 def find(self, word):
     '''
@@ -165,9 +165,9 @@ def find(self, word):
 
 I kept this hidden from you on purpose so the learning experience would be more memorable. If you figured out what's wrong with the last line of the code and why, then great! If not, I'll help you understand.
 
-Let's say we insert the word `apple` into our trie, with nothing else, and now invoke ```trie.find('app')```:
+Let's say we insert the word `apple` into our trie, with nothing else, and now invoke `trie.find('app')`:
 
-{% include img.html img="wrong-find.jpg" alt="An example of a false match for a word in a trie." %}
+{% include img.html src: "wrong-find.jpg", alt: "An example of a false match for a word in a trie." %}
 
 Our algorithm in its current state won't return `None` as it should. It sees that our trie has a node with the string `app` and considers that a match. But notice that we never actually inserted `app` into the tree as a *word*. It only exists in the trie as a *prefix node* leading up to the inserted word `apple`. So clearly, there are two classes of nodes that we must distinguish between: ones that are prefixes, and ones that are "real" words that were inserted.
 
@@ -179,7 +179,7 @@ Fortunately, the fix here is super simple. We need to make three changes:
 
 Let's modify the `TrieNode` class:
 
-{% include codeHeader.html file="trie.py" %}
+{% include codeHeader.html file: "trie.py" %}
 ```python
 class TrieNode:
     def __init__(self, text = ''):
@@ -190,7 +190,7 @@ class TrieNode:
 
 And then the `insert` method:
 
-{% include codeHeader.html file="trie.py" %}
+{% include codeHeader.html file: "trie.py" %}
 ```python
 def insert(self, word):
     current = self.root
@@ -206,7 +206,7 @@ And finally, to verify that the given word exists in our trie, and that the node
 
 Here's the final code for `find`:
 
-{% include codeHeader.html file="trie.py" %}
+{% include codeHeader.html file: "trie.py" %}
 ```python
 def find(self, word):
     '''
@@ -228,7 +228,7 @@ And that's it!
 
 Let's go back to our earlier example of inserting just the word `apple` into a trie. What happens if we later try to insert the English word `app` (as in "application") into the trie as a word? Well, the code will go down the trie, reach the `app` prefix node, and switch its flag to `True` so that we know it's now officially an inserted word and not just a prefix node:
 
-{% include img.html img="right-find.jpg" alt="An example of inserting the words app and apple into a trie." %}
+{% include img.html src: "right-find.jpg", alt: "An example of inserting the words app and apple into a trie." %}
 
 Technically, it's both—a prefix leading up to `apple` and a word in and of itself. Of course, that's totally fine! And what matters from a code validity standpoint is that its flag has been set to `True`.
 
@@ -243,7 +243,7 @@ The code for finding partial matches in a trie is also really simple. Here's the
 
 The first step is simple—we just did something very similar above for finding exact matches. This time, though, instead of returning `None` when a match isn't found, we'll return an empty list.
 
-{% include codeHeader.html file="trie.py" %}
+{% include codeHeader.html file: "trie.py" %}
 ```python
 def starts_with(self, prefix):
     '''
@@ -265,7 +265,7 @@ Once we've found the prefix node (if it exists), we'll utilize a helper method f
 
 Here's the recursive helper function:
 
-{% include codeHeader.html file="trie.py" %}
+{% include codeHeader.html file: "trie.py" %}
 ```python
 def __child_words_for(self, node, words):
     '''
@@ -281,7 +281,7 @@ def __child_words_for(self, node, words):
 
 And here's the completed code for `starts_with`:
 
-{% include codeHeader.html file="trie.py" %}
+{% include codeHeader.html file: "trie.py" %}
 ```python
 def starts_with(self, prefix):
     '''
@@ -311,7 +311,7 @@ This one depends on your definition of "size." Is it the number of *words* that 
 
 I'll just show the code this time—hopefully you're comfortable with recursion and tries by now:
 
-{% include codeHeader.html file="trie.py" %}
+{% include codeHeader.html file: "trie.py" %}
 ```python
 def size(self, current = None):
     '''
@@ -333,7 +333,7 @@ Notice that `current` has a default value of `None`. This allows the user to sim
 
 We can add this to the end of our script to manually test our code:
 
-{% include codeHeader.html file="trie.py" %}
+{% include codeHeader.html file: "trie.py" %}
 ```python
 if __name__ == '__main__':
     trie = PrefixTree()
@@ -352,7 +352,7 @@ But this is tedious and frankly not a very rigorous way of testing our code. So 
 
 Below are eight tests covering edge cases. This is where our `size` method really comes in handy.
 
-{% include codeHeader.html file="test_trie.py" %}
+{% include codeHeader.html file: "test_trie.py" %}
 ```python
 import unittest
 from trie import PrefixTree
@@ -420,7 +420,7 @@ The `setUp` method is something that's common in unit testing. It's a method tha
 
 And here's the output:
 
-{% include img.html img="test-output.jpg" alt="Test output: 8 cases passed" %}
+{% include img.html src: "test-output.jpg", alt: "Test output: 8 cases passed" %}
 
 All tests ran correctly—awesome!
 

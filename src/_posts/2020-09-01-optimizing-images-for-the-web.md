@@ -2,9 +2,10 @@
 title: Optimizing Images for the Web with WebP and Lazy Loading
 description: Images make the web a more beautiful place, but this sometimes comes at a price. Learn how to optimize images for the web using the WebP image format and lazy loading with JavaScript.
 keywords: [optimizing images for the web, optimize images for the web]
-tags: [dev, javascript, webperf, images]
+categories: [dev, javascript, webperf, images]
 comments_id: 56
 last_updated: 2020-09-10
+thumbnail: thumbnail.jpg
 ---
 
 You're a fan of images—who isn't? But those adorable puppy photos, memes, and GIFs don't come without a price. Often, these images range anywhere from a few hundred kB to several megabytes in size. And while that's practically nothing in terms of *storage* space, it's quite a significant cost in terms of network data usage, especially on mobile.
@@ -17,7 +18,7 @@ But let's say you've decided to firmly stand your ground and defend your right t
 
 Two of the best ways to optimize images for the web are by using the WebP image format and lazy loading images with JavaScript. Combine the two, and you'll make Lighthouse happy on even the most image-heavy pages on your website:
 
-{% include img.html img="lighthouse.png" alt="Lighthouse audit for aleksandrhovhannisyan.com/blog/" %}
+{% include img.html src: "lighthouse.png", alt: "Lighthouse audit for aleksandrhovhannisyan.com/blog/" %}
 
 {% include toc.md %}
 
@@ -41,7 +42,7 @@ That last point is especially important since Google uses [mobile-first indexing
 
 [Most browsers support WebP](https://caniuse.com/#search=webp), so there's really no reason not to use it:
 
-{% include img.html img="caniuse.png" alt="The caniuse report for the WebP image format." %}
+{% include img.html src: "caniuse.png", alt: "The caniuse report for the WebP image format." %}
 
 ### How to Create WebP Images
 
@@ -55,7 +56,7 @@ Outside the Node ecosystem, there are still libraries that'll do the job for you
 
 ### Rendering WebP Images
 
-Now, assuming you've generated your WebP images, the typical way to render them is with the `<picture>`, `<source>`, and `<img>` tags:
+Now, assuming you've generated your WebP images, the typical way to render them is with the `<picture>`, `<source>`, and `<img>` categories:
 
 {% include codeHeader.html %}
 ```html
@@ -175,11 +176,7 @@ function lazyLoad(img) {
 
 Super simple! You don't need any libraries to lazily load images in JavaScript.
 
-Here's what that will look like when you inspect the page and start scrolling:
-
-{% include img.html img="demo.gif" alt="Lazily loading images on my blog page and inspecting the images as they load in using Chrome Dev Tools" %}
-
-As you scroll down the page, the `src` and `srcset` attributes get replaced with the data attributes that we defined. This initiates a new HTTP request to load the images from your server.
+As you scroll down the page, the viewport will intersect with images, and the `src` and `srcset` attributes will get replaced with the data attributes that we defined. This initiates a new HTTP request to load the images from your server.
 
 Note that most lazy-loading tutorials will set the `src` and `srcset` attributes to be empty strings. So they'll show you something like this for the markup:
 
@@ -205,7 +202,7 @@ Note that most lazy-loading tutorials will set the `src` and `srcset` attributes
 
 The solution is to use a fuzzy placeholder—the original image but scaled down to some lower resolution, like `32x32px`:
 
-{% include img.html img="placeholders.png" alt="Blog posts whose thumbnails are fuzzy placeholder images" %}
+{% include img.html src: "placeholders.png", alt: "Blog posts whose thumbnails are fuzzy placeholder images" %}
 
 Since there are fewer pixels to work with, the image ends up being blurry, with chunks of color that vaguely resemble the original image's shape. Then, when the viewport intersects with the `<img>` element, you load in the real image with JavaScript. This is precisely what we did in the code above, with the assumption that you have **four variations for each image**:
 
@@ -224,14 +221,10 @@ Does the approach covered here end up using more data than if you had just loade
 
 Instead, think about how wasteful it is to load in several megabytes' worth of data *at once*, as soon as the page loads—whether or not those images are currently visible—and to waste a mobile user's precious bandwidth. It's even worse if they only spend a few seconds on your site and navigate away—they gain absolutely nothing from visiting your page and actually lose a few MB of data.
 
-Below is a real example from [my website's blog page](/blog/). Notice that when the page loads, only 60 kB of network data get transferred. Once we scroll all the way down, we can see that the total network data usage eventually exceeds 5 MB. **That's a world of difference**!
-
-{% include img.html img="network.gif" alt="Inspecting the Network tab of Chrome Dev Tools as my blog's cache is cleared and the page is reloaded" %}
-
-Finally, note that the IntersectionObserver API can be used to lazily load more than just images. For example, you could use it to defer loading comment systems, ads, and even videos.
-
 ## Final Thoughts
 
 If you think optimizing images for the web requires some fancy tooling and expertise, think again. All you really need to do is compress your images using the WebP image format (or some other well-supported alternative) and lazily load your images using just a few lines of JavaScript.
 
 I hope you found this tutorial helpful!
+
+{% include unsplashAttribution.md name: "Sarandy Westfall", username: "sarandywestfall_photo", photo_id: "qqd8APhaOg4" %}

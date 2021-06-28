@@ -1,0 +1,5 @@
+{%- assign src = '/posts/' | append: page.fileSlug | append: '/' | append: src -%}
+<figure>
+  {%- include picture.html src: src, alt: alt, clickable: clickable -%}
+  <figcaption>{{ caption | to_html }}</figcaption>
+</figure>

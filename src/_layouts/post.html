@@ -26,13 +26,12 @@ preloads:
 
 <article id="post">
   <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
-    {% include meta.html post=page last_updated=page.last_updated show_profile_photo=true %}
+    <h1 class="post-title">{{ title }}</h1>
+    {% include meta.html post: page, content: content, categories: categories, show_profile_photo: true %}
   </header>
   <div class="post-content">
-    {{ content | replace: '<a href="http', '<a rel="nofollow noopener noreferrer" target="_blank" href="http' }}
-    {%- assign comments_repo = site.issues_repo -%}
-    {%- assign comments_id = page.comments_id -%}
+    {{ content }}
+    {%- assign comments_repo = site.issuesRepo -%}
     {%- if comments_id -%}
       <section id="comments" data-comments-id="{{ comments_id }}" data-comments-repo="{{ comments_repo }}">
         <div class="comment-actions">
@@ -64,7 +63,7 @@ preloads:
     {%- endif -%}
   </div>
 </article>
-{%- assign thumbnail = page.thumbnail | default: 'thumbnail.png' -%}
+{%- assign thumbnail = "thumbnail-1280.webp" -%}
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -73,10 +72,12 @@ preloads:
       "@type": "WebPage",
       "@id": "{{ site.url }}{{ page.url }}"
     },
-    "headline": {{ page.title | escape | jsonify }},
-    "image": ["{{ site.url }}/assets/images/posts/{{ page.slug }}/{{ thumbnail }}"],
-    "datePublished": {{ page.date | jsonify }},{% if page.last_updated %}
-    "dateModified": {{ page.last_updated | jsonify }},{% endif %}
+    "headline": {{ title | escape | jsonify }},
+    "image": ["{{ site.url }}/assets/images/posts/{{ page.fileSlug }}/{{ thumbnail }}"],
+    "datePublished": {{ page.date | jsonify }},
+    {% if last_updated -%}
+    "dateModified": {{ last_updated | jsonify }},
+    {% endif -%}
     "author": {
       "@type": "Person",
       "name": "{{ site.author }}"
@@ -90,6 +91,6 @@ preloads:
         "url": "{{ site.url }}/assets/images/favicons/favicon-128.png"
       }
     },
-    "description": {{ page.description | strip_newlines | strip | jsonify }}
+    "description": {{ description | strip_newlines | strip | jsonify }}
   }
 </script>

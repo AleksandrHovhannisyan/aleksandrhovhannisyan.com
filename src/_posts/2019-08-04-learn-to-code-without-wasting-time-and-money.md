@@ -2,10 +2,12 @@
 title: Learn to Code Without Wasting Time & Money
 description: A discussion of the things that beginner programmers tend to get wrong, as well as concrete suggestions for what they should be doing instead.
 keywords: [learn to code, beginner programming mistakes, advice for beginner programmers, tips for beginner programmers, coding tips for beginners]
-tags: [dev, learning, beginners]
+categories: [dev, learning, beginners]
 comments_id: 29
 is_popular: true
+thumbnail: thumbnail.jpg
 ---
+
 I remember reading a short story in high school about an aspiring writer who invested a great deal of time and money in procuring a fancy pen and an ornately bound notebook, purchasing a desk only a serious writer would sit at, furnishing his study with shelves full of old books he'd never read, and daydreaming about the prospect of writing. What was missing from this picture was any ink touching paper&mdash;he did anything but actually write.
 
 The same thing often happens with beginners who want to get into software development&mdash;they install an assortment of IDEs and tools whose purpose they don't really understand, scour through listicles on the best programming languages for beginners to learn, and generally spend most of their time contemplating programming and trying to come up with ideas for projects instead of... well, *programming*.
@@ -56,7 +58,7 @@ I'll admit: I do understand the appeal of a sandbox environment. It allows you t
 
 Here are two Udemy course I once purchased thinking that they were the key to achieving whatever goals I had at the time (web development and game development, apparently):
 
-{% include img.html img="udemy-courses.jpg" alt="Two of the Udemy courses I once purchased but never finished." %}
+{% include img.html src: "udemy-courses.jpg", alt: "Two of the Udemy courses I once purchased but never finished." %}
 
 I quit about 10% through both of them because I was bored out of my mind. I am not the type of person who can tolerate sitting in front of lecture after lecture, followed by intermittent "now you try it" exercises that, for the most part, are very trivial. I need a context for anything I do&mdash;a genuinely relevant, interesting, and challenging project that I want to work on. To-do list apps don't cut it for me because they're not something I actually want to build. Making games *your* way isn't what I want to do when I'm learning game dev.
 
@@ -121,10 +123,12 @@ This is where online programming courses tend to disappoint&mdash;once the train
 
 And then what happens? People turn to Quora, Reddit, or whatever other forums they frequent to vent and seek reassurance, to be told that coding isn’t that difficult and that they're not stupid and that they'll get better with time.
 
-{% include img.html img="programming-woes.jpg" alt="Posts on r/programming from people who feel discouraged and overwhelmed." %}
+{% include img.html src: "programming-woes.jpg", alt: "Posts on r/programming from people who feel discouraged and overwhelmed." %}
 
 The truth? You’re not stupid. Learning to code is literally learning to speak a new language&mdash;there's a rough transition period at the start where you're mostly doing things by rote memorization and repetition, and when few things actually make intuitive sense. But there eventually comes that moment of enlightenment where you look back and realize what it is that you were doing this entire time. It does eventually click and become second nature.
 
 Make no mistake, though: The process of *getting* there won't be easy. And once you do get there, you'll realize that you're not a programming wizard (is anyone?) and that you still have many knowledge gaps. Unfortunately, people are misled into believing that programming is somehow easier to pick up than any other skill that pays well, or that spending money on courses will guarantee their success. In reality, becoming a good developer requires years of practice, self-motivation, and hard work.
 
 And, of course, you never stop learning.
+
+{% include unsplashAttribution.md name: "Goran Ivos", username: "goran_ivos", photo_id: "iOykDIkZLQw" %}

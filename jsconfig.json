@@ -2,7 +2,7 @@
     "compilerOptions": {
       "module": "commonJS",
       "target": "es6",
-      "baseUrl": "./webpack/",
+      "baseUrl": "./src/assets/scripts/",
       "paths": {
         "@components": ["components/index.js"],
         "@utils": ["utils/index.js"]

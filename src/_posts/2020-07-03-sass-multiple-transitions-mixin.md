@@ -2,7 +2,7 @@
 title: Sass Multiple Transitions Mixin
 description: Tired of repeating the CSS transition property by hand? Use this Sass mixin to easily define multiple CSS transitions in one go.
 keywords: [sass multiple transitions mixin]
-tags: [dev, scss, css]
+categories: [dev, scss, css]
 ---
 
 Way back when I moved my site from plain HTML and CSS to Jekyll, I wanted to take full advantage of Sass and its powerful support for mixins. And one particularly repetitive line of code in my CSS went something like this:
@@ -29,7 +29,7 @@ $transition: 0.2s ease;
 
 But that still doesn't fully eliminate the repetition—we just have to type fewer characters now. What I was searching for is a **Sass mixin for multiple CSS transitions**. And I eventually found it in [a StackOverflow answer by user yspreen](https://stackoverflow.com/a/49437769/5323344):
 
-{% include codeHeader.html file="mixins.scss" %}
+{% include codeHeader.html file: "mixins.scss" %}
 ```scss
 @mixin transition($props...) {
     $result: ();
@@ -66,3 +66,5 @@ And here's how I use this multiple transition mixin in my own stylesheets:
 ```
 
 It works like a charm, and it's super easy to understand!
+
+Note that Tobias Ahlin created [a more advanced version of the mixin](https://gist.github.com/tobiasahlin/7a421fb9306a4f518aab) that's able to cleanly handle overrides for things like the transition duration. Check it out if you need something more flexible!

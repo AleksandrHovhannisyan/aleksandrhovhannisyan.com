@@ -2,7 +2,7 @@
 title: React, Iframes, and a Back-Navigation Bug
 description: If an iframe re-renders in React, it can interfere with back navigation in your browser. You can fix this by unmounting the iframe.
 keywords: [iframes, react, back navigation, browser history]
-tags: [dev, browsers, react, javascript]
+categories: [dev, browsers, react, javascript]
 comments_id: 84
 ---
 
@@ -31,15 +31,29 @@ Notice that the iframe has a dynamic `src` attribute, meaning its content change
 
 ## Bug: Iframes Interrupt Back Navigation in the Browser
 
-At first glance, everything seems to be working correctly:
+The first page loads the right iframe:
 
-{% include img.html img="forward-navigation.gif" alt="A page is shown with four navigation links in a sidebar and a central iframe widget. The iframe renders a number that corresponds to the page the user is on. As the user navigates from page 1 to page 2, the iframe updates its content accordingly." %}
+{% include img.html src: "forward-navigation-1.png", alt: "A page rendering three navigation links and an iframe to the right. The iframe shows a number in large font denoting which page it corresponds to. Currently, the iframe shows a 1, and page 1 of 3 is selected in the navigation tree." %}
 
-Let's try going back to the previous page using our browser's back button:
+You then visit the second page, and it updates the iframe:
 
-{% include img.html img="back-navigation.gif" alt="A page is shown with four navigation links in a sidebar and a central iframe widget. The iframe renders a number that corresponds to the page the user is on. The user returns to the previous page by clicking their browser's back button. The first time they do this, the iframe updates. The second time they do this, the app itself navigates to the previous page." %}
+{% include img.html src: "forward-navigation-2.png", alt: "A page rendering three navigation links and an iframe to the right. The iframe shows a number in large font denoting which page it corresponds to. Currently, the iframe shows a 2, and page 2 of 3 is selected in the navigation tree." %}
 
-Hmm... It doesn't work as expected! When you first click the back button in your browser, the iframe *itself* navigates backward, pointing to the embedded content that you saw on the previous page. But the app didn't navigate—it's still on the old page! In other words, the page and its corresponding iframe are out of sync by one step. When you press back again, you're finally routed to the correct page. Effectively, you have to press the back button *twice* whenever you want a legitimate page navigation.
+Finally, you visit the third page, and it too renders the correct iframe:
+
+{% include img.html src: "forward-navigation-3.png", alt: "A page rendering three navigation links and an iframe to the right. The iframe shows a number in large font denoting which page it corresponds to. Currently, the iframe shows a 3, and page 3 of 3 is selected in the navigation tree." %}
+
+At first glance, everything seems to be working correctly.
+
+But now, let's try going back to the previous page using our browser's back button:
+
+{% include img.html src: "back-navigation-32.png", alt: "A page rendering three navigation links and an iframe to the right. The iframe shows a number in large font. Currently, the iframe shows a 2, but the page navigation is stuck on page 3 of 3." %}
+
+Hmm... It doesn't work as expected! When you first click the back button in your browser, the iframe *itself* navigates backward, pointing to the embedded content that you saw on the previous page. But the app didn't navigate—it's still on the old page! In other words, the page and its corresponding iframe are out of sync by one step. When you press back again, you're finally routed to the correct page:
+
+{% include img.html src: "back-navigation-22.png", alt: "A page rendering three navigation links and an iframe to the right. The iframe shows a number in large font. The iframe and page navigation are now in sync; the iframe shows a big number 2, and the nav tree is on page 2 of 3." %}
+
+Effectively, you have to press the back button *twice* whenever you want a legitimate page navigation.
 
 It's worth noting that this issue isn't necessarily unique to React projects, although it's most obvious in a single-page app where routing is a little different than in a traditional website. If you have three different pages in vanilla HTML and JavaScript, then you're rendering three different iframes, and you shouldn't see this issue (unless you have a single page and are navigating within it, like with anchors).
 
@@ -81,13 +95,10 @@ However, there *are* certain situations where you want a component to fully unmo
 
 To solve this problem, we need to **remount the entire iframe** instead of only re-rendering it. This is why the code above works: We can force a component to remount by giving it a key that's unique on every render. In this case, a suitable key would be whatever is causing the iframe's source to change between renders. You can use the content ID (or even the full URL if you want). On each render, React will see a different iframe and remount it, preventing the iframe from pushing items onto the browser's `history` stack.
 
-And voila—page navigation is now in sync with the iframe:
+And voila—the page navigation should now be in sync with the iframe.
 
-{% include img.html img="with-key.gif" alt="A page is shown with four navigation links in a sidebar and a central iframe widget. The iframe renders a number that corresponds to the page the user is on. As the user navigates to the previous page using their browser's back button, the iframe and page navigation remain in sync." %}
-
-{:.no_toc}
 ## And That's It!
 
 I hope you learned something new—I sure did when I first encountered this bug! It's a good reminder that the `key` prop isn't just useful inside loops, like when you're mapping an array to elements. Sometimes, you also need to give an element a key to forcibly remount it.
 
-{% include unsplashAttribution.md name="Jan Huber" username="jan_huber" photo_id="4MDXq_aqHY4" %}
+{% include unsplashAttribution.md name: "Jan Huber", username: "jan_huber", photo_id: "4MDXq_aqHY4" %}

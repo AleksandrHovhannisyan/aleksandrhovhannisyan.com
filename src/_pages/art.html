@@ -1,7 +1,8 @@
 ---
 title: Art
 description: CSS art and other fun stuff.
-keywords: [css art]
+keywords:
+  - css art
 permalink: /art/
 og_image: /assets/images/art/thumbnail.png
 stylesheets:
@@ -26,10 +27,10 @@ preloads:
   </header>
   <section class="section">
     <ol id="artwork-list">
-      {%- assign art_collection = site.art | sort: 'order' -%}
+      {%- assign art_collection = collections.art | sort_by_key: 'data.order' -%}
       {%- for artwork in art_collection -%}
-        <li class="artwork" id="{{ artwork.identifier }}" aria-label="{{ artwork.description }}" tabindex="0">
-          {{ artwork.content }}
+        <li class="artwork" id="{{ artwork.data.identifier }}" aria-label="{{ artwork.data.description }}" tabindex="0">
+          {{ artwork.templateContent }}
         </li>
       {%- endfor -%}
     </ol>

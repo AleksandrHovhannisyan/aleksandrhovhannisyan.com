@@ -1,13 +1,35 @@
 ---
-title: Blog
-description: Programming tutorials, thoughts on software development, and the occasional off-topic post.
-permalink: /blog/
 layout: blog
+description: Programming tutorials, thoughts on software development, and the occasional off-topic post.
+permalink: "/blog/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumber | plus: 1 }}/{% endif %}"
 pagination:
-  enabled: true
+  data: collections.posts
+  size: 20
+  alias: posts
+renderData:
+  title: "Blog{% if pagination.pageNumber > 0 %} (Page {{ pagination.pageNumber | plus: 1 }}){% endif %}"
 ---
 
-{% assign posts = paginator.posts | where: 'is_archived', nil %}
-{%- for post in posts -%}
-  {% include postPreview.html post=post title_level=2 %}
-{%- endfor -%}
+
+<ol class="post-preview-grid">
+  {% for post in posts %}
+    {% include postPreview.html post: post, title_level: 2 %}
+  {% endfor %}
+</ol>
+{%- assign num_pages = pagination.hrefs | size -%}
+{%- if num_pages > 1 -%}
+<ol class="pagination-trail" aria-label="Page navigation">
+  {%- for page_url in pagination.hrefs %}
+    <li>
+      <a
+        href="{{ page_url }}"
+        class="tag pagination-page{% if page_url == page.url %} active{% endif %}"
+        aria-label="Page {{ forloop.index }}"
+        {%- if page_url == page.url -%}aria-current="page"{%- endif -%}
+      >
+        {{- forloop.index -}}
+      </a>
+    </li>
+  {%- endfor -%}
+</ol>
+{%- endif -%}

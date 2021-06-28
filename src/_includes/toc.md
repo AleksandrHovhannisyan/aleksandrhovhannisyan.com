@@ -2,10 +2,8 @@
     <a href="#toc-skipped" id="skip-toc" class="screen-reader-only">Skip table of contents</a>
 </div>
 
-## Table of Contents
-{:.no_toc}
+<h2 id="table-of-contents">Table of Contents</h2>
 
-* TOC
 {:toc}
 
 <div id="toc-skipped"></div>

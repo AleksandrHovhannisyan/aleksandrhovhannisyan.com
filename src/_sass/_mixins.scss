@@ -1,0 +1,175 @@
+@import './functions';
+@import './fonts';
+@import './breakpoints';
+
+// Inspiration: https://stackoverflow.com/a/49437769/5323344
+@mixin transition($props...) {
+  $result: ();
+
+  @for $i from 1 through length($props) {
+    $prop: nth($props, $i);
+    $result: append($result, $prop);
+    $result: append($result, #{var(--transition-timing-function)} #{var(--transition-duration)});
+
+    @if $i != length($props) {
+      $result: append(
+        $result,
+        unquote(
+          $string: ',',
+        )
+      );
+    }
+  }
+
+  transition: $result;
+}
+
+@mixin headings {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @content;
+  }
+}
+
+@mixin z-index($key) {
+  z-index: z-index($key);
+}
+
+@mixin font-family($family) {
+  font-family: unquote(map-get($font-families, $family));
+}
+
+@mixin font-weight($humanReadableWeight: inherit) {
+  font-weight: map-get($font-weights, $humanReadableWeight);
+}
+
+@mixin font-size($step) {
+  $multiplier: map-get($type-scale, 'scale');
+  $font-size-base: map-get($type-scale, 'font-size-base');
+  $step-config: map-get(map-get($type-scale, 'steps'), $step);
+
+  $font-size: rnd($font-size-base * pow($multiplier, $step), 2);
+  $line-height: map-get($step-config, 'line-height');
+  // expose CSS var to later compute other things, e.g., spacing
+  --line-height: #{$line-height};
+  --font-size: #{$font-size};
+
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+}
+
+@mixin underlined-link($initially-underlined: true) {
+  @if $initially-underlined {
+    text-decoration: underline;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+  @else {
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
+
+@mixin themed($attribute, $light, $dark) {
+  #{$attribute}: $light;
+
+  .dark & {
+    #{$attribute}: $dark;
+  }
+}
+
+@mixin selection-resistant-color($color) {
+  &,
+  &::selection {
+    color: $color;
+  }
+}
+
+@mixin focus-outline($color: currentColor, $style: solid, $thickness: 0.2rem, $offset: 0) {
+  &:focus {
+    outline: $style $thickness $color;
+    outline-offset: $offset;
+
+    &:not(:focus-visible) {
+      outline: none;
+    }
+  }
+}
+
+@mixin responsive-grid($mobile-min, $desktop-min, $mobile-max: 1fr, $desktop-max: 1fr, $breakpoint: 600px) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($mobile-min, $mobile-max));
+
+  @media only screen and (min-width: $breakpoint) {
+    grid-template-columns: repeat(auto-fit, minmax($desktop-min, $desktop-max));
+  }
+}
+
+@mixin rhythm() {
+  display: grid;
+  grid-row-gap: calc(var(--line-height) * 1em);
+}
+
+@mixin line-clamp($lines, $font-size: var(--font-size), $line-height: var(--line-height)) {
+  // Fallbacks for non-webkit browsers (see prefixes below)
+  display: block;
+  height: calc(#{$font-size} * #{$line-height} * #{$lines});
+
+  // Common to both
+  font-size: $font-size;
+  line-height: $line-height;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  // Modern way of doing it (in Webkit browsers)
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+}
+
+// Breakpoint mixins
+@mixin mobile {
+  $bp: map-get($media-breakpoints, mobile);
+  @media screen and (min-width: $bp) {
+    @content;
+  }
+}
+
+@mixin mobile-lg {
+  $bp: map-get($media-breakpoints, mobile-lg);
+  @media screen and (min-width: $bp) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  $bp: map-get($media-breakpoints, tablet);
+  @media screen and (min-width: $bp) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  $bp: map-get($media-breakpoints, desktop);
+  @media screen and (min-width: $bp) {
+    @content;
+  }
+}
+
+@mixin desktop-lg {
+  $bp: map-get($media-breakpoints, desktop-lg);
+  @media screen and (min-width: $bp) {
+    @content;
+  }
+}

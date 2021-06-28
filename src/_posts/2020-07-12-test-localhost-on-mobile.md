@@ -2,7 +2,7 @@
 title: How to Test Localhost on Mobile (with ngrok)
 description: Learn how to easily test localhost on mobile using ngrok, without deploying a single line of code.
 keywords: [test localhost on mobile]
-tags: [dev, ngrok, testing, mobile]
+categories: [dev, ngrok, testing, mobile]
 comments_id: 47
 ---
 
@@ -44,13 +44,13 @@ And just replace `portNumber` with your port (e.g., `3000`).
 
 Once ngrok starts up, you'll see your HTTP and HTTPS endpoints and the localhost variants that they point to. Now, simply navigate to either one of these public URLs.
 
-{% include img.html img="ngrok.png" alt="Running the ngrok process in a terminal." %}
+{% include img.html src: "ngrok.png", alt: "Running the ngrok process in a terminal." %}
 
 To view the URL on mobile, you can certainly just type it out. However, if you're logged in to Chrome with your Google account, you can simply right-click the page and choose `Send to [your phone]`:
 
-{% include img.html img="send-to-phone.png" alt="Right-clicking a page in Google Chrome to send it to your phone." %}
+{% include img.html src: "send-to-phone.png", alt: "Right-clicking a page in Google Chrome to send it to your phone." %}
 
-## Sharing Is Caring
+## Sharing Localhost with Other Developers
 
 As a bonus, this means that you can also share your localhost changes with other developers on your team or with clients, without having to record screencasts, take screenshots, or describe your changes via text (yuck). Just send them the URL, and you're good to go.
 
@@ -65,8 +65,12 @@ As before, replace `portNumber` with your own. Be sure to also replace `user` an
 
 This time, when you or someone else visit one of the endpoints, you'll be prompted to enter the username and password that were set:
 
-{% include img.html img="auth.png" alt="Ngrok authentication with a prompt for a username and password." %}
+{% include img.html src: "auth.png", alt: "Ngrok authentication with a prompt for a username and password." %}
 
 So here, you'd type `user` and `password`.
 
 And that's all there is to it! You can now test localhost on mobile without jumping through unnecessary hoops.
+
+## Attributions
+
+This article's social media preview image uses the Ngrok logo under fair use; it is under the copyright of Ngrok. I am not affiliated with Ngrok.

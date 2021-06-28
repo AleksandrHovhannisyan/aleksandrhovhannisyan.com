@@ -2,12 +2,12 @@
 title: A Simple Webpack Config
 description: Webpack is one of the most popular code bundlers available. Here's a simple webpack config to bundle your JavaScript.
 keywords: [simple webpack config]
-tags: [dev, webpack, javascript]
+categories: [dev, webpack, javascript]
 ---
 
 Let's assume your directory structure looks like this for a JavaScript project:
 
-```
+```text
 .
 ├── config/
 │   └── webpack.config.js
@@ -33,7 +33,7 @@ yarn add -D webpack webpack-cli
 
 Once that's done, add this script to your `package.json`:
 
-{% include codeHeader.html file="package.json" %}
+{% include codeHeader.html file: "package.json" %}
 ```json
 "scripts": {
     "build": "webpack --config config/webpack.config.js --mode production"
@@ -42,7 +42,7 @@ Once that's done, add this script to your `package.json`:
 
 And then create this simple webpack config under `config/`:
 
-{% include codeHeader.html file="webpack.config.js" %}
+{% include codeHeader.html file: "webpack.config.js" %}
 ```javascript
 const path = require('path');
 
@@ -69,7 +69,7 @@ Here's how it works:
 
 Run `yarn build` to bundle your code. Here's some sample output:
 
-```
+```text
 yarn run v1.22.4
 $ webpack --config config/webpack.config.js --mode production
 Hash: d60fd368c37fd04c102f
@@ -88,7 +88,7 @@ Done in 2.47s.
 
 Now you can include the bundled code in your HTML file:
 
-{% include codeHeader.html file="index.html" %}
+{% include codeHeader.html file: "index.html" %}
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -111,7 +111,7 @@ Relative imports can get pretty nasty: `import X from '../../../'`.
 
 To use absolute imports in webpack, we'll set up import aliases. Here's the new webpack config:
 
-{% include codeHeader.html file="config/webpack.config.js" %}
+{% include codeHeader.html file: "config/webpack.config.js" %}
 ```javascript
 const path = require('path');
 
@@ -146,7 +146,7 @@ import Module from 'components/Module';
 
 If you're using VS Code, you can take this one step further and create a `jsconfig.json`:
 
-{% include codeHeader.html file="jsconfig.json" %}
+{% include codeHeader.html file: "jsconfig.json" %}
 ```json
 {
     "compilerOptions": {
@@ -160,7 +160,3 @@ If you're using VS Code, you can take this one step further and create a `jsconf
 ```
 
 So now, if you start typing the name of a non-imported module, VS Code will look it up and automatically import it for you.
-
-{% include img.html img="vscode.gif" alt="Auto-importing modules in VS Code" %}
-
-I hope this helps!

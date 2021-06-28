@@ -3,55 +3,34 @@ layout: default
 is_blog_page: true
 ---
 
-{%- assign page_path = paginator["page_path"] | remove: 'index.html' -%}
 <section class="section blog-post-previews">
-  {%- assign page_tag = page.autopages.display_name | default: 'all' -%}
-  {%- assign page_tag_words = page_tag | split: '-' -%}
-  {%- assign page_tag_readable = '' -%}
-  {%- for word in page_tag_words -%}
+  {%- assign page_category = category.title | default: 'all' -%}
+  {%- assign page_category_words = page_category | split: '-' -%}
+  {%- assign page_category_readable = '' -%}
+  {%- for word in page_category_words -%}
     {%- assign capitalized_word = word | capitalize -%}
-    {%- assign page_tag_readable = page_tag_readable | append: capitalized_word | append: ' ' -%}
+    {%- assign page_category_readable = page_category_readable | append: capitalized_word | append: ' ' -%}
   {%- endfor -%}
-  {%- assign page_tag_description = site.data.tagDescriptions[page_tag] | default: site.data.tagDescriptions['all'] -%}
-  <h1 class="blog-page-title">{{ page_tag_readable }} Blog Posts</h1>
-  <p class="blog-page-description">{{- page_tag_description -}}</p>
-  <nav aria-label="Popular tags">
+  {%- assign page_category_description = categoryDescriptions[page_category] | default: categoryDescriptions['all'] -%}
+  <h1 class="blog-page-title">{{ page_category_readable }} Blog Posts</h1>
+  <p class="blog-page-description">{{- page_category_description -}}</p>
+  <nav aria-label="Popular categories">
     <ul class="navigation-tags">
-      {%- assign tags = "all,accessibility,css,webperf,off-topic" | split: ',' -%}
-      {%- for tag in tags %}
+      {%- comment -%}TODO: automate/define elsewhere{%- endcomment -%}
+      {%- assign categories = "all,accessibility,css,webperf,off-topic" | split: ',' -%}
+      {%- for category in categories %}
         <li>
           <a
-            href="{% if tag == "all" %}/blog/{% else %}/tag/{{ tag }}/{% endif %}"
-            class="tag post-tag navigation-tag{% if page_tag == tag %} active{% endif %}"
-            title="{% if page_tag != tag %}View{% endif %} {% if tag == "all" %}all posts{% else %}posts tagged as {{ tag }}{% endif %}"
-            {%- if page_tag == tag -%}aria-current="page"{%- endif -%}
+            href="{% if category == "all" %}/blog/{% else %}/categories/{{ category }}/{% endif %}"
+            class="tag post-tag navigation-tag{% if page_category == category %} active{% endif %}"
+            title="{% if page_category != category %}View{% endif %} {% if category == "all" %}all posts{% else %}posts tagged as {{ category }}{% endif %}"
+            {%- if page_category == category -%}aria-current="page"{%- endif -%}
           >
-            {{- tag -}}
+            {{- category -}}
           </a>
         </li>
       {% endfor %}
     </ul>
   </nav>
-  <ol class="post-preview-grid">
-    {{- content -}}
-  </ol>
-  {%- if paginator.page_trail -%}
-  <ol class="pagination-trail" aria-label="Page navigation for {{ page_tag }} blog posts.">
-    {%- assign total_pages = paginator["total_pages"] -%}
-    {%- for trail in paginator.page_trail -%}
-      {%- assign trail_path = trail.path | remove: 'index.html' -%}
-      <li>
-        <a
-          href="{{ trail_path | prepend: site.baseurl }}"
-          {% if page_path == trail_path %}aria-current="page"{%- endif -%}
-          title="{% if page_path == trail_path %}Page {{ trail.num }}{% else %}Go to page {{ trail.num }}{% endif %}"
-          aria-label="{% if page_path == trail_path %}Viewing page {{ trail.num }} of {{ total_pages }}{% else %}Go to page {{ trail.num }}{% endif %}"
-          class="tag pagination-page{% if page_path == trail_path %} active{% endif %}"
-        >
-          {{- trail.num -}}
-        </a>
-      </li>
-    {%- endfor -%}
-  </ol>
-  {%- endif -%}
+  {{ content }}
 </section>

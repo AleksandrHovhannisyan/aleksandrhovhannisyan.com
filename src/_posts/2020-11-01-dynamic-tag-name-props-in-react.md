@@ -2,7 +2,7 @@
 title: Dynamic Tag Name Props in React (with TypeScript)
 description: Sometimes, a React component needs to allow users to render a custom tag. Here's how you can pass dynamic tag names as props.
 keywords: [dynamic tag name props]
-tags: [dev, react, typescript]
+categories: [dev, react, typescript]
 comments_id: 62
 ---
 
@@ -14,7 +14,7 @@ In React, you'll sometimes want to allow users to pass in a dynamic tag name as 
 
 To keep this demo simple, let's say we want to create a reusable `CenteredContainer` component to encapsulate some CSS or other logic (I won't show any of that here):
 
-{% include codeHeader.html file="components/CenteredContainer/index.tsx" %}
+{% include codeHeader.html file: "components/CenteredContainer/index.tsx" %}
 ```tsx
 import React, { FC } from 'react';
 
@@ -29,7 +29,7 @@ You *could* always render a `<div>` like we're doing here, but that's not a grea
 
 Fortunately, we can take advantage of TypeScript's intellisense and pass a dynamic tag name as a prop to change the rendered tag:
 
-{% include codeHeader.html file="components/CenteredContainer/index.tsx" %}
+{% include codeHeader.html file: "components/CenteredContainer/index.tsx" %}
 ```tsx
 import React, { FC } from 'react';
 
@@ -66,7 +66,7 @@ as keyof JSX.IntrinsicElements
 
 That addresses the following error, letting TypeScript know that our `Tag` variable does in fact resolve to one of the built-in (intrinsic) callable element types, like `<div>`, `<button>`, and so on:
 
-```
+```text
 "JSX element type 'Tag' does not have any construct or call signatures"
 ```
 
@@ -80,7 +80,7 @@ CenteredContainer.defaultProps = {
 
 But you can override this by passing in a custom `tagName`:
 
-{% include codeHeader.html file="components/Navbar/index.tsx" %}
+{% include codeHeader.html file: "components/Navbar/index.tsx" %}
 ```tsx
 import CenteredContainer from 'components/CenteredContainer';
 import React, { FC } from 'react';
@@ -92,10 +92,10 @@ const MyComponent: FC = ({ children }) => {
 
 Since we've specified that `tagName` is `keyof JSX.IntrinsicElements`, we'll get auto-complete intellisense whenever we try to set this prop:
 
-{% include img.html img="example.png" alt="An example of using the CenteredContainer component and passing in a concrete tagName. VS Code's intellisense shows an auto-complete dropdown for you as you type." %}
+{% include img.html src: "example.png", alt: "An example of using the CenteredContainer component and passing in a concrete tagName. VS Code's intellisense shows an auto-complete dropdown for you as you type." %}
 
 In some cases, you may want to instead use [render props](https://reactjs.org/docs/render-props.html), but they're not always needed—sometimes, all you really want is to be able to specify a tag name as a string. You typically only need to use render props if the element being rendered depends on some state. Here, we're just telling the component what to render by passing in a plain string. The syntax is shorter and easier to read.
 
 And that's all there is to it! I hope you found this mini-tutorial helpful.
 
-{% include unsplashAttribution.md name="Paolo Chiabrando" username="chiabra" image_id="do7VUvKBOsg" %}
+{% include unsplashAttribution.md name: "Paolo Chiabrando", username: "chiabra", image_id: "do7VUvKBOsg" %}

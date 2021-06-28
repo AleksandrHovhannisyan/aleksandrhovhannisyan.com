@@ -2,7 +2,7 @@
 title: Create Heading Links in Jekyll with Includes
 description: Want to make it easier for users to link to a heading in your blog? Learn how to create heading links in Jekyll using includes.
 keywords: [heading links in jekyll]
-tags: [dev, liquid, jekyll]
+categories: [dev, liquid, jekyll]
 last_updated: 2020-05-24
 comments_id: 42
 ---
@@ -27,7 +27,7 @@ Then, we want two states:
 
 With Liquid and Jekyll includes, it's super simple to create linked headings. Here's the markup:
 
-{% include codeHeader.html file="_includes/linkedHeading.html" %}
+{% include codeHeader.html file: "_includes/linkedHeading.html" %}
 {% raw %}
 ```liquid
 {% assign heading = include.heading %}
@@ -142,7 +142,7 @@ There are two solutions to this:
 
 Here's the one I use:
 
-{% include codeHeader.html file="markdown.json" %}
+{% include codeHeader.html file: "markdown.json" %}
 {% raw %}
 ```json
 "Linked Heading": {

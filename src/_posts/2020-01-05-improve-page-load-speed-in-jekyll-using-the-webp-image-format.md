@@ -2,10 +2,10 @@
 title: Improve Page Load Speed in Jekyll with the WebP Image Format
 description: Do your blog posts suffer from slow load speeds because of all those images you've been using? In this post, we'll look at how you can improve your page load speed in Jekyll using the WebP image format and just a single useful include.
 keywords: ["improve page load speed", "webp image format"]
-tags: [dev, jekyll, webperf, images]
+categories: [dev, jekyll, webperf, images]
 ---
 
-{% include img.html img="pagespeed-insights.png" alt="The PageSpeed Insights score for one of my blog posts." %}
+{% include img.html src: "pagespeed-insights.png", alt: "The PageSpeed Insights score for one of my blog posts." %}
 
 Run the blog posts on my site through Google's [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) or [Cloudinary's Image Analysis tool](https://webspeedtest.cloudinary.com/), and you'll find that most of them (with the exception of a few that load iframes) get around 99 on mobile and 100 on desktop. Some of these are packed full of images.
 
@@ -47,27 +47,17 @@ You can specify a number of options, including the compression factor for conver
 
 > You can learn more about the available options in [Google's documentation for cwebp](https://developers.google.com/speed/webp/docs/cwebp).
 
-For example, let's say you have an image under `/assets/images/posts`. To convert that to WebP, simply switch to the target directory and execute this command:
+For example, let's say you have an image under `/assets/images/posts`. To convert that to WebP, execute this command:
 
 ```bash
-cwebp img.png -o img.webp
+cwebp ./assets/images/posts/img.png -o ./assets/images/posts/img.webp
 ```
-
-And that's it! Here's a quick demo of that in action:
-
-{% include img.html img="demo.gif" alt="Converting a traditional image format to a webp image." %}
-
-You can ignore the output from the tool, as it's not too important.
-
-In this case, notice that the image size was cut in a half—from 16 KB to 8 KB—*without a significant loss of quality*.
-
-> **Note**: You don't have to switch to the target directory to run the command. You could also just feed it a relative or absolute path from any directory. That said, I prefer to run it from the target directory to make my life easier.
 
 ## How Do You Use the WebP Image Format?
 
 The good news is that [browser support for WebP](https://caniuse.com/#feat=webp) is high, excluding Internet Explorer (of course 😒) and Safari:
 
-{% include img.html img="caniuse.jpg" alt="The caniuse results for WebP" %}
+{% include img.html src: "caniuse.jpg", alt: "The caniuse results for WebP" %}
 
 Assuming you want to cover all your bases and ensure that your images are displaying properly, you can use a `picture` element with a `source` for the WebP version and a backup `img` for the regular format:
 
@@ -87,7 +77,7 @@ Except... Do we really have to copy-paste this every time we want to create an i
 
 Time to make this reusable! Create a file named `_includes/picture.html` and add this markup:
 
-{% include codeHeader.html file="_includes/picture.html" %}
+{% include codeHeader.html file: "_includes/picture.html" %}
 {% raw %}
 ```liquid
 {% assign img = include.img %}
@@ -113,7 +103,7 @@ Before I explain why this works, you need to know how I like to structure my blo
 
 Here's a screenshot to make that clearer:
 
-{% include img.html img="assets.jpg" alt="My assets/img/posts folder." %}
+{% include img.html src: "assets.jpg", alt: "My assets/img/posts folder." %}
 
 That allows us to get away with this simple and legible include:
 

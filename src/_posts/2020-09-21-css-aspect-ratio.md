@@ -2,7 +2,7 @@
 title: Creating Responsive Aspect Ratios in CSS
 description: Learn how to give any element an aspect ratio in CSS, using the modern aspect-ratio property or a trick with percentage padding.
 keywords: [css aspect ratio, aspect ratio in css, aspect ratio, aspect-ratio, percentage padding]
-tags: [dev, css, images, math]
+categories: [dev, css, images, math]
 is_popular: true
 last_updated: 2021-06-12
 comments_id: 58
@@ -29,10 +29,7 @@ Intuitively, an aspect ratio of `w:h` says that an element has `w` units of widt
 
 In CSS, aspect ratios are especially useful because they allow us to scale elements (like images) responsively so that they always maintain their dimensions and never become distorted.
 
-<figure>
-  {% include img.html img="scaling.png" alt="Three side-by-side versions of the same image of a puppy. The one on the far-left is at its original size of 300 pixels by 240 pixels. It is later scaled down to 200 pixels by 160 pixels, and finally to 100 pixels by 80 pixels." %}
-  <figcaption>Photo credit: <a href="https://unsplash.com/photos/og0C_9Mz6RA">Bill Stephan, Unsplash</a></figcaption>
-</figure>
+{% include figure.html src: "scaling.png", alt: "Three side-by-side versions of the same image of a puppy. The one on the far-left is at its original size of 300 pixels by 240 pixels. It is later scaled down to 200 pixels by 160 pixels, and finally to 100 pixels by 80 pixels.", caption: "Photo credit: [Bill Stephan, Unsplash](https://unsplash.com/photos/og0C_9Mz6RA)." %}
 
 Aspect ratios allow us to change one dimension of an element (e.g., its width) while the other dimension scales accordingly, without us having to worry about doing the math ourselves. This makes aspect ratios well suited for creating responsive layouts that rely on images.
 
@@ -67,7 +64,7 @@ Keep in mind that while we usually discuss this in the context of images, `aspec
 
 For images specifically, this new property has an interesting application. When you [set a width and height on images](/blog/setting-width-and-height-on-images/) via the HTML attributes `width` and `height`, browsers like Chrome use these two properties to compute an appropriate `aspect-ratio` for the image, applying it in the user-agent stylesheet. This allows the browser to maintain the image's dimensions as it is resized and to reserve the right amount of vertical space for the image before it loads in, minimizing layout shifts. You can observe this in your dev tools for any image that has a width and height:
 
-{% include img.html img="default-aspect-ratio.png" alt="The default aspect ratio for an image is observed to be 500 / 300 in Chrome dev tools." %}
+{% include img.html src: "default-aspect-ratio.png", alt: "The default aspect ratio for an image is observed to be 500 / 300 in Chrome dev tools." %}
 
 The only thing to keep in mind with this approach is that [browser support for the `aspect-ratio` property](https://caniuse.com/?search=aspect-ratio) is experimental (as of this writing). For this reason, we should also learn how to create aspect ratios the old-fashioned way, which relies on a trick with percentage padding.
 
@@ -108,7 +105,7 @@ Let's say you want to embed a YouTube video on your page, and you know that [You
 
 For both code samples, we'll work with this common markup:
 
-{% include codeHeader.html file="youtube-iframe.html" %}
+{% include codeHeader.html file: "youtube-iframe.html" %}
 ```html
 <iframe src="..." class="youtube-iframe"></iframe>
 ```
@@ -117,7 +114,7 @@ For both code samples, we'll work with this common markup:
 
 With CSS's `aspect-ratio` property, we can style the iframe directly:
 
-{% include codeHeader.html file="youtube-iframe.css" %}
+{% include codeHeader.html file: "youtube-iframe.css" %}
 ```css
 .youtube-iframe {
   aspect-ratio: 16 / 9;
@@ -130,7 +127,7 @@ That's it! As we'll see in the remaining examples, this new property makes it tr
 
 We can achieve the same result using the padding trick that we learned. It requires a bit more work and some additional markup. We'll need two elements: an aspect ratio box for the parent container (e.g., a `<div>`), and the iframe itself nested as a child:
 
-{% include codeHeader.html file="youtube-iframe.html" %}
+{% include codeHeader.html file: "youtube-iframe.html" %}
 ```html
 <div class="embed-container">
   <iframe class="youtube-iframe">...</iframe>
@@ -141,7 +138,7 @@ To create an aspect ratio box with `16:9`, we set the box's height to be zero an
 
 The final step is to relatively position the container and absolutely position the iframe so that it doesn't influence the container's height. And here's the CSS that'll do that for us:
 
-{% include codeHeader.html file="youtube-iframe.css" %}
+{% include codeHeader.html file: "youtube-iframe.css" %}
 ```css
 .embed-container {
   position: relative;
@@ -165,7 +162,7 @@ That's it! Your YouTube iframe will now maintain a `16:9` aspect ratio on all de
 
 With our knowledge of how to create aspect ratios in CSS, we can easily create a [3x3 square layout](https://tobiasahlin.com/blog/common-flexbox-patterns/#3x3-grid-constrained-proportions-11) with either Flexbox or CSS Grid. We'll work with this common markup and CSS:
 
-{% include codeHeader.html file="grid.html" %}
+{% include codeHeader.html file: "grid.html" %}
 ```html
 <ul class="square-grid">
   <li class="square"></li>
@@ -180,7 +177,7 @@ With our knowledge of how to create aspect ratios in CSS, we can easily create a
 </ul>
 ```
 
-{% include codeHeader.html file="grid.css" %}
+{% include codeHeader.html file: "grid.css" %}
 ```css
 .square-grid {
   width: 100%;
@@ -208,7 +205,7 @@ Once again, we can take one of two approaches, depending on which browsers we ne
 
 To make each grid item a square, we just have to give them an aspect ratio of `1/1`:
 
-{% include codeHeader.html file="grid.css" %}
+{% include codeHeader.html file: "grid.css" %}
 ```css
 .square {
   aspect-ratio: 1 / 1;
@@ -221,7 +218,7 @@ This says that the grid item's width and height should always be the same.
 
 With the percentage padding trick, we once again zero out the element's height. This time, we give it a vertical padding of `100%`, which means that its height is always the same as its width:
 
-{% include codeHeader.html file="grid.css" %}
+{% include codeHeader.html file: "grid.css" %}
 ```css
 .square {
   height: 0;
@@ -238,22 +235,22 @@ One of the more common use cases you'll run into is creating a square image grid
 Regardless of which approach you take, you'll get a `3x3` grid of images that are perfectly centered to a `1:1` (square) aspect ratio. Images that are too big will be cropped and centered:
 
 <ol class="square-grid" aria-hidden="true">
-  <li class="square">{% include img.html img="puppy.png" alt="" clickable=false %}</li>
-  <li class="square">{% include img.html img="puppy.png" alt="" clickable=false %}</li>
-  <li class="square">{% include img.html img="puppy.png" alt="" clickable=false %}</li>
-  <li class="square">{% include img.html img="kitten.png" alt="" clickable=false %}</li>
-  <li class="square">{% include img.html img="kitten.png" alt="" clickable=false %}</li>
-  <li class="square">{% include img.html img="kitten.png" alt="" clickable=false %}</li>
-  <li class="square">{% include img.html img="parakeet.png" alt="" clickable=false %}</li>
-  <li class="square">{% include img.html img="parakeet.png" alt="" clickable=false %}</li>
-  <li class="square">{% include img.html img="parakeet.png" alt="" clickable=false %}</li>
+  <li class="square">{% include img.html src: "puppy.png", alt: "", clickable: false %}</li>
+  <li class="square">{% include img.html src: "puppy.png", alt: "", clickable: false %}</li>
+  <li class="square">{% include img.html src: "puppy.png", alt: "", clickable: false %}</li>
+  <li class="square">{% include img.html src: "kitten.png", alt: "", clickable: false %}</li>
+  <li class="square">{% include img.html src: "kitten.png", alt: "", clickable: false %}</li>
+  <li class="square">{% include img.html src: "kitten.png", alt: "", clickable: false %}</li>
+  <li class="square">{% include img.html src: "parakeet.png", alt: "", clickable: false %}</li>
+  <li class="square">{% include img.html src: "parakeet.png", alt: "", clickable: false %}</li>
+  <li class="square">{% include img.html src: "parakeet.png", alt: "", clickable: false %}</li>
 </ol>
 
 #### Modern Approach
 
 As before, we'll style the squares to have a `1:1` aspect ratio. But we'll also want to set the width and height of the nested images to be `100%`. Finally, we'll use `object-fit` and `object-position` to ensure that overflowing images are cropped and centered:
 
-{% include codeHeader.html file="image-grid.css" %}
+{% include codeHeader.html file: "image-grid.css" %}
 ```css
 .square {
   aspect-ratio: 1 / 1;
@@ -273,7 +270,7 @@ Notice that we don't have to mess with absolute positioning or zero-out the `.sq
 
 With the percentage padding trick, the CSS for the grid is the same. But we need to absolutely position the images so that they don't influence each `.square`'s height. And, as before, we also need to use `object-fit` and `object-position` so that overflowing images are cropped.
 
-{% include codeHeader.html file="image-grid.css" %}
+{% include codeHeader.html file: "image-grid.css" %}
 ```css
 .square {
   height: 0;
@@ -333,7 +330,7 @@ In its documentation on [identifying the containing block](https://developer.moz
 
 Thus, for flex and grid items, you can think of the containing block as an invisible content region that wraps the items. This formatting context is very easy to identify in your dev tools, appearing as a dotted outline around each flex or grid item:
 
-{% include img.html img="grid.png" alt="Inspecting a grid of four items with the Chrome dev tools reveals that each grid items has its own block formatting context, shown with a dashed outline." %}
+{% include img.html src: "grid.png", alt: "Inspecting a grid of four items with the Chrome dev tools reveals that each grid items has its own block formatting context, shown with a dashed outline." %}
 
 We can prove this in a simple experiment with two grid items that have the same aspect ratio but whose formatting contexts have different widths, per the `grid-template-columns` property:
 
@@ -381,15 +378,9 @@ With vertical layouts, paragraphs appear sideways—you'll have to tilt your hea
 
 [The MDN docs](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Block_and_Inline_Layout_in_Normal_Flow#Elements_participating_in_a_block_formatting_context) use the following diagrams to clarify these two writing modes:
 
-<figure>
-  {% include img.html img="horizontal-mode.png" alt="A horizontal writing mode, with text flowing vertically from top to bottom. An arrow points from left to right at the top of the document and is labeled as the inline direction. Another arrow points from top to bottom and is labeled as the block direction." %}
-  <figcaption aria-hidden="true">Horizontal writing mode (default)</figcaption>
-</figure>
+{% include figure.html src: "horizontal-mode.png", alt: "A horizontal writing mode, with text flowing vertically from top to bottom. An arrow points from left to right at the top of the document and is labeled as the inline direction. Another arrow points from top to bottom and is labeled as the block direction.", caption: "Horizontal writing mode (default)." %}
 
-<figure>
-  {% include img.html img="vertical-mode.png" alt="A vertical writing mode, with text flowing horizontally. The horizontal axis is labeled as the block direction, whereas the vertical axis is now labeled as the inline direction. Text is rendered sideways." %}
-  <figcaption aria-hidden="true">Vertical writing mode</figcaption>
-</figure>
+{% include figure.html src: "vertical-mode.png", alt: "A vertical writing mode, with text flowing horizontally. The horizontal axis is labeled as the block direction, whereas the vertical axis is now labeled as the inline direction. Text is rendered sideways.", caption: "Vertical writing mode." %}
 
 Here's the important point: if we switch over to a vertical writing mode, and we use percentage values for padding or margin, these percentages will actually be defined relative to the *containing block's height*, not its width! This comes straight from the [CSS3 specs](https://www.w3.org/TR/css-writing-modes-3/#dimension-mapping):
 
@@ -401,7 +392,7 @@ Here, **inline size** is defined as follows:
 
 To verify this, we can set up a mini sandbox document with a single parent and child element:
 
-{% include codeHeader.html file="test.html" %}
+{% include codeHeader.html file: "test.html" %}
 ```html
 <div class="parent">
   <div class="child">
@@ -412,7 +403,7 @@ To verify this, we can set up a mini sandbox document with a single parent and c
 
 And style it like this:
 
-{% include codeHeader.html file="test.css" %}
+{% include codeHeader.html file: "test.css" %}
 ```css
 body {
   writing-mode: vertical-rl;
@@ -444,7 +435,6 @@ So percentage padding isn't always relative to the containing block's width! Thi
 
 > Percentage values for padding and margin are relative to the containing block's dimensions in the **inline direction**. For horizontal layouts, this is the containing block's width. For vertical layouts, this is the containing block's height. (See the reference diagrams above.)
 
-{:.no_toc}
 ## Final Thoughts
 
 Hopefully, you now have a better understanding of how to define responsive aspect ratios in CSS for all kinds of elements, including images, videos, and more. As a bonus, you now know how percentage values work for padding and margins and that they depend on the document's writing mode. You also know how to create aspect ratios in CSS with the more modern approach.
@@ -457,7 +447,7 @@ Hopefully, you now have a better understanding of how to define responsive aspec
 - [How to set the margin or padding as percentage of height of parent container?](https://stackoverflow.com/questions/4982480/how-to-set-the-margin-or-padding-as-percentage-of-height-of-parent-container#:~:text=If%20you%20set%20an%20element's,to%20height%20instead%20of%20width.)
 - [Common CSS Flexbox Layout Patterns with Example Code](https://tobiasahlin.com/blog/common-flexbox-patterns/)
 
-{% include unsplashAttribution.md name="Rumman Amin" username="rumanamin" photo_id="5zoLQUZaWgA" %}
+{% include unsplashAttribution.md name: "Rumman Amin", username: "rumanamin", photo_id: "5zoLQUZaWgA" %}
 
 <style>
   .post-content .tiles {

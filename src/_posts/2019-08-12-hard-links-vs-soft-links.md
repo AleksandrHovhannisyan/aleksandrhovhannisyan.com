@@ -2,8 +2,9 @@
 title: "What's the Difference Between Hard Links and Soft Links?"
 description: One sticks around for good, while the other one rots. Here's a detailed look at the differences between hard links and soft links in Unix.
 keywords: [hard links vs soft links]
-tags: [dev, unix, file-systems]
+categories: [dev, unix, file-systems]
 last_updated: 2020-05-11
+thumbnail: thumbnail.jpg
 ---
 
 You may have heard the terms "hard link" and "soft link" used in the context of Unix and Unix-like operating systems. But do you know what they are and how you create them? In this post, we'll look at the differences between hard links and soft links and understand how to create them.
@@ -39,19 +40,19 @@ Each file is associated with an inode, and inodes are packed full of rich inform
 
 So you can think of a file system roughly as follows:
 
-```
+```text
 Directory --> File (Name) --> Inode --> Raw Data on disk
 ```
 
 Now, in the simplest terms, **linking** is the process of "referencing" or pointing to an inode in memory. Thus, we say that a **link** is a pointer to an inode. When we create a file for the first time, the name that we assign it becomes the first link to its corresponding inode. Diagrammatically speaking, the link is the arrow between a file and its inode:
 
-```
+```text
 File (Name) --> Inode
 ```
 
 Let's create a file with `echo Hello, links > file` and view information about its inode using the `stat` command:
 
-{% include img.html img="file.png" alt="A file created on a Unix operating system" %}
+{% include img.html src: "file.png", alt: "A file created on a Unix operating system" %}
 
 Observe the line that reads `Inode: 4785074605327413`. This is an **inode number**. Each inode has a unique numerical ID associated with it that's generated when the inode is created.
 
@@ -69,11 +70,11 @@ A **symbolic link** (also known as a "soft link" or "symlink") is a file like an
 
 To create a soft link on a Unix system, you use the `ln` (link) command and supply the `-s` flag (for "symbolic"), followed by the original file name and the name of the soft link, in that order:
 
-{% include img.html img="soft-link.png" alt="Creating a soft link for a file." %}
+{% include img.html src: "soft-link.png", alt: "Creating a soft link for a file." %}
 
 Now, let's run the stat command again on both files:
 
-{% include img.html img="stat-soft-link.png" alt="Running the stat command on the original file and the soft link" %}
+{% include img.html src: "stat-soft-link.png", alt: "Running the stat command on the original file and the soft link" %}
 
 Observe the following:
 
@@ -83,7 +84,7 @@ Observe the following:
 
 Let's also look at their contents using the `cat` command:
 
-{% include img.html img="cat-soft-link.png" alt="Running cat on a soft link" %}
+{% include img.html src: "cat-soft-link.png", alt: "Running cat on a soft link" %}
 
 Even though the symbolic link's underlying data is the *path* of the original file, running the cat command effectively *resolves* or *follows* the symbolic link and prints the contents of the original file: `Hello, links` instead of `file`. Naturally, this implies that if the original file's contents change, the result of running `cat softLink` will also change.
 
@@ -95,7 +96,7 @@ Even though the symbolic link's underlying data is the *path* of the original fi
 
 Let's see what happens if you create a soft link to a file that's not in the same directory:
 
-{% include img.html img="soft-link-from-another-dir.png" alt="Creating a soft link from another directory" %}
+{% include img.html src: "soft-link-from-another-dir.png", alt: "Creating a soft link from another directory" %}
 
 This time, the symbolic link's file size is no longer `4` bytes. Rather, it's `10`: the length of the string `links/` (which is `6`) plus the length of the target file name itself (`4`).
 
@@ -108,24 +109,24 @@ Because a symbolic link's data is the *path* to the original file, there are two
 
 Here's an example showing what happens when we move the original file up one directory:
 
-{% include img.html img="moved-file.png" alt="File was moved to a different directory" %}
+{% include img.html src: "moved-file.png", alt: "File was moved to a different directory" %}
 
 Notice these two lines:
 
-```
+```text
 File: softLink -> file
 Size: 4
 ```
 
 The symbolic link is unaware of the change that occurred! So what happens if we `cat` the two files?
 
-{% include img.html img="cat-link-rot.png" alt="Running the cat command after having moved the original file" %}
+{% include img.html src: "cat-link-rot.png", alt: "Running the cat command after having moved the original file" %}
 
 While the original file's contents are printed just fine, the terminal hints that something is wrong. We can see this with the `ls` command—the soft link's name now appears in red to indicate that it's gone "bad." This is known formally as **link rot**.
 
 Before we move on to discussing hard links, note that there's an additional command you can use: `readlink`. According to the [man page for readlink](https://linux.die.net/man/1/readlink), this command prints the value of the symbolic link, which we know to be the path of the target file. Let's run this on our rotten symlink:
 
-{% include img.html img="readlink.png" alt="Running the readlink command" %}
+{% include img.html src: "readlink.png", alt: "Running the readlink command" %}
 
 And there's our problem! The symbolic link is still pointing to the original (now non-existent) file.
 
@@ -135,17 +136,17 @@ On the other hand, a **hard link** acts as an alias for the target file. It has 
 
 To create a hard link in Linux, we use the `ln` command and supply the `-P` flag (for "physical"):
 
-{% include img.html img="hard-link.png" alt="Creating a hard link." %}
+{% include img.html src: "hard-link.png", alt: "Creating a hard link." %}
 
 Notice that both files are `13` bytes in size, have the same inode number, have the same permissions, and have a link count of `2`. There are two links to the original file's inode: the first one we created, and the hard link we just created manually. In fact, notice that the results of `stat`-ing both the original file and the hard link are identical.
 
 Unlike a soft link, a hard link will not rot if we change the original file's name or move it to a different directory because it points to that file's inode, whereas a soft link references the file's path. It also will not rot if we *delete* the original file. Here's an example of moving the file:
 
-{% include img.html img="hard-links-dont-rot.png" alt="Hard links don't rot when the original file is renamed or deleted." %}
+{% include img.html src: "hard-links-dont-rot.png", alt: "Hard links don't rot when the original file is renamed or deleted." %}
 
 Let's delete the target file and `cat` the hard link:
 
-{% include img.html img="deleting-file.png" alt="Deleting the original file" %}
+{% include img.html src: "deleting-file.png", alt: "Deleting the original file" %}
 
 Interesting...
 
@@ -168,11 +169,11 @@ Recall from before that running `cat` on a soft link or hard link would essentia
 
 If you take a look at `/usr/bin/`, you'll find many soft links to executables:
 
-{% include img.html img="executables.png" alt="Soft links to Python executables" %}
+{% include img.html src: "executables.png", alt: "Soft links to Python executables" %}
 
 You can also create a custom link:
 
-{% include img.html img="python-symlink.png" alt="Creating a symlink to Python" %}
+{% include img.html src: "python-symlink.png", alt: "Creating a symlink to Python" %}
 
 As expected, invoking the symlink invokes the underlying executable.
 
@@ -194,3 +195,5 @@ Here are some additional resources on hard links vs. soft links:
 - [What is the difference between a symbolic link and a hard link?](https://stackoverflow.com/questions/185899/what-is-the-difference-between-a-symbolic-link-and-a-hard-link)
 - [Modern Operating Systems by Tanenbaum, Chapter 4.2.4](https://www.amazon.com/Modern-Operating-Systems-Andrew-Tanenbaum/dp/013359162X)
 - [How to take advantage of symbolic links in Windows 10](https://www.techrepublic.com/article/how-to-take-advantage-of-symbolic-links-in-window-10/)
+
+{% include unsplashAttribution.md name: "Sandy Millar", username: "sandym10", photo_id: "OzyY3C8zVU8" %}

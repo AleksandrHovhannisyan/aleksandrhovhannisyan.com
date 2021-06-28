@@ -2,7 +2,7 @@
 title: How to Format Code on Save in VS Code with ESlint
 description: Improve your developer experience by setting up ESLint and configuring VS Code to format code on save for JavaScript, TypeScript, and React projects.
 keywords: [format code on save, auto-format code on save, auto-formatting code, eslint, vs code, prettier]
-tags: [dev, eslint, vscode, tooling]
+categories: [dev, eslint, vscode, tooling]
 comments_id: 80
 ---
 
@@ -31,7 +31,7 @@ Since we want to use ESLint to format JavaScript, we'll need to install the `esl
 Run this command to install ESLint with Prettier:
 
 {% include codeHeader.html %}
-```
+```text
 yarn add -D eslint prettier eslint-plugin-prettier eslint-config-prettier
 ```
 
@@ -43,7 +43,7 @@ If you're linting TypeScript, you'll also want these packages in addition to the
 Install them like so:
 
 {% include codeHeader.html %}
-```
+```text
 yarn add -D @typescript-eslint/eslint-plugin @typescript-eslint/parser
 ```
 
@@ -55,7 +55,7 @@ And if you're linting React, throw these must-haves into the mix:
 You get the idea:
 
 {% include codeHeader.html %}
-```
+```text
 yarn add -D eslint-plugin-react eslint-plugin-react-hooks
 ```
 
@@ -67,7 +67,7 @@ If you already have the ESLint extension installed, VS Code may show a prompt as
 
 If you haven't already done so, you can update your `package.json` scripts to include a script to lint files via the command line. This is useful in case you want to set up lint-staged rules with [husky](https://www.npmjs.com/package/husky) and git hooks:
 
-{% include codeHeader.html file="package.json" %}
+{% include codeHeader.html file: "package.json" %}
 ```json
 {
   "scripts": {
@@ -82,13 +82,13 @@ If you haven't already done so, you can update your `package.json` scripts to in
 Install `husky` and `lint-staged`:
 
 {% include codeHeader.html %}
-```
+```text
 yarn add -D lint-staged husky
 ```
 
 And configure them in your `package.json` to use the `lint:fix` script you defined:
 
-{% include codeHeader.html file="package.json" %}
+{% include codeHeader.html file: "package.json" %}
 ```json
 {
   "husky": {
@@ -143,7 +143,7 @@ Some people use the numerical aliases, but I prefer to use the strings to be exp
 
 Since we're using Prettier to supplement ESLint's formatting rules, we'll need to configure Prettier. You can use this config file for any type of project. Adjust the settings according to your needs:
 
-{% include codeHeader.html file=".prettierrc" %}
+{% include codeHeader.html file: ".prettierrc" %}
 ```json
 {
   "useTabs": false,
@@ -162,7 +162,7 @@ With that out of the way, let's now look at how to configure ESLint for differen
 
 If you're working in a vanilla JavaScript or Node environment, you may need to install `babel-eslint` as your parser (a parser helps ESLint to understand the syntax of your code). If you're using a different parser, change the `parser` value in the config accordingly.
 
-{% include codeHeader.html file=".eslintrc.json" %}
+{% include codeHeader.html file: ".eslintrc.json" %}
 ```json
 {
   "extends": [
@@ -208,7 +208,7 @@ With TypeScript, only a few things need to change from the basic ESLint config a
 See the `@typescript-eslint/eslint-plugin` docs for [the full list of rules](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin) and additional instructions on how you can customize this plugin.
 
 
-{% include codeHeader.html file=".eslintrc.json" %}
+{% include codeHeader.html file: ".eslintrc.json" %}
 ```json
 {
   "extends": [
@@ -259,7 +259,7 @@ Finally, if you're using ESLint to format React code, you can use either one of 
 
 One important change needs to be made to the `parserOptions` object: We'll need to specify an `ecmaFeatures` object with `"jsx": true` so that ESLint recognizes JSX and formats it correctly, rather than flagging it as an unknown syntax.
 
-{% include codeHeader.html file=".eslintrc.json" %}
+{% include codeHeader.html file: ".eslintrc.json" %}
 ```json
 {
   "extends": [
@@ -320,7 +320,7 @@ We're almost done! You've installed ESLint and configured it according to your n
 
 The first step is easy—just head over to the extensions tab in VS Code's sidebar and search for the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) (`dbaeumer.vscode-eslint`):
 
-{% include img.html img="eslint-extension.png" alt="Viewing the ESLint extension in the VS Code extension marketplace." %}
+{% include img.html src: "eslint-extension.png", alt: "Viewing the ESLint extension in the VS Code extension marketplace." %}
 
 You may need to reload VS Code.
 
@@ -334,7 +334,7 @@ One last thing worth mentioning: If you're working with other developers, you ca
 
 To do so, open your command palette and run the command `Configure Recommended Extensions (Workspace Folder)`. This creates an `extensions.json` file in a `.vscode/` folder at the root of your project. Add the string ID for the ESLint extension that you installed:
 
-{% include codeHeader.html file="extensions.json" %}
+{% include codeHeader.html file: "extensions.json" %}
 ```json
 {
   "recommendations": [
@@ -357,13 +357,13 @@ Open up your command palette (`Ctrl+Shift+P` on Windows and `Cmd+Shift+P` on Mac
 - User settings: `Preferences: Open Settings (JSON)`
 - Workspace settings: `Preferences: Open Workspace Settings (JSON)`
 
-{% include img.html img="settings.png" alt="Searching for 'settings' via VS Code's command palette." %}
+{% include img.html src: "settings.png", alt: "Searching for 'settings' via VS Code's command palette." %}
 
 Select either one. I recommend configuring this in both your user and workspace settings; the latter is a good option if other developers on your team use VS Code. That way, they don't have to update their user settings manually—when you push these changes, VS Code will load their workspace settings. User settings are handy if you want to set them once and be done with it.
 
 Either way, you'll want to add these keys to your JSON:
 
-{% include codeHeader.html file=".vscode/settings.json" %}
+{% include codeHeader.html file: ".vscode/settings.json" %}
 ```json
 {
   "eslint.validate": [
@@ -394,7 +394,7 @@ To make sure these settings kick in for your project, you'll want to:
 
 Run the command; you should see a loader pop up on VS Code's status bar saying `Initializing JS/TS language features`. Once it disappears, you should be good to go:
 
-{% include img.html img="initializing-language-features.png" alt="The VS Code status bar displays the text Initializing JS/TS language features next to a loading spinner." %}
+{% include img.html src: "initializing-language-features.png", alt: "The VS Code status bar displays the text Initializing JS/TS language features next to a loading spinner." %}
 
 Now, just open up a file and mess it up on purpose; you should see squiggly red lines if the violation is treated as an error and orange if it's a warning. VS Code will auto-format your code with ESLint when you save the file.
 
@@ -406,12 +406,10 @@ I've gone through this process myself enough times to be reasonably confident th
 
 If ESLint is unable to lint your files for whatever reason, check the bottom-right corner of your VS Code status bar. If ESLint encountered an error, you should see `ESLint` with a warning triangle next to it. Click it to open your `Output` pane; any errors will be listed there.
 
-{:.no_toc}
 ## That's It!
 
 If all went well, you'll no longer have to worry about formatting your files manually or only during the staging process. Whenever you save a file, ESLint will auto-format it according to the configurations you specified, right in front of your eyes. This helps you move quickly without worrying about little syntax issues; if you save frequently as you type (like I do), you'll find this to be a very productive setup.
 
-{:.no_toc}
 ## Attributions
 
 The photo used in this post's social media preview is a modified version of the ESLint logo, which is under [the MIT license](https://github.com/eslint/eslint/blob/master/LICENSE) and the copyright of JS Foundation and its contributors.

@@ -2,7 +2,7 @@
 title: "Binary for Beginners: The ABCs of 0s and 1s"
 description: The binary number system underlies pretty much everything in computation and software. But what's the deal with all those 0s and 1s?
 keywords: [binary number system, binary numbers]
-tags: [computer-science, math, binary]
+categories: [computer-science, math, binary]
 comments_id: 44
 canonical_url: https://www.aleksandrhovhannisyan.com/blog/binary-for-beginners/
 ---
@@ -35,7 +35,7 @@ Here, the number <code>10</code> is what we call the **base** (aka **radix**) of
 
 In the decimal number system, a number is represented by placing digits into "buckets" that represent **increasing powers of ten**, starting with <code>10<sup>0</sup></code> in the rightmost "bucket," followed by <code>10<sup>1</sup></code> to its immediate left, and so on infinitely:
 
-{% include img.html img="buckets.png" alt="Increasing powers of ten" %}
+{% include img.html src: "buckets.png", alt: "Increasing powers of ten from right to left, represented as square slots." %}
 
 Any unused buckets to the far left have an implicit value of <code>0</code> in them. We usually trim leading zeros because there is no use in saying <code>00579</code> when that's mathematically identical to <code>579</code>.
 
@@ -53,11 +53,11 @@ Now, suppose that we have a string of digits <code>d<sub>1</sub> d<sub>2</sub> .
 
 And you can visualize that like this:
 
-{% include img.html img="bases.png" alt="A generic base of b with digits d" %}
+{% include img.html src: "bases.png", alt: "A generic base of b with digits d" %}
 
 Using our same example, <code>d<sub>1</sub>b<sup>n-1</sup> + d<sub>2</sub>b<sup>n-2</sup> + ... + d<sub>n</sub>b<sup>0</sup> = 5(10<sup>2</sup>) + 7(10<sup>1</sup>) + 9(10<sup>0</sup>)</code>
 
-{% include img.html img="579.png" alt="Expanding 579 in terms of powers of 10" %}
+{% include img.html src: "579.png", alt: "Expanding 579 in terms of powers of 10" %}
 
 Again, we have buckets from right to left in increasing powers of our base (<code>10</code>).
 
@@ -114,7 +114,7 @@ By definition, the **binary number system** has a base of <code>2</code>, and th
 
 Each "bucket" in a binary string represents an increasing power of two: <code>2<sup>0</sup></code>, <code>2<sup>1</sup></code>, <code>2<sup>2</sup></code>, and so on.
 
-{% include img.html img="binary.png" alt="The binary number system uses powers of two" %}
+{% include img.html src: "binary.png", alt: "The binary number system uses powers of two" %}
 
 The leftmost bit is called the **most significant bit (MSB)**, while the rightmost bit is called the **least significant bit (LSB)**.
 
@@ -160,7 +160,7 @@ Formally, ASCII is referred to as a **character encoding standard**. Put more si
 
 Here is a typical [ASCII chart](http://www.asciitable.com/) that you may have seen before:
 
-{% include img.html img="ascii.gif" alt="An ASCII table showing characters and their numerical representations" %}
+{% include img.html src: "ascii.gif", alt: "An ASCII table showing characters and their numerical representations" %}
 
 In the ASCII standard, there are a total of 128 characters, each mapped to a unique number in binary (with an equivalent representation in decimal that we humans understand more naturally):
 
@@ -175,7 +175,7 @@ In the decimal number system, we're used to working with digits. In binary, as w
 
 Here are some examples of valid bytes:
 
-```
+```text
 00000000
 10000000
 11101011
@@ -196,7 +196,7 @@ So... That's weird, and seemingly wasteful, right? Why do we use <code>8</code> 
 
 Good question! We use bytes because **it's not possible to evenly divide a group of <code>7</code> bits**, making certain low-level computations difficult if we decide to use <code>7</code> bits to represent a character. In contrast, a byte can be evenly split into powers of two:
 
-```
+```text
 11101011
 [1110][1011]
 [11][10][10][11]
@@ -213,7 +213,7 @@ xxd -b file
 
 The <code>-b</code> flag stands for binary. Here's the output that you'll get:
 
-```
+```text
 00000000: 01001000 01100101 01101100 01101100 01101111 00101100  Hello,
 00000006: 00100000 01000010 01101001 01101110 01100001 01110010   Binar
 0000000c: 01111001 00001010                                      y.
@@ -272,7 +272,7 @@ There's nothing magical about the hexadecimal number system—it works just like
 
 Before we move on, let's revisit the output from earlier when we used <code>xxd</code> on our sample file:
 
-```
+```text
 00000000: 01001000 01100101 01101100 01101100 01101111 00101100  Hello,
 00000006: 00100000 01000010 01101001 01101110 01100001 01110010   Binar
 0000000c: 01111001 00001010                                      y.
@@ -300,7 +300,7 @@ The answer is four because <code>2<sup>4</sup> = 16</code>. With four "buckets,"
 
 This means that when you're given a binary string, all you have to do is **split it into groups of four bits** and evaluate them to convert binary to hexadecimal!
 
-```
+```text
 011011100101
 [0110][1110][0101]
 6 14 5
@@ -338,7 +338,7 @@ Now, we simply interpret the decimal equivalent for each part:
 
 That means <code>#4287f5</code> is really <code>rgb(66, 135, 245)</code>! You can verify this using a [Color Converter](https://www.w3schools.com/colors/colors_converter.asp):
 
-{% include img.html img="color-converter.png" alt="A color converter verifying that #4287f5 is really rgb(66, 135, 245)" %}
+{% include img.html src: "color-converter.png", alt: "A color converter verifying that #4287f5 is really rgb(66, 135, 245)" %}
 
 For practice, let's convert this to binary as well. I'll mark the groups of four bits to make it easier to see how I did this (note: you can also convert from the decimal RGB representation if you want to):
 
@@ -366,7 +366,7 @@ Or, if you're using the decimal RGB format, the math still pans out: <code>256 �
 
 On older systems with limited memory, colors were represented using just eight bits (one byte). These **8-bit colors** had a very limited palette, which meant that most computer graphics didn't have gradual color transitions (so images looked very pixelated/grainy). With only <code>8</code> bits to work with, you are limited to just <code>2<sup>8</sup> = 256</code> colors!
 
-{% include img.html img="8-bit.png" alt="An 8-bit color palette" %}
+{% include img.html src: "8-bit.png", alt: "An 8-bit color palette" %}
 
 Naturally, you may be wondering: How did they split <code>8</code> bits evenly among red, green, and blue? After all, <code>8</code> isn't divisible by three!
 
@@ -423,7 +423,7 @@ To convert a number represented in two's complement binary to its opposite sign,
 
 For example, let's convert <code>43<sub>10</sub></code> to <code>-43<sub>10</sub></code> in binary:
 
-```
+```text
 +43 in binary: 0101011
 Flipped:       1010100
 Add one:       1010101
@@ -441,7 +441,7 @@ We've seen that in a signed binary system, the most significant bit is reserved 
 
 Let's consider <code>32</code>-bit integers to give us a concrete basis for discussion. Whereas before we had <code>32</code> bits to work with for the magnitude of an unsigned number, we now have only <code>31</code> for the magnitude of a signed number:
 
-```
+```text
 Unsigned magnitude bits:  [31 30 29 ... 0]
 Signed magnitude bits:    31 [30 29 ... 0]
 ```
@@ -452,7 +452,7 @@ More generally, if you have an <code>N</code>-bit signed binary string, there ar
 
 Notice that the number zero gets bunched in with the positives and not the negatives:
 
-```
+```text
 Signed zero:  0  0  0  0 ... 0 0 0 0
 Bits:        31 30 29 28 ... 3 2 1 0
 ```
@@ -463,7 +463,7 @@ As we're about to see, this has an interesting consequence.
 
 The largest signed 32-bit integer is positive, meaning its leading bit is a zero. So we just need to maximize the remaining bits to get the largest possible value:
 
-```
+```text
 Num:      0  1  1  1 ... 1
 Bits:    31 30 29 28 ... 0
 ```
@@ -474,7 +474,7 @@ More generally, for an <code>N</code>-bit system, the largest signed integer is 
 
 Why did we subtract a one at the end? Because as I mentioned in the previous section, the number zero gets grouped along with the positives when we split our number range:
 
-```
+```text
 Signed zero:  0  0  0  0 ... 0 0 0 0
 Bits:        31 30 29 28 ... 3 2 1 0
 ```
@@ -485,10 +485,7 @@ So to get our largest signed integer, we need to subtract one—we've effectivel
 
 In video games like RuneScape that use <code>32</code>-bit signed integers to represent in-game currency, the max "cash stack" that you can have caps out at exactly <code>2<sup>31</sup> - 1</code>, which is roughly 2.1 billion.
 
-<figure>
-    {% include img.html img="max-cash-stack.png" alt="The max cash stack you can have in Runescape is 2147m, or 2.1 billion." %}
-    <figcaption>Image source: <a href="https://www.youtube.com/watch?v=c2ZsPPDH08g">YouTube</a></figcaption>
-</figure>
+{% include figure.html src: "max-cash-stack.png", alt: "The max cash stack you can have in Runescape is 2147m, or 2.1 billion.", caption: "Image source: [YouTube](https://www.youtube.com/watch?v=c2ZsPPDH08g)" %}
 
 Now you know why! If you're wondering why they don't just use unsigned ints, it's because RuneScape runs on Java, and [Java doesn't support unsigned ints](https://stackoverflow.com/questions/9854166/declaring-an-unsigned-int-in-java) (except in SE 8+).
 
@@ -496,7 +493,7 @@ Now you know why! If you're wondering why they don't just use unsigned ints, it'
 
 This occurs when we set the leading bit to be a <code>1</code> and set all remaining bits to be a <code>0</code>:
 
-```
+```text
 Num:      1  0  0  0 ... 0
 Bits:    31 30 29 28 ... 0
 ```
@@ -525,7 +522,7 @@ Now you should know what carrying the one really means: When you run out of digi
 
 For example, let's add <code>24</code> and <code>18</code> in decimal:
 
-```
+```text
   24
 + 18
 ————
@@ -534,7 +531,7 @@ For example, let's add <code>24</code> and <code>18</code> in decimal:
 
 We first add the <code>4</code> and <code>8</code> to get <code>12</code>, which is not a digit we support in the decimal number system. So we represent the part that we can (<code>2</code>) and carry the remaining value (ten) over to the next column as a <code>1</code> (<code>1 × 10<sup>1</sup> = 10<sub>10</sub></code>). There, we have <code>1 + 2 + 1 = 4</code>:
 
-```
+```text
       1  <-- carried
       24
     + 18
@@ -544,7 +541,7 @@ We first add the <code>4</code> and <code>8</code> to get <code>12</code>, which
 
 Now, let's add these same two numbers (<code>24<sub>10</sub></code> and <code>18<sub>10</sub></code>) using the binary number system:
 
-```
+```text
   11000
 + 10010
 ———————
@@ -561,7 +558,7 @@ We work from right to left:
 
 That last step deserves some clarification: When we try to add the two ones, we get <code>1<sub>2</sub> + 1<sub>2</sub> = 10<sub>2</sub></code> (two), so we put a <code>0</code> in the current column and carry over the <code>1</code> to the next power of two, where we have a bunch of implicit leading zeros:
 
-```
+```text
                1      <-- carry bits
 0000  ...    00011000
 0000  ...  + 00010010
@@ -577,7 +574,7 @@ If we expand the result, we'll find that it's the same answer we got over in dec
 
 Let's look at one more example to get comfortable with carrying bits in binary addition: <code>22<sub>10</sub> + 14<sub>10</sub></code>, which we know to be <code>36<sub>10</sub></code>:
 
-```
+```text
   10110
 + 01110
 ———————
@@ -588,7 +585,7 @@ Something interesting happens when we look at the twos place (the <code>2<sup>1<
 
 Now we have three ones in the <code>2<sup>2</sup></code> column: <code>1<sub>2</sub>(carried) + 1<sub>2</sub>(operand1) + 1<sub>2</sub>(operand2) = 11<sub>2</sub></code> (three). So we put a one in the <code>2<sup>2</sup></code> column and carry a one yet again. Rinse and repeat!
 
-```
+```text
                1111    <-- carry bits
 0000  ...    00010110
 0000  ...  + 00001110
@@ -614,7 +611,7 @@ We start by first representing <code>26<sub>10</sub></code> in binary:
 
 Now we negate it by flipping the bits and adding one:
 
-```
+```text
 26 in binary: 011010
 Flipped:      100101
 Add one:      100110  = -26
@@ -622,7 +619,7 @@ Add one:      100110  = -26
 
 Stack up your operands and add them like we did before:
 
-```
+```text
      11    <-- carry bits
     001100
   + 100110
@@ -640,7 +637,7 @@ See what I mean? Adding and subtracting numbers in the binary number system is j
 
 Let's remind ourselves how we multiply numbers in decimal:
 
-```
+```text
   21
 x 12
 ————
@@ -648,7 +645,7 @@ x 12
 
 Remember the process? We multiply the <code>2</code> by each digit in the first multiplicand and write out the result under the bar:
 
-```
+```text
   21
 x 12
 ————
@@ -657,7 +654,7 @@ x 12
 
 Then we move on to the <code>1</code> in <code>12</code> and repeat the process, but adding a <code>0</code> in the right column of the result. Add the two intermediate products to get the answer:
 
-```
+```text
    21
 x  12
 —————
@@ -671,7 +668,7 @@ Guess what? The process is exactly the same in the binary number system!
 
 Let's multiply these same two numbers in binary. They are <code>21<sub>10</sub> = 010101</code> and <code>12<sub>10</sub> = 01100</code>:
 
-```
+```text
    010101
 x   01100
 —————————
@@ -679,7 +676,7 @@ x   01100
 
 Obviously, this is going to be more involved in binary since we're working with bits (and thus longer strings), but the logic is still the same. In fact, beyond having to write out so many intermediate results, we actually have it much easier over in binary. Whenever a digit is <code>1</code>, you simply copy down the first multiplicand, padded with zeros. Whenever it's a zero times the first multiplicand, the result is zero!
 
-```
+```text
       010101
 x      01100
 ————————————
@@ -702,7 +699,7 @@ Easy peasy. The same process applies regardless of whether your multiplicands ar
 
 Let's divide <code>126<sub>10</sub></code> by <code>12<sub>10</sub></code> using long division:
 
-```
+```text
     0 1 0 . 5
    _______
 12 |1 2 6
@@ -729,7 +726,7 @@ Now let's repeat the process over in the binary number system. Note that I'm goi
 
 Take things one digit at a time, and [reference this useful YouTube video](https://www.youtube.com/watch?v=VKemv9u40gc) if you get stuck:
 
-```
+```text
          0 0 0 1 0 1 0 . 1
         ______________
 1 1 0 0 |1 1 1 1 1 1 0 . 0
@@ -778,7 +775,7 @@ For example, if <code>N = 32</code>, we're really asking what happens if we try 
 
 Let's give it a shot:
 
-```
+```text
     0111...11111
   + 0000...00001
 ————————————————
@@ -786,7 +783,7 @@ Let's give it a shot:
 
 In the rightmost column, we'll get <code>1<sub>2</sub> + 1<sub>2</sub> = 10<sub>2</sub></code>, so that's a zero carry a one. But as a result, all of the remaining additions will be <code>1<sub>2</sub> + 1<sub>2</sub></code> since we'll always carry a one until we get to the leading bit:
 
-```
+```text
     11111111111  <-- carry bits
     0111...11111     (2^{N-1} - 1)
   + 0000...00001     (1)
@@ -798,7 +795,7 @@ And what number is that in signed binary? Hmm... Looks like it's the smallest re
 
 What if we try to subtract one from the smallest representable <code>N</code>-bit signed integer? First, we'll represent <code>-1<sub>10</sub></code> as a signed integer in binary:
 
-```
+```text
 1 in binary: 0000...00001
 Flipped:     1111...11110
 Add one:     1111...11111  <-- -1
@@ -806,7 +803,7 @@ Add one:     1111...11111  <-- -1
 
 Now let's add this to the smallest representable signed integer:
 
-```
+```text
    1             <-- carry bits
     1000...00000     (-2^{N-1})
   + 1111...11111     (-1)

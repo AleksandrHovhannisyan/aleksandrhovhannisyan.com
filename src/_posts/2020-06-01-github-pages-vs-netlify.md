@@ -2,7 +2,7 @@
 title: Goodbye, GitHub Pages—Hello, Netlify
 description: GitHub Pages is a great option for hosting your site... until it isn't. Here's why I moved to Netlify.
 keywords: [github pages vs netlify]
-tags: [dev, github, netlify, tooling]
+categories: [dev, github, netlify, tooling]
 last_updated: 2021-05-28
 is_popular: true
 ---
@@ -44,7 +44,7 @@ GitHub Pages has none of these things—no customization, and certainly no plugi
 
 With Netlify, you have **greater control over the deployment process**. Your dashboard provides a clear view of your deploy history and even allows you to manually revert your site to a prior state with its **one-click rollback**. You can also stop auto-publishing new versions of your site, in case that's something you're interested in, and even access a live preview of your deployment to make sure nothing broke. You can also share your deployment history (and deploy previews) with other people; this is useful if you're working as part of a team and not just a single dev, or if you want design input from others.
 
-{% include img.html img="dashboard.png" alt="The Netlify dashboard for my personal website, showing a list of recent deployments and their git hash IDs." %}
+{% include img.html src: "dashboard.png", alt: "The Netlify dashboard for my personal website, showing a list of recent deployments and their git hash IDs." %}
 
 On the other hand, with GitHub Pages, [you can only deploy to two branches](https://help.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source), one of which is `master` by default. Want to revert your site? Have fun [resetting to a previous commit with git](/blog/undoing-changes-in-git/#2-resetting-a-branch-to-an-older-commit) on your second branch and fiddling with your repo settings to change the deploy branch. There are also no deploy previews, so whatever you push will go live as soon as it builds.
 
@@ -52,7 +52,7 @@ On the other hand, with GitHub Pages, [you can only deploy to two branches](http
 
 Netlify builds my site in just 1–2 minutes, on average:
 
-{% include img.html img="faster-deploys.png" alt="A list of recent deployments in my Netlify dashboard, along with the time it took each one to deploy from start to finish." %}
+{% include img.html src: "faster-deploys.png", alt: "A list of recent deployments in my Netlify dashboard, along with the time it took each one to deploy from start to finish." %}
 
 Back when I was hosting it on GitHub Pages, things were much slower, and I'd sometimes have to do a hard refresh to see any updates. GitHub's own documentation notes that you may have to [wait up to 20 minutes](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/about-jekyll-build-errors-for-github-pages-sites) to see your changes go live:
 
@@ -66,7 +66,7 @@ Netlify has a much more generous soft cap of **3 builds per minute**. You also g
 
 To clarify: Build minutes are Netlify's currency for a billing cycle. If you're a free user, this means that your builds can't exceed the 300-minute total for one month. Next month, your usage resets to 0. My cycle resets on the 15th of each month, and I don't pay anything as long as my usage doesn't exceed this limit:
 
-{% include img.html img="billing.png" alt="Netlify's dashboard shows billing information for things such as data usage and build minutes used." %}
+{% include img.html src: "billing.png", alt: "Netlify's dashboard shows billing information for things such as data usage and build minutes used." %}
 
 ### Proper 301 Redirects
 
@@ -76,8 +76,8 @@ If one of your URLs changes, Google will need to know that the old and new versi
 
 On the other hand, redirects in Netlify are [super easy to set up](https://docs.netlify.com/routing/redirects/#syntax-for-the-netlify-configuration-file). All you need to do is create a plaintext `_redirects` file that maps old URLs to new ones, separating the two with a tab:
 
-{% include codeHeader.html file="_redirects" %}
-```
+{% include codeHeader.html file: "_redirects" %}
+```text
 /old-url/   /new-url/
 /another-old-url /another-new-url
 ```
@@ -92,7 +92,7 @@ I recommend that you keep your old GitHub Pages repository around temporarily, s
 
 You can also use the [Change of Address Tool](https://support.google.com/webmasters/answer/9370220?hl=en) right there in Google Search Console to migrate your old site's traffic to your new one, once you've set up 301 redirects:
 
-{% include img.html img="migration.png" alt="Migrating my old search engine results to my new domain using Google Search Console's change of address tool." %}
+{% include img.html src: "migration.png", alt: "Migrating my old search engine results to my new domain using Google Search Console's change of address tool." %}
 
 Keep an eye on your Google Search Console over the next few months following your migration. Once things stabilize, you can make your old repo private or delete it altogether, taking it off of GitHub Pages.
 

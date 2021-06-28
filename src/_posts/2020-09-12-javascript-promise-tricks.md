@@ -2,8 +2,9 @@
 title: "JavaScript Promises: Practical Use Cases and Examples"
 description: Promises are a powerful tool for writing asynchronous code in JavaScript. Here are a few interesting use cases.
 keywords: [javascript promises]
-tags: [dev, javascript, promises, async]
+categories: [dev, javascript, promises, async]
 comments_id: 57
+thumbnail: thumbnail.jpg
 ---
 
 As a general programming concept, promises are nothing new—they've been around for quite some time in other languages. C++11, for example, introduced `std::promise` and `std::future` (and, later, `std::async`) for asynchronous logic.
@@ -20,7 +21,7 @@ Sometimes, you'll find yourself working on a front-end feature for which an API 
 
 Now, you *could* just hard-code your data in the UI, like mapping a fixed array of objects to some HTML output (either with vanilla JavaScript or, in this case, React):
 
-{% include codeHeader.html file="App.js" %}
+{% include codeHeader.html file: "App.js" %}
 ```jsx
 import React from 'react';
 
@@ -65,7 +66,7 @@ While it's tempting to take this route, it's not a good idea because it neglects
 
 The solution? Use Promises to create a mock API in your frontend:
 
-{% include codeHeader.html file="utils/getData.js" %}
+{% include codeHeader.html file: "utils/getData.js" %}
 ```javascript
 export const getData = (data, successRate = 0.98, maxLatencyMs = 1000) =>
   new Promise((resolve, reject) => {
@@ -85,7 +86,7 @@ This function accepts one required argument: your fake data. The remaining argum
 
 Now, instead of hardcoding data in our frontend, we can pass along our fake data to the mock API, which will either bounce it back to us after some time or fail:
 
-{% include codeHeader.html file="App.js" %}
+{% include codeHeader.html file: "App.js" %}
 ```jsx
 import React, { useState, useEffect } from "react";
 
@@ -198,7 +199,7 @@ Our `getSetting` function takes two arguments: the key to use for looking up dat
 
 To convert this to a simpler Promise-based syntax, we just create our own wrapper function that returns a Promise and either resolves or rejects, depending on the result of `getSetting`:
 
-{% include codeHeader.html file="getSettingAsync.js" %}
+{% include codeHeader.html file: "getSettingAsync.js" %}
 ```javascript
 function getSettingAsync(key) {
     return new Promise((resolve, reject) => {
@@ -263,7 +264,7 @@ script2.onload = () => {
 
 That works, and we'll get this output:
 
-```
+```text
 index.js:6 two.js loaded
 index.js:12 one.js loaded
 index.js:18 three.js loaded
@@ -273,7 +274,7 @@ But the nesting only gets worse from here, and there's already a lot of hard-cod
 
 Instead, we can use Promises to regulate the order in which our scripts are loaded:
 
-{% include codeHeader.html file="loadScript.js" %}
+{% include codeHeader.html file: "loadScript.js" %}
 ```javascript
 function loadScript(url) {
   const script = document.createElement('script');
@@ -305,7 +306,7 @@ loadScript('two.js')
 
 And we'll get the same order of output:
 
-```
+```text
 index.js:30 two.js loaded
 index.js:30 one.js loaded
 index.js:30 three.js loaded
@@ -332,7 +333,7 @@ That works, but you'll soon grow tired of passing in a callback every single tim
 
 We can easily convert this to a Promise-based syntax. We'll create a utility function named `readSetting` that abstracts away the callback and either resolves with the value of the setting or rejects if the Chrome runtime encounters an error:
 
-{% include codeHeader.html file="readSetting.js" %}
+{% include codeHeader.html file: "readSetting.js" %}
 ```javascript
 export default function readSetting(settingName) {
   return new Promise((resolve, reject) => {
@@ -391,7 +392,7 @@ for (int i = 1; i <= 10; i++) {
 
 Fortunately, we can achieve something similar using a Promise that resolves after `ms` time elapses:
 
-{% include codeHeader.html file="utils/sleep.js" %}
+{% include codeHeader.html file: "utils/sleep.js" %}
 ```javascript
 export default function sleep(ms) {
     return new Promise(resolve => {
@@ -422,4 +423,4 @@ A couple things to note. First, if you want to run some code at even intervals, 
 
 Promises are pretty neat—once you get over the initial fear of using and understanding them, you'll find yourself discovering new patterns and possibilities in JavaScript. I hope you found this tutorial helpful!
 
-{% include unsplashAttribution.md name="Antonio Uquiche" username="antoniouquiche" photo_id="W6s6eJc0CTY" %}
+{% include unsplashAttribution.md name: "Amanda Mocci", username: "amandamocci", photo_id: "Zyp3t67rrP4" %}

@@ -1,10 +1,10 @@
 # aleksandrhovhannisyan.com
 
-My personal website and blog, built with Jekyll.
+My personal website and blog, built with 11ty.
 
 ## Licensing
 
-This repository is **not a template for reuse** and has no open-source license, but I'm hosting it publicly as a learning experience and for recruiters. It also doubles as my comment system. Unless otherwise noted for a particular asset/algorithm/etc., all rights are reserved (copyright Aleksandr Hovhannisyan 2019–Present). I usually document stuff I've reused from StackOverflow or other sources with inline comments.
+This repository is not a template for reuse and has no open-source license, but I'm hosting it publicly as a learning experience and for recruiters. It also doubles as my comment system. Unless otherwise noted for a particular asset/algorithm/etc., all rights are reserved (copyright Aleksandr Hovhannisyan 2019–Present). I usually document stuff I've reused from StackOverflow or other sources with inline comments.
 
 Just to be clear: You are *more* than welcome to fork/clone this repo and explore the code. My site also enables source maps for the code if you want to explore it in your dev tools. However, you may not redistribute any content that I own in this repo (e.g., articles, code, etc.) without my permission, unless I've already attributed it to someone else. When in doubt, please feel free to message me and ask!
 

@@ -2,7 +2,7 @@
 title: Remember to Set a Width and Height on Your Images
 description: Layout shifts can be annoying and may even hurt your page's ranking, but you can minimize them by setting a width and height on images.
 keywords: [setting width and height on images, setting an image's width and height, width and height, layout shifts]
-tags: [dev, webperf, images, html]
+categories: [dev, webperf, images, html]
 comments_id: 78
 ---
 
@@ -26,11 +26,11 @@ If so, great! But while this CSS gives you responsive widths and heights, it doe
 
 If you don't give an image a width and height, it will initially collapse to a height of zero until it has loaded in and the browser is able to calculate the right height for it. If an image is in the viewport when the page loads in, then an initial height of zero means that any content after the image will initially be painted above where it's actually supposed to go, like the second paragraph in this diagram:
 
-{% include img.html img="not-loaded.png" alt="A mock browser window with two paragraphs of text spaced a short distance apart." %}
+{% include img.html src: "not-loaded.png", alt: "A mock browser window with two paragraphs of text spaced a short distance apart." %}
 
 Once the image finishes loading, it will push that content down and take its rightful place:
 
-{% include img.html img="loaded.png" alt="A mock browser window with two paragraphs of text and a large image in between." %}
+{% include img.html src: "loaded.png", alt: "A mock browser window with two paragraphs of text and a large image in between." %}
 
 This is known as a **layout shift**. As its name implies, a layout shift is... well, a *shift in layout*. In other words, a layout shift occurs when elements jump around on a page. Common sources of layout shifts include:
 
@@ -74,10 +74,7 @@ img {
 
 Here's an example from my article that I linked to earlier, where an image is given width and height attributes of `500` and `300`, respectively; Chrome uses these attributes to compute the image's aspect ratio and applies that CSS, which you can inspect in your dev tools:
 
-<figure>
-  {% include img.html img="default-aspect-ratio.png" alt="The default aspect ratio for an image is observed to be 500 / 300 in Chrome dev tools." %}
-  <figcaption>Photo credit: <a href="https://unsplash.com/photos/og0C_9Mz6RA">Bill Stephan, Unsplash</a></figcaption>
-</figure>
+{% include figure.html src: "default-aspect-ratio.png", alt: "The default aspect ratio for an image is observed to be 500 / 300 in Chrome dev tools.", caption: "Photo credit: [Bill Stephan, Unsplash](https://unsplash.com/photos/og0C_9Mz6RA)" %}
 
 Cool! But... How does setting an image's aspect ratio prevent layout shifts? Plus, what if the image won't actually load in at that particular width and height? Won't this cause overflow or image distortion issues? Great questions! I'll answer both of these below.
 
@@ -91,11 +88,11 @@ Aspect ratios solve this problem by reserving the right amount of height ahead o
 
 Using the same diagrams as before, we would have an initial frame with two paragraphs and a collapsed image. The colored rectangle between the paragraphs represents the space that the browser has reserved for the image that has not yet loaded. It knows precisely how much space to reserve thanks to the image's aspect ratio:
 
-{% include img.html img="space-reserved.png" alt="A mock browser window with two paragraphs of text spaced a fixed distance apart. That distance is the height that the image between them will occupy once it has loaded in." %}
+{% include img.html src: "space-reserved.png", alt: "A mock browser window with two paragraphs of text spaced a fixed distance apart. That distance is the height that the image between them will occupy once it has loaded in." %}
 
 Once the image loads in, it simply occupies that placeholder space without shifting any of the surrounding content:
 
-{% include img.html img="loaded.png" alt="A mock browser window with two paragraphs of text and a large image in between. The spacing between the two paragraphs is the same as it was before the image loaded in." %}
+{% include img.html src: "loaded.png", alt: "A mock browser window with two paragraphs of text and a large image in between. The spacing between the two paragraphs is the same as it was before the image loaded in." %}
 
 Lighthouse is happy, and so are your users!
 
@@ -162,11 +159,7 @@ This works because percentage padding is relative to the width of an element's n
 
 Browsers like Firefox, Safari, and any others that don't yet support `aspect-ratio` will fall back to this aspect ratio container. Either way, regardless of which approach you take, the right amount of space will get reserved for your images, ensuring that they don't shift any content as they load in.
 
-You can verify this by rendering one of the examples above locally and deleting the nested `<img>` tag via devtools. You'll notice that the parent aspect ratio container won't collapse its width and height—it will remain sized correctly, just as if you hadn't deleted the image. Here's an example from my site:
-
-{% include img.html img="deleting.gif" alt="A demonstration of deleting an image nested inside a picture tag that serves as an aspect ratio container. When the image is deleted, the picture tag continues to occupy the same amount of space as it did before." %}
-
-In this case, I used an aspect ratio container whose vertical padding is `100%`, meaning it's a square. That's because the width and height of my image are the same. And that's all there is to it!
+You can verify this by rendering one of the examples above locally and deleting the nested `<img>` tag via devtools. You'll notice that the parent aspect ratio container won't collapse its width and height—it will remain sized correctly, just as if you hadn't deleted the image.
 
 ## Summary
 
@@ -182,4 +175,4 @@ While you're at it, I also recommend giving these articles a read:
 - Web.dev: [Optimize Cumulative Layout Shift](https://web.dev/optimize-cls/)
 - Web.dev: [Displays images with incorrect aspect ratio](https://web.dev/image-aspect-ratio/#check-the-image's-width-and-height-attributes-in-the-html)
 
-{% include unsplashAttribution.md name="Rolands Zilvinskis" username="rolzay" photo_id="cPxRBHechRc" %}
+{% include unsplashAttribution.md name: "Rolands Zilvinskis", username: "rolzay", photo_id: "cPxRBHechRc" %}

@@ -1,15 +1,15 @@
 ---
 title: Add Comments to Your Jekyll Blog with the GitHub Issues API
-description: Learn how to add comments to your Jekyll blog. We'll use the GitHub issues API as our comment system and lazy load it for a better user experience.
+description: Add comments to your Jekyll blog with the GitHub issues API and lazily load them for a better user experience.
 keywords: [jekyll comment system]
-tags: [dev, jekyll, github, javascript]
+categories: [dev, jekyll, github, javascript]
 comments_id: 45
 last_updated: 2021-05-24
 ---
 
 A while back, [Ari Stathopoulos wrote a tutorial](https://aristath.github.io/blog/static-site-comments-using-github-issues-api) on how to add comments to a Jekyll blog using the GitHub Issues API. And you know what? It works like a charm! Ever since I added comments to my Jekyll blog, I've seen a noticeable increase in engagement from my readers:
 
-{% include img.html img="comments.png" alt="A list of comments on one of my blog posts" %}
+{% include img.html src: "comments.png", alt: "A list of comments on one of my blog posts" %}
 
 That said, this approach isn't without its drawbacks. For one, the GitHub API has a [rate limit of 60 requests/hour](https://developer.github.com/v3/#rate-limiting). But more importantly, rendering all comments on the initial page load isn't a great user experience.
 
@@ -27,7 +27,7 @@ This section is a bit of a recap on how to use the GitHub Issues API to add comm
 
 First, you'll need a public repo for your comments. Add this variable to your `_config.yml`:
 
-{% include codeHeader.html file="_config.yml" %}
+{% include codeHeader.html file: "_config.yml" %}
 ```yml
 issues_repo: YourUsername/RepoName
 ```
@@ -36,18 +36,18 @@ We'll use this a few times in our code, so it's a good idea to define it in one 
 
 If a particular blog post needs comments, simply open an issue for it in that repo and note its ID:
 
-{% include img.html img="issue-id.png" alt="The ID of an issue on my GitHub repo." %}
+{% include img.html src: "issue-id.png", alt: "The ID of an issue on my GitHub repo." %}
 
 Add the following front matter variable to the blog post and assign it the ID from above:
 
-{% include codeHeader.html file="_posts/2020-07-07-my-post.md" %}
+{% include codeHeader.html file: "_posts/2020-07-07-my-post.md" %}
 ```markdown
 comments_id: 35
 ```
 
 In your `post.html` layout file, we'll check to see if this front matter variable was specified. If it wasn't, then the comment system is turned off for that post. If it was, then we'll want to include a file containing our HTML and JavaScript for the comment system:
 
-{% include codeHeader.html file="_layouts/post.html" %}
+{% include codeHeader.html file: "_layouts/post.html" %}
 {% raw %}
 ```liquid
 {% if page.comments_id %}
@@ -58,7 +58,7 @@ In your `post.html` layout file, we'll check to see if this front matter variabl
 
 And here's the include file itself (or at least part of it—we'll fill in the script shortly):
 
-{% include codeHeader.html file="_includes/comments.html" %}
+{% include codeHeader.html file: "_includes/comments.html" %}
 {% raw %}
 ```html
 {% assign issues_repo = site.issues_repo %}
@@ -97,7 +97,7 @@ Time to start writing some JavaScript. We won't put our code in its own `.js` fi
 
 First, we'll create some variables up at the top to reference a few of the elements on the page:
 
-{% include codeHeader.html file="_includes/comments.html" %}
+{% include codeHeader.html file: "_includes/comments.html" %}
 {% raw %}
 ```html
 <script>
@@ -120,7 +120,7 @@ If you simply load the comment system every time a user opens one of your blog p
 
 To detect when a user has scrolled to the end of our blog post, we'll use the widely supported [IntersectionObserver API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API). Here's all the code that we need to defer loading the comments section:
 
-{% include codeHeader.html file="_includes/comments.html" %}
+{% include codeHeader.html file: "_includes/comments.html" %}
 ```javascript
 const commentsObserver = new IntersectionObserver(function (entries, self) {
   entries.forEach(entry => {
@@ -138,7 +138,7 @@ Basically, the observer checks to see if it's intersecting with the `commentsSec
 
 Here's the `fetchComments` function that fires when an intersection occurs:
 
-{% include codeHeader.html file="_includes/comments.html" %}
+{% include codeHeader.html file: "_includes/comments.html" %}
 {% raw %}
 ```javascript
 function fetchComments() {
@@ -193,7 +193,7 @@ There are two approaches you can take here to defer loading dependencies, depend
 
 To keep this post accessible to most readers, I'll load these scripts using JavaScript by creating `script` elements, setting their `src` attributes, and appending them to the DOM body. However, since scripts are loaded asynchronously, they may get loaded out of order. This means we'll need some way to hold off on rendering the comments until *all* of the dependencies have loaded, in whatever order that may be. To do that, we'll use a simple object like this to keep track of which dependencies have loaded:
 
-{% include codeHeader.html file="_includes/comments.html" %}
+{% include codeHeader.html file: "_includes/comments.html" %}
 ```javascript
 const commentScripts = {
   marked: {
@@ -219,7 +219,7 @@ const commentScripts = {
 
 We'll also define a helper function to go along with it that checks if all scripts have loaded:
 
-{% include codeHeader.html file="_includes/comments.html" %}
+{% include codeHeader.html file: "_includes/comments.html" %}
 {% raw %}
 ```javascript
 /**
@@ -235,7 +235,7 @@ function allCommentScriptsLoaded() {
 
 Here's the `initRenderComments` function that gets called by `fetchComments` once it finishes:
 
-{% include codeHeader.html file="_includes/comments.html" %}
+{% include codeHeader.html file: "_includes/comments.html" %}
 ```javascript
 /**
 * Called after the GitHub API request finishes.
@@ -256,7 +256,7 @@ function initRenderComments(comments) {
 
 And here's the `loadCommentScript` helper:
 
-{% include codeHeader.html file="_includes/comments.html" %}
+{% include codeHeader.html file: "_includes/comments.html" %}
 ```javascript
 /**
 * @param {Object} script - the script to load async
@@ -290,7 +290,7 @@ Before we move on, I want to reiterate: If all of this seems weird and hacky, th
 
 Okay, we've loaded our dependencies dynamically—either using Promises like I showed above or with dynamic imports and a module bundler that can load the chunks at runtime. Either way, our dependencies are now ready to be used, and the only task that remains is actually rendering the comments:
 
-{% include codeHeader.html file="_includes/comments.html" %}
+{% include codeHeader.html file: "_includes/comments.html" %}
 {% raw %}
 ```javascript
 /**

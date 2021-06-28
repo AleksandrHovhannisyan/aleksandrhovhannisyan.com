@@ -1,0 +1,131 @@
+@import '../fonts';
+@import '../mixins';
+
+::selection {
+  background-color: var(--selection-bg-color);
+  color: var(--selection-text-color);
+  text-shadow: none;
+}
+
+html {
+  font-size: 1rem / map-get($type-scale, 'font-size-base') * 100%;
+
+  @include mobile-lg {
+    font-size: 62.5%;
+  }
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--main-bg-color);
+  color: var(--text-color-normal);
+  @include font-family('sans');
+  @include font-weight('regular');
+  @include font-size(0);
+}
+
+#page-content {
+  grid-area: content;
+  padding-top: var(--navbar-height);
+  padding-bottom: var(--navbar-height);
+}
+
+.logo {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+}
+
+strong {
+  color: var(--text-color-emphasis);
+  @include font-weight('bold');
+}
+
+@include headings {
+  @include font-weight('bold');
+
+  // TODO: figure out an alternative since the library makes the links focusable (bad a11y)
+  // This is fine for now, but it makes them invisible to everyone.
+  .heading-anchor {
+    display: none;
+  }
+  // .heading-anchor {
+  //   font-size: 0.75em;
+  //   vertical-align: middle;
+  //   opacity: 0;
+
+  //   &:focus {
+  //     opacity: 1;
+  //   }
+  // }
+
+  // &:hover {
+  //   .heading-anchor {
+  //     opacity: 1;
+  //   }
+  // }
+
+  &, code {
+    color: var(--text-color-emphasis);
+  }
+}
+
+h1 {
+  @include font-size(5);
+}
+
+h2 {
+  @include font-size(4);
+}
+
+h3 {
+  @include font-size(3);
+}
+
+h4 {
+  @include font-size(2);
+}
+
+h5 {
+  @include font-size(1);
+}
+
+h6 {
+  @include font-size(0);
+}
+
+p {
+  color: var(--text-color-normal);
+}
+
+a {
+  font-weight: inherit;
+  text-decoration: none;
+  @include focus-outline($color: currentColor, $style: solid, $thickness: 0.2rem);
+
+  &, code {
+    color: var(--link-color);
+  }
+}
+
+code {
+  font-size: 0.925em;
+  @include font-family('mono');
+}
+
+// Inline code
+code:not([class^=language-]) {
+  background-color: var(--inline-code-bg-color);
+  color: var(--inline-code-text-color);
+  border-radius: 0.4rem;
+  padding: 0.4rem 0.8rem;
+}
+
+.section:not(:last-of-type) {
+  margin-bottom: 12.8rem;
+}
+
+// https://piccalil.li/quick-tip/add-scroll-margin-to-all-elements-which-can-be-targeted/
+[id] {
+  scroll-margin-top: var(--scroll-margin-top);
+}

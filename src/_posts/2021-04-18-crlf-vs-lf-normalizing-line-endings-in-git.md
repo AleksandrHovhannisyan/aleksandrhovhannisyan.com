@@ -2,8 +2,9 @@
 title: "CRLF vs. LF: Normalizing Line Endings in Git"
 description: Line endings can differ from one OS to another. Learn the history behind CRLF and LF line endings and how to enforce line endings in git.
 keywords: [line endings, git, gitattributes, carriage return, line feed, crlf vs lf]
-tags: [dev, git, os, tooling]
+categories: [dev, git, os, tooling]
 comments_id: 79
+thumbnail: thumbnail.jpg
 ---
 
 If you've ever worked on a project where developers use different operating systems, you know that line endings can be a peculiar source of frustration. This issue of CRLF vs. LF line endings is actually fairly popular—you'll find tons of questions on StackOverflow about how to configure software like git to play nicely with different operating systems.
@@ -40,10 +41,7 @@ That's cool, but you may be wondering where the need for such a character origin
 
 Back when dinosaurs roamed the earth, people used to lug around these chunky devices called *typewriters*.
 
-<figure>
-  {% include img.html img="typewriter.png" alt="Top-down view of a typewriter, with paper fed into the carriage." %}
-  <figcaption>Photo credit: <a href="https://unsplash.com/photos/59lC6TgZAbQ">Patrick Fore, Unsplash</a></figcaption>
-</figure>
+{% include figure.html src: "typewriter.png", alt: "Top-down view of a typewriter, with paper fed into the carriage.", caption: "Photo credit: [Patrick Fore, Unsplash](https://unsplash.com/photos/59lC6TgZAbQ)" %}
 
 You feed the device a sheet of paper fastened to a mechanical roll known as the **carriage**. With each keystroke, the typewriter prints letters using ink on your sheet of paper, shifting the carriage to the left to ensure that the next letter you type will appear to the right of the previous one. You can [watch a typewriter being used in action](https://www.youtube.com/watch?v=5sTHMXqD9kg) to get a better sense for how this works.
 
@@ -82,13 +80,13 @@ Cool! Now that we know how line endings originated, it's worth learning somethin
 In bash (or, equivalently, WSL if you're using Windows), you can view line endings for a specific file using `cat` with the `A` flag:
 
 {% include codeHeader.html %}
-```
+```text
 cat -A myFile
 ```
 
 If a file is using `CRLF`, you'll see the string `^M$` at the end of each line, where `^M` denotes a carriage return and `$` a line feed. Here's an example of what that might look like:
 
-```
+```text
 line one^M$
 line two^M$
 line three^M$
@@ -96,7 +94,7 @@ line three^M$
 
 If a file is using `LF`, then you'll only see dollar signs:
 
-```
+```text
 line one$
 line two$
 line three$
@@ -114,7 +112,7 @@ As you can probably guess, the lack of a universal line ending presents a dilemm
 
 You can tell git how you'd like it to handle line endings on your system with the `core.autocrlf` configuration. This is done with the following command:
 
-```
+```text
 git config --global core.autocrlf [true|false|input]
 ```
 
@@ -128,7 +126,7 @@ With `autocrlf true`, files will be checked out as `CRLF` locally with git, but 
 
 If you use this option, you may see this warning when staging files for a commit on Windows:
 
-```
+```text
 warning: CRLF will be replaced by LF in <file-name>.
 The file will have its original line endings in your working directory.
 ```
@@ -151,7 +149,7 @@ Fortunately, there's a better solution: creating a `.gitattributes` file at the 
 
 Here's a `.gitattributes` file that should cover most use cases:
 
-{% include codeHeader.html file=".gitattributes" %}
+{% include codeHeader.html file: ".gitattributes" %}
 ```bash
 # We'll let Git's auto-detection algorithm infer if a file is text. If it is,
 # enforce LF line endings regardless of OS or git configurations.
@@ -172,14 +170,14 @@ That's what `text=auto` does in the config above—it tells git to apply its aut
 
 Git's auto-detection algorithm is fairly accurate, but in case it fails to correctly distinguish between a text file and a binary file (like an image or font file), we can also explicitly mark a subset of our files as binary files to avoid bricking them. That's what we're doing here:
 
-```
+```text
 *.{png,jpg,jpeg,gif,webp,woff,woff2} binary
 ```
 
 Now, after committing this file, the final step is to renormalize all your line endings for any files that were checked into git **prior** to the addition of `.gitattributes`. You can do that with the following command [since git 2.16](https://stackoverflow.com/a/50645024/5323344):
 
 {% include codeHeader.html %}
-```
+```text
 git add --renormalize .
 ```
 
@@ -189,7 +187,7 @@ This reformats all your files according to the rules defined in your `.gitattrib
 
 You may see the following message when you commit these renormalized files:
 
-```
+```text
 warning: CRLF will be replaced by LF in <file-name>.
 The file will have its original line endings in your working directory.
 ```
@@ -205,13 +203,13 @@ Rest assured that these files will never use `CRLF` in the *remote* copy of your
 If you want to double-check that the files in Git's index are using the correct line endings after all of these steps, you can run the following command:
 
 {% include codeHeader.html %}
-```
+```text
 git ls-files --eol
 ```
 
 This will show you line ending information for all files that git is tracking, in a format like this:
 
-```
+```text
 i/lf    w/crlf  attr/text=auto eol=lf   file.txt
 ```
 
@@ -230,12 +228,12 @@ A `.gitattributes` file is technically all that you need in order to enforce the
 
 Again, this doesn't mean that git's normalization process isn't working; it's just the expected behavior. However, this can get annoying if you're also linting your code with ESLint and Prettier, in which case they'll constantly throw errors and tell you to delete those extra `CR`s:
 
-{% include img.html img="prettier.png" alt="A user's mouse hovers over red squiggly lines in a file that's using CRLF line endings. A prettier warning tells the user to remove the carriage return character." %}
+{% include img.html src: "prettier.png", alt: "A user's mouse hovers over red squiggly lines in a file that's using CRLF line endings. A prettier warning tells the user to remove the carriage return character." %}
 
 Fortunately, you can take things a step further with an `.editorconfig` file; this is an [editor-agnostic project](https://editorconfig.org/) that aims to create a standardized format for customizing the behavior of any given text editor. Lots of text editors (including VS Code) support and automatically read this file if it's present. You can put something like this in the root of your workspace:
 
-{% include codeHeader.html file=".editorconfig" %}
-```
+{% include codeHeader.html file: ".editorconfig" %}
+```text
 root = true
 
 [*]
@@ -248,4 +246,4 @@ In addition to a bunch of other settings, you can specify the line ending that s
 
 That was a lot to take in, but hopefully you now have a better understanding of the whole CRLF vs. LF debate and why this causes so many problems for teams that use a mixture of Windows and other operating systems. Whereas Windows follows the original convention of a carriage return plus a line feed (`CRLF`) for line endings, operating systems like Linux and Mac use only the line feed (`LF`) character. The history of these two control characters dates back to the era of the typewriter. While this tends to cause problems with software like git, you can specify settings at the repo level with a `.gitattributes` file to normalize your line endings regardless of what operating systems your developers are using. You can also optionally specify an `.editorconfig` file to ensure that new files are always created with `LF` line endings, even on Windows.
 
-{% include unsplashAttribution.md name="Katrin Hauf" username="trine" photo_id="jpkvklXwt98" %}
+{% include unsplashAttribution.md name: "Katrin Hauf", username: "trine", photo_id: "jpkvklXwt98" %}
