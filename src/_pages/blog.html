@@ -13,19 +13,19 @@ renderData:
 
 <ol class="post-preview-grid">
   {% for post in posts %}
-    {% include postPreview.html post: post, title_level: 2 %}
+    {% include postPreview.html post: post, titleLevel: 2 %}
   {% endfor %}
 </ol>
-{%- assign num_pages = pagination.hrefs | size -%}
-{%- if num_pages > 1 -%}
+{%- assign numPages = pagination.hrefs | size -%}
+{%- if numPages > 1 -%}
 <ol class="pagination-trail" aria-label="Page navigation">
-  {%- for page_url in pagination.hrefs %}
+  {%- for pageUrl in pagination.hrefs %}
     <li>
       <a
-        href="{{ page_url }}"
-        class="tag pagination-page{% if page_url == page.url %} active{% endif %}"
+        href="{{ pageUrl }}"
+        class="tag pagination-page{% if pageUrl == page.url %} active{% endif %}"
         aria-label="Page {{ forloop.index }}"
-        {%- if page_url == page.url -%}aria-current="page"{%- endif -%}
+        {%- if pageUrl == page.url -%}aria-current="page"{%- endif -%}
       >
         {{- forloop.index -}}
       </a>

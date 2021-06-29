@@ -3,8 +3,8 @@ title: "Finite State Machine (FSM) Tutorial: Implementing an FSM in C++"
 description: "Finite state machines (FSMs) are used in lots of different situations to model complex entity state. In this finite state machine tutorial, I'll help you understand the FSM design pattern by building one from the ground up for a simple use case."
 keywords: ["finite state machine tutorial", "implement a finite state machine"]
 categories: [dev, design-patterns, cpp]
-comments_id: 33
-is_popular: true
+commentsId: 33
+isPopular: true
 ---
 
 Finite state machines (FSMs) are used in lots of different situations to model complex entity state. They're especially relevant in game dev for modeling dynamic AI behavior and decision-making. Here's a very rough sketch of what a finite state machine might look like:

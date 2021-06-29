@@ -3,7 +3,7 @@ title: "Stuck in Tutorial Purgatory?"
 description: Tutorials can help you grow as a developer. But they can also hold you back. Stuck in tutorial purgatory? Here's how to get out.
 keywords: [tutorial purgatory]
 categories: [dev, beginners]
-comments_id: 37
+commentsId: 37
 thumbnail: thumbnail.jpg
 ---
 
@@ -80,4 +80,4 @@ Tutorial purgatory is a phase—you'll eventually find your calling, work on mea
 
 In the meantime, it certainly doesn't hurt to follow a tutorial now and then to sharpen your skills or learn new things. But don't allow tutorials to become a crutch.
 
-{% include unsplashAttribution.md name: "J Yamuta", username: "yj_visuals", photo_id: "9xhodmUG7E0" %}
+{% include unsplashAttribution.md name: "J Yamuta", username: "yj_visuals", photoId: "9xhodmUG7E0" %}

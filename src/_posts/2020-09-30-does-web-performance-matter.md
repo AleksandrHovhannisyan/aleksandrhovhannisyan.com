@@ -113,4 +113,4 @@ As a long-term strategy, you should also focus on **publishing high-quality cont
 
 A faster website won't automatically rank high on Google by virtue of its performance alone. Still, page load speed *is* something that you should consider if you care about your user experience. Be sure to balance your efforts—you shouldn't optimize your page load speed at the *expense* of your content quality or branding. But you also shouldn't neglect it entirely, to the point that users ditch your site in favor of a competitor's.
 
-{% include unsplashAttribution.md name: "Anastase Maragos", username: "visualsbyroyalz", photo_id: "X4zx5Vc_LZU" %}
+{% include unsplashAttribution.md name: "Anastase Maragos", username: "visualsbyroyalz", photoId: "X4zx5Vc_LZU" %}

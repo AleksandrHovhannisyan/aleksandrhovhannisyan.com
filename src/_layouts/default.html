@@ -8,12 +8,12 @@
 {%- endif -%}
 {%- assign description = description | default: site.description -%}
 {%- assign keywords = keywords | default: site.keywords -%}
-{%- if is_post -%}
-  {%- assign og_image = "/assets/images/posts/" | append: page.fileSlug | append: "/" | append: "thumbnail-1280.webp" -%}
+{%- if isPost -%}
+  {%- assign ogImage = "/assets/images/posts/" | append: page.fileSlug | append: "/" | append: "thumbnail-1280.webp" -%}
 {%- endif -%}
-{%- comment -%}Sometimes, og_image is specified in front matter, hence why I don't just do this in the if statement above.{%- endcomment -%}
-{%- if og_image -%}
-  {%- assign og_image = site.url | append: og_image -%}
+{%- comment -%}Sometimes, ogImage is specified in front matter, hence why I don't just do this in the if statement above.{%- endcomment -%}
+{%- if ogImage -%}
+  {%- assign ogImage = ogImage | toAbsoluteUrl -%}
 {%- endif -%}
 <!DOCTYPE html>
 <html lang="en-US">
@@ -55,8 +55,8 @@
     <link rel="icon" href="/assets/images/favicons/favicon-128.png" sizes="128x128">
     <link rel="icon" href="/assets/images/favicons/favicon-192.png" sizes="192x192">
     <link rel="icon" href="/assets/images/favicons/favicon-228.png" sizes="228x228">
-    {%- if canonical_url -%}
-      <link rel="canonical" href="{{ canonical_url }}">
+    {%- if canonicalUrl -%}
+      <link rel="canonical" href="{{ canonicalUrl }}">
     {%- endif -%}
     {%- comment -%}Load the user's last selected theme{%- endcomment -%}
     <script>
@@ -76,13 +76,13 @@
     <script type="module" src="/assets/scripts/main.bundle.mjs" defer></script>
     <script type="module" src="/assets/scripts/runtime.bundle.mjs" defer></script>
     {%- comment -%}Posts with comments.{%- endcomment -%}
-    {%- if comments_id -%}
+    {%- if commentsId -%}
       <script type="module" src="/assets/scripts/comments.bundle.mjs" defer></script>
     {%- endif -%}
     {%- comment -%}Open Graph social media previews{%- endcomment -%}
     <meta property="og:title" content="{{ title }}">
-    {%- if og_image -%}
-      <meta property="og:image" content="{{ og_image }}">
+    {%- if ogImage -%}
+      <meta property="og:image" content="{{ ogImage }}">
     {%- endif -%}
     <meta property="og:description" content="{{ description }}">
     <meta property="og:url" content="{{ site.url }}{{ page.url }}">
@@ -91,8 +91,8 @@
     <meta name="twitter:creator" content="@hovhaDovah">
     <meta name="twitter:title" content="{{ title }}">
     <meta name="twitter:description" content="{{ description }}">
-    {%- if og_image -%}
-      <meta name="twitter:image" content="{{ og_image }}">
+    {%- if ogImage -%}
+      <meta name="twitter:image" content="{{ ogImage }}">
     {%- endif -%}
 </head>
 <body>

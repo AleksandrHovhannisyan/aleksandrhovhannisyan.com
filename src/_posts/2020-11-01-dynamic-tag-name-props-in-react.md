@@ -3,7 +3,7 @@ title: Dynamic Tag Name Props in React (with TypeScript)
 description: Sometimes, a React component needs to allow users to render a custom tag. Here's how you can pass dynamic tag names as props.
 keywords: [dynamic tag name props]
 categories: [dev, react, typescript]
-comments_id: 62
+commentsId: 62
 ---
 
 In React, you'll sometimes want to allow users to pass in a dynamic tag name as a prop to a component. While this is a somewhat rare pattern, you may still come across it in the wild. For example, you may have seen it if you've ever worked with the [`react-intl` library for internationalized strings](https://formatjs.io/docs/react-intl/components/#formattedmessage), where the `<FormattedMessage>` component accepts an optional `tagName` prop:

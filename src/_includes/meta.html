@@ -1,19 +1,19 @@
-{%- assign num_words = content | strip_html | word_count -%}
-{%- assign words_per_minute = 250.0 -%}
-{%- assign reading_length_minutes = num_words | divided_by: words_per_minute | ceil -%}
+{%- assign numWords = content | stripHtml | wordCount -%}
+{%- assign wordsPerMinute = 250.0 -%}
+{%- assign readingLengthMinutes = numWords | dividedBy: wordsPerMinute | ceil -%}
 <ul class="post-meta">
-  {% if show_profile_photo %}
+  {% if showProfilePhoto %}
     <li class="post-meta-item">
       {%- include picture.html src: "/profile-photo.jpg", alt: "", className: "author-photo", clickable: false -%}
     </li>
   {%- endif -%}
   <li class="post-meta-item post-date-published">
     {%- include icon.html icon: "calendar", class: "post-meta-icon" -%}
-    {%- include date.html date: post.date, date_format: "%b %d, %Y" -%}
+    {%- include date.html date: post.date, dateFormat: "%b %d, %Y" -%}
   </li>
   <li class="post-meta-item post-reading-length">
     {%- include icon.html icon: "clock" class: "post-meta-icon" -%}
-    <span>{{ reading_length_minutes }} min read</span>
+    <span>{{ readingLengthMinutes }} min read</span>
   </li>
   {%- if categories -%}
     <li>

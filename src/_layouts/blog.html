@@ -1,19 +1,19 @@
 ---
 layout: default
-is_blog_page: true
+isBlogPage: true
 ---
 
 <section class="section blog-post-previews">
-  {%- assign page_category = category.title | default: 'all' -%}
-  {%- assign page_category_words = page_category | split: '-' -%}
-  {%- assign page_category_readable = '' -%}
-  {%- for word in page_category_words -%}
-    {%- assign capitalized_word = word | capitalize -%}
-    {%- assign page_category_readable = page_category_readable | append: capitalized_word | append: ' ' -%}
+  {%- assign pageCategory = category.title | default: 'all' -%}
+  {%- assign pageCategoryWords = pageCategory | split: '-' -%}
+  {%- assign pageCategoryReadable = '' -%}
+  {%- for word in pageCategoryWords -%}
+    {%- assign capitalizedWord = word | capitalize -%}
+    {%- assign pageCategoryReadable = pageCategoryReadable | append: capitalizedWord | append: ' ' -%}
   {%- endfor -%}
-  {%- assign page_category_description = categoryDescriptions[page_category] | default: categoryDescriptions['all'] -%}
-  <h1 class="blog-page-title">{{ page_category_readable }} Blog Posts</h1>
-  <p class="blog-page-description">{{- page_category_description -}}</p>
+  {%- assign pageCategoryDescription = categoryDescriptions[pageCategory] | default: categoryDescriptions['all'] -%}
+  <h1 class="blog-page-title">{{ pageCategoryReadable }} Blog Posts</h1>
+  <p class="blog-page-description">{{- pageCategoryDescription -}}</p>
   <nav aria-label="Popular categories">
     <ul class="navigation-tags">
       {%- comment -%}TODO: automate/define elsewhere{%- endcomment -%}
@@ -22,9 +22,9 @@ is_blog_page: true
         <li>
           <a
             href="{% if category == "all" %}/blog/{% else %}/categories/{{ category }}/{% endif %}"
-            class="tag post-tag navigation-tag{% if page_category == category %} active{% endif %}"
-            title="{% if page_category != category %}View{% endif %} {% if category == "all" %}all posts{% else %}posts tagged as {{ category }}{% endif %}"
-            {%- if page_category == category -%}aria-current="page"{%- endif -%}
+            class="tag post-tag navigation-tag{% if pageCategory == category %} active{% endif %}"
+            title="{% if pageCategory != category %}View{% endif %} {% if category == "all" %}all posts{% else %}posts tagged as {{ category }}{% endif %}"
+            {%- if pageCategory == category -%}aria-current="page"{%- endif -%}
           >
             {{- category -}}
           </a>

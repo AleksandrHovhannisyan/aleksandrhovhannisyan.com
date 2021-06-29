@@ -3,8 +3,8 @@ title: What Are Higher-Order Components in React?
 description: Higher-order components are one of React's most popular design patterns, allowing you to define reusable stateful logic and create powerful, flexible components.
 keywords: [higher-order components]
 categories: [dev, react, design-patterns]
-last_updated: 2020-11-10
-comments_id: 61
+lastUpdated: 2020-11-10
+commentsId: 61
 ---
 
 If you're new to React, or even if you've been using it for a while, you may have heard about these things called **higher-order components (HOCs)**, and shuddered at the apparent complexity of the term. It certainly *sounds* like something fancy that's beyond a beginner's comprehension. But that's not the case at all—the truth is that higher-order components in React are a very intuitive (and powerful!) design pattern.

@@ -3,7 +3,7 @@ title: "CRLF vs. LF: Normalizing Line Endings in Git"
 description: Line endings can differ from one OS to another. Learn the history behind CRLF and LF line endings and how to enforce line endings in git.
 keywords: [line endings, git, gitattributes, carriage return, line feed, crlf vs lf]
 categories: [dev, git, os, tooling]
-comments_id: 79
+commentsId: 79
 thumbnail: thumbnail.jpg
 ---
 
@@ -246,4 +246,4 @@ In addition to a bunch of other settings, you can specify the line ending that s
 
 That was a lot to take in, but hopefully you now have a better understanding of the whole CRLF vs. LF debate and why this causes so many problems for teams that use a mixture of Windows and other operating systems. Whereas Windows follows the original convention of a carriage return plus a line feed (`CRLF`) for line endings, operating systems like Linux and Mac use only the line feed (`LF`) character. The history of these two control characters dates back to the era of the typewriter. While this tends to cause problems with software like git, you can specify settings at the repo level with a `.gitattributes` file to normalize your line endings regardless of what operating systems your developers are using. You can also optionally specify an `.editorconfig` file to ensure that new files are always created with `LF` line endings, even on Windows.
 
-{% include unsplashAttribution.md name: "Katrin Hauf", username: "trine", photo_id: "jpkvklXwt98" %}
+{% include unsplashAttribution.md name: "Katrin Hauf", username: "trine", photoId: "jpkvklXwt98" %}

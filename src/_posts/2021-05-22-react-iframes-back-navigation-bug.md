@@ -3,7 +3,7 @@ title: React, Iframes, and a Back-Navigation Bug
 description: If an iframe re-renders in React, it can interfere with back navigation in your browser. You can fix this by unmounting the iframe.
 keywords: [iframes, react, back navigation, browser history]
 categories: [dev, browsers, react, javascript]
-comments_id: 84
+commentsId: 84
 ---
 
 You're using iframes to embed content on a page in React.
@@ -101,4 +101,4 @@ And voila—the page navigation should now be in sync with the iframe.
 
 I hope you learned something new—I sure did when I first encountered this bug! It's a good reminder that the `key` prop isn't just useful inside loops, like when you're mapping an array to elements. Sometimes, you also need to give an element a key to forcibly remount it.
 
-{% include unsplashAttribution.md name: "Jan Huber", username: "jan_huber", photo_id: "4MDXq_aqHY4" %}
+{% include unsplashAttribution.md name: "Jan Huber", username: "jan_huber", photoId: "4MDXq_aqHY4" %}

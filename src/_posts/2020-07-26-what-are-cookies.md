@@ -3,7 +3,7 @@ title: What Are Cookies?
 description: You've heard the term before, but maybe you're still lost. What are cookies? How are they used? And how do they affect online privacy?
 keywords: [cookies in browsers, cookies, browser cookies]
 categories: [dev, http, cookies]
-comments_id: 49
+commentsId: 49
 thumbnail: thumbnail.jpg
 ---
 
@@ -341,4 +341,4 @@ In any case, cookies exist, and probably will for quite some time. I hope you no
 
 ## Attributions
 
-{% include unsplashAttribution.md name: "Joyful", username: "joyfulcaptures", photo_id: "G4zLsxLIpAA" %}
+{% include unsplashAttribution.md name: "Joyful", username: "joyfulcaptures", photoId: "G4zLsxLIpAA" %}

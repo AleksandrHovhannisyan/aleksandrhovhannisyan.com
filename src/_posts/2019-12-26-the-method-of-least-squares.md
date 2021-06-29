@@ -4,9 +4,9 @@ description: Learn how the method of least squares works under the hood. Applica
 keywords: [method of least squares]
 layout: mathPost
 categories: [computer-science, math]
-comments_id: 38
+commentsId: 38
 thumbnail: thumbnail.jpg
-last_updated: 2021-06-28
+lastUpdated: 2021-06-28
 ---
 
 The method of least squares is a technique for solving systems of equations, but it can be difficult for beginners to grasp if not explained well. It's something that you'll remember by heart once you understand the intuition behind how it's derived. In this post, we'll look at the problem that motivates the least squares method and gain an intuitive understanding for how it works under the hood.
@@ -431,4 +431,4 @@ And that's it! Hopefully things are starting to make a little more sense now.
 
 [In another post](/blog/least-squares-fitting), we'll look at practical least squares applications and solve least squares data fitting problems by hand (and with Python!).
 
-{% include unsplashAttribution.md name: "Kelly Sikkema", username: "kellysikkema", photo_id: "Rl_ceSSjnuQ" %}
+{% include unsplashAttribution.md name: "Kelly Sikkema", username: "kellysikkema", photoId: "Rl_ceSSjnuQ" %}

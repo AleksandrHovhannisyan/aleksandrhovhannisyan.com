@@ -3,7 +3,7 @@ title: SEO Tips for Getting More Traffic
 description: Use tried-and-true SEO strategies to get more traffic on your website and rank higher in search engine results.
 keywords: [SEO blogging best practices]
 categories: [off-topic, blogging, seo]
-comments_id: 41
+commentsId: 41
 thumbnail: thumbnail.jpg
 ---
 
@@ -311,4 +311,4 @@ So clearly, there's quite a bit involved in creating an SEO-friendly blog, and i
 
 I hope these tips help you get more traffic on your website. Good luck!
 
-{% include unsplashAttribution.md name: "Stephen Dawson", username: "srd844", photo_id: "qwtCeJ5cLYs" %}
+{% include unsplashAttribution.md name: "Stephen Dawson", username: "srd844", photoId: "qwtCeJ5cLYs" %}

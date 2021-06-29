@@ -3,9 +3,9 @@ title: "Getting Started with Jekyll and GitHub Pages: Your First Website"
 description: Jekyll is a static site generator that makes it easy for you to create a website. Learn how to get started with Jekyll and GitHub Pages.
 keywords: [getting started with jekyll, jekyll and github pages]
 categories: [dev, jekyll, github]
-comments_id: 34
-is_popular: true
-last_updated: 2020-10-02
+commentsId: 34
+isPopular: true
+lastUpdated: 2020-10-02
 ---
 
 Want to make a personal website or blog and share it with the world? Then you've come to the right place! This is the only guide you'll need on getting started with Jekyll. I'll take you from zero to hero with Jekyll and help you understand all the fundamentals.

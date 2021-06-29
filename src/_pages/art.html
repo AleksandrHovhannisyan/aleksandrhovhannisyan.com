@@ -4,7 +4,7 @@ description: CSS art and other fun stuff.
 keywords:
   - css art
 permalink: /art/
-og_image: /assets/images/art/thumbnail.png
+ogImage: /assets/images/art/thumbnail.png
 stylesheets:
   - href: /assets/styles/art.css
 preloads:
@@ -27,8 +27,8 @@ preloads:
   </header>
   <section class="section">
     <ol id="artwork-list">
-      {%- assign art_collection = collections.art | sort_by_key: 'data.order' -%}
-      {%- for artwork in art_collection -%}
+      {%- assign artCollection = collections.art | sortByKey: 'data.order' -%}
+      {%- for artwork in artCollection -%}
         <li class="artwork" id="{{ artwork.data.identifier }}" aria-label="{{ artwork.data.description }}" tabindex="0">
           {{ artwork.templateContent }}
         </li>

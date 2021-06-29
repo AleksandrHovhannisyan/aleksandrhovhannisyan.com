@@ -17,6 +17,11 @@ const {
   jsonify,
   where,
   toISOString,
+  dividedBy,
+  newlineToBr,
+  toAbsoluteUrl,
+  stripNewlines,
+  stripHtml,
 } = require('./config/filters');
 const { posts, categories, postsByCategory } = require('./config/collections');
 const markdownLib = require('./config/plugins/markdown');
@@ -36,20 +41,23 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addLiquidShortcode('icon', iconShortcode);
   eleventyConfig.addLiquidShortcode('socialIcon', socialIconShortcode);
 
-  // Register custom filters
-  eleventyConfig.addLiquidFilter('word_count', wordCount);
+  // Register custom filters. Some common Liquid filters are redefined for consistent casing (camelCase).
+  eleventyConfig.addLiquidFilter('wordCount', wordCount);
   eleventyConfig.addLiquidFilter('limit', limit);
   eleventyConfig.addLiquidFilter('includes', includes);
   eleventyConfig.addLiquidFilter('remove', remove);
-  eleventyConfig.addLiquidFilter('sort_by_key', sortByKey);
+  eleventyConfig.addLiquidFilter('sortByKey', sortByKey);
   eleventyConfig.addLiquidFilter('where', where);
   eleventyConfig.addLiquidFilter('escape', escape);
   eleventyConfig.addLiquidFilter('jsonify', jsonify);
-  eleventyConfig.addLiquidFilter('to_html', toHtml);
-  eleventyConfig.addLiquidFilter('to_iso_string', toISOString);
+  eleventyConfig.addLiquidFilter('toHtml', toHtml);
+  eleventyConfig.addLiquidFilter('toIsoString', toISOString);
+  eleventyConfig.addLiquidFilter('dividedBy', dividedBy);
+  eleventyConfig.addLiquidFilter('newlineToBr', newlineToBr);
+  eleventyConfig.addLiquidFilter('toAbsoluteUrl', toAbsoluteUrl);
+  eleventyConfig.addLiquidFilter('stripNewlines', stripNewlines);
+  eleventyConfig.addLiquidFilter('stripHtml', stripHtml);
   eleventyConfig.addLiquidFilter('getNewestCollectionItemDate', pluginRss.getNewestCollectionItemDate);
-  eleventyConfig.addLiquidFilter('absoluteUrl', pluginRss.absoluteUrl);
-  eleventyConfig.addLiquidFilter('convertHtmlToAbsoluteUrls', pluginRss.convertHtmlToAbsoluteUrls);
 
   // Create custom collections
   eleventyConfig.addCollection('posts', posts);

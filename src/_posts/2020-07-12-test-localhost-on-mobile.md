@@ -3,7 +3,7 @@ title: How to Test Localhost on Mobile (with ngrok)
 description: Learn how to easily test localhost on mobile using ngrok, without deploying a single line of code.
 keywords: [test localhost on mobile]
 categories: [dev, ngrok, testing, mobile]
-comments_id: 47
+commentsId: 47
 ---
 
 Long ago, mobile-first development was a fancy new trend on the horizon of web development. Now, it's practically the industry standard. It's no secret that [Google uses mobile-first indexing](https://developers.google.com/search/mobile-sites/mobile-first-indexing), and mobile has consistently accounted for [nearly 50% of global web traffic](https://www.statista.com/statistics/277125/share-of-website-traffic-coming-from-mobile-devices/#:~:text=Mobile%20accounts%20for%20approximately%20half,since%20the%20beginning%20of%202017.) since 2017.

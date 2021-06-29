@@ -3,9 +3,9 @@ title: Creating Responsive Aspect Ratios in CSS
 description: Learn how to give any element an aspect ratio in CSS, using the modern aspect-ratio property or a trick with percentage padding.
 keywords: [css aspect ratio, aspect ratio in css, aspect ratio, aspect-ratio, percentage padding]
 categories: [dev, css, images, math]
-is_popular: true
-last_updated: 2021-06-12
-comments_id: 58
+isPopular: true
+lastUpdated: 2021-06-12
+commentsId: 58
 ---
 
 If you're not sure how to define aspect ratios in CSS, or if you have no clue what an aspect ratio is to begin with, then you're in luck. This tutorial covers everything that you need to know about creating aspect ratio boxes in CSS, using both a modern approach and an old one with a percentage padding trick. Once you understand aspect ratios and how to define them, you'll be able to do all kinds of neat things—like creating `nxn` square grid layouts, responsively sizing embedded media, reserving space for images, and much more.
@@ -447,7 +447,7 @@ Hopefully, you now have a better understanding of how to define responsive aspec
 - [How to set the margin or padding as percentage of height of parent container?](https://stackoverflow.com/questions/4982480/how-to-set-the-margin-or-padding-as-percentage-of-height-of-parent-container#:~:text=If%20you%20set%20an%20element's,to%20height%20instead%20of%20width.)
 - [Common CSS Flexbox Layout Patterns with Example Code](https://tobiasahlin.com/blog/common-flexbox-patterns/)
 
-{% include unsplashAttribution.md name: "Rumman Amin", username: "rumanamin", photo_id: "5zoLQUZaWgA" %}
+{% include unsplashAttribution.md name: "Rumman Amin", username: "rumanamin", photoId: "5zoLQUZaWgA" %}
 
 <style>
   .post-content .tiles {

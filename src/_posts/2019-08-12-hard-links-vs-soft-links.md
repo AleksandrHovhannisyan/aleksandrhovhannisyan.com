@@ -3,7 +3,7 @@ title: "What's the Difference Between Hard Links and Soft Links?"
 description: One sticks around for good, while the other one rots. Here's a detailed look at the differences between hard links and soft links in Unix.
 keywords: [hard links vs soft links]
 categories: [dev, unix, file-systems]
-last_updated: 2020-05-11
+lastUpdated: 2020-05-11
 thumbnail: thumbnail.jpg
 ---
 
@@ -196,4 +196,4 @@ Here are some additional resources on hard links vs. soft links:
 - [Modern Operating Systems by Tanenbaum, Chapter 4.2.4](https://www.amazon.com/Modern-Operating-Systems-Andrew-Tanenbaum/dp/013359162X)
 - [How to take advantage of symbolic links in Windows 10](https://www.techrepublic.com/article/how-to-take-advantage-of-symbolic-links-in-window-10/)
 
-{% include unsplashAttribution.md name: "Sandy Millar", username: "sandym10", photo_id: "OzyY3C8zVU8" %}
+{% include unsplashAttribution.md name: "Sandy Millar", username: "sandym10", photoId: "OzyY3C8zVU8" %}

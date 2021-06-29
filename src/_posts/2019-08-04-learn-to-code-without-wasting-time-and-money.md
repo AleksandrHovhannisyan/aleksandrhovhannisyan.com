@@ -3,8 +3,8 @@ title: Learn to Code Without Wasting Time & Money
 description: A discussion of the things that beginner programmers tend to get wrong, as well as concrete suggestions for what they should be doing instead.
 keywords: [learn to code, beginner programming mistakes, advice for beginner programmers, tips for beginner programmers, coding tips for beginners]
 categories: [dev, learning, beginners]
-comments_id: 29
-is_popular: true
+commentsId: 29
+isPopular: true
 thumbnail: thumbnail.jpg
 ---
 
@@ -131,4 +131,4 @@ Make no mistake, though: The process of *getting* there won't be easy. And once 
 
 And, of course, you never stop learning.
 
-{% include unsplashAttribution.md name: "Goran Ivos", username: "goran_ivos", photo_id: "iOykDIkZLQw" %}
+{% include unsplashAttribution.md name: "Goran Ivos", username: "goran_ivos", photoId: "iOykDIkZLQw" %}

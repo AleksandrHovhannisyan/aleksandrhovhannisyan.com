@@ -3,7 +3,7 @@ title: Be Careful with Async Functions that Return Booleans
 description: Suppose an async function returns a boolean. What happens if you check the return value without awaiting it?
 keywords: [async functions]
 categories: [dev, javascript, promises]
-is_popular: true
+isPopular: true
 ---
 
 Here's a fun bug I recently encountered... Let's say we have this `async` JavaScript function:
@@ -86,4 +86,4 @@ const foo = async () => {
 
 This is a pretty interesting bug that you may run into, though some basic tests will probably catch it before you need to go looking for it yourself. However, in the absence of tests, unless you remember that the function is async (and that async functions return Promises), this bug could easily slip right past you.
 
-{% include unsplashAttribution.md name: "STIL", username: "stilclassics", photo_id: "wtqe5nd5MYk" %}
+{% include unsplashAttribution.md name: "STIL", username: "stilclassics", photoId: "wtqe5nd5MYk" %}

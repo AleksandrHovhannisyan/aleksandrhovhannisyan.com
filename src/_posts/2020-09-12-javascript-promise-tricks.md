@@ -3,7 +3,7 @@ title: "JavaScript Promises: Practical Use Cases and Examples"
 description: Promises are a powerful tool for writing asynchronous code in JavaScript. Here are a few interesting use cases.
 keywords: [javascript promises]
 categories: [dev, javascript, promises, async]
-comments_id: 57
+commentsId: 57
 thumbnail: thumbnail.jpg
 ---
 
@@ -423,4 +423,4 @@ A couple things to note. First, if you want to run some code at even intervals, 
 
 Promises are pretty neat—once you get over the initial fear of using and understanding them, you'll find yourself discovering new patterns and possibilities in JavaScript. I hope you found this tutorial helpful!
 
-{% include unsplashAttribution.md name: "Amanda Mocci", username: "amandamocci", photo_id: "Zyp3t67rrP4" %}
+{% include unsplashAttribution.md name: "Amanda Mocci", username: "amandamocci", photoId: "Zyp3t67rrP4" %}

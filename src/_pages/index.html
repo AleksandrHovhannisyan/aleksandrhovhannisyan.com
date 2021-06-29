@@ -17,8 +17,8 @@ permalink: /
   <section class="section">
     <h2 id="recent-posts">Recent Blog Posts</h2>
     <ol class="post-preview-grid">
-      {%- assign recent_posts = collections.posts | limit: 5 -%}
-      {%- for post in recent_posts -%}
+      {%- assign recentPosts = collections.posts | limit: 5 -%}
+      {%- for post in recentPosts -%}
         {%- include postPreview.html post: post -%}
       {%- endfor -%}
     </ol>
@@ -26,8 +26,8 @@ permalink: /
   <section class="section">
     <h2 id="popular-posts">Popular Blog Posts</h2>
     <ol class="post-preview-grid">
-      {%- assign popular_posts = collections.posts | where: "data.is_popular", true -%}
-      {%- for post in popular_posts -%}
+      {%- assign popularPosts = collections.posts | where: "data.isPopular", true -%}
+      {%- for post in popularPosts -%}
         {%- include postPreview.html post: post -%}
       {%- endfor -%}
     </ol>
@@ -59,7 +59,7 @@ permalink: /
 {
   "@context": "http://schema.org",
   "@type": "Person",
-  "image": "{{ site.url }}/assets/images/profile-photo-400.jpeg",
+  "image": "{{ '/assets/images/profile-photo-400.jpeg' | toAbsoluteUrl }}",
   "jobTitle": "Software Developer",
   "name": "Aleksandr Hovhannisyan",
   "sameAs": [

@@ -13,19 +13,19 @@ renderData:
 
 <ol class="post-preview-grid">
   {% for post in category.items %}
-    {% include postPreview.html post: post, title_level: 2 %}
+    {% include postPreview.html post: post, titleLevel: 2 %}
   {% endfor %}
 </ol>
 {%- if category.totalPages > 1 -%}
 <ol class="pagination-trail" aria-label="Page navigation">
-  {%- for page_slug in category.pageSlugs.all -%}
-    {%- assign category_url = "/categories/" | append: page_slug | append: "/" -%}
+  {%- for pageSlug in category.pageSlugs.all -%}
+    {%- assign categoryUrl = "/categories/" | append: pageSlug | append: "/" -%}
     <li>
       <a
-        href="{{ category_url}}"
-        class="tag pagination-page{% if category_url == page.url %} active{% endif %}"
-        aria-label="Page {{ page_num }}"
-        {% if category_url == page.url %}aria-current="page"{% endif %}
+        href="{{ categoryUrl}}"
+        class="tag pagination-page{% if categoryUrl == page.url %} active{% endif %}"
+        aria-label="Page {{ forloop.index }}"
+        {% if categoryUrl == page.url %}aria-current="page"{% endif %}
       >
         {{- forloop.index -}}
       </a>

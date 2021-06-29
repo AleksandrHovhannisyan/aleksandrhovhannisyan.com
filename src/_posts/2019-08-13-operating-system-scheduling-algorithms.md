@@ -276,4 +276,4 @@ The best way to master scheduling algorithms is to work through the examples on 
 
 I hope you found this post helpful!
 
-{% include unsplashAttribution.md name: "Estée Janssens", username: "esteejanssens", photo_id: "zni0zgb3bkQ" %}
+{% include unsplashAttribution.md name: "Estée Janssens", username: "esteejanssens", photoId: "zni0zgb3bkQ" %}

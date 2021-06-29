@@ -11,9 +11,7 @@ layout: default
         {%- for network in socials -%}
           <li>
             <a class="social-network" href="{{ network.url }}" target="_blank" rel="noreferrer noopener">
-              {%- assign icon = network.icon -%}
-              {%- comment -%}{%- assign iconClass = "social-network-icon " | append: "icon-" | append: icon -%}{%- endcomment -%}
-              {% socialIcon icon -%}
+              {% socialIcon network.icon -%}
               <span class="social-network-name">{{ network.name }}</span>
             </a>
           </li>

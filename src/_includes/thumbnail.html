@@ -1,6 +1,6 @@
-{%- assign file_name = 'thumbnail.png' -%}
+{%- assign thumbnailFileName = 'thumbnail.png' -%}
 {%- if post.data.thumbnail -%}
-  {%- assign file_name = post.data.thumbnail -%}
+  {%- assign thumbnailFileName = post.data.thumbnail -%}
 {%- endif -%}
-{%- assign thumbnail_path = '/posts/' | append: post.fileSlug | append: '/' | append: file_name -%}
-{%- include picture.html src: thumbnail_path, alt: "", className: "post-preview-thumbnail", clickable: false -%}
+{%- assign thumbnailPath = '/posts/' | append: post.fileSlug | append: '/' | append: thumbnailFileName -%}
+{%- include picture.html src: thumbnailPath, alt: "", className: "post-preview-thumbnail", clickable: false -%}

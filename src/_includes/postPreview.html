@@ -1,11 +1,11 @@
-{%- assign title_level = title_level | default: 3 -%}
+{%- assign titleLevel = titleLevel | default: 3 -%}
 <li class="post-preview">
   <a href="{{ post.url }}" aria-hidden="true" tabindex="-1" class="post-preview-thumbnail-container">
     {%- include thumbnail.html post: post -%}
   </a>
-  <h{{ title_level }} class="post-preview-title">
+  <h{{ titleLevel }} class="post-preview-title">
     <a class="underlined-link" href="{{ post.url }}">{{ post.data.title }}</a>
-  </h{{ title_level }}>
+  </h{{ titleLevel }}>
   <p class="post-preview-description">{{- post.data.description -}}</p>
   {%- include meta.html post: post, content: post.templateContent, categories: post.data.categories -%}
 </li>

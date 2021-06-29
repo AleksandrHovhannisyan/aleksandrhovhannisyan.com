@@ -1,6 +1,6 @@
 ---
 layout: default
-is_blog_page: true
+isBlogPage: true
 preloads:
   -
     as: font
@@ -27,18 +27,18 @@ preloads:
 <article id="post">
   <header class="post-header">
     <h1 class="post-title">{{ title }}</h1>
-    {% include meta.html post: page, content: content, categories: categories, show_profile_photo: true %}
+    {% include meta.html post: page, content: content, categories: categories, showProfilePhoto: true %}
   </header>
   <div class="post-content">
     {{ content }}
-    {%- assign comments_repo = site.issuesRepo -%}
-    {%- if comments_id -%}
-      <section id="comments" data-comments-id="{{ comments_id }}" data-comments-repo="{{ comments_repo }}">
+    {%- assign commentsRepo = site.issuesRepo -%}
+    {%- if commentsId -%}
+      <section id="comments" data-comments-id="{{ commentsId }}" data-comments-repo="{{ commentsRepo }}">
         <div class="comment-actions">
           <h2>Comments <span id="comments-count"></span></h2>
           <a
             class="button solid-button plus-button post-comment-button"
-            href="https://github.com/{{ comments_repo }}/issues/{{ comments_id }}"
+            href="https://github.com/{{ commentsRepo }}/issues/{{ commentsId }}"
             aria-label="Post a comment on GitHub"
             target="_blank"
             rel="noreferrer noopener"
@@ -75,8 +75,8 @@ preloads:
     "headline": {{ title | escape | jsonify }},
     "image": ["{{ site.url }}/assets/images/posts/{{ page.fileSlug }}/{{ thumbnail }}"],
     "datePublished": {{ page.date | jsonify }},
-    {% if last_updated -%}
-    "dateModified": {{ last_updated | jsonify }},
+    {% if lastUpdated -%}
+    "dateModified": {{ lastUpdated | jsonify }},
     {% endif -%}
     "author": {
       "@type": "Person",
@@ -91,6 +91,6 @@ preloads:
         "url": "{{ site.url }}/assets/images/favicons/favicon-128.png"
       }
     },
-    "description": {{ description | strip_newlines | strip | jsonify }}
+    "description": {{ description | stripNewlines | strip | jsonify }}
   }
 </script>

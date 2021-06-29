@@ -3,7 +3,7 @@ title: Remember to Set a Width and Height on Your Images
 description: Layout shifts can be annoying and may even hurt your page's ranking, but you can minimize them by setting a width and height on images.
 keywords: [setting width and height on images, setting an image's width and height, width and height, layout shifts]
 categories: [dev, webperf, images, html]
-comments_id: 78
+commentsId: 78
 ---
 
 If you're not giving your images an explicit width and height, you may be hurting your [cumulative layout shift (CLS)](https://web.dev/cls/) score. Setting width and height on images is even more important now that Google plans to include [Core Web Vitals](https://moz.com/blog/core-web-vitals) in its ranking algorithm—and CLS is just one metric that Google looks at when auditing your site. But what do images have to do with layout shifts, anyway, and how does giving them a width and height solve this problem?
@@ -175,4 +175,4 @@ While you're at it, I also recommend giving these articles a read:
 - Web.dev: [Optimize Cumulative Layout Shift](https://web.dev/optimize-cls/)
 - Web.dev: [Displays images with incorrect aspect ratio](https://web.dev/image-aspect-ratio/#check-the-image's-width-and-height-attributes-in-the-html)
 
-{% include unsplashAttribution.md name: "Rolands Zilvinskis", username: "rolzay", photo_id: "cPxRBHechRc" %}
+{% include unsplashAttribution.md name: "Rolands Zilvinskis", username: "rolzay", photoId: "cPxRBHechRc" %}

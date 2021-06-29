@@ -3,10 +3,10 @@ title: "SVG Tutorial: How to Code SVG Icons by Hand"
 description: Learn the basics of SVGs so you can code your own SVG icons by hand, without always relying on icon libraries.
 keywords: [svg tutorial, svg icons, how to code svg]
 categories: [dev, svg, html, css]
-last_updated: 2021-06-04
-canonical_url: https://www.aleksandrhovhannisyan.com/blog/svg-tutorial-how-to-code-svg-icons-by-hand/
-comments_id: 68
-is_popular: true
+lastUpdated: 2021-06-04
+canonicalUrl: https://www.aleksandrhovhannisyan.com/blog/svg-tutorial-how-to-code-svg-icons-by-hand/
+commentsId: 68
+isPopular: true
 ---
 
 For as long as I can remember, I avoided touching SVGs when working with front-end code. I'd have no trouble with HTML, CSS, or JavaScript, but SVGs always intimidated me with their bizarre syntax and those weird, indecipherable strings of letters and numbers. You know the ones:

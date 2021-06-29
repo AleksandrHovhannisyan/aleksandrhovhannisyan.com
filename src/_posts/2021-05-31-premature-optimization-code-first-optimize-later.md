@@ -403,4 +403,4 @@ Don't fall into the premature optimization trap. Instead, follow a simple proces
 
 Bonus points if you can do one from the start without sacrificing the other.
 
-{% include unsplashAttribution.md name: "Aron Visuals", username: "aronvisuals", photo_id: "BXOXnQ26B7o" %}
+{% include unsplashAttribution.md name: "Aron Visuals", username: "aronvisuals", photoId: "BXOXnQ26B7o" %}
