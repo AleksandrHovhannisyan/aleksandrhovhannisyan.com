@@ -1,6 +1,6 @@
 ---
 title: "Binary for Beginners: The ABCs of 0s and 1s"
-description: The binary number system underlies pretty much everything in computation and software. But what's the deal with all those 0s and 1s?
+description: The binary number system underlies everything in computation and software. But what's the deal with all those 0s and 1s?
 keywords: [binary number system, binary numbers]
 categories: [computer-science, math, binary]
 commentsId: 44
