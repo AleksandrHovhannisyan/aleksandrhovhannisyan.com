@@ -11,12 +11,14 @@
 }
 
 .centered {
-  box-sizing: content-box;
-  max-width: var(--page-max-width);
+  --padding: MIN(4vw, 2.4rem);
+  // why not just use content-box? because it creates overflow issues on mobile with width: 100% below
+  max-width: calc(var(--page-max-width) + 2 * var(--padding));
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: MIN(4vw, 2.4rem);
-  padding-right: MIN(4vw, 2.4rem);
+  padding-left: var(--padding);
+  padding-right: var(--padding);
 }
 
 // Links an entire parent container, but the parent must be set to relative position

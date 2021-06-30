@@ -16,6 +16,9 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   min-height: 100vh;
   background-color: var(--main-bg-color);
   color: var(--text-color-normal);
@@ -25,7 +28,6 @@ body {
 }
 
 #page-content {
-  grid-area: content;
   padding-top: var(--navbar-height);
   padding-bottom: var(--navbar-height);
 }
