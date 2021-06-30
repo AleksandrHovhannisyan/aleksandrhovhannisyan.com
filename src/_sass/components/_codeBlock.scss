@@ -220,7 +220,7 @@ code[class*="language-css"] {
 
 pre[class*="language-bash"],
 code[class*="language-bash"] {
-  .token {
+  .token:not(.comment) {
     color: var(--color-code-text) !important;
   }
 }
