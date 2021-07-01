@@ -12,9 +12,12 @@ const images = {
     sizes: `(max-width: 400px) 400px, (max-width: 768px) 800px, 400px`,
   },
   'profile-photo': {
-    widths: [null, placeholderWidth, 140, 400],
-    sizes: `(max-width: 768px) 140px, 400px`,
+    widths: [null, placeholderWidth, 280, 400],
+    sizes: `(max-width: 768px) 280px, 400px`,
   },
+  'author-photo': {
+    widths: [null, placeholderWidth, 44, 88],
+  }
 };
 
 const imageFormats = ['jpeg', 'webp'];
