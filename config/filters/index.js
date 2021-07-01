@@ -11,7 +11,7 @@ const limit = (array, limit) => {
   return array.slice(0, limit)
 }
 
-/** Sots the given array of objects by a string denoting chained key paths. */
+/** Sorts the given array of objects by a string denoting chained key paths. */
 const sortByKey = (arrayOfObjects, keyPath, order = 'ASC') => {
   const sorted = lodash.sortBy(arrayOfObjects, (object) => lodash.get(object, keyPath));
   if (order === 'ASC') return sorted;
