@@ -74,7 +74,7 @@
     }
   },
   "lint-staged": {
-    "*.js": "pnpm run lint:js:fix",
-    "*.scss": "pnpm run lint:css:fix"
+    "*.js": "yarn run lint:js:fix",
+    "*.scss": "yarn run lint:css:fix"
   }
 }
