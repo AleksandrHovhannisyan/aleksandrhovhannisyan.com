@@ -1,5 +1,5 @@
 module.exports = {
-  rootDir: './src/assets/scripts/',
+  rootDir: '.',
   testMatch: ['**/__tests__/**/*.?(m)js', '**/?(*.)(spec|test).?(m)js'],
   moduleFileExtensions: ['js', 'json', 'node', 'mjs'],
   transform: {

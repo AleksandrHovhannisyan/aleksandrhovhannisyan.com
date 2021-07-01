@@ -3,28 +3,20 @@ const dayjs = require('dayjs');
 const markdownLib = require('../plugins/markdown');
 const site = require('../../src/_data/site');
 
-/**
- * Filter to return all values from the given array where the path includes the specified value.
- * https://www.webstoemp.com/blog/basic-custom-taxonomies-with-eleventy/
- */
-const includes = (array, path, value) => {
-  return array.filter((item) => {
-    const pathValue = lodash.get(item, path);
-    return pathValue.includes(value);
-  });
-};
-
 /** Returns the first `limit` elements of the the given array. */
-const limit = (array, limit) => array.slice(0, limit);
-
-/** Removes the specified element from an array. */
-const remove = (array, elementToRemove) => array.filter((element) => element !== elementToRemove);
+const limit = (array, limit) => {
+  if (limit < 0) {
+    throw new Error(`${limit.name}: negative limits are not allowed: ${limit}.`);
+  }
+  return array.slice(0, limit)
+}
 
 /** Sots the given array of objects by a string denoting chained key paths. */
 const sortByKey = (arrayOfObjects, keyPath, order = 'ASC') => {
   const sorted = lodash.sortBy(arrayOfObjects, (object) => lodash.get(object, keyPath));
   if (order === 'ASC') return sorted;
-  return sorted.reverse();
+  if (order === 'DESC') return sorted.reverse();
+  throw new Error(`${sortByKey.name}: invalid sort order: ${order}`);
 };
 
 /** Returns all entries from the given array that match the specified key:value pair. */
@@ -32,7 +24,13 @@ const where = (arrayOfObjects, keyPath, value) =>
   arrayOfObjects.filter((object) => lodash.get(object, keyPath) === value);
 
 /** Returns the word count of the given string. */
-const wordCount = (str) => str.split(' ').length;
+const wordCount = (str) => {
+  if (typeof str !== 'string') {
+    throw new Error(`${wordCount.name}: expected argument of type string but instead got ${str} (${typeof str})`);
+  }
+  const matches = str.match(/[\w\d’'-]+/gi);
+  return matches?.length ?? 0;
+}
 
 /** Converts the given markdown string to HTML, returning it as a string. */
 const toHtml = (markdownString) => {
@@ -48,35 +46,53 @@ const jsonify = (value) => JSON.stringify(value);
 /** Divides the first argument by the second. */
 const dividedBy = (numerator, denominator) => {
   if (denominator === 0) {
-    throw new Error(`Cannot divide by zero in this expression: ${numerator} / ${denominator}`);
+    throw new Error(`${dividedBy.name}: cannot divide by zero: ${numerator} / ${denominator}`);
   }
   return numerator / denominator;
 }
 
 /** Replaces every newline with a line break. */
-const newlineToBr = (str) => str.replace(/\n/g, '<br>');
+const newlineToBr = (str) => {
+  if (typeof str !== 'string') {
+    throw new Error(`${newlineToBr.name}: expected argument of type string but instead got ${url} (${typeof url})`);
+  }
+  return str.replace(/\n/g, '<br>');
+};
 
 /** Removes every newline from the given string. */
-const stripNewlines = (str) => str.replace(/\n/g, '');
+const stripNewlines = (str) => {
+  if (typeof str !== 'string') {
+    throw new Error(`${stripNewlines.name}: expected argument of type string but instead got ${str} (${typeof str})`);
+  }
+  return str.replace(/\n/g, '');
+};
 
 /** Removes all tags from an HTML string. */
-const stripHtml = (str) => str.replace(/<[^>]+>/g,'');
+const stripHtml = (str) => {
+  if (typeof str !== 'string') {
+    throw new Error(`${stripHtml.name}: expected argument of type string but instead got ${str} (${typeof str})`);
+  }
+  return str.replace(/<[^>]+>/g,'');
+};
 
 /** Formats the given string as an absolute url. */
 const toAbsoluteUrl = (url) => {
-  if (url.startsWith('/')) {
-    return `${site.url}${url}`;
+  if (typeof url !== 'string') {
+    throw new Error(`${toAbsoluteUrl.name}: expected argument of type string but instead got ${url} (${typeof url})`);
   }
-  return `${site.url}/${url}`;
+  // Replace trailing slash, e.g., site.com/ => site.com
+  const siteUrl = site.url.replace(/\/$/, '');
+  // Replace starting slash, e.g., /path/ => path/
+  const relativeUrl = url.replace(/^\//, '');
+
+  return `${siteUrl}/${relativeUrl}`;
 }
 
 /** Converts the given date string to ISO8610 format. */
 const toISOString = (dateString) => dayjs(dateString).toISOString();
 
 module.exports = {
-  includes,
   limit,
-  remove,
   sortByKey,
   where,
   wordCount,

@@ -9,8 +9,6 @@ const socialIconShortcode = require('./config/shortcodes/socialIcon');
 const {
   wordCount,
   limit,
-  includes,
-  remove,
   sortByKey,
   toHtml,
   escape,
@@ -44,8 +42,6 @@ module.exports = (eleventyConfig) => {
   // Register custom filters. Some common Liquid filters are redefined for consistent casing (camelCase).
   eleventyConfig.addLiquidFilter('wordCount', wordCount);
   eleventyConfig.addLiquidFilter('limit', limit);
-  eleventyConfig.addLiquidFilter('includes', includes);
-  eleventyConfig.addLiquidFilter('remove', remove);
   eleventyConfig.addLiquidFilter('sortByKey', sortByKey);
   eleventyConfig.addLiquidFilter('where', where);
   eleventyConfig.addLiquidFilter('escape', escape);

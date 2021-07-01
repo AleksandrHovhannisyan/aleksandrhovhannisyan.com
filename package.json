@@ -20,7 +20,7 @@
     "lint": "npm-run-all lint:*",
     "lint:fix": "npm-run-all --parallel lint:*:fix",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --config jest.config.cjs",
-    "test:watch": "test --watch --silent=false --verbose=true",
+    "test:watch": "yarn test --watch --silent=false --verbose=true",
     "update-browserslist": "npx browserslist@latest --update-db"
   },
   "dependencies": {
