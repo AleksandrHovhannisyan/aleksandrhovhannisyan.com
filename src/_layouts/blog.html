@@ -24,7 +24,9 @@ isBlogPage: true
             href="{% if category == "all" %}/blog/{% else %}/categories/{{ category }}/{% endif %}"
             class="tag post-tag navigation-tag{% if pageCategory == category %} active{% endif %}"
             title="{% if pageCategory != category %}View{% endif %} {% if category == "all" %}all posts{% else %}posts tagged as {{ category }}{% endif %}"
-            {%- if pageCategory == category -%}aria-current="page"{%- endif -%}
+            {% if pageCategory == category -%}
+            aria-current="page"
+            {%- endif -%}
           >
             {{- category -}}
           </a>

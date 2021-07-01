@@ -40,13 +40,13 @@ Each file is associated with an inode, and inodes are packed full of rich inform
 
 So you can think of a file system roughly as follows:
 
-```text
+```plaintext
 Directory --> File (Name) --> Inode --> Raw Data on disk
 ```
 
 Now, in the simplest terms, **linking** is the process of "referencing" or pointing to an inode in memory. Thus, we say that a **link** is a pointer to an inode. When we create a file for the first time, the name that we assign it becomes the first link to its corresponding inode. Diagrammatically speaking, the link is the arrow between a file and its inode:
 
-```text
+```plaintext
 File (Name) --> Inode
 ```
 
@@ -113,7 +113,7 @@ Here's an example showing what happens when we move the original file up one dir
 
 Notice these two lines:
 
-```text
+```plaintext
 File: softLink -> file
 Size: 4
 ```

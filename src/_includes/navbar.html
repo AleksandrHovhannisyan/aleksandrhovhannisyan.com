@@ -16,9 +16,18 @@
           {%- assign navLinks = "About,Art,Blog,Contact" | split: ',' -%}
           {%- for link in navLinks -%}
           <li class="navbar-item">
-            <a class="navbar-link" href="/{{ link | downcase }}/" {%- if title == link -%}aria-current="page"
-              id="active-navbar-link" {%- endif -%} {%- if link=='Blog' and isBlogPage -%}aria-current="page"
-              id="active-navbar-link" {%- endif -%}>
+            <a
+              class="navbar-link"
+              href="/{{ link | downcase }}/"
+              {% if title == link -%}
+              aria-current="page"
+              id="active-navbar-link"
+              {%- endif -%}
+              {% if link == 'Blog' and isBlogPage -%}
+              aria-current="page"
+              id="active-navbar-link"
+              {%- endif -%}
+            >
               {{- link -}}
             </a>
           </li>

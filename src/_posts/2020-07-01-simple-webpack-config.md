@@ -7,7 +7,7 @@ categories: [dev, webpack, javascript]
 
 Let's assume your directory structure looks like this for a JavaScript project:
 
-```text
+```plaintext
 .
 ├── config/
 │   └── webpack.config.js
@@ -69,7 +69,7 @@ Here's how it works:
 
 Run `yarn build` to bundle your code. Here's some sample output:
 
-```text
+```plaintext
 yarn run v1.22.4
 $ webpack --config config/webpack.config.js --mode production
 Hash: d60fd368c37fd04c102f

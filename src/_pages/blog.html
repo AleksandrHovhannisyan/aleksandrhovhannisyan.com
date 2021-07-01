@@ -25,7 +25,7 @@ renderData:
         href="{{ pageUrl }}"
         class="tag pagination-page{% if pageUrl == page.url %} active{% endif %}"
         aria-label="Page {{ forloop.index }}"
-        {%- if pageUrl == page.url -%}aria-current="page"{%- endif -%}
+        {% if pageUrl == page.url -%}aria-current="page"{%- endif -%}
       >
         {{- forloop.index -}}
       </a>

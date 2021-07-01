@@ -73,11 +73,11 @@
       })();
     </script>
     {%- comment -%}Common bundles.{%- endcomment -%}
-    <script type="module" src="/assets/scripts/main.bundle.mjs" defer></script>
-    <script type="module" src="/assets/scripts/runtime.bundle.mjs" defer></script>
+    <script type="module" src="/assets/scripts/main.bundle.mjs"></script>
+    <script type="module" src="/assets/scripts/runtime.bundle.mjs"></script>
     {%- comment -%}Posts with comments.{%- endcomment -%}
     {%- if commentsId -%}
-      <script type="module" src="/assets/scripts/comments.bundle.mjs" defer></script>
+      <script type="module" src="/assets/scripts/comments.bundle.mjs"></script>
     {%- endif -%}
     {%- comment -%}Open Graph social media previews{%- endcomment -%}
     <meta property="og:title" content="{{ title }}">

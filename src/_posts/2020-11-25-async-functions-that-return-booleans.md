@@ -47,7 +47,7 @@ To understand why the expression always evaluates to `true`, recall that `async/
 
 We can verify this by logging the function call:
 
-```text
+```plaintext
 > console.log(isBroken())
 Promise {<fulfilled>: false}
 ```

@@ -66,7 +66,7 @@ as keyof JSX.IntrinsicElements
 
 That addresses the following error, letting TypeScript know that our `Tag` variable does in fact resolve to one of the built-in (intrinsic) callable element types, like `<div>`, `<button>`, and so on:
 
-```text
+```plaintext
 "JSX element type 'Tag' does not have any construct or call signatures"
 ```
 

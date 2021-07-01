@@ -170,7 +170,7 @@ bundle install
 
 If all went well, you should see output similar to this:
 
-```text
+```plaintext
 Bundle complete! 5 Gemfile dependencies, 85 gems now installed.
 Use `bundle info [gemname]` to see where a bundled gem is installed.
 ```
@@ -414,7 +414,7 @@ layout: home
 
 Currently, `index.md` defines a variable named `layout` that's assigned a value of `home`. This doesn't actually do anything yet because we haven't created any layout files (don't worry—we'll learn how to do that in a later section). We even get build warnings for this and a few of our other files:
 
-```text
+```plaintext
 Build Warning: Layout 'post' requested in _posts/2020-02-14-welcome-to-jekyll.markdown does not exist.
 Build Warning: Layout 'default' requested in 404.html does not exist.
 Build Warning: Layout 'page' requested in about.md does not exist.
@@ -550,7 +550,7 @@ mkdir _pages
 
 After doing that, go ahead and move `index.md` and `about.md` into this directory:
 
-```text
+```plaintext
 ├── _pages
 │   ├── about.md
 │   └── index.md
@@ -639,7 +639,7 @@ Navigate to `localhost:4000/about/` to see the result.
 
 To make sure you understand how all of this works under the hood, let's take a peek at the `_site/` directory that Jekyll generated for us automatically:
 
-```text
+```plaintext
 _site
 _site
 ├── 404.html
@@ -710,7 +710,7 @@ So now, if we navigate to `localhost:4000/blog/jekyll/update/welcome-to-jekyll`,
 
 Here's what `_site/` looked like before this:
 
-```text
+```plaintext
 _site
 ├── 404.html
 ├── about
@@ -728,7 +728,7 @@ _site
 
 And here's what it looks like now:
 
-```text
+```plaintext
 _site
 ├── 404.html
 ├── about
@@ -764,7 +764,7 @@ date:   2020-02-14 07:40:59 -0500
 
 Even though you are free to define a date explicitly like this, you don't actually *need* to. By default, Jekyll expects your blog post files to use this naming convention and extracts the date information from it, using that date to sort your posts:
 
-```text
+```plaintext
 yyyy-mm-dd-title-of-the-post-slugged.md
 ```
 
@@ -772,7 +772,7 @@ yyyy-mm-dd-title-of-the-post-slugged.md
 
 So the `date` front matter variable is in fact redundant because we already have `2020-02-14` in the file name:
 
-```text
+```plaintext
 2020-02-14-welcome-to-jekyll.markdown
 ```
 
@@ -1028,7 +1028,7 @@ I mentioned layouts several times in the section on front matter variables. Now 
 
 First, let's remind ourselves of these build warnings that Jekyll has been giving us:
 
-```text
+```plaintext
 Build Warning: Layout 'post' requested in _posts/2020-02-14-welcome-to-jekyll.markdown does not exist.
 Build Warning: Layout 'default' requested in 404.html does not exist.
 Build Warning: Layout 'page' requested in _pages/about.md does not exist.
@@ -1269,7 +1269,7 @@ Meanwhile, this is what my manifest looks like:
 
 And here's what my `_sass/` directory looks like, in case you're curious:
 
-```text
+```plaintext
 _sass
 ├── blog
 │   └── posts.scss
@@ -1325,7 +1325,7 @@ And then create this file:
 
 Once your site rebuilds, you'll find this new file:
 
-```text
+```plaintext
 _site/assets/styles
 └── main.css
 ```
