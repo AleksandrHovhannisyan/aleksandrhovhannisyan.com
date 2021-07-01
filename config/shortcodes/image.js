@@ -72,7 +72,7 @@ const imageShortcode = async (relativeSrc, alt, className, id, clickable) => {
         .filter((image) => image.width !== placeholderWidth)
         // All non-placeholder images get mapped to their srcset
         .map((image) => image.srcset)
-        .join(', ')}" sizes="${sizes}">`;
+        .join(', ')}" data-sizes="${sizes}">`;
     })
     .join('\n')}
     <img

@@ -27,8 +27,10 @@ lazyLoad(lazyImages, (img) => {
   };
 
   sources.forEach((source) => {
+    source.sizes = source.dataset.sizes;
     source.srcset = source.dataset.srcset;
     source.removeAttribute('data-srcset');
+    source.removeAttribute('data-sizes');
   });
   img.src = img.dataset.src;
 });
