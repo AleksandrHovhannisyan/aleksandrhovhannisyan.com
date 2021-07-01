@@ -28,7 +28,6 @@ const { dir, imagePaths } = require('./config/constants');
 module.exports = (eleventyConfig) => {
   // Pass-through copy for static assets
   eleventyConfig.addPassthroughCopy(`${dir.input}/${dir.assets}/fonts`);
-  eleventyConfig.addPassthroughCopy(`${imagePaths.source}/favicons`);
   eleventyConfig.addPassthroughCopy(`${imagePaths.source}/art`);
   eleventyConfig.addPassthroughCopy(`${imagePaths.source}/404`);
   // Netlify redirects file needs to be copied to output dir
