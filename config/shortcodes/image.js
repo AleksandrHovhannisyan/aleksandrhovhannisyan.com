@@ -14,6 +14,8 @@ const ImageWidths = {
   PLACEHOLDER: 24,
 };
 
+const OPTIMIZED_IMAGE_FORMAT = 'webp';
+
 /** Images that need special attention/prop customization. */
 const specialImages = {
   thumbnail: {
@@ -29,14 +31,22 @@ const specialImages = {
   },
   'favicon': {
     widths: [ImageWidths.PLACEHOLDER, 32, 57, 76, 96, 128, 192, 228],
-    formats: ['png', 'webp'],
+    formats: {
+      base: 'png',
+      other: [OPTIMIZED_IMAGE_FORMAT]
+    },
+    // Really only need this one for the navbar logo. Other sizes are generated for the real favicon.
+    sizes: '57px',
   }
 };
 
 /** Defaults/fallbacks for any other image that isn't a "special" image. */
 const imageDefaults = {
   widths: [ImageWidths.ORIGINAL, ImageWidths.PLACEHOLDER, 400, 800],
-  formats: ['jpeg', 'webp'],
+  formats: {
+    base: 'jpeg',
+    other: [OPTIMIZED_IMAGE_FORMAT]
+  },
   sizes: '100vw',
 };
 
@@ -47,10 +57,9 @@ const imageShortcode = async (relativeSrc, alt, className, id, clickable) => {
 
   const widths = specialImages[name]?.widths ?? imageDefaults.widths;
   const sizes = specialImages[name]?.sizes ?? imageDefaults.sizes;
-  const formats = specialImages[name]?.formats ?? imageDefaults.formats;
-
-  // By convention, store the base (un-optimized) image format as the first entry in the formats array
-  const baseFormat = formats[0];
+  let formats = specialImages[name]?.formats ?? imageDefaults.formats;
+  const baseFormat = formats.base;
+  formats = [baseFormat, ...formats.other];
 
   const imageMetadata = await Image(fullyQualifiedImagePath, {
     widths,
@@ -84,10 +93,10 @@ const imageShortcode = async (relativeSrc, alt, className, id, clickable) => {
     id ? `id="${id}"` : ''
   } style="--aspect-ratio: ${aspectRatio}%;">
   ${Object.values(imageMetadata)
-    // Prioritize WebP sources since browser loads first valid one
+    // Prioritize optimized sources since browser loads first valid one it encounters
     .sort((a, b) => {
-      if (a[0].format === 'webp') return -1;
-      if (b[0].format === 'webp') return 1;
+      if (a[0].format === OPTIMIZED_IMAGE_FORMAT) return -1;
+      if (b[0].format === OPTIMIZED_IMAGE_FORMAT) return 1;
       return 0;
     })
     // Map each format to the source HTML markup
@@ -115,10 +124,9 @@ const imageShortcode = async (relativeSrc, alt, className, id, clickable) => {
       loading="lazy">
   </picture>`;
 
-  // Link to the highest resolution WebP image
+  // Link to the highest resolution optimized image
   if (clickable) {
-    // NOTE: this assumes that every transformed image has a WebP variant
-    return outdent`<a href="${formatSizes.webp.largest.url}">${picture}</a>`;
+    return outdent`<a href="${formatSizes[OPTIMIZED_IMAGE_FORMAT].largest.url}">${picture}</a>`;
   }
 
   // Otherwise just return the plain picture tag
