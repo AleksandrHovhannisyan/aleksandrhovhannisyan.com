@@ -85,7 +85,7 @@
       <meta property="og:image" content="{{ ogImage }}">
     {%- endif -%}
     <meta property="og:description" content="{{ description }}">
-    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="og:url" content="{{ page.url | toAbsoluteUrl }}">
     {%- comment -%}Twitter card meta tags{%- endcomment -%}
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:creator" content="@hovhaDovah">

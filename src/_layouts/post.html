@@ -70,7 +70,7 @@ preloads:
     "@type": "BlogPosting",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "{{ site.url }}{{ page.url }}"
+      "@id": "{{ page.url | toAbsoluteUrl }}"
     },
     "headline": {{ title | escape | jsonify }},
     "image": ["{{ site.url }}/assets/images/posts/{{ page.fileSlug }}/{{ thumbnail }}"],
@@ -88,7 +88,7 @@ preloads:
       "url": "{{ site.url }}",
       "logo": {
         "@type": "ImageObject",
-        "url": "{{ site.url }}/assets/images/favicons/favicon-128.png"
+        "url": "{{ '/assets/images/favicons/favicon-128.png' | toAbsoluteUrl }}"
       }
     },
     "description": {{ description | stripNewlines | strip | jsonify }}
