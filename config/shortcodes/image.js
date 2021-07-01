@@ -4,42 +4,57 @@ const { outdent } = require('outdent');
 const path = require('path');
 const { imagePaths, dir } = require('../constants');
 
-const placeholderWidth = 24;
+// Alias Eleventy's convention of null = original [width/format/etc] for clarity
+const ORIGINAL = null;
 
-const images = {
+const ImageWidths = {
+  /** The original (source) image width. */
+  ORIGINAL,
+  /** The width of placeholder images (for lazy loading). Aspect ratio is preserved. */
+  PLACEHOLDER: 24,
+}
+
+/** Images that need special attention/prop customization. */
+const specialImages = {
   thumbnail: {
-    widths: [null, placeholderWidth, 200, 400, 800],
+    widths: [ImageWidths.ORIGINAL, ImageWidths.PLACEHOLDER, 200, 400, 800],
     sizes: `(max-width: 400px) 400px, (max-width: 768px) 800px, 400px`,
   },
   'profile-photo': {
-    widths: [null, placeholderWidth, 280, 400],
+    widths: [ImageWidths.ORIGINAL, ImageWidths.PLACEHOLDER, 280, 400],
     sizes: `(max-width: 768px) 280px, 400px`,
   },
   'author-photo': {
-    widths: [null, placeholderWidth, 44, 88],
+    widths: [ImageWidths.ORIGINAL, ImageWidths.PLACEHOLDER, 44, 88],
   }
 };
 
-const imageFormats = ['jpeg', 'webp'];
+/** Defaults/fallbacks for any other image that isn't a "special" image. */
+const imageDefaults = {
+  widths: [ImageWidths.ORIGINAL, ImageWidths.PLACEHOLDER, 400, 800],
+  formats: ['jpeg', 'webp'],
+  sizes: '100vw',
+}
 
 const imageShortcode = async (relativeSrc, alt, className, id, clickable) => {
   const fullyQualifiedImagePath = path.join(imagePaths.source, relativeSrc);
   const { name } = path.parse(fullyQualifiedImagePath);
   const pathToImage = path.dirname(relativeSrc);
 
-  const widths = images[name]?.widths ?? [null, placeholderWidth, 400, 800];
-  const sizes = images[name]?.sizes ?? '100vw';
+  const widths = specialImages[name]?.widths ?? imageDefaults.widths;
+  const sizes = specialImages[name]?.sizes ?? imageDefaults.sizes;
+  const formats = specialImages[name]?.formats ?? imageDefaults.formats;
 
   const imageMetadata = await Image(fullyQualifiedImagePath, {
     widths,
-    formats: imageFormats,
+    formats,
     // Output to same dest as site
     outputDir: path.join(imagePaths.output, pathToImage),
     // Public URL path referenced in the img tag's src
     urlPath: path.join(imagePaths.output.replace(dir.output, ''), pathToImage),
     // Custom file name
     filenameFormat: (id, src, width, format) => {
-      return `${name}-${width === placeholderWidth ? 'placeholder' : width}.${format}`;
+      return `${name}-${width === ImageWidths.PLACEHOLDER ? 'placeholder' : width}.${format}`;
     },
   });
 
@@ -72,7 +87,7 @@ const imageShortcode = async (relativeSrc, alt, className, id, clickable) => {
         smallest[format[0].format].url
       }" data-srcset="${format
         // We don't need the placeholder image in the srcset
-        .filter((image) => image.width !== placeholderWidth)
+        .filter((image) => image.width !== ImageWidths.PLACEHOLDER)
         // All non-placeholder images get mapped to their srcset
         .map((image) => image.srcset)
         .join(', ')}" data-sizes="${sizes}">`;
