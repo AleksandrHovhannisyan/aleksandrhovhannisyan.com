@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import '../fonts';
 @import '../mixins';
 
@@ -8,7 +9,7 @@
 }
 
 html {
-  font-size: 1rem / map-get($type-scale, 'font-size-base') * 100%;
+  font-size: math.div(1rem, map-get($type-scale, 'font-size-base')) * 100%;
 
   @include mobile-lg {
     font-size: 62.5%;

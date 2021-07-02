@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import '../mixins';
 
 .comment-actions {
@@ -54,7 +55,7 @@ $meta-spacing: 0.8rem;
 }
 
 .comment-meta {
-  margin: 0 $meta-spacing $meta-spacing / 2 0;
+  margin: 0 $meta-spacing math.div($meta-spacing, 2) 0;
 }
 
 .comment-avatar {

@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import './functions';
 @import './fonts';
 @import './breakpoints';
@@ -52,7 +53,7 @@
   $font-size-base: map-get($type-scale, 'font-size-base');
   $step-config: map-get(map-get($type-scale, 'steps'), $step);
 
-  $font-size: rnd($font-size-base * pow($multiplier, $step), 2);
+  $font-size: rnd($font-size-base * math.pow($multiplier, $step), 2);
   $line-height: map-get($step-config, 'line-height');
   // expose CSS var to later compute other things, e.g., spacing
   --line-height: #{$line-height};

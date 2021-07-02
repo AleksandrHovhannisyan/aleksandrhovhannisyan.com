@@ -1,29 +1,13 @@
+@use 'sass:math';
 @import './zIndex';
 
 @function toRem($px) {
-  $rem: $px / 16px;
+  $rem: math.div($px, 16px);
   @return #{$rem}rem;
 }
 
 @function z-index($key) {
   @return map-get($zIndex, $key);
-}
-
-@function pow($base, $exponent) {
-  $result: 1;
-
-  @if $exponent > 0 {
-    @for $i from 1 through $exponent {
-      $result: $result * $base;
-    }
-  }
-  @else if $exponent < 0 {
-    @for $i from $exponent to 0 {
-      $result: $result / $base;
-    }
-  }
-
-  @return $result;
 }
 
 @function rnd($number, $places: 0) {
@@ -35,5 +19,5 @@
     }
   }
 
-  @return round($number * $n) / $n;
+  @return math.div(math.round($number * $n), $n);
 }
