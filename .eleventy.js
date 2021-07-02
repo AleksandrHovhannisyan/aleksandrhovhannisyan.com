@@ -26,6 +26,9 @@ const markdownLib = require('./config/plugins/markdown');
 const { dir, imagePaths } = require('./config/constants');
 
 module.exports = (eleventyConfig) => {
+  // Watch targets
+  eleventyConfig.addWatchTarget(imagePaths.source);
+
   // Pass-through copy for static assets
   eleventyConfig.addPassthroughCopy(`${dir.input}/${dir.assets}/fonts`);
   eleventyConfig.addPassthroughCopy(`${imagePaths.source}/art`);
