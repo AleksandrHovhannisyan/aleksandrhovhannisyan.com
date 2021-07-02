@@ -1,10 +1,10 @@
 const lodash = require('lodash');
 const slugify = require('slugify');
-const { postsDirectory } = require('../constants');
+const { dir } = require('../constants');
 
 /** Returns an array of all blog posts. */
 const getAllPosts = (collection) => {
-  return collection.getFilteredByGlob(postsDirectory);
+  return collection.getFilteredByGlob(`${dir.input}/_posts/*.md`);
 };
 
 /**
