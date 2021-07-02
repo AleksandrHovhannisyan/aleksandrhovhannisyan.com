@@ -1,7 +1,5 @@
 const pluginRss = require('@11ty/eleventy-plugin-rss');
-const pluginSass = require('eleventy-plugin-sass');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
-const sassConfig = require('./config/plugins/sass');
 const syntaxHighlightConfig = require('./config/plugins/syntaxHighlighter');
 const imageShortcode = require('./config/shortcodes/image');
 const iconShortcode = require('./config/shortcodes/icon');
@@ -64,7 +62,6 @@ module.exports = (eleventyConfig) => {
 
   // Plugins
   eleventyConfig.addPlugin(syntaxHighlight, syntaxHighlightConfig);
-  eleventyConfig.addPlugin(pluginSass, sassConfig);
   eleventyConfig.addPlugin(pluginRss, {
     posthtmlRenderOptions: {
       closingSingleTag: 'slash',

@@ -12,14 +12,7 @@ const imagePaths = {
   output: `${dir.output}/${dir.assets}/images`,
 };
 
-const sassPaths = {
-  partials: `${dir.input}/_sass/**/*.scss`,
-  stylesheets: `${dir.input}/${dir.assets}/styles/**/*.scss`,
-  output: `${dir.output}/${dir.assets}/styles`,
-};
-
 module.exports = {
   dir,
   imagePaths,
-  sassPaths,
 };
