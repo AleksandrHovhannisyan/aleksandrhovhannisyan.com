@@ -209,7 +209,9 @@ pre[class*="language-"] *::selection {
 
 /* Language Specific */
 
-pre[class*="language-css"] {
+pre[class*="language-css"],
+pre[class*="language-scss"],
+pre[class*="language-sass"] {
   .token.selector {
     color: hsl(41, 53%, 67%);
   }
