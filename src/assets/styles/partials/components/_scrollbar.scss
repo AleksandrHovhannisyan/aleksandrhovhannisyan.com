@@ -1,6 +1,8 @@
 ::-webkit-scrollbar {
-  width: 1.2rem;
-  height: 1.2rem;
+  // vertical scrollbars
+  width: 1.4rem;
+  // horizontal scrollbars
+  height: 1.4rem;
 }
 
 ::-webkit-scrollbar-track {
@@ -8,6 +10,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
+  border-radius: 0.8rem;
   background: var(--scrollbar-thumb-bg-color);
 
   &:hover {
