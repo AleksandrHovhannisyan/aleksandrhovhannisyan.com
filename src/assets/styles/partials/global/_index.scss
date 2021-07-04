@@ -107,7 +107,7 @@ a {
   @include focus-outline($color: currentColor, $style: solid, $thickness: 0.2rem);
 
   &, code {
-    color: var(--link-color);
+    color: var(--text-color-link);
   }
 }
 

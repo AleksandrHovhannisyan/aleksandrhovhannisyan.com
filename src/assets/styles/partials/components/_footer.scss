@@ -15,7 +15,7 @@
   justify-content: space-between;
   padding-top: 3.2rem;
   padding-bottom: 3.2rem;
-  border-top: solid 1px var(--text-color-caption);
+  border-top: solid 1px var(--text-color-soft);
 }
 
 .page-footer-hello {
@@ -32,7 +32,7 @@
 }
 
 .page-footer-copyright {
-  color: var(--text-color-caption);
+  color: var(--text-color-soft);
   @include font-size(-2);
 }
 

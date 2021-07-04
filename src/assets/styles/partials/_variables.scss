@@ -47,7 +47,6 @@ html.light {
   --input-bg-color: var(--color-white);
   --input-border-color-focus: var(--color-black-30);
   --input-border-color: var(--color-black-80);
-  --link-color: var(--color-black);
   --main-bg-color: var(--color-white);
   --navbar-bg-color: var(--color-black-15);
   --navbar-box-shadow: 0 0 0.2rem 0 hsla(0, 0%, 0%, 0.8);
@@ -65,9 +64,10 @@ html.light {
   --tag-bg-color: var(--color-black-92);
   --tag-text-color-focus: var(--color-white);
   --tag-text-color: var(--color-black-10);
+  --text-color-link: var(--color-black);
+  --text-color-soft: var(--color-black-35);
   --text-color-emphasis: var(--color-black-10);
   --text-color-normal: var(--color-black-10);
-  --text-color-caption: var(--color-black-35);
 }
 
 html.dark {
@@ -85,7 +85,6 @@ html.dark {
   --input-bg-color: var(--color-black-20);
   --input-border-color-focus: var(--color-black-70);
   --input-border-color: var(--input-bg-color);
-  --link-color: var(--color-white);
   --main-bg-color: var(--color-black-8);
   --navbar-bg-color: var(--color-black-12);
   --navbar-box-shadow: 0 0 8px 0 hsla(0, 0%, 0%, 0.8);
@@ -103,7 +102,8 @@ html.dark {
   --tag-bg-color: var(--color-black-20);
   --tag-text-color-focus: var(--color-black);
   --tag-text-color: var(--color-white);
+  --text-color-link: var(--color-white);
+  --text-color-soft: var(--color-black-60);
   --text-color-emphasis: var(--color-white);
   --text-color-normal: var(--color-black-75);
-  --text-color-caption: var(--color-black-60);
 }
