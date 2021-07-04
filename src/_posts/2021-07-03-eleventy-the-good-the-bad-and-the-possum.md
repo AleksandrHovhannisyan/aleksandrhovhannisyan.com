@@ -56,7 +56,7 @@ module.exports = (eleventyConfg) => {
 
 Eleventy exposes all of its internal APIs to this module, meaning you can do things like:
 
-- [Specifying source and output directories](https://www.11ty.dev/docs/config/#configuration-options)
+- [Specifying source and output directories](https://www.11ty.dev/docs/config/#configuration-options).
 - [Choosing your template engine](https://www.11ty.dev/docs/languages/) from a total of ten supported languages.
 - [Adding custom or third-party plugins](https://www.11ty.dev/docs/plugins/), like for syntax highlighting or markdown.
 - [Writing custom shortcodes](https://www.11ty.dev/docs/shortcodes/) for reuse in templates.
@@ -341,7 +341,7 @@ Debug mode is awesome—11ty logs information about every single thing that it d
 
 ## The Bad: What I Don't Like About 11ty
 
-An honest review of Eleventy wouldn't be one if I claimed that the framework isn't without its flaws. Having said that, I still think this is one of the best static site generators around, and you should definitely give it a shot. Some of the points below borer on nitpicking—that's just how good 11ty is.
+An honest review of Eleventy wouldn't be one if I claimed that the framework isn't without its flaws. Having said that, I still think this is one of the best static site generators around, and you should definitely give it a shot. Some of the points below border on nitpicking—that's just how good 11ty is.
 
 ### 1. It Requires More Configuration
 
