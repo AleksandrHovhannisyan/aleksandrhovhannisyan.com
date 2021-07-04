@@ -25,6 +25,7 @@
   background-color: var(--navbar-bg-color);
   box-shadow: var(--navbar-box-shadow);
   height: 100%;
+  @include font-size(-1);
 
   // Mobile only
   &.opened {
@@ -78,21 +79,14 @@
   align-items: center;
   @include focus-outline((color: var(--color-white), offset: 0.4rem)...);
 
-  .logotype {
-    height: 2.2rem;
-    width: auto;
-
-    path {
-      fill: var(--navbar-text-color);
-      stroke: var(--navbar-text-color);
-    }
+  .website-name {
+    color: var(--navbar-text-color);
   }
 
   &:hover,
   &:focus {
-    .logotype path {
-      stroke: var(--color-white);
-      fill: var(--color-white);
+    .website-name {
+      color: var(--color-white);
     }
   }
 }
@@ -189,7 +183,6 @@
   margin: 0 1.2rem;
   display: block;
   color: var(--navbar-text-color);
-  @include font-size(-1);
   @include font-weight('regular');
 }
 
