@@ -11,17 +11,13 @@
 }
 
 .skip-navigation {
+  top: 50%;
+  transform: translate(0.8rem, -50%);
   padding: 0.8rem;
   color: var(--navbar-text-color);
   z-index: z-index('navbar') + 1;
   @include font-size(-1);
   @include font-weight('regular');
-
-  &:focus {
-    left: 0.8rem;
-    top: 50%;
-    transform: translateY(-50%);
-  }
 }
 
 .navbar {
@@ -67,6 +63,7 @@
 }
 
 .navbar-container {
+  position: relative;
   align-items: center;
   display: flex;
   height: 100%;
@@ -363,8 +360,14 @@
 }
 
 @include tablet {
+  .navbar-header {
+    position: unset;
+  }
+
   .navbar,
   .navbar.opened {
+    box-shadow: none;
+
     .navbar-menu {
       position: static;
       display: flex;
