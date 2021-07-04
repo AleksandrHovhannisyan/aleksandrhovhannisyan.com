@@ -1,15 +1,85 @@
 @import '../mixins';
 
 #page-footer {
-  background: var(--footer-bg-color);
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 1.6rem;
+  text-align: center;
+  @include font-size(-1);
+}
+
+.page-footer-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  justify-content: space-between;
+  padding-top: 3.2rem;
+  padding-bottom: 3.2rem;
+  border-top: solid 1px var(--text-color-caption);
+}
+
+.page-footer-hello {
+  margin-bottom: 0.8rem;
+  @include font-weight('bold');
+  @include font-size(4);
+}
+
+.page-footer-goodbye {
+  max-width: 38ch;
+  margin-bottom: 1.6rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .page-footer-copyright {
-  color: var(--footer-text-color);
-  text-align: center;
-  @include font-size(-1);
+  color: var(--text-color-caption);
+  @include font-size(-2);
+}
+
+.page-footer-links {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  gap: 2.4rem;
+}
+
+.page-footer-pages,
+.page-footer-socials {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 2.4rem;
+}
+
+.page-footer-socials {
+  svg {
+    width: 2rem;
+    height: 2rem;
+    fill: currentColor;
+  }
+}
+
+.page-footer-link {
+  display: flex;
+  @include focus-outline((offset: 0.4rem)...);
+  @include underlined-link($initially-underlined: false);
+}
+
+@include tablet {
+  #page-footer {
+    text-align: start;
+  }
+  .page-footer-links {
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .page-footer-goodbye {
+    margin-left: unset;
+    margin-right: unset;
+  }
+  .page-footer-container {
+    flex-direction: row;
+    gap: 1.6rem;
+  }
 }

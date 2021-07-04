@@ -1,5 +1,27 @@
 <footer id="page-footer">
-  <div class="page-footer-copyright centered">
-    <span aria-hidden="true">&copy;</span> Copyright {{ site.author }}, 2019–Present
+  <div class="page-footer-container centered">
+    <div class="page-footer-info">
+      <div class="page-footer-hello">Thanks for reading!</div>
+      <div class="page-footer-goodbye">I hope you found what you were looking for. Here are some useful links before you go.</div>
+      <div class="page-footer-copyright"><span aria-hidden="true">&copy;</span> Copyright {{ site.author }}, 2019–Present</div>
+    </div>
+    <div class="page-footer-links">
+      <ul class="page-footer-pages" aria-label="Pages">
+        <li><a href="/about/" class="page-footer-link">About</a></li>
+        <li><a href="/art/" class="page-footer-link">Art</a></li>
+        <li><a href="/contact/" class="page-footer-link">Contact</a></li>
+        <li><a href="/feed.xml" class="page-footer-link">RSS</a></li>
+        <li><a href="/sitemap.xml" class="page-footer-link">Sitemap</a></li>
+      </ul>
+      <ul class="page-footer-socials" aria-label="Social media">
+        {%- for social in socials -%}
+          <li>
+            <a href="{{ social.url }}" target="_blank" rel="noreferrer noopener" class="page-footer-link">
+              {% socialIcon social.icon %}
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
   </div>
 </footer>
