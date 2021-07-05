@@ -24,21 +24,6 @@
   font-display: swap;
   src: local(''), url('/assets/fonts/fira-sans-v10-latin-italic.woff2') format('woff2');
 }
-// fira-sans-500 - latin
-@font-face {
-  font-family: 'Fira Sans';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: local(''), url('/assets/fonts/fira-sans-v10-latin-500.woff2') format('woff2');
-}
-// fira-sans-500italic - latin
-@font-face {
-  font-family: 'Fira Sans';
-  font-style: italic;
-  font-weight: 500;
-  src: local(''), url('/assets/fonts/fira-sans-v10-latin-500italic.woff2') format('woff2');
-}
 // fira-sans-700 - latin
 @font-face {
   font-family: 'Fira Sans';
@@ -54,14 +39,6 @@
   font-weight: 700;
   font-display: swap;
   src: local(''), url('/assets/fonts/fira-sans-v10-latin-700italic.woff2') format('woff2');
-}
-// reenie-beanie-regular - latin
-@font-face {
-  font-family: 'Reenie Beanie';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Reenie Beanie'), local('ReenieBeanie'), url('/assets/fonts/reenie-beanie-v11-latin-regular.woff2') format('woff2');
-  font-display: swap;
 }
 // inconsolata-500 - latin
 @font-face {
@@ -85,5 +62,13 @@
   font-style: normal;
   font-weight: 400;
   src: local('Rock Salt Regular'), url('/assets/fonts/rock-salt-v11-latin-regular.woff2') format('woff2');
+  font-display: swap;
+}
+// reenie-beanie-regular - latin
+@font-face {
+  font-family: 'Reenie Beanie';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Reenie Beanie'), local('ReenieBeanie'), url('/assets/fonts/reenie-beanie-v11-latin-regular.woff2') format('woff2');
   font-display: swap;
 }

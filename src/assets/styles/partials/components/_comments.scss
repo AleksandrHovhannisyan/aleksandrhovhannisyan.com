@@ -68,7 +68,7 @@ $meta-spacing: 0.8rem;
 
 .comment-username {
   color: var(--text-color-emphasis);
-  @include font-weight('semiBold');
+  @include font-weight('bold');
   @include underlined-link;
 }
 

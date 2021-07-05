@@ -1,9 +1,5 @@
 @import '../mixins';
 
-.button {
-  @include font-weight("semiBold");
-}
-
 .solid-button {
   background-color: var(--button-bg-color);
   color: var(--button-text-color);

@@ -27,7 +27,7 @@
   background-color: var(--card-bg-color);
   @include transition(opacity);
   @include font-size(1);
-  @include font-weight("semiBold");
+  @include font-weight("bold");
 }
 
 .project-wrapper {

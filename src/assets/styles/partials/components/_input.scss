@@ -19,7 +19,7 @@ label {
   grid-template-columns: min-content min-content;
   grid-column-gap: 0.4rem;
   color: var(--text-color-emphasis);
-  @include font-weight('semiBold');
+  @include font-weight('bold');
 
   &.required::after {
     content: '*';

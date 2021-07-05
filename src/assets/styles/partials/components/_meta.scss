@@ -48,7 +48,7 @@
   background: var(--main-bg-color);
   padding: 0.8rem 1.6rem;
   color: var(--text-color-normal);
-  @include font-weight('semiBold');
+  @include font-weight('bold');
 }
 
 .post-meta-tags {
