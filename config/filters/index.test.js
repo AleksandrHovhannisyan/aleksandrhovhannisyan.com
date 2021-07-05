@@ -8,6 +8,7 @@ const {
   stripNewlines,
   stripHtml,
   toAbsoluteUrl,
+  unslugify,
 } = require('.');
 const site = require('../../src/_data/site');
 
@@ -195,4 +196,14 @@ describe('custom 11ty filters', () => {
       expect(() => toAbsoluteUrl(42)).toThrow();
     });
   });
+  describe('unslugify', () => {
+    it('unslugifies a slugged string', () => {
+      const sluggedString = 'some-slugged-sentence';
+      expect(unslugify(sluggedString)).toEqual('Some Slugged Sentence');
+    })
+    it(`doesn't modify a non-slugged string`, () => {
+      const unsluggedString = 'Full-time employees work full time. Off-topic posts are off topic. Hyphens are tricky.';
+      expect(unslugify(unsluggedString)).toEqual(unsluggedString);
+    })
+  })
 });

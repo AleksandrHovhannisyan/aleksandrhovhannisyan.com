@@ -18,10 +18,12 @@ const {
   toAbsoluteUrl,
   stripNewlines,
   stripHtml,
+  unslugify,
 } = require('./config/filters');
 const { posts, categories, postsByCategory } = require('./config/collections');
 const markdownLib = require('./config/plugins/markdown');
 const { dir, imagePaths } = require('./config/constants');
+const { slugifyString } = require('./config/utils');
 
 module.exports = (eleventyConfig) => {
   // Watch targets
@@ -53,6 +55,8 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addLiquidFilter('toAbsoluteUrl', toAbsoluteUrl);
   eleventyConfig.addLiquidFilter('stripNewlines', stripNewlines);
   eleventyConfig.addLiquidFilter('stripHtml', stripHtml);
+  eleventyConfig.addLiquidFilter('slugify', slugifyString);
+  eleventyConfig.addLiquidFilter('unslugify', unslugify);
   eleventyConfig.addLiquidFilter('getNewestCollectionItemDate', pluginRss.getNewestCollectionItemDate);
 
   // Create custom collections

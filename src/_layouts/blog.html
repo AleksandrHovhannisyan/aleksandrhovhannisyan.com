@@ -5,12 +5,7 @@ isBlogPage: true
 
 <section class="section blog-post-previews">
   {%- assign pageCategory = category.title | default: 'all' -%}
-  {%- assign pageCategoryWords = pageCategory | split: '-' -%}
-  {%- assign pageCategoryReadable = '' -%}
-  {%- for word in pageCategoryWords -%}
-    {%- assign capitalizedWord = word | capitalize -%}
-    {%- assign pageCategoryReadable = pageCategoryReadable | append: capitalizedWord | append: ' ' -%}
-  {%- endfor -%}
+  {%- assign pageCategoryReadable = pageCategory | unslugify -%}
   {%- assign pageCategoryDescription = categoryDescriptions[pageCategory] | default: categoryDescriptions['all'] -%}
   <h1 class="blog-page-title">{{ pageCategoryReadable }} Blog Posts</h1>
   <p class="blog-page-description">{{- pageCategoryDescription -}}</p>
