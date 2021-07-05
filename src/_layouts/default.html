@@ -9,7 +9,7 @@
 {%- assign description = description | default: site.description -%}
 {%- assign keywords = keywords | default: site.keywords -%}
 {%- if isPost -%}
-  {%- assign ogImage = "/assets/images/posts/" | append: page.fileSlug | append: "/" | append: "thumbnail-1280.webp" -%}
+  {%- assign ogImage = "/assets/images/posts/" | append: page.fileSlug | append: "/" | append: "thumbnail-1280.jpeg" -%}
 {%- endif -%}
 {%- comment -%}Sometimes, ogImage is specified in front matter, hence why I don't just do this in the if statement above.{%- endcomment -%}
 {%- if ogImage -%}
