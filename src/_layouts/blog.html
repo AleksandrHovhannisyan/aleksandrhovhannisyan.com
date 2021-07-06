@@ -8,7 +8,7 @@ isBlogPage: true
   {%- assign pageCategoryReadable = pageCategory | unslugify -%}
   {%- assign pageCategoryDescription = categoryDescriptions[pageCategory] | default: categoryDescriptions['all'] -%}
   <h1 class="blog-page-title">{{ pageCategoryReadable }} Blog Posts</h1>
-  <p class="blog-page-description">{{- pageCategoryDescription -}}</p>
+  <p class="blog-page-description">{{- pageCategoryDescription | toHtml -}}</p>
   <nav aria-label="Popular categories">
     <ul class="navigation-tags">
       {%- comment -%}TODO: automate/define elsewhere{%- endcomment -%}
