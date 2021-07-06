@@ -24,10 +24,10 @@
 }
 
 .author-photo {
-  --author-photo-size: 4.4rem;
-  column-gap: 0;
-  height: var(--author-photo-size);
-  width: var(--author-photo-size);
+  --size: 4.4rem;
+  gap: 0;
+  height: var(--size);
+  width: var(--size);
 
   * {
     border-radius: 50%;
@@ -40,7 +40,7 @@
   display: grid;
   grid-auto-flow: column;
   align-items: center;
-  column-gap: 0.4rem;
+  gap: 0.4rem;
 }
 
 .skip-post-meta-tags {
@@ -51,17 +51,14 @@
 }
 
 .post-meta-tags {
-  --post-meta-tag-spacing: 0.8rem;
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: calc(var(--post-meta-item-spacing) - var(--post-meta-tag-spacing));
+  gap: 0.8rem;
 }
 
 .post-meta-tag {
   display: flex;
   align-items: center;
   padding: 0.6rem 1.2rem;
-  margin-right: var(--post-meta-tag-spacing);
-  margin-bottom: var(--post-meta-tag-spacing);
   border-radius: 0.4rem;
 }
