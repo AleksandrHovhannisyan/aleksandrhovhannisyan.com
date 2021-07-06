@@ -30,7 +30,7 @@
 
   .toc-list {
     display: grid;
-    grid-row-gap: 2.4rem;
+    row-gap: 2.4rem;
     list-style: disc; // some headings have numbers already
   }
 
@@ -66,7 +66,7 @@
   figure {
     display: grid;
     grid-auto-flow: row;
-    grid-row-gap: 0.8rem;
+    row-gap: 0.8rem;
 
     figcaption {
       font-style: italic;

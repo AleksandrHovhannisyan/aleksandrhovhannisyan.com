@@ -63,8 +63,7 @@
   padding-top: calc(2 * var(--gap));
   display: flex;
   flex-wrap: wrap;
-  column-gap: var(--gap);
-  row-gap: var(--gap);
+  gap: var(--gap);
 }
 
 .artwork {

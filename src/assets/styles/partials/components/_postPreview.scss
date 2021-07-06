@@ -3,7 +3,7 @@
 .post-preview-grid {
   margin-top: 6.4rem;
   display: grid;
-  grid-row-gap: 6.4rem;
+  row-gap: 6.4rem;
 }
 
 .post-preview {
@@ -55,7 +55,7 @@
       'thumbnail title'
       'thumbnail description'
       'thumbnail meta';
-    grid-column-gap: 3.2rem;
+    column-gap: 3.2rem;
   }
 
   .post-preview-thumbnail-container {

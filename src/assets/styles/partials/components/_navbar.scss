@@ -75,7 +75,7 @@
   flex-shrink: 0;
   display: grid;
   grid-auto-flow: column;
-  grid-column-gap: 0.4rem;
+  column-gap: 0.4rem;
   align-items: center;
   @include focus-outline((color: var(--color-white), offset: 0.4rem)...);
 
@@ -168,7 +168,7 @@
   top: 0;
   display: grid;
   grid-auto-flow: row;
-  grid-row-gap: 3.2rem;
+  row-gap: 3.2rem;
   padding: 3.2rem 0;
 }
 
@@ -369,8 +369,8 @@
     }
 
     .navbar-links {
-      grid-row-gap: 0;
-      grid-column-gap: 2rem;
+      row-gap: 0;
+      column-gap: 2rem;
       grid-auto-flow: column;
       align-items: center;
       box-shadow: none;

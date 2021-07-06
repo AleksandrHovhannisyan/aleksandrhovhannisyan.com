@@ -17,7 +17,7 @@
 label {
   display: grid;
   grid-template-columns: min-content min-content;
-  grid-column-gap: 0.4rem;
+  column-gap: 0.4rem;
   color: var(--text-color-emphasis);
   @include font-weight('bold');
 

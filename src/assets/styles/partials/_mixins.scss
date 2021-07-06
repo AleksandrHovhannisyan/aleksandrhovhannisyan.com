@@ -110,7 +110,7 @@
 
 @mixin rhythm() {
   display: grid;
-  grid-row-gap: calc(var(--line-height) * 1em);
+  row-gap: calc(var(--line-height) * 1em);
 }
 
 @mixin line-clamp($lines, $font-size: var(--font-size), $line-height: var(--line-height)) {

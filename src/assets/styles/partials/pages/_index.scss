@@ -8,7 +8,7 @@
     "title title headshot"
     "subtitle subtitle subtitle";
   grid-template-columns: auto auto min-content;
-  grid-row-gap: 0.8rem;
+  row-gap: 0.8rem;
 }
 
 .hero-banner-title {
@@ -37,7 +37,7 @@
     grid-template-areas:
       "title title headshot"
       "subtitle subtitle subtitle";
-    grid-column-gap: 1.6rem;
+    column-gap: 1.6rem;
   }
 }
 
@@ -47,8 +47,8 @@
       "title headshot"
       "subtitle headshot";
     grid-template-columns: auto min-content;
-    grid-column-gap: 3.2rem;
-    grid-row-gap: 1.6rem;
+    column-gap: 3.2rem;
+    row-gap: 1.6rem;
   }
 
   #headshot {
