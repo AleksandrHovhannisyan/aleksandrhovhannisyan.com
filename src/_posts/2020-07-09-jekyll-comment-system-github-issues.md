@@ -68,7 +68,7 @@ And here's the include file itself (or at least part of it—we'll fill in the s
     <div class="comment-actions">
         <h2>Comments <span id="comments-count"></span></h2>
         <a
-          class="button solid-button plus-button post-comment-button"
+          class="button"
           href="https://github.com/{{ issues_repo }}/issues/{{ issue_id }}"
           >Post comment</a
         >
