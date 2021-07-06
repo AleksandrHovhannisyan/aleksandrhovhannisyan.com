@@ -2,7 +2,6 @@
 
 .project-grid {
   --gap: 4.8rem;
-  list-style: none;
   display: flex;
   flex-wrap: wrap;
   gap: var(--gap);
@@ -85,7 +84,6 @@
 .project-technologies {
   display: flex;
   flex-wrap: wrap;
-  list-style: none;
 }
 
 .project-technology {

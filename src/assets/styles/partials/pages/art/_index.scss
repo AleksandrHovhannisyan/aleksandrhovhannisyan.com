@@ -61,7 +61,6 @@
 #artwork-list {
   --gap: 3.2rem;
   padding-top: calc(2 * var(--gap));
-  list-style: none;
   display: flex;
   flex-wrap: wrap;
   column-gap: var(--gap);

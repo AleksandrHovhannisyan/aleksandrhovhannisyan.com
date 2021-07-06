@@ -5,7 +5,6 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  list-style: none;
   position: relative;
   @include font-size(-1);
   @include font-weight('light');
@@ -55,7 +54,6 @@
   --post-meta-tag-spacing: 0.8rem;
   display: flex;
   flex-wrap: wrap;
-  list-style: none;
   margin-bottom: calc(var(--post-meta-item-spacing) - var(--post-meta-tag-spacing));
 }
 

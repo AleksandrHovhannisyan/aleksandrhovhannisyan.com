@@ -38,11 +38,19 @@
     margin-top: 2.4rem;
   }
 
+  ol {
+    list-style: decimal;
+  }
+
+  ul {
+    list-style: disc;
+  }
+
   ol,
   ul {
     padding-left: clamp(1.2rem, 8vw, 4.8rem);
     display: grid;
-    grid-row-gap: 0.4rem;
+    row-gap: 0.4rem;
 
     li {
       ol, ul {
