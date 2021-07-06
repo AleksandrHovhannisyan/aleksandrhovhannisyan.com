@@ -13,8 +13,6 @@ isPopular: true
   <strong>Update</strong> ({%- include date.html date: "2021-03-12" -%}): Based on feedback, I've updated this post to clarify some points and to offer a more balanced perspective. This isn't a hill I'd die on; at the end of the day, what matters is that you're productive writing CSS. If that means using Tailwind, nobody's stopping you. Below are just some reasons why <em>I</em> don't enjoy using it.
 </aside>
 
-<hr>
-
 You're at a restaurant, and there's an odd item on the menu that you've never heard of before, but it piques your interest. It sounds like it might be worth a try, though you're not sure.
 
 When the waiter approaches your table, you inquire about the dish; he notes that while most people are initially repulsed by its appearance, they should still give it a try because the chef swears that it's *supremely delicious*. So, trusting his judgment, you order the dish and wait.
