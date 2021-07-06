@@ -8,6 +8,7 @@
 
 .post-preview {
   display: grid;
+  row-gap: 1.6rem;
   grid-template-areas:
     'thumbnail'
     'title'
@@ -21,7 +22,6 @@
 
 .post-preview-title {
   grid-area: title;
-  margin-bottom: 1.6rem;
   @include font-size(0);
   @include font-weight('bold');
 
@@ -32,8 +32,6 @@
 }
 
 .post-preview-thumbnail-container {
-  margin-right: 0;
-  margin-bottom: 1.6rem;
   grid-area: thumbnail;
   width: 100%;
 }
@@ -58,10 +56,6 @@
     column-gap: 3.2rem;
   }
 
-  .post-preview-thumbnail-container {
-    margin: 0 0 1.6rem 0;
-  }
-
   .post-preview-thumbnail {
     --aspect-ratio: unset !important;
     height: 100%;
@@ -73,8 +67,6 @@
   }
 
   .post-preview-description {
-    margin-bottom: 1.6rem;
-
     @include line-clamp(2);
   }
 }

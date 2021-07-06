@@ -1,17 +1,13 @@
 @import '../mixins';
 
 .post-meta {
-  --post-meta-item-spacing: 1.6rem;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  gap: 1.6rem;
   position: relative;
   @include font-size(-2);
   @include font-weight('light');
-}
-
-.post-meta-item {
-  margin: 0 var(--post-meta-item-spacing) var(--post-meta-item-spacing) 0;
 }
 
 .post-meta-icon {
@@ -21,11 +17,10 @@
 
 .author-photo {
   --size: 4.4rem;
-  gap: 0;
   height: var(--size);
   width: var(--size);
 
-  * {
+  img {
     border-radius: 50%;
   }
 }
