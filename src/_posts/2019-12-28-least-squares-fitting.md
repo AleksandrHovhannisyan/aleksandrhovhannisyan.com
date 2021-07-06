@@ -36,7 +36,7 @@ Now, as I mentioned earlier, we rarely ever know what $f$ is. So what we'll do i
 
 $$y \approx \hat{f}(x)$$
 
-Note that $y$ and $x$ are just placeholders. Since we're really given $N$ data points—$$x^{(i)}$  and $y^{(i)}$—we should write out the expanded form of the above by plugging in each data pair. That'll give us a clearer picture of what's going on:
+Note that $y$ and $x$ are just placeholders. Since we're really given $N$ data points—$x^{(i)}$  and $y^{(i)}$—we should write out the expanded form of the above by plugging in each data pair. That'll give us a clearer picture of what's going on:
 
 $$y^{(1)} \approx \hat{f}(x^{(1)})\\
 
@@ -116,7 +116,7 @@ Notice that our matrix has dimensions $N \times p$. In practice, $N$ is often mu
 - There exists some unknown relationship, $f$, between $x^{(i)}$ and $y^{(i)}$, such that $f(x^{(i)}) = y^{(i)}$.
 - We approximate $f$ using $\hat{f}(x) = \theta_1 f_1(x) + \theta_2 f_2(x) + \ldots + \theta_p f_p(x)$.
 - We pick the basis functions $f_1, \ldots, f_p$ based on how we think the real function $f$ behaves.
-- We solve for the parameters of our model—$$\theta_1, \ldots, \theta_p$—using the least squares method.
+- We solve for the parameters of our model—$\theta_1, \ldots, \theta_p$—using the least squares method.
 
 ## General Strategy for Solving Least Squares Problems
 
