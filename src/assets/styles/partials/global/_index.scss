@@ -52,25 +52,6 @@ strong {
   .heading-anchor {
     display: none;
   }
-  // .heading-anchor {
-  //   font-size: 0.75em;
-  //   vertical-align: middle;
-  //   opacity: 0;
-
-  //   &:focus {
-  //     opacity: 1;
-  //   }
-  // }
-
-  // &:hover {
-  //   .heading-anchor {
-  //     opacity: 1;
-  //   }
-  // }
-
-  &, code {
-    color: var(--text-color-emphasis);
-  }
 }
 
 h1 {
@@ -102,8 +83,6 @@ p {
 }
 
 a {
-  font-weight: inherit;
-  text-decoration: none;
   @include focus-outline($color: currentColor, $style: solid, $thickness: 0.2rem);
 
   &, code {

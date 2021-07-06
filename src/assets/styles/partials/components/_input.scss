@@ -15,13 +15,12 @@
 }
 
 label {
-  display: grid;
-  grid-template-columns: min-content min-content;
-  column-gap: 0.4rem;
   color: var(--text-color-emphasis);
   @include font-weight('bold');
 
   &.required::after {
     content: '*';
+    margin: 0 0.4rem;
+    vertical-align: middle;
   }
 }

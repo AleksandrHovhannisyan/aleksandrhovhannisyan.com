@@ -26,12 +26,7 @@
 }
 
 @mixin headings {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  :is(h1,h2,h3,h4,h5,h6) {
     @content;
   }
 }
@@ -79,21 +74,6 @@
     &:focus {
       text-decoration: underline;
     }
-  }
-}
-
-@mixin themed($attribute, $light, $dark) {
-  #{$attribute}: $light;
-
-  .dark & {
-    #{$attribute}: $dark;
-  }
-}
-
-@mixin selection-resistant-color($color) {
-  &,
-  &::selection {
-    color: $color;
   }
 }
 

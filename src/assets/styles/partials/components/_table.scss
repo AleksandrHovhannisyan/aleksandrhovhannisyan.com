@@ -1,12 +1,5 @@
 @import '../mixins';
 
-table {
-  border-collapse: collapse;
-  max-width: 100%;
-  overflow-x: auto;
-  display: block;
-}
-
 thead {
   background-color: var(--table-header-bg-color);
   color: var(--table-header-text-color);
