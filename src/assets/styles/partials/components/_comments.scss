@@ -31,11 +31,14 @@
   text-align: center;
 }
 
-.comments-list {
-  width: 100%;
-  padding: 0 !important;
-  display: grid;
-  row-gap: 6.4rem !important;
+.post-content {
+  .comments-list {
+    width: 100%;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    row-gap: 6.4rem;
+  }
 }
 
 $avatar-size: 3.2rem;
