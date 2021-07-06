@@ -55,7 +55,7 @@
 
   $font-size: rnd($font-size-base * math.pow($multiplier, $step), 2);
   $line-height: map-get($step-config, 'line-height');
-  // expose CSS var to later compute other things, e.g., spacing
+  // expose CSS var to later compute other things, e.g., spacing, line clamp
   --line-height: #{$line-height};
   --font-size: #{$font-size};
 
@@ -105,15 +105,6 @@
     &:not(:focus-visible) {
       outline: none;
     }
-  }
-}
-
-@mixin responsive-grid($mobile-min, $desktop-min, $mobile-max: 1fr, $desktop-max: 1fr, $breakpoint: 600px) {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax($mobile-min, $mobile-max));
-
-  @media only screen and (min-width: $breakpoint) {
-    grid-template-columns: repeat(auto-fit, minmax($desktop-min, $desktop-max));
   }
 }
 

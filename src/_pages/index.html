@@ -38,13 +38,13 @@ permalink: /
       I have experience with a wide range of stacks and enjoy working on projects that have a strong UI/UX
       component. Below are just some of my software projects that I'm most proud of.
     </p>
-    <ul class="project-grid card-grid">
+    <ul class="project-grid">
       {%- for project in projects -%}
         <li class="project-wrapper">
           {%- include projectCard.html project: project -%}
         </li>
       {%- endfor -%}
-      <li id="github-cta">
+      <li id="github-cta" class="project-wrapper">
         <h3 class="github-cta-heading">Want to see more of my work?</h3>
         <p class="github-cta-subheading">Check out my other repos:</p>
         <a

@@ -1,7 +1,17 @@
 @import '../mixins';
 
 .project-grid {
+  --gap: 4.8rem;
   list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+}
+
+.project-wrapper {
+  display: flex;
+  flex: 1 1 calc(50% - var(--gap));
+  min-width: 27rem;
 }
 
 .project {
@@ -106,9 +116,7 @@
 }
 
 .github-cta-heading {
-  margin-bottom: 0.8rem;
   @include font-size(0);
-  @include font-weight('bold');
 }
 
 .github-cta-subheading {
