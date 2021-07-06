@@ -29,13 +29,14 @@
   }
 
   .toc-list {
+    --gap: 2.4rem;
     display: grid;
-    row-gap: 2.4rem;
+    row-gap: var(--gap);
     list-style: disc; // some headings have numbers already
   }
 
   .toc-list .toc-list {
-    margin-top: 2.4rem;
+    margin-top: var(--gap);
   }
 
   ol {
@@ -77,13 +78,6 @@
         color: var(--text-color-soft);
       }
     }
-  }
-
-  picture {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
   }
 
   img,
