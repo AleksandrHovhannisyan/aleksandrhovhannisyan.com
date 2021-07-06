@@ -3,7 +3,7 @@ layout: default
 isBlogPage: true
 ---
 
-<section class="section blog-post-previews">
+<article class="blog-post-previews">
   {%- assign pageCategory = category.title | default: 'all' -%}
   {%- assign pageCategoryReadable = pageCategory | unslugify -%}
   {%- assign pageCategoryDescription = categoryDescriptions[pageCategory] | default: categoryDescriptions['all'] -%}
@@ -30,4 +30,4 @@ isBlogPage: true
     </ul>
   </nav>
   {{ content }}
-</section>
+</article>
