@@ -2,63 +2,47 @@
 
 #hero-banner {
   margin-top: 3.2rem;
-  display: grid;
   margin-bottom: 9.6rem;
-  grid-template-areas:
-    "title title headshot"
-    "subtitle subtitle subtitle";
-  grid-template-columns: auto auto min-content;
-  row-gap: 0.8rem;
 }
 
 .hero-banner-title {
-  grid-area: title;
-  align-self: center;
+  margin-bottom: 0.8rem;
 }
 
-.hero-banner-subtitle {
-  grid-area: subtitle;
-}
-
-#headshot {
-  --headshot-size: 10rem;
-  /* padding-bottom used to size the height correctly and reserve space; see _includes/picture.html */
-  width: var(--headshot-size);
-  grid-area: headshot;
-  justify-self: center;
-
-  img {
-    border-radius: 50%;
-  }
-}
-
-@include mobile {
-  #hero-banner {
-    grid-template-areas:
-      "title title headshot"
-      "subtitle subtitle subtitle";
-    column-gap: 1.6rem;
-  }
+.hero-banner-headshot {
+  display: none;
 }
 
 @media screen and (min-width: 600px) {
   #hero-banner {
+    display: grid;
     grid-template-areas:
       "title headshot"
       "subtitle headshot";
     grid-template-columns: auto min-content;
     column-gap: 3.2rem;
-    row-gap: 1.6rem;
+    row-gap: 0.8rem;
   }
 
-  #headshot {
+  .hero-banner-title {
+    grid-area: title;
+    margin: 0;
+  }
+
+  .hero-banner-subtitle {
+    grid-area: subtitle;
+  }
+
+  .hero-banner-headshot {
     --headshot-size: 14rem;
-  }
-}
+    display: unset;
+    width: var(--headshot-size);
+    grid-area: headshot;
+    justify-self: center;
 
-@include tablet {
-  #headshot {
-    align-self: center;
+    img {
+      border-radius: 50%;
+    }
   }
 }
 
