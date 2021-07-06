@@ -41,6 +41,7 @@ strong {
 }
 
 @include headings {
+  color: var(--text-color-emphasis);
   @include font-weight('bold');
 
   // TODO: figure out an alternative since the library makes the links focusable (bad a11y)
