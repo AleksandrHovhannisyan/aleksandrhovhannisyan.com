@@ -228,7 +228,7 @@ By default, `permalink` supports dynamic interpolation of paginated data. In thi
 
 ### 5. It Has an Excellent Image Plugin
 
-With my Jekyll blog, I was [optimizing images by hand](/blog/improve-page-load-speed-in-jekyll-using-the-webp-image-format/) with a Python script generated low-quality placeholders and WebP variants for every single image in a directory. This worked surprisingly well, and it even allowed me to support animated WebP GIFs without slowing down my page load speed. It also kept my build times low since I was generating images statically.
+With my Jekyll blog, I was [optimizing images by hand](/blog/improve-page-load-speed-in-jekyll-using-the-webp-image-format/) with a Python script that generated low-quality placeholders and WebP variants for every single image in a directory. This worked surprisingly well, and it even allowed me to support animated WebP GIFs without slowing down my page load speed. It also kept my build times low since I was generating images statically.
 
 Unfortunately, all of this came at a price: It was immensely tedious work that often held me back from writing posts because I dreaded the thought of having to optimize images by hand. What I wanted was for image optimization to be a core part of the framework I was using, not something I threw together with scripts and duct tape.
 
@@ -353,7 +353,7 @@ Of course, this is true for any new tool that you pick up—there's always a lea
 
 ### 2. Variables Pollute the Global Namespace
 
-If I could change one thing about 11ty, namespacing would be it. This issue bit me quite a few times as I was migrating my site from Jekyll, and I have to admit that I still don't fully understand how 11ty data cascade works.
+If I could change one thing about 11ty, namespacing would be it. This issue bit me quite a few times as I was migrating my site from Jekyll, and I have to admit that I still don't fully understand how the 11ty data cascade works.
 
 In Jekyll, template variables are scoped under their corresponding namespace:
 
