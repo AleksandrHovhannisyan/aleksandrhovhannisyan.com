@@ -41,12 +41,16 @@ strong {
 
 @include headings {
   color: var(--text-color-emphasis);
-  @include font-weight('bold');
 
   // TODO: figure out an alternative since the library makes the links focusable (bad a11y)
   // This is fine for now, but it makes them invisible to everyone.
   .heading-anchor {
     display: none;
+  }
+
+  &,
+  code {
+    @include font-weight('bold');
   }
 }
 
