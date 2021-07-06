@@ -2,6 +2,7 @@
 
 .post-title {
   margin-bottom: 1.6rem;
+  max-width: 25ch;
 }
 
 .post-header {
@@ -72,7 +73,7 @@
     figcaption {
       font-style: italic;
       text-align: center;
-      @include font-size(-1);
+      @include font-size('sm');
 
       &, a {
         color: var(--text-color-soft);

@@ -1,8 +1,8 @@
 {
-  "all": "Programming tutorials, thoughts on software development, and the occasional off-topic post.",
+  "all": "Dev tutorials, thoughts on software development, and the occasional off-topic post.",
   "dev": "Technical posts and tutorials covering a range of languages, technologies, and concepts.",
   "computer-science": "Posts focused on computer science fundamentals and topics typically covered in CS curricula.",
-  "off-topic": "Who says a dev blog has to be just about dev? I also like to write about a bunch of other stuff.",
+  "off-topic": "Who says a dev blog has to be just about dev? I also like to write about other stuff.",
   "jekyll": "Jekyll is a static site generator that lets you use HTML, Sass, and Liquid. But don't underestimate its power—hidden beneath that simple exterior is an elegant, template-based workflow.",
   "math": "Love it or hate it, math is all around us!",
   "frontend": "Tutorials and guides on front-end development.",

@@ -1,12 +1,15 @@
 @import '../mixins';
 
 #hero-banner {
-  margin-top: 3.2rem;
-  margin-bottom: 9.6rem;
+  margin-bottom: 12.8rem;
 }
 
 .hero-banner-title {
   margin-bottom: 0.8rem;
+}
+
+.hero-banner-subtitle {
+  @include font-size('md');
 }
 
 .hero-banner-headshot {
@@ -32,9 +35,11 @@
   .hero-banner-subtitle {
     grid-area: subtitle;
   }
+}
 
+@include tablet {
   .hero-banner-headshot {
-    --headshot-size: 14rem;
+    --headshot-size: 18rem;
     display: unset;
     width: var(--headshot-size);
     grid-area: headshot;
@@ -46,7 +51,7 @@
   }
 }
 
-#software-projects {
+#projects {
   margin-bottom: 0.8rem;
 }
 

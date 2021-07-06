@@ -36,7 +36,7 @@
   p {
     color: var(--color-black-75);
     margin-bottom: 1.6rem;
-    @include font-size(2);
+    @include font-size('lg');
   }
 
   a {

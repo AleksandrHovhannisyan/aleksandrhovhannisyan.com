@@ -9,11 +9,7 @@
 }
 
 html {
-  font-size: math.div(1rem, map-get($type-scale, 'font-size-base')) * 100%;
-
-  @include mobile-lg {
-    font-size: 62.5%;
-  }
+  font-size: 62.5%;
 }
 
 body {
@@ -25,11 +21,11 @@ body {
   color: var(--text-color-normal);
   @include font-family('sans');
   @include font-weight('regular');
-  @include font-size(0);
+  @include font-size('base');
 }
 
 #page-content {
-  padding-top: 6.4rem;
+  padding-top: clamp(6.4rem, 16vw, 9.6rem);
   padding-bottom: 6.4rem;
 }
 
@@ -55,27 +51,27 @@ strong {
 }
 
 h1 {
-  @include font-size(5);
+  @include font-size('xxxl');
 }
 
 h2 {
-  @include font-size(4);
+  @include font-size('xxl');
 }
 
 h3 {
-  @include font-size(3);
+  @include font-size('xl');
 }
 
 h4 {
-  @include font-size(2);
+  @include font-size('lg');
 }
 
 h5 {
-  @include font-size(1);
+  @include font-size('md');
 }
 
 h6 {
-  @include font-size(0);
+  @include font-size('base');
 }
 
 p {

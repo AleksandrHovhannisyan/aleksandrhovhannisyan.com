@@ -39,20 +39,14 @@
   font-family: unquote(map-get($font-families, $family));
 }
 
-@mixin font-weight($humanReadableWeight: inherit) {
-  font-weight: map-get($font-weights, $humanReadableWeight);
+@mixin font-weight($human-readable-weight: inherit) {
+  font-weight: map-get($font-weights, $human-readable-weight);
 }
 
-@mixin font-size($step) {
-  $multiplier: map-get($type-scale, 'scale');
-  $font-size-base: map-get($type-scale, 'font-size-base');
-  $step-config: map-get(map-get($type-scale, 'steps'), $step);
-
-  $font-size: rnd($font-size-base * math.pow($multiplier, $step), 2);
-  $line-height: map-get($step-config, 'line-height');
+@mixin font-size($size) {
   // expose CSS var to later compute other things, e.g., spacing, line clamp
-  --line-height: #{$line-height};
-  --font-size: #{$font-size};
+  --font-size: var(--fs-#{$size});
+  --line-height: var(--lh-#{$size});
 
   font-size: var(--font-size);
   line-height: var(--line-height);

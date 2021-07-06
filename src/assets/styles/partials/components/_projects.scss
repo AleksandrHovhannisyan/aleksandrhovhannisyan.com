@@ -35,7 +35,7 @@
   color: var(--text-color-emphasis);
   background-color: var(--card-bg-color);
   @include transition(opacity);
-  @include font-size(1);
+  @include font-size('md');
   @include font-weight("bold");
 }
 
@@ -69,7 +69,7 @@
 
 .project-name {
   color: var(--text-color-emphasis);
-  @include font-size(0);
+  @include font-size('base');
   @include font-weight('bold');
 }
 
@@ -78,7 +78,7 @@
   grid-auto-flow: column;
   column-gap: 0.4rem;
   align-items: center;
-  @include font-size(-1);
+  @include font-size('sm');
 }
 
 .project-technologies {
@@ -90,7 +90,7 @@
 .project-technology {
   border-radius: 0.2rem;
   padding: 0.4rem 1.2rem;
-  @include font-size(-2);
+  @include font-size('xs');
 }
 
 #github-cta {
@@ -113,7 +113,7 @@
 }
 
 .github-cta-heading {
-  @include font-size(0);
+  @include font-size('base');
 }
 
 .github-cta-subheading {

@@ -7,7 +7,7 @@
   justify-content: center;
   width: 100%;
   text-align: center;
-  @include font-size(-1);
+  @include font-size('sm');
 }
 
 .page-footer-container {
@@ -22,7 +22,7 @@
 .page-footer-hello {
   margin-bottom: 0.8rem;
   @include font-weight('bold');
-  @include font-size(2);
+  @include font-size('lg');
 }
 
 .page-footer-goodbye {
@@ -34,7 +34,7 @@
 
 .page-footer-copyright {
   color: var(--color-black-60);
-  @include font-size(-2);
+  @include font-size('xs');
 }
 
 .page-footer-links {

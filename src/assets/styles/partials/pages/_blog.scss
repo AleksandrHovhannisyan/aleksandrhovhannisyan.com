@@ -1,11 +1,18 @@
 @import '../mixins';
 
+.blog-post-previews {
+  .post-preview-grid {
+    margin-top: 9.6rem;
+  }
+}
+
 .blog-page-title {
   margin-bottom: 1.6rem;
 }
 
 .blog-page-description {
   margin-bottom: 2.4rem;
+  @include font-size('md');
 }
 
 .navigation-tags {
@@ -18,7 +25,7 @@
 .navigation-tag {
   display: flex;
   border-radius: 0.4rem;
-  padding: 0.6rem 1.6rem;
+  padding: 0.8rem 1.6rem;
 }
 
 .pagination-trail {
@@ -29,7 +36,7 @@
 }
 
 .pagination-page {
-  padding: 0.6rem 1.2rem;
+  padding: 0.8rem 1.2rem;
   border-radius: 0.4rem;
-  @include font-size(-1);
+  @include font-size('sm');
 }

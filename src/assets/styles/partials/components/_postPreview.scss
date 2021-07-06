@@ -22,7 +22,7 @@
 
 .post-preview-title {
   grid-area: title;
-  @include font-size(0);
+  @include font-size('base');
   @include font-weight('bold');
 
   a {

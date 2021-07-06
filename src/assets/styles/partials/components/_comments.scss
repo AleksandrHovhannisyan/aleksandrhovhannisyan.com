@@ -76,11 +76,11 @@ $meta-spacing: 0.8rem;
 
 .comment-edited {
   font-style: italic;
-  @include font-size(-1);
+  @include font-size('sm');
 }
 
 .comment-date-posted {
-  @include font-size(-1);
+  @include font-size('sm');
 }
 
 .comment-author-badge {
@@ -88,7 +88,7 @@ $meta-spacing: 0.8rem;
   display: flex;
   align-items: center;
   padding: 0.4rem 0.8rem;
-  @include font-size(-2);
+  @include font-size('xs');
 }
 
 .comment-body {
@@ -100,7 +100,7 @@ $meta-spacing: 0.8rem;
   }
 
   @include headings {
-    @include font-size(0);
+    @include font-size('base');
     margin-top: 0;
   }
 }
