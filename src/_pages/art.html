@@ -29,8 +29,8 @@ preloads:
     <ol id="artwork-list">
       {%- assign artCollection = collections.art | sortByKey: 'data.order' -%}
       {%- for artwork in artCollection -%}
-        <li class="artwork" id="{{ artwork.data.identifier }}">
-          <a class="artwork-link" href="#{{ artwork.data.identifier }}" aria-label="{{ artwork.data.description }}">
+        <li class="artwork" id="{{ artwork.fileSlug }}">
+          <a class="artwork-link" href="#{{ artwork.fileSlug }}" aria-label="{{ artwork.data.description }}">
             {{ artwork.templateContent }}
           </a>
         </li>
