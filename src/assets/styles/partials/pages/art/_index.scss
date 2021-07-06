@@ -1,5 +1,4 @@
 @import '../../mixins';
-@import '../../fonts';
 
 #artwork-page-header {
   text-align: center;
@@ -12,7 +11,7 @@
     max-width: fit-content;
     margin: 0 auto 1.6rem auto;
     position: relative;
-    @include font-family('cursive-title');
+    font-family: Rock Salt, cursive;
 
     &::after {
       @keyframes subtitle-pulse {
@@ -33,9 +32,9 @@
       left: 0;
       animation: subtitle-pulse 1s ease infinite alternate-reverse;
       will-change: transform;
+      font-family: Reenie Beanie, cursive;
       @include font-size('md');
       @include font-weight('regular');
-      @include font-family('cursive-body');
 
       @include mobile-lg {
         @keyframes subtitle-pulse {
@@ -106,8 +105,8 @@
     line-height: 1.2;
     font-size: 2.4rem;
     will-change: transform, opacity;
+    font-family: Reenie Beanie, cursive;
     @include transition('opacity', 'transform');
-    @include font-family('cursive-body');
   }
 
   &:hover,

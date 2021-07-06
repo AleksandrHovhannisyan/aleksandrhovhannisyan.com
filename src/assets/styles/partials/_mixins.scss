@@ -1,6 +1,5 @@
 @use 'sass:math';
 @import './functions';
-@import './fonts';
 @import './breakpoints';
 
 // Inspiration: https://stackoverflow.com/a/49437769/5323344
@@ -36,11 +35,11 @@
 }
 
 @mixin font-family($family) {
-  font-family: unquote(map-get($font-families, $family));
+  font-family: var(--font-#{$family});
 }
 
 @mixin font-weight($human-readable-weight: inherit) {
-  font-weight: map-get($font-weights, $human-readable-weight);
+  font-weight: var(--fw-#{$human-readable-weight});
 }
 
 @mixin font-size($size) {

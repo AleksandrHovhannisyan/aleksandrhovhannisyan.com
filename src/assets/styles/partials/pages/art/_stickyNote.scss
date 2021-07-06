@@ -44,6 +44,6 @@
 .sticky-note-description {
   color: var(--color-black);
   margin: 0;
-  @include font-family('cursive-body');
+  font-family: Reenie Beanie, cursive;
   @include font-size('lg');
 }
