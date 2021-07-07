@@ -20,16 +20,12 @@
 }
 
 .page-footer-hello {
-  margin-bottom: 0.8rem;
-  @include font-weight('bold');
+  color: var(--color-white);
   @include font-size('lg');
 }
 
 .page-footer-goodbye {
-  max-width: 38ch;
-  margin-bottom: 1.6rem;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 0.8rem;
 }
 
 .page-footer-copyright {
