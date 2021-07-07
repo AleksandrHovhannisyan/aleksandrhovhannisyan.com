@@ -21,6 +21,7 @@
 
 .page-footer-hello {
   color: var(--color-white);
+  margin-bottom: 0.8rem;
   @include font-size('lg');
 }
 
