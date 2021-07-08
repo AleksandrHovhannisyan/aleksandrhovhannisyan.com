@@ -64,37 +64,4 @@
   a:not([class]) {
     @include underlined-link($initially-underlined: true);
   }
-
-  figure {
-    display: grid;
-    grid-auto-flow: row;
-    row-gap: 0.8rem;
-
-    figcaption {
-      font-style: italic;
-      text-align: center;
-      @include font-size('sm');
-
-      &, a {
-        color: var(--text-color-soft);
-      }
-    }
-  }
-
-  img,
-  iframe,
-  video {
-    max-width: 100%;
-  }
-
-  img {
-    border-radius: 0.4rem;
-  }
-
-  blockquote {
-    border-left: 0.4rem solid;
-    margin-left: clamp(1.2rem, 4vw, 2.4rem);
-    padding: 0.4rem clamp(2rem, 6vw, 3.2rem);
-    @include rhythm;
-  }
 }

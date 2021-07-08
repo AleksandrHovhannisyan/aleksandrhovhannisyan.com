@@ -10,6 +10,12 @@ textarea {
   font-family: inherit;
 }
 
+img,
+iframe,
+video {
+  max-width: 100%;
+}
+
 button {
   border: none;
   cursor: pointer;
