@@ -19,17 +19,6 @@
 <html lang="en-US">
 <head>
   <meta charset="utf-8">
-    {%- comment -%}Preload optimizations{%- endcomment -%}
-    <link rel="preload" as="style" type="text/css" href="/assets/styles/main.css">
-    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-300.woff2" crossorigin>
-    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-regular.woff2" crossorigin>
-    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-700.woff2" crossorigin>
-    <link rel="modulepreload" as="script" type="text/javascript" href="/assets/scripts/main.bundle.mjs">
-    {%- if preloads -%}
-      {% for preload in preloads %}
-        <link rel="preload" as="{{ preload.as }}" type="{{ preload.type }}" href="{{ preload.href }}" {% if preload.crossorigin %}crossorigin{% endif %}>
-      {%- endfor -%}
-    {% endif %}
     {%- comment -%}Metadata for search engines{%- endcomment -%}
     <title>{{ title }}</title>
     <meta name="description" content="{{ description }}">
@@ -93,6 +82,17 @@
     {%- if ogImage -%}
       <meta name="twitter:image" content="{{ ogImage }}">
     {%- endif -%}
+    {%- comment -%}Preload optimizations{%- endcomment -%}
+    <link rel="preload" as="style" type="text/css" href="/assets/styles/main.css">
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-300.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-regular.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fira-sans-v10-latin-700.woff2" crossorigin>
+    <link rel="modulepreload" as="script" type="text/javascript" href="/assets/scripts/main.bundle.mjs">
+    {%- if preloads -%}
+      {% for preload in preloads %}
+        <link rel="preload" as="{{ preload.as }}" type="{{ preload.type }}" href="{{ preload.href }}" {% if preload.crossorigin %}crossorigin{% endif %}>
+      {%- endfor -%}
+    {% endif %}
 </head>
 <body>
   {%- include navbar.html -%}
