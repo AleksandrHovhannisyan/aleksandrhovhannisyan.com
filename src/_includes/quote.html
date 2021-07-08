@@ -1,6 +1,4 @@
-<figure class="quote">
-  <blockquote cite="{{ cite }}">
-    {{ quote | newlineToBr }}
-    <figcaption>—<cite><a href="{{ cite }}">{{ source }}</a></cite></figcaption>
-  </blockquote>
-</figure>
+<blockquote class="quote" cite="{{ cite }}">
+  {{ quote | newlineToBr }}
+  <div>—<cite><a href="{{ cite }}">{{ source }}</a></cite></div>
+</blockquote>
