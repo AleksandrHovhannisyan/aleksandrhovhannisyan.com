@@ -29,15 +29,15 @@ const specialImages = {
   'author-photo': {
     widths: [ImageWidths.ORIGINAL, ImageWidths.PLACEHOLDER, 44, 88],
   },
-  'favicon': {
+  favicon: {
     widths: [ImageWidths.PLACEHOLDER, 32, 57, 76, 96, 128, 192, 228],
     formats: {
       base: 'png',
-      other: [OPTIMIZED_IMAGE_FORMAT]
+      other: [OPTIMIZED_IMAGE_FORMAT],
     },
     // Really only need this one for the navbar logo. Other sizes are generated for the real favicon.
     sizes: '57px',
-  }
+  },
 };
 
 /** Defaults/fallbacks for any other image that isn't a "special" image. */
@@ -45,7 +45,7 @@ const imageDefaults = {
   widths: [ImageWidths.ORIGINAL, ImageWidths.PLACEHOLDER, 400, 800],
   formats: {
     base: 'jpeg',
-    other: [OPTIMIZED_IMAGE_FORMAT]
+    other: [OPTIMIZED_IMAGE_FORMAT],
   },
   sizes: '100vw',
 };
@@ -104,14 +104,16 @@ const imageShortcode = async (relativeSrc, alt, className, id, clickable) => {
       const representativeEntry = formatEntries[0];
       const formatName = representativeEntry.format;
       const sourceType = representativeEntry.sourceType;
-      return `<source class="lazy-source" type="${sourceType}" srcset="${
-        formatSizes[formatName].smallest.url
-      }" data-srcset="${formatEntries
+
+      const placeholderSrcset = formatSizes[formatName].smallest.url;
+      const actualSrcset = formatEntries
         // We don't need the placeholder image in the srcset
         .filter((image) => image.width !== ImageWidths.PLACEHOLDER)
         // All non-placeholder images get mapped to their srcset
         .map((image) => image.srcset)
-        .join(', ')}" data-sizes="${sizes}">`;
+        .join(', ');
+
+      return `<source type="${sourceType}" srcset="${placeholderSrcset}" data-srcset="${actualSrcset}" data-sizes="${sizes}">`;
     })
     .join('\n')}
     <img

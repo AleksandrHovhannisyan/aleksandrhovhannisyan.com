@@ -16,10 +16,10 @@ const themeToggle = new ThemeToggle({
   },
 });
 
-const lazyImages = document.querySelectorAll('.lazy-img');
-lazyLoad(lazyImages, (img) => {
-  const pictureElement = img.parentElement;
-  const sources = pictureElement.querySelectorAll('.lazy-source');
+const lazyImages = document.querySelectorAll('.lazy-picture');
+lazyLoad(lazyImages, (pictureElement) => {
+  const img = pictureElement.querySelector('img');
+  const sources = pictureElement.querySelectorAll('source');
 
   img.onload = () => {
     pictureElement.classList.add('loaded');
