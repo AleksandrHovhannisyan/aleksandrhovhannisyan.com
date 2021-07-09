@@ -66,4 +66,4 @@ So, farewell, Isshin—and thank you, Miyazaki, for yet another stellar Soulsbor
 
 {% include youtubeEmbed.html id: "Ewu-Evc_qNc", title: "I Beat Sekiro: Shadows Die Twice! (And It Only Took Me 1 Year...)" %}
 
-<script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@0.6.2/lite-youtube.js" defer></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@0.6.2/lite-youtube.js"></script>
