@@ -33,7 +33,7 @@
 
 .post-preview-thumbnail-container {
   grid-area: thumbnail;
-  width: 100%;
+  user-select: none;
 }
 
 .post-preview-thumbnail {
