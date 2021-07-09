@@ -19,7 +19,7 @@
             <a
               class="navbar-link"
               href="/{{ link | downcase }}/"
-              {% if title == link -%}
+              {% if title == link and link != 'Blog' -%}
               aria-current="page"
               id="active-navbar-link"
               {%- endif -%}
