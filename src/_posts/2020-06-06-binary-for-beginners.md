@@ -718,8 +718,7 @@ Answer: <code>10.5</code>.
 
 Now let's repeat the process over in the binary number system. Note that I'm going to strip leading zeros to make my life easier since we're working with two unsigned numbers:
 
-```
-
+```plaintext
       _______
 1100 |1111110
 ```

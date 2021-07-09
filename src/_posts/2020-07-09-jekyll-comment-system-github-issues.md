@@ -85,7 +85,7 @@ And here's the include file itself (or at least part of it—we'll fill in the s
 
 Up at the top, I'm simply creating local variables so I don't have to repeat {% raw %}`include.issue_id`{% endraw %} and {% raw %}`site.issues_repo`{% endraw %} in my markup. Next, I've defined some basic HTML for the comment system itself. Notice that the anchor element (button) points to the corresponding GitHub issue URL:
 
-```
+```plaintext
 {% raw %}https://github.com/{{ issues_repo }}/issues/{{ issue_id }}{% endraw %}
 ```
 
