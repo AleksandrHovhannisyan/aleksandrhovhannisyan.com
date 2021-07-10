@@ -2,7 +2,7 @@
 title: How to Sort Ant Design Tables in React (the Easy Way)
 description: The Ant Design UI library lets you sort tables by one or more columns, using a sorter prop. But the syntax can get quite repetitive. Let's fix that!
 keywords: [sort ant design tables]
-categories: [dev, antd, react, frontend]
+categories: [antd, react, frontend]
 commentsId: 53
 isPopular: true
 ---

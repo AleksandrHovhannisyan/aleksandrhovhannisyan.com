@@ -2,7 +2,7 @@
 title: React, Iframes, and a Back-Navigation Bug
 description: If an iframe re-renders in React, it can interfere with back navigation in your browser. You can fix this by unmounting the iframe.
 keywords: [iframes, react, back navigation, browser history]
-categories: [dev, browsers, react, javascript]
+categories: [browsers, react, javascript]
 commentsId: 84
 ---
 

@@ -2,7 +2,7 @@
 title: 6 Ways to Undo Changes in Git
 description: If you ever find yourself in a sticky situation with git, don't panic. Here are six simple ways you can undo changes in git and clean up your commit history.
 keywords: [undo changes in git, git]
-categories: [dev, git, github]
+categories: [git, github]
 commentsId: 60
 ---
 

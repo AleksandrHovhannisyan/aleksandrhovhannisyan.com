@@ -2,7 +2,7 @@
 title: Optimizing Images for the Web with WebP and Lazy Loading
 description: Images make the web a more beautiful place, but this sometimes comes at a price. Learn how to optimize images for the web using the WebP image format and lazy loading with JavaScript.
 keywords: [optimizing images for the web, optimize images for the web]
-categories: [dev, javascript, webperf, images]
+categories: [javascript, webperf, images]
 commentsId: 56
 lastUpdated: 2020-09-10
 thumbnail: thumbnail.jpg

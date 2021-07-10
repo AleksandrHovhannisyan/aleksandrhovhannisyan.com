@@ -2,7 +2,7 @@
 title: Sass Multiple Transitions Mixin
 description: Tired of repeating the CSS transition property by hand? Use this Sass mixin to easily define multiple CSS transitions in one go.
 keywords: [sass multiple transitions mixin]
-categories: [dev, sass, css]
+categories: [sass, css]
 ---
 
 Way back when I moved my site from plain HTML and CSS to Jekyll, I wanted to take full advantage of Sass and its powerful support for mixins. And one particularly repetitive line of code in my CSS went something like this:

@@ -2,7 +2,7 @@
 title: "Semantic HTML: Building a More Accessible Web"
 description: Accessibility is a hot topic, yet it's also frequently overlooked or executed poorly. Learn how to use semantic HTML to create an accessible user experience.
 keywords: [semantic html, html accessibility]
-categories: [dev, a11y, html]
+categories: [a11y, html]
 commentsId: 48
 canonicalUrl: "https://www.aleksandrhovhannisyan.com/blog/semantic-html-accessibility/"
 ---

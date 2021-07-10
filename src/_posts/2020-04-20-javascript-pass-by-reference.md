@@ -2,7 +2,7 @@
 title: Is JavaScript Pass by Reference?
 description: Developers are often taught that JavaScript passes objects by reference. In reality, JavaScript is a pass-by-value language.
 keywords: [javascript pass by reference]
-categories: [dev, javascript, memory]
+categories: [javascript, memory]
 commentsId: 36
 lastUpdated: 2021-06-13
 thumbnail: thumbnail.jpg

@@ -2,7 +2,7 @@
 title: Be Careful with Async Functions that Return Booleans
 description: Suppose an async function returns a boolean. What happens if you check the return value without awaiting it?
 keywords: [async functions]
-categories: [dev, javascript, promises]
+categories: [javascript, promises]
 isPopular: true
 ---
 

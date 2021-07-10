@@ -2,7 +2,7 @@
 title: How to Test Localhost on Mobile (with ngrok)
 description: Learn how to easily test localhost on mobile using ngrok, without deploying a single line of code.
 keywords: [test localhost on mobile]
-categories: [dev, ngrok, testing, mobile]
+categories: [ngrok, testing, mobile]
 commentsId: 47
 ---
 

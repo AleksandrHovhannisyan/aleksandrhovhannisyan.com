@@ -2,7 +2,7 @@
 title: "What's the Difference Between Hard Links and Soft Links?"
 description: One sticks around for good, while the other one rots. Here's a detailed look at the differences between hard links and soft links in Unix.
 keywords: [hard links vs soft links]
-categories: [dev, unix, file-systems]
+categories: [unix, file-systems]
 lastUpdated: 2020-05-11
 thumbnail: thumbnail.jpg
 ---

@@ -2,7 +2,7 @@
 title: "SVG Tutorial: How to Code SVG Icons by Hand"
 description: Learn the basics of SVGs so you can code your own SVG icons by hand, without always relying on icon libraries.
 keywords: [svg tutorial, svg icons, how to code svg]
-categories: [dev, svg, html, css]
+categories: [svg, html, css]
 lastUpdated: 2021-06-04
 canonicalUrl: https://www.aleksandrhovhannisyan.com/blog/svg-tutorial-how-to-code-svg-icons-by-hand/
 commentsId: 68
