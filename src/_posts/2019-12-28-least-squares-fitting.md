@@ -181,15 +181,19 @@ That gives us precisely the function we wanted.
 
 Here are all three equations for our problem:
 
-$ y^{(1)} = \theta_1 + \theta_2 x^{(1)} \\
+$$
+y^{(1)} = \theta_1 + \theta_2 x^{(1)} \\
 y^{(2)} = \theta_1 + \theta_2 x^{(2)} \\
-y^{(3)} = \theta_1 + \theta_2 x^{(3)} $
+y^{(3)} = \theta_1 + \theta_2 x^{(3)}
+$$
 
 Let's plug in our points:
 
-$ 1 = \theta_1 + \theta_2 (1) \\
+$$
+1 = \theta_1 + \theta_2 (1) \\
 3 = \theta_1 + \theta_2 (2) \\
-3 = \theta_1 + \theta_2 (3) $
+3 = \theta_1 + \theta_2 (3)
+$$
 
 And, in matrix form, this looks like the following:
 
