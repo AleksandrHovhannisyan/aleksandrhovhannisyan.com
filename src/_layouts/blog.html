@@ -18,7 +18,9 @@ isBlogPage: true
           <a
             href="{% if category == "all" %}/blog/{% else %}/categories/{{ category }}/{% endif %}"
             class="tag post-tag navigation-tag{% if pageCategory == category %} active{% endif %}"
-            title="{% if pageCategory != category %}View{% endif %} {% if category == "all" %}all posts{% else %}posts tagged as {{ category }}{% endif %}"
+            {% if category == "all" -%}
+            aria-label="All posts"
+            {%- endif -%}
             {% if pageCategory == category -%}
             aria-current="page"
             {%- endif -%}
