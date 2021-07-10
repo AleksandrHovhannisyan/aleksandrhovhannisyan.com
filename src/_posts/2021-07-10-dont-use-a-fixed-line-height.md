@@ -6,7 +6,7 @@ categories: [css, sass, typography, a11y]
 thumbnail: thumbnail.jpg
 ---
 
-Typography is an important element of any design, both in print and on the web. But when typographical decisions are executed poorly, they can harm the readability of your content, leave a bad impression of your brand, or create a poor user experience.
+Typography is an important element of any design, both in print and on the web. But when typographical decisions are executed poorly, they can harm the readability of your content, leave a bad impression of your brand, and create a poor user experience.
 
 One of the hardest things to get right with typography is picking the ideal line height for your text. Often, developers set a fixed line height on their body text and reduce it for headings:
 
