@@ -2,7 +2,7 @@
 title: Subtle Web Accessibility Issues (And How to Fix Them)
 description: You've scored 100 on Lighthouse's accessibility audit. But is your site actually accessible, or have you overlooked more subtle accessibility issues?
 keywords: [web accessibility]
-categories: [dev, accessibility, html]
+categories: [dev, a11y, html]
 ---
 
 All kinds of people use the web—a good developer's job is to create not only beautiful but also *accessible* user experiences. You can fix some basic accessibility issues by [writing semantic HTML](/blog/semantic-html-accessibility/), but this will only get you so far. Eventually, you'll come to realize that web accessibility isn't just about checking off a few boxes on an audit or scoring 100 on your Lighthouse report.

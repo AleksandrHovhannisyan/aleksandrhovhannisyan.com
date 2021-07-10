@@ -12,7 +12,7 @@ isBlogPage: true
   <nav aria-label="Popular categories">
     <ul class="navigation-tags">
       {%- comment -%}TODO: automate/define elsewhere{%- endcomment -%}
-      {%- assign categories = "all,accessibility,css,webperf,off-topic" | split: ',' -%}
+      {%- assign categories = "all,a11y,css,webperf,off-topic" | split: ',' -%}
       {%- for category in categories %}
         <li>
           <a
