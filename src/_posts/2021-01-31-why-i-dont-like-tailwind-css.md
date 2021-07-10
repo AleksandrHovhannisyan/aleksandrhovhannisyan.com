@@ -211,8 +211,8 @@ const Parent = () => {
   return (
     <Button
       className={classNames("bg-blue-500", "text-white", {
-        activeClass: isActive,
-        disabledClass: isDisabled,
+        [activeClass]: isActive,
+        [disabledClass]: isDisabled,
       })}
     />
   );
