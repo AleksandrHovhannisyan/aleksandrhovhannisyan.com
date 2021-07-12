@@ -1,12 +1,12 @@
 ---
-title: Use Rems and a 62.5% Base Font Size
+title: "Respecting Font Size Preferences: Rems and 62.5% Base Font Size"
 description: Setting your base font size to 62.5% allows you to think in pixels but use rems to respect users' font size preferences.
-keywords: [base font size, "62.5%", rem, font size preferences]
+keywords: [base font size, "62.5%", font size preferences, rem]
 categories: [css, typography, browsers, a11y]
 thumbnail: thumbnail.jpg
 ---
 
-In CSS, there are lots of different units that can be used to size elements on a page—`px`, `vw`, `ch`, `em`, `rem`, and [far too many others](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units) to list here. Of all these units, `rem` happens to be the most reliable for sizing elements, allowing you to scale your UI with the browser's base font size and to respect user preferences for accessibility. Let's understand why `rem` is the ideal unit for font size and how setting the base font size to `62.5%` can make our lives easier while also honoring user preferences.
+In CSS, there are lots of different units that can be used to size elements on a page—`px`, `vw`, `ch`, `em`, `rem`, and [far too many others](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units) to list here. Of all these units, `rem` happens to be the most reliable for sizing elements responsively, allowing you to scale your UI with the browser's base font size and to respect user preferences for accessibility. Let's understand why `rem` is the ideal unit for font size and how setting the base font size to `62.5%` can make our lives easier while also honoring user preferences.
 
 {% include toc.md %}
 
@@ -18,7 +18,7 @@ Pixels are the easiest unit to understand because they're grounded in physical m
 
 ## Respecting Users' Font Size Preferences
 
-Every browser applies a base font size of `16px` to a document, meaning that unstyled body text will have a font size of `16px` out of the box. However, both developers and users can change this behavior. As developers, we can change the font size of the root element (`html`) with CSS so that all elements inherit that new font size. Users can go into their browser's settings (e.g., `chrome://settings/fonts` in Chrome) and configure their preferred font settings:
+Every browser applies a base font size of `16px` to a document, meaning that unstyled body text will have a font size of `16px` out of the box. However, both developers and users can change this behavior. As developers, we can change the font size of the root element (`html`) with CSS so that all elements inherit that new font size. Users can go into their browser's settings (e.g., `chrome://settings/fonts` in Chrome) and configure their font preferences:
 
 {% include img.html src: "chrome-settings.jpg", alt: "The Chrome settings page for changing one's preferred font size. Two sliders can be seen: one for the font size and another for the minimum font size. Sample sentences are shown below those sliders, along with pickers for the user's preferred font family (which, by default, is Times New Roman)." %}
 
@@ -32,7 +32,7 @@ Users can also scale a web page using **browser zoom settings**, in which case p
 
 For example, changing the base font size from `16px` to `18px` is equivalent to setting the page zoom to be `112.5%`. So you could get away with using pixels for all dimensions and leaving it up to users to zoom in your page if they need to.
 
-However, more commonly, users have a preferred font size for their monitor rather than a preferred zoom percentage—after all, it's much easier for users to reason about pixels than it is some arbitrary percentage zoom. Moreover, as in this example, percentages may yield floating-point results that don't appear in the browser settings, forcing a user to choose between the two closest values that are available.
+However, more commonly, users have a preferred font size for their monitor rather than a preferred zoom percentage—after all, it's much easier for users to reason about pixels than it is some arbitrary percentage zoom. Moreover, as in the example above, percentages may yield floating-point results that don't appear in the browser settings, forcing a user to choose between the two closest values that are available.
 
 This means that we should **always respect the user's preferred base font size** rather than forcing them to figure out whether we support zooming only, font size scaling only, or both zooming and font size scaling. You can learn more about respecting user font size preferences in [WCAG Criterion 1.4.4 Resize Text](https://www.w3.org/WAI/WCAG21/Understanding/resize-text.html).
 
@@ -114,7 +114,7 @@ This is because `1.6` and `0.625` are inverses of each other:
 16 ÷ 10 = 1.6
 ```
 
-So multiplying both sides by `0.625` is canceled out by multiplying both sides again by `1.6`. However, the root font size on the `html` element is still `10px`, which means we have a single source of truth for scalable font sizing.
+So multiplying both sides by `0.625` is canceled out by multiplying both sides again by `1.6`. However, the root font size on the `html` element is still `10px`, which means we have a single source of truth for scalable font sizing. **Everything scales proportionally**.
 
 It helps to look at an example, so let's assume that we have this CSS:
 
@@ -130,7 +130,7 @@ h1 {
 }
 ```
 
-Now, suppose that a user goes into their browser settings and sets their preferred base font size to `20px`. Does this create any problems for us? Let's see how the math pans out:
+Now, suppose that a user goes into their browser settings and sets their preferred base font size to `20px`. Does this create any problems for us? Let's see how the math pans out for body text:
 
 ```plaintext
 1rem = 20px
@@ -148,7 +148,9 @@ What about the `4.8rem`-sized heading? After the user sets their base font size 
 12.5 × 4.8 = 60
 ```
 
-This is great because it means that our heading scales proportionally to be a larger font size, so the ratio between the `h1`'s size and the base font size is constant:
+This may seem strange since we actually wanted `4.8rem` to equal `48px`, but remember: That's only true when we assume a base font size of `16px`, which isn't the case here. If a user increases their preferred base font size, all font sizes will scale up proportionally (when using rems).
+
+So in this case, the fact that the heading is `60px` is a good thing because it means that the ratio between the `h1`'s size and the base font size remained unchanged:
 
 ```plaintext
 Before: 48px ÷ 16px = 3
