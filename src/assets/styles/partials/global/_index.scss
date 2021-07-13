@@ -43,10 +43,8 @@ strong {
 @include headings {
   color: var(--text-color-emphasis);
 
-  // TODO: figure out an alternative since the library makes the links focusable (bad a11y)
-  // This is fine for now, but it makes them invisible to everyone.
   .heading-anchor {
-    display: none;
+    @include underlined-link($initially-underlined: false);
   }
 
   &,

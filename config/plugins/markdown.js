@@ -11,10 +11,9 @@ const markdownLib = markdownIt({
 })
   .use(markdownItAnchor, {
     slugify: slugifyString,
-    permalink: markdownItAnchor.permalink.ariaHidden({
-      symbol: '#',
+    tabIndex: false,
+    permalink: markdownItAnchor.permalink.headerLink({
       class: 'heading-anchor',
-      placement: 'after',
     }),
   })
   .use(markdownItTocDoneRight, {
