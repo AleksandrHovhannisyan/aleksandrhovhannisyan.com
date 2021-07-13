@@ -4,6 +4,7 @@ description: In typography, the ideal line height for text depends on a variety 
 keywords: [line height, ideal line height, typography]
 categories: [css, sass, typography, a11y]
 thumbnail: thumbnail.jpg
+lastUpdated: 2021-07-13
 ---
 
 Typography is an important element of any design, both in print and on the web. But when typographical decisions are executed poorly, they can harm the readability of your content, leave a bad impression of your brand, and create a poor user experience.
@@ -26,23 +27,60 @@ While this may seem sufficient, it's not a good practice from a design and acces
 
 ## You Need More Line Heights
 
-As mentioned above, it's not enough to just set one line height for body text and another for all headings. In practice, you'll need to use more line heights, at different font sizes, to achieve optimal readability.
+The ideal line height for text depends on a variety of factors. In practice, this means that you'll need more line heights than just one or two.
 
 ### 1. Ideal Line Height Depends on the Font Size
 
-There's an inverse relationship between the line height and font size of a paragraph of text. This means that larger font sizes need smaller line heights, while smaller font sizes need to be paired with larger line heights.
+When exploring the relationship between font size and line height, it's important to distinguish between **absolute-unit line height** and **relative line height**.
 
-Intuitively, this should make sense. Larger font sizes exaggerate the height of text, meaning your eyes have to move a greater distance vertically to go from one line to another. If you don't reduce the line height of the text, your lines will be unnaturally spaced apart and difficult to read.
+The former expresses line height in absolute units, usually pixels:
 
-Similarly, if you're using smaller font sizes, you need to increase the line height slightly. If you don't, the lines of text will be too close to each other.
+```css
+.element {
+  font-size: 16px;
+  line-height: 25.6px;
+}
+```
+
+The latter expresses line height using relative measurements—typically a [unitless line height](https://allthingssmitty.com/2017/01/30/nope-nope-nope-line-height-is-unitless/#disqus_thread) like `1.6`, which translates to "`1.6` times the current font size." The code below specifies a unitless line height that corresponds to the same pixel line height as in the code above:
+
+```css
+.element {
+  font-size: 16px;
+  /* 1.6 × 16px = 25.6px */
+  line-height: 1.6;
+}
+```
+
+The only key difference is that a unitless line height expresses a proportional relationship, whereas absolute line heights do not reference the font size at all.
+
+#### Absolute Line Height
+
+Absolute font sizes and absolute line heights have a **direct relationship** with one another, meaning that larger font sizes need larger line heights, and smaller font sizes need smaller line heights. Intuitively, this should make sense—at larger font sizes, characters take up more vertical space, so we need to increase the line height to provide sufficient space between lines of text.
+
+However, it's important to understand that while font size and line height are directly related in this manner, this doesn't mean that the line height should increase *proportionally* as the font size increases. This becomes clearer when we consider unitless line height.
+
+#### Unitless Line Height
+
+Unitless line heights are **inversely related** to font size. As the rendered font size increases, the rendered line height should increase too, but by a *lesser amount than before*. Put differently, the line height needs to slow its growth so that it's not too exaggerated at larger font sizes. Thus, unitless line heights must *decrease* with larger fonts. If we had a line height of `1.6` before, we'll need a smaller line height for larger font sizes—maybe `1.4` or `1.3`. Similarly, as the font size decreases, we need to *increase* our unitless line height.
+
+Let's look at an example. Imagine that we have a `48px` heading that uses the same `1.6` unitless line height as the body text. Thus, it has a rendered line height of `76.8px`. This creates too much spacing between lines, making the heading difficult to read:
+
+{% include figure.html src: "too-much-line-height.png", alt: "A sample paragraph with a large heading rendered above it at 48px size and with a line height of 1.6. The body font also has a line height of 1.6 but a smaller font size. The heading is uncomfortable to read.", caption: "The gap is too big between adjacent lines of heading text, creating a visual imbalance." %}
+
+So while the rendered line height for this font size does in fact need to be greater than the rendered line height for body text, the *ratio* needs to decrease to tighten the gap and improve readability. For this particular font, we might opt for a unitless line height of `1.2`. That gives us a rendered line height of `57.6px`. In absolute terms, this is still larger than the body's line height, but the ratio has decreased, making the heading easier to read:
+
+{% include figure.html src: "right-line-height.png", alt: "A sample paragraph with a large heading rendered above it at 48px size and with a line height of 1.2. The heading is now much easier to read.", caption: "Takeaway: At larger font sizes, unitless line heights need to decrease to maintain readability." %}
 
 ### 2. Ideal Line Height Depends on the Line Length
 
-In a similar vein, line height also depends on the *length* of a line of text; this is covered in detail in a Smashing Magazine article on [balancing line length and font size in responsive web design](https://www.smashingmagazine.com/2014/09/balancing-line-length-font-size-responsive-web-design/). As a rule of thumb, shorter lines of text need shorter line heights. Conversely, wider text needs more line height. Striking the right balance between line length and line height makes it easier for readers to scan your text and distinguish paragraphs from sentences. This is why designers typically recommend that you limit the width of your copy to somewhere between 45 and 75 characters. Anything wider than this risks hurting the readability of your text. And the wider your text is, the more line height you're going to need, which can start to look unnatural.
+Line height also depends on *line length*, or the number of characters in a line of text. This is covered in detail in a Smashing Magazine article on [balancing line length and font size in responsive web design](https://www.smashingmagazine.com/2014/09/balancing-line-length-font-size-responsive-web-design/). As a rule of thumb, shorter lines of text need shorter line heights. Conversely, wider text needs more line height.
+
+Striking the right balance between line length and line height makes it easier for readers to scan your text and distinguish paragraphs from sentences. This is why designers typically recommend that you limit the width of your copy to somewhere between **45 and 80 characters** (and so does [WCAG Criterion 1.4.8](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-visual-presentation.html)). Anything wider than this risks hurting the readability of your text. And the wider your text is, the more line height you're going to need, which can start to look unnatural.
 
 ### 3. Ideal Line Height Depends on the Font Family
 
-There's another reason why you can't always set a single line height on your copy: The ideal line height depends on your chosen font family. There are a few font properties you need to consider before you can come up with the right line height:
+There's another reason why you can't always set a single line height on your copy, especially from one site to another: The ideal line height also depends on your chosen font family. There are a few font properties you need to consider before you can come up with the right line height:
 
 - The font's **x-height**, or the height of the lowercase letter `x`.
 - The **font ascent**, or the distance from the top of the tallest letters to the baseline.
@@ -50,13 +88,13 @@ There's another reason why you can't always set a single line height on your cop
 
 These related properties dictate the ideal line height for text. As a general rule of thumb, fonts with a larger x-height or font ascent/descent need more line height to give your sentences more breathing room so that they're not too close to each other. Conversely, fonts with smaller x heights and ascent/descent may need a tighter line height so that there aren't large gaps of spacing between adjacent lines of text.
 
-This means that when you select a font for your website, you need to play around with the line heights until things look right. Together with the considerations above for line length and font size, this means that choosing the perfect line height for your copy is much more nuanced than just selecting one value for paragraphs and another for headings.
+When you select a font family, you need to inspect it carefully and play around with the line heights until things look right. Together with the considerations above for line length and font size, this means that choosing the perfect line height for your copy is much more nuanced than just selecting one value for paragraphs and another for headings.
 
-#### Be Careful with System Fonts
+#### Be Careful with System Font Stacks
 
 With a bit of practice, you can train your eyes to approximate the ideal line height for text, given a font family, a particular font size, and a particular line length.
 
-But things aren't so easy if you're using a system font stack—one that specifies fonts supported out of the box by common operating systems:
+But things aren't so easy if you're using multiple fallback system fonts:
 
 ```css
 html {
@@ -64,7 +102,11 @@ html {
 }
 ```
 
-System font stacks are a popular option among sites that want to avoid the network load of serving vendor fonts. But while this is lightweight, it's also unpredictable—because now, you're no longer working with a single reference font. This means that you'll be selecting your line heights and font sizes relative to the system font on whatever operating system you use for design work, which can bias the results in favor of one OS. So while your chosen line heights and font sizes may look good on one operating system, they may look different on another system. This can create accessibility issues because choosing the wrong line height or font size for your copy can harm readability. In some cases, if your line height is *too tight*, Lighthouse may complain that clickable elements (like inline links) are too close to each other.
+System font stacks are a popular option among sites that want to avoid the network load of serving vendor fonts. But while this is lightweight, it's also unpredictable—because now, you're no longer working with a single reference font. Thus, you'll be selecting your line heights and font sizes relative to the system font on whatever operating system you use for design work, which can bias the results in favor of one OS.
+
+So while your chosen line heights and font sizes may look good on one OS, they may look different on another. This can create accessibility issues because choosing the wrong line height or font size for your copy can harm readability. In some cases, if your line height is *too tight*, Lighthouse may complain that clickable elements (like inline links) are too close to each other.
+
+If you really want to take the system font route, I recommend picking a font that exists on most operating systems, like Georgia (serif) or Verdana (sans-serif). That way, you still have a single reference font against which you can design your site, and you have more of an assurance that your UI will look consistent from one OS to another.
 
 ## Solution: Create a Type Scale
 
@@ -83,32 +125,33 @@ You can easily create design tokens for typography using CSS custom properties (
 {% include codeHeader.html file: "global.css" %}
 ```css
 html {
-  /* 1rem = 10px if base font size is 16px */
-  font-size: 62.5%;
-
-  --fs-sm: 1.6rem;
+  --fs-sm: 14px;
   --lh-sm: 1.75;
 
-  --fs-base: 1.8rem;
-  --lh-base: 1.67;
+  --fs-base: 16px;
+  --lh-base: 1.6;
 
-  --fs-md: 2rem;
-  --lh-md: 1.6;
+  --fs-md: 20px;
+  --lh-md: 1.5;
   --ls-md: 0;
 
-  --fs-lg: 2.4rem;
+  --fs-lg: 24px;
   --lh-lg: 1.4;
 
-  --fs-xl: 3.2rem;
+  --fs-xl: 32px;
   --lh-xl: 1.37;
 
-  --fs-xxl: 3.6rem;
+  --fs-xxl: 36px;
   --lh-xxl: 1.3;
 
-  --fs-xxxl: 4.4rem;
+  --fs-xxxl: 44px;
   --lh-xxxl: 1.2;
 }
 ```
+
+> Note that, ideally, you'd want to use rems for font sizes to [respect users' font size preferences](/blog/respecting-font-size-preferences-rems-62-5-percent/) and create scalable UI. I used pixels to keep this tutorial simple.
+
+Notice how the unitless line heights decrease for larger font sizes and increase for smaller font sizes, as we learned earlier. You may wish to rename the variable to make it clear that `lh-lg` is not a "large line height," but that's more of a semantic concern than a functional one.
 
 ### A Sass Mixin for Consistent Font Sizes and Line Heights
 
@@ -125,7 +168,7 @@ If you're using a preprocessor like Sass, you can then define a mixin to apply b
 You would then use the mixin like so:
 
 ```scss
-.el {
+.element {
   @include font-size('md');
 }
 ```
@@ -133,7 +176,7 @@ You would then use the mixin like so:
 And Sass would interpolate the argument to generate this output CSS:
 
 ```css
-.el {
+.element {
   font-size: var(--fs-md);
   line-height: var(--lh-md);
 }
