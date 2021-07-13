@@ -1,5 +1,5 @@
 {%- assign numWords = content | stripHtml | wordCount -%}
-{%- assign wordsPerMinute = 250.0 -%}
+{%- assign wordsPerMinute = 200.0 -%}
 {%- assign readingLengthMinutes = numWords | dividedBy: wordsPerMinute | ceil -%}
 <ul class="post-meta">
   {% if showProfilePhoto %}
