@@ -145,4 +145,4 @@ As a final step, you'll want to consider mobile devices and adjust your line hei
 
 Line heights are tricky to get right, especially since there are so many considerations to keep in mind. Be sure to vary your line height for each font size, pick the right line height based on your chosen font family, and consider the width of your text as it relates to your font metrics.
 
-{% include unsplashAttribution.md name: "Striving Blogger", username: "strivingblogger", photo_id: "Hx-4TbpsoIw" %}
+{% include unsplashAttribution.md name: "Striving Blogger", username: "strivingblogger", photoId: "Hx-4TbpsoIw" %}

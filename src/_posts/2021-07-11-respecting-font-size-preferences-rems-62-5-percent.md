@@ -150,4 +150,4 @@ After:  60px ÷ 20px = 3
 
 Using a base font size of `62.5%`, together with `rem`, provides the ideal compromise between respecting user font size preferences and making it easier to translate pixel measurements into responsive units. Everyone wins!
 
-{% include unsplashAttribution.md name: "Chrissie Giannakoudi", username: "chrissiey", photo_id: "aVDnC9mgxBY" %}
+{% include unsplashAttribution.md name: "Chrissie Giannakoudi", username: "chrissiey", photoId: "aVDnC9mgxBY" %}
