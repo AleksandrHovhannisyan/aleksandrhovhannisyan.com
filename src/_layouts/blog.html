@@ -20,7 +20,7 @@ isBlogPage: true
             class="tag post-tag navigation-tag{% if pageCategory == category %} active{% endif %}"
             {% if category == "all" -%}
             aria-label="All posts"
-            {%- endif -%}
+            {% endif -%}
             {% if pageCategory == category -%}
             aria-current="page"
             {%- endif -%}
