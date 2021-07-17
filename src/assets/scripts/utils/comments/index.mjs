@@ -51,7 +51,7 @@ export const renderComments = async (comments) => {
                             class="comment-username"
                             >${user.login}</a
                         >
-                        <div class="comment-meta comment-date-posted">commented&nbsp;
+                        <div class="comment-meta comment-date-posted">commented
                         <time datetime="${comment.created_at}">${datePosted}</time></div>
                         ${postedByAuthor ? '<span class="comment-meta tag comment-author-badge">Author</span>' : ''}
                         ${edited ? `<span class="comment-meta comment-edited">Edited</span>` : ''}
