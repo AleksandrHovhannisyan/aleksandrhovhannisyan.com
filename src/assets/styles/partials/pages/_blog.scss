@@ -2,7 +2,7 @@
 
 .blog {
   .post-preview-grid {
-    margin-top: clamp(6.4rem, 17vw, 9.6rem);
+    margin-top: clamped(6.4rem, 9.6rem);
   }
 
   &-title {

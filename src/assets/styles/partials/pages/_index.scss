@@ -1,7 +1,8 @@
 @import '../mixins';
+@import '../functions';
 
 .hero-banner {
-  margin-bottom: clamp(9.6rem, 27vw, 12.8rem);
+  margin-bottom: clamped(9.6rem, 12.8rem);
 
   &-title {
     margin-bottom: 0.8rem;

@@ -24,7 +24,7 @@ body {
 }
 
 #page-content {
-  --padding-y: clamp(6.4rem, 16vw, 9.6rem);
+  --padding-y: #{clamped(6.4rem, 9.6rem)};
   padding-top: var(--padding-y);
   padding-bottom: var(--padding-y);
 }

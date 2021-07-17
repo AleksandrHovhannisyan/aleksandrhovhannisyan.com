@@ -1,9 +1,10 @@
 @use 'sass:math';
+@import './breakpoints';
 @import './zIndex';
 
 @function toRem($px) {
-  $rem: math.div($px, 16px);
-  @return #{$rem}rem;
+  $rem: math.div($px, 10px) * 1rem;
+  @return $rem;
 }
 
 @function z-index($key) {
@@ -20,4 +21,12 @@
   }
 
   @return math.div(math.round($number * $n), $n);
+}
+
+/// Returns a CSS clamp(...) declaration, with the responsive argument computed automatically.
+/// It's assumed that min should correspond to the minimum mobile breakpoint for design work.
+@function clamped($min, $max) {
+  $mobile-min-rems: toRem(map-get($media-breakpoints, 'mobile-min'));
+  $min-to-mobile-ratio: rnd(math.div($min, $mobile-min-rems), 2) * 100;
+  @return clamp(#{$min}, #{$min-to-mobile-ratio}vw, #{$max});
 }
