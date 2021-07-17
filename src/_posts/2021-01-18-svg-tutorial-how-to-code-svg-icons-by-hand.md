@@ -3,7 +3,7 @@ title: "SVG Tutorial: How to Code SVG Icons by Hand"
 description: Learn the basics of SVGs so you can code your own SVG icons by hand, without always relying on icon libraries.
 keywords: [svg tutorial, svg icons, how to code svg]
 categories: [svg, html, css]
-lastUpdated: 2021-06-04
+lastUpdated: 2021-07-17
 canonicalUrl: https://www.aleksandrhovhannisyan.com/blog/svg-tutorial-how-to-code-svg-icons-by-hand/
 commentsId: 68
 isPopular: true
@@ -480,10 +480,10 @@ A `<polyline>` is defined with the help of the `points` attribute, like this:
 </svg>
 ```
 
-This is the simplest possible `<polyline>` that you can create, and it defines a horizontal line from `(3, 4)` to `(21, 4)`:
+This is the simplest possible `<polyline>` that you can create; it defines a horizontal line from `(3, 4)` to `(21, 4)`:
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
     <polyline points="3 4, 21 4" />
   </svg>
 </div>
@@ -523,14 +523,14 @@ From `(3, 4)`, we'll travel horizontally until we're an equal distance from the 
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" style="fill: black !important;">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" style="fill: currentColor !important;">
     <polyline points="3 8, 3 4, 21 4" />
   </svg>
 </div>
 
-Hmm, that doesn't look quite right (though if you're viewing this tutorial in dark mode, the issue may not be noticeable). Did we do something wrong?
+Hmm, that's not right! The left and top edges of the letter `T` were drawn correctly, but there's a weird fill in between the two that creates an unwanted triangular shape. What's up with that?
 
-There *is* one more SVG property worth mentioning briefly before we move on, and that's `fill`. Just like `stroke` defines the color of the lines of an SVG shape, `fill` defines the background color of the SVG. By default, for most shapes, `fill` is set to `black`. In this case, though, since we only want to draw lines and don't want any fill for our icon, we can set the fill to be `none`, either using the `fill` attribute on the SVG element or a property of the same name in CSS.
+This is because of an SVG property that I hid from you until now: `fill`. Just like `stroke` defines the color of the lines of an SVG shape, `fill` defines the background fill of the SVG. For most shapes, `fill` is set to `black` by default. But in this case, since we only want to draw lines and don't want any fill for this icon, we can set the fill to be `none`, either using the `fill` attribute on the SVG element or a CSS property of the same name.
 
 Note that certain icons may actually benefit from having a custom fill, so you wouldn't want to *always* disable this globally in your app. But for our purposes, it's going to get in the way of drawing shapes like polylines, polygons, etc. since we don't actually *need* a fill. So, for the rest of this tutorial, I'll use this additional CSS to clear the fill for all icons:
 
@@ -549,7 +549,7 @@ With that set, our shape should look correct now:
   </svg>
 </div>
 
-After that step, we'll drop down an equal vertical distance to complete the top portion of our letter `T`:
+Now, we'll drop down vertically again to complete the right serif of the letter `T`:
 
 {% include codeHeader.html %}
 ```html
@@ -596,7 +596,7 @@ Note that you could just as well use polylines for the two lines; you'll get the
 
 Awesome! You've now created four icons.
 
-Before we move on, I want to discuss some SVG attributes that I kept hidden from you until now.
+Before we move on, I want to discuss some more SVG attributes.
 
 #### `stroke-linejoin` and `stroke-linecap`
 
@@ -639,7 +639,7 @@ You don't have to use these if you don't want to. You can also apply them condit
 
 ### 3. Circles
 
-Let's now draw these SVG icons:
+In this section, we'll learn how to draw three more SVG icons—a clock, an info icon, and a rightward-pointing arrow inside a circle:
 
 <ul class="svg-tutorial__icon-grid">
   <li class="svg-tutorial__icon">
@@ -696,7 +696,7 @@ I chose a radius of `10` to leave `2px` of space on all sides of the circle; oth
 
 Alternatively, you can set `overflow: visible` on your SVGs, but I prefer the first method since it gives my SVG icons a bit of padding, and overflows can throw off the spacing in your CSS.
 
-Now that we know how to draw circles in SVG, we can draw the three icons that I showed you earlier: a clock, an info icon, and a rightward-pointing arrow inside a circle. Here they are again:
+Now that we know how to draw circles in SVG, we can draw the three icons shown earlier:
 
 <ul class="svg-tutorial__icon-grid">
   <li class="svg-tutorial__icon">
@@ -1134,7 +1134,7 @@ Note that we *could* always use the `L/l` command to draw all lines, but the sho
 
 #### SVG Path Commands: `ClosePath`
 
-The command `Z` (or `z`) stands for `ClosePath`. Remember when we learned about `<polygon>` and how it automatically closes itself? Well, `Z` is the command used to automatically close a `<path>`. Unlike the other commands that we've looked at so far, `ClosePath`'s lowercase and uppercase version are identical, so just pick one and stick with it (I'll use `z`).
+The command `Z` (or `z`) stands for `ClosePath`. Remember when we learned about `<polygon>` and how it automatically closes itself? Well, `Z` is the command used to automatically close a `<path>`. Unlike the other commands that we've looked at so far, `ClosePath`'s lowercase and uppercase version are identical, so just pick one and stick with it (I'll use a lowercase `z`).
 
 For example, to draw a self-closing square with `<path>`, we only need to draw three of the four lines explicitly; the fourth can be drawn automatically for us with the `ClosePath` command:
 
@@ -1224,11 +1224,11 @@ The parameters for SVG arcs are covered in the table below:
     </thead>
     <tbody>
         <tr>
-            <td><code>A</code></td>
+            <td><code>A</code> (absolute)</td>
             <td><code>rx ry x-axis-rotation large-arc-flag sweep-flag x y</code></td>
         </tr>
         <tr>
-            <td><code>a</code></td>
+            <td><code>a</code> (relative)</td>
             <td><code>rx ry x-axis-rotation large-arc-flag sweep-flag dx dy</code></td>
         </tr>
     </tbody>
@@ -1240,7 +1240,7 @@ The parameters for SVG arcs are covered in the table below:
 - `large-arc-flag`: if `1`, draws a large arc; otherwise, draws a small one.
 - `sweep-flag`: if `1`, draws a clockwise arc; if `0`, draws a counter-clockwise arc.
 
-One thing you'll notice is that `A` and `a` are almost identical except those last two parameters. Whereas an `A` arc has an absolute `x` and a `y` that tell you where the arc ends, the relative arc specifies a delta-x and a delta-y displacement relative to the starting position of the arc.
+One thing you'll notice is that the absolute and relative versions of the arc command (`A`/`a`) are almost identical except for their last two parameters. Whereas an uppercase `A` arc has an absolute `x` and a `y` that tell you where the arc ends, the lowercase relative arc specifies a delta-x (`dx`) and a delta-y (`dy`) displacement relative to the starting position of the arc.
 
 > **Note**: "Delta" is how we denote a change in a value in formal mathematical notation (typically using the Greek letter, &Delta;). So "delta-x" (&Delta;x) means "a change in x."
 
@@ -1593,7 +1593,7 @@ And that's all there is to the rounded rectangle bit! Now, we just throw on a fe
   </svg>
 </div>
 
-Again, you could draw those with a `<path>` if you wanted to.
+Again, you could also draw those lines with a `<path>` if you wanted to.
 
 ##### 2. External-Link Icon
 
@@ -1640,7 +1640,7 @@ That gives us the classic external-link icon:
 
 The arrow bit should be familiar from when we created the rightward-facing arrow; now, it's just a diagonal arrow pointing to the top-right. The body of the icon should also be familiar from the calendar, except here it's not closed off and starts at a different location.
 
-And that's it!
+And that's our last icon!
 
 ## Further Exploration: Advanced SVG Topics
 
