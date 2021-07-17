@@ -1,0 +1,16 @@
+@import '../mixins';
+
+.pagination {
+  &-trail {
+    margin-top: 6.4rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.2rem;
+  }
+
+  &-page {
+    padding: 0.8rem 1.2rem;
+    border-radius: 0.4rem;
+    @include font-size('sm');
+  }
+}
