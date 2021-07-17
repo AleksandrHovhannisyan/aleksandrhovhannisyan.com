@@ -51,12 +51,6 @@
       row-gap: 0.4rem;
     }
 
-    label,
-    input,
-    textarea {
-      @include font-size('base');
-    }
-
     textarea {
       min-height: 17.5rem;
     }
@@ -68,7 +62,6 @@
     max-width: 100%;
     width: 100%;
     @include focus-outline((color: var(--button-bg-color-focus), offset: 0.2rem)...);
-    @include font-size('base');
   }
 
   &-socials {

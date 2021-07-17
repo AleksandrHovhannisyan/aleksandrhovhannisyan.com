@@ -6,8 +6,12 @@
 
 label,
 input,
-textarea {
+textarea,
+button {
   font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
 }
 
 img,
@@ -19,7 +23,6 @@ video {
 button {
   border: none;
   cursor: pointer;
-  font-family: inherit;
 }
 
 a {
