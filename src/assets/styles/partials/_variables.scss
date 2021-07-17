@@ -42,19 +42,19 @@ html {
 
   --fs-lg: #{clamped(2.0rem, 2.8rem)};
   --lh-lg: 1.4;
-  --ls-lg: -0.2px;
+  --ls-lg: -0.02rem;
 
   --fs-xl: #{clamped(2.8rem, 3.2rem)};
   --lh-xl: 1.375;
-  --ls-xl: clamp(-0.4px, -0.06vw, -0.2px);
+  --ls-xl: #{clamped(-0.02rem, -0.03rem)};
 
   --fs-xxl: #{clamped(3.2rem, 3.6rem)};
   --lh-xxl: 1.3;
-  --ls-xxl: clamp(-0.6px, -0.11vw, -0.4px);
+  --ls-xxl: #{clamped(-0.03rem, -0.04rem)};
 
   --fs-xxxl: #{clamped(3.6rem, 4.8rem)};
   --lh-xxxl: 1.2;
-  --ls-xxxl: clamp(-0.7px, -0.17vw, -0.6px);
+  --ls-xxxl: #{clamped(-0.04rem, -0.05rem)};
 
   --fw-light: 300;
   --fw-regular: 400;

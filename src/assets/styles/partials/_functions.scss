@@ -2,9 +2,22 @@
 @import './breakpoints';
 @import './zIndex';
 
-@function toRem($px) {
-  $rem: math.div($px, 10px) * 1rem;
-  @return $rem;
+@function toRem($value) {
+  // Check if the value, as a string, is already expressed in rems
+  @if ends-with('' + $value, 'rem') {
+    @return $value;
+  }
+
+  $value-rems: math.div($value, 10px) * 1rem;
+  @return $value-rems;
+}
+
+/// Returns true if the given string ends with the given suffix.
+/// Adapted for use from: https://stackoverflow.com/a/40389473/5323344
+@function ends-with($string, $suffix) {
+  $string-length: str-length($string);
+  $suffix-length: str-length($suffix);
+  @return str-slice($string, ($string-length - $suffix-length + 1)) == $suffix;
 }
 
 @function z-index($key) {
@@ -26,7 +39,9 @@
 /// Returns a CSS clamp(...) declaration, with the responsive argument computed automatically.
 /// It's assumed that min should correspond to the minimum mobile breakpoint for design work.
 @function clamped($min, $max) {
+  $min-rems: toRem($min);
+  $max-rems: toRem($max);
   $mobile-min-rems: toRem(map-get($media-breakpoints, 'mobile-min'));
-  $min-to-mobile-ratio: rnd(math.div($min, $mobile-min-rems), 2) * 100;
-  @return clamp(#{$min}, #{$min-to-mobile-ratio}vw, #{$max});
+  $min-to-mobile-ratio: rnd(math.div($min-rems, $mobile-min-rems) * 100, 2);
+  @return clamp(#{$min-rems}, #{$min-to-mobile-ratio}vw, #{$max-rems});
 }
