@@ -1,52 +1,52 @@
 @import '../mixins';
 
-#hero-banner {
-  margin-bottom: 12.8rem;
-}
+.hero-banner {
+  margin-bottom: clamp(9.6rem, 27vw, 12.8rem);
 
-.hero-banner-title {
-  margin-bottom: 0.8rem;
-}
-
-.hero-banner-subtitle {
-  @include font-size('md');
-}
-
-.hero-banner-headshot {
-  display: none;
-}
-
-@media screen and (min-width: 600px) {
-  #hero-banner {
-    display: grid;
-    grid-template-areas:
-      "title headshot"
-      "subtitle headshot";
-    grid-template-columns: auto min-content;
-    column-gap: 3.2rem;
-    row-gap: 0.4rem;
+  &-title {
+    margin-bottom: 0.8rem;
   }
 
-  .hero-banner-title {
-    grid-area: title;
-    margin: 0;
+  &-subtitle {
+    @include font-size('md');
   }
 
-  .hero-banner-subtitle {
-    grid-area: subtitle;
+  &-headshot {
+    display: none;
   }
-}
 
-@include tablet {
-  .hero-banner-headshot {
-    --headshot-size: 18rem;
-    display: unset;
-    width: var(--headshot-size);
-    grid-area: headshot;
-    justify-self: center;
+  @media screen and (min-width: 600px) {
+    & {
+      display: grid;
+      grid-template-areas:
+        "title headshot"
+        "subtitle headshot";
+      grid-template-columns: auto min-content;
+      column-gap: 3.2rem;
+      row-gap: 0.4rem;
+    }
 
-    img {
-      border-radius: 50%;
+    &-title {
+      grid-area: title;
+      margin: 0;
+    }
+
+    &-subtitle {
+      grid-area: subtitle;
+    }
+  }
+
+  @include tablet {
+    &-headshot {
+      --headshot-size: 18rem;
+      display: unset;
+      width: var(--headshot-size);
+      grid-area: headshot;
+      justify-self: center;
+
+      img {
+        border-radius: 50%;
+      }
     }
   }
 }

@@ -1,125 +1,124 @@
 @import '../mixins';
 
-#contact {
+.contact {
   height: 100%;
-}
 
-.contact-content {
-  height: 100%;
-  display: grid;
-  align-items: center;
-  grid-auto-flow: row;
-  column-gap: 9.6rem;
-  row-gap: 4.8rem;
-}
+  &-content {
+    height: 100%;
+    display: grid;
+    align-items: center;
+    grid-auto-flow: row;
+    column-gap: 9.6rem;
+    row-gap: 4.8rem;
 
-.contact-title {
-  margin-bottom: 0.8rem;
-  @include font-size('xl');
-
-  .submitted & {
-    @include font-size('xxxl');
+    @include tablet {
+      row-gap: 0;
+      grid-auto-flow: column;
+      grid-template-columns: minmax(0, 40rem) auto;
+    }
   }
-}
 
-.contact-subtitle {
-  margin-bottom: 2.4rem;
+  &-title {
+    margin-bottom: 0.8rem;
+    @include font-size('xl');
 
-  .submitted & {
-    margin: 0;
+    .submitted & {
+      @include font-size('xxxl');
+    }
   }
-}
 
-.contact-form {
-  display: grid;
-  grid-auto-flow: row;
-  row-gap: 1.6rem;
-  background-color: var(--form-bg-color);
-  border-radius: 0.2rem;
-  border: solid 1px hsla(0, 0%, 0%, 0.08);
-  padding: 2.4rem;
-  height: fit-content;
+  &-subtitle {
+    margin-bottom: 2.4rem;
 
-  .labeled-input {
+    .submitted & {
+      margin: 0;
+    }
+  }
+
+  &-form {
     display: grid;
     grid-auto-flow: row;
-    row-gap: 0.4rem;
+    row-gap: 1.6rem;
+    background-color: var(--form-bg-color);
+    border-radius: 0.2rem;
+    border: solid 1px hsla(0, 0%, 0%, 0.08);
+    padding: 2.4rem;
+    height: fit-content;
+
+    .labeled-input {
+      display: grid;
+      grid-auto-flow: row;
+      row-gap: 0.4rem;
+    }
+
+    label,
+    input,
+    textarea {
+      @include font-size('base');
+    }
+
+    textarea {
+      min-height: 17.5rem;
+    }
   }
 
-  label,
-  input,
-  textarea {
+  button[type="submit"] {
+    border-radius: 0.2rem;
+    height: 4.8rem;
+    max-width: 100%;
+    width: 100%;
+    @include focus-outline((color: var(--button-bg-color-focus), offset: 0.2rem)...);
     @include font-size('base');
   }
 
-  textarea {
-    min-height: 17.5rem;
+  &-socials {
+    display: grid;
+    row-gap: 4rem;
+    grid-template-rows: min-content auto;
+
+    &-heading {
+      @include font-size('md');
+    }
+
+    &-list {
+      column-gap: 3.2rem;
+      display: grid;
+      grid-auto-rows: 4.8rem;
+      grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+      row-gap: 4rem;
+    }
+  }
+
+  &-social {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    padding: 1.6rem;
+    border-radius: 0.2rem;
+    color: var(--text-color-normal);
+
+    svg {
+      justify-self: center;
+      width: 3.2rem;
+      height: 3.2rem;
+      fill: currentColor;
+    }
+
+    &:focus,
+    &:hover {
+      background-color: var(--hover-bg-color);
+      cursor: pointer;
+      color: var(--text-color-emphasis);
+    }
+
+    &-name {
+      @include font-weight("regular");
+    }
   }
 }
 
-.contact-submit-button {
-  border-radius: 0.2rem;
-  height: 4.8rem;
-  max-width: 100%;
-  width: 100%;
-  @include focus-outline((color: var(--button-bg-color-focus), offset: 0.2rem)...);
-  @include font-size('base');
-}
-
-// Spammers begone
+// Detect spam (Netlify honeypot field)
 input.honeypot {
   display: none;
 }
 
-.social-networks {
-  display: grid;
-  row-gap: 4rem;
-  grid-template-rows: min-content auto;
-}
-
-.social-networks-heading {
-  @include font-size('md');
-}
-
-.social-networks-list {
-  column-gap: 3.2rem;
-  display: grid;
-  grid-auto-rows: 4.8rem;
-  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
-  row-gap: 4rem;
-}
-
-.social-network {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-content: center;
-  padding: 1.6rem;
-  border-radius: 0.2rem;
-  color: var(--text-color-normal);
-
-  svg {
-    justify-self: center;
-    width: 3.2rem;
-    height: 3.2rem;
-    fill: currentColor;
-  }
-
-  &:focus,
-  &:hover {
-    background-color: var(--hover-bg-color);
-    cursor: pointer;
-    color: var(--text-color-emphasis);
-  }
-}
-
-.social-network-name {
-  @include font-weight("regular");
-}
-
-@include tablet {
-  .contact-content {
-    row-gap: 0;
-    grid-auto-flow: column;
-    grid-template-columns: minmax(0, 40rem) auto;
-  }
-}

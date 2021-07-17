@@ -7,6 +7,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   margin-top: 4.8rem;
+  margin-bottom: 1.6rem;
 
   h2 {
     margin: 0 !important;
@@ -15,8 +16,7 @@
 
 .post-comment-button {
   border-radius: 0.4rem;
-  padding: 0.4em 0.8em;
-  margin: 1em 0;
+  padding: 0.8rem 1.6rem;
 }
 
 .comments-explanation {
@@ -41,66 +41,60 @@
   }
 }
 
-$avatar-size: 3.2rem;
-$meta-spacing: 0.8rem;
-
 .comment {
-  margin-left: $avatar-size + $meta-spacing;
-}
+  --avatar-size: 3.2rem;
+  --meta-spacing: 0.8rem;
+  padding-left: calc(var(--avatar-size) +var(--meta-spacing));
 
-.comment-header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  position: relative;
-  margin-bottom: 1.6rem;
-}
-
-.comment-meta {
-  margin: 0 $meta-spacing math.div($meta-spacing, 2) 0;
-}
-
-.comment-avatar {
-  position: absolute;
-  width: $avatar-size;
-  left: -1 * $avatar-size - $meta-spacing;
-  top: calc(-1 * #{$meta-spacing} / 4);
-  border-radius: 50% !important;
-}
-
-.comment-username {
-  color: var(--text-color-emphasis);
-  @include font-weight('bold');
-  @include underlined-link;
-}
-
-.comment-edited {
-  font-style: italic;
-  @include font-size('sm');
-}
-
-.comment-date-posted {
-  @include font-size('sm');
-}
-
-.comment-author-badge {
-  border-radius: 0.2rem;
-  display: flex;
-  align-items: center;
-  padding: 0.4rem 0.8rem;
-  @include font-size('sm');
-}
-
-.comment-body {
-  @include rhythm;
-  grid-template-columns: minmax(0, 1fr);
-
-  pre {
-    white-space: pre-wrap;
+  &-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+    margin-bottom: 1.6rem;
+    gap: var(--meta-spacing);
   }
 
-  @include headings {
-    @include font-size('base');
-    margin-top: 0;
+  &-avatar {
+    align-self: flex-start;
+    position: absolute;
+    width: var(--avatar-size);
+    left: calc(-1 * var(--avatar-size) - var(--meta-spacing));
+    border-radius: 50% !important;
+  }
+
+  &-username {
+    color: var(--text-color-emphasis);
+    @include font-weight('bold');
+    @include underlined-link;
+  }
+
+  &-meta {
+    @include font-size('sm');
+  }
+
+  &-edited {
+    font-style: italic;
+  }
+
+  &-author-badge {
+    border-radius: 0.2rem;
+    display: flex;
+    align-items: center;
+    padding: 0.4rem 0.8rem;
+  }
+
+  &-body {
+    @include rhythm;
+    grid-template-columns: minmax(0, 1fr);
+
+    pre {
+      white-space: pre-wrap;
+    }
+
+    @include headings {
+      @include font-size('base');
+      margin-top: 0;
+    }
   }
 }

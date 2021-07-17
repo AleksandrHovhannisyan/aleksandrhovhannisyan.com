@@ -1,23 +1,75 @@
 @import '../mixins';
 
-.project-grid {
-  --gap: 4.8rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--gap);
-}
-
-.project-wrapper {
-  display: flex;
-  flex: 1 1 calc(50% - var(--gap));
-  min-width: 27rem;
-}
-
 .project {
-  display: grid;
-  grid-template-rows: max-content 1fr max-content;
-  grid-template-columns: 1fr;
-  row-gap: calc(var(--card-padding) / 2);
+  &-grid {
+    --gap: 4.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap);
+  }
+
+  &-wrapper {
+    display: flex;
+    flex: 1 1 calc(50% - var(--gap));
+    min-width: 27rem;
+
+    // Prevents the dreaded "doom flicker": https://www.joshwcomeau.com/animation/css-transitions/#doom-flicker
+    &:hover,
+    &:focus-within {
+      .project {
+        box-shadow: var(--card-box-shadow-focus);
+        transform: var(--card-offset-y-focus);
+      }
+
+      .explore-project-on-github {
+        opacity: 0.92;
+      }
+    }
+  }
+
+  & {
+    display: grid;
+    grid-template-rows: max-content 1fr max-content;
+    grid-template-columns: 1fr;
+    row-gap: calc(var(--card-padding) / 2);
+  }
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-name-wrapper {
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 0.4rem;
+  }
+
+  &-name {
+    color: var(--text-color-emphasis);
+    @include font-size('base');
+    @include font-weight('bold');
+  }
+
+  &-rating {
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 0.4rem;
+    align-items: center;
+    @include font-size('sm');
+  }
+
+  &-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  &-technology {
+    border-radius: 0.2rem;
+    padding: 0.4rem 1.2rem;
+    @include font-size('sm');
+  }
 }
 
 .explore-project-on-github {
@@ -39,65 +91,19 @@
   @include font-weight("bold");
 }
 
-.project-wrapper {
-  display: grid;
-
-  // Prevents the dreaded "doom flicker": https://www.joshwcomeau.com/animation/css-transitions/#doom-flicker
-  &:hover,
-  &:focus-within {
-    .project {
-      box-shadow: var(--card-box-shadow-focus);
-      transform: var(--card-offset-y-focus);
-    }
-
-    .explore-project-on-github {
-      opacity: 0.92;
-    }
-  }
-}
-
-.project-header {
-  display: flex;
-  justify-content: space-between;
-}
-
-.project-name-wrapper {
-  display: grid;
-  grid-auto-flow: column;
-  column-gap: 0.4rem;
-}
-
-.project-name {
-  color: var(--text-color-emphasis);
-  @include font-size('base');
-  @include font-weight('bold');
-}
-
-.project-rating {
-  display: grid;
-  grid-auto-flow: column;
-  column-gap: 0.4rem;
-  align-items: center;
-  @include font-size('sm');
-}
-
-.project-technologies {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-}
-
-.project-technology {
-  border-radius: 0.2rem;
-  padding: 0.4rem 1.2rem;
-  @include font-size('sm');
-}
-
-#github-cta {
+.github-cta {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  &-heading {
+    @include font-size('base');
+  }
+
+  &-subheading {
+    margin-bottom: 1.6rem;
+  }
 
   a {
     height: 4.8rem;
@@ -110,12 +116,4 @@
     height: inherit;
     fill: currentColor;
   }
-}
-
-.github-cta-heading {
-  @include font-size('base');
-}
-
-.github-cta-subheading {
-  margin-bottom: 1.6rem;
 }

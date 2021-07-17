@@ -2,17 +2,17 @@
 layout: default
 ---
 
-<article id="contact" class="section">
+<article class="contact" class="section">
   <div class="contact-content">
     {{ content }}
-    <section class="social-networks">
-      <h2 class="social-networks-heading">You can also find me on:</h2>
-      <ul class="social-networks-list">
+    <section class="contact-socials">
+      <h2 class="contact-socials-heading">You can also find me on:</h2>
+      <ul class="contact-socials-list">
         {%- for network in socials -%}
           <li>
-            <a class="social-network" href="{{ network.url }}" target="_blank" rel="noreferrer noopener">
+            <a class="contact-social" href="{{ network.url }}" target="_blank" rel="noreferrer noopener">
               {% socialIcon network.icon -%}
-              <span class="social-network-name">{{ network.name }}</span>
+              <span class="contact-social-name">{{ network.name }}</span>
             </a>
           </li>
         {% endfor %}

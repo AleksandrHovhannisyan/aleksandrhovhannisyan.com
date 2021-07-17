@@ -5,7 +5,7 @@
   z-index: 2;
   position: relative;
 
-  & + pre[class*="language-"] {
+  + pre[class*="language-"] {
     margin-top: calc(-1em * var(--line-height));
   }
 
@@ -202,13 +202,13 @@ pre[class*="language-"] {
       font-style: italic;
     }
   }
-}
 
-pre[class*="language-"]::selection,
-pre[class*="language-"] *::selection {
-  text-shadow: none;
-  color: unset;
-  background: var(--color-code-selection);
+  &::selection,
+  & *::selection {
+    text-shadow: none;
+    color: unset;
+    background: var(--color-code-selection);
+  }
 }
 
 /* Language Specific */

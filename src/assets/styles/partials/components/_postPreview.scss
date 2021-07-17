@@ -1,11 +1,5 @@
 @import '../mixins';
 
-.post-preview-grid {
-  margin-top: 6.4rem;
-  display: grid;
-  row-gap: 6.4rem;
-}
-
 .post-preview {
   display: grid;
   row-gap: 1.6rem;
@@ -18,55 +12,61 @@
   .post-meta {
     grid-area: meta;
   }
-}
 
-.post-preview-title {
-  grid-area: title;
-  @include font-size('base');
-  @include font-weight('bold');
-
-  a {
-    color: var(--text-color-emphasis);
-    @include underlined-link($initially-underlined: false);
-  }
-}
-
-.post-preview-thumbnail-container {
-  grid-area: thumbnail;
-  user-select: none;
-}
-
-.post-preview-thumbnail {
-  .light &.loaded img {
-    filter: blur(0) contrast(0.95);
-  }
-}
-
-.post-preview-description {
-  grid-area: description;
-  @include line-clamp(3);
-}
-
-@include tablet {
-  .post-preview {
-    grid-template-areas:
-      'thumbnail title'
-      'thumbnail description'
-      'thumbnail meta';
-    column-gap: 3.2rem;
+  &-grid {
+    margin-top: 6.4rem;
+    display: grid;
+    row-gap: 6.4rem;
   }
 
-  .post-preview-thumbnail {
-    --aspect-ratio: unset !important;
-    height: 100%;
-    width: 20rem;
+  &-title {
+    grid-area: title;
+    @include font-size('base');
+    @include font-weight('bold');
 
-    img {
-      height: 100%;
+    a {
+      color: var(--text-color-emphasis);
+      @include underlined-link($initially-underlined: false);
     }
   }
 
-  .post-preview-description {
-    @include line-clamp(2);
+  &-thumbnail-container {
+    grid-area: thumbnail;
+    user-select: none;
+  }
+
+  &-thumbnail {
+    .light &.loaded img {
+      filter: blur(0) contrast(0.95);
+    }
+  }
+
+  &-description {
+    grid-area: description;
+    @include line-clamp(3);
+  }
+
+  @include tablet {
+    & {
+      grid-template-areas:
+        'thumbnail title'
+        'thumbnail description'
+        'thumbnail meta';
+      column-gap: 3.2rem;
+    }
+
+    &-thumbnail {
+      --aspect-ratio: unset !important;
+      height: 100%;
+      width: 20rem;
+
+      img {
+        height: 100%;
+      }
+    }
+
+    &-description {
+      @include line-clamp(2);
+    }
   }
 }

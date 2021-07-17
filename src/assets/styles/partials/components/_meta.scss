@@ -8,11 +8,24 @@
   position: relative;
   @include font-size('sm');
   @include font-weight('light');
-}
 
-.post-meta-icon {
-  height: 1.6rem;
-  width: 1.6rem;
+  &-icon {
+    height: 1.6rem;
+    width: 1.6rem;
+  }
+
+  &-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  &-tag {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.4rem;
+  }
 }
 
 .author-photo {
@@ -39,17 +52,4 @@
   padding: 0.8rem 1.6rem;
   color: var(--text-color-normal);
   @include font-weight('bold');
-}
-
-.post-meta-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-}
-
-.post-meta-tag {
-  display: flex;
-  align-items: center;
-  padding: 0.6rem 1.2rem;
-  border-radius: 0.4rem;
 }

@@ -1,6 +1,6 @@
 @import '../mixins';
 
-#page-footer {
+.page-footer {
   background-color: var(--navbar-bg-color);
   color: var(--navbar-text-color);
   align-items: center;
@@ -8,76 +8,72 @@
   width: 100%;
   text-align: center;
   @include font-size('sm');
-}
 
-.page-footer-container {
-  display: flex;
-  flex-direction: column;
-  gap: 3.2rem;
-  justify-content: space-between;
-  padding-top: 3.2rem;
-  padding-bottom: 3.2rem;
-}
+  &-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+    justify-content: space-between;
+    padding-top: 3.2rem;
+    padding-bottom: 3.2rem;
+  }
 
-.page-footer-title {
-  color: var(--color-white);
-  margin-bottom: 0.8rem;
-  @include font-size('lg');
-}
+  &-title {
+    color: var(--color-white);
+    margin-bottom: 0.8rem;
+    @include font-size('lg');
+  }
 
-.page-footer-subtitle {
-  margin-bottom: 0.8rem;
-}
+  &-subtitle {
+    margin-bottom: 0.8rem;
+  }
 
-.page-footer-copyright {
-  color: var(--color-black-60);
-  @include font-size('sm');
-}
+  &-copyright {
+    color: var(--color-black-60);
+    @include font-size('sm');
+  }
 
-.page-footer-links {
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  align-items: center;
-  gap: 2.4rem;
-}
+  &-links {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    gap: 2.4rem;
+  }
 
-.page-footer-pages,
-.page-footer-socials {
-  display: flex;
-  align-items: center;
-  gap: 2.4rem;
-}
+  &-pages,
+  &-socials {
+    display: flex;
+    align-items: center;
+    gap: 2.4rem;
+  }
 
-.page-footer-socials {
-  svg {
+  &-socials svg {
     width: 2rem;
     height: 2rem;
     fill: currentColor;
   }
-}
 
-.page-footer-link {
-  color: var(--navbar-text-color);
-  display: flex;
-  @include focus-outline((offset: 0.4rem)...);
-  @include underlined-link($initially-underlined: false);
-}
+  &-link {
+    color: var(--navbar-text-color);
+    display: flex;
+    @include focus-outline((offset: 0.4rem)...);
+    @include underlined-link($initially-underlined: false);
+  }
 
-@include tablet {
-  #page-footer {
-    text-align: start;
-  }
-  .page-footer-links {
-    justify-content: center;
-    align-items: flex-end;
-  }
-  .page-footer-goodbye {
-    margin-left: unset;
-    margin-right: unset;
-  }
-  .page-footer-container {
-    flex-direction: row;
-    gap: 1.6rem;
+  @include tablet {
+    & {
+      text-align: start;
+    }
+
+    &-container {
+      flex-direction: row;
+      gap: 1.6rem;
+    }
+
+    &-links {
+      justify-content: center;
+      align-items: flex-end;
+    }
   }
 }

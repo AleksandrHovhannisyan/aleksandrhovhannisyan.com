@@ -1,31 +1,31 @@
 @import '../mixins';
 
-.blog-post-previews {
+.blog {
   .post-preview-grid {
-    margin-top: 9.6rem;
+    margin-top: clamp(6.4rem, 17vw, 9.6rem);
   }
-}
 
-.blog-page-title {
-  margin-bottom: 1.6rem;
-}
+  &-title {
+    margin-bottom: 1.6rem;
+  }
 
-.blog-page-description {
-  margin-bottom: 2.4rem;
-  @include font-size('md');
-}
+  &-description {
+    margin-bottom: 2.4rem;
+    @include font-size('md');
+  }
 
-.navigation-tags {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.2rem;
-}
+  &-navigation-tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+  }
 
-.navigation-tag {
-  display: flex;
-  border-radius: 0.4rem;
-  padding: 0.8rem 1.6rem;
+  &-navigation-tag {
+    display: flex;
+    border-radius: 0.4rem;
+    padding: 0.8rem 1.6rem;
+  }
 }
 
 .pagination-trail {

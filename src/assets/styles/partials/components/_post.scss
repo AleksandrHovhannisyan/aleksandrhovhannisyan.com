@@ -1,67 +1,69 @@
 @import '../mixins';
 
-.post-title {
-  margin-bottom: 1.6rem;
-  max-width: 28ch;
-}
-
-.post-header {
-  margin-bottom: 3.2rem;
-}
-
-.post-content {
-  grid-template-columns: minmax(0, var(--page-max-width));
-  overflow-wrap: break-word;
-  @include rhythm;
-
-  @include headings {
-    margin-top: 2.4rem;
-    margin-bottom: -0.8rem;
+.post {
+  &-header {
+    margin-bottom: 3.2rem;
   }
 
-  #skip-toc {
-    transform: translateY(-50%);
-    padding: 0.2rem 0.8rem;
-    @include font-weight('bold');
+  &-title {
+    margin-bottom: 1.6rem;
+    max-width: 28ch;
   }
 
-  #table-of-contents {
-    margin-top: 0;
-  }
+  &-content {
+    grid-template-columns: minmax(0, var(--page-max-width));
+    overflow-wrap: break-word;
+    @include rhythm;
 
-  .toc-list {
-    --gap: 2.4rem;
-    display: grid;
-    row-gap: var(--gap);
-    list-style: disc; // some headings have numbers already
-  }
+    @include headings {
+      margin-top: 2.4rem;
+      margin-bottom: -0.8rem;
+    }
 
-  .toc-list .toc-list {
-    margin-top: var(--gap);
-  }
+    #skip-toc {
+      transform: translateY(-50%);
+      padding: 0.2rem 0.8rem;
+      @include font-weight('bold');
+    }
 
-  ol {
-    list-style: decimal;
-  }
+    #table-of-contents {
+      margin-top: 0;
+    }
 
-  ul {
-    list-style: disc;
-  }
+    .toc-list {
+      --gap: 2.4rem;
+      display: grid;
+      row-gap: var(--gap);
+      list-style: disc; // some headings have numbers already
+    }
 
-  ol,
-  ul {
-    padding-left: clamp(1.2rem, 8vw, 4.8rem);
-    display: grid;
-    row-gap: 0.4rem;
+    .toc-list .toc-list {
+      margin-top: var(--gap);
+    }
 
-    li {
-      ol, ul {
-        margin-top: 0.4rem;
+    ol {
+      list-style: decimal;
+    }
+
+    ul {
+      list-style: disc;
+    }
+
+    ol,
+    ul {
+      padding-left: clamp(1.2rem, 8vw, 4.8rem);
+      display: grid;
+      row-gap: 0.4rem;
+
+      li {
+        ol, ul {
+          margin-top: 0.4rem;
+        }
       }
     }
-  }
 
-  a:not([class]) {
-    @include underlined-link($initially-underlined: true);
+    a:not([class]) {
+      @include underlined-link($initially-underlined: true);
+    }
   }
 }

@@ -3,21 +3,21 @@ layout: default
 isBlogPage: true
 ---
 
-<article class="blog-post-previews">
+<article class="blog">
   {%- assign pageCategory = category.title | default: 'all' -%}
   {%- assign pageCategoryReadable = pageCategory | unslugify -%}
   {%- assign pageCategoryDescription = categoryDescriptions[pageCategory] | default: categoryDescriptions['all'] -%}
-  <h1 class="blog-page-title">{{ pageCategoryReadable }} Blog Posts</h1>
-  <p class="blog-page-description">{{- pageCategoryDescription | toHtml -}}</p>
+  <h1 class="blog-title">{{ pageCategoryReadable }} Blog Posts</h1>
+  <p class="blog-description">{{- pageCategoryDescription | toHtml -}}</p>
   <nav aria-label="Popular categories">
-    <ul class="navigation-tags">
+    <ul class="blog-navigation-tags">
       {%- comment -%}TODO: automate/define elsewhere{%- endcomment -%}
       {%- assign categories = "all,a11y,css,webperf,off-topic" | split: ',' -%}
       {%- for category in categories %}
         <li>
           <a
             href="{% if category == "all" %}/blog/{% else %}/categories/{{ category }}/{% endif %}"
-            class="tag post-tag navigation-tag{% if pageCategory == category %} active{% endif %}"
+            class="tag post-tag blog-navigation-tag{% if pageCategory == category %} active{% endif %}"
             {% if category == "all" -%}
             aria-label="All posts"
             {% endif -%}
