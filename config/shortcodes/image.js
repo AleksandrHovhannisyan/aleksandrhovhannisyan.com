@@ -2,6 +2,7 @@ const Image = require('@11ty/eleventy-img');
 const { default: classNames } = require('classnames');
 const { outdent } = require('outdent');
 const path = require('path');
+const { escape } = require('lodash');
 const { imagePaths, dir } = require('../constants');
 
 // Alias Eleventy's convention of null = original [width/format/etc] for clarity
@@ -121,7 +122,7 @@ const imageShortcode = async (relativeSrc, alt, className, id, clickable) => {
       data-src="${formatSizes[baseFormat].largest.url}"
       width="${width}"
       height="${height}"
-      alt="${alt}"
+      alt="${escape(alt)}"
       class="lazy-img"
       loading="lazy">
   </picture>`;
