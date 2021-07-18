@@ -9,7 +9,6 @@ const {
   limit,
   sortByKey,
   toHtml,
-  escape,
   jsonify,
   where,
   toISOString,
@@ -24,6 +23,7 @@ const { posts, categories, postsByCategory } = require('./config/collections');
 const markdownLib = require('./config/plugins/markdown');
 const { dir, imagePaths } = require('./config/constants');
 const { slugifyString } = require('./config/utils');
+const { escape } = require('lodash');
 
 module.exports = (eleventyConfig) => {
   // Watch targets

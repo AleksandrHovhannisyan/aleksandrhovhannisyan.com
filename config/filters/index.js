@@ -37,9 +37,6 @@ const toHtml = (markdownString) => {
   return markdownLib.renderInline(markdownString);
 };
 
-/** Escapes special characters in the given string. */
-const escape = (string) => lodash.escape(string);
-
 /** Converts the given value to JSON format. */
 const jsonify = (value) => JSON.stringify(value);
 
@@ -117,7 +114,6 @@ module.exports = {
   where,
   wordCount,
   toHtml,
-  escape,
   jsonify,
   toISOString,
   dividedBy,
