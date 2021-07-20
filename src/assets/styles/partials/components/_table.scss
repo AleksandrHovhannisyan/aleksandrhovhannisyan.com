@@ -2,7 +2,7 @@
 
 thead {
   background-color: var(--table-header-bg-color);
-  color: var(--table-header-text-color);
+  color: var(--text-color-emphasis);
 
   th {
     @include font-weight('bold');

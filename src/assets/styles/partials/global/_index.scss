@@ -3,7 +3,7 @@
 
 ::selection {
   background-color: var(--selection-bg-color);
-  color: var(--selection-text-color);
+  color: var(--text-color-inverted);
   text-shadow: none;
 }
 
@@ -82,11 +82,8 @@ p {
 }
 
 a {
+  color: var(--text-color-emphasis);
   @include focus-outline($color: currentColor, $style: solid, $thickness: 0.2rem);
-
-  &, code {
-    color: var(--text-color-link);
-  }
 }
 
 code {
@@ -98,7 +95,7 @@ code {
 // Inline code
 code:not([class^=language-]) {
   background-color: var(--inline-code-bg-color);
-  color: var(--inline-code-text-color);
+  color: var(--text-color-emphasis);
   border-radius: 0.4rem;
   padding: 0.4rem 0.8rem;
 }

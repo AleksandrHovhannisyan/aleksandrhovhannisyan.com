@@ -2,7 +2,7 @@
 
 :not(.token).tag {
   background-color: var(--tag-bg-color);
-  color: var(--tag-text-color);
+  color: var(--text-color-emphasis);
   @include font-weight("regular");
 }
 
@@ -12,7 +12,7 @@ a.tag {
   &:focus,
   &.active {
     background-color: var(--tag-bg-color-focus);
-    color: var(--tag-text-color-focus);
+    color: var(--text-color-inverted);
   }
 
   @include focus-outline($color: var(--tag-bg-color-focus), $style: solid, $thickness: 0.2rem, $offset: 0.2rem);

@@ -74,13 +74,11 @@ html {
   &.light {
     --button-bg-color-focus: var(--color-black-30);
     --button-bg-color: var(--color-black-15);
-    --button-text-color: white;
     --card-bg-color: white;
     --code-block-box-shadow: none;
     --form-bg-color: var(--color-black-95);
     --hover-bg-color: var(--color-black-95);
     --inline-code-bg-color: var(--color-black-92);
-    --inline-code-text-color: black;
     --input-bg-color: white;
     --input-border-color-focus: var(--color-black-30);
     --input-border-color: var(--color-black-80);
@@ -93,30 +91,24 @@ html {
     --scrollbar-thumb-bg-color: var(--color-black-70);
     --scrollbar-track-bg-color: var(--color-black-90);
     --selection-bg-color: var(--color-black-10);
-    --selection-text-color: white;
     --table-border-color: var(--color-black-80);
     --table-header-bg-color: var(--color-black-92);
-    --table-header-text-color: var(--color-black-25);
     --tag-bg-color-focus: var(--color-black-15);
     --tag-bg-color: var(--color-black-92);
-    --tag-text-color-focus: white;
-    --tag-text-color: black;
-    --text-color-link: black;
     --text-color-soft: var(--color-black-35);
     --text-color-emphasis: black;
     --text-color-normal: black;
+    --text-color-inverted: white;
   }
 
   &.dark {
     --button-bg-color-focus: var(--color-black-80);
     --button-bg-color: var(--color-black-60);
-    --button-text-color: black;
     --card-bg-color: var(--color-black-12);
     --code-block-box-shadow: 0 0.2rem 0.8rem 0 hsla(0, 0%, 0%, 0.4);
     --form-bg-color: var(--color-black-12);
     --hover-bg-color: var(--color-black-12);
     --inline-code-bg-color: var(--color-black-25);
-    --inline-code-text-color: white;
     --input-bg-color: var(--color-black-20);
     --input-border-color-focus: var(--color-black-70);
     --input-border-color: var(--input-bg-color);
@@ -129,17 +121,13 @@ html {
     --scrollbar-thumb-bg-color: var(--color-black-35);
     --scrollbar-track-bg-color: var(--color-black-20);
     --selection-bg-color: white;
-    --selection-text-color: black;
     --table-border-color: var(--color-black-30);
     --table-header-bg-color: var(--color-black-12);
-    --table-header-text-color: var(--color-black-90);
     --tag-bg-color-focus: var(--color-black-75);
     --tag-bg-color: var(--color-black-20);
-    --tag-text-color-focus: black;
-    --tag-text-color: white;
-    --text-color-link: white;
     --text-color-soft: var(--color-black-60);
     --text-color-emphasis: white;
     --text-color-normal: var(--color-black-75);
+    --text-color-inverted: black;
   }
 }
