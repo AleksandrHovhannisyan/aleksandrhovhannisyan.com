@@ -72,6 +72,8 @@ html {
   }
 
   &.light {
+    --border-color-focus: var(--color-black-30);
+    --border-color: var(--color-black-80);
     --button-bg-color-focus: var(--color-black-30);
     --button-bg-color: var(--color-black-15);
     --card-bg-color: white;
@@ -80,8 +82,6 @@ html {
     --hover-bg-color: var(--color-black-95);
     --inline-code-bg-color: var(--color-black-92);
     --input-bg-color: white;
-    --input-border-color-focus: var(--color-black-30);
-    --input-border-color: var(--color-black-80);
     --main-bg-color: white;
     --navbar-bg-color: var(--color-black-15);
     --navbar-box-shadow: 0 0 0.2rem 0 hsla(0, 0%, 0%, 0.8);
@@ -91,7 +91,6 @@ html {
     --scrollbar-thumb-bg-color: var(--color-black-70);
     --scrollbar-track-bg-color: var(--color-black-90);
     --selection-bg-color: var(--color-black-10);
-    --table-border-color: var(--color-black-80);
     --table-header-bg-color: var(--color-black-92);
     --tag-bg-color-focus: var(--color-black-15);
     --tag-bg-color: var(--color-black-92);
@@ -102,6 +101,8 @@ html {
   }
 
   &.dark {
+    --border-color-focus: var(--color-black-70);
+    --border-color: var(--color-black-30);
     --button-bg-color-focus: var(--color-black-80);
     --button-bg-color: var(--color-black-60);
     --card-bg-color: var(--color-black-12);
@@ -110,8 +111,6 @@ html {
     --hover-bg-color: var(--color-black-12);
     --inline-code-bg-color: var(--color-black-25);
     --input-bg-color: var(--color-black-20);
-    --input-border-color-focus: var(--color-black-70);
-    --input-border-color: var(--input-bg-color);
     --main-bg-color: var(--color-black-8);
     --navbar-bg-color: var(--color-black-12);
     --navbar-box-shadow: 0 0 8px 0 hsla(0, 0%, 0%, 0.8);
@@ -121,7 +120,6 @@ html {
     --scrollbar-thumb-bg-color: var(--color-black-35);
     --scrollbar-track-bg-color: var(--color-black-20);
     --selection-bg-color: white;
-    --table-border-color: var(--color-black-30);
     --table-header-bg-color: var(--color-black-12);
     --tag-bg-color-focus: var(--color-black-75);
     --tag-bg-color: var(--color-black-20);
