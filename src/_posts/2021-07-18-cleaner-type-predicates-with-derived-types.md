@@ -32,8 +32,6 @@ const prepareVegetable = (vegetable: Vegetable) => {}
 Nevermind *why* we're doing things this way—in reality, this could be avoided entirely if we restructured our data to include flags as part of each ingredient:
 
 ```ts
-type IngredientType = 'fruit' | 'vegetable';
-
 type FruitName = 'apple' | 'banana' | 'orange';
 type VegetableName = 'carrot' | 'beet' | 'cucumber';
 
@@ -64,18 +62,54 @@ const prepareIngredient = (ingredient: Ingredient) => {
       break;
   }
 }
-
-const prepareFruit = (fruit: Fruit) => {}
-const prepareVegetable = (vegetable: Vegetable) => {}
 ```
 
 But for the sake of this article, let's assume that we're dealing with a more flat and simple structure. This comes up in other scenarios, but our juice shop is easy enough to understand while still being somewhat grounded in reality.
 
 ## Type Predicates in TypeScript: Fruit or Vegetable?
 
-We can write helper functions that take advantage of a TypeScript feature known as **type predicates** to determine whether a variable is of one type or another.
+We can write helper functions to determine whether an ingredient is a fruit or a vegetable. A naive first attempt might look like this:
 
-A type predicate has an explicit return type of the pattern `argumentName is ConcreteType`. In our juice shop example, we could write type predicates to determine if an ingredient is a fruit or vegetable, allowing us to handle each case separately later in our code:
+```ts
+const isFruit = (ingredient: Ingredient) => {
+  return ingredient === 'apple' || ingredient === 'banana' || ingredient === 'orange';
+}
+
+const isVegetable = (ingredient: Ingredient) => {
+  return ingredient === 'carrot' || ingredient === 'beet' || ingredient === 'cucumber';
+}
+```
+
+We might then try to use those helpers like so:
+
+```ts
+const prepareFruit = (fruit: Fruit) => {}
+const prepareVegetable = (vegetable: Vegetable) => {}
+
+if (isFruit(ingredient)) {
+  prepareFruit(ingredient);
+} else if (isVegetable(ingredient)) {
+  prepareVegetable(ingredient);
+}
+```
+
+At first glance, it seems like the helper functions should inform TypeScript that a given ingredient is of either one type (`Fruit`) or the other (`Vegetable`), allowing our code to compile. Unfortunately, that's not the case—the helpers have an implicit return type of `boolean`, which doesn't tell TypeScript to narrow down the argument's type from `Ingredient` to one of the sub-types. Thus, TypeScript will actually throw an error when we attempt to pass a generic `Ingredient` to a function that expects a `Fruit` or a `Vegetable`.
+
+A temporary workaround is to use type assertions in our `if` statements:
+
+```ts
+if (isFruit(ingredient)) {
+  prepareFruit(ingredient as Fruit);
+} else if (isVegetable(ingredient)) {
+  prepareVegetable(ingredient as Vegetable);
+}
+```
+
+But the whole point of writing these helper functions is so that we *don't* have to do type assertions everywhere. We want to be able to narrow down the argument's type so that the TypeScript compiler knows that a given `Ingredient` is either a `Fruit` or a `Vegetable`. And that's where [type predicates](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#using-type-predicates) come into play.
+
+A **type predicate** is a special kind of type guard that takes the pattern `argumentName is ConcreteType`. It instructs the TypeScript compiler to treat the argument as the asserted type if the function returns `true`.
+
+Let's add type predicates to our helper functions:
 
 ```ts
 const isFruit = (ingredient: Ingredient): ingredient is Fruit => {
@@ -85,27 +119,25 @@ const isFruit = (ingredient: Ingredient): ingredient is Fruit => {
 const isVegetable = (ingredient: Ingredient): ingredient is Vegetable => {
   return ingredient === 'carrot' || ingredient === 'beet' || ingredient === 'cucumber';
 }
-```
 
-If the corresponding `if` statement for a type predicate evaluates to `true`, then `ingredient` is assumed to be the concrete type asserted in that particular type predicate. Thus, TypeScript guarantees better type safety within the corresponding block of code:
-
-```ts
 if (isFruit(ingredient)) {
-  // in this block, ingredient is of type Fruit
+  // ingredient is known to be of type Fruit
 } else if (isVegetable(ingredient)) {
-  // but here, ingredient is of type Vegetable
+  // ingredient is known to be of type Vegetable
 }
 ```
 
-But did you notice the problem? We had to repeat ourselves twice: once when we defined the string union upfront for the `Fruit` and `Vegetable` types, and once again in the corresponding type predicate to exhaustively list all of the possible types for fruits and vegetables.
+Great! TypeScript now knows that if `isFruit` returns `true`, then the ingredient passed in must be of type `Fruit`, and similarly for vegetables.
 
-This may not seem like a problem if there are only a few strings in these unions, but it will definitely pose a scalability issue if we add more items in the future. Every time we do that, we have to update the information in two places. Fortunately, there's a better approach.
+But do you spot the bigger problem? We had to repeat ourselves twice: once to define the string union for the `Fruit` and `Vegetable` types, and once again in the corresponding helper to exhaustively list all of the possible types for fruits and vegetables.
+
+This may not seem like a problem if there are only a few strings in these unions, but it will scale poorly. Each time we add a new item to our types, we'll have to update the information in two places rather than just one. Fortunately, there's a better approach.
 
 ## Better Type Predicates: Deriving Types from Arrays and Objects
 
-Instead of typing fruit and vegetable names *upfront*, we can use an untyped array or object to list that information and then derive the types from that array or object.
+Instead of typing fruit and vegetable names *upfront*, we can use an untyped array or object to list all of the pertinent information about ingredients and then derive the types from that data.
 
-First, suppose we have objects that map each fruit and vegetable name to information about them, like their price and any other relevant details:
+Suppose we have objects that provide information about each fruit and vegetable:
 
 ```ts
 const fruits = {
@@ -141,7 +173,7 @@ type Vegetable = keyof typeof vegetables;
 type Ingredient = Fruit | Vegetable;
 ```
 
-For each object, `typeof` returns the const-declared object shape consisting of read-only string names and their corresponding object values. For fruits, that shape looks like this:
+For each object, `typeof` returns the object shape consisting of read-only string names and their corresponding values. For fruits, that shape looks like this:
 
 ```plaintext
 {
@@ -157,7 +189,7 @@ For each object, `typeof` returns the const-declared object shape consisting of 
 }
 ```
 
-Invoking the `keyof` operator on this shape returns the read-only string keys, which for fruits are `'apple'`, `'banana'`, and `'orange'`.
+Invoking the `keyof` operator on this shape returns the read-only string keys, which in this case are `'apple'`, `'banana'`, and `'orange'`.
 
 If instead we decided to use an array, we could derive the types using a special TypeScript syntax known as an [indexed access type](https://www.typescriptlang.org/docs/handbook/2/indexed-access-types.html):
 
@@ -171,7 +203,7 @@ type Vegetable = typeof vegetables[number];
 
 In the end, whether we use an object or an array, we get the same result—`Fruit` represents the union of the three strings `'apple'`, `'banana'`, and `'orange'`, while `Vegetable` represents the union of the three strings `'carrot'`, `'beet'`, and `'cucumber'`.
 
-However, our type predicates are now much cleaner. In the case of arrays, we can use `Array.prototype.includes` to check whether an ingredient belongs to a particular array:
+However, our type predicate helpers are now much cleaner. In the case of arrays, we can use `Array.prototype.includes` to check whether an ingredient belongs to a particular array:
 
 ```ts
 const isFruit = (ingredient: Ingredient): ingredient is Fruit => {
@@ -187,9 +219,9 @@ It may seem odd that we're using type assertions here, but they're important. Wi
 
 {% include img.html src: "error.jpg", alt: "TypeScript complains that the argument of type 'Ingredient' is not assignable to the parameter of type 'apple' or 'banana' or 'orange'. Type 'carrot' is not assignable to type 'apple' or 'banana' or 'orange'." %}
 
-It's a bit silly in this case since that's the whole point of type predicates: to take an abstract type and narrow it down to a more concrete type! But it is what it is.
+This should make sense—at that point in the code, TypeScript does not yet know that `ingredient` is of one type or the other, so we have to give it a helpful nudge. But when we use these helpers, we'll still get proper type inference.
 
-In the case of objects, the type predicates are very similar:
+In the case of objects, the type predicate helpers are very similar:
 
 ```ts
 const isFruit = (ingredient: Ingredient): ingredient is Fruit => {
