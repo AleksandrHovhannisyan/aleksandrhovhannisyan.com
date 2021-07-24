@@ -4,6 +4,7 @@ description: Sometimes, a React component needs to allow users to render a custo
 keywords: [dynamic tag name props]
 categories: [react, typescript]
 commentsId: 62
+thumbnail: thumbnail.jpg
 ---
 
 In React, you'll sometimes want to allow users to pass in a dynamic tag name as a prop to a component. While this is a somewhat rare pattern, you may still come across it in the wild. For example, you may have seen it if you've ever worked with the [`react-intl` library for internationalized strings](https://formatjs.io/docs/react-intl/components/#formattedmessage), where the `<FormattedMessage>` component accepts an optional `tagName` prop:
@@ -98,4 +99,4 @@ In some cases, you may want to instead use [render props](https://reactjs.org/do
 
 And that's all there is to it! I hope you found this mini-tutorial helpful.
 
-{% include unsplashAttribution.md name: "Paolo Chiabrando", username: "chiabra", image_id: "do7VUvKBOsg" %}
+{% include unsplashAttribution.md name: "Angèle Kamp", username: "angelekamp", photoId: "KaeaUITiWnc" %}

@@ -4,6 +4,7 @@ description: On the surface, Outer Wilds is a space exploration game. But peel b
 keywords: [what is outer wilds about, outer wilds review, outer wilds ending explained, outer wilds meaning, outer wilds pine trees]
 categories: [off-topic, gaming, outer-wilds]
 commentsId: 40
+thumbnail: thumbnail.jpg
 ---
 
 What originally began as a thesis project [more than six years ago](https://www.youtube.com/watch?v=vRQU1o8SrAI) between two university students—Alex Beachum and Loan Verneau—is one of the best games released so far in 2019. And it's certainly come a long way, with much of the art, audio, and gameplay receiving polishes that have allowed it to shine.
