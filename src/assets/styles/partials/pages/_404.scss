@@ -4,7 +4,7 @@
   align-items: center;
   animation: backgroundScroll 40s linear infinite;
   animation-fill-mode: forwards;
-  background-color: var(--color-black-10);
+  background-color: hsl(0, 0%, 8%);
   // https://www.transparenttextures.com/stardust.html
   background-image: url('/assets/images/404/stardust.png');
   display: flex;
@@ -28,18 +28,18 @@
   }
 
   h1 {
-    color: var(--color-black-90);
+    color: hsl(0, 0%, 90%);
     margin-bottom: 2.4rem;
     text-shadow: 0.1em 0.1em black;
   }
 
   p {
-    color: var(--color-black-75);
+    color: hsl(0, 0%, 75%);
     margin-bottom: 1.6rem;
     @include font-size('lg');
   }
 
   a {
-    color: var(--color-black-90);
+    color: hsl(0, 0%, 90%);
   }
 }

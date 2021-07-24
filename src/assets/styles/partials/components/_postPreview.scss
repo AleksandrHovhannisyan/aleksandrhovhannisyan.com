@@ -25,7 +25,7 @@
     @include font-weight('bold');
 
     a {
-      color: var(--text-color-emphasis);
+      color: var(--color-text-emphasis);
       @include underlined-link($initially-underlined: false);
     }
   }

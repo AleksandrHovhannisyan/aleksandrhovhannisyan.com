@@ -46,7 +46,7 @@
   }
 
   &-name {
-    color: var(--text-color-emphasis);
+    color: var(--color-text-emphasis);
     @include font-size('base');
     @include font-weight('bold');
   }
@@ -84,7 +84,7 @@
   height: 100%;
   opacity: 0;
   border-radius: 0.4rem;
-  color: var(--text-color-emphasis);
+  color: var(--color-text-emphasis);
   background-color: var(--card-bg-color);
   @include transition(opacity);
   @include font-size('md');
@@ -108,7 +108,7 @@
   a {
     height: 4.8rem;
     width: 4.8rem;
-    color: var(--text-color-normal);
+    color: var(--color-text-normal);
   }
 
   svg {

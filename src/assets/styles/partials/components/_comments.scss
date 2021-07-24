@@ -64,7 +64,7 @@
   }
 
   &-username {
-    color: var(--text-color-emphasis);
+    color: var(--color-text-emphasis);
     @include font-weight('bold');
     @include underlined-link;
   }

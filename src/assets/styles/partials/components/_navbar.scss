@@ -235,7 +235,8 @@
 }
 
 .lamp {
-  --lamp-color: var(--color-black-60);
+  --lamp-lightness: 60%;
+  --lamp-color: hsl(0, 0%, var(--lamp-lightness));
   width: 45px;
   height: 45px;
   background-color: transparent;
@@ -305,9 +306,10 @@
 }
 
 .lamp-head {
+  --lamp-color-light: hsl(0, 0%, calc(var(--lamp-lightness) - 5%));
   width: 20px;
   height: 10px;
-  background-image: linear-gradient(to bottom, var(--color-black-55) 5%, var(--lamp-color) 90%, var(--color-black-55) 5%);
+  background-image: linear-gradient(to bottom, var(--lamp-color-light) 5%, var(--lamp-color) 90%, var(--lamp-color-light) 5%);
   border-radius: 100px 100px 0 0;
   transform: rotate(45deg);
   position: absolute;

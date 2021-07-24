@@ -461,7 +461,7 @@ Hopefully, you now have a better understanding of how to define responsive aspec
     position: relative;
     height: 0;
     background-color: var(--tag-bg-color);
-    color: var(--text-color-emphasis);
+    color: var(--color-text-emphasis);
     font-weight: 700;
     font-size: 1.2em;
     list-style: none;
@@ -504,7 +504,7 @@ Hopefully, you now have a better understanding of how to define responsive aspec
     height: 0;
     padding-bottom: 100%;
     background-color: var(--tag-bg-color);
-    color: var(--text-color-emphasis);
+    color: var(--color-text-emphasis);
     position: relative;
   }
   .square * {

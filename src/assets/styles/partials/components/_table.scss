@@ -2,7 +2,7 @@
 
 thead {
   background-color: var(--table-header-bg-color);
-  color: var(--text-color-emphasis);
+  color: var(--color-text-emphasis);
 
   th {
     @include font-weight('bold');
@@ -13,5 +13,5 @@ td,
 th {
   text-align: left;
   padding: 0.8rem 1.6rem;
-  border: solid 0.2rem var(--border-color);
+  border: solid 0.2rem var(--color-border);
 }

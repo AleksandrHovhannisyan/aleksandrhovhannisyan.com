@@ -2,20 +2,20 @@
 
 .input {
   background-color: var(--input-bg-color);
-  border: solid 0.1rem var(--border-color);
+  border: solid 0.1rem var(--color-border);
   border-radius: 0.2rem;
-  color: var(--text-color-emphasis);
+  color: var(--color-text-emphasis);
   padding: 0.2rem 0.8rem;
   width: 100%;
 
   &:focus {
-    outline: solid 0.2rem var(--border-color-focus);
-    border-color: var(--border-color-focus);
+    outline: solid 0.2rem var(--color-border-focus);
+    border-color: var(--color-border-focus);
   }
 }
 
 label {
-  color: var(--text-color-emphasis);
+  color: var(--color-text-emphasis);
   @include font-weight('bold');
 
   &.required::after {

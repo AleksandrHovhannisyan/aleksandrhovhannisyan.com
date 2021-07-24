@@ -88,7 +88,7 @@
     justify-content: center;
     padding: 1.6rem;
     border-radius: 0.2rem;
-    color: var(--text-color-normal);
+    color: var(--color-text-normal);
 
     svg {
       justify-self: center;
@@ -101,7 +101,7 @@
     &:hover {
       background-color: var(--hover-bg-color);
       cursor: pointer;
-      color: var(--text-color-emphasis);
+      color: var(--color-text-emphasis);
     }
 
     &-name {

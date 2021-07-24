@@ -3,7 +3,7 @@
 
 ::selection {
   background-color: var(--selection-bg-color);
-  color: var(--text-color-inverted);
+  color: var(--color-text-inverted);
   text-shadow: none;
 }
 
@@ -17,7 +17,7 @@ body {
   justify-content: space-between;
   min-height: 100vh;
   background-color: var(--main-bg-color);
-  color: var(--text-color-normal);
+  color: var(--color-text-normal);
   @include font-family('sans');
   @include font-weight('regular');
   @include font-size('base');
@@ -36,12 +36,12 @@ body {
 }
 
 strong {
-  color: var(--text-color-emphasis);
+  color: var(--color-text-emphasis);
   @include font-weight('bold');
 }
 
 @include headings {
-  color: var(--text-color-emphasis);
+  color: var(--color-text-emphasis);
 
   .heading-anchor {
     @include underlined-link($initially-underlined: false);
@@ -78,11 +78,11 @@ h6 {
 }
 
 p {
-  color: var(--text-color-normal);
+  color: var(--color-text-normal);
 }
 
 a {
-  color: var(--text-color-emphasis);
+  color: var(--color-text-emphasis);
   @include focus-outline($color: currentColor, $style: solid, $thickness: 0.2rem);
 }
 
@@ -95,7 +95,7 @@ code {
 // Inline code
 code:not([class^=language-]) {
   background-color: var(--inline-code-bg-color);
-  color: var(--text-color-emphasis);
+  color: var(--color-text-emphasis);
   border-radius: 0.4rem;
   padding: 0.4rem 0.8rem;
 }
@@ -117,7 +117,7 @@ cite {
   @include font-size('sm');
 
   &, a {
-    color: var(--text-color-soft);
+    color: var(--color-text-soft);
   }
 }
 
