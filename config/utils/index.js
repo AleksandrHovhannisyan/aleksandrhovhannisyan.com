@@ -31,7 +31,7 @@ const getAllUniqueKeyValues = (collectionItems, key) => {
 const slugifyString = (str) => {
   return slugify(str, {
     replacement: '-',
-    remove: /[&,+()$~%.'":*?<>{}]/g,
+    remove: /[#,&,+()$~%.'":*?<>{}]/g,
     lower: true,
   });
 };
