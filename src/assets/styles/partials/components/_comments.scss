@@ -44,7 +44,7 @@
 :not(.token).comment {
   --avatar-size: 3.2rem;
   --meta-spacing: 0.8rem;
-  padding-left: calc(var(--avatar-size) +var(--meta-spacing));
+  padding-inline-start: calc(var(--avatar-size) +var(--meta-spacing));
 
   &-header {
     display: flex;
