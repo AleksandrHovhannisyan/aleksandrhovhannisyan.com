@@ -5,17 +5,14 @@ const path = require('path');
 const { escape } = require('lodash');
 const { imagePaths, dir } = require('../constants');
 
-// Alias Eleventy's convention of null = original [width/format/etc] for clarity
-const ORIGINAL = null;
-
 const ImageWidths = {
   /** The original (source) image width. */
-  ORIGINAL,
+  ORIGINAL: null,
   /** The width of placeholder images (for lazy loading). Aspect ratio is preserved. */
   PLACEHOLDER: 24,
 };
 
-const OPTIMIZED_IMAGE_FORMAT = 'webp';
+const OPTIMIZED_IMAGE_FORMATS = ['webp'];
 
 /** Images that need special attention/prop customization. */
 const specialImages = {
@@ -34,7 +31,7 @@ const specialImages = {
     widths: [ImageWidths.PLACEHOLDER, 32, 57, 76, 96, 128, 192, 228],
     formats: {
       base: 'png',
-      other: [OPTIMIZED_IMAGE_FORMAT],
+      other: OPTIMIZED_IMAGE_FORMATS,
     },
     // Really only need this one for the navbar logo. Other sizes are generated for the real favicon.
     sizes: '57px',
@@ -46,7 +43,7 @@ const imageDefaults = {
   widths: [ImageWidths.ORIGINAL, ImageWidths.PLACEHOLDER, 400, 800],
   formats: {
     base: 'jpeg',
-    other: [OPTIMIZED_IMAGE_FORMAT],
+    other: OPTIMIZED_IMAGE_FORMATS,
   },
   sizes: '100vw',
 };
@@ -95,9 +92,9 @@ const imageShortcode = async (relativeSrc, alt, className, id, clickable) => {
   } style="--aspect-ratio: ${aspectRatio}%;">
   ${Object.values(imageMetadata)
     // Prioritize optimized sources since browser loads first valid one it encounters
-    .sort((a, b) => {
-      if (a[0].format === OPTIMIZED_IMAGE_FORMAT) return -1;
-      if (b[0].format === OPTIMIZED_IMAGE_FORMAT) return 1;
+    .sort((sourcesA, sourcesB) => {
+      if (OPTIMIZED_IMAGE_FORMATS.includes(sourcesA[0].format)) return -1;
+      if (OPTIMIZED_IMAGE_FORMATS.includes(sourcesB[0].format)) return 1;
       return 0;
     })
     // Map each format to the source HTML markup
@@ -128,7 +125,7 @@ const imageShortcode = async (relativeSrc, alt, className, id, clickable) => {
 
   // Link to the highest resolution optimized image
   if (clickable) {
-    return outdent`<a href="${formatSizes[OPTIMIZED_IMAGE_FORMAT].largest.url}">${picture}</a>`;
+    return outdent`<a href="${formatSizes[OPTIMIZED_IMAGE_FORMATS[0]].largest.url}">${picture}</a>`;
   }
 
   // Otherwise just return the plain picture tag
