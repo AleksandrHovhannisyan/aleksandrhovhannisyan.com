@@ -65,9 +65,9 @@ const imageShortcode = async (relativeSrc, alt, className, id, clickable) => {
   const imageMetadata = await Image(fullyQualifiedImagePath, {
     widths,
     formats,
-    // Output to same dest as site
+    // Where the generated image files get saved
     outputDir: path.join(imagePaths.output, pathToImage),
-    // Public URL path referenced in the img tag's src
+    // Public URL path that's referenced in the img tag's src attribute
     urlPath: path.join(imagePaths.output.replace(dir.output, ''), pathToImage),
     // Custom file name
     filenameFormat: (_id, _src, width, format) => {
@@ -102,9 +102,8 @@ const imageShortcode = async (relativeSrc, alt, className, id, clickable) => {
     })
     // Map each format to the source HTML markup
     .map((formatEntries) => {
-      const representativeEntry = formatEntries[0];
-      const formatName = representativeEntry.format;
-      const sourceType = representativeEntry.sourceType;
+      // The first entry is representative of all the others since they each have the same shape
+      const { format: formatName, sourceType } = formatEntries[0];
 
       const placeholderSrcset = formatSizes[formatName].smallest.url;
       const actualSrcset = formatEntries

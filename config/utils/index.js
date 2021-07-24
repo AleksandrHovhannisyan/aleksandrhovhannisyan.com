@@ -23,7 +23,6 @@ const getAllUniqueKeyValues = (collectionItems, key) => {
   values = [...new Set(values)];
   // Sort alphabetically
   values = values.sort((key1, key2) => key1.localeCompare(key2, 'en', { sensitivity: 'base' }));
-  // Phew, we're done!
   return values;
 };
 

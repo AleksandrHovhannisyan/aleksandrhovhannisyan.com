@@ -26,8 +26,8 @@ const postsByCategory = (collection) => {
   // Get an array of all posts in this category
   allUniqueCategories.forEach((category) => {
     const postsInThisCategory = allPosts.filter((post) => {
-      const selfCategories = post.data.categories ?? [];
-      return selfCategories.includes(category);
+      const postCategories = post.data.categories ?? [];
+      return postCategories.includes(category);
     });
 
     // create a 2D array of chunked posts, where each nested array represents a page.

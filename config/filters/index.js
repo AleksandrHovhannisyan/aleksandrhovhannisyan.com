@@ -51,7 +51,7 @@ const dividedBy = (numerator, denominator) => {
 /** Replaces every newline with a line break. */
 const newlineToBr = (str) => {
   if (typeof str !== 'string') {
-    throw new Error(`${newlineToBr.name}: expected argument of type string but instead got ${url} (${typeof url})`);
+    throw new Error(`${newlineToBr.name}: expected argument of type string but instead got ${str} (${typeof str})`);
   }
   return str.replace(/\n/g, '<br>');
 };
