@@ -4,6 +4,7 @@ description: Type predicates are a powerful TypeScript feature that allows you t
 keywords: [type predicate, derived types, typescript]
 categories: [typescript, javascript]
 thumbnail: thumbnail.jpg
+commentsId: 98
 ---
 
 Let's pretend that we're writing the frontend for a juice shop that prepares a combination of fruits and vegetables for its juices. We want to strictly type our ingredients, so we first take a naive approach that lists the types upfront for fruits and vegetables:

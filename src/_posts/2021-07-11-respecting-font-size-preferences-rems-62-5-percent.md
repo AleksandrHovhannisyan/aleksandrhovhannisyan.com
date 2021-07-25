@@ -4,6 +4,7 @@ description: Setting your base font size to 62.5% allows you to think in pixels 
 keywords: [base font size, "62.5%", font size preferences, rem]
 categories: [css, typography, math, a11y]
 thumbnail: thumbnail.jpg
+commentsId: 97
 ---
 
 In CSS, there are lots of different units that can be used to size elements on a page—`px`, `vw`, `ch`, `em`, `rem`, and [far too many others](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units) to list here. Of all these units, `rem` happens to be the most reliable for sizing elements responsively, allowing you to scale your UI with the browser's base font size and to respect user preferences for accessibility. Let's understand why `rem` is the ideal unit for font size and how setting the base font size to `62.5%` can make our lives easier while also honoring user preferences.

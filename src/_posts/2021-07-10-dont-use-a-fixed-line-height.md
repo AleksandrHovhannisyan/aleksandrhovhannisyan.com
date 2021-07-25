@@ -6,6 +6,7 @@ categories: [css, sass, typography, a11y]
 thumbnail: thumbnail.jpg
 canonicalUrl: https://www.aleksandrhovhannisyan.com/blog/dont-use-a-fixed-line-height/
 lastUpdated: 2021-07-13
+commentsId: 96
 ---
 
 Typography is an important element of any design, both in print and on the web. But when typographical decisions are executed poorly, they can harm the readability of your content, leave a bad impression of your brand, and create a poor user experience.

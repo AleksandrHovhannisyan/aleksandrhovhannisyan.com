@@ -4,6 +4,7 @@ description: Premature optimization may be hurting the quality of your work. Foc
 keywords: [premature optimization, optimization, micro-optimization, big-o]
 categories: [math, algorithms, javascript]
 layout: mathPost
+commentsId: 94
 ---
 
 Recently, there was a [Twitter thread going around](https://twitter.com/maxfmckay/status/1396252890721918979) that compared two approaches to the same problem in JavaScript: 1) using a single `Array.reduce` call with the ES6 spread operator, or 2) chaining array methods. The two code samples looked something like this (I've renamed the variables to clarify what's going on):

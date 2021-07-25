@@ -4,6 +4,7 @@ description: A review of 11ty, an extensible static site generator written in No
 keywords: [11ty, eleventy]
 categories: [11ty, jekyll, blogging]
 thumbnail: thumbnail.jpg
+commentsId: 95
 ---
 
 For two years, my blog ran on Jekyll, one of the oldest and most popular static site generators around. Jekyll is often listed alongside other static site generators like Hugo, Gatsby, Next, Nuxt, and [many others](https://jamstack.org/generators/) that make up the so-called Jamstack.
