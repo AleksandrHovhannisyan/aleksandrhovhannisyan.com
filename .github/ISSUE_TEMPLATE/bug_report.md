@@ -1,8 +1,7 @@
 ---
 name: Bug report
-about: Did something go wrong while you were browsing the site? Let me know so I can
-  fix it!
-title: 'Bug Report: [Concise Summary Here]'
+about: Report an issue.
+title: ''
 labels: bug
 assignees: ''
 

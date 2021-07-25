@@ -1,10 +1,8 @@
 ---
 name: Feature request
-about: Got any ideas to make the site better? Let me know, and I'll take a look!
-title: 'Feature Request/Suggestion: [Concise Summary Here]'
+about: Suggestions for new tutorials/articles.
+title: 'Feature Request: [Concise Summary Here]'
 labels: feature-request
-assignees: ''
-
 ---
 
 **Feature description**
