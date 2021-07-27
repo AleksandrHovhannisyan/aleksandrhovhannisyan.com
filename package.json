@@ -5,7 +5,8 @@
   "repository": "git@github.com:AleksandrHovhannisyan/aleksandrhovhannisyan.com.git",
   "author": "AleksandrHovhannisyan <aleksandrhovhannisyan@gmail.com>",
   "scripts": {
-    "clean": "rimraf _site",
+    "clean:all": "rimraf _site",
+    "clean": "rimraf '_site/!(assets)' '_site/assets/!(images)'",
     "debug:eleventy": "DEBUG=Eleventy* npx @11ty/eleventy --serve --incremental --port=4001",
     "serve:webpack": "webpack --mode=development --watch",
     "serve:sass": "sass --watch src/assets/styles:_site/assets/styles --style=expanded",
@@ -32,7 +33,7 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
-    "@11ty/eleventy-img": "^0.9.0",
+    "@11ty/eleventy-img": "zeroby0/eleventy-img#cache",
     "@11ty/eleventy-plugin-rss": "^1.1.1",
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.1",
     "@babel/core": "^7.14.6",
