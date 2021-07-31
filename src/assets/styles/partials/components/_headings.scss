@@ -1,0 +1,38 @@
+@import '../mixins';
+
+@include headings {
+  color: var(--color-text-emphasis);
+
+  .heading-anchor {
+    @include underlined-link($initially-underlined: false);
+  }
+
+  &,
+  code {
+    @include font-weight('bold');
+  }
+}
+
+h1 {
+  @include font-size('xxxl');
+}
+
+h2 {
+  @include font-size('xxl');
+}
+
+h3 {
+  @include font-size('xl');
+}
+
+h4 {
+  @include font-size('lg');
+}
+
+h5 {
+  @include font-size('md');
+}
+
+h6 {
+  @include font-size('base');
+}

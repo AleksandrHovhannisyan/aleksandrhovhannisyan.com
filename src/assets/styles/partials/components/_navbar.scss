@@ -116,6 +116,12 @@
   align-items: center;
   @include focus-outline((color: white, offset: 0.4rem)...);
 
+  .logo {
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+  }
+
   .website-name {
     color: var(--navbar-text-color);
   }
