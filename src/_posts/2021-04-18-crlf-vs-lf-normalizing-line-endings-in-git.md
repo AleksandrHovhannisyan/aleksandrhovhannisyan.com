@@ -5,6 +5,7 @@ keywords: [line endings, git, gitattributes, carriage return, line feed, crlf vs
 categories: [git, os, tooling]
 commentsId: 79
 thumbnail: thumbnail.jpg
+isPopular: true
 ---
 
 If you've ever worked on a project where developers use different operating systems, you know that line endings can be a peculiar source of frustration. This issue of CRLF vs. LF line endings is actually fairly popular—you'll find tons of questions on StackOverflow about how to configure software like git to play nicely with different operating systems.

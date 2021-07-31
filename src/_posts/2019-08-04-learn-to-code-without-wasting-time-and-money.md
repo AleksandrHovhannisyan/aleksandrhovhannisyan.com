@@ -4,7 +4,6 @@ description: A discussion of the things that beginner programmers tend to get wr
 keywords: [learn to code, beginner programming mistakes, advice for beginner programmers, tips for beginner programmers, coding tips for beginners]
 categories: [learning, beginners, career]
 commentsId: 29
-isPopular: true
 thumbnail: thumbnail.jpg
 ---
 
