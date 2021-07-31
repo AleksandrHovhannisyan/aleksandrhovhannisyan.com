@@ -1,5 +1,18 @@
 [[plugins]]
-package="netlify-plugin-checklinks"
+  package="netlify-plugin-checklinks"
+
+[[plugins]]
+  package = "netlify-plugin-inline-critical-css"
+
+  [plugins.inputs]
+    fileFilter = ["*.html"]
+    directoryFilter = ["!node_modules"]
+    minify = true
+    extract = false
+    dimensions = [
+      { width = 375, height = 667 },
+      { width = 1920, height = 1080 }
+    ]
 
 [dev]
   command = "yarn serve"
