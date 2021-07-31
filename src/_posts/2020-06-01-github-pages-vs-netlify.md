@@ -3,58 +3,67 @@ title: Goodbye, GitHub Pages—Hello, Netlify
 description: GitHub Pages is a great option for hosting your site... until it isn't. Here's why I moved to Netlify.
 keywords: [github pages vs netlify]
 categories: [github, netlify, tooling]
-lastUpdated: 2021-05-28
+lastUpdated: 2021-07-31
 isPopular: true
 ---
 
-Back when I had no clue what I was doing with this site, and it was nothing more than an HTML file with a single CSS stylesheet and some jQuery I absolutely did not need, I was hosting it for free on GitHub Pages.
+Back when I had no clue what I was doing with this site, and it was nothing more than a single HTML file with some jQuery that I absolutely did not need, I was hosting it for free on GitHub Pages. It made sense at the time—my site was simple, I didn't have to pay anything, and I already had a free domain right at my fingertips. GitHub Pages is one of the easiest ways to [create a personal website](/blog/getting-started-with-jekyll-and-github-pages/), publish documentation, or share small projects.
 
-Why? Because it was the most accessible option to me at the time. It also made sense—I didn't have to pay anything, and I already had a free domain right at my fingertips. It's a great option for people who just want to [create a personal website](/blog/getting-started-with-jekyll-and-github-pages/) or publish documentation.
-
-But with time, I realized that GitHub Pages is actually fairly limited as a hosting service. Now, my site is hosted on Netlify under a custom domain, and I honestly couldn't be happier about having made the switch.
-
-Note that this post is not sponsored by Netlify. I'm just a happy user who recommends their services. With that out of the way, let's look at exactly *why* I prefer Netlify to GitHub Pages.
+But with time, I realized that GitHub Pages also has many limitations and doesn't scale well with frameworks and third-party plugins, particularly for static site generators like Jekyll. Now, my site is hosted on Netlify under a custom domain, and I couldn't be happier.
 
 {% include toc.md %}
 
 ## GitHub Pages vs. Netlify: Why I Switched
 
-### Hosting Private Repos
+Below are just of the reasons why I prefer to use Netlify over GitHub Pages. I'll be updating this post occasionally as I continue using Netlify and learning more about its features.
 
-If you're a free GitHub user, then GitHub Pages will only be able to build your public repos. You can get it to also build private repos, but you'll have to purchase one of the Pro plans, the least expensive of which is GitHub Teams at $4/month. That's $48/year. Netlify, on the other hand, can build **both public and private repos** for free. Slap on a custom .com domain from Google Domains for just $12/year, and you're all set.
+### 1. Netlify Plugins and Add-On Features
 
-This may not matter to you much if you don't intend to publish any private repos, but some people do make their sites closed source, so it's a nice added bonus of using Netlify. If you ever want to make your source code private, it won't affect Netlify so long as you've [set up your repo's permissions](https://docs.netlify.com/configure-builds/repo-permissions-linking/).
+My favorite thing about Netlify is its ecosystem of [build plugins](https://docs.netlify.com/configure-builds/build-plugins/), which allow you to extend Netlify's build pipeline to run additional checks on your site before it deploys to production. If any build plugin throws an error, your build will fail with detailed logs clarifying what went wrong.
 
-### Jekyll Plugins, Netlify Plugins, and Other Goodies
+Netlify plugins are open source and free to use. Here are some that you might find useful:
 
-This was a deal-breaker for me as my site grew. If you're using a static site generator like Jekyll, GitHub Pages is only flexible up to a certain point. For example, it only supports [a limited set of Jekyll plugins](https://pages.github.com/versions/); if you want to use unsupported plugins, you'll need to build your site locally and push the build directory to your repo. With Netlify, there are no such restrictions: You can use whatever plugins you want, and your site will build just fine.
+- [`netlify-plugin-checklinks`](https://github.com/Munter/netlify-plugin-checklinks/): flags broken internal and external links.
+- [`netlify-plugin-a11y`](https://github.com/netlify-labs/netlify-plugin-a11y): runs accessibility-related checks on your site.
+- [`netlify-plugin-inline-critical-css`](https://github.com/Tom-Bonnike/netlify-plugin-inline-critical-css): inlines critical CSS.
 
-Netlify also has a bunch of other neat framework-agnostic features, including:
+Netlify also offers framework-agnostic features like:
 
-- [Split A/B testing](https://docs.netlify.com/site-deploys/split-testing/#use-snippet-injection-for-more-flexibility), where it serves multiple branches to users at random.
-- [Free contact forms](https://docs.netlify.com/forms/setup/#html-forms) that work with static sites and offer spam protection via a honeypot field. You can even create a custom page for form submissions!
-- [Netlify Functions](https://www.netlify.com/products/functions/), which allow you to go serverless.
+- [Free contact forms](https://docs.netlify.com/forms/setup/#html-forms) that work with static sites and have spam protection.
+- [Netlify Functions](https://www.netlify.com/products/functions/), a popular option for serverless sites and apps.
+- [Split A/B testing](https://docs.netlify.com/site-deploys/split-testing/#use-snippet-injection-for-more-flexibility), where Netlify serves multiple branches to users at random.
 
-You can even add **free Netlify build plugins** to your site. These plugins run as part of your website's build process, and if any of them fail, your entire build will fail. For example, there's one that will [check all links on your site](https://www.npmjs.com/package/netlify-plugin-checklinks) to ensure that none of them are broken before you publish new content, another that will run [a11y checks](https://www.npmjs.com/package/netlify-plugin-a11y) for accessibility, and [many others](https://docs.netlify.com/configure-builds/build-plugins/).
+GitHub Pages doesn't offer these features. It *can* take advantage of [GitHub Actions](https://github.com/features/actions), but [so can Netlify](https://github.com/netlify/actions) if your code already lives on GitHub.
 
+### 2. Local Dev and Build Environments
 
-GitHub Pages has none of these things—no customization, and certainly no plugins. It *can* take advantage of GitHub Actions, but [so can Netlify](https://github.com/netlify/actions) if your code lives on GitHub.
+If you want to test production changes on GitHub Pages, you need to push up a branch and wait for the build to finish on prod. By contrast, Netlify allows you to run dev and production builds locally using the [Netlify CLI](https://docs.netlify.com/cli/get-started/#installation-in-a-ci-environment), with secure authentication. This allows you to [simulate a full Netlify build locally](https://docs.netlify.com/cli/get-started/#run-builds-locally), including with any build plugins that you've installed.
 
-### More Control Over Deployments
+{% include img.html src: "local-build.png", alt: "Sample output from a local Netlify build running on my site. Netlify steps are listed in bright cyan font against a black background, with numbered steps and information about my Netlify configuration." %}
 
-With Netlify, you have **greater control over the deployment process**. Your dashboard provides a clear view of your deploy history and even allows you to manually revert your site to a prior state with its **one-click rollback**. You can also stop auto-publishing new versions of your site, in case that's something you're interested in, and even access a live preview of your deployment to make sure nothing broke. You can also share your deployment history (and deploy previews) with other people; this is useful if you're working as part of a team and not just a single dev, or if you want design input from others.
+### 3. A Better Continuous Integration Experience
+
+When you connect a GitHub repo to Netlify, you can take full advantage of its CI/CD pipeline for a better developer experience. For example, if anyone opens a pull request in your repo, this will automatically trigger a Netlify build and [generate a unique Deploy Preview URL](https://www.netlify.com/products/deploy-previews/) when the build finishes. This deploy preview doesn't get indexed, and it can be shared with anyone within or outside your team.
+
+{% include img.html src: "deploy-preview.png", alt: "The footer section of a GitHub pull request shows a checklist of Netlify checks that passed or failed during the build process. There are metrics for each step, like the time it took to finish, as well as links to deploy previews." %}
+
+Deploy previews are a great way to verify that merging a pull request won't introduce unintended side effects, allowing other devs on your team to test a feature live rather than having to build your branch locally. If you're a freelancer, this is especially useful because it means that you can show deploy previews to clients and solicit their feedback before your changes ever go live.
+
+### 4. More Control Over Deployments
+
+With Netlify, you have greater control over the entire deployment process. Your dashboard provides a clear view of your deploy history and even allows you to manually revert your site to a prior state with its one-click rollback. You can also stop auto-publishing new versions of your site, access all of your deploy previews, and more.
 
 {% include img.html src: "dashboard.png", alt: "The Netlify dashboard for my personal website, showing a list of recent deployments and their git hash IDs." %}
 
-On the other hand, with GitHub Pages, [you can only deploy to two branches](https://help.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source), one of which is `master` by default. Want to revert your site? Have fun [resetting to a previous commit with git](/blog/undoing-changes-in-git/#2-resetting-a-branch-to-an-older-commit) on your second branch and fiddling with your repo settings to change the deploy branch. There are also no deploy previews, so whatever you push will go live as soon as it builds.
+GitHub Pages doesn't give you this kind of fine-grained control over deployments. It's actually fairly limited—[you can only deploy to two branches](https://help.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source), one of which is `master` by default. So if you want to revert your production build to a prior state, you'll need to do this at the repo level by [resetting to a previous commit with git](/blog/undoing-changes-in-git/#2-resetting-a-branch-to-an-older-commit) and deploying a different branch. There are also no deploy previews, so whatever you publish will go live as soon as it builds.
 
-### Faster Deployments
+### 5. Faster Deployments
 
 Netlify builds my site in just 1–2 minutes, on average:
 
 {% include img.html src: "faster-deploys.png", alt: "A list of recent deployments in my Netlify dashboard, along with the time it took each one to deploy from start to finish." %}
 
-Back when I was hosting it on GitHub Pages, things were much slower, and I'd sometimes have to do a hard refresh to see any updates. GitHub's own documentation notes that you may have to [wait up to 20 minutes](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/about-jekyll-build-errors-for-github-pages-sites) to see your changes go live:
+Back when I was hosting my site on GitHub Pages, things were much slower, and I'd sometimes have to do a hard refresh to see any updates on prod. GitHub's own documentation notes that you may have to [wait up to 20 minutes](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/about-jekyll-build-errors-for-github-pages-sites) to see your changes go live:
 
 > *It can take up to 20 minutes for changes to your site to publish after you push the changes to GitHub.*
 
@@ -64,11 +73,22 @@ Unfortunately, GitHub Pages also caps you at **only 10 builds per hour**. So if 
 
 Netlify has a much more generous soft cap of **3 builds per minute**. You also get **300 build minutes per month** and **100 GB data usage** with its free tier, which is more than enough for most needs.
 
-To clarify: Build minutes are Netlify's currency for a billing cycle. If you're a free user, this means that your builds can't exceed the 300-minute total for one month. Next month, your usage resets to 0. My cycle resets on the 15th of each month, and I don't pay anything as long as my usage doesn't exceed this limit:
-
 {% include img.html src: "billing.png", alt: "Netlify's dashboard shows billing information for things such as data usage and build minutes used." %}
 
-### Proper 301 Redirects
+Build minutes are just Netlify's currency for a billing cycle. If you're a free user, this means that your builds can't exceed 300 minutes total for one month. Next month, your usage resets to 0. You don't have to pay anything as long as your usage doesn't exceed this limit.
+
+
+### 6. UI- and File-Based Configurations
+
+Netlify lets you configure your builds using either the Netlify UI or a `netlify.toml` configuration file at the root of your repo. This file houses your build commands, the directory to publish, redirect rules, response headers, plugins to use and the options they accept, post-processing steps, and [other settings](https://docs.netlify.com/configure-builds/file-based-configuration/). The customization options for GitHub Pages are limited to whatever is offered under the repo Settings page.
+
+### 7. Support for Deploying Private Repos
+
+If you're a free GitHub user, then GitHub Pages will only be able to build your public repos. You can get it to also build private repos, but you'll have to purchase one of the Pro plans, the least expensive of which is GitHub Teams at $4/month. Netlify, on the other hand, can build both public and private repos for free. Slap on a custom .com domain from Google Domains for just $12/year, and you're all set.
+
+This may not matter if you don't intend to publish any private repos, but some people do prefer to keep their source code private, so it's a nice added bonus of using Netlify. If you ever want to make your source code private, it won't affect Netlify so long as you've correctly [linked your Netlify access token to GitHub](https://docs.netlify.com/configure-builds/repo-permissions-linking/).
+
+### 8. Proper 301 Redirects
 
 This one's a big deal if you value your site's SEO.
 
