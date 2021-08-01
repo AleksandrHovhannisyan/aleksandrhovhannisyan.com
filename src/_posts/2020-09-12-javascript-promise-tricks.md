@@ -423,7 +423,7 @@ Unlike the version with just `setTimeout`, awaiting an unresolved Promise will a
 
 A couple things to note. First, if you want to run some code at even intervals, this isn't the best approach—that's why `setInterval` exists. Second, if all you want to do is fire some callback after `n` milliseconds, you should use a regular old `setTimeout`. The sleep function we defined here mainly comes in handy when you want to slow down the iterations of a loop, for example.
 
-## JavaScript Promises and Promising JavaScript
+## JavaScript Promises in Review
 
 Promises are pretty neat—once you get over the initial fear of using and understanding them, you'll find yourself discovering new patterns and possibilities in JavaScript. I hope you found this tutorial helpful!
 
