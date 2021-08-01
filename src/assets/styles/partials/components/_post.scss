@@ -15,19 +15,10 @@
     overflow-wrap: break-word;
     @include rhythm;
 
-    @include headings {
-      margin-top: 2.4rem;
-      margin-bottom: -0.8rem;
-    }
-
     #skip-toc {
       transform: translateY(-50%);
       padding: 0.2rem 0.8rem;
       @include font-weight('bold');
-    }
-
-    #table-of-contents {
-      margin-top: 0;
     }
 
     .toc-list {

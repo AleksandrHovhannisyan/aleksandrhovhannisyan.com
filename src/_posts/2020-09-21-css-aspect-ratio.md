@@ -454,19 +454,17 @@ Hopefully, you now have a better understanding of how to define responsive aspec
     display: grid;
     padding: 0 !important;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    row-gap: 1em;
-    column-gap: 1em;
+    row-gap: 1.6rem;
+    column-gap: 1.6rem;
   }
   .post-content .tile {
     position: relative;
     height: 0;
     background-color: var(--tag-bg-color);
     color: var(--color-text-emphasis);
-    font-weight: 700;
-    font-size: 1.2em;
+    font-weight: var(--fw-bold);
     list-style: none;
-    margin: 0 !important;
-    border-radius: 4px;
+    border-radius: 0.4rem;
   }
   .post-content .tile::after {
     position: absolute;

@@ -83,8 +83,9 @@
 }
 
 @mixin rhythm() {
-  display: grid;
-  row-gap: calc(var(--line-height) * 1em);
+  > * + * {
+    margin-top: calc(var(--line-height) * 1em);
+  }
 }
 
 @mixin line-clamp($lines, $font-size: var(--font-size), $line-height: var(--line-height)) {

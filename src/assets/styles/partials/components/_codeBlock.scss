@@ -5,10 +5,6 @@
   z-index: 2;
   position: relative;
 
-  + pre[class*="language-"] {
-    margin-top: calc(-1em * var(--line-height));
-  }
-
   // Code blocks with a file name need a bit of top padding
   &.with-file-name + pre[class*="language-"] {
     padding-top: 7.6rem;
