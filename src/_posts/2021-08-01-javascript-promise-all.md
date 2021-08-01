@@ -6,7 +6,7 @@ categories: [javascript, promises, async]
 thumbnail: thumbnail.jpg
 ---
 
-Imagine you're creating a website where users can batch-upload files. You need to know when all files have finished uploading so you can notify the user and update the UI. This sounds like the job for promises since file uploads are likely to be asynchronous. But in this example, each upload would return its own promise. You know how to await *individual* promises, but how do you await an arbitrary number of promises to know when they've *all* resolved?
+Imagine you're creating a website where users can batch-upload files. You need to know when all files have finished uploading so you can notify the user and update the UI. This sounds like a job for promises since file uploads are likely to be asynchronous. But in this example, each upload would return its own promise. You know how to await *individual* promises, but how do you await an arbitrary number of promises to know when they've *all* resolved?
 
 Waiting for multiple async operations to finish is such a common task in JavaScript that there's a special method for this very purpose: `Promise.all`. In this article, we'll learn how to use `Promise.all` to await multiple promises. Towards the end, we'll also write our own implementation of `Promise.all` to better understand how it works under the hood.
 
@@ -212,7 +212,7 @@ Promise.all = (promises) => {
 };
 ```
 
-Each time a promise resolves, we push the resolved value to an array and check if its length equals the size` of the iterable. If it does, then we know that all promises have resolved, so we resolve the outer promise. Otherwise, if at any point a single promise is rejected or an error is thrown, we reject the outer promise.
+Each time a promise resolves, we push the resolved value to an array and check if its length equals the size of the iterable. If it does, then we know that all promises have resolved, so we resolve the outer promise. Otherwise, if at any point a single promise is rejected or an error is thrown, we reject the outer promise.
 
 There's one edge case that our code doesn't handle: an empty iterable. [According to MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all#return_value), the expected behavior is that `Promise.all` should resolve immediately. Fortunately, the fix is simple in our case since we already computed the size of the input:
 
