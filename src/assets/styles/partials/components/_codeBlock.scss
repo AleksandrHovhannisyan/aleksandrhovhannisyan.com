@@ -85,7 +85,7 @@ pre[class*="language-"] {
   --color-code-string: hsl(17, 47%, 64%);
   --color-code-variable: var(--color-code-keyword);
   --color-code-tag: var(--color-code-keyword);
-  --color-code-constant:--color-code-keyword;
+  --color-code-constant: var(--color-code-number);
   --color-code-operator-word: var(--color-code-keyword);
   --color-code-operator: var(--color-code-function);
   --color-code-punctuation: var(--color-code-function);
