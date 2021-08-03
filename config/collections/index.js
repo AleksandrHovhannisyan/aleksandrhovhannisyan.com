@@ -15,7 +15,7 @@ const categories = (collection) => {
 };
 
 // Blog posts by category, for pagination
-// Credit: https://www.webstoemp.com/blog/basic-custom-taxonomies-with-eleventy/
+// Adapted for use from: https://www.webstoemp.com/blog/basic-custom-taxonomies-with-eleventy/
 const postsByCategory = (collection) => {
   const postsPerPage = 20;
   const blogPostsByCategory = [];
@@ -33,22 +33,24 @@ const postsByCategory = (collection) => {
 
     // Map each chunk to its page slug
     const categorySlug = slugifyString(category);
-    const pageSlugs = chunkedCategoryPosts.map((_, i) => i > 0 ? `${categorySlug}/page/${i + 1}` : categorySlug);
+    const pageHrefs = chunkedCategoryPosts.map((_, i) =>
+      i > 0 ? `/categories/${categorySlug}/page/${i + 1}/` : `/categories/${categorySlug}/`
+    );
 
     chunkedCategoryPosts.forEach((posts, index) => {
       // Massage the data into a format that 11ty's pagination will like
       // https://github.com/11ty/eleventy/issues/332#issuecomment-445236776
       blogPostsByCategory.push({
         title: category,
-        slug: pageSlugs[index],
+        href: pageHrefs[index],
         pageNumber: index,
-        totalPages: pageSlugs.length,
-        pageSlugs: {
-          all: pageSlugs,
-          next: pageSlugs[index + 1] || null,
-          previous: pageSlugs[index - 1] || null,
-          first: pageSlugs[0] || null,
-          last: pageSlugs[pageSlugs.length - 1] || null,
+        totalPages: pageHrefs.length,
+        hrefs: {
+          all: pageHrefs,
+          next: pageHrefs[index + 1] || null,
+          previous: pageHrefs[index - 1] || null,
+          first: pageHrefs[0] || null,
+          last: pageHrefs[pageHrefs.length - 1] || null,
         },
         items: posts,
       });

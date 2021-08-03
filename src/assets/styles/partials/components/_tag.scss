@@ -10,7 +10,7 @@
 a.tag {
   &:hover,
   &:focus,
-  &.active {
+  &[aria-current="page"] {
     background-color: var(--tag-bg-color-focus);
     color: var(--color-text-inverted);
   }
