@@ -4,7 +4,6 @@ description: In typography, the ideal line height for text depends on a variety 
 keywords: [line height, ideal line height, typography]
 categories: [css, sass, typography, a11y]
 thumbnail: thumbnail.jpg
-canonicalUrl: https://www.aleksandrhovhannisyan.com/blog/dont-use-a-fixed-line-height/
 lastUpdated: 2021-07-13
 commentsId: 96
 ---

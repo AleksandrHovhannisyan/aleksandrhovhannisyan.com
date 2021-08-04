@@ -1,10 +1,10 @@
 {%- comment -%}Global variables for reuse in meta tags{%- endcomment -%}
 {%- if page.url == "/" -%}
-  {%- assign page_title = site.title -%}
+  {%- assign pageTitle = site.title -%}
 {%- else -%}
-  {%- assign page_title = title | default: renderData.title -%}
-  {%- assign pipe = " | " -%}
-  {%- assign page_title = page_title | append: pipe | append: site.title -%}
+  {%- assign pageTitle = title | default: renderData.title -%}
+  {%- assign pipe = " | " -%}{%- comment -%}Get an error otherwise, probably a Liquid/11ty bug{%- endcomment -%}
+  {%- assign pageTitle = pageTitle | append: pipe | append: site.title -%}
 {%- endif -%}
 {%- assign description = description | default: site.description -%}
 {%- assign keywords = keywords | default: site.keywords -%}
@@ -15,16 +15,21 @@
 {%- if ogImage -%}
   {%- assign ogImage = ogImage | toAbsoluteUrl -%}
 {%- endif -%}
+{%- comment -%}Canonical URL. Make sure each page has one since some spam sites pull and repost content.{%- endcomment -%}
+{%- assign defaultCanonicalUrl = page.url | toAbsoluteUrl -%}
+{%- assign canonicalUrl = canonicalUrl | default: defaultCanonicalUrl -%}
+
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
   <meta charset="utf-8">
     {%- comment -%}Metadata for search engines{%- endcomment -%}
-    <title>{{ page_title }}</title>
+    <title>{{ pageTitle }}</title>
     <meta name="description" content="{{ description }}">
     <meta name="keywords" content="{{ keywords | join: ', ' }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="{{ site.author }}">
+    <link rel="canonical" href="{{ canonicalUrl }}">
     {%- comment -%}Prevent this page from showing up on search engines{%- endcomment -%}
     {%- if noindex -%}
       <meta name="robots" content="noindex">
@@ -42,9 +47,6 @@
     <link rel="icon" href="/assets/images/favicons/favicon-128.png" sizes="128x128">
     <link rel="icon" href="/assets/images/favicons/favicon-192.png" sizes="192x192">
     <link rel="icon" href="/assets/images/favicons/favicon-228.png" sizes="228x228">
-    {%- if canonicalUrl -%}
-      <link rel="canonical" href="{{ canonicalUrl }}">
-    {%- endif -%}
     {%- comment -%}Load the user's last selected theme{%- endcomment -%}
     <script>
       (function() {
@@ -66,7 +68,7 @@
       <script type="module" src="/assets/scripts/comments.bundle.mjs"></script>
     {%- endif -%}
     {%- comment -%}Open Graph social media previews{%- endcomment -%}
-    <meta property="og:title" content="{{ page_title }}">
+    <meta property="og:title" content="{{ pageTitle }}">
     {%- if ogImage -%}
       <meta property="og:image" content="{{ ogImage }}">
     {%- endif -%}
@@ -75,7 +77,7 @@
     {%- comment -%}Twitter card meta tags{%- endcomment -%}
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:creator" content="@hovhaDovah">
-    <meta name="twitter:title" content="{{ page_title }}">
+    <meta name="twitter:title" content="{{ pageTitle }}">
     <meta name="twitter:description" content="{{ description }}">
     {%- if ogImage -%}
       <meta name="twitter:image" content="{{ ogImage }}">

@@ -4,7 +4,6 @@ description: The binary number system underlies everything in computation and so
 keywords: [binary number system, binary numbers]
 categories: [computer-science, math, binary]
 commentsId: 44
-canonicalUrl: https://www.aleksandrhovhannisyan.com/blog/binary-for-beginners/
 ---
 
 What is <code>10</code>? If this is your first time learning about the binary number system, then this question may seem odd. Of course it's ten, right?
