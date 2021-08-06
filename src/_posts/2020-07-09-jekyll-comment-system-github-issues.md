@@ -210,7 +210,7 @@ const loadScript = (src) => {
 
 This function creates a script element and registers an `onload` listener for it. When the load event fires, the returned promise resolves.
 
-Now, we'll need some way to hold off on rendering comments until *all* of the dependencies have loaded. To do that, we'll use a simple array of scripts to load and take advantage of [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all), together with the async function we just wrote:
+Now, we'll need some way to hold off on rendering comments until *all* of the dependencies have loaded. To do that, we'll use a simple array of scripts to load and take advantage of [`Promise.all`](/blog/javascript-promise-all/), together with the async function we just wrote:
 
 {% include codeHeader.html file: "_includes/comments.html" %}
 ```javascript
