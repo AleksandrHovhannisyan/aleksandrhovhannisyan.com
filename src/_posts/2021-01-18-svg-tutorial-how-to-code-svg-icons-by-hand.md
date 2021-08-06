@@ -3,7 +3,7 @@ title: "SVG Tutorial: How to Code SVG Icons by Hand"
 description: Learn the basics of SVGs so you can code your own SVG icons by hand, without always relying on icon libraries.
 keywords: [svg tutorial, svg icons, how to code svg]
 categories: [svg, html, css]
-lastUpdated: 2021-07-17
+lastUpdated: 2021-08-06
 commentsId: 68
 isPopular: true
 ---
@@ -1640,6 +1640,18 @@ That gives us the classic external-link icon:
 The arrow bit should be familiar from when we created the rightward-facing arrow; now, it's just a diagonal arrow pointing to the top-right. The body of the icon should also be familiar from the calendar, except here it's not closed off and starts at a different location.
 
 And that's our last icon!
+
+## Minifying SVG Paths
+
+For this tutorial, I formatted the SVG paths nicely to make them easier for beginners to read and understand. But in the wild, you're more likely to encounter compact path notations like this:
+
+```html
+<path d="M18 14v6a2 2 0 0 1 -2 2H6a2 2 0 0 1 -2 -2" />
+```
+
+This may seem strange, but it's still the same syntax that we learned. The trick here is that we can unambiguously remove a space before and after each SVG path command (the letters). As long as we don't squish two consecutive numbers up against each other, we'll still get the same path definition as before.
+
+You may come across this syntax if you've exported a compressed SVG from a drawing tool like Inkscape or if you've manually run it through an [SVG minifier](https://jakearchibald.github.io/svgomg/).
 
 ## Further Exploration: Advanced SVG Topics
 
