@@ -84,7 +84,7 @@
 
 @mixin rhythm() {
   > * + * {
-    margin-top: calc(var(--line-height) * 1em);
+    margin-top: var(--line-height);
   }
 }
 
