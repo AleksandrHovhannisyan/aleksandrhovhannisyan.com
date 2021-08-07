@@ -4,7 +4,7 @@ description: In typography, the ideal line height for text depends on a variety 
 keywords: [line height, ideal line height, typography]
 categories: [css, sass, typography, a11y]
 thumbnail: thumbnail.jpg
-lastUpdated: 2021-07-13
+lastUpdated: 2021-08-07
 commentsId: 96
 ---
 
@@ -43,7 +43,7 @@ The former expresses line height in absolute units, usually pixels:
 }
 ```
 
-The latter expresses line height using relative measurements—typically a [unitless line height](https://allthingssmitty.com/2017/01/30/nope-nope-nope-line-height-is-unitless/#disqus_thread) like `1.6`, which translates to "`1.6` times the current font size." The code below specifies a unitless line height that corresponds to the same pixel line height as in the code above:
+The latter expresses line height using relative measurements—typically a unitless line height like `1.6`, which translates to "`1.6` times the current font size." The code below specifies a unitless line height that corresponds to the same pixel line height as in the code above:
 
 ```css
 .element {
@@ -72,6 +72,16 @@ Let's look at an example. Imagine that we have a `48px` heading that uses the sa
 So while the rendered line height for this font size does in fact need to be greater than the rendered line height for body text, the *ratio* needs to decrease to tighten the gap and improve readability. For this particular font, we might opt for a unitless line height of `1.2`. That gives us a rendered line height of `57.6px`. In absolute terms, this is still larger than the body's line height, but the ratio has decreased, making the heading easier to read:
 
 {% include figure.html src: "right-line-height.png", alt: "A sample paragraph with a large heading rendered above it at 48px size and with a line height of 1.2. The heading is now much easier to read.", caption: "Takeaway: At larger font sizes, unitless line heights need to decrease to maintain readability." %}
+
+#### Absolute vs. Unitless Line Height: Which Should You Use?
+
+As we saw from the examples above, unitless line height can be deceptive because it creates a false sense of scalability. The traditional advice is to [always use unitless line height](https://allthingssmitty.com/2017/01/30/nope-nope-nope-line-height-is-unitless/) as a best practice. But practically speaking, there's no difference between the two if you're going to have to change the line height at each font size anyway.
+
+With that in mind, it makes more sense to use absolute line heights since they're easier to reason about; design tools and font inspectors typically yield pixel values (which you should convert to `rem`s) rather than unitless proportions.
+
+The one advantage of using unitless line height is that it's easier to verify, at a glance, that the proportion between your line height and font size decreases as the font size increases. This is a little harder to tell when you express line height using absolute units.
+
+In the end, it's up to you to decide which one you want to use. Both have their advantages.
 
 ### 2. Ideal Line Height Depends on the Line Length
 
@@ -127,32 +137,58 @@ You can easily create design tokens for typography using CSS custom properties (
 ```css
 html {
   --fs-sm: 14px;
-  --lh-sm: 1.75;
+  --lh-sm: 24px;
 
   --fs-base: 16px;
-  --lh-base: 1.6;
+  --lh-base: 26px;
 
   --fs-md: 20px;
-  --lh-md: 1.5;
-  --ls-md: 0;
+  --lh-md: 30px;
 
   --fs-lg: 24px;
-  --lh-lg: 1.4;
+  --lh-lg: 34px;
 
   --fs-xl: 32px;
-  --lh-xl: 1.37;
+  --lh-xl: 44px;
 
   --fs-xxl: 36px;
-  --lh-xxl: 1.3;
+  --lh-xxl: 46px;
 
   --fs-xxxl: 44px;
-  --lh-xxxl: 1.2;
+  --lh-xxxl: 52px;
 }
 ```
 
-> Note that, ideally, you'd want to use rems for font sizes to [respect users' font size preferences](/blog/respecting-font-size-preferences-rems-62-5-percent/) and create scalable UI. I used pixels to keep this tutorial simple.
+> In reality, you'd want to use rems for font sizes and line heights to [respect users' font size preferences](/blog/respecting-font-size-preferences-rems-62-5-percent/). I used pixels to keep this tutorial simple.
 
-Notice how the unitless line heights decrease for larger font sizes and increase for smaller font sizes, as we learned earlier. You may wish to rename the variable to make it clear that `lh-lg` is not a "large line height," but that's more of a semantic concern than a functional one.
+Notice how the absolute line height increases as you move up the scale, but the ratio between the line height and font size decreases. In other words, they're getting closer to each other. As I mentioned earlier, this is easier to spot with unitless line heights:
+
+```css
+html {
+  --fs-sm: 14px;
+  --lh-sm: 1.71;
+
+  --fs-base: 16px;
+  --lh-base: 1.625;
+
+  --fs-md: 20px;
+  --lh-md: 1.5;
+
+  --fs-lg: 24px;
+  --lh-lg: 1.42;
+
+  --fs-xl: 32px;
+  --lh-xl: 1.375;
+
+  --fs-xxl: 36px;
+  --lh-xxl: 1.278;
+
+  --fs-xxxl: 44px;
+  --lh-xxxl: 1.182;
+}
+```
+
+> **Note**: You may want to rename the variable to make it clear that `lh-lg` is not a "large line height," but that's more of a semantic concern than a functional one. It's up to you.
 
 ### A Sass Mixin for Consistent Font Sizes and Line Heights
 
