@@ -3,7 +3,7 @@ title: "SVG Tutorial: How to Code SVG Icons by Hand"
 description: Learn the basics of SVGs so you can code your own SVG icons by hand, without always relying on icon libraries.
 keywords: [svg tutorial, svg icons, how to code svg]
 categories: [svg, html, css]
-lastUpdated: 2021-08-06
+lastUpdated: 2021-08-07
 commentsId: 68
 isPopular: true
 ---
@@ -22,7 +22,9 @@ As you'll see in this tutorial, coding SVG icons by hand is actually fairly stra
 
 <ul class="svg-tutorial__icon-grid">
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="32" height="32">
+    <svg viewBox="0 0 24 24" width="32" height="32" role="img" aria-labelledby="leftAlignTitle1 leftAlignDesc1">
+      <title id="leftAlignTitle1">Left-alignment</title>
+      <desc id="leftAlignDesc1">Four horizontal lines are stacked vertically and aligned to the left-hand margin, with tapering lengths to the right.</desc>
       <line x1="2" y1="4.2" x2="22" y2="4.2"/>
       <line x1="2" y1="9.4" x2="16" y2="9.4"/>
       <line x1="2" y1="14.6" x2="22" y2="14.6"/>
@@ -30,41 +32,53 @@ As you'll see in this tutorial, coding SVG icons by hand is actually fairly stra
     </svg>
   </li>
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="32" height="32">
+    <svg viewBox="0 0 24 24" width="32" height="32" role="img" aria-labelledby="textTitle1 textDesc1">
+      <title id="textTitle1">Text</title>
+      <desc id="textDesc1">A text icon represented with an uppercase letter T, in a serif style.</desc>
       <polyline points="3 8, 3 4, 21 4, 21 8" />
       <line x1="12" y1="4" x2="12" y2="20" />
       <line x1="8" y1="20" x2="16" y2="20" />
     </svg>
   </li>
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="32" height="32">
+    <svg viewBox="0 0 24 24" width="32" height="32" role="img" aria-labelledby="clockTitle1 clockDesc1">
+      <title id="clockTitle1">Clock</title>
+      <desc id="clockDesc1">A clock icon represented as a circle with two concentric lines for the hands, pointing in the 8 o'clock direction.</desc>
       <circle cx="12" cy="12" r="10" />
       <polyline points="13 7, 13 14, 9 14" />
     </svg>
   </li>
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="32" height="32">
+    <svg viewBox="0 0 24 24" width="32" height="32" role="img" aria-labelledby="infoTitle1 infoDesc1">
+      <title id="infoTitle1">Info</title>
+      <desc id="infoDesc1">An info icon often used to indicate additional information or notices. Represented as a circle with a concentric lowercase letter i.</desc>
       <circle cx="12" cy="12" r="10" />
       <circle cx="12" cy="8" r="0.5" fill="currentColor" />
       <line x1="12" y1="12" x2="12" y2="16" />
     </svg>
   </li>
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="32" height="32">
-        <circle cx="12" cy="12" r="10" />
-        <line x1="8" y1="12" x2="16" y2="12" />
-        <polyline points="12 8, 16 12, 12 16" />
+    <svg viewBox="0 0 24 24" width="32" height="32" role="img" aria-labelledby="rightArrowTitle1 rightArrowDesc1">
+      <title id="rightArrowTitle1">Right-arrow</title>
+      <desc id="rightArrowDesc1">A rightward-pointing arrow centered inside a circle.</desc>
+      <circle cx="12" cy="12" r="10" />
+      <line x1="8" y1="12" x2="16" y2="12" />
+      <polyline points="12 8, 16 12, 12 16" />
     </svg>
   </li>
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="32" height="32">
+    <svg viewBox="0 0 24 24" width="32" height="32" role="img" aria-labelledby="warningTitle1 warningDesc1">
+      <title id="warningTitle1">Warning</title>
+      <desc id="warningDesc1">A warning indicator represented as an upward-pointing equilateral triangle and a concentric exclamation mark.</desc>
       <polygon points="12 2, 22 22, 2 22" />
       <line x1="12" y1="10" x2="12" y2="14" />
       <circle cx="12" cy="18" r="0.5" fill="currentColor" />
     </svg>
   </li>
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="32" height="32">
+    <svg viewBox="0 0 24 24" width="32" height="32" role="img" aria-labelledby="calendarTitle1 calendarDesc1">
+      <title id="calendarTitle1">Calendar</title>
+      <desc id="calendarDesc1">A calendar icon with a rectangular body and two parallel vertical lines at the top, with a horizontal line near the top</desc>
       <path
         d="
               M 4 4
@@ -83,7 +97,9 @@ As you'll see in this tutorial, coding SVG icons by hand is actually fairly stra
     </svg>
   </li>
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="32" height="32">
+    <svg viewBox="0 0 24 24" width="32" height="32" role="img" aria-labelledby="externalTitle1 externalDesc1">
+      <title id="externalTitle1">External link</title>
+      <desc id="externalDesc1">An icon used to represent external links and resources. A rectangular shape has a cut-out in the top-right corner; an arrow points out through that gap.</desc>
       <path
         d="M 18 14
           v 6
@@ -100,7 +116,7 @@ As you'll see in this tutorial, coding SVG icons by hand is actually fairly stra
   </li>
 </ul>
 
-If you're curious, I took inspiration for these SVG icons from [Feather Icons](https://feathericons.com/), a fantastic library created by [Cole Bemis](https://colebemis.com/). These icons will help us learn how to draw the following SVG shapes:
+I took inspiration for these SVG icons from [Feather Icons](https://feathericons.com/), a fantastic library created by [Cole Bemis](https://colebemis.com/). These icons will help us learn how to draw the following SVG shapes:
 
 - Lines
 - Polylines
@@ -120,42 +136,42 @@ I hope you're excited to get started! Feel free to jump around if you want, but 
 
 <ul class="svg-tutorial__icon-grid" aria-hidden="true">
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="16" height="16">
+    <svg viewBox="0 0 24 24" width="16" height="16" role="presentation">
       <polyline points="3 8, 3 4, 21 4, 21 8" />
       <line x1="12" y1="4" x2="12" y2="20" />
       <line x1="8" y1="20" x2="16" y2="20" />
     </svg>
   </li>
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="24" height="24">
+    <svg viewBox="0 0 24 24" width="24" height="24" role="presentation">
       <polyline points="3 8, 3 4, 21 4, 21 8" />
       <line x1="12" y1="4" x2="12" y2="20" />
       <line x1="8" y1="20" x2="16" y2="20" />
     </svg>
   </li>
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="32" height="32">
+    <svg viewBox="0 0 24 24" width="32" height="32" role="presentation">
       <polyline points="3 8, 3 4, 21 4, 21 8" />
       <line x1="12" y1="4" x2="12" y2="20" />
       <line x1="8" y1="20" x2="16" y2="20" />
     </svg>
   </li>
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="48" height="48">
+    <svg viewBox="0 0 24 24" width="48" height="48" role="presentation">
       <polyline points="3 8, 3 4, 21 4, 21 8" />
       <line x1="12" y1="4" x2="12" y2="20" />
       <line x1="8" y1="20" x2="16" y2="20" />
     </svg>
   </li>
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="64" height="64">
+    <svg viewBox="0 0 24 24" width="64" height="64" role="presentation">
       <polyline points="3 8, 3 4, 21 4, 21 8" />
       <line x1="12" y1="4" x2="12" y2="20" />
       <line x1="8" y1="20" x2="16" y2="20" />
     </svg>
   </li>
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="96" height="96">
+    <svg viewBox="0 0 24 24" width="96" height="96" role="presentation">
       <polyline points="3 8, 3 4, 21 4, 21 8" />
       <line x1="12" y1="4" x2="12" y2="20" />
       <line x1="8" y1="20" x2="16" y2="20" />
@@ -222,14 +238,14 @@ Below are two SVG icons. The one on the left has a `viewBox` of `0 0 24 24`. The
 
 <ul class="svg-tutorial__icon-grid" aria-hidden="true">
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+    <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
       <polyline points="3 8, 3 4, 21 4, 21 8" />
       <line x1="12" y1="4" x2="12" y2="20" />
       <line x1="8" y1="20" x2="16" y2="20" />
     </svg>
   </li>
   <li class="svg-tutorial__icon">
-    <svg viewBox="6 6 24 24" width="64" height="64" class="bordered">
+    <svg viewBox="6 6 24 24" width="64" height="64" class="bordered" role="presentation">
       <polyline points="3 8, 3 4, 21 4, 21 8" />
       <line x1="12" y1="4" x2="12" y2="20" />
       <line x1="8" y1="20" x2="16" y2="20" />
@@ -261,11 +277,13 @@ The best way to learn how to draw SVG icons by hand is to work with basic shapes
 
 ### 1. Lines
 
-We'll practice our line-drawing skills by recreating the three icons below. You'll find these in lots of text editors that offer text alignment options, so while this exercise may seem trivial, it's actually very practical:
+We'll practice our line-drawing skills by recreating the three icons below. You'll find these in lots of text editors that offer text alignment options:
 
 <ul class="svg-tutorial__icon-grid">
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="64" height="64">
+    <svg viewBox="0 0 24 24" width="64" height="64" role="img" aria-labelledby="leftAlignTitle2 leftAlignDesc2">
+      <title id="leftAlignTitle2">Left-alignment</title>
+      <desc id="leftAlignDesc2">Four horizontal lines are stacked vertically and aligned to the left-hand margin, with tapering lengths to the right.</desc>
       <line x1="2" y1="4.2" x2="22" y2="4.2"/>
       <line x1="2" y1="9.4" x2="16" y2="9.4"/>
       <line x1="2" y1="14.6" x2="22" y2="14.6"/>
@@ -273,7 +291,9 @@ We'll practice our line-drawing skills by recreating the three icons below. You'
     </svg>
   </li>
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="64" height="64">
+    <svg viewBox="0 0 24 24" width="64" height="64" role="img" aria-labelledby="centerAlignTitle1 centerAlignDesc1">
+      <title id="centerAlignTitle1">Center-alignment</title>
+      <desc id="centerAlignDesc1">Four horizontal lines are stacked vertically and centered horizontally on the page.</desc>
       <line x1="2" y1="4.2" x2="22" y2="4.2"/>
       <line x1="6" y1="9.4" x2="18" y2="9.4"/>
       <line x1="2" y1="14.6" x2="22" y2="14.6"/>
@@ -281,7 +301,9 @@ We'll practice our line-drawing skills by recreating the three icons below. You'
     </svg>
   </li>
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="64" height="64">
+    <svg viewBox="0 0 24 24" width="64" height="64" role="img" aria-labelledby="rightAlignTitle1 rightAlignDesc1">
+      <title id="rightAlignTitle1">Right-alignment</title>
+      <desc id="rightAlignDesc1">Four horizontal lines are stacked vertically and aligned to the right-hand margin, with tapering lengths to the left.</desc>
       <line x1="2" y1="4.2" x2="22" y2="4.2"/>
       <line x1="8" y1="9.4" x2="22" y2="9.4"/>
       <line x1="2" y1="14.6" x2="22" y2="14.6"/>
@@ -290,9 +312,7 @@ We'll practice our line-drawing skills by recreating the three icons below. You'
   </li>
 </ul>
 
-As you can see, these all consist of just four horizontal lines.
-
-To draw a line in SVG, we need two things:
+Each icon consists of four horizontal lines. And to draw a line in SVG, we need two things:
 
 - A starting point: `(x1, y1)`.
 - An ending point: `(x2, y2)`.
@@ -328,8 +348,9 @@ In CSS, `currentColor` always references the current text `color`, which is eith
 With the stroke color set, we can finally view our line:
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" style="stroke-width: 1;">
-    <line x1="0" y1="4.2" x2="24" y2="4.2"/>
+  <svg viewBox="0 0 24 24" width="64" height="64" style="stroke-width: 1;" role="img" aria-labelledby="horizontalTitle1">
+    <title id="horizontalTitle1">Horizontal line</title>
+    <line x1="0" y1="4.2" x2="24" y2="4.2" />
   </svg>
 </div>
 
@@ -345,7 +366,7 @@ svg {
 And the resulting line is thicker:
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64">
+  <svg viewBox="0 0 24 24" width="64" height="64" role="presentation">
     <line x1="0" y1="4.2" x2="24" y2="4.2"/>
   </svg>
 </div>
@@ -389,11 +410,9 @@ svg {
 }
 ```
 
-That'll look like this:
-
 <ul class="svg-tutorial__icon-grid">
   <li class="svg-tutorial__icon">
-   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+   <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
       <line x1="2" y1="4.2" x2="22" y2="4.2"/>
       <line x1="2" y1="9.4" x2="16" y2="9.4"/>
       <line x1="2" y1="14.6" x2="22" y2="14.6"/>
@@ -401,7 +420,7 @@ That'll look like this:
     </svg>
   </li>
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+    <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
       <line x1="2" y1="4.2" x2="22" y2="4.2"/>
       <line x1="6" y1="9.4" x2="18" y2="9.4"/>
       <line x1="2" y1="14.6" x2="22" y2="14.6"/>
@@ -409,7 +428,7 @@ That'll look like this:
     </svg>
   </li>
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+    <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
       <line x1="2" y1="4.2" x2="22" y2="4.2"/>
       <line x1="8" y1="9.4" x2="22" y2="9.4"/>
       <line x1="2" y1="14.6" x2="22" y2="14.6"/>
@@ -430,12 +449,12 @@ Before we move on, note that you don't have to draw lines that are perfectly hor
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <line x1="12" y1="2" x2="12" y2="22" />
   </svg>
 </div>
 
-Or even slanted/diagonal lines:
+Or even diagonal lines:
 
 {% include codeHeader.html %}
 ```html
@@ -445,7 +464,7 @@ Or even slanted/diagonal lines:
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <line x1="2" y1="2" x2="22" y2="22" />
   </svg>
 </div>
@@ -459,7 +478,7 @@ By the way, have you noticed how all my lines have rounded ends? If you've been 
 Imagine that we want to draw several line segments, like for the letter `T` in a text icon:
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64">
+  <svg viewBox="0 0 24 24" width="64" height="64" role="presentation">
     <polyline points="3 8, 3 4, 21 4, 21 8" />
     <line x1="12" y1="4" x2="12" y2="20" />
     <line x1="8" y1="20" x2="16" y2="20" />
@@ -482,12 +501,12 @@ A `<polyline>` is defined with the help of the `points` attribute, like this:
 This is the simplest possible `<polyline>` that you can create; it defines a horizontal line from `(3, 4)` to `(21, 4)`:
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <polyline points="3 4, 21 4" />
   </svg>
 </div>
 
-A `<polyline>` accepts a string consisting of comma-separated `x y` points. You don't have to use commas, but I like to because it makes the pairs of `(x, y)` points clear. Without commas, the above SVG is a little harder to understand:
+A `<polyline>` accepts a string consisting of comma-separated `x y` points. You don't have to use commas, but I like to because it makes the pairs of `(x, y)` points clear. Without commas, the above SVG is a little harder to read since you have to group the numbers mentally:
 
 ```html
 <svg viewBox="0 0 24 24" width="64" height="64">
@@ -507,7 +526,7 @@ We can draw the text icon I showed earlier by combining `<polyline>` and a basic
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <polyline points="3 8, 3 4" />
   </svg>
 </div>
@@ -522,7 +541,7 @@ From `(3, 4)`, we'll travel horizontally until we're an equal distance from the 
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" style="fill: currentColor !important;">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" style="fill: currentColor !important;" role="presentation">
     <polyline points="3 8, 3 4, 21 4" />
   </svg>
 </div>
@@ -543,7 +562,7 @@ svg {
 With that set, our shape should look correct now:
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <polyline points="3 8, 3 4, 21 4" />
   </svg>
 </div>
@@ -558,7 +577,7 @@ Now, we'll drop down vertically again to complete the right serif of the letter 
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <polyline points="3 8, 3 4, 21 4, 21 8" />
   </svg>
 </div>
@@ -575,7 +594,7 @@ From here, we just need to complete the stem and base of the letter:
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <polyline points="3 8, 3 4, 21 4, 21 8" />
     <line x1="12" y1="4" x2="12" y2="20" />
     <line x1="8" y1="20" x2="16" y2="20" />
@@ -599,20 +618,20 @@ Before we move on, I want to discuss some more SVG attributes.
 
 #### `stroke-linejoin` and `stroke-linecap`
 
-When you take a closer look, the text icon above should have rounded edges and ends:
+In this article, the text icon above has rounded edges and ends:
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="96" height="96" class="bordered">
+  <svg viewBox="0 0 24 24" width="96" height="96" class="bordered" role="presentation">
     <polyline points="3 8, 3 4, 21 4, 21 8" />
     <line x1="12" y1="4" x2="12" y2="20" />
     <line x1="8" y1="20" x2="16" y2="20" />
   </svg>
 </div>
 
-But if you copy-paste the markup on your end, you'll probably see a text icon whose top-left and top-right corners are sharp, and whose terminal ends (like for the serifs) are flat:
+But if you copy-paste the markup on your end, you'll get a text icon whose top-left and top-right corners are sharp and whose terminal ends (like for the serifs) are flat:
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="96" height="96" class="bordered">
+  <svg viewBox="0 0 24 24" width="96" height="96" class="bordered" role="presentation">
     <polyline points="3 8, 3 4, 21 4, 21 8" stroke-linejoin="miter" stroke-linecap="butt" />
     <line x1="12" y1="4" x2="12" y2="20" stroke-linejoin="miter" stroke-linecap="butt" />
     <line x1="8" y1="20" x2="16" y2="20" stroke-linejoin="miter" stroke-linecap="butt" />
@@ -638,27 +657,33 @@ You don't have to use these if you don't want to. You can also apply them condit
 
 ### 3. Circles
 
-In this section, we'll learn how to draw three more SVG icons—a clock, an info icon, and a rightward-pointing arrow inside a circle:
+In this section, we'll learn how to draw these three circular SVG icons:
 
 <ul class="svg-tutorial__icon-grid">
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="64" height="64">
+    <svg viewBox="0 0 24 24" width="64" height="64" role="img" aria-labelledby="clockTitle2 clockDesc2">
+      <title id="clockTitle2">Clock</title>
+      <desc id="clockDesc2">A clock icon represented as a circle with two concentric lines for the hands, pointing in the 8 o'clock direction.</desc>
       <circle cx="12" cy="12" r="10" />
       <polyline points="13 7, 13 14, 9 14" />
     </svg>
   </li>
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="64" height="64">
+    <svg viewBox="0 0 24 24" width="64" height="64" role="img" aria-labelledby="infoTitle2 infoDesc2">
+      <title id="infoTitle2">Info</title>
+      <desc id="infoDesc2">An info icon often used to indicate additional information or notices. Represented as a circle with a concentric lowercase letter i.</desc>
       <circle cx="12" cy="12" r="10" />
       <circle cx="12" cy="8" r="0.5" fill="currentColor" />
       <line x1="12" y1="12" x2="12" y2="16" />
     </svg>
   </li>
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="64" height="64">
-        <circle cx="12" cy="12" r="10" />
-        <line x1="8" y1="12" x2="16" y2="12" />
-        <polyline points="12 8, 16 12, 12 16" />
+    <svg viewBox="0 0 24 24" width="64" height="64" role="img" aria-labelledby="rightArrowTitle2 rightArrowDesc2">
+      <title id="rightArrowTitle2">Right-arrow</title>
+      <desc id="rightArrowDesc2">A rightward-pointing arrow centered inside a circle.</desc>
+      <circle cx="12" cy="12" r="10" />
+      <line x1="8" y1="12" x2="16" y2="12" />
+      <polyline points="12 8, 16 12, 12 16" />
     </svg>
   </li>
 </ul>
@@ -670,7 +695,7 @@ In geometry class, you probably learned that in order to draw a circle, you need
 - The circle's center; we'll call this point `(cx, cy)`.
 - The circle's radius, usually denoted as `r`.
 
-Well, it's exactly the same with SVGs! Here's a simple circle:
+Well, it's exactly the same with SVGs! Here's the markup for a simple circle:
 
 {% include codeHeader.html %}
 ```html
@@ -680,7 +705,7 @@ Well, it's exactly the same with SVGs! Here's a simple circle:
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <circle cx="12" cy="12" r="10" />
   </svg>
 </div>
@@ -688,7 +713,7 @@ Well, it's exactly the same with SVGs! Here's a simple circle:
 I chose a radius of `10` to leave `2px` of space on all sides of the circle; otherwise, if we pick a radius of `12`, it'll extend right until the very edge of the SVG and get cut off:
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64">
+  <svg viewBox="0 0 24 24" width="64" height="64" role="presentation">
     <circle cx="12" cy="12" r="12" />
   </svg>
 </div>
@@ -699,23 +724,23 @@ Now that we know how to draw circles in SVG, we can draw the three icons shown e
 
 <ul class="svg-tutorial__icon-grid">
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="64" height="64">
+    <svg viewBox="0 0 24 24" width="64" height="64" role="presentation">
       <circle cx="12" cy="12" r="10" />
       <polyline points="13 7, 13 14, 9 14" />
     </svg>
   </li>
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="64" height="64">
+    <svg viewBox="0 0 24 24" width="64" height="64" role="presentation">
       <circle cx="12" cy="12" r="10" />
       <circle cx="12" cy="8" r="0.5" fill="currentColor" />
       <line x1="12" y1="12" x2="12" y2="16" />
     </svg>
   </li>
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="64" height="64">
-        <circle cx="12" cy="12" r="10" />
-        <line x1="8" y1="12" x2="16" y2="12" />
-        <polyline points="12 8, 16 12, 12 16" />
+    <svg viewBox="0 0 24 24" width="64" height="64" role="presentation">
+      <circle cx="12" cy="12" r="10" />
+      <line x1="8" y1="12" x2="16" y2="12" />
+      <polyline points="12 8, 16 12, 12 16" />
     </svg>
   </li>
 </ul>
@@ -732,12 +757,12 @@ We'll start with the face of the clock as a circle:
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <circle cx="12" cy="12" r="10" />
   </svg>
 </div>
 
-The only thing left is to draw the hands, and for that we'll use a polyline:
+The only thing left is to draw the clock hands, and for that we'll use a polyline:
 
 {% include codeHeader.html %}
 ```html
@@ -748,7 +773,7 @@ The only thing left is to draw the hands, and for that we'll use a polyline:
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <circle cx="12" cy="12" r="10" />
     <polyline points="13 7, 13 14, 9 14" />
   </svg>
@@ -768,7 +793,7 @@ Just as before, we'll first create the circle:
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <circle cx="12" cy="12" r="10" />
   </svg>
 </div>
@@ -784,7 +809,7 @@ The rest of the info icon consists of a line and a circle. Here's the body of th
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <circle cx="12" cy="12" r="10" />
     <line x1="12" y1="12" x2="12" y2="16" />
   </svg>
@@ -802,7 +827,7 @@ And here's the dot in the `i`; we give it a fill so it's solid:
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <circle cx="12" cy="12" r="10" />
     <circle cx="12" cy="8" r="0.5" fill="currentColor" />
     <line x1="12" y1="12" x2="12" y2="16" />
@@ -825,10 +850,10 @@ Last one! For this icon, I'll just give you the full markup; it's a circle, a li
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
-      <circle cx="12" cy="12" r="10" />
-      <line x1="8" y1="12" x2="16" y2="12" />
-      <polyline points="12 8, 16 12, 12 16" />
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
+    <circle cx="12" cy="12" r="10" />
+    <line x1="8" y1="12" x2="16" y2="12" />
+    <polyline points="12 8, 16 12, 12 16" />
   </svg>
 </div>
 
@@ -848,7 +873,7 @@ For example, `<polygon>` allows us to draw a triangle using just three points:
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <polygon points="12 2, 22 22, 2 22" />
   </svg>
 </div>
@@ -865,7 +890,7 @@ Cool! Building on this, we can now create the warning indicator icon that I show
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <polygon points="12 2, 22 22, 2 22" />
     <line x1="12" y1="10" x2="12" y2="14" />
     <circle cx="12" cy="18" r="0.5" fill="currentColor" />
@@ -882,7 +907,7 @@ By the way, I mentioned above that we can use `<polygon>` to create all kinds of
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <polygon points="3 5, 21 5, 21 21, 3 21" />
   </svg>
 </div>
@@ -897,7 +922,7 @@ But they can also be created with `<rect>`, which takes an `x` and a `y` coordin
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <rect x="3" y="5" width="18" height="16" />
   </svg>
 </div>
@@ -914,10 +939,10 @@ While we're here, why don't we draw a calendar icon? That one is technically cre
   </svg>
 ```
 
-This is fine, except the corners are still a bit too sharp:
+This is fine, except the four corners are sharp:
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <rect x="3" y="5" width="18" height="16" />
     <line x1="4" y1="10" x2="20" y2="10" />
     <line x1="7" y1="3" x2="7" y2="7" />
@@ -925,10 +950,10 @@ This is fine, except the corners are still a bit too sharp:
   </svg>
 </div>
 
-The original shape has much rounder corners:
+Whereas the original icon has rounded corners:
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <path
       d="
             M 4 4
@@ -1026,7 +1051,7 @@ If you're with me so far, then you should understand the first two commands in t
 That gives us this line, extending from `(4, 4)` to `(20, 4)`:
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <path
       d="
         M 4 4
@@ -1038,7 +1063,7 @@ That gives us this line, extending from `(4, 4)` to `(20, 4)`:
 To help this sink in, let's also make a pause icon with two parallel vertical lines:
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <path
       d="
         M 8 8
@@ -1089,7 +1114,7 @@ Notice how we mixed relative and absolute commands. We could've also said this:
 And that gives us the same exact shape, but requires that we specify absolute coordinates:
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <path
       d="
         M 8 8
@@ -1118,7 +1143,7 @@ Here's an example of drawing a diagonal line with a relative `LineTo` command:
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <path
       d="
         M 2 2
@@ -1151,10 +1176,8 @@ For example, to draw a self-closing square with `<path>`, we only need to draw t
 </svg>
 ```
 
-Voila:
-
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <path
       d="
         M 2 2
@@ -1174,7 +1197,9 @@ I've saved the trickiest command for last, but once you understand how this one 
 
 <ul class="svg-tutorial__icon-grid">
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="64" height="64">
+    <svg viewBox="0 0 24 24" width="64" height="64" role="img" aria-labelledby="calendarTitle2 calendarDesc2">
+      <title id="calendarTitle2">Calendar</title>
+      <desc id="calendarDesc2">A calendar icon with a rectangular body and two parallel vertical lines at the top, with a horizontal line near the top</desc>
       <path
         d="
               M 4 4
@@ -1193,7 +1218,9 @@ I've saved the trickiest command for last, but once you understand how this one 
     </svg>
   </li>
   <li class="svg-tutorial__icon">
-    <svg viewBox="0 0 24 24" width="64" height="64">
+    <svg viewBox="0 0 24 24" width="64" height="64" role="img" aria-labelledby="externalTitle2 externalDesc2">
+      <title id="externalTitle2">External link</title>
+      <desc id="externalDesc2">An icon used to represent external links and resources. A rectangular shape has a cut-out in the top-right corner; an arrow points out through that gap.</desc>
       <path
         d="M 18 14
           v 6
@@ -1260,10 +1287,10 @@ As before, it helps to look at a concrete example. Here's a very simple arc in Q
 </svg>
 ```
 
-Notice that it's counter-clockwise because we've set `sweep-flag` to be `0`:
+This yields a counter-clockwise arc because we've set `sweep-flag` to be `0`:
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <path
       d="
         M 22 12
@@ -1289,7 +1316,7 @@ And, as you may have guessed, we can chain four arcs to create a circle:
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <path
       d="
         M 22 12
@@ -1323,7 +1350,7 @@ First, we'll draw the top portion of the calendar (you could start elsewhere, th
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <path
       d="
         M 4 4
@@ -1347,7 +1374,7 @@ Then, we draw a `2x2` clockwise arc, moving `2px` to the right and `2px` down:
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <path
       d="
         M 4 4
@@ -1373,7 +1400,7 @@ From there, we go down `14px`:
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <path
       d="
         M 4 4
@@ -1401,7 +1428,7 @@ Draw the bottom-right corner's arc:
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <path
       d="
         M 4 4
@@ -1431,7 +1458,7 @@ Move left by `16px`:
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <path
       d="
         M 4 4
@@ -1463,7 +1490,7 @@ Draw the arc for the bottom-left corner:
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <path
       d="
         M 4 4
@@ -1497,7 +1524,7 @@ Move up `14px`:
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <path
       d="
         M 4 4
@@ -1533,7 +1560,7 @@ And finally, close off the shape with an explicit arc rather than `z` (which wil
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <path
       d="
         M 4 4
@@ -1573,7 +1600,7 @@ And that's all there is to the rounded rectangle bit! Now, we just throw on a fe
 ```
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64">
+  <svg viewBox="0 0 24 24" width="64" height="64" role="presentation">
     <path
       d="
             M 4 4
@@ -1621,7 +1648,7 @@ Hopefully, you're now comfortable enough with SVG paths to interpret the code he
 That gives us the classic external-link icon:
 
 <div class="svg-tutorial__icon">
-  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
+  <svg viewBox="0 0 24 24" width="64" height="64" class="bordered" role="presentation">
     <path
       d="M 18 14
         v 6
