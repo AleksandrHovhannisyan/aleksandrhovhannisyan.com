@@ -33,8 +33,6 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy(`${dir.input}/${dir.assets}/fonts`);
   eleventyConfig.addPassthroughCopy(`${imagePaths.source}/art`);
   eleventyConfig.addPassthroughCopy(`${imagePaths.source}/404`);
-  // Netlify redirects file needs to be copied to output dir
-  eleventyConfig.addPassthroughCopy('src/_redirects');
 
   // Register custom shortcodes
   eleventyConfig.addLiquidShortcode('image', imageShortcode);
