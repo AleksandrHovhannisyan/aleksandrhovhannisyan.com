@@ -57,7 +57,7 @@
     text-decoration: underline;
 
     &:hover,
-    &:focus {
+    &:focus-visible {
       text-decoration: none;
     }
   }
@@ -65,7 +65,7 @@
     text-decoration: none;
 
     &:hover,
-    &:focus {
+    &:focus-visible {
       text-decoration: underline;
     }
   }
