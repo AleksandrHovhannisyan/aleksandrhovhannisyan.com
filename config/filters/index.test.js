@@ -76,7 +76,7 @@ describe('custom 11ty filters', () => {
     });
     it(`throws an error if the argument isn't a string`, () => {
       expect(() => wordCount(1)).toThrow();
-    })
+    });
   });
   describe('dividedBy', () => {
     it('throws an error if the divisor is 0', () => {
@@ -95,7 +95,7 @@ describe('custom 11ty filters', () => {
     });
     it(`throws an error if the argument isn't a string`, () => {
       expect(() => newlineToBr(1)).toThrow();
-    })
+    });
   });
   describe('stripNewlines', () => {
     it('removes all newlines', () => {
@@ -106,7 +106,7 @@ describe('custom 11ty filters', () => {
     });
     it(`throws an error if the argument isn't a string`, () => {
       expect(() => stripNewlines(1)).toThrow();
-    })
+    });
   });
   describe('stripHtml', () => {
     it('removes all html tags', () => {
@@ -119,7 +119,7 @@ describe('custom 11ty filters', () => {
     });
     it(`throws an error if the argument isn't a string`, () => {
       expect(() => stripHtml(1)).toThrow();
-    })
+    });
   });
   describe('where', () => {
     it('returns all objects matching the specified keyPath:value pair', () => {
@@ -200,10 +200,10 @@ describe('custom 11ty filters', () => {
     it('unslugifies a slugged string', () => {
       const sluggedString = 'some-slugged-sentence';
       expect(unslugify(sluggedString)).toEqual('Some Slugged Sentence');
-    })
+    });
     it(`doesn't modify a non-slugged string`, () => {
       const unsluggedString = 'Full-time employees work full time. Off-topic posts are off topic. Hyphens are tricky.';
       expect(unslugify(unsluggedString)).toEqual(unsluggedString);
-    })
-  })
+    });
+  });
 });
