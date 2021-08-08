@@ -2,6 +2,7 @@ const lodash = require('lodash');
 const dayjs = require('dayjs');
 const markdownLib = require('../plugins/markdown');
 const site = require('../../src/_data/site');
+const { throwIfNotType } = require('../utils');
 
 /** Returns the first `limit` elements of the the given array. */
 const limit = (array, limit) => {
@@ -25,9 +26,7 @@ const where = (arrayOfObjects, keyPath, value) =>
 
 /** Returns the word count of the given string. */
 const wordCount = (str) => {
-  if (typeof str !== 'string') {
-    throw new Error(`${wordCount.name}: expected argument of type string but instead got ${str} (${typeof str})`);
-  }
+  throwIfNotType(str, 'string');
   const matches = str.match(/[\w\d’'-]+/gi);
   return matches?.length ?? 0;
 };
@@ -47,33 +46,25 @@ const dividedBy = (numerator, denominator) => {
 
 /** Replaces every newline with a line break. */
 const newlineToBr = (str) => {
-  if (typeof str !== 'string') {
-    throw new Error(`${newlineToBr.name}: expected argument of type string but instead got ${str} (${typeof str})`);
-  }
+  throwIfNotType(str, 'string');
   return str.replace(/\n/g, '<br>');
 };
 
 /** Removes every newline from the given string. */
 const stripNewlines = (str) => {
-  if (typeof str !== 'string') {
-    throw new Error(`${stripNewlines.name}: expected argument of type string but instead got ${str} (${typeof str})`);
-  }
+  throwIfNotType(str, 'string');
   return str.replace(/\n/g, '');
 };
 
 /** Removes all tags from an HTML string. */
 const stripHtml = (str) => {
-  if (typeof str !== 'string') {
-    throw new Error(`${stripHtml.name}: expected argument of type string but instead got ${str} (${typeof str})`);
-  }
+  throwIfNotType(str, 'string');
   return str.replace(/<[^>]+>/g, '');
 };
 
 /** Formats the given string as an absolute url. */
 const toAbsoluteUrl = (url) => {
-  if (typeof url !== 'string') {
-    throw new Error(`${toAbsoluteUrl.name}: expected argument of type string but instead got ${url} (${typeof url})`);
-  }
+  throwIfNotType(url, 'string');
   // Replace trailing slash, e.g., site.com/ => site.com
   const siteUrl = site.url.replace(/\/$/, '');
   // Replace starting slash, e.g., /path/ => path/
