@@ -24,6 +24,8 @@ const { dir, imagePaths } = require('./config/constants');
 const { slugifyString } = require('./config/utils');
 const { escape } = require('lodash');
 
+const TEMPLATE_ENGINE = 'liquid';
+
 module.exports = (eleventyConfig) => {
   // Watch targets
   eleventyConfig.addWatchTarget(imagePaths.source);
@@ -33,30 +35,30 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy(`${imagePaths.source}/art`);
   eleventyConfig.addPassthroughCopy(`${imagePaths.source}/404`);
 
-  // Register custom shortcodes
-  eleventyConfig.addLiquidShortcode('image', imageShortcode);
-  eleventyConfig.addLiquidShortcode('icon', iconShortcode);
-  eleventyConfig.addLiquidShortcode('socialIcon', socialIconShortcode);
+  // Custom shortcodes
+  eleventyConfig.addShortcode('image', imageShortcode);
+  eleventyConfig.addShortcode('icon', iconShortcode);
+  eleventyConfig.addShortcode('socialIcon', socialIconShortcode);
 
-  // Register custom filters. Some common Liquid filters are redefined for consistent casing (camelCase).
-  eleventyConfig.addLiquidFilter('wordCount', wordCount);
-  eleventyConfig.addLiquidFilter('limit', limit);
-  eleventyConfig.addLiquidFilter('sortByKey', sortByKey);
-  eleventyConfig.addLiquidFilter('where', where);
-  eleventyConfig.addLiquidFilter('escape', escape);
-  eleventyConfig.addLiquidFilter('jsonify', JSON.stringify);
-  eleventyConfig.addLiquidFilter('toHtml', toHtml);
-  eleventyConfig.addLiquidFilter('toIsoString', toISOString);
-  eleventyConfig.addLiquidFilter('dividedBy', dividedBy);
-  eleventyConfig.addLiquidFilter('newlineToBr', newlineToBr);
-  eleventyConfig.addLiquidFilter('toAbsoluteUrl', toAbsoluteUrl);
-  eleventyConfig.addLiquidFilter('stripNewlines', stripNewlines);
-  eleventyConfig.addLiquidFilter('stripHtml', stripHtml);
-  eleventyConfig.addLiquidFilter('slugify', slugifyString);
-  eleventyConfig.addLiquidFilter('unslugify', unslugify);
-  eleventyConfig.addLiquidFilter('getNewestCollectionItemDate', pluginRss.getNewestCollectionItemDate);
+  // Custom filters
+  eleventyConfig.addFilter('wordCount', wordCount);
+  eleventyConfig.addFilter('limit', limit);
+  eleventyConfig.addFilter('sortByKey', sortByKey);
+  eleventyConfig.addFilter('where', where);
+  eleventyConfig.addFilter('escape', escape);
+  eleventyConfig.addFilter('jsonify', JSON.stringify);
+  eleventyConfig.addFilter('toHtml', toHtml);
+  eleventyConfig.addFilter('toIsoString', toISOString);
+  eleventyConfig.addFilter('dividedBy', dividedBy);
+  eleventyConfig.addFilter('newlineToBr', newlineToBr);
+  eleventyConfig.addFilter('toAbsoluteUrl', toAbsoluteUrl);
+  eleventyConfig.addFilter('stripNewlines', stripNewlines);
+  eleventyConfig.addFilter('stripHtml', stripHtml);
+  eleventyConfig.addFilter('slugify', slugifyString);
+  eleventyConfig.addFilter('unslugify', unslugify);
+  eleventyConfig.addFilter('getNewestCollectionItemDate', pluginRss.getNewestCollectionItemDate);
 
-  // Create custom collections
+  // Custom collections
   eleventyConfig.addCollection('posts', posts);
   eleventyConfig.addCollection('categories', categories);
   eleventyConfig.addCollection('postsByCategory', postsByCategory);
@@ -74,9 +76,9 @@ module.exports = (eleventyConfig) => {
 
   return {
     dir,
-    dataTemplateEngine: 'liquid',
-    markdownTemplateEngine: 'liquid',
-    htmlTemplateEngine: 'liquid',
-    templateFormats: ['html', 'liquid', 'md', '11ty.js'],
+    dataTemplateEngine: TEMPLATE_ENGINE,
+    markdownTemplateEngine: TEMPLATE_ENGINE,
+    htmlTemplateEngine: TEMPLATE_ENGINE,
+    templateFormats: ['html', 'md', TEMPLATE_ENGINE],
   };
 };
