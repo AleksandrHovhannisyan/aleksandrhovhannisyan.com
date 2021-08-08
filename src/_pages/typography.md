@@ -1,6 +1,9 @@
 ---
 title: Typography
 permalink: /typography/
+eleventyExcludeFromCollections: true
+excludeFromSitemap: true
+noindex: true
 ---
 
 # Lorem Ipsum is simply dummy text of the printing and typesetting industry.
