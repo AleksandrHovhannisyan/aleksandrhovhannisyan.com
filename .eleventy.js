@@ -9,7 +9,6 @@ const {
   limit,
   sortByKey,
   toHtml,
-  jsonify,
   where,
   toISOString,
   dividedBy,
@@ -45,7 +44,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addLiquidFilter('sortByKey', sortByKey);
   eleventyConfig.addLiquidFilter('where', where);
   eleventyConfig.addLiquidFilter('escape', escape);
-  eleventyConfig.addLiquidFilter('jsonify', jsonify);
+  eleventyConfig.addLiquidFilter('jsonify', JSON.stringify);
   eleventyConfig.addLiquidFilter('toHtml', toHtml);
   eleventyConfig.addLiquidFilter('toIsoString', toISOString);
   eleventyConfig.addLiquidFilter('dividedBy', dividedBy);

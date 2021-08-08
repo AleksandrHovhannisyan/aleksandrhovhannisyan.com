@@ -37,9 +37,6 @@ const toHtml = (markdownString) => {
   return markdownLib.renderInline(markdownString);
 };
 
-/** Converts the given value to JSON format. */
-const jsonify = (value) => JSON.stringify(value);
-
 /** Divides the first argument by the second. */
 const dividedBy = (numerator, denominator) => {
   if (denominator === 0) {
@@ -114,7 +111,6 @@ module.exports = {
   where,
   wordCount,
   toHtml,
-  jsonify,
   toISOString,
   dividedBy,
   newlineToBr,
