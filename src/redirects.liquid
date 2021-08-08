@@ -10,6 +10,8 @@ excludeFromSitemap: true
 {%- comment -%}Per-page redirects (e.g., if a page gets indexed but I want to change its URL).{%- endcomment -%}
 {%- for page in collections.all -%}
   {%- if page.url and page.data.redirectFrom != nil -%}
-{{ page.data.redirectFrom }}  {{ page.url }}
-{% endif -%}
+    {%- for oldUrl in page.data.redirectFrom %}
+{{ oldUrl }}  {{ page.url }}
+    {%- endfor -%}
+  {%- endif -%}
 {%- endfor -%}
