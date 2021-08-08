@@ -77,7 +77,7 @@ permalink: /_redirects
 eleventyExcludeFromCollections: true
 ---
 {%- for page in collections.all -%}
-  {%- if page.url and page.data.redirectFrom != nil %}
+  {%- if page.url and page.data.redirectFrom %}
 {{ page.data.redirectFrom }}  {{ page.url }}
   {%- endif -%}
 {%- endfor -%}
@@ -131,7 +131,7 @@ permalink: /_redirects
 eleventyExcludeFromCollections: true
 ---
 {%- for page in collections.all -%}
-  {%- if page.url and page.data.redirectFrom != nil -%}
+  {%- if page.url and page.data.redirectFrom -%}
     {%- for oldUrl in page.data.redirectFrom %}
 {{ oldUrl }}  {{ page.url }}
     {%- endfor -%}
