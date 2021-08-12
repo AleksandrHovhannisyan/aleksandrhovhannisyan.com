@@ -96,6 +96,28 @@ const unslugify = (str) => {
     .join(' ');
 };
 
+/**
+ * @param {*} collection - an array of collection items that are assumed to have either data.lastUpdated or a date property
+ * @returns the most recent date of update or publication among the given collection items, or undefined if the array is empty.
+ */
+const getLatestCollectionItemDate = (collection) => {
+  const itemsSortedByLatestDate = collection
+    .filter((item) => !!item.data?.lastUpdated || !!item.date)
+    .sort((item1, item2) => {
+      const date1 = item1.data?.lastUpdated ?? item1.date;
+      const date2 = item2.data?.lastUpdated ?? item2.date;
+      if (dayjs(date1).isAfter(date2)) {
+        return -1;
+      }
+      if (dayjs(date2).isAfter(date1)) {
+        return 1;
+      }
+      return 0;
+    });
+  const latestItem = itemsSortedByLatestDate[0];
+  return latestItem?.data?.lastUpdated ?? latestItem?.date;
+};
+
 module.exports = {
   limit,
   sortByKey,
@@ -109,4 +131,5 @@ module.exports = {
   stripHtml,
   toAbsoluteUrl,
   unslugify,
+  getLatestCollectionItemDate,
 };

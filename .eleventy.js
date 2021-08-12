@@ -1,4 +1,3 @@
-const pluginRss = require('@11ty/eleventy-plugin-rss');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const syntaxHighlightConfig = require('./config/plugins/syntaxHighlighter');
 const imageShortcode = require('./config/shortcodes/image');
@@ -17,6 +16,7 @@ const {
   stripNewlines,
   stripHtml,
   unslugify,
+  getLatestCollectionItemDate,
 } = require('./config/filters');
 const { posts, categories, postsByCategory } = require('./config/collections');
 const markdownLib = require('./config/plugins/markdown');
@@ -56,7 +56,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter('stripHtml', stripHtml);
   eleventyConfig.addFilter('slugify', slugifyString);
   eleventyConfig.addFilter('unslugify', unslugify);
-  eleventyConfig.addFilter('getNewestCollectionItemDate', pluginRss.getNewestCollectionItemDate);
+  eleventyConfig.addFilter('getLatestCollectionItemDate', getLatestCollectionItemDate);
 
   // Custom collections
   eleventyConfig.addCollection('posts', posts);
@@ -65,11 +65,6 @@ module.exports = (eleventyConfig) => {
 
   // Plugins
   eleventyConfig.addPlugin(syntaxHighlight, syntaxHighlightConfig);
-  eleventyConfig.addPlugin(pluginRss, {
-    posthtmlRenderOptions: {
-      closingSingleTag: 'slash',
-    },
-  });
 
   // Libraries
   eleventyConfig.setLibrary('md', markdownLib);
