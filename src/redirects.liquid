@@ -9,7 +9,7 @@ excludeFromSitemap: true
 /blog/off-topic/* /blog/:splat
 {%- comment -%}Per-page redirects (e.g., if a page gets indexed but I want to change its URL).{%- endcomment -%}
 {%- for page in collections.all -%}
-  {%- if page.url and page.data.redirectFrom != nil -%}
+  {%- if page.url and page.data.redirectFrom -%}
     {%- for oldUrl in page.data.redirectFrom %}
 {{ oldUrl }}  {{ page.url }}
     {%- endfor -%}
