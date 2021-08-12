@@ -48,6 +48,7 @@ const imageDefaults = {
   sizes: '100vw',
 };
 
+// Liquid doesn't allow object parameters for partials or shortcodes
 const imageShortcode = async (relativeSrc, alt, className, id, clickable) => {
   const fullyQualifiedImagePath = path.join(imagePaths.source, relativeSrc);
   const { name } = path.parse(fullyQualifiedImagePath);
