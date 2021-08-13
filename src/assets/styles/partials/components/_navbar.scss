@@ -191,8 +191,8 @@
 //   top: -55%;
 // }
 
-#active-navbar-link,
 .skip-navigation:focus,
+.navbar-link[aria-current="page"],
 .navbar-link:hover,
 .navbar-link:focus {
   color: white;
