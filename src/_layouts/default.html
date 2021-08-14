@@ -93,6 +93,7 @@
       <link rel="preload" as="{{ preload.as }}" type="{{ preload.type }}" href="{{ preload.href }}" {% if preload.crossorigin %}crossorigin{% endif %}>
     {%- endfor -%}
   {% endif %}
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed for aleksandrhovhannisyan.com" href="/feed.xml" />
 </head>
 <body>
   {%- include navbar.html -%}
