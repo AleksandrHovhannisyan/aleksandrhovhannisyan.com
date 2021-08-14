@@ -84,13 +84,9 @@ const imageShortcode = async (relativeSrc, alt, className, id, clickable) => {
     return formatSizes;
   }, {});
 
-  // Aspect ratio sizing (manual for browsers that don't yet support aspect-ratio)
   const { width, height } = formatSizes[baseFormat].largest;
-  const aspectRatio = (height / width) * 100.0;
 
-  const picture = `<picture class="${classNames('lazy-picture', className)}" ${
-    id ? `id="${id}"` : ''
-  } style="--aspect-ratio: ${aspectRatio}%;">
+  const picture = `<picture class="${classNames('lazy-picture', className)}" ${id ? `id="${id}"` : ''}>
   ${Object.values(imageMetadata)
     // Prioritize optimized sources since browser loads first valid one it encounters
     .sort((sourcesA, sourcesB) => {

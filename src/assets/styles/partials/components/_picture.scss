@@ -1,21 +1,14 @@
 @import '../mixins';
 
 .lazy-picture {
-  position: relative;
   display: block;
-  height: 0;
-  // See picture.html for where this CSS var gets set as an inline style
-  padding-bottom: var(--aspect-ratio);
 }
 
 .lazy-img {
   --transition-duration: 0.8s;
-  position: absolute;
-  top: 0;
-  left: 0;
+  height: auto;
   object-fit: cover;
   object-position: center;
-  height: auto;
   width: 100%;
   filter: blur(0.4rem);
   @include transition(filter);
