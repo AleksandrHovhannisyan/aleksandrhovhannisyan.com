@@ -114,6 +114,7 @@
   grid-auto-flow: column;
   column-gap: 0.4rem;
   align-items: center;
+  @include font-weight('bold');
   @include focus-outline((color: white, offset: 0.4rem)...);
 
   .logo {
