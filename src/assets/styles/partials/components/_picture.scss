@@ -1,7 +1,7 @@
 @import '../mixins';
 
 .lazy-picture {
-  display: block;
+  display: flex;
 }
 
 .lazy-img {
