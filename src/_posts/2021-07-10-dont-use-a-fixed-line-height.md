@@ -4,7 +4,7 @@ description: In typography, the ideal line height for text depends on a variety 
 keywords: [line height, ideal line height, typography]
 categories: [css, sass, typography, a11y]
 thumbnail: thumbnail.jpg
-lastUpdated: 2021-08-07
+lastUpdated: 2021-08-17
 commentsId: 96
 ---
 
@@ -22,7 +22,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 ```
 
-While this may seem sufficient, it's not a good practice from a design and accessibility perspective. Let's understand why and explore a solution with custom properties and Sass mixins.
+While this may seem sufficient, it's not a good practice from a design and accessibility perspective. Let's understand why and explore two solutions to this problem: one with custom properties and Sass mixins, and another with the `ex` unit and a calc function.
 
 {% include toc.md %}
 
@@ -119,7 +119,7 @@ So while your chosen line heights and font sizes may look good on one OS, they m
 
 If you really want to take the system font route, I recommend picking a font that exists on most operating systems, like Georgia (serif) or Verdana (sans-serif). That way, you still have a single reference font against which you can design your site, and you have more of an assurance that your UI will look consistent from one OS to another.
 
-## Solution: Create a Type Scale
+## Solution 1: Create a Type Scale
 
 Here are a few steps you can follow to pick the ideal line height for your site:
 
@@ -220,6 +220,30 @@ And Sass would interpolate the argument to generate this output CSS:
 ```
 
 As a final step, you'll want to consider mobile devices and adjust your line height accordingly for those smaller devices to account for shorter line lengths, if needed.
+
+## Solution 2: Use the `ex` Unit
+
+In an article on [using calc to figure out optimal line height](https://kittygiraudel.com/2020/05/18/using-calc-to-figure-out-optimal-line-height/), Jesús Ricarte proposes that we instead use the `ex` unit together with pixels in a calc function, like this:
+
+```css
+.element {
+  line-height: calc(4px + 2ex);
+}
+```
+
+The `ex` unit measures a font's x-height at a particular font size. Unlike percentages, unitless values, rems, and other units, `ex` corresponds to measurable font metrics that are closely related to a font's line height, making it the perfect unit for our needs. We just need to add a bit of padding with pixel values to account for the fact that the font has some intrinsic leading above and below its glyphs. You'll need to tweak this value based on the font you're using.
+
+This approach provides a sufficiently accurate approximation of a font's ideal line height. The main benefit to this method is that you don't have to define a unique line height variable corresponding to each font size step in your type scale. However, it's worth noting that you'll still need to reapply this calculation every time you change an element's font size, especially for nested children. This is because children won't inherit the calc equation but rather the *computed value*, which is relative to the parent's font size. This can lead to unexpected results.
+
+Fortunately, if we take the mixin approach that I showed earlier, the fix is rather simple—instead of looking up a particular line height step in our variables, we can just plug in this equation alongside the font size:
+
+{% include codeHeader.html file: "_mixins.scss" %}
+```scss
+@mixin font-size($step) {
+  font-size: var(--fs-#{$step});
+  line-height: calc(4px + 2ex);
+}
+```
 
 ## In Summary
 
