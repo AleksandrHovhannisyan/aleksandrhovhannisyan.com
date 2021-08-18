@@ -127,8 +127,7 @@
     color: var(--navbar-text-color);
   }
 
-  &:hover,
-  &:focus {
+  &:is(:focus, :hover) {
     .website-name {
       color: white;
     }
@@ -221,8 +220,7 @@
     @include transition(transform, opacity);
   }
 
-  &:focus,
-  &:hover {
+  &:is(:focus, :hover) {
     .icon-bar {
       background-color: white;
     }

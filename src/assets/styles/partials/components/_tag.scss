@@ -8,9 +8,7 @@
 
 // Because not all tags are links/interactive (see project cards)
 a.tag {
-  &:hover,
-  &:focus,
-  &[aria-current="page"] {
+  &:is(:focus, :hover, [aria-current="page"]) {
     background-color: var(--tag-bg-color-focus);
     color: var(--color-text-inverted);
   }

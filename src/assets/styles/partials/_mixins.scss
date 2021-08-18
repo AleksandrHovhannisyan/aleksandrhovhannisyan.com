@@ -56,16 +56,14 @@
   @if $initially-underlined {
     text-decoration: underline;
 
-    &:hover,
-    &:focus-visible {
+    &:is(:hover, :focus-visible) {
       text-decoration: none;
     }
   }
   @else {
     text-decoration: none;
 
-    &:hover,
-    &:focus-visible {
+    &:is(:hover, :focus-visible) {
       text-decoration: underline;
     }
   }
@@ -73,12 +71,11 @@
 
 @mixin focus-outline($color: currentColor, $style: solid, $thickness: 0.2rem, $offset: 0) {
   &:focus {
+    outline: none;
+  }
+  &:focus-visible {
     outline: $style $thickness $color;
     outline-offset: $offset;
-
-    &:not(:focus-visible) {
-      outline: none;
-    }
   }
 }
 

@@ -52,16 +52,9 @@
     display: block;
   }
 
-  &.copied,
-  &:focus,
-  &:hover {
+  &:is(.copied, :hover) {
     color: black;
     background-color: hsl(0, 0%, 70%);
-  }
-
-  &:not(.copied):not(:hover):focus:not(:focus-visible) {
-    color: var(--copy-code-text-color);
-    background-color: var(--copy-code-bg-color);
   }
 
   &.copied {

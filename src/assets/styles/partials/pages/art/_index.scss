@@ -109,8 +109,7 @@
     @include transition('opacity', 'transform');
   }
 
-  &:hover,
-  &:focus-within {
+  &:is(:active, :hover, :focus-within) {
     &::after {
       animation: popin 0.3s ease-in;
       transform: scale(1);
