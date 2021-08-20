@@ -1,0 +1,18 @@
+@import '../mixins';
+
+figure {
+  display: grid;
+  grid-auto-flow: row;
+  row-gap: 0.8rem;
+}
+
+figcaption,
+cite {
+  font-style: italic;
+  text-align: center;
+  @include font-size('sm');
+
+  &, a {
+    color: var(--color-text-soft);
+  }
+}

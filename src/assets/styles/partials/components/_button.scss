@@ -4,8 +4,7 @@
   background-color: var(--button-bg-color);
   color: var(--color-text-inverted);
 
-  &:focus,
-  &:hover {
+  &:is(:focus, :hover) {
     background-color: var(--button-bg-color-focus);
   }
 }

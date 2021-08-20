@@ -4,7 +4,6 @@ description: Accessibility is a hot topic, but it's not always executed correctl
 keywords: [semantic html, html accessibility]
 categories: [a11y, html]
 commentsId: 48
-canonicalUrl: "https://www.aleksandrhovhannisyan.com/blog/semantic-html-accessibility/"
 lastUpdated: 2021-07-10
 ---
 

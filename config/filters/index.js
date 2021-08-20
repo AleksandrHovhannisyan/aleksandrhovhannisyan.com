@@ -2,6 +2,7 @@ const lodash = require('lodash');
 const dayjs = require('dayjs');
 const markdownLib = require('../plugins/markdown');
 const site = require('../../src/_data/site');
+const { throwIfNotType } = require('../utils');
 
 /** Returns the first `limit` elements of the the given array. */
 const limit = (array, limit) => {
@@ -25,9 +26,7 @@ const where = (arrayOfObjects, keyPath, value) =>
 
 /** Returns the word count of the given string. */
 const wordCount = (str) => {
-  if (typeof str !== 'string') {
-    throw new Error(`${wordCount.name}: expected argument of type string but instead got ${str} (${typeof str})`);
-  }
+  throwIfNotType(str, 'string');
   const matches = str.match(/[\w\d’'-]+/gi);
   return matches?.length ?? 0;
 };
@@ -36,9 +35,6 @@ const wordCount = (str) => {
 const toHtml = (markdownString) => {
   return markdownLib.renderInline(markdownString);
 };
-
-/** Converts the given value to JSON format. */
-const jsonify = (value) => JSON.stringify(value);
 
 /** Divides the first argument by the second. */
 const dividedBy = (numerator, denominator) => {
@@ -50,33 +46,25 @@ const dividedBy = (numerator, denominator) => {
 
 /** Replaces every newline with a line break. */
 const newlineToBr = (str) => {
-  if (typeof str !== 'string') {
-    throw new Error(`${newlineToBr.name}: expected argument of type string but instead got ${str} (${typeof str})`);
-  }
+  throwIfNotType(str, 'string');
   return str.replace(/\n/g, '<br>');
 };
 
 /** Removes every newline from the given string. */
 const stripNewlines = (str) => {
-  if (typeof str !== 'string') {
-    throw new Error(`${stripNewlines.name}: expected argument of type string but instead got ${str} (${typeof str})`);
-  }
+  throwIfNotType(str, 'string');
   return str.replace(/\n/g, '');
 };
 
 /** Removes all tags from an HTML string. */
 const stripHtml = (str) => {
-  if (typeof str !== 'string') {
-    throw new Error(`${stripHtml.name}: expected argument of type string but instead got ${str} (${typeof str})`);
-  }
+  throwIfNotType(str, 'string');
   return str.replace(/<[^>]+>/g, '');
 };
 
 /** Formats the given string as an absolute url. */
 const toAbsoluteUrl = (url) => {
-  if (typeof url !== 'string') {
-    throw new Error(`${toAbsoluteUrl.name}: expected argument of type string but instead got ${url} (${typeof url})`);
-  }
+  throwIfNotType(url, 'string');
   // Replace trailing slash, e.g., site.com/ => site.com
   const siteUrl = site.url.replace(/\/$/, '');
   // Replace starting slash, e.g., /path/ => path/
@@ -108,13 +96,34 @@ const unslugify = (str) => {
     .join(' ');
 };
 
+/**
+ * @param {*} collection - an array of collection items that are assumed to have either data.lastUpdated or a date property
+ * @returns the most recent date of update or publication among the given collection items, or undefined if the array is empty.
+ */
+const getLatestCollectionItemDate = (collection) => {
+  const itemsSortedByLatestDate = collection
+    .filter((item) => !!item.data?.lastUpdated || !!item.date)
+    .sort((item1, item2) => {
+      const date1 = item1.data?.lastUpdated ?? item1.date;
+      const date2 = item2.data?.lastUpdated ?? item2.date;
+      if (dayjs(date1).isAfter(date2)) {
+        return -1;
+      }
+      if (dayjs(date2).isAfter(date1)) {
+        return 1;
+      }
+      return 0;
+    });
+  const latestItem = itemsSortedByLatestDate[0];
+  return latestItem?.data?.lastUpdated ?? latestItem?.date;
+};
+
 module.exports = {
   limit,
   sortByKey,
   where,
   wordCount,
   toHtml,
-  jsonify,
   toISOString,
   dividedBy,
   newlineToBr,
@@ -122,4 +131,5 @@ module.exports = {
   stripHtml,
   toAbsoluteUrl,
   unslugify,
+  getLatestCollectionItemDate,
 };

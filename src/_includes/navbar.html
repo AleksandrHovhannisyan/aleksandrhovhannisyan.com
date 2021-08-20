@@ -21,11 +21,9 @@
               href="/{{ link | downcase }}/"
               {% if title == link and link != 'Blog' -%}
               aria-current="page"
-              id="active-navbar-link"
               {%- endif -%}
               {% if link == 'Blog' and isBlogPage -%}
               aria-current="page"
-              id="active-navbar-link"
               {%- endif -%}
             >
               {{- link -}}

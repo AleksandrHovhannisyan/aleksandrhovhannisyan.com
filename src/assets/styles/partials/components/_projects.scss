@@ -14,8 +14,7 @@
     min-width: 27rem;
 
     // Prevents the dreaded "doom flicker": https://www.joshwcomeau.com/animation/css-transitions/#doom-flicker
-    &:hover,
-    &:focus-within {
+    &:is(:hover, :focus-within) {
       .project {
         box-shadow: var(--card-box-shadow-focus);
         transform: var(--card-offset-y-focus);

@@ -5,10 +5,6 @@
   z-index: 2;
   position: relative;
 
-  + pre[class*="language-"] {
-    margin-top: calc(-1em * var(--line-height));
-  }
-
   // Code blocks with a file name need a bit of top padding
   &.with-file-name + pre[class*="language-"] {
     padding-top: 7.6rem;
@@ -56,16 +52,9 @@
     display: block;
   }
 
-  &.copied,
-  &:focus,
-  &:hover {
+  &:is(.copied, :hover) {
     color: black;
     background-color: hsl(0, 0%, 70%);
-  }
-
-  &:not(.copied):not(:hover):focus:not(:focus-visible) {
-    color: var(--copy-code-text-color);
-    background-color: var(--copy-code-bg-color);
   }
 
   &.copied {
@@ -89,7 +78,7 @@ pre[class*="language-"] {
   --color-code-string: hsl(17, 47%, 64%);
   --color-code-variable: var(--color-code-keyword);
   --color-code-tag: var(--color-code-keyword);
-  --color-code-constant:--color-code-keyword;
+  --color-code-constant: var(--color-code-number);
   --color-code-operator-word: var(--color-code-keyword);
   --color-code-operator: var(--color-code-function);
   --color-code-punctuation: var(--color-code-function);
@@ -106,10 +95,6 @@ pre[class*="language-"] {
   word-break: normal;
   tab-size: 2;
   hyphens: none;
-
-  ::-webkit-scrollbar-thumb {
-    border-radius: 0;
-  }
 
   code {
     overflow-x: auto;

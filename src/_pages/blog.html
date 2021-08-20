@@ -17,18 +17,5 @@ renderData:
 </ol>
 {%- assign numPages = pagination.hrefs | size -%}
 {%- if numPages > 1 -%}
-<ol class="pagination-trail" aria-label="Page navigation">
-  {%- for pageUrl in pagination.hrefs %}
-    <li>
-      <a
-        href="{{ pageUrl }}"
-        class="tag pagination-page{% if pageUrl == page.url %} active{% endif %}"
-        aria-label="Page {{ forloop.index }}"
-        {% if pageUrl == page.url -%}aria-current="page"{%- endif -%}
-      >
-        {{- forloop.index -}}
-      </a>
-    </li>
-  {%- endfor -%}
-</ol>
+  {%- include pagination.html hrefs: pagination.hrefs -%}
 {%- endif -%}

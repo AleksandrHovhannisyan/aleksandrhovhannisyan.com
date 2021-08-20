@@ -4,7 +4,7 @@ pagination:
   data: collections.postsByCategory
   size: 1
   alias: category
-permalink: "/categories/{{ category.slug }}/"
+permalink: "{{ category.href }}"
 noindex: true
 excludeFromSitemap: true
 renderData:
@@ -17,19 +17,5 @@ renderData:
   {% endfor %}
 </ol>
 {%- if category.totalPages > 1 -%}
-<ol class="pagination-trail" aria-label="Page navigation">
-  {%- for pageSlug in category.pageSlugs.all -%}
-    {%- assign categoryUrl = "/categories/" | append: pageSlug | append: "/" -%}
-    <li>
-      <a
-        href="{{ categoryUrl}}"
-        class="tag pagination-page{% if categoryUrl == page.url %} active{% endif %}"
-        aria-label="Page {{ forloop.index }}"
-        {% if categoryUrl == page.url %}aria-current="page"{% endif %}
-      >
-        {{- forloop.index -}}
-      </a>
-    </li>
-  {%- endfor -%}
-</ol>
+  {%- include pagination.html hrefs: category.hrefs.all -%}
 {%- endif -%}

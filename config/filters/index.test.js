@@ -9,6 +9,7 @@ const {
   stripHtml,
   toAbsoluteUrl,
   unslugify,
+  getLatestCollectionItemDate,
 } = require('.');
 const site = require('../../src/_data/site');
 
@@ -76,7 +77,7 @@ describe('custom 11ty filters', () => {
     });
     it(`throws an error if the argument isn't a string`, () => {
       expect(() => wordCount(1)).toThrow();
-    })
+    });
   });
   describe('dividedBy', () => {
     it('throws an error if the divisor is 0', () => {
@@ -95,7 +96,7 @@ describe('custom 11ty filters', () => {
     });
     it(`throws an error if the argument isn't a string`, () => {
       expect(() => newlineToBr(1)).toThrow();
-    })
+    });
   });
   describe('stripNewlines', () => {
     it('removes all newlines', () => {
@@ -106,7 +107,7 @@ describe('custom 11ty filters', () => {
     });
     it(`throws an error if the argument isn't a string`, () => {
       expect(() => stripNewlines(1)).toThrow();
-    })
+    });
   });
   describe('stripHtml', () => {
     it('removes all html tags', () => {
@@ -119,7 +120,7 @@ describe('custom 11ty filters', () => {
     });
     it(`throws an error if the argument isn't a string`, () => {
       expect(() => stripHtml(1)).toThrow();
-    })
+    });
   });
   describe('where', () => {
     it('returns all objects matching the specified keyPath:value pair', () => {
@@ -200,10 +201,35 @@ describe('custom 11ty filters', () => {
     it('unslugifies a slugged string', () => {
       const sluggedString = 'some-slugged-sentence';
       expect(unslugify(sluggedString)).toEqual('Some Slugged Sentence');
-    })
+    });
     it(`doesn't modify a non-slugged string`, () => {
       const unsluggedString = 'Full-time employees work full time. Off-topic posts are off topic. Hyphens are tricky.';
       expect(unslugify(unsluggedString)).toEqual(unsluggedString);
-    })
-  })
+    });
+  });
+  describe('getLatestCollectionItemDate', () => {
+    it(`returns the latest item.data.lastUpdated date`, () => {
+      const posts = [
+        { title: 'Item 1', date: '2021-04-20' },
+        { title: 'Item 2', date: '2021-04-21', data: { lastUpdated: '2021-05-20' } },
+        { title: 'Item 3', date: '2021-01-01', data: { lastUpdated: '2021-08-11' } },
+      ];
+      expect(getLatestCollectionItemDate(posts)).toStrictEqual('2021-08-11');
+    });
+    it(`returns the latest item.date`, () => {
+      const posts = [
+        { title: 'Item 1', date: '2021-01-02' },
+        { title: 'Item 2', date: '2020-04-20', data: { lastUpdated: '2021-01-01' } },
+        { title: 'Item 3', date: '2020-04-08', data: { lastUpdated: '2020-12-31' } },
+      ];
+      expect(getLatestCollectionItemDate(posts)).toStrictEqual('2021-01-02');
+    });
+    it('returns undefined for empty arrays', () => {
+      expect(getLatestCollectionItemDate([])).toBeUndefined();
+    });
+    it('returns undefined for undated collection items', () => {
+      const items = [{ title: 'Item 1' }, { title: 'Item 2' }, { title: 'Item 3' }];
+      expect(getLatestCollectionItemDate(items)).toBeUndefined();
+    });
+  });
 });

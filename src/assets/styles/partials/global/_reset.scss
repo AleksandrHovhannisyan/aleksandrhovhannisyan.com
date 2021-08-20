@@ -4,6 +4,15 @@
   padding: 0;
 }
 
+*,
+*::before,
+*::after {
+  @media (prefers-reduced-motion) {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 label,
 input,
 textarea,

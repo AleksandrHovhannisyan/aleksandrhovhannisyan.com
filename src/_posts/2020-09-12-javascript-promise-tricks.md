@@ -237,26 +237,28 @@ The naive approach uses nested `onload` handlers, like so:
 
 {% include codeHeader.html %}
 ```javascript
+const script1 = document.createElement('script');
 const script2 = document.createElement('script');
-script2.src = 'two.js';
+const script3 = document.createElement('script');
+
+document.body.appendChild(script1);
 document.body.appendChild(script2);
+document.body.appendChild(script3);
 
 script2.onload = () => {
   console.log('two.js loaded');
-  const script1 = document.createElement('script');
-  script1.src = 'one.js';
-  document.body.appendChild(script1);
 
   script1.onload = () => {
     console.log('one.js loaded');
-    const script3 = document.createElement('script');
-    script3.src = 'three.js';
-    document.body.appendChild(script3);
 
     script3.onload = () => {
       console.log('three.js loaded');
     };
   };
+
+  script2.src = 'two.js';
+  script1.src = 'one.js';
+  script3.src = 'three.js';
 };
 ```
 
@@ -265,9 +267,9 @@ script2.onload = () => {
 That works, and we'll get this output:
 
 ```plaintext
-index.js:6 two.js loaded
-index.js:12 one.js loaded
-index.js:18 three.js loaded
+two.js loaded
+one.js loaded
+three.js loaded
 ```
 
 But the nesting only gets worse from here, and there's already a lot of hard-coded repetition.
@@ -278,7 +280,6 @@ Instead, we can use Promises to regulate the order in which our scripts are load
 ```javascript
 function loadScript(url) {
   const script = document.createElement('script');
-  script.src = url;
   document.body.appendChild(script);
 
   return new Promise((resolve, reject) => {
@@ -290,6 +291,9 @@ function loadScript(url) {
     script.onerror = () => {
       reject(`Error loading script at ${url}`);
     };
+
+    // Important to set the src after registering the onload listener
+    script.src = url;
   });
 }
 ```
@@ -419,7 +423,7 @@ Unlike the version with just `setTimeout`, awaiting an unresolved Promise will a
 
 A couple things to note. First, if you want to run some code at even intervals, this isn't the best approach—that's why `setInterval` exists. Second, if all you want to do is fire some callback after `n` milliseconds, you should use a regular old `setTimeout`. The sleep function we defined here mainly comes in handy when you want to slow down the iterations of a loop, for example.
 
-## JavaScript Promises and Promising JavaScript
+## JavaScript Promises in Review
 
 Promises are pretty neat—once you get over the initial fear of using and understanding them, you'll find yourself discovering new patterns and possibilities in JavaScript. I hope you found this tutorial helpful!
 

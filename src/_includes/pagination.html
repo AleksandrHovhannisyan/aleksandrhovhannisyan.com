@@ -1,0 +1,16 @@
+<nav>
+  <ol class="pagination-trail" aria-label="Pages">
+    {%- for href in hrefs -%}
+      <li>
+        <a
+          href="{{ href }}"
+          class="tag pagination-page"
+          aria-label="Page {{ forloop.index }}"
+          {% if href == page.url %}aria-current="page"{% endif %}
+        >
+          {{- forloop.index -}}
+        </a>
+      </li>
+    {%- endfor -%}
+  </ol>
+</nav>

@@ -4,7 +4,7 @@ description: Add comments to your Jekyll blog with the GitHub issues API and laz
 keywords: [jekyll comment system]
 categories: [jekyll, github, javascript]
 commentsId: 45
-lastUpdated: 2021-07-27
+lastUpdated: 2021-08-01
 ---
 
 A while back, [Ari Stathopoulos wrote a tutorial](https://aristath.github.io/blog/static-site-comments-using-github-issues-api) on how to add comments to a Jekyll blog using the GitHub Issues API. And you know what? It works like a charm! Ever since I added comments to my Jekyll blog, I've seen a noticeable increase in engagement from my readers:
@@ -197,18 +197,20 @@ My site currently takes the first approach. However, to keep this post accessibl
 ```javascript
 const loadScript = (src) => {
   const scriptElement = document.createElement('script');
-  scriptElement.src = src;
   document.body.appendChild(scriptElement);
 
   return new Promise((resolve) => {
     scriptElement.onload = resolve;
+
+    // Important to register onload before setting src
+    scriptElement.src = src;
   });
 }
 ```
 
 This function creates a script element and registers an `onload` listener for it. When the load event fires, the returned promise resolves.
 
-Now, we'll need some way to hold off on rendering comments until *all* of the dependencies have loaded. To do that, we'll use a simple array of scripts to load and take advantage of [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all), together with the async function we just wrote:
+Now, we'll need some way to hold off on rendering comments until *all* of the dependencies have loaded. To do that, we'll use a simple array of scripts to load and take advantage of [`Promise.all`](/blog/javascript-promise-all/), together with the async function we just wrote:
 
 {% include codeHeader.html file: "_includes/comments.html" %}
 ```javascript

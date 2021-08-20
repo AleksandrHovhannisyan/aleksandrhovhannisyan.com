@@ -1,12 +1,6 @@
 @use 'sass:math';
 @import '../mixins';
 
-::selection {
-  background-color: var(--selection-bg-color);
-  color: var(--color-text-inverted);
-  text-shadow: none;
-}
-
 html {
   font-size: 62.5%;
 }
@@ -29,56 +23,9 @@ body {
   padding-bottom: var(--padding-y);
 }
 
-.logo {
-  width: 2.8rem;
-  height: 2.8rem;
-  border-radius: 50%;
-}
-
 strong {
   color: var(--color-text-emphasis);
   @include font-weight('bold');
-}
-
-@include headings {
-  color: var(--color-text-emphasis);
-
-  .heading-anchor {
-    @include underlined-link($initially-underlined: false);
-  }
-
-  &,
-  code {
-    @include font-weight('bold');
-  }
-}
-
-h1 {
-  @include font-size('xxxl');
-}
-
-h2 {
-  @include font-size('xxl');
-}
-
-h3 {
-  @include font-size('xl');
-}
-
-h4 {
-  @include font-size('lg');
-}
-
-h5 {
-  @include font-size('md');
-}
-
-h6 {
-  @include font-size('base');
-}
-
-p {
-  color: var(--color-text-normal);
 }
 
 a {
@@ -86,39 +33,8 @@ a {
   @include focus-outline($color: currentColor, $style: solid, $thickness: 0.2rem);
 }
 
-code {
-  font-size: 0.925em;
-  font-weight: 500;
-  @include font-family('mono');
-}
-
-// Inline code
-code:not([class^=language-]) {
-  background-color: var(--inline-code-bg-color);
-  color: var(--color-text-emphasis);
-  border-radius: 0.4rem;
-  padding: 0.4rem 0.8rem;
-}
-
-.section:not(:last-of-type) {
-  margin-bottom: 12.8rem;
-}
-
-figure {
-  display: grid;
-  grid-auto-flow: row;
-  row-gap: 0.8rem;
-}
-
-figcaption,
-cite {
-  font-style: italic;
-  text-align: center;
-  @include font-size('sm');
-
-  &, a {
-    color: var(--color-text-soft);
-  }
+.section + .section {
+  margin-top: 12.8rem;
 }
 
 // https://piccalil.li/quick-tip/add-scroll-margin-to-all-elements-which-can-be-targeted/

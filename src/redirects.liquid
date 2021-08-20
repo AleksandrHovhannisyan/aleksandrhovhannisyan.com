@@ -1,0 +1,17 @@
+---
+permalink: /_redirects
+eleventyExcludeFromCollections: true
+excludeFromSitemap: true
+---
+{%- comment -%}Old blog structure with primary categories in URL. Some links still floating around on other sites.{%- endcomment -%}
+/blog/dev/* /blog/:splat
+/blog/computer-science/* /blog/:splat
+/blog/off-topic/* /blog/:splat
+{%- comment -%}Per-page redirects (e.g., if a page gets indexed but I want to change its URL).{%- endcomment -%}
+{%- for page in collections.all -%}
+  {%- if page.url and page.data.redirectFrom -%}
+    {%- for oldUrl in page.data.redirectFrom %}
+{{ oldUrl }}  {{ page.url }}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endfor -%}

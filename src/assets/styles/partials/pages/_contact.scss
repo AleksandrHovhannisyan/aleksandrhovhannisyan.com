@@ -97,8 +97,7 @@
       fill: currentColor;
     }
 
-    &:focus,
-    &:hover {
+    &:is(:focus, :hover) {
       background-color: var(--hover-bg-color);
       cursor: pointer;
       color: var(--color-text-emphasis);

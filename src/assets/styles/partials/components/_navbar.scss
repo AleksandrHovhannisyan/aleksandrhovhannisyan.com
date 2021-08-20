@@ -114,14 +114,20 @@
   grid-auto-flow: column;
   column-gap: 0.4rem;
   align-items: center;
+  @include font-weight('bold');
   @include focus-outline((color: white, offset: 0.4rem)...);
+
+  .logo {
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+  }
 
   .website-name {
     color: var(--navbar-text-color);
   }
 
-  &:hover,
-  &:focus {
+  &:is(:focus, :hover) {
     .website-name {
       color: white;
     }
@@ -185,8 +191,8 @@
 //   top: -55%;
 // }
 
-#active-navbar-link,
 .skip-navigation:focus,
+.navbar-link[aria-current="page"],
 .navbar-link:hover,
 .navbar-link:focus {
   color: white;
@@ -214,8 +220,7 @@
     @include transition(transform, opacity);
   }
 
-  &:focus,
-  &:hover {
+  &:is(:focus, :hover) {
     .icon-bar {
       background-color: white;
     }

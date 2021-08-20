@@ -17,7 +17,7 @@ isBlogPage: true
         <li>
           <a
             href="{% if category == "all" %}/blog/{% else %}/categories/{{ category }}/{% endif %}"
-            class="tag post-tag blog-navigation-tag{% if pageCategory == category %} active{% endif %}"
+            class="tag post-tag blog-navigation-tag"
             {% if category == "all" -%}
             aria-label="All posts"
             {% endif -%}

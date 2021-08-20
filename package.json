@@ -23,7 +23,7 @@
     "lint": "npm-run-all lint:*",
     "lint:fix": "npm-run-all --parallel lint:*:fix",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --config jest.config.cjs",
-    "test:watch": "yarn test --watch --silent=false --verbose=true",
+    "test:watch": "yarn test --watch --silent=false --silent=false",
     "update-browserslist": "npx browserslist@latest --update-db"
   },
   "dependencies": {
@@ -34,7 +34,6 @@
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
     "@11ty/eleventy-img": "zeroby0/eleventy-img#cache",
-    "@11ty/eleventy-plugin-rss": "^1.1.1",
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.1",
     "@babel/core": "^7.14.6",
     "@babel/eslint-parser": "^7.14.5",
