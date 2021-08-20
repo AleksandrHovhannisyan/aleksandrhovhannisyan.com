@@ -6,7 +6,7 @@
   "author": "AleksandrHovhannisyan <aleksandrhovhannisyan@gmail.com>",
   "scripts": {
     "clean": "rimraf _site",
-    "debug:eleventy": "DEBUG=Eleventy* npx @11ty/eleventy --serve --incremental --port=4001",
+    "debug:eleventy": "DEBUG=Eleventy* ELEVENTY_ENV=development npx @11ty/eleventy --serve --incremental --port=4001",
     "serve:webpack": "webpack --mode=development --watch",
     "serve:sass": "sass --watch src/assets/styles:_site/assets/styles --style=expanded",
     "serve:eleventy": "ELEVENTY_ENV=development npx @11ty/eleventy --serve --incremental --port=4001",
