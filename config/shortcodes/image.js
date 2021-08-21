@@ -3,7 +3,7 @@ const { default: classNames } = require('classnames');
 const { outdent } = require('outdent');
 const path = require('path');
 const { escape } = require('lodash');
-const { imagePaths, dir } = require('../constants');
+const { dir } = require('../constants');
 
 const ImageWidths = {
   /** The original (source) image width. */
@@ -50,26 +50,25 @@ const imageDefaults = {
 
 // Liquid doesn't allow object parameters for partials or shortcodes
 const imageShortcode = async (relativeSrc, alt, className, clickable) => {
-  const fullyQualifiedImagePath = path.join(imagePaths.source, relativeSrc);
-  const { name } = path.parse(fullyQualifiedImagePath);
-  const pathToImage = path.dirname(relativeSrc);
+  const { name: imgName, dir: imgDir } = path.parse(relativeSrc);
+  const fullyQualifiedSrc = path.join(dir.input, relativeSrc);
 
-  const widths = specialImages[name]?.widths ?? imageDefaults.widths;
-  const sizes = specialImages[name]?.sizes ?? imageDefaults.sizes;
-  let formats = specialImages[name]?.formats ?? imageDefaults.formats;
+  const widths = specialImages[imgName]?.widths ?? imageDefaults.widths;
+  const sizes = specialImages[imgName]?.sizes ?? imageDefaults.sizes;
+  let formats = specialImages[imgName]?.formats ?? imageDefaults.formats;
   const baseFormat = formats.base;
   formats = [baseFormat, ...formats.other];
 
-  const imageMetadata = await Image(fullyQualifiedImagePath, {
+  const imageMetadata = await Image(fullyQualifiedSrc, {
     widths,
     formats,
     // Where the generated image files get saved
-    outputDir: path.join(imagePaths.output, pathToImage),
+    outputDir: path.join(dir.output, imgDir),
     // Public URL path that's referenced in the img tag's src attribute
-    urlPath: path.join(imagePaths.output.replace(dir.output, ''), pathToImage),
+    urlPath: imgDir,
     // Custom file name
     filenameFormat: (_id, _src, width, format) => {
-      return `${name}-${width === ImageWidths.PLACEHOLDER ? 'placeholder' : width}.${format}`;
+      return `${imgName}-${width === ImageWidths.PLACEHOLDER ? 'placeholder' : width}.${format}`;
     },
   });
 
