@@ -49,7 +49,7 @@ const imageDefaults = {
 };
 
 // Liquid doesn't allow object parameters for partials or shortcodes
-const imageShortcode = async (relativeSrc, alt, className, id, clickable) => {
+const imageShortcode = async (relativeSrc, alt, className, clickable) => {
   const fullyQualifiedImagePath = path.join(imagePaths.source, relativeSrc);
   const { name } = path.parse(fullyQualifiedImagePath);
   const pathToImage = path.dirname(relativeSrc);
@@ -86,7 +86,7 @@ const imageShortcode = async (relativeSrc, alt, className, id, clickable) => {
 
   const { width, height } = formatSizes[baseFormat].largest;
 
-  const picture = `<picture class="${classNames('lazy-picture', className)}" ${id ? `id="${id}"` : ''}>
+  const picture = `<picture class="${classNames('lazy-picture', className)}">
   ${Object.values(imageMetadata)
     // Prioritize optimized sources since browser loads first valid one it encounters
     .sort((sourcesA, sourcesB) => {
