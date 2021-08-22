@@ -6,12 +6,12 @@
         {%- include picture.html src: "/assets/images/favicons/favicon.png", className: "logo", alt: "", clickable: false %}
         <span class="website-name">Aleksandr Hovhannisyan</span>
       </a>
-      <button id="navbar-toggle" aria-label="Toggle menu" aria-expanded="false" type="button">
+      <button id="navbar-toggle" aria-label="Toggle menu" aria-controls="navbar-menu" aria-expanded="false" type="button">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <div class="navbar-menu">
+      <div id="navbar-menu">
         <ul class="navbar-links">
           {%- assign navLinks = "About,Art,Blog,Contact" | split: ',' -%}
           {%- for link in navLinks -%}

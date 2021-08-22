@@ -35,7 +35,7 @@
     justify-content: space-between;
   }
 
-  &-menu {
+  #navbar-menu {
     position: fixed;
     left: 0;
     top: var(--navbar-height);
@@ -74,7 +74,7 @@
 
   // Mobile only
   &.open {
-    .navbar-menu {
+    #navbar-menu {
       background-color: rgba(0, 0, 0, 0.4);
       opacity: 1;
       visibility: visible;
@@ -367,7 +367,7 @@
   .navbar.open {
     box-shadow: none;
 
-    .navbar-menu {
+    #navbar-menu {
       position: static;
       display: flex;
       height: 100%;

@@ -8,7 +8,7 @@ isPopular: true
 lastUpdated: 2021-08-22
 ---
 
-Navigation bars (also known as *navbars*) are practically everywhere on modern websites, so it's good to know how to create one by hand without relying on a component library that does all of the heavy lifting for you. But if you've never created a navbar from scratch, you may find it intimidating to get started.
+Navigation bars (also known as _navbars_) are practically everywhere on modern websites, so it's good to know how to create one by hand without relying on a component library that does all of the heavy lifting for you. But if you've never created a navbar from scratch, you may find it intimidating to get started.
 
 For this reason, people often turn to CSS frameworks like Bootstrap to build navbars so that they don't have to reinvent the wheel. Yet what usually ends up happening is that you get lost in a sea of obscure class names and behavior that's difficult to customize. You waste many frustrating hours on StackOverflow when instead you could've simply built the thing by hand in less time.
 
@@ -54,12 +54,12 @@ Below is all of the HTML that we're going to need to create our responsive navba
           <div class="navbar-logo"></div>
           Website Name
         </a>
-        <button type="button" class="navbar-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <button type="button" class="navbar-toggle" aria-controls="navbar-menu" aria-label="Toggle menu" aria-expanded="false">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <div class="navbar-menu">
+        <div id="navbar-menu">
           <ul class="navbar-links">
             <li class="navbar-item"><a class="navbar-link" href="/about">About</a></li>
             <li class="navbar-item"><a class="navbar-link" href="/blog">Blog</a></li>
@@ -92,7 +92,7 @@ As you may have probably guessed, this is a flex container. It has three childre
 
 - `.home-link`: Anchor wrapped around the website logo and name.
 - `.navbar-toggle`: The hamburger button used to toggle the navigation menu on mobile devices.
-- `.navbar-menu`: The navigation menu wrapper, containing a list of links to our pages.
+- `#navbar-menu`: The navigation menu wrapper, containing a list of links to our pages.
 
 Let's take a closer look at that last element:
 
@@ -100,7 +100,7 @@ Let's take a closer look at that last element:
 
 This wrapper is given a fixed position and covers the entire screen. It also has a semi-transparent background that elevates it visually above the main content of the page. In some UI libraries, this is known as a **mask layer**. It's a common approach used with things like modal windows and menus.
 
-Within `.navbar-menu` is an unordered list with some padding, margins, and a box shadow:
+Within `#navbar-menu` is an unordered list with some padding, margins, and a box shadow:
 
 {% include img.html src: "navbar-links.png", alt: "The navbar-links unordered list element" %}
 
@@ -270,7 +270,36 @@ Here's the CSS for the website logo. Note that this is just a placeholder for my
 
 Time for the toggle button!
 
-### Navbar Hamburger Icon
+### Navbar Hamburger Button
+
+First, here's the markup for the navbar button:
+
+```html
+<button
+  type="button"
+  class="navbar-toggle"
+  aria-controls="navbar-menu"
+  aria-label="Toggle menu"
+  aria-expanded="false"
+>
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+</button>
+```
+
+> **Note**: I'm not using `div`s for the nested `.icon-bar` elements because it's invalid HTML to put divs inside buttons.
+
+We're doing several things here, so let's try to unpack it all:
+
+- We set `type="button"` since the default behavior is `submit` (for forms).
+- We give the button a class, to be used for styling.
+- We use `aria-controls` to associate the button with the element whose ID is `navbar-menu`.
+- We set `aria-expanded` to `"false"` by default, indicating that the menu is closed.
+
+That's all that you need to create a semantic and accessible toggle button.
+
+Let's now look at some of the CSS:
 
 {% include codeHeader.html file: "style.css" %}
 
@@ -288,19 +317,9 @@ Time for the toggle button!
 }
 ```
 
-Basically, we reset some of the default `<button>` styles and give the button fixed dimensions. It's also a flex container. Note that the actual bars of the hamburger icon are three `<span>`s:
+We reset some of the default `<button>` styles and give the button fixed dimensions. It's also a flex container for centering.
 
-```html
-<button type="button" class="navbar-toggle" aria-label="Toggle menu" aria-expanded="false">
-  <span class="icon-bar"></span>
-  <span class="icon-bar"></span>
-  <span class="icon-bar"></span>
-</button>
-```
-
-> **Note**: I'm not using `div`s because it's invalid HTML to put divs inside buttons.
-
-Here's the CSS for that:
+Here's the CSS for the icon bars:
 
 {% include codeHeader.html file: "style.css" %}
 
@@ -326,7 +345,7 @@ Here's the CSS for that:
 
 There are lots of ways to do this, but I think this is the most straightforward to understand. I'm sure you can take advantage of pseudo-elements instead.
 
-When the toggle button is clicked, we'll apply a class name of `.opened` to the navbar via JavaScript. Here's how we'll animate the hamburger icon to become a close icon (X):
+When the toggle button is clicked, we'll apply a class name of `.opened` to the navbar via JavaScript and set `aria-expanded` to `"true"` on the button. Here's how we'll animate the hamburger icon to become a close icon (X):
 
 {% include codeHeader.html file: "style.css" %}
 
@@ -351,7 +370,7 @@ When the toggle button is clicked, we'll apply a class name of `.opened` to the 
 }
 ```
 
-Basically, the middle bar disappears, the top and bottom bars get centered, the top bar rotates 45 degrees clockwise, and the bottom bar rotates 45 degrees counter-clockwise.
+The middle bar disappears, the top and bottom bars get centered, the top bar rotates 45 degrees clockwise, and the bottom bar rotates 45 degrees counter-clockwise.
 
 ### Toggling the Hamburger Icon
 
@@ -384,16 +403,14 @@ navbarToggle.addEventListener('click', () => {
 
 Now, I know what you're thinking:
 
-> *"But Aleksandr, why not just use [the checkbox hack](https://css-tricks.com/the-checkbox-hack/) and avoid writing JavaScript altogether?"*
+> _"But Aleksandr, why not just use [the checkbox hack](https://css-tricks.com/the-checkbox-hack/) and avoid writing JavaScript altogether?"_
 
 Because:
 
 1. CSS is for styling. JavaScript is for interactivity.
-2. Hacks are called *hacks* for a reason. Use checkboxes for *forms*, not buttons.
+2. Hacks are called _hacks_ for a reason. Use checkboxes for _forms_, not buttons.
 
-We also take care of an accessibility issue here and set the [`aria-expanded`](https://www.w3.org/WAI/GL/wiki/Using_aria-expanded_to_indicate_the_state_of_a_collapsible_element) attribute to signal the menu's expanded or contracted state to screen readers. If the navigation menu is open, the user's screen reader will indicate that clicking the button again will close the menu. And vice versa.
-
-At this point, you can hop on over to your browser and test that the button works. But the menu is still not functional, so let's fix that.
+At this point, you can open up your browser and test out the button. The menu itself is still not toggling its visibility, so let's fix that with CSS.
 
 ### Responsive Navbar Menu
 
@@ -402,7 +419,7 @@ As I mentioned earlier, the navigation menu wrapper has fixed positioning, with 
 {% include codeHeader.html file: "style.css" %}
 
 ```css
-.navbar-menu {
+#navbar-menu {
   position: fixed;
   top: var(--navbar-height);
   bottom: 0;
@@ -425,7 +442,7 @@ Here's the code for the menu's opened state:
 {% include codeHeader.html file: "style.css" %}
 
 ```css
-#navbar.opened .navbar-menu {
+#navbar.opened #navbar-menu {
   background-color: rgba(0, 0, 0, 0.4);
   opacity: 1;
   visibility: visible;
@@ -498,7 +515,7 @@ One last thing before we style the desktop version. Add this to your JavaScript:
 {% include codeHeader.html file: "index.js" %}
 
 ```javascript
-const navbarMenu = navbar.querySelector('.navbar-menu');
+const navbarMenu = navbar.querySelector('#navbar-menu');
 const navbarLinksContainer = navbar.querySelector('.navbar-links');
 
 navbarLinksContainer.addEventListener('click', (clickEvent) => {
@@ -508,7 +525,7 @@ navbarLinksContainer.addEventListener('click', (clickEvent) => {
 navbarMenu.addEventListener('click', closeMobileNavbar);
 ```
 
-Basically, this lets the user close the navigation menu when they click on `.navbar-menu`. But we need to stop click propagation so that any clicks on `.navbar-links` don't [bubble up](https://www.sitepoint.com/event-bubbling-javascript/) and trigger a close.
+Basically, this lets the user close the navigation menu when they click on `#navbar-menu`. But we need to stop click propagation so that any clicks on `.navbar-links` don't [bubble up](https://www.sitepoint.com/event-bubbling-javascript/) and trigger a close.
 
 Go ahead and test this on your end to make sure the mobile version works.
 
@@ -524,8 +541,8 @@ I'll show the media query in its entirety and then we'll look at what each piece
     display: none;
   }
 
-  #navbar .navbar-menu,
-  #navbar.opened .navbar-menu {
+  #navbar #navbar-menu,
+  #navbar.opened #navbar-menu {
     visibility: visible;
     opacity: 1;
     position: static;
@@ -569,8 +586,8 @@ We don't want the hamburger button to be visible on desktop, so we hide it with 
 Now we get to the most important part of making this navbar responsive:
 
 ```css
-#navbar .navbar-menu,
-#navbar.opened .navbar-menu {
+#navbar #navbar-menu,
+#navbar.opened #navbar-menu {
   visibility: visible;
   opacity: 1;
   position: static;
@@ -579,7 +596,7 @@ Now we get to the most important part of making this navbar responsive:
 }
 ```
 
-Whereas before the `.navbar-menu` wrapper was fixed in position, covering the entire screen, it's now static. This means it assumes its natural position in the DOM based on where it was defined in our HTML. In this case, that's after the home link (since the hamburger is now invisible).
+Whereas before the `#navbar-menu` wrapper was fixed in position, covering the entire screen, it's now static. This means it assumes its natural position in the DOM based on where it was defined in our HTML. In this case, that's after the home link (since the hamburger is now invisible).
 
 And finally, `.navbar-links` now uses a flex direction of `row` instead of `column`, ensuring that the links appear side by side on the navbar:
 
@@ -616,7 +633,7 @@ Here's a codepen with options that you can toggle:
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 
-The CSS now involves these classes, which get applied to `.navbar-menu`:
+The CSS now involves these classes, which get applied to `#navbar-menu`:
 
 - `detached`: The default type of navigation menu.
 - `attached`: The menu is an extension of the navigation bar.
