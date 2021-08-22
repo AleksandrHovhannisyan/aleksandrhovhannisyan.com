@@ -1,13 +1,13 @@
 const defaultMenuProps = {
-  navbar: document.querySelector('.navbar'),
-  menu: document.querySelector('.navbar-menu'),
+  root: document.querySelector('.navbar'),
+  menu: document.querySelector('#navbar-menu'),
   links: document.querySelector('.navbar-links'),
-  toggle: document.getElementById('navbar-toggle'),
+  toggle: document.querySelector('#navbar-toggle'),
 };
 
 export default class Navbar {
   constructor(props = defaultMenuProps) {
-    this.navbar = props.navbar;
+    this.navbar = props.root;
     this.menu = props.menu;
     this.links = props.links;
     this.mobileNavbarToggle = props.toggle;
