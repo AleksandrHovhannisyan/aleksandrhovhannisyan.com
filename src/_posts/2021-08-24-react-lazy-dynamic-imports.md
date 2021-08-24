@@ -29,7 +29,7 @@ What we really want is [code splitting](https://webpack.js.org/guides/code-split
 
 ### Code Splitting: Dynamic Imports to the Rescue
 
-With the introduction of [dynamic imports](https://javascript.info/modules-dynamic-imports) in ESM, we can load modules dynamically rather than statically. In just one line of pure JavaScript, we can reduce the final bundle needed for the initial page load by importing modules at runtime:
+With the introduction of [dynamic imports](https://javascript.info/modules-dynamic-imports) in ES2020, we can load modules dynamically rather than statically. In just one line of pure JavaScript, we can reduce the final bundle needed for the initial page load by importing modules at runtime:
 
 ```js
 // Statically imported module (compile time)
