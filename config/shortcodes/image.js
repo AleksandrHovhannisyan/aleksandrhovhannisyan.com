@@ -29,10 +29,7 @@ const specialImages = {
   },
   favicon: {
     widths: [ImageWidths.PLACEHOLDER, 32, 57, 76, 96, 128, 192, 228],
-    formats: {
-      base: 'png',
-      other: OPTIMIZED_IMAGE_FORMATS,
-    },
+    baseFormat: 'png',
     // Really only need this one for the navbar logo. Other sizes are generated for the real favicon.
     sizes: '57px',
   },
@@ -41,10 +38,7 @@ const specialImages = {
 /** Defaults/fallbacks for any other image that isn't a "special" image. */
 const imageDefaults = {
   widths: [ImageWidths.ORIGINAL, ImageWidths.PLACEHOLDER, 400, 800],
-  formats: {
-    base: 'jpeg',
-    other: OPTIMIZED_IMAGE_FORMATS,
-  },
+  baseFormat: 'jpeg',
   sizes: '100vw',
 };
 
@@ -55,9 +49,8 @@ const imageShortcode = async (relativeSrc, alt, className, clickable) => {
 
   const widths = specialImages[imgName]?.widths ?? imageDefaults.widths;
   const sizes = specialImages[imgName]?.sizes ?? imageDefaults.sizes;
-  let formats = specialImages[imgName]?.formats ?? imageDefaults.formats;
-  const baseFormat = formats.base;
-  formats = [baseFormat, ...formats.other];
+  const baseFormat = specialImages[imgName]?.baseFormat ?? imageDefaults.baseFormat;
+  const formats = [baseFormat, ...OPTIMIZED_IMAGE_FORMATS];
 
   const imageMetadata = await Image(fullyQualifiedSrc, {
     widths,
