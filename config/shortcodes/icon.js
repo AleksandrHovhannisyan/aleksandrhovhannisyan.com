@@ -1,7 +1,7 @@
 const feather = require('feather-icons');
 
 // Can't pass objects as arguments :(
-const imageShortcode = (icon, className, width, height, stroke, fill, strokeWidth, strokeLinecap, strokeLinejoin) => {
+const iconShortcode = (icon, className, width, height, stroke, fill, strokeWidth, strokeLinecap, strokeLinejoin) => {
   try {
     return feather.icons[icon].toSvg({
       class: className,
@@ -18,4 +18,4 @@ const imageShortcode = (icon, className, width, height, stroke, fill, strokeWidt
   }
 };
 
-module.exports = imageShortcode;
+module.exports = iconShortcode;
