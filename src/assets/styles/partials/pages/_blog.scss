@@ -1,10 +1,6 @@
 @import '../mixins';
 
 .blog {
-  .post-preview-grid {
-    margin-top: clamped(6.4rem, 9.6rem);
-  }
-
   &-title {
     margin-bottom: 1.6rem;
   }
