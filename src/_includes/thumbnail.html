@@ -2,5 +2,5 @@
 {%- if post.data.thumbnail -%}
   {%- assign thumbnailFileName = post.data.thumbnail -%}
 {%- endif -%}
-{%- assign thumbnailPath = '/posts/' | append: post.fileSlug | append: '/' | append: thumbnailFileName -%}
+{%- assign thumbnailPath = '/assets/images/posts/' | append: post.fileSlug | append: '/' | append: thumbnailFileName -%}
 {%- include picture.html src: thumbnailPath, alt: "", className: "post-preview-thumbnail", clickable: false -%}

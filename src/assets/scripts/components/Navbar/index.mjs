@@ -1,9 +1,16 @@
+const defaultMenuProps = {
+  root: document.querySelector('.navbar'),
+  menu: document.querySelector('#navbar-menu'),
+  links: document.querySelector('.navbar-links'),
+  toggle: document.querySelector('#navbar-toggle'),
+};
+
 export default class Navbar {
-  constructor() {
-    this.navbar = document.querySelector('.navbar');
-    this.menu = this.navbar.querySelector('.navbar-menu');
-    this.links = this.menu.querySelector('.navbar-links');
-    this.mobileNavbarToggle = this.navbar.querySelector('#navbar-toggle');
+  constructor(props = defaultMenuProps) {
+    this.navbar = props.root;
+    this.menu = props.menu;
+    this.links = props.links;
+    this.mobileNavbarToggle = props.toggle;
     this.registerListeners();
   }
 
@@ -22,16 +29,16 @@ export default class Navbar {
   }
 
   menuIsOpen() {
-    return this.navbar.classList.contains('opened');
+    return this.navbar.classList.contains('open');
   }
 
   openMenu() {
-    this.navbar.classList.add('opened');
-    this.mobileNavbarToggle.setAttribute('aria-label', 'Close main navigation menu');
+    this.navbar.classList.add('open');
+    this.mobileNavbarToggle.setAttribute('aria-expanded', 'true');
   }
 
   closeMenu() {
-    this.navbar.classList.remove('opened');
-    this.mobileNavbarToggle.setAttribute('aria-label', 'Open main navigation menu');
+    this.navbar.classList.remove('open');
+    this.mobileNavbarToggle.setAttribute('aria-expanded', 'false');
   }
 }

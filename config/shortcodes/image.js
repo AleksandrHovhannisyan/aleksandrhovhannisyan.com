@@ -3,7 +3,7 @@ const { default: classNames } = require('classnames');
 const { outdent } = require('outdent');
 const path = require('path');
 const { escape } = require('lodash');
-const { imagePaths, dir } = require('../constants');
+const { dir } = require('../constants');
 
 const ImageWidths = {
   /** The original (source) image width. */
@@ -29,10 +29,7 @@ const specialImages = {
   },
   favicon: {
     widths: [ImageWidths.PLACEHOLDER, 32, 57, 76, 96, 128, 192, 228],
-    formats: {
-      base: 'png',
-      other: OPTIMIZED_IMAGE_FORMATS,
-    },
+    baseFormat: 'png',
     // Really only need this one for the navbar logo. Other sizes are generated for the real favicon.
     sizes: '57px',
   },
@@ -41,35 +38,30 @@ const specialImages = {
 /** Defaults/fallbacks for any other image that isn't a "special" image. */
 const imageDefaults = {
   widths: [ImageWidths.ORIGINAL, ImageWidths.PLACEHOLDER, 400, 800],
-  formats: {
-    base: 'jpeg',
-    other: OPTIMIZED_IMAGE_FORMATS,
-  },
+  baseFormat: 'jpeg',
   sizes: '100vw',
 };
 
 // Liquid doesn't allow object parameters for partials or shortcodes
-const imageShortcode = async (relativeSrc, alt, className, id, clickable) => {
-  const fullyQualifiedImagePath = path.join(imagePaths.source, relativeSrc);
-  const { name } = path.parse(fullyQualifiedImagePath);
-  const pathToImage = path.dirname(relativeSrc);
+const imageShortcode = async (relativeSrc, alt, className, clickable) => {
+  const { name: imgName, dir: imgDir } = path.parse(relativeSrc);
+  const fullyQualifiedSrc = path.join(dir.input, relativeSrc);
 
-  const widths = specialImages[name]?.widths ?? imageDefaults.widths;
-  const sizes = specialImages[name]?.sizes ?? imageDefaults.sizes;
-  let formats = specialImages[name]?.formats ?? imageDefaults.formats;
-  const baseFormat = formats.base;
-  formats = [baseFormat, ...formats.other];
+  const widths = specialImages[imgName]?.widths ?? imageDefaults.widths;
+  const sizes = specialImages[imgName]?.sizes ?? imageDefaults.sizes;
+  const baseFormat = specialImages[imgName]?.baseFormat ?? imageDefaults.baseFormat;
+  const formats = [baseFormat, ...OPTIMIZED_IMAGE_FORMATS];
 
-  const imageMetadata = await Image(fullyQualifiedImagePath, {
+  const imageMetadata = await Image(fullyQualifiedSrc, {
     widths,
     formats,
     // Where the generated image files get saved
-    outputDir: path.join(imagePaths.output, pathToImage),
+    outputDir: path.join(dir.output, imgDir),
     // Public URL path that's referenced in the img tag's src attribute
-    urlPath: path.join(imagePaths.output.replace(dir.output, ''), pathToImage),
+    urlPath: imgDir,
     // Custom file name
     filenameFormat: (_id, _src, width, format) => {
-      return `${name}-${width === ImageWidths.PLACEHOLDER ? 'placeholder' : width}.${format}`;
+      return `${imgName}-${width === ImageWidths.PLACEHOLDER ? 'placeholder' : width}.${format}`;
     },
   });
 
@@ -86,7 +78,7 @@ const imageShortcode = async (relativeSrc, alt, className, id, clickable) => {
 
   const { width, height } = formatSizes[baseFormat].largest;
 
-  const picture = `<picture class="${classNames('lazy-picture', className)}" ${id ? `id="${id}"` : ''}>
+  const picture = `<picture class="${classNames('lazy-picture', className)}">
   ${Object.values(imageMetadata)
     // Prioritize optimized sources since browser loads first valid one it encounters
     .sort((sourcesA, sourcesB) => {

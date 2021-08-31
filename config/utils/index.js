@@ -1,4 +1,3 @@
-const lodash = require('lodash');
 const slugify = require('slugify');
 const { dir } = require('../constants');
 
@@ -18,7 +17,7 @@ const getAllUniqueKeyValues = (collectionItems, key) => {
   // First map each collection item (e.g., blog post) to the value it holds under key.
   let values = collectionItems.map((item) => item.data[key] ?? []);
   // Recursively flatten it to a 1D array
-  values = lodash.flattenDeep(values);
+  values = values.flat();
   // Remove duplicates
   values = [...new Set(values)];
   // Sort alphabetically

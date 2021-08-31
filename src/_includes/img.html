@@ -1,6 +1,6 @@
 {%- comment -%}Img shortcode for markdown posts{%- endcomment -%}
 {%- comment -%}To prevent weird layout bugs, specifically with linked images, we'll wrap images in markdown with a p tag.{%- endcomment -%}
-{%- assign src = '/posts/' | append: page.fileSlug | append: '/' | append: src -%}
+{%- assign src = '/assets/images/posts/' | append: page.fileSlug | append: '/' | append: src -%}
 <p>
   {% include picture.html src, alt, className, id, clickable %}
 </p>

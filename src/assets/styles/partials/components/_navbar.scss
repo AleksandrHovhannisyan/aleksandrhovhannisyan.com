@@ -35,7 +35,7 @@
     justify-content: space-between;
   }
 
-  &-menu {
+  #navbar-menu {
     position: fixed;
     left: 0;
     top: var(--navbar-height);
@@ -73,37 +73,11 @@
   }
 
   // Mobile only
-  &.opened {
-    .navbar-menu {
+  &.open {
+    #navbar-menu {
       background-color: rgba(0, 0, 0, 0.4);
       opacity: 1;
       visibility: visible;
-    }
-
-    #navbar-toggle {
-      display: flex;
-
-      .icon-bar {
-        &:first-child,
-        &:last-child {
-          position: absolute;
-          margin: 0;
-          width: var(--navbar-toggle-size);
-          height: 5%;
-        }
-
-        &:first-child {
-          transform: rotate(45deg);
-        }
-
-        &:nth-child(2) {
-          opacity: 0;
-        }
-
-        &:last-child {
-          transform: rotate(-45deg);
-        }
-      }
     }
   }
 }
@@ -223,6 +197,32 @@
   &:is(:focus, :hover) {
     .icon-bar {
       background-color: white;
+    }
+  }
+
+  &[aria-expanded="true"] {
+    display: flex;
+
+    .icon-bar {
+      &:first-child,
+      &:last-child {
+        position: absolute;
+        margin: 0;
+        width: var(--navbar-toggle-size);
+        height: 5%;
+      }
+
+      &:first-child {
+        transform: rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:last-child {
+        transform: rotate(-45deg);
+      }
     }
   }
 }
@@ -364,10 +364,10 @@
   }
 
   .navbar,
-  .navbar.opened {
+  .navbar.open {
     box-shadow: none;
 
-    .navbar-menu {
+    #navbar-menu {
       position: static;
       display: flex;
       height: 100%;
