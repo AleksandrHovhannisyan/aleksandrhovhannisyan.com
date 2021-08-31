@@ -9,3 +9,9 @@ package="netlify-plugin-checklinks"
 [build]
   publish = "_site/"
   command = "yarn build"
+
+[[plugins]]
+    package = "netlify-plugin-11ty"
+    [plugins.inputs]
+        cache_img = './assets/images'
+        cache_img_httpHeader = false
