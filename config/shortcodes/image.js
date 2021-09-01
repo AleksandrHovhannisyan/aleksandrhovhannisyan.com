@@ -12,48 +12,26 @@ const ImageWidths = {
   PLACEHOLDER: 24,
 };
 
-const OPTIMIZED_IMAGE_FORMATS = ['webp'];
+const imageShortcode = async (relativeSrc, props) => {
+  const {
+    alt = '',
+    baseFormat = 'jpeg',
+    optimizedFormats = ['webp'],
+    widths = [400, 800],
+    sizes = '100vw',
+    className,
+    clickable = true,
+  } = props ?? {};
 
-/** Images that need special attention/prop customization. */
-const specialImages = {
-  thumbnail: {
-    widths: [ImageWidths.ORIGINAL, ImageWidths.PLACEHOLDER, 200, 400, 800],
-    sizes: `(max-width: 400px) 400px, (max-width: 768px) 800px, 400px`,
-  },
-  'profile-photo': {
-    widths: [ImageWidths.ORIGINAL, ImageWidths.PLACEHOLDER, 280, 400],
-    sizes: `(max-width: 768px) 280px, 400px`,
-  },
-  'author-photo': {
-    widths: [ImageWidths.ORIGINAL, ImageWidths.PLACEHOLDER, 44, 88],
-  },
-  favicon: {
-    widths: [ImageWidths.PLACEHOLDER, 32, 57, 76, 96, 128, 192, 228],
-    baseFormat: 'png',
-    // Really only need this one for the navbar logo. Other sizes are generated for the real favicon.
-    sizes: '57px',
-  },
-};
+  // Templates shouldn't have to worry about passing in `null` and the placeholder width
+  const finalWidths = [ImageWidths.ORIGINAL, ImageWidths.PLACEHOLDER, ...widths];
 
-/** Defaults/fallbacks for any other image that isn't a "special" image. */
-const imageDefaults = {
-  widths: [ImageWidths.ORIGINAL, ImageWidths.PLACEHOLDER, 400, 800],
-  baseFormat: 'jpeg',
-  sizes: '100vw',
-};
-
-// Liquid doesn't allow object parameters for partials or shortcodes
-const imageShortcode = async (relativeSrc, alt, className, clickable) => {
   const { name: imgName, dir: imgDir } = path.parse(relativeSrc);
   const fullyQualifiedSrc = path.join(dir.input, relativeSrc);
-
-  const widths = specialImages[imgName]?.widths ?? imageDefaults.widths;
-  const sizes = specialImages[imgName]?.sizes ?? imageDefaults.sizes;
-  const baseFormat = specialImages[imgName]?.baseFormat ?? imageDefaults.baseFormat;
-  const formats = [baseFormat, ...OPTIMIZED_IMAGE_FORMATS];
+  const formats = [baseFormat, ...optimizedFormats];
 
   const imageMetadata = await Image(fullyQualifiedSrc, {
-    widths,
+    widths: finalWidths,
     formats,
     // Where the generated image files get saved
     outputDir: path.join(dir.output, imgDir),
@@ -65,7 +43,7 @@ const imageShortcode = async (relativeSrc, alt, className, clickable) => {
     },
   });
 
-  // Map each unique format (e.g., jpeg, wepb) to its smallest and largest images
+  // Map each unique format (e.g., jpeg, webp) to its smallest and largest images
   const formatSizes = Object.keys(imageMetadata).reduce((formatSizes, uniqueFormat) => {
     if (!formatSizes[uniqueFormat]) {
       formatSizes[uniqueFormat] = {
@@ -82,8 +60,8 @@ const imageShortcode = async (relativeSrc, alt, className, clickable) => {
   ${Object.values(imageMetadata)
     // Prioritize optimized sources since browser loads first valid one it encounters
     .sort((sourcesA, sourcesB) => {
-      if (OPTIMIZED_IMAGE_FORMATS.includes(sourcesA[0].format)) return -1;
-      if (OPTIMIZED_IMAGE_FORMATS.includes(sourcesB[0].format)) return 1;
+      if (optimizedFormats.includes(sourcesA[0].format)) return -1;
+      if (optimizedFormats.includes(sourcesB[0].format)) return 1;
       return 0;
     })
     // Map each format to the source HTML markup
@@ -114,7 +92,7 @@ const imageShortcode = async (relativeSrc, alt, className, clickable) => {
 
   // Link to the highest resolution optimized image
   if (clickable) {
-    return outdent`<a href="${formatSizes[OPTIMIZED_IMAGE_FORMATS[0]].largest.url}">${picture}</a>`;
+    return outdent`<a href="${formatSizes[optimizedFormats[0]].largest.url}">${picture}</a>`;
   }
 
   // Otherwise just return the plain picture tag

@@ -16,6 +16,7 @@ const {
   stripNewlines,
   stripHtml,
   unslugify,
+  jsonParse,
   getLatestCollectionItemDate,
 } = require('./config/filters');
 const { posts, categories, postsByCategory } = require('./config/collections');
@@ -56,6 +57,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter('stripHtml', stripHtml);
   eleventyConfig.addFilter('slugify', slugifyString);
   eleventyConfig.addFilter('unslugify', unslugify);
+  eleventyConfig.addFilter('jsonParse', jsonParse);
   eleventyConfig.addFilter('getLatestCollectionItemDate', getLatestCollectionItemDate);
 
   // Custom collections

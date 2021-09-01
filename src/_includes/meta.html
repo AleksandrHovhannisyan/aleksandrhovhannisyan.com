@@ -4,7 +4,7 @@
 <ul class="post-meta">
   {% if showProfilePhoto %}
     <li class="post-meta-item">
-      {%- include picture.html src: "/assets/images/author-photo.jpg", alt: "", className: "author-photo", clickable: false -%}
+      {%- include image.html src: "/assets/images/author-photo.jpg", className: "author-photo", clickable: false, widths: "[44, 88]" -%}
     </li>
   {%- endif -%}
   <li class="post-meta-item post-date-published">
