@@ -8,11 +8,11 @@
     </li>
   {%- endif -%}
   <li class="post-meta-item post-date-published">
-    {%- include icon.html icon: "calendar", class: "post-meta-icon" -%}
+    {%- include icon.html icon: "calendar", className: "post-meta-icon" -%}
     {%- include date.html date: post.date, dateFormat: "%b %d, %Y" -%}
   </li>
   <li class="post-meta-item post-reading-length">
-    {%- include icon.html icon: "clock" class: "post-meta-icon" -%}
+    {%- include icon.html icon: "clock" className: "post-meta-icon" -%}
     <span>{{ readingLengthMinutes }} min read</span>
   </li>
   {%- if categories -%}
