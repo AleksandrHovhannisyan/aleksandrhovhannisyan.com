@@ -452,7 +452,7 @@ Hopefully, you now have a better understanding of how to define responsive aspec
 <style>
   .post-content .tiles {
     display: grid;
-    padding: 0 !important;
+    padding: 0;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     row-gap: 1.6rem;
     column-gap: 1.6rem;

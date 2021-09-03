@@ -1703,7 +1703,6 @@ That does it for this tutorial! I hope you learned something new (and had fun!).
     align-items: center;
     flex-wrap: wrap;
     gap: 4.8rem;
-    list-style: none;
     padding: 0;
     max-width: 100%;
   }

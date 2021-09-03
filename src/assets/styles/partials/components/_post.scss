@@ -32,22 +32,25 @@
       margin-top: var(--gap);
     }
 
-    ol {
+    ol:not([class]) {
       list-style: decimal;
     }
 
-    ul {
+    ul:not([class]) {
       list-style: disc;
     }
 
-    ol,
-    ul {
+    .toc-list,
+    :is(ol, ul):not([class]) {
       padding-inline-start: clamped(2.4rem, 4.8rem);
+    }
+
+    :is(ol, ul):not([class]) {
       display: grid;
       row-gap: 0.4rem;
 
-      li {
-        ol, ul {
+      li:not([class]) {
+        :is(ol, ul):not([class]) {
           margin-top: 0.4rem;
         }
       }
