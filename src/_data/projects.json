@@ -2,7 +2,7 @@
   {
      "name": "Scribe",
      "icon": "📄",
-     "rating": 13,
+     "rating": 15,
      "description": "Text editor developed with the Qt framework. Features standard file operations, syntax highlighting, brace autocomplete, and auto-indentation.",
      "url": "https://github.com/AleksandrHovhannisyan/Scribe-Text-Editor",
      "tech": [
@@ -39,7 +39,7 @@
   {
      "name": "This Website!",
      "icon": "💾",
-     "rating": 12,
+     "rating": 18,
      "description": "My online resume and blog, created with 11ty, Sass, and JavaScript. Built with a mobile-first responsive design.",
      "url": "https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com",
      "tech": [

@@ -15,7 +15,7 @@ permalink: /
     {%- include image.html src: "/assets/images/profile-photo.jpg", className: "hero-banner-headshot", clickable: false, widths: "[280, 400]", sizes: "(max-width: 768px) 280px, 400px" -%}
   </section>
   <section class="section">
-    <h2 id="recent-posts">Recent Blog Posts</h2>
+    <h2 id="recent-posts">Recent Posts</h2>
     <ol class="post-preview-grid">
       {%- assign recentPosts = collections.posts | limit: 5 -%}
       {%- for post in recentPosts -%}
@@ -24,35 +24,13 @@ permalink: /
     </ol>
   </section>
   <section class="section">
-    <h2 id="popular-posts">Popular Blog Posts</h2>
+    <h2 id="popular-posts">Popular Posts</h2>
     <ol class="post-preview-grid">
       {%- assign popularPosts = collections.posts | where: "data.isPopular", true -%}
       {%- for post in popularPosts -%}
         {%- include postPreview.html post: post -%}
       {%- endfor -%}
     </ol>
-  </section>
-  <section class="section">
-    <h2 id="projects">Software Projects</h2>
-    <p class="projects-subheading">
-      I have experience with a wide range of stacks and enjoy working on projects that have a strong UI/UX
-      component. Below are just some of my software projects that I'm most proud of.
-    </p>
-    <ul class="project-grid">
-      {%- for project in projects -%}
-        <li class="project-wrapper">
-          {%- include projectCard.html project: project -%}
-        </li>
-      {%- endfor -%}
-      <li class="project-wrapper github-cta">
-        <h3 class="github-cta-heading">Want to see more of my work?</h3>
-        <p class="github-cta-subheading">Check out my other repos:</p>
-        <a
-          aria-label="Aleksandr Hovhannisyan's GitHub profile."
-          href="https://github.com/AleksandrHovhannisyan?tab=repositories"
-          >{%- socialIcon "github" -%}</a>
-      </li>
-    </ul>
   </section>
 </article>
 <script type="application/ld+json">
