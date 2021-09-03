@@ -6,7 +6,7 @@ categories: [11ty, liquid, javascript]
 thumbnail: thumbnail.jpg
 ---
 
-If you're using Liquid as your template language in 11ty, you may have run into a minor annoyance with shortcodes. Whereas [Nunjucks allows you to pass in named arguments to shortcodes]((<https://www.11ty.dev/docs/languages/nunjucks/#shortcode-named-argument-syntax-(nunjucks-only)>)), Liquid does not. So you end up having to do this:
+If you're using Liquid as your template language in 11ty, you may have run into a minor annoyance with shortcodes. Whereas Nunjucks allows you to pass in named arguments to shortcodes, Liquid does not. So you end up having to do this:
 
 ```js
 const shortcode = (arg1, arg2, arg3, arg4) => {};
