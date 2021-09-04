@@ -34,10 +34,6 @@
   z-index: z-index($key);
 }
 
-@mixin font-family($family) {
-  font-family: var(--font-#{$family});
-}
-
 @mixin font-weight($human-readable-weight: inherit) {
   font-weight: var(--fw-#{$human-readable-weight});
 }

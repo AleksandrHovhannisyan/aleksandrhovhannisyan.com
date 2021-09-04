@@ -12,7 +12,6 @@ body {
   min-height: 100vh;
   background-color: var(--main-bg-color);
   color: var(--color-text-normal);
-  @include font-family('sans');
   @include font-weight('regular');
   @include font-size('base');
 }
