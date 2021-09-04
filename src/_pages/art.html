@@ -7,18 +7,19 @@ permalink: /art/
 ogImage: /assets/images/art/thumbnail.png
 stylesheets:
   - href: /assets/styles/art.css
-preloads:
-  - as: style
-    type: text/css
-    href: /assets/styles/art.css
-  - as: font
-    type: font/woff2
-    href: /assets/fonts/reenie-beanie-v11-latin-regular.woff2
-    crossorigin: true
-  - as: font
-    type: font/woff2
-    href: /assets/fonts/rock-salt-v11-latin-regular.woff2
-    crossorigin: true
+eleventyComputed:
+  preloads:
+    - as: style
+      type: text/css
+      href: /assets/styles/art.css
+    - as: font
+      type: font/woff2
+      href: "{{ fonts.cursive.title }}"
+      crossorigin: true
+    - as: font
+      type: font/woff2
+      href: "{{ fonts.cursive.body }}"
+      crossorigin: true
 ---
 
 <article id="artwork-page">

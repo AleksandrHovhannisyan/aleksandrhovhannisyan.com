@@ -2,26 +2,27 @@
 layout: post
 stylesheets:
   - href: https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css
-preloads:
-  -
-    as: font
-    type: font/woff2
-    href: /assets/fonts/fira-sans-v10-latin-italic.woff2
-    crossorigin: true
-  -
-    as: font
-    type: font/woff2
-    href: /assets/fonts/inconsolata-v20-latin-500.woff2
-    crossorigin: true
-  -
-    as: font
-    type: font/woff2
-    href: /assets/fonts/inconsolata-v20-latin-700.woff2
-    crossorigin: true
-  -
-    as: style
-    type: text/css
-    href: https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css
+eleventyComputed:
+  preloads:
+    -
+      as: font
+      type: font/woff2
+      href: "{{ fonts.main.regularItalic }}"
+      crossorigin: true
+    -
+      as: font
+      type: font/woff2
+      href: "{{ fonts.code.regular }}"
+      crossorigin: true
+    -
+      as: font
+      type: font/woff2
+      href: "{{ fonts.code.bold }}"
+      crossorigin: true
+    -
+      as: style
+      type: text/css
+      href: https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css
 ---
 
 {{ content }}
