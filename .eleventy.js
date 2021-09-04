@@ -18,6 +18,7 @@ const {
   unslugify,
   jsonParse,
   getLatestCollectionItemDate,
+  compileAndMinifyScss,
 } = require('./config/filters');
 const { posts, categories, postsByCategory } = require('./config/collections');
 const markdownLib = require('./config/plugins/markdown');
@@ -59,6 +60,9 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter('unslugify', unslugify);
   eleventyConfig.addFilter('jsonParse', jsonParse);
   eleventyConfig.addFilter('getLatestCollectionItemDate', getLatestCollectionItemDate);
+  eleventyConfig.addFilter('compileAndMinifyScss', compileAndMinifyScss);
+  eleventyConfig.addFilter('keys', Object.keys);
+  eleventyConfig.addFilter('values', Object.values);
 
   // Custom collections
   eleventyConfig.addCollection('posts', posts);

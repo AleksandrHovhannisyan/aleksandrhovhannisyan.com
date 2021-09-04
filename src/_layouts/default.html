@@ -34,6 +34,11 @@
   {%- if noindex -%}
     <meta name="robots" content="noindex">
   {%- endif -%}
+  {%- comment -%}Font face declarations in head rather than in stylesheet{%- endcomment -%}
+  {%- capture fontFace -%}
+    {%- include fontFace.liquid -%}
+  {%- endcapture -%}
+  <style>{{ fontFace | compileAndMinifyScss }}</style>
   {%- comment -%}Global and page/layout-specific CSS{%- endcomment -%}
   <link rel="stylesheet" href="/assets/styles/main.css">
   {%- for stylesheet in stylesheets -%}
@@ -84,9 +89,9 @@
   {%- endif -%}
   {%- comment -%}Preload optimizations{%- endcomment -%}
   <link rel="preload" as="style" type="text/css" href="/assets/styles/main.css">
-  <link rel="preload" as="font" type="font/woff2" href="{{ fonts.main.light }}" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="{{ fonts.main.regular }}" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="{{ fonts.main.bold }}" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="{{ fonts.main.weights.light.url }}" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="{{ fonts.main.weights.regular.url }}" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="{{ fonts.main.weights.bold.url }}" crossorigin>
   <link rel="modulepreload" as="script" type="text/javascript" href="/assets/scripts/main.bundle.mjs">
   {%- if preloads -%}
     {% for preload in preloads %}

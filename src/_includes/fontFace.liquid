@@ -1,0 +1,16 @@
+{%- comment -%}Loop over the global font config and construct a series of @font-face declarations.
+We later feed this to scss to minify the output and inline it in the head for performance.{%- endcomment -%}
+{%- assign allFonts = fonts | values -%}
+{%- for fontFamily in allFonts -%}
+  {%- assign fontEntries = fontFamily.weights | values -%}
+  {%- for font in fontEntries -%}
+    {%- assign format = font.url | split: "." | last -%}
+    @font-face {
+      font-family: '{{ fontFamily.family }}';
+      font-style: {{ font.style }};
+      font-weight: {{ font.weight }};
+      font-display: {{ font.display }};
+      src: local('{{ font.local }}'), url('{{ font.url }}') format('{{ format }}');
+    }
+  {%- endfor -%}
+{%- endfor -%}
