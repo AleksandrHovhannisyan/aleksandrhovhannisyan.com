@@ -1,0 +1,10 @@
+{%- comment -%}Loop over the global font config and derive CSS custom properties
+from it for things like font family.{%- endcomment -%}
+{%- assign fontTypeNames = fonts | keys -%}
+html {
+  {%- for fontType in fontTypeNames -%}
+    {%- assign family = fonts[fontType].family -%}
+    {%- assign fallbackFontStack = fonts[fontType].fallbacks | join: ", " -%}
+    --font-{{ fontType }}: {{ family }}, {{ fallbackFontStack }};
+  {%- endfor -%}
+}

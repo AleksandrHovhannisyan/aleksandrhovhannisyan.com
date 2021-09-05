@@ -34,15 +34,10 @@
   {%- if noindex -%}
     <meta name="robots" content="noindex">
   {%- endif -%}
-  {%- comment -%}Font face declarations in head rather than in stylesheet{%- endcomment -%}
-  {%- capture fontFace -%}
+  {%- comment -%}Font face and variable declarations in head rather than in stylesheet{%- endcomment -%}
+  {%- capture fontCss -%}
     {%- include fontFace.liquid -%}
-    html {
-      --font-main: {{ fonts.main.family }}, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif;
-      --font-code: {{ fonts.code.family }}, Monaco, Consolas, Courier New, monospace;
-      --font-cursiveTitle: {{ fonts.cursiveTitle.family }}, cursive;
-      --font-cursiveBody: {{ fonts.cursiveBody.family }}, cursive;
-    }
+    {%- include fontVariables.liquid -%}
     body {
       font-family: var(--font-main);
     }
@@ -50,7 +45,7 @@
       font-family: var(--font-code);
     }
   {%- endcapture -%}
-  <style>{{ fontFace | compileAndMinifyScss }}</style>
+  <style>{{ fontCss | compileAndMinifyScss }}</style>
   {%- comment -%}Global and page/layout-specific CSS{%- endcomment -%}
   <link rel="stylesheet" href="/assets/styles/main.css">
   {%- for stylesheet in stylesheets -%}

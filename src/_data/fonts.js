@@ -17,6 +17,18 @@ const getFontSrc = (src) => path.join(fontPath, src);
 const fonts = {
   main: {
     family: 'Fira Sans',
+    fallbacks: [
+      `-apple-system`,
+      `BlinkMacSystemFont`,
+      `Segoe UI`,
+      `Roboto`,
+      `Oxygen`,
+      `Ubuntu`,
+      `Cantarell`,
+      `Open Sans`,
+      `Helvetica Neue`,
+      `sans-serif`,
+    ],
     weights: {
       light: {
         weight: 300,
@@ -54,6 +66,7 @@ const fonts = {
   },
   code: {
     family: 'Inconsolata',
+    fallbacks: [`Monaco`, `Consolas`, `Courier New`, `monospace`],
     weights: {
       regular: {
         weight: 500,
@@ -71,6 +84,7 @@ const fonts = {
   },
   cursiveTitle: {
     family: 'Rock Salt',
+    fallbacks: [`cursive`],
     weights: {
       regular: {
         weight: 400,
@@ -82,6 +96,7 @@ const fonts = {
   },
   cursiveBody: {
     family: 'Reenie Beanie',
+    fallbacks: [`cursive`],
     weights: {
       regular: {
         weight: 400,
