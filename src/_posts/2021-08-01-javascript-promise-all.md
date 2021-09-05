@@ -4,6 +4,7 @@ description: Learn how to use JavaScript's Promise.all method to await multiple 
 keywords: [promise.all, promise, async, javascript]
 categories: [javascript, promises, async]
 thumbnail: thumbnail.jpg
+commentsId: 104
 ---
 
 Imagine you're creating a website where users can batch-upload files. You need to know when all files have finished uploading so you can notify the user and update the UI. This sounds like a job for promises since file uploads are likely to be asynchronous. But in this example, each upload would return its own promise. You know how to await *individual* promises, but how do you await an arbitrary number of promises to know when they've *all* resolved?

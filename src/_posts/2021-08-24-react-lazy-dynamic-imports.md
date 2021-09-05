@@ -4,6 +4,7 @@ description: Certain static imports may increase your bundle size, potentially h
 keywords: [React.lazy, dynamically import components, dynamic import, lazy]
 categories: [react, webperf, javascript, async]
 thumbnail: thumbnail.jpg
+commentsId: 106
 ---
 
 In JavaScript frameworks like React, it's tempting to statically import a wide range of components. But not all of them are needed immediately; some components only render after a user interacts with the page or once a certain run-time condition has been met. Some examples of this include:

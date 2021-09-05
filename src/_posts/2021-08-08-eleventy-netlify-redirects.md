@@ -4,6 +4,7 @@ description: Tired of listing all of your Netlify redirects by hand? Generate th
 keywords: [netlify redirects, 11ty, eleventy]
 categories: [11ty, netlify, liquid, seo]
 thumbnail: thumbnail.jpg
+commentsId: 105
 ---
 
 Proper 301 redirects are essential for SEO, but not all frameworks and hosting services provide a straightforward way to set them up. Most static site generators like Gatsby and Jekyll require additional plugins and configuration to support redirects.

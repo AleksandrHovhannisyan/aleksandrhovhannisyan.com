@@ -4,6 +4,7 @@ description: While 11ty doesn't let you pass object arguments to shortcodes in L
 keywords: [object argument, 11ty, liquid, shortcode]
 categories: [11ty, liquid, javascript]
 thumbnail: thumbnail.jpg
+commentsId: 107
 ---
 
 If you're using Liquid as your template language in 11ty, you may have run into a minor annoyance with shortcodes. Whereas Nunjucks allows you to pass in named arguments to shortcodes, Liquid does not. So you end up having to do this:
