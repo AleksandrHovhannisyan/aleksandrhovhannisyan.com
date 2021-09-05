@@ -7,16 +7,15 @@ We later feed this to scss to minify the output and inline it in the head for pe
     {%- assign fontEntry = font.weights[weight] -%}
     {%- assign family = font.family -%}
     {%- assign format = fontEntry.url | split: "." | last -%}
-    {%- comment -%}Regular-weight fonts follow the convention of "FontFamily" as their local name on the OS.
-    All other font weights will be formatted as "FontFamily WeightStyle".{%- endcomment -%}
-    {%- assign capitalizedWeight = weight | capitalize -%}
-    {%- assign localFontName = family | append: " " | append: capitalizedWeight | replace: "Regular", "" | strip -%}
+    {%- assign localFontName = family | append: " " | append: fontEntry.variant | replace: "Regular", "" | strip -%}
+    {%- assign postscriptVariantName = fontEntry.variant | replace: " ", "" -%}
+    {%- assign postscriptName = family | replace: " ", "" | append: " " | append: postscriptVariantName | replace: "Regular", "" | strip | replace: " ", "-" -%}
     @font-face {
       font-family: '{{ family }}';
       font-style: {{ fontEntry.style }};
       font-weight: {{ fontEntry.weight }};
       font-display: {{ fontEntry.display }};
-      src: local('{{ localFontName }}'), url('{{ fontEntry.url }}') format('{{ format }}');
+      src: local('{{ localFontName }}'), local('{{ postscriptName }}'), url('{{ fontEntry.url }}') format('{{ format }}');
     }
   {%- endfor -%}
 {%- endfor -%}
