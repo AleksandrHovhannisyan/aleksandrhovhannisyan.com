@@ -34,6 +34,25 @@ html {
   --fw-regular: 400;
   --fw-bold: 700;
 
+  --color-code-background: hsl(0, 0%, 12%);
+  --color-code-overlay-1: hsl(0, 0%, 25%);
+  --color-code-overlay-2: hsl(0, 0%, 60%);
+  --color-code-selection: hsla(210, 100%, 84%, 0.15);
+  --color-code-comment: hsl(101, 29%, 47%);
+  --color-code-text: hsl(0, 0%, 83%);
+  --color-code-function: hsl(0, 0%, 83%);
+  --color-code-keyword: hsl(207, 61%, 59%);
+  --color-code-number: hsl(99, 28%, 73%);
+  --color-code-attribute: hsl(201, 98%, 80%);
+  --color-code-string: hsl(17, 47%, 64%);
+  --color-code-variable: var(--color-code-keyword);
+  --color-code-tag: var(--color-code-keyword);
+  --color-code-constant: var(--color-code-number);
+  --color-code-operator-word: var(--color-code-keyword);
+  --color-code-operator: var(--color-code-function);
+  --color-code-punctuation: var(--color-code-function);
+  --color-code-support: var(--color-code-attribute);
+
   --transition-duration: 0.2s;
   --transition-timing-function: ease;
   --page-max-width: 80rem;
