@@ -95,12 +95,7 @@ It's important to note that these are NOT mutually exclusive—you can use both.
 
 ### 1. Native Lazy Loading
 
-The `loading="lazy"` attribute offers [native lazy loading](https://web.dev/native-lazy-loading/) for images in Chromium browsers and in Firefox. It tells a browser when to start loading images, allowing you to defer network requests until a later point in time. Here's a demo of [native lazy loading in action](https://mathiasbynens.be/demo/img-loading-lazy) (credit goes to Mathias Bynens):
-
-<video controls loop muted>
-  <source src="https://storage.googleapis.com/web-dev-assets/native-lazy-loading/lazyload.webm" type="video/webm">
-  <source src="https://storage.googleapis.com/web-dev-assets/native-lazy-loading/lazyload.mp4" type="video/mp4">
-</video>
+The `loading="lazy"` attribute offers [native lazy loading](https://web.dev/native-lazy-loading/) for images in Chromium browsers and in Firefox. It tells a browser when to start loading images, allowing you to defer network requests until a later point in time. Mathias Bynens created a good demo of [native lazy loading in action](https://mathiasbynens.be/demo/img-loading-lazy) if you want to see how it works.
 
 Basically, images with the `loading="lazy"` attribute won't trigger an HTTP request until they're [a certain distance from the viewport](https://web.dev/native-lazy-loading/#distance-from-viewport-thresholds). In Chrome, that distance is `1250px` on a stable connection and `2500px` on a slow 3G connection.
 
