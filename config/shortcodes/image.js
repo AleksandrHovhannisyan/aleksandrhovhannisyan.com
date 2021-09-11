@@ -28,7 +28,9 @@ const imageShortcode = async (relativeSrc, props) => {
 
   const { name: imgName, dir: imgDir } = path.parse(relativeSrc);
   const fullyQualifiedSrc = path.join(dir.input, relativeSrc);
-  const formats = [baseFormat, ...optimizedFormats];
+
+  // List optimized formats before the base format so that the output contains webp sources before jpegs.
+  const formats = [...optimizedFormats, baseFormat];
 
   const imageMetadata = await Image(fullyQualifiedSrc, {
     widths: finalWidths,
@@ -56,14 +58,9 @@ const imageShortcode = async (relativeSrc, props) => {
 
   const { width, height } = formatSizes[baseFormat].largest;
 
+  // Return custom image markup
   const picture = `<picture class="${classNames('lazy-picture', className)}">
   ${Object.values(imageMetadata)
-    // Prioritize optimized sources since browser loads first valid one it encounters
-    .sort((sourcesA, sourcesB) => {
-      if (optimizedFormats.includes(sourcesA[0].format)) return -1;
-      if (optimizedFormats.includes(sourcesB[0].format)) return 1;
-      return 0;
-    })
     // Map each format to the source HTML markup
     .map((formatEntries) => {
       // The first entry is representative of all the others since they each have the same shape
