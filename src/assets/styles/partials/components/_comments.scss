@@ -8,10 +8,7 @@
   flex-wrap: wrap;
   margin-top: 4.8rem;
   margin-bottom: 1.6rem;
-
-  h2 {
-    margin: 0 !important;
-  }
+  gap: 1.6rem;
 }
 
 .post-comment-button {
@@ -31,21 +28,22 @@
   text-align: center;
 }
 
-.post-content {
-  .comments-list {
-    width: 100%;
-    padding: 0;
-    list-style: none;
-    display: grid;
-    row-gap: 6.4rem;
-  }
+.comments-list {
+  width: 100%;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  row-gap: 6.4rem;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 :not(.token).comment {
   --avatar-size: 3.2rem;
   --meta-spacing: 0.8rem;
-  padding-inline-start: calc(var(--avatar-size) +var(--meta-spacing));
+  padding-inline-start: calc(var(--avatar-size) + var(--meta-spacing));
+}
 
+.comment {
   &-header {
     display: flex;
     flex-wrap: wrap;
@@ -60,7 +58,7 @@
     position: absolute;
     width: var(--avatar-size);
     left: calc(-1 * var(--avatar-size) - var(--meta-spacing));
-    border-radius: 50% !important;
+    border-radius: 50%;
   }
 
   &-username {
