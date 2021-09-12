@@ -3,12 +3,12 @@
 .post-aside {
   border-inline-start: 0.4rem solid;
   padding: 1.6rem clamped(2rem, 3.2rem);
-  background-color: var(--color-surface-2);
+  background-color: var(--aside-bg-color);
+  color: var(--color-text-emphasis);
   @include rhythm;
 
   code {
-    // should generally be avoided, but it's nice here because it affects
-    // both the color and the background color, which have fairly high contrast with each other
-    filter: brightness(0.96);
+    padding: 0;
+    background-color: transparent;
   }
 }
