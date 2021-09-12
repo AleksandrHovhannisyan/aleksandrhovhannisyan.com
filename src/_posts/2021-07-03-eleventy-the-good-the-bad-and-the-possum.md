@@ -383,7 +383,9 @@ We've covered the good. And we've covered the bad. But [what about the possum](h
 
 {% include img.html src: "possum-white-bg.jpg", alt: "The Eleventy mascot is a possum with brown hide and a beige face. It's hanging from a red balloon, with one paw slightly outstretched." %}
 
-{% include quote.html quote: '"Why a possum? Why is the possum floating? Why a balloon? Exactly. 42."', source: "An Homage to the James Williamson Possum Balloon ", cite: "https://www.11ty.dev/news/logo-homage/" %}
+{% quote "An Homage to the James Williamson Possum Balloon", "https://www.11ty.dev/news/logo-homage/" %}
+  Why a possum? Why is the possum floating? Why a balloon? Exactly. 42.
+{% endquote %}
 
 The original Eleventy mascot was [designed by developer James Williamson](https://www.11ty.dev/news/james-williamson/), who passed away in 2019 after a six-year battle with ALS. It was later reinterpreted artistically by designer [Phineas X. Jones](http://octophant.us/) and now floats through the halls of the 11ty docs.
 

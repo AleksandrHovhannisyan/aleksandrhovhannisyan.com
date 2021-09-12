@@ -5,3 +5,12 @@ blockquote {
   padding: 0.4rem clamped(2rem, 3.2rem);
   @include rhythm;
 }
+
+.quote-content {
+  &::before {
+    content: open-quote;
+  }
+  &::after {
+    content: close-quote;
+  }
+}

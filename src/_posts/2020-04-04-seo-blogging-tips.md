@@ -23,7 +23,9 @@ Let's look at some ways you can drive more traffic to your site.
 
 At the end of the day, one of the best SEO blogging tips is a recommendation straight from Google itself: **Create high-quality content**. After all, what use is there in repeating what countless other people have already documented ad nauseam, or churning out low-quality posts for the sake of inflating your blog's apparent value?
 
-{% include quote.html quote: "Creating compelling and useful content will likely influence your website more than any of the other factors discussed here. Users know good content when they see it and will likely want to direct other users to it.", source: "Search Engine Optimization (SEO) Starter Guide", cite: "https://support.google.com/webmasters/answer/7451184?hl=en" %}
+{% quote "Search Engine Optimization (SEO) Starter Guide", "https://support.google.com/webmasters/answer/7451184?hl=en" %}
+  Creating compelling and useful content will likely influence your website more than any of the other factors discussed here. Users know good content when they see it and will likely want to direct other users to it.
+{% endquote %}
 
 Ask yourself this question as you're working on a blog post: If I came across this years ago as I was trying to learn more about X, how would I feel as a reader? Would I be frustrated that it simply regurgitates what millions of other blog posts have already failed to teach me? Or would I be thrilled to have finally found a comprehensive resource unlike others on the market?
 

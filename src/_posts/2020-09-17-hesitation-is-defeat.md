@@ -50,7 +50,9 @@ It's exhausting. But it's also the culmination of every single challenge that th
 
 ## Farewell
 
-> At his peak, Isshin Ashina devoted himself to deadly conflict in pursuit of strength. A single-minded killing machine of a man. —[Memory: Saint Isshin](https://sekiroshadowsdietwice.wiki.fextralife.com/Memory:+Saint+Isshin)
+{% quote "Memory: Saint Isshin", "https://sekiroshadowsdietwice.wiki.fextralife.com/Memory:+Saint+Isshin" %}
+  At his peak, Isshin Ashina devoted himself to deadly conflict in pursuit of strength. A single-minded killing machine of a man.
+{% endquote %}
 
 At long last, with muscle memory developed through hundreds of painful deaths, you conquer your enemy. Isshin collapses to his knees with an agonizing bellow. His final words?
 

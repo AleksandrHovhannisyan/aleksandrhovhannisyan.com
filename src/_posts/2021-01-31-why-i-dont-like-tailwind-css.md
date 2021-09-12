@@ -22,7 +22,9 @@ In a nutshell, this was my experience with Tailwind CSS. It's by no means the wo
 
 The strange thing is that I actually read through all of [Adam Wathan's article on semantic CSS](https://adamwathan.me/css-utility-classes-and-separation-of-concerns/), and I found myself initially agreeing with his points. Adam argues that the whole "semantic CSS" paradigm does not pan out in practice, and that developers tend to gravitate towards a **Utility CSS** approach over the course of their careers. According to this paradigm, your class names should be as granular as possible, responsible for one main task. These utility classes serve as the basic building blocks ("tokens") of your UI, allowing you to chain them together to implement complex designs. For example, if you find yourself repeating `display: flex` or `flex-wrap: wrap` in your CSS, you may want to abstract these out into utility classes, like `flex` or `flex-wrap`, that you can apply to any element.
 
-> "I’ve written a few thousand words on why traditional 'semantic class names' are the reason CSS is hard to maintain, but the truth is you’re never going to believe me until you actually try it. If you can suppress the urge to retch long enough to give it a chance, I really think you'll wonder how you ever worked with CSS any other way." —[Adam Wathan](https://tailwindcss.com/), Tailwind CSS landing page
+{% quote "Adam Wathan, Tailwind CSS landing page", "https://tailwindcss.com/" %}
+  I’ve written a few thousand words on why traditional 'semantic class names' are the reason CSS is hard to maintain, but the truth is you’re never going to believe me until you actually try it. If you can suppress the urge to retch long enough to give it a chance, I really think you'll wonder how you ever worked with CSS any other way.
+{% endquote %}
 
 On paper, utility CSS actually sounds like it may be useful. In practice, though, Tailwind CSS (and utility CSS in general) suffers from the same issues that it attempts to solve and is, in my honest opinion, not worth using.
 
@@ -36,11 +38,13 @@ One of the arguments that people in favor of Tailwind usually make is that the "
 
 This is one of the arguments that Adam uses in his article. He notes that with the semantic CSS approach, there's this inherent coupling of HTML to CSS, where either your HTML classes dictate your CSS or vice versa. And thus, the whole "separation of concerns" principle falls apart because your HTML and CSS **depend on each other**.
 
-> "*I had "separated my concerns", but there was still a very obvious coupling between my CSS and my HTML. Most of the time my CSS was like a mirror for my markup; perfectly reflecting my HTML structure with nested CSS selectors.*
->
-> My markup wasn't concerned with styling decisions, but my CSS was very concerned with my markup structure.
->
-> Maybe my concerns weren't so separated after all." —[CSS Utility Classes and "Separation of Concerns"](https://adamwathan.me/css-utility-classes-and-separation-of-concerns/)
+{% quote 'Adam Wathan, CSS Utility Classes and "Separation of Concerns"', "https://adamwathan.me/css-utility-classes-and-separation-of-concerns/" %}
+  I had "separated my concerns", but there was still a very obvious coupling between my CSS and my HTML. Most of the time my CSS was like a mirror for my markup; perfectly reflecting my HTML structure with nested CSS selectors.
+
+  My markup wasn't concerned with styling decisions, but my CSS was very concerned with my markup structure.
+
+  Maybe my concerns weren't so separated after all.
+{% endquote %}
 
 In principle, this makes sense. But as we'll see, Tailwind doesn't actually solve this problem of "separation of concerns." And it actually introduces several other problems.
 
@@ -265,9 +269,11 @@ But at the end of the day, you shouldn't worry about optimizing your CSS if your
 
 Utility CSS is inherently broken and bloated. Why? Because every new class name that you introduce could have potentially hundreds of property-value combinations, and that translates to more compiled CSS—which, of course, means a larger network request, and potentially slower performance.
 
-Look no further than pseudo-class selectors like `:hover`, `:focus`, `:active`, and `:focus-within` to see why this is such a big deal. In fact, it's a problem that Tailwind is *very well aware of*. [Just read its documentation](https://v1.tailwindcss.com/docs/pseudo-class-variants):
+Look no further than pseudo-class selectors like `:hover`, `:focus`, `:active`, and `:focus-within` to see why this is such a big deal. In fact, it's a problem that Tailwind is aware of:
 
-> Not all pseudo-class variants are enabled for all utilities by default due to file-size considerations, but we've tried our best to enable the most commonly used combinations out of the box.
+{% quote "Pseudo-Class Variants, Tailwind", "https://v1.tailwindcss.com/docs/pseudo-class-variants" %}
+  Not all pseudo-class variants are enabled for all utilities by default due to file-size considerations, but we've tried our best to enable the most commonly used combinations out of the box.
+{% endquote %}
 
 Translation: Tailwind is a costly abstraction, and its creators have tried their very best to hide this fact from you.
 

@@ -41,16 +41,21 @@ The original tweet was not about performance. But Tech Twitter, being the highly
 
 Below are just a handful of the noteworthy responses that I saw; they touch on important points about optimizing front-end code (and code in general, really).
 
-{% include quote.html quote: 'Beware of "smart" coding tricks', source: "@jaffathecake", cite: "https://twitter.com/jaffathecake/status/1396447037915336705" %}
+{% quote "@jaffathecake", "https://twitter.com/jaffathecake/status/1396447037915336705" %}
+  Beware of "smart" coding tricks
+{% endquote %}
 
-{% capture quote %}It's so easy to get sucked into performance micro-optimization territory.
+{% quote "@JoshWComeau", "https://twitter.com/JoshWComeau/status/1397559162477895681" %}
+  It's so easy to get sucked into performance micro-optimization territory.
 
-Someone will say that Method X is slow, and inevitably somebody else will point out that it doesn't really matter outside of contrived, unrealistic benchmarks.
+  Someone will say that Method X is slow, and inevitably somebody else will point out that it doesn't really matter outside of contrived, unrealistic benchmarks.
 
-I wanna dig into that a bit…{% endcapture %}
-{% include quote.html quote: quote, source: "@JoshWComeau", cite: "https://twitter.com/JoshWComeau/status/1397559162477895681" %}
+  I wanna dig into that a bit…
+{% endquote %}
 
-{% include quote.html quote: "Not a reflection on your code, but on the whole, I think us frontend devs are too hung up on perf. You're not gonna run this 100k times in the frontend. (If so, you got other issues to tend to).", source: "@svencodes", cite: "https://twitter.com/svencodes/status/1396839189543587843" %}
+{% quote "@svencodes", "https://twitter.com/svencodes/status/1396839189543587843" %}
+  Not a reflection on your code, but on the whole, I think us frontend devs are too hung up on perf. You're not gonna run this 100k times in the frontend. (If so, you got other issues to tend to).
+{% endquote %}
 
 Based on these and many other responses, the key takeaway appears to be this: You shouldn't try to optimize your code unless you have a good reason for doing so. You may think you need to worry about an algorithm's performance, but unless you have evidence that it's slow, you're wasting time doing micro-optimizations for little gain.
 
@@ -82,7 +87,9 @@ I blame this on the fact that the code prioritizes brevity over clarity. It trie
 
 Moreover, premature optimization can actually present *more* performance issues. Every additional line of code you write incurs a cost—whether that's wrapping a function component's closure in a `useCallback` when you don't need to or memoizing a component with `React.memo`. You have to be able to justify *why* you're optimizing your code.
 
-{% include quote.html quote: "Performance optimizations ALWAYS come with a cost but do NOT always come with a benefit.", source: "Kent C. Dodds", cite: "https://kentcdodds.com/blog/usememo-and-usecallback" %}
+{% quote "Kent C. Dodds", "https://kentcdodds.com/blog/usememo-and-usecallback" %}
+  Performance optimizations ALWAYS come with a cost but do NOT always come with a benefit.
+{% endquote %}
 
 There's a harmful trend in our industry where developers try to cram every ounce of performance out of all the code that they write, citing algorithm theory and Big-O notation to justify their decisions. In all of this, they lose sight of the most important short-term concern: Writing code that works and that other people will understand.
 
@@ -373,7 +380,9 @@ So the second code sample technically "wins" in terms of Big-O analysis, but it'
 
 We can fix the first code sample by avoiding the spread operator altogether. There's no need to avoid mutation when the object you're mutating is a temporary one that you constructed during runtime to solve an algorithm. It's not as if you run the risk of mutating some external data source, potentially tampering with data. So there's no good reason to avoid mutation here.
 
-{% include quote.html quote: 'Misuse of reduce and "avoid mutation at all costs" seems to come as a pair.' source: "@jaffathecake", cite: "https://twitter.com/jaffathecake/status/1396706523192115203" %}
+{% quote "@jaffathecake", "https://twitter.com/jaffathecake/status/1396706523192115203" %}
+  Misuse of reduce and "avoid mutation at all costs" seems to come as a pair.
+{% endquote %}
 
 So while it's poison to functional purists, we could easily do this instead:
 

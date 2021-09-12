@@ -1,6 +1,6 @@
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const syntaxHighlightConfig = require('./config/plugins/syntaxHighlighter');
-const { asideShortcode, imageShortcode, iconShortcode, socialIconShortcode } = require('./config/shortcodes');
+const { asideShortcode, imageShortcode, iconShortcode, socialIconShortcode, quoteShortcode } = require('./config/shortcodes');
 const {
   wordCount,
   limit,
@@ -37,6 +37,7 @@ module.exports = (eleventyConfig) => {
 
   // Custom shortcodes
   eleventyConfig.addPairedShortcode('aside', asideShortcode);
+  eleventyConfig.addPairedShortcode('quote', quoteShortcode);
   eleventyConfig.addShortcode('image', imageShortcode);
   eleventyConfig.addShortcode('icon', iconShortcode);
   eleventyConfig.addShortcode('socialIcon', socialIconShortcode);
