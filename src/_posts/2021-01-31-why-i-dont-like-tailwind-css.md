@@ -247,7 +247,7 @@ If you use Tailwind, you're stuck with it, unless you convert all of that CSS to
 ### 4. Tailwind Is Bloated
 
 {% aside %}
-  **Note**: I'm wrong here. I should have done more research into Tailwind to understand that it is in fact *not* as slow as I originally thought.
+  **Note**: I'm wrong here. I should have done more research into Tailwind to understand that it is in fact *not* as slow as I originally thought. Below is an edited version.
 {% endaside %}
 
 Tailwind uses [PurgeCSS](https://purgecss.com/), which removes any unused styles from your compiled stylesheet. The Tailwind docs note the following:
