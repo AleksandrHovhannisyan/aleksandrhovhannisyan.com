@@ -43,11 +43,9 @@
 }
 
 @mixin font-size($size) {
-  // expose CSS var to later compute other things, e.g., spacing, line clamp
-  --font-size: var(--fs-#{$size});
+  // expose CSS var to later compute other things, e.g., spacing
   --line-height: var(--lh-#{$size});
-
-  font-size: var(--font-size);
+  font-size: var(--fs-#{$size});
   line-height: var(--line-height);
   letter-spacing: var(--ls-#{$size});
 }
