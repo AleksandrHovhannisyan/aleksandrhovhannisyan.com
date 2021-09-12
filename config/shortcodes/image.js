@@ -46,11 +46,15 @@ const imageShortcode = async (relativeSrc, props) => {
   });
 
   // Map each unique format (e.g., jpeg, webp) to its smallest and largest images
-  const formatSizes = Object.keys(imageMetadata).reduce((formatSizes, uniqueFormat) => {
-    if (!formatSizes[uniqueFormat]) {
-      formatSizes[uniqueFormat] = {
-        smallest: imageMetadata[uniqueFormat][0],
-        largest: imageMetadata[uniqueFormat][imageMetadata[uniqueFormat].length - 1],
+  const formatSizes = Object.entries(imageMetadata).reduce((formatSizes, [format, images]) => {
+    if (!formatSizes[format]) {
+      // These will always exist
+      const placeholder = images.find((image) => image.width === ImageWidths.PLACEHOLDER);
+      const largestVariant = images[images.length - 1];
+
+      formatSizes[format] = {
+        placeholder,
+        largest: largestVariant,
       };
     }
     return formatSizes;
@@ -66,7 +70,7 @@ const imageShortcode = async (relativeSrc, props) => {
       // The first entry is representative of all the others since they each have the same shape
       const { format: formatName, sourceType } = formatEntries[0];
 
-      const placeholderSrcset = formatSizes[formatName].smallest.url;
+      const placeholderSrcset = formatSizes[formatName].placeholder.url;
       const actualSrcset = formatEntries
         // We don't need the placeholder image in the srcset
         .filter((image) => image.width !== ImageWidths.PLACEHOLDER)
@@ -78,7 +82,7 @@ const imageShortcode = async (relativeSrc, props) => {
     })
     .join('\n')}
     <img
-      src="${formatSizes[baseFormat].smallest.url}"
+      src="${formatSizes[baseFormat].placeholder.url}"
       data-src="${formatSizes[baseFormat].largest.url}"
       width="${width}"
       height="${height}"
