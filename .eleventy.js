@@ -1,8 +1,6 @@
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const syntaxHighlightConfig = require('./config/plugins/syntaxHighlighter');
-const imageShortcode = require('./config/shortcodes/image');
-const iconShortcode = require('./config/shortcodes/icon');
-const socialIconShortcode = require('./config/shortcodes/socialIcon');
+const { imageShortcode, iconShortcode, socialIconShortcode } = require('./config/shortcodes');
 const {
   wordCount,
   limit,

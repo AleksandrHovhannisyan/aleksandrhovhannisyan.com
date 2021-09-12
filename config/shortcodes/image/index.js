@@ -3,7 +3,7 @@ const { default: classNames } = require('classnames');
 const { outdent } = require('outdent');
 const path = require('path');
 const { escape } = require('lodash');
-const { dir } = require('../constants');
+const { dir } = require('../../constants');
 
 const ImageWidths = {
   /** The original (source) image width. */
