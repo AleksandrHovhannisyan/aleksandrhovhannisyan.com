@@ -192,9 +192,11 @@ Cookies are important. But *certain kinds of cookies* pose a privacy concern for
 
 Advertising cookies are used by [ad networks](https://marketing.toolbox.com/articles/what-is-an-ad-network-definition-types-and-examples) like Google AdSense to show you personalized content, as well as to share your information with advertisers within the network to collect usage data and analytics. A website is considered to be part of an ad network like Google AdSense if it's paying that network to show ads on its behalf.
 
-This quote from [Google's policy on advertising](https://policies.google.com/technologies/types?hl=en-US) is particularly enlightening about how Google AdSense stores its cookies:
+This quote from Google's policy on advertising is particularly enlightening about how Google AdSense stores its cookies:
 
-> We also use one or more cookies for advertising we serve across the web. One of the main advertising cookies on non-Google sites is named ‘IDE‘ and is stored in browsers under the domain `doubleclick.net`.
+{% quote "Types of Cookies Used by Google", "https://policies.google.com/technologies/types?hl=en-US" %}
+  We also use one or more cookies for advertising we serve across the web. One of the main advertising cookies on non-Google sites is named ‘IDE‘ and is stored in browsers under the domain `doubleclick.net`.
+{% endquote %}
 
 Here's a breakdown of how advertising cookies work:
 

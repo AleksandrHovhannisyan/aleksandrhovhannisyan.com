@@ -17,9 +17,11 @@ Here are just a few of the accessibility failures that you'll want to look out f
 
 ## 1. Color Is Used to Convey Meaning
 
-Up until a few months ago, I was guilty of relying on color alone to distinguish my links from the rest of my text. But this is not accessible to people with color blindness and fails [WCAG criterion 1.4.1](https://www.w3.org/TR/WCAG20-TECHS/F73.html):
+Up until a few months ago, I was guilty of relying on color alone to distinguish my links from the rest of my text. But this is not accessible to people with color blindness:
 
-> Color is not used as the only visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element.
+{% quote "WCAG criterion 1.4.1", "https://www.w3.org/TR/WCAG20-TECHS/F73.html" %}
+  Color is not used as the only visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element.
+{% endquote %}
 
 [Some designers insist that link underlines are ugly](https://css-tricks.com/styling-links-with-real-underlines/). But of course, this assumes that your users will be able to distinguish links from their surrounding text *without* some sort of visual indicator like an underline.
 

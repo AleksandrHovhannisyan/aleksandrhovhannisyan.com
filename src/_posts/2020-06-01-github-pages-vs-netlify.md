@@ -63,13 +63,17 @@ Netlify builds my site in just 1–2 minutes, on average:
 
 {% include img.html src: "faster-deploys.png", alt: "A list of recent deployments in my Netlify dashboard, along with the time it took each one to deploy from start to finish." %}
 
-Back when I was hosting my site on GitHub Pages, things were much slower, and I'd sometimes have to do a hard refresh to see any updates on prod. GitHub's own documentation notes that you may have to [wait up to 20 minutes](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/about-jekyll-build-errors-for-github-pages-sites) to see your changes go live:
+Back when I was hosting my site on GitHub Pages, things were much slower, and I'd sometimes have to do a hard refresh to see any updates on prod. GitHub's own documentation notes that you may have to wait up to 20 minutes to see your changes go live:
 
-> It can take up to 20 minutes for changes to your site to publish after you push the changes to GitHub.
+{% quote "GitHub Docs" "https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/about-jekyll-build-errors-for-github-pages-sites" %}
+  It can take up to 20 minutes for changes to your site to publish after you push the changes to GitHub.
+{% endquote %}
 
-Unfortunately, GitHub Pages also caps you at **only 10 builds per hour**. So if you're frequently pushing to your deployment branch (which you probably shouldn't be doing anyway), [you may run into trouble](https://help.github.com/en/github/working-with-github-pages/about-github-pages#guidelines-for-using-github-pages):
+Unfortunately, GitHub Pages also caps you at **only 10 builds per hour**. So if you're frequently pushing to your deployment branch (which you probably shouldn't be doing anyway), you may run into trouble:
 
-> If your site exceeds these usage quotas, we may not be able to serve your site, or you may receive a polite email from GitHub Support or GitHub Premium Support suggesting strategies for reducing your site's impact on our servers, including putting a third-party content distribution network (CDN) in front of your site, making use of other GitHub features such as releases, or moving to a different hosting service that might better fit your needs.
+{% quote "GitHub Docs", "https://help.github.com/en/github/working-with-github-pages/about-github-pages#guidelines-for-using-github-pages" %}
+  If your site exceeds these usage quotas, we may not be able to serve your site, or you may receive a polite email from GitHub Support or GitHub Premium Support suggesting strategies for reducing your site's impact on our servers, including putting a third-party content distribution network (CDN) in front of your site, making use of other GitHub features such as releases, or moving to a different hosting service that might better fit your needs.
+{% endquote %}
 
 Netlify has a much more generous soft cap of **3 builds per minute**. You also get **300 build minutes per month** and **100 GB data usage** with its free tier, which is more than enough for most needs.
 

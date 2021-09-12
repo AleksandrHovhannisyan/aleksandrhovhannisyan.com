@@ -1684,7 +1684,9 @@ If you absolutely need to use a plugin for a feature on your Jekyll website, the
 
 Understandably, this may not be ideal if you want people (e.g., recruiters or other developers) to see your site's source and how you organized your project. So sometimes, you may need to reinvent the wheel to add a new feature to your site.
 
-> This is one of the many reasons why I now [host my site on Netlify instead of GitHub Pages](/blog/github-pages-vs-netlify/). Netlify has no restrictions on Jekyll plugins, so you can use any that you want.
+{% aside %}
+  This is one of the many reasons why I now [host my site on Netlify instead of GitHub Pages](/blog/github-pages-vs-netlify/). Netlify has no restrictions on Jekyll plugins, so you can use any that you want.
+{% endaside %}
 
 You can learn more about this issue and its workarounds in [this StackOverflow thread](https://stackoverflow.com/a/31871892/5323344).
 

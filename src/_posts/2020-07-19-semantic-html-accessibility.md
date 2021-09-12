@@ -223,9 +223,11 @@ You may have heard the term "ARIA" used in the context of HTML, but what exactly
 
 As defined by the W3 Consortium, ARIA stands for **Accessible Rich Internet Applications**. It's a set of built-in HTML attributes that developers can use to provide a better user experience to people using assistive technologies like screen readers.
 
-However, as I mentioned before, just because you can do something doesn't mean that you should (or that it's okay to abuse it). The following are W3's [guidelines on ARIA](https://www.w3.org/TR/html-aria/):
+However, as I mentioned before, just because you can do something doesn't mean that you should (or that it's okay to abuse it). The following are W3's guidelines on ARIA attributes:
 
-> Web developers MAY use the ARIA role and aria- attributes on HTML elements, in accordance with the requirements described in [wai-aria-1.1](https://www.w3.org/TR/html-aria/#bib-wai-aria-1.1), except where these conflict with the strong native semantics or are equal to the implicit ARIA semantics of a given HTML element. These constraints are intended to prevent developers from making assistive technology products report nonsensical user interface (UI) information that does not represent the actual UI of the document.
+{% quote "ARIA in HTML, W3", "https://www.w3.org/TR/html-aria/" %}
+  Web developers MAY use the ARIA role and aria- attributes on HTML elements, in accordance with the requirements described in [wai-aria-1.1](https://www.w3.org/TR/html-aria/#bib-wai-aria-1.1), except where these conflict with the strong native semantics or are equal to the implicit ARIA semantics of a given HTML element. These constraints are intended to prevent developers from making assistive technology products report nonsensical user interface (UI) information that does not represent the actual UI of the document.
+{% endquote %}
 
 Here, "strong native semantics" refers to the fact that semantic HTML elements have intrinsic ARIA roles. You can explore these in the [MDN Web Docs](https://developer.mozilla.org/en-US/) for a particular element. For example, the `<ol>` tag has an implicit ARIA role of `list`:
 

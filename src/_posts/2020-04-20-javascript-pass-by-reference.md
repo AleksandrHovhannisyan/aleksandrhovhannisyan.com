@@ -51,9 +51,7 @@ With that out of the way, let's get into the meat of this post.
 
 ## JavaScript Doesn't Pass by Reference
 
-If there's one thing you should take away from this post, it's this:
-
-> Passing **a reference** into a function is not the same as passing an argument **by reference**.
+If there's one thing you should take away from this post, it's this: Passing **a reference** into a function is not the same as passing an argument **by reference**.
 
 This muddied terminology is the main source of confusion in understanding pass by value vs. pass by reference in JavaScript and other languages. It's something that trips up lots of developers.
 
@@ -243,9 +241,7 @@ With this background, we're ready to understand why pass by reference does not e
 
 We've learned what references really are: *aliases*. And as it turns out, this is precisely the kind of reference that we're talking about when we say a language has "pass by reference." It's all about aliasing arguments that were passed in!
 
-First, let's understand what pass by reference does *not* mean:
-
-> Pass by reference does *not* mean, "We can pass in an object to a function, modify that object, and then observe the modified result even after the function returns."
+First, let's understand what pass by reference does *not* mean: Pass by reference does *not* mean, "We can pass in an object to a function, modify that object, and then observe the modified result even after the function returns."
 
 In **pass by reference**, the formal parameter is a reference variable (alias) for the argument. It's almost like two functions have temporarily agreed to call a single object by two names (one original and one alias) and to pretend that the two are equivalent. Or, in less accurate terms, you can think of it like a function "borrowing" a variable from another stack frame but calling it something else.
 

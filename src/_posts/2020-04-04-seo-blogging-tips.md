@@ -71,7 +71,9 @@ A good first step is to use Google itself and enter a few phrases that you would
 
 Your next best bet is to use either a free or paid keyword research tool to glean keyword volume and cost-per-click (CPC) data as a rough estimate of a keyword's value and competitiveness.
 
-> CPC is the average amount of money that marketers pay to rank their content for a particular keyword via Google Ads. The higher the CPC for a keyword, the more likely it is that it's viewed as a valuable source of traffic among your competitors.
+{% aside %}
+  CPC is the average amount of money that marketers pay to rank their content for a particular keyword via Google Ads. The higher the CPC for a keyword, the more likely it is that it's viewed as a valuable source of traffic among your competitors.
+{% endaside %}
 
 Back when it was free, [Keywords Everywhere](https://keywordseverywhere.com/) did wonders for me and was an excellent source of keyword data. Unfortunately, it's now a paid-only tool.
 

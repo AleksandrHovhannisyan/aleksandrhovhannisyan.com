@@ -305,7 +305,7 @@ While at first this may seem like a pretty difficult task, it's actually **very 
 
 Let's do a bit of a thought exercise:
 
-> In the hexadecimal number system, we have <code>16</code> digits from <code>0</code> to <code>15</code>. Over in binary land, how many bits do we need to represent these <code>16</code> values?
+In the hexadecimal number system, we have <code>16</code> digits from <code>0</code> to <code>15</code>. Over in binary land, how many bits do we need to represent these <code>16</code> values?
 
 The answer is four because <code>2<sup>4</sup> = 16</code>. With four "buckets," we can create the numbers zero (<code>0000</code>), one (<code>0001</code>), ten (<code>1010</code>), all the way up to fifteeen (<code>1111</code>).
 

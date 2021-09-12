@@ -64,8 +64,6 @@ Big brands get most of their traffic through brand recognition and popularity, n
 
 [Quality content](https://www.crazyegg.com/blog/what-is-high-quality-content/#:~:text=So%20quality%20content%20is%20anything%20that%20Google%20decides%20is%20worth%20sharing.&text=It's%20content%20that%20people%20want,or%20around%20the%20water%20cooler.) is the more subjective measure. First, note that "content" usually refers to a company blog where you share knowledge and insights related to your industry, but it could also refer to other types of media (like a YouTube channel). The goal is to publish content that addresses the needs of your audience, giving them precisely the information they were searching for.
 
-> "It’s real answers to real people’s questions." —Crazy Egg
-
 Take Ahrefs and Moz, for example. They both offer software, e-books, tutorials, guides, and much more to help marketers and even laypeople understand SEO. Sure, their sites may not be the fastest around, but their content is credible and informative. In Google's eyes, that matters much more than seeing pretty green colors on a Lighthouse report.
 
 When you think about it, this makes sense. After all, you could have the fastest website on the internet while spamming low-quality content, and you likely would not rank well on Google. So clearly, **page load speed isn't everything**.
@@ -78,9 +76,12 @@ To answer this very question (among many others), the online marketing blog Back
 
 How is this possible? After all, tons of online resources on SEO and marketing have repeated the same adage time and time again: faster websites tend to rank better on Google. But perhaps the importance of page load speed has been exaggerated.
 
-Here's a quote from Google's [official announcement of the so-called Speed Update](https://webmasters.googleblog.com/2018/01/using-page-speed-in-mobile-search.html) in early 2018:
+Here's a quote from Google's official announcement of the so-called Speed Update in early 2018:
 
-> The “Speed Update,” as we’re calling it, will **only affect pages that deliver the slowest experience to users** and will only affect a small percentage of queries. It applies the same standard to all pages, regardless of the technology used to build the page. The intent of the search query is still a very strong signal, so **a slow page may still rank highly if it has great, relevant content**.
+{% quote "Using page speed in mobile search ranking", "https://developers.google.com/search/blog/2018/01/using-page-speed-in-mobile-search" %}
+  The “Speed Update,” as we’re calling it, will **only affect pages that deliver the slowest experience to users** and will only affect a small percentage of queries. It applies the same standard to all pages, regardless of the technology used to build the page. The intent of the search query is still a very strong signal, so **a slow page may still rank highly if it has great, relevant content**.
+{% endquote %}
+
 
 Translation? Focus on producing high-quality and relevant content that matches your users' [search intent](https://ahrefs.com/blog/search-intent/) instead of obsessing over web performance (unless your site is terribly slow). Your page load speed will still be important, but other factors—like content quality and relevance—will outweigh it. Google goes on to emphasize that page load speed is just a rough heuristic that measures a website's **user experience**:
 

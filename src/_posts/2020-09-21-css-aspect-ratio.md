@@ -318,17 +318,24 @@ Another reason is that this CSS trick allows us to define responsive aspect rati
 
 We learned that percentage padding for an element is relative to the width of its containing block. But what happens if the element in question is a flex item or grid item, like with the grid examples we looked at earlier? In that case, is the containing block the grid itself?
 
-The simple answer is no. And the key to understanding this is to learn about **block formatting contexts** (BFCs). From the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Intro_to_formatting_contexts):
+The simple answer is no. And the key to understanding this is to learn about **block formatting contexts** (BFCs):
 
-> Everything on a page is part of a formatting context, or an area which has been defined to lay out content in a particular way. A block formatting context (BFC) will lay child elements out according to block layout rules, a flex formatting context will lay its children out as flex items, etc. Each formatting context has specific rules about how layout behaves when in that context.
+{% quote "Introduction to formatting contexts, MDN", "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Intro_to_formatting_contexts" %}
+  Everything on a page is part of a formatting context, or an area which has been defined to lay out content in a particular way. A block formatting context (BFC) will lay child elements out according to block layout rules, a flex formatting context will lay its children out as flex items, etc. Each formatting context has specific rules about how layout behaves when in that context.
+{% endquote %}
 
-In its documentation on [identifying the containing block](https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#Identifying_the_containing_block), MDN notes that flex items and grid items create their own block formatting context, separate from the flex/grid container:
 
-> If the position property is static, relative, or sticky, the containing block is formed by the edge of the content box of the nearest ancestor element that is either a block container (such as an inline-block, block, or list-item element) or establishes a formatting context (such as a table container, flex container, grid container, or the block container itself).
+MDN notes that flex items and grid items create their own block formatting context, separate from the flex/grid container:
 
-[And the W3 specs back this up](https://www.w3.org/TR/css-flexbox-1/#flex-items):
+{% quote "Identifying the containing block, MDN", "https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#identifying_the_containing_block" %}
+  If the position property is static, relative, or sticky, the containing block is formed by the edge of the content box of the nearest ancestor element that is either a block container (such as an inline-block, block, or list-item element) or establishes a formatting context (such as a table container, flex container, grid container, or the block container itself).
+{% endquote %}
 
-> A flex item establishes an independent formatting context for its contents. However, flex items themselves are flex-level boxes, not block-level boxes: they participate in their container’s flex formatting context, not in a block formatting context.
+And the W3 specs back this up:
+
+{% quote "CSS Flexible Box Layout Module Level 1, W3" "https://www.w3.org/TR/css-flexbox-1/#flex-items" %}
+  A flex item establishes an independent formatting context for its contents. However, flex items themselves are flex-level boxes, not block-level boxes: they participate in their container’s flex formatting context, not in a block formatting context.
+{% endquote %}
 
 Thus, for flex and grid items, you can think of the containing block as an invisible content region that wraps the items. This formatting context is very easy to identify in your dev tools, appearing as a dotted outline around each flex or grid item:
 
@@ -384,9 +391,11 @@ With vertical layouts, paragraphs appear sideways—you'll have to tilt your hea
 
 {% include figure.html src: "vertical-mode.png", alt: "A vertical writing mode, with text flowing horizontally. The horizontal axis is labeled as the block direction, whereas the vertical axis is now labeled as the inline direction. Text is rendered sideways.", caption: "Vertical writing mode." %}
 
-Here's the important point: if we switch over to a vertical writing mode, and we use percentage values for padding or margin, these percentages will actually be defined relative to the *containing block's height*, not its width! This comes straight from the [CSS3 specs](https://www.w3.org/TR/css-writing-modes-3/#dimension-mapping):
+Here's the important point: if we switch over to a vertical writing mode, and we use percentage values for padding or margin, these percentages will actually be defined relative to the *containing block's height*, not its width! This comes straight from the CSS specs:
 
-> As a corollary, percentages on the margin and padding properties, which are always calculated with respect to the containing block width in CSS2.1, are calculated with respect to the inline size of the containing block in CSS3.
+{% quote "Line-relative Directions, W3", "https://www.w3.org/TR/css-writing-modes-3/#dimension-mapping" %}
+  As a corollary, percentages on the margin and padding properties, which are always calculated with respect to the containing block width in CSS2.1, are calculated with respect to the inline size of the containing block in CSS3.
+{% endquote %}
 
 Here, **inline size** is defined as follows:
 

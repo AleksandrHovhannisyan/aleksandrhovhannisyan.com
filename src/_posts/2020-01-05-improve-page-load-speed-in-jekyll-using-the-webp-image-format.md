@@ -11,9 +11,11 @@ Run the blog posts on my site through Google's [PageSpeed Insights](https://deve
 
 Why does that matter? Because speed is an important factor to consider alongside SEO to improve your site's ranking. Google considers page load speed when determining whether your site provides a positive experience for new and returning visitors. If your site is using too much data—by loading expensive images, iframes, or scripts—your page will load slowly, and users will be more likely to ditch your site in favor of one that doesn't slow them to a crawl.
 
-It's only when I began running my posts through the former tool, PageSpeed Insights, that I discovered a useful optimization: [using the WebP image format](https://developers.google.com/speed/webp). Here's how Google describes WebP:
+It's only when I began running my posts through the former tool, PageSpeed Insights, that I discovered a useful optimization: using the WebP image format. Here's how Google describes WebP:
 
-> WebP is a modern image format that provides superior lossless and lossy compression for images on the web. Using WebP, webmasters and web developers can create smaller, richer images that make the web faster.
+{% quote "An image format for the Web, Google", "https://developers.google.com/speed/webp" %}
+  WebP is a modern image format that provides superior lossless and lossy compression for images on the web. Using WebP, webmasters and web developers can create smaller, richer images that make the web faster.
+{% endquote %}
 
 Google even provides a useful command-line tool, `cwebp`, that allows you to convert images from other formats—like PNG, JPEG, and so on—to WebP. In this post, we'll consider Jekyll specifically and take a look at how you can improve your page load speed by using the WebP image format with just a single include.
 

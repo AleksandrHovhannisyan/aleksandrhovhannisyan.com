@@ -24,9 +24,11 @@ Two of the best ways to optimize images for the web are by using the WebP image 
 
 ## The WebP Image Format
 
-Certain image formats require less storage space than others, trading some image quality in return for significant performance gains. The most notable and widely supported of these is the **WebP image format**. It was developed by Google and is [described as follows](https://developers.google.com/speed/webp):
+Certain image formats require less storage space than others, trading some image quality in return for significant performance gains. The most notable and widely supported of these is the **WebP image format**. It was developed by Google and is described as follows:
 
-> WebP is a modern image format that provides **superior lossless and lossy compression** for images on the web.
+{% quote "An image format for the Web, Google", "https://developers.google.com/speed/webp" %}
+  WebP is a modern image format that provides superior lossless and lossy compression for images on the web.
+{% endquote %}
 
 You can learn more about [how WebP works](https://developers.google.com/speed/webp#how_webp_works) if you're curious, but suffice it to say that it provides nearly the same quality of images as PNG and JPEG while requiring **25–34% less space**.
 

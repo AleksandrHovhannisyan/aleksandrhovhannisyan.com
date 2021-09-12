@@ -44,8 +44,6 @@ I'll answer all of those questions in this article.
 
 The message above mentioned something called "CLS"—what's up with that?
 
-> "Set an explicit width and height on image elements to reduce layout shifts and improve CLS."
-
 CLS stands for **cumulative layout shift**, one of many metrics that Lighthouse considers in a typical audit. As its name implies, a layout shift occurs when elements jump around as a page is loading.
 
 The "cumulative" part of CLS means that Lighthouse considers layout shifts in the aggregate—many different things can cause layout shifts, and those are factored into a final CLS score. In this article, we'll focus on a specific source of layout shifts: images that don't have a width and height.

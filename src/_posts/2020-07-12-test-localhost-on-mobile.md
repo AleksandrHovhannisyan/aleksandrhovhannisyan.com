@@ -20,7 +20,7 @@ Fortunately, testing localhost on mobile the *proper* way is actually really eas
 
 ## Getting Started with ngrok
 
-We'll use an open-source tool known as [ngrok](https://ngrok.com/). In a nutshell, ngrok generates secure public URLs for localhost endpoints, allowing you to test localhost on mobile with ease. Here's [their description](https://ngrok.com/product#:~:text=You%20download%20and%20run%20a,the%20local%20address%20you%20specified.) of how the process works at a high level:
+We'll use an open-source tool called [ngrok](https://ngrok.com/). In a nutshell, ngrok generates secure public URLs for localhost endpoints, allowing you to test localhost on mobile with ease. Here's their high-level description of how the process works:
 
 > It connects to the ngrok cloud service which accepts traffic on a public address and relays that traffic through to the ngrok process running on your machine and then on to the local address you specified.
 

@@ -9,7 +9,7 @@ isPopular: true
 ---
 
 {% aside %}
-  **Update** ({%- include date.html date: "2021-03-12" -%}): Based on feedback, I've updated this post to clarify some points and to offer a more balanced perspective. This isn't a hill I'd die on; at the end of the day, what matters is that you're productive writing CSS. If that means using Tailwind, nobody's stopping you. Below are just some reasons why *I* don't enjoy using it.
+  Based on feedback, I've updated this post to clarify some points and to offer a more balanced perspective. This isn't a hill I'd die on; at the end of the day, what matters is that you're productive writing CSS. If that means using Tailwind, nobody's stopping you. Below are just some reasons why *I* don't enjoy using it.
 {% endaside %}
 
 You're at a restaurant, and there's an odd item on the menu that you've never heard of before, but it piques your interest. It sounds like it might be worth a try, though you're not sure.
@@ -246,11 +246,15 @@ If you use Tailwind, you're stuck with it, unless you convert all of that CSS to
 
 ### 4. Tailwind Is Bloated
 
-**Edit** ({%- include date.html date: "2021-03-12" -%}): I'm wrong here. I should have done more research into Tailwind to understand that it is in fact *not* as slow as I originally thought. I've kept the original writing below for transparency.
+{% aside %}
+  **Note**: I'm wrong here. I should have done more research into Tailwind to understand that it is in fact *not* as slow as I originally thought.
+{% endaside %}
 
-Tailwind uses [PurgeCSS](https://purgecss.com/), which removes any unused styles from your compiled stylesheet. The Tailwind docs [note the following](https://tailwindcss.com/docs/optimizing-for-production):
+Tailwind uses [PurgeCSS](https://purgecss.com/), which removes any unused styles from your compiled stylesheet. The Tailwind docs note the following:
 
-> When removing unused styles with Tailwind, it's very hard to end up with more than 10kb of compressed CSS.
+{% quote "Optimizing for Production, Tailwind", "https://tailwindcss.com/docs/optimizing-for-production" %}
+  When removing unused styles with Tailwind, it's very hard to end up with more than 10kb of compressed CSS.
+{% endquote %}
 
 This is true for sites that don't need too many styles (e.g., blogs). You can browse some of the [popular sites built with Tailwind](https://builtwithtailwind.com/popular) and inspect their Network requests to get a sense for how large a typical Tailwind stylesheet may be. Here are some examples (these may change in the future):
 
@@ -264,18 +268,6 @@ You can see that sites range quite a bit from the very low end to somewhere arou
 I do want to note that even if your CSS ends up being smaller with Tailwind, the network request for your HTML will probably be larger than if you had used BEM. It's not like things disappear into nowhere, after all—you've shifted the weight to your HTML, where class names are repeated several times, just like `property: value` pairs are repeated in a typical CSS stylesheet written without Tailwind.
 
 But at the end of the day, you shouldn't worry about optimizing your CSS if your numbers are somewhere in this range. You can improve your site's performance in more impactful ways, like optimizing your images and font loading.
-
-**Original**:
-
-Utility CSS is inherently broken and bloated. Why? Because every new class name that you introduce could have potentially hundreds of property-value combinations, and that translates to more compiled CSS—which, of course, means a larger network request, and potentially slower performance.
-
-Look no further than pseudo-class selectors like `:hover`, `:focus`, `:active`, and `:focus-within` to see why this is such a big deal. In fact, it's a problem that Tailwind is aware of:
-
-{% quote "Pseudo-Class Variants, Tailwind", "https://v1.tailwindcss.com/docs/pseudo-class-variants" %}
-  Not all pseudo-class variants are enabled for all utilities by default due to file-size considerations, but we've tried our best to enable the most commonly used combinations out of the box.
-{% endquote %}
-
-Translation: Tailwind is a costly abstraction, and its creators have tried their very best to hide this fact from you.
 
 ### 5. Tailwind Is an Unnecessary Abstraction
 
@@ -305,9 +297,9 @@ In his article on utility classes and semantic CSS, Adam only begins to explore 
 
 But this really isn't any better than writing CSS directly, and it's no more maintainable than directly applying inline styles. Instead of repeating styles in your CSS, **you're now repeating them in your HTML** through class names. In fact, you're likely repeating yourself three, four, possibly *many more* times now because you can't chain selectors or take advantage of new CSS selectors like `:is` or `:where`.
 
-<hr>
-
-**Edit** ({%- include date.html date: "2021-03-12" -%}): I still stand by my original points here, but I'd like to note that Tailwind has a very strong appeal for one key reason: It reduces a set of infinitely many property-value pairs to a strict set of finite design tokens to keep you in check so that you're not plucking arbitrary values out of thin air. This is always a good thing. However, consider whether you really need Tailwind. Vanilla CSS (and CSS preprocessors) already offer variables (in CSS land, we call them custom properties). As long as you create your own design tokens/theme variables, you shouldn't ever run into this issue. In fact, this is how Tailwind operates under the hood.
+{% aside %}
+  **Edit**: I still stand by my original points here, but I'd like to note that Tailwind has a very strong appeal for one key reason: It reduces a set of infinitely many property-value pairs to a strict set of finite design tokens to keep you in check so that you're not plucking arbitrary values out of thin air. This is always a good thing. However, consider whether you really need Tailwind. Vanilla CSS (and CSS preprocessors) already offer variables (in CSS land, we call them custom properties). As long as you create your own design tokens/theme variables, you shouldn't ever run into this issue. In fact, this is how Tailwind operates under the hood.
+{% endaside %}
 
 ### 6. Semantics Is Important. Tailwind Forgoes It.
 
@@ -325,9 +317,9 @@ But I bring this up here because if you're using components, then you've likely 
 
 In short, Tailwind pretends to solve a problem that isn't really a problem in the first place.
 
-<hr>
-
-**Edit** ({%- include date.html date: "2021-03-12" -%}): Tailwind is not completely devoid of any semantics. It just has *its own kind* of semantics. However, I would argue that it's always better to be able to name your sub-components, even at the most atomic level. Naming things is hard, but my point is that this difficulty is not something to shy away from: It's a good thing. It forces you to think about what you're building and to give your markup semantics that is otherwise not there. That said, Semantic CSS does have its own drawbacks. If you don't have consistent naming standards, everyone on your team may come up with their own creative variation of BEM.
+{% aside %}
+  **Edit**: Tailwind is not completely devoid of any semantics. It just has *its own kind* of semantics. However, I would argue that it's always better to be able to name your sub-components, even at the most atomic level. Naming things is hard, but my point is that this difficulty is not something to shy away from: It's a good thing. It forces you to think about what you're building and to give your markup semantics that is otherwise not there. That said, Semantic CSS does have its own drawbacks. If you don't have consistent naming standards, everyone on your team may come up with their own creative variation of BEM.
+{% endaside %}
 
 ### 7. Tailwind Makes It Difficult to Tweak Styles in Dev Tools
 

@@ -65,7 +65,9 @@ Where do these fit into your day when all you do is crank out Leetcode problems?
 
 Perhaps the most glaring issue with the "Leetcode grind" mentality is the fact that **it only helps if you actually make it to the technical interview**. If you don't, what use is it to you? You're much better off figuring out why you're not making it to the technical interview in the first place.
 
-> In my case, the issue was a poorly developed resume. I highly encourage you to share yours with others and to get feedback so you can present your best self to employers.
+{% aside %}
+  In my case, the issue was a poorly developed resume. I highly encourage you to share yours with others and to get feedback so you can present your best self to employers.
+{% endaside %}
 
 Fortunately, not all companies use these types of problems to weed out applicants. In fact, in all of the interviews that I've done to date, I'd say that I've maybe had to do only one or two Leetcode-esque problems. The rest have been **practical interviews**:
 

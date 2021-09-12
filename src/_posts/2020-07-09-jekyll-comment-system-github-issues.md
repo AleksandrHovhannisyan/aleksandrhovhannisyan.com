@@ -238,7 +238,9 @@ const renderComments = (comments) => {
 }
 ```
 
-> Feel free to use a different CDN or serve these files locally if you'd like to.
+{% aside %}
+  Feel free to use a different CDN or serve these files locally if you'd like to.
+{% endaside %}
 
 When all of the individual promises resolve, we know that all of our scripts have successfully loaded, and `Promise.all` itself resolves. Thus, we can safely begin rendering our comments after that line. And that's the last thing that we need to do!
 
@@ -322,9 +324,11 @@ This line converts GitHub's markdown for a comment into HTML output:
 const body = DOMPurify.sanitize(marked(comment.body));
 ```
 
-We're sanitizing the output HTML per `marked`'s [README suggestion](https://github.com/markedjs/marked#warning--marked-does-not-sanitize-the-output-html-please-use-a-sanitize-library-like-dompurify-recommended-sanitize-html-or-insane-on-the-output-html-):
+We're sanitizing the output HTML per `marked`'s README suggestion:
 
-> Warning: 🚨 Marked does not sanitize the output HTML. Please use a sanitize library, like DOMPurify (recommended), sanitize-html or insane on the output HTML! 🚨
+{% aside "marked GitHub README", "https://github.com/markedjs/marked#warning--marked-does-not-sanitize-the-output-html-please-use-a-sanitize-library-like-dompurify-recommended-sanitize-html-or-insane-on-the-output-html-" %}
+  Warning: 🚨 Marked does not sanitize the output HTML. Please use a sanitize library, like DOMPurify (recommended), sanitize-html or insane on the output HTML! 🚨
+{% endaside %}
 
 Hopefully the rest of the code is self-explanatory. You can change any of these class names and remove any markup that you don't need for your purposes. For example, these lines are optional:
 
