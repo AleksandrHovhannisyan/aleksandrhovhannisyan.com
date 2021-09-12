@@ -65,7 +65,7 @@ Netlify builds my site in just 1–2 minutes, on average:
 
 Back when I was hosting my site on GitHub Pages, things were much slower, and I'd sometimes have to do a hard refresh to see any updates on prod. GitHub's own documentation notes that you may have to [wait up to 20 minutes](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/about-jekyll-build-errors-for-github-pages-sites) to see your changes go live:
 
-> *It can take up to 20 minutes for changes to your site to publish after you push the changes to GitHub.*
+> It can take up to 20 minutes for changes to your site to publish after you push the changes to GitHub.
 
 Unfortunately, GitHub Pages also caps you at **only 10 builds per hour**. So if you're frequently pushing to your deployment branch (which you probably shouldn't be doing anyway), [you may run into trouble](https://help.github.com/en/github/working-with-github-pages/about-github-pages#guidelines-for-using-github-pages):
 

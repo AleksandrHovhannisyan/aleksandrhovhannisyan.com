@@ -15,7 +15,7 @@ If you're not giving your images an explicit width and height, you may be hurtin
 
 If you've ever [run your site through Lighthouse](https://web.dev/measure/), then you've probably seen this message:
 
-> *"Set an explicit width and height on image elements to reduce layout shifts and improve CLS."*
+> "Set an explicit width and height on image elements to reduce layout shifts and improve CLS."
 
 {% include img.html src: "lighthouse.png", alt: "A Lighthouse audit for a website. An expanded panel has a summary that reads: 'Image elements do not have explicit width and height.' Below the panel, a more detailed description reads: 'Set an explicit width and height on image elements to reduce layout shifts and improve CLS.'" %}
 
@@ -44,7 +44,7 @@ I'll answer all of those questions in this article.
 
 The message above mentioned something called "CLS"—what's up with that?
 
-> *"Set an explicit width and height on image elements to reduce layout shifts and improve CLS."*
+> "Set an explicit width and height on image elements to reduce layout shifts and improve CLS."
 
 CLS stands for **cumulative layout shift**, one of many metrics that Lighthouse considers in a typical audit. As its name implies, a layout shift occurs when elements jump around as a page is loading.
 

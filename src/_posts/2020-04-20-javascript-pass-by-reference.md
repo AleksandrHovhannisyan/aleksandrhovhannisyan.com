@@ -12,7 +12,7 @@ No matter what programming language you end up working with, you will inevitably
 
 Specifically, you may have come across this explanation before:
 
-> *Primitives are passed by value; objects are passed by reference.*
+> Primitives are passed by value; objects are passed by reference.
 
 This certainly sounds simple enough to be true! Except it's not. JavaScript, like most programming languages, strictly uses pass by value and does not support pass by reference, even though it *does* have what we call "references" (object references).
 

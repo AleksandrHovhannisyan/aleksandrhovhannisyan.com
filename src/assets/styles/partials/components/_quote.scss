@@ -1,8 +1,5 @@
-.quote {
-  font-style: italic;
-}
-
 blockquote {
+  font-style: italic;
   border-inline-start: 0.4rem solid;
   margin-inline-start: clamped(1.2rem, 2.4rem);
   padding: 0.4rem clamped(2rem, 3.2rem);

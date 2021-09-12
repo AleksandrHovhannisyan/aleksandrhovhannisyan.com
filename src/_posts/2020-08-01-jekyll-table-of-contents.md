@@ -78,7 +78,9 @@ Basically, we've inserted a dummy `div` with no content and an ID. We'll point t
 
 One last thing: You typically don't want "skip to content" links like this to be visible on the page. Rather, what you want is for them to be visible but *out of sight* until they receive focus or are encountered by a screen reader.
 
-> **Note**: While you may be inclined to use `visibility: hidden` or `display: none`, these are not accessible options because most screen readers won't bother reading content that's not visible.
+{% aside %}
+  **Note**: While you may be inclined to use `visibility: hidden` or `display: none`, these are not accessible options because most screen readers won't bother reading content that's not visible.
+{% endaside %}
 
 So, here's the Sass that'll get the job done:
 

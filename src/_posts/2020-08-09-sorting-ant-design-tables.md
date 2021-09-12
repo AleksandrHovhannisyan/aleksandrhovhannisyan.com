@@ -205,7 +205,9 @@ Let's revisit our "consumer" component, where the table is being rendered. We'll
 import Table from 'components/Table'
 ```
 
-> **Note**: The import syntax may differ depending on how you've configured your project.
+{% aside %}
+  **Note**: The import syntax may differ depending on how you've configured your project.
+{% endaside %}
 
 We'll want to specify the sorting routine for every column that needs to be sorted. We'll do this by simply referencing the generic enum that we exported above:
 

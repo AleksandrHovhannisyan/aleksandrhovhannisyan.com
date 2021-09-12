@@ -29,7 +29,9 @@ Suppose we have this markup for an article:
 </article>
 ```
 
-> *That's [Khaled Ipsum](http://khaledipsum.com/), for all you Lorem Ipsum normies out there.*
+{% aside %}
+  That's [Khaled Ipsum](http://khaledipsum.com/), for all you Lorem Ipsum normies out there.
+{% endaside %}
 
 Nice and simple. Now, let's apply a line height to our body and some margins to those paragraphs to establish a vertical rhythm. Note that the choice of font size and line height is entirely dependent on the font. I recommend picking a `line-height` that gives you some multiple of your base spacing unit (I prefer to use a `4px` [linear scale](https://www.designsystems.com/space-grids-and-layouts/)). In this particular example, I'll go with a font size of `1.125rem = 18px` and a `line-height` of `1.33 = 24px`.
 

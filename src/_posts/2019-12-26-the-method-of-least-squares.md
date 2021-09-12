@@ -24,7 +24,9 @@ $$
 
 We have four equations and two unknowns. We could perform row reduction, but since we only have two unknowns in this case ($x_1$ and $x_2$), we can also solve by substitution.
 
-> At this point, you should be asking yourself: Which two pairs of equations should we use to solve for $x_1$ and $x_2$? Hang onto that thought—it's part of the issue of having more equations than unknowns. If we just had two equations and two unknowns, then we wouldn't run into this problem.
+{% aside %}
+  At this point, you should be asking yourself: Which two pairs of equations should we use to solve for $x_1$ and $x_2$? Hang onto that thought—it's part of the issue of having more equations than unknowns. If we just had two equations and two unknowns, then we wouldn't run into this problem.
+{% endaside %}
 
 Let's rewrite the first equation in terms of $x_1$:
 
@@ -101,7 +103,9 @@ $$
 
 This leads us to an important conclusion: An overdetermined system does not have a single, unique solution.
 
-> **Takeaway**: If $Ax = b$ is an overdetermined system, then $A$ is not an invertible matrix. Consequently, there's no unique solution $x = A^{-1}b$.
+{% aside %}
+  **Takeaway**: If $Ax = b$ is an overdetermined system, then $A$ is not an invertible matrix. Consequently, there's no unique solution $x = A^{-1}b$.
+{% endaside %}
 
 As a direct consequence of this, an overdetermined system can either have:
 
@@ -149,15 +153,21 @@ b_m
 
 $$
 
-> **Note**: Although this system looks rectangular because of my notation, keep in mind that $m>n$.
+{% aside %}
+  **Note**: Although this system looks rectangular because of my notation, keep in mind that $m>n$.
+{% endaside %}
 
 As we've seen, this system has no *unique* solution—either there's no solution whatsoever, or there are infinitely many solutions. From a *computational* standpoint, neither of those are simple problems to solve. We like working with rectangular systems, where $m = n$, because they are computationally simpler to solve (relatively speaking).
 
-> **Takeaway**: Overdetermined systems present a computationally difficult problem to solve because they have either infinitely many solutions or no solutions at all.
+{% aside %}
+  **Takeaway**: Overdetermined systems present a computationally difficult problem to solve because they have either infinitely many solutions or no solutions at all.
+{% endaside %}
 
 But we don't just throw up our arms in defeat if we're given an overdetermined system. Instead, we try to do our best—to find a value for $x$ such that no other $x$ will get us closer to approximating $b$. This is known as the **least squares solution** to $Ax = b$. It's not an *actual* solution like what we're used to. Rather, a least squares solution is about as close to a "real" solution as we can hope to get.
 
-> **Takeaway**: A least squares solution is an *approximate* solution to a system of equations for which a unique solution does not exist.
+{% aside %}
+  **Takeaway**: A least squares solution is an *approximate* solution to a system of equations for which a unique solution does not exist.
+{% endaside %}
 
 ## Least Squares Visualized
 
@@ -177,7 +187,9 @@ These points appear to follow a linear shape, but it's not possible to plot a st
 
 {% include img.html src: "best-fit.png", alt: "A best-fit line through the points we plotted." %}
 
-> Spoiler: The solution is $y = 0.59459459x + 1.2972973$.
+{% aside %}
+  **Spoiler**: The solution is $y = 0.59459459x + 1.2972973$.
+{% endaside %}
 
 We won't concern ourselves right now with how that equation was actually obtained. Let's just represent it in its most generic form:
 
@@ -222,7 +234,9 @@ $$
 
 This was really an overdetermined system, $A\theta = b$, disguised as a bunch of $(x, y)$ data pairs! We have more equations than unknowns. This alone tells us that there is no unique solution and that we must find a least squares solution instead.
 
-> Curious how I plotted the line for this particular problem? You'll learn more about [least squares curve fitting](/blog/least-squares-fitting) in the next post in this two-part series.
+{% aside %}
+  Curious how I plotted the line for this particular problem? You'll learn more about [least squares curve fitting](/blog/least-squares-fitting) in the next post in this two-part series.
+{% endaside %}
 
 Let's generalize this problem. We start with an $m \times n$ system:
 
@@ -324,7 +338,9 @@ $$
 A^TA\hat{x} = A^Tb
 $$
 
-> **Summary**: The $\hat{x}$ here is known as the **least squares solution** to the system $Ax = b$. It's the point of intersection between the plane $Ax$ and the orthogonal projection of $b$ onto that plane.
+{% aside %}
+  **Summary**: The $\hat{x}$ here is known as the **least squares solution** to the system $Ax = b$. It's the point of intersection between the plane $Ax$ and the orthogonal projection of $b$ onto that plane.
+{% endaside %}
 
 At this point, you may have two related questions:
 

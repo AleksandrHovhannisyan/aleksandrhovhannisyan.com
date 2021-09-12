@@ -23,7 +23,7 @@ Let's look at some ways you can drive more traffic to your site.
 
 At the end of the day, one of the best SEO blogging tips is a recommendation straight from Google itself: **Create high-quality content**. After all, what use is there in repeating what countless other people have already documented ad nauseam, or churning out low-quality posts for the sake of inflating your blog's apparent value?
 
-> *"Creating compelling and useful content will likely influence your website more than any of the other factors discussed here. Users know good content when they see it and will likely want to direct other users to it."* —[Search Engine Optimization (SEO) Starter Guide](https://support.google.com/webmasters/answer/7451184?hl=en)
+{% include quote.html quote: "Creating compelling and useful content will likely influence your website more than any of the other factors discussed here. Users know good content when they see it and will likely want to direct other users to it.", source: "Search Engine Optimization (SEO) Starter Guide", cite: "https://support.google.com/webmasters/answer/7451184?hl=en" %}
 
 Ask yourself this question as you're working on a blog post: If I came across this years ago as I was trying to learn more about X, how would I feel as a reader? Would I be frustrated that it simply regurgitates what millions of other blog posts have already failed to teach me? Or would I be thrilled to have finally found a comprehensive resource unlike others on the market?
 
@@ -214,7 +214,9 @@ Some of the best places to link back to your own content include StackExchange, 
 
 If you've written a blog post answering a question that doesn't seem to have many high-quality answers on Quora or StackExchange, you could post your own answer on an existing question that's attracted considerable traffic (e.g., in the thousands). If you provide an insightful answer, you may end up driving some traffic to your blog.
 
-> **Note**: If you're answering a question on StackOverflow, or any other forum where the quality of posts is moderated, be sure to include the full source code so your answer isn't flagged as incomplete. You could omit some details about how your solution works and link back to your blog post for anyone who wants to understand it better.
+{% aside %}
+  **Note**: If you're answering a question on StackOverflow, or any other forum where the quality of posts is moderated, be sure to include the full source code so your answer isn't flagged as incomplete. You could omit some details about how your solution works and link back to your blog post for anyone who wants to understand it better.
+{% endaside %}
 
 Another potential gold mine is **Reddit**, but you do have to be cautious when reposting your content in a sub. Redditors don't tend to appreciate overt self-advertisement, especially if you don't have a lot of karma. Your goal is to just be a nice guy (not the `/r/niceguys/` kind of nice) and help people. For example, if you spot a thread where a user is asking for advice or has encountered a problem that one of your blog posts happens to address, you can offer your perspective in the comments and link to that relevant post. This is more likely to be received well than if you were to simply create a standalone post promoting one of your articles, without any context. The idea here is to actually get involved in a sub and engage with people instead of merely trying to use them for your own gain.
 

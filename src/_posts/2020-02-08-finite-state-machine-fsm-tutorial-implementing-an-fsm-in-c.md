@@ -250,7 +250,9 @@ public:
 
 Since this is a **pure abstract class**, we cannot create an instance of it. The `LightState` interface allows us to take advantage of polymorphism so we can refer to a generic state without having to specify the true type of state that a `Light` is currently in.
 
-> **Note**: In practice, you would often take this a step further and create an abstract `EntityState` class that accepts a pointer to some generic `Entity` instance. `LightState` would extend `EntityState`, and `Light` would extend `Entity`.
+{% aside %}
+  **Note**: In practice, you would often take this a step further and create an abstract `EntityState` class that accepts a pointer to some generic `Entity` instance. `LightState` would extend `EntityState`, and `Light` would extend `Entity`.
+{% endaside %}
 
 ### 2. Concrete State Classes
 

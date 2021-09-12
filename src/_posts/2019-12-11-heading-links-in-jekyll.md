@@ -100,7 +100,9 @@ Simply use the following in your markdown to create a heading anchor in Jekyll:
 
 Short and sweet! And much more legible than copy-pasting a bunch of heading tags and anchors. Plus, you don't have to introduce any unnecessary dependencies, JavaScript, or gems to get this done.
 
-> **Note**: If instead you want to link the entire heading, simply move {% raw %}`{{ heading }}`{% endraw %} into the anchor itself.
+{% aside %}
+  **Note**: If instead you want to link the entire heading, simply move {% raw %}`{{ heading }}`{% endraw %} into the anchor itself.
+{% endaside %}
 
 If you're curious, here's how that works:
 

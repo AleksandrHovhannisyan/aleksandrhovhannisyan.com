@@ -588,9 +588,7 @@ In contrast, the wrapper component returns the result of actually rendering the 
 return <Component prop1={state} {...props} />;
 ```
 
-That's the [key distinction between higher-order components and wrapper components](https://stackoverflow.com/questions/36960675/difference-between-using-a-hoc-vs-component-wrapping#comment75670399_36970073):
-
-> HOCs are called with **component instances**, to which the HOC can inject props before the component is rendered. Container components are called with **the result of rendering a component instance**, not the component instance itself.
+That's the [key distinction between higher-order components and wrapper components](https://stackoverflow.com/questions/36960675/difference-between-using-a-hoc-vs-component-wrapping#comment75670399_36970073): HOCs are called with **component instances**, to which the HOC can inject props before the component is rendered. Container components are called with **the result of rendering a component instance**, not the component instance itself.
 
 Because of this, you can't compose wrapper components like you can higher-order components. The result of a wrapper component is a rendered component, not a reference to a component instance, so it's not nearly as flexible as the HOC pattern.
 
@@ -796,7 +794,7 @@ const ThemeToggle = (props) => {
 };
 ```
 
-One thing worth noting is that higher-order components are still relevant if your code base uses class components since they cannot utilize hooks. Sometimes, you may actually see a code base exporting both higher-order components and hooks to give developers the option of creating either class or function components.
+Note that higher-order components are still relevant if your code base uses class components since they cannot utilize hooks. Sometimes, you may actually see a code base exporting both higher-order components and hooks to give developers the option of creating either class or function components.
 
 ## Conclusion
 

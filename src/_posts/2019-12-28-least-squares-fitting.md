@@ -26,7 +26,9 @@ y^{(1)}, y^{(2)}, ..., y^{(N)}$$
 
 Here, $N$ is the number of data points (i.e., the size of our data set), while $n$ is the size of each input vector, $x^{(i)}$. Keep that in mind because these two are not necessarily the same.
 
-> **Note**: We use superscripts in parentheses to denote data pairs. Note that subscripts are usually reserved for the elements of a vector. So in this case, the first element of the second input vector would be represented as $x^{(2)}_1$.
+{% aside %}
+  **Note**: We use superscripts in parentheses to denote data pairs. Note that subscripts are usually reserved for the elements of a vector. So in this case, the first element of the second input vector would be represented as $x^{(2)}_1$.
+{% endaside %}
 
 The typical example used in an introductory machine learning class is the house price index data set. You have $N$ data pairs of the form $(x^{(i)}, y^{(i)})$. You feed your feature vector $x^{(i)}$ to your function, and it produces some corresponding scalar value, $y^{(i)}$, in response. In this case, $x^{(i)}$ may be a set of measurements for the home: the number of bedrooms, the number of bathrooms, its age, and so on. The corresponding output is $y^{(i)}$, which denotes the price of the home—the *real* price, not a prediction.
 
@@ -48,7 +50,9 @@ y^{(N)} \approx \hat{f}(x^{(N)})$$
 
 This is starting to look more like a system of equations. But we're not quite there yet. How exactly do we pick $\hat{f}$?
 
-> **Summary**: Our goal in data fitting is to model the relationship between the inputs, $x^{(i)}$, and the outputs, $y^{(i)}$, as closely as possible using a model function, $\hat{f}$. Because remember, we don't know the *true* relationship, $f$.
+{% aside %}
+  **Summary**: Our goal in data fitting is to model the relationship between the inputs, $x^{(i)}$, and the outputs, $y^{(i)}$, as closely as possible using a model function, $\hat{f}$. Because remember, we don't know the *true* relationship, $f$.
+{% endaside %}
 
 ## Picking a Model Function for Data Fitting
 
@@ -64,7 +68,9 @@ Okay, so how can we make this least squares model function more concrete?
 
 Well, the good news is that we get to pick the basis functions $f_i$ based on how we think the real function, $f(x)$, behaves. As we'll see shortly, if $f$ appears to be linear in behavior, then we may decide to pick our basis functions such that $\hat{f}$ ends up resembling a straight line. On the other hand, if $f$ appears to be quadratic, then we may pick our basis functions such that $\hat{f}$ ends up being some sort of a polynomial.
 
-> **Takeaway**: We pick the basis functions based on how we think $f(x)$ behaves. This is a key step in engineering a model function. In picking the basis functions, we also decide how many of them we'll need. This is $p$.
+{% aside %}
+  **Takeaway**: We pick the basis functions based on how we think $f(x)$ behaves. This is a key step in engineering a model function. In picking the basis functions, we also decide how many of them we'll need. This is $p$.
+{% endaside %}
 
 *We* pick the basis functions. The $\theta$ values—the **model parameters**—are what we need to solve for.
 
@@ -128,7 +134,9 @@ Here's a five-step strategy you can use to solve least squares problems:
 4. Solve the overdetermined system using the least squares method.
 5. (Optional) Visualize the solution. This is a useful way to sanity check your answer, though it's not fool-proof.
 
-> **Note**: For all the examples that follow, we'll let $n = 1$. That is, our input $x^{(i)}$s will just be scalar values. In reality, this changes nothing about the least squares method.
+{% aside %}
+  **Note**: For all the examples that follow, we'll let $n = 1$. That is, our input $x^{(i)}$s will just be scalar values. In reality, this changes nothing about the least squares method.
+{% endaside %}
 
 ## Example 1: Least Squares Straight-Line Fit
 
@@ -154,7 +162,9 @@ We know $f$ appears linear, like a $y = mx + b$ equation. We want our model func
 
 $$\hat{f}(x) = \theta_1 + \theta_2x$$
 
-> **Note**: Alternatively, you could just as well pick $\hat{f}(x) = \theta_1 x + \theta_2$. It won't change the solution.
+{% aside %}
+  **Note**: Alternatively, you could just as well pick $\hat{f}(x) = \theta_1 x + \theta_2$. It won't change the solution.
+{% endaside %}
 
 So, we revisit our general model:
 
@@ -175,7 +185,9 @@ $$\hat{f}(x) = \theta_1 + \theta_2 x$$
 
 That gives us precisely the function we wanted.
 
-> **Note**: You don't have to be this explicit about how you select your basis functions. However, I recommend doing so because it allows you to verify that your reasoning is sound.
+{% aside %}
+  **Note**: You don't have to be this explicit about how you select your basis functions. However, I recommend doing so because it allows you to verify that your reasoning is sound.
+{% endaside %}
 
 ### Step 3: Identify the Equations Involved
 
@@ -387,7 +399,9 @@ $$
 
 There we go!
 
-> **Note**: Again, you could reverse the order of the polynomial to be $\hat{f}(x) = \theta_1x^2 + \theta_2 x + \theta_3$. This would change nothing except the order of the elements in your resulting matrix.
+{% aside %}
+  **Note**: Again, you could reverse the order of the polynomial to be $\hat{f}(x) = \theta_1x^2 + \theta_2 x + \theta_3$. This would change nothing except the order of the elements in your resulting matrix.
+{% endaside %}
 
 ### Step 3: Identify the Equations Involved
 

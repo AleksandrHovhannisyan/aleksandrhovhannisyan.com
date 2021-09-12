@@ -60,7 +60,9 @@ Using our same example, <code>d<sub>1</sub>b<sup>n-1</sup> + d<sub>2</sub>b<sup>
 
 Again, we have buckets from right to left in increasing powers of our base (<code>10</code>).
 
-> **Note**: The rightmost bucket will always represent <code>d<sub>n</sub></code> in any number system. Why? Because any base raised to the power of <code>0</code> is just <code>1</code>.
+{% aside %}
+  **Note**: The rightmost bucket will always represent <code>d<sub>n</sub></code> in any number system. Why? Because any base raised to the power of <code>0</code> is just <code>1</code>.
+{% endaside %}
 
 Now, in reality, you can have a number system that uses a base of <code>2</code>, <code>3</code>, <code>4</code>, <code>120</code>, and so on. Some of these have special names because they're used more often than others:
 
@@ -103,7 +105,9 @@ Now, in reality, you can have a number system that uses a base of <code>2</code>
 
 For this reason, when discussing number systems, we usually subscript a number with its base to clarify its value. Alternatively, you can prepend a number with a certain string (usually <code>0b</code> for binary or <code>0x</code>/<code>#</code> for hexadecimal). So we'd write <code>579</code> as <code>579<sub>10</sub></code>, or the binary number <code>1001</code> as <code>1001<sub>2</sub></code> (or <code>0b1001</code>). Otherwise, if we were to merely write the number <code>1001</code> without providing any context, nobody would know whether that's in binary, octal, decimal, hexadecimal, and so on because the digits <code>0</code> and <code>1</code> are valid in all of those number systems, too!
 
-> **Note**: When not comparing number systems, we usually assume that a given number is in decimal unless otherwise noted, and thus the subscript is omitted.
+{% aside %}
+  **Note**: When not comparing number systems, we usually assume that a given number is in decimal unless otherwise noted, and thus the subscript is omitted.
+{% endaside %}
 
 ## The Binary Number System (Base 2)
 
@@ -126,7 +130,9 @@ Here are some examples of representing decimal numbers in the binary number syst
 - Four: <code>4<sub>10</sub> = 100<sub>2</sub></code>. Expansion: <code>1(2<sup>2</sup>) + 0(2<sup>1</sup>) + 0(2<sup>0</sup>)</code>
 - Five: <code>5<sub>10</sub> = 101<sub>2</sub></code>. Expansion: <code>1(2<sup>2</sup>) + 0(2<sup>1</sup>) + 1(2<sup>0</sup>)</code>
 
-> **Note**: Like in the decimal number system, leading zeros are usually stripped from binary strings. The only exception is if you're working with [a signed binary number system](#signed-binary-number-system-twos-complement), where a leading zero indicates that a number is positive and a leading one indicates that it's negative.
+{% aside %}
+  **Note**: Like in the decimal number system, leading zeros are usually stripped from binary strings. The only exception is if you're working with [a signed binary number system](#signed-binary-number-system-twos-complement), where a leading zero indicates that a number is positive and a leading one indicates that it's negative.
+{% endaside %}
 
 Having learned the binary number system, you should now understand the joke from earlier:
 
@@ -140,7 +146,9 @@ Why do we bother with using the binary number system in the first place? Doesn't
 
 You may not see any point in using binary if you haven't learned about computer architecture at a low level. Internally, computers are nothing more than electrical circuits tied to hardware. Current either flows through a wire or doesn't—a **binary state**. Likewise, computers use **logic gates** (AND/OR/NOR/XOR) to control the flow of a program's execution, and these take binary inputs (<code>true</code>/<code>false</code>). The best way to represent these low-level interactions is to use the binary number system: <code>0</code> means OFF (or <code>false</code> in its logical form) and <code>1</code> means ON (or <code>true</code>).
 
-> **Note**: If the whole world were to agree to it, we could just as well instead treat <code>0</code> as ON and <code>1</code> as OFF. However, it just makes more sense to treat <code>0</code> as OFF/false—after all, zero denotes the absence of a value. Hence, it's a natural candidate for representing things like falsehood or the lack of a current flowing through a wire.
+{% aside %}
+  **Note**: If the whole world were to agree to it, we could just as well instead treat <code>0</code> as ON and <code>1</code> as OFF. However, it just makes more sense to treat <code>0</code> as OFF/false—after all, zero denotes the absence of a value. Hence, it's a natural candidate for representing things like falsehood or the lack of a current flowing through a wire.
+{% endaside %}
 
 Everything on your computer—the files you save and the software you install—is represented as nothing more than zeros and ones. But how is this possible?
 
@@ -235,7 +243,9 @@ As I mentioned in the table from earlier, the hexadecimal number system is close
 
 The **hexadecimal number system** has a base of <code>16</code>, meaning its digits range from <code>0–15</code>.
 
-> **Note**: In technical terms, a hexadecimal digit is called a **nibble**, but you'll commonly hear people just call them "hex digits."
+{% aside %}
+  **Note**: In technical terms, a hexadecimal digit is called a **nibble**, but you'll commonly hear people just call them "hex digits."
+{% endaside %}
 
 This is our first time encountering a number system whose digits are made up of more than two characters. How do we squeeze <code>10</code>, <code>11</code>, or <code>15</code> into a single "bucket" or "slot" for a digit? To be clear, **this is perfectly doable** if you have clear delimiters between digits. But in reality, that's not practical.
 
@@ -257,7 +267,9 @@ Is this a <code>15</code> in a single slot or a <code>1</code> and a <code>5</co
 
 The better solution that people came up with is to map <code>10–15</code> to the the English letters <code>a–f</code>.
 
-> **Note**: Capitalization doesn't matter, so you can use <code>a-f</code> or <code>A-F</code>. Just be consistent.
+{% aside %}
+  **Note**: Capitalization doesn't matter, so you can use <code>a-f</code> or <code>A-F</code>. Just be consistent.
+{% endaside %}
 
 Here's an example of a hexadecimal number that uses one of these digits:
 
@@ -381,7 +393,9 @@ If we have <code>32</code> bits to fiddle with, that means we can represent a to
 
 Positive or negative... positive or negative. One thing or another thing—ring a bell? That sounds like it's binary in nature. And hey—we're already using binary to *store* our numbers! Why not reserve just a single bit to represent *the sign*? We can have the most significant (leading) bit be a <code>0</code> when our number is positive and a <code>1</code> when it's negative!
 
-> **Note**: This is once again one of those situations where you could just as well do the opposite, except you'd have to convince the whole world to follow your chosen convention.
+{% aside %}
+  **Note**: This is once again one of those situations where you could just as well do the opposite, except you'd have to convince the whole world to follow your chosen convention.
+{% endaside %}
 
 Earlier, when we were first looking at the binary number systems, I mentioned that you can strip leading zeros because they are meaningless. This is true except when you actually care about distinguishing between positive and negative numbers in binary. Now, we need to be careful—if you strip all leading zeros, you my be left with a leading <code>1</code>, and that would imply that your number is negative (in a signed number system).
 
@@ -596,7 +610,9 @@ Once again, it's a good idea to expand the result so you can verify your work:
 
 <code>1(2<sup>5</sup>) + 1(2<sup>2</sup>) = 32<sub>10</sub> + 4<sub>10</sub> = 36<sub>10</sub></code>
 
-> **Note**: We've only looked at examples of adding two binary numbers, but you could just as well stack <code>x</code> numbers on top of one another and add them in binary, just like you would in decimal. How far ahead you need to carry your ones depends on the result that you get in a particular column, represented as a binary string.
+{% aside %}
+  **Note**: We've only looked at examples of adding two binary numbers, but you could just as well stack <code>x</code> numbers on top of one another and add them in binary, just like you would in decimal. How far ahead you need to carry your ones depends on the result that you get in a particular column, represented as a binary string.
+{% endaside %}
 
 ### Subtracting Binary Numbers
 

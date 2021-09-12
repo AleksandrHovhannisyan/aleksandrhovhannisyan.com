@@ -46,7 +46,9 @@ With git tutorials, it's often difficult to accurately simulate the real world, 
 
 Everything you'll learn in this tutorial is still practical and can be extended to the real world, so long as you keep in mind that you should never try to undo changes in git on public branches, unless you know what you're doing. As for your own branches, you are free to do whatever you want—like deleting old commits you introduced on that branch. The same holds if you're the only developer in your repo since you're in full control of your own work and won't interfere with anyone else.
 
-> **Note**: Most of the time, you won't even have direct write access to public branches if your team's admins have configured the repo properly, so this is not an issue.
+{% aside %}
+  **Note**: Most of the time, you won't even have direct write access to public branches if your team's admins have configured the repo properly, so this is not an issue.
+{% endaside %}
 
 With that boring preface out of the way, let's finally get to the good stuff!
 
@@ -785,7 +787,9 @@ If you thought git's interactive rebase was cool, wait till you see `git reflog`
 
 You can think of reflog as git for git—a sort of internal record-keeping system, if you will. That may seem a bit meta, but it's actually really simple. From [git's documentation on reflog](https://git-scm.com/docs/git-reflog):
 
-> Reference logs, or "reflogs", record when the tips of branches and other references were updated in the local repository. Reflogs are useful in various Git commands, to specify the old value of a reference.
+{% aside %}
+  Reference logs, or "reflogs", record when the tips of branches and other references were updated in the local repository. Reflogs are useful in various Git commands, to specify the old value of a reference.
+{% endaside %}
 
 Put differently, reflog captures a series of snapshots for the different states of the `HEAD` pointer over time. This means that any time a commit is introduced, deleted, or amended, or a new branch is checked out, or an old commit's hash is rewritten, those changes will be logged in `reflog`. Translation? You'll be able to travel back in time to undo potentially unwanted changes even if they were seemingly irreversible.
 
@@ -920,5 +924,5 @@ When in doubt, don't be afraid to ask others for help. There's also a wealth of 
 
 ## Attributions
 
-> The git logo used in this article's thumbnail was created by [Jason Long](https://git-scm.com/downloads/logos), licensed under the Creative Commons Attribution 3.0 Unported License.
+The git logo used in this article's thumbnail was created by [Jason Long](https://git-scm.com/downloads/logos), licensed under the Creative Commons Attribution 3.0 Unported License.
 

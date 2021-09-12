@@ -118,7 +118,9 @@ Many responses to the original tweet cited Big-O notation when comparing these t
 
 ### What Is Big-O Notation?
 
-> Note: There's some math theory up ahead. I've tried to keep things as short and simple as possible. Feel free to skip this section if you're already familiar with Big-O.
+{% aside %}
+  **Note**: There's some math theory up ahead. I've tried to keep things as short and simple as possible. Feel free to skip this section if you're already familiar with Big-O.
+{% endaside %}
 
 **Big-O analysis** approximates the worst-case performance of an algorithm, in terms of runtime (CPU) or space (RAM) complexity. These two computational resources are competing in an endless tug of war: If you make an algorithm faster in terms of time complexity, you'll likely need to rely on auxiliary data structures that may increase its memory usage.
 
@@ -220,7 +222,9 @@ Sure, $1,000,000,000$ is technically huge, but that's irrelevant—it's a consta
 
 For example, in theory, I could pass in an array with hundreds of billions of elements, and that inner loop would still always run a fixed number of times. In fact, the inner loop would now run *fewer* times than the outer loop! So while this code may in fact be *slow*, it's not *inefficient* in terms of Big-O analysis.
 
-> Mathematically speaking, given a constant $k$, $O(kn)$ always just collapses to $O(n)$ when you take its limit as $n$ approaches $\infty$, no matter how big $k$ may be.
+{% aside %}
+  Mathematically speaking, given a constant $k$, $O(kn)$ always just collapses to $O(n)$ when you take its limit as $n$ approaches $\infty$, no matter how big $k$ may be.
+{% endaside %}
 
 Here's another example that usually throws people off:
 

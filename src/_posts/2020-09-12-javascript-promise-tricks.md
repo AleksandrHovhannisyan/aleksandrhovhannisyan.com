@@ -134,7 +134,9 @@ export default App;
 
 Later, we can easily replace the mocked call with a real API call, and voila!
 
-> **Note**: If you later use `fetch` to make the real API call, you'll just need to add an intermediate `.then` that converts the blob to JSON (or just use `async`/`await` and avoid chaining `then`s altogether). If you use a wrapper library like `axios`, you won't even have to worry about this.
+{% aside %}
+  **Note**: If you later use `fetch` to make the real API call, you'll just need to add an intermediate `.then` that converts the blob to JSON (or just use `async`/`await` and avoid chaining `then`s altogether). If you use a wrapper library like `axios`, you won't even have to worry about this.
+{% endaside %}
 
 ## 2. Wrapping Callbacks in Legacy JS (aka Promisification)
 
@@ -262,7 +264,9 @@ script2.onload = () => {
 };
 ```
 
-> Again, you could just as well use images or any other asset with `onload` and `onerror` handlers. Scripts are just easier to work with for the purposes of this demo.
+{% aside %}
+  Again, you could just as well use images or any other asset with `onload` and `onerror` handlers. Scripts are just easier to work with for the purposes of this demo.
+{% endaside %}
 
 That works, and we'll get this output:
 
@@ -377,7 +381,9 @@ for (let i = 1; i <= 10; i++) {
 }
 ```
 
-> **Note**: You can't just do `setTimeout(() => console.log(i), 1000)`. Since the timeouts don't actually block the loop's execution, each iteration will push a new callback onto the event queue after roughly 1 second *since the start of the loop*, as opposed to *spaced 1 second apart*.
+{% aside %}
+  **Note**: You can't just do `setTimeout(() => console.log(i), 1000)`. Since the timeouts don't actually block the loop's execution, each iteration will push a new callback onto the event queue after roughly 1 second *since the start of the loop*, as opposed to *spaced 1 second apart*.
+{% endaside %}
 
 This works, but it's a little difficult to understand compared to the following C++ code:
 
@@ -392,7 +398,9 @@ for (int i = 1; i <= 10; i++) {
 }
 ```
 
-> Also, the JavaScript version doesn't actually block the thread, whereas the C++ version does.
+{% aside %}
+  Note that the JavaScript version doesn't actually block the thread, whereas the C++ version does.
+{% endaside %}
 
 Fortunately, we can achieve something similar using a Promise that resolves after `ms` time elapses:
 
@@ -417,7 +425,9 @@ for (let i = 1; i <= 10; i++) {
 }
 ```
 
-> **Note**: The loop should be wrapped in a function that's marked as `async`. However, you can run this code in your browser's dev tools as-is (without the import statement).
+{% aside %}
+  **Note**: The loop should be wrapped in a function that's marked as `async`. However, you can run this code in your browser's dev tools as-is (without the import statement).
+{% endaside %}
 
 Unlike the version with just `setTimeout`, awaiting an unresolved Promise will actually pause the executing function and resume at a later point in time (note that this still doesn't block the main thread, but the observed effect is similar). This is about as close as we can get to true sleeping in JavaScript.
 

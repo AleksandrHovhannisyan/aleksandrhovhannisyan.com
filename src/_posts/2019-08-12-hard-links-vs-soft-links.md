@@ -60,9 +60,13 @@ Here's the really interesting bit: *There can be multiple links to a single inod
 
 Keep an eye on that `1`—it'll change as we begin experimenting with soft links and hard links.
 
-> **Fun fact 1**: Have you ever heard that "deleting" a file in the traditional sense doesn't imply that the data is irretrievably lost? It's true! In technical terms, a file is considered to have been *truly* deleted when its link count reaches zero. At that point, the space the file occupied is marked as writeable. But until that data is overwritten, computer forensic specialists could potentially recover its contents. To really delete a file, you'd need to [write over it with zeroes](https://www.lifewire.com/what-is-the-write-zero-method-2626052).
+{% aside %}
+  Have you ever heard that "deleting" a file in the traditional sense doesn't imply that the data is irretrievably lost? It's true! In technical terms, a file is considered to have been *truly* deleted when its link count reaches zero. At that point, the space the file occupied is marked as writeable. But until that data is overwritten, computer forensic specialists could potentially recover its contents. To really delete a file, you'd need to [write over it with zeroes](https://www.lifewire.com/what-is-the-write-zero-method-2626052).
+{% endaside %}
 
-> **Fun fact 2**: Directories themselves are special kinds of files—a sort of catalog of files. As it turns out, the starting link count for a new directory is actually `2`, not `1`. This is because **`.`** (which you can observe using `ls -a`) is a reference to the current directory. Thus, there are two references to every new directory: The directory name itself, and then the link **`.`** within that directory. Confused? [Take a look at this answer](https://Unix.stackexchange.com/a/101516/311005).
+{% aside %}
+  Directories themselves are special kinds of files—a sort of catalog of files. As it turns out, the starting link count for a new directory is actually `2`, not `1`. This is because **`.`** (which you can observe using `ls -a`) is a reference to the current directory. Thus, there are two references to every new directory: The directory name itself, and then the link **`.`** within that directory. Confused? [Take a look at this answer](https://Unix.stackexchange.com/a/101516/311005).
+{% endaside %}
 
 ## 1. What Are Symbolic Links?
 
@@ -88,9 +92,9 @@ Let's also look at their contents using the `cat` command:
 
 Even though the symbolic link's underlying data is the *path* of the original file, running the cat command effectively *resolves* or *follows* the symbolic link and prints the contents of the original file: `Hello, links` instead of `file`. Naturally, this implies that if the original file's contents change, the result of running `cat softLink` will also change.
 
-> **Exercise 1**: Change the contents of the original file. Note how its size changes, whereas the symbolic link's file size remains the same. However, both print the same text when `cat`-ed.
-
-> **Exercise 2**: Create a file with a longer name. Then, create a symbolic link to that file. Can you determine what the size of the symbolic link will be in bytes?
+**Exercises**:
+1. Change the contents of the original file. Note how its size changes, whereas the symbolic link's file size remains the same. However, both print the same text when `cat`-ed.
+2. Create a file with a longer name. Then, create a symbolic link to that file. Can you determine what the size of the symbolic link will be in bytes?
 
 ### Symbolic Links to Files in a Different Directory
 

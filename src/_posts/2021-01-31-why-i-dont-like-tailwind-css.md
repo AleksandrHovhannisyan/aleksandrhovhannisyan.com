@@ -8,9 +8,9 @@ commentsId: 77
 isPopular: true
 ---
 
-<aside>
-  <strong>Update</strong> ({%- include date.html date: "2021-03-12" -%}): Based on feedback, I've updated this post to clarify some points and to offer a more balanced perspective. This isn't a hill I'd die on; at the end of the day, what matters is that you're productive writing CSS. If that means using Tailwind, nobody's stopping you. Below are just some reasons why <em>I</em> don't enjoy using it.
-</aside>
+{% aside %}
+  **Update** ({%- include date.html date: "2021-03-12" -%}): Based on feedback, I've updated this post to clarify some points and to offer a more balanced perspective. This isn't a hill I'd die on; at the end of the day, what matters is that you're productive writing CSS. If that means using Tailwind, nobody's stopping you. Below are just some reasons why *I* don't enjoy using it.
+{% endaside %}
 
 You're at a restaurant, and there's an odd item on the menu that you've never heard of before, but it piques your interest. It sounds like it might be worth a try, though you're not sure.
 
@@ -22,7 +22,7 @@ In a nutshell, this was my experience with Tailwind CSS. It's by no means the wo
 
 The strange thing is that I actually read through all of [Adam Wathan's article on semantic CSS](https://adamwathan.me/css-utility-classes-and-separation-of-concerns/), and I found myself initially agreeing with his points. Adam argues that the whole "semantic CSS" paradigm does not pan out in practice, and that developers tend to gravitate towards a **Utility CSS** approach over the course of their careers. According to this paradigm, your class names should be as granular as possible, responsible for one main task. These utility classes serve as the basic building blocks ("tokens") of your UI, allowing you to chain them together to implement complex designs. For example, if you find yourself repeating `display: flex` or `flex-wrap: wrap` in your CSS, you may want to abstract these out into utility classes, like `flex` or `flex-wrap`, that you can apply to any element.
 
-> *"I’ve written a few thousand words on why traditional 'semantic class names' are the reason CSS is hard to maintain, but the truth is you’re never going to believe me until you actually try it. If you can suppress the urge to retch long enough to give it a chance, I really think you'll wonder how you ever worked with CSS any other way."* —[Adam Wathan](https://tailwindcss.com/), Tailwind CSS landing page
+> "I’ve written a few thousand words on why traditional 'semantic class names' are the reason CSS is hard to maintain, but the truth is you’re never going to believe me until you actually try it. If you can suppress the urge to retch long enough to give it a chance, I really think you'll wonder how you ever worked with CSS any other way." —[Adam Wathan](https://tailwindcss.com/), Tailwind CSS landing page
 
 On paper, utility CSS actually sounds like it may be useful. In practice, though, Tailwind CSS (and utility CSS in general) suffers from the same issues that it attempts to solve and is, in my honest opinion, not worth using.
 
@@ -38,9 +38,9 @@ This is one of the arguments that Adam uses in his article. He notes that with t
 
 > "*I had "separated my concerns", but there was still a very obvious coupling between my CSS and my HTML. Most of the time my CSS was like a mirror for my markup; perfectly reflecting my HTML structure with nested CSS selectors.*
 >
-> *My markup wasn't concerned with styling decisions, but my CSS was very concerned with my markup structure.*
+> My markup wasn't concerned with styling decisions, but my CSS was very concerned with my markup structure.
 >
-> *Maybe my concerns weren't so separated after all.*" —[CSS Utility Classes and "Separation of Concerns"](https://adamwathan.me/css-utility-classes-and-separation-of-concerns/)
+> Maybe my concerns weren't so separated after all." —[CSS Utility Classes and "Separation of Concerns"](https://adamwathan.me/css-utility-classes-and-separation-of-concerns/)
 
 In principle, this makes sense. But as we'll see, Tailwind doesn't actually solve this problem of "separation of concerns." And it actually introduces several other problems.
 
@@ -246,7 +246,7 @@ If you use Tailwind, you're stuck with it, unless you convert all of that CSS to
 
 Tailwind uses [PurgeCSS](https://purgecss.com/), which removes any unused styles from your compiled stylesheet. The Tailwind docs [note the following](https://tailwindcss.com/docs/optimizing-for-production):
 
-> *When removing unused styles with Tailwind, it's very hard to end up with more than 10kb of compressed CSS.*
+> When removing unused styles with Tailwind, it's very hard to end up with more than 10kb of compressed CSS.
 
 This is true for sites that don't need too many styles (e.g., blogs). You can browse some of the [popular sites built with Tailwind](https://builtwithtailwind.com/popular) and inspect their Network requests to get a sense for how large a typical Tailwind stylesheet may be. Here are some examples (these may change in the future):
 

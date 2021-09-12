@@ -35,7 +35,9 @@ Each node in a prefix tree represents a string, with the root node always being 
 
 Each branch coming out of a node represents the addition of a character (in yellow) to the end of that node's string. For example, if our current node is `app` and the word we're trying to insert is `apple`, we'd simply tack on an `l` to get the next node: `appl`. From there, we'd append an `e` to get the node representing our complete word: `apple`.
 
-> Trace the path from the root of the trie to the word `apple`. Make a mental note of how each branch coming out of a node is like a key-value pair in a `dict`. The key is the character that we add to the end of the current prefix. The corresponding value is the node that the branch leads to!
+{% aside %}
+  Trace the path from the root of the trie to the word `apple`. Make a mental note of how each branch coming out of a node is like a key-value pair in a `dict`. The key is the character that we add to the end of the current prefix. The corresponding value is the node that the branch leads to!
+{% endaside %}
 
 This branching pattern allows us to reduce our search space to something much more efficient than just a linear search of all words. If a user has entered the substring `appl` so far, then we won't ever consider the branching paths for `ape`, let alone all the branching paths that start with `b`!
 
@@ -140,7 +142,9 @@ We'll loop over the word like we did before, one character at a time. At any poi
 
 Otherwise, if we reach the last character of the string without having returned `None`, then that must mean that the current node is the word we were searching for*. So in that case, we return the current node.
 
-> **Exercise**: Using the diagram from earlier, try to find the word `appreciate`, going down the trie one node at a time. What do you return, and at what point in the loop? Answer: Everything is fine for the common `app-` substring. But when we look at the letter `r`, we find that the current node, `app`, doesn't have that letter in its dictionary; it only has the letter `l`. Thus, we return `None`.
+{% aside %}
+  **Exercise**: Using the diagram from earlier, try to find the word `appreciate`, going down the trie one node at a time. What do you return, and at what point in the loop? Answer: Everything is fine for the common `app-` substring. But when we look at the letter `r`, we find that the current node, `app`, doesn't have that letter in its dictionary; it only has the letter `l`. Thus, we return `None`.
+{% endaside %}
 
 Here's the code:
 
@@ -301,7 +305,9 @@ def starts_with(self, prefix):
     return words
 ```
 
-> **Note**: Here, I'm returning a list of strings. In reality, it's probably better to return a list of `TrieNode`s, but it's much easier to test our code if we return strings.
+{% aside %}
+  **Note**: Here, I'm returning a list of strings. In reality, it's probably better to return a list of `TrieNode`s, but it's much easier to test our code if we return strings.
+{% endaside %}
 
 That's all we need! Feel free to run through this algorithm by hand to better understand how it works.
 
@@ -414,7 +420,9 @@ if __name__ == '__main__':
     unittest.main()
 ```
 
-> **Note**: With `unittest`, all method names must begin with `test` in order for the library to detect and run them. This is [per the unittest docs](https://docs.python.org/3/library/unittest.html#basic-example).
+{% aside %}
+  **Note**: With `unittest`, all method names must begin with `test` in order for the library to detect and run them. This is [per the unittest docs](https://docs.python.org/3/library/unittest.html#basic-example).
+{% endaside %}
 
 The `setUp` method is something that's common in unit testing. It's a method that gets called before each individual test is run. That way, we don't have to manually initialize a new `PrefixTree` in every single method; we can let the framework do that for us.
 

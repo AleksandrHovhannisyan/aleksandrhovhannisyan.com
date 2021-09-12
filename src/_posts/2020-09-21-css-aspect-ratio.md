@@ -74,7 +74,7 @@ To create aspect ratio boxes in browsers that don't yet support `aspect-ratio`, 
 
 Typically, we want to allow an element's width to change, but we also want to express the height in such a way that the element maintains a certain aspect ratio as it is resized. For this reason, it helps to invert the aspect ratio and express the element's *height* as a fraction of its *width*. For an aspect ratio of `16:9`, this means we're looking at the inverse ratio `9:16`, which says:
 
-> *There are 9 units of height for every 16 units of width.*
+> There are 9 units of height for every 16 units of width.
 
 Notice that we haven't actually changed the definition of aspect ratio. It's two sides to the same coin: We can either think of aspect ratio as expressing an element's width relative to its height, or we can think of it as expressing the height relative to the width. The latter allows us to express the element's height as a percentage of its width: `9/16 = 0.5625`, or `56.25%`.
 
@@ -308,7 +308,9 @@ A more logical reason is the [causality dilemma](https://en.wikipedia.org/wiki/C
 4. If the height of the containing block increases, the child's padding must increase, too.
 5. Repeat steps 2-4 infinitely.
 
-> <sup>1</sup>The same does NOT apply to the width of a containing block. By definition, a block-level element such as a `<div>` will fill up 100% of the available width in the [inline direction](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Block_and_Inline_Layout_in_Normal_Flow#Elements_participating_in_a_block_formatting_context). If children exceed this width, they will simply overflow—the parent will not stretch. Hence, the infinite calculation problem does not exist in the horizontal axis.
+{% aside %}
+  <sup>1</sup>The same does NOT apply to the width of a containing block. By definition, a block-level element such as a `<div>` will fill up 100% of the available width in the [inline direction](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Block_and_Inline_Layout_in_Normal_Flow#Elements_participating_in_a_block_formatting_context). If children exceed this width, they will simply overflow—the parent will not stretch. Hence, the infinite calculation problem does not exist in the horizontal axis.
+{% endaside %}
 
 Another reason is that this CSS trick allows us to define responsive aspect ratios since; prior to the introduction of `aspect-ratio`, there was no other way to achieve the same result. If percentage values for vertical padding were based on the containing block's height and not its width, then we'd have no way of doing this with responsive units.
 

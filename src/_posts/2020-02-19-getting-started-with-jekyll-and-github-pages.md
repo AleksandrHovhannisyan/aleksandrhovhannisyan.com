@@ -81,7 +81,9 @@ cd mysite
 bundle exec jekyll new . --force
 ```
 
-> **Warning**: The second option may end up overwriting existing files. Alternatively, you could set up the project in a different directory and copy over the files when it's done so you have more control.
+{% aside %}
+  **Warning**: The second option may end up overwriting existing files. Alternatively, you could set up the project in a different directory and copy over the files when it's done so you have more control.
+{% endaside %}
 
 The end result should be this simple directory structure:
 
@@ -202,7 +204,9 @@ The second is to add this line somewhere inside your project's `_config.yml` fil
 port: 4001
 ```
 
-> **Note**: You can leave the port as `4000` by default. This is just useful to know in case you want to run two Jekyll sites simultaneously on your local since they can't both be on the same port.
+{% aside %}
+  **Note**: You can leave the port as `4000` by default. This is just useful to know in case you want to run two Jekyll sites simultaneously on your local since they can't both be on the same port.
+{% endaside %}
 
 Head on over to `localhost:4000` to see the starter page. Note that the appearance of this page depends on how you configured Jekyll in the earlier sections. You may see:
 
@@ -299,7 +303,9 @@ We'll understand how all of these settings are used once we cover the Liquid tem
 
 Go ahead and fill in most of these setings (you could also do this later—there's no rush). Additionally, note that you don't need many of the variables that are defined in here, like your email, Twitter username, GitHub username, or your site's base URL, so you can safely delete them. You can also add any other site variables that you'd like.
 
-> **Note**: If you make any changes to this file, you'll need to stop running your site and restart it to see the changes. This is because Jekyll only processes `_config.yml` once when you execute `jekyll serve` and doesn't listen for changes. You shouldn't have to change your config too often.
+{% aside %}
+  **Note**: If you make any changes to this file, you'll need to stop running your site and restart it to see the changes. This is because Jekyll only processes `_config.yml` once when you execute `jekyll serve` and doesn't listen for changes. You shouldn't have to change your config too often.
+{% endaside %}
 
 We'll come back to `_config.yml` in a later section once we've looked at some other Jekyll basics.
 
@@ -573,7 +579,9 @@ include: [_pages]
 
 This command defines an array of directories that Jekyll should process when it goes to build your site. In this case, we've defined an array of just one directory: `_pages/`.
 
-> The opposite of `include` is, as expected, `exclude`. Check out the commented block at the very bottom of your `_config.yml`, and you'll see that some files, like `Gemfile` and others, are excluded from processing by default. You can exclude other files by explicitly defining an `exclude` list.
+{% aside %}
+  The opposite of `include` is, as expected, `exclude`. Check out the commented block at the very bottom of your `_config.yml`, and you'll see that some files, like `Gemfile` and others, are excluded from processing by default. You can exclude other files by explicitly defining an `exclude` list.
+{% endaside %}
 
 Now let's restart the server:
 
@@ -768,7 +776,9 @@ Even though you are free to define a date explicitly like this, you don't actual
 yyyy-mm-dd-title-of-the-post-slugged.md
 ```
 
-> **Note**: A "slugged" title is in all lowercase, with all special characters removed, and with hyphens in place of whitespace. Jekyll extracts the title information from your file name. But you often want to define the title explicitly in the post's front matter block because it may contain special characters, like colons, exclamation marks, question marks, apostrophes, and so on.
+{% aside %}
+  **Note**: A "slugged" title is in all lowercase, with all special characters removed, and with hyphens in place of whitespace. Jekyll extracts the title information from your file name. But you often want to define the title explicitly in the post's front matter block because it may contain special characters, like colons, exclamation marks, question marks, apostrophes, and so on.
+{% endaside %}
 
 So the `date` front matter variable is in fact redundant because we already have `2020-02-14` in the file name:
 

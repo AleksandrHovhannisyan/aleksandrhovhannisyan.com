@@ -169,7 +169,9 @@ Promise.all = (promises) => {
 }
 ```
 
-> I'm using a `for...of` loop since the input is an iterable, which need not be an array.
+{% aside %}
+  I'm using a `for...of` loop since the input is an iterable, which need not be an array.
+{% endaside %}
 
 We know how many promises we have in total—that's just the length of the iterable. So we can borrow the approach I showed in the intro, where we tally the number of resolved promises and check if that count equals the length of the iterable. However, it's worth noting that if `Promise.all` resolves, [it must resolve with an array of all individual resolved values](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all#fulfillment). Thus, instead of counting the resolved promises directly, we'll just accumulate an array of resolved values and check its length.
 

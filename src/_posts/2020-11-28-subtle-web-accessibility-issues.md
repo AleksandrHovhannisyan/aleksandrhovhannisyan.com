@@ -19,7 +19,7 @@ Here are just a few of the accessibility failures that you'll want to look out f
 
 Up until a few months ago, I was guilty of relying on color alone to distinguish my links from the rest of my text. But this is not accessible to people with color blindness and fails [WCAG criterion 1.4.1](https://www.w3.org/TR/WCAG20-TECHS/F73.html):
 
-> *Color is not used as the only visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element.*
+> Color is not used as the only visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element.
 
 [Some designers insist that link underlines are ugly](https://css-tricks.com/styling-links-with-real-underlines/). But of course, this assumes that your users will be able to distinguish links from their surrounding text *without* some sort of visual indicator like an underline.
 
@@ -69,7 +69,9 @@ Developers usually stop here at the navbar and don't consider other navigation-i
 
 Audit your website and identify areas of the user interface that have lots of interactive elements or links and that momentarily trap the user's focus in a region of content. Users should be able to skip these so they can jump around your site more easily.
 
-> **Note**: The benefit of using [multiple skip links](https://webaim.org/techniques/skipnav/#multiple) is debatable. Personally, I like to use them, but one could argue that each skip navigation link is, ironically, *one more link* that a user has to tab through. I'd say the benefits outweigh the costs if you have lots of links bunched together.
+{% aside %}
+  **Note**: The benefit of using [multiple skip links](https://webaim.org/techniques/skipnav/#multiple) is debatable. Personally, I like to use them, but one could argue that each skip navigation link is, ironically, *one more link* that a user has to tab through. I'd say the benefits outweigh the costs if you have lots of links bunched together.
+{% endaside %}
 
 ## 4. Images Are Used in Place of Text
 

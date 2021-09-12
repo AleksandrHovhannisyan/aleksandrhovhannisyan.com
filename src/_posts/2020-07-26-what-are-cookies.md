@@ -143,7 +143,9 @@ When you just specify the name and value of a cookie, it gets created as a sessi
 document.cookie = 'foo=bar; expires=Su, 20 Dec 2020 20:20:20 UTC'
 ```
 
-> Note: If "today" is past the above date when you're reading this, the code won't work. And that's because of the next point.
+{% aside %}
+  **Note**: If "today" is past the above date when you're reading this, the code won't work. And that's because of the next point.
+{% endaside %}
 
 To delete a cookie with JavaScript, you need to set its expiration date to be sometime in the past:
 
@@ -174,7 +176,9 @@ If you think about it, that would be pretty dangerous if it were allowed—it wo
 
 There's a tutorial on [how to perform session hijacking](https://embracethered.com/blog/posts/passthecookie/#attack-chain) that helps drive home the following key point: There is nothing special about you and your browser when you access a particular site. The only way a web server knows who you are is based on the information your browser passes along in an HTTP request. If someone has your session cookies, they can copy those cookies locally, refresh the page, and essentially bypass traditional authentication mechanisms like usernames and passwords.
 
-> Fun fact: This is why I obfuscated my session cookies (e.g., `reddit_session`) in the screenshots above. While session cookies are technically temporary, we've already seen that they can stick around for longer than a browser session.
+{% aside %}
+  This is why I obfuscated my session cookies (e.g., `reddit_session`) in the screenshots above. While session cookies are technically temporary, we've already seen that they can stick around for longer than a browser session.
+{% endaside %}
 
 ## Why Do Websites Ask for My Permission to Store Cookies?
 
@@ -202,7 +206,9 @@ Here's a breakdown of how advertising cookies work:
 6. Your browser records the cookie for that ad network's domain (in this case, `doubleclick.net`).
 7. When you visit another site that's part of the same ad network, the cookie will follow you.
 
-> **Note**: Steps 4–6 may not occur if you're in private browsing, have an adblocker enabled, or have enabled [Enhanced Tracking Protection in Firefox](https://blog.mozilla.org/blog/2019/06/04/firefox-now-available-with-enhanced-tracking-protection-by-default/).
+{% aside %}
+  **Note**: Steps 4–6 may not occur if you're in private browsing, have an adblocker enabled, or have enabled [Enhanced Tracking Protection in Firefox](https://blog.mozilla.org/blog/2019/06/04/firefox-now-available-with-enhanced-tracking-protection-by-default/).
+{% endaside %}
 
 This is one of the reasons why people sometimes find that ads are following them around the web no matter where they go, and that these ads are often tailored to the content they previously viewed. For example, if you're shopping online for dog toys and later visit a social media site with ads enabled, you may see ads for dog toys and related accessories in a sidebar. It's not a coincidence—it's an advertising cookie in action, and some people find this to be an invasion of privacy.
 

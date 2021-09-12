@@ -10,7 +10,7 @@ If your experience with *Sekiro: Shadows Die Twice™* was anything like mine, y
 
 Isshin, the Sword Saint—the revered kensei of Ashina returns from the afterlife to honor his grandson's one dying wish: that Ashina be restored to glory with the power of the accursed Dragon's Heritage.
 
-> *"Pitiful grandchild... This was your last wish. To see Ashina returned from the great beyond... which means, Sekiro, I must destroy you."* —Isshin, the Sword Saint
+> "Pitiful grandchild... This was your last wish. To see Ashina returned from the great beyond... which means, Sekiro, I must destroy you." —Isshin, the Sword Saint
 
 {% include img.html src: "isshin.png", alt: "Isshin Ashina readies his blade as he prepares to fight Sekiro in the final cutscene. The words 'I must destroy you' are captioned on screen." %}
 
@@ -18,7 +18,7 @@ The only thing standing in his way? A fangless Wolf, sworn to defend his lord's 
 
 ## Frustration Begets Frustration
 
-> *"Come, Sekiro!"* —Isshin, the Sword Saint, Phase 1
+> "Come, Sekiro!" —Isshin, the Sword Saint, Phase 1
 
 Strip the final boss of all artificial difficulty, and you're left with only one true test of your mettle: **patience**.
 
@@ -28,7 +28,7 @@ How many times do you hear the familiar crumbling of stones as you approach the 
 
 You know the quotes by heart, now, too.
 
-> *"How my blood boils! Face me, Sekiro!"* —Isshin, the Sword Saint, entering Phase 2
+> "How my blood boils! Face me, Sekiro!" —Isshin, the Sword Saint, entering Phase 2
 
 Hesitation *is* defeat. You hesitate, and you're defeated. You don't hesitate, and... you're still defeated.
 
@@ -36,7 +36,7 @@ When patience runs dry, you accept your defeat and walk away. And sometimes, all
 
 ## Nothing Is Truly Impossible
 
-> *"...One last time."* —Wolf to Genichiro
+> "...One last time." —Wolf to Genichiro
 
 In my case, that break lasted roughly a year.
 
@@ -50,11 +50,11 @@ It's exhausting. But it's also the culmination of every single challenge that th
 
 ## Farewell
 
-> *At his peak, Isshin Ashina devoted himself to deadly conflict in pursuit of strength. A single-minded killing machine of a man.* —[Memory: Saint Isshin](https://sekiroshadowsdietwice.wiki.fextralife.com/Memory:+Saint+Isshin)
+> At his peak, Isshin Ashina devoted himself to deadly conflict in pursuit of strength. A single-minded killing machine of a man. —[Memory: Saint Isshin](https://sekiroshadowsdietwice.wiki.fextralife.com/Memory:+Saint+Isshin)
 
 At long last, with muscle memory developed through hundreds of painful deaths, you conquer your enemy. Isshin collapses to his knees with an agonizing bellow. His final words?
 
-> *"Do it!*" —Isshin the Sword Saint to Sekiro, who stands with his blade readied for an execution.
+> "Do it!" —Isshin the Sword Saint to Sekiro, who stands with his blade readied for an execution.
 
 The words *Immortality Severed* shimmer on your screen, and the sounds of war dissipate.
 

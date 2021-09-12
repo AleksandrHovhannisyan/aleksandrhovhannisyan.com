@@ -36,9 +36,11 @@ Optimizing images for the web using the WebP format:
 - Improves your first contentful paint (FCP) and largest contentful paint (LCP) [Lighthouse metrics](https://web.dev/performance-scoring/#lighthouse-6).
 - Respects your user's bandwidth, rather than carelessly consuming several MB of network data.
 
-That last point is especially important since Google uses [mobile-first indexing](https://developers.google.com/search/mobile-sites/mobile-first-indexing) to rank your site, and many mobile plans are throttled at 3G speeds. Translation? Improving your page load speed can give your users a better mobile experience and potentially improve your ranking on Google*.
+That last point is especially important since Google uses [mobile-first indexing](https://developers.google.com/search/mobile-sites/mobile-first-indexing) to rank your site, and many mobile plans are throttled at 3G speeds. Translation? Improving your page load speed can give your users a better mobile experience and potentially improve your ranking on Google.
 
-> *Of course, there are [many other Lighthouse metrics](https://web.dev/lighthouse-performance/) that you'll want to consider when optimizing images for the web. Page load speed is just one such factor.
+{% aside %}
+  Of course, there are [many other Lighthouse metrics](https://web.dev/lighthouse-performance/) that you'll want to consider when optimizing images for the web. Page load speed is just one such factor.
+{% endaside %}
 
 [Most browsers support WebP](https://caniuse.com/#search=webp), so there's really no reason not to use it:
 
@@ -52,7 +54,9 @@ If you're in the Node ecosystem, you're in luck—there are plenty of packages t
 
 Outside the Node ecosystem, there are still libraries that'll do the job for you, like the [jekyll-picture-tag](https://github.com/rbuchberger/jekyll_picture_tag) gem for Jekyll. But it does get pretty limited from there. My site runs on Jekyll, but I prefer to generate all of my WebP images by hand so I have more granular control over the process.
 
-> If you want to quickly generate WebP copies of all images in a directory, I wrote [a simple Python script](https://github.com/AleksandrHovhannisyan/webp) that'll do that for you.
+{% aside %}
+  If you want to easily transform images in any project, check out the [11ty image plugin](https://www.11ty.dev/docs/plugins/image/).
+{% endaside %}
 
 ### Rendering WebP Images
 
@@ -124,7 +128,9 @@ First, we'll modify our markup to store the paths to our WebP image and the orig
 </picture>
 ```
 
-> Notice that the `src` and `srcset` attributes now point to placeholder images. We'll discuss how that works in a bit.
+{% aside %}
+  Notice that the `src` and `srcset` attributes now point to placeholder images. We'll discuss how that works in a bit.
+{% endaside %}
 
 I'm naming these attributes `data-srcset` and `data-src`, respectively, but you can name them anything you want since they're just [custom data attributes](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes).
 

@@ -30,7 +30,9 @@ There's actually not a lot of HTML involved! Navbars aren't all that difficult t
 
 We'll design this with a mobile-first approach and simply take care of the desktop case with a media query. Note that I'm not designing with any minimum device width in mind, but this works all the way down to `320px`, one of the narrowest mobile resolutions that you typically need to account for.
 
-> **Note**: I'll also offer alternative design options wherever it's possible with just a few changes. For example, if you don't like the detached/floating navigation menu, I'll show you how to keep it attached or get it to behave like a sidebar.
+{% aside %}
+  **Note**: I'll also offer alternative design options wherever it's possible with just a few changes. For example, if you don't like the detached/floating navigation menu, I'll show you how to keep it attached or get it to behave like a sidebar.
+{% endaside %}
 
 ## Responsive Navbar HTML
 
@@ -288,7 +290,9 @@ First, here's the markup for the navbar button:
 </button>
 ```
 
-> **Note**: I'm not using `div`s for the nested `.icon-bar` elements because it's invalid HTML to put divs inside buttons.
+{% aside %}
+  **Note**: I'm not using `div`s for the nested `.icon-bar` elements because it's invalid HTML to put divs inside buttons.
+{% endaside %}
 
 We're doing several things here, so let's try to unpack it all:
 

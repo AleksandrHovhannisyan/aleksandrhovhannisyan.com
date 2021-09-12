@@ -56,7 +56,9 @@ These are the examples of non-preemptive scheduling algorithms that we'll look a
 - Shortest job first (aka shortest job next)
 - Priority scheduling
 
-> **Analogy**: Let's use the classic family TV as an analogy for a CPU. Everyone wants to use it for something (usually streaming movies and shows or playing video games). With non-preemptive scheduling, each family member will use the TV for a set period of time and only give someone else a turn when they're finished. For example, if you plan to binge three 40-minute episodes of your favorite show on Netflix, then you'll watch all of them in succession, without giving anyone else a turn, until you're done.
+{% aside %}
+  **Analogy**: Let's use the classic family TV as an analogy for a CPU. Everyone wants to use it for something (usually streaming movies and shows or playing video games). With non-preemptive scheduling, each family member will use the TV for a set period of time and only give someone else a turn when they're finished. For example, if you plan to binge three 40-minute episodes of your favorite show on Netflix, then you'll watch all of them in succession, without giving anyone else a turn, until you're done.
+{% endaside %}
 
 ### 2. Preemptive Scheduling Algorithms (P)
 
@@ -99,7 +101,9 @@ These are the examples of preemptive scheduling algorithms that we'll look at:
 - Preemptive priority scheduling
 - Proportionate scheduling
 
-> **Analogy**: Now, let's say we're dealing with siblings and a single gaming console. To encourage fairness, their parents have one simple rule: Each kid can only play for 20 minutes at a time. Once that period of time is up, it's someone else's turn to play, even if the previous sibling was already in the middle of a match. They continue taking turns like this until everyone's finished playing. This is analogous to round-robin scheduling.
+{% aside %}
+  **Analogy**: Now, let's say we're dealing with siblings and a single gaming console. To encourage fairness, their parents have one simple rule: Each kid can only play for 20 minutes at a time. Once that period of time is up, it's someone else's turn to play, even if the previous sibling was already in the middle of a match. They continue taking turns like this until everyone's finished playing. This is analogous to round-robin scheduling.
+{% endaside %}
 
 When we actually look at the individual scheduling algorithms in this post, I'll classify them as either (P) for preemptive or (NP) for non-preemptive.
 
@@ -159,7 +163,9 @@ Notice that while B arrives at `t = 2s`, it does not get to run until A finishes
 - C's turnaround time = `14s - 5s = 9s`
 - Mean turnaround time = `(8s + 10s + 9s) / 3 = 9s`
 
-> **Note**: When we look at specific examples of scheduling algorithms, as we did here, you'll see a precise number listed under "CPU time" in the accompanying table. In practice, the best we can do is to predict how much time a process is going to use; we can't know a process's expected CPU time for certain.
+{% aside %}
+  **Note**: When we look at specific examples of scheduling algorithms, as we did here, you'll see a precise number listed under "CPU time" in the accompanying table. In practice, the best we can do is to predict how much time a process is going to use; we can't know a process's expected CPU time for certain.
+{% endaside %}
 
 ### Shortest Job First (NP), aka Shortest Job Next
 
@@ -176,7 +182,9 @@ If all jobs arrive at the same time, then this algorithm is always optimal in te
 
 At `t = 0s`, A was the only "shortest" process we knew of, so we allowed it to execute for its full duration. But by the time we arrived at `t = 8s`, we already had B and C lined up in the ready queue, so we then picked the shorter of the two (C) to run next.
 
-> **Exercise**: What would the mean turnaround time have been if A had instead arrived at `t = 5s` and C had arrived at `t = 0s`? Answer: C's turnaround = `2s`, B's turnaround = `4s`, and A's turnaround = `9s`, for a mean turnaround time of `5s`.
+{% aside %}
+  **Exercise**: What would the mean turnaround time have been if A had instead arrived at `t = 5s` and C had arrived at `t = 0s`? Answer: C's turnaround = `2s`, B's turnaround = `4s`, and A's turnaround = `9s`, for a mean turnaround time of `5s`.
+{% endaside %}
 
 ### Shortest Remaining Time First (P)
 
@@ -195,8 +203,10 @@ For example, we swap A out for B at `t = 2s` because B has the least amount of t
 
 With this algorithm, some processes may end up being starved if a bunch of shorter processes continue to arrive. That's the case here with A—it arrived at `t = 0s` but didn't get to finish its work until the very end, at `t = 14s`.
 
-> **Question**: Why didn't we swap out B for C when C arrived at `t = 5s`? Answer: Because at `t = 5s`, B had a remaining time of `1s`, whereas C, which just arrived, has a remaining time of `2s`. We continue executing B because it has the shorter remaining time.
->
+{% aside %}
+  **Question**: Why didn't we swap out B for C when C arrived at `t = 5s`? Answer: Because at `t = 5s`, B had a remaining time of `1s`, whereas C, which just arrived, has a remaining time of `2s`. We continue executing B because it has the shorter remaining time.
+{% endaside %}
+
 ## 2. Interactive Scheduling Algorithms
 
 Reminder: Interactive systems involve a lot of user input and must therefore be responsive.
@@ -216,9 +226,11 @@ Steps 1-4 repeat until no more processes remain.
 
 I used dashed vertical lines here to denote the times at which each process arrived in the queue, just to make things easier to understand. Notice that even though C arrives at time `t = 5s`, it does not begin working until after B gets to run again. Why? Because of step 3: When B finishes its work at time `t = 4s`, it is put back on the queue (because it is not yet finished with all of its work). Thus, B precedes C on the queue.
 
-> **Note 1**: If the amount of time remaining for a process is less than its quantum (e.g., only `1s` of work remaining but with an allocated quantum of `2s`), then we won't "waste" the remainder of the quantum just waiting around—the scheduler will simply treat that as a completed quantum and will proceed as normal to schedule the next process.
+{% aside %}
+  **Note**: If the amount of time remaining for a process is less than its quantum (e.g., only `1s` of work remaining but with an allocated quantum of `2s`), then we won't "waste" the remainder of the quantum just waiting around—the scheduler will simply treat that as a completed quantum and will proceed as normal to schedule the next process.
 
-> **Note 2**: It's important to select a good quantum. If we select one that's too short, then we'll be frequently performing context switches, which can become expensive (decreasing CPU utilization). On the other hand, if the quantum we select is too large, then the system will be unresponsive to user input until the current process finishes executing for its quantum of time.
+  It's important to select a good quantum. If we select one that's too short, then we'll be frequently performing context switches, which can become expensive (decreasing CPU utilization). On the other hand, if the quantum we select is too large, then the system will be unresponsive to user input until the current process finishes executing for its quantum of time.
+{% endaside %}
 
 ### Preemptive Priority (P)
 
@@ -228,7 +240,9 @@ Each queue represents a priority level. Each process is assigned a numerical pri
 
 The scheduler runs the Round Robin algorithm on processes within the same queue, preferring queues with higher priorities to ones with lower priorities. Only once the current queue has been emptied will the scheduler proceed to the next immediate priority queue.
 
-> **Note**: If at any point a process arrives in a queue with a higher priority than whatever queue we are currently working on, then the scheduler will give preference to that higher priority process upon the next quantum "tick."
+{% aside %}
+  **Note**: If at any point a process arrives in a queue with a higher priority than whatever queue we are currently working on, then the scheduler will give preference to that higher priority process upon the next quantum "tick."
+{% endaside %}
 
 {% include img.html src: "preemptive-priority.jpg", alt: "A horizontal ruler is used to represent time that runs from t = 0 to t = 15. A table lists information about three CPU processes. Process A arrived at time t = 0 and has a CPU time of 8 and a priority of 1. Process B arrived at time t = 2 and has a CPU time of 4 and a priority of 1. Process C arrived at time t = 5 and has a CPU time of 2 and a priority of 2. A note indicates a quantum of 2. Below the ruler, a line shows Process A running from t = 0 to t = 2. It is interrupted by Process B, which runs from t = 2 to t = 4. A runs from t = 4 to t = 6, followed by B again from t = 6 to t = 8. B finishes. A runs for two quantums from t = 8 to t = 12, and C runs from t = 12 to t = 14." %}
 
@@ -239,7 +253,9 @@ In this example, A and B take turns alternating on the CPU in classic Round Robi
 - C's turnaround time = `14s - 5s = 9s`
 - Mean turnaround time = `(12s + 6s + 9s) / 3 = 9s`
 
-> **Question**: What would happen at `t = 2s` if A instead had a priority level of `2`? Answer: A would still run from `t = 0s` to `t = 2s` because there are no other processes present during that time. However, as soon as B arrives at `t = 2s`, we have a higher priority queue that must be attended to. Therefore, A's remaining work will be put on hold until B finishes.
+{% aside %}
+  What would happen at `t = 2s` if A instead had a priority level of `2`? Answer: A would still run from `t = 0s` to `t = 2s` because there are no other processes present during that time. However, as soon as B arrives at `t = 2s`, we have a higher priority queue that must be attended to. Therefore, A's remaining work will be put on hold until B finishes.
+{% endaside %}
 
 ### Proportionate Scheduling (P)
 

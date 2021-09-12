@@ -49,7 +49,9 @@ The landing pages of SEO authorities like Ahrefs and Moz are similarly slow:
 
 {% include img.html src: "moz.png", alt: "The Lighthouse audit for moz.com shows 47 for performance, 89 for accessibility, 79 for best practices, and 91 for SEO." %}
 
-> There's no particular reason why I decided to run audits on these websites and not others. These are just the ones that came to mind as I was writing this article.
+{% aside %}
+  There's no particular reason why I decided to run audits on these websites and not others. These are just the ones that came to mind as I was writing this article.
+{% endaside %}
 
 ## And Yet, They Rank Well
 
@@ -62,7 +64,7 @@ Big brands get most of their traffic through brand recognition and popularity, n
 
 [Quality content](https://www.crazyegg.com/blog/what-is-high-quality-content/#:~:text=So%20quality%20content%20is%20anything%20that%20Google%20decides%20is%20worth%20sharing.&text=It's%20content%20that%20people%20want,or%20around%20the%20water%20cooler.) is the more subjective measure. First, note that "content" usually refers to a company blog where you share knowledge and insights related to your industry, but it could also refer to other types of media (like a YouTube channel). The goal is to publish content that addresses the needs of your audience, giving them precisely the information they were searching for.
 
-> *"It’s real answers to real people’s questions."* —Crazy Egg
+> "It’s real answers to real people’s questions." —Crazy Egg
 
 Take Ahrefs and Moz, for example. They both offer software, e-books, tutorials, guides, and much more to help marketers and even laypeople understand SEO. Sure, their sites may not be the fastest around, but their content is credible and informative. In Google's eyes, that matters much more than seeing pretty green colors on a Lighthouse report.
 

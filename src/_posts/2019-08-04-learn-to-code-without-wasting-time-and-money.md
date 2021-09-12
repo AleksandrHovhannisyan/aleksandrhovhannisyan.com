@@ -18,11 +18,11 @@ Instead of wasting your time comparing different languages, just pick one and st
 
 YouTuber Michael Reeves puts it well in [one of his videos](https://www.youtube.com/watch?v=bZDE6I5B9-E):
 
-> *Just pick one and start learning programming... All modern programming languages are wildly powerful, and they can do all kinds of shit.*
+> Just pick one and start learning programming... All modern programming languages are wildly powerful, and they can do all kinds of shit.
 
 I recall my programming fundamentals teacher imparting some very wise words in the second semester of my undergraduate studies when he heard me complain about us learning C++, which at the time was completely foreign to me and came with a boatload of frustrations. He said that the degree wasn't intended to teach us how to program in any particular language, and that languages are merely tools for doing a programmer's job. The hope was that we'd be able to pick up any language on demand after graduating from the program. Our goal was to learn how to think like computer scientists instead of confining ourselves to the narrow context of any particular language.
 
-> *Languages are merely tools for doing a programmer's job.*
+> Languages are merely tools for doing a programmer's job.
 
 Now, there is a caveat here worth mentioning: The language you select as a beginner will influence your initial perception of software development and dictate whether you actually end up enjoying coding or if you walk away disappointed.
 

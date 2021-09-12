@@ -159,7 +159,9 @@ html {
 }
 ```
 
-> In reality, you'd want to use rems for font sizes and line heights to [respect users' font size preferences](/blog/respecting-font-size-preferences-rems-62-5-percent/). I used pixels to keep this tutorial simple.
+{% aside %}
+  In reality, you'd want to use rems for font sizes and line heights to [respect users' font size preferences](/blog/respecting-font-size-preferences-rems-62-5-percent/). I used pixels to keep this tutorial simple.
+{% endaside %}
 
 Notice how the absolute line height increases as you move up the scale, but the ratio between the line height and font size decreases. In other words, they're getting closer to each other. As I mentioned earlier, this is easier to spot with unitless line heights:
 
@@ -188,7 +190,9 @@ html {
 }
 ```
 
-> **Note**: You may want to rename the variable to make it clear that `lh-lg` is not a "large line height," but that's more of a semantic concern than a functional one. It's up to you.
+{% aside %}
+  **Note**: You may want to rename the variable to make it clear that `lh-lg` is not a "large line height," but that's more of a semantic concern than a functional one. It's up to you.
+{% endaside %}
 
 ### A Sass Mixin for Consistent Font Sizes and Line Heights
 

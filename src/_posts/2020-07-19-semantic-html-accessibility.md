@@ -174,7 +174,9 @@ Google renders search results using divs, but an ordered list would probably mak
 
 {% include img.html src: "google.png", alt: "Inspecting the Google search results page" %}
 
-> Note: Google has hidden elements that provide accessibility guidance to users with screen readers and other assistive technologies, so this "violation" isn't really a big deal. That may apply to some of the other sites and apps, too, though I haven't tested them.
+{% aside %}
+  **Note**: Google has hidden elements that provide accessibility guidance to users with screen readers and other assistive technologies, so this "violation" isn't really a big deal. That may apply to some of the other sites and apps, too, though I haven't tested them.
+{% endaside %}
 
 Twitter uses divs for replies:
 
@@ -209,7 +211,9 @@ A good example of the second case is if you have text with placeholders, like `X
 
 {% include img.html src: "github-counter.png", alt: "Inspecting a GitHub counter via the Chrome dev tools" %}
 
-> In addition, note again how the tabs themselves are rendered in a list.
+{% aside %}
+  In addition, note again how the tabs themselves are rendered in a list.
+{% endaside %}
 
 If you want inline positioning on block-level elements, `<span>` is not the right tool for the job. Instead, use CSS to position your elements inline (e.g., with Flexbox).
 
@@ -221,7 +225,7 @@ As defined by the W3 Consortium, ARIA stands for **Accessible Rich Internet Appl
 
 However, as I mentioned before, just because you can do something doesn't mean that you should (or that it's okay to abuse it). The following are W3's [guidelines on ARIA](https://www.w3.org/TR/html-aria/):
 
-> *Web developers MAY use the ARIA role and aria- attributes on HTML elements, in accordance with the requirements described in [wai-aria-1.1](https://www.w3.org/TR/html-aria/#bib-wai-aria-1.1), except where these conflict with the strong native semantics or are equal to the implicit ARIA semantics of a given HTML element. These constraints are intended to prevent developers from making assistive technology products report nonsensical user interface (UI) information that does not represent the actual UI of the document.*
+> Web developers MAY use the ARIA role and aria- attributes on HTML elements, in accordance with the requirements described in [wai-aria-1.1](https://www.w3.org/TR/html-aria/#bib-wai-aria-1.1), except where these conflict with the strong native semantics or are equal to the implicit ARIA semantics of a given HTML element. These constraints are intended to prevent developers from making assistive technology products report nonsensical user interface (UI) information that does not represent the actual UI of the document.
 
 Here, "strong native semantics" refers to the fact that semantic HTML elements have intrinsic ARIA roles. You can explore these in the [MDN Web Docs](https://developer.mozilla.org/en-US/) for a particular element. For example, the `<ol>` tag has an implicit ARIA role of `list`:
 

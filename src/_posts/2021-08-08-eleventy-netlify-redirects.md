@@ -18,7 +18,9 @@ Fortunately, Netlify offers a simple way to [set up server-side redirects for an
 /old/url/1  /new/url/2
 ```
 
-> Note: Optionally, you can also specify redirects in your `netlify.toml` config.
+{% aside %}
+**Note**: Optionally, you can also specify redirects in your `netlify.toml` config.
+{% endaside %}
 
 After your site gets built, Netlify's redirects engine processes and registers these rules. When a user requests an old URL listed under the left-hand column, Netlify will respond with the corresponding URL under the right-hand column.
 
@@ -87,7 +89,9 @@ eleventyExcludeFromCollections: true
 
 We check to see if a page has a valid URL and if its front matter specifies a `redirectFrom` URL. If it does, we map that old URL to the page's current URL. If you want to exclude a particular page from this loop, just set `eleventyExcludeFromCollections` to `true` in its front matter.
 
-> One thing worth noting is how I've intentionally formatted the file's indentation to comply with Netlify's [syntax for the `_redirects` file](https://docs.netlify.com/routing/redirects/#syntax-for-the-redirects-file). This ensures that each line is left-aligned properly and doesn't have any leading spaces. You *could* remove those spaces with Liquid's [whitespace control](https://shopify.github.io/liquid/basics/whitespace/), but that would also remove newlines.
+{% aside %}
+  One thing worth noting is how I've intentionally formatted the file's indentation to comply with Netlify's [syntax for the `_redirects` file](https://docs.netlify.com/routing/redirects/#syntax-for-the-redirects-file). This ensures that each line is left-aligned properly and doesn't have any leading spaces. You *could* remove those spaces with Liquid's [whitespace control](https://shopify.github.io/liquid/basics/whitespace/), but that would also remove newlines.
+{% endaside %}
 
 Now, whenever you want to change a page's URL structure, all you need to do is track the old URL in its front matter and update the file name/permalink/slug to be the new URL:
 

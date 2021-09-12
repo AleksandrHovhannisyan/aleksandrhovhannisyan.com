@@ -13,7 +13,7 @@ Why does that matter? Because speed is an important factor to consider alongside
 
 It's only when I began running my posts through the former tool, PageSpeed Insights, that I discovered a useful optimization: [using the WebP image format](https://developers.google.com/speed/webp). Here's how Google describes WebP:
 
-> *WebP is a modern image format that provides superior lossless and lossy compression for images on the web. Using WebP, webmasters and web developers can create smaller, richer images that make the web faster.*
+> WebP is a modern image format that provides superior lossless and lossy compression for images on the web. Using WebP, webmasters and web developers can create smaller, richer images that make the web faster.
 
 Google even provides a useful command-line tool, `cwebp`, that allows you to convert images from other formats—like PNG, JPEG, and so on—to WebP. In this post, we'll consider Jekyll specifically and take a look at how you can improve your page load speed by using the WebP image format with just a single include.
 
@@ -33,7 +33,9 @@ Install the `cwebp` CLI utility yourself and use it to manually convert images t
 
 To get started, head on over to [Google's installation instructions page](https://developers.google.com/speed/webp/docs/precompiled) for the `libwebp` executables and libraries. The process is actually really straightforward.
 
-> **Note**: The installation will also come with `gif2webp`, which can be used to convert GIFs to a WebP equivalent.
+{% aside %}
+  **Note**: The installation will also come with `gif2webp`, which can be used to convert GIFs to a WebP equivalent.
+{% endaside %}
 
 ## Converting an Image to WebP Format with <code>cwebp</code>
 
@@ -45,7 +47,9 @@ cwebp [options] input_file -o output_file.webp
 
 You can specify a number of options, including the compression factor for converting to WebP; this dictates the quality of the resulting image. By default, this factor is set to 75%.
 
-> You can learn more about the available options in [Google's documentation for cwebp](https://developers.google.com/speed/webp/docs/cwebp).
+{% aside %}
+  You can learn more about the available options in [Google's documentation for cwebp](https://developers.google.com/speed/webp/docs/cwebp).
+{% endaside %}
 
 For example, let's say you have an image under `/assets/images/posts`. To convert that to WebP, execute this command:
 

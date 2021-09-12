@@ -1268,7 +1268,9 @@ The parameters for SVG arcs are covered in the table below:
 
 One thing you'll notice is that the absolute and relative versions of the arc command (`A`/`a`) are almost identical except for their last two parameters. Whereas an uppercase `A` arc has an absolute `x` and a `y` that tell you where the arc ends, the lowercase relative arc specifies a delta-x (`dx`) and a delta-y (`dy`) displacement relative to the starting position of the arc.
 
-> **Note**: "Delta" is how we denote a change in a value in formal mathematical notation (typically using the Greek letter, &Delta;). So "delta-x" (&Delta;x) means "a change in x."
+{% aside %}
+  **Note**: "Delta" is how we denote a change in a value in formal mathematical notation (typically using the Greek letter, &Delta;). So "delta-x" (&Delta;x) means "a change in x."
+{% endaside %}
 
 The first two parameters, `rx` and `ry`, should be familiar if you've worked with border radii in CSS. Since we're drawing an ellipse and not necessarily always a circle, we need to specify two radii. If our arc is circular, then `rx = ry`.
 

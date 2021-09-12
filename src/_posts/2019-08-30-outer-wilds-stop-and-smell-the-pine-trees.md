@@ -93,7 +93,7 @@ There's nothing left to do but wait—to eye the level of the sand as it inches 
 
 But there is perhaps no more terrifying fate than death in the void of outer space itself—you become separated from your ship, drifting like a lonely little feather. There are planets off in the distance, but they're out of reach. You can try getting there using your jetpack, but you'll run out of fuel before you even make it halfway. At that point, your suit will begin using oxygen as a propulsion mechanism. You are thus left with two choices: either quicken your death, or wait it out. Your suit reminds you that none of it matters:
 
-> *60 seconds of oxygen remaining*
+> 60 seconds of oxygen remaining
 
 ## Dialogue and Audio Done Right
 

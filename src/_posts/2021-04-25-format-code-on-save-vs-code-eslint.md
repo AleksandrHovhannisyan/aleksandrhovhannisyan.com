@@ -200,7 +200,9 @@ If you're working in a vanilla JavaScript or Node environment, you may need to i
 
 This should cover most bases. You can extend the rules and environments as needed or even install additional ESLint plugins. See the ESLint docs for [the full list of rules](https://eslint.org/docs/rules/).
 
-> **Heads up**: Don't add trailing commas to your ESLint config if you're writing it in JSON.
+{% aside %}
+  **Heads up**: Don't add trailing commas to your ESLint config if you're writing it in JSON.
+{% endaside %}
 
 ##### TypeScript ESLint Config
 
@@ -327,7 +329,7 @@ You may need to reload VS Code.
 
 At this point, you may be asked if you want to load and use the ESLint executable installed in `node_modules` for the VS Code extension. A dialog window will pop up saying something like this:
 
-> *The ESLint extension will use node_modules/eslint for validation, which is installed locally in folder 'your-folder'. Do you allow the execution of the ESLint version including all plugins and configuration files it will load on your behalf?*
+> The ESLint extension will use node_modules/eslint for validation, which is installed locally in folder 'your-folder'. Do you allow the execution of the ESLint version including all plugins and configuration files it will load on your behalf?
 
 Click `Allow` (or `Allow everywhere`). If the dialog doesn't pop up and you're seeing squiggly lines in a file, you may need to just open the lightbulb menu (put your cursor on the squiggly lines and do `Ctrl+.`/`Cmd+.`) and choose `ESLint: Manage Library Execution`.
 
