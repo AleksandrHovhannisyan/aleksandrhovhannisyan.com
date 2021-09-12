@@ -261,9 +261,17 @@ In this example, A and B take turns alternating on the CPU in classic Round Robi
 
 As its name suggests, proportionate scheduling aims to ensure a fair allocation of CPU time among processes. There are three types of proportionate scheduling that we can use:
 
-1. **💯 Guaranteed scheduling**: Tries to evenly split CPU time among processes to maximize fairness. If we have `n` processes, then we shouldn't ever allow any process to exceed `1/n` fraction of the total runtime. We do this by repeatedly "inching" each process along and keeping track of how much time they've all used. For example, suppose we have processes A, B, and C that so far have run for `2s`, `3s`, and `1s`. (Assume we haven't yet put our algorithm into practice.) The total CPU time thus far is `6s`. Split among three processes, this means each process should've ideally used `2s` of CPU time. Clearly, that's not the case—B has been given preferential treatment. We'll allow C to run first until it hits `3s` and then run A for an additional `1s` to balance things out.
-2. **🎲 Lottery scheduling**: Each process is allocated a certain number of virtual "tickets." At set intervals, the scheduler will draw a ticket at random and allow the winning process to run on the CPU. This solves the problem of starvation: As long as we give at least one ticket to each process, then we're able to guarantee a non-zero probability of selection. The idea here is that a process with a fraction `f` of the total tickets will get to use the CPU for a fraction `f` of the time. Notice that if we assign each process the same number of tickets, then we're using guaranteed scheduling!
-3. **🤝 Fair-share scheduling**: So far, we've focused on ensuring fairness among *processes*. In fair-share scheduling, the focus shifts to the *user*. Specifically, on multi-user systems, the idea is to allocate a fair amount of CPU time to each user (and/or user group) to ensure that no user is being "starved" of the opportunity to use the system. The Wikipedia article on [fair-share scheduling](https://en.wikipedia.org/wiki/Fair-share_scheduling) provides excellent examples to make this clearer.
+#### Guaranteed Scheduling
+
+**Guaranteed scheduling** attempts to evenly split CPU time among processes to maximize fairness. If we have `n` processes, then we shouldn't ever allow any process to exceed `1/n` fraction of the total runtime. We do this by repeatedly "inching" each process along and keeping track of how much time they've all used. For example, suppose we have processes A, B, and C that so far have run for `2s`, `3s`, and `1s`. (Assume we haven't yet put our algorithm into practice.) The total CPU time thus far is `6s`. Split among three processes, this means each process should've ideally used `2s` of CPU time. Clearly, that's not the case—B has been given preferential treatment. We'll allow C to run first until it hits `3s` and then run A for an additional `1s` to balance things out.
+
+#### Lottery Scheduling
+
+In **lottery scheduling**, each process is allocated a certain number of virtual "tickets." At set intervals, the scheduler will draw a ticket at random and allow the winning process to run on the CPU. This solves the problem of starvation: As long as we give at least one ticket to each process, then we're able to guarantee a non-zero probability of selection. The idea here is that a process with a fraction `f` of the total tickets will get to use the CPU for a fraction `f` of the time. Notice that if we assign each process the same number of tickets, then we're using guaranteed scheduling!
+
+#### Fair-Share Scheduling
+
+So far, we've focused on ensuring fairness among *processes*. In **fair-share scheduling**, the focus shifts to the *user*. Specifically, on multi-user systems, the idea is to allocate a fair amount of CPU time to each user (and/or user group) to ensure that no user is being "starved" of the opportunity to use the system. The Wikipedia article on [fair-share scheduling](https://en.wikipedia.org/wiki/Fair-share_scheduling) provides excellent examples to make this clearer.
 
 ## 3. Real-Time Scheduling Algorithms
 
