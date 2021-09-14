@@ -6,32 +6,24 @@ excludeFromSitemap: true
 noindex: true
 ---
 
-# Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+{%- assign steps = "sm,base,md,lg,xl,xxl,xxxl" | split: "," -%}
 
-<br>
+# Typography Design Variables
 
-## Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+<table style="margin-top: var(--line-height);">
+  <thead>
+    <tr>
+      <th scope="col">Step</th>
+      <th scope="col">Demo</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%- for step in steps -%}
+      <tr>
+        <td>{{ step }}</td>
+        <td style="font-size: var(--fs-{{ step }}); line-height: var(--lh-{{ step }}); letter-spacing: var(--ls-{{ step }});">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</td>
+      </tr>
+    {%- endfor -%}
+  </tbody>
+</table>
 
-<br>
-
-### Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-
-<br>
-
-#### Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-
-<br>
-
-##### Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-
-<br>
-
-###### Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-
-<br>
-
-<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-
-<br>
-
-<p style="font-size: var(--fs-sm); line-height: var(--lh-sm);">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
