@@ -14,20 +14,20 @@ html {
   --lh-md: #{clamped(3rem, 3.4rem)};
   --ls-md: 0;
 
-  --fs-lg: #{clamped(2.0rem, 2.8rem)};
-  --lh-lg: #{clamped(3.4rem, 3.92rem)};
+  --fs-lg: #{clamped(2.0rem, 2.6rem)};
+  --lh-lg: #{clamped(3.4rem, 3.8rem)};
   --ls-lg: -0.02rem;
 
-  --fs-xl: #{clamped(2.8rem, 3.2rem)};
-  --lh-xl: #{clamped(3.92rem, 4.4rem)};
+  --fs-xl: #{clamped(2.6rem, 3.2rem)};
+  --lh-xl: #{clamped(3.8rem, 4.4rem)};
   --ls-xl: #{clamped(-0.02rem, -0.03rem)};
 
   --fs-xxl: #{clamped(3.2rem, 3.6rem)};
-  --lh-xxl: #{clamped(4.4rem, 4.68rem)};
+  --lh-xxl: #{clamped(4.4rem, 4.8rem)};
   --ls-xxl: #{clamped(-0.03rem, -0.04rem)};
 
   --fs-xxxl: #{clamped(3.6rem, 4.8rem)};
-  --lh-xxxl: #{clamped(4.68rem, 5.76rem)};
+  --lh-xxxl: #{clamped(4.8rem, 6rem)};
   --ls-xxxl: #{clamped(-0.04rem, -0.05rem)};
 
   --fw-light: 300;
