@@ -5,6 +5,7 @@ keywords: [base font size, "62.5%", font size preferences, rem]
 categories: [css, typography, math, a11y]
 thumbnail: thumbnail.jpg
 commentsId: 97
+lastUpdated: 2021-09-16
 ---
 
 In CSS, there are lots of different units that can be used to size elements on a page—`px`, `vw`, `ch`, `em`, `rem`, and [far too many others](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units) to list here. Of all these units, `rem` happens to be the most reliable for sizing elements responsively, allowing you to scale your UI with the browser's base font size and to respect user preferences for accessibility. Let's understand why `rem` is the ideal unit for font size and how setting the base font size to `62.5%` can make our lives easier while also honoring user preferences.
@@ -13,17 +14,17 @@ In CSS, there are lots of different units that can be used to size elements on a
 
 ## Don't Use Pixels for Font Size
 
-The traditional unit for sizing anything on the web is the pixel, but it's not the ideal unit for font size. While pixels do make it easy for you to translate mockups from design software directly into CSS, they're an [absolute-length unit](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#absolute_length_units), which means that one pixel always corresponds to a **fixed physical size** on a user's screen. More precisely, one CSS pixel is equal to `1/96` of an inch.
+The traditional unit for sizing anything on the web is the CSS pixel, but it's not ideal for font size. While pixels do make it easy for you to translate mockups from design software directly into CSS, they're an [absolute-length unit](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#absolute_length_units), which means that one CSS pixel corresponds to a **fixed physical pixel size** (device pixel) on a user's screen. This may be `1/96`th of an inch on `96` DPI devices, or it may be some other physical quantity on a device with a different DPI. For our purposes in this article, the important thing to understand is that while a CSS pixel may not always correspond to the same physical quantity between two devices that have different DPIs, it *does* refer to a fixed quantity on a single device.
 
-Pixels are the easiest unit to understand because they're grounded in physical measurements. But like other absolute units, they're not very scalable. And using pixels for font sizing actually harms accessibility. To understand why, we need to learn about **user font size preferences**.
+CSS pixels are the easiest unit to understand because they're grounded in physical measurements. But like other absolute units, they don't scale with other measurements. And using pixels for font sizing actually harms accessibility. To understand why, we need to learn about **user font size preferences**.
 
-## Respecting Users' Font Size Preferences
+## Respecting a User's Font Size Preferences
 
-Every browser applies a root font size of `16px` to a document, meaning that unstyled body text will have a font size of `16px` out of the box. However, both developers and users can change this behavior. As developers, we can change the font size of the root element (`html`) with CSS so that all elements inherit that new font size. Similarly, users can go into their browser's settings (e.g., `chrome://settings/fonts` in Chrome) and configure their font preferences:
+Every browser applies a root font size of `16px` to a document, meaning that unstyled body text will have a font size of `16` CSS pixels out of the box. However, both developers and users can change this behavior. Developers can change the font size of the root element (`html`) with CSS so that all elements inherit that new font size. On the other hand, users can go into their browser's settings (e.g., `chrome://settings/fonts` in Chrome) and configure their font preferences:
 
 {% include img.html src: "chrome-settings.jpg", alt: "The Chrome settings page for changing one's preferred font size. Two sliders can be seen: one for the font size and another for the minimum font size. Sample sentences are shown below those sliders, along with pickers for the user's preferred font family (which, by default, is Times New Roman)." %}
 
-This means that using hard-coded pixels for font sizing is inaccessible to people with vision impairments, who may want to scale up the font size of your page so that text is easier to read. When you set a font size in pixels, it will *always* be rendered at that size, regardless of what font size a user prefers.
+User preferences for font size should always take precedence over your CSS. This means that using hard-coded pixels for font sizing is inaccessible to users with vision impairments, who may want to scale up the font size of your page so that text is easier to read. When you set a font size in pixels, it will *always* be rendered at that size, regardless of what font size a user prefers.
 
 ### Preferred Font Size vs. Browser Zoom Level
 
@@ -57,90 +58,109 @@ Unfortunately, if we use `rem`, we won't have the luxury of translating pixel de
 
 It would be nice if we could **think in pixels** but also reap the benefits of using `rem`s.
 
-Humans are pretty good at thinking in tens since we're familiar with the decimal (base-10) number system. If instead `1rem` were equal to `10px`, we could easily convert any pixel amount to `rem`s by dividing it by `10`. So `12px` would be `1.2rem`, `24px` would be `2.4rem`, and so on.
+Humans are pretty good at thinking in tens since we're familiar with the decimal (base-10) number system. If instead `1rem` were equal to `10px`, we could easily translate any pixel amount to `rem`s by dividing it by `10`. So `12px` would be `1.2rem`, `24px` would be `2.4rem`, and so on.
 
-So how can we do this? Well, `10` is precisely `62.5%` of `16`. So if we set the base font size of our document to be `62.5%`, then `1rem` will equal `10px`:
+How can we do this? Well, `10` is `62.5%` of `16px`, the default root font size of your browser. So if we set the base font size of our document to be `62.5%`, then `1rem` will equal `10px`:
 
 ```css
 html {
-    /* 62.5% of 16px base font size is 10px */
-    font-size: 62.5%;
+  /* 62.5% of 16px base font size is 10px */
+  font-size: 62.5%;
 }
 
 .some-element {
-    /* 10 * 1.2 = 12px */
-    font-size: 1.2rem;
+  /* 10 * 1.2 = 12px */
+  font-size: 1.2rem;
 }
 ```
 
-If we were to just stop here, our base body font size would be illegibly small at a mere `10px`. We can fix this by setting the font size of our body to be `1.6rem`:
+Of course, if we were to just stop here, our base body font size would be illegibly small at a mere `10px`. We can fix this by setting the font size of our body to be `1.6rem`, which yields an effective font size of `16px` for all visible text on the page:
 
 ```css
 html {
-    /* 10px */
-    font-size: 62.5%;
+  /* 10px */
+  font-size: 62.5%;
 }
 
 body {
-    /* 16px */
-    font-size: 1.6rem;
+  /* 16px */
+  font-size: 1.6rem;
 }
 ```
 
-And that's it for the math trick! Now, it's time to understand why this works and whether it's accessible.
+At this point, you may be a little suspicious. We scaled the root font size down, but then we scaled it back up for the body—doesn't that defeat the whole purpose of scaling the root font size down in the first place?
+
+The important thing to understand is that the root font size (on the `html` element) need not be the same as the font size on the `body` element. In this case, we have a root font size of `10px` because we scaled the `html` font size down to `62.5%`, but we did this solely for the convenience of translating pixels into rems. Our body font size—all of the visible text on the page—is still scaled back up to an effective font size of `16px` so that it matches the browser's font size.
+
+These are just two ways of looking at the same equation. Originally, we had to perform this calculation to express a target pixel font size in rems:
+
+```plaintext
+12px in rems: 12 / 16 = 0.75rem
+```
+
+But here, we can express `12` as a multiple of `10`:
+
+```plaintext
+12px in rems: (1.2 × 10) / 16 = 0.75rem
+```
+
+We can then group the `10` with the `16` and expand the division:
+
+```plaintext
+Grouped:    1.2 × (10 / 16) = 0.75rem
+Expanded:   1.2 × 0.625 = 0.75rem
+```
+
+Notice that the right-hand side of the equation is still the same as it was originally, but the left-hand side expresses the target font size conveniently as a multiple of `10`. This is just a more formal way of arriving at the same result that we derived intuitively.
+
+The `62.5%` trick makes it easier to reason about pixels as relative units; the alternative is to perform mental calculations, rely on preprocessor math, or use CSS's `calc` utility.
 
 ### Is This Accessible?
 
-It's at this point that people are understandably confused. Doesn't this defeat the whole purpose of scaling the root font size down in the first place? And doesn't this hurt accessibility since we're setting the root font size to be something other than `100%`, which seemingly no longer respects a user's preferred font size?
+So far, we've only considered the case where the browser has an unchanged root font size of `16px`. But what if a user changes their browser's font settings?
 
-The important thing to remember is that the root font size (on the `html` element) is not the same as the font size on the `body` element. The two need not be the same! In this case, we have a root font size of `10px` because we scaled the font size down by `62.5%` for the convenience of translating pixels to rems in our heads. But our body font size—all of the text that actually gets rendered on the page—is scaled back up to an effective base font size of `16px`.
-
-*But wait a minute!*, you object. *What if a user sets their base font size to be anything other than 16 pixels? Does this still work?* Good question! And the answer is that we'll still get the same root font size in the end. In fact, we really have this equation for the body font size:
+Well, recall that the body font size is `1.6rem`. And that means that we really have this equation:
 
 ```plaintext
-0.625 × 1.6 = 1 (100% of the root font size)
+html font size = 62.5% of browser font size
+body font size = 0.625 × 1.6rem = 1 (i.e., 100% of the browser font size)
 ```
 
-In other words, this is the same as the root font size, just expressed differently! That's because `1.6` and `0.625` just happen to be inverses of each other, so they cancel out. No matter what font size a user picks, the page will scale proportionally.
+Notice that we really don't care what the browser font size happens to be. Since `1.6` and `0.625` are inverses of each other, they cancel out in this equation, yielding the browser's font size. No matter what root font size a user picks, the CSS will always respect it.
 
 ### Example: A User Prefers Larger Font Sizes
 
-It helps to look at an example, so let's assume that we have this CSS:
+Let's look at an example. Assume that we have this CSS:
 
 ```css
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 body {
-    font-size: 1.6rem;
+  font-size: 1.6rem;
 }
 h1 {
-    font-size: 4.8rem;
+  font-size: 4.8rem;
 }
 ```
 
 Now, suppose a user goes into their browser settings and sets their preferred base font size to be `20px`. Does this create any problems for us? Let's see how the math pans out for body text:
 
 ```plaintext
-1rem = 20px
-0.625 × 1rem = 0.625 × 20px
-0.625rem = 12.5px
-1.6 × 0.625rem = 1.6 × 12.5px
-1rem = 20px
+Browser font size:  20px
+html font size:     0.625 × 20px = 12.5px
+body font size:     1.6rem = 1.6 × 12.5px = 20px
 ```
 
-So the body font size equals the user's preferred root font size, as expected.
+So the body font size equals the browser font size, as expected.
 
 What about the `4.8rem`-sized heading? After the user sets their base font size to `20px`, this heading will have an effective font size of `60px`:
 
 ```plaintext
-0.625 × 20 = 12.5
-12.5 × 4.8 = 60
+Heading font size = 12.5px × 4.8rem = 60px
 ```
 
-This may seem strange since we actually wanted `4.8rem` to equal `48px`, but remember: That's only true when we assume a base font size of `16px`, which isn't the case here. If a user increases their preferred base font size, all font sizes will scale up proportionally (when using rems).
-
-So in this case, the fact that the heading is `60px` is a good thing because it means that the ratio between the `h1`'s size and the base font size is preserved:
+This may seem strange since we actually wanted `4.8rem` to equal `48px`, but remember: That's only true when we assume a base font size of `16px`, which isn't the case here. If a user increases their preferred base font size, all font sizes will scale up proportionally (when using rems). So in this case, it's good that the heading font size is `60px` because it means that the ratio between the `h1`'s size and the browser font size was preserved:
 
 ```plaintext
 Before: 48px ÷ 16px = 3
@@ -149,6 +169,6 @@ After:  60px ÷ 20px = 3
 
 ## Final Thoughts
 
-Using a base font size of `62.5%`, together with `rem`, provides the ideal compromise between respecting user font size preferences and making it easier to translate pixel measurements into responsive units. Everyone wins!
+Using a base font size of `62.5%`, together with `rem`s for font sizing, provides the ideal compromise between respecting user font size preferences and making it easier to translate pixel measurements into responsive units. Everyone wins!
 
 {% include unsplashAttribution.md name: "Chrissie Giannakoudi", username: "chrissiey", photoId: "aVDnC9mgxBY" %}
