@@ -186,7 +186,7 @@ Instead, we can (and should!) leverage the `aria-checked` attribute since we're 
 And now, styling the active selection is a simple matter of using the attribute selector:
 
 ```css
-button[aria-selected="true"] {}
+button[aria-checked="true"] {}
 ```
 
 Just as before, it turns out that the class name was completely redundant. In fact, because we reached for a class name prematurely, we forgot to communicate the right semantics at the markup level.
@@ -215,4 +215,4 @@ Thus, you wouldn't need to introduce additional class names at the parent level 
 
 If possible, try to represent your UI state using HTML attributes first, and only reach for class names when you really need them. With this approach, you're forced to use class names for their intended purpose: styling elements, not representing UI state. Consider whether there are existing HTML attributes that you can use to communicate an element's state to assistive technologies and crawlers. From there, styling the element should be straightforward and may not even require any additional class names.
 
-{% include unsplashAttribution.md user: "Chris Lawton", username: "chrislawton", photoId: "5IHz5WhosQE" %}
+{% include unsplashAttribution.md name: "Chris Lawton", username: "chrislawton", photoId: "5IHz5WhosQE" %}
