@@ -35,17 +35,6 @@
     justify-content: space-between;
   }
 
-  #navbar-menu {
-    position: fixed;
-    left: 0;
-    top: var(--navbar-height);
-    right: 0;
-    bottom: 0;
-    opacity: 0;
-    visibility: hidden;
-    @include transition(background-color, opacity, visibility);
-  }
-
   &-links {
     background-color: var(--navbar-bg-color);
     box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.8);
@@ -71,15 +60,17 @@
     color: var(--navbar-text-color);
     @include font-weight('regular');
   }
+}
 
-  // Mobile only
-  &.open {
-    #navbar-menu {
-      background-color: rgba(0, 0, 0, 0.4);
-      opacity: 1;
-      visibility: visible;
-    }
-  }
+#navbar-menu {
+  position: fixed;
+  left: 0;
+  top: var(--navbar-height);
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  visibility: hidden;
+  @include transition(background-color, opacity, visibility);
 }
 
 #home-link {
@@ -166,9 +157,7 @@
 // }
 
 .skip-navigation:focus,
-.navbar-link[aria-current="page"],
-.navbar-link:hover,
-.navbar-link:focus {
+.navbar-link:is([aria-current="page"], :hover, :focus) {
   color: white;
   background-color: var(--navbar-link-bg-color-focus);
 }
@@ -204,8 +193,7 @@
     display: flex;
 
     .icon-bar {
-      &:first-child,
-      &:last-child {
+      &:is(:first-child, :last-child) {
         position: absolute;
         margin: 0;
         width: var(--navbar-toggle-size);
@@ -223,6 +211,12 @@
       &:last-child {
         transform: rotate(-45deg);
       }
+    }
+
+    & + #navbar-menu {
+      background-color: hsla(0, 0%, 0%, 0.4);
+      opacity: 1;
+      visibility: visible;
     }
   }
 }
@@ -363,19 +357,24 @@
     position: unset;
   }
 
-  .navbar,
-  .navbar.open {
+  .navbar {
     box-shadow: none;
+  }
 
-    #navbar-menu {
+  #navbar-menu {
+    &,
+    #navbar-toggle[aria-expanded="true"] + & {
       position: static;
       display: flex;
       height: 100%;
       opacity: 1;
       visibility: visible;
     }
+  }
 
-    .navbar-links {
+  .navbar-links {
+    &,
+    #navbar-toggle[aria-expanded="true"] + #navbar-menu & {
       row-gap: 0;
       column-gap: 2rem;
       grid-auto-flow: column;
@@ -384,21 +383,21 @@
       padding: 0;
       position: static;
     }
+  }
 
-    .navbar-item {
-      height: 100%;
-      display: flex;
-      align-items: center;
-    }
+  .navbar-item {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
 
-    .navbar-link {
-      padding: 0.4rem 1.6rem;
-      display: inline;
-      margin: 0;
-    }
+  .navbar-link {
+    padding: 0.4rem 1.6rem;
+    display: inline;
+    margin: 0;
+  }
 
-    #navbar-toggle {
-      display: none;
-    }
+  #navbar-toggle[aria-expanded] {
+    display: none;
   }
 }
