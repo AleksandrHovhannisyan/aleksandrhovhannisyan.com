@@ -43,20 +43,20 @@ export const renderComments = async (comments) => {
       const postedByAuthor = comment.author_association === 'OWNER';
       const edited = comment.created_at !== comment.updated_at;
 
-      return `<li class="comment">
-                    <header class="comment-header">
-                        <img src="${user.avatar_url}" alt="" aria-hidden="true" class="comment-avatar">
+      return `<li class="post-comment">
+                    <header class="post-comment-header">
+                        <img src="${user.avatar_url}" alt="" aria-hidden="true" class="post-comment-avatar">
                         <a
                             href="https://github.com/${user.login}"
-                            class="comment-username"
+                            class="post-comment-username"
                             >${user.login}</a
                         >
-                        <div class="comment-meta comment-date-posted">commented
+                        <div class="post-comment-meta">commented
                         <time datetime="${comment.created_at}">${datePosted}</time></div>
-                        ${postedByAuthor ? '<span class="comment-meta tag comment-author-badge">Author</span>' : ''}
-                        ${edited ? `<span class="comment-meta comment-edited">Edited</span>` : ''}
+                        ${postedByAuthor ? '<span class="post-comment-meta tag post-comment-author">Author</span>' : ''}
+                        ${edited ? `<span class="post-comment-meta post-comment-edited">Edited</span>` : ''}
                     </header>
-                    <div class="comment-body">${body}</div>
+                    <div class="post-comment-body">${body}</div>
                 </li>`;
     })
     .join('');

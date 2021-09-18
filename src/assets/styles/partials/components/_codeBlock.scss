@@ -6,7 +6,7 @@
   position: relative;
 
   // Code blocks with a file name need a bit of top padding
-  &.with-file-name + pre[class*="language-"] {
+  &.with-file-name + pre[class*='language-'] {
     padding-top: 7.6rem;
   }
 }
@@ -64,7 +64,7 @@
 
 /* VS Code Dark Plus theme: https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vsc-dark-plus.css */
 
-pre[class*="language-"] {
+pre[class*='language-'] {
   background: var(--color-code-background);
   box-shadow: var(--code-block-box-shadow);
   padding: 3.2rem;
@@ -84,90 +84,7 @@ pre[class*="language-"] {
   }
 
   .namespace {
-    opacity: .7;
-  }
-
-  .token {
-    &.doctype,
-    &.doctype-tag {
-      .name {
-        color: var(--color-code-attribute);
-      }
-    }
-
-    &.comment {
-      margin: 0;
-    }
-
-    &.comment,
-    &.prolog {
-      color: var(--color-code-comment);
-    }
-
-    &.number {
-      color: var(--color-code-constant);
-    }
-
-    &.keyword,
-    &.tag,
-    &.boolean,
-    &.constant,
-    &.inserted,
-    &.operator.arrow,
-    &.key.atrule,
-    &.rule,
-    &.atrule &.url,
-    &.keyword.module,
-    &.keyword.control-flow,
-    &.entity,
-    &.important,
-    &.punctuation.interpolation-punctuation,
-    &.doctype,
-    &.doctype-tag,
-    &.directive-hash {
-      color: var(--color-code-keyword);
-    }
-
-    &.selector,
-    &.string,
-    &.char,
-    &.builtin,
-    &.deleted,
-    &.regex,
-    &.attr-value,
-    &.attr-value &.punctuation {
-      color: var(--color-code-string);
-    }
-
-    &.punctuation,
-    &.operator,
-    &.entity,
-    &.atrule &.url &.punctuation,
-    &.attr-value &.punctuation.attr-equals,
-    &.function,
-    &.function &.maybe-class-name {
-      color: var(--color-code-text);
-    }
-
-    &.attr-name,
-    &.constant,
-    &.console,
-    &.interpolation,
-    &.property,
-    &.variable,
-    &.imports &.maybe-class-name,
-    &.exports &.maybe-class-name {
-      color: var(--color-code-attribute);
-    }
-
-    &.tag &.punctuation,
-    &.cdata {
-      color: hsl(0, 0%, 50%);
-    }
-
-    &.italic {
-      font-style: italic;
-    }
+    opacity: 0.7;
   }
 
   &::selection,
@@ -178,17 +95,69 @@ pre[class*="language-"] {
   }
 }
 
+.token {
+  &:is(.doctype, .doctype-tag) {
+    .name {
+      color: var(--color-code-attribute);
+    }
+  }
+
+  &.comment {
+    margin: 0;
+  }
+
+  &:is(.comment, .prolog) {
+    color: var(--color-code-comment);
+  }
+
+  &.number {
+    color: var(--color-code-constant);
+  }
+
+  &:is(.keyword, .tag, .boolean, .constant, .inserted, .operator.arrow, .key.atrule, .rule, .keyword.module, .keyword.control-flow, .entity, .important, .punctuation.interpolation-punctuation, .doctype, .doctype-tag, .directive-hash),
+  &.atrule .url {
+    color: var(--color-code-keyword);
+  }
+
+  &:is(.selector, .string, .char, .builtin, .deleted, .regex, .attr-value),
+  &.attr-value &.punctuation {
+    color: var(--color-code-string);
+  }
+
+  &:is(.punctuation, .operator, .entity, .function),
+  &.atrule &.url &.punctuation,
+  &.attr-value &.punctuation.attr-equals,
+  &.function &.maybe-class-name {
+    color: var(--color-code-text);
+  }
+
+  &:is(.attr-name, .constant, .console, .interpolation, .property, .variable),
+  &.imports &.maybe-class-name,
+  &.exports &.maybe-class-name {
+    color: var(--color-code-attribute);
+  }
+
+  &.tag &.punctuation,
+  &.cdata {
+    color: hsl(0, 0%, 50%);
+  }
+
+  &.italic {
+    font-style: italic;
+  }
+}
+
 /* Language Specific */
 
-pre[class*="language-css"],
-pre[class*="language-scss"],
-pre[class*="language-sass"] {
+pre[class*='language-css'],
+pre[class*='language-scss'],
+pre[class*='language-sass'] {
   .token.selector {
     color: hsl(41, 53%, 67%);
   }
 }
 
-pre[class*="language-bash"] {
+pre[class*='language-bash'] {
   .token:not(.comment) {
     color: var(--color-code-text) !important;
   }

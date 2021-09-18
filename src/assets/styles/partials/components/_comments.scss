@@ -37,13 +37,11 @@
   grid-template-columns: minmax(0, 1fr);
 }
 
-:not(.token).comment {
+.post-comment {
   --avatar-size: 3.2rem;
   --meta-spacing: 0.8rem;
   padding-inline-start: calc(var(--avatar-size) + var(--meta-spacing));
-}
 
-.comment {
   &-header {
     display: flex;
     flex-wrap: wrap;
@@ -75,7 +73,7 @@
     font-style: italic;
   }
 
-  &-author-badge {
+  &-author {
     border-radius: 0.2rem;
     display: flex;
     align-items: center;
@@ -84,7 +82,6 @@
 
   &-body {
     @include rhythm;
-    grid-template-columns: minmax(0, 1fr);
 
     pre {
       white-space: pre-wrap;
