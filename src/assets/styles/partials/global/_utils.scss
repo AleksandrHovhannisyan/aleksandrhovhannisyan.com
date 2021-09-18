@@ -11,10 +11,14 @@
 }
 
 .centered {
-  max-width: var(--page-max-width);
+  --padding: MIN(4vw, 2.4rem);
+  // why not just use content-box? because it creates overflow issues on mobile with width: 100% below
+  max-width: calc(var(--page-max-width) + 2 * var(--padding));
   width: 100%;
-  margin: 0 auto;
-  padding: 0 MIN(4vw, 2.4rem);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--padding);
+  padding-right: var(--padding);
 }
 
 .underlined-link {
