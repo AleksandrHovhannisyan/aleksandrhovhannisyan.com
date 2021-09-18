@@ -3,6 +3,7 @@ title: Represent State with HTML Attributes, Not Class Names
 description: We often use class names to represent a change in a component's state. But really, we should use HTML attributes and the CSS attribute selector to style those states.
 keywords: [html attributes, CSS attribute selector, class names]
 categories: [a11y, html, css]
+commentsId: 108
 thumbnail: thumbnail.jpg
 ---
 

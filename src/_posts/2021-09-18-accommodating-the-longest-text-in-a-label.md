@@ -8,6 +8,7 @@ title: Accommodating the Longest Text in a Label with CSS Grid
 description: Suppose a label renders strings of different lengths, but you want it to always reserve space for the longest text to prevent layout shifts. You can do this using a CSS grid trick.
 keywords: [longest text, layout shifts, css grid]
 categories: [css, css-grid, webperf, react]
+commentsId: 109
 thumbnail: thumbnail.jpg
 ---
 
