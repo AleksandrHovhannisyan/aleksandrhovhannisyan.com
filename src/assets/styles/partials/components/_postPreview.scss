@@ -36,6 +36,11 @@
   }
 
   &-thumbnail {
+    img {
+      object-fit: cover;
+      object-position: center;
+    }
+
     .light &.loaded img {
       filter: blur(0) contrast(0.95);
     }

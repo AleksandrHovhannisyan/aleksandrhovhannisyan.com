@@ -2,13 +2,13 @@
 
 .lazy-picture {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .lazy-img {
   --transition-duration: 0.8s;
   height: auto;
-  object-fit: cover;
-  object-position: center;
   width: 100%;
   filter: blur(0.4rem);
   @include transition(filter);
@@ -16,12 +16,6 @@
 
 .loaded .lazy-img {
   filter: initial;
-}
-
-.clickable-picture-anchor {
-  width: 100%;
-  display: block;
-  cursor: zoom-in;
 }
 
 .dark .loaded .lazy-img {
