@@ -21,16 +21,6 @@
   padding-right: var(--padding);
 }
 
-// Links an entire parent container, but the parent must be set to relative position
-.container-link {
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-}
-
 .underlined-link {
   @include underlined-link;
 }

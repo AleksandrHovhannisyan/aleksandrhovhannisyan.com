@@ -15,7 +15,7 @@
         <li class="tag project-technology">{{ tech }}</li>
       {%- endfor -%}
     </ul>
-    <a class="container-link" href="{{ project.url }}" aria-label="Explore {{ project.name }} on GitHub"></a>
+    <a class="project-link" href="{{ project.url }}" aria-label="Explore {{ project.name }} on GitHub" target="_blank" rel="noreferrer noopener"></a>
     <div class="explore-project-on-github" aria-hidden="true">
         Explore on GitHub
         {%- include icon.html icon: "external-link", stroke: "currentColor", fill: "none", width: "32", height: "32" -%}
