@@ -7,7 +7,7 @@
   gap: 1.6rem;
   position: relative;
   @include font-size('sm');
-  @include font-weight('light');
+  @include font-weight('main', 'light');
 
   &-icon {
     height: 1.6rem;
@@ -51,5 +51,5 @@
   background: var(--main-bg-color);
   padding: 0.8rem 1.6rem;
   color: var(--color-text-emphasis);
-  @include font-weight('bold');
+  @include font-weight('main', 'bold');
 }

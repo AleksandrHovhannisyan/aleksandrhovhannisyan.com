@@ -63,6 +63,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter('compileAndMinifyScss', compileAndMinifyScss);
   eleventyConfig.addFilter('keys', Object.keys);
   eleventyConfig.addFilter('values', Object.values);
+  eleventyConfig.addFilter('entries', Object.entries);
 
   // Custom collections
   eleventyConfig.addCollection('posts', posts);

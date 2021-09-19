@@ -61,7 +61,7 @@
 
   &-username {
     color: var(--color-text-emphasis);
-    @include font-weight('bold');
+    @include font-weight('main', 'bold');
     @include underlined-link;
   }
 

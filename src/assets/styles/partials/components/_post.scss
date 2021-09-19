@@ -18,7 +18,7 @@
     #skip-toc {
       transform: translateY(-50%);
       padding: 0.2rem 0.8rem;
-      @include font-weight('bold');
+      @include font-weight('main', 'bold');
     }
 
     .toc-list {

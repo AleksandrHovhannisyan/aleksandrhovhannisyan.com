@@ -2,14 +2,14 @@
 
 @include headings {
   color: var(--color-text-emphasis);
+  @include font-weight('main', 'bold');
 
   .heading-anchor {
     @include underlined-link($initially-underlined: false);
   }
 
-  &,
   code {
-    @include font-weight('bold');
+    @include font-weight('code', 'bold');
   }
 }
 

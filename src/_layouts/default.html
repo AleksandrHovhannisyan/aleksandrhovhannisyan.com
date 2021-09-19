@@ -39,10 +39,10 @@
     {%- include fontFace.liquid -%}
     {%- include fontVariables.liquid -%}
     body {
-      font-family: var(--font-main);
+      font-family: var(--font-family-main);
     }
     code {
-      font-family: var(--font-code);
+      font-family: var(--font-family-code);
     }
   {%- endcapture -%}
   <style>{{ fontCss | compileAndMinifyScss }}</style>

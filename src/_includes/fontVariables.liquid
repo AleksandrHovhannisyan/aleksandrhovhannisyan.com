@@ -4,7 +4,15 @@ from it for things like font family.{%- endcomment -%}
 html {
   {%- for fontType in fontTypeNames -%}
     {%- assign family = fonts[fontType].family -%}
+    {%- assign weights = fonts[fontType].weights | entries -%}
     {%- assign fallbackFontStack = fonts[fontType].fallbacks | join: ", " -%}
-    --font-{{ fontType }}: {{ family }}, {{ fallbackFontStack }};
+    --font-family-{{ fontType }}: {{ family }}, {{ fallbackFontStack }};
+    {%- for weight in weights -%}
+      {%- assign weightName = weight | first -%}
+      {%- assign weightConfig = weight | last -%}
+      {%- if weightConfig.style != 'italic' -%}
+        --font-weight-{{ fontType }}-{{ weightName }}: {{ weightConfig.weight }};
+      {%- endif -%}
+    {%- endfor -%}
   {%- endfor -%}
 }

@@ -5,7 +5,7 @@ thead {
   color: var(--color-text-emphasis);
 
   th {
-    @include font-weight('bold');
+    @include font-weight('main', 'bold');
   }
 }
 

@@ -24,7 +24,7 @@
   border-radius: 0.8rem 0.8rem 0 0;
   background-color: var(--color-code-background);
   @include font-size('sm');
-  @include font-weight('regular');
+  @include font-weight('main', 'regular');
 
   &::before {
     content: '📂';

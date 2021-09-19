@@ -12,6 +12,7 @@
     margin: 0 auto 1.6rem auto;
     position: relative;
     @include font-family('cursiveTitle');
+    @include font-weight('cursiveTitle', 'regular');
 
     &::after {
       @keyframes subtitle-pulse {
@@ -34,7 +35,7 @@
       will-change: transform;
       @include font-family('cursiveBody');
       @include font-size('md');
-      @include font-weight('regular');
+      @include font-weight('cursiveBody', 'regular');
 
       @include mobile-lg {
         @keyframes subtitle-pulse {

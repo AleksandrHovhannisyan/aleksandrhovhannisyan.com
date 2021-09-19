@@ -47,7 +47,7 @@
   &-name {
     color: var(--color-text-emphasis);
     @include font-size('base');
-    @include font-weight('bold');
+    @include font-weight('main', 'bold');
   }
 
   &-rating {
@@ -94,7 +94,7 @@
   background-color: var(--card-bg-color);
   @include transition(opacity);
   @include font-size('md');
-  @include font-weight("bold");
+  @include font-weight('main', 'bold');
 }
 
 .github-cta {

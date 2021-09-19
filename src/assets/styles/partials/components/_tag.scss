@@ -3,7 +3,7 @@
 :not(.token).tag {
   background-color: var(--tag-bg-color);
   color: var(--color-text-emphasis);
-  @include font-weight("regular");
+  @include font-weight('main', 'regular');
 }
 
 // Because not all tags are links/interactive (see project cards)

@@ -22,7 +22,6 @@
   &-title {
     grid-area: title;
     @include font-size('base');
-    @include font-weight('bold');
 
     a {
       color: var(--color-text-emphasis);

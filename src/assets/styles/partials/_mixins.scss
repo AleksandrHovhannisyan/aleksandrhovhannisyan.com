@@ -35,19 +35,19 @@
 }
 
 @mixin font-family($family) {
-  font-family: var(--font-#{$family});
+  font-family: var(--font-family-#{$family});
 }
 
-@mixin font-weight($human-readable-weight: inherit) {
-  font-weight: var(--fw-#{$human-readable-weight});
+@mixin font-weight($family, $weight-name: inherit) {
+  font-weight: var(--font-weight-#{$family}-#{$weight-name});
 }
 
 @mixin font-size($size) {
   // expose CSS var to later compute other things, e.g., spacing
-  --line-height: var(--lh-#{$size});
-  font-size: var(--fs-#{$size});
+  --line-height: var(--line-height-#{$size});
+  font-size: var(--font-size-#{$size});
   line-height: var(--line-height);
-  letter-spacing: var(--ls-#{$size});
+  letter-spacing: var(--letter-spacing-#{$size});
 }
 
 @mixin underlined-link($initially-underlined: true) {

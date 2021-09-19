@@ -12,7 +12,7 @@ body {
   min-height: 100vh;
   background-color: var(--main-bg-color);
   color: var(--color-text-normal);
-  @include font-weight('regular');
+  @include font-weight('main', 'regular');
   @include font-size('base');
 }
 
@@ -24,7 +24,7 @@ body {
 
 strong {
   color: var(--color-text-emphasis);
-  @include font-weight('bold');
+  @include font-weight('main', 'bold');
 }
 
 a {

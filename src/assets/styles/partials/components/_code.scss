@@ -1,6 +1,8 @@
+@import '../mixins';
+
 code {
   font-size: 0.925em;
-  font-weight: 500;
+  @include font-weight('code', 'regular');
 }
 
 // Inline code

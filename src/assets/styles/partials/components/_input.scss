@@ -16,7 +16,7 @@
 
 label {
   color: var(--color-text-emphasis);
-  @include font-weight('bold');
+  @include font-weight('main', 'bold');
 
   &.required::after {
     content: '*';
