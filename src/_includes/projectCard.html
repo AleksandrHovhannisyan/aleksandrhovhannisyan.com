@@ -1,23 +1,22 @@
 <div class="card project">
-    <header class="project-header">
-        <div class="project-name-wrapper">
-            <span class="project-icon" aria-hidden="true">{{ project.icon }}</span>
-            <h3 class="project-name">{{ project.name }}</h3>
-        </div>
-        <div class="project-rating" role="img" aria-label="Rated {{ project.rating }} stars on GitHub">
-          {%- include icon.html icon: "star", width: "18", height: "18", fill: "currentColor", stroke: "none" -%}
-          <span>{{ project.rating }}</span>
-        </div>
-    </header>
-    <p class="project-description">{{ project.description }}</p>
-    <ul class="project-technologies" aria-label="Technologies used">
-      {%- for tech in project.tech -%}
-        <li class="tag project-technology">{{ tech }}</li>
-      {%- endfor -%}
-    </ul>
-    <a class="project-link" href="{{ project.url }}" aria-label="Explore {{ project.name }} on GitHub" target="_blank" rel="noreferrer noopener"></a>
-    <div class="explore-project-on-github" aria-hidden="true">
-        Explore on GitHub
-        {%- include icon.html icon: "external-link", stroke: "currentColor", fill: "none", width: "32", height: "32" -%}
+  <header class="project-header">
+    <div class="project-name-wrapper">
+      <span class="project-icon" aria-hidden="true">{{ project.icon }}</span>
+      <h3 class="project-name">{{ project.name }}</h3>
     </div>
+    <div class="project-rating" role="img" aria-label="Rated {{ project.rating }} stars on GitHub">
+      {%- include icon.html icon: "star", width: "18", height: "18", fill: "currentColor", stroke: "none" -%}
+      <span>{{ project.rating }}</span>
+    </div>
+  </header>
+  <p class="project-description">{{ project.description }}</p>
+  <ul class="project-technologies" aria-label="Technologies used">
+    {%- for tech in project.tech -%}
+    <li class="tag project-technology">{{ tech }}</li>
+    {%- endfor -%}
+  </ul>
+  <a class="project-link" href="{{ project.url }}" target="_blank" rel="noreferrer noopener">
+    Explore on GitHub
+    {%- include icon.html icon: "external-link", stroke: "currentColor", fill: "none", width: "32", height: "32" -%}
+  </a>
 </div>
