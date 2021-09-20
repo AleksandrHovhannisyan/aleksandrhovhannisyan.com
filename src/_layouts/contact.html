@@ -12,7 +12,8 @@ layout: default
           <li>
             <a class="contact-social" href="{{ network.url }}" target="_blank" rel="noreferrer noopener">
               {% socialIcon network.icon -%}
-              <span class="contact-social-name">{{ network.name }}</span>
+              {%- comment -%}Icons already have a title; having both that and a visible label = double narration{%- endcomment -%}
+              <span class="contact-social-name" aria-hidden="true">{{ network.name }}</span>
             </a>
           </li>
         {% endfor %}
