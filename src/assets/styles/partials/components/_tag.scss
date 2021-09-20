@@ -13,5 +13,5 @@ a.tag {
     color: var(--color-text-inverted);
   }
 
-  @include focus-outline($color: var(--tag-bg-color-focus), $style: solid, $thickness: 0.2rem, $offset: 0.2rem);
+  @include focus-outline($color: var(--tag-bg-color-focus), $offset: 0.2rem);
 }

@@ -78,7 +78,7 @@
   column-gap: 0.4rem;
   align-items: center;
   @include font($family: 'main', $weight: 'bold');
-  @include focus-outline((color: white, offset: 0.4rem)...);
+  @include focus-outline($color: white, $offset: 0.4rem);
 
   .logo {
     width: 2.8rem;

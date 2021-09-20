@@ -28,7 +28,7 @@ strong {
 
 a {
   color: var(--color-text-emphasis);
-  @include focus-outline($color: currentColor, $style: solid, $thickness: 0.2rem);
+  @include focus-outline;
 }
 
 .section + .section {

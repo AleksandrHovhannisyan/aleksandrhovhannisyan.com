@@ -61,7 +61,7 @@
     height: 4.8rem;
     max-width: 100%;
     width: 100%;
-    @include focus-outline((color: var(--button-bg-color-focus), offset: 0.2rem)...);
+    @include focus-outline($color: var(--button-bg-color-focus), $offset: 0.2rem);
   }
 
   &-socials {
