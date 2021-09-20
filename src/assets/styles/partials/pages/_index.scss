@@ -9,7 +9,7 @@
   }
 
   &-subtitle {
-    @include font-size('md');
+    @include font($size: 'md');
   }
 
   &-headshot {

@@ -45,5 +45,5 @@
   color: black;
   margin: 0;
   font-family: Reenie Beanie, cursive;
-  @include font-size('lg');
+  @include font($size: 'lg');
 }

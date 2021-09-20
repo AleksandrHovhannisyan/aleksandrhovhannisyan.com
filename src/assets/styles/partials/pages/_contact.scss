@@ -20,10 +20,10 @@
 
   &-title {
     margin-bottom: 0.8rem;
-    @include font-size('xl');
+    @include font($size: 'xl');
 
     .submitted & {
-      @include font-size('xxxl');
+      @include font($size: 'xxxl');
     }
   }
 
@@ -70,7 +70,7 @@
     grid-template-rows: min-content auto;
 
     &-heading {
-      @include font-size('md');
+      @include font($size: 'md');
     }
 
     &-list {
@@ -104,7 +104,7 @@
     }
 
     &-name {
-      @include font-weight('main', 'regular');
+      @include font($family: 'main', $weight: 'regular');
     }
   }
 }

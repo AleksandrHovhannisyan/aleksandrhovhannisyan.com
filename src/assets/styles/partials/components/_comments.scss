@@ -61,12 +61,12 @@
 
   &-username {
     color: var(--color-text-emphasis);
-    @include font-weight('main', 'bold');
+    @include font($family: 'main', $weight: 'bold');
     @include underlined-link;
   }
 
   &-meta {
-    @include font-size('sm');
+    @include font($size: 'sm');
   }
 
   &-edited {
@@ -88,7 +88,7 @@
     }
 
     @include headings {
-      @include font-size('base');
+      @include font($size: 'base');
     }
   }
 }

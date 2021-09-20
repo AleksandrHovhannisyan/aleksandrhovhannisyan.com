@@ -10,7 +10,7 @@ figcaption,
 cite {
   font-style: italic;
   text-align: center;
-  @include font-size('sm');
+  @include font($size: 'sm');
 
   &, a {
     color: var(--color-text-soft);

@@ -7,7 +7,7 @@
   justify-content: center;
   width: 100%;
   text-align: center;
-  @include font-size('sm');
+  @include font($size: 'sm');
 
   &-container {
     display: flex;
@@ -21,7 +21,7 @@
   &-title {
     color: white;
     margin-bottom: 0.8rem;
-    @include font-size('lg');
+    @include font($size: 'lg');
   }
 
   &-subtitle {
@@ -30,7 +30,7 @@
 
   &-copyright {
     color: hsl(0, 0%, 70%);
-    @include font-size('sm');
+    @include font($size: 'sm');
   }
 
   &-links {

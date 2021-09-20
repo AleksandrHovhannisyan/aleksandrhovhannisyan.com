@@ -23,8 +23,7 @@
   padding: 2.4rem 2.4rem 0 2.4rem;
   border-radius: 0.8rem 0.8rem 0 0;
   background-color: var(--color-code-background);
-  @include font-size('sm');
-  @include font-weight('main', 'regular');
+  @include font($family: 'main', $weight: 'regular', $size: 'sm');
 
   &::before {
     content: '📂';
@@ -40,7 +39,7 @@
   background-color: var(--color-code-overlay-1);
   padding: 0.6rem 1.2rem;
   border-radius: 0.4rem;
-  @include font-size('sm');
+  @include font($size: 'sm');
 
   &::before {
     content: 'Copy 📋';

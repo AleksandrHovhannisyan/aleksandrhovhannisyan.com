@@ -2,7 +2,7 @@
 
 code {
   font-size: 0.925em;
-  @include font-weight('code', 'regular');
+  @include font($family: 'code', $weight: 'regular');
 }
 
 // Inline code

@@ -36,7 +36,7 @@
   p {
     color: hsl(0, 0%, 75%);
     margin-bottom: 1.6rem;
-    @include font-size('lg');
+    @include font($size: 'lg');
   }
 
   a {

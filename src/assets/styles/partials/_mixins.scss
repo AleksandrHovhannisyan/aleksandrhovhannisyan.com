@@ -34,20 +34,23 @@
   z-index: z-index($key);
 }
 
-@mixin font-family($family) {
-  font-family: var(--font-family-#{$family});
-}
-
-@mixin font-weight($family, $weight-name: inherit) {
-  font-weight: var(--font-weight-#{$family}-#{$weight-name});
-}
-
-@mixin font-size($size) {
-  // expose CSS var to later compute other things, e.g., spacing
-  --line-height: var(--line-height-#{$size});
-  font-size: var(--font-size-#{$size});
-  line-height: var(--line-height);
-  letter-spacing: var(--letter-spacing-#{$size});
+@mixin font($family: null, $weight: null, $style: null, $size: null) {
+  @if $family {
+    font-family: var(--font-family-#{$family});
+  }
+  @if $family and $weight {
+    font-weight: var(--font-weight-#{$family}-#{$weight});
+  }
+  @if $style {
+    font-style: $style;
+  }
+  @if $size {
+    // expose CSS var to later compute other things, e.g., spacing
+    --line-height: var(--line-height-#{$size});
+    font-size: var(--font-size-#{$size});
+    line-height: var(--line-height);
+    letter-spacing: var(--letter-spacing-#{$size});
+  }
 }
 
 @mixin underlined-link($initially-underlined: true) {

@@ -2,37 +2,37 @@
 
 @include headings {
   color: var(--color-text-emphasis);
-  @include font-weight('main', 'bold');
+  @include font($family: 'main', $weight: 'bold');
 
   .heading-anchor {
     @include underlined-link($initially-underlined: false);
   }
 
   code {
-    @include font-weight('code', 'bold');
+    @include font($family: 'code', $weight: 'bold');
   }
 }
 
 h1 {
-  @include font-size('xxxl');
+  @include font($size: 'xxxl');
 }
 
 h2 {
-  @include font-size('xxl');
+  @include font($size: 'xxl');
 }
 
 h3 {
-  @include font-size('xl');
+  @include font($size: 'xl');
 }
 
 h4 {
-  @include font-size('lg');
+  @include font($size: 'lg');
 }
 
 h5 {
-  @include font-size('md');
+  @include font($size: 'md');
 }
 
 h6 {
-  @include font-size('base');
+  @include font($size: 'base');
 }

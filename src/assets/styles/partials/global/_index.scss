@@ -12,8 +12,7 @@ body {
   min-height: 100vh;
   background-color: var(--main-bg-color);
   color: var(--color-text-normal);
-  @include font-weight('main', 'regular');
-  @include font-size('base');
+  @include font($family: 'main', $weight: 'regular', $size: 'base');
 }
 
 #page-content {
@@ -24,7 +23,7 @@ body {
 
 strong {
   color: var(--color-text-emphasis);
-  @include font-weight('main', 'bold');
+  @include font($family: 'main', $weight: 'bold');
 }
 
 a {

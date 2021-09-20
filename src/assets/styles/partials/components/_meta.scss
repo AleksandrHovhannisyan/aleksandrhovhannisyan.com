@@ -6,8 +6,7 @@
   flex-wrap: wrap;
   gap: 1.6rem;
   position: relative;
-  @include font-size('sm');
-  @include font-weight('main', 'light');
+  @include font($family: 'main', $weight: 'light', $size: 'sm');
 
   &-item {
     display: flex;
@@ -48,5 +47,5 @@
   background: var(--main-bg-color);
   padding: 0.8rem 1.6rem;
   color: var(--color-text-emphasis);
-  @include font-weight('main', 'bold');
+  @include font($family: 'main', $weight: 'bold');
 }

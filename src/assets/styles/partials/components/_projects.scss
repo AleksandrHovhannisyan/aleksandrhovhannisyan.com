@@ -46,8 +46,7 @@
 
   &-name {
     color: var(--color-text-emphasis);
-    @include font-size('base');
-    @include font-weight('main', 'bold');
+    @include font($size: 'base');
   }
 
   &-rating {
@@ -55,7 +54,7 @@
     grid-auto-flow: column;
     column-gap: 0.4rem;
     align-items: center;
-    @include font-size('sm');
+    @include font($size: 'sm');
   }
 
   &-technologies {
@@ -67,7 +66,7 @@
   &-technology {
     border-radius: 0.2rem;
     padding: 0.4rem 1.2rem;
-    @include font-size('sm');
+    @include font($size: 'sm');
   }
 
   &-link {
@@ -93,8 +92,7 @@
   color: var(--color-text-emphasis);
   background-color: var(--card-bg-color);
   @include transition(opacity);
-  @include font-size('md');
-  @include font-weight('main', 'bold');
+  @include font($family: 'main', $weight: 'bold', $size: 'md');
 }
 
 .github-cta {
@@ -104,7 +102,7 @@
   align-items: center;
 
   &-heading {
-    @include font-size('base');
+    @include font($size: 'base');
   }
 
   &-subheading {
