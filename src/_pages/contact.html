@@ -10,12 +10,12 @@ permalink: /contact/
   <p class="contact-subtitle">Fields marked with an asterisk are required.</p>
   <form class="contact-form" method="POST" action="/contact/submitted/" spellcheck="false" name="contact" netlify netlify-honeypot="_gotcha">
     <div class="labeled-input">
-      <label class="required" for="name">Name</label>
-      <input class="input" type="text" name="name" id="name" required />
-    </div>
-    <div class="labeled-input">
       <label for="email">Email</label>
       <input class="input" type="email" name="_replyto" id="email" />
+    </div>
+    <div class="labeled-input">
+      <label class="required" for="subject">Subject</label>
+      <input class="input" type="text" name="subject" id="subject" required />
     </div>
     <div class="labeled-input">
       <label class="required" for="message">Message</label>
