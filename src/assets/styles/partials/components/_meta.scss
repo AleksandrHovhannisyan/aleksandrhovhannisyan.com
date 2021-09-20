@@ -9,6 +9,12 @@
   @include font-size('sm');
   @include font-weight('main', 'light');
 
+  &-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
   &-icon {
     height: 1.6rem;
     width: 1.6rem;
@@ -36,15 +42,6 @@
   img {
     border-radius: 50%;
   }
-}
-
-.post-date-published,
-.post-date-updated,
-.post-reading-length {
-  display: grid;
-  grid-auto-flow: column;
-  align-items: center;
-  gap: 0.4rem;
 }
 
 .skip-post-meta-tags {
