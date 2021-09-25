@@ -326,9 +326,9 @@ const body = DOMPurify.sanitize(marked(comment.body));
 
 We're sanitizing the output HTML per `marked`'s README suggestion:
 
-{% aside "marked GitHub README", "https://github.com/markedjs/marked#warning--marked-does-not-sanitize-the-output-html-please-use-a-sanitize-library-like-dompurify-recommended-sanitize-html-or-insane-on-the-output-html-" %}
+{% quote "marked GitHub README", "https://github.com/markedjs/marked#warning--marked-does-not-sanitize-the-output-html-please-use-a-sanitize-library-like-dompurify-recommended-sanitize-html-or-insane-on-the-output-html-" %}
   Warning: 🚨 Marked does not sanitize the output HTML. Please use a sanitize library, like DOMPurify (recommended), sanitize-html or insane on the output HTML! 🚨
-{% endaside %}
+{% endquote %}
 
 Hopefully the rest of the code is self-explanatory. You can change any of these class names and remove any markup that you don't need for your purposes. For example, these lines are optional:
 
