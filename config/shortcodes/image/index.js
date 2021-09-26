@@ -23,27 +23,25 @@ const imageShortcode = async (relativeSrc, props) => {
     clickable = true,
   } = props ?? {};
 
-  // Templates shouldn't have to worry about passing in `null` and the placeholder width
-  const finalWidths = [ImageWidths.ORIGINAL, ImageWidths.PLACEHOLDER, ...widths];
-
   const { name: imgName, dir: imgDir } = path.parse(relativeSrc);
   const fullyQualifiedSrc = path.join(dir.input, relativeSrc);
 
-  // List optimized formats before the base format so that the output contains webp sources before jpegs.
-  const formats = [...optimizedFormats, baseFormat];
-
-  const imageMetadata = await Image(fullyQualifiedSrc, {
-    widths: finalWidths,
-    formats,
+  const imageOptions = {
+    // Templates shouldn't have to worry about passing in `null` and the placeholder width
+    widths: [ImageWidths.ORIGINAL, ImageWidths.PLACEHOLDER, ...widths],
+    // List optimized formats before the base format so that the output contains webp sources before jpegs.
+    formats: [...optimizedFormats, baseFormat],
     // Where the generated image files get saved
     outputDir: path.join(dir.output, imgDir),
     // Public URL path that's referenced in the img tag's src attribute
     urlPath: imgDir,
     // Custom file name
     filenameFormat: (_id, _src, width, format) => {
-      return `${imgName}-${width === ImageWidths.PLACEHOLDER ? 'placeholder' : width}.${format}`;
+      const suffix = width === ImageWidths.PLACEHOLDER ? 'placeholder' : width;
+      return `${imgName}-${suffix}.${format}`;
     },
-  });
+  };
+  const imageMetadata = await Image(fullyQualifiedSrc, imageOptions);
 
   // Map each unique format (e.g., jpeg, webp) to its smallest and largest images
   const formatSizes = Object.entries(imageMetadata).reduce((formatSizes, [format, images]) => {
