@@ -6,6 +6,7 @@ categories: [svg, html, css]
 lastUpdated: 2021-08-07
 commentsId: 68
 isPopular: true
+thumbnail: thumbnail.png
 ---
 
 For as long as I can remember, I avoided touching SVGs when working with front-end code. I'd have no trouble with HTML, CSS, or JavaScript, but SVGs always intimidated me with their bizarre syntax and those weird, indecipherable strings of letters and numbers. You know the ones:

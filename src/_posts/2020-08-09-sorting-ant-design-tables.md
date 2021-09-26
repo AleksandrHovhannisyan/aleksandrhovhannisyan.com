@@ -5,6 +5,7 @@ keywords: [sort ant design tables]
 categories: [antd, react, frontend]
 commentsId: 53
 isPopular: true
+thumbnail: thumbnail.png
 ---
 
 Want to sort tables in Ant Design but without putting in much effort? Then you're in luck—in this post, we'll look at how you can automate this process to easily sort any column (even multiple ones in combination).

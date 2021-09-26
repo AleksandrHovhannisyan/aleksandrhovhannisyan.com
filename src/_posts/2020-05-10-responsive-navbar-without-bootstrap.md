@@ -6,6 +6,7 @@ categories: [html, css, javascript]
 commentsId: 28
 isPopular: true
 lastUpdated: 2021-09-18
+thumbnail: thumbnail.png
 ---
 
 Navigation bars (also known as _navbars_) are practically everywhere on modern websites, so it's good to know how to create one by hand without relying on a component library that does all of the heavy lifting for you. But if you've never created a navbar from scratch, you may find it intimidating to get started.

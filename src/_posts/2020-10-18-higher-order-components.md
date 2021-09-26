@@ -5,6 +5,7 @@ keywords: [higher-order components]
 categories: [react, design-patterns]
 lastUpdated: 2020-11-10
 commentsId: 61
+thumbnail: thumbnail.jpg
 ---
 
 If you're new to React, or even if you've been using it for a while, you may have heard about these things called **higher-order components (HOCs)**, and shuddered at the apparent complexity of the term. It certainly *sounds* like something fancy that's beyond a beginner's comprehension. But that's not the case at all—the truth is that higher-order components in React are a very intuitive (and powerful!) design pattern.
@@ -800,8 +801,4 @@ Note that higher-order components are still relevant if your code base uses clas
 
 The higher-order component design pattern is pretty powerful once you get comfortable with it and realize what it's doing. In a nutshell, higher-order components are **component factories** that take a component, inject props into it, and return the modified component. As we saw, you can compose higher-order components and even combine them with React's Context API to write powerful, reusable code.
 
-## Attributions
-
-The copyright for the React logo used in this blog post's thumbnail [belongs to Facebook](https://commons.wikimedia.org/wiki/File:React-icon.svg).
-
-The image of the factory was taken by [Patrick Hendry](https://unsplash.com/photos/6xeDIZgoPaw) on Unsplash.
+{% include unsplashAttribution.md name: "Patrick Hendry", username: "worldsbetweenlines", photoId: "6xeDIZgoPaw" %}

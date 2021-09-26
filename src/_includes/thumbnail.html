@@ -1,9 +1,3 @@
-{%- comment -%}By default, thumbnails are assumed to be PNGs.{%- endcomment -%}
-{%- assign thumbnailFileName = 'thumbnail.png' -%}
-{%- comment -%}Override{%- endcomment -%}
-{%- if post.data.thumbnail -%}
-  {%- assign thumbnailFileName = post.data.thumbnail -%}
-{%- endif -%}
 {%- comment -%}Assemble src by looking up the post's slug under the image folder{%- endcomment -%}
-{%- assign src = '/assets/images/posts/' | append: post.fileSlug | append: '/' | append: thumbnailFileName -%}
+{%- assign src = '/assets/images/posts/' | append: post.fileSlug | append: '/' | append: post.data.thumbnail -%}
 {%- include image.html src: src, alt: "", className: "post-preview-thumbnail", clickable: false, widths: "[24, 200, 400, 800, 1280]", sizes: "(max-width: 400px) 400px, (max-width: 768px) 800px, 400px" -%}

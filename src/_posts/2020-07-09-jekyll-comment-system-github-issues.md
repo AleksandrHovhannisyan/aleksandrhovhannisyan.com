@@ -5,6 +5,7 @@ keywords: [jekyll comment system]
 categories: [jekyll, github, javascript]
 commentsId: 45
 lastUpdated: 2021-08-01
+thumbnail: thumbnail.png
 ---
 
 A while back, [Ari Stathopoulos wrote a tutorial](https://aristath.github.io/blog/static-site-comments-using-github-issues-api) on how to add comments to a Jekyll blog using the GitHub Issues API. And you know what? It works like a charm! Ever since I added comments to my Jekyll blog, I've seen a noticeable increase in engagement from my readers:

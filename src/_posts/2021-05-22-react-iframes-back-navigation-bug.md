@@ -4,6 +4,7 @@ description: If an iframe re-renders in React, it can interfere with back naviga
 keywords: [iframes, react, back navigation, browser history]
 categories: [browsers, react, javascript]
 commentsId: 84
+thumbnail: thumbnail.jpg
 ---
 
 You're using iframes to embed content on a page in React.

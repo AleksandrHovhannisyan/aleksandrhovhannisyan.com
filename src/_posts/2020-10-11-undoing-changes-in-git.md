@@ -4,6 +4,7 @@ description: If you ever find yourself in a sticky situation with git, don't pan
 keywords: [undo changes in git, git]
 categories: [git, github]
 commentsId: 60
+thumbnail: thumbnail.png
 ---
 
 Eventually, there will come a point when you'll find yourself having to modify old commits, delete commits, and rewrite history in all sorts of scary ways. Especially if you're new to git, it can sometimes feel like you're navigating a minefield. But fear not—it's actually easier than you think! In this post, we'll look at a bunch of ways you can undo changes in git and rewrite your commit history.

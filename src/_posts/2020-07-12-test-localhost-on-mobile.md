@@ -4,6 +4,7 @@ description: Learn how to easily test localhost on mobile using ngrok, without d
 keywords: [test localhost on mobile]
 categories: [ngrok, testing, mobile]
 commentsId: 47
+thumbnail: thumbnail.png
 ---
 
 Long ago, mobile-first development was a fancy new trend on the horizon of web development. Now, it's practically the industry standard. It's no secret that [Google uses mobile-first indexing](https://developers.google.com/search/mobile-sites/mobile-first-indexing), and mobile has consistently accounted for [nearly 50% of global web traffic](https://www.statista.com/statistics/277125/share-of-website-traffic-coming-from-mobile-devices/#:~:text=Mobile%20accounts%20for%20approximately%20half,since%20the%20beginning%20of%202017.) since 2017.

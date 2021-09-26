@@ -5,6 +5,7 @@ keywords: [format code on save, auto-format code on save, auto-formatting code, 
 categories: [eslint, vscode, tooling]
 commentsId: 80
 isPopular: true
+thumbnail: thumbnail.png
 ---
 
 I've read my fair share of StackOverflow posts, GitHub issues, and Reddit threads on what you'd think would be a simple task: how to format code with ESLint (in VS Code). Eventually, I happen upon an answer that actually works, copy-paste the code, and move on with my life... That is, until I need to start a new project, when the whole cycle begins anew.

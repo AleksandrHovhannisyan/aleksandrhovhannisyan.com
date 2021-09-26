@@ -6,6 +6,7 @@ categories: [jekyll, liquid, github]
 commentsId: 34
 isPopular: true
 lastUpdated: 2020-10-02
+thumbnail: thumbnail.png
 ---
 
 Want to make a personal website or blog and share it with the world? Then you've come to the right place! This is the only guide you'll need on getting started with Jekyll. I'll take you from zero to hero with Jekyll and help you understand all the fundamentals.

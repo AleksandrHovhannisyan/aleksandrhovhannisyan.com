@@ -3,6 +3,7 @@ title: Blue People Illustrations, or How to Kill a Brand
 description: There's a recent trend in web design of using illustrations of blue, generic, faceless people. And it's killing brands.
 keywords: [blue people illustrations]
 categories: [design, frontend]
+thumbnail: thumbnail.png
 ---
 
 You stumble upon a landing page with a white background, some faceless blue people doing typical blue-human things somewhere off to the right, and a lonely little call-to-action button that's floating hopelessly in a sea of blue and white.

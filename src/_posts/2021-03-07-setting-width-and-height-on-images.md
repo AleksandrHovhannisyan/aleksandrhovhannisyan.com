@@ -5,6 +5,7 @@ keywords: [setting width and height on images, setting an image's width and heig
 categories: [webperf, images, html]
 commentsId: 78
 lastUpdated: 2021-08-26
+thumbnail: thumbnail.jpg
 ---
 
 If you're not giving your images an explicit width and height, you may be hurting your [cumulative layout shift (CLS)](https://web.dev/cls/) score. Setting a width and height on images is even more important now that Google uses [Core Web Vitals](https://moz.com/blog/core-web-vitals) as a ranking signal—and cumulative layout shift is just one metric that Google looks at when auditing your site. But what do images have to do with layout shifts, and how does giving them a width and height fix this problem?

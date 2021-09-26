@@ -6,6 +6,7 @@ categories: [computer-science, math]
 layout: mathPost
 commentsId: 39
 lastUpdated: 2021-06-28
+thumbnail: thumbnail.png
 ---
 
 In a previous post, I introduced the theory behind [the method of least squares](/blog/the-method-of-least-squares) and showed how it can be used to solve systems of equations with no unique solution.

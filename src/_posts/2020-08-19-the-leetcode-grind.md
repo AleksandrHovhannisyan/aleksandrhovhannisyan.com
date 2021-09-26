@@ -3,6 +3,7 @@ title: Don't Mind the Leetcode Grind
 description: Leetcode is one of those polarizing topics that you either love or hate. But what exactly is it? And does it even deserve your attention?
 keywords: [leetcode, leetcode grind]
 categories: [leetcode, algorithms]
+thumbnail: thumbnail.png
 ---
 
 **Leetcode** is one of those polarizing topics that you either love or hate. But what exactly is it? And does it even deserve your attention?

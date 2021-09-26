@@ -5,6 +5,7 @@ keywords: [semantic html, html accessibility]
 categories: [a11y, html]
 commentsId: 48
 lastUpdated: 2021-07-10
+thumbnail: thumbnail.png
 ---
 
 Semantic HTML is markup that carries some inherent meaning beyond just serving a presentational role. When you use semantic HTML, you not only make it easier for sighted users to understand your markup, but you also help users who rely on screen readers to make sense of your content matter and the structure of your page, allowing them to navigate it with ease.

@@ -3,6 +3,7 @@ title: "Trie Data Structure Implementation in Python"
 description: Learn how to implement a trie in Python, with plenty of visuals and code samples to help you understand how prefix trees work.
 keywords: [python prefix tree, python prefix tree tutorial, python trie implementation, implement a trie in Python]
 categories: [data-structures, python]
+thumbnail: thumbnail.png
 ---
 
 Of all the data structures I've encountered, the **prefix tree** (also known as a *trie*) still fascinates me the most because of its simplicity, elegance, and practical applications.

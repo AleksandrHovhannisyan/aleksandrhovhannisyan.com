@@ -6,6 +6,7 @@ categories: [css, images, math]
 isPopular: true
 lastUpdated: 2021-06-12
 commentsId: 58
+thumbnail: thumbnail.jpg
 ---
 
 If you're not sure how to define aspect ratios in CSS, or if you have no clue what an aspect ratio is to begin with, then you're in luck. This tutorial covers everything that you need to know about creating aspect ratio boxes in CSS, using both a modern approach and an old one with a percentage padding trick. Once you understand aspect ratios and how to define them, you'll be able to do all kinds of neat things—like creating `nxn` square grid layouts, responsively sizing embedded media, reserving space for images, and much more.

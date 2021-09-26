@@ -4,6 +4,7 @@ description: GitHub Pages is a great option for hosting your site... until it is
 keywords: [github pages vs netlify]
 categories: [github, netlify, tooling]
 lastUpdated: 2021-07-31
+thumbnail: thumbnail.png
 isPopular: true
 ---
 

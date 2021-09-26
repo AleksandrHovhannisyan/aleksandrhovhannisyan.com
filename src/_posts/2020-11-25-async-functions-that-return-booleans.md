@@ -4,6 +4,7 @@ description: Suppose an async function returns a boolean. What happens if you ch
 keywords: [async functions]
 categories: [javascript, promises]
 isPopular: true
+thumbnail: thumbnail.png
 ---
 
 Here's a fun bug I recently encountered... Let's say we have this `async` JavaScript function:

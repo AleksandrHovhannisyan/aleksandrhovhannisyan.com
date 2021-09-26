@@ -6,6 +6,7 @@ keywords: [copy to clipboard button]
 lastUpdated: 2021-04-04
 commentsId: 35
 isPopular: true
+thumbnail: thumbnail.png
 ---
 
 I'm always looking for ways to improve my site's user experience without toppling the precarious house of cards that is cross-browser compatibility. And one thing that recently drew my attention is the fact that many of my tutorials require copy-pasting code, especially for anything that's not too important to type out by hand (e.g., terminal commands).

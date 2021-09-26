@@ -6,6 +6,7 @@ categories: [css, tailwind, frameworks]
 lastUpdated: 2021-06-14
 commentsId: 77
 isPopular: true
+thumbnail: thumbnail.png
 ---
 
 {% aside %}
