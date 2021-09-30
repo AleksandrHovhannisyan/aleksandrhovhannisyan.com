@@ -5,6 +5,7 @@ categories: [nft, art, blockchain, money]
 keywords: [nfts, digital ownership, ownership, art]
 thumbnail: thumbnail.jpg
 lastUpdated: 2021-09-30
+commentsId: 114
 ---
 
 Unless you've been living under a rock, you've probably heard of NFTs, cryptocurrencies, digital art, and a whole slew of other dizzying terms. Every cool kid on the block is wearing chains, trading bits for coins, and hoarding digital collectibles. It can all seem like a lot to keep up with, especially if you have no clue what's going on.
