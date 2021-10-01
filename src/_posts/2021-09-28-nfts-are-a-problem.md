@@ -177,7 +177,7 @@ Of that colossal Wreck, boundless and bare
 The lone and level sands stretch far away.
 {% endquote %}
 
-Ozymandias was a fictional King of Kings—a powerful ruler who was once revered for his wealth and influence. But now, all that remains of him and his kingdom are two leg stumps and a shattered head, drowning in a sea of sand that stretches in every direction. The inscription on a nearby pedestal may have once struck fear into passersby, but now it's downright laughable. *Ozy who?* It's a powerful story of impermanence and a cautionary tale against trying to immortalize oneself through material possessions and monuments.
+Ozymandias was a powerful ruler who was once revered for his wealth and influence. But now, all that remains of him and his kingdom are two leg stumps and a shattered head, drowning in a sea of sand that stretches in every direction. The inscription on a nearby pedestal may have once struck fear into passersby, but now it's downright laughable. *Ozy who?* It's a powerful story of impermanence and a cautionary tale against trying to immortalize oneself through material possessions and monuments.
 
 Surely the meaning of life isn't to amass a fortune of NFTs that you can show off on Reddit for karma, until one day you die and leave nothing behind but a digital token. Will your children treasure this heirloom and pass it on to future generations? Will your name resound throughout the history books for your contributions to society?
 
