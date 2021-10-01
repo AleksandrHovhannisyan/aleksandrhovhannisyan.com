@@ -21,7 +21,6 @@
     position: sticky;
     top: 0;
     left: 0;
-    width: 100%;
     height: var(--navbar-height);
     @include z-index(navbar);
   }
@@ -92,7 +91,7 @@
 
   &:is(:focus, :hover) {
     .website-name {
-      color: white;
+      color: var(--navbar-text-color-focus);
     }
   }
 }
@@ -156,8 +155,8 @@
 
 .skip-navigation:focus,
 .navbar-link:is([aria-current="page"], :hover, :focus) {
-  color: white;
-  background-color: var(--navbar-link-bg-color-focus);
+  color: var(--navbar-text-color-focus);
+  background-color: var(--navbar-text-bg-color-focus);
 }
 
 #navbar-toggle {
@@ -183,7 +182,7 @@
 
   &:is(:focus, :hover) {
     .icon-bar {
-      background-color: white;
+      background-color: var(--navbar-text-color-focus);
     }
   }
 
@@ -219,12 +218,6 @@
   }
 }
 
-.navbar-link,
-#navbar-toggle,
-#theme-toggle {
-  outline-color: white;
-}
-
 #theme-toggle-container {
   display: flex;
   height: 4.8rem;
@@ -241,6 +234,7 @@
   transform: scale(0.711);
   transform-style: preserve-3d;
   @include font($size: 'base');
+  @include focus-outline($color: white, $offset: 0.4rem);
 
   > * {
     display: block;

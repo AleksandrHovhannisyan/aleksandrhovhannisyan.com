@@ -85,8 +85,9 @@ html {
     --main-bg-color: var(--color-surface-1);
     --navbar-bg-color: var(--color-surface-5);
     --navbar-box-shadow: 0 0 0.2rem 0 hsla(0, 0%, 0%, 0.8);
-    --navbar-link-bg-color-focus: var(--color-surface-4);
-    --navbar-text-color: hsl(0, 0%, 85%);
+    --navbar-text-color: var(--color-surface-3);
+    --navbar-text-bg-color-focus: var(--color-surface-4);
+    --navbar-text-color-focus: var(--color-text-inverted);
     --scrollbar-thumb-bg-color-focus: hsl(0, 0%, 60%);
     --scrollbar-thumb-bg-color: hsl(0, 0%, 70%);
     --scrollbar-track-bg-color: var(--color-surface-3);
@@ -122,8 +123,9 @@ html {
     --main-bg-color: var(--color-surface-1);
     --navbar-bg-color: var(--color-surface-2);
     --navbar-box-shadow: 0 0 0.8rem 0 hsla(0, 0%, 0%, 0.8);
-    --navbar-link-bg-color-focus: var(--color-surface-3);
     --navbar-text-color: var(--color-surface-5);
+    --navbar-text-bg-color-focus: var(--color-surface-3);
+    --navbar-text-color-focus: var(--color-text-emphasis);
     --scrollbar-thumb-bg-color-focus: var(--color-surface-5);
     --scrollbar-thumb-bg-color: var(--color-surface-4);
     --scrollbar-track-bg-color: var(--color-surface-3);
