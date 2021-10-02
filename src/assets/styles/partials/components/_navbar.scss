@@ -35,14 +35,10 @@
 
   &-links {
     background-color: var(--navbar-bg-color);
-    box-shadow: 0 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.8);
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
     display: grid;
     grid-auto-flow: row;
-    row-gap: 3.2rem;
+    align-items: center;
+    gap: 3.2rem;
     padding: 3.2rem 0;
   }
 
@@ -61,10 +57,10 @@
 
 #navbar-menu {
   position: fixed;
-  left: 0;
   top: var(--navbar-height);
-  right: 0;
+  left: 0;
   bottom: 0;
+  right: 0;
   opacity: 0;
   visibility: hidden;
   @include transition(background-color, opacity, visibility);
@@ -211,7 +207,7 @@
     }
 
     & + #navbar-menu {
-      background-color: hsla(0, 0%, 0%, 0.4);
+      background-color: hsla(0, 0%, 0%, 0.6);
       opacity: 1;
       visibility: visible;
     }
@@ -345,12 +341,34 @@
 }
 
 @include tablet {
-  .navbar-header {
-    position: unset;
-  }
-
   .navbar {
     box-shadow: none;
+
+    &-header {
+      position: unset;
+    }
+
+    &-links {
+      &,
+      #navbar-toggle[aria-expanded="true"] + #navbar-menu & {
+        position: static;
+        padding: 0;
+        grid-auto-flow: column;
+        gap: 2rem;
+      }
+    }
+
+    &-item {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    &-link {
+      padding: 0.4rem 1.6rem;
+      display: inline;
+      margin: 0;
+    }
   }
 
   #navbar-menu {
@@ -362,31 +380,6 @@
       opacity: 1;
       visibility: visible;
     }
-  }
-
-  .navbar-links {
-    &,
-    #navbar-toggle[aria-expanded="true"] + #navbar-menu & {
-      row-gap: 0;
-      column-gap: 2rem;
-      grid-auto-flow: column;
-      align-items: center;
-      box-shadow: none;
-      padding: 0;
-      position: static;
-    }
-  }
-
-  .navbar-item {
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
-
-  .navbar-link {
-    padding: 0.4rem 1.6rem;
-    display: inline;
-    margin: 0;
   }
 
   #navbar-toggle[aria-expanded] {
