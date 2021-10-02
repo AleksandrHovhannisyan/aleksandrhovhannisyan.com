@@ -2,7 +2,7 @@
 
 .post-preview {
   display: grid;
-  row-gap: 1.6rem;
+  row-gap: 1.2rem;
   grid-template-areas:
     'thumbnail'
     'title'
@@ -21,7 +21,7 @@
 
   &-title {
     grid-area: title;
-    @include font($size: 'base');
+    @include font($size: 'md');
 
     a {
       color: var(--color-text-emphasis);
@@ -57,7 +57,7 @@
         'thumbnail description'
         'thumbnail meta';
       column-gap: 3.2rem;
-      row-gap: 1.2rem;
+      row-gap: 0.8rem;
     }
 
     &-thumbnail {
@@ -69,7 +69,12 @@
       }
     }
 
+    &-title {
+      @include line-clamp(1);
+    }
+
     &-description {
+      margin-bottom: 0.4rem;
       @include line-clamp(2);
     }
   }
