@@ -3,7 +3,7 @@ title: Why I Don't Like Tailwind CSS
 description: On paper, Tailwind CSS sounds like a great idea. In reality, it suffers from the same problems that it tries to solve.
 keywords: [tailwind css, tailwind, don't like tailwind]
 categories: [css, tailwind, frameworks]
-lastUpdated: 2021-06-14
+lastUpdated: 2021-10-03
 commentsId: 77
 isPopular: true
 thumbnail: thumbnail.png
@@ -248,7 +248,7 @@ If you use Tailwind, you're stuck with it, unless you convert all of that CSS to
 ### 4. Tailwind Is Bloated
 
 {% aside %}
-  **Note**: I'm wrong here. I should have done more research into Tailwind to understand that it is in fact *not* as slow as I originally thought. Below is an edited version.
+  **Note**: I'm wrong here. I should have done more research into Tailwind to understand that it is in fact *not* as slow as I originally thought. Below is an edited version clarifying why Tailwind isn't actually bloated or slow (unless you misuse it).
 {% endaside %}
 
 Tailwind uses [PurgeCSS](https://purgecss.com/), which removes any unused styles from your compiled stylesheet. The Tailwind docs note the following:
@@ -322,164 +322,48 @@ In short, Tailwind pretends to solve a problem that isn't really a problem in th
   **Edit**: Tailwind is not completely devoid of any semantics. It just has *its own kind* of semantics. However, I would argue that it's always better to be able to name your sub-components, even at the most atomic level. Naming things is hard, but my point is that this difficulty is not something to shy away from: It's a good thing. It forces you to think about what you're building and to give your markup semantics that is otherwise not there. That said, Semantic CSS does have its own drawbacks. If you don't have consistent naming standards, everyone on your team may come up with their own creative variation of BEM.
 {% endaside %}
 
-### 7. Tailwind Makes It Difficult to Tweak Styles in Dev Tools
+### 7. Tailwind, Dev Tools, and Developer Experience
 
-As a front-end developer, I sometimes find myself making little tweaks here and there in my browser through dev tools. For example, I might try applying some rules to a certain selector so I can verify that it produces the desired result.
+#### It's Harder to Tweak CSS in Dev Tools
 
-With Tailwind, tweaking styles in this manner is difficult because you're no longer dealing with classes that apply styles to multiple elements. Thus, if you want to update multiple components at once in dev tools, you can't—unless you give each one a new class name and use that as the selector. Otherwise, your changes to Tailwind classes will be reflected elsewhere in the UI, which can be annoying.
+As a front-end developer, I sometimes find myself making little tweaks here and there in my browser through dev tools. For example, I might try applying some rules to a certain selector so I can verify that it produces the desired result. This is useful if I'm exploring the possibilities for a new feature or pairing with a designer.
 
-Of course, you *can* apply your styles inline in dev tools to just that particular element, but sometimes it helps to see how changes are reflected throughout your UI rather than in a single, isolated location. This is one price you pay for using atomic utility classes.
+With Tailwind, tweaking styles in this manner is difficult because you're no longer dealing with classes that apply styles to multiple elements. Thus, if you want your changes to be reflected across multiple components at once in dev tools, you can't—unless you give each one a new class name and use that as the selector. Otherwise, your changes to Tailwind classes will be reflected elsewhere in the UI, which can be annoying.
 
-### 8. Tailwind Is Still Missing Some Key Features
+Of course, you *can* apply your styles inline in dev tools to just that particular element, but sometimes it helps to see how changes are reflected throughout your UI rather than in a single, isolated location. This is one price you pay for using atomic utility classes—unless you use `@apply`, you can't really style multiple elements at once.
+
+#### It's Harder to Find Components in Dev Tools
+
+Similarly, if I'm given a UI bug in a big code base, I like to narrow down the affected component in my dev tools using class names, IDs, or, as a last resort, translated strings. This makes it easier to jump straight to the code that I need to look at to figure out what went wrong, especially if there's a close mapping between a component's name and the class names it uses (e.g., if your team uses BEM). If you're using Tailwind, you only have two things you can go off of in dev tools: your knowledge of that particular area of the app, and strings. The latter isn't always helpful because strings may get reused across multiple components, so searching for them may yield multiple results. And not everyone on a team is familiar with every component in the code base, like in a monorepo for an enterprise-scale app. This can be frustrating for new hires.
+
+#### Recompiling HTML Is Slower Than Recompiling CSS
+
+On the topic of developer experience, there's a related issue here in static site generators and server-side frameworks like Next.js: Recompiling CSS is much faster than hot-reloading the page due to markup changes. Tailwind forces the latter, which may slow down your development process. This is especially annoying in static site generators like Jekyll or 11ty, where class name changes at the layout level may trigger a full rebuild of many different pages, and this means you need to wait a few seconds for your browser to reload. By comparison, recompiling Sass for my site takes only a few milliseconds.
+
+### 8. Tailwind Is Still Missing Some Key Features of CSS
 
 Almost two years after its initial release, Tailwind CSS [still doesn't support pseudo elements](https://github.com/tailwindlabs/tailwindcss/discussions/2119) (among other features), something that basic CSS and CSS preprocessors have supported for years. If this were implemented, you'd probably have to write something like `before:content-empty-string` in your HTML. By comparison, the plain CSS equivalent is far more legible.
 
-I suspect this feature isn't realistic to implement. For both `::before` and `::after`, you would need possibly thousands of unique class names just so you could style your pseudo-elements as needed. That's simply not realistic. It's the same reason why Tailwind is such a bloated mess—all those innumerable prefixed class names are costly. The more classes that Tailwind decides to introduce, the more its complexity will grow—to the point that it will not be usable.
+I suspect this feature isn't realistic to implement. For both `::before` and `::after`, you would need possibly thousands of unique class names just so you could style your pseudo-elements as needed. That's simply not realistic. The more classes that Tailwind decides to introduce, the more its complexity will grow—to the point that it will not be maintainable.
 
-In a similar vein, Tailwind's support for CSS grid is lacking; you need to [configure a custom set of limited grids upfront](https://www.npmjs.com/package/@savvywombat/tailwindcss-grid-areas) and reuse those across your site, which isn't realistic because CSS grid's use cases aren't just limited to grid areas. The same goes for background gradients, animations, and many other bleeding-edge features that you can easily use in vanilla CSS without any mental overhead or configuration. With Tailwind, you either need to install a plugin or wait until it's officially supported. Neither one sounds like a good solution just so you can use basic features that CSS already offers.
+In a similar vein, Tailwind's support for CSS grid is lacking; you need to [configure a custom set of limited grids upfront](https://www.npmjs.com/package/@savvywombat/tailwindcss-grid-areas) and reuse those across your site, which isn't realistic because CSS grid's use cases aren't just limited to grid areas. The same goes for background gradients, animations, new selectors like `:is` and `:where`, and many other bleeding-edge features that you can easily use in vanilla CSS without any mental overhead or configuration. With Tailwind, you either need to install a plugin or wait until it's officially supported. Neither one sounds like a good solution just so you can use basic features that CSS already offers.
 
 ## Fine, But What Should You Use Instead?
 
-I know I bashed on Tailwind CSS quite a bit in this post. I'm sure it'll upset some people who like the framework, assuming anyone reads this. But regardless of how you feel about Tailwind, you'd probably agree that it's only fair of me to offer offer suggestions for alternatives.
+Regardless of how you feel about Tailwind, you'd probably agree that it's only fair of me to suggest alternatives. Before I do that, I want to note that it feels like Tailwind was initially created to solve a problem that no longer exists: **component-scoped CSS**. With frameworks like React—and, more recently, Svelte—it's never been easier to write CSS without leaving your markup and without resorting to inline styles. Outside of these frameworks, in vanilla projects and static site generators, you can just use BEM or some other methodology that enforces consistent naming conventions.
 
-Before I do that, I want to note that it feels like Tailwind was initially created to solve a problem that no longer exists: **component-scoped CSS**. With frameworks like React and, more recently, Svelte, it's never been easier to write CSS without leaving your markup, and without resorting to inline styles. You don't really need BEM, either.
+Here are some alternatives to Tailwind that you might like:
 
-As far as libraries go, I'm a big fan of [`styled-jsx`](https://github.com/vercel/styled-jsx). It was created by Vercel, the company that also brought us Next.js, and it's one of the best CSS-in-JS libraries I've worked with to date. I find this remarkable, considering that I was, for the longest time, adamantly opposed to using CSS-in-JS. But `styled-jsx` is an absolute *delight* to work with.
+- Write vanilla CSS and use custom properties to create your own design system.
+- Use a preprocessor. I'm a big fan of [Sass](https://sass-lang.com/), but you can also use [Less](https://lesscss.org/).
+- Use a CSS-in-JS library like [styled-components](https://styled-components.com/) or [styled-jsx](https://github.com/vercel/styled-jsx).
+- Write component-scoped vanilla CSS with [CSS Modules](https://github.com/css-modules/css-modules).
 
-For one, it's just CSS, so there's no new syntax that you have to learn. All styles are locally scoped, like with CSS Modules, but you can also easily apply global styles. Components can pass along class names to style sub-components, and this allows you to build truly modular and atomic components that don't mess with other parts of your UI. It's much easier to use than `styled-components` since your CSS is literally just another JSX element. You can still interpolate JavaScript values in your CSS, making this extremely powerful and easy to use.
-
-Here's an example (note that you'd get proper syntax highlighting in VS Code for the CSS):
-
-```jsx
-const Navbar = (props) => {
-  return (<header className="navbar-header">
-    <nav class="navbar">
-      <Branding />
-      <ul className="navbar-menu"></ul>
-    </nav>
-    <style jsx>{`
-      .navbar-header {
-        position: ${props.isSticky ? 'fixed' : 'static'};
-        left: 0;
-        right: 0;
-        z-index: 10;
-      }
-      .navbar {
-        background-color: #1a1a1a;
-        height: 64px;
-      }
-      .navbar-menu {
-        display: grid;
-        grid-auto-flow: column;
-        grid-column-gap: 24px;
-      }
-    `}</style>
-  </header>);
-}
-```
-
-Interpolating values is even more powerful if you define your design guidelines in a single place, like under a `variables` export, since this means you can **reuse a fixed set of values** throughout your components:
-
-```jsx
-const Navbar = (props) => {
-  return (<header className="navbar-header">
-    <nav class="navbar">
-      <Branding />
-      <ul className="navbar-menu"></ul>
-    </nav>
-    <style jsx>{`
-      .navbar-header {
-        position: ${props.isSticky ? 'fixed' : 'static'};
-        left: 0;
-        right: 0;
-        z-index: 10;
-      }
-      .navbar {
-        background-color: ${variables.color.black[900]};
-        height: ${variables.spacing.lg};
-      }
-      .navbar-menu {
-        display: grid;
-        grid-auto-flow: column;
-        grid-column-gap: ${variables.spacing.sm};
-      }
-    `}</style>
-  </header>);
-};
-```
-
-Sound familiar? This is one of the problems that Tailwind attempts to solve—restricting the infinite possibilities of vanilla CSS to a finite set of spacing, colors, and dimensions. With proper exports in place, you get the same benefit of having "design tokens" but without the problems inherent in Tailwind. You can even define mixins that you can call like ordinary functions to inject reusable bits of CSS into your code (SCSS users rejoice!).
-
-In the case of really tiny components that only have one or two distinct elements, you can also directly target those `<div>`s or `<img>`s or whatever. Since your styles are scoped to just that component, you don't have to worry about your CSS rules tampering with other elements somewhere else in the app:
-
-```jsx
-const InfoIcon = () => (<svg>
-  <style jsx>{`
-    svg {
-      /* CSS here is scoped to just this SVG */
-    }
-  `}</style>
-</svg>)
-```
-
-If a component needs to customize another component's CSS, doing so is easy with `css.resolve`:
-
-```jsx
-import classnames from 'classnames';
-import Child from '@components/Child'
-
-const childStyles = css.resolve`
-  .child-class-name {
-    /* child CSS overrides go here */
-  }
-`;
-
-const Parent = (props) => {
-  return (<div className="parent">
-    <Child className={classnames(childStyles.className, 'child-class-name')}>
-    {childStyles.styles}
-    <style jsx>{`
-      .parent {
-        /* parent CSS goes here */
-      }
-    `}</style>
-  </div>);
-}
-```
-
-The new styles will be more aggressively scoped than the child's base styles, meaning **you will never run into specificity issues**.
-
-Finally, if you need to apply global styles, you can either use a global stylesheet:
-
-```jsx
-const Layout = () => (<main>
-  <style jsx global>{`
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-  `}</style>
-</main>)
-```
-
-Or the one-off `:global` selector:
-
-```jsx
-const Component = () => (<div className="component">
-  <style jsx>{`
-    .component :global(selectorForStyleOverrides) {
-      /* CSS here */
-    }
-  `}</style>
-</div>);
-```
-
-And voila—just like that, you've solved all of the problems that Tailwind claims to, but without the tech debt. Because now, if you want to migrate your CSS to a different framework or library, all you have to do is copy-paste your rules. At the end of the day, it's **just vanilla CSS (in JS)**. You can easily port this to Gatsby, vanilla React, or even vanilla HTML/CSS/JS (with a bit more work).
+I've tried all of these approaches, and they all have their benefits and drawbacks. For static projects, I prefer to use a CSS preprocessor like Sass; I'm a big fan of defining custom mixins and functions to speed up development, and the great thing is that I can still combine Sass with vanilla CSS features (like custom properties). On the other hand, if I'm working in a React codebase, I prefer to use either styled-jsx (for dynamic CSS with interpolated values) or CSS Modules (for static CSS).
 
 ## Final Thoughts
 
-Tailwind allows you to prototype UI very rapidly, without having to slow down and make important naming decisions. This is an obvious plus for developers who need to move quickly and create proofs-of-concept. However, if you're at all concerned about the long-term maintenance of your code base, or the cost of onboarding new developers and expecting them to understand what your code does, then Tailwind is just additional tech debt. And for that reason, and the others that I touched on, I would not recommend using this CSS framework.
+Tailwind allows you to prototype UI rapidly without having to slow down and make naming decisions, and it saves you the work of having to build an entire design system from scratch. This is great for developers who need to move quickly. However, if you care about the long-term maintenance of your code base or the cost of onboarding new developers who may be unfamiliar with this library, then Tailwind isn't worth it. For this reason and the others that I touched on, I wouldn't recommend using Tailwind.
 
 ## Attributions
 
