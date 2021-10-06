@@ -4,15 +4,12 @@
 html {
   --font-size-sm: #{clamped(1.4rem, 1.6rem)};
   --line-height-sm: #{clamped(2.6rem, 2.8rem)};
-  --letter-spacing-sm: 0;
 
   --font-size-base: #{clamped(1.6rem, 1.8rem)};
   --line-height-base: #{clamped(2.8rem, 3rem)};
-  --letter-spacing-base: 0;
 
   --font-size-md: #{clamped(1.8rem, 2.0rem)};
   --line-height-md: #{clamped(3rem, 3.4rem)};
-  --letter-spacing-md: 0;
 
   --font-size-lg: #{clamped(2.0rem, 2.6rem)};
   --line-height-lg: #{clamped(3.4rem, 3.8rem)};
