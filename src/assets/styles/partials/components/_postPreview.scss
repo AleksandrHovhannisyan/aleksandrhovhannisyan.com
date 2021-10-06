@@ -38,6 +38,7 @@
     img {
       object-fit: cover;
       object-position: center;
+      border-radius: 0.4rem;
     }
 
     .light &.loaded img {
