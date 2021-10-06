@@ -21,7 +21,7 @@ noindex: true
     {%- for step in steps -%}
       <tr>
         <td>{{ step }}</td>
-        <td style="font-size: var(--fs-{{ step }}); line-height: var(--lh-{{ step }}); letter-spacing: var(--ls-{{ step }});">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</td>
+        <td style="font-size: var(--font-size-{{ step }}); line-height: var(--line-height-{{ step }}); letter-spacing: var(--letter-spacing-{{ step }});">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</td>
       </tr>
     {%- endfor -%}
   </tbody>
