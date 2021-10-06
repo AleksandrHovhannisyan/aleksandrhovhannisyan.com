@@ -1,23 +1,26 @@
 html {
-  // Firefox
+  // Only for Firefox
   scrollbar-color: var(--scrollbar-thumb-bg-color) var(--scrollbar-track-bg-color);
 }
 
 ::-webkit-scrollbar {
   // vertical scrollbars
-  width: 1.4rem;
+  width: 1.6rem;
   // horizontal scrollbars
-  height: 1.4rem;
+  height: 1.6rem;
 
   &-track {
     background-color: var(--scrollbar-track-bg-color);
   }
 
   &-thumb {
+    border: solid 0.2rem transparent;
     background: var(--scrollbar-thumb-bg-color);
+    background-clip: padding-box;
+    border-radius: 1.6rem;
 
     &:hover {
-      background: var(--scrollbar-thumb-bg-color-focus);
+      background-color: var(--scrollbar-thumb-bg-color-focus);
     }
   }
 }
