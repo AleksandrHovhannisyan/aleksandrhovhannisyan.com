@@ -57,6 +57,8 @@ html {
   }
 
   &.light {
+    color-scheme: light;
+
     --color-surface-1: white;
     --color-surface-2: hsl(0, 0%, 95%);
     --color-surface-3: hsl(0, 0%, 92%);
@@ -85,7 +87,6 @@ html {
     --navbar-text-color: var(--color-surface-3);
     --navbar-text-bg-color-focus: var(--color-surface-4);
     --navbar-text-color-focus: var(--color-text-inverted);
-    --scrollbar-thumb-bg-color-focus: hsl(0, 0%, 60%);
     --scrollbar-thumb-bg-color: hsl(0, 0%, 70%);
     --scrollbar-track-bg-color: var(--color-surface-3);
     --selection-bg-color: black;
@@ -95,6 +96,8 @@ html {
   }
 
   &.dark {
+    color-scheme: dark;
+
     --color-surface-1: hsl(0, 0%, 8%);
     --color-surface-2: hsl(0, 0%, 12%);
     --color-surface-3: hsl(0, 0%, 20%);
@@ -123,7 +126,6 @@ html {
     --navbar-text-color: var(--color-surface-5);
     --navbar-text-bg-color-focus: var(--color-surface-3);
     --navbar-text-color-focus: var(--color-text-emphasis);
-    --scrollbar-thumb-bg-color-focus: var(--color-surface-5);
     --scrollbar-thumb-bg-color: var(--color-surface-4);
     --scrollbar-track-bg-color: var(--color-surface-3);
     --selection-bg-color: white;
