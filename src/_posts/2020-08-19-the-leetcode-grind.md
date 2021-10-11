@@ -4,9 +4,10 @@ description: Leetcode is one of those polarizing topics that you either love or 
 keywords: [leetcode, leetcode grind]
 categories: [leetcode, algorithms]
 thumbnail: thumbnail.png
+lastUpdated: 2021-10-11
 ---
 
-**Leetcode** is one of those polarizing topics that you either love or hate. But what exactly is it? And does it even deserve your attention?
+Leetcode is one of those polarizing topics that you either love or hate. But what exactly is it? And does it even deserve your attention?
 
 ## What Is Leetcode?
 
@@ -39,19 +40,21 @@ You've never truly experienced Leetcode unless this sounds familiar:
 5. Google "Leetcode sucks" and read some encouraging rants on Reddit.
 6. Revisit step 1 about a month later.
 
-And yet, it's not exactly healthy when you think about it—not any healthier than the actual "grind" mentality itself. Rage-quitting Leetcode is just about as bad as not trying in the first place.
+And yet, it's not exactly healthy when you think about it—not any healthier than the actual "grind" mentality itself.
 
 ## The Truth About Leetcode
 
-I used to *despise* Leetcode. Unfamiliar problems would frustrate me. Obscure solutions and math tricks would practically get my blood boiling. *Who cares about any of this? When will any of this be relevant?*
+I'm not a fan of Leetcode. Poorly worded problems frustrate me. Obscure solutions and math tricks practically get my blood boiling. *Who cares? When will I ever use any of this?*
 
-Sound familiar? It's like complaining about learning bio or physics in an undergrad program, when you'd much rather focus on your chosen specialization (which, in my case, was computer science). Yet the point of most academic programs is not to *just* teach you how to become a software developer, physician, or whatever your heart desires—it's to ensure that you get a well-rounded education that exposes you to a number of disciplines and problems.
+Everyone's felt like this at some point. Remember when you and other students used to complain about learning certain subjects in school that weren't related to your interests? It's frustrating, sure, but it's also a necessary evil. The point of most academic programs isn't to teach you how to become a specialist—it's to expose you to a variety of disciplines and problems.
 
-Leetcode, like most things academic, is healthy in moderation. There's absolutely nothing bad about practicing your problem-solving and optimization skills, or learning new ways to approach an unfamiliar problem in software development. What *is* unhealthy is the so-called "Leetcode grind." It's unnecessary—and, frankly, just one piece of the overall puzzle.
+As much as I hate it, I have to admit that Leetcode isn't *inherently* evil or bad. It can be healthy in moderation because there's nothing wrong with practicing your problem-solving and optimization skills or learning new ways to approach unfamiliar problems. What *is* unhealthy is the Leetcode grind.
+
+And honestly, at the end of the day, Leetcode is just one piece of the puzzle.
 
 ### An Interview Is More Than Just Leetcode
 
-Want to ace your interviews? Good luck doing that if you've tunnel-visioned into the Leetcode grind. What about these other important skills?
+Want to ace tech interviews? Good luck doing that if you've tunnel-visioned into the Leetcode grind. What about these other important areas?
 
 1. Polishing your resume.
 2. Practicing answers to soft questions.
@@ -64,64 +67,62 @@ Where do these fit into your day when all you do is crank out Leetcode problems?
 
 ### Leetcode Is Only Useful if It's Asked
 
-Perhaps the most glaring issue with the "Leetcode grind" mentality is the fact that **it only helps if you actually make it to the technical interview**. If you don't, what use is it to you? You're much better off figuring out why you're not making it to the technical interview in the first place.
+The biggest problem with the "Leetcode grind" mentality is the fact that **it only helps if you actually make it to the technical interview**. If you don't, what use is it to you? You're much better off figuring out why you're not making it to the technical interview in the first place.
 
-{% aside %}
-  In my case, the issue was a poorly developed resume. I highly encourage you to share yours with others and to get feedback so you can present your best self to employers.
-{% endaside %}
-
-Fortunately, not all companies use these types of problems to weed out applicants. In fact, in all of the interviews that I've done to date, I'd say that I've maybe had to do only one or two Leetcode-esque problems. The rest have been **practical interviews**:
+Fortunately, not all companies use these types of problems to weed out applicants. In fact, in all of the interviews that I've done to date, I'd say that I've maybe had to do only one or two Leetcode or Hackerrank problems. The rest have been **practical interviews**:
 
 - Low-pressure pair programming on platforms like Coderpad, where Googling is allowed.
 - Bug fixing and simple skill tests, with practical problems relevant to the job you applied for.
-- Take-home assignments or codepen challenges.
+- Take-home assignments or Codepen challenges.
 - Walking through hypothetical scenarios out loud, like how you would design a REST API.
 - Quizzing me on my computer science and programming fundamentals knowledge.
 - Asking questions related to the tech that I'd be using on the job.
 
-Part of the blame for the Leetcode grind mentality falls on the tech industry—there are so many creative ways you can test a candidate's competency, especially as it relates to the job they'll be doing. Interviewers should put in just as much work to develop an interesting and challenging exercise (or set of exercises) to test your abilities, if they expect you as the interviewee to show any interest. But why bother to put in that effort when you can just Google a generic problem, slap it on a white board, and pretend to seem interested in the interviewee's solution?
+Part of the blame for the Leetcode grind falls on the tech industry—there are lots of creative and practical ways to test a candidate's skills in a technical interview. Interviewers should put in just as much effort to develop relevant exercises to test a candidate's abilities. But why bother to put in that effort when you can just Google a generic problem, slap it on a white board, and pretend to seem interested in the solution?
 
-### Leetcode Is Not (Fully) Representative of the Real World
+### Leetcode Is Not Representative of the Real World
 
-In some ways, Leetcode is practical. For one, it teaches you to always solve a problem using a brute-force approach and to only worry about optimization once it's needed. Usually, it's fairly easy to come up with a brute-force solution to Easy or Medium problems, even if it's not perfect.
+On the job, unless your solutions are always inefficient, and unless you know that the input to your algorithm is going to scale to very large sizes, a brute-force solution will be more than *good enough*. In fact, brute-force solutions are usually pretty easy to understand because they involve some sort of stepwise iteration or problem simulation. Good examples of these kinds of problems are [ZigZag Conversion](https://leetcode.com/problems/zigzag-conversion/) and [Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/).
 
-In the real world, unless your solutions are always on the order of <code>O(N<sup>2</sup>)</code> or <code>O(N<sup>3</sup>)</code> (or, god forbid, <code>O(2<sup>N</sup>)</code>), a brute-force solution will be more than *good enough*. In fact, brute-force solutions are usually pretty easy to understand because they involve some sort of stepwise iteration or problem simulation. Good examples of these kinds of problems are [ZigZag Conversion](https://leetcode.com/problems/zigzag-conversion/) and [Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/). All it takes is for you to work through solving the problems by hand, and the insight comes naturally with practice.
+Unfortunately, Leetcode can encourage [premature optimization](/blog/premature-optimization-code-first-optimize-later/) because most Medium and Hard problems cannot be solved with a brute-force approach (it times out). This can lead to analysis paralysis on certain problems that you *would've* been able to solve if you weren't forced to optimize it right out of the gate. In the real world, readable brute-force solutions aren't worth optimizing unless you have a good reason for doing so.
 
 ## Is the Leetcode Grind Making You Miserable?
 
-Then just stop—that's all there is to it. Leetcode is only a grind if you let it become one.
+Then stop—that's all there is to it. Leetcode is only a grind if you let it become one.
 
-Lately, I've made it a habit to practice one or two Leetcode problems a day, for the sake of preparing myself to solve these kinds of problems more proficiently over the long term. If one day I don't feel like practicing Leetcode, then I simply don't.
+If you're preparing for interviews, make a habit of practicing one or two Leetcode problems a day to prepare yourself for solving these kinds of problems more proficiently over the long term. If one day you don't feel like practicing Leetcode, then don't.
 
 Leetcode, like all skills, takes practice and time to perfect. If you expect to solve Medium and Hard problems within minutes of reading them, you'll be disappointed and walk away frustrated. You'll beat yourself up. You'll think you're stupid and not cut out for dev.
 
-Treat Leetcode as a fun exercise to keep yourself sharp. Don't treat it like a school assignment or an interview. Practice solving these problems casually, without Googling, and you'll eventually pick up on patterns.
+Treat Leetcode as an exercise to keep yourself sharp. Don't treat it like a school assignment or an interview. Solve these problems casually, and you'll eventually spot patterns to common problems.
 
 ## Tips for Solving Leetcode Problems
 
-### 1. Don't narrow down problems by subject
+### 1. Don't always filter problems by subject
 
-Rather, work through the problems in order, or at random. This may seem counter-intuitive, but it makes a world of difference. Certain types of problems, like string manipulation, are immediately recognizable regardless of whether you've narrowed down the list of problems by topic. But others require you to have developed an intuition for recognizing the type of problem that you're given. Just two examples are DP problems and sliding windows. If you approach one of these problems knowing what you're looking for, then you're cheating yourself out of part of the challenge and making it easier. This doesn't model a real interview, where you won't be told what type of problem you're working with. That's up to you to figure out!
+Leetcode is all about pattern recognition. And the first step in solving any Leetcode problem is to figure out what type of exercise you're given. String manipulation? Sorting algorithms? Trees, dynamic programming, linked lists? When you're first starting out with Leetcode, it makes sense to familiarize yourself with all of the possible types of problems you may encounter and to practice the ones that are unfamiliar or that you struggle with. But if you always filter Leetcode problems by their type, then you're cheating yourself out of part of the challenge and making those problems easier. In a real-world interview, you won't be told what type of problem you're given—that's up to you to figure out. Try to strike a balance between targeted practice and solving random problem sets so you don't develop a crutch.
 
-### 2. Don't look at the solution unless you're truly stuck
+### 2. If you're stuck, attempt a brute-force solution
 
-You should at least work on a brute force solution. If you're truly stuck, start reading the solution, but don't just jump to the code. Try to understand the reasoning. If at some point a lightbulb goes off in your head, try to revisit the problem and work through it yourself before spoiling the solution.
+Like I mentioned before, most advanced Leetcode problems reject brute-force solutions because they tend to be slow. But that doesn't mean that you shouldn't at least *attempt* a brute-force solution as a starting point; if it works, you can work on optimizing it to make it pass. This is especially important in the real world, where interviewers want to see your thought process and problem-solving skills. They don't expect you to come up with an optimal solution immediately. If you do, great job! If not, don't panic.
 
-### 3. Don't treat it as a competition
+If you're practicing Leetcode but can't come up with a brute-force approach, start reading the solution and try to understand the reasoning. If at some point a lightbulb goes off in your head, try to revisit the problem and work through it yourself before spoiling the full solution.
 
-Yes, Leetcode rewards points for solutions. Yes, elitists love to brag in the discussion section about how their solution is faster than `X% of Language` submissions. These metrics are almost meaningless, and you'll get different numbers each time you submit a solution. This is missing the point of Leetcode entirely. Don't obsess over performance metrics. If your solution is optimal and passes, that's all that truly matters.
+### 3. Don't treat Leetcode as a competition
+
+Yes, Leetcode awards points for solutions. Yes, elitists love to brag in the discussion section about how their solution is faster than `X% of Language` submissions. These metrics are meaningless, and you'll get different numbers each time you submit a solution. This is also missing the point of Leetcode entirely. Don't obsess over performance metrics. If your solution is optimal and passes, that's all that matters.
 
 ### 4. Use the language you want to use on the job
 
-This one is sort of optional, but I find that it's a great way to kill two birds with one stone: practicing Leetcode and ensuring that you stay on top of your chosen language's fundamentals and syntax. It's a good way to keep things fresh in your mind.
+This one's optional, but I find that it's a great way to kill two birds with one stone: practicing Leetcode while familiarizing yourself with the language you want to use on the job. It's a good way to keep things fresh in your mind. On the other hand, Leetcode can also be a useful way to familiarize yourself with a new language that you've been meaning to learn.
 
 ### 5. Don't beat yourself up
 
-The greatest athletes, chess players, and actors of the world didn't achieve their prestige without practice. You can't expect to ace technical interviews immediately.
+The greatest athletes, actors, and professionals of the world don't achieve mastery without practice. You can't expect to ace Leetcode problems immediately, even if you're a competent developer.
 
-My submissions fail pretty frequently, with only a 40% acceptance rate for the 60 problems that I've solved to date. And I'm okay with that, as long as the number doesn't continue to drop over time.
+My submissions fail pretty frequently, with only a 40% acceptance rate for the 60 or so problems that I've solved to date. I'm okay with that, and you should be too. Leetcode doesn't define your intelligence or aptitude as a programmer. It's all about spotting patterns—the more you practice, the better you get.
 
-So forget the grind—just focus on the **value of practicing Leetcode**, not on doing as many problems as you can in one sitting.
+So forget the Leetcode grind—just focus on the value of practicing your problem-solving skills, not on doing as many exercises as you can in one sitting or getting every answer right the first time around. With this change in attitude, you'll be much better prepared for the real world, where [nobody cares if you can invert a binary tree on a white board](https://twitter.com/mxcl/status/608682016205344768?lang=en).
 
 ## Attributions
 
