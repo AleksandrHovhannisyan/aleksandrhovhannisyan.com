@@ -53,7 +53,7 @@ const postsByCategory = (collection) => {
           first: pageHrefs[0] || null,
           last: pageHrefs[pageHrefs.length - 1] || null,
         },
-        items: posts,
+        posts,
       });
     });
   });

@@ -12,7 +12,7 @@ renderData:
 ---
 
 <ol class="post-preview-grid">
-  {% for post in category.items %}
+  {% for post in category.posts %}
     {% include postPreview.html post: post, titleLevel: 2 %}
   {% endfor %}
 </ol>
