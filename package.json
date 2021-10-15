@@ -2,28 +2,33 @@
   "name": "Yada 11ty Theme",
   "version": "0.0.1",
   "license": "MIT",
-  "keywords": [ "json-ld", "11ty", "sanity.io", "blog", "11ty themes" ],
+  "keywords": [
+    "json-ld",
+    "11ty",
+    "sanity.io",
+    "blog",
+    "11ty themes"
+  ],
   "repository": {
     "type": "git",
-    "url" : "git@github.com:denverprophitjr/yada-11ty.git"
+    "url": "git@github.com:denverprophitjr/yada-11ty.git"
   },
-  "author": "Denver Prophit Jr. <develop@denverprophit.us>",
   "homepage": "https://github.com/denverprophitjr/yada-11ty#readme",
   "bugs": {
-		"url": "http://github.com/denverprophitjr/yada-11ty/issues",
-	},
-  "author": {
-		"name": "Denver Prophit Jr.",
-		"email": "develop@denverprophit.us",
-		"url": "https://denverprophit.us/"
+    "url": "http://github.com/denverprophitjr/yada-11ty/issues"
   },
-    // An array of contributors to the package.
-	"contributors": [
-		{
-			"name": "Aleksandr Hovhannisyan",
-			"email": "aleksandrhovhannisyan@gmail.com",
-			"url": "https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com"
-		},
+  "author": {
+    "name": "Denver Prophit Jr.",
+    "email": "develop@denverprophit.us",
+    "url": "https://denverprophit.us/"
+  },
+  "contributors": [
+    {
+      "name": "Aleksandr Hovhannisyan",
+      "email": "aleksandrhovhannisyan@gmail.com",
+      "url": "https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com"
+    }
+  ],
   "scripts": {
     "clean:all": "rimraf _site",
     "clean": "rimraf '_site/!(assets)' '_site/assets/!(images)'",
