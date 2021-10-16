@@ -75,7 +75,7 @@ users
   .reduce(Object.assign, {});
 ```
 
-The corrected form is what I showed at the beginning of this post. Note that this is just one option; you could also use `Object.fromEntries`, although that version is even less readable.
+The corrected form is what I showed at the beginning of this post:
 
 ```javascript
 users
@@ -83,6 +83,8 @@ users
   .map(user => ({[user.id]: user.name}))
   .reduce((offlineUsers, user) => Object.assign(offlineUsers, user), {});
 ```
+
+Note that this is just one option; you could also use `Object.fromEntries`, although that version is slightly less readable.
 
 I blame this on the fact that the code prioritizes brevity over clarity. It tries to be clever, and in doing so, it introduces a mistake. Clever code isn't clever if it doesn't work.
 
