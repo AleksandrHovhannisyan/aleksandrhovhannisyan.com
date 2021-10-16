@@ -5,9 +5,8 @@ isBlogPage: true
 
 <article class="blog">
   {%- assign pageCategory = category.title | default: 'all' -%}
-  {%- assign pageCategoryReadable = pageCategory | unslugify -%}
   {%- assign pageCategoryDescription = categoryDescriptions[pageCategory] | default: categoryDescriptions['all'] -%}
-  <h1 class="blog-title">{{ pageCategoryReadable }} Blog Posts</h1>
+  <h1 class="blog-title">{%- if pageCategory == 'all' -%}All Blog Posts{%- else -%}Posts tagged with: {{ pageCategory }}{%- endif -%}</h1>
   <p class="blog-description">{{- pageCategoryDescription | toHtml -}}</p>
   <nav aria-label="Popular categories">
     <ul class="blog-navigation-tags">

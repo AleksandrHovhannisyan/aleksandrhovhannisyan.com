@@ -77,26 +77,6 @@ const toAbsoluteUrl = (url) => {
 /** Converts the given date string to ISO8610 format. */
 const toISOString = (dateString) => dayjs(dateString).toISOString();
 
-/** Given a string, returns the unslugged form of the string if it's already in slugged form, or the original
- * string if it's not in slug form. No assumptions are made about desired hyphenation of the end result
- * (e.g., `off-topic` will become `Off Topic`). */
-const unslugify = (str) => {
-  // at least one lowercase letter followed by zero or more combinations of - and lowercase letters
-  const isSluggedString = /^[a-z](?:-?[a-z])*$/.test(str);
-
-  if (!isSluggedString) {
-    return str;
-  }
-
-  // After the above check, it's safe to assume that any hyphens we replace are valid slug hyphens
-  // and not hyphenated words in a sentence
-  return str
-    .replace(/-/g, ' ')
-    .split(' ')
-    .map((word) => `${word[0].toUpperCase()}${word.slice(1)}`)
-    .join(' ');
-};
-
 /**
  * @param {*} collection - an array of collection items that are assumed to have either data.lastUpdated or a date property
  * @returns the most recent date of update or publication among the given collection items, or undefined if the array is empty.
@@ -146,7 +126,6 @@ module.exports = {
   stripNewlines,
   stripHtml,
   toAbsoluteUrl,
-  unslugify,
   jsonParse,
   getLatestCollectionItemDate,
   compileAndMinifyScss,

@@ -13,7 +13,6 @@ const {
   toAbsoluteUrl,
   stripNewlines,
   stripHtml,
-  unslugify,
   jsonParse,
   getLatestCollectionItemDate,
   compileAndMinifyScss,
@@ -57,7 +56,6 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter('stripNewlines', stripNewlines);
   eleventyConfig.addFilter('stripHtml', stripHtml);
   eleventyConfig.addFilter('slugify', slugifyString);
-  eleventyConfig.addFilter('unslugify', unslugify);
   eleventyConfig.addFilter('jsonParse', jsonParse);
   eleventyConfig.addFilter('getLatestCollectionItemDate', getLatestCollectionItemDate);
   eleventyConfig.addFilter('compileAndMinifyScss', compileAndMinifyScss);

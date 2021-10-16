@@ -8,7 +8,6 @@ const {
   stripNewlines,
   stripHtml,
   toAbsoluteUrl,
-  unslugify,
   getLatestCollectionItemDate,
 } = require('.');
 const site = require('../../src/_data/site');
@@ -195,16 +194,6 @@ describe('custom 11ty filters', () => {
     it('throws an error if the argument is not a string', () => {
       site.url = 'https://site.com/';
       expect(() => toAbsoluteUrl(42)).toThrow();
-    });
-  });
-  describe('unslugify', () => {
-    it('unslugifies a slugged string', () => {
-      const sluggedString = 'some-slugged-sentence';
-      expect(unslugify(sluggedString)).toEqual('Some Slugged Sentence');
-    });
-    it(`doesn't modify a non-slugged string`, () => {
-      const unsluggedString = 'Full-time employees work full time. Off-topic posts are off topic. Hyphens are tricky.';
-      expect(unslugify(unsluggedString)).toEqual(unsluggedString);
     });
   });
   describe('getLatestCollectionItemDate', () => {
