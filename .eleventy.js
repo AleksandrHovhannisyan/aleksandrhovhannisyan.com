@@ -17,7 +17,7 @@ const {
   getLatestCollectionItemDate,
   compileAndMinifyScss,
 } = require('./config/filters');
-const { posts, categories, postsByCategory } = require('./config/collections');
+const { getAllPosts, getAllUniqueCategories, getPostsByCategory } = require('./config/collections');
 const markdownLib = require('./config/plugins/markdown');
 const { dir, imagePaths } = require('./config/constants');
 const { slugifyString } = require('./config/utils');
@@ -64,9 +64,9 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter('entries', Object.entries);
 
   // Custom collections
-  eleventyConfig.addCollection('posts', posts);
-  eleventyConfig.addCollection('categories', categories);
-  eleventyConfig.addCollection('postsByCategory', postsByCategory);
+  eleventyConfig.addCollection('posts', getAllPosts);
+  eleventyConfig.addCollection('categories', getAllUniqueCategories);
+  eleventyConfig.addCollection('postsByCategory', getPostsByCategory);
 
   // Plugins
   eleventyConfig.addPlugin(syntaxHighlight, syntaxHighlightConfig);

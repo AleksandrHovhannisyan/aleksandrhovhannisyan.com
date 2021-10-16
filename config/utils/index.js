@@ -1,10 +1,4 @@
 const slugify = require('slugify');
-const { dir } = require('../constants');
-
-/** Returns an array of all blog posts. */
-const getAllPosts = (collection) => {
-  return collection.getFilteredByGlob(`${dir.input}/_posts/*.md`);
-};
 
 /**
  * Returns an array of all unique values from the given collection under the specified key.
@@ -42,7 +36,6 @@ const throwIfNotType = (arg, expectedType) => {
 };
 
 module.exports = {
-  getAllPosts,
   getAllUniqueKeyValues,
   slugifyString,
   throwIfNotType,

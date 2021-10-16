@@ -1,12 +1,16 @@
 const lodash = require('lodash');
-const { getAllPosts, getAllUniqueKeyValues, slugifyString } = require('../utils');
+const { getAllUniqueKeyValues, slugifyString } = require('../utils');
 const site = require('../../src/_data/site');
+const { dir } = require('../constants');
 
-const posts = (collection) => {
-  return getAllPosts(collection).reverse();
+/** Returns all blog posts as a collection. */
+const getAllPosts = (collection) => {
+  const posts = collection.getFilteredByGlob(`${dir.input}/_posts/*.md`);
+  return posts.reverse();
 };
 
-const categories = (collection) => {
+/** Returns all unique categories as a collection. */
+const getAllUniqueCategories = (collection) => {
   const allPosts = getAllPosts(collection);
   const categories = getAllUniqueKeyValues(allPosts, 'categories').map((category) => ({
     title: category,
@@ -17,11 +21,11 @@ const categories = (collection) => {
 
 // Blog posts by category, for pagination
 // Adapted for use from: https://www.webstoemp.com/blog/basic-custom-taxonomies-with-eleventy/
-const postsByCategory = (collection) => {
+const getPostsByCategory = (collection) => {
   const postsPerPage = site.pagination.itemsPerPage;
   const blogPostsByCategory = [];
 
-  const allPosts = getAllPosts(collection).reverse();
+  const allPosts = getAllPosts(collection);
   const allUniqueCategories = getAllUniqueKeyValues(allPosts, 'categories');
 
   allUniqueCategories.forEach((category) => {
@@ -62,7 +66,7 @@ const postsByCategory = (collection) => {
 };
 
 module.exports = {
-  posts,
-  categories,
-  postsByCategory,
+  getAllPosts,
+  getAllUniqueCategories,
+  getPostsByCategory,
 };
