@@ -5,12 +5,12 @@
     --gap: 4.8rem;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: var(--gap);
   }
 
   &-wrapper {
-    display: flex;
-    flex: 1 1 calc(50% - var(--gap));
+    flex: 1;
     min-width: 27rem;
 
     // Prevents the dreaded "doom flicker": https://www.joshwcomeau.com/animation/css-transitions/#doom-flicker
