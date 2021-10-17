@@ -27,8 +27,7 @@ eleventyComputed:
   </header>
   <div class="post-content">
     {{ content }}
-    {%- assign commentsRepo = site.issuesRepo -%}
-    {%- if commentsId -%}
+    {%- if commentsId and site.featureFlags.enableComments -%}
       <section id="comments" data-comments-id="{{ commentsId }}">
         <div class="comment-actions">
           <h2>Comments <span id="comments-count"></span></h2>
