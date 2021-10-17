@@ -26,9 +26,7 @@ const handler = async (event) => {
     });
 
     const comments = response.data
-      .sort((comment1, comment2) => {
-        return comment1.created_at < comment2.created_at ? 1 : -1;
-      })
+      .sort((comment1, comment2) => comment2.created_at.localeCompare(comment1.created_at))
       // Restructure the data so the client-side JS doesn't have to do this
       .map((comment) => {
         return {
@@ -42,6 +40,7 @@ const handler = async (event) => {
           body: sanitizeHtml(markdownLib.render(comment.body)),
         };
       });
+
     return {
       statusCode: response.status,
       body: JSON.stringify(comments),
