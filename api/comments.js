@@ -3,6 +3,7 @@ const sanitizeHtml = require('sanitize-html');
 const dayjs = require('dayjs');
 const markdownLib = require('../config/plugins/markdown');
 const dayjsRelativeTimePlugin = require('dayjs/plugin/relativeTime');
+const site = require('../src/_data/site');
 
 dayjs.extend(dayjsRelativeTimePlugin);
 
@@ -19,8 +20,8 @@ const handler = async (event) => {
     }
 
     const response = await Octokit.issues.listComments({
-      owner: 'AleksandrHovhannisyan',
-      repo: 'aleksandrhovhannisyan.com',
+      owner: site.issues.owner,
+      repo: site.issues.repo,
       issue_number: issueNumber,
     });
 

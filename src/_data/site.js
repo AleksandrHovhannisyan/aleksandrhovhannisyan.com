@@ -20,6 +20,11 @@ module.exports = {
   email: 'aleksandrhovhannisyan@gmail.com',
   description: 'Dev tutorials, thoughts on software development, and the occasional off-topic post.',
   keywords: ['Aleksandr Hovhannisyan'],
+  // TODO: read from package.json?
+  issues: {
+    owner: `AleksandrHovhannisyan`,
+    repo: `aleksandrhovhannisyan.com`,
+  },
   pagination: {
     itemsPerPage: 20,
   },
