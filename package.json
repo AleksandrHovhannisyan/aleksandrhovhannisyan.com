@@ -22,6 +22,7 @@
     "lint:css:fix": "stylelint --fix \"src/**/*.scss\"",
     "lint:js": "eslint --cache \"**/*.js\"",
     "lint:js:fix": "eslint --cache --fix \"**/*.js\"",
+    "netlify": "./node_modules/netlify-cli/bin/run dev",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --config jest.config.cjs",
     "test:watch": "yarn test --watch --silent=false --silent=false",
     "update-browserslist": "npx browserslist@latest --update-db"
@@ -57,6 +58,7 @@
     "markdown-it-anchor": "^8.0.3",
     "markdown-it-link-attributes": "^3.0.0",
     "markdown-it-toc-done-right": "^4.2.0",
+    "netlify-cli": "^6.13.2",
     "netlify-plugin-11ty": "^1.0.1",
     "npm-run-all": "^4.1.5",
     "outdent": "^0.8.0",
