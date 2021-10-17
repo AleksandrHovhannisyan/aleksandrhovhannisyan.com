@@ -1,5 +1,5 @@
 /** Returns all comments using the provided issue ID. */
-export const fetchComments = async ({ id }) => {
+export const fetchComments = async (id) => {
   return (await fetch(`/.netlify/functions/comments?id=${id}`)).json();
 };
 

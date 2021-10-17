@@ -12,7 +12,7 @@ const commentsObserver = new IntersectionObserver(
         const { fetchComments, renderComments } = await import('@utils');
 
         try {
-          const comments = await fetchComments({ id: commentsId });
+          const comments = await fetchComments(commentsId);
           renderComments(comments);
         } catch (e) {
           commentsPlaceholder.innerHTML = e;
