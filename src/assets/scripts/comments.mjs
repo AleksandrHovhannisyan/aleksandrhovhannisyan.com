@@ -1,6 +1,5 @@
 const commentsSection = document.querySelector('#comments');
 const commentsPlaceholder = document.querySelector('#comments-placeholder');
-const repo = commentsSection.getAttribute('data-comments-repo');
 const commentsId = commentsSection.getAttribute('data-comments-id');
 
 // Optimization: Defer GitHub API request until users reach the comments footer.
@@ -12,12 +11,12 @@ const commentsObserver = new IntersectionObserver(
         // Otherwise, it's wasteful to write all the code in this file.
         const { fetchComments, renderComments } = await import('@utils');
 
-        fetchComments({ repo, issueId: commentsId })
-          .then(renderComments)
-          .catch((e) => {
-            console.error(e);
-            commentsPlaceholder.innerHTML = `Unable to retrieve the comments for this post. Check back later.`;
-          });
+        try {
+          const comments = await fetchComments({ id: commentsId });
+          renderComments(comments);
+        } catch (e) {
+          commentsPlaceholder.innerHTML = e;
+        }
         self.unobserve(entry.target);
       }
     });

@@ -11,7 +11,10 @@
   command = "yarn serve"
   targetPort = 4001
   publish = "_site/"
+  functions = "./api"
 
 [build]
   publish = "_site/"
   command = "yarn build"
+  functions = "./api"
+
