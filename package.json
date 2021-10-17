@@ -22,7 +22,7 @@
     "lint:css:fix": "stylelint --fix \"src/**/*.scss\"",
     "lint:js": "eslint --cache \"**/*.js\"",
     "lint:js:fix": "eslint --cache --fix \"**/*.js\"",
-    "netlify": "./node_modules/netlify-cli/bin/run dev",
+    "netlify": "./node_modules/netlify-cli/bin/run",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --config jest.config.cjs",
     "test:watch": "yarn test --watch --silent=false --silent=false",
     "update-browserslist": "npx browserslist@latest --update-db"
@@ -31,8 +31,7 @@
     "@octokit/auth-token": "^2.5.0",
     "@octokit/rest": "^18.12.0",
     "dayjs": "^1.10.5",
-    "dompurify": "^2.2.8",
-    "marked": "^2.0.5"
+    "sanitize-html": "^2.5.2"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",

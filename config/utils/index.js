@@ -1,4 +1,6 @@
 const slugify = require('slugify');
+const { Octokit } = require('@octokit/rest');
+const { createTokenAuth } = require('@octokit/auth-token');
 
 /**
  * Returns an array of all unique values from the given collection under the specified key.
@@ -35,8 +37,16 @@ const throwIfNotType = (arg, expectedType) => {
   }
 };
 
+/** Returns an authenticated GitHub API instance that can be used to fetch data. */
+const getAuthenticatedOctokit = async () => {
+  const auth = createTokenAuth(process.env.GITHUB_PERSONAL_ACCESS_TOKEN);
+  const { token } = await auth();
+  return new Octokit({ auth: token });
+};
+
 module.exports = {
   getAllUniqueKeyValues,
   slugifyString,
   throwIfNotType,
+  getAuthenticatedOctokit,
 };

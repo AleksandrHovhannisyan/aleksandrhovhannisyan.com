@@ -29,7 +29,7 @@ eleventyComputed:
     {{ content }}
     {%- assign commentsRepo = site.issuesRepo -%}
     {%- if commentsId -%}
-      <section id="comments" data-comments-id="{{ commentsId }}" data-comments-repo="{{ commentsRepo }}">
+      <section id="comments" data-comments-id="{{ commentsId }}">
         <div class="comment-actions">
           <h2>Comments <span id="comments-count"></span></h2>
           <a
