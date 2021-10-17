@@ -4,6 +4,7 @@ node_modules
 .sass-cache
 .eslintcache
 src/_drafts
+.env
 
 # Local Netlify folder
 .netlify

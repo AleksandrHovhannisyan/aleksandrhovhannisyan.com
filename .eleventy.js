@@ -22,6 +22,10 @@ const markdownLib = require('./config/plugins/markdown');
 const { dir, imagePaths } = require('./config/constants');
 const { slugifyString } = require('./config/utils');
 const { escape } = require('lodash');
+const dotenv = require('dotenv');
+
+// Load .env environment variables
+dotenv.config()
 
 const TEMPLATE_ENGINE = 'liquid';
 
