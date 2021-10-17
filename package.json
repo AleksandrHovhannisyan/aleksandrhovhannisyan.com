@@ -28,6 +28,8 @@
     "update-browserslist": "npx browserslist@latest --update-db"
   },
   "dependencies": {
+    "@octokit/auth-token": "^2.5.0",
+    "@octokit/rest": "^18.12.0",
     "dayjs": "^1.10.5",
     "dompurify": "^2.2.8",
     "marked": "^2.0.5"
