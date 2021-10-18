@@ -7,15 +7,13 @@ const commentsObserver = new IntersectionObserver(
   (entries, self) => {
     entries.forEach(async (entry) => {
       if (entry.isIntersecting) {
-        // Make this script super tiny by deferring the import for these utils.
-        // Otherwise, it's wasteful to write all the code in this file.
+        // Don't need this until they reach the comments section
         const { fetchComments, renderComments } = await import('@utils');
-
         try {
           const comments = await fetchComments(commentsId);
           renderComments(comments);
-        } catch (e) {
-          commentsPlaceholder.innerHTML = e;
+        } catch (error) {
+          commentsPlaceholder.innerHTML = error.message;
         }
         self.unobserve(entry.target);
       }

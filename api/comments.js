@@ -7,25 +7,37 @@ const site = require('../src/_data/site');
 
 dayjs.extend(dayjsRelativeTimePlugin);
 
-const handler = async (event) => {
+exports.handler = async (event) => {
   const issueNumber = event.queryStringParameters.id;
+  const Octokit = await getAuthenticatedOctokit();
 
   try {
-    const Octokit = await getAuthenticatedOctokit();
-
-    // Always check this first
-    const { data: rateLimit } = await Octokit.rateLimit.get();
-    if (rateLimit.rate.remaining === 0) {
-      throw new Error();
+    // Check this first. Does not count towards the API rate limit.
+    const { data: rateLimitInfo } = await Octokit.rateLimit.get();
+    console.log(`GitHub API requests remaining: ${rateLimitInfo.resources.core.remaining}`);
+    if (rateLimitInfo.rate.remaining === 0) {
+      return {
+        statusCode: 429,
+        body: JSON.stringify({ error: 'Unable to fetch comments at this time. Check back later.' }),
+      };
     }
 
+    // https://docs.github.com/en/rest/reference/issues#list-issue-comments-for-a-repository
     const response = await Octokit.issues.listComments({
       owner: site.issues.owner,
       repo: site.issues.repo,
       issue_number: issueNumber,
     });
 
+    if (response.status !== 200) {
+      return {
+        statusCode: response.status,
+        body: JSON.stringify({ error: `Unable to fetch comments for this post.` }),
+      };
+    }
+
     const comments = response.data
+      // Recent comments first
       .sort((comment1, comment2) => comment2.created_at.localeCompare(comment1.created_at))
       // Restructure the data so the client-side JS doesn't have to do this
       .map((comment) => {
@@ -43,14 +55,14 @@ const handler = async (event) => {
 
     return {
       statusCode: response.status,
-      body: JSON.stringify(comments),
+      body: JSON.stringify({
+        data: comments,
+      }),
     };
-  } catch (message) {
+  } catch (e) {
     return {
-      statusCode: 400,
-      body: message ?? 'Unable to fetch comments for this post. Check back later.',
+      statusCode: 500,
+      body: JSON.stringify({ error: 'Unable to fetch comments for this post.' }),
     };
   }
 };
-
-module.exports = { handler };

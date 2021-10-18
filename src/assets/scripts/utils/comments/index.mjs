@@ -1,6 +1,11 @@
 /** Returns all comments using the provided issue ID. */
 export const fetchComments = async (id) => {
-  return (await fetch(`/.netlify/functions/comments?id=${id}`)).json();
+  const response = await fetch(`/.netlify/functions/comments?id=${id}`);
+  const { data: comments, error } = await response.json();
+  if (error) {
+    throw new Error(error);
+  }
+  return comments;
 };
 
 /** Renders the given list of comments, converting markdown to HTML. */
