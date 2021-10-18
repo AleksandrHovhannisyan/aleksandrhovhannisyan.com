@@ -26,24 +26,23 @@ export const renderComments = async (comments) => {
   commentsList.innerHTML = comments
     .map((comment) => {
       return `<li class="post-comment">
-                    <header class="post-comment-header">
-                        <img src="${comment.user.avatarUrl}" alt="" aria-hidden="true" class="post-comment-avatar">
-                        <a
-                            href="https://github.com/${comment.user.name}"
-                            class="post-comment-username"
-                            >${comment.user.name}</a
-                        >
-                        <div class="post-comment-meta">commented
-                        <time datetime="${comment.created_at}">${comment.datePosted}</time></div>
-                        ${
-                          comment.isAuthor
-                            ? '<span class="post-comment-meta tag post-comment-author">Author</span>'
-                            : ''
-                        }
-                        ${comment.isEdited ? `<span class="post-comment-meta post-comment-edited">Edited</span>` : ''}
-                    </header>
-                    <div class="post-comment-body">${comment.body}</div>
-                </li>`;
+                <header class="post-comment-header">
+                  <img src="${comment.user.avatarUrl}" alt="" aria-hidden="true" class="post-comment-avatar">
+                  <a
+                    href="https://github.com/${comment.user.name}"
+                    class="post-comment-username"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    ${comment.user.name}
+                  </a>
+                  <div class="post-comment-meta">commented
+                  <time datetime="${comment.created_at}">${comment.datePosted}</time></div>
+                  ${comment.isAuthor ? '<span class="post-comment-meta tag post-comment-author">Author</span>' : ''}
+                  ${comment.isEdited ? `<span class="post-comment-meta post-comment-edited">Edited</span>` : ''}
+                </header>
+                <div class="post-comment-body">${comment.body}</div>
+              </li>`;
     })
     .join('');
 
