@@ -22,7 +22,6 @@
     "lint:css:fix": "stylelint --fix \"src/**/*.scss\"",
     "lint:js": "eslint --cache \"**/*.js\"",
     "lint:js:fix": "eslint --cache --fix \"**/*.js\"",
-    "netlify": "./node_modules/netlify-cli/bin/run",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --config jest.config.cjs",
     "test:watch": "yarn test --watch --silent=false --silent=false",
     "update-browserslist": "npx browserslist@latest --update-db"
