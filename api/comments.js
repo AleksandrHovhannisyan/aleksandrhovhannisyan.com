@@ -15,7 +15,7 @@ exports.handler = async (event) => {
     // Check this first. Does not count towards the API rate limit.
     const { data: rateLimitInfo } = await Octokit.rateLimit.get();
     console.log(`GitHub API requests remaining: ${rateLimitInfo.resources.core.remaining}`);
-    if (rateLimitInfo.rate.remaining === 0) {
+    if (rateLimitInfo.resources.core.remaining === 0) {
       return {
         statusCode: 429,
         body: JSON.stringify({ error: 'Unable to fetch comments at this time. Check back later.' }),
