@@ -27,9 +27,8 @@
     "update-browserslist": "npx browserslist@latest --update-db"
   },
   "dependencies": {
-    "@octokit/auth-token": "^2.5.0",
-    "@octokit/rest": "^18.12.0",
     "dayjs": "^1.10.5",
+    "octokit": "^1.7.0",
     "sanitize-html": "^2.5.2"
   },
   "devDependencies": {
