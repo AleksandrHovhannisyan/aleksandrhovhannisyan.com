@@ -11,7 +11,6 @@
   }
 
   &-content {
-    grid-template-columns: minmax(0, var(--page-max-width));
     overflow-wrap: break-word;
     @include rhythm;
 
