@@ -156,14 +156,14 @@
 }
 
 #navbar-toggle {
-  --navbar-toggle-size: 3.2rem;
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   align-items: center;
   background: transparent;
-  height: var(--navbar-toggle-size);
-  width: var(--navbar-toggle-size);
+  width: 3.2rem;
+  aspect-ratio: 1;
   flex-shrink: 0;
   outline-offset: 0.4rem;
   @include font($size: 'base');
@@ -189,8 +189,8 @@
       &:is(:first-child, :last-child) {
         position: absolute;
         margin: 0;
-        width: var(--navbar-toggle-size);
-        height: 5%;
+        width: 100%;
+        height: 10%;
       }
 
       &:first-child {
