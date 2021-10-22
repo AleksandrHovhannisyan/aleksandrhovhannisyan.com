@@ -21,16 +21,18 @@ Rather than storing comments statically in my repo or with a known comment syste
 {% raw %}
 ```md
 ---
-issueId: 42
+commentsId: 42
 ---
 ```
 {% endraw %}
 
 I also store this issue number in a `data-` attribute somewhere in the post's HTML. With most static site generators, you should be able to do this at the layout level for all of your posts.
 
+{% raw %}
 ```html
-<section id="comments" data-issue-id="{{ issueId }}"></section>
+<section id="comments" data-issue-id="{{ commentsId }}"></section>
 ```
+{% endraw %}
 
 The page then includes some custom JavaScript that uses the `IntersectionObserver` API to detect when a user has scrolled to the comments section. At that point, the script reads the issue number off of the `data-` attribute and makes a request to the GitHub API to fetch the comments for that particular post.
 
