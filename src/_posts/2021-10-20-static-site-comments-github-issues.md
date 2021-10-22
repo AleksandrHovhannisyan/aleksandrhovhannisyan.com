@@ -231,7 +231,7 @@ All of the remaining code in this tutorial will continue inside the `try` block 
 
 ### 4. Checking the Rate Limit
 
-Now that we've authenticated the Octokit client, we can check our rate limit and throw an error preemptively if we cannot make any more API requests. Note that this request does not itself count toward your rate limit.
+Now that we've authenticated the Octokit client, we can check our rate limit and return an error status preemptively if we cannot make any more API requests. Note that this request does not itself count toward your rate limit.
 
 {% include codeHeader.html file: "functions/comments.js" %}
 ```js
