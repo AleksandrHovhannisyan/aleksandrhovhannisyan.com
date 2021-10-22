@@ -219,6 +219,7 @@ exports.handler = async (event) => {
     const { token } = await auth();
     const octokitClient = new Octokit({ auth: token });
   } catch (e) {
+    console.log(e);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Unable to fetch comments for this post.' }),
