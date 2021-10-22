@@ -301,7 +301,7 @@ datePosted: dayjs(comment.created_at).fromNow()
 
 Note this line in particular for the mapped comments:
 
-```
+```plaintext
 body: toMarkdown(comment.body)
 ```
 
