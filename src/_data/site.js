@@ -1,4 +1,4 @@
-const { GITHUB_PERSONAL_ACCESS_TOKEN } = process.env;
+const { GITHUB_PERSONAL_ACCESS_TOKEN, ELEVENTY_ENV } = process.env;
 
 const environmentSpecificVariables = {
   development: {
@@ -30,5 +30,5 @@ module.exports = {
   featureFlags: {
     ...featureFlags,
   },
-  ...environmentSpecificVariables[process.env.ELEVENTY_ENV],
+  ...environmentSpecificVariables[ELEVENTY_ENV],
 };
