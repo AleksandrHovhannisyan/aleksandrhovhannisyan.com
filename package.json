@@ -26,6 +26,7 @@
     "test:watch": "yarn test --watch --silent=false --silent=false",
     "update-browserslist": "npx browserslist@latest --update-db"
   },
+  "resolutions": { "**/ua-parser-js": "0.7.28" },
   "dependencies": {
     "dayjs": "^1.10.5",
     "octokit": "^1.7.0",
