@@ -12,7 +12,7 @@
     "serve:html": "ELEVENTY_ENV=development npx @11ty/eleventy --serve --incremental --port=4001",
     "serve:js": "webpack --mode=development --watch",
     "serve:css": "sass --watch src/assets/styles:_site/assets/styles --style=expanded",
-    "build": "run-s test clean build:eleventy build:css build:js",
+    "build": "run-s test clean build:html build:css build:js",
     "build:html": "ELEVENTY_ENV=production npx @11ty/eleventy",
     "build:js": "webpack --mode=production",
     "build:css": "sass src/assets/styles:_site/assets/styles",
