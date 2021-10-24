@@ -15,7 +15,7 @@ const quote = (children, source, cite) => {
   }
   const content = markdownLib.renderInline(newlineToBr(children.trim()));
   return outdent`<blockquote cite="${cite}">
-    <div class="quote-content">${content}</div>
+    <div class="quote">${content}</div>
     <div class="quote-source">—<cite><a href="${escape(
       cite
     )}" target="_blank" rel="noreferrer noopener">${source}</a></cite></div>

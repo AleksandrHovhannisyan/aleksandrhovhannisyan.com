@@ -6,7 +6,7 @@ blockquote {
   @include rhythm;
 }
 
-.quote-content {
+.quote {
   &::before {
     content: open-quote;
   }

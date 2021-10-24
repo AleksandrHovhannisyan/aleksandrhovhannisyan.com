@@ -6,6 +6,11 @@ figure {
   row-gap: 0.8rem;
 }
 
+figcaption {
+  max-width: 70ch;
+  margin: 0 auto;
+}
+
 figcaption,
 cite {
   font-style: italic;
