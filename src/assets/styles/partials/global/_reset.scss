@@ -25,7 +25,8 @@ button {
 
 img,
 iframe,
-video {
+video,
+table {
   max-width: 100%;
 }
 
@@ -46,7 +47,6 @@ ol {
 
 table {
   border-collapse: collapse;
-  max-width: 100%;
   overflow-x: auto;
   display: block;
 }
