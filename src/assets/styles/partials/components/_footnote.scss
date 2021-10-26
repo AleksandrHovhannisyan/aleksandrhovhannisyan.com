@@ -1,0 +1,14 @@
+@import '../mixins';
+
+.footnotes {
+  @include rhythm;
+
+  &__ref {
+    @include underlined-link($initially-underlined: true);
+  }
+}
+
+[role="doc-noteref"]::after {
+  counter-increment: footnotes;
+  content: ' [' counter(footnotes) ']';
+}

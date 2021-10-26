@@ -26,7 +26,9 @@
     "test:watch": "yarn test --watch --silent=false --silent=false",
     "update-browserslist": "npx browserslist@latest --update-db"
   },
-  "resolutions": { "**/ua-parser-js": "0.7.28" },
+  "resolutions": {
+    "**/ua-parser-js": "0.7.28"
+  },
   "dependencies": {
     "dayjs": "^1.10.5",
     "octokit": "^1.7.0",
@@ -46,6 +48,7 @@
     "classnames": "^2.3.1",
     "concurrently": "^5.3.0",
     "dotenv": "^10.0.0",
+    "eleventy-plugin-footnotes": "^0.9.0",
     "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",

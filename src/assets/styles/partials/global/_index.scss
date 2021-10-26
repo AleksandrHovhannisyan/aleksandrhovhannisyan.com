@@ -13,6 +13,7 @@ body {
   background-color: var(--main-bg-color);
   color: var(--color-text-normal);
   @include font($family: 'main', $weight: 'regular', $size: 'base');
+  counter-reset: footnotes;
 }
 
 #page-content {

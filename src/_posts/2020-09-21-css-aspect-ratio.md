@@ -303,15 +303,16 @@ One possible reason for this is that using a single reference axis (the containi
 
 A more logical reason is the [causality dilemma](https://en.wikipedia.org/wiki/Chicken_or_the_egg) (aka the chicken or the egg). Let's pretend that percentage values for vertical padding actually referenced the containing block's height, rather than its width. If that were the case, we'd get an infinite loop:
 
-1. A containing block's height is affected by the heights of its children<sup>1</sup>.
+{% capture footnote1 %}
+  The same does not apply to the width of a containing block. By definition, a block-level element such as a `div` will fill up 100% of the available width in the [inline direction](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Block_and_Inline_Layout_in_Normal_Flow#Elements_participating_in_a_block_formatting_context). If children exceed this width, they will simply overflow—the parent will not stretch. Hence, the infinite calculation problem does not exist in the horizontal axis.
+{% endcapture %}
+{% assign footnote1 = footnote1 | toHtml %}
+
+1. {% footnoteref "containing-block-height", footnote1 %}A containing block's height is affected by the heights of its children{% endfootnoteref %}.
 2. A child sets its `padding-top` to be some percentage (e.g., `50%`).
 3. The height of the containing block must change since the child is now taller.
 4. If the height of the containing block increases, the child's padding must increase, too.
 5. Repeat steps 2-4 infinitely.
-
-{% aside %}
-  <sup>1</sup>The same does NOT apply to the width of a containing block. By definition, a block-level element such as a `<div>` will fill up 100% of the available width in the [inline direction](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Block_and_Inline_Layout_in_Normal_Flow#Elements_participating_in_a_block_formatting_context). If children exceed this width, they will simply overflow—the parent will not stretch. Hence, the infinite calculation problem does not exist in the horizontal axis.
-{% endaside %}
 
 Another reason is that this CSS trick allows us to define responsive aspect ratios since; prior to the introduction of `aspect-ratio`, there was no other way to achieve the same result. If percentage values for vertical padding were based on the containing block's height and not its width, then we'd have no way of doing this with responsive units.
 
@@ -450,6 +451,8 @@ So percentage padding isn't always relative to the containing block's width! Thi
 ## Final Thoughts
 
 Hopefully, you now have a better understanding of how to define responsive aspect ratios in CSS for all kinds of elements, including images, videos, and more. As a bonus, you now know how percentage values work for padding and margins and that they depend on the document's writing mode. You also know how to create aspect ratios in CSS with the more modern approach.
+
+{% footnotes %}
 
 ## References and Further Reading
 

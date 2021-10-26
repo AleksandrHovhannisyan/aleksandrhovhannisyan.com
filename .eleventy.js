@@ -1,4 +1,5 @@
-const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
+const PluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
+const PluginFootnotes = require('eleventy-plugin-footnotes')
 const syntaxHighlightConfig = require('./config/plugins/syntaxHighlighter');
 const { asideShortcode, imageShortcode, iconShortcode, socialIconShortcode, quoteShortcode } = require('./config/shortcodes');
 const {
@@ -73,7 +74,13 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addCollection('postsByCategory', getPostsByCategory);
 
   // Plugins
-  eleventyConfig.addPlugin(syntaxHighlight, syntaxHighlightConfig);
+  eleventyConfig.addPlugin(PluginSyntaxHighlight, syntaxHighlightConfig);
+  eleventyConfig.addPlugin(PluginFootnotes, {
+    baseClass: 'footnotes',
+    title: 'Footnotes',
+    titleId: 'footnotes-label',
+    backLinkLabel: (footnote, index) => `Back to reference ${index + 1}`,
+  });
 
   // Libraries
   eleventyConfig.setLibrary('md', markdownLib);
