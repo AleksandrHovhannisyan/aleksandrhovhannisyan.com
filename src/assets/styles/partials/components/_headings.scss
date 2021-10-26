@@ -4,10 +4,6 @@
   color: var(--color-text-emphasis);
   @include font($family: 'main', $weight: 'bold');
 
-  .heading-anchor {
-    @include underlined-link($initially-underlined: false);
-  }
-
   code {
     @include font($family: 'code', $weight: 'bold');
   }
@@ -35,4 +31,8 @@ h5 {
 
 h6 {
   @include font($size: 'base');
+}
+
+.heading-anchor {
+  @include underlined-link($initially-underlined: false);
 }

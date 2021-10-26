@@ -32,6 +32,8 @@
   display: grid;
   row-gap: 6.4rem;
   grid-template-columns: minmax(0, 1fr);
+  list-style: none;
+  padding: 0;
 }
 
 .post-comment {

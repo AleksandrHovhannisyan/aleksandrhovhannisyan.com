@@ -20,37 +20,30 @@
       @include font($family: 'main', $weight: 'bold');
     }
 
-    .toc-list {
-      --gap: 2.4rem;
-      display: grid;
-      row-gap: var(--gap);
-      list-style: disc; // some headings have numbers already
-    }
+    // TODO: figure out a better way around this specificity nightmare :/ if only markdown-it let you add custom classes to all tags
 
-    .toc-list .toc-list {
-      margin-top: var(--gap);
-    }
-
-    ol:not([class]) {
+    :where(ol) {
       list-style: decimal;
     }
 
-    ul:not([class]) {
+    :where(ul) {
       list-style: disc;
     }
 
-    .toc-list,
-    :is(ol, ul):not([class]) {
-      padding-inline-start: clamped(2.4rem, 4.8rem);
+    .toc-list {
+      --gap: 2.4rem;
+      list-style: disc; // some headings have numbers already
     }
 
-    :is(ol, ul):not([class]) {
+    :where(ul, ol) {
+      --gap: 0.4rem;
       display: grid;
-      row-gap: 0.4rem;
+      gap: var(--gap);
+      padding-inline-start: clamped(2.4rem, 4.8rem);
 
-      li:not([class]) {
-        :is(ol, ul):not([class]) {
-          margin-top: 0.4rem;
+      :where(li) {
+        :where(ul, ol) {
+          margin-top: var(--gap);
         }
       }
     }

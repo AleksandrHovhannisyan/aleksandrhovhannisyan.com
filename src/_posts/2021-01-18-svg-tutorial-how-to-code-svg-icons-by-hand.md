@@ -1701,6 +1701,7 @@ That does it for this tutorial! I hope you learned something new (and had fun!).
 
 <style>
   .post-content .svg-tutorial__icon-grid {
+    list-style: none;
     display: flex;
     justify-content: center;
     align-items: center;
