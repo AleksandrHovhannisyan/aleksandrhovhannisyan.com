@@ -11,49 +11,51 @@
     radial-gradient(circle at 70% 26%, white 5%, transparent 5.3%),
     radial-gradient(circle at 23% 52%, white 7.6%, transparent 7.9%),
     radial-gradient(circle at 76% 52%, white 7.6%, transparent 7.9%);
-}
 
-.snoo-face {
-  position: absolute;
-  width: 12.5vmin;
-  height: 8.5vmin;
-  border-radius: 50%;
-  background-color: white;
-  left: 50%;
-  transform: translateX(-51%);
-  bottom: 4vmin;
-  background-image:
-    radial-gradient(circle at 28% 41%, var(--snoo-orange) 10.5%, transparent 10.8%),
-    radial-gradient(circle at 69% 41%, var(--snoo-orange) 10.5%, transparent 10.8%),
-    radial-gradient(circle at 29% 69%, var(--snoo-orange) 2%, transparent 2.3%),
-    radial-gradient(circle at 71% 70%, var(--snoo-orange) 2%, transparent 2.3%);
-}
+  &-face {
+    position: absolute;
+    width: 12.5vmin;
+    height: 8.5vmin;
+    border-radius: 50%;
+    background-color: white;
+    left: 50%;
+    transform: translateX(-51%);
+    bottom: 4vmin;
+    background-image:
+      radial-gradient(circle at 28% 41%, var(--snoo-orange) 10.5%, transparent 10.8%),
+      radial-gradient(circle at 69% 41%, var(--snoo-orange) 10.5%, transparent 10.8%),
+      radial-gradient(circle at 29% 69%, var(--snoo-orange) 2%, transparent 2.3%),
+      radial-gradient(circle at 71% 70%, var(--snoo-orange) 2%, transparent 2.3%);
 
-.snoo-face::before {
-  content: '';
-  display: block;
-  position: absolute;
-  top: -4vmin;
-  left: 6vmin;
-  width: 3.5vmin;
-  height: 5vmin;
-  border-left: solid 0.75vmin white;
-  border-top: solid 0.75vmin white;
-  transform: rotate(13deg);
-  border-radius: 10% 0 0 0;
-}
+    // Base of antenna
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: -4vmin;
+      left: 6vmin;
+      width: 3.5vmin;
+      height: 5vmin;
+      border-left: solid 0.75vmin white;
+      border-top: solid 0.75vmin white;
+      transform: rotate(13deg);
+      border-radius: 10% 0 0 0;
+    }
 
-.snoo-face::after {
-  content: '';
-  display: block;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%) rotate(45deg);
-  bottom: 0.35vmin;
-  width: 3.5vmin;
-  height: 3.5vmin;
-  border-radius: 0%;
-  border-bottom: solid 0.55vmin var(--snoo-orange);
-  border-right: solid 0.55vmin var(--snoo-orange);
-  border-radius: 0% 0 100% 0;
+    // Antenna ball
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      bottom: 0.35vmin;
+      width: 3.5vmin;
+      height: 3.5vmin;
+      border-radius: 0%;
+      border-bottom: solid 0.55vmin var(--snoo-orange);
+      border-right: solid 0.55vmin var(--snoo-orange);
+      border-radius: 0% 0 100% 0;
+    }
+  }
 }

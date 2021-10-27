@@ -1,403 +1,405 @@
 /* 150% zoom on the reference: https://static.wikia.nocookie.net/hollowknight/images/4/47/The_Knight_Idle.png/revision/latest/scale-to-width-down/63?cb=20190618162622 */
 
 .theKnight {
-  --wingColor: #4e5469;
-  --nailColor: #a597a6;
+  --color-wing: #4e5469;
+  --color-nail: #a597a6;
 
   width: 12vmin;
   height: 25vmin;
   position: relative;
-}
 
-.theKnight-head {
-  width: 10.8vmin;
-  height: 9.75vmin;
-  border: solid 0.6vmin black;
-  border-top-width: 0.7vmin;
-  border-right-width: 0.8vmin;
-  border-left-width: 0.8vmin;
-  background-color: white;
-  position: absolute;
-  top: 26%;
-  right: 0.4vmin;
-  border-radius: 40% 30% 32% 40%;
-  transform: rotate(4deg);
-  z-index: 2;
-}
+  &-head {
+    width: 10.8vmin;
+    height: 9.75vmin;
+    border: solid 0.6vmin black;
+    border-top-width: 0.7vmin;
+    border-right-width: 0.8vmin;
+    border-left-width: 0.8vmin;
+    background-color: white;
+    position: absolute;
+    top: 26%;
+    right: 0.4vmin;
+    border-radius: 40% 30% 32% 40%;
+    transform: rotate(4deg);
+    z-index: 2;
+  }
 
-/* Creating the eyes with pseudo elements */
-.theKnight-eyes::before,
-.theKnight-eyes::after {
-  content: '';
-  display: block;
-  position: absolute;
-  background-color: black;
-}
+  &-eyes {
+    /* Creating the eyes with pseudo elements */
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      background-color: black;
+    }
 
-/* Left eye */
-.theKnight-eyes::before {
-  right: 2.3vmin;
-  bottom: 1.25vmin;
-  background-color: black;
-  width: 2.4vmin;
-  height: 3.5vmin;
-  border-radius: 80% 95% 95% 70%;
-}
+    /* Left eye */
+    &::before {
+      right: 2.3vmin;
+      bottom: 1.25vmin;
+      background-color: black;
+      width: 2.4vmin;
+      height: 3.5vmin;
+      border-radius: 80% 95% 95% 70%;
+    }
 
-/* Right eye */
-.theKnight-eyes::after {
-  width: 1vmin;
-  height: 3vmin;
-  border-radius: 100% 50% 50% 100%;
-  right: -0.4vmin;
-  bottom: 1.8vmin;
-  transform: rotate(2deg);
-}
+    /* Right eye */
+    &::after {
+      width: 1vmin;
+      height: 3vmin;
+      border-radius: 100% 50% 50% 100%;
+      right: -0.4vmin;
+      bottom: 1.8vmin;
+      transform: rotate(2deg);
+    }
+  }
 
-.theKnight-horn {
-  position: absolute;
-}
+  &-horn {
+    position: absolute;
 
-.theKnight-horn.left {
-  border-top: solid 0.9vmin transparent;
-  border-left: solid 0.9vmin black;
-  border-bottom: solid 0.2vmin transparent;
-  border-radius: 40% 0 0 50%;
-  height: 7.5vmin;
-  width: 5.1vmin;
-  left: 0.5vmin;
-  top: -5.6vmin;
-  transform: rotate(-2deg);
-}
+    &.left {
+      border-top: solid 0.9vmin transparent;
+      border-left: solid 0.9vmin black;
+      border-bottom: solid 0.2vmin transparent;
+      border-radius: 40% 0 0 50%;
+      height: 7.5vmin;
+      width: 5.1vmin;
+      left: 0.5vmin;
+      top: -5.6vmin;
+      transform: rotate(-2deg);
 
-/* The main white body of the horn */
-.theKnight-horn.left::before {
-  content: '';
-  display: block;
-  position: absolute;
-  border-top: solid 1.6vmin transparent;
-  border-left: solid 1.7vmin white;
-  border-radius: 100% 0 100% 00%;
-  left: -1.3vmin;
-  bottom: 1vmin;
-  height: 3vmin;
-  width: 3vmin;
-  clip-path: polygon(0% 0%, 100% 0%, 100% 10%, 0% 100%);
-  transform: rotate(-53deg);
-}
+      /* The main white body of the horn */
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        border-top: solid 1.6vmin transparent;
+        border-left: solid 1.7vmin white;
+        border-radius: 100% 0 100% 00%;
+        left: -1.3vmin;
+        bottom: 1vmin;
+        height: 3vmin;
+        width: 3vmin;
+        clip-path: polygon(0% 0%, 100% 0%, 100% 10%, 0% 100%);
+        transform: rotate(-53deg);
+      }
 
-/* Top curvy bit */
-.theKnight-horn.left::after {
-  content: '';
-  display: block;
-  position: absolute;
-  width: 2vmin;
-  height: 3.5vmin;
-  border-top: solid 0.7vmin black;
-  border-left: solid 0.7vmin black;
-  border-radius: 100% 0 50% 0;
-  top: -2.8vmin;
-  left: 0vmin;
-  transform: rotate(18deg);
-}
+      /* Top curvy bit */
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 2vmin;
+        height: 3.5vmin;
+        border-top: solid 0.7vmin black;
+        border-left: solid 0.7vmin black;
+        border-radius: 100% 0 50% 0;
+        top: -2.8vmin;
+        left: 0vmin;
+        transform: rotate(18deg);
+      }
 
-/* Opposing, curved border of the horn */
-.theKnight-horn.left .hornHalf {
-  border-top: solid 0.4vmin transparent;
-  border-left: solid 0.8vmin black;
-  border-bottom: solid 0.3vmin transparent;
-  border-radius: 50% 0 0 50%;
-  height: 5.8vmin;
-  width: 5.2vmin;
-  position: absolute;
-  right: -1.7vmin;
-  bottom: 1vmin;
-  transform: rotate(15deg);
-}
+      /* Opposing, curved border of the horn */
+      & .hornHalf {
+        border-top: solid 0.4vmin transparent;
+        border-left: solid 0.8vmin black;
+        border-bottom: solid 0.3vmin transparent;
+        border-radius: 50% 0 0 50%;
+        height: 5.8vmin;
+        width: 5.2vmin;
+        position: absolute;
+        right: -1.7vmin;
+        bottom: 1vmin;
+        transform: rotate(15deg);
 
-/* Top white bit */
-.theKnight-horn.left .hornHalf::before {
-  content: '';
-  display: block;
-  position: absolute;
-  background-color: white;
-  border-right: 0.2vmin solid transparent;
-  border-radius: 100%;
-  height: 3.9vmin;
-  width: 1.2vmin;
-  left: -1.7vmin;
-  bottom: 3vmin;
-  transform: rotate(10deg);
-}
+        /* Top white bit */
+        &::before {
+          content: '';
+          display: block;
+          position: absolute;
+          background-color: white;
+          border-right: 0.2vmin solid transparent;
+          border-radius: 100%;
+          height: 3.9vmin;
+          width: 1.2vmin;
+          left: -1.7vmin;
+          bottom: 3vmin;
+          transform: rotate(10deg);
+        }
 
-/* The pincer bit of the horn */
-.theKnight-horn.left .hornHalf::after {
-  content: '';
-  display: block;
-  position: absolute;
-  border-left: solid 0.8vmin black;
-  border-bottom: solid 0.8vmin black;
-  border-right: 0.4vmin solid transparent;
-  border-radius: 100%;
-  height: 1.8vmin;
-  width: 0.6vmin;
-  left: -0.8vmin;
-  bottom: 4.2vmin;
-  transform: rotate(15deg);
-}
+        /* The pincer bit of the horn */
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          border-left: solid 0.8vmin black;
+          border-bottom: solid 0.8vmin black;
+          border-right: 0.4vmin solid transparent;
+          border-radius: 100%;
+          height: 1.8vmin;
+          width: 0.6vmin;
+          left: -0.8vmin;
+          bottom: 4.2vmin;
+          transform: rotate(15deg);
+        }
+      }
+    }
 
-.theKnight-horn.right {
-  border-top: solid 0.1vmin transparent;
-  border-left: solid 0.9vmin black;
-  border-radius: 40% 0 0 34%;
-  height: 6.5vmin;
-  width: 5.1vmin;
-  right: 0.1vmin;
-  top: -6.3vmin;
-  transform: rotate(-5deg) scaleX(-1);
-}
+    &.right {
+      border-top: solid 0.1vmin transparent;
+      border-left: solid 0.9vmin black;
+      border-radius: 40% 0 0 34%;
+      height: 6.5vmin;
+      width: 5.1vmin;
+      right: 0.1vmin;
+      top: -6.3vmin;
+      transform: rotate(-5deg) scaleX(-1);
 
-/* The main white body of the horn */
-.theKnight-horn.right::before {
-  content: '';
-  display: block;
-  position: absolute;
-  border-top: solid 1.6vmin transparent;
-  border-left: solid 1.9vmin white;
-  border-radius: 100% 0 100% 00%;
-  left: -2vmin;
-  bottom: 0.8vmin;
-  height: 2.2vmin;
-  width: 3.7vmin;
-  transform: rotate(-63deg);
-}
+      /* The main white body of the horn */
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        border-top: solid 1.6vmin transparent;
+        border-left: solid 1.9vmin white;
+        border-radius: 100% 0 100% 00%;
+        left: -2vmin;
+        bottom: 0.8vmin;
+        height: 2.2vmin;
+        width: 3.7vmin;
+        transform: rotate(-63deg);
+      }
 
-/* Top curvy bit */
-.theKnight-horn.right::after {
-  content: '';
-  display: block;
-  position: absolute;
-  width: 2vmin;
-  height: 1vmin;
-  border-top: solid 0.8vmin black;
-  border-right: solid 0.8vmin black;
-  border-radius: 0 100% 0 100%;
-  top: -1vmin;
-  left: -0.5vmin;
-  transform: rotate(-63deg);
-}
+      /* Top curvy bit */
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 2vmin;
+        height: 1vmin;
+        border-top: solid 0.8vmin black;
+        border-right: solid 0.8vmin black;
+        border-radius: 0 100% 0 100%;
+        top: -1vmin;
+        left: -0.5vmin;
+        transform: rotate(-63deg);
+      }
 
-/* Opposing, curved border of the horn */
-.theKnight-horn.right .hornHalf {
-  border-top: solid 0.1vmin transparent;
-  border-right: solid 0.7vmin black;
-  border-bottom: solid 0.5vmin transparent;
-  border-radius: 0% 37% 50% 0%;
-  height: 6vmin;
-  width: 5.5vmin;
-  position: absolute;
-  right: -2.1vmin;
-  bottom: -0.3vmin;
-  transform: rotate(-5deg) scaleX(-1);
-}
+      /* Opposing, curved border of the horn */
+      & .hornHalf {
+        border-top: solid 0.1vmin transparent;
+        border-right: solid 0.7vmin black;
+        border-bottom: solid 0.5vmin transparent;
+        border-radius: 0% 37% 50% 0%;
+        height: 6vmin;
+        width: 5.5vmin;
+        position: absolute;
+        right: -2.1vmin;
+        bottom: -0.3vmin;
+        transform: rotate(-5deg) scaleX(-1);
 
-/* Top white bit */
-.theKnight-horn.right .hornHalf::before {
-  content: '';
-  display: block;
-  position: absolute;
-  background-color: white;
-  border-right: 0.2vmin solid transparent;
-  border-radius: 100%;
-  height: 3.9vmin;
-  width: 0.5vmin;
-  right: -1.2vmin;
-  bottom: 3vmin;
-  transform: rotate(-15deg) scaleX(-1);
-}
+        /* Top white bit */
+        &::before {
+          content: '';
+          display: block;
+          position: absolute;
+          background-color: white;
+          border-right: 0.2vmin solid transparent;
+          border-radius: 100%;
+          height: 3.9vmin;
+          width: 0.5vmin;
+          right: -1.2vmin;
+          bottom: 3vmin;
+          transform: rotate(-15deg) scaleX(-1);
+        }
 
-/* The pincer bit of the horn */
-.theKnight-horn.right .hornHalf::after {
-  content: '';
-  display: block;
-  position: absolute;
-  border-left: solid 0.8vmin black;
-  border-bottom: solid 0.8vmin black;
-  border-right: 0.4vmin solid transparent;
-  border-radius: 100%;
-  height: 1.3vmin;
-  width: 0.2vmin;
-  right: -0.3vmin;
-  bottom: 5vmin;
-  transform: rotate(-18deg) scaleX(-1);
-}
+        /* The pincer bit of the horn */
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          border-left: solid 0.8vmin black;
+          border-bottom: solid 0.8vmin black;
+          border-right: 0.4vmin solid transparent;
+          border-radius: 100%;
+          height: 1.3vmin;
+          width: 0.2vmin;
+          right: -0.3vmin;
+          bottom: 5vmin;
+          transform: rotate(-18deg) scaleX(-1);
+        }
+      }
+    }
+  }
 
-.theKnight-nail {
-  width: 3vmin;
-  height: 3.5vmin;
-  background-color: var(--nailColor);
-  border: solid 0.7vmin black;
-  border-top-width: 1vmin;
-  transform: rotate(30deg);
-  position: absolute;
-  left: 1.5vmin;
-  top: 15vmin;
-}
+  &-nail {
+    width: 3vmin;
+    height: 3.5vmin;
+    background-color: var(--color-nail);
+    border: solid 0.7vmin black;
+    border-top-width: 1vmin;
+    transform: rotate(30deg);
+    position: absolute;
+    left: 1.5vmin;
+    top: 15vmin;
 
-/* Handle */
-.theKnight-nail::before {
-  content: '';
-  display: block;
-  width: 1.8vmin;
-  height: 0.4vmin;
-  background-color: var(--nailColor);
-  border: solid 0.7vmin black;
-  position: absolute;
-  left: -2.4vmin;
-  top: -0.2vmin;
-  border-right: none;
-  border-radius: 30%;
-  transform: rotate(3deg);
-}
+    /* Handle */
+    &::before {
+      content: '';
+      display: block;
+      width: 1.8vmin;
+      height: 0.4vmin;
+      background-color: var(--color-nail);
+      border: solid 0.7vmin black;
+      position: absolute;
+      left: -2.4vmin;
+      top: -0.2vmin;
+      border-right: none;
+      border-radius: 30%;
+      transform: rotate(3deg);
+    }
+  }
 
-.theKnight-body {
-  position: absolute;
-  background-color: black;
-  height: 6.5vmin;
-  width: 6vmin;
-  bottom: 2.3vmin;
-  left: 47%;
-  transform: translateX(-50%);
-  border-radius: 100% 0 40% 40%;
-}
+  &-body {
+    position: absolute;
+    background-color: black;
+    height: 6.5vmin;
+    width: 6vmin;
+    bottom: 2.3vmin;
+    left: 47%;
+    transform: translateX(-50%);
+    border-radius: 100% 0 40% 40%;
 
-/* Left leg */
-.theKnight-body::before {
-  content: '';
-  display: block;
-  position: absolute;
-  width: 1.5vmin;
-  height: 4vmin;
-  background-color: black;
-  bottom: -2.7vmin;
-  left: 25%;
-  border-radius: 0% 0% 20% 60%;
-  transform: rotate(-3deg);
-}
+    /* Left leg */
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 1.5vmin;
+      height: 4vmin;
+      background-color: black;
+      bottom: -2.7vmin;
+      left: 25%;
+      border-radius: 0% 0% 20% 60%;
+      transform: rotate(-3deg);
+    }
 
-/* Right leg */
-.theKnight-body::after {
-  content: '';
-  display: block;
-  position: absolute;
-  width: 1.6vmin;
-  height: 6vmin;
-  background-color: black;
-  bottom: -2.7vmin;
-  right: 0.4vmin;
-  border-radius: 0% 0% 100% 30%;
-  transform: rotate(3deg);
-}
+    /* Right leg */
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 1.6vmin;
+      height: 6vmin;
+      background-color: black;
+      bottom: -2.7vmin;
+      right: 0.4vmin;
+      border-radius: 0% 0% 100% 30%;
+      transform: rotate(3deg);
+    }
+  }
 
-/* The little arch between his two legs */
-.theKnight-leg-arch {
-  position: absolute;
-  width: 2vmin;
-  height: 5vmin;
-  border-bottom: 1vmin solid black;
-  border-left: solid 0.5vmin transparent;
-  border-radius: 0 100% 50%;
-  bottom: -3.9vmin;
-  left: 60%;
-  transform: rotate(134deg);
-}
+  /* The little arch between his two legs */
+  &-leg-arch {
+    position: absolute;
+    width: 2vmin;
+    height: 5vmin;
+    border-bottom: 1vmin solid black;
+    border-left: solid 0.5vmin transparent;
+    border-radius: 0 100% 50%;
+    bottom: -3.9vmin;
+    left: 60%;
+    transform: rotate(134deg);
+  }
 
-/* Main wing piece */
-.theKnight-wings {
-  width: 8vmin;
-  height: 8vmin;
-  background-color: var(--wingColor);
-  position: absolute;
-  bottom: 1.8vmin;
-  left: 1.8vmin;
-  border-radius: 100% 10% 100% 0%;
-  transform: rotate(-10deg);
-  border: solid 0.6vmin black;
-}
+  /* Main wing piece */
+  &-wings {
+    width: 8vmin;
+    height: 8vmin;
+    background-color: var(--color-wing);
+    position: absolute;
+    bottom: 1.8vmin;
+    left: 1.8vmin;
+    border-radius: 100% 10% 100% 0%;
+    transform: rotate(-10deg);
+    border: solid 0.6vmin black;
 
-.theKnight-wings::before {
-  content: '';
-  display: block;
-  position: absolute;
-  right: 0.2vmin;
-  width: 0.4vmin;
-  height: 2.7vmin;
-  background-color: var(--wingColor);
-  border: solid 0.6vmin black;
-  bottom: -1.5vmin;
-  transform: rotate(18deg);
-  border-radius: 50% 50% 200% 50%;
-}
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      right: 0.2vmin;
+      width: 0.4vmin;
+      height: 2.7vmin;
+      background-color: var(--color-wing);
+      border: solid 0.6vmin black;
+      bottom: -1.5vmin;
+      transform: rotate(18deg);
+      border-radius: 50% 50% 200% 50%;
+    }
 
-.theKnight-wings::after {
-  content: '';
-  display: block;
-  position: absolute;
-  right: -3.3vmin;
-  top: 1vmin;
-  width: 6vmin;
-  height: 0.4vmin;
-  background-color: var(--wingColor);
-  border: solid 0.6vmin black;
-  transform: rotate(90deg);
-  border-radius: 50%;
-}
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      right: -3.3vmin;
+      top: 1vmin;
+      width: 6vmin;
+      height: 0.4vmin;
+      background-color: var(--color-wing);
+      border: solid 0.6vmin black;
+      transform: rotate(90deg);
+      border-radius: 50%;
+    }
 
-.theKnight-wings .fold-0 {
-  position: absolute;
-  bottom: -5vmin;
-  width: 4vmin;
-  height: 3.5vmin;
-  border-bottom: solid 0.8vmin var(--wingColor);
-  border-left: solid 0.5vmin transparent;
-  border-radius: 0% 0% 100% 0%;
-  transform: rotate(-18deg);
-  bottom: 1.4vmin;
-  right: 0;
-}
+    & .fold-0 {
+      position: absolute;
+      bottom: -5vmin;
+      width: 4vmin;
+      height: 3.5vmin;
+      border-bottom: solid 0.8vmin var(--color-wing);
+      border-left: solid 0.5vmin transparent;
+      border-radius: 0% 0% 100% 0%;
+      transform: rotate(-18deg);
+      bottom: 1.4vmin;
+      right: 0;
+    }
 
-.theKnight-wings .fold-1 {
-  position: absolute;
-  bottom: -5vmin;
-  width: 7.8vmin;
-  height: 3.5vmin;
-  border-bottom: solid 0.7vmin black;
-  border-radius: 100% 5% 100% 0%;
-  transform: rotate(-15deg);
-  bottom: 1.2vmin;
-  left: -0.8vmin;
-}
+    & .fold-1 {
+      position: absolute;
+      bottom: -5vmin;
+      width: 7.8vmin;
+      height: 3.5vmin;
+      border-bottom: solid 0.7vmin black;
+      border-radius: 100% 5% 100% 0%;
+      transform: rotate(-15deg);
+      bottom: 1.2vmin;
+      left: -0.8vmin;
+    }
 
-.theKnight-wings .fold-2 {
-  position: absolute;
-  bottom: -5vmin;
-  width: 7.5vmin;
-  height: 3.5vmin;
-  border-bottom: solid 0.7vmin black;
-  border-radius: 100% 0% 100% 0%;
-  transform: rotate(-18deg);
-  bottom: 2.6vmin;
-  left: -0.8vmin;
-}
+    & .fold-2 {
+      position: absolute;
+      bottom: -5vmin;
+      width: 7.5vmin;
+      height: 3.5vmin;
+      border-bottom: solid 0.7vmin black;
+      border-radius: 100% 0% 100% 0%;
+      transform: rotate(-18deg);
+      bottom: 2.6vmin;
+      left: -0.8vmin;
+    }
 
-.theKnight-wings .fold-3 {
-  position: absolute;
-  bottom: -5vmin;
-  width: 5.5vmin;
-  height: 2vmin;
-  border-top: solid 0.6vmin black;
-  border-radius: 50% 0% 0% 0%;
-  transform: rotate(-30deg);
-  bottom: 3.2vmin;
-  left: 0.3vmin;
+    & .fold-3 {
+      position: absolute;
+      bottom: -5vmin;
+      width: 5.5vmin;
+      height: 2vmin;
+      border-top: solid 0.6vmin black;
+      border-radius: 50% 0% 0% 0%;
+      transform: rotate(-30deg);
+      bottom: 3.2vmin;
+      left: 0.3vmin;
+    }
+  }
 }
