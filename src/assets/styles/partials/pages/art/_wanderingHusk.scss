@@ -60,58 +60,27 @@
 }
 
 .wanderingHusk-eye.right {
-  position: absolute;
-  background-color: var(--eyeColor);
-  position: absolute;
-  border-radius: 50%;
-  width: 0.9vmin;
-  height: 0.9vmin;
-  transform: rotate(15deg);
-  transform-style: preserve-3d;
-  perspective: 1vmin;
-  right: 4vmin;
-  bottom: 1.4vmin;
-}
-
-.wanderingHusk-eye.right::after {
-  content: '';
   display: block;
   position: absolute;
-  background-color: black;
-  position: absolute;
+  background: radial-gradient(circle at 45% 65%, var(--eyeColor) 16%, black 10%);
   border-radius: 50%;
-  width: 2.5vmin;
-  height: 3.5vmin;
-  left: 0.2vmin;
-  transform: translateZ(-0.1vmin) translateX(-35%) translateY(30%);
-  bottom: 0.3vmin;
+  width: 2.2vmin;
+  height: 3.2vmin;
+  bottom: 0.7vmin;
+  right: 3.1vmin;
+  transform: rotate(15deg);
 }
 
 .wanderingHusk-eye.left {
-  position: absolute;
-  background-color: var(--eyeColor);
-  position: absolute;
-  border-radius: 50%;
-  width: 0.6vmin;
-  height: 0.6vmin;
-  transform: rotate(19deg);
-  transform-style: preserve-3d;
-  perspective: 1vmin;
-  left: 0.4vmin;
-  bottom: 2.9vmin;
-}
-
-.wanderingHusk-eye.left::after {
-  content: '';
   display: block;
-  position: absolute;
-  background-color: black;
+  background: radial-gradient(circle at 45% 60%, var(--eyeColor) 16%, black 10%);
   position: absolute;
   border-radius: 50%;
   width: 1.2vmin;
-  height: 2.9vmin;
-  transform: translateZ(-0.1vmin) translateX(-23%) translateY(35%);
-  bottom: 0.3vmin;
+  height: 2.8vmin;
+  left: 0.3vmin;
+  bottom: 2vmin;
+  transform: rotate(20deg);
 }
 
 .wanderingHusk-leg {
