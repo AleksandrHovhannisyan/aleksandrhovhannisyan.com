@@ -20,32 +20,9 @@
       @include font($family: 'main', $weight: 'bold');
     }
 
-    // TODO: figure out a better way around this specificity nightmare :/ if only markdown-it let you add custom classes to all tags
-
-    :where(ol) {
-      list-style: decimal;
-    }
-
-    :where(ul) {
-      list-style: disc;
-    }
-
     .toc-list {
       --gap: 2.4rem;
       list-style: disc; // some headings have numbers already
-    }
-
-    :where(ul, ol) {
-      --gap: 0.4rem;
-      display: grid;
-      gap: var(--gap);
-      padding-inline-start: clamped(2.4rem, 4.8rem);
-
-      :where(li) {
-        :where(ul, ol) {
-          margin-top: var(--gap);
-        }
-      }
     }
 
     a:not([class]) {

@@ -1,6 +1,7 @@
 const markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
 const markdownItKatex = require('@iktakahiro/markdown-it-katex');
+const markdownItClass = require('@toycode/markdown-it-class');
 const markdownItTocDoneRight = require('markdown-it-toc-done-right');
 const markdownItLinkAttributes = require('markdown-it-link-attributes');
 const { slugifyString } = require('../utils');
@@ -20,10 +21,14 @@ const markdownLib = markdownIt({
     placeholder: `{:toc}`, // same as Jekyll
     slugify: slugifyString,
     containerId: 'toc',
-    listClass: 'toc-list',
+    listClass: 'list toc-list',
     itemClass: 'toc-item',
     linkClass: 'toc-link underlined-link',
     listType: 'ol',
+  })
+  .use(markdownItClass, {
+    ol: 'list',
+    ul: 'list',
   })
   .use(markdownItLinkAttributes, {
     // Only external links (explicit protocol; internal links use relative paths)

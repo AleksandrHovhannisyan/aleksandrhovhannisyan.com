@@ -3,6 +3,10 @@
 .footnotes {
   @include rhythm;
 
+  &__list {
+    list-style: decimal;
+  }
+
   &__ref {
     @include underlined-link($initially-underlined: true);
   }
