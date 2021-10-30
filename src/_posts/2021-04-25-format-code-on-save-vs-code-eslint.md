@@ -130,7 +130,7 @@ The file extension usually doesn't matter—most linters (ESLint included) follo
 
 In this section, I'll provide three different starter ESLint configs to cover popular use cases:
 
-- [JavaScript](#javascript-or-node-eslint-config)
+- [JavaScript](#javascript-eslint-config)
 - [TypeScript](#typescript-eslint-config)
 - [React (JS or TS)](#react-eslint-config-javascript-or-typescript)
 
