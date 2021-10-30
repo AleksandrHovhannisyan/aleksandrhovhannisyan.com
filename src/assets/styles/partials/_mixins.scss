@@ -42,7 +42,7 @@
     font-weight: var(--font-weight-#{$family}-#{$weight});
   }
   @if $style {
-    font-style: $style;
+    font-style: unquote($style);
   }
   @if $size {
     // expose CSS var to later compute other things, e.g., spacing
