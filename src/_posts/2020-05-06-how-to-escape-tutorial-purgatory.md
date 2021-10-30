@@ -42,7 +42,7 @@ I recently came across a [fantastic article by Dave Geddes](https://gedd.ski/pos
 
 All tools that humans created have one thing in common: **They solve a problem**. And they're mainly intended to be used by people who have already struggled with said problem. Otherwise, their importance is lost upon the user.
 
-{% include figure.html src: "tools.png", alt: "xkcd comic about tools", caption: "Source: [xkcd](https://xkcd.com/1629/)" %}
+{% include img.html src: "tools.png", alt: "xkcd comic about tools", caption: "Source: [xkcd](https://xkcd.com/1629/)" %}
 
 Beginners force themselves to learn X technology because it's been dangled in their face as the Carrot of Career Growth and Endless Financial Opportunities™. They don't exactly know why they need React, but they can sure as hell regurgitate what other people have told them about it—that it has a virtual DOM, and that having virtual DOMs is... well, a really good thing... to have.
 

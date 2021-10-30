@@ -107,7 +107,7 @@ I was initially disappointed when I realized that the NPCs in Outer Wilds are, f
 
 However, as it turns out, this is one of Outer Wilds's greatest strengths. The game's fantastic writing more than compensates for its lack of traditional player-NPC interaction. Outer Wilds is a story-driven game done right. Voice acting would've killed the experience by introducing human elements that simply don't belong in its world.
 
-{% include figure.html src: "riebeck-yelling.png", alt: "Riebeck, one of the NPCs, comments on one of your discoveries. Her dialogue reads: 'AHHH! That doesn't make any sense! I don't understand! I am very excited for you, though! P-please stop yelling!", caption: "Riebeck is adorable, and proof that you don't need voice acting to convey emotion and... well, voice!" %}
+{% include img.html src: "riebeck-yelling.png", alt: "Riebeck, one of the NPCs, comments on one of your discoveries. Her dialogue reads: 'AHHH! That doesn't make any sense! I don't understand! I am very excited for you, though! P-please stop yelling!", caption: "Riebeck is adorable, and proof that you don't need voice acting to convey emotion and... well, voice!" %}
 
 The sounds you *do* hear are limited to the world itself—the distant echoes of music, the howling cyclones of Giant's Deep, the bubbling heat of the sun, or the deafening roar of an approaching column of sand on Ash Twin. The audio breathes life into Outer Wilds and gives it its unmistakable charm. And it's all thanks to the work of Andrew Prahlow, who's also credited with composing the fantastic [Outer Wilds soundtrack](https://open.spotify.com/album/1U0A6RPNJB05PtuBcaTM7o).
 
@@ -183,7 +183,7 @@ I see the Outer Wilds ending as a reflection on the impermanence of life. Will t
 
 It's a depressing realization, but it's true: At some point, life will cease to exist, not just in our own solar system but also in many others like it. All of our progress—everything we've learned, built, and struggled to preserve—will turn to dust. When the universe exhales its last breath, the lights will go out, and there will be nothing left.
 
-{% include figure.html src: "anglerfish-perish.png", alt: "The Exploratory in the Eye of the Universe houses an Anglerfish model in a glass case. The caption reads: 'Of all the lifeforms who will perish in the oncoming death of the universe, we will miss the anglerfish the least.'", caption: "Amen to that!" %}
+{% include img.html src: "anglerfish-perish.png", alt: "The Exploratory in the Eye of the Universe houses an Anglerfish model in a glass case. The caption reads: 'Of all the lifeforms who will perish in the oncoming death of the universe, we will miss the anglerfish the least.'", caption: "Amen to that!" %}
 
 But in Outer Wilds, your fear of the end is eventually replaced by somber acceptance. In a sense, it's comforting to have such a predictable future, even if it's a grim one. The ending teaches you that there's no use in dwelling on this—it's just a fact of life that you must learn to accept.
 

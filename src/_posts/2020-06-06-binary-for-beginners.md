@@ -499,7 +499,7 @@ So to get our largest signed integer, we need to subtract one—we've effectivel
 
 In video games like RuneScape that use <code>32</code>-bit signed integers to represent in-game currency, the max "cash stack" that you can have caps out at exactly <code>2<sup>31</sup> - 1</code>, which is roughly 2.1 billion.
 
-{% include figure.html src: "max-cash-stack.png", alt: "The max cash stack you can have in Runescape is 2147m, or 2.1 billion.", caption: "Image source: [YouTube](https://www.youtube.com/watch?v=c2ZsPPDH08g)" %}
+{% include img.html src: "max-cash-stack.png", alt: "The max cash stack you can have in Runescape is 2147m, or 2.1 billion.", caption: "Image source: [YouTube](https://www.youtube.com/watch?v=c2ZsPPDH08g)" %}
 
 Now you know why! If you're wondering why they don't just use unsigned ints, it's because RuneScape runs on Java, and [Java doesn't support unsigned ints](https://stackoverflow.com/questions/9854166/declaring-an-unsigned-int-in-java) (except in SE 8+).
 

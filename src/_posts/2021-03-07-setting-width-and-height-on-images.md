@@ -93,7 +93,7 @@ img {
 
 Here's an example where an image is given width and height attributes of `500` and `300`, respectively; Chrome uses these attributes to compute the image's aspect ratio and applies that CSS, which you can inspect in your dev tools:
 
-{% include figure.html src: "default-aspect-ratio.png", alt: "The default aspect ratio for an image is observed to be 500 / 300 in Chrome dev tools.", caption: "Photo credit: [Bill Stephan, Unsplash](https://unsplash.com/photos/og0C_9Mz6RA)" %}
+{% include img.html src: "default-aspect-ratio.png", alt: "The default aspect ratio for an image is observed to be 500 / 300 in Chrome dev tools.", caption: "Photo credit: [Bill Stephan, Unsplash](https://unsplash.com/photos/og0C_9Mz6RA)" %}
 
 Here's the key point to understand about aspect ratios: If you know only one dimension of an element and its aspect ratio, then you can easily compute the other dimension. If I tell you that the width of an image is `1200px` and its width is always twice its height, then you know that the image must be `600px` tall.
 

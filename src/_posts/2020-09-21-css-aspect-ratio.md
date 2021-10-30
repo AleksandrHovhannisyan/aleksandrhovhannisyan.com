@@ -30,7 +30,7 @@ Intuitively, an aspect ratio of `w:h` says that an element has `w` units of widt
 
 In CSS, aspect ratios are especially useful because they allow us to scale elements (like images) responsively so that they always maintain their dimensions and never become distorted.
 
-{% include figure.html src: "scaling.png", alt: "Three side-by-side versions of the same image of a puppy. The one on the far-left is at its original size of 300 pixels by 240 pixels. It is later scaled down to 200 pixels by 160 pixels, and finally to 100 pixels by 80 pixels.", caption: "Photo credit: [Bill Stephan, Unsplash](https://unsplash.com/photos/og0C_9Mz6RA)." %}
+{% include img.html src: "scaling.png", alt: "Three side-by-side versions of the same image of a puppy. The one on the far-left is at its original size of 300 pixels by 240 pixels. It is later scaled down to 200 pixels by 160 pixels, and finally to 100 pixels by 80 pixels.", caption: "Photo credit: [Bill Stephan, Unsplash](https://unsplash.com/photos/og0C_9Mz6RA)." %}
 
 Aspect ratios allow us to change one dimension of an element (e.g., its width) while the other dimension scales accordingly, without us having to worry about doing the math ourselves. This makes aspect ratios well suited for creating responsive layouts that rely on images.
 
@@ -389,9 +389,9 @@ With vertical layouts, paragraphs appear sideways—you'll have to tilt your hea
 
 [The MDN docs](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Block_and_Inline_Layout_in_Normal_Flow#Elements_participating_in_a_block_formatting_context) use the following diagrams to clarify these two writing modes:
 
-{% include figure.html src: "horizontal-mode.png", alt: "A horizontal writing mode, with text flowing vertically from top to bottom. An arrow points from left to right at the top of the document and is labeled as the inline direction. Another arrow points from top to bottom and is labeled as the block direction.", caption: "Horizontal writing mode (default)." %}
+{% include img.html src: "horizontal-mode.png", alt: "A horizontal writing mode, with text flowing vertically from top to bottom. An arrow points from left to right at the top of the document and is labeled as the inline direction. Another arrow points from top to bottom and is labeled as the block direction.", caption: "Horizontal writing mode (default)." %}
 
-{% include figure.html src: "vertical-mode.png", alt: "A vertical writing mode, with text flowing horizontally. The horizontal axis is labeled as the block direction, whereas the vertical axis is now labeled as the inline direction. Text is rendered sideways.", caption: "Vertical writing mode." %}
+{% include img.html src: "vertical-mode.png", alt: "A vertical writing mode, with text flowing horizontally. The horizontal axis is labeled as the block direction, whereas the vertical axis is now labeled as the inline direction. Text is rendered sideways.", caption: "Vertical writing mode." %}
 
 Here's the important point: if we switch over to a vertical writing mode, and we use percentage values for padding or margin, these percentages will actually be defined relative to the *containing block's height*, not its width! This comes straight from the CSS specs:
 

@@ -180,7 +180,7 @@ If `alias` were in fact a true reference in this sense of the term—an alias—
 
 Above, you may have noticed that I used the term "point" quite a lot. What's up with that? What—pardon the awful pun—is the *point* I'm trying to get across?
 
-{% include figure.html src: "pointers.png", alt: "Comic about pointers. Someone asks for pointers, and another person fires off a bunch of memory addresses.", caption: "Source: [xkcd](https://xkcd.com/138/)." %}
+{% include img.html src: "pointers.png", alt: "Comic about pointers. Someone asks for pointers, and another person fires off a bunch of memory addresses.", caption: "Source: [xkcd](https://xkcd.com/138/)." %}
 
 So far, we've seen that JavaScript does not have "true" references—the kind that are present in "pass by reference", as we'll learn soon—even though that's the accepted shorthand when referring to "object references." So what exactly *are* object references in JavaScript?
 

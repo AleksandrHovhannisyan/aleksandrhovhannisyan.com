@@ -9,7 +9,7 @@ commentsId: 95
 
 For two years, my blog ran on Jekyll, one of the oldest and most popular static site generators around. Jekyll is often listed alongside other static site generators like Hugo, Gatsby, Next, Nuxt, and [many others](https://jamstack.org/generators/) that make up the so-called Jamstack.
 
-{% include figure.html src: "jamstack.jpg", alt: "The jamstack.org website. Various static site generators like Hugo, Next.js, Gatsby, and Jekyll are ranked in a grid view, with information on various stats, like the number of stars on GitHub.", caption: "The [jamstack.org](https://jamstack.org/generators/) website ranks popular static site generators." %}
+{% include img.html src: "jamstack.jpg", alt: "The jamstack.org website. Various static site generators like Hugo, Next.js, Gatsby, and Jekyll are ranked in a grid view, with information on various stats, like the number of stars on GitHub.", caption: "The [jamstack.org](https://jamstack.org/generators/) website ranks popular static site generators." %}
 
 Jekyll was great and served me really well! It's very much a batteries-included static site generator, which is great for beginners because it means that you can hit the ground running and [create a blog](/blog/getting-started-with-jekyll-and-github-pages/) quickly and with minimal setup.
 
@@ -391,7 +391,7 @@ The original Eleventy mascot was [designed by developer James Williamson](https:
 
 And I just love everything about it. Those impish eyes. That scrawny little paw just barely outstretched, like it wants you to *[Hand it over. That thing, your dark soul](https://www.youtube.com/watch?v=Nt5Q9hu0h0s)*.
 
-{% include figure.html src: "hand-it-over.jpg", alt: "Slave Knight Gael, the final boss of the video game Dark Souls 3, gestures towards the viewer with his hand outstretched. The captions read: Hand it over. That thing, your dark soul. The Eleventy mascot's head replaces Gael's.", caption: "There's a Dark Souls meme that nobody asked for. You're welcome, internet." %}
+{% include img.html src: "hand-it-over.jpg", alt: "Slave Knight Gael, the final boss of the video game Dark Souls 3, gestures towards the viewer with his hand outstretched. The captions read: Hand it over. That thing, your dark soul. The Eleventy mascot's head replaces Gael's.", caption: "There's a Dark Souls meme that nobody asked for. You're welcome, internet." %}
 
 ## So, Should You Use 11ty?
 

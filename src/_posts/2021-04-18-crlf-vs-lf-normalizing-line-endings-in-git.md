@@ -42,7 +42,7 @@ That's cool, but you may be wondering where the need for such a character origin
 
 Back when dinosaurs roamed the earth, people used to lug around these chunky devices called *typewriters*.
 
-{% include figure.html src: "typewriter.png", alt: "Top-down view of a typewriter, with paper fed into the carriage.", caption: "Photo credit: [Patrick Fore, Unsplash](https://unsplash.com/photos/59lC6TgZAbQ)" %}
+{% include img.html src: "typewriter.png", alt: "Top-down view of a typewriter, with paper fed into the carriage.", caption: "Photo credit: [Patrick Fore, Unsplash](https://unsplash.com/photos/59lC6TgZAbQ)" %}
 
 You feed the device a sheet of paper fastened to a mechanical roll known as the **carriage**. With each keystroke, the typewriter prints letters using ink on your sheet of paper, shifting the carriage to the left to ensure that the next letter you type will appear to the right of the previous one. You can [watch a typewriter being used in action](https://www.youtube.com/watch?v=5sTHMXqD9kg) to get a better sense for how this works.
 

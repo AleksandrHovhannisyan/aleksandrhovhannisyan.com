@@ -15,7 +15,7 @@ Instead, what I hope to do here is share some SEO blogging tips based on my own 
 
 But I've also done some independent reading and research to improve my own blog's SEO. Some of those attempts have led to a substantial increase in traffic to my blog posts:
 
-{% include figure.html src: "trending.png", alt: "One of my pages is trending up in search results after recent SEO efforts.", caption: "March 25th happened to be the day on which I used [tip #9](#9-add-schema-markup-json-ld-to-your-blog)." %}
+{% include img.html src: "trending.png", alt: "One of my pages is trending up in search results after recent SEO efforts.", caption: "March 25th happened to be the day on which I used [tip #9](#9-add-schema-markup-json-ld-to-your-blog)." %}
 
 Let's look at some ways you can drive more traffic to your site.
 
@@ -41,7 +41,7 @@ Your **primary keyword** is the keyword that you've selected that you want your 
 
 However, what you shouldn't do is stuff your keyword anywhere and *everywhere*. Treat your primary keyword like you would salt: Use it excessively, and your dish will be ruined. Use it sparingly and judiciously, and it'll add flavor to an otherwise bland meal.
 
-{% include figure.html src: "keyword-stuffing.png", alt: "An example of keyword stuffing, straight from Google.", caption: "Google's exaggerated (but nonetheless illustrative) example of [keyword stuffing](https://support.google.com/webmasters/answer/66358?hl=en)." %}
+{% include img.html src: "keyword-stuffing.png", alt: "An example of keyword stuffing, straight from Google.", caption: "Google's exaggerated (but nonetheless illustrative) example of [keyword stuffing](https://support.google.com/webmasters/answer/66358?hl=en)." %}
 
 As far as SEO blogging tips are concerned, this is one to live by: Don't engage in **keyword stuffing**—it's a cardinal sin, and Google *will* strike your page if it suspects that you're engaged in this practice. Your blog's ranking will be less than favorable, to put it lightly.
 
@@ -55,11 +55,11 @@ Speaking of keywords... How do you pick the right ones for your blog post?
 
 Do you just compose the first title that comes to mind and hope that you'll somehow show up on the first page of Google? If so, you need to rethink you approach—because chances are that you could be trying to compete with sharks that have been swimming in those waters far longer than you have.
 
-{% include figure.html src: "difficult-keyword.png", alt: "A keyword that would be very difficult to rank for.", caption: "Good luck ranking for this keyword, unless you have tons of backlinks and a good domain score." %}
+{% include img.html src: "difficult-keyword.png", alt: "A keyword that would be very difficult to rank for.", caption: "Good luck ranking for this keyword, unless you have tons of backlinks and a good domain score." %}
 
 You need to first gauge the demand for a particular topic of interest. You want to try to rank for keywords that have high volume and low competition. Alternatively, you can try to rank for keywords that have low volume and low-to-medium competition that are still related to your primary topic, but with a much narrower scope. Try using **long-tail keywords**—search phrases that are multiple words in length. They're effective in competitive spaces because they target a very specific **search intent**.
 
-{% include figure.html src: "easier-keyword.png", alt: "A keyword that's much easier to rank for.", caption: "You're much more likely to rank for this granular, long-tail keyword." %}
+{% include img.html src: "easier-keyword.png", alt: "A keyword that's much easier to rank for.", caption: "You're much more likely to rank for this granular, long-tail keyword." %}
 
 As an analogy, trying to rank for the first keyword in the screenshots above would be like a fisherman going out to sea with a small net, docking next to a large fishing vessel, and trying to catch big game. Using a more targeted approach is akin to that same fisherman staying near the shore and spearfishing—he'll see fewer (and smaller) fish, sure, but he'll also have fewer competitors.
 

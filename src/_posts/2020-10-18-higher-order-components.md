@@ -476,7 +476,7 @@ However, this isn't a good idea in general, as you may run into a situation late
 
 If you're with me so far, you may have noticed an interesting fact: Higher-order components accept a component as one of their arguments, but they also *return* a component. Naturally, this means we can pass the result of one higher-order component as an argument to another, like nested Matryoshka dolls:
 
-{% include figure.html src: "matryoshka-dolls.png", alt: "The classic Russian Matryoshka dolls, in decreasing size, can be nested in one another.", caption: "Image source: [Wikimedia Commons user Fanghong](https://en.wikipedia.org/wiki/Matryoshka_doll#/media/File:Russian-Matroshka.jpg)" %}
+{% include img.html src: "matryoshka-dolls.png", alt: "The classic Russian Matryoshka dolls, in decreasing size, can be nested in one another.", caption: "Image source: [Wikimedia Commons user Fanghong](https://en.wikipedia.org/wiki/Matryoshka_doll#/media/File:Russian-Matroshka.jpg)" %}
 
 Consider this toy example:
 

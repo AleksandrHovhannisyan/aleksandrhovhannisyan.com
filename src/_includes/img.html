@@ -1,4 +1,11 @@
 {%- comment -%}Img shortcode for markdown posts. Automatically derive the file path so we can be lazy and specify just the image name as the src.{%- endcomment -%}
 {%- assign src = '/assets/images/posts/' | append: page.fileSlug | append: '/' | append: src -%}
-{%- comment -%}To prevent weird layout bugs, specifically with linked images, wrap images in markdown with a p tag.{%- endcomment -%}
-<p>{%- include image.html src: src, alt: alt, baseFormat: baseFormat, formats: formats, widths: widths, sizes: sizes, className: className, clickable: clickable -%}</p>
+{%- comment -%}To prevent weird layout bugs, specifically with linked images, wrap images in markdown with a p or figure tag, depending on the type of image.{%- endcomment -%}
+{% if caption %}<figure>{% else %}<p>{% endif %}
+{%- include image.html src: src, alt: alt, baseFormat: baseFormat, formats: formats, widths: widths, sizes: sizes, className: className, clickable: clickable -%}
+{% if caption %}
+    <figcaption {% if isCaptionAriaHidden %}aria-hidden="true"{% endif %}>{{ caption | toHtml }}</figcaption>
+  </figure>
+{% else %}
+  </p>
+{% endif %}
