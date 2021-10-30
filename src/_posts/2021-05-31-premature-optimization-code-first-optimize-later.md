@@ -5,7 +5,8 @@ keywords: [premature optimization, optimization, micro-optimization, big-o]
 categories: [math, algorithms, javascript]
 layout: mathPost
 commentsId: 94
-thumbnail: thumbnail.jpg
+thumbnail:
+  url: https://images.unsplash.com/photo-1501139083538-0139583c060f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 Recently, there was a [Twitter thread going around](https://twitter.com/maxfmckay/status/1396252890721918979) that compared two approaches to the same problem in JavaScript: 1) using a single `Array.reduce` call with the ES6 spread operator, or 2) chaining array methods. The two code samples looked something like this (I've renamed the variables to clarify what's going on):

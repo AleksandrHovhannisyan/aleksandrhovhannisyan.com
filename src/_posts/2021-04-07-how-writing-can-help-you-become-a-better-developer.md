@@ -3,7 +3,8 @@ title: How Writing Can Help You Become a Better Developer
 description: Writing is likely one of the last skills you associate with software development. But it plays a key role in a developer's life and can help you build a more successful career.
 keywords: [writing, dev blog, better developer, developer]
 categories: [writing, blogging, career]
-thumbnail: thumbnail.jpg
+thumbnail:
+  url: https://images.unsplash.com/photo-1592819695396-064b9572a660?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 When you picture a software developer in their natural habitat, writing is one of the last things you probably think of them doing. You're more likely to imagine someone writing code, testing things, drinking copious amounts of caffeine, or begrudgingly attending meetings.

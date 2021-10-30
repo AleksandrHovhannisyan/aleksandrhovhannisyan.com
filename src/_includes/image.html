@@ -13,7 +13,9 @@ This is a workaround for the fact that 11ty doesn't support named shortcode argu
     {% if sizes %}"sizes": "{{ sizes }}",{% endif %}
     {%- comment -%}Explicit nil check since clickable is a boolean prop.{%- endcomment -%}
     {% if clickable != nil %}"clickable": {{ clickable }},{% endif %}
-    {% if className %}"className": "{{ className }}"{% endif %}
+    {% if className %}"className": "{{ className }}",{% endif %}
+    {% if fileName %}"fileName": "{{ fileName }}",{% endif %}
+    {% if urlPath %}"urlPath": "{{ urlPath }}",{% endif %}
   }
 {%- endcapture -%}
 {%- assign props = props | jsonParse -%}

@@ -4,7 +4,8 @@ description: Sometimes, a React component needs to allow users to render a custo
 keywords: [dynamic tag name props]
 categories: [react, typescript]
 commentsId: 62
-thumbnail: thumbnail.jpg
+thumbnail:
+  url: https://images.unsplash.com/photo-1571907483086-3c0ea40cc16d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 In React, you'll sometimes want to allow users to pass in a dynamic tag name as a prop to a component. While this is a somewhat rare pattern, you may still come across it in the wild. For example, you may have seen it if you've ever worked with the [`react-intl` library for internationalized strings](https://formatjs.io/docs/react-intl/components/#formattedmessage), where the `<FormattedMessage>` component accepts an optional `tagName` prop:

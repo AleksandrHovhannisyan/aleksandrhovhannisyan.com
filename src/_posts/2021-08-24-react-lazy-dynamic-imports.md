@@ -3,8 +3,9 @@ title: "Dynamically Importing Components with React.lazy"
 description: Certain static imports may increase your bundle size, potentially hurting performance. With React.lazy, you can dynamically import components at runtime.
 keywords: [React.lazy, dynamically import components, dynamic import, lazy]
 categories: [react, webperf, javascript, async]
-thumbnail: thumbnail.jpg
 commentsId: 106
+thumbnail:
+  url: https://images.unsplash.com/photo-1570288685369-f7305163d0e3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 In JavaScript frameworks like React, it's tempting to statically import a wide range of components. But not all of them are needed immediately; some components only render after a user interacts with the page or once a certain run-time condition has been met. Some examples of this include:

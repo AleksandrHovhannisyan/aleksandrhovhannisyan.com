@@ -4,7 +4,8 @@ description: One sticks around for good, while the other one rots. Here's a deta
 keywords: [hard links vs soft links]
 categories: [unix, file-systems]
 lastUpdated: 2021-08-14
-thumbnail: thumbnail.jpg
+thumbnail:
+  url: https://images.unsplash.com/photo-1575845137119-f4eca85e0732?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 You may have heard the terms "hard link" and "soft link" used in the context of Unix and Unix-like operating systems. But do you know what they are and how you create them? In this post, we'll look at the differences between hard links and soft links and understand how to create them.

@@ -1,3 +1,8 @@
 {%- comment -%}Assemble src by looking up the post's slug under the image folder{%- endcomment -%}
-{%- assign src = '/assets/images/posts/' | append: post.fileSlug | append: '/' | append: post.data.thumbnail -%}
-{%- include image.html src: src, alt: "", className: "post-preview-thumbnail", clickable: false, widths: "[200, 400, 800, 1280]", sizes: "(max-width: 400px) 400px, (max-width: 768px) 800px, 400px" -%}
+{%- assign urlPath = '/assets/images/posts/' | append: post.fileSlug | append: '/' -%}
+{%- if post.data.thumbnail.url -%}
+  {%- assign src = post.data.thumbnail.url -%}
+{%- else -%}
+  {%- assign src = urlPath | append: post.data.thumbnail -%}
+{%- endif -%}
+{%- include image.html src: src, urlPath: urlPath, fileName: 'thumbnail', alt: "", className: "post-preview-thumbnail", clickable: false, widths: "[200, 400, 800, 1280]", sizes: "(max-width: 400px) 400px, (max-width: 768px) 800px, 400px" -%}

@@ -4,7 +4,8 @@ title: Managing Complex State in React with useReducer
 description: React's useState hook works well for managing simple state. But once your component starts to grow, useReducer may be a better fit for managing state.
 categories: [react, design-patterns, typescript]
 keywords: [useReducer, react, complex state, managing state, state management]
-thumbnail: thumbnail.jpg
+thumbnail:
+  url: https://images.unsplash.com/photo-1492552085122-36706c238263?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 Imagine that you're asked to create a component where users can search for images returned by a paginated API. The component should render a search box followed by a list of image results. When a user types in the search box, the component should fetch images from the API using their query. The component should also render a load-more button at the end of the list to allow the user to fetch the next page of images. Each API response returns the current chunk of images along with pagination information. All of this means that the component needs a state for:

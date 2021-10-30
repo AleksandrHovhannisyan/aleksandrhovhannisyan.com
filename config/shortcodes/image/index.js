@@ -12,7 +12,7 @@ const ImageWidths = {
   PLACEHOLDER: 24,
 };
 
-const imageShortcode = async (relativeSrc, props) => {
+const imageShortcode = async (src, props) => {
   const {
     alt = '',
     baseFormat = 'jpeg',
@@ -21,10 +21,26 @@ const imageShortcode = async (relativeSrc, props) => {
     sizes = '100vw',
     className,
     clickable = true,
+    // mainly for remote images
+    urlPath,
+    fileName,
   } = props ?? {};
 
-  const { name: imgName, dir: imgDir } = path.parse(relativeSrc);
-  const fullyQualifiedSrc = path.join(dir.input, relativeSrc);
+  const isRemoteImage = /https?:\/\//.test(src);
+  let imgName, imgDir, absoluteSrc;
+
+  if (isRemoteImage) {
+    // For remote images, these pieces are passed in separately, and the input src IS the absolute src
+    imgName = fileName;
+    imgDir = urlPath;
+    absoluteSrc = src;
+  } else {
+    // For non-remote images, it's expected that the input src specifies the full relative src to the image.
+    const { name: parsedName, dir: parsedDir } = path.parse(src);
+    imgName = parsedName;
+    imgDir = parsedDir;
+    absoluteSrc = path.join(dir.input, src);
+  }
 
   const imageOptions = {
     // Templates shouldn't have to worry about passing in `null` and the placeholder width
@@ -41,7 +57,7 @@ const imageShortcode = async (relativeSrc, props) => {
       return `${imgName}-${suffix}.${format}`;
     },
   };
-  const imageMetadata = await Image(fullyQualifiedSrc, imageOptions);
+  const imageMetadata = await Image(absoluteSrc, imageOptions);
 
   // Map each unique format (e.g., jpeg, webp) to its smallest and largest images
   const formatSizes = Object.entries(imageMetadata).reduce((formatSizes, [format, images]) => {

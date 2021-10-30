@@ -5,7 +5,8 @@ keywords: [optimizing images for the web, optimize images for the web]
 categories: [javascript, webperf, images]
 commentsId: 56
 lastUpdated: 2020-09-10
-thumbnail: thumbnail.jpg
+thumbnail:
+  url: https://images.unsplash.com/photo-1531845116688-48819b3b68d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 You're a fan of images—who isn't? But those adorable puppy photos, memes, and GIFs don't come without a price. Often, these images range anywhere from a few hundred kB to several megabytes in size. And while that's practically nothing in terms of *storage* space, it's quite a significant cost in terms of network data usage, especially on mobile.

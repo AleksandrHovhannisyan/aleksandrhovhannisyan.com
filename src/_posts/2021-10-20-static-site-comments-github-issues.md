@@ -3,7 +3,8 @@ title: Add Comments to a Static Site with Netlify Functions and the GitHub API
 description: Want to add comments to your static blog? Learn how to use the GitHub Issues API as your comment system and fetch comments with Netlify functions.
 keywords: [comment system, comments, github api, netlify functions]
 categories: [jamstack, netlify, github, node]
-thumbnail: thumbnail.jpg
+thumbnail:
+  url: https://images.unsplash.com/photo-1512626120412-faf41adb4874?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 commentsId: 117
 ---
 
