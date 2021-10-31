@@ -90,11 +90,13 @@ module.exports = (eleventyConfig) => {
   });
   eleventyConfig.addPlugin(PluginFootnotes, {
     baseClass: 'footnotes',
+    classes: {
+      list: 'list',
+    },
     title: 'Footnotes',
     titleId: 'footnotes-label',
     backLinkLabel: (footnote, index) => `Back to reference ${index + 1}`,
   });
-
   eleventyConfig.setLibrary('md', markdownLib);
 
   return {
