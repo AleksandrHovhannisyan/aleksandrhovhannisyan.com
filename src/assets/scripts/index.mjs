@@ -20,12 +20,13 @@ const lazyImages = document.querySelectorAll('.lazy-picture');
 lazyLoad(lazyImages, (pictureElement) => {
   const img = pictureElement.querySelector('img');
   const sources = pictureElement.querySelectorAll('source');
-
   img.onload = () => {
     pictureElement.classList.add('loaded');
     img.removeAttribute('data-src');
   };
-
+  img.onerror = () => {
+    pictureElement.classList.add('failed-to-load');
+  };
   sources.forEach((source) => {
     source.sizes = source.dataset.sizes;
     source.srcset = source.dataset.srcset;

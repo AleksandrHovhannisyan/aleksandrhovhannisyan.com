@@ -14,10 +14,10 @@
   @include transition(filter);
 }
 
-.loaded .lazy-img {
+:is(.loaded, .failed-to-load) .lazy-img {
   filter: initial;
 }
 
-.dark .loaded .lazy-img {
+.dark :is(.loaded, .failed-to-load) .lazy-img {
   filter: blur(0) brightness(0.85);
 }
