@@ -124,7 +124,7 @@ pre[class*='language-'] {
     color: var(--color-code-text);
   }
 
-  &:is(.attr-name, .constant, .console, .interpolation, .property, .variable),
+  &:is(.attr-name, .constant, .console, .property, .variable),
   &.imports &.maybe-class-name,
   &.exports &.maybe-class-name {
     color: var(--color-code-attribute);
