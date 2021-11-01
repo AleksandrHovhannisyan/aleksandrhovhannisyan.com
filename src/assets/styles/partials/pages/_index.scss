@@ -39,9 +39,9 @@
 
   @include tablet {
     &-headshot {
-      --headshot-size: 18rem;
       display: unset;
-      width: var(--headshot-size);
+      width: 18rem;
+      aspect-ratio: 1;
       grid-area: headshot;
       justify-self: center;
 
