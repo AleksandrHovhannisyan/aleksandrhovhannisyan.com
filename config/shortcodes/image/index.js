@@ -4,7 +4,7 @@ const { outdent } = require('outdent');
 const path = require('path');
 const { escape } = require('lodash');
 const { dir } = require('../../constants');
-const { mapToHtmlAttributeString } = require('../../utils');
+const { stringifyAttributes } = require('../../utils');
 
 const ImageWidths = {
   /** The original (source) image width. */
@@ -76,18 +76,18 @@ const imageShortcode = async (src, props) => {
   }, {});
 
   const { width, height } = formatSizes[baseFormat].largest;
-  const sharedImgAttributes = mapToHtmlAttributeString({
+  const sharedImgAttributes = stringifyAttributes({
     width,
     height,
     alt: escape(alt),
     loading: 'lazy',
   });
-  const lazyImgAttributes = mapToHtmlAttributeString({
+  const lazyImgAttributes = stringifyAttributes({
     src: formatSizes[baseFormat].placeholder.url,
     'data-src': formatSizes[baseFormat].largest.url,
     class: 'lazy-img',
   });
-  const noscriptImgAttributes = mapToHtmlAttributeString({
+  const noscriptImgAttributes = stringifyAttributes({
     src: formatSizes[baseFormat].largest.url,
   });
 
@@ -108,7 +108,7 @@ const imageShortcode = async (src, props) => {
             .map((image) => image.srcset)
             .join(', ');
 
-          const sourceAttributes = mapToHtmlAttributeString({
+          const sourceAttributes = stringifyAttributes({
             type: sourceType,
             srcset: placeholderSrcset,
             'data-srcset': actualSrcset,
