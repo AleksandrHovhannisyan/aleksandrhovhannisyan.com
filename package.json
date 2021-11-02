@@ -15,7 +15,7 @@
     "build": "run-s test clean build:html build:css build:js",
     "build:html": "ELEVENTY_ENV=production npx @11ty/eleventy",
     "build:js": "webpack --mode=production",
-    "build:css": "sass src/assets/styles:_site/assets/styles",
+    "build:css": "sass src/assets/styles:_site/assets/styles --style=compressed",
     "lint": "npm-run-all lint:*",
     "lint:fix": "npm-run-all --parallel lint:*:fix",
     "lint:css": "stylelint \"src/**/*.scss\"",
