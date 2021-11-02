@@ -1,5 +1,10 @@
 @import '../mixins';
 
+img {
+  height: auto;
+  width: 100%;
+}
+
 .lazy-picture {
   display: flex;
   align-items: center;
@@ -9,8 +14,6 @@
 .lazy-img {
   --transition-duration: 0.3s;
   --transition-timing-function: ease-in;
-  height: auto;
-  width: 100%;
   filter: blur(0.8rem);
   @include transition(filter);
 }

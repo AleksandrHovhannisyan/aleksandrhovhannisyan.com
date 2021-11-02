@@ -4,6 +4,7 @@ const { outdent } = require('outdent');
 const path = require('path');
 const { escape } = require('lodash');
 const { dir } = require('../../constants');
+const { mapToHtmlAttributeString } = require('../../utils');
 
 const ImageWidths = {
   /** The original (source) image width. */
@@ -35,7 +36,7 @@ const imageShortcode = async (src, props) => {
     imgDir = urlPath;
     absoluteSrc = src;
   } else {
-    // For non-remote images, it's expected that the input src specifies the full relative src to the image.
+    // For non-remote images, it's expected that the input src specify the full relative src to the image.
     const { name: parsedName, dir: parsedDir } = path.parse(src);
     imgName = parsedName;
     imgDir = parsedDir;
@@ -75,34 +76,59 @@ const imageShortcode = async (src, props) => {
   }, {});
 
   const { width, height } = formatSizes[baseFormat].largest;
+  const sharedImgAttributes = mapToHtmlAttributeString({
+    width,
+    height,
+    alt: escape(alt),
+    loading: 'lazy',
+  });
+  const lazyImgAttributes = mapToHtmlAttributeString({
+    src: formatSizes[baseFormat].placeholder.url,
+    'data-src': formatSizes[baseFormat].largest.url,
+    class: 'lazy-img',
+  });
+  const noscriptImgAttributes = mapToHtmlAttributeString({
+    src: formatSizes[baseFormat].largest.url,
+  });
 
-  // Return custom image markup
+  /** Returns source elements as an HTML string. */
+  const renderSourceHtmlString = () => {
+    return (
+      Object.values(imageMetadata)
+        // Map each format to the source HTML markup
+        .map((formatEntries) => {
+          // The first entry is representative of all the others since they each have the same shape
+          const { format: formatName, sourceType } = formatEntries[0];
+
+          const placeholderSrcset = formatSizes[formatName].placeholder.url;
+          const actualSrcset = formatEntries
+            // We don't need the placeholder image in the srcset
+            .filter((image) => image.width !== ImageWidths.PLACEHOLDER)
+            // All non-placeholder images get mapped to their srcset
+            .map((image) => image.srcset)
+            .join(', ');
+
+          const sourceAttributes = mapToHtmlAttributeString({
+            type: sourceType,
+            srcset: placeholderSrcset,
+            'data-srcset': actualSrcset,
+            'data-sizes': sizes,
+          });
+
+          return `<source ${sourceAttributes}>`;
+        })
+        .join('\n')
+    );
+  };
+
+  // Custom image markup. Picture tag with lazy img/sources + noscript fallbacks.
+  // https://eszter.space/noscript-lazy-load/. Medium also does this.
   const picture = `<picture class="${classNames('lazy-picture', className)}">
-  ${Object.values(imageMetadata)
-    // Map each format to the source HTML markup
-    .map((formatEntries) => {
-      // The first entry is representative of all the others since they each have the same shape
-      const { format: formatName, sourceType } = formatEntries[0];
-
-      const placeholderSrcset = formatSizes[formatName].placeholder.url;
-      const actualSrcset = formatEntries
-        // We don't need the placeholder image in the srcset
-        .filter((image) => image.width !== ImageWidths.PLACEHOLDER)
-        // All non-placeholder images get mapped to their srcset
-        .map((image) => image.srcset)
-        .join(', ');
-
-      return `<source type="${sourceType}" srcset="${placeholderSrcset}" data-srcset="${actualSrcset}" data-sizes="${sizes}">`;
-    })
-    .join('\n')}
-    <img
-      src="${formatSizes[baseFormat].placeholder.url}"
-      data-src="${formatSizes[baseFormat].largest.url}"
-      width="${width}"
-      height="${height}"
-      alt="${escape(alt)}"
-      class="lazy-img"
-      loading="lazy">
+  ${renderSourceHtmlString()}
+    <img ${lazyImgAttributes} ${sharedImgAttributes}>
+    <noscript>
+      <img ${noscriptImgAttributes} ${sharedImgAttributes}>
+    </noscript>
   </picture>`;
 
   // Link to the highest resolution optimized image

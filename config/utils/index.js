@@ -44,9 +44,17 @@ const getAuthenticatedOctokit = async () => {
   return new Octokit({ auth: token });
 };
 
+/** Maps a config of attribute-value pairs to an HTML string representing those same attribute-value pairs. */
+const mapToHtmlAttributeString = (attributeMap) => {
+  return Object.entries(attributeMap)
+    .map(([attribute, value]) => `${attribute}="${value}"`)
+    .join(' ');
+};
+
 module.exports = {
   getAllUniqueKeyValues,
   slugifyString,
   throwIfNotType,
   getAuthenticatedOctokit,
+  mapToHtmlAttributeString,
 };

@@ -18,7 +18,7 @@ const themeToggle = new ThemeToggle({
 
 const lazyImages = document.querySelectorAll('.lazy-picture');
 lazyLoad(lazyImages, (pictureElement) => {
-  const img = pictureElement.querySelector('img');
+  const img = pictureElement.querySelector('.lazy-img');
   const sources = pictureElement.querySelectorAll('source');
   img.onload = () => {
     pictureElement.classList.add('loaded');
