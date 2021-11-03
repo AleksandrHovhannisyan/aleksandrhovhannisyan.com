@@ -49,8 +49,7 @@ exports.handler = async (event) => {
           datePosted: dayjs(comment.created_at).fromNow(),
           isEdited: comment.created_at !== comment.updated_at,
           isAuthor: comment.author_association === 'OWNER',
-          // TODO: support code blocks in the future; maybe see how GitHub returns them?
-          body: markdownLib.render(sanitizeHtml(comment.body)),
+          body: sanitizeHtml(markdownLib.render(comment.body)),
         };
       });
 
