@@ -14,7 +14,7 @@ img {
 .lazy-img {
   --transition-duration: 0.3s;
   --transition-timing-function: ease-in;
-  filter: blur(0.8rem);
+  filter: blur(0.4rem);
   @include transition(filter);
 }
 
