@@ -3,7 +3,7 @@ title: NFTs Are a Problem
 description: While NFTs are being hailed as the future of digital ownership, they're also the source of many problems. NFTs are artificially scarce, make it easier to commit fraud, undermine the intellectual property rights of content creators, and encourage consumptive mining practices.
 categories: [nft, art, blockchain, money]
 keywords: [nfts, digital ownership, ownership, art]
-lastUpdated: 2021-09-30
+lastUpdated: 2021-11-04
 commentsId: 114
 thumbnail:
   url: https://images.unsplash.com/photo-1626162987518-4fee900a9323?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
@@ -65,9 +65,9 @@ Or the classic *Orange, Red, Yellow* by Mark Rothko, which [sold for $86 million
 
 {% include img.html src: "orange-red-yellow.jpg", alt: "A red canvas with three rectangles: one large orange rectangle at the bottom, followed by a smaller orange rectangle above it, and the smallest rectangle at the top in yellow.", caption: "Copyright Mark Rothko. Source: [Wikimedia Commons](https://en.wikipedia.org/wiki/File:Orange,_Red,_Yellow.jpg)." %}
 
-To the untrained eye, these may appear to be canvases smeared with paint. But to a seasoned art connoisseur, they embody the human condition, eternal themes like love and loss, and all sorts of hand-waiving pretension. [Modern art](https://www.youtube.com/watch?v=d7ez-gIt08I) has always eluded basic human reasoning. The more uninspiring a piece of artwork is, the more it's worth, and the more people are afraid to criticize it for fear of being branded as simpletons who "just don't get art."
+To the untrained eye, these may appear to be canvases smeared with paint. But to a seasoned art connoisseur, they embody the human condition, eternal themes like love and loss, and all sorts of hand-waiving pretension. [Modern art](https://www.youtube.com/watch?v=d7ez-gIt08I) has always eluded basic human reasoning. The more uninspiring a piece of artwork is, the more it's worth, and the more people are afraid to criticize it for fear of being branded as simpletons who "just don't get art." One man's [seven-legged spider](https://27bslash6.com/overdue.html) is another man's treasure, so to speak.
 
-NFTs are a natural evolution of the world of fine art. If you can collect real paintings, nothing can stop you from collecting digital ones. A market will always exist for something, even if not everyone is able to appreciate its value, and even if its perceived value is exaggerated or misunderstood. Buyers and sellers always manage to find each other at the end of the day.
+NFTs are a natural evolution of the world of fine art. If you can collect real paintings, nothing can stop you from collecting digital ones. A market will always exist for something, even if not everyone is able to appreciate its value, and even if its perceived value is exaggerated or misunderstood. At the end of the day, buyers and sellers will always manage to find each other.
 
 ## The Problem with NFTs
 
@@ -75,11 +75,11 @@ At first glance, there don't appear to be any drawbacks to buying digital art as
 
 ### 1. NFTs Create an Illusion of Scarcity and Ownership
 
-When you purchase a physical piece of artwork or some other rare collectible, the seller must relinquish ownership of that item to the buyer, and the asset physically changes hands. In some cases, the item is the only one of its kind in existence, which makes it all the more rare and treasured in the eyes of collectors.
+When someone purchases a physical piece of artwork or some other collectible, the seller must relinquish ownership of that item to the buyer, and the asset physically changes hands. In some cases, the item is the only one of its kind in existence, which means it's highly valued and irreplaceable.
 
-But unlike a physical collectible, a digital asset associated with an NFT is not rare or exclusive. The creator still retains the original work after the sale, so there's an infinite supply of it—they can continue sharing and selling their work. Since there's no true scarcity involved, the value you've attached to the NFT is artificially inflated. Anyone can find a copy of an original NFT artwork online without spending a dime on it—you can even redistribute it yourself, legally or illegally.
+But unlike a physical collectible, a digital asset associated with an NFT is not rare or exclusive. The creator still retains the original work after the sale, so there's an infinite supply of it—they can continue sharing and selling their work. Since there's no true scarcity involved, the value you've attached to the NFT is artificially inflated. Anyone can find a copy of the artwork online for free—all you need to do is [right-click, save as](https://knowyourmeme.com/memes/right-click-save-as).
 
-Despite the fact that NFTs don't really represent true ownership, scarcity, or value, people are already cashing in on a wide variety of digital assets, including tweets and memes. Classic memes like Disaster Girl, Doge, Success Kid, Nyan Cat, and many others have been [sold by their creators for large sums of money](https://mashable.com/article/classic-memes-sold-nft-prices)—as much as $4 million.
+Despite the fact that NFTs don't really represent true ownership, scarcity, or value, people are already cashing in on a wide variety of worthless trinkets, including tweets and memes. Classic memes like Disaster Girl, Doge, Success Kid, Nyan Cat, and many others have been [sold by their creators for outrageous sums of money](https://mashable.com/article/classic-memes-sold-nft-prices)—as much as $4 million.
 
 This is what the *Charlie Bit My Finger* auction had to say about the virtues of meme ownership:
 
@@ -101,7 +101,7 @@ Unfortunately, it's not that simple. And this is where things start to quickly f
 
 #### NFTs May Represent Counterfeits
 
-Once an asset has been sold on an NFT marketplace and a unique identifier has been generated for it, it's recorded indelibly on a blockchain, and there's no way to tamper with it or misrepresent the product to future buyers. Everyone can easily look up an NFT and compare it to the NFT of an item currently listed on the marketplace.
+Once an asset has been sold on an NFT marketplace and a unique identifier has been generated for it, it's recorded indelibly on that particular blockchain, and there's no way to tamper with it or misrepresent the product to future buyers. Everyone can easily look up an NFT and compare it to the NFT of an item currently listed on the marketplace.
 
 That's all good and well, but it's also a circular problem for first-time NFTs. Because unless you know the seller, you have no way of verifying the authenticity of the listed item. For all you know, you may be buying the NFT for a counterfeit. The NFT is technically valid because it's just a hash; in this case, it happens to uniquely identify a counterfeit. But that's not exactly helpful, is it?
 
@@ -115,11 +115,13 @@ Where there is money involved, there will always be scammers trying to exploit p
 
 #### You Don't Have to Own Something to Sell It as an NFT
 
-Suppose you're able to verify that an asset listed on an NFT market is legitimate and not a counterfeit. Are you in the clear then? Not quite.
+Suppose you're able to verify that an asset listed on an NFT market is legitimate and not a counterfeit. Are you in the clear then?
 
-The bigger problem is that anyone can sell an NFT, even if they don't own the content. While this is true even for real-world art, you at least have to put in the work to steal or counterfeit those items. But if you're a digital artist who regularly shares their work online, it doesn't take much effort for someone to impersonate you.
+Not really.
 
-NFTs open up a whole new world of theft, making it easier for other people to profit off of you and your content—like when [someone sold one of Terence Eden's tweets as an NFT](https://shkspr.mobi/blog/2021/02/stop-this-digital-ownership-madness-nfts-are-bullshit-and-the-stupid-makes-me-angry/).
+The bigger issue is that anyone can sell a digital work as an NFT. While this is true even for real-world art, you at least have to put in the effort to steal or counterfeit those items. Sure, you can find a photo of the Mona Lisa online, but you're going to have a really hard time convincing someone to *pay* you for it. On the other hand, it's trivial to steal and sell digital artwork.
+
+This is not a new problem, but NFTs open up a whole new world of theft and make it easier for people to impersonate artists and sell their work. In fact, you don't even have to be an artist—any piece of digital content is up for grabs, like when [someone sold one of Terence Eden's tweets as an NFT](https://shkspr.mobi/blog/2021/02/stop-this-digital-ownership-madness-nfts-are-bullshit-and-the-stupid-makes-me-angry/).
 
 {% quote "Stop this digital ownership madness. NFTs are bullshit. And the stupid makes me angry.", "https://shkspr.mobi/blog/2021/02/stop-this-digital-ownership-madness-nfts-are-bullshit-and-the-stupid-makes-me-angry/" %}
   This is nonsense. Let's ignore the fact that some random company has taken my copyright and indelibly stored it on a 'chain. Let's ignore that someone else is claiming my content as their own. Heck, let's even ignore that someone else is monetising my content without permission or recompense.
@@ -129,19 +131,19 @@ NFTs open up a whole new world of theft, making it easier for other people to pr
   What do you get if you "buy" my Tweet? You didn't write it - so you don't have copyright. You don't get an exclusive use of it. And anyone can make their own copy of it!
 {% endquote %}
 
-It's true that NFTs make it easier for artists to promote their work to willing buyers. But NFTs are also threatening to rob those very same content creators of their intellectual property rights. Because unless you sell your work as an NFT yourself, someone else might beat you to it.
+It's true that NFTs make it easier for artists to monetize their own work. But NFTs are also threatening to rob those very same content creators of their intellectual property rights. Because unless you sell your work as an NFT, someone else may very well beat you to it.
 
 {% quote "Non-fungible tokens are revolutionising the art world – and art theft", "https://www.theguardian.com/technology/2021/mar/12/non-fungible-tokens-revolutionising-art-world-theft" %}
   [W]hile the very technology of NFTs prevents them from being duplicated without permission, there’s nothing inherent to the sector that controls who can make an NFT in the first place – a fact that has caused dismay to some artists, who have found their work ending up in the “control” of people who had nothing to do with its creation.
 {% endquote %}
 
-There are countless other stories out there about people selling NFTs of artwork they don't own:
+Digital art is trivial to steal, especially in a world where bots can already [put your artwork on a shirt and sell it](https://twitter.com/robschamberger/status/1201256862068494337). NFTs only make it easier to profit off of other people's hard work. There are countless stories about scammers selling NFTs of artwork that they don't own:
 
 - [NFT Mania Is Here, And So Are the Scammers](https://www.theverge.com/2021/3/20/22334527/nft-scams-artists-opensea-rarible-marble-cards-fraud-art)
 - [People Are Stealing Art and Turning It Into NFTs](https://www.vice.com/en/article/n7vxe7/people-are-stealing-art-and-turning-it-into-nfts)
 - [NFTs are generating huge paydays for some artists, others feel under siege](https://www.polygon.com/22327806/nft-artists-online-theft-non-fungible-token)
 
-This is troubling because NFTs are supposed to be verifiable tokens of ownership. But if the original transaction was *fraudulent to begin with*, this raises an important question: What is the value of an NFT if it could represent something that wasn't for sale in the first place?
+This **completely undermines the value of NFTs** because they're supposed to be verifiable tokens of ownership. But if the original transaction was *fraudulent to begin with*, this raises an important question: What is the utility of an NFT if it could represent something that wasn't for sale in the first place?
 
 #### NFTs Enable Money Laundering
 
