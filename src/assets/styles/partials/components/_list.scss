@@ -4,10 +4,8 @@
   gap: var(--gap);
   padding-inline-start: clamped(2.4rem, 4.8rem);
 
-  li {
-    .list {
-      margin-top: var(--gap);
-    }
+  & & {
+    margin-top: var(--gap);
   }
 }
 
