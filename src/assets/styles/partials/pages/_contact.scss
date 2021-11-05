@@ -20,11 +20,6 @@
 
   &-title {
     margin-bottom: 0.8rem;
-    @include font($size: 'xl');
-
-    .submitted & {
-      @include font($size: 'xxxl');
-    }
   }
 
   &-subtitle {
@@ -66,10 +61,6 @@
     display: grid;
     row-gap: 4rem;
     grid-template-rows: min-content auto;
-
-    &-heading {
-      @include font($size: 'md');
-    }
 
     &-list {
       column-gap: 3.2rem;

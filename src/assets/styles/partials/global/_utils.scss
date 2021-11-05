@@ -24,3 +24,10 @@
 .underlined-link {
   @include underlined-link;
 }
+
+$font-size-steps: 'sm', 'base', 'md', 'lg', 'xl', 'xxl', 'xxxl';
+@each $step in $font-size-steps {
+  .font-#{$step} {
+    @include font($size: $step);
+  }
+}

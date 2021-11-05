@@ -39,7 +39,6 @@
   background-color: var(--color-code-overlay-1);
   padding: 0.6rem 1.2rem;
   border-radius: 0.4rem;
-  @include font($size: 'sm');
 
   &::before {
     content: 'Copy 📋';

@@ -46,7 +46,6 @@
 
   &-name {
     color: var(--color-text-emphasis);
-    @include font($size: 'base');
   }
 
   &-rating {
@@ -54,7 +53,6 @@
     grid-auto-flow: column;
     column-gap: 0.4rem;
     align-items: center;
-    @include font($size: 'sm');
   }
 
   &-technologies {
@@ -66,7 +64,6 @@
   &-technology {
     border-radius: 0.2rem;
     padding: 0.4rem 1.2rem;
-    @include font($size: 'sm');
   }
 
   &-link {
@@ -94,10 +91,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  &-heading {
-    @include font($size: 'base');
-  }
 
   &-subheading {
     margin-bottom: 1.6rem;

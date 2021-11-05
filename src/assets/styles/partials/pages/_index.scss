@@ -8,10 +8,6 @@
     margin-bottom: 0.8rem;
   }
 
-  &-subtitle {
-    @include font($size: 'md');
-  }
-
   &-headshot {
     display: none;
   }

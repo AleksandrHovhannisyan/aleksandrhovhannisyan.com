@@ -63,10 +63,6 @@
     @include underlined-link;
   }
 
-  &-meta {
-    @include font($size: 'sm');
-  }
-
   &-edited {
     font-style: italic;
   }

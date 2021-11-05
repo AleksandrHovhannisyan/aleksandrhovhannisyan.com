@@ -36,10 +36,14 @@ export const renderComments = async (comments) => {
                   >
                     ${comment.user.name}
                   </a>
-                  <div class="post-comment-meta">commented
+                  <div class="post-comment-meta font-sm">commented
                   <time datetime="${comment.created_at}">${comment.datePosted}</time></div>
-                  ${comment.isAuthor ? '<span class="post-comment-meta tag post-comment-author">Author</span>' : ''}
-                  ${comment.isEdited ? `<span class="post-comment-meta post-comment-edited">Edited</span>` : ''}
+                  ${
+                    comment.isAuthor
+                      ? '<span class="post-comment-meta font-sm tag post-comment-author">Author</span>'
+                      : ''
+                  }
+                  ${comment.isEdited ? `<span class="post-comment-meta font-sm post-comment-edited">Edited</span>` : ''}
                 </header>
                 <div class="post-comment-body">${comment.body}</div>
               </li>`;
