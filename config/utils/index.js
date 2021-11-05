@@ -1,3 +1,4 @@
+const sanitize = require('sanitize-html');
 const slugify = require('slugify');
 const { Octokit } = require('@octokit/rest');
 const { createTokenAuth } = require('@octokit/auth-token');
@@ -53,10 +54,25 @@ const stringifyAttributes = (attributeMap) => {
     .join(' ');
 };
 
+/** Sanitizes an HTML string. */
+const sanitizeHtml = (html) => {
+  console.log(sanitize.defaults.allowedAttributes);
+  return sanitize(html, {
+    allowedAttributes: {
+      ...sanitize.defaults.allowedAttributes,
+      // Syntax highlighting
+      pre: ['class'],
+      code: ['class'],
+      span: ['class'],
+    },
+  });
+};
+
 module.exports = {
   getAllUniqueKeyValues,
   slugifyString,
   throwIfNotType,
   getAuthenticatedOctokit,
   stringifyAttributes,
+  sanitizeHtml,
 };

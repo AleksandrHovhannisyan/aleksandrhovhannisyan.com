@@ -1,5 +1,4 @@
-const { getAuthenticatedOctokit } = require('../config/utils');
-const sanitizeHtml = require('sanitize-html');
+const { getAuthenticatedOctokit, sanitizeHtml } = require('../config/utils');
 const dayjs = require('dayjs');
 const markdownLib = require('../config/plugins/markdown');
 const dayjsRelativeTimePlugin = require('dayjs/plugin/relativeTime');

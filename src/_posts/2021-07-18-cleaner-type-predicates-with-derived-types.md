@@ -177,7 +177,7 @@ type Ingredient = Fruit | Vegetable;
 
 For each object, `typeof` returns the object shape consisting of read-only string names and their corresponding values. For fruits, that shape looks like this:
 
-```plaintext
+```
 {
   apple: {
     priceUsd: 0.99,

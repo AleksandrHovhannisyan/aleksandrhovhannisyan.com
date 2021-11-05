@@ -108,7 +108,7 @@ uploadFiles([2, 4, 1]);
 
 If you run this code on your end, you should see the following messages logged in order:
 
-```plaintext
+```
 uploaded file 3
 uploaded file 1
 uploaded file 2
@@ -137,7 +137,7 @@ const uploadFiles = async (files) => {
 
 Remember, `Promise.all` accepts an iterable of promises as its input. In this example, we map each file to the result of `uploadFile`, which is an async function that implicitly returns a promise. So we get an array of promises that may or may not have resolved yet:
 
-```plaintext
+```
 [Promise {<pending>}, ..., Promise {<pending>}]
 ```
 
@@ -145,7 +145,7 @@ Then, we await the final promise returned by `Promise.all`. We know that if this
 
 If you run this code, you should see the following logs:
 
-```plaintext
+```
 uploaded file 3
 uploaded file 1
 uploaded file 2
@@ -263,7 +263,7 @@ Promise.all = (promises) => {
 
 And we're done! If you now override `Promise.all` with this custom implementation and re-run the code from this demo, you should see the same result as before:
 
-```plaintext
+```
 uploaded file 3
 uploaded file 1
 uploaded file 2

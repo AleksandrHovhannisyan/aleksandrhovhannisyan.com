@@ -95,19 +95,19 @@ The important thing to understand is that the root font size (on the `html` elem
 
 These are just two ways of looking at the same equation. Originally, we had to perform this calculation to express a target pixel font size in rems:
 
-```plaintext
+```
 12px in rems: 12 / 16 = 0.75rem
 ```
 
 But here, we can express `12` as a multiple of `10`:
 
-```plaintext
+```
 12px in rems: (1.2 × 10) / 16 = 0.75rem
 ```
 
 We can then group the `10` with the `16` and expand the division:
 
-```plaintext
+```
 Grouped:    1.2 × (10 / 16) = 0.75rem
 Expanded:   1.2 × 0.625 = 0.75rem
 ```
@@ -122,7 +122,7 @@ So far, we've only considered the case where the browser has an unchanged root f
 
 Well, recall that the body font size is `1.6rem`. And that means that we really have this equation:
 
-```plaintext
+```
 html font size = 62.5% of browser font size
 body font size = 0.625 × 1.6rem = 1 (i.e., 100% of the browser font size)
 ```
@@ -147,7 +147,7 @@ h1 {
 
 Now, suppose a user goes into their browser settings and sets their preferred base font size to be `20px`. Does this create any problems for us? Let's see how the math pans out for body text:
 
-```plaintext
+```
 Browser font size:  20px
 html font size:     0.625 × 20px = 12.5px
 body font size:     1.6rem = 1.6 × 12.5px = 20px
@@ -157,13 +157,13 @@ So the body font size equals the browser font size, as expected.
 
 What about the `4.8rem`-sized heading? After the user sets their base font size to `20px`, this heading will have an effective font size of `60px`:
 
-```plaintext
+```
 Heading font size = 12.5px × 4.8rem = 60px
 ```
 
 This may seem strange since we actually wanted `4.8rem` to equal `48px`, but remember: That's only true when we assume a base font size of `16px`, which isn't the case here. If a user increases their preferred base font size, all font sizes will scale up proportionally (when using rems). So in this case, it's good that the heading font size is `60px` because it means that the ratio between the `h1`'s size and the browser font size was preserved:
 
-```plaintext
+```
 Before: 48px ÷ 16px = 3
 After:  60px ÷ 20px = 3
 ```

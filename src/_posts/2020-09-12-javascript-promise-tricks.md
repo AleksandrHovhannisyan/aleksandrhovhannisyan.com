@@ -271,7 +271,7 @@ script2.onload = () => {
 
 That works, and we'll get this output:
 
-```plaintext
+```
 two.js loaded
 one.js loaded
 three.js loaded
@@ -315,7 +315,7 @@ loadScript('two.js')
 
 And we'll get the same order of output:
 
-```plaintext
+```
 index.js:30 two.js loaded
 index.js:30 one.js loaded
 index.js:30 three.js loaded

@@ -86,13 +86,13 @@ Cool! Now that we know how line endings originated, it's worth learning somethin
 In bash (or, equivalently, WSL if you're using Windows), you can view line endings for a specific file using `cat` with the `A` flag:
 
 {% include codeHeader.html %}
-```plaintext
+```
 cat -A myFile
 ```
 
 If a file is using `CRLF`, you'll see the string `^M$` at the end of each line, where `^M` denotes a carriage return and `$` a line feed. Here's an example of what that might look like:
 
-```plaintext
+```
 line one^M$
 line two^M$
 line three^M$
@@ -100,7 +100,7 @@ line three^M$
 
 If a file is using `LF`, then you'll only see dollar signs:
 
-```plaintext
+```
 line one$
 line two$
 line three$
@@ -118,7 +118,7 @@ As you can probably guess, the lack of a universal line ending presents a dilemm
 
 You can tell git how you'd like it to handle line endings on your system with the `core.autocrlf` configuration. This is done with the following command:
 
-```plaintext
+```
 git config --global core.autocrlf [true|false|input]
 ```
 
@@ -132,7 +132,7 @@ With `autocrlf true`, files will be checked out as `CRLF` locally with git, but 
 
 If you use this option, you may see this warning when staging files for a commit on Windows:
 
-```plaintext
+```
 warning: CRLF will be replaced by LF in <file-name>.
 The file will have its original line endings in your working directory.
 ```
@@ -176,14 +176,14 @@ That's what `text=auto` does in the config above—it tells git to apply its aut
 
 Git's auto-detection algorithm is fairly accurate, but in case it fails to correctly distinguish between a text file and a binary file (like an image or font file), we can also explicitly mark a subset of our files as binary files to avoid bricking them. That's what we're doing here:
 
-```plaintext
+```
 *.{png,jpg,jpeg,gif,webp,woff,woff2} binary
 ```
 
 Now, after committing this file, the final step is to renormalize all your line endings for any files that were checked into git **prior** to the addition of `.gitattributes`. You can do that with the following command [since git 2.16](https://stackoverflow.com/a/50645024/5323344):
 
 {% include codeHeader.html %}
-```plaintext
+```
 git add --renormalize .
 ```
 
@@ -193,7 +193,7 @@ This reformats all your files according to the rules defined in your `.gitattrib
 
 You may see the following message when you commit these renormalized files:
 
-```plaintext
+```
 warning: CRLF will be replaced by LF in <file-name>.
 The file will have its original line endings in your working directory.
 ```
@@ -209,13 +209,13 @@ Rest assured that these files will never use `CRLF` in the *remote* copy of your
 If you want to double-check that the files in Git's index are using the correct line endings after all of these steps, you can run the following command:
 
 {% include codeHeader.html %}
-```plaintext
+```
 git ls-files --eol
 ```
 
 This will show you line ending information for all files that git is tracking, in a format like this:
 
-```plaintext
+```
 i/lf    w/crlf  attr/text=auto eol=lf   file.txt
 ```
 
@@ -239,7 +239,7 @@ Again, this doesn't mean that git's normalization process isn't working; it's ju
 Fortunately, you can take things a step further with an `.editorconfig` file; this is an [editor-agnostic project](https://editorconfig.org/) that aims to create a standardized format for customizing the behavior of any given text editor. Lots of text editors (including VS Code) support and automatically read this file if it's present. You can put something like this in the root of your workspace:
 
 {% include codeHeader.html file: ".editorconfig" %}
-```plaintext
+```
 root = true
 
 [*]

@@ -183,7 +183,7 @@ In the decimal number system, we're used to working with digits. In binary, as w
 
 Here are some examples of valid bytes:
 
-```plaintext
+```
 00000000
 10000000
 11101011
@@ -204,7 +204,7 @@ So... That's weird, and seemingly wasteful, right? Why do we use <code>8</code> 
 
 Good question! We use bytes because **it's not possible to evenly divide a group of <code>7</code> bits**, making certain low-level computations difficult if we decide to use <code>7</code> bits to represent a character. In contrast, a byte can be evenly split into powers of two:
 
-```plaintext
+```
 11101011
 [1110][1011]
 [11][10][10][11]
@@ -221,7 +221,7 @@ xxd -b file
 
 The <code>-b</code> flag stands for binary. Here's the output that you'll get:
 
-```plaintext
+```
 00000000: 01001000 01100101 01101100 01101100 01101111 00101100  Hello,
 00000006: 00100000 01000010 01101001 01101110 01100001 01110010   Binar
 0000000c: 01111001 00001010                                      y.
@@ -284,7 +284,7 @@ There's nothing magical about the hexadecimal number system—it works just like
 
 Before we move on, let's revisit the output from earlier when we used <code>xxd</code> on our sample file:
 
-```plaintext
+```
 00000000: 01001000 01100101 01101100 01101100 01101111 00101100  Hello,
 00000006: 00100000 01000010 01101001 01101110 01100001 01110010   Binar
 0000000c: 01111001 00001010                                      y.
@@ -312,7 +312,7 @@ The answer is four because <code>2<sup>4</sup> = 16</code>. With four "buckets,"
 
 This means that when you're given a binary string, all you have to do is **split it into groups of four bits** and evaluate them to convert binary to hexadecimal!
 
-```plaintext
+```
 011011100101
 [0110][1110][0101]
 6 14 5
@@ -437,7 +437,7 @@ To convert a number represented in two's complement binary to its opposite sign,
 
 For example, let's convert <code>43<sub>10</sub></code> to <code>-43<sub>10</sub></code> in binary:
 
-```plaintext
+```
 +43 in binary: 0101011
 Flipped:       1010100
 Add one:       1010101
@@ -455,7 +455,7 @@ We've seen that in a signed binary system, the most significant bit is reserved 
 
 Let's consider <code>32</code>-bit integers to give us a concrete basis for discussion. Whereas before we had <code>32</code> bits to work with for the magnitude of an unsigned number, we now have only <code>31</code> for the magnitude of a signed number:
 
-```plaintext
+```
 Unsigned magnitude bits:  [31 30 29 ... 0]
 Signed magnitude bits:    31 [30 29 ... 0]
 ```
@@ -466,7 +466,7 @@ More generally, if you have an <code>N</code>-bit signed binary string, there ar
 
 Notice that the number zero gets bunched in with the positives and not the negatives:
 
-```plaintext
+```
 Signed zero:  0  0  0  0 ... 0 0 0 0
 Bits:        31 30 29 28 ... 3 2 1 0
 ```
@@ -477,7 +477,7 @@ As we're about to see, this has an interesting consequence.
 
 The largest signed 32-bit integer is positive, meaning its leading bit is a zero. So we just need to maximize the remaining bits to get the largest possible value:
 
-```plaintext
+```
 Num:      0  1  1  1 ... 1
 Bits:    31 30 29 28 ... 0
 ```
@@ -488,7 +488,7 @@ More generally, for an <code>N</code>-bit system, the largest signed integer is 
 
 Why did we subtract a one at the end? Because as I mentioned in the previous section, the number zero gets grouped along with the positives when we split our number range:
 
-```plaintext
+```
 Signed zero:  0  0  0  0 ... 0 0 0 0
 Bits:        31 30 29 28 ... 3 2 1 0
 ```
@@ -507,7 +507,7 @@ Now you know why! If you're wondering why they don't just use unsigned ints, it'
 
 This occurs when we set the leading bit to be a <code>1</code> and set all remaining bits to be a <code>0</code>:
 
-```plaintext
+```
 Num:      1  0  0  0 ... 0
 Bits:    31 30 29 28 ... 0
 ```
@@ -536,7 +536,7 @@ Now you should know what carrying the one really means: When you run out of digi
 
 For example, let's add <code>24</code> and <code>18</code> in decimal:
 
-```plaintext
+```
   24
 + 18
 ————
@@ -545,7 +545,7 @@ For example, let's add <code>24</code> and <code>18</code> in decimal:
 
 We first add the <code>4</code> and <code>8</code> to get <code>12</code>, which is not a digit we support in the decimal number system. So we represent the part that we can (<code>2</code>) and carry the remaining value (ten) over to the next column as a <code>1</code> (<code>1 × 10<sup>1</sup> = 10<sub>10</sub></code>). There, we have <code>1 + 2 + 1 = 4</code>:
 
-```plaintext
+```
       1  <-- carried
       24
     + 18
@@ -555,7 +555,7 @@ We first add the <code>4</code> and <code>8</code> to get <code>12</code>, which
 
 Now, let's add these same two numbers (<code>24<sub>10</sub></code> and <code>18<sub>10</sub></code>) using the binary number system:
 
-```plaintext
+```
   11000
 + 10010
 ———————
@@ -572,7 +572,7 @@ We work from right to left:
 
 That last step deserves some clarification: When we try to add the two ones, we get <code>1<sub>2</sub> + 1<sub>2</sub> = 10<sub>2</sub></code> (two), so we put a <code>0</code> in the current column and carry over the <code>1</code> to the next power of two, where we have a bunch of implicit leading zeros:
 
-```plaintext
+```
                1      <-- carry bits
 0000  ...    00011000
 0000  ...  + 00010010
@@ -588,7 +588,7 @@ If we expand the result, we'll find that it's the same answer we got over in dec
 
 Let's look at one more example to get comfortable with carrying bits in binary addition: <code>22<sub>10</sub> + 14<sub>10</sub></code>, which we know to be <code>36<sub>10</sub></code>:
 
-```plaintext
+```
   10110
 + 01110
 ———————
@@ -599,7 +599,7 @@ Something interesting happens when we look at the twos place (the <code>2<sup>1<
 
 Now we have three ones in the <code>2<sup>2</sup></code> column: <code>1<sub>2</sub>(carried) + 1<sub>2</sub>(operand1) + 1<sub>2</sub>(operand2) = 11<sub>2</sub></code> (three). So we put a one in the <code>2<sup>2</sup></code> column and carry a one yet again. Rinse and repeat!
 
-```plaintext
+```
                1111    <-- carry bits
 0000  ...    00010110
 0000  ...  + 00001110
@@ -627,7 +627,7 @@ We start by first representing <code>26<sub>10</sub></code> in binary:
 
 Now we negate it by flipping the bits and adding one:
 
-```plaintext
+```
 26 in binary: 011010
 Flipped:      100101
 Add one:      100110  = -26
@@ -635,7 +635,7 @@ Add one:      100110  = -26
 
 Stack up your operands and add them like we did before:
 
-```plaintext
+```
      11    <-- carry bits
     001100
   + 100110
@@ -653,7 +653,7 @@ See what I mean? Adding and subtracting numbers in the binary number system is j
 
 Let's remind ourselves how we multiply numbers in decimal:
 
-```plaintext
+```
   21
 x 12
 ————
@@ -661,7 +661,7 @@ x 12
 
 Remember the process? We multiply the <code>2</code> by each digit in the first multiplicand and write out the result under the bar:
 
-```plaintext
+```
   21
 x 12
 ————
@@ -670,7 +670,7 @@ x 12
 
 Then we move on to the <code>1</code> in <code>12</code> and repeat the process, but adding a <code>0</code> in the right column of the result. Add the two intermediate products to get the answer:
 
-```plaintext
+```
    21
 x  12
 —————
@@ -684,7 +684,7 @@ Guess what? The process is exactly the same in the binary number system!
 
 Let's multiply these same two numbers in binary. They are <code>21<sub>10</sub> = 010101</code> and <code>12<sub>10</sub> = 01100</code>:
 
-```plaintext
+```
    010101
 x   01100
 —————————
@@ -692,7 +692,7 @@ x   01100
 
 Obviously, this is going to be more involved in binary since we're working with bits (and thus longer strings), but the logic is still the same. In fact, beyond having to write out so many intermediate results, we actually have it much easier over in binary. Whenever a digit is <code>1</code>, you simply copy down the first multiplicand, padded with zeros. Whenever it's a zero times the first multiplicand, the result is zero!
 
-```plaintext
+```
       010101
 x      01100
 ————————————
@@ -715,7 +715,7 @@ Easy peasy. The same process applies regardless of whether your multiplicands ar
 
 Let's divide <code>126<sub>10</sub></code> by <code>12<sub>10</sub></code> using long division:
 
-```plaintext
+```
     0 1 0 . 5
    _______
 12 |1 2 6
@@ -734,14 +734,14 @@ Answer: <code>10.5</code>.
 
 Now let's repeat the process over in the binary number system. Note that I'm going to strip leading zeros to make my life easier since we're working with two unsigned numbers:
 
-```plaintext
+```
       _______
 1100 |1111110
 ```
 
 Take things one digit at a time, and [reference this useful YouTube video](https://www.youtube.com/watch?v=VKemv9u40gc) if you get stuck:
 
-```plaintext
+```
          0 0 0 1 0 1 0 . 1
         ______________
 1 1 0 0 |1 1 1 1 1 1 0 . 0
@@ -790,7 +790,7 @@ For example, if <code>N = 32</code>, we're really asking what happens if we try 
 
 Let's give it a shot:
 
-```plaintext
+```
     0111...11111
   + 0000...00001
 ————————————————
@@ -798,7 +798,7 @@ Let's give it a shot:
 
 In the rightmost column, we'll get <code>1<sub>2</sub> + 1<sub>2</sub> = 10<sub>2</sub></code>, so that's a zero carry a one. But as a result, all of the remaining additions will be <code>1<sub>2</sub> + 1<sub>2</sub></code> since we'll always carry a one until we get to the leading bit:
 
-```plaintext
+```
     11111111111  <-- carry bits
     0111...11111     (2^{N-1} - 1)
   + 0000...00001     (1)
@@ -810,7 +810,7 @@ And what number is that in signed binary? Hmm... Looks like it's the smallest re
 
 What if we try to subtract one from the smallest representable <code>N</code>-bit signed integer? First, we'll represent <code>-1<sub>10</sub></code> as a signed integer in binary:
 
-```plaintext
+```
 1 in binary: 0000...00001
 Flipped:     1111...11110
 Add one:     1111...11111  <-- -1
@@ -818,7 +818,7 @@ Add one:     1111...11111  <-- -1
 
 Now let's add this to the smallest representable signed integer:
 
-```plaintext
+```
    1             <-- carry bits
     1000...00000     (-2^{N-1})
   + 1111...11111     (-1)

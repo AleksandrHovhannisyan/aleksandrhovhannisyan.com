@@ -13,7 +13,7 @@ While you can try to force [client-side redirects](http://www.w3.org/TR/WCAG20-T
 
 Fortunately, Netlify offers a simple way to [set up server-side redirects for any site](https://docs.netlify.com/routing/redirects/). All you have to do is create a `_redirects` file and ensure that it ends up in the root of your build output directory. This file consists of tab-delimited rules that map old URLs to the new ones:
 
-```plaintext
+```
 /old/url/1  /new/url/1
 /old/url/1  /new/url/2
 ```
@@ -107,7 +107,7 @@ redirectFrom: /blog/old-url/
 For this particular example, assuming that your blog post permalinks are derived from the file slug, 11ty would output the following Netlify `_redirects` file:
 
 {% include codeHeader.html file: "_redirects", copyable: false %}
-```plaintext
+```
 /blog/old-url/  /blog/new-url/
 ```
 

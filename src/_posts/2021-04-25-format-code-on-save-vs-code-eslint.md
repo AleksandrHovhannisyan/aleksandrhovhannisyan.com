@@ -34,7 +34,7 @@ Since we want to use ESLint to format JavaScript, we'll need to install the `esl
 Run this command to install ESLint with Prettier:
 
 {% include codeHeader.html %}
-```plaintext
+```
 yarn add -D eslint prettier eslint-plugin-prettier eslint-config-prettier
 ```
 
@@ -46,7 +46,7 @@ If you're linting TypeScript, you'll also want these packages in addition to the
 Install them like so:
 
 {% include codeHeader.html %}
-```plaintext
+```
 yarn add -D @typescript-eslint/eslint-plugin @typescript-eslint/parser
 ```
 
@@ -58,7 +58,7 @@ And if you're linting React, throw these must-haves into the mix:
 You get the idea:
 
 {% include codeHeader.html %}
-```plaintext
+```
 yarn add -D eslint-plugin-react eslint-plugin-react-hooks
 ```
 
@@ -85,7 +85,7 @@ If you haven't already done so, you can update your `package.json` scripts to in
 Install `husky` and `lint-staged`:
 
 {% include codeHeader.html %}
-```plaintext
+```
 yarn add -D lint-staged husky
 ```
 

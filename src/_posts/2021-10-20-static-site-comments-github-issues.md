@@ -162,7 +162,7 @@ You don't need to check any of the scopes since this token is only needed for ba
 
 Create an `.env` file locally and add the access token you just copied. You can name the variable whatever you want:
 
-```plaintext
+```
 GITHUB_PERSONAL_ACCESS_TOKEN = YourToken
 ```
 
@@ -304,7 +304,7 @@ datePosted: dayjs(comment.created_at).fromNow()
 
 Note this line in particular for the mapped comments:
 
-```plaintext
+```
 body: toMarkdown(comment.body)
 ```
 
