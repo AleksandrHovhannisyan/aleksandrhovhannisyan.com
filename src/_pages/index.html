@@ -20,9 +20,9 @@ permalink: /
     {%- include postPreviews.html posts: recentPosts, titleLevel: 3 -%}
   </section>
   <section class="section">
-    <h2 id="popular-posts">Popular Posts</h2>
-    {%- assign popularPosts = collections.posts | where: "data.isPopular", true -%}
-    {%- include postPreviews.html posts: popularPosts, titleLevel: 3 -%}
+    <h2 id="featured-posts">Featured Posts</h2>
+    {%- assign featuredPosts = collections.posts | where: "data.isFeatured", true -%}
+    {%- include postPreviews.html posts: featuredPosts, titleLevel: 3 -%}
   </section>
 </article>
 <script type="application/ld+json">

@@ -4,7 +4,6 @@ description: Jekyll is a static site generator that makes it easy for you to cre
 keywords: [getting started with jekyll, jekyll and github pages]
 categories: [jekyll, liquid, github]
 commentsId: 34
-isPopular: true
 lastUpdated: 2020-10-02
 thumbnail: thumbnail.png
 ---

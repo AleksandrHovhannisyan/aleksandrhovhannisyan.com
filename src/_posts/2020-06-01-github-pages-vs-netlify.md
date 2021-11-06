@@ -5,7 +5,7 @@ keywords: [github pages vs netlify]
 categories: [github, netlify, tooling]
 lastUpdated: 2021-07-31
 thumbnail: thumbnail.png
-isPopular: true
+isFeatured: true
 ---
 
 Back when I had no clue what I was doing with this site, and it was nothing more than a single HTML file with some jQuery that I absolutely did not need, I was hosting it for free on GitHub Pages. It made sense at the time—my site was simple, I didn't have to pay anything, and I already had a free domain right at my fingertips. GitHub Pages is one of the easiest ways to [create a personal website](/blog/getting-started-with-jekyll-and-github-pages/), publish documentation, or share small projects.

@@ -5,6 +5,7 @@ keywords: [base font size, "62.5%", font size preferences, rem]
 categories: [css, typography, math, a11y]
 commentsId: 97
 lastUpdated: 2021-09-16
+isFeatured: true
 thumbnail:
   url: https://images.unsplash.com/photo-1624558347497-df07e0096f5a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bWFnbmlmeWluZyUyMGdsYXNzJTIwYm9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1600&h=900&q=60
 ---

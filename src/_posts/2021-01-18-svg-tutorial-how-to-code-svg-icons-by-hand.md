@@ -5,7 +5,7 @@ keywords: [svg tutorial, svg icons, how to code svg]
 categories: [svg, html, css]
 lastUpdated: 2021-08-07
 commentsId: 68
-isPopular: true
+isFeatured: true
 thumbnail: thumbnail.png
 ---
 

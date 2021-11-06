@@ -4,7 +4,7 @@ description: Improve your developer experience by setting up ESLint and configur
 keywords: [format code on save, auto-format code on save, auto-formatting code, eslint, vs code, prettier]
 categories: [eslint, vscode, tooling]
 commentsId: 80
-isPopular: true
+isFeatured: true
 thumbnail: thumbnail.png
 lastUpdated: 2021-10-29
 ---

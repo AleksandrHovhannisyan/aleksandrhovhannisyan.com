@@ -5,7 +5,6 @@ categories: [jekyll, liquid, javascript]
 keywords: [copy to clipboard button]
 lastUpdated: 2021-04-04
 commentsId: 35
-isPopular: true
 thumbnail: thumbnail.png
 ---
 

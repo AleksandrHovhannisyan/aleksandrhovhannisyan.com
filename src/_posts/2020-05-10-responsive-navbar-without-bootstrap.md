@@ -4,7 +4,6 @@ description: Want to create a navbar that works on mobile and desktop? Ditch the
 keywords: [responsive navbar]
 categories: [html, css, javascript]
 commentsId: 28
-isPopular: true
 lastUpdated: 2021-09-18
 thumbnail: thumbnail.png
 ---

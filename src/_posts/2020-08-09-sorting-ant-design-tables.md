@@ -4,7 +4,6 @@ description: The Ant Design UI library lets you sort tables by one or more colum
 keywords: [sort ant design tables]
 categories: [antd, react, frontend]
 commentsId: 53
-isPopular: true
 thumbnail: thumbnail.png
 ---
 

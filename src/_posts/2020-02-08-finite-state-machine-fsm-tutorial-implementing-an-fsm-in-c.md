@@ -4,7 +4,6 @@ description: "Finite state machines (FSMs) are used in lots of different situati
 keywords: ["finite state machine tutorial", "implement a finite state machine"]
 categories: [design-patterns, cpp]
 commentsId: 33
-isPopular: true
 thumbnail: thumbnail.png
 ---
 
