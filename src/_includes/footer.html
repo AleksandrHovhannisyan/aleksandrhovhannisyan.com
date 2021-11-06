@@ -12,10 +12,13 @@
         <li><a href="/sitemap.xml" class="page-footer-link">Sitemap</a></li>
       </ul>
       <ul class="page-footer-socials" aria-label="Social media">
-        {%- for social in socials -%}
+        {%- assign networks = socials | entries -%}
+        {%- for network in networks -%}
+          {%- assign id = network | first -%}
+          {%- assign data = network | last -%}
           <li>
-            <a href="{{ social.url }}" target="_blank" rel="noreferrer noopener" class="page-footer-link">
-              {% socialIcon social.icon %}
+            <a href="{{ data.url }}" target="_blank" rel="noreferrer noopener" class="page-footer-link">
+              {% socialIcon id %}
             </a>
           </li>
         {%- endfor -%}
