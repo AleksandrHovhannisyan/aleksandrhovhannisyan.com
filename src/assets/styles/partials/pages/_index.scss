@@ -3,34 +3,17 @@
 
 .hero-banner {
   margin-bottom: clamped(6.4rem, 7.6rem);
+  display: flex;
+  align-items: center;
+  gap: 3.2rem;
 
   &-title {
     margin-bottom: 0.8rem;
   }
 
   &-headshot {
+    flex: 1 0 auto;
     display: none;
-  }
-
-  @media screen and (min-width: 600px) {
-    & {
-      display: grid;
-      grid-template-areas:
-        "title headshot"
-        "subtitle headshot";
-      grid-template-columns: auto min-content;
-      column-gap: 3.2rem;
-      row-gap: 0.4rem;
-    }
-
-    &-title {
-      grid-area: title;
-      margin: 0;
-    }
-
-    &-subtitle {
-      grid-area: subtitle;
-    }
   }
 
   @include tablet {
@@ -38,7 +21,6 @@
       display: unset;
       width: 18rem;
       aspect-ratio: 1;
-      grid-area: headshot;
       justify-self: center;
 
       img {
