@@ -5,6 +5,7 @@ keywords: [11ty, eleventy]
 categories: [11ty, jekyll, blogging]
 thumbnail: thumbnail.jpg
 commentsId: 95
+lastUpdated: 2021-11-07
 ---
 
 For two years, my blog ran on Jekyll, one of the oldest and most popular static site generators around. Jekyll is often listed alongside other static site generators like Hugo, Gatsby, Next, Nuxt, and [many others](https://jamstack.org/generators/) that make up the so-called Jamstack.
@@ -55,7 +56,7 @@ module.exports = (eleventyConfg) => {
 }
 ```
 
-Eleventy exposes all of its internal APIs to this module, meaning you can do things like:
+Eleventy exposes all of its internal APIs to this module, meaning that you can do things like:
 
 - [Specifying source and output directories](https://www.11ty.dev/docs/config/#configuration-options).
 - [Choosing your template engine](https://www.11ty.dev/docs/languages/) from a total of ten supported languages.
@@ -66,9 +67,17 @@ Eleventy exposes all of its internal APIs to this module, meaning you can do thi
 - [Batch-copying files and directories](https://www.11ty.dev/docs/copy/) to your output directory.
 - [Adding custom watch targets](https://www.11ty.dev/docs/watch-serve/) for files and directories.
 
-... and *so* much more! I could go on forever about all the cool things you can do in 11ty.
+... and *so* much more! I could go on forever about all the cool things that you can do in 11ty.
 
-For example, if you want to use SVG icon libraries like [Feather Icons](https://feathericons.com/) on your site, you can install the NPM package, import it into your config, and register a custom shortcode that returns a particular SVG as an inline string:
+11ty takes a simpler approach than most static site generators: It gives you the basic tools that you need to create a blog, and it leaves it up to you to wire them up however you see fit. It does not force you to use any particular templating language. Want to port a Jekyll site over to 11ty? Good news: You can still use Liquid! But if you want to use Nunjucks, Handlebars, Pug, or another popular templating language, you're welcome to do so. Tired of using YAML for all of your data? You can also define data files using JSON or even JavaScript. Want to use `markdown-it` to process Markdown files? Cool, go right ahead—but also know that *you don't have to*.
+
+I cannot stress just how important this kind of flexibility is for your productivity and sanity. For example, anyone who's worked with Gatsby knows the pain of wanting to add a certain feature to their site, realizing that it's unrealistic to implement by hand, and installing a plugin instead. You end up with a bloated dependency tree and have to deal with many frustrating issues and bugs, some of which can't be resolved.
+
+With 11ty, you have full control over how you want your site to be built.
+
+#### Custom Shortcodes? No Problem
+
+For example, let's say you want to use SVG icon libraries like [Feather Icons](https://feathericons.com/) on your site. You can install the NPM package, import it into your config, and register a custom shortcode that returns a particular SVG as an inline string:
 
 {% include codeHeader.html file: ".eleventy.js", copyable: false %}
 ```js
@@ -92,7 +101,11 @@ Voila—you can now invoke the shortcode in any valid template language, like ma
 
 This ships **zero client-side JavaScript** since your packages are used at build time, on the server side, to generate static HTML. If there's a package out there that you have your heart set on, chances are that you can use it to customize 11ty. This is great because web developers are most familiar with JavaScript, and the ecosystem is booming with open-source packages that solve common problems.
 
-By far the coolest thing about 11ty is how easy it is to write **custom templating filters**. Tired of repeating {% raw %}`{{ site.url }}`{% endraw %} in your markup? Create a custom filter to prepend your site's URL to any URL string that you give it:
+You can create a shortcode for practically anything, offloading the main rendering logic to a JavaScript function rather than bloating your templates. You can also [publish it as an 11ty plugin](https://www.11ty.dev/docs/plugins/) so that other users can install it and add it to their 11ty config.
+
+#### Filter All the Things
+
+One of the coolest things about 11ty is how easy it is to write **custom template filters**. Tired of repeating {% raw %}`{{ site.url }}`{% endraw %} in your markup? Create a custom filter to prepend your site's URL to any URL string that you give it:
 
 {% include codeHeader.html file: ".eleventy.js" %}
 ```js
@@ -123,11 +136,67 @@ And now you can use it like this anywhere in your code:
 ```
 {% endraw %}
 
-This is just one of the many cool things you can do with custom filters. You can even add error boundaries and throw meaningful messages when something goes wrong to make it easier to debug your code.
+Or maybe you have some object data that you want to iterate over in a template. No problem—throw in these filters, and you're good to go:
+
+{% include codeHeader.html file: ".eleventy.js", copyable: false %}
+```js
+module.exports = (eleventyConfig) => {
+  eleventyConfig.addLiquidShortcode('keys', Object.keys);
+  eleventyConfig.addLiquidShortcode('values', Object.values);
+  eleventyConfig.addLiquidShortcode('entries', Object.entries);
+}
+```
+
+And you would use them like so:
+
+{% raw %}
+```liquid
+{% assign keys = someObject | keys %}
+{% for key in keys %}{% endfor %}
+
+or this:
+
+{% assign values = someObject | values %}
+{% for value in values %}{% endfor %}
+
+why not both?
+
+{% assign entries = someObject | entries %}
+{% for entry in entries %}{% endfor %}
+```
+{% endraw %}
+
+#### JavaScript Data Files
+
+You can define global site data statically using YAML or JSON, and this works well for most cases. However, there are certain situations where you want to populate your site with dynamic data at build time, like from an API. Maybe you want to display stats from your GitHub profile, or maybe you're sourcing your posts from a headless CMS rather than storing them in your repo.
+
+For those dynamic use cases, 11ty allows you to define data files using JavaScript. Just stick a JavaScript file in your data directory and export whatever you want from that module; 11ty will handle the rest. For example, you could export an object for static data:
+
+{% include codeHeader.html file: "src/_data/site.js", copyable: false %}
+```js
+module.exports = {
+  title: 'My Awesome Site',
+  author: 'My name',
+  // You can access environment variables in here!
+  mode: process.env.ELEVENTY_ENV,
+};
+```
+
+But you could also export a function for dynamic data. You can even make it async, allowing you to fetch and await remote data and return it from the data file:
+
+{% include codeHeader.html file: "src/_data/projects.js", copyable: false %}
+```js
+module.exports = async () => {
+  console.log('Fetching GitHub projects...');
+  // fetch and return the data here!
+};
+```
+
+Eleventy also has an official plugin that can fetch the data for you and [cache it internally](https://www.11ty.dev/docs/plugins/cache/) so that site rebuilds don't blow your rate limit.
 
 ### 2. It's Testable
 
-Tooling is everything when it comes to creating a good developer experience. Writing tests for custom filters and plugins in Jekyll is not only poorly documented but also just a lot of work. By comparison, things are much easier with 11ty. Since you're already using JavaScript to write your configs, you can install any testing framework you like (I prefer Jest) and use it to test your code. This is great because it means you can test custom filters, ensuring that they always behave how you want them to and giving you more confidence in your output HTML.
+Tooling is everything when it comes to creating a good developer experience. Writing tests for custom filters and plugins in Jekyll is not only poorly documented but also just a lot of work. By comparison, things are much easier with 11ty. Since you're already using JavaScript to write your configs, you can install any testing framework you like (e.g., Jest) and use it to test your code. This is great because it means you can test custom filters, ensuring that they always behave how you want them to and giving you more confidence in your site's core build utilities.
 
 ### 3. It Has Built-in Pagination
 
@@ -202,13 +271,11 @@ Assuming that all your posts reside in Markdown files in the `src/_posts` direct
 
 At first glance, this may not seem too useful—it's more work than leaning on Eleventy's tagging system. But where it really shines is when you want to create [two-level pagination](https://www.webstoemp.com/blog/basic-custom-taxonomies-with-eleventy/), where you rely on Eleventy's pagination API to automatically generate category pages based on front matter, but you also want each category page to *itself* be paginated. While this sounds complicated, that article by Jérôme Coupé is an excellent tutorial on how to accomplish this. And it's actually much easier than you'd think!
 
-### 4. It Supports Dynamic Front Matter
+### 4. It Supports Dynamic Front Matter (Computed Data)
 
-This one piggy-backs right off the previous point about pagination.
+In Jekyll and most other static site generators, a front-matter variable can't reference other data because it introduces a circular dependency: Jekyll doesn't know the value of that other variable until it finishes parsing the entire front matter of your template. Unfortunately, this means that you can't have dynamic front-matter data. But that's a fairly common need—for example, with pagination, your page title and permalink often depend on the page number.
 
-In Jekyll, you can't write dynamic templating logic in your front-matter blocks since doing this creates circular references. Sometimes, though, your page title or permalink depends on some dynamic (often paginated) data.
-
-Fortunately, this limitation doesn't exist in 11ty, so you can do magical things like this:
+Fortunately, this limitation doesn't exist in 11ty, where you can do magical things thanks to [computed data](https://www.11ty.dev/docs/data-computed/):
 
 {% include codeHeader.html file: "src/_pages/blog.html" %}
 {% raw %}
@@ -219,13 +286,15 @@ pagination:
   data: collections.posts
   size: 10
   alias: posts
-renderData:
+eleventyComputed:
   title: "Blog{% if pagination.pageNumber > 0 %} (Page {{ pagination.pageNumber | plus: 1 }}){% endif %}"
 ---
 ```
 {% endraw %}
 
-By default, `permalink` supports dynamic interpolation of paginated data. In this example, I check to see if I'm on any page except the root blog page. If so, I append `/page/#/` to the permalink. If you want to interpolate dynamic data in other front-matter variables, you can do so with Eleventy's special `renderData` key (or, alternatively, [computed data](https://www.11ty.dev/docs/data-computed/)).
+In 11ty, `permalink` is a reserved front-matter variable that's dynamic by default. This means that you can interpolate variables and use templating logic when setting its value. If you want to do the same thing for other front-matter variables, all you need to do is nest them under `eleventyComputed`. Any front-matter variables you declare inside an `eleventyComputed` block will be evaluated before the template is written but *after* the static front-matter variables have been parsed. In this example, I'm using computed data to check the current page number and adjust the title accordingly.
+
+Computed data is *amazing* and unlocks a whole new level of dynamic templating than what you get with other static site generators.
 
 ### 5. It Has an Excellent Image Plugin
 
@@ -303,7 +372,11 @@ let metadata = await Image(src, {
 return Image.generateHTML(metadata);
 ```
 
-But instead of relying on `Image.generateHTML`, you can return custom markup as a string! All the data you need is right there in the metadata returned by `Image`. This means that you can generate low-quality placeholder images as part of your build process, return markup consisting of placeholder `src` and `srcset` attributes, and define `data-` attributes storing the actual image data. You can then lazily load your images with very few lines of JavaScript. (I'll probably write a tutorial one day on how to do this!)
+But instead of relying on `Image.generateHTML`, you can return custom markup as a string! All the data you need is right there in the metadata returned by `Image`. This means that you can generate low-quality placeholder images as part of your build process, return markup consisting of placeholder `src` and `srcset` attributes, and define `data-` attributes storing the actual image data. You can then lazily load your images with very few lines of JavaScript.
+
+{% aside %}
+  **Update**: If you're interested in learning more about how this works, I wrote a tutorial on [how to lazily load images in 11ty](/blog/eleventy-image-lazy-loading/).
+{% endaside %}
 
 You can even customize the naming for your images through an optional argument:
 
@@ -317,15 +390,15 @@ const imageMetadata = await Image(fullyQualifiedImagePath, {
 });
 ```
 
-There's very little that you can't customize in some shape or form. I'm honestly very impressed by how much thought went into making this plugin; it's exactly what I've been searching for.
+This is just scratching the surface ofThere's very little that you can't customize. I'm honestly very impressed by how much thought went into making this plugin; it's exactly what I was searching for!
 
 ### 6. It Has Great Documentation
 
-If you're not sure how to do something in 11ty, chances are that you'll find an example [in the official docs](https://11ty.dev/docs/) in several different templating languages. And if you get stuck, you can ask for help in their very active GitHub community. I actually [ran into a problem trying to deploy my site](https://github.com/11ty/eleventy/issues/1864), and I received an answer within a few hours.
+If you're not sure how to do something in 11ty, chances are that you'll find an example [in the official docs](https://11ty.dev/docs/) in several different templating languages. And if you get stuck, you can ask for help in their very active GitHub community and [Discord channel](https://www.11ty.dev/blog/discord/). I actually [ran into a problem trying to deploy my site](https://github.com/11ty/eleventy/issues/1864), and I received an answer within a few hours.
 
 ### 7. It Supports Incremental Builds
 
-This is something I initially misunderstood about 11ty, thinking that it was slower than Jekyll. But it turns out that 11ty supports incremental builds just like Jekyll does—all you have to do is supply it the `--incremental` command-line flag. So if you change one file, 11ty won't rebuild your entire site—it will only write the file that changed. This makes for a great developer experience, especially if you save files frequently like I do.
+This is something I initially misunderstood about 11ty, thinking that it was slower than Jekyll. But it turns out that 11ty supports incremental builds just like Jekyll does—all you have to do is supply the `--incremental` command-line flag for the dev server. So if you change one file, 11ty won't rebuild your entire site—it will only write the file that changed. This makes for a great developer experience, especially if you save files frequently like I do.
 
 ### 8. It Has a Debug Mode
 
@@ -340,7 +413,7 @@ Debug mode is awesome—11ty logs information about every single thing that it d
 
 (Also, I like the pretty colors.)
 
-## The Bad: What I Don't Like About 11ty
+## The Bad (But Manageable)
 
 An honest review of Eleventy wouldn't be one if I claimed that the framework isn't without its flaws. Having said that, I still think this is one of the best static site generators around, and you should definitely give it a shot. Some of the points below border on nitpicking—that's just how good 11ty is.
 
@@ -348,9 +421,9 @@ An honest review of Eleventy wouldn't be one if I claimed that the framework isn
 
 Compared to frameworks like Jekyll, Eleventy is highly configurable and extensible—on par with frameworks like Gatsby that have giant plugin ecosystems. This is great because it means that you can customize nearly every aspect of the framework's internals to meet your needs.
 
-Unfortunately, this can present some friction for beginners since it takes some time for you to understand how everything works and to debug any problems you encounter, especially if you're migrating your site from another framework. You may need to spend some time initially reading the docs, installing various packages that you need, and fiddling with configs until things work.
+Naturally, this may intimidate beginners due to the sheer number of options for customizing 11ty and all of the different topics that you need to learn. You may need to spend some time debugging problems, reading the docs, and fiddling with configs until things work.
 
-Of course, this is true for any new tool that you pick up—there's always a learning phase. And once you get up and running with 11ty, you'll be able to extend it more easily than most other frameworks. Alternatively, you could just use one of the many [starter templates](https://www.11ty.dev/docs/starter/).
+But here's the thing: This is true for any new tool that you pick up—there's *always* a learning phase. The good news is that once you get up and running with 11ty, you'll be able to extend it more easily than most other frameworks. Alternatively, you could just use one of the many [starter templates](https://www.11ty.dev/docs/starter/) to hit the ground running.
 
 ### 2. Variables Pollute the Global Namespace
 
@@ -365,13 +438,13 @@ In Jekyll, template variables are scoped under their corresponding namespace:
 
 With 11ty, the namespacing is inconsistent. Sometimes, the title you want for a page is under `someItem.data.title`; other times, it's leaked into the global scope as just `title`. Some site variables are scoped under `site`, like `site.url` or `site.title`; others leak into the global scope as plain variables. In include files, all variables are globally scoped, which means you may even get naming clashes between include arguments and other global variables.
 
-This makes for a confusing developer experience, where you have to do a bit of detective work to figure out where your data resides. When migrating my site from Jekyll to 11ty, I had to refer to [Paul Lloyd's excellent article](https://24ways.org/2018/turn-jekyll-up-to-eleventy/) for some handy tables that show how Jekyll syntax maps to 11ty syntax.
+This can be confusing, and you sometimes have to do a bit of detective work to figure out where your data resides. When migrating my site from Jekyll to 11ty, I had to refer to [Paul Lloyd's excellent article](https://24ways.org/2018/turn-jekyll-up-to-eleventy/) for some handy tables that show how Jekyll syntax maps to 11ty syntax.
 
 In the grand scheme of things, this isn't really that big of a deal and is eclipsed by many of 11ty's strengths. However, I do wish there were an option to namespace things more consistently.
 
 ### 3. Mixed Casing and Conventions
 
-This one's a bit of a nitpick, but 11ty uses the `camelCase` convention of JavaScript to extend Liquid, whereas Liquid itself follows the `snake_case` convention of Ruby. This can make your templates stylistically inconsistent. That said, you can easily fix this problem by overriding Liquid's existing filters with custom ones, which you may want to do anyway so you have more control over their behavior.
+This is a nitpick, but 11ty uses the `camelCase` convention of JavaScript to extend Liquid, whereas Liquid itself follows the `snake_case` convention of Ruby. This can make your templates stylistically inconsistent. That said, you can easily fix this problem by overriding Liquid's existing filters with custom ones. In fact, this is the recommended workflow anyway since it gives you more control over filters and allows you to write tests for them.
 
 ### 4. No ES Modules Support for the Eleventy Config
 
