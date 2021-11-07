@@ -11,7 +11,7 @@ renderData:
   title: "Posts tagged as {{ category.title }}{% if category.pageNumber > 0 %} (Page {{ category.pageNumber | plus: 1 }}){% endif %}"
 ---
 
-{% include postPreviews.html posts: posts, titleLevel: 2 %}
+{% include postPreviews.html posts: category.posts, titleLevel: 2 %}
 {%- if category.totalPages > 1 -%}
   {%- include pagination.html hrefs: category.hrefs.all -%}
 {%- endif -%}
