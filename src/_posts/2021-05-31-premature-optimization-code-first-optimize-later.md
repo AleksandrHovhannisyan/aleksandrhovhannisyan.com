@@ -1,15 +1,16 @@
 ---
 title: "Premature Optimization: Code First, Optimize Later"
-description: Premature optimization may be hurting the quality of your work. Focus on writing legible code first; optimize it later if you need to.
-keywords: [premature optimization, optimization, micro-optimization, big-o]
+description: Focus on writing readable, well-tested, and well-documented code. Optimize it if you anticipate measurable performance issues.
+keywords: [premature optimization, optimization, big-o]
 categories: [math, algorithms, javascript]
 layout: mathPost
 commentsId: 94
+lastUpdated: 2021-11-07
 thumbnail:
-  url: https://images.unsplash.com/photo-1501139083538-0139583c060f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
+  url: https://images.unsplash.com/photo-1601125611205-9a5e6f292abf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
-Recently, there was a [Twitter thread going around](https://twitter.com/maxfmckay/status/1396252890721918979) that compared two approaches to the same problem in JavaScript: 1) using a single `Array.reduce` call with the ES6 spread operator, or 2) chaining array methods. The two code samples looked something like this (I've renamed the variables to clarify what's going on):
+Recently, there was a [Twitter thread going around](https://twitter.com/maxfmckay/status/1396252890721918979) that compared two approaches to the same problem in JavaScript: 1) using a single `Array.reduce` call with the ES6 spread operator, and 2) chaining array methods. The two code samples looked something like this (I've renamed the variables to clarify what's going on):
 
 {% include codeHeader.html %}
 ```javascript
@@ -39,7 +40,7 @@ Both of these do the same thing: They take an array of users and turn it into an
 
 Naturally, a question arose: Which version is better? The original tweet favored the second approach, where most of the work is done in chained array methods. I personally think the second version is slightly harder to understand because of the awkward `reduce` logic, where we combine $n$ separate objects into one at the end with `Object.assign`. By comparison, once we've rewritten the first code sample to use clearer variable names, it's a little easier to follow at a glance.
 
-The original tweet was not about performance. But Tech Twitter, being the highly opinionated group that it is, decided to turn this innocent tweet into a (surprisingly civil!) debate about runtime complexity and benchmarking. So, in this article, I want to use this as an opportunity to argue in favor of writing legible code that gets the job done and only optimizing it when you really need to.
+The original tweet was not about performance. But Tech Twitter, being the highly opinionated group that it is, decided to turn this innocent tweet into a (surprisingly civil!) debate about runtime complexity and benchmarking. So, in this article, I want to use this as an opportunity to argue in favor of writing good code that gets the job done and only optimizing it when you really need to.
 
 Below are just a handful of the noteworthy responses that I saw; they touch on important points about optimizing front-end code (and code in general, really).
 
@@ -184,11 +185,13 @@ if (allowedValues.includes(value)) {
 
 Technically, the first version *should* be faster, and you can benchmark this if you'd like to. But what we care about is Big-O theory since that's what usually motivates arguments in favor of one algorithm or another, and this does not involve any concrete benchmarking. So I'll leave that up to you if you're interested.
 
-If you're not experienced with Big-O notation, you may think that the second algorithm has a worse Big-O time complexity than the first. But that's not true! In this case, the array always has a fixed size of four elements. We're not passing in a *dynamic* array as a dependency to our algorithm—it's just a static, hard-coded array of items that we look up in an `if` statement.
+The worst case for both algorithms is when the value we're looking for is the last one—either the last one listed in the `if` statement or the last element of the array.
 
-Moreover, it's unlikely that we'll ever add so many items to this array in the future that the performance penalty of iterating over an array will be perceivable to the end user (if it is, we have bigger problems to worry about—like why we're doing this in the first place). Thus, we can conclude that both algorithms perform on the order of $O(1)$, with the second having *barely perceptible* time and space penalties because it's using an array.
+You may be tempted to conclude that the second algorithm has a worse Big-O time complexity than the first since it's using an array, and `Array.prototype.includes` has a time complexity of $O(n)$ in the general case. But in this particular example, the array always has a fixed size of four elements. We're not passing in a *dynamic* array as a dependency to our algorithm—it's just a static, hard-coded array of elements that we search.
 
-Taking things a step further, we *could* optimize this algorithm to use a set (or, equivalently, an object/map) instead of an array. This would still give us $O(1)$ lookups thanks to hashing. In fact, there's nothing wrong with using an object or set from the get-go. But if doing so harms your code's legibility, or if it means you need to spend more time comparing algorithms, then consider whether you really gained anything meaningful from optimizing your code.
+Moreover, it's unlikely that we'll ever add so many items to this array in the future that the performance penalty of iterating over an array will be perceivable to the end user (if it is, we have bigger problems to worry about—like why we're doing this in the first place). Thus, we can conclude that both algorithms perform on the order of $O(1)$, with the second having slight time and space penalties because it's using an array.
+
+Taking things a step further, we *could* optimize this algorithm to use a `Set` (or, equivalently, an object or map) instead of an array. This would give us guaranteed $O(1)$ lookups thanks to hashing, even if the set grows in the future. In fact, there's nothing wrong with using an object or set from the get-go. But the point is that you don't *have* to do this if your code performs just as well as the "optimized" version.
 
 #### 2. Multiple Array Iterations Aren't Inherently Slow
 
@@ -404,15 +407,13 @@ Voila. $O(n)$ time complexity, just like the second code sample. But I would arg
 
 ## Know What You're Optimizing
 
-Admittedly, this was quite a long response to what was a very short and simple tweet (that sparked a debate about performance, algorithms, and, I suppose, the meaning of life). But I think it's important to understand these concepts well. When you do, you realize that writing clean and legible code is more important than obsessing over performance. It's easy to slip into this performance rabbit hole, with no end in sight. You'll frustrate yourself and others.
+Admittedly, this was quite a long response to what was a very short and simple tweet (that sparked a debate about performance, algorithms, and, I suppose, the meaning of life). But I think it's important to understand these concepts well—because when you do, you realize that it's more important to write readable, well-tested, and well-documented code. It's easy to slip into this performance rabbit hole, with no end in sight. You'll frustrate yourself and others.
 
 Sometimes, developers don't fully understand *what* they're optimizing when they decide to refactor their code. I blame this on our industry's tendency to conflate *clever* code with *good* code. People also forget that the time complexity of an algorithm isn't measured by the number of lines of code you write. Packed within a one-liner could be logic that operates on the order of $O(n^2)$, as we saw with the spread operator.
 
-At the end of the day, if your input won't realistically grow in size, it doesn't matter which of the original two approaches you take, as long as others can easily read and understand your code. I've made my preference clear; yours may differ. Either way, take the time to understand the problem you're given and analyze any constraints. If you won't run into scaling issues, there's no point in comparing algorithms—just write the one that comes to mind and is easy to understand.
+When you write code—especially on the front end in a language like JavaScript—you shouldn't get bogged down in the details of how well an algorithm performs, unless you anticipate that it will run into performance issues on production. Take the time to understand the problem you're given and analyze its constraints, and optimize your code only if you encounter measurable performance bottlenecks.
 
-When you write code—especially front-end code in a language like JavaScript—you shouldn't get bogged down in the details of how well an algorithm performs. Only refactor your code if you run into noticeable, measurable performance bottlenecks. Otherwise, your time is better spent working on other things.
-
-Your goal should always be to solve whatever problem you're given within reasonable time constraints. You can always refactor it later! But it can be tempting to pursue optimizations out of the gate simply because of how much emphasis is placed on algorithm analysis in our industry. This can lead to analysis paralysis, where you waste time comparing different algorithms and arguing with teammates when you could've written a solution in a fraction of the time.
+Your goal should always be to solve whatever problem you're given within reasonable time constraints since you can always refactor it later. But it can be tempting to pursue optimizations out of the gate simply because of how much emphasis is placed on algorithm analysis in our industry. This can lead to analysis paralysis, where you waste time comparing different algorithms and arguing with teammates when you could've written a solution in a fraction of the time.
 
 Don't fall into the premature optimization trap. Instead, follow a simple process:
 
@@ -421,4 +422,4 @@ Don't fall into the premature optimization trap. Instead, follow a simple proces
 
 Bonus points if you can do one from the start without sacrificing the other.
 
-{% include unsplashAttribution.md name: "Aron Visuals", username: "aronvisuals", photoId: "BXOXnQ26B7o" %}
+{% include unsplashAttribution.md name: "Sunbeam Photography", username: "sstoppo", photoId: "C2QbMA_nHYE" %}
