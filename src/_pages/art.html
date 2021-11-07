@@ -26,16 +26,14 @@ eleventyComputed:
   <header id="artwork-page-header">
     <h1 class="title">CSS Art</h1>
   </header>
-  <section class="section">
-    <ol id="artwork-list">
-      {%- assign artCollection = collections.art | sortByKey: 'data.order' -%}
-      {%- for artwork in artCollection -%}
-        <li class="artwork" id="{{ artwork.fileSlug }}">
-          <a class="artwork-link" href="#{{ artwork.fileSlug }}" aria-label="{{ artwork.data.description }}">
-            {{ artwork.templateContent }}
-          </a>
-        </li>
-      {%- endfor -%}
-    </ol>
-  </section>
+  <ol id="artwork-list">
+    {%- assign artCollection = collections.art | sortByKey: 'data.order' -%}
+    {%- for artwork in artCollection -%}
+      <li class="artwork" id="{{ artwork.fileSlug }}">
+        <a class="artwork-link" href="#{{ artwork.fileSlug }}" aria-label="{{ artwork.data.description }}">
+          {{ artwork.templateContent }}
+        </a>
+      </li>
+    {%- endfor -%}
+  </ol>
 </article>

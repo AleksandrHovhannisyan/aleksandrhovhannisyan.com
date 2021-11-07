@@ -27,23 +27,21 @@ I won't bore you with a detailed rundown of my work history; that's what [my Lin
 
 I have experience with a few different stacks—I've done a bit of desktop, mobile, and game development, either on my own time or for class projects. Nowadays, I like to focus on web technologies because I enjoy working on projects that have a strong UI/UX component. Below are a few of the projects that I'm proud of.
 
-<section class="section">
-  <ul class="project-grid">
-    {%- for project in projects -%}
-      <li class="project-wrapper">
-        {%- include projectCard.html project: project -%}
-      </li>
-    {%- endfor -%}
-    <li class="project-wrapper github-cta">
-      <h3 class="github-cta-heading font-base">Want to see more of my work?</h3>
-      <p class="github-cta-subheading">Check out my other repos:</p>
-      <a
-        aria-label="Aleksandr Hovhannisyan's GitHub profile."
-        href="https://github.com/AleksandrHovhannisyan?tab=repositories"
-        >{%- socialIcon "github" -%}</a>
+<ul class="project-grid">
+  {%- for project in projects -%}
+    <li class="project-wrapper">
+      {%- include projectCard.html project: project -%}
     </li>
-  </ul>
-</section>
+  {%- endfor -%}
+  <li class="project-wrapper github-cta">
+    <h3 class="github-cta-heading font-base">Want to see more of my work?</h3>
+    <p class="github-cta-subheading">Check out my other repos:</p>
+    <a
+      aria-label="Aleksandr Hovhannisyan's GitHub profile."
+      href="https://github.com/AleksandrHovhannisyan?tab=repositories"
+      >{%- socialIcon "github" -%}</a>
+  </li>
+</ul>
 
 ## Hobbies and Interests
 
