@@ -160,39 +160,33 @@ You don't need to check any of the scopes since this token is only needed for ba
 
 ### 2. Configuring Environment Variables
 
-Create an `.env` file locally and add the access token you just copied. You can name the variable whatever you want:
+Create an `.env` file locally and add the access token that you just copied. You can name the variable whatever you want:
 
+{% include codeHeader.html file: ".env" %}
 ```
 GITHUB_PERSONAL_ACCESS_TOKEN = YourToken
 ```
 
-Be sure to add `.env` to your `.gitignore` if it's not already there. Never check this file into Git!
+While you're here, you'll also want to create a variable named `AWS_LAMBDA_JS_RUNTIME` and set its value to `nodejs14.x`:
 
-Optionally, you can also install the `dotenv` package to be able to load local environment variables if you run your site locally without the Netlify Dev server:
-
-{% include codeHeader.html %}
-```bash
-yarn add -D dotenv
+{% include codeHeader.html file: ".env" %}
+```
+AWS_LAMBDA_JS_RUNTIME = nodejs14.x
 ```
 
-I use Eleventy for my site, so I load all of my environment variables inside my `.eleventy.js` config:
+This ensures that your Netlify functions [use Node 14 for AWS](https://docs.netlify.com/functions/build-with-javascript/#runtime-settings); they default to Node 12, and this can lead to some 502 errors getting thrown when you deploy your functions to production.
 
-{% include codeHeader.html file: ".eleventy.js" %}
-```js
-require('dotenv').config();
-```
+This is all that you need to authenticate your local API requests. You don't need to install a package like `dotenv`—Netlify Dev will take care of loading your environment variables for you when you start up the server. Be sure to add `.env` to your `.gitignore` if it's not already there—never check environment variables into Git!
 
-Again, this isn't required for Netlify Dev; it will automatically detect and load an `.env` file if one is present locally.
+You may be wondering, though: If we don't push our `.env` file to our repo, how will Netlify know what values to use for a production build? That's where we'll need to mirror these environment variables on Netlify so it's aware of them.
 
-That's it for authenticating your local API requests. To authenticate production API requests, you'll need to go to your Netlify UI dashboard and find `Settings > Build & Deploy > Environment`. Under the Environment Variables section, create a new variable for your GitHub access token, just like you did locally (use the same name):
+To authenticate production API requests, you can [import environment variables from an `.env` file using the Netlify CLI](https://www.netlify.com/blog/2021/07/12/managing-environment-variables-from-your-terminal-with-netlify-cli/#import-environment-variables-from-a-file), or you can configure the environment variables manually through the Netlify UI. I'll briefly go over how to do the latter, but feel free to use the CLI instead.
+
+Go to your Netlify UI dashboard and find `Settings > Build & Deploy > Environment`. Under the Environment Variables section, create a new variable for your GitHub access token, just like you did locally (use the same name):
 
 {% include img.html src: "environment-variables.png", alt: "The Netlify settings page for creating environment variables. Variables are listed in a two-column table layout. The first column shows the variable name; the second shows its value. Two variables are shown: GITHUB_PERSONAL_ACCESS_TOKEN and AWS_LAMBDA_JS_RUNTIME.", baseFormat: "png" %}
 
-Remember: Your local `.env` file doesn't get checked into git, so unless you mirror your environment variables in the Netlify UI, it won't know what keys and values to use.
-
-While you're here, you'll also want to create a variable named `AWS_LAMBDA_JS_RUNTIME` and set its value to `nodejs14.x`. This allows your Netlify functions to [use Node 14 for AWS](https://docs.netlify.com/functions/build-with-javascript/#runtime-settings); they default to Node 12 if you don't specify this through the Netlify UI, and that can lead to some 502 errors when you deploy your functions to production.
-
-Note that any environment variables you configure through the Netlify UI will remain private; they won't appear in deploy logs or previews unless you print them and make your deploy logs public. You'll want to double-check that your Sensitive Variable Policy is set to `Require approval`. You can find this directly below the Environment Variables section.
+Note that any environment variables you configure on Netlify will remain private; they won't appear in deploy logs or previews unless you print them and make your deploy logs public. You'll want to double-check that your Sensitive Variable Policy is set to `Require approval`. You can find this directly below the Environment Variables section.
 
 ### 3. Authenticating with the GitHub API
 
