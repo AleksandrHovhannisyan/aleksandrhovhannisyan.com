@@ -1,0 +1,28 @@
+@import '../mixins';
+
+.float {
+  float: none;
+
+  &.left,
+  &.right {
+    float: none;
+  }
+
+  @include mobile-lg {
+    & {
+      max-width: 20rem;
+      margin-top: 3.2rem;
+      margin-bottom: 3.2rem;
+    }
+
+    &.left {
+      margin-inline-end: 3.2rem;
+      float: left;
+    }
+
+    &.right {
+      margin-inline-start: 3.2rem;
+      float: right;
+    }
+  }
+}

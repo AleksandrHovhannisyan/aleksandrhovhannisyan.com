@@ -11,6 +11,7 @@
   }
 
   &-content {
+    display: flow-root;
     overflow-wrap: break-word;
     @include rhythm;
 
