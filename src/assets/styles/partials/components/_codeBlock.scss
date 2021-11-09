@@ -131,7 +131,7 @@ pre[class*='language-'] {
 
   &.tag &.punctuation,
   &.cdata {
-    color: hsl(0, 0%, 50%);
+    color: var(--color-code-punctuation);
   }
 
   &.italic {
@@ -145,7 +145,7 @@ pre[class*='language-css'],
 pre[class*='language-scss'],
 pre[class*='language-sass'] {
   .token.selector {
-    color: hsl(41, 53%, 67%);
+    color: var(--color-code-selector);
   }
 }
 
@@ -156,7 +156,7 @@ pre[class*='language-bash'] {
 }
 
 .language-html .token.punctuation {
-  color: hsl(0, 0%, 50%);
+  color: var(--color-code-punctuation);
 }
 
 /* Line highlighting */

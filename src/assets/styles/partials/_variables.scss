@@ -43,8 +43,9 @@ html {
   --color-code-constant: var(--color-code-number);
   --color-code-operator-word: var(--color-code-keyword);
   --color-code-operator: var(--color-code-function);
-  --color-code-punctuation: var(--color-code-function);
+  --color-code-punctuation: #8a8a8a;
   --color-code-support: var(--color-code-attribute);
+  --color-code-selector: hsl(41, 53%, 67%);
 
   --transition-duration: 0.2s;
   --transition-timing-function: ease;
