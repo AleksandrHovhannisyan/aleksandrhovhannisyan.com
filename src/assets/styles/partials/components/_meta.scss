@@ -46,10 +46,3 @@
     border-radius: 50%;
   }
 }
-
-.skip-post-meta-tags {
-  background: var(--main-bg-color);
-  padding: 0.8rem 1.6rem;
-  color: var(--color-text-emphasis);
-  @include font($family: 'main', $weight: 'bold');
-}

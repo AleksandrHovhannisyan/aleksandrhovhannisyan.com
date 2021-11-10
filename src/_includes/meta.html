@@ -17,7 +17,6 @@
   </li>
   {%- if categories -%}
     <li>
-      <a href="#skip-tags-{{ post.fileSlug }}" class="screen-reader-only skip-post-meta-tags">Skip tag navigation</a>
       <ul class="post-meta-item post-meta-tags" aria-label="Tags">
         {%- for category in categories -%}
           <li>
@@ -27,7 +26,6 @@
           </li>
         {%- endfor -%}
       </ul>
-      <div id="skip-tags-{{ post.fileSlug }}" class="skip-post-meta-tags-target"></div>
     </li>
   {%- endif -%}
 </ul>
