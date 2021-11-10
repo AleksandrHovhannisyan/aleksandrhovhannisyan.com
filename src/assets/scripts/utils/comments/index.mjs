@@ -25,27 +25,33 @@ export const renderComments = async (comments) => {
   commentsList.className = 'comments-list';
   commentsList.innerHTML = comments
     .map((comment) => {
-      return `<li class="post-comment">
-                <header class="post-comment-header">
-                  <img src="${comment.user.avatarUrl}" alt="" aria-hidden="true" class="post-comment-avatar">
-                  <a
-                    href="https://github.com/${comment.user.name}"
-                    class="post-comment-username"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
-                    ${comment.user.name}
-                  </a>
-                  <div class="post-comment-meta font-sm">commented
-                  <time datetime="${comment.created_at}">${comment.datePosted}</time></div>
-                  ${
-                    comment.isAuthor
-                      ? '<span class="post-comment-meta font-sm tag post-comment-author">Author</span>'
-                      : ''
-                  }
-                  ${comment.isEdited ? `<span class="post-comment-meta font-sm post-comment-edited">Edited</span>` : ''}
-                </header>
-                <div class="post-comment-body">${comment.body}</div>
+      return `<li>
+                <article class="post-comment">
+                  <header class="post-comment-header">
+                    <img src="${comment.user.avatarUrl}" alt="" aria-hidden="true" class="post-comment-avatar">
+                    <a
+                      href="https://github.com/${comment.user.name}"
+                      class="post-comment-username"
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      ${comment.user.name}
+                    </a>
+                    <div class="post-comment-meta font-sm">commented
+                    <time datetime="${comment.created_at}">${comment.datePosted}</time></div>
+                    ${
+                      comment.isAuthor
+                        ? '<span class="post-comment-meta font-sm tag post-comment-author">Author</span>'
+                        : ''
+                    }
+                    ${
+                      comment.isEdited
+                        ? `<span class="post-comment-meta font-sm post-comment-edited">Edited</span>`
+                        : ''
+                    }
+                  </header>
+                  <div class="post-comment-body">${comment.body}</div>
+                </article>
               </li>`;
     })
     .join('');
