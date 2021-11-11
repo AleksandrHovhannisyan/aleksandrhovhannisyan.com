@@ -13,6 +13,7 @@ const FontDisplay = {
 const FontVariant = {
   Light: 'Light',
   Regular: 'Regular',
+  Medium: 'Medium',
   Bold: 'Bold',
   Italic: 'Italic',
   BoldItalic: 'Bold Italic',
@@ -23,54 +24,22 @@ const getFontUrl = (src) => path.join(fontPath, src);
 
 /** Global font config. Gets compiled into font face declarations and can be reused anywhere to access font info. */
 const fonts = {
-  main: {
-    family: 'Fira Sans',
-    fallbacks: [
-      `-apple-system`,
-      `BlinkMacSystemFont`,
-      `Segoe UI`,
-      `Roboto`,
-      `Oxygen`,
-      `Ubuntu`,
-      `Cantarell`,
-      `Open Sans`,
-      `Helvetica Neue`,
-      `sans-serif`,
-    ],
+  title: {
+    family: 'Lato',
+    fallbacks: [`Georgia`, `serif`],
     weights: {
-      light: {
-        variant: FontVariant.Light,
-        weight: 300,
-        style: FontStyle.NORMAL,
-        url: getFontUrl('fira-sans-v10-latin-300.woff2'),
-        display: FontDisplay.SWAP,
-      },
       regular: {
         variant: FontVariant.Regular,
         weight: 400,
         style: FontStyle.NORMAL,
-        url: getFontUrl('fira-sans-v10-latin-regular.woff2'),
-        display: FontDisplay.SWAP,
-      },
-      regularItalic: {
-        variant: FontVariant.Italic,
-        weight: 400,
-        style: FontStyle.ITALIC,
-        url: getFontUrl('fira-sans-v10-latin-italic.woff2'),
+        url: getFontUrl('lato-v20-latin-regular.woff2'),
         display: FontDisplay.SWAP,
       },
       bold: {
         variant: FontVariant.Bold,
-        weight: 700,
+        weight: 900,
         style: FontStyle.NORMAL,
-        url: getFontUrl('fira-sans-v10-latin-700.woff2'),
-        display: FontDisplay.SWAP,
-      },
-      boldItalic: {
-        variant: FontVariant.BoldItalic,
-        weight: 700,
-        style: FontStyle.ITALIC,
-        url: getFontUrl('fira-sans-v10-latin-700italic.woff2'),
+        url: getFontUrl('lato-v20-latin-900.woff2'),
         display: FontDisplay.SWAP,
       },
     },
@@ -81,6 +50,13 @@ const fonts = {
     weights: {
       regular: {
         variant: FontVariant.Regular,
+        weight: 400,
+        style: FontStyle.NORMAL,
+        url: getFontUrl('ibm-plex-mono-v7-latin-regular.woff2'),
+        display: FontDisplay.SWAP,
+      },
+      medium: {
+        variant: FontVariant.Medium,
         weight: 500,
         style: FontStyle.NORMAL,
         url: getFontUrl('ibm-plex-mono-v7-latin-500.woff2'),

@@ -92,7 +92,7 @@
     }
 
     &-name {
-      @include font($family: "main", $weight: "regular");
+      @include font($family: "body", $weight: "regular");
     }
   }
 }

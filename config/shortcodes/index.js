@@ -3,6 +3,7 @@ const quoteShortcode = require('./quote');
 const iconShortcode = require('./icon');
 const imageShortcode = require('./image');
 const socialIconShortcode = require('./socialIcon');
+const thumbnailShortcode = require('./thumbnail');
 
 module.exports = {
   asideShortcode,
@@ -10,4 +11,5 @@ module.exports = {
   iconShortcode,
   imageShortcode,
   socialIconShortcode,
+  thumbnailShortcode,
 };

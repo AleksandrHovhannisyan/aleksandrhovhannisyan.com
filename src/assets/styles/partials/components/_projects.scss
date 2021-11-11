@@ -22,7 +22,7 @@
     color: var(--color-text-emphasis);
     background-color: var(--card-bg-color);
     @include transition(opacity);
-    @include font($family: "main", $weight: "bold", $size: "md");
+    @include font($family: "title", $weight: "bold", $size: "md");
   }
 
   &-grid {
@@ -73,14 +73,13 @@
   }
 
   &-technologies {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
+    --gap: 0.8rem;
   }
 
   &-technology {
     border-radius: 0.2rem;
     padding: 0.4rem 1.2rem;
+    @include font($size: "xs");
   }
 }
 

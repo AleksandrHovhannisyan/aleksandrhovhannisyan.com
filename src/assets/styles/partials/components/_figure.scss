@@ -9,6 +9,7 @@ figure {
 figcaption {
   max-width: 70ch;
   margin: 0 auto;
+  @include font($family: "title", $weight: "regular");
 }
 
 figcaption,

@@ -2,80 +2,52 @@
 
 .post-preview {
   display: grid;
-  row-gap: 1.2rem;
   grid-template-areas:
-    "thumbnail"
+    "date"
     "title"
-    "meta"
-    "description";
-
-  .post-meta {
-    grid-area: meta;
-  }
+    "description"
+    "tags";
+  position: relative;
 
   &-grid {
     margin-top: 3.2rem;
     display: grid;
-    row-gap: 6.4rem;
+    row-gap: 4rem;
+  }
+
+  &-link {
+    @include underlined-link($initially-underlined: false);
   }
 
   &-title {
     grid-area: title;
-
-    a {
-      color: var(--color-text-emphasis);
-      @include underlined-link($initially-underlined: false);
-    }
-  }
-
-  &-thumbnail-container {
-    grid-area: thumbnail;
-    user-select: none;
-  }
-
-  &-thumbnail {
-    img {
-      object-fit: cover;
-      object-position: center;
-      border-radius: 0.4rem;
-    }
-
-    .light &.loaded img {
-      filter: blur(0) contrast(0.95);
-    }
   }
 
   &-description {
     grid-area: description;
-    @include line-clamp(3);
+    max-width: 66ch;
   }
-  @include tablet {
+
+  &-date {
+    grid-area: date;
+  }
+
+  &-tags {
+    grid-area: tags;
+    margin-top: 0.4rem;
+  }
+  @include tablet-sm {
     & {
+      grid-template-columns: min-content auto;
+      column-gap: 1.2rem;
       grid-template-areas:
-        "thumbnail title"
-        "thumbnail description"
-        "thumbnail meta";
-      column-gap: 3.2rem;
-      row-gap: 0.8rem;
+        "date tags"
+        "title title"
+        "description description";
     }
 
-    &-thumbnail {
-      height: 100%;
-      width: 18rem;
-      padding: 0.8rem 0;
-
-      img {
-        height: 100%;
-      }
-    }
-
-    &-title {
-      @include line-clamp(1);
-    }
-
-    &-description {
-      margin-bottom: 0.4rem;
-      @include line-clamp(2);
+    &-tags {
+      margin: 0;
     }
   }
 }

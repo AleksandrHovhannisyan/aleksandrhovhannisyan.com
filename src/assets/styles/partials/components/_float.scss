@@ -2,6 +2,7 @@
 
 .float {
   float: none;
+  margin-block-start: var(--line-height);
 
   &.left,
   &.right {
@@ -10,8 +11,7 @@
   @include mobile-lg {
     & {
       max-width: 20rem;
-      margin-top: 3.2rem;
-      margin-bottom: 3.2rem;
+      margin-block-end: 3.2rem;
     }
 
     &.left {

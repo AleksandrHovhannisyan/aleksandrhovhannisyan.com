@@ -2,7 +2,7 @@
 title: Modern Techniques for Writing Better CSS
 description: CSS has come a long way since the early days of web development. Using modern CSS strategies, you can write far fewer lines of CSS to accomplish tasks that previously required more lines of code.
 keywords: [better css, modern css, fewer lines of css, css]
-categories: [css, layout, practices]
+categories: [css, layout, clamp, css-grid, i18n, practices]
 thumbnail: thumbnail.png
 commentsId: 126
 ---

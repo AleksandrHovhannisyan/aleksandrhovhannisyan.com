@@ -10,9 +10,9 @@
     </div>
   </header>
   <p class="project-description">{{ project.description }}</p>
-  <ul class="project-technologies" aria-label="Technologies used">
+  <ul class="pill-group project-technologies" aria-label="Technologies used">
     {%- for tech in project.tech -%}
-    <li class="tag project-technology font-sm">{{ tech }}</li>
+    <li class="pill project-technology font-sm">{{ tech }}</li>
     {%- endfor -%}
   </ul>
   <a class="project-link" href="{{ project.url }}" target="_blank" rel="noreferrer noopener">

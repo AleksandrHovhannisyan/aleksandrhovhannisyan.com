@@ -2,18 +2,16 @@
 
 .pagination {
   &-trail {
-    margin-top: 6.4rem;
-    display: flex;
+    --gap: 0.8rem;
+    margin-top: 3.2rem;
     justify-content: flex-end;
-    gap: 0.8rem;
   }
 
   &-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     aspect-ratio: 1;
     min-width: 3.2rem;
-    border-radius: 0.4rem;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: var(--font-weight-code-medium);
   }
 }
