@@ -18,6 +18,7 @@
   justify-content: space-between;
   gap: 0.4rem;
   padding: 0 0.8rem;
+  @include font($family: "title", $weight: "regular");
 
   &-header {
     position: fixed;
@@ -47,7 +48,7 @@
   &-branding {
     flex-shrink: 0;
     display: none;
-    @include font($family: "main", $weight: "bold");
+    @include font($family: "title", $weight: "bold");
     @include focus-outline($color: white, $offset: 0.4rem);
 
     &:is(:focus, :hover) {

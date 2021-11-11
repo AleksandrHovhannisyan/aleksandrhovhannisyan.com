@@ -14,7 +14,7 @@ html {
   --letter-spacing-xxxl: #{clamped(-0.04rem, -0.05rem)};
   --transition-duration: 0.2s;
   --transition-timing-function: ease;
-  --page-max-width: 80rem;
+  --page-max-width: 81rem;
   --navbar-height: #{clamped(6.4rem, 7.6rem)};
 
   &.light {
