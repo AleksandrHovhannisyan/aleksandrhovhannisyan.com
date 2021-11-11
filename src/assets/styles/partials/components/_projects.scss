@@ -82,7 +82,7 @@
     color: var(--color-text-emphasis);
     background-color: var(--card-bg-color);
     @include transition(opacity);
-    @include font($family: 'main', $weight: 'bold', $size: 'md');
+    @include font($family: 'body', $weight: 'bold', $size: 'md');
   }
 }
 

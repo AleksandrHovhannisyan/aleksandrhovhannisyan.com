@@ -2,7 +2,7 @@
 
 @include headings {
   color: var(--color-text-emphasis);
-  @include font($family: 'main', $weight: 'bold');
+  @include font($family: 'title', $weight: 'bold');
 
   code {
     @include font($family: 'code', $weight: 'bold');

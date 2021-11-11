@@ -5,7 +5,7 @@ thead {
   color: var(--color-text-emphasis);
 
   th {
-    @include font($family: 'main', $weight: 'bold');
+    @include font($family: 'body', $weight: 'bold');
   }
 }
 

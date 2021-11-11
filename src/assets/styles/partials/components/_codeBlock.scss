@@ -20,7 +20,7 @@
   padding: 2.4rem 2.4rem 0 2.4rem;
   border-radius: 0.8rem 0.8rem 0 0;
   background-color: var(--color-code-background);
-  @include font($family: 'main', $weight: 'bold', $size: 'sm');
+  @include font($family: 'title', $weight: 'bold', $size: 'sm');
 
   &::before {
     content: "Filename: ";
@@ -36,6 +36,7 @@
   background-color: var(--color-code-overlay-1);
   padding: 0.6rem 1.6rem;
   border-radius: 0.4rem;
+  @include font($family: 'title', $weight: 'regular', $size: 'sm');
 
   &::before {
     content: 'Copy';
