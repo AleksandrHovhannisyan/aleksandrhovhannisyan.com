@@ -7,6 +7,7 @@ const {
   iconShortcode,
   socialIconShortcode,
   quoteShortcode,
+  thumbnailShortcode,
 } = require('./config/shortcodes');
 const {
   wordCount,
@@ -51,6 +52,8 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy(`${dir.input}/${dir.assets}/fonts`);
   eleventyConfig.addPassthroughCopy(`${imagePaths.source}/art`);
   eleventyConfig.addPassthroughCopy(`${imagePaths.source}/404`);
+  eleventyConfig.addPassthroughCopy(`${imagePaths.source}/posts`);
+  eleventyConfig.addPassthroughCopy(`${imagePaths.source}/profile-photo.jpg`);
 
   // Custom shortcodes
   eleventyConfig.addPairedShortcode('aside', asideShortcode);
@@ -58,6 +61,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addShortcode('image', imageShortcode);
   eleventyConfig.addShortcode('icon', iconShortcode);
   eleventyConfig.addShortcode('socialIcon', socialIconShortcode);
+  eleventyConfig.addShortcode('thumbnail', thumbnailShortcode);
 
   // Custom filters
   eleventyConfig.addFilter('wordCount', wordCount);
@@ -86,7 +90,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addCollection('categories', getAllUniqueCategories);
   eleventyConfig.addCollection('postsByCategory', getPostsByCategory);
   eleventyConfig.addCollection('categoriesWithCount', getCategoriesWithDescendingCount);
-  eleventyConfig.addCollection('popularCategories', getPopularCategories({ limit: 15, minCount: 5 }));
+  eleventyConfig.addCollection('popularCategories', getPopularCategories({ limit: 10, minCount: 5 }));
 
   // Plugins
   eleventyConfig.addPlugin(PluginFootnotes, {

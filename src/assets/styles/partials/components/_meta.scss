@@ -1,39 +1,33 @@
 @import "../mixins";
 
 .post-meta {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  column-gap: 1.6rem;
-  row-gap: 1.2rem;
-  position: relative;
-  @include font($family: "main", $weight: "light", $size: "sm");
-
-  &-item {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
+  &-date {
+    color: var(--color-text-emphasis);
+    @include font($family: "code", $weight: "regular");
   }
 
-  &-icon {
-    height: 1.6rem;
-    width: 1.6rem;
+  &-tag {
+    display: flex;
+    @include font($family: "code", $weight: "regular");
+
+    &::before {
+      content: "#";
+      user-select: none;
+    }
+
+    &::after {
+      user-select: none;
+      content: ",";
+    }
   }
 
   &-tags {
-    gap: 0.8rem;
-  }
-  @include tablet {
-    row-gap: 1.6rem;
-  }
-}
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
 
-.author-photo {
-  --size: 4.4rem;
-  height: var(--size);
-  width: var(--size);
-
-  img {
-    border-radius: 50%;
+    li:last-of-type .post-meta-tag::after {
+      content: none;
+    }
   }
 }

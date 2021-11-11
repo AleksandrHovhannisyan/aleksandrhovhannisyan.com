@@ -2,12 +2,25 @@
 
 .post {
   &-header {
+    display: grid;
+    grid-template-areas:
+      "date"
+      "title"
+      "tags";
     margin-bottom: 3.2rem;
   }
 
   &-title {
-    margin-bottom: 1.6rem;
-    max-width: 28ch;
+    grid-area: title;
+    margin-bottom: 0.8rem;
+  }
+
+  & &-date {
+    grid-area: date;
+  }
+
+  & &-meta-tags {
+    grid-area: tags;
   }
 
   &-tags {
@@ -28,6 +41,7 @@
   }
 
   &-content {
+    max-width: 68ch;
     display: flow-root;
     overflow-wrap: break-word;
     counter-reset: footnotes;
@@ -36,7 +50,7 @@
     #skip-toc {
       transform: translateY(-50%);
       padding: 0.2rem 0.8rem;
-      @include font($family: "main", $weight: "bold");
+      @include font($family: "body", $weight: "bold");
     }
 
     .toc-list {

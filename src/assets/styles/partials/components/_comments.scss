@@ -17,10 +17,6 @@
   padding: 0.8rem 1.6rem;
 }
 
-.comments-explanation {
-  font-style: italic;
-}
-
 #comments-wrapper {
   margin-top: 6.4rem;
 }
@@ -46,7 +42,7 @@
     flex-wrap: wrap;
     align-items: center;
     position: relative;
-    margin-bottom: 1.6rem;
+    margin-bottom: 0.8rem;
     gap: var(--meta-spacing);
   }
 
@@ -60,7 +56,7 @@
 
   &-username {
     color: var(--color-text-emphasis);
-    @include font($family: "main", $weight: "bold");
+    @include font($family: "title", $weight: "bold");
     @include underlined-link;
   }
 

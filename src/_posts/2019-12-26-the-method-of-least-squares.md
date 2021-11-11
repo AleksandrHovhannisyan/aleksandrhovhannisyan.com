@@ -6,8 +6,7 @@ layout: mathPost
 categories: [computer-science, math]
 commentsId: 38
 lastUpdated: 2021-06-28
-thumbnail:
-  url: https://images.unsplash.com/photo-1616628188524-65a2deb4f06f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
+thumbnail: https://images.unsplash.com/photo-1616628188524-65a2deb4f06f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=600&q=80
 ---
 
 The method of least squares is a technique for solving systems of equations, but it can be difficult for beginners to grasp if not explained well. It's something that you'll remember by heart once you understand the intuition behind how it's derived. In this post, we'll look at the problem that motivates the least squares method and gain an intuitive understanding for how it works under the hood.

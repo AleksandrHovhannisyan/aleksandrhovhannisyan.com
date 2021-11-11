@@ -131,7 +131,7 @@ pre[data-line] {
   padding: 2.4rem 2.4rem 0;
   border-radius: 0.8rem 0.8rem 0 0;
   background-color: var(--color-code-background);
-  @include font($family: "main", $weight: "bold", $size: "sm");
+  @include font($family: "title", $weight: "bold", $size: "sm");
 
   &::before {
     content: "Filename: ";
@@ -147,6 +147,7 @@ pre[data-line] {
   background-color: var(--color-code-overlay-1);
   padding: 0.6rem 1.6rem;
   border-radius: 0.4rem;
+  @include font($family: "title");
 
   &::before {
     content: "Copy";

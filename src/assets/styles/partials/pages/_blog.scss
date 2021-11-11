@@ -6,12 +6,16 @@
   }
 
   &-description {
-    margin-bottom: 2.4rem;
-    max-width: 60ch;
+    margin-bottom: 1.6rem;
   }
 
   &-nav {
     position: relative;
+  }
+
+  &-description,
+  &-tags {
+    max-width: 60ch;
   }
 
   .skip-popular-tags {
