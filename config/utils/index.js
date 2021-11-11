@@ -56,7 +56,6 @@ const stringifyAttributes = (attributeMap) => {
 
 /** Sanitizes an HTML string. */
 const sanitizeHtml = (html) => {
-  console.log(sanitize.defaults.allowedAttributes);
   return sanitize(html, {
     allowedAttributes: {
       ...sanitize.defaults.allowedAttributes,
