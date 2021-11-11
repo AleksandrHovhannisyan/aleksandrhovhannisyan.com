@@ -14,7 +14,8 @@ body {
   background-color: var(--main-bg-color);
   color: var(--color-text-normal);
   padding-bottom: var(--navbar-height);
-  @include font($family: "main", $weight: "regular", $size: "base");
+  @include font($family: "body", $weight: "regular", $size: "base");
+
   @include tablet {
     padding-bottom: unset;
   }
@@ -28,7 +29,11 @@ body {
 
 strong {
   color: var(--color-text-emphasis);
+<<<<<<< HEAD
   @include font($family: "main", $weight: "bold");
+=======
+  @include font($family: 'body', $weight: 'bold');
+>>>>>>> Add georgia and lato
 }
 
 a {

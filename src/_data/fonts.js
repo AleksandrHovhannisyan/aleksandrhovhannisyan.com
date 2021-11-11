@@ -23,8 +23,8 @@ const getFontUrl = (src) => path.join(fontPath, src);
 
 /** Global font config. Gets compiled into font face declarations and can be reused anywhere to access font info. */
 const fonts = {
-  main: {
-    family: 'Fira Sans',
+  title: {
+    family: 'Lato',
     fallbacks: [
       `-apple-system`,
       `BlinkMacSystemFont`,
@@ -38,39 +38,18 @@ const fonts = {
       `sans-serif`,
     ],
     weights: {
-      light: {
-        variant: FontVariant.Light,
-        weight: 300,
-        style: FontStyle.NORMAL,
-        url: getFontUrl('fira-sans-v10-latin-300.woff2'),
-        display: FontDisplay.SWAP,
-      },
       regular: {
         variant: FontVariant.Regular,
         weight: 400,
         style: FontStyle.NORMAL,
-        url: getFontUrl('fira-sans-v10-latin-regular.woff2'),
-        display: FontDisplay.SWAP,
-      },
-      regularItalic: {
-        variant: FontVariant.Italic,
-        weight: 400,
-        style: FontStyle.ITALIC,
-        url: getFontUrl('fira-sans-v10-latin-italic.woff2'),
+        url: getFontUrl('lato-v20-latin-regular.woff2'),
         display: FontDisplay.SWAP,
       },
       bold: {
         variant: FontVariant.Bold,
-        weight: 700,
+        weight: 900,
         style: FontStyle.NORMAL,
-        url: getFontUrl('fira-sans-v10-latin-700.woff2'),
-        display: FontDisplay.SWAP,
-      },
-      boldItalic: {
-        variant: FontVariant.BoldItalic,
-        weight: 700,
-        style: FontStyle.ITALIC,
-        url: getFontUrl('fira-sans-v10-latin-700italic.woff2'),
+        url: getFontUrl('lato-v20-latin-900.woff2'),
         display: FontDisplay.SWAP,
       },
     },
