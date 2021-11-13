@@ -106,6 +106,10 @@ pre[class*='language-'] {
     color: var(--color-code-constant);
   }
 
+  &.script {
+    color: var(--color-code-text);
+  }
+
   &:is(.keyword, .tag, .boolean, .constant, .inserted, .operator.arrow, .key.atrule, .rule, .keyword.module, .keyword.control-flow, .entity, .important, .punctuation.interpolation-punctuation, .doctype, .doctype-tag, .directive-hash),
   &.atrule .url {
     color: var(--color-code-keyword);
