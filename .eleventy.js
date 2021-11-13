@@ -25,6 +25,11 @@ const { escape } = require('lodash');
 const TEMPLATE_ENGINE = 'liquid';
 
 module.exports = (eleventyConfig) => {
+  eleventyConfig.setLiquidOptions({
+    // Allows for dynamic include/partial names. If true, include names must be quoted. Defaults to true as of beta/1.0.
+    dynamicPartials: false,
+  });
+
   // Watch targets
   eleventyConfig.addWatchTarget(imagePaths.source);
 
