@@ -8,7 +8,7 @@ const { throwIfNotType } = require('../utils');
 /** Returns the first `limit` elements of the the given array. */
 const limit = (array, limit) => {
   if (limit < 0) {
-    throw new Error(`${limit.name}: negative limits are not allowed: ${limit}.`);
+    throw new Error(`Negative limits are not allowed: ${limit}.`);
   }
   return array.slice(0, limit);
 };
@@ -18,7 +18,7 @@ const sortByKey = (arrayOfObjects, keyPath, order = 'ASC') => {
   const sorted = lodash.sortBy(arrayOfObjects, (object) => lodash.get(object, keyPath));
   if (order === 'ASC') return sorted;
   if (order === 'DESC') return sorted.reverse();
-  throw new Error(`${sortByKey.name}: invalid sort order: ${order}`);
+  throw new Error(`Invalid sort order: ${order}`);
 };
 
 /** Returns all entries from the given array that match the specified key:value pair. */
@@ -40,7 +40,7 @@ const toHtml = (markdownString) => {
 /** Divides the first argument by the second. */
 const dividedBy = (numerator, denominator) => {
   if (denominator === 0) {
-    throw new Error(`${dividedBy.name}: cannot divide by zero: ${numerator} / ${denominator}`);
+    throw new Error(`Cannot divide by zero: ${numerator} / ${denominator}`);
   }
   return numerator / denominator;
 };
