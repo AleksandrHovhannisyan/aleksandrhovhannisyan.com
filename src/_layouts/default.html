@@ -1,4 +1,6 @@
 ---
+stylesheets:
+  - /assets/styles/main.css
 eleventyComputed:
   preloads:
     -
@@ -70,9 +72,8 @@ eleventyComputed:
   {%- endcapture -%}
   <style>{{ fontCss | compileAndMinifyScss }}</style>
   {%- comment -%}Global and page/layout-specific CSS{%- endcomment -%}
-  <link rel="stylesheet" href="/assets/styles/main.css">
-  {%- for stylesheet in stylesheets -%}
-    <link rel="stylesheet" href="{{ stylesheet.href }}">
+  {%- for href in stylesheets -%}
+    <link rel="stylesheet" href="{{ href }}">
   {%- endfor -%}
   {%- comment -%}Favicons{%- endcomment -%}
   {%- for width in site.favicon.widths -%}
