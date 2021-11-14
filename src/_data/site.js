@@ -24,6 +24,10 @@ module.exports = {
     owner: `AleksandrHovhannisyan`,
     repo: `aleksandrhovhannisyan.com`,
   },
+  favicon: {
+    widths: [32, 57, 76, 96, 128, 192, 228],
+    format: 'png',
+  },
   pagination: {
     itemsPerPage: 20,
   },

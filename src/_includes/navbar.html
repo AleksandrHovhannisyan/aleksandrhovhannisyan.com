@@ -3,7 +3,9 @@
     <div class="navbar-container centered">
       <a href="#page-content" class="screen-reader-only skip-navigation">Skip to content</a>
       <a id="home-link" href="/" aria-label="Home page">
-        {%- include image.html src: "/assets/images/favicons/favicon.png", className: "logo", clickable: false, baseFormat: "png", widths: "[32, 57, 76, 96, 128, 192, 228]", sizes: "57px" %}
+        {%- comment -%}TODO: remove this hacky logic for assembling array as string once PR goes in for object arguments in liquid{%- endcomment -%}
+        {%- assign faviconWidths = site.favicon.widths | join: ", " | prepend: "[" | append: "]" -%}
+        {%- include image.html src: "/assets/images/favicons/favicon.png", className: "logo", clickable: false, baseFormat: site.favicon.format, widths: faviconWidths, sizes: "57px" %}
         <span class="website-name">Aleksandr Hovhannisyan</span>
       </a>
       <button id="navbar-toggle" aria-label="Toggle menu" aria-controls="navbar-menu" aria-expanded="false" type="button">
