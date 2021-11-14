@@ -339,7 +339,7 @@ For the example fonts used in this tutorial, that will produce this array:
 ```json
 [
   [
-    "main",
+    "body",
     { "family": "Fira Sans", "fallbacks": [], "weights": [] }
   ],
   [
