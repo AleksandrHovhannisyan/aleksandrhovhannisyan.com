@@ -19,7 +19,7 @@ const FontVariant = {
 };
 
 /** Helper to auto-prefix a font src url with the path to local fonts. */
-const getFontSrc = (src) => path.join(fontPath, src);
+const getFontUrl = (src) => path.join(fontPath, src);
 
 /** Global font config. Gets compiled into font face declarations and can be reused anywhere to access font info. */
 const fonts = {
@@ -42,35 +42,35 @@ const fonts = {
         variant: FontVariant.Light,
         weight: 300,
         style: FontStyle.NORMAL,
-        url: getFontSrc('fira-sans-v10-latin-300.woff2'),
+        url: getFontUrl('fira-sans-v10-latin-300.woff2'),
         display: FontDisplay.SWAP,
       },
       regular: {
         variant: FontVariant.Regular,
         weight: 400,
         style: FontStyle.NORMAL,
-        url: getFontSrc('fira-sans-v10-latin-regular.woff2'),
+        url: getFontUrl('fira-sans-v10-latin-regular.woff2'),
         display: FontDisplay.SWAP,
       },
       regularItalic: {
         variant: FontVariant.Italic,
         weight: 400,
         style: FontStyle.ITALIC,
-        url: getFontSrc('fira-sans-v10-latin-italic.woff2'),
+        url: getFontUrl('fira-sans-v10-latin-italic.woff2'),
         display: FontDisplay.SWAP,
       },
       bold: {
         variant: FontVariant.Bold,
         weight: 700,
         style: FontStyle.NORMAL,
-        url: getFontSrc('fira-sans-v10-latin-700.woff2'),
+        url: getFontUrl('fira-sans-v10-latin-700.woff2'),
         display: FontDisplay.SWAP,
       },
       boldItalic: {
         variant: FontVariant.BoldItalic,
         weight: 700,
         style: FontStyle.ITALIC,
-        url: getFontSrc('fira-sans-v10-latin-700italic.woff2'),
+        url: getFontUrl('fira-sans-v10-latin-700italic.woff2'),
         display: FontDisplay.SWAP,
       },
     },
@@ -83,14 +83,14 @@ const fonts = {
         variant: FontVariant.Regular,
         weight: 500,
         style: FontStyle.NORMAL,
-        url: getFontSrc('inconsolata-v20-latin-500.woff2'),
+        url: getFontUrl('inconsolata-v20-latin-500.woff2'),
         display: FontDisplay.SWAP,
       },
       bold: {
         variant: FontVariant.Bold,
         weight: 700,
         style: FontStyle.NORMAL,
-        url: getFontSrc('inconsolata-v20-latin-700.woff2'),
+        url: getFontUrl('inconsolata-v20-latin-700.woff2'),
         display: FontDisplay.SWAP,
       },
     },
@@ -103,7 +103,7 @@ const fonts = {
         variant: FontVariant.Regular,
         weight: 400,
         style: FontStyle.NORMAL,
-        url: path.join(fontPath, 'rock-salt-v11-latin-regular.woff2'),
+        url: getFontUrl('rock-salt-v11-latin-regular.woff2'),
         display: FontDisplay.SWAP,
       },
     },
@@ -116,7 +116,7 @@ const fonts = {
         variant: FontVariant.Regular,
         weight: 400,
         style: FontStyle.NORMAL,
-        url: path.join(fontPath, 'reenie-beanie-v11-latin-regular.woff2'),
+        url: getFontUrl('reenie-beanie-v11-latin-regular.woff2'),
         display: FontDisplay.SWAP,
       },
     },
