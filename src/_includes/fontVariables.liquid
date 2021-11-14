@@ -1,15 +1,17 @@
 {%- comment -%}Loop over the global font config and derive CSS custom properties
 from it for things like font family.{%- endcomment -%}
-{%- assign fontTypeNames = fonts | keys -%}
+{%- assign allFonts = fonts | entries -%}
 html {
-  {%- for fontType in fontTypeNames -%}
-    {%- assign family = fonts[fontType].family -%}
-    {%- assign weights = fonts[fontType].weights | entries -%}
-    {%- assign fallbackFontStack = fonts[fontType].fallbacks | join: ", " -%}
-    --font-family-{{ fontType }}: {{ family }}, {{ fallbackFontStack }};
+  {%- for font in allFonts -%}
+    {%- assign fontType = font | first -%}
+    {%- assign fontConfig = font | last -%}
+    {%- assign fallbackFonts = fontConfig.fallbacks | join: ", " -%}
+    --font-family-{{ fontType }}: {{ fontConfig.family }}, {{ fallbackFonts }};
+    {%- assign weights = fontConfig.weights | entries -%}
     {%- for weight in weights -%}
       {%- assign weightName = weight | first -%}
       {%- assign weightConfig = weight | last -%}
+      {%- comment -%}Italic variants don't need their own weight variables.{%- endcomment -%}
       {%- if weightConfig.style != 'italic' -%}
         --font-weight-{{ fontType }}-{{ weightName }}: {{ weightConfig.weight }};
       {%- endif -%}
