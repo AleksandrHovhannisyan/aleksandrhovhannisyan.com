@@ -76,6 +76,7 @@ const FontVariant = {
 
 We can also define a utility for generating font URLs:
 
+{% include codeHeader.html file: "src/_data/fonts.js" %}
 ```js
 const path = require('path');
 
@@ -85,6 +86,7 @@ const getFontUrl = (src) => path.join('/assets/fonts', src);
 
 Finally, we can export an object describing our fonts. For each font, we'll specify the family name, an array of fallbacks, and the font weights. I'm using the fonts from my site for illustrative purposes; feel free to replace them with whatever fonts you want:
 
+{% include codeHeader.html file: "src/_data/fonts.js" %}
 ```js
 const fonts = {
   body: {
