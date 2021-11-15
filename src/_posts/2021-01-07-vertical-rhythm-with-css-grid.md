@@ -4,6 +4,7 @@ description: Margins are what you typically use to define a layout's vertical rh
 keywords: [css grid, vertical rhythm]
 categories: [css, css-grid, typography]
 thumbnail: thumbnail.png
+lastUpdated: 2021-11-15
 ---
 
 Margins are the gold standard for spacing paragraphs, images, and block-level elements in a typical web layout. But what if I told you that CSS Grid offers a much better alternative for creating a consistent [vertical rhythm](https://24ways.org/2006/compose-to-a-vertical-rhythm)? Let's take a look at how you can use CSS Grid as a drop-in replacement for margin-based spacing.
@@ -219,24 +220,28 @@ Want to see this used in a real site? Inspect this very article's CSS! And if yo
 
 I'm sure that there are more examples of this out in the wild. Will your site will join the ranks? Give it a try—I guarantee that you won't want to go back to using margins for article layouts.
 
-## Benefits of CSS Grid Gutters
+## Benefits of Using CSS Grid
 
 The best thing about using CSS Grid is that it lets you do some really awesome stuff, like creating a [full-bleed layout](https://www.joshwcomeau.com/css/full-bleed/) that you might see in a magazine or newspaper, or a [full-fledged article layout](https://mastery.games/post/article-grid-layout/). Not only do you get the benefits of consistent baseline spacing throughout an article, but you can also now create three-, twelve-, or X-column layouts to suit your needs.
 
-## Drawbacks of CSS Grid Gutters
+## Drawbacks of Using CSS Grid
 
-*But What About Internet Explorer™*, you harp. I know, *I know*. But truth be told, I don't actually care; support for CSS Grid is excellent, save for legacy browsers that continue to hold the web back from realizing its full potential. On the bright side, if you're creating your site with a React-based SSG like Gatsby or Next.js, they already support IE11 and all modern browsers with polyfills, so you can safely use CSS Grid.
+There are a few drawbacks to this approach.
 
-Another drawback is that Chrome's dev tools apparently don't like to paint a hundred or so of these pretty purple gutters:
+For one, CSS Grid isn't an option if you need to support ancient browsers like Internet Explorer. But I would argue that it's well past time to ditch support for these legacy browsers; CSS Grid is powerful and opens up many possibilities for layouts that were traditionally difficult (or impossible) to design, and these browsers only continue to hold back the web from realizing its full potential.
+
+Another drawback is that painting a hundred or so of these pretty purple gutters can sometimes slow down your browser.
 
 {% include img.html src: "gutter.png", alt: "Chrome's dev tools show grid gutters using a purple hatch pattern.", clickable: false %}
 
-Translation? Your browser may lag a bit as you open your dev tools to inspect large grids. This can get annoying when debugging CSS, but it has no impact on your user experience, like your [cumulative layout shift](https://web.dev/cls/) score or load times—everything is just as if you had used margins instead. This is mainly a developer experience issue.
+In the past, my dev tools would momentarily lag as I tried to inspect large pages. But I only ever noticed this in Chrome, so it may not necessarily be CSS Grid's fault.
+
+You also need to take care not to cause [a CSS Grid blowout](https://css-tricks.com/preventing-a-grid-blowout/), where content accidentally overflows horizontally. Part of the reason for this is that properties like `overflow-wrap` and `word-wrap` [don't work correctly in Grid layouts](https://github.com/rachelandrew/gridbugs/issues/46), so you have to use `word-break` or allow the grid to shrink.
+
+One last drawback with using CSS Grid to define an article's vertical rhythm is that it prevents you from using floats. But this isn't that big of a deal in most cases, unless you intend to include floated media.
 
 ## Margins Are Still Useful
 
-Just don't get carried away with this approach. We developers have a tendency to find a shiny new solution to a problem and to try to apply it anywhere and everywhere, regardless of whether it's the right tool for the job. CSS Grid definitely doesn't make margins obsolete—it just gives us a nicer way of creating certain layouts that traditionally relied on margins alone.
+Developers tend to find a shiny new solution to a problem and to try to apply it anywhere and everywhere, regardless of whether that square peg happens to be the right tool for the job. CSS Grid definitely doesn't make margins obsolete—it just gives us a nicer way of creating gapped layouts that traditionally relied on margins alone.
 
-## Grid On!
-
-In its current state, CSS Grid gives us a very bright glimpse into the future of CSS and web layouts. It already has widespread browser support and is super easy to use once you master the basics. I hope you found this tutorial helpful!
+In its current state, CSS Grid gives us a very bright glimpse into the future of CSS and web layouts. It already has widespread browser support and is easy to use once you master the basics. Using it for an article's layout gives you consistent spacing between paragraphs
