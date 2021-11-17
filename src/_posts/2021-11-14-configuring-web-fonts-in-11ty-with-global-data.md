@@ -4,6 +4,7 @@ description: Rather than using static font-face declarations for web fonts, you 
 keywords: [11ty, web fonts, font]
 categories: [11ty, css, typography, liquid]
 thumbnail: thumbnail.png
+commentsId: 120
 ---
 
 My old strategy for managing web fonts on my site went something like this: Rather than linking to Google Fonts, I would self-host the fonts that I needed for improved performance. To do this, I downloaded a set of optimized font files from the [google-webfonts-helper](https://google-webfonts-helper.herokuapp.com/) app as recommended by Sia Karamalegos in her post on [making Google Fonts faster](https://sia.codes/posts/making-google-fonts-faster/#self-host-your-web-fonts-for-full-control). I then pasted some static `@font-face` declarations in a Sass partial that would get compiled as part of my main stylesheet. I defined CSS custom properties for each of my font families manually and used those variables throughout my stylesheets. If I needed to preload a font on a particular page, I would add a `preloads` key in that page's front matter like so:
