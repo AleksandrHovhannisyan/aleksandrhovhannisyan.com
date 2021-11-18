@@ -137,7 +137,7 @@ With your Netlify dev server running, invoke this command to test your serverles
 
 {% include codeHeader.html %}
 ```bash
-npx netlify functions:invoke --queryString id=123
+npx netlify functions:invoke --querystring id=123
 ```
 
 Run through the prompts to select the function that you want to invoke (there should only be one listed if this is your first time creating a Netlify function). You should see the following response `body` get logged to the console once you run the function:
