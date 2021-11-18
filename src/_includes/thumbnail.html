@@ -5,4 +5,4 @@
 {%- else -%}
   {%- assign src = urlPath | append: post.data.thumbnail -%}
 {%- endif -%}
-{%- include image.html src: src, urlPath: urlPath, fileName: 'thumbnail', alt: "", className: "post-preview-thumbnail", clickable: false, widths: "[200, 400, 800, 1280]", sizes: "(max-width: 400px) 400px, (max-width: 768px) 800px, 400px" -%}
+{%- include image.html src: src, urlPath: urlPath, fileName: 'thumbnail', alt: "", className: "post-preview-thumbnail", clickable: false, widths: "[180, 360, 800, 1280]", sizes: "(max-width: 400px) 360px, (max-width: 768px) 800px, 360px" -%}
