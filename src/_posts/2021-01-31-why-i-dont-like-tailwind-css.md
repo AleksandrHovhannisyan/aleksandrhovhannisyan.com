@@ -3,7 +3,7 @@ title: Why I Don't Like Tailwind CSS
 description: On paper, Tailwind CSS sounds like a great idea. In reality, it suffers from the same problems that it tries to solve.
 keywords: [tailwind css, tailwind, don't like tailwind]
 categories: [css, tailwind, frameworks]
-lastUpdated: 2021-10-25
+lastUpdated: 2021-11-29
 commentsId: 77
 isFeatured: true
 thumbnail: thumbnail.png
@@ -90,11 +90,15 @@ Another reason why Tailwind is so hard to read is because it requires you to pan
 </div>
 ```
 
-Unfortunately, ESLint/Prettier won't even properly format your classes or push them onto a new line—they'll just push the `className` prop down, but the string itself could go on forever. This may force you to scroll your editor horizontally to view the full list of classes. Tailwind's own documentation suffers from this very problem—many code blocks overflow horizontally and force you to scroll to find the relevant class in a sea of strings.
+If you think I'm exaggerating and that it can't get much worse than this in practice, here's a real example from Netlify's admin dashboard:
 
-Over in CSS land, things are much easier to parse—you only have to scan your code *vertically*, so it's easier to search for a particular `property: value` pair. Plus, you get proper syntax highlighting, which clearly separates your properties from the values and makes things easier to read. With Tailwind, all your classes use your editor's color for strings. There are no properties or values because they've been stuffed into the class names themselves.
+{% include img.html src: "netlify-input.jpg", alt: "Inspecting a checkbox in the Netlify UI via dev tools reveals an input with a massive string of class names spanning over 13 lines.", caption: "That's **71 class names** just to style a checkbox." %}
 
-Here's the raw CSS equivalent of the Tailwind CSS above:
+Unfortunately, ESLint/Prettier won't even properly format your classes or push them onto a new line—they'll just push the `className` prop down, but the string itself could go on forever. This may force you to scroll your editor horizontally to view the full list of classes. Tailwind's own documentation suffers from this very problem—many code blocks overflow horizontally and force you to scroll to find the relevant class in a sea of strings
+
+You could turn on word wrapping in your editor, which would solve the problem of having to scroll horizontally to see all of the class names, but you would still need to parse and understand these giant strings. By comparison, vanilla CSS is much easier to parse—you only have to scan your code vertically, so it's easier to search for a particular `property: value` pair. Plus, you get proper syntax highlighting, which clearly separates your properties from the values and makes things easier to read. With Tailwind, all your classes use your editor's color for strings. There are no properties or values because they've been stuffed into the class names themselves.
+
+Here's the raw CSS equivalent of the Tailwind code sample I showed earlier:
 
 ```css
 .thing {
