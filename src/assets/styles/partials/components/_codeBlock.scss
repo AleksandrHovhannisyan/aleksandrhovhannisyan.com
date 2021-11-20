@@ -15,18 +15,15 @@
   position: absolute;
   top: 0;
   left: 0;
-  display: grid;
-  grid-auto-flow: column;
-  column-gap: 0.4rem;
   color: var(--color-code-text);
   word-break: break-all;
   padding: 2.4rem 2.4rem 0 2.4rem;
   border-radius: 0.8rem 0.8rem 0 0;
   background-color: var(--color-code-background);
-  @include font($family: 'main', $weight: 'regular', $size: 'sm');
+  @include font($family: 'main', $weight: 'bold', $size: 'sm');
 
   &::before {
-    content: '📂';
+    content: "Filename: ";
   }
 }
 
@@ -37,15 +34,15 @@
   display: none;
   color: var(--color-code-text);
   background-color: var(--color-code-overlay-1);
-  padding: 0.6rem 1.2rem;
+  padding: 0.6rem 1.6rem;
   border-radius: 0.4rem;
 
   &::before {
-    content: 'Copy 📋';
+    content: 'Copy';
   }
 
   @include tablet {
-    display: block;
+    display: flex;
   }
 
   &:is(.copied, :hover) {
@@ -55,7 +52,7 @@
 
   &.copied {
     &::before {
-      content: 'Copied! ✔️';
+      content: 'Copied!';
     }
   }
 }
@@ -120,7 +117,7 @@ pre[class*='language-'] {
     color: var(--color-code-string);
   }
 
-  &:is(.punctuation, .operator, .entity, .function),
+  &:is(.operator, .entity, .function),
   &.atrule &.url &.punctuation,
   &.attr-value &.punctuation.attr-equals,
   &.function &.maybe-class-name {
@@ -133,7 +130,7 @@ pre[class*='language-'] {
     color: var(--color-code-attribute);
   }
 
-  &.tag &.punctuation,
+  &.punctuation,
   &.cdata {
     color: var(--color-code-punctuation);
   }
