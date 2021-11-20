@@ -76,21 +76,21 @@ const fonts = {
     },
   },
   code: {
-    family: 'Inconsolata',
+    family: 'IBM Plex Mono',
     fallbacks: [`Monaco`, `Consolas`, `Courier New`, `monospace`],
     weights: {
       regular: {
         variant: FontVariant.Regular,
         weight: 500,
         style: FontStyle.NORMAL,
-        url: getFontUrl('inconsolata-v20-latin-500.woff2'),
+        url: getFontUrl('ibm-plex-mono-v7-latin-500.woff2'),
         display: FontDisplay.SWAP,
       },
       bold: {
         variant: FontVariant.Bold,
         weight: 700,
         style: FontStyle.NORMAL,
-        url: getFontUrl('inconsolata-v20-latin-700.woff2'),
+        url: getFontUrl('ibm-plex-mono-v7-latin-700.woff2'),
         display: FontDisplay.SWAP,
       },
     },

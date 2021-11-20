@@ -1,7 +1,7 @@
 @import '../mixins';
 
 code {
-  font-size: 0.925em;
+  font-size: 0.82em;
   @include font($family: 'code', $weight: 'regular');
 }
 
