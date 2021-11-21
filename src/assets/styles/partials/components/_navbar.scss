@@ -11,24 +11,20 @@
 
 .navbar {
   position: relative;
-  background-color: var(--navbar-bg-color);
-  box-shadow: var(--navbar-box-shadow);
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
 
   &-header {
     position: sticky;
     top: 0;
     left: 0;
+    background-color: var(--navbar-bg-color);
+    box-shadow: var(--navbar-box-shadow);
     height: var(--navbar-height);
     @include z-index(navbar);
-  }
-
-  &-container {
-    position: relative;
-    align-items: center;
-    display: flex;
-    height: 100%;
-    justify-content: space-between;
   }
 
   &-links {
@@ -338,9 +334,8 @@
 
 @include tablet {
   .navbar {
-    box-shadow: none;
-
     &-header {
+      box-shadow: none;
       position: unset;
     }
 

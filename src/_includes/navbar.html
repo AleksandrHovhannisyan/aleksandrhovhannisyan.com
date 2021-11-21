@@ -1,46 +1,44 @@
 <header class="navbar-header">
-  <nav class="navbar font-sm" aria-label="Primary">
-    <div class="navbar-container centered">
-      <a href="#page-content" class="screen-reader-only skip-navigation">Skip to content</a>
-      <a id="home-link" href="/" aria-label="Home page">
-        {%- comment -%}TODO: remove this hacky logic for assembling array as string once PR goes in for object arguments in liquid{%- endcomment -%}
-        {%- assign faviconWidths = site.favicon.widths | join: ", " | prepend: "[" | append: "]" -%}
-        {%- include image.html src: "/assets/images/favicons/favicon.png", className: "logo", clickable: false, baseFormat: site.favicon.format, widths: faviconWidths, sizes: "57px" %}
-        <span class="website-name">Aleksandr Hovhannisyan</span>
-      </a>
-      <button id="navbar-toggle" aria-label="Toggle menu" aria-controls="navbar-menu" aria-expanded="false" type="button">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <div id="navbar-menu">
-        <ul class="navbar-links">
-          {%- assign navLinks = "About,Art,Blog,Contact" | split: ',' -%}
-          {%- for link in navLinks -%}
-          <li class="navbar-item">
-            <a
-              class="navbar-link"
-              href="/{{ link | downcase }}/"
-              {% if title == link and link != 'Blog' -%}
-              aria-current="page"
-              {%- endif -%}
-              {% if link == 'Blog' and isBlogPage -%}
-              aria-current="page"
-              {%- endif -%}
-            >
-              {{- link -}}
-            </a>
-          </li>
-          {%- endfor -%}
-          <li class="navbar-item" id="theme-toggle-container">
-            <button id="theme-toggle" class="lamp" aria-label="Toggle theme" type="button">
-              <span class="lamp-base"></span>
-              <span class="lamp-neck"></span>
-              <span class="lamp-head"></span>
-            </button>
-          </li>
-        </ul>
-      </div>
+  <nav class="navbar centered font-sm" aria-label="Primary">
+    <a href="#page-content" class="screen-reader-only skip-navigation">Skip to content</a>
+    <a id="home-link" href="/" aria-label="Home page">
+      {%- comment -%}TODO: remove this hacky logic for assembling array as string once PR goes in for object arguments in liquid{%- endcomment -%}
+      {%- assign faviconWidths = site.favicon.widths | join: ", " | prepend: "[" | append: "]" -%}
+      {%- include image.html src: "/assets/images/favicons/favicon.png", className: "logo", clickable: false, baseFormat: site.favicon.format, widths: faviconWidths, sizes: "57px" %}
+      <span class="website-name">Aleksandr Hovhannisyan</span>
+    </a>
+    <button id="navbar-toggle" aria-label="Toggle menu" aria-controls="navbar-menu" aria-expanded="false" type="button">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <div id="navbar-menu">
+      <ul class="navbar-links">
+        {%- assign navLinks = "About,Art,Blog,Contact" | split: ',' -%}
+        {%- for link in navLinks -%}
+        <li class="navbar-item">
+          <a
+            class="navbar-link"
+            href="/{{ link | downcase }}/"
+            {% if title == link and link != 'Blog' -%}
+            aria-current="page"
+            {%- endif -%}
+            {% if link == 'Blog' and isBlogPage -%}
+            aria-current="page"
+            {%- endif -%}
+          >
+            {{- link -}}
+          </a>
+        </li>
+        {%- endfor -%}
+        <li class="navbar-item" id="theme-toggle-container">
+          <button id="theme-toggle" class="lamp" aria-label="Toggle theme" type="button">
+            <span class="lamp-base"></span>
+            <span class="lamp-neck"></span>
+            <span class="lamp-head"></span>
+          </button>
+        </li>
+      </ul>
     </div>
   </nav>
 </header>
