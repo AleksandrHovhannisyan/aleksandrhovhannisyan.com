@@ -12,11 +12,16 @@ body {
   min-height: 100vh;
   background-color: var(--main-bg-color);
   color: var(--color-text-normal);
+  padding-bottom: var(--navbar-height);
   @include font($family: 'main', $weight: 'regular', $size: 'base');
+
+  @include tablet {
+    padding-bottom: unset;
+  }
 }
 
 #page-content {
-  --padding-y: #{clamped(6.4rem, 9.6rem)};
+  --padding-y: #{clamped(3.2rem, 9.6rem)};
   padding-top: var(--padding-y);
   padding-bottom: var(--padding-y);
 }
