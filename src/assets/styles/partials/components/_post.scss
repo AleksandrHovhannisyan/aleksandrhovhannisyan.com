@@ -13,6 +13,7 @@
   &-content {
     display: flow-root;
     overflow-wrap: break-word;
+    counter-reset: footnotes;
     @include rhythm;
 
     #skip-toc {
