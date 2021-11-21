@@ -31,3 +31,8 @@ $font-size-steps: 'sm', 'base', 'md', 'lg', 'xl', 'xxl', 'xxxl';
     @include font($size: $step);
   }
 }
+
+// Until this gets fixed: https://bugs.chromium.org/p/chromium/issues/detail?id=1266022&q=emoji%20bold&can=2
+.emoji {
+  font-weight: initial !important;
+}
