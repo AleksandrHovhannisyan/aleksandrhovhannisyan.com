@@ -17,6 +17,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.4rem;
+  padding: 0 0.8rem;
 
   &-header {
     position: fixed;
@@ -60,19 +61,23 @@
     background-color: var(--navbar-bg-color);
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     width: 100%;
   }
 
   &-item {
     text-align: center;
+    display: flex;
+    justify-content: center;
+    flex: 1 0 0;
   }
 
   &-link {
-    border-radius: 0.4rem;
     padding: 0.4rem clamped(1.2rem, 1.6rem);
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 100%;
     color: var(--navbar-text-color);
   }
 }
@@ -266,8 +271,14 @@
 }
 
 @include mobile-lg {
-  .navbar-site-name {
-    display: unset;
+  .navbar {
+    &-links {
+      gap: clamped(0.8rem, 1.2rem);
+    }
+
+    &-site-name {
+      display: unset;
+    }
   }
 }
 
@@ -294,11 +305,14 @@
     &-links {
       justify-content: unset;
       width: unset;
-      gap: 1.2rem;
     }
 
-    &-link.home {
-      display: none;
+    &-link {
+      border-radius: 0.4rem;
+
+      &.home {
+        display: none;
+      }
     }
   }
 }
