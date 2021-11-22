@@ -31,11 +31,6 @@ html {
   --transition-timing-function: ease;
   --page-max-width: 80rem;
   --navbar-height: #{clamped(6.4rem, 7.6rem)};
-  --scroll-margin-top: calc(var(--navbar-height) + 2ex);
-
-  @include tablet {
-    --scroll-margin-top: 1ex;
-  }
 
   &.light {
     color-scheme: light;
