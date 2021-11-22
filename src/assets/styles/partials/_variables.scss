@@ -64,7 +64,7 @@ html {
     --input-bg-color: var(--color-surface-1);
     --main-bg-color: var(--color-surface-1);
     --navbar-bg-color: var(--color-surface-5);
-    --navbar-box-shadow: 0 0 0.2rem 0 hsla(0, 0%, 0%, 0.8);
+    --navbar-box-shadow: none;
     --navbar-text-color: var(--color-surface-3);
     --navbar-text-bg-color-focus: var(--color-surface-4);
     --navbar-text-color-focus: var(--color-text-inverted);
@@ -119,7 +119,7 @@ html {
     --input-bg-color: var(--color-surface-3);
     --main-bg-color: var(--color-surface-1);
     --navbar-bg-color: var(--color-surface-2);
-    --navbar-box-shadow: 0 0 0.8rem 0 hsla(0, 0%, 0%, 0.8);
+    --navbar-box-shadow: 0 -0.2rem 0.8rem hsla(0, 0%, 0%, 40%);
     --navbar-text-color: var(--color-surface-5);
     --navbar-text-bg-color-focus: var(--color-surface-3);
     --navbar-text-color-focus: var(--color-text-emphasis);
