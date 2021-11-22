@@ -2,6 +2,17 @@
 @import './functions';
 @import './breakpoints';
 
+@mixin centered {
+  --padding: MIN(4vw, 2.4rem);
+  // why not just use content-box? because it creates overflow issues on mobile with width: 100% below
+  max-width: calc(var(--page-max-width) + 2 * var(--padding));
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--padding);
+  padding-right: var(--padding);
+}
+
 // Inspiration: https://stackoverflow.com/a/49437769/5323344
 @mixin transition($props...) {
   $result: ();
@@ -104,6 +115,13 @@
 
 @mixin mobile-lg {
   $bp: map-get($media-breakpoints, mobile-lg);
+  @media screen and (min-width: $bp) {
+    @content;
+  }
+}
+
+@mixin tablet-sm {
+  $bp: map-get($media-breakpoints, tablet-sm);
   @media screen and (min-width: $bp) {
     @content;
   }
