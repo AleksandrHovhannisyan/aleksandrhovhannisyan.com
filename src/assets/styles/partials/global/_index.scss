@@ -12,17 +12,12 @@ body {
   min-height: 100vh;
   background-color: var(--main-bg-color);
   color: var(--color-text-normal);
-<<<<<<< HEAD
   padding-bottom: var(--navbar-height);
-  @include font($family: 'main', $weight: 'regular', $size: 'base');
+  @include font($family: 'body', $weight: 'regular', $size: 'base');
 
   @include tablet {
     padding-bottom: unset;
   }
-=======
-  @include font($family: 'body', $weight: 'regular', $size: 'base');
-  counter-reset: footnotes;
->>>>>>> Add georgia and lato
 }
 
 #page-content {
