@@ -41,7 +41,7 @@
 @function clamped($min, $max) {
   $min-rems: toRem($min);
   $max-rems: toRem($max);
-  $mobile-min-rems: toRem(map-get($media-breakpoints, 'mobile-min'));
+  $mobile-min-rems: toRem(map-get($media-breakpoints, 'mobile'));
   $min-to-mobile-ratio: rnd(math.div($min-rems, $mobile-min-rems) * 100, 2);
   @return clamp(#{$min-rems}, #{$min-to-mobile-ratio}vw, #{$max-rems});
 }
