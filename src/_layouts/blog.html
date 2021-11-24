@@ -8,27 +8,5 @@ isBlogPage: true
   {%- assign pageCategoryDescription = categoryDescriptions[pageCategory] | default: categoryDescriptions['all'] -%}
   <h1 class="blog-title">{%- if pageCategory == 'all' -%}All Blog Posts{%- else -%}Posts tagged with: {{ pageCategory }}{%- endif -%}</h1>
   <p class="blog-description font-md">{{- pageCategoryDescription | toHtml -}}</p>
-  <nav aria-label="Popular categories">
-    <ul class="blog-navigation-tags">
-      {%- comment -%}TODO: automate/define elsewhere{%- endcomment -%}
-      {%- assign categories = "all,a11y,css,webperf,off-topic" | split: ',' -%}
-      {%- for category in categories %}
-        <li>
-          <a
-            href="{% if category == "all" %}/blog/{% else %}/categories/{{ category }}/{% endif %}"
-            class="tag post-tag blog-navigation-tag"
-            {% if category == "all" -%}
-            aria-label="All posts"
-            {% endif -%}
-            {% if pageCategory == category -%}
-            aria-current="page"
-            {%- endif -%}
-          >
-            {{- category -}}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </nav>
   {{ content }}
 </article>
