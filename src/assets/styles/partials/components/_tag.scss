@@ -3,7 +3,7 @@
 :not(.token).tag {
   background-color: var(--tag-bg-color);
   color: var(--color-text-emphasis);
-  @include font($family: "body", $weight: "regular");
+  @include font($family: "code", $weight: "medium", $size: "xs");
 }
 
 .post-tags {

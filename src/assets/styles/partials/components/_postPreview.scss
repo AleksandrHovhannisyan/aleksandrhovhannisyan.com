@@ -31,7 +31,7 @@
     top: -0.4rem;
     left: 0;
     transform: translateY(-100%);
-    @include font($family: 'code', $weight: 'regular', $size: 'xs');
+    @include font($family: 'code', $weight: 'regular');
   }
 
   &-tags {
@@ -42,7 +42,8 @@
 
   &-tag {
     display: flex;
-    padding: 0.2rem 1.2rem;
+    padding: 0.2rem 1rem;
     border-radius: 1.6rem;
+    @include font($family: 'code', $weight: 'regular');
   }
 }
