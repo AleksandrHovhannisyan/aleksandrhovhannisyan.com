@@ -37,13 +37,7 @@ a {
 }
 
 .section {
-  h2 {
-    text-transform: uppercase;
-    letter-spacing: 0.2rem;
-    @include font($size: 'sm');
-  }
-
   & + & {
-    margin-top: 9.6rem;
+    margin-top: 6.4rem;
   }
 }
