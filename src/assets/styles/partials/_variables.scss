@@ -6,15 +6,9 @@ html {
   --font-size-base: #{clamped(1.6rem, 1.8rem)};
   --font-size-md: #{clamped(1.8rem, 2.2rem)};
   --font-size-lg: #{clamped(2.2rem, 2.6rem)};
-
   --font-size-xl: #{clamped(2.6rem, 3.2rem)};
-  --letter-spacing-xl: #{clamped(-0.02rem, -0.03rem)};
-
   --font-size-xxl: #{clamped(3.2rem, 3.6rem)};
-  --letter-spacing-xxl: #{clamped(-0.03rem, -0.04rem)};
-
   --font-size-xxxl: #{clamped(3.6rem, 4.8rem)};
-  --letter-spacing-xxxl: #{clamped(-0.04rem, -0.05rem)};
 
   --transition-duration: 0.2s;
   --transition-timing-function: ease;

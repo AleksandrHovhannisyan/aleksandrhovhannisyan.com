@@ -57,7 +57,6 @@
   }
   @if $size {
     font-size: var(--font-size-#{$size});
-    letter-spacing: var(--letter-spacing-#{$size}, 0);
   }
 }
 

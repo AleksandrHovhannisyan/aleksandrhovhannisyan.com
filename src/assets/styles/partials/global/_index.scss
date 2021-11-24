@@ -36,6 +36,14 @@ a {
   @include focus-outline;
 }
 
-.section + .section {
-  margin-top: 12.8rem;
+.section {
+  h2 {
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    @include font($size: 'sm');
+  }
+
+  & + & {
+    margin-top: 12.8rem;
+  }
 }
