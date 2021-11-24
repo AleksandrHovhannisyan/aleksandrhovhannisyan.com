@@ -9,7 +9,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 100%;
+  min-height: 100vh;
   background-color: var(--main-bg-color);
   color: var(--color-text-normal);
   padding-bottom: var(--navbar-height);
