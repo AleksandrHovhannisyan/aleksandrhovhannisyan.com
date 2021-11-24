@@ -3,30 +3,11 @@
 
 .hero-banner {
   margin-bottom: clamped(6.4rem, 7.6rem);
-  display: flex;
-  align-items: center;
   gap: 3.2rem;
   max-width: 71ch;
 
   &-title {
     margin-bottom: 0.8rem;
-  }
-
-  &-headshot {
-    flex: 1 0 auto;
-    display: none;
-  }
-  @include tablet {
-    &-headshot {
-      display: unset;
-      width: 18rem;
-      aspect-ratio: 1;
-      justify-self: center;
-
-      img {
-        border-radius: 50%;
-      }
-    }
   }
 }
 
