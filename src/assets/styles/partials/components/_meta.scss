@@ -15,9 +15,14 @@
     gap: 0.4rem;
   }
 
-  &-icon {
-    height: 1.6rem;
-    width: 1.6rem;
+  &-stats {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  &-author {
+    @include underlined-link;
   }
 
   &-tags {
@@ -38,7 +43,7 @@
 }
 
 .author-photo {
-  --size: 3.6rem;
+  --size: 4.4rem;
   height: var(--size);
   width: var(--size);
 
