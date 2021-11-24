@@ -1,6 +1,13 @@
 ---
 layout: default
 isBlogPage: true
+eleventyComputed:
+  preloads:
+    -
+      as: font
+      type: font/woff2
+      href: "{{ fonts.code.weights.medium.url }}"
+      crossorigin: true
 ---
 
 <article class="blog">

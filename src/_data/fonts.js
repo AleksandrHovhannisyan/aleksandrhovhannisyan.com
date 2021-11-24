@@ -13,6 +13,7 @@ const FontDisplay = {
 const FontVariant = {
   Light: 'Light',
   Regular: 'Regular',
+  Medium: 'Medium',
   Bold: 'Bold',
   Italic: 'Italic',
   BoldItalic: 'Bold Italic',
@@ -60,6 +61,13 @@ const fonts = {
     weights: {
       regular: {
         variant: FontVariant.Regular,
+        weight: 400,
+        style: FontStyle.NORMAL,
+        url: getFontUrl('ibm-plex-mono-v7-latin-regular.woff2'),
+        display: FontDisplay.SWAP,
+      },
+      medium: {
+        variant: FontVariant.Medium,
         weight: 500,
         style: FontStyle.NORMAL,
         url: getFontUrl('ibm-plex-mono-v7-latin-500.woff2'),

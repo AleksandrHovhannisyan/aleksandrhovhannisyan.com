@@ -6,7 +6,7 @@
   position: relative;
 
   &-grid {
-    margin-top: 4.8rem;
+    margin-top: 6.4rem;
     display: grid;
     row-gap: 6.4rem;
   }
@@ -31,6 +31,7 @@
     top: -0.4rem;
     left: 0;
     transform: translateY(-100%);
+    @include font($family: 'code', $weight: 'regular', $size: 'xs');
   }
 
   &-tags {
