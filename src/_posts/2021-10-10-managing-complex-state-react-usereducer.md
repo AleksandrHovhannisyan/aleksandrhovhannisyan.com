@@ -1,7 +1,7 @@
 ---
 title: Managing Complex State in React with useReducer
 # title: Managing Paginated API State in React with useReducer
-description: React's useState hook works well for managing simple state. But once your component starts to grow, useReducer may be a better fit for managing state.
+description: React's useState hook works well for managing simple state, but it has its limitations. If you often need to set multiple state variables in parallel, you may find that useReducer is a better pattern for managing state in your applications.
 categories: [react, design-patterns, typescript]
 keywords: [useReducer, react, complex state, managing state, state management]
 thumbnail:

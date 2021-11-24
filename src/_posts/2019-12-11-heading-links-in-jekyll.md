@@ -1,6 +1,6 @@
 ---
 title: Create Heading Links in Jekyll with Includes
-description: Want to make it easier for users to link to a heading in your blog? Learn how to create heading links in Jekyll using includes.
+description: Make it easier for users to link to headings in your blog posts with a simple include file and some Liquid templating.
 keywords: [heading links in jekyll]
 categories: [liquid, jekyll]
 lastUpdated: 2020-05-24

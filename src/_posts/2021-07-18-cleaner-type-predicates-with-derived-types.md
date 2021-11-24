@@ -1,6 +1,6 @@
 ---
 title: Cleaner Type Predicates with Derived Types
-description: Type predicates are a powerful TypeScript feature that allows you to narrow down an abstract type to a more concrete type. Together with derived types, they can greatly reduce repetition in your code.
+description: Type predicates are a powerful TypeScript feature that allows you to narrow down an abstract type to a more concrete type with a simple assertion as part of a function's signature. Together with derived types, they can greatly reduce repetition in your code.
 keywords: [type predicate, derived types, typescript]
 categories: [typescript, javascript]
 commentsId: 98

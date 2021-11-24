@@ -1,6 +1,6 @@
 ---
 title: Does Web Performance Matter? It Depends.
-description: Some big brands have a slow page load speed, but they still rank well on Google. So does web performance even matter?
+description: Some big brands have a slow page load speed, but they still rank well on Google. So does web performance even matter? The answer is more nuanced than a simple yes or no.
 keywords: [web performance, page load speed]
 categories: [webdev, webperf]
 thumbnail:

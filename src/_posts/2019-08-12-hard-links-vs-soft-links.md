@@ -1,6 +1,6 @@
 ---
 title: "What's the Difference Between Hard Links and Soft Links?"
-description: One sticks around for good, while the other one rots. Here's a detailed look at the differences between hard links and soft links in Unix.
+description: "Linking is how UNIX file systems keep track of files. There are two distinct types of links: soft (symbolic) links and hard links. One sticks around for good, while the other one rots."
 keywords: [hard links vs soft links]
 categories: [unix, file-systems]
 lastUpdated: 2021-08-14

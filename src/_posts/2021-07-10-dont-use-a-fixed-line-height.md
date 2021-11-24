@@ -1,6 +1,6 @@
 ---
 title: Don't Use a Fixed Line Height
-description: In typography, the ideal line height for text depends on a variety of factors, including font size, line length, and font family.
+description: In typography, the ideal line height for text depends on a variety of factors, including font size, line length, and font family. Don't apply a fixed line height to your content and call it a day.
 keywords: [line height, ideal line height, typography]
 categories: [css, sass, typography, a11y]
 thumbnail: thumbnail.jpg

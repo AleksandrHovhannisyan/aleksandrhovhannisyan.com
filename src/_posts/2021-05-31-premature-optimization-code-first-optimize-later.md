@@ -1,6 +1,6 @@
 ---
 title: "Premature Optimization: Code First, Optimize Later"
-description: Focus on writing readable, well-tested, and well-documented code. Optimize it if you anticipate measurable performance issues.
+description: Don't optimize your code just because you have some vague suspicion that it will perform poorly. Focus on writing readable, well-tested, and well-documented code; optimize it if you run into measurable performance issues.
 keywords: [premature optimization, optimization, big-o]
 categories: [math, algorithms, javascript]
 layout: mathPost
