@@ -35,7 +35,7 @@
     flex-direction: column;
     grid-area: thumbnail;
     height: 100%;
-    padding: 1.6rem;
+    padding: clamped(1.6rem, 3.2rem);
     z-index: 2;
     justify-content: end;
     background-image:
@@ -63,6 +63,7 @@
 
   &-title {
     width: 100%;
+    @include font($size: 'base');
 
     a {
       color: white;
@@ -114,7 +115,7 @@
     filter: brightness(2);
     text-align: end;
     color: white;
-    padding: 1.6rem;
+    padding: clamped(1.6rem, 3.2rem);
     line-height: 1;
     z-index: 1;
     pointer-events: none;
@@ -130,8 +131,12 @@
       &-subtitle {
         color: hsl(0, 0%, 88%);
         line-height: 1.3;
-        @include font($size: 'sm');
+        @include font($size: 'base');
         @include line-clamp(4);
+      }
+
+      &-title {
+        @include font($size: 'md');
       }
     }
   }
