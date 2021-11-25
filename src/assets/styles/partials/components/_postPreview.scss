@@ -216,6 +216,7 @@
     }
 
     &-description {
+      grid-area: description;
       display: unset;
       @include line-clamp(3);
     }
