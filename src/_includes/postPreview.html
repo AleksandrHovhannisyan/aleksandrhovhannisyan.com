@@ -7,6 +7,7 @@
     <h{{ titleLevel }} class="post-preview-title font-md">
       <a class="post-preview-link" href="{{ post.url }}">{{ post.data.title }}</a>
     </h{{ titleLevel }}>
+    <p class="post-preview-subtitle">{{- post.data.description -}}</p>
     <ul class="post-preview-tags font-sm" aria-label="Tags">
       {%- for category in post.data.categories -%}
         <li>
