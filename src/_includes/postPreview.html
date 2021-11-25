@@ -1,5 +1,8 @@
 {%- assign titleLevel = titleLevel | default: 3 -%}
 <li class="post-preview">
+  <a href="{{ post.url }}" aria-hidden="true" tabindex="-1" class="post-preview-thumbnail-container">
+    {%- include thumbnail.html post: post -%}
+  </a>
   <header class="post-preview-header">
     <h{{ titleLevel }} class="post-preview-title font-md">
       <a class="post-preview-link" href="{{ post.url }}">{{ post.data.title }}</a>

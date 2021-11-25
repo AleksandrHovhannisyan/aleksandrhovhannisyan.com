@@ -13,7 +13,7 @@ html {
 
   --transition-duration: 0.2s;
   --transition-timing-function: ease;
-  --page-max-width: 81rem;
+  --page-max-width: 96rem;
   --navbar-height: #{clamped(6.4rem, 7.6rem)};
 
   &.light {

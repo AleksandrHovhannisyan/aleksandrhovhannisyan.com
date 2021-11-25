@@ -2,6 +2,9 @@
 
 .post-preview {
   display: grid;
+  grid-template-areas:
+    'thumbnail'
+    'description';
   gap: 0.4rem;
   position: relative;
 
@@ -11,10 +14,60 @@
     row-gap: 6.4rem;
   }
 
+  &-thumbnail-container {
+    grid-area: thumbnail;
+    user-select: none;
+  }
+
+  &-thumbnail {
+    img {
+      object-fit: cover;
+      object-position: center;
+      border-radius: 0.4rem;
+    }
+
+    .light &.loaded img {
+      filter: blur(0) contrast(0.95);
+    }
+  }
+
   &-header {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
+    grid-area: thumbnail;
+    height: 100%;
+    padding: 0.8rem;
+    z-index: 2;
+    align-items: flex-end;
+    background-image:
+      linear-gradient(
+        to bottom,
+        hsla(0, 0%, 0%, 0) 0%,
+        hsla(0, 0%, 0%, 0.016) 11%,
+        hsla(0, 0%, 0%, 0.051) 20.6%,
+        hsla(0, 0%, 0%, 0.103) 29%,
+        hsla(0, 0%, 0%, 0.168) 36.4%,
+        hsla(0, 0%, 0%, 0.243) 42.8%,
+        hsla(0, 0%, 0%, 0.325) 48.6%,
+        hsla(0, 0%, 0%, 0.411) 53.9%,
+        hsla(0, 0%, 0%, 0.499) 58.8%,
+        hsla(0, 0%, 0%, 0.584) 63.6%,
+        hsla(0, 0%, 0%, 0.665) 68.5%,
+        hsla(0, 0%, 0%, 0.738) 73.6%,
+        hsla(0, 0%, 0%, 0.8) 79.1%,
+        hsla(0, 0%, 0%, 0.848) 85.2%,
+        hsla(0, 0%, 0%, 0.879) 92.1%,
+        hsla(0, 0%, 0%, 0.89) 100%
+      );
+    pointer-events: none;
+  }
+
+  &-title {
+    width: 100%;
+
+    a {
+      color: white;
+      line-height: 1.4;
+    }
   }
 
   &-link {
@@ -22,28 +75,124 @@
   }
 
   &-description {
-    margin-bottom: 0.4rem;
-    max-width: 68ch;
+    grid-area: description;
+    @include line-clamp(3);
+  }
+
+  &-thumbnail-container {
+    grid-area: thumbnail;
   }
 
   &-date {
-    position: absolute;
-    top: -0.4rem;
-    left: 0;
-    transform: translateY(-100%);
+    grid-area: thumbnail;
+    background-image:
+      linear-gradient(
+        30deg,
+        hsla(0, 0%, 0%, 0) 0%,
+        hsla(0, 0%, 0%, 0.003) 8%,
+        hsla(0, 0%, 0%, 0.013) 15.3%,
+        hsla(0, 0%, 0%, 0.029) 22%,
+        hsla(0, 0%, 0%, 0.053) 28.3%,
+        hsla(0, 0%, 0%, 0.083) 34.1%,
+        hsla(0, 0%, 0%, 0.121) 39.8%,
+        hsla(0, 0%, 0%, 0.166) 45.4%,
+        hsla(0, 0%, 0%, 0.219) 50.9%,
+        hsla(0, 0%, 0%, 0.28) 56.6%,
+        hsla(0, 0%, 0%, 0.349) 62.5%,
+        hsla(0, 0%, 0%, 0.426) 68.8%,
+        hsla(0, 0%, 0%, 0.511) 75.6%,
+        hsla(0, 0%, 0%, 0.605) 83%,
+        hsla(0, 0%, 0%, 0.708) 91.1%,
+        hsla(0, 0%, 0%, 0.82) 100%
+      );
+    text-align: end;
+    color: white;
+    padding: 1.6rem;
+    line-height: 1;
+    z-index: 1;
+    pointer-events: none;
     @include font($family: 'code', $weight: 'regular');
   }
 
   &-tags {
-    display: inline-flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
+    display: none;
   }
 
-  &-tag {
-    display: flex;
-    padding: 0.2rem 1rem;
-    border-radius: 1.6rem;
-    @include font($family: 'code', $weight: 'regular');
+  @include tablet {
+    & {
+      grid-template-areas:
+        'thumbnail date'
+        'thumbnail header'
+        'thumbnail description';
+      column-gap: 2.4rem;
+    }
+
+    &-thumbnail-container {
+      grid-area: thumbnail;
+      user-select: none;
+    }
+
+    &-thumbnail {
+      img {
+        object-fit: cover;
+        object-position: center;
+        border-radius: 0.4rem;
+      }
+
+      .light &.loaded img {
+        filter: blur(0) contrast(0.95);
+      }
+    }
+
+    &-header {
+      grid-area: header;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      height: unset;
+      padding: 0;
+      align-items: unset;
+      background: none;
+      pointer-events: unset;
+    }
+
+    &-title {
+      a {
+        color: unset;
+        line-height: unset;
+      }
+    }
+
+    &-date {
+      grid-area: date;
+      background: none;
+      color: unset;
+      padding: 0;
+      text-align: start;
+      pointer-events: unset;
+    }
+
+    &-thumbnail {
+      width: 20rem;
+      height: 100%;
+      padding: 0.8rem 0;
+
+      img {
+        height: 100%;
+      }
+    }
+
+    &-tags {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    &-tag {
+      display: flex;
+      padding: 0.2rem 1rem;
+      border-radius: 1.6rem;
+      @include font($family: 'code', $weight: 'regular');
+    }
   }
 }
