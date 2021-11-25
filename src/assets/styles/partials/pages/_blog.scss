@@ -10,7 +10,9 @@
     max-width: 60ch;
   }
 
-  .post-preview-grid {
-    margin-top: 6.4rem;
+  @include tablet {
+    .post-preview-grid {
+      margin-top: 6.4rem;
+    }
   }
 }
