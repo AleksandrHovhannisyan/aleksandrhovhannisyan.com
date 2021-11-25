@@ -35,9 +35,3 @@ a {
   color: var(--color-text-emphasis);
   @include focus-outline;
 }
-
-.section {
-  & + & {
-    margin-top: 6.4rem;
-  }
-}

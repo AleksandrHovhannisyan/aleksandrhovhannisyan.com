@@ -18,11 +18,17 @@
   @include underlined-link;
 }
 
-.banner-heading {
-  text-transform: uppercase;
-  letter-spacing: 0.2rem;
-  word-spacing: 0.2rem;
-  @include font($size: 'sm');
+.section {
+  & + & {
+    margin-top: 6.4rem;
+  }
+
+  &-label {
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    word-spacing: 0.2rem;
+    @include font($size: 'sm');
+  }
 }
 
 $font-size-steps: 'xs', 'sm', 'base', 'md', 'lg', 'xl', 'xxl', 'xxxl';

@@ -21,12 +21,12 @@ eleventyComputed:
     </p>
   </section>
   <section class="section">
-    <h2 id="recent-posts" class="banner-heading">Recent Posts</h2>
+    <h2 id="recent-posts" class="section-label">Recent Posts</h2>
     {%- assign recentPosts = collections.posts | limit: 5 -%}
     {%- include postPreviews.html posts: recentPosts, titleLevel: 3 -%}
   </section>
   <section class="section">
-    <h2 id="featured-posts" class="banner-heading">Featured Posts</h2>
+    <h2 id="featured-posts" class="section-label">Featured Posts</h2>
     {%- assign featuredPosts = collections.posts | where: "data.isFeatured", true -%}
     {%- include postPreviews.html posts: featuredPosts, titleLevel: 3 -%}
   </section>
