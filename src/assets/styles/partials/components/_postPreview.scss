@@ -64,12 +64,13 @@
   &-title {
     width: 100%;
     @include font($size: 'base');
-
-    a {
-      color: white;
-      @include line-clamp(1);
-    }
   }
+
+  &-link {
+    color: white;
+    @include line-clamp(1);
+  }
+
 
   &-subtitle {
     color: hsl(0, 0%, 88%);
@@ -184,11 +185,11 @@
     &-title {
       width: unset;
       line-height: unset;
+    }
 
-      a {
-        color: unset;
-        line-height: unset;
-      }
+    &-link {
+      color: unset;
+      line-height: unset;
     }
 
     &-subtitle {
