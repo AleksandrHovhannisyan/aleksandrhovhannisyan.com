@@ -33,6 +33,7 @@
   &-header {
     display: flex;
     flex-direction: column;
+    gap: 0.8rem;
     grid-area: thumbnail;
     height: 100%;
     padding: clamped(1.6rem, 3.2rem);
@@ -68,9 +69,12 @@
 
   &-link {
     color: white;
-    @include line-clamp(1);
   }
 
+  &-title,
+  &-link {
+    line-height: 1.3;
+  }
 
   &-subtitle {
     color: hsl(0, 0%, 88%);
@@ -184,11 +188,14 @@
 
     &-title {
       width: unset;
-      line-height: unset;
     }
 
     &-link {
       color: unset;
+    }
+
+    &-title,
+    &-link {
       line-height: unset;
     }
 
