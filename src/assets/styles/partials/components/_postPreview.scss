@@ -125,6 +125,17 @@
     display: none;
   }
 
+  @include mobile-lg {
+    & {
+      &-subtitle {
+        color: hsl(0, 0%, 88%);
+        line-height: 1.3;
+        @include font($size: 'sm');
+        @include line-clamp(4);
+      }
+    }
+  }
+
   @include tablet {
     & {
       grid-template-areas:
