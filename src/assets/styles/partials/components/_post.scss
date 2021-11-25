@@ -1,6 +1,9 @@
 @import '../mixins';
 
 .post {
+  max-width: 80rem;
+  margin: 0 auto;
+
   &-header {
     margin-bottom: 3.2rem;
   }
@@ -10,7 +13,6 @@
   }
 
   &-content {
-    max-width: 68ch;
     display: flow-root;
     overflow-wrap: break-word;
     counter-reset: footnotes;

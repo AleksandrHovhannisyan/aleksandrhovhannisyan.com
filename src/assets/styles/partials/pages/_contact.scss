@@ -8,8 +8,9 @@
     display: grid;
     align-items: center;
     grid-auto-flow: row;
-    column-gap: 9.6rem;
-    row-gap: 4.8rem;
+    gap: 4.8rem;
+    max-width: 80rem;
+    margin: 0 auto;
 
     @include tablet {
       row-gap: 0;
