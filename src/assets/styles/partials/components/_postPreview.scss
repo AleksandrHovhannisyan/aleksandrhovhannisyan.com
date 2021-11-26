@@ -23,10 +23,7 @@
       object-fit: cover;
       object-position: center;
       border-radius: 0.4rem;
-    }
-
-    .light &.loaded img {
-      filter: blur(0) contrast(0.95);
+      filter: none;
     }
   }
 
@@ -99,23 +96,23 @@
     grid-area: thumbnail;
     background-image:
       linear-gradient(
-        17deg,
-        hsla(0, 0%, 0%, 0) 0%,
-        hsla(0, 0%, 0%, 0.036) 12.3%,
-        hsla(0, 0%, 0%, 0.071) 22.9%,
-        hsla(0, 0%, 0%, 0.104) 32%,
-        hsla(0, 0%, 0%, 0.136) 39.8%,
-        hsla(0, 0%, 0%, 0.167) 46.6%,
-        hsla(0, 0%, 0%, 0.198) 52.5%,
-        hsla(0, 0%, 0%, 0.228) 57.7%,
-        hsla(0, 0%, 0%, 0.258) 62.5%,
-        hsla(0, 0%, 0%, 0.289) 67%,
-        hsla(0, 0%, 0%, 0.319) 71.4%,
-        hsla(0, 0%, 0%, 0.351) 76%,
-        hsla(0, 0%, 0%, 0.384) 81%,
-        hsla(0, 0%, 0%, 0.417) 86.5%,
-        hsla(0, 0%, 0%, 0.453) 92.8%,
-        hsla(0, 0%, 0%, 0.49) 100%
+        202deg,
+        hsla(0, 0%, 0%, 0.87) 0%,
+        hsla(0, 0%, 0%, 0.764) 9.9%,
+        hsla(0, 0%, 0%, 0.668) 18.6%,
+        hsla(0, 0%, 0%, 0.582) 26.2%,
+        hsla(0, 0%, 0%, 0.505) 33%,
+        hsla(0, 0%, 0%, 0.436) 39%,
+        hsla(0, 0%, 0%, 0.373) 44.6%,
+        hsla(0, 0%, 0%, 0.317) 49.7%,
+        hsla(0, 0%, 0%, 0.267) 54.7%,
+        hsla(0, 0%, 0%, 0.221) 59.8%,
+        hsla(0, 0%, 0%, 0.179) 65%,
+        hsla(0, 0%, 0%, 0.14) 70.5%,
+        hsla(0, 0%, 0%, 0.104) 76.6%,
+        hsla(0, 0%, 0%, 0.069) 83.5%,
+        hsla(0, 0%, 0%, 0.034) 91.2%,
+        hsla(0, 0%, 0%, 0) 100%
       );
     text-align: end;
     color: white;
@@ -159,18 +156,6 @@
       user-select: none;
     }
 
-    &-thumbnail {
-      img {
-        object-fit: cover;
-        object-position: center;
-        border-radius: 0.4rem;
-      }
-
-      .light &.loaded img {
-        filter: blur(0) contrast(0.95);
-      }
-    }
-
     &-header {
       grid-area: header;
       display: flex;
@@ -209,7 +194,6 @@
       padding: 0;
       text-align: start;
       pointer-events: unset;
-      filter: none;
     }
 
     &-thumbnail {
@@ -219,6 +203,11 @@
 
       img {
         height: 100%;
+        filter: unset;
+      }
+
+      .light &.loaded img {
+        filter: blur(0) contrast(0.95);
       }
     }
 
