@@ -1,6 +1,6 @@
 ---
 title: Always Set a Width and Height on Your Images
-description: Dimensionless images can cause layout shifts when they load in, potentially hurting your page's Lighthouse score. By setting a width and height on your images, you allow the browser to initialize an aspect ratio for those images, in turn minimizing layout shifts.
+description: Dimensionless images can cause layout shifts when they load in, potentially hurting your page's Lighthouse score. By setting a width and height on images, you allow the browser to initialize an aspect ratio for those images and minimize layout shifts.
 keywords: [setting width and height on images, setting an image's width and height, width and height, layout shifts]
 categories: [webperf, images, html]
 commentsId: 78

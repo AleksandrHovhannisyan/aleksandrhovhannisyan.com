@@ -1,6 +1,6 @@
 ---
 title: Lazily Loading Images with the 11ty Image Plugin
-description: Images are a core part of the web, but they don't come for free. While imagery can enrich your content and create a more engaging user experience, it can also slow down your site and create a poor user experience if it's not used responsibly. Learn how to use the official 11ty image plugin to create optimized, responsive, and lazily loaded images.
+description: While imagery can enrich your content, it can also slow down your site if it's not used responsibly. Learn how to use the official 11ty image plugin to create optimized, responsive, and lazily loaded images.
 keywords: [11ty image, lazy load, lazily load]
 categories: [webperf, 11ty, images, javascript]
 commentsId: 118

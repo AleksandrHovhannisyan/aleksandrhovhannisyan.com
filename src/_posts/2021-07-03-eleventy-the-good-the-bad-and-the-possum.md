@@ -1,6 +1,6 @@
 ---
 title: "11ty: The Good, the Bad, and the... Possum?"
-description: An in-depth review of 11ty, an extensible static site generator written in Node that supports a variety of template languages. Marketed as the Jekyll of JavaScript, 11ty has everything you need to spin up a scalable and well-structured static site.
+description: An in-depth review of 11ty, an extensible static site generator written in Node that supports a variety of template languages.
 keywords: [11ty, eleventy]
 categories: [11ty, jekyll, jamstack, blogging]
 thumbnail: thumbnail.jpg

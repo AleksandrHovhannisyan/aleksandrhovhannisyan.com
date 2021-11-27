@@ -1,6 +1,6 @@
 ---
 title: "SVG Tutorial: How to Code SVG Icons by Hand"
-description: Icon libraries and vector drawing programs are great, but it doesn't hurt to understand how they work under the hood. Learn how to draw SVG icons and simple shapes by hand.
+description: Have you ever wondered how icon libraries are created? Learn how to draw SVG icons and simple shapes by hand.
 keywords: [svg tutorial, svg icons, how to code svg]
 categories: [svg, html, css]
 lastUpdated: 2021-08-07
@@ -17,7 +17,7 @@ For as long as I can remember, I avoided touching SVGs when working with front-e
 </svg>
 ```
 
-If I needed icons for a project, I'd install one of the many icon libraries that are available, but that always left me unsatisfied. Sure, there's nothing wrong with using libraries, but it's always a good idea to know how the tools you use really work under the hood. So why not also learn how to draw your own SVG icons by hand, even if you end up using a library in the end?
+If I needed icons for a project, I'd install one of the many icon libraries that are available, but that always left me unsatisfied. Sure, there's nothing wrong with using libraries, but it also doesn't hurt to understand how the tools you use really work under the hood. So why not also learn how to draw your own SVG icons by hand, even if you end up using a library in the end?
 
 As you'll see in this tutorial, coding SVG icons by hand is actually fairly straightforward once you master the basic shapes and syntax. We'll draw a bunch of icons to help you hone your SVG skills. Here's a sneak peek at all of the icons we'll create:
 
