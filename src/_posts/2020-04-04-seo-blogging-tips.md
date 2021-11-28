@@ -1,6 +1,6 @@
 ---
 title: SEO Tips for Getting More Traffic
-description: Use tried-and-true SEO strategies to get more traffic on your website and rank higher in search engine results.
+description: SEO is the art of making strategic improvements to a site's content or performance in order to rank higher in search results and attract more traffic. Learn how to use tried-and-true SEO strategies to draw more visitors to your site.
 keywords: [SEO blogging best practices]
 categories: [off-topic, blogging, seo]
 commentsId: 41

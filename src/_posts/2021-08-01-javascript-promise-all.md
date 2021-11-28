@@ -1,6 +1,6 @@
 ---
 title: Awaiting Multiple Promises with Promise.all
-description: Learn how to use JavaScript's Promise.all method to await multiple async operations, like batch uploads.
+description: Often, you need to wait for multiple independent async tasks to finish before resuming where your code left off. Learn how to use JavaScript's Promise.all method to await multiple async operations, such as batch file uploads.
 keywords: [promise.all, promise, async, javascript]
 categories: [javascript, promises, async]
 commentsId: 104

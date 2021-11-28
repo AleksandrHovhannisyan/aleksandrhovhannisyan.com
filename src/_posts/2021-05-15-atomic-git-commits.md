@@ -1,6 +1,6 @@
 ---
 title: Make Atomic Git Commits
-description: It can be tempting to lump unrelated code changes into a larger commit, but atomic Git commits are more maintainable.
+description: It can be tempting to lump unrelated code changes into a single commit, but this makes it difficult to debug and time travel in Git. Prefer to write atomic commits that have a single responsibility.
 keywords: [atomic commits, atomic git commits, git]
 categories: [git, practices]
 thumbnail:

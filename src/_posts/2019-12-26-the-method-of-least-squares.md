@@ -1,6 +1,6 @@
 ---
 title: The Method of Least Squares
-description: Learn how the method of least squares works under the hood. Applications of the least squares method include linear and polynomial regression.
+description: Some systems of equations do not have a unique solution, but we can find an approximate solution using the method of least squares. Applications of this method include linear and polynomial regression.
 keywords: [method of least squares]
 layout: mathPost
 categories: [computer-science, math]

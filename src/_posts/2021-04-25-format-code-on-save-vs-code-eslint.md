@@ -1,6 +1,6 @@
 ---
 title: How to Format Code on Save in VS Code with ESlint
-description: Improve your developer experience by setting up ESLint and configuring VS Code to format code on save.
+description: Never worry about manually formatting your code again. Improve your developer experience by setting up ESLint to format code on save in VS Code.
 keywords: [format code on save, auto-format code on save, auto-formatting code, eslint, vs code, prettier]
 categories: [eslint, vscode, tooling]
 commentsId: 80

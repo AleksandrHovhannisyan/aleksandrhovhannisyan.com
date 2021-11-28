@@ -1,6 +1,6 @@
 ---
 title: "Trie Data Structure Implementation in Python"
-description: Learn how to implement a trie in Python, with plenty of visuals and code samples to help you understand how prefix trees work.
+description: Prefix trees (also known as tries) can be used to efficiently search for a string in a dictionary of known words using just a prefix. Learn how to implement a custom trie in Python.
 keywords: [python prefix tree, python prefix tree tutorial, python trie implementation, implement a trie in Python]
 categories: [data-structures, python]
 thumbnail: thumbnail.png

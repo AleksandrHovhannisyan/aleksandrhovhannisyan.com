@@ -1,6 +1,6 @@
 ---
 title: Creating a Vertical Rhythm with CSS Grid
-description: Margins are what you typically use to define a layout's vertical rhythm. But CSS Grid offers a better alternative.
+description: Margins are commonly used to space paragraphs in an article, but CSS Grid offers a more intuitive alternative that defines the spacing at the layout level.
 keywords: [css grid, vertical rhythm]
 categories: [css, css-grid, typography]
 thumbnail: thumbnail.png
