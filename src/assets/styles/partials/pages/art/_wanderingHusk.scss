@@ -1,12 +1,11 @@
 // Reference image: https://static.wikia.nocookie.net/hollowknight/images/9/96/Wandering_Husk_Idle.png/revision/latest/scale-to-width-down/105?cb=20181128210129
 // The Wandering Husk enemy from Hollow Knight
 
-.wanderingHusk {
-  --belly-color: #5E6275;
-  --shell-color: #39435B;
-  --face-color: #CABFC6;
-  --eye-color: #DE7C4D;
-
+.hk-husk {
+  --belly-color: #5e6275;
+  --shell-color: #39435b;
+  --face-color: #cabfc6;
+  --eye-color: #de7c4d;
   width: 11.44vmin;
   height: 13.6vmin;
   border: solid 0.5vmin black;
@@ -14,11 +13,18 @@
   border-radius: 50% 90% 55% 70%;
   transform-style: preserve-3d;
   perspective: 3vmin;
-  background-image: radial-gradient(circle at 6% 82%, var(--belly-color) 54%, black 54%, black 58%, var(--shell-color) 58%);
+  background-image:
+    radial-gradient(
+      circle at 6% 82%,
+      var(--belly-color) 54%,
+      black 54%,
+      black 58%,
+      var(--shell-color) 58%
+    );
 
   /* Segment lines */
   &::after {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     width: 100%;
@@ -26,13 +32,25 @@
     left: -0.3vmin;
     top: 0;
     border-radius: 50% 90% 70% 70%;
-    background-image: radial-gradient(ellipse at 15% 35%, transparent 34%, transparent 55%, black 55%, black 59%, transparent 59%, transparent 78%, black 78%, black 82%, transparent 82%);
+    background-image:
+      radial-gradient(
+        ellipse at 15% 35%,
+        transparent 34%,
+        transparent 55%,
+        black 55%,
+        black 59%,
+        transparent 59%,
+        transparent 78%,
+        black 78%,
+        black 82%,
+        transparent 82%
+      );
     transform: rotate(12deg);
   }
 
   /* Lone segment line */
   &::before {
-    content: '';
+    content: "";
     display: block;
     width: 5vmin;
     height: 3vmin;
@@ -118,7 +136,7 @@
     transform: rotate(-5deg);
 
     &::before {
-      content: '';
+      content: "";
       display: block;
       position: absolute;
       width: 0.9vmin;
@@ -138,7 +156,7 @@
     width: 1.4vmin;
     border-radius: 100% 30% 50% 200%;
     position: absolute;
-    left: 0vmin;
+    left: 0;
     top: 9vmin;
     transform: rotate(-8deg);
   }

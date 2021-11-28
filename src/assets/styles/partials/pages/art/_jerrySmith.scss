@@ -1,14 +1,16 @@
 // Reference image: https://www.syfy.com/sites/syfy/files/styles/1200x680/public/2020/05/jerry-rick-and-morty-season-4.jpg
 
 .jerry {
-  --color-jerry-skin: #EAC2A6;
-  --color-jerry-hair: #78625A;
+  --color-jerry-skin: #eac2a6;
+  --color-jerry-hair: #78625a;
+
   // --color-jerry-shirt: #607A32;
   width: 18vmin;
   height: 25.2vmin;
   position: relative;
   overflow: hidden;
   transform: scale(1.1);
+
   // Originally drawn at this size and scaled down
   // transform: scale(1.67);
 
@@ -24,7 +26,45 @@
     top: 0;
     width: 100%;
     height: 15.6vmin;
-    clip-path: polygon(5% 100%, 3% 90%, 2% 85%, 2% 80%, 2.5% 70%, 2% 65%, 1% 58%, 1% 55%, 2% 50%, 4% 45%, 6% 40%, 15% 25%, 20% 18%, 30% 10%, 40% 4%, 46% 2%, 50% 1%, 55% 1%, 60% 2%, 63% 3%, 68% 5%, 73% 8%, 76% 10%, 82% 14%, 85% 17%, 87% 19%, 92% 30%, 92% 40%, 91% 45%, 92% 48%, 93% 51%, 94% 58%, 94% 60%, 94% 62%, 94% 66%, 91% 75%);
+    clip-path:
+      polygon(
+        5% 100%,
+        3% 90%,
+        2% 85%,
+        2% 80%,
+        2.5% 70%,
+        2% 65%,
+        1% 58%,
+        1% 55%,
+        2% 50%,
+        4% 45%,
+        6% 40%,
+        15% 25%,
+        20% 18%,
+        30% 10%,
+        40% 4%,
+        46% 2%,
+        50% 1%,
+        55% 1%,
+        60% 2%,
+        63% 3%,
+        68% 5%,
+        73% 8%,
+        76% 10%,
+        82% 14%,
+        85% 17%,
+        87% 19%,
+        92% 30%,
+        92% 40%,
+        91% 45%,
+        92% 48%,
+        93% 51%,
+        94% 58%,
+        94% 60%,
+        94% 62%,
+        94% 66%,
+        91% 75%
+      );
   }
 
   &-hair {
@@ -59,7 +99,7 @@
     // Ears
     &::before,
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       background-color: inherit;
     }
@@ -95,19 +135,28 @@
     --jerry-eyelid-percent: calc(var(--jerry-eye-white-percent) + 3%);
     --jerry-eyeball-position: 84% calc(var(--jerry-eye-white-percent) - 2%);
     --jerry-eyeball-size: 5.5%;
-
     width: var(--jerry-eye-size);
     height: var(--jerry-eye-size);
     border: solid 0.2vmin black;
     border-radius: 50%;
     position: absolute;
     background-image:
-      radial-gradient(ellipse at var(--jerry-eyeball-position), black var(--jerry-eyeball-size), transparent var(--jerry-eyeball-size)),
-      linear-gradient(to top, white var(--jerry-eye-white-percent), black var(--jerry-eye-white-percent), black var(--jerry-eyelid-percent), var(--color-jerry-skin) var(--jerry-eyelid-percent));
+      radial-gradient(
+        ellipse at var(--jerry-eyeball-position),
+        black var(--jerry-eyeball-size),
+        transparent var(--jerry-eyeball-size)
+      ),
+      linear-gradient(
+        to top,
+        white var(--jerry-eye-white-percent),
+        black var(--jerry-eye-white-percent),
+        black var(--jerry-eyelid-percent),
+        var(--color-jerry-skin) var(--jerry-eyelid-percent)
+      );
 
     &::before,
     &::after {
-      content: '';
+      content: "";
       position: absolute;
     }
 
@@ -175,7 +224,7 @@
 
     &::before,
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       height: 0.06vmin;
       background-color: black;
@@ -206,14 +255,14 @@
     &::before,
     &::after {
       --dimple-size: 1.32vmin;
-      content: '';
+      content: "";
       position: absolute;
     }
 
     &::before {
       border-top: solid 0.1vmin black;
       border-left: solid 0.1vmin black;
-      border-radius: 100% 0 100% 0;
+      border-radius: 100% 0;
       width: var(--dimple-size);
       height: var(--dimple-size);
       transform: rotate(-30deg);
@@ -224,7 +273,7 @@
       --dimple-size: 1.14vmin;
       border-top: solid 0.2vmin black;
       border-left: solid 0.2vmin black;
-      border-radius: 100% 0 100% 0;
+      border-radius: 100% 0;
       width: var(--dimple-size);
       height: var(--dimple-size);
       transform: scaleX(-1) rotate(-42deg);

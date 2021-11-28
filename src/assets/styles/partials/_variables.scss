@@ -1,21 +1,17 @@
-@import './mixins';
-@import './functions';
+@import "./mixins";
+@import "./functions";
 
 html {
   --font-size-sm: #{clamped(1.4rem, 1.6rem)};
   --font-size-base: #{clamped(1.6rem, 1.8rem)};
   --font-size-md: #{clamped(1.8rem, 2.2rem)};
   --font-size-lg: #{clamped(2.2rem, 2.6rem)};
-
   --font-size-xl: #{clamped(2.6rem, 3.2rem)};
   --letter-spacing-xl: #{clamped(-0.02rem, -0.03rem)};
-
   --font-size-xxl: #{clamped(3.2rem, 3.6rem)};
   --letter-spacing-xxl: #{clamped(-0.03rem, -0.04rem)};
-
   --font-size-xxxl: #{clamped(3.6rem, 4.8rem)};
   --letter-spacing-xxxl: #{clamped(-0.04rem, -0.05rem)};
-
   --transition-duration: 0.2s;
   --transition-timing-function: ease;
   --page-max-width: 80rem;
@@ -25,17 +21,16 @@ html {
     color-scheme: light;
 
     --color-surface-1: white;
-    --color-surface-2: hsl(0, 0%, 95%);
-    --color-surface-3: hsl(0, 0%, 92%);
-    --color-surface-4: hsl(0, 0%, 20%);
-    --color-surface-5: hsl(0, 0%, 10%);
+    --color-surface-2: hsl(0deg 0% 95%);
+    --color-surface-3: hsl(0deg 0% 92%);
+    --color-surface-4: hsl(0deg 0% 20%);
+    --color-surface-5: hsl(0deg 0% 10%);
     --color-text-normal: black;
-    --color-text-soft: hsl(0, 0%, 35%);
+    --color-text-soft: hsl(0deg 0% 35%);
     --color-text-emphasis: black;
     --color-text-inverted: white;
-    --color-border-focus: hsl(0, 0%, 30%);
-    --color-border: hsl(0, 0%, 80%);
-
+    --color-border-focus: hsl(0deg 0% 30%);
+    --color-border: hsl(0deg 0% 80%);
     --aside-bg-color: var(--color-surface-2);
     --button-bg-color-focus: var(--color-surface-4);
     --button-bg-color: var(--color-surface-5);
@@ -52,50 +47,48 @@ html {
     --navbar-text-color: var(--color-surface-3);
     --navbar-text-bg-color-focus: var(--color-surface-4);
     --navbar-text-color-focus: var(--color-text-inverted);
-    --scrollbar-thumb-bg-color: hsl(0, 0%, 70%);
+    --scrollbar-thumb-bg-color: hsl(0deg 0% 70%);
     --scrollbar-track-bg-color: var(--color-surface-3);
     --selection-bg-color: black;
     --table-header-bg-color: var(--color-surface-3);
     --tag-bg-color-focus: var(--color-surface-5);
     --tag-bg-color: var(--color-surface-3);
-
-    --color-code-background: hsl(0, 0%, 95%);
-    --color-code-overlay-1: hsl(0, 0%, 88%);
-    --color-code-overlay-2: hsl(0, 0%, 80%);
-    --color-code-selection: hsla(243.9, 80.3%, 33.9%, 0.2);
-    --color-code-comment: hsl(0, 0%, 43%);
-    --color-code-text: hsl(0, 0%, 0%);
-    --color-code-keyword: hsl(233, 100%, 38%);
-    --color-code-number: hsl(111, 100%, 24%);
+    --color-code-background: hsl(0deg 0% 95%);
+    --color-code-overlay-1: hsl(0deg 0% 88%);
+    --color-code-overlay-2: hsl(0deg 0% 80%);
+    --color-code-selection: hsl(243.9deg 80.3% 33.9% / 20%);
+    --color-code-comment: hsl(0deg 0% 43%);
+    --color-code-text: hsl(0deg 0% 0%);
+    --color-code-keyword: hsl(233deg 100% 38%);
+    --color-code-number: hsl(111deg 100% 24%);
     --color-code-attribute: var(--color-code-text);
-    --color-code-string: hsl(8, 100%, 38%);
+    --color-code-string: hsl(8deg 100% 38%);
     --color-code-variable: var(--color-code-keyword);
     --color-code-tag: var(--color-code-keyword);
     --color-code-constant: var(--color-code-number);
-    --color-code-punctuation: hsl(0, 0%, 43%);
+    --color-code-punctuation: hsl(0deg 0% 43%);
     --color-code-selector: var(--color-code-string);
   }
 
   &.dark {
     color-scheme: dark;
 
-    --color-surface-1: hsl(0, 0%, 8%);
-    --color-surface-2: hsl(0, 0%, 12%);
-    --color-surface-3: hsl(0, 0%, 20%);
-    --color-surface-4: hsl(0, 0%, 60%);
-    --color-surface-5: hsl(0, 0%, 80%);
-    --color-text-normal: hsl(0, 0%, 75%);
-    --color-text-soft: hsl(0, 0%, 65%);
+    --color-surface-1: hsl(0deg 0% 8%);
+    --color-surface-2: hsl(0deg 0% 12%);
+    --color-surface-3: hsl(0deg 0% 20%);
+    --color-surface-4: hsl(0deg 0% 60%);
+    --color-surface-5: hsl(0deg 0% 80%);
+    --color-text-normal: hsl(0deg 0% 75%);
+    --color-text-soft: hsl(0deg 0% 65%);
     --color-text-emphasis: white;
     --color-text-inverted: black;
-    --color-border: hsl(0, 0%, 30%);
-    --color-border-focus: hsl(0, 0%, 80%);
-
+    --color-border: hsl(0deg 0% 30%);
+    --color-border-focus: hsl(0deg 0% 80%);
     --aside-bg-color: var(--color-surface-3);
     --button-bg-color-focus: var(--color-surface-5);
     --button-bg-color: var(--color-surface-4);
     --card-bg-color: var(--color-surface-2);
-    --code-block-box-shadow: 0 0.2rem 0.8rem 0 hsla(0, 0%, 0%, 0.4);
+    --code-block-box-shadow: 0 0.2rem 0.8rem 0 hsl(0deg 0% 0% / 40%);
     --form-bg-color: var(--color-surface-2);
     --footer-bg-color: var(--color-surface-2);
     --hover-bg-color: var(--color-surface-2);
@@ -103,7 +96,7 @@ html {
     --input-bg-color: var(--color-surface-3);
     --main-bg-color: var(--color-surface-1);
     --navbar-bg-color: var(--color-surface-2);
-    --navbar-box-shadow: 0 -0.2rem 0.8rem hsla(0, 0%, 0%, 40%);
+    --navbar-box-shadow: 0 -0.2rem 0.8rem hsl(0deg 0% 0% / 40%);
     --navbar-text-color: var(--color-surface-5);
     --navbar-text-bg-color-focus: var(--color-surface-3);
     --navbar-text-color-focus: var(--color-text-emphasis);
@@ -113,21 +106,20 @@ html {
     --table-header-bg-color: var(--color-surface-2);
     --tag-bg-color-focus: var(--color-surface-5);
     --tag-bg-color: var(--color-surface-3);
-
-    --color-code-background: hsl(0, 0%, 12%);
-    --color-code-overlay-1: hsl(0, 0%, 25%);
-    --color-code-overlay-2: hsl(0, 0%, 60%);
-    --color-code-selection: hsla(210, 100%, 84%, 0.15);
-    --color-code-comment: hsl(101, 29%, 47%);
-    --color-code-text: hsl(0, 0%, 83%);
-    --color-code-keyword: hsl(207, 61%, 59%);
-    --color-code-number: hsl(99, 28%, 73%);
-    --color-code-attribute: hsl(201, 98%, 80%);
-    --color-code-string: hsl(17, 47%, 64%);
+    --color-code-background: hsl(0deg 0% 12%);
+    --color-code-overlay-1: hsl(0deg 0% 25%);
+    --color-code-overlay-2: hsl(0deg 0% 60%);
+    --color-code-selection: hsl(210deg 100% 84% / 15%);
+    --color-code-comment: hsl(101deg 29% 47%);
+    --color-code-text: hsl(0deg 0% 83%);
+    --color-code-keyword: hsl(207deg 61% 59%);
+    --color-code-number: hsl(99deg 28% 73%);
+    --color-code-attribute: hsl(201deg 98% 80%);
+    --color-code-string: hsl(17deg 47% 64%);
     --color-code-variable: var(--color-code-keyword);
     --color-code-tag: var(--color-code-keyword);
     --color-code-constant: var(--color-code-number);
     --color-code-punctuation: #8a8a8a;
-    --color-code-selector: hsl(41, 53%, 67%);
+    --color-code-selector: hsl(41deg 53% 67%);
   }
 }

@@ -1,5 +1,5 @@
-@import '../mixins';
-@import '../functions';
+@import "../mixins";
+@import "../functions";
 
 .hero-banner {
   margin-bottom: clamped(6.4rem, 7.6rem);
@@ -15,7 +15,6 @@
     flex: 1 0 auto;
     display: none;
   }
-
   @include tablet {
     &-headshot {
       display: unset;

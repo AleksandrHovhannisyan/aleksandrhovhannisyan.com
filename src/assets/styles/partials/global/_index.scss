@@ -1,5 +1,6 @@
-@use 'sass:math';
-@import '../mixins';
+@use "sass:math";
+
+@import "../mixins";
 
 html {
   font-size: 62.5%;
@@ -13,8 +14,7 @@ body {
   background-color: var(--main-bg-color);
   color: var(--color-text-normal);
   padding-bottom: var(--navbar-height);
-  @include font($family: 'main', $weight: 'regular', $size: 'base');
-
+  @include font($family: "main", $weight: "regular", $size: "base");
   @include tablet {
     padding-bottom: unset;
   }
@@ -28,7 +28,7 @@ body {
 
 strong {
   color: var(--color-text-emphasis);
-  @include font($family: 'main', $weight: 'bold');
+  @include font($family: "main", $weight: "bold");
 }
 
 a {

@@ -1,65 +1,8 @@
-@import '../mixins';
-
-.code-header {
-  height: 0;
-  z-index: 2;
-  position: relative;
-
-  // Code blocks with a file name need a bit of top padding
-  &.with-file-name + pre[class*='language-'] {
-    padding-top: 7.6rem;
-  }
-}
-
-.code-file-name {
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: var(--color-code-text);
-  word-break: break-all;
-  padding: 2.4rem 2.4rem 0 2.4rem;
-  border-radius: 0.8rem 0.8rem 0 0;
-  background-color: var(--color-code-background);
-  @include font($family: 'main', $weight: 'bold', $size: 'sm');
-
-  &::before {
-    content: "Filename: ";
-  }
-}
-
-.copy-code-button {
-  position: absolute;
-  right: 2.4rem;
-  top: 2.4rem;
-  display: none;
-  color: var(--color-code-text);
-  background-color: var(--color-code-overlay-1);
-  padding: 0.6rem 1.6rem;
-  border-radius: 0.4rem;
-
-  &::before {
-    content: 'Copy';
-  }
-
-  @include tablet {
-    display: flex;
-  }
-
-  &:is(.copied, :hover) {
-    color: black;
-    background-color: var(--color-code-overlay-2);
-  }
-
-  &.copied {
-    &::before {
-      content: 'Copied!';
-    }
-  }
-}
+@import "../mixins";
 
 /* VS Code Dark Plus theme: https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vsc-dark-plus.css */
 
-pre[class*='language-'] {
+pre[class*="language-"] {
   background: var(--color-code-background);
   box-shadow: var(--code-block-box-shadow);
   padding: 3.2rem;
@@ -107,6 +50,12 @@ pre[class*='language-'] {
     color: var(--color-code-text);
   }
 
+  &.punctuation,
+  &.cdata {
+    color: var(--color-code-punctuation);
+  }
+
+  /* stylelint-disable-next-line max-line-length */
   &:is(.keyword, .tag, .boolean, .constant, .inserted, .operator.arrow, .key.atrule, .rule, .keyword.module, .keyword.control-flow, .entity, .important, .punctuation.interpolation-punctuation, .doctype, .doctype-tag, .directive-hash),
   &.atrule .url {
     color: var(--color-code-keyword);
@@ -130,11 +79,6 @@ pre[class*='language-'] {
     color: var(--color-code-attribute);
   }
 
-  &.punctuation,
-  &.cdata {
-    color: var(--color-code-punctuation);
-  }
-
   &.italic {
     font-style: italic;
   }
@@ -142,22 +86,18 @@ pre[class*='language-'] {
 
 /* Language Specific */
 
-pre[class*='language-css'],
-pre[class*='language-scss'],
-pre[class*='language-sass'] {
+pre[class*="language-css"],
+pre[class*="language-scss"],
+pre[class*="language-sass"] {
   .token.selector {
     color: var(--color-code-selector);
   }
 }
 
-pre[class*='language-bash'] {
+pre[class*="language-bash"] {
   .token:not(.comment) {
     color: var(--color-code-text) !important;
   }
-}
-
-.language-html .token.punctuation {
-  color: var(--color-code-punctuation);
 }
 
 /* Line highlighting */
@@ -169,4 +109,60 @@ pre[data-line] {
 .highlight-line,
 .highlight-line-active {
   background: var(--color-code-selection);
+}
+
+.code-header {
+  height: 0;
+  z-index: 2;
+  position: relative;
+
+  // Code blocks with a file name need a bit of top padding
+  &.with-file-name + pre[class*="language-"] {
+    padding-top: 7.6rem;
+  }
+}
+
+.code-file-name {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--color-code-text);
+  word-break: break-all;
+  padding: 2.4rem 2.4rem 0;
+  border-radius: 0.8rem 0.8rem 0 0;
+  background-color: var(--color-code-background);
+  @include font($family: "main", $weight: "bold", $size: "sm");
+
+  &::before {
+    content: "Filename: ";
+  }
+}
+
+.copy-code-button {
+  position: absolute;
+  right: 2.4rem;
+  top: 2.4rem;
+  display: none;
+  color: var(--color-code-text);
+  background-color: var(--color-code-overlay-1);
+  padding: 0.6rem 1.6rem;
+  border-radius: 0.4rem;
+
+  &::before {
+    content: "Copy";
+  }
+  @include tablet {
+    display: flex;
+  }
+
+  &:is(.copied, :hover) {
+    color: black;
+    background-color: var(--color-code-overlay-2);
+  }
+
+  &.copied {
+    &::before {
+      content: "Copied!";
+    }
+  }
 }

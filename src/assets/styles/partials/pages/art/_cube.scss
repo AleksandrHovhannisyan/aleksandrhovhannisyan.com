@@ -25,45 +25,40 @@
 
   &.top {
     border: var(--cube-border-thickness) solid red;
-    background-color: hsla(0, 100%, 80%, 0.5);
+    background-color: hsl(0deg 100% 80% / 50%);
     transform: rotateX(90deg);
     transform-origin: top;
   }
 
   &.front {
-    background-color: rgba(210, 231, 255, 0.5);
+    border: var(--cube-border-thickness) solid black;
+    background-color: hsl(0deg 0% 100% / 50%);
     transform: translateZ(var(--cube-size));
   }
 
   &.left {
     border: var(--cube-border-thickness) solid green;
-    background-color: rgba(224, 255, 210, 0.5);
+    background-color: rgb(224 255 210 / 50%);
     transform: rotateY(-90deg);
     transform-origin: left;
   }
 
   &.back {
     border: var(--cube-border-thickness) solid orange;
-    background-color: rgba(255, 235, 181, 0.5);
+    background-color: rgb(255 235 181 / 50%);
     transform: rotateY(180deg);
   }
 
   &.right {
     transform: rotateY(90deg);
     transform-origin: right;
-    background-color: rgba(210, 231, 255, 0.5);
+    background-color: rgb(210 231 255 / 50%);
     border: var(--cube-border-thickness) solid blue;
-  }
-
-  &.front {
-    border: var(--cube-border-thickness) solid black;
-    background-color: hsla(0, 0%, 100%, 0.5);
-    transform: translateZ(var(--cube-size));
   }
 
   &.bottom {
     border: var(--cube-border-thickness) solid purple;
-    background-color: rgba(128, 0, 128, 0.5);
+    background-color: rgb(128 0 128 / 50%);
     transform: rotateX(-90deg);
     transform-origin: bottom;
   }

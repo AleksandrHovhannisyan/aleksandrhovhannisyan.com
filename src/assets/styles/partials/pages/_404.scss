@@ -1,12 +1,13 @@
-@import '../mixins';
+@import "../mixins";
 
 #page-not-found {
   align-items: center;
-  animation: backgroundScroll 40s linear infinite;
+  animation: background-scroll 40s linear infinite;
   animation-fill-mode: forwards;
-  background-color: hsl(0, 0%, 8%);
+  background-color: hsl(0deg 0% 8%);
+
   // https://www.transparenttextures.com/stardust.html
-  background-image: url('/assets/images/404/stardust.png');
+  background-image: url("/assets/images/404/stardust.png");
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -17,28 +18,28 @@
   top: 0;
   width: 100%;
   padding: 0 1.2rem;
-
-  @keyframes backgroundScroll {
+  @keyframes background-scroll {
     from {
       background-position: 0 0;
     }
+
     to {
       background-position: 798px 0;
     }
   }
 
   h1 {
-    color: hsl(0, 0%, 90%);
+    color: hsl(0deg 0% 90%);
     margin-bottom: 2.4rem;
     text-shadow: 0.1em 0.1em black;
   }
 
   p {
-    color: hsl(0, 0%, 75%);
+    color: hsl(0deg 0% 75%);
     margin-bottom: 1.6rem;
   }
 
   a {
-    color: hsl(0, 0%, 90%);
+    color: hsl(0deg 0% 90%);
   }
 }

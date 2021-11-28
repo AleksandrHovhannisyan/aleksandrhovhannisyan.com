@@ -1,12 +1,12 @@
-@import '../mixins';
+@import "../mixins";
 
 code {
   font-size: 0.82em;
-  @include font($family: 'code', $weight: 'regular');
+  @include font($family: "code", $weight: "regular");
 }
 
 // Inline code
-code:not([class^=language-]) {
+code:not([class^="language-"]) {
   background-color: var(--inline-code-bg-color);
   color: var(--color-text-emphasis);
   border-radius: 0.4rem;

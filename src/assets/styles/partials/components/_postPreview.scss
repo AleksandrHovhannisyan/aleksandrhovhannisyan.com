@@ -1,13 +1,13 @@
-@import '../mixins';
+@import "../mixins";
 
 .post-preview {
   display: grid;
   row-gap: 1.2rem;
   grid-template-areas:
-    'thumbnail'
-    'title'
-    'meta'
-    'description';
+    "thumbnail"
+    "title"
+    "meta"
+    "description";
 
   .post-meta {
     grid-area: meta;
@@ -49,13 +49,12 @@
     grid-area: description;
     @include line-clamp(3);
   }
-
   @include tablet {
     & {
       grid-template-areas:
-        'thumbnail title'
-        'thumbnail description'
-        'thumbnail meta';
+        "thumbnail title"
+        "thumbnail description"
+        "thumbnail meta";
       column-gap: 3.2rem;
       row-gap: 0.8rem;
     }

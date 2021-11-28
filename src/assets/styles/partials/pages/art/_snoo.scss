@@ -1,7 +1,7 @@
 // Reference image at 90% zoom: https://i.redd.it/2qy7unjo2j331.png
 
 .snoo {
-  --snoo-orange: #FF4500;
+  --snoo-orange: #ff4500;
   border-radius: 50%;
   width: 21vmin;
   height: 21vmin;
@@ -29,7 +29,7 @@
 
     // Base of antenna
     &::before {
-      content: '';
+      content: "";
       display: block;
       position: absolute;
       top: -4vmin;
@@ -39,12 +39,12 @@
       border-left: solid 0.75vmin white;
       border-top: solid 0.75vmin white;
       transform: rotate(13deg);
-      border-radius: 10% 0 0 0;
+      border-radius: 10% 0 0;
     }
 
     // Antenna ball
     &::after {
-      content: '';
+      content: "";
       display: block;
       position: absolute;
       left: 50%;
@@ -52,10 +52,9 @@
       bottom: 0.35vmin;
       width: 3.5vmin;
       height: 3.5vmin;
-      border-radius: 0%;
       border-bottom: solid 0.55vmin var(--snoo-orange);
       border-right: solid 0.55vmin var(--snoo-orange);
-      border-radius: 0% 0 100% 0;
+      border-radius: 0% 0 100%;
     }
   }
 }

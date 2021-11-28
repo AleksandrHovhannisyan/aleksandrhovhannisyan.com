@@ -1,4 +1,4 @@
-@import '../mixins';
+@import "../mixins";
 
 .contact {
   height: 100%;
@@ -10,7 +10,6 @@
     grid-auto-flow: row;
     column-gap: 9.6rem;
     row-gap: 4.8rem;
-
     @include tablet {
       row-gap: 0;
       grid-auto-flow: column;
@@ -36,7 +35,7 @@
     row-gap: 1.6rem;
     background-color: var(--form-bg-color);
     border-radius: 0.2rem;
-    border: solid 1px hsla(0, 0%, 0%, 0.08);
+    border: solid 1px hsl(0deg 0% 0% / 8%);
     padding: 2.4rem;
     height: fit-content;
 
@@ -93,7 +92,7 @@
     }
 
     &-name {
-      @include font($family: 'main', $weight: 'regular');
+      @include font($family: "main", $weight: "regular");
     }
   }
 }
@@ -102,4 +101,3 @@
 input.honeypot {
   display: none;
 }
-

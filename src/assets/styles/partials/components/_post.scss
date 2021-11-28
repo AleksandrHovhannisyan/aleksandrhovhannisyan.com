@@ -1,4 +1,4 @@
-@import '../mixins';
+@import "../mixins";
 
 .post {
   &-header {
@@ -19,7 +19,7 @@
     #skip-toc {
       transform: translateY(-50%);
       padding: 0.2rem 0.8rem;
-      @include font($family: 'main', $weight: 'bold');
+      @include font($family: "main", $weight: "bold");
     }
 
     .toc-list {

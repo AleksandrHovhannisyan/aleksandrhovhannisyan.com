@@ -1,4 +1,4 @@
-@import '../../mixins';
+@import "../../mixins";
 
 #artwork-page-header {
   text-align: center;
@@ -9,21 +9,21 @@
     line-height: 1.8;
     text-shadow: 0.4rem 0.4rem black;
     max-width: fit-content;
-    margin: 0 auto 1.6rem auto;
+    margin: 0 auto 1.6rem;
     position: relative;
-    @include font($family: 'cursiveTitle', $weight: 'regular');
+    @include font($family: "cursiveTitle", $weight: "regular");
 
     &::after {
       @keyframes subtitle-pulse {
         from {
           transform: scale(1);
         }
+
         to {
           transform: scale(1.1);
         }
       }
-
-      content: 'Best viewed in Chrome!';
+      content: "Best viewed in Chrome!";
       text-shadow: none;
       vertical-align: top;
       position: absolute;
@@ -32,18 +32,17 @@
       left: 0;
       animation: subtitle-pulse 1s ease infinite alternate-reverse;
       will-change: transform;
-      @include font($family: 'cursiveBody', $weight: 'regular', $size: 'md');
-
+      @include font($family: "cursiveBody", $weight: "regular", $size: "md");
       @include mobile-lg {
         @keyframes subtitle-pulse {
           from {
             transform: rotate(2deg) scale(1);
           }
+
           to {
             transform: rotate(2deg) scale(1.1);
           }
         }
-
         left: unset;
         bottom: unset;
         top: -0.8rem;
@@ -69,7 +68,6 @@
   justify-content: center;
   flex: 1 1 calc(1 / var(--artwork-per-row) * 100% - 2 * var(--gap));
   padding: 2.4rem;
-
   @include mobile-lg {
     --artwork-per-row: 3;
   }
@@ -89,12 +87,12 @@
         transform: scale(0);
         opacity: 0;
       }
+
       60% {
         transform: scale(1.1);
         opacity: 0.6;
       }
     }
-
     content: attr(aria-label);
     color: var(--color-text-emphasis);
     transform: scale(0);
@@ -103,8 +101,8 @@
     line-height: 1.2;
     font-size: 2.4rem;
     will-change: transform, opacity;
-    font-family: Reenie Beanie, cursive;
-    @include transition('opacity', 'transform');
+    @include font($family: "cursiveBody");
+    @include transition("opacity", "transform");
   }
 
   &:is(:active, :hover, :focus-within) {

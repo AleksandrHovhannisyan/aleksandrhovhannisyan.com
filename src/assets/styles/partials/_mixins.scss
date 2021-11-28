@@ -1,9 +1,15 @@
-@use 'sass:math';
-@import './functions';
-@import './breakpoints';
+@use "sass:math";
+@use "sass:string";
+@use "sass:map";
+@use "sass:list";
+
+@import "./functions";
+@import "./breakpoints";
 
 @mixin centered {
-  --padding: MIN(4vw, 2.4rem);
+  /* stylelint-disable-next-line scss/no-global-function-names */
+  --padding: min(4vw, 2.4rem);
+
   // why not just use content-box? because it creates overflow issues on mobile with width: 100% below
   max-width: calc(var(--page-max-width) + 2 * var(--padding));
   width: 100%;
@@ -14,18 +20,17 @@
 }
 
 // Inspiration: https://stackoverflow.com/a/49437769/5323344
+
 @mixin transition($props...) {
   $result: ();
-
   @for $i from 1 through length($props) {
-    $prop: nth($props, $i);
-    $result: append($result, $prop);
-
+    $prop: list.nth($props, $i);
+    $result: list.append($result, $prop);
     @if $i != length($props) {
-      $result: append(
+      $result: list.append(
         $result,
-        unquote(
-          $string: ',',
+        string.unquote(
+          $string: ",",
         )
       );
     }
@@ -53,7 +58,7 @@
     font-weight: var(--font-weight-#{$family}-#{$weight});
   }
   @if $style {
-    font-style: unquote($style);
+    font-style: string.unquote($style);
   }
   @if $size {
     font-size: var(--font-size-#{$size});
@@ -68,8 +73,7 @@
     &:is(:hover, :focus-visible) {
       text-decoration: none;
     }
-  }
-  @else {
+  } @else {
     text-decoration: none;
 
     &:is(:hover, :focus-visible) {
@@ -82,6 +86,7 @@
   &:focus {
     outline: none;
   }
+
   &:focus-visible {
     outline: $style $thickness $color;
     outline-offset: $offset;
@@ -97,49 +102,51 @@
 @mixin line-clamp($num-lines) {
   overflow: hidden;
   text-overflow: ellipsis;
+  /* stylelint-disable-next-line value-no-vendor-prefix */
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: $num-lines;
 }
 
 // Breakpoint mixins
+
 @mixin mobile {
-  $bp: map-get($media-breakpoints, mobile);
+  $bp: map.get($media-breakpoints, mobile);
   @media screen and (min-width: $bp) {
     @content;
   }
 }
 
 @mixin mobile-lg {
-  $bp: map-get($media-breakpoints, mobile-lg);
+  $bp: map.get($media-breakpoints, mobile-lg);
   @media screen and (min-width: $bp) {
     @content;
   }
 }
 
 @mixin tablet-sm {
-  $bp: map-get($media-breakpoints, tablet-sm);
+  $bp: map.get($media-breakpoints, tablet-sm);
   @media screen and (min-width: $bp) {
     @content;
   }
 }
 
 @mixin tablet {
-  $bp: map-get($media-breakpoints, tablet);
+  $bp: map.get($media-breakpoints, tablet);
   @media screen and (min-width: $bp) {
     @content;
   }
 }
 
 @mixin desktop {
-  $bp: map-get($media-breakpoints, desktop);
+  $bp: map.get($media-breakpoints, desktop);
   @media screen and (min-width: $bp) {
     @content;
   }
 }
 
 @mixin desktop-lg {
-  $bp: map-get($media-breakpoints, desktop-lg);
+  $bp: map.get($media-breakpoints, desktop-lg);
   @media screen and (min-width: $bp) {
     @content;
   }

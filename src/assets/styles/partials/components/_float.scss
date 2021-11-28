@@ -1,4 +1,4 @@
-@import '../mixins';
+@import "../mixins";
 
 .float {
   float: none;
@@ -7,7 +7,6 @@
   &.right {
     float: none;
   }
-
   @include mobile-lg {
     & {
       max-width: 20rem;

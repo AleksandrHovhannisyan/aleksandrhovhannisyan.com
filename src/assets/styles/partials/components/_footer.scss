@@ -1,4 +1,4 @@
-@import '../mixins';
+@import "../mixins";
 
 .page-footer {
   background-color: var(--footer-bg-color);
@@ -26,7 +26,7 @@
   }
 
   &-copyright {
-    color: hsl(0, 0%, 70%);
+    color: hsl(0deg 0% 70%);
   }
 
   &-links {
@@ -56,7 +56,6 @@
     @include focus-outline($offset: 0.4rem);
     @include underlined-link($initially-underlined: false);
   }
-
   @include tablet {
     & {
       text-align: start;

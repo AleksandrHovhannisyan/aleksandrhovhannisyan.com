@@ -4,7 +4,6 @@
   --face-border-color: black;
   --eye-color: black;
   --mouth-color: black;
-
   width: 25vmin;
   height: 25vmin;
   border-radius: 50%;
@@ -37,7 +36,7 @@
     border-top-left-radius: 0;
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       width: 3vmin;
       height: 4vmin;
@@ -65,7 +64,7 @@
 
     &::before,
     &::after {
-      content: '';
+      content: "";
       width: 1.5vmin;
       height: 1.5vmin;
       border-radius: 50%;
@@ -110,7 +109,7 @@
 
     &::before,
     &::after {
-      content: '';
+      content: "";
       width: 1.5vmin;
       height: 1.5vmin;
       border-radius: 50%;

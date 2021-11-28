@@ -1,18 +1,24 @@
 {
-  "plugins": [
-    "stylelint-scss"
-  ],
+  "extends": ["stylelint-config-standard-scss"],
   "rules": {
     "at-rule-no-unknown": null,
-    "scss/at-rule-no-unknown": true,
+    "at-rule-empty-line-before": ["always", { "except": ["after-same-name", "inside-block", "blockless-after-same-name-blockless"], "ignoreAtRules": ["function", "mixin"] }],
+    "block-closing-brace-newline-after": ["always", { "ignoreAtRules": ["if", "else"] }],
     "block-opening-brace-space-before": "always",
     "block-opening-brace-newline-after": "always",
     "block-closing-brace-newline-before": "always",
-    "block-closing-brace-newline-after": "always",
     "block-closing-brace-empty-line-before": "never",
     "declaration-block-trailing-semicolon": "always",
-    "indentation": 2
+    "declaration-empty-line-before": "never",
+    "declaration-block-semicolon-newline-after": "always-multi-line",
+    "font-family-name-quotes": "always-where-required",
+    "indentation": 2,
+    "max-line-length": [120, { "ignore": "comments" }],
+    "scss/at-if-closing-brace-newline-after": "always-last-in-chain",
+    "scss/at-if-closing-brace-space-after": "always-intermediate",
+    "scss/at-rule-no-unknown": true
   },
+  "ignoreAtRules": ["if", "else"],
   "ignoreFiles": [
     "./src/assets/styles/main.scss",
     "./src/assets/styles/art.scss"

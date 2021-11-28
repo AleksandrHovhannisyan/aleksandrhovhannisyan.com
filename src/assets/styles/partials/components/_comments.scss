@@ -1,5 +1,6 @@
-@use 'sass:math';
-@import '../mixins';
+@use "sass:math";
+
+@import "../mixins";
 
 .comment-actions {
   display: flex;
@@ -59,7 +60,7 @@
 
   &-username {
     color: var(--color-text-emphasis);
-    @include font($family: 'main', $weight: 'bold');
+    @include font($family: "main", $weight: "bold");
     @include underlined-link;
   }
 
@@ -80,9 +81,8 @@
     pre {
       white-space: pre-wrap;
     }
-
     @include headings {
-      @include font($size: 'base');
+      @include font($size: "base");
     }
   }
 }

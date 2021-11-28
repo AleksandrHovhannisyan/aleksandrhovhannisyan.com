@@ -1,4 +1,4 @@
-@import '../mixins';
+@import "../mixins";
 
 .input {
   background-color: var(--input-bg-color);
@@ -15,10 +15,10 @@
 
 label {
   color: var(--color-text-emphasis);
-  @include font($family: 'main', $weight: 'bold');
+  @include font($family: "main", $weight: "bold");
 
   &.required::after {
-    content: '*';
+    content: "*";
     margin: 0 0.4rem;
     vertical-align: middle;
   }

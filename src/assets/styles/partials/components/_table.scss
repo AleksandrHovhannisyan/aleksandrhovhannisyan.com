@@ -1,17 +1,17 @@
-@import '../mixins';
-
-thead {
-  background-color: var(--table-header-bg-color);
-  color: var(--color-text-emphasis);
-
-  th {
-    @include font($family: 'main', $weight: 'bold');
-  }
-}
+@import "../mixins";
 
 td,
 th {
   text-align: start;
   padding: 0.8rem 1.6rem;
   border: solid 0.2rem var(--color-border);
+}
+
+thead {
+  background-color: var(--table-header-bg-color);
+  color: var(--color-text-emphasis);
+
+  th {
+    @include font($family: "main", $weight: "bold");
+  }
 }

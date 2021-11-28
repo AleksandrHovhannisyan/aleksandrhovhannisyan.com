@@ -1,4 +1,4 @@
-@import '../mixins';
+@import "../mixins";
 
 .screen-reader-only {
   position: absolute;
@@ -18,7 +18,8 @@
   @include underlined-link;
 }
 
-$font-size-steps: 'sm', 'base', 'md', 'lg', 'xl', 'xxl', 'xxxl';
+$font-size-steps: "sm", "base", "md", "lg", "xl", "xxl", "xxxl";
+
 @each $step in $font-size-steps {
   .font-#{$step} {
     @include font($size: $step);

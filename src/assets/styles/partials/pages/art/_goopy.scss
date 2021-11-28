@@ -1,10 +1,9 @@
 // Reference image: https://www.stickpng.com/img/games/cuphead/cuphead-character-goopy-le-grande
 .goopy {
-  --blue: #3F90D8;
-  --light-blue: #7BB6E7;
-  --dark-blue: #2171B5;
-  --red: #C00000;
-
+  --blue: #3f90d8;
+  --light-blue: #7bb6e7;
+  --dark-blue: #2171b5;
+  --red: #c00000;
   width: 24vmin;
   height: 24vmin;
   border: solid 0.6vmin black;
@@ -19,7 +18,7 @@
   &-cap {
     &::before,
     &::after {
-      content: '';
+      content: "";
       display: block;
       position: absolute;
       width: 2vmin;
@@ -54,13 +53,13 @@
 
   // Bottom shadow
   &::after {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     transform: rotate(-3deg) translateZ(-0.3vmin);
     width: 100%;
     height: 20%;
-    background-color: hsla(0, 0%, 30%, 0.6);
+    background-color: hsl(0deg 0% 30% / 60%);
     bottom: -3.5vmin;
     border-radius: 100%;
     z-index: -1;
@@ -74,14 +73,13 @@
 
   &-eye {
     border: solid 0.32vmin black;
-    background-color: #EFEDEF;
+    background-color: #efedef;
     position: absolute;
 
     // Pupils
     &::before {
-      content: '';
+      content: "";
       display: block;
-      position: absolute;
       background-color: black;
       position: absolute;
       border-radius: 50%;
@@ -90,7 +88,7 @@
 
     // Eyebrows
     &::after {
-      content: '';
+      content: "";
       display: block;
       position: absolute;
     }
@@ -189,12 +187,10 @@
     border-radius: 100%;
     border-bottom-right-radius: 100%;
     transform: rotate(-5deg);
-  }
 
-  &-mouth {
     // Chin
     &::before {
-      content: '';
+      content: "";
       display: block;
       position: absolute;
       width: 6vmin;
@@ -211,7 +207,7 @@
 
     /* Cover up top border of mouth */
     &::after {
-      content: '';
+      content: "";
       display: block;
       position: absolute;
       background-color: var(--blue);
@@ -234,7 +230,7 @@
     transform: rotate(-120deg);
 
     &::after {
-      content: '';
+      content: "";
       display: block;
       position: absolute;
       width: 1.2vmin;
@@ -250,7 +246,7 @@
   &-patches {
     &::before,
     &::after {
-      content: '';
+      content: "";
       display: block;
       position: absolute;
       background-color: var(--light-blue);

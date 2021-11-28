@@ -1,4 +1,4 @@
-@import '../mixins';
+@import "../mixins";
 
 .post-meta {
   display: flex;
@@ -7,7 +7,7 @@
   column-gap: 1.6rem;
   row-gap: 1.2rem;
   position: relative;
-  @include font($family: 'main', $weight: 'light', $size: 'sm');
+  @include font($family: "main", $weight: "light", $size: "sm");
 
   &-item {
     display: flex;
@@ -31,7 +31,6 @@
     padding: 0.6rem 1.2rem;
     border-radius: 0.4rem;
   }
-
   @include tablet {
     row-gap: 1.6rem;
   }

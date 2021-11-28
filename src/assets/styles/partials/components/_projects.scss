@@ -1,6 +1,30 @@
-@import '../mixins';
+@import "../mixins";
 
 .project {
+  display: grid;
+  grid-template-rows: max-content 1fr max-content;
+  grid-template-columns: 1fr;
+  row-gap: calc(var(--card-padding) / 2);
+
+  &-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    border-radius: inherit;
+    color: var(--color-text-emphasis);
+    background-color: var(--card-bg-color);
+    @include transition(opacity);
+    @include font($family: "main", $weight: "bold", $size: "md");
+  }
+
   &-grid {
     --gap: 4.8rem;
     display: flex;
@@ -24,13 +48,6 @@
         opacity: 0.92;
       }
     }
-  }
-
-  & {
-    display: grid;
-    grid-template-rows: max-content 1fr max-content;
-    grid-template-columns: 1fr;
-    row-gap: calc(var(--card-padding) / 2);
   }
 
   &-header {
@@ -64,25 +81,6 @@
   &-technology {
     border-radius: 0.2rem;
     padding: 0.4rem 1.2rem;
-  }
-
-  &-link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 0;
-    border-radius: inherit;
-    color: var(--color-text-emphasis);
-    background-color: var(--card-bg-color);
-    @include transition(opacity);
-    @include font($family: 'main', $weight: 'bold', $size: 'md');
   }
 }
 

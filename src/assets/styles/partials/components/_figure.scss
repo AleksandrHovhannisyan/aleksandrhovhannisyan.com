@@ -1,4 +1,4 @@
-@import '../mixins';
+@import "../mixins";
 
 figure {
   display: grid;
@@ -14,9 +14,10 @@ figcaption {
 figcaption,
 cite {
   text-align: center;
-  @include font($size: 'sm');
+  @include font($size: "sm");
 
-  &, a {
+  &,
+  a {
     color: var(--color-text-soft);
   }
 }

@@ -1,9 +1,9 @@
-@import '../mixins';
+@import "../mixins";
 
 :not(.token).tag {
   background-color: var(--tag-bg-color);
   color: var(--color-text-emphasis);
-  @include font($family: 'main', $weight: 'regular');
+  @include font($family: "main", $weight: "regular");
 }
 
 // Because not all tags are links/interactive (see project cards)
@@ -12,6 +12,5 @@ a.tag {
     background-color: var(--tag-bg-color-focus);
     color: var(--color-text-inverted);
   }
-
   @include focus-outline($color: var(--tag-bg-color-focus), $offset: 0.2rem);
 }
