@@ -12,9 +12,9 @@
     "jest": true,
     "es6": true
   },
-  "parser": "@babel/eslint-parser",
   "parserOptions": {
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaVersion": "latest"
   },
   "rules": {
     "prettier/prettier": [
