@@ -18,9 +18,5 @@
     "scss/at-if-closing-brace-space-after": "always-intermediate",
     "scss/at-rule-no-unknown": true
   },
-  "ignoreAtRules": ["if", "else"],
-  "ignoreFiles": [
-    "./src/assets/styles/main.scss",
-    "./src/assets/styles/art.scss"
-  ]
+  "ignoreAtRules": ["if", "else"]
 }
