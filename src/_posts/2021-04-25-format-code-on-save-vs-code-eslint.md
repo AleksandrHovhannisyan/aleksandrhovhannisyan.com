@@ -163,7 +163,9 @@ With that out of the way, let's now look at how to configure ESLint for differen
 
 ### JavaScript ESLint Config
 
-If you're working in a vanilla JavaScript or Node environment, you may need to install `babel-eslint` as your parser (a parser helps ESLint to understand the syntax of your code). If you're using a different parser, change the `parser` value in the config accordingly.
+If you're working in a JavaScript or Node environment, you can either rely on the default ESLint parser or [specify a custom parser](https://eslint.org/docs/user-guide/configuring/plugins#specifying-parser) (e.g., `babel-eslint`).
+
+Note that if you're using the default ESLint parser (i.e., no `parser` set), you can set `ecmaVersion` to `"latest"` [as of ESLint v7.30.0](https://eslint.org/blog/2021/07/eslint-v7.30.0-released#highlights). Otherwise, set it to [one of the accepted values](https://eslint.org/docs/user-guide/configuring/language-options#specifying-environments).
 
 {% include codeHeader.html file: ".eslintrc.json" %}
 ```json
@@ -180,10 +182,9 @@ If you're working in a vanilla JavaScript or Node environment, you may need to i
     "no-console": "warn",
     "prettier/prettier": "error"
   },
-  "parser": "babel-eslint",
   "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaVersion": "latest",
   },
   "env": {
     "browser": true,
