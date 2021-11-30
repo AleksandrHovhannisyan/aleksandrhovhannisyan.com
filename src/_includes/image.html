@@ -4,20 +4,19 @@ This is a workaround for the fact that 11ty doesn't support named shortcode argu
 {%- endcomment -%}
 {%- capture props -%}
   {
-    {%- comment -%}The JSON here may end up having trailing commas due to the if guards.
-    This is handled by the jsonParse filter.{%- endcomment -%}
-    {% if alt %}"alt": "{{ alt }}",{% endif %}
-    {% if baseFormat %}"baseFormat": "{{ baseFormat }}",{% endif %}
-    {% if optimizedFormats %}"optimizedFormats": {{ optimizedFormats }},{% endif %}
-    {% if widths %}"widths": {{ widths }},{% endif %}
-    {% if sizes %}"sizes": "{{ sizes }}",{% endif %}
+    "src": "{{ src }}"
+    {%- if alt -%},"alt": "{{ alt }}"{%- endif -%}
+    {%- if baseFormat -%},"baseFormat": "{{ baseFormat }}"{%- endif -%}
+    {%- if optimizedFormats -%},"optimizedFormats": {{ optimizedFormats }}{%- endif -%}
+    {%- if widths -%},"widths": {{ widths }}{%- endif -%}
+    {%- if sizes -%},"sizes": "{{ sizes }}"{%- endif -%}
     {%- comment -%}Explicit nil check since clickable is a boolean prop.{%- endcomment -%}
-    {% if clickable != nil %}"clickable": {{ clickable }},{% endif %}
-    {% if className %}"className": "{{ className }}",{% endif %}
-    {% if fileName %}"fileName": "{{ fileName }}",{% endif %}
-    {% if urlPath %}"urlPath": "{{ urlPath }}",{% endif %}
+    {%- if clickable != nil -%},"clickable": {{ clickable }}{%- endif -%}
+    {%- if className -%},"className": "{{ className }}"{%- endif -%}
+    {%- if fileName -%},"fileName": "{{ fileName }}"{%- endif -%}
+    {%- if urlPath -%},"urlPath": "{{ urlPath }}"{%- endif -%}
   }
 {%- endcapture -%}
-{%- assign props = props | jsonParse -%}
+{%- assign props = props | fromJson -%}
 {%- comment -%}Wrapper around custom image shortcode to forward named arguments.{%- endcomment -%}
-{%- image src, props -%}
+{%- image props -%}

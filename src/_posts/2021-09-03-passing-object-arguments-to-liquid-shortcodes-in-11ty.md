@@ -4,6 +4,7 @@ description: Currently, 11ty doesn't allow you to pass object arguments to short
 keywords: [object argument, 11ty, liquid, shortcode]
 categories: [11ty, liquid, javascript]
 thumbnail: thumbnail.jpg
+lastUpdated: 2021-11-29
 commentsId: 107
 ---
 
@@ -46,12 +47,10 @@ Let's fix that!
 We want this nice, clean signature for our shortcode:
 
 ```js
-const shortcode = (positionalArg, props) => {};
+const shortcode = (props) => {};
 ```
 
-The function accepts one positional argument and an object argument for props (or maybe just a single object argument for everything—it's really up to you).
-
-Here's what we'll do:
+The function accepts a single object argument for props. To do this, we'll:
 
 1. Assemble a JSON string in our include with Liquid.
 2. Register a custom filter that uses `JSON.parse`.
@@ -68,12 +67,13 @@ We'll start by formatting a JSON string and interpolating the named arguments of
 ```liquid
 {%- capture props -%}
   {
+    "arg1": "{{ arg1 }}",
     "arg2": "{{ arg2 }}",
     "arg3": "{{ arg3 }}",
     "arg4": "{{ arg4 }}"
   }
 {%- endcapture -%}
-{% myShortcode arg1, props %}
+{% myShortcode props %}
 ```
 {% endraw %}
 
@@ -99,6 +99,7 @@ Then we'll get this JSON for the `props` variable:
 
 ```json
 {
+  "arg1": "val1",
   "arg2": "val2",
   "arg3": "val3",
   "arg4": "val4"
@@ -118,24 +119,22 @@ Let's add this filter to our Eleventy config to enable parsing JSON strings:
 
 {% include codeHeader.html file: ".eleventy.js" %}
 ```js
-eleventyConfig.addFilter('jsonParse', JSON.parse);
+eleventyConfig.addFilter('fromJson', JSON.parse);
 ```
-
-### 3. Parsing the JSON String in Liquid
-
-Finally, let's use this filter to transform the `props` string into a JavaScript object:
+And let's use it to transform the `props` string into a JavaScript object:
 
 {% include codeHeader.html file: "src/_includes/myShortcode.html" %}
 {% raw %}
 ```liquid
 {%- capture props -%}
   {
+    "arg1": "{{ arg1 }}",
     "arg2": "{{ arg2 }}",
     "arg3": "{{ arg3 }}",
     "arg4": "{{ arg4 }}"
   }
 {%- endcapture -%}
-{%- assign props = props | jsonParse -%}
+{%- assign props = props | fromJson -%}
 {% myShortcode arg1, props %}
 ```
 {% endraw %}
@@ -151,6 +150,7 @@ Let's look at that JSON again:
 ```liquid
 {%- capture props -%}
   {
+    "arg1": "{{ arg1 }}",
     "arg2": "{{ arg2 }}",
     "arg3": "{{ arg3 }}",
     "arg4": "{{ arg4 }}"
@@ -185,45 +185,27 @@ But this time around, if we don't pass in a value for that argument, our JSON wi
 }
 ```
 
-We can fix this by adding some `if` guards:
+Thankfully, we can fix this by adding some `if` guards:
 
 {% raw %}
 ```liquid
 {%- capture props -%}
   {
-    {% if arg2 %}"arg2": "{{ arg2 }}",{% endif %}
-    {% if arg3 %}"arg3": "{{ arg3 }}",{% endif %}
-    {% if arg4 != nil %}"arg4": {{ arg4 }}{% endif %}
+    "requiredArg": "{{ requiredArg }}"
+    {%- if arg2 -%},"arg2": "{{ arg2 }}"{%- endif -%}
+    {%- if arg3 -%},"arg3": "{{ arg3 }}"{%- endif -%}
+    {%- if arg4 != nil -%},"arg4": {{ arg4 }}{%- endif -%}
   }
 {%- endcapture -%}
 ```
 {% endraw %}
 
-That fixes one problem, but it also introduces another: If the only argument we specify is `arg2` or `arg3`, then our JSON will have trailing commas, [which are not allowed](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Trailing_commas):
-
-```json
-{
-  "arg2": "some string",
-}
-```
-
-And to fix *that*, we'll need to update the custom filter to rely on an `eval` hack. Note that you'd never want to use eval in production code where user input may be fed into the `eval` since it exposes you to XSS attacks. In my case, since I'm the only one providing static data to `eval`, I don't really have to worry about things going awry.
-
-```js
-const jsonParse = (jsonString) => {
-  let jsonObject;
-  eval(`jsonObject = ${jsonString};`);
-  return JSON.parse(JSON.stringify(jsonObject));
-};
-```
-
-And that'll strip out all trailing commas.
-
 At this point, you'll also want to go back to your shortcode and specify some fallback values in case some of the props were not passed along:
 
 ```js
-const shortcode = (positionalArg, props) => {
+const shortcode = (props) => {
   const {
+    arg1,
     arg2 = 'default2',
     arg3 = 'default3',
     arg4 = 'default4',

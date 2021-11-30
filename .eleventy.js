@@ -12,7 +12,6 @@ const {
   toAbsoluteUrl,
   stripNewlines,
   stripHtml,
-  jsonParse,
   getLatestCollectionItemDate,
   compileAndMinifyScss,
 } = require('./config/filters');
@@ -51,7 +50,6 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter('sortByKey', sortByKey);
   eleventyConfig.addFilter('where', where);
   eleventyConfig.addFilter('escape', escape);
-  eleventyConfig.addFilter('jsonify', JSON.stringify);
   eleventyConfig.addFilter('toHtml', toHtml);
   eleventyConfig.addFilter('toIsoString', toISOString);
   eleventyConfig.addFilter('dividedBy', dividedBy);
@@ -60,7 +58,8 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter('stripNewlines', stripNewlines);
   eleventyConfig.addFilter('stripHtml', stripHtml);
   eleventyConfig.addFilter('slugify', slugifyString);
-  eleventyConfig.addFilter('jsonParse', jsonParse);
+  eleventyConfig.addFilter('toJson', JSON.stringify);
+  eleventyConfig.addFilter('fromJson', JSON.parse);
   eleventyConfig.addFilter('getLatestCollectionItemDate', getLatestCollectionItemDate);
   eleventyConfig.addFilter('compileAndMinifyScss', compileAndMinifyScss);
   eleventyConfig.addFilter('keys', Object.keys);

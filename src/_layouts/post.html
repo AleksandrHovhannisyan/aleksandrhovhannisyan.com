@@ -67,11 +67,11 @@ eleventyComputed:
       "@type": "WebPage",
       "@id": "{{ page.url | toAbsoluteUrl }}"
     },
-    "headline": {{ title | escape | jsonify }},
+    "headline": {{ title | escape | toJson }},
     "image": ["{{ site.url }}/assets/images/posts/{{ page.fileSlug }}/{{ thumbnail }}"],
-    "datePublished": {{ page.date | jsonify }},
+    "datePublished": {{ page.date | toJson }},
     {% if lastUpdated -%}
-    "dateModified": {{ lastUpdated | jsonify }},
+    "dateModified": {{ lastUpdated | toJson }},
     {% endif -%}
     "author": {
       "@type": "Person",
@@ -86,6 +86,6 @@ eleventyComputed:
         "url": "{{ '/assets/images/favicons/favicon-128.png' | toAbsoluteUrl }}"
       }
     },
-    "description": {{ description | stripNewlines | strip | jsonify }}
+    "description": {{ description | stripNewlines | strip | toJson }}
   }
 </script>

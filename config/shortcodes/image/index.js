@@ -13,8 +13,9 @@ const ImageWidths = {
   PLACEHOLDER: 24,
 };
 
-const imageShortcode = async (src, props) => {
+const imageShortcode = async (props) => {
   const {
+    src,
     alt = '',
     baseFormat = 'jpeg',
     optimizedFormats = ['webp'],

@@ -1,8 +1,8 @@
 const feather = require('feather-icons');
 
-// Can't pass objects as arguments :(
-const iconShortcode = (icon, props) => {
+const iconShortcode = (props) => {
   const {
+    icon,
     className,
     width = 24,
     height = 24,

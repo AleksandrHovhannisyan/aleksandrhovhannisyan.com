@@ -99,16 +99,6 @@ const getLatestCollectionItemDate = (collection) => {
   return latestItem?.data?.lastUpdated ?? latestItem?.date;
 };
 
-// TODO: deprecate this once Liquid supports keyword arguments for shortcodes: https://github.com/11ty/eleventy/issues/1263
-const jsonParse = (jsonString) => {
-  let jsonObject;
-  // DANGER! But I trust myself and only ever call this method with my own data.
-  // This is the only way to get around the fact that the JSON string passed in
-  // may break due to trailing commas (e.g., see image.html include that uses Liquid `if` tags).
-  eval(`jsonObject = ${jsonString};`);
-  return JSON.parse(JSON.stringify(jsonObject));
-};
-
 /** Given a scss string, compile it to CSS, minify the result, and return the final CSS as a string. */
 const compileAndMinifyScss = (scss) => {
   return sass.renderSync({ data: scss, outputStyle: 'compressed' }).css.toString();
@@ -126,7 +116,6 @@ module.exports = {
   stripNewlines,
   stripHtml,
   toAbsoluteUrl,
-  jsonParse,
   getLatestCollectionItemDate,
   compileAndMinifyScss,
 };
