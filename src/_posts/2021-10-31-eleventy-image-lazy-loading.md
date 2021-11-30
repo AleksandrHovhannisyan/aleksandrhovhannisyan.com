@@ -4,6 +4,7 @@ description: While imagery can enrich your content, it can also slow down your s
 keywords: [11ty image, lazy load, lazily load]
 categories: [webperf, 11ty, images, javascript]
 commentsId: 118
+lastUpdated: 2021-11-30
 thumbnail:
   url: https://images.unsplash.com/photo-1631739408670-38319df9c5c1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
@@ -699,7 +700,11 @@ Note that it's important to define the image's `onload` handler before swapping 
 
 Now, the only thing left to do is to include the script somewhere in your base layout (or some other layout, if you only want to do this on specific pages). I'm not going to show the steps for how to do this since it depends entirely on how you're managing JavaScript in your project.
 
-## Styling the Lazily Loaded Images
+## Additional Enhancements
+
+This is all of the core logic that you need for the custom lazy loading solution, but there are a few more enhancements that we can make to improve our image shortcode.
+
+### Styling the Lazily Loaded Images
 
 If you want your images to fade in more smoothly, you can use the CSS `blur` filter:
 
@@ -715,6 +720,18 @@ If you want your images to fade in more smoothly, you can use the CSS `blur` fil
 ```
 
 By analogy, this is like taking your thumb and smearing a drawing to meld all of the colors and shapes into one blurry blob. That way, the placeholder isn't so pixelated, and it fades in smoothly when the image finishes loading.
+
+### Noscript Tag in Case JavaScript is Disabled
+
+If a user disables JavaScript and visits your site, they'll encounter a blurry placeholder image, which isn't great for accessibility. To get around this, you can include a `noscript` tag in the output returned by the image shortcode. The `noscript` tag would basically include all of the same markup as before (sources and the base `img` tag), but it would reference the real images for `src`/`srcset` rather than the placeholders. You can then include some styles in your `head` for the `noscript` case to hide the lazy images and only show the noscript images:
+
+```html
+<head>
+  <noscript><style>noscript { display: contents; } .lazy-img { display: none; }</style></noscript>
+</head>
+```
+
+I'll leave this up to you to implement since it's fairly straightforward; you'll just need to consolidate some of the shared logic for the markup. You can also learn more about this strategy in this post: [Accessible lazy-loading with a noscript fallback](https://eszter.space/noscript-lazy-load/).
 
 ## 11ty Image Plugin in Review
 
