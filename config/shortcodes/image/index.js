@@ -93,39 +93,35 @@ const imageShortcode = async (props) => {
   });
 
   /** Returns source elements as an HTML string. */
-  const renderSourceHtmlString = () => {
-    return (
-      Object.values(imageMetadata)
-        // Map each format to the source HTML markup
-        .map((formatEntries) => {
-          // The first entry is representative of all the others since they each have the same shape
-          const { format: formatName, sourceType } = formatEntries[0];
+  const sourceHtmlString = Object.values(imageMetadata)
+    // Map each format to the source HTML markup
+    .map((formatEntries) => {
+      // The first entry is representative of all the others since they each have the same shape
+      const { format: formatName, sourceType } = formatEntries[0];
 
-          const placeholderSrcset = formatSizes[formatName].placeholder.url;
-          const actualSrcset = formatEntries
-            // We don't need the placeholder image in the srcset
-            .filter((image) => image.width !== ImageWidths.PLACEHOLDER)
-            // All non-placeholder images get mapped to their srcset
-            .map((image) => image.srcset)
-            .join(', ');
+      const placeholderSrcset = formatSizes[formatName].placeholder.url;
+      const actualSrcset = formatEntries
+        // We don't need the placeholder image in the srcset
+        .filter((image) => image.width !== ImageWidths.PLACEHOLDER)
+        // All non-placeholder images get mapped to their srcset
+        .map((image) => image.srcset)
+        .join(', ');
 
-          const sourceAttributes = stringifyAttributes({
-            type: sourceType,
-            srcset: placeholderSrcset,
-            'data-srcset': actualSrcset,
-            'data-sizes': sizes,
-          });
+      const sourceAttributes = stringifyAttributes({
+        type: sourceType,
+        srcset: placeholderSrcset,
+        'data-srcset': actualSrcset,
+        'data-sizes': sizes,
+      });
 
-          return `<source ${sourceAttributes}>`;
-        })
-        .join('\n')
-    );
-  };
+      return `<source ${sourceAttributes}>`;
+    })
+    .join('\n');
 
   // Custom image markup. Picture tag with lazy img/sources + noscript fallbacks.
   // https://eszter.space/noscript-lazy-load/. Medium also does this.
   const picture = `<picture class="${classNames('lazy-picture', className)}">
-  ${renderSourceHtmlString()}
+  ${sourceHtmlString}
     <img ${lazyImgAttributes} ${sharedImgAttributes}>
     <noscript>
       <img ${noscriptImgAttributes} ${sharedImgAttributes}>
