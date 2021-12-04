@@ -2,9 +2,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-
-  --line-height: calc(2ex + 1.2rem);
-  line-height: var(--line-height);
 }
 
 *,
@@ -22,6 +19,7 @@ textarea,
 button {
   font-family: inherit;
   font-size: inherit;
+  line-height: inherit;
   letter-spacing: inherit;
 }
 

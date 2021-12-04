@@ -61,7 +61,10 @@
     font-style: string.unquote($style);
   }
   @if $size {
+    // expose CSS var to later compute other things, e.g., spacing
+    --line-height: var(--line-height-#{$size});
     font-size: var(--font-size-#{$size});
+    line-height: var(--line-height);
     letter-spacing: var(--letter-spacing-#{$size}, 0);
   }
 }
