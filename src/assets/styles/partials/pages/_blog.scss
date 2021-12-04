@@ -10,17 +10,25 @@
     max-width: 60ch;
   }
 
-  &-navigation-tags {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1.2rem;
+  &-nav {
+    position: relative;
   }
 
-  &-navigation-tag {
+  .skip-popular-tags {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
-    border-radius: 0.4rem;
-    padding: 0.8rem 1.6rem;
+    align-items: center;
+    justify-content: center;
+    background: var(--main-bg-color);
+    color: var(--color-text-emphasis);
+    @include font($family: "main", $weight: "bold", $size: "md");
+  }
+
+  .tag-count {
+    @include font($size: "xs");
   }
 
   .post-preview-grid {

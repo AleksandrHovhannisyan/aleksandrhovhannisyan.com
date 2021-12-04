@@ -6,6 +6,23 @@
   @include font($family: "main", $weight: "regular");
 }
 
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap, 1.2rem);
+}
+
+.post-tag {
+  display: flex;
+  align-items: center;
+  border-radius: 0.4rem;
+  padding: 0.6rem 1.2rem;
+
+  &-count {
+    font-size: var(--font-size-xs);
+  }
+}
+
 // Because not all tags are links/interactive (see project cards)
 a.tag {
   &:is(:focus, :hover, [aria-current="page"]) {

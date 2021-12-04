@@ -2,6 +2,8 @@
 @import "./functions";
 
 html {
+  --font-size-xs: #{clamped(1.2rem, 1.4rem)};
+  --line-height-xs: #{clamped(2.2rem, 2.6rem)};
   --font-size-sm: #{clamped(1.4rem, 1.6rem)};
   --line-height-sm: #{clamped(2.6rem, 2.8rem)};
   --font-size-base: #{clamped(1.6rem, 1.8rem)};

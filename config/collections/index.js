@@ -1,6 +1,7 @@
 const lodash = require('lodash');
 const { getAllUniqueKeyValues, slugifyString } = require('../utils');
 const site = require('../../src/_data/site');
+const { limit } = require('../filters');
 const { dir } = require('../constants');
 
 /** Returns all blog posts as a collection. */
@@ -65,8 +66,28 @@ const getPostsByCategory = (collection) => {
   return blogPostsByCategory;
 };
 
+/** Returns all categories with the number of posts in each, in descending order. */
+const getCategoriesWithDescendingCount = (collection) => {
+  const postsByCategory = getPostsByCategory(collection);
+  const categoriesWithCount = postsByCategory
+    .map((category) => ({ title: category.title, href: category.href, count: category.posts.length }))
+    .sort((a, b) => b.count - a.count);
+  return categoriesWithCount;
+};
+
+/** Returns the top `n` categories with at least `minCount` posts, in descending order. */
+const getPopularCategories = (params) => (collection) => {
+  const categoriesWithDescendingCount = getCategoriesWithDescendingCount(collection).filter(
+    (category) => category.count >= params.minCount
+  );
+  const popularCategories = limit(categoriesWithDescendingCount, params.limit);
+  return popularCategories;
+};
+
 module.exports = {
   getAllPosts,
   getAllUniqueCategories,
   getPostsByCategory,
+  getCategoriesWithDescendingCount,
+  getPopularCategories,
 };

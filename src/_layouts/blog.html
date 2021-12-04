@@ -5,30 +5,31 @@ isBlogPage: true
 
 <article class="blog">
   {%- assign pageCategory = category.title | default: 'all' -%}
-  {%- assign pageCategoryDescription = categoryDescriptions[pageCategory] | default: categoryDescriptions['all'] -%}
-  <h1 class="blog-title">{%- if pageCategory == 'all' -%}All Blog Posts{%- else -%}Posts tagged with: {{ pageCategory }}{%- endif -%}</h1>
-  <p class="blog-description font-md">{{- pageCategoryDescription | toHtml -}}</p>
-  <nav aria-label="Popular categories">
-    <ul class="blog-navigation-tags">
-      {%- comment -%}TODO: automate/define elsewhere{%- endcomment -%}
-      {%- assign categories = "all,a11y,css,webperf,off-topic" | split: ',' -%}
-      {%- for category in categories %}
-        <li>
-          <a
-            href="{% if category == "all" %}/blog/{% else %}/categories/{{ category }}/{% endif %}"
-            class="tag post-tag blog-navigation-tag"
-            {% if category == "all" -%}
-            aria-label="All posts"
-            {% endif -%}
-            {% if pageCategory == category -%}
-            aria-current="page"
-            {%- endif -%}
-          >
-            {{- category -}}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </nav>
+  <header>
+    <h1 class="blog-title">{%- if pageCategory == 'all' -%}All Blog Posts{%- else -%}Posts tagged with: {{ pageCategory }}{%- endif -%}</h1>
+    <p class="blog-description font-md">
+      Filter by one of the following popular categories, or <a class="underlined-link" href="/categories/">view all categories</a>.
+    </p>
+    <nav aria-label="Popular categories" class="blog-nav">
+      <a class="screen-reader-only skip-popular-tags" href="#skip-popular-tags">Skip to posts</a>
+      <ol class="post-tags">
+        {%- assign popularCategories = collections.popularCategories -%}
+        {%- for category in popularCategories %}
+          <li>
+            <a
+              href="{{ category.href }}"
+              class="tag post-tag"
+              {% if pageCategory == category.title -%}
+              aria-current="page"
+              {%- endif -%}
+            >
+              {{ category.title }}&nbsp;<span class="post-tag-count" aria-label="{{ category.count }} posts">{{ category.count }}</span>
+            </a>
+          </li>
+        {% endfor %}
+      </ol>
+      <div id="skip-popular-tags"></div>
+    </nav>
+  </header>
   {{ content }}
 </article>

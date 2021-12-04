@@ -6,7 +6,7 @@ excludeFromSitemap: true
 noindex: true
 ---
 
-{%- assign steps = "sm,base,md,lg,xl,xxl,xxxl" | split: "," -%}
+{%- assign steps = "xs,sm,base,md,lg,xl,xxl,xxxl" | split: "," -%}
 
 # Typography Design Variables
 

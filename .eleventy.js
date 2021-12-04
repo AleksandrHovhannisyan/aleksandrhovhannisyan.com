@@ -15,7 +15,7 @@ const {
   getLatestCollectionItemDate,
   compileAndMinifyScss,
 } = require('./config/filters');
-const { getAllPosts, getAllUniqueCategories, getPostsByCategory } = require('./config/collections');
+const { getAllPosts, getAllUniqueCategories, getPostsByCategory, getPopularCategories, getCategoriesWithDescendingCount } = require('./config/collections');
 const markdownLib = require('./config/plugins/markdown');
 const { dir, imagePaths } = require('./config/constants');
 const { slugifyString } = require('./config/utils');
@@ -70,6 +70,8 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addCollection('posts', getAllPosts);
   eleventyConfig.addCollection('categories', getAllUniqueCategories);
   eleventyConfig.addCollection('postsByCategory', getPostsByCategory);
+  eleventyConfig.addCollection('categoriesWithCount', getCategoriesWithDescendingCount);
+  eleventyConfig.addCollection('popularCategories', getPopularCategories({ limit: 15, minCount: 5 }));
 
   // Plugins
   eleventyConfig.addPlugin(PluginFootnotes, {
