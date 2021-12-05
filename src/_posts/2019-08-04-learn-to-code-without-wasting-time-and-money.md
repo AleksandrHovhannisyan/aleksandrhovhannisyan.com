@@ -5,8 +5,7 @@ keywords: [learn to code, beginner programming mistakes, advice for beginner pro
 categories: [learning, beginners, career]
 commentsId: 29
 lastUpdated: 2021-08-14
-thumbnail:
-  url: https://images.unsplash.com/photo-1499673610122-01c7122c5dcb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
+thumbnail: https://images.unsplash.com/photo-1499673610122-01c7122c5dcb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 I remember reading a short story in high school about an aspiring writer who invested a great deal of time and money in procuring a fancy pen and an ornately bound notebook, purchasing a desk only a serious writer would sit at, furnishing his study with shelves full of old books he'd never read, and daydreaming about the prospect of writing. What was missing from this picture was any ink touching paper&mdash;he did anything but actually write.

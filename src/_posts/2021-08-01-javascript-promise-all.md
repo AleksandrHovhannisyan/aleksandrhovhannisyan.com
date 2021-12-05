@@ -4,8 +4,7 @@ description: Often, you need to wait for multiple independent async tasks to fin
 keywords: [promise.all, promise, async, javascript]
 categories: [javascript, promises, async]
 commentsId: 104
-thumbnail:
-  url: https://images.unsplash.com/photo-1606674556490-c2bbb4ee05e5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
+thumbnail: https://images.unsplash.com/photo-1606674556490-c2bbb4ee05e5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 Imagine you're creating a website where users can batch-upload files. You need to know when all files have finished uploading so you can notify the user and update the UI. This sounds like a job for promises since file uploads are likely to be asynchronous. But in this example, each upload would return its own promise. You know how to await *individual* promises, but how do you await an arbitrary number of promises to know when they've *all* resolved?

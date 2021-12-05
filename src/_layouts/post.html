@@ -2,6 +2,7 @@
 layout: default
 isBlogPage: true
 eleventyComputed:
+  ogImage: "{% thumbnail thumbnail %}"
   preloads:
     -
       as: font
@@ -53,7 +54,6 @@ eleventyComputed:
     {%- endif -%}
   </div>
 </article>
-{%- assign thumbnail = "thumbnail-1280.jpeg" -%}
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -63,7 +63,9 @@ eleventyComputed:
       "@id": "{{ page.url | toAbsoluteUrl }}"
     },
     "headline": {{ title | escape | toJson }},
-    "image": ["{{ site.url }}/assets/images/posts/{{ page.fileSlug }}/{{ thumbnail }}"],
+    {% if ogImage %}
+    "image": ["{{ ogImage }}"],
+    {% endif %}
     "datePublished": {{ page.date | toJson }},
     {% if lastUpdated -%}
     "dateModified": {{ lastUpdated | toJson }},

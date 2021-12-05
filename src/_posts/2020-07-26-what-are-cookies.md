@@ -4,8 +4,7 @@ description: You've heard the term before, but maybe you're still lost. What are
 keywords: [cookies in browsers, cookies, browser cookies]
 categories: [http, cookies, browsers]
 commentsId: 49
-thumbnail:
-  url: https://images.unsplash.com/photo-1568051243858-533a607809a5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
+thumbnail: https://images.unsplash.com/photo-1568051243858-533a607809a5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 Have you ever wondered how a website remembers who you are when you navigate between different pages, or when you close the site and come back later? Why is it that you only have to log in if you've been gone for a really long time? What's this magic glue that seemingly holds these separate pages together as if they're a single unit—and, for you as a user, a single experience?

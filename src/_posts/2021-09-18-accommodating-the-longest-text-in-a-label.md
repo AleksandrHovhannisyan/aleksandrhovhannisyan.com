@@ -9,8 +9,7 @@ description: Suppose a label renders strings of different lengths, but you want 
 keywords: [longest text, layout shifts, css grid]
 categories: [css, css-grid, webperf, react]
 commentsId: 109
-thumbnail:
-  url: https://images.unsplash.com/photo-1550985543-49bee3167284?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
+thumbnail: https://images.unsplash.com/photo-1550985543-49bee3167284?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 Imagine this scenario: A label renders different text for different states, but these strings are known statically, ahead of time. For example, the element in question may be a save status indicator in an app's header. Sometimes the label is long (`Saving...`), but other times it's short (`Saved`). The code for this might look something like what I've shown below; it's React, but even if you don't know React, you should be able to make sense of it at a high level:

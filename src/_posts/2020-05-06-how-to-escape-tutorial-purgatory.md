@@ -4,8 +4,7 @@ description: Tutorials can help you grow as a developer. But they can also hold 
 keywords: [tutorial purgatory]
 categories: [tutorials, learning, career]
 commentsId: 37
-thumbnail:
-  url: https://images.unsplash.com/photo-1581481283865-97c09ec76a63?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
+thumbnail: https://images.unsplash.com/photo-1581481283865-97c09ec76a63?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 We've all been there before: You follow one tutorial after another hoping to find some sense of accomplishment or fulfillment as a developer. Instead, you walk away feeling unsated—hungry for something practical to sink your teeth into. But you never really find it. What you do find is existential panic: Am I cut out for this? When will I actually amount to something as a developer?
