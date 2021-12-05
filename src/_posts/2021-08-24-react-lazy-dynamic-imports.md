@@ -4,7 +4,7 @@ description: Not all static imports are immediately needed, and unnecessary impo
 keywords: [React.lazy, dynamically import components, dynamic import, lazy]
 categories: [react, webperf, javascript, async]
 commentsId: 106
-thumbnail: https://images.unsplash.com/photo-1570288685369-f7305163d0e3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
+thumbnail: https://images.unsplash.com/photo-1570288685369-f7305163d0e3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=600&q=80
 ---
 
 In JavaScript frameworks like React, it's tempting to statically import a wide range of components. But not all of them are needed immediately; some components only render after a user interacts with the page or once a certain run-time condition has been met. Some examples of this include:

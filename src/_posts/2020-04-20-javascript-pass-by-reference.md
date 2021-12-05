@@ -5,7 +5,7 @@ keywords: [javascript pass by reference]
 categories: [javascript, memory]
 commentsId: 36
 lastUpdated: 2021-06-13
-thumbnail: https://images.unsplash.com/photo-1529448005898-b19fc13465b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
+thumbnail: https://images.unsplash.com/photo-1529448005898-b19fc13465b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=600&q=80
 ---
 
 No matter what programming language you end up working with, you will inevitably find yourself asking the following question: Does this language support pass by reference? And the answer is a lot more complicated than you would think. It's something that isn't always explained well online. Beginners often walk away confused and with the wrong mental model for how memory works and how programming languages manipulate data.
