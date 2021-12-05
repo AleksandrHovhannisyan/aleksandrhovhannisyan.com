@@ -2,19 +2,24 @@
 
 .post-preview {
   display: grid;
-  gap: 0.4rem;
+  grid-template-areas:
+    "date"
+    "header"
+    "description";
   position: relative;
 
   &-grid {
     margin-top: 6.4rem;
     display: grid;
-    row-gap: 6.4rem;
+    row-gap: 4rem;
   }
 
   &-header {
+    grid-area: header;
     display: flex;
-    gap: 0.8rem;
+    gap: 0.6rem;
     flex-direction: column-reverse;
+    margin-bottom: 0.6rem;
   }
 
   &-link {
@@ -22,15 +27,11 @@
   }
 
   &-description {
-    margin-bottom: 0.4rem;
-    max-width: 68ch;
+    grid-area: description;
   }
 
   &-date {
-    position: absolute;
-    top: -0.4rem;
-    left: 0;
-    transform: translateY(-100%);
+    grid-area: date;
     @include font($family: "code", $weight: "regular");
   }
   @include tablet {

@@ -73,7 +73,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addCollection('categories', getAllUniqueCategories);
   eleventyConfig.addCollection('postsByCategory', getPostsByCategory);
   eleventyConfig.addCollection('categoriesWithCount', getCategoriesWithDescendingCount);
-  eleventyConfig.addCollection('popularCategories', getPopularCategories({ limit: 15, minCount: 5 }));
+  eleventyConfig.addCollection('popularCategories', getPopularCategories({ limit: 10, minCount: 5 }));
 
   // Plugins
   eleventyConfig.addPlugin(PluginFootnotes, {

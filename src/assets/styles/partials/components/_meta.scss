@@ -4,8 +4,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  column-gap: 1.6rem;
-  row-gap: 1.2rem;
+  gap: 1.2rem;
   position: relative;
   @include font($family: "body", $size: "sm");
 
@@ -15,14 +14,11 @@
     gap: 0.8rem;
   }
 
-  &-author {
-    @include underlined-link;
+  &-tags {
+    --gap: 0.6rem;
   }
 
-  &-tags {
-    --gap: 0.8rem;
-  }
-  @include tablet {
-    row-gap: 1.6rem;
+  &-tag {
+    @include font($family: "code", $weight: "medium");
   }
 }
