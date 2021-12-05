@@ -8,11 +8,6 @@ eleventyComputed:
       type: font/woff2
       href: "{{ fonts.code.weights.regular.url }}"
       crossorigin: true
-    -
-      as: font
-      type: font/woff2
-      href: "{{ fonts.code.weights.medium.url }}"
-      crossorigin: true
 ---
 
 <article class="blog">
@@ -20,22 +15,24 @@ eleventyComputed:
   <header>
     <h1 class="blog-title">{%- if pageCategory == 'all' -%}All Blog Posts{%- else -%}Posts tagged with: {{ pageCategory }}{%- endif -%}</h1>
     <p class="blog-description font-md">
-      Filter by one of the following popular categories, or <a class="underlined-link" href="/categories/">view all categories</a>.
+      Filter by one of the following popular tags, or <a class="underlined-link" href="/categories/">view all tags</a>.
     </p>
     <nav aria-label="Popular categories" class="blog-nav">
       <a class="screen-reader-only skip-popular-tags" href="#skip-popular-tags">Skip to posts</a>
-      <ol class="post-tags blog-tags">
+      <ol class="pill-group blog-tags">
         {%- assign popularCategories = collections.popularCategories -%}
         {%- for category in popularCategories %}
           <li>
             <a
               href="{{ category.href }}"
-              class="tag post-tag blog-tag sm"
+              class="pill"
+              data-shape="round"
+              data-size="sm"
               {% if pageCategory == category.title -%}
               aria-current="page"
               {%- endif -%}
             >
-              {{ category.title }}&nbsp;<span class="post-tag-count" aria-label="{{ category.count }} posts">{{ category.count }}</span>
+              {{ category.title }}&nbsp;<span class="pill-count" aria-label="{{ category.count }} posts">{{ category.count }}</span>
             </a>
           </li>
         {% endfor %}

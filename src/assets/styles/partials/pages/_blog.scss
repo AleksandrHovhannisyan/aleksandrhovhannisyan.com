@@ -7,11 +7,15 @@
 
   &-description {
     margin-bottom: 1.6rem;
-    max-width: 60ch;
   }
 
   &-nav {
     position: relative;
+  }
+
+  &-description,
+  &-tags {
+    max-width: 60ch;
   }
 
   .skip-popular-tags {
@@ -29,5 +33,9 @@
 
   .tag-count {
     @include font($size: "xs");
+  }
+
+  .post-preview-grid {
+    margin-top: 6.4rem;
   }
 }

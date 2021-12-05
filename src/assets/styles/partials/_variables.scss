@@ -2,8 +2,8 @@
 @import "./functions";
 
 html {
-  --font-size-xs: #{clamped(1.2rem, 1.3rem)};
-  --line-height-xs: #{clamped(2.2rem, 2.6rem)};
+  --font-size-xs: 1.3rem;
+  --line-height-xs: 2.6rem;
   --font-size-sm: #{clamped(1.4rem, 1.6rem)};
   --line-height-sm: #{clamped(2.6rem, 2.8rem)};
   --font-size-base: #{clamped(1.6rem, 1.8rem)};
@@ -57,8 +57,8 @@ html {
     --scrollbar-track-bg-color: var(--color-surface-3);
     --selection-bg-color: black;
     --table-header-bg-color: var(--color-surface-3);
-    --tag-bg-color-focus: var(--color-surface-5);
-    --tag-bg-color: var(--color-surface-3);
+    --pill-bg-color-focus: var(--color-surface-5);
+    --pill-bg-color: var(--color-surface-3);
     --color-code-background: hsl(0deg 0% 95%);
     --color-code-overlay-1: hsl(0deg 0% 88%);
     --color-code-overlay-2: hsl(0deg 0% 80%);
@@ -84,7 +84,7 @@ html {
     --color-surface-3: hsl(0deg 0% 20%);
     --color-surface-4: hsl(0deg 0% 60%);
     --color-surface-5: hsl(0deg 0% 80%);
-    --color-text-normal: hsl(0deg 0% 75%);
+    --color-text-normal: hsl(0deg 0% 80%);
     --color-text-soft: hsl(0deg 0% 65%);
     --color-text-emphasis: white;
     --color-text-inverted: black;
@@ -110,8 +110,8 @@ html {
     --scrollbar-track-bg-color: var(--color-surface-3);
     --selection-bg-color: white;
     --table-header-bg-color: var(--color-surface-2);
-    --tag-bg-color-focus: var(--color-surface-5);
-    --tag-bg-color: var(--color-surface-3);
+    --pill-bg-color-focus: var(--color-surface-5);
+    --pill-bg-color: var(--color-surface-3);
     --color-code-background: hsl(0deg 0% 12%);
     --color-code-overlay-1: hsl(0deg 0% 25%);
     --color-code-overlay-2: hsl(0deg 0% 60%);

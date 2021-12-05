@@ -1,24 +1,33 @@
 @import "../mixins";
 
 .post-meta {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1.2rem;
-  position: relative;
-  @include font($family: "body", $size: "sm");
+  display: grid;
 
-  &-stats {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-  }
-
-  &-tags {
-    --gap: 0.6rem;
+  &-date {
+    @include font($family: "code", $weight: "regular");
   }
 
   &-tag {
-    @include font($family: "code", $weight: "medium");
+    @include font($family: "code", $weight: "regular");
+
+    &::before {
+      content: "#";
+      user-select: none;
+    }
+
+    &::after {
+      user-select: none;
+      content: ",";
+    }
+  }
+
+  &-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+
+    li:last-of-type .post-meta-tag::after {
+      content: none;
+    }
   }
 }

@@ -37,6 +37,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy(`${imagePaths.source}/art`);
   eleventyConfig.addPassthroughCopy(`${imagePaths.source}/404`);
   eleventyConfig.addPassthroughCopy(`${imagePaths.source}/posts`);
+  eleventyConfig.addPassthroughCopy(`${imagePaths.source}/profile-photo.jpg`);
 
   // Custom shortcodes
   eleventyConfig.addPairedShortcode('aside', asideShortcode);

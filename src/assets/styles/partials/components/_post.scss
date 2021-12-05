@@ -2,11 +2,25 @@
 
 .post {
   &-header {
+    display: grid;
+    grid-template-areas:
+      "date"
+      "title"
+      "tags";
     margin-bottom: 3.2rem;
   }
 
   &-title {
-    margin-bottom: 1.6rem;
+    grid-area: title;
+    margin-bottom: 0.8rem;
+  }
+
+  & &-date {
+    grid-area: date;
+  }
+
+  & &-meta-tags {
+    grid-area: tags;
   }
 
   &-content {

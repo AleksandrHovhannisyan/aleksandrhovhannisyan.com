@@ -3,13 +3,13 @@
 .post-preview {
   display: grid;
   grid-template-areas:
-    "date"
+    "meta"
     "header"
     "description";
   position: relative;
 
   &-grid {
-    margin-top: 6.4rem;
+    margin-top: 3.2rem;
     display: grid;
     row-gap: 4rem;
   }
@@ -19,7 +19,6 @@
     display: flex;
     gap: 0.6rem;
     flex-direction: column-reverse;
-    margin-bottom: 0.6rem;
   }
 
   &-link {
@@ -28,15 +27,28 @@
 
   &-description {
     grid-area: description;
+    max-width: 66ch;
   }
 
-  &-date {
-    grid-area: date;
+  &-meta {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1.2rem;
+    grid-area: meta;
+    margin-bottom: 0.4rem;
     @include font($family: "code", $weight: "regular");
+  }
+
+  .post-meta-tag {
+    color: var(--color-text-normal);
   }
   @include tablet {
     &-header {
       flex-flow: row wrap;
+    }
+
+    &-meta {
+      margin-bottom: 0;
     }
   }
 }

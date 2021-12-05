@@ -2,7 +2,7 @@
 layout: default
 isBlogPage: true
 eleventyComputed:
-  ogImage: "{% thumbnail thumbnail %}"
+  ogImage: "{% thumbnail thumbnail, '/assets/images/posts' %}"
   preloads:
     -
       as: font
@@ -24,7 +24,16 @@ eleventyComputed:
 <article class="post">
   <header class="post-header">
     <h1 class="post-title">{{ title }}</h1>
-    {% include meta.html post: page, content: content, categories: categories, showProfilePhoto: true %}
+    {% include date.html date: page.date, dateFormat: "%b %d, %Y", class: "post-meta-date font-sm" %}
+    <ul class="post-meta-tags" aria-label="Tags">
+      {%- for category in categories -%}
+        <li class="font-sm">
+          <a href="/categories/{{ category }}/" class="underlined-link post-meta-tag" aria-label="{{ category }}">
+            {{- category -}}
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
   </header>
   <div class="post-content">
     {{ content }}
