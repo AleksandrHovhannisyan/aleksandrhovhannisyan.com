@@ -81,6 +81,7 @@
   &-technology {
     border-radius: 0.2rem;
     padding: 0.4rem 1.2rem;
+    @include font($size: "xs");
   }
 }
 

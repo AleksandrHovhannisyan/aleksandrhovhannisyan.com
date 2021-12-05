@@ -6,7 +6,7 @@ eleventyComputed:
     -
       as: font
       type: font/woff2
-      href: "{{ fonts.code.weights.medium.url }}"
+      href: "{{ fonts.code.weights.regular.url }}"
       crossorigin: true
 ---
 
@@ -19,13 +19,13 @@ eleventyComputed:
     </p>
     <nav aria-label="Popular categories" class="blog-nav">
       <a class="screen-reader-only skip-popular-tags" href="#skip-popular-tags">Skip to posts</a>
-      <ol class="post-tags">
+      <ol class="post-tags blog-tags">
         {%- assign popularCategories = collections.popularCategories -%}
         {%- for category in popularCategories %}
           <li>
             <a
               href="{{ category.href }}"
-              class="tag post-tag"
+              class="tag post-tag blog-tag sm"
               {% if pageCategory == category.title -%}
               aria-current="page"
               {%- endif -%}

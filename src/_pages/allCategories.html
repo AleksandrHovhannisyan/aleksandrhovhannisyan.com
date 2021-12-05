@@ -11,7 +11,7 @@ excludeFromSitemap: true
   <ol class="post-tags">
     {%- for category in collections.categoriesWithCount %}
       <li>
-        <a href="{{ category.href }}" class="tag post-tag">
+        <a href="{{ category.href }}" class="tag post-tag sm">
           {{ category.title }}&nbsp;<span class="post-tag-count" aria-label="{{ category.count }} posts">{{ category.count }}</span>
         </a>
       </li>

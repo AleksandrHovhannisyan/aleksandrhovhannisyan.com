@@ -4,10 +4,10 @@
     <h{{ titleLevel }} class="post-preview-title font-md">
       <a class="post-preview-link" href="{{ post.url }}">{{ post.data.title }}</a>
     </h{{ titleLevel }}>
-    <ul class="post-preview-tags font-sm" aria-label="Tags">
+    <ul class="post-tags post-meta-tags" aria-label="Tags">
       {%- for category in post.data.categories -%}
         <li>
-          <a href="/categories/{{ category }}/" class="tag post-preview-tag">
+          <a href="/categories/{{ category }}/" class="tag post-tag post-meta-tag xs">
             {{- category -}}
           </a>
         </li>

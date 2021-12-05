@@ -9,12 +9,6 @@
   position: relative;
   @include font($family: "body", $size: "sm");
 
-  &-item {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-
   &-stats {
     display: flex;
     align-items: center;
@@ -30,15 +24,5 @@
   }
   @include tablet {
     row-gap: 1.6rem;
-  }
-}
-
-.author-photo {
-  --size: 4.4rem;
-  height: var(--size);
-  width: var(--size);
-
-  img {
-    border-radius: 50%;
   }
 }

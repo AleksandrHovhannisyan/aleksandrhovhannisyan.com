@@ -13,8 +13,8 @@
 
   &-header {
     display: flex;
-    flex-wrap: wrap;
     gap: 0.8rem;
+    flex-direction: column-reverse;
   }
 
   &-link {
@@ -33,17 +33,9 @@
     transform: translateY(-100%);
     @include font($family: "code", $weight: "regular");
   }
-
-  &-tags {
-    display: inline-flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-
-  &-tag {
-    display: flex;
-    padding: 0.2rem 1rem;
-    border-radius: 1.6rem;
-    @include font($family: "code", $weight: "regular");
+  @include tablet {
+    &-header {
+      flex-flow: row wrap;
+    }
   }
 }
