@@ -174,7 +174,7 @@ Another common requirement is to have elements change their styling between two 
 
 Certain layout changes cannot be achieved without media queries. But for numerical properties—like spacing, font sizing, dimensions, and so on—you may actually want to scale the value linearly between two breakpoints rather than having it jump from one discrete value to another. Fortunately, if you write modern CSS, you can take advantage of [the `clamp` utility function](https://developer.mozilla.org/en-US/docs/Web/CSS/clamp()) to declare values that **scale fluidly** between a minimum and a maximum.
 
-#### How Clamp Works
+#### How `clamp` Works
 
 While it may seem complicated, `clamp` is actually rather straightforward. It's a function that takes three arguments: a minimum value, a preferred value, and a maximum value (in that order):
 
@@ -196,7 +196,11 @@ At first glance, `clamp` may not seem useful, especially if you consider an exam
 
 In this case, `clamp` will always return `16px` since that's a static value. Where `clamp` *really* shines is when you give it a **dynamic preferred value**. And one way to do that is to use viewport units (`vw`), where `1vw` is defined to be one percent of the current viewport width. If the viewport is `400px` wide, then `1vw` evaluates to `4px`. The keyword here is "evaluates"—whenever the viewport width changes, the browser needs to recompute the value and resolve it to a CSS pixel. And this is the key ingredient that allows us to replace media queries with [linearly interpolated](https://en.wikipedia.org/wiki/Linear_interpolation) values.
 
-So, if we set our preferred value in `vw` units, clamp will guarantee that it never falls outside the bounds of the min and max, and the nature of viewport units will allow the value to scale fluidly between those two endpoints. Here's an example:
+The best way to understand how this works is to visualize it. Check out Adrian Bece's [Modern Fluid Typography Editor](https://modern-fluid-typography.vercel.app/) to get a better feel for how `clamp` works:
+
+{% include img.html src: "fluid-typography-editor.jpg", alt: "Adrian Bece's Fluid Typography editor tool. A sidebar contains toggles and inputs for root font size, min size, max size, and fluid size. The main content region shows a plot of the clamping function, which starts at a y-intecept corresponding to the minimum, extends horizontally for a few units, and then scales linearly up to a maximum.", caption: "The leftmost horizontal line represents the minimum value returned by `clamp`; the rightmost horizontal line corresponds to the maximum. Between these two endpoints is the preferred value, which scales upward linearly.", isCaptionAriaHidden: true %}
+
+So, if we set our preferred value in `vw` units, clamp will guarantee that it never falls outside the bounds of the min and max, while the nature of viewport units will allow the value to scale fluidly between those two endpoints. Here's an example:
 
 ```css
 .element {
@@ -212,13 +216,17 @@ This says:
 
 Why did I pick `4vw`? And more generally, how do you pick the right value for `clamp`? It turns out that you can do a bit of math to figure this out. I prefer to start by phrasing my requirement like so: "I want my element to have a minimum font size of `16px` at a mobile width of `400px` and to scale up from there." In that case, `16 / 400 = 0.04`, or `4vw`. So on mobile, the element's preferred font size is equal to its minimum, or `1rem`. As the viewport width increases, the font size will increase fluidly, up until it hits a maximum allowed value of `1.25rem`.
 
-Keep in mind that while the examples I showed here are for font sizing, `clamp` can be applied to any numerical properties, including padding, margin, borders, and much more. I encourage you to experiment with it to create scalable UI.
+Keep in mind that while the examples I showed here are for font sizing, `clamp` can be applied to any numerical properties, including padding, margin, borders, and much more. I encourage you to experiment with `clamp` to see if it's right for your designs.
 
-#### Visualizing `clamp`
+#### The Limitations of `clamp`
 
-Check out Adrian Bece's [modern fluid typography editor](https://modern-fluid-typography.vercel.app/) to get a better feel for how clamping works in CSS. You can play around with the numbers and visualize the resulting graph of the clamping function, which linearly interpolates your value between a minimum and maximum (the two horizontal lines on either end of the graph).
+There are some caveats to using `clamp` that I want to briefly touch on.
 
-{% include img.html src: "fluid-typography-editor.jpg", alt: "The Fluid Typography editor tool. A sidebar contains toggles and inputs for root font size, min size, max size, and fluid size. The main content region shows a plot of the clamping function, which starts at a y-intecept corresponding to the minimum, extends horizontally for a few units, and then scales linearly up to a maximum." %}
+While fluid scaling looks great, it may not be the right tool for the job if your design does not account for this behavior. So you may actually want to flip a property between two discrete states rather than allowing it to scale linearly, in which case media queries are your only option.
+
+Additionally, `clamp` is not suitable if you want a value to *decrease* as the viewport width increases; this is because an inverse viewport width unit does not yet exist. As an alternative, you may be tempted to try an expression like `clamp(min, calc(1px / 4vw), max)`, but that won't work as far as I can tell.
+
+In short, it's important to understand that while `clamp` is useful and has many applications for creating fluidly scaling designs, it's not a drop-in replacement for media queries.
 
 ### 4. Simplifying Layouts with Gap
 
