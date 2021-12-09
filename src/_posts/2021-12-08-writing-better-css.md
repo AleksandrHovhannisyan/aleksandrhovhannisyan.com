@@ -4,6 +4,7 @@ description: CSS has come a long way since the early days of web development. Us
 keywords: [better css, modern css, fewer lines of css, css]
 categories: [css, layout, practices]
 thumbnail: thumbnail.png
+commentsId: 126
 ---
 
 CSS has come a long way since the early days of web development, when tables and various other hacks were used for layout and positioning. Today's developers can enjoy writing modern CSS that works in all major browsers, without having to bend over backwards to implement tricky layout requirements.
