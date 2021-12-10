@@ -2,7 +2,7 @@
   --gap: 0.4rem;
   display: grid;
   gap: var(--gap);
-  padding-inline-start: clamped(2.4rem, 4.8rem);
+  padding-inline-start: 1em;
 
   & & {
     margin-top: var(--gap);

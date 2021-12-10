@@ -10,6 +10,23 @@
     max-width: 28ch;
   }
 
+  &-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap, 1.2rem);
+  }
+
+  &-tag {
+    display: flex;
+    align-items: center;
+    border-radius: 0.4rem;
+    padding: 0.6rem 1.2rem;
+
+    &-count {
+      font-size: var(--font-size-xs);
+    }
+  }
+
   &-content {
     display: flow-root;
     overflow-wrap: break-word;
@@ -25,6 +42,7 @@
     .toc-list {
       --gap: 2.4rem;
       list-style: disc; // some headings have numbers already
+      padding-inline-start: clamped(2.4rem, 4.8rem);
     }
 
     a:not([class]) {
