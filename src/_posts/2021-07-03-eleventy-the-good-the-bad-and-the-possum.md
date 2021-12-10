@@ -390,7 +390,7 @@ const imageMetadata = await Image(fullyQualifiedImagePath, {
 });
 ```
 
-This is just scratching the surface ofThere's very little that you can't customize. I'm honestly very impressed by how much thought went into making this plugin; it's exactly what I was searching for!
+This is just scratching the surface of the plugin—there's very little that you can't customize or accomplish. I'm honestly very impressed by how much thought went into making this plugin; it's exactly what I was searching for!
 
 ### 6. It Has Great Documentation
 
