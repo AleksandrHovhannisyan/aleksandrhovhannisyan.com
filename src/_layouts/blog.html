@@ -8,22 +8,22 @@ isBlogPage: true
   <header>
     <h1 class="blog-title">{%- if pageCategory == 'all' -%}All Blog Posts{%- else -%}Posts tagged with: {{ pageCategory }}{%- endif -%}</h1>
     <p class="blog-description font-md">
-      Filter by one of the following popular categories, or <a class="underlined-link" href="/categories/">view all categories</a>.
+      Filter by one of the following popular tags, or <a class="underlined-link" href="/categories/">view all tags</a>.
     </p>
-    <nav aria-label="Popular categories" class="blog-nav">
+    <nav aria-label="Popular tags" class="blog-nav">
       <a class="screen-reader-only skip-popular-tags" href="#skip-popular-tags">Skip to posts</a>
-      <ol class="post-tags">
-        {%- assign popularCategories = collections.popularCategories -%}
-        {%- for category in popularCategories %}
+      <ol class="pill-group">
+        {%- assign popularTags = collections.popularCategories -%}
+        {%- for tag in popularTags %}
           <li>
             <a
-              href="{{ category.href }}"
-              class="tag post-tag"
-              {% if pageCategory == category.title -%}
+              href="{{ tag.href }}"
+              class="pill post-tag"
+              {% if pageCategory == tag.title -%}
               aria-current="page"
               {%- endif -%}
             >
-              {{ category.title }}&nbsp;<span class="post-tag-count" aria-label="{{ category.count }} posts">{{ category.count }}</span>
+              {{ tag.title }}&nbsp;<span class="post-tag-count" aria-label="{{ tag.count }} posts">{{ tag.count }}</span>
             </a>
           </li>
         {% endfor %}

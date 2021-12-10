@@ -1,0 +1,22 @@
+@import "../mixins";
+
+.pill {
+  background-color: var(--pill-bg-color);
+  color: var(--color-text-emphasis);
+  @include font($family: "main", $weight: "regular");
+
+  &-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+  }
+}
+
+a.pill {
+  @include focus-outline($color: var(--pill-bg-color-focus), $offset: 0.2rem);
+
+  &:is(:hover, :focus-visible, [aria-current="page"]) {
+    background-color: var(--pill-bg-color-focus);
+    color: var(--color-text-inverted);
+  }
+}

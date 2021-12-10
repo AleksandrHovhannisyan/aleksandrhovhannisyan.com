@@ -16,10 +16,10 @@
     <span>{{ readingLengthMinutes }} min read</span>
   </div>
   {%- if categories -%}
-    <ul class="post-meta-item post-tags post-meta-tags" aria-label="Categories">
+    <ul class="post-meta-item pill-group post-meta-tags" aria-label="Categories">
       {%- for category in categories -%}
         <li>
-          <a href="/categories/{{ category }}/" class="tag post-tag post-meta-tag">
+          <a href="/categories/{{ category }}/" class="pill post-tag">
             {{- category -}}
           </a>
         </li>

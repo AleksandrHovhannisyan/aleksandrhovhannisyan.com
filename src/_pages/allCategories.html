@@ -1,18 +1,18 @@
 ---
-title: All Categories
-description: Browse all posts by category.
+title: All Tags
+description: Browse all posts by tag.
 permalink: "/categories/"
 noindex: true
 excludeFromSitemap: true
 ---
 
-<h1 class="blog-title">All Categories</h1>
-<nav aria-label="Categories">
-  <ol class="post-tags">
-    {%- for category in collections.categoriesWithCount %}
+<h1 class="blog-title">All Tags</h1>
+<nav>
+  <ol class="pill-group">
+    {%- for tag in collections.categoriesWithCount %}
       <li>
-        <a href="{{ category.href }}" class="tag post-tag">
-          {{ category.title }}&nbsp;<span class="post-tag-count" aria-label="{{ category.count }} posts">{{ category.count }}</span>
+        <a href="{{ tag.href }}" class="pill post-tag">
+          {{ tag.title }}&nbsp;<span class="post-tag-count" aria-label="{{ tag.count }} posts">{{ tag.count }}</span>
         </a>
       </li>
     {% endfor %}

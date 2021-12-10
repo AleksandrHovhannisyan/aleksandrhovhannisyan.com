@@ -21,7 +21,7 @@
   }
 
   &-tags {
-    --gap: 0.8rem;
+    gap: 0.8rem;
   }
   @include tablet {
     row-gap: 1.6rem;

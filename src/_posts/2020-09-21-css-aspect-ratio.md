@@ -476,7 +476,7 @@ Hopefully, you now have a better understanding of how to define responsive aspec
   .post-content .tile {
     position: relative;
     height: 0;
-    background-color: var(--tag-bg-color);
+    background-color: var(--pill-bg-color);
     color: var(--color-text-emphasis);
     font-weight: var(--fw-bold);
     list-style: none;
@@ -517,7 +517,7 @@ Hopefully, you now have a better understanding of how to define responsive aspec
   .post-content .square {
     height: 0;
     padding-bottom: 100%;
-    background-color: var(--tag-bg-color);
+    background-color: var(--pill-bg-color);
     color: var(--color-text-emphasis);
     position: relative;
   }
