@@ -49,12 +49,6 @@
     display: none;
     @include font($family: "main", $weight: "bold");
     @include focus-outline($color: white, $offset: 0.4rem);
-
-    &:is(:focus, :hover) {
-      .navbar-site-name {
-        color: var(--navbar-text-color-focus);
-      }
-    }
   }
 
   &-links {
@@ -141,7 +135,6 @@
 
 .skip-navigation:focus,
 .navbar-link:is([aria-current="page"], :hover, :focus) {
-  color: var(--navbar-text-color-focus);
   background-color: var(--navbar-text-bg-color-focus);
 }
 
