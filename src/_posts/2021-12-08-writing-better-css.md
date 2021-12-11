@@ -5,6 +5,7 @@ keywords: [better css, modern css, fewer lines of css, css]
 categories: [css, layout, practices]
 thumbnail: thumbnail.png
 commentsId: 126
+lastUpdated: 2021-12-11
 ---
 
 CSS has come a long way since the early days of web development, when tables and various other hacks were used for layout and positioning. Today's developers can enjoy writing modern CSS that works in all major browsers, without having to bend over backwards to implement tricky layout requirements.
@@ -15,7 +16,7 @@ Not only does modern CSS make it easier to create dynamic layouts, but it also a
 
 ## Modern CSS: When Less Is More
 
-### 1. Chaining Selectors with `:is` and `:where`
+### 1. Chaining Selectors with `:is`
 
 A common task in CSS is to apply some styling to multiple selectors. Perhaps you want to apply the same styling to an element's focus, hover, and ARIA states, like for a navigation link:
 
@@ -44,7 +45,13 @@ The dev experience is not quite as bad in Sass thanks to the ampersand operator:
 
 But you still end up shipping the same amount of output CSS. It would be nice if we could cut down on the repetition and only specify the primary selector once. And it turns out that we can!
 
-All major browsers now support the two pseudo-classes [`:is` and `:where`](https://developer.mozilla.org/en-US/docs/Web/CSS/:is). Both accept a comma-separated list of selectors to match, allowing you to write fewer lines of CSS to accomplish the same task as before. I'll discuss the differences between these two pseudo-classes [at the end of this section](#should-you-use-is-or-where), but for now, let's look at an example:
+All major browsers now support the [`:is` pseudo-class function](https://developer.mozilla.org/en-US/docs/Web/CSS/:is). It accepts a comma-separated list of selectors to match, allowing you to write fewer lines of CSS to accomplish the same task as before.
+
+{% aside %}
+  CSS also supports a similar pseudo-class function, `:where`, that also accepts a list of selectors. We'll look at the use cases for `:where` [in the next section](#2-safe-global-defaults-with-where).
+{% endaside %}
+
+Here's what our earlier example would look like if we were to use `:is`:
 
 ```css
 .nav-link:is(:focus, :hover, [aria-current="page"]) {}
@@ -58,9 +65,9 @@ We can also refactor the second example, where we chained additional modifiers w
 .button:not(.disabled):is(:focus, :hover) {}
 ```
 
-This is great because it means that we don't have to repeat any intermediate classes or pseudo-classes—we only need to list them once and chain an `:is` or `:where` to supply an additional list of selectors to match.
+This is great because it means that we don't have to repeat any intermediate classes or pseudo-classes—we only need to list them once and chain an `:is` to supply an additional list of selectors to match.
 
-The `:is` and `:where` pseudo-classes are even nicer in Sass since you don't need to retype the base selector at all and can just leverage the ampersand operator:
+The `:is` pseudo-class function is even nicer in Sass since you don't need to retype the base selector at all and can just leverage the ampersand operator:
 
 ```css
 .nav-link {
@@ -86,21 +93,80 @@ In some cases, the list of modifier classes can be quite long, meaning you're sh
 .token:is(.tag, .keyword, .someOtherThing) {}
 ```
 
-#### Should You Use `:is` or `:where`?
+#### `:is`, Specificity, and Forgiving Selectors
 
-The primary difference between `:is` and `:where` is that `:is` assumes the highest specificity from among its selector set, whereas `:where` always resolves to a specificity of zero. If all of the selectors in `:is` have the same specificity, this isn't a big deal. That's the case in the example we saw, where all of the selectors share [class specificity](https://web.dev/learn/css/specificity/#class-pseudo-class-or-attribute-selector):
+There are two points worth noting about `:is`.
+
+First, `:is` assumes the highest specificity from among its argument list. This means that it's ideal for situations where all of the selectors you're listing have the same specificity. That's the case in the first example we saw, where all of the selectors share [class specificity](https://web.dev/learn/css/specificity/#class-pseudo-class-or-attribute-selector):
 
 ```css
 .nav-link:is(:focus, :hover, [aria-current="page"]) {}
 ```
 
-But if one of the selectors is more specific, you'll get a higher overall specificity for the ruleset with `:is`. In that case, you may want to opt for `:where` instead to keep the specificity low and rely on the cascade for overrides.
+But in the following toy example, the overall specificity of `:is` ends up being higher due to the presence of an ID in the selector list:
 
-Another key difference between the two is that `:where` is a forgiving selector, meaning that if one of its selectors is invalid, the whole selector set won't be invalidated. On the other hand, if you list an invalid selector in `:is`, the whole selector *will* be invalidated. You can learn more about the differences between these two in the [CSS Tricks article on `:where`](https://css-tricks.com/almanac/selectors/w/where/).
+```css
+.element:is(#identifier, .class) {}
+```
 
-Generally speaking, I like to use `:where` for safe global CSS resets and `:is` for compound selectors. But there's no hard-and-fast rule for this. The key takeaway is that you now have two tools at your disposal for reducing repetition in CSS; which one you use will depend on your preferences, requirements, and conventions.
+Second, `:is` uses [forgiving selector parsing](https://developer.mozilla.org/en-US/docs/Web/CSS/:is#forgiving_selector_parsing), meaning that if one of the selectors you've listed happens to be invalid, the whole argument list won't be invalidated. Here's an example:
 
-### 2. RTL Styling with Logical Properties and Values
+```css
+.element:is(:focus, :unrecognized-selector) {}
+```
+
+`:is` will still parse the argument list and apply the styling to the element if the valid selector (in this case, `:focus`) is encountered.
+
+### 2. Safe Global Defaults with `:where`
+
+Like `:is`, `:where` is a forgiving pseudo-class function that accepts a comma-separated list of selectors to match. So we could've actually done this in the first example I showed:
+
+```css
+.nav-link:where(:focus, :hover, [aria-current="page"]) {}
+```
+
+However, those two code samples are not identical. The only difference between `:is` and `:where` is that `:is` assumes the highest specificity from among its selector set, whereas `:where` always resolves to a specificity of zero.
+
+In other words, this:
+
+```css
+.nav-link {}
+```
+
+Has the same specificity as this:
+
+```css
+.nav-link:where(:focus, :Hover, [aria-current="page"]) {}
+```
+
+Even this complicated and unwieldy selector has a specificity of zero:
+
+```css
+:where(#id:not(.very.high.specificity).more.classes) {}
+```
+
+This makes `:where` better suited if you want to rely on the cascade for overrides. In fact, one great use case for `:where` is to declare global CSS resets or defaults that are guaranteed to always have the lowest possible specificity (zero). For example, Elad Schechter uses this technique in his [modern CSS reset](https://elad2412.github.io/the-new-css-reset/) to define safe defaults for certain elements. Here's what that might look like in practice:
+
+```css
+:where(ul, ol) {
+  list-style: none;
+}
+
+:where(img) {
+  max-width: 100%;
+  height: auto;
+}
+
+/* etc */
+```
+
+All of the selectors in this stylesheet have a specificity of zero, making it possible to override them with any other valid selector later on (or even earlier in the stylesheet!) without having to artificially increase the specificity of those other selectors.
+
+It's true that you should be declaring your resets first as a best practice anyway, and rarely will you ever want to style elements using just tag names elsewhere in your stylesheet (e.g., if you're using the [BEM methodology](http://getbem.com/introduction/)). But `:where` at least gives you some level of assurance that the styles you've defined are *never* going to run into any specificity conflicts.
+
+Additionally, as Adam Argyle notes in [his article on `:is` and `:where`](https://web.dev/css-is-and-where/), the zero-specificity nature of `:where` could prove useful in CSS libraries, allowing users to override any particular bit of styling from the library with custom CSS.
+
+### 3. RTL Styling with Logical Properties and Values
 
 If your app isn't internationalized and only supports a single locale (like `en-US`), then you probably don't find yourself differentiating between left-to-right (LTR) and right-to-left (RTL) text directionality when writing CSS. So you can safely use properties like `margin-left` and `padding-right`, text alignment values like `left` and `right`, absolute positioning, and so on.
 
@@ -157,7 +223,7 @@ There are even CSS properties that automatically adjust based on the document's 
 
 Certain other logical values are experimental and are only supported in a limited number of browsers as of this writing. One such example is direction-aware floating with the `inline-start` and `inline-end` values. As always, be sure to check browser compatibility before refactoring any existing CSS in your code base.
 
-### 3. Writing Fewer Media Queries with Clamp
+### 4. Writing Fewer Media Queries with Clamp
 
 Another common requirement is to have elements change their styling between two breakpoints, perhaps for font sizing:
 
@@ -228,7 +294,7 @@ Additionally, `clamp` is not suitable if you want a value to *decrease* as the v
 
 In short, it's important to understand that while `clamp` is useful and has many applications for creating fluidly scaling designs, it's not a drop-in replacement for media queries.
 
-### 4. Simplifying Layouts with Gap
+### 5. Simplifying Layouts with Gap
 
 Before CSS grid, the only viable option for creating dynamic layouts on the web was Flexbox. But it had one major limitation: lack of support for gaps. Whereas design tools supported the notion of gaps, CSS did not, and most stylesheets relied on margins to space flex children apart. This usually involved inconvenient hacks to exclude the last flex item from the selector list:
 
