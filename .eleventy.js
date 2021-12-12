@@ -1,5 +1,13 @@
-const PluginFootnotes = require('eleventy-plugin-footnotes')
-const { asideShortcode, imageShortcode, iconShortcode, socialIconShortcode, quoteShortcode } = require('./config/shortcodes');
+const esbuild = require('esbuild');
+const path = require('path');
+const PluginFootnotes = require('eleventy-plugin-footnotes');
+const {
+  asideShortcode,
+  imageShortcode,
+  iconShortcode,
+  socialIconShortcode,
+  quoteShortcode,
+} = require('./config/shortcodes');
 const {
   wordCount,
   limit,
@@ -15,9 +23,15 @@ const {
   getLatestCollectionItemDate,
   compileAndMinifyScss,
 } = require('./config/filters');
-const { getAllPosts, getAllUniqueCategories, getPostsByCategory, getPopularCategories, getCategoriesWithDescendingCount } = require('./config/collections');
+const {
+  getAllPosts,
+  getAllUniqueCategories,
+  getPostsByCategory,
+  getPopularCategories,
+  getCategoriesWithDescendingCount,
+} = require('./config/collections');
 const markdownLib = require('./config/plugins/markdown');
-const { dir, imagePaths } = require('./config/constants');
+const { dir, imagePaths, scriptDirs } = require('./config/constants');
 const { slugifyString } = require('./config/utils');
 const { escape } = require('lodash');
 
@@ -31,6 +45,7 @@ module.exports = (eleventyConfig) => {
 
   // Watch targets
   eleventyConfig.addWatchTarget(imagePaths.source);
+  eleventyConfig.addWatchTarget(scriptDirs.source);
 
   // Pass-through copy for static assets
   eleventyConfig.addPassthroughCopy(`${dir.input}/${dir.assets}/fonts`);
@@ -84,6 +99,21 @@ module.exports = (eleventyConfig) => {
     backLinkLabel: (footnote, index) => `Back to reference ${index + 1}`,
   });
   eleventyConfig.setLibrary('md', markdownLib);
+
+  // Post-processing
+  eleventyConfig.on('afterBuild', () => {
+    return esbuild.build({
+      entryPoints: [path.join(scriptDirs.source, 'index.mjs'), path.join(scriptDirs.source, 'comments.mjs')],
+      entryNames: '[dir]/[name]',
+      outdir: scriptDirs.output,
+      format: 'esm',
+      outExtension: { '.js': '.mjs' },
+      bundle: true,
+      splitting: true,
+      minify: true,
+      sourcemap: process.env.ELEVENTY_ENV !== 'production',
+    });
+  });
 
   return {
     dir,

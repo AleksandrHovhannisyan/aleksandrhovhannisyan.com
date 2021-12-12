@@ -1,3 +1,5 @@
+const path = require('path');
+
 const dir = {
   input: 'src',
   output: '_site',
@@ -8,11 +10,17 @@ const dir = {
 };
 
 const imagePaths = {
-  source: `${dir.input}/${dir.assets}/images`,
-  output: `${dir.output}/${dir.assets}/images`,
+  source: path.join(dir.input, dir.assets, 'images'),
+  output: path.join(dir.output, dir.assets, 'images'),
+};
+
+const scriptDirs = {
+  source: path.join(dir.input, dir.assets, 'scripts'),
+  output: path.join(dir.output, dir.assets, 'scripts'),
 };
 
 module.exports = {
   dir,
   imagePaths,
+  scriptDirs,
 };

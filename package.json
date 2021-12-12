@@ -10,11 +10,9 @@
     "debug": "DEBUG=Eleventy* ELEVENTY_ENV=development npx @11ty/eleventy --serve --incremental --port=4001",
     "serve": "npm-run-all clean --parallel serve:*",
     "serve:html": "ELEVENTY_ENV=development npx @11ty/eleventy --serve --incremental --port=4001",
-    "serve:js": "webpack --mode=development --watch",
     "serve:css": "sass --watch src/assets/styles:_site/assets/styles --style=expanded",
-    "build": "run-s test clean build:html build:css build:js",
+    "build": "run-s test clean build:html build:css",
     "build:html": "ELEVENTY_ENV=production npx @11ty/eleventy",
-    "build:js": "webpack --mode=production",
     "build:css": "sass src/assets/styles:_site/assets/styles --style=compressed",
     "lint": "npm-run-all lint:*",
     "lint:fix": "npm-run-all --parallel lint:*:fix",
@@ -22,7 +20,7 @@
     "lint:css:fix": "stylelint --fix \"src/**/*.scss\"",
     "lint:js": "eslint --cache \"**/*.js\"",
     "lint:js:fix": "eslint --cache --fix \"**/*.js\"",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest --config jest.config.cjs",
+    "test": "NODE_OPTIONS='--experimental-vm-modules' jest --config jest.config.cjs",
     "test:watch": "yarn test --watch --silent=false --silent=false",
     "update-browserslist": "npx browserslist@latest --update-db"
   },
@@ -36,14 +34,11 @@
     "@11ty/eleventy-cache-assets": "^2.3.0",
     "@11ty/eleventy-img": "^1.0.0",
     "@11ty/eleventy-upgrade-help": "^1.0.1",
-    "@babel/core": "^7.14.6",
-    "@babel/preset-env": "^7.14.5",
     "@iktakahiro/markdown-it-katex": "^4.0.1",
     "@toycode/markdown-it-class": "^1.2.4",
-    "babel-jest": "^26.3.0",
-    "babel-loader": "^8.2.2",
     "classnames": "^2.3.1",
     "eleventy-plugin-footnotes": "^0.10.0",
+    "esbuild": "^0.14.2",
     "eslint": "^8.3.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
@@ -67,9 +62,7 @@
     "simple-icons": "^5.3.0",
     "slugify": "^1.5.3",
     "stylelint": "^14.1.0",
-    "stylelint-config-standard-scss": "^3.0.0",
-    "webpack": "^5.38.1",
-    "webpack-cli": "^4.7.0"
+    "stylelint-config-standard-scss": "^3.0.0"
   },
   "browserslist": [
     "defaults and supports es6-module and not IE <= 11"

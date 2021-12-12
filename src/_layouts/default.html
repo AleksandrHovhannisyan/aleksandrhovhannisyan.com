@@ -94,10 +94,10 @@ eleventyComputed:
     })();
   </script>
   {%- comment -%}Common bundles.{%- endcomment -%}
-  <script type="module" src="/assets/scripts/main.bundle.mjs"></script>
+  <script type="module" src="/assets/scripts/index.mjs"></script>
   {%- comment -%}Posts with comments.{%- endcomment -%}
   {%- if commentsId -%}
-    <script type="module" src="/assets/scripts/comments.bundle.mjs"></script>
+    <script type="module" src="/assets/scripts/comments.mjs"></script>
   {%- endif -%}
   {%- comment -%}Open Graph social media previews{%- endcomment -%}
   <meta property="og:title" content="{{ pageTitle }}">
@@ -120,7 +120,7 @@ eleventyComputed:
       <link rel="preload" as="{{ preload.as }}" type="{{ preload.type }}" href="{{ preload.href }}" {% if preload.crossorigin %}crossorigin{% endif %}>
     {%- endfor -%}
   {% endif %}
-  <link rel="modulepreload" as="script" type="text/javascript" href="/assets/scripts/main.bundle.mjs">
+  <link rel="modulepreload" as="script" type="text/javascript" href="/assets/scripts/index.mjs">
   <link rel="alternate" type="application/rss+xml" title="RSS Feed for aleksandrhovhannisyan.com" href="/feed.xml" />
   <noscript><style>noscript { display: contents; } .lazy-img { display: none; }</style></noscript>
 </head>

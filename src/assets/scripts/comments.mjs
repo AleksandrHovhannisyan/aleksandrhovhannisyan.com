@@ -8,7 +8,7 @@ const commentsObserver = new IntersectionObserver(
     entries.forEach(async (entry) => {
       if (entry.isIntersecting) {
         // Don't need this until they reach the comments section
-        const { fetchComments, renderComments } = await import('@utils');
+        const { fetchComments, renderComments } = await import('./utils/comments/index.mjs');
         try {
           const comments = await fetchComments(commentsId);
           renderComments(comments);

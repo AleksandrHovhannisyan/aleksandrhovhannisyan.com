@@ -1,11 +1,11 @@
-import { ThemeToggle } from '@components';
-import { lazyLoad, copyToClipboard } from '@utils';
+import ThemeToggle from './components/ThemeToggle/index.mjs';
+import lazyLoad from './utils/lazyLoad/index.mjs';
 
 // eslint-disable-next-line no-unused-vars
 const themeToggle = new ThemeToggle({
+  themeOwner: document.documentElement,
   toggleElement: document.getElementById('theme-toggle'),
   storageKey: 'theme',
-  themeOwner: document.documentElement,
   defaultTheme: 'light',
   themeMap: {
     light: 'dark',
@@ -40,7 +40,7 @@ copyCodeButtons.forEach((copyCodeButton, index) => {
   const code = copyableCodeBlocks[index].innerText;
 
   copyCodeButton.addEventListener('click', () => {
-    copyToClipboard(code);
+    window.navigator.clipboard.writeText(code);
     copyCodeButton.classList.add('copied');
 
     setTimeout(() => {
