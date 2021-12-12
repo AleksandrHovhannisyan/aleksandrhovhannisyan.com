@@ -3,11 +3,11 @@ import lazyLoad from './utils/lazyLoad/index.mjs';
 
 // eslint-disable-next-line no-unused-vars
 const themeToggle = new ThemeToggle({
-  themeOwner: document.documentElement,
+  root: document.documentElement,
   toggleElement: document.getElementById('theme-toggle'),
   storageKey: 'theme',
   defaultTheme: 'light',
-  themeMap: {
+  themes: {
     light: 'dark',
     dark: 'light',
   },

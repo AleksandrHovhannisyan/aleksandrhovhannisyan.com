@@ -12,10 +12,10 @@ describe('ThemeToggle component', () => {
   it('respects the default theme', () => {
     const toggle = new ThemeToggle({
       toggleElement,
-      themeOwner: document.documentElement,
+      root: document.documentElement,
       storageKey: 'theme',
       defaultTheme: 'dark',
-      themeMap: {
+      themes: {
         light: 'dark',
         dark: 'light',
       },
@@ -28,10 +28,10 @@ describe('ThemeToggle component', () => {
     // eslint-disable-next-line no-unused-vars
     const toggle = new ThemeToggle({
       toggleElement,
-      themeOwner: document.documentElement,
+      root: document.documentElement,
       storageKey: 'theme',
       defaultTheme: 'light',
-      themeMap: {
+      themes: {
         light: 'dark',
         dark: 'light',
       },
@@ -48,10 +48,10 @@ describe('ThemeToggle component', () => {
   it('toggles from light to dark', () => {
     const toggle = new ThemeToggle({
       toggleElement,
-      themeOwner: document.documentElement,
+      root: document.documentElement,
       storageKey: 'theme',
       defaultTheme: 'light',
-      themeMap: {
+      themes: {
         light: 'dark',
         dark: 'light',
       },
@@ -64,10 +64,10 @@ describe('ThemeToggle component', () => {
   it('toggles from dark to light', () => {
     const toggle = new ThemeToggle({
       toggleElement,
-      themeOwner: document.documentElement,
+      root: document.documentElement,
       storageKey: 'theme',
       defaultTheme: 'light',
-      themeMap: {
+      themes: {
         light: 'dark',
         dark: 'light',
       },
@@ -81,9 +81,9 @@ describe('ThemeToggle component', () => {
   it("keeps the theme owner's class in sync with the current theme", () => {
     const toggle = new ThemeToggle({
       toggleElement,
-      themeOwner: document.documentElement,
+      root: document.documentElement,
       defaultTheme: 'light',
-      themeMap: {
+      themes: {
         light: 'dark',
         dark: 'light',
       },
@@ -98,10 +98,10 @@ describe('ThemeToggle component', () => {
   it("keeps the toggle element's aria-label in sync with the current theme", () => {
     const toggle = new ThemeToggle({
       toggleElement,
-      themeOwner: document.documentElement,
+      root: document.documentElement,
       storageKey: 'theme',
       defaultTheme: 'light',
-      themeMap: {
+      themes: {
         light: 'dark',
         dark: 'light',
       },

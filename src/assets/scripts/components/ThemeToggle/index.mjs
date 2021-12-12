@@ -1,10 +1,10 @@
 export default class ThemeToggle {
-  constructor({ toggleElement, themeOwner, storageKey, defaultTheme, themeMap }) {
-    this.themeOwner = themeOwner;
+  constructor({ toggleElement, root, storageKey, defaultTheme, themes }) {
+    this.root = root;
     this.toggleElement = toggleElement;
     this.toggleElement.addEventListener('click', () => this.toggle());
     this.storageKey = storageKey;
-    this.themeMap = themeMap;
+    this.themes = themes;
     this.theme = localStorage.getItem(storageKey) ?? defaultTheme;
 
     // On init, only update the class names and sync the aria label. The main
@@ -18,12 +18,12 @@ export default class ThemeToggle {
   }
 
   get nextTheme() {
-    return this.themeMap[this.theme];
+    return this.themes[this.theme];
   }
 
   updateClassNames(oldTheme, newTheme) {
-    this.themeOwner.classList.remove(oldTheme);
-    this.themeOwner.classList.add(newTheme);
+    this.root.classList.remove(oldTheme);
+    this.root.classList.add(newTheme);
   }
 
   syncAriaLabelWithStorage() {
