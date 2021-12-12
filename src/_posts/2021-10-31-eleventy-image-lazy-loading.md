@@ -5,7 +5,8 @@ keywords: [11ty image, lazy load, lazily load]
 categories: [webperf, 11ty, images, javascript]
 commentsId: 118
 lastUpdated: 2021-11-30
-thumbnail: https://images.unsplash.com/photo-1631739408670-38319df9c5c1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=600&q=80
+thumbnail:
+  url: https://images.unsplash.com/photo-1631739408670-38319df9c5c1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 Images are a core part of the web, but they don't come for free. While imagery can enrich your content and create a more engaging user experience, it can also slow down your site and create a poor user experience if it's not used responsibly. Now that Google uses page load speed as a ranking factor, developers need to put in more effort to create responsive and optimized images and deliver the best possible experience to their users.

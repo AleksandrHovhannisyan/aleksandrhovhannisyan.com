@@ -24,12 +24,8 @@
 
 .banner-heading {
   text-transform: uppercase;
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.1rem;
   word-spacing: 0.2rem;
-  background-color: var(--color-text-emphasis);
-  color: var(--color-surface-1);
-  width: fit-content;
-  padding: 0.2rem 1.2rem;
   @include font($size: "sm");
 }
 

@@ -3,12 +3,10 @@
 .post-meta {
   &-date {
     color: var(--color-text-emphasis);
-    @include font($family: "code", $weight: "regular");
   }
 
   &-tag {
     display: flex;
-    @include font($family: "code", $weight: "regular");
 
     &::before {
       content: "#";

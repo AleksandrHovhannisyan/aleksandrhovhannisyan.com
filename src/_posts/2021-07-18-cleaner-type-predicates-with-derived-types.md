@@ -4,7 +4,8 @@ description: In TypeScript, type predicates allow you to narrow down an abstract
 keywords: [type predicate, derived types, typescript]
 categories: [typescript, javascript]
 commentsId: 98
-thumbnail: https://images.unsplash.com/photo-1511688878353-3a2f5be94cd7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=600&q=80
+thumbnail:
+  url: https://images.unsplash.com/photo-1511688878353-3a2f5be94cd7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 Let's pretend that we're writing the frontend for a juice shop that prepares a combination of fruits and vegetables for its juices. We want to strictly type our ingredients, so we first take a naive approach that lists the types upfront for fruits and vegetables:

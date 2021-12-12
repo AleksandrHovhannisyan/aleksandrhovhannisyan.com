@@ -3,7 +3,8 @@ title: Does Web Performance Matter? It Depends.
 description: Some big brands have a slow page load speed, but they still rank well on Google. So does web performance even matter?
 keywords: [web performance, page load speed]
 categories: [webdev, webperf]
-thumbnail: https://images.unsplash.com/photo-1579019163248-e7761241d85a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=600&q=80
+thumbnail:
+  url: https://images.unsplash.com/photo-1579019163248-e7761241d85a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 About halfway through writing an exhaustive guide on web performance and Lighthouse, I stopped to wonder: Does any of this actually matter? Is web performance really as important as people claim it is? That prompted me to do a bit of digging... And the results were enlightening.

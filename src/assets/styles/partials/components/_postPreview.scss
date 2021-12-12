@@ -3,7 +3,7 @@
 .post-preview {
   display: grid;
   grid-template-areas:
-    "date"
+    "thumbnail"
     "title"
     "description"
     "tags";
@@ -12,11 +12,30 @@
   &-grid {
     margin-top: 3.2rem;
     display: grid;
-    row-gap: 4rem;
+    row-gap: 4.8rem;
   }
 
   &-link {
     @include underlined-link($initially-underlined: false);
+  }
+
+  &-thumbnail-container {
+    grid-area: thumbnail;
+    user-select: none;
+  }
+
+  &-thumbnail-container,
+  &-date {
+    margin-block-end: 1.2rem;
+  }
+
+  &-thumbnail {
+    img {
+      object-fit: cover;
+      object-position: center;
+      border-radius: 0.4rem;
+      aspect-ratio: 16 / 9;
+    }
   }
 
   &-title {
@@ -29,25 +48,90 @@
   }
 
   &-date {
-    grid-area: date;
+    grid-area: thumbnail;
+    color: white;
+    background:
+      linear-gradient(
+        213deg,
+        hsl(0deg 0% 0%) 0%,
+        hsl(0deg 0% 0% / 90.2%) 6.6%,
+        hsl(0deg 0% 0% / 81.4%) 12.6%,
+        hsl(0deg 0% 0% / 73.5%) 18.1%,
+        hsl(0deg 0% 0% / 66.3%) 23.2%,
+        hsl(0deg 0% 0% / 59.9%) 28.1%,
+        hsl(0deg 0% 0% / 53.9%) 33%,
+        hsl(0deg 0% 0% / 48.2%) 38%,
+        hsl(0deg 0% 0% / 42.8%) 43.3%,
+        hsl(0deg 0% 0% / 37.5%) 49%,
+        hsl(0deg 0% 0% / 32.1%) 55.2%,
+        hsl(0deg 0% 0% / 26.6%) 62.1%,
+        hsl(0deg 0% 0% / 20.8%) 69.9%,
+        hsl(0deg 0% 0% / 14.5%) 78.7%,
+        hsl(0deg 0% 0% / 7.6%) 88.7%,
+        hsl(0deg 0% 0% / 0%) 100%
+      );
+    z-index: 1;
+    display: flex;
+    justify-content: end;
+    padding: 0.8rem;
+    pointer-events: none;
   }
 
   &-tags {
     grid-area: tags;
     margin-top: 0.4rem;
   }
-  @include tablet-sm {
+  @include tablet {
     & {
-      grid-template-columns: min-content auto;
+      grid-template-columns: auto min-content auto;
       column-gap: 1.2rem;
       grid-template-areas:
-        "date tags"
-        "title title"
-        "description description";
+        "thumbnail date tags"
+        "thumbnail title title"
+        "thumbnail description description";
+    }
+
+    &-thumbnail {
+      height: 100%;
+      width: 18rem;
+      padding: 0.8rem 0;
+      margin-inline-end: 1.2rem;
+
+      .light &[data-loaded="true"] .lazy-img {
+        filter: blur(0) contrast(0.95);
+      }
+
+      &-container {
+        margin: 0;
+      }
+
+      img {
+        height: 100%;
+      }
+    }
+
+    &-description {
+      @include line-clamp(3);
+    }
+
+    &-date {
+      display: unset;
+      justify-content: unset;
+      color: unset;
+      background: unset;
+      grid-area: date;
+      margin: unset;
+      padding: unset;
+      pointer-events: unset;
     }
 
     &-tags {
       margin: 0;
+    }
+
+    &-date,
+    &-tags {
+      @include font($size: "sm");
     }
   }
 }

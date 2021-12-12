@@ -4,7 +4,8 @@ description: SEO is the art of making strategic improvements to a site's content
 keywords: [SEO blogging best practices]
 categories: [off-topic, blogging, seo]
 commentsId: 41
-thumbnail: https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=600&q=80
+thumbnail:
+  url: https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 **Search engine optimization** (SEO) is the art of making strategic improvements to a site's content or performance in order to rank higher in search results and attract more traffic.

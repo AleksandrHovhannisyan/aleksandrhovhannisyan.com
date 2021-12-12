@@ -4,7 +4,8 @@ description: Promises are a powerful tool for writing asynchronous code in JavaS
 keywords: [javascript promises]
 categories: [javascript, promises, async]
 commentsId: 57
-thumbnail: https://images.unsplash.com/photo-1550368566-f9cc32d7392d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=600&q=80
+thumbnail:
+  url: https://images.unsplash.com/photo-1550368566-f9cc32d7392d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 As a general programming concept, promises are nothing new—they've been around for quite some time in other languages. C++11, for example, introduced `std::promise` and `std::future` (and, later, `std::async`) for asynchronous logic.
