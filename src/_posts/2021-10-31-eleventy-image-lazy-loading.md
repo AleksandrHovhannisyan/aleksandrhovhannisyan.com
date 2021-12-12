@@ -679,9 +679,12 @@ lazyLoad(lazyPictures, (pictureElement) => {
   // Cleanup tasks after the image loads. Important to
   // define this handler before setting src/srcsets.
   img.onload = () => {
-    pictureElement.classList.add('loaded');
+    pictureElement.dataset.loaded = true;
     img.removeAttribute('data-src');
   };
+  img.onerror = () => {
+    pictureElement.dataset.loaded = false;
+  }
 
   // Swap in the media sources
   sources.forEach((source) => {
@@ -714,7 +717,7 @@ If you want your images to fade in more smoothly, you can use the CSS `blur` fil
   filter: blur(8px);
   transition: filter 0.3s ease-in;
 }
-.loaded .lazy-img {
+.lazy-picture[data-loaded] .lazy-img {
   filter: unset;
 }
 ```

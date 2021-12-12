@@ -1,11 +1,5 @@
 @import "../mixins";
 
-.lazy-picture {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .lazy-img {
   --transition-duration: 0.3s;
   --transition-timing-function: ease-in;
@@ -13,10 +7,16 @@
   @include transition(filter);
 }
 
-:is(.loaded, .failed-to-load) .lazy-img {
-  filter: initial;
-}
+.lazy-picture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-.dark :is(.loaded, .failed-to-load) .lazy-img {
-  filter: blur(0) brightness(0.85);
+  &[data-loaded] .lazy-img {
+    filter: initial;
+  }
+
+  .dark &[data-loaded] .lazy-img {
+    filter: blur(0) brightness(0.85);
+  }
 }

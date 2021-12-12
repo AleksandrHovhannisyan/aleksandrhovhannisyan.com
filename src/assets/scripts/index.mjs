@@ -18,11 +18,11 @@ lazyLoad(lazyImages, (pictureElement) => {
   const img = pictureElement.querySelector('.lazy-img');
   const sources = pictureElement.querySelectorAll('source');
   img.onload = () => {
-    pictureElement.classList.add('loaded');
+    pictureElement.dataset.loaded = true;
     img.removeAttribute('data-src');
   };
   img.onerror = () => {
-    pictureElement.classList.add('failed-to-load');
+    pictureElement.dataset.loaded = false;
   };
   sources.forEach((source) => {
     source.sizes = source.dataset.sizes;

@@ -40,7 +40,7 @@
       border-radius: 0.4rem;
     }
 
-    .light &.loaded img {
+    .light &[data-loaded="true"] .lazy-img {
       filter: blur(0) contrast(0.95);
     }
   }
