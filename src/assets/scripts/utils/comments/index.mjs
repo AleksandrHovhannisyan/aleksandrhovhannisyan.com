@@ -28,7 +28,7 @@ export const renderComments = async (comments) => {
       return `<li>
                 <article class="post-comment">
                   <header class="post-comment-header">
-                    <img src="${comment.user.avatarUrl}" alt="" aria-hidden="true" class="post-comment-avatar">
+                    <img src="${comment.user.avatarUrl}" alt="" aria-hidden="true" class="post-comment-avatar circle">
                     <a
                       href="https://github.com/${comment.user.name}"
                       class="post-comment-username"

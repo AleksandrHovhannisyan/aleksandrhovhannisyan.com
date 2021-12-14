@@ -51,7 +51,6 @@
     position: absolute;
     width: var(--avatar-size);
     left: calc(-1 * var(--avatar-size) - var(--meta-spacing));
-    border-radius: 50%;
   }
 
   &-username {
