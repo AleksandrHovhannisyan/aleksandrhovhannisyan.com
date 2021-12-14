@@ -4,13 +4,13 @@ description: Setting your base font size to 62.5% allows you to think in pixels 
 keywords: [base font size, "62.5%", font size preferences, rem]
 categories: [css, typography, math, a11y]
 commentsId: 97
-lastUpdated: 2021-09-16
+lastUpdated: 2021-12-14
 isFeatured: true
 thumbnail:
   url: https://images.unsplash.com/photo-1624558347497-df07e0096f5a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bWFnbmlmeWluZyUyMGdsYXNzJTIwYm9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1600&h=900&q=60
 ---
 
-In CSS, there are lots of different units that can be used to size elements on a page—`px`, `vw`, `ch`, `em`, `rem`, and [far too many others](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units) to list here. Of all these units, `rem` happens to be the most reliable for sizing elements responsively, allowing you to scale your UI with the browser's base font size and to respect user preferences for accessibility. Let's understand why `rem` is the ideal unit for font size and how setting the base font size to `62.5%` can make our lives easier while also honoring user preferences.
+In CSS, there are lots of different units that can be used to size elements on a page—`px`, `vw`, `ch`, `em`, `rem`, and [far too many others](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units) to list here. Of all these units, `rem` is the most reliable for font sizing, allowing you to scale your UI responsively while also respecting users' font size preferences for accessibility. Let's understand why `rem` is the ideal unit for font size and how setting the root font size to `62.5%` can make our lives easier.
 
 {% include toc.md %}
 
@@ -18,15 +18,15 @@ In CSS, there are lots of different units that can be used to size elements on a
 
 The traditional unit for sizing anything on the web is the CSS pixel, but it's not ideal for font size. While pixels do make it easy for you to translate mockups from design software directly into CSS, they're an [absolute-length unit](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#absolute_length_units), which means that one CSS pixel corresponds to a **fixed physical pixel size** (device pixel) on a user's screen. This may be `1/96`th of an inch on `96` DPI devices, or it may be some other physical quantity on a device with a different DPI. For our purposes in this article, the important thing to understand is that while a CSS pixel may not always correspond to the same physical quantity between two devices that have different DPIs, it *does* refer to a fixed quantity on a single device.
 
-CSS pixels are the easiest unit to understand because they're grounded in physical measurements. But like other absolute units, they don't scale with other measurements. And using pixels for font sizing actually harms accessibility. To understand why, we need to learn about **user font size preferences**.
+CSS pixels are the easiest unit to understand because they're grounded in physical measurements. But like other absolute units, they don't scale with other measurements. In particular, using pixels for font sizing isn't great for accessibility. To understand why, we need to learn about **user font size preferences**.
 
 ## Respecting a User's Font Size Preferences
 
-Every browser applies a root font size of `16px` to a document, meaning that unstyled body text will have a font size of `16` CSS pixels out of the box. However, both developers and users can change this behavior. Developers can change the font size of the root element (`html`) with CSS so that all elements inherit that new font size. On the other hand, users can go into their browser's settings (e.g., `chrome://settings/fonts` in Chrome) and configure their font preferences:
+Every browser applies a root font size of `16px` to a document, meaning that unstyled body text will have a rendered font size of `16` CSS pixels. However, both developers and users can change this behavior. Developers can change the font size of the root element (`html`) with CSS so that all elements inherit that new font size. Likewise, users can go into their browser settings (e.g., `chrome://settings/fonts` in Chrome) and configure their font size preferences:
 
 {% include img.html src: "chrome-settings.jpg", alt: "The Chrome settings page for changing one's preferred font size. Two sliders can be seen: one for the font size and another for the minimum font size. Sample sentences are shown below those sliders, along with pickers for the user's preferred font family (which, by default, is Times New Roman)." %}
 
-User preferences for font size should always take precedence over your CSS. This means that using hard-coded pixels for font sizing is inaccessible to users with vision impairments, who may want to scale up the font size of your page so that text is easier to read. When you set a font size in pixels, it will *always* be rendered at that size, regardless of what font size a user prefers.
+User preferences for font size should always take precedence over your CSS. This means that using hard-coded pixels for font sizing is inaccessible to users with vision impairments, who may want to scale up the font size of your page so that text is easier to read. When you set a font size in pixels, it will *always* render at that size, regardless of what font size a user prefers. You can learn more about why this matters in [WCAG Criterion 1.4.4 Resize Text](https://www.w3.org/WAI/WCAG21/Understanding/resize-text.html).
 
 ### Preferred Font Size vs. Browser Zoom Level
 
@@ -38,21 +38,25 @@ For example, changing the base font size from `16px` to `18px` is equivalent to 
 
 However, more commonly, users have a preferred font size for their monitor rather than a preferred zoom percentage—after all, it's much easier for users to reason about pixels than it is some arbitrary percentage zoom. Moreover, as in the example above, percentages may yield floating-point results that don't appear in the browser settings, forcing a user to choose between the two closest values that are available.
 
-This means that we should **always respect the user's preferred base font size** rather than forcing them to figure out whether we support zooming only, font size scaling only, or both zooming and font size scaling. You can learn more about respecting user font size preferences in [WCAG Criterion 1.4.4 Resize Text](https://www.w3.org/WAI/WCAG21/Understanding/resize-text.html).
+This means that we should always respect the user's preferred base font size rather than forcing them to figure out whether we support zooming only, font size scaling only, or both zooming and font size scaling.
+
+{% aside %}
+  One thing worth noting is that different font sizes render at different visible sizes depending on your chosen font family. For example, [Libre Baskerville](https://fonts.google.com/specimen/Libre+Baskerville) is a notoriously large font family; a font size of `16px` rendered in this family corresponds to roughly `18px` in most other families.
+{% endaside %}
 
 ## Scaling Font Sizes with `rem`
 
-So absolute units won't work if we care about honoring a user's font size preferences. Fortunately, CSS also offers [relative-length units](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#relative_length_units), which reference other elements on the page rather than always corresponding to a fixed physical quantity. Two such units are `em` and `rem`.
+So absolute units aren't ideal if we want to honor our users' font size preferences. Fortunately, CSS also offers [relative-length units](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#relative_length_units), which reference other elements on the page rather than using fixed CSS pixels. Two such units are `em` and `rem`.
 
 When used for a child element's font size, `em` refers to the parent font size. For example, if an element has a font size of `24px`, then `0.5em` translates to a font size of `12px` for a child element. While in some cases `em` can be useful for padding and margins, it's problematic for font sizing. If you give an element a font size in `em` and a child a font size in `em`, those two `em`s will create a compounding effect. This makes it less than ideal in component-driven development because an element may be nested arbitrarily deep in other `em`-sized containers. Thus, an element's font sizing cannot be determined reliably just by looking at its own CSS.
 
-By contrast, `rem` (which stands for "root em") always references **the base font size of the document**. Assuming that the base font size is `16px`, we get the following values:
+By contrast, `rem` (which stands for "**root em**") always references the root font size of the document. Assuming that the root font size is `16px`, we get the following values:
 
 - `1rem = 16px`
 - `1.5rem = 24px`
 - `0.5rem = 8px`
 
-The great thing about `rem` is that we can safely use it for font sizes in nested layouts and component frameworks since it always references the root font size, rather than some unknown parent element's font size. Thus, it's more predictable than `em`. This makes `rem` the ideal unit for sizing elements responsively on a page—you can use it for padding, margins, font sizes, border radii, and even width and height. When users go in and change their base font size preference at the browser level, all `rem`-based dimensions will scale accordingly.
+The great thing about `rem` is that we can safely use it for font sizes in nested layouts and component frameworks since it always references the root font size, rather than some unknown parent element's font size. Thus, it's more predictable than `em`. This makes `rem` the ideal unit for font sizing—when users go in and change their preferred font size in their browser settings, all of your `rem`-based sizes will scale accordingly.
 
 Unfortunately, if we use `rem`, we won't have the luxury of translating pixel designs directly into CSS. To render a font size of `12px`, for example, we need to do some math to figure out that `12 ÷ 16 = 0.75rem` (assuming a base font size of `16px`). This is tedious—but we can work around it!
 
