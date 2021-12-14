@@ -1,3 +1,3 @@
 {%- assign datetimeFormat = datetimeFormat | default: "%Y-%m-%d" -%}
 {%- assign dateFormat = dateFormat | default: "%m/%d/%Y" -%}
-<time datetime="{{ date | date: datetimeFormat }}">{{ date | date: dateFormat }}</time>
+<time datetime="{{ date | date: datetimeFormat }}" {% if class %}class="{{ class }}"{% endif %}>{{ date | date: dateFormat }}</time>

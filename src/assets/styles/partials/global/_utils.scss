@@ -14,8 +14,19 @@
   @include centered;
 }
 
+.circle {
+  border-radius: 50%;
+}
+
 .underlined-link {
   @include underlined-link;
+}
+
+.banner-heading {
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  word-spacing: 0.2rem;
+  @include font($size: "sm");
 }
 
 $font-size-steps: "xs", "sm", "base", "md", "lg", "xl", "xxl", "xxxl";

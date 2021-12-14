@@ -22,6 +22,7 @@ const imageShortcode = async (props) => {
     widths = [400, 800],
     sizes = '100vw',
     className,
+    imgClass,
     clickable = true,
     // mainly for remote images
     urlPath,
@@ -86,10 +87,11 @@ const imageShortcode = async (props) => {
   const lazyImgAttributes = stringifyAttributes({
     src: formatSizes[baseFormat].placeholder.url,
     'data-src': formatSizes[baseFormat].largest.url,
-    class: 'lazy-img',
+    class: classNames('lazy-img', imgClass),
   });
   const noscriptImgAttributes = stringifyAttributes({
     src: formatSizes[baseFormat].largest.url,
+    ...(imgClass && { class: imgClass }),
   });
 
   /** Returns source elements as an HTML string. */

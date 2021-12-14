@@ -7,7 +7,7 @@ pagination:
 permalink: "{{ category.href }}"
 noindex: true
 excludeFromSitemap: true
-renderData:
+eleventyComputed:
   title: "Posts tagged with {{ category.title }}{% if category.pageNumber > 0 %} (Page {{ category.pageNumber | plus: 1 }}){% endif %}"
 ---
 

@@ -2,30 +2,21 @@
 
 .post-preview {
   display: grid;
-  row-gap: 1.2rem;
   grid-template-areas:
     "thumbnail"
     "title"
-    "meta"
-    "description";
-
-  .post-meta {
-    grid-area: meta;
-  }
+    "description"
+    "tags";
+  position: relative;
 
   &-grid {
     margin-top: 3.2rem;
     display: grid;
-    row-gap: 6.4rem;
+    row-gap: 4.8rem;
   }
 
-  &-title {
-    grid-area: title;
-
-    a {
-      color: var(--color-text-emphasis);
-      @include underlined-link($initially-underlined: false);
-    }
+  &-link {
+    @include underlined-link($initially-underlined: false);
   }
 
   &-thumbnail-container {
@@ -33,49 +24,114 @@
     user-select: none;
   }
 
+  &-thumbnail-container,
+  &-date {
+    margin-block-end: 1.2rem;
+  }
+
   &-thumbnail {
     img {
       object-fit: cover;
       object-position: center;
       border-radius: 0.4rem;
+      aspect-ratio: 16 / 9;
     }
+  }
 
-    .light &[data-loaded="true"] .lazy-img {
-      filter: blur(0) contrast(0.95);
-    }
+  &-title {
+    grid-area: title;
   }
 
   &-description {
     grid-area: description;
-    @include line-clamp(3);
+    max-width: 66ch;
+  }
+
+  &-date {
+    grid-area: thumbnail;
+    color: white;
+    background:
+      linear-gradient(
+        213deg,
+        hsl(0deg 0% 0%) 0%,
+        hsl(0deg 0% 0% / 90.2%) 6.6%,
+        hsl(0deg 0% 0% / 81.4%) 12.6%,
+        hsl(0deg 0% 0% / 73.5%) 18.1%,
+        hsl(0deg 0% 0% / 66.3%) 23.2%,
+        hsl(0deg 0% 0% / 59.9%) 28.1%,
+        hsl(0deg 0% 0% / 53.9%) 33%,
+        hsl(0deg 0% 0% / 48.2%) 38%,
+        hsl(0deg 0% 0% / 42.8%) 43.3%,
+        hsl(0deg 0% 0% / 37.5%) 49%,
+        hsl(0deg 0% 0% / 32.1%) 55.2%,
+        hsl(0deg 0% 0% / 26.6%) 62.1%,
+        hsl(0deg 0% 0% / 20.8%) 69.9%,
+        hsl(0deg 0% 0% / 14.5%) 78.7%,
+        hsl(0deg 0% 0% / 7.6%) 88.7%,
+        hsl(0deg 0% 0% / 0%) 100%
+      );
+    z-index: 1;
+    display: flex;
+    justify-content: end;
+    padding: 0.8rem;
+    pointer-events: none;
+  }
+
+  &-tags {
+    grid-area: tags;
+    margin-top: 0.4rem;
   }
   @include tablet {
     & {
+      grid-template-columns: auto min-content auto;
+      column-gap: 1.2rem;
       grid-template-areas:
-        "thumbnail title"
-        "thumbnail description"
-        "thumbnail meta";
-      column-gap: 3.2rem;
-      row-gap: 0.8rem;
+        "thumbnail date tags"
+        "thumbnail title title"
+        "thumbnail description description";
     }
 
     &-thumbnail {
       height: 100%;
       width: 18rem;
       padding: 0.8rem 0;
+      margin-inline-end: 1.2rem;
+
+      .light &[data-loaded="true"] .lazy-img {
+        filter: blur(0) contrast(0.95);
+      }
+
+      &-container {
+        margin: 0;
+      }
 
       img {
         height: 100%;
       }
     }
 
-    &-title {
-      @include line-clamp(1);
+    &-description {
+      @include line-clamp(3);
     }
 
-    &-description {
-      margin-bottom: 0.4rem;
-      @include line-clamp(2);
+    &-date {
+      display: unset;
+      justify-content: unset;
+      color: unset;
+      background: unset;
+      grid-area: date;
+      margin: unset;
+      padding: unset;
+      pointer-events: unset;
+    }
+
+    &-tags {
+      margin: 0;
+    }
+
+    &-date,
+    &-tags {
+      @include font($size: "sm");
     }
   }
 }

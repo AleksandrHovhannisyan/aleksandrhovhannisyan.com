@@ -1,6 +1,18 @@
 ---
 layout: default
 isBlogPage: true
+eleventyComputed:
+  preloads:
+    -
+      as: font
+      type: font/woff2
+      href: "{{ fonts.code.weights.regular.url }}"
+      crossorigin: true
+    -
+      as: font
+      type: font/woff2
+      href: "{{ fonts.code.weights.medium.url }}"
+      crossorigin: true
 ---
 
 <article class="blog">
@@ -12,18 +24,20 @@ isBlogPage: true
     </p>
     <nav aria-label="Popular tags" class="blog-nav">
       <a class="screen-reader-only skip-popular-tags" href="#skip-popular-tags">Skip to posts</a>
-      <ol class="pill-group">
-        {%- assign popularTags = collections.popularCategories -%}
-        {%- for tag in popularTags %}
+      <ol class="pill-group blog-tags">
+        {%- assign popularCategories = collections.popularCategories -%}
+        {%- for category in popularCategories %}
           <li>
             <a
-              href="{{ tag.href }}"
-              class="pill post-tag"
-              {% if pageCategory == tag.title -%}
+              href="{{ category.href }}"
+              class="pill"
+              data-shape="round"
+              data-size="sm"
+              {% if pageCategory == category.title -%}
               aria-current="page"
               {%- endif -%}
             >
-              {{ tag.title }}&nbsp;<span class="post-tag-count" aria-label="{{ tag.count }} posts">{{ tag.count }}</span>
+              {{ category.title }}&nbsp;<span class="pill-count" aria-label="{{ category.count }} posts">{{ category.count }}</span>
             </a>
           </li>
         {% endfor %}
