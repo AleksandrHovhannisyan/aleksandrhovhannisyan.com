@@ -63,6 +63,9 @@ const sanitizeHtml = (html) => {
       pre: ['class'],
       code: ['class'],
       span: ['class'],
+      // Styled lists
+      ol: ['class'],
+      ul: ['class'],
     },
   });
 };
