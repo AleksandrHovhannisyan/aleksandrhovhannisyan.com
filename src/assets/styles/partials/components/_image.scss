@@ -1,22 +1,7 @@
 @import "../mixins";
 
-.lazy-img {
-  --transition-duration: 0.3s;
-  --transition-timing-function: ease-in;
-  filter: blur(0.4rem);
-  @include transition(filter);
-}
-
 .lazy-picture {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  &[data-loaded] .lazy-img {
-    filter: initial;
-  }
-
-  .dark &[data-loaded] .lazy-img {
-    filter: blur(0) brightness(0.85);
-  }
 }

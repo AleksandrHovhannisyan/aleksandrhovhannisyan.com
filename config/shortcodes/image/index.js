@@ -9,8 +9,6 @@ const { stringifyAttributes } = require('../../utils');
 const ImageWidths = {
   /** The original (source) image width. */
   ORIGINAL: null,
-  /** The width of placeholder images (for lazy loading). Aspect ratio is preserved. */
-  PLACEHOLDER: 24,
 };
 
 const imageShortcode = async (props) => {
@@ -47,7 +45,7 @@ const imageShortcode = async (props) => {
 
   const imageOptions = {
     // Templates shouldn't have to worry about passing in `null` and the placeholder width
-    widths: [ImageWidths.ORIGINAL, ImageWidths.PLACEHOLDER, ...widths],
+    widths: [ImageWidths.ORIGINAL, ...widths],
     // List optimized formats before the base format so that the output contains webp sources before jpegs.
     formats: [...optimizedFormats, baseFormat],
     // Where the generated image files get saved
@@ -56,21 +54,17 @@ const imageShortcode = async (props) => {
     urlPath: imgDir,
     // Custom file name
     filenameFormat: (_id, _src, width, format) => {
-      const suffix = width === ImageWidths.PLACEHOLDER ? 'placeholder' : width;
-      return `${imgName}-${suffix}.${format}`;
+      return `${imgName}-${width}.${format}`;
     },
   };
   const imageMetadata = await Image(absoluteSrc, imageOptions);
 
-  // Map each unique format (e.g., jpeg, webp) to its smallest and largest images
+  // Map each unique format (e.g., jpeg, webp) to its various sizes
   const formatSizes = Object.entries(imageMetadata).reduce((formatSizes, [format, images]) => {
     if (!formatSizes[format]) {
-      // These will always exist
-      const placeholder = images.find((image) => image.width === ImageWidths.PLACEHOLDER);
       const largestVariant = images[images.length - 1];
-
       formatSizes[format] = {
-        placeholder,
+        // Other sizes of interest could go here in the future
         largest: largestVariant,
       };
     }
@@ -78,20 +72,14 @@ const imageShortcode = async (props) => {
   }, {});
 
   const { width, height } = formatSizes[baseFormat].largest;
-  const sharedImgAttributes = stringifyAttributes({
+  const imgAttributes = stringifyAttributes({
     width,
     height,
-    alt: escape(alt),
-    loading: 'lazy',
-  });
-  const lazyImgAttributes = stringifyAttributes({
-    src: formatSizes[baseFormat].placeholder.url,
-    'data-src': formatSizes[baseFormat].largest.url,
-    class: classNames('lazy-img', imgClass),
-  });
-  const noscriptImgAttributes = stringifyAttributes({
     src: formatSizes[baseFormat].largest.url,
-    ...(imgClass && { class: imgClass }),
+    alt: escape(alt),
+    class: classNames('lazy-img', imgClass),
+    loading: 'lazy',
+    decoding: 'async',
   });
 
   /** Returns source elements as an HTML string. */
@@ -99,35 +87,23 @@ const imageShortcode = async (props) => {
     // Map each format to the source HTML markup
     .map((formatEntries) => {
       // The first entry is representative of all the others since they each have the same shape
-      const { format: formatName, sourceType } = formatEntries[0];
-
-      const placeholderSrcset = formatSizes[formatName].placeholder.url;
-      const actualSrcset = formatEntries
-        // We don't need the placeholder image in the srcset
-        .filter((image) => image.width !== ImageWidths.PLACEHOLDER)
-        // All non-placeholder images get mapped to their srcset
-        .map((image) => image.srcset)
-        .join(', ');
+      const { sourceType } = formatEntries[0];
+      const srcset = formatEntries.map((image) => image.srcset).join(', ');
 
       const sourceAttributes = stringifyAttributes({
         type: sourceType,
-        srcset: placeholderSrcset,
-        'data-srcset': actualSrcset,
-        'data-sizes': sizes,
+        srcset,
+        sizes,
       });
 
       return `<source ${sourceAttributes}>`;
     })
     .join('\n');
 
-  // Custom image markup. Picture tag with lazy img/sources + noscript fallbacks.
-  // https://eszter.space/noscript-lazy-load/. Medium also does this.
+  // Custom image markup
   const picture = `<picture class="${classNames('lazy-picture', className)}">
-  ${sourceHtmlString}
-    <img ${lazyImgAttributes} ${sharedImgAttributes}>
-    <noscript>
-      <img ${noscriptImgAttributes} ${sharedImgAttributes}>
-    </noscript>
+    ${sourceHtmlString}
+    <img ${imgAttributes}>
   </picture>`;
 
   // Link to the highest resolution optimized image

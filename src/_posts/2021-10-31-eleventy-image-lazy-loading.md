@@ -346,10 +346,6 @@ Not all images will need the same widths and formats, and you don't always have 
 
 Sites like Medium use a modern lazy-loading strategy that involves generating **low-quality image placeholder** (LQIP) images. Here's how it works: Rather than immediately requesting the target image on page load, you instead request a very tiny version of the image that consumes only a few hundred bytes of network bandwidth. You then render this tiny image at its original resolution, scaling it up beyond its intrinsic dimensions. This yields a blurry, pixelated result, which you can smooth out with the CSS `blur` filter. Once the user scrolls to the image, you swap out the placeholder image for the real image with JavaScript and remove the blur filter.
 
-Below is a sample image demonstrating this; refresh the page to see it in action:
-
-{% include img.html src: "floofy-birb.jpg", alt: "A white-and-blue parakeet with puffy feathers and an orange beak.", caption: "Photo by [Hugo WAI](https://unsplash.com/@hugowaiii) on [Unsplash](https://unsplash.com/photos/MEborZA-3Ps)." %}
-
 On a slightly more technical level, here are the necessary steps for implementing this technique:
 
 1. Generate a low-resolution copy for the image that you want to render.

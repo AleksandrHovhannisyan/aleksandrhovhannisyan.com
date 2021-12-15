@@ -13,26 +13,6 @@ const themeToggle = new ThemeToggle({
   },
 });
 
-const lazyImages = document.querySelectorAll('.lazy-picture');
-lazyLoad(lazyImages, (pictureElement) => {
-  const img = pictureElement.querySelector('.lazy-img');
-  const sources = pictureElement.querySelectorAll('source');
-  img.onload = () => {
-    pictureElement.dataset.loaded = true;
-    img.removeAttribute('data-src');
-  };
-  img.onerror = () => {
-    pictureElement.dataset.loaded = false;
-  };
-  sources.forEach((source) => {
-    source.sizes = source.dataset.sizes;
-    source.srcset = source.dataset.srcset;
-    source.removeAttribute('data-srcset');
-    source.removeAttribute('data-sizes');
-  });
-  img.src = img.dataset.src;
-});
-
 const copyableCodeBlocks = document.querySelectorAll('.code-header.with-copy-button + pre[class*="language-"]');
 const copyCodeButtons = document.querySelectorAll('.copy-code-button');
 
