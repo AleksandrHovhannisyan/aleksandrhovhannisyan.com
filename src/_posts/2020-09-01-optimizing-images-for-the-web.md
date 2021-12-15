@@ -4,7 +4,7 @@ description: Images make the web a more beautiful place, but this sometimes come
 keywords: [optimizing images for the web, optimize images for the web]
 categories: [javascript, webperf, images]
 commentsId: 56
-lastUpdated: 2020-09-10
+lastUpdated: 2021-12-14
 thumbnail:
   url: https://images.unsplash.com/photo-1531845116688-48819b3b68d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
@@ -15,11 +15,11 @@ Which... may mean that you'll have to part ways with some of your beloved GIFs.
 
 It's the reality of the web: The more data that your server needs to return, the longer it will take for your user's browser to receive a response and render the content. If you're not too bothered by this, think again: [Page load speed](https://moz.com/learn/seo/page-speed) is one of many factors influencing your search engine ranking.
 
-But let's say you've decided to firmly stand your ground and defend your right to stuff every page with cat photos and GIFs. Or perhaps you're building an image-intensive user interface like GIPHY's. What are your options then?
+But let's say you've decided to firmly stand your ground and defend your right to stuff every page with cat photos and GIFs. Or perhaps you're building an image-intensive user interface. What are your options then?
 
-Two of the best ways to optimize images for the web are by using the WebP image format and lazy loading images with JavaScript. Combine the two, and you'll make Lighthouse happy on even the most image-heavy pages on your website:
+Two of the best ways to optimize images for the web are by using a modern image format (like WebP) and lazily loading images with JavaScript. Combine these strategies, and you'll make Lighthouse happy on even the most image-heavy pages on your website:
 
-{% include img.html src: "lighthouse.png", alt: "Lighthouse audit for aleksandrhovhannisyan.com/blog/" %}
+{% include img.html src: "lighthouse.png", alt: "Lighthouse audit for aleksandrhovhannisyan.com/blog/, showing a score of 100 in all four categories of performance, accessibility, best practices, and SEO." %}
 
 {% include toc.md %}
 
@@ -45,45 +45,51 @@ That last point is especially important since Google uses [mobile-first indexing
   Of course, there are [many other Lighthouse metrics](https://web.dev/lighthouse-performance/) that you'll want to consider when optimizing images for the web. Page load speed is just one such factor.
 {% endaside %}
 
-[Most browsers support WebP](https://caniuse.com/#search=webp), so there's really no reason not to use it:
-
-{% include img.html src: "caniuse.png", alt: "The caniuse report for the WebP image format." %}
+All major browsers support WebP, so there's no reason not to use it.
 
 ### How to Create WebP Images
 
-Okay, so let's say you're hooked on the idea. Now how do you actually create WebP images? For that, Google provides a library of [command-line utilities](https://developers.google.com/speed/webp/docs/precompiled) known as `libwebp` that can be used to compress images to WebP. Most images, like PNGs and JPEGs, can be compressed with the `cwebp` executable. You can also use the `gif2webp` utility to convert animated GIFs to animated WebP images.
+Let's say you're convinced. Now how do you actually create WebP images? For that, Google provides a library of [command-line utilities](https://developers.google.com/speed/webp/docs/precompiled) known as `libwebp` that can be used to compress images to WebP. Most images, like PNGs and JPEGs, can be compressed with the `cwebp` executable. You can also use the `gif2webp` utility to convert animated GIFs to animated WebP images.
 
-If you're in the Node ecosystem, you're in luck—there are plenty of packages that'll convert images to WebP for you. Currently, the most popular package is [imagemin-webp](https://github.com/imagemin/imagemin-webp#readme). If you're building a site with Gatsby, you can alternatively use [gatsby-image](https://using-gatsby-image.gatsbyjs.org/prefer-webp/). All of these are just wrappers around Google's WebP utilities.
+If you're in the Node ecosystem, you're in luck—there are plenty of open-source packages that can convert images to WebP and many other modern formats. Perhaps the most popular package is [the `sharp` image processing library](https://github.com/lovell/sharp). But if you're building a site with Gatsby or Next.js, you can also take advantage of one of the built-in image plugins to do the heavy lifting for you. My personal favorite package is the [Eleventy image plugin](https://github.com/11ty/eleventy-img)—which, despite its name, can be used in any server-side Node environment to generate responsively sized images and formats. It uses sharp under the hood, is super fast, and is highly customizable. I've written a separate tutorial on [how to use the 11ty image plugin](/blog/eleventy-image-lazy-loading/).
 
-Outside the Node ecosystem, there are still libraries that'll do the job for you, like the [jekyll-picture-tag](https://github.com/rbuchberger/jekyll_picture_tag) gem for Jekyll. But it does get pretty limited from there. My site runs on Jekyll, but I prefer to generate all of my WebP images by hand so I have more granular control over the process.
-
-{% aside %}
-  If you want to easily transform images in any project, check out the [11ty image plugin](https://www.11ty.dev/docs/plugins/image/).
-{% endaside %}
+Outside the Node ecosystem, there are still libraries that'll do the job for you, like the [jekyll-picture-tag](https://github.com/rbuchberger/jekyll_picture_tag) gem if you use Jekyll. But it does get pretty limited from there.
 
 ### Rendering WebP Images
 
-Now, assuming you've generated your WebP images, the typical way to render them is with the `<picture>`, `<source>`, and `<img>` categories:
+Now, assuming that you've generated your WebP images, the typical way to render them is with the `<picture>`, `<source>`, and `<img>` tags::
 
 {% include codeHeader.html %}
 ```html
 <picture>
-    <source
-        srcset="/path/to/img.webp"
-        type="image/webp">
-    <img
-        src="/path/to/img.png"
-        alt="Your image's alt">
+  <source
+    srcset="/path/to/img.webp"
+    type="image/webp">
+  <img
+    src="/path/to/img.jpeg"
+    alt="Your image's alt">
 </picture>
 ```
 
-Browsers that support the WebP image format will request and render only the `<source>` image, while browsers that don't yet support it will fall back to the `<img>` element.
+The picture tag accepts any number of `source` tags followed by an `img` tag for the original format and resolution. You list your media sources in the order of preference, with optimized formats first. Moreover, note that you can have as many source tags as needed. For example, if you want to render WebP and AVIF images, you can have one `source` tag for each:
+
+```html
+<picture>
+  <source srcset="/path/to/img.webp" type="image/webp">
+  <source srcset="/path/to/img.avif" type="image/avif">
+  <img src="/path/to/img.jpeg" alt="">
+</picture>
+```
+
+Typically, source tags also feature size descriptors to help your browser pick the right image size based on the current viewport width. You can learn more about this in the MDN docs on [the `srcset` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source#attr-srcset).
+
+In short, browsers that support the WebP image format will request and render only the image specified in your `source` tag, while browsers that don't yet support it will fall back to the `img` source.
 
 It's important that you set the `type` attribute of the source element to `image/webp` like we did here so that browsers know what media type you're requesting. You can also view the full list of [supported MIME types for images](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#Image_types) and other files in the MDN docs.
 
 ### Other Optimized Image Formats
 
-While WebP isn't the only performant image format on the market, it's the only one that's *widely supported* by modern browsers. A new image format that's on the web's horizons is AVIF, which is based on the AV1 video coding format developed by the [Alliance for Open Media](https://en.wikipedia.org/wiki/Alliance_for_Open_Media). It was recently [adopted by Netflix](https://netflixtechblog.com/avif-for-next-generation-image-coding-b1d75675fe4) for its image-intensive user interfaces and apparently offers *even more* compression than WebP. However, as of this writing, [the only browser supporting it is Chrome 85](https://caniuse.com/#search=avif).
+While WebP isn't the only performant image format on the market, it's the only one that's *widely supported* by modern browsers. An emerging image format is AVIF, which is based on the AV1 video coding format developed by the [Alliance for Open Media](https://en.wikipedia.org/wiki/Alliance_for_Open_Media). It was recently [adopted by Netflix](https://netflixtechblog.com/avif-for-next-generation-image-coding-b1d75675fe4) for its image-intensive user interfaces and apparently offers even better compression than WebP. However, browser support has yet to catch up, at least as of this writing.
 
 ## Lazy Loading Images with JavaScript
 
@@ -95,8 +101,8 @@ So what can you do? One strategy that's popular on blogging platforms like Mediu
 
 There are two ways you can lazily load images in modern browsers:
 
-1. Using the `loading="lazy"` attribute.
-2. Using the [IntersectionObserver API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API).
+1. Using the `loading="lazy"` attribute, which is supported by all major browsers.
+2. Using the [`IntersectionObserver` API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) and some custom JavaScript.
 
 It's important to note that these are NOT mutually exclusive—you can use both.
 
@@ -104,48 +110,30 @@ It's important to note that these are NOT mutually exclusive—you can use both.
 
 The `loading="lazy"` attribute offers [native lazy loading](https://web.dev/native-lazy-loading/) for images in Chromium browsers and in Firefox. It tells a browser when to start loading images, allowing you to defer network requests until a later point in time. Mathias Bynens created a good demo of [native lazy loading in action](https://mathiasbynens.be/demo/img-loading-lazy) if you want to see how it works.
 
-Basically, images with the `loading="lazy"` attribute won't trigger an HTTP request until they're [a certain distance from the viewport](https://web.dev/native-lazy-loading/#distance-from-viewport-thresholds). In Chrome, that distance is `1250px` on a stable connection and `2500px` on a slow 3G connection.
-
-Unfortunately, as of this writing, [browser support for `loading="lazy"` is lacking](https://caniuse.com/#feat=loading-lazy-attr).
+In short, images with the `loading="lazy"` attribute won't trigger an HTTP request until they're [a certain distance from the viewport](https://web.dev/native-lazy-loading/#distance-from-viewport-thresholds). In Chrome, that distance is `1250px` on a stable connection and `2500px` on a slow 3G connection.
 
 ### 2. The IntersectionObserver API
 
-The second option is to use the **IntersectionObserver API**, which is [supported in all modern web browsers](https://caniuse.com/#feat=intersectionobserver). Basically, it allows you to detect when an element is intersecting with the browser's viewport and to run some code in response.
+The second option is to use the **IntersectionObserver API**, which allows you to detect when an element is intersecting with the browser's viewport and to run some code in response. We can leverage this API to implement a custom lazy loading solution, where each image loads an initial placeholder that is then replaced with the real image (temporarily stored in a `data-` attribute) once it intersects with the viewport.
 
-First, we'll modify our markup to store the paths to our WebP image and the original image in `data-` attributes. That way, we can look up these paths with JavaScript for any given image:
+For example, your modified markup might end up looking something like this. Note how the `srcset` and `src` point to placeholder images, while `data-srcset` and `data-src` point to the real WebP and JPEG images, respectively.
 
 {% include codeHeader.html %}
 ```html
-<picture class="lazily-loaded-picture">
-    <source
-        srcset="/path/to/img-placeholder.webp"
-        data-srcset="/path/to/img.webp"
-        type="image/webp"
-        class="lazy-source">
-    <img
-        src="/path/to/img-placeholder.png"
-        data-src="/path/to/img.png"
-        alt="Your image's alt"
-        loading="lazy"
-        class="lazy-img">
+<picture class="lazy-picture">
+  <source
+    srcset="/path/to/img-placeholder.webp"
+    data-srcset="/path/to/img.webp"
+    type="image/webp">
+  <img
+    src="/path/to/img-placeholder.jpeg"
+    data-src="/path/to/img.jpeg"
+    alt="Your image's alt"
+    loading="lazy">
 </picture>
 ```
 
-{% aside %}
-  Notice that the `src` and `srcset` attributes now point to placeholder images. We'll discuss how that works in a bit.
-{% endaside %}
-
-I'm naming these attributes `data-srcset` and `data-src`, respectively, but you can name them anything you want since they're just [custom data attributes](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes).
-
-While we're at it, here's some CSS you may find useful:
-
-{% include codeHeader.html %}
-```css
-.lazy-img {
-    max-width: 100%;
-    width: 100%;
-}
-```
+I'm naming these attributes `data-srcset` and `data-src`, respectively, but you can name them anything you want since they're just [custom `data` attributes](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes).
 
 Next, we'll create an `IntersectionObserver` instance and use it to detect when our images intersect with the browser viewport:
 
@@ -159,9 +147,8 @@ const imgObserver = new IntersectionObserver((entries, self) => {
     }
   });
 });
-
-document.querySelectorAll('.lazy-img').forEach(img => {
-  imgObserver.observe(img);
+document.querySelectorAll('.lazy-picture').forEach((picture) => {
+  imgObserver.observe(picture);
 });
 ```
 
@@ -169,66 +156,47 @@ And here's how you might implement the `lazyLoad` function:
 
 {% include codeHeader.html %}
 ```javascript
-function lazyLoad(img) {
-  const picture = img.parentElement;
-  const source = picture.querySelector('.lazy-source');
+const lazyLoad = (picture) => {
+  const img = picture.querySelector('img');
+  const sources = picture.querySelectorAll('source');
 
-  source.srcset = source.getAttribute('data-srcset');
-  img.src = img.getAttribute('data-src');
+  sources.forEach((source) => {
+    source.srcset = source.dataset.srcset;
+    source.removeAttribute('data-srcset');
+  });
+  img.src = img.dataset.src;
+  img.removeAttribute('data-src');
 }
 ```
 
-Super simple! You don't need any libraries to lazily load images in JavaScript.
-
-As you scroll down the page, the viewport will intersect with images, and the `src` and `srcset` attributes will get replaced with the data attributes that we defined. This initiates a new HTTP request to load the images from your server.
+Now, when users scroll on your site and the viewport intersects with images, the `src` and `srcset` attributes will get replaced with the `data-` attributes. This will initiate new network requests to fetch the higher resolution images, swapping them in.
 
 Note that most lazy-loading tutorials will set the `src` and `srcset` attributes to be empty strings. So they'll show you something like this for the markup:
 
 ```html
-<picture class="lazily-loaded-picture">
-    <source
-        srcset=""
-        data-srcset="/path/to/img.webp"
-        type="image/webp"
-        class="lazy-source">
-    <img
-        src=""
-        data-src="/path/to/img.png"
-        alt="Your image's alt"
-        class="lazy-img">
-</picture>
+<img
+  src=""
+  data-src="/path/to/img.jpeg"
+  alt="Your image's alt">
 ```
 
-**Don't do this**. If you render `<img>` tags without a `src` attribute or `<source>` tags without a `srcset` attribute, you'll run into two problems:
+**Don't do this**! If you render an image tag without a `src` attribute or `source` tags without a `srcset` attribute, you'll run into two problems:
 
 - **A layout shift**. When the final image is loaded in, it'll shift the text and any content after it down because an image without a `src` attribute has a collapsed box model that doesn't take up space. This could hurt your [cumulative layout shift (CLS) score](https://web.dev/cls/) and isn't a great user experience.
 - **HTML validation errors**. Every `<img>` tag *must* have a valid `src` path!
 
-The solution is to use a fuzzy placeholder—the original image but scaled down to some lower resolution, like `32x32px`:
+Instead, you want to use a temporary placeholder image. This may be a fuzzy placeholder—known as a [**low-quality image placeholder**](https://cloudinary.com/blog/low_quality_image_placeholders_lqip_explained) (LQIP)—that's the original image but scaled down to a very low resolution. Since there are fewer pixels to work with, the image ends up being blurry, with chunks of color that vaguely resemble the original image's shape. Then, when the viewport intersects with the `<img>` element, you load in the real image with JavaScript. This is precisely what we did in the code above.
 
-{% include img.html src: "placeholders.png", alt: "Blog posts whose thumbnails are fuzzy placeholder images" %}
-
-Since there are fewer pixels to work with, the image ends up being blurry, with chunks of color that vaguely resemble the original image's shape. Then, when the viewport intersects with the `<img>` element, you load in the real image with JavaScript. This is precisely what we did in the code above, with the assumption that you have **four variations for each image**:
-
-- The original (uncompressed) image (e.g., `img.png`).
-- The compressed WebP image (e.g., `img.webp`).
-- A low-resolution (e.g., 32x32) placeholder for the original image (e.g., `img-placeholder.png`).
-- A low-resolution (e.g., 32x32) placeholder for the WebP variant (e.g., `img-placeholder.webp`).
-
-So basically, you'll want to first generate placeholders for all of your images and then compress all of those images (including the placeholders) using WebP.
-
-There are plenty of tools you can use to scale your original image down to `32x32` or any other low resolution. What I ended up doing is [writing another Python script](https://github.com/AleksandrHovhannisyan/thumb) that'll generate `nxn` scaled copies of all images in a given directory.
+As one final enhancement, you'll want to be mindful of situations where users may have disabled JavaScript. You can include some fallback `<noscript>` image markup for those use cases. I'll leave it up to you to learn more about [accessible lazy-loading with a noscript fallback](https://eszter.space/noscript-lazy-load/).
 
 ## Optimizing Images Is All About the Initial Load
 
 Does the approach covered here end up using more data than if you had just loaded in the original image to begin with? Yes (though the placeholders are only a few kB here and there). **But that's the wrong mindset** when optimizing images for the web.
 
-Instead, think about how wasteful it is to load in several megabytes' worth of data *at once*, as soon as the page loads—whether or not those images are currently visible—and to waste a mobile user's precious bandwidth. It's even worse if they only spend a few seconds on your site and navigate away—they gain absolutely nothing from visiting your page and actually lose a few MB of data.
+Instead, think about how wasteful it is to load in several megabytes' worth of data *at once*, as soon as the page loads—whether or not those images are currently visible—and to waste a mobile user's precious bandwidth. It's even worse if they only spend a few seconds on your site and navigate away—they gained nothing, and you actually consumed more of their bandwidth than you needed to.
 
 ## Final Thoughts
 
-If you think optimizing images for the web requires some fancy tooling and expertise, think again. All you really need to do is compress your images using the WebP image format (or some other well-supported alternative) and lazily load your images using just a few lines of JavaScript.
-
-I hope you found this tutorial helpful!
+Thankfully, optimizing images for the web doesn't require any fancy tooling or complex logic. All you need to do is compress your images using a popular library (like sharp) as part of your build pipeline and load your images using just a few lines of custom JavaScript.
 
 {% include unsplashAttribution.md name: "Sarandy Westfall", username: "sarandywestfall_photo", photoId: "qqd8APhaOg4" %}
