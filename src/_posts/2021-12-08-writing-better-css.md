@@ -1,22 +1,18 @@
 ---
-title: Modern Techniques for Writing Better CSS
-description: CSS has come a long way since the early days of web development. Using modern CSS strategies, you can write far fewer lines of CSS to accomplish tasks that previously required more lines of code.
+title: Writing Better CSS
+description: CSS has come a long way since the early days of web development. Learn how to write better CSS using modern strategies like the :is and :where pseudo-class functions, logical properties and values, clamping, and gaps.
 keywords: [better css, modern css, fewer lines of css, css]
-categories: [css, layout, clamp, css-grid, i18n, practices]
+categories: [css, layout, clamp, css-grid, i18n, rtl, practices]
 thumbnail: thumbnail.png
 commentsId: 126
-lastUpdated: 2021-12-11
+lastUpdated: 2021-12-15
 ---
 
-CSS has come a long way since the early days of web development, when tables and various other hacks were used for layout and positioning. Today's developers can enjoy writing modern CSS that works in all major browsers, without having to bend over backwards to implement tricky layout requirements.
-
-Not only does modern CSS make it easier to create dynamic layouts, but it also allows you to ship smaller (and simpler) stylesheets by removing unnecessary cruft. In this article, I want to review some common scenarios where modern techniques can significantly reduce the complexity of your code and allow you to write better CSS.
+CSS has come a long way since the early days of web development, when tables and various other hacks were used for layout and positioning. Today's developers can enjoy writing CSS that works in all major browsers, without having to bend over backwards to implement tricky layout requirements. Not only does this make it easier to create dynamic layouts, but it also allows you to ship smaller (and simpler) stylesheets by removing unnecessary cruft. In this article, we'll look at various scenarios where modern techniques can reduce the complexity of your code and allow you to write better CSS.
 
 {% include toc.md %}
 
-## Modern CSS: When Less Is More
-
-### 1. Chaining Selectors with `:is`
+## 1. Chaining Selectors with `:is`
 
 A common task in CSS is to apply some styling to multiple selectors. Perhaps you want to apply the same styling to an element's focus, hover, and ARIA states, like for a navigation link:
 
@@ -93,9 +89,11 @@ In some cases, the list of modifier classes can be quite long, meaning you're sh
 .token:is(.tag, .keyword, .someOtherThing) {}
 ```
 
-#### `:is`, Specificity, and Forgiving Selectors
+### `:is`, Specificity, and Forgiving Selectors
 
 There are two points worth noting about `:is`.
+
+#### Specificity
 
 First, `:is` assumes the highest specificity from among its argument list. This means that it's ideal for situations where all of the selectors you're listing have the same specificity. That's the case in the first example we saw, where all of the selectors share [class specificity](https://web.dev/learn/css/specificity/#class-pseudo-class-or-attribute-selector):
 
@@ -103,11 +101,26 @@ First, `:is` assumes the highest specificity from among its argument list. This 
 .nav-link:is(:focus, :hover, [aria-current="page"]) {}
 ```
 
-But in the following toy example, the overall specificity of `:is` ends up being higher due to the presence of an ID in the selector list:
+But in the following toy example, the overall specificity of `:is` ends up being higher due to the presence of an ID in the selector list, so future selectors with lower specificity will be overridden:
+
+```html
+<div class="class"></div>
+```
 
 ```css
-.element:is(#identifier, .class) {}
+div:is(#id, .class) {
+  background: red;
+}
+
+/* This will always be overridden by the selector above */
+div:is(.class, .another-class) {
+  background: blue;
+}
 ```
+
+In this example, the div ends up having a background color of `red`, not `blue`, because the ID in the first selector increases the overall specificity of the selector.
+
+#### Forgiving Selector Parsing
 
 Second, `:is` uses [forgiving selector parsing](https://developer.mozilla.org/en-US/docs/Web/CSS/:is#forgiving_selector_parsing), meaning that if one of the selectors you've listed happens to be invalid, the whole argument list won't be invalidated. Here's an example:
 
@@ -117,7 +130,7 @@ Second, `:is` uses [forgiving selector parsing](https://developer.mozilla.org/en
 
 `:is` will still parse the argument list and apply the styling to the element if the valid selector (in this case, `:focus`) is encountered.
 
-### 2. Safe Global Defaults with `:where`
+## 2. Safe Global Defaults with `:where`
 
 Like `:is`, `:where` is a forgiving pseudo-class function that accepts a comma-separated list of selectors to match. So we could've actually done this in the first example I showed:
 
@@ -166,7 +179,7 @@ It's true that you should be declaring your resets first as a best practice anyw
 
 Additionally, as Adam Argyle notes in [his article on `:is` and `:where`](https://web.dev/css-is-and-where/), the zero-specificity nature of `:where` could prove useful in CSS libraries, allowing users to override any particular bit of styling from the library with custom CSS.
 
-### 3. RTL Styling with Logical Properties and Values
+## 3. RTL Styling with Logical Properties and Values
 
 If your app isn't internationalized and only supports a single locale (like `en-US`), then you probably don't find yourself differentiating between left-to-right (LTR) and right-to-left (RTL) text directionality when writing CSS. So you can safely use properties like `margin-left` and `padding-right`, text alignment values like `left` and `right`, absolute positioning, and so on.
 
@@ -202,28 +215,143 @@ However, instead of using physical properties and values, we can take advantage 
 }
 ```
 
-Logical properties typically consist of three parts: the property name (`margin`), the writing mode direction ([`block` vs. `inline`](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties#block_vs._inline)), and the generic location (`start` or `end`). So a property like `border-left-color` would become `border-inline-start-color`. In LTR mode, `start` translates to `left`. In RTL mode, it translates to `right`. Both versions of the UI look just as you'd expect them to, but you only need to write a single ruleset to accommodate both.
+Logical properties typically consist of three parts: the property name (`margin`), the writing mode direction ([`block` vs. `inline`](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties#block_vs._inline)), the generic location (`start` or `end`), and the sub-property in question (e.g., `color`, `width`, etc.). So a property like `border-left-color` would become `border-inline-start-color`. In LTR mode, `start` translates to `left`. In RTL mode, it translates to `right`. Both versions of the UI look just as you'd expect them to, but you only need to write a single ruleset to accommodate both.
 
 Of all the recent improvements to CSS, the introduction of logical properties is probably one of my favorites. Even if your app doesn't currently support RTL, you can still use logical properties and values because they work seamlessly for LTR, with the added benefit of future-proofing your app in case you ever *do* internationalize it. There are no downsides to using logical properties; all it requires is a shift in perspective.
 
-You won't appreciate the savings from this kind of a refactor until you have to do it in a large code base. Just this year, I put in a PR at work to use logical properties and values (since our app supports RTL), and I ended up removing nearly 500 net lines of unnecessary CSS:
+You won't appreciate the savings from this kind of a refactor until you have to do it in a large code base. Just this year, I put in a PR at work to use logical properties and values (since our app supports RTL), and I ended up removing nearly **700 net lines** of unnecessary CSS.
 
-{% include img.html src: "pr.png", alt: "The header metadata for a pull request, showing 6 commits, 80 files changed, 236 lines added, and 709 lines deleted." %}
+### Logical CSS Examples
 
-There are [many other logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties) that you can use. Below is just a small sampling:
+There are [many logical properties and values](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties) that you can use. The following sections list some of the most common and widely available logical CSS properties, as well as how they relate to their physical counterparts. However, it's worth noting that certain physical properties and values do not have logical equivalents. Two examples include transform translations and box shadow offsets.
 
-- `margin-inline-start`
-- `padding-inline-end`
-- `margin-block-start`
-- `border-inline-start`
-- `border-inline-start-width`
-- `border-inline-start-color`
+#### Padding, Margins, Borders
 
-There are even CSS properties that automatically adjust based on the document's writing mode, like [`inline-size`](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size) instead of `width` and [`block-size`](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size) instead of `height`. There are also logical *values*, like `start` and `end` for text alignment or `start` and `end` for flex/grid alignment and justification. However, it's also worth noting that certain physical properties and values do not have a logical equivalent. Some examples include transform translations, box shadow offsets, and absolute positioning.
+As we saw in an earlier example, you can replace physical margins, padding, and borders with logical properties that automatically respect RTL and vertical writing modes. The following table summarizes some of these naming patterns.
 
-Certain other logical values are experimental and are only supported in a limited number of browsers as of this writing. One such example is direction-aware floating with the `inline-start` and `inline-end` values. As always, be sure to check browser compatibility before refactoring any existing CSS in your code base.
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Physical property</th>
+      <th scope="col">Logical property</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>[margin|padding|border]-left</code></td>
+      <td><code>[margin|padding|border]-inline-start</code></td>
+    </tr>
+    <tr>
+      <td><code>[margin|padding|border]-right</code></td>
+      <td><code>[margin|padding|border]-inline-end</code></td>
+    </tr>
+    <tr>
+      <td><code>[margin|padding|border]-top</code></td>
+      <td><code>[margin|padding|border]-block-start</code></td>
+    </tr>
+    <tr>
+      <td><code>[margin|padding|border]-bottom</code></td>
+      <td><code>[margin|padding|border]-block-end</code></td>
+    </tr>
+    <tr>
+      <td><code>border-bottom-width</code></td>
+      <td><code>border-block-end-width</code></td>
+    </tr>
+    <tr>
+      <td><code>border-left-color</code></td>
+      <td><code>border-inline-start-color</code></td>
+    </tr>
+  </tbody>
+</table>
 
-### 4. Writing Fewer Media Queries with Clamp
+If you're listing individual border properties, the logical naming does tend to get verbose. But it's certainly less verbose than having to maintain two sets of styling: one for LTR and another for RTL.
+
+#### Positioning
+
+Absolute, relative, and fixed positioning can also be achieved with logical properties:
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Physical property</th>
+      <th scope="col">Logical property</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>top</code></td>
+      <td><code>inset-block-start</code></td>
+    </tr>
+    <tr>
+      <td><code>bottom</code></td>
+      <td><code>inset-block-end</code></td>
+    </tr>
+    <tr>
+      <td><code>left</code></td>
+      <td><code>inset-inline-start</code></td>
+    </tr>
+    <tr>
+      <td><code>right</code></td>
+      <td><code>inset-inline-end</code></td>
+    </tr>
+  </tbody>
+</table>
+
+#### Width and Height
+
+In case you need to support vertical writing modes, you have the following logical properties:
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Physical property</th>
+      <th scope="col">Logical property</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>width</code></td>
+      <td><code>inline-size</code></td>
+    </tr>
+    <tr>
+      <td><code>height</code></td>
+      <td><code>block-size</code></td>
+    </tr>
+  </tbody>
+</table>
+
+Note that this does not affect RTL styling since width is symmetrical. It's just another set of logical properties worth noting.
+
+#### Logical Values
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Physical rule</th>
+      <th scope="col">Logical rule</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>text-align: right;</code></td>
+      <td><code>text-align: end;</code></td>
+    </tr>
+    <tr>
+      <td><code>justify-content: left;</code></td>
+      <td><code>justify-content: start;</code></td>
+    </tr>
+    <tr>
+      <td><code>float: left;</code></td>
+      <td><code>float: inline-start;</code></td>
+    </tr>
+    <tr>
+      <td><code>float: right;</code></td>
+      <td><code>float: inline-end;</code></td>
+    </tr>
+  </tbody>
+</table>
+
+## 4. Writing Fewer Media Queries with Clamp
 
 Another common requirement is to have elements change their styling between two breakpoints, perhaps for font sizing:
 
@@ -240,7 +368,7 @@ Another common requirement is to have elements change their styling between two 
 
 Certain layout changes cannot be achieved without media queries. But for numerical properties—like spacing, font sizing, dimensions, and so on—you may actually want to scale the value linearly between two breakpoints rather than having it jump from one discrete value to another. Fortunately, if you write modern CSS, you can take advantage of [the `clamp` utility function](https://developer.mozilla.org/en-US/docs/Web/CSS/clamp()) to declare values that **scale fluidly** between a minimum and a maximum.
 
-#### How `clamp` Works
+### How `clamp` Works
 
 While it may seem complicated, `clamp` is actually rather straightforward. It's a function that takes three arguments: a minimum value, a preferred value, and a maximum value (in that order):
 
@@ -284,7 +412,7 @@ Why did I pick `4vw`? And more generally, how do you pick the right value for `c
 
 Keep in mind that while the examples I showed here are for font sizing, `clamp` can be applied to any numerical properties, including padding, margin, borders, and much more. I encourage you to experiment with `clamp` to see if it's right for your designs.
 
-#### The Limitations of `clamp`
+### The Limitations of `clamp`
 
 There are some caveats to using `clamp` that I want to briefly touch on.
 
@@ -294,7 +422,7 @@ Additionally, `clamp` is not suitable if you want a value to *decrease* as the v
 
 In short, it's important to understand that while `clamp` is useful and has many applications for creating fluidly scaling designs, it's not a drop-in replacement for media queries.
 
-### 5. Simplifying Layouts with Gap
+## 5. Simplifying Layouts with Gap
 
 Before CSS grid, the only viable option for creating dynamic layouts on the web was Flexbox. But it had one major limitation: lack of support for gaps. Whereas design tools supported the notion of gaps, CSS did not, and most stylesheets relied on margins to space flex children apart. This usually involved inconvenient hacks to exclude the last flex item from the selector list:
 
