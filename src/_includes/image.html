@@ -16,6 +16,7 @@ This is a workaround for the fact that 11ty doesn't support named shortcode argu
     {%- if fileName -%},"fileName": "{{ fileName }}"{%- endif -%}
     {%- if urlPath -%},"urlPath": "{{ urlPath }}"{%- endif -%}
     {%- if imgClass -%},"imgClass": "{{ imgClass }}"{%- endif -%}
+    {%- if lazy != nil -%},"lazy": {{ lazy }}{%- endif -%}
   }
 {%- endcapture -%}
 {%- assign props = props | fromJson -%}
