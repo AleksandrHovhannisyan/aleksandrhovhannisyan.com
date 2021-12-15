@@ -25,6 +25,7 @@ const imageShortcode = async (props) => {
     // mainly for remote images
     urlPath,
     fileName,
+    lazy = true,
   } = props ?? {};
 
   const isRemoteImage = /https?:\/\//.test(src);
@@ -78,7 +79,7 @@ const imageShortcode = async (props) => {
     src: formatSizes[baseFormat].largest.url,
     alt: escape(alt),
     class: classNames('lazy-img', imgClass),
-    loading: 'lazy',
+    ...(lazy ? { loading: 'lazy' } : {}),
     decoding: 'async',
   });
 

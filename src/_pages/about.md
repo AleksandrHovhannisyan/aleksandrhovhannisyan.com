@@ -7,7 +7,7 @@ layout: about
 
 
 
-{% include image.html src: '/assets/images/profile-photo.jpg', alt: '', clickable: false, className: "float right", imgClass: "circle" %}
+{% include image.html src: '/assets/images/profile-photo.jpg', alt: '', clickable: false, className: "float right", imgClass: "circle", lazy: false %}
 
 Thanks for dropping by! My name's Aleksandr—and yes, that's spelled *without* an `e` between the `d` and the `r`, pronounced just like *Alexander*. Don't worry about my last name, though; it's quite long, and most people butcher it anyway.
 
