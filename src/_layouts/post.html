@@ -73,6 +73,7 @@ eleventyComputed:
       "@id": "{{ page.url | toAbsoluteUrl }}"
     },
     "headline": {{ title | escape | toJson }},
+    "description": {{ description | stripNewlines | strip | toJson }},
     {% if ogImage %}
     "image": ["{{ ogImage }}"],
     {% endif %}
@@ -83,16 +84,6 @@ eleventyComputed:
     "author": {
       "@type": "Person",
       "name": "{{ site.author }}"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "{{ site.title }}",
-      "url": "{{ site.url }}",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "{{ '/assets/images/favicons/favicon-128.png' | toAbsoluteUrl }}"
-      }
-    },
-    "description": {{ description | stripNewlines | strip | toJson }}
+    }
   }
 </script>
