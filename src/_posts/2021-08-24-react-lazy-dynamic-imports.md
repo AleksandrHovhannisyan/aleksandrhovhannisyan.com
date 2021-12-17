@@ -4,6 +4,7 @@ description: Not all static imports are immediately needed, and unnecessary impo
 keywords: [React.lazy, dynamically import components, dynamic import, lazy]
 categories: [react, webperf, javascript, async]
 commentsId: 106
+lastUpdated: 2021-12-17
 thumbnail:
   url: https://images.unsplash.com/photo-1570288685369-f7305163d0e3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
@@ -50,9 +51,9 @@ Wouldn't it be nice if we could do the same thing in React? Well, we actually ca
 
 ## Dynamic Imports with `React.lazy`
 
-For this article, I've prepared a [CodeSandbox demo of dynamic imports in React](https://codesandbox.io/s/react-lazy-imports-demo-5z40f). Feel free to follow along there as you read this post. I'll share a simplified version of the demo code here.
+For this tutorial, I've prepared a [CodeSandbox demo of dynamic imports in React](https://codesandbox.io/s/react-lazy-imports-demo-5z40f). Feel free to follow along there as you read this post. I'll share a simplified version of the demo code here.
 
-Let's suppose we have a simple React app that renders tab panels and some buttons to change the current tab. Since we don't need to over-complicate this demo, I'll just assume that each tab panel is defined as its own component somewhere; we'll import them into our app like so:
+Let's suppose we have a simple React app that renders tab panels and some buttons to change the current tab. Each tab panel is its own component; the ones in this demo are very simple and just display some mock text, but in a real app, a tab panel might contain paragraphs of text, imagery, videos, and more (depending on what the tabs are being used for). We'll import each tab panel statically, like so:
 
 {% include codeHeader.html file: "App.jsx" %}
 ```jsx
@@ -205,14 +206,20 @@ Once the dynamic import resolves, the component will be swapped in:
 
 Subsequent navigation to previously rendered tabs is snappy, with no delay, because those modules have already been loaded. Best of all, components that never rendered won't ever be bundled into the app or loaded at runtime.
 
+## Considerations for Dynamic Imports
+
+Dynamic imports are a great tool when used judiciously. But like all optimizations, they don't come for free.
+
+First, because of their very nature, dynamic imports require your app to make additional network requests at run time to fetch those lazily loaded modules. This is a classic tradeoff: either you bundle everything and create a potentially slower initial load, or you bundle only the essentials and lazily load everything else. The benefit of bundling everything is that users don't have to see a fallback UI while the component loads in the background. On the other hand, dynamic imports take a more conservative approach, saving bandwidth on the initial load at the cost of making users wait later on. However, it's worth noting that this usually won't cause problems, even if a dynamically imported component re-renders several times. This is because the module will have already loaded after the first request, so subsequent renders won't make redundant requests.
+
+Second, as I noted earlier, dynamic imports in React require that you specify a fallback UI that gets shown until the component is fetched at some later point in time. If your fallback UI and the real UI differ drastically in the amount of space that they occupy on the page, then this may cause layout shifts, pushing the surrounding content aside to make room once the component has loaded. A classic workaround for this is to create skeleton loader components that closely approximate the size of the real content. That way, when the dynamically imported component renders for the first time, your app is able to seamlessly transition from placeholder UI to real UI.
+
 ## Don't Worry, Be Lazy
 
-Static imports are straightforward, but they have their limitations. If you import components that may not get used immediately on the page, you'll waste your users' bandwidth and potentially increase your app's memory usage.
+Static imports are straightforward—every imported module is included in the final bundle of your app. But this can come at a cost if you import components that aren't used immediately (or at all). Depending on the size of your static bundle, this could cause a more sluggish loading experience or delay the fetching of other key resources.
 
-Dynamic imports are powerful—they allow you to defer loading modules until they're actually needed, helping you ship smaller bundles. In React, dynamically importing a component is easy—you invoke `React.lazy` with the standard dynamic import syntax and specify a fallback UI. When the component renders for the first time, React will load that module and swap it in.
+Dynamic imports solve this problem by allowing you to defer loading modules until they're actually needed, helping you ship smaller bundles. In React, dynamically importing a component is easy—you invoke `React.lazy` with the standard dynamic import syntax and specify a fallback UI. When the component renders for the first time, React will load that module and swap it in.
 
 I encourage you to consider where in your app you may be able to reap performance gains by lazily loading components. You may find the examples from the intro relevant.
-
-However, as with all optimizations, you shouldn't abuse this newfound knowledge. As I noted in an earlier section, `Suspense` fallbacks may create unwanted layout shifts that may hurt your page's [Core Web Vitals](https://web.dev/vitals/) score on indexed pages; be sure to test and refine your changes as needed.
 
 {% include unsplashAttribution.md name: "Chris Curry", username: "chriscurry92", photoId: "GYpsSWHslHA" %}
