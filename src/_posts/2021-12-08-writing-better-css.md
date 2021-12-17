@@ -1,11 +1,11 @@
 ---
 title: Writing Better CSS
-description: CSS has come a long way since the early days of web development. Learn how to write better CSS using modern strategies like the :is and :where pseudo-class functions, logical properties and values, clamping, and gaps.
+description: CSS has come a long way since the early days of web development. Learn how to write better CSS using modern strategies like the :is and :where pseudo-class functions, logical properties and values, clamp, gaps, and aspect-ratio.
 keywords: [better css, modern css, fewer lines of css, css]
-categories: [css, layout, clamp, css-grid, i18n, rtl, practices]
+categories: [css, clamp, css-grid, i18n, rtl, aspect-ratio, practices]
 thumbnail: thumbnail.png
 commentsId: 126
-lastUpdated: 2021-12-15
+lastUpdated: 2021-12-17
 ---
 
 CSS has come a long way since the early days of web development, when tables and various other hacks were used for layout and positioning. Today's developers can enjoy writing CSS that works in all major browsers, without having to bend over backwards to implement tricky layout requirements. Not only does this make it easier to create dynamic layouts, but it also allows you to ship smaller (and simpler) stylesheets by removing unnecessary cruft. In this article, we'll look at various scenarios where modern techniques can reduce the complexity of your code and allow you to write better CSS.
@@ -460,6 +460,83 @@ Alternatively, you could use grid, which also supports gaps and auto-wrapping co
 ```
 
 Either way, you no longer have to worry about the spacing at the edges of the layout—the browser automatically performs these calculations for you and spaces the children accordingly to distribute the gap only between adjacent siblings. If your layout doesn't need to wrap, there won't be any unnecessary spacing along its outer edges. Moreover, since flex and grid layouts automatically flip themselves for RTL, this makes them perfect for creating RTL-safe layouts since you don't have to worry about text directionality.
+
+## 6. Aspect Ratio Sizing with `aspect-ratio`
+
+Let's say you want an element to have square dimensions, like if you're creating the famous [3x3 grid layout](/blog/css-aspect-ratio/#example-3-a-3x3-square-grid-of-images-cropped) for an image gallery.
+
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; font-family: var(--font-family-title); max-width: 40rem; margin-left: auto; margin-right: auto;" aria-hidden="true">
+  {%- for i in (1..9) -%}
+    <div style="background: var(--pill-bg-color); aspect-ratio: 1; display: flex; justify-content: center; align-items: center;">{{ i }}</div>
+  {%- endfor -%}
+</div>
+
+Prior to the introduction of the CSS `aspect-ratio` property, you'd typically use [the percentage padding trick](/blog/css-aspect-ratio/#approach-2-aspect-ratios-with-percentage-padding) to create responsive squares:
+
+```css
+.square {
+  height: 0;
+  padding-bottom: 100%;
+}
+```
+
+Alternatively, you could use custom properties to keep the element's width and height in sync. The main disadvantage of this approach is that you cannot take advantage of responsive sizing since you're setting explicit dimensions:
+
+```css
+.square {
+  --size: 2rem;
+  width: var(--size);
+  height: var(--size);
+}
+```
+
+But now that [`aspect-ratio` is supported in all major browsers](https://caniuse.com/?search=aspect-ratio), you can use it to express the relationship between an element's width and height much more intuitively:
+
+```css
+.square {
+  aspect-ratio: 1;
+}
+```
+
+Maybe you then decide to give the square an explicit width and allow its height to match:
+
+```css
+.square {
+  aspect-ratio: 1;
+  width: 2rem;
+}
+```
+
+Or maybe it participates in a grid layout and receives its width from the grid formatting context:
+
+```css
+.square-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.square {
+  aspect-ratio: 1;
+}
+```
+
+Either way, you get a square shape that scales responsively.
+
+{%- assign squareDemoMaxWidth = '200px' -%}
+<div style="font-family: var(--font-family-title); background: var(--pill-bg-color); aspect-ratio: 1; max-width: {{ squareDemoMaxWidth }}; margin-left: auto; margin-right: auto; display: flex; justify-content: center; align-items: center; text-align: center; padding: 3.2rem; color: var(--color-text-emphasis);" aria-hidden="true">I'm a square. My max width is {{ squareDemoMaxWidth }}.</div>
+
+One of my favorite things about `aspect-ratio` is how it can be used to compose utility classes with additional properties, like this handy class for circles:
+
+```css
+.circle {
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+```
+
+<div class="circle" style="font-family: var(--font-family-title); background: var(--pill-bg-color); max-width: {{ squareDemoMaxWidth }}; margin-left: auto; margin-right: auto; display: flex; justify-content: center; align-items: center; text-align: center; padding: 3.2rem; color: var(--color-text-emphasis);" aria-hidden="true">I'm a circle.</div>
+
+There are many other applications of the `aspect-ratio` property that are worth exploring. One example is to responsively size embedded media, like for YouTube videos. Another is a performance enhancement: `aspect-ratio` plays a key role in preventing layout shifts when you [set a width and height on images](/blog/setting-width-and-height-on-images/) with HTML attributes.
 
 ## CSS Is Only Getting Better
 

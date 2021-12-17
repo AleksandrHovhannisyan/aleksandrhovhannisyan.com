@@ -2,7 +2,7 @@
 title: Always Set a Width and Height on Your Images
 description: Dimensionless images can cause layout shifts as they load, hurting your page's performance. By setting a width and height on images, you allow the browser to initialize an aspect ratio for those images and minimize layout shifts.
 keywords: [setting width and height on images, setting an image's width and height, width and height, layout shifts]
-categories: [webperf, images, html]
+categories: [webperf, images, aspect-ratio, html]
 commentsId: 78
 isFeatured: true
 lastUpdated: 2021-08-26
