@@ -5,7 +5,7 @@ keywords: [better css, modern css, fewer lines of css, css]
 categories: [css, clamp, css-grid, i18n, rtl, aspect-ratio, practices]
 thumbnail: thumbnail.png
 commentsId: 126
-lastUpdated: 2021-12-17
+lastUpdated: 2021-12-18
 ---
 
 CSS has come a long way since the early days of web development, when tables and various other hacks were used for layout and positioning. Today's developers can enjoy writing CSS that works in all major browsers, without having to bend over backwards to implement tricky layout requirements. Not only does this make it easier to create dynamic layouts, but it also allows you to ship smaller (and simpler) stylesheets by removing unnecessary cruft. In this article, we'll look at various scenarios where modern techniques can reduce the complexity of your code and allow you to write better CSS.
@@ -151,6 +151,10 @@ Has the same specificity as this:
 ```css
 .nav-link:where(:focus, :hover, [aria-current="page"]) {}
 ```
+
+{% aside %}
+  Both have `10` points of numerical specificity from the base `.nav-link` class. In other words, `:where` does not contribute any additional specificity to the overall selector.
+{% endaside %}
 
 Even this complicated and unwieldy selector has a specificity of zero:
 
