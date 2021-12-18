@@ -19,8 +19,7 @@ eleventyComputed:
 <article class="post">
   <header class="post-header">
     <h1 class="post-title">{{ title }}</h1>
-    {%- assign date = lastUpdated | default: page.date -%}
-    <div class="post-meta-date">{%- if lastUpdated -%}Last updated on&nbsp;{%- endif -%}{% include date.html date: date, dateFormat: "%b %d, %Y" %}</div>
+    <div class="post-meta-date">{% include date.html date: page.date, dateFormat: "%b %d, %Y" %}{%- if lastUpdated -%}&nbsp;(Last updated:&nbsp;{% include date.html date: lastUpdated, dateFormat: "%b %d, %Y" %}){%- endif -%}</div>
     <ul class="post-meta-tags" aria-label="Tags">
       {%- for category in categories -%}
         <li>
