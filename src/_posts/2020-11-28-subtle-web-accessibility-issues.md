@@ -2,7 +2,7 @@
 title: Subtle Web Accessibility Issues (And How to Fix Them)
 description: You've scored 100 on Lighthouse's accessibility audit. But is your site actually accessible, or have you overlooked more subtle accessibility issues?
 keywords: [web accessibility]
-categories: [a11y, html]
+categories: [accessibility, html]
 thumbnail: thumbnail.png
 ---
 

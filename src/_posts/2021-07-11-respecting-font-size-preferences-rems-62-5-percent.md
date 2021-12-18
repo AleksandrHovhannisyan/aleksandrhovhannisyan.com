@@ -2,7 +2,7 @@
 title: "Respecting Font Size Preferences: Rems and 62.5% Base Font Size"
 description: Setting your base font size to 62.5% allows you to think in pixels but use rems to respect users' font size preferences.
 keywords: [base font size, "62.5%", font size preferences, rem]
-categories: [css, typography, math, a11y]
+categories: [css, typography, math, accessibility]
 commentsId: 97
 lastUpdated: 2021-12-14
 isFeatured: true
