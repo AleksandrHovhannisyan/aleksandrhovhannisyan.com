@@ -149,7 +149,7 @@ In other words, this:
 Has the same specificity as this:
 
 ```css
-.nav-link:where(:focus, :Hover, [aria-current="page"]) {}
+.nav-link:where(:focus, :hover, [aria-current="page"]) {}
 ```
 
 Even this complicated and unwieldy selector has a specificity of zero:
