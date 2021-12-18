@@ -3,7 +3,7 @@ title: Why I Don't Like Tailwind CSS
 description: On paper, Tailwind CSS sounds like a great idea. In reality, it suffers from the same problems that it tries to solve.
 keywords: [tailwind css, tailwind, don't like tailwind]
 categories: [css, tailwind, frameworks]
-lastUpdated: 2021-11-29
+lastUpdated: 2021-12-18
 commentsId: 77
 isFeatured: true
 thumbnail: thumbnail.png
@@ -27,7 +27,7 @@ The strange thing is that I actually read through all of [Adam Wathan's article 
   I’ve written a few thousand words on why traditional 'semantic class names' are the reason CSS is hard to maintain, but the truth is you’re never going to believe me until you actually try it. If you can suppress the urge to retch long enough to give it a chance, I really think you'll wonder how you ever worked with CSS any other way.
 {% endquote %}
 
-On paper, utility CSS actually sounds like it may be useful. In practice, though, Tailwind CSS (and utility CSS in general) suffers from the same issues that it attempts to solve and is, in my honest opinion, not worth using.
+On paper, Tailwind CSS sounds great. In practice, it suffers from the same issues that it attempts to solve and is, in my opinion, not worth using.
 
 {% include toc.md %}
 
