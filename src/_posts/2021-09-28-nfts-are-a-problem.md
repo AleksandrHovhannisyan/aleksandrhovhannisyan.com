@@ -3,7 +3,7 @@ title: NFTs Are a Problem
 description: While NFTs are being hailed as the future of digital ownership, they're also the source of many problems. NFTs are artificially scarce, make it easier to commit fraud, undermine the intellectual property rights of content creators, and encourage consumptive mining practices.
 categories: [nft, art, blockchain, money]
 keywords: [nfts, digital ownership, ownership, art]
-lastUpdated: 2021-11-04
+lastUpdated: 2021-12-18
 commentsId: 114
 isFeatured: true
 thumbnail:
@@ -143,12 +143,17 @@ Digital art is trivial to steal, especially in a world where bots can already [p
 - [NFT Mania Is Here, And So Are the Scammers](https://www.theverge.com/2021/3/20/22334527/nft-scams-artists-opensea-rarible-marble-cards-fraud-art)
 - [People Are Stealing Art and Turning It Into NFTs](https://www.vice.com/en/article/n7vxe7/people-are-stealing-art-and-turning-it-into-nfts)
 - [NFTs are generating huge paydays for some artists, others feel under siege](https://www.polygon.com/22327806/nft-artists-online-theft-non-fungible-token)
+- [Artist is forced to shut down their DeviantArt gallery due to theft](https://twitter.com/panie95/status/1472163760261451778)
 
 This **completely undermines the value of NFTs** because they're supposed to be verifiable tokens of ownership. But if the original transaction was *fraudulent to begin with*, this raises an important question: What is the utility of an NFT if it could represent something that wasn't for sale in the first place?
 
 #### NFTs Enable Money Laundering
 
-Unsurprisingly, NFTs can also be used to [launder money](https://medium.com/yardcouch-com/how-to-launder-money-with-nfts-56f1789e5591). There's nothing stopping you from creating two different accounts on an NFT marketplace, auctioning off a low-effort piece of "art," and simply buying it from yourself to funnel ill-gotten gains into a seemingly legitimate transaction. Since the value of a piece of artwork is completely subjective, and NFT marketplaces are freely accessible to anyone with an Ethereum wallet, there's no reliable way to differentiate between legal and illegal transactions. [Regulatory oversight of NFTs is lagging behind](https://www.jonesday.com/en/insights/2021/04/nfts-key-us-legal-considerations-for-an-emerging-asset-class), making the NFT market a temporary safe haven for criminals.
+Unsurprisingly, NFTs can also be used to [launder money](https://medium.com/yardcouch-com/how-to-launder-money-with-nfts-56f1789e5591). It goes like this: You've acquired a large sum of money illegally, but you want the authorities to think that you earned it by doing business legitimately. To that end, you create two separate accounts on an NFT marketplace like OpenSea. One of the accounts is under your real name and auctions off a low-effort piece of "art." You then use the other account to purchase the artwork from yourself, funneling those ill-gotten gains into your own wallet under the guise of a seemingly legitimate transaction. Since the value of a piece of artwork is completely subjective, and NFT marketplaces are freely accessible to anyone with an Ethereum wallet, there's no reliable way to differentiate between legal and illegal transactions. [Regulatory oversight of NFTs is lagging behind](https://www.jonesday.com/en/insights/2021/04/nfts-key-us-legal-considerations-for-an-emerging-asset-class), making the NFT market a temporary safe haven for criminals.
+
+{% aside %}
+  **Update**: The [2021 Infrastructure bill](https://qz.com/2086486/the-infrastructure-bill-makes-crypto-reporting-failures-a-felony/)—signed into law by President Biden on November 15, 2021—now requires that transactions involving digital assets exceeding $10,000 be reported to the IRS. In this case, "digital assets" includes cryptocurrencies and NFTs. This change makes it much more difficult for individuals to launder large sums of money using NFTs.
+{% endaside %}
 
 ### 3. NFTs Consume Large Amounts of Energy
 
