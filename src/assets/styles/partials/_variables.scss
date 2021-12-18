@@ -23,7 +23,7 @@ html {
   --page-max-width: 81rem;
   --navbar-height: #{clamped(6.4rem, 7.6rem)};
 
-  &.light {
+  &[data-theme="light"] {
     color-scheme: light;
 
     --color-surface-1: white;
@@ -75,7 +75,7 @@ html {
     --color-code-selector: var(--color-code-string);
   }
 
-  &.dark {
+  &[data-theme="dark"] {
     color-scheme: dark;
 
     --color-surface-1: hsl(0deg 0% 8%);

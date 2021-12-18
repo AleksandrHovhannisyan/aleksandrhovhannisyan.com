@@ -189,7 +189,7 @@
     }
   }
 
-  .dark & {
+  [data-theme="dark"] & {
     filter: brightness(0.75);
   }
 
@@ -259,7 +259,7 @@
       top: 10px;
     }
 
-    .dark & {
+    [data-theme="dark"] & {
       box-shadow: none;
 
       &::after {

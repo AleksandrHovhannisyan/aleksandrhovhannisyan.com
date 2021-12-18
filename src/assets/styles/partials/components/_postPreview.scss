@@ -97,7 +97,7 @@
       padding: 0.8rem 0;
       margin-inline-end: 1.2rem;
 
-      .light &[data-loaded="true"] .lazy-img {
+      [data-theme="light"] &[data-loaded="true"] .lazy-img {
         filter: blur(0) contrast(0.95);
       }
 

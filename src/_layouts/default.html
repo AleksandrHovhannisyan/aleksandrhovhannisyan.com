@@ -33,7 +33,7 @@ eleventyComputed:
 {%- assign canonicalUrl = canonicalUrl | default: defaultCanonicalUrl -%}
 
 <!DOCTYPE html>
-<html lang="en-US" class="light">
+<html lang="en-US" data-theme="light">
 <head>
   <meta charset="utf-8">
   {%- comment -%}Metadata for search engines{%- endcomment -%}
@@ -72,11 +72,11 @@ eleventyComputed:
     (function() {
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme) {
-        document.documentElement.className = savedTheme;
+        document.documentElement.dataset.theme = savedTheme;
       } else {
         const userPrefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const preferredTheme = userPrefersDarkMode ? 'dark' : 'light';
-        document.documentElement.className = preferredTheme;
+        document.documentElement.dataset.theme = preferredTheme;
         localStorage.setItem('theme', preferredTheme);
       }
     })();
