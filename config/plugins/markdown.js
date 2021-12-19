@@ -10,6 +10,7 @@ const { slugifyString } = require('../utils');
 const markdownLib = markdownIt({
   html: true,
   breaks: false,
+  linkify: true,
 })
   .use(markdownItPrism, {
     defaultLanguage: 'plaintext',

@@ -36,7 +36,7 @@ If you've already set up your GitHub Pages repo, feel free to [skip this section
 
 You can create as many GitHub Pages sites as you want. Each user can only create one site whose domain is `https://yourUsername.github.io`. All other repo sites go under `https://yourUsername.github.io/repoName`. GitHub even [lets you configure your own custom domain](https://help.github.com/en/github/working-with-github-pages/configuring-a-custom-domain-for-your-github-pages-site) if you have one.
 
-To get started, visit [https://github.com/](https://github.com/), sign in, and click the green `New` button to create a new repo:
+To get started, visit https://github.com, sign in, and click the green `New` button to create a new repo:
 
 {% include img.html src: "new-repo.png", alt: "Click the green new button to create a repository." %}
 
