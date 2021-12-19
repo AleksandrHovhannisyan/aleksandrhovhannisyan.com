@@ -1,8 +1,9 @@
-const { getAuthenticatedOctokit, sanitizeHtml } = require('../config/utils');
+const { getAuthenticatedOctokit, sanitizeHtml } = require('../../config/utils');
 const dayjs = require('dayjs');
-const markdownLib = require('../config/plugins/markdown');
+const markdownLib = require('../../config/plugins/markdown');
 const dayjsRelativeTimePlugin = require('dayjs/plugin/relativeTime');
-const site = require('../src/_data/site');
+const site = require('../../src/_data/site');
+const { emojiByName } = require('./constants');
 
 dayjs.extend(dayjsRelativeTimePlugin);
 
@@ -39,7 +40,32 @@ exports.handler = async (event) => {
       // Recent comments first
       .sort((comment1, comment2) => comment2.created_at.localeCompare(comment1.created_at))
       // Restructure the data so the client-side JS doesn't have to do this
-      .map((comment) => {
+      .map(async (comment) => {
+        // Get the reactions for each comment
+        const reactionsResponse = await Octokit.reactions.listForIssueComment({
+          owner: site.issues.owner,
+          repo: site.issues.repo,
+          comment_id: comment.id,
+        });
+
+        console.log(reactionsResponse);
+        if (reactionsResponse.status !== 200) {
+          throw new Error();
+        }
+
+        // Map each reaction emoji to the # of users who made it
+        const reactions = reactionsResponse.data.reduce((reactions, reaction) => {
+          const reactionId = reaction.content;
+          if (!reactions[reactionId]) {
+            reactions[reactionId] = {
+              emoji: emojiByName[reactionId],
+              count: 0,
+            };
+          }
+          reactions[reactionId].count++;
+          return reactions;
+        }, {});
+
         return {
           user: {
             avatarUrl: comment.user.avatar_url,
@@ -49,6 +75,7 @@ exports.handler = async (event) => {
           isEdited: comment.created_at !== comment.updated_at,
           isAuthor: comment.author_association === 'OWNER',
           body: sanitizeHtml(markdownLib.render(comment.body)),
+          reactions: reactions,
         };
       });
 

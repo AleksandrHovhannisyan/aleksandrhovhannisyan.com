@@ -47,6 +47,16 @@ export const renderComments = async (comments) => {
                     ${comment.isEdited ? `<span class="font-sm post-comment-edited">Edited</span>` : ''}
                   </header>
                   <div class="post-comment-body">${comment.body}</div>
+                  <ul class="post-comment-reactions" aria-label="Reactions">
+                    ${Object.entries(comment.reactions).map(
+                      ([id, reaction]) =>
+                        `<li>
+                          <span class="post-comment-reaction-count">${reaction.count}</span>&nbsp;
+                          <span class="screen-reader-only">${id}</span>
+                          <span aria-hidden="true">${reaction.emoji}</span>
+                        </li>`
+                    )}
+                  </ul>
                 </article>
               </li>`;
     })

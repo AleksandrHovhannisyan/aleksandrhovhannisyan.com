@@ -36,13 +36,15 @@
   --avatar-size: 3.2rem;
   --meta-spacing: 0.8rem;
   padding-inline-start: calc(var(--avatar-size) + var(--meta-spacing));
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.8rem;
 
   &-header {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     position: relative;
-    margin-bottom: 0.8rem;
     gap: var(--meta-spacing);
   }
 
@@ -79,5 +81,15 @@
     @include headings {
       @include font($size: "base");
     }
+  }
+
+  &-reactions {
+    display: flex;
+    gap: 1.6rem;
+    align-items: center;
+  }
+
+  &-reaction-count {
+    @include font($family: "body", $weight: "bold");
   }
 }
