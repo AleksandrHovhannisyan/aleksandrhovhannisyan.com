@@ -23,3 +23,18 @@ label {
     vertical-align: middle;
   }
 }
+
+.labeled-input {
+  display: grid;
+  gap: 0.4rem;
+  align-items: center;
+
+  &[data-flow="horizontal"] {
+    grid-auto-flow: column;
+    grid-template-columns: auto 1fr;
+  }
+
+  &[data-flow="vertical"] {
+    grid-auto-flow: row;
+  }
+}

@@ -39,12 +39,6 @@
     padding: clamped(1.2rem, 2.4rem);
     height: fit-content;
 
-    .labeled-input {
-      display: grid;
-      grid-auto-flow: row;
-      row-gap: 0.4rem;
-    }
-
     textarea {
       min-height: 17.5rem;
     }

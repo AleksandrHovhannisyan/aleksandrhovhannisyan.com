@@ -7,7 +7,7 @@
 }
 
 .pill {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   background-color: var(--pill-bg-color);
   color: var(--color-text-emphasis);
