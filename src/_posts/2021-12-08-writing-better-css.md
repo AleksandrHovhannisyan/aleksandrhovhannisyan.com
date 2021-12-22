@@ -5,7 +5,7 @@ keywords: [better css, modern css, fewer lines of css, css]
 categories: [css, clamp, css-grid, i18n, rtl, aspect-ratio, practices]
 thumbnail: thumbnail.png
 commentsId: 126
-lastUpdated: 2021-12-18
+lastUpdated: 2021-12-26
 ---
 
 CSS has come a long way since the early days of web development, when tables and various other hacks were used for layout and positioning. Today's developers can enjoy writing CSS that works in all major browsers, without having to bend over backwards to implement tricky layout requirements. Not only does this make it easier to create dynamic layouts, but it also allows you to ship smaller (and simpler) stylesheets by removing unnecessary cruft. In this article, we'll look at various scenarios where modern techniques can reduce the complexity of your code and allow you to write better CSS.
@@ -416,15 +416,9 @@ Why did I pick `4vw`? And more generally, how do you pick the right value for `c
 
 Keep in mind that while the examples I showed here are for font sizing, `clamp` can be applied to any numerical properties, including padding, margin, borders, and much more. I encourage you to experiment with `clamp` to see if it's right for your designs.
 
-### The Limitations of `clamp`
-
-There are some caveats to using `clamp` that I want to briefly touch on.
-
-While fluid scaling looks great, it may not be the right tool for the job if your design does not account for this behavior. So you may actually want to flip a property between two discrete states rather than allowing it to scale linearly, in which case media queries are your only option.
-
-Additionally, `clamp` is not suitable if you want a value to *decrease* as the viewport width increases; this is because an inverse viewport width unit does not yet exist. As an alternative, you may be tempted to try an expression like `clamp(min, calc(1px / 4vw), max)`, but that won't work as far as I can tell.
-
-In short, it's important to understand that while `clamp` is useful and has many applications for creating fluidly scaling designs, it's not a drop-in replacement for media queries.
+{% aside %}
+  **Note**: While fluid scaling looks great, it may not be the right tool for the job if your design does not account for this behavior. So you may actually want to flip a property between two discrete states rather than allowing it to scale linearly, in which case media queries are your only option. In short, it's important to understand that while `clamp` is useful and has many applications for creating fluidly scaling designs, it's not a drop-in replacement for media queries.
+{% endaside %}
 
 ## 5. Simplifying Layouts with Gap
 
