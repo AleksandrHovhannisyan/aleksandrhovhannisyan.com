@@ -1,23 +1,25 @@
+@use "sass:list";
+@use "sass:math";
+
 @import "./mixins";
 @import "./functions";
 
+$type-base: 1.6rem;
+$type-scale: 1.2;
+$type-steps: "xs", "sm", "base", "md", "lg", "xl", "xxl", "xxxl";
+$type-base-index: list.index($type-steps, "base");
+
 html {
-  --font-size-xs: 1.4rem;
-  --font-size-sm: #{clamped(1.4rem, 1.6rem)};
-  --font-size-base: #{clamped(1.6rem, 1.8rem)};
-  --font-size-md: #{clamped(1.8rem, 2.2rem)};
-  --font-size-lg: #{clamped(2.2rem, 2.6rem)};
-  --font-size-xl: #{clamped(2.6rem, 3.2rem)};
-  --font-size-xxl: #{clamped(3.2rem, 3.6rem)};
-  --font-size-xxxl: #{clamped(3.6rem, 4.8rem)};
-  --line-height-xs: 2.6rem;
-  --line-height-sm: #{clamped(2.6rem, 2.8rem)};
-  --line-height-base: #{clamped(2.8rem, 3rem)};
-  --line-height-md: #{clamped(3rem, 3.5rem)};
-  --line-height-lg: #{clamped(3.5rem, 3.8rem)};
-  --line-height-xl: #{clamped(3.8rem, 4.4rem)};
-  --line-height-xxl: #{clamped(4.4rem, 4.8rem)};
-  --line-height-xxxl: #{clamped(4.8rem, 6rem)};
+  @for $i from 1 through length($type-steps) {
+    $step: list.nth($type-steps, $i);
+    /* stylelint-disable-next-line custom-property-pattern */
+    --font-size-#{$step}:
+      #{clamped(
+        rnd($type-base * math.pow($type-scale, $i - $type-base-index), 2),
+        rnd($type-base * math.pow($type-scale, $i - $type-base-index + 1), 2)
+      )};
+  }
+
   --transition-duration: 0.2s;
   --transition-timing-function: ease;
   --page-max-width: 81rem;
