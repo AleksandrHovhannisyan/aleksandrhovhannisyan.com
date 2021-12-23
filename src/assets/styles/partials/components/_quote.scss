@@ -1,8 +1,8 @@
 blockquote {
   font-style: italic;
   border-inline-start: 0.4rem solid;
-  margin-inline-start: clamped(1.2rem, 2.4rem);
-  padding: 0.4rem clamped(2rem, 3.2rem);
+  margin-inline-start: clamped(12px, 24px);
+  padding: 0.4rem clamped(20px, 32px);
   @include rhythm;
 }
 

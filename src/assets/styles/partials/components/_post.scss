@@ -56,7 +56,7 @@
     .toc-list {
       --gap: 2.4rem;
       list-style: disc; // some headings have numbers already
-      padding-inline-start: clamped(2.4rem, 4.8rem);
+      padding-inline-start: clamped(24px, 48px);
     }
 
     a:not([class]) {

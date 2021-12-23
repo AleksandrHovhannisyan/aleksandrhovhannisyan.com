@@ -4,7 +4,7 @@
 @import "./mixins";
 @import "./functions";
 
-$type-base: 1.6rem;
+$type-base: 16px;
 $type-scale: 1.2;
 $type-steps: "xs", "sm", "base", "md", "lg", "xl", "xxl", "xxxl";
 $type-base-index: list.index($type-steps, "base");
@@ -23,7 +23,7 @@ html {
   --transition-duration: 0.2s;
   --transition-timing-function: ease;
   --page-max-width: 81rem;
-  --navbar-height: #{clamped(6.4rem, 7.6rem)};
+  --navbar-height: #{clamped(64px, 76px)};
 
   &[data-theme="light"] {
     color-scheme: light;

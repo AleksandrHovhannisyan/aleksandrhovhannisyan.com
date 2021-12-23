@@ -67,7 +67,7 @@
   }
 
   &-link {
-    padding: 0.4rem clamped(1.2rem, 1.6rem);
+    padding: 0.4rem clamped(12px, 16px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -272,7 +272,7 @@
 @include mobile-lg {
   .navbar {
     &-links {
-      gap: clamped(0.8rem, 1.2rem);
+      gap: clamped(8px, 12px);
     }
 
     &-site-name {
