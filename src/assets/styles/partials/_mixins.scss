@@ -62,7 +62,7 @@
   }
   @if $size {
     // expose CSS var to later compute other things, e.g., spacing
-    --line-height: calc(2ex + 1.2rem);
+    --line-height: calc(2ex + 1.1rem);
     font-size: var(--font-size-#{$size});
     line-height: var(--line-height);
   }
