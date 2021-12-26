@@ -70,34 +70,34 @@ Now, in reality, you can have a number system that uses a base of <code>2</code>
 <table>
     <thead>
       <tr>
-        <th scope="col">Base</th>
+        <th scope="col" class="numeric">Base</th>
         <th scope="col">Name</th>
         <th scope="col">Description</th>
       </tr>
     </thead>
     <tbody>
         <tr>
-            <td>1</td>
+            <td class="numeric">1</td>
             <td>Unary</td>
             <td>Also known as tallying. A number <code>n</code> is represented by picking an arbitrary character and repeating it <code>n</code> times (e.g., <code>xxxx</code> would be <code>4</code>).</td>
         </tr>
         <tr>
-            <td>2</td>
+            <td class="numeric">2</td>
             <td>Binary</td>
             <td>Only two digits: zero and one. Most commonly used in computing. Everything on a computer is, at the lowest possible level, stored using the binary number system.</td>
         </tr>
         <tr>
-            <td>8</td>
+            <td class="numeric">8</td>
             <td>Octal</td>
             <td>Only eight digits are available: <code>0–7</code>.</td>
         </tr>
         <tr>
-            <td>16</td>
+            <td class="numeric">16</td>
             <td>Hexadecimal</td>
             <td>Fifteen digits: <code>0–9</code> and <code>a–f</code>. Often used to express binary strings more compactly.</td>
         </tr>
         <tr>
-            <td>60</td>
+            <td class="numeric">60</td>
             <td>Sexagesimal</td>
             <td>How many seconds are in a minute? How many minutes in an hour? This is the basis of the modern circular coordinate system (degrees, minutes, and seconds).</td>
         </tr>
