@@ -8,12 +8,11 @@
     display: grid;
     align-items: center;
     grid-auto-flow: row;
-    column-gap: 9.6rem;
-    row-gap: 4.8rem;
+    gap: 4.8rem;
     @include tablet {
-      row-gap: 0;
       grid-auto-flow: column;
-      grid-template-columns: minmax(0, 40rem) auto;
+      gap: 9.6rem;
+      grid-template-columns: 3fr 2fr;
     }
   }
 
@@ -31,13 +30,11 @@
 
   &-form {
     display: grid;
-    grid-auto-flow: row;
-    row-gap: 1.6rem;
+    gap: 1.6rem;
     background-color: var(--form-bg-color);
     border-radius: 0.2rem;
     border: solid 1px hsl(0deg 0% 0% / 8%);
     padding: clamped(12px, 24px);
-    height: fit-content;
 
     textarea {
       min-height: 17.5rem;
@@ -52,30 +49,31 @@
 
   &-socials {
     display: grid;
-    row-gap: 4rem;
+    gap: 1.6rem;
     grid-template-rows: min-content auto;
 
     &-list {
-      column-gap: 3.2rem;
-      display: grid;
-      grid-auto-rows: 4.8rem;
-      grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
-      row-gap: 4rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: clamped(8px, 16px);
     }
   }
 
   &-social {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto 1fr;
+    gap: clamped(8px, 16px);
+    padding: clamped(8px, 16px);
+    white-space: nowrap;
+    min-width: fit-content;
     justify-content: center;
-    padding: 1.6rem;
     border-radius: 0.2rem;
     color: var(--color-text-normal);
 
     svg {
       justify-self: center;
-      width: 3.2rem;
-      height: 3.2rem;
+      width: clamped(24px, 32px);
+      height: clamped(24px, 32px);
       fill: currentColor;
     }
 
