@@ -1,7 +1,7 @@
 <article class="card project">
   <header class="project-header">
     <div class="project-name-wrapper">
-      <span class="project-icon" aria-hidden="true">{{ project.icon }}</span>
+      <div class="project-icon" aria-hidden="true">{{ project.icon }}</div>
       <h3 class="project-name font-base">{{ project.name }}</h3>
     </div>
     <div class="project-rating font-sm" role="img" aria-label="Rated {{ project.rating }} stars on GitHub">
@@ -16,7 +16,6 @@
     {%- endfor -%}
   </ul>
   <a class="project-link" href="{{ project.url }}" target="_blank" rel="noreferrer noopener">
-    Explore on GitHub
-    {%- include icon.html icon: "external-link", stroke: "currentColor", fill: "none", width: "32", height: "32" -%}
+    View project
   </a>
 </article>

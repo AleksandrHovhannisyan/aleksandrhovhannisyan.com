@@ -8,7 +8,6 @@
 
   &-link {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: absolute;
@@ -56,9 +55,16 @@
   }
 
   &-name-wrapper {
-    display: grid;
-    grid-auto-flow: column;
-    column-gap: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  &-icon {
+    picture {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
   }
 
   &-name {
@@ -66,9 +72,8 @@
   }
 
   &-rating {
-    display: grid;
-    grid-auto-flow: column;
-    column-gap: 0.4rem;
+    display: flex;
+    gap: 0.4rem;
     align-items: center;
   }
 
