@@ -5,6 +5,7 @@ keywords: [fluid typography, type scale, clamp, sass, font size]
 categories: [css, sass, typography, math, clamp]
 thumbnail: thumbnail.png
 commentsId: 131
+lastUpdated: 2021-12-31
 ---
 
 For a long time, many design systems implemented static font sizing, with a set of progressively larger and smaller font size variables on either end of a baseline font size:
@@ -26,6 +27,10 @@ Arguably the biggest pain point with `clamp` is computing the right preferred va
 
 {% aside %}
   If you're not using Sass, the approach outlined in this article can be applied in just about any context where you have access to simple math functions, including in vanilla CSS with the `calc` utility. The latter ends up being slightly more verbose, so I recommend using a preprocessor like Sass if possible.
+
+  Alternatively, you can use [Fluid Type Scale Calculator](https://www.fluid-type-scale.com/), an open-source tool I published that allows you to customize some parameters and copy-paste fluid typography variables into any project:
+
+  {% include img.html src: "fluid-type-scale.png", alt: "The landing page for the Fluid Type Scale Calculator website features a big bold headline that reads: 'Fluid Type Scale Calculator.' Below is a subtitle that reads: 'Generate font size variables for a fluid type scale. Grab the output CSS and drop it into any existing design system.' Below the header is a two-column layout with a form on the left and some output code on the right showing CSS variables for font sizing." %}
 {% endaside %}
 
 {% include toc.md %}
@@ -559,6 +564,7 @@ I hope you enjoyed this post!
 
 ## Additional Resources
 
+- [Fluid Type Scale Calculator](https://www.fluid-type-scale.com/), an open-source tool I created to help you fine-tune fluid typography for any project.
 - Andy Bell: [Consistent, Fluidly Scaling Type and Spacing](https://css-tricks.com/consistent-fluidly-scaling-type-and-spacing/)
 - Adrian Bece: [Modern fluid typography editor](https://modern-fluid-typography.vercel.app)
 - Jeremy Church: [Type Scale - A Visual Calculator](https://type-scale.com/)
