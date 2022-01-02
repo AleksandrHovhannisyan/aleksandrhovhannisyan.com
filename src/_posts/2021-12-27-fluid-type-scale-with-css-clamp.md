@@ -5,7 +5,7 @@ keywords: [fluid typography, type scale, clamp, sass, font size]
 categories: [css, sass, typography, math, clamp]
 thumbnail: thumbnail.png
 commentsId: 131
-lastUpdated: 2021-12-31
+lastUpdated: 2022-01-02
 ---
 
 For a long time, many design systems implemented static font sizing, with a set of progressively larger and smaller font size variables on either end of a baseline font size:
@@ -555,6 +555,47 @@ In short, the code loops through each font step and generates a min and max usin
 {% aside %}
   Once again, you may want to round the values using the function we created earlier.
 {% endaside %}
+
+#### Using a Different Type Scale for Mobile vs. Desktop
+
+The approach we just explored involves picking a minimum font size for the base modular step and deriving the maximum font size for each step using some power of our chosen ratio (e.g., `1.2`). But this does not always yield desirable results. Depending on the type scale you've chosen, you may still end up getting font sizes on mobile that are too large, even though your font sizes are technically fluid.
+
+Instead, you may want the min and max font sizes to be independent. In that case, rather than specifying just a min font size and a single type scale, we actually need to have two separate sets of variables: one for the minimum (mobile) and another for the maximum (desktop). So whereas before we had just one base font size, now we'll need two: an explicit minimum and maximum font size.
+
+{% include codeHeader.html file: "_variables.scss" %}
+```scss
+$type-base-min: 16px;
+$type-base-max: 19px;
+```
+
+Similarly, we'll need a corresponding minimum and maximum type scale:
+
+{% include codeHeader.html file: "_variables.scss" %}
+```scss
+$type-scale-min: 1.2;
+$type-scale-max: 1.333;
+```
+
+And now, we'll adjust our loop to use these new variables for the min and max, respectively:
+
+{% include codeHeader.html file: "index.scss" %}
+```scss
+html {
+  @for $i from 1 through length($type-steps) {
+    $step: list.nth($type-steps, $i);
+    $power: $i - $type-base-index;
+    $min: $type-base-min * math.pow($type-scale-min, $power);
+    $max: $type-base-max * math.pow($type-scale-max, $power);
+    --font-size-#{$step}: #{clamped($min, $max)};
+  }
+}
+```
+
+This gives you greater control over your font sizing since you're no longer locked into a single type scale for both mobile and desktop. Now, you're free to choose a different ratio for each breakpoint. I recommend using a smaller ratio for mobile than the one used on desktop. This ensures that your font sizing remains optimally legible on smaller devices.
+
+If you're using my [Fluid Type Scale Calculator](https://www.fluid-type-scale.com/), this separation between mobile and desktop is more obvious since you're asked to configure two separate sets of variables for the base font size, screen width, and modular ratio:
+
+{% include img.html src: "groups.png", alt: "A form on the left and some code output on the right. Two groups of inputs can be seen in the form. The first is titled 'Minimum (mobile)', while the second is titled 'Maximum (desktop)'. Each group contains three inputs, in order: font size, screen width, and type scale." %}
 
 ## Clamp All the Things
 
