@@ -22,10 +22,6 @@
   &-thumbnail-container {
     grid-area: thumbnail;
     user-select: none;
-  }
-
-  &-thumbnail-container,
-  &-date {
     margin-block-end: 1.2rem;
   }
 
@@ -35,6 +31,10 @@
       object-position: center;
       border-radius: 0.4rem;
       aspect-ratio: 16 / 9;
+
+      [data-theme="light"] & {
+        filter: contrast(0.95);
+      }
     }
   }
 
@@ -48,33 +48,7 @@
   }
 
   &-date {
-    grid-area: thumbnail;
-    color: white;
-    background:
-      linear-gradient(
-        213deg,
-        hsl(0deg 0% 0%) 0%,
-        hsl(0deg 0% 0% / 90.2%) 6.6%,
-        hsl(0deg 0% 0% / 81.4%) 12.6%,
-        hsl(0deg 0% 0% / 73.5%) 18.1%,
-        hsl(0deg 0% 0% / 66.3%) 23.2%,
-        hsl(0deg 0% 0% / 59.9%) 28.1%,
-        hsl(0deg 0% 0% / 53.9%) 33%,
-        hsl(0deg 0% 0% / 48.2%) 38%,
-        hsl(0deg 0% 0% / 42.8%) 43.3%,
-        hsl(0deg 0% 0% / 37.5%) 49%,
-        hsl(0deg 0% 0% / 32.1%) 55.2%,
-        hsl(0deg 0% 0% / 26.6%) 62.1%,
-        hsl(0deg 0% 0% / 20.8%) 69.9%,
-        hsl(0deg 0% 0% / 14.5%) 78.7%,
-        hsl(0deg 0% 0% / 7.6%) 88.7%,
-        hsl(0deg 0% 0% / 0%) 100%
-      );
-    z-index: 1;
-    display: flex;
-    justify-content: flex-end;
-    padding: 0.8rem;
-    pointer-events: none;
+    display: none;
   }
 
   &-tags {
@@ -97,10 +71,6 @@
       padding: 0.8rem 0;
       margin-inline-end: 1.2rem;
 
-      [data-theme="light"] &[data-loaded="true"] .lazy-img {
-        filter: blur(0) contrast(0.95);
-      }
-
       &-container {
         margin: 0;
       }
@@ -116,13 +86,6 @@
 
     &-date {
       display: unset;
-      justify-content: unset;
-      color: unset;
-      background: unset;
-      grid-area: date;
-      margin: unset;
-      padding: unset;
-      pointer-events: unset;
     }
 
     &-tags {
