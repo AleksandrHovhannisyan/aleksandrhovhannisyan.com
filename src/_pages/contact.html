@@ -9,18 +9,20 @@ permalink: /contact/
   <h1 class="contact-title font-xl">Get in touch! <span class="emoji" aria-hidden="true">📧</span></h1>
   <p class="contact-subtitle">Fields marked with an asterisk are required.</p>
   <form class="contact-form" method="POST" action="/contact/submitted/" spellcheck="false" name="contact" netlify netlify-honeypot="_gotcha">
-    <div class="labeled-input" data-flow="vertical">
-      <label for="email">Email</label>
+    <label for="email">
+      <span class="label-title">Email</span>
       <input class="input" type="email" name="_replyto" id="email" />
-    </div>
-    <div class="labeled-input" data-flow="vertical">
-      <label class="required" for="subject">Subject</label>
+    </label>
+    {%- comment -%}TODO: once :has drops, won't need the redundant required class{%- endcomment -%}
+    <label class="required">
+      <span class="label-title">Subject</span>
       <input class="input" type="text" name="subject" id="subject" required />
-    </div>
-    <div class="labeled-input" data-flow="vertical">
-      <label class="required" for="message">Message</label>
+    </label>
+    {%- comment -%}TODO: once :has drops, won't need the redundant required class{%- endcomment -%}
+    <label class="required" for="message">
+      <span class="label-title">Message</span>
       <textarea class="input" name="body" id="message" required></textarea>
-    </div>
+    </label>
     <button type="submit" class="button">Send message</button>
     <input aria-hidden="true" type="text" name="_gotcha" class="honeypot" />
   </form>

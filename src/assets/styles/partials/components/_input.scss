@@ -14,27 +14,22 @@
 }
 
 label {
-  color: var(--color-text-emphasis);
-  @include font($family: "title", $weight: "bold");
-
-  &.required::after {
-    content: "*";
-    margin: 0 0.4rem;
-    vertical-align: middle;
-  }
-}
-
-.labeled-input {
   display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: minmax(0, 1fr);
   gap: 0.4rem;
   align-items: center;
+  color: var(--color-text-emphasis);
+  @include font($family: "title", $weight: "bold");
 
   &[data-flow="horizontal"] {
     grid-auto-flow: column;
     grid-template-columns: auto 1fr;
   }
 
-  &[data-flow="vertical"] {
-    grid-auto-flow: row;
+  &.required .label-title::after {
+    content: "*";
+    margin: 0 0.4rem;
+    vertical-align: middle;
   }
 }
