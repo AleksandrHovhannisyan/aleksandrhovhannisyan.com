@@ -590,8 +590,8 @@ ${Object.values(imageMetadata)
   <img
     src="${formatSizes[baseFormat].placeholder.url}"
     data-src="${formatSizes[baseFormat].largest.url}"
-    width="${width}"
-    height="${height}"
+    width="${formatSizes[baseFormat].largest.width}"
+    height="${formatSizes[baseFormat].largest.height}"
     alt="${alt}"
     class="lazy-img"
     loading="lazy">
