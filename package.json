@@ -65,7 +65,10 @@
     "stylelint-config-standard-scss": "^3.0.0"
   },
   "browserslist": [
-    "defaults and supports es6-module and not IE <= 11"
+    "last 2 chrome versions",
+    "last 3 safari versions",
+    "last 2 firefox versions",
+    "last 2 edge versions"
   ],
   "husky": {
     "hooks": {
