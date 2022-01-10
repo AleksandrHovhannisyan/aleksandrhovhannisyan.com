@@ -8,6 +8,10 @@
   &.numeric {
     text-align: end;
   }
+
+  &.nowrap {
+    white-space: nowrap;
+  }
 }
 
 thead {

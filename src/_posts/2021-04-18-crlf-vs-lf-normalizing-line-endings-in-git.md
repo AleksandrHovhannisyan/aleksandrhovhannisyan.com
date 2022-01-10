@@ -1,19 +1,20 @@
 ---
 title: "CRLF vs. LF: Normalizing Line Endings in Git"
-description: Line endings can differ from one OS to another. Learn the history behind CRLF and LF line endings and how to enforce line endings in git.
+description: Line endings can differ from one OS to another. Learn the history behind CRLF and LF line endings and how to enforce line endings in Git.
 keywords: [line endings, git, gitattributes, carriage return, line feed, crlf vs lf]
 categories: [git, operating-systems, tooling]
 commentsId: 79
 isFeatured: true
+lastUpdated: 2022-01-11
 thumbnail:
   url: https://images.unsplash.com/photo-1583913836387-ab656f4e0457?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
-If you've ever worked on a project where developers use different operating systems, you know that line endings can be a peculiar source of frustration. This issue of CRLF vs. LF line endings is actually fairly popular—you'll find tons of questions on StackOverflow about how to configure software like git to play nicely with different operating systems.
+If you've ever worked on a project where developers use different operating systems, you know that line endings can be a peculiar source of frustration. This issue of CRLF vs. LF line endings is actually fairly popular—you'll find tons of questions on StackOverflow about how to configure software like Git to play nicely with different operating systems.
 
-The typical advice is to configure your local git to handle line ending conversions for you. We'll look at how that can be done in this article, but it isn't ideal if you're on a large team of developers. For example, if just one person forgets to configure their line endings correctly, you'll need to re-normalize your line endings and recommit your files every time a change is made.
+The typical advice is to configure your local Git to handle line ending conversions for you. For the sake of comprehensiveness, we'll look at how that can be done in this article, but it isn't ideal if you're on a large team of developers. If just one person forgets to configure their line endings correctly, you'll need to re-normalize your line endings and recommit your files every time a change is made.
 
-A better solution is to add a `.gitattributes` file to your repo so you can enforce line endings consistently in your codebase regardless of what operating systems your developers are using. Before we look at how this is done, we'll briefly review the history of line endings on Windows vs. Unix so we can understand why this issue exists in the first place.
+A better solution is to add a `.gitattributes` file to your repo so you can enforce line endings consistently in your codebase regardless of what operating systems your developers are using. Before we look at how that's done, we'll briefly review the history behind line endings on Windows and Unix so we can understand why this issue exists in the first place.
 
 History can be boring, though, so if you stumbled upon this post after hours of frustrated research, you can skip straight to [A Simple `.gitattributes` Config](#a-simple-gitattributes-config) and grab the code. However, I do encourage reading the full post to understand how these things work under the hood—you'll (hopefully) never have to Google line endings again!
 
@@ -35,9 +36,9 @@ Interestingly, the ASCII standard isn't just for *visible* characters like lette
 
 ### `CR`: Carriage Return
 
-**CR** (the escape sequence `\r`) stands for **carriage return**, which moves the cursor to the start of the current line. If you've ever seen a download progress bar on your terminal, this is how it works its magic! By using the carriage return, your terminal can animate text in place by returning the cursor to the start of the current line and overwriting any previously rendered text.
+**CR** (the escape sequence `\r`) stands for **carriage return**, which moves the cursor to the start of the current line. For example, if you've ever seen a download progress bar on your terminal, this is how it works its magic. By using the carriage return, your terminal can animate text in place by returning the cursor to the start of the current line and overwriting any existing text.
 
-That's cool, but you may be wondering where the need for such a character originated (beyond just animating text, which happens to be a niche application). It's a good question—and the answer will help us better understand why Windows uses `CRLF`.
+You may be wondering where the need for such a character originated (beyond just animating text, which happens to be a niche application). It's a good question—and the answer will help us better understand why Windows uses `CRLF`.
 
 #### Typewriters and the Carriage Return
 
@@ -79,9 +80,9 @@ It's easy to see why `CRLF` is redundant by today's standards—using both a car
 
 While it may seem like a harmless difference between operating systems, this issue of CRLF vs. LF has been causing people headaches for a long time now. For example, basic Windows text editors like Notepad used to not be able to properly interpret `LF` alone as a true line ending. Thus, if you opened a file created on Linux or Mac with Notepad, the line endings would not get rendered correctly. Notepad was later [updated in 2018 to support `LF`](https://devblogs.microsoft.com/commandline/extended-eol-in-notepad/).
 
-## Inspecting and Converting Line Endings (in Bash)
+### Inspecting and Converting Line Endings (in Bash)
 
-Cool! Now that we know how line endings originated, it's worth learning something practical.
+Now that we know what `CRLF` and `LF` are, we can inspect the line endings for files on any system using simple command-line tools.
 
 In bash (or, equivalently, WSL if you're using Windows), you can view line endings for a specific file using `cat` with the `A` flag:
 
@@ -110,133 +111,225 @@ You can also use the [`dos2unix` command-line utility](https://linux.die.net/man
 
 ## Line Endings in Git
 
-Admittedly, that was a lot of background to get through! But it was worth it because we're finally ready to talk about line endings as they relate to git (and how to solve the problem of `CRLF` vs. `LF` in any given code base).
+As you can probably imagine, the lack of a universal line ending presents a dilemma for software like Git, which relies on very precise character comparisons to determine if a file has changed since the last time it was checked in. If one developer uses Windows and another uses Mac or Linux, and they each save and commit the same files, they may see line ending changes in their Git diffs—a conversion from `CRLF` to `LF` or vice versa. This leads to unnecessary noise due to single-character changes and can be quite annoying.
 
-As you can probably guess, the lack of a universal line ending presents a dilemma for software like git, which relies on very precise character comparisons to determine if a file has changed since the last time it was checked in. If one developer uses Windows and another uses Mac or Linux, and they each save and commit the same files, they may see line ending changes in their git diffs—a conversion from `CRLF` to `LF` or vice versa. This leads to unnecessary noise due to single-character changes and can be quite annoying.
+For this reason, Git allows you to configure line endings in one of two ways: by changing your local Git settings or by adding a `.gitattributes` file to your project. We'll look at both approaches over the course of the next several sections.
+
+### All Line Ending Transformations Concern the Index
+
+Before we look at any specifics, I want to note one **very important detail**: all end-of-line transformations in Git happen when checking files *into* [the index](https://stackoverflow.com/questions/3689838/whats-the-difference-between-head-working-tree-and-index-in-git) or when checking files *out* of the index (into the working tree). The index is what eventually makes its way to your remote repository and has the final say on line endings. When normalization is enabled, line endings in Git's index will always be set to `LF`. However, depending on some other settings, Git may silently check out files into the working tree as `CRLF` (but this will not pollute `git status` with actual changes). We'll learn how this works in the next few sections.
 
 ### Configuring Line Endings in Git with `core.autocrlf`
 
-You can tell git how you'd like it to handle line endings on your system with the `core.autocrlf` configuration. This is done with the following command:
+As I mentioned in the intro, you can tell Git how you'd like it to handle line endings on your system with [the `core.autocrlf` setting](https://git-scm.com/docs/git-config#Documentation/git-config.txt-coreautocrlf). While this isn't the ideal approach for configuring line endings in a project, it's still worth taking a brief look at how it works.
+
+You can enable end-of-line normalization in your Git settings with the following command:
 
 ```
 git config --global core.autocrlf [true|false|input]
 ```
 
-Note that a value of `false` turns off any line ending conversions, which is usually undesirable unless you know that everyone on your team is using the same OS. That's rarely the case, so you can simply forget that this option even exists (unless you're using a `.gitattributes` config, in which case it will take priority over your git config—more on that shortly).
+You can also view the current Git setting using this command:
 
-That leaves us with just two options: `autocrlf true` and `autocrlf input`. What's the difference between these two?
-
-#### `autocrlf true`
-
-With `autocrlf true`, files will be checked out as `CRLF` locally with git, but whenever you commit files, all instances of `CRLF` will be replaced with `LF`. Basically, this setting ensures that your codebase always uses `LF` in the final version of all files but `CRLF` locally when checked out. This is the recommended setting for Windows developers since `CRLF` is the native line ending for Windows.
-
-If you use this option, you may see this warning when staging files for a commit on Windows:
-
+{% include codeHeader.html %}
 ```
-warning: CRLF will be replaced by LF in <file-name>.
-The file will have its original line endings in your working directory.
+git config --list
 ```
 
-This doesn't mean that something went wrong, so there's no need to panic. Git is just warning you that your `CRLF` line endings will be normalized to `LF` on commit, per this setting's intended behavior.
+By default, `core.autocrlf` is set to `false` on a fresh install of Git, meaning Git won't perform any line ending normalization when you commit files. Instead, Git will defer to [the `core.eol` setting](https://git-scm.com/docs/git-config#Documentation/git-config.txt-coreeol) to decide what line endings should be used; `core.eol` defaults to `native`, which means it depends on the OS you're using. That's not ideal because it means that `CRLF` may make its way into your code base from Windows devs.
 
-#### `autocrlf input`
+That leaves us with two options if we decide to configure Git locally: `core.autocrlf=true` and `core.autocrlf=input`. The line endings for these options are summarized below.
 
-With `autocrlf input`, files are converted to `LF` when they get committed, but they are not converted to anything when checked out. Hence the name "input"—you get what you originally put in. If a file was originally committed as `CRLF` on accident by a Windows developer, you'll see it as `CRLF` locally (and if you modify it, you'll force it back to `LF`). If a file was originally added as `LF`, you'll see it as such. This is usually a good thing because it means that you'll always get `LF` line endings in your codebase (assuming you use this from the get-go).
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Setting</th>
+      <th scope="col" class="nowrap">Index (check-in)</th>
+      <th scope="col">Working Tree (checkout)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>core.autocrlf=true</code></td>
+      <td><code>LF</code></td>
+      <td><code>CRLF</code></td>
+    </tr>
+    <tr>
+      <td><code>core.autocrlf=input</code></td>
+      <td><code>LF</code></td>
+      <td>original (usually <code>LF</code>, or <code>CRLF</code> if you're viewing a file you created on Windows)</td>
+    </tr>
+  </tbody>
+</table>
 
-The only difference between this option and `true` is that `input` doesn't touch line endings on checkout. This is the recommended setting for Mac/Linux developers since those operating systems use `LF` by default.
+The only difference between the two is that `core.autocrlf=true` converts files to `CRLF` on checkout from the index to the working tree. For that reason, it tends to be recommended setting for Windows developers since it guarantees `LF` in the remote copy of your code but allows you to use `CRLF` locally for full compatibility with Windows editors and file formats.
 
-## Normalizing Line Endings in Git with `.gitattributes`
+### Normalizing Line Endings in Git with `.gitattributes`
 
-You certainly *can* ask all your developers to configure their local git according to a chosen standard (`autocrlf true` or `autocrlf input`). But this is tedious and highly error prone, and it can be confusing trying to recall what these options mean since their recommended usage depends on what operating system you're on. If a developer installs a new environment or gets a new laptop, they'll need to remember to reconfigure git. And if a new developer forgets to read your docs, or a one-off developer from another team contributes to your repo, then you'll start seeing line ending changes again. Not good.
+You certainly *could* ask all your developers to configure their local Git. But this is tedious and highly error prone, and it can be confusing trying to recall what these options mean since their recommended usage depends on what operating system you're on. If a developer installs a new environment or gets a new laptop, they'll need to remember to reconfigure Git. And if a new developer forgets to read your docs, or a one-off developer from another team contributes to your repo, then you'll start seeing line ending changes again.
 
-Fortunately, there's a better solution: creating a `.gitattributes` file at the root of your repo to settle things once and for all. Git reads this file and applies its rules whenever you check out or commit files, ensuring that your line ending conventions are enforced regardless of how each individual developer has configured git locally or what OS they're using.
+Fortunately, there's a better solution: creating a `.gitattributes` file at the root of your repo to settle things once and for all. Git uses this config to apply certain attributes to your files whenever you check out or commit them. One popular use case of `.gitattributes` is to normalize line endings in a project. With this config-based approach, you can ensure that your line endings remain consistent in your codebase regardless of what operating systems or local Git settings your developers use since everyone will end up using the same config. You can learn more about this file and the supported attributes in [the official Git docs](https://git-scm.com/docs/gitattributes).
 
-### A Simple `.gitattributes` Config
+#### A Simple `.gitattributes` Config
 
-Here's a `.gitattributes` file that should cover most use cases:
+The following `.gitattributes` config normalizes line endings to `LF` for all text files:
 
 {% include codeHeader.html file: ".gitattributes" %}
 ```bash
-# We'll let Git's auto-detection algorithm infer if a file is text. If it is,
-# enforce LF line endings regardless of OS or git configurations.
-* text=auto eol=lf
-
-# Isolate binary files in case the auto-detection algorithm fails and
-# marks them as text files (which could brick them).
-*.{png,jpg,jpeg,gif,webp,woff,woff2} binary
+* text=auto
 ```
 
-Commit the file and push it to your remote.
+Add the file to the root of your workspace, commit it, and push it to your repo.
 
-You can learn more about how this works in the answer to this StackOverflow question: [What's the difference between “* text=auto eol=lf” and “* text eol=lf” in .gitattributes?](https://stackoverflow.com/a/56858538/5323344). I've provided a condensed summary below.
+Let's also understand how it works.
 
-First, you need to understand that git uses a simple algorithm to detect whether a particular file in your repo is a text file or a binary file (e.g., an executable, image, or font file). By default, this algorithm is used for the purpose of diffing files that have changed, but it can also come in handy for the purpose of enforcing line ending conventions (as we're doing here).
+First, the wildcard selector (`*`) matches all files that aren't gitignored. These files become candidates for end-of-line normalization, subject to any attributes you've specified. In this case, we're using [the `text` attribute](https://git-scm.com/docs/gitattributes#_text), which normalizes all line endings to `LF` when checking files into Git's index. However, it does not modify line endings in your *working tree*. This means that it's essentially the same as setting `core.autocrlf=input` in your Git settings.
 
-That's what `text=auto` does in the config above—it tells git to apply its auto-detection algorithm to determine whether a file is a text file. Then, `eol=lf` tells git to enforce `LF` line endings for text files **on both checkout and commit**. This should work well on both Windows and Linux since a majority of cross-platform text editors support `LF`. (But as I mentioned earlier, historically, some Windows text editors like Notepad would struggle to interpret `LF` alone. Nowadays, this is less of a problem.)
+More specifically, [the `text=auto` option](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Settostringvalueauto) tells Git to **only normalize line endings to `LF` for text files** while leaving binary files (images, fonts, etc.) untouched. This distinction is important—we don't want to accidentally corrupt binary files by modifying their line endings.
 
-Git's auto-detection algorithm is fairly accurate, but in case it fails to correctly distinguish between a text file and a binary file (like an image or font file), we can also explicitly mark a subset of our files as binary files to avoid bricking them. That's what we're doing here:
-
-```
-*.{png,jpg,jpeg,gif,webp,woff,woff2} binary
-```
-
-Now, after committing this file, the final step is to renormalize all your line endings for any files that were checked into git **prior** to the addition of `.gitattributes`. You can do that with the following command [since git 2.16](https://stackoverflow.com/a/50645024/5323344):
+After committing the `.gitattributes` file, your changes won't take effect immediately for files checked into Git *prior* to the addition of `.gitattributes`. To force an update, you can use the following command [since Git 2.16](https://stackoverflow.com/a/50645024/5323344):
 
 {% include codeHeader.html %}
 ```
 git add --renormalize .
 ```
 
-This reformats all your files according to the rules defined in your `.gitattributes` config. If previously committed files are using `CRLF` in git's index and are converted to `LF` as a result of this renormalization, their line endings will be updated in the index, and those files will be staged for a commit. The only thing left to do is to commit those changes and push them to your repo. From that point onward, anytime a new file is introduced, its line endings will be checked in (and checked out) as `LF`.
+This updates all files in Git's index according to the rules defined in your `.gitattributes` config. If previously committed text files used `CRLF` in Git's index and are converted to `LF` during the renormalization process, those files will be staged for a commit. You can then check if any files were modified like you would normally:
 
-#### Git Line Endings: Working Tree vs. Index
-
-You may see the following message when you commit these renormalized files:
-
+{% include codeHeader.html %}
 ```
-warning: CRLF will be replaced by LF in <file-name>.
-The file will have its original line endings in your working directory.
+git status
 ```
 
-This is the expected behavior—`CRLF` will become `LF` in Git's index, meaning when you push those files to your repo, they'll have `LF` line endings in the remote copy of your code. Anyone who later pulls or checks out that code will see `LF` line endings locally.
+The only thing left to do is to commit those changes (if any) and push them to your repo. In the future, anytime a new file is introduced, its line endings will be checked into Git with `LF`.
 
-But git doesn't actually change line endings for the **local copies** of your files (i.e., the ones in its working tree). Hence the last bit of the message, which informs you that the files you just renormalized may still continue to use `CRLF` locally.
+#### Verifying Line Endings in Git for Any File
 
-Rest assured that these files will never use `CRLF` in the *remote* copy of your code if you've specified `LF` as your desired line ending convention in the `.gitattributes` file.
-
-### Verifying Line Endings in Git for Any File
-
-If you want to double-check that the files in Git's index are using the correct line endings after all of these steps, you can run the following command:
+If you want to verify that the files in Git's index are using the correct line endings after all of these steps, you can run the following command:
 
 {% include codeHeader.html %}
 ```
 git ls-files --eol
 ```
 
-This will show you line ending information for all files that git is tracking, in a format like this:
+Or only for a particular file:
 
 ```
-i/lf    w/crlf  attr/text=auto eol=lf   file.txt
+git ls-files path/to/file --eol
 ```
 
-From left to right, these are:
+For text files, you should see something like this:
 
-- `i`: The line endings in the index (what gets pushed to your repo). Should be `LF`.
-- `w`: The line endings in the working tree (may be `CRLF`, but that's okay if the index is `LF`).
-- `attr`: The `.gitattributes` rule that applies to this file.
-- The file name itself.
+```
+i/lf    w/crlf  attr/text=auto  file.txt
+```
 
-Alternatively, you can double-check that git normalized your line endings correctly by re-cloning your repository on a Windows machine after you've pushed your code to the remote. You should see that both the index and working-tree copies of your files are using `LF` and not `CRLF` (assuming this is how you chose to normalize your line endings).
+From left to right, those are:
+
+1. `i`: line endings in Git's **i**ndex. Should be `lf` for text files.
+2. `w`: line endings in Git's **w**orking tree. May be either `lf` or `crlf` for text files.
+3. `attr`: The attribute that applies to the file. In this example, that's `text=auto`.
+4. The file name itself.
+
+{% aside %}
+  Alternatively, you could verify that Git normalized your line endings correctly by re-cloning your repo after you've pushed up your changes. You should see `LF` line endings in both the index and working tree for text files.
+{% endaside %}
+
+For binary files like images, note that you'll see `-text` for both the index and working tree line endings. This means that Git correctly identified the file as binary and left it alone:
+
+```
+i/-text w/-text attr/text=auto  image.png
+```
+
+#### Git Line Endings: Working Tree vs. Index
+
+You may see the following message when you commit files containing `CRLF` line endings locally (e.g., if you're on Windows and introduced a new file, or if you're not on Windows and renormalized the line endings for your codebase):
+
+```
+warning: CRLF will be replaced by LF in <file-name>.
+The file will have its original line endings in your working directory.
+```
+
+**This is working as expected**—`CRLF` will be converted to `LF` when checked into Git's index, meaning that when you push those files to your remote, they'll use `LF`. Anyone who later pulls or checks out that code will see `LF` line endings locally for those files.
+
+But the `text` attribute doesn't actually change line endings for the **local copies** of your text files (i.e., the ones in Git's [working tree](https://craftquest.io/articles/what-is-the-working-tree-in-git))—it only changes line endings for files checked into the *index*. Hence the second line of the message, which notes that the text files you just renormalized may still continue to use `CRLF` locally if that's the line ending they were originally created/cloned with on your system. Rest assured that text files will never use `CRLF` in the *remote* copy of your code.
+
+##### The `eol` Attribute: Controlling Line Endings in Git's Working Tree
+
+Sometimes, you actually want files to be checked out locally using `CRLF` while still retaining `LF` in the index. Usually, this is for Windows-specific files that are very sensitive to line ending changes. One such example is if you're committing batch scripts, which need `CRLF` line endings to run on Windows. It's okay to store these files with `LF` line endings in your repo, so long as they later get checked out with the correct line endings on a Windows machine. You can find a more comprehensive list of files that need `CRLF` line endings in the following article by Muhammad Rehan Saeed: [`.gitattributes` Best Practices](https://rehansaeed.com/gitattributes-best-practices/#line-endings).
+
+[In a previous section](#configuring-line-endings-in-git-with-coreautocrlf), we saw that you can achieve this desired behavior with `core.autocrlf=true`. The `.gitattributes` equivalent of this is [the `eol` attribute](https://git-scm.com/docs/gitattributes#_eol), which allows you to control which line ending gets applied in Git's working tree:
+
+1. [`eol=lf`](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Settostringvaluelf): converts to `LF` on checkout.
+2. [`eol=crlf`](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Settostringvaluecrlf): converts to `CRLF` on checkout.
+
+In the case of batch scripts, we'd use `eol=crlf`:
+
+{% include codeHeader.html file: ".gitattributes" %}
+```bash
+# All files are checked into Git's index with LF
+* text=auto
+
+# These files are checked out using CRLF locally
+*.bat eol=crlf
+```
+
+**This change won't take effect immediately**, so if you run `git ls-files --eol` after updating your `.gitattributes` file, you might still see `LF` line endings in the working tree. To update existing line endings in your working tree so they respect the `eol` attribute, you'll need to run the following set of commands [per this StackOverflow answer](https://stackoverflow.com/a/29888735/5323344):
+
+{% include codeHeader.html %}
+```
+git rm --cached -r .
+git reset --hard
+```
+
+{% aside %}
+  Since these commands do not alter Git's index, you will not see any changes staged for a commit. Think of this as "silently" refreshing the line endings in your working tree.
+{% endaside %}
+
+You'll notice that this command differs from `git add --renormalize .`, which we previously used to update line endings in Git's *index*. Now, we're updating line endings in the *working tree* to reflect our `eol` preferences. If you now you run `git ls-files --eol`, you should see `i/lf w/crlf` for any files matching the specified pattern. That might look like this:
+
+```
+i/lf    w/crlf    attr/text=auto eol=crlf batchScript.bat
+```
+
+### Summary: Git Config vs. `.gitattributes`
+
+There are some similarities between Git's local settings and the `.gitattributes` attributes we looked at. The table below lists each Git setting, its corresponding `.gitattributes` rule, and the line endings for text files in the index and working tree:
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Git config</th>
+      <th scope="col">.gitattributes</th>
+      <th scope="col">Index</th>
+      <th scope="col">Working Tree</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>core.autocrlf=true</code></td>
+      <td class="nowrap"><code>* text=auto eol=crlf</code></td>
+      <td><code>LF</code></td>
+      <td><code>CRLF</code></td>
+    </tr>
+    <tr>
+      <td><code>core.autocrlf=input</code></td>
+      <td class="nowrap"><code>* text=auto</code></td>
+      <td><code>LF</code></td>
+      <td>original (<code>LF</code> or <code>CRLF</code>)</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Bonus: Create an `.editorconfig` File
 
-A `.gitattributes` file is technically all that you need in order to enforce the line endings that show up on the remote copy of your codebase. However, as we saw above, you may still see `CRLF` line endings locally for files that you created because `.gitattributes` doesn't tell git to change the working copies of your files.
+A `.gitattributes` file is technically all that you need to enforce the line endings in the remote copy of your code. However, as we just saw, you may still see `CRLF` line endings on Windows locally because `.gitattributes` doesn't tell Git to change the working copies of your files.
 
-Again, this doesn't mean that git's normalization process isn't working; it's just the expected behavior. However, this can get annoying if you're also linting your code with ESLint and Prettier, in which case they'll constantly throw errors and tell you to delete those extra `CR`s:
+Again, this doesn't mean that Git's normalization process isn't working; it's just the expected behavior. However, this can get annoying if you're also linting your code with ESLint and Prettier, in which case they'll constantly throw errors and tell you to delete those extra `CR`s:
 
 {% include img.html src: "prettier.png", alt: "A user's mouse hovers over red squiggly lines in a file that's using CRLF line endings. A prettier warning tells the user to remove the carriage return character." %}
 
-Fortunately, you can take things a step further with an `.editorconfig` file; this is an [editor-agnostic project](https://editorconfig.org/) that aims to create a standardized format for customizing the behavior of any given text editor. Lots of text editors (including VS Code) support and automatically read this file if it's present. You can put something like this in the root of your workspace:
+Fortunately, we can take things a step further with an `.editorconfig` file; this is an [editor-agnostic project](https://editorconfig.org/) that aims to create a standardized format for customizing the behavior of any given text editor. Lots of text editors (including VS Code) support and automatically read this file if it's present. You can put something like this in the root of your workspace:
 
 {% include codeHeader.html file: ".editorconfig" %}
 ```
@@ -250,6 +343,6 @@ In addition to a bunch of other settings, you can specify the line ending that s
 
 ## Summary
 
-That was a lot to take in, but hopefully you now have a better understanding of the whole CRLF vs. LF debate and why this causes so many problems for teams that use a mixture of Windows and other operating systems. Whereas Windows follows the original convention of a carriage return plus a line feed (`CRLF`) for line endings, operating systems like Linux and Mac use only the line feed (`LF`) character. The history of these two control characters dates back to the era of the typewriter. While this tends to cause problems with software like git, you can specify settings at the repo level with a `.gitattributes` file to normalize your line endings regardless of what operating systems your developers are using. You can also optionally specify an `.editorconfig` file to ensure that new files are always created with `LF` line endings, even on Windows.
+That was a lot to take in, but hopefully you now have a better understanding of the whole CRLF vs. LF debate and why this causes so many problems for teams that use a mixture of Windows and other operating systems. Whereas Windows follows the original convention of a carriage return plus a line feed (`CRLF`) for line endings, operating systems like Linux and Mac use only the line feed (`LF`) character. The history of these two control characters dates back to the era of the typewriter. While this tends to cause problems with software like Git, you can specify settings at the repo level with a `.gitattributes` file to normalize your line endings regardless of what operating systems your developers are using. You can also optionally add an `.editorconfig` file to ensure that new files are always created with `LF` line endings, even on Windows.
 
 {% include unsplashAttribution.md name: "Katrin Hauf", username: "trine", photoId: "jpkvklXwt98" %}
