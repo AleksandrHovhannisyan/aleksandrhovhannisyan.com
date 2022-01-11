@@ -80,35 +80,6 @@ It's easy to see why `CRLF` is redundant by today's standards—using both a car
 
 While it may seem like a harmless difference between operating systems, this issue of CRLF vs. LF has been causing people headaches for a long time now. For example, basic Windows text editors like Notepad used to not be able to properly interpret `LF` alone as a true line ending. Thus, if you opened a file created on Linux or Mac with Notepad, the line endings would not get rendered correctly. Notepad was later [updated in 2018 to support `LF`](https://devblogs.microsoft.com/commandline/extended-eol-in-notepad/).
 
-### Inspecting and Converting Line Endings (in Bash)
-
-Now that we know what `CRLF` and `LF` are, we can inspect the line endings for files on any system using simple command-line tools.
-
-In bash (or, equivalently, WSL if you're using Windows), you can view line endings for a specific file using `cat` with the `A` flag:
-
-{% include codeHeader.html %}
-```
-cat -A myFile
-```
-
-If a file is using `CRLF`, you'll see the string `^M$` at the end of each line, where `^M` denotes a carriage return and `$` a line feed. Here's an example of what that might look like:
-
-```
-line one^M$
-line two^M$
-line three^M$
-```
-
-If a file is using `LF`, then you'll only see dollar signs:
-
-```
-line one$
-line two$
-line three$
-```
-
-You can also use the [`dos2unix` command-line utility](https://linux.die.net/man/1/dos2unix) to convert a file from DOS format (Windows, using `CRLF`) to UNIX (`LF`).
-
 ## Line Endings in Git
 
 As you can probably imagine, the lack of a universal line ending presents a dilemma for software like Git, which relies on very precise character comparisons to determine if a file has changed since the last time it was checked in. If one developer uses Windows and another uses Mac or Linux, and they each save and commit the same files, they may see line ending changes in their Git diffs—a conversion from `CRLF` to `LF` or vice versa. This leads to unnecessary noise due to single-character changes and can be quite annoying.
