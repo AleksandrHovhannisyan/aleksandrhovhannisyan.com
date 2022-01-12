@@ -5,7 +5,7 @@ keywords: [line endings, git, gitattributes, carriage return, line feed, crlf vs
 categories: [git, operating-systems, tooling]
 commentsId: 79
 isFeatured: true
-lastUpdated: 2022-01-11
+lastUpdated: 2022-01-12
 thumbnail:
   url: https://images.unsplash.com/photo-1583913836387-ab656f4e0457?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
@@ -88,7 +88,7 @@ For this reason, Git allows you to configure line endings in one of two ways: by
 
 ### All Line Ending Transformations Concern the Index
 
-Before we look at any specifics, I want to note one **very important detail**: all end-of-line transformations in Git happen when checking files *into* [the index](https://stackoverflow.com/questions/3689838/whats-the-difference-between-head-working-tree-and-index-in-git) or when checking files *out* of the index (into the working tree). The index is what eventually makes its way to your remote repository and has the final say on line endings. When normalization is enabled, line endings in Git's index will always be set to `LF`. However, depending on some other settings, Git may silently check out files into the working tree as `CRLF` (but this will not pollute `git status` with actual changes). We'll learn how this works in the next few sections.
+Before we look at any specifics, I want to note one **very important detail**: all end-of-line transformations in Git happen when checking files *into* [the index](https://stackoverflow.com/questions/3689838/whats-the-difference-between-head-working-tree-and-index-in-git) (i.e., committing changes) or when checking files *out* of the index (into the working tree). The index is what eventually makes its way to your remote repository and has the final say on line endings. When normalization is enabled, line endings in Git's index will always be set to `LF`. However, depending on some other settings, Git may silently check out files into the working tree as `CRLF` (but this will not pollute `git status` with actual changes). We'll learn how this works in the next few sections.
 
 ### Configuring Line Endings in Git with `core.autocrlf`
 
@@ -137,7 +137,7 @@ The only difference between the two is that `core.autocrlf=true` converts files 
 
 ### Normalizing Line Endings in Git with `.gitattributes`
 
-You certainly *could* ask all your developers to configure their local Git. But this is tedious and highly error prone, and it can be confusing trying to recall what these options mean since their recommended usage depends on what operating system you're on. If a developer installs a new environment or gets a new laptop, they'll need to remember to reconfigure Git. And if a new developer forgets to read your docs, or a one-off developer from another team contributes to your repo, then you'll start seeing line ending changes again.
+You certainly *could* ask all your developers to configure their local Git. But this is tedious, and it can be confusing trying to recall what these options mean since their recommended usage depends on your operating system. If a developer installs a new environment or gets a new laptop, they'll need to remember to reconfigure Git. And if a new developer forgets to read your docs, or a one-off developer from another team contributes to your repo, then you'll start seeing line ending changes again.
 
 Fortunately, there's a better solution: creating a `.gitattributes` file at the root of your repo to settle things once and for all. Git uses this config to apply certain attributes to your files whenever you check out or commit them. One popular use case of `.gitattributes` is to normalize line endings in a project. With this config-based approach, you can ensure that your line endings remain consistent in your codebase regardless of what operating systems or local Git settings your developers use since everyone will end up using the same config. You can learn more about this file and the supported attributes in [the official Git docs](https://git-scm.com/docs/gitattributes).
 
@@ -202,10 +202,6 @@ From left to right, those are:
 3. `attr`: The attribute that applies to the file. In this example, that's `text=auto`.
 4. The file name itself.
 
-{% aside %}
-  Alternatively, you could verify that Git normalized your line endings correctly by re-cloning your repo after you've pushed up your changes. You should see `LF` line endings in both the index and working tree for text files.
-{% endaside %}
-
 For binary files like images, note that you'll see `-text` for both the index and working tree line endings. This means that Git correctly identified the file as binary and left it alone:
 
 ```
@@ -257,15 +253,15 @@ git reset --hard
   Since these commands do not alter Git's index, you will not see any changes staged for a commit. Think of this as "silently" refreshing the line endings in your working tree.
 {% endaside %}
 
-You'll notice that this command differs from `git add --renormalize .`, which we previously used to update line endings in Git's *index*. Now, we're updating line endings in the *working tree* to reflect our `eol` preferences. If you now you run `git ls-files --eol`, you should see `i/lf w/crlf` for any files matching the specified pattern. That might look like this:
+You'll notice that this command differs from `git add --renormalize .`, which we previously used to update line endings in Git's *index*. Now, we're updating line endings in the *working tree* to reflect our `eol` preferences. If you now you run `git ls-files --eol`, you should see `i/lf w/crlf` for any files matching the specified pattern.
 
-```
-i/lf    w/crlf    attr/text=auto eol=crlf batchScript.bat
-```
+{% aside %}
+  Under the hood, the `eol` attribute also implies `text` with no value. [Prior to Git 2.10.0](https://github.com/git/git/blob/master/Documentation/RelNotes/2.10.0.txt#L248), there was a bug in Git where `* text=auto eol=crlf` would imply `* text eol=crlf`—that is, the file-type-detection algorithm would not work. This has since then been fixed so that `text=auto` can safely be used together with `eol`.
+{% endaside %}
 
 ### Summary: Git Config vs. `.gitattributes`
 
-There are some similarities between Git's local settings and the `.gitattributes` attributes we looked at. The table below lists each Git setting, its corresponding `.gitattributes` rule, and the line endings for text files in the index and working tree:
+There are some similarities between Git's local settings and the Git attributes we looked at. The table below lists each Git setting, its corresponding `.gitattributes` rule, and the line endings for text files in the index and working tree:
 
 <table>
   <thead>
