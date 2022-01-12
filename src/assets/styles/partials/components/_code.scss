@@ -3,6 +3,10 @@
 code {
   font-size: 0.82em;
   @include font($family: "code", $weight: "medium");
+
+  strong & {
+    @include font($family: "code", $weight: "bold");
+  }
 }
 
 // Inline code
