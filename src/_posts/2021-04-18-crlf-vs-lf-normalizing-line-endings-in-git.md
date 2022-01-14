@@ -88,7 +88,7 @@ For this reason, Git allows you to configure line endings in one of two ways: by
 
 ### All Line Ending Transformations Concern the Index
 
-Before we look at any specifics, I want to note one **very important detail**: all end-of-line transformations in Git happen when checking files *into* [the index](https://stackoverflow.com/questions/3689838/whats-the-difference-between-head-working-tree-and-index-in-git) (i.e., committing changes) or when checking files *out* of the index (into the working tree). The index is what eventually makes its way to your remote repository and has the final say on line endings.
+Before we look at any specifics, I want to note one **very important detail**: all end-of-line transformations in Git happen when checking files *into* [the index](https://stackoverflow.com/questions/3689838/whats-the-difference-between-head-working-tree-and-index-in-git) (i.e., staging changes) or when checking files *out* of the index (into the working tree). The index is what eventually makes its way to your remote repository and has the final say on line endings.
 
 When normalization is enabled, line endings in Git's index will always be set to `LF` and never `CRLF`. However, depending on some other settings, Git may silently check out files into the *working tree* as `CRLF`. Unlike the original problem described in this article, this will not pollute `git status` with actual line ending changes—it's mainly done to ensure that Windows developers can take advantage of `CRLF` locally while always committing `LF` to the repo.
 
@@ -111,7 +111,7 @@ You can also view the current Git setting using this command:
 git config --list
 ```
 
-By default, `core.autocrlf` is set to `false` on a fresh install of Git, meaning Git won't perform any line ending normalization when you commit files. Instead, Git will defer to [the `core.eol` setting](https://git-scm.com/docs/git-config#Documentation/git-config.txt-coreeol) to decide what line endings should be used; `core.eol` defaults to `native`, which means it depends on the OS you're using. That's not ideal because it means that `CRLF` may make its way into your code base from Windows devs.
+By default, `core.autocrlf` is set to `false` on a fresh install of Git, meaning Git won't perform any line ending normalization. Instead, Git will defer to [the `core.eol` setting](https://git-scm.com/docs/git-config#Documentation/git-config.txt-coreeol) to decide what line endings should be used; `core.eol` defaults to `native`, which means it depends on the OS you're using. That's not ideal because it means that `CRLF` may make its way into your code base from Windows devs.
 
 That leaves us with two options if we decide to configure Git locally: `core.autocrlf=true` and `core.autocrlf=input`. The line endings for these options are summarized below.
 
@@ -216,7 +216,7 @@ i/-text w/-text attr/text=auto  image.png
 
 #### Git Line Endings: Working Tree vs. Index
 
-You may see the following message when you commit files containing `CRLF` line endings locally (e.g., if you're on Windows and introduced a new file, or if you're not on Windows and renormalized the line endings for your codebase):
+You may see the following message when you stage files containing `CRLF` line endings locally (e.g., if you're on Windows and introduced a new file, or if you're not on Windows and renormalized the line endings for your codebase):
 
 ```
 warning: CRLF will be replaced by LF in <file-name>.
