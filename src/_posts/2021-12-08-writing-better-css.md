@@ -5,7 +5,7 @@ keywords: [better css, modern css, fewer lines of css, css]
 categories: [css, clamp, css-grid, i18n, rtl, aspect-ratio, practices]
 thumbnail: thumbnail.png
 commentsId: 126
-lastUpdated: 2021-12-26
+lastUpdated: 2022-01-13
 ---
 
 CSS has come a long way since the early days of web development, when tables and various other hacks were used for layout and positioning. Today's developers can enjoy writing CSS that works in all major browsers, without having to bend over backwards to implement tricky layout requirements. Not only does this make it easier to create dynamic layouts, but it also allows you to ship smaller (and simpler) stylesheets by removing unnecessary cruft. In this article, we'll look at various scenarios where modern techniques can reduce the complexity of your code and allow you to write better CSS.
@@ -374,7 +374,7 @@ Certain layout changes cannot be achieved without media queries. But for numeric
 
 ### How `clamp` Works
 
-While it may seem complicated, `clamp` is actually rather straightforward. It's a function that takes three arguments: a minimum value, a preferred value, and a maximum value (in that order):
+`clamp` is a CSS function that takes three arguments: a minimum value, a preferred value, and a maximum value (in that order):
 
 ```css
 .element {
@@ -382,7 +382,7 @@ While it may seem complicated, `clamp` is actually rather straightforward. It's 
 }
 ```
 
-`clamp` attempts to return the preferred value, so long as that value lies between the minimum and maximum. If the preferred value overshoots, `clamp` returns the maximum. If the preferred value undershoots, `clamp` returns the minimum. Hence the name—the preferred value is *clamped* between a ceiling and a floor. Under the hood, this is equivalent to chaining the `min` and `max` functions separately.
+It attempts to return the preferred value, so long as that value lies between the minimum and maximum. If the preferred value overshoots, `clamp` returns the maximum. If the preferred value undershoots, `clamp` returns the minimum. Hence the name—the preferred value is *clamped* between a ceiling and a floor. Under the hood, this is equivalent to chaining the `min` and `max` functions separately.
 
 At first glance, `clamp` may not seem useful, especially if you consider an example like this:
 
@@ -402,17 +402,20 @@ So, if we set our preferred value in `vw` units, clamp will guarantee that it ne
 
 ```css
 .element {
-  font-size: clamp(1rem, 4vw, 1.25rem);
-}
+  font-size: clamp(1rem, 0.45vw + 0.89rem, 1.25rem);
 ```
 
 This says:
 
 - The element's font size should be at least `1rem`.
 - The element's font size should be at most `1.25rem`.
-- The element's preferred font size is `4vw`, which depends on the viewport width.
+- The element's preferred font size is `0.45vw + 0.89rem`.
 
-Why did I pick `4vw`? And more generally, how do you pick the right value for `clamp`? It turns out that you can do a bit of math to figure this out. I prefer to start by phrasing my requirement like so: "I want my element to have a minimum font size of `16px` at a mobile width of `400px` and to scale up from there." In that case, `16 / 400 = 0.04`, or `4vw`. So on mobile, the element's preferred font size is equal to its minimum, or `1rem`. As the viewport width increases, the font size will increase fluidly, up until it hits a maximum allowed value of `1.25rem`.
+{% aside %}
+The preferred value for the code above may seem arbitrary, but it turns out that we can pick the right value [using a bit of math](/blog/fluid-type-scale-with-css-clamp/), given just a min/max font size and a corresponding min/max breakpoint. There are also lots of tools available that can generate a `clamp` declaration for you. One of those is my very own [Fluid Type Scale calculator](https://www.fluid-type-scale.com/), which lets you add fluid font size variables to any project.
+
+{% include img.html src: "fluid-type-scale.png", alt: "The landing page for the Fluid Type Scale Calculator website features a big bold headline that reads: 'Fluid Type Scale Calculator.' Below is a subtitle that reads: 'Generate font size variables for a fluid type scale. Grab the output CSS and drop it into any existing design system.' Below the header is a two-column layout with a form on the left and some output code on the right showing CSS variables for font sizing." %}
+{% endaside %}
 
 Keep in mind that while the examples I showed here are for font sizing, `clamp` can be applied to any numerical properties, including padding, margin, borders, and much more. I encourage you to experiment with `clamp` to see if it's right for your designs.
 
