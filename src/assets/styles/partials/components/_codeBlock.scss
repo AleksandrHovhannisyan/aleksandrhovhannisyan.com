@@ -8,10 +8,10 @@ $code-block-padding: clamped(16px, 32px);
 pre[class*="language-"] {
   background: var(--color-code-background);
   box-shadow: var(--code-block-box-shadow);
-  border-radius: 0.8rem;
   color: var(--color-code-text);
   margin-inline: calc(-1 * var(--padding));
   @include tablet {
+    border-radius: 0.8rem;
     margin-inline: 0;
   }
 
