@@ -68,15 +68,13 @@ Assuming that everything went well, it's time to make your first Jekyll site.
 
 Running this command will set up a folder named `mysite` with all of the necessary starter files and directories:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 bundle exec jekyll new mysite
 ```
 
 If you already have existing source files in a project directory for your site, you can instead run this:
 
-{% include codeHeader.html file: "Gemfile", copyable: false %}
-```bash
+```bash {data-file="Gemfile"}
 cd mysite
 bundle exec jekyll new . --force
 ```
@@ -93,8 +91,7 @@ The end result should be this simple directory structure:
 
 Go ahead and open up the Gemfile at the root of your project. You'll find useful comments in there to help you configure Jekyll with GitHub Pages:
 
-{% include codeHeader.html file: "_Gemfile" %}
-```ruby
+```ruby {data-file="_Gemfile" data-copyable=true}
 source "https://rubygems.org"
 
 # Hello! This is where you manage which Jekyll version is used to run.
@@ -165,8 +162,7 @@ If you don't use `theme: null`, the `github-pages` gem will automatically genera
 
 After doing all of that, run this command to install and update all necessary gems for your site:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 bundle install
 ```
 
@@ -183,8 +179,7 @@ You should also now see a `Gemfile.lock` file at the root of your project. This 
 
 Let's fire her up and see what we've got:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 bundle exec jekyll serve --livereload
 ```
 
@@ -192,15 +187,13 @@ By default, this runs your site on `localhost:4000` with live-reloading enabled,
 
 You can change the port in one of two ways. The first is to specify the `--port` argument:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 bundle exec jekyll serve --livereload --port 4001
 ```
 
 The second is to add this line somewhere inside your project's `_config.yml` file:
 
-{% include codeHeader.html %}
-```yml
+```yml {data-copyable=true}
 port: 4001
 ```
 
@@ -222,8 +215,7 @@ The remainder of this tutorial assumes that your theme is set to `null`. Some of
 
 If you haven't already done so, push your Jekyll site to GitHub Pages:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git add . && git push
 ```
 
@@ -252,8 +244,7 @@ If none of this makes sense to you right now, or if all of this seems overwhelmi
 
 We already saw that you can edit your Jekyll starter theme in `_config.yml`, but that's not all that this file allows you to do. In fact, this file houses your entire site's configuration settings. Here's what mine looks like so far:
 
-{% include codeHeader.html file: "_config.yml", copyable: false %}
-```yml
+```yml {data-file="_config.yml"}
 # Welcome to Jekyll!
 #
 # This config file is meant for settings that affect your whole blog, values
@@ -315,8 +306,7 @@ If you have any experience working with plain old HTML to create sites, you shou
 
 In your project directory, you should see a mostly empty file named `index.md` that looks something like this:
 
-{% include codeHeader.html file: "index.md", copyable: false %}
-```markdown
+```markdown {data-file="index.md"}
 ---
 # Feel free to add content and custom Front Matter to this file.
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
@@ -340,8 +330,7 @@ Kramdown extends Markdown with some useful features, like adding classes and IDs
 
 Before moving on, let's modify `index.md` as follows:
 
-{% include codeHeader.html file: "index.md" %}
-```markdown
+```markdown {data-file="index.md" data-copyable=true}
 ---
 # Feel free to add content and custom Front Matter to this file.
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
@@ -358,8 +347,7 @@ If live-reloading is enabled, you should see your page update automatically to d
 
 As I noted earlier, you can optionally also use plain HTML to get the same result:
 
-{% include codeHeader.html file: "index.md" %}
-```markdown
+```markdown {data-file="index.md" data-copyable=true}
 ---
 # Feel free to add content and custom Front Matter to this file.
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
@@ -372,8 +360,7 @@ layout: home
 
 Notice that we have to specify the ID explicitly with HTML, whereas Markdown does it automatically for us. If you wanted to, you could achieve the same result using Kramdown's ID specifier:
 
-{% include codeHeader.html file: "index.md" %}
-```markdown
+```markdown {data-file="index.md" data-copyable=true}
 ---
 # Feel free to add content and custom Front Matter to this file.
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
@@ -386,8 +373,7 @@ layout: home
 
 To understand more about what goes on behind the scenes in Jekyll, go ahead and expand your Git-ignored `_site` directory. Remember that this is the build directory that Jekyll creates each time you change a file, while `jekyll serve` is running. You should see that there's an `index.html` in there. Open that up to see its contents:
 
-{% include codeHeader.html file: "_site/index.html" %}
-```html
+```html {data-file="_site/index.html" data-copyable=true}
 <h1 id="hello-jekyll">Hello, Jekyll!</h1>
 ```
 
@@ -442,9 +428,8 @@ Since these are not among the predefined front matter variables that Jekyll reco
 
 While we're on the topic of front matter, go ahead and open up the starter blog post that Jekyll created for us. On my end, it's located under `_posts/2020-02-14-welcome-to-jekyll.markdown` and has this content:
 
-{% include codeHeader.html file: "_posts/2020-02-14-welcome-to-jekyll.markdown" %}
 {% raw %}
-```markdown
+```markdown {data-file="_posts/2020-02-14-welcome-to-jekyll.markdown" data-copyable=true}
 ---
 layout: post
 title:  "Welcome to Jekyll!"
@@ -494,8 +479,7 @@ The starter post that we saw earlier has a layout of `post`. Surely all of our o
 
 Nope! Open up your `_config.yml`, and add this YAML somewhere (anywhere):
 
-{% include codeHeader.html %}
-```yml
+```yml {data-copyable=true}
 defaults:
   -
     scope:
@@ -517,8 +501,7 @@ And then restart your server.
 
 Jekyll allows you to define **front matter defaults** like we've done here by scope, which you can narrow down using either a path or file type. The above defaults are equivalent to doing this manually in each post that we create under `_posts/`:
 
-{% include codeHeader.html file: "_posts/2020-02-14-an-awesome-post.md", copyable: false %}
-```markdown
+```markdown {data-file="_posts/2020-02-14-an-awesome-post.md"}
 ---
 is_post: true
 layout: post
@@ -527,8 +510,7 @@ layout: post
 
 And doing this manually for each page—like our home page, experience page, contact page, and so on—that we create under a directory named `_pages/`:
 
-{% include codeHeader.html file: "_pages/contact.md", copyable: false %}
-```markdown
+```markdown {data-file="_pages/contact.md"}
 ---
 is_post: false
 layout: default
@@ -549,8 +531,7 @@ The Jekyll starter already comes with two such files at the root of the project:
 
 First, create this directory, either via a UI or Bash:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 mkdir _pages
 ```
 
@@ -572,8 +553,7 @@ It's not Jekyll's fault that our two pages disappeared—we didn't tell it where
 
 Open up your `_config.yml` and add this line somewhere:
 
-{% include codeHeader.html %}
-```yml
+```yml {data-copyable=true}
 include: [_pages]
 ```
 
@@ -591,8 +571,7 @@ Okay, it looks like that added `_pages/` to our build directory, and we can now 
 
 The final step is to [specify permalinks to our pages](https://jekyllrb.com/docs/permalinks/) using a predefined front matter variable named `permalink`:
 
-{% include codeHeader.html file: "_pages/index.md" %}
-```markdown
+```markdown {data-file="_pages/index.md" data-copyable=true}
 ---
 permalink: /
 ---
@@ -602,8 +581,7 @@ permalink: /
 
 If you open up `about.md`, you'll notice that it already had a relative permalink defined in its front matter block:
 
-{% include codeHeader.html file: "_pages/about.md", copyable: false %}
-```markdown
+```markdown {data-file="_pages/about.md"}
 ---
 layout: page
 title: About
@@ -630,8 +608,7 @@ Save your changes, and Jekyll will rebuild the `_site/` directory. If you refres
 
 If you want to navigate to the About page, simply add `/about/` to the end of `localhost:4000` in your browser's navigation bar. Or you can use navigation links on your page:
 
-{% include codeHeader.html file: "_pages/index.md" %}
-```markdown
+```markdown {data-file="_pages/index.md" data-copyable=true}
 ---
 permalink: /
 ---
@@ -674,8 +651,7 @@ I want to take a second to demystify some things about blog posts in Jekyll. Mos
 
 We can give each blog post a permalink, too, just like we did with our pages above. But again, we don't want to have to repeat this every single time we create a post. Let's add a permalink to the defaults in our `_config.yml`:
 
-{% include codeHeader.html %}
-```yml
+```yml {data-copyable=true}
 defaults:
   -
     scope:
@@ -702,8 +678,7 @@ permalink: /blog/:categories/:title/
 
 Recall that the starter blog post defines two categories, `jekyll` and `update`, plus the title `Welcome to Jekyll!`:
 
-{% include codeHeader.html file: "_posts/2020-02-14-welcome-to-jekyll.markdown" %}
-```markdown
+```markdown {data-file="_posts/2020-02-14-welcome-to-jekyll.markdown" data-copyable=true}
 ---
 layout: post
 title:  "Welcome to Jekyll!"
@@ -788,9 +763,8 @@ So the `date` front matter variable is in fact redundant because we already have
 
 To verify this, let's try an experiment. Remove the date from the post's front matter, and replace the file with this:
 
-{% include codeHeader.html file: "_posts/2020-02-14-welcome-to-jekyll.markdown" %}
 {% raw %}
-```markdown
+```markdown {data-file="_posts/2020-02-14-welcome-to-jekyll.markdown" data-copyable=true}
 ---
 title:  "Welcome to Jekyll!"
 layout: post
@@ -1055,8 +1029,7 @@ Layout files in Jekyll are housed under the `_layouts/` directory. Recall that t
 
 It's easier to understand this with an example. If we go back to `_pages/about.md`, we'll find a layout declared in its front matter block:
 
-{% include codeHeader.html file: "_pages/about.md", copyable: false %}
-```markdown
+```markdown {data-file="_pages/about.md"}
 ---
 layout: page
 title: About
@@ -1066,8 +1039,7 @@ permalink: /about/
 
 Let's rename the layout to `default`. Functionally, it doesn't make a difference what we name it, as long as there's a layout file with the same name. It's just that `default` is more idiomatic—it's our website's "default layout."
 
-{% include codeHeader.html file: "_pages/about.md" %}
-```markdown
+```markdown {data-file="_pages/about.md" data-copyable=true}
 ---
 layout: default
 title: About
@@ -1077,8 +1049,7 @@ permalink: /about/
 
 Let's do the same for `_pages/index.md` and give the page a title as well, while we're at it:
 
-{% include codeHeader.html file: "_pages/index.md" %}
-```markdown
+```markdown {data-file="_pages/index.md" data-copyable=true}
 ---
 layout: default
 title: Home
@@ -1092,9 +1063,8 @@ This is the home page.
 
 Let's also create two other pages, `blog.md` and `contact.md`:
 
-{% include codeHeader.html file: "_pages/blog.md" %}
 {% raw %}
-```markdown
+```markdown {data-file="_pages/blog.md" data-copyable=true}
 ---
 layout: default
 title: Blog
@@ -1111,8 +1081,7 @@ permalink: /blog
 ```
 {% endraw %}
 
-{% include codeHeader.html file: "_pages/contact.md" %}
-```markdown
+```markdown {data-file="_pages/contact.md" data-copyable=true}
 ---
 layout: default
 title: Contact
@@ -1130,9 +1099,8 @@ Get in touch!
 
 Next, create the `_layouts/` directory and add a file to it named `default.html` with these contents:
 
-{% include codeHeader.html file: "_layouts/default.html" %}
 {% raw %}
-```html
+```html {data-file="_layouts/default.html" data-copyable=true}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1168,8 +1136,7 @@ The most important part is {% raw %}`{{ content }}`{% endraw %}, which you shoul
 
 One final note: If you want to change the site title that appears after the dash in the address bar, then simply change that variable in your `_config.yml` as I mentioned before:
 
-{% include codeHeader.html file: "_config.yml" %}
-```yml
+```yml {data-file="_config.yml" data-copyable=true}
 # Site settings
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
@@ -1182,8 +1149,7 @@ title: Your awesome title
 
 If you open up the starter blog post that we saw earlier, you'll notice that it has a different layout set:
 
-{% include codeHeader.html file: "_posts/2020-02-14-welcome-to-jekyll.markdown", copyable: false %}
-```markdown
+```markdown {data-file="_posts/2020-02-14-welcome-to-jekyll.markdown"}
 ---
 layout: post
 title:  "Welcome to Jekyll!"
@@ -1197,9 +1163,8 @@ The blog post collapses to a "flat" layout and doesn't have the same HTML struct
 
 This is because the `post` layout doesn't exist. Let's go ahead and create this layout file. This time around, you'll notice that a layout file can itself specify a layout:
 
-{% include codeHeader.html file: "_layouts/post.html" %}
 {% raw %}
-```html
+```html {data-file="_layouts/post.html" data-copyable=true}
 ---
 layout: default
 ---
@@ -1253,8 +1218,7 @@ Notice that we reference the compiled version (`.css`) that's going to live unde
 
 Meanwhile, this is what my manifest looks like:
 
-{% include codeHeader.html file: "/assets/styles/main.scss" %}
-```sass
+```sass {data-file="/assets/styles/main.scss" data-copyable=true}
 ---
 ---
 
@@ -1309,8 +1273,7 @@ Creating modular stylesheets and importing them into a SASS manifest makes it mu
 
 Let's give this a shot. Create a file named `_sass/_general.scss` with this styling (or really anything you want):
 
-{% include codeHeader.html file: "_sass/_general.scss" %}
-```scss
+```scss {data-file="_sass/_general.scss" data-copyable=true}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -1325,8 +1288,7 @@ body {
 
 And then create this file:
 
-{% include codeHeader.html file: "assets/styles/main.scss" %}
-```scss
+```scss {data-file="assets/styles/main.scss" data-copyable=true}
 ---
 ---
 
@@ -1342,8 +1304,7 @@ _site/assets/styles
 
 Here's what the transpiled, minified stylesheet looks like:
 
-{% include codeHeader.html file: "_site/assets/styles/main.css", copyable: false %}
-```css
+```css {data-file="_site/assets/styles/main.css"}
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body { font-size: 18px; font-family: Arial; }
@@ -1351,8 +1312,7 @@ body { font-size: 18px; font-family: Arial; }
 
 Finally, don't forget to link the stylesheet to your `default.html` layout. Just add this to your `head`:
 
-{% include codeHeader.html file: "_layouts/default.html" %}
-```html
+```html {data-file="_layouts/default.html" data-copyable=true}
 <link rel="stylesheet" type="text/css" href="/assets/styles/main.css">
 ```
 
@@ -1366,9 +1326,7 @@ Need to add more styles? Simply create a new SASS stylesheet under `_sass/`, pos
 
 Minifying CSS is one of the many things you can do to improve your page load speed. And fortunately, doing so is really easy in Jekyll. All you have to do is add this somewhere in your `_config.yml`:
 
-{% include codeHeader.html file: "_config.yml" %}
-```yaml
-
+```yaml {data-file="_config.yml" data-copyable=true}
 sass:
   style: compressed
 ```
@@ -1385,9 +1343,8 @@ Includes are created under the `_includes/` directory. An include file is simply
 
 For example, let's say you want to use tooltips on your site but don't want to have to copy-paste the same HTML each time you want to use one on a page. This is a perfect use case for includes:
 
-{% include codeHeader.html file: "_includes/tooltip.html" %}
 {% raw %}
-```html
+```html {data-file="_includes/tooltip.html" data-copyable=true}
 <div class="tooltip tooltip-{{ include.position }}">
     <div class="tooltip-text">
         {{ include.text }}
@@ -1398,9 +1355,8 @@ For example, let's say you want to use tooltips on your site but don't want to h
 
 Here's how we might include a tooltip in another file:
 
-{% include codeHeader.html %}
 {% raw %}
-```liquid
+```liquid {data-copyable=true}
 {% include tooltip.html position="top" text="This is a tooltip!" %}
 ```
 {% endraw %}
@@ -1467,8 +1423,7 @@ You can then loop over that data using Liquid tags and finally give the data its
 
 Let's say you have a simple file named `_data/skills.yml`. Suppose it looks something like this:
 
-{% include codeHeader.html file: "_data/skills.yml" %}
-```yml
+```yml {data-file="_data/skills.yml" data-copyable=true}
 - name: Writing
   rating: 5
 - name: Jekyll
@@ -1479,9 +1434,8 @@ Let's say you have a simple file named `_data/skills.yml`. Suppose it looks some
 
 You can access this data using `site.data.skills`. If your YAML defines an array of skills like above, you can iterate over it and define template markup for each element:
 
-{% include codeHeader.html file: "_pages/experience.md" %}
 {% raw %}
-```liquid
+```liquid {data-file="_pages/experience.md" data-copyable=true}
 <ul>
     {% for skill in site.data.skills %}
     <li class="skill">{{ skill.name }} - {{ skill.rating }}</li>
@@ -1494,8 +1448,7 @@ This is a fairly simple example—in reality, you'd probably want to do more tha
 
 Also, note that you can nest arrays in YAML and in Liquid. This would allow you to, for example, define skill *categories* and nest the actual skills within them:
 
-{% include codeHeader.html file: "_data/skills.yml" %}
-```yml
+```yml {data-file="_data/skills.yml" data-copyable=true}
 - category: Blogging
   skills:
     - name: Writing
@@ -1513,9 +1466,8 @@ Also, note that you can nest arrays in YAML and in Liquid. This would allow you 
 
 And again, we can give this data more structure:
 
-{% include codeHeader.html file: "_pages/experience.md" %}
 {% raw %}
-```liquid
+```liquid {data-file="_pages/experience.md" data-copyable=true}
 {% for item in site.data.skills %}
 <h4>{{ item.category }}</h4>
 <ul>
@@ -1533,8 +1485,7 @@ Now let's suppose you run a blog that has multiple authors, not just you.
 
 You can create a data file for each author and define the path to their profile photo, their name, their bio, and a fixed set of social media links, like Twitter, GitHub, and whatnot:
 
-{% include codeHeader.html file: "_data/authors.yml" %}
-```yml
+```yml {data-file="_data/authors.yml" data-copyable=true}
 John Doe:
   photo: john-doe.JPG
   bio: John is a... Well, we don't actually know what he does. Actually, we're not even sure we know who he is.
@@ -1558,9 +1509,8 @@ Notice how your Jekyll data files can be as complex as you need, with nested arr
 
 Let's assume each post defines an author in its front matter:
 
-{% include codeHeader.html file: "_posts/2020-02-13-a-really-awesome-post.md" %}
 {% raw %}
-```markdown
+```markdown {data-file="_posts/2020-02-13-a-really-awesome-post.md" data-copyable=true}
 ---
 title: A Really Awesome Post
 author: Jane Doe
@@ -1575,9 +1525,8 @@ The end!
 
 We can now add a bio at the end of each post, ideally in the `post.html` layout file so we don't have to repeat it for every single post that we publish:
 
-{% include codeHeader.html file: "_layouts/post.html" %}
 {% raw %}
-```html
+```html {data-file="_layouts/post.html" data-copyable=true}
 ---
 layout: default
 ---
@@ -1617,8 +1566,7 @@ Now you want to assign descriptions to each tag to dynamically update a page's d
 
 Create a data file named `tagDescriptions.yml` (or something else) and define key-value pairs in the YAML, where the key is the tag name and the value is the description for that particular tag:
 
-{% include codeHeader.html file: "_data/tagDescriptions.yml" %}
-```yml
+```yml {data-file="_data/tagDescriptions.yml" data-copyable=true}
 dev: Technical posts. Yay dev!
 life: As in, the thing I like to pretend to have...
 tag: This is a tag. How exciting!
@@ -1626,9 +1574,8 @@ tag: This is a tag. How exciting!
 
 Then, you can once again take advantage of YAML's associative data nature to assign descriptions to each tag:
 
-{% include codeHeader.html file: "_layouts/blog.html" %}
 {% raw %}
-```html
+```html {data-file="_layouts/blog.html" data-copyable=true}
 {% for tag in site.tags %}
 <a
     class="tag"

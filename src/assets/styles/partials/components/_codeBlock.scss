@@ -8,15 +8,40 @@ $code-block-padding: clamped(16px, 32px);
 pre[class*="language-"] {
   background: var(--color-code-background);
   box-shadow: var(--code-block-box-shadow);
-  padding: $code-block-padding;
   border-radius: 0.8rem;
   color: var(--color-code-text);
-  text-align: start;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  tab-size: 2;
-  overflow-x: auto;
+  margin-inline: calc(-1 * var(--padding));
+  @include tablet {
+    margin-inline: 0;
+  }
+
+  code {
+    padding: $code-block-padding;
+    position: relative;
+    text-align: start;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    tab-size: 2;
+    overflow-x: auto;
+    display: block;
+
+    &[data-file] {
+      padding-top: clamped(48px, 76px);
+
+      // File name
+      &::before {
+        content: "Filename: " attr(data-file);
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: var(--color-code-text);
+        word-break: break-all;
+        padding: $code-block-padding $code-block-padding 0;
+        @include font($family: "title", $weight: "bold", $size: "sm");
+      }
+    }
+  }
 
   .namespace {
     opacity: 0.7;
@@ -100,44 +125,6 @@ pre[class*="language-sass"] {
 pre[class*="language-bash"] {
   .token:not(.comment) {
     color: var(--color-code-text) !important;
-  }
-}
-
-/* Line highlighting */
-
-pre[data-line] {
-  position: relative;
-}
-
-.highlight-line,
-.highlight-line-active {
-  background: var(--color-code-selection);
-}
-
-.code-header {
-  height: 0;
-  z-index: 2;
-  position: relative;
-
-  // Code blocks with a file name need a bit of top padding
-  &.with-file-name + pre[class*="language-"] {
-    padding-top: clamped(48px, 76px);
-  }
-}
-
-.code-file-name {
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: var(--color-code-text);
-  word-break: break-all;
-  padding: $code-block-padding $code-block-padding 0;
-  border-radius: 0.8rem 0.8rem 0 0;
-  background-color: var(--color-code-background);
-  @include font($family: "title", $weight: "bold", $size: "sm");
-
-  &::before {
-    content: "Filename: ";
   }
 }
 

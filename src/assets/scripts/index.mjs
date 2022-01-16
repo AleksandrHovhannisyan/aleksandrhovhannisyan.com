@@ -12,11 +12,15 @@ const themeToggle = new ThemeToggle({
   },
 });
 
-const copyableCodeBlocks = document.querySelectorAll('.code-header.with-copy-button + pre[class*="language-"]');
-const copyCodeButtons = document.querySelectorAll('.copy-code-button');
+const copyableCodeBlocks = document.querySelectorAll('code[data-copyable="true"]');
+copyableCodeBlocks.forEach((codeBlock) => {
+  const code = codeBlock.innerText;
 
-copyCodeButtons.forEach((copyCodeButton, index) => {
-  const code = copyableCodeBlocks[index].innerText;
+  const copyCodeButton = document.createElement('button');
+  copyCodeButton.className = 'copy-code-button font-sm';
+  copyCodeButton.setAttribute('aria-label', 'Copy code to clipboard');
+  copyCodeButton.type = 'button';
+  codeBlock.prepend(copyCodeButton);
 
   copyCodeButton.addEventListener('click', () => {
     window.navigator.clipboard.writeText(code);

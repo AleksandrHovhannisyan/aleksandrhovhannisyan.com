@@ -22,8 +22,7 @@ Sometimes, you'll find yourself working on a front-end feature for which an API 
 
 Now, you *could* just hard-code your data in the UI, like mapping a fixed array of objects to some HTML output (either with vanilla JavaScript or, in this case, React):
 
-{% include codeHeader.html file: "App.js" %}
-```jsx
+```jsx {data-file="App.js" data-copyable=true}
 import React from 'react';
 
 const BookList = ({ books }) => {
@@ -67,8 +66,7 @@ While it's tempting to take this route, it's not a good idea because it neglects
 
 The solution? Use Promises to create a mock API in your frontend:
 
-{% include codeHeader.html file: "utils/getData.js" %}
-```javascript
+```javascript {data-file="utils/getData.js" data-copyable=true}
 export const getData = (data, successRate = 0.98, maxLatencyMs = 1000) =>
   new Promise((resolve, reject) => {
     const successRoll = Math.random();
@@ -87,8 +85,7 @@ This function accepts one required argument: your fake data. The remaining argum
 
 Now, instead of hardcoding data in our frontend, we can pass along our fake data to the mock API, which will either bounce it back to us after some time or fail:
 
-{% include codeHeader.html file: "App.js" %}
-```jsx
+```jsx {data-file="App.js" data-copyable=true}
 import React, { useState, useEffect } from "react";
 
 const BookList = ({ books }) => {
@@ -145,8 +142,7 @@ Older JavaScript APIs (e.g., the now-deprecated [request](https://github.com/req
 
 Here's a simulated callback using a simple `setTimeout`:
 
-{% include codeHeader.html %}
-```javascript
+```javascript {data-copyable=true}
 function doSomething(arg1, callback) {
   // In reality, the function would do something else and then
   // invoke the callback. The timeout is for demo purposes.
@@ -202,8 +198,7 @@ Our `getSetting` function takes two arguments: the key to use for looking up dat
 
 To convert this to a simpler Promise-based syntax, we just create our own wrapper function that returns a Promise and either resolves or rejects, depending on the result of `getSetting`:
 
-{% include codeHeader.html file: "getSettingAsync.js" %}
-```javascript
+```javascript {data-file="getSettingAsync.js" data-copyable=true}
 function getSettingAsync(key) {
     return new Promise((resolve, reject) => {
         try {
@@ -219,8 +214,7 @@ function getSettingAsync(key) {
 
 That's it! Now, we can just do this:
 
-{% include codeHeader.html %}
-```javascript
+```javascript {data-copyable=true}
 getSettingAsync('foo')
   .then(console.log)
   .catch(e => setErrorState(true));
@@ -238,8 +232,7 @@ For whatever reason, let's say you need to load a script (or image, or any other
 
 The naive approach uses nested `onload` handlers, like so:
 
-{% include codeHeader.html %}
-```javascript
+```javascript {data-copyable=true}
 const script1 = document.createElement('script');
 const script2 = document.createElement('script');
 const script3 = document.createElement('script');
@@ -281,8 +274,7 @@ But the nesting only gets worse from here, and there's already a lot of hard-cod
 
 Instead, we can use Promises to regulate the order in which our scripts are loaded:
 
-{% include codeHeader.html file: "loadScript.js" %}
-```javascript
+```javascript {data-file="loadScript.js" data-copyable=true}
 function loadScript(url) {
   const script = document.createElement('script');
   document.body.appendChild(script);
@@ -305,8 +297,7 @@ function loadScript(url) {
 
 Now, all we need to do is chain Promises:
 
-{% include codeHeader.html %}
-```javascript
+```javascript {data-copyable=true}
 loadScript('two.js')
   .then(() => loadScript('one.js'))
   .then(() => loadScript('three.js'))
@@ -327,8 +318,7 @@ Note that there are very few situations in the real world where you'd actually n
 
 The Chrome extension API allows you to save and read user preferences. The read operation is performed asynchronously, so you need to pass in a callback for when the data becomes ready:
 
-{% include codeHeader.html %}
-```javascript
+```javascript {data-copyable=true}
 chrome.storage.sync.get({ 'foo' }, setting => {
     if (chrome.runtime.lastError) {
         throw new Error(`Failed to read setting.`);
@@ -342,8 +332,7 @@ That works, but you'll soon grow tired of passing in a callback every single tim
 
 We can easily convert this to a Promise-based syntax. We'll create a utility function named `readSetting` that abstracts away the callback and either resolves with the value of the setting or rejects if the Chrome runtime encounters an error:
 
-{% include codeHeader.html file: "readSetting.js" %}
-```javascript
+```javascript {data-file="readSetting.js" data-copyable=true}
 export default function readSetting(settingName) {
   return new Promise((resolve, reject) => {
     chrome.storage.sync.get(
@@ -362,8 +351,7 @@ export default function readSetting(settingName) {
 
 And now we can use either `async`/`await` or `then` to read settings in a much more legible manner:
 
-{% include codeHeader.html %}
-```javascript
+```javascript {data-copyable=true}
 const bar = await readSetting('foo');
 ```
 
@@ -375,8 +363,7 @@ Normally, an [operating system's scheduler](/blog/operating-system-scheduling-al
 
 Why would you want to do this? Sleeping is useful if you want to regulate **the rate at which code is executed**. And just to be clear, you can definitely do this in vanilla JavaScript without Promises:
 
-{% include codeHeader.html %}
-```javascript
+```javascript {data-copyable=true}
 for (let i = 1; i <= 10; i++) {
     setTimeout(() => console.log(i), i * 1000);
 }
@@ -388,8 +375,7 @@ for (let i = 1; i <= 10; i++) {
 
 This works, but it's a little difficult to understand compared to the following C++ code:
 
-{% include codeHeader.html %}
-```cpp
+```cpp {data-copyable=true}
 #include <chrono>
 #include <thread>
 
@@ -405,8 +391,7 @@ for (int i = 1; i <= 10; i++) {
 
 Fortunately, we can achieve something similar using a Promise that resolves after `ms` time elapses:
 
-{% include codeHeader.html file: "utils/sleep.js" %}
-```javascript
+```javascript {data-file="utils/sleep.js" data-copyable=true}
 export default function sleep(ms) {
     return new Promise(resolve => {
         setTimeout(resolve, ms);
@@ -416,8 +401,7 @@ export default function sleep(ms) {
 
 Now, with ES7's `async`/`await`, we can write the following:
 
-{% include codeHeader.html %}
-```javascript
+```javascript {data-copyable=true}
 import sleep from 'utils/sleep';
 
 for (let i = 1; i <= 10; i++) {

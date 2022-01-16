@@ -59,8 +59,7 @@ Outside the Node ecosystem, there are still libraries that'll do the job for you
 
 Now, assuming that you've generated your WebP images, the typical way to render them is with the `<picture>`, `<source>`, and `<img>` tags::
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <picture>
   <source
     srcset="/path/to/img.webp"
@@ -118,8 +117,7 @@ The second option is to use the **IntersectionObserver API**, which allows you t
 
 For example, your modified markup might end up looking something like this. Note how the `srcset` and `src` point to placeholder images, while `data-srcset` and `data-src` point to the real WebP and JPEG images, respectively.
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <picture class="lazy-picture">
   <source
     srcset="/path/to/img-placeholder.webp"
@@ -137,8 +135,7 @@ I'm naming these attributes `data-srcset` and `data-src`, respectively, but you 
 
 Next, we'll create an `IntersectionObserver` instance and use it to detect when our images intersect with the browser viewport:
 
-{% include codeHeader.html %}
-```javascript
+```javascript {data-copyable=true}
 const imgObserver = new IntersectionObserver((entries, self) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -154,8 +151,7 @@ document.querySelectorAll('.lazy-picture').forEach((picture) => {
 
 And here's how you might implement the `lazyLoad` function:
 
-{% include codeHeader.html %}
-```javascript
+```javascript {data-copyable=true}
 const lazyLoad = (picture) => {
   const img = picture.querySelector('img');
   const sources = picture.querySelectorAll('source');

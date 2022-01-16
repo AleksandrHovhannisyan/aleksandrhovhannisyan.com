@@ -30,8 +30,7 @@ $transition: 0.2s ease;
 
 But that still doesn't fully eliminate the repetition—we just have to type fewer characters now. What I was searching for is a **Sass mixin for multiple CSS transitions**. And I eventually found it in [a StackOverflow answer by user yspreen](https://stackoverflow.com/a/49437769/5323344):
 
-{% include codeHeader.html file: "mixins.scss" %}
-```scss
+```scss {data-file="mixins.scss" data-copyable=true}
 @mixin transition($props...) {
     $result: ();
 

@@ -31,8 +31,7 @@ In this tutorial, we'll explore a simplified version of the scenario I described
 
 Let's first look at a naive approach, where we use multiple `useState` calls to manage state:
 
-{% include codeHeader.html file: "ImageSearch.tsx" %}
-```tsx
+```tsx {data-file="ImageSearch.tsx" data-copyable=true}
 type Mode = 'idle' | 'loading' | 'no-results' | 'error';
 
 const ImageSearch = () => {
@@ -46,8 +45,7 @@ const ImageSearch = () => {
 
 We'll use the following `useEffect` hook to fetch images from the API whenever the user enters a new search query or requests the next page of images:
 
-{% include codeHeader.html file: "ImageSearch.tsx" %}
-```tsx
+```tsx {data-file="ImageSearch.tsx" data-copyable=true}
 useEffect(() => {
   const fetchImages = async () => {
     try {
@@ -76,8 +74,7 @@ Notice that whenever we're setting the image results, we're also setting the app
 
 Finally, we can define some event handlers and render our UI:
 
-{% include codeHeader.html file: "ImageSearch.tsx" %}
-```tsx
+```tsx {data-file="ImageSearch.tsx" data-copyable=true}
 const handleQueryChange = debounce((e: ChangeEvent<HTMLInputElement>) => {
   setQuery(e.target.value);
   setImages([]);
@@ -232,8 +229,7 @@ That's all you really need to know about `useReducer`. Let's use what we know to
 
 If you're using TypeScript, you should start by documenting your component's state with a type/interface. At this point, you can also add jsDoc comments to each of the state properties to clarify their usage whenever a developer hovers over them or tries to access them in their editor.
 
-{% include codeHeader.html file: "ImageSearch.tsx" %}
-```tsx
+```tsx {data-file="ImageSearch.tsx" data-copyable=true}
 type State = {
   /** A high-level description of the current state of the app
    * (e.g., if it's loading or encountered an error). */
@@ -251,8 +247,7 @@ type State = {
 
 From this type, we can derive an initial state:
 
-{% include codeHeader.html file: "ImageSearch.tsx" %}
-```tsx
+```tsx {data-file="ImageSearch.tsx" data-copyable=true}
 const initialState: State = {
   mode: 'idle',
   images: [],
@@ -266,8 +261,7 @@ In the original code sample, our component's state was initialized with multiple
 
 Now, we need to define a reducer. Recall that a reducer is a function that takes two arguments: the current state (of type `State`) and an action to dispatch. If you're using TypeScript, you'll want to create a type union to list all of the allowed actions. I'll follow the `type/payload` convention:
 
-{% include codeHeader.html file: "ImageSearch.tsx" %}
-```tsx
+```tsx {data-file="ImageSearch.tsx" data-copyable=true}
 type Action = |
  | { type: 'set-mode'; payload: Mode }
  | { type: 'set-images'; payload: { images: ImageResult[]; totalPages: number; } }
@@ -283,8 +277,7 @@ Observe two things about these action types:
 
 Now that we've defined the types for our state and actions, we can create the reducer. I'll use a switch statement to cycle through all of the possible action types. In the default case statement, when the reducer is initializing the component's state for the first time, we'll return the initial state that we defined earlier.
 
-{% include codeHeader.html file: "ImageSearch.tsx" %}
-```tsx
+```tsx {data-file="ImageSearch.tsx" data-copyable=true}
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case 'set-mode': {
@@ -312,8 +305,7 @@ This doesn't really do anything meaningful just yet. Right now, the reducer will
 
 Finally, we can use the `useReducer` hook to initialize our function component's state:
 
-{% include codeHeader.html file: "ImageSearch.tsx" %}
-```tsx
+```tsx {data-file="ImageSearch.tsx" data-copyable=true}
 const ImageSearch = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   // ...
@@ -362,8 +354,7 @@ Alright, let's fill in these case statements one by one.
 
 Here's `'set-mode'`:
 
-{% include codeHeader.html  file: "ImageSearch.tsx" %}
-```tsx
+```tsx {data-file="ImageSearch.tsx"}
 case 'set-mode': {
   return { ...state, mode: action.payload };
 }
@@ -379,9 +370,7 @@ Then `state.mode` will be `'loading'`.
 
 Next up is `'set-images'`, which has a bit more logic than just updating a single state property. In our example, this action gets dispatched once we receive an API response:
 
-{% include codeHeader.html file: "ImageSearch.tsx" %}
-
-```tsx
+```tsx {data-file="ImageSearch.tsx"}
 case 'set-images': {
   const { images, totalPages } = action.payload;
   const newImages = [...state.images, ...images];
@@ -394,8 +383,7 @@ The great thing about the reducer pattern is that it allows us to bundle all of 
 
 Next up is `'set-query'`, for when a user enters a search term in the input box:
 
-{% include codeHeader.html file: "ImageSearch.tsx" %}
-```tsx
+```tsx {data-file="ImageSearch.tsx" data-copyable=true}
 case 'set-query': {
   return { ...initialState, query: action.payload };
 }
@@ -405,9 +393,7 @@ This time around, we spread in the initial state rather than the current state. 
 
 Here's `'fetch-next-page'`, for when a user clicks the load-more button:
 
-{% include codeHeader.html file: "ImageSearch.tsx" %}
-
-```tsx
+```tsx {data-file="ImageSearch.tsx"}
 case 'fetch-next-page': {
   const nextPage = state.queryPage + 1;
   if (nextPage >= state.totalPages) return state;
@@ -448,8 +434,7 @@ useEffect(() => {
 
 Here's what it looks like if we refactor it to use the dispatcher returned by `useReducer`:
 
-{% include codeHeader.html %}
-```tsx
+```tsx {data-copyable=true}
 useEffect(() => {
   const fetchImages = async () => {
     try {
@@ -489,8 +474,7 @@ const loadMoreImages = () => {
 
 We can now rewrite them using our dispatch function:
 
-{% include codeHeader.html %}
-```tsx
+```tsx {data-copyable=true}
 const handleQueryChange = debounce((e: ChangeEvent<HTMLInputElement>) => {
   dispatch({ type: 'set-query', payload: e.target.value });
 }, 300);

@@ -38,9 +38,7 @@ We'll design this with a mobile-first approach and simply take care of the deskt
 
 Below is all of the HTML that we're going to need to create our responsive navbar:
 
-{% include codeHeader.html file: "index.html" %}
-
-```html
+```html {data-file="index.html"}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -126,9 +124,7 @@ We're going to take this slowly. I'll add explanations for each bit of CSS and J
 
 First up are some standard CSS resets and base styling:
 
-{% include codeHeader.html file: "style.css" %}
-
-```css
+```css {data-file="style.css"}
 :root {
   --navbar-bg-color: hsl(0, 0%, 15%);
   --navbar-text-color: hsl(0, 0%, 85%);
@@ -153,9 +149,7 @@ Feel free to remove any of the CSS that doesn't apply to your situation; this is
 
 Before we look at the CSS specific to the responsive navbar, I'd like to introduce one more selector:
 
-{% include codeHeader.html file: "style.css" %}
-
-```css
+```css {data-file="style.css"}
 .container {
   max-width: 1000px;
   padding: 0 1.4rem;
@@ -171,9 +165,7 @@ This is a pretty popular approach for centering things horizontally in CSS. Basi
 
 Alright, time to actually style our responsive navbar. We'll work in a top-down fashion. First up is the outermost `#navbar` element:
 
-{% include codeHeader.html file: "style.css" %}
-
-```css
+```css {data-file="style.css"}
 #navbar {
   --navbar-height: 64px;
   position: fixed;
@@ -193,9 +185,7 @@ Why we need the CSS variable will become obvious later on. The entire element is
 
 Moving on, we have the nested container element:
 
-{% include codeHeader.html file: "style.css" %}
-
-```css
+```css {data-file="style.css"}
 .navbar-container {
   display: flex;
   justify-content: space-between;
@@ -212,9 +202,7 @@ As I mentioned earlier, this is simply a flex container. We use `justify-content
 
 Next up is some general styling for the navbar anchors:
 
-{% include codeHeader.html file: "style.css" %}
-
-```css
+```css {data-file="style.css"}
 .navbar-item {
   margin: 0.4em;
   width: 100%;
@@ -254,9 +242,7 @@ Pretty straightforward.
 
 Here's the CSS for the website logo. Note that this is just a placeholder for my demo; in reality, you'll probably want to use an image or SVG:
 
-{% include codeHeader.html file: "style.css" %}
-
-```css
+```css {data-file="style.css"}
 .navbar-logo {
   background-color: var(--navbar-text-color-focus);
   border-radius: 50%;
@@ -301,9 +287,7 @@ That's all that you need to create a semantic and accessible toggle button.
 
 Let's now look at some of the CSS:
 
-{% include codeHeader.html file: "style.css" %}
-
-```css
+```css {data-file="style.css"}
 #navbar-toggle {
   cursor: pointer;
   border: none;
@@ -321,9 +305,7 @@ We reset some of the default button styles and give it fixed dimensions. It's al
 
 Here's the CSS for the icon bars:
 
-{% include codeHeader.html file: "style.css" %}
-
-```css
+```css {data-file="style.css"}
 .icon-bar {
   display: block;
   width: 25px;
@@ -345,9 +327,7 @@ There are lots of ways to do this, but I think this is the most straightforward 
 
 When the toggle button is clicked, we'll set `aria-expanded` to `"true"` on the button. Here's how we'll animate the hamburger icon to become a close icon (X):
 
-{% include codeHeader.html file: "style.css" %}
-
-```css
+```css {data-file="style.css"}
 #navbar-toggle[aria-expanded='true'] .icon-bar:is(:first-child, :last-child) {
   position: absolute;
   margin: 0;
@@ -373,9 +353,7 @@ The middle bar disappears, the top and bottom bars get centered, the top bar rot
 
 Now's a good time to code up the logic for toggling the navigation menu so we can test that the toggle button works. Ideally, you'd want to put this in a separate module to avoid leaking variables into the global scope, or wrap the whole thing in an immediately invoked function expression the old-fashioned way.
 
-{% include codeHeader.html file: "index.js" %}
-
-```javascript
+```javascript {data-file="index.js"}
 const navbarToggle = navbar.querySelector('#navbar-toggle');
 let isNavbarExpanded = navbarToggle.getAttribute('aria-expanded') === 'true';
 
@@ -402,9 +380,7 @@ At this point, you can open up your browser and test out the button. The menu it
 
 As I mentioned earlier, the navigation menu wrapper has fixed positioning, with a `top` offset equal to precisely the height of the navbar itself:
 
-{% include codeHeader.html file: "style.css" %}
-
-```css
+```css {data-file="style.css"}
 #navbar-menu {
   position: fixed;
   top: var(--navbar-height);
@@ -424,9 +400,7 @@ While `opacity: 0` and `visibility: hidden` may seem redundant, it's a good prac
 
 Below is the CSS for the menu's open state; we style it based on whether it's a sibling of the toggle button in the `aria-expanded="true"` state:
 
-{% include codeHeader.html file: "style.css" %}
-
-```css
+```css {data-file="style.css"}
 #navbar-toggle[aria-expanded='true'] + #navbar-menu {
   background-color: rgba(0, 0, 0, 0.4);
   opacity: 1;
@@ -440,9 +414,7 @@ Click the hamburger icon to see the following result:
 
 The container for the navigation links is an unordered list:
 
-{% include codeHeader.html file: "style.css" %}
-
-```css
+```css {data-file="style.css"}
 .navbar-links {
   list-style: none;
   position: absolute;
@@ -468,9 +440,7 @@ The container for the navigation links is an unordered list:
 
 This is the actual, physical "menu" part of our navigation. The margin ensures that the menu appears detached from the rest of the navbar, as if it's floating on the page. If instead you'd like it to appear as a physical extension of the navigation bar, simply get rid of the margin and border radius and shift the shadow down:
 
-{% include codeHeader.html file: "style.css" %}
-
-```css
+```css {data-file="style.css"}
 .navbar-links {
   list-style: none;
   position: absolute;
@@ -492,9 +462,7 @@ And that's it for the mobile version's CSS!
 
 One last thing before we style the desktop version. Add this to your JavaScript:
 
-{% include codeHeader.html file: "index.js" %}
-
-```javascript
+```javascript {data-file="index.js"}
 const navbarMenu = document.querySelector('#navbar-menu');
 const navbarLinksContainer = navbarMenu.querySelector('.navbar-links');
 
@@ -510,9 +478,7 @@ Go ahead and test this on your end to make sure the mobile version works.
 
 I'll show the media query in its entirety and then we'll look at what each piece is doing:
 
-{% include codeHeader.html file: "style.css" %}
-
-```css
+```css {data-file="style.css"}
 @media screen and (min-width: 700px) {
   #navbar-toggle,
   #navbar-toggle[aria-expanded='true'] {

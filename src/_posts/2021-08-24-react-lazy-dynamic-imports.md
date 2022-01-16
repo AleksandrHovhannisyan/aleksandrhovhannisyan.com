@@ -53,8 +53,7 @@ For this tutorial, I've prepared a [CodeSandbox demo of dynamic imports in React
 
 Let's suppose we have a simple React app that renders tab panels and some buttons to change the current tab. Each tab panel is its own component; the ones in this demo are very simple and just display some mock text, but in a real app, a tab panel might contain paragraphs of text, imagery, videos, and more (depending on what the tabs are being used for). We'll first import each tab panel statically, like so:
 
-{% include codeHeader.html file: "App.jsx" %}
-```jsx
+```jsx {data-file="App.jsx" data-copyable=true}
 import Tab1 from './components/Tab1';
 import Tab2 from './components/Tab2';
 import Tab3 from './components/Tab3';
@@ -63,8 +62,7 @@ import Tab4 from './components/Tab4';
 
 Let's also create a static array for our tabs. Each entry contains an object config with two properties: the component to render for the tab panel, and whether the tab is disabled (optional).
 
-{% include codeHeader.html file: "App.jsx" %}
-```jsx
+```jsx {data-file="App.jsx" data-copyable=true}
 const tabs = [
   { component: Tab1 },
   { component: Tab2 },
@@ -75,8 +73,7 @@ const tabs = [
 
 Finally, we'll render the tabs and maintain some state to toggle the active tab:
 
-{% include codeHeader.html file: "App.jsx" %}
-```jsx
+```jsx {data-file="App.jsx" data-copyable=true}
 const App = () => {
   const [currentTabIndex, setCurrentTabIndex] = useState(0);
 
@@ -127,8 +124,7 @@ Unlike static imports, React's dynamic imports don't bundle the module at compil
 
 There's just one catch: We need to specify some fallback UI for the dynamically imported component. That way, between the time when we request the component and the time when the dynamic import resolves, the React tree isn't left in a limbo state where it has no valid UI for a node. We can do this using React's specially made `Suspense` component, which takes a `fallback` prop and wraps the lazy component:
 
-{% include codeHeader.html file: "App.jsx" %}
-```jsx
+```jsx {data-file="App.jsx" data-copyable=true}
 import { lazy, Suspense } from 'react';
 
 const MyComponent = lazy(() => import('path/to/component'));
@@ -146,8 +142,7 @@ You can also specify a fallback of `null` if you don't need a placeholder; this 
 
 And that's all there is to it! Let's refactor our imports from earlier. Instead of doing this:
 
-{% include codeHeader.html file: "App.jsx", copyable: false %}
-```jsx
+```jsx {data-file="App.jsx"}
 import Tab1 from './components/Tab1';
 import Tab2 from './components/Tab2';
 import Tab3 from './components/Tab3';
@@ -156,8 +151,7 @@ import Tab4 from './components/Tab4';
 
 We'll do this:
 
-{% include codeHeader.html file: "App.jsx" %}
-```jsx
+```jsx {data-file="App.jsx" data-copyable=true}
 import { lazy, Suspense } from 'react';
 const Tab1 = lazy(() => import('./components/Tab1'));
 const Tab2 = lazy(() => import('./components/Tab2'));
@@ -167,8 +161,7 @@ const Tab4 = lazy(() => import('./components/Tab4'));
 
 And then we'll update our render function here to use `Suspense`:
 
-{% include codeHeader.html file: "App.jsx" %}
-```jsx
+```jsx {data-file="App.jsx" data-copyable=true}
 const renderTabPanel = () => {
   const TabPanel = tabs[currentTabId].component;
   return (

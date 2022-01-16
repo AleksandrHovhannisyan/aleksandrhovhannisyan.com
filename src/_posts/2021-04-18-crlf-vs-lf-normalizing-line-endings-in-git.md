@@ -106,8 +106,7 @@ git config --global core.autocrlf [true|false|input]
 
 You can also view the current Git setting using this command:
 
-{% include codeHeader.html %}
-```
+``` {data-copyable=true}
 git config --list
 ```
 
@@ -151,8 +150,7 @@ Fortunately, there's a better solution: creating a `.gitattributes` file at the 
 
 The following `.gitattributes` config normalizes line endings to `LF` for all text files checked into Git's index while leaving local line endings untouched:
 
-{% include codeHeader.html file: ".gitattributes" %}
-```bash
+```bash {data-file=".gitattributes" data-copyable=true}
 * text=auto
 ```
 
@@ -166,15 +164,13 @@ More specifically, [the `text=auto` option](https://git-scm.com/docs/gitattribut
 
 After committing the `.gitattributes` file, your changes won't take effect immediately for files checked into Git *prior* to the addition of `.gitattributes`. To force an update, you can use the following command [since Git 2.16](https://stackoverflow.com/a/50645024/5323344):
 
-{% include codeHeader.html %}
-```
+``` {data-copyable=true}
 git add --renormalize .
 ```
 
 This updates all files in Git's index according to the rules defined in your `.gitattributes` config. If previously committed text files used `CRLF` in Git's index and are converted to `LF` during the renormalization process, those files will be staged for a commit. You can then check if any files were modified like you would normally:
 
-{% include codeHeader.html %}
-```
+``` {data-copyable=true}
 git status
 ```
 
@@ -184,8 +180,7 @@ The only thing left to do is to commit those changes (if any) and push them to y
 
 If you want to verify that the files in Git's index are using the correct line endings after all of these steps, you can run the following command:
 
-{% include codeHeader.html %}
-```
+``` {data-copyable=true}
 git ls-files --eol
 ```
 
@@ -238,8 +233,7 @@ When we [configured our local Git settings](#configuring-line-endings-in-git-wit
 
 In the case of batch scripts, we'd use `eol=crlf`:
 
-{% include codeHeader.html file: ".gitattributes" %}
-```bash
+```bash {data-file=".gitattributes" data-copyable=true}
 # All files are checked into Git's index with LF
 * text=auto
 
@@ -251,8 +245,7 @@ In this case, batch scripts will have two non-overlapping rules applied to them 
 
 **This change won't take effect immediately**, so if you run `git ls-files --eol` after updating your `.gitattributes` file, you might still see `LF` line endings in the working tree. To update existing line endings in your working tree so they respect the `eol` attribute, you'll need to run the following set of commands [per this StackOverflow answer](https://stackoverflow.com/a/29888735/5323344):
 
-{% include codeHeader.html %}
-```
+``` {data-copyable=true}
 git rm --cached -r .
 git reset --hard
 ```
@@ -308,8 +301,7 @@ Again, this doesn't mean that Git's normalization process isn't working; it's ju
 
 Fortunately, we can take things a step further with an `.editorconfig` file; this is an [editor-agnostic project](https://editorconfig.org/) that aims to create a standardized format for customizing the behavior of any given text editor. Lots of text editors (including VS Code) support and automatically read this file if it's present. You can put something like this in the root of your workspace:
 
-{% include codeHeader.html file: ".editorconfig" %}
-```
+``` {data-file=".editorconfig" data-copyable=true}
 root = true
 
 [*]

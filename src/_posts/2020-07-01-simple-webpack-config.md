@@ -27,15 +27,13 @@ And all you want is a simple webpack config that creates a single bundled JavaSc
 
 First, install webpack if you haven't already done so:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 yarn add -D webpack webpack-cli
 ```
 
 Once that's done, add this script to your `package.json`:
 
-{% include codeHeader.html file: "package.json" %}
-```json
+```json {data-file="package.json" data-copyable=true}
 "scripts": {
     "build": "webpack --config config/webpack.config.js --mode production"
 }
@@ -43,8 +41,7 @@ Once that's done, add this script to your `package.json`:
 
 And then create this simple webpack config under `config/`:
 
-{% include codeHeader.html file: "webpack.config.js" %}
-```javascript
+```javascript {data-file="webpack.config.js" data-copyable=true}
 const path = require('path');
 
 module.exports = {
@@ -89,8 +86,7 @@ Done in 2.47s.
 
 Now you can include the bundled code in your HTML file:
 
-{% include codeHeader.html file: "index.html" %}
-```html
+```html {data-file="index.html" data-copyable=true}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -112,8 +108,7 @@ Relative imports can get pretty nasty: `import X from '../../../'`.
 
 To use absolute imports in webpack, we'll set up import aliases. Here's the new webpack config:
 
-{% include codeHeader.html file: "config/webpack.config.js" %}
-```javascript
+```javascript {data-file="config/webpack.config.js" data-copyable=true}
 const path = require('path');
 
 module.exports = {
@@ -147,8 +142,7 @@ import Module from 'components/Module';
 
 If you're using VS Code, you can take this one step further and create a `jsconfig.json`:
 
-{% include codeHeader.html file: "jsconfig.json" %}
-```json
+```json {data-file="jsconfig.json" data-copyable=true}
 {
     "compilerOptions": {
         "baseUrl": "./src/",

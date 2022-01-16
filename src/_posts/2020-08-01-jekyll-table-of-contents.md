@@ -15,9 +15,8 @@ Alright, let's cut to the chase: You want to create a table of contents in Jekyl
 
 Create an include file named `toc.md` and fill it with this markup:
 
-{% include codeHeader.html file: "_includes/toc.md" %}
 {% raw %}
-```markdown
+```markdown {data-file="_includes/toc.md" data-copyable=true}
 <div style="position: relative;">
     <a href="#toc-skipped" class="screen-reader-only">Skip table of contents</a>
 </div>
@@ -50,9 +49,8 @@ The following markup just creates a `Table of Contents` heading level two that's
 
 Then, in your post, all you have to do is insert this one-liner wherever you want your table of contents to appear:
 
-{% include codeHeader.html %}
 {% raw %}
-```liquid
+```liquid {data-copyable=true}
 {% include toc.md %}
 ```
 {% endraw %}
@@ -85,8 +83,7 @@ One last thing: You typically don't want "skip to content" links like this to be
 
 So, here's the Sass that'll get the job done:
 
-{% include codeHeader.html file: "_sass/someSassFile.scss" %}
-```scss
+```scss {data-file="_sass/someSassFile.scss" data-copyable=true}
 .screen-reader-only {
     position: absolute;
     left: -5000px;

@@ -322,8 +322,7 @@ As a reminder, an SVG's coordinate system starts with `(0, 0)` at the top-left c
 
 SVGs allow us to specify the starting and ending points for lines using four attributes: `x1`, `y1`, `x2`, and `y2`. So, to draw a simple horizontal line, we could do the following:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <line x1="0" y1="4.2" x2="24" y2="4.2"/>
 </svg>
@@ -357,8 +356,7 @@ With the stroke color set, we can finally view our line:
 
 When you scale this down, that line may actually look a bit thin. That's because it's using a default stroke width of `1` unit. Fortunately, we can change its thickness with the `stroke-width` attribute, either on the parent SVG element or any individual shape. If you set it on the SVG parent, all shapes will inherit that value. Like with the stroke color, though, you can also do this via a CSS property of the same name, like this:
 
-{% include codeHeader.html %}
-```css
+```css {data-copyable=true}
 svg {
   stroke-width: 2;
 }
@@ -376,8 +374,7 @@ I'll use a stroke width of `2` for the rest of this tutorial. You can pick a dif
 
 And that's all we need to know to draw the three icons we saw earlier! We'll just tweak the `x` coordinates to get shorter or longer lines, as needed. Here's the full markup for all three icons:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <line x1="2" y1="4.2" x2="22" y2="4.2"/>
   <line x1="2" y1="9.4" x2="16" y2="9.4"/>
@@ -404,8 +401,7 @@ We have four lines, each with a stroke width of `2`; together, they occupy a tot
 
 By the way, you may find it useful to temporarily give your SVG elements a border as you're drawing them so you can better visualize the constraints you're working with:
 
-{% include codeHeader.html %}
-```css
+```css {data-copyable=true}
 svg {
   border: 1px solid;
 }
@@ -442,8 +438,7 @@ I'll do that for most demonstrations in this tutorial.
 
 Before we move on, note that you don't have to draw lines that are perfectly horizontal. You can also draw perfectly vertical lines:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <line x1="12" y1="2" x2="12" y2="22" />
 </svg>
@@ -457,8 +452,7 @@ Before we move on, note that you don't have to draw lines that are perfectly hor
 
 Or even diagonal lines:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <line x1="2" y1="2" x2="22" y2="22" />
 </svg>
@@ -492,8 +486,7 @@ Fortunately for us, that's why `<polyline>` exists! It basically lets us define 
 
 A `<polyline>` is defined with the help of the `points` attribute, like this:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <polyline points="3 4, 21 4" />
 </svg>
@@ -519,8 +512,7 @@ Anyway, your browser draws a solid line between the first pair of coordinates, a
 
 We can draw the text icon I showed earlier by combining `<polyline>` and a basic `<line>` shape. We'll start by creating the top-left serif of the letter `T`:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <polyline points="3 8, 3 4" />
 </svg>
@@ -534,8 +526,7 @@ We can draw the text icon I showed earlier by combining `<polyline>` and a basic
 
 From `(3, 4)`, we'll travel horizontally until we're an equal distance from the right edge as we were from the left:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <polyline points="3 8, 3 4, 21 4" />
 </svg>
@@ -553,8 +544,7 @@ This is because of an SVG property that I hid from you until now: `fill`. Just l
 
 Note that certain icons may actually benefit from having a custom fill, so you wouldn't want to *always* disable this globally in your app. But for our purposes, it's going to get in the way of drawing shapes like polylines, polygons, etc. since we don't actually *need* a fill. So, for the rest of this tutorial, I'll use this additional CSS to clear the fill for all icons:
 
-{% include codeHeader.html %}
-```css
+```css {data-copyable=true}
 svg {
   fill: none;
 }
@@ -570,8 +560,7 @@ With that set, our shape should look correct now:
 
 Now, we'll drop down vertically again to complete the right serif of the letter `T`:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <polyline points="3 8, 3 4, 21 4, 21 8" />
 </svg>
@@ -585,8 +574,7 @@ Now, we'll drop down vertically again to complete the right serif of the letter 
 
 From here, we just need to complete the stem and base of the letter:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <polyline points="3 8, 3 4, 21 4, 21 8" />
   <line x1="12" y1="4" x2="12" y2="20" />
@@ -604,8 +592,7 @@ From here, we just need to complete the stem and base of the letter:
 
 Note that you could just as well use polylines for the two lines; you'll get the same shape:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <polyline points="3 8, 3 4, 21 4, 21 8" />
   <polyline points="12 4, 12 20" />
@@ -646,8 +633,7 @@ This is because of two related SVG attributes (and their equivalent CSS properti
 
 For the remainder of this tutorial, all examples will use the following CSS:
 
-{% include codeHeader.html %}
-```css
+```css {data-copyable=true}
 svg {
   stroke-linejoin: round;
   stroke-linecap: round;
@@ -698,8 +684,7 @@ In geometry class, you probably learned that in order to draw a circle, you need
 
 Well, it's exactly the same with SVGs! Here's the markup for a simple circle:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <circle cx="12" cy="12" r="10" />
 </svg>
@@ -750,8 +735,7 @@ Now that we know how to draw circles in SVG, we can draw the three icons shown e
 
 We'll start with the face of the clock as a circle:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <circle cx="12" cy="12" r="10" />
 </svg>
@@ -765,8 +749,7 @@ We'll start with the face of the clock as a circle:
 
 The only thing left is to draw the clock hands, and for that we'll use a polyline:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <circle cx="12" cy="12" r="10" />
   <polyline points="13 7, 13 14, 9 14" />
@@ -786,8 +769,7 @@ One down, two to go!
 
 Just as before, we'll first create the circle:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <circle cx="12" cy="12" r="10" />
 </svg>
@@ -801,8 +783,7 @@ Just as before, we'll first create the circle:
 
 The rest of the info icon consists of a line and a circle. Here's the body of the `i`:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <circle cx="12" cy="12" r="10" />
   <line x1="12" y1="12" x2="12" y2="16" />
@@ -818,8 +799,7 @@ The rest of the info icon consists of a line and a circle. Here's the body of th
 
 And here's the dot in the `i`; we give it a fill so it's solid:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <circle cx="12" cy="12" r="10" />
   <circle cx="12" cy="8" r="0.5" fill="currentColor" />
@@ -841,8 +821,7 @@ Observe that the radius is `0.5` because the circle is filled, and we don't want
 
 Last one! For this icon, I'll just give you the full markup; it's a circle, a line, and a polyline:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64" class="bordered">
   <circle cx="12" cy="12" r="10" />
   <line x1="8" y1="12" x2="16" y2="12" />
@@ -866,8 +845,7 @@ Remember how I mentioned that `<polyline>`s are not self-closing? Well, the natu
 
 For example, `<polygon>` allows us to draw a triangle using just three points:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <polygon points="12 2, 22 22, 2 22" />
 </svg>
@@ -881,8 +859,7 @@ For example, `<polygon>` allows us to draw a triangle using just three points:
 
 Cool! Building on this, we can now create the warning indicator icon that I showed you at the start of this tutorial. This should be familiar if you recall how we created the info icon before:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <polygon points="12 2, 22 22, 2 22" />
   <line x1="12" y1="10" x2="12" y2="14" />
@@ -900,8 +877,7 @@ Cool! Building on this, we can now create the warning indicator icon that I show
 
 By the way, I mentioned above that we can use `<polygon>` to create all kinds of shapes, but some come as pre-built shapes. For example, rectangles *can* be created with `<polygon>`:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <polygon points="2 4, 22 4, 22 22, 2 22" />
 </svg>
@@ -915,8 +891,7 @@ By the way, I mentioned above that we can use `<polygon>` to create all kinds of
 
 But they can also be created with `<rect>`, which takes an `x` and a `y` coordinate for its top-left corner along with a `width` and `height`. This is all that's needed to draw a rectangle:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <rect x="4" y="4" width="18" height="18" />
 </svg>
@@ -930,8 +905,7 @@ But they can also be created with `<rect>`, which takes an `x` and a `y` coordin
 
 While we're here, why don't we draw a calendar icon? That one is technically created using a `<path>`, which we'll learn about in the very next section. For now, we can use a `<rect>` and see how that looks.
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
   <svg viewBox="0 0 24 24" width="64" height="64">
     <rect x="3" y="5" width="18" height="16" />
     <line x1="4" y1="10" x2="20" y2="10" />
@@ -1038,8 +1012,7 @@ This is easier to remember than it looks: `M` for **m**oving, `H/h` for **h**ori
 
 If you're with me so far, then you should understand the first two commands in this path:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
@@ -1077,8 +1050,7 @@ To help this sink in, let's also make a pause icon with two parallel vertical li
 
 Here's the code that does that:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
@@ -1099,8 +1071,7 @@ Let's interpret these commands one at a time:
 
 Notice how we mixed relative and absolute commands. We could've also said this:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
@@ -1132,8 +1103,7 @@ Finally, note that `L/l` is the more generic version of `H/h` and `V/v`. Whereas
 
 Here's an example of drawing a diagonal line with a relative `LineTo` command:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
@@ -1163,8 +1133,7 @@ The command `Z` (or `z`) stands for `ClosePath`. Remember when we learned about 
 
 For example, to draw a self-closing square with `<path>`, we only need to draw three of the four lines explicitly; the fourth can be drawn automatically for us with the `ClosePath` command:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
@@ -1279,8 +1248,7 @@ The `large-arc-flag` and `sweep-flag` parameters are probably the more confusing
 
 As before, it helps to look at a concrete example. Here's a very simple arc in Quadrant 1:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
@@ -1304,8 +1272,7 @@ This yields a counter-clockwise arc because we've set `sweep-flag` to be `0`:
 
 And, as you may have guessed, we can chain four arcs to create a circle:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
@@ -1341,8 +1308,7 @@ I'll take this one step at a time so you can visualize the process.
 
 First, we'll draw the top portion of the calendar (you could start elsewhere, though):
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
@@ -1364,8 +1330,7 @@ First, we'll draw the top portion of the calendar (you could start elsewhere, th
 
 Then, we draw a `2x2` clockwise arc, moving `2px` to the right and `2px` down:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
@@ -1389,8 +1354,7 @@ Then, we draw a `2x2` clockwise arc, moving `2px` to the right and `2px` down:
 
 From there, we go down `14px`:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
@@ -1416,8 +1380,7 @@ From there, we go down `14px`:
 
 Draw the bottom-right corner's arc:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
@@ -1445,8 +1408,7 @@ Draw the bottom-right corner's arc:
 
 Move left by `16px`:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
@@ -1476,8 +1438,7 @@ Move left by `16px`:
 
 Draw the arc for the bottom-left corner:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
@@ -1509,8 +1470,7 @@ Draw the arc for the bottom-left corner:
 
 Move up `14px`:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
@@ -1544,8 +1504,7 @@ Move up `14px`:
 
 And finally, close off the shape with an explicit arc rather than `z` (which will draw a line).
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
@@ -1581,8 +1540,7 @@ And finally, close off the shape with an explicit arc rather than `z` (which wil
 
 And that's all there is to the rounded rectangle bit! Now, we just throw on a few lines:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="
@@ -1630,8 +1588,7 @@ We're almost done!
 
 Hopefully, you're now comfortable enough with SVG paths to interpret the code here:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
   <path
     d="M 18 14

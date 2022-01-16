@@ -237,8 +237,7 @@ Google already relies on the structure of your page—your title tag, the descri
 
 But you can also include **schema markup** in your HTML to inform search engines of the type of content you've published and any of its particular details, such as the headline, the author, the date published or modified, and so on. Here's an example from [Google's docs on structured data](https://developers.google.com/search/docs/data-types/article#examples):
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -276,9 +275,8 @@ Simply stick this anywhere in your HTML for each blog post that you publish.
 
 If you're using a static site generator like Gatsby or Jekyll, you should be able to define this as a template in one place so you don't have to copy-paste it for every single blog post. For example, my website was built with Jekyll, and I have the following in my `_layouts/post.html` layout file:
 
-{% include codeHeader.html file: "_layouts/post.html" %}
 {% raw %}
-```html
+```html {data-file="_layouts/post.html" data-copyable=true}
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",

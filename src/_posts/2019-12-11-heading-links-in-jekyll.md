@@ -28,9 +28,8 @@ Then, we want two states:
 
 With Liquid and Jekyll includes, it's super simple to create linked headings. Here's the markup:
 
-{% include codeHeader.html file: "_includes/linkedHeading.html" %}
 {% raw %}
-```liquid
+```liquid {data-file="_includes/linkedHeading.html" data-copyable=true}
 {% assign heading = include.heading %}
 <h{{ include.level }} id="{{ heading | slugify }}" class="linked-heading">
     <span class="heading-anchor-wrapper">
@@ -49,8 +48,7 @@ With Liquid and Jekyll includes, it's super simple to create linked headings. He
 
 And here's the Sass:
 
-{% include codeHeader.html %}
-```sass
+```sass {data-copyable=true}
 .linked-heading {
     position: relative;
 
@@ -92,9 +90,8 @@ And here's the Sass:
 
 Simply use the following in your markdown to create a heading anchor in Jekyll:
 
-{% include codeHeader.html %}
 {% raw %}
-```liquid
+```liquid {data-copyable=true}
 {% include linkedHeading.html heading="My Heading" level=someNumber %}
 ```
 {% endraw %}
@@ -120,8 +117,7 @@ If you have a sticky/fixed navbar like I do on this site, you may run into a pro
 
 Fortunately, the fix is simple: we can add a `scroll-margin-top` to our headings equal to the height of the navbar plus a certain offset, like so:
 
-{% include codeHeader.html %}
-```css
+```css {data-copyable=true}
 h1, h2, h3, h4, h5, h6 {
     /* 64px navbar + 20px for spacing */
     scroll-margin-top: 84px;
@@ -145,9 +141,8 @@ There are two solutions to this:
 
 Here's the one I use:
 
-{% include codeHeader.html file: "markdown.json" %}
 {% raw %}
-```json
+```json {data-file="markdown.json" data-copyable=true}
 "Linked Heading": {
     "prefix": "heading",
     "body": [

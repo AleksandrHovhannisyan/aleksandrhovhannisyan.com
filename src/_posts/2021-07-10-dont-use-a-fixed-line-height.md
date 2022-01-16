@@ -133,8 +133,7 @@ Whenever you apply a particular font size to an element, you need to make sure i
 
 You can easily create design tokens for typography using CSS custom properties (or, if you use Sass, a map). Below is one example of what that might look like; you'll likely need to adjust these values to suit your chosen font.
 
-{% include codeHeader.html file: "global.css" %}
-```css
+```css {data-file="global.css" data-copyable=true}
 html {
   --fs-sm: 14px;
   --lh-sm: 24px;
@@ -198,8 +197,7 @@ html {
 
 If you're using a preprocessor like Sass, you can then define a mixin to apply both a font size and its corresponding line height *together*:
 
-{% include codeHeader.html file: "_mixins.scss" %}
-```scss
+```scss {data-file="_mixins.scss" data-copyable=true}
 @mixin font-size($step) {
   font-size: var(--fs-#{$step});
   line-height: var(--lh-#{$step});
@@ -241,8 +239,7 @@ This approach provides a sufficiently accurate approximation of a font's ideal l
 
 Fortunately, if we take the mixin approach that I showed earlier, the fix is rather simple—instead of looking up a particular line height step in our variables, we can just plug in this equation alongside the font size:
 
-{% include codeHeader.html file: "_mixins.scss" %}
-```scss
+```scss {data-file="_mixins.scss" data-copyable=true}
 @mixin font-size($step) {
   font-size: var(--fs-#{$step});
   line-height: calc(4px + 2ex);

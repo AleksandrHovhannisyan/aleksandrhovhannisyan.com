@@ -458,8 +458,7 @@ Straight-line fitting is pretty simple by hand, but polynomial least squares fit
 
 Here's a script that uses QR factorization explicitly:
 
-{% include codeHeader.html file: "lsq.py" %}
-```python
+```python {data-file="lsq.py" data-copyable=true}
 import numpy as np
 from numpy import linalg as LA
 
@@ -481,8 +480,7 @@ print(theta)
 
 However, this is really equivalent to the following code, which just uses the `LA.lstsq` function:
 
-{% include codeHeader.html file: "lsq.py" %}
-```python
+```python {data-file="lsq.py" data-copyable=true}
 import numpy as np
 from numpy import linalg as LA
 
