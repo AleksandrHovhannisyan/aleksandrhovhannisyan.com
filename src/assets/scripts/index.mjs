@@ -20,7 +20,7 @@ copyableCodeBlocks.forEach((codeBlock) => {
   copyCodeButton.className = 'copy-code-button font-sm';
   copyCodeButton.setAttribute('aria-label', 'Copy code to clipboard');
   copyCodeButton.type = 'button';
-  codeBlock.prepend(copyCodeButton);
+  codeBlock.append(copyCodeButton);
 
   copyCodeButton.addEventListener('click', () => {
     window.navigator.clipboard.writeText(code);
