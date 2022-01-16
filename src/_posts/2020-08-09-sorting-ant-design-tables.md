@@ -15,8 +15,7 @@ Want to sort tables in Ant Design but without putting in much effort? Then you'r
 
 The Ant Design docs for the `Table` component use this example for [multi-sorting columns](https://ant.design/components/table/#components-table-demo-multiple-sorter):
 
-{% include codeHeader.html %}
-```jsx
+```jsx {data-copyable=true}
 import { Table } from 'antd';
 
 const columns = [
@@ -144,8 +143,7 @@ Can we do better? (Hint: Of course we can!)
 
 It's always a good idea to create wrapper components in React whenever you're customizing the behavior or appearance of a library component, especially if you're working with Ant Design. So we'll go ahead and create our own `Table` component like so:
 
-{% include codeHeader.html file: "components/Table" %}
-```jsx
+```jsx {data-file="components/Table" data-copyable=true}
 import React from 'react';
 import { Table as AntTable } from 'antd';
 
@@ -162,8 +160,7 @@ For our purposes, we want to sort Ant Design tables with ease, automating the pr
 
 We'll start by creating a utility file (e.g., `utils/sorter.js`) that defines a few generic sorting routines. Two common use cases that you'll run into with sorting Ant Design columns are 1) text/numeric columns and 2) date columns. These should be handled separately; the latter will use the `moment` library. Feel free to use another library if you want to.
 
-{% include codeHeader.html file: "utils/sorter.js" %}
-```javascript
+```javascript {data-file="utils/sorter.js" data-copyable=true}
 import moment from 'moment';
 
 /**
@@ -186,8 +183,7 @@ const defaultSort = (a, b) => {
 
 Short and sweet. We'll then export an object that defines two generic lookup properties—`Sorter.DEFAULT` and `Sorter.DATE`:
 
-{% include codeHeader.html file: "utils/sorter.js" %}
-```javascript
+```javascript {data-file="utils/sorter.js" data-copyable=true}
 export const Sorter = {
   DEFAULT: defaultSort,
   DATE: dateSort,
@@ -200,8 +196,7 @@ We'll use this in a second.
 
 Let's revisit our "consumer" component, where the table is being rendered. We'll change the import to use our custom Table component:
 
-{% include codeHeader.html file: "app/consumer.js" %}
-```jsx
+```jsx {data-file="app/consumer.js" data-copyable=true}
 import Table from 'components/Table'
 ```
 
@@ -211,8 +206,7 @@ import Table from 'components/Table'
 
 We'll want to specify the sorting routine for every column that needs to be sorted. We'll do this by simply referencing the generic enum that we exported above:
 
-{% include codeHeader.html file: "app/consumer.js" %}
-```jsx
+```jsx {data-file="app/consumer.js" data-copyable=true}
 const columns = [
   {
     title: 'Name',
@@ -273,8 +267,7 @@ By definition, our wrapper component will receive props just like a traditional 
 
 What we'll do is write a [shim](https://stackoverflow.com/a/51646150/5323344)—some code that will basically intercept the `columns` prop, map it to a new `sortableColumns` prop that defines the sorter routine by dynamically looking up the current column's `dataIndex`, and then pass *that* result along to the table's `columns` prop:
 
-{% include codeHeader.html file: "components/Table.js" %}
-```jsx
+```jsx {data-file="components/Table.js" data-copyable=true}
 import React from 'react';
 import { Table as AntTable } from 'antd';
 

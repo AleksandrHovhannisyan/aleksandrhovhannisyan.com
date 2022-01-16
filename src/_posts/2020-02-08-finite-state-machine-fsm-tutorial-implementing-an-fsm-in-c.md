@@ -26,8 +26,7 @@ Suppose we have a lightbulb that can have the following states:
 
 We can model this using an enum:
 
-{% include codeHeader.html file: "LightState.h" %}
-```cpp
+```cpp {data-file="LightState.h" data-copyable=true}
 #pragma once
 
 enum class LightState {
@@ -52,8 +51,7 @@ Usually, whenever you can model a scenario with finite state machines, you can a
 
 So, we'll model our light's state transitions with an actual map data structure, where the key is the current state and the value is the next state:
 
-{% include codeHeader.html file: "LightState.h" %}
-```cpp
+```cpp {data-file="LightState.h" data-copyable=true}
 #pragma once
 #include <map>
 
@@ -74,8 +72,7 @@ std::map<LightState, LightState> lightTransitions = {
 
 Let's also create our simple `Light` class:
 
-{% include codeHeader.html file: "Light.h" %}
-```cpp
+```cpp {data-file="Light.h" data-copyable=true}
 #pragma once
 #include "LightState.h"
 
@@ -91,8 +88,7 @@ private:
 };
 ```
 
-{% include codeHeader.html file: "Light.cpp" %}
-```cpp
+```cpp {data-file="Light.cpp" data-copyable=true}
 #include "Light.h"
 
 Light::Light()
@@ -118,8 +114,7 @@ For example, maybe we want to toggle the intensity of the lightbulb with each st
 
 We could certainly do this—just add some code before and after the line where we're changing the state:
 
-{% include codeHeader.html file: "Light.cpp" %}
-```cpp
+```cpp {data-file="Light.cpp" data-copyable=true}
 void Light::toggle()
 {
 	// ... do something here before the transition
@@ -138,8 +133,7 @@ Now that we've looked at how to create a state transition table, we can implemen
 
 Instead of using a state transition table and a `LightState` *enum*, what if we make each concrete light state its own *class*? That way, we can delegate the task of determining the next state to the *current state* that a light is in. In other words, I'm proposing that we do something like this, where invoking a light's `toggle` method in turn invokes the current state's `toggle` method (because remember—we're now going to use classes instead of enums for the states):
 
-{% include codeHeader.html file: "Light.h", copyable: false %}
-```cpp
+```cpp {data-file="Light.h"}
 #pragma once
 #include "LightState.h"
 
@@ -160,8 +154,7 @@ private:
 };
 ```
 
-{% include codeHeader.html file: "Light.cpp", copyable: false %}
-```cpp
+```cpp {data-file="Light.cpp"}
 #include "Light.h"
 
 // TODO: set the initial state here
@@ -230,8 +223,7 @@ To understand how this all works in practice, we'll implement everything from sc
 
 Let's first define the abstract `LightState` class. You'll notice some forward declarations that are necessary to resolve circular includes that would otherwise throw off the C++ linker.
 
-{% include codeHeader.html file: "LightState.h" %}
-```cpp
+```cpp {data-file="LightState.h" data-copyable=true}
 #pragma once
 #include "Light.h"
 
@@ -261,8 +253,7 @@ Next, we'll declare all of our concrete state classes. We'll force each one to b
 1. Defining a static `getInstance` method that returns a pointer to the singleton.
 2. Declaring all constructors, copy constructors, and assignment operators as private.
 
-{% include codeHeader.html file: "ConcreteLightStates.h" %}
-```cpp
+```cpp {data-file="ConcreteLightStates.h" data-copyable=true}
 #pragma once
 #include "LightState.h"
 #include "Light.h"
@@ -328,8 +319,7 @@ I created inlined, empty definitions for the `enter` and `exit` methods, as thes
 
 Let's also create definitions for all of the `toggle` and `getInstance` methods, to make things clearer:
 
-{% include codeHeader.html file: "ConcreteLightStates.cpp" %}
-```cpp
+```cpp {data-file="ConcreteLightStates.cpp" data-copyable=true}
 #include "ConcreteLightStates.h"
 
 void LightOff::toggle(Light* light)
@@ -389,8 +379,7 @@ Notice how each `toggle` method initiates the appropriate state transition by in
 
 The final piece of the puzzle is the `Light` class, particularly the `setState` method:
 
-{% include codeHeader.html file: "Light.h" %}
-```cpp
+```cpp {data-file="Light.h" data-copyable=true}
 #pragma once
 #include "LightState.h"
 
@@ -411,8 +400,7 @@ private:
 };
 ```
 
-{% include codeHeader.html file: "Light.cpp" %}
-```cpp
+```cpp {data-file="Light.cpp" data-copyable=true}
 #include "Light.h"
 #include "ConcreteLightStates.h"
 

@@ -12,8 +12,7 @@ thumbnail:
 
 Recently, there was a [Twitter thread going around](https://twitter.com/maxfmckay/status/1396252890721918979) that compared two approaches to the same problem in JavaScript: 1) using a single `Array.reduce` call with the ES6 spread operator, and 2) chaining array methods. The two code samples looked something like this (I've renamed the variables to clarify what's going on):
 
-{% include codeHeader.html %}
-```javascript
+```javascript {data-copyable=true}
 // Version 1: reduce with ES6 spread
 users.reduce((offlineUsers, user) => {
   if (user.active) {

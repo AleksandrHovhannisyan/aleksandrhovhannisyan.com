@@ -26,8 +26,7 @@ After your site gets built, Netlify's redirects engine processes and registers t
 
 You can create this file and list all of your redirects by hand. Then, all you need to do is tell 11ty to pass-through copy this file to your output directory so that Netlify sees it:
 
-{% include codeHeader.html file: ".eleventy.js" %}
-```js
+```js {data-file=".eleventy.js" data-copyable=true}
 module.exports = (eleventyConfig) => {
   // Assuming your file resides under src/_redirects
   eleventyConfig.addPassthroughCopy('src/_redirects');
@@ -44,9 +43,8 @@ Create a file named `redirects.liquid` in your Eleventy source folder. I'm using
 
 Declare this front matter to start things off:
 
-{% include codeHeader.html file: "src/redirects.liquid" %}
 {% raw %}
-```liquid
+```liquid {data-file="src/redirects.liquid" data-copyable=true}
 ---
 permalink: /_redirects
 eleventyExcludeFromCollections: true
@@ -72,9 +70,8 @@ But the whole point of using a template file is so that we can take advantage of
 
 Instead, what if we introduce a custom front-matter variable, like `redirectFrom`, that a page can use to specify the URL from which it redirects? We can then loop through all pages like this and generate our Netlify redirect rules:
 
-{% include codeHeader.html file: "src/redirects.liquid" %}
 {% raw %}
-```liquid
+```liquid {data-file="src/redirects.liquid" data-copyable=true}
 ---
 permalink: /_redirects
 eleventyExcludeFromCollections: true
@@ -95,9 +92,8 @@ We check to see if a page has a valid URL and if its front matter specifies a `r
 
 Now, whenever you want to change a page's URL structure, all you need to do is track the old URL in its front matter and update the file name/permalink/slug to be the new URL:
 
-{% include codeHeader.html file: "_posts/2021-08-07-new-url.md", copyable: false %}
 {% raw %}
-```liquid
+```liquid {data-file="_posts/2021-08-07-new-url.md"}
 ---
 redirectFrom: /blog/old-url/
 ---
@@ -106,8 +102,7 @@ redirectFrom: /blog/old-url/
 
 For this particular example, assuming that your blog post permalinks are derived from the file slug, 11ty would output the following Netlify `_redirects` file:
 
-{% include codeHeader.html file: "_redirects", copyable: false %}
-```
+``` {data-file="_redirects"}
 /blog/old-url/  /blog/new-url/
 ```
 
@@ -117,9 +112,8 @@ Above, we assumed that `redirectFrom` is a single string. But if a URL changes s
 
 To handle this case, we can make `redirectFrom` an array:
 
-{% include codeHeader.html file: "_posts/2021-08-07-new-url.md", copyable: false %}
 {% raw %}
-```liquid
+```liquid {data-file="_posts/2021-08-07-new-url.md"}
 ---
 redirectFrom: [url1, url2]
 ---
@@ -128,9 +122,8 @@ redirectFrom: [url1, url2]
 
 This would just require an additional loop to iterate over each URL for a given page:
 
-{% include codeHeader.html file: "src/redirects.liquid" %}
 {% raw %}
-```liquid
+```liquid {data-file="src/redirects.liquid" data-copyable=true}
 ---
 permalink: /_redirects
 eleventyExcludeFromCollections: true

@@ -18,9 +18,8 @@ Fortunately, in the wonderful world of the JAMStack, adding comments to a static
 
 Rather than storing comments statically in my repo or with a known comment system provider, I use the GitHub Issues API as a makeshift comment system. If I want to enable comments for a particular post, I open a new issue in the GitHub repo for my site, jot down the issue number, and assign that to a variable in the post's front-matter block (I author my content in Markdown):
 
-{% include codeHeader.html file: "src/_posts/my-post.md" %}
 {% raw %}
-```md
+```md {data-file="src/_posts/my-post.md" data-copyable=true}
 ---
 commentsId: 42
 ---
@@ -90,8 +89,7 @@ Note that Netlify [supports a number of languages for lambda functions](https://
 
 Then, all you need to do is export a named async function from that file:
 
-{% include codeHeader.html file: "functions/comments.js" %}
-```js
+```js {data-file="functions/comments.js" data-copyable=true}
 exports.handler = async (event, context) => {
   // logic goes here
 };
@@ -99,8 +97,7 @@ exports.handler = async (event, context) => {
 
 That second argument really only matters if you need to know the context in which the function was called, like if you're [authenticating users with Netlify Identity](https://docs.netlify.com/visitor-access/identity/). For our purposes, we just need the `event` argument, which includes query string parameters and other information:
 
-{% include codeHeader.html file: "functions/comments.js" %}
-```js
+```js {data-file="functions/comments.js" data-copyable=true}
 exports.handler = async (event) => {
   const issueNumber = event.queryStringParameters.id;
 };
@@ -108,8 +105,7 @@ exports.handler = async (event) => {
 
 Your serverless function should then return two things: a `statusCode` and the `body` of the response. For starters, I'm just going to reflect the issue number back to the caller so I can test that it's working:
 
-{% include codeHeader.html file: "functions/comments.js" %}
-```js
+```js {data-file="functions/comments.js" data-copyable=true}
 exports.handler = async (event) => {
   const issueNumber = event.queryStringParameters.id;
 
@@ -126,8 +122,7 @@ Here's the great thing about Netlify functions: Since they're async and run in t
 
 Before we move on, you'll want to test that your function is working locally. You can do that with [Netlify Dev](https://www.netlify.com/products/dev/) by installing the `netlify-cli` package globally/locally, or by just using npx:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 npx netlify dev
 ```
 
@@ -135,8 +130,7 @@ This will start up a local Netlify dev server that simulates an actual productio
 
 With your Netlify dev server running, invoke this command to test your serverless function:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 npx netlify functions:invoke --querystring id=123
 ```
 
@@ -162,15 +156,13 @@ You don't need to check any of the scopes since this token is only needed for ba
 
 Create an `.env` file locally and add the access token that you just copied. You can name the variable whatever you want:
 
-{% include codeHeader.html file: ".env" %}
-```
+``` {data-file=".env" data-copyable=true}
 GITHUB_PERSONAL_ACCESS_TOKEN = YourToken
 ```
 
 While you're here, you'll also want to create a variable named `AWS_LAMBDA_JS_RUNTIME` and set its value to `nodejs14.x`:
 
-{% include codeHeader.html file: ".env" %}
-```
+``` {data-file=".env" data-copyable=true}
 AWS_LAMBDA_JS_RUNTIME = nodejs14.x
 ```
 
@@ -194,8 +186,7 @@ We'll use GitHub's official [Octokit JavaScript SDK](https://github.com/octokit/
 
 To get started, install Octokit:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 yarn add octokit
 ```
 
@@ -203,8 +194,7 @@ This includes a number of `@octokit`-namespaced packages, like `@octokit/rest` a
 
 Go back to your Netlify function and update it to set up an authenticated Octokit client. We'll use a try-catch block at the server level so we can return an appropriate status code and an error message if we encounter any problems with authenticating (e.g., if your access token has expired and you forgot to renew it).
 
-{% include codeHeader.html file: "functions/comments.js" %}
-```js
+```js {data-file="functions/comments.js" data-copyable=true}
 const { Octokit } = require('@octokit/rest');
 const { createTokenAuth } = require('@octokit/auth-token');
 
@@ -231,8 +221,7 @@ All of the remaining code in this tutorial will continue inside the `try` block 
 
 Now that we've authenticated the Octokit client, we can check our rate limit and return an error status preemptively if we cannot make any more API requests. Note that this request does not itself count toward your rate limit.
 
-{% include codeHeader.html file: "functions/comments.js" %}
-```js
+```js {data-file="functions/comments.js" data-copyable=true}
 const { data: rateLimitInfo } = await Octokit.rateLimit.get();
 const remainingCalls = rateLimitInfo.resources.core.remaining;
 console.log(`GitHub API requests remaining: ${remainingCalls}`);
@@ -254,8 +243,7 @@ Locally, you'll see messages get logged in your `netlify dev` server in your ter
 
 The final step is to use the authenticated Octokit client to fetch all comments for a particular issue number. Recall that we're getting the issue number as a query parameter:
 
-{% include codeHeader.html file: "functions/comments.js" %}
-```js
+```js {data-file="functions/comments.js" data-copyable=true}
 const response = await octokitClient.issues.listComments({
   owner: `YOUR_USERNAME`,
   repo: `YOUR_REPO`,
@@ -265,8 +253,7 @@ const response = await octokitClient.issues.listComments({
 
 We can then reshape the data as needed and return the comments from our lambda:
 
-{% include codeHeader.html file: "functions/comments.js" %}
-```js
+```js {data-file="functions/comments.js" data-copyable=true}
 const comments = response.data
   // Sort by most recent comments
   .sort((comment1, comment2) => comment2.created_at.localeCompare(comment1.created_at))
@@ -308,8 +295,7 @@ Since `comment.body` is in Markdown, this is just a placeholder to indicate that
 
 Since the GitHub API doesn't sanitize comment bodies, we'll also want to install an HTML sanitizer like [`sanitize-html`](https://www.npmjs.com/package/sanitize-html) to prevent XSS attacks:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 yarn add sanitize-html
 ```
 
@@ -323,8 +309,7 @@ body: sanitizeHtml(toMarkdown(comment.body))
 
 You can now test that your Netlify function works as expected by invoking it locally with the Netlify CLI. At this point, you could also write some client-side JavaScript to make a request to your lambda. That might look like this:
 
-{% include codeHeader.html file: "src/assets/scripts/index.js" %}
-```js
+```js {data-file="src/assets/scripts/index.js" data-copyable=true}
 const fetchComments = async (id) => {
   const response = await fetch(`/.netlify/functions/comments?id=${id}`);
   const { data: comments, error } = await response.json();

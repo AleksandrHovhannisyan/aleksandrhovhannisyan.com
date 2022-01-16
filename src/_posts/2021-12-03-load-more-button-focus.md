@@ -36,8 +36,7 @@ I'll use React for the code samples, but again, you could extend this to any fra
 
 Suppose we're rendering a simple grid of results like this:
 
-{% include codeHeader.html file: "ResultGrid.jsx", copyable: false %}
-```jsx
+```jsx {data-file="ResultGrid.jsx"}
 const ResultGrid = (props) => {
   return (
     <>
@@ -58,8 +57,7 @@ const ResultGrid = (props) => {
 
 As I mentioned, we'll need to maintain a reference to the last rendered result. Fortunately, this is straightforward in React because we're using a mapping function to render the list items, so we can easily determine if we're looking at the last one by checking its index. We can then assign a ref to keep track of the last element:
 
-{% include codeHeader.html file: "ResultGrid.jsx" %}
-```jsx
+```jsx {data-file="ResultGrid.jsx" data-copyable=true}
 const ResultGrid = (props) => {
   const lastResultRef = useRef(null);
 

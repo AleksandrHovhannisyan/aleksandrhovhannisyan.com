@@ -157,8 +157,7 @@ Everything on your computer—the files you save and the software you install—
 
 Suppose you create a file on your computer and store some basic text in it:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 echo Hello, Binary > file
 ```
 
@@ -214,8 +213,7 @@ The key takeaway here is that we only need one byte to store one character on a 
 
 Remember the file we created earlier? Let's view its binary representation using the <code>xxd</code> Unix tool:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 xxd -b file
 ```
 

@@ -73,8 +73,7 @@ Suppose we're using React to create a blog (e.g., with a static site generator l
 
 To kick things off, we'll create a basic presentational component named `PostList` that represents a generic list of posts. Nothing fancy here:
 
-{% include codeHeader.html file: "components/PostList/index.js" %}
-```jsx
+```jsx {data-file="components/PostList/index.js" data-copyable=true}
 import React from "react";
 
 const PostList = ({ posts }) => (
@@ -93,8 +92,7 @@ export default PostList;
 
 Your blog is going to have three different kinds of posts: recent, popular, and archived. Since we don't actually have any real data to work with here, we'll create some fake data and use that for this tutorial:
 
-{% include codeHeader.html file: "containers/Posts/api.js" %}
-```js
+```js {data-file="containers/Posts/api.js" data-copyable=true}
 const recentPosts = [
   {
     id: 1,
@@ -167,8 +165,7 @@ In the real world, you'd hit an actual API endpoint rather than returning local,
 
 Our blog will consist of the following container component:
 
-{% include codeHeader.html file: "containers/Posts/index.js" %}
-```jsx
+```jsx {data-file="containers/Posts/index.js" data-copyable=true}
 import React from "react";
 import {
   ArchivedPosts,
@@ -200,8 +197,7 @@ export default Posts;
 
 Of course, the three components you see here don't exist just yet, so let's go ahead and create them now. We'll use the fetch functions we defined just a few seconds ago to do that. Keep in mind that in the real world, you'd probably use some Promise-based fetch function to get your data, and thus you'd need to either `await` your data or chain `then`s:
 
-{% include codeHeader.html file: "components/PostList/index.js" %}
-```jsx
+```jsx {data-file="components/PostList/index.js" data-copyable=true}
 import React, { useEffect, useState } from "react";
 import {
   getArchivedPosts,
@@ -270,8 +266,7 @@ That's precisely the idea behind higher-order components in React.
 
 I'll show the higher-order component for this scenario now, in its entirety, and then explain how it works:
 
-{% include codeHeader.html file: "components/PostList/withPosts.js" %}
-```jsx
+```jsx {data-file="components/PostList/withPosts.js" data-copyable=true}
 import React, { useState, useEffect } from "react";
 
 function withPosts(Component, getPosts) {
@@ -311,8 +306,7 @@ function withPosts(Component, getPosts) {
 
 In fact, if we had wanted to, we could've used the legacy React syntax and returned a class instead, to make it perfectly clear that a higher-order component returns a React component:
 
-{% include codeHeader.html file: "components/PostList/withPosts.js" %}
-```jsx
+```jsx {data-file="components/PostList/withPosts.js" data-copyable=true}
 import React, { useState, useEffect } from "react";
 
 function withPosts(Component, getPosts) {
@@ -344,8 +338,7 @@ In both versions of the code, the inner component accepts props (just like all R
 
 Now, using this higher-order component couldn't be easier:
 
-{% include codeHeader.html file: "components/PostList/index.js" %}
-```jsx
+```jsx {data-file="components/PostList/index.js" data-copyable=true}
 export const RecentPosts = withPosts(PostList, getRecentPosts);
 export const PopularPosts = withPosts(PostList, getPopularPosts);
 export const ArchivedPosts = withPosts(PostList, getArchivedPosts);
@@ -358,8 +351,7 @@ Notice that we're calling the higher-order component three times here, once for 
 
 Since the result of a call to a higher-order component is just another component, these exported variables can be rendered. Thus, the code from earlier should make sense:
 
-{% include codeHeader.html file: "containers/Posts/Posts.js" %}
-```jsx
+```jsx {data-file="containers/Posts/Posts.js" data-copyable=true}
 import React from "react";
 import {
   ArchivedPosts,
@@ -391,8 +383,7 @@ export default Posts;
 
 Additionally, if we had wanted to, we could've also passed along more props to these components:
 
-{% include codeHeader.html file: "containers/Posts/Posts.js" %}
-```jsx
+```jsx {data-file="containers/Posts/Posts.js" data-copyable=true}
 import React from "react";
 import {
   RecentPosts,
@@ -442,8 +433,7 @@ One last thing worth noting with this example: You may be wondering why we didn'
 
 In other words, why not do this:
 
-{% include codeHeader.html file: "components/PostList/withPosts.js" %}
-```jsx
+```jsx {data-file="components/PostList/withPosts.js" data-copyable=true}
 import React, { useState, useEffect } from "react";
 import PostList from "./PostList";
 
@@ -464,8 +454,7 @@ export default withPosts;
 
 That would certainly save us some typing here, as we'd no longer have to specify `PostList` as the first argument to each function call:
 
-{% include codeHeader.html file: "components/PostList/index.js" %}
-```jsx
+```jsx {data-file="components/PostList/index.js" data-copyable=true}
 export const RecentPosts = withPosts(getRecentPosts);
 export const PopularPosts = withPosts(getPopularPosts);
 export const ArchivedPosts = withPosts(getArchivedPosts);
@@ -481,8 +470,7 @@ If you're with me so far, you may have noticed an interesting fact: Higher-order
 
 Consider this toy example:
 
-{% include codeHeader.html %}
-```jsx
+```jsx {data-copyable=true}
 const Div = (props) => <div {...props} />;
 
 function withX(Component) {
@@ -666,8 +654,7 @@ export default withTheme(MyComponent);
 
 Check it out—here's the code for the `ThemeToggle` button:
 
-{% include codeHeader.html file: "ThemeToggle/index.js", copyable: false %}
-```jsx
+```jsx {data-file="ThemeToggle/index.js"}
 import React from "react";
 import { themeMap, withTheme } from "../App";
 
@@ -699,8 +686,7 @@ One question that comes up often is whether higher-order components are relevant
 
 Returning to our blog example, we could instead create a reusable `usePosts` hook to consolidate the fetching logic and return the list of posts and a method to optionally update those posts:
 
-{% include codeHeader.html file: "components/PostList/usePosts.js" %}
-```jsx
+```jsx {data-file="components/PostList/usePosts.js" data-copyable=true}
 import React, { useState, useEffect } from "react";
 
 export default function usePosts(getPosts) {
@@ -717,8 +703,7 @@ export default function usePosts(getPosts) {
 
 And here's how we might use that:
 
-{% include codeHeader.html file: "components/PostList/index.js" %}
-```jsx
+```jsx {data-file="components/PostList/index.js" data-copyable=true}
 import React from "react";
 import usePosts from "./usePosts";
 import {

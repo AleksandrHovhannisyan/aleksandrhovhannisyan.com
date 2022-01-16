@@ -49,8 +49,7 @@ Now that I've gone through this process myself and have experience with various 
 
 As I mentioned earlier, 11ty runs on JavaScript. All of its configs are written in Node, with the base `.eleventy.js` file exporting a function like so:
 
-{% include codeHeader.html file: ".eleventy.js", copyable: false %}
-```js
+```js {data-file=".eleventy.js"}
 module.exports = (eleventyConfg) => {
   // Where the magic happens.
 }
@@ -79,8 +78,7 @@ With 11ty, you have full control over how you want your site to be built.
 
 For example, let's say you want to use SVG icon libraries like [Feather Icons](https://feathericons.com/) on your site. You can install the NPM package, import it into your config, and register a custom shortcode that returns a particular SVG as an inline string:
 
-{% include codeHeader.html file: ".eleventy.js", copyable: false %}
-```js
+```js {data-file=".eleventy.js"}
 const feather = require('feather-icons');
 
 // You'll need to pass more arguments, but this is the general idea
@@ -107,8 +105,7 @@ You can create a shortcode for practically anything, offloading the main renderi
 
 One of the coolest things about 11ty is how easy it is to write **custom template filters**. Tired of repeating {% raw %}`{{ site.url }}`{% endraw %} in your markup? Create a custom filter to prepend your site's URL to any URL string that you give it:
 
-{% include codeHeader.html file: ".eleventy.js" %}
-```js
+```js {data-file=".eleventy.js" data-copyable=true}
 const site = require('./src/_data/site');
 
 const toAbsoluteUrl = (url) => {
@@ -138,8 +135,7 @@ And now you can use it like this anywhere in your code:
 
 Or maybe you have some object data that you want to iterate over in a template. No problem—throw in these filters, and you're good to go:
 
-{% include codeHeader.html file: ".eleventy.js", copyable: false %}
-```js
+```js {data-file=".eleventy.js"}
 module.exports = (eleventyConfig) => {
   eleventyConfig.addLiquidShortcode('keys', Object.keys);
   eleventyConfig.addLiquidShortcode('values', Object.values);
@@ -172,8 +168,7 @@ You can define global site data statically using YAML or JSON, and this works we
 
 For those dynamic use cases, 11ty allows you to define data files using JavaScript. Just stick a JavaScript file in your data directory and export whatever you want from that module; 11ty will handle the rest. For example, you could export an object for static data:
 
-{% include codeHeader.html file: "src/_data/site.js", copyable: false %}
-```js
+```js {data-file="src/_data/site.js"}
 module.exports = {
   title: 'My Awesome Site',
   author: 'My name',
@@ -184,8 +179,7 @@ module.exports = {
 
 But you could also export a function for dynamic data. You can even make it async, allowing you to fetch and await remote data and return it from the data file:
 
-{% include codeHeader.html file: "src/_data/projects.js", copyable: false %}
-```js
+```js {data-file="src/_data/projects.js"}
 module.exports = async () => {
   console.log('Fetching GitHub projects...');
   // fetch and return the data here!
@@ -204,8 +198,7 @@ With Jekyll, pagination was an afterthought, and you had to use [a plugin](https
 
 In 11ty, pagination is built right in—you can paginate All the Things to your heart's content. Eleventy uses the notion of a "tag" to group your content into collections. You can define `tags` in the front matter of any template file or even with [directory-specific data files](https://www.11ty.dev/docs/data-template-dir/). So if you have another collection named `notes` and a source directory like `src/_notes`, you can stick a JSON file in there to automatically tag everything in it as part of the `notes` collection:
 
-{% include codeHeader.html file: "src/_notes/_notes.json" %}
-```json
+```json {data-file="src/_notes/_notes.json" data-copyable=true}
 {
   "tags": ["notes"]
 }
@@ -213,9 +206,8 @@ In 11ty, pagination is built right in—you can paginate All the Things to your 
 
 And then look it up with pagination in your front matter:
 
-{% include codeHeader.html file: "src/notes.html" %}
 {% raw %}
-```liquid
+```liquid {data-file="src/notes.html" data-copyable=true}
 ---
 title: Notes
 permalink: /notes/
@@ -258,8 +250,7 @@ Pretty cool! But even cooler is that you can **generate collections programmatic
 
 This means that instead of manually tagging your content or using directory data files, you can generate a custom collection with JavaScript and give it any name that you want:
 
-{% include codeHeader.html file: ".eleventy.js" %}
-```js
+```js {data-file=".eleventy.js" data-copyable=true}
 module.exports = (eleventyConfig) => {
   eleventyConfig.addCollection('posts', (collectionApi) => {
     return collectionApi.getFilteredByGlob('./src/_posts/*.md').reverse();
@@ -277,9 +268,8 @@ In Jekyll and most other static site generators, a front-matter variable can't r
 
 Fortunately, this limitation doesn't exist in 11ty, where you can do magical things thanks to [computed data](https://www.11ty.dev/docs/data-computed/):
 
-{% include codeHeader.html file: "src/_pages/blog.html" %}
 {% raw %}
-```yml
+```yml {data-file="src/_pages/blog.html" data-copyable=true}
 ---
 permalink: "/blog/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumber | plus: 1 }}/{% endif %}"
 pagination:
@@ -306,8 +296,7 @@ What really convinced me to give Eleventy a shot was an article by Ben Holmes ab
 
 Here's some sample code from the official docs showing how you register a custom shortcode for images and generate the required output:
 
-{% include codeHeader.html file: ".eleventy.js", copyable: false %}
-```js
+```js {data-file=".eleventy.js"}
 const Image = require("@11ty/eleventy-img");
 
 async function imageShortcode(src, alt, sizes) {

@@ -68,8 +68,7 @@ The good news is that [browser support for WebP](https://caniuse.com/#feat=webp)
 
 Assuming you want to cover all your bases and ensure that your images are displaying properly, you can use a `picture` element with a `source` for the WebP version and a backup `img` for the regular format:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <picture>
   <source srcset="/path/to/image.webp" type="image/webp">
   <img src="/path/to/image.jpg" alt="Your alt text" />
@@ -84,9 +83,8 @@ Except... Do we really have to copy-paste this every time we want to create an i
 
 Time to make this reusable! Create a file named `_includes/picture.html` and add this markup:
 
-{% include codeHeader.html file: "_includes/picture.html" %}
 {% raw %}
-```liquid
+```liquid {data-file="_includes/picture.html" data-copyable=true}
 {% assign img = include.img %}
 <picture>
     <source type="image/webp" srcset="/assets/images/posts/{{ page.slug }}/{{ img }}.webp" >
@@ -114,9 +112,8 @@ Here's a screenshot to make that clearer:
 
 That allows us to get away with this simple and legible include:
 
-{% include codeHeader.html %}
 {% raw %}
-```liquid
+```liquid {data-copyable=true}
 {% include picture.html img="my-image.jpg" alt="My alt text" %}
 ```
 {% endraw %}

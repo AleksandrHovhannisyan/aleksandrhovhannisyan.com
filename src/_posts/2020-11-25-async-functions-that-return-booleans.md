@@ -8,8 +8,7 @@ thumbnail: thumbnail.png
 
 Here's a fun bug I recently encountered... Let's say we have this `async` JavaScript function:
 
-{% include codeHeader.html %}
-```javascript
+```javascript {data-copyable=true}
 const isBroken = async () => {
   return false;
 }
@@ -54,8 +53,7 @@ Promise {<fulfilled>: false}
 
 Our async function's return value is not `false` itself but rather a Promise object that *resolved* with the value `false`. In other words, it's the same as doing this:
 
-{% include codeHeader.html %}
-```javascript
+```javascript {data-copyable=true}
 const isBroken = () => {
   return Promise.resolve(false);
 }
@@ -69,8 +67,7 @@ Spot the problem? This is an issue of **truthiness**: a `Promise` object is not 
 
 For the code above to work as intended, you'll need to `await` the result in another `async` function (or, equivalently, chain a `.then` call on the returned Promise object):
 
-{% include codeHeader.html %}
-```javascript
+```javascript {data-copyable=true}
 const isBroken = async () => {
   return false;
 }

@@ -15,8 +15,7 @@ Margins are the gold standard for spacing paragraphs, images, and block-level el
 
 Suppose we have this markup for an article:
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <article id="post">
   <h1>My Awesome Post Title</h1>
   <p>
@@ -37,8 +36,7 @@ Suppose we have this markup for an article:
 
 Nice and simple. Now, let's apply a line height to our body and some margins to those paragraphs to establish a vertical rhythm. Note that the choice of font size and line height is entirely dependent on the font. I recommend picking a `line-height` that gives you some multiple of your base spacing unit (I prefer to use a `4px` [linear scale](https://www.designsystems.com/space-grids-and-layouts/)). In this particular example, I'll go with a font size of `1.125rem = 18px` and a `line-height` of `1.33 = 24px`.
 
-{% include codeHeader.html %}
-```css
+```css {data-copyable=true}
 body {
   font-size: 1.125rem;
   line-height: 1.33;
@@ -61,8 +59,7 @@ That's all well and good:
 
 But a few minutes later, you decide to spice things up with some headings and maybe an image.
 
-{% include codeHeader.html %}
-```html
+```html {data-copyable=true}
 <article id="post">
   <h1>My Awesome Post Title</h1>
   <p>
@@ -89,8 +86,7 @@ And that gives us this:
 
 The image doesn't have any bottom margin, and neither does the subheading. Let's fix that!
 
-{% include codeHeader.html %}
-```css
+```css {data-copyable=true}
 #post img {
   display: block;
 }

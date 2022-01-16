@@ -1,19 +1,47 @@
+@import "../functions";
 @import "../mixins";
 
 /* VS Code Dark Plus theme: https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vsc-dark-plus.css */
 
+$code-block-padding: clamped(16px, 32px);
+
 pre[class*="language-"] {
   background: var(--color-code-background);
   box-shadow: var(--code-block-box-shadow);
-  padding: 3.2rem;
   border-radius: 0.8rem;
   color: var(--color-code-text);
-  text-align: start;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  tab-size: 2;
-  overflow-x: auto;
+  margin-inline: calc(-1 * var(--padding));
+  @include tablet {
+    margin-inline: 0;
+  }
+
+  code {
+    padding: $code-block-padding;
+    position: relative;
+    text-align: start;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    tab-size: 2;
+    overflow-x: auto;
+    display: block;
+
+    &[data-file] {
+      padding-top: clamped(48px, 76px);
+
+      // File name
+      &::before {
+        content: "Filename: " attr(data-file);
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: var(--color-code-text);
+        word-break: break-all;
+        padding: $code-block-padding $code-block-padding 0;
+        @include font($family: "title", $weight: "bold", $size: "sm");
+      }
+    }
+  }
 
   .namespace {
     opacity: 0.7;
@@ -100,48 +128,10 @@ pre[class*="language-bash"] {
   }
 }
 
-/* Line highlighting */
-
-pre[data-line] {
-  position: relative;
-}
-
-.highlight-line,
-.highlight-line-active {
-  background: var(--color-code-selection);
-}
-
-.code-header {
-  height: 0;
-  z-index: 2;
-  position: relative;
-
-  // Code blocks with a file name need a bit of top padding
-  &.with-file-name + pre[class*="language-"] {
-    padding-top: 7.6rem;
-  }
-}
-
-.code-file-name {
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: var(--color-code-text);
-  word-break: break-all;
-  padding: 2.4rem 2.4rem 0;
-  border-radius: 0.8rem 0.8rem 0 0;
-  background-color: var(--color-code-background);
-  @include font($family: "title", $weight: "bold", $size: "sm");
-
-  &::before {
-    content: "Filename: ";
-  }
-}
-
 .copy-code-button {
   position: absolute;
-  right: 2.4rem;
-  top: 2.4rem;
+  right: $code-block-padding;
+  top: $code-block-padding;
   display: none;
   color: var(--color-code-text);
   background-color: var(--color-code-overlay-1);

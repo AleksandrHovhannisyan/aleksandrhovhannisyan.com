@@ -33,8 +33,7 @@ Since we want to use ESLint to format JavaScript, we'll need to install the `esl
 
 Run this command to install ESLint with Prettier:
 
-{% include codeHeader.html %}
-```
+``` {data-copyable=true}
 yarn add -D eslint prettier eslint-plugin-prettier eslint-config-prettier
 ```
 
@@ -45,8 +44,7 @@ If you're linting TypeScript, you'll also want these packages in addition to the
 
 Install them like so:
 
-{% include codeHeader.html %}
-```
+``` {data-copyable=true}
 yarn add -D @typescript-eslint/eslint-plugin @typescript-eslint/parser
 ```
 
@@ -57,8 +55,7 @@ And if you're linting React, throw these must-haves into the mix:
 
 You get the idea:
 
-{% include codeHeader.html %}
-```
+``` {data-copyable=true}
 yarn add -D eslint-plugin-react eslint-plugin-react-hooks
 ```
 
@@ -70,8 +67,7 @@ If you already have the ESLint extension installed, VS Code may show a prompt as
 
 If you haven't already done so, you can update your `package.json` scripts to include a script to lint files via the command line. This is useful in case you want to set up lint-staged rules with [husky](https://www.npmjs.com/package/husky) and git hooks:
 
-{% include codeHeader.html file: "package.json" %}
-```json
+```json {data-file="package.json" data-copyable=true}
 {
   "scripts": {
     "lint": "eslint --cache \"src/**/*.{js,jsx,ts,tsx}\"",
@@ -84,15 +80,13 @@ If you haven't already done so, you can update your `package.json` scripts to in
 
 Install `husky` and `lint-staged`:
 
-{% include codeHeader.html %}
-```
+``` {data-copyable=true}
 yarn add -D lint-staged husky
 ```
 
 And configure them in your `package.json` to use the `lint:fix` script you defined:
 
-{% include codeHeader.html file: "package.json" %}
-```json
+```json {data-file="package.json" data-copyable=true}
 {
   "husky": {
     "hooks": {
@@ -146,8 +140,7 @@ Some people use the numerical aliases, but I prefer to use the strings to be exp
 
 Since we're using Prettier to supplement ESLint's formatting rules, we'll need to configure Prettier. You can use this config file for any type of project. Adjust the settings according to your needs:
 
-{% include codeHeader.html file: ".prettierrc" %}
-```json
+```json {data-file=".prettierrc" data-copyable=true}
 {
   "useTabs": false,
   "tabWidth": 2,
@@ -167,8 +160,7 @@ If you're working in a JavaScript or Node environment, you can either rely on th
 
 Note that if you're using the default ESLint parser (i.e., no `parser` set), you can set `ecmaVersion` to `"latest"` [as of ESLint v7.30.0](https://eslint.org/blog/2021/07/eslint-v7.30.0-released#highlights). Otherwise, set it to [one of the accepted values](https://eslint.org/docs/user-guide/configuring/language-options#specifying-environments).
 
-{% include codeHeader.html file: ".eslintrc.json" %}
-```json
+```json {data-file=".eslintrc.json" data-copyable=true}
 {
   "extends": [
     "eslint:recommended",
@@ -214,8 +206,7 @@ With TypeScript, only a few things need to change from the basic ESLint config a
 See the `@typescript-eslint/eslint-plugin` docs for [the full list of rules](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin) and additional instructions on how you can customize this plugin.
 
 
-{% include codeHeader.html file: ".eslintrc.json" %}
-```json
+```json {data-file=".eslintrc.json" data-copyable=true}
 {
   "extends": [
     "eslint:recommended",
@@ -265,8 +256,7 @@ Finally, if you're using ESLint to format React code, you can use either one of 
 
 One important change needs to be made to the `parserOptions` object: We'll need to specify an `ecmaFeatures` object with `"jsx": true` so that ESLint recognizes JSX and formats it correctly, rather than flagging it as an unknown syntax.
 
-{% include codeHeader.html file: ".eslintrc.json" %}
-```json
+```json {data-file=".eslintrc.json" data-copyable=true}
 {
   "extends": [
     "eslint:recommended",
@@ -339,8 +329,7 @@ Click `Allow` (or `Allow everywhere`). If the notification doesn't appear and yo
 
 If you're setting up ESLint in a shared repo, you can also configure the recommended extensions for your project workspace. This will prompt other team members to install the ESLint extension if they don't already have it when they open your workspace in VS Code. To do so, open your command palette and run the command `Configure Recommended Extensions (Workspace Folder)`. This creates an `extensions.json` file in a `.vscode/` folder at the root of your project. Add the string ID for the ESLint extension that you installed:
 
-{% include codeHeader.html file: "extensions.json" %}
-```json
+```json {data-file="extensions.json" data-copyable=true}
 {
   "recommendations": [
     "dbaeumer.vscode-eslint"
@@ -368,8 +357,7 @@ Select either one. I recommend configuring this in both your user and workspace 
 
 Either way, you'll want to add these to your JSON:
 
-{% include codeHeader.html file: ".vscode/settings.json" %}
-```json
+```json {data-file=".vscode/settings.json" data-copyable=true}
 {
   "eslint.validate": [
     "javascript",

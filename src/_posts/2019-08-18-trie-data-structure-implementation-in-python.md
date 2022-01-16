@@ -67,8 +67,7 @@ First, like all trees, a prefix tree is going to consist of nodes. Each node wil
 
 Let's build the `TrieNode` class:
 
-{% include codeHeader.html file: "trie.py" %}
-```python
+```python {data-file="trie.py" data-copyable=true}
 class TrieNode:
     def __init__(self, text = ''):
         self.text = text
@@ -79,8 +78,7 @@ Pretty simple, right? Again, note that there's one additional piece of data we'l
 
 Next, the prefix tree itself consists of one or more of these `TrieNodes`, so I'll add another class named `PrefixTree`:
 
-{% include codeHeader.html file: "trie.py" %}
-```python
+```python {data-file="trie.py" data-copyable=true}
 class TrieNode:
     def __init__(self, text = ''):
         self.text = text
@@ -122,8 +120,7 @@ Recall that each node also has to keep track of the string that's been generated
 
 Here's the full* Python implementation of inserting nodes into a trie:
 
-{% include codeHeader.html file: "trie.py" %}
-```python
+```python {data-file="trie.py" data-copyable=true}
 def insert(self, word):
     current = self.root
     for i, char in enumerate(word):
@@ -149,8 +146,7 @@ Otherwise, if we reach the last character of the string without having returned 
 
 Here's the code:
 
-{% include codeHeader.html file: "trie.py" %}
-```python
+```python {data-file="trie.py" data-copyable=true}
 def find(self, word):
     '''
     Returns the TrieNode representing the given word if it exists
@@ -184,8 +180,7 @@ Fortunately, the fix here is super simple. We need to make three changes:
 
 Let's modify the `TrieNode` class:
 
-{% include codeHeader.html file: "trie.py" %}
-```python
+```python {data-file="trie.py" data-copyable=true}
 class TrieNode:
     def __init__(self, text = ''):
         self.text = text
@@ -195,8 +190,7 @@ class TrieNode:
 
 And then the `insert` method:
 
-{% include codeHeader.html file: "trie.py" %}
-```python
+```python {data-file="trie.py" data-copyable=true}
 def insert(self, word):
     current = self.root
     for i, char in enumerate(word):
@@ -211,8 +205,7 @@ And finally, to verify that the given word exists in our trie, and that the node
 
 Here's the final code for `find`:
 
-{% include codeHeader.html file: "trie.py" %}
-```python
+```python {data-file="trie.py" data-copyable=true}
 def find(self, word):
     '''
     Returns the TrieNode representing the given word if it exists
@@ -248,8 +241,7 @@ The code for finding partial matches in a trie is also really simple. Here's the
 
 The first step is simple—we just did something very similar above for finding exact matches. This time, though, instead of returning `None` when a match isn't found, we'll return an empty list.
 
-{% include codeHeader.html file: "trie.py" %}
-```python
+```python {data-file="trie.py" data-copyable=true}
 def starts_with(self, prefix):
     '''
     Returns a list of all words beginning with the given prefix, or
@@ -270,8 +262,7 @@ Once we've found the prefix node (if it exists), we'll utilize a helper method f
 
 Here's the recursive helper function:
 
-{% include codeHeader.html file: "trie.py" %}
-```python
+```python {data-file="trie.py" data-copyable=true}
 def __child_words_for(self, node, words):
     '''
     Private helper function. Cycles through all children
@@ -286,8 +277,7 @@ def __child_words_for(self, node, words):
 
 And here's the completed code for `starts_with`:
 
-{% include codeHeader.html file: "trie.py" %}
-```python
+```python {data-file="trie.py" data-copyable=true}
 def starts_with(self, prefix):
     '''
     Returns a list of all words beginning with the given prefix, or
@@ -318,8 +308,7 @@ This one depends on your definition of "size." Is it the number of *words* that 
 
 I'll just show the code this time—hopefully you're comfortable with recursion and tries by now:
 
-{% include codeHeader.html file: "trie.py" %}
-```python
+```python {data-file="trie.py" data-copyable=true}
 def size(self, current = None):
     '''
     Returns the size of this prefix tree, defined
@@ -340,8 +329,7 @@ Notice that `current` has a default value of `None`. This allows the user to sim
 
 We can add this to the end of our script to manually test our code:
 
-{% include codeHeader.html file: "trie.py" %}
-```python
+```python {data-file="trie.py" data-copyable=true}
 if __name__ == '__main__':
     trie = PrefixTree()
     trie.insert('apple')
@@ -359,8 +347,7 @@ But this is tedious and frankly not a very rigorous way of testing our code. So 
 
 Below are eight tests covering edge cases. This is where our `size` method really comes in handy.
 
-{% include codeHeader.html file: "test_trie.py" %}
-```python
+```python {data-file="test_trie.py" data-copyable=true}
 import unittest
 from trie import PrefixTree
 

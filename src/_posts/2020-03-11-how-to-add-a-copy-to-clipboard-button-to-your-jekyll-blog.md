@@ -20,8 +20,7 @@ At a high level, all we need is a simple include file that we can stick in front
 
 ### 1. Copy-to-Clipboard Include: `_includes/codeHeader.html`
 
-{% include codeHeader.html file: "_includes/codeHeader.html" %}
-```html
+```html {data-file="_includes/codeHeader.html" data-copyable=true}
 <div class="code-header">
     <button class="copy-code-button" aria-label="Copy code to clipboard"></button>
 </div>
@@ -44,8 +43,7 @@ This just renders a normal fenced code block (with triple backticks). Right befo
 
 Below is some CSS to get you started (I'm using SCSS). Styling this to make it look pretty is up to you, so I've omitted colors and font sizes.
 
-{% include codeHeader.html %}
-```scss
+```scss {data-copyable=true}
 .code-header {
   display: flex;
   justify-content: flex-end;
@@ -94,8 +92,7 @@ We'll look up two arrays, side by side:
 
 Here's the code:
 
-{% include codeHeader.html file: "assets/scripts/copyCode.js" %}
-```javascript
+```javascript {data-file="assets/scripts/copyCode.js" data-copyable=true}
 const codeBlocks = document.querySelectorAll('.code-header + .highlighter-rouge');
 const copyCodeButtons = document.querySelectorAll('.copy-code-button');
 
@@ -121,8 +118,7 @@ Finally, the copy-to-clipboard button uses CSS pseudo-elements to show `Copy ðŸ“
 
 That's it! Don't forget to add a script tag so this code actually works. For example, you can stick this somewhere in your layout file for blog posts:
 
-{% include codeHeader.html file: "_layouts/post.html" %}
-```html
+```html {data-file="_layouts/post.html" data-copyable=true}
 <script src="/assets/scripts/copyCode.js"></script>
 ```
 

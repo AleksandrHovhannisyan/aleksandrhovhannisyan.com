@@ -117,8 +117,7 @@ Now, if you inspect future requests, this cookie will be included in the **`Cook
 
 Before we move on, note that there's a second way to view cookies in your developer tools. Navigate to the `Console` tab, enter the following code, and press enter:
 
-{% include codeHeader.html %}
-```javascript
+```javascript {data-copyable=true}
 document.cookie
 ```
 
@@ -126,8 +125,7 @@ You'll see one big output string containing `name=value` pairs of cookies strung
 
 Here's an example of creating a cookie with JavaScript:
 
-{% include codeHeader.html %}
-```javascript
+```javascript {data-copyable=true}
 document.cookie = 'foo=bar'
 ```
 
@@ -139,8 +137,7 @@ Note that you can't create multiple cookies in one go, like `document.cookie = '
 
 When you just specify the name and value of a cookie, it gets created as a session cookie by default. You can also optionally specify an expiration:
 
-{% include codeHeader.html %}
-```javascript
+```javascript {data-copyable=true}
 document.cookie = 'foo=bar; expires=Su, 20 Dec 2020 20:20:20 UTC'
 ```
 
@@ -150,8 +147,7 @@ document.cookie = 'foo=bar; expires=Su, 20 Dec 2020 20:20:20 UTC'
 
 To delete a cookie with JavaScript, you need to set its expiration date to be sometime in the past:
 
-{% include codeHeader.html %}
-```javascript
+```javascript {data-copyable=true}
 document.cookie = 'foo=bar; expires=Fri, 24 Jul 2020 04:00:00 UTC'
 ```
 

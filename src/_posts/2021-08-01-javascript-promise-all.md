@@ -64,8 +64,7 @@ Let's tackle the problem that I described in this article's intro, where a user 
 
 To keep this article simple, I won't use any real-world data. Instead, I'll simulate the problem with a helper function that returns a promise and resolves it after `n` seconds:
 
-{% include codeHeader.html %}
-```javascript
+```javascript {data-copyable=true}
 const wait = (delaySeconds) => {
   return new Promise((resolve) => {
     setTimeout(() => resolve(), delaySeconds * 1000);
@@ -89,8 +88,7 @@ const someAsyncFn = async () => {
 
 We can use this function to simulate an async task that takes some time to complete, like an upload. We'll use an array of numbers to represent the time it takes each file to upload:
 
-{% include codeHeader.html %}
-```javascript
+```javascript {data-copyable=true}
 const uploadFile = async (delay, index) => {
   await wait(delay);
   console.log(`uploaded file ${index + 1}`);
@@ -122,8 +120,7 @@ That's it for simulating the problem in code.
 
 Now, let's use `Promise.all` to log a message once *all* of the promises have resolved:
 
-{% include codeHeader.html %}
-```javascript
+```javascript {data-copyable=true}
 const uploadFiles = async (files) => {
   try {
     const fileUploads = files.map((delay, i) => uploadFile(delay, i));
@@ -180,8 +177,7 @@ Finally, note that there's no straightforward way to get the size of an iterable
 
 Here's the code:
 
-{% include codeHeader.html %}
-```javascript
+```javascript {data-copyable=true}
 Promise.all = (promises) => {
   const resolvedValues = [];
   let promiseCount = 0;
@@ -220,8 +216,7 @@ Each time a promise resolves, we push the resolved value to an array and check i
 
 There's one edge case that our code doesn't handle: an empty iterable. [According to MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all#return_value), the expected behavior is that `Promise.all` should resolve immediately. Fortunately, the fix is simple in our case since we already computed the size of the input:
 
-{% include codeHeader.html %}
-```javascript
+```javascript {data-copyable=true}
 Promise.all = (promises) => {
   const resolvedValues = [];
   let promiseCount = 0;

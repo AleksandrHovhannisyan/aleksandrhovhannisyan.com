@@ -1,5 +1,6 @@
 const markdownIt = require('markdown-it');
 const markdownItPrism = require('markdown-it-prism');
+const markdownItAttrs = require('markdown-it-attrs');
 const markdownItAnchor = require('markdown-it-anchor');
 const markdownItKatex = require('@iktakahiro/markdown-it-katex');
 const markdownItClass = require('@toycode/markdown-it-class');
@@ -15,6 +16,7 @@ const markdownLib = markdownIt({
   .use(markdownItPrism, {
     defaultLanguage: 'plaintext',
   })
+  .use(markdownItAttrs)
   .use(markdownItAnchor, {
     slugify: slugifyString,
     tabIndex: false,

@@ -40,6 +40,7 @@
 
 $default-min-bp: map.get($media-breakpoints, "mobile");
 $default-max-bp: map.get($media-breakpoints, "desktop");
+
 /// Returns a CSS clamp(...) declaration, with the responsive argument computed automatically.
 @function clamped($min-px, $max-px, $min-bp: $default-min-bp, $max-bp: $default-max-bp) {
   $slope: math.div($max-px - $min-px, $max-bp - $min-bp);

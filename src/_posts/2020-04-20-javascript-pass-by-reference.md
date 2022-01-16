@@ -83,8 +83,7 @@ By analogy, a reference is like a person's nickname. My real name is Aleksandr, 
 
 Here's some C++ code to illustrate true reference variables in action:
 
-{% include codeHeader.html %}
-```cpp
+```cpp {data-copyable=true}
 #include <iostream>
 #include <string>
 
@@ -107,8 +106,7 @@ int main()
 
 In languages that don't support reference variables (e.g., JavaScript), two variables may share **a copy** of a value, but it's guaranteed that those variables will **occupy different memory addresses**. Here's an attempt at the above in JavaScript:
 
-{% include codeHeader.html %}
-```javascript
+```javascript {data-copyable=true}
 let myName = "Aleksandr";
 let myNickname = myName;
 
@@ -124,8 +122,7 @@ On the second line, what I'm doing is creating a copy of the string `"Aleksandr"
 
 Unlike a variable that receives a copy of a value, [a reference variable does not have its own memory address](https://stackoverflow.com/a/1950998/10480032)—it shares the same exact memory address as the original variable. Strange, isn't it? We can verify this in C++ using something called the address-of operator (`&`), which returns the memory address of a variable:
 
-{% include codeHeader.html %}
-```cpp
+```cpp {data-copyable=true}
 #include <iostream>
 #include <string>
 
@@ -248,8 +245,7 @@ In **pass by reference**, the formal parameter is a reference variable (alias) f
 
 There's a classic **litmus test** to check if a language supports passing by reference: whether you can swap two numbers (the following code is written in JavaScript):
 
-{% include codeHeader.html %}
-```javascript
+```javascript {data-copyable=true}
 function swap(a, b) {
     const temp = a;
     a = b;

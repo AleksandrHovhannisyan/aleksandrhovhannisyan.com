@@ -107,8 +107,7 @@ Let's say you want to embed a YouTube video on your page, and you know that [You
 
 For both code samples, we'll work with this common markup:
 
-{% include codeHeader.html file: "youtube-iframe.html" %}
-```html
+```html {data-file="youtube-iframe.html" data-copyable=true}
 <iframe src="..." class="youtube-iframe"></iframe>
 ```
 
@@ -116,8 +115,7 @@ For both code samples, we'll work with this common markup:
 
 With CSS's `aspect-ratio` property, we can style the iframe directly:
 
-{% include codeHeader.html file: "youtube-iframe.css" %}
-```css
+```css {data-file="youtube-iframe.css" data-copyable=true}
 .youtube-iframe {
   aspect-ratio: 16 / 9;
 }
@@ -129,8 +127,7 @@ That's it! As we'll see in the remaining examples, this new property makes it tr
 
 We can achieve the same result using the padding trick that we learned. It requires a bit more work and some additional markup. We'll need two elements: an aspect ratio box for the parent container (e.g., a `<div>`), and the iframe itself nested as a child:
 
-{% include codeHeader.html file: "youtube-iframe.html" %}
-```html
+```html {data-file="youtube-iframe.html" data-copyable=true}
 <div class="embed-container">
   <iframe class="youtube-iframe">...</iframe>
 </div>
@@ -140,8 +137,7 @@ To create an aspect ratio box with `16:9`, we set the box's height to be zero an
 
 The final step is to relatively position the container and absolutely position the iframe so that it doesn't influence the container's height. And here's the CSS that'll do that for us:
 
-{% include codeHeader.html file: "youtube-iframe.css" %}
-```css
+```css {data-file="youtube-iframe.css" data-copyable=true}
 .embed-container {
   position: relative;
   height: 0;
@@ -164,8 +160,7 @@ That's it! Your YouTube iframe will now maintain a `16:9` aspect ratio on all de
 
 With our knowledge of how to create aspect ratios in CSS, we can easily create a [3x3 square layout](https://tobiasahlin.com/blog/common-flexbox-patterns/#3x3-grid-constrained-proportions-11) with either Flexbox or CSS Grid. We'll work with this common markup and CSS:
 
-{% include codeHeader.html file: "grid.html" %}
-```html
+```html {data-file="grid.html" data-copyable=true}
 <ul class="square-grid">
   <li class="square"></li>
   <li class="square"></li>
@@ -179,8 +174,7 @@ With our knowledge of how to create aspect ratios in CSS, we can easily create a
 </ul>
 ```
 
-{% include codeHeader.html file: "grid.css" %}
-```css
+```css {data-file="grid.css" data-copyable=true}
 .square-grid {
   width: 100%;
   display: grid;
@@ -207,8 +201,7 @@ Once again, we can take one of two approaches, depending on which browsers we ne
 
 To make each grid item a square, we just have to give them an aspect ratio of `1/1`:
 
-{% include codeHeader.html file: "grid.css" %}
-```css
+```css {data-file="grid.css" data-copyable=true}
 .square {
   aspect-ratio: 1 / 1;
 }
@@ -220,8 +213,7 @@ This says that the grid item's width and height should always be the same.
 
 With the percentage padding trick, we once again zero out the element's height. This time, we give it a vertical padding of `100%`, which means that its height is always the same as its width:
 
-{% include codeHeader.html file: "grid.css" %}
-```css
+```css {data-file="grid.css" data-copyable=true}
 .square {
   height: 0;
   padding-bottom: 100%;
@@ -252,8 +244,7 @@ Regardless of which approach you take, you'll get a `3x3` grid of images that ar
 
 As before, we'll style the squares to have a `1:1` aspect ratio. But we'll also want to set the width and height of the nested images to be `100%`. Finally, we'll use `object-fit` and `object-position` to ensure that overflowing images are cropped and centered:
 
-{% include codeHeader.html file: "image-grid.css" %}
-```css
+```css {data-file="image-grid.css" data-copyable=true}
 .square {
   aspect-ratio: 1 / 1;
 }
@@ -272,8 +263,7 @@ Notice that we don't have to mess with absolute positioning or zero-out the `.sq
 
 With the percentage padding trick, the CSS for the grid is the same. But we need to absolutely position the images so that they don't influence each `.square`'s height. And, as before, we also need to use `object-fit` and `object-position` so that overflowing images are cropped.
 
-{% include codeHeader.html file: "image-grid.css" %}
-```css
+```css {data-file="image-grid.css" data-copyable=true}
 .square {
   height: 0;
   padding-bottom: 100%;
@@ -406,8 +396,7 @@ Here, **inline size** is defined as follows:
 
 To verify this, we can set up a mini sandbox document with a single parent and child element:
 
-{% include codeHeader.html file: "test.html" %}
-```html
+```html {data-file="test.html" data-copyable=true}
 <div class="parent">
   <div class="child">
     Child
@@ -417,8 +406,7 @@ To verify this, we can set up a mini sandbox document with a single parent and c
 
 And style it like this:
 
-{% include codeHeader.html file: "test.css" %}
-```css
+```css {data-file="test.css" data-copyable=true}
 body {
   writing-mode: vertical-rl;
   width: 100%;

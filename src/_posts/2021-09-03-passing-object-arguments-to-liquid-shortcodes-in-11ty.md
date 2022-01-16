@@ -18,9 +18,8 @@ Whenever you only want to pass along just one optional argument but not any of t
 
 As a temporary workaround, we can create a wrapper include that forwards named arguments to the shortcode. But this is still not ideal because you need to pass the arguments in a specific order to the shortcode, and that can easily break if your shortcode's signature is updated:
 
-{% include codeHeader.html file: "src/_includes/myShortcode.html" %}
 {% raw %}
-```liquid
+```liquid {data-file="src/_includes/myShortcode.html" data-copyable=true}
 {%- comment -%}This works, so long as the order doesn't change.{%- endcomment -%}
 {% myShortcode arg1, arg2, arg3, arg4 %}
 ```
@@ -62,9 +61,8 @@ We'll then pass that object to the shortcode as an argument.
 
 We'll start by formatting a JSON string and interpolating the named arguments of the include:
 
-{% include codeHeader.html file: "src/_includes/myShortcode.html" %}
 {% raw %}
-```liquid
+```liquid {data-file="src/_includes/myShortcode.html" data-copyable=true}
 {%- capture props -%}
   {
     "arg1": "{{ arg1 }}",
@@ -117,15 +115,13 @@ I prefer the second approach because it means that I can later programmatically 
 
 Let's add this filter to our Eleventy config to enable parsing JSON strings:
 
-{% include codeHeader.html file: ".eleventy.js" %}
-```js
+```js {data-file=".eleventy.js" data-copyable=true}
 eleventyConfig.addFilter('fromJson', JSON.parse);
 ```
 And let's use it to transform the `props` string into a JavaScript object:
 
-{% include codeHeader.html file: "src/_includes/myShortcode.html" %}
 {% raw %}
-```liquid
+```liquid {data-file="src/_includes/myShortcode.html" data-copyable=true}
 {%- capture props -%}
   {
     "arg1": "{{ arg1 }}",
@@ -145,9 +141,8 @@ Now, our shortcode receives an object argument with all of our interpolated valu
 
 Let's look at that JSON again:
 
-{% include codeHeader.html file: "src/_includes/myShortcode.html" %}
 {% raw %}
-```liquid
+```liquid {data-file="src/_includes/myShortcode.html" data-copyable=true}
 {%- capture props -%}
   {
     "arg1": "{{ arg1 }}",

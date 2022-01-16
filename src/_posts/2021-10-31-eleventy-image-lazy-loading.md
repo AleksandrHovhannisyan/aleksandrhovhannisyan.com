@@ -35,15 +35,13 @@ Before we dive deep into the code specific to this tutorial, I want us to take s
 
 To get started, install the 11ty image plugin:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 yarn add -D @11ty/eleventy-img
 ```
 
 And import it into any Node script:
 
-{% include codeHeader.html %}
-```js
+```js {data-copyable=true}
 const Image = require('@11ty/eleventy-img');
 ```
 
@@ -181,8 +179,7 @@ Not all 11ty projects are structured in the same way. Some developers prefer to 
 
 Our first step is to create an image shortcode and register it in the 11ty config:
 
-{% include codeHeader.html file: ".eleventy.js" %}
-```js
+```js {data-file=".eleventy.js" data-copyable=true}
 const Image = require('@11ty/eleventy-img');
 
 const imageShortcode = async (relativeSrc, alt, className, widths, formats, sizes) => {
@@ -204,8 +201,7 @@ module.exports = (eleventyConfig) => {
 
 Let's start writing some of the logic for our image shortcode. We'll define fallbacks for some of the optional arguments, read the absolute path to the image on the file system, and pass along all of the relevant options to the image plugin. Note that I won't be covering remote images in this tutorial, so you may need to write some of your own logic to handle those (it should be fairly straightforward).
 
-{% include codeHeader.html file: ".eleventy.js" %}
-```js
+```js {data-file=".eleventy.js" data-copyable=true}
 const Image = require('@11ty/eleventy-img');
 const path = require('path');
 
@@ -411,8 +407,7 @@ Let's tackle the steps outlined above.
 
 Since 11ty allows us to specify widths for our images, we can also include a tiny placeholder width. You can use any width you like for this. Smaller widths will produce more pixelated and distorted placeholders, but they'll also use less space. I'll use `24` in this tutorial.
 
-{% include codeHeader.html file: ".eleventy.js" %}
-```js
+```js {data-file=".eleventy.js" data-copyable=true}
 const ImageWidths = {
   ORIGINAL: null,
   PLACEHOLDER: 24,
@@ -465,8 +460,7 @@ However, we want to lazily load images by hand. The reason I recommend doing thi
 
 So, instead of using `Image.generateHTML`, we can assemble a custom HTML string:
 
-{% include codeHeader.html file: ".eleventy.js" %}
-```js
+```js {data-file=".eleventy.js" data-copyable=true}
 const imageShortcode = async (
   relativeSrc,
   alt,
@@ -518,8 +512,7 @@ const imageShortcode = async (
 
 Now, we'll assemble the `formats` array from these two arguments:
 
-{% include codeHeader.html file: ".eleventy.js" %}
-```js
+```js {data-file=".eleventy.js" data-copyable=true}
 const imageShortcode = async (
   relativeSrc,
   alt,
@@ -544,8 +537,7 @@ const imageShortcode = async (
 
 We'll need one more bit of information before we can define our markup: the placeholder image and largest image corresponding to each format (WebP, JPEG, and whatever other formats you've defined). Here's a `reduce` over the metadata object that'll do that for us:
 
-{% include codeHeader.html file: ".eleventy.js" %}
-```js
+```js {data-file=".eleventy.js" data-copyable=true}
 // Map each unique format (e.g., jpeg, webp) to its smallest and largest images
 const formatSizes = Object.entries(imageMetadata).reduce((formatSizes, [format, images]) => {
   if (!formatSizes[format]) {
@@ -566,8 +558,7 @@ In our case, this returns an object whose keys are `jpeg` and `webp`; for each k
 
 We now have everything that we need to define our image markup:
 
-{% include codeHeader.html file: ".eleventy.js" %}
-```js
+```js {data-file=".eleventy.js" data-copyable=true}
 // Chain class names w/ the classNames package; optional
 const picture = `<picture class="${classNames('lazy-picture', className)}">
 ${Object.values(imageMetadata)
@@ -648,8 +639,7 @@ As a reminder, we're storing all of the real image sources and srcsets in `data-
 
 We'll start by creating a utility function that takes two arguments: an iterable containing all of the DOM nodes that we want to watch for intersections with the viewport, and the callback to fire when those elements intersect with the viewport. Under the hood, this utility will use the [`IntersectionObserver` API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API):
 
-{% include codeHeader.html %}
-```js
+```js {data-copyable=true}
 const lazyLoad = (targets, onIntersection) => {
   const observer = new IntersectionObserver((entries, self) => {
     entries.forEach((entry) => {
@@ -665,8 +655,7 @@ const lazyLoad = (targets, onIntersection) => {
 
 We can then use it like so:
 
-{% include codeHeader.html file: "src/assets/scripts/index.mjs" %}
-```js
+```js {data-file="src/assets/scripts/index.mjs" data-copyable=true}
 const lazyPictures = document.querySelectorAll('.lazy-picture');
 lazyLoad(lazyPictures, (pictureElement) => {
   const img = pictureElement.querySelector('img');
@@ -707,8 +696,7 @@ This is all of the core logic that you need for the custom lazy loading solution
 
 If you want your images to fade in more smoothly, you can use the CSS `blur` filter:
 
-{% include codeHeader.html file: "image.css" %}
-```css
+```css {data-file="image.css" data-copyable=true}
 .lazy-img {
   filter: blur(8px);
   transition: filter 0.3s ease-in;

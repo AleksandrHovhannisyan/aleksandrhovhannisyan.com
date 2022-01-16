@@ -15,8 +15,7 @@ Eventually, there will come a point when you'll find yourself having to modify o
 
 Before we get to the examples, let's create a simple git repo with a few commits:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git init && \
 echo {} > package.json && git add . && git commit -m "Add package.json" && \
 echo FOO=bar > .env && git add . && git commit -m "Add .env" && \
@@ -66,8 +65,7 @@ You have this commit history:
 
 Shortly after creating your `.gitignore` and committing it, you decide to change the file:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 echo node_modules > .gitignore
 ```
 
@@ -75,8 +73,7 @@ But you don't want to pollute your git log history with yet another commit for s
 
 Both of these are classic use cases for the `git amend` command:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git commit -a --amend
 ```
 
@@ -102,8 +99,7 @@ Save and close the file, and git will amend the most recent commit to include yo
 
 If all you need to do is update the commit message itself, like to fix a typo, you don't actually need to stage any changes. All you need to do is run this command:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git commit --amend
 ```
 
@@ -148,8 +144,7 @@ As a reminder, we have this commit history so far:
 
 Let's add one more commit directly to `master`:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 touch file && git add . && git commit -m "Add a file"
 ```
 
@@ -165,8 +160,7 @@ So now we have this commit history:
 
 A few minutes later, for one reason or another, you decide that you don't actually want to keep the most recent commit. To delete it, you can just do a hard reset to one commit before the `HEAD` pointer, which is always pointing to the latest commit on the current branch:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git reset --hard HEAD~1
 ```
 
@@ -182,15 +176,13 @@ Hard resetting is a handy way to undo changes in git, but do note that this is a
 
 You can also reset to the `HEAD~n`th commit, in which case all work *at and after that commit* will be lost:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git reset --hard HEAD~4
 ```
 
 Or even to a specific commit, if you have its hash:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git reset --hard <hash-id>
 ```
 
@@ -198,15 +190,13 @@ You're also not limited to just resetting against commits in the current branch.
 
 For example, you can reset a local branch to point to another local branch:
 
-{% include codeHeader.html %}
-```
+``` {data-copyable=true}
 git reset --hard <someOtherBranch>
 ```
 
 Or even to a remote branch:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git reset --hard origin/master
 ```
 
@@ -216,22 +206,19 @@ Sure, you can use `git cherry-pick` to fix this, but what if you have tens or hu
 
 To fix this, you'd create the feature branch now (off of `master`, which has the commits you want):
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git checkout -b feat/X
 ```
 
 And forcibly reset your local `master` branch to your remote `master`:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git checkout master && git reset --hard origin/master
 ```
 
 And don't forget to go back to your feature branch so you don't repeat the same mistake:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git checkout feat/X
 ```
 
@@ -239,15 +226,13 @@ git checkout feat/X
 
 As I mentioned above, if you do a hard reset, you'll lose any work that you did at or past that commit. You can recover from that state, sure, but that's one extra step. If instead you want to keep your changes in git's staging environment, you can do a soft reset:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git reset --soft HEAD~1
 ```
 
 And again, you can just use a commit hash instead of backtracking from the `HEAD` pointer:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git reset --soft a80951b
 ```
 
@@ -259,8 +244,7 @@ All of the changes introduced by that commit, and any commits that came after it
 
 You're probably already comfortable with branching for new iterations of work. But don't forget that you can also use branching as a backup mechanism, in case you know you're about to run a command (like `git reset --hard`) that may mess up your branch's commit history. Before you run those commands, you can simply create a temporary backup branch (e.g., `git branch backup`). If anything goes wrong, you can always do a hard reset against your backup branch:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git reset --hard backup
 ```
 
@@ -287,8 +271,7 @@ So far, we have this commit history:
 
 That second commit looks a little suspicious... Why did we check our local environment variables (`.env`) into git? Oops. Clearly, we need to delete this commit while keeping all of the others around. To do that, we'll run an interactive rebase against that commit:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git rebase -ir 2beb7c7^
 ```
 
@@ -324,8 +307,7 @@ And now, if you do a `git log`, you'll no longer see that commit:
 
 Note that any commit hashes after the deleted commit will be recomputed. So while the root commit remains untouched as `0beebfb`, all hashes after it changed. As we've seen a few times now, if you had pushed this branch to your repo earlier, the local and remote branches will now be out of sync. So you'll just need to do a force push to update the remote branch:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git push -f
 ```
 
@@ -345,8 +327,7 @@ Looking back at this, we'll want to reword those last two commit message since, 
 
 As usual, we'll start with an interactive rebase. Here, we'll target the last two commits:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git rebase -i HEAD~2
 ```
 
@@ -445,15 +426,13 @@ So far, our commit history looks like this:
 
 Let's say we want to edit the root commit (`0beebfb`) and add a second file:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 touch .yarnrc
 ```
 
 We'll start an interactive rebase against that commit. In this special case of editing the root commit, we'll need to use the `--root` option:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git rebase -i --root
 ```
 
@@ -492,8 +471,7 @@ Once you are satisfied with your changes, run
 
 Neat! We'll now run these two commands:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git add .yarnrc && git commit --amend
 ```
 
@@ -526,8 +504,7 @@ Add package.json
 
 Let's change that message to be `Initialize npm package` and save and exit. Now, per git's suggestion, we need to continue with the rebase:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git rebase --continue
 ```
 
@@ -557,8 +534,7 @@ Again, for reference, we have this commit history:
 
 Let's create a toy feature branch and add some commits:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git checkout -b feature && \
 touch file1 && git add . && git commit -m "Add file1" && \
 touch file2 && git add . && git commit -m "Add file2" && \
@@ -580,8 +556,7 @@ New commit history:
 
 Assuming our pull request has been reviewed, we can squash all of these into one with the following command:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git rebase -i master
 ```
 
@@ -593,8 +568,7 @@ This rebases our feature branch against the `master` branch. Note that `master` 
 
 So this is really the same as doing:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git rebase -i 436e421
 ```
 
@@ -683,8 +657,7 @@ Yikes.
 
 That's precisely why `git revert` exists. Unlike deleting commits via rebases or hard/soft resets, the revert command creates a new commit to undo any changes introduced by the target commit:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git revert <hash-id>
 ```
 
@@ -700,8 +673,7 @@ Let's say we're on our `master` branch and want to revert the commit with a hash
 
 To do that, we'd run:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git revert beb7c13
 ```
 
@@ -750,8 +722,7 @@ We'll focus on the third use case here.
 
 If you have unstaged changes to local files, you can easily undo those changes using the checkout command:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git checkout <pathspec>
 ```
 
@@ -761,15 +732,13 @@ This will clear all unstaged changes to the specified files and restore the curr
 
 For example, if you want to clear *all* unstaged changes in the current directory and start from scratch, the easy way to do that is using the `git checkout` command with `.` as the pathspec:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git checkout .
 ```
 
 You can also use `git checkout` to restore local or remote versions of a file. For example, you can check out your remote master's copy of a file:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git checkout origin/master -- <pathspec>
 ```
 
@@ -777,8 +746,7 @@ Let's say you need to undo your local changes to a particular file, but those ch
 
 Similarly, you can check out another local branch's copy of a file:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git checkout localBranchName -- <pathspec>
 ```
 
@@ -796,15 +764,13 @@ Put differently, reflog captures a series of snapshots for the different states 
 
 Viewing the reflog for a git repository couldn't be easier:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git reflog
 ```
 
 For example, if I'm on my `feature` branch, I can check out a new branch and git will log that activity:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git checkout -b feature2
 ```
 
@@ -861,15 +827,13 @@ This tells the story of your entire repo, showing all of the different commits t
 
 You can quickly peek at any of these states by checking out those commit hashes:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git checkout <hash-id>
 ```
 
 Or, better yet, you can **reset your branch to those points in history**. Check it out:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git reset --soft 7598875
 ```
 
@@ -890,8 +854,7 @@ And I can even run another `reflog` to see *that* change!
 
 And, if *that* was undesirable, you can run *yet another* `reflog` and reset to the `HEAD` right before you took that action:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git reset --hard b646cf6
 ```
 
@@ -910,8 +873,7 @@ Git's `reflog` command is useful in case you ever do a hard reset and lose all o
 
 Finally, if for whatever reason you want to clean up your `reflog`, you can delete lines from it using:
 
-{% include codeHeader.html %}
-```bash
+```bash {data-copyable=true}
 git reflog delete HEAD@{n}
 ```
 

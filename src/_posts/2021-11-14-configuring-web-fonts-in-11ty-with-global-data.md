@@ -55,8 +55,7 @@ Instead, I wanted to have a single source of truth for our fonts that I could ex
 
 To get started, create a file named `fonts.js` in your data directory. I'll define some object enums upfront to avoid typos:
 
-{% include codeHeader.html file: "src/_data/fonts.js" %}
-```js
+```js {data-file="src/_data/fonts.js" data-copyable=true}
 const FontStyle = {
   NORMAL: 'normal',
   ITALIC: 'italic',
@@ -77,8 +76,7 @@ const FontVariant = {
 
 We can also define a utility for generating font URLs:
 
-{% include codeHeader.html file: "src/_data/fonts.js" %}
-```js
+```js {data-file="src/_data/fonts.js" data-copyable=true}
 const path = require('path');
 
 /** Helper to auto-prefix a font src url with the path to local fonts. */
@@ -87,8 +85,7 @@ const getFontUrl = (src) => path.join('/assets/fonts', src);
 
 Finally, we can export an object describing our fonts. For each font, we'll specify the family name, an array of fallbacks, and the font weights. I'm using the fonts from my site for illustrative purposes; feel free to replace them with whatever fonts you want:
 
-{% include codeHeader.html file: "src/_data/fonts.js" %}
-```js
+```js {data-file="src/_data/fonts.js" data-copyable=true}
 const fonts = {
   body: {
     family: 'Fira Sans',
@@ -177,16 +174,14 @@ With our global font config in place, we can begin generating `@font-face` decla
 
 To iterate over the fonts, we'll need a custom filter that allows us to loop over object values. This will do the trick:
 
-{% include codeHeader.html file: ".eleventy.js" %}
-```js
+```js {data-file=".eleventy.js" data-copyable=true}
 eleventyConfig.addFilter('values', Object.values);
 ```
 
 With that out of the way, we can now loop over the font config's values:
 
-{% include codeHeader.html file: "src/_includes/fontFace.liquid" %}
 {% raw %}
-```liquid
+```liquid {data-file="src/_includes/fontFace.liquid" data-copyable=true}
 {%- assign allFonts = fonts | values -%}
 {%- for font in allFonts -%}
   {%- assign weights = font.weights | values -%}
@@ -275,9 +270,8 @@ Given our font config, this will produce the following `@font-face` declarations
 
 We can now head over to our base layout and inline the CSS string we just created:
 
-{% include codeHeader.html file: "src/_layouts/default.html" %}
 {% raw %}
-```html
+```html {data-file="src/_layouts/default.html" data-copyable=true}
 <head>
   {%- capture fontCss -%}
     {%- include fontFace.liquid -%}
@@ -307,9 +301,8 @@ eleventyConfig.addFilter('compileAndMinifyCss', compileAndMinifyCss);
 
 If you're not using Sass, you could install any other package that can be used to minify CSS, like [clean-css](https://www.npmjs.com/package/clean-css). Either way, you'll want to use your newly created filter to transform the font CSS string:
 
-{% include codeHeader.html file: "src/_layouts/default.html" %}
 {% raw %}
-```html
+```html {data-file="src/_layouts/default.html" data-copyable=true}
 <head>
   {%- capture fontCss -%}
     {%- include fontFace.liquid -%}
@@ -323,16 +316,14 @@ If you're not using Sass, you could install any other package that can be used t
 
 Now comes the fun part: Using our same font config, we can create yet another include that loops over all of the fonts and generates CSS custom properties for the font families and weights. Before doing that, just like before, we'll want to add one more filter to help us out:
 
-{% include codeHeader.html file: ".eleventy.js" %}
-```js
+```js {data-file=".eleventy.js" data-copyable=true}
 eleventyConfig.addFilter('entries', Object.entries);
 ```
 
 We'll use it like so to get the font config entries:
 
-{% include codeHeader.html file: "src/_includes/fontVariables.liquid" %}
 {% raw %}
-```liquid
+```liquid {data-file="src/_includes/fontVariables.liquid" data-copyable=true}
 {%- assign allFonts = fonts | entries -%}
 ```
 {% endraw %}
@@ -354,9 +345,8 @@ For the example fonts used in this tutorial, that will produce this array:
 
 Now, we'll loop over all of the entries and generate custom properties for the font families and weights:
 
-{% include codeHeader.html file: "src/_includes/fontVariables.liquid" %}
 {% raw %}
-```liquid
+```liquid {data-file="src/_includes/fontVariables.liquid" data-copyable=true}
 html {
   {%- for font in allFonts -%}
     {%- assign fontType = font | first -%}
@@ -398,9 +388,8 @@ From this point onward, we'll never need to update our CSS again whenever we cha
 
 If you're using Sass, I also recommend setting up a mixin to make your life a little easier:
 
-{% include codeHeader.html file: "mixins.scss" %}
 {% raw %}
-```scss
+```scss {data-file="mixins.scss" data-copyable=true}
 @mixin font($family, $weight) {
   font-family: var(--font-family-#{$family});
   font-weight: var(--font-weight-#{$family}-#{$weight});
@@ -422,9 +411,8 @@ This does require keeping your mixin in sync with your chosen naming format for 
 
 Just like before, we'll want to go back to our base layout and add the new include as part of the overall CSS string that gets compiled and minified in the head:
 
-{% include codeHeader.html file: "src/_layouts/default.html" %}
 {% raw %}
-```html
+```html {data-file="src/_layouts/default.html" data-copyable=true}
 <head>
   {%- capture fontCss -%}
     {%- include fontFace.liquid -%}

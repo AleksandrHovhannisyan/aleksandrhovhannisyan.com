@@ -32,8 +32,7 @@ This section is a bit of a recap on how to use the GitHub Issues API to add comm
 
 First, you'll need a public repo for your comments. Add this variable to your `_config.yml`:
 
-{% include codeHeader.html file: "_config.yml" %}
-```yml
+```yml {data-file="_config.yml" data-copyable=true}
 issues_repo: YourUsername/RepoName
 ```
 
@@ -47,16 +46,14 @@ If a particular blog post needs comments, open an issue for it in that repo and 
 
 Add the following front matter variable to the blog post for which you want to enable comments; assign it the ID from above:
 
-{% include codeHeader.html file: "_posts/2020-07-07-my-post.md" %}
-```markdown
+```markdown {data-file="_posts/2020-07-07-my-post.md" data-copyable=true}
 comments_id: 35
 ```
 
 In your `post.html` layout file, check to see if this front matter variable was specified. If it wasn't, then the comment system is turned off for that particular post. If it was defined, then we'll want to include a file containing our HTML and JavaScript for the comment system:
 
-{% include codeHeader.html file: "_layouts/post.html" %}
 {% raw %}
-```liquid
+```liquid {data-file="_layouts/post.html" data-copyable=true}
 {% if page.comments_id %}
   {% include comments.html issue_id=page.comments_id %}
 {% endif %}
@@ -65,9 +62,8 @@ In your `post.html` layout file, check to see if this front matter variable was 
 
 And here's the include file itself (or at least part of it—we'll fill in the script shortly):
 
-{% include codeHeader.html file: "_includes/comments.html" %}
 {% raw %}
-```html
+```html {data-file="_includes/comments.html" data-copyable=true}
 {% assign issues_repo = site.issues_repo %}
 {% assign issue_id = include.issue_id %}
 
@@ -104,9 +100,8 @@ Time to start writing some JavaScript!
 
 First, we'll create some variables up at the top to reference a few of the elements on the page:
 
-{% include codeHeader.html file: "_includes/comments.html" %}
 {% raw %}
-```html
+```html {data-file="_includes/comments.html" data-copyable=true}
 <script>
   const commentsSection = document.getElementById('comments');
   const commentsWrapper = commentsSection.querySelector('#comments-wrapper');
@@ -127,8 +122,7 @@ If you load the comment system every time a user visits one of your blog posts, 
 
 To detect when a user has scrolled to the end of the page, we'll use the widely supported [IntersectionObserver API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API). Here's all the code that we need to defer loading the comments section:
 
-{% include codeHeader.html file: "_includes/comments.html" %}
-```javascript
+```javascript {data-file="_includes/comments.html" data-copyable=true}
 const commentsObserver = new IntersectionObserver((entries, self) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
@@ -145,9 +139,8 @@ The observer checks to see if it's intersecting with the `commentsSection` eleme
 
 Here's the `fetchComments` function that fires when an intersection occurs:
 
-{% include codeHeader.html file: "_includes/comments.html" %}
 {% raw %}
-```javascript
+```javascript {data-file="_includes/comments.html" data-copyable=true}
 const fetchComments = async () => {
   try {
     const comments = await (await fetch(
@@ -198,8 +191,7 @@ There are two approaches you can take to defer loading your dependencies: using 
 
 My site currently takes the first approach. However, to keep this post accessible to most readers, I'll take the second approach since not everyone is using Webpack to bundle their JavaScript. We'll create `script` elements, set their `src` attributes, and append them to the DOM body. Here's a function that'll do that for us, given a `src`:
 
-{% include codeHeader.html file: "_includes/comments.html" %}
-```javascript
+```javascript {data-file="_includes/comments.html" data-copyable=true}
 const loadScript = (src) => {
   const scriptElement = document.createElement('script');
   document.body.appendChild(scriptElement);
@@ -217,8 +209,7 @@ This function creates a script element and registers an `onload` listener for it
 
 Now, we'll need some way to hold off on rendering comments until *all* of the dependencies have loaded. To do that, we'll use a simple array of scripts to load and take advantage of [`Promise.all`](/blog/javascript-promise-all/), together with the async function we just wrote:
 
-{% include codeHeader.html file: "_includes/comments.html" %}
-```javascript
+```javascript {data-file="_includes/comments.html" data-copyable=true}
 const commentScripts = [
   'https://unpkg.com/marked@0.3.6/marked.min.js',
   'https://unpkg.com/dompurify@1.0.8/dist/purify.min.js',
@@ -255,9 +246,8 @@ Before we move on, I want to reiterate: If all of this seems weird and hacky, th
 
 We've loaded all of our dependencies, either using Promises like I showed above or with dynamic imports and a module bundler that can load the chunks at runtime. Now that our dependencies are ready to use, the only task that remains is actually rendering the comments:
 
-{% include codeHeader.html file: "_includes/comments.html" %}
 {% raw %}
-```javascript
+```javascript {data-file="_includes/comments.html" data-copyable=true}
 const renderComments = (comments) => {
   // load the relativeTime plugin for dayjs so we can express dates relative to now
   dayjs.extend(dayjs_plugin_relativeTime);

@@ -19,8 +19,7 @@ Layout components are a good real-world use case for this—they might apply som
 
 To keep this tutorial simple, I'll create a pointless demo component:
 
-{% include codeHeader.html file: "components/Component/index.tsx" %}
-```tsx
+```tsx {data-file="components/Component/index.tsx" data-copyable=true}
 import { FC } from 'react';
 interface ComponentProps {}
 const Component: FC<ComponentProps> = (props) => <div {...props} />;
@@ -30,8 +29,7 @@ You *could* always render a `div`, but that's inflexible—it may work well for 
 
 To fix this, you can use the [`ElementType` type](https://flow.org/en/docs/react/types/#toc-react-elementtype) to allow passing in a tag name as a prop:
 
-{% include codeHeader.html file: "components/Component/index.tsx" %}
-```tsx
+```tsx {data-file="components/Component/index.tsx" data-copyable=true}
 import { ElementType, HTMLAttributes, FC } from 'react';
 
 interface ComponentProps extends HTMLAttributes<HTMLOrSVGElement> {
@@ -53,8 +51,7 @@ First, [React expects component names to be capitalized](https://reactjs.org/doc
 
 Second, our component renders a `div` by default. We do this with destructuring and default assignment in the component's signature. But you can override this behavior by passing in a custom tag name on an as-needed basis:
 
-{% include codeHeader.html file: "components/Navbar/index.tsx" %}
-```tsx
+```tsx {data-file="components/Navbar/index.tsx" data-copyable=true}
 import Component from 'components/Component';
 import { FC } from 'react';
 

@@ -244,8 +244,7 @@ p {
 
 To set defaults for the min and max breakpoints, we'll start by creating a map for our media breakpoints and importing some Sass namespaces (only needed if you're using Dart Sass):
 
-{% include codeHeader.html file: "_functions.scss" %}
-```scss
+```scss {data-file="_functions.scss" data-copyable=true}
 @use "sass:math";
 @use "sass:map";
 
@@ -258,8 +257,7 @@ $media-breakpoints: (
 
 Next, we'll create our Sass function and set the default min and max breakpoints to mobile and desktop, respectively. That way, we can pass in overrides on a case-by-case basis but fall back to the logic of "min equals mobile" and "max equals desktop."
 
-{% include codeHeader.html file: "_functions.scss" %}
-```scss
+```scss {data-file="_functions.scss" data-copyable=true}
 $default-min-bp: map.get($media-breakpoints, "mobile");
 $default-max-bp: map.get($media-breakpoints, "desktop");
 
@@ -270,8 +268,7 @@ $default-max-bp: map.get($media-breakpoints, "desktop");
 
 Now, we just need to find the slope and intercept of the equation representing the preferred value for clamp—the line between the min and max points. Here's the code for that bit:
 
-{% include codeHeader.html file: "_functions.scss" %}
-```scss
+```scss {data-file="_functions.scss" data-copyable=true}
 $slope: math.div($max-px - $min-px, $max-bp - $min-bp);
 $intercept-px: $min-px - $slope * $min-bp;
 $slope-vw: $slope * 100;
@@ -285,8 +282,7 @@ And that's all the information that we need! The final step is to return a vanil
 
 However, as I mentioned before, we don't want to use pixels for font sizing. To fix this, we can create another Sass function that can convert pixels to rems (maybe you already have one in your code base):
 
-{% include codeHeader.html file: "_functions.scss" %}
-```scss
+```scss {data-file="_functions.scss" data-copyable=true}
 @function to-rems($px) {
   $rems: math.div($px, 16px) * 1rem;
   @return $rems;
@@ -295,8 +291,7 @@ However, as I mentioned before, we don't want to use pixels for font sizing. To 
 
 And we'll use it to convert all of our pixels to rems. Here's the final code:
 
-{% include codeHeader.html file: "_functions.scss" %}
-```scss
+```scss {data-file="_functions.scss" data-copyable=true}
 @function clamped($min-px, $max-px, $min-bp: $default-min-bp, $max-bp: $default-max-bp) {
   $slope: math.div($max-px - $min-px, $max-bp - $min-bp);
   $slope-vw: $slope * 100;
@@ -309,8 +304,7 @@ And we'll use it to convert all of our pixels to rems. Here's the final code:
 
 Finally, note that depending on what values you pass into this function, you may get really long floating-point numbers. You can truncate them using a custom rounding function:
 
-{% include codeHeader.html file: "_functions.scss" %}
-```scss
+```scss {data-file="_functions.scss" data-copyable=true}
 @function rnd($number, $places: 0) {
   $n: 1;
   @if $places > 0 {
@@ -465,8 +459,7 @@ The good news is that the work is essentially cut out for us, especially if we m
 
 We'll start by creating the following variables:
 
-{% include codeHeader.html file: "_variables.scss" %}
-```scss
+```scss {data-file="_variables.scss" data-copyable=true}
 @use "sass:math";
 
 $type-base: 16px;
@@ -479,8 +472,7 @@ The `$type-steps` list contains the names of all of the steps in our type scale.
 
 Now, we'll loop over the modular steps and combine everything we've learned so far to programmatically generate font variables:
 
-{% include codeHeader.html file: "index.scss" %}
-```scss
+```scss {data-file="index.scss" data-copyable=true}
 html {
   @for $i from 1 through length($type-steps) {
     $step: list.nth($type-steps, $i);
@@ -562,24 +554,21 @@ The approach we just explored involves picking a minimum font size for the base 
 
 Instead, you may want the min and max font sizes to be independent. In that case, rather than specifying just a min font size and a single type scale, we actually need to have two separate sets of variables: one for the minimum (mobile) and another for the maximum (desktop). So whereas before we had just one base font size, now we'll need two: an explicit minimum and maximum font size.
 
-{% include codeHeader.html file: "_variables.scss" %}
-```scss
+```scss {data-file="_variables.scss" data-copyable=true}
 $type-base-min: 16px;
 $type-base-max: 19px;
 ```
 
 Similarly, we'll need a corresponding minimum and maximum type scale:
 
-{% include codeHeader.html file: "_variables.scss" %}
-```scss
+```scss {data-file="_variables.scss" data-copyable=true}
 $type-scale-min: 1.2;
 $type-scale-max: 1.333;
 ```
 
 And now, we'll adjust our loop to use these new variables for the min and max, respectively:
 
-{% include codeHeader.html file: "index.scss" %}
-```scss
+```scss {data-file="index.scss" data-copyable=true}
 html {
   @for $i from 1 through length($type-steps) {
     $step: list.nth($type-steps, $i);
