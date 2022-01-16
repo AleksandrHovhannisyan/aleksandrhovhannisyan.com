@@ -1,8 +1,9 @@
+@import "../functions";
 @import "../mixins";
 
 /* VS Code Dark Plus theme: https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vsc-dark-plus.css */
 
-$code-block-padding: 3.2rem;
+$code-block-padding: clamped(16px, 32px);
 
 pre[class*="language-"] {
   background: var(--color-code-background);
@@ -120,7 +121,7 @@ pre[data-line] {
 
   // Code blocks with a file name need a bit of top padding
   &.with-file-name + pre[class*="language-"] {
-    padding-top: 7.6rem;
+    padding-top: clamped(48px, 76px);
   }
 }
 
