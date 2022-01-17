@@ -27,6 +27,12 @@ button {
   letter-spacing: inherit;
 }
 
+picture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 img,
 video {
   height: auto;

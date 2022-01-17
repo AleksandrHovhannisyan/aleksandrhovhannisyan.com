@@ -1,5 +1,4 @@
 const Image = require('@11ty/eleventy-img');
-const { default: classNames } = require('classnames');
 const { outdent } = require('outdent');
 const path = require('path');
 const { escape } = require('lodash');
@@ -73,12 +72,17 @@ const imageShortcode = async (props) => {
   }, {});
 
   const { width, height } = formatSizes[baseFormat].largest;
+
+  const pictureAttributes = stringifyAttributes({
+    ...(className ? { class: className } : {}),
+  });
+
   const imgAttributes = stringifyAttributes({
     width,
     height,
     src: formatSizes[baseFormat].largest.url,
     alt: escape(alt),
-    class: classNames('lazy-img', imgClass),
+    ...(imgClass ? { class: imgClass } : {}),
     ...(lazy ? { loading: 'lazy' } : {}),
     decoding: 'async',
   });
@@ -102,7 +106,7 @@ const imageShortcode = async (props) => {
     .join('\n');
 
   // Custom image markup
-  const picture = `<picture class="${classNames('lazy-picture', className)}">
+  const picture = `<picture ${pictureAttributes}>
     ${sourceHtmlString}
     <img ${imgAttributes}>
   </picture>`;
