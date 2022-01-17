@@ -35,7 +35,7 @@ Suppose we have an input that accepts an even integer from `2` to `10`, inclusiv
 <input id="input" type="number" min="2" max="10" step="2">
 ```
 
-Certain input attributes prevent a user from ever entering disallowed values. For example, `type="number"` prevents a user from entering text. By contrast, while the `min`, `max`, and `step` attributes define constraints for value, the input doesn't actually enforce those requirements because a user can still go in and manually input an invalid value, like `11`. In its current state, this input won't provide any feedback to the user to indicate that the value they entered is not allowed because the input isn't part of a submittable form.
+Certain input attributes prevent a user from ever entering disallowed values. For example, `type="number"` prevents a user from entering text. By contrast, while the `min`, `max`, and `step` attributes define constraints for the value, the input doesn't actually enforce those requirements because a user can still go in and manually input an invalid value, like `11`. In its current state, this input won't provide any feedback to the user to indicate that the value they entered is not allowed because the input isn't part of a submittable form.
 
 Fortunately, we can still validate this input ourselves using very little JavaScript. Every HTML input element has a [`checkValidity` method](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/checkValidity) that returns `true` if the input's current value passes validation and `false` otherwise:
 
