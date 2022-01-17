@@ -85,13 +85,13 @@
 }
 
 @mixin focus-outline($color: currentColor, $style: solid, $thickness: 0.2rem, $offset: 0) {
-  &:focus {
-    outline: none;
-  }
-
   &:focus-visible {
     outline: $style $thickness $color;
     outline-offset: $offset;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
   }
 }
 
