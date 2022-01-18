@@ -41,5 +41,7 @@ a.pill {
     background-color: var(--pill-bg-color-focus);
     color: var(--color-text-inverted);
   }
-  @include focus-outline($color: var(--pill-bg-color-focus), $offset: 0.2rem);
+
+  --outline-color: var(--pill-bg-color-focus);
+  --outline-offset: var(--outline-thickness);
 }

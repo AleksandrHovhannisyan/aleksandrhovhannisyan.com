@@ -46,9 +46,9 @@
   }
 
   &-branding {
+    --outline-offset: var(--outline-thickness);
     display: none;
     color: inherit;
-    @include focus-outline($color: white, $offset: 0.4rem);
   }
 
   &-links {
@@ -95,7 +95,9 @@
   position: relative;
   transform: scale(0.711);
   transform-style: preserve-3d;
-  @include focus-outline($color: white, $offset: 0.4rem);
+
+  --outline-offset: 0.4rem;
+  --outline-color: white;
 
   &-base {
     position: absolute;

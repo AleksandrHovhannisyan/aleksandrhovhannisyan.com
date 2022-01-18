@@ -65,3 +65,22 @@ table {
   overflow-x: auto;
   display: block;
 }
+
+// https://css-tricks.com/standardizing-focus-styles-with-css-custom-properties/
+a,
+button,
+input,
+textarea {
+  --outline-thickness: 0.3rem;
+  --outline-style: solid;
+  --outline-color: currentColor;
+
+  &:focus {
+    outline: var(--outline-thickness) var(--outline-style) var(--outline-color);
+    outline-offset: var(--outline-offset, 0);
+
+    &:not(:focus-visible) {
+      outline: none;
+    }
+  }
+}
