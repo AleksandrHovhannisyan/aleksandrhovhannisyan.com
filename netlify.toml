@@ -8,13 +8,13 @@
     cache_img_httpHeader = false
 
 [dev]
-  command = "yarn serve"
+  command = "npm run serve"
   targetPort = 4001
   publish = "_site/"
 
 [build]
   publish = "_site/"
-  command = "yarn build"
+  command = "npm run build"
 
 [functions]
   directory = "./api"
