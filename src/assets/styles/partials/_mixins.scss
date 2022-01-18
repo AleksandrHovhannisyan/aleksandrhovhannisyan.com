@@ -8,7 +8,7 @@
 
 @mixin centered {
   /* stylelint-disable-next-line scss/no-global-function-names */
-  --padding: min(4vw, 2.4rem);
+  --padding: min(4vw, 1.2rem);
 
   // why not just use content-box? because it creates overflow issues on mobile with width: 100% below
   max-width: calc(var(--page-max-width) + 2 * var(--padding));
