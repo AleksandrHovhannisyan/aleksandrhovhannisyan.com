@@ -34,7 +34,7 @@ I have experience with a few different stacks—I've done a bit of desktop, mobi
     </li>
   {%- endfor -%}
   <li class="project-wrapper github-cta">
-    <h3 class="github-cta-heading font-base">Want to see more of my work?</h3>
+    <h3 class="github-cta-heading fs-base">Want to see more of my work?</h3>
     <p class="github-cta-subheading">Check out my other repos:</p>
     <a
       aria-label="Aleksandr Hovhannisyan's GitHub profile."

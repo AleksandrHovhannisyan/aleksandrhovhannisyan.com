@@ -26,7 +26,7 @@ noindex: true
       {%- for step in steps -%}
         <tr>
           <td>{{ step }}</td>
-          <td class="font-{{ step }}" style="font-family: var(--ff-{{ family }});">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</td>
+          <td class="fs-{{ step }}" style="font-family: var(--ff-{{ family }});">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</td>
         </tr>
       {%- endfor -%}
     </tbody>
