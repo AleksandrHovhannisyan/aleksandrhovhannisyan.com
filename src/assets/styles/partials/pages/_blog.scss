@@ -28,11 +28,12 @@
     justify-content: center;
     background: var(--main-bg-color);
     color: var(--color-text-emphasis);
-    @include font($family: "main", $weight: "bold", $size: "md");
+    @include font-size("md");
+    @include font-weight("body", "bold");
   }
 
   .tag-count {
-    @include font($size: "xs");
+    @include font-size("xs");
   }
 
   .post-preview-grid {

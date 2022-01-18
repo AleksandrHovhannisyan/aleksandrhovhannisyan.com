@@ -55,7 +55,6 @@
 
   &-username {
     color: var(--color-text-emphasis);
-    @include font($family: "title", $weight: "bold");
     @include underlined-link;
   }
 
@@ -77,7 +76,7 @@
       white-space: pre-wrap;
     }
     @include headings {
-      @include font($size: "base");
+      @include font-size("base");
     }
   }
 }

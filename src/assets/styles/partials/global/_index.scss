@@ -14,7 +14,8 @@ body {
   background-color: var(--main-bg-color);
   color: var(--color-text-normal);
   padding-bottom: var(--navbar-height);
-  @include font($family: "body", $weight: "regular", $size: "base");
+  @include font-size("base");
+  @include font-weight("body", "regular");
   @include tablet {
     padding-bottom: unset;
   }
@@ -26,13 +27,12 @@ body {
   padding-bottom: var(--padding-y);
 }
 
-strong {
+strong,
+a {
   color: var(--color-text-emphasis);
-  @include font($family: "body", $weight: "bold");
 }
 
 a {
-  color: var(--color-text-emphasis);
   @include focus-outline;
 }
 

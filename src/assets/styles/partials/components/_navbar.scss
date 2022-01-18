@@ -19,7 +19,8 @@
   gap: 0.4rem;
   padding: 0 0.8rem;
   color: var(--navbar-text-color);
-  @include font($family: "title", $weight: "regular");
+  @include font-family("title");
+  @include font-weight("title", "regular");
 
   &-header {
     position: fixed;
@@ -47,7 +48,6 @@
   &-branding {
     display: none;
     color: inherit;
-    @include font($family: "title", $weight: "bold");
     @include focus-outline($color: white, $offset: 0.4rem);
   }
 

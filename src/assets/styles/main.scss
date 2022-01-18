@@ -1,9 +1,10 @@
-@import "partials/variables";
-@import "partials/components/navbar";
 @import "partials/global/reset";
-@import "partials/global/index";
-@import "partials/components/headings";
+@import "partials/global/typography";
 @import "partials/global/utils";
+@import "partials/global/index";
+@import "partials/variables";
+@import "partials/components/headings";
+@import "partials/components/navbar";
 @import "partials/pages/index";
 @import "partials/pages/blog";
 @import "partials/components/pill";

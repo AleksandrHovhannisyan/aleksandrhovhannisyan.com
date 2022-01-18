@@ -19,8 +19,6 @@ label {
   grid-template-columns: minmax(0, 1fr);
   gap: 0.4rem;
   align-items: center;
-  color: var(--color-text-emphasis);
-  @include font($family: "title", $weight: "bold");
 
   &[data-flow="horizontal"] {
     grid-auto-flow: column;

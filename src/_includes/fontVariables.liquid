@@ -6,18 +6,18 @@ html {
     {%- assign fontType = font | first -%}
     {%- assign fontConfig = font | last -%}
     {%- assign fallbackFonts = fontConfig.fallbacks | join: ", " -%}
-    --font-family-{{ fontType }}: {{ fontConfig.family }}, {{ fallbackFonts }};
+    --ff-{{ fontType }}: {{ fontConfig.family }}, {{ fallbackFonts }};
     {%- assign weights = fontConfig.weights | entries -%}
     {%- for weight in weights -%}
       {%- assign weightName = weight | first -%}
       {%- assign weightConfig = weight | last -%}
       {%- comment -%}Italic variants don't need their own weight variables.{%- endcomment -%}
       {%- if weightConfig.style != 'italic' -%}
-        --font-weight-{{ fontType }}-{{ weightName }}: {{ weightConfig.weight }};
+        --fw-{{ fontType }}-{{ weightName }}: {{ weightConfig.weight }};
       {%- endif -%}
     {%- endfor -%}
   {%- endfor -%}
-  --font-family-body: Georgia, serif;
-  --font-weight-body-regular: 400;
-  --font-weight-body-bold: 700;
+  --ff-body: Georgia, serif;
+  --fw-body-regular: 400;
+  --fw-body-bold: 700;
 }

@@ -27,15 +27,11 @@
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   word-spacing: 0.2rem;
-  @include font($size: "sm");
+  @include font-size("sm");
 }
 
-$font-size-steps: "xs", "sm", "base", "md", "lg", "xl", "xxl", "xxxl";
-
-@each $step in $font-size-steps {
-  .font-#{$step} {
-    @include font($size: $step);
-  }
+.heading {
+  @include heading;
 }
 
 // Until this gets fixed: https://bugs.chromium.org/p/chromium/issues/detail?id=1266022&q=emoji%20bold&can=2
