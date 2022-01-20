@@ -18,11 +18,11 @@ If you're not sure how to define aspect ratios in CSS, or if you have no clue wh
 
 An **aspect ratio** describes the relationship between an element's width and height and is expressed as a ratio, like `16:9` (or, equivalently, `16/9` in fractional notation). Below are examples of popular aspect ratios, rendered using plain HTML and CSS:
 
-<ul class="tiles">
-  <li class="tile aspect-ratio-1-1" data-ratio="1:1"></li>
-  <li class="tile aspect-ratio-4-3" data-ratio="4:3"></li>
-  <li class="tile aspect-ratio-3-2" data-ratio="3:2"></li>
-  <li class="tile aspect-ratio-16-9" data-ratio="16:9"></li>
+<ul class="demo-tiles">
+  <li class="demo-tile aspect-ratio-1-1" data-ratio="1:1"></li>
+  <li class="demo-tile aspect-ratio-4-3" data-ratio="4:3"></li>
+  <li class="demo-tile aspect-ratio-3-2" data-ratio="3:2"></li>
+  <li class="demo-tile aspect-ratio-16-9" data-ratio="16:9"></li>
 </ul>
 
 Intuitively, an aspect ratio of `w:h` says that an element has `w` units of width for every `h` units of height. For example, if an element has an aspect ratio of `16:9` and is `32` units wide, then we know that its height must be `18`. Squares are one of the best examples of this behavior—they have an aspect ratio of `1:1`, meaning their width and height are always the same.
@@ -103,7 +103,7 @@ With the boring stuff out of the way, we can look at some fun applications of as
 
 Let's say you want to embed a YouTube video on your page, and you know that [YouTube videos have an aspect ratio of `16:9`](https://support.google.com/youtube/answer/6375112). You don't want to give the iframe a *fixed* width and height—rather, you want its width to fill its container and for its height to scale responsively. Like this:
 
-<div class="tile aspect-ratio-16-9" data-ratio="Pretend this is a YouTube iframe" role="img" aria-label="A rectangular region of the page is shown in the shape roughly resembling a YouTube embed iframe. It always maintains a 16:9 aspect ratio."></div>
+<div class="demo-tile aspect-ratio-16-9" data-ratio="Pretend this is a YouTube iframe" role="img" aria-label="A rectangular region of the page is shown in the shape roughly resembling a YouTube embed iframe. It always maintains a 16:9 aspect ratio."></div>
 
 For both code samples, we'll work with this common markup:
 
@@ -162,15 +162,9 @@ With our knowledge of how to create aspect ratios in CSS, we can easily create a
 
 ```html {data-file="grid.html" data-copyable=true}
 <ul class="square-grid">
+  {%- for i in (1..9) %}
   <li class="square"></li>
-  <li class="square"></li>
-  <li class="square"></li>
-  <li class="square"></li>
-  <li class="square"></li>
-  <li class="square"></li>
-  <li class="square"></li>
-  <li class="square"></li>
-  <li class="square"></li>
+  {%- endfor %}
 </ul>
 ```
 
@@ -185,16 +179,10 @@ With our knowledge of how to create aspect ratios in CSS, we can easily create a
 
 Once again, we can take one of two approaches, depending on which browsers we need to support. Either way, we'll get the same 3x3 square grid in the end:
 
-<ul class="square-grid" aria-hidden="true">
-  <li class="square"></li>
-  <li class="square"></li>
-  <li class="square"></li>
-  <li class="square"></li>
-  <li class="square"></li>
-  <li class="square"></li>
-  <li class="square"></li>
-  <li class="square"></li>
-  <li class="square"></li>
+<ul class="demo-square-grid" aria-hidden="true">
+  {% for i in (1..9) %}
+  <li></li>
+  {% endfor %}
 </ul>
 
 #### Modern Approach
@@ -228,16 +216,16 @@ One of the more common use cases you'll run into is creating a square image grid
 
 Regardless of which approach you take, you'll get a `3x3` grid of images that are perfectly centered to a `1:1` (square) aspect ratio. Images that are too big will be cropped and centered:
 
-<ol class="square-grid" aria-hidden="true">
-  <li class="square">{% include img.html src: "puppy.png", alt: "", clickable: false %}</li>
-  <li class="square">{% include img.html src: "puppy.png", alt: "", clickable: false %}</li>
-  <li class="square">{% include img.html src: "puppy.png", alt: "", clickable: false %}</li>
-  <li class="square">{% include img.html src: "kitten.png", alt: "", clickable: false %}</li>
-  <li class="square">{% include img.html src: "kitten.png", alt: "", clickable: false %}</li>
-  <li class="square">{% include img.html src: "kitten.png", alt: "", clickable: false %}</li>
-  <li class="square">{% include img.html src: "parakeet.png", alt: "", clickable: false %}</li>
-  <li class="square">{% include img.html src: "parakeet.png", alt: "", clickable: false %}</li>
-  <li class="square">{% include img.html src: "parakeet.png", alt: "", clickable: false %}</li>
+<ol class="demo-square-grid" aria-hidden="true">
+  {% for i in (1..3) %}
+  <li class="demo-square">{% include img.html src: "puppy.png", alt: "", clickable: false %}</li>
+  {% endfor %}
+  {% for i in (1..3) %}
+  <li class="demo-square">{% include img.html src: "kitten.png", alt: "", clickable: false %}</li>
+  {% endfor %}
+  {% for i in (1..3) %}
+  <li class="demo-square">{% include img.html src: "parakeet.png", alt: "", clickable: false %}</li>
+  {% endfor %}
 </ol>
 
 #### Modern Approach
@@ -336,9 +324,9 @@ Thus, for flex and grid items, you can think of the containing block as an invis
 
 We can prove this in a simple experiment with two grid items that have the same aspect ratio but whose formatting contexts have different widths, per the `grid-template-columns` property:
 
-<ul class="grid" aria-label="A grid of two items, one of which is 1fr and the other is 2fr">
-  <li class="tile aspect-ratio-16-9" data-ratio="16:9"></li>
-  <li class="tile aspect-ratio-16-9" data-ratio="16:9"></li>
+<ul class="demo-grid" aria-label="A grid of two items, one of which is 1fr and the other is 2fr">
+  <li class="demo-tile aspect-ratio-16-9" data-ratio="16:9"></li>
+  <li class="demo-tile aspect-ratio-16-9" data-ratio="16:9"></li>
 </ul>
 
 If the formatting context for grid items were the grid parent itself, then the two items would have the same padding-based height. But they don't because each item has its own formatting context.
@@ -424,10 +412,10 @@ body {
 
 The result is shown below, with some additional CSS to make things prettier and easier to identify. Using your dev tools, you can verify that the child `<div>` has a padding of `20px`, which is precisely `10%` of the containing block's height (`200px`):
 
-<div class="document" aria-hidden="true">
-  <div class="parent">
+<div class="demo-document" aria-hidden="true">
+  <div class="demo-parent">
   Parent (200px tall)
-  <div class="child">
+  <div class="demo-child">
     Child
   </div>
   </div>
@@ -454,23 +442,21 @@ Hopefully, you now have a better understanding of how to define responsive aspec
 {% include unsplashAttribution.md name: "Rumman Amin", username: "rumanamin", photoId: "5zoLQUZaWgA" %}
 
 <style>
-  .post-content .tiles {
+  .demo-tiles {
     display: grid;
     padding: 0;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    row-gap: 1.6rem;
-    column-gap: 1.6rem;
+    gap: 1.6rem;
   }
-  .post-content .tile {
+  .demo-tile {
     position: relative;
-    height: 0;
     background-color: var(--pill-bg-color);
     color: var(--color-text-emphasis);
     font-weight: var(--fw-bold);
     list-style: none;
     border-radius: 0.4rem;
   }
-  .post-content .tile::after {
+  .demo-tile::after {
     position: absolute;
     left: 0;
     top: 0;
@@ -482,18 +468,18 @@ Hopefully, you now have a better understanding of how to define responsive aspec
     justify-content: center;
   }
   .aspect-ratio-1-1 {
-    padding-bottom: 100%;
+    aspect-ratio: 1;
   }
   .aspect-ratio-4-3 {
-    padding-bottom: 75%;
+    aspect-ratio: 4/3;
   }
   .aspect-ratio-3-2 {
-    padding-bottom: 66.67%;
+    aspect-ratio: 3/2;
   }
   .aspect-ratio-16-9 {
-    padding-bottom: 56.25%;
+    aspect-ratio: 16/9;
   }
-  .post-content .square-grid {
+  .demo-square-grid {
     --gap: 1.6rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -502,31 +488,24 @@ Hopefully, you now have a better understanding of how to define responsive aspec
     list-style: none;
     padding: 0;
   }
-  .post-content .square {
-    height: 0;
-    padding-bottom: 100%;
+  .demo-square-grid > * {
+    aspect-ratio: 1;
     background-color: var(--pill-bg-color);
     color: var(--color-text-emphasis);
     position: relative;
   }
-  .square * {
-    position: absolute;
-    top: 0;
-    left: 0;
+  .demo-square * {
     width: 100%;
     height: 100%;
-  }
-  .square img,
-  .square source {
     object-fit: cover;
     object-position: center;
   }
-  .document {
+  .demo-document {
     writing-mode: vertical-rl;
     width: 100%;
     height: 200px;
   }
-  .parent {
+  .demo-parent {
     width: 100%;
     display: flex;
     align-items: center;
@@ -536,12 +515,12 @@ Hopefully, you now have a better understanding of how to define responsive aspec
     color: white;
     height: 100%;
   }
-  .child {
+  .demo-child {
     padding: 10%;
     background-color: white;
     color: black;
   }
-  .post-content .grid {
+  .demo-grid {
     padding: 0;
     display: grid;
     grid-template-columns: 1fr 2fr;
