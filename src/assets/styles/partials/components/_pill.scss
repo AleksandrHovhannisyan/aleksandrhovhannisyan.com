@@ -11,7 +11,8 @@
   align-items: center;
   background-color: var(--pill-bg-color);
   color: var(--color-text-emphasis);
-  @include font($family: "code");
+  @include font-family("code");
+  @include font-weight("code", "regular");
 
   &[data-shape="round"] {
     border-radius: 4.8rem;
@@ -19,18 +20,18 @@
 
   &[data-size="sm"] {
     padding: 0.4rem 1.4rem;
-    @include font($size: "sm");
+    @include font-size("sm");
   }
 
   &[data-size="xs"] {
     padding: 0.2rem 1rem;
-    font-weight: var(--font-weight-medium);
-    @include font($size: "xs");
+    @include font-size("xs");
+    @include font-weight("code", "medium");
   }
 
   &-count {
-    font-size: var(--font-size-xs);
-    @include font($family: "code", $weight: "medium");
+    @include font-size("xs");
+    @include font-weight("code", "medium");
   }
 }
 
@@ -40,5 +41,7 @@ a.pill {
     background-color: var(--pill-bg-color-focus);
     color: var(--color-text-inverted);
   }
-  @include focus-outline($color: var(--pill-bg-color-focus), $offset: 0.2rem);
+
+  --outline-color: var(--pill-bg-color-focus);
+  --outline-offset: var(--outline-thickness);
 }

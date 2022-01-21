@@ -51,9 +51,9 @@
   }
 
   &-link {
+    --outline-offset: var(--outline-thickness);
     color: var(--navbar-text-color);
     display: flex;
-    @include focus-outline($offset: 0.4rem);
     @include underlined-link($initially-underlined: false);
   }
   @include tablet {

@@ -17,8 +17,4 @@
 thead {
   background-color: var(--table-header-bg-color);
   color: var(--color-text-emphasis);
-
-  th {
-    @include font($family: "title", $weight: "bold");
-  }
 }

@@ -1,0 +1,46 @@
+@use "sass:list";
+@use "sass:math";
+
+@import "../mixins";
+@import "../functions";
+
+$type-base-min: 16px;
+$type-base-max: 19.2px;
+$type-scale-min: 1.17;
+$type-scale-max: 1.2;
+$type-steps: "xs", "sm", "base", "md", "lg", "xl", "xxl", "xxxl";
+$type-base-index: list.index($type-steps, "base");
+
+html {
+  @for $i from 1 through length($type-steps) {
+    $step: list.nth($type-steps, $i);
+    $power: $i - $type-base-index;
+    $min: rnd($type-base-min * math.pow($type-scale-min, $power), 2);
+    $max: rnd($type-base-max * math.pow($type-scale-max, $power), 2);
+    /* stylelint-disable-next-line custom-property-pattern */
+    --fs-#{$step}: #{clamped($min, $max)};
+  }
+}
+
+@each $step in $type-steps {
+  .fs-#{$step} {
+    @include font-size($step);
+  }
+}
+
+strong {
+  @include font-family("body");
+  @include font-weight("body", "bold");
+}
+
+:is(h1, h2, h3, h4, h5, h6, label, th) {
+  color: var(--color-text-emphasis);
+  @include heading;
+}
+
+button,
+.button,
+figcaption {
+  @include font-family("title");
+  @include font-weight("title", "regular");
+}

@@ -2,10 +2,11 @@
 
 code {
   font-size: 0.82em;
-  @include font($family: "code", $weight: "medium");
+  @include font-family("code");
+  @include font-weight("code", "medium");
 
-  strong & {
-    @include font($family: "code", $weight: "bold");
+  :is(strong, h1, h2, h3, h4, h5, h6) & {
+    @include font-weight("code", "bold");
   }
 }
 

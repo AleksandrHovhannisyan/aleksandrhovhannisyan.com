@@ -9,13 +9,12 @@ figure {
 figcaption {
   max-width: 70ch;
   margin: 0 auto;
-  @include font($family: "title", $weight: "regular");
 }
 
 figcaption,
 cite {
   text-align: center;
-  @include font($size: "sm");
+  @include font-size("sm");
 
   &,
   a {

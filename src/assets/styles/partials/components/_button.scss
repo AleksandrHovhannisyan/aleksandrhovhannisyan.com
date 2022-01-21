@@ -1,9 +1,10 @@
 @import "../mixins";
 
 .button {
+  --outline-offset: var(--outline-thickness);
+  --outline-color: var(--button-bg-color);
   background-color: var(--button-bg-color);
   color: var(--color-text-inverted);
-  @include font($family: "title", $weight: "regular");
 
   &:is(:focus, :hover) {
     background-color: var(--button-bg-color-focus);

@@ -4,7 +4,7 @@
     <a href="{{ post.url }}" aria-hidden="true" tabindex="-1" class="post-preview-thumbnail-container">
       {%- include thumbnail.html post: post -%}
     </a>
-    <h{{ titleLevel }} class="post-preview-title font-md">
+    <h{{ titleLevel }} class="post-preview-title fs-md">
       <a class="post-preview-link" href="{{ post.url }}">{{ post.data.title }}</a>
     </h{{ titleLevel }}>
     <p class="post-preview-description">{{- post.data.description -}}</p>

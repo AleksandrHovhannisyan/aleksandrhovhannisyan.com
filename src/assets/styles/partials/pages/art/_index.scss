@@ -11,7 +11,8 @@
     max-width: fit-content;
     margin: 0 auto 1.6rem;
     position: relative;
-    @include font($family: "cursiveTitle", $weight: "regular");
+    @include font-family("cursiveTitle");
+    @include font-weight("cursiveTitle", "regular");
 
     &::after {
       @keyframes subtitle-pulse {
@@ -32,7 +33,9 @@
       left: 0;
       animation: subtitle-pulse 1s ease infinite alternate-reverse;
       will-change: transform;
-      @include font($family: "cursiveBody", $weight: "regular", $size: "md");
+      @include font-size("md");
+      @include font-family("cursiveBody");
+      @include font-weight("cursiveBody", "regular");
       @include mobile-lg {
         @keyframes subtitle-pulse {
           from {
@@ -101,7 +104,7 @@
     line-height: 1.2;
     font-size: 2.4rem;
     will-change: transform, opacity;
-    @include font($family: "cursiveBody");
+    @include font-family("cursiveBody");
     @include transition(opacity, transform);
   }
 

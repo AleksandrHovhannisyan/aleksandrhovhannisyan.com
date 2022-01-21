@@ -44,7 +44,6 @@
   button[type="submit"] {
     border-radius: 0.2rem;
     padding: 1.6rem;
-    @include focus-outline($color: var(--button-bg-color-focus), $offset: 0.2rem);
   }
 
   &-socials {
@@ -81,10 +80,6 @@
       background-color: var(--hover-bg-color);
       cursor: pointer;
       color: var(--color-text-emphasis);
-    }
-
-    &-name {
-      @include font($family: "body", $weight: "regular");
     }
   }
 }

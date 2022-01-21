@@ -5,7 +5,7 @@
   top: 50%;
   transform: translate(0.8rem, -50%);
   padding: 0.8rem;
-  color: var(--navbar-text-color);
+  color: inherit;
   z-index: z-index("navbar") + 1;
 }
 
@@ -18,7 +18,9 @@
   justify-content: space-between;
   gap: 0.4rem;
   padding: 0 0.8rem;
-  @include font($family: "title", $weight: "regular");
+  color: var(--navbar-text-color);
+  @include font-family("title");
+  @include font-weight("title", "regular");
 
   &-header {
     position: fixed;
@@ -27,6 +29,7 @@
     width: 100%;
     display: flex;
     align-items: center;
+    padding-block: clamped(8px, 16px);
     background-color: var(--navbar-bg-color);
     box-shadow: var(--navbar-box-shadow);
     min-height: var(--navbar-height);
@@ -40,18 +43,15 @@
 
   &-site-name {
     display: none;
-    color: var(--navbar-text-color);
   }
 
   &-branding {
-    flex-shrink: 0;
+    --outline-offset: var(--outline-thickness);
     display: none;
-    @include font($family: "title", $weight: "bold");
-    @include focus-outline($color: white, $offset: 0.4rem);
+    color: inherit;
   }
 
   &-links {
-    background-color: var(--navbar-bg-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -71,7 +71,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    color: var(--navbar-text-color);
+    color: inherit;
   }
 }
 
@@ -95,7 +95,9 @@
   position: relative;
   transform: scale(0.711);
   transform-style: preserve-3d;
-  @include focus-outline($color: white, $offset: 0.4rem);
+
+  --outline-offset: 0.4rem;
+  --outline-color: white;
 
   &-base {
     position: absolute;
@@ -222,7 +224,7 @@
     }
   }
 }
-@include tablet {
+@include tablet-sm {
   .navbar {
     justify-content: space-between;
     @include centered;
@@ -248,8 +250,6 @@
     }
 
     &-link {
-      border-radius: 0.4rem;
-
       &.home {
         display: none;
       }

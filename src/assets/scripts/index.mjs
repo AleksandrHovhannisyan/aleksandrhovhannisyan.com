@@ -17,7 +17,7 @@ copyableCodeBlocks.forEach((codeBlock) => {
   const code = codeBlock.innerText;
 
   const copyCodeButton = document.createElement('button');
-  copyCodeButton.className = 'copy-code-button font-sm';
+  copyCodeButton.className = 'copy-code-button fs-sm';
   copyCodeButton.setAttribute('aria-label', 'Copy code to clipboard');
   copyCodeButton.type = 'button';
   codeBlock.append(copyCodeButton);

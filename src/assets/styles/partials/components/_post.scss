@@ -36,7 +36,7 @@
     padding: 0.6rem 1.2rem;
 
     &-count {
-      font-size: var(--font-size-xs);
+      @include font-size("xs");
     }
   }
 
@@ -50,7 +50,7 @@
     #skip-toc {
       transform: translateY(-50%);
       padding: 0.2rem 0.8rem;
-      @include font($family: "body", $weight: "bold");
+      @include font-weight("body", "bold");
     }
 
     .toc-list {

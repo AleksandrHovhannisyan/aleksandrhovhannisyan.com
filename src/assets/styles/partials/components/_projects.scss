@@ -21,7 +21,7 @@
     color: var(--color-text-emphasis);
     background-color: var(--card-bg-color);
     @include transition(opacity);
-    @include font($family: "title", $weight: "bold", $size: "md");
+    @include font-size("md");
   }
 
   &-grid {
@@ -84,7 +84,7 @@
   &-technology {
     border-radius: 0.2rem;
     padding: 0.4rem 1.2rem;
-    @include font($size: "xs");
+    @include font-size("xs");
   }
 }
 

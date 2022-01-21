@@ -94,7 +94,7 @@
 
     &-date,
     &-tags {
-      @include font($size: "sm");
+      @include font-size("sm");
     }
   }
 }

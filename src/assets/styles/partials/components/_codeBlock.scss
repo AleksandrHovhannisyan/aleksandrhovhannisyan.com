@@ -38,7 +38,9 @@ pre[class*="language-"] {
         color: var(--color-code-text);
         word-break: break-all;
         padding: $code-block-padding $code-block-padding 0;
-        @include font($family: "title", $weight: "bold", $size: "sm");
+        @include font-family("title");
+        @include font-weight("title", "bold");
+        @include font-size("sm");
       }
     }
   }
@@ -137,7 +139,6 @@ pre[class*="language-bash"] {
   background-color: var(--color-code-overlay-1);
   padding: 0.6rem 1.6rem;
   border-radius: 0.4rem;
-  @include font($family: "title");
 
   &::before {
     content: "Copy";

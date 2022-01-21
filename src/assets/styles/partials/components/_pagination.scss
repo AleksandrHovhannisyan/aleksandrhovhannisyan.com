@@ -10,6 +10,6 @@
   &-page {
     min-width: 3.2rem;
     justify-content: center;
-    font-weight: var(--font-weight-code-medium);
+    @include font-weight("code", "medium");
   }
 }
