@@ -5,7 +5,7 @@ keywords: [better css, modern css, fewer lines of css, css]
 categories: [css, clamp, css-grid, i18n, rtl, aspect-ratio, practices]
 thumbnail: thumbnail.png
 commentsId: 126
-lastUpdated: 2022-01-13
+lastUpdated: 2022-01-21
 ---
 
 CSS has come a long way since the early days of web development, when tables and various other hacks were used for layout and positioning. Today's developers can enjoy writing CSS that works in all major browsers, without having to bend over backwards to implement tricky layout requirements. Not only does this make it easier to create dynamic layouts, but it also allows you to ship smaller (and simpler) stylesheets by removing unnecessary cruft. In this article, we'll look at various scenarios where modern techniques can reduce the complexity of your code and allow you to write better CSS.
@@ -75,18 +75,18 @@ The `:is` pseudo-class function is even nicer in Sass since you don't need to re
 }
 ```
 
-Here's another real-world example: If you've ever tried writing CSS to customize a syntax highlighter like Prism (like for a blog), then you know that you typically need to scope the token selectors aggressively, like this:
+Finally, it's worth noting that while all of the examples so far looked at chaining `:is` to a base selector, you can actually just use `:is` on its own. For example, the following CSS uses `:is` to target the direct descendants of certain parent selectors:
 
 ```css
-.token.tag,
-.token.keyword,
-.token.someOtherThing {}
+:is(.parent1, .parent2, .parent3) > * {}
 ```
 
-In some cases, the list of modifier classes can be quite long, meaning you're shipping more CSS than you really need to. Fortunately, with the `:is` pseudo-class, we only need to repeat the root class once:
+Without `:is`, you'd end up repeating yourself quite a bit:
 
 ```css
-.token:is(.tag, .keyword, .someOtherThing) {}
+.parent1 > *,
+.parent2 > *,
+.parent3 > * {}
 ```
 
 ### `:is`, Specificity, and Forgiving Selectors
@@ -481,7 +481,7 @@ Prior to the introduction of the CSS `aspect-ratio` property, you'd typically us
 }
 ```
 
-Alternatively, you could use custom properties to keep the element's width and height in sync. The main disadvantage of this approach is that you cannot take advantage of responsive sizing since you're setting explicit dimensions:
+Alternatively, you could use custom properties to keep the element's width and height in sync. The main disadvantage of this approach is that you cannot use responsive sizing since you're setting explicit dimensions:
 
 ```css
 .square {
