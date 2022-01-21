@@ -67,10 +67,7 @@ table {
 }
 
 // https://css-tricks.com/standardizing-focus-styles-with-css-custom-properties/
-a,
-button,
-input,
-textarea {
+:is(a, button, input, textarea) {
   --outline-thickness: 0.3rem;
   --outline-style: solid;
   --outline-color: currentColor;
