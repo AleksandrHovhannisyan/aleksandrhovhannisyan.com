@@ -1,7 +1,7 @@
 @import "../mixins";
 
 .post-aside {
-  border-inline-start: 0.4rem solid;
+  border-inline-start: var(--sp--3) solid;
   padding: clamped(12px, 20px) clamped(16px, 24px);
   background-color: var(--aside-bg-color);
   color: var(--color-text-emphasis);

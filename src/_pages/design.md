@@ -40,7 +40,7 @@ noindex: true
 
 ### Background
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 0.8rem;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: var(--sp--2);">
 {%- for color in surfaceColors -%}
   <div style="background-color: var(--color-surface-{{ color }}); aspect-ratio: 1; outline: solid 1px;"></div>
 {%- endfor -%}
@@ -48,7 +48,7 @@ noindex: true
 
 ### Text
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 0.8rem;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: var(--sp--2);">
 {%- for color in foregroundColors -%}
   <div style="color: var(--color-{{ color }})"><strong>{{ color }}</strong>: Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
 {%- endfor -%}
@@ -107,7 +107,9 @@ noindex: true
 
 ### Image
 
+<p>
 {% include image.html src: "https://images.unsplash.com/photo-1543631936-4019112aee78?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80", fileName: "parrot", urlPath: "/assets/images/design", alt: "A multi-color parrot tilts its head towards the camera and glances playfully at the viewer." %}
+</p>
 
 ### Figure with Caption
 

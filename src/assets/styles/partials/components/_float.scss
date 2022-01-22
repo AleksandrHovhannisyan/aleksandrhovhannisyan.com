@@ -10,17 +10,17 @@
   }
   @include mobile-lg {
     & {
-      max-width: 20rem;
-      margin-block-end: 3.2rem;
+      max-width: to-rems(200px);
+      margin-block-end: var(--sp-5);
     }
 
     &.left {
-      margin-inline-end: 3.2rem;
+      margin-inline-end: var(--sp-5);
       float: left;
     }
 
     &.right {
-      margin-inline-start: 3.2rem;
+      margin-inline-start: var(--sp-5);
       float: right;
     }
   }

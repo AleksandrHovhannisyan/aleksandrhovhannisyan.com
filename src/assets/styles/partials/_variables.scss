@@ -4,7 +4,7 @@
 @import "./mixins";
 @import "./functions";
 
-$spacing-steps-px: 2, 4, 8, 12, 16, 18, 20, 24, 28, 32, 36, 40, 48, 56, 64;
+$spacing-steps-px: 1, 2, 4, 8, 12, 16, 18, 20, 24, 28, 32, 36, 40, 48, 56, 64;
 $spacing-base-index: list.index($spacing-steps-px, 16);
 
 html {
@@ -17,7 +17,7 @@ html {
 
   --transition-duration: 0.2s;
   --transition-timing-function: ease;
-  --page-max-width: 81rem;
+  --page-max-width: #{to-rems(810px)};
   --navbar-height: #{clamped(64px, 76px)};
 
   &[data-theme="light"] {
@@ -90,7 +90,7 @@ html {
     --button-bg-color-focus: white;
     --button-bg-color: var(--color-surface-5);
     --card-bg-color: var(--color-surface-2);
-    --code-block-box-shadow: 0 0.2rem 0.8rem 0 hsl(0deg 0% 0% / 40%);
+    --code-block-box-shadow: 0 2px 8px 0 hsl(0deg 0% 0% / 40%);
     --form-bg-color: var(--color-surface-2);
     --footer-bg-color: var(--color-surface-2);
     --hover-bg-color: var(--color-surface-2);
@@ -98,7 +98,7 @@ html {
     --input-bg-color: var(--color-surface-3);
     --main-bg-color: var(--color-surface-1);
     --navbar-bg-color: var(--color-surface-2);
-    --navbar-box-shadow: 0 -0.2rem 0.8rem hsl(0deg 0% 0% / 40%);
+    --navbar-box-shadow: 0 -2px 8px hsl(0deg 0% 0% / 40%);
     --navbar-text-color: white;
     --navbar-text-bg-color-focus: var(--color-surface-3);
     --scrollbar-thumb-bg-color: var(--color-surface-4);

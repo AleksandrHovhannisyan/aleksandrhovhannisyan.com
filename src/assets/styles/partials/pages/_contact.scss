@@ -8,20 +8,20 @@
     display: grid;
     align-items: center;
     grid-auto-flow: row;
-    gap: 4.8rem;
+    gap: var(--sp-8);
     @include tablet {
       grid-auto-flow: column;
-      gap: 9.6rem;
+      gap: to-rems(96px);
       grid-template-columns: 3fr 2fr;
     }
   }
 
   &-title {
-    margin-bottom: 0.8rem;
+    margin-bottom: var(--sp--2);
   }
 
   &-subtitle {
-    margin-bottom: 2.4rem;
+    margin-bottom: var(--sp-3);
 
     .submitted & {
       margin: 0;
@@ -30,25 +30,25 @@
 
   &-form {
     display: grid;
-    gap: 1.6rem;
+    gap: var(--sp-0);
     background-color: var(--form-bg-color);
-    border-radius: 0.2rem;
+    border-radius: var(--sp--4);
     border: solid 1px hsl(0deg 0% 0% / 8%);
     padding: clamped(12px, 24px);
 
     textarea {
-      min-height: 17.5rem;
+      min-height: to-rems(175px);
     }
   }
 
   button[type="submit"] {
-    border-radius: 0.2rem;
-    padding: 1.6rem;
+    border-radius: var(--sp--4);
+    padding: var(--sp-0);
   }
 
   &-socials {
     display: grid;
-    gap: 1.6rem;
+    gap: var(--sp-0);
     grid-template-rows: min-content auto;
 
     &-list {
@@ -66,7 +66,7 @@
     white-space: nowrap;
     min-width: fit-content;
     justify-content: center;
-    border-radius: 0.2rem;
+    border-radius: var(--sp--4);
     color: var(--color-text-normal);
 
     svg {

@@ -25,7 +25,7 @@
   }
 
   &-grid {
-    --gap: 4.8rem;
+    --gap: var(--sp-8);
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -34,7 +34,7 @@
 
   &-wrapper {
     flex: 1;
-    min-width: 27rem;
+    min-width: to-rems(270px);
 
     // Prevents the dreaded "doom flicker": https://www.joshwcomeau.com/animation/css-transitions/#doom-flicker
     &:is(:hover, :focus-within) {
@@ -57,13 +57,13 @@
   &-name-wrapper {
     display: flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: var(--sp--3);
   }
 
   &-icon {
     picture {
-      width: 2.4rem;
-      height: 2.4rem;
+      width: var(--sp-3);
+      height: var(--sp-3);
     }
   }
 
@@ -73,17 +73,17 @@
 
   &-rating {
     display: flex;
-    gap: 0.4rem;
+    gap: var(--sp--3);
     align-items: center;
   }
 
   &-technologies {
-    gap: 0.8rem;
+    gap: var(--sp--2);
   }
 
   &-technology {
-    border-radius: 0.2rem;
-    padding: 0.4rem 1.2rem;
+    border-radius: var(--sp--4);
+    padding: var(--sp--3) var(--sp--1);
     @include font-size("xs");
   }
 }
@@ -95,12 +95,12 @@
   align-items: center;
 
   &-subheading {
-    margin-bottom: 1.6rem;
+    margin-bottom: var(--sp-0);
   }
 
   a {
-    height: 4.8rem;
-    width: 4.8rem;
+    height: var(--sp-8);
+    width: var(--sp-8);
     color: var(--color-text-normal);
   }
 

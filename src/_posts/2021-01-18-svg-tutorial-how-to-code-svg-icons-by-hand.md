@@ -1663,7 +1663,7 @@ That does it for this tutorial! I hope you learned something new (and had fun!).
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 4.8rem;
+    gap: var(--sp-8);
     padding: 0;
     max-width: 100%;
   }

@@ -11,7 +11,7 @@
     @return $value;
   }
 
-  $value-rems: math.div($value, 10px) * 1rem;
+  $value-rems: math.div($value, 16px) * 1rem;
   @return $value-rems;
 }
 

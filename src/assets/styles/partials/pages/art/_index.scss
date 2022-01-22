@@ -2,14 +2,14 @@
 
 #artwork-page-header {
   text-align: center;
-  padding-bottom: 3.2rem;
+  padding-bottom: var(--sp-5);
 
   .title {
-    font-size: 4.8rem;
+    font-size: var(--sp-8);
     line-height: 1.8;
-    text-shadow: 0.4rem 0.4rem black;
+    text-shadow: var(--sp--3) var(--sp--3) black;
     max-width: fit-content;
-    margin: 0 auto 1.6rem;
+    margin: 0 auto var(--sp-0);
     position: relative;
     @include font-family("cursiveTitle");
     @include font-weight("cursiveTitle", "regular");
@@ -48,8 +48,8 @@
         }
         left: unset;
         bottom: unset;
-        top: -0.8rem;
-        right: -10rem;
+        top: calc(-1 * var(--sp--2));
+        right: -#{to-rems(100px)};
         transform: rotate(2deg);
       }
     }
@@ -57,7 +57,7 @@
 }
 
 #artwork-list {
-  --gap: 3.2rem;
+  --gap: var(--sp-5);
   padding-top: calc(2 * var(--gap));
   display: flex;
   flex-wrap: wrap;
@@ -70,7 +70,7 @@
   align-items: center;
   justify-content: center;
   flex: 1 1 calc(1 / var(--artwork-per-row) * 100% - 2 * var(--gap));
-  padding: 2.4rem;
+  padding: var(--sp-3);
   @include mobile-lg {
     --artwork-per-row: 3;
   }
@@ -79,7 +79,7 @@
 .artwork-link {
   display: flex;
   flex-direction: column;
-  row-gap: 1.6rem;
+  row-gap: var(--sp-0);
   align-items: center;
   justify-content: center;
   position: relative;
@@ -102,7 +102,7 @@
     text-align: center;
     max-width: 30ch;
     line-height: 1.2;
-    font-size: 2.4rem;
+    font-size: var(--sp-3);
     will-change: transform, opacity;
     @include font-family("cursiveBody");
     @include transition(opacity, transform);

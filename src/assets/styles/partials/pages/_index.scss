@@ -3,18 +3,18 @@
 
 .hero-banner {
   margin-bottom: clamped(64px, 76px);
-  gap: 3.2rem;
+  gap: var(--sp-5);
   max-width: 67ch;
 
   &-title {
-    margin-bottom: 0.8rem;
+    margin-bottom: var(--sp--2);
   }
 }
 
 #projects {
-  margin-bottom: 0.8rem;
+  margin-bottom: var(--sp--2);
 }
 
 .projects-subheading {
-  margin-bottom: 4.8rem;
+  margin-bottom: var(--sp-8);
 }

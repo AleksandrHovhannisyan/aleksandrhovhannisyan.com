@@ -1,5 +1,5 @@
 .list {
-  --gap: 0.4rem;
+  --gap: var(--sp--3);
   display: grid;
   gap: var(--gap);
   padding-inline-start: 1em;
