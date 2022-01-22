@@ -38,3 +38,8 @@
 .emoji {
   font-weight: initial !important;
 }
+
+.image-link {
+  --outline-offset: var(--outline-thickness);
+  display: block;
+}
