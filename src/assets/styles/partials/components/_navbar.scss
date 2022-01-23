@@ -4,7 +4,7 @@
 .skip-navigation {
   top: 50%;
   transform: translate(#{spacing(-2)}, -50%);
-  padding: #{spacing(-2)};
+  padding: spacing(-2);
   color: inherit;
   z-index: z-index("navbar") + 1;
 }
@@ -16,8 +16,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: #{spacing(-3)};
-  padding: 0 #{spacing(-2)};
+  gap: spacing(-3);
+  padding: 0 spacing(-2);
   color: var(--navbar-text-color);
   @include font-family("title");
   @include font-weight("title", "regular");
@@ -38,7 +38,7 @@
   }
 
   &-logo {
-    width: #{spacing(4)};
+    width: spacing(4);
   }
 
   &-site-name {
@@ -66,7 +66,7 @@
   }
 
   &-link {
-    padding: #{spacing(-3)} clamped(12px, 16px);
+    padding: spacing(-3) clamped(12px, 16px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -235,7 +235,7 @@
 
     &-branding {
       display: flex;
-      gap: #{spacing(-3)};
+      gap: spacing(-3);
       align-items: center;
     }
 

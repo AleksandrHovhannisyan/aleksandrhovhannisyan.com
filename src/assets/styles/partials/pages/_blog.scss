@@ -2,11 +2,11 @@
 
 .blog {
   &-title {
-    margin-bottom: #{spacing(0)};
+    margin-bottom: spacing(0);
   }
 
   &-description {
-    margin-bottom: #{spacing(0)};
+    margin-bottom: spacing(0);
   }
 
   &-nav {
@@ -37,6 +37,6 @@
   }
 
   .post-preview-grid {
-    margin-top: #{spacing(10)};
+    margin-top: spacing(10);
   }
 }

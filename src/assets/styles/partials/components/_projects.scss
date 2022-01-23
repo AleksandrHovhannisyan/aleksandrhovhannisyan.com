@@ -74,17 +74,17 @@
 
   &-rating {
     display: flex;
-    gap: #{spacing(-3)};
+    gap: spacing(-3);
     align-items: center;
   }
 
   &-technologies {
-    gap: #{spacing(-2)};
+    gap: spacing(-2);
   }
 
   &-technology {
-    border-radius: #{spacing(-4)};
-    padding: #{spacing(-3)} #{spacing(-1)};
+    border-radius: spacing(-4);
+    padding: spacing(-3) spacing(-1);
     @include font-size("xs");
   }
 }
@@ -96,12 +96,12 @@
   align-items: center;
 
   &-subheading {
-    margin-bottom: #{spacing(0)};
+    margin-bottom: spacing(0);
   }
 
   a {
-    height: #{spacing(8)};
-    width: #{spacing(8)};
+    height: spacing(8);
+    width: spacing(8);
     color: var(--color-text-normal);
   }
 

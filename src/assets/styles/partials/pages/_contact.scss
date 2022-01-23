@@ -8,7 +8,7 @@
     display: grid;
     align-items: center;
     grid-auto-flow: row;
-    gap: #{spacing(8)};
+    gap: spacing(8);
     @include tablet {
       grid-auto-flow: column;
       gap: to-rems(96px);
@@ -17,11 +17,11 @@
   }
 
   &-title {
-    margin-bottom: #{spacing(-2)};
+    margin-bottom: spacing(-2);
   }
 
   &-subtitle {
-    margin-bottom: #{spacing(3)};
+    margin-bottom: spacing(3);
 
     .submitted & {
       margin: 0;
@@ -30,9 +30,9 @@
 
   &-form {
     display: grid;
-    gap: #{spacing(0)};
+    gap: spacing(0);
     background-color: var(--form-bg-color);
-    border-radius: #{spacing(-4)};
+    border-radius: spacing(-4);
     border: solid 1px hsl(0deg 0% 0% / 8%);
     padding: clamped(12px, 24px);
 
@@ -42,13 +42,13 @@
   }
 
   button[type="submit"] {
-    border-radius: #{spacing(-4)};
-    padding: #{spacing(0)};
+    border-radius: spacing(-4);
+    padding: spacing(0);
   }
 
   &-socials {
     display: grid;
-    gap: #{spacing(0)};
+    gap: spacing(0);
     grid-template-rows: min-content auto;
 
     &-list {
@@ -66,7 +66,7 @@
     white-space: nowrap;
     min-width: fit-content;
     justify-content: center;
-    border-radius: #{spacing(-4)};
+    border-radius: spacing(-4);
     color: var(--color-text-normal);
 
     svg {

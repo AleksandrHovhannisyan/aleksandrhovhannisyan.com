@@ -19,7 +19,7 @@
   position: relative;
   justify-self: center;
   padding: 2.5em 1.8em 1.8em;
-  margin: #{spacing(2)};
+  margin: spacing(2);
   cursor: pointer;
   @include transition(transform, top, box-shadow, border-radius);
 

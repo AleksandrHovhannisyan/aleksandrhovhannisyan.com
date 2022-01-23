@@ -11,7 +11,7 @@ pre[class*="language-"] {
   color: var(--color-code-text);
   margin-inline: calc(-1 * var(--padding));
   @include tablet {
-    border-radius: #{spacing(-2)};
+    border-radius: spacing(-2);
     margin-inline: 0;
   }
 
@@ -137,8 +137,8 @@ pre[class*="language-bash"] {
   display: none;
   color: var(--color-code-text);
   background-color: var(--color-code-overlay-1);
-  padding: #{spacing(-2)} #{spacing(0)};
-  border-radius: #{spacing(-3)};
+  padding: spacing(-2) spacing(0);
+  border-radius: spacing(-3);
 
   &::before {
     content: "Copy";

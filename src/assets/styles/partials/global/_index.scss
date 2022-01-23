@@ -30,6 +30,6 @@ a {
 
 .section {
   & + & {
-    margin-top: #{spacing(10)};
+    margin-top: spacing(10);
   }
 }

@@ -7,12 +7,12 @@
       "date"
       "title"
       "tags";
-    margin-bottom: #{spacing(5)};
+    margin-bottom: spacing(5);
   }
 
   &-title {
     grid-area: title;
-    margin-bottom: #{spacing(-2)};
+    margin-bottom: spacing(-2);
   }
 
   & &-date {
@@ -32,7 +32,7 @@
 
     #skip-toc {
       transform: translateY(-50%);
-      padding: #{spacing(-4)} #{spacing(-2)};
+      padding: spacing(-4) spacing(-2);
       @include font-weight("body", "bold");
     }
 

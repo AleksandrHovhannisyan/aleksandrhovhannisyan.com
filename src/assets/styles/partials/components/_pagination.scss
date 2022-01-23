@@ -2,13 +2,13 @@
 
 .pagination {
   &-trail {
-    gap: #{spacing(-2)};
-    margin-top: #{spacing(5)};
+    gap: spacing(-2);
+    margin-top: spacing(5);
     justify-content: flex-end;
   }
 
   &-page {
-    min-width: #{spacing(5)};
+    min-width: spacing(5);
     justify-content: center;
     @include font-weight("code", "medium");
   }

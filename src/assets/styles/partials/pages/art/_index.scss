@@ -3,14 +3,14 @@
 
 #artwork-page-header {
   text-align: center;
-  padding-bottom: #{spacing(5)};
+  padding-bottom: spacing(5);
 
   .title {
-    font-size: #{spacing(8)};
+    font-size: spacing(8);
     line-height: 1.8;
-    text-shadow: #{spacing(-3)} #{spacing(-3)} black;
+    text-shadow: spacing(-3) spacing(-3) black;
     max-width: fit-content;
-    margin: 0 auto #{spacing(0)};
+    margin: 0 auto spacing(0);
     position: relative;
     @include font-family("cursiveTitle");
     @include font-weight("cursiveTitle", "regular");
@@ -71,7 +71,7 @@
   align-items: center;
   justify-content: center;
   flex: 1 1 calc(1 / var(--artwork-per-row) * 100% - 2 * var(--gap));
-  padding: #{spacing(3)};
+  padding: spacing(3);
   @include mobile-lg {
     --artwork-per-row: 3;
   }
@@ -80,7 +80,7 @@
 .artwork-link {
   display: flex;
   flex-direction: column;
-  row-gap: #{spacing(0)};
+  row-gap: spacing(0);
   align-items: center;
   justify-content: center;
   position: relative;
@@ -103,7 +103,7 @@
     text-align: center;
     max-width: 30ch;
     line-height: 1.2;
-    font-size: #{spacing(3)};
+    font-size: spacing(3);
     will-change: transform, opacity;
     @include font-family("cursiveBody");
     @include transition(opacity, transform);

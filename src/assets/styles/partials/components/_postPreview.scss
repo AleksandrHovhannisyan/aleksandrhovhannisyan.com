@@ -10,9 +10,9 @@
   position: relative;
 
   &-grid {
-    margin-top: #{spacing(5)};
+    margin-top: spacing(5);
     display: grid;
-    row-gap: #{spacing(8)};
+    row-gap: spacing(8);
   }
 
   &-link {
@@ -22,14 +22,14 @@
   &-thumbnail-container {
     grid-area: thumbnail;
     user-select: none;
-    margin-block-end: #{spacing(-1)};
+    margin-block-end: spacing(-1);
   }
 
   &-thumbnail {
     img {
       object-fit: cover;
       object-position: center;
-      border-radius: #{spacing(-3)};
+      border-radius: spacing(-3);
       aspect-ratio: 16 / 9;
 
       [data-theme="light"] & {
@@ -53,12 +53,12 @@
 
   &-tags {
     grid-area: tags;
-    margin-top: #{spacing(-3)};
+    margin-top: spacing(-3);
   }
   @include tablet {
     & {
       grid-template-columns: auto min-content auto;
-      column-gap: #{spacing(-1)};
+      column-gap: spacing(-1);
       grid-template-areas:
         "thumbnail date tags"
         "thumbnail title title"
@@ -68,8 +68,8 @@
     &-thumbnail {
       height: 100%;
       width: to-rems(180px);
-      padding: #{spacing(-2)} 0;
-      margin-inline-end: #{spacing(-1)};
+      padding: spacing(-2) 0;
+      margin-inline-end: spacing(-1);
 
       &-container {
         margin: 0;
