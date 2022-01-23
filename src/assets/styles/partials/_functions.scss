@@ -19,15 +19,12 @@
 
 /// Returns the spacing value corresponding to the given step as an offset from the base.
 @function spacing($step) {
-  $min: 0 - $spacing-base-index;
+  $min: 0 - $spacing-base-index + 1;
   $max: list.length($spacing-steps-px) - $spacing-base-index;
   @if $step < $min or $step > $max {
     @error "#{$step} is not a valid step in the spacing scale. Valid steps range from #{$min} to #{$max}.";
   } @else {
-    $index: $step + $spacing-base-index;
-    $value: list.nth($spacing-steps-px, $index);
-    $value-rems: to-rems($value * 1px);
-    @return $value-rems;
+    @return var(--sp-#{$step});
   }
 }
 
