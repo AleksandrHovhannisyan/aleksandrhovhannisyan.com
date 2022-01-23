@@ -23,23 +23,6 @@
     grid-area: tags;
   }
 
-  &-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--gap, #{spacing(-1)});
-  }
-
-  &-tag {
-    display: flex;
-    align-items: center;
-    border-radius: #{spacing(-3)};
-    padding: 0.6rem #{spacing(-1)};
-
-    &-count {
-      @include font-size("xs");
-    }
-  }
-
   &-content {
     max-width: 68ch;
     display: flow-root;
