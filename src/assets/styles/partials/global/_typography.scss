@@ -1,15 +1,9 @@
 @use "sass:list";
 @use "sass:math";
 
+@import "../variables";
 @import "../mixins";
 @import "../functions";
-
-$type-base-min: 16px;
-$type-base-max: 19.2px;
-$type-scale-min: 1.17;
-$type-scale-max: 1.2;
-$type-steps: "xs", "sm", "base", "md", "lg", "xl", "xxl", "xxxl";
-$type-base-index: list.index($type-steps, "base");
 
 html {
   @for $i from 1 through length($type-steps) {

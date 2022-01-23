@@ -1,7 +1,9 @@
+@use "sass:list";
 @use "sass:math";
 @use "sass:string";
 @use "sass:map";
 
+@import "./variables";
 @import "./breakpoints";
 @import "./zIndex";
 
@@ -13,6 +15,20 @@
 
   $value-rems: math.div($value, 16px) * 1rem;
   @return $value-rems;
+}
+
+/// Returns the spacing value corresponding to the given step as an offset from the base.
+@function spacing($step) {
+  $min: 0 - $spacing-base-index;
+  $max: list.length($spacing-steps-px) - $spacing-base-index;
+  @if $step < $min or $step > $max {
+    @error "#{$step} is not a valid step in the spacing scale. Valid steps range from #{$min} to #{$max}.";
+  } @else {
+    $index: $step + $spacing-base-index;
+    $value: list.nth($spacing-steps-px, $index);
+    $value-rems: to-rems($value * 1px);
+    @return $value-rems;
+  }
 }
 
 /// Returns true if the given string ends with the given suffix.

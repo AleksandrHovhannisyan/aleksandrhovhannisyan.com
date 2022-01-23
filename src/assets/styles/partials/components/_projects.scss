@@ -1,3 +1,4 @@
+@import "../functions";
 @import "../mixins";
 
 .project {
@@ -25,7 +26,7 @@
   }
 
   &-grid {
-    --gap: var(--sp-8);
+    --gap: #{spacing(8)};
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -57,13 +58,13 @@
   &-name-wrapper {
     display: flex;
     align-items: center;
-    gap: var(--sp--3);
+    gap: spacing(-3);
   }
 
   &-icon {
     picture {
-      width: var(--sp-3);
-      height: var(--sp-3);
+      width: spacing(3);
+      aspect-ratio: 1;
     }
   }
 
@@ -73,17 +74,17 @@
 
   &-rating {
     display: flex;
-    gap: var(--sp--3);
+    gap: #{spacing(-3)};
     align-items: center;
   }
 
   &-technologies {
-    gap: var(--sp--2);
+    gap: #{spacing(-2)};
   }
 
   &-technology {
-    border-radius: var(--sp--4);
-    padding: var(--sp--3) var(--sp--1);
+    border-radius: #{spacing(-4)};
+    padding: #{spacing(-3)} #{spacing(-1)};
     @include font-size("xs");
   }
 }
@@ -95,12 +96,12 @@
   align-items: center;
 
   &-subheading {
-    margin-bottom: var(--sp-0);
+    margin-bottom: #{spacing(0)};
   }
 
   a {
-    height: var(--sp-8);
-    width: var(--sp-8);
+    height: #{spacing(8)};
+    width: #{spacing(8)};
     color: var(--color-text-normal);
   }
 

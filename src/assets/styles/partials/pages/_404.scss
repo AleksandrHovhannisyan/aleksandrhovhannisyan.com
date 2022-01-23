@@ -17,7 +17,7 @@
   text-align: center;
   top: 0;
   width: 100%;
-  padding: 0 var(--sp--1);
+  padding: 0 #{spacing(-1)};
   @keyframes background-scroll {
     from {
       background-position: 0 0;
@@ -30,13 +30,13 @@
 
   h1 {
     color: hsl(0deg 0% 90%);
-    margin-bottom: var(--sp-3);
+    margin-bottom: #{spacing(3)};
     text-shadow: 0.1em 0.1em black;
   }
 
   p {
     color: hsl(0deg 0% 75%);
-    margin-bottom: var(--sp-0);
+    margin-bottom: #{spacing(0)};
   }
 
   a {

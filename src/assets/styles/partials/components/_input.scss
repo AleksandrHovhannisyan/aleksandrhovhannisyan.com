@@ -4,12 +4,12 @@
 .input {
   background-color: var(--input-bg-color);
   border: solid 1px var(--color-border);
-  border-radius: var(--sp--4);
+  border-radius: #{spacing(-4)};
   color: var(--color-text-emphasis);
-  padding: var(--sp--3) var(--sp--2);
+  padding: #{spacing(-3)} #{spacing(-2)};
 
   &:focus {
-    outline: solid var(--sp--4) var(--color-border-focus);
+    outline: solid #{spacing(-4)} var(--color-border-focus);
     border-color: var(--color-border-focus);
   }
 }
@@ -18,7 +18,7 @@ label {
   display: grid;
   grid-auto-flow: row;
   grid-template-columns: minmax(0, 1fr);
-  gap: var(--sp--3);
+  gap: #{spacing(-3)};
   align-items: center;
 
   &[data-flow="horizontal"] {
@@ -28,7 +28,7 @@ label {
 
   &.required .label-title::after {
     content: "*";
-    margin: 0 var(--sp--3);
+    margin: 0 #{spacing(-3)};
     vertical-align: middle;
   }
 }

@@ -14,6 +14,6 @@ code {
 code:not([class^="language-"]) {
   background-color: var(--inline-code-bg-color);
   color: var(--color-text-emphasis);
-  border-radius: var(--sp--3);
-  padding: var(--sp--3);
+  border-radius: #{spacing(-3)};
+  padding: #{spacing(-3)};
 }

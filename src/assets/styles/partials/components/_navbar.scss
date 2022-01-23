@@ -3,8 +3,8 @@
 
 .skip-navigation {
   top: 50%;
-  transform: translate(var(--sp--2), -50%);
-  padding: var(--sp--2);
+  transform: translate(#{spacing(-2)}, -50%);
+  padding: #{spacing(-2)};
   color: inherit;
   z-index: z-index("navbar") + 1;
 }
@@ -16,8 +16,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--sp--3);
-  padding: 0 var(--sp--2);
+  gap: #{spacing(-3)};
+  padding: 0 #{spacing(-2)};
   color: var(--navbar-text-color);
   @include font-family("title");
   @include font-weight("title", "regular");
@@ -38,7 +38,7 @@
   }
 
   &-logo {
-    width: var(--sp-4);
+    width: #{spacing(4)};
   }
 
   &-site-name {
@@ -66,7 +66,7 @@
   }
 
   &-link {
-    padding: var(--sp--3) clamped(12px, 16px);
+    padding: #{spacing(-3)} clamped(12px, 16px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -95,7 +95,7 @@
   transform: scale(0.711);
   transform-style: preserve-3d;
 
-  --outline-offset: var(--sp--3);
+  --outline-offset: #{spacing(-3)};
   --outline-color: white;
 
   &-base {
@@ -235,7 +235,7 @@
 
     &-branding {
       display: flex;
-      gap: var(--sp--3);
+      gap: #{spacing(-3)};
       align-items: center;
     }
 

@@ -3,7 +3,7 @@
 .pill-group {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--sp--1);
+  gap: #{spacing(-1)};
 }
 
 .pill {
@@ -15,16 +15,16 @@
   @include font-weight("code", "regular");
 
   &[data-shape="round"] {
-    border-radius: var(--sp-8);
+    border-radius: #{spacing(8)};
   }
 
   &[data-size="sm"] {
-    padding: var(--sp--3) var(--sp-0);
+    padding: #{spacing(-3)} #{spacing(0)};
     @include font-size("sm");
   }
 
   &[data-size="xs"] {
-    padding: var(--sp--4) var(--sp--1);
+    padding: #{spacing(-4)} #{spacing(-1)};
     @include font-size("xs");
     @include font-weight("code", "medium");
   }

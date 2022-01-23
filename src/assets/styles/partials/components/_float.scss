@@ -11,16 +11,16 @@
   @include mobile-lg {
     & {
       max-width: to-rems(200px);
-      margin-block-end: var(--sp-5);
+      margin-block-end: #{spacing(5)};
     }
 
     &.left {
-      margin-inline-end: var(--sp-5);
+      margin-inline-end: #{spacing(5)};
       float: left;
     }
 
     &.right {
-      margin-inline-start: var(--sp-5);
+      margin-inline-start: #{spacing(5)};
       float: right;
     }
   }

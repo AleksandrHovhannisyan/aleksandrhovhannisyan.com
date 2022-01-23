@@ -1,5 +1,5 @@
 #cube {
-  row-gap: var(--sp-5);
+  row-gap: #{spacing(5)};
 }
 
 .cube {
