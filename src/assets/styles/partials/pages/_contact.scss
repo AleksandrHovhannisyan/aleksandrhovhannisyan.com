@@ -8,20 +8,20 @@
     display: grid;
     align-items: center;
     grid-auto-flow: row;
-    gap: 4.8rem;
+    gap: spacing(8);
     @include tablet {
       grid-auto-flow: column;
-      gap: 9.6rem;
+      gap: to-rems(96px);
       grid-template-columns: 3fr 2fr;
     }
   }
 
   &-title {
-    margin-bottom: 0.8rem;
+    margin-bottom: spacing(-2);
   }
 
   &-subtitle {
-    margin-bottom: 2.4rem;
+    margin-bottom: spacing(3);
 
     .submitted & {
       margin: 0;
@@ -30,49 +30,49 @@
 
   &-form {
     display: grid;
-    gap: 1.6rem;
+    gap: spacing(0);
     background-color: var(--form-bg-color);
-    border-radius: 0.2rem;
+    border-radius: spacing(-3);
     border: solid 1px hsl(0deg 0% 0% / 8%);
-    padding: clamped(12px, 24px);
+    padding: spacing(2, true);
 
     textarea {
-      min-height: 17.5rem;
+      min-height: to-rems(175px);
     }
   }
 
   button[type="submit"] {
-    border-radius: 0.2rem;
-    padding: 1.6rem;
+    border-radius: spacing(-4);
+    padding: spacing(0);
   }
 
   &-socials {
     display: grid;
-    gap: 1.6rem;
+    gap: spacing(0);
     grid-template-rows: min-content auto;
 
     &-list {
       display: flex;
       flex-wrap: wrap;
-      gap: clamped(8px, 16px);
+      gap: spacing(0, true);
     }
   }
 
   &-social {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: clamped(8px, 16px);
-    padding: clamped(8px, 16px);
+    gap: spacing(0, true);
+    padding: spacing(0, true);
     white-space: nowrap;
     min-width: fit-content;
     justify-content: center;
-    border-radius: 0.2rem;
+    border-radius: spacing(-4);
     color: var(--color-text-normal);
 
     svg {
       justify-self: center;
-      width: clamped(24px, 32px);
-      height: clamped(24px, 32px);
+      width: spacing(5, true);
+      height: spacing(5, true);
       fill: currentColor;
     }
 

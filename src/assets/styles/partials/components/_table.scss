@@ -2,8 +2,8 @@
 
 :is(td, th) {
   text-align: start;
-  padding: 0.8rem 1.6rem;
-  border: solid 0.2rem var(--color-border);
+  padding: spacing(-2) spacing(0);
+  border: solid spacing(-4) var(--color-border);
 
   &.numeric {
     text-align: end;

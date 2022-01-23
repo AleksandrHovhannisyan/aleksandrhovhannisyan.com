@@ -2,10 +2,6 @@
 
 @import "../mixins";
 
-html {
-  font-size: 62.5%;
-}
-
 body {
   display: flex;
   flex-direction: column;
@@ -34,6 +30,6 @@ a {
 
 .section {
   & + & {
-    margin-top: 6.4rem;
+    margin-top: spacing(10);
   }
 }

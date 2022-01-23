@@ -1,3 +1,5 @@
+@import "../functions";
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -68,7 +70,7 @@ table {
 
 // https://css-tricks.com/standardizing-focus-styles-with-css-custom-properties/
 :is(a, button, input, textarea) {
-  --outline-thickness: 0.3rem;
+  --outline-thickness: #{to-rems(3px)};
   --outline-style: solid;
   --outline-color: currentColor;
 

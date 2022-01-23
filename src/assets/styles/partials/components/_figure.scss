@@ -3,7 +3,7 @@
 figure {
   display: grid;
   grid-auto-flow: row;
-  row-gap: 0.8rem;
+  row-gap: spacing(-2);
 }
 
 figcaption {

@@ -7,12 +7,12 @@
       "date"
       "title"
       "tags";
-    margin-bottom: 3.2rem;
+    margin-bottom: spacing(5);
   }
 
   &-title {
     grid-area: title;
-    margin-bottom: 0.8rem;
+    margin-bottom: spacing(-2);
   }
 
   & &-date {
@@ -21,23 +21,6 @@
 
   & &-meta-tags {
     grid-area: tags;
-  }
-
-  &-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--gap, 1.2rem);
-  }
-
-  &-tag {
-    display: flex;
-    align-items: center;
-    border-radius: 0.4rem;
-    padding: 0.6rem 1.2rem;
-
-    &-count {
-      @include font-size("xs");
-    }
   }
 
   &-content {
@@ -49,14 +32,14 @@
 
     #skip-toc {
       transform: translateY(-50%);
-      padding: 0.2rem 0.8rem;
+      padding: spacing(-4) spacing(-2);
       @include font-weight("body", "bold");
     }
 
     .toc-list {
-      --gap: 2.4rem;
+      --gap: #{spacing(3)};
       list-style: disc; // some headings have numbers already
-      padding-inline-start: clamped(24px, 48px);
+      padding-inline-start: spacing(8, true);
     }
 
     a:not([class]) {

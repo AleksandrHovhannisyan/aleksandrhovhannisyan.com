@@ -1,3 +1,4 @@
+@import "../functions";
 @import "../mixins";
 
 .screen-reader-only {
@@ -25,8 +26,8 @@
 
 .banner-heading {
   text-transform: uppercase;
-  letter-spacing: 0.1rem;
-  word-spacing: 0.2rem;
+  letter-spacing: spacing(-5);
+  word-spacing: spacing(-4);
   @include font-size("sm");
 }
 

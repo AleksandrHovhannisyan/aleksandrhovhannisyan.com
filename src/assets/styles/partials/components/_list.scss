@@ -1,5 +1,7 @@
+@import "../functions";
+
 .list {
-  --gap: 0.4rem;
+  --gap: #{spacing(-3)};
   display: grid;
   gap: var(--gap);
   padding-inline-start: 1em;

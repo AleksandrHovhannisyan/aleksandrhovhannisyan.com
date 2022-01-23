@@ -1,14 +1,15 @@
+@import "../functions";
 @import "../mixins";
 
 .input {
   background-color: var(--input-bg-color);
-  border: solid 0.1rem var(--color-border);
-  border-radius: 0.2rem;
+  border: solid spacing(-5) var(--color-border);
+  border-radius: spacing(-4);
   color: var(--color-text-emphasis);
-  padding: 0.4rem 0.8rem;
+  padding: spacing(-3) spacing(-2);
 
   &:focus {
-    outline: solid 0.2rem var(--color-border-focus);
+    outline: solid spacing(-4) var(--color-border-focus);
     border-color: var(--color-border-focus);
   }
 }
@@ -17,7 +18,7 @@ label {
   display: grid;
   grid-auto-flow: row;
   grid-template-columns: minmax(0, 1fr);
-  gap: 0.4rem;
+  gap: spacing(-3);
   align-items: center;
 
   &[data-flow="horizontal"] {
@@ -27,7 +28,7 @@ label {
 
   &.required .label-title::after {
     content: "*";
-    margin: 0 0.4rem;
+    margin: 0 spacing(-3);
     vertical-align: middle;
   }
 }

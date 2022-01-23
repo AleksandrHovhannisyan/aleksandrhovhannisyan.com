@@ -10,19 +10,19 @@
   &-container {
     display: flex;
     flex-direction: column;
-    gap: 3.2rem;
+    gap: spacing(5);
     justify-content: space-between;
-    padding-top: 3.2rem;
-    padding-bottom: 3.2rem;
+    padding-top: spacing(5);
+    padding-bottom: spacing(5);
   }
 
   &-title {
     color: white;
-    margin-bottom: 0.8rem;
+    margin-bottom: spacing(-2);
   }
 
   &-subtitle {
-    margin-bottom: 0.8rem;
+    margin-bottom: spacing(-2);
   }
 
   &-copyright {
@@ -34,19 +34,19 @@
     flex-direction: column;
     align-self: center;
     align-items: center;
-    gap: 2.4rem;
+    gap: spacing(3);
   }
 
   &-pages,
   &-socials {
     display: flex;
     align-items: center;
-    gap: 2.4rem;
+    gap: spacing(3);
   }
 
   &-socials svg {
     aspect-ratio: 1;
-    width: 2.4rem;
+    width: spacing(3);
     fill: currentColor;
   }
 
@@ -63,7 +63,7 @@
 
     &-container {
       flex-direction: row;
-      gap: 1.6rem;
+      gap: spacing(0);
     }
 
     &-links {

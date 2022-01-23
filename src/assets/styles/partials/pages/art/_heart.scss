@@ -21,7 +21,7 @@
     }
   }
 
-  --heart-size: 7rem;
+  --heart-size: #{to-rems(70px)};
   width: var(--heart-size);
   height: var(--heart-size);
   transform: rotate(45deg);

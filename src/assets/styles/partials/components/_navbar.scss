@@ -3,8 +3,8 @@
 
 .skip-navigation {
   top: 50%;
-  transform: translate(0.8rem, -50%);
-  padding: 0.8rem;
+  transform: translate(#{spacing(-2)}, -50%);
+  padding: spacing(-2);
   color: inherit;
   z-index: z-index("navbar") + 1;
 }
@@ -16,8 +16,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.4rem;
-  padding: 0 0.8rem;
+  gap: spacing(-3);
+  padding: 0 spacing(-2);
   color: var(--navbar-text-color);
   @include font-family("title");
   @include font-weight("title", "regular");
@@ -29,7 +29,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    padding-block: clamped(8px, 16px);
+    padding-block: spacing(0, true);
     background-color: var(--navbar-bg-color);
     box-shadow: var(--navbar-box-shadow);
     min-height: var(--navbar-height);
@@ -38,7 +38,7 @@
   }
 
   &-logo {
-    width: 2.8rem;
+    width: spacing(4);
   }
 
   &-site-name {
@@ -66,7 +66,7 @@
   }
 
   &-link {
-    padding: 0.4rem clamped(12px, 16px);
+    padding: spacing(-3, true) spacing(0, true);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -82,7 +82,6 @@
 
 #theme-toggle-container {
   display: flex;
-  height: 4.8rem;
   justify-content: center;
 }
 
@@ -96,7 +95,7 @@
   transform: scale(0.711);
   transform-style: preserve-3d;
 
-  --outline-offset: 0.4rem;
+  --outline-offset: #{spacing(-3)};
   --outline-color: white;
 
   &-base {
@@ -216,7 +215,7 @@
 @include mobile-lg {
   .navbar {
     &-links {
-      gap: clamped(8px, 12px);
+      gap: spacing(-1, true);
     }
 
     &-site-name {
@@ -236,7 +235,7 @@
 
     &-branding {
       display: flex;
-      gap: 0.4rem;
+      gap: spacing(-3);
       align-items: center;
     }
 
