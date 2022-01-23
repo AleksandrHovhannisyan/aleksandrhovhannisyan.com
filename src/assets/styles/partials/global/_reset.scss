@@ -15,61 +15,53 @@
   }
 }
 
-body {
+:where(body) {
   -webkit-font-smoothing: antialiased;
 }
 
-label,
-input,
-textarea,
-button {
+:where(label, input, textarea, button) {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
   letter-spacing: inherit;
 }
 
-picture {
+:where(picture) {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-img,
-video {
+:where(img, video) {
   height: auto;
 }
 
-img,
-iframe,
-video,
-table {
+:where(img, iframe, video, table) {
   max-width: 100%;
 }
 
-button {
+:where(button) {
   border: none;
   cursor: pointer;
 }
 
-a {
+:where(a) {
   font-weight: inherit;
   text-decoration: none;
 }
 
-ul,
-ol {
+:where(ul, ol) {
   list-style: none;
 }
 
-table {
+:where(table) {
   border-collapse: collapse;
   overflow-x: auto;
   display: block;
 }
 
 // https://css-tricks.com/standardizing-focus-styles-with-css-custom-properties/
-:is(a, button, input, textarea) {
+:where(a, button, input, textarea) {
   --outline-thickness: #{to-rems(3px)};
   --outline-style: solid;
   --outline-color: currentColor;
