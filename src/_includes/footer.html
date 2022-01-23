@@ -2,16 +2,16 @@
   <div class="page-footer-container centered">
     <div class="page-footer-info">
       <h2 class="page-footer-title fs-xl">Thanks for reading!</h2>
-      <div class="page-footer-subtitle">Here are some useful links before you go.</div>
+      <div class="page-footer-subtitle" id="useful-links" aria-hidden="true">Here are some useful links before you go.</div>
       <div class="page-footer-copyright fs-sm"><span aria-hidden="true">&copy;</span> Copyright {{ site.author }}, 2019–Present</div>
     </div>
-    <nav class="page-footer-links" aria-label="Secondary">
-      <ul class="page-footer-pages" aria-label="Quick links">
+    <nav class="page-footer-links" aria-labelledby="useful-links">
+      <ul class="page-footer-pages">
         <li><a href="/contact/" class="page-footer-link">Contact</a></li>
         <li><a href="/feed.xml" class="page-footer-link">RSS</a></li>
         <li><a href="/sitemap.xml" class="page-footer-link">Sitemap</a></li>
       </ul>
-      <ul class="page-footer-socials" aria-label="Social media">
+      <ul class="page-footer-socials">
         {%- assign networks = socials | entries -%}
         {%- for network in networks -%}
           {%- assign id = network | first -%}
