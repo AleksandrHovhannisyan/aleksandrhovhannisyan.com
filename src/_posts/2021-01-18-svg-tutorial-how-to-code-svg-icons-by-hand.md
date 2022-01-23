@@ -906,12 +906,12 @@ But they can also be created with `<rect>`, which takes an `x` and a `y` coordin
 While we're here, why don't we draw a calendar icon? That one is technically created using a `<path>`, which we'll learn about in the very next section. For now, we can use a `<rect>` and see how that looks.
 
 ```html {data-copyable=true}
-  <svg viewBox="0 0 24 24" width="64" height="64">
-    <rect x="3" y="5" width="18" height="16" />
-    <line x1="4" y1="10" x2="20" y2="10" />
-    <line x1="7" y1="3" x2="7" y2="7" />
-    <line x1="17" y1="3" x2="17" y2="7" />
-  </svg>
+<svg viewBox="0 0 24 24" width="64" height="64">
+  <rect x="3" y="5" width="18" height="16" />
+  <line x1="4" y1="10" x2="20" y2="10" />
+  <line x1="7" y1="3" x2="7" y2="7" />
+  <line x1="17" y1="3" x2="17" y2="7" />
+</svg>
 ```
 
 This is fine, except the four corners are sharp:
