@@ -18,13 +18,20 @@
 }
 
 /// Returns the spacing value corresponding to the given step as an offset from the base.
-@function spacing($step) {
-  $min: 0 - $spacing-base-index + 1;
+@function spacing($step, $fluid: false) {
+  $offset: 0;
+  $prefix: "-";
+  @if $fluid {
+    $offset: 1;
+    $prefix: "-fluid-";
+  }
+
+  $min: 0 - $spacing-base-index + 1 + $offset;
   $max: list.length($spacing-steps-px) - $spacing-base-index;
   @if $step < $min or $step > $max {
     @error "#{$step} is not a valid step in the spacing scale. Valid steps range from #{$min} to #{$max}.";
   } @else {
-    @return var(--sp-#{$step});
+    @return var(--sp#{$prefix}#{$step});
   }
 }
 

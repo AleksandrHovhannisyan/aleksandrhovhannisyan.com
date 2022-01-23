@@ -2,7 +2,7 @@
 
 .post-aside {
   border-inline-start: spacing(-3) solid;
-  padding: clamped(12px, 20px) clamped(16px, 24px);
+  padding: spacing(2, true) spacing(3, true);
   background-color: var(--aside-bg-color);
   color: var(--color-text-emphasis);
   @include rhythm;

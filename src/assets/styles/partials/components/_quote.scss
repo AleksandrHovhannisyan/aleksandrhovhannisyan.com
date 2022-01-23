@@ -2,7 +2,7 @@ blockquote {
   font-style: italic;
   border-inline-start: spacing(-3) solid;
   margin-inline-start: clamped(12px, 24px);
-  padding: spacing(-3) clamped(20px, 32px);
+  padding: spacing(-3, true) spacing(5, true);
   @include rhythm;
 }
 

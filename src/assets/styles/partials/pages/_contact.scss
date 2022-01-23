@@ -32,9 +32,9 @@
     display: grid;
     gap: spacing(0);
     background-color: var(--form-bg-color);
-    border-radius: spacing(-4);
+    border-radius: spacing(-3);
     border: solid 1px hsl(0deg 0% 0% / 8%);
-    padding: clamped(12px, 24px);
+    padding: spacing(2, true);
 
     textarea {
       min-height: to-rems(175px);
@@ -54,15 +54,15 @@
     &-list {
       display: flex;
       flex-wrap: wrap;
-      gap: clamped(8px, 16px);
+      gap: spacing(0, true);
     }
   }
 
   &-social {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: clamped(8px, 16px);
-    padding: clamped(8px, 16px);
+    gap: spacing(0, true);
+    padding: spacing(0, true);
     white-space: nowrap;
     min-width: fit-content;
     justify-content: center;
@@ -71,8 +71,8 @@
 
     svg {
       justify-self: center;
-      width: clamped(24px, 32px);
-      height: clamped(24px, 32px);
+      width: spacing(5, true);
+      height: spacing(5, true);
       fill: currentColor;
     }
 

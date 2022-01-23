@@ -39,7 +39,7 @@
     .toc-list {
       --gap: #{spacing(3)};
       list-style: disc; // some headings have numbers already
-      padding-inline-start: clamped(24px, 48px);
+      padding-inline-start: spacing(8, true);
     }
 
     a:not([class]) {

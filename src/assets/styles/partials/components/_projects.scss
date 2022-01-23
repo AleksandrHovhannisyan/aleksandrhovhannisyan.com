@@ -100,14 +100,12 @@
   }
 
   a {
-    height: spacing(8);
-    width: spacing(8);
-    color: var(--color-text-normal);
+    display: flex;
   }
 
   svg {
-    width: inherit;
-    height: inherit;
+    width: spacing(8, true);
+    aspect-ratio: 1;
     fill: currentColor;
   }
 }

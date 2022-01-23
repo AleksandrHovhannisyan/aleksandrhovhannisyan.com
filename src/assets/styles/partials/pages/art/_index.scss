@@ -49,7 +49,7 @@
         }
         left: unset;
         bottom: unset;
-        top: calc(-1 * #{spacing(-2)});
+        top: calc(-1 * spacing(-2));
         right: -#{to-rems(100px)};
         transform: rotate(2deg);
       }
