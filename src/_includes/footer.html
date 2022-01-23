@@ -5,24 +5,22 @@
       <div class="page-footer-subtitle" id="useful-links" aria-hidden="true">Here are some useful links before you go.</div>
       <div class="page-footer-copyright fs-sm"><span aria-hidden="true">&copy;</span> Copyright {{ site.author }}, 2019–Present</div>
     </div>
-    <div class="page-footer-links" aria-labelledby="useful-links">
-      <ul class="page-footer-pages">
-        <li><a href="/contact/" class="page-footer-link">Contact</a></li>
-        <li><a href="/feed.xml" class="page-footer-link">RSS</a></li>
-        <li><a href="/sitemap.xml" class="page-footer-link">Sitemap</a></li>
-      </ul>
-      <ul class="page-footer-socials">
-        {%- assign networks = socials | entries -%}
-        {%- for network in networks -%}
-          {%- assign id = network | first -%}
-          {%- assign data = network | last -%}
-          <li>
-            <a href="{{ data.url }}" target="_blank" rel="noreferrer noopener" class="page-footer-link">
-              {% socialIcon id %}
-            </a>
-          </li>
+    <ul class="page-footer-socials" aria-labelledby="useful-links">
+      {%- assign networks = socials | entries -%}
+      {%- for network in networks -%}
+        {%- assign id = network | first -%}
+        {%- assign data = network | last -%}
+        <li>
+          <a href="{{ data.url }}" target="_blank" rel="noreferrer noopener" class="page-footer-link">
+            {% socialIcon id %}
+          </a>
+        </li>
         {%- endfor -%}
-      </ul>
-    </div>
+        <li>
+          <a href="/feed.xml" class="page-footer-link">
+            {% socialIcon "rss" %}
+          </a>
+        </li>
+    </ul>
   </div>
 </footer>

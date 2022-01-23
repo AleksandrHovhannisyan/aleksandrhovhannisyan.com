@@ -1,23 +1,19 @@
 {
-  "linkedin": {
-    "name": "LinkedIn",
-    "url": "https://www.linkedin.com/in/aleksandr-hovhannisyan-ba154b120/"
+  "twitter": {
+    "name": "Twitter",
+    "url": "https://twitter.com/hovhaDovah"
   },
   "github": {
     "name": "GitHub",
     "url": "https://github.com/AleksandrHovhannisyan"
   },
-  "twitter": {
-    "name": "Twitter",
-    "url": "https://twitter.com/hovhaDovah"
+  "linkedin": {
+    "name": "LinkedIn",
+    "url": "https://www.linkedin.com/in/aleksandr-hovhannisyan-ba154b120/"
   },
   "upwork": {
     "name": "Upwork",
     "url": "https://www.upwork.com/o/profiles/users/~014eb3a95d4d1fd855/?s=1110580755107926016"
-  },
-  "stackexchange": {
-    "name": "Stack Exchange",
-    "url": "https://stackexchange.com/users/6935154/aleksandrh"
   },
   "buymeacoffee": {
     "name": "Buy Me a Coffee",

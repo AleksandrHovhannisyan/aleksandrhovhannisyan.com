@@ -12,7 +12,7 @@ body {
   padding-bottom: var(--navbar-height);
   @include font-size("base");
   @include font-weight("body", "regular");
-  @include tablet {
+  @include mobile-lg {
     padding-bottom: unset;
   }
 }

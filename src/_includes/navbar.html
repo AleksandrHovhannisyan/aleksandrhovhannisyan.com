@@ -14,7 +14,7 @@
         <li class="navbar-item">
           <a class="navbar-link home" href="/" {% if permalink == "/" %}aria-current="page"{% endif %}>Home</a>
         </li>
-        {%- assign navLinks = "About,Art,Blog,Contact" | split: ',' -%}
+        {%- assign navLinks = "About,Art,Blog" | split: ',' -%}
         {%- for link in navLinks -%}
         <li class="navbar-item">
           {%- assign href = link | downcase | prepend: "/" | append: "/" -%}

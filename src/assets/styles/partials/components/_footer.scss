@@ -29,15 +29,12 @@
     color: hsl(0deg 0% 70%);
   }
 
-  &-links {
+  &-socials {
     display: flex;
-    flex-direction: column;
-    align-self: center;
     align-items: center;
-    gap: spacing(3);
+    justify-content: center;
   }
 
-  &-pages,
   &-socials {
     display: flex;
     align-items: center;
@@ -66,9 +63,8 @@
       gap: spacing(0);
     }
 
-    &-links {
-      justify-content: center;
-      align-items: flex-end;
+    &-socials {
+      justify-content: flex-end;
     }
   }
 }

@@ -24,6 +24,7 @@
   &-container {
     display: flex;
     align-items: center;
+    gap: spacing(0, true);
   }
 
   &-header {
@@ -227,7 +228,7 @@
     }
   }
 }
-@include tablet-sm {
+@include mobile-lg {
   .navbar {
     justify-content: space-between;
 
