@@ -19,6 +19,15 @@
   padding-right: var(--padding);
 }
 
+@mixin full-bleed {
+  --offset: calc(-1 * var(--padding));
+  border-radius: 0;
+  margin-inline: var(--offset);
+  @include tablet {
+    margin-inline: 0;
+  }
+}
+
 // Inspiration: https://stackoverflow.com/a/49437769/5323344
 
 @mixin transition($props...) {

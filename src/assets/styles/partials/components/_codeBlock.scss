@@ -9,10 +9,9 @@ pre[class*="language-"] {
   background: var(--color-code-background);
   box-shadow: var(--code-block-box-shadow);
   color: var(--color-code-text);
-  margin-inline: calc(-1 * var(--padding));
+  @include full-bleed;
   @include tablet {
     border-radius: spacing(-2);
-    margin-inline: 0;
   }
 
   code {
