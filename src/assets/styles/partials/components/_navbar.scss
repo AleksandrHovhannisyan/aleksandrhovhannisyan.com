@@ -17,10 +17,14 @@
   align-items: center;
   justify-content: space-between;
   gap: spacing(-3);
-  padding: 0 spacing(-2);
   color: var(--navbar-text-color);
   @include font-family("title");
   @include font-weight("title", "regular");
+
+  &-container {
+    display: flex;
+    align-items: center;
+  }
 
   &-header {
     position: fixed;
@@ -29,7 +33,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    padding-block: spacing(0, true);
+    padding-block: spacing(-1, true);
     background-color: var(--navbar-bg-color);
     box-shadow: var(--navbar-box-shadow);
     min-height: var(--navbar-height);
@@ -226,7 +230,6 @@
 @include tablet-sm {
   .navbar {
     justify-content: space-between;
-    @include centered;
 
     &-header {
       position: unset;
