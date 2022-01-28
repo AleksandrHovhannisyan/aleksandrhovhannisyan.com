@@ -3,14 +3,12 @@
 
 #artwork-page-header {
   text-align: center;
-  padding-bottom: spacing(5);
+  padding: spacing(5) 0;
 
   .title {
-    font-size: spacing(8);
-    line-height: 1.8;
     text-shadow: spacing(-3) spacing(-3) black;
     max-width: fit-content;
-    margin: 0 auto spacing(0);
+    margin: 0 auto;
     position: relative;
     @include font-family("cursiveTitle");
     @include font-weight("cursiveTitle", "regular");
@@ -25,33 +23,34 @@
           transform: scale(1.1);
         }
       }
+
+      --transform-base: rotate(2deg) translateX(-50%);
       content: "Best viewed in Chrome!";
       text-shadow: none;
       vertical-align: top;
       position: absolute;
-      right: 0;
-      bottom: -2em;
+      top: 100%;
       left: 0;
+      width: 100%;
       animation: subtitle-pulse 1s ease infinite alternate-reverse;
       will-change: transform;
       @include font-size("md");
       @include font-family("cursiveBody");
       @include font-weight("cursiveBody", "regular");
+
       @include mobile-lg {
+        left: unset;
+        top: -10%;
+
         @keyframes subtitle-pulse {
           from {
-            transform: rotate(2deg) scale(1);
+            transform: var(--transform-base) scale(1);
           }
 
           to {
-            transform: rotate(2deg) scale(1.1);
+            transform: var(--transform-base) scale(1.1);
           }
         }
-        left: unset;
-        bottom: unset;
-        top: calc(-1 * spacing(-2));
-        right: -#{to-rems(100px)};
-        transform: rotate(2deg);
       }
     }
   }
