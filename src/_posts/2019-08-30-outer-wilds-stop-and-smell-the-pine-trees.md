@@ -6,7 +6,6 @@ categories: [off-topic, gaming, outer-wilds]
 commentsId: 40
 thumbnail: thumbnail.jpg
 lastUpdated: 2021-10-24
-isFeatured: true
 ---
 
 {% aside %}
