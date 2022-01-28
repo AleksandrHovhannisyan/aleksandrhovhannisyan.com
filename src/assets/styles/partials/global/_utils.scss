@@ -16,7 +16,7 @@
   --padding-x: #{spacing(0, true)};
 
   // why not just use content-box? because it creates overflow issues on mobile with width: 100% below
-  max-width: calc(#{to-rems(960px)} + 2 * var(--padding-x));
+  max-width: calc(#{to-rems(868px)} + 2 * var(--padding-x));
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -56,7 +56,7 @@
 
 .prose {
   > :where(:not(h1, h2, h3, h4, h5, h6)) {
-    max-width: to-rems(800px);
+    max-width: 80ch;
   }
 }
 
