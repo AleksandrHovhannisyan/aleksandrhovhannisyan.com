@@ -3,9 +3,7 @@
 
 .project {
   display: grid;
-  grid-template-rows: max-content 1fr max-content;
-  grid-template-columns: 1fr;
-  row-gap: calc(var(--card-padding) / 2);
+  gap: calc(var(--card-padding) / 2);
 
   &-grid {
     --gap: #{spacing(5)};
@@ -16,8 +14,7 @@
   }
 
   &-wrapper {
-    flex: 1;
-    min-width: to-rems(270px);
+    --container-width: 50rem;
 
     // Prevents the dreaded "doom flicker": https://www.joshwcomeau.com/animation/css-transitions/#doom-flicker
     &:is(:hover, :focus-within) {

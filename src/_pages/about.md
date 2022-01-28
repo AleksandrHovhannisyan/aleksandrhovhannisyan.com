@@ -27,7 +27,7 @@ I won't bore you too much with my work history; that's what [my LinkedIn]({{ soc
 
 I have experience with a few different stacks—I've done a bit of desktop, mobile, and game development, either on my own time or for class projects. Nowadays, I like to focus on web technologies because I enjoy working on projects that have a strong UI/UX component. Below are a few of the projects that I'm proud of.
 
-<ul class="project-grid">
+<ul class="flex-wrap">
   {%- for project in projects -%}
     <li class="project-wrapper">
       {%- include projectCard.html project: project -%}
