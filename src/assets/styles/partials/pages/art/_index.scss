@@ -56,23 +56,13 @@
   }
 }
 
-#artwork-list {
-  --gap: #{spacing(5)};
-  padding-top: calc(2 * var(--gap));
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--gap);
-}
-
 .artwork {
-  --artwork-per-row: 2;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 1 1 calc(1 / var(--artwork-per-row) * 100% - 2 * var(--gap));
   padding: spacing(3);
-  @include mobile-lg {
-    --artwork-per-row: 3;
+  @include tablet {
+    --columns: 3;
   }
 }
 

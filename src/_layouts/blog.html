@@ -10,7 +10,7 @@ eleventyComputed:
       crossorigin: true
 ---
 
-<article class="blog">
+<article class="stack">
   {%- assign pageCategory = category.title | default: 'all' -%}
   <header>
     <h1 class="blog-title">{%- if pageCategory == 'all' -%}All Blog Posts{%- else -%}Posts tagged with: {{ pageCategory }}{%- endif -%}</h1>

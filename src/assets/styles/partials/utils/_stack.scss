@@ -1,0 +1,7 @@
+@import "../functions";
+
+.stack {
+  > * + * {
+    margin-top: var(--gap, #{spacing(5)});
+  }
+}
