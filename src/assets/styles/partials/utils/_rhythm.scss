@@ -1,0 +1,5 @@
+.rhythm {
+  > * + * {
+    margin-top: var(--line-height);
+  }
+}
