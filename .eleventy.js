@@ -97,7 +97,9 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPlugin(PluginFootnotes, {
     baseClass: 'footnotes',
     classes: {
+      container: 'rhythm',
       list: 'list',
+      ref: 'underlined-link',
     },
     title: 'Footnotes',
     titleId: 'footnotes-label',

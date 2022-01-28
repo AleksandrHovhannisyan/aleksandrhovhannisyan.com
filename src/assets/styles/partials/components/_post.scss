@@ -24,11 +24,9 @@
   }
 
   &-content {
-    max-width: 68ch;
     display: flow-root;
     overflow-wrap: break-word;
     counter-reset: footnotes;
-    @include rhythm;
 
     #skip-toc {
       transform: translateY(-50%);

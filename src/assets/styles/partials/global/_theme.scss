@@ -25,7 +25,6 @@ html {
 
   --transition-duration: 0.2s;
   --transition-timing-function: ease;
-  --page-max-width: #{to-rems(810px)};
   --navbar-height: #{clamped(64px, 76px)};
 
   &[data-theme="light"] {

@@ -46,7 +46,7 @@ export const renderComments = async (comments) => {
                     }
                     ${comment.isEdited ? `<span class="fs-sm post-comment-edited">Edited</span>` : ''}
                   </header>
-                  <div class="post-comment-body">${comment.body}</div>
+                  <div class="post-comment-body rhythm">${comment.body}</div>
                 </article>
               </li>`;
     })

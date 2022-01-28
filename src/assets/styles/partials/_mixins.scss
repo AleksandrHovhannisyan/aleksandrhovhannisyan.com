@@ -6,21 +6,8 @@
 @import "./functions";
 @import "./breakpoints";
 
-@mixin centered {
-  /* stylelint-disable-next-line scss/no-global-function-names */
-  --padding: min(4vw, #{spacing(-1)});
-
-  // why not just use content-box? because it creates overflow issues on mobile with width: 100% below
-  max-width: calc(var(--page-max-width) + 2 * var(--padding));
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: var(--padding);
-  padding-right: var(--padding);
-}
-
 @mixin full-bleed {
-  --offset: calc(-1 * var(--padding));
+  --offset: calc(-1 * var(--padding-x));
   border-radius: 0;
   margin-inline: var(--offset);
   @include tablet {

@@ -5,7 +5,6 @@
   padding: spacing(2, true) spacing(3, true);
   background-color: var(--aside-bg-color);
   color: var(--color-text-emphasis);
-  @include rhythm;
 
   code {
     padding: 0;

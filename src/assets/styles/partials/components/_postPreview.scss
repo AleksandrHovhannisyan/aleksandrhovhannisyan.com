@@ -57,7 +57,7 @@
   }
   @include tablet {
     & {
-      grid-template-columns: auto min-content auto;
+      grid-template-columns: min-content min-content auto;
       column-gap: spacing(-1);
       grid-template-areas:
         "thumbnail date tags"

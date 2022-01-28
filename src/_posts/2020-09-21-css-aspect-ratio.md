@@ -453,7 +453,6 @@ Hopefully, you now have a better understanding of how to define responsive aspec
     background-color: var(--pill-bg-color);
     color: var(--color-text-emphasis);
     font-weight: var(--fw-bold);
-    list-style: none;
     border-radius: var(--sp--3);
   }
   .demo-tile::after {
@@ -485,8 +484,6 @@ Hopefully, you now have a better understanding of how to define responsive aspec
     grid-template-columns: repeat(3, 1fr);
     grid-row-gap: var(--gap);
     grid-column-gap: var(--gap);
-    list-style: none;
-    padding: 0;
   }
   .demo-square-grid > * {
     aspect-ratio: 1;
@@ -499,6 +496,9 @@ Hopefully, you now have a better understanding of how to define responsive aspec
     height: 100%;
     object-fit: cover;
     object-position: center;
+  }
+  .demo-square figure {
+    --offset: 0;
   }
   .demo-document {
     writing-mode: vertical-rl;

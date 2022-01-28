@@ -11,8 +11,17 @@
   }
 }
 
-.centered {
-  @include centered;
+.wrapper {
+  /* stylelint-disable-next-line scss/no-global-function-names */
+  --padding-x: #{spacing(0, true)};
+
+  // why not just use content-box? because it creates overflow issues on mobile with width: 100% below
+  max-width: calc(#{to-rems(960px)} + 2 * var(--padding-x));
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--padding-x);
+  padding-right: var(--padding-x);
 }
 
 .circle {
@@ -37,6 +46,18 @@
 
 .full-bleed {
   @include full-bleed;
+}
+
+.rhythm {
+  > * + * {
+    margin-top: var(--line-height);
+  }
+}
+
+.prose {
+  > :where(:not(h1, h2, h3, h4, h5, h6)) {
+    max-width: to-rems(800px);
+  }
 }
 
 // Until this gets fixed: https://bugs.chromium.org/p/chromium/issues/detail?id=1266022&q=emoji%20bold&can=2

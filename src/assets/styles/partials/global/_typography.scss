@@ -27,6 +27,16 @@ strong {
   @include font-weight("body", "bold");
 }
 
+code {
+  font-size: 0.8em;
+  @include font-family("code");
+  @include font-weight("code", "medium");
+
+  :is(strong, h1, h2, h3, h4, h5, h6) & {
+    @include font-weight("code", "bold");
+  }
+}
+
 :is(h1, h2, h3, h4, h5, h6, label, th) {
   color: var(--color-text-emphasis);
   @include heading;

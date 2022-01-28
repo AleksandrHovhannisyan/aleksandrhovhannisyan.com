@@ -1664,8 +1664,6 @@ That does it for this tutorial! I hope you learned something new (and had fun!).
     align-items: center;
     flex-wrap: wrap;
     gap: var(--sp-8);
-    padding: 0;
-    max-width: 100%;
   }
   .post-content .svg-tutorial__icon {
     display: flex;

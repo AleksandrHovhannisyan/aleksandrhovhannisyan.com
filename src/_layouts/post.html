@@ -30,7 +30,7 @@ eleventyComputed:
       {%- endfor -%}
     </ul>
   </header>
-  <div class="post-content">
+  <div class="post-content rhythm prose">
     {{ content }}
     {%- if commentsId and site.featureFlags.enableComments -%}
       <section id="comments" data-comments-id="{{ commentsId }}">
