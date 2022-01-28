@@ -26,4 +26,8 @@
   // Fixes jankiness on Windows
   will-change: transform, box-shadow;
   @include transition(box-shadow, transform);
+
+  &:focus-within {
+    outline: solid to-rems(3px) currentColor;
+  }
 }

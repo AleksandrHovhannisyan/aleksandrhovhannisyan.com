@@ -7,26 +7,8 @@
   grid-template-columns: 1fr;
   row-gap: calc(var(--card-padding) / 2);
 
-  &-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 0;
-    border-radius: inherit;
-    color: var(--color-text-emphasis);
-    background-color: var(--card-bg-color);
-    @include transition(opacity);
-    @include font-size("md");
-  }
-
   &-grid {
-    --gap: #{spacing(8)};
+    --gap: #{spacing(5)};
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -42,10 +24,6 @@
       .project {
         box-shadow: var(--card-box-shadow-focus);
         transform: var(--card-offset-y-focus);
-      }
-
-      .project-link {
-        opacity: 0.92;
       }
     }
   }
@@ -68,8 +46,19 @@
     }
   }
 
-  &-name {
-    color: var(--color-text-emphasis);
+  &-link {
+    &:is(:focus, :focus-visible) {
+      outline: none;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
   }
 
   &-rating {
