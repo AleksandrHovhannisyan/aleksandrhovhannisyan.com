@@ -17,8 +17,8 @@ eleventyComputed:
     <p class="fs-md">
       Filter by one of the following popular tags, or <a class="underlined-link" href="/categories/">view all tags</a>.
     </p>
-    <nav aria-label="Popular tags" class="relative">
-      <a class="screen-reader-only skip-popular-tags" href="#skip-popular-tags">Skip to posts</a>
+    <nav aria-label="Popular tags" class="relative prose prose-tight">
+      <a class="screen-reader-only flex-center skip-popular-tags" href="#skip-popular-tags">Skip to posts</a>
       <ol class="pill-group blog-tags">
         {%- assign popularCategories = collections.popularCategories -%}
         {%- for category in popularCategories %}
