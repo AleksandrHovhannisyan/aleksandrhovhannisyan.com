@@ -33,10 +33,13 @@ I have experience with a few different stacks—I've done a bit of desktop, mobi
       {%- include projectCard.html project: project -%}
     </li>
   {%- endfor -%}
-  <li class="project-wrapper github-cta">
-    <h3 class="github-cta-heading fs-base">Want to see more of my work?</h3>
-    <p class="github-cta-subheading">Check out my other repos:</p>
+  <li class="project-wrapper github-cta stack gap-0">
+    <div>
+      <h3 class="fs-base">Want to see more of my work?</h3>
+      <p>Check out my other repos:</p>
+    </div>
     <a
+      class="flex"
       aria-label="Aleksandr Hovhannisyan's GitHub profile."
       href="https://github.com/AleksandrHovhannisyan?tab=repositories"
       >{%- socialIcon "github" -%}</a>

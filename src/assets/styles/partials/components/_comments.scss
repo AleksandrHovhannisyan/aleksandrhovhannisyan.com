@@ -3,9 +3,6 @@
 @import "../mixins";
 
 .comment-actions {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   flex-wrap: wrap;
   margin-top: spacing(5);
   gap: spacing(0);

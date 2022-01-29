@@ -3,14 +3,10 @@
 @import "../mixins";
 
 body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   min-height: 100vh;
   background-color: var(--main-bg-color);
   color: var(--color-text-normal);
   padding-bottom: var(--navbar-height);
-  @include font-size("base");
   @include font-weight("body", "regular");
   @include mobile-lg {
     padding-bottom: unset;

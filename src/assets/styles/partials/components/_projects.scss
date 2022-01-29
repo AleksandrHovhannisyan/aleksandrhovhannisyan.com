@@ -14,20 +14,9 @@
     }
   }
 
-  &-header {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &-name-wrapper {
-    display: flex;
-    align-items: center;
-    gap: spacing(-3);
-  }
-
   &-icon {
     picture {
-      width: spacing(3);
+      width: var(--fs-base);
       aspect-ratio: 1;
     }
   }
@@ -47,36 +36,18 @@
     }
   }
 
-  &-rating {
-    display: flex;
-    gap: spacing(-3);
-    align-items: center;
-  }
-
-  &-technologies {
-    gap: spacing(-2);
-  }
-
   &-technology {
     border-radius: spacing(-4);
     padding: spacing(-3) spacing(-1);
-    @include font-size("xs");
   }
 }
 
 .github-cta {
+  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  &-subheading {
-    margin-bottom: spacing(0);
-  }
-
-  a {
-    display: flex;
-  }
 
   svg {
     width: spacing(8, true);
