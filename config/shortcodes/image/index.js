@@ -113,7 +113,9 @@ const imageShortcode = async (props) => {
 
   // Link to the highest resolution optimized image
   if (clickable) {
-    return outdent`<a class="image-link" href="${formatSizes[optimizedFormats[0]].largest.url}">${picture}</a>`;
+    return outdent`<a class="outline-offset block" href="${
+      formatSizes[optimizedFormats[0]].largest.url
+    }">${picture}</a>`;
   }
 
   // Otherwise just return the plain picture tag
