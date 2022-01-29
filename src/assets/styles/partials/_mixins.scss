@@ -46,20 +46,6 @@
   z-index: z-index($key);
 }
 
-/// Given a class prefix, generates spacing design tokens from the global spacing config
-@mixin generate-spacing-tokens($prefix) {
-  $spacing-steps: get($config, "spacing", "steps");
-  $spacing-base-index: list.index($spacing-steps, get($config, "spacing", "base"));
-  @for $i from 1 through list.length($spacing-steps) {
-    $step: $i - $spacing-base-index;
-    $value-px: list.nth($spacing-steps, $i) * 1px;
-    /* stylelint-disable-next-line custom-property-pattern */
-    .#{$prefix}-#{$step} {
-      gap: var(--#{get-custom-property-prefix("spacing")}-#{$step});
-    }
-  }
-}
-
 @mixin font-size($size) {
   // expose CSS var to later compute other things, e.g., spacing
   --line-height: calc(2ex + #{to-rems(11px)});

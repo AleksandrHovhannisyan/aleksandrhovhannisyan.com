@@ -10,9 +10,9 @@ eleventyComputed:
       crossorigin: true
 ---
 
-<article class="stack stack-10">
+<article class="stack gap-10">
   {%- assign pageCategory = category.title | default: 'all' -%}
-  <header class="stack stack-0">
+  <header class="stack gap-0">
     <h1>{%- if pageCategory == 'all' -%}All Blog Posts{%- else -%}Posts tagged with: {{ pageCategory }}{%- endif -%}</h1>
     <p class="fs-md">
       Filter by one of the following popular tags, or <a class="underlined-link" href="/categories/">view all tags</a>.

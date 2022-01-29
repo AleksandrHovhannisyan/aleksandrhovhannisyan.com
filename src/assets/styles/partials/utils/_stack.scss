@@ -1,9 +1,4 @@
-@import "../mixins";
-
 .stack {
   display: flex;
   flex-direction: column;
 }
-
-// Stack tokens
-@include generate-spacing-tokens("stack");
