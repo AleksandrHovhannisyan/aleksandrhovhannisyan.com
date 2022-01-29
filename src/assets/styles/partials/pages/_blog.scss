@@ -2,10 +2,6 @@
 @import "../mixins";
 
 .blog {
-  &-nav {
-    position: relative;
-  }
-
   &-tags {
     max-width: 60ch;
   }
