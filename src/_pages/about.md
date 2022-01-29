@@ -33,7 +33,7 @@ I have experience with a few different stacks—I've done a bit of desktop, mobi
       {%- include projectCard.html project: project -%}
     </li>
   {%- endfor -%}
-  <li class="project-wrapper github-cta stack gap-0">
+  <li class="github-cta stack flex-center gap-0 text-center">
     <div>
       <h3 class="fs-base">Want to see more of my work?</h3>
       <p>Check out my other repos:</p>

@@ -1,6 +1,6 @@
-<header class="navbar-header">
+<header class="navbar-header flex align-center">
   <div class="navbar-container container">
-    <nav class="navbar fs-sm" aria-label="Primary">
+    <nav class="navbar flex align-center justify-between gap--3 relative fs-sm" aria-label="Primary">
       <a href="#page-content" class="screen-reader-only skip-navigation">Skip to content</a>
       <a class="navbar-branding outline-offset heading" href="/" aria-label="Home page" {% if permalink == "/" %}aria-current="page"{% endif %}>
         {%- comment -%}TODO: remove this hacky logic for assembling array as string once PR goes in for object arguments in liquid{%- endcomment -%}
