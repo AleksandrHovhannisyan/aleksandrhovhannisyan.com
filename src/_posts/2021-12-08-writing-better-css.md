@@ -523,7 +523,7 @@ Or maybe it participates in a grid layout and receives its width from the grid f
 
 Either way, you get a square shape that scales responsively.
 
-{%- assign squareDemoMaxWidth = '200px' -%}
+{% assign squareDemoMaxWidth = '200px' %}
 <div class="flex-center text-center" style="font-family: var(--ff-title); background: var(--pill-bg-color); aspect-ratio: 1; max-width: {{ squareDemoMaxWidth }}; padding: var(--sp-5); color: var(--color-text-emphasis);" aria-hidden="true">I'm a square. My max width is {{ squareDemoMaxWidth }}.</div>
 
 One of my favorite things about `aspect-ratio` is how it can be used to compose utility classes with additional properties, like this handy class for circles:
