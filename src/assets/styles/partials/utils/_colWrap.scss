@@ -1,6 +1,6 @@
 @import "../functions";
 
-.flex-wrap {
+.col-wrap {
   --gap: #{spacing(5)};
   display: flex;
   flex-wrap: wrap;
@@ -16,6 +16,10 @@
   }
 }
 
-.columns-1 {
+.col-1 {
   --columns: 1;
+}
+
+.col-3 {
+  --columns: 3;
 }

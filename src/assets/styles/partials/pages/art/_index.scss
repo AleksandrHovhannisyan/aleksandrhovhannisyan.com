@@ -57,23 +57,10 @@
 }
 
 .artwork {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: spacing(3);
-  @include tablet {
-    --columns: 3;
-  }
 }
 
 .artwork-link {
-  display: flex;
-  flex-direction: column;
-  row-gap: spacing(0);
-  align-items: center;
-  justify-content: center;
-  position: relative;
-
   &::after {
     @keyframes popin {
       0% {

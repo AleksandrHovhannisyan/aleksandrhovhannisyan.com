@@ -40,7 +40,7 @@ noindex: true
 
 ### Background
 
-<div class="flex-wrap" style="--columns: {{ surfaceColors | size }}; --container-width: 10rem;">
+<div class="col-wrap" style="--columns: {{ surfaceColors | size }}; --container-width: 10rem;">
 {%- for color in surfaceColors -%}
   <div style="background-color: var(--color-surface-{{ color }}); aspect-ratio: 1; outline: solid 1px;"></div>
 {%- endfor -%}
@@ -48,7 +48,7 @@ noindex: true
 
 ### Text
 
-<div  class="flex-wrap" style="--columns: 3;">
+<div  class="col-wrap" style="--columns: 3;">
 {%- for color in foregroundColors -%}
   <div style="color: var(--color-{{ color }})"><strong>{{ color }}</strong>: Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
 {%- endfor -%}

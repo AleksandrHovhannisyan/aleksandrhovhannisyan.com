@@ -26,8 +26,8 @@ export const renderComments = async (comments) => {
   commentsList.innerHTML = comments
     .map((comment) => {
       return `<li>
-                <article class="post-comment">
-                  <header class="post-comment-header">
+                <article class="post-comment stack gap--2">
+                  <header class="flex align-center flex-wrap gap-0 relative">
                     <img src="${comment.user.avatarUrl}" alt="" aria-hidden="true" class="post-comment-avatar circle">
                     <a
                       href="https://github.com/${comment.user.name}"

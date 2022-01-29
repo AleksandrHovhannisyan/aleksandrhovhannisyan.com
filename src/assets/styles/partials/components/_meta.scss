@@ -20,10 +20,6 @@
   }
 
   &-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: spacing(-2);
-
     li:last-of-type .post-meta-tag::after {
       content: none;
     }

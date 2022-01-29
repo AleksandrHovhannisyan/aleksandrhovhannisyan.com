@@ -3,9 +3,7 @@
 @import "../mixins";
 
 .comment-actions {
-  flex-wrap: wrap;
   margin-top: spacing(5);
-  gap: spacing(0);
 }
 
 .post-comment-button {
@@ -22,15 +20,6 @@
   --meta-spacing: #{spacing(-2)};
   padding-inline-start: calc(var(--avatar-size) + var(--meta-spacing));
 
-  &-header {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    position: relative;
-    margin-bottom: spacing(-2);
-    gap: var(--meta-spacing);
-  }
-
   &-avatar {
     align-self: flex-start;
     position: absolute;
@@ -44,8 +33,6 @@
 
   &-author {
     border-radius: spacing(-4);
-    display: flex;
-    align-items: center;
     padding: spacing(-3) spacing(-2);
   }
 

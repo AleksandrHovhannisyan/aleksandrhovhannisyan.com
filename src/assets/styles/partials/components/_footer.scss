@@ -3,27 +3,18 @@
 .page-footer {
   background-color: var(--footer-bg-color);
   color: var(--navbar-text-color);
-  align-items: center;
-  justify-content: center;
   text-align: center;
   padding-block: spacing(5);
 
-  &-title,
+  h2,
   a {
     color: white;
   }
 
-  &-socials {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: spacing(3);
-
-    svg {
-      aspect-ratio: 1;
-      width: spacing(3);
-      fill: currentColor;
-    }
+  svg {
+    aspect-ratio: 1;
+    width: spacing(3);
+    fill: currentColor;
   }
 
   @include tablet {
