@@ -2,17 +2,6 @@
 @import "../mixins";
 
 .project {
-  display: grid;
-  gap: calc(var(--card-padding) / 2);
-
-  &-grid {
-    --gap: #{spacing(5)};
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--gap);
-  }
-
   &-wrapper {
     --container-width: 50rem;
 
