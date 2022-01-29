@@ -33,29 +33,31 @@ eleventyComputed:
   <div class="post-content rhythm prose">
     {{ content }}
     {%- if commentsId and site.featureFlags.enableComments -%}
-      <section id="comments" data-comments-id="{{ commentsId }}">
-        <div class="comment-actions">
-          <h2>Comments <span id="comments-count" aria-hidden="true"></span></h2>
-          <a
-            class="button post-comment-button"
-            href="https://github.com/{{ site.issues.owner }}/{{ site.issues.repo }}/issues/{{ commentsId }}"
-            aria-label="Post a comment on GitHub"
-            target="_blank"
-            rel="noreferrer noopener"
-            >Post comment</a
-          >
+      <section id="comments" class="stack gap-10" data-comments-id="{{ commentsId }}">
+        <div class="stack gap-0">
+          <div class="comment-actions">
+            <h2>Comments <span id="comments-count" aria-hidden="true"></span></h2>
+            <a
+              class="button post-comment-button"
+              href="https://github.com/{{ site.issues.owner }}/{{ site.issues.repo }}/issues/{{ commentsId }}"
+              aria-label="Post a comment on GitHub"
+              target="_blank"
+              rel="noreferrer noopener"
+              >Post comment</a
+            >
+          </div>
+          <p class="comments-explanation">
+            This comment system is powered by the
+            <a
+              href="https://docs.github.com/en/rest/reference/issues"
+              target="_blank"
+              rel="noreferrer noopener"
+              >GitHub Issues API</a
+            >. You can learn more about
+            <a href="/blog/static-site-comments-github-issues/">how I built it</a> or
+            post a comment over on GitHub, and it'll show up below once you reload this page.
+          </p>
         </div>
-        <p class="comments-explanation">
-          This comment system is powered by the
-          <a
-            href="https://docs.github.com/en/rest/reference/issues"
-            target="_blank"
-            rel="noreferrer noopener"
-            >GitHub Issues API</a
-          >. You can learn more about
-          <a href="/blog/static-site-comments-github-issues/">how I built it</a> or
-          post a comment over on GitHub, and it'll show up below once you reload this page.
-        </p>
         <div id="comments-wrapper">
           <p id="comments-placeholder">Loading...</p>
         </div>

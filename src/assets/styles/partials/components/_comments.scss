@@ -7,8 +7,7 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-top: spacing(8);
-  margin-bottom: spacing(0);
+  margin-top: spacing(5);
   gap: spacing(0);
 }
 
@@ -17,19 +16,8 @@
   padding: spacing(-2) spacing(0);
 }
 
-#comments-wrapper {
-  margin-top: spacing(10);
-}
-
 #comments-placeholder {
   text-align: center;
-}
-
-.comments-list {
-  display: grid;
-  row-gap: spacing(10);
-  grid-template-columns: minmax(0, 1fr);
-  padding: 0;
 }
 
 .post-comment {
@@ -51,11 +39,6 @@
     position: absolute;
     width: var(--avatar-size);
     left: calc(-1 * var(--avatar-size) - var(--meta-spacing));
-  }
-
-  &-username {
-    color: var(--color-text-emphasis);
-    @include underlined-link;
   }
 
   &-edited {

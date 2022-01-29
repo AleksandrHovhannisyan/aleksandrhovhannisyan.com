@@ -22,7 +22,7 @@ export const renderComments = async (comments) => {
   commentsCounter.innerText = `(${comments.length})`;
 
   const commentsList = document.createElement('ol');
-  commentsList.className = 'comments-list';
+  commentsList.className = 'stack gap-10';
   commentsList.innerHTML = comments
     .map((comment) => {
       return `<li>
@@ -31,7 +31,7 @@ export const renderComments = async (comments) => {
                     <img src="${comment.user.avatarUrl}" alt="" aria-hidden="true" class="post-comment-avatar circle">
                     <a
                       href="https://github.com/${comment.user.name}"
-                      class="post-comment-username heading"
+                      class="underlined-link heading"
                       target="_blank"
                       rel="noreferrer noopener"
                     >
