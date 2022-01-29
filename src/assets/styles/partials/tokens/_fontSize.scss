@@ -1,0 +1,8 @@
+@import "../config";
+@import "../functions";
+
+@each $step in get($config, "typeScale", "steps") {
+  .#{get-custom-property-prefix("typeScale")}-#{$step} {
+    @include font-size($step);
+  }
+}

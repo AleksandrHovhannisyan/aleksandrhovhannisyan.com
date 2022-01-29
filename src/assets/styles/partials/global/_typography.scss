@@ -1,26 +1,5 @@
-@use "sass:list";
-@use "sass:math";
-
-@import "../variables";
 @import "../mixins";
 @import "../functions";
-
-html {
-  @for $i from 1 through length($type-steps) {
-    $step: list.nth($type-steps, $i);
-    $power: $i - $type-base-index;
-    $min: rnd($type-base-min * math.pow($type-scale-min, $power), 2);
-    $max: rnd($type-base-max * math.pow($type-scale-max, $power), 2);
-    /* stylelint-disable-next-line custom-property-pattern */
-    --fs-#{$step}: #{clamped($min, $max)};
-  }
-}
-
-@each $step in $type-steps {
-  .fs-#{$step} {
-    @include font-size($step);
-  }
-}
 
 strong {
   @include font-family("body");

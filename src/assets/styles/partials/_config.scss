@@ -1,0 +1,23 @@
+/* stylelint-disable value-keyword-case */
+$config: (
+  typeScale: (
+    steps: ("xs", "sm", "base", "md", "lg", "xl", "xxl", "xxxl"),
+    base: "base",
+    customPropertyPrefix: "fs",
+    sizes: (
+      min: (
+        baseFontSize: 16px,
+        ratio: 1.2,
+      ),
+      max: (
+        baseFontSize: 20px,
+        ratio: 1.25,
+      ),
+    ),
+  ),
+  spacing: (
+    steps: (1, 2, 4, 8, 12, 16, 18, 20, 24, 28, 32, 36, 40, 48, 56, 64),
+    base: 16,
+    customPropertyPrefix: "sp",
+  ),
+);

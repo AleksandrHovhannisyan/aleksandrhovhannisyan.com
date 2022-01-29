@@ -1,7 +1,8 @@
 @import "partials/global/reset";
+@import "partials/global/customProperties";
 @import "partials/global/typography";
 @import "partials/global/index";
-@import "partials/global/theme";
+@import "partials/tokens/fontSize";
 @import "partials/utils/bannerHeading";
 @import "partials/utils/circle";
 @import "partials/utils/container";
