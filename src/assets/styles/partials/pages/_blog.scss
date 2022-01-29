@@ -1,38 +1,26 @@
+@import "../functions";
 @import "../mixins";
 
 .blog {
-  &-title {
-    margin-bottom: spacing(0);
-  }
-
-  &-description {
-    margin-bottom: spacing(0);
-  }
-
   &-nav {
     position: relative;
   }
 
-  &-description,
   &-tags {
     max-width: 60ch;
   }
+}
 
-  .skip-popular-tags {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--main-bg-color);
-    color: var(--color-text-emphasis);
-    @include font-size("md");
-    @include font-weight("body", "bold");
-  }
-
-  .tag-count {
-    @include font-size("xs");
-  }
+.skip-popular-tags {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--main-bg-color);
+  color: var(--color-text-emphasis);
+  @include font-size("md");
+  @include font-weight("body", "bold");
 }

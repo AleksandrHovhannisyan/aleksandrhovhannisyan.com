@@ -10,11 +10,11 @@ eleventyComputed:
       crossorigin: true
 ---
 
-<article class="stack">
+<article class="stack stack-10">
   {%- assign pageCategory = category.title | default: 'all' -%}
-  <header>
-    <h1 class="blog-title">{%- if pageCategory == 'all' -%}All Blog Posts{%- else -%}Posts tagged with: {{ pageCategory }}{%- endif -%}</h1>
-    <p class="blog-description fs-md">
+  <header class="stack stack-0">
+    <h1>{%- if pageCategory == 'all' -%}All Blog Posts{%- else -%}Posts tagged with: {{ pageCategory }}{%- endif -%}</h1>
+    <p class="fs-md">
       Filter by one of the following popular tags, or <a class="underlined-link" href="/categories/">view all tags</a>.
     </p>
     <nav aria-label="Popular tags" class="blog-nav">

@@ -1,7 +1,18 @@
+@use "sass:list";
+@import "../variables";
 @import "../functions";
 
 .stack {
-  > * + * {
-    margin-top: var(--gap, #{spacing(5)});
+  display: flex;
+  flex-direction: column;
+}
+
+// Stack tokens
+@for $i from 1 through list.length($spacing-steps-px) {
+  $step: $i - $spacing-base-index;
+  $value-px: list.nth($spacing-steps-px, $i) * 1px;
+  /* stylelint-disable-next-line custom-property-pattern */
+  .stack-#{$step} {
+    gap: var(--sp-#{$step});
   }
 }
