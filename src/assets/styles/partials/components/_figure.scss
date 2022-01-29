@@ -1,8 +1,10 @@
 @import "../mixins";
 
-:is(figcaption, cite) {
+figcaption {
   text-align: center;
+}
 
+:is(figcaption, cite) {
   &,
   a {
     color: var(--color-text-soft);
