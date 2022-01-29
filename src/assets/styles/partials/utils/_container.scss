@@ -7,8 +7,6 @@
   // why not just use content-box? because it creates overflow issues on mobile with width: 100% below
   max-width: calc(#{to-rems(868px)} + 2 * var(--padding-x));
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: var(--padding-x);
-  padding-right: var(--padding-x);
+  margin-inline: auto;
+  padding-inline: var(--padding-x);
 }
