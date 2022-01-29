@@ -2,40 +2,8 @@
 @import "../mixins";
 
 .project {
-  display: grid;
-  grid-template-rows: max-content 1fr max-content;
-  grid-template-columns: 1fr;
-  row-gap: calc(var(--card-padding) / 2);
-
-  &-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 0;
-    border-radius: inherit;
-    color: var(--color-text-emphasis);
-    background-color: var(--card-bg-color);
-    @include transition(opacity);
-    @include font-size("md");
-  }
-
-  &-grid {
-    --gap: #{spacing(8)};
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--gap);
-  }
-
   &-wrapper {
-    flex: 1;
-    min-width: to-rems(270px);
+    --container-width: 50rem;
 
     // Prevents the dreaded "doom flicker": https://www.joshwcomeau.com/animation/css-transitions/#doom-flicker
     &:is(:hover, :focus-within) {
@@ -43,66 +11,38 @@
         box-shadow: var(--card-box-shadow-focus);
         transform: var(--card-offset-y-focus);
       }
-
-      .project-link {
-        opacity: 0.92;
-      }
     }
-  }
-
-  &-header {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &-name-wrapper {
-    display: flex;
-    align-items: center;
-    gap: spacing(-3);
   }
 
   &-icon {
     picture {
-      width: spacing(3);
+      width: var(--fs-base);
       aspect-ratio: 1;
     }
   }
 
-  &-name {
-    color: var(--color-text-emphasis);
-  }
+  &-link {
+    &:is(:focus, :focus-visible) {
+      outline: none;
+    }
 
-  &-rating {
-    display: flex;
-    gap: spacing(-3);
-    align-items: center;
-  }
-
-  &-technologies {
-    gap: spacing(-2);
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
   }
 
   &-technology {
     border-radius: spacing(-4);
     padding: spacing(-3) spacing(-1);
-    @include font-size("xs");
   }
 }
 
 .github-cta {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  &-subheading {
-    margin-bottom: spacing(0);
-  }
-
-  a {
-    display: flex;
-  }
-
   svg {
     width: spacing(8, true);
     aspect-ratio: 1;

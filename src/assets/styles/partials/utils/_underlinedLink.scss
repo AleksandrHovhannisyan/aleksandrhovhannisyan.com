@@ -1,0 +1,5 @@
+@import "../mixins";
+
+.underlined-link {
+  @include underlined-link;
+}

@@ -9,7 +9,7 @@
     </h{{ titleLevel }}>
     <p class="post-preview-description">{{- post.data.description -}}</p>
     {%- include date.html date: post.date, dateFormat: "%m/%d/%Y", class: "post-preview-date post-meta-date" -%}
-    <ul class="post-preview-tags post-meta-tags" aria-label="Tags">
+    <ul class="post-preview-tags flex flex-wrap gap--2" aria-label="Tags">
       {%- for category in post.data.categories -%}
         <li>
           <a href="/categories/{{ category }}/" class="underlined-link post-preview-tag post-meta-tag" aria-label="{{ category }}">

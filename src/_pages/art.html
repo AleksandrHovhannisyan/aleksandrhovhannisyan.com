@@ -22,15 +22,15 @@ eleventyComputed:
       crossorigin: true
 ---
 
-<article id="artwork-page">
-  <header id="artwork-page-header">
-    <h1 class="title">CSS Art</h1>
+<article class="stack gap-5">
+  <header id="artwork-page-header" class="text-center">
+    <h1 class="title fs-xxxl">CSS Art</h1>
   </header>
-  <ol id="artwork-list">
+  <ol class="col-wrap col-3">
     {%- assign artCollection = collections.art | sortByKey: 'data.order' -%}
     {%- for artwork in artCollection -%}
-      <li class="artwork" id="{{ artwork.fileSlug }}">
-        <a class="artwork-link" href="#{{ artwork.fileSlug }}" aria-label="{{ artwork.data.description }}">
+      <li class="artwork{% if artwork.data.columns %} col-{{ artwork.data.columns }}{% endif %} flex-center" id="{{ artwork.fileSlug }}">
+        <a class="artwork-link flex-center flex-column gap-0 relative" href="#{{ artwork.fileSlug }}" aria-label="{{ artwork.data.description }}">
           {{ artwork.templateContent }}
         </a>
       </li>

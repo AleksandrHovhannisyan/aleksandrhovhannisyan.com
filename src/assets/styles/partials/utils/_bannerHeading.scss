@@ -1,0 +1,8 @@
+@import "../mixins";
+
+.banner-heading {
+  text-transform: uppercase;
+  letter-spacing: spacing(-5);
+  word-spacing: spacing(-4);
+  @include font-size("sm");
+}

@@ -10,9 +10,7 @@
   position: relative;
 
   &-grid {
-    margin-top: spacing(5);
-    display: grid;
-    row-gap: spacing(8);
+    --gap: #{spacing(8)};
   }
 
   &-link {
@@ -57,7 +55,7 @@
   }
   @include tablet {
     & {
-      grid-template-columns: auto min-content auto;
+      grid-template-columns: min-content min-content auto;
       column-gap: spacing(-1);
       grid-template-areas:
         "thumbnail date tags"

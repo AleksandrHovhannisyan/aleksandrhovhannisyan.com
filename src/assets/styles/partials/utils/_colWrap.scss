@@ -1,0 +1,25 @@
+@import "../functions";
+
+.col-wrap {
+  --gap: #{spacing(5)};
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+
+  > * {
+    // https://heydonworks.com/article/the-flexbox-holy-albatross/
+    --multiplier: calc(var(--container-width, 40rem) - 100%);
+    flex-grow: 1;
+    flex-basis: calc(var(--multiplier) * 999);
+    min-width: calc(100% / var(--columns, 2) - (var(--columns, 2) - 1) * var(--gap));
+    max-width: 100%;
+  }
+}
+
+.col-1 {
+  --columns: 1;
+}
+
+.col-3 {
+  --columns: 3;
+}

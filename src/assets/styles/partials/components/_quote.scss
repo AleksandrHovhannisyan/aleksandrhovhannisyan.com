@@ -3,15 +3,20 @@ blockquote {
   border-inline-start: spacing(-3) solid;
   margin-inline-start: clamped(12px, 24px);
   padding: spacing(-3, true) spacing(5, true);
-  @include rhythm;
 }
 
 .quote {
-  &::before {
-    content: open-quote;
-  }
+  > p {
+    &:first-of-type {
+      &::before {
+        content: open-quote;
+      }
+    }
 
-  &::after {
-    content: close-quote;
+    &:last-of-type {
+      &::after {
+        content: close-quote;
+      }
+    }
   }
 }

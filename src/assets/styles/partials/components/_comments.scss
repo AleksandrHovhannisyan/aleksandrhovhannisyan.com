@@ -3,13 +3,7 @@
 @import "../mixins";
 
 .comment-actions {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-top: spacing(8);
-  margin-bottom: spacing(0);
-  gap: spacing(0);
+  margin-top: spacing(5);
 }
 
 .post-comment-button {
@@ -17,34 +11,10 @@
   padding: spacing(-2) spacing(0);
 }
 
-#comments-wrapper {
-  margin-top: spacing(10);
-}
-
-#comments-placeholder {
-  text-align: center;
-}
-
-.comments-list {
-  display: grid;
-  row-gap: spacing(10);
-  grid-template-columns: minmax(0, 1fr);
-  padding: 0;
-}
-
 .post-comment {
   --avatar-size: #{spacing(5)};
   --meta-spacing: #{spacing(-2)};
   padding-inline-start: calc(var(--avatar-size) + var(--meta-spacing));
-
-  &-header {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    position: relative;
-    margin-bottom: spacing(-2);
-    gap: var(--meta-spacing);
-  }
 
   &-avatar {
     align-self: flex-start;
@@ -53,25 +23,16 @@
     left: calc(-1 * var(--avatar-size) - var(--meta-spacing));
   }
 
-  &-username {
-    color: var(--color-text-emphasis);
-    @include underlined-link;
-  }
-
   &-edited {
     font-style: italic;
   }
 
   &-author {
     border-radius: spacing(-4);
-    display: flex;
-    align-items: center;
     padding: spacing(-3) spacing(-2);
   }
 
   &-body {
-    @include rhythm;
-
     pre {
       white-space: pre-wrap;
     }

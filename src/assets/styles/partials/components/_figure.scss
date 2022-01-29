@@ -1,21 +1,10 @@
 @import "../mixins";
 
-figure {
-  display: grid;
-  grid-auto-flow: row;
-  row-gap: spacing(-2);
-}
-
 figcaption {
-  max-width: 70ch;
-  margin: 0 auto;
+  text-align: center;
 }
 
-figcaption,
-cite {
-  text-align: center;
-  @include font-size("sm");
-
+:is(figcaption, cite) {
   &,
   a {
     color: var(--color-text-soft);

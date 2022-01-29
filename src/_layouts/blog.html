@@ -10,15 +10,15 @@ eleventyComputed:
       crossorigin: true
 ---
 
-<article class="blog">
+<article class="stack gap-10">
   {%- assign pageCategory = category.title | default: 'all' -%}
-  <header>
-    <h1 class="blog-title">{%- if pageCategory == 'all' -%}All Blog Posts{%- else -%}Posts tagged with: {{ pageCategory }}{%- endif -%}</h1>
-    <p class="blog-description fs-md">
+  <header class="stack gap-0">
+    <h1>{%- if pageCategory == 'all' -%}All Blog Posts{%- else -%}Posts tagged with: {{ pageCategory }}{%- endif -%}</h1>
+    <p class="fs-md">
       Filter by one of the following popular tags, or <a class="underlined-link" href="/categories/">view all tags</a>.
     </p>
-    <nav aria-label="Popular tags" class="blog-nav">
-      <a class="screen-reader-only skip-popular-tags" href="#skip-popular-tags">Skip to posts</a>
+    <nav aria-label="Popular tags" class="relative prose prose-tight">
+      <a class="screen-reader-only flex-center skip-popular-tags" href="#skip-popular-tags">Skip to posts</a>
       <ol class="pill-group blog-tags">
         {%- assign popularCategories = collections.popularCategories -%}
         {%- for category in popularCategories %}

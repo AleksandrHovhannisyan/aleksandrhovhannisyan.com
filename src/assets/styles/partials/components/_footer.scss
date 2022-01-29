@@ -3,64 +3,23 @@
 .page-footer {
   background-color: var(--footer-bg-color);
   color: var(--navbar-text-color);
-  align-items: center;
-  justify-content: center;
   text-align: center;
+  padding-block: spacing(5);
 
-  &-container {
-    display: flex;
-    flex-direction: column;
-    gap: spacing(5);
-    justify-content: space-between;
-    padding-top: spacing(5);
-    padding-bottom: spacing(5);
-  }
-
-  &-title {
+  h2,
+  a {
     color: white;
-    margin-bottom: spacing(-2);
   }
 
-  &-subtitle {
-    margin-bottom: spacing(-2);
-  }
-
-  &-copyright {
-    color: hsl(0deg 0% 70%);
-  }
-
-  &-socials {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  &-socials {
-    display: flex;
-    align-items: center;
-    gap: spacing(3);
-  }
-
-  &-socials svg {
+  svg {
     aspect-ratio: 1;
     width: spacing(3);
     fill: currentColor;
   }
 
-  &-link {
-    --outline-offset: var(--outline-thickness);
-    color: var(--navbar-text-color);
-    display: flex;
-    @include underlined-link($initially-underlined: false);
-  }
   @include tablet {
     & {
       text-align: start;
-    }
-
-    &-container {
-      flex-direction: row;
-      gap: spacing(0);
     }
 
     &-socials {

@@ -7,7 +7,6 @@
       "date"
       "title"
       "tags";
-    margin-bottom: spacing(5);
   }
 
   &-title {
@@ -24,11 +23,9 @@
   }
 
   &-content {
-    max-width: 68ch;
     display: flow-root;
     overflow-wrap: break-word;
     counter-reset: footnotes;
-    @include rhythm;
 
     #skip-toc {
       transform: translateY(-50%);

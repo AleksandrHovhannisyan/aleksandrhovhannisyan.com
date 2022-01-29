@@ -36,6 +36,7 @@ const markdownLib = markdownIt({
   .use(markdownItClass, {
     ol: 'list',
     ul: 'list',
+    blockquote: 'rhythm',
   })
   .use(markdownItLinkAttributes, {
     // Only external links (explicit protocol; internal links use relative paths)

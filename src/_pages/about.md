@@ -21,22 +21,25 @@ I work as a front-end developer and enjoy creating responsive and accessible use
 
 On the side, I've also worked as a [freelance copy editor](https://www.upwork.com/freelancers/~014eb3a95d4d1fd855?s=1110580753635725312) for over four years now, with my clients ranging from digital marketing agencies to small business owners and companies. I've found freelancing to be a great way to market myself and grow my network, all while supplementing my income and honing my communication and SEO skills.
 
-I won't bore you with a detailed rundown of my work history; that's what [my LinkedIn]({{ socials.linkedin.url }}) is for!
+I won't bore you too much with my work history; that's what [my LinkedIn]({{ socials.linkedin.url }}) is for.
 
 ## Software Projects
 
 I have experience with a few different stacks—I've done a bit of desktop, mobile, and game development, either on my own time or for class projects. Nowadays, I like to focus on web technologies because I enjoy working on projects that have a strong UI/UX component. Below are a few of the projects that I'm proud of.
 
-<ul class="project-grid">
+<ul class="col-wrap align-center">
   {%- for project in projects -%}
     <li class="project-wrapper">
       {%- include projectCard.html project: project -%}
     </li>
   {%- endfor -%}
-  <li class="project-wrapper github-cta">
-    <h3 class="github-cta-heading fs-base">Want to see more of my work?</h3>
-    <p class="github-cta-subheading">Check out my other repos:</p>
+  <li class="github-cta stack flex-center gap-0 text-center">
+    <div>
+      <h3 class="fs-base">Want to see more of my work?</h3>
+      <p>Check out my other repos:</p>
+    </div>
     <a
+      class="flex"
       aria-label="Aleksandr Hovhannisyan's GitHub profile."
       href="https://github.com/AleksandrHovhannisyan?tab=repositories"
       >{%- socialIcon "github" -%}</a>
@@ -49,7 +52,16 @@ Outside of work, I try to strike a balance between tinkering with tech and havin
 
 When I'm not writing on my blog, you'll find me [praising till I'm hollow](https://www.youtube.com/watch?v=mp28JPs25ek). I'm a die-hard [Soulsborne](https://en.wikipedia.org/wiki/Souls_(series)) fan and love playing video games in my free time—shooters, RPGs, roguelikes, card games, platformers, and any odd combination of these genres. But I *especially* love sword-and-board and medieval warfare games. As a kid, I was practically raised by a generation of browser Flash games (may they [rest in peace](/blog/rest-in-peace-flash/)) and an unhealthy amount of (Old School) Runescape, and these experiences with video games have shaped my interests and personality to this day.
 
-Gaming is just one of the many ways I like to spend my free time. I also enjoy listening to music! I especially like the genres of classic rock, alt and post rock, and indie, but I like to keep an open mind and listen to whatever I stumble upon now and then. Some of my favorite artists and bands include Lana Del Rey, Arctic Monkeys, Radiohead, Steven Wilson, Pink Floyd, and Godspeed You! Black Emperor.
+Gaming is just one of the many ways I like to spend my free time. I also enjoy listening to music! I especially like the genres of classic rock, alt and post rock, and indie, but I like to keep an open mind and listen to whatever I stumble upon now and then. Some of my favorite artists and bands include:
+
+- Lana Del Rey
+- Arctic Monkeys
+- Radiohead
+- Godspeed You! Black Emperor
+- Steven Wilson/Porcupine Tree
+- The Black Keys
+- Gregory Alan Isakov
+- Pink Floyd
 
 When I was young, I was absolutely obsessed with drawing (and pretty good at it, too!). As I grew older, though, I found myself preoccupied with so many other things that I simply couldn't find the time to draw. These days, my interest in art has resurfaced in the exciting world of front-end development—I love working with colors, fonts, spacing, and all those good things. I've also recently taken an interest in creating [CSS art](/art/) in my free time to challenge myself, learn new CSS tricks, have fun, and make pretty things.
 

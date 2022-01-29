@@ -22,16 +22,16 @@ export const renderComments = async (comments) => {
   commentsCounter.innerText = `(${comments.length})`;
 
   const commentsList = document.createElement('ol');
-  commentsList.className = 'comments-list';
+  commentsList.className = 'stack gap-10';
   commentsList.innerHTML = comments
     .map((comment) => {
       return `<li>
-                <article class="post-comment">
-                  <header class="post-comment-header">
+                <article class="post-comment stack gap--2">
+                  <header class="flex align-center flex-wrap gap-0 relative">
                     <img src="${comment.user.avatarUrl}" alt="" aria-hidden="true" class="post-comment-avatar circle">
                     <a
                       href="https://github.com/${comment.user.name}"
-                      class="post-comment-username heading"
+                      class="underlined-link heading"
                       target="_blank"
                       rel="noreferrer noopener"
                     >
@@ -46,7 +46,7 @@ export const renderComments = async (comments) => {
                     }
                     ${comment.isEdited ? `<span class="fs-sm post-comment-edited">Edited</span>` : ''}
                   </header>
-                  <div class="post-comment-body">${comment.body}</div>
+                  <div class="post-comment-body rhythm">${comment.body}</div>
                 </article>
               </li>`;
     })

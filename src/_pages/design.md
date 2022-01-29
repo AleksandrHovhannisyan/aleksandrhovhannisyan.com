@@ -40,7 +40,7 @@ noindex: true
 
 ### Background
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: var(--sp--2);">
+<div class="col-wrap" style="--columns: {{ surfaceColors | size }}; --container-width: 10rem;">
 {%- for color in surfaceColors -%}
   <div style="background-color: var(--color-surface-{{ color }}); aspect-ratio: 1; outline: solid 1px;"></div>
 {%- endfor -%}
@@ -48,7 +48,7 @@ noindex: true
 
 ### Text
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: var(--sp--2);">
+<div  class="col-wrap" style="--columns: 3;">
 {%- for color in foregroundColors -%}
   <div style="color: var(--color-{{ color }})"><strong>{{ color }}</strong>: Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
 {%- endfor -%}
@@ -80,19 +80,6 @@ noindex: true
   Vivamus pellentesque tellus nisi, id cursus libero scelerisque at. Curabitur pellentesque erat at erat congue, vitae maximus lorem vehicula. Aliquam mollis eros sem, eget commodo dolor dictum at.
 </div>
 
-### Labeled Input
-
-<div class="labeled-input" data-flow="vertical">
-  <label for="input-demo-vertical">Vertically labeled input</label>
-  <input id="input-demo-vertical" class="input" type="text" placeholder="Enter text here" />
-</div>
-
-<div class="labeled-input" data-flow="horizontal">
-  <label for="input-demo-horizontal">Horizontally labeled input</label>
-  <input id="input-demo-horizontal" class="input" type="text" placeholder="Enter text here" />
-</div>
-
-
 ### Aside
 
 {% aside %}
@@ -107,13 +94,13 @@ noindex: true
 
 ### Image
 
-<p>
-{% include image.html src: "https://images.unsplash.com/photo-1543631936-4019112aee78?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80", fileName: "parrot", urlPath: "/assets/images/design", alt: "A multi-color parrot tilts its head towards the camera and glances playfully at the viewer." %}
-</p>
+<figure class="full-bleed">
+  {% include image.html src: "https://images.unsplash.com/photo-1543631936-4019112aee78?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80", fileName: "parrot", urlPath: "/assets/images/design", alt: "A multi-color parrot tilts its head towards the camera and glances playfully at the viewer." %}
+</figure>
 
 ### Figure with Caption
 
-<figure>
+<figure class="full-bleed prose stack gap--2">
   {% include image.html src: "https://images.unsplash.com/photo-1543631936-4019112aee78?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80", fileName: "parrot", urlPath: "/assets/images/design", alt: "A multi-color parrot tilts its head towards the camera and glances playfully at the viewer." %}
-  <figcaption>A multi-color parrot tilts its head towards the camera and glances playfully at the viewer. Photo by <a href="https://unsplash.com/photos/Xxo3-8bqGro">Timothy Dykes</a> on Unsplash.</figcaption>
+  <figcaption class="fs-sm container">A multi-color parrot tilts its head towards the camera and glances playfully at the viewer. Photo by <a href="https://unsplash.com/photos/Xxo3-8bqGro">Timothy Dykes</a> on Unsplash.</figcaption>
 </figure>

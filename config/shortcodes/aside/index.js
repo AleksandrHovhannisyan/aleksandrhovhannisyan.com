@@ -5,8 +5,8 @@ const aside = (children) => {
   if (!children) {
     throw new Error('You must provide a non-empty string for an aside.');
   }
-  const content = markdownLib.renderInline(children);
-  return `<aside class="post-aside">${outdent`${content}`}</aside>`;
+  const content = markdownLib.render(children);
+  return `<aside role="note" class="post-aside rhythm">${outdent`${content}`}</aside>`;
 };
 
 module.exports = aside;

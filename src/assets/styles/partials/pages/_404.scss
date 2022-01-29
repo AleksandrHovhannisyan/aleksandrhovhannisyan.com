@@ -1,20 +1,15 @@
 @import "../mixins";
 
 #page-not-found {
-  align-items: center;
   animation: background-scroll 40s linear infinite;
   animation-fill-mode: forwards;
   background-color: hsl(0deg 0% 8%);
 
   // https://www.transparenttextures.com/stardust.html
   background-image: url("/assets/images/404/stardust.png");
-  display: flex;
-  flex-direction: column;
   height: 100%;
-  justify-content: center;
   left: 0;
   position: absolute;
-  text-align: center;
   top: 0;
   width: 100%;
   padding: 0 spacing(-1);
@@ -28,18 +23,11 @@
     }
   }
 
+  :is(h1, p, a) {
+    color: white;
+  }
+
   h1 {
-    color: hsl(0deg 0% 90%);
-    margin-bottom: spacing(3);
     text-shadow: 0.1em 0.1em black;
-  }
-
-  p {
-    color: hsl(0deg 0% 75%);
-    margin-bottom: spacing(0);
-  }
-
-  a {
-    color: hsl(0deg 0% 90%);
   }
 }

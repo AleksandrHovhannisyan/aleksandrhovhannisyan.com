@@ -14,6 +14,12 @@ pre[class*="language-"] {
     border-radius: spacing(-2);
   }
 
+  &:hover {
+    .copy-code-button {
+      opacity: 1;
+    }
+  }
+
   code {
     padding: $code-block-padding;
     position: relative;
@@ -130,6 +136,7 @@ pre[class*="language-bash"] {
 }
 
 .copy-code-button {
+  opacity: 0;
   position: absolute;
   right: $code-block-padding;
   top: $code-block-padding;
@@ -138,6 +145,10 @@ pre[class*="language-bash"] {
   background-color: var(--color-code-overlay-1);
   padding: spacing(-2) spacing(0);
   border-radius: spacing(-3);
+
+  &:is(.copied, :focus) {
+    opacity: 1;
+  }
 
   &::before {
     content: "Copy";
