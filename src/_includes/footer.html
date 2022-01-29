@@ -11,13 +11,13 @@
         {%- assign id = network | first -%}
         {%- assign data = network | last -%}
         <li>
-          <a href="{{ data.url }}" target="_blank" rel="noreferrer noopener" class="page-footer-link">
+          <a href="{{ data.url }}" target="_blank" rel="noreferrer noopener" class="outline-offset flex">
             {% socialIcon id %}
           </a>
         </li>
         {%- endfor -%}
         <li>
-          <a href="/feed.xml" class="page-footer-link">
+          <a href="/feed.xml" class="outline-offset flex">
             {% socialIcon "rss" %}
           </a>
         </li>

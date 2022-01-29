@@ -9,7 +9,7 @@
   padding-block: spacing(5);
 
   &-title,
-  &-link {
+  a {
     color: white;
   }
 
@@ -26,11 +26,6 @@
     }
   }
 
-  &-link {
-    --outline-offset: var(--outline-thickness);
-    display: flex;
-    @include underlined-link($initially-underlined: false);
-  }
   @include tablet {
     & {
       text-align: start;

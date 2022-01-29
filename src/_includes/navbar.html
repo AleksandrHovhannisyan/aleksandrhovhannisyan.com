@@ -2,7 +2,7 @@
   <div class="navbar-container container">
     <nav class="navbar fs-sm" aria-label="Primary">
       <a href="#page-content" class="screen-reader-only skip-navigation">Skip to content</a>
-      <a class="navbar-branding heading" href="/" aria-label="Home page" {% if permalink == "/" %}aria-current="page"{% endif %}>
+      <a class="navbar-branding outline-offset heading" href="/" aria-label="Home page" {% if permalink == "/" %}aria-current="page"{% endif %}>
         {%- comment -%}TODO: remove this hacky logic for assembling array as string once PR goes in for object arguments in liquid{%- endcomment -%}
         {%- assign faviconWidths = site.favicon.widths | join: ", " | prepend: "[" | append: "]" -%}
         {%- include image.html src: "/assets/images/favicons/favicon.png", className: "navbar-logo square", clickable: false, baseFormat: site.favicon.format, widths: faviconWidths, sizes: "57px", lazy: false %}
