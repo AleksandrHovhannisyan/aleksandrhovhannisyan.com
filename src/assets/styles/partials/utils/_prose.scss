@@ -1,5 +1,5 @@
 .prose {
-  > :where(:not(h1, h2, h3, h4, h5, h6)) {
+  > :where(:not(h1, h2, h3, h4, h5, h6, video)) {
     max-width: var(--max-width, 80ch);
   }
 }
