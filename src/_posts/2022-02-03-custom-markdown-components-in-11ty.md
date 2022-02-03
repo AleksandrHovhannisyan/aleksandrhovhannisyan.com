@@ -117,7 +117,7 @@ In `.eleventy.js`, you'd then import this custom module rather than directly imp
 const markdownIt = require('./11ty/markdown.js');
 
 module.exports = (eleventyConfig) => {
-  eleventyConfig.setLibrary('md', markdownLib);
+  eleventyConfig.setLibrary('md', markdownIt);
 }
 ```
 
