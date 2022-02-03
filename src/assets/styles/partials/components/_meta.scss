@@ -12,16 +12,5 @@
       content: "#";
       user-select: none;
     }
-
-    &::after {
-      user-select: none;
-      content: ",";
-    }
-  }
-
-  &-tags {
-    li:last-of-type .post-meta-tag::after {
-      content: none;
-    }
   }
 }
