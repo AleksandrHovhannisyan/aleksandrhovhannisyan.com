@@ -203,7 +203,7 @@ Code:
 
 {% raw %}
 ```liquid
-{% quote "Zach Leatherman", "https://www.11ty.dev/blog/eleventy-one-point-oh/" %}
+{% quote "Zach Leatherman: Eleventy v1.0.0, the Stable Release", "https://www.11ty.dev/blog/eleventy-one-point-oh/" %}
   This project would not be possible without our lovely community. Thank you to everyone that built something with Eleventy (×476 authors on our web site!), wrote a blog post about Eleventy, contributed code to core or plugins, documentation, asked questions, answered questions, braved The Leaderboards, participated on Discord, filed issues, attended (or organized!) a meetup, said a kind word on Twitter ❤️.
 {% endquote %}
 ```
