@@ -1,6 +1,6 @@
 ---
 title: Custom Markdown Components in 11ty
-description: Ever wanted to nest Markdown inside custom HTML tags? In 11ty, you can easily do this with paired shortcodes and a custom Markdown library parser.
+description: Ever wanted to nest Markdown in HTML? In 11ty, you can easily do this with paired shortcodes and a custom Markdown library parser.
 keywords: [11ty, paired shortcodes, markdown, html]
 categories: [11ty, markdown, javascript]
 thumbnail: thumbnail.png
