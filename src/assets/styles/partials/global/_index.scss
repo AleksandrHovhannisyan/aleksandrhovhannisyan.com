@@ -4,7 +4,7 @@
 
 body {
   min-height: 100vh;
-  background-color: var(--color-body-bg);
+  background-color: var(--color-surface-1);
   color: var(--color-text-normal);
   padding-bottom: var(--navbar-height);
   @include font-weight("body", "regular");

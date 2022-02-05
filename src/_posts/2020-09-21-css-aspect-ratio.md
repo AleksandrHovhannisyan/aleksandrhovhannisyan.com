@@ -450,7 +450,7 @@ Hopefully, you now have a better understanding of how to define responsive aspec
   }
   .demo-tile {
     position: relative;
-    background-color: var(--color-pill-bg);
+    background-color: var(--color-surface-3);
     color: var(--color-text-emphasis);
     font-weight: var(--fw-bold);
     border-radius: var(--sp--3);
@@ -487,7 +487,7 @@ Hopefully, you now have a better understanding of how to define responsive aspec
   }
   .demo-square-grid > * {
     aspect-ratio: 1;
-    background-color: var(--color-pill-bg);
+    background-color: var(--color-surface-3);
     color: var(--color-text-emphasis);
     position: relative;
   }
