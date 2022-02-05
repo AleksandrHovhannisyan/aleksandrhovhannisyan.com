@@ -6,7 +6,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--main-bg-color);
+  background: var(--color-body-bg);
   color: var(--color-text-emphasis);
   @include font-size("md");
   @include font-weight("body", "bold");

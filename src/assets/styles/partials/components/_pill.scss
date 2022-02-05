@@ -9,7 +9,7 @@
 .pill {
   display: inline-flex;
   align-items: center;
-  background-color: var(--pill-bg-color);
+  background-color: var(--color-pill-bg);
   color: var(--color-text-emphasis);
   @include font-family("code");
   @include font-weight("code", "regular");
@@ -38,10 +38,10 @@
 // Because not all pills are links/interactive (see project cards)
 a.pill {
   &:is(:focus, :hover, [aria-current="page"]) {
-    background-color: var(--pill-bg-color-focus);
+    background-color: var(--color-pill-bg-focus);
     color: var(--color-text-inverted);
   }
 
-  --outline-color: var(--pill-bg-color-focus);
+  --outline-color: var(--color-pill-bg-focus);
   --outline-offset: var(--outline-thickness);
 }

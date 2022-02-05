@@ -7,7 +7,7 @@ $code-block-padding: spacing(5, true);
 
 pre[class*="language-"] {
   background: var(--color-code-background);
-  box-shadow: var(--code-block-box-shadow);
+  box-shadow: var(--shadow-code-block);
   color: var(--color-code-text);
   @include full-bleed;
   @include tablet {

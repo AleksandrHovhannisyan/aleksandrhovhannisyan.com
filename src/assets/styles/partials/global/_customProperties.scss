@@ -51,6 +51,7 @@ html {
   &[data-theme="light"] {
     color-scheme: light;
 
+    // Generic
     --color-surface-1: white;
     --color-surface-2: hsl(0deg 0% 95%);
     --color-surface-3: hsl(0deg 0% 92%);
@@ -62,25 +63,24 @@ html {
     --color-text-inverted: white;
     --color-border-focus: hsl(0deg 0% 30%);
     --color-border: hsl(0deg 0% 80%);
-    --aside-bg-color: var(--color-surface-2);
-    --button-bg-color-focus: var(--color-surface-4);
-    --button-bg-color: var(--color-surface-5);
-    --card-bg-color: var(--color-surface-1);
-    --code-block-box-shadow: none;
-    --footer-bg-color: var(--color-surface-5);
-    --hover-bg-color: var(--color-surface-2);
-    --inline-code-bg-color: var(--color-surface-2);
-    --main-bg-color: var(--color-surface-1);
-    --navbar-bg-color: var(--color-surface-5);
-    --navbar-box-shadow: none;
-    --navbar-text-color: white;
-    --navbar-text-bg-color-focus: var(--color-surface-4);
-    --scrollbar-thumb-bg-color: hsl(0deg 0% 70%);
-    --scrollbar-track-bg-color: var(--color-surface-3);
-    --selection-bg-color: black;
-    --table-header-bg-color: var(--color-surface-3);
-    --pill-bg-color-focus: var(--color-surface-5);
-    --pill-bg-color: var(--color-surface-3);
+
+    // Components
+    --color-aside-bg: var(--color-surface-2);
+    --color-button-bg-focus: var(--color-surface-4);
+    --color-button-bg: var(--color-surface-5);
+    --color-card-bg: var(--color-surface-1);
+    --color-footer-bg: var(--color-surface-5);
+    --color-inline-code-bg: var(--color-surface-2);
+    --color-body-bg: var(--color-surface-1);
+    --color-navbar-bg: var(--color-surface-5);
+    --color-navbar-text: white;
+    --color-navbar-bg-focus: var(--color-surface-4);
+    --color-scrollbar-thumb: hsl(0deg 0% 70%);
+    --color-scrollbar-track: var(--color-surface-3);
+    --color-selection-bg: black;
+    --color-table-header-bg: var(--color-surface-3);
+    --color-pill-bg-focus: var(--color-surface-5);
+    --color-pill-bg: var(--color-surface-3);
     --color-code-background: hsl(0deg 0% 95%);
     --color-code-overlay-1: hsl(0deg 0% 88%);
     --color-code-overlay-2: hsl(0deg 0% 80%);
@@ -96,12 +96,15 @@ html {
     --color-code-constant: var(--color-code-number);
     --color-code-punctuation: hsl(0deg 0% 43%);
     --color-code-selector: var(--color-code-string);
+    --shadow-code-block: none;
+    --shadow-navbar: none;
   }
 
   // Dark theme
   &[data-theme="dark"] {
     color-scheme: dark;
 
+    // Generic
     --color-surface-1: hsl(0deg 0% 8%);
     --color-surface-2: hsl(0deg 0% 12%);
     --color-surface-3: hsl(0deg 0% 20%);
@@ -113,25 +116,24 @@ html {
     --color-text-inverted: black;
     --color-border: hsl(0deg 0% 30%);
     --color-border-focus: hsl(0deg 0% 80%);
-    --aside-bg-color: var(--color-surface-3);
-    --button-bg-color-focus: white;
-    --button-bg-color: var(--color-surface-5);
-    --card-bg-color: var(--color-surface-2);
-    --code-block-box-shadow: 0 2px 8px 0 hsl(0deg 0% 0% / 40%);
-    --footer-bg-color: var(--color-surface-2);
-    --hover-bg-color: var(--color-surface-2);
-    --inline-code-bg-color: var(--color-surface-3);
-    --main-bg-color: var(--color-surface-1);
-    --navbar-bg-color: var(--color-surface-2);
-    --navbar-box-shadow: 0 -2px 8px hsl(0deg 0% 0% / 40%);
-    --navbar-text-color: white;
-    --navbar-text-bg-color-focus: var(--color-surface-3);
-    --scrollbar-thumb-bg-color: var(--color-surface-4);
-    --scrollbar-track-bg-color: var(--color-surface-3);
-    --selection-bg-color: white;
-    --table-header-bg-color: var(--color-surface-2);
-    --pill-bg-color-focus: var(--color-surface-5);
-    --pill-bg-color: var(--color-surface-3);
+
+    // Components
+    --color-aside-bg: var(--color-surface-3);
+    --color-button-bg-focus: white;
+    --color-button-bg: var(--color-surface-5);
+    --color-card-bg: var(--color-surface-2);
+    --color-footer-bg: var(--color-surface-2);
+    --color-inline-code-bg: var(--color-surface-3);
+    --color-body-bg: var(--color-surface-1);
+    --color-navbar-bg: var(--color-surface-2);
+    --color-navbar-text: white;
+    --color-navbar-bg-focus: var(--color-surface-3);
+    --color-scrollbar-thumb: var(--color-surface-4);
+    --color-scrollbar-track: var(--color-surface-3);
+    --color-selection-bg: white;
+    --color-table-header-bg: var(--color-surface-2);
+    --color-pill-bg-focus: var(--color-surface-5);
+    --color-pill-bg: var(--color-surface-3);
     --color-code-background: hsl(0deg 0% 12%);
     --color-code-overlay-1: hsl(0deg 0% 25%);
     --color-code-overlay-2: hsl(0deg 0% 60%);
@@ -147,5 +149,7 @@ html {
     --color-code-constant: var(--color-code-number);
     --color-code-punctuation: #8a8a8a;
     --color-code-selector: hsl(41deg 53% 67%);
+    --shadow-code-block: 0 2px 8px 0 hsl(0deg 0% 0% / 40%);
+    --shadow-navbar: 0 -2px 8px hsl(0deg 0% 0% / 40%);
   }
 }

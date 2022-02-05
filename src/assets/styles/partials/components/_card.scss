@@ -17,7 +17,7 @@
   --card-offset-y-focus: translateY(calc(-1 * #{spacing(-2)}));
   position: relative;
   padding: var(--card-padding);
-  background-color: var(--card-bg-color);
+  background-color: var(--color-card-bg);
   border-radius: spacing(-3);
   box-shadow: var(--card-box-shadow-default);
   transform: none;

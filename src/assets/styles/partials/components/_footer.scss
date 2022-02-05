@@ -1,8 +1,8 @@
 @import "../mixins";
 
 .page-footer {
-  background-color: var(--footer-bg-color);
-  color: var(--navbar-text-color);
+  background-color: var(--color-footer-bg);
+  color: var(--color-navbar-text);
   text-align: center;
   padding-block: spacing(5);
 

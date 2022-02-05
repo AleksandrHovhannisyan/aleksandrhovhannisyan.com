@@ -2,11 +2,11 @@
 
 .button {
   --outline-offset: var(--outline-thickness);
-  --outline-color: var(--button-bg-color);
-  background-color: var(--button-bg-color);
+  --outline-color: var(--color-button-bg);
+  background-color: var(--color-button-bg);
   color: var(--color-text-inverted);
 
   &:is(:focus, :hover) {
-    background-color: var(--button-bg-color-focus);
+    background-color: var(--color-button-bg-focus);
   }
 }
