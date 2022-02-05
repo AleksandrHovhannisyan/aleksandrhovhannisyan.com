@@ -2,6 +2,11 @@
 
 figcaption {
   text-align: center;
+
+  strong {
+    @include font-family("title");
+    @include font-weight("title", "bold");
+  }
 }
 
 :is(figcaption, cite) {

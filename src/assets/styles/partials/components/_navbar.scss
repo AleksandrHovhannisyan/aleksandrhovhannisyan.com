@@ -12,7 +12,7 @@
 .navbar {
   width: 100%;
   height: 100%;
-  color: var(--navbar-text-color);
+  color: white;
   @include font-family("title");
   @include font-weight("title", "regular");
 
@@ -28,8 +28,8 @@
     left: 0;
     width: 100%;
     padding-block: spacing(-1, true);
-    background-color: var(--navbar-bg-color);
-    box-shadow: var(--navbar-box-shadow);
+    background-color: var(--color-navbar-bg);
+    box-shadow: var(--shadow-navbar);
     min-height: var(--navbar-height);
     overflow-x: auto;
     @include z-index(navbar);
@@ -74,7 +74,7 @@
 
 .skip-navigation:focus,
 .navbar-link:is([aria-current="page"], :hover, :focus) {
-  background-color: var(--navbar-text-bg-color-focus);
+  background-color: var(--color-navbar-bg-focus);
 }
 
 #theme-toggle-container {

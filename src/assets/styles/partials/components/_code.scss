@@ -2,8 +2,7 @@
 
 // Inline code
 code:not([class^="language-"]) {
-  background-color: var(--inline-code-bg-color);
-  color: var(--color-text-emphasis);
+  background-color: var(--color-inline-code-bg);
   border-radius: spacing(-3);
   padding: spacing(-3);
 }

@@ -1,12 +1,15 @@
+@import "../functions";
 @import "../mixins";
 
 .button {
   --outline-offset: var(--outline-thickness);
-  --outline-color: var(--button-bg-color);
-  background-color: var(--button-bg-color);
+  --outline-color: var(--color-surface-5);
+  background-color: var(--color-surface-5);
   color: var(--color-text-inverted);
+  padding: spacing(-2) spacing(0);
+  border-radius: 2px;
 
   &:is(:focus, :hover) {
-    background-color: var(--button-bg-color-focus);
+    background-color: var(--color-surface-4);
   }
 }

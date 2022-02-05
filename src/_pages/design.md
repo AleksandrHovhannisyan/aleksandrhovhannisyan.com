@@ -73,6 +73,107 @@ noindex: true
   {%- endfor -%}
 </div>
 
+### Button
+
+<button class="button" type="button">Click me</button>
+
+### Inline Code
+
+This is a `paragraph` with some inline `code`.
+
+### Table
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Viewport width</th>
+      <th scope="col" class="numeric">Min</th>
+      <th scope="col" class="numeric">Max</th>
+      <th scope="col" class="numeric">Preferred</th>
+      <th scope="col">Clamp return value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="numeric"><code>320px</code></td>
+      <td class="numeric"><code>16px</code></td>
+      <td class="numeric"><code>24px</code></td>
+      <td class="numeric"><code>12.8px</code></td>
+      <td class="numeric"><code>16px</code></td>
+    </tr>
+    <tr>
+      <td class="numeric"><code>500px</code></td>
+      <td class="numeric"><code>16px</code></td>
+      <td class="numeric"><code>24px</code></td>
+      <td class="numeric"><code>20px</code></td>
+      <td class="numeric"><code>20px</code></td>
+    </tr>
+    <tr>
+      <td class="numeric"><code>1000px</code></td>
+      <td class="numeric"><code>16px</code></td>
+      <td class="numeric"><code>24px</code></td>
+      <td class="numeric"><code>40px</code></td>
+      <td class="numeric"><code>24px</code></td>
+    </tr>
+  </tbody>
+</table>
+
+### Code Block
+
+#### JavaScript
+
+```js {data-file="path/to/some/file.js" data-copyable="true"}
+const getEvenNumbers = (array) => {
+  return array.filter((n) => n % 2 === 0);
+}
+
+console.log(getEvenNumbers([1, 2, 3]));
+```
+
+#### CSS
+
+```css {data-file="path/to/some/file.css" data-copyable="true"}
+.navbar-link {
+  /* comment */
+  background-color: #fff;
+  color: #000;
+}
+.navbar-link:is(:hover, :focus, [aria-current="page"]) {
+  /* more css */
+}
+```
+
+#### Liquid
+
+{% raw %}
+```liquid {data-file="path/to/some/file.html" data-copyable="true"}
+{% if someCondition %}{% endif %}
+{% for i in (1..3) %}{% endfor %}
+{% assign foo = 'bar' %}
+```
+{% endraw %}
+
+#### Markdown
+
+```md {data-file="path/to/some/file.html" data-copyable="true"}
+**This** is [Markdown](https://en.wikipedia.org/wiki/Markdown)
+
+# heading level one would go here
+
+some *italicized text* perhaps
+```
+
+#### HTML
+
+```html {data-file="path/to/some/file.html" data-copyable="true"}
+<div class="foo">
+  <div class="div soup">
+    It's divs all the way down
+  </div>
+</div>
+```
+
+
 ### Card
 
 <div class="card">
