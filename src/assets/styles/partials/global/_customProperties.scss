@@ -70,6 +70,7 @@ html {
     --color-navbar-bg: var(--color-surface-5);
     --color-navbar-bg-focus: var(--color-surface-4);
     --color-scrollbar-thumb: hsl(0deg 0% 70%);
+    --color-inline-code-bg: var(--color-surface-2);
     --color-code-background: hsl(0deg 0% 95%);
     --color-code-overlay-1: hsl(0deg 0% 88%);
     --color-code-overlay-2: hsl(0deg 0% 80%);
@@ -95,7 +96,7 @@ html {
 
     // Generic
     --color-surface-1: hsl(0deg 0% 8%);
-    --color-surface-2: hsl(0deg 0% 12%);
+    --color-surface-2: hsl(0deg 0% 13%);
     --color-surface-3: hsl(0deg 0% 20%);
     --color-surface-4: hsl(0deg 0% 60%);
     --color-surface-5: hsl(0deg 0% 80%);
@@ -112,7 +113,8 @@ html {
     --color-navbar-bg: var(--color-surface-2);
     --color-navbar-bg-focus: var(--color-surface-3);
     --color-scrollbar-thumb: var(--color-surface-4);
-    --color-code-background: hsl(0deg 0% 12%);
+    --color-inline-code-bg: var(--color-surface-3);
+    --color-code-background: var(--color-surface-2);
     --color-code-overlay-1: hsl(0deg 0% 25%);
     --color-code-overlay-2: hsl(0deg 0% 60%);
     --color-code-selection: hsl(210deg 100% 84% / 15%);
