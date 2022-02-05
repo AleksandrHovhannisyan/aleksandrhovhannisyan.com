@@ -73,6 +73,51 @@ noindex: true
   {%- endfor -%}
 </div>
 
+### Button
+
+<button class="button" type="button">Click me</button>
+
+### Inline Code
+
+This is a `paragraph` with some inline `code`.
+
+### Table
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Viewport width</th>
+      <th scope="col" class="numeric">Min</th>
+      <th scope="col" class="numeric">Max</th>
+      <th scope="col" class="numeric">Preferred</th>
+      <th scope="col">Clamp return value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="numeric"><code>320px</code></td>
+      <td class="numeric"><code>16px</code></td>
+      <td class="numeric"><code>24px</code></td>
+      <td class="numeric"><code>12.8px</code></td>
+      <td class="numeric"><code>16px</code></td>
+    </tr>
+    <tr>
+      <td class="numeric"><code>500px</code></td>
+      <td class="numeric"><code>16px</code></td>
+      <td class="numeric"><code>24px</code></td>
+      <td class="numeric"><code>20px</code></td>
+      <td class="numeric"><code>20px</code></td>
+    </tr>
+    <tr>
+      <td class="numeric"><code>1000px</code></td>
+      <td class="numeric"><code>16px</code></td>
+      <td class="numeric"><code>24px</code></td>
+      <td class="numeric"><code>40px</code></td>
+      <td class="numeric"><code>24px</code></td>
+    </tr>
+  </tbody>
+</table>
+
 ### Card
 
 <div class="card">
