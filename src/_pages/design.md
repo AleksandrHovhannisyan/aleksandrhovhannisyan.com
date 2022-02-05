@@ -118,6 +118,62 @@ This is a `paragraph` with some inline `code`.
   </tbody>
 </table>
 
+### Code Block
+
+#### JavaScript
+
+```js {data-file="path/to/some/file.js" data-copyable="true"}
+const getEvenNumbers = (array) => {
+  return array.filter((n) => n % 2 === 0);
+}
+
+console.log(getEvenNumbers([1, 2, 3]));
+```
+
+#### CSS
+
+```css {data-file="path/to/some/file.css" data-copyable="true"}
+.navbar-link {
+  /* comment */
+  background-color: #fff;
+  color: #000;
+}
+.navbar-link:is(:hover, :focus, [aria-current="page"]) {
+  /* more css */
+}
+```
+
+#### Liquid
+
+{% raw %}
+```liquid {data-file="path/to/some/file.html" data-copyable="true"}
+{% if someCondition %}{% endif %}
+{% for i in (1..3) %}{% endfor %}
+{% assign foo = 'bar' %}
+```
+{% endraw %}
+
+#### Markdown
+
+```md {data-file="path/to/some/file.html" data-copyable="true"}
+**This** is [Markdown](https://en.wikipedia.org/wiki/Markdown)
+
+# heading level one would go here
+
+some *italicized text* perhaps
+```
+
+#### HTML
+
+```html {data-file="path/to/some/file.html" data-copyable="true"}
+<div class="foo">
+  <div class="div soup">
+    It's divs all the way down
+  </div>
+</div>
+```
+
+
 ### Card
 
 <div class="card">
