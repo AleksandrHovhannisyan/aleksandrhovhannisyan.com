@@ -185,12 +185,16 @@ some *italicized text* perhaps
 
 {% aside %}
   Cras eu aliquet est. Cras tempor ex ut sagittis pharetra. In semper ac nunc id faucibus. Praesent vitae nunc facilisis, porttitor nisi sed, blandit massa. Duis hendrerit lectus quam, ac lobortis lectus euismod et.
+
+  In cursus tellus ex, a rhoncus erat bibendum sit amet. Proin sollicitudin pharetra nulla quis dignissim. Phasellus et nibh felis.
 {% endaside %}
 
 ### Quote
 
-{% quote "Source of the Quote", "http://google.com/" %}
+{% quote "Source of the Quote", "https://www.lipsum.com/feed/html" %}
   Sed libero libero, cursus ut lacus at, luctus molestie augue. Nulla vehicula elementum est. Donec tincidunt est sit amet augue sodales auctor. Quisque tincidunt vestibulum lorem sed commodo. Praesent dictum vestibulum cursus. Nullam massa neque, molestie a eleifend at, iaculis et urna. Cras suscipit nibh at risus sollicitudin pretium. Praesent eget sem vitae ante mollis elementum. Nullam sollicitudin est in nisi porttitor, nec suscipit nunc pharetra.
+
+  Duis ultrices nunc in finibus pharetra. Nullam ornare ex sit amet diam interdum porta. Sed non libero vel est auctor suscipit quis eget mi. Phasellus vestibulum neque id luctus imperdiet.
 {% endquote %}
 
 ### Image
