@@ -1,0 +1,5 @@
+@import "../mixins";
+
+.heading-anchor {
+  @include underlined-link($initially-underlined: false);
+}
