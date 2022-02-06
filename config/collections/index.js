@@ -63,24 +63,13 @@ const getPostsByCategory = (collection) => {
     });
   });
 
-  return blogPostsByCategory;
-};
-
-/** Returns all categories with the number of posts in each, in descending order. */
-const getCategoriesWithDescendingCount = (collection) => {
-  const postsByCategory = getPostsByCategory(collection);
-  const categoriesWithCount = postsByCategory
-    .map((category) => ({ title: category.title, href: category.href, count: category.posts.length }))
-    .sort((a, b) => b.count - a.count);
-  return categoriesWithCount;
+  return blogPostsByCategory.sort((category1, category2) => category2.posts.length - category1.posts.length);
 };
 
 /** Returns the top `n` categories with at least `minCount` posts, in descending order. */
 const getPopularCategories = (params) => (collection) => {
-  const categoriesWithDescendingCount = getCategoriesWithDescendingCount(collection).filter(
-    (category) => category.count >= params.minCount
-  );
-  const popularCategories = limit(categoriesWithDescendingCount, params.limit);
+  const categories = getPostsByCategory(collection).filter((category) => category.posts.length >= params.minCount);
+  const popularCategories = limit(categories, params.limit);
   return popularCategories;
 };
 
@@ -88,6 +77,5 @@ module.exports = {
   getAllPosts,
   getAllUniqueCategories,
   getPostsByCategory,
-  getCategoriesWithDescendingCount,
   getPopularCategories,
 };

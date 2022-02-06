@@ -32,7 +32,7 @@ eleventyComputed:
               aria-current="page"
               {%- endif -%}
             >
-              {{ category.title }}&nbsp;<span class="pill-count" aria-label="{{ category.count }} posts">{{ category.count }}</span>
+              {{ category.title }}&nbsp;<span class="pill-count" aria-label="{{ category.posts | size }} posts">{{ category.posts | size }}</span>
             </a>
           </li>
         {% endfor %}
