@@ -23,9 +23,3 @@ strong,
 a {
   color: var(--color-text-emphasis);
 }
-
-.section {
-  & + & {
-    margin-top: spacing(10);
-  }
-}
