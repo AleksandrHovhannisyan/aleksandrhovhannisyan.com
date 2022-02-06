@@ -17,26 +17,27 @@ const markdownLib = markdownIt({
     defaultLanguage: 'plaintext',
   })
   .use(markdownItAttrs)
-  .use(markdownItAnchor, {
-    slugify: slugifyString,
-    tabIndex: false,
-    permalink: markdownItAnchor.permalink.headerLink({
-      class: 'heading-anchor',
-    }),
-  })
   .use(markdownItTocDoneRight, {
     placeholder: `{:toc}`, // same as Jekyll
     slugify: slugifyString,
     containerId: 'toc',
     listClass: 'list toc-list',
     itemClass: 'toc-item',
-    linkClass: 'toc-link underlined-link',
+    linkClass: 'toc-link from-underline',
     listType: 'ol',
   })
   .use(markdownItClass, {
     ol: 'list',
     ul: 'list',
     blockquote: 'rhythm',
+    a: 'from-underline',
+  })
+  .use(markdownItAnchor, {
+    slugify: slugifyString,
+    tabIndex: false,
+    permalink: markdownItAnchor.permalink.headerLink({
+      class: 'to-underline',
+    }),
   })
   .use(markdownItLinkAttributes, {
     // Only external links (explicit protocol; internal links use relative paths)

@@ -38,9 +38,5 @@
       list-style: disc; // some headings have numbers already
       padding-inline-start: spacing(8, true);
     }
-
-    a:not([class]) {
-      @include underlined-link($initially-underlined: true);
-    }
   }
 }

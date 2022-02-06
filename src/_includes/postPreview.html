@@ -5,14 +5,14 @@
       {%- include thumbnail.html post: post -%}
     </a>
     <h{{ titleLevel }} class="post-preview-title fs-md">
-      <a class="post-preview-link" href="{{ post.url }}">{{ post.data.title }}</a>
+      <a class="to-underline" href="{{ post.url }}">{{ post.data.title }}</a>
     </h{{ titleLevel }}>
     <p class="post-preview-description">{{- post.data.description -}}</p>
     {%- include date.html date: post.date, dateFormat: "%m/%d/%Y", class: "post-preview-date post-meta-date" -%}
     <ul class="post-preview-tags flex flex-wrap gap--2" aria-label="Tags">
       {%- for category in post.data.categories -%}
         <li>
-          <a href="/categories/{{ category }}/" class="underlined-link post-preview-tag post-meta-tag" aria-label="{{ category }}">
+          <a href="/categories/{{ category }}/" class="post-preview-tag post-meta-tag from-underline" aria-label="{{ category }}">
             {{- category -}}
           </a>
         </li>

@@ -31,7 +31,7 @@ export const renderComments = async (comments) => {
                     <img src="${comment.user.avatarUrl}" alt="" aria-hidden="true" class="post-comment-avatar circle">
                     <a
                       href="https://github.com/${comment.user.name}"
-                      class="underlined-link heading"
+                      class="from-underline heading"
                       target="_blank"
                       rel="noreferrer noopener"
                     >

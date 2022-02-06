@@ -13,10 +13,6 @@
     --gap: #{spacing(8)};
   }
 
-  &-link {
-    @include underlined-link($initially-underlined: false);
-  }
-
   &-thumbnail-container {
     grid-area: thumbnail;
     user-select: none;

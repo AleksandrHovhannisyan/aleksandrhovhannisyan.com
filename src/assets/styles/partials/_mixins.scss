@@ -66,22 +66,6 @@
   @include font-weight("title", "bold");
 }
 
-@mixin underlined-link($initially-underlined: true) {
-  @if $initially-underlined {
-    text-decoration: underline;
-
-    &:is(:hover, :focus-visible) {
-      text-decoration: none;
-    }
-  } @else {
-    text-decoration: none;
-
-    &:is(:hover, :focus-visible) {
-      text-decoration: underline;
-    }
-  }
-}
-
 @mixin line-clamp($num-lines) {
   overflow: hidden;
   text-overflow: ellipsis;

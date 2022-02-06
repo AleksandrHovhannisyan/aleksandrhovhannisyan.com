@@ -23,7 +23,7 @@ eleventyComputed:
     <ul class="post-meta-tags flex flex-wrap gap--2" aria-label="Tags">
       {%- for category in categories -%}
         <li>
-          <a href="/categories/{{ category }}/" class="underlined-link post-meta-tag" aria-label="{{ category }}">
+          <a href="/categories/{{ category }}/" class="post-meta-tag from-underline" aria-label="{{ category }}">
             {{- category -}}
           </a>
         </li>
