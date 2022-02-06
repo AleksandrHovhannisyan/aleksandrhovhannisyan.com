@@ -8,10 +8,7 @@
     "description"
     "tags";
   position: relative;
-
-  &-grid {
-    --gap: #{spacing(8)};
-  }
+  gap: spacing(-2);
 
   &-thumbnail-container {
     grid-area: thumbnail;
@@ -47,12 +44,13 @@
 
   &-tags {
     grid-area: tags;
-    margin-top: spacing(-3);
   }
+
   @include tablet {
     & {
       grid-template-columns: min-content min-content auto;
       column-gap: spacing(-1);
+      row-gap: spacing(-4);
       grid-template-areas:
         "thumbnail date tags"
         "thumbnail title title"
