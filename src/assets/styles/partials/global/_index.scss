@@ -23,3 +23,15 @@ strong,
 a {
   color: var(--color-text-emphasis);
 }
+
+a {
+  text-decoration: underline;
+
+  &:where(:focus:not(:focus-visible)) {
+    text-decoration: underline;
+  }
+
+  &:where(:hover, :focus) {
+    text-decoration: none;
+  }
+}

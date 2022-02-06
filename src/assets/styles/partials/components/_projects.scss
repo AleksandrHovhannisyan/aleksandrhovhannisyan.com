@@ -22,6 +22,8 @@
   }
 
   &-link {
+    text-decoration: none;
+
     &:is(:focus, :focus-visible) {
       outline: none;
     }

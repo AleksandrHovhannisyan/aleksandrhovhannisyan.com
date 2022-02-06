@@ -23,7 +23,7 @@ eleventyComputed:
     <ul class="post-meta-tags flex flex-wrap gap--2" aria-label="Tags">
       {%- for category in categories -%}
         <li>
-          <a href="/categories/{{ category }}/" class="post-meta-tag from-underline" aria-label="{{ category }}">
+          <a href="/categories/{{ category }}/" class="post-meta-tag" aria-label="{{ category }}">
             {{- category -}}
           </a>
         </li>
@@ -52,10 +52,9 @@ eleventyComputed:
               href="https://docs.github.com/en/rest/reference/issues"
               target="_blank"
               rel="noreferrer noopener"
-              class="from-underline"
               >GitHub Issues API</a
             >. You can learn more about
-            <a class="from-underline" href="/blog/static-site-comments-github-issues/">how I built it</a> or
+            <a href="/blog/static-site-comments-github-issues/">how I built it</a> or
             post a comment over on GitHub, and it'll show up below once you reload this page.
           </p>
         </div>

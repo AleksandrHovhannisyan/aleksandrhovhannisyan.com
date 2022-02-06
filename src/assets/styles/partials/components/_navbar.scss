@@ -16,6 +16,10 @@
   @include font-family("title");
   @include font-weight("title", "regular");
 
+  a {
+    text-decoration: none;
+  }
+
   &-container {
     display: flex;
     align-items: center;

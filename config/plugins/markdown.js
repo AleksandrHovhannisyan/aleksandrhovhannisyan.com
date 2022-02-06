@@ -23,14 +23,13 @@ const markdownLib = markdownIt({
     containerId: 'toc',
     listClass: 'list toc-list',
     itemClass: 'toc-item',
-    linkClass: 'toc-link from-underline',
+    linkClass: 'toc-link',
     listType: 'ol',
   })
   .use(markdownItClass, {
     ol: 'list',
     ul: 'list',
     blockquote: 'rhythm',
-    a: 'from-underline',
   })
   .use(markdownItAnchor, {
     slugify: slugifyString,

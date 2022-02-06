@@ -9,15 +9,3 @@
     text-decoration: none;
   }
 }
-
-.from-underline {
-  text-decoration: underline;
-
-  &:is(:hover, :focus) {
-    text-decoration: none;
-  }
-
-  &:focus:not(:focus-visible) {
-    text-decoration: underline;
-  }
-}

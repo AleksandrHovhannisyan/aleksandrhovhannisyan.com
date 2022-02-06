@@ -97,7 +97,6 @@ module.exports = (eleventyConfig) => {
     classes: {
       container: 'rhythm',
       list: 'list',
-      ref: 'from-underline',
     },
     title: 'Footnotes',
     titleId: 'footnotes-label',
