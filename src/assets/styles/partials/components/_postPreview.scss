@@ -8,19 +8,17 @@
     "description"
     "tags";
   position: relative;
-  gap: spacing(-2);
+  gap: spacing(0);
 
   &-thumbnail-container {
     grid-area: thumbnail;
     user-select: none;
-    margin-block-end: spacing(-1);
   }
 
   &-thumbnail {
     img {
       object-fit: cover;
       object-position: center;
-      border-radius: spacing(-3);
       aspect-ratio: 16 / 9;
 
       [data-theme="light"] & {
@@ -31,6 +29,8 @@
 
   &-title {
     grid-area: title;
+    @include font-size("lg");
+    line-height: 1.4;
   }
 
   &-description {
@@ -63,13 +63,17 @@
       padding: spacing(-2) 0;
 
       &-container {
-        margin-block: 0;
         margin-inline-end: spacing(-1);
       }
 
       img {
+        border-radius: 4px;
         height: 100%;
       }
+    }
+
+    &-title {
+      @include font-size("md");
     }
 
     &-description {
@@ -78,10 +82,6 @@
 
     &-date {
       display: unset;
-    }
-
-    &-tags {
-      margin: 0;
     }
 
     &-date,

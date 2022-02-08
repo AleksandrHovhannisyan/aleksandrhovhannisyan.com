@@ -2,7 +2,7 @@
 
 .container {
   /* stylelint-disable-next-line scss/no-global-function-names */
-  --padding-x: #{spacing(0, true)};
+  --padding-x: #{spacing(0)};
 
   // why not just use content-box? because it creates overflow issues on mobile with width: 100% below
   max-width: calc(#{to-rems(800px)} + 2 * var(--padding-x));
