@@ -8,11 +8,11 @@
     "description"
     "tags";
   position: relative;
-  gap: spacing(0);
 
   &-thumbnail-container {
     grid-area: thumbnail;
     user-select: none;
+    margin-bottom: spacing(0);
   }
 
   &-thumbnail {
@@ -29,6 +29,7 @@
 
   &-title {
     grid-area: title;
+    margin-bottom: spacing(-2);
     @include font-size("lg");
     line-height: 1.4;
   }
@@ -36,6 +37,7 @@
   &-description {
     grid-area: description;
     max-width: 66ch;
+    margin-bottom: spacing(0);
   }
 
   &-date {
@@ -55,6 +57,10 @@
         "thumbnail date tags"
         "thumbnail title title"
         "thumbnail description description";
+    }
+
+    & > * {
+      margin: 0;
     }
 
     &-thumbnail {
