@@ -36,7 +36,6 @@
 
   &-description {
     grid-area: description;
-    max-width: 66ch;
     margin-bottom: spacing(0);
   }
 
@@ -82,9 +81,9 @@
       @include font-size("md");
     }
 
-    &-description {
-      @include line-clamp(3);
-    }
+    // &-description {
+    //   @include line-clamp(3);
+    // }
 
     &-date {
       display: unset;
