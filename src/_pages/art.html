@@ -30,7 +30,7 @@ eleventyComputed:
     {%- assign artCollection = collections.art | sortByKey: 'data.order' -%}
     {%- for artwork in artCollection -%}
       <li class="artwork{% if artwork.data.columns %} col-{{ artwork.data.columns }}{% endif %} flex-center" id="{{ artwork.fileSlug }}">
-        <a class="artwork-link flex-center flex-column gap-0 relative" href="#{{ artwork.fileSlug }}" aria-label="{{ artwork.data.description }}">
+        <a class="artwork-link flex-center flex-column gap-0 relative no-decoration" href="#{{ artwork.fileSlug }}" aria-label="{{ artwork.data.description }}">
           {{ artwork.templateContent }}
         </a>
       </li>
