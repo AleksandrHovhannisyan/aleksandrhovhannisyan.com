@@ -168,7 +168,7 @@ However, if you're using frameworks like Gatsby, Next.js, Jekyll, 11ty, and many
 
 You need to put in a bit of work to render images properly on the web. While it sounds like a simple matter of just throwing in a valid source and setting an alt attribute for accessibility, you should also set a width and height on your images to minimize layout shifts.
 
-Liked this post? You may also want to check out my other [web performance articles](/categories/webperf/).
+Liked this post? You may also want to check out my other [web performance articles](/tags/webperf/).
 
 ## Additional Resources
 

@@ -1,0 +1,17 @@
+---
+layout: blog
+pagination:
+  data: collections.postsByCategory
+  size: 1
+  alias: tag
+permalink: "{{ tag.href }}"
+noindex: true
+excludeFromSitemap: true
+eleventyComputed:
+  title: "Tag: {{ tag.title }}{% if tag.pageNumber > 0 %} (Page {{ tag.pageNumber | plus: 1 }}/{{ tag.totalPages }}){% endif %}"
+---
+
+{% include postPreviews.html posts: tag.posts, titleLevel: 2 %}
+{%- if tag.totalPages > 1 -%}
+  {%- include pagination.html hrefs: tag.hrefs.all -%}
+{%- endif -%}

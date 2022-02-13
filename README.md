@@ -8,7 +8,7 @@ This repository is not a template for reuse and has no open-source license, but 
 
 You are *more* than welcome to fork/clone this repo and explore the code. However, you may not redistribute any content that I own in this repo without my permission, unless I've already attributed it to someone else. When in doubt, please feel free to message me and ask!
 
-If you want to reuse just the bare-bones skeleton of this repo, I've created a separate starter that you may find useful: [11ty-sass-images-seo](https://github.com/AleksandrHovhannisyan/11ty-sass-images-seo). It includes sensible defaults and project scaffolding for 11ty, support for Sass, basic image optimization, and various workspace configurations. I've also written [various articles about 11ty](https://www.aleksandrhovhannisyan.com/categories/11ty/) that you may find useful.
+If you want to reuse just the bare-bones skeleton of this repo, I've created a separate starter that you may find useful: [11ty-sass-images-seo](https://github.com/AleksandrHovhannisyan/11ty-sass-images-seo). It includes sensible defaults and project scaffolding for 11ty, support for Sass, basic image optimization, and various workspace configurations. I've also written [various articles about 11ty](https://www.aleksandrhovhannisyan.com/tags/11ty/) that you may find useful.
 
 ### Third-Party Licensing
 

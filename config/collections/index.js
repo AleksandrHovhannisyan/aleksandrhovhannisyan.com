@@ -10,7 +10,10 @@ const getAllPosts = (collection) => {
   return posts.reverse();
 };
 
-/** Returns all unique categories as a collection. */
+/** Returns all unique categories as a collection.
+ * NOTE: I'm calling these "categories" to distinguish them from 11ty's built-in "tags." However,
+ * these are still referred to as tags in the UI since that's what's most common.
+ */
 const getAllUniqueCategories = (collection) => {
   const allPosts = getAllPosts(collection);
   const categories = getAllUniqueKeyValues(allPosts, 'categories').map((category) => ({
@@ -40,7 +43,7 @@ const getPostsByCategory = (collection) => {
     // Map each chunk to its page slug
     const categorySlug = slugifyString(category);
     const pageHrefs = chunkedCategoryPosts.map((_, i) =>
-      i > 0 ? `/categories/${categorySlug}/page/${i + 1}/` : `/categories/${categorySlug}/`
+      i > 0 ? `/tags/${categorySlug}/page/${i + 1}/` : `/tags/${categorySlug}/`
     );
 
     chunkedCategoryPosts.forEach((posts, index) => {

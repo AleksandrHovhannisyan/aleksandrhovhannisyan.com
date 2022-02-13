@@ -11,28 +11,28 @@ eleventyComputed:
 ---
 
 <article class="stack gap-10">
-  {%- assign pageCategory = category.title | default: 'all' -%}
+  {%- assign pageTag = tag.title | default: 'all' -%}
   <header class="stack gap-0">
-    <h1>{%- if pageCategory == 'all' -%}All Blog Posts{%- else -%}Posts tagged with: {{ pageCategory }}{%- endif -%}</h1>
+    <h1>{%- if pageTag == 'all' -%}All Blog Posts{%- else -%}Tag: {{ pageTag }}{%- endif -%}</h1>
     <p class="fs-md">
-      Filter by one of the following popular tags, or <a href="/categories/">view all tags</a>.
+      Filter by one of the following popular tags, or <a href="/tags/">view all tags</a>.
     </p>
     <nav aria-label="Popular tags" class="relative prose prose-tight">
       <a class="screen-reader-only flex-center skip-popular-tags" href="#skip-popular-tags">Skip to posts</a>
       <ol class="pill-group blog-tags">
-        {%- assign popularCategories = collections.popularCategories -%}
-        {%- for category in popularCategories %}
+        {%- assign popularTags = collections.popularCategories -%}
+        {%- for tag in popularTags %}
           <li>
             <a
-              href="{{ category.href }}"
+              href="{{ tag.href }}"
               class="pill"
               data-shape="round"
               data-size="sm"
-              {% if pageCategory == category.title -%}
+              {% if pageTag == tag.title -%}
               aria-current="page"
               {%- endif -%}
             >
-              {{ category.title }}&nbsp;<span class="pill-count" aria-label="{{ category.posts | size }} posts">{{ category.posts | size }}</span>
+              {{ tag.title }}&nbsp;<span class="pill-count" aria-label="{{ tag.posts | size }} posts">{{ tag.posts | size }}</span>
             </a>
           </li>
         {% endfor %}

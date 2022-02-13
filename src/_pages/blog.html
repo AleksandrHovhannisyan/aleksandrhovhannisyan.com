@@ -6,7 +6,7 @@ pagination:
   size: 20
   alias: posts
 eleventyComputed:
-  title: "Blog{% if pagination.pageNumber > 0 %} (Page {{ pagination.pageNumber | plus: 1 }}){% endif %}"
+  title: "Blog{% if pagination.pageNumber > 0 %} (Page {{ pagination.pageNumber | plus: 1 }}/{{ pagination.hrefs | size }}){% endif %}"
 ---
 
 
