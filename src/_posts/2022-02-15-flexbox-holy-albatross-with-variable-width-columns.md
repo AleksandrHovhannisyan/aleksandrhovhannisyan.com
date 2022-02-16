@@ -88,7 +88,7 @@ When the calculation yields a negative or zero flex basis, each child spans thre
       <td class="nowrap numeric"><code>40rem</code></td>
       <td class="nowrap numeric"><code>40rem</code></td>
       <td class="nowrap numeric"><code>0rem</code></td>
-      <td class="nowrap numeric"><code>33%</code> (<code>13.2rem</code>)</td>
+      <td class="nowrap numeric"><code>33%</code> (<code>13.20rem</code>)</td>
       <td class="nowrap numeric"><code>100%</code> (<code>40rem</code>)</td>
       <td class="nowrap numeric"><code>3</code></td>
     </tr>
