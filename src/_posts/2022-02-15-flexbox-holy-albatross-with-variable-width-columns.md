@@ -72,7 +72,7 @@ When the calculation yields a negative or zero flex basis, each child spans thre
       <th scope="col" class="nowrap numeric">flex-basis</th>
       <th scope="col" class="nowrap numeric">min-width</th>
       <th scope="col" class="nowrap numeric">max-width</th>
-      <th scope="col" class="nowrap">Chosen value</th>
+      <th scope="col" class="nowrap">Columns</th>
     </tr>
   </thead>
   <tbody>
@@ -82,7 +82,7 @@ When the calculation yields a negative or zero flex basis, each child spans thre
       <td class="nowrap numeric"><code>-999rem</code></td>
       <td class="nowrap numeric"><code>33%</code> (<code>13.53rem</code>)</td>
       <td class="nowrap numeric"><code>100%</code> (<code>41rem</code>)</td>
-      <td class="nowrap numeric"><code>min-width</code></td>
+      <td class="nowrap numeric"><code>3</code></td>
     </tr>
     <tr>
       <td class="nowrap numeric"><code>40rem</code></td>
@@ -90,7 +90,7 @@ When the calculation yields a negative or zero flex basis, each child spans thre
       <td class="nowrap numeric"><code>0rem</code></td>
       <td class="nowrap numeric"><code>33%</code> (<code>13.2rem</code>)</td>
       <td class="nowrap numeric"><code>100%</code> (<code>40rem</code>)</td>
-      <td class="nowrap numeric"><code>min-width</code></td>
+      <td class="nowrap numeric"><code>3</code></td>
     </tr>
     <tr>
       <td class="nowrap numeric"><code>39rem</code></td>
@@ -98,7 +98,7 @@ When the calculation yields a negative or zero flex basis, each child spans thre
       <td class="nowrap numeric"><code>999rem</code></td>
       <td class="nowrap numeric"><code>33%</code> (<code>12.87rem</code>)</td>
       <td class="nowrap numeric"><code>100%</code> (<code>39rem</code>)</td>
-      <td class="nowrap numeric"><code>max-width</code></td>
+      <td class="nowrap numeric"><code>1</code></td>
     </tr>
   </tbody>
 </table>
