@@ -1,15 +1,16 @@
-import ThemeToggle from './components/ThemeToggle/index.mjs';
+import ThemeToggle, { Themes } from './components/ThemeToggle/index.mjs';
 
 // eslint-disable-next-line no-unused-vars
 const themeToggle = new ThemeToggle({
   root: document.documentElement,
   toggleElement: document.getElementById('theme-toggle'),
   storageKey: 'theme',
-  defaultTheme: 'light',
+  defaultTheme: Themes.LIGHT,
   themes: {
-    light: 'dark',
-    dark: 'light',
+    [Themes.LIGHT]: Themes.DARK,
+    [Themes.DARK]: Themes.LIGHT,
   },
+  isPressed: (theme) => theme === Themes.DARK,
 });
 
 const copyableCodeBlocks = document.querySelectorAll('code[data-copyable="true"]');

@@ -23,8 +23,23 @@ describe('ThemeToggle component', () => {
         dark: 'light',
       },
     });
+    expect(toggle.theme).toEqual('dark');
+  });
 
-    expect(toggle.currentTheme).toEqual('dark');
+  it('throws an error if the default theme is not recognized', () => {
+    expect(
+      () =>
+        new ThemeToggle({
+          toggleElement,
+          root: document.documentElement,
+          storageKey: 'theme',
+          defaultTheme: 'mango',
+          themes: {
+            light: 'dark',
+            dark: 'light',
+          },
+        })
+    ).toThrow();
   });
 
   it('calls toggle when the button is clicked', () => {
@@ -61,7 +76,7 @@ describe('ThemeToggle component', () => {
     });
 
     toggle.toggle();
-    expect(toggle.currentTheme).toEqual('dark');
+    expect(toggle.theme).toEqual('dark');
   });
 
   it('toggles from dark to light', () => {
@@ -78,6 +93,6 @@ describe('ThemeToggle component', () => {
 
     toggle.toggle();
     toggle.toggle();
-    expect(toggle.currentTheme).toEqual('light');
+    expect(toggle.theme).toEqual('light');
   });
 });
