@@ -37,7 +37,7 @@ Below is a Codepen demo showing this in action:
 
 I'll use React for this tutorial, but again, you could easily extend this to any framework or just vanilla JavaScript. I also won't cover any other considerations, like how to make the UI fully accessible (e.g., with `aria-live` regions) or how to style it since those are beyond the scope of this tutorial.
 
-Suppose that we're rendering a simple grid of results like this:
+Suppose we're rendering a simple grid of results like this:
 
 ```jsx {data-file="ResultGrid.jsx"}
 const ResultGrid = (props) => {
@@ -60,21 +60,38 @@ const ResultGrid = (props) => {
 };
 ```
 
-As I mentioned before, we'll need to maintain a reference to the first newly rendered result. Fortunately, this is straightforward in React because we're using a mapping function to render the list items, so we can easily determine if we're looking at the first one by checking its index.
-
-Before we do that, we'll need to maintain a ref for the original length of the results array so we can compute the current offset and use that as the index of the first new result:
+As I mentioned before, we'll need to maintain a reference to the first newly rendered result so we can later focus that element after the component has rendered. So let's create that ref ahead of time since we know we're going to need it:
 
 ```jsx {data-file="ResultGrid.jsx" data-copyable=true}
-const originalLength = useRef(props.results.length);
 const firstNewResultRef = useRef(null);
-const firstNewResultIndex = props.results.length - originalLength.current;
 ```
 
-Then, when rendering the list, we'll compare each result's index to the one we just computed:
+Now, we just need to figure out how to assign this ref to the first of the newly rendered results. This is easier than it sounds! Whenever the array changes, the index of the first new result is going to be the length of the previous array. For example, if we had `5` items previously, it doesn't really matter how many items we have *now*—the first new item is always going to be at index `5`, or the length of the previous array.
+
+To keep track of this index, we'll create another ref:
+
+```jsx {data-file="ResultGrid.jsx" data-copyable=true}
+const firstNewResultIndex = useRef(null);
+```
+
+And we'll update its value before calling `props.onLoadMore` in our click event handler:
+
+```jsx {data-file="ResultGrid.jsx" data-copyable=true}
+<button
+  onClick={() => {
+    firstNewResultIndex.current = props.results.length;
+    props.onLoadMore();
+  }}
+>
+  Load More
+</button>
+```
+
+Then, when rendering the list, we can compare each result's index to the one we just computed and conditionally assign the ref only if the indices match:
 
 ```jsx {data-file="ResultGrid.jsx" data-copyable=true}
 props.results.map((result, i) => {
-  const isFirstNewResult = i === firstNewResultIndex;
+  const isFirstNewResult = i === firstNewResultIndex.current;
   return (
     <li key={i}>
       <a
@@ -94,9 +111,6 @@ Finally, we'll leverage the `useEffect` hook to focus the new result after every
 
 ```jsx {data-file="ResultGrid.jsx" data-copyable=true}
 useEffect(() => {
-  // Ignore initial mount, when firstNewResultIndex === 0
-  if (!firstNewResultIndex) return;
-  // Focus the newly inserted result
   firstNewResultRef?.current?.focus();
 }, [props.results]);
 ```
@@ -111,12 +125,11 @@ And that's all the logic that we need! Here's the final code from this tutorial:
 
 ```jsx
 const ResultGrid = (props) => {
-  const originalLength = useRef(props.results.length);
+  const firstNewResultIndex = useRef(null);
   const firstNewResultRef = useRef(null);
-  const firstNewResultIndex = props.results.length - originalLength.current;
 
+  // Whenever the list grows, focus the first newly inserted result
   useEffect(() => {
-    if (!firstNewResultIndex) return;
     firstNewResultRef?.current?.focus();
   }, [props.results]);
 
@@ -124,7 +137,7 @@ const ResultGrid = (props) => {
     <>
       <ol>
         {props.results.map((result, i) => {
-          const isFirstNewResult = i === firstNewResultIndex;
+          const isFirstNewResult = i === firstNewResultIndex.current;
           return (
             <li key={i}>
               <a
@@ -137,9 +150,14 @@ const ResultGrid = (props) => {
           );
         })}
       </ol>
-      {props.canLoadMore && (
-        <button onClick={props.onLoadMore}>Load More</button>
-      )}
+      <button
+        onClick={() => {
+          firstNewResultIndex.current = props.results.length;
+          props.onLoadMore();
+        }}
+      >
+        Load More
+      </button>
     </>
   );
 };
