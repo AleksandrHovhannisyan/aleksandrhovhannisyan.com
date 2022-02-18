@@ -11,7 +11,7 @@ On January 20, 2022, a Munich court ruled that linking to Google Fonts [violates
 
 It's unclear whether other European countries will follow suit, and there are certainly more invasive sites and platforms that don't receive the same treatment. But this isn't about what I think or whether the ruling is just—this is the new reality for German businesses and developers, and they'll need to adapt accordingly.
 
-One way to avoid this problem entirely is to just self-host the Google Fonts you need. Not only does this avoid exposing your users' personal information to Google's servers, but it also typically leads to much better performance. And in the unlikely event that Google Fonts ever goes down, your site won't be impacted.
+One way to avoid this problem entirely is to just self-host the Google Fonts you need. Not only does this avoid exposing your users' personal information to Google's servers, but it's also much faster than requesting fonts from the Google Fonts CDN. And in the unlikely event that Google Fonts ever goes down, your site won't be impacted.
 
 Many good articles have already been written on how to self-host fonts, so I won't dive deep into all of the considerations. Instead, I'd like to show you a few ways you can download Google Fonts as a first step. I'll also show you how to manually optimize and subset those font files using a CLI tool like [glyphhanger](https://github.com/zachleat/glyphhanger).
 
