@@ -24,7 +24,7 @@ Unfortunately, if you now attempt to tab forward or backward, you'll find that y
 
 ## Solution: Focus the First New Result
 
-At a high level, the solution is to focus the first newly inserted result every time the list grows. More specifically, whenever new items are loaded into the list, we'll determine the index of the first new result in the array and maintain a ref to that DOM element. We'll then focus that new element whenever the number of results changes (i.e., after ever render). Effectively, this means that after a user clicks the load-more button with their keyboard, their focus will visibly jump to the first newly inserted result.
+At a high level, the solution is to focus the first newly inserted result every time the list grows. Whenever new items are loaded into the list, we'll determine the index of the first new result in the array and assign a reference to that DOM element. We'll then focus that new element whenever the number of results changes (i.e., after ever render). Effectively, this means that after a user clicks the load-more button with their keyboard, their focus will visibly jump to the first newly inserted result.
 
 Below is a Codepen demo showing this in action:
 
@@ -34,8 +34,6 @@ Below is a Codepen demo showing this in action:
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-
-I'll use React for this tutorial, but again, you could easily extend this to any framework or just vanilla JavaScript. I also won't cover any other considerations, like how to make the UI fully accessible (e.g., with `aria-live` regions) or how to style it since those are beyond the scope of this tutorial.
 
 Suppose we're rendering a simple grid of results like this:
 
@@ -66,7 +64,7 @@ As I mentioned before, we'll need to maintain a reference to the first newly ren
 const firstNewResultRef = useRef(null);
 ```
 
-Now, we just need to figure out how to assign this ref to the first of the newly rendered results. This is easier than it sounds! Whenever the array changes, the index of the first new result is going to be the length of the previous array. For example, if we had `5` items previously, it doesn't really matter how many items we have *now*—the first new item is always going to be at index `5`, or the length of the previous array.
+Now, we just need to figure out how to assign this ref to the first of the newly rendered results. This is easier than it sounds! Whenever the array changes, the index of the first new result is going to be the length of the previous array. For example, if we had `5` items previously, it doesn't really matter how many items we have *now*—the first new item is always going to be at index `5`, or the length of the previous array (due to zero-indexing).
 
 To keep track of this index, we'll create another ref:
 
@@ -87,7 +85,7 @@ And we'll update its value before calling `props.onLoadMore` in our click event 
 </button>
 ```
 
-Then, when rendering the list, we can compare each result's index to the one we just computed and conditionally assign the ref only if the indices match:
+Then, when rendering the list, we can compare each result's index to the one we just computed and conditionally assign the ref we created earlier only if the indices match:
 
 ```jsx {data-file="ResultGrid.jsx" data-copyable=true}
 props.results.map((result, i) => {
@@ -105,9 +103,7 @@ props.results.map((result, i) => {
 })
 ```
 
-The `firstNewResult` ref will update its current value whenever the list grows.
-
-Finally, we'll leverage the `useEffect` hook to focus the new result after every render. It's important to specify `props.results` as the only dependency of the hook; that way, we only focus the ref if this component re-rendered because new results were loaded (rather than in response to every render, which is usually undesirable):
+Finally, we'll leverage the `useEffect` hook to focus the new result after every render. It's important to specify `props.results` as the only dependency of the hook; that way, we only focus the ref if this component re-rendered because new results were loaded:
 
 ```jsx {data-file="ResultGrid.jsx" data-copyable=true}
 useEffect(() => {
@@ -123,7 +119,7 @@ Now, when users click the load-more button with their keyboard, their focus will
 
 And that's all the logic that we need! Here's the final code from this tutorial:
 
-```jsx
+```jsx {data-file="ResultGrid.jsx" data-copyable=true}
 const ResultGrid = (props) => {
   const firstNewResultIndex = useRef(null);
   const firstNewResultRef = useRef(null);
