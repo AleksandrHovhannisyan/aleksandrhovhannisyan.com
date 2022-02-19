@@ -64,7 +64,7 @@
 :where(a, button, input, textarea) {
   --outline-thickness: #{to-rems(3px)};
   --outline-style: solid;
-  --outline-color: currentColor;
+  --outline-color: currentcolor;
 
   &:focus {
     outline: var(--outline-thickness) var(--outline-style) var(--outline-color);

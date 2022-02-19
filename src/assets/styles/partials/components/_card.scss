@@ -28,6 +28,6 @@
   @include transition(box-shadow, transform);
 
   &:focus-within {
-    outline: solid to-rems(3px) currentColor;
+    outline: solid to-rems(3px) currentcolor;
   }
 }
