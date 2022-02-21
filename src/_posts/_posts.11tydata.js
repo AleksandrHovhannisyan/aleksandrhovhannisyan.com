@@ -12,7 +12,6 @@ module.exports = {
       const src = data.thumbnail.url ?? path.join(`/assets/images/posts/`, data.page.fileSlug, data.thumbnail);
       const url = await imageShortcode({
         src,
-        fileName: 'thumbnail',
         widths: [180, 360, 800, 1280],
         sizes: `(max-width: 400px) 360px, (max-width: 768px) 800px, 360px`,
         shouldReturnUrl: true,

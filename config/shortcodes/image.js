@@ -21,7 +21,6 @@ const imageShortcode = async (props) => {
     className,
     imgClass,
     clickable = true,
-    fileName,
     lazy = true,
     shouldReturnUrl = false,
   } = props ?? {};
@@ -37,10 +36,6 @@ const imageShortcode = async (props) => {
     outputDir: path.join(dir.output, image.dir),
     // Public URL path that's referenced in the img tag's src attribute
     urlPath: image.dir,
-    // Custom file name
-    filenameFormat: (_hash, _src, width, format) => {
-      return `${image.name ?? fileName}-${width}-${_hash}.${format}`;
-    },
   };
   const imageMetadata = await Image(image.src, imageOptions);
 
