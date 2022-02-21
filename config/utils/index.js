@@ -1,7 +1,9 @@
+const path = require('path');
 const sanitize = require('sanitize-html');
 const slugify = require('slugify');
 const { Octokit } = require('@octokit/rest');
 const { createTokenAuth } = require('@octokit/auth-token');
+const { dir } = require('../constants');
 
 /**
  * Returns an array of all unique values from the given collection under the specified key.
@@ -70,6 +72,27 @@ const sanitizeHtml = (html) => {
   });
 };
 
+/** Parses an image and returns data describing various info about the image. Wrapper around `path.parse`. Accepts both remote and local image urls. */
+const parseImage = (src) => {
+  const isRemoteImage = /https?:\/\//.test(src);
+
+  if (isRemoteImage) {
+    // For remote images
+    return {
+      dir: `/assets/images/`,
+      src,
+    };
+  } else {
+    // For non-remote images, it's expected that the input src specify the full relative src to the image.
+    const { name: parsedName, dir: parsedDir } = path.parse(src);
+    return {
+      name: parsedName,
+      dir: parsedDir,
+      src: path.join(dir.input, src),
+    };
+  }
+};
+
 module.exports = {
   getAllUniqueKeyValues,
   slugifyString,
@@ -77,4 +100,5 @@ module.exports = {
   getAuthenticatedOctokit,
   stringifyAttributes,
   sanitizeHtml,
+  parseImage,
 };

@@ -1,5 +1,5 @@
 const path = require('path');
-const imageShortcode = require('../../config/shortcodes/image');
+const { imageShortcode } = require('../../config/shortcodes');
 const { toAbsoluteUrl } = require('../../config/filters');
 
 module.exports = {
