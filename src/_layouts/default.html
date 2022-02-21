@@ -64,9 +64,7 @@ eleventyComputed:
     <link rel="stylesheet" href="{{ href }}">
   {%- endfor -%}
   {%- comment -%}Favicons{%- endcomment -%}
-  {%- for width in site.favicon.widths -%}
-    <link rel="icon" href="{{ '/assets/images/favicons/favicon.png' | toAbsoluteImageUrl: width }}" sizes="{{ width }}x{{ width }}">
-  {%- endfor -%}
+  {% favicon '/assets/images/favicons/favicon.png' %}
   {%- comment -%}Load the user's last selected theme{%- endcomment -%}
   <script>
     (function() {

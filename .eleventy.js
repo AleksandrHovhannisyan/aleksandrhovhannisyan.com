@@ -7,6 +7,7 @@ const {
   iconShortcode,
   socialIconShortcode,
   quoteShortcode,
+  faviconShortcode,
 } = require('./config/shortcodes');
 const {
   wordCount,
@@ -57,6 +58,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPairedShortcode('aside', asideShortcode);
   eleventyConfig.addPairedShortcode('quote', quoteShortcode);
   eleventyConfig.addShortcode('image', imageShortcode);
+  eleventyConfig.addShortcode('favicon', faviconShortcode);
   eleventyConfig.addShortcode('icon', iconShortcode);
   eleventyConfig.addShortcode('socialIcon', socialIconShortcode);
 
