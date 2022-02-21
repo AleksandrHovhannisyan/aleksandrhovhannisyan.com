@@ -21,8 +21,6 @@ const imageShortcode = async (props) => {
     className,
     imgClass,
     clickable = true,
-    // mainly for remote images
-    urlPath,
     fileName,
     lazy = true,
     shouldReturnUrl = false,
@@ -34,7 +32,8 @@ const imageShortcode = async (props) => {
   if (isRemoteImage) {
     // For remote images, these pieces are passed in separately, and the input src IS the absolute src
     imgName = fileName;
-    imgDir = urlPath;
+    // For remote images
+    imgDir = `/assets/images/`;
     absoluteSrc = src;
   } else {
     // For non-remote images, it's expected that the input src specify the full relative src to the image.
