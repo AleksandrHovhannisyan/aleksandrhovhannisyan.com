@@ -1,6 +1,6 @@
 const { escape } = require('lodash');
 const { outdent } = require('outdent');
-const markdownLib = require('../../plugins/markdown');
+const markdownLib = require('../plugins/markdown');
 
 const quote = (children, source, cite) => {
   if (!/https?:\/\//.test(cite)) {

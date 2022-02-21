@@ -1,5 +1,5 @@
 const Cache = require('@11ty/eleventy-cache-assets');
-const { imageShortcode } = require('../../config/shortcodes');
+const { imageShortcode } = require('../../config/shortcodes/aside');
 
 // Combination of static + dynamic data
 const repos = {
