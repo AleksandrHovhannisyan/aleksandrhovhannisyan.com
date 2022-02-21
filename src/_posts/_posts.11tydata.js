@@ -1,6 +1,5 @@
 const path = require('path');
-const { imageShortcode } = require('../../config/shortcodes');
-const { toAbsoluteUrl } = require('../../config/filters');
+const { toAbsoluteImageUrl } = require('../../config/filters');
 
 module.exports = {
   layout: 'post',
@@ -10,13 +9,7 @@ module.exports = {
   eleventyComputed: {
     ogImage: async (data) => {
       const src = data.thumbnail.url ?? path.join(`/assets/images/posts/`, data.page.fileSlug, data.thumbnail);
-      const url = await imageShortcode({
-        src,
-        widths: [180, 360, 800, 1280],
-        sizes: `(max-width: 400px) 360px, (max-width: 768px) 800px, 360px`,
-        shouldReturnUrl: true,
-      });
-      return toAbsoluteUrl(url);
+      return toAbsoluteImageUrl(src);
     },
   },
 };

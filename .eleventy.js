@@ -22,6 +22,7 @@ const {
   stripHtml,
   getLatestCollectionItemDate,
   compileAndMinifyScss,
+  toAbsoluteImageUrl,
 } = require('./config/filters');
 const {
   getAllPosts,
@@ -70,6 +71,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter('dividedBy', dividedBy);
   eleventyConfig.addFilter('newlineToBr', newlineToBr);
   eleventyConfig.addFilter('toAbsoluteUrl', toAbsoluteUrl);
+  eleventyConfig.addFilter('toAbsoluteImageUrl', toAbsoluteImageUrl);
   eleventyConfig.addFilter('stripNewlines', stripNewlines);
   eleventyConfig.addFilter('stripHtml', stripHtml);
   eleventyConfig.addFilter('slugify', slugifyString);

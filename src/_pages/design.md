@@ -209,3 +209,5 @@ some *italicized text* perhaps
   {% include image.html src: "https://images.unsplash.com/photo-1543631936-4019112aee78?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80", alt: "A multi-color parrot tilts its head towards the camera and glances playfully at the viewer." %}
   <figcaption class="fs-sm container">A multi-color parrot tilts its head towards the camera and glances playfully at the viewer. Photo by <a href="https://unsplash.com/photos/Xxo3-8bqGro">Timothy Dykes</a> on Unsplash.</figcaption>
 </figure>
+
+{{ 'https://images.unsplash.com/photo-1543631936-4019112aee78?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80' | toAbsoluteImageUrl }}

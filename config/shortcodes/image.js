@@ -5,11 +5,6 @@ const { escape } = require('lodash');
 const { dir } = require('../constants');
 const { stringifyAttributes, parseImage } = require('../utils');
 
-const ImageWidths = {
-  /** The original (source) image width. */
-  ORIGINAL: null,
-};
-
 const imageShortcode = async (props) => {
   const {
     src,
@@ -29,7 +24,7 @@ const imageShortcode = async (props) => {
 
   const imageOptions = {
     // Templates shouldn't have to worry about passing in `null` and the placeholder width
-    widths: [ImageWidths.ORIGINAL, ...widths],
+    widths: [null, ...widths],
     // List optimized formats before the base format so that the output contains webp sources before jpegs.
     formats: [...optimizedFormats, baseFormat],
     // Where the generated image files get saved
