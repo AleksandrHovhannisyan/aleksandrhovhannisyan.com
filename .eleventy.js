@@ -7,7 +7,6 @@ const {
   iconShortcode,
   socialIconShortcode,
   quoteShortcode,
-  thumbnailShortcode,
 } = require('./config/shortcodes');
 const {
   wordCount,
@@ -52,8 +51,6 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy(`${dir.input}/${dir.assets}/videos`);
   eleventyConfig.addPassthroughCopy(`${imagePaths.source}/art`);
   eleventyConfig.addPassthroughCopy(`${imagePaths.source}/404`);
-  eleventyConfig.addPassthroughCopy(`${imagePaths.source}/posts`);
-  eleventyConfig.addPassthroughCopy(`${imagePaths.source}/profile-photo.jpg`);
 
   // Custom shortcodes
   eleventyConfig.addPairedShortcode('aside', asideShortcode);
@@ -61,7 +58,6 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addShortcode('image', imageShortcode);
   eleventyConfig.addShortcode('icon', iconShortcode);
   eleventyConfig.addShortcode('socialIcon', socialIconShortcode);
-  eleventyConfig.addShortcode('thumbnail', thumbnailShortcode);
 
   // Custom filters
   eleventyConfig.addFilter('wordCount', wordCount);

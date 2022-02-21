@@ -25,6 +25,7 @@ const imageShortcode = async (props) => {
     urlPath,
     fileName,
     lazy = true,
+    shouldReturnUrl = false,
   } = props ?? {};
 
   const isRemoteImage = /https?:\/\//.test(src);
@@ -53,8 +54,8 @@ const imageShortcode = async (props) => {
     // Public URL path that's referenced in the img tag's src attribute
     urlPath: imgDir,
     // Custom file name
-    filenameFormat: (_id, _src, width, format) => {
-      return `${imgName}-${width}.${format}`;
+    filenameFormat: (_hash, _src, width, format) => {
+      return `${imgName}-${width}-${_hash}.${format}`;
     },
   };
   const imageMetadata = await Image(absoluteSrc, imageOptions);
@@ -70,6 +71,10 @@ const imageShortcode = async (props) => {
     }
     return formatSizes;
   }, {});
+
+  if (shouldReturnUrl) {
+    return formatSizes[baseFormat].largest.url;
+  }
 
   const { width, height } = formatSizes[baseFormat].largest;
 

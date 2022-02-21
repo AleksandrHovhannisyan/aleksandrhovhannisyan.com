@@ -1,6 +1,0 @@
-{
-  "layout": "post",
-  "permalink": "/blog/{{ page.fileSlug }}/",
-  "isBlogPage": true,
-  "isPost": true
-}
