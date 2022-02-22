@@ -10,12 +10,12 @@ const dir = {
 };
 
 const imagePaths = {
-  source: path.join(dir.input, dir.assets, 'images'),
+  input: path.join(dir.input, dir.assets, 'images'),
   output: path.join(dir.output, dir.assets, 'images'),
 };
 
 const scriptDirs = {
-  source: path.join(dir.input, dir.assets, 'scripts'),
+  input: path.join(dir.input, dir.assets, 'scripts'),
   output: path.join(dir.output, dir.assets, 'scripts'),
 };
 

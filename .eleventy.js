@@ -45,14 +45,14 @@ module.exports = (eleventyConfig) => {
   });
 
   // Watch targets
-  eleventyConfig.addWatchTarget(imagePaths.source);
-  eleventyConfig.addWatchTarget(scriptDirs.source);
+  eleventyConfig.addWatchTarget(imagePaths.input);
+  eleventyConfig.addWatchTarget(scriptDirs.input);
 
   // Pass-through copy for static assets
   eleventyConfig.addPassthroughCopy(`${dir.input}/${dir.assets}/fonts`);
   eleventyConfig.addPassthroughCopy(`${dir.input}/${dir.assets}/videos`);
-  eleventyConfig.addPassthroughCopy(`${imagePaths.source}/art`);
-  eleventyConfig.addPassthroughCopy(`${imagePaths.source}/404`);
+  eleventyConfig.addPassthroughCopy(`${imagePaths.input}/art`);
+  eleventyConfig.addPassthroughCopy(`${imagePaths.input}/404`);
 
   // Custom shortcodes
   eleventyConfig.addPairedShortcode('aside', asideShortcode);
@@ -107,7 +107,7 @@ module.exports = (eleventyConfig) => {
   // Post-processing
   eleventyConfig.on('afterBuild', () => {
     return esbuild.build({
-      entryPoints: [path.join(scriptDirs.source, 'index.mjs'), path.join(scriptDirs.source, 'comments.mjs')],
+      entryPoints: [path.join(scriptDirs.input, 'index.mjs'), path.join(scriptDirs.input, 'comments.mjs')],
       entryNames: '[dir]/[name]',
       outdir: scriptDirs.output,
       format: 'esm',
