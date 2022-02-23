@@ -22,7 +22,7 @@ const imageShortcode = async (props) => {
   const image = parseImage(src);
 
   const imageOptions = {
-    // Templates shouldn't have to worry about passing in `null` and the placeholder width
+    // Always include the original image width in the output
     widths: [null, ...widths],
     // List optimized formats before the base format so that the output contains webp sources before jpegs.
     formats: [...optimizedFormats, baseFormat],
