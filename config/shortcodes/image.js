@@ -17,7 +17,6 @@ const imageShortcode = async (props) => {
     imgClass,
     clickable = true,
     lazy = true,
-    shouldReturnUrl = false,
   } = props ?? {};
 
   const image = parseImage(src);
@@ -45,10 +44,6 @@ const imageShortcode = async (props) => {
     }
     return formatSizes;
   }, {});
-
-  if (shouldReturnUrl) {
-    return formatSizes[baseFormat].largest.url;
-  }
 
   const { width, height } = formatSizes[baseFormat].largest;
 
