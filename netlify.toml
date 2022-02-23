@@ -5,7 +5,7 @@
   package = "netlify-plugin-11ty"
   [plugins.inputs]
     cache_img = './assets/images'
-    cache_img_httpHeader = false
+    cache_img_httpHeader = true
 
 [dev]
   command = "npm run serve"
