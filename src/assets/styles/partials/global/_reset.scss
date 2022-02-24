@@ -15,10 +15,6 @@
   }
 }
 
-:where(body) {
-  -webkit-font-smoothing: antialiased;
-}
-
 :where(label, input, textarea, button) {
   font-family: inherit;
   font-size: inherit;
@@ -43,11 +39,6 @@
 :where(button) {
   border: none;
   cursor: pointer;
-}
-
-:where(a) {
-  font-weight: inherit;
-  text-decoration: none;
 }
 
 :where(ul, ol) {
