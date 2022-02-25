@@ -311,6 +311,7 @@ You can also clear `localStorage` via the same tab in dev tools or via JavaScrip
 
 Here's a brief look at the major differences between cookies and the Web Storage API:
 
+<div class="scroll-x">
 <table>
     <thead>
         <tr>
@@ -337,6 +338,7 @@ Here's a brief look at the major differences between cookies and the Web Storage
         </tr>
     </tbody>
 </table>
+</div>
 
 ## Final Thoughts
 

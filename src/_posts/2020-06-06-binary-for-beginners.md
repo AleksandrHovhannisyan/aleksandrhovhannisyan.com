@@ -67,7 +67,8 @@ Again, we have buckets from right to left in increasing powers of our base (<cod
 
 Now, in reality, you can have a number system that uses a base of <code>2</code>, <code>3</code>, <code>4</code>, <code>120</code>, and so on. Some of these have special names because they're used more often than others:
 
-<table>
+<div class="scroll-x">
+  <table>
     <thead>
       <tr>
         <th scope="col" class="numeric">Base</th>
@@ -102,7 +103,8 @@ Now, in reality, you can have a number system that uses a base of <code>2</code>
             <td>How many seconds are in a minute? How many minutes in an hour? This is the basis of the modern circular coordinate system (degrees, minutes, and seconds).</td>
         </tr>
     </tbody>
-</table>
+  </table>
+</div>
 
 For this reason, when discussing number systems, we usually subscript a number with its base to clarify its value. Alternatively, you can prepend a number with a certain string (usually <code>0b</code> for binary or <code>0x</code>/<code>#</code> for hexadecimal). So we'd write <code>579</code> as <code>579<sub>10</sub></code>, or the binary number <code>1001</code> as <code>1001<sub>2</sub></code> (or <code>0b1001</code>). Otherwise, if we were to merely write the number <code>1001</code> without providing any context, nobody would know whether that's in binary, octal, decimal, hexadecimal, and so on because the digits <code>0</code> and <code>1</code> are valid in all of those number systems, too!
 

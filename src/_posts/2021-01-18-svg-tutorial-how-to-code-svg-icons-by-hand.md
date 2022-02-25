@@ -1211,24 +1211,26 @@ Arcs are how we draw **curved paths**, and just like all other path commands, th
 
 The parameters for SVG arcs are covered in the table below:
 
-<table>
-    <thead>
-        <tr>
-            <th scope="col">Command</th>
-            <th scope="col">Parameters</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><code>A</code> (absolute)</td>
-            <td><code>rx ry x-axis-rotation large-arc-flag sweep-flag x y</code></td>
-        </tr>
-        <tr>
-            <td><code>a</code> (relative)</td>
-            <td><code>rx ry x-axis-rotation large-arc-flag sweep-flag dx dy</code></td>
-        </tr>
-    </tbody>
-</table>
+<div class="scroll-x">
+  <table>
+      <thead>
+          <tr>
+              <th scope="col">Command</th>
+              <th scope="col">Parameters</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td><code>A</code> (absolute)</td>
+              <td><code>rx ry x-axis-rotation large-arc-flag sweep-flag x y</code></td>
+          </tr>
+          <tr>
+              <td><code>a</code> (relative)</td>
+              <td><code>rx ry x-axis-rotation large-arc-flag sweep-flag dx dy</code></td>
+          </tr>
+      </tbody>
+  </table>
+</div>
 
 - `rx`: The x-radius of the ellipse that forms the arc.
 - `ry`: The y-radius of the ellipse that forms the arc.

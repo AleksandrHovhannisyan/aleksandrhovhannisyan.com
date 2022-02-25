@@ -337,28 +337,30 @@ So far, I've asserted that percentage padding and margins reference the width of
 
 By default, a web page is set up to use a **horizontal writing mode**, where text flows from left to right (LTR). This is thanks to the `writing-mode` CSS property, which can take on these values:
 
-<table>
-  <thead>
-    <tr>
-      <th scope="col">Value</th>
-      <th scope="col">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>horizontal-tb</code></td>
-      <td>Content flows horizontally, from top to bottom (default).</td>
-    </tr>
-    <tr>
-      <td><code>vertical-rl</code></td>
-      <td>Content flows vertically, from the right edge of the page to the left.</td>
-    </tr>
-    <tr>
-      <td><code>vertical-lr</code></td>
-      <td>Content flows vertically, from the left edge of the page to the right.</td>
-    </tr>
-  </tbody>
-</table>
+<div class="scroll-x">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Value</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>horizontal-tb</code></td>
+        <td>Content flows horizontally, from top to bottom (default).</td>
+      </tr>
+      <tr>
+        <td><code>vertical-rl</code></td>
+        <td>Content flows vertically, from the right edge of the page to the left.</td>
+      </tr>
+      <tr>
+        <td><code>vertical-lr</code></td>
+        <td>Content flows vertically, from the left edge of the page to the right.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 With vertical layouts, paragraphs appear sideways—you'll have to tilt your head to read them:
 

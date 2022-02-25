@@ -73,40 +73,42 @@ We have the following values:
 
 The browser will first attempt to return the preferred value, which in this case is `4vw` (`4%` of the viewport width). Thus, the browser must first check the viewport width to see what absolute pixel value it yields. The table below lists a few scenarios.
 
-<table>
-  <thead>
-    <tr>
-      <th scope="col">Viewport width</th>
-      <th scope="col" class="numeric">Min</th>
-      <th scope="col" class="numeric">Max</th>
-      <th scope="col" class="numeric">Preferred</th>
-      <th scope="col">Clamp return value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="numeric"><code>320px</code></td>
-      <td class="numeric"><code>16px</code></td>
-      <td class="numeric"><code>24px</code></td>
-      <td class="numeric"><code>12.8px</code></td>
-      <td class="numeric"><code>16px</code></td>
-    </tr>
-    <tr>
-      <td class="numeric"><code>500px</code></td>
-      <td class="numeric"><code>16px</code></td>
-      <td class="numeric"><code>24px</code></td>
-      <td class="numeric"><code>20px</code></td>
-      <td class="numeric"><code>20px</code></td>
-    </tr>
-    <tr>
-      <td class="numeric"><code>1000px</code></td>
-      <td class="numeric"><code>16px</code></td>
-      <td class="numeric"><code>24px</code></td>
-      <td class="numeric"><code>40px</code></td>
-      <td class="numeric"><code>24px</code></td>
-    </tr>
-  </tbody>
-</table>
+<div class="scroll-x">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Viewport width</th>
+        <th scope="col" class="numeric">Min</th>
+        <th scope="col" class="numeric">Max</th>
+        <th scope="col" class="numeric">Preferred</th>
+        <th scope="col">Clamp return value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="numeric"><code>320px</code></td>
+        <td class="numeric"><code>16px</code></td>
+        <td class="numeric"><code>24px</code></td>
+        <td class="numeric"><code>12.8px</code></td>
+        <td class="numeric"><code>16px</code></td>
+      </tr>
+      <tr>
+        <td class="numeric"><code>500px</code></td>
+        <td class="numeric"><code>16px</code></td>
+        <td class="numeric"><code>24px</code></td>
+        <td class="numeric"><code>20px</code></td>
+        <td class="numeric"><code>20px</code></td>
+      </tr>
+      <tr>
+        <td class="numeric"><code>1000px</code></td>
+        <td class="numeric"><code>16px</code></td>
+        <td class="numeric"><code>24px</code></td>
+        <td class="numeric"><code>40px</code></td>
+        <td class="numeric"><code>24px</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 This is promising, but as I noted in the intro, there's one major drawback to using `clamp` in its raw form: We have to calculate the preferred value by hand, and it's not very easy for us to think in `vw` units unless we're dealing with common ratios. Fortunately, since we're using Sass, we can greatly simplify things by creating a custom clamp function that automatically computes the preferred value and interpolates it inside a vanilla CSS `clamp` declaration. Before we do that, we'll need to take a closer look at the relationship between font size and viewport width to come up with a mathematical solution to this problem.
 
@@ -179,29 +181,30 @@ p {
 
 We've done it! Given just a min and max point, we've found the right preferred value for `clamp`. If you don't trust the math, try plugging in some numbers. The table below confirms that the preferred value returns the minimum font size at our minimum breakpoint and the maximum font size at our maximum breakpoint. At screen sizes between the minimum and maximum endpoints, the equation for `clamp`'s preferred value yields a responsive value.
 
-<table>
-  <thead>
-    <tr>
-      <th scope="col">Viewport width</th>
-      <th scope="col">Preferred value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>400px</code> (min breakpoint)</td>
-      <td><code>0.005 * 400px + 14px = 16px</code></td>
-    </tr>
-    <tr>
-      <td><code>700px</code> (halfway between)</td>
-      <td><code>0.005 * 700px + 14px = 17.5px</code></td>
-    </tr>
-    <tr>
-      <td><code>1000px</code> (max breakpoint)</td>
-      <td><code>0.005 * 1000px + 14px = 19px</code></td>
-    </tr>
-  </tbody>
-</table>
-
+<div class="scroll-x">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Viewport width</th>
+        <th scope="col">Preferred value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>400px</code> (min breakpoint)</td>
+        <td><code>0.005 * 400px + 14px = 16px</code></td>
+      </tr>
+      <tr>
+        <td><code>700px</code> (halfway between)</td>
+        <td><code>0.005 * 700px + 14px = 17.5px</code></td>
+      </tr>
+      <tr>
+        <td><code>1000px</code> (max breakpoint)</td>
+        <td><code>0.005 * 1000px + 14px = 19px</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 As a final step, we'll want to express the pixel values in rems to respect the browser's font size settings. To do that, we'll divide each pixel value by `16px` (the root font size for all browsers):
 
@@ -351,36 +354,38 @@ In a [modular type scale](https://every-layout.dev/rudiments/modular-scale/), yo
 
 This relationship can be expressed very naturally with exponents, where a given step's font size is the baseline font size times a multiple of the modular ratio. The table below lists some sample values, assuming a base font size of `16px` (`1rem`) and a modular ratio of `1.2` (known formally as the *minor third*).
 
-<table>
-  <thead>
-    <tr>
-      <th scope="col">Step</th>
-      <th scope="col" class="numeric">Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>sm</code></td>
-      <td class="numeric"><code>16 × (1.2)<sup>-1</sup></code></td>
-    </tr>
-    <tr>
-      <td><code>base</code></td>
-      <td class="numeric"><code>16 × (1.2)<sup>0</sup></code></td>
-    </tr>
-    <tr>
-      <td><code>md</code></td>
-      <td class="numeric"><code>16 × (1.2)<sup>1</sup></code></td>
-    </tr>
-    <tr>
-      <td><code>lg</code></td>
-      <td class="numeric"><code>16 × (1.2)<sup>2</sup></code></td>
-    </tr>
-    <tr>
-      <td><code>xl</code></td>
-      <td class="numeric"><code>16 × (1.2)<sup>3</sup></code></td>
-    </tr>
-  </tbody>
-</table>
+<div class="scroll-x">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Step</th>
+        <th scope="col" class="numeric">Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>sm</code></td>
+        <td class="numeric"><code>16 × (1.2)<sup>-1</sup></code></td>
+      </tr>
+      <tr>
+        <td><code>base</code></td>
+        <td class="numeric"><code>16 × (1.2)<sup>0</sup></code></td>
+      </tr>
+      <tr>
+        <td><code>md</code></td>
+        <td class="numeric"><code>16 × (1.2)<sup>1</sup></code></td>
+      </tr>
+      <tr>
+        <td><code>lg</code></td>
+        <td class="numeric"><code>16 × (1.2)<sup>2</sup></code></td>
+      </tr>
+      <tr>
+        <td><code>xl</code></td>
+        <td class="numeric"><code>16 × (1.2)<sup>3</sup></code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ### Naive Approach: Manually Creating a Type Scale
 
@@ -420,42 +425,44 @@ The previous approach works, but it's not ideal. If you ever want to use a diffe
 
 The good news is that the work is essentially cut out for us, especially if we modify the table from earlier to work out both the min and max font sizes for each modular step. Again, this assumes a baseline font size of `16px` and a desired modular scale ratio of `1.2`.
 
-<table>
-  <thead>
-    <tr>
-      <th scope="col">Modular step</th>
-      <th scope="col" class="numeric">Min font size</th>
-      <th scope="col" class="numeric">Max font size</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>sm</code></td>
-      <td class="numeric"><code>16 × (1.2)<sup>-2</sup></code></td>
-      <td class="numeric"><code>16 × (1.2)<sup>-1</sup></code></td>
-    </tr>
-    <tr>
-      <td><code>base</code></td>
-      <td class="numeric"><code>16 × (1.2)<sup>0</sup></code></td>
-      <td class="numeric"><code>16 × (1.2)<sup>1</sup></code></td>
-    </tr>
-    <tr>
-      <td><code>md</code></td>
-      <td class="numeric"><code>16 × (1.2)<sup>1</sup></code></td>
-      <td class="numeric"><code>16 × (1.2)<sup>2</sup></code></td>
-    </tr>
-    <tr>
-      <td><code>lg</code></td>
-      <td class="numeric"><code>16 × (1.2)<sup>2</sup></code></td>
-      <td class="numeric"><code>16 × (1.2)<sup>3</sup></code></td>
-    </tr>
-    <tr>
-      <td><code>xl</code></td>
-      <td class="numeric"><code>16 × (1.2)<sup>3</sup></code></td>
-      <td class="numeric"><code>16 × (1.2)<sup>4</sup></code></td>
-    </tr>
-  </tbody>
-</table>
+<div class="scroll-x">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Modular step</th>
+        <th scope="col" class="numeric">Min font size</th>
+        <th scope="col" class="numeric">Max font size</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>sm</code></td>
+        <td class="numeric"><code>16 × (1.2)<sup>-2</sup></code></td>
+        <td class="numeric"><code>16 × (1.2)<sup>-1</sup></code></td>
+      </tr>
+      <tr>
+        <td><code>base</code></td>
+        <td class="numeric"><code>16 × (1.2)<sup>0</sup></code></td>
+        <td class="numeric"><code>16 × (1.2)<sup>1</sup></code></td>
+      </tr>
+      <tr>
+        <td><code>md</code></td>
+        <td class="numeric"><code>16 × (1.2)<sup>1</sup></code></td>
+        <td class="numeric"><code>16 × (1.2)<sup>2</sup></code></td>
+      </tr>
+      <tr>
+        <td><code>lg</code></td>
+        <td class="numeric"><code>16 × (1.2)<sup>2</sup></code></td>
+        <td class="numeric"><code>16 × (1.2)<sup>3</sup></code></td>
+      </tr>
+      <tr>
+        <td><code>xl</code></td>
+        <td class="numeric"><code>16 × (1.2)<sup>3</sup></code></td>
+        <td class="numeric"><code>16 × (1.2)<sup>4</sup></code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 We'll start by creating the following variables:
 
@@ -507,40 +514,42 @@ $max: $type-base * math.pow($type-scale, $i - $type-base-index + 1);
 
 We're doing `$i - $type-base-index` for each step's minimum font size since our base modular step need not be the first element in the list (e.g., if we have smaller steps, like `sm` in the example above). So we get its index and subtract it from the current index to obtain the correct offset for the min exponent. Adding one to this result gives us the max exponent. The table below illustrates this for a few modular steps.
 
-<table>
-  <thead>
-    <tr>
-      <th scope="col">Step</th>
-      <th scope="col" class="numeric">$i</th>
-      <th scope="col" class="numeric">$type-base-index</th>
-      <th scope="col" class="numeric">$i - $type-base-index</th>
-      <th scope="col" class="numeric">$i - $type-base-index + 1</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>sm</code></td>
-      <td class="numeric"><code>1</code></td>
-      <td class="numeric"><code>2</code></td>
-      <td class="numeric"><code>-1</code></td>
-      <td class="numeric"><code>0</code></td>
-    </tr>
-    <tr>
-      <td><code>base</code></td>
-      <td class="numeric"><code>2</code></td>
-      <td class="numeric"><code>2</code></td>
-      <td class="numeric"><code>0</code></td>
-      <td class="numeric"><code>1</code></td>
-    </tr>
-    <tr>
-      <td><code>md</code></td>
-      <td class="numeric"><code>3</code></td>
-      <td class="numeric"><code>2</code></td>
-      <td class="numeric"><code>1</code></td>
-      <td class="numeric"><code>2</code></td>
-    </tr>
-  </tbody>
-</table>
+<div class="scroll-x">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Step</th>
+        <th scope="col" class="numeric">$i</th>
+        <th scope="col" class="numeric">$type-base-index</th>
+        <th scope="col" class="numeric">$i - $type-base-index</th>
+        <th scope="col" class="numeric">$i - $type-base-index + 1</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>sm</code></td>
+        <td class="numeric"><code>1</code></td>
+        <td class="numeric"><code>2</code></td>
+        <td class="numeric"><code>-1</code></td>
+        <td class="numeric"><code>0</code></td>
+      </tr>
+      <tr>
+        <td><code>base</code></td>
+        <td class="numeric"><code>2</code></td>
+        <td class="numeric"><code>2</code></td>
+        <td class="numeric"><code>0</code></td>
+        <td class="numeric"><code>1</code></td>
+      </tr>
+      <tr>
+        <td><code>md</code></td>
+        <td class="numeric"><code>3</code></td>
+        <td class="numeric"><code>2</code></td>
+        <td class="numeric"><code>1</code></td>
+        <td class="numeric"><code>2</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 In short, the code loops through each font step and generates a min and max using our desired type scale. Then, these min and max values get passed along to our custom `clamped` function, which automatically computes the preferred value. We get the same result as in the previous section, but now we're free to customize the baseline font size and type scale by just tweaking two variables. Everything just works!
 

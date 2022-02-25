@@ -114,27 +114,29 @@ By default, `core.autocrlf` is set to `false` on a fresh install of Git, meaning
 
 That leaves us with two options if we decide to configure Git locally: `core.autocrlf=true` and `core.autocrlf=input`. The line endings for these options are summarized below.
 
-<table>
-  <thead>
-    <tr>
-      <th scope="col">Setting</th>
-      <th scope="col" class="nowrap">Repo (check-in)</th>
-      <th scope="col">Working Tree (checkout)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>core.autocrlf=true</code></td>
-      <td><code>LF</code></td>
-      <td><code>CRLF</code></td>
-    </tr>
-    <tr>
-      <td><code>core.autocrlf=input</code></td>
-      <td><code>LF</code></td>
-      <td>original (usually <code>LF</code>, or <code>CRLF</code> if you're viewing a file you created on Windows)</td>
-    </tr>
-  </tbody>
-</table>
+<div class="scroll-x">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Setting</th>
+        <th scope="col" class="nowrap">Repo (check-in)</th>
+        <th scope="col">Working Tree (checkout)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>core.autocrlf=true</code></td>
+        <td><code>LF</code></td>
+        <td><code>CRLF</code></td>
+      </tr>
+      <tr>
+        <td><code>core.autocrlf=input</code></td>
+        <td><code>LF</code></td>
+        <td>original (usually <code>LF</code>, or <code>CRLF</code> if you're viewing a file you created on Windows)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 Both of these options enable automatic line ending normalization for text files, with one minor difference: `core.autocrlf=true` converts files to `CRLF` on checkout from the repo to the working tree, while `core.autocrlf=input` leaves the working tree untouched.
 
@@ -266,30 +268,32 @@ One final note: In the recommended `.gitattributes` file, we used `* text=auto` 
 
 There are some similarities between Git's local settings and the Git attributes we looked at. The table below lists each Git setting, its corresponding `.gitattributes` rule, and the line endings for text files in the index and working tree:
 
-<table>
-  <thead>
-    <tr>
-      <th scope="col">Git config</th>
-      <th scope="col">.gitattributes</th>
-      <th scope="col">Index/Repo</th>
-      <th scope="col">Working Tree</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>core.autocrlf=true</code></td>
-      <td class="nowrap"><code>* text=auto eol=crlf</code></td>
-      <td><code>LF</code></td>
-      <td><code>CRLF</code></td>
-    </tr>
-    <tr>
-      <td><code>core.autocrlf=input</code></td>
-      <td class="nowrap"><code>* text=auto</code></td>
-      <td><code>LF</code></td>
-      <td>original (<code>LF</code> or <code>CRLF</code>)</td>
-    </tr>
-  </tbody>
-</table>
+<div class="scroll-x">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Git config</th>
+        <th scope="col">.gitattributes</th>
+        <th scope="col">Index/Repo</th>
+        <th scope="col">Working Tree</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>core.autocrlf=true</code></td>
+        <td class="nowrap"><code>* text=auto eol=crlf</code></td>
+        <td><code>LF</code></td>
+        <td><code>CRLF</code></td>
+      </tr>
+      <tr>
+        <td><code>core.autocrlf=input</code></td>
+        <td class="nowrap"><code>* text=auto</code></td>
+        <td><code>LF</code></td>
+        <td>original (<code>LF</code> or <code>CRLF</code>)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ## Bonus: Create an `.editorconfig` File
 

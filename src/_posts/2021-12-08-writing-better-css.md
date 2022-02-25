@@ -233,40 +233,42 @@ There are [many logical properties and values](https://developer.mozilla.org/en-
 
 As we saw in an earlier example, you can replace physical margins, padding, and borders with logical properties that automatically respect RTL and vertical writing modes. The following table summarizes some of these naming patterns.
 
-<table>
-  <thead>
-    <tr>
-      <th scope="col">Physical property</th>
-      <th scope="col">Logical property</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>[margin|padding|border]-left</code></td>
-      <td><code>[margin|padding|border]-inline-start</code></td>
-    </tr>
-    <tr>
-      <td><code>[margin|padding|border]-right</code></td>
-      <td><code>[margin|padding|border]-inline-end</code></td>
-    </tr>
-    <tr>
-      <td><code>[margin|padding|border]-top</code></td>
-      <td><code>[margin|padding|border]-block-start</code></td>
-    </tr>
-    <tr>
-      <td><code>[margin|padding|border]-bottom</code></td>
-      <td><code>[margin|padding|border]-block-end</code></td>
-    </tr>
-    <tr>
-      <td><code>border-bottom-width</code></td>
-      <td><code>border-block-end-width</code></td>
-    </tr>
-    <tr>
-      <td><code>border-left-color</code></td>
-      <td><code>border-inline-start-color</code></td>
-    </tr>
-  </tbody>
-</table>
+<div class="scroll-x">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Physical property</th>
+        <th scope="col">Logical property</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>[margin|padding|border]-left</code></td>
+        <td><code>[margin|padding|border]-inline-start</code></td>
+      </tr>
+      <tr>
+        <td><code>[margin|padding|border]-right</code></td>
+        <td><code>[margin|padding|border]-inline-end</code></td>
+      </tr>
+      <tr>
+        <td><code>[margin|padding|border]-top</code></td>
+        <td><code>[margin|padding|border]-block-start</code></td>
+      </tr>
+      <tr>
+        <td><code>[margin|padding|border]-bottom</code></td>
+        <td><code>[margin|padding|border]-block-end</code></td>
+      </tr>
+      <tr>
+        <td><code>border-bottom-width</code></td>
+        <td><code>border-block-end-width</code></td>
+      </tr>
+      <tr>
+        <td><code>border-left-color</code></td>
+        <td><code>border-inline-start-color</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 If you're listing individual border properties, the logical naming does tend to get verbose. But it's certainly less verbose than having to maintain two sets of styling: one for LTR and another for RTL.
 
@@ -274,86 +276,92 @@ If you're listing individual border properties, the logical naming does tend to 
 
 Absolute, relative, and fixed positioning can also be achieved with logical properties:
 
-<table>
-  <thead>
-    <tr>
-      <th scope="col">Physical property</th>
-      <th scope="col">Logical property</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>top</code></td>
-      <td><code>inset-block-start</code></td>
-    </tr>
-    <tr>
-      <td><code>bottom</code></td>
-      <td><code>inset-block-end</code></td>
-    </tr>
-    <tr>
-      <td><code>left</code></td>
-      <td><code>inset-inline-start</code></td>
-    </tr>
-    <tr>
-      <td><code>right</code></td>
-      <td><code>inset-inline-end</code></td>
-    </tr>
-  </tbody>
-</table>
+<div class="scroll-x">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Physical property</th>
+        <th scope="col">Logical property</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>top</code></td>
+        <td><code>inset-block-start</code></td>
+      </tr>
+      <tr>
+        <td><code>bottom</code></td>
+        <td><code>inset-block-end</code></td>
+      </tr>
+      <tr>
+        <td><code>left</code></td>
+        <td><code>inset-inline-start</code></td>
+      </tr>
+      <tr>
+        <td><code>right</code></td>
+        <td><code>inset-inline-end</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 #### Width and Height
 
 In case you need to support vertical writing modes, you have the following logical properties:
 
-<table>
-  <thead>
-    <tr>
-      <th scope="col">Physical property</th>
-      <th scope="col">Logical property</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>width</code></td>
-      <td><code>inline-size</code></td>
-    </tr>
-    <tr>
-      <td><code>height</code></td>
-      <td><code>block-size</code></td>
-    </tr>
-  </tbody>
-</table>
+<div class="scroll-x">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Physical property</th>
+        <th scope="col">Logical property</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>width</code></td>
+        <td><code>inline-size</code></td>
+      </tr>
+      <tr>
+        <td><code>height</code></td>
+        <td><code>block-size</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 Note that this does not affect RTL styling since width is symmetrical. It's just another set of logical properties worth noting.
 
 #### Logical Values
 
-<table>
-  <thead>
-    <tr>
-      <th scope="col">Physical rule</th>
-      <th scope="col">Logical rule</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>text-align: right;</code></td>
-      <td><code>text-align: end;</code></td>
-    </tr>
-    <tr>
-      <td><code>justify-content: left;</code></td>
-      <td><code>justify-content: start;</code></td>
-    </tr>
-    <tr>
-      <td><code>float: left;</code></td>
-      <td><code>float: inline-start;</code></td>
-    </tr>
-    <tr>
-      <td><code>float: right;</code></td>
-      <td><code>float: inline-end;</code></td>
-    </tr>
-  </tbody>
-</table>
+<div class="scroll-x">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Physical rule</th>
+        <th scope="col">Logical rule</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>text-align: right;</code></td>
+        <td><code>text-align: end;</code></td>
+      </tr>
+      <tr>
+        <td><code>justify-content: left;</code></td>
+        <td><code>justify-content: start;</code></td>
+      </tr>
+      <tr>
+        <td><code>float: left;</code></td>
+        <td><code>float: inline-start;</code></td>
+      </tr>
+      <tr>
+        <td><code>float: right;</code></td>
+        <td><code>float: inline-end;</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ## 4. Writing Fewer Media Queries with Clamp
 

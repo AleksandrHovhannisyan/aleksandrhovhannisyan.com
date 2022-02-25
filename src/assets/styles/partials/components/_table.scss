@@ -1,5 +1,9 @@
 @import "../mixins";
 
+th {
+  white-space: nowrap;
+}
+
 :is(td, th) {
   text-align: start;
   padding: spacing(-2) spacing(0);

@@ -64,44 +64,46 @@ We then multiply this sign flag by an arbitrarily large value (`999`) to scale i
 
 When the calculation yields a negative or zero flex basis, each child spans three columns (`min-width: 33%`). When the calculation yields a positive flex basis, each child spans the full width of the layout (`max-width: 100%`). The table below explores a few scenarios:
 
-<table>
-  <thead>
-    <tr>
-      <th scope="col" class="nowrap numeric">Container width</th>
-      <th scope="col" class="nowrap numeric">Breakpoint</th>
-      <th scope="col" class="nowrap numeric">flex-basis</th>
-      <th scope="col" class="nowrap numeric">min-width</th>
-      <th scope="col" class="nowrap numeric">max-width</th>
-      <th scope="col" class="nowrap">Columns</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="nowrap numeric"><code>41rem</code></td>
-      <td class="nowrap numeric"><code>40rem</code></td>
-      <td class="nowrap numeric"><code>-999rem</code></td>
-      <td class="nowrap numeric"><code>33%</code> (<code>13.53rem</code>)</td>
-      <td class="nowrap numeric"><code>100%</code> (<code>41rem</code>)</td>
-      <td class="nowrap numeric"><code>3</code></td>
-    </tr>
-    <tr>
-      <td class="nowrap numeric"><code>40rem</code></td>
-      <td class="nowrap numeric"><code>40rem</code></td>
-      <td class="nowrap numeric"><code>0rem</code></td>
-      <td class="nowrap numeric"><code>33%</code> (<code>13.20rem</code>)</td>
-      <td class="nowrap numeric"><code>100%</code> (<code>40rem</code>)</td>
-      <td class="nowrap numeric"><code>3</code></td>
-    </tr>
-    <tr>
-      <td class="nowrap numeric"><code>39rem</code></td>
-      <td class="nowrap numeric"><code>40rem</code></td>
-      <td class="nowrap numeric"><code>999rem</code></td>
-      <td class="nowrap numeric"><code>33%</code> (<code>12.87rem</code>)</td>
-      <td class="nowrap numeric"><code>100%</code> (<code>39rem</code>)</td>
-      <td class="nowrap numeric"><code>1</code></td>
-    </tr>
-  </tbody>
-</table>
+<div class="scroll-x">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" class="nowrap numeric">Container width</th>
+        <th scope="col" class="nowrap numeric">Breakpoint</th>
+        <th scope="col" class="nowrap numeric">flex-basis</th>
+        <th scope="col" class="nowrap numeric">min-width</th>
+        <th scope="col" class="nowrap numeric">max-width</th>
+        <th scope="col" class="nowrap">Columns</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="nowrap numeric"><code>41rem</code></td>
+        <td class="nowrap numeric"><code>40rem</code></td>
+        <td class="nowrap numeric"><code>-999rem</code></td>
+        <td class="nowrap numeric"><code>33%</code> (<code>13.53rem</code>)</td>
+        <td class="nowrap numeric"><code>100%</code> (<code>41rem</code>)</td>
+        <td class="nowrap numeric"><code>3</code></td>
+      </tr>
+      <tr>
+        <td class="nowrap numeric"><code>40rem</code></td>
+        <td class="nowrap numeric"><code>40rem</code></td>
+        <td class="nowrap numeric"><code>0rem</code></td>
+        <td class="nowrap numeric"><code>33%</code> (<code>13.20rem</code>)</td>
+        <td class="nowrap numeric"><code>100%</code> (<code>40rem</code>)</td>
+        <td class="nowrap numeric"><code>3</code></td>
+      </tr>
+      <tr>
+        <td class="nowrap numeric"><code>39rem</code></td>
+        <td class="nowrap numeric"><code>40rem</code></td>
+        <td class="nowrap numeric"><code>999rem</code></td>
+        <td class="nowrap numeric"><code>33%</code> (<code>12.87rem</code>)</td>
+        <td class="nowrap numeric"><code>100%</code> (<code>39rem</code>)</td>
+        <td class="nowrap numeric"><code>1</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 It's important to emphasize that this entire technique relies on the container width rather than a viewport width; the latter is not very useful when you want to create a truly reusable container that adjusts its behavior based on the context in which it is rendered.
 
