@@ -119,7 +119,7 @@ That leaves us with two options if we decide to configure Git locally: `core.aut
     <thead>
       <tr>
         <th scope="col">Setting</th>
-        <th scope="col" class="nowrap">Repo (check-in)</th>
+        <th scope="col">Repo (check-in)</th>
         <th scope="col">Working Tree (checkout)</th>
       </tr>
     </thead>

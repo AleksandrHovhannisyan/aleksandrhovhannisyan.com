@@ -68,38 +68,38 @@ When the calculation yields a negative or zero flex basis, each child spans thre
   <table>
     <thead>
       <tr>
-        <th scope="col" class="nowrap numeric">Container width</th>
-        <th scope="col" class="nowrap numeric">Breakpoint</th>
-        <th scope="col" class="nowrap numeric">flex-basis</th>
-        <th scope="col" class="nowrap numeric">min-width</th>
-        <th scope="col" class="nowrap numeric">max-width</th>
-        <th scope="col" class="nowrap">Columns</th>
+        <th scope="col" class="numeric">Container width</th>
+        <th scope="col" class="numeric">Breakpoint</th>
+        <th scope="col" class="numeric">flex-basis</th>
+        <th scope="col" class="numeric">min-width</th>
+        <th scope="col" class="numeric">max-width</th>
+        <th scope="col">Columns</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td class="nowrap numeric"><code>41rem</code></td>
-        <td class="nowrap numeric"><code>40rem</code></td>
-        <td class="nowrap numeric"><code>-999rem</code></td>
-        <td class="nowrap numeric"><code>33%</code> (<code>13.53rem</code>)</td>
-        <td class="nowrap numeric"><code>100%</code> (<code>41rem</code>)</td>
-        <td class="nowrap numeric"><code>3</code></td>
+        <td class="numeric"><code>41rem</code></td>
+        <td class="numeric"><code>40rem</code></td>
+        <td class="numeric"><code>-999rem</code></td>
+        <td class="numeric"><code>33%</code> (<code>13.53rem</code>)</td>
+        <td class="numeric"><code>100%</code> (<code>41rem</code>)</td>
+        <td class="numeric"><code>3</code></td>
       </tr>
       <tr>
-        <td class="nowrap numeric"><code>40rem</code></td>
-        <td class="nowrap numeric"><code>40rem</code></td>
-        <td class="nowrap numeric"><code>0rem</code></td>
-        <td class="nowrap numeric"><code>33%</code> (<code>13.20rem</code>)</td>
-        <td class="nowrap numeric"><code>100%</code> (<code>40rem</code>)</td>
-        <td class="nowrap numeric"><code>3</code></td>
+        <td class="numeric"><code>40rem</code></td>
+        <td class="numeric"><code>40rem</code></td>
+        <td class="numeric"><code>0rem</code></td>
+        <td class="numeric"><code>33%</code> (<code>13.20rem</code>)</td>
+        <td class="numeric"><code>100%</code> (<code>40rem</code>)</td>
+        <td class="numeric"><code>3</code></td>
       </tr>
       <tr>
-        <td class="nowrap numeric"><code>39rem</code></td>
-        <td class="nowrap numeric"><code>40rem</code></td>
-        <td class="nowrap numeric"><code>999rem</code></td>
-        <td class="nowrap numeric"><code>33%</code> (<code>12.87rem</code>)</td>
-        <td class="nowrap numeric"><code>100%</code> (<code>39rem</code>)</td>
-        <td class="nowrap numeric"><code>1</code></td>
+        <td class="numeric"><code>39rem</code></td>
+        <td class="numeric"><code>40rem</code></td>
+        <td class="numeric"><code>999rem</code></td>
+        <td class="numeric"><code>33%</code> (<code>12.87rem</code>)</td>
+        <td class="numeric"><code>100%</code> (<code>39rem</code>)</td>
+        <td class="numeric"><code>1</code></td>
       </tr>
     </tbody>
   </table>
