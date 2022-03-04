@@ -3,6 +3,7 @@
 .list {
   --gap: #{spacing(-3)};
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--gap);
   padding-inline-start: 1em;
 
