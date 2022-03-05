@@ -18,15 +18,12 @@ if (isBroken()) {
 }
 ```
 
-I've kept the code simple for this post; in reality, you'll probably fetch data asynchronously in the function (otherwise, there's no need to mark it as `async`):
+I've kept the code simple for this post so it's easier to analyze. In reality, you'd probably fetch data or perform some other async operation:
 
 ```javascript
 const isBroken = async () => {
-  const x = await y();
-  // ...
-  // ... more stuff here maybe
-  // ...
-  return x === 42;
+  const result = await someAsyncOperation();
+  return result !== 'the expected value';
 }
 
 if (isBroken()) {
@@ -72,7 +69,7 @@ const isBroken = async () => {
   return false;
 }
 
-const foo = async () => {
+const main = async () => {
   const somethingIsWrong = await isBroken();
 
   if (somethingIsWrong) {
@@ -81,6 +78,6 @@ const foo = async () => {
 }
 ```
 
-This is a pretty interesting bug that you may run into, though some basic tests will probably catch it before you need to go looking for it yourself. However, in the absence of tests, unless you remember that the function is async (and that async functions return Promises), this bug could easily slip right past you.
+Basic tests will catch this bug before you ever need to go looking for it yourself. But if you don't have any in place, it could easily slip right past you unless you remember that the function is async.
 
 {% include unsplashAttribution.md name: "STIL", username: "stilclassics", photoId: "wtqe5nd5MYk" %}
