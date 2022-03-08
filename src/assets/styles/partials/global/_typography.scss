@@ -6,7 +6,7 @@ strong {
   @include font-weight("body", "bold");
 }
 
-code {
+:is(code, kbd) {
   font-size: 0.8em;
   @include font-family("code");
   @include font-weight("code", "medium");
