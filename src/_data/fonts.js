@@ -24,22 +24,36 @@ const getFontUrl = (src) => path.join(fontPath, src);
 
 /** Global font config. Gets compiled into font face declarations and can be reused anywhere to access font info. */
 const fonts = {
-  title: {
-    family: 'Lato',
-    fallbacks: [`Georgia`, `serif`],
+  body: {
+    family: 'Inter',
+    fallbacks: [`Arial`, `sans-serif`],
     weights: {
       regular: {
         variant: FontVariant.Regular,
         weight: 400,
         style: FontStyle.NORMAL,
-        url: getFontUrl('lato-v20-latin-regular.woff2'),
+        url: getFontUrl('inter-latin-400.woff2'),
+        display: FontDisplay.SWAP,
+      },
+      regularItalic: {
+        variant: FontVariant.Regular,
+        weight: 400,
+        style: FontStyle.ITALIC,
+        url: getFontUrl('inter-latin-italic.woff2'),
         display: FontDisplay.SWAP,
       },
       bold: {
         variant: FontVariant.Bold,
-        weight: 900,
+        weight: 700,
         style: FontStyle.NORMAL,
-        url: getFontUrl('lato-v20-latin-900.woff2'),
+        url: getFontUrl('inter-latin-700.woff2'),
+        display: FontDisplay.SWAP,
+      },
+      boldItalic: {
+        variant: FontVariant.Bold,
+        weight: 700,
+        style: FontStyle.ITALIC,
+        url: getFontUrl('inter-latin-700italic.woff2'),
         display: FontDisplay.SWAP,
       },
     },

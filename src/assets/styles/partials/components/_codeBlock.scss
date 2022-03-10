@@ -44,8 +44,7 @@ pre[class*="language-"] {
         color: var(--color-code-text);
         word-break: break-all;
         padding: $code-block-padding $code-block-padding 0;
-        @include font-family("title");
-        @include font-weight("title", "bold");
+        @include font-weight("body", "bold");
         @include font-size("sm");
       }
     }

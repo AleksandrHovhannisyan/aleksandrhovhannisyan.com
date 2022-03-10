@@ -72,7 +72,7 @@
 
 @mixin font-size($size) {
   // expose CSS var to later compute other things, e.g., spacing
-  --line-height: calc(2ex + #{to-rems(11px)});
+  --line-height: calc(2ex + #{to-rems(11.2px)});
   font-size: font-size($size);
   line-height: var(--line-height);
 }
@@ -86,8 +86,7 @@
 }
 
 @mixin heading {
-  @include font-family("title");
-  @include font-weight("title", "bold");
+  @include font-weight("body", "bold");
 }
 
 @mixin line-clamp($num-lines) {

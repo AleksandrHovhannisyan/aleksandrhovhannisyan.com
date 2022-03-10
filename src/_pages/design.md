@@ -10,7 +10,7 @@ noindex: true
 
 ## Fonts
 
-{% assign families = "body,title" | split: "," %}
+{% assign families = "body" | split: "," %}
 {% assign steps = "xs,sm,base,md,lg,xl,xxl,xxxl" | split: "," %}
 
 {%- for family in families %}
