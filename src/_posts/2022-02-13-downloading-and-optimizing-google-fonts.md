@@ -5,6 +5,7 @@ keywords: [google fonts, woff2, glyphhanger]
 categories: [typography, google-fonts, webperf, privacy]
 thumbnail:
   url: https://images.unsplash.com/photo-1566404252805-1e6d6bc539d1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
+lastUpdated: 2022-03-10
 ---
 
 On January 20, 2022, a Munich court ruled that linking to Google Fonts [violates the GDPR in Germany](https://rewis.io/urteile/urteil/lhm-20-01-2022-3-o-1749320/) because it allows any user's IP address to be traced back to their physical address, which is considered personal data under the GDPR. Whether or not you agree with the ruling, it has important implications because it means that German businesses may be unwittingly opening themselves up to lawsuits and fines if they're linking to Google Fonts on their sites.
@@ -93,31 +94,31 @@ For this task, I recommend using the [glyphhanger Node package](https://www.npmj
 Here's an example command you might run:
 
 ```{data-copyable=true}
-glyphhanger --subset=*.ttf --US_ASCII --formats=woff2
+glyphhanger --subset=*.ttf --LATIN --formats=woff2
 ```
 
 This tells glyphhanger to:
 
 1. Subset all font files that match the glob pattern `*.ttf`.
-2. Use only the [US ASCII](https://www.charset.org/charsets/us-ascii) character set when subsetting the fonts.
+2. Use only the Latin character set when subsetting the fonts.
 3. Output the subsetted font files in `woff2` format.
 
 {% aside %}
-  Note that you may need to use a different character set; this depends on what languages and special symbols you need to support on your site.
+  Note that you may need to use a different character set; this depends on what languages and special symbols you need to support on your site. For example, instead of `LATIN`, you could specify `US_ASCII` to use a smaller character set.
 {% endaside %}
 
 The savings from subsetting a font can be quite significant. Here's the output from running this command on the font files I downloaded directly from Google Fonts:
 
 ```
-Subsetting Inter-Black.ttf to Inter-Black-subset.woff2 (was 308.96 KB, now 15.26 KB)
-Subsetting Inter-Bold.ttf to Inter-Bold-subset.woff2 (was 308.69 KB, now 15.77 KB)
-Subsetting Inter-ExtraBold.ttf to Inter-ExtraBold-subset.woff2 (was 309.29 KB, now 15.81 KB)
-Subsetting Inter-ExtraLight.ttf to Inter-ExtraLight-subset.woff2 (was 303.52 KB, now 15.46 KB)
-Subsetting Inter-Light.ttf to Inter-Light-subset.woff2 (was 303.14 KB, now 15.55 KB)
-Subsetting Inter-Medium.ttf to Inter-Medium-subset.woff2 (was 307.34 KB, now 15.68 KB)
-Subsetting Inter-Regular.ttf to Inter-Regular-subset.woff2 (was 302.57 KB, now 14.94 KB)
-Subsetting Inter-SemiBold.ttf to Inter-SemiBold-subset.woff2 (was 308.36 KB, now 15.75 KB)
-Subsetting Inter-Thin.ttf to Inter-Thin-subset.woff2 (was 303.24 KB, now 14.71 KB)
+Subsetting Inter-Black.ttf to Inter-Black-subset.woff2 (was 308.96 KB, now 23.52 KB)
+Subsetting Inter-Bold.ttf to Inter-Bold-subset.woff2 (was 308.69 KB, now 24.45 KB)
+Subsetting Inter-ExtraBold.ttf to Inter-ExtraBold-subset.woff2 (was 309.29 KB, now 24.45 KB)
+Subsetting Inter-ExtraLight.ttf to Inter-ExtraLight-subset.woff2 (was 303.52 KB, now 23.92 KB)
+Subsetting Inter-Light.ttf to Inter-Light-subset.woff2 (was 303.14 KB, now 23.88 KB)
+Subsetting Inter-Medium.ttf to Inter-Medium-subset.woff2 (was 307.34 KB, now 24.36 KB)
+Subsetting Inter-Regular.ttf to Inter-Regular-subset.woff2 (was 302.57 KB, now 22.91 KB)
+Subsetting Inter-SemiBold.ttf to Inter-SemiBold-subset.woff2 (was 308.36 KB, now 24.3 KB)
+Subsetting Inter-Thin.ttf to Inter-Thin-subset.woff2 (was 303.24 KB, now 22.6 KB)
 ```
 
 This requires a bit more work than just directly downloading `woff2`s from the Google Fonts stylesheet or using an app like google-webfonts-helper, but it gives you greater control since you can subset and optimize your font files however you want.
