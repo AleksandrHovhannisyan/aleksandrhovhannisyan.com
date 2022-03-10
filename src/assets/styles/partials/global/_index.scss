@@ -16,8 +16,7 @@ body {
 
 #page-content {
   --padding-y: #{clamped(32px, 96px)};
-  padding-top: var(--padding-y);
-  padding-bottom: var(--padding-y);
+  padding-block: var(--padding-y);
 }
 
 strong,
