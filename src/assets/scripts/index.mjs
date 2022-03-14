@@ -10,6 +10,7 @@ const themeToggle = new ThemeToggle({
     [Themes.LIGHT]: Themes.DARK,
     [Themes.DARK]: Themes.LIGHT,
   },
+  preferredTheme: window.matchMedia('(prefers-color-scheme: dark)').matches ? Themes.DARK : undefined,
   isPressed: (theme) => theme === Themes.DARK,
 });
 

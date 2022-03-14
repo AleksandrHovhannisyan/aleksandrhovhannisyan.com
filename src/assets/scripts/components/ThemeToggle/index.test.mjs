@@ -12,7 +12,7 @@ beforeEach(() => {
 });
 
 describe('ThemeToggle component', () => {
-  it('respects the default theme', () => {
+  it('sets initial theme to the default theme', () => {
     const toggle = new ThemeToggle({
       toggleElement,
       root: document.documentElement,
@@ -26,6 +26,21 @@ describe('ThemeToggle component', () => {
     expect(toggle.theme).toEqual('dark');
   });
 
+  it(`sets initial theme to the preferred theme`, () => {
+    const toggle = new ThemeToggle({
+      toggleElement,
+      root: document.documentElement,
+      storageKey: 'theme',
+      defaultTheme: 'default',
+      preferredTheme: 'preferred',
+      themes: {
+        default: 'preferred',
+        preferred: 'default',
+      },
+    });
+    expect(toggle.theme).toBe('preferred');
+  });
+
   it('throws an error if the default theme is not recognized', () => {
     expect(
       () =>
@@ -33,7 +48,24 @@ describe('ThemeToggle component', () => {
           toggleElement,
           root: document.documentElement,
           storageKey: 'theme',
-          defaultTheme: 'mango',
+          defaultTheme: 'default',
+          themes: {
+            light: 'dark',
+            dark: 'light',
+          },
+        })
+    ).toThrow();
+  });
+
+  it('throws an error if the preferred theme is not recognized', () => {
+    expect(
+      () =>
+        new ThemeToggle({
+          toggleElement,
+          root: document.documentElement,
+          storageKey: 'theme',
+          defaultTheme: 'dark',
+          preferredTheme: 'preferred',
           themes: {
             light: 'dark',
             dark: 'light',

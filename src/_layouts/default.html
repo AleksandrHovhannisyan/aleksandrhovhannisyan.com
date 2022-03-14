@@ -68,14 +68,12 @@ eleventyComputed:
   {%- comment -%}Load the user's last selected theme{%- endcomment -%}
   <script>
     (function() {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
-        document.documentElement.dataset.theme = savedTheme;
+      const cachedTheme = localStorage.getItem('theme');
+      if (cachedTheme) {
+        document.documentElement.dataset.theme = cachedTheme;
       } else {
-        const userPrefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const preferredTheme = userPrefersDarkMode ? 'dark' : 'light';
+        const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         document.documentElement.dataset.theme = preferredTheme;
-        localStorage.setItem('theme', preferredTheme);
       }
     })();
   </script>
