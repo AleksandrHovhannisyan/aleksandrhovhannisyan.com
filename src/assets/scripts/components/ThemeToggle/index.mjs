@@ -19,35 +19,29 @@ export default class ThemeToggle {
    * @param {ThemeToggleProps} props The props with which to initialize this theme toggle.
    */
   constructor(props) {
-    const { toggleElement, root, storageKey, defaultTheme, themes, isPressed, preferredTheme } = props;
-    this.root = root;
-    this.toggleElement = toggleElement;
-    this.toggleElement.addEventListener('click', () => this.toggle());
-    this.storageKey = storageKey;
-    this.themes = themes;
-    this.isPressed = isPressed;
+    this.props = props;
+    this.validateTheme(this.props.defaultTheme);
+    this.validateTheme(this.props.preferredTheme);
+    this.props.toggleElement.addEventListener('click', () => this.toggle());
 
-    this.validateTheme(defaultTheme);
-    this.validateTheme(preferredTheme);
-
-    const cachedTheme = localStorage.getItem(storageKey);
-    const initialTheme = cachedTheme ?? preferredTheme ?? defaultTheme;
+    const cachedTheme = localStorage.getItem(this.props.storageKey);
+    const initialTheme = cachedTheme ?? this.props.preferredTheme ?? this.props.defaultTheme;
     this.setTheme(initialTheme);
   }
 
   /** The currently active theme. */
   get theme() {
-    return this.root.dataset[this.storageKey];
+    return this.props.root.dataset[this.props.storageKey];
   }
 
   /** The next theme that will get set when `toggle` is called. */
   get nextTheme() {
-    return this.themes[this.theme];
+    return this.props.themes[this.theme];
   }
 
   /** Validates the given theme. If it's not recognized (i.e., unspecified in the theme map), throws an error. */
   validateTheme(theme) {
-    if (theme && !this.themes[theme]) {
+    if (theme && !this.props.themes[theme]) {
       throw new Error(`${theme} is not a recognized theme.`);
     }
   }
@@ -55,14 +49,14 @@ export default class ThemeToggle {
   /** Sets the current theme to the specified theme. */
   setTheme(newTheme) {
     this.validateTheme(newTheme);
-    this.root.dataset[this.storageKey] = newTheme;
-    const isPressed = this.isPressed?.(newTheme);
-    this.toggleElement.setAttribute('aria-pressed', !!isPressed);
+    this.props.root.dataset[this.props.storageKey] = newTheme;
+    const isPressed = this.props.isPressed?.(newTheme);
+    this.props.toggleElement.setAttribute('aria-pressed', !!isPressed);
   }
 
   /** Writes the current theme to `localStorage`. */
   syncLocalStorage() {
-    localStorage.setItem(this.storageKey, this.theme);
+    localStorage.setItem(this.props.storageKey, this.theme);
   }
 
   /** Toggles the current theme according to the relationship specified in the theme map. */
