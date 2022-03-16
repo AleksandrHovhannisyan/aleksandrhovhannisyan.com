@@ -8,123 +8,128 @@ let toggleElement;
 
 beforeEach(() => {
   toggleElement = document.createElement('button');
-  localStorage.clear();
 });
 
 describe('ThemeToggle component', () => {
-  it('sets initial theme to the default theme', () => {
+  it('initializes the theme', () => {
     const toggle = new ThemeToggle({
       toggleElement,
-      root: document.documentElement,
-      storageKey: 'theme',
-      defaultTheme: 'dark',
+      setTheme: () => {},
+      initialTheme: 'initial',
       themes: {
-        light: 'dark',
-        dark: 'light',
+        initial: 'next',
+        next: 'initial',
       },
     });
-    expect(toggle.theme).toEqual('dark');
+    expect(toggle.theme).toStrictEqual('initial');
   });
 
-  it(`sets initial theme to the preferred theme`, () => {
-    const toggle = new ThemeToggle({
-      toggleElement,
-      root: document.documentElement,
-      storageKey: 'theme',
-      defaultTheme: 'default',
-      preferredTheme: 'preferred',
-      themes: {
-        default: 'preferred',
-        preferred: 'default',
-      },
-    });
-    expect(toggle.theme).toBe('preferred');
-  });
-
-  it('throws an error if the default theme is not recognized', () => {
+  it('throws an error if the initial theme is not recognized', () => {
     expect(
       () =>
         new ThemeToggle({
           toggleElement,
-          root: document.documentElement,
-          storageKey: 'theme',
-          defaultTheme: 'default',
+          setTheme: () => {},
+          initialTheme: 'unrecognized',
           themes: {
-            light: 'dark',
-            dark: 'light',
+            first: 'second',
+            second: 'first',
           },
         })
     ).toThrow();
   });
 
-  it('throws an error if the preferred theme is not recognized', () => {
+  it('throws an error if a theme does not have a target transition state', () => {
     expect(
       () =>
         new ThemeToggle({
           toggleElement,
-          root: document.documentElement,
-          storageKey: 'theme',
-          defaultTheme: 'dark',
-          preferredTheme: 'preferred',
+          setTheme: () => {},
+          initialTheme: 'first',
           themes: {
-            light: 'dark',
-            dark: 'light',
+            first: 'second',
+            second: 'third',
+            third: 'fourth', // on toggle, 'fourth' won't have any target state, so we need to throw preemptively on init
           },
         })
     ).toThrow();
   });
 
-  it('calls toggle when the button is clicked', () => {
+  it('throws an error if a theme is unreachable from other states', () => {
+    expect(
+      () =>
+        new ThemeToggle({
+          toggleElement,
+          setTheme: () => {},
+          initialTheme: 'first',
+          themes: {
+            first: 'second',
+            second: 'first',
+            unreachable: 'first',
+          },
+        })
+    ).toThrow();
+  });
+
+  it('calls setTheme both on mount and when the toggle button is clicked', () => {
+    const mockSetTheme = jest.fn();
+
     // eslint-disable-next-line no-unused-vars
     const toggle = new ThemeToggle({
       toggleElement,
-      root: document.documentElement,
-      storageKey: 'theme',
-      defaultTheme: 'light',
+      setTheme: mockSetTheme,
+      initialTheme: 'light',
       themes: {
         light: 'dark',
         dark: 'light',
       },
     });
 
-    const toggleFn = jest.fn();
-    ThemeToggle.toggle = toggleFn();
+    // Mount
+    expect(mockSetTheme).toHaveBeenCalledTimes(1);
+    expect(mockSetTheme).toHaveBeenCalledWith('light');
+
+    // Toggle
+    toggleElement.click();
+    expect(mockSetTheme).toHaveBeenCalledTimes(2);
+    expect(mockSetTheme).toHaveBeenCalledWith('dark');
+  });
+
+  it('cycles through the theme map', () => {
+    const toggle = new ThemeToggle({
+      toggleElement,
+      setTheme: () => {},
+      initialTheme: 'light',
+      themes: {
+        light: 'dark',
+        dark: 'light',
+      },
+    });
+
+    expect(toggle.theme).toEqual('light');
+    toggleElement.click();
+    expect(toggle.theme).toEqual('dark');
+    toggleElement.click();
+    expect(toggle.theme).toEqual('light');
+  });
+
+  it('calls setCachedTheme on toggle', () => {
+    const mockSetCachedTheme = jest.fn();
+
+    // eslint-disable-next-line no-unused-vars
+    const toggle = new ThemeToggle({
+      toggleElement,
+      setTheme: () => {},
+      setCachedTheme: mockSetCachedTheme,
+      initialTheme: 'light',
+      themes: {
+        light: 'dark',
+        dark: 'light',
+      },
+    });
 
     toggleElement.click();
-    expect(toggleFn).toHaveBeenCalled();
-    expect(toggleFn).toHaveBeenCalledTimes(1);
-  });
-
-  it('toggles from light to dark', () => {
-    const toggle = new ThemeToggle({
-      toggleElement,
-      root: document.documentElement,
-      storageKey: 'theme',
-      defaultTheme: 'light',
-      themes: {
-        light: 'dark',
-        dark: 'light',
-      },
-    });
-
-    toggle.toggle();
-    expect(toggle.theme).toEqual('dark');
-  });
-
-  it('toggles from dark to light', () => {
-    const toggle = new ThemeToggle({
-      toggleElement,
-      root: document.documentElement,
-      storageKey: 'theme',
-      defaultTheme: 'light',
-      themes: {
-        light: 'dark',
-        dark: 'light',
-      },
-    });
-
-    toggle.toggle();
-    toggle.toggle();
-    expect(toggle.theme).toEqual('light');
+    expect(mockSetCachedTheme).toHaveBeenCalledTimes(1);
+    expect(mockSetCachedTheme).toHaveBeenCalledWith('dark');
   });
 });

@@ -1,17 +1,23 @@
-import ThemeToggle, { Themes } from './components/ThemeToggle/index.mjs';
+import { THEME_KEY, Themes } from './constants.mjs';
+import ThemeToggle from './components/ThemeToggle/index.mjs';
+
+const themeToggleElement = document.getElementById('theme-toggle');
+const cachedTheme = localStorage.getItem(THEME_KEY);
+const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? Themes.DARK : Themes.LIGHT;
 
 // eslint-disable-next-line no-unused-vars
 const themeToggle = new ThemeToggle({
-  root: document.documentElement,
-  toggleElement: document.getElementById('theme-toggle'),
-  storageKey: 'theme',
-  defaultTheme: Themes.LIGHT,
+  toggleElement: themeToggleElement,
+  initialTheme: cachedTheme ?? preferredTheme,
+  setTheme: (theme) => {
+    document.documentElement.dataset[THEME_KEY] = theme;
+    themeToggleElement.setAttribute('aria-pressed', theme === Themes.DARK);
+  },
+  setCachedTheme: (theme) => localStorage.setItem(THEME_KEY, theme),
   themes: {
     [Themes.LIGHT]: Themes.DARK,
     [Themes.DARK]: Themes.LIGHT,
   },
-  preferredTheme: window.matchMedia('(prefers-color-scheme: dark)').matches ? Themes.DARK : undefined,
-  isPressed: (theme) => theme === Themes.DARK,
 });
 
 const copyableCodeBlocks = document.querySelectorAll('code[data-copyable="true"]');

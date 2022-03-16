@@ -1,37 +1,23 @@
-export const Themes = {
-  LIGHT: 'light',
-  DARK: 'dark',
-};
-
 /**
  * @typedef ThemeToggleProps
  * @property {HTMLElement} toggleElement The element to be toggled.
- * @property {string} storageKey A unique key to use when caching the current theme in `localStorage`.
- * @property {HTMLElement} root The element on which a data-`storageKey` attribute should get set.
- * @property {string} defaultTheme The default theme for the switch.
- * @property {string | undefined} preferredTheme The user's preferred theme (optional).
- * @property {Record<string, string>} themes A map of theme state transitions. On toggle, the current theme will get set to the next theme specified in this map.
- * @property {(theme: string) => boolean} isPressed A callback to determine whether the given theme corresponds to the pressed state.
+ * @property {string} initialTheme The initial theme for the switch, which must exist in the `themes` map.
+ * @property {(theme: string) => void} setTheme Callback to set the current theme, both on mount and on toggle. Logic to update your UI should go here.
+ * @property {(theme: string) => void} [setCachedTheme] Optionally caches the theme on toggle. Called alongside `setTheme` when the toggle element is clicked.
+ * @property {string | null} [cachedTheme] The cached theme, if one exists. If specified, this takes priority over `defaultTheme` and is used to initialize the component.
+ * @property {Record<string, string>} themes A map of theme state transitions. On toggle, the current theme will get set to the next theme specified in this map. Note that all keys must be reachable—i.e., they must be values in the map. Likewise, all values need to be keys so that toggling from that state does not yield an indeterminate state.
  */
 
 export default class ThemeToggle {
   /**
    * @param {ThemeToggleProps} props The props with which to initialize this theme toggle.
+   * @throws if the initial theme, or any other theme in the theme map, is unreachable or has no target state.
    */
   constructor(props) {
     this.props = props;
-    this.validateTheme(this.props.defaultTheme);
-    this.validateTheme(this.props.preferredTheme);
+    this._validateThemes();
     this.props.toggleElement.addEventListener('click', () => this.toggle());
-
-    const cachedTheme = localStorage.getItem(this.props.storageKey);
-    const initialTheme = cachedTheme ?? this.props.preferredTheme ?? this.props.defaultTheme;
-    this.setTheme(initialTheme);
-  }
-
-  /** The currently active theme. */
-  get theme() {
-    return this.props.root.dataset[this.props.storageKey];
+    this._setTheme(this.props.initialTheme);
   }
 
   /** The next theme that will get set when `toggle` is called. */
@@ -39,30 +25,27 @@ export default class ThemeToggle {
     return this.props.themes[this.theme];
   }
 
-  /** Validates the given theme. If it's not recognized (i.e., unspecified in the theme map), throws an error. */
-  validateTheme(theme) {
-    if (theme && !this.props.themes[theme]) {
-      throw new Error(`${theme} is not a recognized theme.`);
+  /** Validates all themes supplied to the toggle. If a theme is not recognized (i.e., unspecified in the theme map), throws an error. */
+  _validateThemes() {
+    const uniqueThemeKeys = new Set(Object.keys(this.props.themes));
+    const uniqueThemeValues = new Set(Object.values(this.props.themes));
+    const allUniqueThemes = new Set([...uniqueThemeKeys, ...uniqueThemeValues, this.props.initialTheme]);
+
+    if (allUniqueThemes.size !== uniqueThemeKeys.size || allUniqueThemes.size !== uniqueThemeValues.size) {
+      throw new Error(`One or more themes do not have a target state transition or are unreachable from other states.`);
     }
   }
 
-  /** Sets the current theme to the specified theme. */
-  setTheme(newTheme) {
-    this.validateTheme(newTheme);
-    this.props.root.dataset[this.props.storageKey] = newTheme;
-    const isPressed = this.props.isPressed?.(newTheme);
-    this.props.toggleElement.setAttribute('aria-pressed', !!isPressed);
+  /** Sets the current theme to the specified theme internally and invokes the `setTheme` callback prop, if it exists. */
+  _setTheme(newTheme) {
+    this.theme = newTheme;
+    this.props.setTheme(newTheme);
   }
 
-  /** Writes the current theme to `localStorage`. */
-  syncLocalStorage() {
-    localStorage.setItem(this.props.storageKey, this.theme);
-  }
-
-  /** Toggles the current theme according to the relationship specified in the theme map. */
+  /** Cycles through the theme map, toggling the current theme to the next theme. */
   toggle() {
     const newTheme = this.nextTheme;
-    this.setTheme(newTheme);
-    this.syncLocalStorage();
+    this._setTheme(newTheme);
+    this.props.setCachedTheme?.(newTheme);
   }
 }
