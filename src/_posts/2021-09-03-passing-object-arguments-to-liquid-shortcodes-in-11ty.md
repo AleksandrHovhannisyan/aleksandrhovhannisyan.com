@@ -4,7 +4,7 @@ description: Currently, 11ty doesn't allow you to pass object arguments to short
 keywords: [object argument, 11ty, liquid, shortcode]
 categories: [11ty, liquid, javascript]
 thumbnail: thumbnail.jpg
-lastUpdated: 2021-11-29
+lastUpdated: 2022-03-17
 commentsId: 107
 ---
 
@@ -131,7 +131,7 @@ And let's use it to transform the `props` string into a JavaScript object:
   }
 {%- endcapture -%}
 {%- assign props = props | fromJson -%}
-{% myShortcode arg1, props %}
+{% myShortcode props %}
 ```
 {% endraw %}
 
