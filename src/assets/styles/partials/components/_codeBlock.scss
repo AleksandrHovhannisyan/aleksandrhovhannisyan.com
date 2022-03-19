@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 @import "../functions";
 @import "../mixins";
 
@@ -150,21 +151,12 @@ pre[class*="language-bash"] {
     opacity: 1;
   }
 
-  &::before {
-    content: "Copy";
-  }
-  @include tablet {
-    display: flex;
-  }
-
   &:is(.copied, :hover) {
     color: black;
     background-color: var(--color-code-overlay-2);
   }
 
-  &.copied {
-    &::before {
-      content: "Copied!";
-    }
+  @include tablet {
+    display: unset;
   }
 }

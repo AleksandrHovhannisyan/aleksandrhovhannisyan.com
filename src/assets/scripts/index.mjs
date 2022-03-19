@@ -1,4 +1,4 @@
-import { THEME_KEY, Themes } from './constants.mjs';
+import { THEME_KEY, Themes, copyToClipboardButtonStrings } from './constants.mjs';
 import ThemeToggle from './components/ThemeToggle/index.mjs';
 
 const themeToggleElement = document.getElementById('theme-toggle');
@@ -26,16 +26,27 @@ copyableCodeBlocks.forEach((codeBlock) => {
 
   const copyCodeButton = document.createElement('button');
   copyCodeButton.className = 'copy-code-button fs-sm';
-  copyCodeButton.setAttribute('aria-label', 'Copy code to clipboard');
+  copyCodeButton.innerText = copyToClipboardButtonStrings.default;
+  copyCodeButton.setAttribute('aria-label', copyToClipboardButtonStrings.ariaLabel);
   copyCodeButton.type = 'button';
   codeBlock.append(copyCodeButton);
+
+  // Accessible alert whose inner text changes when we copy.
+  const copiedAlert = document.createElement('span');
+  copiedAlert.setAttribute('role', 'alert');
+  copiedAlert.classList.add('screen-reader-only');
+  codeBlock.append(copiedAlert);
 
   copyCodeButton.addEventListener('click', () => {
     window.navigator.clipboard.writeText(code);
     copyCodeButton.classList.add('copied');
+    copyCodeButton.innerText = copyToClipboardButtonStrings.copied;
+    copiedAlert.innerText = copyToClipboardButtonStrings.copied;
 
     setTimeout(() => {
       copyCodeButton.classList.remove('copied');
+      copyCodeButton.innerText = copyToClipboardButtonStrings.default;
+      copiedAlert.innerText = '';
     }, 2000);
   });
 });
