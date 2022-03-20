@@ -42,10 +42,6 @@
   }
 }
 
-@mixin z-index($key) {
-  z-index: z-index($key);
-}
-
 @mixin font-size($size) {
   // expose CSS var to later compute other things, e.g., spacing
   --line-height: calc(2ex + #{to-rems(11px)});

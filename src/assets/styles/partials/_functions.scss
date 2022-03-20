@@ -5,7 +5,6 @@
 
 @import "./config";
 @import "./breakpoints";
-@import "./zIndex";
 
 @function to-rems($value) {
   // Check if the value, as a string, is already expressed in rems
@@ -60,10 +59,6 @@
   $string-length: string.length($string);
   $suffix-length: string.length($suffix);
   @return str-slice($string, ($string-length - $suffix-length + 1)) == $suffix;
-}
-
-@function z-index($key) {
-  @return map.get($z-index, $key);
 }
 
 @function rnd($number, $places: 0) {
