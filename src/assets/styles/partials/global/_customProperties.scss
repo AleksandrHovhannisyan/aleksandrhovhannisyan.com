@@ -7,33 +7,9 @@
 @import "../functions";
 
 html {
-  $spacing-steps: get($config, "spacing", "steps");
-  $spacing-base-index: list.index($spacing-steps, get($config, "spacing", "base"));
+  @include design-custom-properties;
 
-  // Static (fixed) spacing variables
-  @for $i from 1 through list.length($spacing-steps) {
-    $step: $i - $spacing-base-index;
-    $value-px: list.nth($spacing-steps, $i) * 1px;
-    /* stylelint-disable-next-line custom-property-pattern */
-    --#{get-custom-property-prefix("spacing")}-#{$step}: #{to-rems($value-px)};
-  }
-
-  // Typography variables
-  $type-steps: get($config, "typeScale", "steps");
-  $type-sizes: get($config, "typeScale", "sizes");
-  $type-base-index: list.index($type-steps, get($config, "typeScale", "base"));
-  $type-min: get($type-sizes, "min");
-  $type-max: get($type-sizes, "max");
-  @for $i from 1 through length($type-steps) {
-    $step: list.nth($type-steps, $i);
-    $power: $i - $type-base-index;
-    $clamp-min: rnd(get($type-min, "baseFontSize") * math.pow(get($type-min, "ratio"), $power), 2);
-    $clamp-max: rnd(get($type-max, "baseFontSize") * math.pow(get($type-max, "ratio"), $power), 2);
-    /* stylelint-disable-next-line custom-property-pattern */
-    --#{get-custom-property-prefix("typeScale")}-#{$step}: #{clamped($clamp-min, $clamp-max)};
-  }
-
-  // General variables
+  // Miscellaneous variables
   --transition-duration: 0.2s;
   --transition-timing-function: ease;
   --navbar-height: #{clamped(64px, 76px)};

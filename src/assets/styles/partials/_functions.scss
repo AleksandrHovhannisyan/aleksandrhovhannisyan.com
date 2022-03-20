@@ -24,31 +24,47 @@
   @return $map;
 }
 
+/// Returns the first element of the given array.
+@function first($list) {
+  @return list.nth($list, 1);
+}
+
+@function last($list) {
+  @return list.nth($list, list.length($list));
+}
+
+/// Returns the string prefix that is used for the custom properties corresponding to the specified key in the design config.
 @function get-custom-property-prefix($key) {
   $custom-property-prefix: get($config, $key, "customPropertyPrefix");
   @if not $custom-property-prefix {
-    @error "#{$key} is missing a custom property prefix";
+    @error "#{$key} is missing a custom property prefix in the config";
   }
   @return $custom-property-prefix;
 }
 
-/// Returns the spacing value corresponding to the given step as an offset from the base.
-@function spacing($step, $fluid: false) {
-  $offset: 0;
-  $prefix: "-";
-  @if $fluid {
-    $offset: 1;
-    $prefix: "-fluid-";
-  }
-
+/// Returns the spacing value corresponding to the given step as an offset from the base. Throws an error if the provided step is unrecognized.
+@function spacing($step) {
   $spacing-steps: get($config, "spacing", "steps");
   $spacing-base-index: list.index($spacing-steps, get($config, "spacing", "base"));
-  $min: 0 - $spacing-base-index + 1 + $offset;
-  $max: list.length($spacing-steps) - $spacing-base-index;
-  @if $step < $min or $step > $max {
-    @error "#{$step} is not a valid step in the spacing scale. Valid steps range from #{$min} to #{$max}.";
+  $min-step: 0 - $spacing-base-index + 1;
+  $max-step: list.length($spacing-steps) - $spacing-base-index;
+  @if $step < $min-step or $step > $max-step {
+    @error "#{$step} is not a valid step in the spacing scale. Valid steps range from #{$min-step} to #{$max-step}, inclusive.";
   } @else {
-    @return var(--sp#{$prefix}#{$step});
+    @return var(--#{get-custom-property-prefix("spacing")}-#{$step});
+  }
+}
+
+/// Returns the font size value corresponding to the given step as an offset from the base. Throws an error if the provided step is unrecognized.
+@function font-size($step) {
+  $font-size-steps: get($config, "typeScale", "steps");
+  $step-index: list.index($font-size-steps, $step);
+  @if $step-index < 1 or $step-index > list.length($font-size-steps) {
+    $min-step-name: first($font-size-steps);
+    $max-step-name: last($font-size-steps);
+    @error "#{$step} is not a valid step in the type scale. Valid steps range from #{$min-step-name} to #{$max-step-name}, inclusive.";
+  } @else {
+    @return var(--#{get-custom-property-prefix("typeScale")}-#{$step});
   }
 }
 

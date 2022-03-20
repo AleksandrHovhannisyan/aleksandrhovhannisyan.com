@@ -2,7 +2,7 @@
 
 .banner-heading {
   text-transform: uppercase;
-  letter-spacing: spacing(-5);
-  word-spacing: spacing(-4);
+  letter-spacing: 0.0625rem;
+  word-spacing: 0.125rem;
   @include font-size("sm");
 }
