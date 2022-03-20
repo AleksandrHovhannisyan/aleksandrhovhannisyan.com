@@ -22,7 +22,7 @@
   &-container {
     display: flex;
     align-items: center;
-    gap: spacing(0, true);
+    gap: spacing(0);
   }
 
   &-header {
@@ -31,7 +31,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    padding-block: spacing(-1, true);
+    padding-block: spacing(-1);
     background-color: var(--color-navbar-bg);
     box-shadow: var(--shadow-navbar);
     min-height: var(--navbar-height);
@@ -66,7 +66,7 @@
   }
 
   &-link {
-    padding: spacing(-2, true) spacing(0, true);
+    padding: spacing(-2) spacing(0);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -214,7 +214,7 @@
 @include mobile-lg {
   .navbar {
     &-links {
-      gap: spacing(-1, true);
+      gap: spacing(-1);
     }
 
     &-site-name {

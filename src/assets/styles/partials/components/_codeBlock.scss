@@ -4,7 +4,7 @@
 
 /* VS Code Dark Plus theme: https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vsc-dark-plus.css */
 
-$code-block-padding: spacing(5, true);
+$code-block-padding: spacing(5);
 
 pre[class*="language-"] {
   background: var(--color-code-background);

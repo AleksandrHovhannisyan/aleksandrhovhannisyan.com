@@ -18,15 +18,6 @@ html {
     --#{get-custom-property-prefix("spacing")}-#{$step}: #{to-rems($value-px)};
   }
 
-  // Fluid spacing variables
-  @for $i from 2 through list.length($spacing-steps) {
-    $step: $i - $spacing-base-index;
-    $min: list.nth($spacing-steps, $i - 1) * 1px;
-    $max: list.nth($spacing-steps, $i) * 1px;
-    /* stylelint-disable-next-line custom-property-pattern */
-    --#{get-custom-property-prefix("spacing")}-fluid-#{$step}: #{clamped($min, $max)};
-  }
-
   // Typography variables
   $type-steps: get($config, "typeScale", "steps");
   $type-sizes: get($config, "typeScale", "sizes");
