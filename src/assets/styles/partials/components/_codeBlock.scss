@@ -33,7 +33,7 @@ pre[class*="language-"] {
     display: block;
 
     &[data-file] {
-      padding-top: clamped(48px, 76px);
+      padding-top: calc(#{$code-block-padding} + 3em);
 
       // File name
       &::before {
