@@ -6,7 +6,6 @@
   transform: translate(#{spacing(-2)}, -50%);
   padding: spacing(-2);
   color: inherit;
-  z-index: z-index("navbar") + 1;
 }
 
 .navbar {
@@ -23,20 +22,20 @@
   &-container {
     display: flex;
     align-items: center;
-    gap: spacing(0, true);
+    gap: spacing(0);
   }
 
   &-header {
     position: fixed;
+    z-index: 9999;
     bottom: 0;
     left: 0;
     width: 100%;
-    padding-block: spacing(-1, true);
+    padding-block: spacing(-1);
     background-color: var(--color-navbar-bg);
     box-shadow: var(--shadow-navbar);
     min-height: var(--navbar-height);
     overflow-x: auto;
-    @include z-index(navbar);
   }
 
   &-logo {
@@ -67,7 +66,7 @@
   }
 
   &-link {
-    padding: spacing(-2, true) spacing(0, true);
+    padding: spacing(-2) spacing(0);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -175,7 +174,6 @@
     left: 10px;
     top: 4px;
     transform-style: preserve-3d;
-    z-index: 2;
     box-shadow: 0 4px 4px -2px rgb(230 230 230 / 100%);
 
     &::before {
@@ -216,7 +214,7 @@
 @include mobile-lg {
   .navbar {
     &-links {
-      gap: spacing(-1, true);
+      gap: spacing(-1);
     }
 
     &-site-name {
