@@ -5,7 +5,7 @@ keywords: [load more, load more button, infinite scrolling]
 categories: [accessibility, javascript, react]
 thumbnail: thumbnail.png
 commentsId: 125
-lastUpdated: 2021-02-18
+lastUpdated: 2022-03-24
 ---
 
 Many blogging platforms, news sites, and social media platforms use a strategy known as **infinite scrolling** to render a continuously growing list of results in a feed. Unfortunately, while infinite scrolling creates a seamless user experience on social media platforms, it isn't great for accessibility. Not only does it make it impossible for both mouse and keyboard users to reach a site's footer, but it can also create a confusing user experience for screen reader users if the proper ARIA roles and attributes are not used (e.g., [`aria-live`](https://gomakethings.com/how-and-why-to-use-aria-live/), among others).
@@ -40,7 +40,7 @@ Suppose we're rendering a simple grid of results like this:
 ```jsx {data-file="ResultGrid.jsx"}
 const ResultGrid = (props) => {
   return (
-    <>
+    <div>
       <ol>
         {props.results.map((result) => {
           return (
@@ -53,43 +53,58 @@ const ResultGrid = (props) => {
       {props.canLoadMore && (
         <button onClick={props.onLoadMore}>Load More</button>
       )}
-    </>
+    </div>
   );
 };
 ```
 
-As I mentioned before, we'll need to maintain a reference to the first newly rendered result so we can later focus that element after the component has rendered. So let's create that ref ahead of time since we know we're going to need it:
+As I mentioned before, we'll need to maintain a reference to the first newly rendered result so we can focus that element after the list has re-rendered. So let's create that ref ahead of time since we know we're going to need it:
 
 ```jsx {data-file="ResultGrid.jsx" data-copyable=true}
-const firstNewResultRef = useRef(null);
+const ResultGrid = (props) => {
+  const firstNewResultRef = useRef(null);
+
+  // other code omitted for brevity
+}
 ```
 
-Now, we just need to figure out how to assign this ref to the first of the newly rendered results. This is easier than it sounds! Whenever the array changes, the index of the first new result is going to be the length of the previous array. For example, if we had `5` items previously, it doesn't really matter how many items we have *now*—the first new item is always going to be at index `5`, or the length of the previous array (due to zero-indexing).
+Now, we just need to somehow assign this ref to the first of the newly rendered results. And this is actually easier than it sounds! Whenever we load in more results, the index of the first new result is going to be the length of the previous array. For example, if we had `5` items before but now we have `5 + N`, the first new item's index will always be `5`, or the length of the previous array. We'll keep track of this index at the parent level as part of its state and pass it along as a prop to the list UI:
 
-To keep track of this index, we'll create another ref:
+```jsx {data-file="App.jsx" data-copyable=true}
+const App = () => {
+  const [state, setState] = useState({ results: [], firstNewResultIndex: -1 });
 
-```jsx {data-file="ResultGrid.jsx" data-copyable=true}
-const firstNewResultIndex = useRef(null);
+  const handleLoadMore = async () => {
+    // logic omitted for fetching new results
+    setState({
+      ...state,
+      results: newResults,
+      firstNewResultIndex: state.results.length,
+    });
+  };
+
+  return (
+    <ResultGrid
+      results={state.results}
+      firstNewResultIndex={state.firstNewResultIndex}
+    />
+  );
+};
 ```
 
-And we'll update its value before calling `props.onLoadMore` in our click event handler:
+{% aside %}
+  **Note**: To keep the code simple, this tutorial assumes that the list length only ever changes because a user clicked the load-more button. But in practice, the list may grow and shrink for other reasons. For example, if users are allowed to type search queries to filter the results, then the first new result may need to be reset. You should set this index accordingly wherever you are updating the list of results.
+{% endaside %}
 
-```jsx {data-file="ResultGrid.jsx" data-copyable=true}
-<button
-  onClick={() => {
-    firstNewResultIndex.current = props.results.length;
-    props.onLoadMore();
-  }}
->
-  Load More
-</button>
-```
+{% aside %}
+  **Note**: Since we're updating two related state values inside an async function—one for the list itself and another for the index—the code sample uses a single object for the state to minimize re-renders since React doesn't guarantee batching prior to version 18. However, in situations like this where two or more states depend on each other, the recommended pattern is to instead use [the reducer state pattern](/blog/managing-complex-state-react-usereducer/).
+{% endaside %}
 
-Then, when rendering the list, we can compare each result's index to the one we just computed and conditionally assign the ref we created earlier only if the indices match:
+Now that we have the index of the first new result, we can compare it to the index of each result in our mapping function. If an element's index matches the target index, we'll conditionally assign the ref to that element:
 
 ```jsx {data-file="ResultGrid.jsx" data-copyable=true}
 props.results.map((result, i) => {
-  const isFirstNewResult = i === firstNewResultIndex.current;
+  const isFirstNewResult = i === props.firstNewResultIndex;
   return (
     <li key={i}>
       <a
@@ -103,37 +118,39 @@ props.results.map((result, i) => {
 })
 ```
 
-Finally, we'll leverage the `useEffect` hook to focus the new result after every render. It's important to specify `props.results` as the only dependency of the hook; that way, we only focus the ref if this component re-rendered because new results were loaded:
+Finally, we'll leverage the `useEffect` hook to focus the new result after every render. It's important to specify `props.firstNewResultIndex` as the only dependency of the hook; that way, we only focus the ref if this component re-rendered because new results were loaded:
 
 ```jsx {data-file="ResultGrid.jsx" data-copyable=true}
+// Whenever the index changes, focus the corresponding ref
 useEffect(() => {
-  firstNewResultRef?.current?.focus();
-}, [props.results]);
+  firstNewResultRef.current?.focus();
+}, [props.firstNewResultIndex]);
 ```
 
 Now, when users click the load-more button with their keyboard, their focus will jump immediately to the first of the newly inserted items.
 
 {% aside %}
-  **Note**: This code will NOT run into race conditions since we only ever focus the first result *after* the list has re-rendered, at which point the ref will have been correctly assigned. So if you're fetching paginated data from an API, `props.results` won't change until you're done setting the state in the parent component.
+  **Note**: This code will not run into race conditions since we only ever focus the first result *after* the index has changed, at which point the ref will have been correctly assigned. So if you're fetching paginated data from an API, `props.firstNewResultIndex` won't change until after you're done setting the state in the parent component.
 {% endaside %}
 
 And that's all the logic that we need! Here's the final code from this tutorial:
 
-```jsx {data-file="ResultGrid.jsx" data-copyable=true}
+```jsx {data-copyable=true}
+import { useRef, useState } from 'react';
+
 const ResultGrid = (props) => {
-  const firstNewResultIndex = useRef(null);
   const firstNewResultRef = useRef(null);
 
-  // Whenever the list grows, focus the first newly inserted result
+  // Whenever the index changes, focus the corresponding ref
   useEffect(() => {
-    firstNewResultRef?.current?.focus();
-  }, [props.results]);
+    firstNewResultRef.current?.focus();
+  }, [props.firstNewResultIndex]);
 
   return (
-    <>
+    <div>
       <ol>
         {props.results.map((result, i) => {
-          const isFirstNewResult = i === firstNewResultIndex.current;
+          const isFirstNewResult = i === props.firstNewResultIndex;
           return (
             <li key={i}>
               <a
@@ -146,15 +163,28 @@ const ResultGrid = (props) => {
           );
         })}
       </ol>
-      <button
-        onClick={() => {
-          firstNewResultIndex.current = props.results.length;
-          props.onLoadMore();
-        }}
-      >
-        Load More
-      </button>
-    </>
+      <button onClick={props.onLoadMore}>Load More</button>
+    </div>
+  );
+};
+
+const App = () => {
+  const [state, setState] = useState({ results: [], firstNewResultIndex: -1 });
+
+  const handleLoadMore = async () => {
+    // logic omitted for fetching new results
+    setState({
+      ...state,
+      results: newResults,
+      firstNewResultIndex: state.results.length,
+    });
+  };
+
+  return (
+    <ResultGrid
+      results={state.results}
+      firstNewResultIndex={state.firstNewResultIndex}
+    />
   );
 };
 ```
