@@ -18,7 +18,6 @@ eleventyComputed:
       Filter by one of the following popular tags, or <a href="/tags/">view all tags</a>.
     </p>
     <nav aria-label="Popular tags" class="relative prose prose-tight">
-      <a class="screen-reader-only flex-center skip-popular-tags" href="#skip-popular-tags">Skip to posts</a>
       <ol class="pill-group blog-tags">
         {%- assign popularTags = collections.popularCategories -%}
         {%- for tag in popularTags %}
@@ -32,12 +31,12 @@ eleventyComputed:
               aria-current="page"
               {%- endif -%}
             >
-              {{ tag.title }}&nbsp;<span class="pill-count" aria-label="{{ tag.posts | size }} posts">{{ tag.posts | size }}</span>
+              {{ tag.title }}&nbsp;<span class="pill-count" aria-hidden="true">{{ tag.posts | size }}</span>
+              <span class="screen-reader-only">{{ tag.posts | size }} posts</span>
             </a>
           </li>
         {% endfor %}
       </ol>
-      <div id="skip-popular-tags"></div>
     </nav>
   </header>
   {{ content }}
