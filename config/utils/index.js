@@ -59,6 +59,8 @@ const stringifyAttributes = (attributeMap) => {
 /** Sanitizes an HTML string. */
 const sanitizeHtml = (html) => {
   return sanitize(html, {
+    // allow images
+    allowedTags: sanitize.defaults.allowedTags.concat(['img']),
     allowedAttributes: {
       ...sanitize.defaults.allowedAttributes,
       // Syntax highlighting
