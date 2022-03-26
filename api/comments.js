@@ -21,21 +21,20 @@ exports.handler = async (event) => {
       };
     }
 
-    // https://docs.github.com/en/rest/reference/issues#list-issue-comments-for-a-repository
-    const response = await Octokit.issues.listComments({
-      owner: site.issues.owner,
-      repo: site.issues.repo,
-      issue_number: issueNumber,
-    });
+    // Reference for pagination: https://michaelheap.com/octokit-pagination/
+    // Fetching issue comments for a repo: https://docs.github.com/en/rest/reference/issues#list-issue-comments-for-a-repository
+    const response = await Octokit.paginate(
+      Octokit.issues.listComments,
+      {
+        owner: site.issues.owner,
+        repo: site.issues.repo,
+        issue_number: issueNumber,
+        per_page: 100, // this is the max number of results per page that the API supports
+      },
+      (response) => response.data
+    );
 
-    if (response.status !== 200) {
-      return {
-        statusCode: response.status,
-        body: JSON.stringify({ error: `Unable to fetch comments for this post.` }),
-      };
-    }
-
-    const comments = response.data
+    const comments = response
       // Recent comments first
       .sort((comment1, comment2) => comment2.created_at.localeCompare(comment1.created_at))
       // Restructure the data so the client-side JS doesn't have to do this
@@ -53,7 +52,7 @@ exports.handler = async (event) => {
       });
 
     return {
-      statusCode: response.status,
+      statusCode: 200,
       body: JSON.stringify({
         data: comments,
       }),
