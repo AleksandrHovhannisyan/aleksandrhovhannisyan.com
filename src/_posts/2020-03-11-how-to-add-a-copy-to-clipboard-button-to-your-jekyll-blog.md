@@ -3,7 +3,7 @@ title: How to Add a Copy-to-Clipboard Button to Jekyll
 description: Add a copy-to-clipboard button to your Jekyll blog with a simple include and a few lines of JavaScript.
 categories: [jekyll, liquid, javascript]
 keywords: [copy to clipboard button]
-lastUpdated: 2021-04-04
+lastUpdated: 2022-03-26
 commentsId: 35
 thumbnail: thumbnail.png
 ---
@@ -22,11 +22,13 @@ At a high level, all we need is a simple include file that we can stick in front
 
 ```html {data-file="_includes/codeHeader.html" data-copyable=true}
 <div class="code-header">
-    <button class="copy-code-button" aria-label="Copy code to clipboard"></button>
+  <button class="copy-code-button">
+    Copy code to clipboard
+  </button>
 </div>
 ```
 
-We create a `button` and give it a well-named class. We also add an `aria-label` for screen readers.
+We created a `button` and gave it a well-named class.
 
 And here's how you'd use this include:
 
@@ -41,43 +43,11 @@ code goes in here!
 
 This just renders a normal fenced code block (with triple backticks). Right before that, we render the code header, which includes the copy-to-clipboard button.
 
-Below is some CSS to get you started (I'm using SCSS). Styling this to make it look pretty is up to you, so I've omitted colors and font sizes.
+Below is just some basic CSS to get you started; styling the button is beyond the scope of this tutorial.
 
 ```scss {data-copyable=true}
-.code-header {
-  display: flex;
-  justify-content: flex-end;
-}
-
 .copy-code-button {
-  display: grid;
-  grid-auto-flow: column;
-  align-items: center;
-  grid-column-gap: 4px;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  padding: 4px 8px;
-
-  &::before {
-    content: "Copy";
-  }
-
-  &::after {
-    content: "📋";
-    display: block;
-  }
-
-  // This class will be toggled via JavaScript
-  &.copied {
-    &::before {
-      content: "Copied!";
-    }
-
-    &::after {
-      content: "✔️";
-    }
-  }
+  display: block;
 }
 ```
 
@@ -93,6 +63,7 @@ We'll look up two arrays, side by side:
 Here's the code:
 
 ```javascript {data-file="assets/scripts/copyCode.js" data-copyable=true}
+// This assumes that you're using Rouge; if not, update the selector
 const codeBlocks = document.querySelectorAll('.code-header + .highlighter-rouge');
 const copyCodeButtons = document.querySelectorAll('.copy-code-button');
 
@@ -100,21 +71,32 @@ copyCodeButtons.forEach((copyCodeButton, index) => {
   const code = codeBlocks[index].innerText;
 
   copyCodeButton.addEventListener('click', () => {
+    // Copy the code to the user's clipboard
     window.navigator.clipboard.writeText(code);
+
+    // Update the button text visually
+    const { innerText: originalText } = copyCodeButton;
+    copyCodeButton.innerText = 'Copied!';
+
+    // (Optional) Toggle a class for styling the button
     copyCodeButton.classList.add('copied');
 
+    // After 2 seconds, reset the button to its initial UI
     setTimeout(() => {
+      copyCodeButton.innerText = originalText;
       copyCodeButton.classList.remove('copied');
     }, 2000);
   });
 });
 ```
 
+{% aside %}
+  To keep things simple, I'm just updating the text of the button directly. To make this more accessible for screen reader users, you'll probably also want to insert a `div` with [`role="alert"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role) somewhere in the DOM since screen readers normally don't narrate button text changes.
+{% endaside %}
+
 This uses the `window.navigator.clipboard` API to copy the code block to the clipboard as a string. This API is supported by all modern browsers, so you don't have to use any [textarea hacks](https://stackoverflow.com/a/46822033/5323344).
 
 Note that you may need to replace `.highlighter-rouge` if you're using a different syntax highlighter with Jekyll. It ships with Rouge by default, and `.highlighter-rouge` is the class that gets applied to code blocks.
-
-Finally, the copy-to-clipboard button uses CSS pseudo-elements to show `Copy 📋` in the default state and `Copied! ✔️` once the `copied` class has been added. This lasts for two seconds and gives the user feedback to indicate that copying to the clipboard went through successfully.
 
 That's it! Don't forget to add a script tag so this code actually works. For example, you can stick this somewhere in your layout file for blog posts:
 
