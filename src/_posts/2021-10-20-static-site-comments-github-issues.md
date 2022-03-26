@@ -305,6 +305,16 @@ And use it to sanitize the parsed body of the comment before returning it:
 body: sanitizeHtml(toMarkdown(comment.body))
 ```
 
+You'll also want to sanitize usernames:
+
+```js
+name: sanitizeHtml(comment.user.login)
+```
+
+{% aside %}
+  You may also wish to extend the default list of allowed tags and attributes. See the [sanitize-html docs](https://www.npmjs.com/package/sanitize-html) for examples of how to do this.
+{% endaside %}
+
 ### 7. Calling the Netlify Function on the Client Side
 
 You can now test that your Netlify function works as expected by invoking it locally with the Netlify CLI. At this point, you could also write some client-side JavaScript to make a request to your lambda. That might look like this:

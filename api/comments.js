@@ -42,11 +42,13 @@ exports.handler = async (event) => {
         return {
           user: {
             avatarUrl: comment.user.avatar_url,
-            name: comment.user.login,
+            // Sanitize usernames to prevent XSS
+            name: sanitizeHtml(comment.user.login),
           },
           datePosted: dayjs(comment.created_at).fromNow(),
           isEdited: comment.created_at !== comment.updated_at,
           isAuthor: comment.author_association === 'OWNER',
+          // Sanitize comment body to prevent XSS
           body: sanitizeHtml(markdownLib.render(comment.body)),
         };
       });
