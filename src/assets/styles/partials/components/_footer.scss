@@ -4,7 +4,20 @@
   background-color: var(--color-footer-bg);
   color: white;
   text-align: center;
-  padding-block: spacing(5);
+  padding-top: spacing(5);
+  padding-block-end: spacing(11);
+
+  @include mobile-lg {
+    padding-block: spacing(5);
+  }
+
+  @include tablet {
+    text-align: start;
+
+    &-socials {
+      justify-content: flex-end;
+    }
+  }
 
   h2,
   a {
@@ -15,15 +28,5 @@
     aspect-ratio: 1;
     width: spacing(3);
     fill: currentcolor;
-  }
-
-  @include tablet {
-    & {
-      text-align: start;
-    }
-
-    &-socials {
-      justify-content: flex-end;
-    }
   }
 }

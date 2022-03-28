@@ -15,6 +15,10 @@
   }
 }
 
+:where(html, body) {
+  height: 100%;
+}
+
 :where(label, input, textarea, button) {
   font-family: inherit;
   font-size: inherit;
