@@ -25,8 +25,8 @@ A common task in CSS is to apply some styling to multiple selectors. Perhaps you
 For each new selector, you need to repeat the base selector (`.nav-link`). While that may not seem like a big deal in this isolated example, it does add up the more you have to write CSS like this. It's even more verbose if you need to chain additional modifiers, like with `:not`:
 
 ```css
-.button:not(.disabled):focus,
-.button:not(.disabled):hover {}
+.button:not([disabled]):focus,
+.button:not([disabled]):hover {}
 ```
 
 The dev experience is not quite as bad in Sass thanks to the ampersand operator:
@@ -58,7 +58,7 @@ This selector will match all elements with the `nav-link` class that also have a
 We can also refactor the second example, where we chained additional modifiers with `:not`:
 
 ```css
-.button:not(.disabled):is(:focus, :hover) {}
+.button:not([disabled]):is(:focus, :hover) {}
 ```
 
 This is great because it means that we don't have to repeat any intermediate classes or pseudo-classes—we only need to list them once and chain an `:is` to supply an additional list of selectors to match.
