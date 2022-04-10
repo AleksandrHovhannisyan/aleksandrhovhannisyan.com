@@ -4,7 +4,6 @@ description: If it were up to me, things wouldn't end this way. We had some grea
 keywords: [flash games]
 categories: [off-topic, gaming]
 thumbnail: thumbnail.png
-isFeatured: true
 ---
 
 When I was young, I loved to play video games (and I still do to this day). But while today we have superior hardware and games-as-a-service subscriptions like Xbox Game Pass and Google Stadia, none of that futuristic technology existed in my childhood. Back in the *good ol' days*, it was all about *browser games*.

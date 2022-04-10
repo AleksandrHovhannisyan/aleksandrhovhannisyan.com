@@ -6,6 +6,7 @@ categories: [css, sass, typography, math, clamp]
 thumbnail: thumbnail.png
 commentsId: 131
 lastUpdated: 2022-01-02
+isFeatured: true
 ---
 
 For a long time, many design systems implemented static font sizing, with a set of progressively larger and smaller font size variables on either end of a baseline font size:
