@@ -1,8 +1,9 @@
 ---
 title: Overzealous Destructuring
-description: Destructuring in JavaScript has many clever uses that can make your code more expressive and compact. But overusing it can make your code harder to read and debug.
+description: Destructuring in JavaScript has many clever uses that can make your code more expressive and compact. But overusing it can make your code harder to read, trickier to debug, and more error prone.
 keywords: [javascript, destructuring]
-categories: [javascript, typescript, destructuring, react, es6]
+categories: [javascript, typescript, destructuring, react, practices]
+lastUpdated: 2022-04-17
 thumbnail:
   url: https://images.unsplash.com/photo-1615678857339-4e7e51ce22db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
@@ -85,9 +86,9 @@ In practice, you will rarely use single-letter names for your variables. To make
 
 Especially in large functions and modules, this sort of namespacing can make your code much easier to follow. You may not think this is a big deal if you're the one writing the code, but you have to remember that other developers may one day have to read your code, too. Don't use clever tricks that sacrifice readability for speed.
 
-## Destructuring May Introduce Naming Clashes
+### Destructuring May Introduce Naming Clashes
 
-Earlier, I mentioned that namespaces can help you avoid **naming clashes** in other programming languages. The same goes for function arguments in JavaScript. When you destructure function arguments, you make it harder to reuse the same variable names for final and intermediate values elsewhere in the function.
+I mentioned that namespaces can help you avoid **naming clashes** in other programming languages, and the same actually goes for function arguments in JavaScript. When you destructure function arguments, you make it harder to reuse the same variable names for final and intermediate values elsewhere in the function.
 
 For example, if you're creating a React component, you might want to derive some state from props. This pattern is common in modals, where users are allowed to discard their changes but the initial state needs to be populated from some persisted data that comes in via props:
 
@@ -146,6 +147,78 @@ const Component = (props) => {
   console.log(props.a.deeply.nested.variable);
 };
 ```
+
+## Destructuring Potentially Nullish Values Is Dangerous
+
+We saw in the previous section that destructuring deeply nested properties makes your code harder to read. But that's not the only problem. A more insidious problem is that destructuring nullish or undefined objects is dangerous and will throw an uncaught runtime error:
+
+```
+Uncaught TypeError: Cannot read properties of null
+```
+
+This can become a rather nasty source of bugs in your code base if you're not careful, especially if you're frequently destructuring object properties.
+
+One of the nice things about accessing object properties the old-fashioned way is that we can use the [optional chaining operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining) (`?.`) to safeguard against potentially [nullish values](https://developer.mozilla.org/en-US/docs/Glossary/Nullish) while preserving the readability of our code:
+
+```js
+const value = object?.with?.nested?.properties;
+```
+
+In the above expression, `value` will evaluate to the value of `properties` if the object and all of its intermediate properties are non-nullish. But if the object or any of its properties is nullish, the entire expression will return `undefined` without throwing any errors. This allows us to safely access deeply nested object properties without checking each property individually. The above code is equivalent to doing this:
+
+```js
+const value =
+  object && object.with && object.with.nested
+    ? object.with.nested.properties
+    : undefined;
+```
+
+On the other hand, if we destructure those properties, we run into several problems. First, we have no (good) way of safeguarding against nullish values other than using the [nullish coalescing operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator) (`??`):
+
+```js
+const fallback = { with: { nested: {} } };
+const object = undefined;
+const {
+  with: {
+    nested: { properties },
+  },
+} = object ?? fallback;
+```
+
+This says: Attempt to destructure the deeply nested `properties` property from the object. If the object is nullish, fall back to an object containing all properties except the one that we want. This means that `properties` is the value if it exists or `undefined` (because the fallback `nested` object has no properties, so `fallback.with.nested.properties` is `undefined`).
+
+Except... what if the object *is* defined but one of its intermediate properties isn't?
+
+```js
+const fallback = { with: { nested: {} } };
+const object = {};
+const {
+  with: {
+    nested: { properties },
+  },
+} = object ?? fallback;
+```
+
+Because `object.with` is `undefined`, attempting to access `object.with.nested` will throw the same type error:
+
+```
+Uncaught TypeError: Cannot read properties of undefined (reading 'nested')
+```
+
+The version with destructuring is *significantly* more complex and error prone than the original, and it sacrifices the readability of our code for absolutely no gain. It's riddled with traps that can catch you off guard if you're not careful, and its syntax is far more verbose than it needs to be.
+
+The code is also not the same as the original! In the original example, we named the final variable `value`. If we want to rename the deeply nested property while destructuring it, we'll need to do so during assignment. This only exacerbates the readability problem:
+
+```js
+const fallback = { with: { nested: {} } };
+const {
+  with: {
+    nested: { properties: value },
+  },
+} = object ?? fallback;
+```
+
+After all of this, you might think that TypeScript would help you avoid this problem entirely by warning you whenever you drill deep into a chain of potentially nullish properties. And it will. But it's important to remember that TypeScript does not provide any assurances about a variable's _runtime_ type, especially if the data is coming from an external source (like an API). In those cases, you often need to use type assertions or guards anyway to assert the returned type because TypeScript can't infer the type of dynamically fetched data. So destructuring the data is more dangerous than defensive coding (like using the optional chaining operator or good-old `if` statements).
 
 ## Destructuring Makes It Harder to Debug Object Arguments
 
