@@ -1,15 +1,15 @@
 <header class="navbar-header flex align-center">
-  <div class="navbar-container container">
-    <nav class="navbar flex align-center justify-between gap--3 relative fs-sm" aria-label="Primary">
+  <div class="container flex align-center gap-0">
+    <nav class="navbar flex align-center justify-between gap--2 fs-sm" aria-label="Primary">
       <a href="#page-content" class="screen-reader-only skip-navigation">Skip to content</a>
       <a class="navbar-branding outline-offset heading" href="/" aria-label="Home page" {% if permalink == "/" %}aria-current="page"{% endif %}>
         <img src="/assets/images/favicons/favicon-128.png" class="navbar-logo circle" alt="" />
         <span class="navbar-site-name">Aleksandr Hovhannisyan</span>
       </a>
-      <ul class="navbar-links">
+      <ul class="navbar-links flex align-center">
         {%- comment -%}Only show this home link on mobile view.{%- endcomment -%}
-        <li class="navbar-item">
-          <a class="navbar-link home" href="/" {% if permalink == "/" %}aria-current="page"{% endif %}>Home</a>
+        <li class="navbar-item home">
+          <a class="navbar-link" href="/" {% if permalink == "/" %}aria-current="page"{% endif %}>Home</a>
         </li>
         {%- assign navLinks = "About,Art,Blog" | split: ',' -%}
         {%- for link in navLinks -%}

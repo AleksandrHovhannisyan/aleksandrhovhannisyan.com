@@ -9,20 +9,19 @@
 }
 
 .navbar {
-  width: 100%;
-  height: 100%;
+  // Don't wrap whitespace
+  white-space: nowrap;
+  // Distribute available space evenly, but don't shrink
+  flex: 1 0 auto;
+  // Relatively position the navbar for the skip link
+  position: relative;
+  // Shared typography styles for all navbar text
   color: white;
   @include font-family("title");
   @include font-weight("title", "regular");
 
   a {
     text-decoration: none;
-  }
-
-  &-container {
-    display: flex;
-    align-items: center;
-    gap: spacing(0);
   }
 
   &-header {
@@ -52,17 +51,13 @@
   }
 
   &-links {
-    display: flex;
-    align-items: center;
     justify-content: space-between;
     width: 100%;
   }
 
   &-item {
     text-align: center;
-    display: flex;
-    justify-content: center;
-    flex: 1 0 0;
+    flex-grow: 1;
   }
 
   &-link {
@@ -213,17 +208,6 @@
 
 @include mobile-lg {
   .navbar {
-    &-links {
-      gap: spacing(-1);
-    }
-
-    &-site-name {
-      display: unset;
-    }
-  }
-}
-@include mobile-lg {
-  .navbar {
     &-header {
       position: unset;
       box-shadow: none;
@@ -240,14 +224,12 @@
     }
 
     &-links {
-      justify-content: unset;
+      gap: spacing(-2);
       width: unset;
     }
 
-    &-link {
-      &.home {
-        display: none;
-      }
+    &-item.home {
+      display: none;
     }
   }
 }
