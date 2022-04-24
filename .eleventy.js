@@ -16,6 +16,7 @@ const {
   toHtml,
   where,
   toISOString,
+  formatDate,
   dividedBy,
   newlineToBr,
   toAbsoluteUrl,
@@ -70,6 +71,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter('escape', escape);
   eleventyConfig.addFilter('toHtml', toHtml);
   eleventyConfig.addFilter('toIsoString', toISOString);
+  eleventyConfig.addFilter('formatDate', formatDate);
   eleventyConfig.addFilter('dividedBy', dividedBy);
   eleventyConfig.addFilter('newlineToBr', newlineToBr);
   eleventyConfig.addFilter('toAbsoluteUrl', toAbsoluteUrl);

@@ -97,6 +97,9 @@ const toAbsoluteImageUrl = async (src, width = null) => {
 /** Converts the given date string to ISO8610 format. */
 const toISOString = (dateString) => dayjs(dateString).toISOString();
 
+/** Formats a date using dayjs's conventions: https://day.js.org/docs/en/display/format */
+const formatDate = (date, format) => dayjs(date).format(format);
+
 /**
  * @param {*} collection - an array of collection items that are assumed to have either data.lastUpdated or a date property
  * @returns the most recent date of update or publication among the given collection items, or undefined if the array is empty.
@@ -131,6 +134,7 @@ module.exports = {
   wordCount,
   toHtml,
   toISOString,
+  formatDate,
   dividedBy,
   newlineToBr,
   stripNewlines,
