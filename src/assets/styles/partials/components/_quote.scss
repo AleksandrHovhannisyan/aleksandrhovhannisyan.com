@@ -5,6 +5,13 @@ blockquote {
   padding: spacing(-3) spacing(5);
 }
 
+cite {
+  &::before {
+    content: "\2014";
+    user-select: none;
+  }
+}
+
 .quote {
   > p {
     &:first-of-type {
