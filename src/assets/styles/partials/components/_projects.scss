@@ -16,6 +16,7 @@
 
   &-icon {
     picture {
+      display: flex;
       width: var(--fs-base);
       aspect-ratio: 1;
     }

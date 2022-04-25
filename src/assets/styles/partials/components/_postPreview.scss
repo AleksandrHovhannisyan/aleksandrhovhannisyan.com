@@ -9,6 +9,7 @@
     "tags";
 
   &-thumbnail-container {
+    display: flex;
     grid-area: thumbnail;
     user-select: none;
     margin-bottom: spacing(0);

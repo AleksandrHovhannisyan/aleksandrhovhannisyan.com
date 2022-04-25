@@ -26,14 +26,9 @@
   letter-spacing: inherit;
 }
 
-:where(picture) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 :where(img, video) {
   height: auto;
+  display: block;
 }
 
 :where(img, iframe, video, table) {

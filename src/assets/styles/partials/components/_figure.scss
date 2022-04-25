@@ -1,5 +1,11 @@
 @import "../mixins";
 
+figure {
+  img {
+    margin-inline: auto;
+  }
+}
+
 figcaption {
   text-align: center;
 
