@@ -1,0 +1,8 @@
+{%- assign sourceType = sourceType | default: 'video/mp4' -%}
+{%- assign loading = loading | default: 'lazy' -%}
+{%- assign autoplay = autoplay | default: 'false' -%}
+<div class="full-bleed">
+  <video loading="{{ loading }}" controls autoplay="{{ autoplay }}" width="{{ width }}" height="{{ height }}">
+    <source src="{{ src }}" type="{{ sourceType }}">
+  </video>
+</div>
