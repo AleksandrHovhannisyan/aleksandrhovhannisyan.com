@@ -15,7 +15,7 @@ noindex: true
 
 {%- for family in families %}
 ### {{ family }}
-<div className="scroll-x">
+<div class="scroll-x">
   <table>
     <thead>
       <tr>
