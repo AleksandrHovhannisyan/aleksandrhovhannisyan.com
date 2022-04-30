@@ -2,21 +2,24 @@
 We later feed this to scss to minify the output and inline it in the head for performance.{%- endcomment -%}
 {%- assign allFonts = fonts | values -%}
 {%- for font in allFonts -%}
-  {%- assign weights = font.weights | values -%}
-  {%- for fontEntry in weights -%}
-    {%- if fontEntry.url -%}
-      {%- assign family = font.family -%}
-      {%- assign format = fontEntry.url | split: "." | last -%}
-      {%- assign localFontName = family | append: " " | append: fontEntry.variant | replace: "Regular", "" | strip -%}
-      {%- assign postscriptVariantName = fontEntry.variant | replace: " ", "" -%}
-      {%- assign postscriptName = family | replace: " ", "" | append: " " | append: postscriptVariantName | replace: "Regular", "" | strip | replace: " ", "-" -%}
-      @font-face {
-        font-family: '{{ family }}';
-        font-style: {{ fontEntry.style }};
-        font-weight: {{ fontEntry.weight }};
-        {% if fontEntry.display -%}font-display: {{ fontEntry.display }};{%- endif -%}
-        src: local('{{ localFontName }}'), local('{{ postscriptName }}'), url('{{ fontEntry.url }}') format('{{ format }}');
-      }
-    {%- endif -%}
-  {%- endfor -%}
+  {%- comment -%}Don't generate @font-face declarations if explicitly disabled.{%- endcomment -%}
+  {%- if font.hasFontFace != false -%}
+    {%- assign weights = font.weights | values -%}
+    {%- for fontEntry in weights -%}
+      {%- if fontEntry.url -%}
+        {%- assign family = font.family -%}
+        {%- assign format = fontEntry.url | split: "." | last -%}
+        {%- assign localFontName = family | append: " " | append: fontEntry.variant | replace: "Regular", "" | strip -%}
+        {%- assign postscriptVariantName = fontEntry.variant | replace: " ", "" -%}
+        {%- assign postscriptName = family | replace: " ", "" | append: " " | append: postscriptVariantName | replace: "Regular", "" | strip | replace: " ", "-" -%}
+        @font-face {
+          font-family: '{{ family }}';
+          font-style: {{ fontEntry.style }};
+          font-weight: {{ fontEntry.weight }};
+          {% if fontEntry.display -%}font-display: {{ fontEntry.display }};{%- endif -%}
+          src: local('{{ localFontName }}'), local('{{ postscriptName }}'), url('{{ fontEntry.url }}') format('{{ format }}');
+        }
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
 {%- endfor -%}
