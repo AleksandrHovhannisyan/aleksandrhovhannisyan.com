@@ -1,5 +1,6 @@
 @use "sass:math";
 
+@import "../functions";
 @import "../mixins";
 
 body {
@@ -14,8 +15,8 @@ body {
 }
 
 #page-content {
-  --padding-y: #{clamped(32px, 96px)};
-  padding-block: var(--padding-y);
+  padding-block-start: clamped(32px, 96px);
+  padding-block-end: clamped(64px, 96px);
 }
 
 strong,
