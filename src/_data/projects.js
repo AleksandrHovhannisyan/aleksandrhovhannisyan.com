@@ -15,7 +15,7 @@ const repos = {
     },
     url: 'https://www.fluid-type-scale.com/',
     repo: 'AleksandrHovhannisyan/fluid-type-scale-calculator',
-    tech: ['11ty', 'slinkity', 'sass', 'react'],
+    tech: ['nextjs', 'typescript', 'sass'],
   },
   scribe: {
     getIcon: () => '📄',
