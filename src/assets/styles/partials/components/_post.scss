@@ -1,25 +1,8 @@
 @import "../mixins";
 
 .post {
-  &-header {
-    display: grid;
-    grid-template-areas:
-      "date"
-      "title"
-      "tags";
-  }
-
   &-title {
-    grid-area: title;
     margin-bottom: spacing(-2);
-  }
-
-  & &-date {
-    grid-area: date;
-  }
-
-  & &-meta-tags {
-    grid-area: tags;
   }
 
   &-content {
