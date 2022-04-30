@@ -63,7 +63,6 @@
     }
 
     &-thumbnail {
-      height: 100%;
       width: to-rems(180px);
       padding: spacing(-2) 0;
 
@@ -71,8 +70,8 @@
         margin-inline-end: spacing(-1);
       }
 
+      &,
       img {
-        border-radius: 4px;
         height: 100%;
       }
     }
@@ -80,10 +79,6 @@
     &-title {
       @include font-size("md");
     }
-
-    // &-description {
-    //   @include line-clamp(3);
-    // }
 
     &-date {
       display: unset;
