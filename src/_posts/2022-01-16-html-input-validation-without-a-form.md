@@ -5,6 +5,7 @@ keywords: [input validation, validity, input, form]
 categories: [html, javascript, accessibility, browsers, forms]
 thumbnail: thumbnail.png
 commentsId: 137
+lastUpdated: 2022-05-01
 ---
 
 When you submit an HTML form, your browser first performs [client-side validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation) to make sure that the form contains clean data before sending it off to the server. This is done by comparing each input's value to constraints defined via certain [HTML input attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes), like `required`, `pattern`, and others.
@@ -37,15 +38,19 @@ Suppose we have an input that accepts an even integer from `2` to `10`, inclusiv
 
 Certain input attributes prevent a user from ever entering disallowed values. For example, `type="number"` prevents a user from entering text. By contrast, while the `min`, `max`, and `step` attributes define constraints for the value, the input doesn't actually enforce those requirements because a user can still go in and manually input an invalid value, like `11`. In its current state, this input won't provide any feedback to the user to indicate that the value they entered is not allowed because the input isn't part of a submittable form.
 
-Fortunately, we can still validate this input ourselves using very little JavaScript. Every HTML input element has a [`checkValidity` method](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/checkValidity) that returns `true` if the input's current value passes validation and `false` otherwise:
+Fortunately, we can still validate this input ourselves using very little JavaScript. Every HTML input element has a [`checkValidity` method](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/checkValidity) that returns `true` if the input's current value passes validation and `false` otherwise. We'll want to invoke this method whenever the input's [`change` event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event) fires, which signals that the user has committed the value for that input (either by blurring the input or pressing the Enter key):
 
 ```js {data-copyable=true}
 const input = document.querySelector('#input');
-input.addEventListener('input', (e) => {
+input.addEventListener('change', (e) => {
   const isValid = e.target.checkValidity();
   console.log(isValid);
 });
 ```
+
+{% aside %}
+  We could also do this on the `input` event, which fires whenever the input's value is altered. This is not recommended because intermediate values entered by a user are often invalid, so we'd end up showing the tooltip too frequently.
+{% endaside %}
 
 The browser validates the input behind the scenes by comparing the input's value to its constraints. In this example, those constraints are enforced by the `type`, `min`, `max`, and `step` attributes, effectively requiring that all inputs be even integers. If a user enters an invalid value, like `5`, the `checkValidity` method will return `false`.
 
@@ -59,7 +64,7 @@ For this task, HTML inputs provide us with the [`reportValidity` method](https:/
 
 ```js {data-copyable=true}
 const input = document.querySelector('#input');
-input.addEventListener('input', (e) => {
+input.addEventListener('change', (e) => {
   const isValid = e.target.checkValidity();
   if (!isValid) {
     e.target.reportValidity();
@@ -68,10 +73,6 @@ input.addEventListener('input', (e) => {
   }
 });
 ```
-
-{% aside %}
-  You'll want debounce the event listener to avoid reporting validity on every keystroke.
-{% endaside %}
 
 When invoked on an invalid input, `reportValidity` will:
 
@@ -84,7 +85,7 @@ Screen readers will narrate the alert correctly, and sighted users will see the 
 
 #### Communicating Input Validity with `aria-invalid`
 
-Using `reportValidity` provides the user with feedback in an accessible manner that screen readers recognize and narrate appropriately. But for the sake of completeness, we should also set the [`aria-invalid` attribute](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-invalid_attribute), which is used to convey an input's validity state. This is just a matter of setting the attribute on every `input` event, like this:
+Using `reportValidity` provides the user with feedback in an accessible manner that screen readers recognize and narrate appropriately. But for the sake of completeness, we should also set the [`aria-invalid` attribute](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-invalid_attribute), which is used to convey an input's validity state. This is just a matter of setting the attribute on every `change` event, like this:
 
 ```js {data-copyable=true}
 const isValid = e.target.checkValidity();
@@ -132,7 +133,7 @@ If a user enters numbers, the browser will only show a vague error message, like
 
 ```js {data-copyable=true}
 const input = document.querySelector('#letters-only');
-input.addEventListener('input', (e) => {
+input.addEventListener('change', (e) => {
   const isValid = e.target.checkValidity();
   e.target.setAttribute('aria-invalid', !isValid);
   if (e.target.validity.patternMismatch) {
@@ -164,26 +165,27 @@ Note that we need to clear the custom validity message if the input is valid, or
 
 ## Creating a Self-Validating Input Component
 
-All of the code that we looked at in this tutorial can be used in any JavaScript framework to provide feedback on input validity without a submittable form. But one of the great things about using a framework is that we can create a custom component to centralize and standardize all of this logic throughout our code base. More specifically, we can create an `Input` component that wraps the native `input`, accepts the same props, and checks the input's validity before invoking its `onChange` prop. Here's an example using React:
+All of the code that we looked at in this tutorial can be used in any JavaScript framework to provide feedback on input validity without a submittable form. But one of the great things about using a framework is that we can create a custom component to centralize and standardize all of this logic throughout our code base. More specifically, we can create an `Input` component that wraps the native `input`, accepts the same props, and checks the input's validity whenever it's blurred. Here's an example using React:
 
 ```jsx {data-file="Input.jsx" data-copyable=true}
 const Input = (props) => {
-  const { onChange, ...otherProps } = props;
+  const { onBlur, ...otherProps } = props;
   const [isValid, setIsValid] = useState(true);
 
-  const handleChange = (e) => {
-    const isValid = e.target.checkValidity();
-    setIsValid(isValid);
-    if (isValid) {
-      onChange?.(e);
-    } else {
+  const handleBlur = (e) => {
+    // Forwarded onBlur prop, in case consumers want to run extra logic
+    onBlur?.(e);
+    // Validation logic
+    const isValidValue = e.target.checkValidity();
+    setIsValid(isValidValue);
+    if (!isValidValue) {
       e.target.reportValidity();
     }
   };
 
   return (
     <input
-      onChange={handleChange}
+      onBlur={handleBlur}
       aria-invalid={!isValid}
       {...otherProps}
     />
@@ -191,43 +193,11 @@ const Input = (props) => {
 };
 ```
 
-The component intercepts the `onChange` prop and only ever calls it if the input is valid. It also maintains some local state for the validity so it can set the `aria-invalid` attribute accordingly.
+{% aside %}
+  **Note**: Due to a [long-standing bug](https://bugzilla.mozilla.org/show_bug.cgi?id=53579), this code may not work as expected in Firefox. The tooltip will be shown, but the errored input will not be refocused. The only known workaround is to manually refocus the blurred input in a `setTimeout` with a delay of `0`.
+{% endaside %}
 
-As I mentioned before, you'll probably want to debounce your input to avoid thrashing the browser with repeat updates on every keystroke. You can do this using any debounce function as well as a prop that controls the delay of the `onChange` event. You'll want to memoize this event handler so that it isn't reconstructed on every render; in React, we can do this with the `useMemo` hook. Here's the updated code:
-
-```jsx {data-file="Input.jsx" data-copyable=true}
-const Input = (props) => {
-  const { onChange, delayMilliseconds, ...otherProps } = props;
-  const [isValid, setIsValid] = useState(true);
-
-  const debouncedHandleChange = useMemo(
-    () => {
-      const handleChange = (e) => {
-        const isValid = e.target.checkValidity();
-        setIsValid(isValid);
-        if (isValid) {
-          onChange?.(e);
-        } else {
-          e.target.reportValidity();
-        }
-      };
-      if (delayMilliseconds === 0) {
-        return handleChange;
-      }
-      return debounce(handleChange, delayMilliseconds);
-    },
-    [delayMilliseconds]
-  );
-
-  return (
-    <input
-      onChange={debouncedHandleChange}
-      aria-invalid={!isValid}
-      {...otherProps}
-    />
-  );
-};
-```
+When a user commits the value for this input by attempting to blur it (like tabbing to another input in our form), we'll validate the value. If it's invalid, the input will be auto-focused and a tooltip will be shown to clarify what went wrong, per the default browser behavior for client-side validation. Our custom input element also maintains some local state for the validity so it can set the `aria-invalid` attribute accordingly.
 
 ## Summary
 
