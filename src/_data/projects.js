@@ -13,17 +13,20 @@ const repos = {
       });
       return icon;
     },
+    name: 'fluid-type-scale.com',
     url: 'https://www.fluid-type-scale.com/',
     repo: 'AleksandrHovhannisyan/fluid-type-scale-calculator',
     tech: ['nextjs', 'typescript', 'sass'],
   },
   scribe: {
     getIcon: () => '📄',
+    name: 'Scribe',
     repo: 'AleksandrHovhannisyan/Scribe-Text-Editor',
     tech: ['c++', 'qt5', 'qtcreator'],
   },
   usGunCrimes: {
     getIcon: () => '⚖️',
+    name: 'U.S. Gun Crimes',
     repo: 'CIS4301-Project-University-of-Florida/U.S.-Gun-Crime',
     tech: ['react', 'typescript', 'express', 'sql'],
   },
@@ -35,6 +38,7 @@ const repos = {
   },
   embody: {
     getIcon: () => '👻',
+    name: 'Embody',
     repo: 'cap4053-cheeky-pixels/EmbodyGame',
     tech: ['c#', 'unity', 'game-ai'],
   },
