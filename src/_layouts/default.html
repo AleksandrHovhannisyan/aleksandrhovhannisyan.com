@@ -108,6 +108,24 @@ eleventyComputed:
   <link rel="alternate" type="application/rss+xml" title="RSS Feed for aleksandrhovhannisyan.com" href="/feed.xml" />
   <noscript><style>#theme-toggle,.youtube-embed{display:none;}</style></noscript>
   <meta name="generator" content="{{ eleventy.generator }}">
+  {%- comment -%}Design mode. Only in a dev environment, and only if enabled in environment variables.{%- endcomment -%}
+  {%- if featureFlags.enableDesignMode -%}
+    <script>
+      (function() {
+        const DESIGN_MODE_STORAGE_KEY = 'design-mode';
+        const cachedDesignMode = localStorage.getItem(DESIGN_MODE_STORAGE_KEY);
+        document.designMode = cachedDesignMode;
+
+        document.addEventListener('keyup', (e) => {
+          if (e.ctrlKey && e.key === '.') {
+            const newDesignMode = document.designMode === 'on' ? 'off' : 'on';
+            document.designMode = newDesignMode;
+            localStorage.setItem(DESIGN_MODE_STORAGE_KEY, newDesignMode);
+          }
+        });
+      })();
+    </script>
+  {%- endif -%}
 </head>
 <body class="fs-base">
   {%- include navbar.html -%}

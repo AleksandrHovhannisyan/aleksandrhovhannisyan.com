@@ -31,7 +31,7 @@ eleventyComputed:
   </header>
   <div class="post-content rhythm prose">
     {{ content }}
-    {%- if commentsId and site.featureFlags.enableComments -%}
+    {%- if commentsId and featureFlags.enableComments -%}
       <section id="comments" class="stack gap-10" data-comments-id="{{ commentsId }}">
         <div class="stack gap-0">
           <div class="comment-actions flex flex-wrap align-center justify-between gap-0">

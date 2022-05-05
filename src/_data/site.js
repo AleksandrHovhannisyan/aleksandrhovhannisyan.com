@@ -1,5 +1,3 @@
-const { GITHUB_PERSONAL_ACCESS_TOKEN, ELEVENTY_ENV } = process.env;
-
 const environmentSpecificVariables = {
   development: {
     // FIXME: don't hardcode port
@@ -8,10 +6,6 @@ const environmentSpecificVariables = {
   production: {
     url: 'https://www.aleksandrhovhannisyan.com',
   },
-};
-
-const featureFlags = {
-  enableComments: !!GITHUB_PERSONAL_ACCESS_TOKEN,
 };
 
 module.exports = {
@@ -27,8 +21,5 @@ module.exports = {
   pagination: {
     itemsPerPage: 20,
   },
-  featureFlags: {
-    ...featureFlags,
-  },
-  ...environmentSpecificVariables[ELEVENTY_ENV],
+  ...environmentSpecificVariables[process.env.ELEVENTY_ENV],
 };
