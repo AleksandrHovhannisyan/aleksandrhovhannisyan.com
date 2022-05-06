@@ -5,6 +5,9 @@
 
 body {
   -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: var(--color-surface-1);
   color: var(--color-text-normal);
   padding-bottom: var(--navbar-height);

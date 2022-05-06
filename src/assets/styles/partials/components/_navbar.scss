@@ -25,6 +25,8 @@
   }
 
   &-header {
+    /* Body is a flex container. Without this, the navbar may shrink vertically due to the presence of a horizontal scrollbar. */
+    flex-shrink: 0;
     position: fixed;
     z-index: 1;
     bottom: 0;
