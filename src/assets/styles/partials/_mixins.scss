@@ -81,6 +81,9 @@
   --line-height: calc(2ex + #{to-rems(11px)});
   font-size: get-font-size($step);
   line-height: var(--line-height);
+  @if $step == "xxxl" {
+    letter-spacing: to-rems(-0.6px);
+  }
 }
 
 @mixin font-family($family) {
