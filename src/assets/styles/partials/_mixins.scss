@@ -70,10 +70,16 @@
   }
 }
 
-@mixin font-size($size) {
+/// Extends the font size utility class corresponding to the specified step.
+@mixin extended-font-size($step) {
+  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
+  @extend .#{get-custom-property-prefix("typeScale")}-#{$step};
+}
+
+@mixin font-size($step) {
   // expose CSS var to later compute other things, e.g., spacing
   --line-height: calc(2ex + #{to-rems(11px)});
-  font-size: font-size($size);
+  font-size: get-font-size($step);
   line-height: var(--line-height);
 }
 

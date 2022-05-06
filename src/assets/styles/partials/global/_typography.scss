@@ -29,25 +29,25 @@ figcaption {
 }
 
 h1 {
-  @include font-size("xxxl");
+  @include extended-font-size("xxxl");
 }
 
 h2 {
-  @include font-size("xxl");
+  @include extended-font-size("xxl");
 }
 
 h3 {
-  @include font-size("xl");
+  @include extended-font-size("xl");
 }
 
 h4 {
-  @include font-size("lg");
+  @include extended-font-size("lg");
 }
 
 h5 {
-  @include font-size("md");
+  @include extended-font-size("md");
 }
 
 h6 {
-  @include font-size("base");
+  @include extended-font-size("base");
 }
