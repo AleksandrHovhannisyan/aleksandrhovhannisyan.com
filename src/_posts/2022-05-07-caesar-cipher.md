@@ -2,7 +2,7 @@
 title: Implementing a Caesar Cipher
 description: The Caesar cipher is named after Roman emperor Julius Caesar, who used the technique to encrypt his military and political communication. Learn how to implement both a simple and keyed Caesar cipher in code.
 keywords: [caesar cipher, keyed caesar cipher]
-categories: [javascript, cryptography, security]
+categories: [javascript, cryptography, math, security]
 thumbnail:
   url: https://images.unsplash.com/photo-1648739614336-cf2ccf5634ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
