@@ -29,13 +29,13 @@ copyableCodeBlocks.forEach((codeBlock) => {
   copyCodeButton.innerText = copyToClipboardButtonStrings.default;
   copyCodeButton.setAttribute('aria-label', copyToClipboardButtonStrings.ariaLabel);
   copyCodeButton.type = 'button';
-  codeBlock.append(copyCodeButton);
+  codeBlock.parentElement.append(copyCodeButton);
 
   // Accessible alert whose inner text changes when we copy.
   const copiedAlert = document.createElement('span');
   copiedAlert.setAttribute('role', 'alert');
   copiedAlert.classList.add('screen-reader-only');
-  codeBlock.append(copiedAlert);
+  codeBlock.parentElement.append(copiedAlert);
 
   copyCodeButton.addEventListener('click', () => {
     window.navigator.clipboard.writeText(code);
