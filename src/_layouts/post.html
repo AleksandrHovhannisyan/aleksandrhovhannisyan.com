@@ -15,7 +15,7 @@ eleventyComputed:
       crossorigin: true
 ---
 
-<article class="stack gap-5">
+<article class="stack gap-6">
   <header class="post-header">
     <div class="post-meta-date">{% include date.html date: page.date, dateFormat: "MMM DD, YYYY" %}{%- if lastUpdated -%}&nbsp;(Last updated:&nbsp;{% include date.html date: lastUpdated, dateFormat: "MMM DD, YYYY" %}){%- endif -%}</div>
     <h1 class="post-title">{{ title }}</h1>
