@@ -159,7 +159,7 @@ html {
 ```
 
 {% aside %}
-  In reality, you'd want to use rems for font sizes and line heights to [respect users' font size preferences](/blog/respecting-font-size-preferences-rems-62-5-percent/). I used pixels to keep this tutorial simple.
+  In reality, you'd want to use rems for font sizes and line heights to [respect users' font size preferences](/blog/use-rems-for-font-size/). I used pixels to keep this tutorial simple.
 {% endaside %}
 
 Notice how the absolute line height increases as you move up the scale, but the ratio between the line height and font size decreases. In other words, they're getting closer to each other. As I mentioned earlier, this is easier to spot with unitless line heights:
