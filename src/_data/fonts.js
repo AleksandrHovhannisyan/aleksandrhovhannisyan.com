@@ -3,8 +3,10 @@ const fontPath = `/assets/fonts`;
 
 const FontWeight = {
   REGULAR: 'regular',
+  ITALIC: 'italic',
   MEDIUM: 'medium',
   BOLD: 'bold',
+  BOLDITALIC: 'boldItalic',
 };
 
 const FontVariant = {
@@ -31,65 +33,62 @@ const getFontUrl = (src) => path.join(fontPath, src);
 /** Global font config. Gets compiled into font face declarations and can be reused anywhere to access font info. */
 const fonts = {
   body: {
-    family: 'Georgia',
-    fallbacks: ['serif'],
-    hasFontFace: false,
+    family: 'Source Sans Pro',
+    fallbacks: ['system-ui', 'sans-serif'],
     weights: {
       [FontWeight.REGULAR]: {
         variant: FontVariant.REGULAR,
         weight: 400,
         style: FontStyle.NORMAL,
+        url: getFontUrl('source-sans-pro-latin-regular.woff2'),
+        display: FontDisplay.SWAP,
+      },
+      [FontWeight.ITALIC]: {
+        variant: FontVariant.Italic,
+        weight: 400,
+        style: FontStyle.ITALIC,
+        url: getFontUrl('source-sans-pro-latin-italic.woff2'),
+        display: FontDisplay.SWAP,
       },
       [FontWeight.BOLD]: {
         variant: FontVariant.BOLD,
         weight: 700,
         style: FontStyle.NORMAL,
-      },
-    },
-  },
-  title: {
-    family: 'Lato',
-    fallbacks: [`Georgia`, `serif`],
-    weights: {
-      [FontWeight.REGULAR]: {
-        variant: FontVariant.REGULAR,
-        weight: 400,
-        style: FontStyle.NORMAL,
-        url: getFontUrl('lato-v20-latin-regular.woff2'),
+        url: getFontUrl('source-sans-pro-latin-700.woff2'),
         display: FontDisplay.SWAP,
       },
-      [FontWeight.BOLD]: {
-        variant: FontVariant.BOLD,
-        weight: 900,
-        style: FontStyle.NORMAL,
-        url: getFontUrl('lato-v20-latin-900.woff2'),
+      [FontWeight.BOLDITALIC]: {
+        variant: FontVariant.BOLDITALIC,
+        weight: 700,
+        style: FontStyle.ITALIC,
+        url: getFontUrl('source-sans-pro-latin-700italic.woff2'),
         display: FontDisplay.SWAP,
       },
     },
   },
   code: {
-    family: 'IBM Plex Mono',
+    family: 'Source Code Pro',
     fallbacks: [`Monaco`, `Consolas`, `Courier New`, `monospace`],
     weights: {
       [FontWeight.REGULAR]: {
         variant: FontVariant.REGULAR,
         weight: 400,
         style: FontStyle.NORMAL,
-        url: getFontUrl('ibm-plex-mono-v7-latin-regular.woff2'),
+        url: getFontUrl('source-code-pro-latin-regular.woff2'),
         display: FontDisplay.SWAP,
       },
       [FontWeight.MEDIUM]: {
         variant: FontVariant.MEDIUM,
         weight: 500,
         style: FontStyle.NORMAL,
-        url: getFontUrl('ibm-plex-mono-v7-latin-500.woff2'),
+        url: getFontUrl('source-code-pro-latin-500.woff2'),
         display: FontDisplay.SWAP,
       },
       [FontWeight.BOLD]: {
         variant: FontVariant.BOLD,
         weight: 700,
         style: FontStyle.NORMAL,
-        url: getFontUrl('ibm-plex-mono-v7-latin-700.woff2'),
+        url: getFontUrl('source-code-pro-latin-700.woff2'),
         display: FontDisplay.SWAP,
       },
     },

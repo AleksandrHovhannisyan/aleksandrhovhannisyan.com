@@ -18,14 +18,7 @@ strong {
 
 :is(h1, h2, h3, h4, h5, h6, label, th) {
   color: var(--color-text-emphasis);
-  @include heading;
-}
-
-button,
-.button,
-figcaption {
-  @include font-family("title");
-  @include font-weight("title", "regular");
+  @include font-weight("body", "bold");
 }
 
 h1 {

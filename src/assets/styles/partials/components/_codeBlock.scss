@@ -45,9 +45,8 @@ pre[class*="language-"] {
         color: var(--color-code-text);
         word-break: break-all;
         padding: $code-block-padding $code-block-padding 0;
-        @include font-family("title");
-        @include font-weight("title", "bold");
-        @include font-size("sm");
+        @include font-family("body");
+        @include font-weight("body", "bold");
       }
     }
   }
@@ -147,6 +146,8 @@ pre[class*="language-bash"] {
   background-color: var(--color-code-overlay-1);
   padding: spacing(-2) spacing(0);
   border-radius: spacing(-3);
+  @include font-family("body");
+  @include font-weight("body", "regular");
 
   &:is(.copied, :focus) {
     opacity: 1;

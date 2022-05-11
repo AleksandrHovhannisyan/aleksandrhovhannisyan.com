@@ -454,7 +454,6 @@ Hopefully, you now have a better understanding of how to define responsive aspec
     position: relative;
     background-color: var(--color-surface-3);
     color: var(--color-text-emphasis);
-    font-weight: var(--fw-bold);
     border-radius: var(--sp--3);
   }
   .demo-tile::after {
