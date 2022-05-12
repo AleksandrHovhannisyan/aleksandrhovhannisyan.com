@@ -4,15 +4,14 @@
   display: grid;
   grid-template-areas:
     "thumbnail"
+    "meta"
     "title"
-    "description"
-    "tags";
+    "description";
 
   &-thumbnail-container {
     display: flex;
     grid-area: thumbnail;
     user-select: none;
-    margin-bottom: spacing(0);
   }
 
   &-thumbnail {
@@ -36,26 +35,32 @@
 
   &-description {
     grid-area: description;
-    margin-bottom: spacing(0);
+  }
+
+  &-meta {
+    grid-area: meta;
+    margin-block: spacing(-1);
   }
 
   &-date {
     display: none;
   }
 
-  &-tags {
-    grid-area: tags;
+  @include mobile-lg {
+    &-date {
+      display: unset;
+    }
   }
 
   @include tablet {
     & {
-      grid-template-columns: min-content min-content auto;
+      grid-template-columns: min-content auto;
       column-gap: spacing(-1);
       row-gap: spacing(-4);
       grid-template-areas:
-        "thumbnail date tags"
-        "thumbnail title title"
-        "thumbnail description description";
+        "thumbnail meta"
+        "thumbnail title"
+        "thumbnail description";
     }
 
     & > * {
@@ -78,15 +83,6 @@
 
     &-title {
       @include font-size("md");
-    }
-
-    &-date {
-      display: unset;
-    }
-
-    &-date,
-    &-tags {
-      @include font-size("sm");
     }
   }
 }
