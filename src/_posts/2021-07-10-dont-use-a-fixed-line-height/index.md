@@ -3,7 +3,7 @@ title: Don't Use a Fixed Line Height
 description: In typography, the ideal line height for text depends on a variety of factors, including font size, line length, and font family.
 keywords: [line height, ideal line height, typography]
 categories: [css, sass, typography, accessibility]
-thumbnail: thumbnail.jpg
+thumbnail: ./images/thumbnail.jpg
 lastUpdated: 2021-08-17
 commentsId: 96
 ---
@@ -67,11 +67,11 @@ Unitless line heights are **inversely related** to font size. As the rendered fo
 
 Let's look at an example. Imagine that we have a `48px` heading that uses the same `1.6` unitless line height as the body text. Thus, it has a rendered line height of `76.8px`. This creates too much spacing between lines, making the heading difficult to read:
 
-{% include img.html src: "too-much-line-height.png", alt: "A sample paragraph with a large heading rendered above it at 48px size and with a line height of 1.6. The body font also has a line height of 1.6 but a smaller font size. The heading is uncomfortable to read.", caption: "The gap is too big between adjacent lines of heading text, creating a visual imbalance." %}
+{% include img.html src: "./images/too-much-line-height.png", alt: "A sample paragraph with a large heading rendered above it at 48px size and with a line height of 1.6. The body font also has a line height of 1.6 but a smaller font size. The heading is uncomfortable to read.", caption: "The gap is too big between adjacent lines of heading text, creating a visual imbalance." %}
 
 So while the rendered line height for this font size does in fact need to be greater than the rendered line height for body text, the *ratio* needs to decrease to tighten the gap and improve readability. For this particular font, we might opt for a unitless line height of `1.2`. That gives us a rendered line height of `57.6px`. In absolute terms, this is still larger than the body's line height, but the ratio has decreased, making the heading easier to read:
 
-{% include img.html src: "right-line-height.png", alt: "A sample paragraph with a large heading rendered above it at 48px size and with a line height of 1.2. The heading is now much easier to read.", caption: "Takeaway: At larger font sizes, unitless line heights need to decrease to maintain readability." %}
+{% include img.html src: "./images/right-line-height.png", alt: "A sample paragraph with a large heading rendered above it at 48px size and with a line height of 1.2. The heading is now much easier to read.", caption: "Takeaway: At larger font sizes, unitless line heights need to decrease to maintain readability." %}
 
 #### Absolute vs. Unitless Line Height: Which Should You Use?
 

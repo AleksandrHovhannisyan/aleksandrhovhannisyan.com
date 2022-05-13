@@ -96,7 +96,7 @@ Making atomic commits is a good practice, but you'll also want to write meaningf
 
 Here's an example from the TypeScript repo of what that last tip might look like in practice:
 
-{% include img.html src: "typescript-repo.png", alt: "The TypeScript repository on GitHub, with the main view of folders, the recent commits that changed them, and basic information about the repository. Some commits mention issues, which get hyperlinked automatically.", caption: "Some commits mention issues, which get hyperlinked automatically." %}
+{% include img.html src: "./images/typescript-repo.png", alt: "The TypeScript repository on GitHub, with the main view of folders, the recent commits that changed them, and basic information about the repository. Some commits mention issues, which get hyperlinked automatically.", caption: "Some commits mention issues, which get hyperlinked automatically." %}
 
 And that's really all there is to say about this. Some teams enforce other conventions, too, like prefixing each commit with its type (e.g., `fix:`, `doc:`, etc.). It all depends on what works well for you and your developers.
 

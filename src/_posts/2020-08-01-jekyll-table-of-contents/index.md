@@ -4,7 +4,7 @@ description: Easily create a table of contents in your Jekyll blog posts with on
 keywords: [jekyll table of contents]
 categories: [jekyll, accessibility]
 commentsId: 50
-thumbnail: thumbnail.png
+thumbnail: ./images/thumbnail.png
 ---
 
 Alright, let's cut to the chase: You want to create a table of contents in Jekyll, but you don't want to put in the effort to do it. Plus, you want to make things accessible for keyboard users so they don't have to tab through links just to get to your content. You can try this out below (click somewhere here on this text and then press tab!).

@@ -5,7 +5,7 @@ keywords: [responsive navbar]
 categories: [html, css, javascript]
 commentsId: 28
 lastUpdated: 2021-09-18
-thumbnail: thumbnail.png
+thumbnail: ./images/thumbnail.png
 ---
 
 Navigation bars (also known as _navbars_) are practically everywhere on modern websites, so it's good to know how to create one by hand without relying on a component library that does all of the heavy lifting for you. But if you've never created a navbar from scratch, you may find it intimidating to get started.
@@ -88,11 +88,11 @@ Before I vomit a bunch of CSS on your screen and leave you clueless as to what's
 
 First up, we're using a `<header>` landmark element with an ID of `navbar` as the outermost parent:
 
-{% include img.html src: "header.png", alt: "A header element" %}
+{% include img.html src: "./images/header.png", alt: "A header element" %}
 
 Inside of that is a nested `<nav>` landmark element, which signals the start of a navigation menu to screen readers and browsers. This container's main purpose is to align the left and right ends of our navbar with the page's left and right margins. This assumes that the page content itself is also wrapped with a `.container` for horizontal centering.
 
-{% include img.html src: "nav.png", alt: "A nav landmark element with left and right padding and auto margins" %}
+{% include img.html src: "./images/nav.png", alt: "A nav landmark element with left and right padding and auto margins" %}
 
 As you may have probably guessed, this is a flex container. It has three children:
 
@@ -102,17 +102,17 @@ As you may have probably guessed, this is a flex container. It has three childre
 
 Let's take a closer look at that last element:
 
-{% include img.html src: "navbar-menu.png", alt: "The navbar-menu fixed wrapper" %}
+{% include img.html src: "./images/navbar-menu.png", alt: "The navbar-menu fixed wrapper" %}
 
 This wrapper is given a fixed position and covers the entire screen. It also has a semi-transparent background that elevates it visually above the main content of the page. In some UI libraries, this is known as a **mask layer**. It's a common approach used with things like modal windows and menus.
 
 Within `#navbar-menu` is an unordered list with some padding, margins, and a box shadow:
 
-{% include img.html src: "navbar-links.png", alt: "The navbar-links unordered list element" %}
+{% include img.html src: "./images/navbar-links.png", alt: "The navbar-links unordered list element" %}
 
 And finally, that list houses the actual navigation links:
 
-{% include img.html src: "navbar-link.png", alt: "A navigation bar link being inspected in Chrome dev tools" %}
+{% include img.html src: "./images/navbar-link.png", alt: "A navigation bar link being inspected in Chrome dev tools" %}
 
 That's it! When we hit the `700px` breakpoint, our media query kicks in and styles the desktop navbar. This media query was determined based on the number of navbar links in this particular setup. If you have more content, you may wish to adjust this breakpoint.
 
@@ -179,7 +179,7 @@ Alright, time to actually style our responsive navbar. We'll work in a top-down 
 
 **Result**:
 
-{% include img.html src: "step1.png", alt: "A black, horizontal navigation bar is positioned at the top of a blank white page. Some blue links overflow vertically on its left-hand side." %}
+{% include img.html src: "./images/step1.png", alt: "A black, horizontal navigation bar is positioned at the top of a blank white page. Some blue links overflow vertically on its left-hand side." %}
 
 Why we need the CSS variable will become obvious later on. The entire element is given a fixed position so it sticks to the top of the page as the user scrolls. It's also given a slight box shadow. Don't worry about the fact that the links are currently overflowing their parent; we'll fix this soon enough.
 
@@ -196,7 +196,7 @@ Moving on, we have the nested container element:
 
 **Result**:
 
-{% include img.html src: "step2.png", alt: "A black, horizontal navigation bar is positioned at the top of a blank white page. A purple link reads Website Name on the left-hand side; on the right side are some blue-colored vertically overflowing links, rendered with visible bullet points." %}
+{% include img.html src: "./images/step2.png", alt: "A black, horizontal navigation bar is positioned at the top of a blank white page. A purple link reads Website Name on the left-hand side; on the right side are some blue-colored vertically overflowing links, rendered with visible bullet points." %}
 
 As I mentioned earlier, this is simply a flex container. We use `justify-content: space-between` to position the home link and hamburger icon on opposite ends of the navbar. But right now, it's positioning all three children: the home link, the hamburger button, and the navigation links themselves; we'll fix this shortly.
 
@@ -236,7 +236,7 @@ Next up is some general styling for the navbar anchors:
 
 **Result**:
 
-{% include img.html src: "step3.png", alt: "A black, horizontal navigation bar is positioned at the top of a blank white page. A white link reads Website Name on the left-hand side; on the right side are some white-colored vertically overflowing links, rendered with visible bullet points." %}
+{% include img.html src: "./images/step3.png", alt: "A black, horizontal navigation bar is positioned at the top of a blank white page. A white link reads Website Name on the left-hand side; on the right side are some white-colored vertically overflowing links, rendered with visible bullet points." %}
 
 Pretty straightforward.
 
@@ -254,7 +254,7 @@ Here's the CSS for the website logo. Note that this is just a placeholder for my
 
 **Result**:
 
-{% include img.html src: "step4.png", alt: "A black, horizontal navigation bar is positioned at the top of a blank white page. A white link reads Website Name on the left-hand side. To its immediate left is a white circle that serves as a logo placeholder." %}
+{% include img.html src: "./images/step4.png", alt: "A black, horizontal navigation bar is positioned at the top of a blank white page. A white link reads Website Name on the left-hand side. To its immediate left is a white circle that serves as a logo placeholder." %}
 
 Time for the toggle button!
 
@@ -321,7 +321,7 @@ Here's the CSS for the icon bars:
 
 **Result**:
 
-{% include img.html src: "step5.png", alt: "A black, horizontal navigation bar is positioned at the top of a blank white page. A hamburger toggle button is visible in the center, with three horizontal bars stacked on top of each other with some spacing in between." %}
+{% include img.html src: "./images/step5.png", alt: "A black, horizontal navigation bar is positioned at the top of a blank white page. A hamburger toggle button is visible in the center, with three horizontal bars stacked on top of each other with some spacing in between." %}
 
 There are lots of ways to do this, but I think this is the most straightforward to understand. I'm sure you can take advantage of pseudo-elements instead or just [draw an SVG](/blog/svg-tutorial-how-to-code-svg-icons-by-hand/).
 
@@ -394,7 +394,7 @@ As I mentioned earlier, the navigation menu wrapper has fixed positioning, with 
 
 **Result**:
 
-{% include img.html src: "step6.png", alt: "A black, horizontal navigation bar is positioned at the top of a blank white page. The only visible elements are the home link and a hamburger toggle button, positioned on opposite ends horizontally." %}
+{% include img.html src: "./images/step6.png", alt: "A black, horizontal navigation bar is positioned at the top of a blank white page. The only visible elements are the home link and a hamburger toggle button, positioned on opposite ends horizontally." %}
 
 While `opacity: 0` and `visibility: hidden` may seem redundant, it's a good practice to apply both if you want to animate the menu's visibility later with the `transition` property. I've omitted transition styles from this tutorial, but you can add them if you'd like.
 
@@ -410,7 +410,7 @@ Below is the CSS for the menu's open state; we style it based on whether it's a 
 
 Click the hamburger icon to see the following result:
 
-{% include img.html src: "step7.png", alt: "Navigation menu in its opened state, with links visible below the navigation bar against a semi-transparent background" %}
+{% include img.html src: "./images/step7.png", alt: "Navigation menu in its opened state, with links visible below the navigation bar against a semi-transparent background" %}
 
 The container for the navigation links is an unordered list:
 
@@ -436,7 +436,7 @@ The container for the navigation links is an unordered list:
 
 **Result**:
 
-{% include img.html src: "step8.png", alt: "Styled navigation link container, with a background color matching the main navigation bar." %}
+{% include img.html src: "./images/step8.png", alt: "Styled navigation link container, with a background color matching the main navigation bar." %}
 
 This is the actual, physical "menu" part of our navigation. The margin ensures that the menu appears detached from the rest of the navbar, as if it's floating on the page. If instead you'd like it to appear as a physical extension of the navigation bar, simply get rid of the margin and border radius and shift the shadow down:
 
@@ -456,7 +456,7 @@ This is the actual, physical "menu" part of our navigation. The margin ensures t
 
 **Result**:
 
-{% include img.html src: "attached-menu.png", alt: "An attached navigation menu that's been opened, with links positioned immediately below the navigation bar itself." %}
+{% include img.html src: "./images/attached-menu.png", alt: "An attached navigation menu that's been opened, with links positioned immediately below the navigation bar itself." %}
 
 And that's it for the mobile version's CSS!
 
@@ -517,7 +517,7 @@ So first up is this:
 
 **Result**:
 
-{% include img.html src: "step9.png", alt: "Styled navbar with no visible elements except for the home link and the logo." %}
+{% include img.html src: "./images/step9.png", alt: "Styled navbar with no visible elements except for the home link and the logo." %}
 
 We don't want the hamburger button to be visible on desktop, so we hide it with `display: none`.
 
@@ -552,7 +552,7 @@ And finally, `.navbar-links` now uses a flex direction of `row` instead of `colu
 
 **Result**:
 
-{% include img.html src: "step10.png", alt: "Fully styled desktop version of the navbar, with links positioned in a horizontal layout towards the right-hand side." %}
+{% include img.html src: "./images/step10.png", alt: "Fully styled desktop version of the navbar, with links positioned in a horizontal layout towards the right-hand side." %}
 
 We're officially done! But you may be wondering if there's room for customization—there sure is!
 

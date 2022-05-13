@@ -148,7 +148,7 @@ Now that we know how Netlify functions work, we can start writing some real logi
 
 To get started, you'll want to head over to your GitHub profile, go to `Settings > Developer settings`, and [create a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) for basic API authentication.
 
-{% include img.html src: "github-settings.png", alt: "The GitHub settings page for creating a personal access token. The UI is split into different areas; at the bottom is a list of checkboxes for different permissions that can be enabled.", baseFormat: "png" %}
+{% include img.html src: "./images/github-settings.png", alt: "The GitHub settings page for creating a personal access token. The UI is split into different areas; at the bottom is a list of checkboxes for different permissions that can be enabled.", baseFormat: "png" %}
 
 You don't need to check any of the scopes since this token is only needed for basic API authentication, not for performing other actions related to your GitHub account. You can also set the personal access token's expiration to be whatever you want. Be sure to copy the access token after you create it so you can add it to your local and Netlify production environment variables in the next step.
 
@@ -176,7 +176,7 @@ To authenticate production API requests, you can [import environment variables f
 
 Go to your Netlify UI dashboard and find `Settings > Build & Deploy > Environment`. Under the Environment Variables section, create a new variable for your GitHub access token, just like you did locally (use the same name):
 
-{% include img.html src: "environment-variables.png", alt: "The Netlify settings page for creating environment variables. Variables are listed in a two-column table layout. The first column shows the variable name; the second shows its value. Two variables are shown: GITHUB_PERSONAL_ACCESS_TOKEN and AWS_LAMBDA_JS_RUNTIME.", baseFormat: "png" %}
+{% include img.html src: "./images/environment-variables.png", alt: "The Netlify settings page for creating environment variables. Variables are listed in a two-column table layout. The first column shows the variable name; the second shows its value. Two variables are shown: GITHUB_PERSONAL_ACCESS_TOKEN and AWS_LAMBDA_JS_RUNTIME.", baseFormat: "png" %}
 
 Note that any environment variables you configure on Netlify will remain private; they won't appear in deploy logs or previews unless you print them and make your deploy logs public. You'll want to double-check that your Sensitive Variable Policy is set to `Require approval`. You can find this directly below the Environment Variables section.
 
@@ -235,7 +235,7 @@ if (remainingCalls === 0) {
 
 We're also logging the number of requests remaining so we can check in on this from time to time in our Netlify dashboard under the `Functions` tab, where you can see real-time requests for your deployed functions:
 
-{% include img.html src: "function-calls.png", alt: "A series of logs displayed vertically in tabular format, with timestamps in the first column, request IDs in the second column, and a console message that reads 'GitHub API requests remaining' followed by a number. There are 4 logs in total; the number starts at 5000 and decreases to 4997 by the end of the snapshot.", baseFormat: "png" %}
+{% include img.html src: "./images/function-calls.png", alt: "A series of logs displayed vertically in tabular format, with timestamps in the first column, request IDs in the second column, and a console message that reads 'GitHub API requests remaining' followed by a number. There are 4 logs in total; the number starts at 5000 and decreases to 4997 by the end of the snapshot.", baseFormat: "png" %}
 
 Locally, you'll see messages get logged in your `netlify dev` server in your terminal. At this point, you can test that the correct value is getting logged for the number of requests remaining (it should start at `5000` if you have not yet made any API calls).
 

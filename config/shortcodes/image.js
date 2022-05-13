@@ -1,9 +1,8 @@
 const Image = require('@11ty/eleventy-img');
 const { outdent } = require('outdent');
-const path = require('path');
 const { escape } = require('lodash');
-const { dir } = require('../constants');
-const { stringifyAttributes, parseImage } = require('../utils');
+const { dir, imagePaths } = require('../constants');
+const { stringifyAttributes } = require('../utils');
 
 const imageShortcode = async (props) => {
   const {
@@ -11,7 +10,7 @@ const imageShortcode = async (props) => {
     alt = '',
     baseFormat = 'jpeg',
     optimizedFormats = ['webp'],
-    widths = [400, 800],
+    widths = [400, 800], // Default widths for the most common use case (post images)
     sizes = '100vw',
     className,
     imgClass,
@@ -19,19 +18,17 @@ const imageShortcode = async (props) => {
     lazy = true,
   } = props ?? {};
 
-  const image = parseImage(src);
-
   const imageOptions = {
     // Always include the original image width in the output
     widths: [null, ...widths],
     // List optimized formats before the base format so that the output contains webp sources before jpegs.
     formats: [...optimizedFormats, baseFormat],
-    // Where the generated image files get saved
-    outputDir: path.join(dir.output, image.dir),
-    // Public URL path that's referenced in the img tag's src attribute
-    urlPath: image.dir,
+    // Where the generated image files get saved (e.g., _site/assets/images/*)
+    outputDir: imagePaths.output,
+    // Public URL path that's referenced in the img tag's src attribute (e.g., /assets/images/*)
+    urlPath: imagePaths.output.replace(dir.output, ''),
   };
-  const imageMetadata = await Image(image.src, imageOptions);
+  const imageMetadata = await Image(src, imageOptions);
 
   // Map each unique format (e.g., jpeg, webp) to its various sizes
   const formatSizes = Object.entries(imageMetadata).reduce((formatSizes, [format, images]) => {

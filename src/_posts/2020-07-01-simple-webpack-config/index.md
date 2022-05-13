@@ -3,7 +3,7 @@ title: A Simple Webpack Config
 description: Webpack is one of the most popular code bundlers available. Here's a simple webpack config to bundle your JavaScript.
 keywords: [simple webpack config]
 categories: [webpack, javascript]
-thumbnail: thumbnail.png
+thumbnail: ./images/thumbnail.png
 ---
 
 Let's assume your directory structure looks like this for a JavaScript project:

@@ -7,6 +7,8 @@ excludeFromSitemap: true
 /blog/dev/* /blog/:splat
 /blog/computer-science/* /blog/:splat
 /blog/off-topic/* /blog/:splat
+{%- comment -%}Old image structure, where blog post images were dumped into a folder of the same name as the post slug itself.{%- endcomment -%}
+/assets/images/posts/:slug/*  /assets/images/:splat
 {%- comment -%}Per-page redirects (e.g., if a page gets indexed but I want to change its URL).{%- endcomment -%}
 {%- for page in collections.all -%}
   {%- if page.url and page.data.redirectFrom -%}

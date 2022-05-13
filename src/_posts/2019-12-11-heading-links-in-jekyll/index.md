@@ -5,7 +5,7 @@ keywords: [heading links in jekyll]
 categories: [liquid, jekyll]
 lastUpdated: 2020-05-24
 commentsId: 42
-thumbnail: thumbnail.png
+thumbnail: ./images/thumbnail.png
 ---
 
 It's a common practice in blogs to link your headings; this makes it easier for users to share a specific part of your content without having to share the entire post's URL.

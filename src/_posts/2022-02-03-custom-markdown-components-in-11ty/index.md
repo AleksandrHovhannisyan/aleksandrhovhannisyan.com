@@ -3,7 +3,7 @@ title: Custom Markdown Components in 11ty
 description: Ever wanted to nest Markdown in HTML? In 11ty, you can easily do this with paired shortcodes and a custom Markdown library parser.
 keywords: [11ty, paired shortcodes, markdown, html]
 categories: [11ty, markdown, javascript]
-thumbnail: thumbnail.png
+thumbnail: ./images/thumbnail.png
 ---
 
 Like many static site generators, 11ty automatically converts Markdown templates to HTML, allowing you to focus on authoring content in a plaintext format. Unfortunately, the standard Markdown language only supports a limited number of shortcuts—anything custom is going to require that you write HTML by hand or extend the parser with a plugin.

@@ -3,7 +3,7 @@ title: Configuring Web Fonts in 11ty with Global Data
 description: Rather than using static font-face declarations for web fonts, you can take advantage of global data in 11ty to create a single source of truth for fonts and reuse those values in your templates and CSS.
 keywords: [11ty, web fonts, font]
 categories: [11ty, css, typography, liquid]
-thumbnail: thumbnail.png
+thumbnail: ./images/thumbnail.png
 commentsId: 120
 ---
 

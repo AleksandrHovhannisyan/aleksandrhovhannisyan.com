@@ -4,7 +4,7 @@ description: Learn how to easily test localhost on mobile using ngrok, without d
 keywords: [test localhost on mobile]
 categories: [ngrok, testing, mobile]
 commentsId: 47
-thumbnail: thumbnail.png
+thumbnail: ./images/thumbnail.png
 ---
 
 Long ago, mobile-first development was a fancy new trend on the horizon of web development. Now, it's practically the industry standard. It's no secret that [Google uses mobile-first indexing](https://developers.google.com/search/mobile-sites/mobile-first-indexing), and mobile has consistently accounted for [nearly 50% of global web traffic](https://www.statista.com/statistics/277125/share-of-website-traffic-coming-from-mobile-devices/#:~:text=Mobile%20accounts%20for%20approximately%20half,since%20the%20beginning%20of%202017.) since 2017.
@@ -44,11 +44,11 @@ And just replace `portNumber` with your port (e.g., `3000`).
 
 Once ngrok starts up, you'll see your HTTP and HTTPS endpoints and the localhost variants that they point to. Now, simply navigate to either one of these public URLs.
 
-{% include img.html src: "ngrok.png", alt: "Running the ngrok process in a terminal." %}
+{% include img.html src: "./images/ngrok.png", alt: "Running the ngrok process in a terminal." %}
 
 To view the URL on mobile, you can certainly just type it out. However, if you're logged in to Chrome with your Google account, you can simply right-click the page and choose `Send to [your phone]`:
 
-{% include img.html src: "send-to-phone.png", alt: "Right-clicking a page in Google Chrome to send it to your phone." %}
+{% include img.html src: "./images/send-to-phone.png", alt: "Right-clicking a page in Google Chrome to send it to your phone." %}
 
 ## Sharing Localhost with Other Developers
 
@@ -64,7 +64,7 @@ As before, replace `portNumber` with your own. Be sure to also replace `user` an
 
 This time, when you or someone else visit one of the endpoints, you'll be prompted to enter the username and password that were set:
 
-{% include img.html src: "auth.png", alt: "Ngrok authentication with a prompt for a username and password." %}
+{% include img.html src: "./images/auth.png", alt: "Ngrok authentication with a prompt for a username and password." %}
 
 So here, you'd type `user` and `password`.
 

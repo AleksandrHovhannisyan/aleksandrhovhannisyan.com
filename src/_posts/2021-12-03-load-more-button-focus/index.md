@@ -3,7 +3,7 @@ title: Keeping Focus in Place with Load-More Buttons
 description: Load-more buttons are more accessible than infinite scrolling, but they also steal keyboard focus when new content loads in. We can fix this problem by manually focusing the first newly inserted result.
 keywords: [load more, load more button, infinite scrolling]
 categories: [accessibility, javascript, react]
-thumbnail: thumbnail.png
+thumbnail: ./images/thumbnail.png
 commentsId: 125
 lastUpdated: 2022-03-24
 ---

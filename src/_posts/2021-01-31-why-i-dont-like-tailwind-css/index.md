@@ -6,7 +6,7 @@ categories: [css, tailwind, frameworks]
 lastUpdated: 2021-12-18
 commentsId: 77
 isFeatured: true
-thumbnail: thumbnail.png
+thumbnail: ./images/thumbnail.png
 ---
 
 {% aside %}
@@ -92,7 +92,7 @@ Another reason why Tailwind is so hard to read is because it requires you to pan
 
 If you think I'm exaggerating and that it can't get much worse than this in practice, here's a real example from Netlify's admin dashboard:
 
-{% include img.html src: "netlify-input.jpg", alt: "Inspecting a checkbox in the Netlify UI via dev tools reveals an input with a massive string of class names spanning over 13 lines.", caption: "That's **71 class names** just to style a checkbox." %}
+{% include img.html src: "./images/netlify-input.jpg", alt: "Inspecting a checkbox in the Netlify UI via dev tools reveals an input with a massive string of class names spanning over 13 lines.", caption: "That's **71 class names** just to style a checkbox." %}
 
 Unfortunately, ESLint/Prettier won't even properly format your classes or push them onto a new line—they'll just push the `className` prop down, but the string itself could go on forever. This may force you to scroll your editor horizontally to view the full list of classes. Tailwind's own documentation suffers from this very problem—many code blocks overflow horizontally and force you to scroll to find the relevant class in a sea of strings
 

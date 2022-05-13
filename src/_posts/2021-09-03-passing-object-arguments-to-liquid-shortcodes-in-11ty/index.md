@@ -3,7 +3,7 @@ title: Passing Object Arguments to Liquid Shortcodes in 11ty
 description: Currently, 11ty doesn't allow you to pass object arguments to shortcodes in Liquid. As a temporary workaround, you can assemble and parse a JSON string to pass along to the shortcode as an argument.
 keywords: [object argument, 11ty, liquid, shortcode]
 categories: [11ty, liquid, javascript]
-thumbnail: thumbnail.jpg
+thumbnail: ./images/thumbnail.jpg
 lastUpdated: 2022-03-17
 commentsId: 107
 ---

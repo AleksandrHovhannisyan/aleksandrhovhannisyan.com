@@ -3,7 +3,7 @@ title: Automate Netlify Redirects with 11ty
 description: Tired of listing all of your Netlify redirects by hand? Generate them programmatically with a bit of 11ty templating magic!
 keywords: [netlify redirects, 11ty, eleventy]
 categories: [11ty, netlify, liquid, seo]
-thumbnail: thumbnail.jpg
+thumbnail: ./images/thumbnail.jpg
 commentsId: 105
 ---
 

@@ -1,5 +1,5 @@
-{%- comment -%}Img shortcode for markdown posts. Automatically derive the file path so we can be lazy and specify just the image name as the src.{%- endcomment -%}
-{%- assign imageSrc = '/assets/images/posts/' | append: page.fileSlug | append: '/' | append: src -%}
+{%- assign normalizedImagePath = src | replace: './', '/' -%}
+{%- assign imageSrc = 'src/' | append: page.filePathStem | replace: '/index', '' | append: normalizedImagePath  -%}
 {%- comment -%}To prevent weird layout bugs, specifically with linked images, wrap images in markdown with a tag.{%- endcomment -%}
 <figure class="full-bleed prose stack gap--2">
 {%- include image.html src: imageSrc, alt: alt, baseFormat: baseFormat, formats: formats, widths: widths, sizes: sizes, className: className, clickable: clickable -%}

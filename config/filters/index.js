@@ -1,12 +1,11 @@
 const lodash = require('lodash');
-const path = require('path');
 const sass = require('sass');
 const dayjs = require('dayjs');
 const markdownLib = require('../plugins/markdown');
 const site = require('../../src/_data/site');
 const Image = require('@11ty/eleventy-img');
-const { throwIfNotType, parseImage } = require('../utils');
-const { dir } = require('../constants');
+const { throwIfNotType } = require('../utils');
+const { dir, imagePaths } = require('../constants');
 
 /** Returns the first `limit` elements of the the given array. */
 const limit = (array, limit) => {
@@ -79,18 +78,16 @@ const toAbsoluteUrl = (url) => {
 
 /** Given a local or remote image source, returns the absolute URL to the image that will eventually get generated once the site is built. */
 const toAbsoluteImageUrl = async (src, width = null) => {
-  const image = parseImage(src);
-
   const imageOptions = {
     // For the purposes of getting the URL, we just want the original width and format
     widths: [width],
     formats: [null],
     // Where the generated image files get saved
-    outputDir: path.join(dir.output, image.dir),
+    outputDir: imagePaths.output,
     // Public URL path that's referenced in the img tag's src attribute
-    urlPath: image.dir,
+    urlPath: imagePaths.output.replace(dir.output, ''),
   };
-  const stats = await Image(image.src, imageOptions);
+  const stats = await Image(src, imageOptions);
   return toAbsoluteUrl(Object.values(stats)[0][0].url);
 };
 

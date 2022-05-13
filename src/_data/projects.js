@@ -6,7 +6,7 @@ const repos = {
   fluidTypeScale: {
     getIcon: async () => {
       const icon = await imageShortcode({
-        src: '/assets/images/projects/fluid-type-scale-calculator.png',
+        src: 'src/assets/images/projects/fluid-type-scale-calculator.png',
         alt: '',
         clickable: false,
         widths: [32],

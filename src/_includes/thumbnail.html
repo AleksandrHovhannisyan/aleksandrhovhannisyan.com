@@ -1,7 +1,9 @@
 {%- if post.data.thumbnail.url -%}
+  {%- comment -%}Thumbnail is remote, so it's a full URL. No path assembling needed.{%- endcomment -%}
   {%- assign src = post.data.thumbnail.url -%}
 {%- else -%}
-  {%- comment -%}Assemble src by looking up the post's slug under the image folder{%- endcomment -%}
-  {%- assign src = '/assets/images/posts/' | append: post.fileSlug | append: '/' | append: post.data.thumbnail -%}
+  {%- comment -%}Assemble src by looking up the post's slug{%- endcomment -%}
+  {%- assign normalizedThumbnailPath = post.data.thumbnail | replace: './', '' -%}
+  {%- assign src = 'src/' | append: post.filePathStem | replace: '/index', '' | append: '/' | append: normalizedThumbnailPath -%}
 {%- endif -%}
 {%- include image.html src: src, alt: "", className: "post-preview-thumbnail", clickable: false, widths: "[180, 360, 800, 1280]", sizes: "(max-width: 400px) 360px, (max-width: 768px) 800px, 360px" -%}

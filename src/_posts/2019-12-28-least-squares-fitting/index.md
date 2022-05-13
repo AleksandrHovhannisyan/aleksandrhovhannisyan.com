@@ -6,7 +6,7 @@ categories: [computer-science, math]
 layout: mathPost
 commentsId: 39
 lastUpdated: 2021-06-28
-thumbnail: thumbnail.png
+thumbnail: ./images/thumbnail.png
 ---
 
 In a previous post, I introduced the theory behind [the method of least squares](/blog/the-method-of-least-squares) and showed how it can be used to solve systems of equations with no unique solution.
@@ -153,7 +153,7 @@ We're asked to model the relationship between $x$ and $y$. Let's take it step by
 
 First, we'll plot the points:
 
-{% include img.html src: "data.jpg", alt: "Plotting the three data points we were given." %}
+{% include img.html src: "./images/data.jpg", alt: "Plotting the three data points we were given." %}
 
 We note that the points, while scattered, appear to have a linear pattern. Clearly, it's not possible to fit an actual straight line to the points, so we'll do our best to get as close as possible—using least squares, of course.
 
@@ -352,7 +352,7 @@ $$
 
 Let's plot the best-fit line along with the points:
 
-{% include img.html src: "best-fit.jpg", alt: "The best-fit line to the data we were given." %}
+{% include img.html src: "./images/best-fit.jpg", alt: "The best-fit line to the data we were given." %}
 
 Awesome! This is the best-line fit for the data points we were given.
 
@@ -372,7 +372,7 @@ Let's repeat the process.
 
 Here's a graph of our points:
 
-{% include img.html src: "data2.jpg", alt: "Plotting the four data points we were given." %}
+{% include img.html src: "./images/data2.jpg", alt: "Plotting the four data points we were given." %}
 
 To me, these points seems to take on the shape of a parabola. Based on that observation, I'm going to perform a least squares polynomial fit using a polynomial of degree two (a quadratic, basically).
 
@@ -514,7 +514,7 @@ $$\hat{f}(x) =1.86105904+1.80904405x+0.55014058x^{2}$$
 
 And here's the resulting graph with our polynomial fit to the data:
 
-{% include img.html src: "best-fit2.jpg", alt: "The best-fit parabola to the data we were given." %}
+{% include img.html src: "./images/best-fit2.jpg", alt: "The best-fit parabola to the data we were given." %}
 
 Looks like a pretty good fit to me!
 

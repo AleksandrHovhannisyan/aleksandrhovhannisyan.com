@@ -11,7 +11,7 @@ Someone shares an article online, and it eventually makes its way into one of yo
 
 Alas, what flickering hope there may have been is quickly extinguished by one of these:
 
-{% include img.html src: "medium.jpg", alt: "Content gating on a Medium article. The heading reads: 'Read the rest of this story with a free account.' Below are two options for signing in: with Facebook or Google. There is also a link to sign in." %}
+{% include img.html src: "./images/medium.jpg", alt: "Content gating on a Medium article. The heading reads: 'Read the rest of this story with a free account.' Below are two options for signing in: with Facebook or Google. There is also a link to sign in." %}
 
 Legend has it that during one of their executive meetings, the publishers realized that sharing knowledge for free isn't so profitable after all. And so they came up with an ingenious idea: They would try their very hardest to make navigating their website an inaccessible and offensive mess—unless, of course, a user would sign up, accept cookies, enter payment information, bend over, etc.
 
@@ -35,7 +35,7 @@ Other platforms take a more naive approach, hiding their content on the client s
 
 The New York Times and The Washington Post are two mainstream news sites that I often find myself stumbling upon, only to be greeted by these hideous and offensive modals prompting me to log in or subscribe to continue reading. But if you open up your dev tools and inspect the markup, you'll actually find the content right there in its entirety:
 
-{% include img.html src: "nytimes.png", alt: "Inspecting a sample New York Times article in Chrome dev tools. Only the article's title is visible; the rest of the content is visually hidden behind an overlay modal that reads: 'Thanks for reading The Times. Create your free account or log in to continue reading.' In the right-hand pane, under the element inspector, one can find the full article content." %}
+{% include img.html src: "./images/nytimes.png", alt: "Inspecting a sample New York Times article in Chrome dev tools. Only the article's title is visible; the rest of the content is visually hidden behind an overlay modal that reads: 'Thanks for reading The Times. Create your free account or log in to continue reading.' In the right-hand pane, under the element inspector, one can find the full article content." %}
 
 In short, the wrong way to gate content goes something like this:
 
