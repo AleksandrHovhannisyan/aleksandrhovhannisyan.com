@@ -14,8 +14,8 @@ This is a workaround for the fact that 11ty doesn't support named shortcode argu
     {%- comment -%}Explicit nil check since clickable is a boolean prop.{%- endcomment -%}
     {%- if clickable != nil -%},"clickable": {{ clickable }}{%- endif -%}
     {%- if className -%},"className": "{{ className }}"{%- endif -%}
+    {%- if imgClassName -%},"imgClassName": "{{ imgClassName }}"{%- endif -%}
     {%- if fileName -%},"fileName": "{{ fileName }}"{%- endif -%}
-    {%- if imgClass -%},"imgClass": "{{ imgClass }}"{%- endif -%}
     {%- if lazy != nil -%},"lazy": {{ lazy }}{%- endif -%}
   }
 {%- endcapture -%}

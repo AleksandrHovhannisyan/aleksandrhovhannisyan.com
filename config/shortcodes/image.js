@@ -13,7 +13,7 @@ const { stringifyAttributes } = require('../utils');
  * @property {number[]} [widths] The widths to generate for the image. Aspect ratio is preserved. Original image with is always included. Default: `[400, 800]`.
  * @property {string} [sizes] The `sizes` attribute for the image.
  * @property {string} [className] An optional class name for the outer picture tag.
- * @property {string} [imgClass] An optional class name for the `<img>` tag.
+ * @property {string} [imgClassName] An optional class name for the `<img>` tag.
  * @property {boolean} [clickable] Whether the image is clickable. If `true`, wraps the picture markup in an anchor that links to the largest resolution image.
  * @property {boolean} [lazy] Whether the image is `loading="lazy"`. Default: `true`.
  */
@@ -30,7 +30,7 @@ const imageShortcode = async (props) => {
     widths = [400, 800], // Default widths for the most common use case (post images)
     sizes = '100vw',
     className,
-    imgClass,
+    imgClassName,
     clickable = true,
     lazy = true,
   } = props ?? {};
@@ -70,7 +70,7 @@ const imageShortcode = async (props) => {
     height,
     src: formatSizes[baseFormat].largest.url,
     alt: escape(alt),
-    class: imgClass,
+    class: imgClassName,
     loading: lazy ? 'lazy' : undefined,
     decoding: 'async',
   });
