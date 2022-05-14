@@ -1,4 +1,5 @@
 {%- comment -%}
+https://www.aleksandrhovhannisyan.com/blog/passing-object-arguments-to-liquid-shortcodes-in-11ty/
 The props below get assembled as a JSON string and parsed into an object prop.
 This is a workaround for the fact that 11ty doesn't support named shortcode arguments in Liquid.
 {%- endcomment -%}
@@ -10,12 +11,12 @@ This is a workaround for the fact that 11ty doesn't support named shortcode argu
     {%- if optimizedFormats -%},"optimizedFormats": {{ optimizedFormats }}{%- endif -%}
     {%- if widths -%},"widths": {{ widths }}{%- endif -%}
     {%- if sizes -%},"sizes": "{{ sizes }}"{%- endif -%}
-    {%- comment -%}Explicit nil check since clickable is a boolean prop.{%- endcomment -%}
-    {%- if clickable != nil -%},"clickable": {{ clickable }}{%- endif -%}
+    {%- comment -%}Explicit nil check since isLinked is a boolean prop.{%- endcomment -%}
+    {%- if isLinked != nil -%},"isLinked": {{ isLinked }}{%- endif -%}
     {%- if className -%},"className": "{{ className }}"{%- endif -%}
+    {%- if imgClassName -%},"imgClassName": "{{ imgClassName }}"{%- endif -%}
     {%- if fileName -%},"fileName": "{{ fileName }}"{%- endif -%}
-    {%- if imgClass -%},"imgClass": "{{ imgClass }}"{%- endif -%}
-    {%- if lazy != nil -%},"lazy": {{ lazy }}{%- endif -%}
+    {%- if isLazy != nil -%},"isLazy": {{ isLazy }}{%- endif -%}
   }
 {%- endcapture -%}
 {%- assign props = props | fromJson -%}

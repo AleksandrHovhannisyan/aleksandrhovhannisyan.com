@@ -6,7 +6,7 @@ const { dir } = require('../constants');
 
 /** Returns all blog posts as a collection. */
 const getAllPosts = (collection) => {
-  const posts = collection.getFilteredByGlob(`${dir.input}/_posts/*.md`);
+  const posts = collection.getFilteredByGlob(`${dir.input}/_posts/**/*.md`);
   return posts.reverse();
 };
 

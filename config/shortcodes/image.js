@@ -1,37 +1,51 @@
 const Image = require('@11ty/eleventy-img');
 const { outdent } = require('outdent');
-const path = require('path');
 const { escape } = require('lodash');
-const { dir } = require('../constants');
-const { stringifyAttributes, parseImage } = require('../utils');
+const { dir, imagePaths } = require('../constants');
+const { stringifyAttributes } = require('../utils');
 
+/**
+ * @typedef ImageShortcodeProps
+ * @property {string} src An absolute path to the image, relative to the project root (e.g., `src/assets/images/*`).
+ * @property {string} [alt] Alt text for the image. Default: `''`.
+ * @property {string} [baseFormat] The base (unoptimized) format to output for the image. Default: `'jpeg'`.
+ * @property {string[]} [optimizedFormats] The optimized formats to output for the image. Default: `['webp']`.
+ * @property {number[]} [widths] The widths to generate for the image. Aspect ratio is preserved. Original image with is always included. Default: `[400, 800]`.
+ * @property {string} [sizes] The `sizes` attribute for the image.
+ * @property {string} [className] An optional class name for the outer picture tag.
+ * @property {string} [imgClassName] An optional class name for the `<img>` tag.
+ * @property {boolean} [isLinked] Whether the image is linked. If `true`, wraps the picture markup in an anchor that links to the largest resolution image.
+ * @property {boolean} [isLazy] Whether the image is `loading="lazy"`. Default: `true`.
+ */
+
+/**
+ * @param {ImageShortcodeProps} props
+ */
 const imageShortcode = async (props) => {
   const {
     src,
     alt = '',
     baseFormat = 'jpeg',
     optimizedFormats = ['webp'],
-    widths = [400, 800],
+    widths = [400, 800], // Default widths for the most common use case (post images)
     sizes = '100vw',
     className,
-    imgClass,
-    clickable = true,
-    lazy = true,
+    imgClassName,
+    isLinked = true,
+    isLazy = true,
   } = props ?? {};
-
-  const image = parseImage(src);
 
   const imageOptions = {
     // Always include the original image width in the output
     widths: [null, ...widths],
     // List optimized formats before the base format so that the output contains webp sources before jpegs.
     formats: [...optimizedFormats, baseFormat],
-    // Where the generated image files get saved
-    outputDir: path.join(dir.output, image.dir),
-    // Public URL path that's referenced in the img tag's src attribute
-    urlPath: image.dir,
+    // Where the generated image files get saved (e.g., _site/assets/images/*)
+    outputDir: imagePaths.output,
+    // Public URL path that's referenced in the img tag's src attribute (e.g., /assets/images/*)
+    urlPath: imagePaths.output.replace(dir.output, ''),
   };
-  const imageMetadata = await Image(image.src, imageOptions);
+  const imageMetadata = await Image(src, imageOptions);
 
   // Map each unique format (e.g., jpeg, webp) to its various sizes
   const formatSizes = Object.entries(imageMetadata).reduce((formatSizes, [format, images]) => {
@@ -48,7 +62,7 @@ const imageShortcode = async (props) => {
   const { width, height } = formatSizes[baseFormat].largest;
 
   const pictureAttributes = stringifyAttributes({
-    ...(className ? { class: className } : {}),
+    class: className,
   });
 
   const imgAttributes = stringifyAttributes({
@@ -56,8 +70,8 @@ const imageShortcode = async (props) => {
     height,
     src: formatSizes[baseFormat].largest.url,
     alt: escape(alt),
-    ...(imgClass ? { class: imgClass } : {}),
-    ...(lazy ? { loading: 'lazy' } : {}),
+    class: imgClassName,
+    loading: isLazy ? 'lazy' : undefined,
     decoding: 'async',
   });
 
@@ -86,7 +100,7 @@ const imageShortcode = async (props) => {
   </picture>`;
 
   // Link to the highest resolution optimized image
-  if (clickable) {
+  if (isLinked) {
     return outdent`<a class="outline-offset" href="${formatSizes[optimizedFormats[0]].largest.url}">${picture}</a>`;
   }
 

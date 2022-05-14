@@ -1,26 +1,24 @@
 const path = require('path');
 const Image = require('@11ty/eleventy-img');
-const { dir } = require('../constants');
-const { parseImage, stringifyAttributes } = require('../utils');
+const { stringifyAttributes } = require('../utils');
+const { imagePaths, dir } = require('../constants');
 
 const FAVICON_FORMAT = 'png';
 const APPLE_TOUCH_ICON_WIDTH = 180;
 
 /** Returns link tags for the site's favicon. */
 async function faviconShortcode(src) {
-  const favicon = parseImage(src);
-
   const props = {
     widths: [16, 32, 57, 76, 96, 128, APPLE_TOUCH_ICON_WIDTH, 192, 228],
     formats: [FAVICON_FORMAT],
-    outputDir: path.join(dir.output, favicon.dir),
-    urlPath: favicon.dir,
+    outputDir: path.join(imagePaths.output, 'favicons'),
+    urlPath: path.join(imagePaths.output.replace(dir.output, ''), 'favicons'),
     filenameFormat: (_hash, _src, width, format) => {
-      return `${favicon.name}-${width}.${format}`;
+      return `favicon-${width}.${format}`;
     },
   };
 
-  const metadata = await Image(favicon.src, props);
+  const metadata = await Image(src, props);
   return metadata[FAVICON_FORMAT].map((image) => {
     const isAppleTouchIcon = image.width === APPLE_TOUCH_ICON_WIDTH;
     const attributes = stringifyAttributes({

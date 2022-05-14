@@ -1,0 +1,2 @@
+{%- assign imageSrc = page.inputPath | pathParse: 'dir' | pathJoin: src -%}
+{%- include figure.html src: imageSrc, alt: alt, baseFormat: baseFormat, formats: formats, widths: widths, sizes: sizes, className: className, isLinked: isLinked, isLazy: isLazy -%}
