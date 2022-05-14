@@ -14,8 +14,8 @@ const { stringifyAttributes } = require('../utils');
  * @property {string} [sizes] The `sizes` attribute for the image.
  * @property {string} [className] An optional class name for the outer picture tag.
  * @property {string} [imgClassName] An optional class name for the `<img>` tag.
- * @property {boolean} [clickable] Whether the image is clickable. If `true`, wraps the picture markup in an anchor that links to the largest resolution image.
- * @property {boolean} [lazy] Whether the image is `loading="lazy"`. Default: `true`.
+ * @property {boolean} [isLinked] Whether the image is linked. If `true`, wraps the picture markup in an anchor that links to the largest resolution image.
+ * @property {boolean} [isLazy] Whether the image is `loading="lazy"`. Default: `true`.
  */
 
 /**
@@ -31,8 +31,8 @@ const imageShortcode = async (props) => {
     sizes = '100vw',
     className,
     imgClassName,
-    clickable = true,
-    lazy = true,
+    isLinked = true,
+    isLazy = true,
   } = props ?? {};
 
   const imageOptions = {
@@ -71,7 +71,7 @@ const imageShortcode = async (props) => {
     src: formatSizes[baseFormat].largest.url,
     alt: escape(alt),
     class: imgClassName,
-    loading: lazy ? 'lazy' : undefined,
+    loading: isLazy ? 'lazy' : undefined,
     decoding: 'async',
   });
 
@@ -100,7 +100,7 @@ const imageShortcode = async (props) => {
   </picture>`;
 
   // Link to the highest resolution optimized image
-  if (clickable) {
+  if (isLinked) {
     return outdent`<a class="outline-offset" href="${formatSizes[optimizedFormats[0]].largest.url}">${picture}</a>`;
   }
 

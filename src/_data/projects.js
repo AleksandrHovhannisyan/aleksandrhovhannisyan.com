@@ -8,7 +8,7 @@ const repos = {
       const icon = await imageShortcode({
         src: 'src/assets/images/projects/fluid-type-scale-calculator.png',
         alt: '',
-        clickable: false,
+        isLinked: false,
         widths: [32],
       });
       return icon;

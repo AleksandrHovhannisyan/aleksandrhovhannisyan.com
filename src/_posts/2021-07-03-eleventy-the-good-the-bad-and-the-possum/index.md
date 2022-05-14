@@ -10,7 +10,7 @@ lastUpdated: 2021-11-07
 
 For two years, my blog ran on Jekyll, one of the oldest and most popular static site generators around. Jekyll is often listed alongside other static site generators like Hugo, Gatsby, Next, Nuxt, and [many others](https://jamstack.org/generators/) that make up the so-called Jamstack.
 
-{% include postImage.html src: "./images/jamstack.jpg", alt: "The jamstack.org website. Various static site generators like Hugo, Next.js, Gatsby, and Jekyll are ranked in a grid view, with information on various stats, like the number of stars on GitHub.", caption: "The [jamstack.org](https://jamstack.org/generators/) website ranks popular static site generators.", lazy: false %}
+{% include postImage.html src: "./images/jamstack.jpg", alt: "The jamstack.org website. Various static site generators like Hugo, Next.js, Gatsby, and Jekyll are ranked in a grid view, with information on various stats, like the number of stars on GitHub.", caption: "The [jamstack.org](https://jamstack.org/generators/) website ranks popular static site generators.", isLazy: false %}
 
 Jekyll was great and served me really well! It's very much a batteries-included static site generator, which is great for beginners because it means that you can hit the ground running and [create a blog](/blog/getting-started-with-jekyll-and-github-pages/) quickly and with minimal setup.
 

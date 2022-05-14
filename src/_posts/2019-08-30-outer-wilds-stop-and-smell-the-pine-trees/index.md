@@ -12,7 +12,7 @@ lastUpdated: 2021-10-24
   This article contains spoilers. I encourage you to finish the game before reading it.
 {% endaside %}
 
-{% include postImage.html src: "./images/outer-wilds-founders.png", alt: "A wall-mounted in-game photo showing the four founders of the Outer Wilds space exploration program huddled together. The photo lacks color, with only shades of brown and tan revealing the subjects. The caption reads: 'Outer Wilds Ventures was founded by Feldspar, Gossan, Slate, and Hornfels to explore a solar system at the end of the universe.'", lazy: false %}
+{% include postImage.html src: "./images/outer-wilds-founders.png", alt: "A wall-mounted in-game photo showing the four founders of the Outer Wilds space exploration program huddled together. The photo lacks color, with only shades of brown and tan revealing the subjects. The caption reads: 'Outer Wilds Ventures was founded by Feldspar, Gossan, Slate, and Hornfels to explore a solar system at the end of the universe.'", isLazy: false %}
 
 What originally began as a thesis project [more than six years ago](https://www.youtube.com/watch?v=vRQU1o8SrAI) between two university students—Alex Beachum and Loan Verneau—is one of the best games released so far in 2019. And it's certainly come a long way, with much of the art, audio, and gameplay receiving polishes that have allowed it to shine.
 

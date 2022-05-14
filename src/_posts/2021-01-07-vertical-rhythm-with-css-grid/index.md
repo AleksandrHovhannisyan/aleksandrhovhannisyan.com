@@ -228,7 +228,7 @@ For one, CSS Grid isn't an option if you need to support ancient browsers like I
 
 Another drawback is that painting a hundred or so of these pretty purple gutters can sometimes slow down your browser.
 
-{% include postImage.html src: "./images/gutter.png", alt: "Chrome's dev tools show grid gutters using a purple hatch pattern.", clickable: false %}
+{% include postImage.html src: "./images/gutter.png", alt: "Chrome's dev tools show grid gutters using a purple hatch pattern.", isLinked: false %}
 
 In the past, my dev tools would momentarily lag as I tried to inspect large pages. But I only ever noticed this in Chrome, so it may not necessarily be CSS Grid's fault.
 
