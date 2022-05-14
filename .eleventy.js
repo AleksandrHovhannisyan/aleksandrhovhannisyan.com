@@ -25,6 +25,8 @@ const {
   getLatestCollectionItemDate,
   compileAndMinifyScss,
   toAbsoluteImageUrl,
+  pathParse,
+  pathJoin,
 } = require('./config/filters');
 const {
   getAllPosts,
@@ -86,6 +88,8 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter('keys', Object.keys);
   eleventyConfig.addFilter('values', Object.values);
   eleventyConfig.addFilter('entries', Object.entries);
+  eleventyConfig.addFilter('pathParse', pathParse);
+  eleventyConfig.addFilter('pathJoin', pathJoin);
 
   // Custom collections
   eleventyConfig.addCollection('posts', getAllPosts);

@@ -1,3 +1,4 @@
+const path = require('path');
 const lodash = require('lodash');
 const sass = require('sass');
 const dayjs = require('dayjs');
@@ -124,6 +125,16 @@ const compileAndMinifyScss = (scss) => {
   return sass.renderSync({ data: scss, outputStyle: 'compressed' }).css.toString();
 };
 
+/**
+ * Returns the file name or directory name of a path.
+ * @param {string} srcPath The source path to parse.
+ * @param {'name' | 'dir'} key A lookup key to get either the name or directory of the parsed path.
+ * @returns
+ */
+const pathParse = (srcPath, key) => path.parse(srcPath)[key];
+
+const pathJoin = (...paths) => path.join(...paths);
+
 module.exports = {
   limit,
   sortByKey,
@@ -140,4 +151,6 @@ module.exports = {
   toAbsoluteImageUrl,
   getLatestCollectionItemDate,
   compileAndMinifyScss,
+  pathParse,
+  pathJoin,
 };
