@@ -45,7 +45,7 @@ const imageShortcode = async (props) => {
   const { width, height } = formatSizes[baseFormat].largest;
 
   const pictureAttributes = stringifyAttributes({
-    ...(className ? { class: className } : {}),
+    class: className,
   });
 
   const imgAttributes = stringifyAttributes({
@@ -53,8 +53,8 @@ const imageShortcode = async (props) => {
     height,
     src: formatSizes[baseFormat].largest.url,
     alt: escape(alt),
-    ...(imgClass ? { class: imgClass } : {}),
-    ...(lazy ? { loading: 'lazy' } : {}),
+    class: imgClass,
+    loading: lazy ? 'lazy' : undefined,
     decoding: 'async',
   });
 

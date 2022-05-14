@@ -50,7 +50,11 @@ const getAuthenticatedOctokit = async () => {
  */
 const stringifyAttributes = (attributeMap) => {
   return Object.entries(attributeMap)
-    .map(([attribute, value]) => `${attribute}="${value}"`)
+    .map(([attribute, value]) => {
+      if (typeof value === 'undefined') return '';
+      if (typeof value === 'string' && !value) return '';
+      return `${attribute}="${value}"`;
+    })
     .join(' ');
 };
 
