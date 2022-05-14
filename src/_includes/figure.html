@@ -1,0 +1,8 @@
+<figure class="full-bleed prose stack gap--2">
+  {%- include image.html src: src, alt: alt, baseFormat: baseFormat, formats: formats, widths: widths, sizes: sizes, className: className, clickable: clickable -%}
+  {%- if caption -%}
+    <figcaption class="fs-sm container"{% if isCaptionAriaHidden %} aria-hidden="true"{% endif %}>
+      {{ caption | toHtml }}
+    </figcaption>
+  {%- endif -%}
+</figure>

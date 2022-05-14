@@ -636,7 +636,7 @@ You can now change `Add file1` to be `Add files 1, 2, and 3`, for example, or wh
 
 **Fun fact**: If you're worried about losing all the hard work you put into creating your commit messages along the way, don't be. Those other two commit messages will still be visible whenever you view the squashed commit on GitHub, so it still tells a story. Basically, it's just a multi-line commit message:
 
-{% include img.html src: "./images/squashed-commit.png", alt: "Viewing a squashed commit on GitHub, with three commit messages visible in total." %}
+{% include postImage.html src: "./images/squashed-commit.png", alt: "Viewing a squashed commit on GitHub, with three commit messages visible in total." %}
 
 ## 4. Reverting Commits
 

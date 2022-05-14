@@ -55,7 +55,7 @@ body {
 
 That's all well and good:
 
-{% include img.html src: "./images/0.png", alt: "A basic article layout with a title and two paragraphs." %}
+{% include postImage.html src: "./images/0.png", alt: "A basic article layout with a title and two paragraphs." %}
 
 But a few minutes later, you decide to spice things up with some headings and maybe an image.
 
@@ -82,7 +82,7 @@ But a few minutes later, you decide to spice things up with some headings and ma
 
 And that gives us this:
 
-{% include img.html src: "./images/1.png", alt: "An article with some headings, paragraphs, and an image of DJ Khaled." %}
+{% include postImage.html src: "./images/1.png", alt: "An article with some headings, paragraphs, and an image of DJ Khaled." %}
 
 The image doesn't have any bottom margin, and neither does the subheading. Let's fix that!
 
@@ -108,7 +108,7 @@ The image doesn't have any bottom margin, and neither does the subheading. Let's
 
 Beautiful:
 
-{% include img.html src: "./images/2.png", alt: "An article with spaced paragraphs and an image." %}
+{% include postImage.html src: "./images/2.png", alt: "An article with spaced paragraphs and an image." %}
 
 Honestly, the CSS isn't bad at all, and it'll serve you well most of the time. But as you introduce more elements to your page, you'll have to remember to go back into your CSS and give them margins to maintain your article's vertical rhythm. Chances are that you'll eventually forget to style some element, and it'll slip past you into production.
 
@@ -188,11 +188,11 @@ Watch as we reduce all of those lines of CSS to just a few, all thanks to CSS Gr
 
 And we're done:
 
-{% include img.html src: "./images/final.png", alt: "The final result of styling our article with CSS grid." %}
+{% include postImage.html src: "./images/final.png", alt: "The final result of styling our article with CSS grid." %}
 
 Here's what it looks like when we inspect it using dev tools:
 
-{% include img.html src: "./images/3.png", alt: "An article layout whose elements are spaced with grid gutters." %}
+{% include postImage.html src: "./images/3.png", alt: "An article layout whose elements are spaced with grid gutters." %}
 
 Now, you can add **whatever elements you want** to your article layout, and they'll get spaced automatically with CSS Grid row gutters. This is more intuitive than using margins because it establishes a consistent baseline of spacing at the *parent* level, without you worrying about which immediate children need to have a margin. Every single child will get at least `24px` of spacing around it, thus enforcing your vertical rhythm and future-proofing your site.
 
@@ -212,7 +212,7 @@ This may be a bit of a strawman argument because I can't actually think of a sce
 
 Want to see this used in a real site? Inspect this very article's CSS! And if you're not convinced that this is realistic or worth pursuing for a production site, consider that [Smashing Magazine](https://www.smashingmagazine.com/) uses this very technique for its desktop article layouts:
 
-{% include img.html src: "./images/smashing-magazine.png", alt: "Inspecting a Smashing Magazine article in Chrome dev tools reveals that paragraphs and other elements are spaced using CSS Grid gutters." %}
+{% include postImage.html src: "./images/smashing-magazine.png", alt: "Inspecting a Smashing Magazine article in Chrome dev tools reveals that paragraphs and other elements are spaced using CSS Grid gutters." %}
 
 I'm sure that there are more examples of this out in the wild. Will your site will join the ranks? Give it a try—I guarantee that you won't want to go back to using margins for article layouts.
 
@@ -228,7 +228,7 @@ For one, CSS Grid isn't an option if you need to support ancient browsers like I
 
 Another drawback is that painting a hundred or so of these pretty purple gutters can sometimes slow down your browser.
 
-{% include img.html src: "./images/gutter.png", alt: "Chrome's dev tools show grid gutters using a purple hatch pattern.", clickable: false %}
+{% include postImage.html src: "./images/gutter.png", alt: "Chrome's dev tools show grid gutters using a purple hatch pattern.", clickable: false %}
 
 In the past, my dev tools would momentarily lag as I tried to inspect large pages. But I only ever noticed this in Chrome, so it may not necessarily be CSS Grid's fault.
 

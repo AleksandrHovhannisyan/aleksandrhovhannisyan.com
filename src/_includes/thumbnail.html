@@ -3,7 +3,6 @@
   {%- assign src = post.data.thumbnail.url -%}
 {%- else -%}
   {%- comment -%}Assemble src by looking up the post's slug{%- endcomment -%}
-  {%- assign normalizedThumbnailPath = post.data.thumbnail | replace: './', '' -%}
-  {%- assign src = 'src/' | append: post.filePathStem | replace: '/index', '' | append: '/' | append: normalizedThumbnailPath -%}
+  {%- assign src = post.inputPath | pathParse: 'dir' | pathJoin: post.data.thumbnail -%}
 {%- endif -%}
 {%- include image.html src: src, alt: "", className: "post-preview-thumbnail", clickable: false, widths: "[180, 360, 800, 1280]", sizes: "(max-width: 400px) 360px, (max-width: 768px) 800px, 360px" -%}

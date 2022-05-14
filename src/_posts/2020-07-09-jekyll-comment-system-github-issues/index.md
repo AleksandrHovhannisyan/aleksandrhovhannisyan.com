@@ -14,7 +14,7 @@ thumbnail: ./images/thumbnail.png
 
 A while back, [Ari Stathopoulos wrote a tutorial](https://aristath.github.io/blog/static-site-comments-using-github-issues-api) on how to add comments to a Jekyll blog using the GitHub Issues API. And you know what? It works like a charm! Ever since I added comments to my Jekyll blog, I've seen a noticeable increase in engagement from my readers:
 
-{% include img.html src: "./images/comments.png", alt: "A list of comments on one of my blog posts" %}
+{% include postImage.html src: "./images/comments.png", alt: "A list of comments on one of my blog posts" %}
 
 That said, this approach isn't without its drawbacks. For one, the GitHub API has a [rate limit of 60 requests/hour](https://developer.github.com/v3/#rate-limiting). But more importantly, rendering all comments on the initial page load isn't a great user experience.
 
@@ -42,7 +42,7 @@ We'll use this a few times in our code, so it's a good idea to define it in one 
 
 If a particular blog post needs comments, open an issue for it in that repo and note its ID:
 
-{% include img.html src: "./images/issue-id.png", alt: "The ID of an issue on my GitHub repo." %}
+{% include postImage.html src: "./images/issue-id.png", alt: "The ID of an issue on my GitHub repo." %}
 
 Add the following front matter variable to the blog post for which you want to enable comments; assign it the ID from above:
 

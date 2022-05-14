@@ -81,7 +81,7 @@ When invoked on an invalid input, `reportValidity` will:
 
 Screen readers will narrate the alert correctly, and sighted users will see the message in a familiar form tooltip whose styling depends on the browser and operating system being used. The browser may also suggest how the user can correct their input. Returning to our earlier example, if a user enters an odd number, the browser will suggest the two closest numbers:
 
-{% include img.html src: "./images/odd.png", alt: "A numeric input box contains the value 5 and two controls: up and down. Below it is a tooltip that reads: 'Please enter a valid value. The two nearest valid values are 4 and 6.'." %}
+{% include postImage.html src: "./images/odd.png", alt: "A numeric input box contains the value 5 and two controls: up and down. Below it is a tooltip that reads: 'Please enter a valid value. The two nearest valid values are 4 and 6.'." %}
 
 #### Option 2: Custom Error Messaging
 
@@ -176,7 +176,7 @@ input.addEventListener('change', (e) => {
 
 Now, the user sees our custom message instead of the browser's default for that type of error:
 
-{% include img.html src: "./images/only-letters.png", alt: "A text input is labeled as: 'Enter only letters'. The text input's current value is abc123. A native  browser tooltip is visible below the input and reads: 'You may only enter letters.'" %}
+{% include postImage.html src: "./images/only-letters.png", alt: "A text input is labeled as: 'Enter only letters'. The text input's current value is abc123. A native  browser tooltip is visible below the input and reads: 'You may only enter letters.'" %}
 
 All of the code is the same as before, except now we have this new condition:
 

@@ -10,7 +10,7 @@ lastUpdated: 2021-11-07
 
 For two years, my blog ran on Jekyll, one of the oldest and most popular static site generators around. Jekyll is often listed alongside other static site generators like Hugo, Gatsby, Next, Nuxt, and [many others](https://jamstack.org/generators/) that make up the so-called Jamstack.
 
-{% include img.html src: "./images/jamstack.jpg", alt: "The jamstack.org website. Various static site generators like Hugo, Next.js, Gatsby, and Jekyll are ranked in a grid view, with information on various stats, like the number of stars on GitHub.", caption: "The [jamstack.org](https://jamstack.org/generators/) website ranks popular static site generators.", lazy: false %}
+{% include postImage.html src: "./images/jamstack.jpg", alt: "The jamstack.org website. Various static site generators like Hugo, Next.js, Gatsby, and Jekyll are ranked in a grid view, with information on various stats, like the number of stars on GitHub.", caption: "The [jamstack.org](https://jamstack.org/generators/) website ranks popular static site generators.", lazy: false %}
 
 Jekyll was great and served me really well! It's very much a batteries-included static site generator, which is great for beginners because it means that you can hit the ground running and [create a blog](/blog/getting-started-with-jekyll-and-github-pages/) quickly and with minimal setup.
 
@@ -31,7 +31,7 @@ After months of prototyping and research, I stumbled upon 11ty, a static site ge
 
 Visiting the [official website](https://11ty.dev/), I was greeted by a mischievous-looking possum hanging from a red balloon and floating across my screen.
 
-{% include img.html src: "./images/possum.jpg", alt: "The Eleventy mascot is a possum with brown hide and a beige face. It's hanging from a red balloon, with one paw slightly outstretched." %}
+{% include postImage.html src: "./images/possum.jpg", alt: "The Eleventy mascot is a possum with brown hide and a beige face. It's hanging from a red balloon, with one paw slightly outstretched." %}
 
 *Okay*, I thought. *I can work with this.*
 
@@ -398,7 +398,7 @@ To top it all off, if you get stuck at any point during development, you have se
 
 Debug mode is awesome—11ty logs information about every single thing that it does: how it was configured, what directories and files it found, what files it copied, what images it generated, how long any given step took, and so much more. It even includes benchmarking info at the end so you can optimize your build times!
 
-{% include img.html src: "./images/debug.jpg", alt: "Sample output from Eleventy's debug mode, with color-coded steps and various useful messages logged to the console." %}
+{% include postImage.html src: "./images/debug.jpg", alt: "Sample output from Eleventy's debug mode, with color-coded steps and various useful messages logged to the console." %}
 
 (Also, I like the pretty colors.)
 
@@ -443,7 +443,7 @@ If you're using `type: "module"` in your `package.json` to automatically treat e
 
 We've covered the good. And we've covered the bad. But [what about the possum](https://www.11ty.dev/news/logo-homage/)?
 
-{% include img.html src: "./images/possum-white-bg.jpg", alt: "The Eleventy mascot is a possum with brown hide and a beige face. It's hanging from a red balloon, with one paw slightly outstretched." %}
+{% include postImage.html src: "./images/possum-white-bg.jpg", alt: "The Eleventy mascot is a possum with brown hide and a beige face. It's hanging from a red balloon, with one paw slightly outstretched." %}
 
 {% quote "An Homage to the James Williamson Possum Balloon", "https://www.11ty.dev/news/logo-homage/" %}
   Why a possum? Why is the possum floating? Why a balloon? Exactly. 42.
@@ -453,7 +453,7 @@ The original Eleventy mascot was [designed by developer James Williamson](https:
 
 And I just love everything about it. Those impish eyes. That scrawny little paw just barely outstretched, like it wants you to *[Hand it over. That thing, your dark soul](https://www.youtube.com/watch?v=Nt5Q9hu0h0s)*.
 
-{% include img.html src: "./images/hand-it-over.jpg", alt: "Slave Knight Gael, the final boss of the video game Dark Souls 3, gestures towards the viewer with his hand outstretched. The captions read: Hand it over. That thing, your dark soul. The Eleventy mascot's head replaces Gael's.", caption: "There's a Dark Souls meme that nobody asked for. You're welcome, internet." %}
+{% include postImage.html src: "./images/hand-it-over.jpg", alt: "Slave Knight Gael, the final boss of the video game Dark Souls 3, gestures towards the viewer with his hand outstretched. The captions read: Hand it over. That thing, your dark soul. The Eleventy mascot's head replaces Gael's.", caption: "There's a Dark Souls meme that nobody asked for. You're welcome, internet." %}
 
 ## So, Should You Use 11ty?
 

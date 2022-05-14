@@ -40,13 +40,13 @@ GitHub Pages doesn't offer these features. It *can* take advantage of [GitHub Ac
 
 If you want to test production changes on GitHub Pages, you need to push up a branch and wait for the build to finish on prod. By contrast, Netlify allows you to run dev and production builds locally using the [Netlify CLI](https://docs.netlify.com/cli/get-started/#installation-in-a-ci-environment), with secure authentication. This allows you to [simulate a full Netlify build locally](https://docs.netlify.com/cli/get-started/#run-builds-locally), including with any build plugins that you've installed.
 
-{% include img.html src: "./images/local-build.png", alt: "Sample output from a local Netlify build running on my site. Netlify steps are listed in bright cyan font against a black background, with numbered steps and information about my Netlify configuration." %}
+{% include postImage.html src: "./images/local-build.png", alt: "Sample output from a local Netlify build running on my site. Netlify steps are listed in bright cyan font against a black background, with numbered steps and information about my Netlify configuration." %}
 
 ### 3. A Better Continuous Integration Experience
 
 When you connect a GitHub repo to Netlify, you can take full advantage of its CI/CD pipeline for a better developer experience. For example, if anyone opens a pull request in your repo, this will automatically trigger a Netlify build and [generate a unique Deploy Preview URL](https://www.netlify.com/products/deploy-previews/) when the build finishes. This deploy preview doesn't get indexed, and it can be shared with anyone within or outside your team.
 
-{% include img.html src: "./images/deploy-preview.png", alt: "The footer section of a GitHub pull request shows a checklist of Netlify checks that passed or failed during the build process. There are metrics for each step, like the time it took to finish, as well as links to deploy previews." %}
+{% include postImage.html src: "./images/deploy-preview.png", alt: "The footer section of a GitHub pull request shows a checklist of Netlify checks that passed or failed during the build process. There are metrics for each step, like the time it took to finish, as well as links to deploy previews." %}
 
 Deploy previews are a great way to verify that merging a pull request won't introduce unintended side effects, allowing other devs on your team to test a feature live rather than having to build your branch locally. If you're a freelancer, this is especially useful because it means that you can show deploy previews to clients and solicit their feedback before your changes ever go live.
 
@@ -54,7 +54,7 @@ Deploy previews are a great way to verify that merging a pull request won't intr
 
 With Netlify, you have greater control over the entire deployment process. Your dashboard provides a clear view of your deploy history and even allows you to manually revert your site to a prior state with its one-click rollback. You can also stop auto-publishing new versions of your site, access all of your deploy previews, and more.
 
-{% include img.html src: "./images/dashboard.png", alt: "The Netlify dashboard for my personal website, showing a list of recent deployments and their git hash IDs." %}
+{% include postImage.html src: "./images/dashboard.png", alt: "The Netlify dashboard for my personal website, showing a list of recent deployments and their git hash IDs." %}
 
 GitHub Pages doesn't give you this kind of fine-grained control over deployments. It's actually fairly limited—[you can only deploy to two branches](https://help.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source), one of which is `master` by default. So if you want to revert your production build to a prior state, you'll need to do this at the repo level by [resetting to a previous commit with git](/blog/undoing-changes-in-git/#2-resetting-a-branch-to-an-older-commit) and deploying a different branch. There are also no deploy previews, so whatever you publish will go live as soon as it builds.
 
@@ -62,7 +62,7 @@ GitHub Pages doesn't give you this kind of fine-grained control over deployments
 
 Netlify builds my site in just 1–2 minutes, on average:
 
-{% include img.html src: "./images/faster-deploys.png", alt: "A list of recent deployments in my Netlify dashboard, along with the time it took each one to deploy from start to finish." %}
+{% include postImage.html src: "./images/faster-deploys.png", alt: "A list of recent deployments in my Netlify dashboard, along with the time it took each one to deploy from start to finish." %}
 
 Back when I was hosting my site on GitHub Pages, things were much slower, and I'd sometimes have to do a hard refresh to see any updates on prod. GitHub's own documentation notes that you may have to wait up to 20 minutes to see your changes go live:
 
@@ -78,7 +78,7 @@ Unfortunately, GitHub Pages also caps you at **only 10 builds per hour**. So if 
 
 Netlify has a much more generous soft cap of **3 builds per minute**. You also get **300 build minutes per month** and **100 GB data usage** with its free tier, which is more than enough for most needs.
 
-{% include img.html src: "./images/billing.png", alt: "Netlify's dashboard shows billing information for things such as data usage and build minutes used." %}
+{% include postImage.html src: "./images/billing.png", alt: "Netlify's dashboard shows billing information for things such as data usage and build minutes used." %}
 
 Build minutes are just Netlify's currency for a billing cycle. If you're a free user, this means that your builds can't exceed 300 minutes total for one month. Next month, your usage resets to 0. You don't have to pay anything as long as your usage doesn't exceed this limit.
 
@@ -116,7 +116,7 @@ I recommend that you keep your old GitHub Pages repository around temporarily, s
 
 You can also use the [Change of Address Tool](https://support.google.com/webmasters/answer/9370220?hl=en) right there in Google Search Console to migrate your old site's traffic to your new one, once you've set up 301 redirects:
 
-{% include img.html src: "./images/migration.png", alt: "Migrating my old search engine results to my new domain using Google Search Console's change of address tool." %}
+{% include postImage.html src: "./images/migration.png", alt: "Migrating my old search engine results to my new domain using Google Search Console's change of address tool." %}
 
 Keep an eye on your Google Search Console over the next few months following your migration. Once things stabilize, you can make your old repo private or delete it altogether, taking it off of GitHub Pages.
 

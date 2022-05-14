@@ -18,7 +18,7 @@ If you're not giving your images an explicit width and height, you may be hurtin
 
 If you've ever [run your site through Lighthouse](https://web.dev/measure/), then you've probably seen this message:
 
-{% include img.html src: "./images/lighthouse.png", alt: "A Lighthouse audit for a website. An expanded panel has a summary that reads: 'Image elements do not have explicit width and height.' Below the panel, a more detailed description reads: 'Set an explicit width and height on image elements to reduce layout shifts and improve CLS.'", caption: '"Set an explicit width and height on image elements to reduce layout shifts and improve CLS."', isCaptionAriaHidden: true %}
+{% include postImage.html src: "./images/lighthouse.png", alt: "A Lighthouse audit for a website. An expanded panel has a summary that reads: 'Image elements do not have explicit width and height.' Below the panel, a more detailed description reads: 'Set an explicit width and height on image elements to reduce layout shifts and improve CLS.'", caption: '"Set an explicit width and height on image elements to reduce layout shifts and improve CLS."', isCaptionAriaHidden: true %}
 
 In short, this means that one or more images on the audited page lack the `width` and `height` HTML attributes and use markup that looks something like this:
 
@@ -55,11 +55,11 @@ When the page loads, your browser already knows the width to reserve for content
 
 This means that as your browser renders the page for the first time, your images will initially collapse to a height of zero until they've been fully downloaded, at which point the browser will correct the space that those images occupy. Thus, elements after the image will initially be positioned above their true location, like the second paragraph in this diagram:
 
-{% include img.html src: "./images/not-loaded.png", alt: "A mock browser window with two paragraphs of text spaced a very short distance apart." %}
+{% include postImage.html src: "./images/not-loaded.png", alt: "A mock browser window with two paragraphs of text spaced a very short distance apart." %}
 
 Once the image has downloaded, it will push its siblings down and take its rightful place:
 
-{% include img.html src: "./images/loaded.png", alt: "A mock browser window with two paragraphs of text and a large image positioned in between them." %}
+{% include postImage.html src: "./images/loaded.png", alt: "A mock browser window with two paragraphs of text and a large image positioned in between them." %}
 
 These kinds of layout shifts are unpleasant and can make your design look sloppy and poorly optimized. In the following sections, we'll learn how setting a width and height on images can reduce layout shifts.
 
@@ -93,7 +93,7 @@ img {
 
 Below is an example showing an image that's been given width and height attributes of `500` and `300`, respectively; the browser uses these attributes to compute the image's aspect ratio and applies that CSS, which can be inspected in dev tools:
 
-{% include img.html src: "./images/default-aspect-ratio.png", alt: "A photo of a puppy is inspected via Chrome dev tools. Under the user-agent stylesheet, an aspect-ratio property of 500 / 300 has been applied.", caption: "Photo credit: [Bill Stephan, Unsplash](https://unsplash.com/photos/og0C_9Mz6RA)" %}
+{% include postImage.html src: "./images/default-aspect-ratio.png", alt: "A photo of a puppy is inspected via Chrome dev tools. Under the user-agent stylesheet, an aspect-ratio property of 500 / 300 has been applied.", caption: "Photo credit: [Bill Stephan, Unsplash](https://unsplash.com/photos/og0C_9Mz6RA)" %}
 
 Here's the key point to understand about aspect ratios: If you know only one dimension of an element and its aspect ratio, then you can easily compute the other dimension. If I tell you that the width of an image is `1200px` and its width is always twice its height, then you know that the image must be `600px` tall.
 
@@ -101,11 +101,11 @@ Because your browser already knows the width of the image's containing block, an
 
 Using the same diagrams from before, we would have an initial frame with two paragraphs and a collapsed image. The rectangle between the paragraphs represents the space that the browser has reserved for the image that has not yet loaded. It knows precisely how much space to reserve thanks to the image's aspect ratio:
 
-{% include img.html src: "./images/space-reserved.png", alt: "A mock browser window with two paragraphs of text spaced a fixed distance apart. That distance is the height that the image between them will occupy once it has loaded in." %}
+{% include postImage.html src: "./images/space-reserved.png", alt: "A mock browser window with two paragraphs of text spaced a fixed distance apart. That distance is the height that the image between them will occupy once it has loaded in." %}
 
 Once the image loads in, it simply occupies that placeholder space without shifting any of the surrounding content:
 
-{% include img.html src: "./images/loaded.png", alt: "A mock browser window with two paragraphs of text and a large image in between. The spacing between the two paragraphs is the same as it was before the image loaded in." %}
+{% include postImage.html src: "./images/loaded.png", alt: "A mock browser window with two paragraphs of text and a large image in between. The spacing between the two paragraphs is the same as it was before the image loaded in." %}
 
 Lighthouse is happy, and so are your users!
 

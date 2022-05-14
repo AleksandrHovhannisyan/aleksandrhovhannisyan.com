@@ -219,7 +219,7 @@ const isVegetable = (ingredient: Ingredient): ingredient is Vegetable => {
 
 It may seem odd that we're using type assertions here, but they're important. Without them, TypeScript will complain that vegetables (a valid ingredient) are not assignable to fruits:
 
-{% include img.html src: "./images/error.jpg", alt: "TypeScript complains that the argument of type 'Ingredient' is not assignable to the parameter of type 'apple' or 'banana' or 'orange'. Type 'carrot' is not assignable to type 'apple' or 'banana' or 'orange'." %}
+{% include postImage.html src: "./images/error.jpg", alt: "TypeScript complains that the argument of type 'Ingredient' is not assignable to the parameter of type 'apple' or 'banana' or 'orange'. Type 'carrot' is not assignable to type 'apple' or 'banana' or 'orange'." %}
 
 This should make sense—at that point in the code, TypeScript does not yet know that `ingredient` is of one type or the other, so we have to give it a helpful nudge. But when we use these helpers, we'll still get proper type inference.
 

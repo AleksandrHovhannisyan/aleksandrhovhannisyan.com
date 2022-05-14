@@ -44,7 +44,7 @@ You may be wondering where the need for such a character originated (beyond just
 
 Back when dinosaurs roamed the earth, people used to lug around these chunky devices called *typewriters*.
 
-{% include img.html src: "./images/typewriter.png", alt: "Top-down view of a typewriter, with paper fed into the carriage.", caption: "Photo credit: [Patrick Fore, Unsplash](https://unsplash.com/photos/59lC6TgZAbQ)" %}
+{% include postImage.html src: "./images/typewriter.png", alt: "Top-down view of a typewriter, with paper fed into the carriage.", caption: "Photo credit: [Patrick Fore, Unsplash](https://unsplash.com/photos/59lC6TgZAbQ)" %}
 
 You feed the device a sheet of paper fastened to a mechanical roll known as the **carriage**. With each keystroke, the typewriter prints letters using ink on your sheet of paper, shifting the carriage to the left to ensure that the next letter you type will appear to the right of the previous one. You can [watch a typewriter being used in action](https://www.youtube.com/watch?v=5sTHMXqD9kg) to get a better sense for how this works.
 
@@ -301,7 +301,7 @@ A `.gitattributes` file is technically all that you need to enforce the line end
 
 Again, this doesn't mean that Git's normalization process isn't working; it's just the expected behavior. However, this can get annoying if you're also linting your code with ESLint and Prettier, in which case they'll constantly throw errors and tell you to delete those extra `CR`s:
 
-{% include img.html src: "./images/prettier.png", alt: "A user's mouse hovers over red squiggly lines in a file that's using CRLF line endings. A prettier warning tells the user to remove the carriage return character." %}
+{% include postImage.html src: "./images/prettier.png", alt: "A user's mouse hovers over red squiggly lines in a file that's using CRLF line endings. A prettier warning tells the user to remove the carriage return character." %}
 
 Fortunately, we can take things a step further with an `.editorconfig` file; this is an [editor-agnostic project](https://editorconfig.org/) that aims to create a standardized format for customizing the behavior of any given text editor. Lots of text editors (including VS Code) support and automatically read this file if it's present. You can put something like this in the root of your workspace:
 

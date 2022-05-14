@@ -159,7 +159,7 @@ Reminder: Batch systems have to keep up with a large number of processes. Thus, 
 
 First come first serve is a fair and simple non-preemptive algorithm that runs jobs in the order in which they arrived. However, because this algorithm is so naive, it doesn't always guarantee the best results.
 
-{% include img.html src: "./images/first-come.jpg", alt: "A horizontal ruler is used to represent time that runs from t = 0 to t = 15. A table lists information about three CPU processes. Process A arrived at time t = 0 and has a CPU time of 8. Process B arrived at time t = 2 and has a CPU time of 4. Process C arrived at time t = 5 and has a CPU time of 2. Three colored lines are shown below the ruler, in the order of A, then B, and finally C." %}
+{% include postImage.html src: "./images/first-come.jpg", alt: "A horizontal ruler is used to represent time that runs from t = 0 to t = 15. A table lists information about three CPU processes. Process A arrived at time t = 0 and has a CPU time of 8. Process B arrived at time t = 2 and has a CPU time of 4. Process C arrived at time t = 5 and has a CPU time of 2. Three colored lines are shown below the ruler, in the order of A, then B, and finally C." %}
 
 Notice that while B arrives at `t = 2s`, it does not get to run until A finishes its work at `t = 8s` because this is a non-preemptive algorithm. Here are the calculations for each process:
 
@@ -178,7 +178,7 @@ In this algorithm, when deciding which process to run next, we pick the one whos
 
 If all jobs arrive at the same time, then this algorithm is always optimal in terms of mean turnaround time. This is because we're able to minimize the amount of idle CPU time across the board by picking an *optimal sequence of execution* for processes.
 
-{% include img.html src: "./images/shortest-job.jpg", alt: "A horizontal ruler is used to represent time that runs from t = 0 to t = 15. A table lists information about three CPU processes. Process A arrived at time t = 0 and has a CPU time of 8. Process B arrived at time t = 2 and has a CPU time of 4. Process C arrived at time t = 5 and has a CPU time of 2. Three colored lines are shown below the ruler, in the order of A, then C, and finally B." %}
+{% include postImage.html src: "./images/shortest-job.jpg", alt: "A horizontal ruler is used to represent time that runs from t = 0 to t = 15. A table lists information about three CPU processes. Process A arrived at time t = 0 and has a CPU time of 8. Process B arrived at time t = 2 and has a CPU time of 4. Process C arrived at time t = 5 and has a CPU time of 2. Three colored lines are shown below the ruler, in the order of A, then C, and finally B." %}
 
 - A's turnaround time = `8s - 0s = 8s`
 - B's turnaround time = `14s - 2s = 12s`
@@ -197,7 +197,7 @@ This algorithm is the shortest job first algorithm above but with preemption. Wh
 
 If the process that's currently running is tied with another during this selection process, we'll obviously always prefer to continue running the current process so we don't waste time on performing a context switch.
 
-{% include img.html src: "./images/shortest-remaining.jpg", alt: "A horizontal ruler is used to represent time that runs from t = 0 to t = 15. A table lists information about three CPU processes. Process A arrived at time t = 0 and has a CPU time of 8. Process B arrived at time t = 2 and has a CPU time of 4. Process C arrived at time t = 5 and has a CPU time of 2. Below the ruler, a line shows Process A running from t = 0 to t = 2. It is interrupted by Process B, which runs from t = 2 to t = 6. Process C then runs from t = 6 to t = 8. Finally, Process A runs to completion from t = 8 to t = 14." %}
+{% include postImage.html src: "./images/shortest-remaining.jpg", alt: "A horizontal ruler is used to represent time that runs from t = 0 to t = 15. A table lists information about three CPU processes. Process A arrived at time t = 0 and has a CPU time of 8. Process B arrived at time t = 2 and has a CPU time of 4. Process C arrived at time t = 5 and has a CPU time of 2. Below the ruler, a line shows Process A running from t = 0 to t = 2. It is interrupted by Process B, which runs from t = 2 to t = 6. Process C then runs from t = 6 to t = 8. Finally, Process A runs to completion from t = 8 to t = 14." %}
 
 For example, we swap A out for B at `t = 2s` because B has the least amount of time remaining among all processes that have arrived so far (only `4s` as opposed to A's remaining `6s`).
 
@@ -227,7 +227,7 @@ This is a classic and straightforward scheduling algorithm. Here's how it works:
 
 Steps 1-4 repeat until no more processes remain.
 
-{% include img.html src: "./images/round-robin.jpg", alt: "A horizontal ruler is used to represent time that runs from t = 0 to t = 15. A table lists information about three CPU processes. Process A arrived at time t = 0 and has a CPU time of 8. Process B arrived at time t = 2 and has a CPU time of 4. Process C arrived at time t = 5 and has a CPU time of 2. A note indicates a quantum of 2. Below the ruler, a line shows Process A running from t = 0 to t = 2. B runs from t = 2 to t = 4. A runs again from t = 4 to t = 6. B runs from t = 6 to t = 8 and finishes completely. C runs from t = 8 to t = 10. Finally, Process A runs to completion in two 2-second increments, from t = 10 to t = 12 and from t = 12 to t = 14." %}
+{% include postImage.html src: "./images/round-robin.jpg", alt: "A horizontal ruler is used to represent time that runs from t = 0 to t = 15. A table lists information about three CPU processes. Process A arrived at time t = 0 and has a CPU time of 8. Process B arrived at time t = 2 and has a CPU time of 4. Process C arrived at time t = 5 and has a CPU time of 2. A note indicates a quantum of 2. Below the ruler, a line shows Process A running from t = 0 to t = 2. B runs from t = 2 to t = 4. A runs again from t = 4 to t = 6. B runs from t = 6 to t = 8 and finishes completely. C runs from t = 8 to t = 10. Finally, Process A runs to completion in two 2-second increments, from t = 10 to t = 12 and from t = 12 to t = 14." %}
 
 I used dashed vertical lines here to denote the times at which each process arrived in the queue, just to make things easier to understand. Notice that even though C arrives at time `t = 5s`, it does not begin working until after B gets to run again. Why? Because of step 3: When B finishes its work at time `t = 4s`, it is put back on the queue (because it is not yet finished with all of its work). Thus, B precedes C on the queue.
 
@@ -249,7 +249,7 @@ The scheduler runs the Round Robin algorithm on processes within the same queue,
   **Note**: If at any point a process arrives in a queue with a higher priority than whatever queue we are currently working on, then the scheduler will give preference to that higher priority process upon the next quantum "tick."
 {% endaside %}
 
-{% include img.html src: "./images/preemptive-priority.jpg", alt: "A horizontal ruler is used to represent time that runs from t = 0 to t = 15. A table lists information about three CPU processes. Process A arrived at time t = 0 and has a CPU time of 8 and a priority of 1. Process B arrived at time t = 2 and has a CPU time of 4 and a priority of 1. Process C arrived at time t = 5 and has a CPU time of 2 and a priority of 2. A note indicates a quantum of 2. Below the ruler, a line shows Process A running from t = 0 to t = 2. It is interrupted by Process B, which runs from t = 2 to t = 4. A runs from t = 4 to t = 6, followed by B again from t = 6 to t = 8. B finishes. A runs for two quantums from t = 8 to t = 12, and C runs from t = 12 to t = 14." %}
+{% include postImage.html src: "./images/preemptive-priority.jpg", alt: "A horizontal ruler is used to represent time that runs from t = 0 to t = 15. A table lists information about three CPU processes. Process A arrived at time t = 0 and has a CPU time of 8 and a priority of 1. Process B arrived at time t = 2 and has a CPU time of 4 and a priority of 1. Process C arrived at time t = 5 and has a CPU time of 2 and a priority of 2. A note indicates a quantum of 2. Below the ruler, a line shows Process A running from t = 0 to t = 2. It is interrupted by Process B, which runs from t = 2 to t = 4. A runs from t = 4 to t = 6, followed by B again from t = 6 to t = 8. B finishes. A runs for two quantums from t = 8 to t = 12, and C runs from t = 12 to t = 14." %}
 
 In this example, A and B take turns alternating on the CPU in classic Round Robin fashion because both have a higher priority than any other process (C has a lower priority of `2`). Once they're both fully exhausted, the CPU sees that the only queue left is the one with C. So C gets scheduled and runs to completion.
 
