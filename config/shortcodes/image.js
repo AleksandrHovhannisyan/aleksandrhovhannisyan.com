@@ -4,6 +4,23 @@ const { escape } = require('lodash');
 const { dir, imagePaths } = require('../constants');
 const { stringifyAttributes } = require('../utils');
 
+/**
+ * @typedef ImageShortcodeProps
+ * @property {string} src An absolute path to the image, relative to the project root (e.g., `src/assets/images/*`).
+ * @property {string} [alt] Alt text for the image. Default: `''`.
+ * @property {string} [baseFormat] The base (unoptimized) format to output for the image. Default: `'jpeg'`.
+ * @property {string[]} [optimizedFormats] The optimized formats to output for the image. Default: `['webp']`.
+ * @property {number[]} [widths] The widths to generate for the image. Aspect ratio is preserved. Original image with is always included. Default: `[400, 800]`.
+ * @property {string} [sizes] The `sizes` attribute for the image.
+ * @property {string} [className] An optional class name for the outer picture tag.
+ * @property {string} [imgClass] An optional class name for the `<img>` tag.
+ * @property {boolean} [clickable] Whether the image is clickable. If `true`, wraps the picture markup in an anchor that links to the largest resolution image.
+ * @property {boolean} [lazy] Whether the image is `loading="lazy"`. Default: `true`.
+ */
+
+/**
+ * @param {ImageShortcodeProps} props
+ */
 const imageShortcode = async (props) => {
   const {
     src,
