@@ -72,7 +72,7 @@ eleventyComputed:
       "@id": "{{ page.url | toAbsoluteUrl }}"
     },
     "headline": {{ title | escape | toJson }},
-    "description": {{ description | stripNewlines | strip | toJson }},
+    "description": {{ description | strip | toJson }},
     {% if ogImage %}
     "image": ["{{ ogImage }}"],
     {% endif %}

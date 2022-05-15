@@ -1,15 +1,4 @@
-const {
-  where,
-  limit,
-  sortByKey,
-  wordCount,
-  dividedBy,
-  newlineToBr,
-  stripNewlines,
-  stripHtml,
-  toAbsoluteUrl,
-  getLatestCollectionItemDate,
-} = require('.');
+const { where, limit, sortByKey, dividedBy, toAbsoluteUrl, getLatestCollectionItemDate } = require('./filters');
 const site = require('../../src/_data/site');
 
 describe('custom 11ty filters', () => {
@@ -61,64 +50,12 @@ describe('custom 11ty filters', () => {
       expect(() => sortByKey(posts, 'data.order', 'ABC')).toThrow();
     });
   });
-  describe('wordCount', () => {
-    it('returns 0 for an empty string', () => {
-      expect(wordCount('')).toEqual(0);
-    });
-    it('returns 1 for a single word', () => {
-      expect(wordCount('hello')).toEqual(1);
-    });
-    it('returns 1 for a hyphenated word', () => {
-      expect(wordCount('full-time')).toEqual(1);
-    });
-    it('returns word count for longer sentences', () => {
-      expect(wordCount(`Hello, World. My name's Aleksandr.`)).toEqual(5);
-    });
-    it(`throws an error if the argument isn't a string`, () => {
-      expect(() => wordCount(1)).toThrow();
-    });
-  });
   describe('dividedBy', () => {
     it('throws an error if the divisor is 0', () => {
       expect(() => dividedBy(1, 0)).toThrow();
     });
     it('returns the right quotient', () => {
       expect(dividedBy(1, 2)).toEqual(0.5);
-    });
-  });
-  describe('newlineToBr', () => {
-    it('replaces all newslines with a line break', () => {
-      expect(newlineToBr(`hey\nsoul\nsister`)).toEqual(`hey<br>soul<br>sister`);
-    });
-    it('returns the original string if it has no newlines', () => {
-      expect(newlineToBr(`original string with no newlines`)).toEqual(`original string with no newlines`);
-    });
-    it(`throws an error if the argument isn't a string`, () => {
-      expect(() => newlineToBr(1)).toThrow();
-    });
-  });
-  describe('stripNewlines', () => {
-    it('removes all newlines', () => {
-      expect(stripNewlines(`hey\nsoul\nsister`)).toEqual(`heysoulsister`);
-    });
-    it('returns the original string if it has no newlines', () => {
-      expect(stripNewlines(`music is pretty cool I guess`)).toEqual(`music is pretty cool I guess`);
-    });
-    it(`throws an error if the argument isn't a string`, () => {
-      expect(() => stripNewlines(1)).toThrow();
-    });
-  });
-  describe('stripHtml', () => {
-    it('removes all html tags', () => {
-      const html = `<p>This is some <strong>HTML</strong> with <span id="abc" class="efg">lots</span> of tags</p>`;
-      expect(stripHtml(html)).toEqual(`This is some HTML with lots of tags`);
-    });
-    it('returns the original string if it has no HTML', () => {
-      const html = `This is some HTML with lots of tags`;
-      expect(stripHtml(html)).toEqual(`This is some HTML with lots of tags`);
-    });
-    it(`throws an error if the argument isn't a string`, () => {
-      expect(() => stripHtml(1)).toThrow();
     });
   });
   describe('where', () => {
@@ -190,6 +127,11 @@ describe('custom 11ty filters', () => {
     it('handles both site URL with trailing slash and url with preceding slash', () => {
       site.url = 'https://site.com/';
       expect(toAbsoluteUrl('/some/path/')).toEqual(`https://site.com/some/path/`);
+    });
+    it('handles file urls', () => {
+      site.url = 'https://site.com/';
+      expect(toAbsoluteUrl('/assets/images/img.png')).toEqual(`https://site.com/assets/images/img.png`);
+      expect(toAbsoluteUrl('feed.xml')).toEqual(`https://site.com/feed.xml`);
     });
     it('throws an error if the argument is not a string', () => {
       site.url = 'https://site.com/';

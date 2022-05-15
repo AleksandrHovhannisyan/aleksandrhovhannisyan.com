@@ -1,5 +1,5 @@
 const path = require('path');
-const { toAbsoluteImageUrl } = require('../../config/filters');
+const { toAbsoluteImageUrl } = require('../../config/filters/filters');
 
 module.exports = {
   layout: 'post',

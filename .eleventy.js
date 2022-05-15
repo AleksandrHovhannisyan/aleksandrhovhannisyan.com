@@ -10,7 +10,6 @@ const {
   faviconShortcode,
 } = require('./config/shortcodes');
 const {
-  wordCount,
   limit,
   sortByKey,
   toHtml,
@@ -18,16 +17,13 @@ const {
   toISOString,
   formatDate,
   dividedBy,
-  newlineToBr,
   toAbsoluteUrl,
-  stripNewlines,
-  stripHtml,
   getLatestCollectionItemDate,
   compileAndMinifyScss,
   toAbsoluteImageUrl,
   pathParse,
   pathJoin,
-} = require('./config/filters');
+} = require('./config/filters/filters');
 const {
   getAllPosts,
   getAllUniqueCategories,
@@ -66,7 +62,6 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addShortcode('socialIcon', socialIconShortcode);
 
   // Custom filters
-  eleventyConfig.addFilter('wordCount', wordCount);
   eleventyConfig.addFilter('limit', limit);
   eleventyConfig.addFilter('sortByKey', sortByKey);
   eleventyConfig.addFilter('where', where);
@@ -75,11 +70,8 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter('toIsoString', toISOString);
   eleventyConfig.addFilter('formatDate', formatDate);
   eleventyConfig.addFilter('dividedBy', dividedBy);
-  eleventyConfig.addFilter('newlineToBr', newlineToBr);
   eleventyConfig.addFilter('toAbsoluteUrl', toAbsoluteUrl);
   eleventyConfig.addFilter('toAbsoluteImageUrl', toAbsoluteImageUrl);
-  eleventyConfig.addFilter('stripNewlines', stripNewlines);
-  eleventyConfig.addFilter('stripHtml', stripHtml);
   eleventyConfig.addFilter('slugify', slugifyString);
   eleventyConfig.addFilter('toJson', JSON.stringify);
   eleventyConfig.addFilter('fromJson', JSON.parse);
