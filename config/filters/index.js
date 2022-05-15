@@ -28,13 +28,6 @@ const sortByKey = (arrayOfObjects, keyPath, order = 'ASC') => {
 const where = (arrayOfObjects, keyPath, value) =>
   arrayOfObjects.filter((object) => lodash.get(object, keyPath) === value);
 
-/** Returns the word count of the given string. */
-const wordCount = (str) => {
-  throwIfNotType(str, 'string');
-  const matches = str.match(/[\w\d’'-]+/gi);
-  return matches?.length ?? 0;
-};
-
 /** Converts the given markdown string to HTML, returning it as a string. */
 const toHtml = (markdownString) => {
   return markdownLib.renderInline(markdownString);
@@ -46,24 +39,6 @@ const dividedBy = (numerator, denominator) => {
     throw new Error(`Cannot divide by zero: ${numerator} / ${denominator}`);
   }
   return numerator / denominator;
-};
-
-/** Replaces every newline with a line break. */
-const newlineToBr = (str) => {
-  throwIfNotType(str, 'string');
-  return str.replace(/\n/g, '<br>');
-};
-
-/** Removes every newline from the given string. */
-const stripNewlines = (str) => {
-  throwIfNotType(str, 'string');
-  return str.replace(/\n/g, '');
-};
-
-/** Removes all tags from an HTML string. */
-const stripHtml = (str) => {
-  throwIfNotType(str, 'string');
-  return str.replace(/<[^>]+>/g, '');
 };
 
 /** Formats the given string as an absolute url. */
@@ -139,14 +114,10 @@ module.exports = {
   limit,
   sortByKey,
   where,
-  wordCount,
   toHtml,
   toISOString,
   formatDate,
   dividedBy,
-  newlineToBr,
-  stripNewlines,
-  stripHtml,
   toAbsoluteUrl,
   toAbsoluteImageUrl,
   getLatestCollectionItemDate,
