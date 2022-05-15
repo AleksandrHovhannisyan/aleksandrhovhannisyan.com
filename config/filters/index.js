@@ -41,15 +41,10 @@ const dividedBy = (numerator, denominator) => {
   return numerator / denominator;
 };
 
-/** Formats the given string as an absolute url. */
+/** Formats the given relative url as an absolute url. */
 const toAbsoluteUrl = (url) => {
   throwIfNotType(url, 'string');
-  // Replace trailing slash, e.g., site.com/ => site.com
-  const siteUrl = site.url.replace(/\/$/, '');
-  // Replace starting slash, e.g., /path/ => path/
-  const relativeUrl = url.replace(/^\//, '');
-
-  return `${siteUrl}/${relativeUrl}`;
+  return new URL(url, site.url).href;
 };
 
 /** Given a local or remote image source, returns the absolute URL to the image that will eventually get generated once the site is built. */

@@ -128,6 +128,11 @@ describe('custom 11ty filters', () => {
       site.url = 'https://site.com/';
       expect(toAbsoluteUrl('/some/path/')).toEqual(`https://site.com/some/path/`);
     });
+    it('handles file urls', () => {
+      site.url = 'https://site.com/';
+      expect(toAbsoluteUrl('/assets/images/img.png')).toEqual(`https://site.com/assets/images/img.png`);
+      expect(toAbsoluteUrl('feed.xml')).toEqual(`https://site.com/feed.xml`);
+    });
     it('throws an error if the argument is not a string', () => {
       site.url = 'https://site.com/';
       expect(() => toAbsoluteUrl(42)).toThrow();
