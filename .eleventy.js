@@ -23,7 +23,7 @@ const {
   toAbsoluteImageUrl,
   pathParse,
   pathJoin,
-} = require('./config/filters');
+} = require('./config/filters/filters');
 const {
   getAllPosts,
   getAllUniqueCategories,
