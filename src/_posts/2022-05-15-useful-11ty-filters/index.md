@@ -140,6 +140,10 @@ Relative URLs work fine for many links, but there are some places where you actu
 
 Unfortunately, 11ty doesn't have a built-in way of formatting URLs as absolute URLs relative to your site's base URL. But that's okay! We can easily implement this ourselves.
 
+{% aside %}
+**Edit**: As [Peter deHaan notes](https://github.com/11ty/eleventy/issues/2387#issuecomment-1126947870), the [11ty RSS plugin](https://www.11ty.dev/docs/plugins/rss/#supplies-the-following-nunjucks-filters) has an `absoluteUrl` filter that does precisely this. It also comes with some other handy filters for formatting RSS output.
+{% endaside %}
+
 Following [Pieter Heyvaert's recommended pattern](https://pieterheyvaert.com/blog/2019/02/25/11ty-full-paths-locally/), we can create a custom JavaScript data file to specify our site's base URL:
 
 ```js {data-file="src/_data/site.js" data-copyable=true}
