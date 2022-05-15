@@ -62,7 +62,7 @@ const toAbsoluteImageUrl = async (src, width = null) => {
   return toAbsoluteUrl(Object.values(stats)[0][0].url);
 };
 
-/** Converts the given date string to ISO8610 format. */
+/** Converts the given date string to ISO8601 format. */
 const toISOString = (dateString) => dayjs(dateString).toISOString();
 
 /** Formats a date using dayjs's conventions: https://day.js.org/docs/en/display/format */
