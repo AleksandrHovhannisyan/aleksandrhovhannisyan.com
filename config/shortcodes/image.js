@@ -47,19 +47,17 @@ const imageShortcode = async (props) => {
   };
   const imageMetadata = await Image(src, imageOptions);
 
-  // Map each unique format (e.g., jpeg, webp) to its various sizes
-  const formatSizes = Object.entries(imageMetadata).reduce((formatSizes, [format, images]) => {
-    if (!formatSizes[format]) {
-      const largestVariant = images[images.length - 1];
-      formatSizes[format] = {
-        // Other sizes of interest could go here in the future
-        largest: largestVariant,
-      };
-    }
-    return formatSizes;
-  }, {});
+  const getLargestImage = (format) => {
+    const images = imageMetadata[format];
+    return images[images.length - 1];
+  };
 
-  const { width, height } = formatSizes[baseFormat].largest;
+  const largestImages = {
+    base: getLargestImage(baseFormat),
+    optimized: getLargestImage(optimizedFormats[0]),
+  };
+
+  const { width, height } = largestImages.base;
 
   const pictureAttributes = stringifyAttributes({
     class: className,
@@ -68,7 +66,7 @@ const imageShortcode = async (props) => {
   const imgAttributes = stringifyAttributes({
     width,
     height,
-    src: formatSizes[baseFormat].largest.url,
+    src: largestImages.base.url,
     alt: escape(alt),
     class: imgClassName,
     loading: isLazy ? 'lazy' : undefined,
@@ -101,7 +99,7 @@ const imageShortcode = async (props) => {
 
   // Link to the highest resolution optimized image
   if (isLinked) {
-    return outdent`<a class="outline-offset" href="${formatSizes[optimizedFormats[0]].largest.url}">${picture}</a>`;
+    return outdent`<a class="outline-offset" href="${largestImages.optimized.url}">${picture}</a>`;
   }
 
   // Otherwise just return the plain picture tag
