@@ -364,7 +364,7 @@ return Image.generateHTML(metadata);
 But instead of relying on `Image.generateHTML`, you can return custom markup as a string! All the data you need is right there in the metadata returned by `Image`. This means that you can generate low-quality placeholder images as part of your build process, return markup consisting of placeholder `src` and `srcset` attributes, and define `data-` attributes storing the actual image data. You can then lazily load your images with very few lines of JavaScript.
 
 {% aside %}
-  **Update**: If you're interested in learning more about how this works, I wrote a tutorial on [how to lazily load images in 11ty](/blog/eleventy-image-lazy-loading/).
+  **Update**: If you're interested in learning more about how this works, I wrote a tutorial on [how to lazily load images in 11ty](/blog/eleventy-image-plugin/).
 {% endaside %}
 
 You can even customize the naming for your images through an optional argument:
