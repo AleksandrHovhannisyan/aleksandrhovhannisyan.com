@@ -4,7 +4,7 @@ description: While imagery can enrich your content, it can also slow down your s
 keywords: [11ty image, 11ty image plugin]
 categories: [webperf, 11ty, images, node]
 commentsId: 118
-lastUpdated: 2022-05-16
+lastUpdated: 2022-05-17
 redirectFrom:
   - /blog/eleventy-image-lazy-loading/
 thumbnail:
@@ -12,7 +12,7 @@ thumbnail:
 ---
 
 {% aside %}
-  **Update {% include date.html date: lastUpdated %}**: Originally, this article showed how to lazily load images using low-quality image placeholders (LQIPs) and the `IntersectionObserver` API. However, I no longer endorse that approach because it's more difficult to maintain. Instead, I recommend relying on native lazy loading with the `loading` and `decoding` attributes. If you'd like to, you can read the original article [on my site's GitHub repo](https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com/blob/edbfd9295b64e9f747ae48a4edf9942fe0e3e48e/src/_posts/2021-10-31-eleventy-image-lazy-loading/index.md).
+  **Update {% include date.html date: 2022-05-16 %}**: Originally, this article showed how to lazily load images using low-quality image placeholders (LQIPs) and the `IntersectionObserver` API. However, I no longer endorse that approach because it's more difficult to maintain. Instead, I recommend relying on native lazy loading with the `loading` and `decoding` attributes. If you'd like to, you can read the original article [on my site's GitHub repo](https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com/blob/edbfd9295b64e9f747ae48a4edf9942fe0e3e48e/src/_posts/2021-10-31-eleventy-image-lazy-loading/index.md).
 {% endaside %}
 
 Images are a core part of the web, but they don't come for free. While imagery can enrich your content and create a more engaging user experience, it can also slow down your site and create a poor user experience if it's not used responsibly. Now that Google uses page load speed as a ranking factor, developers need to put in more effort to create responsive and optimized images and deliver the best possible experience to their users.
@@ -71,7 +71,7 @@ const Image = require('@11ty/eleventy-img');
   const url = 'https://images.unsplash.com/photo-1608178398319-48f814d0750c';
 
   const stats = await Image(url, {
-    formats: ['jpeg', 'webp'],
+    formats: ['webp', 'jpeg'],
     widths: [null, 300, 600],
     dryRun: true,
   });
@@ -192,7 +192,7 @@ const imageShortcode = async (
   alt,
   className = undefined,
   widths = [400, 800, 1280],
-  formats = ['jpeg', 'webp'],
+  formats = ['webp', 'jpeg'],
   sizes = '100vw'
 ) => {
   // we'll fill this in shortly
@@ -221,12 +221,12 @@ const imageShortcode = async (
   alt,
   className = undefined,
   widths = [400, 800, 1280],
-  formats = ['jpeg', 'webp'],
+  formats = ['webp', 'jpeg'],
   sizes = '100vw'
 ) => {
   const imageMetadata = await Image(src, {
-    widths: [null, ...widths],
-    formats: [null, ...formats],
+    widths: [...widths, null],
+    formats: [...formats, null],
     outputDir: '_site/assets/images',
     urlPath: '/assets/images',
   });
@@ -242,13 +242,13 @@ Confused? Let's take a closer look at what these options do.
 `widths` is an array of image widths to generate, while `formats` is an array of image formats to generate (like `'jpeg'` or `'webp'`). Each option also accepts `null`, which acts as a placeholder for the original image width/format (determined at build time). For example, if we pass in a source image that's `2400px` wide, then the following `widths` would generate images that are `300`, `600`, and `2400` pixels wide:
 
 ```js
-widths: [null, 300, 600];
+widths: [300, 600, null];
 ```
 
 Similarly, if the source image is `image.jpeg`, the following `formats` array would generate `jpeg` and `webp` images:
 
 ```js
-formats: [null, 'webp'];
+formats: ['webp', null];
 ```
 
 For this tutorial, I'll use the following fallback widths:
@@ -260,15 +260,19 @@ For this tutorial, I'll use the following fallback widths:
 And the following fallback formats:
 
 ```js
-['jpeg', 'webp']
+['webp', 'jpeg']
 ```
 
 And I'm spreading both in alongside `null`, the original width/format:
 
 ```js
-widths: [null, ...widths],
-formats: [null, ...formats]
+widths: [...widths, null],
+formats: [...formats, null]
 ```
+
+{% aside %}
+Whereas the `widths` array is automatically sorted by the plugin, the formats array is not. Be sure to always list your optimized formats first so that their source tags appear first in the rendered markup.
+{% endaside %}
 
 That way, when I use the shortcode, I don't have to worry about passing along `null` (which isn't possible in Liquid).
 
@@ -439,12 +443,12 @@ const imageShortcode = async (
   alt,
   className = undefined,
   widths = [400, 800, 1280],
-  formats = ['jpeg', 'webp'],
+  formats = ['webp', 'jpeg'],
   sizes = '100vw'
 ) => {
   const imageMetadata = await Image(src, {
-    widths: [null, ...widths],
-    formats: [null, ...formats],
+    widths: [...widths, null],
+    formats: [...formats, null],
     outputDir: '_site/assets/images',
     urlPath: '/assets/images',
   });
@@ -618,12 +622,12 @@ const imageShortcode = async (
   alt,
   className = undefined,
   widths = [400, 800, 1280],
-  formats = ['jpeg', 'webp'],
+  formats = ['webp', 'jpeg'],
   sizes = '100vw'
 ) => {
   const imageMetadata = await Image(src, {
-    widths: [null, ...widths],
-    formats: [null, ...formats],
+    widths: [...widths, null],
+    formats: [...formats, null],
     outputDir: '_site/assets/images',
     urlPath: '/assets/images',
   });
