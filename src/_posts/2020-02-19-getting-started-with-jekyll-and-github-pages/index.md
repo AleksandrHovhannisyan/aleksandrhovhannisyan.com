@@ -1,5 +1,5 @@
 ---
-title: "Getting Started with Jekyll and GitHub Pages: Your First Website"
+title: Getting Started with Jekyll and GitHub Pages
 description: Jekyll is a static site generator that makes it easy for you to create a website. Learn how to get started with Jekyll and GitHub Pages.
 keywords: [getting started with jekyll, jekyll and github pages]
 categories: [jekyll, liquid, github]
@@ -1384,8 +1384,6 @@ Here are some example use cases for Jekyll includes:
 **Post statistics**. On my blog, each post shows the date when it was published and a measure of its reading length. This appears on both the preview cards for the posts as well as in the posts themselves. I *could* copy-paste the same markup in both locations, but if I need to change something later on, I'd need to remember to update it in both pages. Instead, I just create an include file.
 
 **Fair use disclosures**. Some of my blogs use images from the web for which I do not own the rights. Even though I always disclose the source of these images, Wikipedia still advises that you add a fair-use disclosure to your site as an additional protection against any copyright strikes. I don't find myself needing to use this very often, but when I do, I can simply drop in the include without having to copy-paste a wall of text.
-
-**Linked headings**. I wrote a separate tutorial on how you can [create linked headings in Jekyll](/blog/heading-links-in-jekyll/) that goes into this in more depth. But basically, you can set up a simple include file that takes the name of a heading you want to create and the level of the heading and turns it into an anchor heading that users can click.
 
 There's a *lot* more you can do with includes, but hopefully this gives you a good idea of what's possible!
 

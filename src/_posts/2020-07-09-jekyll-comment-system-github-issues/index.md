@@ -1,6 +1,6 @@
 ---
-title: Add Comments to Your Jekyll Blog with the GitHub Issues API
-description: Add comments to your Jekyll blog with the GitHub issues API and lazily load them for a better user experience.
+title: Add Comments to Jekyll with the GitHub Issues API
+description: Add comments to your Jekyll blog with the GitHub issues API and lazily load them for improved performance.
 keywords: [jekyll comment system]
 categories: [jekyll, github, javascript]
 commentsId: 45

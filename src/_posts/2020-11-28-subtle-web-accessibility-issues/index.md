@@ -1,7 +1,7 @@
 ---
-title: Subtle Web Accessibility Issues (And How to Fix Them)
-description: You've scored 100 on Lighthouse's accessibility audit. But is your site actually accessible, or have you overlooked more subtle accessibility issues?
-keywords: [web accessibility]
+title: Subtle Accessibility Failures (And How to Fix Them)
+description: You've scored 100 on Lighthouse's accessibility audit. But is your site actually accessible, or have you overlooked more subtle accessibility failures?
+keywords: [accessibility]
 categories: [accessibility, html]
 thumbnail: ./images/thumbnail.png
 ---
@@ -10,7 +10,7 @@ All kinds of people use the web—a good developer's job is to create not only b
 
 More importantly, you'll find that accessibility auditing tools like Lighthouse only do a superficial review of the most common accessibility issues, like skipped heading levels, anchors without text, or images without alt text. In fact, you can [build an inaccessible site with a perfect Lighthouse score](https://www.matuzo.at/blog/building-the-most-inaccessible-site-possible-with-a-perfect-lighthouse-score/), so it's certainly not a perfect tool.
 
-Clearly, there are more subtle accessibility issues that you'll need to address if you want to create the best possible user experience on your website. This is even more important if your business needs to abide by [web accessibility laws and policies](https://www.w3.org/WAI/policies/), where accessibility is not a choice but rather a requirement.
+In practice, there are more accessibility failures that you'll need to address if you want to create the best possible user experience on your website. This is even more important if your business needs to abide by [web accessibility laws and policies](https://www.w3.org/WAI/policies/), where accessibility is not a choice but rather a legal requirement.
 
 Here are just a few of the accessibility failures that you'll want to look out for in your apps and websites.
 
@@ -40,23 +40,19 @@ Click the dropdown, and pick any from the list to test your site for that partic
 
 {% include postImage.html src: "./images/protanopia.png", alt: "Emulating red-green color blindness on my website." %}
 
-Now, assuming you've tested this on your site and identified links that rely on color alone, there are a few ways you can make your anchors more accessible to people with vision deficiencies (I currently do #1):
+Now, assuming you've tested this on your site and identified links that rely on color alone, there are a few ways you can make your anchors more accessible to people with vision deficiencies:
 
-1. Use `text-decoration: underline` (and/or toggle the underline on `:hover` and `:focus`).
-2. Use `border-bottom` with a non-zero width (be sure to offset it with an equal amount of top padding).
+1. Use `text-decoration: underline`.
+2. Use `border-bottom` with a non-zero thickness (be sure to offset it with an equal amount of top padding).
 3. Use an absolutely positioned pseudo-element as the underline (not ideal).
 
-## 2. DOM Content Ordering Dictates Visual Content Ordering
+## 2. Visual Order Doesn't Match Focus Order
 
-The **static (DOM) ordering** of your elements and their **visual ordering** are two separate concerns when it comes to web accessibility. The first is your primary responsibility as a developer: You should lay out your HTML content in an order that makes sense to a user who's browsing your un-styled content. Only then should you begin to use CSS to lay out the content *visually* to match your design requirements.
+Elements are arranged statically in HTML, but their ordering isn't necessarily set in stone. For example, you can use the [`order` flexbox property](https://developer.mozilla.org/en-US/docs/Web/CSS/order) to change a flex item's order in the layout or use CSS grid columns and template areas to reposition elements in all sorts of creative ways. Unfortunately, this can create accessibility problems for screen reader users and keyboard users if not done carefully.
 
-The order in which elements are defined in your HTML is the order in which search engines and screen readers crawl that content, regardless of any styling you've applied. This means that rearranging your content *visually* with CSS will not change how the content is parsed.
+Typically, users expect to navigate your content in the order in which it is presented visually: top down, left to right in a horizontal, left-to-right [writing mode](https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode). But when you rearrange content visually with CSS, you don't change the focus order of the content, meaning the visual order and focus order may be thrown out of sync. This could be considered a violation of [WCAG Success Criterion 2.4.3 (Focus Order)](https://www.w3.org/WAI/WCAG21/Understanding/focus-order.html). Similarly, you need to be careful when using the `tabindex` HTML attribute to change an element's focus order, as this can have the same effect.
 
-So why does any of this matter? Because you can technically get away with ordering your elements however you want since you can later rearrange them into highly complex layouts using CSS Grid (and, to a lesser degree, Flexbox). But this doesn't mean that you shouldn't care about the semantic order of your content—you'll be neglecting search engines, screen readers, and keyboard users.
-
-Consider the case of a modal window's close button. You can position this as the very first child and reposition it later using CSS. But does it make sense for the close button to be the first child? If that's the case, then screen readers will encounter it immediately after announcing the modal window itself (if that's narrated at all—modal windows are typically wrapped in a `div` for lack of any better alternative). So, users will need to temporarily skip the close button in order to read and understand the modal's contents, and then potentially backtrack to the close button later on. This doesn't make sense. Instead, the close button should be one of the last children in the parent because it's unlikely that users will want to immediately close this window without any context (unless it's your awful cookie notice).
-
-## 3. Navigation Can't Be Skipped (Keyboard Users)
+## 3. Navigation Can't Be Skipped
 
 You visit a site that has a top navigation bar with plenty of useful links and dropdown menus. But you're really keen on just navigating the main content of the page. Unfortunately, there's no way to skip these navigation links, so your only option is to keep tabbing until you finally reach the main content region.
 
@@ -68,7 +64,7 @@ Since they're aesthetically intrusive, skip-navigation links are typically hidde
 
 A word of caution: Don't hide skip-navigation links with `display: none` or `visibility: hidden`. These will remove the links from your site's [accessibility tree](https://developers.google.com/web/fundamentals/accessibility/semantics-builtin/the-accessibility-tree), so they'll be ignored by screen readers. Moreover, users won't be able to tab over to them, which defeats the purpose of having skip-navigation links.
 
-Developers usually stop here at the navbar and don't consider other navigation-intensive regions of their UIs. For example, if a blog post has a [table of contents](/blog/jekyll-table-of-contents/), a user shouldn't have to tab through ever single link just to skip this section and get to the content. In fact, any time you present a user with content that serves as an aside, you need to ensure that it's *truly* optional.
+Developers usually stop here at the navbar and don't consider other navigation-intensive regions of their UIs. For example, if a blog post has a table of contents, a user shouldn't have to tab through ever single link just to skip this section and get to the content. In fact, any time you present a user with content that serves as an aside, you need to ensure that it's *truly* optional.
 
 Audit your website and identify areas of the user interface that have lots of interactive elements or links and that momentarily trap the user's focus in a region of content. Users should be able to skip these so they can jump around your site more easily.
 
@@ -76,7 +72,11 @@ Audit your website and identify areas of the user interface that have lots of in
   **Note**: The benefit of using [multiple skip links](https://webaim.org/techniques/skipnav/#multiple) is debatable. Personally, I like to use them, but one could argue that each skip navigation link is, ironically, *one more link* that a user has to tab through. I'd say the benefits outweigh the costs if you have lots of links bunched together.
 {% endaside %}
 
-## 4. Images Are Used in Place of Text
+## 4. Images in Place of Text
+
+{% quote 'WCAG Success Criterion 1.4.5 Images of Text', 'https://www.w3.org/WAI/WCAG21/Understanding/images-of-text.html' %}
+If an author can use text to achieve the same visual effect, he or she should present the information as text rather than using an image.
+{% endquote %}
 
 Developers: Please don't post screenshots of your code. They may look pretty, but that's about it. It's a trend popularized by Twitter and Medium, two platforms that have a large developer user base but whose text editors don't support proper syntax highlighting. And on Twitter in particular, you have a character limit to contend with. So, to get around this, people use tools like [Carbon](https://carbon.now.sh/) to create beautiful screenshots of their code, which they can drop into blog posts, tweets, and more:
 
@@ -109,20 +109,26 @@ Note that the first example may be your only option if your app needs to support
 
 ## 7. Decorative Images Are Not Hidden from Screen Readers
 
-You may have heard that you should always give your images alt text. This is technically true because images without an alt attribute are actually invalid HTML. But what if I told you that the alt attribute should sometimes be empty? This is one of the most commonly overlooked accessibility issues.
+You may have heard that you should always give your images alt text. This is technically true because images without an alt attribute are actually invalid HTML. But what if I told you that the alt attribute should sometimes be empty? These so-called *decorative* (presentational) images don't carry the same meaning as other images, and describing them with alt text wouldn't really anything to the user experience (in fact, it could *annoy* users).
 
-Banner images, profile photos, and blog post thumbnails are just some examples that come to mind of images that don't need alt text. Specifying alt text for these images would not contribute meaningfully to the user experience or convey any important information, aside from the fact that "there's an image (of something) here." Even if you *do* describe the image, it's unlikely that your users will 1) care, or 2) benefit from knowing what the image portrays. **It's unnecessary noise**.
+Banner images, profile photos, and article thumbnails are a few examples of images that don't always need alt text. Specifying alt text for these images would not contribute meaningfully to the user experience or convey any important information, aside from the fact that "there's an image (of something) here." Even if you *do* describe the image, it's unlikely that your users will care or benefit from knowing what the image portrays. It's unnecessary noise.
 
-These so-called **decorative (presentational) images** should be hidden from screen readers with an empty `alt` attribute and, optionally, `aria-hidden="true"`:
+Presentational images should be hidden from screen readers with an empty `alt` attribute:
 
 ```html
-<img src="/static/images/myImage.png" alt="" aria-hidden="true">
+<img src="src" alt="">
 ```
 
-Don't abuse this, though. Images that actually convey meaning—like those used in a blog post or tutorial—need to be given non-empty alt text. Note the wording—you can't simply omit the `alt` attribute from an image. All images *must* have an `alt` attribute present. Of course, as we've seen, decorative images should specify an *empty* `alt`.
+Alternatively, you can use `role="presentation"` to clobber the image's role:
+
+```html
+<img src="src" role="presentation">
+```
+
+Don't abuse this, though. Images that actually convey meaning—like those used in a blog post or tutorial—need to be given non-empty alt text. Note the wording—you can't simply omit the `alt` attribute from an image. All images *must* have an `alt` attribute present. But decorative images should specify an *empty* `alt`.
 
 ## Final Thoughts
 
-So, those are just some of the accessibility issues that you may run into on the web. There are obviously more that I can't cover in a single post, but I hope this at least gives you a good starting point for making your site more accessible.
+We only considered a handful of accessibility failures in this article. In reality, there are many more WCAG success criterions covering a wide range of user experiences. Hopefully, you now know how to identify and fix some of the less obvious accessibility issues you may encounter on the web.
 
 {% include unsplashAttribution.md name: "Joanna Kosinska", username: "joannakosinska", photoId: "AYxVEG2Zywk" %}

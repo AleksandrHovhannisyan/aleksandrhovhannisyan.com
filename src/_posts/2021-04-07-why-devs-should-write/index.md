@@ -1,8 +1,10 @@
 ---
-title: How Writing Can Help You Become a Better Developer
+title: Why Developers Should Write
 description: Writing is likely one of the last skills you associate with software development. But it plays a key role in everything that we do and can help you build a more successful career.
 keywords: [writing, dev blog, better developer, developer]
 categories: [writing, blogging, career]
+redirectFrom:
+  - /blog/how-writing-can-help-you-become-a-better-developer/
 thumbnail:
   url: https://images.unsplash.com/photo-1592819695396-064b9572a660?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
