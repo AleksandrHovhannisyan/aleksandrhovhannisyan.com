@@ -56,7 +56,7 @@
 }
 
 /// Returns the font size value corresponding to the given step as an offset from the base. Throws an error if the provided step is unrecognized.
-@function get-font-size($step) {
+@function get-font-size-custom-property($step) {
   $font-size-steps: get($config, "typeScale", "steps");
   $step-index: list.index($font-size-steps, $step);
   @if $step-index < 1 or $step-index > list.length($font-size-steps) {

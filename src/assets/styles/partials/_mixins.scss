@@ -15,7 +15,7 @@
     $step: $i - $spacing-base-index;
     $value-px: list.nth($spacing-steps, $i) * 1px;
     /* stylelint-disable-next-line custom-property-pattern */
-    --#{get-custom-property-prefix("spacing")}-#{$step}: #{to-rems($value-px)};
+    --#{get-custom-property-prefix("spacing")}-#{$step}: #{$value-px};
   }
 
   // Typography variables
@@ -79,7 +79,7 @@
 @mixin font-size($step) {
   // expose CSS var to later compute other things, e.g., spacing
   --line-height: calc(2ex + #{to-rems(13px)});
-  font-size: get-font-size($step);
+  font-size: get-font-size-custom-property($step);
   line-height: var(--line-height);
   @if $step == "xxxl" {
     letter-spacing: to-rems(-0.6px);
