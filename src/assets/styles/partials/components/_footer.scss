@@ -5,7 +5,11 @@
   color: white;
   text-align: center;
   padding-top: spacing(5);
-  padding-block-end: spacing(11);
+  padding-bottom: spacing(11);
+
+  &-container {
+    --gap: #{spacing(0)};
+  }
 
   @include mobile-lg {
     padding-block: spacing(5);
@@ -21,12 +25,6 @@
 
   h2,
   a {
-    color: white;
-  }
-
-  svg {
-    aspect-ratio: 1;
-    width: spacing(3);
-    fill: currentcolor;
+    color: inherit;
   }
 }

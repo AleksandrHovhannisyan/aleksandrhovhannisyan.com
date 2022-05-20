@@ -1,23 +1,28 @@
 <footer class="page-footer">
-  <div class="container col-wrap">
+  <div class="page-footer-container container col-wrap">
     <div class="stack gap--2">
-      <h2 class="fs-xl">Thanks for reading!</h2>
-      <p class="fs-sm"><span aria-hidden="true">&copy;</span> Copyright {{ site.author }}, 2019–Present</p>
+      <h2 class="fs-lg">Thanks for reading!</h2>
+      <p class="fs-sm">&copy; {{ site.author }}, 2019–Present</p>
     </div>
-    <ul class="page-footer-socials flex-center gap-3">
+    <ul class="page-footer-socials flex-center gap-0 fs-sm">
       {%- assign networks = socials | entries -%}
       {%- for network in networks -%}
         {%- assign id = network | first -%}
         {%- assign data = network | last -%}
         <li>
-          <a href="{{ data.url }}" target="_blank" rel="noreferrer noopener" class="outline-offset flex">
-            {% socialIcon id %}
+          <a href="{{ data.url }}" target="_blank" rel="noreferrer noopener" class="outline-offset to-underline">
+            {{ data.name }}
           </a>
         </li>
         {%- endfor -%}
         <li>
-          <a href="/feed.xml" class="outline-offset flex">
-            {% socialIcon "rss" %}
+          <a href="/sitemap.xml" class="outline-offset to-underline">
+            Sitemap
+          </a>
+        </li>
+        <li>
+          <a href="/feed.xml" class="outline-offset to-underline">
+            RSS
           </a>
         </li>
     </ul>
