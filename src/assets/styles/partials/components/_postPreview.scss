@@ -30,7 +30,6 @@
     grid-area: title;
     margin-bottom: spacing(-2);
     @include font-size("lg");
-    line-height: 1.4;
   }
 
   &-description {
