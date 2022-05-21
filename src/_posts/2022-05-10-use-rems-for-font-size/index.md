@@ -3,6 +3,7 @@ title: "Use Rems for Font Size to Respect User Preferences"
 description: There are many CSS units that can be used to size elements on a page. Rems happen to be the most reliable unit for font sizing, allowing you to scale text responsively when users change their preferred font size.
 keywords: [rems, font size, responsive font size, preferred font size]
 categories: [css, typography, math, accessibility, rems]
+lastUpdated: 2022-05-21
 thumbnail:
   url: https://images.unsplash.com/photo-1624558347497-df07e0096f5a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bWFnbmlmeWluZyUyMGdsYXNzJTIwYm9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1600&h=900&q=60
 ---
@@ -200,7 +201,7 @@ If you'd like to take this idea a step further, I've previously written about ho
 Finally, note that if you do need to convert rems to pixels in one-off situations, you can:
 
 - Work out the math by hand (e.g., `24 / 16 = 1.5rem`).
-- Use a CSS calc expression (e.g., `calc(1rem * 24px / 16px)`).
+- Use a CSS calc expression (e.g., `calc(1rem * 24 / 16)`).
 - Use a CSS preprocessor like Sass and write a custom `to-rems` utility function.
 - [Use the 62.5% font size trick to make the math easier](/blog/62-5-percent-font-size-trick/).
 
