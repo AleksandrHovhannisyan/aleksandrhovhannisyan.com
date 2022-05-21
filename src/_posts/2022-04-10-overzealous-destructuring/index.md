@@ -2,7 +2,7 @@
 title: Overzealous Destructuring
 description: Destructuring in JavaScript has many clever uses that can make your code more expressive and compact. But overusing it can make your code harder to read, trickier to debug, and more error prone.
 keywords: [javascript, destructuring]
-categories: [javascript, typescript, destructuring, react, practices]
+categories: [javascript, typescript, react, practices]
 lastUpdated: 2022-04-17
 thumbnail:
   url: https://images.unsplash.com/photo-1615678857339-4e7e51ce22db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
