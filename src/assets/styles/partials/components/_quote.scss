@@ -1,8 +1,11 @@
 blockquote {
   font-style: italic;
   border-inline-start: spacing(-3) solid;
-  margin-inline-start: clamped(12px, 24px);
   padding: spacing(-3) spacing(5);
+
+  @include tablet {
+    margin-inline-start: spacing(3);
+  }
 }
 
 cite {
