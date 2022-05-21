@@ -27,27 +27,3 @@ figcaption {
   @include font-family("title");
   @include font-weight("title", "regular");
 }
-
-h1 {
-  @include extended-font-size("xxxl");
-}
-
-h2 {
-  @include extended-font-size("xxl");
-}
-
-h3 {
-  @include extended-font-size("xl");
-}
-
-h4 {
-  @include extended-font-size("lg");
-}
-
-h5 {
-  @include extended-font-size("md");
-}
-
-h6 {
-  @include extended-font-size("base");
-}
