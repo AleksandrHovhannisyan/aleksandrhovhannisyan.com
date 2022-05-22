@@ -78,7 +78,7 @@
 
 @mixin font-size($step) {
   // expose CSS var to later compute other things, e.g., spacing
-  --line-height: calc(2ex + #{to-rems(13px)});
+  --line-height: calc(2ex + #{to-rems(12px)});
   font-size: get-font-size-custom-property($step);
   line-height: var(--line-height);
   @if $step == "xxxl" {

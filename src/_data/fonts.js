@@ -5,6 +5,9 @@ const FontWeight = {
   REGULAR: 'regular',
   MEDIUM: 'medium',
   BOLD: 'bold',
+  EXTRABOLD: 'extraBold',
+  ITALIC: 'italic',
+  BOLDITALIC: 'boldItalic',
 };
 
 const FontVariant = {
@@ -12,7 +15,8 @@ const FontVariant = {
   REGULAR: 'Regular',
   MEDIUM: 'Medium',
   BOLD: 'Bold',
-  Italic: 'Italic',
+  EXTRABOLD: 'ExtraBold',
+  ITALIC: 'Italic',
   BOLDITALIC: 'Bold Italic',
 };
 
@@ -31,38 +35,62 @@ const getFontUrl = (src) => path.join(fontPath, src);
 /** Global font config. Gets compiled into font face declarations and can be reused anywhere to access font info. */
 const fonts = {
   body: {
-    family: 'Georgia',
-    fallbacks: ['serif'],
-    hasFontFace: false,
+    family: 'Rubik',
+    fallbacks: [`system-ui`, `Arial`, `sans-serif`],
     weights: {
       [FontWeight.REGULAR]: {
         variant: FontVariant.REGULAR,
         weight: 400,
         style: FontStyle.NORMAL,
+        url: getFontUrl('rubik-latin-400.woff2'),
+        display: FontDisplay.SWAP,
+      },
+      [FontWeight.ITALIC]: {
+        variant: FontVariant.ITALIC,
+        weight: 400,
+        style: FontStyle.ITALIC,
+        url: getFontUrl('rubik-latin-italic.woff2'),
+        display: FontDisplay.SWAP,
       },
       [FontWeight.BOLD]: {
         variant: FontVariant.BOLD,
         weight: 700,
         style: FontStyle.NORMAL,
+        url: getFontUrl('rubik-latin-700.woff2'),
+        display: FontDisplay.SWAP,
+      },
+      [FontWeight.BOLDITALIC]: {
+        variant: FontVariant.BOLDITALIC,
+        weight: 700,
+        style: FontStyle.ITALIC,
+        url: getFontUrl('rubik-latin-700italic.woff2'),
+        display: FontDisplay.SWAP,
       },
     },
   },
   title: {
-    family: 'Lato',
+    family: 'Bitter',
     fallbacks: [`Georgia`, `serif`],
     weights: {
       [FontWeight.REGULAR]: {
         variant: FontVariant.REGULAR,
         weight: 400,
         style: FontStyle.NORMAL,
-        url: getFontUrl('lato-v20-latin-regular.woff2'),
+        url: getFontUrl('bitter-latin-400.woff2'),
+        display: FontDisplay.SWAP,
+      },
+      [FontWeight.ITALIC]: {
+        variant: FontVariant.ITALIC,
+        weight: 400,
+        style: FontStyle.ITALIC,
+        url: getFontUrl('bitter-latin-italic.woff2'),
         display: FontDisplay.SWAP,
       },
       [FontWeight.BOLD]: {
-        variant: FontVariant.BOLD,
-        weight: 900,
+        variant: FontVariant.EXTRABOLD,
+        weight: 700,
         style: FontStyle.NORMAL,
-        url: getFontUrl('lato-v20-latin-900.woff2'),
+        url: getFontUrl('bitter-latin-700.woff2'),
         display: FontDisplay.SWAP,
       },
     },

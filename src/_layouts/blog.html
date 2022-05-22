@@ -13,7 +13,7 @@ eleventyComputed:
 <article class="stack blog-page">
   {%- assign pageTag = tag.title | default: 'all' -%}
   <header class="stack gap-0">
-    <h1>{%- if pageTag == 'all' -%}All Blog Posts{%- else -%}Tag: {{ pageTag }}{%- endif -%}</h1>
+    <h1 class="page-title">{%- if pageTag == 'all' -%}All Blog Posts{%- else -%}Tag: {{ pageTag }}{%- endif -%}</h1>
     <p class="fs-md">
       Filter by one of the following popular tags, or <a href="/tags/">view all tags</a>.
     </p>
