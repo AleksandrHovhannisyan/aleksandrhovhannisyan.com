@@ -94,9 +94,8 @@
   font-weight: var(--fw-#{$family}-#{$weight});
 }
 
-@mixin heading {
-  @include font-family("title");
-  @include font-weight("title", "bold");
+@mixin bold {
+  @include font-weight("body", "bold");
 }
 
 @mixin line-clamp($num-lines) {
