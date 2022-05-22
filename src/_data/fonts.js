@@ -68,33 +68,6 @@ const fonts = {
       },
     },
   },
-  title: {
-    family: 'Bitter',
-    fallbacks: [`Georgia`, `serif`],
-    weights: {
-      [FontWeight.REGULAR]: {
-        variant: FontVariant.REGULAR,
-        weight: 400,
-        style: FontStyle.NORMAL,
-        url: getFontUrl('bitter-latin-400.woff2'),
-        display: FontDisplay.SWAP,
-      },
-      [FontWeight.ITALIC]: {
-        variant: FontVariant.ITALIC,
-        weight: 400,
-        style: FontStyle.ITALIC,
-        url: getFontUrl('bitter-latin-italic.woff2'),
-        display: FontDisplay.SWAP,
-      },
-      [FontWeight.BOLD]: {
-        variant: FontVariant.EXTRABOLD,
-        weight: 700,
-        style: FontStyle.NORMAL,
-        url: getFontUrl('bitter-latin-700.woff2'),
-        display: FontDisplay.SWAP,
-      },
-    },
-  },
   code: {
     family: 'IBM Plex Mono',
     fallbacks: [`Monaco`, `Consolas`, `Courier New`, `monospace`],
