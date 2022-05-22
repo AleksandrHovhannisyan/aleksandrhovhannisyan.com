@@ -1,0 +1,9 @@
+@import "../functions";
+
+.blog-page {
+  gap: spacing(5);
+
+  @include tablet {
+    gap: spacing(10);
+  }
+}

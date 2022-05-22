@@ -10,7 +10,7 @@ eleventyComputed:
       crossorigin: true
 ---
 
-<article class="stack gap-10">
+<article class="stack blog-page">
   {%- assign pageTag = tag.title | default: 'all' -%}
   <header class="stack gap-0">
     <h1>{%- if pageTag == 'all' -%}All Blog Posts{%- else -%}Tag: {{ pageTag }}{%- endif -%}</h1>
