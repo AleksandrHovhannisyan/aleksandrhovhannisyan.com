@@ -164,7 +164,7 @@ Note that if you're using the default ESLint parser (i.e., no `parser` set), you
 {
   "extends": [
     "eslint:recommended",
-    "plugin:prettier/recommended",
+    "plugin:prettier/recommended"
   ],
   "plugins": [
     "prettier"
@@ -176,7 +176,7 @@ Note that if you're using the default ESLint parser (i.e., no `parser` set), you
   },
   "parserOptions": {
     "sourceType": "module",
-    "ecmaVersion": "latest",
+    "ecmaVersion": "latest"
   },
   "env": {
     "browser": true,
@@ -363,7 +363,7 @@ Either way, you'll want to add these to your JSON:
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact",
+    "typescriptreact"
   ],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
