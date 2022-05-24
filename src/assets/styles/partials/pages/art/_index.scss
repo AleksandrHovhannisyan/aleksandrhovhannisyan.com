@@ -57,6 +57,9 @@
 
 .artwork {
   $root: &;
+  display: grid;
+  place-items: center;
+  gap: spacing(0);
 
   /* Force each artwork to create its own stacking context since some art pieces use z-index
   tricks to position individual elements higher or lower within that artwork's context. Without this,
@@ -64,36 +67,32 @@
   isolation: isolate;
   padding: spacing(3);
 
-  &-link {
-    &::after {
-      @keyframes popin {
-        0% {
-          transform: scale(0);
-          opacity: 0;
-        }
-
-        60% {
-          transform: scale(1.1);
-          opacity: 0.6;
-        }
+  &-caption {
+    @keyframes popin {
+      0% {
+        transform: scale(0);
+        opacity: 0;
       }
-      content: attr(aria-label);
-      color: var(--color-text-emphasis);
-      transform: scale(0);
-      text-align: center;
-      max-width: 30ch;
-      line-height: 1.2;
-      font-size: spacing(3);
-      will-change: transform, opacity;
-      @include font-family("cursiveBody");
-      @include transition(opacity, transform);
-    }
 
-    #{$root}:is(:focus-within, :target) &::after,
-    &:is(:active, :hover)::after {
-      animation: popin 0.3s ease-in;
-      transform: scale(1);
-      opacity: 1;
+      60% {
+        transform: scale(1.1);
+        opacity: 0.6;
+      }
     }
+    color: var(--color-text-emphasis);
+    transform: scale(0);
+    text-align: center;
+    max-width: 30ch;
+    will-change: transform, opacity;
+    line-height: 1.1;
+    font-size: var(--fs-md);
+    @include font-family("cursiveBody");
+    @include transition(opacity, transform);
+  }
+
+  &:is(:focus-within, :target, :hover) &-caption {
+    animation: popin 0.3s ease-in;
+    transform: scale(1);
+    opacity: 1;
   }
 }

@@ -26,12 +26,10 @@ eleventyComputed:
     <h1 class="title fs-xxxl">CSS Art</h1>
   </header>
   <ol class="col-wrap col-3">
-    {%- assign artCollection = collections.art | sortByKey: 'data.order' -%}
+    {%- assign artCollection = collections.art | sortByKey: 'data.order' | reverse -%}
     {%- for artwork in artCollection -%}
-      <li class="artwork{% if artwork.data.columns %} col-{{ artwork.data.columns }}{% endif %} flex-center" id="{{ artwork.fileSlug }}">
-        <a class="artwork-link flex-center flex-column gap-0 relative no-decoration" href="#{{ artwork.fileSlug }}" aria-label="{{ artwork.data.description }}">
-          {{ artwork.templateContent }}
-        </a>
+      <li {% if artwork.data.columns %}class="col-{{ artwork.data.columns }}"{% endif %}>
+        {{ artwork.templateContent }}
       </li>
     {%- endfor -%}
   </ol>
