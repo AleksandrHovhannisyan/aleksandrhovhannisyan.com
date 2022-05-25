@@ -36,7 +36,7 @@ const getFontUrl = (src) => path.join(fontPath, src);
 const fonts = {
   body: {
     family: 'Rubik',
-    fallbacks: [`system-ui`, `Arial`, `sans-serif`],
+    fallbacks: [`Rubik-fallback`],
     weights: {
       [FontWeight.REGULAR]: {
         variant: FontVariant.REGULAR,
