@@ -24,7 +24,7 @@ First, while it can make for a better user experience because it allows you to p
 
 Second, it's important to understand that client-side validation should not be relied upon for any data that you intend to later send to a server. The approach described in this tutorial is only for client-side validation in apps that are storing user input in local state. In this case, since we're not dealing with any server-side logic, we don't need to worry about this issue.
 
-## HTML Input Validation with JavaScript
+## Validating Inputs with JavaScript
 
 Over the course of the next several sections, we'll learn how to perform client-side validation using HTML and JavaScript.
 
