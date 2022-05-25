@@ -1,3 +1,10 @@
+/* https://www.industrialempathy.com/perfect-ish-font-fallback/?font=Rubik */
+/* Make a custom fallback font based on the local Arial */
+@font-face {
+  font-family: "Rubik-fallback";
+  size-adjust: 105%;
+  src: local("Arial");
+}
 {%- comment -%}Loop over the global font config and construct a series of @font-face declarations.
 We later feed this to scss to minify the output and inline it in the head for performance.{%- endcomment -%}
 {%- assign allFonts = fonts | values -%}
