@@ -1,6 +1,8 @@
-## Lato
+## Rubik
 
-> Google Fonts: [https://fonts.google.com/specimen/Lato](https://fonts.google.com/specimen/Lato)
+> Google Fonts: [https://fonts.google.com/specimen/Rubik](https://fonts.google.com/specimen/Rubik)
+
+Copyright 2015 The Rubik Project Authors (https://github.com/googlefonts/rubik)
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:
