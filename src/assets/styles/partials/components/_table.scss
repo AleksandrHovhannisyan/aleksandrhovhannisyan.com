@@ -1,5 +1,10 @@
 @import "../mixins";
 
+caption {
+  text-align: start;
+  font-style: italic;
+}
+
 th {
   white-space: nowrap;
 }

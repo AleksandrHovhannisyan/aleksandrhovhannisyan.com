@@ -10,13 +10,16 @@ noindex: true
 
 ## Fonts
 
-{% assign families = fonts | keys %}
+{% assign fontKeys = fonts | keys %}
 {% assign steps = "xs,sm,base,md,lg,xl,xxl,xxxl" | split: "," %}
 
-{%- for family in families %}
-### {{ family }}
+{%- for keyName in fontKeys %}
+  {% assign family = fonts[keyName].family %}
+### {{ keyName }} ({{ family }})
+
 <div class="scroll-x">
   <table>
+    <caption>{{ family }} rendered at different font sizes</caption>
     <thead>
       <tr>
         <th scope="col">Size</th>
@@ -27,7 +30,7 @@ noindex: true
       {%- for step in steps -%}
         <tr>
           <td>{{ step }}</td>
-          <td class="fs-{{ step }}" style="font-family: var(--ff-{{ family }});">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</td>
+          <td class="fs-{{ step }}" style="font-family: var(--ff-{{ keyName }});">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</td>
         </tr>
       {%- endfor -%}
     </tbody>
