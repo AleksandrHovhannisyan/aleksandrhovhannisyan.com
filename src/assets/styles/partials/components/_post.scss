@@ -5,6 +5,15 @@
     margin-bottom: spacing(-2);
   }
 
+  &-tag {
+    display: flex;
+
+    &::before {
+      content: "#";
+      user-select: none;
+    }
+  }
+
   &-content {
     display: flow-root;
     overflow-wrap: break-word;

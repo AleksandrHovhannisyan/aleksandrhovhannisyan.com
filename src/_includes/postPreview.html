@@ -5,11 +5,11 @@
       {%- include thumbnail.html post: post -%}
     </a>
     <div class="post-preview-meta flex flex-wrap align-center gap--2">
-      {%- include date.html date: post.date, dateFormat: "MM/DD/YYYY", class: "post-preview-date post-meta-date fs-sm" -%}
+      {%- include date.html date: post.date, dateFormat: "MM/DD/YYYY", class: "post-preview-date fs-sm" -%}
       <ul class="post-preview-tags flex flex-wrap gap--2 fs-sm" aria-label="Tags">
         {%- for category in post.data.categories -%}
           <li>
-            <a href="/tags/{{ category }}/" class="post-preview-tag post-meta-tag" aria-label="{{ category }}">
+            <a href="/tags/{{ category }}/" class="post-preview-tag post-tag" aria-label="{{ category }}">
               {{- category -}}
             </a>
           </li>
