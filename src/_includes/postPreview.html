@@ -1,24 +1,19 @@
 {%- assign titleLevel = titleLevel | default: 3 -%}
 <li>
   <article class="post-preview">
-    <a href="{{ post.url }}" aria-hidden="true" tabindex="-1" class="post-preview-thumbnail-container">
-      {%- include thumbnail.html post: post -%}
-    </a>
-    <div class="post-preview-meta flex flex-wrap align-center gap--2">
-      {%- include date.html date: post.date, dateFormat: "MM/DD/YYYY", class: "post-preview-date post-meta-date fs-sm" -%}
-      <ul class="post-preview-tags flex flex-wrap gap--2 fs-sm" aria-label="Tags">
-        {%- for category in post.data.categories -%}
-          <li>
-            <a href="/tags/{{ category }}/" class="post-preview-tag post-meta-tag" aria-label="{{ category }}">
-              {{- category -}}
-            </a>
-          </li>
-        {%- endfor -%}
-      </ul>
-    </div>
+    {%- include date.html date: post.date, dateFormat: "MMM DD, YYYY", class: "post-preview-date post-meta-date fs-sm" -%}
     <h{{ titleLevel }} class="post-preview-title">
-      <a class="to-underline" href="{{ post.url }}">{{ post.data.title }}</a>
+      <a class="post-preview-link to-underline" href="{{ post.url }}">{{ post.data.title }}</a>
     </h{{ titleLevel }}>
     <p class="post-preview-description">{{- post.data.description -}}</p>
+    <ul class="post-preview-tags flex flex-wrap gap--2 fs-sm" aria-label="Tags">
+      {%- for category in post.data.categories -%}
+        <li>
+          <a href="/tags/{{ category }}/" class="post-preview-tag post-meta-tag" aria-label="{{ category }}">
+            {{- category -}}
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
   </article>
 </li>
