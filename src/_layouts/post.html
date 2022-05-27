@@ -17,7 +17,7 @@ eleventyComputed:
 
 <article class="stack gap-6">
   <header class="post-header">
-    <div class="post-date">{% include date.html date: page.date, dateFormat: "MMM DD, YYYY" %}{%- if lastUpdated -%}&nbsp;(Last updated:&nbsp;{% include date.html date: lastUpdated, dateFormat: "MMM DD, YYYY" %}){%- endif -%}</div>
+    <div class="post-date">{% include date.html date: page.date, dateFormat: "MMM DD, YYYY" %}{%- if lastUpdated -%}&nbsp;(Updated:&nbsp;{% include date.html date: lastUpdated, dateFormat: "MMM DD, YYYY" %}){%- endif -%}</div>
     <h1 class="post-title">{{ title }}</h1>
     <ul class="post-tags flex flex-wrap gap--2" aria-label="Tags">
       {%- for category in categories -%}
