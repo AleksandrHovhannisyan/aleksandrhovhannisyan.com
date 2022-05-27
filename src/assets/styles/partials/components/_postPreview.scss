@@ -1,87 +1,54 @@
+@import "../functions";
 @import "../mixins";
 
 .post-preview {
   display: grid;
-  grid-template-areas:
-    "thumbnail"
-    "meta"
-    "title"
-    "description";
+  border-radius: spacing(-3);
+  background-color: var(--color-surface-2);
+  padding: spacing(0);
+  position: relative;
 
-  &-thumbnail-container {
-    display: flex;
-    grid-area: thumbnail;
-    user-select: none;
+  @include tablet-sm {
+    padding: spacing(5);
   }
 
-  &-thumbnail {
-    img {
-      object-fit: cover;
-      object-position: center;
-      aspect-ratio: 16 / 9;
+  &:focus-within {
+    outline: spacing(-3) solid;
+  }
 
-      [data-theme="light"] & {
-        filter: contrast(0.95);
-      }
+  &-grid {
+    display: grid;
+    gap: spacing(5);
+    /* stylelint-disable-next-line scss/no-global-function-names */
+    grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+  }
+
+  &-link {
+    &:focus {
+      outline: none;
+      text-decoration: none;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
   }
 
   &-title {
-    grid-area: title;
-    margin-bottom: spacing(-2);
+    margin-bottom: spacing(-1);
     @include font-size("lg");
   }
 
   &-description {
-    grid-area: description;
+    margin-bottom: spacing(1);
   }
 
-  &-meta {
-    grid-area: meta;
-    margin-block: spacing(-1);
-  }
-
-  &-date {
-    display: none;
-  }
-
-  @include mobile-lg {
-    &-date {
-      display: unset;
-    }
-  }
-
-  @include tablet {
-    & {
-      grid-template-columns: min-content auto;
-      column-gap: spacing(-1);
-      row-gap: spacing(-4);
-      grid-template-areas:
-        "thumbnail meta"
-        "thumbnail title"
-        "thumbnail description";
-    }
-
-    & > * {
-      margin: 0;
-    }
-
-    &-thumbnail {
-      width: to-rems(180px);
-      padding: spacing(-2) 0;
-
-      &-container {
-        margin-inline-end: spacing(-1);
-      }
-
-      &,
-      img {
-        height: 100%;
-      }
-    }
-
-    &-title {
-      @include font-size("md");
-    }
+  &-tag {
+    position: relative;
   }
 }
