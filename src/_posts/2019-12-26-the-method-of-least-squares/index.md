@@ -420,7 +420,9 @@ $$
 
 We have an $R^T$ on both sides, so those cancel and leave us with this:
 
-$ Rx = Q^Tb $
+$$
+Rx = Q^Tb
+$$
 
 Now, we have an upper-triangular, rectangular system of equations that can easily be solved via back-substitution. What are the dimensions here?
 
