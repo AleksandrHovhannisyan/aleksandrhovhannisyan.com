@@ -85,7 +85,7 @@
     max-width: 30ch;
     will-change: transform, opacity;
     line-height: 1.1;
-    font-size: var(--fs-md);
+    font-size: var(--fs-lg);
     @include font-family("cursiveBody");
     @include transition(opacity, transform);
   }
