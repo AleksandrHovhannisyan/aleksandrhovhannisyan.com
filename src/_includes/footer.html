@@ -1,8 +1,8 @@
 <footer class="page-footer">
   <div class="page-footer-container container col-wrap">
     <div class="stack gap--2">
-      <h2 class="fs-lg">Thanks for reading!</h2>
-      <p class="fs-sm">&copy; {{ site.author }}, 2019–Present</p>
+      <h2 class="fs-xl">Thanks for reading!</h2>
+      <p class="fs-sm">Unless otherwise noted, &copy; {{ site.author }}, 2019–Present</p>
       <p class="fs-xs">Last built on <time datetime="{{ buildInfo.time.raw }}">{{ buildInfo.time.formatted }}</time>
         (
           <a
@@ -14,7 +14,7 @@
         )
       </p>
     </div>
-    <ul class="page-footer-socials flex-center gap-0 fs-sm">
+    <ul class="page-footer-socials flex-center flex-wrap gap-0">
       {%- assign networks = socials | entries -%}
       {%- for network in networks -%}
         {%- assign id = network | first -%}
