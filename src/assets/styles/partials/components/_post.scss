@@ -2,6 +2,9 @@
 @import "../mixins";
 
 .post {
+  max-width: 860px;
+  margin-inline: auto;
+
   &-title {
     margin-bottom: spacing(-2);
   }

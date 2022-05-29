@@ -1,7 +1,7 @@
 /* stylelint-disable value-keyword-case */
 $config: (
   typeScale: (
-    steps: ("xs", "sm", "base", "md", "lg", "xl", "xxl", "xxxl"),
+    steps: ("xs", "sm", "base", "md", "lg", "xl", "xxl", "xxxl", "xxxxl", "xxxxxl"),
     base: "base",
     customPropertyPrefix: "fs",
     sizes: (
@@ -10,8 +10,8 @@ $config: (
         ratio: 1.18,
       ),
       max: (
-        baseFontSize: 18px,
-        ratio: 1.25,
+        baseFontSize: 19px,
+        ratio: 1.22,
       ),
     ),
   ),
