@@ -10,5 +10,4 @@
   color: var(--color-text-inverted);
   padding: spacing(-3) spacing(-1);
   @include font-size("base");
-  @include font-weight("body", "regular");
 }

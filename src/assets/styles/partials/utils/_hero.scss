@@ -1,7 +1,7 @@
 @import "../mixins";
 
 .hero {
-  max-width: 840px;
+  max-width: 860px;
 
   &-subtitle {
     @include font-size("lg");

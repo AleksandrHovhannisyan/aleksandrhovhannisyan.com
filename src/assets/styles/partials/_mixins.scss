@@ -82,7 +82,7 @@
   font-size: get-font-size-custom-property($step);
   line-height: var(--line-height);
   @if $step == "xxxl" {
-    letter-spacing: to-rems(-0.6px);
+    letter-spacing: to-rems(-0.5px);
   }
 }
 
@@ -94,8 +94,9 @@
   font-weight: var(--fw-#{$family}-#{$weight});
 }
 
-@mixin bold {
-  @include font-weight("body", "bold");
+@mixin heading {
+  @include font-family("title");
+  @include font-weight("title", "bold");
 }
 
 @mixin line-clamp($num-lines) {

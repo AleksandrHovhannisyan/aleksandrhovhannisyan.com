@@ -27,6 +27,21 @@ eleventyComputed:
       type: font/woff2
       href: "{{ fonts.body.weights.boldItalic.url }}"
       crossorigin: true
+    -
+      as: font
+      type: font/woff2
+      href: "{{ fonts.title.weights.regular.url }}"
+      crossorigin: true
+    -
+      as: font
+      type: font/woff2
+      href: "{{ fonts.title.weights.bold.url }}"
+      crossorigin: true
+    -
+      as: font
+      type: font/woff2
+      href: "{{ fonts.title.weights.extraBold.url }}"
+      crossorigin: true
 ---
 {%- comment -%}Global variables for reuse in meta tags{%- endcomment -%}
 {%- if page.url == "/" -%}
