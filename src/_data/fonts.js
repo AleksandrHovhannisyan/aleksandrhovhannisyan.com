@@ -7,7 +7,6 @@ const FontWeight = {
   BOLD: 'bold',
   EXTRABOLD: 'extraBold',
   ITALIC: 'italic',
-  BOLDITALIC: 'boldItalic',
 };
 
 const FontVariant = {
@@ -17,7 +16,6 @@ const FontVariant = {
   BOLD: 'Bold',
   EXTRABOLD: 'ExtraBold',
   ITALIC: 'Italic',
-  BOLDITALIC: 'Bold Italic',
 };
 
 const FontStyle = {
@@ -57,13 +55,6 @@ const fonts = {
         weight: 700,
         style: FontStyle.NORMAL,
         url: getFontUrl('rubik-latin-700.woff2'),
-        display: FontDisplay.SWAP,
-      },
-      [FontWeight.BOLDITALIC]: {
-        variant: FontVariant.BOLDITALIC,
-        weight: 700,
-        style: FontStyle.ITALIC,
-        url: getFontUrl('rubik-latin-700italic.woff2'),
         display: FontDisplay.SWAP,
       },
     },
