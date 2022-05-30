@@ -113,20 +113,7 @@ const fonts = {
       },
     },
   },
-  cursiveTitle: {
-    family: 'Rock Salt',
-    fallbacks: [`cursive`],
-    weights: {
-      [FontWeight.REGULAR]: {
-        variant: FontVariant.REGULAR,
-        weight: 400,
-        style: FontStyle.NORMAL,
-        url: getFontUrl('rock-salt-v11-latin-regular.woff2'),
-        display: FontDisplay.SWAP,
-      },
-    },
-  },
-  cursiveBody: {
+  cursive: {
     family: 'Reenie Beanie',
     fallbacks: [`cursive`],
     weights: {
