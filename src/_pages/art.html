@@ -24,7 +24,7 @@ eleventyComputed:
   <ol class="col-wrap col-3">
     {%- assign artCollection = collections.art | sortByKey: 'data.order' | reverse -%}
     {%- for artwork in artCollection -%}
-      <li>
+      <li {% if artwork.data.columns %}class="col-{{ artwork.data.columns }}"{% endif %}>
         {{ artwork.templateContent }}
       </li>
     {%- endfor -%}
