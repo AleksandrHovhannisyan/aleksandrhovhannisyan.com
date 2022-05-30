@@ -51,7 +51,6 @@ module.exports = (eleventyConfig) => {
   // Pass-through copy for static assets
   eleventyConfig.addPassthroughCopy(`${dir.input}/${dir.assets}/fonts`);
   eleventyConfig.addPassthroughCopy(`${dir.input}/${dir.assets}/videos`);
-  eleventyConfig.addPassthroughCopy(`${imagePaths.input}/art`);
   eleventyConfig.addPassthroughCopy(`${imagePaths.input}/404`);
 
   // Custom shortcodes
