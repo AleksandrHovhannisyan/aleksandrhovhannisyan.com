@@ -3,6 +3,16 @@
     <div class="stack gap--2">
       <h2 class="fs-lg">Thanks for reading!</h2>
       <p class="fs-sm">&copy; {{ site.author }}, 2019–Present</p>
+      <p class="fs-xs">Last built on <time datetime="{{ buildInfo.time.raw }}">{{ buildInfo.time.formatted }}</time>
+        (
+          <a
+            href="https://www.github.com/{{ site.issues.owner }}/{{ site.issues.repo }}/commit/{{ buildInfo.hash }}"
+            rel="noreferrer noopener"
+            target="_blank">
+              {{ buildInfo.hash }}
+          </a>
+        )
+      </p>
     </div>
     <ul class="page-footer-socials flex-center gap-0 fs-sm">
       {%- assign networks = socials | entries -%}
