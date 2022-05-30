@@ -12,32 +12,11 @@ eleventyComputed:
 
 <article class="stack blog-page">
   {%- assign pageTag = tag.title | default: 'all' -%}
-  <header class="stack gap-0">
-    <h1>{%- if pageTag == 'all' -%}All Blog Posts{%- else -%}Tag: {{ pageTag }}{%- endif -%}</h1>
-    <p class="fs-md">
-      Filter by one of the following popular tags, or <a href="/tags/">view all tags</a>.
+  <header class="hero stack gap-0">
+    <h1 class="hero-title">{%- if pageTag == 'all' -%}All Blog Posts{%- else -%}Tag: {{ pageTag }}{%- endif -%}</h1>
+    <p class="hero-subtitle">
+      Browse the following posts, or <a href="/tags/">view all tags</a>.
     </p>
-    <nav aria-label="Popular tags" class="relative prose prose-tight">
-      <ol class="pill-group blog-tags">
-        {%- assign popularTags = collections.popularCategories -%}
-        {%- for tag in popularTags %}
-          <li>
-            <a
-              href="{{ tag.href }}"
-              class="pill"
-              data-shape="round"
-              data-size="sm"
-              {% if pageTag == tag.title -%}
-              aria-current="page"
-              {%- endif -%}
-            >
-              {{ tag.title }}&nbsp;<span class="pill-count" aria-hidden="true">{{ tag.posts | size }}</span>
-              <span class="screen-reader-only">{{ tag.posts | size }} posts</span>
-            </a>
-          </li>
-        {% endfor %}
-      </ol>
-    </nav>
   </header>
   {{ content }}
 </article>

@@ -13,17 +13,13 @@ eleventyComputed:
       href: /assets/styles/art.css
     - as: font
       type: font/woff2
-      href: "{{ fonts.cursiveTitle.weights.regular.url }}"
-      crossorigin: true
-    - as: font
-      type: font/woff2
-      href: "{{ fonts.cursiveBody.weights.regular.url }}"
+      href: "{{ fonts.cursive.weights.regular.url }}"
       crossorigin: true
 ---
 
 <article class="stack gap-5">
   <header id="artwork-page-header" class="text-center">
-    <h1 class="title fs-xxxl">CSS Art</h1>
+    <h1 class="title fs-xxxxxl">CSS Art</h1>
   </header>
   <ol class="col-wrap col-3">
     {%- assign artCollection = collections.art | sortByKey: 'data.order' | reverse -%}

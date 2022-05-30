@@ -5,6 +5,8 @@ const FontWeight = {
   REGULAR: 'regular',
   MEDIUM: 'medium',
   BOLD: 'bold',
+  EXTRABOLD: 'extraBold',
+  ITALIC: 'italic',
 };
 
 const FontVariant = {
@@ -12,8 +14,8 @@ const FontVariant = {
   REGULAR: 'Regular',
   MEDIUM: 'Medium',
   BOLD: 'Bold',
-  Italic: 'Italic',
-  BOLDITALIC: 'Bold Italic',
+  EXTRABOLD: 'ExtraBold',
+  ITALIC: 'Italic',
 };
 
 const FontStyle = {
@@ -31,38 +33,55 @@ const getFontUrl = (src) => path.join(fontPath, src);
 /** Global font config. Gets compiled into font face declarations and can be reused anywhere to access font info. */
 const fonts = {
   body: {
-    family: 'Georgia',
-    fallbacks: ['serif'],
-    hasFontFace: false,
+    family: 'Rubik',
+    fallbacks: [`Rubik-fallback`],
     weights: {
       [FontWeight.REGULAR]: {
         variant: FontVariant.REGULAR,
         weight: 400,
         style: FontStyle.NORMAL,
+        url: getFontUrl('rubik-latin-400.woff2'),
+        display: FontDisplay.SWAP,
+      },
+      [FontWeight.ITALIC]: {
+        variant: FontVariant.ITALIC,
+        weight: 400,
+        style: FontStyle.ITALIC,
+        url: getFontUrl('rubik-latin-italic.woff2'),
+        display: FontDisplay.SWAP,
       },
       [FontWeight.BOLD]: {
         variant: FontVariant.BOLD,
         weight: 700,
         style: FontStyle.NORMAL,
+        url: getFontUrl('rubik-latin-700.woff2'),
+        display: FontDisplay.SWAP,
       },
     },
   },
   title: {
-    family: 'Lato',
-    fallbacks: [`Georgia`, `serif`],
+    family: 'Bitter',
+    fallbacks: [`Bitter-fallback`],
     weights: {
       [FontWeight.REGULAR]: {
         variant: FontVariant.REGULAR,
         weight: 400,
         style: FontStyle.NORMAL,
-        url: getFontUrl('lato-v20-latin-regular.woff2'),
+        url: getFontUrl('bitter-latin-400.woff2'),
         display: FontDisplay.SWAP,
       },
       [FontWeight.BOLD]: {
         variant: FontVariant.BOLD,
-        weight: 900,
+        weight: 700,
         style: FontStyle.NORMAL,
-        url: getFontUrl('lato-v20-latin-900.woff2'),
+        url: getFontUrl('bitter-latin-700.woff2'),
+        display: FontDisplay.SWAP,
+      },
+      [FontWeight.EXTRABOLD]: {
+        variant: FontVariant.EXTRABOLD,
+        weight: 800,
+        style: FontStyle.NORMAL,
+        url: getFontUrl('bitter-latin-800.woff2'),
         display: FontDisplay.SWAP,
       },
     },
@@ -94,20 +113,7 @@ const fonts = {
       },
     },
   },
-  cursiveTitle: {
-    family: 'Rock Salt',
-    fallbacks: [`cursive`],
-    weights: {
-      [FontWeight.REGULAR]: {
-        variant: FontVariant.REGULAR,
-        weight: 400,
-        style: FontStyle.NORMAL,
-        url: getFontUrl('rock-salt-v11-latin-regular.woff2'),
-        display: FontDisplay.SWAP,
-      },
-    },
-  },
-  cursiveBody: {
+  cursive: {
     family: 'Reenie Beanie',
     fallbacks: [`cursive`],
     weights: {

@@ -5,5 +5,9 @@
   text-transform: uppercase;
   letter-spacing: to-rems(1px);
   word-spacing: to-rems(2px);
+  width: fit-content;
+  background-color: var(--color-text-normal);
+  color: var(--color-text-inverted);
+  padding: spacing(-3) spacing(-1);
   @include font-size("base");
 }

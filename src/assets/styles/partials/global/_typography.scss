@@ -7,7 +7,7 @@ strong {
 }
 
 :is(code, kbd) {
-  font-size: 0.8em;
+  font-size: 0.82em;
   @include font-family("code");
   @include font-weight("code", "medium");
 
@@ -19,6 +19,10 @@ strong {
 :is(h1, h2, h3, h4, h5, h6, label, th) {
   color: var(--color-text-emphasis);
   @include heading;
+}
+
+h1 {
+  @include font-weight("title", "extraBold");
 }
 
 button,

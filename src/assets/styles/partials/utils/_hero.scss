@@ -1,0 +1,20 @@
+@import "../functions";
+@import "../mixins";
+
+.hero {
+  max-width: to-rems(860px);
+
+  &-subtitle {
+    @include font-size("lg");
+  }
+
+  @include tablet {
+    &-title {
+      @include font-size("xxxxl");
+    }
+
+    &-subtitle {
+      @include font-size("xl");
+    }
+  }
+}
