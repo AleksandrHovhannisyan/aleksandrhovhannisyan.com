@@ -12,10 +12,6 @@
     padding: spacing(5);
   }
 
-  &:focus-within {
-    outline: spacing(-3) solid;
-  }
-
   &-grid {
     display: grid;
     gap: spacing(5);
@@ -24,11 +20,6 @@
   }
 
   &-link {
-    &:focus {
-      outline: none;
-      text-decoration: none;
-    }
-
     &::after {
       content: "";
       position: absolute;
