@@ -5,7 +5,7 @@
   display: grid;
   border-radius: spacing(-3);
   background-color: var(--color-surface-2);
-  padding: spacing(0);
+  padding: spacing(3);
   position: relative;
 
   @include tablet-sm {
