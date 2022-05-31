@@ -1,3 +1,4 @@
+const childProcess = require('child_process');
 const sanitize = require('sanitize-html');
 const slugify = require('slugify');
 const { Octokit } = require('@octokit/rest');
@@ -75,6 +76,17 @@ const sanitizeHtml = (html) => {
   });
 };
 
+/**
+ * Credit: https://stackoverflow.com/a/34518749/5323344
+ * @param {'short'|'long'} format
+ */
+const getLatestGitCommitHash = (format = 'long') => {
+  return childProcess
+    .execSync(`git rev-parse ${format === 'short' ? '--short' : ''} HEAD`)
+    .toString()
+    .trim();
+};
+
 module.exports = {
   getAllUniqueKeyValues,
   slugifyString,
@@ -82,4 +94,5 @@ module.exports = {
   getAuthenticatedOctokit,
   stringifyAttributes,
   sanitizeHtml,
+  getLatestGitCommitHash,
 };

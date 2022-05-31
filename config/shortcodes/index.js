@@ -1,4 +1,5 @@
 const asideShortcode = require('./aside');
+const hashArtShortcode = require('./hashArt');
 const quoteShortcode = require('./quote');
 const iconShortcode = require('./icon');
 const imageShortcode = require('./image');
@@ -8,6 +9,7 @@ const artworkShortcode = require('./artwork');
 
 module.exports = {
   asideShortcode,
+  hashArtShortcode,
   quoteShortcode,
   iconShortcode,
   imageShortcode,

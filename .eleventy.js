@@ -9,6 +9,7 @@ const {
   quoteShortcode,
   faviconShortcode,
   artworkShortcode,
+  hashArtShortcode,
 } = require('./config/shortcodes');
 const {
   limit,
@@ -61,6 +62,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addShortcode('favicon', faviconShortcode);
   eleventyConfig.addShortcode('icon', iconShortcode);
   eleventyConfig.addShortcode('socialIcon', socialIconShortcode);
+  eleventyConfig.addShortcode('hashArt', hashArtShortcode);
 
   // Custom filters
   eleventyConfig.addFilter('limit', limit);

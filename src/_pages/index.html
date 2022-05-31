@@ -3,11 +3,14 @@ permalink: /
 ---
 
 <article class="stack gap-10">
-  <section class="hero stack gap--3">
-    <h1 class="hero-title">Hi, I'm Aleksandr.</h1>
-    <p class="hero-subtitle">
-      I create beautiful, accessible, and performant user experiences on the web. You can <a href="/blog/">explore my writing</a>, <a href="/about/">learn more about me</a>, or <a href="/feed.xml">subscribe to my RSS feed</a>.
-    </p>
+  <section class="flex align-center justify-between gap-5">
+    <div class="hero stack gap--3">
+      <h1 class="hero-title">Hi, I'm Aleksandr.</h1>
+      <p class="hero-subtitle">
+        I create beautiful, accessible, and performant user experiences on the web. You can <a href="/blog/">explore my writing</a>, <a href="/about/">learn more about me</a>, or <a href="/feed.xml">subscribe to my RSS feed</a>.
+      </p>
+    </div>
+    {% hashArt buildInfo.hash %}
   </section>
   <section class="stack gap-5">
     <h2 id="recent-posts" class="banner-heading">Recent Posts</h2>
