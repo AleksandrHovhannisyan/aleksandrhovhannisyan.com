@@ -3,6 +3,7 @@
 
 .hash-art-grid {
   display: none;
+  width: fit-content;
 
   @include desktop {
     display: grid;
