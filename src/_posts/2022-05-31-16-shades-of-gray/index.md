@@ -3,9 +3,10 @@ title: 16 Shades of Gray
 description: The one where I create my first generative artwork and still refuse to use any color on my site.
 keywords: [generative art, hash art, git hash]
 categories: [node, css, math, art]
+lastUpdated: 2022-06-01
 ---
 
-If you've been following me long enough, you've probably noticed that my site is completely devoid of color. A friend even remarked that I must be allergic to it because I've managed to exterminate color from every part of my UI, save for my imagery. Admittedly, I do enjoy working in grayscale because it allows me to focus on contrast, typography, and spacing over color, which can be overwhelming to implement.
+If you've been following me long enough, you've probably noticed that my site is completely devoid of color. A friend even joked that I must be allergic to color because I've exterminated it from every part of my UI, except for imagery. Admittedly, I do enjoy working in grayscale because it allows me to focus on contrast, typography, and spacing over color, which can be overwhelming to implement.
 
 {% aside %}
 This is just a fancy way of saying that I'm too lazy to pick a good color palette.
@@ -20,11 +21,9 @@ The code to do this is short—it just reads my latest Git commit hash, interpre
 ```js
 const hash = childProcess.execSync(`git rev-parse HEAD`).toString().trim();
 const bytes = new Uint8Array(Buffer.from(hash, 'hex'));
-const byteArray = Array.from(bytes).slice(0, bytes.length - 1);
-
 let result = `<div class="hash-art-grid">`;
-for (let i = 0; i < byteArray.length - 3; i++) {
-  const rgb = byteArray.slice(i, i + 3);
+for (let i = 0; i < bytes.length - 4; i++) {
+  const rgb = bytes.slice(i, i + 3);
   result += `<div class="hash-art-cell" style="background-color: rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})"></div>`;
 }
 result += `</div>`;
@@ -42,8 +41,8 @@ Also, I'm lazy.
 }
 ```
 
-Here's an example that was manually seeded with a hash of `3b5875ce12be8bd07cf00249732c8edd7da6145f`:
+Here's an example that was seeded with a hash of `3b5875ce12be8bd07cf00249732c8edd7da6145f`:
 
 {% include postImage.html src: "./images/hash.png", alt: "A four-by-four grid of grayscale tiles, rendered using the hash 3b5875ce12be8bd07cf00249732c8edd7da6145f", isLinked: false %}
 
-There is just one flaw: Mathematically speaking, the hash should eventually generate an embarrassing permutation of tiles. When you consider that I [make frequent and atomic commits](/blog/atomic-git-commits/), this may not end well. On the other hand, there are 256 grayscale values for each 16 tile, which when you do the math comes out to—*counts fingers*—lots and lots of permutations. So it's unlikely that I'll ever run into those edge cases.
+There is just one problem: Mathematically speaking, the hash should eventually generate an embarrassing permutation of tiles. When you consider that I [make frequent and atomic commits](/blog/atomic-git-commits/), this may not end well. On the other hand, there are 256 grayscale values for each of the 16 tiles, which when you do the math comes out to—*counts fingers*—lots and lots of permutations. So it's unlikely that I'll ever run into edge cases where this algorithm produces something silly.
