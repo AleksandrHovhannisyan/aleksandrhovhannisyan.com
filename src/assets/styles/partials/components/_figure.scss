@@ -1,6 +1,9 @@
 @import "../mixins";
 
 figure {
+  gap: spacing(-2);
+  @include stack;
+
   img {
     margin-inline: auto;
   }
@@ -8,9 +11,10 @@ figure {
 
 figcaption {
   text-align: center;
+  @include font-size("sm");
 
   strong {
-    @include font-family("title");
+    font-family: inherit;
     @include font-weight("title", "bold");
   }
 }

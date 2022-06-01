@@ -105,6 +105,13 @@
   -webkit-line-clamp: $num-lines;
 }
 
+// Tokens
+
+@mixin stack {
+  display: flex;
+  flex-direction: column;
+}
+
 // Breakpoint mixins
 
 @mixin mobile {

@@ -1,4 +1,5 @@
+@import "../mixins";
+
 .stack {
-  display: flex;
-  flex-direction: column;
+  @include stack;
 }
