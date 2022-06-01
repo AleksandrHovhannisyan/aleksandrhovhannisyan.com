@@ -1,15 +1,26 @@
 @import "../functions";
 @import "../mixins";
 
-.hash-art-grid {
+.home-page-hero {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: spacing(5);
+}
+
+.hero-hashart {
   display: none;
-  width: fit-content;
 
   @include desktop {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    filter: grayscale(1);
+    display: unset;
   }
+}
+
+.hash-art-grid {
+  width: fit-content;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  filter: grayscale(1);
 }
 
 .hash-art-cell {
