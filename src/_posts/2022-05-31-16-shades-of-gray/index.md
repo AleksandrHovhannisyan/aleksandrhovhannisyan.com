@@ -4,6 +4,7 @@ description: The one where I create my first generative artwork and still refuse
 keywords: [generative art, hash art, git hash]
 categories: [node, css, math, art]
 lastUpdated: 2022-06-01
+thumbnail: ./images/hash.png
 ---
 
 If you've been following me long enough, you've probably noticed that my site is completely devoid of color. A friend even joked that I must be allergic to color because I've exterminated it from every part of my UI, except for imagery. Admittedly, I do enjoy working in grayscale because it allows me to focus on contrast, typography, and spacing over color, which can be overwhelming to implement.
