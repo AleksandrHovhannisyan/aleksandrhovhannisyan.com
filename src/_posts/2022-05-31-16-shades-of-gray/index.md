@@ -24,8 +24,8 @@ const hash = childProcess.execSync(`git rev-parse HEAD`).toString().trim();
 const bytes = new Uint8Array(Buffer.from(hash, 'hex'));
 let result = `<div class="hash-art-grid">`;
 for (let i = 0; i < bytes.length - 4; i++) {
-  const rgb = bytes.slice(i, i + 3);
-  result += `<div class="hash-art-cell" style="background-color: rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})"></div>`;
+  const [r, g, b] = bytes.slice(i, i + 3);
+  result += `<div style="background-color: rgb(${r}, ${g}, ${b})"></div>`;
 }
 result += `</div>`;
 ```

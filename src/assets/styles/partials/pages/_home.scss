@@ -21,9 +21,9 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   filter: grayscale(1);
-}
 
-.hash-art-cell {
-  aspect-ratio: 1;
-  width: spacing(10);
+  > * {
+    aspect-ratio: 1;
+    width: spacing(10);
+  }
 }
