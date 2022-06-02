@@ -76,24 +76,29 @@
   @extend .#{get-custom-property-prefix("typeScale")}-#{$step};
 }
 
-@mixin font-size($step) {
-  // expose CSS var to later compute other things, e.g., spacing
-  --line-height: calc(2ex + #{to-rems(12px)});
-  font-size: get-font-size-custom-property($step);
-  line-height: var(--line-height);
-}
-
-@mixin font-family($family) {
-  font-family: var(--ff-#{$family});
-}
-
-@mixin font-weight($family, $weight) {
-  font-weight: var(--fw-#{$family}-#{$weight});
+@mixin font($size: null, $family: null, $weight: null) {
+  @if not $size and not $family and not $weight {
+    @error "You must specify at least a font size or a font family + weight when using the font mixin.";
+  }
+  // Don't ever set family without a weight, and vice versa, since not all fonts have the same weights (in which case the inherited font weight may look weird)
+  @if $weight and not $family or $family and not $weight {
+    @error "Cannot set font family without a weight, and vice versa.";
+  }
+  @if $size {
+    // expose CSS var to later compute other things, e.g., spacing
+    --line-height: calc(2ex + #{to-rems(12px)});
+    font-size: get-font-size-custom-property($size);
+    line-height: var(--line-height);
+  }
+  // Setting family and weight together
+  @if $family {
+    font-family: var(--ff-#{$family});
+    font-weight: var(--fw-#{$family}-#{$weight});
+  }
 }
 
 @mixin heading {
-  @include font-family("title");
-  @include font-weight("title", "bold");
+  @include font($family: "title", $weight: "bold");
 }
 
 @mixin line-clamp($num-lines) {

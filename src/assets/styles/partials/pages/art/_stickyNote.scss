@@ -39,6 +39,5 @@
 .sticky-note-description {
   color: black;
   margin: 0;
-  @include font-size("lg");
-  @include font-family("cursive");
+  @include font($family: "cursive", $weight: "regular", $size: "lg");
 }

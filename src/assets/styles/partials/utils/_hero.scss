@@ -5,16 +5,16 @@
   max-width: to-rems(860px);
 
   &-subtitle {
-    @include font-size("lg");
+    @include font($size: "lg");
   }
 
   @include tablet {
     &-title {
-      @include font-size("xxxxl");
+      @include font($size: "xxxxl");
     }
 
     &-subtitle {
-      @include font-size("xl");
+      @include font($size: "xl");
     }
   }
 }

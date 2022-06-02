@@ -11,7 +11,7 @@ body {
   background-color: var(--color-surface-1);
   color: var(--color-text-normal);
   padding-bottom: var(--navbar-height);
-  @include font-weight("body", "regular");
+  @include font($family: "body", $weight: "regular");
   @include mobile-lg {
     padding-bottom: unset;
   }

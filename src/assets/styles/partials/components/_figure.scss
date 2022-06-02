@@ -11,11 +11,10 @@ figure {
 
 figcaption {
   text-align: center;
-  @include font-size("sm");
+  @include font($size: "sm");
 
   strong {
-    font-family: inherit;
-    @include font-weight("title", "bold");
+    @include font($family: "title", $weight: "bold");
   }
 }
 

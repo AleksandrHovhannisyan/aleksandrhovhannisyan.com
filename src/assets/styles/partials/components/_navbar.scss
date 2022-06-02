@@ -17,8 +17,7 @@
   position: relative;
   // Shared typography styles for all navbar text
   color: white;
-  @include font-family("title");
-  @include font-weight("title", "regular");
+  @include font($family: "title", $weight: "regular");
 
   a {
     text-decoration: none;

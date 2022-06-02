@@ -13,7 +13,7 @@
     text-transform: uppercase;
     letter-spacing: to-rems(1px);
     margin-bottom: spacing(-3);
-    @include font-size("sm");
+    @include font($size: "sm");
   }
 
   &-tag {
@@ -34,7 +34,7 @@
     #skip-toc {
       transform: translateY(-50%);
       padding: spacing(-4) spacing(-2);
-      @include font-weight("body", "bold");
+      @include font($family: "body", $weight: "bold");
     }
 
     .toc-list {

@@ -9,7 +9,6 @@
     max-width: fit-content;
     margin: 0 auto;
     position: relative;
-    @include font-weight("title", "extraBold");
 
     &::after {
       @keyframes subtitle-pulse {
@@ -32,9 +31,7 @@
       width: 100%;
       animation: subtitle-pulse 1s ease infinite alternate-reverse;
       will-change: transform;
-      @include font-size("md");
-      @include font-family("cursive");
-      @include font-weight("cursive", "regular");
+      @include font($family: "cursive", $weight: "regular", $size: "md");
 
       @include mobile-lg {
         left: unset;
@@ -85,7 +82,7 @@
     will-change: transform, opacity;
     line-height: 1.1;
     font-size: var(--fs-lg);
-    @include font-family("cursive");
+    @include font($family: "cursive", $weight: "regular");
     @include transition(opacity, transform);
   }
 

@@ -2,32 +2,32 @@
 @import "../functions";
 
 strong {
-  @include font-family("body");
-  @include font-weight("body", "bold");
+  @include font($family: "body", $weight: "bold");
 }
 
 :is(code, kbd) {
   font-size: 0.82em;
-  @include font-family("code");
-  @include font-weight("code", "medium");
+  @include font($family: "code", $weight: "medium");
 
   :is(strong, h1, h2, h3, h4, h5, h6) & {
-    @include font-weight("code", "bold");
+    @include font($family: "code", $weight: "bold");
   }
 }
 
 :is(h1, h2, h3, h4, h5, h6, label, th) {
   color: var(--color-text-emphasis);
+}
+
+:is(h2, h3, h4, h5, h6, label, th) {
   @include heading;
 }
 
 h1 {
-  @include font-weight("title", "extraBold");
+  @include font($family: "title", $weight: "extraBold");
 }
 
 button,
 .button,
 figcaption {
-  @include font-family("title");
-  @include font-weight("title", "regular");
+  @include font($family: "title", $weight: "regular");
 }

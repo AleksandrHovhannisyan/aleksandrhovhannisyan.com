@@ -32,7 +32,7 @@
       white-space: pre-wrap;
     }
     @include headings {
-      @include font-size("base");
+      @include font($size: "base");
     }
   }
 }

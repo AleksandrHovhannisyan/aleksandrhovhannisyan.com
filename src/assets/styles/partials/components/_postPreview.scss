@@ -32,7 +32,7 @@
 
   &-title {
     margin-bottom: spacing(-1);
-    @include font-size("lg");
+    @include font($size: "lg");
   }
 
   &-description {

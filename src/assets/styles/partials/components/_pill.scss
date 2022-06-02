@@ -12,8 +12,7 @@
   align-items: center;
   background-color: var(--color-surface-3);
   color: var(--color-text-emphasis);
-  @include font-family("code");
-  @include font-weight("code", "regular");
+  @include font($family: "code", $weight: "regular");
 
   &[data-shape="round"] {
     border-radius: spacing(8);
@@ -21,18 +20,16 @@
 
   &[data-size="sm"] {
     padding: spacing(-3) spacing(0);
-    @include font-size("sm");
+    @include font($size: "sm");
   }
 
   &[data-size="xs"] {
     padding: spacing(-4) spacing(-1);
-    @include font-size("xs");
-    @include font-weight("code", "medium");
+    @include font($family: "code", $weight: "medium", $size: "xs");
   }
 
   &-count {
-    @include font-size("xs");
-    @include font-weight("code", "medium");
+    @include font($family: "code", $weight: "medium", $size: "xs");
   }
 }
 
