@@ -26,12 +26,13 @@
   letter-spacing: inherit;
 }
 
+// Responsive media with a width and height set in their HTML need this reset
 :where(img, video) {
   height: auto;
-  display: block;
 }
 
-:where(img, iframe, video, table) {
+:where(img, iframe, video) {
+  display: block;
   max-width: 100%;
 }
 
@@ -42,11 +43,6 @@
 
 :where(ul, ol) {
   list-style: none;
-}
-
-:where(table) {
-  border-collapse: collapse;
-  overflow-x: auto;
 }
 
 // https://css-tricks.com/standardizing-focus-styles-with-css-custom-properties/

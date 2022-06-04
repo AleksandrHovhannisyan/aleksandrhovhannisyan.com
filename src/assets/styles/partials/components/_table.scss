@@ -1,5 +1,9 @@
 @import "../mixins";
 
+table {
+  border-collapse: collapse;
+}
+
 caption {
   text-align: start;
   font-style: italic;
