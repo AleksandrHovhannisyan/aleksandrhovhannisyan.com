@@ -5,7 +5,6 @@ keywords: [tailwind css, tailwind, don't like tailwind]
 categories: [css, tailwind, frameworks]
 lastUpdated: 2021-12-18
 commentsId: 77
-isFeatured: true
 thumbnail: ./images/thumbnail.png
 ---
 

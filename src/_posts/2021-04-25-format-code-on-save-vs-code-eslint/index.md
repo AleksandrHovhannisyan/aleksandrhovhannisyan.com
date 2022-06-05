@@ -4,7 +4,6 @@ description: Never worry about manually formatting your code again. Improve your
 keywords: [format code on save, auto-format code on save, auto-formatting code, eslint, vs code, prettier]
 categories: [eslint, vscode, tooling]
 commentsId: 80
-isFeatured: true
 thumbnail: ./images/thumbnail.png
 lastUpdated: 2021-10-29
 ---

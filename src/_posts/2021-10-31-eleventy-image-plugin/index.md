@@ -5,6 +5,7 @@ keywords: [11ty image, 11ty image plugin]
 categories: [webperf, 11ty, images, node]
 commentsId: 118
 lastUpdated: 2022-05-17
+isFeatured: true
 redirectFrom:
   - /blog/eleventy-image-lazy-loading/
 thumbnail:
