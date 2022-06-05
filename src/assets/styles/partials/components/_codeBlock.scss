@@ -4,9 +4,8 @@
 
 /* VS Code Dark Plus theme: https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vsc-dark-plus.css */
 
-$code-block-padding: spacing(5);
-
 pre[class*="language-"] {
+  --code-block-padding: #{spacing(5)};
   background: var(--color-code-background);
   box-shadow: var(--shadow-code-block);
   color: var(--color-code-text);
@@ -24,7 +23,7 @@ pre[class*="language-"] {
   }
 
   code {
-    padding: $code-block-padding;
+    padding: var(--code-block-padding);
     text-align: start;
     white-space: pre;
     word-spacing: normal;
@@ -35,7 +34,7 @@ pre[class*="language-"] {
     display: block;
 
     &[data-file] {
-      padding-top: calc(#{$code-block-padding} + 3em);
+      padding-top: calc(var(--code-block-padding) + 3em);
 
       // File name
       &::before {
@@ -45,7 +44,7 @@ pre[class*="language-"] {
         left: 0;
         color: var(--color-code-text);
         word-break: break-all;
-        padding: $code-block-padding $code-block-padding 0;
+        padding: var(--code-block-padding) var(--code-block-padding) 0;
         @include font($family: "title", $weight: "bold", $size: "sm");
       }
     }
@@ -139,8 +138,11 @@ pre[class*="language-bash"] {
 .copy-code-button {
   opacity: 0;
   position: absolute;
-  right: $code-block-padding;
-  top: $code-block-padding;
+  right: var(--code-block-padding);
+  // For one-liners, cap to 50% from the top
+  /* stylelint-disable-next-line scss/no-global-function-names */
+  top: min(var(--code-block-padding) * 1.5, 50%);
+  transform: translateY(-50%);
   display: none;
   color: var(--color-code-text);
   background-color: var(--color-code-overlay-1);
