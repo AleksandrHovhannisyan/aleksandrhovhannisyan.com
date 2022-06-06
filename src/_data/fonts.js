@@ -62,27 +62,23 @@ const fonts = {
   title: {
     family: 'Bitter',
     fallbacks: [`Bitter-fallback`],
+    isVariable: true,
+    style: FontStyle.NORMAL,
+    url: getFontUrl('bitter-latin-variable.woff2'),
+    display: FontDisplay.SWAP,
+    variableWeights: {
+      min: 100,
+      max: 900,
+    },
     weights: {
       [FontWeight.REGULAR]: {
-        variant: FontVariant.REGULAR,
         weight: 400,
-        style: FontStyle.NORMAL,
-        url: getFontUrl('bitter-latin-400.woff2'),
-        display: FontDisplay.SWAP,
       },
       [FontWeight.BOLD]: {
-        variant: FontVariant.BOLD,
         weight: 700,
-        style: FontStyle.NORMAL,
-        url: getFontUrl('bitter-latin-700.woff2'),
-        display: FontDisplay.SWAP,
       },
       [FontWeight.EXTRABOLD]: {
-        variant: FontVariant.EXTRABOLD,
         weight: 800,
-        style: FontStyle.NORMAL,
-        url: getFontUrl('bitter-latin-800.woff2'),
-        display: FontDisplay.SWAP,
       },
     },
   },
