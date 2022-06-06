@@ -43,6 +43,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "feather-icons": "^4.28.0",
+    "fontkit": "^1.9.0",
     "husky": "^4.3.0",
     "jest": "^27.5.1",
     "lint-staged": "^12.1.7",
