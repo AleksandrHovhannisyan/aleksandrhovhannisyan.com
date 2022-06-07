@@ -3,6 +3,7 @@ title: Add Build Info to an 11ty Site
 description: Expose useful information about your 11ty site at build time to all templates using global data. Among other things, this can be used to show your site's build time, package version, and the latest Git commit hash.
 keywords: [11ty, 11ty build]
 categories: [11ty, node, git]
+lastUpdated: 2022-06-07
 ---
 
 In a recent update to my site, I decided to show a helpful notice in my footer that timestamps my build, writes the abbreviated commit hash from Git, and links to the changeset on my GitHub repo for ease of reference. You can expose all of this information and much more to your 11ty templates using a simple JavaScript data file.
@@ -39,12 +40,13 @@ module.exports = () => {
     time: {
       raw: now.toISOString(),
       formatted: `${buildTime} ${timeZone}`,
-  }
-}
+    },
+  };
+};
 ```
 
 {% aside %}
-  The [`Intl.DateTiemFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat) constructor accepts an additional option named `timeZoneName` that can be used to render the time zone. Unfortunately, this cannot be used together with the `dateStyle` option. Hence why I'm interpolating the time zone manually.
+  The [`Intl.DateTimeFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat) constructor accepts an additional option named `timeZoneName` that can be used to render the time zone. Unfortunately, this cannot be used together with the `dateStyle` option. Hence why I'm interpolating the time zone manually.
 {% endaside %}
 
 You may be wondering why I'm returning an object for the build time instead of just a single string. The main reason for this is so I can later render this information in the [`time` HTML element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time) for semantics, which expects a `datetime` attribute and the formatted date as its child:
