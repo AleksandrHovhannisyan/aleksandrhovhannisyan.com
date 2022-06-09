@@ -4,8 +4,6 @@ description: Sometimes, I prefer to compose text right in my browser and copy it
 keywords: [designMode, 11ty]
 categories: [11ty, javascript, environment-variables]
 commentsId: 152
-thumbnail:
-  url: https://images.unsplash.com/photo-1576153192396-180ecef2a715?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 Sometimes, I prefer to compose text right in my browser and copy it over to my source files, especially if the text has a constrained width, if I want to test certain overflow edge cases, or if I'm worried about getting the wording right. The painful way of doing this is by editing the text node in dev tools, but a much better alternative is to enable [document design mode](https://developer.mozilla.org/en-US/docs/Web/API/Document/designMode). When `designMode` is set to `'on'`, all of the text and elements on the page become editable; this mode even includes helpful squiggly underlines to point out any spelling mistakes on the page. I find this useful when I'm tweaking copy or designing UIs with constrained widths—rather than waiting for my page to hot reload, I can just edit it directly in my browser and then copy the final result over to my source file.
