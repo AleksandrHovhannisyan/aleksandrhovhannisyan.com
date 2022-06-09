@@ -3,6 +3,7 @@ title: Make Atomic Git Commits
 description: It can be tempting to lump unrelated code changes into a single commit, but this makes it difficult to debug and time travel in Git. Prefer to write atomic commits that have a single responsibility.
 keywords: [atomic commits, atomic git commits, git]
 categories: [git, practices]
+lastUpdated: 2022-06-08
 thumbnail:
   url: https://images.unsplash.com/photo-1614350292382-c448d0110dfa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
@@ -21,9 +22,9 @@ I've recently developed a habit of making **atomic commits** to keep my work mor
 
 When developers discuss clean code, they often mention the **single responsibility principle**, which states that a unit of code (like a function or "component") should concern itself with doing only one task. This makes that unit of code easier to test and reuse.
 
-We can easily extend this principle to Git, favoring **atomic commits** that are responsible for documenting a single, complete unit of work. This doesn't mean that each commit needs to be limited to a single file or only a few lines of code (but if that's the case, then so be it). Rather, it means that you should be able to describe your changes with a single, meaningful message without trying to tack on additional information about some unrelated work that you did.
+We can easily extend this principle to Git, favoring **atomic commits** that are responsible for documenting a single, complete unit of work. This doesn't mean that each commit needs to be limited to a single file or only a few lines of code (but if that's the case, then so be it). Rather, it means that you should be able to describe your changes with a single, meaningful message without trying to tack on additional information about some unrelated work that you did. Another way to define an atomic commit is one that can be reverted without any unwanted side effects or regressions, aside from what you'd expect based on its message. If a commit is removed from your git commit history but doing so removes other legitimate changes, then that commit wasn't atomic.
 
-You shouldn't enforce this imperiously or expect that it will be productive for everyone on your team. But in any case, writing atomic commits is a good practice that you may find useful in your workflow.
+You shouldn't enforce this practice imperiously or expect that it will be productive for everyone on your team. But in any case, writing atomic commits is a good practice that you may find useful in your workflow.
 
 ## There's No Such Thing as Too Many Commits
 
@@ -42,7 +43,13 @@ You get the idea.
 
 Despite what you might think, pushing lots of commits doesn't make it more difficult to do git logs or time travel in a code base—in fact, it can actually make these tasks *easier* by isolating changes from each other, allowing you to travel to a specific point in time when just *one* change was made. You can clearly differentiate between commits `X`, `X-1`, and `X+1`.
 
-As a compromise, some teams may follow a squash-and-rebase workflow, where developers are free to make as many commits as they want, but these are later rebased into a single commit before a PR is finally merged. I don't like this workflow, but some teams do use it.
+### To Squash or Not to Squash?
+
+As a compromise, some teams follow a [squash-and-rebase workflow](/blog/undoing-changes-in-git/#squashing), where developers are free to make as many commits as they want on their branch, but those commits are later squashed into a single commit via an interactive rebase before the pull request is merged into the target branch.
+
+While this does make your commit history more compact, I've found that this workflow actually defeats the purpose of using atomic commits in the first place. Sure, the extended git commit description will still list the individual messages from all of the squashed commits, but those commits are more like artifacts—they're not valid refs in git's history unless you recover them with your local [git reflog](/blog/undoing-changes-in-git/#6-using-git-reflog). Other developers won't be able to revert or time-travel to those commits in history.
+
+Note that squashing *does* make sense if some of your intermediate commits were made by accident and should've actually been been part of another commit. In that case, it wouldn't make sense to keep those commits separate. You could also use squashing to clean up noisy or meaningless commits, like if you're trying to trigger a CI pipeline to rerun (but you're better off amending the latest commit and force-pushing to your branch, rather than making commits like `test` or `y u no work`).
 
 ## The Benefits of Writing Atomic Commits in Git
 
