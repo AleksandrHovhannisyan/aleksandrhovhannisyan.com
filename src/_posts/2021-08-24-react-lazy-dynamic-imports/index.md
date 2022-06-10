@@ -4,7 +4,7 @@ description: Not all static imports are immediately needed, and unnecessary impo
 keywords: [React.lazy, dynamically import components, dynamic import, lazy]
 categories: [react, webperf, javascript, async]
 commentsId: 106
-lastUpdated: 2021-12-17
+lastUpdated: 2022-06-10
 thumbnail:
   url: https://images.unsplash.com/photo-1570288685369-f7305163d0e3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
@@ -192,13 +192,21 @@ Second, as I noted earlier, dynamic imports in React require that you specify a 
 
 A classic workaround for this is to create skeleton loader components that closely approximate the size of the real content. That way, when the dynamically imported component renders for the first time, your app is able to seamlessly transition from placeholder UI to real UI.
 
-Finally, it's worth noting that as of this writing, [you can't lazily import named exports from modules](https://github.com/facebook/react/issues/14603) in React, even though it's possible in vanilla JavaScript. So this won't work:
+Finally, it's worth noting that as of this writing, [you can't lazily import named exports from modules](https://reactjs.org/docs/code-splitting.html#named-exports) in React, even though it's possible in vanilla JavaScript. So this won't work:
 
 ```jsx
-const { Export1, Export2 } = lazy(() => import('path/to/component'));
+const { Export1, Export2 } = lazy(() => import('import/path'));
 ```
 
-One workaround is to re-export those modules as default exports from an intermediate module.
+One workaround is to re-export those modules as default exports from an intermediate module and then lazily import those default exports:
+
+```js {data-file="Export1.js"}
+export { Export1 as default } from 'import/path';
+```
+
+```js {data-file="Export2.js"}
+export { Export2 as default } from 'import/path';
+```
 
 ## Don't Worry, Be Lazy
 
