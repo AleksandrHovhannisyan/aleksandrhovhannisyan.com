@@ -4,7 +4,7 @@ description: While imagery can enrich your content, it can also slow down your s
 keywords: [11ty image, 11ty image plugin]
 categories: [webperf, 11ty, images, node]
 commentsId: 118
-lastUpdated: 2022-05-17
+lastUpdated: 2022-06-10
 isFeatured: true
 redirectFrom:
   - /blog/eleventy-image-lazy-loading/
@@ -461,7 +461,7 @@ const imageShortcode = async (
     decoding: "async",
   };
 
-  return Image.generateHTML(metadata, imageAttributes);
+  return Image.generateHTML(imageMetadata, imageAttributes);
 };
 ```
 
