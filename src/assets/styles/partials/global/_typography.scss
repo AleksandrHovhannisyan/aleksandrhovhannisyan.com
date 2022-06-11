@@ -16,18 +16,5 @@ strong {
 
 :is(h1, h2, h3, h4, h5, h6, label, th) {
   color: var(--color-text-emphasis);
-}
-
-:is(h2, h3, h4, h5, h6, label, th) {
   @include heading;
-}
-
-h1 {
-  @include font($family: "title", $weight: "extraBold");
-}
-
-button,
-.button,
-figcaption {
-  @include font($family: "title", $weight: "regular");
 }

@@ -65,10 +65,7 @@ const fonts = {
         weight: 400,
       },
       [FontWeight.BOLD]: {
-        weight: 700,
-      },
-      [FontWeight.EXTRABOLD]: {
-        weight: 800,
+        weight: 750,
       },
     },
   },

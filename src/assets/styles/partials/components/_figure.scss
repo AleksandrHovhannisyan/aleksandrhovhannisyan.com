@@ -12,10 +12,6 @@ figure {
 figcaption {
   text-align: center;
   @include font($size: "sm");
-
-  strong {
-    @include font($family: "title", $weight: "bold");
-  }
 }
 
 :is(figcaption, cite) {
