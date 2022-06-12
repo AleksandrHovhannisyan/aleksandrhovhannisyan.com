@@ -10,6 +10,7 @@ const {
   faviconShortcode,
   artworkShortcode,
   hashArtShortcode,
+  nanoIdShortcode,
 } = require('./config/shortcodes');
 const {
   limit,
@@ -36,7 +37,6 @@ const markdownLib = require('./config/plugins/markdown');
 const { dir, imagePaths, scriptDirs } = require('./config/constants');
 const { slugifyString } = require('./config/utils');
 const { escape } = require('lodash');
-const { nanoid } = require('nanoid');
 
 const TEMPLATE_ENGINE = 'liquid';
 
@@ -64,7 +64,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addShortcode('icon', iconShortcode);
   eleventyConfig.addShortcode('socialIcon', socialIconShortcode);
   eleventyConfig.addShortcode('hashArt', hashArtShortcode);
-  eleventyConfig.addShortcode('nanoid', () => nanoid());
+  eleventyConfig.addShortcode('nanoid', nanoIdShortcode);
 
   // Custom filters
   eleventyConfig.addFilter('limit', limit);

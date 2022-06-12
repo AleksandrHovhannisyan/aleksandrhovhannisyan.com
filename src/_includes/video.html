@@ -3,7 +3,7 @@
 {%- assign autoplay = autoplay | default: 'false' -%}
 {%- capture captionId -%}{% nanoid %}{%- endcapture -%}
 <figure class="full-bleed">
-  <video loading="{{ loading }}" controls autoplay="{{ autoplay }}" width="{{ width }}" height="{{ height }}">
+  <video loading="{{ loading }}" controls autoplay="{{ autoplay }}" width="{{ width }}" height="{{ height }}" {% if caption %}aria-describedby="{{ captionId }}"{% endif %}>
     <source src="{{ src }}" type="{{ sourceType }}">
   </video>
   {%- if caption -%}
