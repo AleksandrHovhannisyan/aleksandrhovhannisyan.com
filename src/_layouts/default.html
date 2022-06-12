@@ -93,6 +93,9 @@ eleventyComputed:
   {%- if commentsId -%}
     <script type="module" src="/assets/scripts/comments.mjs"></script>
   {%- endif -%}
+  {%- for script in scripts -%}
+    <script type="module" src="{{ script }}"></script>
+  {%- endfor -%}
   {%- comment -%}Open Graph social media previews{%- endcomment -%}
   <meta property="og:title" content="{{ pageTitle }}">
   {%- if ogImage -%}

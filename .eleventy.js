@@ -110,7 +110,11 @@ module.exports = (eleventyConfig) => {
   // Post-processing
   eleventyConfig.on('afterBuild', () => {
     return esbuild.build({
-      entryPoints: [path.join(scriptDirs.input, 'index.mjs'), path.join(scriptDirs.input, 'comments.mjs')],
+      entryPoints: [
+        path.join(scriptDirs.input, 'index.mjs'),
+        path.join(scriptDirs.input, 'carousel.mjs'),
+        path.join(scriptDirs.input, 'comments.mjs'),
+      ],
       entryNames: '[dir]/[name]',
       outdir: scriptDirs.output,
       format: 'esm',
@@ -119,6 +123,9 @@ module.exports = (eleventyConfig) => {
       splitting: true,
       minify: true,
       sourcemap: process.env.ELEVENTY_ENV !== 'production',
+      loader: {
+        '.svg': 'text',
+      },
     });
   });
 
