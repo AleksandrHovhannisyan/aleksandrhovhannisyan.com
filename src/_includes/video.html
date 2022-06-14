@@ -1,9 +1,7 @@
 {%- assign sourceType = sourceType | default: 'video/mp4' -%}
-{%- assign loading = loading | default: 'lazy' -%}
-{%- assign autoplay = autoplay | default: 'false' -%}
 {%- capture captionId -%}{% nanoid %}{%- endcapture -%}
 <figure class="full-bleed">
-  <video loading="{{ loading }}" controls autoplay="{{ autoplay }}" width="{{ width }}" height="{{ height }}" {% if caption %}aria-describedby="{{ captionId }}"{% endif %}>
+  <video controls width="{{ width }}" height="{{ height }}" {% if caption %}aria-describedby="{{ captionId }}"{% endif %}>
     <source src="{{ src }}" type="{{ sourceType }}">
   </video>
   {%- if caption -%}
