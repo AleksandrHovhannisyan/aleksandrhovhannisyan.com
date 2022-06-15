@@ -13,6 +13,8 @@ const markdownLib = markdownIt({
   breaks: false,
   linkify: true,
 })
+  // https://github.com/11ty/eleventy/issues/2438
+  .disable('code')
   .use(markdownItPrism, {
     defaultLanguage: 'plaintext',
   })
