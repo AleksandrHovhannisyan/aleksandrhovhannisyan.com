@@ -188,7 +188,7 @@ First, as we saw, dynamic imports require your app to make additional network re
 
 Second, as I noted earlier, dynamic imports in React require that you specify a fallback UI that gets shown until the component is fetched at some later point in time. If your fallback UI and the real UI differ drastically in the amount of space that they occupy on the page, then this may cause layout shifts, pushing the surrounding content aside to make room once the component has loaded. The original demo used a placeholder with roughly the same dimensions as the real content, so no layout shifts occurred. But here's another version of the same app with a poorly styled placeholder:
 
-{% include video.html src: '/assets/videos/react-dynamic-import-layout-shift.mp4', width: 1224, height: 586, sourceType: 'video/mp4' %}
+{% include video.html src: '/assets/videos/react-dynamic-import-layout-shift.mp4', width: 1230, height: 586, sourceType: 'video/mp4' %}
 
 A classic workaround for this is to create skeleton loader components that closely approximate the size of the real content. That way, when the dynamically imported component renders for the first time, your app is able to seamlessly transition from placeholder UI to real UI.
 
