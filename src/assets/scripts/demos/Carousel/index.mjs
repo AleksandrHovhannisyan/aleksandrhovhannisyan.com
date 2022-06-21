@@ -1,4 +1,4 @@
-import Carousel from './components/Carousel.mjs';
+import Carousel from './Carousel.mjs';
 
 // eslint-disable-next-line no-unused-vars
 const carousel = new Carousel({

@@ -1,7 +1,7 @@
 import throttle from 'lodash/throttle';
 import ChevronLeft from 'feather-icons/dist/icons/chevron-left.svg';
 import ChevronRight from 'feather-icons/dist/icons/chevron-right.svg';
-import { getDistanceToFocalPoint, isRtl } from '../utils/utils.mjs';
+import { getDistanceToFocalPoint, isRtl } from './utils.mjs';
 
 class Carousel {
   constructor(props) {

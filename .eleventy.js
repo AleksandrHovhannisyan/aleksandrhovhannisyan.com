@@ -112,7 +112,7 @@ module.exports = (eleventyConfig) => {
     return esbuild.build({
       entryPoints: [
         path.join(scriptDirs.input, 'index.mjs'),
-        path.join(scriptDirs.input, 'carousel.mjs'),
+        path.join(scriptDirs.input, 'demos/Carousel/index.mjs'),
         path.join(scriptDirs.input, 'comments.mjs'),
       ],
       entryNames: '[dir]/[name]',
