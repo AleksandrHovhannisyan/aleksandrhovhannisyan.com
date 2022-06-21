@@ -104,7 +104,7 @@ eleventyComputed:
   <meta property="og:description" content="{{ description }}">
   <meta property="og:url" content="{{ page.url | toAbsoluteUrl }}">
   {%- comment -%}Twitter card meta tags{%- endcomment -%}
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="{{ openGraph.twitterCard | default: "summary" }}">
   <meta name="twitter:creator" content="@hovhaDovah">
   <meta name="twitter:title" content="{{ pageTitle }}">
   <meta name="twitter:description" content="{{ description }}">

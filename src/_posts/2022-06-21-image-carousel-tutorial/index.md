@@ -5,8 +5,10 @@ title: Creating an Accessible Image Carousel
 description: Learn how to build an accessible image carousel that supports multiple input modes and is progressively enhanced with CSS scroll snap and JavaScript.
 keywords: [image carousel, carousel, accessible carousel, media carousel]
 categories: [html, css, javascript, accessibility, rtl, scroll-snap]
-thumbnail:
-  url: https://images.unsplash.com/photo-1605457867610-e990b192418e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=600&q=80
+thumbnail: ./images/algorithm.png
+# TODO: merge with ogImage
+openGraph:
+  twitterCard: summary_large_image
 stylesheets:
   - /assets/styles/demos/carousel.css
 scripts:
@@ -127,7 +129,7 @@ As recommended in the Inclusive Components article, I'm using a role of `region`
 
 Additionally, `tabindex="0"` allows keyboard users to focus this region by tabbing to it. This allows a user to scroll the container with their left and right arrow keys, which will become more important once we style the carousel to actually overflow horizontally. For a more in-depth discussion of this enhancement, see Adrian Roselli's article on [keyboard-only scrolling areas](https://adrianroselli.com/2022/06/keyboard-only-scrolling-areas.html?ref=sidebar). The use of `tabindex="0"` together with `role="region"` is also covered in the MDN docs on [scrolling content areas with overflow text](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/region_role#scrolling_content_areas_with_overflow_text).
 
-The scroll container contains an ordered list of images (`.carousel-media`). Note that I've given this element an explicit role of `"list"`, which may seem redundant since that's already the default role for ordered and unordered lists. However, I plan to reset the native list styling with `list-style: none` in a future section, and this has historically [clobbered the native list role when using VoiceOver in Webkit browsers](https://www.scottohara.me/blog/2019/01/12/lists-and-safari.html). So it doesn't hurt to add an explicit role defensively, with the hope that this bug will someday be fixed in Webkit + VoiceOver.
+The scroll container contains an ordered list of images (`.carousel-media`). Note that I've given this element an explicit role of `"list"`, which may seem redundant since that's already the default role for HTML lists. However, I plan to reset the native list styling with `list-style: none` in a future section, and this [clobbers the native list role when using VoiceOver in Webkit browsers](https://www.scottohara.me/blog/2019/01/12/lists-and-safari.html) (which, according to the WebKit team, [is a feature, not a bug](https://bugs.webkit.org/show_bug.cgi?id=170179#c1)). The main benefit of preserving list semantics here is that screen reader users will be told how many images there are in advance. So it doesn't hurt to add the role defensively.
 
 Navigating these elements with a screen reader will sound something like this:
 
@@ -1167,5 +1169,3 @@ While implementing a media carousel may seem like a lot of work, the truth is th
 - [_Practical CSS Scroll Snapping_ by Max Kohler](https://css-tricks.com/practical-css-scroll-snapping/)
 - [_Keyboard-Only Scrolling Areas_ by Adrian Roselli](https://adrianroselli.com/2022/06/keyboard-only-scrolling-areas.html)
 - [_Making Disabled Buttons More Inclusive_ by Sandrina Pereira](https://css-tricks.com/making-disabled-buttons-more-inclusive/)
-
-{% include unsplashAttribution.md name: "Jhon Paul Dela Cruz", username: "jpdelacruz", photoId: "hx36aRqV3YA" %}
