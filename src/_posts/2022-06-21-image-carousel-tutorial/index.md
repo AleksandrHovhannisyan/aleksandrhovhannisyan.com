@@ -24,7 +24,7 @@ Carousels don't have to be bad, but we have a culture of making them bad. It is 
 In this article, we'll learn how to create a progressively enhanced image carousel like the one in the interactive demo below. Try it out! Focus the carousel and use your arrow keys to slide left or right, click the buttons to jump from one image to another, or use your mouse wheel to scroll:
 
 <p style="display: contents"><a href="#carousel-skip-target" class="screen-reader-only" style="left: 50%; transform: translateX(-50%);">Skip carousel</a></p>
-<div class="carousel full-bleed">
+<div class="carousel full-bleed" id="carousel">
   <div
     class="carousel-scroll-container outline-offset"
     role="region"
@@ -146,7 +146,7 @@ We want the markup for each image to look like this:
 <img src="..." alt="..." width="..." height="..." loading="lazy" decoding="async">
 ```
 
-First, I'm setting an [explicit `width` and `height` attribute](/blog/setting-width-and-height-on-images/) on each image. This allows the browser to reserve the correct amount of horizontal and vertical space for the images well in advance of when they download, preventing unwanted layout shifts. This may not seem important now, but it's going to matter in a future section once we enable CSS scroll snap. If we don't give our images a width and height, we'll run into a problem where they all collapse to an initial zero-by-zero bounding box. Unfortunately, this means that scroll snap will incorrectly latch onto images further down the list when the page mounts—such that by the time the images finish loading in, the carousel may be initialized in a partially scrolled state. So this step is critical.
+First, I'm setting an [explicit `width` and `height` attribute](/blog/setting-width-and-height-on-images/) on each image. This allows the browser to reserve the correct amount of horizontal and vertical space for the images well in advance of when they download, preventing unwanted layout shifts. This may not seem important now, but it's going to matter in a future section once we enable CSS scroll snap. If we don't give our images a width and height, they will all collapse to an initial zero-by-zero bounding box. Depending on how quickly the page loads, this may sometimes cause scroll snap to latch onto images further down the list when the page mounts—such that by the time the images finish downloading, the carousel may be initialized in a partially scrolled state.
 
 For improved performance, I'm also using the `loading="lazy"` attribute to enable [native lazy loading](https://web.dev/browser-level-image-lazy-loading/), which defers loading images that aren't currently visible. Once we enable overflow scrolling with CSS in a future section, this will defer loading images that are overflowing horizontally beyond the carousel's client window. However, note that in my testing, I occasionally ran into a problem where the lazy loading causes a jarring scroll behavior when combined with CSS scroll snap. If you run into that problem, you may want to remove this attribute from your images (or disable scroll snap since it's optional). An alternative approach with wider browser support would be to lazily load the images with JavaScript by swapping out low-quality image placeholders for the full source, as described in the Inclusive Components tutorial linked to earlier. I've also [previously written about how you can do this](/blog/optimizing-images-for-the-web/#lazy-loading-images-with-javascript) with an `IntersectionObserver`.
 
@@ -318,7 +318,7 @@ Since we're using `proximity` for `scroll-snap-type`, we don't need to worry tha
 The carousel we've been building so far is more akin to a filmstrip, where multiple media may be visible at once but only one is centered at a time. Most carousels in the wild use full-width slides so that only one image is ever shown at a time, like so:
 
 <p style="display: contents"><a href="#slideshow-skip-target" class="screen-reader-only" style="left: 50%; transform: translateX(-50%);">Skip carousel</a></p>
-<div class="carousel slideshow full-bleed">
+<div class="carousel slideshow full-bleed" id="slideshow">
   <div
     class="carousel-scroll-container outline-offset"
     role="region"
@@ -438,6 +438,9 @@ The JavaScript below creates an ES6 class for our carousel. Note that this isn't
 ```js {data-copyable=true}
 class Carousel {
   constructor(props) {
+    // proper `this` binding; you could also use a class field and transpile for older browsers
+    this.navigateToNextItem = this.navigateToNextItem.bind(this);
+
     this.carousel = props.root;
     this.scrollContainer = this.carousel.querySelector('[role="region"][tabindex="0"]');
     this.mediaList = this.scrollContainer.querySelector('[role="list"]');
@@ -606,14 +609,15 @@ As one of the comments notes, it's not enough to check if the scroll container's
 Then, in the constructor, we'll pass this method along as an event handler for the `scroll` event and invoke it manually. That way, the Previous button is initially disabled:
 
 ```js {data-copyable=true}
-this.scrollContainer.addEventListener('scroll', () => this._handleCarouselScroll());
+this._handleCarouselScroll = this._handleCarouselScroll.bind(this);
+this.scrollContainer.addEventListener('scroll', this._handleCarouselScroll);
 this._handleCarouselScroll();
 ```
 
-Note that in a production app, you'd want to throttle the event handler for the scroll event to avoid firing it too frequently as a user scrolls manually:
+Note that in a production app, you'd want to throttle the event handler for the scroll event to avoid firing it too frequently as a user scrolls manually. You could use [`lodash.throttle`](https://github.com/lodash/lodash) to do this or write it yourself, but that's beyond the scope of this tutorial:
 
 ```js
-this.scrollContainer.addEventListener('scroll', () => throttle(this._handleCarouselScroll(), 200));
+this._handleCarouselScroll = throttle(this._handleCarouselScroll.bind(this), 200);
 ```
 
 #### Using `aria-disabled` Instead of `disabled`
@@ -640,8 +644,8 @@ _handleCarouselScroll() {
 Whereas `disabled` prevents the click handler from firing, `aria-disabled` does not, so you may want to check for this in the button click handler to avoid running the click handler in that case (although this optimization isn't really that important):
 
 ```js {data-copyable=true}
-button.addEventListener('click', (e) => {
-  if (e.currentTarget.getAttribute('aria-disabled') === 'true') return;
+button.addEventListener('click', () => {
+  if (button.getAttribute('aria-disabled') === 'true') return;
   this.navigateToNextItem(direction);
 });
 ```
@@ -764,11 +768,7 @@ Recall that we already declared this `navigateToNextItem` event handler in an ea
 navigateToNextItem(direction) {}
 ```
 
-And we registered the click listener in `createNavButton`:
-
-```js
-button.addEventListener('click', () => this.navigateToNextItem(direction));
-```
+And we registered the click listeners for the buttons in the constructor.
 
 Now, it's time to implement `navigateToNextItem`.
 
@@ -1021,6 +1021,9 @@ const getDistanceToFocalPoint = (element, focalPoint = 'center') => {
 
 class Carousel {
   constructor(props) {
+    this._handleCarouselScroll = throttle(this._handleCarouselScroll.bind(this), 200);
+    this.navigateToNextItem = this.navigateToNextItem.bind(this);
+
     this.carousel = props.root;
     this.scrollContainer = this.carousel.querySelector('[role="region"][tabindex="0"]');
     this.mediaList = this.scrollContainer.querySelector('[role="list"]');
@@ -1053,8 +1056,7 @@ class Carousel {
     this.carousel.appendChild(controls);
 
     this.scrollContainer.addEventListener(
-      'scroll',
-      throttle(() => this._handleCarouselScroll(), 200)
+      'scroll', this._handleCarouselScroll
     );
     this._handleCarouselScroll();
   }

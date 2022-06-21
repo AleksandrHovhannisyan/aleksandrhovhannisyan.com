@@ -5,16 +5,12 @@ import { getDistanceToFocalPoint, isRtl } from '../utils/utils.mjs';
 
 class Carousel {
   constructor(props) {
+    this._handleCarouselScroll = throttle(this._handleCarouselScroll.bind(this), 200);
+    this.navigateToNextItem = this.navigateToNextItem.bind(this);
+
     this.carousel = props.root;
     this.scrollContainer = this.carousel.querySelector('[role="region"][tabindex="0"]');
     this.mediaList = this.scrollContainer.querySelector('[role="list"]');
-
-    if (!this.scrollContainer) {
-      throw new Error('The carousel must contain a focusable scroll region.');
-    }
-    if (!this.mediaList) {
-      throw new Error('The carousel scroll container must contain a list of media.');
-    }
 
     const controls = document.createElement('ol');
     controls.setAttribute('role', 'list');
@@ -30,8 +26,8 @@ class Carousel {
       button.classList.add('carousel-control', direction);
       button.setAttribute('aria-label', direction === 'start' ? 'Previous' : 'Next');
       button.innerHTML = direction === 'start' ? ChevronLeft : ChevronRight;
-      button.addEventListener('click', (e) => {
-        if (e.currentTarget.getAttribute('aria-disabled') === 'true') return;
+      button.addEventListener('click', () => {
+        if (button.getAttribute('aria-disabled') === 'true') return;
         this.navigateToNextItem(direction);
       });
       li.appendChild(button);
@@ -43,10 +39,7 @@ class Carousel {
     this.navControlNext = createNavButton('end');
     this.carousel.appendChild(controls);
 
-    this.scrollContainer.addEventListener(
-      'scroll',
-      throttle(() => this._handleCarouselScroll(), 200)
-    );
+    this.scrollContainer.addEventListener('scroll', this._handleCarouselScroll);
     this._handleCarouselScroll();
   }
 
