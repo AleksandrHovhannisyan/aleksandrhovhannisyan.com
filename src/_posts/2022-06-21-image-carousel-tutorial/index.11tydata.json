@@ -1,0 +1,84 @@
+{
+  "carouselImages": [
+    {
+      "src": "https://images.unsplash.com/photo-1652284225205-a27fce2b2ba7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMzU2NDN8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTQ5NzY4ODc&ixlib=rb-1.2.1&q=80&w=1080",
+      "alt": "A black corvette with a muscular body driving down a freeway with a clear sky and open landscape in the background.",
+      "user": {
+        "name": "Martin Katler",
+        "url": "https://unsplash.com/@martinkatler"
+      }
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1652723909307-b5619378937c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMzU2NDN8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTQ5NzY4ODc&ixlib=rb-1.2.1&q=80&w=1080",
+      "alt": "Top-down aerial view of a person lying on a beach. The ocean waves create a frothy film as they lap against the shore.",
+      "user": {
+        "name": "Simon HUMLER",
+        "url": "https://unsplash.com/@simonhumlr"
+      }
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1653149355492-3ceb41ad3fb7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMzU2NDN8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTQ5NzY4ODc&ixlib=rb-1.2.1&q=80&w=1080",
+      "alt": "Bright pink lilacs on a bush.",
+      "user": {
+        "name": "Markus Spiske",
+        "url": "https://unsplash.com/@markusspiske"
+      }
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1653422718631-f414801ccf94?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMzU2NDN8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTQ5NzY4ODc&ixlib=rb-1.2.1&q=80&w=1080",
+      "alt": "An edited photo of a person wearing a black buttoned-down shirt, with a black floppy diskette covering their face.",
+      "user": {
+        "name": "Quinn Smith",
+        "url": "https://unsplash.com/@qjsmith"
+      }
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1654002620977-a6cdacbbadba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMzU2NDN8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTQ5NzY4ODc&ixlib=rb-1.2.1&q=80&w=1080",
+      "alt": "A deer stands in a brightly lit open area in a forest, with dark woods in the background and bright yellow grass at its feet, and looks toward the camera.",
+      "user": {
+        "name": "Christine Kozak",
+        "url": "https://unsplash.com/@christina_kozak"
+      }
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1654154117054-d774c3869a25?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMzU2NDN8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTQ5NzY4ODc&ixlib=rb-1.2.1&q=80&w=1080",
+      "alt": "A notepad and pen rest next to a keyboard, a Mac desktop monitor, and a beige-colored mug on a brown desk.",
+      "user": {
+        "name": "Covene",
+        "url": "https://unsplash.com/@covene"
+      }
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1654461218976-367cf4ab09ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMzU2NDN8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTQ5NzY4ODc&ixlib=rb-1.2.1&q=80&w=1080",
+      "alt": "Zoomed-out view of a gold-colored skyscraper that shimmers blindingly in the sunlight.",
+      "user": {
+        "name": "Ryan KLAUS",
+        "url": "https://unsplash.com/@ryanklausphotography"
+      }
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1654534095007-5db1b4faa1a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMzU2NDN8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTQ5NzY4ODc&ixlib=rb-1.2.1&q=80&w=1080",
+      "alt": "A brown wooden chair with plush white seat and back covers, as the focal point of a photograph of a room. Tropical indoor plants can be seen in the background near the wall.",
+      "user": {
+        "name": "BRUNO EMMANUELLE",
+        "url": "https://unsplash.com/@brunocervera"
+      }
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1654548712579-f80fc65de6bf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMzU2NDN8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTQ5NzY4ODc&ixlib=rb-1.2.1&q=80&w=1080",
+      "alt": "The colors of the desert, as depicted by the view of a home with a white facade and a flat red roof, an orange door, beige-colored mountainous ranges in the background, palm trees, and a clear blue sky.",
+      "user": {
+        "name": "Drew Tilk",
+        "url": "https://unsplash.com/@drewtilk"
+      }
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1654763001398-2c553ee693fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMzU2NDN8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTQ5NzY4ODc&ixlib=rb-1.2.1&q=80&w=1080",
+      "alt": "Blue concave buildings that appear to be leaning, with their entire surfaces covered in rectangular windows.",
+      "user": {
+        "name": "Taiki Ishikawa",
+        "url": "https://unsplash.com/@fl__q"
+      }
+    }
+  ]
+}

@@ -93,6 +93,9 @@ eleventyComputed:
   {%- if commentsId -%}
     <script type="module" src="/assets/scripts/comments.mjs"></script>
   {%- endif -%}
+  {%- for script in scripts -%}
+    <script type="module" src="{{ script }}"></script>
+  {%- endfor -%}
   {%- comment -%}Open Graph social media previews{%- endcomment -%}
   <meta property="og:title" content="{{ pageTitle }}">
   {%- if ogImage -%}
@@ -101,7 +104,7 @@ eleventyComputed:
   <meta property="og:description" content="{{ description }}">
   <meta property="og:url" content="{{ page.url | toAbsoluteUrl }}">
   {%- comment -%}Twitter card meta tags{%- endcomment -%}
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="{{ openGraph.twitterCard | default: "summary" }}">
   <meta name="twitter:creator" content="@hovhaDovah">
   <meta name="twitter:title" content="{{ pageTitle }}">
   <meta name="twitter:description" content="{{ description }}">
