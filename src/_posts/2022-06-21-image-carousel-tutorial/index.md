@@ -1162,6 +1162,8 @@ Otherwise, the basic idea is still the same: Find the center of the carousel and
 
 While implementing a media carousel may seem like a lot of work, the truth is that it doesn't really require that much code or even a library. The hardest part is researching accessible patterns for creating such a component and accounting for the various edge cases and behaviors. In fact, the final code from this tutorial amounts to about 100 lines of CSS and 120 lines of JavaScript, including comments and whitespace. My goal with this tutorial was to leave no stone unturned, so I wanted to err on the side of providing too much information rather than leaving you wondering why I made certain design and architectural decisions. Hopefully, you now have a clearer understanding of what it takes to implement a progressively enhanced, accessible image carousel.
 
+[View a demo of the code from this tutorial on CodePen](https://codepen.io/AleksandrHovhannisyan/pen/zYRVoeb).
+
 ## References and Further Reading
 
 - [_A Content Slider_ by Heydon Pickering](https://inclusive-components.design/a-content-slider/)
