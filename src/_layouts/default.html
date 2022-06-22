@@ -98,18 +98,18 @@ eleventyComputed:
   {%- endfor -%}
   {%- comment -%}Open Graph social media previews{%- endcomment -%}
   <meta property="og:title" content="{{ pageTitle }}">
-  {%- if ogImage -%}
-    <meta property="og:image" content="{{ ogImage }}">
+  {%- if openGraph.image -%}
+    <meta property="og:image" content="{{ openGraph.image }}">
   {%- endif -%}
   <meta property="og:description" content="{{ description }}">
   <meta property="og:url" content="{{ page.url | toAbsoluteUrl }}">
   {%- comment -%}Twitter card meta tags{%- endcomment -%}
-  <meta name="twitter:card" content="{{ openGraph.twitterCard | default: "summary" }}">
-  <meta name="twitter:creator" content="@hovhaDovah">
-  <meta name="twitter:title" content="{{ pageTitle }}">
-  <meta name="twitter:description" content="{{ description }}">
-  {%- if ogImage -%}
-    <meta name="twitter:image" content="{{ ogImage }}">
+  <meta name="twitter:card" content="{{ openGraph.twitter.card | default: "summary" }}">
+  <meta name="twitter:creator" content="{{ "@" | append: socials.twitter.username }}">
+  <meta name="twitter:title" content="{{ openGraph.title | default: pageTitle }}">
+  <meta name="twitter:description" content="{{ openGraph.description | default: description }}">
+  {%- if openGraph.image -%}
+    <meta name="twitter:image" content="{{ openGraph.image }}">
   {%- endif -%}
   {%- comment -%}Preload optimizations{%- endcomment -%}
   {%- if preloads -%}

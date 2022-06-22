@@ -6,9 +6,9 @@ description: Learn how to build an accessible image carousel that supports multi
 keywords: [image carousel, carousel, accessible carousel, media carousel]
 categories: [html, css, javascript, accessibility, rtl, scroll-snap]
 thumbnail: ./images/algorithm.png
-# TODO: merge with ogImage
 openGraph:
-  twitterCard: summary_large_image
+  twitter:
+    card: summary_large_image
 stylesheets:
   - /assets/styles/demos/carousel.css
 scripts:

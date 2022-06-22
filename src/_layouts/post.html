@@ -73,8 +73,8 @@ eleventyComputed:
     },
     "headline": {{ title | escape | toJson }},
     "description": {{ description | strip | toJson }},
-    {% if ogImage %}
-    "image": ["{{ ogImage }}"],
+    {% if openGraph.image %}
+    "image": ["{{ openGraph.image }}"],
     {% endif %}
     "datePublished": {{ page.date | toJson }},
     {% if lastUpdated -%}
