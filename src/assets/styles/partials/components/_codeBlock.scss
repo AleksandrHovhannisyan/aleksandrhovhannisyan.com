@@ -2,8 +2,6 @@
 @import "../functions";
 @import "../mixins";
 
-/* VS Code Dark Plus theme: https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vsc-dark-plus.css */
-
 pre[class*="language-"] {
   --code-block-padding: #{spacing(5)};
   background: var(--color-code-background);

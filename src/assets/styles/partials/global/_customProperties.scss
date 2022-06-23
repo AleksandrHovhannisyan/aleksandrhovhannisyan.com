@@ -7,7 +7,30 @@
 @import "../functions";
 
 html {
-  @include design-custom-properties;
+  // Spacing variables
+  $spacing-steps: get($config, "spacing", "steps");
+  $spacing-base-index: list.index($spacing-steps, get($config, "spacing", "base"));
+  @for $i from 1 through list.length($spacing-steps) {
+    $step: $i - $spacing-base-index;
+    $value-px: list.nth($spacing-steps, $i) * 1px;
+    /* stylelint-disable-next-line custom-property-pattern */
+    --#{get-custom-property-prefix("spacing")}-#{$step}: #{$value-px};
+  }
+
+  // Typography variables
+  $type-steps: get($config, "typeScale", "steps");
+  $type-sizes: get($config, "typeScale", "sizes");
+  $type-base-index: list.index($type-steps, get($config, "typeScale", "base"));
+  $type-min: get($type-sizes, "min");
+  $type-max: get($type-sizes, "max");
+  @for $i from 1 through length($type-steps) {
+    $step: list.nth($type-steps, $i);
+    $power: $i - $type-base-index;
+    $clamp-min: rnd(get($type-min, "baseFontSize") * math.pow(get($type-min, "ratio"), $power), 2);
+    $clamp-max: rnd(get($type-max, "baseFontSize") * math.pow(get($type-max, "ratio"), $power), 2);
+    /* stylelint-disable-next-line custom-property-pattern */
+    --#{get-custom-property-prefix("typeScale")}-#{$step}: #{clamped($clamp-min, $clamp-max)};
+  }
 
   // Miscellaneous variables
   --transition-duration: 0.2s;
@@ -84,6 +107,8 @@ html {
     --color-code-background: var(--color-surface-2);
     --color-code-overlay-1: hsl(0deg 0% 25%);
     --color-code-overlay-2: hsl(0deg 0% 60%);
+
+    /* VS Code Dark Plus theme: https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vsc-dark-plus.css */
     --color-code-selection: hsl(210deg 100% 84% / 15%);
     --color-code-comment: hsl(101deg 29% 47%);
     --color-code-text: hsl(0deg 0% 83%);
