@@ -16,8 +16,8 @@ $config: (
     ),
   ),
   spacing: (
-    steps: (2, 4, 8, 12, 16, 18, 20, 24, 28, 32, 36, 40, 48, 56, 64, 96),
-    base: 16,
+    steps: (2px, 4px, 8px, 12px, 16px, 18px, 20px, 24px, 28px, 32px, 36px, 40px, 48px, 56px, 64px, 96px),
+    base: 16px,
     customPropertyPrefix: "sp",
   ),
 );
