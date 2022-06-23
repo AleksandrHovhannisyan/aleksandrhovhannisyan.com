@@ -87,12 +87,9 @@ eleventyComputed:
       }
     })();
   </script>
-  {%- comment -%}Common bundles.{%- endcomment -%}
+  {%- comment -%}Common bundles{%- endcomment -%}
   <script type="module" src="/assets/scripts/index.mjs"></script>
-  {%- comment -%}Posts with comments.{%- endcomment -%}
-  {%- if commentsId -%}
-    <script type="module" src="/assets/scripts/comments.mjs"></script>
-  {%- endif -%}
+  {%- comment -%}Template-specific module scripts{%- endcomment -%}
   {%- for script in scripts -%}
     <script type="module" src="{{ script }}"></script>
   {%- endfor -%}

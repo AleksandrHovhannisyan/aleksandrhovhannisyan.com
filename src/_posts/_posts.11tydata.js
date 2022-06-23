@@ -7,6 +7,13 @@ module.exports = {
   isBlogPage: true,
   isPost: true,
   eleventyComputed: {
+    scripts: (data) => {
+      // If the post has comments, link to the comment script to load them
+      if (data.commentsId) {
+        // Spread in existing scripts and tack on the comment script
+        return [...data.scripts, `/assets/scripts/comments.mjs`];
+      }
+    },
     openGraph: {
       // For social sharing. Used in og:image and twitter:image. Absolute path to the post's thumbnail image.
       // Thumbnails may be remote images (thumbnail.url) or local images (thumbnail as a string path, like ./images/thumbnail.png).
