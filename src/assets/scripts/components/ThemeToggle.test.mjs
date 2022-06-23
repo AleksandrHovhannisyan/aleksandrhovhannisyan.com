@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import { jest } from '@jest/globals';
-import ThemeToggle from './index.mjs';
+import ThemeToggle from './ThemeToggle.mjs';
 
 let toggleElement;
 

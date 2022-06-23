@@ -1,5 +1,5 @@
 import { THEME_KEY, Themes, copyToClipboardButtonStrings } from './constants.mjs';
-import ThemeToggle from './components/ThemeToggle/index.mjs';
+import ThemeToggle from './components/ThemeToggle.mjs';
 
 const themeToggleElement = document.getElementById('theme-toggle');
 const cachedTheme = localStorage.getItem(THEME_KEY);
