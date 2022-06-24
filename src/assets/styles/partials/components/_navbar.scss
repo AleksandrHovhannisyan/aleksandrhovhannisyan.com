@@ -49,6 +49,7 @@
   &-branding {
     display: none;
     color: inherit;
+    @include font($family: "title", $weight: "bold");
   }
 
   &-links {

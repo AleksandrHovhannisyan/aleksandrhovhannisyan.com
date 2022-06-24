@@ -56,21 +56,26 @@
   @if $weight and not $family or $family and not $weight {
     @error "Cannot set font family without a weight, and vice versa.";
   }
+  // Font sizing
   @if $size {
-    // expose CSS var to later compute other things, e.g., spacing
-    --line-height: calc(2ex + #{to-rems(12px)});
-    font-size: get-font-size-custom-property($size);
-    line-height: var(--line-height);
+    $font-size-steps: get($config, "typeScale", "steps");
+    $step-index: list.index($font-size-steps, $size);
+    @if $step-index < 1 or $step-index > list.length($font-size-steps) {
+      $min-step-name: first($font-size-steps);
+      $max-step-name: last($font-size-steps);
+      @error "#{$size} is not a valid step in the type scale. Valid steps range from #{$min-step-name} to #{$max-step-name}, inclusive.";
+    } @else {
+      // expose CSS var to later compute other things, e.g., spacing
+      --line-height: calc(2ex + #{to-rems(12px)});
+      font-size: var(--#{get-custom-property-prefix("typeScale")}-#{$size});
+      line-height: var(--line-height);
+    }
   }
   // Setting family and weight together
   @if $family {
     font-family: var(--ff-#{$family});
     font-weight: var(--fw-#{$family}-#{$weight});
   }
-}
-
-@mixin heading {
-  @include font($family: "title", $weight: "bold");
 }
 
 @mixin line-clamp($num-lines) {
@@ -80,13 +85,6 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: $num-lines;
-}
-
-// Tokens
-
-@mixin stack {
-  display: flex;
-  flex-direction: column;
 }
 
 // Breakpoint mixins

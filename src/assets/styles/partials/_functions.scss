@@ -24,11 +24,12 @@
   @return $map;
 }
 
-/// Returns the first element of the given array.
+/// Returns the first element of the given list.
 @function first($list) {
   @return list.nth($list, 1);
 }
 
+/// Returns the last element of the given list.
 @function last($list) {
   @return list.nth($list, list.length($list));
 }
@@ -55,19 +56,6 @@
   }
 }
 
-/// Returns the font size value corresponding to the given step as an offset from the base. Throws an error if the provided step is unrecognized.
-@function get-font-size-custom-property($step) {
-  $font-size-steps: get($config, "typeScale", "steps");
-  $step-index: list.index($font-size-steps, $step);
-  @if $step-index < 1 or $step-index > list.length($font-size-steps) {
-    $min-step-name: first($font-size-steps);
-    $max-step-name: last($font-size-steps);
-    @error "#{$step} is not a valid step in the type scale. Valid steps range from #{$min-step-name} to #{$max-step-name}, inclusive.";
-  } @else {
-    @return var(--#{get-custom-property-prefix("typeScale")}-#{$step});
-  }
-}
-
 /// Returns true if the given string ends with the given suffix.
 /// Adapted for use from: https://stackoverflow.com/a/40389473/5323344
 
@@ -87,11 +75,8 @@
   @return math.div(math.round($number * $n), $n);
 }
 
-$default-min-bp: map.get($media-breakpoints, "mobile");
-$default-max-bp: map.get($media-breakpoints, "desktop");
-
 /// Returns a CSS clamp(...) declaration, with the responsive argument computed automatically.
-@function clamped($min-px, $max-px, $min-bp: $default-min-bp, $max-bp: $default-max-bp) {
+@function clamped($min-px, $max-px, $min-bp: map.get($media-breakpoints, "mobile"), $max-bp: map.get($media-breakpoints, "desktop")) {
   $slope: math.div($max-px - $min-px, $max-bp - $min-bp);
   $slope-vw: rnd($slope * 100, 2);
   $intercept-rems: rnd(to-rems($min-px - $slope * $min-bp), 2);

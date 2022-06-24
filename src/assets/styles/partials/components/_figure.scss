@@ -2,7 +2,8 @@
 
 figure {
   gap: spacing(-2);
-  @include stack;
+  display: flex;
+  flex-direction: column;
 
   img {
     margin-inline: auto;
