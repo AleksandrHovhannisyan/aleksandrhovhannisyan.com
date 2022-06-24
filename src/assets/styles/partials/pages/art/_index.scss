@@ -21,7 +21,8 @@
         }
       }
 
-      --transform-base: rotate(2deg) translateX(-50%);
+      --rotation: 0deg;
+      --transform-base: rotate(var(--rotation)) translate(-50%, -50%);
       content: "Best viewed in Chrome!";
       text-shadow: none;
       vertical-align: top;
@@ -34,6 +35,7 @@
       @include font($family: "cursive", $weight: "regular", $size: "md");
 
       @include mobile-lg {
+        --rotation: 2deg;
         left: unset;
         top: -10%;
 
@@ -80,7 +82,6 @@
     text-align: center;
     max-width: 30ch;
     will-change: transform, opacity;
-    line-height: 1.1;
     font-size: var(--fs-lg);
     @include font($family: "cursive", $weight: "regular");
     @include transition(opacity, transform);

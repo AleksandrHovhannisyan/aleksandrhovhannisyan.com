@@ -65,10 +65,7 @@
       $max-step-name: last($font-size-steps);
       @error "#{$size} is not a valid step in the type scale. Valid steps range from #{$min-step-name} to #{$max-step-name}, inclusive.";
     } @else {
-      // expose CSS var to later compute other things, e.g., spacing
-      --line-height: calc(2ex + #{to-rems(12px)});
       font-size: var(--#{get-custom-property-prefix("typeScale")}-#{$size});
-      line-height: var(--line-height);
     }
   }
   // Setting family and weight together
