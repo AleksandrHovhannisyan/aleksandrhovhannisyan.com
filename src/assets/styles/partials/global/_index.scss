@@ -10,11 +10,7 @@ body {
   justify-content: space-between;
   background-color: var(--color-surface-1);
   color: var(--color-text-normal);
-  padding-bottom: var(--navbar-height);
   @include font($family: "body", $weight: "regular");
-  @include mobile-lg {
-    padding-bottom: unset;
-  }
 }
 
 #page-content {

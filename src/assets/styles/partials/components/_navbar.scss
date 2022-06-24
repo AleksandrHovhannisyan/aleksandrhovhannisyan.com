@@ -24,6 +24,8 @@
   }
 
   &-header {
+    --navbar-min-height: #{spacing(10)};
+
     /* Body is a flex container. Without this, the navbar may shrink vertically due to the presence of a horizontal scrollbar. */
     flex-shrink: 0;
     position: fixed;
@@ -34,7 +36,7 @@
     padding-block: spacing(-1);
     background-color: var(--color-navbar-bg);
     box-shadow: var(--shadow-navbar);
-    min-height: var(--navbar-height);
+    min-height: var(--navbar-min-height);
     overflow-x: auto;
   }
 
@@ -211,6 +213,7 @@
 @include mobile-lg {
   .navbar {
     &-header {
+      --navbar-min-height: #{spacing(11)};
       position: unset;
       box-shadow: none;
     }

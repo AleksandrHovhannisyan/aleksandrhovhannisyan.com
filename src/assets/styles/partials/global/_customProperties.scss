@@ -35,7 +35,6 @@ html {
   // Miscellaneous variables
   --transition-duration: 0.2s;
   --transition-timing-function: ease;
-  --navbar-height: #{clamped(64px, 76px)};
 
   // Light theme
   &[data-theme="light"] {
