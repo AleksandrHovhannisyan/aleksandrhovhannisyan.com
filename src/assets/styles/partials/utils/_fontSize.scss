@@ -12,11 +12,11 @@
 // Have all the headings extend the corresponding font size util class
 
 h1 {
-  @include extended-font-size("xxxl");
+  @include extended-font-size("3xl");
 }
 
 h2 {
-  @include extended-font-size("xxl");
+  @include extended-font-size("2xl");
 }
 
 h3 {
