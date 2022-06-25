@@ -9,6 +9,10 @@
 *,
 *::before,
 *::after {
+  // expose CSS var to later compute other things, e.g., vertical rhythm
+  --line-height: calc(2ex + #{to-rems(11px)});
+  line-height: var(--line-height);
+
   @media (prefers-reduced-motion) {
     animation: none !important;
     transition: none !important;
@@ -59,12 +63,4 @@
       outline: none;
     }
   }
-}
-
-:where(*:not(span, svg)),
-*::before,
-*::after {
-  // expose CSS var to later compute other things, e.g., vertical rhythm
-  --line-height: calc(2ex + #{to-rems(12px)});
-  line-height: var(--line-height);
 }
