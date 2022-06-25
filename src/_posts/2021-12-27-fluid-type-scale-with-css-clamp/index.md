@@ -5,7 +5,7 @@ keywords: [fluid typography, type scale, clamp, sass, font size]
 categories: [css, sass, typography, math, clamp]
 thumbnail: ./images/thumbnail.png
 commentsId: 131
-lastUpdated: 2022-01-02
+lastUpdated: 2022-06-24
 isFeatured: true
 ---
 
@@ -135,25 +135,46 @@ Since the minimum breakpoint corresponds to the minimum font size and the maximu
 
 From the graph shown below, this should make sense—we have viewport widths on the `x`-axis and font sizes on the `y`-axis. As the viewport width increases from the min point to the max, the font size also increases. Observe that the line between the minimum and maximum depicts the preferred value for `clamp`.
 
-{% include postImage.html src: "./images/thumbnail.png", alt: "A graph depicting font size on the y axis and viewport width on the horizontal axis. The plot consists of three line segments. The first is a horizontal line labeled minimum. The second is an upward-sloping line labeled preferred. At the endpoint of the second line is a third horizontal y-intercept that's labeled maximum.", caption: "As the viewport width increases, the font size increases linearly, up until a maximum." %}
+{% include postImage.html src: "./images/graph.png", alt: "A graph depicting font size on the y axis and viewport width on the horizontal axis. The plot consists of three line segments. The first is a horizontal line labeled minimum corresponding to a y-value of 16px font size. The endpoint of the line segment is labeled (400, 16px), where 400 corresponds to the x-value for the endpoint. Beginning from that endpoint is an upward-sloping line labeled preferred. At the endpoint of this second line is a third horizontal line labeled maximum, starting at a point of (1000, 19). Its x-value corresponds to a viewport width of 1000px and the y-value to a font size of 19px.", caption: "As the viewport width increases, the font size increases linearly, up until a maximum. We have two (x, y) points. The equation for the line between these two points is the preferred value for clamp." %}
 
-So what's the line's equation? If we can figure that out, we'll have an expression that we can plug in for `clamp`'s preferred value. We already have the min and max, so this is the only missing piece.
+So what's the line's equation? If we can figure that out, we'll have an expression that we can plug in for `clamp`'s preferred value. We already have the min and max for clamp, so this equation is the only missing piece.
 
-Well, this linear relationship can be express mathematically using the slope intercept form `y = mx + b`. In this notation, `m` is the slope and denotes the rate of change for the `y` values (font size) relative to the `x` values (viewport width); meanwhile, `b` denotes the `y`-intercept.
-
-In this case, finding the slope is easy—we get the difference between the two `y`-values (font sizes) and divide that by the difference between the `x`-values (viewport widths):
+Well, the equation for a line is given by the slope-intercept form: `y = mx + b`. In this notation, `m` is the slope of the line and denotes the rate of change for the `y` values (font size) relative to the `x` values (viewport width); meanwhile, `b` denotes the `y`-intercept. To find the slope of this line (`m`), we get the difference between the two `y`-values (font sizes) and divide that by the difference between the `x`-values (viewport widths):
 
 ```
 m = (maxFontSize - minFontSize) / (maxBreakpoint - minBreakpoint)
 ```
 
+{% details 'Curious how this formula is derived? Click to learn more.' %}
+We start with the equation `y = mx + b`. We know we have two points `(x1, y1)` and `(x2, y2)`. By definition, the slope (`m`) and intercept (`b`) of this equation are the same regardless of what `x` and `y` values we plug in. We can therefore create two parallel equations by plugging in these two points:
+
+```
+y2 = m(x2) + b
+y1 = m(x1) + b
+```
+
+We can then subtract the second equation from the first, giving us:
+
+```
+y2 - y1 = m(x2 - x1)
+```
+
+And solving for `m` gives us:
+
+```
+m = (y2 - y1) / (x2 - x1)
+```
+
+In our example, the `x`-values are screen width and the `y`-values are font size.
+{% enddetails %}
+
 Plugging in the numbers from our example, we get this result:
 
 ```
-m = (19px - 16px) / (1000px - 400px) = 1/20 = 0.005
+m = (19px - 16px) / (1000px - 400px) = 3px/600px = 0.005
 ```
 
-This tells us that in our particular example, the font size increases by `0.005px` for every one unit of viewport width. We can plug this value back into the slope-intercept form along with one of the two original points to work out the `y`-intercept. We can use either point—it doesn't matter (I'll use the minimum).
+This tells us that in our particular example, the font size increases by `0.005px` for every one unit of viewport width. We can plug this value back into the slope-intercept form along with one of the two original points to work out the `y`-intercept. It doesn't matter which of the two points we plug back into the equation because it goes through both points. I'll use the minimum:
 
 ```
 y = mx + b
