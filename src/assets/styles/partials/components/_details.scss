@@ -2,7 +2,6 @@
 
 details {
   summary {
-    --outline-offset: spacing(-1);
     cursor: pointer;
     background-color: var(--color-surface-2);
     font-style: italic;
@@ -11,7 +10,7 @@ details {
   summary,
   .details-content {
     padding: spacing(2) spacing(3);
-    border: spacing(-3) solid var(--color-surface-4);
+    border: spacing(-4) solid var(--color-surface-4);
   }
 
   .details-content {

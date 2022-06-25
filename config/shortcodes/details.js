@@ -6,7 +6,7 @@ const details = (children, summary) => {
   }
   const content = markdownLib.render(children);
   return `<details>
-  <summary>${summary}</summary>
+  <summary class="outline-offset">${summary}</summary>
   <div class="details-content rhythm">${content}</div>
   </details>`;
 };
