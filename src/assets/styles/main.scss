@@ -1,9 +1,13 @@
+@import "partials/tokens/typography";
+@import "partials/tokens/spacing";
+@import "partials/tokens/color";
+@import "partials/tokens/animation";
+
 @import "partials/global/reset";
-@import "partials/global/customProperties";
-@import "partials/global/typography";
-@import "partials/global/index";
-@import "partials/tokens/fontSize";
-@import "partials/tokens/gap";
+@import "partials/global/global";
+
+@import "partials/utils/fontSize";
+@import "partials/utils/gap";
 @import "partials/utils/hero";
 @import "partials/utils/bannerHeading";
 @import "partials/utils/circle";
@@ -21,6 +25,7 @@
 @import "partials/utils/textCenter";
 @import "partials/utils/underline";
 @import "partials/utils/nowrap";
+
 @import "partials/components/navbar";
 @import "partials/components/pill";
 @import "partials/components/pagination";
@@ -46,6 +51,7 @@
 @import "partials/components/footnote";
 @import "partials/components/scrollbar";
 @import "partials/components/selection";
+
 @import "partials/pages/home";
 @import "partials/pages/blog";
 @import "partials/pages/404";
