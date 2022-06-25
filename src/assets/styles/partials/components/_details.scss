@@ -1,0 +1,20 @@
+@import "../functions";
+
+details {
+  summary {
+    --outline-offset: spacing(-1);
+    cursor: pointer;
+    background-color: var(--color-surface-2);
+    font-style: italic;
+  }
+
+  summary,
+  .details-content {
+    padding: spacing(2) spacing(3);
+    border: spacing(-3) solid var(--color-surface-4);
+  }
+
+  .details-content {
+    border-top: none;
+  }
+}

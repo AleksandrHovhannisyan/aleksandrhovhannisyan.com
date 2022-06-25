@@ -7,6 +7,7 @@ const faviconShortcode = require('./favicon');
 const socialIconShortcode = require('./socialIcon');
 const artworkShortcode = require('./artwork');
 const nanoIdShortcode = require('./nanoid');
+const detailsShortcode = require('./details');
 
 module.exports = {
   asideShortcode,
@@ -18,4 +19,5 @@ module.exports = {
   socialIconShortcode,
   artworkShortcode,
   nanoIdShortcode,
+  detailsShortcode,
 };

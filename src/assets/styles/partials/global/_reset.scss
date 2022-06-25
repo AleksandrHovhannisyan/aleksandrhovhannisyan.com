@@ -46,7 +46,7 @@
 }
 
 // https://css-tricks.com/standardizing-focus-styles-with-css-custom-properties/
-:where(a, button, input, textarea, [tabindex="0"]) {
+:where(a, button, input, textarea, summary, [tabindex="0"]) {
   --outline-thickness: #{to-rems(3px)};
   --outline-style: solid;
   --outline-color: currentcolor;

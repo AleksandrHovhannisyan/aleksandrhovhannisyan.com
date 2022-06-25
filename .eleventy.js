@@ -11,6 +11,7 @@ const {
   artworkShortcode,
   hashArtShortcode,
   nanoIdShortcode,
+  detailsShortcode,
 } = require('./config/shortcodes');
 const {
   limit,
@@ -59,6 +60,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPairedShortcode('aside', asideShortcode);
   eleventyConfig.addPairedShortcode('quote', quoteShortcode);
   eleventyConfig.addPairedShortcode('artwork', artworkShortcode);
+  eleventyConfig.addPairedShortcode('details', detailsShortcode);
   eleventyConfig.addShortcode('image', imageShortcode);
   eleventyConfig.addShortcode('favicon', faviconShortcode);
   eleventyConfig.addShortcode('icon', iconShortcode);
