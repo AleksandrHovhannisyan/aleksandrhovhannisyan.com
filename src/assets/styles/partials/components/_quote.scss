@@ -9,6 +9,8 @@ blockquote {
 }
 
 cite {
+  display: block;
+
   &::before {
     content: "\2014";
     user-select: none;
