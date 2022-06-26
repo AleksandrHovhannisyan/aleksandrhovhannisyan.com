@@ -4,7 +4,7 @@ description: Once you get used to thinking in rems for font sizing, you'll find 
 keywords: [62.5% font size, rems, font size]
 categories: [css, typography, math, accessibility, rems]
 commentsId: 97
-lastUpdated: 2022-05-10
+lastUpdated: 2022-06-26
 redirectFrom:
   - /blog/respecting-font-size-preferences-rems-62-5-percent/
 thumbnail:
@@ -149,6 +149,42 @@ This may seem strange since we actually wanted `4.8rem` to equal `48px`, but rem
 Before: 48px ÷ 16px = 3
 After:  60px ÷ 20px = 3
 ```
+
+## What About `6.25%`?
+
+One thing that's unclear is why `62.5%` was originally chosen for this conversion trick. Sure, it makes the math easier because we now divide by `10` instead of `16` whenever we want to express pixels in rems, but why stop there? For example, we could make `1rem` equivalent to `1px` if we set our root font size to `6.25%`, which is the same as `1/16` (`0.0625`). In that case, we get a one-to-one equivalence between pixels and rems and don't even have to do any math:
+
+```css
+html {
+  /* 0.0625 * 16px = 1 (i.e., 1rem = 1px) */
+  font-size: 6.25%;
+}
+body {
+  /* resolves to 16px */
+  font-size: 16rem;
+}
+h2 {
+  /* resolves to 24px */
+  font-size: 24rem;
+}
+h1 {
+  /* resolves to 40px */
+  font-size: 40rem;
+}
+```
+
+Some more examples:
+
+```
+1rem * 0.0625 = 0.0625rem = 0.0625 * 16 = 1px
+2rem * 0.0625 = 0.125rem = 0.125 * 16 = 2px
+4rem * 0.0625 = 0.25rem = 0.25 * 16 = 4px
+8rem * 0.0625 = 0.5rem = 0.5 * 16 = 8px
+```
+
+I haven't tried this out, but I also don't see a reason why it wouldn't work.
+
+See [this Twitter thread](https://twitter.com/jantimon/status/1512714756867637254) for more context.
 
 ## Summary
 
