@@ -1,5 +1,4 @@
 const Image = require('@11ty/eleventy-img');
-const { outdent } = require('outdent');
 const { escape } = require('lodash');
 const { dir, imagePaths } = require('../constants');
 const { stringifyAttributes } = require('../utils');
@@ -99,11 +98,11 @@ const imageShortcode = async (props) => {
 
   // Link to the highest resolution optimized image
   if (isLinked) {
-    return outdent`<a class="outline-offset" href="${largestImages.optimized.url}">${picture}</a>`;
+    return `<a class="outline-offset" href="${largestImages.optimized.url}">${picture}</a>`;
   }
 
   // Otherwise just return the plain picture tag
-  return outdent`${picture}`;
+  return `${picture}`;
 };
 
 module.exports = imageShortcode;

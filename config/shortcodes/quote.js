@@ -1,5 +1,4 @@
 const { escape } = require('lodash');
-const { outdent } = require('outdent');
 const markdownLib = require('../plugins/markdown');
 
 const quote = (children, source, cite) => {
@@ -13,7 +12,7 @@ const quote = (children, source, cite) => {
     throw new Error('Quotes must have non-empty content.');
   }
   const content = markdownLib.render(children.trim());
-  return outdent`<blockquote class="rhythm" cite="${cite}">
+  return `<blockquote class="rhythm" cite="${cite}">
     <div class="quote rhythm">${content}</div>
     <div class="quote-source">
       <cite class="fs-sm">
