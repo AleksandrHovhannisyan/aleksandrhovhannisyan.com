@@ -16,7 +16,7 @@
     display: grid;
     gap: spacing(5);
     /* stylelint-disable-next-line scss/no-global-function-names */
-    grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(#{to-rems(400px)}, 100%), 1fr));
   }
 
   &-link {
