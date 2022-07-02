@@ -8,6 +8,6 @@
   width: fit-content;
   background-color: var(--color-text-normal);
   color: var(--color-text-inverted);
-  padding: spacing(-3) spacing(-1);
+  padding: spacing(-2) spacing(0);
   @include font($size: "base");
 }
