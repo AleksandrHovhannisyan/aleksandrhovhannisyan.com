@@ -10,6 +10,7 @@ body {
   justify-content: space-between;
   background-color: var(--color-surface-1);
   color: var(--color-text-normal);
+  line-height: 1.6;
   @include font($family: "body", $weight: "regular");
 }
 

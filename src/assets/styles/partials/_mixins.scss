@@ -66,6 +66,16 @@
       @error "#{$size} is not a valid step in the type scale. Valid steps range from #{$min-step-name} to #{$max-step-name}, inclusive.";
     } @else {
       font-size: var(--#{get-custom-property-prefix("typeScale")}-#{$size});
+
+      $base-step-index: list.index($font-size-steps, get($config, "typeScale", "base"));
+      $step-offset-from-base: $step-index - $base-step-index;
+      @if $step-offset-from-base >= 5 {
+        line-height: 1.2;
+      } @else if $step-offset-from-base >= 3 {
+        line-height: 1.35;
+      } @else if $step-offset-from-base == 2 {
+        line-height: 1.4;
+      }
     }
   }
   // Setting family and weight together

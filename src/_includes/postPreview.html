@@ -6,7 +6,7 @@
       <a class="post-preview-link to-underline" href="{{ post.url }}">{{ post.data.title }}</a>
     </h{{ titleLevel }}>
     <p class="post-preview-description">{{- post.data.description -}}</p>
-    <ul class="post-preview-tags flex flex-wrap gap--2 fs-sm" aria-label="Tags">
+    <ul class="post-preview-tags flex flex-wrap gap--1 fs-sm" aria-label="Tags">
       {%- for category in post.data.categories -%}
         <li>
           <a href="/tags/{{ category }}/" class="post-preview-tag post-tag" aria-label="{{ category }}">
