@@ -32,10 +32,11 @@
 
   &-date {
     color: var(--color-text-soft);
+    margin-bottom: spacing(-3);
   }
 
   &-title {
-    margin-bottom: spacing(-1);
+    margin-bottom: spacing(-2);
     @include font($size: "lg");
   }
 
