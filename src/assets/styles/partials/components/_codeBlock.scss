@@ -31,17 +31,12 @@ pre[class*="language-"] {
     display: block;
 
     &[data-file] {
-      padding-top: calc(var(--code-block-padding) + 3em);
-
       // File name
       &::before {
         content: "Filename: " attr(data-file);
-        position: absolute;
-        top: 0;
-        left: 0;
+        display: block;
+        margin-bottom: calc(var(--code-block-padding) * 0.75);
         color: var(--color-code-text);
-        word-break: break-all;
-        padding: var(--code-block-padding) var(--code-block-padding) 0;
         @include font($family: "title", $weight: "bold", $size: "sm");
       }
     }
