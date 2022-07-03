@@ -18,6 +18,10 @@
     left: calc(-1 * var(--avatar-size) - var(--meta-spacing));
   }
 
+  &-username {
+    @include font($family: "body", $weight: "bold");
+  }
+
   &-edited {
     font-style: italic;
   }
