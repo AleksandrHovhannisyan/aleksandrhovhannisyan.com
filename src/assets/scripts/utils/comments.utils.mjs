@@ -26,7 +26,7 @@ export const renderComments = async (comments) => {
   commentsList.innerHTML = comments
     .map((comment) => {
       return `<li>
-                <article class="post-comment stack gap--2">
+                <article class="post-comment stack gap-0">
                   <header class="flex align-center flex-wrap gap--2 relative">
                     <img src="${comment.user.avatarUrl}" alt="" aria-hidden="true" class="post-comment-avatar circle">
                     <a
