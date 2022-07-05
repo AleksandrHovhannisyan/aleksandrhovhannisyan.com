@@ -1,6 +1,6 @@
 ---
 title: "Use Rems for Font Size to Respect User Preferences"
-description: There are many CSS units that can be used to size elements on a page. Rems happen to be the most reliable unit for font sizing, allowing you to scale text responsively when users change their preferred font size.
+description: Of all the CSS units, rems are the most accessible for font sizing, allowing you to scale text responsively when users change their preferred font size settings.
 keywords: [rems, font size, responsive font size, preferred font size]
 categories: [css, typography, math, accessibility, rems]
 lastUpdated: 2022-05-21

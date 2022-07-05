@@ -1,6 +1,6 @@
 ---
 title: Add Build Info to an 11ty Site
-description: Expose useful information about your 11ty site at build time to all templates using global data. Among other things, this can be used to show your site's build time, package version, and the latest Git commit hash.
+description: Expose information about your 11ty site at build time to all templates using global data. Among other things, this can be used to show your site's build time, package version, and the latest Git commit hash.
 keywords: [11ty, 11ty build]
 categories: [11ty, node, git]
 lastUpdated: 2022-06-07
