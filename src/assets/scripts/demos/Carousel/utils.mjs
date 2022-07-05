@@ -25,3 +25,17 @@ export const getDistanceToFocalPoint = (element, focalPoint = 'center') => {
     }
   }
 };
+
+/**
+ * Returns the focal point for the given element, as determined by its scroll-snap-align (falling back to the fallback if not specified).
+ * @param {HTMLElement} element The element in question.
+ * @param {'start'|'center'|'end'} [fallback] A fallback value for the focal point.
+ * @returns {'start'|'center'|'end'}
+ */
+export const getFocalPoint = (element, fallback = 'center') => {
+  let focalPoint = window.getComputedStyle(element).scrollSnapAlign;
+  if (focalPoint === 'none') {
+    focalPoint = fallback;
+  }
+  return focalPoint;
+};

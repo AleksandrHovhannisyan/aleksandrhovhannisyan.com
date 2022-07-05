@@ -6,6 +6,7 @@ description: Learn how to build an accessible image carousel that supports multi
 keywords: [image carousel, carousel, accessible carousel, media carousel]
 categories: [html, css, javascript, accessibility, rtl, scroll-snap]
 thumbnail: ./images/algorithm.png
+lastUpdated: 2022-07-05
 openGraph:
   twitter:
     card: summary_large_image
@@ -912,7 +913,10 @@ navigateToNextItem(direction) {
 
   const scrollContainerCenter = getDistanceToFocalPoint(this.scrollContainer, 'center');
   const scrollTarget = mediaItems.find((mediaItem) => {
-    const focalPoint = window.getComputedStyle(mediaItem).scrollSnapAlign || 'center';
+    let focalPoint = window.getComputedStyle(mediaItem).scrollSnapAlign;
+    if (focalPoint === 'none') {
+      focalPoint = 'center';
+    }
     const distanceToItem = getDistanceToFocalPoint(mediaItem, focalPoint);
     // The 1s are to account for off-by-one errors. Sometimes, the currently centered
     // media item's center doesn't match the carousel's center and is off by one.
@@ -934,7 +938,10 @@ Now that we have a scroll target, we just need to scroll it into view. There are
 The most straightforward approach is to use [`Element.scrollIntoView`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView):
 
 ```js {data-copyable=true}
-const focalPoint = window.getComputedStyle(scrollTarget).scrollSnapAlign || 'center';
+let focalPoint = window.getComputedStyle(scrollTarget).scrollSnapAlign;
+if (focalPoint === 'none') {
+  focalPoint = 'center';
+}
 scrollTarget.scrollIntoView({ inline: focalPoint, block: 'nearest' });
 ```
 
@@ -971,7 +978,10 @@ navigateToNextItem(direction) {
   const scrollContainerCenter = getDistanceToFocalPoint(this.scrollContainer, 'center');
   let targetFocalPoint;
   for (const mediaItem of mediaItems) {
-    const focalPoint = window.getComputedStyle(mediaItem).scrollSnapAlign || 'center';
+    let focalPoint = window.getComputedStyle(mediaItem).scrollSnapAlign;
+    if (focalPoint === 'none') {
+      focalPoint = 'center';
+    }
     const distanceToItem = getDistanceToFocalPoint(mediaItem, focalPoint);
     if (
       (direction === 'start' && distanceToItem + 1 < scrollContainerCenter) ||
@@ -1089,7 +1099,10 @@ class Carousel {
     const scrollContainerCenter = getDistanceToFocalPoint(this.scrollContainer, 'center');
     let targetFocalPoint;
     for (const mediaItem of mediaItems) {
-      const focalPoint = window.getComputedStyle(mediaItem).scrollSnapAlign || 'center';
+      let focalPoint = window.getComputedStyle(mediaItem).scrollSnapAlign;
+      if (focalPoint === 'none') {
+        focalPoint = 'center';
+      }
       const distanceToItem = getDistanceToFocalPoint(mediaItem, focalPoint);
       if (
         (direction === 'start' && distanceToItem + 1 < scrollContainerCenter) ||

@@ -1,7 +1,7 @@
 import throttle from 'lodash/throttle';
 import ChevronLeft from 'feather-icons/dist/icons/chevron-left.svg';
 import ChevronRight from 'feather-icons/dist/icons/chevron-right.svg';
-import { getDistanceToFocalPoint, isRtl } from './utils.mjs';
+import { getFocalPoint, getDistanceToFocalPoint, isRtl } from './utils.mjs';
 
 class Carousel {
   constructor(props) {
@@ -64,7 +64,7 @@ class Carousel {
     const scrollContainerCenter = getDistanceToFocalPoint(this.scrollContainer, 'center');
     let targetFocalPoint;
     for (const mediaItem of mediaItems) {
-      const focalPoint = window.getComputedStyle(mediaItem).scrollSnapAlign || 'center';
+      const focalPoint = getFocalPoint(mediaItem);
       const distanceToItem = getDistanceToFocalPoint(mediaItem, focalPoint);
       const isTarget =
         (direction === 'start' && distanceToItem + 1 < scrollContainerCenter) ||
