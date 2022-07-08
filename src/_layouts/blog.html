@@ -5,7 +5,7 @@ isBlogPage: true
 
 <article class="stack blog-page">
   {%- assign pageTag = tag.title | default: 'all' -%}
-  <header class="hero stack gap-0">
+  <header class="hero stack gap--2">
     <h1 class="hero-title">{%- if pageTag == 'all' -%}All Blog Posts{%- else -%}Tag: {{ pageTag }}{%- endif -%}</h1>
     <p class="hero-subtitle">
       Browse the following posts, or <a href="/tags/">view all tags</a>.
