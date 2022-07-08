@@ -12,6 +12,6 @@
   @include font($size: "base");
 
   @include tablet {
-    @include font($size: "md");
+    padding-block: spacing(-1);
   }
 }

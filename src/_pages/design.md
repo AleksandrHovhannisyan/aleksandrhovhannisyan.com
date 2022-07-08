@@ -11,7 +11,7 @@ noindex: true
 ## Fonts
 
 {% assign fontKeys = fonts | keys %}
-{% assign steps = "xs,sm,base,md,lg,xl,2xl,3xl,4xl" | split: "," %}
+{% assign steps = "xs,sm,base,md,lg,xl,2xl,3xl" | split: "," %}
 
 {%- for keyName in fontKeys %}
   {% assign family = fonts[keyName].family %}
