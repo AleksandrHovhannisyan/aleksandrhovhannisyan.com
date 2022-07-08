@@ -10,7 +10,7 @@
 
   @include tablet {
     &-title {
-      @include font($size: "4xl");
+      @include font($size: "5xl");
     }
 
     &-subtitle {

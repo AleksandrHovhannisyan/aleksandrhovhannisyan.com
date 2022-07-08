@@ -10,4 +10,8 @@
   color: var(--color-text-inverted);
   padding: spacing(-2) spacing(0);
   @include font($size: "base");
+
+  @include tablet {
+    @include font($size: "md");
+  }
 }
