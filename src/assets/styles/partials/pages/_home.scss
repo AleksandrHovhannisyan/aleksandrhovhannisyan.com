@@ -17,13 +17,11 @@
 }
 
 .hash-art-grid {
-  width: fit-content;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(#{spacing(8)}, #{spacing(10)}));
   filter: grayscale(1);
 
   > * {
     aspect-ratio: 1;
-    width: spacing(10);
   }
 }

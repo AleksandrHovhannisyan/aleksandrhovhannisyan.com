@@ -42,8 +42,14 @@ Also, I'm lazy.
 }
 ```
 
-Here's an example that was seeded with a hash of `3b5875ce12be8bd07cf00249732c8edd7da6145f`:
+{% assign hash1 = "3b5875ce12be8bd07cf00249732c8edd7da6145f" %}
+Here's an example that was seeded with a hash of `{{ hash1 }}`:
 
-{% include postImage.html src: "./images/hash.png", alt: "A four-by-four grid of grayscale tiles, rendered using the hash 3b5875ce12be8bd07cf00249732c8edd7da6145f", isLinked: false %}
+{% hashArt hash1 %}
+
+{% assign hash2 = "c302c6eabb43d3b6960279f44457168802a165db" %}
+And here's a fun one using `{{ hash2 }}`:
+
+{% hashArt hash2 %}
 
 There is just one problem: Mathematically speaking, the hash should eventually generate an embarrassing permutation of tiles. When you consider that I [make frequent and atomic commits](/blog/atomic-git-commits/), this may not end well. On the other hand, there are 256 grayscale values for each of the 16 tiles, which when you do the math comes out to—*counts fingers*—lots and lots of permutations. So it's unlikely that I'll ever run into edge cases where this algorithm produces something silly.
