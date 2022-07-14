@@ -1,5 +1,5 @@
 ---
-title: Limiting Memory Usage in WSL 2
+title: Limiting Memory Usage in WSL2
 description: By default, WSL 2 may reserve a significant chunk of your host RAM. Thankfully, we can limit its memory usage with a .wslconfig file.
 keywords: [wsl 2, memory, ram, memory usage]
 categories: [linux, windows, wsl, memory]

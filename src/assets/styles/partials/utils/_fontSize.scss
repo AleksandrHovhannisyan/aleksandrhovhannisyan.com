@@ -1,15 +1,14 @@
-@import "../config";
-@import "../functions";
 @import "../mixins";
 
+$font-size-steps: get($config, "fontSize", "steps");
+$font-size-prefix: get-custom-property-prefix("fontSize");
+
 // Programmatically generate font size utility classes
-@each $step in get($config, "typeScale", "steps") {
-  .#{get-custom-property-prefix("typeScale")}-#{$step} {
+@each $step, $step-config in $font-size-steps {
+  .#{$font-size-prefix}-#{$step} {
     @include font($size: $step);
   }
 }
-
-// Have all the headings extend the corresponding font size util class
 
 h1 {
   @include extended-font-size("3xl");
@@ -33,4 +32,8 @@ h5 {
 
 h6 {
   @include extended-font-size("base");
+}
+
+small {
+  @include extended-font-size("sm");
 }

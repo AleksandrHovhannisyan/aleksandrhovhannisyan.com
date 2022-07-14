@@ -1,21 +1,23 @@
-@use "sass:list";
-@use "sass:math";
-
 @import "../config";
 @import "../functions";
 
+$font-size-steps: get($config, "fontSize", "steps");
+$font-size-prefix: get-custom-property-prefix("fontSize");
+
+$line-height-steps: get($config, "lineHeight", "steps");
+$line-height-prefix: get-custom-property-prefix("lineHeight");
+
 html {
-  $type-steps: get($config, "typeScale", "steps");
-  $type-sizes: get($config, "typeScale", "sizes");
-  $type-base-index: list.index($type-steps, get($config, "typeScale", "base"));
-  $type-min: get($type-sizes, "min");
-  $type-max: get($type-sizes, "max");
-  @for $i from 1 through length($type-steps) {
-    $step: list.nth($type-steps, $i);
-    $power: $i - $type-base-index;
-    $clamp-min: rnd(get($type-min, "baseFontSize") * math.pow(get($type-min, "ratio"), $power), 2);
-    $clamp-max: rnd(get($type-max, "baseFontSize") * math.pow(get($type-max, "ratio"), $power), 2);
+  // Font size
+  @each $step, $step-config in $font-size-steps {
+    $min-px: get($step-config, "min");
+    $max-px: get($step-config, "max");
+    $font-size: clamped($min-px, $max-px);
     /* stylelint-disable-next-line custom-property-pattern */
-    --#{get-custom-property-prefix("typeScale")}-#{$step}: #{clamped($clamp-min, $clamp-max)};
+    --#{$font-size-prefix}-#{$step}: #{$font-size};
+  }
+  // Line height
+  @each $step, $value in $line-height-steps {
+    --#{$line-height-prefix}-#{$step}: #{$value};
   }
 }
