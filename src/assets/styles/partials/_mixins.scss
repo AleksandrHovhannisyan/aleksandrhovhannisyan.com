@@ -71,15 +71,6 @@
   }
 }
 
-@mixin line-clamp($num-lines) {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  /* stylelint-disable-next-line value-no-vendor-prefix */
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: $num-lines;
-}
-
 // Breakpoint mixins
 
 @mixin breakpoint($name) {
