@@ -1,9 +1,16 @@
 .screen-reader-only {
   position: absolute;
-  left: 0;
   clip: rect(0, 0, 0, 0);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
 
   &:focus {
     clip: auto;
+    width: auto;
+    height: auto;
+    white-space: normal;
+    overflow: visible;
   }
 }
