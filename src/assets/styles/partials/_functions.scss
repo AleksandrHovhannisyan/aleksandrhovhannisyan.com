@@ -42,15 +42,28 @@
   @return $custom-property-prefix;
 }
 
-/// Returns the spacing value corresponding to the given step. Throws an error if the provided step is unrecognized.
-@function spacing($step) {
-  $spacing-steps: get($tokens, "spacing", "steps");
-  $spacing-prefix: get-custom-property-prefix("spacing");
-  @if not get($spacing-steps, $step) {
-    @error "#{$step} is not a valid step in the spacing scale.";
+/// Returns the custom property declaration corresponding to the given step under the $type key in $tokens.
+/// Throws an error if the provided step is unrecognized.
+@function get-scale-step($type, $step) {
+  $steps: get($tokens, $type, "steps");
+  $prefix: get-custom-property-prefix($type);
+  @if not get($steps, $step) {
+    @error "#{$step} is not a valid step in the #{$type} scale.";
   } @else {
-    @return var(--#{$spacing-prefix}-#{$step});
+    @return var(--#{$prefix}-#{$step});
   }
+}
+
+@function font-size($step) {
+  @return get-scale-step("fontSize", $step);
+}
+
+@function spacing($step) {
+  @return get-scale-step("spacing", $step);
+}
+
+@function leading($step) {
+  @return get-scale-step("leading", $step);
 }
 
 /// Returns true if the given string ends with the given suffix.

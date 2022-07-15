@@ -1,6 +1,8 @@
+@import "../functions";
+
 .rhythm {
   > * + * {
-    margin-top: calc(var(--lh-base) * 1em);
+    margin-top: calc(#{leading("base")} * 1em);
   }
 
   > :is(h2, h3, h4, h5, h6) + * {
