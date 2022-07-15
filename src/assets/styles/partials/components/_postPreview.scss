@@ -42,10 +42,11 @@
 
   &-description {
     margin-bottom: spacing("3");
+    line-height: leading("sm");
   }
 
   &-tag {
     position: relative;
-    line-height: 1.8;
+    line-height: leading("lg");
   }
 }
