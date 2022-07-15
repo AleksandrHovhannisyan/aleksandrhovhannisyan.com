@@ -3,7 +3,7 @@
 
 .card {
   // Expose these to consumers so we don't hard-code the logic here
-  --card-padding: #{spacing(5)};
+  --card-padding: #{spacing("5")};
   --card-box-shadow-default:
     0 1px 1px hsl(0deg 0% 0% / 12%),
     0 2px 2px hsl(0deg 0% 0% / 12%),
@@ -14,11 +14,11 @@
     0 4px 4px hsl(0deg 0% 0% / 12%),
     0 8px 8px hsl(0deg 0% 0% / 12%),
     0 8px 12px hsl(0deg 0% 0% / 12%);
-  --card-offset-y-focus: translateY(calc(-1 * #{spacing(-2)}));
+  --card-offset-y-focus: translateY(calc(-1 * #{spacing("-2")}));
   position: relative;
   padding: var(--card-padding);
   background-color: var(--color-card-bg);
-  border-radius: spacing(-3);
+  border-radius: spacing("-3");
   box-shadow: var(--card-box-shadow-default);
   transform: none;
   cursor: pointer;

@@ -8,10 +8,10 @@
   width: fit-content;
   background-color: var(--color-text-normal);
   color: var(--color-text-inverted);
-  padding: spacing(-2) spacing(0);
+  padding: spacing("-2") spacing("0");
   @include font($size: "base");
 
   @include tablet {
-    padding-block: spacing(-1);
+    padding-block: spacing("-1");
   }
 }

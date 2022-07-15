@@ -40,14 +40,14 @@
   }
 
   &-technology {
-    border-radius: spacing(-4);
-    padding: spacing(-3) spacing(-1);
+    border-radius: spacing("-4");
+    padding: spacing("-3") spacing("-1");
   }
 }
 
 .github-cta {
   svg {
-    width: spacing(8);
+    width: spacing("8");
     aspect-ratio: 1;
     fill: currentcolor;
   }

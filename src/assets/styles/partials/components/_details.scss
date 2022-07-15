@@ -9,8 +9,8 @@ details {
 
   summary,
   .details-content {
-    padding: spacing(2) spacing(3);
-    border: spacing(-4) solid var(--color-border);
+    padding: spacing("2") spacing("3");
+    border: spacing("-4") solid var(--color-border);
   }
 
   .details-content {

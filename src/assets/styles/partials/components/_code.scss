@@ -3,6 +3,6 @@
 // Inline code and kbd
 :is(code, kbd):not([class^="language-"]) {
   background-color: var(--color-inline-code-bg);
-  border-radius: spacing(-3);
-  padding: spacing(-3);
+  border-radius: spacing("-3");
+  padding: spacing("-3");
 }

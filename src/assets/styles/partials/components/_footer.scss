@@ -4,15 +4,15 @@
   background-color: var(--color-footer-bg);
   color: white;
   text-align: center;
-  padding-top: spacing(5);
-  padding-bottom: spacing(11);
+  padding-top: spacing("5");
+  padding-bottom: spacing("11");
 
   &-container {
-    --gap: #{spacing(0)};
+    --gap: #{spacing("0")};
   }
 
   @include mobile-lg {
-    padding-block: spacing(5);
+    padding-block: spacing("5");
   }
 
   @include tablet {

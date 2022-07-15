@@ -3,8 +3,8 @@
 
 .skip-navigation {
   top: 50%;
-  transform: translate(#{spacing(-2)}, -50%);
-  padding: spacing(-2);
+  transform: translate(#{spacing("-2")}, -50%);
+  padding: spacing("-2");
   color: inherit;
 }
 
@@ -24,7 +24,7 @@
   }
 
   &-header {
-    --navbar-min-height: #{spacing(10)};
+    --navbar-min-height: #{spacing("10")};
 
     /* Body is a flex container. Without this, the navbar may shrink vertically due to the presence of a horizontal scrollbar. */
     flex-shrink: 0;
@@ -33,7 +33,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    padding-block: spacing(-1);
+    padding-block: spacing("-1");
     background-color: var(--color-navbar-bg);
     box-shadow: var(--shadow-navbar);
     min-height: var(--navbar-min-height);
@@ -41,7 +41,7 @@
   }
 
   &-logo {
-    width: spacing(4);
+    width: spacing("4");
   }
 
   &-site-name {
@@ -65,7 +65,7 @@
   }
 
   &-link {
-    padding: spacing(-2) spacing(0);
+    padding: spacing("-2") spacing("0");
     display: flex;
     align-items: center;
     justify-content: center;
@@ -94,7 +94,7 @@
   transform: scale(0.711);
   transform-style: preserve-3d;
 
-  --outline-offset: #{spacing(-3)};
+  --outline-offset: #{spacing("-3")};
   --outline-color: white;
 
   &-base {
@@ -213,14 +213,14 @@
 @include mobile-lg {
   .navbar {
     &-header {
-      --navbar-min-height: #{spacing(11)};
+      --navbar-min-height: #{spacing("11")};
       position: unset;
       box-shadow: none;
     }
 
     &-branding {
       display: flex;
-      gap: spacing(-3);
+      gap: spacing("-3");
       align-items: center;
     }
 
@@ -229,7 +229,7 @@
     }
 
     &-links {
-      gap: spacing(-2);
+      gap: spacing("-2");
       width: unset;
     }
 

@@ -5,7 +5,7 @@
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: spacing(5);
+  gap: spacing("5");
 }
 
 .hero-hashart {
@@ -18,7 +18,7 @@
 
 .hash-art-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(#{spacing(8)}, #{spacing(10)}));
+  grid-template-columns: repeat(4, minmax(#{spacing("8")}, #{spacing("10")}));
   filter: grayscale(1);
 
   > * {

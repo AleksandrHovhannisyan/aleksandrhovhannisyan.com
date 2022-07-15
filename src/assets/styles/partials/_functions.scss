@@ -43,16 +43,14 @@
   @return $custom-property-prefix;
 }
 
-/// Returns the spacing value corresponding to the given step as an offset from the base. Throws an error if the provided step is unrecognized.
+/// Returns the spacing value corresponding to the given step. Throws an error if the provided step is unrecognized.
 @function spacing($step) {
   $spacing-steps: get($tokens, "spacing", "steps");
-  $spacing-base-index: list.index($spacing-steps, get($tokens, "spacing", "base"));
-  $min-step: 0 - $spacing-base-index + 1;
-  $max-step: list.length($spacing-steps) - $spacing-base-index;
-  @if $step < $min-step or $step > $max-step {
-    @error "#{$step} is not a valid step in the spacing scale. Valid steps range from #{$min-step} to #{$max-step}, inclusive.";
+  $spacing-prefix: get-custom-property-prefix("spacing");
+  @if not get($spacing-steps, $step) {
+    @error "#{$step} is not a valid step in the spacing scale.";
   } @else {
-    @return var(--#{get-custom-property-prefix("spacing")}-#{$step});
+    @return var(--#{$spacing-prefix}-#{$step});
   }
 }
 

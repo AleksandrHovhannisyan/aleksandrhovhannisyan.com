@@ -3,7 +3,7 @@
 .container {
   --container-max-width: #{to-rems(1400px)};
   /* stylelint-disable-next-line scss/no-global-function-names */
-  --padding-x: #{spacing(0)};
+  --padding-x: #{spacing("0")};
 
   // why not just use content-box? because it creates overflow issues on mobile with width: 100% below
   max-width: calc(var(--container-max-width) + 2 * var(--padding-x));

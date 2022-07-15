@@ -6,13 +6,13 @@
   margin-inline: auto;
 
   &-title {
-    margin-bottom: spacing(-2);
+    margin-bottom: spacing("-2");
   }
 
   &-date {
     text-transform: uppercase;
     letter-spacing: to-rems(1px);
-    margin-bottom: spacing(-3);
+    margin-bottom: spacing("-3");
     color: var(--color-text-soft);
     @include font($size: "sm");
   }
@@ -34,12 +34,12 @@
 
     #skip-toc {
       transform: translateY(-50%);
-      padding: spacing(-4) spacing(-2);
+      padding: spacing("-4") spacing("-2");
       @include font($family: "body", $weight: "bold");
     }
 
     .toc-list {
-      --gap: #{spacing(0)};
+      --gap: #{spacing("0")};
       list-style: disc; // some headings have numbers already
       padding-inline-start: 1.5em;
     }

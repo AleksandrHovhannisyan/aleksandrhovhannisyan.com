@@ -3,7 +3,7 @@
 @import "../mixins";
 
 pre[class*="language-"] {
-  --code-block-padding: #{spacing(5)};
+  --code-block-padding: #{spacing("5")};
   background: var(--color-code-background);
   box-shadow: var(--shadow-code-block);
   color: var(--color-code-text);
@@ -11,7 +11,7 @@ pre[class*="language-"] {
 
   @include full-bleed;
   @include tablet {
-    border-radius: spacing(-2);
+    border-radius: spacing("-2");
   }
 
   &:hover {
@@ -139,8 +139,8 @@ pre[class*="language-bash"] {
   display: none;
   color: var(--color-code-text);
   background-color: var(--color-code-overlay-1);
-  padding: spacing(-2) spacing(0);
-  border-radius: spacing(-3);
+  padding: spacing("-2") spacing("0");
+  border-radius: spacing("-3");
   @include font($family: "body", $weight: "regular");
 
   &:is(.copied, :focus) {

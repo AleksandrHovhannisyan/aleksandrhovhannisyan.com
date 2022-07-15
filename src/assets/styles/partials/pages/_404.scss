@@ -12,7 +12,7 @@
   position: absolute;
   top: 0;
   width: 100%;
-  padding: 0 spacing(-1);
+  padding: 0 spacing("-1");
   @keyframes background-scroll {
     from {
       background-position: 0 0;
