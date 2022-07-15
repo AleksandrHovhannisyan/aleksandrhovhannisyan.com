@@ -1,6 +1,6 @@
 /* stylelint-disable value-keyword-case */
 $tokens: (
-  lineHeight: (
+  leading: (
     steps: (
       "base": 1.6,
       "sm": 1.5,
@@ -24,37 +24,37 @@ $tokens: (
       "base": (
         min: 16px,
         max: 19px,
-        lineHeight: "base",
+        leading: "base",
       ),
       "md": (
         min: 19px,
         max: 24px,
-        lineHeight: "sm",
+        leading: "sm",
       ),
       "lg": (
         min: 23px,
         max: 28px,
-        lineHeight: "xs",
+        leading: "xs",
       ),
       "xl": (
         min: 26px,
         max: 36px,
-        lineHeight: "2xs",
+        leading: "2xs",
       ),
       "2xl": (
         min: 32px,
         max: 44px,
-        lineHeight: "2xs",
+        leading: "2xs",
       ),
       "3xl": (
         min: 38px,
         max: 54px,
-        lineHeight: "3xs",
+        leading: "3xs",
       ),
       "4xl": (
         min: 50px,
         max: 76px,
-        lineHeight: "4xs",
+        leading: "4xs",
       ),
     ),
     breakpoints: (

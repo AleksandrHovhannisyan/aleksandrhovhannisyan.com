@@ -4,8 +4,8 @@
 $font-size-steps: get($tokens, "fontSize", "steps");
 $font-size-prefix: get-custom-property-prefix("fontSize");
 
-$line-height-steps: get($tokens, "lineHeight", "steps");
-$line-height-prefix: get-custom-property-prefix("lineHeight");
+$leading-steps: get($tokens, "leading", "steps");
+$leading-prefix: get-custom-property-prefix("leading");
 
 $min-bp: get($tokens, "breakpoints", get($tokens, "fontSize", "breakpoints", "min"));
 $max-bp: get($tokens, "breakpoints", get($tokens, "fontSize", "breakpoints", "max"));
@@ -20,7 +20,7 @@ html {
     --#{$font-size-prefix}-#{$step}: #{$font-size};
   }
   // Line height
-  @each $step, $value in $line-height-steps {
-    --#{$line-height-prefix}-#{$step}: #{$value};
+  @each $step, $value in $leading-steps {
+    --#{$leading-prefix}-#{$step}: #{$value};
   }
 }

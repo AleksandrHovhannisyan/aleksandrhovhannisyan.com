@@ -58,9 +58,9 @@
   // Font sizing
   @if $size {
     font-size: var(--#{get-custom-property-prefix("fontSize")}-#{$size});
-    $line-height: get($tokens, "fontSize", "steps", $size, "lineHeight");
+    $line-height: get($tokens, "fontSize", "steps", $size, "leading");
     @if $line-height {
-      line-height: var(--#{get-custom-property-prefix("lineHeight")}-#{$line-height}, inherit);
+      line-height: var(--#{get-custom-property-prefix("leading")}-#{$line-height}, inherit);
     }
   }
   // Setting family and weight together
