@@ -3,7 +3,7 @@
 @use "sass:string";
 @use "sass:map";
 
-@import "./config";
+@import "./tokens";
 @import "./breakpoints";
 
 @function to-rems($value) {
@@ -36,7 +36,7 @@
 
 /// Returns the string prefix that is used for the custom properties corresponding to the specified key in the design config.
 @function get-custom-property-prefix($key) {
-  $custom-property-prefix: get($config, $key, "customPropertyPrefix");
+  $custom-property-prefix: get($tokens, $key, "customPropertyPrefix");
   @if not $custom-property-prefix {
     @error "#{$key} is missing a custom property prefix in the config";
   }
@@ -45,8 +45,8 @@
 
 /// Returns the spacing value corresponding to the given step as an offset from the base. Throws an error if the provided step is unrecognized.
 @function spacing($step) {
-  $spacing-steps: get($config, "spacing", "steps");
-  $spacing-base-index: list.index($spacing-steps, get($config, "spacing", "base"));
+  $spacing-steps: get($tokens, "spacing", "steps");
+  $spacing-base-index: list.index($spacing-steps, get($tokens, "spacing", "base"));
   $min-step: 0 - $spacing-base-index + 1;
   $max-step: list.length($spacing-steps) - $spacing-base-index;
   @if $step < $min-step or $step > $max-step {

@@ -1,10 +1,10 @@
-@import "../config";
+@import "../tokens";
 @import "../functions";
 
-$font-size-steps: get($config, "fontSize", "steps");
+$font-size-steps: get($tokens, "fontSize", "steps");
 $font-size-prefix: get-custom-property-prefix("fontSize");
 
-$line-height-steps: get($config, "lineHeight", "steps");
+$line-height-steps: get($tokens, "lineHeight", "steps");
 $line-height-prefix: get-custom-property-prefix("lineHeight");
 
 html {

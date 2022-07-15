@@ -59,7 +59,7 @@
   // Font sizing
   @if $size {
     font-size: var(--#{get-custom-property-prefix("fontSize")}-#{$size});
-    $line-height: get($config, "fontSize", "steps", $size, "lineHeight");
+    $line-height: get($tokens, "fontSize", "steps", $size, "lineHeight");
     @if $line-height {
       line-height: var(--#{get-custom-property-prefix("lineHeight")}-#{$line-height}, inherit);
     }
