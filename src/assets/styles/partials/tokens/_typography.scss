@@ -7,12 +7,15 @@ $font-size-prefix: get-custom-property-prefix("fontSize");
 $line-height-steps: get($tokens, "lineHeight", "steps");
 $line-height-prefix: get-custom-property-prefix("lineHeight");
 
+$min-bp: get($tokens, "breakpoints", get($tokens, "fontSize", "breakpoints", "min"));
+$max-bp: get($tokens, "breakpoints", get($tokens, "fontSize", "breakpoints", "max"));
+
 html {
   // Font size
   @each $step, $step-config in $font-size-steps {
     $min-px: get($step-config, "min");
     $max-px: get($step-config, "max");
-    $font-size: clamped($min-px, $max-px);
+    $font-size: clamped($min-px, $max-px, $min-bp, $max-bp);
     /* stylelint-disable-next-line custom-property-pattern */
     --#{$font-size-prefix}-#{$step}: #{$font-size};
   }
