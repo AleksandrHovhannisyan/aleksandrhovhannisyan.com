@@ -4,7 +4,6 @@
 @use "sass:map";
 
 @import "./tokens";
-@import "./breakpoints";
 
 @function to-rems($value) {
   // Check if the value, as a string, is already expressed in rems
@@ -74,7 +73,7 @@
 }
 
 /// Returns a CSS clamp(...) declaration, with the responsive argument computed automatically.
-@function clamped($min-px, $max-px, $min-bp: map.get($media-breakpoints, "mobile"), $max-bp: map.get($media-breakpoints, "desktop")) {
+@function clamped($min-px, $max-px, $min-bp: get($tokens, "breakpoints", "mobile"), $max-bp: get($tokens, "breakpoints", "desktop")) {
   $slope: math.div($max-px - $min-px, $max-bp - $min-bp);
   $slope-vw: rnd($slope * 100, 2);
   $intercept-rems: rnd(to-rems($min-px - $slope * $min-bp), 2);
