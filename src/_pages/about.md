@@ -19,7 +19,7 @@ Long story short, I moved to the U.S. when I was little and have lived in the st
 
 I work as a front-end developer and enjoy creating responsive and accessible user experiences on the web. While I've done a bit of back-end work on past projects, I thrive in roles that play to my creative strengths and attention to detail. At work, you'll find me creating new user-facing features, improving core parts of our app, squashing bugs, tackling tech debt, learning new things, and getting to know my co-workers.
 
-On the side, I've also worked as a [freelance copy editor](https://www.upwork.com/freelancers/~014eb3a95d4d1fd855?s=1110580753635725312) for over four years now, with my clients ranging from digital marketing agencies to small business owners and companies. I've found freelancing to be a great way to market myself and grow my network, all while supplementing my income and honing my communication and SEO skills.
+In the past, I also worked as a [freelance copy editor](https://www.upwork.com/freelancers/~014eb3a95d4d1fd855?s=1110580753635725312) for over four years, with my clients ranging from digital marketing agencies to small business owners and companies. Freelancing helped me to market myself and grow my network, all while supplementing my income and honing my communication skills.
 
 I won't bore you too much with my work history; that's what [my LinkedIn]({{ socials.linkedin.url }}) is for.
 
