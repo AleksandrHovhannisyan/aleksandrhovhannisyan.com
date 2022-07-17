@@ -4,6 +4,7 @@ description: Developers often use class names to represent a change in a compone
 keywords: [html attributes, CSS attribute selector, class names]
 categories: [accessibility, html, css]
 commentsId: 108
+lastUpdated: 2022-07-17
 thumbnail:
   url: https://images.unsplash.com/photo-1477414348463-c0eb7f1359b6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
@@ -63,7 +64,7 @@ We have this markup from the intro:
 <a href="/page2/" class="nav-link active">Page 2</a>
 ```
 
-We can assume that the corresponding styles for the `active` class are sufficient to convey the link's activeness state to sighted users. However, importantly, screen readers and search engine crawlers won't treat this link differently than any other on the page because they can't interpret semantics from a class name.
+We can assume that the corresponding styles for the `active` class are sufficient to convey the link's activeness state to sighted users. However, importantly, screen readers won't treat this link differently than any other on the page because they can't interpret semantics from a class name.
 
 Instead, we can use the `aria-current` attribute, which identifies the current element in a collection of related items. The definition of "current" depends wholly on the context. In the case of navigation links, the current item corresponds to the current page. And as it turns out, `"page"` is a valid value for this attribute, made specifically for this use case. So we can set `aria-current="page"` on the link and remove the `active` class entirely:
 
@@ -193,15 +194,13 @@ button[aria-checked="true"] {}
 
 Just as before, it turns out that the class name was completely redundant. In fact, because we reached for a class name prematurely, we forgot to communicate the right semantics at the markup level.
 
-## Exceptions to the Rule: Child Element State
+## Exception: Styling a Parent's State
 
 Before wrapping up, I want to note that there *are* some exceptions to this rule.
 
-In the case of the hamburger toggle button, the parent element (e.g., a navbar) may need to know whether the button has been toggled so it can style itself accordingly. Since there's no way for a parent to change its own appearance in response to changes in a child element's state, the best that we can do is to apply an additional class name at the parent level. Alternatively, if you're using CSS in JS, you could interpolate values using ternaries.
+In the case of the hamburger toggle button, the parent element (e.g., a navbar) may need to know whether the button has been toggled so it can style itself accordingly. Since there's no way for a parent to change its own appearance in response to changes in a child element's state (at the time of this writing), the best that we can do is to apply an additional class name or data-attribute at the parent level to reflect this change in state.
 
-### The Need for Relational Selectors: `:has`
-
-This is one of the strongest arguments in favor of introducing [relational selectors like `:has`](https://drafts.csswg.org/selectors/#relational) to the CSS standard. Assuming that developers don't abuse it, the `:has` selector would allow a parent element to style itself based on changes in a child element's state:
+The need to style a parent's state based on a child's state is one of the strongest arguments in favor of introducing [relational selectors like `:has`](https://drafts.csswg.org/selectors/#relational) to the CSS standard. Once supported, it would allow us to write CSS like this:
 
 ```css
 /* Open navbar */
@@ -211,10 +210,10 @@ This is one of the strongest arguments in favor of introducing [relational selec
 .navbar:has(#navbar-toggle[aria-expanded="false"]) {}
 ```
 
-Thus, you wouldn't need to introduce additional class names at the parent level just so you could select and style those states.
+That way, you wouldn't need to introduce duplicate class names at the parent level just so you could style it.
 
 ## Use Attributes First and Class Names Second
 
-If possible, try to represent your UI state using HTML attributes first, and only reach for class names when you really need them. With this approach, you're forced to use class names for their intended purpose: styling elements, not representing UI state. Consider whether there are existing HTML attributes that you can use to communicate an element's state to assistive technologies and crawlers. From there, styling the element should be straightforward and may not even require any additional class names.
+If possible, try to represent your UI state using HTML attributes first, and only reach for class names when you really need them. With this approach, you're forced to use class names for their intended purpose: styling elements, not representing UI state. Consider whether there are existing HTML attributes that you can use to communicate an element's state to assistive technologies. From there, styling the element should be straightforward and may not even require any additional class names.
 
 {% include unsplashAttribution.md name: "Chris Lawton", username: "chrislawton", photoId: "5IHz5WhosQE" %}
