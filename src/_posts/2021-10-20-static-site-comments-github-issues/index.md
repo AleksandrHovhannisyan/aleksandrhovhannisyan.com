@@ -255,8 +255,8 @@ We can then reshape the data as needed and return the comments from our lambda:
 
 ```js {data-file="functions/comments.js" data-copyable=true}
 const comments = response.data
-  // Sort by most recent comments
-  .sort((comment1, comment2) => comment2.created_at.localeCompare(comment1.created_at))
+  // Show comments in chronological order (oldest comments first)
+  .sort((comment1, comment2) => comment1.created_at.localeCompare(comment2.created_at))
   // Restructure the data so the client-side JS doesn't have to do this
   .map((comment) => {
     return {
