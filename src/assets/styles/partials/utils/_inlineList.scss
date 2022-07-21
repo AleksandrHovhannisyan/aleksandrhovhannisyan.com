@@ -1,0 +1,12 @@
+.inline-list {
+  > * {
+    display: inline-block;
+  }
+
+  > * + * {
+    &::before {
+      content: "•";
+      display: inline-block;
+    }
+  }
+}

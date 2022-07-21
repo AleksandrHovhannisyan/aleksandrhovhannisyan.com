@@ -12,9 +12,13 @@
   &-date {
     text-transform: uppercase;
     letter-spacing: to-rems(1px);
-    margin-bottom: spacing("-3");
     color: var(--color-text-soft);
     @include font($size: "sm");
+
+    dt,
+    dd {
+      display: inline-block;
+    }
   }
 
   &-tag {
