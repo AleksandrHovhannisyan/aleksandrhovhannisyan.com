@@ -14,6 +14,7 @@ module.exports = {
   email: 'aleksandrhovhannisyan@gmail.com',
   description: 'Dev tutorials, thoughts on software development, and the occasional off-topic post.',
   keywords: ['Aleksandr Hovhannisyan'],
+  lang: 'en-US',
   issues: {
     owner: `AleksandrHovhannisyan`,
     repo: `aleksandrhovhannisyan.com`,
