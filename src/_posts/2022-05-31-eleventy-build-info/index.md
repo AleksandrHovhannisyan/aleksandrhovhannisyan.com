@@ -3,7 +3,7 @@ title: Add Build Info to an 11ty Site
 description: Expose information about your 11ty site at build time to all templates using global data. Among other things, this can be used to show your site's build time, package version, and the latest Git commit hash.
 keywords: [11ty, 11ty build]
 categories: [11ty, node, git]
-lastUpdated: 2022-06-07
+lastUpdated: 2022-07-21
 ---
 
 In a recent update to my site, I decided to show a helpful notice in my footer that timestamps my build, writes the abbreviated commit hash from Git, and links to the changeset on my GitHub repo for ease of reference. You can expose all of this information and much more to your 11ty templates using a simple JavaScript data file.
@@ -62,6 +62,10 @@ You may be wondering why I'm returning an object for the build time instead of j
 Alternatively, you could return a single JavaScript date object and create 11ty filters to format it at the template level. This would require more work from each template, so I've opted to instead calculate that information upfront before supplying it to all my templates.
 
 ## 2. Reading the Version from `package.json`
+
+{% aside %}
+**Edit**: Before writing this article, I was not aware that 11ty already exposes your `package.json` to templates via the `pkg` global data variable, as noted in the docs on [Eleventy supplied data](https://www.11ty.dev/docs/data-eleventy-supplied/). You can either access `pkg.version` directly or use the approach described below.
+{% endaside %}
 
 {% aside %}
 If you don't update your `version` regularly and don't intend to show it in your templates, you can [skip this step entirely](#3-getting-the-latest-commit-hash).
