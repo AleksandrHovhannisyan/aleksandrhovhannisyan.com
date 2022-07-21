@@ -2,7 +2,7 @@
 title: Hesitation Is Defeat
 description: After a one-year hiatius from Sekiro, I returned to face the final boss—and, through painful persistence, triumphed.
 keywords: [sekiro, hesitation is defeat]
-categories: [off-topic, sekiro, gaming]
+categories: [essay, gaming, sekiro]
 thumbnail: ./images/thumbnail.jpg
 ---
 

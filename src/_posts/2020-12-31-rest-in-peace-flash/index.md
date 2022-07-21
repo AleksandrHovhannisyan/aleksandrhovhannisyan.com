@@ -2,7 +2,7 @@
 title: Rest in Peace, Flash
 description: If it were up to me, things wouldn't end this way. We had some great times together, but now it's time to say goodbye.
 keywords: [flash games]
-categories: [off-topic, gaming]
+categories: [essay, gaming]
 thumbnail: ./images/thumbnail.png
 ---
 

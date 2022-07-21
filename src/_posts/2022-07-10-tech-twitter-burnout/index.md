@@ -2,7 +2,7 @@
 title: Tech Twitter Burnout
 description: Twitter can be a great way to network with other people and learn new things if it's used in moderation. But there's the rub.
 keywords: [tech twitter, twitter]
-categories: [twitter, life, writing, career, burnout]
+categories: [essay, writing, career, twitter]
 ---
 
 I was originally drawn to Tech Twitter when I found a handful of users who shared genuinely helpful tips, articles, and resources with their audience. Before Twitter forced me to sign up to view tweets, I would anonymously check in on these accounts in my free time, pick up a few useful tricks, share them in my small circle of friends, and apply my newfound knowledge both at work and in my own projects. Twitter wasn't all that bad when I was just lurking.

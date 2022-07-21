@@ -2,7 +2,7 @@
 title: Gated Content, Broken Locks
 description: Some sites gate their content by hiding it with CSS. Whether you open the site incognito or normally, the full content appears to be beyond reach. But it's not—anyone can swing open the gate.
 keywords: [gated content]
-categories: [css, knowledge, news, money]
+categories: [essay, css, news, money]
 thumbnail:
   url: https://images.unsplash.com/photo-1585152002465-43c1f64b95d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---

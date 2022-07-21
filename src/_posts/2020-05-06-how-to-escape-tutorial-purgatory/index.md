@@ -2,7 +2,7 @@
 title: "Stuck in Tutorial Purgatory?"
 description: Tutorials can help you grow as a developer. But they can also hold you back. Stuck in tutorial purgatory? Here's how to get out.
 keywords: [tutorial purgatory]
-categories: [tutorials, learning, career]
+categories: [essay, tutorials, learning, career]
 commentsId: 37
 thumbnail:
   url: https://images.unsplash.com/photo-1581481283865-97c09ec76a63?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80

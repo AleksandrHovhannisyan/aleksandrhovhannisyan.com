@@ -2,7 +2,7 @@
 title: 16 Shades of Gray
 description: The one where I create my first generative artwork and still refuse to use any color on my site.
 keywords: [generative art, hash art, git hash]
-categories: [node, css, math, art]
+categories: [essay, node, css, math, art]
 lastUpdated: 2022-06-01
 thumbnail: ./images/hash.png
 ---
