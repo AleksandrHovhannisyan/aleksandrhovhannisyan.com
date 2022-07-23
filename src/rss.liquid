@@ -10,7 +10,7 @@ excludeFromSitemap: true
   <subtitle>{{ site.description }}</subtitle>
   <link href="{{ 'feed.xml' | toAbsoluteUrl }}" rel="self"/>
   <link href="{{ site.url }}/" rel="alternate" type="text/html"/>
-  <updated>{{ collections.posts | getLatestCollectionItemDate | toIsoString }}</updated>
+  <updated>{{ collections.posts | getLatestCollectionItemDate | toUTCString }}</updated>
   <id>{{ site.url }}/</id>
   <author>
     <name>{{ site.author }}</name>
@@ -22,7 +22,7 @@ excludeFromSitemap: true
     <title>{{ post.data.title | escape }}</title>
     <link href="{{ absolute_post_url }}"/>
     {%- assign dateUpdated = post.data.lastUpdated | default: post.date -%}
-    <updated>{{ dateUpdated | toIsoString }}</updated>
+    <updated>{{ dateUpdated | toUTCString }}</updated>
     <id>{{ absolute_post_url }}</id>
     {%- for category in post.data.categories %}
       <category term="{{ category }}" />
