@@ -5,7 +5,7 @@ keywords: [line endings, git, gitattributes, carriage return, line feed, crlf vs
 categories: [git, operating-systems, tooling]
 commentsId: 79
 isFeatured: true
-lastUpdated: 2022-02-12
+lastUpdated: 2022-07-23
 thumbnail:
   url: https://images.unsplash.com/photo-1583913836387-ab656f4e0457?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
@@ -24,9 +24,9 @@ History can be boring, though, so if you stumbled upon this post after hours of 
 
 To *really* understand the problem of CRLF vs. LF line endings, we need to brush up on a bit of typesetting history.
 
-People use letters, numbers, and symbols to communicate with one another. It's how you're reading this post right now! But computers can only understand and work with *numbers*. Since the files on your computer consist of strings of human-readable characters, we need a system that allows us to convert back and forth between these two formats. The [ASCII standard](/blog/binary-for-beginners/#the-ascii-standard) is that system—it maps characters like `A` and `z` to numbers, bridging the gap between human languages and the language of computers.
+People use letters, numbers, and symbols to communicate with one another. It's how you're reading this post right now! But computers can only understand and work with *numbers*. Since the files on your computer consist of strings of human-readable characters, we need a system that allows us to convert back and forth between these two formats. The [Unicode standard](https://en.wikipedia.org/wiki/Unicode) is that system—it maps characters like `A` and `z` to numbers, bridging the gap between human languages and the language of computers.
 
-Interestingly, the ASCII standard isn't just for *visible* characters like letters and numbers. A certain subset are **control characters**, also known as **non-printing characters**. They aren't used to render visible characters; rather, they're used to perform unique actions, like deleting the previous character or inserting a newline.
+Notably, the Unicode standard isn't just for *visible* characters like letters and numbers. A certain subset are **control characters**, also known as **non-printing characters**. They aren't used to render visible characters; rather, they're used to perform unique actions, like deleting the previous character or inserting a newline.
 
 `LF` and `CR` are two such control characters, and they're both related to line endings in files. Their history dates back to the era of the typewriter, so we'll briefly look at how that works so you understand why we have two different control characters rather than just one. Then, we'll look at how this affects the typical developer experience on a multi-OS codebase.
 

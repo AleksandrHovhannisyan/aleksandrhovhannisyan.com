@@ -4,7 +4,7 @@ description: The binary number system underlies everything in computation and so
 keywords: [binary number system, binary numbers]
 categories: [computer-science, math, binary]
 commentsId: 44
-lastUpdated: 2022-07-18
+lastUpdated: 2022-07-23
 thumbnail: ./images/thumbnail.png
 layout: mathPost
 ---
@@ -157,7 +157,7 @@ You may not see any point in using binary if you haven't learned about computer 
 
 Everything on your computer—the files you save and the software you install—is represented as nothing more than zeros and ones. But how is this possible?
 
-### The ASCII Standard
+### The Unicode Standard
 
 Suppose you create a file on your computer and store some basic text in it:
 
@@ -165,22 +165,26 @@ Suppose you create a file on your computer and store some basic text in it:
 echo Hello, Binary > file
 ```
 
-At the end of the day, your computer can't store a character like `H`, `e`, `l`, or `o` (or even the space between two words) *literally*. Computers only know how to work with *binary*. Thus, we need some way to convert these characters to numbers. And that's why the ASCII standard was introduced.
+At the end of the day, your computer can't store a character like `H`, `e`, `l`, or `o` (or even the space between two words) *literally*. Computers only know how to work with *binary*. Thus, we need some way to convert these characters to numbers. And that's why the Unicode standard was introduced.
 
-Formally, ASCII is referred to as a **character encoding standard**. Put more simply, it's a method of representing human-readable characters like `H`, `e`, `,`, `?`, and `9` numerically so that computers can understand and use them like we do.
+Unicode is the most widely accepted **character encoding standard**: a method of representing human-readable characters like `H`, `e`, `,`, `?`, and `9` numerically so that computers can understand and use them like we do. Each character maps to a unique number known as a *code point*.
 
-Here is a typical [ASCII chart](http://www.asciitable.com/) that you may have seen before:
+For example, the chart below shows a very limited subset of Unicode characters (known as the ASCII standard) and their corresponding code points:
 
 {% include postImage.html src: "./images/ascii.gif", alt: "An ASCII table showing characters and their numerical representations" %}
 
-In the ASCII standard, there are a total of 128 characters, each mapped to a unique number in binary (with an equivalent representation in decimal that we humans understand more naturally):
+For the sake of brevity, we'll focus on just the ASCII standard for now, even though it doesn't capture the full range of characters in the Unicode standard and the complexities that come with needing to support hundreds of thousands of characters.
+
+The ASCII standard supports only 128 characters, each mapped to a unique number:
 
 - Arabic digits: $0-9$ (10)
-- Capital letters of the English alphabet: $A-Z$ (26)
-- Lowercase letters of the English alphabet: $a-z$ (26)
+- Uppercase Latin letters: $A-Z$ (26)
+- Lowercase Latin letters: $a-z$ (26)
 - Punctuation and special characters (66)
 
-### 1 Character = 1 Byte
+Again, note that while the ASCII standard only allows us to represent a tiny fraction of Unicode characters, it's simple enough that it can help us better understand how characters are stored on computers.
+
+### 1 ASCII Character = 1 Byte
 
 In the decimal number system, we're used to working with digits. In binary, as we already saw, we're used to working with **bits**. There's another special group of digits in binary that's worth mentioning: A sequence of eight bits is called a **byte**.
 
@@ -197,7 +201,7 @@ Here are some examples of valid bytes:
 
 Why is this relevant? Because on modern computers, **characters are represented using bytes**.
 
-Recall that the ASCII standard needs to support a total of **128 characters**. So how many unique number can we represent with $8$ bits (a byte)?
+Recall that the ASCII encoding format needs to support a total of **128 characters**. So how many unique number can we represent with $8$ bits (a byte)?
 
 Well, using the product rule from combinatorics, we have eight "buckets," each with two possible values: either a $0$ or a $1$. Thus, we have $2 × 2 × ... × 2 = 2^8$ possible values.
 
@@ -213,7 +217,7 @@ Good question! We use bytes because **it's not possible to evenly divide a group
 [11][10][10][11]
 ```
 
-The key takeaway here is that we only need one byte to store one character on a computer. This means that a string of five characters—like `Hello`—occupies five bytes of space, with each byte being the numerical representation of the corresponding character per the ASCII standard.
+The key takeaway here is that we only need one byte to store one character on a computer. This means that a string of five characters—like `Hello`—occupies five bytes of space, with each byte being the numerical representation of the corresponding character per the ASCII format.
 
 Remember the file we created earlier? Let's view its binary representation using the `xxd` Unix tool:
 
@@ -237,6 +241,10 @@ Let's decode the first two bytes using our knowledge of the binary number system
 - $01100101 = 1(2^6) + 1(2^5) + 1(2^2) + 1(2^0) = 101_{10}$, which is $e$ in ASCII.
 
 Cool! Looks like the logic pans out. You can repeat this for all of the other bytes as well. Notice that on the second line, we have a leading space (from `Hello, Binary`), represented as $2^5 = 32_{10}$ in ASCII (which is indeed `Space` per the table).
+
+{% aside %}
+As a reminder, this was a highly simplified discussion of how characters are stored on modern computers. In reality, we cannot store every possible Unicode character in just a single byte because there are far more than $256$ characters in Unicode. For example, the UTF-16 standard stores characters in two-byte chunks.
+{% endaside %}
 
 By the way, what's up with the numbers along the left-hand side of the output? What does $0000000c$ even mean? Time to explore another important number system!
 

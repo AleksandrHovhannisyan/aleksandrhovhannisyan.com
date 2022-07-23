@@ -4,7 +4,7 @@ description: Developers are often taught that JavaScript passes objects by refer
 keywords: [javascript pass by reference]
 categories: [javascript, memory]
 commentsId: 36
-lastUpdated: 2021-06-13
+lastUpdated: 2022-07-23
 thumbnail:
   url: https://images.unsplash.com/photo-1529448005898-b19fc13465b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
@@ -116,9 +116,7 @@ console.log(myName); // "Aleksandr"
 console.log(myNickname); // "Alex"
 ```
 
-On the second line, what I'm doing is creating a copy of the string `"Aleksandr"` and storing it in a new variable named `myNickname`<sup id="note-1-link" aria-labelledby="note-1"><a href="#note-1">1</a></sup>. These two variables occupy *different memory addresses*. Assigning a new value to one variable does not affect the value referred to by the other variable.
-
-> <sup id="note-1"><a href="#note-1-link">1</a></sup>Even this explanation is not entirely accurate because strings cannot be "stored" in variables since they're not primitives. But this explanation is simple enough that it doesn't confuse beginners. We'll look at how strings are stored in memory in the section titled [How Are Objects Stored in Memory?](#how-are-objects-stored-in-memory).
+On the second line, we're creating a copy of the string `"Aleksandr"` and storing it in a new variable named `myNickname`. Importantly, these two variables occupy *different memory addresses*—assigning a new value to one variable does not affect the value referred to by the other variable.
 
 Unlike a variable that receives a copy of a value, [a reference variable does not have its own memory address](https://stackoverflow.com/a/1950998/10480032)—it shares the same exact memory address as the original variable. Strange, isn't it? We can verify this in C++ using something called the address-of operator (`&`), which returns the memory address of a variable:
 
@@ -215,17 +213,9 @@ const bob = { name: 'Bob', age: 42, country: 'USA' };
 
 How is it possible to cram all of this data into a single memory address? There's really no way to store `{ name: 'Bob', age: 42, country: 'USA' }` in one memory address as-is and call it a day because `{ name: 'Bob', age: 42, country: 'USA' }` is not a literal primitive value that a computer understands. So instead, we start at a particular memory address—called a base memory address—and begin storing these *pieces* of information in consecutive blocks. Then, `bob` points to that base memory address, such that we can work our way up later on and "reassemble" the pieces of information that we need, so to speak.
 
-Strings in particular are really interesting because they may *seem* like a primitive data type only because words are the basic building blocks of the English language. But remember: Computers don't understand English, French, or Chinese; they're just concerned with numbers.
+{% include postImage.html src: "./images/houses.png", alt: "Two houses with different addresses sit next to each other. Two objects describe the people residing at these separate addresses." %}
 
-In reality, a string is made up of `char`s that are stored in consecutive memory addresses. Recall that in the ASCII standard, a `char` has an equivalent numerical representation:
-
-{% include postImage.html src: "./images/ascii.gif", alt: "An ASCII character table." %}
-
-On most modern computers, a `char` is 1 byte wide. As it so happens, a single memory address is also 1 byte wide. This means one memory address can potentially store one character. Translation? A string of length `n` can be stored in a computer's memory by allocating `n` consecutive bytes and storing one `char` in each, using its numerical representation:
-
-{% include postImage.html src: "./images/strings.png", alt: "How strings are stored in memory." %}
-
-Thus, our string "variable" is really a pointer to the first character of the string. Using **pointer arithmetic**, we can figure out what the string is since we already have the base address and the number of characters that were stored. In the example above, the first character was stored at address `0x1a09d68`. Unsurprisingly, the next character is located one byte away at address `0x1a09d69`.
+That takes care of objects, but what about strings? They may *seem* like a primitive data type only because words are the basic building blocks of the English language. But remember: Computers don't understand English, French, or Chinese; they're just concerned with numbers. In reality, a string consists of characters that are stored in consecutive memory addresses and encoded as numbers using the Unicode standard. In programming languages, a string is implemented as a pointer to the memory address of its first character. If we know the specific character encoding that a string uses (e.g., UTF-16 in JavaScript), we can use pointer arithmetic under the hood to figure out what the string is since we already have its base memory address and the number of characters that were stored.
 
 The key takeaway here is that pointers are a fundamental tool in programming that exists in the implementation of nearly every language. Whether they are hidden from plain sight or made explicit by a special syntax is not important. What matters is that you understand how memory works and that most languages do not have "references."
 
