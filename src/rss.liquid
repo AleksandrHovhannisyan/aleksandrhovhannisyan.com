@@ -21,8 +21,10 @@ excludeFromSitemap: true
   <entry>
     <title>{{ post.data.title | escape }}</title>
     <link href="{{ absolute_post_url }}"/>
-    {%- assign dateUpdated = post.data.lastUpdated | default: post.date -%}
-    <updated>{{ dateUpdated | toUTCString }}</updated>
+    <published>{{ post.date | toUTCString }}</published>
+    {%- if post.data.lastUpdated %}
+    <updated>{{ post.data.lastUpdated | toUTCString }}</updated>
+    {%- endif %}
     <id>{{ absolute_post_url }}</id>
     {%- for category in post.data.categories %}
       <category term="{{ category }}" />
