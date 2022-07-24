@@ -17,17 +17,17 @@ excludeFromSitemap: true
     <email>{{ site.email }}</email>
   </author>
   {% for post in collections.posts %}
-  {%- assign absolute_post_url = site.url | append: post.url -%}
+  {%- assign absolutePostUrl = post.url | toAbsoluteUrl -%}
   <entry>
     <title>{{ post.data.title | escape }}</title>
-    <link href="{{ absolute_post_url }}"/>
+    <link href="{{ absolutePostUrl }}"/>
     <published>{{ post.date | toUTCString }}</published>
     {%- if post.data.lastUpdated %}
     <updated>{{ post.data.lastUpdated | toUTCString }}</updated>
     {%- endif %}
-    <id>{{ absolute_post_url }}</id>
+    <id>{{ absolutePostUrl }}</id>
     {%- for category in post.data.categories %}
-      <category term="{{ category }}" />
+    <category term="{{ category }}" />
     {%- endfor %}
     <content type="html">{{ post.data.description | escape }}</content>
   </entry>
