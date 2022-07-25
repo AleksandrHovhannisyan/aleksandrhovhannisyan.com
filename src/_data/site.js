@@ -20,7 +20,7 @@ module.exports = {
     repo: `aleksandrhovhannisyan.com`,
   },
   pagination: {
-    itemsPerPage: 20,
+    itemsPerPage: 21,
   },
   ...environmentSpecificVariables[process.env.ELEVENTY_ENV],
 };

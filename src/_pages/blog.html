@@ -3,7 +3,7 @@ layout: blog
 permalink: "/blog/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumber | plus: 1 }}/{% endif %}"
 pagination:
   data: collections.posts
-  size: 20
+  size: 21
   alias: posts
 eleventyComputed:
   title: "Blog{% if pagination.pageNumber > 0 %} (Page {{ pagination.pageNumber | plus: 1 }}/{{ pagination.hrefs | size }}){% endif %}"
