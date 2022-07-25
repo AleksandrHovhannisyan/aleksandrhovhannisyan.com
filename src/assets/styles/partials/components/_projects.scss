@@ -39,6 +39,10 @@
     }
   }
 
+  &-description {
+    line-height: leading("xs");
+  }
+
   &-technology {
     border-radius: spacing("-4");
     padding: spacing("-3") spacing("-1");

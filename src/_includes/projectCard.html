@@ -12,7 +12,7 @@
       <span>{{ project.rating }}</span>
     </div>
   </header>
-  <p>{{ project.description }}</p>
+  <p class="project-description">{{ project.description }}</p>
   <ul class="pill-group gap--2" aria-label="Technologies used">
     {%- for tech in project.tech -%}
     <li class="pill project-technology fs-xs">{{ tech }}</li>

@@ -82,7 +82,7 @@
     text-align: center;
     max-width: 30ch;
     will-change: transform, opacity;
-    @include font($family: "cursive", $weight: "regular", $size: "lg");
+    @include font($family: "cursive", $weight: "regular", $size: "lg", $line-height: "4xs");
     @include transition(opacity, transform);
   }
 

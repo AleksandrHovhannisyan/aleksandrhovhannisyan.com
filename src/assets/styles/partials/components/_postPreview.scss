@@ -2,7 +2,6 @@
 @import "../mixins";
 
 .post-preview {
-  display: grid;
   border-radius: spacing("-3");
   background-color: var(--color-surface-2);
   padding: spacing("2");
@@ -37,12 +36,14 @@
 
   &-title {
     margin-bottom: spacing("-2");
-    @include font($size: "lg");
+    // Tighten line height due to short line length
+    @include font($size: "lg", $line-height: "2xs");
   }
 
   &-description {
     margin-bottom: spacing("3");
-    line-height: leading("sm");
+    // Tighten line height due to short line length
+    line-height: leading("xs");
   }
 
   &-tag {
