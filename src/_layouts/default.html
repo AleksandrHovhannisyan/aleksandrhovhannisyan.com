@@ -68,7 +68,7 @@ eleventyComputed:
           {%- include partial -%}
         {%- endfor -%}      
       {%- endcapture -%}
-      <style>{{ critical | compileAndMinifyScss }}</style>
+      <style>{{ critical | cleanCSS }}</style>
   {%- endif -%}
   {%- comment -%}Global and page/layout-specific CSS{%- endcomment -%}
   {%- for href in stylesheets -%}
