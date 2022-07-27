@@ -8,7 +8,6 @@ const FontWeight = {
   REGULARITALIC: 'italic',
   MEDIUM: 'medium',
   BOLD: 'bold',
-  EXTRABOLD: 'extraBold',
 };
 
 const FontStyle = {
@@ -32,19 +31,19 @@ const fonts = {
       [FontWeight.REGULAR]: {
         weight: 400,
         style: FontStyle.NORMAL,
-        url: getFontUrl('rubik-latin-400.woff2'),
+        url: getFontUrl('rubik-400.woff2'),
         display: FontDisplay.SWAP,
       },
       [FontWeight.REGULARITALIC]: {
         weight: 400,
         style: FontStyle.ITALIC,
-        url: getFontUrl('rubik-latin-italic.woff2'),
+        url: getFontUrl('rubik-italic.woff2'),
         display: FontDisplay.SWAP,
       },
       [FontWeight.BOLD]: {
         weight: 700,
         style: FontStyle.NORMAL,
-        url: getFontUrl('rubik-latin-700.woff2'),
+        url: getFontUrl('rubik-700.woff2'),
         display: FontDisplay.SWAP,
       },
     },
@@ -54,7 +53,7 @@ const fonts = {
     fallbacks: [`Bitter-fallback`],
     isVariable: true,
     style: FontStyle.NORMAL,
-    url: getFontUrl('bitter-latin-variable.woff2'),
+    url: getFontUrl('bitter-variable.woff2'),
     display: FontDisplay.SWAP,
     variableWeights: {
       min: 100,
@@ -76,19 +75,19 @@ const fonts = {
       [FontWeight.REGULAR]: {
         weight: 400,
         style: FontStyle.NORMAL,
-        url: getFontUrl('ibm-plex-mono-v7-latin-regular.woff2'),
+        url: getFontUrl('ibm-plex-mono-400.woff2'),
         display: FontDisplay.SWAP,
       },
       [FontWeight.MEDIUM]: {
         weight: 500,
         style: FontStyle.NORMAL,
-        url: getFontUrl('ibm-plex-mono-v7-latin-500.woff2'),
+        url: getFontUrl('ibm-plex-mono-500.woff2'),
         display: FontDisplay.SWAP,
       },
       [FontWeight.BOLD]: {
         weight: 700,
         style: FontStyle.NORMAL,
-        url: getFontUrl('ibm-plex-mono-v7-latin-700.woff2'),
+        url: getFontUrl('ibm-plex-mono-700.woff2'),
         display: FontDisplay.SWAP,
       },
     },
@@ -100,14 +99,14 @@ const fonts = {
       [FontWeight.REGULAR]: {
         weight: 400,
         style: FontStyle.NORMAL,
-        url: getFontUrl('reenie-beanie-v11-latin-regular.woff2'),
+        url: getFontUrl('reenie-beanie-400.woff2'),
         display: FontDisplay.SWAP,
       },
     },
   },
 };
 
-/** Injects poscript names into each font config definition */
+/** Injects postcript names into each font config definition */
 const withPostscriptNames = (fontConfig) => {
   // No need to clone deep
   const enhancedFonts = Object.assign({}, fontConfig);
