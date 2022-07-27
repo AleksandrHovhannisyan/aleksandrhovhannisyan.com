@@ -13,7 +13,7 @@ thumbnail:
 ---
 
 {% aside %}
-  **Update {% include date.html date: 2022-05-16 %}**: Originally, this article showed how to lazily load images using low-quality image placeholders (LQIPs) and the `IntersectionObserver` API. However, I no longer endorse that approach because it's more difficult to maintain. Instead, I recommend relying on native lazy loading with the `loading` and `decoding` attributes. If you'd like to, you can read the original article [on my site's GitHub repo](https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com/blob/edbfd9295b64e9f747ae48a4edf9942fe0e3e48e/src/_posts/2021-10-31-eleventy-image-lazy-loading/index.md).
+  **Update {% include "date.html" date: 2022-05-16 %}**: Originally, this article showed how to lazily load images using low-quality image placeholders (LQIPs) and the `IntersectionObserver` API. However, I no longer endorse that approach because it's more difficult to maintain. Instead, I recommend relying on native lazy loading with the `loading` and `decoding` attributes. If you'd like to, you can read the original article [on my site's GitHub repo](https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com/blob/edbfd9295b64e9f747ae48a4edf9942fe0e3e48e/src/_posts/2021-10-31-eleventy-image-lazy-loading/index.md).
 {% endaside %}
 
 Images are a core part of the web, but they don't come for free. While imagery can enrich your content and create a more engaging user experience, it can also slow down your site and create a poor user experience if it's not used responsibly. Now that Google uses page load speed as a ranking factor, developers need to put in more effort to create responsive and optimized images and deliver the best possible experience to their users.
@@ -32,11 +32,11 @@ For this reason, many modern frameworks like Gatsby and Next.js offer image plug
 
 Fortunately, Eleventy offers a better alternative: the [official eleventy-image plugin](https://www.11ty.dev/docs/plugins/image/), which can be used to resize and transform both local and remote images. Since the plugin is written entirely as a standalone Node package powered by Sharp—with no 11ty-specific dependencies or logic—you can actually [use it in any framework](https://bholmes.dev/blog/picture-perfect-image-optimization/). This makes it a highly flexible tool for generating optimized, responsive images like the one below:
 
-{% include figure.html src: "https://images.unsplash.com/photo-1639800559828-4f34bac7bcee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&q=80", alt: "A possum clings sideways to a tree as it attempts to descend it from top to bottom.", caption: "Photo by [Jennifer Uppendahl](https://unsplash.com/@j_a_uppendahl) on Unsplash." %}
+{% include "figure.html" src: "https://images.unsplash.com/photo-1639800559828-4f34bac7bcee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&q=80", alt: "A possum clings sideways to a tree as it attempts to descend it from top to bottom.", caption: "Photo by [Jennifer Uppendahl](https://unsplash.com/@j_a_uppendahl) on Unsplash." %}
 
 But where this plugin _really_ shines is in an 11ty project, where you can create an image shortcode to return custom image markup, complete with responsively sized images and modern image formats. In this in-depth tutorial, I'll show you how to optimize images with the official 11ty image plugin.
 
-{% include toc.md %}
+{% include "toc.md" %}
 
 ## An Introduction to the Eleventy Image Plugin
 
@@ -687,4 +687,4 @@ You can modify this markup however you want. For example, on my site, I like to 
 
 We covered lots of different topics in this tutorial, all the way from how the 11ty image plugin works to generating custom image markup with a shortcode. To summarize, we provide the image plugin with the source image path or URL (for remote images) along with some options, and it returns metadata describing all of the generated images. Then, we can either return the default HTML string using the plugin's built-in method or just do it by hand. Either way, we get responsive, optimized, and lazily loaded images, all with zero client-side JavaScript!
 
-{% include unsplashAttribution.md name: "Robert Linder", username: "rwlinder", photoId: "5YNdnOjlPyE" %}
+{% include "unsplashAttribution.md" name: "Robert Linder", username: "rwlinder", photoId: "5YNdnOjlPyE" %}

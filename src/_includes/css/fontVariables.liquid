@@ -1,8 +1,6 @@
-{%- comment -%}Loop over the global font config and derive CSS custom properties
-from it for font family and font weight.{%- endcomment -%}
-{%- assign allFonts = fonts | entries -%}
+{%- comment -%}Loop over the global font config and derive CSS custom properties from it for font family and font weight.{%- endcomment -%}
 html {
-  {%- for font in allFonts -%}
+  {%- for font in fonts -%}
     {%- assign fontType = font | first -%}
     {%- assign fontConfig = font | last -%}
     {%- assign fallbackFonts = fontConfig.fallbacks | join: ", " -%}

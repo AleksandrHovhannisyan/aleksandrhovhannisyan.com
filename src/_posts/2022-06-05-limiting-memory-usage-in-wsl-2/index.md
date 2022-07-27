@@ -7,7 +7,7 @@ categories: [linux, windows, wsl, memory]
 
 If you've ever opened up Task Manager while WSL 2 was running on a Windows machine, you've probably noticed a process named `vmmem` hogging a sizable chunk of your memory and slowing down your machine.
 
-{% include postImage.html src: "./images/vmmem.png", alt: "A Task Manager window showing the CPU, memory, and hard disk usage among various processes. The top process is Vmmem, with CPU usage of 29.5% and a whopping 5.1 GB memory used.", caption: "Slow down there, WSL..." %}
+{% include "postImage.html" src: "./images/vmmem.png", alt: "A Task Manager window showing the CPU, memory, and hard disk usage among various processes. The top process is Vmmem, with CPU usage of 29.5% and a whopping 5.1 GB memory used.", caption: "Slow down there, WSL..." %}
 
 This special process represents all the resources consumed by your Linux VM while WSL is running. [According to Microsoft's documentation](https://docs.microsoft.com/en-us/windows/wsl/wsl-config#configuration-setting-for-wslconfig), the amount of RAM that gets allocated to WSL depends on your Windows build number. On machines running build 20175 or higher, RAM is limited to either 50% of your total memory or 8GB, whichever happens to be smaller. On builds older than 20175, WSL could consume up to 80% of your host RAM. That's potentially a lot of RAM!
 
@@ -35,7 +35,7 @@ In older versions of WSL 2, this was *especially* bad because it wouldn't releas
 
 Fortunately, we can customize WSL 2 to limit the number of CPU cores, memory usage, swap space, and more. A big thanks to [Apostolos Tsakpinis](https://github.com/microsoft/WSL/issues/4166#issuecomment-526725261) for pointing out how this can be done. See the following GitHub issue for the full context: [WSL 2 consumes massive amounts of RAM and doesn't return it](https://github.com/microsoft/WSL/issues/4166).
 
-{% include toc.md %}
+{% include "toc.md" %}
 
 ## 1. Create `.wslconfig`
 

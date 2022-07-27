@@ -12,7 +12,7 @@ Imagine you're creating a website where users can batch-upload files. You need t
 
 Waiting for multiple async operations to finish is such a common task in JavaScript that there's a special method for this very purpose: `Promise.all`. In this article, we'll learn how to use `Promise.all` to await multiple promises. Towards the end, we'll also write our own implementation of `Promise.all` to better understand how it works under the hood.
 
-{% include toc.md %}
+{% include "toc.md" %}
 
 ## A Naive Approach with Tallying
 
@@ -271,4 +271,4 @@ However, it's worth noting that since this is a naive implementation, it's unlik
 
 JavaScript's `Promise.all` is a powerful way to write async code that needs to perform batch operations, such as for uploading items to an app or waiting for a user to take multiple actions in any order. If you ever need to do this, now you know how! And, more importantly, you should have a better understanding of how to implement such a method yourself.
 
-{% include unsplashAttribution.md name: "Jon Tyson", username: "jontyson", photoId: "dm9EHhIZm-k" %}
+{% include "unsplashAttribution.md" name: "Jon Tyson", username: "jontyson", photoId: "dm9EHhIZm-k" %}

@@ -12,7 +12,7 @@ thumbnail:
 
 If you're not sure how to define aspect ratios in CSS, or if you have no clue what an aspect ratio is to begin with, then you're in luck. This tutorial covers everything that you need to know about creating aspect ratio boxes in CSS, using both a modern approach and an old one with a percentage padding trick. Once you understand aspect ratios and how to define them, you'll be able to do all kinds of neat things—like creating `nxn` square grid layouts, responsively sizing embedded media, reserving space for images, and much more.
 
-{% include toc.md %}
+{% include "toc.md" %}
 
 ## What Is an Aspect Ratio?
 
@@ -31,7 +31,7 @@ Intuitively, an aspect ratio of `w:h` says that an element has `w` units of widt
 
 In CSS, aspect ratios are especially useful because they allow us to scale elements (like images) responsively so that they always maintain their dimensions and never become distorted.
 
-{% include postImage.html src: "./images/scaling.png", alt: "Three side-by-side versions of the same image of a puppy. The one on the far-left is at its original size of 300 pixels by 240 pixels. It is later scaled down to 200 pixels by 160 pixels, and finally to 100 pixels by 80 pixels.", caption: "Photo credit: [Bill Stephan, Unsplash](https://unsplash.com/photos/og0C_9Mz6RA)." %}
+{% include "postImage.html" src: "./images/scaling.png", alt: "Three side-by-side versions of the same image of a puppy. The one on the far-left is at its original size of 300 pixels by 240 pixels. It is later scaled down to 200 pixels by 160 pixels, and finally to 100 pixels by 80 pixels.", caption: "Photo credit: [Bill Stephan, Unsplash](https://unsplash.com/photos/og0C_9Mz6RA)." %}
 
 Aspect ratios allow us to change one dimension of an element (e.g., its width) while the other dimension scales accordingly, without us having to worry about doing the math ourselves. This makes aspect ratios well suited for creating responsive layouts that rely on images.
 
@@ -66,7 +66,7 @@ Keep in mind that while we usually discuss this in the context of images, `aspec
 
 For images specifically, this new property has an interesting application. When you [set a width and height on images](/blog/setting-width-and-height-on-images/) via the HTML attributes `width` and `height`, browsers like Chrome use these two properties to compute an appropriate `aspect-ratio` for the image, applying it in the user-agent stylesheet. This allows the browser to maintain the image's dimensions as it is resized and to reserve the right amount of vertical space for the image before it loads in, minimizing layout shifts. You can observe this in your dev tools for any image that has a width and height:
 
-{% include postImage.html src: "./images/default-aspect-ratio.png", alt: "The default aspect ratio for an image is observed to be 500 / 300 in Chrome dev tools." %}
+{% include "postImage.html" src: "./images/default-aspect-ratio.png", alt: "The default aspect ratio for an image is observed to be 500 / 300 in Chrome dev tools." %}
 
 The only thing to keep in mind with this approach is that [browser support for the `aspect-ratio` property](https://caniuse.com/?search=aspect-ratio) is experimental (as of this writing). For this reason, we should also learn how to create aspect ratios the old-fashioned way, which relies on a trick with percentage padding.
 
@@ -218,13 +218,13 @@ Regardless of which approach you take, you'll get a `3x3` grid of images that ar
 
 <ol class="demo-square-grid" aria-hidden="true">
   {% for i in (1..3) %}
-  <li class="demo-square">{% include postImage.html src: "./images/puppy.png", alt: "", isLinked: false %}</li>
+  <li class="demo-square">{% include "postImage.html" src: "./images/puppy.png", alt: "", isLinked: false %}</li>
   {% endfor %}
   {% for i in (1..3) %}
-  <li class="demo-square">{% include postImage.html src: "./images/kitten.png", alt: "", isLinked: false %}</li>
+  <li class="demo-square">{% include "postImage.html" src: "./images/kitten.png", alt: "", isLinked: false %}</li>
   {% endfor %}
   {% for i in (1..3) %}
-  <li class="demo-square">{% include postImage.html src: "./images/parakeet.png", alt: "", isLinked: false %}</li>
+  <li class="demo-square">{% include "postImage.html" src: "./images/parakeet.png", alt: "", isLinked: false %}</li>
   {% endfor %}
 </ol>
 
@@ -320,7 +320,7 @@ And the W3 specs back this up:
 
 Thus, for flex and grid items, you can think of the containing block as an invisible content region that wraps the items. This formatting context is very easy to identify in your dev tools, appearing as a dotted outline around each flex or grid item:
 
-{% include postImage.html src: "./images/grid.png", alt: "Inspecting a grid of four items with the Chrome dev tools reveals that each grid items has its own block formatting context, shown with a dashed outline." %}
+{% include "postImage.html" src: "./images/grid.png", alt: "Inspecting a grid of four items with the Chrome dev tools reveals that each grid items has its own block formatting context, shown with a dashed outline." %}
 
 We can prove this in a simple experiment with two grid items that have the same aspect ratio but whose formatting contexts have different widths, per the `grid-template-columns` property:
 
@@ -370,9 +370,9 @@ With vertical layouts, paragraphs appear sideways—you'll have to tilt your hea
 
 [The MDN docs](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Block_and_Inline_Layout_in_Normal_Flow#Elements_participating_in_a_block_formatting_context) use the following diagrams to clarify these two writing modes:
 
-{% include postImage.html src: "./images/horizontal-mode.png", alt: "A horizontal writing mode, with text flowing vertically from top to bottom. An arrow points from left to right at the top of the document and is labeled as the inline direction. Another arrow points from top to bottom and is labeled as the block direction.", caption: "Horizontal writing mode (default)." %}
+{% include "postImage.html" src: "./images/horizontal-mode.png", alt: "A horizontal writing mode, with text flowing vertically from top to bottom. An arrow points from left to right at the top of the document and is labeled as the inline direction. Another arrow points from top to bottom and is labeled as the block direction.", caption: "Horizontal writing mode (default)." %}
 
-{% include postImage.html src: "./images/vertical-mode.png", alt: "A vertical writing mode, with text flowing horizontally. The horizontal axis is labeled as the block direction, whereas the vertical axis is now labeled as the inline direction. Text is rendered sideways.", caption: "Vertical writing mode." %}
+{% include "postImage.html" src: "./images/vertical-mode.png", alt: "A vertical writing mode, with text flowing horizontally. The horizontal axis is labeled as the block direction, whereas the vertical axis is now labeled as the inline direction. Text is rendered sideways.", caption: "Vertical writing mode." %}
 
 Here's the important point: if we switch over to a vertical writing mode, and we use percentage values for padding or margin, these percentages will actually be defined relative to the *containing block's height*, not its width! This comes straight from the CSS specs:
 
@@ -441,7 +441,7 @@ Hopefully, you now have a better understanding of how to define responsive aspec
 - [How to set the margin or padding as percentage of height of parent container?](https://stackoverflow.com/questions/4982480/how-to-set-the-margin-or-padding-as-percentage-of-height-of-parent-container#:~:text=If%20you%20set%20an%20element's,to%20height%20instead%20of%20width.)
 - [Common CSS Flexbox Layout Patterns with Example Code](https://tobiasahlin.com/blog/common-flexbox-patterns/)
 
-{% include unsplashAttribution.md name: "Rumman Amin", username: "rumanamin", photoId: "5zoLQUZaWgA" %}
+{% include "unsplashAttribution.md" name: "Rumman Amin", username: "rumanamin", photoId: "5zoLQUZaWgA" %}
 
 <style>
   .demo-tiles {

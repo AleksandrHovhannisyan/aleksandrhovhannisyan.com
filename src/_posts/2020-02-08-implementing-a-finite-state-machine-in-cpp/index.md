@@ -11,7 +11,7 @@ redirectFrom:
 
 Finite state machines (FSMs) are used in lots of different situations to model complex entity state. They're especially relevant in game dev for modeling dynamic AI behavior and decision-making. Here's a very rough sketch of what a finite state machine might look like:
 
-{% include postImage.html src: "./images/fsm.jpg", alt: "A finite state machine representation." %}
+{% include "postImage.html" src: "./images/fsm.jpg", alt: "A finite state machine representation." %}
 
 An entity may transition from one state to another, or it may remain in its current state. The arrows denote transitions. The conditions under which a transition should take place will need to be coded into the FSM itself.
 
@@ -198,7 +198,7 @@ This is known as the **finite state design pattern**. In this pattern, each stat
 
 Let's model this finite state machine with a simple diagram:
 
-{% include postImage.html src: "./images/light-fsm.jpg", alt: "Modeling our lightbulb's FSM." %}
+{% include "postImage.html" src: "./images/light-fsm.jpg", alt: "Modeling our lightbulb's FSM." %}
 
 Each class implements a common `LightState` interface (or, in C++ terms, an *abstract class*) that exposes the following three methods:
 

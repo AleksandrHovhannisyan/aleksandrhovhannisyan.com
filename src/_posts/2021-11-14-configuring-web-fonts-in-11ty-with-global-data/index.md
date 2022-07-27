@@ -45,7 +45,7 @@ This worked really well, but it was also *very* tedious to manage. If I ever wan
 
 Instead, I wanted to have a single source of truth for our fonts that I could expose as global data and reuse in my templates, front matter, inline CSS, and wherever else they're needed. Fortunately, it's really easy to set this up in 11ty with JavaScript data files.
 
-{% include toc.md %}
+{% include "toc.md" %}
 
 ## Creating Global Font Data in 11ty
 

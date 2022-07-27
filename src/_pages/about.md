@@ -7,7 +7,7 @@ layout: about
 
 
 
-{% include image.html src: 'src/assets/images/profile-photo.jpg', alt: '', isLinked: false, className: "float right", imgClassName: "circle", isLazy: false %}
+{% include "image.html" src: 'src/assets/images/profile-photo.jpg', alt: '', isLinked: false, className: "float right", imgClassName: "circle", isLazy: false %}
 
 Thanks for dropping by! My name's Aleksandr—and yes, that's spelled *without* an `e` between the `d` and the `r`, pronounced just like *Alexander*. Don't worry about my last name, though; it's quite long, and most people butcher it anyway.
 
@@ -30,7 +30,7 @@ I have experience with a few different stacks—I've done a bit of desktop, mobi
 <ul class="col-wrap align-center">
   {%- for project in projects -%}
     <li class="project-wrapper">
-      {%- include projectCard.html project: project -%}
+      {%- include "projectCard.html" project: project -%}
     </li>
   {%- endfor -%}
   <li class="github-cta stack flex-center gap-0 text-center">

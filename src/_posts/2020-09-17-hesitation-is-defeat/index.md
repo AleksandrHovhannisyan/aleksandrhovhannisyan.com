@@ -12,7 +12,7 @@ Isshin, the Sword Saint—the revered kensei of Ashina returns from the afterlif
 
 > "Pitiful grandchild... This was your last wish. To see Ashina returned from the great beyond... which means, Sekiro, I must destroy you." —Isshin, the Sword Saint
 
-{% include postImage.html src: "./images/isshin.png", alt: "Isshin Ashina readies his blade as he prepares to fight Sekiro in the final cutscene. The words 'I must destroy you' are captioned on screen." %}
+{% include "postImage.html" src: "./images/isshin.png", alt: "Isshin Ashina readies his blade as he prepares to fight Sekiro in the final cutscene. The words 'I must destroy you' are captioned on screen." %}
 
 The only thing standing in his way? A fangless Wolf, sworn to defend his lord's life at all costs.
 
@@ -44,7 +44,7 @@ Thankfully, I later returned to this masterpiece of a game and decided to give i
 
 I grew impatient with every attempt, as I waded through the tedium of fighting Genichiro, then the trivial Phase 1 of Isshin, abusing the Mikiri Counter in Phase 2, and, if I was lucky, eventually reaching the third and final phase.
 
-{% include postImage.html src: "./images/phase-2-execution.png", alt: "Sekiro preparing to execute Isshin, the Sword Saint, in Phase 2 of the final boss battle." %}
+{% include "postImage.html" src: "./images/phase-2-execution.png", alt: "Sekiro preparing to execute Isshin, the Sword Saint, in Phase 2 of the final boss battle." %}
 
 It's exhausting. But it's also the culmination of every single challenge that the game has thrown your way up until this point. You find yourself at the crescendo in a grand composition of *cling* and *clang*—a dance of blades, well-timed parries, and relentless pressure that test everything you've learned.
 
@@ -60,12 +60,12 @@ At long last, with muscle memory developed through hundreds of painful deaths, y
 
 The words *Immortality Severed* shimmer on your screen, and the sounds of war dissipate.
 
-{% include postImage.html src: "./images/well-done-sekiro.png", alt: "Isshin Ashina is executed by Sekiro, who wields the Immortal Blade. Isshin's last dying words appear on screen as he draws his last breath: 'Well... done... Sekiro.'" %}
+{% include "postImage.html" src: "./images/well-done-sekiro.png", alt: "Isshin Ashina is executed by Sekiro, who wields the Immortal Blade. Isshin's last dying words appear on screen as he draws his last breath: 'Well... done... Sekiro.'" %}
 
 For me, this was the single most rewarding experience that a game has ever offered: to be defeated countless times by a seemingly insurmountable foe, only to triumph in the end through persistence.
 
 So, farewell, Isshin—and thank you, Miyazaki, for yet another stellar Soulsborne title.
 
-{% include youtubeEmbed.html id: "Ewu-Evc_qNc", title: "I Beat Sekiro: Shadows Die Twice! (And It Only Took Me 1 Year...)" %}
+{% include "youtubeEmbed.html" id: "Ewu-Evc_qNc", title: "I Beat Sekiro: Shadows Die Twice! (And It Only Took Me 1 Year...)" %}
 
 <script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@0.6.2/lite-youtube.js"></script>

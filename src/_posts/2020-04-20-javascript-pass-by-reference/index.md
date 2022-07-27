@@ -27,7 +27,7 @@ Here's the truth: Only a limited number of programming languages actually suppor
 
 So why do so many people get this wrong? That's what we're here to find out! If you'd like the short answer, feel free to jump to the section titled [Passing Pointers ("References") by Value](#passing-pointers-references-by-value).
 
-{% include toc.md %}
+{% include "toc.md" %}
 
 ## Prerequisite Terminology: Arguments vs. Parameters
 
@@ -46,7 +46,7 @@ A **formal parameter** (parameter for short) is the local variable declared in a
 
 Diagrammatically, here's what the stack would look like once `doSomething` has been called:
 
-{% include postImage.html src: "./images/stack.png", alt: "Two stack frames are shown in memory; one corresponds to the main method. The other, positioned directly above, is a function that was called from main. That stack frame contains the argument that was passed along when the function was invoked." %}
+{% include "postImage.html" src: "./images/stack.png", alt: "Two stack frames are shown in memory; one corresponds to the main method. The other, positioned directly above, is a function that was called from main. That stack frame contains the argument that was passed along when the function was invoked." %}
 
 With that out of the way, let's get into the meat of this post.
 
@@ -58,7 +58,7 @@ This muddied terminology is the main source of confusion in understanding pass b
 
 In JavaScript, variables that store objects are called **object references** (usually "references" for short). The term *reference* is a natural way to talk about these variables in English because we say that a variable *refers to* an object in memory, sort of like how an article might *reference* a source.
 
-{% include postImage.html src: "./images/object-reference.png", alt: "An object resides somewhere in memory. A little black square is shown, representing a variable named person that points to a specific memory address." %}
+{% include "postImage.html" src: "./images/object-reference.png", alt: "An object resides somewhere in memory. A little black square is shown, representing a variable named person that points to a specific memory address." %}
 
 There's technically nothing wrong with using the term "reference" to talk about objects in this manner, and I don't want to discourage you from doing so—in JavaScript, this is the accepted terminology, and if you choose to deviate from it, you may end up confusing others.
 
@@ -176,7 +176,7 @@ If `alias` were in fact a true reference in this sense of the term—an alias—
 
 Above, you may have noticed that I used the term "point" quite a lot. What's up with that? What—pardon the awful pun—is the *point* I'm trying to get across?
 
-{% include postImage.html src: "./images/pointers.png", alt: "Comic about pointers. Someone asks for pointers, and another person fires off a bunch of memory addresses.", caption: "Source: [xkcd](https://xkcd.com/138/)." %}
+{% include "postImage.html" src: "./images/pointers.png", alt: "Comic about pointers. Someone asks for pointers, and another person fires off a bunch of memory addresses.", caption: "Source: [xkcd](https://xkcd.com/138/)." %}
 
 So far, we've seen that JavaScript does not have "true" references—the kind that are present in "pass by reference", as we'll learn soon—even though that's the accepted shorthand when referring to "object references." So what exactly *are* object references in JavaScript?
 
@@ -184,7 +184,7 @@ So far, we've seen that JavaScript does not have "true" references—the kind th
 
 An analogy may help to illustrate this: A pointer is like keeping record of a person's home address instead of directly logging that person's information somewhere. If you later visit that address, you might find *data* living there: a person with a name, age, and so forth. The person at that address may change their name, grow older, or decide to leave the property and be replaced by another tenant with an entirely different name, age, and so on. The address may even be empty and on the market. As long as we point to the same address, we can visit it to find out what data (person) lives there. We may also one day decide to point to a completely different home address with different residents or, if we're the landlord, evict someone from their home.
 
-{% include postImage.html src: "./images/houses.png", alt: "Two houses with two residents." %}
+{% include "postImage.html" src: "./images/houses.png", alt: "Two houses with two residents." %}
 
 It may not be immediately obvious why we need pointers in the first place and how they're even relevant in JavaScript. This deserves some elaboration. If you're already familiar with pointers, feel free to skip forward to the section on [pass by value vs. pass by reference](#pass-by-value-vs-pass-by-reference).
 
@@ -213,7 +213,7 @@ const bob = { name: 'Bob', age: 42, country: 'USA' };
 
 How is it possible to cram all of this data into a single memory address? There's really no way to store `{ name: 'Bob', age: 42, country: 'USA' }` in one memory address as-is and call it a day because `{ name: 'Bob', age: 42, country: 'USA' }` is not a literal primitive value that a computer understands. So instead, we start at a particular memory address—called a base memory address—and begin storing these *pieces* of information in consecutive blocks. Then, `bob` points to that base memory address, such that we can work our way up later on and "reassemble" the pieces of information that we need, so to speak.
 
-{% include postImage.html src: "./images/houses.png", alt: "Two houses with different addresses sit next to each other. Two objects describe the people residing at these separate addresses." %}
+{% include "postImage.html" src: "./images/houses.png", alt: "Two houses with different addresses sit next to each other. Two objects describe the people residing at these separate addresses." %}
 
 That takes care of objects, but what about strings? They may *seem* like a primitive data type only because words are the basic building blocks of the English language. But remember: Computers don't understand English, French, or Chinese; they're just concerned with numbers. In reality, a string consists of characters that are stored in consecutive memory addresses and encoded as numbers using the Unicode standard. In programming languages, a string is implemented as a pointer to the memory address of its first character. If we know the specific character encoding that a string uses (e.g., UTF-16 in JavaScript), we can use pointer arithmetic under the hood to figure out what the string is since we already have its base memory address and the number of characters that were stored.
 
@@ -323,15 +323,15 @@ If we're passing a pointer into a function as an argument, what "value" does the
 
 So, when we pass a pointer into a function as an argument, the formal parameter receives a copy of the *memory address* to which the argument was pointing. We essentially end up having two different variables, on two different stack frames (caller and callee), that point to the same location in memory.
 
-{% include postImage.html src: "./images/pass-pointer-by-value.png", alt: "Passing a pointer by value." %}
+{% include "postImage.html" src: "./images/pass-pointer-by-value.png", alt: "Passing a pointer by value." %}
 
 At that memory address is an object. We can follow either the formal parameter pointer or the argument pointer and visit that memory address to modify the object located there. In the case of the code above, we're reading the formal parameter pointer:
 
-{% include postImage.html src: "./images/modifying-object.png", alt: "Modifying an object pointed to in memory." %}
+{% include "postImage.html" src: "./images/modifying-object.png", alt: "Modifying an object pointed to in memory." %}
 
 What we cannot do is have the formal parameter point to a different location in memory and expect the argument to point to that new location once the function returns. This *would* be the case if the argument were passed in by reference. But JavaScript is pass by value!
 
-{% include postImage.html src: "./images/point-to-new-object.png", alt: "Pointing the formal parameter to a new object." %}
+{% include "postImage.html" src: "./images/point-to-new-object.png", alt: "Pointing the formal parameter to a new object." %}
 
 Notice that within the scope of the `changeName` function, we can indeed observe that `person` points to this object: `{ name: 'Jane' }`. But of course, this doesn't affect the pointer argument—it's still pointing to the original location in memory, and the object there is left untouched.
 
@@ -356,4 +356,4 @@ Let's recap what we covered in this post:
 
 And that about sums it up!
 
-{% include unsplashAttribution.md name: "Olesya Grichina", username: "lsgr", photoId: "6gKx3ESOoFE" %}
+{% include "unsplashAttribution.md" name: "Olesya Grichina", username: "lsgr", photoId: "6gKx3ESOoFE" %}

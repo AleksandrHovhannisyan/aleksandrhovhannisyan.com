@@ -102,8 +102,9 @@
   @include font($size: "xs");
 }
 
-.carousel figcaption,
-.carousel figcaption * {
+/* stylelint-disable-next-line no-descending-specificity */
+.carousel figcaption *,
+.carousel figcaption {
   color: white;
 }
 

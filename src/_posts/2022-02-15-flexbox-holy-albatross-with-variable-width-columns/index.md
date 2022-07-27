@@ -199,4 +199,4 @@ All other children will obey the default number of columns, unless they have roo
 
 That's it! This modified version of the Flexbox Holy Albatross technique allows you to create auto-switching layouts with granular control over the number of columns on any particular row.
 
-{% include unsplashAttribution.md name: "Karin Hiselius", username: "silverkakan", photoId: "EROxfjSym1g" %}
+{% include "unsplashAttribution.md" name: "Karin Hiselius", username: "silverkakan", photoId: "EROxfjSym1g" %}

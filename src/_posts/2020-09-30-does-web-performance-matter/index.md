@@ -9,7 +9,7 @@ thumbnail:
 
 About halfway through writing an exhaustive guide on web performance and Lighthouse, I stopped to wonder: Does any of this actually matter? Is web performance really as important as people claim it is? That prompted me to do a bit of digging... And the results were enlightening.
 
-{% include toc.md %}
+{% include "toc.md" %}
 
 ## Big Brands, Slow Websites
 
@@ -17,39 +17,39 @@ I recently read a post on Dev.to about how [Google doesn't follow its own rules]
 
 Here's what you get when you run the tool on Google's own blog:
 
-{% include postImage.html src: "./images/google-blog.png", alt: "The Lighthouse audit for blog.google.com shows 50 for performance, 74 for accessibility, 79 for best practices, and 98 for SEO." %}
+{% include "postImage.html" src: "./images/google-blog.png", alt: "The Lighthouse audit for blog.google.com shows 50 for performance, 74 for accessibility, 79 for best practices, and 98 for SEO." %}
 
 And when you run it on YouTube:
 
-{% include postImage.html src: "./images/youtube.png", alt: "The Lighthouse audit for youtube.com shows 38 for performance, 90 for accessibility, 86 for best practices, and 98 for SEO." %}
+{% include "postImage.html" src: "./images/youtube.png", alt: "The Lighthouse audit for youtube.com shows 38 for performance, 90 for accessibility, 86 for best practices, and 98 for SEO." %}
 
 And the Google Cloud Platform landing page:
 
-{% include postImage.html src: "./images/gcp.png", alt: "The Lighthouse audit for cloud.google.com shows 21 for performance, 91 for accessibility, 86 for best practices, and 82 for SEO." %}
+{% include "postImage.html" src: "./images/gcp.png", alt: "The Lighthouse audit for cloud.google.com shows 21 for performance, 91 for accessibility, 86 for best practices, and 82 for SEO." %}
 
 You get the idea. To be fair, though, this isn't just a problem with Google's websites...
 
 Speaking from personal experience, I know that the Bank of America website is painfully slow. And a quick Lighthouse audit confirms this observation:
 
-{% include postImage.html src: "./images/bank-of-america.png", alt: "The Lighthouse audit for bankofamerica.com shows 16 for performance, 86 for accessibility, 57 for best practices, and 83 for SEO." %}
+{% include "postImage.html" src: "./images/bank-of-america.png", alt: "The Lighthouse audit for bankofamerica.com shows 16 for performance, 86 for accessibility, 57 for best practices, and 83 for SEO." %}
 
 The Microsoft Store is apparently not much better:
 
-{% include postImage.html src: "./images/microsoft-store.png", alt: "The Lighthouse audit for the microsoft store shows 21 for performance, 98 for accessibility, 64 for best practices, and 85 for SEO." %}
+{% include "postImage.html" src: "./images/microsoft-store.png", alt: "The Lighthouse audit for the microsoft store shows 21 for performance, 98 for accessibility, 64 for best practices, and 85 for SEO." %}
 
 Neither is Zoom's landing page:
 
-{% include postImage.html src: "./images/zoom.png", alt: "The Lighthouse audit for zoom.com shows 28 for performance, 88 for accessibility, 64 for best practices, and 89 for SEO." %}
+{% include "postImage.html" src: "./images/zoom.png", alt: "The Lighthouse audit for zoom.com shows 28 for performance, 88 for accessibility, 64 for best practices, and 89 for SEO." %}
 
 And neither is Slack's:
 
-{% include postImage.html src: "./images/slack.png", alt: "The Lighthouse audit for slack.com shows 14 for performance, 94 for accessibility, 64 for best practices, and 92 for SEO." %}
+{% include "postImage.html" src: "./images/slack.png", alt: "The Lighthouse audit for slack.com shows 14 for performance, 94 for accessibility, 64 for best practices, and 92 for SEO." %}
 
 The landing pages of SEO authorities like Ahrefs and Moz are similarly slow:
 
-{% include postImage.html src: "./images/ahrefs.png", alt: "The Lighthouse audit for ahrefs.com shows 37 for performance, 90 for accessibility, 93 for best practices, and 100 for SEO." %}
+{% include "postImage.html" src: "./images/ahrefs.png", alt: "The Lighthouse audit for ahrefs.com shows 37 for performance, 90 for accessibility, 93 for best practices, and 100 for SEO." %}
 
-{% include postImage.html src: "./images/moz.png", alt: "The Lighthouse audit for moz.com shows 47 for performance, 89 for accessibility, 79 for best practices, and 91 for SEO." %}
+{% include "postImage.html" src: "./images/moz.png", alt: "The Lighthouse audit for moz.com shows 47 for performance, 89 for accessibility, 79 for best practices, and 91 for SEO." %}
 
 {% aside %}
   There's no particular reason why I decided to run audits on these websites and not others. These are just the ones that came to mind as I was writing this article.
@@ -116,4 +116,4 @@ As a long-term strategy for SEO, you should also focus on **publishing high-qual
 
 A faster website won't automatically rank high on Google by virtue of its performance alone. Still, page load speed *is* something that you should consider if you care about your user experience. Be sure to balance your efforts—you shouldn't optimize your page load speed at the *expense* of your content quality or branding. But you also shouldn't neglect it entirely, to the point that users ditch your site in favor of a competitor's.
 
-{% include unsplashAttribution.md name: "Anastase Maragos", username: "visualsbyroyalz", photoId: "X4zx5Vc_LZU" %}
+{% include "unsplashAttribution.md" name: "Anastase Maragos", username: "visualsbyroyalz", photoId: "X4zx5Vc_LZU" %}

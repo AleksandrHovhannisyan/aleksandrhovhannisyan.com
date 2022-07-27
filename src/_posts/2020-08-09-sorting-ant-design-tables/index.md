@@ -9,7 +9,7 @@ thumbnail: ./images/thumbnail.png
 
 Want to sort tables in Ant Design but without putting in much effort? Then you're in luck—in this post, we'll look at how you can automate this process to easily sort any column (even multiple ones in combination).
 
-{% include toc.md %}
+{% include "toc.md" %}
 
 ## How Tables Work in Ant Design
 
@@ -89,7 +89,7 @@ ReactDOM.render(<Table columns={columns} dataSource={data} onChange={onChange} /
 
 That renders a table like this, whose columns can either be sorted individually or in combination with one another, based on the precedence/priority you've defined for each column:
 
-{% include postImage.html src: "./images/table.png", alt: "An Ant Design Table component, with one column being sorted." %}
+{% include "postImage.html" src: "./images/table.png", alt: "An Ant Design Table component, with one column being sorted." %}
 
 Let's zoom in on this piece of code to understand how columns are actually sorted in Ant Design:
 

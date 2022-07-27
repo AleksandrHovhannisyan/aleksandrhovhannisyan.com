@@ -23,7 +23,7 @@ You can create inline functions to encapsulate all of this logic for you, but th
 
 In this article, we'll explore some of the problems with trying to manage complex state using separate `useState` calls. We'll also look at how the `useReducer` hook can solve many of those problems and allow us to manage state in a cleaner and more scalable manner.
 
-{% include toc.md %}
+{% include "toc.md" %}
 
 ## Problem: Managing Complex State with `useState`
 
@@ -571,4 +571,4 @@ Fortunately, React allows us to manage more complex state using `useReducer`, wh
 
 In this article, we looked at just one application of `useReducer`: maintaining state for paginated API results. There are lots of other scenarios where `useReducer` can be useful; I encourage you to consider where in your code you may be able to leverage this hook to simplify the complexity of your state management.
 
-{% include unsplashAttribution.md name: "Katherine Hanlon", username: "tinymountain", photoId: "bd_fCZhy_W8" %}
+{% include "unsplashAttribution.md" name: "Katherine Hanlon", username: "tinymountain", photoId: "bd_fCZhy_W8" %}

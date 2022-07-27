@@ -10,8 +10,8 @@ eleventyComputed:
 ---
 
 
-{% include postPreviews.html posts: posts, titleLevel: 2 %}
+{% include "postPreviews.html" posts: posts, titleLevel: 2 %}
 {%- assign numPages = pagination.hrefs | size -%}
 {%- if numPages > 1 -%}
-  {%- include pagination.html hrefs: pagination.hrefs -%}
+  {%- include "pagination.html" hrefs: pagination.hrefs -%}
 {%- endif -%}

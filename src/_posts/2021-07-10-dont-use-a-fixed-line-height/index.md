@@ -23,7 +23,7 @@ h1, h2, h3, h4, h5, h6 {
 
 While this may seem sufficient, it's not a good practice from a design and accessibility perspective. Let's understand why and explore two solutions to this problem: one with custom properties and Sass mixins, and another with the `ex` unit and a calc function.
 
-{% include toc.md %}
+{% include "toc.md" %}
 
 ## You Need More Line Heights
 
@@ -66,11 +66,11 @@ Unitless line heights are **inversely related** to font size. As the rendered fo
 
 Let's look at an example. Imagine that we have a `48px` heading that uses the same `1.6` unitless line height as the body text. Thus, it has a rendered line height of `76.8px`. This creates too much spacing between lines, making the heading difficult to read:
 
-{% include postImage.html src: "./images/too-much-line-height.png", alt: "A sample paragraph with a large heading rendered above it at 48px size and with a line height of 1.6. The body font also has a line height of 1.6 but a smaller font size. The heading is uncomfortable to read.", caption: "The gap is too big between adjacent lines of heading text, creating a visual imbalance." %}
+{% include "postImage.html" src: "./images/too-much-line-height.png", alt: "A sample paragraph with a large heading rendered above it at 48px size and with a line height of 1.6. The body font also has a line height of 1.6 but a smaller font size. The heading is uncomfortable to read.", caption: "The gap is too big between adjacent lines of heading text, creating a visual imbalance." %}
 
 So while the rendered line height for this font size does in fact need to be greater than the rendered line height for body text, the *ratio* needs to decrease to tighten the gap and improve readability. For this particular font, we might opt for a unitless line height of `1.2`. That gives us a rendered line height of `57.6px`. In absolute terms, this is still larger than the body's line height, but the ratio has decreased, making the heading easier to read:
 
-{% include postImage.html src: "./images/right-line-height.png", alt: "A sample paragraph with a large heading rendered above it at 48px size and with a line height of 1.2. The heading is now much easier to read.", caption: "Takeaway: At larger font sizes, unitless line heights need to decrease to maintain readability." %}
+{% include "postImage.html" src: "./images/right-line-height.png", alt: "A sample paragraph with a large heading rendered above it at 48px size and with a line height of 1.2. The heading is now much easier to read.", caption: "Takeaway: At larger font sizes, unitless line heights need to decrease to maintain readability." %}
 
 #### Absolute vs. Unitless Line Height: Which Should You Use?
 
@@ -249,4 +249,4 @@ Fortunately, if we take the mixin approach that I showed earlier, the fix is rat
 
 Line heights are tricky to get right, especially since there are so many considerations to keep in mind. Be sure to vary your line height for each font size, pick the right line height based on your chosen font family, and consider the width of your text as it relates to your font metrics.
 
-{% include unsplashAttribution.md name: "Striving Blogger", username: "strivingblogger", photoId: "Hx-4TbpsoIw" %}
+{% include "unsplashAttribution.md" name: "Striving Blogger", username: "strivingblogger", photoId: "Hx-4TbpsoIw" %}

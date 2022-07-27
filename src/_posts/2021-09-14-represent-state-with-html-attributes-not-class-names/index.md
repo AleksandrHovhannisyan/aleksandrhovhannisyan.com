@@ -50,7 +50,7 @@ This is *even more* tempting—and usually the only option—in utility-first fr
 However, I've noticed that we tend to reach for class names too soon when we want to represent a change in UI state. Instead, we should try to first communicate this state through the appropriate HTML attributes and then use CSS attribute selectors to style each discrete state. I've also found that if you're using both HTML attributes and CSS classes to represent an element's state, then you're storing redundant information at the markup level, and this problem can be avoided entirely by using attribute selectors from the get-go.
 
 
-{% include toc.md %}
+{% include "toc.md" %}
 
 ## Representing UI State with HTML Attributes
 
@@ -216,4 +216,4 @@ That way, you wouldn't need to introduce duplicate class names at the parent lev
 
 If possible, try to represent your UI state using HTML attributes first, and only reach for class names when you really need them. With this approach, you're forced to use class names for their intended purpose: styling elements, not representing UI state. Consider whether there are existing HTML attributes that you can use to communicate an element's state to assistive technologies. From there, styling the element should be straightforward and may not even require any additional class names.
 
-{% include unsplashAttribution.md name: "Chris Lawton", username: "chrislawton", photoId: "5IHz5WhosQE" %}
+{% include "unsplashAttribution.md" name: "Chris Lawton", username: "chrislawton", photoId: "5IHz5WhosQE" %}

@@ -80,4 +80,4 @@ const main = async () => {
 
 Basic tests will catch this bug before you ever need to go looking for it yourself. But if you don't have any in place, it could easily slip right past you unless you remember that the function is async.
 
-{% include unsplashAttribution.md name: "STIL", username: "stilclassics", photoId: "wtqe5nd5MYk" %}
+{% include "unsplashAttribution.md" name: "STIL", username: "stilclassics", photoId: "wtqe5nd5MYk" %}

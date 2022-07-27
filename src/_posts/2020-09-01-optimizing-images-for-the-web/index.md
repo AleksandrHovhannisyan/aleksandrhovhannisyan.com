@@ -19,9 +19,9 @@ But let's say you've decided to firmly stand your ground and defend your right t
 
 Two of the best ways to optimize images for the web are by using a modern image format (like WebP) and lazily loading images with JavaScript. Combine these strategies, and you'll make Lighthouse happy on even the most image-heavy pages on your website:
 
-{% include postImage.html src: "./images/lighthouse.png", alt: "Lighthouse audit for aleksandrhovhannisyan.com/blog/, showing a score of 100 in all four categories of performance, accessibility, best practices, and SEO." %}
+{% include "postImage.html" src: "./images/lighthouse.png", alt: "Lighthouse audit for aleksandrhovhannisyan.com/blog/, showing a score of 100 in all four categories of performance, accessibility, best practices, and SEO." %}
 
-{% include toc.md %}
+{% include "toc.md" %}
 
 ## The WebP Image Format
 
@@ -195,4 +195,4 @@ Instead, think about how wasteful it is to load in several megabytes' worth of d
 
 Thankfully, optimizing images for the web doesn't require any fancy tooling or complex logic. All you need to do is compress your images using a popular library (like sharp) as part of your build pipeline and load your images using just a few lines of custom JavaScript.
 
-{% include unsplashAttribution.md name: "Sarandy Westfall", username: "sarandywestfall_photo", photoId: "qqd8APhaOg4" %}
+{% include "unsplashAttribution.md" name: "Sarandy Westfall", username: "sarandywestfall_photo", photoId: "qqd8APhaOg4" %}

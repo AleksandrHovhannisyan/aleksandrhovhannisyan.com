@@ -41,7 +41,7 @@ In this article, we'll learn how to create a progressively enhanced image carous
       {%- for image in carouselImages %}
       <li class="carousel-item">
         <figure>
-          {% include image.html src: image.src, alt: image.alt, widths: "[200, 400, 800]", isLinked: false %}
+          {% include "image.html" src: image.src, alt: image.alt, widths: "[200, 400, 800]", isLinked: false %}
           <figcaption>Photo by <a href="{{ image.user.url }}?utm_source={{ site.url }}&utm_medium=referral" rel="noreferrer noopener" target="_blank">{{ image.user.name }}</a> on <a href="https://unsplash.com/?utm_source={{ site.url }}&utm_medium=referral" rel="noreferrer noopener" target="_blank">Unsplash</a></figcaption>
         </figure>
       </li>
@@ -61,7 +61,7 @@ This article covers everything you need to know to create an image carousel such
 While this tutorial shows you how to implement an _image_ carousel, you can still use videos and other media in place of images. There's nothing specific to images in this implementation other than a single CSS selector.
 {% endaside %}
 
-{% include toc.md %}
+{% include "toc.md" %}
 
 ## HTML: A Semantic Carousel
 
@@ -175,7 +175,7 @@ Since we're following a progressively enhanced approach, and the carousel button
 
 Our carousel is structured semantically, but it's not very pretty in its current state—it just renders an ordered list of images top-down on the page. Moreover, while setting a `width` and `height` on media is a good practice for aspect ratio sizing, it can cause some unwanted overflow issues, especially on smaller device widths. Below is a very zoomed-out view of what the carousel currently looks like:
 
-{% include postImage.html src: "./images/unstyled.png", alt: "A zoomed-out view of 6 unstyled images stacked vertically on top of one another. The page overflows both vertically and horizontally and cannot accommodate all of the images." %}
+{% include "postImage.html" src: "./images/unstyled.png", alt: "A zoomed-out view of 6 unstyled images stacked vertically on top of one another. The page overflows both vertically and horizontally and cannot accommodate all of the images." %}
 
 We'll fix these issues and more in this section as we bring our image carousel to life. Before we proceed, I recommend adding this standard CSS reset to your project:
 
@@ -209,7 +209,7 @@ I've intentionally omitted spacing from this CSS because I don't want to prescri
 
 This arranges the images horizontally on the page, like so:
 
-{% include postImage.html src: "./images/flex.png", alt: "A zoomed-out view of 10 images arranged side by side, horizontally. Some of the images are taller and wider than the others." %}
+{% include "postImage.html" src: "./images/flex.png", alt: "A zoomed-out view of 10 images arranged side by side, horizontally. Some of the images are taller and wider than the others." %}
 
 Unfortunately, our images are overflowing _the entire page_ horizontally (and vertically!). Enabling horizontal overflow on the carousel is just a matter of setting the `overflow-x` property on `.carousel-scroll-container` to `auto`, which shows a horizontal scrollbar if there's any overflow:
 
@@ -222,7 +222,7 @@ Unfortunately, our images are overflowing _the entire page_ horizontally (and ve
 
 This gets us a little closer to the expected result because the page is not overflowing horizontally (although it's hard to tell in the image below because I'm using very high-resolution images):
 
-{% include postImage.html src: "./images/overflow-auto.png", alt: "Two images are partially visible in a horizontal overflow container. A horizontal scrollbar indicates overflow, but a vertical scrollbar on the page itself suggests that the images are far too tall." %}
+{% include "postImage.html" src: "./images/overflow-auto.png", alt: "Two images are partially visible in a horizontal overflow container. A horizontal scrollbar indicates overflow, but a vertical scrollbar on the page itself suggests that the images are far too tall." %}
 
 But because an image's width and height are currently determined by its respective HTML attributes, the images are taking up too much vertical space and overflowing the entire page vertically. We can correct this by setting a fixed height on each list item, setting `height: 100%` on the images, and forcing each image's width to adapt to its height while maintaining its aspect ratio with `width: auto`. I'm going to use a purely arbitrary value of `300px` for the height, but you'll want to update this in your app to be whatever your designers want you to use:
 
@@ -252,7 +252,7 @@ One of those selectors uses the [`:is()` pseudo-class function](https://develope
 
 Now, the entire page should no longer be overflowing:
 
-{% include postImage.html src: "./images/flex-final.png", alt: "A horizontally scrolling carousel of images with varying aspect ratios. A scrollbar is visible at the bottom, suggesting that the user can scroll to the right to view more images. An orange hachure pattern fills the gaps between the images." %}
+{% include "postImage.html" src: "./images/flex-final.png", alt: "A horizontally scrolling carousel of images with varying aspect ratios. A scrollbar is visible at the bottom, suggesting that the user can scroll to the right to view more images. An orange hachure pattern fills the gaps between the images." %}
 
 Our carousel is looking much better! We can scroll the container horizontally either with pointer events (mouse/touch) or by tabbing to the carousel with our keyboard and using arrow keys. Each image has the same constrained height, but a particular image's width will depend on its intrinsic aspect ratio.
 
@@ -264,7 +264,7 @@ Our carousel is looking much better! We can scroll the container horizontally ei
 
 The default scroll behavior is to slide continuously in the container, but in a media carousel such as this, we typically don't want users to stop midway between two images or in some other random location. Rather, we'd like the carousel to center each image as a user scrolls, providing a series of focal points or destinations along the way. To do this, we can enable [CSS scroll snap](https://web.dev/css-scroll-snap/) on our carousel scroll container. This feature allows us to snap a particular item's focal point into view once a user scrolls close enough to it, as demonstrated in the following video:
 
-{% include video.html src: "/assets/videos/scroll-snap-demo.mp4", poster: "/assets/videos/scroll-snap-demo-thumbnail.jpg", sourceType: "video/mp4", width: 1404, height: 392, caption: "A horizontal image carousel is scrolled using the left and right arrow keys. Each scroll event centers the next image horizontally, providing a sequence of stopping points. The blue dots overlaid on the images mark their focal points." %}
+{% include "video.html" src: "/assets/videos/scroll-snap-demo.mp4", poster: "/assets/videos/scroll-snap-demo-thumbnail.jpg", sourceType: "video/mp4", width: 1404, height: 392, caption: "A horizontal image carousel is scrolled using the left and right arrow keys. Each scroll event centers the next image horizontally, providing a sequence of stopping points. The blue dots overlaid on the images mark their focal points." %}
 
 Enabling scroll snap is a two-step process. First, we need to tell the scroll container how it should behave with the [`scroll-snap-type` CSS property](https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-snap-type). This property allows us to specify the snapping axis (`x` for horizontal and `y` for vertical) as well as the snapping behavior (`proximity` or `mandatory`), like so:
 
@@ -304,7 +304,7 @@ You could also set the focal point on any deeply nested child, like the images t
 
 In this case, a `scroll-snap-align` of `center` tells the browser to center the scroll container on whatever item it snaps to. If you're using a Chromium browser, you can inspect the carousel in your dev tools and click the handy `scroll-snap` pill to overlay blue dots on each item; these dots represent the focal points for our scroll-snap carousel:
 
-{% include postImage.html src: "./images/scroll-snap-align.png", alt: "Inspecting a horizontal carousel of images in Chrome dev tools. The horizontal scroll container is selected in the Element pane, and a pill that reads 'scroll snap' is highlighted next to that node. On the page, each image has a blue dot centered on it, representing its scroll snap alignment." %}
+{% include "postImage.html" src: "./images/scroll-snap-align.png", alt: "Inspecting a horizontal carousel of images in Chrome dev tools. The horizontal scroll container is selected in the Element pane, and a pill that reads 'scroll snap' is highlighted next to that node. On the page, each image has a blue dot centered on it, representing its scroll snap alignment." %}
 
 Since we're using `proximity` for `scroll-snap-type`, we don't need to worry that users might not be able to reach the carousel's edges. However, as an extra precaution, I also recommend that you set the scroll snap alignment to `start` for the first item and `end` for the last item:
 
@@ -335,7 +335,7 @@ The carousel we've been building so far is more akin to a filmstrip, where multi
       {%- for image in carouselImages %}
       <li class="carousel-item">
         <figure>
-          {% include image.html src: image.src, alt: image.alt, widths: "[400, 800]", isLinked: false %}
+          {% include "image.html" src: image.src, alt: image.alt, widths: "[400, 800]", isLinked: false %}
           <figcaption>Photo by <a href="{{ image.user.url }}?utm_source={{ site.url }}&utm_medium=referral" rel="noreferrer noopener" target="_blank">{{ image.user.name }}</a> on <a href="https://unsplash.com/?utm_source={{ site.url }}&utm_medium=referral" rel="noreferrer noopener" target="_blank">Unsplash</a></figcaption>
         </figure>
       </li>
@@ -431,13 +431,13 @@ Here's all of the code from this section:
 
 In this section, we'll add navigation controls that can be used to programmatically scroll the image carousel. Since we already support arrow key navigation and pointer events, this is more of a nice-to-have feature than an essential one. Most carousels include these navigation buttons, and one could even argue that they improve the user experience by hinting that the container can be scrolled. This is especially true if a user's operating system hides scrollbars by default. Below is a video demo of the final result:
 
-{% include video.html src: "/assets/videos/carousel-button-demo.mp4", poster: "/assets/videos/carousel-button-demo-thumbnail.jpg", sourceType: "video/mp4", width: 1404, height: 392, caption: "A horizontal image carousel is scrolled left and right using navigation buttons and mouse clicks. Each click jumps the carousel to the next image in the direction of travel, centering it in view." %}
+{% include "video.html" src: "/assets/videos/carousel-button-demo.mp4", poster: "/assets/videos/carousel-button-demo-thumbnail.jpg", sourceType: "video/mp4", width: 1404, height: 392, caption: "A horizontal image carousel is scrolled left and right using navigation buttons and mouse clicks. Each click jumps the carousel to the next image in the direction of travel, centering it in view." %}
 
 ### Creating the Navigation Buttons
 
 As mentioned earlier, since our navigation controls depend on JavaScript to function, we'll insert them into the carousel using JavaScript rather than defining them statically in our HTML. Our end goal is something that looks like the image below, although note that I'll present a simplified version of the styling and markup to keep this tutorial short and to the point:
 
-{% include postImage.html src: "./images/buttons.png", alt: "A horizontal image carousel showing three images in view, with different aspect ratios. The carousel has two circular buttons on either end, centered vertically. The buttons use chevrons to denote the direction of travel." %}
+{% include "postImage.html" src: "./images/buttons.png", alt: "A horizontal image carousel showing three images in view, with different aspect ratios. The carousel has two circular buttons on either end, centered vertically. The buttons use chevrons to denote the direction of travel." %}
 
 The JavaScript below creates an ES6 class for our carousel. Note that this isn't strictly necessary since you could also use ES modules and compose utility functions together to achieve the same end result. The main benefit of using a class is that we can instantiate as many carousels as needed by passing in a new reference for each one.
 
@@ -585,7 +585,7 @@ This works, and it's a pattern that lots of carousels follow, but note that the 
 
 Here's what that would look like:
 
-{% include postImage.html src: "./images/buttons-outside.png", alt: "A horizontal image carousel showing three images in view, with different aspect ratios. The carousel has two circular buttons on either end, centered vertically but also offset on either end so that they're centered perfectly along the left and right edges of the container." %}
+{% include "postImage.html" src: "./images/buttons-outside.png", alt: "A horizontal image carousel showing three images in view, with different aspect ratios. The carousel has two circular buttons on either end, centered vertically but also offset on either end so that they're centered perfectly along the left and right edges of the container." %}
 
 I'll stick with the original version for the rest of this tutorial, but I wanted to demonstrate that this is something you could adjust as needed. I recommend consulting with your design team to see what they'd prefer.
 
@@ -667,11 +667,11 @@ Finally, you can style the disabled state like so:
 
 Now, in the initial resting state, the `Previous` button is inactive:
 
-{% include postImage.html src: "./images/buttons-disabled.png", alt: "A horizontal image carousel with two navigation buttons—Previous and Next—positioned on either end of the carousel. The previous button is grayed out because the carousel has not been scrolled by any amount." %}
+{% include "postImage.html" src: "./images/buttons-disabled.png", alt: "A horizontal image carousel with two navigation buttons—Previous and Next—positioned on either end of the carousel. The previous button is grayed out because the carousel has not been scrolled by any amount." %}
 
 Similarly, when we reach the end of the carousel, the `Next` button is inactive:
 
-{% include postImage.html src: "./images/buttons-disabled-end.png", alt: "A horizontal image carousel with two navigation buttons—Previous and Next—positioned on either end of the carousel. The Next button is grayed out because the carousel has been fully scrolled to the right." %}
+{% include "postImage.html" src: "./images/buttons-disabled-end.png", alt: "A horizontal image carousel with two navigation buttons—Previous and Next—positioned on either end of the carousel. The Next button is grayed out because the carousel has been fully scrolled to the right." %}
 
 You may need to tweak the styling to get it right. If an image has a white background, for example, the opacity trick above may not distinguish the disabled state clearly from the enabled state. In that case, you may need to also use another filter (like `contrast`) or change the background color of the button.
 
@@ -755,7 +755,7 @@ Rather than keeping track of the current focal point with an index or reference,
 
 The solution is as follows: On button click, we calculate the distance from the edge of the viewport to the center of the carousel. We then query all of the carousel items and find the first one in the direction of travel whose focal point is past the carousel's center. Once we've found that item, we scroll it into view using [`Element.scrollIntoView`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView).
 
-{% include postImage.html src: "./images/algorithm.png", alt: "A diagram illustrating a scroll container with a purple hachure pattern background and four children of varying dimensions arranged horizontally from left to right. Each child's horizontal center is marked with a dotted vertical line. Below the diagram, an arrow points to the right and reads 'direction of travel.' The center of the carousel is marked. The first target image to the right of the center is identified by an arrow." %}
+{% include "postImage.html" src: "./images/algorithm.png", alt: "A diagram illustrating a scroll container with a purple hachure pattern background and four children of varying dimensions arranged horizontally from left to right. Each child's horizontal center is marked with a dotted vertical line. Below the diagram, an arrow points to the right and reads 'direction of travel.' The center of the carousel is marked. The first target image to the right of the center is identified by an arrow." %}
 
 This solution offers a number of advantages over the others we've considered:
 
@@ -814,7 +814,7 @@ Currently, we're always querying the media items in their original DOM ordering:
 
 The diagram below illustrates the problem in LTR, but the same applies to RTL:
 
-{% include postImage.html src: "./images/ltr-moving-left.png", alt: "Diagram of four rectangles arranged horizontally in a scroll container, with a blue dot overlaid on each rectangle to represent its focal point. Below the diagram is a label that reads: Direction of travel (LTR, moving left). An arrow points left. The far-left rectangle is labeled 'Don't start here' and is the first image in the DOM order. The far-right image is labeled 'Start here.' A semi-transparent layer partially obscures the right half of the diagram.", caption: "If we don't reverse the queried images, the carousel will scroll to the far-left image. But we actually want to scroll to the second image from the left because it's the first image in the direction of travel whose focal point is past the center of the carousel." %}
+{% include "postImage.html" src: "./images/ltr-moving-left.png", alt: "Diagram of four rectangles arranged horizontally in a scroll container, with a blue dot overlaid on each rectangle to represent its focal point. Below the diagram is a label that reads: Direction of travel (LTR, moving left). An arrow points left. The far-left rectangle is labeled 'Don't start here' and is the first image in the DOM order. The far-right image is labeled 'Start here.' A semi-transparent layer partially obscures the right half of the diagram.", caption: "If we don't reverse the queried images, the carousel will scroll to the far-left image. But we actually want to scroll to the second image from the left because it's the first image in the direction of travel whose focal point is past the center of the carousel." %}
 
 So we'll update our code to reverse the array if we're traveling toward the `start`:
 
@@ -953,7 +953,7 @@ scrollTarget.scrollIntoView({ inline: 'center', block: 'nearest' });
 
 Unfortunately, [browser support for `scrollIntoView`](https://caniuse.com/?search=scrollIntoView) isn't too great. Here's what the table looked like at the time of writing:
 
-{% include postImage.html src: "./images/scrollIntoView.png", alt: "The browser support table for scrollIntoView. IE has no support. Edge supports it from 79-102. Firefox from 36-103. Chrome from 61-105. Safari doesn't has supported it without an object argument since 5.1. Less commonly used browsers are also shown.", caption: "Source: [caniuse.com](https://caniuse.com/?search=scrollIntoView)." %}
+{% include "postImage.html" src: "./images/scrollIntoView.png", alt: "The browser support table for scrollIntoView. IE has no support. Edge supports it from 79-102. Firefox from 36-103. Chrome from 61-105. Safari doesn't has supported it without an object argument since 5.1. Less commonly used browsers are also shown.", caption: "Source: [caniuse.com](https://caniuse.com/?search=scrollIntoView)." %}
 
 This may be especially problematic in Safari, where the object parameter is not recognized, so the carousel will scroll only until the image is visible, preventing us from centering it in view.
 

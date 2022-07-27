@@ -219,7 +219,7 @@ const isVegetable = (ingredient: Ingredient): ingredient is Vegetable => {
 
 It may seem odd that we're using type assertions here, but they're important. Without them, TypeScript will complain that vegetables (a valid ingredient) are not assignable to fruits:
 
-{% include postImage.html src: "./images/error.jpg", alt: "TypeScript complains that the argument of type 'Ingredient' is not assignable to the parameter of type 'apple' or 'banana' or 'orange'. Type 'carrot' is not assignable to type 'apple' or 'banana' or 'orange'." %}
+{% include "postImage.html" src: "./images/error.jpg", alt: "TypeScript complains that the argument of type 'Ingredient' is not assignable to the parameter of type 'apple' or 'banana' or 'orange'. Type 'carrot' is not assignable to type 'apple' or 'banana' or 'orange'." %}
 
 This should make sense—at that point in the code, TypeScript does not yet know that `ingredient` is of one type or the other, so we have to give it a helpful nudge. But when we use these helpers, we'll still get proper type inference.
 
@@ -237,4 +237,4 @@ const isVegetable = (ingredient: Ingredient): ingredient is Vegetable => {
 
 Now, if we add more items for our fruits and vegetables, the derived types will be updated, and the type predicates will still work correctly. Importantly, **we only have to update the data once** rather than repeating ourselves twice, thrice, and so on. This gives us a single source of truth for typing while also allowing us to take advantage of type predicates. It's a win-win!
 
-{% include unsplashAttribution.md name: "Edgar Castrejon", username: "edgarraw", photoId: "1CsaVdwfIew" %}
+{% include "unsplashAttribution.md" name: "Edgar Castrejon", username: "edgarraw", photoId: "1CsaVdwfIew" %}

@@ -13,7 +13,7 @@ If you're new to React, or even if you've been using it for a while, you may hav
 
 In this tutorial, we'll explore what higher-order components are and why you might want to use them. We'll also learn how you can combine them with the React Context API to create reusable components and behaviors. Let's dig in!
 
-{% include toc.md %}
+{% include "toc.md" %}
 
 ## Prerequisite Terminology
 
@@ -48,7 +48,7 @@ To go a bit more into detail, a higher-order component is a special kind of func
 
 In other words, a higher-order component is essentially a **component factory**. It's a design pattern that allows you to create new versions of existing components by injecting additional props into them. Notably, higher-order components are used to consolidate reusable, **stateful logic** in a single place.
 
-{% include postImage.html src: "./images/diagram.png", alt: "A higher-order component returns a component, which returns a React element." %}
+{% include "postImage.html" src: "./images/diagram.png", alt: "A higher-order component returns a component, which returns a React element." %}
 
 Don't get confused—an HOC is not itself a component. Remember: Components are functions that return a React element; higher-order components are functions that return *components*.
 
@@ -466,7 +466,7 @@ However, this isn't a good idea in general, as you may run into a situation late
 
 If you're with me so far, you may have noticed an interesting fact: Higher-order components accept a component as one of their arguments, but they also *return* a component. Naturally, this means we can pass the result of one higher-order component as an argument to another, like nested Matryoshka dolls:
 
-{% include postImage.html src: "./images/matryoshka-dolls.png", alt: "The classic Russian Matryoshka dolls, in decreasing size, can be nested in one another.", caption: "Image source: [Wikimedia Commons user Fanghong](https://en.wikipedia.org/wiki/Matryoshka_doll#/media/File:Russian-Matroshka.jpg)" %}
+{% include "postImage.html" src: "./images/matryoshka-dolls.png", alt: "The classic Russian Matryoshka dolls, in decreasing size, can be nested in one another.", caption: "Image source: [Wikimedia Commons user Fanghong](https://en.wikipedia.org/wiki/Matryoshka_doll#/media/File:Russian-Matroshka.jpg)" %}
 
 Consider this toy example:
 
@@ -787,4 +787,4 @@ Note that higher-order components are still relevant if your code base uses clas
 
 The higher-order component design pattern is pretty powerful once you get comfortable with it and realize what it's doing. In a nutshell, higher-order components are **component factories** that take a component, inject props into it, and return the modified component. As we saw, you can compose higher-order components and even combine them with React's Context API to write powerful, reusable code.
 
-{% include unsplashAttribution.md name: "Patrick Hendry", username: "worldsbetweenlines", photoId: "6xeDIZgoPaw" %}
+{% include "unsplashAttribution.md" name: "Patrick Hendry", username: "worldsbetweenlines", photoId: "6xeDIZgoPaw" %}

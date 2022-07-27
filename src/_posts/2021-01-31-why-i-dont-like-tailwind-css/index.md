@@ -28,7 +28,7 @@ The strange thing is that I actually read through all of [Adam Wathan's article 
 
 On paper, Tailwind CSS sounds great. In practice, it suffers from the same issues that it attempts to solve and is, in my opinion, not worth using.
 
-{% include toc.md %}
+{% include "toc.md" %}
 
 ## But First, Why Does Tailwind CSS Exist?
 
@@ -91,7 +91,7 @@ Another reason why Tailwind is so hard to read is because it requires you to pan
 
 If you think I'm exaggerating and that it can't get much worse than this in practice, here's a real example from Netlify's admin dashboard:
 
-{% include postImage.html src: "./images/netlify-input.jpg", alt: "Inspecting a checkbox in the Netlify UI via dev tools reveals an input with a massive string of class names spanning over 13 lines.", caption: "That's **71 class names** just to style a checkbox." %}
+{% include "postImage.html" src: "./images/netlify-input.jpg", alt: "Inspecting a checkbox in the Netlify UI via dev tools reveals an input with a massive string of class names spanning over 13 lines.", caption: "That's **71 class names** just to style a checkbox." %}
 
 Unfortunately, ESLint/Prettier won't even properly format your classes or push them onto a new line—they'll just push the `className` prop down, but the string itself could go on forever. This may force you to scroll your editor horizontally to view the full list of classes. Tailwind's own documentation suffers from this very problem—many code blocks overflow horizontally and force you to scroll to find the relevant class in a sea of strings
 

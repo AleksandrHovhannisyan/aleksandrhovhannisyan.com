@@ -17,7 +17,7 @@ thumbnail:
 
 Once you get used to thinking in rems, you'll find that it's actually quite easy to express familiar powers of two as fractions of `16`, the root font size of every browser. But if you need to express any other value in rems—like odd numbers or very large numbers—you'll need to do the math by hand, convert it with CSS `calc`, or use a preprocessor like Sass. Alternatively, you can make your life easier using a trick with a root font size of 62.5%.
 
-{% include toc.md %}
+{% include "toc.md" %}
 
 ## Setting the Root Font Size to 62.5%
 
@@ -190,4 +190,4 @@ See [this Twitter thread](https://twitter.com/jantimon/status/151271475686763725
 
 Rems are great for responsive font sizing, but sometimes you may find the math a little inconvenient if you need to translate odd numbers into rems or work with very large numbers. In that case, you may find it helpful to use the 62.5% font size trick as described in this article since it allows you to think in the familiar base-10 system while using rems.
 
-{% include unsplashAttribution.md name: "Annie Spratt", username: "anniespratt", photoId: "eIlJ2CtQezU" %}
+{% include "unsplashAttribution.md" name: "Annie Spratt", username: "anniespratt", photoId: "eIlJ2CtQezU" %}

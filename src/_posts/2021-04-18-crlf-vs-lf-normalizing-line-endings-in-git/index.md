@@ -18,7 +18,7 @@ A better solution is to add a `.gitattributes` file to your repo so you can enfo
 
 History can be boring, though, so if you stumbled upon this post after hours of frustrated research, you can skip straight to [A Simple `.gitattributes` Config](#a-simple-gitattributes-config) and grab the code. However, I do encourage reading the full post to understand how these things work under the hood—you'll (hopefully) never have to Google line endings again!
 
-{% include toc.md %}
+{% include "toc.md" %}
 
 ## CRLF vs. LF: What Are Line Endings, Anyway?
 
@@ -44,7 +44,7 @@ You may be wondering where the need for such a character originated (beyond just
 
 Back when dinosaurs roamed the earth, people used to lug around these chunky devices called *typewriters*.
 
-{% include postImage.html src: "./images/typewriter.png", alt: "Top-down view of a typewriter, with paper fed into the carriage.", caption: "Photo credit: [Patrick Fore, Unsplash](https://unsplash.com/photos/59lC6TgZAbQ)" %}
+{% include "postImage.html" src: "./images/typewriter.png", alt: "Top-down view of a typewriter, with paper fed into the carriage.", caption: "Photo credit: [Patrick Fore, Unsplash](https://unsplash.com/photos/59lC6TgZAbQ)" %}
 
 You feed the device a sheet of paper fastened to a mechanical roll known as the **carriage**. With each keystroke, the typewriter prints letters using ink on your sheet of paper, shifting the carriage to the left to ensure that the next letter you type will appear to the right of the previous one. You can [watch a typewriter being used in action](https://www.youtube.com/watch?v=5sTHMXqD9kg) to get a better sense for how this works.
 
@@ -301,7 +301,7 @@ A `.gitattributes` file is technically all that you need to enforce the line end
 
 Again, this doesn't mean that Git's normalization process isn't working; it's just the expected behavior. However, this can get annoying if you're also linting your code with ESLint and Prettier, in which case they'll constantly throw errors and tell you to delete those extra `CR`s:
 
-{% include postImage.html src: "./images/prettier.png", alt: "A user's mouse hovers over red squiggly lines in a file that's using CRLF line endings. A prettier warning tells the user to remove the carriage return character." %}
+{% include "postImage.html" src: "./images/prettier.png", alt: "A user's mouse hovers over red squiggly lines in a file that's using CRLF line endings. A prettier warning tells the user to remove the carriage return character." %}
 
 Fortunately, we can take things a step further with an `.editorconfig` file; this is an [editor-agnostic project](https://editorconfig.org/) that aims to create a standardized format for customizing the behavior of any given text editor. Lots of text editors (including VS Code) support and automatically read this file if it's present. You can put something like this in the root of your workspace:
 
@@ -318,4 +318,4 @@ In addition to a bunch of other settings, you can specify the line ending that s
 
 That was a lot to take in, but hopefully you now have a better understanding of the whole CRLF vs. LF debate and why this causes so many problems for teams that use a mixture of Windows and other operating systems. Whereas Windows follows the original convention of a carriage return plus a line feed (`CRLF`) for line endings, operating systems like Linux and Mac use only the line feed (`LF`) character. The history of these two control characters dates back to the era of the typewriter. While this tends to cause problems with software like Git, you can specify settings at the repo level with a `.gitattributes` file to normalize your line endings regardless of what operating systems your developers are using. You can also optionally add an `.editorconfig` file to ensure that new files are always created with `LF` line endings, even on Windows.
 
-{% include unsplashAttribution.md name: "Katrin Hauf", username: "trine", photoId: "jpkvklXwt98" %}
+{% include "unsplashAttribution.md" name: "Katrin Hauf", username: "trine", photoId: "jpkvklXwt98" %}

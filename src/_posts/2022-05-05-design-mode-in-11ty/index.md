@@ -89,4 +89,4 @@ Don't find the inline script to be ergonomic, or plan on adding more functionali
 
 And that's all there is to it—happy designing!
 
-{% include unsplashAttribution.md name: "Amélie Mourichon", username: "amayli", photoId: "sv8oOQaUb-o" %}
+{% include "unsplashAttribution.md" name: "Amélie Mourichon", username: "amayli", photoId: "sv8oOQaUb-o" %}

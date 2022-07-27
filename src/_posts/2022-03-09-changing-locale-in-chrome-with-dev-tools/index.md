@@ -21,34 +21,34 @@ Modern browsers have developer tools that allow us to simulate user preferences,
 
 To start, you'll want to open up a site that you know is internationalized. Maybe that's the one you're creating at work, or maybe it's a popular site that you use. I'll use Wikipedia for this demo. Here's Wikipedia in English on Chrome:
 
-{% include postImage.html src: "./images/wikipedia-english.png", alt: "The Wikipedia home page shows a globe in the center made up of jigsaw pieces. Arranged in a concentric ring around the globe are links to different translated subdomains of wikipedia. Below this banner is a search box, followed by a dropdown that reads: Read Wikipedia in your language." %}
+{% include "postImage.html" src: "./images/wikipedia-english.png", alt: "The Wikipedia home page shows a globe in the center made up of jigsaw pieces. Arranged in a concentric ring around the globe are links to different translated subdomains of wikipedia. Below this banner is a search box, followed by a dropdown that reads: Read Wikipedia in your language." %}
 
 Open your dev tools, either by right-clicking the page and selecting `Inspect element` or using the keyboard shortcut (<kbd>Ctrl+Shift+I</kbd> on Windows and <kbd>Cmd+Shift+I</kbd> on Mac). Chrome has a command palette that you can invoke using <kbd>Cmd+Shift+P</kbd> or <kbd>Ctrl+Shift+P</kbd>, depending on your OS. Search for `Show sensors`:
 
-{% include postImage.html src: "./images/show-sensors.png", alt: "Inspecting the Wikipedia page in chrome dev tools, with a sidebar open on the right. A floating menu is highlighted showing a fuzzy search for show sensors. One result appears in the dropdown below the search box." %}
+{% include "postImage.html" src: "./images/show-sensors.png", alt: "Inspecting the Wikipedia page in chrome dev tools, with a sidebar open on the right. A floating menu is highlighted showing a fuzzy search for show sensors. One result appears in the dropdown below the search box." %}
 
 Press <kbd>Enter</kbd>, and you should see a new pane pop up that looks like this:
 
-{% include postImage.html src: "./images/sensors-pane.png", alt: "Inspecting the Wikipedia page in chrome dev tools, with a sidebar open on the right. The Sensors pane is active, showing one group of actions titled Location. The group has inputs and dropdown menus that can be toggled to override the device's location." %}
+{% include "postImage.html" src: "./images/sensors-pane.png", alt: "Inspecting the Wikipedia page in chrome dev tools, with a sidebar open on the right. The Sensors pane is active, showing one group of actions titled Location. The group has inputs and dropdown menus that can be toggled to override the device's location." %}
 
 As the name suggests, the [Sensors web API](https://developer.mozilla.org/en-US/docs/Web/API/Sensor_APIs) allows a web site or app to leverage a device's built-in sensors for things like gyroscopes, lighting, accelerometers, geolocation, and more. In Chrome dev tools, the Sensors pane mocks this API, allowing you to simulate a specific device configuration so that when the page tries to read that information, it uses the mocked data rather than the real device data.
 
 Additionally, Chrome's Sensors pane allows us to switch locales. For example, if we select Berlin from the dropdown list and manually refresh the page, we should see the text update to German because the locale for the Berlin option is set to `de-DE` by default:
 
-{% include postImage.html src: "./images/german.png", alt: "Inspecting the Wikipedia page in chrome dev tools, with a sidebar open on the right. The Sensors pane is active and shows a Location settings group with Berlin actively selected. Below it are the latitude and longitude information for this city, along with a highlighted input labeled locale that reads de-DE. The page itself appears in German." %}
+{% include "postImage.html" src: "./images/german.png", alt: "Inspecting the Wikipedia page in chrome dev tools, with a sidebar open on the right. The Sensors pane is active and shows a Location settings group with Berlin actively selected. Below it are the latitude and longitude information for this city, along with a highlighted input labeled locale that reads de-DE. The page itself appears in German." %}
 
 Cool!
 
 What if we also want to test a right-to-left locale, like Arabic? In that case, all we need to do is click the `Manage` button in the Sensors pane and enter the details for our custom location (if it doesn't already exist). Note that you don't need to enter a latitude or longitude if you're not trying to test geolocation functionality. For this example, I'll create a generic location named Arabic and set its locale to `ar`.
 
-{% include postImage.html src: "./images/add-arabic.png", alt: "Inspecting the Wikipedia page in chrome dev tools, with a sidebar open on the right titled Settings. Several built-in locations are listed with their names, latitudes, longitudes, regions, and locales. A new entry is being added at the bottom of the list titled Arabic, with a latitude and longitude of 0 and a locale of ar." %}
+{% include "postImage.html" src: "./images/add-arabic.png", alt: "Inspecting the Wikipedia page in chrome dev tools, with a sidebar open on the right titled Settings. Several built-in locations are listed with their names, latitudes, longitudes, regions, and locales. A new entry is being added at the bottom of the list titled Arabic, with a latitude and longitude of 0 and a locale of ar." %}
 
 Click `Add`, and close out of the settings view either with <kbd>Escape</kbd> or by clicking the `X` button in the top-right corner. Then, repeat the same steps as before—select your newly created location, and refresh the page:
 
-{% include postImage.html src: "./images/arabic.png", alt: "Inspecting the Wikipedia page in chrome dev tools, with a sidebar open on the right. The Sensors pane is active and shows a Location settings group with Arabic actively selected. The page itself appears in Arabic text." %}
+{% include "postImage.html" src: "./images/arabic.png", alt: "Inspecting the Wikipedia page in chrome dev tools, with a sidebar open on the right. The Sensors pane is active and shows a Location settings group with Arabic actively selected. The page itself appears in Arabic text." %}
 
 Not only does the page serve the text in Arabic, but it also flips the text directionality to RTL (since Arabic is one of a handful of RTL languages). You can verify this either visually or by finding `lang="ar"` and `dir="rtl"` in the element inspector.
 
 That's it! Now, you can easily flip-flop between locales without having to mess with your browser or OS settings. This makes it much easier to test RTL and overflow edge cases.
 
-{% include unsplashAttribution.md name: "Bruno Martins", username: "brunus", photoId: "8fbqPK_MUtk" %}
+{% include "unsplashAttribution.md" name: "Bruno Martins", username: "brunus", photoId: "8fbqPK_MUtk" %}

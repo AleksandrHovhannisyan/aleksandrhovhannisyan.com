@@ -22,7 +22,7 @@ const function = ({
 
 Nowadays, I'm not quite so fond of destructuring. It certainly has its uses, but it can also cause problems if not used carefully. I've found that destructuring is most effective when the unpacked variables are in close proximity to their usage or when the alternative is harder to read. In the next few sections, we'll explore some of the problems with what I'll call _overzealous destructuring_.
 
-{% include toc.md %}
+{% include "toc.md" %}
 
 ## Destructuring Makes It Harder to Identify a Variable's Scope
 
@@ -367,4 +367,4 @@ const function = (args) => {
 
 Destructuring is like salt: Use it judiciously, and it can bring out the flavor in a dish. But overuse it, and you may ruin your meal. Like many practices in programming, destructuring isn't inherently evil—it certainly has many clever uses that can make our code easier to follow. But as we saw, _overdoing_ it can make our code harder to read and debug.
 
-{% include unsplashAttribution.md name: "Jiawei Zhao", username: "jiaweizhao", photoId: "W-ypTC6R7_k" %}
+{% include "unsplashAttribution.md" name: "Jiawei Zhao", username: "jiaweizhao", photoId: "W-ypTC6R7_k" %}

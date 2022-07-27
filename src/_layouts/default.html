@@ -1,4 +1,8 @@
 ---
+criticalCSS:
+  - css/fontFace.liquid
+  - css/fontVariables.liquid
+  - css/criticalFontUsage.css
 stylesheets:
   - /assets/styles/main.css
 eleventyComputed:
@@ -57,18 +61,15 @@ eleventyComputed:
   {%- if noindex -%}
     <meta name="robots" content="noindex">
   {%- endif -%}
-  {%- comment -%}Font face and variable declarations in head rather than in stylesheet{%- endcomment -%}
-  {%- capture fontCss -%}
-    {%- include fontFace.liquid -%}
-    {%- include fontVariables.liquid -%}
-    body {
-      font-family: var(--ff-body);
-    }
-    code {
-      font-family: var(--ff-code);
-    }
-  {%- endcapture -%}
-  <style>{{ fontCss | compileAndMinifyScss }}</style>
+  {%- comment -%}Critical CSS goes in head{%- endcomment -%}
+  {%- if criticalCSS -%}
+      {%- capture critical -%}
+        {%- for partial in criticalCSS -%}
+          {%- include partial -%}
+        {%- endfor -%}      
+      {%- endcapture -%}
+      <style>{{ critical | compileAndMinifyScss }}</style>
+  {%- endif -%}
   {%- comment -%}Global and page/layout-specific CSS{%- endcomment -%}
   {%- for href in stylesheets -%}
     <link rel="stylesheet" href="{{ href }}">
@@ -138,10 +139,10 @@ eleventyComputed:
   {%- endif -%}
 </head>
 <body class="fs-base">
-  {%- include navbar.html -%}
+  {%- include "navbar.html" -%}
   <main id="page-content" class="container">
     {{ content }}
   </main>
-  {%- include footer.html -%}
+  {%- include "footer.html" -%}
 </body>
 </html>
