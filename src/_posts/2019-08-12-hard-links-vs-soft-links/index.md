@@ -51,7 +51,7 @@ File (Name) --> Inode
 
 Let's create a file with `echo Hello, links > file` and view information about its inode using the `stat` command:
 
-{% include postImage.html src: "./images/file.png", alt: "A bash terminal environment. The first command run reads: echo Hello, links > file. The next command reads ls, which shows a single result: the previously created file. The final command is stat file, which shows information about the file, including its inode number." %}
+{% include "postImage.html" src: "./images/file.png", alt: "A bash terminal environment. The first command run reads: echo Hello, links > file. The next command reads ls, which shows a single result: the previously created file. The final command is stat file, which shows information about the file, including its inode number." %}
 
 Observe the line that reads `Inode: 4785074605327413`. This is an **inode number**. Each inode has a unique numerical ID associated with it that's generated when the inode is created.
 
@@ -73,11 +73,11 @@ A **symbolic link** (also known as a "soft link" or "symlink") is a file like an
 
 To create a soft link on a Unix system, you use the `ln` (link) command and supply the `-s` flag (for "symbolic"), followed by the original file name and the name of the soft link, in that order:
 
-{% include postImage.html src: "./images/soft-link.png", alt: "A bash terminal environment. The user runs the ls command with the a and l flags; the output shows the single file created before. Of note is the fact that the file has a link count of 1. The user then runs the ln command to create a soft link named softLink, one word, pointing to that file. The user finally runs the ls command with the a and l flags, which now shows two results: the original file and softLink." %}
+{% include "postImage.html" src: "./images/soft-link.png", alt: "A bash terminal environment. The user runs the ls command with the a and l flags; the output shows the single file created before. Of note is the fact that the file has a link count of 1. The user then runs the ln command to create a soft link named softLink, one word, pointing to that file. The user finally runs the ls command with the a and l flags, which now shows two results: the original file and softLink." %}
 
 Now, let's run the stat command again on both files:
 
-{% include postImage.html src: "./images/stat-soft-link.png", alt: "A bash terminal environment. The user runs the stat command on two file names: file and softLink, one word. The output consists of several rows of information, such as the file name, the file size in bytes, the inode number, and the link count." %}
+{% include "postImage.html" src: "./images/stat-soft-link.png", alt: "A bash terminal environment. The user runs the stat command on two file names: file and softLink, one word. The output consists of several rows of information, such as the file name, the file size in bytes, the inode number, and the link count." %}
 
 Observe the following:
 
@@ -87,7 +87,7 @@ Observe the following:
 
 Let's also look at their contents using the `cat` command:
 
-{% include postImage.html src: "./images/cat-soft-link.png", alt: "A bash terminal environment; the cat command is run on two file names: file and softLink, one word. Both output the same contents previously entered: Hello, links." %}
+{% include "postImage.html" src: "./images/cat-soft-link.png", alt: "A bash terminal environment; the cat command is run on two file names: file and softLink, one word. Both output the same contents previously entered: Hello, links." %}
 
 Even though the symbolic link's underlying data is the *path* of the original file, running the cat command effectively *resolves* or *follows* the symbolic link and prints the contents of the original file: `Hello, links` instead of `file`. Naturally, this implies that if the original file's contents change, the result of running `cat softLink` will also change.
 
@@ -99,7 +99,7 @@ Even though the symbolic link's underlying data is the *path* of the original fi
 
 Let's see what happens if you create a soft link to a file that's not in the same directory:
 
-{% include postImage.html src: "./images/soft-link-from-another-dir.png", alt: "A bash terminal environment. The user runs the ln command with the s flag to create a soft link to a different directory. The user then outputs information about the soft link with the stat command. Of note is the file size in bytes." %}
+{% include "postImage.html" src: "./images/soft-link-from-another-dir.png", alt: "A bash terminal environment. The user runs the ln command with the s flag to create a soft link to a different directory. The user then outputs information about the soft link with the stat command. Of note is the file size in bytes." %}
 
 This time, the symbolic link's file size is no longer `4` bytes. Rather, it's `10`: the length of the string `links/` (which is `6`) plus the length of the target file name itself (`4`).
 
@@ -112,7 +112,7 @@ Because a symbolic link's data is the *path* to the original file, there are two
 
 Here's an example showing what happens when we move the original file up one directory:
 
-{% include postImage.html src: "./images/moved-file.png", alt: "A bash terminal environment. The user first runs the ls command with the l flag to list the two previously created files named file and softLink, one word. The user then runs the mv command on the original file, moving it up one directory level. The user finally runs the stat command on both files. The output is the same as it was before for the soft link." %}
+{% include "postImage.html" src: "./images/moved-file.png", alt: "A bash terminal environment. The user first runs the ls command with the l flag to list the two previously created files named file and softLink, one word. The user then runs the mv command on the original file, moving it up one directory level. The user finally runs the stat command on both files. The output is the same as it was before for the soft link." %}
 
 Notice these two lines in particular for the soft link:
 
@@ -123,13 +123,13 @@ Size: 4
 
 The symbolic link is unaware of the fact that we moved the original file! So what happens if we `cat` the two files?
 
-{% include postImage.html src: "./images/cat-link-rot.png", alt: "A bash terminal environment. The user runs the cat command on both the original file (one directory up) and the soft link in the current directory. Running cat on the original file outputs the following text: Hello, links. Running cat on the soft link throws an error: softLink: no such file or directory. Running the ls command with the l flag shows the same soft link as before, but now it's colored in red to indicate that it's a dangling reference to a nonexistent file." %}
+{% include "postImage.html" src: "./images/cat-link-rot.png", alt: "A bash terminal environment. The user runs the cat command on both the original file (one directory up) and the soft link in the current directory. Running cat on the original file outputs the following text: Hello, links. Running cat on the soft link throws an error: softLink: no such file or directory. Running the ls command with the l flag shows the same soft link as before, but now it's colored in red to indicate that it's a dangling reference to a nonexistent file." %}
 
 While the original file's contents are printed just fine, the terminal hints that something is wrong. We can see this with the `ls` command—the soft link's name now appears in red to indicate that it's gone "bad." This is known formally as **link rot**.
 
 Before we move on to discussing hard links, note that there's an additional command you can use: `readlink`. According to the [man page for readlink](https://linux.die.net/man/1/readlink), this command prints the value of the symbolic link, which we know to be the path of the target file. Let's run this on our rotten symlink:
 
-{% include postImage.html src: "./images/readlink.png", alt: "A bash terminal environment. The user runs the readLink command on the file named softLink, one word. This outputs a single line of text that reads: file." %}
+{% include "postImage.html" src: "./images/readlink.png", alt: "A bash terminal environment. The user runs the readLink command on the file named softLink, one word. This outputs a single line of text that reads: file." %}
 
 And there's our problem! The symbolic link is still pointing to the original file name, in the same directory. But it no longer exists because we moved it up one directory level.
 
@@ -139,17 +139,17 @@ On the other hand, a **hard link** acts as an alias for the target file. It has 
 
 To create a hard link in Linux, we use the `ln` command and supply the `-P` flag (for "physical"):
 
-{% include postImage.html src: "./images/hard-link.png", alt: "A bash terminal environment. The user runs the ln command with the capital P flag, passing in the following two arguments in order: file and hardLink, one word. Theu ser then runs the ls command with the l flag, which shows three rows of files named as follows: file, hardLink, softLink. The user also runs the stat command on the original file and the newly created hard link." %}
+{% include "postImage.html" src: "./images/hard-link.png", alt: "A bash terminal environment. The user runs the ln command with the capital P flag, passing in the following two arguments in order: file and hardLink, one word. Theu ser then runs the ls command with the l flag, which shows three rows of files named as follows: file, hardLink, softLink. The user also runs the stat command on the original file and the newly created hard link." %}
 
 Notice that both the original file and the hard link are `13` bytes in size, have the same inode number, have the same permissions, and have a link count of `2`. There are two links to the original file's inode: the original file itself, and the hard link we just created manually. In fact, notice that the results of `stat`-ing both the original file and the hard link are identical.
 
 Unlike a soft link, a hard link will not rot if we change the original file's name or move it to a different directory because it points to that file's inode, whereas a soft link references the file's path. It also will not rot if we *delete* the original file. Here's an example of moving the file:
 
-{% include postImage.html src: "./images/hard-links-dont-rot.png", alt: "A bash terminal environment. The user runs the ls command with the l flag to show three lines of output: file, hardLink, and softLink. The user then runs the mv command, moving the original file up one directory level. The user finally runs the ls command followed by stat on both the hard link and the file just moved. The output remains identical for the hard link and the moved file." %}
+{% include "postImage.html" src: "./images/hard-links-dont-rot.png", alt: "A bash terminal environment. The user runs the ls command with the l flag to show three lines of output: file, hardLink, and softLink. The user then runs the mv command, moving the original file up one directory level. The user finally runs the ls command followed by stat on both the hard link and the file just moved. The output remains identical for the hard link and the moved file." %}
 
 Let's delete the target file and `cat` the hard link:
 
-{% include postImage.html src: "./images/deleting-file.png", alt: "The bash terminal environment prior to the one above, before the original file was moved to a different directory. The user runs the rm command on the original file, in the current directory, and then invokes the ls command with the l flag. The soft link is colored red to indicate that it rotted, but the hard link is intact. Running the stat command on the hard link outputs the same file information as before; running the cat command outputs the text: Hello, links." %}
+{% include "postImage.html" src: "./images/deleting-file.png", alt: "The bash terminal environment prior to the one above, before the original file was moved to a different directory. The user runs the rm command on the original file, in the current directory, and then invokes the ls command with the l flag. The soft link is colored red to indicate that it rotted, but the hard link is intact. Running the stat command on the hard link outputs the same file information as before; running the cat command outputs the text: Hello, links." %}
 
 Interesting...
 
@@ -172,11 +172,11 @@ Recall from before that running `cat` on a soft link or hard link would essentia
 
 If you take a look at `/usr/bin/`, you'll find many soft links to executables:
 
-{% include postImage.html src: "./images/executables.png", alt: "A bash terminal environment. The user runs the ls command on the directory named /usr/bin/. This outputs several rows of files for python2 and python3. Some are colored in green to indicate that they're the original files. Others are soft links colored in neon blue, with arrows pointing to the original green files." %}
+{% include "postImage.html" src: "./images/executables.png", alt: "A bash terminal environment. The user runs the ls command on the directory named /usr/bin/. This outputs several rows of files for python2 and python3. Some are colored in green to indicate that they're the original files. Others are soft links colored in neon blue, with arrows pointing to the original green files." %}
 
 You can also create a custom link:
 
-{% include postImage.html src: "./images/python-symlink.png", alt: "A bash terminal environment. The user runs the which command, supplying python3.6 as the argument. This outputs the path to the python3.6 executable: /usr/bin/python3.6. The user then supplies this as the argument to the ln command to create a soft link named myPy in the current directory. Finally, the user runs the myP file in the current directory; the Python interactive terminal starts up." %}
+{% include "postImage.html" src: "./images/python-symlink.png", alt: "A bash terminal environment. The user runs the which command, supplying python3.6 as the argument. This outputs the path to the python3.6 executable: /usr/bin/python3.6. The user then supplies this as the argument to the ln command to create a soft link named myPy in the current directory. Finally, the user runs the myP file in the current directory; the Python interactive terminal starts up." %}
 
 As expected, invoking the symlink invokes the underlying executable.
 
@@ -199,4 +199,4 @@ Here are some additional resources on hard links vs. soft links:
 - [Modern Operating Systems by Tanenbaum, Chapter 4.2.4](https://www.amazon.com/Modern-Operating-Systems-Andrew-Tanenbaum/dp/013359162X)
 - [How to take advantage of symbolic links in Windows 10](https://www.techrepublic.com/article/how-to-take-advantage-of-symbolic-links-in-window-10/)
 
-{% include unsplashAttribution.md name: "Sandy Millar", username: "sandym10", photoId: "OzyY3C8zVU8" %}
+{% include "unsplashAttribution.md" name: "Sandy Millar", username: "sandym10", photoId: "OzyY3C8zVU8" %}

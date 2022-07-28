@@ -16,7 +16,7 @@ One way to avoid this problem entirely is to just self-host the Google Fonts you
 
 Many good articles have already been written on how to self-host fonts, so I won't dive deep into all of the considerations. Instead, I'd like to show you a few ways you can download Google Fonts as a first step. I'll also show you how to manually optimize and subset those font files using a CLI tool like [glyphhanger](https://github.com/zachleat/glyphhanger).
 
-{% include toc.md %}
+{% include "toc.md" %}
 
 ## Downloading Any Google Font
 
@@ -24,7 +24,7 @@ Many good articles have already been written on how to self-host fonts, so I won
 
 I learned about this method from Sia Kiaramalegos in her article on [Making Google Fonts Faster](https://sia.codes/posts/making-google-fonts-faster/#self-host-your-web-fonts-for-full-control). Head over to https://google-webfonts-helper.herokuapp.com/fonts, search for your font, customize it to your liking, and download the files. The app also provides you with `@font-face` rulesets that you can copy-paste into your CSS.
 
-{% include postImage.html src: "./images/google-webfonts-helper.png", alt: "The google-webfonts-helper app interface, with a selected font family of Inter. The main content region shows a series of stepwise instructions for how to include the font in a project. Step 2 reads 'Select styles,' followed directly by a table that lists all font weights with adjacent checkboxes to enable selection. Step 3 reads 'Copy CSS' and includes an output pane with the @font-face declarations. There are two tabs for the output: Best support and Modern browsers; the former is selected." %}
+{% include "postImage.html" src: "./images/google-webfonts-helper.png", alt: "The google-webfonts-helper app interface, with a selected font family of Inter. The main content region shows a series of stepwise instructions for how to include the font in a project. Step 2 reads 'Select styles,' followed directly by a table that lists all font weights with adjacent checkboxes to enable selection. Step 3 reads 'Copy CSS' and includes an output pane with the @font-face declarations. There are two tabs for the output: Best support and Modern browsers; the former is selected." %}
 
 This one of the easiest ways to download Google Fonts, but it does have a drawback: The app isn't guaranteed to have all of the latest font file revisions, so you may run into some issues that the font's designers have already patched elsewhere. For example, the font Inter has [some rendering issues on Mac](https://github.com/majodev/google-webfonts-helper/issues/130) with the version served by the app, whereas the version hosted by Google Fonts has already fixed those issues.
 
@@ -34,7 +34,7 @@ When you link to Google Fonts, it already returns font files in `woff2` format b
 
 Suppose I visit Google Fonts, pick Inter as my font family, and select my desired font weights. As I do this, the right sidebar assembles a link tag with query parameters to match the format required by [the Google Fonts API](https://developers.google.com/fonts/docs/developer_api):
 
-{% include postImage.html src: "./images/google-fonts.png", alt: "The Google Fonts page for the font family Inter, with font weights shown in a tabular format by ascending weight and sample text that reads: 'Almost before we knew it, we had left the ground.' Regular 400, Bold 700, and Black 900 have been selected. A sidebar on the right lists the chosen font weights along with link tags that can be inserted into the head to load that font." %}
+{% include "postImage.html" src: "./images/google-fonts.png", alt: "The Google Fonts page for the font family Inter, with font weights shown in a tabular format by ascending weight and sample text that reads: 'Almost before we knew it, we had left the ground.' Regular 400, Bold 700, and Black 900 have been selected. A sidebar on the right lists the chosen font weights along with link tags that can be inserted into the head to load that font." %}
 
 Here's the link tag from this example:
 
@@ -75,11 +75,11 @@ Similarly, you can usually find and download the complete font family on GitHub 
 
 Here's an example for Inter:
 
-{% include postImage.html src: "./images/github.png", alt: "The GitHub releases tab for the font family Inter, showing the release notes for version 3.19. Below the notes are links to the font file downloads.", caption: "Release notes for Inter v3.19: https://github.com/rsms/inter/releases" %}
+{% include "postImage.html" src: "./images/github.png", alt: "The GitHub releases tab for the font family Inter, showing the release notes for version 3.19. Below the notes are links to the font file downloads.", caption: "Release notes for Inter v3.19: https://github.com/rsms/inter/releases" %}
 
 Both of these methods give you `ttf` files containing all of the supported character sets, which is rarely what you want since these files are on the order of several hundred KB in size, *per weight*.
 
-{% include postImage.html src: "./images/downloads.png", alt: "Viewing the downloaded font files for Inter in File Explorer on a Windows machine. The main explorer pane lists 9 font files, all of which have a size of roughly 300 KB." %}
+{% include "postImage.html" src: "./images/downloads.png", alt: "Viewing the downloaded font files for Inter in File Explorer on a Windows machine. The main explorer pane lists 9 font files, all of which have a size of roughly 300 KB." %}
 
 But this method is still valid and may even be preferred if you want to download the latest versions of the font files and customize them to your liking. If you're worried about the file sizes, you can subset and optimize the font files yourself.
 
@@ -123,4 +123,4 @@ Subsetting Inter-Thin.ttf to Inter-Thin-subset.woff2 (was 303.24 KB, now 22.6 KB
 
 This requires a bit more work than just directly downloading `woff2`s from the Google Fonts stylesheet or using an app like google-webfonts-helper, but it gives you greater control since you can subset and optimize your font files however you want.
 
-{% include unsplashAttribution.md name: "Markus Spiske", username: "markusspiske", photoId: "f81ym3dE5N4" %}
+{% include "unsplashAttribution.md" name: "Markus Spiske", username: "markusspiske", photoId: "f81ym3dE5N4" %}

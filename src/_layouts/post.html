@@ -20,12 +20,12 @@ eleventyComputed:
       <dl class="post-date inline-list">
         <div>
           <dt class="screen-reader-only">Published</dt>
-          <dd>{% include date.html date: page.date, dateFormat: "MMM DD, YYYY" %}</dd>
+          <dd>{% include "date.html" date: page.date, dateFormat: "MMM DD, YYYY" %}</dd>
         </div>
         {% if lastUpdated %}
         <div>
           <dt>Updated</dt>
-          <dd>{% include date.html date: lastUpdated, dateFormat: "MMM DD, YYYY" %}</dd>  
+          <dd>{% include "date.html" date: lastUpdated, dateFormat: "MMM DD, YYYY" %}</dd>  
         </div>
         {% endif %}
       </dl>

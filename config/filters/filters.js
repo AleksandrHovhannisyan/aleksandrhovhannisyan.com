@@ -1,6 +1,6 @@
+const CleanCSS = require('clean-css');
 const path = require('path');
 const lodash = require('lodash');
-const sass = require('sass');
 const dayjs = require('dayjs');
 const markdownLib = require('../plugins/markdown');
 const site = require('../../src/_data/site');
@@ -93,9 +93,10 @@ const getLatestCollectionItemDate = (collection) => {
   return latestItem?.data?.lastUpdated ?? latestItem?.date;
 };
 
-/** Given a scss string, compile it to CSS, minify the result, and return the final CSS as a string. */
-const compileAndMinifyScss = (scss) => {
-  return sass.renderSync({ data: scss, outputStyle: 'compressed' }).css.toString();
+/** Given a css string, returns the minified css. */
+const cleanCSS = (input) => {
+  const { styles } = new CleanCSS({}).minify(input);
+  return styles;
 };
 
 /**
@@ -119,7 +120,7 @@ module.exports = {
   toAbsoluteUrl,
   toAbsoluteImageUrl,
   getLatestCollectionItemDate,
-  compileAndMinifyScss,
+  cleanCSS,
   pathParse,
   pathJoin,
   toUTCString,

@@ -37,6 +37,7 @@
     "@iktakahiro/markdown-it-katex": "^4.0.1",
     "@toycode/markdown-it-class": "^1.2.4",
     "classnames": "^2.3.1",
+    "clean-css": "^5.3.1",
     "eleventy-plugin-footnotes": "^0.10.0",
     "esbuild": "^0.14.37",
     "eslint": "^8.13.0",

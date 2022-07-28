@@ -10,7 +10,7 @@ body {
   justify-content: space-between;
   background-color: var(--color-surface-1);
   color: var(--color-text-normal);
-  @include font($family: "body", $weight: "regular");
+  @include font($family: "body", $weight: "regular", $size: "base");
 }
 
 #page-content {

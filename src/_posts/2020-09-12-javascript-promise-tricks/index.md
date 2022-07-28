@@ -12,7 +12,7 @@ For the longest time, JavaScript had been lagging behind its counterparts. Async
 
 This post assumes a basic understanding of Promises and how they work. We'll look at three practical use cases of Promises in JavaScript to get you comfortable with using them.
 
-{% include toc.md %}
+{% include "toc.md" %}
 
 ## 1. Mocking API Calls for UI Development
 
@@ -420,4 +420,4 @@ A couple things to note. First, if you want to run some code at even intervals, 
 
 Promises are pretty neat—once you get over the initial fear of using and understanding them, you'll find yourself discovering new patterns and possibilities in JavaScript. I hope you found this tutorial helpful!
 
-{% include unsplashAttribution.md name: "Amanda Mocci", username: "amandamocci", photoId: "Zyp3t67rrP4" %}
+{% include "unsplashAttribution.md" name: "Amanda Mocci", username: "amandamocci", photoId: "Zyp3t67rrP4" %}

@@ -23,7 +23,7 @@ const {
   dividedBy,
   toAbsoluteUrl,
   getLatestCollectionItemDate,
-  compileAndMinifyScss,
+  cleanCSS,
   toAbsoluteImageUrl,
   pathParse,
   pathJoin,
@@ -45,7 +45,7 @@ const TEMPLATE_ENGINE = 'liquid';
 module.exports = (eleventyConfig) => {
   eleventyConfig.setLiquidOptions({
     // Allows for dynamic include/partial names. If true, include names must be quoted. Defaults to true as of beta/1.0.
-    dynamicPartials: false,
+    dynamicPartials: true,
   });
 
   // Watch targets
@@ -85,7 +85,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter('toJson', JSON.stringify);
   eleventyConfig.addFilter('fromJson', JSON.parse);
   eleventyConfig.addFilter('getLatestCollectionItemDate', getLatestCollectionItemDate);
-  eleventyConfig.addFilter('compileAndMinifyScss', compileAndMinifyScss);
+  eleventyConfig.addFilter('cleanCSS', cleanCSS);
   eleventyConfig.addFilter('keys', Object.keys);
   eleventyConfig.addFilter('values', Object.values);
   eleventyConfig.addFilter('entries', Object.entries);

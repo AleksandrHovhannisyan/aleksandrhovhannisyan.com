@@ -62,10 +62,10 @@ const Parent: () => {
 
 Since we've specified that the `as` prop is of type `ElementType`, we'll get auto-complete intellisense whenever we try to set this prop:
 
-{% include postImage.html src: "./images/example.png", alt: "An example of using the Component component and passing in a concrete tagName. VS Code's intellisense shows an auto-complete dropdown for you as you type." %}
+{% include "postImage.html" src: "./images/example.png", alt: "An example of using the Component component and passing in a concrete tagName. VS Code's intellisense shows an auto-complete dropdown for you as you type." %}
 
 In some cases, you may want to instead use [render props](https://reactjs.org/docs/render-props.html), but they're not always needed—sometimes, all you really want is to be able to specify a tag name as a string. You typically only need to use render props if the element needs to know about the component-level state to decide how to render itself. Here, we're just telling the component what to render by passing in a plain string as a tag name prop. The syntax is shorter and easier to read.
 
 And that's all there is to it!
 
-{% include unsplashAttribution.md name: "Angèle Kamp", username: "angelekamp", photoId: "KaeaUITiWnc" %}
+{% include "unsplashAttribution.md" name: "Angèle Kamp", username: "angelekamp", photoId: "KaeaUITiWnc" %}

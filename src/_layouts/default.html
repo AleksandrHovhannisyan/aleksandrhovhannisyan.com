@@ -1,6 +1,18 @@
 ---
+layout: base
+isThemed: true
+criticalCSS:
+  - css/fontFace.liquid
+  - css/fontVariables.liquid
+  - css/criticalFontUsage.css
 stylesheets:
   - /assets/styles/main.css
+scripts:
+  - /assets/scripts/index.mjs
+requiredFonts:
+  - title
+  - body
+  - code
 eleventyComputed:
   preloads:
     -
@@ -27,121 +39,15 @@ eleventyComputed:
       type: font/woff2
       href: "{{ fonts.title.url }}"
       crossorigin: true
+    -
+      rel: modulepreload
+      as: script
+      type: text/javascript
+      href: /assets/scripts/index.mjs
 ---
-{%- comment -%}Global variables for reuse in meta tags{%- endcomment -%}
-{%- if page.url == "/" -%}
-  {%- assign pageTitle = site.title -%}
-{%- else -%}
-  {%- assign pageTitle = title | default: renderData.title -%}
-  {%- assign pipe = " | " -%}{%- comment -%}Get an error otherwise, probably a Liquid/11ty bug{%- endcomment -%}
-  {%- assign pageTitle = pageTitle | append: pipe | append: site.title -%}
-{%- endif -%}
-{%- assign description = description | default: site.description -%}
-{%- assign keywords = keywords | default: site.keywords -%}
-{%- comment -%}Canonical URL. Make sure each page has one since some spam sites pull and repost content.{%- endcomment -%}
-{%- assign defaultCanonicalUrl = page.url | toAbsoluteUrl -%}
-{%- assign canonicalUrl = canonicalUrl | default: defaultCanonicalUrl -%}
 
-<!DOCTYPE html>
-<html lang="{{ site.lang }}" data-theme="light">
-<head>
-  <meta charset="utf-8">
-  {%- comment -%}Metadata for search engines{%- endcomment -%}
-  <title>{{ pageTitle }}</title>
-  <meta name="description" content="{{ description }}">
-  <meta name="keywords" content="{{ keywords | join: ', ' }}">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="{{ site.author }}">
-  <link rel="canonical" href="{{ canonicalUrl }}">
-  {%- comment -%}Prevent this page from showing up on search engines{%- endcomment -%}
-  {%- if noindex -%}
-    <meta name="robots" content="noindex">
-  {%- endif -%}
-  {%- comment -%}Font face and variable declarations in head rather than in stylesheet{%- endcomment -%}
-  {%- capture fontCss -%}
-    {%- include fontFace.liquid -%}
-    {%- include fontVariables.liquid -%}
-    body {
-      font-family: var(--ff-body);
-    }
-    code {
-      font-family: var(--ff-code);
-    }
-  {%- endcapture -%}
-  <style>{{ fontCss | compileAndMinifyScss }}</style>
-  {%- comment -%}Global and page/layout-specific CSS{%- endcomment -%}
-  {%- for href in stylesheets -%}
-    <link rel="stylesheet" href="{{ href }}">
-  {%- endfor -%}
-  {%- comment -%}Favicons{%- endcomment -%}
-  {% favicon 'src/assets/images/favicons/favicon.png' %}
-  {%- comment -%}Load the user's last selected theme{%- endcomment -%}
-  <script>
-    (function() {
-      const cachedTheme = localStorage.getItem('theme');
-      if (cachedTheme) {
-        document.documentElement.dataset.theme = cachedTheme;
-      } else {
-        const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        document.documentElement.dataset.theme = preferredTheme;
-      }
-    })();
-  </script>
-  {%- comment -%}Common bundles{%- endcomment -%}
-  <script type="module" src="/assets/scripts/index.mjs"></script>
-  {%- comment -%}Template-specific module scripts{%- endcomment -%}
-  {%- for script in scripts -%}
-    <script type="module" src="{{ script }}"></script>
-  {%- endfor -%}
-  {%- comment -%}Open Graph social media previews{%- endcomment -%}
-  <meta property="og:title" content="{{ pageTitle }}">
-  {%- if openGraph.image -%}
-    <meta property="og:image" content="{{ openGraph.image }}">
-  {%- endif -%}
-  <meta property="og:description" content="{{ description }}">
-  <meta property="og:url" content="{{ page.url | toAbsoluteUrl }}">
-  {%- comment -%}Twitter card meta tags{%- endcomment -%}
-  <meta name="twitter:card" content="{{ openGraph.twitter.card | default: "summary" }}">
-  <meta name="twitter:creator" content="{{ "@" | append: socials.twitter.username }}">
-  <meta name="twitter:title" content="{{ openGraph.title | default: pageTitle }}">
-  <meta name="twitter:description" content="{{ openGraph.description | default: description }}">
-  {%- if openGraph.image -%}
-    <meta name="twitter:image" content="{{ openGraph.image }}">
-  {%- endif -%}
-  {%- comment -%}Preload optimizations{%- endcomment -%}
-  {%- if preloads -%}
-    {% for preload in preloads %}
-      <link rel="preload" as="{{ preload.as }}" type="{{ preload.type }}" href="{{ preload.href }}" {% if preload.crossorigin %}crossorigin{% endif %}>
-    {%- endfor -%}
-  {% endif %}
-  <link rel="modulepreload" as="script" type="text/javascript" href="/assets/scripts/index.mjs">
-  <link rel="alternate" type="application/rss+xml" title="RSS Feed for aleksandrhovhannisyan.com" href="/feed.xml" />
-  <noscript><style>#theme-toggle,.youtube-embed{display:none;}</style></noscript>
-  <meta name="generator" content="{{ eleventy.generator }}">
-  {%- comment -%}Design mode. Only in a dev environment, and only if enabled in environment variables.{%- endcomment -%}
-  {%- if featureFlags.enableDesignMode -%}
-    <script>
-      (function() {
-        const DESIGN_MODE_STORAGE_KEY = 'design-mode';
-        const cachedDesignMode = localStorage.getItem(DESIGN_MODE_STORAGE_KEY);
-        document.designMode = cachedDesignMode;
-
-        document.addEventListener('keyup', (e) => {
-          if (e.ctrlKey && e.key === '.') {
-            const newDesignMode = document.designMode === 'on' ? 'off' : 'on';
-            document.designMode = newDesignMode;
-            localStorage.setItem(DESIGN_MODE_STORAGE_KEY, newDesignMode);
-          }
-        });
-      })();
-    </script>
-  {%- endif -%}
-</head>
-<body class="fs-base">
-  {%- include navbar.html -%}
-  <main id="page-content" class="container">
-    {{ content }}
-  </main>
-  {%- include footer.html -%}
-</body>
-</html>
+{%- include "navbar.html" -%}
+<main id="page-content" class="container">
+  {{ content }}
+</main>
+{%- include "footer.html" -%}

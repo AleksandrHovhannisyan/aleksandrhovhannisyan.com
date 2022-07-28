@@ -11,7 +11,7 @@ eleventyComputed:
   title: "Tag: {{ tag.title }}{% if tag.pageNumber > 0 %} (Page {{ tag.pageNumber | plus: 1 }}/{{ tag.totalPages }}){% endif %}"
 ---
 
-{% include postPreviews.html posts: tag.posts, titleLevel: 2 %}
+{% include "postPreviews.html" posts: tag.posts, titleLevel: 2 %}
 {%- if tag.totalPages > 1 -%}
-  {%- include pagination.html hrefs: tag.hrefs.all -%}
+  {%- include "pagination.html" hrefs: tag.hrefs.all -%}
 {%- endif -%}

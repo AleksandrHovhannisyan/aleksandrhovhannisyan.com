@@ -18,12 +18,12 @@ permalink: /
   <section class="stack gap-5">
     <h2 id="recent-posts" class="banner-heading">Recent Posts</h2>
     {%- assign recentPosts = collections.posts | limit: 6 -%}
-    {%- include postPreviews.html posts: recentPosts, titleLevel: 3 -%}
+    {%- include "postPreviews.html" posts: recentPosts, titleLevel: 3 -%}
   </section>
   <section class="stack gap-5">
     <h2 id="featured-posts" class="banner-heading">Featured Posts</h2>
     {%- assign featuredPosts = collections.posts | where: "data.isFeatured", true -%}
-    {%- include postPreviews.html posts: featuredPosts, titleLevel: 3 -%}
+    {%- include "postPreviews.html" posts: featuredPosts, titleLevel: 3 -%}
   </section>
 </article>
 {%- assign networks = socials | entries -%}

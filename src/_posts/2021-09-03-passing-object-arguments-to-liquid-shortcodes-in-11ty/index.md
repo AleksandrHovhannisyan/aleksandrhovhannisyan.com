@@ -216,4 +216,4 @@ And that's it!
 
 You can now pass objects to Liquid shortcodes in 11ty. In the meantime, I recommend keeping an eye on this GitHub issue to see if 11ty can add official support for keyword arguments: [Support keyword arguments for Liquid shortcodes](https://github.com/11ty/eleventy/issues/1263).
 
-{% include unsplashAttribution.md name: "Pawel Czerwinski", username: "pawel_czerwinski", photoId: "fOXvuWswMDs" %} Modified to include the Eleventy mascot designed by [Phineas X. Jones](http://octophant.us/).
+{% include "unsplashAttribution.md" name: "Pawel Czerwinski", username: "pawel_czerwinski", photoId: "fOXvuWswMDs" %} Modified to include the Eleventy mascot designed by [Phineas X. Jones](http://octophant.us/).

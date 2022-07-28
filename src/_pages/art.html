@@ -1,27 +1,54 @@
 ---
 title: Art
-description: CSS art and other fun stuff.
+description: Pushing pixels with CSS art.
+layout: base
 keywords:
   - css art
 permalink: /art/
+requiredFonts:
+  - code
+  - artCursive
+  - artDisplay
+criticalCSS:
+  - css/fontFace.liquid
+  - css/fontVariables.liquid
 stylesheets:
   - /assets/styles/art.css
 eleventyComputed:
   preloads:
-    - as: style
-      type: text/css
-      href: /assets/styles/art.css
-    - as: font
+    -
+      as: font
       type: font/woff2
-      href: "{{ fonts.cursive.weights.regular.url }}"
+      href: "{{ fonts.code.weights.medium.url }}"
+      crossorigin: true
+    -
+      as: font
+      type: font/woff2
+      href: "{{ fonts.artDisplay.weights.regular.url }}"
       crossorigin: true
 ---
 
-<article class="stack gap-5">
-  <header id="artwork-page-header" class="text-center">
-    <h1 class="title fs-4xl">CSS Art</h1>
+<main class="artwork-page">
+  <nav class="artwork-nav" aria-label="Primary">
+    <ol role="list">
+      <li>
+        <a href="/">Home</a>
+      </li>
+      <li>
+        <a href="/about/">About</a>
+      </li>
+      <li>
+        <a href="/art/" class="with-subtitle" aria-current="page">Art</a>
+      </li>
+      <li>
+        <a href="/blog/">Blog</a>
+      </li>
+    </ol>
+  </nav>
+  <header class="artwork-page-header" class="text-center">
+    <h1 class="title">CSS Art</h1>
   </header>
-  <ol class="col-wrap col-3">
+  <ol class="artwork-list col-wrap col-3">
     {%- assign artCollection = collections.art | sortByKey: 'data.order' | reverse -%}
     {%- for artwork in artCollection -%}
       <li {% if artwork.data.columns %}class="col-{{ artwork.data.columns }}"{% endif %}>
@@ -29,4 +56,5 @@ eleventyComputed:
       </li>
     {%- endfor -%}
   </ol>
-</article>
+</main>
+<footer class="artwork-page-footer">&copy; {{ site.author }}, 2019–Present. No pixels were harmed in the production of this site.</footer>

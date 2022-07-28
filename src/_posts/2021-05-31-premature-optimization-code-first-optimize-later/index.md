@@ -63,7 +63,7 @@ Based on these and many other responses, the key takeaway appears to be this: Yo
 
 That's the gist of it, anyway. Let's try to make sense of it all!
 
-{% include toc.md %}
+{% include "toc.md" %}
 
 ## The Premature Optimization Trap
 
@@ -421,4 +421,4 @@ Don't fall into the premature optimization trap. Instead, follow a simple proces
 
 Bonus points if you can do one from the start without sacrificing the other.
 
-{% include unsplashAttribution.md name: "Sunbeam Photography", username: "sstoppo", photoId: "C2QbMA_nHYE" %}
+{% include "unsplashAttribution.md" name: "Sunbeam Photography", username: "sstoppo", photoId: "C2QbMA_nHYE" %}

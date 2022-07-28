@@ -14,7 +14,7 @@ Load-more buttons are generally preferable to infinite scrolling and create a mo
 
 In this article, we'll look at a problem with the typical implementation for load-more buttons and explore a simple solution to make them more accessible. Code samples will be shown in React, but the basic idea can be easily extended to any framework.
 
-{% include toc.md %}
+{% include "toc.md" %}
 
 ## Problem: Keyboard Focus Sticks to Load-More Buttons
 

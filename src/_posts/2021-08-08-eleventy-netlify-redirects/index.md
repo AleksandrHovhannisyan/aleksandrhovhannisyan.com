@@ -140,4 +140,4 @@ eleventyExcludeFromCollections: true
 
 And that's all there is to it! Now, you have proper server-side redirects thanks to Netlify, and you've automated the process of generating the rules with 11ty.
 
-{% include unsplashAttribution.md name: "Jamie Templeton", username: "jamietempleton", photoId: "6gQjPGx1uQw" %} Modified to include the Eleventy mascot designed by [Phineas X. Jones](http://octophant.us/).
+{% include "unsplashAttribution.md" name: "Jamie Templeton", username: "jamietempleton", photoId: "6gQjPGx1uQw" %} Modified to include the Eleventy mascot designed by [Phineas X. Jones](http://octophant.us/).

@@ -18,7 +18,7 @@ In JavaScript frameworks like React, it's tempting to statically import a wide r
 
 Unfortunately, when you statically import these kinds of components, you're shipping a larger bundle than you may need to, which could lead to a slower initial page load. In this article, we'll learn more about this problem and explore its solution in React.
 
-{% include toc.md %}
+{% include "toc.md" %}
 
 ## Only Load What You Need
 
@@ -106,7 +106,7 @@ const App = () => {
 
 Let's load the app and inspect our network tab:
 
-{% include postImage.html src: "./images/static.jpg", alt: "A tab bar shows four numbered tabs, 1-4, with the third tab slightly grayed out to indicate that it's disabled. The first tab has a dark background to indicate that it's currently selected. Below it is the corresponding content for the first tab panel, which reads: 'Tab 1 contents'. Chrome dev tools are open below and show the Network tab, with two requests: main.chunk.js (5.3 kilobytes) and vendors~main.chunk.js (415 kilobytes)." %}
+{% include "postImage.html" src: "./images/static.jpg", alt: "A tab bar shows four numbered tabs, 1-4, with the third tab slightly grayed out to indicate that it's disabled. The first tab has a dark background to indicate that it's currently selected. Below it is the corresponding content for the first tab panel, which reads: 'Tab 1 contents'. Chrome dev tools are open below and show the Network tab, with two requests: main.chunk.js (5.3 kilobytes) and vendors~main.chunk.js (415 kilobytes)." %}
 
 Only two bundles get loaded: the main chunk (`5.3kB`) and some vendor chunks (`415kB` cache of third-party NPM modules). Notice how we only render `Tab1` on mount—the remaining tab panels will never mount unless we click their respective buttons. In fact, you may have noticed that I disabled the button for the third tab entirely, meaning it's *never* going to mount. However, since we've imported each component statically, **all of them** will be bundled into the code that we ship to the user, regardless of whether they get used.
 
@@ -174,7 +174,7 @@ const renderTabPanel = () => {
 
 Now, if you navigate to another tab, the fallback UI will render while the module is being fetched. Here's a video demo:
 
-{% include video.html src: '/assets/videos/react-dynamic-import-demo.mp4', width: 1224, height: 586, sourceType: 'video/mp4' %}
+{% include "video.html" src: '/assets/videos/react-dynamic-import-demo.mp4', width: 1224, height: 586, sourceType: 'video/mp4' %}
 
 I've throttled my network speed to Slow 3G to artificially delay the duration of each network request so the placeholder is noticeable (otherwise, because of the small size of the chunks in this demo, we'd get an almost instantaneous load time). Notice how each tab navigation requests a new chunk; the request status is pending until that module is fully loaded. Once the status comes back as 200 (success), the module becomes available to our app. At that point, the placeholder UI gets swapped out, and the real component renders. Additionally, observe that the size of the main chunk is now `4.8kB`, whereas previously it was `5.3kB`. We don't see significant savings in this case because the tab panels themselves are quite small in size, but this could make quite the difference for larger bundles.
 
@@ -188,7 +188,7 @@ First, as we saw, dynamic imports require your app to make additional network re
 
 Second, as I noted earlier, dynamic imports in React require that you specify a fallback UI that gets shown until the component is fetched at some later point in time. If your fallback UI and the real UI differ drastically in the amount of space that they occupy on the page, then this may cause layout shifts, pushing the surrounding content aside to make room once the component has loaded. The original demo used a placeholder with roughly the same dimensions as the real content, so no layout shifts occurred. But here's another version of the same app with a poorly styled placeholder:
 
-{% include video.html src: '/assets/videos/react-dynamic-import-layout-shift.mp4', width: 1230, height: 586, sourceType: 'video/mp4' %}
+{% include "video.html" src: '/assets/videos/react-dynamic-import-layout-shift.mp4', width: 1230, height: 586, sourceType: 'video/mp4' %}
 
 A classic workaround for this is to create skeleton loader components that closely approximate the size of the real content. That way, when the dynamically imported component renders for the first time, your app is able to seamlessly transition from placeholder UI to real UI.
 
@@ -216,4 +216,4 @@ Dynamic imports solve this problem by allowing you to defer loading modules unti
 
 I encourage you to consider where in your app you may be able to reap performance gains by lazily loading components. You may find the examples from the intro relevant.
 
-{% include unsplashAttribution.md name: "Chris Curry", username: "chriscurry92", photoId: "GYpsSWHslHA" %}
+{% include "unsplashAttribution.md" name: "Chris Curry", username: "chriscurry92", photoId: "GYpsSWHslHA" %}

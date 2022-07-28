@@ -16,7 +16,7 @@ We've all been there: You worked on lots of changes at once, some of which didn'
 
 I've recently developed a habit of making **atomic commits** to keep my work more manageable; I recommend that you give this a try to see if it works for you.
 
-{% include toc.md %}
+{% include "toc.md" %}
 
 ## Atomic Commits and the Single Responsibility Principle
 
@@ -103,7 +103,7 @@ Making atomic commits is a good practice, but you'll also want to write meaningf
 
 Here's an example from the TypeScript repo of what that last tip might look like in practice:
 
-{% include postImage.html src: "./images/typescript-repo.png", alt: "The TypeScript repository on GitHub, with the main view of folders, the recent commits that changed them, and basic information about the repository. Some commits mention issues, which get hyperlinked automatically.", caption: "Some commits mention issues, which get hyperlinked automatically." %}
+{% include "postImage.html" src: "./images/typescript-repo.png", alt: "The TypeScript repository on GitHub, with the main view of folders, the recent commits that changed them, and basic information about the repository. Some commits mention issues, which get hyperlinked automatically.", caption: "Some commits mention issues, which get hyperlinked automatically." %}
 
 And that's really all there is to say about this. Some teams enforce other conventions, too, like prefixing each commit with its type (e.g., `fix:`, `doc:`, etc.). It all depends on what works well for you and your developers.
 
@@ -111,4 +111,4 @@ And that's really all there is to say about this. Some teams enforce other conve
 
 Writing atomic Git commits can seem annoying at first—it slows you down and forces you to split your work into smaller pieces. And it also requires that you write meaningful, descriptive commit messages. But while this may seem inconvenient at first, it can actually improve the quality of your work and make life easier for you and other developers on your team.
 
-{% include unsplashAttribution.md name: "Gabriella Clare Marino", username: "gabiontheroad", photoId: "j_puSkFWmPI" %}
+{% include "unsplashAttribution.md" name: "Gabriella Clare Marino", username: "gabiontheroad", photoId: "j_puSkFWmPI" %}

@@ -1,5 +1,5 @@
 <figure class="full-bleed">
-  {%- include image.html src: src, alt: alt, baseFormat: baseFormat, formats: formats, widths: widths, sizes: sizes, className: className, isLinked: isLinked, isLazy: isLazy -%}
+  {%- include "image.html" src: src, alt: alt, baseFormat: baseFormat, formats: formats, widths: widths, sizes: sizes, className: className, isLinked: isLinked, isLazy: isLazy -%}
   {%- if caption -%}
     <figcaption class="container"{% if isCaptionAriaHidden %} aria-hidden="true"{% endif %}>{{ caption | toHtml }}</figcaption>
   {%- endif -%}

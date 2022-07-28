@@ -9,7 +9,7 @@ thumbnail:
 
 One of my favorite things about 11ty is its flexibility. Even though Liquid, Nunjucks, and other [template languages](https://www.11ty.dev/docs/languages/) offer many sensible defaults out of the box, they can't possibly account for every use case that you may have. 11ty acts as an adapter between your site and that template language, allowing you to extend its behavior without necessarily knowing how to configure the language *directly*. In this article, we'll look at some of my favorite filters to add to 11ty projects.
 
-{% include toc.md %}
+{% include "toc.md" %}
 
 ## Custom Filters for Any 11ty Project
 
@@ -251,4 +251,4 @@ Example output:
 
 With 11ty, you can create any filter you want without needing to learn a new language or spend many frustrating hours reading docs. This article only looked at a few filters that you may find useful. There are many others that you can add to your project, like to filter, map, or reduce arrays of objects; group arrays of objects; escape data using a custom sanitizer; minify and inline CSS; and much more. Plus, as we saw in the last example, you can compose filters together, allowing you to greatly simplify your templates.
 
-{% include unsplashAttribution.md name: "Nathan Dumlao", username: "nate_dumlao", photoId: "eksqjXTLpak" %}
+{% include "unsplashAttribution.md" name: "Nathan Dumlao", username: "nate_dumlao", photoId: "eksqjXTLpak" %}

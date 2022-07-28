@@ -14,7 +14,7 @@ However, it's not always the case that you want (or need) to submit a form. Some
 
 But the good news is that we can still validate inputs without a form or a submit button. And we can do this without reinventing the wheel or creating accessibility problems for our users. All we need to do is use methods that browsers already provide for HTML input validation. In this article, we'll look at how you can validate standalone inputs using `checkValidity`. We'll also look at two approaches for providing validation feedback to users: `reportValidity` for native validation, and a custom approach with JavaScript.
 
-{% include toc.md %}
+{% include "toc.md" %}
 
 ## A Note on Client-Side Validation
 
@@ -86,7 +86,7 @@ input.addEventListener('change', (e) => {
 
 Screen readers will narrate the alert correctly, and sighted users will see the message in a familiar form tooltip whose styling depends on the browser being used. The browser may also suggest how the user can correct their input. Returning to our earlier example, if a user enters an odd number, the browser will suggest the two closest numbers:
 
-{% include postImage.html src: "./images/odd.png", alt: "A numeric input box contains the value 5 and two controls: up and down. Below it is a tooltip that reads: 'Please enter a valid value. The two nearest valid values are 4 and 6.'." %}
+{% include "postImage.html" src: "./images/odd.png", alt: "A numeric input box contains the value 5 and two controls: up and down. Below it is a tooltip that reads: 'Please enter a valid value. The two nearest valid values are 4 and 6.'." %}
 
 #### Option 2: Custom Error Messaging
 
