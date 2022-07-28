@@ -8,7 +8,7 @@ function artworkShortcode(content, description) {
   }
   const captionId = `${artworkId}-caption`;
   return `<figure class="artwork" id="${artworkId}">
-            <a href="#${artworkId}" class="no-decoration">
+            <a href="#${artworkId}" class="artwork-link">
               <div role="img" aria-labelledby=${captionId}>
                 ${content}
               </div>

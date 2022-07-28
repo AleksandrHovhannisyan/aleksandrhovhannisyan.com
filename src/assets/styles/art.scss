@@ -1,15 +1,268 @@
+/* stylelint-disable value-keyword-case */
+@import "partials/functions";
+@import "partials/mixins";
+@import "partials/tokens/animation";
+@import "partials/tokens/spacing";
+@import "partials/tokens/typography";
+@import "partials/global/reset";
+@import "partials/utils/utils";
+@import "partials/components/code";
+@import "partials/components/figure";
 @import "partials/pages/art/index";
-@import "partials/pages/art/jerrySmith";
-@import "partials/pages/art/sly";
-@import "partials/pages/art/theKnight";
-@import "partials/pages/art/wanderingHusk";
-@import "partials/pages/art/cuphead";
-@import "partials/pages/art/goopy";
-@import "partials/pages/art/snoo";
-@import "partials/pages/art/cube";
-@import "partials/pages/art/smirkingEmoji";
-@import "partials/pages/art/thinkingEmoji";
-@import "partials/pages/art/smileEmoji";
-@import "partials/pages/art/stickyNote";
-@import "partials/pages/art/heart";
-@import "partials/pages/art/loadingOrbs";
+
+html {
+  --color-surface-1: white;
+  --color-text: black;
+  --color-text-soft: hsl(0deg 0% 40%);
+}
+
+.artwork {
+  $root: &;
+
+  --color-artwork-shadow: hsl(272deg 53% 20%);
+  height: 100%;
+  display: grid;
+  place-items: center;
+  gap: spacing("0");
+  scroll-margin-top: spacing("10");
+
+  /* Force each artwork to create its own stacking context since some art pieces use z-index
+  tricks to position individual elements higher or lower within that artwork's context. Without this,
+  they would leak into the global stacking context and potentially appear above other things (e.g., the navbar). */
+  isolation: isolate;
+  padding: spacing("3");
+
+  &-page {
+    // https://www.magicpattern.design/tools/css-backgrounds
+    --color-lines: hsl(0deg 0% 15% / 4%);
+    background-image:
+      linear-gradient(
+        var(--color-lines) 3.6px,
+        transparent 3.6px
+      ),
+      linear-gradient(90deg, var(--color-lines) 3.6px, transparent 3.6px),
+      linear-gradient(var(--color-lines) 1.8px, transparent 1.8px),
+      linear-gradient(90deg, var(--color-lines) 1.8px, #fff 1.8px);
+    background-size: 90px 90px, 90px 90px, 18px 18px, 18px 18px;
+    background-position: -3.6px -3.6px, -3.6px -3.6px, -1.8px -1.8px, -1.8px -1.8px;
+
+    @include tablet {
+      &::before,
+      &::after {
+        content: "";
+        width: 4px;
+        background: var(--color-text);
+        position: fixed;
+        height: 100vh;
+      }
+    }
+
+    &::before {
+      right: 1%;
+      top: 0;
+    }
+
+    &::after {
+      left: 1%;
+      top: 0;
+    }
+
+    a {
+      color: var(--color-text);
+    }
+
+    &-header {
+      padding: spacing("12") spacing("5");
+
+      .title {
+        --font-size-multiplier: 1.2;
+        width: fit-content;
+        margin: 0 auto;
+        position: relative;
+        text-transform: uppercase;
+        letter-spacing: to-rems(1px);
+        text-shadow: to-rems(1px) to-rems(1px);
+        font-size: calc(var(--font-size-multiplier) * #{font-size("4xl")});
+        @include font($family: "artDisplay", $weight: "regular");
+
+        @include tablet {
+          --font-size-multiplier: 2;
+          --color-shadow: hsl(0deg 0% 50% / 10%);
+        }
+
+        @include desktop {
+          --font-size-multiplier: 2.5;
+        }
+
+        &::after {
+          --translate-x: -50%;
+          --translate-y: 0;
+          --left: 50%;
+          --top: 100%;
+          --right: 0;
+          --rotation: 0deg;
+          --transform-base: rotate(var(--rotation)) translate(var(--translate-x), var(--translate-y));
+
+          @keyframes subtitle-pulse {
+            from {
+              transform: var(--transform-base) scale(1);
+            }
+
+            to {
+              transform: var(--transform-base) scale(1.1);
+            }
+          }
+
+          content: "Now with double the pixels!";
+          text-shadow: none;
+          vertical-align: top;
+          position: absolute;
+          top: var(--top);
+          left: var(--left);
+          right: var(--right);
+          width: fit-content;
+          white-space: nowrap;
+          animation: subtitle-pulse 1s ease infinite alternate-reverse;
+          will-change: transform;
+          text-transform: none;
+          @include font($family: "artCursive", $weight: "regular", $size: "md");
+
+          @include mobile-lg {
+            --translate-x: 0;
+            --translate-y: -50%;
+            --rotation: 2deg;
+            --left: unset;
+            --top: 0;
+            --right: 0;
+          }
+        }
+      }
+    }
+
+    &-footer {
+      border-top: solid 4px;
+      padding: spacing("5") spacing("5") spacing("12");
+      text-align: center;
+      @include font($family: "code", $weight: "medium", $size: "xs");
+
+      @include tablet {
+        padding-bottom: spacing("5");
+      }
+    }
+  }
+
+  &-nav {
+    z-index: 1;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    @include tablet {
+      position: static;
+    }
+
+    a {
+      --color-shadow: var(--color-text);
+      background-color: white;
+      position: relative;
+      padding: spacing("-1") spacing("0");
+      text-transform: uppercase;
+      letter-spacing: to-rems(1px);
+      text-decoration: none;
+      color: var(--color-text);
+      border: solid 2px;
+      box-shadow:
+        5px 5px,
+        4px 4px,
+        3px 3px,
+        2px 2px,
+        1px 1px;
+      @include font($size: "sm", $family: "code", $weight: "medium");
+
+      @include tablet {
+        @include font($size: "base");
+
+        &.with-subtitle {
+          &::after {
+            content: "";
+            pointer-events: none;
+            position: absolute;
+            left: 50%;
+            bottom: calc(-1 * #{spacing("0")});
+            transform: translate(-50%, 100%);
+            white-space: nowrap;
+            color: var(--color-text-soft);
+            @include font($size: "xs", $family: "code", $weight: "bold");
+          }
+
+          &[aria-current="page"]::after {
+            content: "You are here";
+          }
+        }
+      }
+    }
+
+    [role="list"] {
+      display: flex;
+      gap: spacing("0");
+      width: 100%;
+      padding: spacing("0") spacing("-2");
+      overflow-x: auto;
+      background: linear-gradient(0deg, transparent 45%, var(--color-text) 45%, var(--color-text) 50%, transparent 50%);
+
+      & > * {
+        display: flex;
+      }
+
+      & > :nth-child(2) {
+        margin-inline-start: auto;
+      }
+
+      @include tablet {
+        gap: spacing("5");
+        overflow-x: unset;
+        padding: spacing("0") spacing("5");
+      }
+    }
+  }
+
+  &-list {
+    padding: spacing("5");
+  }
+
+  &-link {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &-caption {
+    @keyframes popin {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+
+      60% {
+        transform: scale(1.1);
+        opacity: 0.6;
+      }
+    }
+    padding: spacing("-3") spacing("-1");
+    color: var(--color-text);
+    transform: scale(0);
+    text-align: center;
+    max-width: 30ch;
+    will-change: transform, opacity;
+    @include font($family: "artCursive", $weight: "regular", $size: "lg", $line-height: "4xs");
+    @include transition(opacity, transform);
+  }
+
+  &:is(:focus-within, :target, :hover) &-caption {
+    animation: popin 0.3s ease-in;
+    transform: scale(1);
+    opacity: 1;
+  }
+}

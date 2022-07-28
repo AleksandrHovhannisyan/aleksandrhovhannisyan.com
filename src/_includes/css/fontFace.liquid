@@ -10,8 +10,8 @@
   src: local("Times New Roman");
 }
 {%- comment -%}Loop over the global font config and construct a series of @font-face declarations. We later feed this to scss to minify the output and inline it in the head for performance.{%- endcomment -%}
-{%- for fontConfig in fonts -%}
-  {%- assign font = fontConfig | last -%}
+{%- for fontType in requiredFonts -%}
+  {%- assign font = fonts[fontType] -%}
   {%- comment -%}Don't generate @font-face declarations if explicitly disabled.{%- endcomment -%}
   {%- if font.hasFontFace != false -%}
     {%- comment -%}Variable fonts{%- endcomment -%}

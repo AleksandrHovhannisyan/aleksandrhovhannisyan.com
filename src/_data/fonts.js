@@ -92,7 +92,7 @@ const fonts = {
       },
     },
   },
-  cursive: {
+  artCursive: {
     family: 'Reenie Beanie',
     fallbacks: [`cursive`],
     weights: {
@@ -100,6 +100,18 @@ const fonts = {
         weight: 400,
         style: FontStyle.NORMAL,
         url: getFontUrl('reenie-beanie-400.woff2'),
+        display: FontDisplay.SWAP,
+      },
+    },
+  },
+  artDisplay: {
+    family: 'Rampart One',
+    fallbacks: [`Rubik-fallback`],
+    weights: {
+      [FontWeight.REGULAR]: {
+        weight: 400,
+        style: FontStyle.NORMAL,
+        url: getFontUrl('rampart-one-400.woff2'),
         display: FontDisplay.SWAP,
       },
     },
