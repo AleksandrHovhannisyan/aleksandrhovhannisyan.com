@@ -1,7 +1,7 @@
 const Image = require('@11ty/eleventy-img');
 const { escape } = require('lodash');
 const { dir, imagePaths } = require('../constants');
-const { stringifyAttributes } = require('../utils');
+const { stringifyAttributes, withoutBaseDirectory } = require('../utils');
 
 /**
  * @typedef ImageShortcodeProps
@@ -42,7 +42,7 @@ const imageShortcode = async (props) => {
     // Where the generated image files get saved (e.g., _site/assets/images/*)
     outputDir: imagePaths.output,
     // Public URL path that's referenced in the img tag's src attribute (e.g., /assets/images/*)
-    urlPath: imagePaths.output.replace(dir.output, ''),
+    urlPath: withoutBaseDirectory(imagePaths.output),
   };
   const imageMetadata = await Image(src, imageOptions);
 

@@ -1,7 +1,7 @@
 const path = require('path');
 const Image = require('@11ty/eleventy-img');
-const { stringifyAttributes } = require('../utils');
-const { imagePaths, dir } = require('../constants');
+const { stringifyAttributes, withoutBaseDirectory } = require('../utils');
+const { imagePaths } = require('../constants');
 
 const FAVICON_FORMAT = 'png';
 const APPLE_TOUCH_ICON_WIDTH = 180;
@@ -12,7 +12,7 @@ async function faviconShortcode(src) {
     widths: [16, 32, 57, 76, 96, 128, APPLE_TOUCH_ICON_WIDTH, 192, 228],
     formats: [FAVICON_FORMAT],
     outputDir: path.join(imagePaths.output, 'favicons'),
-    urlPath: path.join(imagePaths.output.replace(dir.output, ''), 'favicons'),
+    urlPath: path.join(withoutBaseDirectory(imagePaths.output), 'favicons'),
     filenameFormat: (_hash, _src, width, format) => {
       return `favicon-${width}.${format}`;
     },

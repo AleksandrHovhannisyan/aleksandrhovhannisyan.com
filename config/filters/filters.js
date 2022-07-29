@@ -5,8 +5,8 @@ const dayjs = require('dayjs');
 const markdownLib = require('../plugins/markdown');
 const site = require('../../src/_data/site');
 const Image = require('@11ty/eleventy-img');
-const { throwIfNotType } = require('../utils');
-const { dir, imagePaths } = require('../constants');
+const { throwIfNotType, withoutBaseDirectory } = require('../utils');
+const { imagePaths } = require('../constants');
 
 /** Returns the first `limit` elements of the the given array. */
 const limit = (array, limit) => {
@@ -56,7 +56,7 @@ const toAbsoluteImageUrl = async (src, width = null) => {
     // Where the generated image files get saved
     outputDir: imagePaths.output,
     // Public URL path that's referenced in the img tag's src attribute
-    urlPath: imagePaths.output.replace(dir.output, ''),
+    urlPath: withoutBaseDirectory(imagePaths.output),
   };
   const stats = await Image(src, imageOptions);
   return toAbsoluteUrl(Object.values(stats)[0][0].url);

@@ -3,6 +3,7 @@ const sanitize = require('sanitize-html');
 const slugify = require('slugify');
 const { Octokit } = require('@octokit/rest');
 const { createTokenAuth } = require('@octokit/auth-token');
+const path = require('path');
 
 /**
  * Returns an array of all unique values from the given collection under the specified key.
@@ -87,6 +88,11 @@ const getLatestGitCommitHash = (format = 'long') => {
     .trim();
 };
 
+/**
+ * @param {string} pathString
+ */
+const withoutBaseDirectory = (pathString) => pathString.substring(pathString.indexOf(path.sep));
+
 module.exports = {
   getAllUniqueKeyValues,
   slugifyString,
@@ -95,4 +101,5 @@ module.exports = {
   stringifyAttributes,
   sanitizeHtml,
   getLatestGitCommitHash,
+  withoutBaseDirectory,
 };
