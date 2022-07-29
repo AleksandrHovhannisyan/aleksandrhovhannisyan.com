@@ -8,7 +8,7 @@
     @include font($size: "lg");
   }
 
-  @include tablet {
+  @include tablet-sm {
     &-title {
       @include font($size: "4xl");
     }
