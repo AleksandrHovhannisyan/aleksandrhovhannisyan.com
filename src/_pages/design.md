@@ -6,6 +6,12 @@ permalink: /design/
 eleventyExcludeFromCollections: true
 excludeFromSitemap: true
 noindex: true
+requiredFonts:
+  - title
+  - body
+  - code
+  - artCursive
+  - artDisplay
 ---
 
 ## Fonts
