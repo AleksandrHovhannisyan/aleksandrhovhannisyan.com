@@ -95,10 +95,8 @@ html {
         }
 
         &::after {
-          --translate-x: -50%;
+          --translate-x: 0;
           --translate-y: 0;
-          --left: 50%;
-          --top: 100%;
           --right: 0;
           --rotation: 0deg;
           --transform-base: rotate(var(--rotation)) translate(var(--translate-x), var(--translate-y));
@@ -114,13 +112,10 @@ html {
           }
 
           content: "Now with double the pixels!";
-          text-shadow: none;
-          vertical-align: top;
-          position: absolute;
-          top: var(--top);
-          left: var(--left);
-          right: var(--right);
+          display: block;
           width: fit-content;
+          margin-inline: auto;
+          text-shadow: none;
           white-space: nowrap;
           animation: subtitle-pulse 1s ease infinite alternate-reverse;
           will-change: transform;
@@ -134,6 +129,9 @@ html {
             --left: unset;
             --top: 0;
             --right: 0;
+            position: absolute;
+            top: 0;
+            right: 0;
           }
         }
       }
