@@ -1,5 +1,5 @@
 {%- assign titleLevel = titleLevel | default: 3 -%}
-<article class="card project stack gap--1">
+<article class="card project">
   <header class="flex justify-between">
     <div class="flex align-center gap--3">
       <div class="project-icon fs-sm" aria-hidden="true">{{ project.icon }}</div>
@@ -13,7 +13,7 @@
     </div>
   </header>
   <p class="project-description">{{ project.description }}</p>
-  <ul class="pill-group gap--2" aria-label="Technologies used">
+  <ul class="project-technologies pill-group gap--2" aria-label="Technologies used">
     {%- for tech in project.tech -%}
     <li class="pill project-technology fs-xs">{{ tech }}</li>
     {%- endfor -%}

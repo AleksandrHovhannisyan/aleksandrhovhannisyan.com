@@ -41,6 +41,11 @@
 
   &-description {
     line-height: leading("xs");
+    margin-top: spacing("-1");
+  }
+
+  &-technologies {
+    margin-top: spacing("3");
   }
 
   &-technology {
