@@ -55,12 +55,12 @@ $tokens: (
       ),
       "4xl": (
         min: 50px,
-        max: 76px,
+        max: 82px,
         leading: "4xs",
       ),
     ),
     breakpoints: (
-      min: "mobile",
+      min: "mobile-min",
       max: "desktop",
     ),
     customPropertyPrefix: "fs",
@@ -90,10 +90,10 @@ $tokens: (
   breakpoints: (
     "mobile-min": 360px,
     "mobile": 400px,
-    "mobile-lg": 500px,
-    "tablet-sm": 640px,
-    "tablet": 768px,
+    "mobile-lg": 600px,
+    "tablet-sm": 768px,
+    "tablet": 896px,
     "desktop": 960px,
-    "desktop-lg": 1024px,
+    "desktop-lg": 1200px,
   ),
 );

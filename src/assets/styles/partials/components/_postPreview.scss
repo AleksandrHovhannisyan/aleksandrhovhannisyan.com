@@ -7,7 +7,7 @@
   padding: spacing("2");
   position: relative;
 
-  @include tablet-sm {
+  @include mobile-lg {
     padding: spacing("5");
   }
 
