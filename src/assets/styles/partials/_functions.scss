@@ -23,16 +23,6 @@
   @return $map;
 }
 
-/// Returns the first element of the given list.
-@function first($list) {
-  @return list.nth($list, 1);
-}
-
-/// Returns the last element of the given list.
-@function last($list) {
-  @return list.nth($list, list.length($list));
-}
-
 /// Returns the string prefix that is used for the custom properties corresponding to the specified key in the design config.
 @function get-custom-property-prefix($key) {
   $custom-property-prefix: get($tokens, $key, "customPropertyPrefix");
