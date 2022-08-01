@@ -10,9 +10,10 @@ module.exports = {
     scripts: (data) => {
       // If the post has comments, link to the comment script to load them
       if (data.commentsId) {
-        // Spread in existing scripts and tack on the comment script
         return [...data.scripts, `/assets/scripts/comments.mjs`];
       }
+      // Otherwise, return the existing scripts
+      return data.scripts;
     },
     openGraph: {
       // For social sharing. Used in og:image and twitter:image. Absolute path to the post's thumbnail image.
