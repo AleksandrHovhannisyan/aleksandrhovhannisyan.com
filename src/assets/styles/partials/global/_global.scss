@@ -10,6 +10,7 @@ body {
   justify-content: space-between;
   background-color: var(--color-surface-1);
   color: var(--color-text-normal);
+  overflow-wrap: break-word;
   @include font($family: "body", $weight: "regular", $size: "base");
 }
 
