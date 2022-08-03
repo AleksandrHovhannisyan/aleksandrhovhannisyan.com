@@ -9,9 +9,14 @@ const markdownItLinkAttributes = require('markdown-it-link-attributes');
 const { slugifyString } = require('../utils');
 
 const markdownLib = markdownIt({
+  // Use of HTML tags in Markdown
   html: true,
+  // Conversion of \n to <br>
   breaks: false,
+  // Automatically hyperlinking inline links
   linkify: true,
+  // Smart quotes and other symbol replacements
+  typographer: true,
 })
   // https://github.com/11ty/eleventy/issues/2438
   .disable('code')

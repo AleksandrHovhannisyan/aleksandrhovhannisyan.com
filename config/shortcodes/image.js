@@ -1,6 +1,6 @@
 const Image = require('@11ty/eleventy-img');
 const { escape } = require('lodash');
-const { dir, imagePaths } = require('../constants');
+const { imagePaths } = require('../constants');
 const { stringifyAttributes, withoutBaseDirectory } = require('../utils');
 
 /**
