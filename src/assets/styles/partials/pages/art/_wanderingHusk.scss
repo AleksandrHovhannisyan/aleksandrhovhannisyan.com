@@ -29,7 +29,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    left: -0.3vmin;
+    left: 0;
     top: 0;
     border-radius: 50% 90% 70% 70%;
     background-image:
@@ -60,7 +60,7 @@
     border-radius: 50% 50% 50% 45%;
     right: -1.2vmin;
     position: absolute;
-    transform: rotate(-70deg);
+    transform: rotate(296deg);
     bottom: 2.8vmin;
   }
 
@@ -109,16 +109,16 @@
   &-leg.right {
     border-right: solid 1.2vmin black;
     border-radius: 0% 0% 60% 40%;
-    bottom: -3.8vmin;
+    bottom: -4vmin;
     right: 1.8vmin;
-    transform: rotate(4deg);
+    transform: rotate(2deg);
   }
 
   &-leg.left {
     border-left: solid 1.2vmin black;
     border-bottom: solid 0.1vmin transparent;
     border-radius: 0% 0% 50% 80%;
-    bottom: -3.8vmin;
+    bottom: -4.1vmin;
     left: 3.5vmin;
     transform: rotate(-8deg);
   }
@@ -152,12 +152,12 @@
     border-left: solid 1vmin black;
     border-bottom: solid 0.1vmin transparent;
     border-right: solid 0.4vmin transparent;
-    height: 3.5vmin;
+    height: 2.8vmin;
     width: 1.4vmin;
     border-radius: 100% 30% 50% 200%;
     position: absolute;
-    left: 0;
-    top: 9vmin;
-    transform: rotate(-8deg);
+    left: 0.3vmin;
+    top: 9.8vmin;
+    transform: rotate(-13deg);
   }
 }

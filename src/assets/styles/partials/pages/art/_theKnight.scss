@@ -303,14 +303,14 @@
   /* The little arch between his two legs */
   &-leg-arch {
     position: absolute;
-    width: 2vmin;
-    height: 5vmin;
+    width: 2.5vmin;
+    height: 4vmin;
     border-bottom: 1vmin solid black;
     border-left: solid 0.5vmin transparent;
     border-radius: 0 100% 50%;
-    bottom: -3.9vmin;
-    left: 60%;
-    transform: rotate(134deg);
+    bottom: -3vmin;
+    left: 54%;
+    transform: rotate(133deg);
   }
 
   /* Main wing piece */
@@ -353,7 +353,7 @@
       border-radius: 50%;
     }
 
-    & .fold-0 {
+    & .fold:nth-of-type(1) {
       position: absolute;
       width: 4vmin;
       height: 3.5vmin;
@@ -365,7 +365,7 @@
       right: 0;
     }
 
-    & .fold-1 {
+    & .fold:nth-of-type(2) {
       position: absolute;
       width: 7.8vmin;
       height: 3.5vmin;
@@ -376,7 +376,7 @@
       left: -0.8vmin;
     }
 
-    & .fold-2 {
+    & .fold:nth-of-type(3) {
       position: absolute;
       width: 7.5vmin;
       height: 3.5vmin;
@@ -387,7 +387,7 @@
       left: -0.8vmin;
     }
 
-    & .fold-3 {
+    & .fold:nth-of-type(4) {
       position: absolute;
       width: 5.5vmin;
       height: 2vmin;
