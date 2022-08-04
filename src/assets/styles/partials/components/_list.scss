@@ -1,7 +1,7 @@
 @import "../functions";
 
 .list {
-  --gap: #{spacing("-3")};
+  --gap: #{spacing("-2")};
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: var(--gap);
