@@ -1,5 +1,6 @@
 const path = require('path');
 const { toAbsoluteImageUrl } = require('../../config/filters/filters');
+const featureFlags = require('../_data/featureFlags');
 
 module.exports = {
   layout: 'post',
@@ -8,8 +9,8 @@ module.exports = {
   isPost: true,
   eleventyComputed: {
     scripts: (data) => {
-      // If the post has comments, link to the comment script to load them
-      if (data.commentsId) {
+      // If the post has comments and comments are enabled, link to the comment script to load them
+      if (featureFlags.enableComments && data.commentsId) {
         return [...data.scripts, `/assets/scripts/comments.mjs`];
       }
       // Otherwise, return the existing scripts
