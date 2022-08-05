@@ -25,8 +25,10 @@ if (themeToggleElement) {
 
 const copyableCodeBlocks = document.querySelectorAll('code[data-copyable="true"]');
 copyableCodeBlocks.forEach((codeBlock) => {
-  const code = codeBlock.innerText;
+  // TODO: This is my only option until https://github.com/11ty/eleventy-plugin-syntaxhighlight/issues/72 is addressed
+  codeBlock.setAttribute('tabindex', 0);
 
+  const code = codeBlock.innerText;
   const copyCodeButton = document.createElement('button');
   copyCodeButton.className = 'copy-code-button fs-sm';
   copyCodeButton.innerText = copyToClipboardButtonStrings.default;
