@@ -17,6 +17,7 @@ module.exports = {
       return data.scripts;
     },
     openGraph: {
+      type: 'article',
       // For social sharing. Used in og:image and twitter:image. Absolute path to the post's thumbnail image.
       // Thumbnails may be remote images (thumbnail.url) or local images (thumbnail as a string path, like ./images/thumbnail.png).
       image: async (data) => {

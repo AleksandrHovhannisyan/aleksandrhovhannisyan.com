@@ -66,6 +66,8 @@
   {%- endif -%}
   <meta property="og:description" content="{{ description }}">
   <meta property="og:url" content="{{ page.url | toAbsoluteUrl }}">
+  <meta property="og:type" content="{{ openGraph.type | default: "website" }}">
+  <meta property="og:locale" content="{{ site.lang | replace: "-", "_" }}">
   {%- comment -%}Twitter card meta tags{%- endcomment -%}
   <meta name="twitter:card" content="{{ openGraph.twitter.card | default: "summary" }}">
   <meta name="twitter:creator" content="{{ "@" | append: socials.twitter.username }}">
