@@ -3,6 +3,7 @@ title: Limiting Memory Usage in WSL2
 description: By default, WSL 2 may reserve a significant chunk of your host RAM. Thankfully, we can limit its memory usage with a .wslconfig file.
 keywords: [wsl 2, memory, ram, memory usage]
 categories: [linux, windows, wsl, memory]
+lastUpdated: 2022-08-07
 ---
 
 If you've ever opened up Task Manager while WSL 2 was running on a Windows machine, you've probably noticed a process named `vmmem` hogging a sizable chunk of your memory and slowing down your machine.
@@ -14,18 +15,18 @@ This special process represents all the resources consumed by your Linux VM whil
 You can check how much memory and swap space are allocated to WSL using the `free` command from within a WSL distribution:
 
 ``` {data-copyable=true}
-free -g
+free -h --giga
 ```
 
-On my system, that shows the following output, where each number is in gibibytes:
+On my system, that shows the following output, where each number is in gigabytes:
 
 ```
               total        used        free      shared  buff/cache   available
-Mem:              6           0           5           0           0           5
-Swap:             2           0           2
+Mem:           6.4G        457M        5.7G         69K        248M        5.7G
+Swap:          2.1G          0B        2.1G
 ```
 
-Since I'm running a Windows 10 build that's older than 20175 at the time of this writing, my WSL reserves 80% of my host RAM (8 GB), which in this case is 6.4 GB (6 GiB).
+Since I'm running a Windows 10 build that's older than 20175 at the time of this writing, my WSL reserves 80% of my host RAM (8 GB), which in this case is 6.4 GB.
 
 Whatever the case may be, if your machine doesn't have enough memory to begin with, then you've probably seen some noticeable slowdowns due to WSL 2. Your machine may become sluggish as it struggles to run resource-hungry host processes like Google Chrome or your favorite IDE alongside VM processes.
 
@@ -48,13 +49,15 @@ There are two ways you can create this file:
 
 If you go with the second option, you may run into a problem where [WSL does not respect `.wslconfig`](https://superuser.com/a/1697991/910187) due to the presence of BOM headers and, in some cases, CRLF line endings. If you use a Windows editor like Notepad, you may later need to reformat the `.wslconfig` file using the `dos2unix` command-line utility.
 
-To make your life easier, I recommend creating and editing the file with WSL directly. You can do this using the [`wslpath` command](https://devblogs.microsoft.com/commandline/windows10v1803/#interoperability) that ships with WSL, as demonstrated below:
+To make your life easier, I recommend creating and editing the file with WSL directly. You can do this using the [`wslpath` command](https://devblogs.microsoft.com/commandline/windows10v1803/#interoperability) that ships with WSL, like this:
 
 ``` {data-copyable=true}
-touch "$(wslpath "C:\Users\YourUsername\.wslconfig")"
+editor "$(wslpath "C:\Users\YourUsername\.wslconfig")"
 ```
 
-Next, open up this file with your preferred Linux editor. For example, you could use VS Code, nano, vim, etc. Refer to the Microsoft docs on [configuration settings for `.wslconfig`](https://docs.microsoft.com/en-us/windows/wsl/wsl-config#configuration-setting-for-wslconfig) if you need help with this step. Below is the config that I'm currently using for my machine since I don't have a lot of RAM to work with:
+Replace `YourUsername` with your Windows username as it appears in the file system.
+
+Refer to the Microsoft docs on [configuration settings for `.wslconfig`](https://docs.microsoft.com/en-us/windows/wsl/wsl-config#configuration-setting-for-wslconfig) if you need help with this step. Below is the config that I'm currently using for my machine since I don't have a lot of RAM to work with:
 
 ```bash {data-file="C:\Users\YourUsername\.wslconfig" data-copyable=true}
 [wsl2]
@@ -79,8 +82,8 @@ Finally, run the `free` command again to verify that WSL respects your specified
 
 ```
               total        used        free      shared  buff/cache   available
-Mem:              2           0           2           0           0           2
-Swap:             1           0           1
+Mem:           3.1G        361M        2.5G         69K        158M        2.5G
+Swap:          1.0G          0B        1.0G
 ```
 
 You can also use any other Linux commands to check your resource usage, like `top` or `htop`.
