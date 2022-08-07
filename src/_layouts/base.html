@@ -12,7 +12,7 @@
 {%- assign defaultCanonicalUrl = page.url | toAbsoluteUrl -%}
 {%- assign canonicalUrl = canonicalUrl | default: defaultCanonicalUrl -%}
 <!DOCTYPE html>
-<html lang="{{ site.lang }}" data-theme="light">
+<html lang="{{ site.lang }}" {%- if defaultTheme %} data-theme="{{ defaultTheme }}"{% endif %}>
 <head>
   <meta charset="utf-8">
   {%- comment -%}Metadata for search engines{%- endcomment -%}
@@ -42,7 +42,7 @@
   {%- comment -%}Favicons{%- endcomment -%}
   {% favicon 'src/assets/images/favicons/favicon.png' %}
   {%- comment -%}Load the user's last selected theme{%- endcomment -%}
-  {%- if isThemed -%}
+  {%- if defaultTheme -%}
     <script>
         (function() {
         const cachedTheme = localStorage.getItem('theme');
