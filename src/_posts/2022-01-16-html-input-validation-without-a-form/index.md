@@ -5,7 +5,7 @@ keywords: [input validation, validity, input, form]
 categories: [html, javascript, accessibility, browsers, forms]
 thumbnail: ./images/thumbnail.png
 commentsId: 137
-lastUpdated: 2022-05-21
+lastUpdated: 2022-08-11
 ---
 
 When a user attempts to submit an HTML form, their browser first performs [client-side validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation) to check if the form data is valid. This is done by comparing all of the input values to their constraints, which are defined via [HTML input attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes) like `required`, `pattern`, and others. If an input is invalid, the browser focuses it and shows a tooltip clarifying the user's mistake.
@@ -144,14 +144,19 @@ If you decide to forgo the native validation message and use custom strings, be 
 
 Screen readers don't normally narrate dynamically inserted HTML or changes to HTML attributes at run time, so a screen reader user has no way of knowing that their input is invalid in our current implementation.
 
-To fix this, we need to auto-focus the invalid input:
+To fix this, we need to auto-focus the invalid input the first time the user tries to navigate away from it:
 
 ```js {data-copyable=true}
 input.addEventListener('change', (e) => {
-  const isInvalid = !e.target.checkValidity();
-  e.target.setAttribute('aria-invalid', isInvalid);
-  if (isInvalid) {
-    const errorMessage = e.target.validationMessage;
+  // Don't keep the user locked in place if we previously validated the input
+  const wasValidated = e.target.getAttribute('aria-invalid') === 'true';
+  if (wasValidated) {
+    return;
+  }
+  const errorMessage = e.target.validationMessage;
+  e.target.setAttribute('aria-invalid', !!errorMessage);
+  if (errorMessage) {
+    // Update error label visually
     errorElement.textContent = errorMessage;
     // Focus the invalid input so its error is narrated
     e.target.focus();
@@ -159,18 +164,17 @@ input.addEventListener('change', (e) => {
 });
 ```
 
-Note that this is the default behavior when a user submits a form—`reportValidity` is called on the form element, which in turn focuses the first invalid input and shows the error message.
+Note that this is the default behavior when a user submits a form—`reportValidity` is called on the form element, which in turn focuses the first invalid input and shows the error message. Additionally, we only ever do this the first time the input turns invalid. If you're using a JavaScript framework, you can just maintain some validity state locally in your input component.
 
 ##### 4. Clear the Error on Input
 
 If a user begins to correct their input, our validation message will linger until they once again commit the value for the input by blurring it or pressing the Enter key. Unfortunately, this could create a confusing experience for sighted users, especially if the newly committed value fails validation for the same reason as before—the message won't change visibly, so the user won't have any way of knowing whether it's a bug in our code or if they legitimately made a mistake. To fix this, we can add an `input` event listener and clear the error message and `aria-invalid` state:
 
 ```js {data-copyable=true}
+// Listen for the input event now so we fire this on every keystroke
 input.addEventListener('input', (e) => {
-  if (e.target.getAttribute('aria-invalid') === 'true') {
-    e.target.setAttribute('aria-invalid', false);
-  }
   if (errorElement.textContent) {
+    e.target.removeAttribute('aria-invalid');
     errorElement.textContent = '';
   }
 });
