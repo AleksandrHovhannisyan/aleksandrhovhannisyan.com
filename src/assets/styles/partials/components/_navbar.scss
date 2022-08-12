@@ -17,7 +17,6 @@
   position: relative;
   // Shared typography styles for all navbar text
   color: white;
-  @include font($family: "title", $weight: "regular");
 
   a {
     text-decoration: none;
@@ -51,7 +50,7 @@
   &-branding {
     display: none;
     color: inherit;
-    @include font($family: "title", $weight: "bold");
+    @include font($family: "body", $weight: "bold");
   }
 
   &-links {
