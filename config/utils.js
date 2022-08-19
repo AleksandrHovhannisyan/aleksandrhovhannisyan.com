@@ -73,6 +73,8 @@ const sanitizeHtml = (html) => {
       // Styled lists
       ol: ['class'],
       ul: ['class'],
+      // Quotes
+      blockquote: ['class'],
     },
   });
 };
