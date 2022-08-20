@@ -1,12 +1,16 @@
+@import "../functions";
 @import "../mixins";
 
 table {
   border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
 }
 
 caption {
   text-align: start;
-  font-style: italic;
+  margin-bottom: spacing("-2");
+  color: var(--color-text-soft);
+  @include font($size: "sm");
 }
 
 th {
