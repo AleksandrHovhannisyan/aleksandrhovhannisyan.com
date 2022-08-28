@@ -21,9 +21,9 @@ While this guideline advocates against the use of password composition rules, th
 
 Before we discuss why password composition rules are ineffective, let's take a step back and understand how attackers figure out what a user's password is in the first place.
 
-The simplest approach is to use brute force. One way to do this is the old-fashioned way: If a login system doesn't rate-limit log-in attempts, then an attacker can attempt to log in to a user's account directly any number of times. This can be automated with a script that makes HTTP requests to the login form's endpoint and tries out different passwords from a custom wordlist. Alternatively, an attacker can choose a single weak password and try to log in to multiple user accounts with it, hoping that the password eventually works for one of the accounts.
+It used to be the case that older systems didn't rate-limit log-in attempts, meaning attackers could try to log into user accounts any number of times directly. This could've been automated with a script, making HTTP requests to the login form's endpoint and trying out different passwords until one of them worked. Alternatively, an attacker could've chosen a single weak password (like `password` or `qwerty`) and tried to log in to multiple user accounts with it, hoping that the password would eventually work for one of the accounts.
 
-However, more commonly, login systems employ rate limiting to deter brute-force attacks, especially since they can overload a website's servers with requests if precautions aren't taken. Rate-limiting log-in attempts is recommended by the same NIST publication:
+However, nowadays, most login systems employ rate limiting to deter these types of hands-on attacks (and to protect their website's servers from denial-of-service attacks). Rate-limiting log-in attempts is recommended by the same NIST publication:
 
 {% quote "5.1.1.2 Memorized Secret Verifiers", "https://pages.nist.gov/800-63-3/sp800-63b.html#memsecretver" %}
 Verifiers SHALL implement a rate-limiting mechanism that effectively limits the number of failed authentication attempts that can be made on the subscriber’s account as described in [Section 5.2.2](https://pages.nist.gov/800-63-3/sp800-63b.html#throttle).
@@ -33,13 +33,20 @@ Verifiers SHALL implement a rate-limiting mechanism that effectively limits the 
 You can learn more about this in OWASP's article on [blocking brute-force attacks](https://owasp.org/www-community/controls/Blocking_Brute_Force_Attacks).
 {% endaside %}
 
-For this reason, attackers typically carry out an *offline* brute-force attack. First, they obtain a dump file containing a list of password hashes. These hashes may have been leaked from a company database, or they may be hashes for system passwords (like those in `/etc/shadow` on a Linux machine, which are viewable with root access). In either case, a tool like [John the Ripper](https://www.openwall.com/john/) can be used to brute-force the hashes using a wordlist and some mangling rules. With an insight into user behaviors and the password complexity rules enforced by a particular system, an attacker can build a dictionary attack that exposes at least some of the weaker passwords.
+For this reason, hackers typically carry out *offline* attacks, where they first obtain a list of leaked password hashes (assuming a system isn't naively storing passwords as plaintext). These hashes may have been leaked from a company database, or they may be hashes for system passwords (like those in `/etc/shadow` on a Linux machine, which are viewable with root access). Either way, an attacker could use one of three approaches to crack those passwords:
 
-For a more in-depth discussion of these techniques, see this article by thehackerish: [crack a password: techniques and hands-on exercise](https://thehackerish.com/crack-a-password-techniques-and-hands-on-exercise/).
+1. [**Brute-force attack**](https://en.wikipedia.org/wiki/Brute-force_attack): an attacker searches the entire password space manually until they find a password that generates a particular hash. This is simply not feasible in practice due to the sheer number of passwords that most systems are capable of generating. For example, a password system with no constraints and a known password length of 8 can generate more than 6 quadrillion passwords.
+2. [**Dictionary attack**](https://en.m.wikipedia.org/wiki/Dictionary_attack): in a variation of the brute-force attack, a hacker uses a pre-compiled dictionary of known words and phrases and hashes each one until a collision is found. This can be automated with a tool like [John the Ripper](https://www.openwall.com/john/), brute-forcing the hashes with a custom wordlist and mangling rules. While a dictionary attack is more efficient than brute force, it is unable to crack all passwords since it only searches a subset of the password space.
+3. [**Rainbow table attack**](https://en.wikipedia.org/wiki/Rainbow_table#Precomputed_key_chains): while dictionary attacks are more efficient than pure brute force, they still require significant time and computing power if you want to crack most or all passwords in a leak. In a more intelligent approach, an attacker computes the hashes for all possible passwords ahead of time and stores them in a lookup table mapping hashes to their corresponding passwords. Then, given a list of leaked hashes, all you need to do is find a matching hash in your table to get a list of candidate passwords.
+
+For a more in-depth discussion of these techniques, see the following resources:
+
+- [Crack a password: techniques and hands-on exercise](https://thehackerish.com/crack-a-password-techniques-and-hands-on-exercise/).
+- [What are the differences between dictionary attack and brute force attack?](https://security.stackexchange.com/a/67768/219732)
 
 ## The Math: Search Space for Passwords
 
-The **search space** for any problem is the set of all scenarios that need to be considered for an exhaustive search. If someone is trying to crack a login system's passwords, then the search space for this problem is the total number of possible passwords that can be generated within certain parameters. The larger the search space, the more time and computational power that is needed to check it *exhaustively*. This assumes a worst-case outcome: that the item you're searching for is the very last one that has yet to be checked.
+In the previous section, I mentioned the need to search the "password space" for a system when trying to crack passwords. More generally, the **search space** for any problem is the total number of possibilities that would need to be checked in an exhaustive search. If someone is trying to crack a login system's passwords, then the search space is the total number of passwords that can be generated under certain constraints. The larger the search space, the more time and computational power that is needed to check it exhaustively. This assumes a worst-case outcome: that the item you're searching for is the very last one that has yet to be checked.
 
 Using combinatorics and set theory, we can work out how many passwords can be generated under different constraints. To simplify the math, we'll assume that the password is known to be eight characters long (the minimum length recommended by the NIST). Some common scenarios are summarized in Table 1.
 
@@ -93,13 +100,15 @@ The last two rows of Table 1 assume that a QWERTY keyboard is used, which offers
 
 The main takeaway from this table is that the search space is always reduced when we enforce some sort of password composition requirement. Once we begin to restrict the types of passwords that a user may choose, the search space is guaranteed to be smaller than if we didn't enforce any rules. However, our math also suggests that if we *do* decide to enforce password requirements, we should favor more complex rules because they yield a bigger search space compared to simpler rules.
 
-While that seems true at first glance, it's misleading because the size of the search space does not actually tell us anything about the difficulty of cracking user passwords. In practice, an attacker won't need to cover the entire search space for a password system (and doing so would be unrealistic anyway). Rather, cracking a handful of weak passwords is sufficient. Moreover, in some cases, cracking a user password may grant an attacker access to multiple accounts.
+While it's worth considering the password space to better understand the impact of composition rules, this alone does not tell the whole story. In reality, the size of the password space does not tell us anything about the difficulty of cracking user passwords. In practice, an attacker won't need to cover the entire password space, and doing so can be prohibitively costly. Moreover, in some cases, cracking a user password may grant an attacker access to multiple accounts. In short, the problem with password composition rules isn't that they reduce the search space.
 
 {% quote "An Introduction to Analytical Cryptography (2014), page 5", "https://link.springer.com/book/10.1007/978-1-4939-1711-2" %}
 The assertion that a large number of possible keys, in and of itself, makes a cryptosystem secure, has appeared many times in history and has equally often been shown to be fallacious.
 {% endquote %}
 
-The problem with password composition rules isn't that they reduce the search space—it's that they encourage users to choose predictable, memorable patterns for their passwords, which in turn makes it more likely that the passwords they pick can be cracked by brute force.
+For example, in a theoretical brute-force attack, the attacker does not care about the size of the search space since they already intend to search all of it, as fruitless as that may be. And in a dictionary attack, the attacker has already chosen a predictable subset of the password space to search, so a reduction of the overall password space may or may not hinder their efforts. Finally, in a rainbow table attack, an attacker has already precompiled a table of hashes for quick lookups, so the size of the password space is inconsequential.
+
+The bigger problem is that these rules annoy users into choosing predictable, memorable patterns for their passwords, which in turn makes them easier to crack with simpler methods (like dictionary attacks).
 
 ## Password Rules Compel Users to Choose Memorable, Predictable Passwords
 
@@ -166,19 +175,19 @@ Your opponent always uses her best strategy to defeat you, not the strategy that
 
 ### Some Password Complexity Rules Are Useful
 
-So far, we've also only considered password rules that specify an inclusion requirement for character classes, like "at least one lowercase, uppercase, and numeric character." In reality, certain kinds of composition rules can be beneficial. For example, some systems might check if a user's password contains their birthday or their name (if the form collected that information) and encourage them to pick a different password. Eliminating these possibilities does reduce the search space, but again, that does not necessarily make their password easier to crack. In this case, it may actually make it harder for attackers to target individual users. This means that unless a hacker can get their hands on a database dump of your passwords, they're going to have a much harder time guessing a specific user's password.
+So far, we've also only considered password rules that specify an inclusion requirement for character classes, like "at least one lowercase, uppercase, and numeric character." In reality, certain kinds of composition rules can be beneficial. For example, some systems might check if a user's password contains their birthday or their name (if the form collected that information) and encourage them to pick a different password. Eliminating these possibilities does reduce the search space, but again, that does not necessarily make their password easier to crack. In this case, it may actually make it harder for attackers to target specific users through social engineering or research. So unless a hacker can get their hands on a database dump of your passwords, they're going to have a much harder time guessing a specific user's password.
 
 Moreover, the NIST guidelines encourage verifiers to require a minimum password length and to use this as the primary measure of a password's strength. Longer passwords are much harder to crack because the search space grows exponentially—by roughly an order of 100 for each additional character—to the point that it actually *does* make it more difficult to crack.
 
-### Salt User Passwords to Deter Brute-Force Attacks
+### Salt User Passwords Before Hashing Them
 
-Additionally, the NIST publication does not *merely* state that verifiers shouldn't use password complexity rules since that alone does not guarantee the security of a system's passwords. Rather, it also recommends some additional precautions for protecting user accounts. For example, as we discussed earlier, the document recommends that verifiers rate-limit log-in attempts to deter online brute-force attacks. But it also encourages the use of *salting* to defend against offline brute-force attacks:
+Additionally, the NIST publication does not *merely* state that verifiers shouldn't use password complexity rules since that alone does not guarantee the security of a system's passwords. Rather, it also recommends some additional precautions for protecting user accounts. For example, as we discussed earlier, the document recommends that verifiers rate-limit log-in attempts to deter online brute-force attacks. But more importantly, it also encourages the use of *salting* to introduce more entropy into the password space:
 
 {% quote "5.1.1.2 Memorized Secret Verifiers", "https://pages.nist.gov/800-63-3/sp800-63b.html#memsecretver" %}
 Verifiers SHALL store memorized secrets in a form that is resistant to offline attacks. Memorized secrets SHALL be salted and hashed using a suitable one-way key derivation function. Key derivation functions take a password, a salt, and a cost factor as inputs then generate a password hash. Their purpose is to make each password guessing trial by an attacker who has obtained a password hash file expensive and therefore the cost of a guessing attack high or prohibitive.
 {% endquote %}
 
-That way, even if an attacker gets their hands on a database dump of password hashes, they won't be able to just brute-force it directly without also having to compute the salt that was used, which adds entropy to the search space and significantly increases the time and computing power required. Salting also makes it difficult for attackers to crack multiple user passwords in one go. Without salting, two users may share the same password, and their hashes will be identical, so cracking one would give an attacker access to both accounts. With salting, two users may share the same password, but the computed hash will be different for each one.
+That way, even if an attacker gets their hands on a database dump of password hashes, they won't be able to just brute-force it with a dictionary or rainbow table attack without also having to compute the salt that was used, which significantly increases the time and computing power required. Salting also makes it difficult for attackers to crack multiple user passwords in one go. Without salting, two users may share the same password, and their hashes will be identical, so cracking one would give an attacker access to both accounts. With salting, two users may share the same password, but the computed hash will be different for each one.
 
 ## Summary
 
@@ -198,3 +207,4 @@ Second, if you're a user, you're better off relying on a password manager to gen
 - [NIST Special Publication 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html)
 - [auth0: NIST Password Guidelines and Best Practices for 2020](https://auth0.com/blog/dont-pass-on-the-new-nist-password-guidelines/)
 - [Security StackExchange: Are password complexity rules counterproductive?](https://security.stackexchange.com/questions/32222/are-password-complexity-rules-counterproductive)
+- [Security StackExchange: Why are salted hashes more secure for password storage?](https://security.stackexchange.com/questions/51959/why-are-salted-hashes-more-secure-for-password-storage/51983#51983)
