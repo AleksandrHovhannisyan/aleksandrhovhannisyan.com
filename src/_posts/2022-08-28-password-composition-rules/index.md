@@ -2,7 +2,8 @@
 title: Are Password Composition Rules Counter&shy;productive?
 description: Registration systems often ask users to create a password containing certain characters. Unfortunately, in doing so, these systems encourage bad habits that can weaken a user's password.
 keywords: [password composition rules, password complexity rules, password]
-categories: [math, security, forms]
+categories: [math, security, forms, binary]
+lastUpdated: 2022-09-01
 ---
 
 In [Special Publication 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html) on user authentication and lifecycle management, the National Institute of Standards and Technology (NIST) documents best practices that password verification systems should follow to secure user accounts. In addition to recommending that verifiers check the length of a user's password to measure its strength—and that verifiers rate-limit log-in attempts—the guidelines also note the following about password composition rules:
@@ -44,20 +45,23 @@ For a more in-depth discussion of these techniques, see the following resources:
 - [Crack a password: techniques and hands-on exercise](https://thehackerish.com/crack-a-password-techniques-and-hands-on-exercise/).
 - [What are the differences between dictionary attack and brute force attack?](https://security.stackexchange.com/a/67768/219732)
 
-## The Math: Search Space for Passwords
+## Measuring a Password's Strength
 
 In the previous section, I mentioned the need to search the "password space" for a system when trying to crack passwords. More generally, the **search space** for any problem is the total number of possibilities that would need to be checked in an exhaustive search. If someone is trying to crack a login system's passwords, then the search space is the total number of passwords that can be generated under certain constraints. The larger the search space, the more time and computational power that is needed to check it exhaustively. This assumes a worst-case outcome: that the item you're searching for is the very last one that has yet to be checked.
 
-Using combinatorics and set theory, we can work out how many passwords can be generated under different constraints. To simplify the math, we'll assume that the password is known to be eight characters long (the minimum length recommended by the NIST). Some common scenarios are summarized in Table 1.
+An equivalent measure of a password's strength is its [**entropy**](https://generatepasswords.org/how-to-calculate-entropy/), or the number of bits needed to represent that password in [the binary number system](/blog/binary-for-beginners/). This is essentially just the password space but represented as a base of two for convenience in computing. If our search space consists of `n` passwords, then we can equivalently represent all of those passwords using <code>log<sub>2</sub>(n)</code> bits. The greater a password's entropy, the stronger and more resistant to brute force that password is considered to be. For example, if a system can generate 26<sup>8</sup> passwords, then its entropy is 37.6 bits (since 2<sup>37.6</sup> = 26<sup>8</sup>).
+
+Using combinatorics and set theory, we can work out how many passwords can be generated under different constraints and the corresponding password entropies. To simplify the math, we'll assume that the password is known to be eight characters long (the minimum length recommended by the NIST). Some common scenarios are summarized in Table 1.
 
 <div class="scroll-x">
-    <table>
-    <caption>Table 1: Search space for an eight-character password.</caption>
+    <table id="table-1">
+    <caption>Table 1: Search space and entropy for an eight-character password.</caption>
         <thead>
             <tr>
                 <th scope="col">Constraints</th>
-                <th scope="col">Characters</th>
-                <th scope="col">Search space</th>
+                <th scope="col" class="numeric">Characters</th>
+                <th scope="col" class="numeric">Search space</th>
+                <th scope="col" class="numeric">Entropy (rounded)</th>
             </tr>
         </thead>
         <tbody>
@@ -65,26 +69,31 @@ Using combinatorics and set theory, we can work out how many passwords can be ge
                 <td>Only lowercase letters</td>
                 <td class="numeric">26</td>
                 <td class="numeric">2.1 &times; 10<sup>11</sup></td>
+                <td class="numeric">38</td>
             </tr>
             <tr>
                 <td>At least 1 lowercase and uppercase letter</td>
                 <td class="numeric">52</td>
                 <td class="numeric">5.3 &times; 10<sup>13</sup></td>
+                <td class="numeric">46</td>
             </tr>
             <tr>
-                <td>At least 1 lowercase, uppercase, and number</td>
+                <td>At least 1 lowercase letter, uppercase letter, and number</td>
                 <td class="numeric">62</td>
                 <td class="numeric">1.6 &times; 10<sup>14</sup></td>
+                <td class="numeric">48</td>
             </tr>
             <tr>
-                <td>At least 1 lowercase, uppercase, number, and symbol</td>
+                <td>At least 1 lowercase letter, uppercase letter, number, and symbol</td>
                 <td class="numeric">94</td>
                 <td class="numeric">2.8 &times; 10<sup>15</sup></td>
+                <td class="numeric">52</td>
             </tr>
             <tr>
                 <td>None</td>
                 <td class="numeric">94</td>
                 <td class="numeric">6.1 &times; 10<sup>15</sup></td>
+                <td class="numeric">53</sup></td>
             </tr>
         </tbody>
     </table>
@@ -98,17 +107,70 @@ For a breakdown of the math, see this StackExchange answer: [Counting for possib
 The last two rows of Table 1 assume that a QWERTY keyboard is used, which offers 32 ASCII symbols that password systems normally accept (i.e., we're ignoring spaces, control characters, and esoteric Unicode keyboard shortcuts).
 {% endaside %}
 
-The main takeaway from this table is that the search space is always reduced when we enforce some sort of password composition requirement. Once we begin to restrict the types of passwords that a user may choose, the search space is guaranteed to be smaller than if we didn't enforce any rules. However, our math also suggests that if we *do* decide to enforce password requirements, we should favor more complex rules because they yield a bigger search space compared to simpler rules.
+The main takeaway from this table is that the search space (and therefore the password entropy) is always reduced when we enforce some sort of password composition requirement. Once we begin to restrict the types of passwords that a user may choose, the search space and entropy are guaranteed to be smaller than if we didn't enforce any rules.
 
-While it's worth considering the password space to better understand the impact of composition rules, this alone does not tell the whole story. In reality, the size of the password space does not tell us anything about the difficulty of cracking user passwords. In practice, an attacker won't need to cover the entire password space, and doing so can be prohibitively costly. Moreover, in some cases, cracking a user password may grant an attacker access to multiple accounts. In short, the problem with password composition rules isn't that they reduce the search space.
+### Prefer Length Over Password Complexity 
+
+At first glance, Table 1 also seems to suggest that if we *do* decide to enforce password requirements, we should at last favor more complex rules because they yield a bigger search space compared to simpler rules. For example, the rule requiring at least one of each character set yields an entropy of 53, whereas a password consisting only of lowercase letters has an entropy of 38. But this doesn't tell the whole story.
+
+In reality, increasing the number of candidate characters does not substantially increase the strength of a password beyond a certain point. Notice how the password entropy increases rapidly at first but then plateaus as we introduce more character classes. Realistically, our gains taper off because a standard keyboard only supports a finite number of ASCII characters (and because increasing the base of an exponent does not have as much of an impact as increasing the power).
+
+To drive home this point, consider Table 2, which computes the password space and entropy for a system that only allows lowercase letters but allows the password length to be arbitrarily large.
+
+<div class="scroll-x">
+    <table id="table-2">
+    <caption>Table 2: Search space and entropy for passwords of varying length (only lowercase letters).</caption>
+        <thead>
+            <tr>
+                <th scope="col" class="numeric">Length</th>
+                <th scope="col" class="numeric">Search space</th>
+                <th scope="col" class="numeric">Entropy (rounded)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="numeric">8</td>
+                <td class="numeric">2.1 &times; 10<sup>11</sup></td>
+                <td class="numeric">38</td>
+            </tr>
+            <tr>
+                <td class="numeric">10</td>
+                <td class="numeric">1.4 &times; 10<sup>14</sup></td>
+                <td class="numeric">47</td>
+            </tr>
+            <tr>
+                <td class="numeric">12</td>
+                <td class="numeric">9.5 &times 10<sup>16</sup></td>
+                <td class="numeric">57</td>
+            </tr>
+            <tr>
+                <td class="numeric">14</td>
+                <td class="numeric">6.5 &times; 10<sup>19</sup></td>
+                <td class="numeric">66</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+Observe that increasing the password's length from 8 to 12 already gives us a greater entropy (57 bits) with just lowercase letters. By comparison, we get only 53 bits of entropy for an 8-character password with no restrictions. It's for this reason that the NIST encourages enforcing a minimum length requirement. In general, *longer* passwords are stronger (and may be easier to remember) than *complex* passwords.
+
+### Password Space Isn't Everything
+
+With all of this in mind, it's worth emphasizing that a larger password space doesn't necessarily mean that our system's passwords are going to be harder to crack. Remember: All of this math is theoretical and assumes that users are generating perfectly random passwords. In reality, humans can only realistically generate and memorize a subset of this search space. Users are biased toward selecting words and phrases, not a random string of characters, so it's likely that their hand-chosen password (or some variation of it) will appear in a dictionary.
+
+Thus, an attacker won't need to cover the entire password space (and doing so can be prohibitively costly anyway). Moreover, in some cases, cracking a user password may grant an attacker access to multiple accounts. In short, the problem with password composition rules isn't that they reduce the search space.
 
 {% quote "An Introduction to Analytical Cryptography (2014), page 5", "https://link.springer.com/book/10.1007/978-1-4939-1711-2" %}
 The assertion that a large number of possible keys, in and of itself, makes a cryptosystem secure, has appeared many times in history and has equally often been shown to be fallacious.
 {% endquote %}
 
-For example, in a theoretical brute-force attack, the attacker does not care about the size of the search space since they already intend to search all of it, as fruitless as that may be. And in a dictionary attack, the attacker has already chosen a predictable subset of the password space to search, so a reduction of the overall password space may or may not hinder their efforts. Finally, in a rainbow table attack, an attacker has already precompiled a table of hashes for quick lookups, so the size of the password space is inconsequential.
+For example, in a theoretical brute-force attack, the attacker does not care about the size of the search space since they already intend to search all of it, as fruitless as that may be. And in a dictionary attack, the attacker has already chosen a predictable subset of the password space to search, so a reduction of the overall password space may or may not hinder their efforts. Finally, in a rainbow table attack, an attacker has already precompiled a table of hashes for quick lookups, so a reduction of the password space doesn't slow them down.
 
-The bigger problem is that these rules annoy users into choosing predictable, memorable patterns for their passwords, which in turn makes them easier to crack with simpler methods (like dictionary attacks).
+{% aside %}
+For this reason, we typically assume that an attacker will only need to crack 50% of our passwords, which essentially halves the search space. So whereas before a hacker may have needed 2<sup>Entropy</sup> guesses to crack all passwords, they now only need 2<sup>Entropy - 1</sup> guesses. See this article for more information: [How to Calculate Password Entropy](https://generatepasswords.org/how-to-calculate-entropy/).
+{% endaside %}
+
+The bigger problem is that these rules annoy users into choosing predictable, memorable patterns for their passwords, which in turn makes them easier to crack with simpler methods (like dictionary attacks or even social engineering).
 
 ## Password Rules Compel Users to Choose Memorable, Predictable Passwords
 
@@ -159,8 +221,6 @@ Through 20 years of effort, we've successfully trained everyone to use passwords
 
 Moreover, people tend to reuse weak passwords to minimize the number of unique passwords they have to remember. In fact, [a 2019 security survey by Google](https://services.google.com/fh/files/blogs/google_security_infographic.pdf) found that 52% of the people surveyed reuse their passwords across multiple accounts, and 13% reuse their passwords across *all* accounts. So even if we don't enforce password requirements, some other password system might, and a large number of our users may still practice poor password hygiene.
 
-Earlier, we also noted that the search space in the absence of complexity rules is 6.1 &times; 10<sup>15</sup> for an eight-character password. That may be the case when using a pseudorandom password generator, but humans can only realistically generate and memorize a subset of this search space. Users are biased toward selecting words and phrases, not a random string of characters, so it's likely that their hand-chosen password (or some variation of it) will appear in a dictionary.
-
 While we can do our best to educate users about good password habits and discourage them from choosing unsafe passwords, we can't guarantee that all of our users will put these tips into practice. Some browsers, like Chrome and Firefox, are making it easier for user to generate safe passwords by giving users the option of auto-generating strong passwords in registration forms and saving these to their account. But there will always be some users who won't take advantage of these measures and will fall back to their old habits.
 
 ### Hackers Are Not Naive
@@ -208,3 +268,6 @@ Second, if you're a user, you're better off relying on a password manager to gen
 - [auth0: NIST Password Guidelines and Best Practices for 2020](https://auth0.com/blog/dont-pass-on-the-new-nist-password-guidelines/)
 - [Security StackExchange: Are password complexity rules counterproductive?](https://security.stackexchange.com/questions/32222/are-password-complexity-rules-counterproductive)
 - [Security StackExchange: Why are salted hashes more secure for password storage?](https://security.stackexchange.com/questions/51959/why-are-salted-hashes-more-secure-for-password-storage/51983#51983)
+- [A Somewhat Brief Explanation of Password Entropy](https://www.itdojo.com/a-somewhat-brief-explanation-of-password-entropy/)
+- [Calculating password entropy](https://www.pleacher.com/mp/mlessons/algebra/entropy.html)
+
