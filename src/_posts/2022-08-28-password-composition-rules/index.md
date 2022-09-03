@@ -2,7 +2,7 @@
 title: Are Password Composition Rules Counter&shy;productive?
 description: Registration systems often ask users to create a password containing certain characters. Unfortunately, in doing so, these systems encourage bad habits that can weaken a user's password.
 keywords: [password composition rules, password complexity rules, password]
-categories: [math, security, forms, binary]
+categories: [cryptography, security, math, binary]
 lastUpdated: 2022-09-01
 ---
 
