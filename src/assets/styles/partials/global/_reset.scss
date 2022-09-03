@@ -45,6 +45,10 @@
   list-style: none;
 }
 
+:where(dfn) {
+  font-style: normal;
+}
+
 // https://css-tricks.com/standardizing-focus-styles-with-css-custom-properties/
 :where(a, button, input, textarea, summary, [tabindex="0"]) {
   --outline-thickness: #{to-rems(3px)};

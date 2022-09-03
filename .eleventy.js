@@ -3,6 +3,7 @@ const path = require('path');
 const PluginFootnotes = require('eleventy-plugin-footnotes');
 const {
   asideShortcode,
+  definitionShortcode,
   imageShortcode,
   iconShortcode,
   socialIconShortcode,
@@ -61,6 +62,7 @@ module.exports = (eleventyConfig) => {
   // Custom shortcodes
   eleventyConfig.addPairedShortcode('aside', asideShortcode);
   eleventyConfig.addPairedShortcode('quote', quoteShortcode);
+  eleventyConfig.addPairedShortcode('definition', definitionShortcode);
   eleventyConfig.addPairedShortcode('artwork', artworkShortcode);
   eleventyConfig.addPairedShortcode('details', detailsShortcode);
   eleventyConfig.addShortcode('image', imageShortcode);

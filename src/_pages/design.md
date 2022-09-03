@@ -202,6 +202,12 @@ some *italicized text* perhaps
   In cursus tellus ex, a rhoncus erat bibendum sit amet. Proin sollicitudin pharetra nulla quis dignissim. Phasellus et nibh felis.
 {% endaside %}
 
+### Definition
+
+{% definition "Term" %}
+Definition of the term goes here.
+{% enddefinition %}
+
 ### Quote
 
 {% quote "Source of the Quote", "https://www.lipsum.com/feed/html" %}

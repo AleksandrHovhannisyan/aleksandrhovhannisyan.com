@@ -1,4 +1,5 @@
 const asideShortcode = require('./aside');
+const definitionShortcode = require('./definition');
 const hashArtShortcode = require('./hashArt');
 const quoteShortcode = require('./quote');
 const iconShortcode = require('./icon');
@@ -11,6 +12,7 @@ const detailsShortcode = require('./details');
 
 module.exports = {
   asideShortcode,
+  definitionShortcode,
   hashArtShortcode,
   quoteShortcode,
   iconShortcode,
