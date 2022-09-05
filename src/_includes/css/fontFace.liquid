@@ -1,13 +1,8 @@
-/* https://www.industrialempathy.com/perfect-ish-font-fallback/?font=Rubik */
+/* https://www.industrialempathy.com/perfect-ish-font-fallback/?font=Fira%20Sans */
 @font-face {
-  font-family: "Rubik-fallback";
-  size-adjust: 105%;
+  font-family: "Fira-fallback";
+  size-adjust: 102.59%;
   src: local("Arial");
-}
-@font-face {
-  font-family: "Bitter-fallback";
-  size-adjust: 114.5%;
-  src: local("Times New Roman");
 }
 {%- comment -%}Loop over the global font config and construct a series of @font-face declarations. We later feed this to scss to minify the output and inline it in the head for performance.{%- endcomment -%}
 {%- for fontType in requiredFonts -%}
@@ -18,10 +13,17 @@
     {%- if font.isVariable -%}
       @font-face {
         font-family: "{{ font.family }}";
-        font-style: {{ font.style }};
+        font-style: {{ font.style | default: "normal" }};
         font-weight: {{ font.variableWeights.min }} {{ font.variableWeights.max }};
         {% if font.display -%}font-display: {{ font.display }};{%- endif -%}
-        src: local("{{ font.family }}"), local("{{ font.postscriptName }}"), url("{{ font.url }}") format("woff2 supports variations"), url("{{ font.url }}") format("woff2-variations");
+        src: local("{{ font.family }}"), local("{{ font.postscriptName }}"), url("{{ font.urls.roman }}") format("woff2 supports variations"), url("{{ font.urls.roman }}") format("woff2-variations");
+      }
+      @font-face {
+        font-family: "{{ font.family }}";
+        font-style: italic;
+        font-weight: {{ font.variableWeights.min }} {{ font.variableWeights.max }};
+        {% if font.display -%}font-display: {{ font.display }};{%- endif -%}
+        src: local("{{ font.family }}"), local("{{ font.postscriptName }}"), url("{{ font.urls.italic }}") format("woff2 supports variations"), url("{{ font.urls.italic }}") format("woff2-variations");
       }
     {%- comment -%}Non-variable fonts{%- endcomment -%}
     {%- else -%}

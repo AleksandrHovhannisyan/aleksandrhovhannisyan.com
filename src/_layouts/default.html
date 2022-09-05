@@ -12,7 +12,6 @@ scripts:
     type: module
     src: /assets/scripts/index.mjs
 requiredFonts:
-  - title
   - body
   - code
 eleventyComputed:
@@ -29,7 +28,7 @@ eleventyComputed:
     -
       as: font
       type: font/woff2
-      href: "{{ fonts.title.url }}"
+      href: "{{ fonts.body.weights.bold.url }}"
       crossorigin: true
 ---
 

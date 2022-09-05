@@ -38,7 +38,7 @@ pre[class*="language-"] {
         display: block;
         margin-bottom: calc(var(--code-block-padding) * 0.75);
         color: var(--color-code-text);
-        @include font($family: "title", $weight: "bold", $size: "sm");
+        @include font($family: "body", $weight: "bold", $size: "sm");
       }
     }
   }
