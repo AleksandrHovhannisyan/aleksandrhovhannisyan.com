@@ -57,11 +57,7 @@
   {%- endif -%}
   {%- comment -%}Template-specific module scripts{%- endcomment -%}
   {%- for script in scripts -%}
-    <script type="module" src="{{ script }}"></script>
-  {%- endfor -%}
-  {%- comment -%}Manually deferred scripts{%- endcomment -%}
-  {%- for script in deferredScripts -%}
-    <script defer src="{{ script }}"></script>
+    <script src="{{ script.src }}"{% if script.defer %} defer{% endif %}{% if script.type %} type="{{ script.type }}"{% endif %}></script>
   {%- endfor -%}
   {%- comment -%}Open Graph social media previews{%- endcomment -%}
   <meta property="og:title" content="{{ pageTitle }}">

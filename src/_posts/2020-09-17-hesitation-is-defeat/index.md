@@ -5,7 +5,9 @@ keywords: [sekiro, hesitation is defeat]
 categories: [essay, gaming, sekiro]
 thumbnail: ./images/thumbnail.jpg
 scripts:
-  - https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@0.6.2/lite-youtube.js
+  -
+    type: module
+    src: https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@0.6.2/lite-youtube.js
 ---
 
 If your experience with *Sekiro: Shadows Die Twice™* was anything like mine, you grew accustomed to hearing the old man taunt you with this pithy adage as he sheathed his blade for the hundredth time.

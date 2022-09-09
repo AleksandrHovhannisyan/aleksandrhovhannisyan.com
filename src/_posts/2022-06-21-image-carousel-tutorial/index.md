@@ -13,7 +13,9 @@ openGraph:
 stylesheets:
   - /assets/styles/demos/carousel.css
 scripts:
-  - /assets/scripts/demos/Carousel/index.mjs
+  - 
+    type: module
+    src: /assets/scripts/demos/Carousel/index.mjs
 commentsId: 166
 ---
 

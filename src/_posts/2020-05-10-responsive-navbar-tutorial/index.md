@@ -6,8 +6,10 @@ categories: [html, css, javascript]
 commentsId: 28
 lastUpdated: 2021-09-18
 thumbnail: ./images/thumbnail.png
-deferredScripts:
-  - https://static.codepen.io/assets/embed/ei.js
+scripts:
+  - 
+    src: https://static.codepen.io/assets/embed/ei.js
+    defer: true
 redirectFrom:
   - /blog/responsive-navbar-without-bootstrap/
 ---

@@ -11,7 +11,7 @@ module.exports = {
     scripts: (data) => {
       // If the post has comments and comments are enabled, link to the comment script to load them
       if (featureFlags.enableComments && data.commentsId) {
-        return [...data.scripts, `/assets/scripts/comments.mjs`];
+        return [...data.scripts, { type: 'module', src: `/assets/scripts/comments.mjs` }];
       }
       // Otherwise, return the existing scripts
       return data.scripts;

@@ -6,8 +6,10 @@ categories: [accessibility, javascript, react]
 thumbnail: ./images/thumbnail.png
 commentsId: 125
 lastUpdated: 2022-03-24
-deferredScripts:
-  - https://static.codepen.io/assets/embed/ei.js
+scripts:
+  - 
+    src: https://static.codepen.io/assets/embed/ei.js
+    defer: true
 ---
 
 Many blogging platforms, news sites, and social media platforms use a strategy known as **infinite scrolling** to render a continuously growing list of results in a feed. Unfortunately, while infinite scrolling creates a seamless user experience on social media platforms, it isn't great for accessibility. Not only does it make it impossible for both mouse and keyboard users to reach a site's footer, but it can also create a confusing user experience for screen reader users if the proper ARIA roles and attributes are not used (e.g., [`aria-live`](https://gomakethings.com/how-and-why-to-use-aria-live/), among others).
