@@ -4,6 +4,8 @@ description: After a one-year hiatius from Sekiro, I returned to face the final 
 keywords: [sekiro, hesitation is defeat]
 categories: [essay, gaming, sekiro]
 thumbnail: ./images/thumbnail.jpg
+scripts:
+  - https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@0.6.2/lite-youtube.js
 ---
 
 If your experience with *Sekiro: Shadows Die Twice™* was anything like mine, you grew accustomed to hearing the old man taunt you with this pithy adage as he sheathed his blade for the hundredth time.
@@ -67,5 +69,3 @@ For me, this was the single most rewarding experience that a game has ever offer
 So, farewell, Isshin—and thank you, Miyazaki, for yet another stellar Soulsborne title.
 
 {% include "youtubeEmbed.html" id: "Ewu-Evc_qNc", title: "I Beat Sekiro: Shadows Die Twice! (And It Only Took Me 1 Year...)" %}
-
-<script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@0.6.2/lite-youtube.js"></script>

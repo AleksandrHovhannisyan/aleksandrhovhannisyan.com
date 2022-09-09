@@ -6,6 +6,8 @@ categories: [css, aspect-ratio, images, math]
 isFeatured: true
 lastUpdated: 2021-06-12
 commentsId: 58
+stylesheets:
+  - /assets/styles/demos/aspect-ratio.css
 thumbnail:
   url: https://images.unsplash.com/photo-1550535424-fd4382da050c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
@@ -442,91 +444,3 @@ Hopefully, you now have a better understanding of how to define responsive aspec
 - [Common CSS Flexbox Layout Patterns with Example Code](https://tobiasahlin.com/blog/common-flexbox-patterns/)
 
 {% include "unsplashAttribution.md" name: "Rumman Amin", username: "rumanamin", photoId: "5zoLQUZaWgA" %}
-
-<style>
-  .demo-tiles {
-    display: grid;
-    padding: 0;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: var(--sp-0);
-  }
-  .demo-tile {
-    position: relative;
-    background-color: var(--color-surface-3);
-    color: var(--color-text-emphasis);
-    font-weight: var(--fw-bold);
-    border-radius: var(--sp--3);
-  }
-  .demo-tile::after {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    content: attr(data-ratio);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .aspect-ratio-1-1 {
-    aspect-ratio: 1;
-  }
-  .aspect-ratio-4-3 {
-    aspect-ratio: 4/3;
-  }
-  .aspect-ratio-3-2 {
-    aspect-ratio: 3/2;
-  }
-  .aspect-ratio-16-9 {
-    aspect-ratio: 16/9;
-  }
-  .demo-square-grid {
-    --gap: var(--sp-0);
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-row-gap: var(--gap);
-    grid-column-gap: var(--gap);
-  }
-  .demo-square-grid > * {
-    aspect-ratio: 1;
-    background-color: var(--color-surface-3);
-    color: var(--color-text-emphasis);
-    position: relative;
-  }
-  .demo-square * {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-  .demo-square figure {
-    --offset: 0;
-  }
-  .demo-document {
-    writing-mode: vertical-rl;
-    width: 100%;
-    height: 200px;
-  }
-  .demo-parent {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-evenly;
-    background-color: var(--color-surface-2);
-    color: var(--color-text-emphasis);
-    height: 100%;
-  }
-  .demo-child {
-    padding: 10%;
-    background-color: white;
-    color: black;
-  }
-  .demo-grid {
-    padding: 0;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    width: 100%;
-    column-gap: 1em;
-  }
-</style>

@@ -22,7 +22,7 @@ In mathematics, the **modulo operation** gives the remainder of dividing one num
 This is closely related to the [division theorem](https://sites.math.washington.edu/~lee/Courses/300-2017/division-theorem.pdf):
 
 {% definition "Division theorem" %}
-Let $a$ and $b$ be integers such that $b \neq 0$. Then there exist unique integers $q$ and $r$ such that $a = qb + r$, where $0 <= r < |b|$.
+Let $a$ and $b$ be integers such that $b \neq 0$. Then there exist unique integers $q$ and $r$ such that $a = qb + r$, where $0 \leq r < |b|$.
 {% enddefinition %}
 
 While this seems complicated, all it says is that if we have two integers $a$ and $b$, we can express $a$ as a multiple of $b$ plus some constant remainder. Or, said differently, if we divide some integer $a$ (*dividend*) by a non-zero integer $b$ (*divisor*), then we'll get an integer known as the *quotient* ($q$) and a *remainder* ($r$). This should sound familiar from your days of long division. Notice that the remainder can be zero if the quotient divides evenly into the dividend, as in $4 \div 2$.

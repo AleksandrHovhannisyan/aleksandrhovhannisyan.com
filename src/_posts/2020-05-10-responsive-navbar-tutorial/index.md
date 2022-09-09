@@ -6,6 +6,8 @@ categories: [html, css, javascript]
 commentsId: 28
 lastUpdated: 2021-09-18
 thumbnail: ./images/thumbnail.png
+deferredScripts:
+  - https://static.codepen.io/assets/embed/ei.js
 redirectFrom:
   - /blog/responsive-navbar-without-bootstrap/
 ---
@@ -582,5 +584,3 @@ The CSS now involves these classes, which get applied to `#navbar-menu`:
 Creating responsive navbars in HTML isn't really all that difficult once you master basic positioning and Flexbox, as those two account for a majority of the CSS. The rest is just there to space the content and make things look pretty.
 
 I hope you found this tutorial helpful!
-
-<script defer src="https://static.codepen.io/assets/embed/ei.js"></script>

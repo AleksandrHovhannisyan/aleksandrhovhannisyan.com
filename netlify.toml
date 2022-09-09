@@ -18,3 +18,8 @@
 
 [functions]
   directory = "./api"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "frame-ancestors 'none';"

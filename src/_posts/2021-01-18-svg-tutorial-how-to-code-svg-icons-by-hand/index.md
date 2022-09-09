@@ -7,6 +7,8 @@ lastUpdated: 2021-08-07
 commentsId: 68
 isFeatured: true
 thumbnail: ./images/thumbnail.png
+stylesheets:
+  - /assets/styles/demos/svg.css
 ---
 
 For as long as I can remember, I avoided touching SVGs when working with front-end code. I'd have no trouble with HTML, CSS, or JavaScript, but SVGs always intimidated me with their bizarre syntax and those weird, indecipherable strings of letters and numbers. You know the ones:
@@ -1657,27 +1659,3 @@ All of these build on the concepts that you're already familiar with.
 Coding SVG icons by hand isn't too difficult, but it can certainly feel that way when you're just getting started. There's a lot of new syntax to learn, but it's definitely worth it! Now that you've worked through this tutorial, you should be able to read and interpret SVG markup more confidently and understand how the SVG icon libraries you use really work under the hood.
 
 That does it for this tutorial! I hope you learned something new (and had fun!).
-
-<style>
-  .post-content .svg-tutorial__icon-grid {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: var(--sp-8);
-  }
-  .post-content .svg-tutorial__icon {
-    display: flex;
-  }
-  .post-content .svg-tutorial__icon svg {
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    fill: none;
-  }
-  .post-content svg.bordered {
-    border: solid 1px;
-  }
-</style>

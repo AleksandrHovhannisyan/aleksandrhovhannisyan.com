@@ -6,6 +6,8 @@ categories: [accessibility, javascript, react]
 thumbnail: ./images/thumbnail.png
 commentsId: 125
 lastUpdated: 2022-03-24
+deferredScripts:
+  - https://static.codepen.io/assets/embed/ei.js
 ---
 
 Many blogging platforms, news sites, and social media platforms use a strategy known as **infinite scrolling** to render a continuously growing list of results in a feed. Unfortunately, while infinite scrolling creates a seamless user experience on social media platforms, it isn't great for accessibility. Not only does it make it impossible for both mouse and keyboard users to reach a site's footer, but it can also create a confusing user experience for screen reader users if the proper ARIA roles and attributes are not used (e.g., [`aria-live`](https://gomakethings.com/how-and-why-to-use-aria-live/), among others).
@@ -33,7 +35,6 @@ Below is a Codepen demo showing this in action:
   Keeping focus in place with load-more buttons</a> by Aleksandr Hovhannisyan (<a href="https://codepen.io/AleksandrHovhannisyan">@AleksandrHovhannisyan</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
 Suppose we're rendering a simple grid of results like this:
 

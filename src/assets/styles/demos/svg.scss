@@ -1,0 +1,27 @@
+/* stylelint-disable selector-class-pattern */
+@import "../partials/functions";
+
+.post-content .svg-tutorial__icon-grid {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: spacing("8");
+}
+
+.post-content .svg-tutorial__icon {
+  display: flex;
+}
+
+.post-content .svg-tutorial__icon svg {
+  stroke: currentcolor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.post-content svg.bordered {
+  border: solid 1px;
+}
