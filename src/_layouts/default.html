@@ -29,7 +29,12 @@ eleventyComputed:
     -
       as: font
       type: font/woff2
-      href: "{{ fonts.title.url }}"
+      href: "{{ fonts.title.weights.regular.url }}"
+      crossorigin: true
+    -
+      as: font
+      type: font/woff2
+      href: "{{ fonts.title.weights.bold.url }}"
       crossorigin: true
 ---
 

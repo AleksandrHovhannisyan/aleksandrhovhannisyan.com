@@ -19,7 +19,7 @@
   }
 
   &-username {
-    @include font($family: "body", $weight: "bold");
+    @include font($family: "title", $weight: "bold");
   }
 
   &-edited {

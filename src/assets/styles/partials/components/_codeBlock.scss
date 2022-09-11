@@ -141,7 +141,7 @@ pre[class*="language-bash"] {
   background-color: var(--color-code-overlay-1);
   padding: spacing("-2") spacing("0");
   border-radius: spacing("-3");
-  @include font($family: "body", $weight: "regular");
+  @include font($family: "title", $weight: "regular");
 
   &:is(.copied, :focus) {
     opacity: 1;

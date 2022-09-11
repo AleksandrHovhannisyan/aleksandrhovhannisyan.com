@@ -13,7 +13,7 @@
   background-color: var(--color-surface-3);
   color: var(--color-text-emphasis);
   border-radius: spacing("-3");
-  @include font($family: "body", $weight: "bold");
+  @include font($family: "title", $weight: "bold");
 }
 
 .demo-tile::after {
