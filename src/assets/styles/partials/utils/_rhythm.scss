@@ -2,7 +2,7 @@
 
 .rhythm {
   > * + * {
-    margin-top: calc(#{leading("base")} * 1em);
+    margin-top: calc(#{leading("md")} * 1em);
   }
 
   > :is(h2, h3, h4, h5, h6) + * {

@@ -25,25 +25,25 @@ const getFontUrl = (src) => path.join(fontPath, src);
 /** Global font config. Gets compiled into font face declarations and can be reused anywhere to access font info. */
 const fonts = {
   body: {
-    family: 'Rubik',
-    fallbacks: [`Rubik-fallback`],
+    family: 'Charter',
+    fallbacks: [`Georgia`, `ui-serif`, `serif`],
     weights: {
       [FontWeight.REGULAR]: {
         weight: 400,
         style: FontStyle.NORMAL,
-        url: getFontUrl('rubik-400.woff2'),
+        url: getFontUrl('charter-400.woff2'),
         display: FontDisplay.SWAP,
       },
       [FontWeight.REGULARITALIC]: {
         weight: 400,
         style: FontStyle.ITALIC,
-        url: getFontUrl('rubik-italic.woff2'),
+        url: getFontUrl('charter-italic.woff2'),
         display: FontDisplay.SWAP,
       },
       [FontWeight.BOLD]: {
         weight: 700,
         style: FontStyle.NORMAL,
-        url: getFontUrl('rubik-700.woff2'),
+        url: getFontUrl('charter-700.woff2'),
         display: FontDisplay.SWAP,
       },
     },
@@ -51,20 +51,12 @@ const fonts = {
   title: {
     family: 'Bitter',
     fallbacks: [`Bitter-fallback`],
-    isVariable: true,
-    style: FontStyle.NORMAL,
-    url: getFontUrl('bitter-variable.woff2'),
-    display: FontDisplay.SWAP,
-    variableWeights: {
-      min: 100,
-      max: 900,
-    },
     weights: {
-      [FontWeight.REGULAR]: {
-        weight: 400,
-      },
       [FontWeight.BOLD]: {
-        weight: 750,
+        weight: 700,
+        style: FontStyle.NORMAL,
+        url: getFontUrl('bitter-700.woff2'),
+        display: FontDisplay.SWAP,
       },
     },
   },

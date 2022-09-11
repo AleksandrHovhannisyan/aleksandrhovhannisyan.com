@@ -2,14 +2,13 @@
 $tokens: (
   leading: (
     steps: (
-      "4xs": 1.1,
-      "3xs": 1.2,
-      "2xs": 1.3,
-      "xs": 1.4,
-      "sm": 1.5,
-      "base": 1.6,
-      "md": 1.7,
-      "lg": 1.8,
+      "3xs": 1.15,
+      "2xs": 1.2,
+      "xs": 1.3,
+      "sm": 1.4,
+      "base": 1.5,
+      "md": 1.6,
+      "lg": 1.7,
     ),
     customPropertyPrefix: "lh",
   ),
@@ -17,7 +16,7 @@ $tokens: (
     steps: (
       "xs": (
         min: 12px,
-        max: 13px,
+        max: 14px,
       ),
       "sm": (
         min: 14px,
@@ -25,7 +24,7 @@ $tokens: (
       ),
       "base": (
         min: 16px,
-        max: 19px,
+        max: 20px,
         leading: "base",
       ),
       "md": (
@@ -56,7 +55,7 @@ $tokens: (
       "4xl": (
         min: 38px,
         max: 82px,
-        leading: "4xs",
+        leading: "3xs",
       ),
     ),
     breakpoints: (

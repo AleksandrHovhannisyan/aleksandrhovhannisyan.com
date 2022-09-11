@@ -255,7 +255,7 @@ html {
     text-align: center;
     max-width: 30ch;
     will-change: transform, opacity;
-    @include font($family: "artCursive", $weight: "regular", $size: "lg", $line-height: "4xs");
+    @include font($family: "artCursive", $weight: "regular", $size: "lg", $line-height: "3xs");
     @include transition(opacity, transform);
   }
 
