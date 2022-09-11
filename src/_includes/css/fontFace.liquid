@@ -1,13 +1,14 @@
-/* https://www.industrialempathy.com/perfect-ish-font-fallback/?font=Rubik */
-@font-face {
-  font-family: "Rubik-fallback";
-  size-adjust: 105%;
-  src: local("Arial");
-}
+/* https://www.industrialempathy.com/perfect-ish-font-fallback/?font=Bitter */
 @font-face {
   font-family: "Bitter-fallback";
   size-adjust: 114.5%;
   src: local("Times New Roman");
+}
+/* https://www.industrialempathy.com/perfect-ish-font-fallback/?font=Fira%20Sans */
+@font-face {
+  font-family: "Fira-fallback";
+  size-adjust: 102.59%;
+  src: local("Arial");
 }
 {%- comment -%}Loop over the global font config and construct a series of @font-face declarations. We later feed this to scss to minify the output and inline it in the head for performance.{%- endcomment -%}
 {%- for fontType in requiredFonts -%}

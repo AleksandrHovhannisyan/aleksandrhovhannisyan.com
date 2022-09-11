@@ -2,7 +2,7 @@
 @import "../mixins";
 
 .hero {
-  max-width: to-rems(900px);
+  max-width: 86ch;
 
   &-title {
     @include font($size: "4xl");
@@ -14,7 +14,7 @@
 
   @include tablet-sm {
     &-subtitle {
-      @include font($size: "xl");
+      @include font($size: "2xl");
     }
   }
 }
