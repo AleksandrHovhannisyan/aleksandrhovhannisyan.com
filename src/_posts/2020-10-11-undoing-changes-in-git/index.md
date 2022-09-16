@@ -1,13 +1,13 @@
 ---
 title: 6 Ways to Undo Changes in Git
-description: If you ever find yourself in a sticky situation with git, don't panic. Here are six simple ways you can undo changes in git and clean up your commit history.
+description: If you ever find yourself in a sticky situation with git, don't panic. Here are some simple ways you can undo changes in git and clean up your commit history.
 keywords: [undo changes in git, git]
 categories: [git, github]
 commentsId: 60
 thumbnail: ./images/thumbnail.png
 ---
 
-Eventually, there will come a point when you'll find yourself having to modify old commits, delete commits, and rewrite history in all sorts of scary ways. Especially if you're new to git, it can sometimes feel like you're navigating a minefield. But fear not—it's actually easier than you think! In this post, we'll look at a bunch of ways you can undo changes in git and rewrite your commit history.
+It's tempting to use git to make chronological commits without ever looking back. But eventually, there will come a point in time when you'll need to time travel, modify old commits, delete commits, and rewrite history in all sorts of scary ways. Especially if you're new to git, it can sometimes feel like you're navigating a minefield—one wrong move, and you might be tempted to re-clone the repo, start over, and hope nobody ever finds out. But fear not! Undoing changes is a lot easier than it can seem at first. In this post, we'll look at several useful ways you can undo changes in git and rewrite your commit history.
 
 {% include "toc.md" %}
 
@@ -38,7 +38,7 @@ Feel free to follow along and run these commands—the best way to learn git is 
 
 (Also, if you're concerned that we added an `.env` to git, good eye! We'll delete that later.)
 
-## A Note on Modifying Public Branches in Git
+## A Note on Modifying Public Branches
 
 For me to come up with reproducible code samples for this tutorial—and for you to be able to easily run them on your end—we'll be executing most git commands directly on `master` itself.
 
@@ -752,15 +752,15 @@ git checkout localBranchName -- <pathspec>
 
 ## 6. Using Git Reflog
 
-If you thought git's interactive rebase was cool, wait till you see `git reflog` in action.
+If you thought git's interactive rebase was neat, wait until you see `git reflog` in action.
 
-You can think of reflog as git for git—a sort of internal record-keeping system, if you will. That may seem a bit meta, but it's actually really simple. From [git's documentation on reflog](https://git-scm.com/docs/git-reflog):
+You can think of reflog as git for git—like an internal record-keeping system that tracks most of your actions. From [git's documentation on reflog](https://git-scm.com/docs/git-reflog):
 
-{% aside %}
+{% quote "git reflog Documentation", "https://git-scm.com/docs/git-reflog" %}
   Reference logs, or "reflogs", record when the tips of branches and other references were updated in the local repository. Reflogs are useful in various Git commands, to specify the old value of a reference.
-{% endaside %}
+{% endquote %}
 
-Put differently, reflog captures a series of snapshots for the different states of the `HEAD` pointer over time. This means that any time a commit is introduced, deleted, or amended, or a new branch is checked out, or an old commit's hash is rewritten, those changes will be logged in `reflog`. Translation? You'll be able to travel back in time to undo potentially unwanted changes even if they were seemingly irreversible.
+`reflog` stands for "reference log": a series of snapshots for the different states of the `HEAD` pointer over time. This means that any time a commit is introduced, deleted, or amended, or a new branch is checked out, or an old commit's hash is rewritten, those changes will be logged in `reflog`. Translation? You'll be able to travel back in time to undo potentially unwanted changes even if they were seemingly irreversible.
 
 Viewing the reflog for a git repository couldn't be easier:
 
@@ -881,9 +881,9 @@ Replacing `n` with whatever line you want to delete from the reflog. `HEAD@{0}` 
 
 ## Wrap Up
 
-There you have it! You now know five powerful ways to undo changes in git. It's not so scary after all! My personal favorite command is `reflog`—it's extremely versatile and can help you get out of sticky situations, if you ever find yourself in trouble.
+Hopefully, you're now more comfortable with undoing changes in git. My personal favorite command is `reflog`—it's extremely versatile and can help you get out of sticky situations if you ever find yourself in trouble.
 
-When in doubt, don't be afraid to ask others for help. There's also a wealth of information online about git, so you're bound to find a question on StackOverflow that's relevant to your needs.
+When in doubt, don't be afraid to ask others for help. There's also a wealth of information online about git, so you're bound to find a relevant question on StackOverflow or Reddit.
 
 ## Attributions
 
