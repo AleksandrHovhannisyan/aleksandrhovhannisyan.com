@@ -45,11 +45,14 @@
   }
 
   &-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: spacing("-2");
     margin-top: spacing("3");
   }
 
   &-technology {
-    border-radius: spacing("-4");
+    background-color: var(--color-surface-3);
     padding: spacing("-3") spacing("-1");
   }
 }

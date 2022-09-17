@@ -13,9 +13,9 @@
     </div>
   </header>
   <p class="project-description">{{ project.description }}</p>
-  <ul class="project-technologies pill-group gap--2" aria-label="Technologies used">
+  <ul class="project-technologies" aria-label="Technologies used">
     {%- for tech in project.tech -%}
-    <li class="pill project-technology fs-xs">{{ tech }}</li>
+    <li class="project-technology fs-xs">{{ tech }}</li>
     {%- endfor -%}
   </ul>
 </article>

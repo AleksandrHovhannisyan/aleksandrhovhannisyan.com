@@ -1,7 +1,7 @@
 @import "../functions";
 
 .container {
-  --container-max-width: #{to-rems(1400px)};
+  --container-max-width: #{to-rems(1380px)};
   /* stylelint-disable-next-line scss/no-global-function-names */
   --padding-x: #{spacing("0")};
 

@@ -14,7 +14,7 @@
 
   @include tablet-sm {
     &-subtitle {
-      @include font($size: "xl", $line-height: "xs");
+      @include font($size: "2xl");
     }
   }
 }

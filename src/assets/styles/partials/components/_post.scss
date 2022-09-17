@@ -2,7 +2,7 @@
 @import "../mixins";
 
 .post {
-  max-width: #{to-rems(860px)};
+  max-width: #{to-rems(800px)};
   margin-inline: auto;
 
   &-title {
