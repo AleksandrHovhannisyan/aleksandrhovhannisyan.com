@@ -99,7 +99,7 @@
   padding: spacing("-3");
   text-align: center;
   background-color: hsl(0deg 0% 0% / 75%);
-  @include font($size: "xs");
+  @include font($family: "title", $weight: "regular", $size: "xs");
 }
 
 /* stylelint-disable-next-line no-descending-specificity */

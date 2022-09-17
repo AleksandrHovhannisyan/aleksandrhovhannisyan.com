@@ -2,6 +2,16 @@
 @import "../mixins";
 
 .project {
+  @include font($family: "title", $weight: "regular", $size: "sm");
+
+  &.card {
+    --card-padding: #{spacing("4")};
+
+    @include mobile-lg {
+      --card-padding: #{spacing("5")};
+    }
+  }
+
   &-wrapper {
     --container-width: 50rem;
 
@@ -40,16 +50,18 @@
   }
 
   &-description {
-    line-height: leading("xs");
     margin-top: spacing("-1");
   }
 
   &-technologies {
-    margin-top: spacing("3");
+    display: flex;
+    flex-wrap: wrap;
+    gap: spacing("-2");
+    margin-top: spacing("0");
   }
 
   &-technology {
-    border-radius: spacing("-4");
+    background-color: var(--color-surface-2);
     padding: spacing("-3") spacing("-1");
   }
 }

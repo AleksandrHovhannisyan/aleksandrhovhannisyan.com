@@ -3,19 +3,19 @@
   <header class="flex justify-between">
     <div class="flex align-center gap--3">
       <div class="project-icon fs-sm" aria-hidden="true">{{ project.icon }}</div>
-      <h{{ titleLevel }} class="fs-base">
+      <h{{ titleLevel }} class="fs-sm">
         <a href="{{ project.url }}" rel="noreferrer noopener" target="_blank" class="project-link">{{ project.name }}</a>
       </h{{ titleLevel }}>
     </div>
-    <div class="flex align-center gap--4 fs-sm" role="img" aria-label="Rated {{ project.rating }} stars on GitHub">
-      {%- include "icon.html" icon: "star", width: "18", height: "18", fill: "currentColor", stroke: "none" -%}
+    <div class="project-rating flex align-center gap--4 fs-xs" role="img" aria-label="Rated {{ project.rating }} stars on GitHub">
+      {%- include "icon.html" icon: "star", width: "16", height: "16", fill: "currentColor", stroke: "none" -%}
       <span>{{ project.rating }}</span>
     </div>
   </header>
   <p class="project-description">{{ project.description }}</p>
-  <ul class="project-technologies pill-group gap--2" aria-label="Technologies used">
+  <ul class="project-technologies" aria-label="Technologies used">
     {%- for tech in project.tech -%}
-    <li class="pill project-technology fs-xs">{{ tech }}</li>
+    <li class="project-technology fs-xs">{{ tech }}</li>
     {%- endfor -%}
   </ul>
 </article>

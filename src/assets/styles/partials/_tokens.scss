@@ -16,11 +16,11 @@ $tokens: (
     steps: (
       "xs": (
         min: 12px,
-        max: 13px,
+        max: 14px,
       ),
       "sm": (
         min: 14px,
-        max: 16px,
+        max: 17px,
       ),
       // body, h6
       "base": (
@@ -31,13 +31,13 @@ $tokens: (
       // h5
       "md": (
         min: 18px,
-        max: 24px,
+        max: 22px,
         leading: "sm",
       ),
       // h4
       "lg": (
         min: 22px,
-        max: 28px,
+        max: 26px,
         leading: "xs",
       ),
       // h3
@@ -49,7 +49,7 @@ $tokens: (
       // h2
       "2xl": (
         min: 30px,
-        max: 40px,
+        max: 36px,
         leading: "2xs",
       ),
       // h1
@@ -61,7 +61,7 @@ $tokens: (
       // hero h1s
       "4xl": (
         min: 38px,
-        max: 90px,
+        max: 80px,
         leading: "3xs",
       ),
     ),
