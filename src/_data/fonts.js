@@ -26,7 +26,7 @@ const getFontUrl = (src) => path.join(fontPath, src);
 const fonts = {
   body: {
     family: 'Fira Sans',
-    fallbacks: [`Fira-fallback`],
+    fallbacks: [`Sans-fallback`],
     weights: {
       [FontWeight.REGULAR]: {
         weight: 400,
@@ -86,7 +86,7 @@ const fonts = {
   },
   artDisplay: {
     family: 'Rampart One',
-    fallbacks: [`Rubik-fallback`],
+    fallbacks: [`Sans-fallback`],
     weights: {
       [FontWeight.REGULAR]: {
         weight: 400,
