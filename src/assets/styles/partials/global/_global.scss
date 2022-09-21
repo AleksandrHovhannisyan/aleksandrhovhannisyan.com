@@ -51,5 +51,5 @@ strong {
 
 :is(h1, h2, h3, h4, h5, h6, label, th) {
   color: var(--color-text-emphasis);
-  @include font($family: "title", $weight: "bold");
+  @include font($family: "body", $weight: "bold");
 }

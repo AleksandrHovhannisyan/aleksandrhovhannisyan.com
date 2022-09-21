@@ -2,10 +2,10 @@
 $tokens: (
   leading: (
     steps: (
-      "4xs": 1.1,
+      "4xs": 1,
       "3xs": 1.2,
       "2xs": 1.3,
-      "xs": 1.4,
+      "xs": 1.35,
       "sm": 1.5,
       "base": 1.6,
       "md": 1.7,
@@ -17,7 +17,7 @@ $tokens: (
     steps: (
       "xs": (
         min: 12px,
-        max: 13px,
+        max: 14px,
       ),
       "sm": (
         min: 14px,
@@ -30,32 +30,32 @@ $tokens: (
       ),
       "md": (
         min: 18px,
-        max: 24px,
+        max: 22px,
         leading: "sm",
       ),
       "lg": (
         min: 22px,
-        max: 28px,
+        max: 26px,
         leading: "xs",
       ),
       "xl": (
         min: 26px,
-        max: 36px,
+        max: 32px,
         leading: "2xs",
       ),
       "2xl": (
         min: 30px,
-        max: 44px,
+        max: 36px,
         leading: "2xs",
       ),
       "3xl": (
         min: 34px,
-        max: 54px,
+        max: 48px,
         leading: "3xs",
       ),
       "4xl": (
-        min: 38px,
-        max: 82px,
+        min: 40px,
+        max: 86px,
         leading: "4xs",
       ),
     ),

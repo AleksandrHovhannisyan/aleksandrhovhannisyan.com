@@ -16,6 +16,10 @@
     gap: spacing("5");
     /* stylelint-disable-next-line scss/no-global-function-names */
     grid-template-columns: repeat(auto-fill, minmax(min(#{to-rems(400px)}, 100%), 1fr));
+
+    @include mobile-lg {
+      gap: spacing("3");
+    }
   }
 
   &-link {
@@ -42,9 +46,19 @@
   }
 
   &-description {
-    margin-bottom: spacing("0");
     // Tighten line height due to short line length
     line-height: leading("xs");
+  }
+
+  &-tags {
+    display: none;
+
+    @include tablet-sm {
+      display: flex;
+      flex-wrap: wrap;
+      gap: spacing("-2");
+      margin-top: spacing("0");
+    }
   }
 
   &-tag {

@@ -4,7 +4,7 @@
 title: Creating an Accessible Image Carousel
 description: Learn how to build an accessible image carousel that supports multiple input modes and is progressively enhanced with CSS scroll snap and JavaScript.
 keywords: [image carousel, carousel, accessible carousel, media carousel]
-categories: [html, css, javascript, accessibility, rtl, scroll-snap]
+categories: [html, css, javascript, accessibility, scroll-snap, rtl]
 thumbnail: ./images/algorithm.png
 lastUpdated: 2022-07-05
 openGraph:

@@ -2,7 +2,7 @@
 @import "../mixins";
 
 .post {
-  max-width: #{to-rems(860px)};
+  max-width: #{to-rems(800px)};
   margin-inline: auto;
 
   &-title {
@@ -13,6 +13,7 @@
     text-transform: uppercase;
     letter-spacing: to-rems(1px);
     color: var(--color-text-soft);
+    margin-bottom: spacing("-3");
     @include font($size: "sm");
 
     dt,
