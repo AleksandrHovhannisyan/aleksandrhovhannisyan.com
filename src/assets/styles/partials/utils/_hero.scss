@@ -10,6 +10,10 @@
 
   &-subtitle {
     @include font($size: "lg");
+
+    @include mobile-lg {
+      @include font($size: "xl");
+    }
   }
 
   @include tablet-sm {
