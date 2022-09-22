@@ -41,16 +41,16 @@ In short, the wrong way to gate content goes something like this:
 
 1. Return all of the content from your server.
 2. On the client side, open a modal prompting the user to log in or subscribe.
-3. Set `overflow: hidden` on the main content container to disable scrolling.
-4. Set `aria-hidden="true"` on the main content to mute screen readers.
+3. Visually hide the content with CSS or truncate it with client-side JavaScript.
 
 There are many ways you can bypass poorly gated content and read the full article:
 
 - Find the right elements in a sea of divs and delete them or remove the offending CSS.
+- Disable JavaScript (e.g., with Chrome dev tools) and reload the page. This suppresses the on-mount gating logic.
 - Log the body text in your console: `console.log(document.body.innerText)`.
 - Use a browser extension, like the open-source [Bypass Paywalls](https://github.com/iamadamdev/bypass-paywalls-chrome).
 
-The only reason this naive approach works is because most readers aren't technically inclined and probably don't even know what CSS stands for—they see a modal blocking their screen, so they assume that the content must, in fact, be out of reach. The rest of us are mildly peeved and feel compelled to write about how silly all of this is.
+The only reason this naive approach works is because most readers don't have the necessary knowledge to work around it—they see a modal blocking their screen, so they assume that the content must, in fact, be inaccessible. The rest of us are mildly peeved and feel compelled to write about how silly all of this is.
 
 ## Democracy Dies Behind a Paywall
 
