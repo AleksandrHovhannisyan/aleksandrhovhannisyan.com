@@ -5,10 +5,14 @@ keywords: [setting width and height on images, setting an image's width and heig
 categories: [webperf, images, aspect-ratio, html]
 commentsId: 78
 isFeatured: true
-lastUpdated: 2021-12-21
+lastUpdated: 2022-09-26
 thumbnail:
   url: https://images.unsplash.com/photo-1497296690583-da0e2a4ce49a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
+
+{% aside %}
+**Note**: While this article focuses on images since they're the most common type of media, the best practices discussed here also apply to videos.
+{% endaside %}
 
 If you're not giving your images an explicit width and height, you may be hurting your [cumulative layout shift (CLS)](https://web.dev/cls/) score. Setting a width and height on images is even more important now that Google uses [Core Web Vitals](https://moz.com/blog/core-web-vitals) as a ranking signal—and cumulative layout shift is just one metric that Google looks at when auditing your site. But what do images have to do with layout shifts, and how does giving them a width and height fix this problem?
 
@@ -51,9 +55,7 @@ The "cumulative" part of CLS means that Lighthouse considers layout shifts in th
 
 ### Dimensionless Images Cause Layout Shifts
 
-When the page loads, your browser already knows the width to reserve for content like images based on your layout's CSS. But what it *doesn't* know ahead of time is how much *vertical* space it needs to reserve for images since this varies from one image to another. Until the image has downloaded, the browser won't have access to that information.
-
-This means that as your browser renders the page for the first time, your images will initially collapse to a height of zero until they've been fully downloaded, at which point the browser will correct the space that those images occupy. Thus, elements after the image will initially be positioned above their true location, like the second paragraph in this diagram:
+When the page loads, your browser doesn't know how much vertical space it should reserve for images since this varies from one image to another. Until the image has downloaded, the browser won't have access to that metadata. This means that the your browser renders the page for the first time, dimensionless images will initially collapse to a height of zero until they've been fully downloaded, at which point the browser will correct the space that those images occupy. Thus, elements after the image will initially be positioned above their true location, like the second paragraph in this diagram:
 
 {% include "postImage.html" src: "./images/not-loaded.png", alt: "A mock browser window with two paragraphs of text spaced a very short distance apart." %}
 
@@ -117,7 +119,7 @@ To recap, this markup:
 <img src="src" alt="Alt text" width="1280" height="750">
 ```
 
-Produces this CSS:
+Produces this user-agent CSS:
 
 ```css
 img {
@@ -127,7 +129,7 @@ img {
 }
 ```
 
-If you were to just stop here, your images would always render at the `width` and `height` that you've specified. But this is not desirable because the width of the source image may actually be wider than the content area in which the image renders (especially on mobile), causing overflows.
+If you were to just stop here, your images would always render at the fixed `width` and `height` that you've specified. But this is not desirable because the width of the source image may actually be wider than the content area in which the image renders (especially on mobile), causing overflows.
 
 The solution involves two steps. The first is to restrict the image's maximum width to that of its containing block, like so:
 
@@ -138,7 +140,7 @@ img {
 ```
 
 {% aside %}
-  Sometimes, you'll see `width` get used instead of `max-width`. I don't recommend this because it means that smaller images may end up getting stretched to fill their container, which can make them blurry.
+  Sometimes, you'll see `width: 100%` used instead of `max-width: 100%`. I don't recommend this because it can stretch narrower images, making them blurry.
 {% endaside %}
 
 This allows the image to resize its width responsively as the device width changes. But the height is still fixed to whatever value you set via HTML. The second step is to give the image a height of `auto`, allowing it to resize its height relative to the current rendered width:
