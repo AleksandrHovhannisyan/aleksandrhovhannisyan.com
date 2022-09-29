@@ -9,13 +9,17 @@
 .post-comment {
   --avatar-size: #{spacing("5")};
   --meta-spacing: #{spacing("-2")};
-  padding-inline-start: calc(var(--avatar-size) + var(--meta-spacing));
+
+  &-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: spacing("-2");
+  }
 
   &-avatar {
     align-self: flex-start;
-    position: absolute;
     width: var(--avatar-size);
-    left: calc(-1 * var(--avatar-size) - var(--meta-spacing));
   }
 
   &-username {
@@ -37,6 +41,22 @@
     }
     @include headings {
       @include font($size: "base");
+    }
+  }
+
+  @include tablet {
+    & {
+      padding-inline-start: calc(var(--avatar-size) + var(--meta-spacing));
+    }
+
+    &-meta {
+      position: relative;
+    }
+
+    &-avatar {
+      position: absolute;
+      transform: translateX(-100%);
+      left: calc(-1 * var(--meta-spacing));
     }
   }
 }
