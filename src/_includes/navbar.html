@@ -1,12 +1,12 @@
-<header class="navbar-header flex align-center">
-  <div class="container flex align-center gap-0">
-    <nav class="navbar flex align-center justify-between gap--2 fs-sm" aria-label="Primary">
+<header class="navbar-header">
+  <div class="navbar-container container">
+    <nav class="navbar" aria-label="Primary">
       <a href="#page-content" class="screen-reader-only skip-navigation">Skip to content</a>
       <a class="navbar-branding outline-offset" href="/" aria-label="Home page" {% if permalink == "/" %}aria-current="page"{% endif %}>
         <img src="/assets/images/favicons/favicon-128.png" class="navbar-logo circle" alt="" />
         <span class="navbar-site-name">Aleksandr Hovhannisyan</span>
       </a>
-      <ul class="navbar-links flex align-center">
+      <ul class="navbar-links">
         {%- comment -%}Only show this home link on mobile view.{%- endcomment -%}
         <li class="navbar-item home">
           <a class="navbar-link" href="/" {% if permalink == "/" %}aria-current="page"{% endif %}>Home</a>

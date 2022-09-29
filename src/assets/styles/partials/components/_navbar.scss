@@ -17,6 +17,11 @@
   position: relative;
   // Shared typography styles for all navbar text
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: spacing("-2");
+  @include font($size: "sm");
 
   a {
     text-decoration: none;
@@ -27,6 +32,8 @@
 
     /* Body is a flex container. Without this, the navbar may shrink vertically due to the presence of a horizontal scrollbar. */
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
     position: fixed;
     z-index: 1;
     bottom: 0;
@@ -37,6 +44,12 @@
     box-shadow: var(--shadow-navbar);
     min-height: var(--navbar-min-height);
     overflow-x: auto;
+  }
+
+  &-container {
+    display: flex;
+    align-items: center;
+    gap: spacing("0");
   }
 
   &-logo {
@@ -54,6 +67,8 @@
   }
 
   &-links {
+    display: flex;
+    align-items: center;
     justify-content: space-between;
     width: 100%;
   }

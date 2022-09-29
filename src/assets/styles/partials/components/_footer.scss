@@ -1,3 +1,4 @@
+@import "../functions";
 @import "../mixins";
 
 .page-footer {
@@ -9,6 +10,14 @@
 
   &-container {
     --gap: #{spacing("0")};
+  }
+
+  &-socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: spacing("0");
   }
 
   @include mobile-lg {
