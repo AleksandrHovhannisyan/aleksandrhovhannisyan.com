@@ -19,7 +19,7 @@ export const renderComments = async (comments) => {
     commentsPlaceholder.innerHTML = `No comments yet.`;
     return;
   }
-  commentsCounter.innerText = `(${comments.length})`;
+  commentsCounter.innerText = `${comments.length} `;
 
   const commentsList = document.createElement('ol');
   commentsList.className = 'stack gap-10';
