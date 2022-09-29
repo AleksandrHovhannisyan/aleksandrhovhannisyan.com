@@ -43,11 +43,11 @@ eleventyComputed:
           <div class="comment-actions flex flex-wrap align-center justify-between gap-0">
             <h2>Comments <span id="comments-count" aria-hidden="true"></span></h2>
             <a
-              class="button"
+              class="button comment-button"
               href="https://github.com/{{ site.issues.owner }}/{{ site.issues.repo }}/issues/{{ commentsId }}"
               target="_blank"
               rel="noreferrer noopener"
-              >Post a comment on GitHub</a
+              >Comment on GitHub {% include "icon.html" icon: "external-link", width: "16", height: "16" %}</a
             >
           </div>
           <p class="comments-explanation">

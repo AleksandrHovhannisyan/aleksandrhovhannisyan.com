@@ -6,6 +6,12 @@
   margin-top: spacing("5");
 }
 
+.comment-button {
+  display: flex;
+  align-items: center;
+  gap: spacing("-2");
+}
+
 .post-comment {
   --avatar-size: #{spacing("5")};
   --meta-spacing: #{spacing("-2")};

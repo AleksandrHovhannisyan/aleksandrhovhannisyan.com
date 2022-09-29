@@ -7,7 +7,7 @@
   background-color: var(--color-surface-5);
   color: var(--color-text-inverted);
   padding: spacing("-2") spacing("0");
-  border-radius: 2px;
+  border-radius: spacing("-4");
   text-decoration: none;
 
   &:is(:focus, :hover) {
