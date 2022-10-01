@@ -40,8 +40,8 @@
   }
 
   &-description {
-    line-height: leading("xs");
     margin-top: spacing("-1");
+    @include font($size: "sm", $line-height: "xs");
   }
 
   &-technologies {
