@@ -1,14 +1,10 @@
 @import "../functions";
 
 .list {
-  --gap: #{spacing("-2")};
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--gap);
   padding-inline-start: 1em;
 
-  & & {
-    margin-top: var(--gap);
+  li {
+    margin-top: spacing("-2");
   }
 }
 
