@@ -6,19 +6,12 @@ permalink: /design/
 eleventyExcludeFromCollections: true
 excludeFromSitemap: true
 noindex: true
-requiredFonts:
-  - body
-  - code
-  - artCursive
-  - artDisplay
 ---
 
 ## Fonts
 
-{% assign fontKeys = fonts | keys %}
 {% assign steps = "xs,sm,base,md,lg,xl,2xl,3xl" | split: "," %}
-
-{%- for keyName in fontKeys %}
+{%- for keyName in requiredFonts %}
   {% assign family = fonts[keyName].family %}
 ### {{ keyName }} ({{ family }})
 
@@ -35,7 +28,7 @@ requiredFonts:
       {%- for step in steps -%}
         <tr>
           <td>{{ step }}</td>
-          <td class="fs-{{ step }}" style="font-family: var(--ff-{{ keyName }});">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</td>
+          <td class="fs-{{ step }}" style="font-family: var(--ff-{{ keyName }});">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit mi augue, sit amet sagittis ligula pellentesque ac. Donec sed varius arcu.</td>
         </tr>
       {%- endfor -%}
     </tbody>
@@ -214,6 +207,56 @@ Definition of the term goes here.
 
   Duis ultrices nunc in finibus pharetra. Nullam ornare ex sit amet diam interdum porta. Sed non libero vel est auctor suscipit quis eget mi. Phasellus vestibulum neque id luctus imperdiet.
 {% endquote %}
+
+### Vertical Rhythm (`.rhythm`)
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et posuere sem. Vestibulum nisl arcu, tempus quis ultrices tincidunt, vehicula sit amet turpis. Integer porttitor faucibus massa. In nec quam at odio egestas maximus non ac elit. In sed euismod urna. Phasellus vehicula mollis urna sit amet vulputate. Sed pulvinar semper ornare. Nam lacinia gravida eros in tempor. Ut fermentum, ipsum sed consequat molestie, dolor diam posuere odio, et fringilla est eros ac massa.
+
+Nullam volutpat finibus felis, vel ornare leo gravida ut. In eu aliquam metus, sit amet pretium orci. Morbi feugiat fringilla convallis. Etiam luctus, augue id tempus placerat, turpis nibh ultricies neque, at posuere ipsum magna at eros. Quisque lectus urna, interdum non varius pharetra, rutrum eget enim. Morbi eleifend odio lobortis ligula pharetra congue. Vestibulum vulputate viverra lacinia. Vivamus sollicitudin scelerisque mi, in facilisis augue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras quis quam turpis. Aenean ut eros mi. Proin id mauris erat. Curabitur a iaculis erat.
+
+Aliquam erat volutpat. Sed velit ex, consectetur vel elementum ac, vulputate id lacus. In ipsum nulla, vestibulum ut consequat nec, iaculis at est. Duis lorem lorem, tempor at eros dignissim, interdum congue mauris. In ullamcorper auctor sapien, eu gravida purus imperdiet et. Phasellus nec ante id leo viverra consequat. Suspendisse augue dui, viverra id finibus sit amet, molestie vitae elit. Nam porta nibh cursus, iaculis orci ut, accumsan sem. Integer eget sem vestibulum, sollicitudin nulla efficitur, varius augue. Nullam libero nulla, congue vitae lectus sit amet, maximus ultrices mauris. Cras efficitur eros id mi vehicula facilisis. Donec et venenatis diam. Nullam elit eros, posuere ut volutpat sed.
+
+### Lists (with nesting)
+
+#### Unordered List
+
+<ul class="list">
+  <li>Lorem ipsum dolor sit amet consectetur
+    <ul class="list">
+      <li>Lorem ipsum dolor sit amet consectetur</li>
+      <li>Lorem ipsum dolor sit amet consectetur</li>
+      <li>Lorem ipsum dolor sit amet consectetur</li>
+    </ul>
+  </li>
+  <li>Lorem ipsum dolor sit amet consectetur
+    <ul class="list">
+      <li>Lorem ipsum dolor sit amet consectetur</li>
+      <li>Lorem ipsum dolor sit amet consectetur</li>
+      <li>Lorem ipsum dolor sit amet consectetur</li>
+    </ul>
+  </li>
+  <li>Lorem ipsum dolor sit amet consectetur</li>
+</ul>
+
+#### Ordered List
+
+<ol class="list">
+  <li>Lorem ipsum dolor sit amet consectetur
+    <ol class="list">
+      <li>Lorem ipsum dolor sit amet consectetur</li>
+      <li>Lorem ipsum dolor sit amet consectetur</li>
+      <li>Lorem ipsum dolor sit amet consectetur</li>
+    </ol>
+  </li>
+  <li>Lorem ipsum dolor sit amet consectetur
+    <ul class="list">
+      <li>Lorem ipsum dolor sit amet consectetur</li>
+      <li>Lorem ipsum dolor sit amet consectetur</li>
+      <li>Lorem ipsum dolor sit amet consectetur</li>
+    </ul>
+  </li>
+  <li>Lorem ipsum dolor sit amet consectetur</li>
+</ol>
 
 ### Image
 
