@@ -1,5 +1,5 @@
 ---
-title: Always Set a Width and Height on Your Images
+title: Set a Width and Height on Images to Reduce Layout Shifts
 description: Dimensionless images can cause layout shifts as they load, hurting your page's performance. By setting a width and height on images, you allow the browser to initialize an aspect ratio for those images and minimize layout shifts.
 keywords: [setting width and height on images, setting an image's width and height, width and height, layout shifts]
 categories: [webperf, images, aspect-ratio, html]
@@ -18,7 +18,7 @@ If you're not giving your images an explicit width and height, you may be hurtin
 
 {% include "toc.md" %}
 
-## Images Do Not Have an Explicit Width and Height
+## Image Elements Do Not Have Explicit Width and Height
 
 If you've ever [run your site through Lighthouse](https://web.dev/measure/), then you've probably seen this message:
 
