@@ -19,11 +19,9 @@
   height: 100%;
 }
 
-:where(label, input, textarea, button) {
-  font-family: inherit;
-  font-size: inherit;
+:where(input, select, textarea, button) {
+  font: inherit;
   line-height: inherit;
-  letter-spacing: inherit;
 }
 
 // Responsive media with a width and height set in their HTML need this reset

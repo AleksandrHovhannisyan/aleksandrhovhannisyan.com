@@ -28,8 +28,13 @@
     }
   }
 
-  &-tag {
+  &-tags {
     display: flex;
+    flex-wrap: wrap;
+    gap: spacing("-2");
+  }
+
+  &-tag {
     color: var(--color-text-soft);
 
     &::before {

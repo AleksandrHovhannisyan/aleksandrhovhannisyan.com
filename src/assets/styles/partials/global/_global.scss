@@ -4,23 +4,19 @@
 @import "../mixins";
 
 body {
-  -webkit-font-smoothing: antialiased;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--color-surface-1);
   color: var(--color-text-normal);
   overflow-wrap: break-word;
-  @include font($family: "body", $weight: "regular", $size: "base");
+  -webkit-font-smoothing: antialiased;
+  @include font($size: "base");
 }
 
 #page-content {
   padding-block-start: clamped(32px, 96px);
   padding-block-end: clamped(64px, 96px);
-}
-
-a {
-  color: var(--color-text-emphasis);
 }
 
 :is(code, kbd) {
@@ -32,7 +28,10 @@ a {
   }
 }
 
-:is(h1, h2, h3, h4, h5, h6, label, th, strong) {
+:is(a, h1, h2, h3, h4, h5, h6, label, th, strong) {
   color: var(--color-text-emphasis);
+}
+
+:is(h1, h2, h3, h4, h5, h6, label, th, strong) {
   @include font($family: "body", $weight: "bold");
 }

@@ -1,5 +1,6 @@
 body {
   font-family: var(--ff-body);
+  font-weight: var(--fw-body-regular);
 }
 
 code {

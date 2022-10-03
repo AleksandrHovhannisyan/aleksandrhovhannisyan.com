@@ -25,7 +25,7 @@ eleventyComputed:
         {% endif %}
       </dl>
     <h1 class="post-title">{{ title }}</h1>
-    <ul class="post-tags flex flex-wrap gap--2" aria-label="Tags">
+    <ul class="post-tags" aria-label="Tags">
       {%- for category in categories -%}
         <li>
           <a href="/tags/{{ category }}/" class="post-tag" aria-label="{{ category }}">

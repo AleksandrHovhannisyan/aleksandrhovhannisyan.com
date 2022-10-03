@@ -34,18 +34,17 @@
   }
 
   &-date {
-    display: block;
     color: var(--color-text-soft);
-    margin-bottom: spacing("-3");
   }
 
   &-title {
-    margin-bottom: spacing("-2");
+    margin-top: spacing("-3");
     // Tighten line height due to short line length
     @include font($size: "lg", $line-height: "2xs");
   }
 
   &-description {
+    margin-top: spacing("-2");
     // Tighten line height due to short line length
     line-height: leading("xs");
   }
