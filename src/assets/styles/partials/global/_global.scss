@@ -19,25 +19,8 @@ body {
   padding-block-end: clamped(64px, 96px);
 }
 
-strong,
 a {
   color: var(--color-text-emphasis);
-}
-
-a {
-  text-decoration: underline;
-
-  &:where(:focus:not(:focus-visible)) {
-    text-decoration: underline;
-  }
-
-  &:where(:hover, :focus) {
-    text-decoration: none;
-  }
-}
-
-strong {
-  @include font($family: "body", $weight: "bold");
 }
 
 :is(code, kbd) {
@@ -49,7 +32,7 @@ strong {
   }
 }
 
-:is(h1, h2, h3, h4, h5, h6, label, th) {
+:is(h1, h2, h3, h4, h5, h6, label, th, strong) {
   color: var(--color-text-emphasis);
   @include font($family: "body", $weight: "bold");
 }

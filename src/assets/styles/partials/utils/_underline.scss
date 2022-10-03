@@ -4,10 +4,6 @@
   &:is(:hover, :focus) {
     text-decoration: underline;
   }
-
-  &:focus:not(:focus-visible) {
-    text-decoration: none;
-  }
 }
 
 .no-decoration {
