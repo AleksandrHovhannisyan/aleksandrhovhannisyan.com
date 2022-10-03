@@ -3,13 +3,12 @@
 
 .banner-heading {
   text-transform: uppercase;
-  letter-spacing: to-rems(1px);
   word-spacing: to-rems(2px);
   width: fit-content;
   background-color: var(--color-text-normal);
   color: var(--color-text-inverted);
   padding: spacing("-2") spacing("0");
-  @include font($size: "base");
+  @include font($size: "base", $letter-spacing: "lg");
 
   @include tablet {
     padding-block: spacing("-1");

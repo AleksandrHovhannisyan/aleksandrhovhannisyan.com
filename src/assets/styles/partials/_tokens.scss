@@ -52,11 +52,13 @@ $tokens: (
         min: 34px,
         max: 46px,
         leading: "3xs",
+        letterSpacing: "sm",
       ),
       "4xl": (
         min: 40px,
         max: 86px,
         leading: "4xs",
+        letterSpacing: "xs",
       ),
     ),
     breakpoints: (
@@ -64,6 +66,14 @@ $tokens: (
       max: "desktop",
     ),
     customPropertyPrefix: "fs",
+  ),
+  letterSpacing: (
+    steps: (
+      "xs": -0.5px,
+      "sm": -0.25px,
+      "lg": 1px,
+    ),
+    customPropertyPrefix: "ls",
   ),
   spacing: (
     steps: (

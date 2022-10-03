@@ -81,7 +81,7 @@ html {
         margin: 0 auto;
         position: relative;
         text-transform: uppercase;
-        letter-spacing: to-rems(1px);
+        letter-spacing: letter-spacing("lg");
         text-shadow: to-rems(1px) to-rems(1px);
         font-size: calc(var(--font-size-multiplier) * #{font-size("4xl")});
         @include font($family: "artDisplay", $weight: "regular");
@@ -167,7 +167,7 @@ html {
       position: relative;
       padding: spacing("-1") spacing("0");
       text-transform: uppercase;
-      letter-spacing: to-rems(1px);
+      letter-spacing: letter-spacing("lg");
       text-decoration: none;
       color: var(--color-text);
       border: solid 2px;

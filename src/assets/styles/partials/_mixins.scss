@@ -47,7 +47,7 @@
   @extend .#{get-custom-property-prefix("fontSize")}-#{$step};
 }
 
-@mixin font($size: null, $line-height: null, $family: null, $weight: null) {
+@mixin font($size: null, $line-height: null, $letter-spacing: null, $family: null, $weight: null) {
   @if not $size and not $line-height and not $family and not $weight {
     @error "You must specify at least a font size, line height, or a font family + weight when using the font mixin.";
   }
@@ -55,19 +55,27 @@
   @if $weight and not $family or $family and not $weight {
     @error "Cannot set font family without a weight, and vice versa.";
   }
-  // Font sizing
+  // Font size and its related properties
   @if $size {
     font-size: font-size($size);
+    // Line height
     @if not $line-height {
       $line-height-step: get($tokens, "fontSize", "steps", $size, "leading");
       @if $line-height-step {
         line-height: leading($line-height-step);
       }
+    } @else {
+      line-height: leading($line-height);
     }
-  }
-  // Line height
-  @if $line-height {
-    line-height: leading($line-height);
+    // Letter spacing
+    @if not $letter-spacing {
+      $letter-spacing-step: get($tokens, "fontSize", "steps", $size, "letterSpacing");
+      @if $letter-spacing-step {
+        letter-spacing: letter-spacing($letter-spacing-step);
+      }
+    } @else {
+      letter-spacing: letter-spacing($letter-spacing);
+    }
   }
   // Setting family and weight together
   @if $family {

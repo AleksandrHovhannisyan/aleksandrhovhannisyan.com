@@ -56,6 +56,10 @@
   @return get-scale-step("leading", $step);
 }
 
+@function letter-spacing($step) {
+  @return get-scale-step("letterSpacing", $step);
+}
+
 /// Returns true if the given string ends with the given suffix.
 /// Adapted for use from: https://stackoverflow.com/a/40389473/5323344
 
