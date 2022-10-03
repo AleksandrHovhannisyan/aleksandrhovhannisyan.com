@@ -12,12 +12,4 @@ figure {
 
 figcaption {
   text-align: center;
-  @include font($size: "sm");
-}
-
-:is(figcaption, cite) {
-  &,
-  a {
-    color: var(--color-text-soft);
-  }
 }

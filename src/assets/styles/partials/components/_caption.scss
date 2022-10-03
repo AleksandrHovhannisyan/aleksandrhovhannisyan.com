@@ -1,0 +1,10 @@
+@import "../mixins";
+
+:is(caption, figcaption, cite) {
+  color: var(--color-text-soft);
+  @include font($size: "sm");
+
+  * {
+    color: inherit;
+  }
+}
