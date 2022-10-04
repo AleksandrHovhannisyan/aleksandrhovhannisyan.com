@@ -51,7 +51,6 @@
     #skip-toc {
       transform: translateY(-50%);
       padding: spacing("-4") spacing("-2");
-      @include font($family: "body", $weight: "bold");
     }
 
     .toc-list {
