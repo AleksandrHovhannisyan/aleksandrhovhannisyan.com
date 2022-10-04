@@ -12,7 +12,7 @@
   display: none;
 
   @include desktop-lg {
-    display: unset;
+    display: flex;
   }
 }
 
