@@ -3,6 +3,47 @@
 @import "../mixins";
 
 pre[class*="language-"] {
+
+  @include theme-light {
+    --color-code-background: hsl(0deg 0% 95%);
+    --color-code-overlay-1: hsl(0deg 0% 88%);
+    --color-code-overlay-2: hsl(0deg 0% 80%);
+    --color-code-selection: hsl(243.9deg 80.3% 33.9% / 20%);
+    --color-code-comment: hsl(120deg 100% 21.8%);
+    --color-code-text: hsl(0deg 0% 0%);
+    --color-code-keyword: hsl(233deg 100% 38%);
+    --color-code-number: var(--color-code-comment);
+    --color-code-attribute: var(--color-code-text);
+    --color-code-string: hsl(8deg 100% 38%);
+    --color-code-variable: var(--color-code-keyword);
+    --color-code-tag: var(--color-code-keyword);
+    --color-code-constant: var(--color-code-number);
+    --color-code-punctuation: var(--color-code-text);
+    --color-code-selector: var(--color-code-string);
+    --shadow-code-block: none;
+  }
+
+  @include theme-dark {
+    --color-code-background: var(--color-surface-2);
+    --color-code-overlay-1: hsl(0deg 0% 25%);
+    --color-code-overlay-2: hsl(0deg 0% 60%);
+
+    /* VS Code Dark Plus theme: https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vsc-dark-plus.css */
+    --color-code-selection: hsl(210deg 100% 84% / 15%);
+    --color-code-comment: hsl(101deg 29% 47%);
+    --color-code-text: hsl(0deg 0% 83%);
+    --color-code-keyword: hsl(207deg 61% 59%);
+    --color-code-number: hsl(99deg 28% 73%);
+    --color-code-attribute: hsl(201deg 98% 80%);
+    --color-code-string: hsl(17deg 47% 64%);
+    --color-code-variable: var(--color-code-keyword);
+    --color-code-tag: var(--color-code-keyword);
+    --color-code-constant: var(--color-code-number);
+    --color-code-punctuation: #8a8a8a;
+    --color-code-selector: hsl(41deg 53% 67%);
+    --shadow-code-block: 0 2px 8px 0 hsl(0deg 0% 0% / 40%);
+  }
+
   --code-block-padding: #{spacing("5")};
   background: var(--color-code-background);
   box-shadow: var(--shadow-code-block);

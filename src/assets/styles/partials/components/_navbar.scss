@@ -9,41 +9,53 @@
 }
 
 .navbar {
-  // Don't wrap whitespace
-  white-space: nowrap;
-  // Distribute available space evenly, but don't shrink
-  flex: 1 0 auto;
-  // Relatively position the navbar for the skip link
-  position: relative;
-  // Shared typography styles for all navbar text
-  color: white;
+  @include theme-light {
+    --color-navbar-bg: var(--color-surface-5);
+    --color-navbar-bg-focus: var(--color-surface-4);
+    --shadow-navbar: none;
+  }
+
+  @include theme-dark {
+    --color-navbar-bg: var(--color-surface-2);
+    --color-navbar-bg-focus: var(--color-surface-3);
+    --shadow-navbar: 0 -2px 8px hsl(0deg 0% 0% / 40%);
+  }
+
+  --navbar-min-height: #{spacing("10")};
+
+  /* Body is a flex container. Without this, the navbar may shrink vertically due to the presence of a horizontal scrollbar. */
+  flex-shrink: 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: spacing("-2");
-  @include font($size: "sm");
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding-block: spacing("-1");
+  background-color: var(--color-navbar-bg);
+  box-shadow: var(--shadow-navbar);
+  min-height: var(--navbar-min-height);
+  overflow-x: auto;
 
   a {
     text-decoration: none;
   }
 
-  &-header {
-    --navbar-min-height: #{spacing("10")};
-
-    /* Body is a flex container. Without this, the navbar may shrink vertically due to the presence of a horizontal scrollbar. */
-    flex-shrink: 0;
+  nav {
+    // Don't wrap whitespace
+    white-space: nowrap;
+    // Distribute available space evenly, but don't shrink
+    flex: 1 0 auto;
+    // Relatively position the navbar for the skip link
+    position: relative;
+    // Shared typography styles for all navbar text
+    color: white;
     display: flex;
     align-items: center;
-    position: fixed;
-    z-index: 1;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding-block: spacing("-1");
-    background-color: var(--color-navbar-bg);
-    box-shadow: var(--shadow-navbar);
-    min-height: var(--navbar-min-height);
-    overflow-x: auto;
+    justify-content: space-between;
+    gap: spacing("-2");
+    @include font($size: "sm");
   }
 
   &-container {
@@ -226,11 +238,9 @@
 
 @include mobile-lg {
   .navbar {
-    &-header {
-      --navbar-min-height: #{spacing("11")};
-      position: unset;
-      box-shadow: none;
-    }
+    --navbar-min-height: #{spacing("11")};
+    position: unset;
+    box-shadow: none;
 
     &-branding {
       display: flex;

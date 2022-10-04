@@ -2,6 +2,14 @@
 @import "../mixins";
 
 .page-footer {
+  @include theme-light {
+    --color-footer-bg: var(--color-surface-5);
+  }
+
+  @include theme-dark {
+    --color-footer-bg: var(--color-surface-2);
+  }
+
   background-color: var(--color-footer-bg);
   color: white;
   text-align: center;

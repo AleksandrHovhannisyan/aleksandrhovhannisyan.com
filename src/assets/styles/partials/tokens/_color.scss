@@ -3,7 +3,6 @@ html {
   &[data-theme="light"] {
     color-scheme: light;
 
-    // Generic
     --color-surface-1: white;
     --color-surface-2: hsl(0deg 0% 95%);
     --color-surface-3: hsl(0deg 0% 92%);
@@ -14,38 +13,13 @@ html {
     --color-text-emphasis: black;
     --color-text-inverted: white;
     --color-border: hsl(0deg 0% 60%);
-
-    // Components
-    --color-card-bg: var(--color-surface-1);
-    --color-footer-bg: var(--color-surface-5);
-    --color-navbar-bg: var(--color-surface-5);
-    --color-navbar-bg-focus: var(--color-surface-4);
     --color-scrollbar-thumb: hsl(0deg 0% 70%);
-    --color-inline-code-bg: var(--color-surface-2);
-    --color-code-background: hsl(0deg 0% 95%);
-    --color-code-overlay-1: hsl(0deg 0% 88%);
-    --color-code-overlay-2: hsl(0deg 0% 80%);
-    --color-code-selection: hsl(243.9deg 80.3% 33.9% / 20%);
-    --color-code-comment: hsl(120deg 100% 21.8%);
-    --color-code-text: hsl(0deg 0% 0%);
-    --color-code-keyword: hsl(233deg 100% 38%);
-    --color-code-number: var(--color-code-comment);
-    --color-code-attribute: var(--color-code-text);
-    --color-code-string: hsl(8deg 100% 38%);
-    --color-code-variable: var(--color-code-keyword);
-    --color-code-tag: var(--color-code-keyword);
-    --color-code-constant: var(--color-code-number);
-    --color-code-punctuation: var(--color-code-text);
-    --color-code-selector: var(--color-code-string);
-    --shadow-code-block: none;
-    --shadow-navbar: none;
   }
 
   // Dark theme
   &[data-theme="dark"] {
     color-scheme: dark;
 
-    // Generic
     --color-surface-1: hsl(0deg 0% 8%);
     --color-surface-2: hsl(0deg 0% 13%);
     --color-surface-3: hsl(0deg 0% 20%);
@@ -56,32 +30,6 @@ html {
     --color-text-emphasis: white;
     --color-text-inverted: black;
     --color-border: hsl(0deg 0% 40%);
-
-    // Components
-    --color-card-bg: var(--color-surface-2);
-    --color-footer-bg: var(--color-surface-2);
-    --color-navbar-bg: var(--color-surface-2);
-    --color-navbar-bg-focus: var(--color-surface-3);
     --color-scrollbar-thumb: var(--color-surface-4);
-    --color-inline-code-bg: var(--color-surface-3);
-    --color-code-background: var(--color-surface-2);
-    --color-code-overlay-1: hsl(0deg 0% 25%);
-    --color-code-overlay-2: hsl(0deg 0% 60%);
-
-    /* VS Code Dark Plus theme: https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vsc-dark-plus.css */
-    --color-code-selection: hsl(210deg 100% 84% / 15%);
-    --color-code-comment: hsl(101deg 29% 47%);
-    --color-code-text: hsl(0deg 0% 83%);
-    --color-code-keyword: hsl(207deg 61% 59%);
-    --color-code-number: hsl(99deg 28% 73%);
-    --color-code-attribute: hsl(201deg 98% 80%);
-    --color-code-string: hsl(17deg 47% 64%);
-    --color-code-variable: var(--color-code-keyword);
-    --color-code-tag: var(--color-code-keyword);
-    --color-code-constant: var(--color-code-number);
-    --color-code-punctuation: #8a8a8a;
-    --color-code-selector: hsl(41deg 53% 67%);
-    --shadow-code-block: 0 2px 8px 0 hsl(0deg 0% 0% / 40%);
-    --shadow-navbar: 0 -2px 8px hsl(0deg 0% 0% / 40%);
   }
 }

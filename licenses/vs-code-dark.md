@@ -1,5 +1,5 @@
 ## VS Code Dark
 
-Usage: https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com/blob/a855d6d10d49c3a7c9f1bb4bc9e01344c2831b04/src/assets/styles/partials/tokens/_color.scss#L71
+Usage (see dark mode variables): https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com/blob/master/src/assets/styles/partials/components/_codeBlock.scss#L0-L1
 
-Not sure who the license applies to, but my website's dark mode highlighter theme is not mine. Pretty sure it's GitHub's/Microsoft's. I've adapted the colors for use in my syntax highlighter. Feel free to reuse!
+Not sure who the license applies to, but my website's dark mode highlighter theme is not mine. Pretty sure it's GitHub's/Microsoft's and that it's under MIT since it ships with VS Code. I've adapted the colors for use in my syntax highlighter. Feel free to reuse!
