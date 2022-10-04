@@ -91,7 +91,7 @@ html {
           --color-shadow: hsl(0deg 0% 50% / 10%);
         }
 
-        @include desktop {
+        @include desktop-lg {
           --font-size-multiplier: 2.5;
         }
 
