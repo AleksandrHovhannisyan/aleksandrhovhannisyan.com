@@ -220,16 +220,16 @@ Aliquam erat volutpat. Sed velit ex, consectetur vel elementum ac, vulputate id 
 
 #### Unordered List
 
-<ul class="list">
+<ul>
   <li>Lorem ipsum dolor sit amet consectetur
-    <ul class="list">
+    <ul>
       <li>Lorem ipsum dolor sit amet consectetur</li>
       <li>Lorem ipsum dolor sit amet consectetur</li>
       <li>Lorem ipsum dolor sit amet consectetur</li>
     </ul>
   </li>
   <li>Lorem ipsum dolor sit amet consectetur
-    <ul class="list">
+    <ul>
       <li>Lorem ipsum dolor sit amet consectetur</li>
       <li>Lorem ipsum dolor sit amet consectetur</li>
       <li>Lorem ipsum dolor sit amet consectetur</li>
@@ -240,16 +240,16 @@ Aliquam erat volutpat. Sed velit ex, consectetur vel elementum ac, vulputate id 
 
 #### Ordered List
 
-<ol class="list">
+<ol>
   <li>Lorem ipsum dolor sit amet consectetur
-    <ol class="list">
+    <ol>
       <li>Lorem ipsum dolor sit amet consectetur</li>
       <li>Lorem ipsum dolor sit amet consectetur</li>
       <li>Lorem ipsum dolor sit amet consectetur</li>
     </ol>
   </li>
   <li>Lorem ipsum dolor sit amet consectetur
-    <ul class="list">
+    <ul>
       <li>Lorem ipsum dolor sit amet consectetur</li>
       <li>Lorem ipsum dolor sit amet consectetur</li>
       <li>Lorem ipsum dolor sit amet consectetur</li>

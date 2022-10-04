@@ -28,14 +28,12 @@ const markdownLib = markdownIt({
     placeholder: `{:toc}`, // same as Jekyll
     slugify: slugifyString,
     containerId: 'toc',
-    listClass: 'list toc-list',
+    listClass: 'toc-list',
     itemClass: 'toc-item',
     linkClass: 'toc-link',
     listType: 'ol',
   })
   .use(markdownItClass, {
-    ol: 'list',
-    ul: 'list',
     blockquote: 'rhythm',
   })
   .use(markdownItAnchor, {

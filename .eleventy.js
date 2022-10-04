@@ -106,7 +106,6 @@ module.exports = (eleventyConfig) => {
     baseClass: 'footnotes',
     classes: {
       container: 'rhythm',
-      list: 'list',
     },
     title: 'Footnotes',
     titleId: 'footnotes-label',

@@ -39,7 +39,8 @@
   cursor: pointer;
 }
 
-:where(ul, ol) {
+// It's safe to assume that whenever we add a class to a list, we plan to add custom styles that will require resetting default list styles
+:where(ul, ol)[class] {
   list-style: none;
 }
 

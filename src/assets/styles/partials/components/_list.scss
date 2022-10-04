@@ -1,17 +1,9 @@
 @import "../functions";
 
-.list {
+:is(ul, ol):not([class]) {
   padding-inline-start: 1em;
 
   li {
     margin-top: spacing("-2");
   }
-}
-
-ol.list {
-  list-style: decimal;
-}
-
-ul.list {
-  list-style: disc;
 }
