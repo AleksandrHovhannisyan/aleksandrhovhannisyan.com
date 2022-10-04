@@ -8,6 +8,6 @@
   &-page {
     min-width: spacing("6");
     justify-content: center;
-    @include font($family: "code", $weight: "medium");
+    @include font($family: "mono", $weight: "medium");
   }
 }

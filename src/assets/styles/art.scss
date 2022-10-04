@@ -142,7 +142,7 @@ html {
       border-top: solid 4px;
       padding: spacing("5") spacing("5") spacing("12");
       text-align: center;
-      @include font($family: "code", $weight: "medium", $size: "xs");
+      @include font($family: "mono", $weight: "medium", $size: "xs");
 
       @include tablet {
         padding-bottom: spacing("5");
@@ -177,7 +177,7 @@ html {
         3px 3px,
         2px 2px,
         1px 1px;
-      @include font($size: "sm", $family: "code", $weight: "medium");
+      @include font($size: "sm", $family: "mono", $weight: "medium");
 
       @include tablet {
         @include font($size: "base");
@@ -192,7 +192,7 @@ html {
             transform: translate(-50%, 100%);
             white-space: nowrap;
             color: var(--color-text-soft);
-            @include font($size: "xs", $family: "code", $weight: "bold");
+            @include font($size: "xs", $family: "mono", $weight: "bold");
           }
 
           &[aria-current="page"]::after {

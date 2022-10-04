@@ -48,7 +48,7 @@ const fonts = {
       },
     },
   },
-  code: {
+  mono: {
     family: 'IBM Plex Mono',
     fallbacks: [`Monaco`, `Consolas`, `Courier New`, `monospace`],
     weights: {

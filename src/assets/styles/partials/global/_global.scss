@@ -21,10 +21,10 @@ body {
 
 :is(code, kbd) {
   font-size: 0.82em;
-  @include font($family: "code", $weight: "medium");
+  @include font($family: "mono", $weight: "medium");
 
   :is(strong, h1, h2, h3, h4, h5, h6) & {
-    @include font($family: "code", $weight: "bold");
+    @include font($family: "mono", $weight: "bold");
   }
 }
 
