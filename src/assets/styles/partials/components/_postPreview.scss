@@ -63,5 +63,13 @@
   &-tag {
     position: relative;
     line-height: leading("lg");
+
+    &:is(:focus, :hover) {
+      text-decoration: none;
+    }
+
+    &:focus:not(:focus-visible) {
+      text-decoration: underline;
+    }
   }
 }
