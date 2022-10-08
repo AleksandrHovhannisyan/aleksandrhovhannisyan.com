@@ -82,7 +82,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    gap: spacing("-2");
+    flex: 1 0 auto;
   }
 
   &-item {
@@ -253,8 +254,7 @@
     }
 
     &-links {
-      gap: spacing("-2");
-      width: unset;
+      flex: 0 1 auto;
     }
 
     &-item.home {
