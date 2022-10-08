@@ -3,7 +3,7 @@
 
 .page-footer {
   @include theme-light {
-    --color-footer-bg: var(--color-surface-5);
+    --color-footer-bg: var(--color-surface-9);
   }
 
   @include theme-dark {

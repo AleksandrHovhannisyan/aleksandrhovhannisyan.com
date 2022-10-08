@@ -5,7 +5,7 @@
 pre[class*="language-"] {
 
   @include theme-light {
-    --color-code-background: hsl(0deg 0% 95%);
+    --color-code-background: var(--color-surface-2);
     --color-code-overlay-1: hsl(0deg 0% 88%);
     --color-code-overlay-2: hsl(0deg 0% 80%);
     --color-code-selection: hsl(243.9deg 80.3% 33.9% / 20%);
@@ -25,8 +25,8 @@ pre[class*="language-"] {
 
   @include theme-dark {
     --color-code-background: var(--color-surface-2);
-    --color-code-overlay-1: hsl(0deg 0% 25%);
-    --color-code-overlay-2: hsl(0deg 0% 60%);
+    --color-code-overlay-1: var(--color-surface-3);
+    --color-code-overlay-2: var(--color-surface-7);
 
     /* VS Code Dark Plus theme: https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vsc-dark-plus.css */
     --color-code-selection: hsl(210deg 100% 84% / 15%);

@@ -10,8 +10,8 @@
 
 .navbar {
   @include theme-light {
-    --color-navbar-bg: var(--color-surface-5);
-    --color-navbar-bg-focus: var(--color-surface-4);
+    --color-navbar-bg: var(--color-surface-9);
+    --color-navbar-bg-focus: var(--color-surface-8);
     --shadow-navbar: none;
   }
 
