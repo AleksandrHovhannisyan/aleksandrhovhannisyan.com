@@ -1,5 +1,14 @@
+@import "../tokens";
 @import "../functions";
 @import "../mixins";
+
+.home-page {
+  gap: spacing("8");
+
+  @include mobile-lg {
+    gap: spacing("10");
+  }
+}
 
 .home-page-hero {
   display: flex;
