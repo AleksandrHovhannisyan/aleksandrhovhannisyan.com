@@ -38,23 +38,51 @@ noindex: true
 
 ## Colors
 
-{% assign surfaceColors = (1..5) %}
+{% assign backgroundColors = (1..5) %}
 {% assign foregroundColors = "text-normal,text-emphasis,text-soft" | split: "," %}
 
 ### Background
 
-<div class="col-wrap" style="--columns: {{ surfaceColors | size }}; --container-width: 10rem;">
-{%- for color in surfaceColors -%}
-  <div style="background-color: var(--color-surface-{{ color }}); aspect-ratio: 1; outline: solid 1px;"></div>
-{%- endfor -%}
+<div class="scroll-x">
+  <table>
+    <caption>Background color variables</caption>
+    <thead>
+      <tr>
+        <th scope="col">Variable</th>
+        <th scope="col">Preview</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%- for color in backgroundColors -%}
+        <tr>
+          <td><code>color-surface-{{ color }}</code></td>
+          <td><div style="aspect-ratio: 1; width: 50px; background-color: var(--color-surface-{{ color }}); border: solid 1px;"></div></td>
+        </tr>
+      {%- endfor -%}
+    </tbody>
+  </table>
 </div>
 
 ### Text
 
-<div  class="col-wrap" style="--columns: 3;">
-{%- for color in foregroundColors -%}
-  <div style="color: var(--color-{{ color }})"><strong>{{ color }}</strong>: Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
-{%- endfor -%}
+<div class="scroll-x">
+  <table>
+    <caption>Foreground color variables</caption>
+    <thead>
+      <tr>
+        <th scope="col">Variable</th>
+        <th scope="col">Preview</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%- for color in foregroundColors -%}
+        <tr>
+          <td><code>{{ color }}</code></td>
+          <td style="color: var(--color-{{ color }});">Lorem ipsum dolor sit amet</td>
+        </tr>
+      {%- endfor -%}
+    </tbody>
+  </table>
 </div>
 
 ## Components
