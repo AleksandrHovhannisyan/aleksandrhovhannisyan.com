@@ -49,11 +49,7 @@ pre[class*="language-"] {
   box-shadow: var(--shadow-code-block);
   color: var(--color-code-text);
   position: relative;
-
-  @include full-bleed;
-  @include tablet {
-    border-radius: spacing("-2");
-  }
+  border-radius: spacing("-3");
 
   &:hover {
     .copy-code-button {

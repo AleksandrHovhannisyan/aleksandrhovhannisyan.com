@@ -32,7 +32,7 @@ Carousels don't have to be bad, but we have a culture of making them bad. It is 
 In this article, we'll learn how to create a progressively enhanced image carousel like the one in the interactive demo below. Try it out! Focus the carousel and use your arrow keys to slide left or right, click the buttons to jump from one image to another, or use your mouse wheel to scroll:
 
 <p style="display: contents"><a href="#carousel-skip-target" class="screen-reader-only" style="left: 50%; transform: translateX(-50%);">Skip carousel</a></p>
-<div class="carousel full-bleed" id="carousel">
+<div class="carousel" id="carousel">
   <div
     class="carousel-scroll-container outline-offset"
     role="region"
@@ -326,7 +326,7 @@ Since we're using `proximity` for `scroll-snap-type`, we don't need to worry tha
 The carousel we've been building so far is more akin to a filmstrip, where multiple media may be visible at once but only one is centered at a time. Most carousels in the wild use full-width slides so that only one image is ever shown at a time, like so:
 
 <p style="display: contents"><a href="#slideshow-skip-target" class="screen-reader-only" style="left: 50%; transform: translateX(-50%);">Skip carousel</a></p>
-<div class="carousel slideshow full-bleed" id="slideshow">
+<div class="carousel slideshow" id="slideshow">
   <div
     class="carousel-scroll-container outline-offset"
     role="region"
