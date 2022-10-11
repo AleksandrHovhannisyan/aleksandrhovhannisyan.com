@@ -1,46 +1,56 @@
 import throttle from 'lodash/throttle';
-import ChevronLeft from 'feather-icons/dist/icons/chevron-left.svg';
-import ChevronRight from 'feather-icons/dist/icons/chevron-right.svg';
 import { getFocalPoint, getDistanceToFocalPoint, isRtl } from './utils.mjs';
 
-class Carousel {
+const SCROLL_DELAY_MS = 200;
+
+/**
+ * @typedef CarouselProps
+ * @property {HTMLElement} root
+ * @property {HTMLOListElement} [navigationControls]
+ * @property {number} [scrollDelayMs] The delay, in milliseconds, for debouncing the scroll event handler.
+ */
+
+export default class Carousel {
+  /**
+   * @param {CarouselProps} props
+   */
   constructor(props) {
-    this._handleCarouselScroll = throttle(this._handleCarouselScroll.bind(this), 200);
+    // `this` binding for methods
+    const scrollDelayMs = props.scrollDelayMs ?? SCROLL_DELAY_MS;
+    this._handleCarouselScroll = throttle(this._handleCarouselScroll.bind(this), scrollDelayMs);
     this.navigateToNextItem = this.navigateToNextItem.bind(this);
 
-    this.carousel = props.root;
-    this.scrollContainer = this.carousel.querySelector('[role="region"][tabindex="0"]');
+    // Initialize some member variables
+    this.root = props.root;
+    this.scrollContainer = this.root.querySelector('[role="region"][tabindex="0"]');
     this.mediaList = this.scrollContainer.querySelector('[role="list"]');
 
-    const controls = document.createElement('ol');
-    controls.setAttribute('role', 'list');
-    controls.classList.add('carousel-controls');
-    controls.setAttribute('aria-label', 'Navigation controls');
-
-    /**
-     * @param {'start'|'end'} direction
-     */
-    const createNavButton = (direction) => {
-      const li = document.createElement('li');
-      const button = document.createElement('button');
-      button.classList.add('carousel-control', direction);
-      button.setAttribute('aria-label', direction === 'start' ? 'Previous' : 'Next');
-      button.innerHTML = direction === 'start' ? ChevronLeft : ChevronRight;
-      button.addEventListener('click', () => {
-        if (button.getAttribute('aria-disabled') === 'true') return;
-        this.navigateToNextItem(direction);
-      });
-      li.appendChild(button);
-      controls.appendChild(li);
-      return button;
-    };
-
-    this.navControlPrevious = createNavButton('start');
-    this.navControlNext = createNavButton('end');
-    this.carousel.appendChild(controls);
-
+    // Set up event listeners and init UI
+    this._insertNavigationControls(props.navigationControls);
     this.scrollContainer.addEventListener('scroll', this._handleCarouselScroll);
     this._handleCarouselScroll();
+  }
+
+  /**
+   * @param {HTMLElement} controls
+   */
+  _insertNavigationControls(controls) {
+    if (!controls) return;
+
+    const [navControlPrevious, navControlNext] = controls.querySelectorAll('button[data-direction]');
+    this.navControlPrevious = navControlPrevious;
+    this.navControlNext = navControlNext;
+
+    const handleNavigation = (e) => {
+      const direction = e.target.dataset.direction;
+      const isDisabled = e.target.getAttribute('aria-disabled') === 'true';
+      if (isDisabled) return;
+      this.navigateToNextItem(direction);
+    };
+
+    this.navControlPrevious.addEventListener('click', handleNavigation);
+    this.navControlNext.addEventListener('click', handleNavigation);
+    this.root.appendChild(controls);
   }
 
   _handleCarouselScroll() {
@@ -50,8 +60,8 @@ class Carousel {
     const width = this.scrollContainer.clientWidth + 1;
     const isAtStart = Math.floor(scrollLeft) === 0;
     const isAtEnd = Math.ceil(width + scrollLeft) >= this.scrollContainer.scrollWidth;
-    this.navControlPrevious.setAttribute('aria-disabled', isAtStart);
-    this.navControlNext.setAttribute('aria-disabled', isAtEnd);
+    this.navControlPrevious?.setAttribute('aria-disabled', isAtStart);
+    this.navControlNext?.setAttribute('aria-disabled', isAtEnd);
   }
 
   /**
@@ -78,10 +88,8 @@ class Carousel {
     // This should never happen, but it doesn't hurt to check
     if (typeof targetFocalPoint === 'undefined') return;
     // RTL flips the direction
-    const sign = isRtl(this.carousel) ? -1 : 1;
+    const sign = isRtl(this.root) ? -1 : 1;
     const scrollAmount = sign * (targetFocalPoint - scrollContainerCenter);
     this.scrollContainer.scrollBy({ left: scrollAmount });
   }
 }
-
-export default Carousel;

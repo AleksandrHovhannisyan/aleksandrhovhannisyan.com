@@ -109,7 +109,7 @@
 }
 
 .carousel-control {
-  --offset-x: 0.25rem;
+  --offset-x: #{spacing("-3")};
   cursor: pointer;
 
   /* Anchor the controls relative to the outer wrapper */
@@ -117,7 +117,7 @@
 
   /* Center the controls vertically */
   top: 50%;
-  padding: 1rem;
+  padding: spacing("0");
   transform: translateY(-50%);
   border-radius: 50%;
   border: solid 1px hsl(0deg 0% 50%);
@@ -127,12 +127,17 @@
   line-height: 0;
 }
 
-.carousel-control.start {
+/* Don't allow icons to be event targets */
+.carousel-control * {
+  pointer-events: none;
+}
+
+.carousel-control[data-direction="start"] {
   /* Same as left in LTR and right in RTL */
   inset-inline-start: var(--offset-x);
 }
 
-.carousel-control.end {
+.carousel-control[data-direction="end"] {
   /* Same as right in LTR and left in RTL */
   inset-inline-end: var(--offset-x);
 }

@@ -1,12 +1,10 @@
 ---
-# title: Creating a Progressively Enhanced and Accessible Image Carousel
-# title: "Image Carousel Tutorial: Creating an Accessible Media Carousel"
 title: Creating an Accessible Image Carousel
 description: Learn how to build an accessible image carousel that supports multiple input modes and is progressively enhanced with CSS scroll snap and JavaScript.
 keywords: [image carousel, carousel, accessible carousel, media carousel]
 categories: [html, css, javascript, accessibility, scroll-snap, rtl]
 thumbnail: ./images/algorithm.png
-lastUpdated: 2022-07-05
+lastUpdated: 2022-10-12
 openGraph:
   twitter:
     card: summary_large_image
@@ -69,7 +67,7 @@ While this tutorial shows you how to implement an _image_ carousel, you can stil
 
 Semantically, an image carousel is a list of images—typically ordered in an authoring context where users can choose how to arrange their media, but you could also use an unordered list. Below is some static markup that could be used to define such a carousel. I'm using plain HTML in this tutorial, but you could translate this into any templating language you want, such as if you're using a JavaScript framework.
 
-```html {data-copyable=true}
+```html {data-file="index.html" data-copyable=true}
 <div class="carousel">
   <div 
     class="carousel-scroll-container" 
@@ -90,12 +88,56 @@ Semantically, an image carousel is a list of images—typically ordered in an au
       <!-- more images can go here -->
     </ol>
   </div>
-  <!-- navigation controls will be inserted here with JS -->
 </div>
 ```
 
 {% aside %}
-To keep the markup simple, I only rendered a single image and used placeholders for its attributes. You can use whatever media you want and update the HTML accordingly.
+To simplify the markup, I only rendered a single image with placeholder attributes. You can use whatever media you want and update the HTML accordingly.
+{% endaside %}
+
+We'll also use this additional HTML to instantiate the navigation controls for our carousel using client-side JavaScript; this template can go anywhere in your markup since it won't be rendered immediately:
+
+```html {data-file="index.html" data-copyable="true"}
+<template id="carousel-controls">
+  <ol role="list" class="carousel-controls" aria-label="Navigation controls">
+    <li>
+      <button
+        class="carousel-control"
+        aria-label="Previous"
+        data-direction="start"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+    </li>
+    <li>
+      <button class="carousel-control" aria-label="Next" data-direction="end">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </li>
+  </ol>
+</template>
+```
+
+{% aside %}
+I'm using SVGs from [Feather Icons](https://feathericons.com/) for the buttons; feel free to use your own icons.
 {% endaside %}
 
 There are several things going on here, so let's unpack it all.
@@ -162,16 +204,48 @@ Finally, I'm using [`decoding="async"`](https://developer.mozilla.org/en-US/docs
 
 #### Navigation Controls
 
-The final element in the markup is this placeholder comment:
+The final element in the markup is this [HTML `<template>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template), which we'll later clone with JavaScript to create an instance of this node and append it to the carousel:
 
 ```html
-<div class="carousel">
-  <!-- ... -->
-  <!-- navigation controls will be inserted here with JS -->
-</div>
+<template id="carousel-controls">
+  <ol role="list" class="carousel-controls" aria-label="Navigation controls">
+    <li>
+      <button
+        class="carousel-control"
+        aria-label="Previous"
+        data-direction="start"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+    </li>
+    <li>
+      <button class="carousel-control" aria-label="Next" data-direction="end">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </li>
+  </ol>
+</template>
 ```
 
-Since we're following a progressively enhanced approach, and the carousel button controls require JavaScript to function, it makes sense to insert them with JavaScript rather than defining them statically in our HTML. That way, if our script fails to load or a user disables JavaScript, we won't bother rendering the buttons. More on this in a later section.
+Since we're following a progressively enhanced approach, and the carousel button controls require JavaScript to function, it makes sense to insert them with JavaScript rather than defining them statically in our HTML. That way, if our script fails to load or a user disables JavaScript, we won't bother rendering the buttons. More on this later.
 
 ## CSS: Styling the Image Carousel
 
@@ -181,7 +255,7 @@ Our carousel is structured semantically, but it's not very pretty in its current
 
 We'll fix these issues and more in this section as we bring our image carousel to life. Before we proceed, I recommend adding this standard CSS reset to your project:
 
-```css {data-copyable=true}
+```css {data-file="carousel.css" data-copyable=true}
 * {
   margin: 0;
   padding: 0;
@@ -193,7 +267,7 @@ We'll fix these issues and more in this section as we bring our image carousel t
 
 By default, list items display as block-level elements, which is why we currently see our images stacked one on top of another. In a carousel, we typically want the images to be arranged horizontally in an overflow scroll container. To do this, we can make `.carousel-media` a flex container:
 
-```css {data-copyable=true}
+```css {data-file="carousel.css" data-copyable=true}
 .carousel [role='list'] {
   /* These are more appropriate in a CSS reset */
   padding: 0;
@@ -215,7 +289,7 @@ This arranges the images horizontally on the page, like so:
 
 Unfortunately, our images are overflowing _the entire page_ horizontally (and vertically!). Enabling horizontal overflow on the carousel is just a matter of setting the `overflow-x` property on `.carousel-scroll-container` to `auto`, which shows a horizontal scrollbar if there's any overflow:
 
-```css {data-copyable=true}
+```css {data-file="carousel.css" data-copyable=true}
 .carousel-scroll-container {
   /* Enable horizontal scrolling */
   overflow-x: auto;
@@ -228,7 +302,7 @@ This gets us a little closer to the expected result because the page is not over
 
 But because an image's width and height are currently determined by its respective HTML attributes, the images are taking up too much vertical space and overflowing the entire page vertically. We can correct this by setting a fixed height on each list item, setting `height: 100%` on the images, and forcing each image's width to adapt to its height while maintaining its aspect ratio with `width: auto`. I'm going to use a purely arbitrary value of `300px` for the height, but you'll want to update this in your app to be whatever your designers want you to use:
 
-```css {data-copyable=true}
+```css {data-file="carousel.css" data-copyable=true}
 .carousel-item {
   /* Limit the height of each media item */
   height: 300px;
@@ -282,7 +356,7 @@ While `mandatory` scroll snapping creates a more consistent user experience by f
 
 We'll also enable [smooth scrolling](https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-behavior) for browsers that support it so that the snapping behavior is not so abrupt and jarring:
 
-```css {data-copyable=true}
+```css {data-file="carousel.css" data-copyable=true}
 .carousel-scroll-container {
   /* Enable horizontal scroll snap */
   scroll-snap-type: x proximity;
@@ -293,7 +367,7 @@ We'll also enable [smooth scrolling](https://developer.mozilla.org/en-US/docs/We
 
 The final step is to tell the container _where_ it should stop on each image: the start, center, or end of that element's bounding box. We can define these focal points using the `scroll-snap-align` property, which accepts a value of `start`, `center`, or `end` (we'll choose `center` since we want our carousel to center the images).
 
-```css {data-copyable=true}
+```css {data-file="carousel.css" data-copyable=true}
 .carousel-item {
   /* The focal point for each item is the center */
   scroll-snap-align: center;
@@ -310,7 +384,7 @@ In this case, a `scroll-snap-align` of `center` tells the browser to center the 
 
 Since we're using `proximity` for `scroll-snap-type`, we don't need to worry that users might not be able to reach the carousel's edges. However, as an extra precaution, I also recommend that you set the scroll snap alignment to `start` for the first item and `end` for the last item:
 
-```css {data-copyable=true}
+```css {data-file="carousel.css" data-copyable=true}
 .carousel-item:first-of-type {
   /* Allow users to fully scroll to the start */
   scroll-snap-align: start;
@@ -349,7 +423,7 @@ The carousel we've been building so far is more akin to a filmstrip, where multi
 
 If you'd like to implement this variation, all you need to do is force each flex item to take on the full width of its container and use the `object-fit` and `object-position` properties to crop overflowing images. It also makes sense to use mandatory scroll snapping in this case to create a more consistent user experience. I'll use a modifier class of `.slideshow` on the outermost carousel wrapper to scope all of these styles. Below is the CSS needed to implement this variation:
 
-```css {data-copyable=true}
+```css {data-file="carousel.css" data-copyable=true}
 .slideshow .carousel-scroll-container {
   /* Mandatory scroll snap is more consistent for a slideshow */
   scroll-snap-type: x mandatory;
@@ -379,7 +453,7 @@ The rest of this tutorial assumes that you're building the original type of caro
 
 Here's all of the code from this section:
 
-```css {data-copyable=true}
+```css {data-file="carousel.css" data-copyable=true}
 * {
   margin: 0;
   padding: 0;
@@ -437,44 +511,55 @@ In this section, we'll add navigation controls that can be used to programmatica
 
 ### Creating the Navigation Buttons
 
-As mentioned earlier, since our navigation controls depend on JavaScript to function, we'll insert them into the carousel using JavaScript rather than defining them statically in our HTML. Our end goal is something that looks like the image below, although note that I'll present a simplified version of the styling and markup to keep this tutorial short and to the point:
+As mentioned earlier, we'll insert the navigation controls into the carousel with JavaScript by cloning the HTML template we defined earlier. Our end goal is something that looks like the image below, although note that I'll present a simplified version of the styling and markup to keep this tutorial short and to the point:
 
 {% include "postImage.html" src: "./images/buttons.png", alt: "A horizontal image carousel showing three images in view, with different aspect ratios. The carousel has two circular buttons on either end, centered vertically. The buttons use chevrons to denote the direction of travel." %}
 
-The JavaScript below creates an ES6 class for our carousel. Note that this isn't strictly necessary since you could also use ES modules and compose utility functions together to achieve the same end result. The main benefit of using a class is that we can instantiate as many carousels as needed by passing in a new reference for each one.
+We'll start by creating an ES6 class for our carousel. Note that this isn't strictly necessary since you could also use ES modules and compose utility functions together to achieve the same end result. The main benefit of using a class is that we can instantiate as many carousels as needed by passing in new props for each one.
 
-```js {data-copyable=true}
-class Carousel {
+```js {data-file="carousel.js" data-copyable=true}
+/**
+ * @typedef CarouselProps
+ * @property {HTMLElement} root
+ * @property {HTMLElement} [navigationControls]
+ */
+
+export default class Carousel {
+  /**
+   * @type {CarouselProps} props
+   */ 
   constructor(props) {
-    // proper `this` binding; you could also use a class field and transpile for older browsers
+    // `this` binding (you could also transpile class fields)
     this.navigateToNextItem = this.navigateToNextItem.bind(this);
 
-    this.carousel = props.root;
-    this.scrollContainer = this.carousel.querySelector('[role="region"][tabindex="0"]');
+    // Initialize some member variables
+    this.root = props.root;
+    this.scrollContainer = this.root.querySelector('[role="region"][tabindex="0"]');
     this.mediaList = this.scrollContainer.querySelector('[role="list"]');
 
-    const controls = document.createElement('ol');
-    controls.setAttribute('role', 'list');
-    controls.classList.add('carousel-controls');
-    controls.setAttribute('aria-label', 'Navigation controls');
+    // Init UI
+    this._insertNavControls(props.navigationControls);
+  }
 
-    /**
-     * @param {'start'|'end'} direction
-     */
-    const createNavButton = (direction) => {
-      const li = document.createElement('li');
-      const button = document.createElement('button');
-      button.classList.add('carousel-control', direction);
-      button.innerText = direction === 'start' ? 'Previous' : 'Next';
-      button.addEventListener('click', () => this.navigateToNextItem(direction));
-      li.appendChild(button);
-      controls.appendChild(li);
-      return button;
+  /**
+   * @param {HTMLElement} controls
+   */ 
+  _insertNavigationControls(controls) {
+    if (!controls) return;
+
+    const [previous, next] = controls.querySelectorAll('button[data-direction]');
+    this.navControlPrevious = previous;
+    this.navControlNext = next;
+
+    const handleNavigation = (e) => {
+      const button = e.target;
+      const direction = button.dataset.direction;
+      this.navigateToNextItem(direction);
     };
 
-    this.navControlPrevious = createNavButton('start');
-    this.navControlNext = createNavButton('end');
-    this.carousel.appendChild(controls);
+    this.navControlPrevious.addEventListener('click', handleNavigation);
+    this.navControlNext.addEventListener('click', handleNavigation);
+    this.root.appendChild(controls);
   }
 
   /**
@@ -486,26 +571,35 @@ class Carousel {
 }
 ```
 
-The carousel's constructor accepts a reference to the outermost `.carousel` element as a single prop. It then queries the other relevant children of the carousel, creates the navigation buttons, and appends them to the carousel.
+The carousel's constructor accepts two props:
 
-{% aside %}
-In this demo code, I'm using the strings `Previous` and `Next` to keep things simple, but in a production app, you'll likely need to use translated strings. Additionally, if you're using icons instead of text, remember to give the buttons an `aria-label` and reset their line height.
-{% endaside %}
+1. `root`: the outermost `.carousel` element.
+2. `navigationControls`: the element containing the navigation control buttons.
 
-{% aside %}
-Because we're appending the controls to the carousel, they are last in the component's tab order. This means that if the carousel images contain focusable elements like links, a user won't be able to tab to the buttons until they reach the end of the carousel. However, I would argue that this is not a usability issue because the buttons are not primarily for keyboard users—they're an affordance for mouse and touch users. Keyboard users can still scroll the carousel with their arrow keys.
-{% endaside %}
+The constructor then queries all of its relevant children and initializes some member variables for the root, scroll container, and list of media. We've also stubbed out a method named `navigateToNextItem` that we'll later use to programmatically scroll the carousel in either the start or end direction, depending on which button was clicked.
 
-Now, we can use the carousel like so:
+When instantiating our carousel, we'll clone the HTML template that we defined earlier and assign that element to the `navigationControls` prop, like so:
 
-```js
+```js {data-file="index.js" data-copyable=true}
+import Carousel from './carousel';
+
+// This is the template we defined earlier in our HTML
+const carouselControls = document.querySelector('#carousel-controls');
+
 const carousel = new Carousel({
   root: document.querySelector('.carousel'),
+  navigationControls: carouselControls.content.cloneNode(true),
 });
 ```
 
+I recommend following this pattern rather than baking the logic for the controls into the carousel class definition itself. This way, the carousel class does not need to worry about cloning the right template or defining the HTML itself. Moreover, this allows you to create the navigation controls however you want. For example, maybe you want to use `document.createElement`, or maybe you already have a pre-built component.
+
 {% aside %}
-Screen reader users will hear something like the following when navigating the controls:
+Because we're appending the controls to the carousel's root, they are last in the component's tab order. This means that if the carousel images contain focusable elements like links, a user won't be able to tab to the buttons until they reach the end of the carousel. However, this shouldn't create any usability issues because the buttons are not *necessary* for keyboard users—they're an affordance for mouse and touch users. Keyboard users can still scroll the carousel with their arrow keys.
+{% endaside %}
+
+{% aside %}
+Screen reader users will hear something like this when navigating the controls:
 
 1. List, navigation controls, 2 items.
 2. Previous, button 1 of 2.
@@ -520,7 +614,7 @@ There is no shortage in available options. We could place the arrow above the ca
 
 To start things off, we can position the buttons absolutely relative to the wrapper `.carousel` and center them vertically. Below is the bare-minimum CSS to do that:
 
-```css {data-copyable=true}
+```css {data-file="carousel.css" data-copyable=true}
 .carousel {
   position: relative;
 }
@@ -533,11 +627,15 @@ To start things off, we can position the buttons absolutely relative to the wrap
   top: 50%;
   transform: translateY(-50%);
 }
-.carousel-control.start {
+/* Don't allow icons to be event targets */
+.carousel-control * {
+  pointer-events: none;
+}
+.carousel-control[data-direction="start"] {
   /* Same as left in LTR and right in RTL */
   inset-inline-start: var(--offset-x);
 }
-.carousel-control.end {
+.carousel-control[data-direction="end"] {
   /* Same as right in LTR and left in RTL */
   inset-inline-end: var(--offset-x);
 }
@@ -545,47 +643,47 @@ To start things off, we can position the buttons absolutely relative to the wrap
 
 If you need to support older browsers where [logical CSS properties](/blog/writing-better-css/#3-rtl-styling-with-logical-properties-and-values) like `inset-inline-start` and `inset-inline-end` are unavailable, you may want to use the following CSS instead to style the button positioning for left-to-right (LTR) and [right-to-left (RTL)](/blog/changing-locale-in-chrome-with-dev-tools/) writing modes:
 
-```css {data-copyable=true}
-.carousel-control.start {
+```css {data-file="carousel.css" data-copyable=true}
+.carousel-control[data-direction="start"] {
   left: var(--offset-x);
 }
-[dir='rtl'] .carousel-control.start {
+[dir='rtl'] .carousel-control[data-direction="start"] {
   left: unset;
   right: var(--offset-x);
 }
-.carousel-control.end {
+.carousel-control[data-direction="end"] {
   right: var(--offset-x);
 }
-[dir='rtl'] .carousel-control.end {
+[dir='rtl'] .carousel-control[data-direction="end"] {
   right: unset;
   left: var(--offset-x);
 }
 ```
 
 {% aside %}
-If you're using icons, you'll need to flip them for RTL with `transform: translateY(-50%) scale(-1)`. Otherwise, the arrows will point in the wrong direction.
+**Heads up**: If you're rendering SVG icons for your buttons, you'll need to flip them for RTL with `transform: translateY(-50%) scale(-1)`. Otherwise, the arrows will point in the wrong direction.
 {% endaside %}
 
 This works, and it's a pattern that lots of carousels follow, but note that the buttons also overlap the images. On smaller devices, this could create a problem where the first and last images are partially obscured by the navigation buttons. You may want to use a negative offset or position the buttons statically on either end of the carousel. For example, you could offset each button so that it's centered on the outer edge of the carousel using both a horizontal and a vertical transform:
 
-```css
-.carousel-control.start {
+```css {data-file="carousel.css"}
+.carousel-control[data-direction="start"] {
   inset-inline-start: var(--offset-x);
   transform: translate(-50%, -50%);
 }
-.carousel-control.end {
+.carousel-control[data-direction="end"] {
   inset-inline-end: var(--offset-x);
   transform: translate(50%, -50%);
 }
-[dir='rtl'] .carousel-control.start {
+[dir='rtl'] .carousel-control[data-direction="start"] {
   transform: translate(50%, -50%) scale(-1);
 }
-[dir='rtl'] .carousel-control.end {
+[dir='rtl'] .carousel-control[data-direction="end"] {
   transform: translate(-50%, -50%) scale(-1);
 }
 ```
 
-Here's what that would look like:
+Here's what that might look like:
 
 {% include "postImage.html" src: "./images/buttons-outside.png", alt: "A horizontal image carousel showing three images in view, with different aspect ratios. The carousel has two circular buttons on either end, centered vertically but also offset on either end so that they're centered perfectly along the left and right edges of the container." %}
 
@@ -597,7 +695,7 @@ Before we write the logic for the button click handler, we should conditionally 
 
 We can do this by registering a scroll event handler, calculating our scroll position in the carousel, and toggling the `disabled` state of the navigation controls accordingly:
 
-```js {data-copyable=true}
+```js {data-file="Carousel.js" data-copyable=true}
 _handleCarouselScroll() {
   // scrollLeft is negative in a right-to-left writing mode
   const scrollLeft = Math.abs(this.scrollContainer.scrollLeft);
@@ -605,8 +703,8 @@ _handleCarouselScroll() {
   const width = this.scrollContainer.clientWidth + 1;
   const isAtStart = Math.floor(scrollLeft) === 0;
   const isAtEnd = Math.ceil(width + scrollLeft) >= this.scrollContainer.scrollWidth;
-  this.navControlPrevious.disabled = isAtStart;
-  this.navControlNext.disabled = isAtEnd;
+  this.navControlPrevious?.disabled = isAtStart;
+  this.navControlNext?.disabled = isAtEnd;
 }
 ```
 
@@ -616,17 +714,21 @@ As one of the comments notes, it's not enough to check if the scroll container's
 
 Then, in the constructor, we'll pass this method along as an event handler for the `scroll` event and invoke it manually. That way, the Previous button is initially disabled:
 
-```js {data-copyable=true}
+```js {data-file="Carousel.js" data-copyable=true}
 this._handleCarouselScroll = this._handleCarouselScroll.bind(this);
 this.scrollContainer.addEventListener('scroll', this._handleCarouselScroll);
 this._handleCarouselScroll();
 ```
 
-Note that in a production app, you'd want to throttle the event handler for the scroll event to avoid firing it too frequently as a user scrolls manually. You could use [`lodash.throttle`](https://github.com/lodash/lodash) to do this or write it yourself, but that's beyond the scope of this tutorial:
+Note that in a production app, you'd want to throttle the event handler for the scroll event to avoid firing it too frequently as a user scrolls manually. You could use [`lodash.throttle`](https://github.com/lodash/lodash) to do this or write it yourself and then use it like so:
 
-```js
+```js {data-file="Carousel.js"}
+// In constructor
+const scrollDelayMs = props.scrollDelayMs ?? 200;
 this._handleCarouselScroll = throttle(this._handleCarouselScroll.bind(this), 200);
 ```
+
+That's beyond the scope of this tutorial; the remainder of the code may reference the `throttle` function, so it's up to you to define it.
 
 #### Using `aria-disabled` Instead of `disabled`
 
@@ -636,7 +738,7 @@ To fix these two issues, you may want to consider using the `aria-disabled` attr
 
 Here's the new version of our scroll handler:
 
-```js {data-copyable=true}
+```js {data-file="Carousel.js" data-copyable=true}
 _handleCarouselScroll() {
   // scrollLeft is negative in a right-to-left writing mode
   const scrollLeft = Math.abs(this.scrollContainer.scrollLeft);
@@ -644,23 +746,27 @@ _handleCarouselScroll() {
   const width = this.scrollContainer.clientWidth + 1;
   const isAtStart = Math.floor(scrollLeft) === 0;
   const isAtEnd = Math.ceil(width + scrollLeft) >= this.scrollContainer.scrollWidth;
-  this.navControlPrevious.setAttribute('aria-disabled', isAtStart);
-  this.navControlNext.setAttribute('aria-disabled', isAtEnd);
+  this.navControlPrevious?.setAttribute('aria-disabled', isAtStart);
+  this.navControlNext?.setAttribute('aria-disabled', isAtEnd);
 }
 ```
 
 Whereas `disabled` prevents the click handler from firing, `aria-disabled` does not, so you may want to check for this in the button click handler to avoid running the click handler in that case (although this optimization isn't really that important):
 
-```js {data-copyable=true}
-button.addEventListener('click', () => {
-  if (button.getAttribute('aria-disabled') === 'true') return;
+```js {data-file="index.js" data-copyable=true}
+// see _insertNavigationControls
+const handleNavigation = (e) => {
+  const button = e.target;
+  const direction = button.dataset.direction;
+  const isDisabled = button.getAttribute('aria-disabled') === 'true';
+  if (isDisabled) return;
   this.navigateToNextItem(direction);
-});
+};
 ```
 
 Finally, you can style the disabled state like so:
 
-```css {data-copyable=true}
+```css {data-file="carousel.css" data-copyable=true}
 .carousel-control[aria-disabled='true'] {
   filter: opacity(0.5);
   cursor: not-allowed;
@@ -767,9 +873,9 @@ This solution offers a number of advantages over the others we've considered:
 - It can easily support both horizontal LTR and horizontal RTL writing modes.
 - It works even if your carousel has full-width slides.
 
-Recall that we already declared this `navigateToNextItem` event handler in an earlier section:
+Recall that we already declared this `navigateToNextItem` method on the carousel:
 
-```js
+```js {data-file="carousel.js"}
 /**
  * @param {'start'|'end'} direction
  */
@@ -782,15 +888,15 @@ Now, it's time to implement `navigateToNextItem`.
 
 ##### Querying All Images in the Direction of Travel
 
-Previously, in the constructor for our `Carousel`, we initialized a reference to the carousel list:
+In our carousel's constructor, we initialized a reference to the list of media:
 
-```js
+```js {data-file="carousel.js"}
 this.mediaList = this.scrollContainer.querySelector('[role="list"]');
 ```
 
 Since our approach involves comparing the focal point of every carousel item to the center of the carousel itself, our first logical step is to query all of the direct descendants of the media list. We can do this with the special [`:scope`](https://developer.mozilla.org/en-US/docs/Web/CSS/:scope) selector and the direct-descendant selector (`>`):
 
-```js {data-copyable=true}
+```js {data-file="carousel.js" data-copyable=true}
 /**
  * @param {'start'|'end'} direction
  */
@@ -820,7 +926,7 @@ The diagram below illustrates the problem in LTR, but the same applies to RTL:
 
 So we'll update our code to reverse the array if we're traveling toward the `start`:
 
-```js {data-copyable=true}
+```js {data-file="carousel.js" data-copyable=true}
 navigateToNextItem(direction) {
   let mediaItems = Array.from(this.mediaList.querySelectorAll(':scope > *'));
   mediaItems = direction === 'start' ? mediaItems.reverse() : mediaItems;
@@ -831,7 +937,7 @@ navigateToNextItem(direction) {
 
 Next, we need to loop over the media items and find the first one whose focal point is past the carousel's center:
 
-```js {data-copyable=true}
+```js {data-file="carousel.js" data-copyable=true}
 navigateToNextItem(direction) {
   let mediaItems = Array.from(this.mediaList.querySelectorAll(':scope > *'));
   mediaItems = direction === 'start' ? mediaItems.reverse() : mediaItems;
@@ -844,13 +950,13 @@ navigateToNextItem(direction) {
 
 We're going to use [`Element.getBoundingClientRect`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) to calculate the distance from the viewport edge to the center of the carousel and also to the focal point of each media item. To do this, we'll create a helper function that accepts a reference to an HTML element and returns the distance from the viewport edge to the desired focal point:
 
-```js {data-copyable=true}
+```js {data-file="carousel.utils.js" data-copyable=true}
 /**
  * Returns the distance from the starting edge of the viewport to the given focal point on the element.
  * @param {HTMLElement} element
  * @param {'start'|'center'|'end'} [focalPoint]
  */
-const getDistanceToFocalPoint = (element, focalPoint = 'center') => {
+export const getDistanceToFocalPoint = (element, focalPoint = 'center') => {
   const rect = element.getBoundingClientRect();
   switch (focalPoint) {
     case 'start':
@@ -868,27 +974,28 @@ This code gives us the distance from the left edge of the viewport to the center
 
 In a typical internationalized app, you might have a utility function that returns `true` if an element is in a horizontal right-to-left writing mode and `false` otherwise:
 
-```js {data-copyable=true}
+```js {data-file="carousel.utils.js" data-copyable=true}
 /**
  * Returns `true` if the given element is in a horizontal RTL writing mode.
  * @param {HTMLElement} element
  */
-const isRtl = (element) => window.getComputedStyle(element).direction === 'rtl';
+export const isRtl = (element) => 
+  window.getComputedStyle(element).direction === 'rtl';
 ```
 
 {% aside %}
-This is the most resilient way of checking an element's directionality because there are multiple ways of setting it. One is to use the [HTML `dir` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir)—that element and all its children will be in RTL. Another way is to use the [CSS `direction` property](https://developer.mozilla.org/en-US/docs/Web/CSS/direction). Note that both are inheritable, so checking the computed styles covers all our bases.
+This is the most resilient way of checking an element's directionality because there are multiple ways of setting it. One is to use the [HTML `dir` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir)—that element and all its children will be in RTL. Another way is to use the [CSS `direction` property](https://developer.mozilla.org/en-US/docs/Web/CSS/direction). Since this property is inheritable, checking the computed styles covers all our bases.
 {% endaside %}
 
 Then, we can update our function to use this utility:
 
-```js {data-copyable=true}
+```js {data-file="carousel.utils.js" data-copyable=true}
 /**
  * Returns the distance from the starting edge of the viewport to the given focal point on the element.
  * @param {HTMLElement} element
  * @param {'start'|'center'|'end'} [focalPoint]
  */
-const getDistanceToFocalPoint = (element, focalPoint = 'center') => {
+export const getDistanceToFocalPoint = (element, focalPoint = 'center') => {
   const isHorizontalRtl = isRtl(element);
   const documentWidth = document.documentElement.clientWidth;
   const rect = element.getBoundingClientRect();
@@ -906,9 +1013,12 @@ const getDistanceToFocalPoint = (element, focalPoint = 'center') => {
 };
 ```
 
-Now, we'll use this function to find our scroll target:
+Now, we'll import this function and use it to find our scroll target:
 
-```js {data-copyable=true}
+```js {data-file="carousel.js" data-copyable=true}
+import { isRtl, getDistanceToFocalPoint } from './carousel.utils.js';
+
+// in the Carousel class definition
 navigateToNextItem(direction) {
   let mediaItems = Array.from(this.mediaList.querySelectorAll(':scope > *'));
   mediaItems = direction === 'start' ? mediaItems.reverse() : mediaItems;
@@ -967,7 +1077,7 @@ In my testing on Safari 15.15, `scrollIntoView` with the object argument actuall
 
 Alternatively, we can use [`Element.scrollBy`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollBy) to scroll the container manually. To do this, all we need to do is take the carousel's center and subtract it from the scroll target's focal point, giving us either a positive or negative offset. We'll also need to account for RTL, which just flips the sign. Here's the new version of the method:
 
-```js {data-copyable=true}
+```js {data-file="carousel.js" data-copyable=true}
 /**
  * @param {'start'|'end'} direction
  */
@@ -997,7 +1107,7 @@ navigateToNextItem(direction) {
   // This should never happen, but it doesn't hurt to check
   if (typeof targetFocalPoint === 'undefined') return;
   // RTL flips the direction
-  const sign = isRtl(this.carousel) ? -1 : 1;
+  const sign = isRtl(this.root) ? -1 : 1;
   const scrollAmount = sign * (targetFocalPoint - scrollContainerCenter);
   this.scrollContainer.scrollBy({ left: scrollAmount });
 }
@@ -1005,21 +1115,21 @@ navigateToNextItem(direction) {
 
 ### The Final JavaScript
 
-At long last, we're done! We've successfully mimicked the behavior of CSS scroll snap with JavaScript, allowing users to scroll the image carousel with navigation buttons. Below is all of the code from this part of the tutorial:
+At long last, we're done! We've successfully mimicked the behavior of CSS scroll snap with JavaScript, allowing users to scroll the image carousel with navigation buttons. Below is all of the code from this part of the tutorial, split by file:
 
-```js {data-copyable=true}
+```js {data-file="carousel.utils.js" data-copyable=true}
 /**
  * Returns `true` if the given element is in a horizontal RTL writing mode.
  * @param {HTMLElement} element
  */
-const isRtl = (element) => window.getComputedStyle(element).direction === 'rtl';
+export const isRtl = (element) => window.getComputedStyle(element).direction === 'rtl';
 
 /**
  * Returns the distance from the starting edge of the viewport to the given focal point on the element.
  * @param {HTMLElement} element
  * @param {'start'|'center'|'end'} [focalPoint]
  */
-const getDistanceToFocalPoint = (element, focalPoint = 'center') => {
+export const getDistanceToFocalPoint = (element, focalPoint = 'center') => {
   const isHorizontalRtl = isRtl(element);
   const documentWidth = document.documentElement.clientWidth;
   const rect = element.getBoundingClientRect();
@@ -1035,47 +1145,60 @@ const getDistanceToFocalPoint = (element, focalPoint = 'center') => {
     }
   }
 };
+```
 
-class Carousel {
+```js {data-file="carousel.js" data-copyable="true"}
+import { isRtl, getDistanceToFocalPoint } from './carousel.utils.js';
+
+/**
+ * @typedef CarouselProps
+ * @property {HTMLElement} root
+ * @property {HTMLOListElement} [navigationControls]
+ * @property {number} [scrollDelayMs]
+ */
+
+export default class Carousel {
+  /**
+   * @param {CarouselProps} props
+   */
   constructor(props) {
-    this._handleCarouselScroll = throttle(this._handleCarouselScroll.bind(this), 200);
+    // `this` binding for methods
+    const scrollDelayMs = props.scrollDelayMs ?? 200;
+    this._handleCarouselScroll = throttle(this._handleCarouselScroll.bind(this), scrollDelayMs);
     this.navigateToNextItem = this.navigateToNextItem.bind(this);
 
-    this.carousel = props.root;
-    this.scrollContainer = this.carousel.querySelector('[role="region"][tabindex="0"]');
+    // Initialize some member variables
+    this.root = props.root;
+    this.scrollContainer = this.root.querySelector('[role="region"][tabindex="0"]');
     this.mediaList = this.scrollContainer.querySelector('[role="list"]');
 
-    const controls = document.createElement('ol');
-    controls.setAttribute('role', 'list');
-    controls.classList.add('carousel-controls');
-    controls.setAttribute('aria-label', 'Navigation controls');
+    // Set up event listeners and init UI
+    this._insertNavigationControls(props.navigationControls);
+    this.scrollContainer.addEventListener('scroll', this._handleCarouselScroll);
+    this._handleCarouselScroll();
+  }
 
-    /**
-     * @param {'start'|'end'} direction
-     */
-    const createNavButton = (direction) => {
-      const li = document.createElement('li');
-      const button = document.createElement('button');
-      button.classList.add('carousel-control', direction);
-      button.setAttribute('aria-label', direction === 'start' ? 'Previous' : 'Next');
-      button.innerHTML = direction === 'start' ? ChevronLeft : ChevronRight;
-      button.addEventListener('click', (e) => {
-        if (e.currentTarget.getAttribute('aria-disabled') === 'true') return;
-        this.navigateToNextItem(direction);
-      });
-      li.appendChild(button);
-      controls.appendChild(li);
-      return button;
+  /**
+   * @param {HTMLElement} controls
+   */ 
+  _insertNavigationControls(controls) {
+    if (!controls) return;
+
+    const [previous, next] = controls.querySelectorAll('button[data-direction]');
+    this.navControlPrevious = previous;
+    this.navControlNext = next;
+
+    const handleNavigation = (e) => {
+      const button = e.target;
+      const direction = button.dataset.direction;
+      const isDisabled = button.getAttribute('aria-disabled') === 'true';
+      if (isDisabled) return;
+      this.navigateToNextItem(direction);
     };
 
-    this.navControlPrevious = createNavButton('start');
-    this.navControlNext = createNavButton('end');
-    this.carousel.appendChild(controls);
-
-    this.scrollContainer.addEventListener(
-      'scroll', this._handleCarouselScroll
-    );
-    this._handleCarouselScroll();
+    this.navControlPrevious.addEventListener('click', handleNavigation);
+    this.navControlNext.addEventListener('click', handleNavigation);
+    this.root.appendChild(controls);
   }
 
   _handleCarouselScroll() {
@@ -1085,8 +1208,8 @@ class Carousel {
     const width = this.scrollContainer.clientWidth + 1;
     const isAtStart = Math.floor(scrollLeft) === 0;
     const isAtEnd = Math.ceil(width + scrollLeft) >= this.scrollContainer.scrollWidth;
-    this.navControlPrevious.setAttribute('aria-disabled', isAtStart);
-    this.navControlNext.setAttribute('aria-disabled', isAtEnd);
+    this.navControlPrevious?.setAttribute('aria-disabled', isAtStart);
+    this.navControlNext?.setAttribute('aria-disabled', isAtEnd);
   }
 
   /**
@@ -1118,20 +1241,30 @@ class Carousel {
     // This should never happen, but it doesn't hurt to check
     if (typeof targetFocalPoint === 'undefined') return;
     // RTL flips the direction
-    const sign = isRtl(this.carousel) ? -1 : 1;
+    const sign = isRtl(this.root) ? -1 : 1;
     const scrollAmount = sign * (targetFocalPoint - scrollContainerCenter);
     this.scrollContainer.scrollBy({ left: scrollAmount });
   }
 }
+```
 
+{% aside %}
+**Reminder**: Don't forget to import a throttling function.
+{% endaside %}
+
+```js {data-file="index.js" data-copyable="true"}
+import Carousel from './carousel';
+
+const carouselControls = document.querySelector('#carousel-controls');
 const carousel = new Carousel({
-  root: document.querySelector('.carousel'),
+  root: document.querySelector('#carousel'),
+  navigationControls: carouselControls.content.cloneNode(true),
 });
 ```
 
 We also used this additional CSS:
 
-```css {data-copyable=true}
+```css {data-file="carousel.css" data-copyable=true}
 .carousel {
   position: relative;
 }
@@ -1144,11 +1277,15 @@ We also used this additional CSS:
   top: 50%;
   transform: translateY(-50%);
 }
-.carousel-control.start {
+/* Don't allow icons to be event targets */
+.carousel-control * {
+  pointer-events: none;
+}
+.carousel-control[data-direction="start"] {
   /* Same as left in LTR and right in RTL */
   inset-inline-start: var(--offset-x);
 }
-.carousel-control.end {
+.carousel-control[data-direction="end"] {
   /* Same as right in LTR and left in RTL */
   inset-inline-end: var(--offset-x);
 }
@@ -1187,3 +1324,24 @@ While implementing a media carousel may seem like a lot of work, the truth is th
 - [_Practical CSS Scroll Snapping_ by Max Kohler](https://css-tricks.com/practical-css-scroll-snapping/)
 - [_Keyboard-Only Scrolling Areas_ by Adrian Roselli](https://adrianroselli.com/2022/06/keyboard-only-scrolling-areas.html)
 - [_Making Disabled Buttons More Inclusive_ by Sandrina Pereira](https://css-tricks.com/making-disabled-buttons-more-inclusive/)
+
+<template id="carousel-controls">
+  <ol class="carousel-controls" role="list" aria-label="Navigation controls">
+    <li>
+      <button 
+        class="carousel-control" 
+        aria-label="Previous"
+        data-direction="start">
+        {% include "icon.html" icon: "chevron-left" %}
+      </button>
+    </li>
+    <li>
+      <button 
+        class="carousel-control" 
+        aria-label="Next"
+        data-direction="end">
+        {% include "icon.html" icon: "chevron-right" %}
+      </button>
+    </li>
+  </ol>
+</template>
