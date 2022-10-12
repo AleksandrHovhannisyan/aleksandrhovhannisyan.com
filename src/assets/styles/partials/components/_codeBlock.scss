@@ -71,7 +71,7 @@ pre[class*="language-"] {
     &[data-file] {
       // File name
       &::before {
-        content: "Filename: " attr(data-file);
+        content: attr(data-file);
         display: block;
         margin-bottom: calc(var(--code-block-padding) * 0.75);
         color: var(--color-code-text);
