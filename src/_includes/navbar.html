@@ -4,7 +4,7 @@
       <a href="#page-content" class="screen-reader-only skip-navigation">Skip to content</a>
       <a class="navbar-branding outline-offset" href="/" aria-label="Home page" {% if permalink == "/" %}aria-current="page"{% endif %}>
         <img src="/assets/images/favicons/favicon-128.png" class="navbar-logo circle" alt="" />
-        <span class="navbar-site-name">Aleksandr Hovhannisyan</span>
+        <span>Aleksandr Hovhannisyan</span>
       </a>
       <ul class="navbar-links">
         {%- comment -%}Only show this home link on mobile view.{%- endcomment -%}
@@ -31,12 +31,10 @@
         {%- endfor -%}
       </ul>
     </nav>
-    <div>
-      <button id="theme-toggle" class="lamp" aria-label="Enable dark mode theme" aria-pressed="false" type="button">
-        <span class="lamp-base"></span>
-        <span class="lamp-neck"></span>
-        <span class="lamp-head"></span>
-      </button>
-    </div>
+    <button id="theme-toggle" class="lamp" aria-label="Enable dark mode theme" aria-pressed="false" type="button">
+      <span class="lamp-base"></span>
+      <span class="lamp-neck"></span>
+      <span class="lamp-head"></span>
+    </button>
   </div>
 </header>
