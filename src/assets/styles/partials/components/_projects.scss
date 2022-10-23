@@ -41,14 +41,15 @@
 
   &-description {
     margin-top: spacing("-1");
-    @include font($size: "sm", $line-height: "xs");
+    max-width: 36ch;
+    @include font($size: "sm", $line-height: "sm");
   }
 
   &-technologies {
     display: flex;
     flex-wrap: wrap;
     gap: spacing("-2");
-    margin-top: spacing("3");
+    margin-top: spacing("1");
   }
 
   &-technology {
