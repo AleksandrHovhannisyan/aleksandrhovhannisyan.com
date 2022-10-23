@@ -27,16 +27,16 @@
       }
     {%- comment -%}Non-variable fonts{%- endcomment -%}
     {%- else -%}
-      {%- assign weights = font.weights | values -%}
-      {%- for fontEntry in weights -%}
-        {%- if fontEntry.url -%}
-          {%- assign format = fontEntry.url | split: "." | last -%}
+      {%- assign variants = font.variants | values -%}
+      {%- for variant in variants -%}
+        {%- if variant.url -%}
+          {%- assign format = variant.url | split: "." | last -%}
           @font-face {
             font-family: "{{ font.family }}";
-            font-style: {{ fontEntry.style }};
-            font-weight: {{ fontEntry.weight }};
-            {% if fontEntry.display -%}font-display: {{ fontEntry.display }};{%- endif -%}
-            src: local("{{ font.family }}"), local("{{ fontEntry.postscriptName }}"), url("{{ fontEntry.url }}") format("{{ format }}");
+            font-style: {{ variant.style }};
+            font-weight: {{ variant.weight }};
+            {% if variant.display -%}font-display: {{ variant.display }};{%- endif -%}
+            src: local("{{ font.family }}"), local("{{ variant.postscriptName }}"), url("{{ variant.url }}") format("{{ format }}");
           }
         {%- endif -%}
       {%- endfor -%}

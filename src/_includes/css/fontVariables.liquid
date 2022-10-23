@@ -1,15 +1,13 @@
 html {
-  {%- for fontType in requiredFonts -%}
-    {%- assign fontConfig = fonts[fontType] -%}
-    {%- assign fallbackFonts = fontConfig.fallbacks | join: ", " -%}
-    --ff-{{ fontType }}: {{ fontConfig.family }}, {{ fallbackFonts }};
-    {%- assign weights = fontConfig.weights | entries -%}
-    {%- for weight in weights -%}
-      {%- assign weightName = weight | first -%}
-      {%- assign weightConfig = weight | last -%}
+  {%- for fontCategory in requiredFonts -%}
+    {%- assign font = fonts[fontCategory] -%}
+    --ff-{{ fontCategory }}: {{ font.family }}, {{ font.fallbacks | join: ", " }};
+    {%- for entry in font.variants -%}
+      {%- assign variantName = entry | first -%}
+      {%- assign variant = entry | last -%}
       {%- comment -%}Italic variants don't need their own weight variables.{%- endcomment -%}
-      {%- if weightConfig.style != 'italic' -%}
-        --fw-{{ fontType }}-{{ weightName }}: {{ weightConfig.weight }};
+      {%- if variant.style != 'italic' -%}
+        --fw-{{ fontCategory }}-{{ variantName }}: {{ variant.weight }};
       {%- endif -%}
     {%- endfor -%}
   {%- endfor -%}

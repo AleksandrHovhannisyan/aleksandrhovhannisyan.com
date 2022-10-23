@@ -27,7 +27,7 @@ const fonts = {
   body: {
     family: 'Fira Sans',
     fallbacks: [`Sans-fallback`],
-    weights: {
+    variants: {
       [FontWeight.REGULAR]: {
         weight: 400,
         style: FontStyle.NORMAL,
@@ -51,7 +51,7 @@ const fonts = {
   mono: {
     family: 'IBM Plex Mono',
     fallbacks: [`Monaco`, `Consolas`, `Courier New`, `monospace`],
-    weights: {
+    variants: {
       [FontWeight.REGULAR]: {
         weight: 400,
         style: FontStyle.NORMAL,
@@ -75,7 +75,7 @@ const fonts = {
   artCursive: {
     family: 'Reenie Beanie',
     fallbacks: [`cursive`],
-    weights: {
+    variants: {
       [FontWeight.REGULAR]: {
         weight: 400,
         style: FontStyle.NORMAL,
@@ -87,7 +87,7 @@ const fonts = {
   artDisplay: {
     family: 'Rampart One',
     fallbacks: [`Sans-fallback`],
-    weights: {
+    variants: {
       [FontWeight.REGULAR]: {
         weight: 400,
         style: FontStyle.NORMAL,
@@ -109,9 +109,9 @@ const withPostscriptNames = (fontConfig) => {
       font.postscriptName = fontFile.postscriptName;
     } else {
       // Non-variable fonts need one postscript name per weight variant
-      Object.values(font.weights).forEach((weight) => {
-        const fontFile = fontkit.openSync(path.join(dir.input, weight.url));
-        weight.postscriptName = fontFile.postscriptName;
+      Object.values(font.variants).forEach((variant) => {
+        const fontFile = fontkit.openSync(path.join(dir.input, variant.url));
+        variant.postscriptName = fontFile.postscriptName;
       });
     }
   });
