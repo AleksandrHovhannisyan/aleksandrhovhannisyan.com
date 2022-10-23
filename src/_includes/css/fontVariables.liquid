@@ -2,13 +2,10 @@ html {
   {%- for fontCategory in requiredFonts -%}
     {%- assign font = fonts[fontCategory] -%}
     --ff-{{ fontCategory }}: {{ font.family }}, {{ font.fallbacks | join: ", " }};
-    {%- for entry in font.variants -%}
-      {%- assign variantName = entry | first -%}
-      {%- assign variant = entry | last -%}
-      {%- comment -%}Italic variants don't need their own weight variables.{%- endcomment -%}
-      {%- if variant.style != 'italic' -%}
-        --fw-{{ fontCategory }}-{{ variantName }}: {{ variant.weight }};
-      {%- endif -%}
+    {%- for variant in font.variants -%}
+      {%- assign variantName = variant | first -%}
+      {%- assign weights = variant | last -%}
+      --fw-{{ fontCategory }}-{{ variantName }}: {{ weights.roman.weight }};
     {%- endfor -%}
   {%- endfor -%}
 }

@@ -1,11 +1,10 @@
 const path = require('path');
 const { dir } = require('../../config/constants');
-const fontPath = `/assets/fonts`;
 const fontkit = require('fontkit');
+const cloneDeep = require('lodash/cloneDeep');
 
-const FontWeight = {
+const FontVariant = {
   REGULAR: 'regular',
-  REGULARITALIC: 'italic',
   MEDIUM: 'medium',
   BOLD: 'bold',
 };
@@ -20,31 +19,37 @@ const FontDisplay = {
 };
 
 /** Helper to auto-prefix a font src url with the path to local fonts. */
-const getFontUrl = (src) => path.join(fontPath, src);
+const getFontUrl = (src) => path.join(`/assets/fonts`, src);
 
-/** Global font config. Gets compiled into font face declarations and can be reused anywhere to access font info. */
+/** Global font config. Gets compiled into font face declarations and can be reused anywhere to access font info.
+ * @type {FontConfig}
+ */
 const fonts = {
   body: {
     family: 'Fira Sans',
     fallbacks: [`Sans-fallback`],
     variants: {
-      [FontWeight.REGULAR]: {
-        weight: 400,
-        style: FontStyle.NORMAL,
-        url: getFontUrl('fira-sans-400.woff2'),
-        display: FontDisplay.SWAP,
+      [FontVariant.REGULAR]: {
+        roman: {
+          weight: 400,
+          style: FontStyle.NORMAL,
+          url: getFontUrl('fira-sans-400.woff2'),
+          display: FontDisplay.SWAP,
+        },
+        italic: {
+          weight: 400,
+          style: FontStyle.ITALIC,
+          url: getFontUrl('fira-sans-italic.woff2'),
+          display: FontDisplay.SWAP,
+        },
       },
-      [FontWeight.REGULARITALIC]: {
-        weight: 400,
-        style: FontStyle.ITALIC,
-        url: getFontUrl('fira-sans-italic.woff2'),
-        display: FontDisplay.SWAP,
-      },
-      [FontWeight.BOLD]: {
-        weight: 700,
-        style: FontStyle.NORMAL,
-        url: getFontUrl('fira-sans-700.woff2'),
-        display: FontDisplay.SWAP,
+      [FontVariant.BOLD]: {
+        roman: {
+          weight: 700,
+          style: FontStyle.NORMAL,
+          url: getFontUrl('fira-sans-700.woff2'),
+          display: FontDisplay.SWAP,
+        },
       },
     },
   },
@@ -52,23 +57,29 @@ const fonts = {
     family: 'IBM Plex Mono',
     fallbacks: [`Monaco`, `Consolas`, `Courier New`, `monospace`],
     variants: {
-      [FontWeight.REGULAR]: {
-        weight: 400,
-        style: FontStyle.NORMAL,
-        url: getFontUrl('ibm-plex-mono-400.woff2'),
-        display: FontDisplay.SWAP,
+      [FontVariant.REGULAR]: {
+        roman: {
+          weight: 400,
+          style: FontStyle.NORMAL,
+          url: getFontUrl('ibm-plex-mono-400.woff2'),
+          display: FontDisplay.SWAP,
+        },
       },
-      [FontWeight.MEDIUM]: {
-        weight: 500,
-        style: FontStyle.NORMAL,
-        url: getFontUrl('ibm-plex-mono-500.woff2'),
-        display: FontDisplay.SWAP,
+      [FontVariant.MEDIUM]: {
+        roman: {
+          weight: 500,
+          style: FontStyle.NORMAL,
+          url: getFontUrl('ibm-plex-mono-500.woff2'),
+          display: FontDisplay.SWAP,
+        },
       },
-      [FontWeight.BOLD]: {
-        weight: 700,
-        style: FontStyle.NORMAL,
-        url: getFontUrl('ibm-plex-mono-700.woff2'),
-        display: FontDisplay.SWAP,
+      [FontVariant.BOLD]: {
+        roman: {
+          weight: 700,
+          style: FontStyle.NORMAL,
+          url: getFontUrl('ibm-plex-mono-700.woff2'),
+          display: FontDisplay.SWAP,
+        },
       },
     },
   },
@@ -76,11 +87,13 @@ const fonts = {
     family: 'Reenie Beanie',
     fallbacks: [`cursive`],
     variants: {
-      [FontWeight.REGULAR]: {
-        weight: 400,
-        style: FontStyle.NORMAL,
-        url: getFontUrl('reenie-beanie-400.woff2'),
-        display: FontDisplay.SWAP,
+      [FontVariant.REGULAR]: {
+        roman: {
+          weight: 400,
+          style: FontStyle.NORMAL,
+          url: getFontUrl('reenie-beanie-400.woff2'),
+          display: FontDisplay.SWAP,
+        },
       },
     },
   },
@@ -88,34 +101,38 @@ const fonts = {
     family: 'Rampart One',
     fallbacks: [`Sans-fallback`],
     variants: {
-      [FontWeight.REGULAR]: {
-        weight: 400,
-        style: FontStyle.NORMAL,
-        url: getFontUrl('rampart-one-400.woff2'),
-        display: FontDisplay.SWAP,
+      [FontVariant.REGULAR]: {
+        roman: {
+          weight: 400,
+          style: FontStyle.NORMAL,
+          url: getFontUrl('rampart-one-400.woff2'),
+          display: FontDisplay.SWAP,
+        },
       },
     },
   },
 };
 
-/** Injects postcript names into each font config definition */
+/** Injects postcript names into each font config definition.
+ * @param {FontConfig} fontConfig
+ */
 const withPostscriptNames = (fontConfig) => {
-  // No need to clone deep
-  const enhancedFonts = Object.assign({}, fontConfig);
-  Object.values(enhancedFonts).forEach((font) => {
-    // Variable fonts don't have individual variant configs, so inject in the top-level object
-    if (font.isVariable) {
-      const fontFile = fontkit.openSync(path.join(dir.input, font.url));
-      font.postscriptName = fontFile.postscriptName;
+  const fontsCopy = cloneDeep(fontConfig);
+  Object.values(fontsCopy).forEach((font) => {
+    // Variable font
+    if (font.weightAxes) {
+      font.postscriptName = font.family.replace(/\s/g, '');
     } else {
       // Non-variable fonts need one postscript name per weight variant
       Object.values(font.variants).forEach((variant) => {
-        const fontFile = fontkit.openSync(path.join(dir.input, variant.url));
-        variant.postscriptName = fontFile.postscriptName;
+        Object.values(variant).forEach((weight) => {
+          const fontFile = fontkit.openSync(path.join(dir.input, weight.url));
+          weight.postscriptName = fontFile.postscriptName;
+        });
       });
     }
   });
-  return enhancedFonts;
+  return fontsCopy;
 };
 
 module.exports = withPostscriptNames(fonts);

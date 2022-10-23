@@ -7,21 +7,21 @@
 {%- comment -%}Loop over the global font config and construct a series of @font-face declarations. We later feed this to scss to minify the output and inline it in the head for performance.{%- endcomment -%}
 {%- for fontType in requiredFonts -%}
   {%- assign font = fonts[fontType] -%}
-  {%- comment -%}Don't generate @font-face declarations if explicitly disabled.{%- endcomment -%}
-  {%- if font.hasFontFace != false -%}
+  {%- comment -%}Don't generate @font-face declarations for native fonts (e.g., Arial, Georgia).{%- endcomment -%}
+  {%- if font.isNativeFont != true -%}
     {%- comment -%}Variable fonts{%- endcomment -%}
-    {%- if font.isVariable -%}
+    {%- if font.weightAxes -%}
       @font-face {
         font-family: "{{ font.family }}";
         font-style: {{ font.style | default: "normal" }};
-        font-weight: {{ font.variableWeights.min }} {{ font.variableWeights.max }};
+        font-weight: {{ font.weightAxes.min }} {{ font.weightAxes.max }};
         {% if font.display -%}font-display: {{ font.display }};{%- endif -%}
         src: local("{{ font.family }}"), local("{{ font.postscriptName }}"), url("{{ font.urls.roman }}") format("woff2 supports variations"), url("{{ font.urls.roman }}") format("woff2-variations");
       }
       @font-face {
         font-family: "{{ font.family }}";
         font-style: italic;
-        font-weight: {{ font.variableWeights.min }} {{ font.variableWeights.max }};
+        font-weight: {{ font.weightAxes.min }} {{ font.weightAxes.max }};
         {% if font.display -%}font-display: {{ font.display }};{%- endif -%}
         src: local("{{ font.family }}"), local("{{ font.postscriptName }}"), url("{{ font.urls.italic }}") format("woff2 supports variations"), url("{{ font.urls.italic }}") format("woff2-variations");
       }
@@ -29,16 +29,17 @@
     {%- else -%}
       {%- assign variants = font.variants | values -%}
       {%- for variant in variants -%}
-        {%- if variant.url -%}
-          {%- assign format = variant.url | split: "." | last -%}
+        {%- assign weights = variant | values -%}
+        {%- for weight in weights -%}
+        {%- assign format = weight.url | split: "." | last -%}
           @font-face {
             font-family: "{{ font.family }}";
-            font-style: {{ variant.style }};
-            font-weight: {{ variant.weight }};
-            {% if variant.display -%}font-display: {{ variant.display }};{%- endif -%}
-            src: local("{{ font.family }}"), local("{{ variant.postscriptName }}"), url("{{ variant.url }}") format("{{ format }}");
+            font-style: {{ weight.style }};
+            font-weight: {{ weight.weight }};
+            {% if weight.display -%}font-display: {{ weight.display }};{%- endif -%}
+            src: local("{{ font.family }}"), local("{{ weight.postscriptName }}"), url("{{ weight.url }}") format("{{ format }}");
           }
-        {%- endif -%}
+        {%- endfor -%}
       {%- endfor -%}
     {%- endif -%}
   {%- endif -%}
