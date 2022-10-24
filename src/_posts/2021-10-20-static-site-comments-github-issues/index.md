@@ -6,6 +6,7 @@ categories: [jamstack, netlify, github, node]
 thumbnail:
   url: https://images.unsplash.com/photo-1512626120412-faf41adb4874?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 commentsId: 117
+lastUpdated: 2022-10-24
 ---
 
 Comment systems are one of the easiest ways to solicit feedback from your readers and to encourage the kinds of civil and respectful discussions for which the internet is so well known. But where do you start with adding one to your site? There are tons of options to choose from, most of which aren't worth your time.
@@ -222,7 +223,7 @@ All of the remaining code in this tutorial will continue inside the `try` block 
 Now that we've authenticated the Octokit client, we can check our rate limit and return an error status preemptively if we cannot make any more API requests. Note that this request does not itself count toward your rate limit.
 
 ```js {data-file="functions/comments.js" data-copyable=true}
-const { data: rateLimitInfo } = await Octokit.rateLimit.get();
+const { data: rateLimitInfo } = await octokitClient.rateLimit.get();
 const remainingCalls = rateLimitInfo.resources.core.remaining;
 console.log(`GitHub API requests remaining: ${remainingCalls}`);
 if (remainingCalls === 0) {
