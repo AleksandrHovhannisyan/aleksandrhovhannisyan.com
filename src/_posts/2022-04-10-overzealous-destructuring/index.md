@@ -118,7 +118,7 @@ const Modal = ({ value }) => {
 
 // Option 4: rename both
 const Modal = ({ initialValue }) => {
-  const [tempValue, setTempValue] = useState(props.initialValue);
+  const [tempValue, setTempValue] = useState(initialValue);
 };
 ```
 
