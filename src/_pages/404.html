@@ -1,13 +1,22 @@
 ---
-title: Not Found
+title: 404 Not Found
+description: The requested page or resource cannot be located.
+layout: base
 permalink: /404.html
 eleventyExcludeFromCollections: true
 excludeFromSitemap: true
 noindex: true
+criticalCSS:
+  - css/fontFace.liquid
+  - css/fontVariables.liquid
+stylesheets:
+  - /assets/styles/404.css
+requiredFonts:
+  - body
 ---
 
-<article id="page-not-found" class="flex-center flex-column text-center stack gap-0">
-  <h1>Sorry, that page doesn't exist!</h1>
-  <p class="fs-lg">Should it, though? 🤔</p>
-  <p class="fs-lg">If you think this is a bug, <a href="https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com/issues/new?assignees=&labels=bug&template=bug_report.md&title=Bug+Report%3A+%5BConcise+Summary+Here%5D">please file an issue on GitHub</a>!</p>
-</article>
+<main>
+  <h1>Sorry, that page doesn't exist</h1>
+  <p class="fs-md">If you think this is a mistake, please <a href="https://github.com/{{ site.issues.owner }}/{{ site.issues.repo }}/issues/new?assignees=&labels=bug&template=bug_report.md&title=Bug+Report%3A+%5BConcise+Summary+Here%5D">file an issue on GitHub</a>.</p>
+  <p class="fs-md">Or you can <a href="/">return to the home page</a>.</p>
+</main>
