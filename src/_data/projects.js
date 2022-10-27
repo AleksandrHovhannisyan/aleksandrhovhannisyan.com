@@ -1,4 +1,6 @@
 const Cache = require('@11ty/eleventy-cache-assets');
+const path = require('path');
+const { imagePaths } = require('../../config/constants');
 const { imageShortcode } = require('../../config/shortcodes/');
 
 // Combination of static + dynamic data
@@ -31,8 +33,16 @@ const repos = {
     tech: ['react', 'typescript', 'express', 'sql'],
   },
   blog: {
-    getIcon: () => '💾',
-    name: 'This Website!',
+    getIcon: async () => {
+      const icon = await imageShortcode({
+        src: path.join(imagePaths.input, 'favicons/favicon.png'),
+        alt: '',
+        isLinked: false,
+        widths: [32],
+      });
+      return icon;
+    },
+    name: 'This website!',
     repo: 'AleksandrHovhannisyan/aleksandrhovhannisyan.com',
     tech: ['11ty', 'sass', 'javascript'],
   },

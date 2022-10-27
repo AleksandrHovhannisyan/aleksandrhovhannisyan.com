@@ -14,11 +14,27 @@
     }
   }
 
+  &-name {
+    line-height: normal;
+  }
+
   &-icon {
     picture {
       display: flex;
-      width: var(--fs-base);
+      width: 1.2em;
       aspect-ratio: 1;
+    }
+  }
+
+  &-rating {
+    display: flex;
+    align-items: center;
+    gap: spacing("-4");
+
+    svg {
+      width: 1em;
+      aspect-ratio: 1;
+      fill: var(--color-surface-8);
     }
   }
 
@@ -40,8 +56,7 @@
   }
 
   &-description {
-    margin-top: spacing("-1");
-    max-width: 36ch;
+    margin-top: spacing("-2");
     @include font($size: "sm", $line-height: "sm");
   }
 
@@ -55,6 +70,7 @@
   &-technology {
     background-color: var(--color-surface-3);
     padding: spacing("-3") spacing("-1");
+    border-radius: spacing("-4");
   }
 }
 

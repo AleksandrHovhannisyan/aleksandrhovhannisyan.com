@@ -23,7 +23,7 @@ I won't bore you too much with my work history; that's what [my LinkedIn]({{ soc
 
 ## Software Projects
 
-I have experience with a few different stacks—I've done a bit of desktop, mobile, and game development, either on my own time or for class projects. Nowadays, I like to focus on web technologies and front-end development. Below are a few of the projects that I'm proud of.
+I have experience with a few different stacks—I've done a bit of desktop, mobile, and game development, either on my own time or for class projects. Nowadays, I like to focus on web development. Below are select projects that I'm proud of.
 
 <ul class="col-wrap align-center">
   {%- for project in projects -%}
@@ -34,11 +34,11 @@ I have experience with a few different stacks—I've done a bit of desktop, mobi
   <li class="github-cta stack flex-center gap-0 text-center">
     <div>
       <h3 class="fs-base">Want to see more of my work?</h3>
-      <p>Check out my other repos:</p>
+      <p>Explore my GitHub repos:</p>
     </div>
     <a
       class="flex"
-      aria-label="Aleksandr Hovhannisyan's GitHub profile."
+      aria-label="View my GitHub profile"
       href="https://github.com/AleksandrHovhannisyan?tab=repositories"
       >{%- socialIcon "github" -%}</a>
   </li>

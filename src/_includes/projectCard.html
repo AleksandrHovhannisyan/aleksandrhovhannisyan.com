@@ -2,14 +2,15 @@
 <article class="card project">
   <header class="flex justify-between">
     <div class="flex align-center gap--3">
-      <div class="project-icon fs-sm" aria-hidden="true">{{ project.icon }}</div>
-      <h{{ titleLevel }} class="fs-base">
+      <div class="project-icon fs-xs" aria-hidden="true">{{ project.icon }}</div> 
+      <h{{ titleLevel }} class="project-name fs-base">
         <a href="{{ project.url }}" rel="noreferrer noopener" target="_blank" class="project-link">{{ project.name }}</a>
       </h{{ titleLevel }}>
     </div>
-    <div class="flex align-center gap--4 fs-sm" role="img" aria-label="Rated {{ project.rating }} stars on GitHub">
+    <div class="project-rating fs-sm">
       {%- include "icon.html" icon: "star", width: "18", height: "18", fill: "currentColor", stroke: "none" -%}
-      <span>{{ project.rating }}</span>
+      <span aria-hidden="true">{{ project.rating }}</span>
+      <span class="screen-reader-only">Rated {{ project.rating }} stars on GitHub</span>
     </div>
   </header>
   <p class="project-description">{{ project.description }}</p>
