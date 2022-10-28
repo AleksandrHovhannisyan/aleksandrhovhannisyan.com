@@ -1,11 +1,11 @@
 ---
-title: Writing Better CSS
+title: Modern Techniques for Writing Better CSS
 description: CSS has come a long way since the early days of web development. Learn how to write better CSS using modern strategies like the :is and :where pseudo-class functions, logical properties and values, clamp, gaps, and aspect-ratio.
 keywords: [better css, modern css, fewer lines of css, css]
 categories: [css, clamp, css-grid, i18n, rtl, aspect-ratio, practices]
 thumbnail: ./images/thumbnail.png
 commentsId: 126
-lastUpdated: 2022-01-21
+lastUpdated: 2022-10-28
 ---
 
 CSS has come a long way since the early days of web development, when tables and various other hacks were used for layout and positioning. Today's developers can enjoy writing CSS that works in all major browsers, without having to bend over backwards to implement tricky layout requirements. Not only does this make it easier to create dynamic layouts, but it also allows you to ship smaller (and simpler) stylesheets by removing unnecessary cruft. In this article, we'll look at various scenarios where modern techniques can reduce the complexity of your code and allow you to write better CSS.
