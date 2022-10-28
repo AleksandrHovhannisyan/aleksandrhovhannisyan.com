@@ -9,6 +9,7 @@ table {
 caption {
   text-align: start;
   margin-bottom: spacing("-2");
+  @include font($size: "sm");
 }
 
 th {

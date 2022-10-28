@@ -8,17 +8,17 @@
   position: relative;
 
   @include mobile-lg {
-    padding: spacing("5");
+    padding: spacing("3");
   }
 
   &-grid {
     display: grid;
-    gap: spacing("5");
+    gap: spacing("3");
     /* stylelint-disable-next-line scss/no-global-function-names */
-    grid-template-columns: repeat(auto-fill, minmax(min(#{to-rems(375px)}, 100%), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(#{to-rems(330px)}, 100%), 1fr));
 
     @include mobile-lg {
-      gap: spacing("3");
+      gap: spacing("0");
     }
   }
 
@@ -35,6 +35,7 @@
 
   &-date {
     color: var(--color-text-soft);
+    @include font($size: "sm");
   }
 
   &-title {
@@ -46,18 +47,12 @@
   &-description {
     margin-top: spacing("-2");
     // Tighten line height due to short line length
-    line-height: leading("xs");
+    @include font($size: "base", $line-height: "xs");
   }
 
   &-tags {
     display: none;
-
-    @include tablet-sm {
-      display: flex;
-      flex-wrap: wrap;
-      gap: spacing("-2");
-      margin-top: spacing("0");
-    }
+    @include font($size: "sm");
   }
 
   &-tag {
@@ -70,6 +65,28 @@
 
     &:focus:not(:focus-visible) {
       text-decoration: underline;
+    }
+  }
+
+  @include tablet {
+    &-date {
+      @include font($size: "xs");
+    }
+
+    &-title {
+      @include font($size: "md", $line-height: "2xs");
+    }
+
+    &-description {
+      @include font($size: "sm", $line-height: "2xs");
+    }
+
+    &-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: spacing("-4") spacing("-2");
+      margin-top: spacing("0");
+      @include font($size: "xs");
     }
   }
 }

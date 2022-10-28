@@ -61,7 +61,7 @@
   &-container {
     display: flex;
     align-items: center;
-    gap: spacing("0");
+    gap: spacing("-2");
   }
 
   &-logo {
@@ -226,6 +226,10 @@
     --navbar-min-height: #{spacing("11")};
     position: unset;
     box-shadow: none;
+
+    &-container {
+      gap: spacing("0");
+    }
 
     &-branding {
       display: flex;

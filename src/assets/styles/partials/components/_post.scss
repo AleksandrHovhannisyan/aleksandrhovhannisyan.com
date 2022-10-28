@@ -2,8 +2,7 @@
 @import "../mixins";
 
 .post {
-  max-width: 73ch;
-  margin-inline: auto;
+  counter-reset: footnotes;
 
   &-title {
     margin-bottom: spacing("-2");
@@ -40,26 +39,6 @@
     &::before {
       content: "#";
       user-select: none;
-    }
-  }
-
-  &-content {
-    display: flow-root;
-    overflow-wrap: break-word;
-    counter-reset: footnotes;
-
-    #skip-toc {
-      transform: translateY(-50%);
-      padding: spacing("-4") spacing("-2");
-    }
-
-    .toc-list {
-      list-style: disc; // some headings have numbers already
-      padding-inline-start: 1.5em;
-
-      li {
-        margin-top: spacing("-2");
-      }
     }
   }
 }

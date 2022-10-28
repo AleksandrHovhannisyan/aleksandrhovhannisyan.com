@@ -1,7 +1,7 @@
 /* stylelint-disable selector-class-pattern */
 @import "../partials/functions";
 
-.post-content .svg-tutorial__icon-grid {
+.svg-tutorial__icon-grid {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,11 +9,11 @@
   gap: spacing("8");
 }
 
-.post-content .svg-tutorial__icon {
+.svg-tutorial__icon {
   display: flex;
 }
 
-.post-content .svg-tutorial__icon svg {
+.svg-tutorial__icon svg {
   stroke: currentcolor;
   stroke-width: 2;
   stroke-linecap: round;
@@ -21,6 +21,6 @@
   fill: none;
 }
 
-.post-content svg.bordered {
+svg.bordered {
   border: solid 1px;
 }

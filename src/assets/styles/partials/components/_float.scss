@@ -4,7 +4,6 @@
   --spacing: #{spacing("2")};
   float: none;
   max-width: to-rems(160px);
-  margin-block-start: var(--line-height);
   margin-block-end: var(--spacing);
 
   &.left {

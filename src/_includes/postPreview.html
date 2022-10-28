@@ -1,12 +1,12 @@
 {%- assign titleLevel = titleLevel | default: 3 -%}
 <li>
   <article class="post-preview">
-    {%- include "date.html" date: post.date, dateFormat: "MMM DD, YYYY", class: "post-preview-date fs-sm" -%}
+    {%- include "date.html" date: post.date, dateFormat: "MMM DD, YYYY", class: "post-preview-date" -%}
     <h{{ titleLevel }} class="post-preview-title">
       <a class="post-preview-link to-underline" href="{{ post.url }}">{{ post.data.title }}</a>
     </h{{ titleLevel }}>
     <p class="post-preview-description">{{- post.data.description -}}</p>
-    <ul class="post-preview-tags fs-sm" aria-label="Tags">
+    <ul class="post-preview-tags" aria-label="Tags">
       {%- for category in post.data.categories -%}
         <li>
           <a href="/tags/{{ category }}/" class="post-preview-tag post-tag" aria-label="{{ category }}">

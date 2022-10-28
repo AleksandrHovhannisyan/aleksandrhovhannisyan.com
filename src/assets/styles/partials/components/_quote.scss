@@ -9,7 +9,9 @@ blockquote {
 }
 
 cite {
+  font-style: normal;
   display: block;
+  @include font($size: "sm");
 
   &::before {
     content: "\2014";

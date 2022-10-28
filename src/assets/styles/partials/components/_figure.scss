@@ -12,4 +12,5 @@ figure {
 
 figcaption {
   text-align: center;
+  @include font($size: "xs");
 }

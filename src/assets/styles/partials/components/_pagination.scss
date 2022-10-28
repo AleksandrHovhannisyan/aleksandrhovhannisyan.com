@@ -6,8 +6,11 @@
   }
 
   &-page {
-    min-width: spacing("6");
+    min-width: spacing("5");
+    aspect-ratio: 1;
+    border-radius: spacing("-4");
+    display: flex;
     justify-content: center;
-    @include font($family: "mono", $weight: "medium");
+    @include font($family: "mono", $weight: "medium", $size: "xs");
   }
 }

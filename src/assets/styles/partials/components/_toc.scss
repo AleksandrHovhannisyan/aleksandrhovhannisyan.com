@@ -1,0 +1,15 @@
+@import "../functions";
+
+#skip-toc {
+  transform: translateY(-50%);
+  padding: spacing("-4") spacing("-2");
+}
+
+.toc-list {
+  list-style: disc; // some headings have numbers already
+  padding-inline-start: 1.5em;
+
+  li {
+    margin-top: spacing("-2");
+  }
+}

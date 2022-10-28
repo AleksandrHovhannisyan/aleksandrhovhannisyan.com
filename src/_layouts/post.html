@@ -10,7 +10,7 @@ eleventyComputed:
       crossorigin: true
 ---
 
-<article class="post stack gap-6">
+<article class="post prose stack gap-6">
   <header class="post-header">
       <dl class="post-date inline-list">
         <div>
@@ -35,7 +35,7 @@ eleventyComputed:
       {%- endfor -%}
     </ul>
   </header>
-  <div class="post-content rhythm">
+  <div class="rhythm">
     {{ content }}
     {%- if commentsId and featureFlags.enableComments -%}
       <section id="comments" class="stack gap-10" data-comments-id="{{ commentsId }}">
