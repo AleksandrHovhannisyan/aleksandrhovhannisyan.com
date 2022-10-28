@@ -3,7 +3,7 @@ title: "SVG Tutorial: How to Code SVG Icons by Hand"
 description: Follow along with the examples in this in-depth guide to learn how to draw SVG icons and simple shapes by hand.
 keywords: [svg tutorial, svg icons, how to code svg]
 categories: [svg, html, css]
-lastUpdated: 2021-08-07
+lastUpdated: 2022-10-28
 commentsId: 68
 isFeatured: true
 thumbnail: ./images/thumbnail.png
@@ -998,19 +998,34 @@ Since we're just starting out, we'll ignore some of those commands. I'll cover t
 - Elliptical Arc Curve: `A`, `a`
 - ClosePath: `Z`, `z`
 
-#### SVG Path Commands: `MoveTo` and `LineTo`
+These commands are easier to remember than it seems:
 
-A `<path>` command comes in two variants, as you may have noticed above:
+- `M` for **m**oving,
+- `H/h` for drawing **h**orizontal lines,
+- `V/v` for drawing **v**ertical lines,
+- `A/a` for drawing **a**rcs,
+- `L/l` for drawing **l**ines in any direction, and
+- `Z/z` for closing shapes (where `z` is the hard-S sound in *close*).
 
-- An uppercase version (e.g., `H`), denoting an absolute command.
-- A lowercase version (e.g., `h`), denoting a relative command.
+##### Absolute vs. Relative SVG Commands
 
-Here are examples of these two:
+An SVG `<path>` command comes in two variants, as you may have noticed above:
+
+- An uppercase version (e.g., `H`), denoting an <dfn>absolute command</dfn>.
+- A lowercase version (e.g., `h`), denoting a <dfn>relative command</dfn>.
+
+Absolute commands specify an exact coordinate to move to, whereas relative commands specify a displacement from the current position in a particular direction.
+
+Here are some examples of absolute and relative commands:
 
 - `M 4 4`: Browser, please lift up your imaginary pen and move it to the point `(4, 4)`.
-- `h 16`: From the location where you currently are, draw a line extending `16px` to the right.
+- `m 4 4`: From where you currently are, move to the right four units and down four units.
+- `h 16`: From where you currently are, draw a line extending `16px` to the right.
+- `V 6`: From where you currently are, draw a vertical line to the y-coordinate of `6`.
 
-This is easier to remember than it looks: `M` for **m**oving, `H/h` for **h**orizontal lines, `V/v` for **v**ertical lines, `A/a` for **a**rcs, `L/l` for lines in any direction, and so on.
+In some situations, absolute commands are convenient when you know exactly where you want to move and don't want to bother with the math for a relative command. In other situations (like when drawing perfectly symmetrical shapes), relative commands are easier to follow because you don't have to worry about calculating the bounds of a shape and determining where you want to go.
+
+#### SVG Path Commands: `MoveTo` and `LineTo`
 
 If you're with me so far, then you should understand the first two commands in this path:
 

@@ -1,4 +1,11 @@
+@import "../mixins";
+
 .definition {
   margin-inline-start: 0;
   font-style: normal;
+}
+
+dfn {
+  font-style: normal;
+  @include font($family: "body", $weight: "bold");
 }
