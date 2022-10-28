@@ -33,13 +33,13 @@ const fonts = {
         roman: {
           weight: 400,
           style: FontStyle.NORMAL,
-          url: getFontUrl('fira-sans-400.woff2'),
+          url: getFontUrl('firasans-latin-400-roman.woff2'),
           display: FontDisplay.SWAP,
         },
         italic: {
           weight: 400,
           style: FontStyle.ITALIC,
-          url: getFontUrl('fira-sans-italic.woff2'),
+          url: getFontUrl('firasans-latin-400-italic.woff2'),
           display: FontDisplay.SWAP,
         },
       },
@@ -47,7 +47,7 @@ const fonts = {
         roman: {
           weight: 700,
           style: FontStyle.NORMAL,
-          url: getFontUrl('fira-sans-700.woff2'),
+          url: getFontUrl('firasans-latin-700-roman.woff2'),
           display: FontDisplay.SWAP,
         },
       },
@@ -61,7 +61,7 @@ const fonts = {
         roman: {
           weight: 400,
           style: FontStyle.NORMAL,
-          url: getFontUrl('ibm-plex-mono-400.woff2'),
+          url: getFontUrl('ibmplexmono-latin-400-roman.woff2'),
           display: FontDisplay.SWAP,
         },
       },
@@ -69,7 +69,7 @@ const fonts = {
         roman: {
           weight: 500,
           style: FontStyle.NORMAL,
-          url: getFontUrl('ibm-plex-mono-500.woff2'),
+          url: getFontUrl('ibmplexmono-latin-500-roman.woff2'),
           display: FontDisplay.SWAP,
         },
       },
@@ -77,7 +77,7 @@ const fonts = {
         roman: {
           weight: 700,
           style: FontStyle.NORMAL,
-          url: getFontUrl('ibm-plex-mono-700.woff2'),
+          url: getFontUrl('ibmplexmono-latin-700-roman.woff2'),
           display: FontDisplay.SWAP,
         },
       },
@@ -91,7 +91,7 @@ const fonts = {
         roman: {
           weight: 400,
           style: FontStyle.NORMAL,
-          url: getFontUrl('reenie-beanie-400.woff2'),
+          url: getFontUrl('reeniebeanie-latin-400-roman.woff2'),
           display: FontDisplay.SWAP,
         },
       },
@@ -105,7 +105,7 @@ const fonts = {
         roman: {
           weight: 400,
           style: FontStyle.NORMAL,
-          url: getFontUrl('rampart-one-400.woff2'),
+          url: getFontUrl('rampartone-latin-400-roman.woff2'),
           display: FontDisplay.SWAP,
         },
       },
