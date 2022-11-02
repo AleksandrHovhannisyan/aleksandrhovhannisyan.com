@@ -66,9 +66,11 @@ const sanitizeHtml = (html) => {
     allowedTags: sanitize.defaults.allowedTags.concat(['img']),
     allowedAttributes: {
       ...sanitize.defaults.allowedAttributes,
-      // Syntax highlighting
+      // Class for syntax highlighting
       pre: ['class'],
-      code: ['class'],
+      // Class for syntax highlighting; tabindex added by https://github.com/AleksandrHovhannisyan/markdown-it-code-tabindex
+      code: ['class', 'tabindex'],
+      // Prism outputs spans with class names for tokens
       span: ['class'],
       // Styled lists
       ol: ['class'],

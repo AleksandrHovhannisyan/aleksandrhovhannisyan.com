@@ -6,6 +6,7 @@ const markdownItKatex = require('@iktakahiro/markdown-it-katex');
 const markdownItClass = require('@toycode/markdown-it-class');
 const markdownItTocDoneRight = require('markdown-it-toc-done-right');
 const markdownItLinkAttributes = require('markdown-it-link-attributes');
+const markdownItCodeTabIndex = require('markdown-it-code-tabindex');
 const { slugifyString } = require('../utils');
 
 const markdownLib = markdownIt({
@@ -24,6 +25,7 @@ const markdownLib = markdownIt({
     defaultLanguage: 'plaintext',
   })
   .use(markdownItAttrs)
+  .use(markdownItCodeTabIndex, { target: 'code' })
   .use(markdownItTocDoneRight, {
     placeholder: `{:toc}`, // same as Jekyll
     slugify: slugifyString,
