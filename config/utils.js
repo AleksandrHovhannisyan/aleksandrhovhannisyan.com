@@ -72,9 +72,6 @@ const sanitizeHtml = (html) => {
       code: ['class', 'tabindex'],
       // Prism outputs spans with class names for tokens
       span: ['class'],
-      // Styled lists
-      ol: ['class'],
-      ul: ['class'],
       // Quotes
       blockquote: ['class'],
     },
