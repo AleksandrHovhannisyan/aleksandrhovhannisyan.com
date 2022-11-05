@@ -44,10 +44,10 @@ exports.handler = async (event) => {
             avatarUrl: comment.user.avatar_url,
             // Sanitize usernames to prevent XSS
             name: sanitizeHtml(comment.user.login),
+            isAuthor: comment.author_association === 'OWNER',
           },
           datePosted: dayjs(comment.created_at).fromNow(),
           isEdited: comment.created_at !== comment.updated_at,
-          isAuthor: comment.author_association === 'OWNER',
           // Sanitize comment body to prevent XSS
           body: sanitizeHtml(markdownLib.render(comment.body)),
         };

@@ -15,38 +15,42 @@ export const renderComments = async (comments) => {
   const commentsCounter = commentsSection.querySelector('#comments-count');
   const commentsPlaceholder = commentsSection.querySelector('#comments-placeholder');
 
-  if (comments.length === 0) {
+  if (!comments.length) {
     commentsPlaceholder.innerHTML = `No comments yet.`;
     return;
   }
-  commentsCounter.innerText = `${comments.length} `;
 
+  commentsCounter.innerText = `${comments.length} `;
   const commentsList = document.createElement('ol');
   commentsList.className = 'stack gap-10';
   commentsList.innerHTML = comments
-    .map((comment) => {
+    .map((comment, i) => {
+      const { user, isEdited, created_at, datePosted, body } = comment;
+      const authorPillId = `author-${i}`;
       return `<li>
                 <article class="post-comment stack gap-0">
                   <header class="post-comment-meta">
-                    <img src="${comment.user.avatarUrl}" alt="" aria-hidden="true" class="post-comment-avatar circle">
+                    <img src="${user.avatarUrl}" alt="" aria-hidden="true" class="post-comment-avatar circle">
                     <a
-                      href="https://github.com/${comment.user.name}"
+                      href="https://github.com/${user.name}"
                       class="post-comment-username"
                       target="_blank"
                       rel="noreferrer noopener"
+                      ${user.isAuthor ? `aria-describedby="${authorPillId}"` : ''}
                     >
-                      ${comment.user.name}
+                      ${user.name}
                     </a>
-                    <div class="fs-sm">commented
-                    <time datetime="${comment.created_at}">${comment.datePosted}</time></div>
+                    <span class="fs-sm">
+                      commented <time datetime="${created_at}">${datePosted}</time>
+                    </span>
                     ${
-                      comment.isAuthor
-                        ? '<span class="pill post-comment-author" data-shape="round" data-size="xs">Author</span>'
+                      user.isAuthor
+                        ? `<span id="${authorPillId}" class="pill post-comment-author" data-shape="round" data-size="xs">Author</span>`
                         : ''
                     }
-                    ${comment.isEdited ? `<span class="fs-sm post-comment-edited">Edited</span>` : ''}
+                    ${isEdited ? `<span class="fs-sm post-comment-edited">Edited</span>` : ''}
                   </header>
-                  <div class="post-comment-body rhythm">${comment.body}</div>
+                  <div class="post-comment-body rhythm">${body}</div>
                 </article>
               </li>`;
     })

@@ -42,9 +42,10 @@
   }
 
   &-body {
-    pre {
-      white-space: pre-wrap;
+    ul {
+      list-style: disc;
     }
+
     @include headings {
       @include font($size: "base");
     }
