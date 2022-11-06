@@ -4,7 +4,6 @@ description: Of all the CSS units, rems are the most accessible for font sizing,
 keywords: [rems, font size, responsive font size, preferred font size]
 categories: [css, typography, accessibility, rems]
 lastUpdated: 2022-05-21
-isFeatured: true
 thumbnail:
   url: https://images.unsplash.com/photo-1624558347497-df07e0096f5a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bWFnbmlmeWluZyUyMGdsYXNzJTIwYm9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1600&h=900&q=60
 ---

@@ -1,6 +1,6 @@
 ---
 title: Add Comments to a Static Site with Netlify Functions and the GitHub API
-description: Comment systems are a pain to set up, but they don't have to be. With the GitHub Issues API and Netlify functions, you can create a custom comment system in just a few lines of server-side JavaScript.
+description: Comment systems can be a pain to set up, but they don't have to be. Learn how to use the GitHub Issues API to create a custom comment system powered by Netlify functions.
 keywords: [comment system, comments, github api, netlify functions]
 categories: [jamstack, netlify, github, node]
 thumbnail:

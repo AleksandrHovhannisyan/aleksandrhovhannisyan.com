@@ -15,6 +15,7 @@ scripts:
     type: module
     src: /assets/scripts/demos/Carousel/index.mjs
 commentsId: 166
+isFeatured: true
 ---
 
 If you've been on the web long enough, you're probably aware that carousels don't have the best reputation. While they're not *inherently* bad, they do tend to be implemented in a way that compromises accessibility. For example, carousels typically lack proper keyboard support and semantics, making it difficult for users to navigate or parse the content. Some carousels also auto-scroll their content, creating an unpleasant experience for users with vestibular disorders. Other implementations rely heavily on libraries and ship more JavaScript than is really needed.
