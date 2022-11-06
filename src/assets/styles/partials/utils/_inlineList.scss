@@ -3,8 +3,8 @@
     display: inline-block;
   }
 
-  > * + * {
-    &::before {
+  > *:not(:last-child) {
+    &::after {
       content: "•";
       display: inline-block;
     }
