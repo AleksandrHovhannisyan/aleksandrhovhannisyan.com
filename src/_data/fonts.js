@@ -119,9 +119,12 @@ const fonts = {
 const withPostscriptNames = (fontConfig) => {
   const fontsCopy = cloneDeep(fontConfig);
   Object.values(fontsCopy).forEach((font) => {
-    // Variable font
-    if (font.weightAxes) {
-      font.postscriptName = font.family.replace(/\s/g, '');
+    // Variable fonts get postscript names on their individual files
+    if (font.type === 'variable') {
+      Object.values(font.variants).forEach((variant) => {
+        const fontFile = fontkit.openSync(path.join(dir.input, variant.url));
+        variant.postscriptName = fontFile.postscriptName;
+      });
     } else {
       // Non-variable fonts need one postscript name per weight variant
       Object.values(font.variants).forEach((variant) => {

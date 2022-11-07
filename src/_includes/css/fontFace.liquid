@@ -10,20 +10,20 @@
   {%- comment -%}Don't generate @font-face declarations for native fonts (e.g., Arial, Georgia).{%- endcomment -%}
   {%- if font.isNativeFont != true -%}
     {%- comment -%}Variable fonts{%- endcomment -%}
-    {%- if font.weightAxes -%}
+    {%- if font.type == "variable" -%}
       @font-face {
         font-family: "{{ font.family }}";
         font-style: {{ font.style | default: "normal" }};
         font-weight: {{ font.weightAxes.min }} {{ font.weightAxes.max }};
         {% if font.display -%}font-display: {{ font.display }};{%- endif -%}
-        src: local("{{ font.family }}"), local("{{ font.postscriptName }}"), url("{{ font.urls.roman }}") format("woff2 supports variations"), url("{{ font.urls.roman }}") format("woff2-variations");
+        src: local("{{ font.family }}"), local("{{ font.variants.roman.postscriptName }}"), url("{{ font.font.variants.roman.url }}") format("woff2 supports variations"), url("{{ font.variants.roman.url }}") format("woff2-variations");
       }
       @font-face {
         font-family: "{{ font.family }}";
         font-style: italic;
         font-weight: {{ font.weightAxes.min }} {{ font.weightAxes.max }};
         {% if font.display -%}font-display: {{ font.display }};{%- endif -%}
-        src: local("{{ font.family }}"), local("{{ font.postscriptName }}"), url("{{ font.urls.italic }}") format("woff2 supports variations"), url("{{ font.urls.italic }}") format("woff2-variations");
+        src: local("{{ font.family }}"), local("{{ font.variants.italic.postscriptName }}"), url("{{ font.variants.italic.url }}") format("woff2 supports variations"), url("{{ font.variants.italic.url }}") format("woff2-variations");
       }
     {%- comment -%}Non-variable fonts{%- endcomment -%}
     {%- else -%}
