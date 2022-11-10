@@ -16,11 +16,11 @@ $tokens: (
   fontSize: (
     steps: (
       "xs": (
-        min: 13px,
+        min: 12px,
         max: 16px,
       ),
       "sm": (
-        min: 15px,
+        min: 14px,
         max: 18px,
       ),
       "base": (
@@ -44,12 +44,12 @@ $tokens: (
         leading: "2xs",
       ),
       "2xl": (
-        min: 28px,
+        min: 26px,
         max: 36px,
         leading: "2xs",
       ),
       "3xl": (
-        min: 34px,
+        min: 30px,
         max: 46px,
         leading: "3xs",
         letterSpacing: "sm",
