@@ -10,20 +10,20 @@ eleventyComputed:
       crossorigin: true
 ---
 
-<article class="post prose stack gap-6">
+<article class="post prose rhythm">
   <header class="post-header">
-      <dl class="post-date inline-list">
-        <div>
-          <dt class="screen-reader-only">Published</dt>
-          <dd>{% include "date.html" date: page.date, dateFormat: "MMMM DD, YYYY" %}</dd>
-        </div>
-        {% if lastUpdated %}
-        <div>
-          <dt>Updated</dt>
-          <dd>{% include "date.html" date: lastUpdated, dateFormat: "MMMM DD, YYYY" %}</dd>  
-        </div>
-        {% endif %}
-      </dl>
+    <dl class="post-date inline-list">
+      <div>
+        <dt class="screen-reader-only">Published</dt>
+        <dd>{% include "date.html" date: page.date, dateFormat: "MMMM DD, YYYY" %}</dd>
+      </div>
+      {% if lastUpdated %}
+      <div>
+        <dt>Updated</dt>
+        <dd>{% include "date.html" date: lastUpdated, dateFormat: "MMMM DD, YYYY" %}</dd>  
+      </div>
+      {% endif %}
+    </dl>
     <h1 class="post-title">{{ title }}</h1>
     <ul class="post-tags" aria-label="Tags">
       {%- for category in categories -%}
