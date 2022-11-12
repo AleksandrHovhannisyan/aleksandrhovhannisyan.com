@@ -5,13 +5,6 @@ layout: base
 keywords:
   - css art
 permalink: /art/
-requiredFonts:
-  - mono
-  - artCursive
-  - artDisplay
-criticalCSS:
-  - css/fontFace.liquid
-  - css/fontVariables.liquid
 stylesheets:
   - /assets/styles/art.css
 eleventyComputed:
@@ -28,7 +21,7 @@ eleventyComputed:
     -
       as: font
       type: font/woff2
-      href: "{{ fonts.artDisplay.variants.regular.roman.url }}"
+      href: "{{ fonts.display.variants.regular.roman.url }}"
       crossorigin: true
 ---
 

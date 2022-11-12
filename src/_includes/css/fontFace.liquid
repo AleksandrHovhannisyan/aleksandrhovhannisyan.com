@@ -5,8 +5,9 @@
   src: local("Arial");
 }
 {%- comment -%}Loop over the global font config and construct a series of @font-face declarations. We later feed this to scss to minify the output and inline it in the head for performance.{%- endcomment -%}
-{%- for fontType in requiredFonts -%}
-  {%- assign font = fonts[fontType] -%}
+{%- for entry in fonts -%}
+  {%- assign fontType = entry | first -%}
+  {%- assign font = entry | last -%}
   {%- comment -%}Don't generate @font-face declarations for native fonts (e.g., Arial, Georgia).{%- endcomment -%}
   {%- if font.isNativeFont != true -%}
     {%- comment -%}Variable fonts{%- endcomment -%}

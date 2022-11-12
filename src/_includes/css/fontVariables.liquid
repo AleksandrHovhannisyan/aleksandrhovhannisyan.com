@@ -1,18 +1,19 @@
 html {
-  {%- for fontCategory in requiredFonts -%}
-    {%- assign font = fonts[fontCategory] -%}
-    --ff-{{ fontCategory }}: {{ font.family }}, {{ font.fallbacks | join: ", " }};
+  {%- for entry in fonts -%}
+    {%- assign fontType = entry | first -%}
+    {%- assign font = entry | last -%}
+    --ff-{{ fontType }}: {{ font.family }}, {{ font.fallbacks | join: ", " }};
     {%- if font.type == "variable" -%}
       {%- for weightEntry in font.weights -%}
         {%- assign weightName = weightEntry | first -%}
         {%- assign numericWeight = weightEntry | last -%}
-        --fw-{{ fontCategory }}-{{ weightName }}: {{ numericWeight }};
+        --fw-{{ fontType }}-{{ weightName }}: {{ numericWeight }};
       {%- endfor -%}
     {%- else -%}
       {%- for variant in font.variants -%}
         {%- assign variantName = variant | first -%}
         {%- assign weights = variant | last -%}
-        --fw-{{ fontCategory }}-{{ variantName }}: {{ weights.roman.weight }};
+        --fw-{{ fontType }}-{{ variantName }}: {{ weights.roman.weight }};
       {%- endfor -%}
     {%- endif -%}
   {%- endfor -%}

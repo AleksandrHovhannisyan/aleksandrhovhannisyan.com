@@ -1,28 +1,9 @@
-const path = require('path');
-const { dir } = require('../../config/constants');
-const fontkit = require('fontkit');
-const cloneDeep = require('lodash/cloneDeep');
-
-const FontVariant = {
-  REGULAR: 'regular',
-  MEDIUM: 'medium',
-  BOLD: 'bold',
-};
-
-const FontStyle = {
-  NORMAL: 'normal',
-  ITALIC: 'italic',
-};
-
-const FontDisplay = {
-  SWAP: 'swap',
-};
-
-/** Helper to auto-prefix a font src url with the path to local fonts. */
-const getFontUrl = (src) => path.join(`/assets/fonts`, src);
+const { FontVariant, FontStyle, FontDisplay } = require('../../config/fonts/fonts.constants');
+const { getFontUrl } = require('../../config/fonts/fonts.utils');
 
 /** Global font config. Gets compiled into font face declarations and can be reused anywhere to access font info.
- * @type {FontConfig}
+ * Individual templates can define their own font overrides on an as-needed basis. See for example art.11tydata.js.
+ * @type {import("../../config/fonts/fonts.typedefs").FontConfig}
  */
 const fonts = {
   body: {
@@ -34,12 +15,14 @@ const fonts = {
           weight: 400,
           style: FontStyle.NORMAL,
           url: getFontUrl('firasans-latin-400-roman.woff2'),
+          postscriptName: `FiraSans-Regular`,
           display: FontDisplay.SWAP,
         },
         italic: {
           weight: 400,
           style: FontStyle.ITALIC,
           url: getFontUrl('firasans-latin-400-italic.woff2'),
+          postscriptName: `FiraSans-Italic`,
           display: FontDisplay.SWAP,
         },
       },
@@ -48,6 +31,7 @@ const fonts = {
           weight: 700,
           style: FontStyle.NORMAL,
           url: getFontUrl('firasans-latin-700-roman.woff2'),
+          postscriptName: `FiraSans-Bold`,
           display: FontDisplay.SWAP,
         },
       },
@@ -62,6 +46,7 @@ const fonts = {
           weight: 400,
           style: FontStyle.NORMAL,
           url: getFontUrl('ibmplexmono-latin-400-roman.woff2'),
+          postscriptName: `IBMPlexMono-Regular`,
           display: FontDisplay.SWAP,
         },
       },
@@ -70,6 +55,7 @@ const fonts = {
           weight: 500,
           style: FontStyle.NORMAL,
           url: getFontUrl('ibmplexmono-latin-500-roman.woff2'),
+          postscriptName: `IBMPlexMono-Medium`,
           display: FontDisplay.SWAP,
         },
       },
@@ -78,34 +64,7 @@ const fonts = {
           weight: 700,
           style: FontStyle.NORMAL,
           url: getFontUrl('ibmplexmono-latin-700-roman.woff2'),
-          display: FontDisplay.SWAP,
-        },
-      },
-    },
-  },
-  artCursive: {
-    family: 'Reenie Beanie',
-    fallbacks: [`cursive`],
-    variants: {
-      [FontVariant.REGULAR]: {
-        roman: {
-          weight: 400,
-          style: FontStyle.NORMAL,
-          url: getFontUrl('reeniebeanie-latin-400-roman.woff2'),
-          display: FontDisplay.SWAP,
-        },
-      },
-    },
-  },
-  artDisplay: {
-    family: 'Rampart One',
-    fallbacks: [`Sans-fallback`],
-    variants: {
-      [FontVariant.REGULAR]: {
-        roman: {
-          weight: 400,
-          style: FontStyle.NORMAL,
-          url: getFontUrl('rampartone-latin-400-roman.woff2'),
+          postscriptName: `IBMPlexMono-Bold`,
           display: FontDisplay.SWAP,
         },
       },
@@ -113,29 +72,4 @@ const fonts = {
   },
 };
 
-/** Injects postcript names into each font config definition.
- * @param {FontConfig} fontConfig
- */
-const withPostscriptNames = (fontConfig) => {
-  const fontsCopy = cloneDeep(fontConfig);
-  Object.values(fontsCopy).forEach((font) => {
-    // Variable fonts get postscript names on their individual files
-    if (font.type === 'variable') {
-      Object.values(font.variants).forEach((variant) => {
-        const fontFile = fontkit.openSync(path.join(dir.input, variant.url));
-        variant.postscriptName = fontFile.postscriptName;
-      });
-    } else {
-      // Non-variable fonts need one postscript name per weight variant
-      Object.values(font.variants).forEach((variant) => {
-        Object.values(variant).forEach((weight) => {
-          const fontFile = fontkit.openSync(path.join(dir.input, weight.url));
-          weight.postscriptName = fontFile.postscriptName;
-        });
-      });
-    }
-  });
-  return fontsCopy;
-};
-
-module.exports = withPostscriptNames(fonts);
+module.exports = fonts;

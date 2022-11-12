@@ -11,9 +11,11 @@ noindex: true
 ## Fonts
 
 {% assign steps = "xs,sm,base,md,lg,xl,2xl,3xl" | split: "," %}
-{%- for keyName in requiredFonts %}
-  {% assign family = fonts[keyName].family %}
-### {{ keyName }} ({{ family }})
+{%- for entry in fonts %}
+  {% assign fontType = entry | first %}
+  {% assign font = entry | last %}
+  {% assign family = font.family %}
+### {{ fontType }} ({{ family }})
 
 <div class="scroll-x">
   <table>
@@ -28,7 +30,7 @@ noindex: true
       {%- for step in steps -%}
         <tr>
           <td>{{ step }}</td>
-          <td class="fs-{{ step }}" style="font-family: var(--ff-{{ keyName }});">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit mi augue, sit amet sagittis ligula pellentesque ac. Donec sed varius arcu.</td>
+          <td class="fs-{{ step }}" style="font-family: var(--ff-{{ fontType }});">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit mi augue, sit amet sagittis ligula pellentesque ac. Donec sed varius arcu.</td>
         </tr>
       {%- endfor -%}
     </tbody>

@@ -41,3 +41,5 @@
 /**
  * @typedef {Record<string, Font>} FontConfig
  */
+
+module.exports = {};
