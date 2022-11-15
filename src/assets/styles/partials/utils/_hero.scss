@@ -9,6 +9,6 @@
   }
 
   &-subtitle {
-    @include font($size: "xl");
+    @include font($size: "xl", $line-height: "xs");
   }
 }
