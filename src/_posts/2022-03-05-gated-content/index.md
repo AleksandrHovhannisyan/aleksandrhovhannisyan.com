@@ -25,7 +25,7 @@ Where there's money to be made, there is something supposedly valuable to be gua
 
 ## Bypassing Poorly Gated Content
 
-Some of the worst in the content publishing industry—by which I mean the likes of Medium—aggressively gate their content the proper way. Rather than visually hiding their content with CSS and modals, they initially show a truncated view of the content and only reveal the rest if you're authenticated. They do this by tracking how many articles you've read (e.g., with [cookies](/blog/what-are-cookies/)); once you've hit your quota, they prompt you to log in to continue reading. Even if you inspect the network request for the page or disable JavaScript, you'll find that the server only ever returns a truncated portion of the article. You have to open the site incognito or clear your cookies to reset the counter.
+Some of the worst in the content publishing industry—by which I mean the likes of Medium—aggressively gate their content the proper way. Rather than visually hiding their content with CSS and modals, they initially show a truncated view of the content and only reveal the rest if you're authenticated. They do this by tracking how many articles you've read (e.g., with [cookies](/blog/http-cookies/)); once you've hit your quota, they prompt you to log in to continue reading. Even if you inspect the network request for the page or disable JavaScript, you'll find that the server only ever returns a truncated portion of the article. You have to open the site incognito or clear your cookies to reset the counter.
 
 (A little-known workaround is to just not read Medium articles. It's remarkably effective.)
 
