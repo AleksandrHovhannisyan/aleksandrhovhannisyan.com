@@ -19,7 +19,7 @@
     text-transform: uppercase;
     color: var(--color-text-soft);
     margin-bottom: spacing("-3");
-    @include font($size: "sm", $letter-spacing: "lg");
+    @include font($size: "sm", $letter-spacing: "md");
 
     dt,
     dd {
