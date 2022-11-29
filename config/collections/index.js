@@ -1,7 +1,6 @@
 const lodash = require('lodash');
 const { getAllUniqueKeyValues, slugifyString } = require('../utils');
 const site = require('../../src/_data/site');
-const { limit } = require('../filters/filters');
 const { dir } = require('../constants');
 
 /** Returns all blog posts as a collection. */
@@ -10,17 +9,45 @@ const getAllPosts = (collection) => {
   return posts.reverse();
 };
 
+/** Given a category name and an optional page number, returns the root-relative URL to that category's page.
+ * @param {string} category
+ * @param {number} [page] The one-indexed page number
+ */
+const getCategoryHref = (category, page) => {
+  const slug = slugifyString(category);
+  return page > 1 ? `/tags/${slug}/page/${page}/` : `/tags/${slug}/`;
+};
+
 /** Returns all unique categories as a collection.
  * NOTE: I'm calling these "categories" to distinguish them from 11ty's built-in "tags." However,
  * these are still referred to as tags in the UI since that's what's most common.
+ * @returns {({ title: string; href: string; count: string })[]}
  */
 const getAllUniqueCategories = (collection) => {
   const allPosts = getAllPosts(collection);
-  const categories = getAllUniqueKeyValues(allPosts, 'categories').map((category) => ({
-    title: category,
-    slug: slugifyString(category),
-  }));
-  return categories;
+  const uniqueCategories = getAllUniqueKeyValues(allPosts, 'categories');
+
+  // Do this separately for performance rather than inside the category map logic below, which would be several levels of nesting loops
+  const categoryCounts = allPosts.reduce((categoryCounts, post) => {
+    post.data.categories?.forEach((category) => {
+      if (!categoryCounts[category]) {
+        categoryCounts[category] = 0;
+      }
+      categoryCounts[category]++;
+    });
+    return categoryCounts;
+  }, {});
+
+  return (
+    uniqueCategories
+      .map((category) => ({
+        title: category,
+        href: getCategoryHref(category),
+        count: categoryCounts[category],
+      }))
+      // Popular categories first
+      .sort((a, b) => b.count - a.count)
+  );
 };
 
 // Blog posts by category, for pagination
@@ -41,10 +68,7 @@ const getPostsByCategory = (collection) => {
     const chunkedCategoryPosts = lodash.chunk(categoryPosts, postsPerPage);
 
     // Map each chunk to its page slug
-    const categorySlug = slugifyString(category);
-    const pageHrefs = chunkedCategoryPosts.map((_, i) =>
-      i > 0 ? `/tags/${categorySlug}/page/${i + 1}/` : `/tags/${categorySlug}/`
-    );
+    const pageHrefs = chunkedCategoryPosts.map((_, pageIndex) => getCategoryHref(category, pageIndex + 1));
 
     chunkedCategoryPosts.forEach((posts, index) => {
       // Massage the data into a format that 11ty's pagination will like
@@ -69,16 +93,8 @@ const getPostsByCategory = (collection) => {
   return blogPostsByCategory.sort((category1, category2) => category2.posts.length - category1.posts.length);
 };
 
-/** Returns the top `n` categories with at least `minCount` posts, in descending order. */
-const getPopularCategories = (params) => (collection) => {
-  const categories = getPostsByCategory(collection).filter((category) => category.posts.length >= params.minCount);
-  const popularCategories = limit(categories, params.limit);
-  return popularCategories;
-};
-
 module.exports = {
   getAllPosts,
   getAllUniqueCategories,
   getPostsByCategory,
-  getPopularCategories,
 };

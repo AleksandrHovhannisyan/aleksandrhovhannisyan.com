@@ -34,7 +34,6 @@ const {
   getAllPosts,
   getAllUniqueCategories,
   getPostsByCategory,
-  getPopularCategories,
 } = require('./config/collections');
 const markdownLib = require('./config/plugins/markdown');
 const { dir, imagePaths, scriptDirs } = require('./config/constants');
@@ -99,7 +98,6 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addCollection('posts', getAllPosts);
   eleventyConfig.addCollection('categories', getAllUniqueCategories);
   eleventyConfig.addCollection('postsByCategory', getPostsByCategory);
-  eleventyConfig.addCollection('popularCategories', getPopularCategories({ limit: 10, minCount: 5 }));
 
   // Plugins
   eleventyConfig.addPlugin(PluginFootnotes, {
