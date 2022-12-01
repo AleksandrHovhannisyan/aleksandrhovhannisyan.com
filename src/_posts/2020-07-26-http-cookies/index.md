@@ -1,9 +1,5 @@
 ---
 title: An Introduction to HTTP Cookies
-# title: Understanding HTTP Cookies
-# title: A Practical Introduction to HTTP Cookies
-# title: A Hands-On Introduction to HTTP Cookies
-# title: A Hands-On Guide to HTTP Cookies
 description: Learn why HTTP cookies are needed, how they're used on the client and server side, where they're stored, and how they impact security and privacy on the web.
 keywords: [cookies, http cookie]
 categories: [http, cookies, browsers, javascript]
@@ -12,7 +8,7 @@ redirectFrom:
   - /blog/what-are-cookies/
 thumbnail:
   url: https://images.unsplash.com/photo-1568051243858-533a607809a5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
-lastUpdated: 2022-11-25
+lastUpdated: 2022-12-01
 ---
 
 Have you ever wondered how a website remembers who you are when you navigate between different pages or close the site and come back later? What does that "Remember me" checkbox really do? Why do you need to log back into your account when you use a different browser or device, and what does logging out actually do?
@@ -164,6 +160,18 @@ Notice that each cookie has several attributes, like a name, value, domain, expi
         <td><code>Set-Cookie: name=value; HTTPOnly;</code></td>
       </tr>
       <tr>
+        <td>SameSite</td>
+        <td class="rhythm"><p>Used to control whether a cookie should be sent in cross-site requests (e.g., if Site B sends a request to Site A). This attribute can take one of three values:</p>
+          <ul>
+            <li>None</li>
+            <li>Lax</li>
+            <li>Strict</li>
+          </ul>
+          <p>By default, most browsers set cookies to be <code>SameSite=Lax</code> if an explicit value is not provided. We'll learn more about this attribute in the section on <a href="#2-cross-site-request-forgery">cross-site request forgery</a>.</p>
+        </td>
+        <td><code>Set-Cookie: name=value; SameSite=Lax;</code></td>
+      </tr>
+      <tr>
         <td>Secure</td>
         <td>If specified, prevents the cookie from being sent by browsers over an insecure connection (HTTP), requiring the use of SSL and HTTPS.</td>
         <td><code>Set-Cookie: name=value; Secure;</code></td>
@@ -180,12 +188,11 @@ In the previous sections, we learned that a cookie is a piece of data stored in 
 
 ### The `Set-Cookie` HTTP Response Header
 
-At the beginning of this article, we reviewed the HTTP protocol and learned that a server responds to client requests with not only the requested resource but also HTTP headers describing how the server handled that request. One such header is the [`Set-Cookie` response header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie), which instructs the user agent to store a cookie. The response may contain as many `Set-Cookie` headers as needed, one for each cookie that should be set. Below is a sample HTTP1.1 response message instructing the client to set three cookies:
+At the beginning of this article, we reviewed the HTTP protocol and learned that a server responds to client requests with not only the requested resource but also HTTP headers describing how the server handled that request. One such header is the [`Set-Cookie` response header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie), which instructs the user agent to store a cookie. The response may contain as many `Set-Cookie` headers as needed, one for each cookie that should be set. Below is a sample HTTP response message instructing the client to set three cookies:
 
 ```
-Status: 200
-Connection: Keep-Alive
-Content-Type: text/html; charset=utf-8
+HTTP/2 200
+Content-Type: text/html; charset=UTF-8
 Date: Mon, 21 Nov 2022 10:01:21 GMT
 Set-Cookie: name1=value1; Domain=example.com; HTTPOnly
 Set-Cookie: name2=value2; Domain=example.com; Max-Age=10
@@ -214,13 +221,12 @@ As I mentioned earlier in this post, the HTTP protocol is stateless, meaning a w
 
 However, what makes cookies so special is that browsers include them in subsequent requests that they send to the server; this is done via the [`Cookie` request header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cookie). The server can then read those cookies to identify the user and even personalize the response that it sends back to the client. Cookies can be sent back and forth like this, modified, deleted, and even updated as many times as needed. Effectively, cookies extend the HTTP protocol by allowing client and server applications to share state.
 
-Below is a sample HTTP1.1 request message containing a cookie header:
+Below is a sample HTTP request message containing a cookie header:
 
 ```
-GET / HTTP/1.1
+GET / HTTP/2
 Host: example.com
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-Connection: Keep-Alive
 Cookie: name1=value1; name2=value2; name3=value3
 ```
 
@@ -264,9 +270,8 @@ There are two general types of cookies, each defined by its expiration or max ag
 By default, if a cookie does not have an explicit `Expires` or `Max-Age` attribute, it is treated as a <dfn>session cookie</dfn>, also known as a <dfn>temporary cookie</dfn>: a cookie that expires after the current browsing session ends. For example, the following HTTP message instructs the browser to create three cookies, two of which (`name1` and `name3`) are session cookies because neither an expiration nor a max age was specified:
 
 ```
-Status: 200
-Connection: Keep-Alive
-Content-Type: text/html; charset=utf-8
+HTTP/2 200
+Content-Type: text/html; charset=UTF-8
 Date: Mon, 21 Nov 2022 10:01:21 GMT
 Set-Cookie: name1=value1; Domain=example.com; HTTPOnly
 Set-Cookie: name2=value2; Domain=example.com; Max-Age=10
@@ -286,9 +291,8 @@ Why do I say *may*? Because [there's a catch](https://textslashplain.com/2019/06
 Unlike session cookies, persistent cookies have an explicit expiration or max age; your browser will automatically clear these cookies in the background once they expire. For example, the following HTTP message instructs the browser to create a cookie that expires five seconds after its creation:
 
 ```
-Status: 200
-Connection: Keep-Alive
-Content-Type: text/html; charset=utf-8
+HTTP/2 200
+Content-Type: text/html; charset=UTF-8
 Date: Mon, 21 Nov 2022 10:01:21 GMT
 Set-Cookie: name2=value2; Domain=example.com; Max-Age=10
 ```
@@ -331,9 +335,8 @@ See the MDN docs on cookies for [more examples](https://developer.mozilla.org/en
 You may be wondering why I said *most* cookies are accessible under `document.cookie`. That's because there are certain types of cookies (known as HTTP-only cookies) that, for security reasons, cannot be viewed with JavaScript. We'll learn about this in [security issues with cookies](#security-issues-with-http-cookies). In the example we've been using so far, `name1` is an HTTP-only cookie that cannot be viewed with JavaScript:
 
 ```
-Status: 200
-Connection: Keep-Alive
-Content-Type: text/html; charset=utf-8
+HTTP/2 200
+Content-Type: text/html; charset=UTF-8
 Date: Mon, 21 Nov 2022 10:01:21 GMT
 Set-Cookie: name1=value1; Domain=example.com; HTTPOnly
 Set-Cookie: name2=value2; Domain=example.com; Max-Age=10
@@ -448,7 +451,7 @@ Since cookies from different domains are all stored on the same browser and on t
 1. Can Domain A instruct the browser to set cookies for Domain B?
 2. Can Domain A read cookies from Domain B?
 
-The answer to both is *no* thanks to the [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy), which prevents a different origin from reading or setting cookies for another origin. Without the same-origin policy, a malicious origin could interfere with a user's session or even hijack the user's browsing session. The same-origin policy builds on HTTP-only cookies to provide an additional layer of defense against session hijacking.
+The answer to both is *no* thanks to the [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy), which prevents a different origin from reading data from another origin programmatically. Without the same-origin policy, a malicious origin could interfere with a user's session or even hijack the user's browsing session. The same-origin policy builds on HTTP-only cookies to provide an additional layer of defense against session hijacking.
 
 ### 2. Cross-Site Request Forgery
 
@@ -458,7 +461,25 @@ In [cross-site request forgery (CSRF)](https://owasp.org/www-community/attacks/c
 For most sites, browser requests automatically include any credentials associated with the site, such as the user’s session cookie, IP address, Windows domain credentials, and so forth. Therefore, if the user is currently authenticated to the site, the site will have no way to distinguish between the forged request sent by the victim and a legitimate request sent by the victim.
 {% endquote %}
 
-CSRF attacks are one of the reasons why users are cautioned to not open suspicious emails: If an attacker identifies a vulnerable GET endpoint on a site for which the victim has an account, the mere act of the victim opening the malicious email would initiate an HTTP request to that endpoint. Even for POST requests, an attacker could create a hidden form with CSS and show a button tricking the user into submitting a malicious payload.
+CSRF attacks are one of the reasons why users are cautioned to not open suspicious emails: If an attacker identifies a vulnerable GET endpoint on a site for which the victim has an account, the mere act of the victim opening the malicious email would initiate an HTTP request to that endpoint. Even for POST requests, an attacker could create a hidden form with CSS and show a button tricking the user into submitting a malicious payload. However, thanks to improvements in browser security, this is not as much of an issue nowadays as it used to be. And that's thanks to the `SameSite` cookie attribute.
+
+#### `SameSite` Cookies
+
+To protect users against cross-site request forgery, developers can use [the `SameSite` cookie attribute](https://web.dev/samesite-cookies-explained/). This attribute determines whether a cookie should be included in a request that originates from a third-party site, which is one that has a different eTLD+1 domain than another site. You can learn more about how this cross-site determination is made in the following article: [Understanding "same-site" and "same-origin"](https://web.dev/same-site-same-origin/#site).
+
+For example, suppose `site.a.com` has a public API endpoint (e.g., `site.a.com/settings/update`) that can be used to change a user's account settings. Requests to this endpoint will only be processed if they include a session cookie authenticating the user. Ordinarily, requests are made to this endpoint via the front end of `site.a.com`, such as when a user submits a form, and these are known as same-site requests. The cookies included in same-site requests are known as <dfn>first-party cookies</dfn>.
+
+As we've learned, session cookies should be marked as `Secure` and `HTTPOnly` as a best practice to protect against session hijacking. But this is not enough to protect against cross-site request forgery. To understand why, suppose a user has an unexpired session cookie for their `site.a.com` account. If this user now visits another site—say `site.b.com`—that site could make a `POST` request with JavaScript to `site.a.com/settings/update` and include a malicious payload in the body of the request, such as to delete the user's account. Without same-site cookie restrictions, this cross-site request originating from `site.b.com` would include the user's cookies for `site.a.com` in its `Cookie` header by design. Those cookies would now be referred to as <dfn>third-party cookies</dfn> from the perspective of `site.b.com`. Even though `site.b.com` can't *read* the third-party cookies for `site.a.com` for security reasons, it *can* force them to be included in requests to that site, allowing it to make potentially malicious requests on behalf of unsuspecting users. The user returns to `site.a.com`, only to discover that their account is no longer recognized!
+
+{% aside %}
+While [cross-origin resource sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) will prevent `site.b.com`'s script from reading the response returned by `site.a.com`, it won't prevent the request itself from going through. This is a common misconception. CORS does *not* protect against CSRF attacks.
+{% endaside %}
+
+Now, imagine the same scenario, but this time the user's session cookie has a `SameSite` attribute of `Lax` or `Strict`. When the user visits `site.b.com`, it will attempt to make a malicious request to `site.a.com` just as before. But this time around, the cross-site request will *not* include the user's cookies for `site.a.com`. So the request will (presumably) be rejected by the back end server upon seeing that there is no cookie authenticating the user.
+
+It used to be the case that cookies without a `SameSite` attribute were treated as `SameSite=None` by default. This meant that cookies would be included in all cross-site requests, potentially exposing users to CSRF vulnerabilities. Nowadays, for security reasons, browsers treat all cookies without an explicit `SameSite` attribute as `Lax` by default to protect against CSRF attacks. The main difference between `SameSite=Lax` and `SameSite=Strict` is that `Lax` allows cookies to be included when a user navigates from `site.b.com` to `site.a.com` (such as by following a link or changing the URL in their address bar), whereas `Strict` always limits the cookie to a same-site context.
+
+Typically, cookies that need to track users across different sites will set `SameSite=None` explicitly. Otherwise, they'll default to `Lax`, rendering those cookies useless in a third-party context. That segues nicely into our next topic of discussion: advertising cookies.
 
 ### 3. Advertising Cookies
 
@@ -474,8 +495,8 @@ Here's a breakdown of how advertising cookies work:
 
 1. A user visits a site (e.g., `example.com`) that's part of an ad network (e.g., Google AdSense, which has a domain of `doubleclick.net`).
 2. The site has ads embedded in its markup, such as in an `iframe`, `img`, or `video`. Those ads are hosted on the ad network's domain (in this case, `doubleclick.net`).
-4. On page load, the user's browser requests those resources from the ad network just like it would any other resource on the web.
-5. **Key step**: The ad network sends the requested ads to the user, along with an advertising cookie in the response header.
+4. On page load, the user's browser requests those third-party resources from the ad network just like it would request any other resource on the web.
+5. **Key step**: The ad network sends the requested ads to the user, along with an advertising cookie in the response header. As we learned, this cookie must have `SameSite=None`, or else it won't be included in this cross-site request.
 6. The browser stores the cookie and associates it with the ad network's domain (e.g., `doubleclick.net`).
 7. When the user visits another site that requests resources from the same ad network, the cookie will be sent along to the ad network in the HTTP request headers. The ad network can then return personalized content based on that user's identity.
 
@@ -487,7 +508,7 @@ This is why people sometimes find that personalized ads are following them aroun
 
 In the screenshot below, I located the `IDE` advertising cookie on StackOverflow, a site I chose only because I know it uses Google AdSense:
 
-{% include "postImage.html" src: "./images/ide1.png", alt: "Examining the cookies associated with doubleclick.net on quora.com. The IDE Google AdSense cookie is highlighted." %}
+{% include "postImage.html" src: "./images/ide1.png", alt: "Examining the cookies associated with doubleclick.net on quora.com. The IDE Google AdSense cookie is highlighted.", caption: "Note the use of `SameSite=None`. Without that attribute, the cookie will be treated as `SameSite=Lax` and will never be included in cross-site requests to the ad network, rendering it useless." %}
 
 Time for an experiment, assuming you're willing to accept advertising cookies:
 
