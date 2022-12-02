@@ -2,6 +2,7 @@
 
 @import "../functions";
 @import "../mixins";
+@import "../tokens";
 
 body {
   display: flex;
@@ -15,8 +16,8 @@ body {
 }
 
 #page-content {
-  padding-block-start: clamped(32px, 104px);
-  padding-block-end: clamped(64px, 96px);
+  padding-block-start: clamped(get($tokens, "spacing", "steps", "5"), get($tokens, "spacing", "steps", "12"));
+  padding-block-end: clamped(get($tokens, "spacing", "steps", "10"), get($tokens, "spacing", "steps", "12"));
 }
 
 :is(code, kbd) {

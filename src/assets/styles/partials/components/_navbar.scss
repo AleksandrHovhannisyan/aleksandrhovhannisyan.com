@@ -5,7 +5,7 @@
   top: 50%;
   transform: translate(#{spacing("-2")}, -50%);
   padding: spacing("-2");
-  color: inherit;
+  background-color: var(--color-navbar-bg);
 }
 
 .navbar {
@@ -21,8 +21,6 @@
     --shadow-navbar: 0 -2px 8px hsl(0deg 0% 0% / 40%);
   }
 
-  --navbar-min-height: #{spacing("10")};
-
   /* Body is a flex container. Without this, the navbar may shrink vertically due to the presence of a horizontal scrollbar. */
   flex-shrink: 0;
   display: flex;
@@ -35,10 +33,13 @@
   padding-block: spacing("-1");
   background-color: var(--color-navbar-bg);
   box-shadow: var(--shadow-navbar);
-  min-height: var(--navbar-min-height);
   overflow-x: auto;
+  // Shared typography styles for all navbar text
+  color: white;
+  @include font($size: "sm");
 
   a {
+    color: inherit;
     text-decoration: none;
   }
 
@@ -49,13 +50,10 @@
     flex: 1 0 auto;
     // Relatively position the navbar for the skip link
     position: relative;
-    // Shared typography styles for all navbar text
-    color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: spacing("-2");
-    @include font($size: "sm");
+    gap: spacing("0");
   }
 
   &-container {
@@ -70,21 +68,14 @@
 
   &-branding {
     display: none;
-    color: inherit;
     @include font($family: "body", $weight: "bold");
   }
 
   &-links {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: spacing("-2");
-    flex: 1 0 auto;
-  }
-
-  &-item {
     text-align: center;
-    flex-grow: 1;
   }
 
   &-link {
@@ -93,13 +84,11 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    color: inherit;
-  }
-}
 
-.skip-navigation:focus,
-.navbar-link:is([aria-current="page"], :hover, :focus) {
-  background-color: var(--color-navbar-bg-focus);
+    &:is([aria-current="page"], :hover, :focus) {
+      background-color: var(--color-navbar-bg-focus);
+    }
+  }
 }
 
 .lamp {
@@ -223,7 +212,7 @@
 
 @include mobile-lg {
   .navbar {
-    --navbar-min-height: #{spacing("11")};
+    padding-block: spacing("0");
     position: unset;
     box-shadow: none;
 
@@ -235,10 +224,6 @@
       display: flex;
       gap: spacing("-3");
       align-items: center;
-    }
-
-    &-links {
-      flex: 0 1 auto;
     }
 
     &-item.home {

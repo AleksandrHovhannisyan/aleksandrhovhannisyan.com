@@ -47,7 +47,7 @@ html {
     background-size: 90px 90px, 90px 90px, 18px 18px, 18px 18px;
     background-position: -3.6px -3.6px, -3.6px -3.6px, -1.8px -1.8px, -1.8px -1.8px;
 
-    @include tablet {
+    @include tablet-sm {
       &::before,
       &::after {
         content: "";
@@ -86,7 +86,7 @@ html {
         font-size: calc(var(--font-size-multiplier) * #{font-size("4xl")});
         @include font($family: "display", $weight: "regular");
 
-        @include tablet {
+        @include tablet-sm {
           --font-size-multiplier: 2;
           --color-shadow: hsl(0deg 0% 50% / 10%);
         }
@@ -123,7 +123,7 @@ html {
           text-transform: none;
           @include font($family: "cursive", $weight: "regular", $size: "md");
 
-          @include mobile-lg {
+          @include tablet-sm {
             --translate-x: 0;
             --translate-y: -50%;
             --rotation: 2deg;
@@ -144,7 +144,12 @@ html {
       text-align: center;
       @include font($family: "mono", $weight: "medium", $size: "xs");
 
-      @include tablet {
+      > * {
+        max-width: 60ch;
+        margin-inline: auto;
+      }
+
+      @include tablet-sm {
         padding-bottom: spacing("5");
       }
     }
@@ -157,7 +162,7 @@ html {
     left: 0;
     width: 100%;
 
-    @include tablet {
+    @include tablet-sm {
       position: static;
     }
 
@@ -179,7 +184,7 @@ html {
         1px 1px;
       @include font($size: "sm", $family: "mono", $weight: "medium");
 
-      @include tablet {
+      @include tablet-sm {
         @include font($size: "base");
 
         &.with-subtitle {
@@ -218,7 +223,7 @@ html {
         margin-inline-start: auto;
       }
 
-      @include tablet {
+      @include tablet-sm {
         gap: spacing("5");
         overflow-x: unset;
         padding: spacing("0") spacing("5");
