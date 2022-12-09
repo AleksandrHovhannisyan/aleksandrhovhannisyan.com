@@ -1,5 +1,5 @@
 ---
-title: How to Download and Optimize Any Google Font
+title: How to Download and Optimize Google Fonts
 description: Self-hosting fonts can improve your site's performance while also respecting your users' privacy in the era of the GDPR. Learn how to download, subset, and optimize any Google Font for your projects.
 keywords: [google fonts, woff2, glyphhanger]
 categories: [typography, google-fonts, webperf, privacy]
