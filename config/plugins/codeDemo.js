@@ -151,7 +151,6 @@ const codeDemoOptions = {
     class: 'code-preview',
     height: '308',
     style: 'width: 100%;',
-    frameborder: '0',
   },
 };
 
