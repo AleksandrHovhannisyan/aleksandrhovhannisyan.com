@@ -1,6 +1,7 @@
 const esbuild = require('esbuild');
 const path = require('path');
 const PluginFootnotes = require('eleventy-plugin-footnotes');
+const { EleventyPluginCodeDemo } = require('eleventy-plugin-code-demo');
 const {
   asideShortcode,
   definitionShortcode,
@@ -36,6 +37,7 @@ const {
   getPostsByCategory,
 } = require('./config/collections');
 const markdownLib = require('./config/plugins/markdown');
+const { codeDemoOptions } = require('./config/plugins/codeDemo');
 const { dir, imagePaths, scriptDirs } = require('./config/constants');
 const { slugifyString } = require('./config/utils');
 const { escape } = require('lodash');
@@ -109,6 +111,7 @@ module.exports = (eleventyConfig) => {
     titleId: 'footnotes-label',
     backLinkLabel: (footnote, index) => `Back to reference ${index + 1}`,
   });
+  eleventyConfig.addPlugin(EleventyPluginCodeDemo, codeDemoOptions);
   eleventyConfig.setLibrary('md', markdownLib);
 
   // Post-processing

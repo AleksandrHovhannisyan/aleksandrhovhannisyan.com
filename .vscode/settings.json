@@ -16,4 +16,8 @@
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true
   },
+  "cSpell.words": [
+    "endcode",
+    "mouseleave"
+  ],
 }
