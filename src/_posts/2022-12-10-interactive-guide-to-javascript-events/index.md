@@ -127,7 +127,7 @@ Because events occur whether we listen to them or not, all JavaScript events hav
 - The `input` event on a checkbox toggles its state on or off.
 - The `focus` and `blur` events fire when an element receives or loses focus, respectively.
 
-Later in this article, we'll take a closer look at how we can [prevent this default behavior from occurring](#preventing-default-event-behavior). For now, the key takeaway is that events do not *require* event listeners in order to fire—these are two independent concepts.
+Later in this article, we'll take a closer look at how we can [prevent this default behavior from occurring](#preventing-an-events-default-behavior). For now, the key takeaway is that events do not *require* event listeners in order to fire—these are two independent concepts.
 
 ### A Sneak Peek at Event Propagation
 
