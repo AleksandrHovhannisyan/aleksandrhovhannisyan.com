@@ -454,7 +454,7 @@ Output:
 
 Per [Table 1](#table-1), `1` corresponds to the capturing phase and `2` to the targeting phase.
 
-Before we move on, I want to reiterate that event capturing is really only useful if you're setting an event handler on a parent element and you want this handler to also catch the same event when it originates from one of the element's descendants in the DOM. The event target's handler will run regardless of whether it captures the event. So in the example we just looked at, I could have also added `{ capture: true }` to the button's event listener, but that wouldn't have made a difference—the button's event handler would still have run in the [targeting phase](#2-event-targeting) (our next topic of discussion) because the button is the click target.
+Before we move on, I want to reiterate that event capturing is really only useful if you're setting an event handler on a parent element and you want this handler to also catch the same event when it originates from one of the element's descendants in the DOM, and to run *before* the targeting phase. The event target's handler will run regardless of whether it captures the event. So in the example we just looked at, I could have also added `{ capture: true }` to the button's event listener, but that wouldn't have made a difference—the button's event handler would still have run in the [targeting phase](#2-event-targeting) (our next topic of discussion) because the button is the click target.
 
 Moreover, if the parent element happens to be the event target in the future, its capturing listener will still run like a normal event listener. In this example, if I were to click the body instead of the button, then the body's event listener would still run like any normal event listener that you're used to, except now it would run in the *targeting* phase because the body would be the event target for the click.
 
@@ -514,7 +514,7 @@ If instead we want to access the node on which the event listener was *registere
 ```js
 function handleClick(e) {
   const target = e.target.tagName;
-  const currentTarget = e.currentTarget ?? 'WINDOW';
+  const currentTarget = e.currentTarget.tagName ?? 'WINDOW';
   console.log(`target`, target, `currentTarget`, currentTarget);
 }
 
@@ -711,55 +711,6 @@ document.querySelector('.scroll-container').addEventListener((e) => {
 
 If the scroll event *did* bubble up from child elements, then it would lead to some misleading results—scrolling a child container would also fire a scroll event on the window, suggesting that the browser window itself also scrolled even though it *didn't*. Thus, any scroll event handler set on a parent would need to double-check that `Event.target` actually matches `Event.currentTarget` before proceeding any further. But that's not intuitive, so the scroll event does not bubble to prevent this unwanted behavior. There are other events that don't bubble for similar reasons.
 
-#### Default Behavior Runs After the Bubbling Phase
-
-The default behavior for an event only occurs once all event handlers have run for that event and the event has propagated through all of its phases: capturing, targeting, and bubbling. In other words, an event's default behavior will only run after the event completely bubbles as high up as it can go. This means that we have an opportunity to prevent the default event behavior with `Event.preventDefault` not only during the targeting phase but also potentially in the capturing or bubbling phases (if we want to).
-
-A simple way to prove this is to run some logic that blocks the main thread as late as possible in the bubbling phase (i.e., at the `window` level). One way to do this is by showing an `alert`, which opens a browser dialog window that must be dismissed in order for the main thread to resume executing. For our experiment, we'll use a checkbox. The default behavior for a checkbox is to toggle its `.checked` state in response to the `input` event. Visually, the checkbox will either add or remove its checkmark. If our assumption is wrong, and the default behavior doesn't need to wait for the event to fully bubble, then the checkbox should change visually before the alert appears.
-
-Here's the code for our experiment:
-
-{% capture html %}
-```html
-<label>
-  Toggle
-  <input type="checkbox">
-</label>
-```
-{% endcapture %}
-
-{% capture css %}
-```css
-input[type="checkbox"] {
-  width: 1rem;
-  height: 1rem;
-  display: inline-block;
-  vertical-align: middle;
-}
-```
-{% endcapture %}
-
-{% capture js %}
-```js
-window.addEventListener('input', () => {
-	alert('Pausing. Dismiss this alert to resume.');
-  console.log('alert dismissed');
-});
-```
-{% endcapture %}
-
-{{ html }}
-
-{{ js }}
-
-{% codeDemo 'Showing a blocking alert when an input is toggled' %}
-{{ html }}
-{{ css }}
-{{ js }}
-{% endcodeDemo %}
-
-If you run this code and click the checkbox, you'll notice that it doesn't update its state visually until *after* the alert is dismissed. Thus, the default behavior for events runs after the bubbling phase, giving us time to run any custom logic we want before the default behavior and potentially even prevent the default behavior in any phase.
-
 ## Mixing Event Capturing and Bubbling
 
 {% assign html = originalHTML %}
@@ -845,7 +796,7 @@ Let's break this down in terms of the code:
 In some situations, we might want to prevent an event from propagating further in the DOM. This might mean that we want to prevent the event from being captured by other nodes *below* it or reaching its intended target, or we might want to prevent it from *bubbling* to other nodes after it has reached the target. Either way, the DOM allows us to stop the event from propagating using [`Event.stopPropagation`](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation).
 
 {% aside %}
-Many explanations of `Event.stopPropagation` are incomplete and state that it prevents bubbling. This is only true if you're stopping propagation in the bubbling phase. `Event.stopPropagation` can also prevent nodes further down the tree from capturing or even targeting the event.
+Many explanations of `Event.stopPropagation` are incomplete and state that it prevents bubbling. This is only true if you're stopping propagation in the targeting or bubbling phases. `Event.stopPropagation` can also prevent nodes further down the tree from capturing or even targeting the event.
 {% endaside %}
 
 Let's consider a few different scenarios, all involving the same example where a user clicks a button. What happens if we call `Event.stopPropagation` inside the capturing, targeting, and bubbling phases? To keep things interesting, I'll reuse the code where we [mixed event handlers of different types](#mixing-event-capturing-and-bubbling).
@@ -896,7 +847,7 @@ So we only see the following output:
 "window" 1
 ```
 
-In fact, if we try clicking *anywhere* in the document, we will see the exact same output because we're intercepting the event as early as possible in the capturing phase and preventing it from propagating any further.
+In fact, if we were to click *anywhere* in the document, we would see the exact same output because the window intercepts the event as early as possible in the capturing phase and prevents it from propagating down any further.
 
 ### 2. `Event.stopPropagation` in Event Targeting
 
@@ -997,7 +948,7 @@ Indeed, that's the case if we run this code and inspect the output:
 
 ### `stopPropagation` vs. `stopImmediatePropagation`
 
-You may have also seen a similar method named [`Event.stopImmediatePropagation`](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopImmediatePropagation). To understand the difference between these two methods, we'll modify our example to set multiple event listeners of the same type on the same node (in this case, `document.body`):
+You may have also seen a similar method named [`Event.stopImmediatePropagation`](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopImmediatePropagation). To understand the difference between these two methods, we'll modify our example to set multiple event listeners of the same type on the same node. In this case, let's set two capturing event listeners on `document.body`:
 
 {% capture js %}
 ```js
@@ -1106,7 +1057,7 @@ Without default event behaviors, we'd have to reinvent a good chunk of the exist
 
 However, while default event behaviors are useful, we sometimes need to prevent them so we can replace them with our own custom implementations, or to prevent conflicting behaviors from creating confusing user experiences. To do this, we can use the [`Event.preventDefault`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method.
 
-When might you want to prevent the default behavior for an event? Well, perhaps the most classic example of this comes up with HTML forms. When you press the <kbd>Enter</kbd> key anywhere inside a form, it fires the `submit` event. And the default behavior for a form submission is to refresh the page (unless the form uses a `GET` method and has an `action` pointing to a different URL). But that's not always the desirable behavior. For example, in an attempt to create a more fluid single-page experience, many apps prevent this default behavior and handle the form data themselves.
+When might you want to prevent the default behavior for an event? Well, perhaps the most classic example of this comes up with HTML forms. When you press the <kbd>Enter</kbd> key anywhere inside a form, it fires the `submit` event. And the default behavior for a form submission is to refresh the page (unless the form uses a `GET` method and has an `action` pointing to a different URL). But that's not always the desired behavior. For example, in an attempt to create a more fluid single-page experience, many apps prevent this default behavior and handle the form data themselves to keep the user on the current page.
 
 Here's an example of preventing the native form submission behavior:
 
@@ -1142,6 +1093,55 @@ form.addEventListener('submit', (e) => {
 {% endcodeDemo %}
 
 In some cases, preventing the default behavior for an event can have unintended and frustrating consequences for end users if you're not careful. For example, if you prevent the default behavior on key events to implement keyboard shortcuts in your app, you may prevent people from using their familiar browser keyboard shortcuts on your page.
+
+### Default Behavior Runs After the Bubbling Phase
+
+The default behavior for an event only occurs once all event handlers have run for that event and the event has propagated through all of its phases: capturing, targeting, and bubbling. In other words, an event's default behavior will only run after the event completely bubbles as high up as it can go. This means that we have an opportunity to prevent the default event behavior with `Event.preventDefault` not only during the targeting phase but also potentially in the capturing or bubbling phases (if we want to).
+
+A simple way to prove this is to run some logic that blocks the main thread as late as possible in the bubbling phase (i.e., at the `window` level). One way to do this is by showing an `alert`, which opens a browser dialog window that must be dismissed in order for the main thread to resume executing. For our experiment, we'll use a checkbox. The default behavior for a checkbox is to toggle its `.checked` state in response to the `input` event. Visually, the checkbox will either add or remove its checkmark. If our assumption is wrong, and the default behavior doesn't need to wait for the event to fully bubble, then the checkbox should change visually before the alert appears.
+
+Here's the code for our experiment:
+
+{% capture html %}
+```html
+<label>
+  Toggle
+  <input type="checkbox">
+</label>
+```
+{% endcapture %}
+
+{% capture css %}
+```css
+input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+```
+{% endcapture %}
+
+{% capture js %}
+```js
+window.addEventListener('input', () => {
+	alert('Pausing. Dismiss this alert to resume.');
+  console.log('alert dismissed');
+});
+```
+{% endcapture %}
+
+{{ html }}
+
+{{ js }}
+
+{% codeDemo 'Showing a blocking alert when an input is toggled' %}
+{{ html }}
+{{ css }}
+{{ js }}
+{% endcodeDemo %}
+
+If you run this code and click the checkbox, you'll notice that it doesn't update its state visually until *after* the alert is dismissed. Thus, the default behavior for events runs after the bubbling phase, giving us time to run any custom logic we want before the default behavior and potentially even prevent the default behavior in any phase.
 
 ## Performant Event Handling
 
