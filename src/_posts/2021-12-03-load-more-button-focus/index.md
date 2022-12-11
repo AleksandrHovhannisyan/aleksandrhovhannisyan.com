@@ -1,5 +1,5 @@
 ---
-title: Keeping Focus in Place with Load-More Buttons
+title: Managing Keyboard Focus for Load-More Buttons
 description: Load-more buttons are more accessible than infinite scrolling, but they also steal keyboard focus when new content loads in. We can fix this problem by manually focusing the first newly inserted result.
 keywords: [load more, load more button, infinite scrolling]
 categories: [accessibility, javascript, react]
@@ -12,7 +12,7 @@ scripts:
     defer: true
 ---
 
-Many blogging platforms, news sites, and social media platforms use a strategy known as **infinite scrolling** to render a continuously growing list of results in a feed. Unfortunately, while infinite scrolling creates a seamless user experience on social media platforms, it isn't great for accessibility. Not only does it make it impossible for both mouse and keyboard users to reach a site's footer, but it can also create a confusing user experience for screen reader users if the proper ARIA roles and attributes are not used (e.g., [`aria-live`](https://gomakethings.com/how-and-why-to-use-aria-live/), among others).
+Many websites use a strategy known as **infinite scrolling** to render a continuously growing list of results in a content feed. Unfortunately, while infinite scrolling creates a seamless user experience on social media platforms, it isn't great for accessibility. Not only does it make it impossible for both mouse and keyboard users to reach a site's footer, but it can also create a confusing user experience for screen reader users if the proper ARIA roles and attributes are not used (e.g., [`aria-live`](https://gomakethings.com/how-and-why-to-use-aria-live/), among others).
 
 Load-more buttons are generally preferable to infinite scrolling and create a more accessible user experience for screen reader users since they give you a choice of either loading in new content or breaking out of the feed. But if not implemented correctly, these buttons may still create a frustrating user experience for keyboard users.
 
@@ -96,7 +96,7 @@ const App = () => {
 ```
 
 {% aside %}
-  **Note**: To keep the code simple, this tutorial assumes that the list length only ever changes because a user clicked the load-more button. But in practice, the list may grow and shrink for other reasons. For example, if users are allowed to type search queries to filter the results, then the first new result may need to be reset. You should set this index accordingly wherever you are updating the list of results.
+  **Note**: To keep the code simple, this tutorial assumes that the list length only ever grows because a user clicked the load-more button. But in practice, the list may grow and shrink for other reasons. For example, if users are allowed to type search queries to filter the results, then the first new result may need to be reset. You should set this index accordingly wherever you are updating the list of results.
 {% endaside %}
 
 {% aside %}
@@ -208,4 +208,4 @@ Everything is working as expected!
 
 Load-more buttons are great for accessibility, but you need to take care when implementing them so that you don't create a frustrating user experience. By default, when a button is clicked via keyboard, it steals focus from the rest of the document. This is normally the expected behavior, but if the button is being used to load more results, it forces the user to tab *backwards* to find where they left off in the list.
 
-In this article, we looked at how to fix that problem using refs and by focusing the first new result each time the list grows. Now, after a user clicks the load-more button with their keyboard, their focus will jump to the first newly inserted result. This allows them to continue tabbing forward normally rather than having to backtrack.
+In this article, we looked at how to fix that problem by focusing the first new result each time the list grows. Now, after a user clicks the load-more button with their keyboard, their keyboard focus will jump to the first newly inserted result. This allows them to continue tabbing forward normally rather than having to backtrack.
