@@ -5,9 +5,10 @@ title: An Interactive Guide to JavaScript Events
 # title: "A Comprehensive Guide to JavaScript Events: Capturing, Targeting, and Bubbling"
 # title: An Introduction to JavaScript Events
 description: Learn how event capturing, targeting, and bubbling work in JavaScript; how to prevent an event's default behavior; how to stop event propagation; and more.
-keywords: [event, javascript]
+keywords: [javascript events, event]
 categories: [javascript, html, browsers]
 thumbnail: ./images/phases.png
+lastUpdated: 2022-12-13
 openGraph:
   twitter:
     card: summary_large_image
@@ -1055,7 +1056,11 @@ Before, I mentioned that all events have a default behavior that depends on the 
 
 Without default event behaviors, we'd have to reinvent a good chunk of the existing functionality on the web every time we wanted to create a simple interactive web page. Thankfully, that's not the case, and our work is cut out for us.
 
-However, while default event behaviors are useful, we sometimes need to prevent them so we can replace them with our own custom implementations, or to prevent conflicting behaviors from creating confusing user experiences. To do this, we can use the [`Event.preventDefault`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method.
+However, while default event behaviors are useful, we sometimes need to prevent them so we can replace them with our own custom implementations, or to prevent conflicting behaviors from creating confusing user experiences. To do this, we can use the [`Event.preventDefault`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method. If [`Event.cancelable`](https://developer.mozilla.org/en-US/docs/Web/API/Event/cancelable) is `true`, then this method will, as the name suggests, prevent ("cancel") the default behavior for the event.
+
+{% aside %}
+What events aren't cancelable? It varies by browser implementation, but most native events are cancelable. Others, like the `input` event, are not. Additionally, synthetic events—custom ones created with the [`Event()` constructor](https://developer.mozilla.org/en-US/docs/Web/API/Event/Event) as opposed to ones emitted as a result of a user interaction—are also not cancelable.
+{% endaside %}
 
 When might you want to prevent the default behavior for an event? Well, perhaps the most classic example of this comes up with HTML forms. When you press the <kbd>Enter</kbd> key anywhere inside a form, it fires the `submit` event. And the default behavior for a form submission is to refresh the page (unless the form uses a `GET` method and has an `action` pointing to a different URL). But that's not always the desired behavior. For example, in an attempt to create a more fluid single-page experience, many apps prevent this default behavior and handle the form data themselves to keep the user on the current page.
 
@@ -1065,9 +1070,9 @@ Here's an example of preventing the native form submission behavior:
 ```html
 <form>
   <label>
-    Query
-    <input type="search">
-    <button type="submit">Search</button>
+    Data
+    <input type="text">
+    <button type="submit">Submit</button>
   </label>
 </form>
 ```
@@ -1078,7 +1083,7 @@ Here's an example of preventing the native form submission behavior:
 const form = document.querySelector('form');
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  console.log('submitted without refreshing');
+  console.log('submitted form without refreshing');
 });
 ```
 {% endcapture %}
@@ -1087,7 +1092,7 @@ form.addEventListener('submit', (e) => {
 
 {{ js }}
 
-{% codeDemo 'A search form with the default event prevented' %}
+{% codeDemo 'Preventing the submit event on a form' %}
 {{ html }}
 {{ js }}
 {% endcodeDemo %}
@@ -1096,37 +1101,34 @@ In some cases, preventing the default behavior for an event can have unintended 
 
 ### Default Behavior Runs After the Bubbling Phase
 
-The default behavior for an event only occurs once all event handlers have run for that event and the event has propagated through all of its phases: capturing, targeting, and bubbling. In other words, an event's default behavior will only run after the event completely bubbles as high up as it can go. This means that we have an opportunity to prevent the default event behavior with `Event.preventDefault` not only during the targeting phase but also potentially in the capturing or bubbling phases (if we want to).
+The default behavior for an event only occurs once all event handlers have run for that event and the event has propagated through all of its phases: capturing, targeting, and bubbling. In other words, an event's default behavior will only run after the event completely bubbles as high up as it can go. This means that we have an opportunity to prevent the default event behavior with `Event.preventDefault` not only during the targeting phase but also potentially in the capturing or bubbling phases (if we want to), assuming `Event.cancelable` is `true`.
 
-A simple way to prove this is to run some logic that blocks the main thread as late as possible in the bubbling phase (i.e., at the `window` level). One way to do this is by showing an `alert`, which opens a browser dialog window that must be dismissed in order for the main thread to resume executing. For our experiment, we'll use a checkbox. The default behavior for a checkbox is to toggle its `.checked` state in response to the `input` event. Visually, the checkbox will either add or remove its checkmark. If our assumption is wrong, and the default behavior doesn't need to wait for the event to fully bubble, then the checkbox should change visually before the alert appears.
+A simple way to prove this is to run some logic in response to a cancelable event that bubbles (e.g., `submit`) and block the main thread as late as possible in the bubbling phase (i.e., at the `window` level). One way to do this is by showing an `alert`, which opens a browser dialog window that must be dismissed in order for the main thread to resume executing. If our assumption is wrong, and the default behavior doesn't need to wait for the event to fully bubble, then the form should reload the page before the alert appears.
 
 Here's the code for our experiment:
 
 {% capture html %}
 ```html
-<label>
-  Toggle
-  <input type="checkbox">
-</label>
-```
-{% endcapture %}
-
-{% capture css %}
-```css
-input[type="checkbox"] {
-  width: 1rem;
-  height: 1rem;
-  display: inline-block;
-  vertical-align: middle;
-}
+<form>
+  <label>
+    Data
+    <input type="text">
+    <button type="submit">Submit</button>
+  </label>
+</form>
 ```
 {% endcapture %}
 
 {% capture js %}
 ```js
-window.addEventListener('input', () => {
-	alert('Pausing. Dismiss this alert to resume.');
-  console.log('alert dismissed');
+// Log in a 1s timeout so we can tell when the page loads
+setTimeout(() => {
+  console.log('Page loaded');
+}, 1000);
+
+// Submit event bubbles
+window.addEventListener('submit', (e) => {
+  alert('Pausing. Dismiss this alert to continue.');
 });
 ```
 {% endcapture %}
@@ -1135,13 +1137,28 @@ window.addEventListener('input', () => {
 
 {{ js }}
 
-{% codeDemo 'Showing a blocking alert when an input is toggled' %}
+{% codeDemo 'Showing a main-thread-blocking JavaScript alert in response to a form submission' %}
 {{ html }}
-{{ css }}
 {{ js }}
 {% endcodeDemo %}
 
-If you run this code and click the checkbox, you'll notice that it doesn't update its state visually until *after* the alert is dismissed. Thus, the default behavior for events runs after the bubbling phase, giving us time to run any custom logic we want before the default behavior and potentially even prevent the default behavior in any phase.
+If you run this code and submit the form, you'll notice that it doesn't reload the frame until *after* the alert is dismissed. Thus, the default behavior for events runs after the bubbling phase, giving us time to run any custom logic we want before the default behavior and potentially even prevent the default behavior in any phase. Here's the same `preventDefault` demo, but this time on the `window` in the bubbling phase:
+
+{% capture js %}
+```js
+window.addEventListener('submit', (e) => {
+  e.preventDefault();
+  console.log('submitted form without refreshing');
+});
+```
+{% endcapture %}
+
+{{ js }}
+
+{% codeDemo 'Preventing the submit event on a form in the bubbling phase' %}
+{{ html }}
+{{ js }}
+{% endcodeDemo %}
 
 ## Performant Event Handling
 
@@ -1195,7 +1212,7 @@ document.querySelector('textarea').addEventListener('input', handleInput);
 Throttling is similar to debouncing; it also uses the higher-order function pattern to return an inner function that will eventually be invoked. The main difference is that while debouncing cancels previously queued function calls and doesn't run the inner function if it keeps getting called too frequently, throttling controls the *rate of invocation* for the inner function, ensuring that it gets called in even intervals with a fixed delay between the calls (so long as the function continues to be called). This makes it ideal for scenarios where events naturally fire very frequently and where we care about handling intermediate states. Good candidates for throttling include:
 
 - The `scroll` event,
-- The `keydown` event, or
+- The `keydown` event, and
 - The `input` event on an HTML slider.
 
 For example, if we were to debounce the `input` handler on an HTML slider, then we wouldn't be able to react to intermediate value changes while the user is sliding it around. Similarly, if we were to debounce a scroll handler on the window, it would fire so frequently that the debounce would cancel every intermediate call until we stopped scrolling. If our event handler updates some UI, it would look like it's janky and lagging between the start and end of the user interaction. By contrast, throttling would slow the rate of updating while still reacting to intermediate states.
