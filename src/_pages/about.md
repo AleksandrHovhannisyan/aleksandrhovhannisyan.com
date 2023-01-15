@@ -13,11 +13,11 @@ Thanks for dropping by! My name's Aleksandr—and yes, that's spelled *without* 
 
 Speaking of last names, if mine hasn't already [betrayed me](http://www.armeniapedia.org/wiki/Armenian_Last_Names), I was originally born in Armenia, a beautiful country nestled between Europe, Asia, and a bunch of biblically old mountains. You can almost spot it on a world map if you squint hard enough.
 
-Long story short, I moved to the U.S. when I was little and have lived in the states for most of my life. I currently reside in Florida, home to plenty of friendly gators, lovebugs whose carcasses will eat away at your car's paint, and the infamous Florida Man.
+Long story short, I moved to the U.S. when I was little and have lived in the states for most of my life. I currently reside in Edinburg, Texas.
 
 ## Work Experience
 
-I currently work as a front-end developer on the [StoryMaps](https://storymaps.arcgis.com/) team at Esri, where I create new user-facing features, improve core parts of the app, write documentation, and share new things I'm learning with the team. I thrive in collaborative environments that encourage growth, offer varied learning opportunities, and cultivate my problem-solving skills and creative strengths.
+I work as a front-end developer on the [StoryMaps](https://storymaps.arcgis.com/) team at Esri, where I develop new user-facing features, improve core parts of the app, create accessible user experiences, write documentation, and share new things I'm learning with the team. I thrive in collaborative environments that encourage growth, offer varied learning opportunities, and cultivate my problem-solving skills and creative strengths.
 
 During my undergraduate studies, I worked as a [freelance copy editor](https://www.upwork.com/freelancers/~014eb3a95d4d1fd855?s=1110580753635725312) for four years, with my clients ranging from digital marketing agencies to small business owners and companies. This experience helped me to grow my professional network, hone my communication skills, and earn a bit of money on the side while in school.
 
