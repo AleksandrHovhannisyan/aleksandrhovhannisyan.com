@@ -7,7 +7,6 @@
 body {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   background-color: var(--color-surface-1);
   color: var(--color-text-normal);
   overflow-wrap: break-word;
@@ -16,6 +15,7 @@ body {
 }
 
 #page-content {
+  flex-grow: 1;
   padding-block-start: clamped(get($tokens, "spacing", "steps", "5"), get($tokens, "spacing", "steps", "12"));
   padding-block-end: clamped(get($tokens, "spacing", "steps", "10"), get($tokens, "spacing", "steps", "12"));
 }
