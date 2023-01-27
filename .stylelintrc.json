@@ -9,6 +9,7 @@
     "block-closing-brace-newline-before": "always",
     "block-closing-brace-empty-line-before": "never",
     "custom-property-pattern": null,
+    "custom-property-empty-line-before": null,
     "declaration-block-trailing-semicolon": "always",
     "declaration-empty-line-before": null,
     "declaration-block-semicolon-newline-after": "always-multi-line",
