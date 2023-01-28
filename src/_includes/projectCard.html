@@ -9,8 +9,9 @@
     </div>
     <div class="project-rating fs-sm">
       {%- include "icon.html" icon: "star", width: "18", height: "18", fill: "currentColor", stroke: "none" -%}
+      <span class="screen-reader-only">Rated </span>
       <span aria-hidden="true">{{ project.rating }}</span>
-      <span class="screen-reader-only">Rated {{ project.rating }} stars on GitHub</span>
+      <span class="screen-reader-only"> stars on GitHub</span>
     </div>
   </header>
   <p class="project-description">{{ project.description }}</p>
