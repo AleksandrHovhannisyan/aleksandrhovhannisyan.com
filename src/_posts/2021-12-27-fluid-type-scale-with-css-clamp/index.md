@@ -5,7 +5,7 @@ keywords: [fluid typography, type scale, clamp, sass, font size]
 categories: [css, sass, typography, math, clamp]
 thumbnail: ./images/thumbnail.png
 commentsId: 131
-lastUpdated: 2022-06-24
+lastUpdated: 2023-01-30
 isFeatured: true
 ---
 
@@ -415,13 +415,13 @@ As a first pass, we could create custom properties for all of our font sizes and
 
 ```scss
 html {
-  --font-size-sm: clamp(13.33px, 16px);
-  --font-size-base: clamp(16px, 19.2px);
-  --font-size-md: clamp(19.2px, 23.04px);
-  --font-size-lg: clamp(23.04px, 27.65px);
-  --font-size-xl: clamp(27.65px, 33.18px);
-  --font-size-xxl: clamp(33.18px, 39.81px);
-  --font-size-xxxl: clamp(39.81px, 47.78px);
+  --font-size-sm: clamped(13.33px, 16px);
+  --font-size-base: clamped(16px, 19.2px);
+  --font-size-md: clamped(19.2px, 23.04px);
+  --font-size-lg: clamped(23.04px, 27.65px);
+  --font-size-xl: clamped(27.65px, 33.18px);
+  --font-size-xxl: clamped(33.18px, 39.81px);
+  --font-size-xxxl: clamped(39.81px, 47.78px);
 }
 ```
 
