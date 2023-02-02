@@ -1,14 +1,10 @@
 ---
 title: An Interactive Guide to JavaScript Events
-# title: A Comprehensive Guide to Event Capturing, Targeting, and Bubbling in JavaScript
-# title: "JavaScript Events: Capturing, Targeting, and Bubbling"
-# title: "A Comprehensive Guide to JavaScript Events: Capturing, Targeting, and Bubbling"
-# title: An Introduction to JavaScript Events
 description: Learn how event capturing, targeting, and bubbling work in JavaScript; how to prevent an event's default behavior; how to stop event propagation; and more.
 keywords: [javascript events, event]
 categories: [javascript, html, browsers]
 thumbnail: ./images/phases.png
-lastUpdated: 2022-12-13
+lastUpdated: 2023-02-04
 openGraph:
   twitter:
     card: summary_large_image
@@ -117,9 +113,59 @@ button.addEventListener('click', (event) => {
 
 We'll take a closer look at this object in the section on [event targeting](#2-event-targeting).
 
+### Removing Event Listeners
+
+As you may have already guessed, if it's possible to *add* event listeners, then it's also possible to *remove* them. This is useful for memory management (particularly to avoid memory leaks) in situations where an object is no longer needed. There are several ways to remove event listeners, but we won't look at all of them in this article. Instead, we'll briefly look at the most popular approach: [`EventTarget.removeEventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener). This method takes the name of the event and a reference to the corresponding event handler that should be removed.
+
+In the code we've written so far, we've been passing anonymous (unnamed) functions to `addEventListener` using JavaScript's arrow function syntax. But a single element can register any number of event listeners for the same event. For example, you can have two, three, or hundreds of click event listeners on the same button. In order for `removeEventListener` to know *which* listener you want to remove, you need to keep a named reference to your event handler, like in the following example:
+
+```js
+const handleClick = (e) => {
+  console.log('clicked');
+}
+
+const button = document.querySelector('button');
+button.addEventListener('click', handleClick);
+
+// You'd typically run this code conditionally in response to some action
+button.removeEventListener('click', handleClick);
+```
+
+Play around with the following demo; click the first button to log a message in the console, then click the second button to remove the event listener on the first button, and then click the first button again to observe that no more messages are logged:
+
+{% codeDemo 'Adding and removing click listeners from a button' %}
+```html
+<fieldset id="button-demo-fieldset">
+  <button id="button-click">Fire click event</button>
+  <button id="button-remove">Remove listener</button>
+</fieldset>
+```
+{{ css }}
+```css
+#button-demo-fieldset {
+  border: none;
+  display: flex;
+  gap: 0.5rem;
+}
+```
+```js
+const handleButtonClick = (e) => {
+  console.log('clicked');
+}
+
+const button1 = document.querySelector('#button-click');
+const button2 = document.querySelector('#button-remove');
+
+button1.addEventListener('click', handleButtonClick);
+button2.addEventListener('click', () => {
+  button1.removeEventListener('click', handleButtonClick);
+})
+```
+{% endcodeDemo %}
+
 ### Events Have a Default Behavior
 
-It's important not to confuse event listeners with events themselves. An event listener is just that: a function that eavesdrops on an event. In the previous example, if we didn't add any event listeners and simply clicked the button, the click event would have still fired. If a tree falls in a forest and nobody's around to hear it, it will still make a sound.
+It's important not to confuse event listeners with events themselves. An event listener is just that: a function that eavesdrops on an event. In the original button demo that we looked at, if we didn't add any event listeners and simply clicked the button, the click event would have still fired. By analogy, if a tree falls in a forest and nobody's around to hear it, it will still make a sound.
 
 Because events occur whether we listen to them or not, all JavaScript events have a default behavior. For example:
 
@@ -455,9 +501,15 @@ Output:
 
 Per [Table 1](#table-1), `1` corresponds to the capturing phase and `2` to the targeting phase.
 
-Before we move on, I want to reiterate that event capturing is really only useful if you're setting an event handler on a parent element and you want this handler to also catch the same event when it originates from one of the element's descendants in the DOM, and to run *before* the targeting phase. The event target's handler will run regardless of whether it captures the event. So in the example we just looked at, I could have also added `{ capture: true }` to the button's event listener, but that wouldn't have made a difference—the button's event handler would still have run in the [targeting phase](#2-event-targeting) (our next topic of discussion) because the button is the click target.
+Before we move on, I want to reiterate that event capturing is really only useful if:
 
-Moreover, if the parent element happens to be the event target in the future, its capturing listener will still run like a normal event listener. In this example, if I were to click the body instead of the button, then the body's event listener would still run like any normal event listener that you're used to, except now it would run in the *targeting* phase because the body would be the event target for the click.
+1. You're setting an event listener on a parent element,
+2. You anticipate that the event is going to originate from one of its children, and
+3. You want the parent's listener to run as early as possible, before the targeting phase.
+
+Otherwise, `{ capture: true }` behaves just like any ordinary event listener: If the element on which it is registered happens to be the event target, then it will run in the targeting phase. In this example, if I were to click the body instead of the button, then the body's event listener would still run like any normal event listener that you're used to, except now it would run in the *targeting* phase because the body would be the event target for the click.
+
+Moreover, in the example we just looked at, I could have also technically added `{ capture: true }` to the button's event listener, but that wouldn't have made a difference—the button's event handler would still have run in the [targeting phase](#2-event-targeting) (our next topic of discussion) because the button was the click target in this particular example.
 
 It may help to think of event capturing as a net that catches events from either the node itself or any of the children hanging below it in the DOM. If the event happens to originate from a child, then the capturing event listener set on the parent will *always* run first before the event has a chance to propagate down to the child. Otherwise, if the element with a capturing event listener is the target itself, then its listener will run like it normally would in the targeting phase.
 
