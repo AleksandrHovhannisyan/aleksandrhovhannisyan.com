@@ -29,7 +29,6 @@ const {
   toAbsoluteImageUrl,
   pathParse,
   pathJoin,
-  toUTCString,
 } = require('./config/filters/filters');
 const {
   getAllPosts,
@@ -79,8 +78,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter('where', where);
   eleventyConfig.addFilter('escape', escape);
   eleventyConfig.addFilter('toHtml', toHtml);
-  eleventyConfig.addFilter('toIsoString', toISOString);
-  eleventyConfig.addFilter('toUTCString', toUTCString);
+  eleventyConfig.addFilter('toISOString', toISOString);
   eleventyConfig.addFilter('formatDate', formatDate);
   eleventyConfig.addFilter('dividedBy', dividedBy);
   eleventyConfig.addFilter('toAbsoluteUrl', toAbsoluteUrl);

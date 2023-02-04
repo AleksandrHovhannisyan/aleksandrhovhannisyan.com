@@ -62,11 +62,8 @@ const toAbsoluteImageUrl = async (src, width = null) => {
   return toAbsoluteUrl(Object.values(stats)[0][0].url);
 };
 
-/** Converts the given date string to ISO8601 format. */
+/** Converts the given date string to ISO8601/RFC-3339 format. */
 const toISOString = (dateString) => dayjs(dateString).toISOString();
-
-/** Converts the given date string to UTC format. */
-const toUTCString = (date) => date.toUTCString();
 
 /** Formats a date using dayjs's conventions: https://day.js.org/docs/en/display/format */
 const formatDate = (date, format) => dayjs(date).format(format);
@@ -123,5 +120,4 @@ module.exports = {
   cleanCSS,
   pathParse,
   pathJoin,
-  toUTCString,
 };

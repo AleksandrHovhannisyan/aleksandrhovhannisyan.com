@@ -11,7 +11,7 @@ excludeFromSitemap: true
   {%- assign lastmod = page.data.lastUpdated | default: page.date -%}
     <url>
         <loc>{{ site.url }}{{ page.url }}</loc>
-        <lastmod>{{ lastmod | toIsoString }}</lastmod>
+        <lastmod>{{ lastmod | toISOString }}</lastmod>
     </url>
     {%- endif -%}
   {% endfor %}
