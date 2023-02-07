@@ -58,8 +58,6 @@ I also enjoy listening to music—mainly rock, folk, indie, and certain genres o
 
 At one point, I was obsessed with drawing (and pretty good at it, too!). But with time, I found myself preoccupied with so many other things that I simply couldn't find the time to draw. Lately, my interest in art has resurfaced in the colorful world of front-end development—I love working with CSS to bring designs to life on the canvas that is the web. Sometimes, I'll also create [CSS art](/art/) as a substitute for the real thing, either as a challenge or just for fun.
 
-Some of my other hobbies include fitness, going on walks, and reading.
-
 ## So, Yeah... That's Me!
 
 There's more to my life than what I feel comfortable sharing here, but that's about the gist of my background and interests. If you made it this far, cool! You're still awake! Maybe we can chat sometime and get to know each other.
