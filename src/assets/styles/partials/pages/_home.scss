@@ -27,7 +27,6 @@
 .hash-art-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(#{spacing("5")}, #{spacing("9")}));
-  filter: grayscale(1);
 
   > * {
     aspect-ratio: 1;
