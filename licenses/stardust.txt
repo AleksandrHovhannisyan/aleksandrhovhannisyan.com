@@ -1,2 +1,0 @@
-My 404 page uses a stardust image texture. It was obtained from https://www.transparenttextures.com/ and 
-was created by Atle Mo: https://atlemo.com/.

@@ -6,16 +6,6 @@
 @import "partials/utils/gap";
 @import "partials/utils/fontSize";
 
-@keyframes background-scroll {
-  from {
-    background-position: 0 0;
-  }
-
-  to {
-    background-position: 798px 0;
-  }
-}
-
 body {
   @include font($family: "body", $weight: "regular");
 }
@@ -26,18 +16,10 @@ main {
   text-align: center;
   gap: spacing("0");
   height: 100%;
-  background-color: hsl(0deg 0% 8%);
-  // https://www.transparenttextures.com/stardust.html
-  background-image: url("/assets/images/404/stardust.png");
-  padding: 0 spacing("-1");
-  animation: background-scroll 40s linear infinite;
-  animation-fill-mode: forwards;
+  background-color: black;
+  padding: 0 spacing("2");
 
   * {
     color: white;
-  }
-
-  h1 {
-    text-shadow: 0.1em 0.1em black;
   }
 }
