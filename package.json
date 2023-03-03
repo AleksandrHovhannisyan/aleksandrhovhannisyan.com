@@ -38,7 +38,7 @@
     "@toycode/markdown-it-class": "^1.2.4",
     "classnames": "^2.3.1",
     "clean-css": "^5.3.1",
-    "eleventy-plugin-code-demo": "^0.0.1",
+    "eleventy-plugin-code-demo": "0.0.2",
     "eleventy-plugin-footnotes": "^0.11.0",
     "esbuild": "^0.14.37",
     "eslint": "^8.13.0",
