@@ -19,14 +19,14 @@
 .hero-hashart {
   display: none;
 
-  @include desktop-lg {
+  @include desktop {
     display: flex;
   }
 }
 
 .hash-art-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(#{spacing("5")}, #{spacing("9")}));
+  grid-template-columns: repeat(4, #{spacing("9")});
 
   > * {
     aspect-ratio: 1;
