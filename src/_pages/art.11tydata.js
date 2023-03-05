@@ -6,6 +6,7 @@ const { getFontUrl } = require('../../config/fonts/fonts.utils');
  */
 const fonts = {
   cursive: {
+    type: 'static',
     family: 'Reenie Beanie',
     fallbacks: [`cursive`],
     variants: {
@@ -21,6 +22,7 @@ const fonts = {
     },
   },
   display: {
+    type: 'static',
     family: 'Rampart One',
     fallbacks: [`Sans-fallback`],
     variants: {

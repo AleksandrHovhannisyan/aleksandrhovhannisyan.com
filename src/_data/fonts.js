@@ -7,6 +7,7 @@ const { getFontUrl } = require('../../config/fonts/fonts.utils');
  */
 const fonts = {
   body: {
+    type: 'static',
     family: 'Fira Sans',
     fallbacks: [`Sans-fallback`],
     variants: {
@@ -38,6 +39,7 @@ const fonts = {
     },
   },
   mono: {
+    type: 'static',
     family: 'IBM Plex Mono',
     fallbacks: [`Monaco`, `Consolas`, `Courier New`, `monospace`],
     variants: {
