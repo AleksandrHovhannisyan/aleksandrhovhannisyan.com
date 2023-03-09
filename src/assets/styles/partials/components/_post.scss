@@ -16,10 +16,9 @@
   }
 
   &-date {
-    text-transform: uppercase;
     color: var(--color-text-soft);
     margin-bottom: spacing("-3");
-    @include font($size: "sm", $letter-spacing: "md");
+    @include font($size: "sm");
 
     dt,
     dd {
