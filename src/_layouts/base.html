@@ -8,8 +8,7 @@ criticalCSS:
   {%- assign pageTitle = site.title -%}
 {%- else -%}
   {%- assign pageTitle = title | default: renderData.title -%}
-  {%- assign pipe = " | " -%}{%- comment -%}Get an error otherwise, probably a Liquid/11ty bug{%- endcomment -%}
-  {%- assign pageTitle = pageTitle | append: pipe | append: site.title -%}
+  {%- assign pageTitle = pageTitle | append: " | " | append: site.title -%}
 {%- endif -%}
 {%- assign description = description | default: site.description -%}
 {%- assign keywords = keywords | default: site.keywords -%}

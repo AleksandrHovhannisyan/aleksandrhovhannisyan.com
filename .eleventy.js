@@ -54,6 +54,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addWatchTarget(scriptDirs.input);
 
   // Pass-through copy for static assets
+  eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
   eleventyConfig.addPassthroughCopy(path.join(dir.input, dir.assets, 'fonts'));
   eleventyConfig.addPassthroughCopy(path.join(dir.input, dir.assets, 'videos'));
   eleventyConfig.addPassthroughCopy(path.join(imagePaths.input, 'art'));
