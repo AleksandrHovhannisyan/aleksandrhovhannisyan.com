@@ -5,7 +5,6 @@ const featureFlags = require('../_data/featureFlags');
 module.exports = {
   layout: 'post',
   permalink: (data) => `/blog/${data?.page?.fileSlug}/`,
-  isBlogPage: true,
   isPost: true,
   eleventyComputed: {
     scripts: (data) => {
