@@ -1,4 +1,6 @@
 html {
+  --color-text-link: inherit;
+
   // Light theme
   &[data-theme="light"] {
     color-scheme: light;
@@ -12,9 +14,9 @@ html {
     --color-surface-7: hsl(0deg 0% 35%);
     --color-surface-8: hsl(0deg 0% 23%);
     --color-surface-9: hsl(0deg 0% 13%);
-    --color-text-normal: black;
+    --color-text-normal: hsl(0deg 0% 0%);
     --color-text-soft: hsl(0deg 0% 40%);
-    --color-text-emphasis: black;
+    --color-text-emphasis: hsl(0deg 0% 0%);
     --color-text-inverted: white;
     --color-border: var(--color-surface-4);
     --color-scrollbar-thumb: var(--color-surface-4);
