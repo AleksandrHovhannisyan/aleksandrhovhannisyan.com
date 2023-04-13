@@ -40,7 +40,7 @@ noindex: true
 
 ## Colors
 
-{% assign backgroundColors = (1..9) %}
+{% assign backgroundColors = (1..8) %}
 {% assign foregroundColors = "text-normal,text-emphasis,text-soft" | split: "," %}
 
 ### Background
