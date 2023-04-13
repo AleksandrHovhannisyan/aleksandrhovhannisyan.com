@@ -532,7 +532,7 @@ Or maybe it participates in a grid layout and receives its width from the grid f
 Either way, you get a square shape that scales responsively.
 
 {% assign squareDemoMaxWidth = '200px' %}
-<div class="flex-center text-center" style="background: var(--color-surface-3); aspect-ratio: 1; max-width: {{ squareDemoMaxWidth }}; padding: var(--sp-5); color: var(--color-text-emphasis);" aria-hidden="true">I'm a square. My max width is {{ squareDemoMaxWidth }}.</div>
+<div class="flex-center text-center" style="background: var(--color-surface-3); aspect-ratio: 1; max-width: {{ squareDemoMaxWidth }}; padding: var(--size-spacing-5); color: var(--color-text-emphasis);" aria-hidden="true">I'm a square. My max width is {{ squareDemoMaxWidth }}.</div>
 
 One of my favorite things about `aspect-ratio` is how it can be used to compose utility classes with additional properties, like this handy class for circles:
 
@@ -543,7 +543,7 @@ One of my favorite things about `aspect-ratio` is how it can be used to compose 
 }
 ```
 
-<div class="circle flex-center text-center" style="background: var(--color-surface-3); max-width: {{ squareDemoMaxWidth }}; padding: var(--sp-5); color: var(--color-text-emphasis);" aria-hidden="true">I'm a circle.</div>
+<div class="circle flex-center text-center" style="background: var(--color-surface-3); max-width: {{ squareDemoMaxWidth }}; padding: var(--size-spacing-5); color: var(--color-text-emphasis);" aria-hidden="true">I'm a circle.</div>
 
 There are many other applications of the `aspect-ratio` property that are worth exploring. One example is to responsively size embedded media, like for YouTube videos. Another is a performance enhancement: `aspect-ratio` plays a key role in preventing layout shifts when you [set a width and height on images](/blog/setting-width-and-height-on-images/) with HTML attributes.
 

@@ -2,7 +2,6 @@
 @use "sass:math";
 @use "sass:string";
 @use "sass:map";
-
 @import "./tokens";
 
 @function to-rems($value) {
@@ -10,7 +9,6 @@
   @if ends-with("" + $value, "rem") {
     @return $value;
   }
-
   $value-rems: math.div($value, 16px) * 1rem;
   @return $value-rems;
 }
@@ -23,46 +21,50 @@
   @return $map;
 }
 
-/// Returns the string prefix that is used for the custom properties corresponding to the specified key in the design config.
-@function get-custom-property-prefix($key) {
-  $custom-property-prefix: get($tokens, $key, "customPropertyPrefix");
-  @if not $custom-property-prefix {
-    @error "#{$key} is missing a custom property prefix in the config";
+/// Joins a list of values as a string, with the given separator
+@function string-join($list, $separator) {
+  $result: "";
+  @each $entry in $list {
+    @if string.length($result) > 0 {
+      $result: $result + $separator;
+    }
+    $result: $result + $entry;
   }
-  @return $custom-property-prefix;
+  @return $result;
 }
 
-/// Returns the custom property declaration corresponding to the given step under the $type key in $tokens.
-/// Throws an error if the provided step is unrecognized.
-@function get-scale-step($type, $step) {
-  $steps: get($tokens, $type, "steps");
-  $prefix: get-custom-property-prefix($type);
-  @if not get($steps, $step) {
-    @error "#{$step} is not a valid step in the #{$type} scale.";
-  } @else {
-    @return var(--#{$prefix}-#{$step});
-  }
+/// Returns the name for the token at the given vararg path, in kebab case. Example: "size", "font", "base" => "size-font-base".
+@function get-token-name($path...) {
+  // Make sure that map actually exists. This will throw if it doesn't.
+  $token: get($tokens, $path);
+  // Kebab case
+  @return string-join($path, "-");
+}
+
+/// Returns a var(...) usage corresponding to the given token.
+@function get-token-cssvar($path...) {
+  $token-name: get-token-name($path...);
+  @return var(--#{$token-name});
 }
 
 @function font-size($step) {
-  @return get-scale-step("fontSize", $step);
+  @return get-token-cssvar("size", "font", $step);
 }
 
 @function spacing($step) {
-  @return get-scale-step("spacing", $step);
+  @return get-token-cssvar("size", "spacing", $step);
 }
 
 @function leading($step) {
-  @return get-scale-step("leading", $step);
+  @return get-token-cssvar("size", "leading", $step);
 }
 
-@function letter-spacing($step) {
-  @return get-scale-step("letterSpacing", $step);
+@function tracking($step) {
+  @return get-token-cssvar("size", "tracking", $step);
 }
 
 /// Returns true if the given string ends with the given suffix.
 /// Adapted for use from: https://stackoverflow.com/a/40389473/5323344
-
 @function ends-with($string, $suffix) {
   $string-length: string.length($string);
   $suffix-length: string.length($suffix);

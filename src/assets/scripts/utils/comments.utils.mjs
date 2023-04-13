@@ -40,7 +40,7 @@ export const renderComments = async (comments) => {
                     >
                       ${user.name}
                     </a>
-                    <span class="fs-sm">
+                    <span class="size-font-sm">
                       commented <time datetime="${created_at}">${datePosted}</time>
                     </span>
                     ${
@@ -48,7 +48,7 @@ export const renderComments = async (comments) => {
                         ? `<span id="${authorPillId}" class="pill post-comment-author" data-shape="round" data-size="xs">Author</span>`
                         : ''
                     }
-                    ${isEdited ? `<span class="fs-sm post-comment-edited">Edited</span>` : ''}
+                    ${isEdited ? `<span class="size-font-sm post-comment-edited">Edited</span>` : ''}
                   </header>
                   <div class="post-comment-body rhythm">${body}</div>
                 </article>

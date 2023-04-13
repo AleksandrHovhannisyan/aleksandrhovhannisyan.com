@@ -34,12 +34,13 @@
 
 /// Extends the font size utility class corresponding to the specified step.
 @mixin extended-font-size($step) {
+  $class-name: get-token-name("size", "font", $step);
   /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
-  @extend .#{get-custom-property-prefix("fontSize")}-#{$step};
+  @extend .#{$class-name};
 }
 
-@mixin font($size: null, $line-height: null, $letter-spacing: null, $family: null, $weight: null) {
-  @if not $size and not $line-height and not $family and not $weight {
+@mixin font($size: null, $leading: null, $tracking: null, $family: null, $weight: null) {
+  @if not $size and not $leading and not $family and not $weight {
     @error "You must specify at least a font size, line height, or a font family + weight when using the font mixin.";
   }
   // Don't ever set family without a weight, and vice versa, since not all fonts have the same weights (in which case the inherited font weight may look weird)
@@ -50,28 +51,28 @@
   @if $size {
     font-size: font-size($size);
     // Line height
-    @if not $line-height {
-      $line-height-step: get($tokens, "fontSize", "steps", $size, "leading");
-      @if $line-height-step {
-        line-height: leading($line-height-step);
+    @if not $leading {
+      $leading-step: get($tokens, "size", "font", $size, "leading");
+      @if $leading-step {
+        line-height: leading($leading-step);
       }
     } @else {
-      line-height: leading($line-height);
+      line-height: leading($leading);
     }
-    // Letter spacing
-    @if not $letter-spacing {
-      $letter-spacing-step: get($tokens, "fontSize", "steps", $size, "letterSpacing");
-      @if $letter-spacing-step {
-        letter-spacing: letter-spacing($letter-spacing-step);
+    // Tracking/letter spacing
+    @if not $tracking {
+      $tracking-step: get($tokens, "size", "font", $size, "tracking");
+      @if $tracking-step {
+        letter-spacing: tracking($tracking-step);
       }
     } @else {
-      letter-spacing: letter-spacing($letter-spacing);
+      letter-spacing: tracking($tracking);
     }
   }
   // Setting family and weight together
   @if $family {
-    font-family: var(--ff-#{$family});
-    font-weight: var(--fw-#{$family}-#{$weight});
+    font-family: var(--font-family-#{$family});
+    font-weight: var(--font-weight-#{$family}-#{$weight});
   }
 }
 

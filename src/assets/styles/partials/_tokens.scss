@@ -1,7 +1,7 @@
 /* stylelint-disable value-keyword-case */
 $tokens: (
-  leading: (
-    steps: (
+  size: (
+    leading: (
       "4xs": 1,
       "3xs": 1.2,
       "2xs": 1.3,
@@ -11,10 +11,7 @@ $tokens: (
       "md": 1.7,
       "lg": 1.8,
     ),
-    customPropertyPrefix: "lh",
-  ),
-  fontSize: (
-    steps: (
+    font: (
       "xs": (
         min: 12px,
         max: 16px,
@@ -52,32 +49,22 @@ $tokens: (
         min: 30px,
         max: 44px,
         leading: "3xs",
-        letterSpacing: "sm",
+        tracking: "sm",
       ),
       "4xl": (
         min: 40px,
         max: 76px,
         leading: "4xs",
-        letterSpacing: "xs",
+        tracking: "xs",
       ),
     ),
-    breakpoints: (
-      min: "mobile-min",
-      max: "desktop",
-    ),
-    customPropertyPrefix: "fs",
-  ),
-  letterSpacing: (
-    steps: (
+    tracking: (
       "xs": -0.5px,
       "sm": -0.25px,
       "md": 0.25px,
       "lg": 1px,
     ),
-    customPropertyPrefix: "ls",
-  ),
-  spacing: (
-    steps: (
+    spacing: (
       "-4": 2px,
       "-3": 4px,
       "-2": 8px,
@@ -96,7 +83,6 @@ $tokens: (
       "11": 76px,
       "12": 96px,
     ),
-    customPropertyPrefix: "sp",
   ),
   breakpoints: (
     "mobile-min": 360px,

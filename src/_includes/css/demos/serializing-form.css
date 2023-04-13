@@ -1,8 +1,8 @@
 #demo {
-  --gap: var(--sp-0);
-  border: solid var(--sp--4) var(--color-border);
+  --gap: var(--size-spacing-0);
+  border: solid var(--size-spacing--4) var(--color-border);
   padding: var(--gap);
-  border-radius: var(--sp--4);
+  border-radius: var(--size-spacing--4);
   background-color: var(--color-surface-2);
 }
 
@@ -22,22 +22,22 @@
 }
 
 #demo .input-group {
-  font-size: var(--fs-sm);
+  font-size: var(--size-font-sm);
   display: grid;
-  gap: var(--sp--2);
+  gap: var(--size-spacing--2);
   flex: 1 1 calc(50% - var(--gap));
 }
 
 #demo input {
-  padding: var(--sp--3) var(--sp--2);
+  padding: var(--size-spacing--3) var(--size-spacing--2);
 }
 
 #demo output {
   white-space: nowrap;
   overflow-x: auto;
-  border-radius: var(--sp--3);
-  padding: var(--sp--2) 0;
-  font-family: var(--ff-mono);
-  font-weight: var(--fw-mono-medium);
-  font-size: var(--fs-xs);
+  border-radius: var(--size-spacing--3);
+  padding: var(--size-spacing--2) 0;
+  font-family: var(--font-family-mono);
+  font-weight: var(--font-weight-mono-medium);
+  font-size: var(--size-font-xs);
 }

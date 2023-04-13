@@ -37,7 +37,7 @@ I have experience with a few different stacks—I've done a bit of desktop, mobi
   {%- endfor -%}
   <li class="github-cta stack flex-center gap-0 text-center">
     <div>
-      <h3 class="fs-base">Want to see more of my work?</h3>
+      <h3 class="size-font-base">Want to see more of my work?</h3>
       <p>Explore my GitHub repos:</p>
     </div>
     <a

@@ -26,7 +26,7 @@ if (themeToggleElement) {
 document.querySelectorAll('code[data-copyable]').forEach((codeBlock) => {
   const code = codeBlock.innerText;
   const copyCodeButton = document.createElement('button');
-  copyCodeButton.className = 'copy-code-button fs-sm';
+  copyCodeButton.className = 'copy-code-button';
   copyCodeButton.innerText = copyToClipboardButtonStrings.default;
   // Set an aria label explicitly to clarify the button's action a bit better for screen reader users; sighted users should be able to relate "Copy" to the code block in which the button is positioned
   copyCodeButton.setAttribute('aria-label', copyToClipboardButtonStrings.ariaLabel);

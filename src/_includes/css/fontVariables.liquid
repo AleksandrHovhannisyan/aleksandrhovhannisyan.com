@@ -2,18 +2,18 @@ html {
   {%- for entry in fonts -%}
     {%- assign fontType = entry | first -%}
     {%- assign font = entry | last -%}
-    --ff-{{ fontType }}: {{ font.family }}, {{ font.fallbacks | join: ", " }};
+    --font-family-{{ fontType }}: {{ font.family }}, {{ font.fallbacks | join: ", " }};
     {%- if font.type == "variable" -%}
       {%- for weightEntry in font.weights -%}
         {%- assign weightName = weightEntry | first -%}
         {%- assign numericWeight = weightEntry | last -%}
-        --fw-{{ fontType }}-{{ weightName }}: {{ numericWeight }};
+        --font-weight-{{ fontType }}-{{ weightName }}: {{ numericWeight }};
       {%- endfor -%}
     {%- else -%}
       {%- for variant in font.variants -%}
         {%- assign variantName = variant | first -%}
         {%- assign weights = variant | last -%}
-        --fw-{{ fontType }}-{{ variantName }}: {{ weights.roman.weight }};
+        --font-weight-{{ fontType }}-{{ variantName }}: {{ weights.roman.weight }};
       {%- endfor -%}
     {%- endif -%}
   {%- endfor -%}

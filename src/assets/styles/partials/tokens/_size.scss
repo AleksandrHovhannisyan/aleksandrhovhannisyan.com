@@ -1,0 +1,57 @@
+@import "../tokens";
+@import "../functions";
+
+html {
+  // Font size
+  $min-bp: get($tokens, "breakpoints", "mobile-min");
+  $max-bp: get($tokens, "breakpoints", "desktop");
+  $font-sizes: get($tokens, "size", "font");
+  // Fluid font size variables, for browsers that support clamp
+  @supports (font-size: clamp(1rem, 1vw, 1rem)) {
+    @each $step, $sizes in $font-sizes {
+      $min-px: get($sizes, "min");
+      $max-px: get($sizes, "max");
+      $font-size: clamped($min-px, $max-px, $min-bp, $max-bp);
+      $token-name: get-token-name("size", "font", $step);
+      --#{$token-name}: #{$font-size};
+    }
+  }
+  // Fallback variables for browsers that don't support clamp
+  @supports not (font-size: clamp(1rem, 1vw, 1rem)) {
+    // Mobile ("min")
+    @each $step, $sizes in $font-sizes {
+      $font-size: to-rems(get($sizes, "min"));
+      $token-name: get-token-name("size", "font", $step);
+      --#{$token-name}: #{$font-size};
+    }
+    // Desktop ("max")
+    @media screen and (min-width: #{$max-bp}) {
+      @each $step, $sizes in $font-sizes {
+        $font-size: to-rems(get($sizes, "max"));
+        $token-name: get-token-name("size", "font", $step);
+        --#{$token-name}: #{$font-size};
+      }
+    }
+  }
+
+  // Line height
+  $leading-steps: get($tokens, "size", "leading");
+  @each $step, $value in $leading-steps {
+    $token-name: get-token-name("size", "leading", $step);
+    --#{$token-name}: #{$value};
+  }
+
+  // Letter spacing
+  $tracking-steps: get($tokens, "size", "tracking");
+  @each $step, $value in $tracking-steps {
+    $token-name: get-token-name("size", "tracking", $step);
+    --#{$token-name}: #{$value};
+  }
+
+  // Spacing
+  $spacing-steps: get($tokens, "size", "spacing");
+  @each $step, $value in $spacing-steps {
+    $name: get-token-name("size", "spacing", $step);
+    --#{$name}: #{$value};
+  }
+}

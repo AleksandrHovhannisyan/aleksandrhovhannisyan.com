@@ -1,11 +1,11 @@
 @import "../mixins";
 
-$font-size-steps: get($tokens, "fontSize", "steps");
-$font-size-prefix: get-custom-property-prefix("fontSize");
+$font-size-steps: get($tokens, "size", "font");
 
 // Programmatically generate font size utility classes
 @each $step, $step-config in $font-size-steps {
-  .#{$font-size-prefix}-#{$step} {
+  $class-name: get-token-name("size", "font", $step);
+  .#{$class-name} {
     @include font($size: $step);
   }
 }

@@ -42,13 +42,13 @@
   &-title {
     margin-top: spacing("-3");
     // Tighten line height due to short line length
-    @include font($size: "lg", $line-height: "2xs");
+    @include font($size: "lg", $leading: "2xs");
   }
 
   &-description {
     margin-top: spacing("-2");
     // Tighten line height due to short line length
-    @include font($size: "base", $line-height: "xs");
+    @include font($size: "base", $leading: "xs");
   }
 
   &-tags {
@@ -75,11 +75,11 @@
     }
 
     &-title {
-      @include font($size: "md", $line-height: "2xs");
+      @include font($size: "md", $leading: "2xs");
     }
 
     &-description {
-      @include font($size: "sm", $line-height: "2xs");
+      @include font($size: "sm", $leading: "2xs");
     }
   }
 

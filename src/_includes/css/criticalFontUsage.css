@@ -1,8 +1,8 @@
 body {
-  font-family: var(--ff-body);
-  font-weight: var(--fw-body-regular);
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-body-regular);
 }
 
 code {
-  font-family: var(--ff-mono);
+  font-family: var(--font-family-mono);
 }
