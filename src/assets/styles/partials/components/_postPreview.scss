@@ -41,6 +41,7 @@
 
   &-title {
     margin-top: spacing("-3");
+    text-wrap: balance;
     // Tighten line height due to short line length
     @include font($size: "lg", $leading: "2xs");
   }
