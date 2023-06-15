@@ -3,7 +3,7 @@ title: "Use Rems for Font Size to Respect User Preferences"
 description: Of all the CSS units, rems are the most accessible for font sizing, allowing you to scale text responsively when users change their preferred font size settings.
 keywords: [rems, font size, responsive font size, preferred font size]
 categories: [css, typography, accessibility, rems]
-lastUpdated: 2022-05-21
+lastUpdated: 2023-06-14
 thumbnail:
   url: https://images.unsplash.com/photo-1624558347497-df07e0096f5a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bWFnbmlmeWluZyUyMGdsYXNzJTIwYm9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1600&h=900&q=60
 ---
@@ -28,24 +28,25 @@ CSS pixels are the easiest unit to understand because they're grounded in physic
 
 ## User Font Size Preferences
 
-Every browser applies a root font size of `16px` to a document, meaning that unstyled body text will have a rendered font size of `16` CSS pixels if you don't apply any custom styling to the page. However, both developers and users can alter this behavior. Developers can change the font size of the root element (`html`) with CSS so that all elements inherit that new font size:
+Behind the scenes, every browser defines `1rem` to be `16px` initially, before any custom styling is applied to the page. This means that any unstyled body text will have a rendered font size of `16` CSS pixels (excluding special elements like `<small>` that have a smaller font size due to user-agent styles). However, both developers and users can redefine the value of `1rem`. Developers can change the font size of the root element (`html`) with CSS so that all elements inherit that new font size:
 
 ```css
 html {
-  /* This is purely illustrative; don't do this! */
+  /* 1rem is now 18px. Note that this example is purely
+  illustrative. Don't set font size in pixels! */
   font-size: 18px;
 }
 ```
 
-Likewise, users can go into their browser settings (e.g., `chrome://settings/fonts` in Chrome) and specify their preferred font size:
+Likewise, users can go into their browser settings (e.g., `chrome://settings/fonts` in Chrome) and select their preferred font size:
 
-{% include "postImage.html" src: "./images/chrome-settings.jpg", alt: "The Chrome settings page for changing one's preferred font size. Two sliders can be seen: one for the font size and another for the minimum font size. Sample sentences are shown below those sliders, along with pickers for the user's preferred font family (which, by default, is Times New Roman).", caption: "Customizing font size in Google Chrome's settings.", isCaptionAriaHidden: true %}
+{% include "postImage.html" src: "./images/chrome-settings.jpg", alt: "The Chrome settings page for changing one's preferred font size. Two sliders are seen: one for the font size and another for the minimum font size. Sample sentences are shown below those sliders, along with pickers for the user's preferred font family (which, by default, is Times New Roman).", caption: "Customizing font size in Google Chrome's settings.", isCaptionAriaHidden: true %}
 
-The bottom line is that user preferences for font size should *always* take precedence over your CSS—you should never make assumptions about how your users will view your page. Using hard-coded pixels for font size is inaccessible to users with vision impairments because they may need to scale up the font size of your page to read the text more easily. But when you set a font size in pixels like we did in the example above, the text will *always* render at that size, regardless of what font size a user prefers. You can learn more about why this matters in [WCAG Criterion 1.4.4 Resize Text](https://www.w3.org/WAI/WCAG21/Understanding/resize-text.html).
+Using pixels for font size is inaccessible to users with vision impairments because they may need to scale up the font size of your page to read the text more easily. But when you set a font size in pixels like we did in the example above, the text will *always* render at that size, regardless of what font size a user prefers. For example, a user might prefer to scale the font size on all pages to be larger than normal (say 125%), but if you set your root font size to be `18px`, it will _always_ render at that size—the user's preference will be ignored. You can learn more about why this matters in [WCAG Criterion 1.4.4 Resize Text](https://www.w3.org/WAI/WCAG21/Understanding/resize-text.html).
 
 ### Preferred Font Size vs. Browser Zoom Level
 
-Users can also zoom in all web pages globally in their browser settings, in which case it seems like pixels are not entirely problematic because the page still scales up proportionally.
+Users can also zoom in all web pages globally in their browser settings, in which case it may seem like pixels are not entirely problematic because the page still scales up proportionally.
 
 {% include "postImage.html" src: "./images/page-zoom.jpg", alt: "The Chrome settings page shows various groups, one of which is labeled page zoom. There's a dropdown input, with a currently selected value of 100%.", caption: "The page zoom control in Google Chrome's settings.", isCaptionAriaHidden: true %}
 
@@ -54,16 +55,14 @@ For example, changing the root font size from `16px` to `18px` is equivalent to 
 However, more commonly, users have a preferred font size for their monitor rather than a preferred zoom percentage—after all, it's much easier for users to reason about pixels than it is some arbitrary percentage zoom. Moreover, as in the example above, percentages may yield floating-point results that don't appear in the browser settings, forcing a user to choose between the two closest values that are available.
 
 {% aside %}
-  Another important distinction is that zooming scales the entire page, which isn't necessarily what users want when they decide to increase their preferred font size. Typically, users do this because they want *just the visible text* on the page to be bigger, not for everything to scale up.
+Although, to be fair, different font families render at different visible sizes. For example, [Libre Baskerville](https://fonts.google.com/specimen/Libre+Baskerville) is a notoriously large font family; a font size of `16px` rendered in this family corresponds to roughly `18px` in most other families. So this issue is more nuanced than it seems.
 {% endaside %}
 
-This means that we should always respect the user's preferred font size rather than forcing them to figure out whether we support zooming only, font size scaling only, or both zooming and font size scaling.
+But more importantly, zooming scales the entire page, which isn't necessarily what users want when they decide to increase their preferred font size. Typically, users do this because they want to enlarge *just the visible text* to make it easier to read. Zooming does make text bigger, but since all of the other elements on the page also scale up, they leave less room for text to fit on the screen. On the other hand, scaling just the font size for a page allows a user to read it more easily without enlarging irrelevant elements.
 
-If you're wondering why this matters so much and why we can't just use pixels and let users zoom in the page if they really want bigger text, Kathleen McMahon did a deep dive into [why rems are better for accessible font sizing](https://www.24a11y.com/2019/pixels-vs-relative-units-in-css-why-its-still-a-big-deal/) back in 2019.
+In short, we should always respect the user's preferred font size rather than forcing them to figure out whether we support zooming only, font size scaling only, or both zooming and font size scaling.
 
-{% aside %}
-  One more thing worth noting is that different font families render at different visible sizes. For example, [Libre Baskerville](https://fonts.google.com/specimen/Libre+Baskerville) is a notoriously large font family; a font size of `16px` rendered in this family corresponds to roughly `18px` in most other families. So this issue is more nuanced than it seems.
-{% endaside %}
+If you're still wondering why this matters so much and why we can't just use pixels and let users zoom in the page if they really want bigger text, Kathleen McMahon did a deep dive into [why rems are better for accessible font sizing](https://www.24a11y.com/2019/pixels-vs-relative-units-in-css-why-its-still-a-big-deal/) back in 2019.
 
 ## Relative Units and Font Size
 
@@ -125,7 +124,7 @@ For this reason, ems are not recommended for font sizing because an element may 
 
 ### Responsive Font Sizing with `rem`
 
-By contrast, `rem` (which stands for "**root em**") always references the root font size of the document as its single source of truth. Assuming that the root font size is `16px` (as is the case in all modern browsers), we get the following values:
+By contrast, `rem` (which stands for "**root em**") always references the root font size of the document as its single source of truth. Assuming that the root font size is `16px` (as is the case in all modern browsers before user preferences are applied), we get the following values:
 
 - `1rem = 16px`
 - `1.5rem = 24px`
@@ -148,7 +147,7 @@ The great thing about `rem` is that it's predictable: we can safely use it for f
 }
 ```
 
-Now, suppose the user changes their preferred font size to `18` in their browser settings. Effectively, this scales up the parent and child font sizes (independently): `1.5rem` computes to a font size of `27px`, and `0.5rem` computes to `9px`. Conversely, if a user were to decrease their preferred font size, our font sizes would decrease proportionally (but still independently). This allows us to design our app for the "normal" use case of browsers with a root font size of `16px` without locking users into a hardcoded font size—they're free to change it as they please.
+Now, suppose the user changes their preferred font size to `18` in their browser settings. Effectively, this initializes `1rem` to be `18px` before the browser evaluates our stylesheet. This scales up the parent and child font sizes (independently): `1.5rem` now computes to a font size of `27px`, and `0.5rem` computes to `9px`. Conversely, if a user were to decrease their preferred font size, our font sizes would decrease proportionally (but still independently). This allows us to design our app for the "normal" use case of browsers with a root font size of `16px` without locking users into a hardcoded font size—they're free to change their settings as they please, and our website will adapt responsively.
 
 ## Rems Made Easy
 
@@ -193,10 +192,6 @@ html {
 ```
 
 The nice thing about using CSS variables is that you don't have to constantly translate pixels to rems on the fly as you implement a design. Rather, you can reference a predefined set of variables and trust that the values correspond to your design system tokens under the hood. You could even ask your designers to use the same naming convention as you do in your code so that you don't have to look up the raw pixel value used in designs—you can just copy the name of the font size variable.
-
-{% aside %}
-If you'd like to take this idea a step further, I've previously written about how to create a [fluid type scale](/blog/fluid-type-scale-with-css-clamp/), where each font size variable defines a range of values and scales responsively between your mobile and desktop breakpoints. I've also created a [Fluid Type Scale Calculator](https://www.fluid-type-scale.com/) that can generate those variables for you.
-{% endaside %}
 
 Finally, note that if you do need to convert rems to pixels in one-off situations, you can:
 
