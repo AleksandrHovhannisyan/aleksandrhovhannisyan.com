@@ -9,13 +9,13 @@ thumbnail:
   url: https://images.unsplash.com/photo-1529448005898-b19fc13465b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
-No matter what programming language you end up working with, you will inevitably find yourself asking the following question: Does this language support pass by reference? And the answer is a lot more complicated than you would think. It's something that isn't always explained well online. Beginners often walk away confused and with the wrong mental model for how memory works and how programming languages manipulate data.
+Regardless of what programming language you end up working with, there will come a point when you'll need to know whether it supports pass by reference or if it's only a pass-by-value language; understanding this can allow you to more clearly trace the flow of data in your programs. There's a simple litmus test that can help you figure out which one a language is, but it's also important to understand what exactly these terms mean. Unfortunately, this is a topic that isn't always explained clearly. Beginners often walk away confused and with the wrong mental model for how memory works.
 
-Specifically, you may have come across this explanation before:
+Specifically, this explanation is very common for languages like JavaScript:
 
 > Primitives are passed by value; objects are passed by reference.
 
-This certainly sounds simple enough to be true! Except it's not. JavaScript, like most programming languages, strictly uses pass by value and does not support pass by reference, even though it *does* have what we call "references" (object references).
+While it certainly sounds simple enough to be true, it's not. JavaScript, like most programming languages, strictly uses pass by value and does not support pass by reference, even though it *does* have what we call "references" (object references).
 
 To make matters more confusing, [there's a lot of misinformation](https://medium.com/nodesimplified/javascript-pass-by-value-and-pass-by-reference-in-javascript-fcf10305aa9c) out there about this topic. It's something that beginners struggle with not only in JavaScript but also in other languages. Here's what the Medium article linked above says about passing by reference:
 
@@ -23,7 +23,7 @@ To make matters more confusing, [there's a lot of misinformation](https://medium
 
 Even the highest rated answer on StackOverflow for [Is JavaScript a pass-by-reference or pass-by-value language?](https://stackoverflow.com/a/3638034/5323344)—with nearly three times more upvotes than the correct answer—misses the mark, claiming that JavaScript is a special case when it really isn't.
 
-Here's the truth: Only a limited number of programming languages actually support passing arguments by reference. Two such languages are C++ and PHP. Other languages—like C, Java, JavaScript, Python, and Go, to name a few that come to mind—pass arguments *by value*.
+In reality, only a few programming languages actually support passing arguments by reference. Two such languages are C++ and PHP. Other languages—like C, Java, JavaScript, Python, and Go, to name a few that come to mind—pass arguments *by value*.
 
 So why do so many people get this wrong? That's what we're here to find out! If you'd like the short answer, feel free to jump to the section titled [Passing Pointers ("References") by Value](#passing-pointers-references-by-value).
 
@@ -69,7 +69,7 @@ So, to clear up this confusion, we'll need to understand two things:
 1. What the "reference" in "pass by reference" really means.
 2. The difference between pass by value and pass by reference in JavaScript.
 
-## "True" References Are Aliases
+## True References Are Aliases
 
 Let's clarify one thing before moving on: The word "reference" in "pass by reference" has a special meaning, and it does *not* mean "object reference." JavaScript does not have these "true" references. Again, terminology can be confusing!
 
@@ -159,7 +159,7 @@ This certainly seems to work the way references behave, but it's not the same at
 4. We can use either variable to modify the object at that memory address.
 5. Since both variables point to the same memory address, any changes to the object at that location will be reflected when we poll either variable in the future.
 
-But these two variables, `me` and `alias`, do not share the same memory address on the stack. In other words, `alias` is not really a true reference. We can easily prove this:
+But these two variables, `me` and `alias`, do not share the same memory address on the stack. In other words, `alias` is not really a true reference. We can easily prove this by creating a new object and pointing `alias` to it:
 
 ```javascript
 let me = { name: 'Aleksandr' };
@@ -170,19 +170,19 @@ console.log(me); // { name: 'Aleksandr' }
 console.log(alias); // { name: 'Alex' }
 ```
 
-If `alias` were in fact a true reference in this sense of the term—an alias—then the change on line three *would've* been reflected in the original (aliased) variable. But it wasn't!
+If `alias` were in fact a true reference, then the change on line three *would've* been reflected in the original (aliased) variable. But it wasn't!
 
 ## "Object References" Are Pointers
 
-Above, you may have noticed that I used the term "point" quite a lot. What's up with that? What—pardon the awful pun—is the *point* I'm trying to get across?
+You may have noticed that I used the term "point" quite a lot. What's up with that? What—pardon the awful pun—is the *point* I'm trying to get across?
 
 {% include "postImage.html" src: "./images/pointers.png", alt: "Comic about pointers. Someone asks for pointers, and another person fires off a bunch of memory addresses.", caption: "Source: [xkcd](https://xkcd.com/138/)." %}
 
-So far, we've seen that JavaScript does not have "true" references—the kind that are present in "pass by reference", as we'll learn soon—even though that's the accepted shorthand when referring to "object references." So what exactly *are* object references in JavaScript?
+So far, we've seen that JavaScript does not have "true" references—the ones that are used in "pass by reference"—even though that's the accepted shorthand when talking about "object references." So what exactly *are* object references in JavaScript?
 
 "Object references" in JavaScript are really **pointers**. A pointer is a variable that—instead of directly storing a primitive value like an `int`, `bool`, `float`, or `char`—stores the memory address where some data lives. Pointers refer to their data indirectly, using the addresses where those data can be found.
 
-An analogy may help to illustrate this: A pointer is like keeping record of a person's home address instead of directly logging that person's information somewhere. If you later visit that address, you might find *data* living there: a person with a name, age, and so forth. The person at that address may change their name, grow older, or decide to leave the property and be replaced by another tenant with an entirely different name, age, and so on. The address may even be empty and on the market. As long as we point to the same address, we can visit it to find out what data (person) lives there. We may also one day decide to point to a completely different home address with different residents or, if we're the landlord, evict someone from their home.
+An analogy may help to illustrate this: A pointer is like keeping record of a person's home address instead of directly logging that person's information somewhere. If you later visit that address, you might find data living there: a person with a name, age, and so forth. The person at that address may change their name, grow older, or decide to leave the property and be replaced by another tenant with an entirely different name, age, and so on. The address may even be empty and on the market. As long as we point to the same address, we can visit it to find out what data (person) lives there. We may also one day decide to point to a completely different home address with different residents or, if we're the landlord, evict someone from their home.
 
 {% include "postImage.html" src: "./images/houses.png", alt: "Two houses with two residents." %}
 
@@ -190,7 +190,7 @@ It may not be immediately obvious why we need pointers in the first place and ho
 
 ### How Are Objects Stored in Memory?
 
-Computers are good at one thing: Storing, retrieving, and manipulating **numbers**. That's it.
+Computers are good at one thing: Storing, retrieving, and manipulating numbers. That's it.
 
 So what happens when we want to create data like objects, arrays, or strings in a programming language of our choice? How is that data stored if, for example, we have no "person" or "array" or "string" data type and computers can only store and retrieve numbers?
 
@@ -213,8 +213,6 @@ const bob = { name: 'Bob', age: 42, country: 'USA' };
 
 How is it possible to cram all of this data into a single memory address? There's really no way to store `{ name: 'Bob', age: 42, country: 'USA' }` in one memory address as-is and call it a day because `{ name: 'Bob', age: 42, country: 'USA' }` is not a literal primitive value that a computer understands. So instead, we start at a particular memory address—called a base memory address—and begin storing these *pieces* of information in consecutive blocks. Then, `bob` points to that base memory address, such that we can work our way up later on and "reassemble" the pieces of information that we need, so to speak.
 
-{% include "postImage.html" src: "./images/houses.png", alt: "Two houses with different addresses sit next to each other. Two objects describe the people residing at these separate addresses." %}
-
 That takes care of objects, but what about strings? They may *seem* like a primitive data type only because words are the basic building blocks of the English language. But remember: Computers don't understand English, French, or Chinese; they're just concerned with numbers. In reality, a string consists of characters that are stored in consecutive memory addresses and encoded as numbers using the Unicode standard. In programming languages, a string is implemented as a pointer to the memory address of its first character. If we know the specific character encoding that a string uses (e.g., UTF-16 in JavaScript), we can use pointer arithmetic under the hood to figure out what the string is since we already have its base memory address and the number of characters that were stored.
 
 The key takeaway here is that pointers are a fundamental tool in programming that exists in the implementation of nearly every language. Whether they are hidden from plain sight or made explicit by a special syntax is not important. What matters is that you understand how memory works and that most languages do not have "references."
@@ -231,9 +229,9 @@ We've learned what references really are: *aliases*. And as it turns out, this i
 
 First, let's understand what pass by reference does *not* mean: Pass by reference does *not* mean, "We can pass in an object to a function, modify that object, and then observe the modified result even after the function returns."
 
-In **pass by reference**, the formal parameter is a reference variable (alias) for the argument. It's almost like two functions have temporarily agreed to call a single object by two names (one original and one alias) and to pretend that the two are equivalent. Or, in less accurate terms, you can think of it like a function "borrowing" a variable from another stack frame but calling it something else.
+In <dfn>pass by reference</dfn>, the formal parameter is a reference variable (alias) for the argument. It's almost like two functions have temporarily agreed to call a single object by two names (one original and one alias) and to pretend that the two are equivalent. Or, in less accurate terms, you can think of it like a function "borrowing" a variable from another stack frame but calling it something else.
 
-There's a classic **litmus test** to check if a language supports passing by reference: whether you can swap two numbers (the following code is written in JavaScript):
+As I alluded to in the introduction to this article, there's a classic litmus test to check if a language supports passing by reference: whether you can swap two numbers by passing them in to a function (the following code is written in JavaScript):
 
 ```javascript {data-copyable=true}
 function swap(a, b) {
@@ -253,7 +251,7 @@ console.log(x); // 4
 console.log(y); // 2
 ```
 
-If you run this in your browser, you'll find that `x` and `y` do not swap, whereas `a` and `b` do locally. This proves that **JavaScript does not support pass by reference**. If it did support this mechanism, then `a` would be an alias for `x` and `b` would be an alias for `y`. Any changes to `a` and `b` would have been reflected back to `x` and `y`, respectively. But they weren't!
+If you run this JavaScript, you'll find that `x` and `y` do not swap, whereas `a` and `b` do locally. Therefore, JavaScript doesn't support passing by reference. If it did, then `a` would've been an alias for `x` and `b` would've been an alias for `y`. Any changes to `a` and `b` would have been reflected back to `x` and `y`, respectively. But they weren't!
 
 So, what happened here? The variables `a` and `b` are local to the stack frame of `swap` and receive copies of the values of the arguments that are passed in. This means that the values of `a, b` and `x, y` coincide because they are copies, not because they're aliased.
 
