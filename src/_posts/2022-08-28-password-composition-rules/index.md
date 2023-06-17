@@ -48,11 +48,11 @@ For a more in-depth discussion of these techniques, see the following resources:
 
 ## Measuring a Password's Strength
 
-In the previous section, I mentioned the need to search the "password space" for a system when trying to crack passwords. More generally, the **search space** for any problem is the total number of possibilities that would need to be checked in an exhaustive search. If someone is trying to crack a login system's passwords, then the search space is the total number of passwords that can be generated under certain constraints. The larger the search space, the more time and computational power that is needed to check it exhaustively. This assumes a worst-case outcome: that the item you're searching for is the very last one that has yet to be checked.
+In the previous section, I mentioned the need to search the "password space" for a system when trying to crack passwords by brute force. More generally, the <dfn>search space</dfn> for any problem is the total number of possibilities that would need to be checked in an exhaustive search. If someone is trying to crack a login system's passwords, then the search space is the total number of passwords that can be generated under certain constraints. The larger the search space, the more time and computational power that is needed to check it exhaustively. This assumes a worst-case outcome: that you're doing a brute-force search and the item you're searching for is the very last one that has yet to be checked.
 
-An equivalent measure of a password's strength is its [**entropy**](https://generatepasswords.org/how-to-calculate-entropy/), or the number of bits needed to represent that password in [the binary number system](/blog/binary-for-beginners/). This is essentially just the password space but represented as a base of two for convenience in computing. If our search space consists of `n` passwords, then we can equivalently represent all of those passwords using <code>log<sub>2</sub>(n)</code> bits. The greater a password's entropy, the stronger and more resistant to brute force that password is considered to be. For example, if a system can generate 26<sup>8</sup> passwords, then its entropy is 37.6 bits (since 2<sup>37.6</sup> = 26<sup>8</sup>).
+An equivalent measure of a password's strength is its [**entropy**](https://generatepasswords.org/how-to-calculate-entropy/), or the number of bits needed to represent that password in [the binary number system](/blog/binary-for-beginners/). This is essentially just the password space but represented as a base of two for convenience in computing. If our search space consists of `n` passwords, then we can equivalently represent all of those passwords using <code>log<sub>2</sub>(n)</code> bits. The greater a password's entropy, the stronger and more resistant to brute force that password is considered to be. For example, if a system can generate 26<sup>8</sup> passwords, then its entropy is 38 bits since 2<sup>37.6</sup> = 26<sup>8</sup> (we must round up the result since there is no notion of partial bits).
 
-Using combinatorics and set theory, we can work out how many passwords can be generated under different constraints and the corresponding password entropies. To simplify the math, we'll assume that the password is known to be eight characters long (the minimum length recommended by the NIST). Some common scenarios are summarized in Table 1.
+Using combinatorics and set theory, we can calculate the number of passwords that can be generated under different constraints and the corresponding password entropies. To simplify the math, we'll assume that the password is known to be eight characters long (the minimum length recommended by the NIST). Some common scenarios are summarized in Table 1.
 
 <div class="scroll-x">
     <table id="table-1">
@@ -94,7 +94,7 @@ Using combinatorics and set theory, we can work out how many passwords can be ge
                 <td>None</td>
                 <td class="numeric">94</td>
                 <td class="numeric">6.1 &times; 10<sup>15</sup></td>
-                <td class="numeric">53</sup></td>
+                <td class="numeric">53</td>
             </tr>
         </tbody>
     </table>
@@ -110,7 +110,7 @@ The last two rows of Table 1 assume that a QWERTY keyboard is used, which offers
 
 The main takeaway from this table is that the search space (and therefore the password entropy) is always reduced when we enforce some sort of password composition requirement. Once we begin to restrict the types of passwords that a user may choose, the search space and entropy are guaranteed to be smaller than if we didn't enforce any rules.
 
-### Prefer Length Over Password Complexity 
+### Password Length Is More Important
 
 At first glance, Table 1 also seems to suggest that if we *do* decide to enforce password requirements, we should at last favor more complex rules because they yield a bigger search space compared to simpler rules. For example, the rule requiring at least one of each character set yields an entropy of 53, whereas a password consisting only of lowercase letters has an entropy of 38. But this doesn't tell the whole story.
 
@@ -141,7 +141,7 @@ To drive home this point, consider Table 2, which computes the password space an
             </tr>
             <tr>
                 <td class="numeric">12</td>
-                <td class="numeric">9.5 &times 10<sup>16</sup></td>
+                <td class="numeric">9.5 &times; 10<sup>16</sup></td>
                 <td class="numeric">57</td>
             </tr>
             <tr>
@@ -153,13 +153,11 @@ To drive home this point, consider Table 2, which computes the password space an
     </table>
 </div>
 
-Observe that increasing the password's length from 8 to 12 already gives us a greater entropy (57 bits) with just lowercase letters. By comparison, we get only 53 bits of entropy for an 8-character password with no restrictions. It's for this reason that the NIST encourages enforcing a minimum length requirement. In general, *longer* passwords are stronger (and may be easier to remember) than *complex* passwords.
+As this table shows, increasing the password's length from 8 to 12 already gives us a greater entropy (57 bits) with just lowercase letters. By comparison, we get only 53 bits of entropy for an 8-character password with no restrictions. It's for this reason that the NIST encourages enforcing a minimum length requirement. In general, *longer* passwords are stronger (and may be easier to remember) than *complex* passwords.
 
 ### Password Space Isn't Everything
 
-With all of this in mind, it's worth emphasizing that a larger password space doesn't necessarily mean that our system's passwords are going to be harder to crack. Remember: All of this math is theoretical and assumes that users are generating perfectly random passwords. In reality, humans can only realistically generate and memorize a subset of this search space. Users are biased toward selecting words and phrases, not a random string of characters, so it's likely that their hand-chosen password (or some variation of it) will appear in a dictionary.
-
-Thus, an attacker won't need to cover the entire password space (and doing so can be prohibitively costly anyway). Moreover, in some cases, cracking a user password may grant an attacker access to multiple accounts. In short, the problem with password composition rules isn't that they reduce the search space.
+In practice, a larger password space doesn't necessarily mean that our system's passwords are going to be harder to crack. Remember: All of this math is theoretical and assumes that users are generating perfectly random passwords. In reality, humans can only realistically generate and memorize a subset of this search space. Users are biased toward selecting words and phrases, not a random string of characters, so it's likely that their hand-chosen password (or some variation of it) will appear in a dictionary. Mangling rules can make quick work of cracking them in a dictionary attack. An attacker need not brute-force the entire password space (and doing so is often prohibitively costly anyway). Moreover, in some cases, cracking a user password may grant an attacker access to multiple accounts. In short, the problem with password composition rules isn't that they reduce the search space.
 
 {% quote "An Introduction to Analytical Cryptography (2014), page 5", "https://link.springer.com/book/10.1007/978-1-4939-1711-2" %}
 The assertion that a large number of possible keys, in and of itself, makes a cryptosystem secure, has appeared many times in history and has equally often been shown to be fallacious.
