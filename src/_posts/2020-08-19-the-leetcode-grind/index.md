@@ -5,7 +5,6 @@ keywords: [leetcode, leetcode grind]
 categories: [leetcode, algorithms, career]
 thumbnail: ./images/thumbnail.png
 lastUpdated: 2021-10-11
-isFeatured: true
 ---
 
 Leetcode is a polarizing topic when it comes to technical interviews. But what exactly is it? And does it deserve your attention?
