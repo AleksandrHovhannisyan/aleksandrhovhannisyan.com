@@ -58,9 +58,6 @@
   }
 
   &-tag {
-    position: relative;
-    line-height: leading("lg");
-
     &:is(:focus, :hover) {
       text-decoration: none;
     }
@@ -88,7 +85,7 @@
     &-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: spacing("-4") spacing("-2");
+      gap: spacing("-3") spacing("-2");
       margin-top: spacing("0");
       @include font($size: "xs");
     }
