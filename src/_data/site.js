@@ -12,7 +12,7 @@ module.exports = {
   title: 'Aleksandr Hovhannisyan',
   author: 'Aleksandr Hovhannisyan',
   email: 'aleksandrhovhannisyan@gmail.com',
-  description: 'Dev tutorials, thoughts on software development, and the occasional off-topic post.',
+  description: 'Dev tutorials, thoughts on software development, and the occasional essay.',
   keywords: ['Aleksandr Hovhannisyan'],
   lang: 'en-US',
   issues: {
