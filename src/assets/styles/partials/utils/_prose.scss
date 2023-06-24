@@ -1,6 +1,6 @@
 @import "../functions";
 
 .prose {
-  max-width: 73ch;
+  max-width: to-rems(815px);
   margin: 0 auto;
 }
