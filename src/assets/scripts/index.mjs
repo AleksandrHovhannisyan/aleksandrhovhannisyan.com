@@ -1,26 +1,24 @@
-import { THEME_KEY, Themes, copyToClipboardButtonStrings } from './constants.mjs';
-import ThemeToggle from './components/ThemeToggle.mjs';
+import { Theme, THEME_KEY, copyToClipboardButtonStrings } from './constants.mjs';
 
-const themeToggleElement = document.getElementById('theme-toggle');
+const themeToggle = document.getElementById('theme-toggle');
+if (themeToggle) {
+  let theme;
 
-if (themeToggleElement) {
-  const cachedTheme = localStorage.getItem(THEME_KEY);
-  const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? Themes.DARK : Themes.LIGHT;
+  const setTheme = (newTheme) => {
+    theme = newTheme;
+    document.documentElement.dataset[THEME_KEY] = theme;
+    themeToggle.setAttribute('aria-pressed', theme === Theme.DARK);
+  };
 
-  // eslint-disable-next-line no-unused-vars
-  const themeToggle = new ThemeToggle({
-    toggleElement: themeToggleElement,
-    initialTheme: cachedTheme ?? preferredTheme,
-    setTheme: (theme) => {
-      document.documentElement.dataset[THEME_KEY] = theme;
-      themeToggleElement.setAttribute('aria-pressed', theme === Themes.DARK);
-    },
-    setCachedTheme: (theme) => localStorage.setItem(THEME_KEY, theme),
-    themes: {
-      [Themes.LIGHT]: Themes.DARK,
-      [Themes.DARK]: Themes.LIGHT,
-    },
+  themeToggle.addEventListener('click', () => {
+    theme = theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT;
+    setTheme(theme);
+    localStorage.setItem(THEME_KEY, theme);
   });
+
+  const cachedTheme = localStorage.getItem(THEME_KEY);
+  const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? Theme.DARK : Theme.LIGHT;
+  setTheme(cachedTheme ?? preferredTheme);
 }
 
 document.querySelectorAll('code[data-copyable]').forEach((codeBlock) => {
