@@ -1,3 +1,5 @@
+const commentTemplate = document.querySelector(`#comment-template`);
+
 /** Returns all comments using the provided issue ID. */
 export const fetchComments = async (id) => {
   const response = await fetch(`/.netlify/functions/comments?id=${id}`);
@@ -8,54 +10,54 @@ export const fetchComments = async (id) => {
   return comments;
 };
 
-/** Renders the given list of comments, converting markdown to HTML. */
+const getCommentNode = (comment) => {
+  const commentNode = commentTemplate.content.cloneNode(true);
+
+  const userAvatar = commentNode.querySelector('img');
+  const userLink = commentNode.querySelector('a');
+  userAvatar.src = `${comment.user.avatarUrl}`;
+  userLink.href = `https://github.com/${comment.user.name}`;
+  userLink.innerHTML = comment.user.name;
+
+  const authorPill = commentNode.querySelector('.post-comment-author');
+  if (!comment.user.isAuthor) {
+    authorPill.remove();
+  } else {
+    const authorPillId = `author-${comment.user.name.replace(/\s/, '')}`;
+    authorPill.id = authorPillId;
+    userLink.setAttribute('aria-describedby', authorPillId);
+  }
+
+  const commentTimestamp = commentNode.querySelector('time');
+  commentTimestamp.setAttribute('datetime', comment.dateTime);
+  commentTimestamp.innerHTML = comment.datePostedRelative;
+
+  const editedPill = commentNode.querySelector('.post-comment-edited');
+  if (!comment.wasEdited) {
+    editedPill.remove();
+  }
+
+  const commentBody = commentNode.querySelector('.post-comment-body');
+  commentBody.innerHTML = comment.body;
+
+  return commentNode;
+};
+
 export const renderComments = async (comments) => {
-  const commentsSection = document.querySelector('#comments');
-  const commentsWrapper = commentsSection.querySelector('#comments-wrapper');
-  const commentsCounter = commentsSection.querySelector('#comments-count');
-  const commentsPlaceholder = commentsSection.querySelector('#comments-placeholder');
+  const commentSection = document.querySelector('#comments');
+  const commentsCounter = commentSection.querySelector('#comments-count');
+  const commentsPlaceholder = commentSection.querySelector('#comments-placeholder');
+  const commentsList = commentSection.querySelector('ol');
 
   if (!comments.length) {
-    commentsPlaceholder.innerHTML = `No comments yet.`;
+    commentsPlaceholder.innerHTML = 'No comments yet.';
     return;
   }
 
   commentsCounter.innerText = `${comments.length} `;
-  const commentsList = document.createElement('ol');
-  commentsList.className = 'stack gap-10';
-  commentsList.innerHTML = comments
-    .map((comment, i) => {
-      const { user, isEdited, created_at, datePosted, body } = comment;
-      const authorPillId = `author-${i}`;
-      return `<li>
-                <article class="post-comment stack gap-0">
-                  <header class="post-comment-meta">
-                    <img src="${user.avatarUrl}" alt="" aria-hidden="true" class="post-comment-avatar circle">
-                    <a
-                      href="https://github.com/${user.name}"
-                      class="post-comment-username"
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      ${user.isAuthor ? `aria-describedby="${authorPillId}"` : ''}
-                    >
-                      ${user.name}
-                    </a>
-                    <span class="size-font-sm">
-                      commented <time datetime="${created_at}">${datePosted}</time>
-                    </span>
-                    ${
-                      user.isAuthor
-                        ? `<span id="${authorPillId}" class="pill post-comment-author" data-shape="round" data-size="xs">Author</span>`
-                        : ''
-                    }
-                    ${isEdited ? `<span class="size-font-sm post-comment-edited">Edited</span>` : ''}
-                  </header>
-                  <div class="post-comment-body rhythm">${body}</div>
-                </article>
-              </li>`;
-    })
-    .join('');
-
-  commentsWrapper.innerHTML = '';
-  commentsWrapper.appendChild(commentsList);
+  commentsPlaceholder.remove();
+  comments.forEach((comment) => {
+    const commentNode = getCommentNode(comment);
+    commentsList.appendChild(commentNode);
+  });
 };

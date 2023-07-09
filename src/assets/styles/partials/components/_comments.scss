@@ -14,17 +14,14 @@
 
 .post-comment {
   --avatar-size: #{spacing("5")};
-  --meta-spacing: #{spacing("-2")};
+  --avatar-offset-left: #{spacing("-2")};
 
-  &-meta {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: spacing("-2");
+  &-meta > * {
+    display: inline-block;
+    vertical-align: middle;
   }
 
   &-avatar {
-    align-self: flex-start;
     width: var(--avatar-size);
   }
 
@@ -53,7 +50,7 @@
 
   @include tablet {
     & {
-      padding-inline-start: calc(var(--avatar-size) + var(--meta-spacing));
+      padding-inline-start: calc(var(--avatar-size) + var(--avatar-offset-left));
     }
 
     &-meta {
@@ -63,7 +60,7 @@
     &-avatar {
       position: absolute;
       transform: translateX(-100%);
-      left: calc(-1 * var(--meta-spacing));
+      left: calc(-1 * var(--avatar-offset-left));
     }
   }
 }

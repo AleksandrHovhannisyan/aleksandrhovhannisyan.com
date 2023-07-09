@@ -46,8 +46,9 @@ exports.handler = async (event) => {
             name: sanitizeHtml(comment.user.login),
             isAuthor: comment.author_association === 'OWNER',
           },
-          datePosted: dayjs(comment.created_at).fromNow(),
-          isEdited: comment.created_at !== comment.updated_at,
+          dateTime: comment.created_at,
+          datePostedRelative: dayjs(comment.created_at).fromNow(),
+          wasEdited: comment.created_at !== comment.updated_at,
           // Sanitize comment body to prevent XSS
           body: sanitizeHtml(markdownLib.render(comment.body)),
         };

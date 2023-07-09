@@ -19,7 +19,7 @@ eleventyComputed:
       {% if lastUpdated %}
       <div>
         <dt>Updated</dt>
-        <dd>{% include "date.html" date: lastUpdated, dateFormat: "MMMM DD, YYYY" %}</dd>  
+        <dd>{% include "date.html" date: lastUpdated, dateFormat: "MMMM DD, YYYY" %}</dd>
       </div>
       {% endif %}
     </dl>
@@ -37,6 +37,20 @@ eleventyComputed:
   <div class="rhythm">
     {{ content }}
     {%- if commentsId and featureFlags.enableComments -%}
+      <template id="comment-template">
+        <li>
+          <div class="post-comment stack gap-0">
+            <header class="post-comment-meta">
+              <img alt="" aria-hidden="true" class="post-comment-avatar circle">
+              <a class="post-comment-username" target="_blank" rel="noreferrer noopener"></a>
+              <span class="size-font-sm">commented <time></time></span>
+              <span class="pill post-comment-author" data-shape="round" data-size="xs">Author</span>
+              <span class="size-font-sm post-comment-edited">Edited</span>
+            </header>
+            <div class="post-comment-body rhythm"></div>
+          </div>
+        </li>
+      </template>
       <section id="comments" class="stack gap-10" data-comments-id="{{ commentsId }}">
         <div class="stack gap-0">
           <div class="comment-actions flex flex-wrap align-center justify-between gap-0">
@@ -55,9 +69,8 @@ eleventyComputed:
             post a comment over on GitHub, and it'll show up below once you reload this page.
           </p>
         </div>
-        <div id="comments-wrapper">
-          <p id="comments-placeholder" class="text-center">Loading...</p>
-        </div>
+        <p id="comments-placeholder" class="text-center">Loading...</p>
+        <ol class="stack gap-10"></ol>
       </section>
     {%- endif -%}
   </div>
