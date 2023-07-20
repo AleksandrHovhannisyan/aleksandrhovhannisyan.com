@@ -1,6 +1,6 @@
 ---
-title: What Are Higher-Order Components in React?
-description: Higher-order components are one of React's most popular design patterns, allowing you to define reusable stateful logic and create powerful, flexible components.
+title: Higher-Order Components in React
+description: Higher-order components are an old but popular design in React prior to the introduction of hooks, allowing you to define reusable stateful logic.
 keywords: [higher-order components]
 categories: [react, design-patterns]
 lastUpdated: 2020-11-10

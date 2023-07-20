@@ -1,11 +1,4 @@
 ---
-# Reusing an 11ty Template for Static and Serverless Pages
-# SSG and SSR Hybrid Templates in 11ty Serverless
-# Hybrid Templates in 11ty Serverless with Object Permalinks
-# Static and SSR Templates in 11ty Serverless
-# Reusing a Template for SSG and SSR in 11ty Serverless
-# SSG and SSR in 11ty Serverless with Object Permalinks
-# 11ty Serverless and Object Permalinks: Hybrid Templates
 title: "11ty Serverless and Object Permalinks: Hybrid Rendering"
 description: Learn how to reuse a single source template in 11ty Serverless to generate both a static and server-rendered page.
 keywords: [11ty serverless, object permalink]
@@ -290,7 +283,7 @@ eleventyConfig.addPlugin(EleventyServerlessBundlerPlugin, {
 With this example, our data file would spit out the following permalink object for `src/_pages/page1.html`:
 
 ```json
-{  
+{
   "build": "/page1/",
   "page1": "/page1/output/"
 }

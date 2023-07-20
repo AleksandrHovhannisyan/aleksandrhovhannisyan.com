@@ -2,7 +2,7 @@
 title: "11ty: The Good, the Bad, and the... Possum?"
 description: An in-depth review of 11ty, an extensible static site generator written in Node that supports a variety of template languages.
 keywords: [11ty, eleventy]
-categories: [11ty, jekyll, blogging]
+categories: [11ty, jekyll, ssg]
 thumbnail: ./images/thumbnail.jpg
 commentsId: 95
 lastUpdated: 2021-11-07

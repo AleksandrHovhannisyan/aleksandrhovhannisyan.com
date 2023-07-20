@@ -1,8 +1,8 @@
 ---
-title: SEO Tips for Getting More Traffic
-description: SEO is the art of making strategic improvements to a site's content or performance in order to rank higher in search results and attract more traffic. Learn how to use tried-and-true SEO strategies to draw more visitors to your site.
-keywords: [SEO blogging best practices]
-categories: [off-topic, blogging, seo]
+title: How to Get More Traffic with SEO
+description: SEO is the art of making strategic improvements to a site in order to rank higher in search results and gain more traffic. Learn how to use tried-and-true SEO strategies to drive more visitors to your site.
+keywords: [seo, traffic]
+categories: [seo, writing]
 commentsId: 41
 thumbnail:
   url: https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80

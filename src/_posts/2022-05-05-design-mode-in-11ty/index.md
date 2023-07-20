@@ -2,7 +2,7 @@
 title: Design Mode in 11ty
 description: Sometimes, I prefer to compose text right in my browser and copy it over to my source files. In 11ty, we can enable this behind a keyboard shortcut in our development environment using environment variables.
 keywords: [designMode, 11ty]
-categories: [11ty, javascript, environment-variables]
+categories: [11ty, javascript]
 commentsId: 152
 ---
 

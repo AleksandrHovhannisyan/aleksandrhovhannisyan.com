@@ -2,7 +2,7 @@
 title: Creating an Accessible Image Carousel
 description: Learn how to build an accessible image carousel that supports multiple input modes and is progressively enhanced with CSS scroll snap and JavaScript.
 keywords: [image carousel, carousel, accessible carousel, media carousel]
-categories: [html, css, javascript, accessibility, scroll-snap, rtl]
+categories: [html, css, javascript, accessibility, rtl]
 thumbnail: ./images/algorithm.png
 lastUpdated: 2022-10-12
 openGraph:
@@ -11,7 +11,7 @@ openGraph:
 stylesheets:
   - /assets/styles/demos/carousel.css
 scripts:
-  - 
+  -
     type: module
     src: /assets/scripts/demos/Carousel/index.mjs
 commentsId: 166
@@ -70,20 +70,20 @@ Semantically, an image carousel is a list of images—typically ordered in an au
 
 ```html {data-file="index.html" data-copyable=true}
 <div class="carousel">
-  <div 
-    class="carousel-scroll-container" 
-    role="region" 
-    aria-label="Image carousel" 
+  <div
+    class="carousel-scroll-container"
+    role="region"
+    aria-label="Image carousel"
     tabindex="0"
   >
     <ol class="carousel-media" role="list">
       <li class="carousel-item">
-        <img 
-          src="..." 
-          alt="..." 
-          width="..." 
-          height="..." 
-          loading="lazy" 
+        <img
+          src="..."
+          alt="..."
+          width="..."
+          height="..."
+          loading="lazy"
           decoding="async">
       </li>
       <!-- more images can go here -->
@@ -152,20 +152,20 @@ First, I'm using an outer wrapper div for the layout. This may seem unnecessary,
 The most important part of this markup is the `.carousel-scroll-container`:
 
 ```html
-<div 
-  class="carousel-scroll-container" 
-  role="region" 
-  aria-label="Image carousel" 
+<div
+  class="carousel-scroll-container"
+  role="region"
+  aria-label="Image carousel"
   tabindex="0"
 >
   <ol class="carousel-media" role="list">
     <li class="carousel-item">
-      <img 
-        src="..." 
-        alt="..." 
-        width="..." 
-        height="..." 
-        loading="lazy" 
+      <img
+        src="..."
+        alt="..."
+        width="..."
+        height="..."
+        loading="lazy"
         decoding="async">
     </li>
   </ol>
@@ -528,7 +528,7 @@ We'll start by creating an ES6 class for our carousel. Note that this isn't stri
 export default class Carousel {
   /**
    * @type {CarouselProps} props
-   */ 
+   */
   constructor(props) {
     // `this` binding (you could also transpile class fields)
     this.navigateToNextItem = this.navigateToNextItem.bind(this);
@@ -544,7 +544,7 @@ export default class Carousel {
 
   /**
    * @param {HTMLElement} controls
-   */ 
+   */
   _insertNavigationControls(controls) {
     if (!controls) return;
 
@@ -980,7 +980,7 @@ In a typical internationalized app, you might have a utility function that retur
  * Returns `true` if the given element is in a horizontal RTL writing mode.
  * @param {HTMLElement} element
  */
-export const isRtl = (element) => 
+export const isRtl = (element) =>
   window.getComputedStyle(element).direction === 'rtl';
 ```
 
@@ -1181,7 +1181,7 @@ export default class Carousel {
 
   /**
    * @param {HTMLElement} controls
-   */ 
+   */
   _insertNavigationControls(controls) {
     if (!controls) return;
 
@@ -1329,16 +1329,16 @@ While implementing a media carousel may seem like a lot of work, the truth is th
 <template id="carousel-controls">
   <ol class="carousel-controls" role="list" aria-label="Navigation controls">
     <li>
-      <button 
-        class="carousel-control" 
+      <button
+        class="carousel-control"
         aria-label="Previous"
         data-direction="start">
         {% include "icon.html" icon: "chevron-left" %}
       </button>
     </li>
     <li>
-      <button 
-        class="carousel-control" 
+      <button
+        class="carousel-control"
         aria-label="Next"
         data-direction="end">
         {% include "icon.html" icon: "chevron-right" %}
