@@ -21,22 +21,22 @@ $tokens: (
         max: 18px,
       ),
       "base": (
-        min: 16px,
+        min: 18px,
         max: 20px,
         leading: "base",
       ),
       "md": (
-        min: 18px,
+        min: 20px,
         max: 22px,
         leading: "sm",
       ),
       "lg": (
-        min: 20px,
+        min: 22px,
         max: 26px,
         leading: "xs",
       ),
       "xl": (
-        min: 22px,
+        min: 24px,
         max: 32px,
         leading: "2xs",
       ),
@@ -47,13 +47,13 @@ $tokens: (
       ),
       "3xl": (
         min: 30px,
-        max: 44px,
+        max: 42px,
         leading: "3xs",
         tracking: "sm",
       ),
       "4xl": (
         min: 36px,
-        max: 58px,
+        max: 56px,
         leading: "3xs",
         tracking: "sm",
       ),

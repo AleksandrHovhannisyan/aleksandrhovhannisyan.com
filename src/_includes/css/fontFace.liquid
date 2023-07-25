@@ -1,8 +1,10 @@
-/* https://www.industrialempathy.com/perfect-ish-font-fallback/?font=Fira%20Sans */
+/* Generated with capsizecss: https://github.com/seek-oss/capsize#createfontstack */
 @font-face {
-  font-family: "Sans-fallback";
-  size-adjust: 102.59%;
-  src: local("Arial");
+  font-family: "body-fallback";
+  src: local('Times New Roman');
+  ascent-override: 93.5808%;
+  descent-override: 25.7595%;
+  size-adjust: 111.0271%;
 }
 {%- comment -%}Loop over the global font config and construct a series of @font-face declarations. We later feed this to scss to minify the output and inline it in the head for performance.{%- endcomment -%}
 {%- for entry in fonts -%}

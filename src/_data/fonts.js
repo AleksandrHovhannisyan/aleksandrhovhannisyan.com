@@ -8,22 +8,22 @@ const { getFontUrl } = require('../../config/fonts/fonts.utils');
 const fonts = {
   body: {
     type: 'static',
-    family: 'Fira Sans',
-    fallbacks: [`Sans-fallback`],
+    family: 'PT Serif',
+    fallbacks: [`body-fallback`],
     variants: {
       [FontVariant.REGULAR]: {
         roman: {
           weight: 400,
           style: FontStyle.NORMAL,
-          url: getFontUrl('firasans-latin-400-roman.woff2'),
-          postscriptName: `FiraSans-Regular`,
+          url: getFontUrl('ptserif-latin-400-roman.woff2'),
+          postscriptName: `PTSerif-Regular`,
           display: FontDisplay.SWAP,
         },
         italic: {
           weight: 400,
           style: FontStyle.ITALIC,
-          url: getFontUrl('firasans-latin-400-italic.woff2'),
-          postscriptName: `FiraSans-Italic`,
+          url: getFontUrl('ptserif-latin-400-italic.woff2'),
+          postscriptName: `PTSerif-Italic`,
           display: FontDisplay.SWAP,
         },
       },
@@ -31,8 +31,15 @@ const fonts = {
         roman: {
           weight: 700,
           style: FontStyle.NORMAL,
-          url: getFontUrl('firasans-latin-700-roman.woff2'),
-          postscriptName: `FiraSans-Bold`,
+          url: getFontUrl('ptserif-latin-700-roman.woff2'),
+          postscriptName: `PTSerif-Bold`,
+          display: FontDisplay.SWAP,
+        },
+        italic: {
+          weight: 700,
+          style: FontStyle.ITALIC,
+          url: getFontUrl('ptserif-latin-700-italic.woff2'),
+          postscriptName: `PTSerif-BoldItalic`,
           display: FontDisplay.SWAP,
         },
       },

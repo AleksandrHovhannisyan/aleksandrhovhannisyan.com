@@ -29,7 +29,7 @@
   &-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: spacing("-2");
+    gap: spacing("-3") spacing("-2");
   }
 
   &-tag {
