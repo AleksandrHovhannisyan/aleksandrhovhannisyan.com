@@ -25,7 +25,7 @@ const {
   dividedBy,
   toAbsoluteUrl,
   getLatestCollectionItemDate,
-  cleanCSS,
+  makeCleanCSS,
   toAbsoluteImageUrl,
   pathParse,
   pathJoin,
@@ -87,7 +87,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter('toJson', JSON.stringify);
   eleventyConfig.addFilter('fromJson', JSON.parse);
   eleventyConfig.addFilter('getLatestCollectionItemDate', getLatestCollectionItemDate);
-  eleventyConfig.addFilter('cleanCSS', cleanCSS);
+  eleventyConfig.addFilter('cleanCSS', makeCleanCSS());
   eleventyConfig.addFilter('keys', Object.keys);
   eleventyConfig.addFilter('values', Object.values);
   eleventyConfig.addFilter('entries', Object.entries);

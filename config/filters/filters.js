@@ -90,10 +90,22 @@ const getLatestCollectionItemDate = (collection) => {
   return latestItem?.data?.lastUpdated ?? latestItem?.date;
 };
 
-/** Given a css string, returns the minified css. */
-const cleanCSS = (input) => {
-  const { styles } = new CleanCSS({}).minify(input);
-  return styles;
+/** Returns an optimized CSS minifier function. */
+const makeCleanCSS = () => {
+  // Currently, the cleanCSS filter is being called on essentially the same CSS for every single page
+  // with the same exact input. Caching yields about a ~6x performance increase.
+  const cache = {};
+  const cleaner = new CleanCSS({});
+
+  /** Given a css string, returns the minified css. */
+  return (input) => {
+    let key = JSON.stringify(input);
+    if (!cache[key]) {
+      const { styles } = cleaner.minify(input);
+      cache[key] = styles;
+    }
+    return cache[key];
+  };
 };
 
 /**
@@ -117,7 +129,7 @@ module.exports = {
   toAbsoluteUrl,
   toAbsoluteImageUrl,
   getLatestCollectionItemDate,
-  cleanCSS,
+  makeCleanCSS,
   pathParse,
   pathJoin,
 };
