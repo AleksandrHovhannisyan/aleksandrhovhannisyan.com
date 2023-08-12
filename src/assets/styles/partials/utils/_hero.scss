@@ -2,7 +2,7 @@
 @import "../mixins";
 
 .hero {
-  max-width: to-rems(800px);
+  max-width: to-rems(760px);
 
   &-title {
     @include font($size: "4xl");
