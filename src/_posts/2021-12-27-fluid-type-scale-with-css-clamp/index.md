@@ -2,7 +2,7 @@
 title: Creating a Fluid Type Scale with CSS Clamp
 description: Fluid typography allows each font size in a modular scale to vary responsively between a min and max. Learn the math behind fluid typography and how to programmatically generate a fluid type scale with CSS clamp and Sass.
 keywords: [fluid typography, type scale, clamp, sass, font size]
-categories: [css, sass, typography, math, clamp]
+categories: [css, sass, typography, math]
 thumbnail: ./images/thumbnail.png
 commentsId: 131
 lastUpdated: 2023-01-30

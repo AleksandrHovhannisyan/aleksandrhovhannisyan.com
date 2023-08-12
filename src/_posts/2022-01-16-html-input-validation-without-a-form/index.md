@@ -2,7 +2,7 @@
 title: HTML Input Validation with JavaScript
 description: If you want to use a standalone HTML input to accept user input and store it locally in your app's state, you can use the checkValidity, reportValidity, and setCustomValidity methods to validate the user's input and provide feedback.
 keywords: [input validation, validity, input, form]
-categories: [html, javascript, accessibility, browsers, forms]
+categories: [html, javascript, accessibility, forms]
 thumbnail: ./images/thumbnail.png
 commentsId: 137
 lastUpdated: 2022-08-11

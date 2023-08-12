@@ -2,7 +2,7 @@
 title: Don't Mind the Leetcode Grind
 description: Leetcode is a polarizing topic when it comes to technical interviews. But what exactly is it? And does it deserve your attention?
 keywords: [leetcode, leetcode grind]
-categories: [leetcode, algorithms, career]
+categories: [algorithms, career]
 thumbnail: ./images/thumbnail.png
 lastUpdated: 2021-10-11
 ---

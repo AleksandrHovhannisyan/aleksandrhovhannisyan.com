@@ -2,7 +2,7 @@
 title: "11ty Serverless and Object Permalinks: Hybrid Rendering"
 description: Learn how to reuse a single source template in 11ty Serverless to generate both a static and server-rendered page.
 keywords: [11ty serverless, object permalink]
-categories: [11ty, netlify, ssg, ssr, forms]
+categories: [11ty, netlify, ssg, forms]
 ---
 
 In [a recent project](https://cryptography-algorithms.netlify.app/), I wanted to create a simple website that collects some input via a form and generates a corresponding output page, with no client-side JavaScript. This website needed to have multiple distinct pages, each with its own `form[method="GET"]` and a submit button. When the submit button is clicked on a particular page, the user should be taken to a corresponding output page. All of this sounded like the perfect use case for [11ty Serverless](https://www.11ty.dev/docs/plugins/serverless/): a plugin that allows Eleventy to generate not only static pages at build time but also serverless pages at request time, utilizing [Netlify functions](https://www.netlify.com/products/functions/) that run on the server side. Since serverless routes can accept query parameters, they can easily handle form submissions since the default behavior for forms is to serialize their data in the URL.

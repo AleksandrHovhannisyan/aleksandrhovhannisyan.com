@@ -1,7 +1,7 @@
 ---
 title: NFTs Are a Problem
 description: While NFTs are being hailed as the future of digital ownership, they're also the source of many problems. NFTs are artificially scarce, make it easier to commit fraud, undermine the intellectual property rights of content creators, and encourage consumptive mining practices.
-categories: [essay, nft, art, blockchain, money]
+categories: [essay, nft, art, money]
 keywords: [nfts, digital ownership, ownership, art]
 lastUpdated: 2021-12-18
 commentsId: 114

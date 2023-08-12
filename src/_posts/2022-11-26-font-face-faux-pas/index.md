@@ -2,7 +2,7 @@
 title: A Font-Face Faux Pas
 description: When using the font-face local() function to load fonts installed on a user's system, double-check that sure you're requesting the right font family.
 keywords: [font face, local]
-categories: [css, typography, debugging]
+categories: [css, typography]
 thumbnail: ./images/thumbnail.png
 ---
 
@@ -91,9 +91,9 @@ Just as I suspected! Below is a snippet of the offending CSS:
 ```css
 @font-face {
   font-family: "Graphik Web";
-  src: 
+  src:
     local("Pacifico Regular"),
-    local("Pacifico-Regular"), 
+    local("Pacifico-Regular"),
     url(/wp-content/themes/wpx/assets/fonts/Graphik-Super-Web.woff2) format("woff2"),
     url(/wp-content/themes/wpx/assets/fonts/Graphik-Super-Web.woff) format("woff");
   font-weight: 900;

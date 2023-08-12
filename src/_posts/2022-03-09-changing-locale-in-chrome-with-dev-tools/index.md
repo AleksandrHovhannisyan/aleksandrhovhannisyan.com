@@ -2,7 +2,7 @@
 title: Changing the Locale in Chrome with Dev Tools
 description: Modern browsers have developer tools that allow us to simulate user preferences, vision impairments, device resolutions, and various other scenarios. Chromium browsers in particular allow us to also simulate loading the page in a different locale.
 keywords: [locale, dev tools]
-categories: [html, i18n, rtl, browsers, chrome, testing]
+categories: [html, i18n, browsers, testing]
 thumbnail:
   url: https://images.unsplash.com/photo-1510267413785-9d9e64460cde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---

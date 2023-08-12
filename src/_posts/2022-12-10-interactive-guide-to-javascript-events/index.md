@@ -2,7 +2,7 @@
 title: An Interactive Guide to JavaScript Events
 description: Learn how event capturing, targeting, and bubbling work in JavaScript; how to prevent an event's default behavior; how to stop event propagation; and more.
 keywords: [javascript events, event]
-categories: [javascript, html, browsers]
+categories: [javascript, html]
 thumbnail: ./images/phases.png
 lastUpdated: 2023-02-04
 openGraph:
@@ -31,7 +31,7 @@ When you're first starting out with JavaScript, one of the first things you lear
 While it may not be apparent at first, JavaScript events actually go through three phases:
 
 1. Capturing,
-2. Targeting, and 
+2. Targeting, and
 3. Bubbling.
 
 Event targeting is what most beginners are familiar with, but the other two phases are also important to understand. In this article, you'll learn how event capturing, targeting, and bubbling work in JavaScript; we'll also touch on event delegation, how to stop event propagation, how to prevent an event's default behavior, and more.
@@ -390,7 +390,7 @@ You may be wondering why JavaScript has both event capturing and event bubbling.
 
 ### 1. Event Capturing
 
-All JavaScript events begin their journey at the root of the DOM and propagate down until they reach the target node. On its way to the target, the event fires on each ancestor element in what's known as the <dfn>event capturing</dfn> phase. 
+All JavaScript events begin their journey at the root of the DOM and propagate down until they reach the target node. On its way to the target, the event fires on each ancestor element in what's known as the <dfn>event capturing</dfn> phase.
 
 {% include "postImage.html" src: "./images/capturing.png", alt: "Three side-by-side panels depicting a top-down tree structure. The levels of the tree are as follows. Root: window; children: html. HTML's children: head, body. Body's children: button. The panels are labeled from left to right: Phase 1: Event capturing. Phase 2: Event targeting. Phase 3: Event bubbling. The first panel is active and highlights the nodes that participate in event capturing: window, html, and body." %}
 
@@ -735,9 +735,9 @@ Suppose your page renders a scroll container:
 
 ```html
 <div class="scroll-container">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam 
-    tincidunt faucibus scelerisque. Vestibulum eros nisl, euismod ut 
-    tortor non, condimentum porta sapien. Donec malesuada gravida quam, 
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+    tincidunt faucibus scelerisque. Vestibulum eros nisl, euismod ut
+    tortor non, condimentum porta sapien. Donec malesuada gravida quam,
     sit amet faucibus diam pulvinar a. Quisque congue nec orci a accumsan.
 </div>
 ```

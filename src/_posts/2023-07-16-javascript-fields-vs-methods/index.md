@@ -2,7 +2,7 @@
 title: Class Fields vs. Methods in JavaScript
 description: In JavaScript, class fields allow you to define properties on a class instance outside the constructor. In the case of function properties, it's important to understand how fields differ from methods and their potential tradeoffs.
 keywords: [class fields, methods, javascript, es2022]
-categories: [javascript, oop]
+categories: [javascript]
 ---
 
 ECMAScript 2022 introduced the long-awaited public and private class fields, inching JavaScript closer to traditional object-oriented languages. But what exactly are class fields? And, in the special case of fields that happen to be functions, how do they differ from methods? By the end of this article, we will answer those questions and understand when to use class fields (and when not to).

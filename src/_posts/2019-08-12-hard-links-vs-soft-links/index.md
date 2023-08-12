@@ -2,7 +2,7 @@
 title: Hard Links and Soft Links
 description: "Linking is how UNIX file systems keep track of files. There are two distinct types of links: soft (symbolic) links and hard links. One sticks around for good, while the other one rots."
 keywords: [hard links vs soft links]
-categories: [unix, file-systems]
+categories: [operating-systems, file-systems]
 lastUpdated: 2021-08-14
 ---
 

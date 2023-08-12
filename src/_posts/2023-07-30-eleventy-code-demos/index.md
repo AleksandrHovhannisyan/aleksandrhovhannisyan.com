@@ -2,7 +2,7 @@
 title: Interactive HTML Code Demos in Eleventy
 description: With eleventy-plugin-code-demo, you can easily add interactive HTML, CSS, and JavaScript code demos to your Eleventy site using Markdown.
 keywords: [eleventy, code demo]
-categories: [11ty, html, css, javascript, webperf]
+categories: [11ty, html, css, javascript]
 ---
 
 In an early draft of my [interactive guide to JavaScript events](/blog/interactive-guide-to-javascript-events/), I was leaving `TODO` placeholders every few paragraphs as a reminder to take screenshots of my code demo output. Taking screenshots is tedious, especially for an article of that scale, and it slows me down; instead, I prefer to focus on writing my content first and supplementing it with media afterwards.

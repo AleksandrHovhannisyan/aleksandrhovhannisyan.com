@@ -2,7 +2,7 @@
 title: Modular Arithmetic and the Diffie-Hellman Algorithm
 description: Using the properties of congruence modulo, Alice and Bob can generate a shared private key and communicate publicly, while Eve will struggle to decipher their messages.
 keywords: [diffie hellman, congruence modulo, key exchange]
-categories: [cryptography, security, math, number-theory]
+categories: [cryptography, security, math]
 layout: mathPost
 lastUpdated: 2022-12-01
 ---

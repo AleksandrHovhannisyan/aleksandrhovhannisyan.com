@@ -2,7 +2,7 @@
 title: Writing Better Documentation
 description: Documentation is one of those things that you don't appreciate until you have to work without it. Good documentation should go beyond the code itself and also cover your team, the product, your work process, areas of specialization, and many other key areas.
 keywords: [documentation, developer, software]
-categories: [essay, practices, career, documentation]
+categories: [essay, practices, career]
 thumbnail:
     url: https://images.unsplash.com/photo-1609643242070-c69786a76c30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=600&q=80
 ---
@@ -154,8 +154,8 @@ Consider this jsDoc comment for a prop type in TypeScript:
 
 ```ts
 type Props = {
-  /** The user's locale, pulled from their browser settings. 
-   * Example values: `en-US`, `ar`. 
+  /** The user's locale, pulled from their browser settings.
+   * Example values: `en-US`, `ar`.
    */
   locale?: string;
 }
@@ -190,7 +190,7 @@ The following CSS comment clarifies how one property relates to another:
 This JavaScript comment clarifies a hacky, temporary fix for a known race condition:
 
 ```js
-/* NOTE: Temporarily fixes a race condition to give the browser time 
+/* NOTE: Temporarily fixes a race condition to give the browser time
 to render the element before we do something with it. */
 setTimeout(doSomething, 0);
 ```
@@ -199,7 +199,7 @@ This comment clarifies why editing some part of a JavaScript app is initially di
 
 ```js
 const initialState = {
-  /* Disable editing initially and enable after mount only if the user's 
+  /* Disable editing initially and enable after mount only if the user's
   credentials allow them to edit this card. Otherwise, if we enable it
   initially, they may be able to edit it in time. */
   isEditingDisabled: true,
@@ -210,15 +210,15 @@ const initialState = {
 This `TODO` comment outlines the steps to fix an HTML issue for a future cleanup task:
 
 ```html
-<!-- TODO: ideally, we'd use an <ol> here with <article> elements for 
-the cards, but these components are also used elsewhere, so this 
+<!-- TODO: ideally, we'd use an <ol> here with <article> elements for
+the cards, but these components are also used elsewhere, so this
 refactor should be done in a separate cleanup PR. Ticket: [link here] -->
 ```
 
 Finally, this note clarifies the chronology of a feature and could appear in any language:
 
 ```js
-/* NOTE: Prior to <Release>, we only supported X. Because we now 
+/* NOTE: Prior to <Release>, we only supported X. Because we now
 support X and Y, we must do Z for backwards compatibility.
 ```
 

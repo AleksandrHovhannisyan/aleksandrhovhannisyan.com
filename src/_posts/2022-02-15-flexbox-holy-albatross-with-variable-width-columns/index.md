@@ -2,7 +2,7 @@
 title: Flexbox Holy Albatross with Variable-Width Columns
 description: The Holy Albatross technique allows a flex container to auto-wrap from multiple columns to a single column at a target container width. Let's modify the original code to control the number and widths of columns.
 keywords: [holy albatross]
-categories: [css, flexbox, layout]
+categories: [css, layout]
 thumbnail:
   url: https://images.unsplash.com/photo-1562073970-0c7e6b68428b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
