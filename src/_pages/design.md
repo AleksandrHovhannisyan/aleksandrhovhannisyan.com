@@ -30,7 +30,7 @@ noindex: true
       {%- for step in steps -%}
         <tr>
           <td>{{ step }}</td>
-          <td class="size-font-{{ step }}" style="font-family: var(--font-weight-{{ fontType }});">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit mi augue, sit amet sagittis ligula pellentesque ac. Donec sed varius arcu.</td>
+          <td class="size-font-{{ step }}" style="font-family: var(--font-family-{{ fontType }});">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit mi augue, sit amet sagittis ligula pellentesque ac. Donec sed varius arcu.</td>
         </tr>
       {%- endfor -%}
     </tbody>
