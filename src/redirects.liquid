@@ -9,6 +9,12 @@ excludeFromSitemap: true
 /blog/off-topic/* /blog/:splat
 {% comment -%}Old image structure, where blog post images were dumped into a folder of the same name as the post slug itself.{%- endcomment -%}
 /assets/images/posts/:slug/*  /assets/images/:splat
+{% comment -%}FSM article images, already indexed. Redirect to avoid impacting traffic to this post. https://www.aleksandrhovhannisyan.com/blog/implementing-a-finite-state-machine-in-cpp/{%- endcomment -%}
+/assets/images/iomJzXpBY2-1280.png  /assets/images/iAape8KQe6-1200.png
+/assets/images/YVvOoXOAhY-1094.jpeg /assets/images/iAape8KQe6-1200.jpeg
+/assets/images/YVvOoXOAhY-1094.webp /assets/images/iAape8KQe6-1200.webp
+/assets/images/9LW1h6jx7k-1063.jpeg /assets/images/Z0MJRY8WpN-1271.jpeg
+/assets/images/9LW1h6jx7k-1063.webp /assets/images/Z0MJRY8WpN-1271.webp
 {%- comment -%}Per-page redirects (e.g., if a page gets indexed but I want to change its URL).{%- endcomment -%}
 {%- for page in collections.all -%}
   {%- if page.url and page.data.redirectFrom -%}
