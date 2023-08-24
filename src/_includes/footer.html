@@ -1,19 +1,17 @@
-<footer class="page-footer">
+<footer class="page-footer size-font-sm">
   <div class="page-footer-container container col-wrap align-center">
     <div class="stack gap--2">
       <h2 class="size-font-xl">Thanks for reading!</h2>
-      <p class="size-font-sm">&copy; {{ site.author }}, 2019–Present</p>
-      <p class="size-font-xs">Last built on
-        <time datetime="{{ buildInfo.time.raw }}">{{ buildInfo.time.formatted }}</time>&nbsp;
-        <span class="nowrap">
-          (<a
-            href="https://www.github.com/{{ site.issues.owner }}/{{ site.issues.repo }}/commit/{{ buildInfo.hash }}"
-            rel="noreferrer noopener"
-            target="_blank">{{ buildInfo.hash | slice: 0, 7 }}</a>)
-        </span>
+      <p>&copy; {{ site.author }}, 2019–Present</p>
+      <p>
+      <a
+        href="https://www.github.com/{{ site.issues.owner }}/{{ site.issues.repo }}/commit/{{ buildInfo.hash }}"
+        rel="noreferrer noopener"
+        target="_blank">Last built</a> on
+      <time datetime="{{ buildInfo.time.raw }}">{{ buildInfo.time.formatted }}</time>&nbsp;
       </p>
     </div>
-    <ul class="page-footer-socials size-font-sm">
+    <ul class="page-footer-socials">
       {%- assign networks = socials | entries -%}
       {%- for network in networks -%}
       {%- assign id = network | first -%}
