@@ -16,8 +16,7 @@ body {
 
 #page-content {
   flex-grow: 1;
-  padding-block-start: clamped(get($tokens, "size", "spacing", "5"), get($tokens, "size", "spacing", "12"));
-  padding-block-end: clamped(get($tokens, "size", "spacing", "10"), get($tokens, "size", "spacing", "12"));
+  padding-block: clamped(get($tokens, "size", "spacing", "5"), get($tokens, "size", "spacing", "12"));
 }
 
 :is(code, kbd) {
