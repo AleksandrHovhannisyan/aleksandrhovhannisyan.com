@@ -185,24 +185,6 @@ html {
 
       @include tablet-sm {
         @include font($size: "base");
-
-        &.with-subtitle {
-          &::after {
-            content: "";
-            pointer-events: none;
-            position: absolute;
-            left: 50%;
-            bottom: calc(-1 * #{spacing("0")});
-            transform: translate(-50%, 100%);
-            white-space: nowrap;
-            color: var(--color-text-soft);
-            @include font($size: "xs", $family: "mono", $weight: "bold");
-          }
-
-          &[aria-current="page"]::after {
-            content: "You are here";
-          }
-        }
       }
     }
 
