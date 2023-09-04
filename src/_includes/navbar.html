@@ -2,15 +2,11 @@
   <div class="navbar-container container">
     <nav aria-label="Primary">
       <a href="#page-content" class="screen-reader-only skip-navigation">Skip to content</a>
-      <a class="navbar-branding outline-offset" href="/" aria-label="Home page" {% if permalink == "/" %}aria-current="page"{% endif %}>
+      <a class="navbar-link-home outline-offset" href="/" aria-label="Home page" {% if permalink == "/" %}aria-current="page"{% endif %}>
         <img src="/assets/images/favicons/favicon-128.png" class="navbar-logo circle" alt="" width="28" height="28">
-        <span>Aleksandr Hovhannisyan</span>
+        <span class="site-name">Aleksandr Hovhannisyan</span>
       </a>
       <ul class="navbar-links">
-        {%- comment -%}Only show this home link on mobile view.{%- endcomment -%}
-        <li class="navbar-item home">
-          <a class="navbar-link" href="/" {% if permalink == "/" %}aria-current="page"{% endif %}>Home</a>
-        </li>
         {%- assign navLinks = "About,Art,Blog" | split: ',' -%}
         {%- for link in navLinks -%}
         <li class="navbar-item">

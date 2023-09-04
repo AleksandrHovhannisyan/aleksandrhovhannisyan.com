@@ -13,8 +13,7 @@
   background-color: var(--color-footer-bg);
   color: white;
   text-align: center;
-  padding-top: spacing("5");
-  padding-bottom: spacing("11");
+  padding-block: spacing("5");
 
   &-container {
     --gap: #{spacing("0")};

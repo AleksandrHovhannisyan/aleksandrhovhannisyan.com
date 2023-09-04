@@ -23,18 +23,12 @@
 
   /* Body is a flex container. Without this, the navbar may shrink vertically due to the presence of a horizontal scrollbar. */
   flex-shrink: 0;
-  position: fixed;
-  z-index: 1;
-  bottom: 0;
-  left: 0;
   width: 100%;
   padding-block: spacing("-1");
   background-color: var(--color-navbar-bg);
   box-shadow: var(--shadow-navbar);
   overflow-x: auto;
-  // Shared typography styles for all navbar text
   color: white;
-  @include font($size: "sm");
 
   a {
     text-decoration: none;
@@ -63,15 +57,21 @@
     width: spacing("4");
   }
 
-  &-branding {
-    display: none;
+  &-link-home {
+    display: flex;
+    gap: spacing("-3");
+    align-items: center;
     @include font($family: "body", $weight: "bold");
+
+    .site-name {
+      display: none;
+    }
   }
 
   &-links {
     display: flex;
     align-items: center;
-    gap: spacing("-2");
+    gap: spacing("-3");
     text-align: center;
   }
 
@@ -98,26 +98,25 @@
   height: 45px;
   background-color: transparent;
   position: relative;
-  transform: scale(0.711);
+  transform: scale(calc(32/45));
 
   &-base {
     position: absolute;
     bottom: 0;
-    right: 5px;
+    right: 0;
     width: 30px;
     height: 7px;
     background-color: var(--lamp-color);
     border-radius: 4px 4px 0 0;
-    transform-style: preserve-3d;
 
     &::after {
       content: "";
       position: absolute;
-      transform: translateZ(-1px);
       width: 6px;
-      height: 6px;
-      top: -2px;
+      height: 2px;
+      top: 0;
       left: 4px;
+      transform: translateY(-100%);
       border-radius: 1px 1px 0 0;
       background-color: white;
     }
@@ -125,7 +124,7 @@
 
   &:active {
     .lamp-base::after {
-      top: -0.5px;
+      height: 0;
     }
   }
 
@@ -139,7 +138,7 @@
     background-color: var(--lamp-color);
     position: absolute;
     transform: rotate(20deg);
-    right: 8px;
+    right: 3px;
     bottom: 5px;
 
     &::after {
@@ -168,7 +167,7 @@
     border-radius: 100px 100px 0 0;
     transform: rotate(45deg);
     position: absolute;
-    left: 10px;
+    left: 15px;
     top: 4px;
     transform-style: preserve-3d;
     box-shadow: 0 4px 4px -2px rgb(230 230 230 / 100%);
@@ -183,14 +182,13 @@
       border-radius: 50%;
       right: 6px;
       top: -4px;
-      transform: translateZ(-1px);
     }
 
     &::after {
       content: "";
       position: absolute;
       width: 20px;
-      height: 40px;
+      height: 36px;
       background: linear-gradient(rgb(255 255 255 / 80%), rgb(255 255 255 / 35%), rgb(255 255 255 / 5%));
       clip-path: polygon(30% 0, 70% 0, 100% 100%, 0 100%);
       right: 0;
@@ -212,19 +210,10 @@
     padding-block: spacing("0");
     position: unset;
     box-shadow: none;
+    @include font($size: "sm");
 
-    &-container {
-      gap: spacing("0");
-    }
-
-    &-branding {
-      display: flex;
-      gap: spacing("-3");
-      align-items: center;
-    }
-
-    &-item.home {
-      display: none;
+    .site-name {
+      display: unset;
     }
   }
 }
