@@ -76,7 +76,7 @@
   }
 
   &-link {
-    padding: spacing("-2") spacing("0");
+    padding: relative("-2") relative("-1");
     display: flex;
     align-items: center;
     justify-content: center;

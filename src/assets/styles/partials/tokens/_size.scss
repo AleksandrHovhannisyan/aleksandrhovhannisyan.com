@@ -54,4 +54,11 @@ html {
     $name: get-token-name("size", "spacing", $step);
     --#{$name}: #{$value};
   }
+
+  // Relative
+  $relative-steps: get($tokens, "size", "relative");
+  @each $step, $value in $relative-steps {
+    $name: get-token-name("size", "relative", $step);
+    --#{$name}: #{$value};
+  }
 }
