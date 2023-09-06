@@ -6,7 +6,6 @@ categories: [essay, gaming]
 commentsId: 40
 thumbnail: ./images/thumbnail.jpg
 lastUpdated: 2021-10-24
-isFeatured: true
 ---
 
 {% aside %}

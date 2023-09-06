@@ -6,6 +6,7 @@ categories: [design-patterns, cpp]
 commentsId: 33
 thumbnail: ./images/thumbnail.png
 lastUpdated: 2023-08-14
+isFeatured: true
 redirectFrom:
   - /blog/finite-state-machine-fsm-tutorial-implementing-an-fsm-in-c/
 ---
