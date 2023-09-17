@@ -2,7 +2,7 @@
 title: A Simple Webpack Config
 description: Webpack is one of the most popular code bundlers available. Here's a simple webpack config to bundle your JavaScript.
 keywords: [simple webpack config]
-categories: [webpack, javascript]
+categories: [javascript, tooling]
 thumbnail: ./images/thumbnail.png
 ---
 

@@ -2,7 +2,7 @@
 title: "JavaScript Promises: Practical Use Cases and Examples"
 description: Promises are a powerful tool for writing asynchronous code in JavaScript. Here are a few interesting use cases.
 keywords: [javascript promises]
-categories: [javascript, promises, async]
+categories: [javascript, async]
 commentsId: 57
 ---
 
