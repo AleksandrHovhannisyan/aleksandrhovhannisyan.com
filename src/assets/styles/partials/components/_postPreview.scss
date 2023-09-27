@@ -15,7 +15,7 @@
     display: grid;
     gap: spacing("3");
     /* stylelint-disable-next-line scss/no-global-function-names */
-    grid-template-columns: repeat(auto-fill, minmax(min(#{to-rems(330px)}, 100%), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(#{to-rems(300px)}, 100%), 1fr));
 
     @include mobile-lg {
       gap: spacing("0");

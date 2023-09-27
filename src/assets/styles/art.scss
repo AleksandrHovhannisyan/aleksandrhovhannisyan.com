@@ -82,7 +82,7 @@ html {
         text-transform: uppercase;
         letter-spacing: tracking("lg");
         text-shadow: to-rems(1px) to-rems(1px);
-        font-size: calc(var(--font-size-multiplier) * #{font-size("4xl")});
+        font-size: calc(var(--font-size-multiplier) * #{font-size("5xl")});
         @include font($family: "display", $weight: "regular");
 
         @include tablet-sm {

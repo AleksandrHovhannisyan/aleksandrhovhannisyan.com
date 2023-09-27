@@ -52,6 +52,12 @@ $tokens: (
         tracking: "sm",
       ),
       "4xl": (
+        min: 36px,
+        max: 58px,
+        leading: "3xs",
+        tracking: "sm",
+      ),
+      "5xl": (
         min: 40px,
         max: 72px,
         leading: "3xs",
