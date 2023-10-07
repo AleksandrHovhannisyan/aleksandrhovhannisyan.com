@@ -64,7 +64,7 @@
     @include font($family: "body", $weight: "bold");
 
     .site-name {
-      display: none;
+      @include screen-reader-only;
     }
   }
 
@@ -213,7 +213,8 @@
     @include font($size: "sm");
 
     .site-name {
-      display: unset;
+      position: unset;
+      @include screen-reader-only-unset;
     }
   }
 }

@@ -5,8 +5,24 @@
 
 @import "./functions";
 
-// Inspiration: https://stackoverflow.com/a/49437769/5323344
+@mixin screen-reader-only() {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+}
 
+@mixin screen-reader-only-unset() {
+  clip: auto;
+  width: auto;
+  height: auto;
+  white-space: normal;
+  overflow: visible;
+}
+
+// Inspiration: https://stackoverflow.com/a/49437769/5323344
 @mixin transition($props...) {
   $result: ();
   @for $i from 1 through length($props) {
