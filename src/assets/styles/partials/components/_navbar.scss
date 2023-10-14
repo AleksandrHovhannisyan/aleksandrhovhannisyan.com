@@ -12,21 +12,18 @@
   @include theme-light {
     --color-navbar-bg: var(--color-surface-8);
     --color-navbar-bg-focus: var(--color-surface-7);
-    --shadow-navbar: none;
   }
 
   @include theme-dark {
     --color-navbar-bg: var(--color-surface-2);
     --color-navbar-bg-focus: var(--color-surface-3);
-    --shadow-navbar: 0 -2px 8px hsl(0deg 0% 0% / 40%);
   }
 
   /* Body is a flex container. Without this, the navbar may shrink vertically due to the presence of a horizontal scrollbar. */
   flex-shrink: 0;
   width: 100%;
-  padding-block: spacing("-1");
+  padding-block: spacing("1");
   background-color: var(--color-navbar-bg);
-  box-shadow: var(--shadow-navbar);
   overflow-x: auto;
   color: white;
 
@@ -69,148 +66,27 @@
   }
 
   &-links {
+    width: 100%;
     display: flex;
     align-items: center;
-    gap: spacing("-3");
+    gap: relative("-1");
     text-align: center;
+
+    > :first-child {
+      margin-inline-end: auto;
+    }
   }
 
   &-link {
-    padding: relative("-2") relative("-1");
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-
-    &:is([aria-current="page"], :hover, :focus) {
-      background-color: var(--color-navbar-bg-focus);
-    }
-  }
-}
-
-.lamp {
-  --lamp-lightness: 60%;
-  --lamp-color: hsl(0deg 0% var(--lamp-lightness));
-  --outline-offset: #{spacing("-3")};
-  --outline-color: white;
-  flex-shrink: 0;
-  width: 45px;
-  height: 45px;
-  background-color: transparent;
-  position: relative;
-  transform: scale(calc(32/45));
-
-  &-base {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 30px;
-    height: 7px;
-    background-color: var(--lamp-color);
-    border-radius: 4px 4px 0 0;
-
-    &::after {
-      content: "";
-      position: absolute;
-      width: 6px;
-      height: 2px;
-      top: 0;
-      left: 4px;
-      transform: translateY(-100%);
-      border-radius: 1px 1px 0 0;
-      background-color: white;
-    }
-  }
-
-  &:active {
-    .lamp-base::after {
-      height: 0;
-    }
-  }
-
-  @include theme-dark {
-    filter: brightness(0.75);
-  }
-
-  &-neck {
-    width: 4px;
-    height: 20px;
-    background-color: var(--lamp-color);
-    position: absolute;
-    transform: rotate(20deg);
-    right: 3px;
-    bottom: 5px;
-
-    &::after {
-      content: "";
-      background-color: var(--lamp-color);
-      width: 4px;
-      height: 20px;
-      position: absolute;
-      transform: rotate(-60deg);
-      left: -8px;
-      top: -14px;
-    }
-  }
-
-  &-head {
-    --lamp-color-light: hsl(0deg 0% calc(var(--lamp-lightness) - 5%));
-    width: 20px;
-    height: 10px;
-    background-image:
-      linear-gradient(
-        to bottom,
-        var(--lamp-color-light) 5%,
-        var(--lamp-color) 90%,
-        var(--lamp-color-light) 5%
-      );
-    border-radius: 100px 100px 0 0;
-    transform: rotate(45deg);
-    position: absolute;
-    left: 15px;
-    top: 4px;
-    transform-style: preserve-3d;
-    box-shadow: 0 4px 4px -2px rgb(230 230 230 / 100%);
-
-    &::before {
-      content: "";
-      display: block;
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      background-color: var(--lamp-color);
-      border-radius: 50%;
-      right: 6px;
-      top: -4px;
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      width: 20px;
-      height: 36px;
-      background: linear-gradient(rgb(255 255 255 / 80%), rgb(255 255 255 / 35%), rgb(255 255 255 / 5%));
-      clip-path: polygon(30% 0, 70% 0, 100% 100%, 0 100%);
-      right: 0;
-      top: 10px;
-    }
-
-    @include theme-dark {
-      box-shadow: none;
-
-      &::after {
-        background: transparent;
-      }
-    }
+    padding: spacing("-2");
   }
 }
 
 @include mobile-lg {
   .navbar {
-    padding-block: spacing("0");
+    padding-block: spacing("3");
     position: unset;
     box-shadow: none;
-    @include font($size: "sm");
 
     .site-name {
       position: unset;

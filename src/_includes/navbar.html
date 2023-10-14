@@ -2,17 +2,19 @@
   <div class="navbar-container container">
     <nav aria-label="Primary">
       <a href="#page-content" class="screen-reader-only skip-navigation">Skip to content</a>
-      <a class="navbar-link-home outline-offset" href="/" {% if permalink == "/" %}aria-current="page"{% endif %}>
-        <img src="/assets/images/favicons/favicon-128.png" class="navbar-logo circle" alt="" width="28" height="28">
-        <span class="site-name">Aleksandr Hovhannisyan</span>
-      </a>
       <ul class="navbar-links">
-        {%- assign navLinks = "About,Art,Blog" | split: ',' -%}
+        <li>
+          <a class="navbar-link-home outline-offset" href="/" {% if permalink == "/" %}aria-current="page"{% endif %}>
+            <img src="/assets/images/favicons/favicon-128.png" class="navbar-logo circle" alt="" width="28" height="28">
+            <span class="site-name">Aleksandr Hovhannisyan</span>
+          </a>
+        </li>
+        {%- assign navLinks = "About,Blog" | split: ',' -%}
         {%- for link in navLinks -%}
-        <li class="navbar-item">
+        <li>
           {%- assign href = link | downcase | prepend: "/" | append: "/" -%}
           <a
-            class="navbar-link"
+            class="navbar-link to-underline"
             href="{{ href }}"
             {% if permalink == href -%}
             aria-current="page"
@@ -27,10 +29,5 @@
         {%- endfor -%}
       </ul>
     </nav>
-    <button id="theme-toggle" class="lamp" aria-label="Enable dark theme" type="button">
-      <span class="lamp-base"></span>
-      <span class="lamp-neck"></span>
-      <span class="lamp-head"></span>
-    </button>
   </div>
 </header>

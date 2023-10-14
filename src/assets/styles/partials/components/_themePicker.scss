@@ -1,0 +1,18 @@
+@import "../mixins";
+@import "../functions";
+
+#theme-picker {
+  --padding-x: #{relative("-1")};
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 24 24"><path d="M2 4l10 12l10-12" stroke-width="4" stroke="white" stroke-linejoin="round" stroke-linecap="round" fill="none"/></svg>');
+  background-repeat: no-repeat;
+  background-position: calc(100% - var(--padding-x));
+  padding: relative("-3") var(--padding-x);
+  padding-inline-end: calc(2.5 * var(--padding-x));
+  color-scheme: dark;
+  border: solid 1px hsl(0, 0%, 40%);
+  border-radius: spacing("-3");
+  @include font($size: "xs");
+}
