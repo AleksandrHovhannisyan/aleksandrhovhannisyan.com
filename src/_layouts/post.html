@@ -11,18 +11,7 @@ eleventyComputed:
 
 <article class="post prose rhythm">
   <header class="post-header">
-    <dl class="post-date inline-list">
-      <div>
-        <dt class="screen-reader-only">Published</dt>
-        <dd>{% include "date.html" date: page.date, dateFormat: "MMMM DD, YYYY" %}</dd>
-      </div>
-      {% if lastUpdated %}
-      <div>
-        <dt>Updated</dt>
-        <dd>{% include "date.html" date: lastUpdated, dateFormat: "MMMM DD, YYYY" %}</dd>
-      </div>
-      {% endif %}
-    </dl>
+    <p class="post-date"><span class="screen-reader-only">Published </span>{% include "date.html" date: page.date, dateFormat: "MMMM DD, YYYY" %}{% if lastUpdated %} &bull; Updated {% include "date.html" date: lastUpdated, dateFormat: "MMMM DD, YYYY" %}{% endif %}</p>
     <h1 class="post-title">{{ title }}</h1>
     <ul class="post-tags" aria-label="Tags">
       {%- for category in categories -%}
