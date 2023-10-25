@@ -4,10 +4,10 @@
 blockquote {
   font-style: italic;
   border-inline-start: spacing("-3") solid;
-  padding: relative("-3") relative("2");
+  padding: spacing("-3") spacing("5");
 
   @include tablet {
-    margin-inline-start: relative("1");
+    margin-inline-start: spacing("3");
   }
 
   p {

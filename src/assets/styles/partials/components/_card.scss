@@ -11,7 +11,7 @@
   }
 
   // Expose these to consumers so we don't hard-code the logic here
-  --card-padding: 1.5em;
+  --card-padding: #{relative("2")};
   --card-box-shadow-default:
     0 1px 1px hsl(0deg 0% 0% / 12%),
     0 2px 2px hsl(0deg 0% 0% / 12%),
