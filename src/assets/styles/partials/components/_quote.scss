@@ -1,26 +1,16 @@
+@import "../mixins";
+@import "../functions";
+
 blockquote {
   font-style: italic;
   border-inline-start: spacing("-3") solid;
-  padding: spacing("-3") spacing("5");
+  padding: relative("-3") relative("2");
 
   @include tablet {
-    margin-inline-start: spacing("3");
+    margin-inline-start: relative("1");
   }
-}
 
-cite {
-  font-style: normal;
-  display: block;
-  @include font($size: "sm");
-
-  &::before {
-    content: "\2014";
-    user-select: none;
-  }
-}
-
-.quote {
-  > p {
+  p {
     &:first-of-type {
       &::before {
         content: open-quote;
@@ -32,5 +22,16 @@ cite {
         content: close-quote;
       }
     }
+  }
+}
+
+cite {
+  font-style: normal;
+  display: block;
+  @include font($size: "sm");
+
+  &::before {
+    content: "\2014";
+    user-select: none;
   }
 }
