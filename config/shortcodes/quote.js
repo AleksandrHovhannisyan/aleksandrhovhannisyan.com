@@ -14,9 +14,9 @@ const quote = (children, source, cite) => {
   const content = markdownLib.render(children.trim());
   return `<blockquote class="rhythm" cite="${cite}">
     <div class="quote rhythm">${content}</div>
-    <cite>
-      <a href="${escape(cite)}" target="_blank" rel="noreferrer noopener">${source}</a>
-    </cite>
+    <footer>
+      <cite><a href="${escape(cite)}" target="_blank" rel="noreferrer noopener">${source}</a></cite>
+    </footer>
   </blockquote>`;
 };
 
