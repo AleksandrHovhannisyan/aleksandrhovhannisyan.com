@@ -24,6 +24,9 @@
 
   // Pseudo-element trick to make the whole card clickable. Good on mobile so users don't have to worry about tapping links precisely
   &-link {
+    // Enlarge mouse target
+    display: block;
+
     &::after {
       content: "";
       position: absolute;
