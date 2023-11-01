@@ -20,7 +20,6 @@ pre[class*="language-"] {
     --color-code-constant: var(--color-code-number);
     --color-code-punctuation: var(--color-code-text);
     --color-code-selector: var(--color-code-string);
-    --shadow-code-block: none;
   }
 
   @include theme-dark {
@@ -41,12 +40,10 @@ pre[class*="language-"] {
     --color-code-constant: var(--color-code-number);
     --color-code-punctuation: #8a8a8a;
     --color-code-selector: hsl(41deg 53% 67%);
-    --shadow-code-block: 0 2px 8px 0 hsl(0deg 0% 0% / 40%);
   }
 
   --code-block-padding: #{spacing("5")};
   background: var(--color-code-background);
-  box-shadow: var(--shadow-code-block);
   color: var(--color-code-text);
   position: relative;
   border-radius: spacing("-3");
