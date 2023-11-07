@@ -1,37 +1,18 @@
 /*
 
-import { Theme, THEME_KEY, copyToClipboardButtonStrings } from './constants.mjs';
-
-const themePicker = document.querySelector('#theme-picker');
-if (themePicker) {
-  const getSystemTheme = () => (window.matchMedia('(prefers-color-scheme: dark)').matches ? Theme.DARK : Theme.LIGHT);
-
-  const setTheme = (newTheme) => {
-    const theme = newTheme === Theme.SYSTEM ? getSystemTheme() : newTheme;
-    document.documentElement.dataset[THEME_KEY] = theme;
-  };
-
-  const initializeThemePicker = () => {
-    const cachedTheme = localStorage.getItem(THEME_KEY);
-    const initialTheme = cachedTheme ?? Theme.SYSTEM;
-    setTheme(initialTheme);
-    themePicker
-      .querySelectorAll('option')
-      .forEach((option) => option.toggleAttribute('selected', option.value === initialTheme));
-  };
-
-  themePicker.addEventListener('change', (e) => {
-    const theme = e.target.value;
-    setTheme(theme);
-    if (theme === Theme.SYSTEM) {
-      localStorage.removeItem(THEME_KEY);
+  const setTheme = (theme) => {
+    if (theme === window.Theme.SYSTEM) {
+      // Remove JS-set theme so the CSS :not([data-theme]) selectors kick in
+      delete window.THEME_OWNER.dataset[window.THEME_KEY];
+      localStorage.removeItem(window.THEME_KEY);
     } else {
-      localStorage.setItem(THEME_KEY, theme);
+      window.THEME_OWNER.dataset[window.THEME_KEY] = theme;
+      localStorage.setItem(window.THEME_KEY, theme);
     }
-  });
-
-  initializeThemePicker();
-
+  };
+  themePicker.addEventListener('change', (e) => setTheme(e.target.value));
+  const themeOptions = themePicker.querySelectorAll('option');
+  themeOptions.forEach((option) => option.toggleAttribute('selected', option.value === window.initialTheme));
   */
 
 // Since this script gets put in the <head>, wrap it in an IIFE to avoid exposing variables
