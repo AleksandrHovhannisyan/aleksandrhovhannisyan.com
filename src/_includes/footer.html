@@ -37,14 +37,7 @@
         </li>
       </ul>
       {% if isThemed %}
-      <label>
-        Website theme:
-        <select id="theme-picker">
-          <option value="system" selected>System</option>
-          <option value="light">Light</option>
-          <option value="dark">Dark</option>
-        </select>
-      </label>
+        {% include "themePicker.html" %}
       {% endif %}
     </div>
   </div>

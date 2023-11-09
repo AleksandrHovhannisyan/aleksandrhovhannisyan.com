@@ -1,18 +1,26 @@
 /*
 
-  const setTheme = (theme) => {
-    if (theme === window.Theme.SYSTEM) {
+  // Should be 'system', but best to just read it dynamically so the script behavior is derived from html
+  const defaultOption = themePicker.querySelector('option[selected]');
+  const defaultSelectedTheme = defaultOption.value;
+
+  // Listen for change to sync localStorage and data- attribute
+  themePicker.addEventListener('change', (e) => {
+    const theme = e.target.value;
+    if (theme === defaultSelectedTheme) {
       // Remove JS-set theme so the CSS :not([data-theme]) selectors kick in
-      delete window.THEME_OWNER.dataset[window.THEME_KEY];
-      localStorage.removeItem(window.THEME_KEY);
+      delete THEME_OWNER.dataset[THEME_KEY];
+      localStorage.removeItem(THEME_KEY);
     } else {
-      window.THEME_OWNER.dataset[window.THEME_KEY] = theme;
-      localStorage.setItem(window.THEME_KEY, theme);
+      THEME_OWNER.dataset[THEME_KEY] = theme;
+      localStorage.setItem(THEME_KEY, theme);
     }
-  };
-  themePicker.addEventListener('change', (e) => setTheme(e.target.value));
-  const themeOptions = themePicker.querySelectorAll('option');
-  themeOptions.forEach((option) => option.toggleAttribute('selected', option.value === window.initialTheme));
+  });
+  // Read initial theme from localStorage (if available)
+  const initialTheme = localStorage.getItem(THEME_KEY) ?? defaultSelectedTheme;
+  // Sync picker's selected state to reflect initial theme
+  defaultOption.removeAttribute('selected');
+  themePicker.querySelector(`option[value="${initialTheme}"]`).setAttribute('selected', '');
   */
 
 // Since this script gets put in the <head>, wrap it in an IIFE to avoid exposing variables
