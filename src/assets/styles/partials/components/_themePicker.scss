@@ -1,4 +1,3 @@
-@import "../mixins";
 @import "../functions";
 
 #theme-picker {
@@ -14,5 +13,4 @@
   color-scheme: dark;
   border: solid 1px hsl(0, 0%, 40%);
   border-radius: spacing("-3");
-  @include font($size: "xs");
 }
