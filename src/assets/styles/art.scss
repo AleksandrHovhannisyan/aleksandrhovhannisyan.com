@@ -177,7 +177,7 @@ html {
       }
     }
 
-    [role="list"] {
+    ol {
       display: flex;
       gap: spacing("0");
       width: 100%;
@@ -189,8 +189,8 @@ html {
         display: flex;
       }
 
-      & > :nth-child(2) {
-        margin-inline-start: auto;
+      & > :first-child {
+        margin-inline-end: auto;
       }
 
       @include tablet-sm {
