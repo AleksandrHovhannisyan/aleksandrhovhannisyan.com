@@ -79,6 +79,7 @@ html {
         width: fit-content;
         margin: 0 auto;
         position: relative;
+        text-align: center;
         text-transform: uppercase;
         letter-spacing: tracking("lg");
         text-shadow: to-rems(1px) to-rems(1px);
@@ -139,7 +140,7 @@ html {
 
     &-footer {
       border-top: solid 4px;
-      padding: spacing("5") spacing("5") spacing("12");
+      padding: spacing("5");
       text-align: center;
       @include font($family: "mono", $weight: "medium", $size: "xs");
 
@@ -147,23 +148,11 @@ html {
         max-width: 60ch;
         margin-inline: auto;
       }
-
-      @include tablet-sm {
-        padding-bottom: spacing("5");
-      }
     }
   }
 
   &-nav {
-    z-index: 1;
-    position: fixed;
-    bottom: 0;
-    left: 0;
     width: 100%;
-
-    @include tablet-sm {
-      position: static;
-    }
 
     a {
       --color-shadow: var(--color-text);
