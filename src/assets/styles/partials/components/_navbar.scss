@@ -22,13 +22,14 @@
   /* Body is a flex container. Without this, the navbar may shrink vertically due to the presence of a horizontal scrollbar. */
   flex-shrink: 0;
   width: 100%;
-  padding-block: spacing("1");
+  padding-block: spacing("0");
   background-color: var(--color-navbar-bg);
   overflow-x: auto;
   color: white;
 
   a {
     text-decoration: none;
+    padding: spacing("-2");
   }
 
   nav {
@@ -76,15 +77,11 @@
       margin-inline-end: auto;
     }
   }
-
-  &-link {
-    padding: spacing("-2");
-  }
 }
 
 @include mobile-lg {
   .navbar {
-    padding-block: spacing("3");
+    padding-block: spacing("2");
     position: unset;
     box-shadow: none;
 
