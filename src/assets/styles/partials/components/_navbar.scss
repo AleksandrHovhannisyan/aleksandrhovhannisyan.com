@@ -29,7 +29,6 @@
 
   a {
     text-decoration: none;
-    padding: spacing("-2");
   }
 
   nav {
@@ -59,6 +58,7 @@
     display: flex;
     gap: spacing("-3");
     align-items: center;
+    padding: spacing("-2");
     @include font($family: "body", $weight: "bold");
 
     .site-name {
@@ -70,11 +70,19 @@
     width: 100%;
     display: flex;
     align-items: center;
-    gap: relative("-1");
+    gap: relative("-3");
     text-align: center;
 
     > :first-child {
       margin-inline-end: auto;
+    }
+  }
+
+  &-link {
+    padding: relative("-2") relative("-1");
+
+    &:is(:focus, :hover, [aria-current="page"]) {
+      background-color: var(--color-navbar-bg-focus);
     }
   }
 }
