@@ -17,14 +17,14 @@
         font-style: {{ font.style | default: "normal" }};
         font-weight: {{ font.weightAxes.min }} {{ font.weightAxes.max }};
         {% if font.display -%}font-display: {{ font.display }};{%- endif -%}
-        src: local("{{ font.family }}"), local("{{ font.variants.roman.postscriptName }}"), url("{{ font.font.variants.roman.url }}") format("woff2 supports variations"), url("{{ font.variants.roman.url }}") format("woff2-variations");
+        src: local("{{ font.variants.roman.postscriptName }}"), url("{{ font.font.variants.roman.url }}") format("woff2 supports variations"), url("{{ font.variants.roman.url }}") format("woff2-variations");
       }
       @font-face {
         font-family: "{{ font.family }}";
         font-style: italic;
         font-weight: {{ font.weightAxes.min }} {{ font.weightAxes.max }};
         {% if font.display -%}font-display: {{ font.display }};{%- endif -%}
-        src: local("{{ font.family }}"), local("{{ font.variants.italic.postscriptName }}"), url("{{ font.variants.italic.url }}") format("woff2 supports variations"), url("{{ font.variants.italic.url }}") format("woff2-variations");
+        src: local("{{ font.variants.italic.postscriptName }}"), url("{{ font.variants.italic.url }}") format("woff2 supports variations"), url("{{ font.variants.italic.url }}") format("woff2-variations");
       }
     {%- comment -%}Non-variable fonts{%- endcomment -%}
     {%- else -%}
@@ -38,7 +38,7 @@
             font-style: {{ weight.style }};
             font-weight: {{ weight.weight }};
             {% if weight.display -%}font-display: {{ weight.display }};{%- endif -%}
-            src: local("{{ font.family }}"), local("{{ weight.postscriptName }}"), url("{{ weight.url }}") format("{{ format }}");
+            src: local("{{ weight.postscriptName }}"), url("{{ weight.url }}") format("{{ format }}");
           }
         {%- endfor -%}
       {%- endfor -%}
