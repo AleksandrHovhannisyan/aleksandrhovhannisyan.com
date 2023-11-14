@@ -21,7 +21,7 @@ body {
 
 :is(code, kbd) {
   font-size: 0.8em;
-  @include font($family: "mono", $weight: "medium");
+  @include font($family: "mono", $weight: "regular");
 
   :is(strong, h1, h2, h3, h4, h5, h6) & {
     @include font($family: "mono", $weight: "bold");
