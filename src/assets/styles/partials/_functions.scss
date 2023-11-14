@@ -41,30 +41,30 @@
   @return string-join($path, "-");
 }
 
-/// Returns a var(...) usage corresponding to the given token.
-@function get-token-cssvar($path...) {
+/// Returns the value for the given token, as a CSS var expression.
+@function get-token-value($path...) {
   $token-name: get-token-name($path...);
   @return var(--#{$token-name});
 }
 
 @function font-size($step) {
-  @return get-token-cssvar("size", "font", $step);
+  @return get-token-value("size", "font", $step);
 }
 
 @function spacing($step) {
-  @return get-token-cssvar("size", "spacing", $step);
+  @return get-token-value("size", "spacing", $step);
 }
 
 @function relative($step) {
-  @return get-token-cssvar("size", "relative", $step);
+  @return get-token-value("size", "relative", $step);
 }
 
 @function leading($step) {
-  @return get-token-cssvar("size", "leading", $step);
+  @return get-token-value("size", "leading", $step);
 }
 
 @function tracking($step) {
-  @return get-token-cssvar("size", "tracking", $step);
+  @return get-token-value("size", "tracking", $step);
 }
 
 /// Returns true if the given string ends with the given suffix.
