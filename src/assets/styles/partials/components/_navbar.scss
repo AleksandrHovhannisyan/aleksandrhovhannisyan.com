@@ -128,7 +128,7 @@
     }
   }
 
-  [data-theme="dark"] & {
+  @include theme-dark {
     filter: brightness(0.75);
   }
 

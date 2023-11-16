@@ -95,13 +95,20 @@
 // Theme blocks
 
 @mixin theme-light {
-  [data-theme="light"] & {
+  &,
+  html[data-theme="light"] & {
     @content;
   }
 }
 @mixin theme-dark {
-  [data-theme="dark"] & {
+  html[data-theme="dark"] & {
     @content;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html:not([data-theme]) & {
+      @content;
+    }
   }
 }
 

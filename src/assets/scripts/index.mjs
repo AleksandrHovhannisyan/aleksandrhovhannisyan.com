@@ -1,25 +1,4 @@
-import { Theme, THEME_KEY, copyToClipboardButtonStrings } from './constants.mjs';
-
-const themeToggle = document.getElementById('theme-toggle');
-if (themeToggle) {
-  let theme;
-
-  const setTheme = (newTheme) => {
-    theme = newTheme;
-    document.documentElement.dataset[THEME_KEY] = theme;
-    themeToggle.setAttribute('aria-pressed', theme === Theme.DARK);
-  };
-
-  themeToggle.addEventListener('click', () => {
-    theme = theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT;
-    setTheme(theme);
-    localStorage.setItem(THEME_KEY, theme);
-  });
-
-  const cachedTheme = localStorage.getItem(THEME_KEY);
-  const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? Theme.DARK : Theme.LIGHT;
-  setTheme(cachedTheme ?? preferredTheme);
-}
+import { copyToClipboardButtonStrings } from './constants.mjs';
 
 document.querySelectorAll('code[data-copyable]').forEach((codeBlock) => {
   const code = codeBlock.innerText;
