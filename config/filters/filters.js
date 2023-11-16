@@ -1,4 +1,5 @@
 const CleanCSS = require('clean-css');
+const esbuild = require('esbuild');
 const path = require('path');
 const lodash = require('lodash');
 const dayjs = require('dayjs');
@@ -108,6 +109,14 @@ const makeCleanCSS = () => {
   };
 };
 
+/** Minifies the given source JS (string).
+ * @param {string} js The JavaScript to minify, provided as a string.
+ */
+const minifyJS = async (js) => {
+  const { code } = await esbuild.transform(js, { minify: true });
+  return code;
+};
+
 /**
  * Returns the file name or directory name of a path.
  * @param {string} srcPath The source path to parse.
@@ -130,6 +139,7 @@ module.exports = {
   toAbsoluteImageUrl,
   getLatestCollectionItemDate,
   makeCleanCSS,
+  minifyJS,
   pathParse,
   pathJoin,
 };
