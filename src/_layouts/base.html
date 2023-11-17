@@ -16,7 +16,7 @@ criticalCSS:
 {%- assign defaultCanonicalUrl = page.url | toAbsoluteUrl -%}
 {%- assign canonicalUrl = canonicalUrl | default: defaultCanonicalUrl -%}
 <!DOCTYPE html>
-<html lang="{{ site.lang }}"{% if isThemed %} id="theme-owner" data-theme-storage-key="theme"{% endif %}>
+<html lang="{{ site.lang }}">
 <head>
   <meta charset="utf-8">
   {%- comment -%}Metadata for search engines{%- endcomment -%}
@@ -47,25 +47,9 @@ criticalCSS:
   {% favicon 'src/assets/images/favicons/favicon.png' %}
   {%- comment -%}Load the user's last selected theme{%- endcomment -%}
   {%- if isThemed -%}
-<<<<<<< HEAD
     {%- capture themeToggleScript -%}{% include "js/themeToggle.js" %}{%- endcapture -%}
     <script>{{ themeToggleScript | minifyJS }}</script>
   {%- endif -%}
-=======
-  <script>
-    (() => {
-      const THEME_OWNER = document.getElementById('theme-owner');
-      const THEME_KEY = THEME_OWNER.dataset.themeStorageKey;
-      // Not validating localStorage (in case a user edits it manually) since my site sets the theme. If you mess with localStorage, that's on you.
-      const initialTheme = localStorage.getItem(THEME_KEY);
-      if (initialTheme) {
-        // Set this ASAP, before body is painted, to avoid flicker of unthemed content
-        THEME_OWNER.dataset[THEME_KEY] = initialTheme;
-      }
-    })();
-  </script>
-  {% endif %}
->>>>>>> Clean up theme picker
   {%- comment -%}Template-specific module scripts{%- endcomment -%}
   {%- for script in scripts -%}
     <script src="{{ script.src }}"{% if script.defer %} defer{% endif %}{% if script.type %} type="{{ script.type }}"{% endif %}></script>
@@ -96,15 +80,7 @@ criticalCSS:
   {%- comment -%}RSS{%- endcomment -%}
   <link rel="alternate" type="application/rss+xml" title="RSS Feed for aleksandrhovhannisyan.com" href="/feed.xml">
   {%- comment -%}No-JS styles{%- endcomment -%}
-<<<<<<< HEAD
-<<<<<<< HEAD
-  <noscript><style>{% if isThemed %}#theme-picker,{% endif %}.youtube-embed{display:none;}</style></noscript>
-=======
-  <noscript><style>#theme-picker,.youtube-embed{display:none;}</style></noscript>
->>>>>>> Consolidate duplicated theme logic
-=======
   <noscript><style>{% if isThemed %}#theme-picker-root,{% endif %}.youtube-embed{display:none;}</style></noscript>
->>>>>>> Clean up theme picker
   {%- comment -%}Framework that generated the site{%- endcomment -%}
   <meta name="generator" content="{{ eleventy.generator }}">
   {%- comment -%}Design mode. Only in a dev environment, and only if enabled in environment variables.{%- endcomment -%}
