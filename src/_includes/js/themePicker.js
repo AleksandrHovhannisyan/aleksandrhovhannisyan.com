@@ -1,7 +1,7 @@
 // Since this script gets put in the <head>, wrap it in an IIFE to avoid exposing variables
 (function () {
   // Enum of supported themes. Not strictly needed; just helps avoid typos and magic strings.
-  const Theme = { SYSTEM: 'system', LIGHT: 'light', DARK: 'dark' };
+  const Theme = { AUTO: 'auto', LIGHT: 'light', DARK: 'dark' };
   // We'll use this to write and read to localStorage and save the theme as a data- attribute
   const THEME_STORAGE_KEY = 'theme';
   // :root will own the data- attribute for the current theme override; it is the only eligible theme owner when this script is parsed in <head>
@@ -22,7 +22,7 @@
     // Listen for change to sync localStorage and data- attribute
     themePicker.addEventListener('change', (e) => {
       const theme = e.target.value;
-      if (theme === Theme.SYSTEM) {
+      if (theme === Theme.AUTO) {
         // Remove JS-set theme so the CSS :not([data-theme]) selectors kick in
         delete THEME_OWNER.dataset[THEME_STORAGE_KEY];
         localStorage.removeItem(THEME_STORAGE_KEY);
@@ -34,7 +34,7 @@
 
     // Sync picker's selected state to reflect initial theme
     const initialTheme = cachedTheme ?? Theme.SYSTEM;
-    themePicker.querySelector('option[selected]').removeAttribute('selected');
-    themePicker.querySelector(`option[value="${initialTheme}"]`).setAttribute('selected', '');
+    themePicker.querySelector('input[checked]').removeAttribute('checked');
+    themePicker.querySelector(`input[value="${initialTheme}"]`).setAttribute('checked', '');
   });
 })();

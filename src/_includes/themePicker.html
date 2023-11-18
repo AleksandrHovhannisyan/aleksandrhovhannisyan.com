@@ -1,8 +1,16 @@
-<label id="theme-picker-root">
-  Theme:
-  <select id="theme-picker">
-    <option value="system" selected>System</option>
-    <option value="light">Light</option>
-    <option value="dark">Dark</option>
-  </select>
-</label>
+<fieldset id="theme-picker">
+  <span aria-hidden="true">Theme:</span>
+  <legend class="screen-reader-only">Theme:</legend>
+  <label>
+    <input class="outline-offset" name="theme" type="radio" value="auto" checked>
+    Auto
+  </label>
+  <label>
+    <input class="outline-offset" name="theme" type="radio" value="light">
+    Light
+  </label>
+  <label>
+    <input class="outline-offset" name="theme" type="radio" value="dark">
+    Dark
+  </label>
+</fieldset>

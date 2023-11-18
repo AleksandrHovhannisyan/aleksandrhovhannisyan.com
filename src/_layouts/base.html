@@ -47,8 +47,8 @@ criticalCSS:
   {% favicon 'src/assets/images/favicons/favicon.png' %}
   {%- comment -%}Load the user's last selected theme{%- endcomment -%}
   {%- if isThemed -%}
-    {%- capture themeToggleScript -%}{% include "js/themeToggle.js" %}{%- endcapture -%}
-    <script>{{ themeToggleScript | minifyJS }}</script>
+    {%- capture themeScript -%}{% include "js/themePicker.js" %}{%- endcapture -%}
+    <script>{{ themeScript | minifyJS }}</script>
   {%- endif -%}
   {%- comment -%}Template-specific module scripts{%- endcomment -%}
   {%- for script in scripts -%}
