@@ -218,6 +218,6 @@ In principle, the shortcode plugin doesn't have any Eleventy-specific logic, so 
 
 ## Final Thoughts
 
-Code demos can create an interactive and hands-on experience for readers, but they're not cheap—a typical third-party iframe will load client-side JavaScript and cookies, hurting your page load and potentially exposing your users to wanted tracking. Thankfully, in a static site generator such as Eleventy, we can easily create our own code demos without shipping any unwanted code.
+Code demos can create an interactive and hands-on experience for readers, but they're not cheap—a typical third-party iframe will load client-side JavaScript and cookies, hurting your page load and potentially exposing your users to unwanted tracking. Thankfully, in a static site generator such as Eleventy, we can easily create our own code demos without shipping any unwanted code.
 
 I hope you find my plugin useful! If there are any features that you'd like me to add, you can submit a feature request on [the project's GitHub repository](https://github.com/AleksandrHovhannisyan/eleventy-plugin-code-demo).
