@@ -33,7 +33,7 @@
     });
 
     // Sync picker's selected state to reflect initial theme
-    const initialTheme = cachedTheme ?? Theme.SYSTEM;
+    const initialTheme = cachedTheme ?? Theme.AUTO;
     themePicker.querySelector('input[checked]').removeAttribute('checked');
     themePicker.querySelector(`input[value="${initialTheme}"]`).setAttribute('checked', '');
   });
