@@ -80,7 +80,7 @@
     }
 
     &-description {
-      @include font($size: "sm", $leading: "2xs");
+      @include font($size: "sm", $leading: "xs");
     }
   }
 
