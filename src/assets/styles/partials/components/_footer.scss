@@ -10,19 +10,27 @@
     --color-footer-bg: var(--color-surface-2);
   }
 
+  color-scheme: dark;
   background-color: var(--color-footer-bg);
   color: white;
   text-align: center;
   padding-block: spacing("5");
 
   &-container {
-    --gap: #{spacing("0")};
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: spacing("0");
+  }
+
+  &-end {
+    align-items: center;
   }
 
   &-socials {
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-wrap: wrap;
     gap: spacing("0");
   }
@@ -31,11 +39,16 @@
     padding-block: spacing("5");
   }
 
-  @include tablet {
+  @include tablet-sm {
     text-align: start;
 
-    &-socials {
-      justify-content: flex-end;
+    &-container {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &-end {
+      align-items: end;
     }
   }
 
