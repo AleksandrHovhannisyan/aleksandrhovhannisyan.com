@@ -4,10 +4,6 @@
   border: none;
 
   label {
-    padding: relative("-3");
-
-    &:first-of-type {
-      margin-inline-start: relative("-3");
-    }
+    margin-inline-start: relative("-2");
   }
 }
