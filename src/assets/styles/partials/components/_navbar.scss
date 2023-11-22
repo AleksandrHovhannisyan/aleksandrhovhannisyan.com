@@ -22,7 +22,7 @@
   /* Body is a flex container. Without this, the navbar may shrink vertically due to the presence of a horizontal scrollbar. */
   flex-shrink: 0;
   width: 100%;
-  padding-block: spacing("0");
+  padding-block: spacing("-1");
   background-color: var(--color-navbar-bg);
   overflow-x: auto;
   color: white;
