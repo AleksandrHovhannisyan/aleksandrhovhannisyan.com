@@ -46,13 +46,13 @@
     margin-top: spacing("-3");
     text-wrap: balance;
     // Tighten line height due to short line length
-    @include font($size: "lg", $leading: "2xs");
+    @include font($size: "lg", $leading: "xs");
   }
 
   &-description {
     margin-top: spacing("-2");
     // Tighten line height due to short line length
-    @include font($size: "base", $leading: "xs");
+    @include font($size: "base", $leading: "sm");
   }
 
   &-tags {
@@ -76,11 +76,11 @@
     }
 
     &-title {
-      @include font($size: "md", $leading: "2xs");
+      @include font($size: "md", $leading: "xs");
     }
 
     &-description {
-      @include font($size: "sm", $leading: "xs");
+      @include font($size: "sm");
     }
   }
 

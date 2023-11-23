@@ -57,7 +57,7 @@
 
   &-description {
     margin-top: spacing("-2");
-    @include font($size: "base", $leading: "sm");
+    @include font($size: "base");
   }
 
   &-technologies {

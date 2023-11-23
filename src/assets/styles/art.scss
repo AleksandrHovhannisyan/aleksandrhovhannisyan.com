@@ -230,7 +230,7 @@ html {
     text-align: center;
     max-width: 30ch;
     will-change: transform, opacity;
-    @include font($family: "cursive", $weight: "regular", $size: "lg", $leading: "4xs");
+    @include font($family: "cursive", $weight: "regular", $size: "lg", $leading: "3xs");
     @include transition(opacity, transform);
   }
 
