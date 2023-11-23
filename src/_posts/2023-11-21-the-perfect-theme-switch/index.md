@@ -1,5 +1,5 @@
 ---
-title: The Perfect Theme Switch
+title: The Perfect Theme Switch Component
 description: Learn how to implement a progressively enhanced theme switch component using HTML, CSS, and JavaScript.
 categories: [html, css, javascript]
 tags: [dark mode toggle, theme switch, theme toggle]
