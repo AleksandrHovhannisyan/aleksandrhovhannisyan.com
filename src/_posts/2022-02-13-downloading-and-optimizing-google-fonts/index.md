@@ -57,13 +57,11 @@ If you navigate to this URL in your browser, the API will return a stylesheet wi
 /* other weights and charsets omitted for brevity */
 ```
 
-Each `@font-face` ruleset specifies a `src` so the browser can locate those font files. In this case, they're hosted on Google's dedicated resource domain for fonts: `fonts.gstatic.com`.
+Each `@font-face` ruleset specifies a `src` so the browser can locate those font files. In this case, they're hosted on Google's dedicated resource domain for fonts, `fonts.gstatic.com`. To download any of these files, you can use a command-line utility like `wget` or `curl` or even just navigate to the file directly via your browser. For example:
 
 ```
-https://fonts.gstatic.com/s/inter/v7/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2
+curl -L https://fonts.gstatic.com/s/inter/v7/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2 -o inter-regular.woff2
 ```
-
-So all you need to do is find the rulesets corresponding to the charsets you want and copy-paste the URL for each one into your browser's address bar. Your browser will download the font file, and you can then move it to your project.
 
 The final step is to copy-paste the `@font-face` declarations for your chosen charset(s) into your CSS and update the `src` property to point to your locally hosted font file(s) rather than Google's server.
 
