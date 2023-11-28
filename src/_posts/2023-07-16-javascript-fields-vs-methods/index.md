@@ -95,7 +95,7 @@ Importantly, unlike methods, class fields are unique to each instance of the cla
 ```js
 class MyClass {
   routine = () => {}
-  method = () => {}
+  method() {}
 }
 
 const instance1 = new MyClass();
