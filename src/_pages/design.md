@@ -10,7 +10,7 @@ noindex: true
 
 ## Fonts
 
-{% assign steps = "xs,sm,base,md,lg,xl,2xl,3xl" | split: "," %}
+{% assign steps = "xs,sm,base,md,lg,xl,2xl,3xl,4xl,5xl" | split: "," %}
 {%- for entry in fonts %}
   {% assign fontType = entry | first %}
   {% assign font = entry | last %}
