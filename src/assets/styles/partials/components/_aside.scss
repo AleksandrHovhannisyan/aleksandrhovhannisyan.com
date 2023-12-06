@@ -2,7 +2,7 @@
 
 .post-aside {
   border-inline-start: spacing("-3") solid;
-  padding: spacing("2") spacing("3");
+  padding: relative("0") relative("2");
   background-color: var(--color-surface-2);
 
   code {

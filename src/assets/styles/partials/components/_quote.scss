@@ -4,11 +4,7 @@
 blockquote {
   font-style: italic;
   border-inline-start: spacing("-3") solid;
-  padding: spacing("-3") spacing("5");
-
-  @include tablet {
-    margin-inline-start: spacing("3");
-  }
+  padding: 0 relative("2");
 
   p {
     &:first-of-type {
