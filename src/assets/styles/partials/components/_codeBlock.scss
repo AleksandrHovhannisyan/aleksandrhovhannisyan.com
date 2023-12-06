@@ -70,9 +70,9 @@ pre[class*="language-"] {
       &::before {
         content: attr(data-file);
         display: block;
-        margin-bottom: calc(var(--code-block-padding) * 0.75);
+        margin-bottom: calc(var(--code-block-padding) * 0.5);
         color: var(--color-code-text);
-        @include font($family: "body", $weight: "bold", $size: "sm");
+        @include font($family: "mono", $weight: "bold");
       }
     }
   }

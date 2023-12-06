@@ -11,6 +11,6 @@
     border-radius: spacing("-4");
     display: flex;
     justify-content: center;
-    @include font($family: "mono", $weight: "medium", $size: "xs");
+    @include font($family: "mono", $weight: "regular", $size: "xs");
   }
 }

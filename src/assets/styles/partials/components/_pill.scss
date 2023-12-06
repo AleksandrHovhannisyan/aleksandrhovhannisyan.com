@@ -25,11 +25,11 @@
 
   &[data-size="xs"] {
     padding: spacing("-4") spacing("-1");
-    @include font($family: "mono", $weight: "medium", $size: "xs");
+    @include font($size: "xs");
   }
 
   &-count {
-    @include font($family: "mono", $weight: "medium", $size: "xs");
+    @include font($size: "xs");
   }
 }
 
