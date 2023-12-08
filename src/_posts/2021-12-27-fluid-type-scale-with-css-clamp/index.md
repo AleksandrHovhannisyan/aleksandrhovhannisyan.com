@@ -327,7 +327,7 @@ And we'll use it to convert all of our pixels to rems. Here's the final code:
 }
 ```
 
-Finally, note that depending on what values you pass into this function, you may get really long floating-point numbers. You can truncate them using a custom rounding function:
+Finally, note that depending on what values you pass into this function, you may get really long floating-point numbers. You can define a custom rounding function to truncate them (don't be fooled by Sass's built-in `math.round`; it rounds to the nearest whole number). The following code is a modification of [this handy gist by GitHub user terkel](https://gist.github.com/terkel/4373420):
 
 ```scss {data-file="_functions.scss" data-copyable=true}
 @function rnd($number, $places: 0) {
@@ -339,7 +339,11 @@ Finally, note that depending on what values you pass into this function, you may
   }
   @return math.div(math.round($number * $n), $n);
 }
+```
 
+And then update `clamped` to use it:
+
+```scss {data-file="_functions.scss" data-copyable=true}
 @function clamped($min-px, $max-px, $min-bp: $default-min-bp, $max-bp: $default-max-bp) {
   $slope: math.div($max-px - $min-px, $max-bp - $min-bp);
   $slope-vw: rnd($slope * 100, 2);

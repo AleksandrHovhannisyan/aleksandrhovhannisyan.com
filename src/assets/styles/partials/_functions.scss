@@ -75,6 +75,8 @@
   @return str-slice($string, ($string-length - $suffix-length + 1)) == $suffix;
 }
 
+/// Rounds the given number to the specified number of decimal places.
+/// Adapted for use from: https://gist.github.com/terkel/4373420
 @function rnd($number, $places: 0) {
   $n: 1;
   @if $places > 0 {
