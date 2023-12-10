@@ -1,9 +1,9 @@
-@import "../functions";
+@use "../functions";
 
 .container {
-  --container-max-width: #{to-rems(1000px)};
+  --container-max-width: #{functions.to-rems(1000px)};
   /* stylelint-disable-next-line scss/no-global-function-names */
-  --padding-x: #{spacing("0")};
+  --padding-x: #{functions.spacing("0")};
 
   // why not just use content-box? because it creates overflow issues on mobile with width: 100% below
   max-width: calc(var(--container-max-width) + 2 * var(--padding-x));

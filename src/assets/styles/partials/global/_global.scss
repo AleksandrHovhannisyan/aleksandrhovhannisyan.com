@@ -1,8 +1,7 @@
 @use "sass:math";
-
-@import "../functions";
-@import "../mixins";
-@import "../tokens";
+@use "../tokens" as *;
+@use "../functions";
+@use "../mixins";
 
 body {
   display: flex;
@@ -11,20 +10,20 @@ body {
   color: var(--color-text-normal);
   overflow-wrap: break-word;
   -webkit-font-smoothing: antialiased;
-  @include font($size: "base");
+  @include mixins.font($size: "base");
 }
 
 #page-content {
   flex-grow: 1;
-  padding-block: clamped(get($tokens, "size", "spacing", "5"), get($tokens, "size", "spacing", "12"));
+  padding-block: functions.clamped(functions.get($tokens, "size", "spacing", "5"), functions.get($tokens, "size", "spacing", "12"));
 }
 
 :is(code, kbd) {
   font-size: 0.8em;
-  @include font($family: "mono", $weight: "regular");
+  @include mixins.font($family: "mono", $weight: "regular");
 
   :is(strong, h1, h2, h3, h4, h5, h6) & {
-    @include font($family: "mono", $weight: "bold");
+    @include mixins.font($family: "mono", $weight: "bold");
   }
 }
 
@@ -37,5 +36,5 @@ a {
 }
 
 :is(h1, h2, h3, h4, h5, h6, label, th, strong) {
-  @include font($family: "body", $weight: "bold");
+  @include mixins.font($family: "body", $weight: "bold");
 }

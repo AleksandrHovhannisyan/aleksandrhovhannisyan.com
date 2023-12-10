@@ -1,10 +1,10 @@
-@import "../mixins";
-@import "../functions";
+@use "../mixins";
+@use "../functions";
 
 blockquote {
   font-style: italic;
-  border-inline-start: spacing("-3") solid;
-  padding: 0 relative("2");
+  border-inline-start: functions.spacing("-3") solid;
+  padding: 0 functions.relative("2");
 
   p {
     &:first-of-type {
@@ -24,7 +24,7 @@ blockquote {
 cite {
   font-style: normal;
   display: block;
-  @include font($size: "sm");
+  @include mixins.font($size: "sm");
 
   &::before {
     content: "\2014";

@@ -1,14 +1,13 @@
-@import "../functions";
-@import "../mixins";
+@use "../mixins";
 
 .hero {
   max-width: 68ch;
 
   &-title {
-    @include font($size: "4xl");
+    @include mixins.font($size: "4xl");
   }
 
   &-subtitle {
-    @include font($size: "xl", $leading: "sm");
+    @include mixins.font($size: "xl", $leading: "sm");
   }
 }

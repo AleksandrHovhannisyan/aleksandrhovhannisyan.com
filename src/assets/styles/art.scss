@@ -1,6 +1,5 @@
-/* stylelint-disable value-keyword-case */
-@import "partials/functions";
-@import "partials/mixins";
+@use "partials/functions";
+@use "partials/mixins";
 @import "partials/tokens/animation";
 @import "partials/tokens/size";
 @import "partials/global/reset";
@@ -23,14 +22,14 @@ html {
   height: 100%;
   display: grid;
   place-items: center;
-  gap: spacing("0");
-  scroll-margin-top: spacing("10");
+  gap: functions.spacing("0");
+  scroll-margin-top: functions.spacing("10");
 
   /* Force each artwork to create its own stacking context since some art pieces use z-index
   tricks to position individual elements higher or lower within that artwork's context. Without this,
   they would leak into the global stacking context and potentially appear above other things (e.g., the navbar). */
   isolation: isolate;
-  padding: spacing("3");
+  padding: functions.spacing("3");
 
   &-page {
     // https://www.magicpattern.design/tools/css-backgrounds
@@ -46,7 +45,7 @@ html {
     background-size: 90px 90px, 90px 90px, 18px 18px, 18px 18px;
     background-position: -3.6px -3.6px, -3.6px -3.6px, -1.8px -1.8px, -1.8px -1.8px;
 
-    @include tablet-sm {
+    @include mixins.tablet-sm {
       &::before,
       &::after {
         content: "";
@@ -72,7 +71,7 @@ html {
     }
 
     &-header {
-      padding: spacing("12") spacing("5");
+      padding: functions.spacing("12") functions.spacing("5");
 
       .title {
         --font-size-multiplier: 1.2;
@@ -81,17 +80,17 @@ html {
         position: relative;
         text-align: center;
         text-transform: uppercase;
-        letter-spacing: tracking("lg");
-        text-shadow: to-rems(1px) to-rems(1px);
-        font-size: calc(var(--font-size-multiplier) * #{font-size("5xl")});
-        @include font($family: "display", $weight: "regular");
+        letter-spacing: functions.tracking("lg");
+        text-shadow: functions.to-rems(1px) functions.to-rems(1px);
+        font-size: calc(var(--font-size-multiplier) * #{functions.font-size("5xl")});
+        @include mixins.font($family: "display", $weight: "regular");
 
-        @include tablet-sm {
+        @include mixins.tablet-sm {
           --font-size-multiplier: 2;
           --color-shadow: hsl(0deg 0% 50% / 10%);
         }
 
-        @include desktop-lg {
+        @include mixins.desktop-lg {
           --font-size-multiplier: 2.5;
         }
 
@@ -121,9 +120,9 @@ html {
           animation: subtitle-pulse 1s ease infinite alternate-reverse;
           will-change: transform;
           text-transform: none;
-          @include font($family: "cursive", $weight: "regular", $size: "md");
+          @include mixins.font($family: "cursive", $weight: "regular", $size: "md");
 
-          @include tablet-sm {
+          @include mixins.tablet-sm {
             --translate-x: 0;
             --translate-y: -50%;
             --rotation: 2deg;
@@ -140,9 +139,9 @@ html {
 
     &-footer {
       border-top: solid 4px;
-      padding: spacing("5");
+      padding: functions.spacing("5");
       text-align: center;
-      @include font($family: "mono", $weight: "medium", $size: "xs");
+      @include mixins.font($family: "mono", $weight: "medium", $size: "xs");
 
       > * {
         max-width: 60ch;
@@ -158,9 +157,9 @@ html {
       --color-shadow: var(--color-text);
       background-color: white;
       position: relative;
-      padding: spacing("-1") spacing("0");
+      padding: functions.spacing("-1") functions.spacing("0");
       text-transform: uppercase;
-      letter-spacing: tracking("lg");
+      letter-spacing: functions.tracking("lg");
       text-decoration: none;
       color: var(--color-text);
       border: solid 2px;
@@ -170,18 +169,18 @@ html {
         3px 3px,
         2px 2px,
         1px 1px;
-      @include font($size: "sm", $family: "mono", $weight: "medium");
+      @include mixins.font($size: "sm", $family: "mono", $weight: "medium");
 
-      @include tablet-sm {
-        @include font($size: "base");
+      @include mixins.tablet-sm {
+        @include mixins.font($size: "base");
       }
     }
 
     ol {
       display: flex;
-      gap: spacing("0");
+      gap: functions.spacing("0");
       width: 100%;
-      padding: spacing("0") spacing("-2");
+      padding: functions.spacing("0") functions.spacing("-2");
       overflow-x: auto;
       background: linear-gradient(0deg, transparent 45%, var(--color-text) 45%, var(--color-text) 50%, transparent 50%);
 
@@ -193,16 +192,16 @@ html {
         margin-inline-end: auto;
       }
 
-      @include tablet-sm {
-        gap: spacing("5");
+      @include mixins.tablet-sm {
+        gap: functions.spacing("5");
         overflow-x: unset;
-        padding: spacing("0") spacing("5");
+        padding: functions.spacing("0") functions.spacing("5");
       }
     }
   }
 
   &-list {
-    padding: spacing("5");
+    padding: functions.spacing("5");
   }
 
   &-link {
@@ -224,14 +223,14 @@ html {
         opacity: 0.6;
       }
     }
-    padding: spacing("-3") spacing("-1");
+    padding: functions.spacing("-3") functions.spacing("-1");
     color: var(--color-text);
     transform: scale(0);
     text-align: center;
     max-width: 30ch;
     will-change: transform, opacity;
-    @include font($family: "cursive", $weight: "regular", $size: "lg", $leading: "3xs");
-    @include transition(opacity, transform);
+    @include mixins.font($family: "cursive", $weight: "regular", $size: "lg", $leading: "3xs");
+    @include mixins.transition(opacity, transform);
   }
 
   &:is(:focus-within, :target, :hover) &-caption {

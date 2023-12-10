@@ -1,6 +1,6 @@
-@import "../mixins";
+@use "../mixins";
 
 dfn {
   font-style: normal;
-  @include font($family: "body", $weight: "bold");
+  @include mixins.font($family: "body", $weight: "bold");
 }

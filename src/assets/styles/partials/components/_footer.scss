@@ -1,12 +1,12 @@
-@import "../functions";
-@import "../mixins";
+@use "../functions";
+@use "../mixins";
 
 .page-footer {
-  @include theme-light {
+  @include mixins.theme-light {
     --color-footer-bg: var(--color-surface-8);
   }
 
-  @include theme-dark {
+  @include mixins.theme-dark {
     --color-footer-bg: var(--color-surface-2);
   }
 
@@ -14,7 +14,7 @@
   background-color: var(--color-footer-bg);
   color: white;
   text-align: center;
-  padding-block: spacing("5");
+  padding-block: functions.spacing("5");
   accent-color: currentcolor;
 
   &-container {
@@ -22,7 +22,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: spacing("0");
+    gap: functions.spacing("0");
   }
 
   &-end {
@@ -33,14 +33,14 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: spacing("0");
+    gap: functions.spacing("0");
   }
 
-  @include mobile-lg {
-    padding-block: spacing("5");
+  @include mixins.mobile-lg {
+    padding-block: functions.spacing("5");
   }
 
-  @include tablet-sm {
+  @include mixins.tablet-sm {
     text-align: start;
 
     &-container {

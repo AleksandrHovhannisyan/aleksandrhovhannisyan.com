@@ -1,4 +1,5 @@
-@import "./partials/functions";
+@use "./partials/functions";
+@use "./partials/mixins";
 @import "partials/tokens/size";
 @import "partials/global/reset";
 @import "partials/utils/stack";
@@ -6,17 +7,17 @@
 @import "partials/utils/fontSize";
 
 body {
-  @include font($family: "body", $weight: "regular");
+  @include mixins.font($family: "body", $weight: "regular");
 }
 
 main {
   display: grid;
   place-content: center;
   text-align: center;
-  gap: spacing("0");
+  gap: functions.spacing("0");
   height: 100%;
   background-color: black;
-  padding: 0 spacing("2");
+  padding: 0 functions.spacing("2");
 
   * {
     color: white;

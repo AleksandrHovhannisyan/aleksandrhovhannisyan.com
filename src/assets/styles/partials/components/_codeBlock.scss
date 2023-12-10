@@ -1,10 +1,9 @@
 /* stylelint-disable no-descending-specificity */
-@import "../functions";
-@import "../mixins";
+@use "../functions";
+@use "../mixins";
 
 pre[class*="language-"] {
-
-  @include theme-light {
+  @include mixins.theme-light {
     --color-code-background: var(--color-surface-2);
     --color-code-overlay-1: hsl(0deg 0% 88%);
     --color-code-overlay-2: hsl(0deg 0% 80%);
@@ -22,7 +21,7 @@ pre[class*="language-"] {
     --color-code-selector: var(--color-code-string);
   }
 
-  @include theme-dark {
+  @include mixins.theme-dark {
     --color-code-background: var(--color-surface-2);
     --color-code-overlay-1: var(--color-surface-3);
     --color-code-overlay-2: var(--color-surface-6);
@@ -42,11 +41,11 @@ pre[class*="language-"] {
     --color-code-selector: hsl(41deg 53% 67%);
   }
 
-  --code-block-padding: #{spacing("5")};
+  --code-block-padding: #{functions.spacing("5")};
   background: var(--color-code-background);
   color: var(--color-code-text);
   position: relative;
-  border-radius: spacing("-3");
+  border-radius: functions.spacing("-3");
 
   &:hover {
     .copy-code-button {
@@ -61,7 +60,7 @@ pre[class*="language-"] {
     word-spacing: normal;
     word-break: normal;
     tab-size: 2;
-    line-height: leading("lg");
+    line-height: functions.leading("lg");
     overflow-x: auto;
     display: block;
 
@@ -72,7 +71,7 @@ pre[class*="language-"] {
         display: block;
         margin-bottom: calc(var(--code-block-padding) * 0.5);
         color: var(--color-code-text);
-        @include font($family: "mono", $weight: "bold");
+        @include mixins.font($family: "mono", $weight: "bold");
       }
     }
   }
@@ -173,9 +172,9 @@ pre[class*="language-bash"] {
   display: none;
   color: var(--color-code-text);
   background-color: var(--color-code-overlay-1);
-  padding: spacing("-2") spacing("0");
-  border-radius: spacing("-3");
-  @include font($family: "mono", $weight: "regular", $size: "xs");
+  padding: functions.spacing("-2") functions.spacing("0");
+  border-radius: functions.spacing("-3");
+  @include mixins.font($family: "mono", $weight: "regular", $size: "xs");
 
   &:is(.copied, :focus) {
     opacity: 1;
@@ -186,7 +185,7 @@ pre[class*="language-bash"] {
     background-color: var(--color-code-overlay-2);
   }
 
-  @include tablet {
+  @include mixins.tablet {
     display: unset;
   }
 }

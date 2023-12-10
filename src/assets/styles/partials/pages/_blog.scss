@@ -1,9 +1,10 @@
-@import "../functions";
+@use "../functions";
+@use "../mixins";
 
 .blog-page {
-  gap: spacing("5");
+  gap: functions.spacing("5");
 
-  @include tablet {
-    gap: spacing("10");
+  @include mixins.tablet {
+    gap: functions.spacing("10");
   }
 }

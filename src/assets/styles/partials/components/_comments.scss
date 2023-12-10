@@ -1,20 +1,20 @@
 @use "sass:math";
-
-@import "../mixins";
+@use "../functions";
+@use "../mixins";
 
 .comment-actions {
-  margin-top: spacing("5");
+  margin-top: functions.spacing("5");
 }
 
 .comment-button {
   display: flex;
   align-items: center;
-  gap: spacing("-2");
+  gap: functions.spacing("-2");
 }
 
 .post-comment {
-  --avatar-size: #{spacing("5")};
-  --avatar-offset-left: #{spacing("-2")};
+  --avatar-size: #{functions.spacing("5")};
+  --avatar-offset-left: #{functions.spacing("-2")};
 
   &-meta > * {
     display: inline-block;
@@ -26,7 +26,7 @@
   }
 
   &-username {
-    @include font($family: "body", $weight: "bold");
+    @include mixins.font($family: "body", $weight: "bold");
   }
 
   &-edited {
@@ -34,8 +34,8 @@
   }
 
   &-author {
-    border-radius: spacing("-4");
-    padding: spacing("-3") spacing("-2");
+    border-radius: functions.spacing("-4");
+    padding: functions.spacing("-3") functions.spacing("-2");
   }
 
   &-body {
@@ -43,12 +43,12 @@
       list-style: disc;
     }
 
-    @include headings {
-      @include font($size: "base");
+    @include mixins.headings {
+      @include mixins.font($size: "base");
     }
   }
 
-  @include tablet {
+  @include mixins.tablet {
     & {
       padding-inline-start: calc(var(--avatar-size) + var(--avatar-offset-left));
     }

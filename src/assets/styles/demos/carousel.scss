@@ -1,5 +1,5 @@
-@import "../partials/functions";
-@import "../partials/mixins";
+@use "../partials/functions";
+@use "../partials/mixins";
 
 .carousel {
   position: relative;
@@ -29,7 +29,7 @@
 .carousel-media {
   /* Arrange media horizontally */
   display: flex;
-  gap: spacing("0");
+  gap: functions.spacing("0");
 }
 
 .slideshow .carousel-media {
@@ -96,10 +96,10 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: spacing("-3");
+  padding: functions.spacing("-3");
   text-align: center;
   background-color: hsl(0deg 0% 0% / 75%);
-  @include font($size: "xs");
+  @include mixins.font($size: "xs");
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
@@ -117,7 +117,7 @@
 
   /* Center the controls vertically */
   top: 50%;
-  padding: spacing("0");
+  padding: functions.spacing("0");
   transform: translateY(-50%);
   border-radius: 50%;
   border: solid 1px hsl(0deg 0% 50%);

@@ -1,20 +1,20 @@
-@import "../mixins";
-@import "../functions";
+@use "../mixins";
+@use "../functions";
 
 .skip-navigation {
   top: 50%;
-  transform: translate(#{spacing("-2")}, -50%);
-  padding: spacing("-2");
+  transform: translate(#{functions.spacing("-2")}, -50%);
+  padding: functions.spacing("-2");
   background-color: var(--color-navbar-bg);
 }
 
 .navbar {
-  @include theme-light {
+  @include mixins.theme-light {
     --color-navbar-bg: var(--color-surface-8);
     --color-navbar-bg-focus: var(--color-surface-7);
   }
 
-  @include theme-dark {
+  @include mixins.theme-dark {
     --color-navbar-bg: var(--color-surface-2);
     --color-navbar-bg-focus: var(--color-surface-3);
   }
@@ -22,7 +22,7 @@
   /* Body is a flex container. Without this, the navbar may shrink vertically due to the presence of a horizontal scrollbar. */
   flex-shrink: 0;
   width: 100%;
-  padding-block: spacing("-1");
+  padding-block: functions.spacing("-1");
   background-color: var(--color-navbar-bg);
   overflow-x: auto;
   color: white;
@@ -41,28 +41,28 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: spacing("0");
+    gap: functions.spacing("0");
   }
 
   &-container {
     display: flex;
     align-items: center;
-    gap: spacing("-2");
+    gap: functions.spacing("-2");
   }
 
   &-logo {
-    width: spacing("4");
+    width: functions.spacing("4");
   }
 
   &-link-home {
     display: flex;
-    gap: spacing("-3");
+    gap: functions.spacing("-3");
     align-items: center;
-    padding: spacing("-2");
-    @include font($family: "body", $weight: "bold");
+    padding: functions.spacing("-2");
+    @include mixins.font($family: "body", $weight: "bold");
 
     .site-name {
-      @include screen-reader-only;
+      @include mixins.screen-reader-only;
     }
   }
 
@@ -70,7 +70,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    gap: relative("-3");
+    gap: functions.relative("-3");
     text-align: center;
 
     > :first-child {
@@ -79,7 +79,7 @@
   }
 
   &-link {
-    padding: relative("-2") relative("-1");
+    padding: functions.relative("-2") functions.relative("-1");
 
     &:is(:focus, :hover, [aria-current="page"]) {
       background-color: var(--color-navbar-bg-focus);
@@ -87,15 +87,15 @@
   }
 }
 
-@include mobile-lg {
+@include mixins.mobile-lg {
   .navbar {
-    padding-block: spacing("2");
+    padding-block: functions.spacing("2");
     position: unset;
     box-shadow: none;
 
     .site-name {
       position: unset;
-      @include screen-reader-only-unset;
+      @include mixins.screen-reader-only-unset;
     }
   }
 }

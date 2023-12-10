@@ -1,15 +1,15 @@
-@import "../functions";
+@use "../functions";
 
 .rhythm {
   > * + * {
-    margin-top: calc(#{leading("base")} * 1em);
+    margin-top: calc(#{functions.leading("base")} * 1em);
   }
 
   > :is(h1, h2, h3, h4, h5, h6) + * {
-    margin-top: 1em;
+    margin-top: functions.relative("0");
   }
 
   > :is(h1, h2, h3, h4, h5, h6) + :is(h2,h3,h4,h5,h6) {
-    margin-top: 0.75em;
+    margin-top: functions.relative("-1");
   }
 }

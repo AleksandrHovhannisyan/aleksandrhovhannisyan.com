@@ -2,7 +2,7 @@
 @use "sass:math";
 @use "sass:string";
 @use "sass:map";
-@import "./tokens";
+@use "./tokens" as *;
 
 @function to-rems($value) {
   // Check if the value, as a string, is already expressed in rems

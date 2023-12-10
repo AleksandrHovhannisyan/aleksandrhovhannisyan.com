@@ -1,9 +1,9 @@
-@import "../functions";
-@import "../mixins";
+@use "../functions";
+@use "../mixins";
 
 .project {
   &-wrapper {
-    --container-width: #{to-rems(800px)};
+    --container-width: #{functions.to-rems(800px)};
 
     // Prevents the dreaded "doom flicker": https://www.joshwcomeau.com/animation/css-transitions/#doom-flicker
     &:is(:hover, :focus-within) {
@@ -21,7 +21,7 @@
   &-icon {
     picture {
       display: flex;
-      width: relative(0);
+      width: functions.relative(0);
       aspect-ratio: 1;
     }
   }
@@ -29,10 +29,10 @@
   &-rating {
     display: flex;
     align-items: center;
-    gap: spacing("-4");
+    gap: functions.spacing("-4");
 
     svg {
-      width: relative("0");
+      width: functions.relative("0");
       aspect-ratio: 1;
       fill: var(--color-surface-7);
     }
@@ -56,27 +56,27 @@
   }
 
   &-description {
-    margin-top: spacing("-2");
-    @include font($size: "base");
+    margin-top: functions.spacing("-2");
+    @include mixins.font($size: "base");
   }
 
   &-technologies {
     display: flex;
     flex-wrap: wrap;
-    gap: spacing("-2");
-    margin-top: spacing("1");
+    gap: functions.spacing("-2");
+    margin-top: functions.spacing("1");
   }
 
   &-technology {
     background-color: var(--color-surface-3);
-    padding: spacing("-3") spacing("-1");
-    border-radius: spacing("-4");
+    padding: functions.spacing("-3") functions.spacing("-1");
+    border-radius: functions.spacing("-4");
   }
 }
 
 .github-cta {
   svg {
-    width: spacing("8");
+    width: functions.spacing("8");
     aspect-ratio: 1;
     fill: currentcolor;
   }

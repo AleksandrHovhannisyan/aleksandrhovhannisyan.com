@@ -1,39 +1,41 @@
-@import "../mixins";
+@use "../tokens" as *;
+@use "../mixins";
+@use "../functions";
 
-$font-size-steps: get($tokens, "size", "font");
+$font-size-steps: functions.get($tokens, "size", "font");
 
 // Programmatically generate font size utility classes
 @each $step, $step-config in $font-size-steps {
-  $class-name: get-token-name("size", "font", $step);
+  $class-name: functions.get-token-name("size", "font", $step);
   .#{$class-name} {
-    @include font($size: $step);
+    @include mixins.font($size: $step);
   }
 }
 
 h1 {
-  @include extended-font-size("3xl");
+  @include mixins.extended-font-size("3xl");
 }
 
 h2 {
-  @include extended-font-size("2xl");
+  @include mixins.extended-font-size("2xl");
 }
 
 h3 {
-  @include extended-font-size("xl");
+  @include mixins.extended-font-size("xl");
 }
 
 h4 {
-  @include extended-font-size("lg");
+  @include mixins.extended-font-size("lg");
 }
 
 h5 {
-  @include extended-font-size("md");
+  @include mixins.extended-font-size("md");
 }
 
 h6 {
-  @include extended-font-size("base");
+  @include mixins.extended-font-size("base");
 }
 
 small {
-  @include extended-font-size("sm");
+  @include mixins.extended-font-size("sm");
 }

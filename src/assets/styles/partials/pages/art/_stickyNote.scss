@@ -1,4 +1,4 @@
-@import "../../mixins";
+@use "../../mixins";
 
 .sticky-note-board {
   border: solid 12.8px #e3c19d;
@@ -15,9 +15,9 @@
   position: relative;
   justify-self: center;
   padding: 40px 28.8px 28.8px;
-  margin: spacing("2");
+  margin: 20px;
   cursor: pointer;
-  @include transition(transform, top, box-shadow, border-radius);
+  @include mixins.transition(transform, top, box-shadow, border-radius);
 
   &::after {
     content: "";
@@ -39,5 +39,5 @@
 .sticky-note-description {
   color: black;
   margin: 0;
-  @include font($family: "cursive", $weight: "regular", $size: "lg");
+  @include mixins.font($family: "cursive", $weight: "regular", $size: "lg");
 }

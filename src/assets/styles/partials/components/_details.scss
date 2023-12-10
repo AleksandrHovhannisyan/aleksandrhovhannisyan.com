@@ -1,4 +1,4 @@
-@import "../functions";
+@use "../functions";
 
 details {
   summary {
@@ -8,8 +8,8 @@ details {
 
   summary,
   .details-content {
-    padding: spacing("2") spacing("3");
-    border: spacing("-4") solid var(--color-border);
+    padding: functions.spacing("2") functions.spacing("3");
+    border: functions.spacing("-4") solid var(--color-border);
   }
 
   .details-content {

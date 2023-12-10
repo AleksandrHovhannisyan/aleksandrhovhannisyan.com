@@ -211,7 +211,7 @@ some *italicized text* perhaps
 
 ### Card
 
-<div class="card">
+<div class="card stack gap-0">
   <h3>Sample h3 title</h3>
   Vivamus pellentesque tellus nisi, id cursus libero scelerisque at. Curabitur pellentesque erat at erat congue, vitae maximus lorem vehicula. Aliquam mollis eros sem, eget commodo dolor dictum at.
 </div>

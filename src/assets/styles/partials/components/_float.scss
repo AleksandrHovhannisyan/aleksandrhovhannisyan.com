@@ -1,8 +1,9 @@
-@import "../mixins";
+@use "../mixins";
+@use "../functions";
 
 .float {
-  --spacing: #{spacing("-2")};
-  max-width: to-rems(160px);
+  --spacing: #{functions.spacing("-2")};
+  max-width: functions.to-rems(160px);
   margin-block-end: var(--spacing);
 
   &.right {
@@ -10,7 +11,7 @@
     float: right;
   }
 
-  @include mobile-lg {
-    max-width: to-rems(190px);
+  @include mixins.mobile-lg {
+    max-width: functions.to-rems(190px);
   }
 }

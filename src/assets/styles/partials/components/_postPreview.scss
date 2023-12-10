@@ -1,20 +1,20 @@
-@import "../functions";
-@import "../mixins";
+@use "../functions";
+@use "../mixins";
 
 .post-preview {
-  border-radius: spacing("-3");
+  border-radius: functions.spacing("-3");
   background-color: var(--color-surface-2);
-  padding: relative("2");
+  padding: functions.relative("2");
   position: relative;
 
   &-grid {
     display: grid;
-    gap: spacing("3");
+    gap: functions.spacing("3");
     /* stylelint-disable-next-line scss/no-global-function-names */
-    grid-template-columns: repeat(auto-fill, minmax(min(#{to-rems(300px)}, 100%), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(#{functions.to-rems(300px)}, 100%), 1fr));
 
-    @include mobile-lg {
-      gap: spacing("0");
+    @include mixins.mobile-lg {
+      gap: functions.spacing("0");
     }
   }
 
@@ -35,25 +35,25 @@
 
   &-date {
     color: var(--color-text-soft);
-    @include font($size: "sm");
+    @include mixins.font($size: "sm");
   }
 
   &-title {
-    margin-top: spacing("-3");
+    margin-top: functions.spacing("-3");
     text-wrap: balance;
     // Tighten line height due to short line length
-    @include font($size: "lg", $leading: "xs");
+    @include mixins.font($size: "lg", $leading: "xs");
   }
 
   &-description {
-    margin-top: spacing("-2");
+    margin-top: functions.spacing("-2");
     // Tighten line height due to short line length
-    @include font($size: "base", $leading: "sm");
+    @include mixins.font($size: "base", $leading: "sm");
   }
 
   &-tags {
     display: none;
-    @include font($size: "sm");
+    @include mixins.font($size: "sm");
   }
 
   &-tag {
@@ -66,27 +66,27 @@
     }
   }
 
-  @include tablet {
+  @include mixins.tablet {
     &-date {
-      @include font($size: "xs");
+      @include mixins.font($size: "xs");
     }
 
     &-title {
-      @include font($size: "md", $leading: "xs");
+      @include mixins.font($size: "md", $leading: "xs");
     }
 
     &-description {
-      @include font($size: "sm");
+      @include mixins.font($size: "sm");
     }
   }
 
-  @include desktop {
+  @include mixins.desktop {
     &-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: spacing("-3") spacing("-2");
-      margin-top: spacing("0");
-      @include font($size: "xs");
+      gap: functions.spacing("-3") functions.spacing("-2");
+      margin-top: functions.spacing("0");
+      @include mixins.font($size: "xs");
     }
 
     // On desktop, we don't want the link to cover the entire card, or it creates a somewhat annoying UX where hovering from one tag to another causes the card link underline to flicker on/off.

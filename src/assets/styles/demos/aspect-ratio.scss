@@ -1,19 +1,19 @@
-@import "../partials/functions";
-@import "../partials/mixins";
+@use "../partials/functions";
+@use "../partials/mixins";
 
 .demo-tiles {
   display: grid;
   padding: 0;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: spacing("0");
+  gap: functions.spacing("0");
 }
 
 .demo-tile {
   position: relative;
   background-color: var(--color-surface-3);
   color: var(--color-text-emphasis);
-  border-radius: spacing("-3");
-  @include font($family: "body", $weight: "bold");
+  border-radius: functions.spacing("-3");
+  @include mixins.font($family: "body", $weight: "bold");
 }
 
 .demo-tile::after {

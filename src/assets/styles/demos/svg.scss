@@ -1,12 +1,12 @@
 /* stylelint-disable selector-class-pattern */
-@import "../partials/functions";
+@use "../partials/functions";
 
 .svg-tutorial__icon-grid {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: spacing("8");
+  gap: functions.spacing("8");
 }
 
 .svg-tutorial__icon {

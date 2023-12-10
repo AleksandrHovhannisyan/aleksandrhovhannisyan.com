@@ -1,18 +1,18 @@
-@import "../tokens";
-@import "../functions";
+@use "../tokens" as *;
+@use "../functions";
 
 html {
   // Font size
-  $min-bp: get($tokens, "breakpoints", "mobile-min");
-  $max-bp: get($tokens, "breakpoints", "desktop");
-  $font-sizes: get($tokens, "size", "font");
+  $min-bp: functions.get($tokens, "breakpoints", "mobile-min");
+  $max-bp: functions.get($tokens, "breakpoints", "desktop");
+  $font-sizes: functions.get($tokens, "size", "font");
   // Fluid font size variables, for browsers that support clamp
   @supports (font-size: clamp(1rem, 1vw, 1rem)) {
     @each $step, $sizes in $font-sizes {
-      $min-px: get($sizes, "min");
-      $max-px: get($sizes, "max");
-      $font-size: clamped($min-px, $max-px, $min-bp, $max-bp);
-      $token-name: get-token-name("size", "font", $step);
+      $min-px: functions.get($sizes, "min");
+      $max-px: functions.get($sizes, "max");
+      $font-size: functions.clamped($min-px, $max-px, $min-bp, $max-bp);
+      $token-name: functions.get-token-name("size", "font", $step);
       --#{$token-name}: #{$font-size};
     }
   }
@@ -20,45 +20,45 @@ html {
   @supports not (font-size: clamp(1rem, 1vw, 1rem)) {
     // Mobile ("min")
     @each $step, $sizes in $font-sizes {
-      $font-size: to-rems(get($sizes, "min"));
-      $token-name: get-token-name("size", "font", $step);
+      $font-size: functions.to-rems(functions.get($sizes, "min"));
+      $token-name: functions.get-token-name("size", "font", $step);
       --#{$token-name}: #{$font-size};
     }
     // Desktop ("max")
     @media screen and (min-width: #{$max-bp}) {
       @each $step, $sizes in $font-sizes {
-        $font-size: to-rems(get($sizes, "max"));
-        $token-name: get-token-name("size", "font", $step);
+        $font-size: functions.to-rems(functions.get($sizes, "max"));
+        $token-name: functions.get-token-name("size", "font", $step);
         --#{$token-name}: #{$font-size};
       }
     }
   }
 
   // Line height
-  $leading-steps: get($tokens, "size", "leading");
+  $leading-steps: functions.get($tokens, "size", "leading");
   @each $step, $value in $leading-steps {
-    $token-name: get-token-name("size", "leading", $step);
+    $token-name: functions.get-token-name("size", "leading", $step);
     --#{$token-name}: #{$value};
   }
 
   // Letter spacing
-  $tracking-steps: get($tokens, "size", "tracking");
+  $tracking-steps: functions.get($tokens, "size", "tracking");
   @each $step, $value in $tracking-steps {
-    $token-name: get-token-name("size", "tracking", $step);
+    $token-name: functions.get-token-name("size", "tracking", $step);
     --#{$token-name}: #{$value};
   }
 
   // Spacing
-  $spacing-steps: get($tokens, "size", "spacing");
+  $spacing-steps: functions.get($tokens, "size", "spacing");
   @each $step, $value in $spacing-steps {
-    $name: get-token-name("size", "spacing", $step);
+    $name: functions.get-token-name("size", "spacing", $step);
     --#{$name}: #{$value};
   }
 
   // Relative
-  $relative-steps: get($tokens, "size", "relative");
+  $relative-steps: functions.get($tokens, "size", "relative");
   @each $step, $value in $relative-steps {
-    $name: get-token-name("size", "relative", $step);
+    $name: functions.get-token-name("size", "relative", $step);
     --#{$name}: #{$value};
   }
 }

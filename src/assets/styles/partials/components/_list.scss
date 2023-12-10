@@ -1,9 +1,9 @@
-@import "../functions";
+@use "../functions";
 
 :is(ul, ol):not([class]) {
-  padding-inline-start: 1em;
+  padding-inline-start: functions.relative("0");
 
   li {
-    margin-top: 0.25em;
+    margin-top: functions.relative("-3");
   }
 }

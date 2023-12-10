@@ -1,13 +1,12 @@
-@import "../functions";
-@import "../mixins";
+@use "../functions";
 
 .button {
   --outline-offset: var(--outline-thickness);
   --outline-color: var(--color-surface-8);
   background-color: var(--color-surface-8);
   color: var(--color-text-inverted);
-  padding: spacing("-2") spacing("0");
-  border-radius: spacing("-4");
+  padding: functions.spacing("-2") functions.spacing("0");
+  border-radius: functions.spacing("-4");
   text-decoration: none;
 
   &:is(:focus, :hover) {

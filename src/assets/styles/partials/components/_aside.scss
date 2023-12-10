@@ -1,8 +1,8 @@
-@import "../mixins";
+@use "../functions";
 
 .post-aside {
-  border-inline-start: spacing("-3") solid;
-  padding: relative("0") relative("2");
+  border-inline-start: functions.spacing("-3") solid;
+  padding: functions.relative("0") functions.relative("2");
   background-color: var(--color-surface-2);
 
   code {
