@@ -46,36 +46,23 @@ const fonts = {
     },
   },
   mono: {
-    type: 'static',
-    family: 'IBM Plex Mono',
+    type: 'variable',
+    family: 'Source Code Pro',
     fallbacks: [`Monaco`, `Consolas`, `Courier New`, `monospace`],
+    weightAxes: {
+      min: 100,
+      max: 900,
+    },
+    weights: {
+      [FontVariant.REGULAR]: 400,
+      [FontVariant.BOLD]: 700,
+    },
     variants: {
-      [FontVariant.REGULAR]: {
-        roman: {
-          weight: 400,
-          style: FontStyle.NORMAL,
-          url: getFontUrl('ibmplexmono-latin-400-roman.woff2'),
-          postscriptName: `IBMPlexMono-Regular`,
-          display: FontDisplay.SWAP,
-        },
-      },
-      [FontVariant.MEDIUM]: {
-        roman: {
-          weight: 500,
-          style: FontStyle.NORMAL,
-          url: getFontUrl('ibmplexmono-latin-500-roman.woff2'),
-          postscriptName: `IBMPlexMono-Medium`,
-          display: FontDisplay.SWAP,
-        },
-      },
-      [FontVariant.BOLD]: {
-        roman: {
-          weight: 700,
-          style: FontStyle.NORMAL,
-          url: getFontUrl('ibmplexmono-latin-700-roman.woff2'),
-          postscriptName: `IBMPlexMono-Bold`,
-          display: FontDisplay.SWAP,
-        },
+      roman: {
+        style: FontStyle.REGULAR,
+        url: getFontUrl('sourcecode-latin-roman-variable.woff2'),
+        postscriptName: 'SourceCodeVF',
+        display: FontDisplay.SWAP,
       },
     },
   },

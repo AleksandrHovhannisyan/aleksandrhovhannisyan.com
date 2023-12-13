@@ -141,7 +141,7 @@ html {
       border-top: solid 4px;
       padding: functions.spacing("5");
       text-align: center;
-      @include mixins.font($family: "mono", $weight: "medium", $size: "xs");
+      @include mixins.font($family: "mono", $weight: "regular", $size: "xs");
 
       > * {
         max-width: 60ch;
@@ -169,7 +169,7 @@ html {
         3px 3px,
         2px 2px,
         1px 1px;
-      @include mixins.font($size: "sm", $family: "mono", $weight: "medium");
+      @include mixins.font($size: "sm", $family: "mono", $weight: "regular");
 
       @include mixins.tablet-sm {
         @include mixins.font($size: "base");
