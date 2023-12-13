@@ -67,9 +67,9 @@ pre[class*="language-"] {
     &[data-file] {
       // File name
       &::before {
-        content: attr(data-file);
+        content: "📁 " attr(data-file);
         display: block;
-        margin-bottom: calc(var(--code-block-padding) * 0.5);
+        margin-bottom: var(--code-block-padding);
         color: var(--color-code-text);
         @include mixins.font($family: "mono", $weight: "bold");
       }
