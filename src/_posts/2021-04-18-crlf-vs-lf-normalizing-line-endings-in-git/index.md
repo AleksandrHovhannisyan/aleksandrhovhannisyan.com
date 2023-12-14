@@ -20,9 +20,9 @@ History can be boring, though, so if you stumbled upon this post after hours of 
 
 {% include "toc.md" %}
 
-## CRLF vs. LF: What Are Line Endings, Anyway?
+## What Are Line Endings?
 
-To *really* understand the problem of CRLF vs. LF line endings, we need to brush up on a bit of typesetting history.
+To *really* understand this problem of CRLF vs. LF line endings, we need to brush up on a bit of typesetting history.
 
 People use letters, numbers, and symbols to communicate with one another. It's how you're reading this post right now! But computers can only understand and work with *numbers*. Since the files on your computer consist of strings of human-readable characters, we need a system that allows us to convert back and forth between these two formats. The [Unicode standard](https://en.wikipedia.org/wiki/Unicode) is that system—it maps characters like `A` and `z` to numbers, bridging the gap between human languages and the language of computers.
 
@@ -86,7 +86,7 @@ As you can probably imagine, the lack of a universal line ending presents a dile
 
 For this reason, Git allows you to configure line endings in one of two ways: by changing your local Git settings or by adding a `.gitattributes` file to your project. We'll look at both approaches over the course of the next several sections.
 
-### All Line Ending Transformations Concern the Index
+### Line Ending Transformations Concern the Index
 
 Before we look at any specifics, I want to clarify one detail: All end-of-line transformations in Git occur when moving files in and out of [the index](https://stackoverflow.com/questions/3689838/whats-the-difference-between-head-working-tree-and-index-in-git)—the temporary staging area that sits between your local files ([working tree](https://craftquest.io/articles/what-is-the-working-tree-in-git)) and the repository that later gets pushed to your remote. When you stage files for a commit, they enter the index and may be subject to line ending normalization (depending on your settings). Conversely, when you check out a branch or a set of files, you're moving files out of the index and into your working tree.
 
