@@ -1,3 +1,5 @@
+@use "../../functions";
+
 .heart {
   @keyframes heartbeat {
     0% {
@@ -21,7 +23,7 @@
     }
   }
 
-  --heart-size: #{to-rems(70px)};
+  --heart-size: #{functions.to-rems(70px)};
   width: var(--heart-size);
   height: var(--heart-size);
   transform: rotate(45deg);

@@ -109,7 +109,7 @@
 }
 
 .carousel-control {
-  --offset-x: #{spacing("-3")};
+  --offset-x: #{functions.spacing("-3")};
   cursor: pointer;
 
   /* Anchor the controls relative to the outer wrapper */

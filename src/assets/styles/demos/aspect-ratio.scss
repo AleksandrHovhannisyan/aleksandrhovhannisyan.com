@@ -45,7 +45,7 @@
 }
 
 .demo-square-grid {
-  --gap: #{spacing("0")};
+  --gap: #{functions.spacing("0")};
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   row-gap: var(--gap);
