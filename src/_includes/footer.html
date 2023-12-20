@@ -1,6 +1,6 @@
 <footer class="page-footer size-font-sm">
   <div class="page-footer-container container">
-    <div class="stack gap--2">
+    <div class="stack gap--1">
       <h2 class="size-font-xl">Thanks for reading!</h2>
       <p>&copy; {{ site.author }}, 2019–Present</p>
       <p>
@@ -11,7 +11,7 @@
       <time datetime="{{ buildInfo.time.raw }}">{{ buildInfo.time.formatted }}</time>&nbsp;
       </p>
     </div>
-    <div class="stack gap-0 page-footer-end">
+    <div class="stack gap--1 page-footer-end">
       <ul class="page-footer-socials">
         {%- assign networks = socials | entries -%}
         {%- for network in networks -%}

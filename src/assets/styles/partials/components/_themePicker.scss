@@ -1,9 +1,15 @@
 @use "../functions";
+@use "../mixins";
 
 #theme-picker {
   border: none;
 
   label {
     margin-inline-start: functions.relative("-2");
+    font-weight: unset;
+  }
+
+  .visible-label {
+    @include mixins.font($family: "body", $weight: "bold");
   }
 }
