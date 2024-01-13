@@ -3,6 +3,7 @@ title: 16 Shades of Gray
 description: The one where I create my first generative artwork and still refuse to use any color on my site.
 keywords: [generative art, hash art, git hash]
 categories: [essay, node, css, math, art]
+lastUpdated: 2024-01-12
 thumbnail: ./images/hash.png
 ---
 
@@ -23,14 +24,18 @@ The code to do this is short—it just reads my latest Git commit hash at build 
 ```js {data-copyable="true"}
 const hash = childProcess.execSync(`git rev-parse HEAD`).toString().trim();
 const bytes = new Uint8Array(Buffer.from(hash, 'hex'));
-let result = `<div class="hash-art-grid">`;
+let result = `<svg viewBox="0 0 4 4" width="100" height="100">`;
 for (let i = 0; i < bytes.length - 4; i++) {
   const gray = bytes[i];
   const color = `rgb(${gray}, ${gray}, ${gray})`;
-  result += `<div style="background-color: ${color}"></div>`;
+  const x = i % 4;
+  const y = Math.floor(i / 4);
+  result += `<rect x="${x}" y="${y}" width="1" height="1" style="fill: ${color}"></rect>`;
 }
-result += `</div>`;
+result += `</svg>`;
 ```
+
+Since it's an SVG, I can easily scale it to any size I want later.
 
 Below are some examples of the output images this generates:
 

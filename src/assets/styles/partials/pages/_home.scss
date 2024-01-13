@@ -19,15 +19,12 @@
   display: none;
 
   @include mixins.desktop {
-    display: flex;
+    display: unset;
   }
 }
 
-.hash-art-grid {
-  display: grid;
-  grid-template-columns: repeat(4, #{functions.spacing("9")});
-
-  > * {
-    aspect-ratio: 1;
-  }
+.hash-art {
+  width: calc(4 * #{functions.spacing("9")});
+  height: auto;
 }
+
