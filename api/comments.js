@@ -1,6 +1,6 @@
 const { getAuthenticatedOctokit, sanitizeHtml } = require('../config/utils');
 const dayjs = require('dayjs');
-const markdownLib = require('../config/plugins/markdown');
+const { markdown } = require('../config/plugins/markdown');
 const dayjsRelativeTimePlugin = require('dayjs/plugin/relativeTime');
 const site = require('../src/_data/site');
 
@@ -50,7 +50,7 @@ exports.handler = async (event) => {
           datePostedRelative: dayjs(comment.created_at).fromNow(),
           wasEdited: comment.created_at !== comment.updated_at,
           // Sanitize comment body to prevent XSS
-          body: sanitizeHtml(markdownLib.render(comment.body)),
+          body: sanitizeHtml(markdown.render(comment.body)),
         };
       });
 

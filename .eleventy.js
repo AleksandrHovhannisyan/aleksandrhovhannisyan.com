@@ -36,7 +36,7 @@ const {
   getAllUniqueCategories,
   getPostsByCategory,
 } = require('./config/collections');
-const markdownLib = require('./config/plugins/markdown');
+const { markdown } = require('./config/plugins/markdown');
 const { codeDemoOptions } = require('./config/plugins/codeDemo');
 const { dir, imagePaths, scriptDirs } = require('./config/constants');
 const { slugifyString } = require('./config/utils');
@@ -112,7 +112,7 @@ module.exports = (eleventyConfig) => {
     backLinkLabel: (footnote, index) => `Back to reference ${index + 1}`,
   });
   eleventyConfig.addPlugin(EleventyPluginCodeDemo, codeDemoOptions);
-  eleventyConfig.setLibrary('md', markdownLib);
+  eleventyConfig.setLibrary('md', markdown);
 
   // Post-processing
   eleventyConfig.on('afterBuild', () => {

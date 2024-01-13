@@ -1,10 +1,10 @@
-const markdownLib = require('../plugins/markdown');
+const { markdown } = require('../plugins/markdown');
 
 const details = (children, summary, open = false) => {
   if (!children) {
     throw new Error('You must provide a non-empty string for an aside.');
   }
-  const content = markdownLib.render(children);
+  const content = markdown.render(children);
   return `<details${open ? ' open' : ''}>
   <summary class="outline-offset">${summary}</summary>
   <div class="details-content rhythm">${content}</div>

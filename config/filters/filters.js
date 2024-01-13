@@ -3,7 +3,7 @@ const esbuild = require('esbuild');
 const path = require('path');
 const lodash = require('lodash');
 const dayjs = require('dayjs');
-const markdownLib = require('../plugins/markdown');
+const { markdown } = require('../plugins/markdown');
 const site = require('../../src/_data/site');
 const Image = require('@11ty/eleventy-img');
 const { throwIfNotType, withoutBaseDirectory } = require('../utils');
@@ -31,7 +31,7 @@ const where = (arrayOfObjects, keyPath, value) =>
 
 /** Converts the given markdown string to HTML, returning it as a string. */
 const toHtml = (markdownString) => {
-  return markdownLib.renderInline(markdownString);
+  return markdown.renderInline(markdownString);
 };
 
 /** Divides the first argument by the second. */
