@@ -5,7 +5,7 @@ keywords: [11ty, eleventy]
 categories: [11ty, jekyll, ssg]
 thumbnail: ./images/thumbnail.jpg
 commentsId: 95
-lastUpdated: 2021-11-07
+lastUpdated: 2024-01-15
 ---
 
 For two years, my blog ran on Jekyll, one of the oldest and most popular static site generators around. Jekyll is often listed alongside other static site generators like Hugo, Gatsby, Next, Nuxt, and [many others](https://jamstack.org/generators/) that make up the so-called Jamstack.
@@ -109,15 +109,9 @@ One of the coolest things about 11ty is how easy it is to write **custom templat
 const site = require('./src/_data/site');
 
 const toAbsoluteUrl = (url) => {
-  if (typeof url !== 'string') {
-    throw new Error(`${toAbsoluteUrl.name}: expected argument of type string but instead got ${url} (${typeof url})`);
-  }
-  // Replace trailing slash, e.g., site.com/ => site.com
-  const siteUrl = site.url.replace(/\/$/, '');
-  // Replace starting slash, e.g., /path/ => path/
-  const relativeUrl = url.replace(/^\//, '');
-
-  return `${siteUrl}/${relativeUrl}`;
+  throwIfNotType(url, 'string');
+  return new URL(url, site.url).href;
+};
 }
 
 module.exports = (eleventyConfig) => {
@@ -129,7 +123,7 @@ And now you can use it like this anywhere in your code:
 
 {% raw %}
 ```html
-<a href="{{ someRelativeUrl | toAbsoluteUrl }}"></a>
+<a href="{{ relativeUrl | toAbsoluteUrl }}"></a>
 ```
 {% endraw %}
 
@@ -161,6 +155,10 @@ why not both?
 {% for entry in entries %}{% endfor %}
 ```
 {% endraw %}
+
+{% aside %}
+Check out this article for more examples: [A Set of Useful 11ty Filters](/blog/useful-11ty-filters/).
+{% endaside %}
 
 #### JavaScript Data Files
 
@@ -336,6 +334,12 @@ The Eleventy plugin is powered by the [Sharp image processing library](https://w
 
 To put this into perspective, my site has around 360 source images as of this writing. Eleventy is currently writing a total of **2450 images** to my output directory, some of which are pass-through copies but most of which are generated. You'd think that this would slow down my builds, but they're actually faster in 11ty than they were in Jekyll—around [two to three times faster](https://twitter.com/hovhaDovah/status/1408898476151349248)! Fresh local builds take around 90 seconds, while Netlify builds take 2 minutes with a cache (4 without).
 
+{% aside %}
+**2024 update**: Since I originally wrote this article more than two years ago, my site has actually gotten *faster* thanks to newer versions of Eleventy that are much better optimized. My site's Netlify builds now take just 1.5–2 minutes to finish.
+
+{% include "postImage.html", src: "./images/2024-deploys.png", alt: "Three deploy logs from Netlify for my site. Two took 1 minute 30 seconds, while one took 1 minute 59 seconds to build." %}
+{% endaside %}
+
 Part of what makes the 11ty image plugin so efficient is the fact that it caches images locally once it has generated them. This is great if you have lots of paginated pages with images that get reused, like for article thumbnails. Instead of regenerating the same image several times, 11ty will process it just once, and all subsequent requests will hit the cache.
 
 #### It Supports Remote Images
@@ -387,7 +391,11 @@ If you're not sure how to do something in 11ty, chances are that you'll find an 
 
 ### 7. It Supports Incremental Builds
 
-This is something I initially misunderstood about 11ty, thinking that it was slower than Jekyll. But it turns out that 11ty supports incremental builds just like Jekyll does—all you have to do is supply the `--incremental` command-line flag for the dev server. So if you change one file, 11ty won't rebuild your entire site—it will only write the file that changed. This makes for a great developer experience, especially if you save files frequently like I do.
+This is something I initially misunderstood about 11ty, thinking that it was slower than Jekyll. But this turned out to be user error because 11ty actually does support incremental builds just like Jekyll does—all you have to do is supply the `--incremental` command-line flag for the dev server. So if you change one file, 11ty won't rebuild your entire site—it will only write the file that changed. This makes for a great developer experience, especially if you save files frequently like I do.
+
+{% aside %}
+**2024 update**: As of Eleventy v2.0.0, Eleventy now ships with [an upgraded dev server](https://www.11ty.dev/docs/dev-server/) that supports hot-reload, so an edit to a page will reload your browser almost instantaneously. This is even faster than the original incremental build functionality.
+{% endaside %}
 
 ### 8. It Has a Debug Mode
 
