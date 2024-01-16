@@ -2,15 +2,17 @@ const commentTemplate = document.querySelector(`#comment-template`);
 
 /** Returns all comments using the provided issue ID. */
 export const fetchComments = async (id) => {
-  const response = await fetch(`/.netlify/functions/comments?id=${id}`);
-  const { data: comments, error } = await response.json();
-  if (error) {
-    throw new Error(error);
+  const response = await (await fetch(`/.netlify/functions/comments?id=${id}`)).json();
+  if (response.error) {
+    throw new Error(response.error);
   }
+  /** @type import("../../../../api/comments.typedefs").PostComment[] */
+  const comments = response.data;
   return comments;
 };
 
-const getCommentNode = (comment) => {
+/** @param {import("../../../../api/comments.typedefs").PostComment} comment The user comment to render. */
+const renderComment = (comment) => {
   const commentNode = commentTemplate.content.cloneNode(true);
 
   const userAvatar = commentNode.querySelector('img');
@@ -30,10 +32,10 @@ const getCommentNode = (comment) => {
 
   const commentTimestamp = commentNode.querySelector('time');
   commentTimestamp.setAttribute('datetime', comment.dateTime);
-  commentTimestamp.innerHTML = comment.datePostedRelative;
+  commentTimestamp.innerHTML = comment.dateRelative;
 
   const editedPill = commentNode.querySelector('.post-comment-edited');
-  if (!comment.wasEdited) {
+  if (!comment.isEdited) {
     editedPill.remove();
   }
 
@@ -57,7 +59,7 @@ export const renderComments = async (comments) => {
   commentsCounter.innerText = `${comments.length} `;
   commentsPlaceholder.remove();
   comments.forEach((comment) => {
-    const commentNode = getCommentNode(comment);
+    const commentNode = renderComment(comment);
     commentsList.appendChild(commentNode);
   });
 };

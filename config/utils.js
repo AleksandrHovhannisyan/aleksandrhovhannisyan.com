@@ -1,8 +1,6 @@
 const childProcess = require('child_process');
 const sanitize = require('sanitize-html');
 const slugify = require('slugify');
-const { Octokit } = require('@octokit/rest');
-const { createTokenAuth } = require('@octokit/auth-token');
 const path = require('path');
 
 /**
@@ -38,13 +36,6 @@ const throwIfNotType = (arg, expectedType) => {
   if (typeof arg !== expectedType) {
     throw new Error(`Expected argument of type ${expectedType} but instead got ${arg} (${typeof arg})`);
   }
-};
-
-/** Returns an authenticated GitHub API instance that can be used to fetch data. */
-const getAuthenticatedOctokit = async () => {
-  const auth = createTokenAuth(process.env.GITHUB_PERSONAL_ACCESS_TOKEN);
-  const { token } = await auth();
-  return new Octokit({ auth: token });
 };
 
 /** Maps a config of attribute-value pairs to an HTML string representing those same attribute-value pairs.
@@ -98,7 +89,6 @@ module.exports = {
   getAllUniqueKeyValues,
   slugifyString,
   throwIfNotType,
-  getAuthenticatedOctokit,
   stringifyAttributes,
   sanitizeHtml,
   getLatestGitCommitHash,
