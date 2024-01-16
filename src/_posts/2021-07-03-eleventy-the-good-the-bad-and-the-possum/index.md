@@ -5,39 +5,42 @@ keywords: [11ty, eleventy]
 categories: [11ty, jekyll, ssg]
 thumbnail: ./images/thumbnail.jpg
 commentsId: 95
-lastUpdated: 2024-01-15
+lastUpdated: 2024-01-16
 ---
 
-For two years, my blog ran on Jekyll, one of the oldest and most popular static site generators around. Jekyll is often listed alongside other static site generators like Hugo, Gatsby, Next, Nuxt, and [many others](https://jamstack.org/generators/) that make up the so-called Jamstack.
+For two years, my blog ran on Jekyll, one of the oldest and most popular static site generators around. Jekyll is often listed alongside other static site generators like Hugo, Gatsby, Next, Nuxt, and [many others](https://jamstack.org/generators/) that make up the so-called Jamstack: an ecosystem of frameworks that allow developers to combine JavaScript with markup languages to generate dynamic templates at build time.
 
 {% include "postImage.html" src: "./images/jamstack.jpg", alt: "The jamstack.org website. Various static site generators like Hugo, Next.js, Gatsby, and Jekyll are ranked in a grid view, with information on various stats, like the number of stars on GitHub.", caption: "The [jamstack.org](https://jamstack.org/generators/) website ranks popular static site generators.", isLazy: false %}
 
-Jekyll was great and served me really well! It's very much a batteries-included static site generator, which is great for beginners because it means that you can hit the ground running and [create a blog](/blog/getting-started-with-jekyll-and-github-pages/) quickly and with minimal setup.
+Jekyll was great and served me really well! It's very much a batteries-included static site generator, which is great for beginners since it allows you to hit the ground running and [create a blog](/blog/getting-started-with-jekyll-and-github-pages/) with minimal setup.
 
-But Jekyll isn't without its problems. For one, it runs on Ruby, which I've found to be more painful to install and configure than Node, especially on Windows (even with WSL). It's also not that easy to customize Jekyll and write plugins or custom filters for it since you have to learn Ruby to do so effectively. Jekyll's documentation is also lacking in some areas, especially with regard to how you extend it or write custom plugins and tags.
+But Jekyll isn't without its problems. For one, Jekyll runs on Ruby, which I've found—perhaps due to user error—to be more painful to install and configure than Node, especially on Windows (even with WSL). If you don't already know Ruby, you're going to have a hard time customizing Jekyll or writing plugins and custom filters for it since you'll need to learn a new language. And while learning new languages isn't bad, it does create a barrier of entry for web devs who just want to spin up a simple static site. I also found that Jekyll's documentation was lacking in some areas, especially customization.
 
-I pushed Jekyll to its limits as much as I could. But I also felt that it was time for me to move on to something else—not just for the sake of trying something new but so I could enjoy a better developer experience.
+I pushed Jekyll to its limits as much as I could. But I also felt that it was time for me to move on to something else—not just for the sake of trying something new but so I could enjoy a better developer experience in the long run.
 
-So, over the course of several months in early 2021, I toiled away to recreate my website in two popular frameworks: Next.js and Gatsby. I gave up on both when I realized how much they bloated my site and slowed my page load speed. Don't get me wrong—I love React and use it every day at work. But I don't think that it's the right solution for a blog, unless you really need MDX.
+So, over the course of several months in early 2021, I toiled away to recreate my website in two popular frameworks: Next.js and Gatsby. I had great hopes for these since I had heard so many great things about the developer experience of React-based blogs. Plus, I was already using React every day at work, so it was tempting to stick with it.
 
-My dream framework needed to have these features:
+In the end, I abandoned both of these prototypes once I realized just how much they would bloat my site and slow my page load speed. Don't get me wrong—I love React and use it every day at work. But I don't think that it's the right tool for building a blog, unless you really need MDX. The build times for these frameworks are arguably the biggest bottleneck and pain point. Gatsby took at least ten minutes per build! And with Netlify's limited build minutes for the free tier, I realized that this simply wouldn't cut it.
 
-- Built-in image optimization, with minimal configuration.
-- Support for pagination and category pages (Gatsby did this well).
-- Posts that can be authored in markdown, with front-matter data.
-- Good documentation and active releases.
+Revisiting the drawing board, I decided that my dream framework needed to have:
 
-After months of prototyping and research, I stumbled upon 11ty, a static site generator that's marketed as the Jekyll of JavaScript. I first learned about 11ty from Reddit and various dev bloggers, so I figured I'd give it a shot and see what all the hype is about.
+- A good developer experience that doesn't sacrifice build times and page speed.
+- Good documentation, active releases, and an ecosystem of community plugins.
+- Markdown authoring for posts, with support for front-matter data.
+- Built-in image optimization, with modern best practices.
+- Support for pagination and category pages (Gatsby actually did this well).
 
-Visiting the [official website](https://11ty.dev/), I was greeted by a mischievous-looking possum hanging from a red balloon and floating across my screen.
+After months of additional research and tinkering, I stumbled upon 11ty, a static site generator that's marketed as the Jekyll of JavaScript. I saw many posts on Reddit and dev blogs that praised 11ty for its fresh take on building websites: It was fast, it was easy to pick up, and it did everything you wanted and more, all within the Node ecosystem. And at first glance, it seemed to meet all of my requirements! Intrigued—but also skeptical—I decided to give 11ty a shot.
+
+Upon visiting the [official website](https://11ty.dev/), I was greeted by a mischievous-looking possum hanging from a red balloon and floating across my screen.
 
 {% include "postImage.html" src: "./images/possum.jpg", alt: "The Eleventy mascot is a possum with brown hide and a beige face. It's hanging from a red balloon, with one paw slightly outstretched." %}
 
 *Okay*, I thought. *I can work with this.*
 
-It was then that I dedicated myself to migrating my site from Jekyll to 11ty, what I hoped would be my last experiment. And overall, I'm very pleased with how it turned out and how easily I was able to port my content over. Most of this site has remained unchanged; some other things have actually *improved*.
+It was then that I decided to migrate my site from Jekyll to 11ty, hoping this would be my last experiment so I could finally put this migration to rest and get back to writing articles. It took a bit of work and troubleshooting, but it was well worth the effort in the end. Overall, I'm very pleased with how it turned out and how easily I was able to port my content over. Most of the source code for my site remained unchanged; some other things actually *improved*.
 
-Now that I've gone through this process myself and have experience with various static site generators, I'd like to take some time to look at the advantages and drawbacks of using 11ty for a personal website or blog. Most of this is based on my short-term experience with 11ty, so keep in mind that my views may change in the future as I learn more.
+Now that I've gone through this process myself and have experience with various static site generators, I'd like to take a closer look at the advantages and drawbacks of using 11ty for a personal website or blog. Most of this is based on my short-term experience with 11ty, so keep in mind that my views may change in the future as I learn more.
 
 {% include "toc.md" %}
 
@@ -68,24 +71,25 @@ Eleventy exposes all of its internal APIs to this module, meaning that you can d
 
 ... and *so* much more! I could go on forever about all the cool things that you can do in 11ty.
 
-11ty takes a simpler approach than most static site generators: It gives you the basic tools that you need to create a blog, and it leaves it up to you to wire them up however you see fit. It does not force you to use any particular templating language. Want to port a Jekyll site over to 11ty? Good news: You can still use Liquid! But if you want to use Nunjucks, Handlebars, Pug, or another popular templating language, you're welcome to do so. Tired of using YAML for all of your data? You can also define data files using JSON or even JavaScript. Want to use `markdown-it` to process Markdown files? Cool, go right ahead—but also know that *you don't have to*.
+Unlike most static site generators, 11ty takes a simple, mostly hands-off approach: It gives you the basic tools that you need to create a blog, but it leaves it up to you to wire them up however you see fit. It does not force you to use any particular templating language. Want to port a Jekyll site over to 11ty? Good news: You can still use Liquid! But if you want to use Nunjucks, Handlebars, Pug, or another popular templating language, you're welcome to do so. Tired of using YAML for all of your data? You can also define data files using JSON or even JavaScript. Want to use `markdown-it` to process Markdown files? Go right ahead—but also know that *you don't have to*.
 
-I cannot stress just how important this kind of flexibility is for your productivity and sanity. For example, anyone who's worked with Gatsby knows the pain of wanting to add a certain feature to their site, realizing that it's unrealistic to implement by hand, and installing a plugin instead. You end up with a bloated dependency tree and have to deal with many frustrating issues and bugs, some of which can't be resolved.
+I cannot stress just how important this kind of flexibility is for your productivity and sanity. For example, anyone who's worked with Gatsby knows the pain of wanting to add a certain feature to their site, realizing that it's unrealistic to implement by hand, and installing a plugin instead. You end up with a bloated dependency tree and have to deal with many frustrating issues and bugs, some of which can't be resolved. You almost start to feel like you don't have control over your own website's source code.
 
 With 11ty, you have full control over how you want your site to be built.
 
-#### Custom Shortcodes? No Problem
+#### Reusable Markup with Shortcodes
+
+"Shortcodes" are how 11ty allows you to inject reusable bits of markup into your templates. A shortcode is just a JavaScript function that takes some arguments you give it and returns a string. (Technically, a shortcode doesn't have to return or do anything—it's just a function.)
 
 For example, let's say you want to use SVG icon libraries like [Feather Icons](https://feathericons.com/) on your site. You can install the NPM package, import it into your config, and register a custom shortcode that returns a particular SVG as an inline string:
 
 ```js {data-file=".eleventy.js"}
 const feather = require('feather-icons');
 
-// You'll need to pass more arguments, but this is the general idea
-const iconShortcode = (icon) => feather.icons[icon].toSvg();
-
 module.exports = (eleventyConfig) => {
-  eleventyConfig.addLiquidShortcode('icon', iconShortcode);
+  eleventyConfig.addShortcode('icon', (icon) => {
+    return feather.icons[icon].toSvg();
+  });
 }
 ```
 
@@ -97,25 +101,25 @@ Voila—you can now invoke the shortcode in any valid template language, like ma
 ```
 {% endraw %}
 
-This ships **zero client-side JavaScript** since your packages are used at build time, on the server side, to generate static HTML. If there's a package out there that you have your heart set on, chances are that you can use it to customize 11ty. This is great because web developers are most familiar with JavaScript, and the ecosystem is booming with open-source packages that solve common problems.
+This ships **zero client-side JavaScript** since your packages are used at build time, on the server side, to generate static HTML. If there's a package out there that you have your heart set on, chances are that you can use it to customize 11ty. This is very convenient since web developers are already competent with JavaScript, and the ecosystem offers many open-source packages to solve common problems.
 
 You can create a shortcode for practically anything, offloading the main rendering logic to a JavaScript function rather than bloating your templates. You can also [publish it as an 11ty plugin](https://www.11ty.dev/docs/plugins/) so that other users can install it and add it to their 11ty config.
 
+{% aside %}
+With Ben Holmes's [Slinkity plugin for Eleventy](https://slinkity.dev/), you can even render JSX components in your templates.
+{% endaside %}
+
 #### Filter All the Things
 
-One of the coolest things about 11ty is how easy it is to write **custom template filters**. Tired of repeating {% raw %}`{{ site.url }}`{% endraw %} in your markup? Create a custom filter to prepend your site's URL to any URL string that you give it:
+One of the coolest things about 11ty is how easy it is to write **custom template filters**. Tired of manually prepending your site's base URL to every relative URL when you need an absolute one? Create a custom filter to do it for you:
 
 ```js {data-file=".eleventy.js" data-copyable=true}
 const site = require('./src/_data/site');
 
-const toAbsoluteUrl = (url) => {
-  throwIfNotType(url, 'string');
-  return new URL(url, site.url).href;
-};
-}
-
 module.exports = (eleventyConfig) => {
-  eleventyConfig.addLiquidFilter('toAbsoluteUrl', toAbsoluteUrl);
+  eleventyConfig.addFilter('toAbsoluteUrl', (url) => {
+    return new URL(url, site.url).href;
+  });
 }
 ```
 
@@ -131,13 +135,13 @@ Or maybe you have some object data that you want to iterate over in a template. 
 
 ```js {data-file=".eleventy.js"}
 module.exports = (eleventyConfig) => {
-  eleventyConfig.addLiquidShortcode('keys', Object.keys);
-  eleventyConfig.addLiquidShortcode('values', Object.values);
-  eleventyConfig.addLiquidShortcode('entries', Object.entries);
+  eleventyConfig.addShortcode('keys', Object.keys);
+  eleventyConfig.addShortcode('values', Object.values);
+  eleventyConfig.addShortcode('entries', Object.entries);
 }
 ```
 
-And you would use them like so:
+And use them like so:
 
 {% raw %}
 ```liquid
@@ -157,14 +161,14 @@ why not both?
 {% endraw %}
 
 {% aside %}
-Check out this article for more examples: [A Set of Useful 11ty Filters](/blog/useful-11ty-filters/).
+Check out this article I wrote for more examples: [A Set of Useful 11ty Filters](/blog/useful-11ty-filters/).
 {% endaside %}
 
 #### JavaScript Data Files
 
-You can define global site data statically using YAML or JSON, and this works well for most cases. However, there are certain situations where you want to populate your site with dynamic data at build time, like from an API. Maybe you want to display stats from your GitHub profile, or maybe you're sourcing your posts from a headless CMS rather than storing them in your repo.
+You can define global site data statically using YAML or JSON, and this works well for most cases. However, there are certain situations where you want to populate your site with dynamic data at build time, like from an API. Maybe you want to display stats from your GitHub profile, or maybe you're sourcing your posts from a headless content management system (CMS) rather than storing them in your repo.
 
-For those dynamic use cases, 11ty allows you to define data files using JavaScript. Just stick a JavaScript file in your data directory and export whatever you want from that module; 11ty will handle the rest. For example, you could export an object for static data:
+Eleventy's JavaScript data files are perfect for those dynamic use cases—just stick a JavaScript file in your data directory and export whatever you want from that module, and 11ty will handle the rest. For example, you could export an object for static data:
 
 ```js {data-file="src/_data/site.js"}
 module.exports = {
@@ -184,7 +188,9 @@ module.exports = async () => {
 };
 ```
 
-Eleventy also has an official plugin that can fetch the data for you and [cache it internally](https://www.11ty.dev/docs/plugins/cache/) so that site rebuilds don't blow your rate limit.
+You can even put these data files in other directories, like for specific collections or even specific posts. You can learn more about [11ty's data cascade](https://www.11ty.dev/docs/data-cascade/) in the docs.
+
+Eleventy also has an official plugin that wraps around `fetch` to [cache the response internally](https://www.11ty.dev/docs/plugins/cache/); that way, site rebuilds don't blow rate limits for any APIs you're using.
 
 ### 2. It's Testable
 
@@ -260,7 +266,7 @@ Assuming that all your posts reside in Markdown files in the `src/_posts` direct
 
 At first glance, this may not seem too useful—it's more work than leaning on Eleventy's tagging system. But where it really shines is when you want to create [two-level pagination](https://www.webstoemp.com/blog/basic-custom-taxonomies-with-eleventy/), where you rely on Eleventy's pagination API to automatically generate category pages based on front matter, but you also want each category page to *itself* be paginated. While this sounds complicated, that article by Jérôme Coupé is an excellent tutorial on how to accomplish this. And it's actually much easier than you'd think!
 
-### 4. It Supports Dynamic Front Matter (Computed Data)
+### 4. It Supports Dynamic Front Matter
 
 In Jekyll and most other static site generators, a front-matter variable can't reference other data because it introduces a circular dependency: Jekyll doesn't know the value of that other variable until it finishes parsing the entire front matter of your template. Unfortunately, this means that you can't have dynamic front-matter data. But that's a fairly common need—for example, with pagination, your page title and permalink often depend on the page number.
 
@@ -314,7 +320,7 @@ async function imageShortcode(src, alt, sizes) {
 }
 
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addLiquidShortcode("image", imageShortcode);
+  eleventyConfig.addShortcode("image", imageShortcode);
 };
 ```
 
@@ -394,7 +400,7 @@ If you're not sure how to do something in 11ty, chances are that you'll find an 
 This is something I initially misunderstood about 11ty, thinking that it was slower than Jekyll. But this turned out to be user error because 11ty actually does support incremental builds just like Jekyll does—all you have to do is supply the `--incremental` command-line flag for the dev server. So if you change one file, 11ty won't rebuild your entire site—it will only write the file that changed. This makes for a great developer experience, especially if you save files frequently like I do.
 
 {% aside %}
-**2024 update**: As of Eleventy v2.0.0, Eleventy now ships with [an upgraded dev server](https://www.11ty.dev/docs/dev-server/) that supports hot-reload, so an edit to a page will reload your browser almost instantaneously. This is even faster than the original incremental build functionality.
+**2024 update**: As of v2.0.0, Eleventy now ships with [an upgraded dev server](https://www.11ty.dev/docs/dev-server/) that supports hot-reloading over websockets, so editing a source file will reload your browser almost instantaneously. This is even faster than the original incremental build functionality.
 {% endaside %}
 
 ### 8. It Has a Debug Mode
@@ -412,7 +418,7 @@ Debug mode is awesome—11ty logs information about every single thing that it d
 
 ## The Bad (But Manageable)
 
-An honest review of Eleventy wouldn't be one if I claimed that the framework isn't without its flaws. Having said that, I still think this is one of the best static site generators around, and you should definitely give it a shot. Some of the points below border on nitpicking—that's just how good 11ty is.
+An honest review of Eleventy wouldn't be one if I claimed that the framework isn't without its flaws. Having said that, I still think this is one of the best static site generators around, and you should definitely give it a shot. Honestly, most of the points below border on nitpicking—that's just how good 11ty is.
 
 ### 1. It Requires More Configuration
 
