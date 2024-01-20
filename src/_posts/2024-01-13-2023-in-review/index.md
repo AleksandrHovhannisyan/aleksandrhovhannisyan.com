@@ -42,7 +42,7 @@ In my free time, I took a stab at solving some of the Advent of Code challenges 
 
 That's much fewer than the 25 I wrote in 2022, but who's counting? (*I am, apparently?*) About a year ago, I decided I would write what I want to write, when I want to write. In 2022, I [burned myself out](/blog/tech-twitter-burnout/) with the self-imposed obligation to write and to constantly keep up with the latest trends in the ever-changing—and increasingly unstable—landscape of web development.
 
-As for how my blog is doing, in 2023 it received 314k clicks and 10 million impressions. I'm not sure if that's more or less than in 2022 since I haven't been keeping track of these metrics from year to year, but it's a lot more attention than I ever expected my blog to get when I first launched it years ago.
+As for how my blog is doing, in 2023 it received 314k clicks and 10 million impressions. I'm not sure if that's more or fewer than in 2022 since I haven't been keeping track of these metrics from year to year, but it's a lot more attention than I ever expected my blog to get when I first launched it years ago.
 
 {% include "postImage.html" src: "./images/googlesearchconsole2023.png", baseFormat: "png", alt: "Search metrics for 2023-01-01 through 2023-12-31. Total clicks: 314k. Total impressions: 10.3M. Average CTR: 3%. Average position: 24.1.", caption: "I don't know why so many people are visiting my blog, but I suppose there's nothing I can do to stop them." %}
 
