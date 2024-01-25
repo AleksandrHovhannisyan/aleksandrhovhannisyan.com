@@ -6,12 +6,12 @@ export const fetchComments = async (id) => {
   if (response.error) {
     throw new Error(response.error);
   }
-  /** @type import("../../../../api/comments.typedefs").PostComment[] */
+  /** @type import("../../../../types/comments.typedefs").PostComment[] */
   const comments = response.data;
   return comments;
 };
 
-/** @param {import("../../../../api/comments.typedefs").PostComment} comment The user comment to render. */
+/** @param {import("../../../../types/comments.typedefs").PostComment} comment The user comment to render. */
 const renderComment = (comment) => {
   const commentNode = commentTemplate.content.cloneNode(true);
 

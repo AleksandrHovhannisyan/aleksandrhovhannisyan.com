@@ -43,7 +43,7 @@ exports.handler = async (event) => {
       (response) => response.data
     );
 
-    /** @type import("./comments.typedefs").PostComment[] */
+    /** @type import("../types/comments.typedefs").PostComment[] */
     const comments = response
       // Show comments in chronological order (oldest comments first) so it's easier to read them top-down
       .sort((comment1, comment2) => comment1.created_at.localeCompare(comment2.created_at))

@@ -3,7 +3,7 @@ const { getFontUrl } = require('../../config/fonts/fonts.utils');
 
 /** Global font config. Gets compiled into font face declarations and can be reused anywhere to access font info.
  * Individual templates can define their own font overrides on an as-needed basis. See for example art.11tydata.js.
- * @type {import("../../config/fonts/fonts.typedefs").FontConfig}
+ * @type {import("../../types/fonts.typedefs").FontConfig}
  */
 const fonts = {
   body: {

@@ -2,7 +2,7 @@ const { FontVariant, FontStyle, FontDisplay } = require('../../config/fonts/font
 const { getFontUrl } = require('../../config/fonts/fonts.utils');
 
 /** Fonts used on the art page.
- * @type {import("../../config/fonts/fonts.typedefs").FontConfig}
+ * @type {import("../../types/fonts.typedefs").FontConfig}
  */
 const fonts = {
   cursive: {
