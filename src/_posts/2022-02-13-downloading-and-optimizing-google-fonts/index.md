@@ -22,7 +22,7 @@ Many good articles have already been written on how to self-host fonts, so I won
 
 ### 1. Using google-webfonts-helper
 
-I learned about this method from Sia Kiaramalegos in her article on [Making Google Fonts Faster](https://sia.codes/posts/making-google-fonts-faster/#self-host-your-web-fonts-for-full-control). Head over to https://google-webfonts-helper.herokuapp.com/fonts, search for your font, customize it to your liking, and download the files. The app also provides you with `@font-face` rulesets that you can copy-paste into your CSS.
+I learned about this method from Sia Kiaramalegos in her article on [Making Google Fonts Faster](https://sia.codes/posts/making-google-fonts-faster/#self-host-your-web-fonts-for-full-control). Head over to https://gwfh.mranftl.com/fonts, search for your font, customize it to your liking, and download the files. The app also provides you with `@font-face` rulesets that you can copy-paste into your CSS.
 
 {% include "postImage.html" src: "./images/google-webfonts-helper.png", alt: "The google-webfonts-helper app interface, with a selected font family of Inter. The main content region shows a series of stepwise instructions for how to include the font in a project. Step 2 reads 'Select styles,' followed directly by a table that lists all font weights with adjacent checkboxes to enable selection. Step 3 reads 'Copy CSS' and includes an output pane with the @font-face declarations. There are two tabs for the output: Best support and Modern browsers; the former is selected." %}
 
