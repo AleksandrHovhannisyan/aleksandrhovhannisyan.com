@@ -84,7 +84,7 @@ Part of the blame for the Leetcode grind falls on the tech industry—there are 
 
 On the job, unless your solutions are always inefficient, and unless you know that the input to your algorithm is going to scale to very large sizes, a brute-force solution will be more than *good enough*. In fact, brute-force solutions are usually pretty easy to understand because they involve some sort of stepwise iteration or problem simulation. Good examples of these kinds of problems are [ZigZag Conversion](https://leetcode.com/problems/zigzag-conversion/) and [Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/).
 
-Unfortunately, Leetcode can encourage [premature optimization](/blog/premature-optimization-code-first-optimize-later/) because most Medium and Hard problems cannot be solved with a brute-force approach (it times out). This can lead to analysis paralysis on certain problems that you *would've* been able to solve if you weren't forced to optimize it right out of the gate. In the real world, readable brute-force solutions aren't worth optimizing unless you have a good reason for doing so.
+Unfortunately, Leetcode can encourage premature optimization because most Medium and Hard problems cannot be solved with a brute-force approach (it times out). This can lead to analysis paralysis on certain problems that you *would've* been able to solve if you weren't forced to optimize it right out of the gate. In the real world, readable brute-force solutions aren't worth optimizing unless you have a good reason for doing so.
 
 ## Is the Leetcode Grind Making You Miserable?
 
