@@ -8,13 +8,13 @@
     "clean:all": "rimraf _site",
     "clean": "rimraf '_site/!(assets)' '_site/assets/!(images)'",
     "debug": "DEBUG=Eleventy* ELEVENTY_ENV=development npx @11ty/eleventy --serve --incremental --port=4001",
-    "serve": "npm-run-all clean --parallel serve:*",
+    "serve": "npm-run-all clean --parallel 'serve:*'",
     "serve:html": "ELEVENTY_ENV=development npx @11ty/eleventy --serve --incremental --port=4001",
     "serve:css": "sass --watch src/assets/styles:_site/assets/styles --style=expanded",
     "build": "run-s test clean build:html build:css",
     "build:html": "ELEVENTY_ENV=production npx @11ty/eleventy",
     "build:css": "sass src/assets/styles:_site/assets/styles --style=compressed",
-    "lint": "npm-run-all lint:*",
+    "lint": "npm-run-all 'lint:*'",
     "lint:fix": "npm-run-all --parallel lint:*:fix",
     "lint:css": "stylelint \"src/**/*.scss\"",
     "lint:css:fix": "stylelint --fix \"src/**/*.scss\"",
@@ -25,8 +25,10 @@
     "update-browserslist": "npx browserslist@latest --update-db"
   },
   "dependencies": {
+    "@octokit/auth-token": "^4.0.0",
+    "@octokit/core": "^5.1.0",
     "dayjs": "^1.10.5",
-    "octokit": "^1.7.0",
+    "octokit": "^3.1.2",
     "sanitize-html": "^2.6.1"
   },
   "devDependencies": {
@@ -57,7 +59,7 @@
     "markdown-it-prism": "^2.2.3",
     "markdown-it-toc-done-right": "^4.2.0",
     "netlify-cli": "^9.6.5",
-    "netlify-plugin-11ty": "^1.0.1",
+    "netlify-plugin-11ty": "^1.4.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
@@ -83,5 +85,5 @@
     "*.js": "yarn run lint:js:fix",
     "*.scss": "yarn run lint:css:fix"
   },
-  "packageManager": "yarn@4.1.0"
+  "packageManager": "yarn@1.22.4"
 }
