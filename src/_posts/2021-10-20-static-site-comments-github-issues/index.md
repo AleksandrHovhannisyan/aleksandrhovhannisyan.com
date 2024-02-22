@@ -6,7 +6,7 @@ categories: [netlify, github, node]
 thumbnail:
   url: https://images.unsplash.com/photo-1512626120412-faf41adb4874?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 commentsId: 117
-lastUpdated: 2022-10-24
+lastUpdated: 2024-02-22
 ---
 
 Comment systems are one of the easiest ways to solicit feedback from your readers and to encourage the kinds of civil and respectful discussions for which the internet is so well known. But where do you start with adding one to your site? There are tons of options to choose from, most of which aren't worth your time.
@@ -160,14 +160,6 @@ Create an `.env` file locally and add the access token that you just copied. You
 ``` {data-file=".env" data-copyable=true}
 GITHUB_PERSONAL_ACCESS_TOKEN = YourToken
 ```
-
-While you're here, you'll also want to create a variable named `AWS_LAMBDA_JS_RUNTIME` and set its value to `nodejs14.x`:
-
-``` {data-file=".env" data-copyable=true}
-AWS_LAMBDA_JS_RUNTIME = nodejs14.x
-```
-
-This ensures that your Netlify functions [use Node 14 for AWS](https://docs.netlify.com/functions/build-with-javascript/#runtime-settings); they default to Node 12, and this can lead to some 502 errors getting thrown when you deploy your functions to production.
 
 This is all that you need to authenticate your local API requests. You don't need to install a package like `dotenv`—Netlify Dev will take care of loading your environment variables for you when you start up the server. Be sure to add `.env` to your `.gitignore` if it's not already there—never check environment variables into Git!
 
