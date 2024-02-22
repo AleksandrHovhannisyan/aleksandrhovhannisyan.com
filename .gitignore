@@ -6,6 +6,6 @@ node_modules
 src/_drafts
 .env
 .log
-
-# Local Netlify folder
+.yarn/
+.yarnrc.yml
 .netlify
