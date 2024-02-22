@@ -25,7 +25,7 @@
   }
 
   &[data-size="xs"] {
-    padding: functions.spacing("-4") functions.spacing("-1");
+    padding: functions.spacing("-4") functions.spacing("-2");
     @include mixins.font($size: "xs");
   }
 
