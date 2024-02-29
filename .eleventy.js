@@ -1,8 +1,8 @@
-const esbuild = require('esbuild');
-const path = require('path');
-const PluginFootnotes = require('eleventy-plugin-footnotes');
-const { EleventyPluginCodeDemo } = require('eleventy-plugin-code-demo');
-const {
+import esbuild from 'esbuild';
+import path from 'path';
+import PluginFootnotes from 'eleventy-plugin-footnotes';
+import { EleventyPluginCodeDemo } from 'eleventy-plugin-code-demo';
+import {
   asideShortcode,
   definitionShortcode,
   imageShortcode,
@@ -15,8 +15,8 @@ const {
   nanoIdShortcode,
   detailsShortcode,
   fetchText,
-} = require('./config/shortcodes');
-const {
+} from './config/shortcodes/index.js';
+import {
   limit,
   sortByKey,
   toHtml,
@@ -31,21 +31,21 @@ const {
   toAbsoluteImageUrl,
   pathParse,
   pathJoin,
-} = require('./config/filters/filters');
-const {
+} from './config/filters/filters.js';
+import {
   getAllPosts,
   getAllUniqueCategories,
   getPostsByCategory,
-} = require('./config/collections');
-const { markdown } = require('./config/plugins/markdown');
-const { codeDemoOptions } = require('./config/plugins/codeDemo');
-const { dir, imagePaths, scriptDirs } = require('./config/constants');
-const { slugifyString } = require('./config/utils');
-const { escape } = require('lodash');
+} from './config/collections/collections.js';
+import { markdown } from './config/plugins/markdown.js';
+import { codeDemoOptions } from './config/plugins/codeDemo.js';
+import { dir, imagePaths, scriptDirs } from './config/constants.js';
+import { slugifyString } from './config/utils.js';
+import escape from 'lodash-es/escape.js';
 
 const TEMPLATE_ENGINE = 'liquid';
 
-module.exports = (eleventyConfig) => {
+export default function eleventy(eleventyConfig) {
   eleventyConfig.setLiquidOptions({
     // Allows for dynamic include/partial names. If true, include names must be quoted. Defaults to true as of beta/1.0.
     dynamicPartials: true,

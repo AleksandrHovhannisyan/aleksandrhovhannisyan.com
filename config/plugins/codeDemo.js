@@ -94,7 +94,7 @@ const consoleJS = `
     const output = outputRoot.querySelector('#output');
     const outputScrollContainer = outputRoot.querySelector('[tabindex]');
     const clearButton = outputRoot.querySelector('#clear-button');
-    
+
     const log = console.log;
     console.log = (...args) => {
       log(...args);
@@ -132,7 +132,7 @@ const consoleJS = `
 /**
  * @type {import('eleventy-plugin-code-demo/src/typedefs').EleventyPluginCodeDemoOptions}
  */
-const codeDemoOptions = {
+export const codeDemoOptions = {
   name: 'codeDemo',
   renderDocument: ({ html, css, js }) => `
     <!DOCTYPE html>
@@ -154,4 +154,3 @@ const codeDemoOptions = {
   },
 };
 
-module.exports = { codeDemoOptions };

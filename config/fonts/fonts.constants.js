@@ -1,20 +1,14 @@
-const FontVariant = {
+export const FontVariant = {
   REGULAR: 'regular',
   MEDIUM: 'medium',
   BOLD: 'bold',
 };
 
-const FontStyle = {
+export const FontStyle = {
   NORMAL: 'normal',
   ITALIC: 'italic',
 };
 
-const FontDisplay = {
+export const FontDisplay = {
   SWAP: 'swap',
-};
-
-module.exports = {
-  FontVariant,
-  FontStyle,
-  FontDisplay,
 };

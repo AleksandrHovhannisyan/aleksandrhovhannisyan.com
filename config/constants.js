@@ -1,6 +1,6 @@
-const path = require('path');
+import path from 'path';
 
-const dir = {
+export const dir = {
   input: 'src',
   output: '_site',
   includes: '_includes',
@@ -9,18 +9,13 @@ const dir = {
   assets: 'assets',
 };
 
-const imagePaths = {
+export const imagePaths = {
   input: path.join(dir.input, dir.assets, 'images'),
   output: path.join(dir.output, dir.assets, 'images'),
 };
 
-const scriptDirs = {
+export const scriptDirs = {
   input: path.join(dir.input, dir.assets, 'scripts'),
   output: path.join(dir.output, dir.assets, 'scripts'),
 };
 
-module.exports = {
-  dir,
-  imagePaths,
-  scriptDirs,
-};

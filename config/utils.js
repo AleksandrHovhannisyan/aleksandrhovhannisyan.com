@@ -1,7 +1,7 @@
-const childProcess = require('child_process');
-const sanitize = require('sanitize-html');
-const slugify = require('slugify');
-const path = require('path');
+import childProcess from 'child_process';
+import sanitize from 'sanitize-html';
+import slugify from 'slugify';
+import path from 'path';
 
 /**
  * Returns an array of all unique values from the given collection under the specified key.
@@ -10,7 +10,7 @@ const path = require('path');
  * @param {*} key - the key to look up in the item's data object
  * @returns
  */
-const getAllUniqueKeyValues = (collectionItems, key) => {
+export const getAllUniqueKeyValues = (collectionItems, key) => {
   // First map each collection item (e.g., blog post) to the value it holds under key.
   let values = collectionItems.map((item) => item.data[key] ?? []);
   // Recursively flatten it to a 1D array
@@ -23,7 +23,7 @@ const getAllUniqueKeyValues = (collectionItems, key) => {
 };
 
 /** Converts the given string to a slug form. */
-const slugifyString = (str) => {
+export const slugifyString = (str) => {
   return slugify(str, {
     replacement: '-',
     remove: /[#,&,+()$~%.'":*?<>{}]/g,
@@ -32,26 +32,14 @@ const slugifyString = (str) => {
 };
 
 /** Helper to throw an error if the provided argument is not of the expected. */
-const throwIfNotType = (arg, expectedType) => {
+export const throwIfNotType = (arg, expectedType) => {
   if (typeof arg !== expectedType) {
     throw new Error(`Expected argument of type ${expectedType} but instead got ${arg} (${typeof arg})`);
   }
 };
 
-/** Maps a config of attribute-value pairs to an HTML string representing those same attribute-value pairs.
- * There's also this, but it's ESM only: https://github.com/sindresorhus/stringify-attributes
- */
-const stringifyAttributes = (attributeMap) => {
-  return Object.entries(attributeMap)
-    .map(([attribute, value]) => {
-      if (typeof value === 'undefined') return '';
-      return `${attribute}="${value}"`;
-    })
-    .join(' ');
-};
-
 /** Sanitizes an HTML string. */
-const sanitizeHtml = (html) => {
+export const sanitizeHtml = (html) => {
   return sanitize(html, {
     // allow images
     allowedTags: sanitize.defaults.allowedTags.concat(['img']),
@@ -73,7 +61,7 @@ const sanitizeHtml = (html) => {
  * Credit: https://stackoverflow.com/a/34518749/5323344
  * @param {'short'|'long'} format
  */
-const getLatestGitCommitHash = (format = 'long') => {
+export const getLatestGitCommitHash = (format = 'long') => {
   return childProcess
     .execSync(`git rev-parse ${format === 'short' ? '--short' : ''} HEAD`)
     .toString()
@@ -83,14 +71,5 @@ const getLatestGitCommitHash = (format = 'long') => {
 /**
  * @param {string} pathString
  */
-const withoutBaseDirectory = (pathString) => pathString.substring(pathString.indexOf(path.sep));
+export const withoutBaseDirectory = (pathString) => pathString.substring(pathString.indexOf(path.sep));
 
-module.exports = {
-  getAllUniqueKeyValues,
-  slugifyString,
-  throwIfNotType,
-  stringifyAttributes,
-  sanitizeHtml,
-  getLatestGitCommitHash,
-  withoutBaseDirectory,
-};

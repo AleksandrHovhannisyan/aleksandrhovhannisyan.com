@@ -1,7 +1,7 @@
-const { markdown }= require('../plugins/markdown');
+import { markdown } from '../plugins/markdown.js';
 
 /** Renders a blockquote with a <dfn> and a corresponding definition */
-const definition = (children, term) => {
+export default function definition(children, term) {
   if (!children) {
     throw new Error('You must provide a non-empty definition.');
   }
@@ -13,4 +13,3 @@ const definition = (children, term) => {
   return `<p class="definition post-aside rhythm">${content}</p>`;
 };
 
-module.exports = definition;

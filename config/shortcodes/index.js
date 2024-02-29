@@ -1,27 +1,12 @@
-const asideShortcode = require('./aside');
-const definitionShortcode = require('./definition');
-const hashArtShortcode = require('./hashArt');
-const quoteShortcode = require('./quote');
-const iconShortcode = require('./icon');
-const imageShortcode = require('./image');
-const faviconShortcode = require('./favicon');
-const socialIconShortcode = require('./socialIcon');
-const artworkShortcode = require('./artwork');
-const nanoIdShortcode = require('./nanoid');
-const detailsShortcode = require('./details');
-const fetchText = require('./fetchText');
-
-module.exports = {
-  asideShortcode,
-  definitionShortcode,
-  hashArtShortcode,
-  quoteShortcode,
-  iconShortcode,
-  imageShortcode,
-  faviconShortcode,
-  socialIconShortcode,
-  artworkShortcode,
-  nanoIdShortcode,
-  detailsShortcode,
-  fetchText,
-};
+export { default as asideShortcode } from './aside.js';
+export { default as definitionShortcode } from './definition.js';
+export { default as hashArtShortcode } from './hashArt.js';
+export { default as quoteShortcode } from './quote.js';
+export { default as iconShortcode } from './icon.js';
+export { default as imageShortcode } from './image.js';
+export { default as faviconShortcode } from './favicon.js';
+export { default as socialIconShortcode } from './socialIcon.js';
+export { default as artworkShortcode } from './artwork.js';
+export { default as nanoIdShortcode } from './nanoid.js';
+export { default as detailsShortcode } from './details.js';
+export { default as fetchText } from './fetchText';

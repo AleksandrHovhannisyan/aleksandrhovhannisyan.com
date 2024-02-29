@@ -1,7 +1,8 @@
-const path = require('path');
-const Image = require('@11ty/eleventy-img');
-const { stringifyAttributes, withoutBaseDirectory } = require('../utils');
-const { imagePaths } = require('../constants');
+import path from 'path';
+import Image from '@11ty/eleventy-img';
+import stringifyAttributes from 'stringify-attributes';
+import { withoutBaseDirectory } from '../utils.js';
+import { imagePaths } from '../constants.js';
 
 const FAVICON_FORMAT = 'png';
 const APPLE_TOUCH_ICON_WIDTH = 180;
@@ -9,7 +10,7 @@ const APPLE_TOUCH_ICON_WIDTH = 180;
 let cache = {};
 
 /** Returns link tags for the site's favicon. */
-async function faviconShortcode(src) {
+export default async function faviconShortcode(src) {
   if (!cache[src]) {
     const props = {
       widths: [16, 32, 57, 76, 96, 128, APPLE_TOUCH_ICON_WIDTH, 192, 228],
@@ -36,5 +37,3 @@ async function faviconShortcode(src) {
   }
   return cache[src];
 }
-
-module.exports = faviconShortcode;
