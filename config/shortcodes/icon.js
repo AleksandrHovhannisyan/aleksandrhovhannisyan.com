@@ -1,6 +1,6 @@
-const feather = require('feather-icons');
+import feather from 'feather-icons';
 
-const iconShortcode = (props) => {
+export default function iconShortcode(props) {
   const {
     icon,
     className,
@@ -28,4 +28,3 @@ const iconShortcode = (props) => {
   }
 };
 
-module.exports = iconShortcode;

@@ -1,8 +1,8 @@
-const path = require('path');
-const { toAbsoluteImageUrl } = require('../../config/filters/filters');
-const featureFlags = require('../_data/featureFlags');
+import path from 'path';
+import { toAbsoluteImageUrl } from '../../config/filters/filters.js';
+import featureFlags from '../_data/featureFlags.js';
 
-module.exports = {
+export default {
   layout: 'post',
   permalink: (data) => `/blog/${data?.page?.fileSlug}/`,
   isPost: true,

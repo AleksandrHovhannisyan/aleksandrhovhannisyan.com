@@ -1,6 +1,6 @@
-const { toAbsoluteImageUrl } = require('../../config/filters/filters');
+import { toAbsoluteImageUrl } from '../../config/filters/filters.js';
 
-module.exports = {
+export default {
   layout: 'default',
   openGraph: {
     type: 'website',

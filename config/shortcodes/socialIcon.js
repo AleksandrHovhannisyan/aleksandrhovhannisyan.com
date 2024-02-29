@@ -1,7 +1,6 @@
-const simpleIcons = require('simple-icons');
+import simpleIcons from 'simple-icons';
 
-const socialIcon = (icon) => {
+export default function socialIcon(icon) {
   return simpleIcons.Get(icon).svg;
 };
 
-module.exports = socialIcon;

@@ -1,6 +1,6 @@
-const { getLatestGitCommitHash } = require('../../config/utils');
+import { getLatestGitCommitHash } from '../../config/utils.js';
 
-const getBuildInfo = () => {
+export default function getBuildInfo() {
   const latestGitCommitHash = getLatestGitCommitHash('long');
   const now = new Date();
   const timeZone = 'UTC';
@@ -19,4 +19,3 @@ const getBuildInfo = () => {
   };
 };
 
-module.exports = getBuildInfo;

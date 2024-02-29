@@ -1,4 +1,4 @@
-function artworkShortcode(content, description) {
+export default function artworkShortcode(content, description) {
   const artworkId = this.page.fileSlug;
   if (!description) {
     throw new Error(`Artwork ${artworkId} is missing a description.`);
@@ -17,4 +17,3 @@ function artworkShortcode(content, description) {
           </figure>`;
 }
 
-module.exports = artworkShortcode;

@@ -1,6 +1,6 @@
-const { markdown } = require('../plugins/markdown');
+import { markdown } from '../plugins/markdown.js';
 
-const details = (children, summary, open = false) => {
+export default function details(children, summary, open = false) {
   if (!children) {
     throw new Error('You must provide a non-empty string for an aside.');
   }
@@ -11,4 +11,3 @@ const details = (children, summary, open = false) => {
   </details>`;
 };
 
-module.exports = details;

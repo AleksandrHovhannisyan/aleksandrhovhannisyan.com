@@ -1,6 +1,8 @@
-const crypto = require('crypto');
+import crypto from 'crypto';
 
 /**
  * @param {number} length The length of the ID to generate.
  */
-module.exports = (length = 6, prefix = 'id-') => `${prefix}${crypto.randomUUID().substring(0, length)}`;
+export default function nanoid(length = 6, prefix = 'id-') {
+  return `${prefix}${crypto.randomUUID().substring(0, length)}`;
+}

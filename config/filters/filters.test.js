@@ -1,5 +1,5 @@
-const { where, limit, sortByKey, dividedBy, toAbsoluteUrl, getLatestCollectionItemDate } = require('./filters');
-const site = require('../../src/_data/site');
+import { where, limit, sortByKey, dividedBy, toAbsoluteUrl, getLatestCollectionItemDate } from './filters';
+import site from '../../src/_data/site';
 
 describe('custom 11ty filters', () => {
   describe('limit', () => {
