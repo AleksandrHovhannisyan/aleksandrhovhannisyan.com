@@ -18,14 +18,14 @@
 
 @mixin colors-dark() {
     color-scheme: dark;
-    --color-surface-1: hsl(0deg 0% 8%);
-    --color-surface-2: hsl(0deg 0% 13%);
-    --color-surface-3: hsl(0deg 0% 23%);
+    --color-surface-1: hsl(0deg 0% 6%);
+    --color-surface-2: hsl(0deg 0% 12%);
+    --color-surface-3: hsl(0deg 0% 20%);
     --color-surface-4: hsl(0deg 0% 30%);
     --color-surface-5: hsl(0deg 0% 40%);
     --color-surface-6: hsl(0deg 0% 60%);
     --color-surface-7: hsl(0deg 0% 70%);
-    --color-surface-8: hsl(0deg 0% 87%);
+    --color-surface-8: hsl(0deg 0% 86%);
     --color-text-normal: var(--color-surface-8);
     --color-text-soft: var(--color-surface-7);
     --color-text-emphasis: white;
