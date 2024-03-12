@@ -38,7 +38,7 @@ The finite state design pattern allows us to bundle up all the decision-making l
 
 The idea behind FSMs will become more concrete once we start writing some code—and that's what we'll do next, borrowing Buckland's apt analogy of a light switch.
 
-## Modeling a Light Switch in Code
+## Modeling Entity State in Code
 
 Suppose we have a light switch that can be in one of four states:
 
