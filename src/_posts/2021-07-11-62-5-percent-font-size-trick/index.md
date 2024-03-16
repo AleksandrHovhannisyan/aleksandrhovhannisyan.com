@@ -4,7 +4,7 @@ description: Once you get used to thinking in rems for font sizing, you'll find 
 keywords: [62.5% font size, rems, font size]
 categories: [css, typography, math, accessibility]
 commentsId: 97
-lastUpdated: 2022-06-26
+lastUpdated: 2024-03-15
 redirectFrom:
   - /blog/respecting-font-size-preferences-rems-62-5-percent/
 thumbnail:
@@ -12,10 +12,20 @@ thumbnail:
 ---
 
 {% aside %}
-  **Update {{ lastUpdated | formatDate: "MM/DD/YYYY" }}**: Originally, this article combined two topics: why you should use rems for font sizing, and how the 62.5% font size trick works. I've now published the former separately: [Use Rems for Font Size to Respect User Preferences](/blog/use-rems-for-font-size/).
+**Note**: This article explains a popular and fairly old CSS technique, but I did not come up with it. I'm not sure who did, or else I'd have credited them here.
 {% endaside %}
 
-Once you get used to thinking in rems, you'll find that it's actually quite easy to express familiar powers of two as fractions of `16`, the root font size of every browser. But if you need to express any other value in rems—like odd numbers or very large numbers—you'll need to do the math by hand, convert it with CSS `calc`, or use a preprocessor like Sass. Alternatively, you can make your life easier using a trick with a root font size of 62.5%.
+Of all the units that CSS has to offer, rems are the preferred way to express font size because they scale with user settings. Ordinarily, `1rem = 16px` in all modern browsers, but a user can actually go into their browser settings and increase or decrease this value as they prefer; all of your rem-based font sizes will scale relative to that new base value.
+
+Once you get used to thinking in rems, you'll find that it's actually quite easy to express familiar powers of two as fractions of `16`. For example:
+
+- `24` is two and a half times `16`: `1.5rem`.
+- `8` is half of `16`: `0.5rem`.
+- `4` is a fourth of `16`: `0.25rem`.
+- `2` is an eighth: `0.125rem`.
+- ... and so on.
+
+But if you need to express any other value in rems—like odd numbers or very large numbers—you'll need to do the math by hand, convert it with CSS `calc`, or use a preprocessor like Sass. Alternatively, you can make your life easier using a trick with a root font size of 62.5%.
 
 {% include "toc.md" %}
 
@@ -41,7 +51,7 @@ Our only other option is to use percentages (though we could technically also us
 
 ```css
 html {
-  /* 62.5% of 16px browser font size is 10px */
+  /* 62.5% of 16px user agent font size is 10px */
   font-size: 62.5%;
 }
 
@@ -69,7 +79,7 @@ body {
 
 At this point, you may be a little suspicious. We scaled the root font size down, but then we scaled it back up for the body—doesn't that defeat the whole purpose of scaling the root font size down in the first place?
 
-The important thing to understand is that the root font size (on the `html` element) need not be the same as the font size on the `body` element. In this case, we have a root font size of `10px` because we scaled the `html` font size down to 62.5% of the browser's font size, but we did this solely for the convenience of translating pixels into rems. Our body font size—all of the visible text on the page—is still scaled back up to an effective font size of `16px` so that it matches the browser's font size.
+The important thing to understand is that the root font size (on the `html` element) need not be the same as the font size on the `body` element. In this case, we have a root font size of `10px` because we scaled the `html` font size down to 62.5% of the user agent's font size, but we did this solely for the convenience of translating pixels into rems. Our body font size—all of the visible text on the page—is still scaled back up to an effective font size of `16px` so that it matches the browser's font size.
 
 These are just two ways of looking at the same equation. Before, we would've had to perform this calculation to express a target pixel font size in rems:
 
@@ -143,12 +153,14 @@ What about the `4.8rem`-sized heading? After the user sets their base font size 
 Heading font size = 12.5px × 4.8rem = 60px
 ```
 
-This may seem strange since we actually wanted `4.8rem` to equal `48px`, but remember: That's only true when we assume the root font size is `16px`, which isn't the case here. If a user increases their preferred font size, all `rem`-based font sizes will scale up proportionally. So in this case, it's actually *good* that the heading font size is `60px` because it means that the ratio between the `h1`'s size and the browser font size was preserved:
+This may seem strange since we actually wanted `4.8rem` to equal `48px`, but remember: That's only true when we assume the root font size is `16px`, which isn't the case here. If a user increases their preferred font size, all `rem`-based font sizes need to scale up proportionally. So in this case, it's actually *good* that the heading font size is `60px` because it means that the ratio between the `h1`'s size and the browser font size was preserved:
 
 ```
 Before: 48px ÷ 16px = 3
 After:  60px ÷ 20px = 3
 ```
+
+Sure, this doesn't match the design provided to you, which called for a heading that's 48px. But if you think about it, that's not actually a problem. If your goal is to make the font sizes on the page match the ones in your design composition exactly, then you should use pixels... But you actually _shouldn't_ use pixels because they don't respect user preferences. Remember, that 48px-heading doesn't live in isolation; the designer chose that value because it looked good relative to other font sizes on the page. So if all of the font sizes scale up by the same ratio, they will still be proportional.
 
 ## What About `6.25%`?
 
