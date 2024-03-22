@@ -96,13 +96,15 @@ noindex: true
 
 ### Pill
 
-<a href="#pill" class="pill" data-shape="round" data-size="sm">pill {{ i }}</a>
+<a href="#pill" class="pill" data-shape="round">regular pill</a>
+
+<a href="#pill" class="pill" data-shape="round">small pill</a>
 
 ### Pill Group
 
 <div class="pill-group">
   {%- for i in (1..4) -%}
-    <a href="#pill" class="pill" data-shape="round" data-size="sm">pill {{ i }}</a>
+    <a href="#pill" class="pill" data-shape="round">pill {{ i }}</a>
   {%- endfor -%}
 </div>
 

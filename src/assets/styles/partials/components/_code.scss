@@ -13,5 +13,5 @@
 
   background-color: var(--color-inline-code-bg);
   border-radius: functions.spacing("-3");
-  padding: 0.2em;
+  padding: functions.relative("-3");
 }

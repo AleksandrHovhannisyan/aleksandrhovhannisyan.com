@@ -26,7 +26,7 @@
     display: flex;
     align-items: center;
     gap: functions.spacing("-4");
-    @include mixins.font($family: "mono", $weight: "regular", $size: "xs");
+    @include mixins.font($family: "mono", $weight: "regular");
 
     svg {
       width: functions.relative("0");
@@ -62,7 +62,6 @@
     flex-wrap: wrap;
     gap: functions.spacing("-2");
     margin-top: functions.spacing("1");
-    font-size: 0.65em;
     @include mixins.font($family: "mono", $weight: "regular");
   }
 

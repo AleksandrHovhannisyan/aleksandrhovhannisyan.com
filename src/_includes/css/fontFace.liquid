@@ -20,6 +20,7 @@
         font-weight: {{ font.weightAxes.min }} {{ font.weightAxes.max }};
         {% if font.variants.roman.display -%}font-display: {{ font.variants.roman.display }};{%- endif -%}
         src: local("{{ font.variants.roman.postscriptName }}"), url("{{ font.variants.roman.url }}") format("woff2 supports variations"), url("{{ font.variants.roman.url }}") format("woff2-variations");
+        {%- if font.sizeAdjust -%}size-adjust: {{ font.sizeAdjust | times: 100 }}%;{%- endif -%}
       }
       {%- if font.variants.italic -%}
       @font-face {
