@@ -40,7 +40,7 @@
 
   &-title {
     margin-top: functions.spacing("-3");
-    text-wrap: balance;
+    text-wrap: pretty;
     // Tighten line height due to short line length
     @include mixins.font($size: "lg", $leading: "xs");
   }
