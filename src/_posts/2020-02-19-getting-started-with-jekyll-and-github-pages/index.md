@@ -1379,7 +1379,7 @@ Here are some example use cases for Jekyll includes:
 
 **Inline SVGs**: You can use something like [Font-Awesome-SVG-PNG](https://github.com/encharm/Font-Awesome-SVG-PNG) to find SVG icons that you want to use on your site and stick those in an include file. That include could take two arguments: the name of the SVG and an optional class name to apply to it. You can then insert SVGs into any of your pages, without having to copy-paste a huge chunk of HTML.
 
-**Lazily loaded, WebP-compatible images**. On my website, I have an include that allows me to conveniently insert images into my blog posts with just a single, legible line of markup. You can learn more about how I do this in my blog post on [using WebP images in Jekyll](/blog/improve-page-load-speed-in-jekyll-using-the-webp-image-format/).
+**Lazily loaded, WebP-compatible images**. On my website, I have an include that allows me to conveniently insert images into my blog posts with just a single, legible line of markup. You can learn more about how I do this in my blog post on [using WebP images in Jekyll](/blog/jekyll-webp-images/).
 
 **Post statistics**. On my blog, each post shows the date when it was published and a measure of its reading length. This appears on both the preview cards for the posts as well as in the posts themselves. I *could* copy-paste the same markup in both locations, but if I need to change something later on, I'd need to remember to update it in both pages. Instead, I just create an include file.
 

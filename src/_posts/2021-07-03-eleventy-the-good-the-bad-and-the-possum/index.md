@@ -292,7 +292,7 @@ Computed data is *amazing* and unlocks a whole new level of dynamic templating t
 
 ### 5. It Has an Excellent Image Plugin
 
-With my Jekyll blog, I was [optimizing images by hand](/blog/improve-page-load-speed-in-jekyll-using-the-webp-image-format/) with a Python script that generated low-quality placeholders and WebP variants for every single image in a directory. This worked surprisingly well, and it even allowed me to support animated WebP GIFs without slowing down my page load speed. It also kept my build times low since I was generating images statically.
+With my Jekyll blog, I was [optimizing images by hand](/blog/jekyll-webp-images/) with a Python script that generated low-quality placeholders and WebP variants for every single image in a directory. This worked surprisingly well, and it even allowed me to support animated WebP GIFs without slowing down my page load speed. It also kept my build times low since I was generating images statically.
 
 Unfortunately, all of this came at a price: It was immensely tedious work that often held me back from writing posts because I dreaded the thought of having to optimize images by hand. What I wanted was for image optimization to be a core part of the framework I was using, not something I threw together with scripts and duct tape.
 

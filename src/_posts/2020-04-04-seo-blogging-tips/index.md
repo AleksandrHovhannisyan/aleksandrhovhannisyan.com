@@ -139,7 +139,7 @@ To improve your blog's SEO, you'll want to make sure that it loads quickly on al
 
 Here's how to improve page load speed on your blog:
 
-- Use modern image formats like [WebP for images and GIFs](/blog/improve-page-load-speed-in-jekyll-using-the-webp-image-format/).
+- Use modern image formats like WebP for images and GIFs
 - Properly size images. Cloudinary has an excellent (free) [website speed test tool](https://webspeedtest.cloudinary.com/), with a focus on scoring your images based on their actual vs. rendered resolution.
 - Defer loading of resource-intensive assets like images and videos until the user has scrolled to them (e.g., using the `IntersectionObserver` API).
 - Reduce the number of scripts and unnecessary third-party dependencies (e.g., jQuery, Bootstrap, FontAwesome). Alternatives: Vanilla JS, pure CSS, and SVGs.
