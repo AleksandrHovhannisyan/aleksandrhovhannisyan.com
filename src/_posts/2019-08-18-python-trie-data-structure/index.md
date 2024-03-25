@@ -4,6 +4,7 @@ description: Prefix trees (also known as tries) can be used to efficiently searc
 keywords: [python prefix tree, python prefix tree tutorial, python trie implementation, implement a trie in Python]
 categories: [data-structures, python]
 thumbnail: ./images/thumbnail.png
+redirectFrom: /blog/trie-data-structure-implementation-in-python/
 ---
 
 Of all the data structures I've encountered, the **prefix tree** (also known as a *trie*) still fascinates me the most because of its simplicity, elegance, and practical applications.

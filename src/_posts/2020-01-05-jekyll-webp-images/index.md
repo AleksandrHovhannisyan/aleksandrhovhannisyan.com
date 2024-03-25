@@ -4,6 +4,7 @@ description: Do your blog posts suffer from slow load speeds because of all thos
 keywords: ["improve page load speed", "webp image format"]
 categories: [jekyll, webperf, images]
 thumbnail: ./images/thumbnail.png
+redirectFrom: /blog/improve-page-load-speed-in-jekyll-using-the-webp-image-format/
 ---
 
 {% include "postImage.html" src: "./images/pagespeed-insights.png", alt: "The PageSpeed Insights score for one of my blog posts.", isLazy: false %}

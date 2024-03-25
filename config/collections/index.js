@@ -6,7 +6,7 @@ const { dir } = require('../constants');
 /** Returns all blog posts as a collection. */
 const getAllPosts = (collection) => {
   const posts = collection.getFilteredByGlob(`${dir.input}/_posts/**/*.md`);
-  return posts.reverse();
+  return posts.reverse().filter((post) => !post.data.isArchived);
 };
 
 /** Given a category name and an optional page number, returns the root-relative URL to that category's page.

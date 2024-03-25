@@ -1,6 +1,6 @@
 ---
 title: Tech Twitter Burnout
-description: Twitter can be a great way to network with other people and learn new things if it's used in moderation. But there's the rub.
+description: Tech Twitter can be a great way to network with other developers and learn new things. But it can also take over your life.
 keywords: [tech twitter, twitter]
 categories: [essay, writing, career, twitter]
 ---
@@ -26,7 +26,7 @@ Grifters in particular *seem* like they're experts because of their inflated fol
 Grifters, tech influencers, and DevRels are warping the image of what it means to be a software developer. They're constantly churning out new tweets, ideas, and products as if they run on limitless energy. That's because your worth on Twitter is determined not by the quality of your posts but by their quantity and controversy. It's determined by how well you can embrace the hustle of sharing tech tips 24/7 👇🧵, cranking out side projects, writing articles, giving talks, attending meetups, streaming dev, sharing CodePen demos, selling courses, publishing books, building a brand, tweeting about dev topics every waking minute of your existence, and practically devoting your mind, body, and soul to software development at the expense of everything else. Junior devs who don't know any better will come to believe that life outside of dev is just... more dev—that all of this is normal and healthy.
 
 {% aside %}
-Social interactions are also noticeably different—and less human—on Twitter. In the real world, close friends will rarely broadcast themselves to the world and socialize out in the open. But on Twitter, inside jokes are outside jokes. Private matters—including deeply personal ones—are voluntarily publicized. Conflicts can drag entire communities into unwanted drama, seeping into your feed and inviting you to amplify the rage. 
+Social interactions are also noticeably different—and less human—on Twitter. In the real world, close friends will rarely broadcast themselves to the world and socialize out in the open. But on Twitter, inside jokes are outside jokes. Private matters—including deeply personal ones—are voluntarily publicized. Conflicts can drag entire communities into unwanted drama, seeping into your feed and inviting you to amplify the rage.
 {% endaside %}
 
 All of this culminates in an overwhelming sense of loneliness, self-doubt, imposter syndrome, and burnout as you realize how very little people care about who you are and what you have to offer on the platform. It's just a game of numbers and a race to the top. Those who do not conform are trampled by the crowd. As you spend more time on Twitter, it begins to take a significant toll on your mental health. I began to feel exhausted, insignificant, and alone. Twitter had conditioned me to base my self-worth on vanity metrics such as likes and follows—the absence of which suggested that I was doing something wrong.

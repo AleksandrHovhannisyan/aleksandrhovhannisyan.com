@@ -7,6 +7,7 @@ lastUpdated: 2022-10-28
 commentsId: 68
 isFeatured: true
 thumbnail: ./images/thumbnail.png
+redirectFrom: /blog/svg-tutorial-how-to-code-svg-icons-by-hand/
 stylesheets:
   - /assets/styles/demos/svg.css
 ---
