@@ -119,7 +119,7 @@ So far, we haven't looked at how the preferred value for `clamp` is actually cal
 
 First, we need to realize that we rarely ever want some arbitrary min and max font size without associating each one with a screen width. So instead of saying that we want our min font size to be `16px` and our max font size to be `19px`, we need to reword the problem. For example:
 
-> "I want a minimum font size of `16px` at a viewport width of `400px` and a max font size of `19px` at a viewport width of `1000px`."
+> I want a minimum font size of `16px` at a viewport width of `400px` and a max font size of `19px` at a viewport width of `1000px`.
 
 Now, we have four values instead of just two:
 

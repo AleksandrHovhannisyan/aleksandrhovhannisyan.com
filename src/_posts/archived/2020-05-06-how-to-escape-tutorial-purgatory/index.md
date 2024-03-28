@@ -16,7 +16,9 @@ Stuck in tutorial purgatory? Here are my suggestions for how to escape this hell
 
 ## Use Tutorials as a Guide
 
-> "Thou follow me, and I will be thy guide" —Virgil, *The Divine Comedy*
+{% quote "Virgil, The Divine Comedy" %}
+Thou follow me, and I will be thy guide
+{% endquote %}
 
 Think about whether you do any of these things when watching or reading dev tutorials:
 
