@@ -49,7 +49,11 @@ const fonts = {
     type: 'variable',
     family: 'Source Code Pro',
     fallbacks: [`Monaco`, `Consolas`, `Courier New`, `monospace`],
-    sizeAdjust: 0.8,
+    metricOverrides: {
+      sizeAdjust: 0.74,
+      ascent: 0.935808,
+      descent: 0.257595,
+    },
     weightAxes: {
       min: 100,
       max: 900,

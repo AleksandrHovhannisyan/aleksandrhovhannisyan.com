@@ -15,7 +15,7 @@
  * @typedef FontBase
  * @property {string} family The font family name (e.g., `'Fira Sans'`)
  * @property {string[]} fallbacks Fallback font families. Used when assembling font variables.
- * @property {number} [sizeAdjust] A number between 0 and 1, representing a percentage for CSS size-adjust.
+ * @property {Record<'sizeAdjust'|'ascent'|'descent', number>} [metricOverrides] Overrides for font metrics. Each number is a percentage / 100 (e.g., 0.5 = 50%).
  */
 
 /**

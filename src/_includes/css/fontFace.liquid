@@ -20,7 +20,11 @@
         font-weight: {{ font.weightAxes.min }} {{ font.weightAxes.max }};
         {% if font.variants.roman.display -%}font-display: {{ font.variants.roman.display }};{%- endif -%}
         src: local("{{ font.variants.roman.postscriptName }}"), url("{{ font.variants.roman.url }}") format("woff2 supports variations"), url("{{ font.variants.roman.url }}") format("woff2-variations");
-        {%- if font.sizeAdjust -%}size-adjust: {{ font.sizeAdjust | times: 100 }}%;{%- endif -%}
+        {%- if font.metricOverrides -%}
+        {%- if font.metricOverrides.sizeAdjust -%}size-adjust: {{ font.metricOverrides.sizeAdjust | times: 100 }}%;{%- endif -%}
+        {%- if font.metricOverrides.ascent -%}ascent-override: {{ font.metricOverrides.ascent | times: 100 }}%;{%- endif -%}
+        {%- if font.metricOverrides.descent -%}descent-override: {{ font.metricOverrides.descent | times: 100 }}%;{%- endif -%}
+        {%- endif -%}
       }
       {%- if font.variants.italic -%}
       @font-face {
