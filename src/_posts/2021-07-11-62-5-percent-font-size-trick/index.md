@@ -2,7 +2,7 @@
 title: The 62.5% Font Size Trick
 description: Once you get used to thinking in rems for font sizing, you'll find that it's easy to express familiar powers of two. But for other values, you may find it helpful to use the 62.5% font size trick.
 keywords: [62.5% font size, rems, font size]
-categories: [css, typography, math, accessibility]
+categories: [css, typography, math]
 commentsId: 97
 lastUpdated: 2024-03-15
 redirectFrom:

@@ -2,7 +2,7 @@
 title: Don't Use a Fixed Line Height
 description: In typography, the ideal line height for text depends on a variety of factors, including font size, line length, and font family.
 keywords: [line height, ideal line height, typography]
-categories: [css, sass, typography, accessibility]
+categories: [css, sass, typography]
 lastUpdated: 2021-08-17
 commentsId: 96
 ---
@@ -21,7 +21,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 ```
 
-While this may seem sufficient, it's not a good practice from a design and accessibility perspective. Let's understand why and explore two solutions to this problem: one with custom properties and Sass mixins, and another with the `ex` unit and a calc function.
+While this may seem sufficient, it's not a good practice from a design and UX perspective. Let's understand why and explore two solutions to this problem: one with custom properties and Sass mixins, and another with the `ex` unit and a calc function.
 
 {% include "toc.md" %}
 
@@ -114,7 +114,7 @@ html {
 
 System font stacks are a popular option among sites that want to avoid the network load of serving vendor fonts. But while this is lightweight, it's also unpredictable—because now, you're no longer working with a single reference font. Thus, you'll be selecting your line heights and font sizes relative to the system font on whatever operating system you use for design work, which can bias the results in favor of one OS.
 
-So while your chosen line heights and font sizes may look good on one OS, they may look different on another. This can create accessibility issues because choosing the wrong line height or font size for your copy can harm readability. In some cases, if your line height is *too tight*, Lighthouse may complain that clickable elements (like inline links) are too close to each other.
+So while your chosen line heights and font sizes may look good on one operating system, they may look different on another. This can create usability issues because choosing the wrong line height for text can harm readability. In some cases, if your line height is *too tight*, clickable elements (like inline links) will render too closely to each other, making it easier for some users to accidentally click the wrong one.
 
 If you really want to take the system font route, I recommend picking a font that exists on most operating systems, like Georgia (serif) or Verdana (sans-serif). That way, you still have a single reference font against which you can design your site, and you have more of an assurance that your UI will look consistent from one OS to another.
 
