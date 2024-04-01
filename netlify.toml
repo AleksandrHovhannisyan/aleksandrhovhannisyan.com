@@ -23,5 +23,3 @@
   for = "/*"
   [headers.values]
     Content-Security-Policy = "frame-ancestors 'none';"
-    Access-Control-Allow-Origin = "https://www.aleksandrhovhannisyan.com"
-    Vary = "Origin"
