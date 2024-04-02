@@ -22,11 +22,15 @@ exports.handler = async (event) => {
   try {
     // Check this first. Does not count towards the API rate limit.
     const { data: rateLimitInfo } = await Octokit.rateLimit.get();
-    console.log(`GitHub API requests remaining: ${rateLimitInfo.resources.core.remaining}`);
-    if (rateLimitInfo.resources.core.remaining === 0) {
+    console.log(`GitHub API requests remaining: ${rateLimitInfo.rate.remaining}`);
+    if (rateLimitInfo.rate.remaining === 0) {
+      const retryAfterSeconds = rateLimitInfo.rate.reset - Math.floor(Date.now() / 1000);
       return {
-        statusCode: 429,
-        body: JSON.stringify({ error: 'Unable to fetch comments at this time. Check back later.' }),
+        statusCode: 503,
+        headers: {
+          'Retry-After': retryAfterSeconds,
+        },
+        body: JSON.stringify({ error: 'Hourly API rate limit exceeded.' }),
       };
     }
 
@@ -66,9 +70,7 @@ exports.handler = async (event) => {
 
     return {
       statusCode: 200,
-      body: JSON.stringify({
-        data: comments,
-      }),
+      body: JSON.stringify({ data: comments }),
     };
   } catch (e) {
     console.log(e);

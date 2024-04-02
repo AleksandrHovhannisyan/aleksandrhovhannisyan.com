@@ -220,8 +220,8 @@ const remainingCalls = rateLimitInfo.resources.core.remaining;
 console.log(`GitHub API requests remaining: ${remainingCalls}`);
 if (remainingCalls === 0) {
   return {
-    statusCode: 429,
-    body: JSON.stringify({ error: 'Unable to fetch comments at this time. Check back later.' }),
+    statusCode: 503,
+    body: JSON.stringify({ error: 'Hourly API rate limit exceeded.' }),
   };
 }
 ```
