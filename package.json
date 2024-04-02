@@ -85,5 +85,5 @@
     "*.js": "yarn run lint:js:fix",
     "*.scss": "yarn run lint:css:fix"
   },
-  "packageManager": "yarn@1.22.4"
+  "packageManager": "yarn@4.1.1"
 }
