@@ -15,9 +15,11 @@ html {
   scroll-behavior: smooth;
 }
 
-.artwork {
-  $root: &;
+body {
+  @include mixins.font($family: "mono", $weight: "regular", $size: "base");
+}
 
+.artwork {
   --color-artwork-shadow: hsl(272deg 53% 20%);
   height: 100%;
   display: grid;
@@ -141,7 +143,7 @@ html {
       border-top: solid 4px;
       padding: functions.spacing("5");
       text-align: center;
-      @include mixins.font($family: "mono", $weight: "regular", $size: "xs");
+      line-height: functions.leading("xs");
 
       > * {
         max-width: 60ch;
@@ -157,7 +159,7 @@ html {
       --color-shadow: var(--color-text);
       background-color: white;
       position: relative;
-      padding: functions.spacing("-1") functions.spacing("0");
+      padding: functions.relative("-2") functions.relative("0");
       text-transform: uppercase;
       letter-spacing: functions.tracking("lg");
       text-decoration: none;
@@ -169,7 +171,6 @@ html {
         3px 3px,
         2px 2px,
         1px 1px;
-      @include mixins.font($size: "base", $family: "mono", $weight: "regular");
     }
 
     ol {
