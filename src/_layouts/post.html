@@ -42,15 +42,16 @@ eleventyComputed:
       </template>
       <section id="comments" class="stack gap-10" data-comments-id="{{ commentsId }}">
         <div class="stack gap-0">
-          <div class="comment-actions repel align-center gap-0">
-            <h2><span id="comments-count" aria-hidden="true"></span>Comments</h2>
+          <div class="repel align-center gap-0">
+            <h2><span id="comments-count"></span>Comments</h2>
             <a
               class="button comment-button"
               href="https://github.com/{{ site.issues.owner }}/{{ site.issues.repo }}/issues/{{ commentsId }}"
               target="_blank"
               rel="noreferrer noopener"
-              >Comment on GitHub {% include "icon.html" icon: "external-link", width: "16", height: "16" %}</a
             >
+              Comment on GitHub
+            </a>
           </div>
           <p class="comments-explanation">
             Comment system powered by the GitHub Issues API. You can learn more about
@@ -59,7 +60,7 @@ eleventyComputed:
           </p>
         </div>
         <p id="comments-placeholder" class="text-center">Loading...</p>
-        <ol class="stack gap-10"></ol>
+        <ol class="stack gap-10" aria-live="polite"></ol>
       </section>
     {%- endif -%}
   </div>
