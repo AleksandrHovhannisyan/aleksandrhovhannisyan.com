@@ -29,7 +29,7 @@ pre[class*="language-"] {
     /* VS Code Dark Plus theme: https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vsc-dark-plus.css */
     --color-code-selection: hsl(210deg 100% 84% / 15%);
     --color-code-comment: hsl(101deg 29% 47%);
-    --color-code-text: hsl(0deg 0% 83%);
+    --color-code-text: hsl(0deg 0% 90%);
     --color-code-keyword: hsl(207deg 61% 59%);
     --color-code-number: hsl(99deg 28% 73%);
     --color-code-attribute: hsl(201deg 98% 80%);
@@ -172,9 +172,9 @@ pre[class*="language-bash"] {
   display: none;
   color: var(--color-code-text);
   background-color: var(--color-code-overlay-1);
-  padding: functions.spacing("-2") functions.spacing("0");
+  padding: functions.spacing("-3") functions.spacing("-1");
   border-radius: functions.spacing("-3");
-  @include mixins.font($family: "mono", $weight: "regular", $size: "xs");
+  @include mixins.font($family: "mono", $weight: "regular");
 
   &:is(.copied, :focus) {
     opacity: 1;
