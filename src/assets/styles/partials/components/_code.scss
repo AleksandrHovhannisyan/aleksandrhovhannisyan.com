@@ -11,6 +11,7 @@
     --color-inline-code-bg: var(--color-surface-3);
   }
 
+  color: var(--color-text-emphasis);
   background-color: var(--color-inline-code-bg);
   border-radius: functions.spacing("-3");
   padding: functions.relative("-3");
