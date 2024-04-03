@@ -63,8 +63,8 @@
   @return get-token-value("size", "leading", $step);
 }
 
-@function tracking($step) {
-  @return get-token-value("size", "tracking", $step);
+@function kerning($step) {
+  @return get-token-value("size", "kerning", $step);
 }
 
 /// Returns true if the given string ends with the given suffix.

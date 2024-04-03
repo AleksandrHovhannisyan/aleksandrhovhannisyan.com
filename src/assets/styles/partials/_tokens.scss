@@ -48,22 +48,22 @@ $tokens: (
         min: 32px,
         max: 42px,
         leading: "2xs",
-        tracking: "sm",
+        kerning: "sm",
       ),
       "4xl": (
         min: 36px,
         max: 56px,
         leading: "3xs",
-        tracking: "sm",
+        kerning: "sm",
       ),
       "5xl": (
         min: 40px,
         max: 72px,
         leading: "3xs",
-        tracking: "xs",
+        kerning: "xs",
       ),
     ),
-    tracking: (
+    kerning: (
       "xs": -0.5px,
       "sm": -0.25px,
       "md": 0.25px,
