@@ -1,10 +1,10 @@
-const { Octokit } = require('@octokit/rest');
-const { createTokenAuth } = require('@octokit/auth-token');
-const { sanitizeHtml } = require('../config/utils');
-const { markdown } = require('../config/plugins/markdown');
-const site = require('../src/_data/site');
-const dayjs = require('dayjs');
-const dayjsRelativeTimePlugin = require('dayjs/plugin/relativeTime');
+import { Octokit } from '@octokit/rest';
+import { createTokenAuth } from '@octokit/auth-token';
+import { sanitizeHtml } from '../config/utils';
+import { markdown } from '../config/plugins/markdown';
+import site from '../src/_data/site';
+import dayjs from 'dayjs';
+import dayjsRelativeTimePlugin from 'dayjs/plugin/relativeTime';
 dayjs.extend(dayjsRelativeTimePlugin);
 
 /** Returns an authenticated GitHub API instance that can be used to fetch data. */
@@ -14,24 +14,28 @@ const getAuthenticatedOctokit = async () => {
   return new Octokit({ auth: token });
 };
 
-// Netlify handler for serverless function. Returns comments for a given post by ID.
-exports.handler = async (event) => {
-  const issueNumber = event.queryStringParameters.id;
+/** Netlify handler for serverless function. Returns comments for a given post by ID.
+ * @param {Request} request The incoming request data.
+ */
+export default async function getCommentsForPost(request) {
+  const issueNumber = new URL(request.url).searchParams.get('id');
   const Octokit = await getAuthenticatedOctokit();
 
   try {
     // Check this first. Does not count towards the API rate limit.
     const { data: rateLimitInfo } = await Octokit.rateLimit.get();
-    console.log(`GitHub API requests remaining: ${rateLimitInfo.rate.remaining}`);
-    if (rateLimitInfo.rate.remaining === 0) {
-      const retryAfterSeconds = rateLimitInfo.rate.reset - Math.floor(Date.now() / 1000);
-      return {
-        statusCode: 503,
-        headers: {
-          'Retry-After': retryAfterSeconds,
-        },
-        body: JSON.stringify({ error: 'Hourly API rate limit exceeded.' }),
-      };
+    const remainingRequests = rateLimitInfo.rate.remaining;
+    console.log(`GitHub API requests remaining: ${remainingRequests}`);
+    if (remainingRequests === 0) {
+      const resetDate = new Date(0);
+      // From the docs: "The time at which the current rate limit window resets in UTC epoch seconds."
+      resetDate.setUTCSeconds(rateLimitInfo.rate.reset);
+      const retryTimeRelative = dayjs(resetDate).fromNow();
+      const retryTimeSeconds = Math.floor((resetDate.getTime() - Date.now()) / 1000);
+      return new Response(JSON.stringify({ error: `API rate limit exceeded. Try again ${retryTimeRelative}.` }), {
+        status: 503,
+        headers: { 'Retry-After': retryTimeSeconds },
+      });
     }
 
     // Reference for pagination: https://michaelheap.com/octokit-pagination/
@@ -68,15 +72,9 @@ exports.handler = async (event) => {
         };
       });
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ data: comments }),
-    };
+    return new Response(JSON.stringify({ data: comments }), { status: 200 });
   } catch (e) {
     console.log(e);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: 'Unable to fetch comments for this post.' }),
-    };
+    return new Response(JSON.stringify({ error: 'Unable to fetch comments for this post.' }), { status: 500 });
   }
-};
+}
