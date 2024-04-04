@@ -67,3 +67,10 @@
     }
   }
 }
+
+#comments-count {
+  color: var(--color-text-soft);
+  vertical-align: middle;
+  padding-inline-start: 0.25ch;
+  @include mixins.font($size: "base");
+}
