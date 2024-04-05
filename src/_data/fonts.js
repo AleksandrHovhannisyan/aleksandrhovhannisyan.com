@@ -50,9 +50,9 @@ const fonts = {
     family: 'Source Code Pro',
     fallbacks: [`Monaco`, `Consolas`, `Courier New`, `monospace`],
     metricOverrides: {
-      sizeAdjust: 0.74,
-      ascent: 0.935808,
-      descent: 0.257595,
+      sizeAdjust: 0.79,
+      ascent: 0.94,
+      descent: 0.26,
     },
     weightAxes: {
       min: 100,
