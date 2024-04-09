@@ -4,6 +4,7 @@ description: Learn how to implement a progressively enhanced theme switch compon
 categories: [html, css, javascript]
 keywords: [dark mode toggle, theme switch, theme toggle, theme picker]
 lastUpdated: 2024-04-08
+commentsId: 189
 thumbnail:
   url: https://images.unsplash.com/photo-1422207049116-cfaf69531072?q=80&w=1600&h=900&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 ---
