@@ -51,8 +51,7 @@ const makeMarkdownParser = () =>
       // Only external links (explicit protocol; internal links use relative paths)
       pattern: /^https?:/,
       attrs: {
-        target: '_blank',
-        rel: 'noreferrer noopener',
+        rel: 'noopener',
       },
     })
     .use(markdownItKatex, {
