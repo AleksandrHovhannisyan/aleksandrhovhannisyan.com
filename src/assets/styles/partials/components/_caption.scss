@@ -1,4 +1,7 @@
 :is(caption, figcaption, cite) {
   color: var(--color-text-soft);
+}
+
+:is(caption, figcaption) {
   text-wrap: balance;
 }
