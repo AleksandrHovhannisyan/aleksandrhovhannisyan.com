@@ -48,7 +48,7 @@ const fonts = {
   mono: {
     type: 'variable',
     family: 'Source Code Pro',
-    fallbacks: [`Monaco`, `Consolas`, `Courier New`, `monospace`],
+    fallbacks: [`mono-fallback`, `monospace`],
     metricOverrides: {
       sizeAdjust: 0.79,
       ascent: 0.94,

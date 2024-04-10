@@ -1,10 +1,16 @@
-/* Generated with capsizecss: https://github.com/seek-oss/capsize#createfontstack */
+/* Body font fallback, generated with capsize */
 @font-face {
   font-family: "body-fallback";
   src: local('Times New Roman');
   ascent-override: 93.5808%;
   descent-override: 25.7595%;
   size-adjust: 111.0271%;
+}
+/* Monospace font fallbacks. Approximated because they're proprietary and can't be analyzed with capsize/comparable tools. */
+@font-face {
+  font-family: "mono-fallback";
+  src: local("Menlo"), local("Courier New");
+  size-adjust: 80%;
 }
 {%- comment -%}Loop over the global font config and construct a series of @font-face declarations. We later feed this to scss to minify the output and inline it in the head for performance.{%- endcomment -%}
 {%- for entry in fonts -%}
