@@ -1,15 +1,23 @@
 @use "../functions";
 
 .rhythm {
+  @supports (margin-top: 1lh) {
+    --rhythm: 1lh;
+  }
+  @supports not (margin-top: 1lh) {
+    --rhythm: calc(#{functions.leading("base")} * 1em);
+  }
+
   > * + * {
-    margin-top: calc(#{functions.leading("base")} * 1em);
+    margin-top: var(--rhythm);
   }
 
   > :is(h1, h2, h3, h4, h5, h6) + * {
-    margin-top: functions.relative("0");
-  }
-
-  > :is(h1, h2, h3, h4, h5, h6) + :is(h2,h3,h4,h5,h6) {
-    margin-top: functions.relative("-1");
+    @supports (margin-top: 1lh) {
+      margin-top: 0.5lh;
+    }
+    @supports not (margin-top: 1lh) {
+      margin-top: functions.relative("0");
+    }
   }
 }
