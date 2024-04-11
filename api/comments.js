@@ -1,10 +1,10 @@
 import { Octokit } from '@octokit/rest';
 import { createTokenAuth } from '@octokit/auth-token';
-import { sanitizeHtml } from '../config/utils';
-import { markdown } from '../config/plugins/markdown';
-import site from '../src/_data/site';
+import { sanitizeHtml } from '../config/utils.js';
+import { markdown } from '../config/plugins/markdown.js';
+import site from '../src/_data/site.js';
 import dayjs from 'dayjs';
-import dayjsRelativeTimePlugin from 'dayjs/plugin/relativeTime';
+import dayjsRelativeTimePlugin from 'dayjs/plugin/relativeTime.js';
 dayjs.extend(dayjsRelativeTimePlugin);
 
 /** Returns an authenticated GitHub API instance that can be used to fetch data. */
