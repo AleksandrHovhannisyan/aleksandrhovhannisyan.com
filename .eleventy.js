@@ -1,6 +1,7 @@
 import esbuild from 'esbuild';
 import path from 'path';
 import PluginFootnotes from 'eleventy-plugin-footnotes';
+import EleventyPluginNetlifyRedirects from 'eleventy-plugin-netlify-redirects';
 import { EleventyPluginCodeDemo } from 'eleventy-plugin-code-demo';
 import {
   asideShortcode,
@@ -104,6 +105,25 @@ export default function eleventy(eleventyConfig) {
   eleventyConfig.addCollection('postsByCategory', getPostsByCategory);
 
   // Plugins
+  /** @type {import("eleventy-plugin-netlify-redirects").EleventyPluginNetlifyRedirectsOptions} */
+  const eleventyPluginNetlifyRedirectsOptions = {
+    staticRedirects: {
+      // Old blog structure with primary categories in URL. Some links still floating around on other sites.
+      "/blog/dev/*": "/blog/:splat",
+      "/blog/computer-science/*": "/blog/:splat",
+      "/blog/off-topic/*": "/blog/:splat",
+      // Old image structure, where blog post images were dumped into a folder of the same name as the post slug itself.
+      "/assets/images/posts/:slug/*": "/assets/images/:splat",
+      // FSM article images, already indexed. Redirect to avoid impacting traffic to this post. https://www.aleksandrhovhannisyan.com/blog/implementing-a-finite-state-machine-in-cpp/
+      "/assets/images/iomJzXpBY2-1280.png": "/assets/images/iAape8KQe6-1200.png",
+      "/assets/images/YVvOoXOAhY-1094.jpeg": "/assets/images/iAape8KQe6-1200.jpeg",
+      "/assets/images/YVvOoXOAhY-1094.webp": "/assets/images/iAape8KQe6-1200.webp",
+      "/assets/images/9LW1h6jx7k-1063.jpeg": "/assets/images/Z0MJRY8WpN-1271.jpeg",
+      "/assets/images/9LW1h6jx7k-1063.webp": "/assets/images/Z0MJRY8WpN-1271.webp",
+    },
+    frontMatterOverrides: { excludeFromSitemap: true },
+  };
+  eleventyConfig.addPlugin(EleventyPluginNetlifyRedirects, eleventyPluginNetlifyRedirectsOptions);
   eleventyConfig.addPlugin(PluginFootnotes, {
     baseClass: 'footnotes',
     classes: {

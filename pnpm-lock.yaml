@@ -55,6 +55,9 @@ devDependencies:
   eleventy-plugin-footnotes:
     specifier: ^0.11.0
     version: 0.11.0
+  eleventy-plugin-netlify-redirects:
+    specifier: ^0.1.0
+    version: 0.1.1
   esbuild:
     specifier: ^0.14.37
     version: 0.14.54
@@ -4246,6 +4249,10 @@ packages:
     resolution: {integrity: sha512-NQd6jNPekxIhESIIWPKUv2XXoYYknfDG8KjCdftSMGquncu1u9StVIDPmBinPChl4l68d8qTgmMXyM7kRxwGsg==}
     dependencies:
       clsx: 1.2.1
+    dev: true
+
+  /eleventy-plugin-netlify-redirects@0.1.1:
+    resolution: {integrity: sha512-wE50MCNJj4RDEJYrthS8iIR/qC+NVpdwPgPhXWR8ubRQPnXyqWzs9aZ/C1gkbqwKJWIHCvmA2elvjB8j0mD7dw==}
     dev: true
 
   /emoji-regex@8.0.0:
