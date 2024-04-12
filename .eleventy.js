@@ -14,6 +14,7 @@ const {
   hashArtShortcode,
   nanoIdShortcode,
   detailsShortcode,
+  fetchText,
 } = require('./config/shortcodes');
 const {
   limit,
@@ -72,6 +73,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addShortcode('socialIcon', socialIconShortcode);
   eleventyConfig.addShortcode('hashArt', hashArtShortcode);
   eleventyConfig.addShortcode('nanoid', nanoIdShortcode);
+  eleventyConfig.addShortcode('fetchText', fetchText);
 
   // Custom filters
   eleventyConfig.addFilter('limit', limit);
