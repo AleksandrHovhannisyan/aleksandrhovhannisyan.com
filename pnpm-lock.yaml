@@ -56,7 +56,7 @@ devDependencies:
     specifier: ^0.11.0
     version: 0.11.0
   eleventy-plugin-netlify-redirects:
-    specifier: ^0.1.0
+    specifier: ^0.1.1
     version: 0.1.1
   esbuild:
     specifier: ^0.14.37
