@@ -65,7 +65,6 @@
     display: flex;
     align-items: center;
     gap: functions.relative("-3");
-    text-align: center;
 
     > :first-child {
       margin-inline-end: auto;
@@ -85,7 +84,6 @@
   .navbar {
     padding-block: functions.spacing("2");
     position: unset;
-    box-shadow: none;
 
     .site-name {
       position: unset;
