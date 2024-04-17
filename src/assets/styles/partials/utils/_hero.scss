@@ -1,7 +1,9 @@
 @use "../mixins";
 
 .hero {
-  max-width: 68ch;
+  > * {
+    max-width: 41ch;
+  }
 
   &-title {
     @include mixins.font($size: "4xl");
