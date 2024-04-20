@@ -3,8 +3,7 @@ title: The Cost of Tech Debt
 description: The longer you leave tech debt unresolved, the more problems it will create for your team, until one day it becomes unbearable.
 keywords: [tech debt]
 categories: [essay, career, practices]
-thumbnail:
-    url: https://images.unsplash.com/photo-1533234427049-9e9bb093186d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=600&q=80
+thumbnail: https://images.unsplash.com/photo-1533234427049-9e9bb093186d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=600&q=80
 ---
 
 Technical debt (*tech debt* for short) is a term that, over time, has become a regular part of our vocabulary in the software industry—so much so that almost anything can be considered tech debt if you try hard enough. Slow tests? Tech debt. Slow app startup? Tech debt. Bugs piling up in the queue? Tech debt. New features? Not... really. But I suppose it depends on who you ask.

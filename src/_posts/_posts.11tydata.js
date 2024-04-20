@@ -27,7 +27,12 @@ module.exports = {
         // inputPath will look like src/_posts/yyyy-mm-dd-slug/ for a post located under src/_posts/yyyy-mm-dd-slug/index.md
         const { dir: imgDir } = path.parse(data.page.inputPath);
         // either a full URL for remote images or src/_posts/yyyy-mm-dd-slug/images/name.extension for local images
-        const src = data.thumbnail.url ?? path.join(imgDir, data.thumbnail);
+        let src;
+        if (data.thumbnail.match(/^https?:\/\//)) {
+          src = data.thumbnail;
+        } else {
+          src = path.join(imgDir, data.thumbnail);
+        }
         // for remote images, just the URL; else, a root-relative path to the image (as seen in the img tag's src)
         return toAbsoluteImageUrl(src);
       },

@@ -3,8 +3,7 @@ title: Gated Content, Broken Locks
 description: Some sites gate their content by hiding it with CSS. Whether you open the site incognito or normally, the full content appears to be beyond reach. But it's not—anyone can swing open the gate.
 keywords: [gated content]
 categories: [essay, css, writing]
-thumbnail:
-  url: https://images.unsplash.com/photo-1585152002465-43c1f64b95d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
+thumbnail: https://images.unsplash.com/photo-1585152002465-43c1f64b95d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 Someone shares an article online, and it eventually makes its way into one of your social feeds. The title, while dubious and verging on clickbait, piques your interest. Though you've walked these roads before, you naively hope that this time will be different. Perhaps this article's sole focus *isn't* to drive clicks, exploit people's emotions, force sign-ups, deceive users, or sell personal information to advertisers.

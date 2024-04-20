@@ -3,8 +3,7 @@ title: Flexbox Holy Albatross with Variable-Width Columns
 description: The Holy Albatross technique allows a flex container to auto-wrap from multiple columns to a single column at a target container width. Let's modify the original code to control the number and widths of columns.
 keywords: [holy albatross]
 categories: [css, layout]
-thumbnail:
-  url: https://images.unsplash.com/photo-1562073970-0c7e6b68428b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
+thumbnail: https://images.unsplash.com/photo-1562073970-0c7e6b68428b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 I recently took the time to learn how Heydon Pickering's [Flexbox Holy Albatross](https://heydonworks.com/article/the-flexbox-holy-albatross/) works so I could use it on my own site in lieu of container queries. In the process of implementing the technique, I realized that I would sometimes need to force a particular child in the layout to always span the full width of its row rather than getting pulled in alongside other siblings. To accomplish this, I implemented a variation of the Holy Albatross technique that allows you to control the number of columns at either the layout or child level.

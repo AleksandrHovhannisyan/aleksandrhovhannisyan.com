@@ -7,8 +7,7 @@ lastUpdated: 2021-06-12
 commentsId: 58
 stylesheets:
   - /assets/styles/demos/aspect-ratio.css
-thumbnail:
-  url: https://images.unsplash.com/photo-1550535424-fd4382da050c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
+thumbnail: https://images.unsplash.com/photo-1550535424-fd4382da050c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 If you're not sure how to define aspect ratios in CSS, or if you have no clue what an aspect ratio is to begin with, then you're in luck. This tutorial covers everything that you need to know about creating aspect ratio boxes in CSS, using both a modern approach and an old one with a percentage padding trick. Once you understand aspect ratios and how to define them, you'll be able to do all kinds of neat things—like creating `nxn` square grid layouts, responsively sizing embedded media, reserving space for images, and much more.

@@ -4,8 +4,7 @@ description: It can be tempting to lump unrelated code changes into a single com
 keywords: [atomic commits, atomic git commits, git]
 categories: [git, practices]
 lastUpdated: 2022-06-08
-thumbnail:
-  url: https://images.unsplash.com/photo-1614350292382-c448d0110dfa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
+thumbnail: https://images.unsplash.com/photo-1614350292382-c448d0110dfa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 We've all been there: You worked on lots of changes at once, some of which didn't have anything in common. For the sake of convenience, you decided to lump all of these changes into a single commit and call it a day. But while this may seem tempting, it could actually cause more problems down the line. Bigger commits can:

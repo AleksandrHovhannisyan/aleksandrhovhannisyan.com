@@ -3,8 +3,7 @@ title: Implementing the Caesar Cipher in JavaScript
 description: The Caesar cipher is named after Roman emperor Julius Caesar, who used the technique to encrypt his military and political communication. Learn how to implement both a simple and keyed Caesar cipher in JavaScript.
 keywords: [caesar cipher, keyed caesar cipher]
 categories: [javascript, cryptography, math, security]
-thumbnail:
-  url: https://images.unsplash.com/photo-1648739614336-cf2ccf5634ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
+thumbnail: https://images.unsplash.com/photo-1648739614336-cf2ccf5634ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 The [Caesar cipher](https://en.wikipedia.org/wiki/Caesar_cipher) is named after Roman emperor Julius Caesar, who used the technique to encrypt his military and political communication. In a cipher, individual symbols (letters) of the plaintext message are substituted with other symbols to obscure their meaning. More specifically, the Caesar cipher is a _monoalphabetic cipher_, meaning it maps the input alphabet to a single cipher alphabet. Given a plaintext alphabet that exhaustively lists all of the symbols that could be used in a plaintext message, the Caesar cipher generates a corresponding _cipher alphabet_ by shifting each symbol of the plaintext alphabet `K` spaces to the right or left, wrapping them as needed if the end of the alphabet is reached. To encipher and decipher messages, all you need to know are two pieces of information: the value of `K` and the alphabet being used.

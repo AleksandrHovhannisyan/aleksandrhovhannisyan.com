@@ -4,8 +4,7 @@ description: Destructuring in JavaScript has many clever uses that can make your
 keywords: [javascript, destructuring]
 categories: [javascript, typescript, react, practices]
 lastUpdated: 2022-04-17
-thumbnail:
-  url: https://images.unsplash.com/photo-1615678857339-4e7e51ce22db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
+thumbnail: https://images.unsplash.com/photo-1615678857339-4e7e51ce22db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 Back when I first learned about destructuring in ES6 JavaScript—and its close siblings, the rest and spread syntax—I did what many other developers do when they learn a new trick: I used it everywhere, trying to cram this newfound square peg into every round hole I stumbled upon. Somehow, I had come to equate destructuring with clean code, and anything that required more typing was unequivocally worse and had to be refactored to destructure All The Things. This was the way:

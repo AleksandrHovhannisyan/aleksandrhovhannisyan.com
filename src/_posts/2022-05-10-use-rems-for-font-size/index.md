@@ -5,8 +5,7 @@ keywords: [rems, font size, responsive font size, preferred font size]
 categories: [css, typography, accessibility]
 lastUpdated: 2023-06-14
 isFeatured: true
-thumbnail:
-  url: https://images.unsplash.com/photo-1624558347497-df07e0096f5a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bWFnbmlmeWluZyUyMGdsYXNzJTIwYm9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1600&h=900&q=60
+thumbnail: https://images.unsplash.com/photo-1624558347497-df07e0096f5a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bWFnbmlmeWluZyUyMGdsYXNzJTIwYm9va3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=1600&h=900&q=60
 ---
 
 In CSS, there are many different units that can be used to size elements on a page—`px`, `vw`, `ch`, `em`, `rem`, and [far too many others](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units) to list here. Of all these units, `rem` is the most reliable for font sizing, allowing you to style text responsively so that it scales whenever users change their preferred browser font size. Let's understand why this matters.

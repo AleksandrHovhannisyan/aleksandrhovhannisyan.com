@@ -5,8 +5,7 @@ keywords: [setting width and height on images, setting an image's width and heig
 categories: [webperf, images, aspect-ratio, html]
 commentsId: 78
 lastUpdated: 2022-09-26
-thumbnail:
-  url: https://images.unsplash.com/photo-1497296690583-da0e2a4ce49a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
+thumbnail: https://images.unsplash.com/photo-1497296690583-da0e2a4ce49a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 {% aside %}

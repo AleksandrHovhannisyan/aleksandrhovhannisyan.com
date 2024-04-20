@@ -7,8 +7,7 @@ commentsId: 97
 lastUpdated: 2024-03-15
 redirectFrom:
   - /blog/respecting-font-size-preferences-rems-62-5-percent/
-thumbnail:
-  url: https://images.unsplash.com/photo-1612620485998-fe926eccbe18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
+thumbnail: https://images.unsplash.com/photo-1612620485998-fe926eccbe18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 {% aside %}

@@ -5,8 +5,7 @@ keywords: [javascript pass by reference]
 categories: [javascript, memory]
 commentsId: 36
 lastUpdated: 2024-03-20
-thumbnail:
-  url: https://images.unsplash.com/photo-1529448005898-b19fc13465b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
+thumbnail: https://images.unsplash.com/photo-1529448005898-b19fc13465b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 If you're reading this article, chances are that you've heard the terms "pass by value" and "pass by reference"—whatever those mean. Maybe you were told that JavaScript is a pass-by-value language, or maybe you heard that it's pass by reference. More commonly, you've probably heard that it's both. This explanation is very common:

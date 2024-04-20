@@ -3,8 +3,7 @@ title: Detecting Nested Components in React with the Context API
 description: The React Context API is normally used to avoid prop drilling. But it can also be used to detect if a component is nested within another instance of itself or as a child of a particular component.
 keywords: [react, nested components, context]
 categories: [react, html]
-thumbnail:
-  url: https://images.unsplash.com/photo-1598811629267-faffa0027fe4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=600&q=80
+thumbnail: https://images.unsplash.com/photo-1598811629267-faffa0027fe4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=600&q=80
 ---
 
 The React Context API was created to solve the problem of prop drilling, where you need to pass a prop from a parent high up in the tree to a descendant lower in the tree. Without this API, you would either need to drill the prop through several intermediate children or read this data from a global store with a higher-order component or hook. But the Context API also has some other interesting uses (and, admittedly, abuses).

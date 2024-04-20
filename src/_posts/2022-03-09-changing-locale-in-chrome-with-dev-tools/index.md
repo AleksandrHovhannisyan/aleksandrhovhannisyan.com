@@ -3,8 +3,7 @@ title: Changing the Locale in Chrome with Dev Tools
 description: Learn how to use Chrome developer tools to simulate loading a page in a different locale.
 keywords: [locale, dev tools]
 categories: [html, i18n, browsers, testing]
-thumbnail:
-  url: https://images.unsplash.com/photo-1510267413785-9d9e64460cde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
+thumbnail: https://images.unsplash.com/photo-1510267413785-9d9e64460cde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 When working on internationalized apps, it's important to test different locales to ensure that the design looks acceptable for a wide range of audiences. For example, I often test a handful of locales to make sure that the features I'm implementing correctly mirror their content in right-to-left (RTL) locales, or that content doesn't overflow its bounds in locales with notoriously long strings (I'm looking at you, Deutsch).

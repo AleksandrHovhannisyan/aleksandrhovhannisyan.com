@@ -7,8 +7,7 @@ commentsId: 118
 lastUpdated: 2022-06-10
 redirectFrom:
   - /blog/eleventy-image-lazy-loading/
-thumbnail:
-  url: https://images.unsplash.com/photo-1631739408670-38319df9c5c1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
+thumbnail: https://images.unsplash.com/photo-1631739408670-38319df9c5c1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 {% aside %}

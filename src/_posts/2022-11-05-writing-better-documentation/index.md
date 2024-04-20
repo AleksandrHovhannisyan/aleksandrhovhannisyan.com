@@ -3,8 +3,7 @@ title: Writing Better Documentation
 description: Documentation is one of those things that you don't appreciate until you have to work without it. Good documentation should go beyond the code itself and also cover your team, the product, your work process, areas of specialization, and many other key areas.
 keywords: [documentation, developer, software]
 categories: [essay, practices, career]
-thumbnail:
-    url: https://images.unsplash.com/photo-1609643242070-c69786a76c30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=600&q=80
+thumbnail: https://images.unsplash.com/photo-1609643242070-c69786a76c30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=600&q=80
 ---
 
 A few years ago, I had a memorable interview experience where I was asked this seemingly technical yet open-ended question: *What does a good API need to have?* Several answers came to mind, but one of them immediately jumped out at me. I didn't hesitate to respond with it, even if it may have seemed a little tongue-in-cheek: *"Documentation!"* The interviewers chuckled and nodded in agreement. Although unexpected, my answer was technically correct—and likely hit close to home.

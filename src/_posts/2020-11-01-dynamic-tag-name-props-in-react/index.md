@@ -5,8 +5,7 @@ keywords: [dynamic tag name props]
 categories: [react, typescript]
 commentsId: 62
 lastUpdated: 2022-01-02
-thumbnail:
-  url: https://images.unsplash.com/photo-1571907483086-3c0ea40cc16d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
+thumbnail: https://images.unsplash.com/photo-1571907483086-3c0ea40cc16d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 In React, you sometimes need to allow users to pass in a tag name prop to a component as a string. You may have encountered this pattern if you've ever worked with the [`react-intl` library for internationalized strings](https://formatjs.io/docs/react-intl/components/#formattedmessage), where the `FormattedMessage` component accepts an optional `tagName` prop:

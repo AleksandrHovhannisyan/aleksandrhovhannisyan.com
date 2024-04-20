@@ -5,8 +5,7 @@ keywords: [promise.all, promise, async, javascript]
 categories: [javascript, async]
 commentsId: 104
 lastUpdated: 2024-03-07
-thumbnail:
-  url: https://images.unsplash.com/photo-1606674556490-c2bbb4ee05e5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
+thumbnail: https://images.unsplash.com/photo-1606674556490-c2bbb4ee05e5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
 Imagine you're creating an app that allows users to batch-upload files. You need to wait until all of the files have finished uploading so you can notify the user and update the UI. But the files all depend on each other, so if just one file fails to upload, you want to cancel the entire operation and start over.
