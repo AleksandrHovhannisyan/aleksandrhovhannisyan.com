@@ -5,14 +5,8 @@
   counter-reset: footnotes;
 
   &-title {
+    text-wrap: pretty;
     margin-bottom: functions.spacing("-2");
-
-    // Allow title to extend slightly past the parent width on wider devices. This cosmetic
-    // touch-up fixes most instances of orphaned words in titles.
-    @include mixins.desktop-lg {
-      max-width: functions.to-rems(900px);
-      width: max-content;
-    }
   }
 
   &-date {
