@@ -5,7 +5,7 @@
   gap: functions.spacing("8");
 
   @include mixins.mobile-lg {
-    gap: functions.spacing("11");
+    gap: functions.spacing("12");
   }
 }
 
@@ -15,7 +15,7 @@
   gap: functions.spacing("5");
 }
 
-.hero-hashart {
+.home-hash-art {
   display: none;
 
   @include mixins.desktop {
