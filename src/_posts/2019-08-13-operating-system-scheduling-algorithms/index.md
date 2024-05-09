@@ -30,7 +30,7 @@ Before proceeding, make sure you understand the following terms:
 
 When studying scheduling algorithms, we have two high-level classifications: preemptive and nonpreemptive algorithms. Let's look at each one in turn.
 
-### 1. Non-preemptive Scheduling Algorithms (NP)
+### 1. Non-preemptive Scheduling Algorithms
 
 In non-preemptive scheduling, a process runs to completion or until it blocks. While that process is running, its CPU time cannot be revoked by the scheduler (unless the OS forcibly kills the process for some other reason). Other processes in the ready queue must patiently wait their turn.
 
@@ -61,7 +61,7 @@ These are the examples of non-preemptive scheduling algorithms that we'll look a
   **Analogy**: Let's use the classic family TV as an analogy for a CPU. Everyone wants to use it for something (usually streaming movies and shows or playing video games). With non-preemptive scheduling, each family member will use the TV for a set period of time and only give someone else a turn when they're finished. For example, if you plan to binge three 40-minute episodes of your favorite show on Netflix, then you'll watch all of them in succession, without giving anyone else a turn, until you're done.
 {% endaside %}
 
-### 2. Preemptive Scheduling Algorithms (P)
+### 2. Preemptive Scheduling Algorithms
 
 On the other hand, with preemptive scheduling, a process executes for set increments of time that are allocated by the scheduler. Once the time is up, if the process still has work remaining, it will be temporarily taken off the CPU to allow other processes to run. This results in a context switch.
 
@@ -108,8 +108,6 @@ These are the examples of preemptive scheduling algorithms that we'll look at:
   **Analogy**: Now, let's say we're dealing with siblings and a single gaming console. To encourage fairness, their parents have one simple rule: Each kid can only play for 20 minutes at a time. Once that period of time is up, it's someone else's turn to play, even if the previous sibling was already in the middle of a match. They continue taking turns like this until everyone's finished playing. This is analogous to round-robin scheduling.
 {% endaside %}
 
-When we actually look at the individual scheduling algorithms in this post, I'll classify them as either (P) for preemptive or (NP) for non-preemptive.
-
 ## Scheduling Algorithm Metrics
 
 We use four simple metrics when studying scheduling algorithms. Let's look at each one in turn.
@@ -153,9 +151,9 @@ So far, we've looked at the terms preemptive and non-preemptive scheduling. But 
 
 Reminder: Batch systems have to keep up with a large number of processes. Thus, their primary goal is to increase throughput and complete as many of those jobs as possible while maximizing CPU utilization.
 
-### First Come First Serve (NP)
+### First Come First Serve
 
-First come first serve is a fair and simple non-preemptive algorithm that runs jobs in the order in which they arrived. However, because this algorithm is so naive, it doesn't always guarantee the best results.
+First come first serve is a non-preemptive algorithm that runs jobs in the order in which they arrived. However, because this algorithm is so naive, it doesn't always guarantee the best results.
 
 {% include "postImage.html" src: "./images/first-come.jpg", alt: "A horizontal ruler is used to represent time that runs from t = 0 to t = 15. A table lists information about three CPU processes. Process A arrived at time t = 0 and has a CPU time of 8. Process B arrived at time t = 2 and has a CPU time of 4. Process C arrived at time t = 5 and has a CPU time of 2. Three colored lines are shown below the ruler, in the order of A, then B, and finally C." %}
 
@@ -170,9 +168,9 @@ Notice that while B arrives at `t = 2s`, it does not get to run until A finishes
   **Note**: When we look at specific examples of scheduling algorithms, as we did here, you'll see a precise number listed under "CPU time" in the accompanying table. In practice, the best we can do is to predict how much time a process is going to use; we can't know a process's expected CPU time for certain.
 {% endaside %}
 
-### Shortest Job First (NP), aka Shortest Job Next
+### Shortest Job First/Next
 
-In this algorithm, when deciding which process to run next, we pick the one whose estimated total duration is the lowest among all processes currently in the queue; we then allow that process to run to completion without any preemption.
+In this non-preemptive algorithm, when deciding which process to run next, we pick the one whose estimated total duration is the lowest among all processes currently in the queue; we then allow that process to run to completion without any preemption.
 
 If all jobs arrive at the same time, then this algorithm is always optimal in terms of mean turnaround time. This is because we're able to minimize the amount of idle CPU time across the board by picking an *optimal sequence of execution* for processes.
 
@@ -189,9 +187,9 @@ At `t = 0s`, A was the only "shortest" process we knew of, so we allowed it to e
   **Exercise**: What would the mean turnaround time have been if A had instead arrived at `t = 5s` and C had arrived at `t = 0s`? Answer: C's turnaround = `2s`, B's turnaround = `4s`, and A's turnaround = `9s`, for a mean turnaround time of `5s`.
 {% endaside %}
 
-### Shortest Remaining Time First (P)
+### Shortest Remaining Time First
 
-This algorithm is the shortest job first algorithm above but with preemption. Whenever a new process arrives in the queue, we check all processes to see which one has the least amount of estimated time remaining until 100% completion. That's the process we'll run next.
+This preemptive algorithm is the shortest job first algorithm above but with preemption. Whenever a new process arrives in the queue, we check all processes to see which one has the least amount of estimated time remaining until 100% completion. That's the process we'll run next.
 
 If the process that's currently running is tied with another during this selection process, we'll obviously always prefer to continue running the current process so we don't waste time on performing a context switch.
 
@@ -214,9 +212,9 @@ With this algorithm, some processes may end up being starved if a bunch of short
 
 Reminder: Interactive systems involve a lot of user input and must therefore be responsive.
 
-### Round Robin Scheduling (P)
+### Round Robin Scheduling
 
-This is a classic and straightforward scheduling algorithm. Here's how it works:
+This is a classic preemptive scheduling algorithm. Here's how it works:
 
 1. Processes line up in a queue as they arrive.
 2. The process at the front of the queue gets to run for a certain pre-defined block of time known as a *quantum* (e.g., 2 seconds).
@@ -235,7 +233,7 @@ I used dashed vertical lines here to denote the times at which each process arri
   It's important to select a good quantum. If we select one that's too short, then we'll be frequently performing context switches, which can become expensive (decreasing CPU utilization). On the other hand, if the quantum we select is too large, then the system will be unresponsive to user input until the current process finishes executing for its quantum of time.
 {% endaside %}
 
-### Preemptive Priority (P)
+### Preemptive Priority
 
 The preemptive priority scheduling algorithm is a variation of Round Robin scheduling. Whereas the traditional Round Robin algorithm puts all processes in the same queue, this algorithm uses multiple priority queues *separately*.
 
@@ -260,7 +258,7 @@ In this example, A and B take turns alternating on the CPU in classic Round Robi
   What would happen at `t = 2s` if A instead had a priority level of `2`? Answer: A would still run from `t = 0s` to `t = 2s` because there are no other processes present during that time. However, as soon as B arrives at `t = 2s`, we have a higher priority queue that must be attended to. Therefore, A's remaining work will be put on hold until B finishes.
 {% endaside %}
 
-### Proportionate Scheduling (P)
+### Proportionate Scheduling (Preemptive)
 
 As its name suggests, proportionate scheduling aims to ensure a fair allocation of CPU time among processes. There are three types of proportionate scheduling that we can use:
 
