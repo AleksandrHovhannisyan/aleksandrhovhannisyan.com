@@ -145,7 +145,7 @@ There are several things going on here, so let's unpack it all.
 
 ### The Outermost Wrapper (`.carousel`)
 
-First, I'm using an outer wrapper div for the layout. This may seem unnecessary, but we'll later want to position the navigation controls absolutely relative to the carousel's horizontally panning viewport. Since we don't want the buttons to be children within the list of images, it makes more sense to anchor them relative to this parent div. Moreover, we don't want to position these buttons inside the `.carousel-scroll-container` because we're going to set horizontal overflow on that element.
+First, I'm using an outer wrapper div for the layout. This may seem unnecessary, but we'll later want to position the navigation controls absolutely relative to the carousel's scrollport. Since we don't want the buttons to be children within the list of images, it makes more sense to anchor them relative to this parent div. Moreover, we don't want to position these buttons inside the `.carousel-scroll-container` because we're going to set horizontal overflow on that element.
 
 ### The Scroll Container and List of Images
 
@@ -353,7 +353,7 @@ Enabling scroll snap is a two-step process. First, we need to tell the scroll co
 
 We'll use an axis value of `x` since we want to enable scroll snapping in the horizontal direction. For the snap behavior, `proximity` is the default value and allows users to slide continuously as they normally would, but only until they reach a certain threshold; at that point, the container will snap them to an item's focal point. With `mandatory`, the container is forced to always snap to the nearest focal point once a user stops scrolling.
 
-While `mandatory` scroll snapping creates a more consistent user experience by forcing the carousel to behave like a slideshow, it's not perfect. As Max Kohler notes in [Practical CSS Scroll Snapping](https://css-tricks.com/practical-css-scroll-snapping/#aa-scroll-snap-type-mandatory-vs-proximity), `mandatory` can occasionally cause a problem where the browser doesn't allow you to fully scroll to the focal points of the first and last items; instead, it snaps you back to the item that's closest to the center of the carousel viewport. It can also cause problems if the scroll snap items overflow their scroll container's client. Finally, I've observed in Firefox 101 that `mandatory` scroll snapping occasionally causes problems with arrow key navigation, where you have to keep the key pressed down or else the scroll container won't budge. For all of these reasons, I recommend using `proximity` instead of `mandatory`.
+While `mandatory` scroll snapping creates a more consistent user experience by forcing the carousel to behave like a slideshow, it's not perfect. As Max Kohler notes in [Practical CSS Scroll Snapping](https://css-tricks.com/practical-css-scroll-snapping/#aa-scroll-snap-type-mandatory-vs-proximity), `mandatory` can occasionally cause a problem where the browser doesn't allow you to fully scroll to the focal points of the first and last items; instead, it snaps you back to the item that's closest to the center of the carousel's scrollport. It can also cause problems if the scroll snap items overflow their scroll container's client. Finally, I've observed in Firefox 101 that `mandatory` scroll snapping occasionally causes problems with arrow key navigation, where you have to keep the key pressed down or else the scroll container won't budge. For all of these reasons, I recommend using `proximity` instead of `mandatory`.
 
 We'll also enable [smooth scrolling](https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-behavior) for browsers that support it so that the snapping behavior is not so abrupt and jarring:
 
@@ -862,7 +862,7 @@ Your best bet is to use [the proposed solution](#solution-find-the-first-focal-p
 
 Rather than keeping track of the current focal point with an index or reference, using an `IntersectionObserver` to keep manual scroll events in sync with button navigation, or using arbitrary displacements until we get it right, we can use a more precise algorithm.
 
-The solution is as follows: On button click, we calculate the distance from the edge of the viewport to the center of the carousel. We then query all of the carousel items and find the first one in the direction of travel whose focal point is past the carousel's center. Once we've found that item, we scroll it into view using [`Element.scrollIntoView`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView).
+The solution is as follows: On button click, we calculate the distance from the edge of the device viewport to the center of the carousel. We then query all of the carousel items and find the first one in the direction of travel whose focal point is past the carousel's center. Once we've found that item, we scroll it into view using [`Element.scrollIntoView`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView).
 
 {% include "postImage.html" src: "./images/algorithm.png", alt: "A diagram illustrating a scroll container with a purple hachure pattern background and four children of varying dimensions arranged horizontally from left to right. Each child's horizontal center is marked with a dotted vertical line. Below the diagram, an arrow points to the right and reads 'direction of travel.' The center of the carousel is marked. The first target image to the right of the center is identified by an arrow." %}
 
@@ -949,7 +949,7 @@ navigateToNextItem(direction) {
 }
 ```
 
-We're going to use [`Element.getBoundingClientRect`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) to calculate the distance from the viewport edge to the center of the carousel and also to the focal point of each media item. To do this, we'll create a helper function that accepts a reference to an HTML element and returns the distance from the viewport edge to the desired focal point:
+We're going to use [`Element.getBoundingClientRect`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) to calculate the distance from the device's viewport edge to the center of the carousel and also to the focal point of each media item. To do this, we'll create a helper function that accepts a reference to an HTML element and returns the distance from the viewport edge to the desired focal point:
 
 ```js {data-file="carousel.utils.js" data-copyable=true}
 /**
@@ -971,7 +971,7 @@ export const getDistanceToFocalPoint = (element, focalPoint = 'center') => {
 };
 ```
 
-This code gives us the distance from the left edge of the viewport to the center of an element, and it works well in a left-to-right layout such as English. However, in a right-to-left layout, we would want the distance from the right edge of the viewport to the focal point of the element. Otherwise, our algorithm wouldn't work correctly. If you know that your app isn't internationalized and never will be, you can ignore this distinction and use the code as-is. But in most other cases, this consideration is important.
+This code gives us the distance from the left edge of the device viewport to the center of an element, and it works well in a left-to-right layout such as English. However, in a right-to-left layout, we would want the distance from the right edge of the viewport to the focal point of the element. Otherwise, our algorithm wouldn't work correctly. If you know that your app isn't internationalized and never will be, you can ignore this distinction and use the code as-is. But in most other cases, this consideration is important.
 
 In a typical internationalized app, you might have a utility function that returns `true` if an element is in a horizontal right-to-left writing mode and `false` otherwise:
 
