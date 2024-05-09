@@ -40,7 +40,7 @@
   "devDependencies": {
     "@11ty/eleventy": "3.0.0-alpha.6",
     "@11ty/eleventy-cache-assets": "^2.3.0",
-    "@11ty/eleventy-img": "^1.0.0",
+    "@11ty/eleventy-img": "^4.0.2",
     "@11ty/eleventy-upgrade-help": "^1.0.1",
     "@iktakahiro/markdown-it-katex": "^4.0.1",
     "@toycode/markdown-it-class": "^1.2.4",
@@ -86,5 +86,11 @@
     "*.js": "pnpm run lint:js:fix",
     "*.scss": "pnpm run lint:css:fix"
   },
-  "packageManager": "pnpm@8.15.6+sha256.01c01eeb990e379b31ef19c03e9d06a14afa5250b82e81303f88721c99ff2e6f"
+  "packageManager": "pnpm@8.15.6+sha256.01c01eeb990e379b31ef19c03e9d06a14afa5250b82e81303f88721c99ff2e6f",
+  "pnpm": {
+    "supportedArchitectures": {
+      "os": ["current"],
+      "cpu": ["x64", "arm64"]
+    }
+  }
 }
