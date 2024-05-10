@@ -7,40 +7,32 @@ const { getFontUrl } = require('../../config/fonts/fonts.utils');
  */
 const fonts = {
   body: {
-    type: 'static',
-    family: 'PT Serif',
-    fallbacks: [`body-fallback`],
+    type: 'variable',
+    family: 'Source Sans',
+    fallbacks: ['body-fallback-1', 'body-fallback-2', 'body-fallback-3', 'body-fallback-4'],
+    weights: {
+      [FontVariant.REGULAR]: 400,
+      [FontVariant.BOLD]: 700,
+    },
     variants: {
-      [FontVariant.REGULAR]: {
-        roman: {
-          weight: 400,
-          style: FontStyle.NORMAL,
-          url: getFontUrl('ptserif-latin-400-roman.woff2'),
-          postscriptName: `PTSerif-Regular`,
-          display: FontDisplay.SWAP,
-        },
-        italic: {
-          weight: 400,
-          style: FontStyle.ITALIC,
-          url: getFontUrl('ptserif-latin-400-italic.woff2'),
-          postscriptName: `PTSerif-Italic`,
-          display: FontDisplay.SWAP,
+      roman: {
+        style: FontStyle.REGULAR,
+        url: getFontUrl('sourcesans-variable-latin-roman.woff2'),
+        postscriptName: 'SourceSansVF',
+        display: FontDisplay.SWAP,
+        weights: {
+          min: 200,
+          max: 900,
         },
       },
-      [FontVariant.BOLD]: {
-        roman: {
-          weight: 700,
-          style: FontStyle.NORMAL,
-          url: getFontUrl('ptserif-latin-700-roman.woff2'),
-          postscriptName: `PTSerif-Bold`,
-          display: FontDisplay.SWAP,
-        },
-        italic: {
-          weight: 700,
-          style: FontStyle.ITALIC,
-          url: getFontUrl('ptserif-latin-700-italic.woff2'),
-          postscriptName: `PTSerif-BoldItalic`,
-          display: FontDisplay.SWAP,
+      italic: {
+        style: FontStyle.ITALIC,
+        url: getFontUrl('sourcesans-variable-latin-italic.woff2'),
+        postscriptName: 'SourceSansItalicVF',
+        display: FontDisplay.SWAP,
+        weights: {
+          min: 200,
+          max: 900,
         },
       },
     },

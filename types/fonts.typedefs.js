@@ -21,9 +21,8 @@
 /**
  * @typedef VariableFontType
  * @property {'variable'} type
- * @property {Record<'min' | 'max', number>} weightAxes All available weight axes for variable fonts.
  * @property {Record<string, number>} weights A set of weights to be used as discrete variables from the available axes.
- * @property {Record<FontVariantStyle, Omit<FontVariantEntry, 'weight'>>} variants Descriptions of the font files.
+ * @property {Record<FontVariantStyle, Omit<FontVariantEntry, 'weight'> & { weights: Record<'min'|'max', number> }>} variants Descriptions of the font files.
  * @typedef {FontBase & VariableFontType} VariableFont
  */
 

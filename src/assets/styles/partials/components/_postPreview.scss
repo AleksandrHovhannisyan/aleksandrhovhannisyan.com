@@ -11,7 +11,7 @@
     display: grid;
     gap: functions.spacing("3");
     /* stylelint-disable-next-line scss/no-global-function-names */
-    grid-template-columns: repeat(auto-fill, minmax(min(#{functions.to-rems(300px)}, 100%), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(#{functions.to-rems(260px)}, 100%), 1fr));
 
     @include mixins.mobile-lg {
       gap: functions.spacing("0");

@@ -1,10 +1,31 @@
 /* Body font fallback, generated with capsize */
 @font-face {
-  font-family: "body-fallback";
-  src: local('Times New Roman');
-  ascent-override: 93.5808%;
-  descent-override: 25.7595%;
-  size-adjust: 111.0271%;
+  font-family: "body-fallback-1";
+  src: local('Segoe UI');
+  ascent-override: 108.8942%;
+  descent-override: 42.5368%;
+  size-adjust: 94.0362%;
+}
+@font-face {
+  font-family: "body-fallback-2";
+  src: local('Arial');
+  ascent-override: 108.6538%;
+  descent-override: 42.4429%;
+  size-adjust: 94.2442%;
+}
+@font-face {
+  font-family: "body-fallback-3";
+  src: local('Roboto');
+  ascent-override: 108.774%;
+  descent-override: 42.4899%;
+  size-adjust: 94.1401%;
+}
+@font-face {
+  font-family: "body-fallback-4";
+  src: local('Ubuntu');
+  ascent-override: 111.5077%;
+  descent-override: 43.5577%;
+  size-adjust: 91.8322%;
 }
 /* Monospace font fallbacks. Approximated because they're proprietary and can't be analyzed with capsize/comparable tools. */
 @font-face {
@@ -23,7 +44,7 @@
       @font-face {
         font-family: "{{ font.family }}";
         font-style: {{ font.style | default: "normal" }};
-        font-weight: {{ font.weightAxes.min }} {{ font.weightAxes.max }};
+        font-weight: {{ font.variants.roman.weights.min }} {{ font.variants.roman.weights.max }};
         {% if font.variants.roman.display -%}font-display: {{ font.variants.roman.display }};{%- endif -%}
         src: local("{{ font.variants.roman.postscriptName }}"), url("{{ font.variants.roman.url }}") format("woff2 supports variations"), url("{{ font.variants.roman.url }}") format("woff2-variations");
         {%- if font.metricOverrides -%}
@@ -36,7 +57,7 @@
       @font-face {
         font-family: "{{ font.family }}";
         font-style: italic;
-        font-weight: {{ font.weightAxes.min }} {{ font.weightAxes.max }};
+        font-weight: {{ font.variants.italic.weights.min }} {{ font.variants.italic.weights.max }};
         {% if font.variants.italic.display -%}font-display: {{ font.variants.italic.display }};{%- endif -%}
         src: local("{{ font.variants.italic.postscriptName }}"), url("{{ font.variants.italic.url }}") format("woff2 supports variations"), url("{{ font.variants.italic.url }}") format("woff2-variations");
       }
