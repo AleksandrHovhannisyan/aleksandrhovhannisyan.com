@@ -4,6 +4,9 @@
   "license": "UNLICENSED",
   "repository": "git@github.com:AleksandrHovhannisyan/aleksandrhovhannisyan.com.git",
   "author": "AleksandrHovhannisyan <aleksandrhovhannisyan@gmail.com>",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "clean:all": "rimraf _site",
     "clean": "rimraf '_site/!(assets)' '_site/assets/!(images)'",
