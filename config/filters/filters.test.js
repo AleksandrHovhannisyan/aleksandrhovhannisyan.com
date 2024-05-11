@@ -1,7 +1,7 @@
 import { it, describe } from 'node:test';
 import assert from 'node:assert/strict';
-import { where, limit, sortByKey, dividedBy, toAbsoluteUrl, getLatestCollectionItemDate } from './filters';
-import site from '../../src/_data/site';
+import { where, limit, sortByKey, dividedBy, toAbsoluteUrl, getLatestCollectionItemDate } from './filters.js';
+import site from '../../src/_data/site.js';
 
 describe('custom 11ty filters', () => {
   describe('limit', () => {

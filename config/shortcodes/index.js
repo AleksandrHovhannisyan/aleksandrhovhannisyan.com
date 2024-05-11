@@ -9,4 +9,4 @@ export { default as socialIconShortcode } from './socialIcon.js';
 export { default as artworkShortcode } from './artwork.js';
 export { default as nanoIdShortcode } from './nanoid.js';
 export { default as detailsShortcode } from './details.js';
-export { default as fetchText } from './fetchText';
+export { default as fetchText } from './fetchText.js';
