@@ -26,8 +26,8 @@ dependencies:
 
 devDependencies:
   '@11ty/eleventy':
-    specifier: 3.0.0-alpha.6
-    version: 3.0.0-alpha.6
+    specifier: 3.0.0-alpha.10
+    version: 3.0.0-alpha.10
   '@11ty/eleventy-cache-assets':
     specifier: ^2.3.0
     version: 2.3.0
@@ -169,9 +169,9 @@ packages:
       - supports-color
     dev: true
 
-  /@11ty/eleventy-dev-server@1.0.4:
-    resolution: {integrity: sha512-qVBmV2G1KF/0o5B/3fITlrrDHy4bONUI2YuN3/WJ3BNw4NU1d/we8XhKrlgq13nNvHoBx5czYp3LZt8qRG53Fg==}
-    engines: {node: '>=14'}
+  /@11ty/eleventy-dev-server@2.0.0:
+    resolution: {integrity: sha512-hqxQV92Bos0uyZa3P+BAX0nQqjQQMi4vCSxcQHNYEB/jjGV6CnurLBSn63U1VoixGAL4SpHm9OdTa2oVOTUx6Q==}
+    engines: {node: '>=18'}
     hasBin: true
     dependencies:
       '@11ty/eleventy-utils': 1.0.2
@@ -183,7 +183,9 @@ packages:
       minimist: 1.2.8
       morphdom: 2.7.2
       please-upgrade-node: 3.2.0
-      ssri: 8.0.1
+      send: 0.18.0
+      ssri: 10.0.6
+      urlpattern-polyfill: 10.0.0
       ws: 8.16.0
     transitivePeerDependencies:
       - bufferutil
@@ -220,6 +222,15 @@ packages:
       - supports-color
     dev: true
 
+  /@11ty/eleventy-plugin-bundle@2.0.2:
+    resolution: {integrity: sha512-zGyPp1g6bi+VC2I5ylwj4w29nivDmx4Uki5gWY6v3MT/1muK0JTtnc1KOMC7yUurv6YwtwdiLYyFK2eFyKv2wg==}
+    engines: {node: '>=18'}
+    dependencies:
+      debug: 4.3.4(supports-color@9.4.0)
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /@11ty/eleventy-upgrade-help@1.0.1:
     resolution: {integrity: sha512-9YqcRPYhBCJjcbAdz7cGIHHzpNDLr9V3igWjeuOfq3w3I4QsYjvr/ZZCLJLSsYfwIWyyTVAGbrF800pM7qSPQA==}
     engines: {node: '>=12'}
@@ -235,14 +246,15 @@ packages:
       normalize-path: 3.0.0
     dev: true
 
-  /@11ty/eleventy@3.0.0-alpha.6:
-    resolution: {integrity: sha512-wllqMiM3A9qRt1mUA6iETQfhRtpFfUnzCT7v4RK/5RFqX/Bjwmqe18v7dfStHSO+V2zv5hE32skdM23HigG+eg==}
+  /@11ty/eleventy@3.0.0-alpha.10:
+    resolution: {integrity: sha512-lnymV2KjhxPNs+e4otrjwr/kh7AEE/yTAwgVRtpdo8BA+zSDHaw+aeq/2L+h2nhQ9Z1a4ExIjQqk7K51E40tlA==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
       '@11ty/dependency-tree': 3.0.0
       '@11ty/dependency-tree-esm': 1.0.0
-      '@11ty/eleventy-dev-server': 1.0.4
+      '@11ty/eleventy-dev-server': 2.0.0
+      '@11ty/eleventy-plugin-bundle': 2.0.2
       '@11ty/eleventy-utils': 1.0.2
       '@11ty/lodash-custom': 4.17.21
       '@11ty/posthtml-urls': 1.0.0
@@ -265,7 +277,7 @@ packages:
       minimist: 1.2.8
       moo: 0.5.2
       multimatch: 7.0.0
-      node-retrieve-globals: 5.0.0
+      node-retrieve-globals: 6.0.0
       normalize-path: 3.0.0
       nunjucks: 3.2.4(chokidar@3.6.0)
       please-upgrade-node: 3.2.0
@@ -7742,6 +7754,11 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /minipass@7.1.1:
+    resolution: {integrity: sha512-UZ7eQ+h8ywIRAW1hIEl2AqdwzJucU/Kp59+8kkZeSvafXhZjul247BvIJjEVFVeON6d7lM46XX1HXCduKAS8VA==}
+    engines: {node: '>=16 || 14 >=14.17'}
+    dev: true
+
   /minizlib@2.1.2:
     resolution: {integrity: sha512-bAxsR8BVfj60DWXHE3u30oHzfl4G7khkSuPW+qvpd7jFRHm7dLxOjUk1EHACJ/hxLY8phGJ0YhYHZo7jil7Qdg==}
     engines: {node: '>= 8'}
@@ -8160,8 +8177,8 @@ packages:
     hasBin: true
     dev: true
 
-  /node-retrieve-globals@5.0.0:
-    resolution: {integrity: sha512-C4R0rtPEoxJaeo8RnLWx3VMvFgs0fAePFvI6WHBS2BS/aNxuHwL9IK922UBOjHnD5UKVfY1Xef9qk/BkmLrWiw==}
+  /node-retrieve-globals@6.0.0:
+    resolution: {integrity: sha512-VoEp6WMN/JcbBrJr6LnFE11kdzpKiBKNPFrHCEK2GgFWtiYpeL85WgcZpZFFnWxAU0O65+b+ipQAy4Oxy/+Pdg==}
     dependencies:
       acorn: 8.11.3
       acorn-walk: 8.3.2
@@ -10101,11 +10118,11 @@ packages:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
     dev: true
 
-  /ssri@8.0.1:
-    resolution: {integrity: sha512-97qShzy1AiyxvPNIkLWoGua7xoQzzPjQ0HAH4B0rWKo7SZ6USuPcrUiAFrws0UH8RrbWmgq3LMTObhPIHbbBeQ==}
-    engines: {node: '>= 8'}
+  /ssri@10.0.6:
+    resolution: {integrity: sha512-MGrFH9Z4NP9Iyhqn16sDtBpRRNJ0Y2hNa6D65h736fVSaPCHr4DM4sWUNvVaSuC+0OBGhwsrydQwmgfg5LncqQ==}
+    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dependencies:
-      minipass: 3.3.6
+      minipass: 7.1.1
     dev: true
 
   /stack-generator@2.0.10:
@@ -11135,6 +11152,10 @@ packages:
   /urix@0.1.0:
     resolution: {integrity: sha512-Am1ousAhSLBeB9cG/7k7r2R0zj50uDRlZHPGbazid5s9rlF1F/QKYObEKSIunSjIOkJZqwRRLpvewjEkM7pSqg==}
     deprecated: Please see https://github.com/lydell/urix#deprecated
+    dev: true
+
+  /urlpattern-polyfill@10.0.0:
+    resolution: {integrity: sha512-H/A06tKD7sS1O1X2SshBVeA5FLycRpjqiBeqGKmBwBDBy28EnRjORxTNe269KSSr5un5qyWi1iL61wLxpd+ZOg==}
     dev: true
 
   /urlpattern-polyfill@8.0.2:
