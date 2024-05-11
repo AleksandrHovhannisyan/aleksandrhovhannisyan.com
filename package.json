@@ -23,8 +23,8 @@
     "lint:css:fix": "stylelint --fix \"src/**/*.scss\"",
     "lint:js": "eslint --cache \"**/*.js\"",
     "lint:js:fix": "eslint --cache --fix \"**/*.js\"",
-    "test": "NODE_OPTIONS='--experimental-vm-modules' jest --config jest.config.cjs",
-    "test:watch": "npm run test --watch --silent=false --silent=false",
+    "test": "node --test",
+    "test:watch": "npm run test --watch",
     "update-browserslist": "npx browserslist@latest --update-db"
   },
   "dependencies": {
@@ -52,7 +52,6 @@
     "eslint-plugin-prettier": "^4.0.0",
     "feather-icons": "^4.28.0",
     "husky": "^4.3.0",
-    "jest": "^27.5.1",
     "lint-staged": "^12.1.7",
     "lodash": "^4.17.21",
     "markdown-it": "^12.0.6",

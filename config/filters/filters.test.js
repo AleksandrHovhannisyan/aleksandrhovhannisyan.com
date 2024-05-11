@@ -1,19 +1,21 @@
+const { it, describe } = require('node:test');
+const assert = require('node:assert/strict');
 const { where, limit, sortByKey, dividedBy, toAbsoluteUrl, getLatestCollectionItemDate } = require('./filters');
 const site = require('../../src/_data/site');
 
 describe('custom 11ty filters', () => {
   describe('limit', () => {
     it('returns the first n > 0 elements of an array', () => {
-      expect(limit(['a', 'b', 'c', 'd', 'e', 'f', 'g'], 3)).toEqual(['a', 'b', 'c']);
+      assert.deepStrictEqual(limit(['a', 'b', 'c', 'd', 'e', 'f', 'g'], 3), ['a', 'b', 'c']);
     });
     it('returns an empty array if limit is 0', () => {
-      expect(limit(['a', 'b'], 0)).toEqual([]);
+      assert.deepStrictEqual(limit(['a', 'b'], 0), []);
     });
     it('returns all elements when the limit matches the array length', () => {
-      expect(limit(['a', 'b'], 2)).toEqual(['a', 'b']);
+      assert.deepStrictEqual(limit(['a', 'b'], 2), ['a', 'b']);
     });
     it('throws an error if the limit is negative', () => {
-      expect(() => limit(['a', 'b'], -1)).toThrow();
+      assert.throws(() => limit(['a', 'b'], -1));
     });
   });
   describe('sortByKey', () => {
@@ -23,7 +25,7 @@ describe('custom 11ty filters', () => {
         { data: { title: 'Another post' } },
         { data: { title: 'Post 1' } },
       ];
-      expect(sortByKey(posts, 'data.title', 'DESC')).toEqual([
+      assert.deepStrictEqual(sortByKey(posts, 'data.title', 'DESC'), [
         { data: { title: 'Post 1' } },
         { data: { title: 'My best post' } },
         { data: { title: 'Another post' } },
@@ -35,7 +37,7 @@ describe('custom 11ty filters', () => {
         { data: { title: 'Another post', order: 2 } },
         { data: { title: 'Post 1', order: 1 } },
       ];
-      expect(sortByKey(posts, 'data.order', 'DESC')).toEqual([
+      assert.deepStrictEqual(sortByKey(posts, 'data.order', 'DESC'), [
         { data: { title: 'Another post', order: 2 } },
         { data: { title: 'Post 1', order: 1 } },
         { data: { title: 'My best post', order: 0 } },
@@ -47,15 +49,15 @@ describe('custom 11ty filters', () => {
         { data: { title: 'Another post', order: 2 } },
         { data: { title: 'Post 1', order: 1 } },
       ];
-      expect(() => sortByKey(posts, 'data.order', 'ABC')).toThrow();
+      assert.throws(() => sortByKey(posts, 'data.order', 'ABC'));
     });
   });
   describe('dividedBy', () => {
     it('throws an error if the divisor is 0', () => {
-      expect(() => dividedBy(1, 0)).toThrow();
+      assert.throws(() => dividedBy(1, 0));
     });
     it('returns the right quotient', () => {
-      expect(dividedBy(1, 2)).toEqual(0.5);
+      assert.deepStrictEqual(dividedBy(1, 2), 0.5);
     });
   });
   describe('where', () => {
@@ -79,7 +81,7 @@ describe('custom 11ty filters', () => {
           },
         },
       ];
-      expect(where(posts, 'data.isPopular', true)).toEqual([
+      assert.deepStrictEqual(where(posts, 'data.isPopular', true), [
         {
           data: {
             title: 'Post 1',
@@ -112,30 +114,30 @@ describe('custom 11ty filters', () => {
           },
         },
       ];
-      expect(where(posts, 'data.isPopular', true)).toEqual([]);
+      assert.deepStrictEqual(where(posts, 'data.isPopular', true), []);
     });
   });
   describe('toAbsoluteUrl', () => {
     it('handles relative paths that start with a slash', () => {
       site.url = 'https://site.com';
-      expect(toAbsoluteUrl('/some/path/')).toEqual(`https://site.com/some/path/`);
+      assert.deepStrictEqual(toAbsoluteUrl('/some/path/'), `https://site.com/some/path/`);
     });
     it('handles site URL that has a trailing slash', () => {
       site.url = 'https://site.com/';
-      expect(toAbsoluteUrl('some/path/')).toEqual(`https://site.com/some/path/`);
+      assert.deepStrictEqual(toAbsoluteUrl('some/path/'), `https://site.com/some/path/`);
     });
     it('handles both site URL with trailing slash and url with preceding slash', () => {
       site.url = 'https://site.com/';
-      expect(toAbsoluteUrl('/some/path/')).toEqual(`https://site.com/some/path/`);
+      assert.deepStrictEqual(toAbsoluteUrl('/some/path/'), `https://site.com/some/path/`);
     });
     it('handles file urls', () => {
       site.url = 'https://site.com/';
-      expect(toAbsoluteUrl('/assets/images/img.png')).toEqual(`https://site.com/assets/images/img.png`);
-      expect(toAbsoluteUrl('feed.xml')).toEqual(`https://site.com/feed.xml`);
+      assert.deepStrictEqual(toAbsoluteUrl('/assets/images/img.png'), `https://site.com/assets/images/img.png`);
+      assert.deepStrictEqual(toAbsoluteUrl('feed.xml'), `https://site.com/feed.xml`);
     });
     it('throws an error if the argument is not a string', () => {
       site.url = 'https://site.com/';
-      expect(() => toAbsoluteUrl(42)).toThrow();
+      assert.throws(() => toAbsoluteUrl(42));
     });
   });
   describe('getLatestCollectionItemDate', () => {
@@ -145,7 +147,7 @@ describe('custom 11ty filters', () => {
         { title: 'Item 2', date: '2021-04-21', data: { lastUpdated: '2021-05-20' } },
         { title: 'Item 3', date: '2021-01-01', data: { lastUpdated: '2021-08-11' } },
       ];
-      expect(getLatestCollectionItemDate(posts)).toStrictEqual('2021-08-11');
+      assert.deepStrictEqual(getLatestCollectionItemDate(posts), '2021-08-11');
     });
     it(`returns the latest item.date`, () => {
       const posts = [
@@ -153,14 +155,14 @@ describe('custom 11ty filters', () => {
         { title: 'Item 2', date: '2020-04-20', data: { lastUpdated: '2021-01-01' } },
         { title: 'Item 3', date: '2020-04-08', data: { lastUpdated: '2020-12-31' } },
       ];
-      expect(getLatestCollectionItemDate(posts)).toStrictEqual('2021-01-02');
+      assert.deepStrictEqual(getLatestCollectionItemDate(posts), '2021-01-02');
     });
     it('returns undefined for empty arrays', () => {
-      expect(getLatestCollectionItemDate([])).toBeUndefined();
+      assert.deepStrictEqual(getLatestCollectionItemDate([]), undefined);
     });
     it('returns undefined for undated collection items', () => {
       const items = [{ title: 'Item 1' }, { title: 'Item 2' }, { title: 'Item 3' }];
-      expect(getLatestCollectionItemDate(items)).toBeUndefined();
+      assert.deepStrictEqual(getLatestCollectionItemDate(items), undefined);
     });
   });
 });
