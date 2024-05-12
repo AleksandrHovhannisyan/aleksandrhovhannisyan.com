@@ -5,9 +5,9 @@ keywords: [load more, load more button, infinite scrolling]
 categories: [accessibility, javascript, react]
 thumbnail: ./images/thumbnail.png
 commentsId: 125
-lastUpdated: 2024-04-29
+lastUpdated: 2022-03-24
 scripts:
-  -
+  - 
     src: https://static.codepen.io/assets/embed/ei.js
     defer: true
 ---
@@ -28,9 +28,9 @@ Unfortunately, if you now attempt to tab forward or backward, you'll find that y
 
 ## Solution: Focus the First New Result
 
-At a high level, the solution is to figure out the index of the first new result whenever new items are loaded into the list; then, we'll map over the items in our array and `focus()` the element at that target index. Effectively, this means that after a user clicks the load-more button with their keyboard, their focus will visibly jump to the first newly inserted result.
+At a high level, the solution is to figure out the index of the first new result whenever new items are loaded into the list; then, we'll map over the items in our array, conditionally assign a ref to the element at that target index, and then use an effect to focus that element. Effectively, this means that after a user clicks the load-more button with their keyboard, their focus will visibly jump to the first newly inserted result.
 
-Below is a Codepen demo showing this in action:
+Below is a Codepen demo of this:
 
 <p class="codepen" data-height="300" data-slug-hash="rNGOBKv" data-preview="true" data-user="AleksandrHovhannisyan" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
   <span>See the Pen <a href="https://codepen.io/AleksandrHovhannisyan/pen/rNGOBKv">
@@ -38,7 +38,7 @@ Below is a Codepen demo showing this in action:
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 
-Suppose we're rendering a simple grid of results like this in React:
+Suppose we're rendering a grid of results like this:
 
 ```jsx {data-file="ResultGrid.jsx"}
 const ResultGrid = (props) => {
@@ -61,7 +61,17 @@ const ResultGrid = (props) => {
 };
 ```
 
-In our mapping function, we need to know which element in the list represents the start of our latest "chunk" of data. This is actually easier than it sounds—whenever we load in more results, the index of the first new result is the length of the previous array. For example, if we had `5` items before but now we have `5 + N`, the first new item's index will always be `5`, or the length of the previous array. We'll keep track of this index at the parent level as part of its state and pass it along as a prop to the list UI:
+As I mentioned before, we'll need to maintain a reference to the first newly rendered result so we can focus that element after the list has re-rendered. So let's create that ref ahead of time since we know we're going to need it:
+
+```jsx {data-file="ResultGrid.jsx" data-copyable=true}
+const ResultGrid = (props) => {
+  const firstNewResultRef = useRef(null);
+
+  // other code omitted for brevity
+}
+```
+
+In our mapping function, we need to know which element in the list represents the start of our latest "chunk" of data. This is actually easier than it sounds—whenever we load in more results, the index of the first new result is the length of the previous array. For example, if we had `5` items before but now we have `5 + N`, the first new item's index will always be `5`, or the length of the previous array. We'll keep track of this index in the parent component's state and pass it along as a prop to the list UI:
 
 ```jsx {data-file="App.jsx" data-copyable=true}
 const App = () => {
@@ -93,7 +103,7 @@ const App = () => {
   **Note**: Since we're updating two related state values inside an async function—one for the list itself and another for the index—the code sample uses a single object for the state to minimize re-renders since React doesn't guarantee batching prior to version 18. However, in situations like this where two or more states depend on each other, the recommended pattern is to instead use [the reducer state pattern](/blog/managing-complex-state-react-usereducer/).
 {% endaside %}
 
-Now that we have the index of the first new result, we can compare it to the index of each element in our mapping function. If an element's index matches the target index, we'll focus it:
+Now that we have the index of the first new result, we can compare it to the index of each result in our mapping function. If an element's index matches the target index, we'll conditionally assign the ref to that element:
 
 ```jsx {data-file="ResultGrid.jsx" data-copyable=true}
 props.results.map((result, i) => {
@@ -101,11 +111,7 @@ props.results.map((result, i) => {
   return (
     <li key={i}>
       <a
-        ref={(ref) => {
-          if (isFirstNewResult && ref) {
-            ref.focus();
-          }
-        }}
+        ref={isFirstNewResult ? firstNewResultRef : undefined}
         href={result.url}
       >
         Result {i + 1}
@@ -115,10 +121,19 @@ props.results.map((result, i) => {
 })
 ```
 
+Finally, we'll use an effect to focus the new result after every render. It's important to specify `props.firstNewResultIndex` as the only dependency of the hook; that way, we only focus the ref if this component re-rendered because new results were loaded:
+
+```jsx {data-file="ResultGrid.jsx" data-copyable=true}
+// Whenever the index changes, focus the corresponding ref
+useEffect(() => {
+  firstNewResultRef.current?.focus();
+}, [props.firstNewResultIndex]);
+```
+
 Now, when users click the load-more button with their keyboard, their focus will jump immediately to the first of the newly inserted items.
 
 {% aside %}
-  **Note**: This code will not run into race conditions since we only ever focus the first result *after* the index has changed. So if you're fetching paginated data from an API, `props.firstNewResultIndex` won't change until after you're done setting the state in the parent component.
+  **Note**: This code will not run into race conditions since we only ever focus the first result *after* the index has changed, at which point the ref will have been correctly assigned. So if you're fetching paginated data from an API, `props.firstNewResultIndex` won't change until after you're done setting the state in the parent component.
 {% endaside %}
 
 And that's all the logic that we need! Here's the final code from this tutorial:
@@ -129,6 +144,11 @@ import { useRef, useState } from 'react';
 const ResultGrid = (props) => {
   const firstNewResultRef = useRef(null);
 
+  // Whenever the index changes, focus the corresponding ref
+  useEffect(() => {
+    firstNewResultRef.current?.focus();
+  }, [props.firstNewResultIndex]);
+
   return (
     <div>
       <ol>
@@ -137,11 +157,7 @@ const ResultGrid = (props) => {
           return (
             <li key={i}>
               <a
-                ref={(ref) => {
-                  if (isFirstNewResult && ref) {
-                    ref.focus();
-                  }
-                }}
+                ref={isFirstNewResult ? firstNewResultRef : undefined}
                 href={result.url}
               >
                 Result {i + 1}
