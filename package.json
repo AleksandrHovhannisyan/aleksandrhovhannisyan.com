@@ -24,7 +24,7 @@
     "lint:js": "eslint --cache \"**/*.js\"",
     "lint:js:fix": "eslint --cache --fix \"**/*.js\"",
     "test": "node --test",
-    "test:watch": "npm run test --watch",
+    "test:watch": "pnpm run test --watch",
     "update-browserslist": "npx browserslist@latest --update-db",
     "prepare": "husky"
   },
