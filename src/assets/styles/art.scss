@@ -82,7 +82,7 @@ body {
         position: relative;
         text-align: center;
         text-transform: uppercase;
-        letter-spacing: functions.kerning("lg");
+        letter-spacing: functions.tracking("lg");
         text-shadow: functions.to-rems(1px) functions.to-rems(1px);
         font-size: calc(var(--font-size-multiplier) * #{functions.font-size("5xl")});
         @include mixins.font($family: "display", $weight: "regular");
@@ -161,7 +161,7 @@ body {
       position: relative;
       padding: functions.relative("-2") functions.relative("0");
       text-transform: uppercase;
-      letter-spacing: functions.kerning("lg");
+      letter-spacing: functions.tracking("lg");
       text-decoration: none;
       color: var(--color-text);
       border: solid 2px;

@@ -42,9 +42,9 @@ html {
   }
 
   // Letter spacing
-  $kerning-steps: functions.get($tokens, "size", "kerning");
-  @each $step, $value in $kerning-steps {
-    $token-name: functions.get-token-name("size", "kerning", $step);
+  $tracking-steps: functions.get($tokens, "size", "tracking");
+  @each $step, $value in $tracking-steps {
+    $token-name: functions.get-token-name("size", "tracking", $step);
     --#{$token-name}: #{$value};
   }
 
