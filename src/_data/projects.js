@@ -8,7 +8,7 @@ const repos = {
   fluidTypeScale: {
     getIcon: async () => {
       const icon = await imageShortcode({
-        src: 'https://www.fluid-type-scale.com/assets/images/favicon-32.png',
+        src: 'https://www.fluid-type-scale.com/images/favicon-32.png',
         alt: '',
         isLinked: false,
         widths: [32],
@@ -18,7 +18,7 @@ const repos = {
     name: 'fluid-type-scale.com',
     url: 'https://www.fluid-type-scale.com/',
     repo: 'AleksandrHovhannisyan/fluid-type-scale-calculator',
-    tech: ['nextjs', 'typescript', 'sass'],
+    tech: ['svelte', 'typescript', 'sass'],
   },
   scribe: {
     getIcon: () => '📄',
