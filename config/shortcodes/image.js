@@ -1,5 +1,5 @@
 import Image from '@11ty/eleventy-img';
-import escape from 'lodash-es/escape.js';
+import escape from 'lodash/escape.js';
 import stringifyAttributes from 'stringify-attributes';
 import { imagePaths } from '../constants.js';
 import { withoutBaseDirectory } from '../utils.js';

@@ -1,4 +1,4 @@
-import escape from 'lodash-es/escape.js';
+import escape from 'lodash/escape.js';
 import { makeMarkdownParser } from '../plugins/markdown.js';
 
 // For multi-line quotes (e.g., stanzas in a poem or song), I don't want to have to manually insert <br> in place of newlines. The default markdown parser turns this off in favor of newlines. Making a new parser here to avoid mutating the global one.

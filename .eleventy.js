@@ -42,7 +42,7 @@ import { markdown } from './config/plugins/markdown.js';
 import { codeDemoOptions } from './config/plugins/codeDemo.js';
 import { dir, imagePaths, scriptDirs } from './config/constants.js';
 import { slugifyString } from './config/utils.js';
-import escape from 'lodash-es/escape.js';
+import escape from 'lodash/escape.js';
 
 const TEMPLATE_ENGINE = 'liquid';
 

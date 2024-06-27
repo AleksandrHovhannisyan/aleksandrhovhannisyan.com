@@ -1,4 +1,4 @@
-import chunk from 'lodash-es/chunk.js';
+import chunk from 'lodash/chunk.js';
 import { getAllUniqueKeyValues, slugifyString } from '../utils.js';
 import site from '../../src/_data/site.js';
 import { dir } from '../constants.js';

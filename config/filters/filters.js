@@ -1,8 +1,8 @@
 import CleanCSS from 'clean-css';
 import esbuild from 'esbuild';
 import path from 'path';
-import get from 'lodash-es/get.js';
-import sortBy from 'lodash-es/sortBy.js';
+import get from 'lodash/get.js';
+import sortBy from 'lodash/sortBy.js';
 import dayjs from 'dayjs';
 import { markdown } from '../plugins/markdown.js';
 import site from '../../src/_data/site.js';

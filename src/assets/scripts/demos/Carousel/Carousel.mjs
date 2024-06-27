@@ -1,4 +1,4 @@
-import throttle from 'lodash-es/throttle.js';
+import throttle from 'lodash/throttle.js';
 import { getFocalPoint, getDistanceToFocalPoint, isRtl } from './utils.mjs';
 
 const SCROLL_DELAY_MS = 200;
