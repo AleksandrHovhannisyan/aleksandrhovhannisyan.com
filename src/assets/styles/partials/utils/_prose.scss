@@ -3,4 +3,10 @@
 .prose {
   max-width: functions.to-rems(760px);
   margin: 0 auto;
+
+  // Pretty-wrap headings in prose content
+  :where(h2, h3, h4, h5, h6) {
+    text-wrap: balance; // firefox fallback
+    text-wrap: pretty;
+  }
 }
