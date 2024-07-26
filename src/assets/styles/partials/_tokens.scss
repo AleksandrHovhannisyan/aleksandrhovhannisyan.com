@@ -37,12 +37,12 @@ $tokens: (
       "xl": (
         min: 24px,
         max: 32px,
-        leading: "2xs",
+        leading: "xs",
       ),
       "2xl": (
         min: 28px,
         max: 36px,
-        leading: "2xs",
+        leading: "xs",
       ),
       "3xl": (
         min: 32px,
@@ -90,11 +90,11 @@ $tokens: (
     ),
     relative: (
       "-3": 0.25em,
-      "-2": 0.50em,
+      "-2": 0.5em,
       "-1": 0.75em,
-      "0":  1.00em,
+      "0":  1em,
       "1":  1.25em,
-      "2":  1.50em,
+      "2":  1.5em,
     )
   ),
   breakpoints: (
