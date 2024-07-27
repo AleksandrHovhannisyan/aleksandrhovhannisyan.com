@@ -1,8 +1,8 @@
 .to-underline {
-  text-decoration: none;
+  text-decoration-line: none;
 
   &:is(:hover, :focus) {
-    text-decoration: underline;
+    text-decoration-line: underline;
   }
 }
 

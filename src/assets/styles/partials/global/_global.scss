@@ -28,6 +28,7 @@ body {
 
 a {
   color: var(--color-text-link);
+  text-underline-offset: 0.15em;
 }
 
 :is(h1, h2, h3, h4, h5, h6) {
