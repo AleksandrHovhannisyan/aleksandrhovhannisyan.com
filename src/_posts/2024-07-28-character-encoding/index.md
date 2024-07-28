@@ -80,8 +80,8 @@ We've spent millennia inventing new languages and translating writing from one l
       <tr>
         <td><code>🙂</code></td>
         <td class="numeric"><code>0x1F642</code></td>
-        <td class="numeric"><code>100111010000000</code></td>
-        <td class="numeric"><code>20096</code></td>
+        <td class="numeric"><code>11111011001000010</code></td>
+        <td class="numeric"><code>128578</code></td>
       </tr>
     </tbody>
   </table>
@@ -700,7 +700,7 @@ Byte 2: 10000000 | 00111100 = 10111100
 
 Done! Putting it all together, we get the same result as before: `11000011 10111100`.
 
-For more complex examples involving three or four bytes, you will just need to shift by larger amounts for the first, second, and third bytes. The last byte will never require any bit-shifting since the bits of interest are already in the lowest possible positions. Again, to save on space, I'll leave this up to as an exercise.
+For more complex examples involving three or four bytes, you will just need to shift by larger amounts for the first, second, and third bytes. The last byte will never require any bit-shifting since the bits of interest are already in the lowest possible positions. Again, I'll leave this up to as an exercise.
 
 ## Know Your Character Encoding
 
@@ -751,7 +751,7 @@ The waving hand emoji (👋) has a code point of `U+1F44B`. Could translating th
 {% enddetails %}
 
 {% details 'View the answer and explanation' %}
-If you answered `4`, you maybe surprised to learn that you're wrong! The real answer is `5`. This is actually one of the few rare instances where it's not a JavaScript idiosyncrasy but rather the code is working as intended.
+If you answered `4`, you may be surprised to learn that you're wrong! The real answer is `5`. This is actually one of the few rare instances where it's not a JavaScript idiosyncrasy but rather the code is working as intended.
 
 The reason this code logs `5` instead of `4` as one would expect is because JavaScript's `String.prototype.length` method counts the number of UTF-16 **code units** in a string, rather than the number of visible character glyphs.
 
