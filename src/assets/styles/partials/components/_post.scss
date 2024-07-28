@@ -12,6 +12,7 @@
   &-date {
     color: var(--color-text-soft);
     margin-bottom: functions.spacing("-3");
+    text-wrap: balance;
     @include mixins.font($size: "sm");
 
     dt,
