@@ -61,7 +61,7 @@ We've spent millennia inventing new languages and translating writing from one l
       <tr>
         <td><code>A</code></td>
         <td class="numeric"><code>0x0041</code></td>
-        <td class="numeric"><code>01000001</code></td>
+        <td class="numeric"><code>1000001</code></td>
         <td class="numeric"><code>65</code></td>
       </tr>
       <tr>
