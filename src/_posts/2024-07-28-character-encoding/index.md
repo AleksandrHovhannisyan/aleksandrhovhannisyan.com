@@ -6,6 +6,7 @@ description: In this deep dive, you'll learn about the Unicode character set and
 keywords: [character encoding, unicode, utf]
 categories: [computer-science, math, binary]
 thumbnail: ./images/thumbnail.png
+lastUpdated: 2024-08-01
 ---
 
 If you're familiar with HTML, you've probably seen this tag somewhere in the `<head>` of a document (hopefully at the very start):
@@ -91,13 +92,27 @@ A one-to-one encoding like this is reversible, so the core meaning of the text i
 
 ### Unicode
 
-Today, this mapping of characters to numbers is known as <dfn>[the Unicode Standard](https://home.unicode.org/)</dfn>: the universal character set used by all modern software. Unicode assigns numbers to every single known character in the world, including control characters and [even emoji](https://apps.timwhitlock.info/emoji/tables/unicode). In fact, Table 1 shows a very tiny subset of Unicode characters and their code points. As of [version 15.1](https://www.unicode.org/versions/Unicode15.1.0/), Unicode encompasses 149,813 code points. Since it's so large, Unicode is divided into semantic chunks of closely related code points known as <dfn>Unicode blocks</dfn>.
+Today, this mapping of characters to numbers is known as <dfn>the Unicode standard</dfn>: the universal character set used by all modern software. It was first formalized in 1991 and has been maintained since then by the non-profit [Unicode Consortium](https://home.unicode.org/). Unicode assigns numbers to every single known character in the world, including control characters and [even emoji](https://apps.timwhitlock.info/emoji/tables/unicode). In fact, Table 1 shows a very tiny subset of Unicode characters and their code points. As of [version 15.1](https://www.unicode.org/versions/Unicode15.1.0/), Unicode encompasses 149,813 code points. Since it's so large, Unicode is divided into semantic chunks of closely related code points known as <dfn>Unicode blocks</dfn>.
 
 By convention, Unicode code points are written in the hexadecimal number system; however, instead of the usual prefix of `0x`, Unicode code points use the special prefix `U+` so they're easily distinguishable. Otherwise, for clarity in reference manuals and articles, we would need to note that those hexadecimal numbers are Unicode code points, rather than just any ordinary number. For example, the code point `0x1F642` from Table 1 would be written as `U+1F642` in Unicode.
 
+### UCS
+
+Before we move on, I want to briefly mention a bit of history that will be relevant in a future section (see [UCS-2 and UCS-4](#ucs-2-and-ucs-4)).
+
+Two years after the first version of Unicode was published, the International Organization for Standardization (ISO) separately defined a character set in [ISO 10646](https://www.iso.org/standard/69119.html) that was identical to Unicode but went by another name: the <dfn>[Universal Coded Character Set](https://en.wikipedia.org/wiki/Universal_Coded_Character_Set)</dfn>. Over time, UCS has maintained parity with Unicode through its own major revisions.
+
+As for why both of these character sets exist, the organizations that created them apparently had different goals in mind:
+
+{% quote "Wikipedia: Unicode Versions", "https://en.wikipedia.org/wiki/Unicode#Versions" %}
+While the UCS is a simple character map, Unicode specifies the rules, algorithms, and properties necessary to achieve interoperability between different platforms and languages. Thus, The Unicode Standard includes more information, covering in-depth topics such as bitwise encoding, collation, and rendering.
+{% endquote %}
+
+In other words, UCS is just the bare bones character-to-number mapping of Unicode, without the additional semantics.
+
 ### ASCII
 
-But we didn't _start_ with Unicode. In the early days, text documents on computers used a precursor character set known as ASCII, which is now just a tiny subset of Unicode (specifically, the [Basic Latin block](https://en.wikipedia.org/wiki/Basic_Latin_(Unicode_block))). ASCII consists of 128 code points and includes the English alphabet, Arabic numerals, punctuation, and common control characters (like line endings) used in digital text. Table 2 lists some examples of ASCII characters and their code points in hexadecimal, binary, and decimal:
+Going even further back, we'll find that we actually didn't _start_ with Unicode. In the 1960s, text documents on computers used a precursor character set known as ASCII, which is now just a tiny subset of Unicode (specifically, the [Basic Latin block](https://en.wikipedia.org/wiki/Basic_Latin_(Unicode_block))). ASCII consists of 128 code points and includes the English alphabet, Arabic numerals, punctuation, and common control characters (like line endings) used in digital text. Table 2 lists some examples of ASCII characters and their code points in hexadecimal, binary, and decimal:
 
 <div class="scroll-x" role="region" tabindex="0">
   <table>
@@ -165,13 +180,17 @@ In fact, if we were to only ever write and read single-character text documents,
 
 How do we do that?
 
-#### UCS
+#### UCS-2 and UCS-4
 
-One of the earliest proposed solutions to this problem was UCS: the <dfn>[Universal Coded Character Set](https://en.wikipedia.org/wiki/Universal_Coded_Character_Set)</dfn>. It naively tried to increase the minimum number of bytes required to encode _all_ Unicode characters. So instead of using just one byte for ASCII and adding more bytes as needed for everything else, UCS-2 tried to force _all_ characters to be encoded with two bytes (16 bits), while UCS-4 required four bytes (32 bits). These two standards were capable of representing `2^16` and `2^32` characters, respectively—with the latter being more than enough to encode all existing Unicode characters at the time, all Unicode characters at the time when I wrote this article, and many more to come. By analogy, this is sort of like raising the minimum wage: It sets a new baseline standard for everyone, across the board.
+One of the earliest proposed solutions to the character encoding problem came in the form of two algorithms defined in ISO 10646: UCS-2 and UCS-4. These encodings increased the minimum number of bytes required to encode all characters in UCS/Unicode. So instead of using just one byte for ASCII and adding more bytes as needed for everything else, UCS-2 forced _all_ characters to be encoded with two bytes (16 bits), while UCS-4 required four bytes (32 bits). By analogy, this is sort of like raising the minimum wage: It sets a new baseline standard for everyone, across the board.
 
 But there was a glaring flaw: Every single character had to be encoded with 16 or 32 bits for uniformity, which would've needlessly wasted memory. For example, if we had used UCS-4 to encode ASCII characters—which comprised the majority of text at the time—we would've needed three extra bytes, all zeroed out.
 
-For these and other reasons, UCS as a standard is now obsolete. However, it laid important groundwork for the creation of an even better character encoding standard: UTF.
+Although UCS-2 and UCS-4 are now considered obsolete, these two encodings laid important groundwork for the creation of a character encoding standard for Unicode: UTF.
+
+{% aside %}
+UCS-4 is technically still around; it just goes by a different name in UTF. UCS-2 is truly obsolete, as it is no longer capable of representing all characters in Unicode. Meanwhile, because UCS-4 is capable of representing `2^32` code points, it will likely stick around for a long time.
+{% endaside %}
 
 #### UTF
 
@@ -203,7 +222,7 @@ By contrast, in UTF-16, characters are encoded using either:
 
 UTF-16 is a smarter version of UCS-2, where it uses 16 bits to encode some characters and starts using two 16-bit code units only once it runs out of space. Those two 16-bit code units are referred to as <dfn>surrogate pairs</dfn> in UTF-16.
 
-Unlike UTF-8 and UTF-16, UTF-32 is a <dfn>fixed-width encoding scheme</dfn> that always uses a single 32-bit code unit to encode everything, even ASCII. [It's basically UCS-4 with extra semantics](https://stackoverflow.com/questions/30186631/what-is-the-difference-between-utf-32-and-ucs-4). The only advantage of UTF-32 over UTF-8 and UTF-16 is that you don't have to worry about encoding and decoding characters since you just take your Unicode code point and translate it into a 32-bit binary string. If it doesn't need 32 bits, just pad the start with zeros. But it's also very wasteful from a memory standpoint.
+Unlike UTF-8 and UTF-16, UTF-32 is a <dfn>fixed-width encoding scheme</dfn> that always uses a single 32-bit code unit to encode everything, even ASCII. [UTF-32 is just UCS-4](https://stackoverflow.com/questions/30186631/what-is-the-difference-between-utf-32-and-ucs-4), with some minor semantic differences defined in Unicode. The only advantage of UTF-32 over UTF-8 and UTF-16 is that you don't have to worry about encoding and decoding characters since you just take your Unicode code point and translate it into a 32-bit binary string. If it doesn't need 32 bits, just pad the start with zeros. But it's also very wasteful from a memory standpoint.
 
 We're going to focus on UTF-8 in the rest of this article, but note that UTF-16 and UTF-32 are still used. For example, while the majority of operating systems and programming languages use UTF-8, Windows uses UTF-16, as do some programming languages like Java and JavaScript. UTF-16's main advantage is that it needs less storage space than UTF-8 for certain higher-order Unicode characters, like those in Asian languages: Whereas UTF-8 would potentially need three bytes (24 bits) to encode those characters, UTF-16 can get away with using only 16 bits.
 
@@ -770,6 +789,7 @@ Unicode is the universal character set used by all modern software, but it doesn
 
 - ["The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)" by Joel Spolsky](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/)
 - ["UTF-8: Bits, Bytes, and Benefits" by Russ Cox](https://research.swtch.com/utf8)
+- ["The Tragedy of UCS-2" by Una](https://unascribed.com/b/2019-08-02-the-tragedy-of-ucs2.html)
 - [StackOverflow: UTF-8, UTF-16, and UTF-32](https://stackoverflow.com/questions/496321/utf-8-utf-16-and-utf-32)
 - [StackOverflow: UTF-8 encoding why prefix 10?](https://stackoverflow.com/questions/53009692/utf-8-encoding-why-prefix-10/57750970#57750970)
 - [Wikipedia: Universal Coded Character Set](https://en.wikipedia.org/wiki/Universal_Coded_Character_Set)
