@@ -96,7 +96,7 @@ Today, this mapping of characters to numbers is known as <dfn>the Unicode standa
 
 By convention, Unicode code points are written in the hexadecimal number system; however, instead of the usual prefix of `0x`, Unicode code points use the special prefix `U+` so they're easily distinguishable. Otherwise, for clarity in reference manuals and articles, we would need to note that those hexadecimal numbers are Unicode code points, rather than just any ordinary number. For example, the code point `0x1F642` from Table 1 would be written as `U+1F642` in Unicode.
 
-### UCS
+#### UCS
 
 Before we move on, I want to briefly mention a bit of history that will be relevant in a future section (see [UCS-2 and UCS-4](#ucs-2-and-ucs-4)).
 
@@ -170,7 +170,7 @@ At the time, ASCII was a convenient and space-efficient way to represent the Lat
 
 But this also meant that we could no longer assume each character was only eight bits long. And that was a big problem for software.
 
-### Encoding Unicode
+## Encoding Unicode
 
 Technically, this wasn't a problem with Unicode _itself_. At the end of the day, Unicode is just a massive character set, not a character encoding standard; it's only concerned with assigning numbers to human-readable characters. If we can represent a character numerically, then we can store that character in a computer's memory. Space is limitless: We can represent infinitely many code points with Unicode, and the standard is ever-expanding.
 
@@ -180,7 +180,7 @@ In fact, if we were to only ever write and read single-character text documents,
 
 How do we do that?
 
-#### UCS-2 and UCS-4
+### UCS-2 and UCS-4
 
 One of the earliest proposed solutions to the character encoding problem came in the form of two algorithms defined in ISO 10646: UCS-2 and UCS-4. These encodings increased the minimum number of bytes required to encode all characters in UCS/Unicode. So instead of using just one byte for ASCII and adding more bytes as needed for everything else, UCS-2 forced _all_ characters to be encoded with two bytes (16 bits), while UCS-4 required four bytes (32 bits). By analogy, this is sort of like raising the minimum wage: It sets a new baseline standard for everyone, across the board.
 
@@ -192,7 +192,7 @@ Although UCS-2 and UCS-4 are now considered obsolete, these two encodings laid i
 UCS-4 is technically still around; it just goes by a different name in UTF. UCS-2 is truly obsolete, as it is no longer capable of representing all characters in Unicode. Meanwhile, because UCS-4 is capable of representing `2^32` code points, it will likely stick around for a long time.
 {% endaside %}
 
-#### UTF
+### UTF
 
 The modern encoding scheme for Unicode is known as UTF, short for <dfn>[Unicode Transformation Format](https://en.wikipedia.org/wiki/Unicode#UTF)</dfn>. UTF is a character encoding standard that represents Unicode code points in such a way that entire text documents can be decoded easily.
 
