@@ -1,16 +1,16 @@
-const markdownIt = require('markdown-it');
-const markdownItPrism = require('markdown-it-prism');
-const markdownItAttrs = require('markdown-it-attrs');
-const markdownItAnchor = require('markdown-it-anchor');
-const markdownItKatex = require('@iktakahiro/markdown-it-katex');
-const markdownItClass = require('@toycode/markdown-it-class');
-const markdownItTocDoneRight = require('markdown-it-toc-done-right');
-const markdownItLinkAttributes = require('markdown-it-link-attributes');
-const markdownItCodeTabIndex = require('markdown-it-code-tabindex');
-const { slugifyString } = require('../utils');
+import markdownIt from 'markdown-it';
+import markdownItPrism from 'markdown-it-prism';
+import markdownItAttrs from 'markdown-it-attrs';
+import markdownItAnchor from 'markdown-it-anchor';
+import markdownItKatex from '@iktakahiro/markdown-it-katex';
+import markdownItClass from '@toycode/markdown-it-class';
+import markdownItTocDoneRight from 'markdown-it-toc-done-right';
+import markdownItLinkAttributes from 'markdown-it-link-attributes';
+import markdownItCodeTabIndex from 'markdown-it-code-tabindex';
+import { slugifyString } from '../utils.js';
 
 /** Configures and returns a markdown parser. */
-const makeMarkdownParser = () =>
+export const makeMarkdownParser = () =>
   markdownIt({
     // Use of HTML tags in Markdown
     html: true,
@@ -60,9 +60,4 @@ const makeMarkdownParser = () =>
     });
 
 /** A customized, default markdown parser. Suitable for most of my parsing needs. */
-const markdown = makeMarkdownParser();
-
-module.exports = {
-  markdown,
-  makeMarkdownParser,
-};
+export const markdown = makeMarkdownParser();

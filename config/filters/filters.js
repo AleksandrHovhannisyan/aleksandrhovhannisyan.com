@@ -1,16 +1,17 @@
-const CleanCSS = require('clean-css');
-const esbuild = require('esbuild');
-const path = require('path');
-const lodash = require('lodash');
-const dayjs = require('dayjs');
-const { markdown } = require('../plugins/markdown');
-const site = require('../../src/_data/site');
-const Image = require('@11ty/eleventy-img');
-const { throwIfNotType, withoutBaseDirectory } = require('../utils');
-const { imagePaths } = require('../constants');
+import CleanCSS from 'clean-css';
+import esbuild from 'esbuild';
+import path from 'path';
+import get from 'lodash/get.js';
+import sortBy from 'lodash/sortBy.js';
+import dayjs from 'dayjs';
+import { markdown } from '../plugins/markdown.js';
+import site from '../../src/_data/site.js';
+import Image from '@11ty/eleventy-img';
+import { throwIfNotType, withoutBaseDirectory } from '../utils.js';
+import { imagePaths } from '../constants.js';
 
 /** Returns the first `limit` elements of the the given array. */
-const limit = (array, limit) => {
+export const limit = (array, limit) => {
   if (limit < 0) {
     throw new Error(`Negative limits are not allowed: ${limit}.`);
   }
@@ -18,24 +19,24 @@ const limit = (array, limit) => {
 };
 
 /** Sorts the given array of objects by a string denoting chained key paths. */
-const sortByKey = (arrayOfObjects, keyPath, order = 'ASC') => {
-  const sorted = lodash.sortBy(arrayOfObjects, (object) => lodash.get(object, keyPath));
+export const sortByKey = (arrayOfObjects, keyPath, order = 'ASC') => {
+  const sorted = sortBy(arrayOfObjects, (object) => get(object, keyPath));
   if (order === 'ASC') return sorted;
   if (order === 'DESC') return sorted.reverse();
   throw new Error(`Invalid sort order: ${order}`);
 };
 
 /** Returns all entries from the given array that match the specified key:value pair. */
-const where = (arrayOfObjects, keyPath, value) =>
-  arrayOfObjects.filter((object) => lodash.get(object, keyPath) === value);
+export const where = (arrayOfObjects, keyPath, value) =>
+  arrayOfObjects.filter((object) => get(object, keyPath) === value);
 
 /** Converts the given markdown string to HTML, returning it as a string. */
-const toHtml = (markdownString) => {
+export const toHtml = (markdownString) => {
   return markdown.renderInline(markdownString);
 };
 
 /** Divides the first argument by the second. */
-const dividedBy = (numerator, denominator) => {
+export const dividedBy = (numerator, denominator) => {
   if (denominator === 0) {
     throw new Error(`Cannot divide by zero: ${numerator} / ${denominator}`);
   }
@@ -43,13 +44,13 @@ const dividedBy = (numerator, denominator) => {
 };
 
 /** Formats the given relative url as an absolute url. */
-const toAbsoluteUrl = (url) => {
+export const toAbsoluteUrl = (url) => {
   throwIfNotType(url, 'string');
   return new URL(url, site.url).href;
 };
 
 /** Given a local or remote image source, returns the absolute URL to the image that will eventually get generated once the site is built. */
-const toAbsoluteImageUrl = async (src, width = null) => {
+export const toAbsoluteImageUrl = async (src, width = null) => {
   const imageOptions = {
     // For the purposes of getting the URL, we just want the original width and format
     widths: [width],
@@ -64,16 +65,16 @@ const toAbsoluteImageUrl = async (src, width = null) => {
 };
 
 /** Converts the given date string to ISO8601/RFC-3339 format. */
-const toISOString = (dateString) => dayjs(dateString).toISOString();
+export const toISOString = (dateString) => dayjs(dateString).toISOString();
 
 /** Formats a date using dayjs's conventions: https://day.js.org/docs/en/display/format */
-const formatDate = (date, format) => dayjs(date).format(format);
+export const formatDate = (date, format) => dayjs(date).format(format);
 
 /**
  * @param {*} collection - an array of collection items that are assumed to have either data.lastUpdated or a date property
  * @returns the most recent date of update or publication among the given collection items, or undefined if the array is empty.
  */
-const getLatestCollectionItemDate = (collection) => {
+export const getLatestCollectionItemDate = (collection) => {
   const itemsSortedByLatestDate = collection
     .filter((item) => !!item.data?.lastUpdated || !!item.date)
     .sort((item1, item2) => {
@@ -92,7 +93,7 @@ const getLatestCollectionItemDate = (collection) => {
 };
 
 /** Returns an optimized CSS minifier function. */
-const makeCleanCSS = () => {
+export const makeCleanCSS = () => {
   // Currently, the cleanCSS filter is being called on essentially the same CSS for every single page
   // with the same exact input. Caching yields about a ~6x performance increase.
   const cache = {};
@@ -112,7 +113,7 @@ const makeCleanCSS = () => {
 /** Minifies the given source JS (string).
  * @param {string} js The JavaScript to minify, provided as a string.
  */
-const minifyJS = async (js) => {
+export const minifyJS = async (js) => {
   const { code } = await esbuild.transform(js, { minify: true });
   return code;
 };
@@ -123,23 +124,6 @@ const minifyJS = async (js) => {
  * @param {'name' | 'dir'} key A lookup key to get either the name or directory of the parsed path.
  * @returns
  */
-const pathParse = (srcPath, key) => path.parse(srcPath)[key];
+export const pathParse = (srcPath, key) => path.parse(srcPath)[key];
 
-const pathJoin = (...paths) => path.join(...paths);
-
-module.exports = {
-  limit,
-  sortByKey,
-  where,
-  toHtml,
-  toISOString,
-  formatDate,
-  dividedBy,
-  toAbsoluteUrl,
-  toAbsoluteImageUrl,
-  getLatestCollectionItemDate,
-  makeCleanCSS,
-  minifyJS,
-  pathParse,
-  pathJoin,
-};
+export const pathJoin = (...paths) => path.join(...paths);

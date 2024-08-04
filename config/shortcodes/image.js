@@ -1,7 +1,8 @@
-const Image = require('@11ty/eleventy-img');
-const { escape } = require('lodash');
-const { imagePaths } = require('../constants');
-const { stringifyAttributes, withoutBaseDirectory } = require('../utils');
+import Image from '@11ty/eleventy-img';
+import escape from 'lodash/escape.js';
+import stringifyAttributes from 'stringify-attributes';
+import { imagePaths } from '../constants.js';
+import { withoutBaseDirectory } from '../utils.js';
 
 /**
  * @typedef ImageShortcodeProps
@@ -20,7 +21,7 @@ const { stringifyAttributes, withoutBaseDirectory } = require('../utils');
 /**
  * @param {ImageShortcodeProps} props
  */
-const imageShortcode = async (props) => {
+export default async function imageShortcode(props) {
   const {
     src,
     alt = '',
@@ -103,6 +104,4 @@ const imageShortcode = async (props) => {
 
   // Otherwise just return the plain picture tag
   return `${picture}`;
-};
-
-module.exports = imageShortcode;
+}

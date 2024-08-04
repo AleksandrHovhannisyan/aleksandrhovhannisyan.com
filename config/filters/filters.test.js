@@ -1,7 +1,7 @@
-const { it, describe } = require('node:test');
-const assert = require('node:assert/strict');
-const { where, limit, sortByKey, dividedBy, toAbsoluteUrl, getLatestCollectionItemDate } = require('./filters');
-const site = require('../../src/_data/site');
+import { it, describe } from 'node:test';
+import assert from 'node:assert/strict';
+import { where, limit, sortByKey, dividedBy, toAbsoluteUrl, getLatestCollectionItemDate } from './filters.js';
+import site from '../../src/_data/site.js';
 
 describe('custom 11ty filters', () => {
   describe('limit', () => {

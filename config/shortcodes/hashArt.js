@@ -1,9 +1,9 @@
-const nanoid = require('./nanoid');
+import nanoid from './nanoid.js';
 
 /**
  * @param {string} hash - A 40-character git hash from which to generate the grayscale art. Example: `7064455f12fcd0632debc20ea5cc333395c2baa5`.
  */
-const hashArt = (hash) => {
+export default function hashArt(hash) {
   // ID to label the SVG title, for accessibility. Generate a new one per invocation to guarantee uniqueness.
   const id = nanoid();
   // Buffer.from(hash, 'hex') will give us an array of 20 bytes; Uint8Array will interpret each byte in decimal
@@ -29,4 +29,3 @@ const hashArt = (hash) => {
   return result;
 };
 
-module.exports = hashArt;

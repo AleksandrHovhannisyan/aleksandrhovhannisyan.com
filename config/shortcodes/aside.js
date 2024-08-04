@@ -1,6 +1,6 @@
-const { markdown } = require('../plugins/markdown');
+import { markdown } from '../plugins/markdown.js';
 
-const aside = (children) => {
+export default function aside(children) {
   if (!children) {
     throw new Error('You must provide a non-empty string for an aside.');
   }
@@ -8,4 +8,3 @@ const aside = (children) => {
   return `<aside role="note" class="post-aside rhythm">${content}</aside>`;
 };
 
-module.exports = aside;

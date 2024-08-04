@@ -1,10 +1,10 @@
-const lodash = require('lodash');
-const { getAllUniqueKeyValues, slugifyString } = require('../utils');
-const site = require('../../src/_data/site');
-const { dir } = require('../constants');
+import chunk from 'lodash/chunk.js';
+import { getAllUniqueKeyValues, slugifyString } from '../utils.js';
+import site from '../../src/_data/site.js';
+import { dir } from '../constants.js';
 
 /** Returns all blog posts as a collection. */
-const getAllPosts = (collection) => {
+export const getAllPosts = (collection) => {
   const posts = collection.getFilteredByGlob(`${dir.input}/_posts/**/*.md`);
   return posts.reverse().filter((post) => !post.data.isArchived);
 };
@@ -13,7 +13,7 @@ const getAllPosts = (collection) => {
  * @param {string} category
  * @param {number} [page] The one-indexed page number
  */
-const getCategoryHref = (category, page) => {
+export const getCategoryHref = (category, page) => {
   const slug = slugifyString(category);
   return page > 1 ? `/tags/${slug}/page/${page}/` : `/tags/${slug}/`;
 };
@@ -23,7 +23,7 @@ const getCategoryHref = (category, page) => {
  * these are still referred to as tags in the UI since that's what's most common.
  * @returns {({ title: string; href: string; count: string })[]}
  */
-const getAllUniqueCategories = (collection) => {
+export const getAllUniqueCategories = (collection) => {
   const allPosts = getAllPosts(collection);
   const uniqueCategories = getAllUniqueKeyValues(allPosts, 'categories');
 
@@ -52,7 +52,7 @@ const getAllUniqueCategories = (collection) => {
 
 // Blog posts by category, for pagination
 // Adapted for use from: https://www.webstoemp.com/blog/basic-custom-taxonomies-with-eleventy/
-const getPostsByCategory = (collection) => {
+export const getPostsByCategory = (collection) => {
   const postsPerPage = site.pagination.itemsPerPage;
   const blogPostsByCategory = [];
 
@@ -65,7 +65,7 @@ const getPostsByCategory = (collection) => {
 
     // Create a 2D array of chunked posts, where each nested array represents a page.
     // e.g., if postsPerPage = 2 and we have three posts, then we'd get [[{post1}, {post2}], [{post3}]]
-    const chunkedCategoryPosts = lodash.chunk(categoryPosts, postsPerPage);
+    const chunkedCategoryPosts = chunk(categoryPosts, postsPerPage);
 
     // Map each chunk to its page slug
     const pageHrefs = chunkedCategoryPosts.map((_, pageIndex) => getCategoryHref(category, pageIndex + 1));
@@ -91,10 +91,4 @@ const getPostsByCategory = (collection) => {
   });
 
   return blogPostsByCategory.sort((category1, category2) => category2.posts.length - category1.posts.length);
-};
-
-module.exports = {
-  getAllPosts,
-  getAllUniqueCategories,
-  getPostsByCategory,
 };

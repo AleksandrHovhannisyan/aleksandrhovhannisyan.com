@@ -1,7 +1,7 @@
-const Cache = require('@11ty/eleventy-cache-assets');
-const path = require('path');
-const { imagePaths } = require('../../config/constants');
-const { imageShortcode } = require('../../config/shortcodes/');
+import Cache from '@11ty/eleventy-cache-assets';
+import path from 'path';
+import { imagePaths } from '../../config/constants.js';
+import { imageShortcode } from '../../config/shortcodes/index.js';
 
 // Combination of static + dynamic data
 const repos = {
@@ -71,7 +71,7 @@ const fetchRepo = async (repoKey) => {
   };
 };
 
-module.exports = async () => {
+export default async function getProjects() {
   console.log('Fetching GitHub projects...');
   const projects = await Promise.all(Object.keys(repos).map((key) => fetchRepo(key)));
   // Highest rated projects first

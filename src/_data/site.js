@@ -8,7 +8,7 @@ const environmentSpecificVariables = {
   },
 };
 
-module.exports = {
+export default {
   title: 'Aleksandr Hovhannisyan',
   author: 'Aleksandr Hovhannisyan',
   email: 'aleksandrhovhannisyan@gmail.com',

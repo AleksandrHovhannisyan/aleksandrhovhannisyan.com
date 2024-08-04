@@ -1,10 +1,10 @@
-const { FontVariant, FontStyle, FontDisplay } = require('../../config/fonts/fonts.constants');
-const { getFontUrl } = require('../../config/fonts/fonts.utils');
+import { FontVariant, FontStyle, FontDisplay } from '../../config/fonts/fonts.constants.js';
+import { getFontUrl } from '../../config/fonts/fonts.utils.js';
 
 /** Fonts used on the art page.
  * @type {import("../../types/fonts.typedefs").FontConfig}
  */
-const fonts = {
+export const fonts = {
   cursive: {
     type: 'static',
     family: 'Reenie Beanie',
@@ -39,4 +39,3 @@ const fonts = {
   },
 };
 
-module.exports = { fonts };

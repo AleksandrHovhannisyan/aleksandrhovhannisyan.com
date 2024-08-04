@@ -1,8 +1,9 @@
-const esbuild = require('esbuild');
-const path = require('path');
-const PluginFootnotes = require('eleventy-plugin-footnotes');
-const { EleventyPluginCodeDemo } = require('eleventy-plugin-code-demo');
-const {
+import esbuild from 'esbuild';
+import path from 'path';
+import PluginFootnotes from 'eleventy-plugin-footnotes';
+import EleventyPluginNetlifyRedirects from 'eleventy-plugin-netlify-redirects';
+import { EleventyPluginCodeDemo } from 'eleventy-plugin-code-demo';
+import {
   asideShortcode,
   definitionShortcode,
   imageShortcode,
@@ -15,8 +16,8 @@ const {
   nanoIdShortcode,
   detailsShortcode,
   fetchText,
-} = require('./config/shortcodes');
-const {
+} from './config/shortcodes/index.js';
+import {
   limit,
   sortByKey,
   toHtml,
@@ -31,21 +32,21 @@ const {
   toAbsoluteImageUrl,
   pathParse,
   pathJoin,
-} = require('./config/filters/filters');
-const {
+} from './config/filters/filters.js';
+import {
   getAllPosts,
   getAllUniqueCategories,
   getPostsByCategory,
-} = require('./config/collections');
-const { markdown } = require('./config/plugins/markdown');
-const { codeDemoOptions } = require('./config/plugins/codeDemo');
-const { dir, imagePaths, scriptDirs } = require('./config/constants');
-const { slugifyString } = require('./config/utils');
-const { escape } = require('lodash');
+} from './config/collections/collections.js';
+import { markdown } from './config/plugins/markdown.js';
+import { codeDemoOptions } from './config/plugins/codeDemo.js';
+import { dir, imagePaths, scriptDirs } from './config/constants.js';
+import { slugifyString } from './config/utils.js';
+import escape from 'lodash/escape.js';
 
 const TEMPLATE_ENGINE = 'liquid';
 
-module.exports = (eleventyConfig) => {
+export default function eleventy(eleventyConfig) {
   eleventyConfig.setLiquidOptions({
     // Allows for dynamic include/partial names. If true, include names must be quoted. Defaults to true as of beta/1.0.
     dynamicPartials: true,
@@ -104,6 +105,25 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addCollection('postsByCategory', getPostsByCategory);
 
   // Plugins
+  /** @type {import("eleventy-plugin-netlify-redirects").EleventyPluginNetlifyRedirectsOptions} */
+  const eleventyPluginNetlifyRedirectsOptions = {
+    staticRedirects: {
+      // Old blog structure with primary categories in URL. Some links still floating around on other sites.
+      "/blog/dev/*": "/blog/:splat",
+      "/blog/computer-science/*": "/blog/:splat",
+      "/blog/off-topic/*": "/blog/:splat",
+      // Old image structure, where blog post images were dumped into a folder of the same name as the post slug itself.
+      "/assets/images/posts/:slug/*": "/assets/images/:splat",
+      // FSM article images, already indexed. Redirect to avoid impacting traffic to this post. https://www.aleksandrhovhannisyan.com/blog/implementing-a-finite-state-machine-in-cpp/
+      "/assets/images/iomJzXpBY2-1280.png": "/assets/images/iAape8KQe6-1200.png",
+      "/assets/images/YVvOoXOAhY-1094.jpeg": "/assets/images/iAape8KQe6-1200.jpeg",
+      "/assets/images/YVvOoXOAhY-1094.webp": "/assets/images/iAape8KQe6-1200.webp",
+      "/assets/images/9LW1h6jx7k-1063.jpeg": "/assets/images/Z0MJRY8WpN-1271.jpeg",
+      "/assets/images/9LW1h6jx7k-1063.webp": "/assets/images/Z0MJRY8WpN-1271.webp",
+    },
+    frontMatterOverrides: { excludeFromSitemap: true },
+  };
+  eleventyConfig.addPlugin(EleventyPluginNetlifyRedirects, eleventyPluginNetlifyRedirectsOptions);
   eleventyConfig.addPlugin(PluginFootnotes, {
     baseClass: 'footnotes',
     classes: {
