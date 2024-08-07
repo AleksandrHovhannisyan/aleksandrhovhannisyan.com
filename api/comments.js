@@ -7,23 +7,25 @@ import dayjs from 'dayjs';
 import dayjsRelativeTimePlugin from 'dayjs/plugin/relativeTime.js';
 dayjs.extend(dayjsRelativeTimePlugin);
 
-/** Returns an authenticated GitHub API instance that can be used to fetch data. */
-const getAuthenticatedOctokit = async () => {
-  const auth = createTokenAuth(process.env.GITHUB_PERSONAL_ACCESS_TOKEN);
-  const { token } = await auth();
-  return new Octokit({ auth: token });
-};
+// Abort build if this is missing
+if (!process.env.GITHUB_PERSONAL_ACCESS_TOKEN) {
+  throw new Error('Missing environment variable: GITHUB_PERSONAL_ACCESS_TOKEN');
+}
+
+// Authenticate with GitHub Issues SDK. Do this only once for the module rather than per request.
+const auth = createTokenAuth(process.env.GITHUB_PERSONAL_ACCESS_TOKEN);
+const { token } = await auth();
+const commentApi = new Octokit({ auth: token });
 
 /** Netlify handler for serverless function. Returns comments for a given post by ID.
  * @param {Request} request The incoming request data.
  */
 export default async function getCommentsForPost(request) {
   const issueNumber = new URL(request.url).searchParams.get('id');
-  const Octokit = await getAuthenticatedOctokit();
 
   try {
     // Check this first. Does not count towards the API rate limit.
-    const { data: rateLimitInfo } = await Octokit.rateLimit.get();
+    const { data: rateLimitInfo } = await commentApi.rateLimit.get();
     const remainingRequests = rateLimitInfo.rate.remaining;
     console.log(`GitHub API requests remaining: ${remainingRequests}`);
     if (remainingRequests === 0) {
@@ -40,8 +42,8 @@ export default async function getCommentsForPost(request) {
 
     // Reference for pagination: https://michaelheap.com/octokit-pagination/
     // Fetching issue comments for a repo: https://docs.github.com/en/rest/reference/issues#list-issue-comments-for-a-repository
-    const response = await Octokit.paginate(
-      Octokit.issues.listComments,
+    const response = await commentApi.paginate(
+      commentApi.issues.listComments,
       {
         owner: site.issues.owner,
         repo: site.issues.repo,
