@@ -67,6 +67,7 @@
     gap: functions.relative("-3");
 
     > :first-child {
+      flex-shrink: 0;
       margin-inline-end: auto;
     }
   }
