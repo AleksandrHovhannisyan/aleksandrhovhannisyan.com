@@ -4,15 +4,17 @@
 .post {
   counter-reset: footnotes;
 
+  &-header {
+    text-wrap: balance;
+  }
+
   &-title {
-    text-wrap: pretty;
     margin-bottom: functions.spacing("-2");
   }
 
   &-date {
     color: var(--color-text-soft);
     margin-bottom: functions.spacing("-3");
-    text-wrap: balance;
     @include mixins.font($size: "sm");
 
     dt,

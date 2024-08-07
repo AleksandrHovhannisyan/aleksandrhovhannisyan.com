@@ -5,27 +5,15 @@
   top: 50%;
   transform: translate(#{functions.spacing("-2")}, -50%);
   padding: functions.spacing("-2");
-  background-color: var(--color-navbar-bg);
+  background-color: var(--color-surface-1);
 }
 
 .navbar {
-  @include mixins.theme-light {
-    --color-navbar-bg: var(--color-surface-8);
-    --color-navbar-bg-focus: var(--color-surface-7);
-  }
-
-  @include mixins.theme-dark {
-    --color-navbar-bg: var(--color-surface-2);
-    --color-navbar-bg-focus: var(--color-surface-3);
-  }
-
   /* Body is a flex container. Without this, the navbar may shrink vertically due to the presence of a horizontal scrollbar. */
   flex-shrink: 0;
   width: 100%;
-  padding-block: functions.spacing("-1");
-  background-color: var(--color-navbar-bg);
+  padding-block: functions.spacing("-2");
   overflow-x: auto;
-  color: white;
 
   a {
     text-decoration: none;
@@ -76,7 +64,7 @@
     padding: functions.relative("-2") functions.relative("-1");
 
     &:is(:focus, :hover, [aria-current="page"]) {
-      background-color: var(--color-navbar-bg-focus);
+      background-color: var(--color-surface-3);
     }
   }
 }
