@@ -184,7 +184,7 @@ How do we do that?
 
 ### UCS-2 and UCS-4
 
-ISO 10646 defined two character encoding algorithms—UCS-2 and UCS-4—that aimed to solve this problem. These encodings increased the minimum number of bytes required to encode all characters in UCS/Unicode from. So instead of using just one byte for ASCII and adding more bytes as needed for everything else, UCS-2 forced _all_ characters to be encoded with two bytes (16 bits), while UCS-4 required four bytes (32 bits). By analogy, this is sort of like raising the minimum wage: It sets a new baseline standard for everyone, across the board.
+ISO 10646 defined two character encoding algorithms—UCS-2 and UCS-4—that aimed to solve this problem. These encodings increased the minimum number of bytes required to encode all characters in UCS/Unicode. So instead of using just one byte for ASCII and adding more bytes as needed for everything else, UCS-2 forced _all_ characters to be encoded with two bytes (16 bits), while UCS-4 required four bytes (32 bits). By analogy, this is sort of like raising the minimum wage: It sets a new baseline standard for everyone, across the board.
 
 But there was a glaring flaw with this approach: Every single character had to be encoded with 16 or 32 bits for uniformity, which would've needlessly wasted memory. For example, if we had used UCS-4 to encode ASCII characters—which comprised the majority of text at the time—we would've needed three extra bytes, all zeroed out.
 
