@@ -15,7 +15,8 @@ body {
 
 #page-content {
   flex-grow: 1;
-  padding-block: functions.clamped(functions.get($tokens, "size", "spacing", "5"), functions.get($tokens, "size", "spacing", "12"));
+  padding-block-start: functions.clamped(functions.get($tokens, "size", "spacing", "2"), functions.get($tokens, "size", "spacing", "12"));
+  padding-block-end: functions.clamped(functions.get($tokens, "size", "spacing", "8"), functions.get($tokens, "size", "spacing", "12"));
 }
 
 :is(code, kbd) {
