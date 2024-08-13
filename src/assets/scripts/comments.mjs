@@ -8,12 +8,18 @@ const commentsObserver = new IntersectionObserver(
     entries.forEach(async (entry) => {
       if (entry.isIntersecting) {
         // Don't need this until they reach the comments section
-        const { fetchComments, renderComments } = await import('./utils/comments.utils.mjs');
+        const { fetchComments, renderComments, CommentsError } = await import('./utils/comments.utils.mjs');
         try {
           const comments = await fetchComments(commentsId);
           renderComments(comments);
         } catch (error) {
-          commentsPlaceholder.innerHTML = error.message;
+          // Custom/known error that we threw
+          if (error instanceof CommentsError) {
+            commentsPlaceholder.innerHTML = error.message;
+          } else {
+            // This should hopefully never happen
+            commentsPlaceholder.innerHTML = 'An unexpected error occurred while fetching comments.';
+          }
         }
         self.unobserve(entry.target);
       }

@@ -1,19 +1,41 @@
-const commentTemplate = document.querySelector(`#comment-template`);
-
-/** Returns all comments using the provided issue ID. */
-export const fetchComments = async (id) => {
-  const response = await (await fetch(`/.netlify/functions/comments?id=${id}`)).json();
-  if (response.error) {
-    throw new Error(response.error);
+/** Represents an error that occurred while fetching or rendering comments. */
+export class CommentsError extends Error {
+  /**
+   * @param {string} message
+   */
+  constructor(message) {
+    super(message);
+    this.name = 'CommentsError';
   }
-  /** @type import("../../../../types/comments.typedefs").PostComment[] */
-  const comments = response.data;
-  return comments;
+}
+
+/** Returns all comments using the provided issue ID.
+ * @param {string} id The ID of the comments source (e.g., GitHub issue number if using GitHub Issues API).
+ * @throws {CommentsError}
+ */
+export const fetchComments = async (id) => {
+  try {
+    const response = await (await fetch(`/.netlify/functions/comments?id=${id}`)).json();
+    if (response.error) {
+      throw new CommentsError(response.error);
+    }
+    /** @type import("../../../../types/comments.typedefs").PostComment[] */
+    const comments = response.data;
+    return comments;
+  } catch (e) {
+    // Allow custom error to bubble to caller
+    if (e instanceof CommentsError) {
+      throw e;
+    }
+    throw new CommentsError('Unable to fetch comments.');
+  }
 };
+
+const COMMENT_TEMPLATE = document.querySelector(`#comment-template`);
 
 /** @param {import("../../../../types/comments.typedefs").PostComment} comment The user comment to render. */
 const renderComment = (comment) => {
-  const commentNode = commentTemplate.content.cloneNode(true);
+  const commentNode = COMMENT_TEMPLATE.content.cloneNode(true);
 
   const userAvatar = commentNode.querySelector('img');
   const userLink = commentNode.querySelector('a');
@@ -45,17 +67,15 @@ const renderComment = (comment) => {
   return commentNode;
 };
 
-export const renderComments = async (comments) => {
+/** @param {import("../../../../types/comments.typedefs").PostComment[]} comments The user comments to render. */
+export const renderComments = (comments) => {
+  if (!comments.length) {
+    throw new CommentsError('No comments yet.');
+  }
   const commentSection = document.querySelector('#comments');
   const commentsCounter = commentSection.querySelector('#comments-count');
   const commentsPlaceholder = commentSection.querySelector('#comments-placeholder');
   const commentsList = commentSection.querySelector('ol');
-
-  if (!comments.length) {
-    commentsPlaceholder.innerHTML = 'No comments yet.';
-    return;
-  }
-
   commentsCounter.innerText = `${comments.length} `;
   commentsPlaceholder.remove();
   comments.forEach((comment) => {
