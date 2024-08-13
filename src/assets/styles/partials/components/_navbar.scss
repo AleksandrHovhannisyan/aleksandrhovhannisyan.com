@@ -12,7 +12,7 @@
   /* Body is a flex container. Without this, the navbar may shrink vertically due to the presence of a horizontal scrollbar. */
   flex-shrink: 0;
   width: 100%;
-  padding-block: functions.spacing("-2");
+  padding-block: functions.spacing("0");
   overflow-x: auto;
 
   a {
@@ -71,7 +71,7 @@
 
 @include mixins.mobile-lg {
   .navbar {
-    padding-block: functions.spacing("2");
+    padding-block: functions.spacing("4");
     position: unset;
 
     .site-name {
