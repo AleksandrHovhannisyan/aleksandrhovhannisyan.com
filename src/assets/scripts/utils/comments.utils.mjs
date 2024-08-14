@@ -78,8 +78,13 @@ export const renderComments = (comments) => {
   const commentsList = commentSection.querySelector('ol');
   commentsCounter.innerText = `${comments.length} `;
   commentsPlaceholder.remove();
+  // https://frontendmasters.com/blog/patterns-for-memory-efficient-dom-manipulation/#approach-2-use-createdocumentfragment-with-appendchild-to-batch-inserts
+  const fragment = document.createDocumentFragment();
   comments.forEach((comment) => {
     const commentNode = renderComment(comment);
-    commentsList.appendChild(commentNode);
+    // append to in-memory fragment `n` times...
+    fragment.appendChild(commentNode);
   });
+  // ... but append to actual list once at the end, to avoid unnecessary reflow from `n` appends
+  commentsList.appendChild(fragment);
 };
