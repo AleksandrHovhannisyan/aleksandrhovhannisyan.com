@@ -21,20 +21,10 @@
   scroll-behavior: smooth;
 }
 
-.slideshow .carousel-scroll-container {
-  /* Mandatory scroll snap is more consistent for a slideshow */
-  scroll-snap-type: x mandatory;
-}
-
 .carousel-media {
   /* Arrange media horizontally */
   display: flex;
   gap: functions.spacing("0");
-}
-
-.slideshow .carousel-media {
-  /* No gap in slideshows */
-  gap: 0;
 }
 
 .carousel-item {
@@ -68,25 +58,6 @@
   width: auto;
 }
 
-.slideshow .carousel-item {
-  /* Full-width slides, taller height */
-  height: 90vmin;
-  width: 100%;
-}
-
-.slideshow .carousel-item > *,
-.slideshow .carousel-item :is(figure, picture, img) {
-  /* Cover the full slide */
-  width: 100%;
-  height: 100%;
-}
-
-.slideshow .carousel-item img {
-  /* Crop and center overflowing images */
-  object-fit: cover;
-  object-position: center;
-}
-
 .carousel figure {
   position: relative;
 }
@@ -98,14 +69,9 @@
   width: 100%;
   padding: functions.spacing("-3");
   text-align: center;
+  color: white;
   background-color: hsl(0deg 0% 0% / 75%);
   @include mixins.font($size: "xs");
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-.carousel figcaption *,
-.carousel figcaption {
-  color: white;
 }
 
 .carousel-control {
@@ -125,6 +91,11 @@
   color: black;
   box-shadow: 0 0 16px 0 hsl(0deg 0% 0% / 20%);
   line-height: 0;
+}
+
+.carousel-control:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px black, 0 0 0 4px white;
 }
 
 /* Don't allow icons to be event targets */
@@ -149,4 +120,35 @@
 .carousel-control[aria-disabled="true"] {
   filter: opacity(0.5);
   cursor: not-allowed;
+}
+
+/* Carousel demo #2 (full-width slides variant) */
+
+.slideshow .carousel-scroll-container {
+  /* Mandatory scroll snap is more consistent for a slideshow */
+  scroll-snap-type: x mandatory;
+}
+
+.slideshow .carousel-media {
+  /* No gap in slideshows */
+  gap: 0;
+}
+
+.slideshow .carousel-item {
+  /* Full-width slides, taller height */
+  height: 90vmin;
+  width: 100%;
+}
+
+.slideshow .carousel-item > *,
+.slideshow .carousel-item :is(figure, picture, img) {
+  /* Cover the full slide */
+  width: 100%;
+  height: 100%;
+}
+
+.slideshow .carousel-item img {
+  /* Crop and center overflowing images */
+  object-fit: cover;
+  object-position: center;
 }
