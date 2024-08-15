@@ -1,12 +1,12 @@
 ---
-# title: A Beginner's Guide to Character Encoding
-# title: A Deep Dive on Character Encoding
-title: An Introduction to Character Encoding
+title: An Introduction to Unicode
 description: In this deep dive, you'll learn about the Unicode character set and how it's encoded and decoded with UTF.
 keywords: [character encoding, unicode, utf]
 categories: [computer-science, math, binary]
 thumbnail: ./images/thumbnail.png
-lastUpdated: 2024-08-02
+lastUpdated: 2024-08-15
+redirectFrom:
+  - /blog/character-encoding
 ---
 
 If you're familiar with HTML, you've probably seen this tag somewhere in the `<head>` of a document (hopefully at the very start):
