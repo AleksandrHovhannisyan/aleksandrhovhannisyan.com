@@ -43,7 +43,6 @@
     "@11ty/eleventy-img": "^4.0.2",
     "@11ty/eleventy-upgrade-help": "^1.0.1",
     "@iktakahiro/markdown-it-katex": "^4.0.1",
-    "@octokit/types": "^13.5.0",
     "@toycode/markdown-it-class": "^1.2.4",
     "classnames": "^2.3.1",
     "clean-css": "^5.3.1",

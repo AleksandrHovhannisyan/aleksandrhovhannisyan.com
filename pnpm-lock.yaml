@@ -40,9 +40,6 @@ devDependencies:
   '@iktakahiro/markdown-it-katex':
     specifier: ^4.0.1
     version: 4.0.1
-  '@octokit/types':
-    specifier: ^13.5.0
-    version: 13.5.0
   '@toycode/markdown-it-class':
     specifier: ^1.2.4
     version: 1.2.4
@@ -1888,6 +1885,7 @@ packages:
 
   /@octokit/openapi-types@22.2.0:
     resolution: {integrity: sha512-QBhVjcUa9W7Wwhm6DBFu6ZZ+1/t/oYxqc2tp81Pi41YNuJinbFRx8B133qVOrAaBbF7D/m0Et6f9/pZt9Rc+tg==}
+    dev: false
 
   /@octokit/plugin-paginate-rest@11.3.3(@octokit/core@6.1.2):
     resolution: {integrity: sha512-o4WRoOJZlKqEEgj+i9CpcmnByvtzoUYC6I8PD2SA95M+BJ2x8h7oLcVOg9qcowWXBOdcTRsMZiwvM3EyLm9AfA==}
@@ -2023,6 +2021,7 @@ packages:
     resolution: {integrity: sha512-HdqWTf5Z3qwDVlzCrP8UJquMwunpDiMPt5er+QjGzL4hqr/vBVY/MauQgS1xWxCDT1oMx1EULyqxncdCY/NVSQ==}
     dependencies:
       '@octokit/openapi-types': 22.2.0
+    dev: false
 
   /@octokit/types@9.3.2:
     resolution: {integrity: sha512-D4iHGTdAnEEVsB8fl95m1hiz7D5YiRdQ9b/OEb3BYRVwbLsGHcRVPz+u+BgRLNk0Q0/4iZCBqDN96j2XNxfXrA==}

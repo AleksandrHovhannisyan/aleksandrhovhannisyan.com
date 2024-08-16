@@ -38,7 +38,10 @@ export const throwIfNotType = (arg, expectedType) => {
   }
 };
 
-/** Sanitizes an HTML string. */
+/** Sanitizes an HTML string.
+ * @param {string} html The HTML string to sanitize.
+ * @returns {string}
+ */
 export const sanitizeHtml = (html) => {
   return sanitize(html, {
     // allow images
@@ -72,4 +75,3 @@ export const getLatestGitCommitHash = (format = 'long') => {
  * @param {string} pathString
  */
 export const withoutBaseDirectory = (pathString) => pathString.substring(pathString.indexOf(path.sep));
-
