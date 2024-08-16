@@ -5,7 +5,7 @@ keywords: [format code on save, auto-format code on save, auto-formatting code, 
 categories: [eslint, vscode, tooling]
 commentsId: 80
 thumbnail: ./images/thumbnail.png
-lastUpdated: 2021-10-29
+lastUpdated: 2024-08-15
 ---
 
 I've read my fair share of posts on what you'd think would be a simple task: how to format code on save in VS Code with ESLint. Unfortunately, many of the answers you'll find online are outdated or simply don't work anymore.
@@ -365,7 +365,7 @@ Either way, you'll want to add these to your JSON:
     "typescriptreact"
   ],
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
+    "source.fixAll.eslint": "explicit",
   },
 }
 ```
