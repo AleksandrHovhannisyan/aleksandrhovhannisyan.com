@@ -54,6 +54,6 @@
   vertical-align: middle;
   padding-inline-start: 0.25ch;
   // reserve a reasonable amount of space ahead of time to prevent layout shifts on mobile
-  min-width: 3ch;
+  min-width: 4ch;
   @include mixins.font($size: "base");
 }

@@ -3,13 +3,31 @@
 .button {
   --outline-offset: var(--outline-thickness);
   --outline-color: var(--color-surface-8);
-  background-color: var(--color-surface-8);
-  color: var(--color-text-inverted);
+  --color-bg-button: transparent;
+  --color-fg-button: currentcolor;
   padding: functions.spacing("-2") functions.spacing("0");
   border-radius: functions.spacing("-4");
   text-decoration: none;
+  background-color: var(--color-bg-button);
+  color: var(--color-fg-button);
+}
+
+.button.secondary {
+  --color-bg-button: var(--color-surface-1);
+  border: solid var(--color-fg-button);
 
   &:is(:focus, :hover) {
-    background-color: var(--color-surface-6);
+    --color-bg-button: var(--color-text-normal);
+    --color-fg-button: var(--color-text-inverted);
+    border-color: var(--color-bg-button);
+  }
+}
+
+.button.primary {
+  --color-bg-button: var(--color-surface-8);
+  --color-fg-button: var(--color-text-inverted);
+
+  &:is(:focus, :hover) {
+    --color-bg-button: var(--color-surface-6);
   }
 }

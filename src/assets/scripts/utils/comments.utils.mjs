@@ -75,10 +75,8 @@ export const renderComments = (comments) => {
   }
   const commentSection = document.querySelector('#comments');
   const commentsCounter = commentSection.querySelector('#comments-count');
-  const commentsPlaceholder = commentSection.querySelector('#comments-placeholder');
   const commentsList = commentSection.querySelector('ol');
   commentsCounter.innerText = `${comments.length} `;
-  commentsPlaceholder.remove();
   // https://frontendmasters.com/blog/patterns-for-memory-efficient-dom-manipulation/#approach-2-use-createdocumentfragment-with-appendchild-to-batch-inserts
   const fragment = document.createDocumentFragment();
   comments.forEach((comment) => {

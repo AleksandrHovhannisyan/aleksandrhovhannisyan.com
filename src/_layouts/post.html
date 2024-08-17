@@ -40,12 +40,12 @@ eleventyComputed:
           </div>
         </li>
       </template>
-      <section id="comments" class="stack gap-10" data-comments-id="{{ commentsId }}">
+      <section id="comments" class="rhythm" data-comments-id="{{ commentsId }}">
         <div class="rhythm">
           <div class="repel align-center gap-0">
             <h2>Comments <span id="comments-count"></span></h2>
             <a
-              class="button comment-button"
+              class="button primary comment-button"
               href="https://github.com/{{ site.issues.owner }}/{{ site.issues.repo }}/issues/{{ commentsId }}"
               target="_blank"
               rel="noreferrer noopener"
@@ -59,8 +59,10 @@ eleventyComputed:
             post a comment on GitHub, and it'll show up below once you reload this page.
           </p>
         </div>
-        <p id="comments-placeholder" class="text-center">Loading...</p>
-        <ol class="rhythm" style="--rhythm: 2lh;" aria-live="polite"></ol>
+        <p id="comments-placeholder" class="text-center">
+          <button id="load-comments" type="button" class="button secondary">Load comments</button>
+        </p>
+        <ol class="rhythm" style="--rhythm: 2lh;" aria-live="assertive"></ol>
       </section>
     {%- endif -%}
   </div>
