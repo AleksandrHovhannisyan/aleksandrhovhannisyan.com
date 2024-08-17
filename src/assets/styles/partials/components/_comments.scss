@@ -16,16 +16,13 @@
 }
 
 .post-comment {
-  --avatar-size: #{functions.spacing("5")};
-  --avatar-offset-left: #{functions.spacing("-2")};
-
   &-meta > * {
-    display: inline-block;
+    display: inline;
     vertical-align: middle;
   }
 
   &-avatar {
-    width: var(--avatar-size);
+    width: functions.spacing("5");
   }
 
   &-username {
@@ -50,27 +47,13 @@
       @include mixins.font($size: "base");
     }
   }
-
-  @include mixins.tablet {
-    & {
-      padding-inline-start: calc(var(--avatar-size) + var(--avatar-offset-left));
-    }
-
-    &-meta {
-      position: relative;
-    }
-
-    &-avatar {
-      position: absolute;
-      transform: translateX(-100%);
-      left: calc(-1 * var(--avatar-offset-left));
-    }
-  }
 }
 
 #comments-count {
   color: var(--color-text-soft);
   vertical-align: middle;
   padding-inline-start: 0.25ch;
+  // reserve a reasonable amount of space ahead of time to prevent layout shifts on mobile
+  min-width: 3ch;
   @include mixins.font($size: "base");
 }

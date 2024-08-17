@@ -32,6 +32,7 @@ export const fetchComments = async (id) => {
 };
 
 const COMMENT_TEMPLATE = document.querySelector(`#comment-template`);
+let authorComment = 0;
 
 /** @param {import("../../../../types/comments.typedefs").PostComment} comment The user comment to render. */
 const renderComment = (comment) => {
@@ -47,7 +48,7 @@ const renderComment = (comment) => {
   if (!comment.user.isAuthor) {
     authorPill.remove();
   } else {
-    const authorPillId = `author-${comment.user.name.replace(/\s/, '')}`;
+    const authorPillId = `author-${authorComment++}`;
     authorPill.id = authorPillId;
     userLink.setAttribute('aria-describedby', authorPillId);
   }
