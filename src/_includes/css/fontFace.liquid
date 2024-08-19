@@ -38,7 +38,7 @@
   {%- assign fontType = entry | first -%}
   {%- assign font = entry | last -%}
   {%- comment -%}Don't generate @font-face declarations for native fonts (e.g., Arial, Georgia).{%- endcomment -%}
-  {%- if font.isNativeFont != true -%}
+  {%- if font.isSystemFont != true -%}
     {%- comment -%}Variable fonts{%- endcomment -%}
     {%- if font.type == "variable" -%}
       @font-face {

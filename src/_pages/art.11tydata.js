@@ -2,7 +2,7 @@ import { FontVariant, FontStyle, FontDisplay } from '../../config/fonts/fonts.co
 import { getFontUrl } from '../../config/fonts/fonts.utils.js';
 
 /** Fonts used on the art page.
- * @type {import("../../types/fonts.typedefs").FontConfig}
+ * @type {import("../../types/fonts").FontConfig}
  */
 export const fonts = {
   cursive: {
@@ -38,4 +38,3 @@ export const fonts = {
     },
   },
 };
-

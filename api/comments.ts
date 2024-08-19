@@ -5,6 +5,7 @@ import { markdown } from '../config/plugins/markdown.js';
 import site from '../src/_data/site.js';
 import dayjs from 'dayjs';
 import dayjsRelativeTimePlugin from 'dayjs/plugin/relativeTime.js';
+import type { PostComment } from '../types/comments.js';
 dayjs.extend(dayjsRelativeTimePlugin);
 
 // Abort build if this is missing
@@ -16,26 +17,6 @@ if (!process.env.GITHUB_PERSONAL_ACCESS_TOKEN) {
 const auth = createTokenAuth(process.env.GITHUB_PERSONAL_ACCESS_TOKEN);
 const { token } = await auth();
 const octokit = new Octokit({ auth: token });
-
-type PostComment = {
-  /** The user who posted the comment. */
-  user: {
-    /** The URL for the user's profile photo. */
-    avatarUrl: string;
-    /** The user's username */
-    name: string;
-    /** Whether the user is me (author of the blog). */
-    isAuthor: boolean;
-  },
-  /** A raw datetime string representing when the comment was created. */
-  dateTime: string;
-  /** A human-readable string, relative to now, when the comment was created (e.g., `"20 hours ago"`). */
-  dateRelative: string;
-  /** Whether the comment was edited. */
-  isEdited: boolean;
-  /** The sanitized comment body, as an HTML string. */
-  body: string;
-}
 
 /** Netlify handler for serverless function. Returns comments for a given post by ID. */
 export default async function getCommentsForPost(request: Request) {

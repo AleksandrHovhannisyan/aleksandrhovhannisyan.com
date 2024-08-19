@@ -3,7 +3,7 @@ import { getFontUrl } from '../../config/fonts/fonts.utils.js';
 
 /** Global font config. Gets compiled into font face declarations and can be reused anywhere to access font info.
  * Individual templates can define their own font overrides on an as-needed basis. See for example art.11tydata.js.
- * @type {import("../../types/fonts.typedefs").FontConfig}
+ * @type {import("../../types/fonts").FontConfig}
  */
 export default {
   body: {
