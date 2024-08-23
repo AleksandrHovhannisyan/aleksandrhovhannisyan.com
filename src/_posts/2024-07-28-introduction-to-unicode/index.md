@@ -5,6 +5,7 @@ keywords: [character encoding, unicode, utf]
 categories: [computer-science, math, binary]
 thumbnail: ./images/thumbnail.png
 lastUpdated: 2024-08-15
+commentsId: 191
 redirectFrom:
   - /blog/character-encoding
 ---
