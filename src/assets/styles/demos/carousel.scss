@@ -24,7 +24,7 @@
 .carousel-media {
   /* Arrange media horizontally */
   display: flex;
-  gap: functions.spacing("0");
+  gap: functions.size("spacing", "0");
 }
 
 .carousel-item {
@@ -67,7 +67,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: functions.spacing("-3");
+  padding: functions.size("spacing", "-3");
   text-align: center;
   color: white;
   background-color: hsl(0deg 0% 0% / 75%);
@@ -75,7 +75,7 @@
 }
 
 .carousel-control {
-  --offset-x: #{functions.spacing("-3")};
+  --offset-x: #{functions.size("spacing", "-3")};
   cursor: pointer;
 
   /* Anchor the controls relative to the outer wrapper */
@@ -83,7 +83,7 @@
 
   /* Center the controls vertically */
   top: 50%;
-  padding: functions.spacing("0");
+  padding: functions.size("spacing", "0");
   transform: translateY(-50%);
   border-radius: 50%;
   border: solid 1px hsl(0deg 0% 50%);

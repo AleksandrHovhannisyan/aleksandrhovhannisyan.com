@@ -1,4 +1,48 @@
 $tokens: (
+  color: (
+    light: (
+      "surface": (
+        "1": hsl(0deg 0% 100%),
+        "2": hsl(0deg 0% 96%),
+        "3": hsl(0deg 0% 92%),
+        "4": hsl(0deg 0% 75%),
+        "5": hsl(0deg 0% 55%),
+        "6": hsl(0deg 0% 35%),
+        "7": hsl(0deg 0% 23%),
+        "8": hsl(0deg 0% 13%),
+      ),
+      "text": (
+        "normal": "{color.light.surface.8}", // syntax borrowed from style-dictionary
+        "soft": "{color.light.surface.6}",
+        "emphasis": hsl(0deg 0% 0%),
+        "inverted": hsl(0deg 0% 100%),
+      ),
+      "border": (
+        "0": "{color.light.surface.4}"
+      ),
+    ),
+    dark: (
+      "surface": (
+        "1": hsl(0deg 0% 6%),
+        "2": hsl(0deg 0% 12%),
+        "3": hsl(0deg 0% 20%),
+        "4": hsl(0deg 0% 30%),
+        "5": hsl(0deg 0% 40%),
+        "6": hsl(0deg 0% 60%),
+        "7": hsl(0deg 0% 70%),
+        "8": hsl(0deg 0% 86%),
+      ),
+      "text": (
+        "normal": "{color.dark.surface.8}",
+        "soft": "{color.dark.surface.7}",
+        "emphasis": hsl(0deg 0% 100%),
+        "inverted": hsl(0deg 0% 0%),
+      ),
+      "border": (
+        "0": "{color.dark.surface.5}",
+      )
+    )
+  ),
   size: (
     leading: (
       "4xs": 1,
@@ -96,6 +140,10 @@ $tokens: (
       "1":  1.25em,
       "2":  1.5em,
     )
+  ),
+  animation: (
+    "duration": 0.2s,
+    "timing-function": ease,
   ),
   breakpoints: (
     "mobile-min": 375px,

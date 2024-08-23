@@ -2,9 +2,9 @@
 @use "../mixins";
 
 .blog-page {
-  gap: functions.spacing("5");
+  gap: functions.size("spacing", "5");
 
   @include mixins.tablet {
-    gap: functions.spacing("10");
+    gap: functions.size("spacing", "10");
   }
 }

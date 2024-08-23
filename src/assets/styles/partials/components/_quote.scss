@@ -3,8 +3,8 @@
 
 blockquote {
   font-style: italic;
-  border-inline-start: functions.spacing("-3") solid;
-  padding: 0 functions.relative("2");
+  border-inline-start: functions.size("spacing", "-3") solid;
+  padding: 0 functions.size("relative", "2");
 
   p {
     &:first-of-type {

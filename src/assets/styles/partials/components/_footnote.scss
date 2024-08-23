@@ -3,7 +3,7 @@
 .footnotes {
   &__list {
     list-style: decimal;
-    padding-inline-start: functions.relative("0");
+    padding-inline-start: functions.size("relative", "0");
   }
 }
 

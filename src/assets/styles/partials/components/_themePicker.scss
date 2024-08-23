@@ -5,7 +5,7 @@
   border: none;
 
   label {
-    margin-inline-start: functions.relative("-2");
+    margin-inline-start: functions.size("relative", "-2");
     font-weight: unset;
   }
 

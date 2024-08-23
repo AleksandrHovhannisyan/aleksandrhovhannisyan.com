@@ -7,9 +7,9 @@
   }
 
   &-page {
-    min-width: functions.spacing("5");
+    min-width: functions.size("spacing", "5");
     aspect-ratio: 1;
-    border-radius: functions.spacing("-4");
+    border-radius: functions.size("spacing", "-4");
     display: flex;
     justify-content: center;
   }

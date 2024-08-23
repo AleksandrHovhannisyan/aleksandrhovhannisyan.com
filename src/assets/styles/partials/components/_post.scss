@@ -9,12 +9,12 @@
   }
 
   &-title {
-    margin-bottom: functions.spacing("-2");
+    margin-bottom: functions.size("spacing", "-2");
   }
 
   &-date {
-    color: var(--color-text-soft);
-    margin-bottom: functions.spacing("-3");
+    color: functions.color("text", "soft");
+    margin-bottom: functions.size("spacing", "-3");
     @include mixins.font($size: "sm");
 
     dt,
@@ -26,11 +26,11 @@
   &-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: functions.spacing("-3") functions.spacing("-2");
+    gap: functions.size("spacing", "-3") functions.size("spacing", "-2");
   }
 
   &-tag {
-    color: var(--color-text-soft);
+    color: functions.color("text", "soft");
 
     &::before {
       content: "#";

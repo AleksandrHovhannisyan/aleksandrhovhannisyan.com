@@ -1,5 +1,7 @@
+@use "../functions";
+
 :is(caption, figcaption, cite) {
-  color: var(--color-text-soft);
+  color: functions.color("text", "soft");
 }
 
 :is(caption, figcaption) {

@@ -6,13 +6,13 @@
   --spacing: calc(1.75 * var(--rhythm));
   padding-top: var(--spacing);
   margin-top: var(--spacing);
-  border-top: solid 1px var(--color-border);
+  border-top: solid 1px functions.color("border", "0");
 }
 
 .comment-button {
   display: flex;
   align-items: center;
-  gap: functions.spacing("-2");
+  gap: functions.size("spacing", "-2");
 }
 
 .post-comment {
@@ -22,7 +22,7 @@
   }
 
   &-avatar {
-    width: functions.spacing("5");
+    width: functions.size("spacing", "5");
   }
 
   &-username {
@@ -34,8 +34,8 @@
   }
 
   &-author {
-    border-radius: functions.spacing("-4");
-    padding: functions.spacing("-3") functions.spacing("-2");
+    border-radius: functions.size("spacing", "-4");
+    padding: functions.size("spacing", "-3") functions.size("spacing", "-2");
   }
 
   &-body {
@@ -50,7 +50,7 @@
 }
 
 #comments-count {
-  color: var(--color-text-soft);
+  color: functions.color("text", "soft");
   vertical-align: middle;
   padding-inline-start: 0.25ch;
   // reserve a reasonable amount of space ahead of time to prevent layout shifts on mobile

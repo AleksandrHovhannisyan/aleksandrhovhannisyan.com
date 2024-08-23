@@ -1,9 +1,9 @@
 @use "../functions";
 
 .post-aside {
-  border-inline-start: functions.spacing("-3") solid;
-  padding: functions.relative("0") functions.relative("2");
-  background-color: var(--color-surface-2);
+  border-inline-start: functions.size("spacing", "-3") solid;
+  padding: functions.size("relative", "0") functions.size("relative", "2");
+  background-color: functions.color("surface", "2");
 
   code {
     padding: 0;

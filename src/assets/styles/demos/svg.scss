@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: functions.spacing("8");
+  gap: functions.size("spacing", "8");
 }
 
 .svg-tutorial__icon {

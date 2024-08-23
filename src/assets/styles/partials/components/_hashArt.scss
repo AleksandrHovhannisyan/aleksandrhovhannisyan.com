@@ -1,9 +1,9 @@
 @use "../functions";
 
 .hash-art {
-  width: calc(4 * #{functions.spacing("9")});
+  width: calc(4 * #{functions.size("spacing", "9")});
   height: auto;
-  border: solid 12px var(--color-text-emphasis);
+  border: solid 12px functions.color("text", "emphasis");
   filter: brightness(82%);
 
   [data-value="0"] {

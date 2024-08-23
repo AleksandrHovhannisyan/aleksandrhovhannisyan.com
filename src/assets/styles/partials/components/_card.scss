@@ -3,15 +3,15 @@
 
 .card {
   @include mixins.theme-light {
-    --color-card-bg: var(--color-surface-1);
+    --color-card-bg: #{functions.color("surface", "1")};
   }
 
   @include mixins.theme-dark {
-    --color-card-bg: var(--color-surface-2);
+    --color-card-bg: #{functions.color("surface", "2")};
   }
 
   // Expose these to consumers so we don't hard-code the logic here
-  --card-padding: #{functions.relative("2")};
+  --card-padding: #{functions.size("relative", "2")};
   --card-box-shadow-default:
     0 1px 1px hsl(0deg 0% 0% / 12%),
     0 2px 2px hsl(0deg 0% 0% / 12%),
@@ -22,11 +22,11 @@
     0 4px 4px hsl(0deg 0% 0% / 12%),
     0 8px 8px hsl(0deg 0% 0% / 12%),
     0 8px 12px hsl(0deg 0% 0% / 12%);
-  --card-offset-y-focus: translateY(calc(-1 * #{functions.spacing("-2")}));
+  --card-offset-y-focus: translateY(calc(-1 * #{functions.size("spacing", "-2")}));
   position: relative;
   padding: var(--card-padding);
   background-color: var(--color-card-bg);
-  border-radius: functions.spacing("-3");
+  border-radius: functions.size("spacing", "-3");
   box-shadow: var(--card-box-shadow-default);
   transform: none;
   cursor: pointer;

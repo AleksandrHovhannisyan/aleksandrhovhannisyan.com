@@ -3,18 +3,18 @@
 
 .page-footer {
   @include mixins.theme-light {
-    --color-footer-bg: var(--color-surface-8);
+    --color-footer-bg: #{functions.color("surface", "8")};
   }
 
   @include mixins.theme-dark {
-    --color-footer-bg: var(--color-surface-2);
+    --color-footer-bg: #{functions.color("surface", "2")};
   }
 
   color-scheme: dark;
   background-color: var(--color-footer-bg);
   color: white;
   text-align: center;
-  padding-block: functions.spacing("5");
+  padding-block: functions.size("spacing", "5");
   accent-color: currentcolor;
 
   &-container {
@@ -22,7 +22,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: functions.spacing("-1");
+    gap: functions.size("spacing", "-1");
   }
 
   &-end {
@@ -33,11 +33,11 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: functions.spacing("0");
+    gap: functions.size("spacing", "0");
   }
 
   @include mixins.mobile-lg {
-    padding-block: functions.spacing("5");
+    padding-block: functions.size("spacing", "5");
   }
 
   @include mixins.tablet-sm {

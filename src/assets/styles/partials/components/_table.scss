@@ -8,7 +8,7 @@ table {
 
 caption {
   text-align: start;
-  margin-bottom: functions.spacing("-2");
+  margin-bottom: functions.size("spacing", "-2");
   @include mixins.font($size: "sm");
 }
 
@@ -18,8 +18,8 @@ th {
 
 :is(td, th) {
   text-align: start;
-  padding: functions.spacing("-1");
-  border: solid 0.75px var(--color-border);
+  padding: functions.size("spacing", "-1");
+  border: solid 0.75px functions.color("border", "0");
 
   &.numeric {
     text-align: end;
@@ -27,5 +27,5 @@ th {
 }
 
 thead {
-  background-color: var(--color-surface-2);
+  background-color: functions.color("surface", "2");
 }

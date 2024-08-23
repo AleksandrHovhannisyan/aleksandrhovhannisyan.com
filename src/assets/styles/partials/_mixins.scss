@@ -57,32 +57,28 @@
 
 @mixin font($size: null, $leading: null, $tracking: null, $family: null, $weight: null) {
   @if not $size and not $leading and not $family and not $weight {
-    @error "You must specify at least a font size, line height, or a font family + weight when using the font mixin.";
-  }
-  // Don't ever set family without a weight, and vice versa, since not all fonts have the same weights (in which case the inherited font weight may look weird)
-  @if $weight and not $family or $family and not $weight {
-    @error "Cannot set font family without a weight, and vice versa.";
+    @error "You must specify at least one argument to the font mixin.";
   }
   // Font size and its related properties
   @if $size {
-    font-size: functions.font-size($size);
+    font-size: functions.size("font", $size);
     // Line height
     @if not $leading {
       $leading-step: functions.get($tokens, "size", "font", $size, "leading");
       @if $leading-step {
-        line-height: functions.leading($leading-step);
+        line-height: functions.size("leading", $leading-step);
       }
     } @else {
-      line-height: functions.leading($leading);
+      line-height: functions.size("leading", $leading);
     }
     // Tracking/letter spacing
     @if not $tracking {
       $tracking-step: functions.get($tokens, "size", "font", $size, "tracking");
       @if $tracking-step {
-        letter-spacing: functions.tracking($tracking-step);
+        letter-spacing: functions.size("tracking", $tracking-step);
       }
     } @else {
-      letter-spacing: functions.tracking($tracking);
+      letter-spacing: functions.size("tracking", $tracking);
     }
   }
   // Setting family and weight together

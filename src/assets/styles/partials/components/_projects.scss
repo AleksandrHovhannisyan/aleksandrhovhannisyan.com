@@ -17,7 +17,7 @@
   &-icon {
     picture {
       display: flex;
-      width: functions.relative(0);
+      width: functions.size("relative", "0");
       aspect-ratio: 1;
     }
   }
@@ -25,13 +25,13 @@
   &-rating {
     display: flex;
     align-items: center;
-    gap: functions.spacing("-4");
+    gap: functions.size("spacing", "-4");
     @include mixins.font($family: "mono", $weight: "regular");
 
     svg {
-      width: functions.relative("0");
+      width: functions.size("relative", "0");
       aspect-ratio: 1;
-      fill: var(--color-surface-7);
+      fill: functions.color("surface", "7");
     }
   }
 
@@ -53,28 +53,28 @@
   }
 
   &-description {
-    margin-top: functions.spacing("-2");
+    margin-top: functions.size("spacing", "-2");
     @include mixins.font($size: "base");
   }
 
   &-technologies {
     display: flex;
     flex-wrap: wrap;
-    gap: functions.spacing("-2");
-    margin-top: functions.spacing("1");
+    gap: functions.size("spacing", "-2");
+    margin-top: functions.size("spacing", "1");
     @include mixins.font($family: "mono", $weight: "regular");
   }
 
   &-technology {
-    background-color: var(--color-surface-3);
-    padding: functions.spacing("-3") functions.spacing("-2");
-    border-radius: functions.spacing("-4");
+    background-color: functions.color("surface", "3");
+    padding: functions.size("spacing", "-3") functions.size("spacing", "-2");
+    border-radius: functions.size("spacing", "-4");
   }
 }
 
 .github-cta {
   svg {
-    width: functions.spacing("8");
+    width: functions.size("spacing", "8");
     aspect-ratio: 1;
     fill: currentcolor;
   }

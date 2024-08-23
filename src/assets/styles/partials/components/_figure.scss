@@ -2,7 +2,7 @@
 @use "../functions";
 
 figure {
-  gap: functions.spacing("-2");
+  gap: functions.size("spacing", "-2");
   display: flex;
   flex-direction: column;
 

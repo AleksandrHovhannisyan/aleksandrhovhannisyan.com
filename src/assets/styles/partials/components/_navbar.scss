@@ -3,16 +3,16 @@
 
 .skip-navigation {
   top: 50%;
-  transform: translate(#{functions.spacing("-2")}, -50%);
-  padding: functions.spacing("-2");
-  background-color: var(--color-surface-1);
+  transform: translate(#{functions.size("spacing", "-2")}, -50%);
+  padding: functions.size("spacing", "-2");
+  background-color: functions.color("surface", "1");
 }
 
 .navbar {
   /* Body is a flex container. Without this, the navbar may shrink vertically due to the presence of a horizontal scrollbar. */
   flex-shrink: 0;
   width: 100%;
-  padding-block: functions.spacing("0");
+  padding-block: functions.size("spacing", "0");
   overflow-x: auto;
 
   a {
@@ -29,18 +29,18 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: functions.spacing("0");
+    gap: functions.size("spacing", "0");
   }
 
   &-logo {
-    width: functions.spacing("4");
+    width: functions.size("spacing", "4");
   }
 
   &-link-home {
     display: flex;
-    gap: functions.spacing("-3");
+    gap: functions.size("spacing", "-3");
     align-items: center;
-    padding: functions.spacing("-2");
+    padding: functions.size("spacing", "-2");
     @include mixins.font($family: "body", $weight: "bold");
 
     .site-name {
@@ -52,7 +52,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    gap: functions.relative("-3");
+    gap: functions.size("relative", "-3");
 
     > :first-child {
       flex-shrink: 0;
@@ -61,17 +61,17 @@
   }
 
   &-link {
-    padding: functions.relative("-2") functions.relative("-1");
+    padding: functions.size("relative", "-2") functions.size("relative", "-1");
 
     &:is(:focus, :hover, [aria-current="page"]) {
-      background-color: var(--color-surface-3);
+      background-color: functions.color("surface", "3");
     }
   }
 }
 
 @include mixins.mobile-lg {
   .navbar {
-    padding-block: functions.spacing("4");
+    padding-block: functions.size("spacing", "4");
     position: unset;
 
     .site-name {

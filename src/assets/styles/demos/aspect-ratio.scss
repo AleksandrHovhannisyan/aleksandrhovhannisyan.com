@@ -5,14 +5,14 @@
   display: grid;
   padding: 0;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: functions.spacing("0");
+  gap: functions.size("spacing", "0");
 }
 
 .demo-tile {
   position: relative;
-  background-color: var(--color-surface-3);
-  color: var(--color-text-emphasis);
-  border-radius: functions.spacing("-3");
+  background-color: functions.color("surface", "3");
+  color: functions.color("text", "emphasis");
+  border-radius: functions.size("spacing", "-3");
   @include mixins.font($family: "body", $weight: "bold");
 }
 
@@ -45,7 +45,7 @@
 }
 
 .demo-square-grid {
-  --gap: #{functions.spacing("0")};
+  --gap: #{functions.size("spacing", "0")};
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   row-gap: var(--gap);
@@ -54,8 +54,8 @@
 
 .demo-square-grid > * {
   aspect-ratio: 1;
-  background-color: var(--color-surface-3);
-  color: var(--color-text-emphasis);
+  background-color: functions.color("surface", "3");
+  color: functions.color("text", "emphasis");
   position: relative;
 }
 
@@ -82,8 +82,8 @@
   align-items: center;
   flex-direction: column;
   justify-content: space-evenly;
-  background-color: var(--color-surface-2);
-  color: var(--color-text-emphasis);
+  background-color: functions.color("surface", "2");
+  color: functions.color("text", "emphasis");
   height: 100%;
 }
 

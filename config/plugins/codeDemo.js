@@ -52,7 +52,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-block: solid 1px var(--color-border);
+    border-block: solid 1px var(--color-border-0);
     padding: 0.5rem;
     background-color: var(--color-surface-2);
 }

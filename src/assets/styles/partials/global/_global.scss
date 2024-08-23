@@ -6,8 +6,8 @@
 body {
   display: flex;
   flex-direction: column;
-  background-color: var(--color-surface-1);
-  color: var(--color-text-normal);
+  background-color: functions.color("surface", "1");
+  color: functions.color("text", "normal");
   overflow-wrap: break-word;
   -webkit-font-smoothing: antialiased;
   @include mixins.font($size: "base");
@@ -28,12 +28,12 @@ body {
 }
 
 a {
-  color: var(--color-text-link);
+  color: inherit;
   text-underline-offset: 0.15em;
 }
 
 :is(h1, h2, h3, h4, h5, h6) {
-  color: var(--color-text-emphasis);
+  color: functions.color("text", "emphasis");
 }
 
 :is(h1, h2, h3, h4, h5, h6, label, th, strong) {

@@ -1,6 +1,6 @@
 #demo {
   --gap: var(--size-spacing-0);
-  border: solid var(--size-spacing--4) var(--color-border);
+  border: solid var(--size-spacing--4) var(--color-border-0);
   padding: var(--gap);
   border-radius: var(--size-spacing--4);
   background-color: var(--color-surface-2);

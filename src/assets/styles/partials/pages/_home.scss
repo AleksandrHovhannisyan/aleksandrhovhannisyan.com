@@ -2,17 +2,17 @@
 @use "../mixins";
 
 .home-page {
-  gap: functions.spacing("8");
+  gap: functions.size("spacing", "8");
 
   @include mixins.mobile-lg {
-    gap: functions.spacing("12");
+    gap: functions.size("spacing", "12");
   }
 }
 
 .home-page-hero {
   display: flex;
   justify-content: space-between;
-  gap: functions.spacing("5");
+  gap: functions.size("spacing", "5");
 }
 
 .home-hash-art {

@@ -5,7 +5,7 @@
     --rhythm: 1lh;
   }
   @supports not (margin-top: 1lh) {
-    --rhythm: calc(#{functions.leading("base")} * 1em);
+    --rhythm: calc(#{functions.size("leading", "base")} * 1em);
   }
 
   > * + * {

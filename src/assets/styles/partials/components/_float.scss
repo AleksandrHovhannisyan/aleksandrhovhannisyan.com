@@ -2,7 +2,7 @@
 @use "../functions";
 
 .float {
-  --spacing: #{functions.spacing("-2")};
+  --spacing: #{functions.size("spacing", "-2")};
   max-width: functions.to-rems(160px);
   margin-block-end: var(--spacing);
 

@@ -1,4 +1,8 @@
+@use "../tokens" as *;
+@use "../functions";
+
 html {
-  --transition-duration: 0.2s;
-  --transition-timing-function: ease;
+  @each $property, $value in functions.get($tokens, "animation") {
+    --transition-#{$property}: #{$value};
+  }
 }

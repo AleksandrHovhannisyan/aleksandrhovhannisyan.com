@@ -1,42 +1,42 @@
+@use "../tokens" as *;
+@use "../functions";
+@use "sass:meta";
+@use "sass:string";
+@use "sass:list";
+
+@mixin color-tokens($theme) {
+  color-scheme: string.unquote($theme);
+  $colors: functions.get($tokens, "color", $theme);
+  @each $color-category, $color-values in $colors {
+    @each $step, $value in $color-values {
+      // Borrowing style-dictionary's syntax of "{color.surface.8}" to reference existing tokens in the map.
+      // Note that I could've technically just did var(--color-surface-8) in the tokens config, but I don't want
+      // to hard-code the variable name syntax there. Ideally the single source of truth for that is functions.color().
+      @if meta.type-of($value) == "string" and functions.starts-with($value, "{") {
+        // "{color.light.surface.8}" -> "color.light.surface.8"
+        $value: functions.replace($value, "{", "");
+        $value: functions.replace($value, "}", "");
+        // e.g., "color.light.surface.8" -> ["color", "light", "surface", "8"]
+        $path-to-referenced-token: string.split($value, ".");
+        $referenced-token-category: list.nth($path-to-referenced-token, 3);
+        $referenced-token-step: list.nth($path-to-referenced-token, 4);
+        --color-#{$color-category}-#{$step}: #{functions.color($referenced-token-category, $referenced-token-step)};
+      } @else {
+        --color-#{$color-category}-#{$step}: #{$value};
+      }
+    }
+  }
+}
+
 @mixin colors-light() {
-  color-scheme: light;
-  --color-surface-1: hsl(0deg 0% 100%);
-  --color-surface-2: hsl(0deg 0% 96%);
-  --color-surface-3: hsl(0deg 0% 92%);
-  --color-surface-4: hsl(0deg 0% 75%);
-  --color-surface-5: hsl(0deg 0% 55%);
-  --color-surface-6: hsl(0deg 0% 35%);
-  --color-surface-7: hsl(0deg 0% 23%);
-  --color-surface-8: hsl(0deg 0% 13%);
-  --color-text-normal: var(--color-surface-8);
-  --color-text-soft: var(--color-surface-6);
-  --color-text-emphasis: black;
-  --color-text-inverted: white;
-  --color-border: var(--color-surface-4);
-  --color-scrollbar-thumb: var(--color-surface-4);
+  @include color-tokens("light");
 }
 
 @mixin colors-dark() {
-  color-scheme: dark;
-  --color-surface-1: hsl(0deg 0% 6%);
-  --color-surface-2: hsl(0deg 0% 12%);
-  --color-surface-3: hsl(0deg 0% 20%);
-  --color-surface-4: hsl(0deg 0% 30%);
-  --color-surface-5: hsl(0deg 0% 40%);
-  --color-surface-6: hsl(0deg 0% 60%);
-  --color-surface-7: hsl(0deg 0% 70%);
-  --color-surface-8: hsl(0deg 0% 86%);
-  --color-text-normal: var(--color-surface-8);
-  --color-text-soft: var(--color-surface-7);
-  --color-text-emphasis: white;
-  --color-text-inverted: black;
-  --color-border: var(--color-surface-5);
-  --color-scrollbar-thumb: var(--color-surface-5);
+  @include color-tokens("dark");
 }
 
 html {
-  --color-text-link: inherit;
-
   // Light theme, assumed to be default
   &,
   &[data-theme="light"] {

@@ -1,9 +1,9 @@
 @use "../functions";
 
 :is(ul, ol):not([class]) {
-  padding-inline-start: functions.relative("0");
+  padding-inline-start: functions.size("relative", "0");
 
   li {
-    margin-top: functions.relative("-3");
+    margin-top: functions.size("relative", "-3");
   }
 }

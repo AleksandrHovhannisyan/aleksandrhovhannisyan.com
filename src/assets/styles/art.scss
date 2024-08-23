@@ -24,14 +24,14 @@ body {
   height: 100%;
   display: grid;
   place-items: center;
-  gap: functions.spacing("0");
-  scroll-margin-top: functions.spacing("10");
+  gap: functions.size("spacing", "0");
+  scroll-margin-top: functions.size("spacing", "10");
 
   /* Force each artwork to create its own stacking context since some art pieces use z-index
   tricks to position individual elements higher or lower within that artwork's context. Without this,
   they would leak into the global stacking context and potentially appear above other things (e.g., the navbar). */
   isolation: isolate;
-  padding: functions.spacing("3");
+  padding: functions.size("spacing", "3");
 
   &-page {
     // https://www.magicpattern.design/tools/css-backgrounds
@@ -73,7 +73,7 @@ body {
     }
 
     &-header {
-      padding: functions.spacing("12") functions.spacing("5");
+      padding: functions.size("spacing", "12") functions.size("spacing", "5");
 
       .title {
         --font-size-multiplier: 1.2;
@@ -82,9 +82,9 @@ body {
         position: relative;
         text-align: center;
         text-transform: uppercase;
-        letter-spacing: functions.tracking("lg");
+        letter-spacing: functions.size("tracking", "lg");
         text-shadow: functions.to-rems(1px) functions.to-rems(1px);
-        font-size: calc(var(--font-size-multiplier) * #{functions.font-size("5xl")});
+        font-size: calc(var(--font-size-multiplier) * #{functions.size("font", "5xl")});
         @include mixins.font($family: "display", $weight: "regular");
 
         @include mixins.tablet-sm {
@@ -141,9 +141,9 @@ body {
 
     &-footer {
       border-top: solid 4px;
-      padding: functions.spacing("5");
+      padding: functions.size("spacing", "5");
       text-align: center;
-      line-height: functions.leading("xs");
+      line-height: functions.size("leading", "xs");
 
       > * {
         max-width: 60ch;
@@ -159,9 +159,9 @@ body {
       --color-shadow: var(--color-text);
       background-color: white;
       position: relative;
-      padding: functions.relative("-2") functions.relative("0");
+      padding: functions.size("relative", "-2") functions.size("relative", "0");
       text-transform: uppercase;
-      letter-spacing: functions.tracking("lg");
+      letter-spacing: functions.size("tracking", "lg");
       text-decoration: none;
       color: var(--color-text);
       border: solid 2px;
@@ -175,9 +175,9 @@ body {
 
     ol {
       display: flex;
-      gap: functions.spacing("0");
+      gap: functions.size("spacing", "0");
       width: 100%;
-      padding: functions.spacing("0") functions.spacing("-2");
+      padding: functions.size("spacing", "0") functions.size("spacing", "-2");
       overflow-x: auto;
       background: linear-gradient(0deg, transparent 45%, var(--color-text) 45%, var(--color-text) 50%, transparent 50%);
 
@@ -190,15 +190,15 @@ body {
       }
 
       @include mixins.tablet-sm {
-        gap: functions.spacing("5");
+        gap: functions.size("spacing", "5");
         overflow-x: unset;
-        padding: functions.spacing("0") functions.spacing("5");
+        padding: functions.size("spacing", "0") functions.size("spacing", "5");
       }
     }
   }
 
   &-list {
-    padding: functions.spacing("5");
+    padding: functions.size("spacing", "5");
   }
 
   &-link {
@@ -220,7 +220,7 @@ body {
         opacity: 0.6;
       }
     }
-    padding: functions.spacing("-3") functions.spacing("-1");
+    padding: functions.size("spacing", "-3") functions.size("spacing", "-1");
     color: var(--color-text);
     transform: scale(0);
     text-align: center;

@@ -2,7 +2,7 @@
 
 // https://heydonworks.com/article/the-flexbox-holy-albatross/
 .col-wrap {
-  --gap: #{functions.spacing("5")};
+  --gap: #{functions.size("spacing", "5")};
   --multiplier: calc(var(--container-width, 40rem) - 100%);
   display: flex;
   flex-wrap: wrap;
