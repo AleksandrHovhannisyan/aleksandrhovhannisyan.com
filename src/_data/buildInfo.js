@@ -17,5 +17,4 @@ export default function getBuildInfo() {
     },
     hash: latestGitCommitHash,
   };
-};
-
+}

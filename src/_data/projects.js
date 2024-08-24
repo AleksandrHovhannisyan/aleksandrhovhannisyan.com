@@ -76,4 +76,4 @@ export default async function getProjects() {
   const projects = await Promise.all(Object.keys(repos).map((key) => fetchRepo(key)));
   // Highest rated projects first
   return projects.sort((a, b) => b.rating - a.rating);
-};
+}

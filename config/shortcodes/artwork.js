@@ -16,4 +16,3 @@ export default function artworkShortcode(content, description) {
             <figcaption id="${captionId}" class="artwork-caption">${description}</figcaption>
           </figure>`;
 }
-

@@ -18,4 +18,3 @@ export const scriptDirs = {
   input: path.join(dir.input, dir.assets, 'scripts'),
   output: path.join(dir.output, dir.assets, 'scripts'),
 };
-

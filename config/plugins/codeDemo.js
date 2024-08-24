@@ -153,4 +153,3 @@ export const codeDemoOptions = {
     style: 'width: 100%;',
   },
 };
-

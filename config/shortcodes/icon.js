@@ -26,5 +26,4 @@ export default function iconShortcode(props) {
   } catch (e) {
     console.error(e);
   }
-};
-
+}

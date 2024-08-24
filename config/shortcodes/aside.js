@@ -6,5 +6,4 @@ export default function aside(children) {
   }
   const content = markdown.render(children);
   return `<aside role="note" class="post-aside rhythm">${content}</aside>`;
-};
-
+}

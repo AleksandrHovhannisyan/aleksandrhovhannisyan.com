@@ -9,5 +9,4 @@ export default function details(children, summary, open = false) {
   <summary class="outline-offset">${summary}</summary>
   <div class="details-content rhythm">${content}</div>
   </details>`;
-};
-
+}
