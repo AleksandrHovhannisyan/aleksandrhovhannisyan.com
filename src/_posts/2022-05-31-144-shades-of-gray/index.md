@@ -1,10 +1,12 @@
 ---
-title: 16 Shades of Gray
+title: 144 Shades of Gray
 description: The one where I create my first generative artwork and still refuse to use any color on my site.
 keywords: [generative art, hash art, git hash]
 categories: [essay, node, css, math, art]
-lastUpdated: 2024-01-12
+lastUpdated: 2024-08-23
 thumbnail: ./images/hash.png
+redirectFrom:
+  - /blog/16-shades-of-gray/
 ---
 
 If you've been following me long enough, you've probably noticed that my site is completely devoid of color, except for in imagery and code blocks. A friend even joked that I must be allergic to color because I've exterminated it from every part of my UI. Admittedly, I do enjoy working in grayscale because it allows me to focus on contrast, typography, and spacing over color, which can be overwhelming to implement.
@@ -17,20 +19,28 @@ In a recent redesign of my site, I also decided to make my layout wider and bigg
 
 I enjoy generative art, especially works that are seeded with random hashes—like Jordan Scales's [hashart](https://hash.jordanscales.com/) project, where he draws various math-based artworks using SHA-256 hashes. I also recently had an idea to [show my site's git hash in my footer](/blog/eleventy-build-info/#3-getting-the-latest-commit-hash) as part of my 11ty build. And so I wondered: Could I somehow turn this random string of symbols into a mediocre work of art? Indeed, I could!
 
-I decided to take my git hash and convert it to a four-by-four grid of colored tiles. Naturally, having been confronted about my phobia of color, I had no choice but to redouble my efforts and make this a *grayscale* artwork, in keeping with tradition. To introduce color when I've renounced it for so long would be regressive, a sign of weakness, and cause for rebellion.
+I decided to take my git hash and convert it to a 12-by-12 grid of tiles. Naturally, having been confronted about my phobia of color, I had no choice but to redouble my efforts and make this a *grayscale* artwork, in keeping with tradition. To introduce color when I've renounced it for so long would be regressive, a sign of weakness, and cause for rebellion.
 
-The code to do this is short—it just reads my latest Git commit hash at build time and converts it to an array of bytes. Since one byte represents <code>2<sup>8</sup> = 256</code> values, and there are `256` values per channel in the RGB true color model, it makes sense to just interpret each byte as a color value. Grays are achieved by setting red, green, and blue to all be the same value. Note that I'm excluding the last four bytes because there are 20 bytes in a Git hash, and I'm only interested in the first 16 for the sake of symmetry.
+The code to do this is short—it just reads my latest Git commit hash at build time and parses it one bit at a time, interpreting a zero as black and a one as white. Note that I'm excluding the last 16 bits to get a perfect square (144).
 
 ```js {data-copyable="true"}
+// Note: Each git hash is 20 bytes long (160 bits)
 const hash = childProcess.execSync(`git rev-parse HEAD`).toString().trim();
+// Markup for the grid
+let result = `<svg viewBox="0 0 12 12">`;
+// Read git hash as an array of bytes. Stop at 18*8 = 144 bits because it's the largest perfect square < 160.
 const bytes = new Uint8Array(Buffer.from(hash, 'hex'));
-let result = `<svg viewBox="0 0 4 4" width="100" height="100">`;
-for (let i = 0; i < bytes.length - 4; i++) {
-  const gray = bytes[i];
-  const color = `rgb(${gray}, ${gray}, ${gray})`;
-  const x = i % 4;
-  const y = Math.floor(i / 4);
-  result += `<rect x="${x}" y="${y}" width="1" height="1" style="fill: ${color}"></rect>`;
+for (let i = 0; i < 18; i++) {
+  const byte = bytes[i];
+  // Parse byte one bit at a time, in Big Endian order (LTR)
+  for (let j = 7; j >= 0; j--) {
+    const bitIndex = i * 8 + (7 - j);
+    // e.g., 10011010 => [1, 0, 0, 1, 1, 0, 1, 0]
+    const bit = (byte >> j) & 0b00000001;
+    const x = bitIndex % 12;
+    const y = Math.floor(bitIndex / 12);
+    result += `<rect x="${x}" y="${y}" width="1" height="1" fill="hsl(0deg 0% ${bit * 100}%)"></rect>`;
+  }
 }
 result += `</svg>`;
 ```
@@ -61,4 +71,4 @@ Below are some examples of the output images this generates:
   </table>
 </div>
 
-Nothing super exciting, but there is one problem: Mathematically speaking, the hash should eventually generate an embarrassing permutation of tiles. When you consider that I [make frequent and atomic commits](/blog/atomic-git-commits/), this may not end well. On the other hand, there are 256 grayscale values for each of the 16 tiles, which when you do the math comes out to—*counts fingers*—lots and lots of permutations. So it's unlikely that I'll ever run into edge cases where this algorithm produces something silly. Plus, there are only so many ways to draw things in the confines of a four-by-four grid.
+Nothing super exciting, but there is one problem: Mathematically speaking, the hash should eventually generate an embarrassing permutation of tiles. When you consider that I [make frequent and atomic commits](/blog/atomic-git-commits/), this may not end well. On the other hand, there are 144 tiles, each of which can be black or white, which when you do the math comes out to—*counts fingers*—lots and lots of permutations. So it's unlikely that I'll ever run into edge cases where this algorithm produces something silly or even coherent.

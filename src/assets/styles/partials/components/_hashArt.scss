@@ -1,0 +1,16 @@
+@use "../functions";
+
+.hash-art {
+  width: calc(4 * #{functions.spacing("9")});
+  height: auto;
+  border: solid 12px var(--color-text-emphasis);
+  filter: brightness(82%);
+
+  [data-value="0"] {
+    fill: black;
+  }
+
+  [data-value="1"] {
+    fill: white;
+  }
+}
