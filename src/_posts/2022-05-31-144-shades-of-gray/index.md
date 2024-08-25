@@ -53,7 +53,7 @@ Below are some examples of the output images this generates:
 
 <div class="scroll-x" role="region">
   <table>
-    <caption>Git hashes interpreted as four-by-four grayscale grids</caption>
+    <caption>Git hashes interpreted as 12-by-12 grayscale grids</caption>
     <thead>
       <tr>
         <th scope="col">Hash</th>
