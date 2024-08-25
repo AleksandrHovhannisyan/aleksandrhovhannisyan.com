@@ -5,7 +5,7 @@ import { markdown } from '../config/plugins/markdown.js';
 import site from '../src/_data/site.js';
 import dayjs from 'dayjs';
 import dayjsRelativeTimePlugin from 'dayjs/plugin/relativeTime.js';
-import type { PostComment } from '../types/comments.js';
+import type { PostComment } from '../src/types/comments.js';
 dayjs.extend(dayjsRelativeTimePlugin);
 
 // Abort build if this is missing
