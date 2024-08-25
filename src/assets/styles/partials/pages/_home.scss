@@ -20,5 +20,6 @@
 
   @include mixins.desktop {
     display: unset;
+    padding-block-start: 1ex;
   }
 }
