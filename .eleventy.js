@@ -1,6 +1,7 @@
 import esbuild from 'esbuild';
 import path from 'path';
 import PluginFootnotes from 'eleventy-plugin-footnotes';
+import EleventyPluginRobotsTxt from 'eleventy-plugin-robotstxt';
 import EleventyPluginNetlifyRedirects from 'eleventy-plugin-netlify-redirects';
 import { EleventyPluginCodeDemo } from 'eleventy-plugin-code-demo';
 import {
@@ -122,6 +123,17 @@ export default function eleventy(eleventyConfig) {
     frontMatterOverrides: { excludeFromSitemap: true },
   };
   eleventyConfig.addPlugin(EleventyPluginNetlifyRedirects, eleventyPluginNetlifyRedirectsOptions);
+  
+  /** @type {import("eleventy-plugin-robotstxt/src/typedefs.js").EleventyPluginRobotsTxtOptions} */  
+  const eleventyPluginRobotsTxtOptions = {
+    sitemapURL: toAbsoluteUrl('sitemap.xml'),
+    rules: new Map([
+      ['*', [{ disallow: '/tags' }, { disallow: '/404.html' }, { disallow: '/googlee2ec0427acbadbba.html' }]],
+    ]),
+    shouldBlockAIRobots: true,
+  };
+  eleventyConfig.addPlugin(EleventyPluginRobotsTxt, eleventyPluginRobotsTxtOptions);
+  
   eleventyConfig.addPlugin(PluginFootnotes, {
     baseClass: 'footnotes',
     classes: {
@@ -131,7 +143,9 @@ export default function eleventy(eleventyConfig) {
     titleId: 'footnotes-label',
     backLinkLabel: (footnote, index) => `Back to reference ${index + 1}`,
   });
+  
   eleventyConfig.addPlugin(EleventyPluginCodeDemo, codeDemoOptions);
+  
   eleventyConfig.setLibrary('md', markdown);
 
   // Post-processing
