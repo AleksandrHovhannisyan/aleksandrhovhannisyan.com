@@ -44,7 +44,7 @@ I have experience with a few different stacks—I've done a bit of desktop, mobi
       class="flex"
       aria-label="GitHub profile"
       href="https://github.com/AleksandrHovhannisyan?tab=repositories"
-      >{%- socialIcon "github" -%}</a>
+      >{% include "icon-github.svg" %}</a>
   </li>
 </ul>
 

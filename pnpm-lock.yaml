@@ -34,9 +34,6 @@ devDependencies:
   '@11ty/eleventy-img':
     specifier: ^4.0.2
     version: 4.0.2
-  '@11ty/eleventy-upgrade-help':
-    specifier: ^1.0.1
-    version: 1.0.1
   '@iktakahiro/markdown-it-katex':
     specifier: ^4.0.1
     version: 4.0.1
@@ -118,9 +115,6 @@ devDependencies:
   sass:
     specifier: ^1.69.5
     version: 1.74.1
-  simple-icons:
-    specifier: ^6.3.0
-    version: 6.23.0
   slugify:
     specifier: ^1.5.3
     version: 1.6.6
@@ -226,14 +220,6 @@ packages:
       debug: 4.3.6
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /@11ty/eleventy-upgrade-help@1.0.1:
-    resolution: {integrity: sha512-9YqcRPYhBCJjcbAdz7cGIHHzpNDLr9V3igWjeuOfq3w3I4QsYjvr/ZZCLJLSsYfwIWyyTVAGbrF800pM7qSPQA==}
-    engines: {node: '>=12'}
-    dependencies:
-      chalk: 4.1.2
-      semver: 7.6.0
     dev: true
 
   /@11ty/eleventy-utils@1.0.3:
@@ -9665,14 +9651,6 @@ packages:
       lru-cache: 6.0.0
     dev: true
 
-  /semver@7.6.0:
-    resolution: {integrity: sha512-EnwXhrlwXMk9gKu5/flx5sv/an57AkRplG3hTK68W7FRDN+k+OWBj65M7719OkA82XLBxrcX0KSHj+X5COhOVg==}
-    engines: {node: '>=10'}
-    hasBin: true
-    dependencies:
-      lru-cache: 6.0.0
-    dev: true
-
   /semver@7.6.1:
     resolution: {integrity: sha512-f/vbBsu+fOiYt+lmwZV0rVwJScl46HppnOA1ZvIuBWKOTlllpyJ3bfVax76/OrhCH38dyxoDIA8K7uB963IYgA==}
     engines: {node: '>=10'}
@@ -9870,11 +9848,6 @@ packages:
       decompress-response: 6.0.0
       once: 1.4.0
       simple-concat: 1.0.1
-    dev: true
-
-  /simple-icons@6.23.0:
-    resolution: {integrity: sha512-9ql+6OdW5Dnfx1/z5z8MYO2y+OM4Oj4XBvQY5Nlye4eW+Nf5igHzHIKKtTmFkvCmR0lrddZpe1F/89chgoUXhg==}
-    engines: {node: '>=0.12.18'}
     dev: true
 
   /simple-swizzle@0.2.2:

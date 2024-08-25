@@ -5,7 +5,6 @@ export { default as quoteShortcode } from './quote.js';
 export { default as iconShortcode } from './icon.js';
 export { default as imageShortcode } from './image.js';
 export { default as faviconShortcode } from './favicon.js';
-export { default as socialIconShortcode } from './socialIcon.js';
 export { default as artworkShortcode } from './artwork.js';
 export { default as nanoIdShortcode } from './nanoid.js';
 export { default as detailsShortcode } from './details.js';

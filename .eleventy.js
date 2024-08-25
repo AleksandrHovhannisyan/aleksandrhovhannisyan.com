@@ -8,7 +8,6 @@ import {
   definitionShortcode,
   imageShortcode,
   iconShortcode,
-  socialIconShortcode,
   quoteShortcode,
   faviconShortcode,
   artworkShortcode,
@@ -57,10 +56,10 @@ export default function eleventy(eleventyConfig) {
   eleventyConfig.addWatchTarget(scriptDirs.input);
 
   // Pass-through copy for static assets
-  eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
+  eleventyConfig.setServerPassthroughCopyBehavior("copy");
   eleventyConfig.addPassthroughCopy(path.join(dir.input, dir.assets, 'fonts'));
   eleventyConfig.addPassthroughCopy(path.join(dir.input, dir.assets, 'videos'));
-  eleventyConfig.addPassthroughCopy(path.join(imagePaths.input, 'art'));
+  eleventyConfig.addPassthroughCopy(path.join(imagePaths.input, 'thumbnails'));
 
   // Custom shortcodes
   eleventyConfig.addPairedShortcode('aside', asideShortcode);
@@ -71,7 +70,6 @@ export default function eleventy(eleventyConfig) {
   eleventyConfig.addShortcode('image', imageShortcode);
   eleventyConfig.addShortcode('favicon', faviconShortcode);
   eleventyConfig.addShortcode('icon', iconShortcode);
-  eleventyConfig.addShortcode('socialIcon', socialIconShortcode);
   eleventyConfig.addShortcode('hashArt', hashArtShortcode);
   eleventyConfig.addShortcode('nanoid', nanoIdShortcode);
   eleventyConfig.addShortcode('fetchText', fetchText);
