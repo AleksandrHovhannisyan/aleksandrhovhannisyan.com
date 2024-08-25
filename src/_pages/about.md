@@ -17,7 +17,16 @@ Long story short, I moved to the U.S. when I was little and have lived in the st
 
 ## Work Experience
 
-I'm a front-end developer on the [StoryMaps](https://storymaps.arcgis.com/) team at Esri, where I develop new user-facing features, improve core parts of the app, write documentation, advocate for accessibility, mentor developers, and share new things I'm learning with the team. I thrive in collaborative environments that encourage growth, offer varied learning opportunities, and cultivate my problem-solving skills and creative strengths.
+I've worked as a software engineer on Esri's [StoryMaps](https://storymaps.arcgis.com/) team since 2020. In this role, I've:
+
+- Shipped many high-impact features, including a new text editor, blocks, theming options, topic tagging and publishing options, custom templates, and much more.
+- Refactored core parts of the app to resolve longstanding tech debt.
+- Written plenty of documentation for both new and old code.
+- Served on an internal accessibility working group.
+- Mentored developers and paired with co-workers to unblock their work.
+- Presented at team workshops to share things I've learned.
+
+I thrive in collaborative environments that encourage growth, offer varied learning opportunities, and cultivate my problem-solving skills and creative strengths.
 
 These days, I mainly work on the web with React, TypeScript, and CSS, but I also have experience with other frameworks like Svelte and more general-purpose programming languages like C++ and Python. Some of my interests in the web development space include typography, performance, and accessibility.
 
@@ -27,7 +36,7 @@ I won't bore you too much with my work history, though; that's what [my LinkedIn
 
 ## Software Projects
 
-I have experience with a few different stacks—I've done a bit of desktop, mobile, and game development, either on my own time or for class projects. I've also published a few [npm packages](https://www.npmjs.com/~aleksandrhovhannisyan). Below are select projects that I'm proud of:
+Below are select projects that I'm proud of:
 
 <ul class="col-wrap align-center">
   {%- for project in projects -%}
@@ -35,18 +44,12 @@ I have experience with a few different stacks—I've done a bit of desktop, mobi
       {%- include "projectCard.html" project: project -%}
     </li>
   {%- endfor -%}
-  <li class="github-cta stack flex-center gap-0 text-center">
-    <div>
-      <p class="size-font-base"><strong>Want to see more of my work?</strong></p>
-      <p>Explore my GitHub repos:</p>
-    </div>
-    <a
-      class="flex"
-      aria-label="GitHub profile"
-      href="https://github.com/AleksandrHovhannisyan?tab=repositories"
-      >{% include "icon-github.svg" %}</a>
-  </li>
 </ul>
+
+You can also:
+
+- [View my repositories on GitHub](https://github.com/AleksandrHovhannisyan?tab=repositories).
+- [View my published npm packages](https://www.npmjs.com/~aleksandrhovhannisyan).
 
 ## Hobbies and Interests
 

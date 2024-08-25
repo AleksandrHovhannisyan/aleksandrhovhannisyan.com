@@ -32,6 +32,13 @@ const repos = {
     repo: 'CIS4301-Project-University-of-Florida/U.S.-Gun-Crime',
     tech: ['react', 'typescript', 'express', 'sql'],
   },
+  raycasting: {
+    getIcon: () => '🎮',
+    name: 'Canvas Raycasting',
+    repo: 'AleksandrHovhannisyan/raycasting-js',
+    url: 'https://raycasting-from-scratch.netlify.app/',
+    tech: ['html', 'css', 'javascript'],
+  },
   blog: {
     getIcon: async () => {
       const icon = await imageShortcode({
