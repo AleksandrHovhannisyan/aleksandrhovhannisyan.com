@@ -10,7 +10,6 @@ const repos = {
       const icon = await imageShortcode({
         src: 'https://www.fluid-type-scale.com/images/favicon-32.png',
         alt: '',
-        isLinked: false,
         widths: [32],
       });
       return icon;
@@ -44,7 +43,6 @@ const repos = {
       const icon = await imageShortcode({
         src: path.join(imagePaths.input, 'favicons/favicon.png'),
         alt: '',
-        isLinked: false,
         widths: [32],
       });
       return icon;

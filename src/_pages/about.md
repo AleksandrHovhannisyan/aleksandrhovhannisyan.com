@@ -6,7 +6,7 @@ layout: about
 ---
 
 <p>
-  {% include "image.html" src: 'src/assets/images/profile-photo.jpg', alt: '', isLinked: false, className: "float right", imgClassName: "circle", isLazy: false %}
+  {% include "image.html" src: 'src/assets/images/profile-photo.jpg', alt: '', className: "float right", imgClassName: "circle", isLazy: false %}
 </p>
 
 <p style="margin: 0">Thanks for dropping by! My name's Aleksandr—and yes, that's spelled <em>without</em> an <code>e</code> between the <code>d</code> and the <code>r</code>, pronounced just like <em>Alexander</em>. Don't worry about my last name, though; it's quite long, and most people butcher it anyway.</p>

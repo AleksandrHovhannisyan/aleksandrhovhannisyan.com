@@ -218,13 +218,13 @@ Regardless of which approach you take, you'll get a `3x3` grid of images that ar
 
 <ol class="demo-square-grid" aria-hidden="true">
   {% for i in (1..3) %}
-  <li class="demo-square">{% include "postImage.html" src: "./images/puppy.png", alt: "", isLinked: false %}</li>
+  <li class="demo-square">{% include "postImage.html" src: "./images/puppy.png", alt: "" %}</li>
   {% endfor %}
   {% for i in (1..3) %}
-  <li class="demo-square">{% include "postImage.html" src: "./images/kitten.png", alt: "", isLinked: false %}</li>
+  <li class="demo-square">{% include "postImage.html" src: "./images/kitten.png", alt: "" %}</li>
   {% endfor %}
   {% for i in (1..3) %}
-  <li class="demo-square">{% include "postImage.html" src: "./images/parakeet.png", alt: "", isLinked: false %}</li>
+  <li class="demo-square">{% include "postImage.html" src: "./images/parakeet.png", alt: "" %}</li>
   {% endfor %}
 </ol>
 

@@ -14,7 +14,6 @@ import { withoutBaseDirectory } from '../utils.js';
  * @property {string} [sizes] The `sizes` attribute for the image.
  * @property {string} [className] An optional class name for the outer picture tag.
  * @property {string} [imgClassName] An optional class name for the `<img>` tag.
- * @property {boolean} [isLinked] Whether the image is linked. If `true`, wraps the picture markup in an anchor that links to the largest resolution image.
  * @property {boolean} [isLazy] Whether the image is `loading="lazy"`. Default: `true`.
  */
 
@@ -31,7 +30,6 @@ export default async function imageShortcode(props) {
     sizes = '100vw',
     className,
     imgClassName,
-    isLinked = true,
     isLazy = true,
   } = props ?? {};
 
@@ -92,16 +90,8 @@ export default async function imageShortcode(props) {
     .join('\n');
 
   // Custom image markup
-  const picture = `<picture ${pictureAttributes}>
+  return `<picture ${pictureAttributes}>
     ${sourceHtmlString}
     <img ${imgAttributes}>
   </picture>`;
-
-  // Link to the highest resolution optimized image
-  if (isLinked) {
-    return `<a class="outline-offset" href="${largestImages.optimized.url}">${picture}</a>`;
-  }
-
-  // Otherwise just return the plain picture tag
-  return `${picture}`;
 }

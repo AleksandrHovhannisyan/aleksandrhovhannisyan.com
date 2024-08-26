@@ -42,7 +42,7 @@ In this article, we'll learn how to create a progressively enhanced image carous
       {%- for image in carouselImages %}
       <li class="carousel-item">
         <figure>
-          {% include "image.html" src: image.src, alt: image.alt, widths: "[200, 400, 800]", isLinked: false %}
+          {% include "image.html" src: image.src, alt: image.alt, widths: "[200, 400, 800]" %}
           <figcaption>Photo by <a href="{{ image.user.url }}?utm_source={{ site.url }}&utm_medium=referral" rel="noreferrer noopener" target="_blank">{{ image.user.name }}</a> on <a href="https://unsplash.com/?utm_source={{ site.url }}&utm_medium=referral" rel="noreferrer noopener" target="_blank">Unsplash</a></figcaption>
         </figure>
       </li>
@@ -412,7 +412,7 @@ The carousel we've been building so far is more akin to a filmstrip, where multi
       {%- for image in carouselImages %}
       <li class="carousel-item">
         <figure>
-          {% include "image.html" src: image.src, alt: image.alt, widths: "[400, 800]", isLinked: false %}
+          {% include "image.html" src: image.src, alt: image.alt, widths: "[400, 800]" %}
           <figcaption>Photo by <a href="{{ image.user.url }}?utm_source={{ site.url }}&utm_medium=referral" rel="noreferrer noopener" target="_blank">{{ image.user.name }}</a> on <a href="https://unsplash.com/?utm_source={{ site.url }}&utm_medium=referral" rel="noreferrer noopener" target="_blank">Unsplash</a></figcaption>
         </figure>
       </li>

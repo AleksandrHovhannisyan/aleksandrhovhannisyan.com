@@ -44,7 +44,7 @@ There's some good news, though: While browsers are discontinuing support for Fla
 
 Starting today, though, browsers like Chrome and Firefox will officially block Flash content from running, so archives like this one will be your only option for reliving the glory days of Flash gaming. Any games that weren't already ported over to Unity or JavaScript simply won't work.
 
-{% include "postImage.html" src: "./images/chrome.png", alt: "Chrome prompts you to unblock Flash by default.", isLinked: false, caption: "Why are you like this, Chrome?" %}
+{% include "postImage.html" src: "./images/chrome.png", alt: "Chrome prompts you to unblock Flash by default.", caption: "Why are you like this, Chrome?" %}
 
 It feels like a part of my past is being torn from me. I wish I had more time to go back and replay all of those games I once cherished, outside of archives. On the other hand, I wonder if any of it will still be the same or if these games will have lost their charm.
 
