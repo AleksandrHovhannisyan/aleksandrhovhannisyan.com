@@ -100,11 +100,11 @@ Follow these steps:
 
 You should see something like the following image:
 
-{% include "postImage.html" src: "./images/application.png", alt: "The Chrome developer tools open on a demo site. The Application tab is active, with Cookies expanded and the single domain highlighted. Three cookies are listed in a multi-column table to the right: name1, name2, name3, with values of value1, value2, and value3, respectively." %}
+![The Chrome developer tools open on a demo site. The Application tab is active, with Cookies expanded and the single domain highlighted. Three cookies are listed in a multi-column table to the right: name1, name2, name3, with values of value1, value2, and value3, respectively.](./images/application.png)
 
 Here's another example of cookies, this time from my Google account (I've intentionally blurred sensitive values out of an abundance of caution):
 
-{% include "postImage.html" src: "./images/google-cookies.png", alt: "TODO: Examining the cookies associated with my Google user account" %}
+![TODO: Examining the cookies associated with my Google user account](./images/google-cookies.png)
 
 True to their definition, cookies are in fact just data stored in your browser. We'll learn more about [where cookies are stored](#where-are-cookies-stored) in a later section.
 
@@ -200,11 +200,11 @@ Set-Cookie: name3=value3; Domain=example.com; Secure
 
 For example, if you open [the demo site](https://http-cookie-demo.netlify.app/) and inspect the network request for the HTML document, you should see three `Set-Cookie` request headers:
 
-{% include "postImage.html" src: "./images/set-cookie-header.png", alt: "Inspecting a network request for an HTML document via Chrome dev tools. The Headers pane is active. A section labeled Request headers has many key-value rows, three of which are Set-Cookie headers." %}
+![Inspecting a network request for an HTML document via Chrome dev tools. The Headers pane is active. A section labeled Request headers has many key-value rows, three of which are Set-Cookie headers.](./images/set-cookie-header.png)
 
 In fact, cookies are so common in response headers that browsers make it easier for you to find them in dev tools so you don't have to go digging through the response headers. Just switch from the `Headers` pane to the `Cookies` pane to see them in table form:
 
-{% include "postImage.html" src: "./images/response-cookies-table.png", alt: "Inspecting a network request for an HTML document via Chrome dev tools. The Cookies pane is active and shows a table of three cookies." %}
+![Inspecting a network request for an HTML document via Chrome dev tools. The Cookies pane is active and shows a table of three cookies.](./images/response-cookies-table.png)
 
 While parsing the server's response, the browser will encounter these `Set-Cookie` headers and save them to the user's disk, typically in a database file. Note that the `Set-Cookie` header is merely a suggestion, so it's up to the browser to decide whether to save the cookie. Normally, browsers will save cookies by default unless users block cookies in their privacy settings.
 
@@ -231,11 +231,11 @@ Cookie: name1=value1; name2=value2; name3=value3
 
 Using [the same demo site as before](https://http-cookie-demo.netlify.app/), if you now reload the page, you should see the cookies included in the `Cookie` request header:
 
-{% include "postImage.html" src: "./images/request-cookie-header.png", alt: "Inspecting a network request for an HTML document via Chrome dev tools. The Headers pane is active. A section labeled Response headers has many key-value rows for headers, one of which is named Cookie. Its value is name1=value1; name3=value3" %}
+![Inspecting a network request for an HTML document via Chrome dev tools. The Headers pane is active. A section labeled Response headers has many key-value rows for headers, one of which is named Cookie. Its value is name1=value1; name3=value3](./images/request-cookie-header.png)
 
 Once again, we can inspect both the request and response cookies in table form by switching to the `Cookies` pane:
 
-{% include "postImage.html" src: "./images/request-response-cookie-tables.png", alt: "Inspecting a network request for an HTML document via Chrome dev tools. The Cookies pane is active and shows two tables: one for request cookies (only name1 and name3) and another for response cookies (name1, name2, name3)." %}
+![Inspecting a network request for an HTML document via Chrome dev tools. The Cookies pane is active and shows two tables: one for request cookies (only name1 and name3) and another for response cookies (name1, name2, name3).](./images/request-response-cookie-tables.png)
 
 {% aside %}
 If you pay close attention, you may notice that the second cookie is missing from these request headers. This is because I waited 10 seconds before reloading the page, so the cookie with a max age of 10 seconds expired. Expired cookies don't exist; naturally, they can't be included in request headers.
@@ -279,7 +279,7 @@ Set-Cookie: name3=value3; Domain=example.com; Secure
 
 In Chrome dev tools, session cookies are identified by a keyword of `Session` under the `Expires / Max-Age` column. There are two session cookies in our example:
 
-{% include "postImage.html" src: "./images/session-cookie.png", alt: "The Chrome developer tools open on a demo site. The Application tab is active, with Cookies expanded and the single domain highlighted. Three cookies are listed in a multi-column table to the right: name1, name2, name3, with values of value1, value2, and value3, respectively. Two cookies have a max age of Session." %}
+![The Chrome developer tools open on a demo site. The Application tab is active, with Cookies expanded and the single domain highlighted. Three cookies are listed in a multi-column table to the right: name1, name2, name3, with values of value1, value2, and value3, respectively. Two cookies have a max age of Session.](./images/session-cookie.png)
 
 Note that it's up to the browser to define what "current browsing session" means; in most browsers, a browsing session ends when you fully shut down your browser (i.e., close all tabs). At that point, session cookies may get cleared.
 
@@ -439,7 +439,7 @@ Imagine a scenario where an attacker manages to inject a malicious script into S
 
 Thankfully, cookies offer an attribute to protect against XSS-based session hijacking. If you compare the value of `document.cookie` to the cookies listed in your browser's developer tools, you may be surprised to find that some cookies are missing from the string. Those "hidden" cookies are known as `HTTPOnly` cookies; a cookie that has an `HTTPOnly` attribute cannot be read with JavaScript, so it won't appear in `document.cookie`.
 
-{% include "postImage.html" src: "./images/httponly-cookie.png", alt: "The Chrome developer tools open on a demo site. The Application tab is active, with Cookies expanded and the single domain highlighted. Three cookies are listed in a multi-column table to the right: name1, name2, name3, with values of value1, value2, and value3, respectively. The cookie named name1 is highlighted and has a checkmark in the HTTPOnly column." %}
+![The Chrome developer tools open on a demo site. The Application tab is active, with Cookies expanded and the single domain highlighted. Three cookies are listed in a multi-column table to the right: name1, name2, name3, with values of value1, value2, and value3, respectively. The cookie named name1 is highlighted and has a checkmark in the HTTPOnly column.](./images/httponly-cookie.png)
 
 Session cookies—especially those used in cookie authentication—are commonly marked as `HTTPOnly` to protect users against session hijacking via XSS.
 
@@ -507,7 +507,10 @@ This is why people sometimes find that personalized ads are following them aroun
 
 In the screenshot below, I located the `IDE` advertising cookie on StackOverflow, a site I chose only because I know it uses Google AdSense:
 
-{% include "postImage.html" src: "./images/ide1.png", alt: "Examining the cookies associated with doubleclick.net on quora.com. The IDE Google AdSense cookie is highlighted.", caption: "Note the use of `SameSite=None`. Without that attribute, the cookie will be treated as `SameSite=Lax` and will never be included in cross-site requests to the ad network, rendering it useless." %}
+<figure>
+<img src="./images/ide1.png" alt="Examining the cookies associated with doubleclick.net on quora.com. The IDE Google AdSense cookie is highlighted." sizes="100vw" />
+<figcaption>Note the use of <code>SameSite=None</code>. Without that attribute, the cookie will be treated as <code>SameSite=Lax</code> and will never be included in cross-site requests to the ad network, rendering it useless.</figcaption>
+</figure>
 
 Time for an experiment, assuming you're willing to accept advertising cookies:
 
@@ -519,7 +522,7 @@ Time for an experiment, assuming you're willing to accept advertising cookies:
 
 In this example, you'll want to filter the list of cookies to search for `IDE`. It should be exactly the same on the second site as it was on the first one you visited. I tested this again with Quora:
 
-{% include "postImage.html" src: "./images/ide2.png", alt: "Examining the cookies associated with doubleclick.net on quora.com. The same IDE Google AdSense cookie appears in the list." %}
+![Examining the cookies associated with doubleclick.net on quora.com. The same IDE Google AdSense cookie appears in the list.](./images/ide2.png)
 
 Everything is the same, down to the cookie's expiration date and time.
 
@@ -541,11 +544,11 @@ Chrome stores its cookies in an SQLite database file named `Cookies`. The locati
 
 This database consists of two tables: a `cookies` table and a `meta` table:
 
-{% include "postImage.html" src: "./images/schemas.png", alt: "Exploring the schemas of the two tables in Chrome's cookies database" %}
+![Exploring the schemas of the two tables in Chrome's cookies database](./images/schemas.png)
 
 Here's some sample data from the `cookies` table:
 
-{% include "postImage.html" src: "./images/cookie-data.png", alt: "Exploring Chrome's cookie database using DB Browser for SQLite. The cookies are listed in one big table." %}
+![Exploring Chrome's cookie database using DB Browser for SQLite. The cookies are listed in one big table.](./images/cookie-data.png)
 
 ### Firefox
 
@@ -562,7 +565,7 @@ For example, on Windows 10, you'll find your Firefox cookies under `%AppData%\Mo
 
 Edge stores its cookies not in a single file but rather as separate files under `%LocalAppData%\Microsoft\Windows\INetCookies`:
 
-{% include "postImage.html" src: "./images/edge-cookies.png", alt: "Using Windows File Explorer to view a list of cookies stored by Microsoft Edge. Each file ends in the .cookie extension." %}
+![Using Windows File Explorer to view a list of cookies stored by Microsoft Edge. Each file ends in the .cookie extension.](./images/edge-cookies.png)
 
 You can open these files with a plaintext editor like Notepad.
 
@@ -579,7 +582,7 @@ The first, third, and fourth options are the most advanced; they allow you to on
 
 The screenshot below illustrates how to delete all cookies for a site via the storage API:
 
-{% include "postImage.html" src: "./images/clear-all.png", alt: "Hovering over a delete button in the Chrome dev tools Application tab, under the cookies view. The button has a tooltip that reads 'Clear all cookies.'" %}
+![Hovering over a delete button in the Chrome dev tools Application tab, under the cookies view. The button has a tooltip that reads 'Clear all cookies.'](./images/clear-all.png)
 
 If you've been following along, you should now understand what happens when you clear your cookies. Remember: Most web servers uses authentication cookies to ensure that you're allowed to view the pages that you're requesting. They may also use cookies to personalize your website experience by storing certain settings and preferences. So if you clear your cookies for a website, two things will happen:
 

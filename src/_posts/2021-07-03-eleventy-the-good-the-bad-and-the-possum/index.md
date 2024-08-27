@@ -10,7 +10,10 @@ lastUpdated: 2024-01-16
 
 For two years, my blog ran on Jekyll, one of the oldest and most popular static site generators around. Jekyll is often listed alongside other static site generators like Hugo, Gatsby, Next, Nuxt, and [many others](https://jamstack.org/generators/) that make up the so-called Jamstack: an ecosystem of frameworks that allow developers to combine JavaScript with markup languages to generate dynamic templates at build time.
 
-{% include "postImage.html" src: "./images/jamstack.jpg", alt: "The jamstack.org website. Various static site generators like Hugo, Next.js, Gatsby, and Jekyll are ranked in a grid view, with information on various stats, like the number of stars on GitHub.", caption: "The [jamstack.org](https://jamstack.org/generators/) website ranks popular static site generators.", isLazy: false %}
+<figure>
+  <img src="./images/jamstack.jpg" alt="The jamstack.org website. Various static site generators like Hugo, Next.js, Gatsby, and Jekyll are ranked in a grid view, with information on various stats, like the number of stars on GitHub." sizes="100vw" loading="eager" />
+  <figcaption>The <a href="https://jamstack.org/generators/">jamstack.org</a> website ranks popular static site generators.</figcaption>
+</figure>
 
 Jekyll was great and served me really well! It's very much a batteries-included static site generator, which is great for beginners since it allows you to hit the ground running and [create a blog](/blog/getting-started-with-jekyll-and-github-pages/) with minimal setup.
 
@@ -34,7 +37,7 @@ After months of additional research and tinkering, I stumbled upon 11ty, a stati
 
 Upon visiting the [official website](https://11ty.dev/), I was greeted by a mischievous-looking possum hanging from a red balloon and floating across my screen.
 
-{% include "postImage.html" src: "./images/possum.jpg", alt: "The Eleventy mascot is a possum with brown hide and a beige face. It's hanging from a red balloon, with one paw slightly outstretched." %}
+![The Eleventy mascot is a possum with brown hide and a beige face. It's hanging from a red balloon, with one paw slightly outstretched.](./images/possum.jpg)
 
 *Okay*, I thought. *I can work with this.*
 
@@ -343,7 +346,7 @@ To put this into perspective, my site has around 360 source images as of this wr
 {% aside %}
 **2024 update**: Since I originally wrote this article more than two years ago, my site has actually gotten *faster* thanks to newer versions of Eleventy that are much better optimized. My site's Netlify builds now take just 1.5–2 minutes to finish.
 
-{% include "postImage.html", src: "./images/2024-deploys.png", alt: "Three deploy logs from Netlify for my site. Two took 1 minute 30 seconds, while one took 1 minute 59 seconds to build." %}
+![Three deploy logs from Netlify for my site. Two took 1 minute 30 seconds, while one took 1 minute 59 seconds to build.](./images/2024-deploys.png)
 {% endaside %}
 
 Part of what makes the 11ty image plugin so efficient is the fact that it caches images locally once it has generated them. This is great if you have lots of paginated pages with images that get reused, like for article thumbnails. Instead of regenerating the same image several times, 11ty will process it just once, and all subsequent requests will hit the cache.
@@ -412,7 +415,7 @@ To top it all off, if you get stuck at any point during development, you have se
 
 Debug mode is awesome—11ty logs information about every single thing that it does: how it was configured, what directories and files it found, what files it copied, what images it generated, how long any given step took, and so much more. It even includes benchmarking info at the end so you can optimize your build times!
 
-{% include "postImage.html" src: "./images/debug.jpg", alt: "Sample output from Eleventy's debug mode, with color-coded steps and various useful messages logged to the console." %}
+![Sample output from Eleventy's debug mode, with color-coded steps and various useful messages logged to the console.](./images/debug.jpg)
 
 (Also, I like the pretty colors.)
 
@@ -457,7 +460,7 @@ If you're using `type: "module"` in your `package.json` to automatically treat e
 
 We've covered the good. And we've covered the bad. But [what about the possum](https://www.11ty.dev/news/logo-homage/)?
 
-{% include "postImage.html" src: "./images/possum-white-bg.jpg", alt: "The Eleventy mascot is a possum with brown hide and a beige face. It's hanging from a red balloon, with one paw slightly outstretched." %}
+![The Eleventy mascot is a possum with brown hide and a beige face. It's hanging from a red balloon, with one paw slightly outstretched.](./images/possum-white-bg.jpg)
 
 {% quote "An Homage to the James Williamson Possum Balloon", "https://www.11ty.dev/news/logo-homage/" %}
   Why a possum? Why is the possum floating? Why a balloon? Exactly. 42.
@@ -467,7 +470,10 @@ The original Eleventy mascot was [designed by developer James Williamson](https:
 
 And I just love everything about it. Those impish eyes. That scrawny little paw just barely outstretched, like it wants you to *[Hand it over. That thing, your dark soul](https://www.youtube.com/watch?v=Nt5Q9hu0h0s)*.
 
-{% include "postImage.html" src: "./images/hand-it-over.jpg", alt: "Slave Knight Gael, the final boss of the video game Dark Souls 3, gestures towards the viewer with his hand outstretched. The captions read: Hand it over. That thing, your dark soul. The Eleventy mascot's head replaces Gael's.", caption: "There's a Dark Souls meme that nobody asked for. You're welcome, internet." %}
+<figure>
+<img src="./images/hand-it-over.jpg" alt="Slave Knight Gael, the final boss of the video game Dark Souls 3, gestures towards the viewer with his hand outstretched. The captions read: Hand it over. That thing, your dark soul. The Eleventy mascot's head replaces Gael's." sizes="100vw" />
+<figcaption>There's a Dark Souls meme that nobody asked for. You're welcome, internet.</figcaption>
+</figure>
 
 ## So, Should You Use 11ty?
 

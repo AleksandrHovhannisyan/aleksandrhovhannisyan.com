@@ -43,7 +43,7 @@ A <dfn>formal parameter</dfn> (parameter for short) is the local variable declar
 
 When your browser executes this code, it will create two "frames" in its memory stack: one for the main (enclosing) scope and and another for the `doSomething` invocation. Each frame is like a compartment in a drawer, storing values and objects that are not accessible from within other compartments. Diagrammatically, here's what the stack would look like once `doSomething` has been called:
 
-{% include "postImage.html" src: "./images/stack-frame.png", baseFormat: "png", alt: "Two stack frames are shown in memory; one corresponds to the main method. The other, positioned directly above, is a function that was called from main. That stack frame contains the argument that was passed along when the function was invoked." %}
+![Two stack frames are shown in memory; one corresponds to the main method. The other, positioned directly above, is a function that was called from main. That stack frame contains the argument that was passed along when the function was invoked.](./images/stack-frame.png){eleventy:formats="png,webp"}
 
 With that out of the way, let's get into the meat of the discussion.
 
@@ -53,7 +53,7 @@ If there's one thing you should take away from this article, it's this: Passing 
 
 In JavaScript, variables that store objects are called **object references** (usually "references" for short). The term *reference* is a natural way to talk about these variables in English because we say that a variable *refers to* an object in memory, sort of like how an article might *reference* a source.
 
-{% include "postImage.html" src: "./images/object-reference.png", baseFormat: "png", alt: "An object resides somewhere in memory. A little black square is shown, representing a variable named person that points to a specific memory address." %}
+![An object resides somewhere in memory. A little black square is shown, representing a variable named person that points to a specific memory address.](./images/object-reference.png){eleventy:formats="png,webp"}
 
 There's nothing wrong with using the term "reference" to talk about objects in this manner, and I don't want to discourage you from doing so. In JavaScript, this is the accepted terminology; if you choose to deviate from it, you'll end up confusing others.
 
@@ -174,7 +174,10 @@ If `alias` were in fact a true reference, then the change on line three *would'v
 
 You may have noticed that I used the term "point" quite a lot. What's up with that? What—pardon the awful pun—is the *point* I'm trying to get across?
 
-{% include "postImage.html" src: "./images/pointers.png", baseFormat: "png", alt: "xkcd comic about pointers. Two stick figures are depicted; one is sitting cross-legged in front of a TV playing video games, and the other is standing beside them. Player: 'Man, I suck at this game. Can you give me a few pointers?' Friend: '0x3A28213A 0x6339392C, 0x7363682E.' Player: 'I hate you.", caption: "Source: [xkcd](https://xkcd.com/138/)." %}
+<figure>
+<img src="./images/pointers.png" eleventy:formats="png,webp" alt="xkcd comic about pointers. Two stick figures are depicted; one is sitting cross-legged in front of a TV playing video games, and the other is standing beside them. Player: 'Man, I suck at this game. Can you give me a few pointers?' Friend: '0x3A28213A 0x6339392C, 0x7363682E.' Player: 'I hate you." sizes="100vw" />
+<figcaption>Source: <a href="https://xkcd.com/138/">xkcd</a>.</figcaption>
+</figure>
 
 So far, we've seen that JavaScript does not have "true" references—the ones that are used in "pass by reference"—even though that's the accepted shorthand terminology when talking about "object references." So what exactly *are* object references in JavaScript?
 
@@ -315,15 +318,15 @@ If we're passing a pointer into a function as an argument, what "value" does the
 
 So, when we pass a pointer into a function as an argument, the formal parameter receives a copy of the *memory address* to which the argument was pointing. We essentially end up having two different variables, on two different stack frames (caller and callee), that point to the same location in memory.
 
-{% include "postImage.html" src: "./images/passing-a-pointer-by-value.png", baseFormat: "png", alt: "Left: stack. Right: heap. Stack contains two stack frames: main (with local variable bob) and changeName (local variable person). Both variables point to the same memory address on the heap for an object." %}
+![Left: stack. Right: heap. Stack contains two stack frames: main (with local variable bob) and changeName (local variable person). Both variables point to the same memory address on the heap for an object.](./images/passing-a-pointer-by-value.png){eleventy:formats="png,webp"}
 
 At that memory address is an object. We can follow either the formal parameter pointer or the argument pointer and visit that memory address to modify the object located there. In the case of the code above, we're reading the formal parameter pointer:
 
-{% include "postImage.html" src: "./images/modifying-object.png", baseFormat: "png", alt: "Left: stack. Right: heap. Stack contains two stack frames: main (with local variable bob) and changeName (local variable person). Both variables point to the same memory address on the heap for an object. Sample code shows changeName modifying the name property of the object at this memory address. Text reads: &quot;person here. I'd like to change the name property of whatever object resides at this address. bob here... still pointing to the same location in memory. I wonder if the object has changed since I last saw it?&quot;" %}
+![Left: stack. Right: heap. Stack contains two stack frames: main (with local variable bob) and changeName (local variable person). Both variables point to the same memory address on the heap for an object. Sample code shows changeName modifying the name property of the object at this memory address. Text reads: &quot;person here. I'd like to change the name property of whatever object resides at this address. bob here... still pointing to the same location in memory. I wonder if the object has changed since I last saw it?&quot;](./images/modifying-object.png){eleventy:formats="png,webp"}
 
 What we cannot do is have the formal parameter point to a different location in memory and expect the argument to point to that new location once the function returns. This *would* be the case if the argument were passed in by reference. But JavaScript is pass by value!
 
-{% include "postImage.html" src: "./images/pointing-to-a-new-object.png", baseFormat: "png", alt: "Left: stack. Right: heap. Stack contains two stack frames: main (with local variable bob) and changeName (local variable person). Both variables point to the same memory address on the heap for an object. Sample code shows changeName pointing its local variable to a new object. Text reads: &quot;person here. Time to point to a new object!&quot; Local variable bob is still pointing to the original object." %}
+![Left: stack. Right: heap. Stack contains two stack frames: main (with local variable bob) and changeName (local variable person). Both variables point to the same memory address on the heap for an object. Sample code shows changeName pointing its local variable to a new object. Text reads: &quot;person here. Time to point to a new object!&quot; Local variable bob is still pointing to the original object.](./images/pointing-to-a-new-object.png){eleventy:formats="png,webp"}
 
 Notice that within the scope of the `changeName` function, `person` points to the object with a `name` property of `'Jane'`. But this doesn't affect the pointer argument—it's still pointing to the original location in memory, and the object there is left untouched.
 

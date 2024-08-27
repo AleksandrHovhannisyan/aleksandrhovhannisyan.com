@@ -118,7 +118,10 @@ This says: Only apply the dark mode system preference if there is no override se
 
 For now, to test that our theme is working, we can add a `data-theme` attribute to the root element for testing purposes and then write some demo CSS. Alternatively, using your browser's developer tools, you can toggle between light and dark mode to verify that the CSS works as expected.
 
-{% include "postImage.html" src: "./images/emulate-prefers-color-scheme.png" alt: "Emulating the prefers-color-scheme media query in the Rendering tab of Chrome dev tools. Three options are provided in a select menu: no emulation, light, or dark.", caption: "Emulating the preferred system color scheme in Chrome dev tools." %}
+<figure>
+  <img src="./images/emulate-prefers-color-scheme.png" alt="Emulating the prefers-color-scheme media query in the Rendering tab of Chrome dev tools. Three options are provided in a select menu: no emulation, light, or dark." sizes="100vw" />
+  <figcaption>Emulating the preferred system color scheme in Chrome dev tools.</figcaption>
+</figure>
 
 ## HTML: The Theme Picker
 

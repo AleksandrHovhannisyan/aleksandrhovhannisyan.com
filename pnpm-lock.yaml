@@ -181,7 +181,7 @@ packages:
       chokidar: 3.6.0
       debug: 4.3.6(supports-color@9.4.0)
       dev-ip: 1.0.1
-      finalhandler: 1.2.0
+      finalhandler: 1.2.1
       mime: 3.0.0
       minimist: 1.2.8
       morphdom: 2.7.4
@@ -324,7 +324,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/highlight': 7.24.7
-      picocolors: 1.0.1
+      picocolors: 1.1.0
     dev: true
 
   /@babel/helper-validator-identifier@7.24.7:
@@ -339,7 +339,7 @@ packages:
       '@babel/helper-validator-identifier': 7.24.7
       chalk: 2.4.2
       js-tokens: 4.0.0
-      picocolors: 1.0.1
+      picocolors: 1.1.0
     dev: true
 
   /@cloudflare/kv-asset-handler@0.3.4:
@@ -2480,8 +2480,8 @@ packages:
       to-regex-range: 5.0.1
     dev: true
 
-  /finalhandler@1.2.0:
-    resolution: {integrity: sha512-5uXcUVftlQMFnWC9qu/svkWv3GTd2PfUhK/3PLkYNAe7FbqJMt3515HaxE6eRL74GdsriiwujiawdaB1BpEISg==}
+  /finalhandler@1.2.1:
+    resolution: {integrity: sha512-NpHDfiu6jURpO56pYkM6DEvnBEA9jNrwj4v05Vjs5hmdqEB2/kRA3wugct7BMyqYydjN+kWunMhtTn+itVmxpA==}
     engines: {node: '>= 0.8'}
     dependencies:
       debug: 2.6.9
@@ -3903,8 +3903,8 @@ packages:
     resolution: {integrity: sha512-whLdWMYL2TwI08hn8/ZqAbrVemu0LNaNNJZX73O6qaIdCTfXutsLhMkjdENX0qhsQ9uIimo4/aQOmXkoon2nDQ==}
     dev: true
 
-  /picocolors@1.0.1:
-    resolution: {integrity: sha512-anP1Z8qwhkbmu7MFP5iTt+wQKXgwzf7zTyGlcdzabySa9vd0Xt392U0rVmz9poOaBj0uHJKyyo9/upk0HrEQew==}
+  /picocolors@1.1.0:
+    resolution: {integrity: sha512-TQ92mBOW0l3LeMeyLV6mzy/kWr8lkd/hp3mTg7wYK7zJhuBStmGMBG0BdeDZS/dZx1IukaX6Bk11zcln25o1Aw==}
 
   /picomatch@2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
@@ -3987,7 +3987,7 @@ packages:
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.3.7
-      picocolors: 1.0.1
+      picocolors: 1.1.0
       source-map-js: 1.2.0
 
   /posthtml-match-helper@2.0.2(posthtml@0.16.6):
@@ -4738,7 +4738,7 @@ packages:
       meow: 9.0.0
       micromatch: 4.0.8
       normalize-path: 3.0.0
-      picocolors: 1.0.1
+      picocolors: 1.1.0
       postcss: 8.4.44
       postcss-media-query-parser: 0.2.3
       postcss-resolve-nested-selector: 0.1.6

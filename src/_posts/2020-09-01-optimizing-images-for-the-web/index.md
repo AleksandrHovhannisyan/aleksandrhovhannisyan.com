@@ -18,7 +18,7 @@ But let's say you've decided to firmly stand your ground and defend your right t
 
 Two of the best ways to optimize images for the web are by using a modern image format (like WebP) and lazily loading images with JavaScript. Combine these strategies, and you'll make Lighthouse happy on even the most image-heavy pages on your website:
 
-{% include "postImage.html" src: "./images/lighthouse.png", alt: "Lighthouse audit for aleksandrhovhannisyan.com/blog/, showing a score of 100 in all four categories of performance, accessibility, best practices, and SEO." %}
+![Lighthouse audit for aleksandrhovhannisyan.com/blog/, showing a score of 100 in all four categories of performance, accessibility, best practices, and SEO.](./images/lighthouse.png)
 
 {% include "toc.md" %}
 

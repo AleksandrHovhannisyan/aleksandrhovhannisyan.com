@@ -16,39 +16,39 @@ I recently read a post on Dev.to about how [Google doesn't follow its own rules]
 
 Here's what you get when you run the tool on Google's own blog:
 
-{% include "postImage.html" src: "./images/google-blog.png", alt: "The Lighthouse audit for blog.google.com shows 50 for performance, 74 for accessibility, 79 for best practices, and 98 for SEO." %}
+![The Lighthouse audit for blog.google.com shows 50 for performance, 74 for accessibility, 79 for best practices, and 98 for SEO.](./images/google-blog.png)
 
 And when you run it on YouTube:
 
-{% include "postImage.html" src: "./images/youtube.png", alt: "The Lighthouse audit for youtube.com shows 38 for performance, 90 for accessibility, 86 for best practices, and 98 for SEO." %}
+![The Lighthouse audit for youtube.com shows 38 for performance, 90 for accessibility, 86 for best practices, and 98 for SEO.](./images/youtube.png)
 
 And the Google Cloud Platform landing page:
 
-{% include "postImage.html" src: "./images/gcp.png", alt: "The Lighthouse audit for cloud.google.com shows 21 for performance, 91 for accessibility, 86 for best practices, and 82 for SEO." %}
+![The Lighthouse audit for cloud.google.com shows 21 for performance, 91 for accessibility, 86 for best practices, and 82 for SEO.](./images/gcp.png)
 
 You get the idea. To be fair, though, this isn't just a problem with Google's websites...
 
 Speaking from personal experience, I know that the Bank of America website is painfully slow. And a quick Lighthouse audit confirms this observation:
 
-{% include "postImage.html" src: "./images/bank-of-america.png", alt: "The Lighthouse audit for bankofamerica.com shows 16 for performance, 86 for accessibility, 57 for best practices, and 83 for SEO." %}
+![The Lighthouse audit for bankofamerica.com shows 16 for performance, 86 for accessibility, 57 for best practices, and 83 for SEO.](./images/bank-of-america.png)
 
 The Microsoft Store is apparently not much better:
 
-{% include "postImage.html" src: "./images/microsoft-store.png", alt: "The Lighthouse audit for the microsoft store shows 21 for performance, 98 for accessibility, 64 for best practices, and 85 for SEO." %}
+![The Lighthouse audit for the microsoft store shows 21 for performance, 98 for accessibility, 64 for best practices, and 85 for SEO.](./images/microsoft-store.png)
 
 Neither is Zoom's landing page:
 
-{% include "postImage.html" src: "./images/zoom.png", alt: "The Lighthouse audit for zoom.com shows 28 for performance, 88 for accessibility, 64 for best practices, and 89 for SEO." %}
+![The Lighthouse audit for zoom.com shows 28 for performance, 88 for accessibility, 64 for best practices, and 89 for SEO.](./images/zoom.png)
 
 And neither is Slack's:
 
-{% include "postImage.html" src: "./images/slack.png", alt: "The Lighthouse audit for slack.com shows 14 for performance, 94 for accessibility, 64 for best practices, and 92 for SEO." %}
+![The Lighthouse audit for slack.com shows 14 for performance, 94 for accessibility, 64 for best practices, and 92 for SEO.](./images/slack.png)
 
 The landing pages of SEO authorities like Ahrefs and Moz are similarly slow:
 
-{% include "postImage.html" src: "./images/ahrefs.png", alt: "The Lighthouse audit for ahrefs.com shows 37 for performance, 90 for accessibility, 93 for best practices, and 100 for SEO." %}
+![The Lighthouse audit for ahrefs.com shows 37 for performance, 90 for accessibility, 93 for best practices, and 100 for SEO.](./images/ahrefs.png)
 
-{% include "postImage.html" src: "./images/moz.png", alt: "The Lighthouse audit for moz.com shows 47 for performance, 89 for accessibility, 79 for best practices, and 91 for SEO." %}
+![The Lighthouse audit for moz.com shows 47 for performance, 89 for accessibility, 79 for best practices, and 91 for SEO.](./images/moz.png)
 
 {% aside %}
   There's no particular reason why I decided to run audits on these websites and not others. These are just the ones that came to mind as I was writing this article.

@@ -42,6 +42,7 @@ const renderComment = (comment) => {
   const userAvatar = commentNode.querySelector('img');
   const userLink = commentNode.querySelector('a');
   userAvatar.src = `${comment.user.avatarUrl}`;
+  userAvatar.removeAttribute('eleventy:ignore');
   userLink.href = `https://github.com/${comment.user.name}`;
   userLink.innerHTML = comment.user.name;
 

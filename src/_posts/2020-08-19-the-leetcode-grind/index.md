@@ -13,7 +13,7 @@ Leetcode is a polarizing topic in the software industry. But what is it, and how
 
 [Leetcode](https://leetcode.com/) is an online platform where you can solve programming challenges of varying difficulty on a wide range of data structures and algorithms, including trees, dynamic programming, linked lists, string manipulation, and more. Many of these problems require that you find an optimal solution, in terms of time or space complexity (or both).
 
-{% include "postImage.html" src: "./images/leetcode.png", alt: "Leetcode has a list of DSA problems that you can solve" %}
+![Leetcode has a list of DSA problems that you can solve](./images/leetcode.png)
 
 In programming circles, "Leetcode" doesn't always refer to that particular platform. Rather, it's an umbrella term that includes similar sites like Hackerrank, Geeksforgeeks, CodeChef, and more that are meant to help you prepare for the types of problems you'll be asked to solve in technical interviews.
 
@@ -23,7 +23,7 @@ In principle, Leetcode seems pretty harmless. Unfortunately, most of the tech in
 
 Due to how frequently these types of questions are asked during technical interviews, certain online circles—especially subreddits like [r/cscareerquestions](https://www.reddit.com/r/cscareerquestions/)—have come to develop an almost religious obsession with the so-called "Leetcode grind." It's way of life wherein you devote a majority of your time to cranking out Leetcode or Hackerrank problems in preparation for technical interviews at **FAANGs**: the **F**acebooks, **A**mazons, **A**pples, **N**etflixes, and **G**oogles of the tech world.
 
-{% include "postImage.html" src: "./images/reddit.png", alt: "Reddit is obssessed with the Leetcode grind" %}
+![Reddit is obssessed with the Leetcode grind](./images/reddit.png)
 
 And like any obsession, it's nothing short of unhealthy.
 

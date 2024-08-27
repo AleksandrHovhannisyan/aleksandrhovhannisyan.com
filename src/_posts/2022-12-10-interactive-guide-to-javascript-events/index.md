@@ -313,7 +313,7 @@ When we add multiple event listeners to the same element for the same event, the
 
 Have you ever wanted to view all of the event listeners that are attached to an element or its ancestors? You can use Chrome Dev Tools to inspect any element by navigating to the `Event Listeners` pane. With a particular node selected in the tree, you'll see both its event listeners as well as any event listeners registered on ancestor elements:
 
-{% include "postImage.html" src: "./images/event-listeners.png", alt: "Inspecting a button in Chrome Dev Tools with a panel open on the right-hand side showing a collapsible tree-list view of four click event listeners: window, html, body, and button. Each node is expanded, revealing more information about its event listener and how it was registered." %}
+![Inspecting a button in Chrome Dev Tools with a panel open on the right-hand side showing a collapsible tree-list view of four click event listeners: window, html, body, and button. Each node is expanded, revealing more information about its event listener and how it was registered.](./images/event-listeners.png)
 
 This can be useful if you need to debug code where you suspect that an element registered more event listeners than it should have or if an ancestor is reacting to some event from a child when it shouldn't. For example, maybe a browser extension is registering event listeners that are somehow interfering with your app's logic.
 
@@ -342,7 +342,7 @@ Note that in a browser runtime, a JavaScript event will originate at the `window
 
 The diagram below illustrates all three event phases for the button example:
 
-{% include "postImage.html" src: "./images/phases.png", alt: "Three side-by-side panels depicting a top-down tree structure. The levels of the tree are as follows. Root: window; children: html. HTML's children: head, body. Body's children: button. The panels are labeled from left to right: Phase 1: Event capturing. Phase 2: Event targeting. Phase 3: Event bubbling." %}
+![Three side-by-side panels depicting a top-down tree structure. The levels of the tree are as follows. Root: window; children: html. HTML's children: head, body. Body's children: button. The panels are labeled from left to right: Phase 1: Event capturing. Phase 2: Event targeting. Phase 3: Event bubbling.](./images/phases.png)
 
 We'll explore each phase in depth.
 
@@ -393,7 +393,7 @@ You may be wondering why JavaScript has both event capturing and event bubbling.
 
 All JavaScript events begin their journey at the root of the DOM and propagate down until they reach the target node. On its way to the target, the event fires on each ancestor element in what's known as the <dfn>event capturing</dfn> phase.
 
-{% include "postImage.html" src: "./images/capturing.png", alt: "Three side-by-side panels depicting a top-down tree structure. The levels of the tree are as follows. Root: window; children: html. HTML's children: head, body. Body's children: button. The panels are labeled from left to right: Phase 1: Event capturing. Phase 2: Event targeting. Phase 3: Event bubbling. The first panel is active and highlights the nodes that participate in event capturing: window, html, and body." %}
+![Three side-by-side panels depicting a top-down tree structure. The levels of the tree are as follows. Root: window; children: html. HTML's children: head, body. Body's children: button. The panels are labeled from left to right: Phase 1: Event capturing. Phase 2: Event targeting. Phase 3: Event bubbling. The first panel is active and highlights the nodes that participate in event capturing: window, html, and body.](./images/capturing.png)
 
 The concept of event capturing may seem a little foreign at first, but that's only because `addEventListener` does not use capturing unless you enable it. In fact, you'll rarely need to work with event capturing in practice. (However, just because event capturing is rarely used doesn't mean that you shouldn't *understand* how it works.)
 
@@ -522,7 +522,7 @@ You may be wondering: Why would I ever want to set a capturing event listener on
 
 Eventually, once the event has propagated down through all of the ancestors in the DOM, it reaches the node that triggered it in the first place: the <dfn>event target</dfn>. In the example that we've been using so far, the button that the user clicked is the event target.
 
-{% include "postImage.html" src: "./images/targeting.png", alt: "Three side-by-side panels depicting a top-down tree structure. The levels of the tree are as follows. Root: window; children: html. HTML's children: head, body. Body's children: button. The panels are labeled from left to right: Phase 1: Event capturing. Phase 2: Event targeting. Phase 3: Event bubbling. The second panel is active and highlights the button node, which is the only node that participate in event targeting in this example." %}
+![Three side-by-side panels depicting a top-down tree structure. The levels of the tree are as follows. Root: window; children: html. HTML's children: head, body. Body's children: button. The panels are labeled from left to right: Phase 1: Event capturing. Phase 2: Event targeting. Phase 3: Event bubbling. The second panel is active and highlights the button node, which is the only node that participate in event targeting in this example.](./images/targeting.png)
 
 This is known as the targeting phase.
 
@@ -675,7 +675,7 @@ We found that when the button was clicked, the following messages were logged:
 
 This behavior—where an event fires on the target and then propagates back up to its ancestors—is known as <dfn>event bubbling</dfn>. It is the third phase of an event's lifecycle, immediately after the targeting phase.
 
-{% include "postImage.html" src: "./images/bubbling.png", alt: "Three side-by-side panels depicting a top-down tree structure. The levels of the tree are as follows. Root: window; children: html. HTML's children: head, body. Body's children: button. The panels are labeled from left to right: Phase 1: Event capturing. Phase 2: Event targeting. Phase 3: Event bubbling. The third panel is active and highlights the nodes that participate in event capturing: body, html, and window, in that reverse order." %}
+![Three side-by-side panels depicting a top-down tree structure. The levels of the tree are as follows. Root: window; children: html. HTML's children: head, body. Body's children: button. The panels are labeled from left to right: Phase 1: Event capturing. Phase 2: Event targeting. Phase 3: Event bubbling. The third panel is active and highlights the nodes that participate in event capturing: body, html, and window, in that reverse order.](./images/bubbling.png)
 
 Here is what's really happening when we click the button:
 

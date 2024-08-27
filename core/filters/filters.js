@@ -50,15 +50,15 @@ export const toAbsoluteUrl = (url) => {
 };
 
 /** Given a local or remote image source, returns the absolute URL to the image that will eventually get generated once the site is built. */
-export const toAbsoluteImageUrl = async (src, width = null) => {
+export const toAbsoluteImageUrl = async ({ src, outputDir = imagePaths.output, width = null }) => {
   const imageOptions = {
-    // For the purposes of getting the URL, we just want the original width and format
+    // For the purposes of getting an eventually-generated image's URL, we just want the original width and format
     widths: [width],
     formats: [null],
-    // Where the generated image files get saved
-    outputDir: imagePaths.output,
-    // Public URL path that's referenced in the img tag's src attribute
-    urlPath: withoutBaseDirectory(imagePaths.output),
+    // Where the generated image file should be saved by 11ty at build time
+    outputDir,
+    // Public URL path, for use in an img tag's src or in other markup (e.g., og:image path in meta tags)
+    urlPath: withoutBaseDirectory(outputDir),
   };
   const stats = await Image(src, imageOptions);
   return toAbsoluteUrl(Object.values(stats)[0][0].url);

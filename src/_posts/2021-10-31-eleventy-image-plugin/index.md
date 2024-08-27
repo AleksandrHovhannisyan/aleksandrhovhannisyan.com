@@ -30,7 +30,10 @@ For this reason, many modern frameworks like Gatsby and Next.js offer image plug
 
 Fortunately, Eleventy offers a better alternative: the [official eleventy-image plugin](https://www.11ty.dev/docs/plugins/image/), which can be used to resize and transform both local and remote images. Since the plugin is written entirely as a standalone Node package powered by Sharp—with no 11ty-specific dependencies or logic—you can actually [use it in any framework](https://bholmes.dev/blog/picture-perfect-image-optimization/). This makes it a highly flexible tool for generating optimized, responsive images like the one below:
 
-{% include "figure.html" src: "https://images.unsplash.com/photo-1639800559828-4f34bac7bcee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&q=80", alt: "A possum clings sideways to a tree as it attempts to descend it from top to bottom.", caption: "Photo by [Jennifer Uppendahl](https://unsplash.com/@j_a_uppendahl) on Unsplash." %}
+<figure>
+  <img src="https://images.unsplash.com/photo-1639800559828-4f34bac7bcee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&q=80" alt="A possum clings sideways to a tree as it attempts to descend it from top to bottom." sizes="100vw" />
+  <figcaption>Photo by <a href="https://unsplash.com/@j_a_uppendahl">Jennifer Uppendahl</a> on Unsplash.</figcaption>
+</figure>
 
 But where this plugin _really_ shines is in an 11ty project, where you can create an image shortcode to return custom image markup, complete with responsively sized images and modern image formats. In this in-depth tutorial, I'll show you how to optimize images with the official 11ty image plugin.
 

@@ -32,7 +32,10 @@ I ended up using an old drivers license as a makeshift prying tool.
 
 After I lifted the keyboard slightly, I had to disconnect three ribbon cables before I could fully detach the keyboard. Once that was done, I flipped the keyboard over and laid it on top of the display, which was magnetic and held the keyboard securely in place.
 
-{% include "postImage.html", src: "./images/disassembled.jpg", alt: "Disassembled laptop with the motherboard, fan, drive, and other internal components exposed.", caption: "Note: I took this photo after the hard drive replacement, so what you see here is the final result. Pardon all the dust." %}
+<figure>
+<img src="./images/disassembled.jpg" alt="Disassembled laptop with the motherboard, fan, drive, and other internal components exposed." sizes="100vw" />
+<figcaption>Note: I took this photo after the hard drive replacement, so what you see here is the final result. Pardon all the dust.</figcaption>
+</figure>
 
 I had succeeded in disassembling the laptop, but the hardest parts were yet to come.
 
@@ -52,7 +55,7 @@ Following [Crucial's official guide on SSD installation](https://www.crucial.com
 2. Installed [Acronis True Image](https://www.acronis.com/en-us/promotion/crucialhd-download/), Crucial's recommended cloning software.
 3. Attempted to clone the internal HDD to the external SSD with Acronis.
 
-{% include "postImage.html", src: "./images/acronis.png", baseFormat: "png", alt: "Acronis True Image for Crucial window. Tab: Tools. Cards are arranged in a grid layout. The first card, Clone Disk, is active. It reads: This utility helps you clone your operating system, applications, and data to a new disk. The new disk will be identical to your old one and the system bootability will be kept." %}
+![Acronis True Image for Crucial window. Tab: Tools. Cards are arranged in a grid layout. The first card, Clone Disk, is active. It reads: This utility helps you clone your operating system, applications, and data to a new disk. The new disk will be identical to your old one and the system bootability will be kept.](./images/acronis.png){eleventy:formats="png,webp"}
 
 At first, things looked promising—Acronis detected both drives and began the cloning process. However, at some point, it ran into a disk read error and aborted the clone. According to my research at the time, this usually happens if the source disk is partially corrupt. I stubbornly chose to ignore this error, believing it to be a fluke—and what ensued was a week-long process of trial and error (more so the latter).
 
@@ -80,7 +83,10 @@ Still, there was one more thing that I wanted to try before giving up. I was dea
 
 ### Clonezilla
 
-{% include "postImage.html", src: "./images/clonezilla.png", baseFormat: "png", alt: "Device to image or device to device clone in Clonezilla live. The user is presented with instructions and two options: 1. device-image (work with disks or partitions using images), or 2. device-device (work directly from a disk or partition to a disk or partition).", caption: "Source: [Clonezilla - Screenshots and Photos](https://clonezilla.org/screenshots/?in_path=/00_Clonezilla)" %}
+<figure>
+    <img src="./images/clonezilla.png" eleventy:formats="png,webp" alt="Device to image or device to device clone in Clonezilla live. The user is presented with instructions and two options: 1. device-image (work with disks or partitions using images), or 2. device-device (work directly from a disk or partition to a disk or partition)." sizes="100vw" />
+    <figcaption>Source: <a href="https://clonezilla.org/screenshots/?in_path=/00_Clonezilla">Clonezilla - Screenshots and Photos</a>.</figcaption>
+</figure>
 
 After reading through some Reddit threads, I found that people who experienced similar read errors with Macrium and Acronis had better luck with [Clonezilla](https://clonezilla.org/), an open-source program for disk cloning and imaging. For some users, Clonezilla was apparently able to repair the bad sectors on the source disk during the cloning process.
 
@@ -106,7 +112,10 @@ Finally, I was at the end of my wits. All of this could've been avoided had I si
 
 Thankfully, I had already backed up all my personal files to an external drive before all of this, so I still had one option left: reinstalling Windows on the new SSD and simply copying over my files.
 
-{% include "postImage.html", src: "./images/installation-media.png", baseFormat: "png", alt: "Dialog window. Title bar: Windows 10 setup. Content: What do you want to do? Two radio buttons are presented: Upgrade this PC now (unchecked) and Create installation media (USB flash drive, DVD, or ISO file) for another PC, checked.", caption: "Windows installation media wizard" %}
+<figure>
+    <img src="./images/installation-media.png" eleventy:formats="png,webp" alt="Dialog window. Title bar: Windows 10 setup. Content: What do you want to do? Two radio buttons are presented: Upgrade this PC now (unchecked) and Create installation media (USB flash drive, DVD, or ISO file) for another PC, checked." sizes="100vw" />
+    <figcaption>Windows installation media wizard</figcaption>
+</figure>
 
 As it turns out, this was by far the simplest solution. I followed the accepted answer in this Microsoft community forum post: [Install Windows on new ssd](https://answers.microsoft.com/en-us/windows/forum/all/install-windows-on-new-ssd/9186ae98-b2b4-4b7a-b3ff-0b053ce2d1c9). All I had to do was:
 
@@ -141,11 +150,17 @@ According to [the iFixit guide](https://www.ifixit.com/Guide/HP+Envy+x360+m6-w10
 
 The next challenge was disconnecting all of the ribbon cables: battery, power supply, fan, drive—too many to keep track of. I then attempted to gently lift the motherboard as instructed, but I noticed it was still attached. That's when I realized the iFixit guide had omitted a key detail: I also needed to detach the metal pins from this Wi-Fi card:
 
-{% include "postImage.html", src: "./images/wifi-card.jpg", alt: "Close-up of a blue motherboard with a green wifi chip. Two black wires with metal pins on the end are attached to the card.", caption: "I left a comment on the iFixit guide to clarify this for future readers." %}
+<figure>
+<img src="./images/wifi-card.jpg" alt="Close-up of a blue motherboard with a green wifi chip. Two black wires with metal pins on the end are attached to the card." sizes="100vw" />
+<figcaption>I left a comment on the iFixit guide to clarify this for future readers.</figcaption>
+</figure>
 
 With everything finally disconnected, all that remained was to flip the motherboard over, pop off the metal protector for the RAM, and insert the new stick as the guide instructed.
 
-{% include "postImage.html", src: "./images/motherboard.jpg", alt: "The laptop motherboard flipped over. A square metal casing protects the ram sticks inside.", caption: "Image credit: [Emalee Johnson on iFixit](https://www.ifixit.com/User/3237011/Emalee+Johnson). License: [Creative Commons BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/3.0/)." %}
+<figure>
+<img src="./images/motherboard.jpg" alt="The laptop motherboard flipped over. A square metal casing protects the ram sticks inside." sizes="100vw" />
+<figcaption>Image credit: <a href="https://www.ifixit.com/User/3237011/Emalee+Johnson">Emalee Johnson on iFixit</a>. License: <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons BY-NC-SA</a>.</figcaption>
+</figure>
 
 Reassembling the motherboard was trickier than I expected and was mostly a process of trial and error. For example, I would get it positioned in place and start putting in the screws, but then I'd realize that one or two of the ribbon cables had gotten snagged underneath it, forcing me to redo the process. Or the USB ports would be misaligned. In the end, the motherboard ended up not aligning perfectly with one of the screw holes in the base of the laptop, so I had to leave that unscrewed. But the rest fit in place, so I decided not to test my luck and take what I could get.
 
@@ -153,7 +168,10 @@ Reassembling the motherboard was trickier than I expected and was mostly a proce
 
 Rebooting my laptop gave me extreme anxiety—I was almost sure I had damaged something along the way, especially with all the unexpected problems that came up. But thankfully, it booted up just fine. And when I opened System Information, I was relieved to see that the upgrade was successful.
 
-{% include "postImage.html", src: "./images/msinfo.png", baseFormat: "png", alt: "Dialog window: System Information. Left-hand pane is a tree nav with System Summary at the root and three children: Hardware Resources, Components, and Software Environment. The right pane lists item-value pairs. Installed Physical Memory shows 16.0 GB.", caption: "Windows system information (`msinfo32`)" %}
+<figure>
+<img src="./images/msinfo.png" eleventy:formats="png,webp" alt="Dialog window: System Information. Left-hand pane is a tree nav with System Summary at the root and three children: Hardware Resources, Components, and Software Environment. The right pane lists item-value pairs. Installed Physical Memory shows 16.0 GB." sizes="100vw" />
+<figcaption>Windows system information (<code>msinfo32</code>)</figcaption>
+</figure>
 
 My little machine went from being sluggish to fully capable of running all my apps and more. To see how much of a difference this made, I did a stress test with one of the games in my Steam library. Before these upgrades, it would hover around 20 frames per second (FPS) on the lowest settings, and sometimes my PC would freeze up completely because it would run out of memory. After the upgrade, the game ran smoothly at 40–50 FPS; load times also improved thanks to the SSD.
 

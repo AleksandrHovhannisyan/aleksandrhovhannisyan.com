@@ -22,7 +22,10 @@ In August 2023, I attended my naturalization oath ceremony and later [wrote abou
 
 ## Bought my first guitar
 
-{% include "postImage.html", src: "./images/guitar.jpg", alt: "A natural-finish Fender Squier guitar with a mahogany back leaning against a wall.", caption: "My first guitar. It's an acoustic Fender Squier." %}
+<figure>
+<img src="./images/guitar.jpg" alt="A natural-finish Fender Squier guitar with a mahogany back leaning against a wall." sizes="100vw" />
+<figcaption>My first guitar. It's an acoustic Fender Squier.</figcaption>
+</figure>
 
 This is the first musical instrument I've ever owned. Time will tell if I have the patience to stick with it over the long term; for now, I'm practicing basic [spider exercises](https://www.garnerguitar.com/courses/beginner/course2/spider-exercises) and one-string riffs to get used to positioning my fingers on the fretboard and the feeling of metal strings cutting into my fingertips. Until I develop calluses and learn how to move my fingers independently, I'm going to naturally have a hard time even with the basics. It's a little frustrating, but the one thing motivating me is the dream of maybe one day being able to play my favorite songs.
 
@@ -44,7 +47,10 @@ That's much fewer than the 25 I wrote in 2022, but who's counting? (*I am, appar
 
 As for how my blog is doing, in 2023 it received 314k clicks and 10 million impressions. I'm not sure if that's more or fewer than in 2022 since I haven't been keeping track of these metrics from year to year, but it's a lot more attention than I ever expected my blog to get when I first launched it years ago.
 
-{% include "postImage.html" src: "./images/googlesearchconsole2023.png", baseFormat: "png", alt: "Search metrics for 2023-01-01 through 2023-12-31. Total clicks: 314k. Total impressions: 10.3M. Average CTR: 3%. Average position: 24.1.", caption: "I don't know why so many people are visiting my blog, but I suppose there's nothing I can do to stop them." %}
+<figure>
+<img src="./images/googlesearchconsole2023.png" eleventy:formats="png,webp" alt="Search metrics for 2023-01-01 through 2023-12-31. Total clicks: 314k. Total impressions: 10.3M. Average CTR: 3%. Average position: 24.1." sizes="100vw" />
+<figcaption>I don't know why so many people are visiting my blog, but I suppose there's nothing I can do to stop them.</figcaption>
+</figure>
 
 I don't earn anything from my writing, but that's okay because I'm not trying to sustain myself with it—that's what my job is for! I write because I need an outlet for my thoughts and experiences and enjoy teaching others. I'm sure I could make money off of it if I wanted to, but that would diminish my intrinsic motivation to write.
 
@@ -56,7 +62,7 @@ Perhaps to my detriment, I've also stopped sharing my articles on other sites to
 
 At work, one of the biggest projects that I took on for 2023 was the [data table block](https://www.esri.com/arcgis-blog/products/story-maps/constituent-engagement/arcgisstorymapstableblock/) for [StoryMaps](https://storymaps.arcgis.com/). This feature had been highly requested by our users for years and was very well received after launch. You can read more about this in the following article on the ArcGIS blog: [Enhancing visual storytelling with the table block in ArcGIS StoryMaps](https://www.esri.com/arcgis-blog/products/story-maps/constituent-engagement/arcgisstorymapstableblock/).
 
-{% include "postImage.html" src: "./images/table.png", baseFormat: "png", alt: "A three-by-three table with editable cells. A trashcan icon to delete the table, a caption placeholder, and a callout that reads: Adjust the table dimensions. Tables support up to 8 columns and 10 rows. Each cell has a row and column ellipsis menu." %}
+![A three-by-three table with editable cells. A trashcan icon to delete the table, a caption placeholder, and a callout that reads: Adjust the table dimensions. Tables support up to 8 columns and 10 rows. Each cell has a row and column ellipsis menu.](./images/table.png){eleventy:formats="png,webp"}
 
 To guide our decision-making and settle on a final list of must-have features for the V1 release, I decided to prototype the possibilities with native HTML tables in CodePen:
 
@@ -77,7 +83,7 @@ When it finally came time to work on the feature, I took a rigorous test-driven 
 
 I needed a pair of headphones for calls and gaming. After extensive research (*translation: following strangers' advice on Reddit*), I settled on the [Philips SHP9500 over-ear headphones](https://www.usa.philips.com/c-p/SHP9500_00/hifi-stereo-headphones) (now discontinued).
 
-{% include "postImage.html" src: "./images/shp9500.jpg", alt: "Headphones lying on the side on a wooden desk. The left speaker is closest to the camera and is labeled in a big capital letter L, with text along the circumference that reads: 50 MM vented neodymium drivers, open-acoustic architecture." %}
+![Headphones lying on the side on a wooden desk. The left speaker is closest to the camera and is labeled in a big capital letter L, with text along the circumference that reads: 50 MM vented neodymium drivers, open-acoustic architecture.](./images/shp9500.jpg)
 
 Now that I've used them for seven months or so, I can confidently say that these are the most comfortable headphones I've ever worn; they have almost no clamp, so I can easily wear them for hours without noticing; the ear pads are also very breathable, unlike the faux leather of some headsets, so your ears stay cool. While I'm not an audiophile, I found that these headphones had great soundstaging and sound clarity for their price—much better than those of comparable "gaming" headphones on the market (I'm looking at you, HyperX). One downside is that the headphones are open back, so they're not ideal if others are within hearing distance of you. Also, they don't come with a mic, so you'll need to buy one separately to plug in (like the [V-MODA BoomPro](https://www.amazon.com/V-MODA-BoomPro-Microphone-Gaming-Communication/dp/B00BJ17WKK/) in my photo).
 
@@ -85,7 +91,7 @@ Now that I've used them for seven months or so, I can confidently say that these
 
 I also wanted to try out mechanical keyboards to see what all the hype is about; developers in general seem to have an almost cultish fascination with them. Personally, I'm more used to butterfly and scissor keyboards, like the ones that come with laptops, but I figured I'd keep an open mind. During the holidays, I found a budget-friendly, clickety-clackety [Redragon "Dragonborn" K630](https://www.bestbuy.com/site/redragon-k630-dragonborn-tkl-wired-gaming-mechanical-brown-switch-keyboard-with-backlighting-black/6458716.p?skuId=6458716) that was on sale at Best Buy for $25.
 
-{% include "postImage.html" src: "./images/keyboard.jpg", alt: "A black keyboard viewed from the front, with an English US keyboard layout. Some keys have additional functions written in bright white text that can be toggled with the Fn key." %}
+![A black keyboard viewed from the front, with an English US keyboard layout. Some keys have additional functions written in bright white text that can be toggled with the Fn key.](./images/keyboard.jpg)
 
 No RGB lighting here—only pink and different lighting modes. Pink on black looks nice, but my favorite lighting mode is *off*... I just don't see the appeal of backlighting.
 
@@ -121,13 +127,19 @@ Had this book been published a few years sooner, it would've been an invaluable 
 
 ### The Walking Dead
 
-{% include "figure.html" src: "https://images.cds.amcn.com/amcn/tve/amcn/the-walking-dead-season-11-daryl-reedus-935.jpg", alt: "A scene from Season 11 of The Walking Dead shows a group of characters with weapons and flashlights drawn exploring a dark metro tunnel.", caption: "Image credit: [The Walking Dead Season 11 First Look Photos (AMC)](https://boundingintocomics.com/2022/11/21/the-walking-dead-season-11-review-series-summary/)" %}
+<figure>
+    <img src="https://images.cds.amcn.com/amcn/tve/amcn/the-walking-dead-season-11-daryl-reedus-935.jpg" alt="A scene from Season 11 of The Walking Dead shows a group of characters with weapons and flashlights drawn exploring a dark metro tunnel." sizes="100vw" />
+    <figcaption>Image credit: <a href="https://boundingintocomics.com/2022/11/21/the-walking-dead-season-11-review-series-summary/">The Walking Dead Season 11 First Look Photos (AMC)</a>.</figcaption>
+</figure>
 
 After nearly a year-long delay, Netflix released the eleventh and final season of AMC's The Walking Dead in early 2023. It wasn't the best season by any means, but it also wasn't the worst. I won't spoil any plot points, but anyone who's watched the show knows that it fell off after a certain season and that the early years were some of its best moments. Still, the finale gave us a touching conclusion to the storyline, and it finally resolved an infuriating cliff-hanger that the writers had left unanswered for a few seasons. At the same time, the ending introduced a new cliff-hanger to tease AMC's new follow-up series (one of several). Despite its flaws, The Walking Dead is still one of the best shows you can watch today. If you haven't already seen it, you're really missing out!
 
 ### Death Note
 
-{% include "postImage.html" src: "./images/deathnote.png", alt: "A painting from the opening sequence of the show Death Note depicts the main character, Light Yagami, with angel wings and his arm outstretched to take a red apple from the hand of Ryuk, a god of death. The painting uses the same style as Michelangelo's fresco *The Creation of Adam*.", caption: "Image source: [Thoughts on the First OP of the Death Note Anime](https://casuistor.tumblr.com/post/149158567691/thoughts-on-the-first-op-of-the-death-note-anime)." %}
+<figure>
+<img src="./images/deathnote.png" alt="A painting from the opening sequence of the show Death Note depicts the main character, Light Yagami, with angel wings and his arm outstretched to take a red apple from the hand of Ryuk, a god of death. The painting uses the same style as Michelangelo's fresco *The Creation of Adam*." sizes="100vw" />
+<figcaption>Image Source: <a href="https://casuistor.tumblr.com/post/149158567691/thoughts-on-the-first-op-of-the-death-note-anime">Thoughts on the First OP of the Death Note Anime</a>.</figcaption>
+</figure>
 
 This past year, I also watched the [Death Note](https://en.wikipedia.org/wiki/Death_Note) anime after hearing lots of great things about it. This was my first time watching an anime from start to finish; I was impressed by the character design, beautiful visuals, and [the soundtrack](https://open.spotify.com/album/6xgeHyARBhB5s1wwhc30W6?si=9iDe1Rl9TSOmyZ2vFHAlLg) with its grand orchestra performances and memorable guitar riffs. There were some low points towards the middle of the show where I felt the writing and artistic direction took a comic turn, and sometimes the writers leaned a bit too heavily on [deus ex machina](https://en.wikipedia.org/wiki/Deus_ex_machina) to save characters from impossible situations. But overall, I thought it was a very gripping watch. I had to limit myself to just two to three episodes a week to savor it for as long as possible since the show is only 37 episodes long.
 
@@ -135,13 +147,19 @@ This past year, I also watched the [Death Note](https://en.wikipedia.org/wiki/De
 
 For years, I avoided listening to songs from some of my favorite artists because they were associated with painful memories; in 2023, I revisited these songs and found that they actually helped me to gain some closure. I had a lot of catching up to do, especially with Lana Del Rey (I regrettably missed out on her [NFR!](https://en.wikipedia.org/wiki/Norman_Fucking_Rockwell!) era) and Arctic Monkeys (their work took a completely different turn than I expected, but it still sounds great). I also got into some new bands, like Gorillaz, Cage the Elephant, The Strokes, and a few others.
 
-{% include "postImage.html" src: "./images/spotify2023.png", baseFormat: "png", alt: "Spotify wrapped. Top Artists: 1. Lana Del Rey. 2. Arctic Monkeys. 3. Radiohead. 4. Coldplay. 5. Gorillaz. Top Songs: 1. Paris, Texas (feat SYML). 2. Calm Like You. 3. I Bet You Look Good on the Dancefloor. 4. Stargirl Interlude. 5. Fireside. Top Genre: Rock. Minutes Listened: 12,434.", caption: "My [Spotify Wrapped for 2023](https://open.spotify.com/wrapped/share/share-6f4960bda1214fada31270d47b2e9b5c-1080x1920?lang=en&destination=datastories&si=YjgwYjg5MWMtYjI1OC00NTkxLWIyZTctMGRiY2EyNDE0Nzlk). It's not entirely accurate since I also listened to music on mobile using YouTube (on Firefox with no ads—because I'm too cheap to pay for Spotify Premium or YouTube Music)." %}
+<figure>
+<img src="./images/spotify2023.png", eleventy:formats="png,webp" alt="Spotify wrapped. Top Artists: 1. Lana Del Rey. 2. Arctic Monkeys. 3. Radiohead. 4. Coldplay. 5. Gorillaz. Top Songs: 1. Paris, Texas (feat SYML). 2. Calm Like You. 3. I Bet You Look Good on the Dancefloor. 4. Stargirl Interlude. 5. Fireside. Top Genre: Rock. Minutes Listened: 12,434." sizes="100vw" />
+<figcaption>My Spotify Wrapped for 2023. It's not entirely accurate since I also listened to music on mobile using YouTube (on Firefox with no ads—because I'm too cheap to pay for Spotify Premium or YouTube Music).</figcaption>
+</figure>
 
 ## Played new video games
 
 Gaming has always been one of my favorite pastimes. This year, I got into PC gaming with some lightweight indie titles (the few that can run on my eight-year-old laptop).
 
-{% include "postImage.html" src: "./images/steam2023.png", baseFormat: "png", alt: "hovhadovah's STEAM YEAR IN REVIEW 2023. 8 games played, 82 achievements, 392 sessions, 5 new games. Most played games by % of playtime: BattleBit Remastered (44%), Brotato (23%), Slay the Spire (15%), Darkest Dungeon (12%), Super Animal Royale (4%).", caption: "My [Steam 2023 year in review](https://s.team/y23/cjtbkmrg?l=english). Honorable mentions that didn't make the list: Half-Life 1 (very late to the party) and Iron Lung (a short atmospheric horror game)." %}
+<figure>
+<img src="./images/steam2023.png" eleventy:formats="png,webp" alt="hovhadovah's STEAM YEAR IN REVIEW 2023. 8 games played, 82 achievements, 392 sessions, 5 new games. Most played games by % of playtime: BattleBit Remastered (44%), Brotato (23%), Slay the Spire (15%), Darkest Dungeon (12%), Super Animal Royale (4%)." sizes="100vw" />
+<figcaption>My Steam 2023 year in review. Honorable mentions that didn't make the list: Half-Life 1 (very late to the party) and Iron Lung (a short atmospheric horror game).</figcaption>
+</figure>
 
 My most-played game of 2023 was [BattleBit Remastered](https://store.steampowered.com/app/671860/BattleBit_Remastered/); it's a low-poly first-person shooter (FPS) inspired by the Battlefield franchise that can support up to 254 players per server, with map destruction, vehicles, and an extensive progression system. This labor of love was developed by [a team of just three people](https://joinbattlebit.com/meet-the-team/) (one dev!) over the course of seven years, and it was so well optimized that it somehow managed to run on my non-gaming laptop at 30 frames per second. BattleBit borrowed various fan-favorite mechanics from other FPS games, making it an instant hit at launch. My favorite mechanic was push-to-talk VoIP—it made for some hilarious encounters with random players. In many ways, the game made me feel like I was back in the good-old days of Battlefield 3 and Bad Company 2. Sadly, modern Battlefield just isn't what it used to be.
 

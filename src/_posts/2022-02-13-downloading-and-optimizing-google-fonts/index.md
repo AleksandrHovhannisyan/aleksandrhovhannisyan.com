@@ -25,11 +25,11 @@ There are a few different ways you can download Google Fonts, ranging from trivi
 
 The simplest option to use the download button right there on Google Fonts itself (who would've guessed?). First, find the font you want to use and click on its preview. Then, click the `Get font` button to select it.
 
-{% include "postImage.html", src: "./images/get-font.jpg", alt: "Previewing the Inter font on Google Fonts. Sample text is rendered in the font. A blue button on the top-right reads Get font." %}
+![Previewing the Inter font on Google Fonts. Sample text is rendered in the font. A blue button on the top-right reads Get font.](./images/get-font.jpg)
 
 You can repeat this step as many times as you want, once for each font you want to include on your site; this batches them all together so you can download all their files at once for convenience. Once you're done selecting all of your fonts, simply click the `Download all` button to download them.
 
-{% include "postImage.html", src: "./images/selected.jpg", alt: "1 font family selected on Google Fonts: Inter, Variable. Two buttons read: Get embed code and Download all." %}
+![1 font family selected on Google Fonts: Inter, Variable. Two buttons read: Get embed code and Download all.](./images/selected.jpg)
 
 Then, just use your operating system's unzip utility to extract the files to the desired location on your computer.
 
@@ -41,7 +41,7 @@ For help on how to use the fonts you downloaded, including instructions on how t
 
 Sia Kiaramalegos covers this tool in her article on [making Google Fonts faster](https://sia.codes/posts/making-google-fonts-faster/#self-host-your-web-fonts-for-full-control). Head over to [google-webfonts-helper](https://gwfh.mranftl.com/fonts), search for your font, customize it to your liking, and download the files. Unlike Google Fonts, this app provides you with `@font-face` rulesets right on the page that you can copy directly into your CSS.
 
-{% include "postImage.html" src: "./images/google-webfonts-helper.png", alt: "The google-webfonts-helper app interface, with a selected font family of Inter. The main content region shows a series of stepwise instructions for how to include the font in a project. Step 2 reads 'Select styles,' followed directly by a table that lists all font weights with adjacent checkboxes to enable selection. Step 3 reads 'Copy CSS' and includes an output pane with the @font-face declarations. There are two tabs for the output: Best support and Modern browsers; the former is selected." %}
+![The google-webfonts-helper app interface, with a selected font family of Inter. The main content region shows a series of stepwise instructions for how to include the font in a project. Step 2 reads 'Select styles,' followed directly by a table that lists all font weights with adjacent checkboxes to enable selection. Step 3 reads 'Copy CSS' and includes an output pane with the @font-face declarations. There are two tabs for the output: Best support and Modern browsers; the former is selected.](./images/google-webfonts-helper.png)
 
 There's one drawback to this tool: It's not guaranteed to have all of the latest font file revisions, so you may run into some issues that the font's designers have already patched elsewhere. For example, the font Inter has [some rendering issues on Mac](https://github.com/majodev/google-webfonts-helper/issues/130) with the version served by the app, whereas the version hosted by Google Fonts has already fixed those issues.
 
@@ -49,19 +49,22 @@ There's one drawback to this tool: It's not guaranteed to have all of the latest
 
 You can typically find and download the complete font family for any Google Font on GitHub since free fonts are almost always open source. Typically, the production-ready font files will be made available under the Releases tab for the repository along with the source code for the font. Here's an example for Inter:
 
-{% include "postImage.html" src: "./images/github.png", alt: "The GitHub releases tab for the font family Inter, showing the release notes for version 3.19. Below the notes are links to the font file downloads.", caption: "GitHub release notes for Inter v3.19" %}
+<figure>
+<img src="./images/github.png" alt="The GitHub releases tab for the font family Inter, showing the release notes for version 3.19. Below the notes are links to the font file downloads." sizes="100vw" />
+<figcaption>GitHub release notes for Inter v3.19</figcaption>
+</figure>
 
 ## Optimizing Google Fonts
 
 Once you've downloaded your font files, you may find that they take up quite a bit of space—often hundreds of kilobytes.
 
-{% include "postImage.html" src: "./images/downloads.png", alt: "Viewing the downloaded font files for Inter in File Explorer on a Windows machine. The main explorer pane lists 9 font files, all of which have a size of roughly 300 KB." %}
+![Viewing the downloaded font files for Inter in File Explorer on a Windows machine. The main explorer pane lists 9 font files, all of which have a size of roughly 300 KB.](./images/downloads.png)
 
 Loading large fonts can potentially hurt your page load metrics, so it's worth optimizing them before deploying to production. To do this, you can run your font files through a font subsetting tool to remove character sets that you don't intend to use and even convert them to a more modern format, like `woff2`.
 
 If you're not a technical user, you can use a web-based tool like Font Squirrel's [webfont generator](https://www.fontsquirrel.com/tools/webfont-generator) to upload your font files and then download the optimized and subsetted files once it's done.
 
-{% include "postImage.html", src: "./images/fontsquirrel.jpg", alt: "The Font Squirrel webfont generator UI walks a user through multiple steps to optimize their uploaded fonts." %}
+![The Font Squirrel webfont generator UI walks a user through multiple steps to optimize their uploaded fonts.](./images/fontsquirrel.jpg)
 
 However, if you're a developer, I highly recommend using the [glyphhanger npm package](https://www.npmjs.com/package/glyphhanger) to optimize fonts from the command line. Assuming you've followed the [installation instructions](https://github.com/zachleat/glyphhanger#installation) and have all the necessary dependencies, simply navigate to the directory containing your font files and invoke the CLI.
 

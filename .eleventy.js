@@ -2,10 +2,10 @@ import esbuild from 'esbuild';
 import path from 'node:path';
 import PluginFootnotes from 'eleventy-plugin-footnotes';
 import { EleventyPluginCodeDemo } from 'eleventy-plugin-code-demo';
+import { eleventyImageTransformPlugin } from '@11ty/eleventy-img';
 import {
   asideShortcode,
   definitionShortcode,
-  imageShortcode,
   iconShortcode,
   quoteShortcode,
   faviconShortcode,
@@ -31,11 +31,7 @@ import {
   pathParse,
   pathJoin,
 } from './core/filters/filters.js';
-import {
-  getAllPosts,
-  getAllUniqueCategories,
-  getPostsByCategory,
-} from './core/collections/collections.js';
+import { getAllPosts, getAllUniqueCategories, getPostsByCategory } from './core/collections/collections.js';
 import { markdown } from './core/plugins/markdown.js';
 import { codeDemoOptions } from './core/plugins/codeDemo.js';
 import { dir, imagePaths, scriptDirs } from './core/constants.js';
@@ -55,10 +51,9 @@ export default function eleventy(eleventyConfig) {
   eleventyConfig.addWatchTarget(scriptDirs.input);
 
   // Pass-through copy for static assets
-  eleventyConfig.setServerPassthroughCopyBehavior("copy");
+  eleventyConfig.setServerPassthroughCopyBehavior('copy');
   eleventyConfig.addPassthroughCopy(path.join(dir.input, dir.assets, 'fonts'));
   eleventyConfig.addPassthroughCopy(path.join(dir.input, dir.assets, 'videos'));
-  eleventyConfig.addPassthroughCopy(path.join(imagePaths.input, 'thumbnails'));
 
   // Custom shortcodes
   eleventyConfig.addPairedShortcode('aside', asideShortcode);
@@ -66,7 +61,6 @@ export default function eleventy(eleventyConfig) {
   eleventyConfig.addPairedShortcode('definition', definitionShortcode);
   eleventyConfig.addPairedShortcode('artwork', artworkShortcode);
   eleventyConfig.addPairedShortcode('details', detailsShortcode);
-  eleventyConfig.addShortcode('image', imageShortcode);
   eleventyConfig.addShortcode('favicon', faviconShortcode);
   eleventyConfig.addShortcode('icon', iconShortcode);
   eleventyConfig.addShortcode('hashArt', hashArtShortcode);
@@ -102,6 +96,20 @@ export default function eleventy(eleventyConfig) {
   eleventyConfig.addCollection('postsByCategory', getPostsByCategory);
 
   // Plugins
+  eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
+    // which file extensions to process
+    extensions: 'html',
+    // optional, output image formats
+    formats: ['jpg', 'webp'],
+    // optional, output image widths
+    widths: ['auto', 400, 800],
+    // optional, attributes assigned on <img> override these values.
+    defaultAttributes: {
+      loading: 'lazy',
+      sizes: '100vw',
+      decoding: 'async',
+    },
+  });
   eleventyConfig.addPlugin(PluginFootnotes, {
     baseClass: 'footnotes',
     classes: {
@@ -143,4 +151,4 @@ export default function eleventy(eleventyConfig) {
     htmlTemplateEngine: TEMPLATE_ENGINE,
     templateFormats: ['html', 'md', TEMPLATE_ENGINE],
   };
-};
+}

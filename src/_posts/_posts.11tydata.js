@@ -1,5 +1,6 @@
 import path from 'node:path';
 import { toAbsoluteImageUrl } from 'core/filters/filters.js';
+import { dir } from 'core/constants.js';
 
 export default {
   layout: 'post',
@@ -20,20 +21,22 @@ export default {
       // Thumbnails may be remote images (thumbnail.url) or local images (thumbnail as a string path, like ./images/thumbnail.png).
       image: (data) => {
         // TODO: add a fallback social preview image
-        if (!data.thumbnail) {
+        if (!data.thumbnail || !data.page.url) {
           return;
         }
-        // inputPath will look like src/_posts/yyyy-mm-dd-slug/ for a post located under src/_posts/yyyy-mm-dd-slug/index.md
-        const { dir: imgDir } = path.parse(data.page.inputPath);
-        // either a full URL for remote images or src/_posts/yyyy-mm-dd-slug/images/name.extension for local images
         let src;
+        // Remote image, no need to manipulate src as it's already an absolute path.
         if (data.thumbnail.match(/^https?:\/\//)) {
           src = data.thumbnail;
         } else {
-          src = path.join(imgDir, data.thumbnail);
+          // Local blog post image with relative path (e.g., `./images/thumbnail.png`). Convert src to absolute path so the 11ty image plugin can find it.
+          const { dir: blogPostSourceDirectory } = path.parse(data.page.inputPath);
+          src = path.join(blogPostSourceDirectory, data.thumbnail);
         }
-        // for remote images, just the URL; else, a root-relative path to the image (as seen in the img tag's src)
-        return toAbsoluteImageUrl(src);
+        // Save in same output directory as the post itself.
+        const outputDir = path.join(dir.output, data.page.url);
+        // OG images must be absolute URLs.
+        return toAbsoluteImageUrl({ src, outputDir });
       },
     },
   },

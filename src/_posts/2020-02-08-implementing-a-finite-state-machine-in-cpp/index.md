@@ -13,7 +13,10 @@ redirectFrom:
 
 In code, we're often interested in modeling entities: agents or objects that occupy a given world or context. Entities are typically *stateful*, meaning they change their behavior based on their current state of being or mode of operation. For example, a character in a video game may be in one of several states at any given point in time: idle, searching for an enemy, fighting an enemy, or fleeing combat. If and when this entity transitions from one state to another depends on a number of factors: the character's health, whether an enemy is nearby, and so on. An entity may also choose to remain in its current state until some condition is met. We can represent these states and their associated decision-making logic with a diagram like the following, where rectangles denote states, arrows denote state transitions, and text denotes the condition that needs to be met:
 
-{% include "postImage.html" src: "./images/thumbnail.png", alt: "Four squares labeled Idle, Searching, Fleeing, and In Combat represent four entity states. Arrows are drawn between these rectangles to represent state transitions. For example, an entity may transition from Idle to In Combat if attacked, or from In Combat to Fleeing if their health is critically low.", caption: "**Figure 1**. A finite state machine diagram for a non-playable video game character." %}
+<figure>
+<img src="./images/thumbnail.png" alt="Four squares labeled Idle, Searching, Fleeing, and In Combat represent four entity states. Arrows are drawn between these rectangles to represent state transitions. For example, an entity may transition from Idle to In Combat if attacked, or from In Combat to Fleeing if their health is critically low." sizes="100vw" />
+<figcaption><strong>Figure 1</strong>. A finite state machine diagram for a non-playable video game character.</figcaption>
+</figure>
 
 When translating a diagram such as this into code, switch statements and conditionals will only get us so far—as we add more states, the code complexity will balloon to a point that it will be difficult to read and maintain.
 
@@ -56,7 +59,7 @@ The light is initially off. Toggling it cycles it to the next state, looping bac
 
 Diagrammatically, we can represent this as follows:
 
-{% include "postImage.html" src: "./images/lightswitch.png", alt: "Finite state design diagram for a light switch with four states arranged in a rectangular pattern: off, low, medium, high. Arrows point between states to signal state transitions: Off to Low, Low to Medium, Medium to High, and High back to Off. An initial arrow points to Off as the starting state." %}
+![Finite state design diagram for a light switch with four states arranged in a rectangular pattern: off, low, medium, high. Arrows point between states to signal state transitions: Off to Low, Low to Medium, Medium to High, and High back to Off. An initial arrow points to Off as the starting state.](./images/lightswitch.png)
 
 The simple nature of this problem makes it a useful tool for learning about the finite state design pattern without getting bogged down in irrelevant details.
 

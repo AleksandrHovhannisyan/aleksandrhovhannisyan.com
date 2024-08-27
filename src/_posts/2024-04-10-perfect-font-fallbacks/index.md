@@ -57,7 +57,10 @@ body {
 
 On the web, we typically think of typefaces in terms of their font family, weight, and style, but these are just the superficial characteristics that we can observe on a digital screen. Behind the scenes, designers also use a few important metrics to construct their typefaces: a base size, x-height, ascender height, descender height, leading, kerning, and more. Together, these metrics determine how and where glyphs render in a line of text.
 
-{% include "postImage.html", src: "./images/metrics.png", baseFormat: "png", alt: "", caption: "Common terminology for font metrics. Image credit: [Max Naylor](https://commons.wikimedia.org/wiki/File:Typography_Line_Terms.svg), Public Domain." %}
+<figure>
+  <img src="./images/metrics.png" eleventy:formats="png,webp" alt="" sizes="100vw" />
+  <figcaption>Common terminology for font metrics. Image credit: <a href="https://commons.wikimedia.org/wiki/File:Typography_Line_Terms.svg">Max Naylor</a>, Public Domain.</figcaption>
+</figure>
 
 This subject alone deserves its own article. Instead of covering every detail, I'll summarize some key points and refer you to these external resources:
 

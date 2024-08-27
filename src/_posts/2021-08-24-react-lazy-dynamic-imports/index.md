@@ -105,7 +105,7 @@ const App = () => {
 
 Let's load the app and inspect our network tab:
 
-{% include "postImage.html" src: "./images/static.jpg", alt: "A tab bar shows four numbered tabs, 1-4, with the third tab slightly grayed out to indicate that it's disabled. The first tab has a dark background to indicate that it's currently selected. Below it is the corresponding content for the first tab panel, which reads: 'Tab 1 contents'. Chrome dev tools are open below and show the Network tab, with two requests: main.chunk.js (5.3 kilobytes) and vendors~main.chunk.js (415 kilobytes)." %}
+![A tab bar shows four numbered tabs, 1-4, with the third tab slightly grayed out to indicate that it's disabled. The first tab has a dark background to indicate that it's currently selected. Below it is the corresponding content for the first tab panel, which reads: 'Tab 1 contents'. Chrome dev tools are open below and show the Network tab, with two requests: main.chunk.js (5.3 kilobytes) and vendors~main.chunk.js (415 kilobytes).](./images/static.jpg)
 
 Only two bundles get loaded: the main chunk (`5.3kB`) and some vendor chunks (`415kB` cache of third-party NPM modules). Notice how we only render `Tab1` on mount—the remaining tab panels will never mount unless we click their respective buttons. In fact, you may have noticed that I disabled the button for the third tab entirely, meaning it's *never* going to mount. However, since we've imported each component statically, **all of them** will be bundled into the code that we ship to the user, regardless of whether they get used.
 

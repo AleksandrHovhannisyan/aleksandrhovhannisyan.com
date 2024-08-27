@@ -89,7 +89,7 @@ And we'll use this CSS:
 
 Below is a screenshot of what that looks like from the demo; notice how the red outline of the label doesn't fully hug the text on the right side. This is because there is some space reserved for the longer text:
 
-{% include "postImage.html" src: "./images/fixed-width.png", alt: "A layout with a thin black border around it to delineate its box model. A label is rendered inside the layout with its own border, in red. The label has some extra space before the end of its right border, indicating that it's reserved space for longer text. A button is positioned to the right of the label. Below the layout box is an enabled checkbox that reads 'Prevent layout shift.'" %}
+![A layout with a thin black border around it to delineate its box model. A label is rendered inside the layout with its own border, in red. The label has some extra space before the end of its right border, indicating that it's reserved space for longer text. A button is positioned to the right of the label. Below the layout box is an enabled checkbox that reads 'Prevent layout shift.'](./images/fixed-width.png)
 
 Whenever the text changes, our styles will kick in and hide the text that shouldn't be visible. But we do this in such a way that the hidden element still contributes to the layout. No more layout shifts, and no more JavaScript to solve a CSS bug!
 

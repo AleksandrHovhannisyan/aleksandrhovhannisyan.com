@@ -31,7 +31,7 @@ Arguably the biggest pain point with `clamp` is computing the right preferred va
 
   Alternatively, you can use [Fluid Type Scale Calculator](https://www.fluid-type-scale.com/), an open-source tool I published that allows you to customize some parameters and copy-paste fluid typography variables into any project:
 
-  {% include "postImage.html" src: "./images/fluid-type-scale.png", alt: "The landing page for the Fluid Type Scale Calculator website features a big bold headline that reads: 'Fluid Type Scale Calculator.' Below is a subtitle that reads: 'Generate font size variables for a fluid type scale. Grab the output CSS and drop it into any existing design system.' Below the header is a two-column layout with a form on the left and some output code on the right showing CSS variables for font sizing." %}
+  ![The landing page for the Fluid Type Scale Calculator website features a big bold headline that reads: 'Fluid Type Scale Calculator.' Below is a subtitle that reads: 'Generate font size variables for a fluid type scale. Grab the output CSS and drop it into any existing design system.' Below the header is a two-column layout with a form on the left and some output code on the right showing CSS variables for font sizing.](./images/fluid-type-scale.png)
 {% endaside %}
 
 {% include "toc.md" %}
@@ -135,7 +135,10 @@ Since the minimum breakpoint corresponds to the minimum font size and the maximu
 
 From the graph shown below, this should make sense—we have viewport widths on the `x`-axis and font sizes on the `y`-axis. As the viewport width increases from the min point to the max, the font size also increases. Observe that the line between the minimum and maximum depicts the preferred value for `clamp`.
 
-{% include "postImage.html" src: "./images/graph.png", alt: "A graph depicting font size on the y axis and viewport width on the horizontal axis. The plot consists of three line segments. The first is a horizontal line labeled minimum corresponding to a y-value of 16px font size. The endpoint of the line segment is labeled (400, 16px), where 400 corresponds to the x-value for the endpoint. Beginning from that endpoint is an upward-sloping line labeled preferred. At the endpoint of this second line is a third horizontal line labeled maximum, starting at a point of (1000, 19). Its x-value corresponds to a viewport width of 1000px and the y-value to a font size of 19px.", caption: "As the viewport width increases, the font size increases linearly, up until a maximum. We have two (x, y) points. The equation for the line between these two points is the preferred value for clamp." %}
+<figure>
+<img src="./images/graph.png" alt="A graph depicting font size on the y axis and viewport width on the horizontal axis. The plot consists of three line segments. The first is a horizontal line labeled minimum corresponding to a y-value of 16px font size. The endpoint of the line segment is labeled (400, 16px), where 400 corresponds to the x-value for the endpoint. Beginning from that endpoint is an upward-sloping line labeled preferred. At the endpoint of this second line is a third horizontal line labeled maximum, starting at a point of (1000, 19). Its x-value corresponds to a viewport width of 1000px and the y-value to a font size of 19px." sizes="100vw" />
+<figcaption>As the viewport width increases, the font size increases linearly, up until a maximum. We have two (x, y) points. The equation for the line between these two points is the preferred value for clamp.</figcaption>
+</figure>
 
 So what's the line's equation? If we can figure that out, we'll have an expression that we can plug in for `clamp`'s preferred value. We already have the min and max for clamp, so this equation is the only missing piece.
 
@@ -619,7 +622,7 @@ This gives you greater control over your font sizing since you're no longer lock
 
 If you're using my [Fluid Type Scale Calculator](https://www.fluid-type-scale.com/), this separation between mobile and desktop is more obvious since you're asked to configure two separate sets of variables for the base font size, screen width, and modular ratio:
 
-{% include "postImage.html" src: "./images/groups.png", alt: "A form on the left and some code output on the right. Two groups of inputs can be seen in the form. The first is titled 'Minimum (mobile)', while the second is titled 'Maximum (desktop)'. Each group contains three inputs, in order: font size, screen width, and type scale." %}
+![A form on the left and some code output on the right. Two groups of inputs can be seen in the form. The first is titled 'Minimum (mobile)', while the second is titled 'Maximum (desktop)'. Each group contains three inputs, in order: font size, screen width, and type scale.](./images/groups.png)
 
 ## Clamp All the Things
 

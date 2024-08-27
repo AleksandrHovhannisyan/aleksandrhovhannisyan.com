@@ -404,7 +404,10 @@ In this case, `clamp` will always return `16px` since that's a static value. Whe
 
 The best way to understand how this works is to visualize it. Check out Adrian Bece's [Modern Fluid Typography Editor](https://modern-fluid-typography.vercel.app/) to get a better feel for how `clamp` works:
 
-{% include "postImage.html" src: "./images/fluid-typography-editor.jpg", alt: "Adrian Bece's Fluid Typography editor tool. A sidebar contains toggles and inputs for root font size, min size, max size, and fluid size. The main content region shows a plot of the clamping function, which starts at a y-intecept corresponding to the minimum, extends horizontally for a few units, and then scales linearly up to a maximum.", caption: "The leftmost horizontal line represents the minimum value returned by `clamp`; the rightmost horizontal line corresponds to the maximum. Between these two endpoints is the preferred value, which scales upward linearly.", isCaptionAriaHidden: true %}
+<figure>
+  <img src="./images/fluid-typography-editor.jpg" alt="Adrian Bece's Fluid Typography editor tool. A sidebar contains toggles and inputs for root font size, min size, max size, and fluid size. The main content region shows a plot of the clamping function, which starts at a y-intecept corresponding to the minimum, extends horizontally for a few units, and then scales linearly up to a maximum." sizes="100vw" />
+  <figcaption aria-hidden="true">The leftmost horizontal line represents the minimum value returned by <code>clamp</code>; the rightmost horizontal line corresponds to the maximum. Between these two endpoints is the preferred value, which scales upward linearly.</figcaption>
+</figure>
 
 So, if we set our preferred value in `vw` units, clamp will guarantee that it never falls outside the bounds of the min and max, while the nature of viewport units will allow the value to scale fluidly between those two endpoints. Here's an example:
 
@@ -422,7 +425,7 @@ This says:
 {% aside %}
 The preferred value for the code above may seem arbitrary, but it turns out that we can pick the right value [using a bit of math](/blog/fluid-type-scale-with-css-clamp/), given just a min/max font size and a corresponding min/max breakpoint. There are also lots of tools available that can generate a `clamp` declaration for you. One of those is my very own [Fluid Type Scale calculator](https://www.fluid-type-scale.com/), which lets you add fluid font size variables to any project.
 
-{% include "postImage.html" src: "./images/fluid-type-scale.png", alt: "The landing page for the Fluid Type Scale Calculator website features a big bold headline that reads: 'Fluid Type Scale Calculator.' Below is a subtitle that reads: 'Generate font size variables for a fluid type scale. Grab the output CSS and drop it into any existing design system.' Below the header is a two-column layout with a form on the left and some output code on the right showing CSS variables for font sizing." %}
+![The landing page for the Fluid Type Scale Calculator website features a big bold headline that reads: 'Fluid Type Scale Calculator.' Below is a subtitle that reads: 'Generate font size variables for a fluid type scale. Grab the output CSS and drop it into any existing design system.' Below the header is a two-column layout with a form on the left and some output code on the right showing CSS variables for font sizing.](./images/fluid-type-scale.png)
 {% endaside %}
 
 Keep in mind that while the examples I showed here are for font sizing, `clamp` can be applied to any numerical properties, including padding, margin, borders, and much more. I encourage you to experiment with `clamp` to see if it's right for your designs.

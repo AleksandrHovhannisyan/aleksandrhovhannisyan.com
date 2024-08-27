@@ -42,7 +42,10 @@ No article about NFTs would be complete without mentioning Beeple—an artist wh
 
 But nevermind having any real artistic talent, putting in decades of hard work to achieve success, or having any sort of business acumen when it comes time to market your work. Because in the golden age of NFTs, [a simple PNG image of a rock](https://www.cnbc.com/2021/08/23/people-are-paying-millions-of-dollars-for-digital-pictures-of-rocks.html) will do the trick, selling for $1.3 million.
 
-{% include "postImage.html" src: "./images/rock.png", alt: "A monochrome rock drawn in a clipart style.", caption: "This humble rock is probably worth more than you. Source: [Twitter](https://twitter.com/degenharambe/status/1424133878352998401)." %}
+<figure>
+<img src="./images/rock.png" alt="A monochrome rock drawn in a clipart style." sizes="100vw" />
+<figcaption>This humble rock is probably worth more than you. Source: <a href="https://twitter.com/degenharambe/status/1424133878352998401">Twitter</a>.</figcaption>
+</figure>
 
 Of course, all of these transactions are carried out using cryptocurrencies like Ethereum—because let's face it, [not even thieves want your worthless fiat money anymore](https://www.smbc-comics.com/comic/nft).
 
@@ -58,11 +61,17 @@ Stories of NFTs selling for this much money may get your blood boiling, and you 
 
 Like this work titled *Onement VI*, which sold for $43.8 million:
 
-{% include "postImage.html" src: "./images/onement-vi.jpg", alt: "A blue canvas with a white line down the middle.", caption: "Copyright Barnett Newman. Source: [WikiArt](https://www.wikiart.org/en/barnett-newman/onement-vi-1953)." %}
+<figure>
+<img src="./images/onement-vi.jpg" alt="A blue canvas with a white line down the middle." sizes="100vw" />
+<figcaption>Copyright Barnett Newman. Source: <a href="https://www.wikiart.org/en/barnett-newman/onement-vi-1953">WikiArt</a>.</figcaption>
+</figure>
 
 Or the classic *Orange, Red, Yellow* by Mark Rothko, which [sold for $86 million in 2012](https://en.wikipedia.org/wiki/Orange,_Red,_Yellow):
 
-{% include "postImage.html" src: "./images/orange-red-yellow.jpg", alt: "A red canvas with three rectangles: one large orange rectangle at the bottom, followed by a smaller orange rectangle above it, and the smallest rectangle at the top in yellow.", caption: "Copyright Mark Rothko. Source: [Wikimedia Commons](https://en.wikipedia.org/wiki/File:Orange,_Red,_Yellow.jpg)." %}
+<figure>
+<img src="./images/orange-red-yellow.jpg" alt="A red canvas with three rectangles: one large orange rectangle at the bottom, followed by a smaller orange rectangle above it, and the smallest rectangle at the top in yellow." sizes="100vw" />
+<figcaption>Copyright Mark Rothko. Source: <a href="https://en.wikipedia.org/wiki/File:Orange,_Red,_Yellow.jpg">Wikimedia Commons</a>.</figcaption>
+</figure>
 
 To the untrained eye, these may appear to be canvases smeared with paint. But to a seasoned art connoisseur, they embody the human condition, eternal themes like love and loss, and all sorts of hand-waiving pretension. [Modern art](https://www.youtube.com/watch?v=d7ez-gIt08I) has always eluded basic human reasoning. The more uninspiring a piece of artwork is, the more it's worth, and the more people are afraid to criticize it for fear of being branded as simpletons who "just don't get art." One man's [seven-legged spider](https://27bslash6.com/overdue.html) is another man's treasure, so to speak.
 

@@ -4,6 +4,6 @@ export default {
   layout: 'default',
   openGraph: {
     type: 'website',
-    image: toAbsoluteImageUrl('src/assets/images/profile-photo.jpg', 400),
+    image: toAbsoluteImageUrl({ src: 'src/assets/images/profile-photo.jpg', width: 400 }),
   },
 };

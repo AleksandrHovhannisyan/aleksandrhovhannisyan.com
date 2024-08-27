@@ -39,7 +39,7 @@ Here, the number $10$ is what we call the **base** (aka **radix**) of our number
 
 In the decimal number system, a number is represented by placing digits into "buckets" that represent **increasing powers of ten**, starting with $10^0$ in the rightmost "bucket," followed by $10^1$ to its immediate left, and so on infinitely:
 
-{% include "postImage.html" src: "./images/decimal-number-system.png", alt: "Increasing powers of ten from right to left, represented as square slots. From right to left, they are labeled: 10^0 (ones), 10^1 (tens), 10^2 (hundredths), and so on." %}
+![Increasing powers of ten from right to left, represented as square slots. From right to left, they are labeled: 10^0 (ones), 10^1 (tens), 10^2 (hundredths), and so on.](./images/decimal-number-system.png)
 
 Any unused buckets to the far left have an implicit value of $0$ in them. We usually trim leading zeros because there is no use in saying $00579$ when that's mathematically identical to $579$.
 
@@ -59,11 +59,11 @@ $$
 
 And you can visualize it like this:
 
-{% include "postImage.html" src: "./images/bases.png", alt: "Rectangles arranged side by side representing increasing powers of a generic base of b, with digits represented as d_0 through d_{n-1}." %}
+![Rectangles arranged side by side representing increasing powers of a generic base of b, with digits represented as d_0 through d_{n-1}.](./images/bases.png)
 
 Using our same example, $d_{n-1} b^{n-1} + d_{n-2} b^{n-2} + ... + d_{0} b^0 = 5(10^2) + 7(10^1) + 9(10^0)$. Again, we have buckets from right to left in increasing powers of our base ($10$), as depicted below:
 
-{% include "postImage.html" src: "./images/579.png", alt: "Expanding 579 in terms of powers of 10. The 5 goes in the hundredths bucket, the 7 in the tens bucket, and the 9 in the ones bucket." %}
+![Expanding 579 in terms of powers of 10. The 5 goes in the hundredths bucket, the 7 in the tens bucket, and the 9 in the ones bucket.](./images/579.png)
 
 {% aside %}
   **Note**: The rightmost bucket, $b^0$, will always represent $d_0$ in any number system because any base raised to the power of $0$ is just $1$.
@@ -122,7 +122,7 @@ We're all familiar with decimal numbers because we use them everyday. But what a
 
 By definition, the **binary number system** has a base of $2$, and thus we can only work with two digits to compose numbers: $0$ and $1$. Technically speaking, we don't call these digits—they're called **bits** in binary lingo. Each "bucket" in a binary string represents an increasing power of two: $2^0$, $2^1$, $2^2$, and so on.
 
-{% include "postImage.html" src: "./images/binary-number-system.png", alt: "Increasing powers of two from right to left, represented as square slots. From right to left, they are labeled: 2^0 (ones), 2^1 (twos), 2^2 (fours), and so on." %}
+![Increasing powers of two from right to left, represented as square slots. From right to left, they are labeled: 2^0 (ones), 2^1 (twos), 2^2 (fours), and so on.](./images/binary-number-system.png)
 
 The leftmost bit is called the **most significant bit (MSB)**, while the rightmost bit is called the **least significant bit (LSB)**.
 
@@ -171,7 +171,7 @@ Unicode is the most widely accepted **character encoding standard**: a method of
 
 For example, the chart below shows a very limited subset of Unicode characters (known as the ASCII standard) and their corresponding code points:
 
-{% include "postImage.html" src: "./images/ascii.gif", alt: "An ASCII table showing characters and their numerical representations" %}
+![An ASCII table showing characters and their numerical representations](./images/ascii.gif)
 
 For the sake of brevity, we'll focus on just the ASCII standard for now, even though it doesn't capture the full range of characters in the Unicode standard and the complexities that come with needing to support hundreds of thousands of characters.
 
@@ -374,7 +374,7 @@ Now, we interpret the decimal equivalent for each part:
 
 That means `#4287f5` is really `rgb(66, 135, 245)`! You can verify this using a [Color Converter](https://www.w3schools.com/colors/colors_converter.asp):
 
-{% include "postImage.html" src: "./images/color-converter.png", alt: "A color converter verifying that #4287f5 is really rgb(66, 135, 245)" %}
+![A color converter verifying that #4287f5 is really rgb(66, 135, 245)](./images/color-converter.png)
 
 For practice, let's convert this to binary as well. I'll mark the groups of four bits to make it easier to see how I did this (you could also convert from the decimal RGB representation if you want to):
 
@@ -410,7 +410,7 @@ $$
 
 On older systems with limited memory, colors were represented using just eight bits (one byte). These **8-bit colors** had a very limited palette, which meant that most computer graphics didn't have gradual color transitions (so images looked very pixelated/grainy). With only $8$ bits to work with, you are limited to just $2^8 = 256$ colors!
 
-{% include "postImage.html" src: "./images/8-bit.png", alt: "An 8-bit color palette" %}
+![An 8-bit color palette](./images/8-bit.png)
 
 Naturally, you may be wondering: How did they split $8$ bits evenly among red, green, and blue? After all, $8$ isn't divisible by three!
 
@@ -537,7 +537,10 @@ So to get the largest signed integer, we need to subtract one.
 
 In video games like RuneScape that use $32$-bit signed integers to represent in-game currency, the max "cash stack" that you can have caps out at exactly $2^{31} - 1$, which is roughly 2.1 billion.
 
-{% include "postImage.html" src: "./images/max-cash-stack.png", alt: "The max cash stack you can have in Runescape is 2147m, or 2.1 billion.", caption: "Image source: [YouTube](https://www.youtube.com/watch?v=c2ZsPPDH08g)" %}
+<figure>
+<img src="./images/max-cash-stack.png" alt="The max cash stack you can have in Runescape is 2147m, or 2.1 billion." sizes="100vw" />
+<figcaption>Image Source: <a href="https://www.youtube.com/watch?v=c2ZsPPDH08g">YouTube</a></figcaption>
+</figure>
 
 Now you know why! If you're wondering why they don't just use unsigned ints, it's because RuneScape runs on Java, and [Java doesn't support unsigned ints](https://stackoverflow.com/questions/9854166/declaring-an-unsigned-int-in-java) (except in SE 8+).
 

@@ -3,7 +3,6 @@ export { default as definitionShortcode } from './definition.js';
 export { default as hashArtShortcode } from './hashArt.js';
 export { default as quoteShortcode } from './quote.js';
 export { default as iconShortcode } from './icon.js';
-export { default as imageShortcode } from './image.js';
 export { default as faviconShortcode } from './favicon.js';
 export { default as artworkShortcode } from './artwork.js';
 export { default as nanoIdShortcode } from './nanoid.js';

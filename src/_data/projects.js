@@ -1,58 +1,41 @@
 import Cache from '@11ty/eleventy-cache-assets';
-import path from 'node:path';
-import { imagePaths } from 'core/constants.js';
-import { imageShortcode } from 'core/shortcodes/index.js';
 
 // Combination of static + dynamic data
 const repos = {
   fluidTypeScale: {
-    getIcon: async () => {
-      const icon = await imageShortcode({
-        src: 'https://www.fluid-type-scale.com/images/favicon-32.png',
-        alt: '',
-        widths: [32],
-      });
-      return icon;
-    },
+    icon: `<img src="https://www.fluid-type-scale.com/images/favicon-32.png" alt="" width="32" height="32" />`,
     name: 'fluid-type-scale.com',
     url: 'https://www.fluid-type-scale.com/',
     repo: 'AleksandrHovhannisyan/fluid-type-scale-calculator',
     tech: ['svelte', 'typescript', 'sass'],
   },
   scribe: {
-    getIcon: () => '📄',
+    icon: '📄',
     name: 'Scribe',
     repo: 'AleksandrHovhannisyan/Scribe-Text-Editor',
     tech: ['c++', 'qt5', 'qtcreator'],
   },
   usGunCrimes: {
-    getIcon: () => '⚖️',
+    icon: '⚖️',
     name: 'U.S. Gun Crimes',
     repo: 'CIS4301-Project-University-of-Florida/U.S.-Gun-Crime',
     tech: ['react', 'typescript', 'express', 'sql'],
   },
   raycasting: {
-    getIcon: () => '🎮',
+    icon: '🎮',
     name: 'Canvas Raycasting',
     repo: 'AleksandrHovhannisyan/raycasting-js',
     url: 'https://raycasting-from-scratch.netlify.app/',
     tech: ['html', 'css', 'javascript'],
   },
   blog: {
-    getIcon: async () => {
-      const icon = await imageShortcode({
-        src: path.join(imagePaths.input, 'favicons/favicon.png'),
-        alt: '',
-        widths: [32],
-      });
-      return icon;
-    },
+    icon: '<img src="../assets/images/favicons/favicon.png" alt="" width="32" height="32" />',
     name: 'This website!',
     repo: 'AleksandrHovhannisyan/aleksandrhovhannisyan.com',
     tech: ['11ty', 'sass', 'javascript'],
   },
   embody: {
-    getIcon: () => '👻',
+    icon: '👻',
     name: 'Embody',
     repo: 'cap4053-cheeky-pixels/EmbodyGame',
     tech: ['c#', 'unity', 'game-ai'],
@@ -61,13 +44,12 @@ const repos = {
 
 const fetchRepo = async (repoKey) => {
   const staticConfig = repos[repoKey];
-  const icon = await staticConfig.getIcon();
   const data = await Cache(`https://api.github.com/repos/${staticConfig.repo}`, {
     duration: '1d',
     type: 'json',
   });
   return {
-    icon,
+    icon: staticConfig.icon,
     name: staticConfig.name ?? data.name,
     rating: data.stargazers_count,
     description: data.description.endsWith('.') ? data.description : `${data.description}.`,

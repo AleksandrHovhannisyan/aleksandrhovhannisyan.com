@@ -86,7 +86,7 @@ input.addEventListener('change', (e) => {
 
 Screen readers will narrate the alert correctly, and sighted users will see the message in a familiar form tooltip whose styling depends on the browser being used. The browser may also suggest how the user can correct their input. Returning to our earlier example, if a user enters an odd number, the browser will suggest the two closest numbers:
 
-{% include "postImage.html" src: "./images/odd.png", alt: "A numeric input box contains the value 5 and two controls: up and down. Below it is a tooltip that reads: 'Please enter a valid value. The two nearest valid values are 4 and 6.'." %}
+![A numeric input box contains the value 5 and two controls: up and down. Below it is a tooltip that reads: 'Please enter a valid value. The two nearest valid values are 4 and 6.'.](./images/odd.png)
 
 #### Option 2: Custom Error Messaging
 

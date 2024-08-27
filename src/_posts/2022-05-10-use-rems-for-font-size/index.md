@@ -40,7 +40,10 @@ html {
 
 Likewise, users can go into their browser settings (e.g., `chrome://settings/fonts` in Chrome) and select their preferred font size:
 
-{% include "postImage.html" src: "./images/chrome-settings.jpg", alt: "The Chrome settings page for changing one's preferred font size. Two sliders are seen: one for the font size and another for the minimum font size. Sample sentences are shown below those sliders, along with pickers for the user's preferred font family (which, by default, is Times New Roman).", caption: "Customizing font size in Google Chrome's settings.", isCaptionAriaHidden: true %}
+<figure>
+<img src="./images/chrome-settings.jpg" alt="The Chrome settings page for changing one's preferred font size. Two sliders are seen: one for the font size and another for the minimum font size. Sample sentences are shown below those sliders, along with pickers for the user's preferred font family (which, by default, is Times New Roman)." sizes="100vw" />
+<figcaption aria-hidden="true">Customizing font size in Google Chrome's settings.</figcaption>
+</figure>
 
 Using pixels for font size is inaccessible to users with vision impairments because they may need to scale up the font size of your page to read the text more easily. But when you set a font size in pixels like we did in the example above, the text will *always* render at that size, regardless of what font size a user prefers. For example, a user might prefer to scale the font size on all pages to be larger than normal (say 125%), but if you set your root font size to be `18px`, it will _always_ render at that size—the user's preference will be ignored. You can learn more about why this matters in [WCAG Criterion 1.4.4 Resize Text](https://www.w3.org/WAI/WCAG21/Understanding/resize-text.html).
 
@@ -48,7 +51,10 @@ Using pixels for font size is inaccessible to users with vision impairments beca
 
 Users can also zoom in all web pages globally in their browser settings, in which case it may seem like pixels are not entirely problematic because the page still scales up proportionally.
 
-{% include "postImage.html" src: "./images/page-zoom.jpg", alt: "The Chrome settings page shows various groups, one of which is labeled page zoom. There's a dropdown input, with a currently selected value of 100%.", caption: "The page zoom control in Google Chrome's settings.", isCaptionAriaHidden: true %}
+<figure>
+<img src="./images/page-zoom.jpg" alt="The Chrome settings page shows various groups, one of which is labeled page zoom. There's a dropdown input, with a currently selected value of 100%." sizes="100vw" />
+<figcaption aria-hidden="true">The page zoom control in Google Chrome's settings.</figcaption>
+</figure>
 
 For example, changing the root font size from `16px` to `18px` is equivalent to setting the page zoom to be `112.5%`. So you might be tempted to use pixels for all of your font sizes and leave it up to users to zoom in your page if they have trouble reading the text.
 

@@ -12,11 +12,17 @@ In case it's not clear, this article's goal is not to name and shame! I enjoyed 
 
 The other day, I was doing a bit of reading when I came across an article from the Redis blog. When I opened the page, I was not at all expecting to see this:
 
-{% include "postImage.html" src: "./images/blog.png", alt: "An article page on the Redis blog, with all of the text rendered in thick, illegible brushstrokes with a handwritten style.", caption: "Oh my woff!", isLazy: false %}
+<figure>
+  <img src="./images/blog.png" alt="An article page on the Redis blog, with all of the text rendered in thick, illegible brushstrokes with a handwritten style." loading="eager" />
+  <figcaption>Oh my woff!</figcaption>
+</figure>
 
 I then visited the home page, where I encountered the same stylish font:
 
-{% include "postImage.html" src: "./images/home.png", alt: "The home page for redis.com. All of the text is rendered in thick, illegible brushstrokes with a handwritten style.", caption: "Oh my woff2!" %}
+<figure>
+<img src="./images/home.png" alt="The home page for redis.com. All of the text is rendered in thick, illegible brushstrokes with a handwritten style." sizes="100vw" />
+<figcaption>Oh my woff2!</figcaption>
+</figure>
 
 Script fonts can be hard on the eyes, but this one had especially thick brush strokes and flourishes that made it difficult to read. Together with the Christmas-themed color palette, the font practically turned the page into a holiday greeting card.
 
@@ -30,7 +36,7 @@ Suspecting that this could be another font rendering bug in Chrome on Windows (s
 
 Finally, I visited the site on a different device and, surprisingly, the page rendered just fine! For reference, this is what it's *supposed* to look like:
 
-{% include "postImage.html" src: "./images/expected.jpg", alt: "The home page for redis.com, rendered in a neutral sans-serif typeface with a typical marketing hero banner (title and subtitle on the left, graphics on the right, navigation at the top)." %}
+![The home page for redis.com, rendered in a neutral sans-serif typeface with a typical marketing hero banner (title and subtitle on the left, graphics on the right, navigation at the top).](./images/expected.jpg)
 
 The fact that this issue was only reproducible on my machine suggested that the site was loading a local font. But how could I verify this?
 
@@ -38,7 +44,7 @@ The fact that this issue was only reproducible on my machine suggested that the 
 
 A handy trick for debugging any CSS problem is to check the `Computed` pane in the element inspector, which lists the final computed values for various CSS properties. This is useful when working with `calc` or `clamp`, viewport units, percentages, and really any dynamic CSS value. But it's also useful for debugging font loading problems.
 
-{% include "postImage.html" src: "./images/computed-font-family.png", alt: "Inspecting the computed styles for the redis.com home page in chrome dev tools. A line is highlighted that reads: font-family: Graphik Web, Helvetica, Arial, sans-serif." %}
+![Inspecting the computed styles for the redis.com home page in chrome dev tools. A line is highlighted that reads: font-family: Graphik Web, Helvetica, Arial, sans-serif.](./images/computed-font-family.png)
 
 In this case, the `font-family` property seemed to be `"Graphik Web"`, but that's a red herring. Why? Because authors can give a font file any family name they want in its `font-face` declaration, like this:
 
@@ -57,7 +63,7 @@ In other words, you can't trust the font family name since it could point to a d
 
 Ignoring this property and scrolling all the way down, I found that the page was actually rendering an entirely different font file:
 
-{% include "postImage.html" src: "./images/computed-font-pacifico.png", alt: "Inspecting the computed styles for the redis.com home page in chrome dev tools. The very bottom of the computed pane reads: Pacifico — Local file (29 glyphs)." %}
+![Inspecting the computed styles for the redis.com home page in chrome dev tools. The very bottom of the computed pane reads: Pacifico — Local file (29 glyphs).](./images/computed-font-pacifico.png)
 
 Note `Pacifico—Local file`. So the page *was* applying a local font! This name rang a bell, and I remembered that I actually *do* have [Pacifico](https://fonts.google.com/specimen/Pacifico/) installed locally—it's the open-source font that I used in my website's favicon.
 
@@ -76,15 +82,15 @@ This was starting to seem awfully probable...
 
 Having ruled out the possibility that this is a corrupt font file or that it's time to replace my toaster of a machine, I figured the next logical step would be to pop the hood and take a look at the CSS. I did a quick search for Pacifico in the HTML itself in case the page was using inline styles (for performance), but I didn't find any matches. It was time to dig through the stylesheets themselves:
 
-{% include "postImage.html" src: "./images/css-network-requests.png", alt: "Inspecting the Network tab and narrowing down by CSS in chrome dev tools lists 8 network requests for stylesheets." %}
+![Inspecting the Network tab and narrowing down by CSS in chrome dev tools lists 8 network requests for stylesheets.](./images/css-network-requests.png)
 
 I checked the first one for `Pacifico` using Preview mode, but no luck there:
 
-{% include "postImage.html" src: "./images/styles-min-preview.png", alt: "Inspecting a stylesheet in preview mode in chrome dev tools on the network tab. A search for the string Pacifico found no matches." %}
+![Inspecting a stylesheet in preview mode in chrome dev tools on the network tab. A search for the string Pacifico found no matches.](./images/styles-min-preview.png)
 
 Thankfully, all the stylesheets were using a semantic naming convention, so I figured the problematic styles had to live in `paragraph.css` if not in the others. And sure enough, there they were:
 
-{% include "postImage.html" src: "./images/network-pacifico.png", alt: "Inspecting a stylesheet in preview mode in chrome dev tools on the network tab. A search for the string Pacifico yielded 12 matches." %}
+![Inspecting a stylesheet in preview mode in chrome dev tools on the network tab. A search for the string Pacifico yielded 12 matches.](./images/network-pacifico.png)
 
 Just as I suspected! Below is a snippet of the offending CSS:
 

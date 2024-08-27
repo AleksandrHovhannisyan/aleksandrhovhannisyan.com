@@ -40,7 +40,7 @@ First, we need to install the ESLint language server protocol (LSP) extension fo
 1. Open the Extensions tab in the sidebar.
 2. Install the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) (`dbaeumer.vscode-eslint`):
 
-{% include "postImage.html" src: "./images/eslint-extension.png", alt: "Viewing the ESLint extension in the VS Code extension marketplace." %}
+![Viewing the ESLint extension in the VS Code extension marketplace.](./images/eslint-extension.png)
 
 You may see a prompt to reload VS Code after installing the extension.
 
@@ -74,7 +74,7 @@ Open your command palette (`Ctrl+Shift+P` on Windows and `Cmd+Shift+P` on Mac) a
 - User settings: `Preferences: Open Settings (JSON)`
 - Workspace settings: `Preferences: Open Workspace Settings (JSON)`
 
-{% include "postImage.html" src: "./images/settings.png", alt: "Searching for 'settings' via VS Code's command palette." %}
+![Searching for 'settings' via VS Code's command palette.](./images/settings.png)
 
 Select either one. I recommend configuring this in both your user and workspace settings; the latter is a good option if other developers on your team use VS Code. That way, they don't have to update their user settings manually—when you push these changes, VS Code will load their workspace settings. User settings are handy if you want to set them once and be done with it.
 
@@ -112,7 +112,7 @@ For these settings to take effect, you'll need to:
 
 Run the command; you should see a loader pop up on VS Code's status bar saying `Initializing JS/TS language features`. Once it disappears, you should be good to go:
 
-{% include "postImage.html" src: "./images/initializing-language-features.png", alt: "The VS Code status bar displays the text Initializing JS/TS language features next to a loading spinner." %}
+![The VS Code status bar displays the text Initializing JS/TS language features next to a loading spinner.](./images/initializing-language-features.png)
 
 Now, open up a JavaScript file and introduce formatting errors on purpose; you should see squiggly red lines if the violation is treated as an error and orange if it's a warning. VS Code will auto-format your code when you save the file.
 

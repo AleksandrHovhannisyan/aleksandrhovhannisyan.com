@@ -1,6 +1,0 @@
-<figure>
-  {%- include "image.html" src: src, alt: alt, baseFormat: baseFormat, formats: formats, widths: widths, sizes: sizes, className: className, isLazy: isLazy -%}
-  {%- if caption -%}
-    <figcaption{% if isCaptionAriaHidden %} aria-hidden="true"{% endif %}>{{ caption | toHtml }}</figcaption>
-  {%- endif -%}
-</figure>
