@@ -1,4 +1,4 @@
-import path from 'path';
+import path from 'node:path';
 import Image from '@11ty/eleventy-img';
 import stringifyAttributes from 'stringify-attributes';
 import { withoutBaseDirectory } from '../utils.js';

@@ -1,5 +1,5 @@
 import esbuild from 'esbuild';
-import path from 'path';
+import path from 'node:path';
 import PluginFootnotes from 'eleventy-plugin-footnotes';
 import EleventyPluginRobotsTxt from 'eleventy-plugin-robotstxt';
 import EleventyPluginNetlifyRedirects from 'eleventy-plugin-netlify-redirects';

@@ -1,4 +1,4 @@
-import path from 'path';
+import path from 'node:path';
 import { toAbsoluteImageUrl } from '../../config/filters/filters.js';
 import featureFlags from '../_data/featureFlags.js';
 

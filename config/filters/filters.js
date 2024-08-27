@@ -1,6 +1,6 @@
 import CleanCSS from 'clean-css';
 import esbuild from 'esbuild';
-import path from 'path';
+import path from 'node:path';
 import get from 'lodash/get.js';
 import sortBy from 'lodash/sortBy.js';
 import dayjs from 'dayjs';

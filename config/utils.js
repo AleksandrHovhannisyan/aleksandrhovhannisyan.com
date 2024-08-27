@@ -1,7 +1,7 @@
-import childProcess from 'child_process';
+import childProcess from 'node:child_process';
 import sanitize from 'sanitize-html';
 import slugify from 'slugify';
-import path from 'path';
+import path from 'node:path';
 
 /**
  * Returns an array of all unique values from the given collection under the specified key.

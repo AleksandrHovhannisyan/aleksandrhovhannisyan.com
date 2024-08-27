@@ -1,5 +1,5 @@
 import Cache from '@11ty/eleventy-cache-assets';
-import path from 'path';
+import path from 'node:path';
 import { imagePaths } from '../../config/constants.js';
 import { imageShortcode } from '../../config/shortcodes/index.js';
 
