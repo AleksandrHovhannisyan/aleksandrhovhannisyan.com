@@ -111,9 +111,7 @@ export default function eleventy(eleventyConfig) {
     titleId: 'footnotes-label',
     backLinkLabel: (footnote, index) => `Back to reference ${index + 1}`,
   });
-  
   eleventyConfig.addPlugin(EleventyPluginCodeDemo, codeDemoOptions);
-  
   eleventyConfig.setLibrary('md', markdown);
 
   // Post-processing

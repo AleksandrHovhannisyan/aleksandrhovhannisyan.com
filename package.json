@@ -33,6 +33,7 @@
     "@octokit/auth-token": "^5.1.1",
     "@octokit/core": "^6.1.2",
     "@octokit/rest": "^21.0.1",
+    "aleksandrhovhannisyan.com": "link:",
     "dayjs": "^1.10.5",
     "lodash": "^4.17.21",
     "sanitize-html": "^2.6.1"
