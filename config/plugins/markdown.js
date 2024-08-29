@@ -1,5 +1,4 @@
 import markdownIt from 'markdown-it';
-import markdownItPrism from 'markdown-it-prism';
 import markdownItAttrs from 'markdown-it-attrs';
 import markdownItAnchor from 'markdown-it-anchor';
 import markdownItKatex from '@iktakahiro/markdown-it-katex';
@@ -8,10 +7,11 @@ import markdownItTocDoneRight from 'markdown-it-toc-done-right';
 import markdownItLinkAttributes from 'markdown-it-link-attributes';
 import markdownItCodeTabIndex from 'markdown-it-code-tabindex';
 import { slugifyString } from '../utils.js';
+import { makeFencedCodeRenderer, makeSyntaxHighlighter } from './highlight.js';
 
 /** Configures and returns a markdown parser. */
-export const makeMarkdownParser = () =>
-  markdownIt({
+export const makeMarkdownParser = () => {
+  const markdownParser = markdownIt({
     // Use of HTML tags in Markdown
     html: true,
     // Conversion of \n to <br>
@@ -23,9 +23,6 @@ export const makeMarkdownParser = () =>
   })
     // https://github.com/11ty/eleventy/issues/2438
     .disable('code')
-    .use(markdownItPrism, {
-      defaultLanguage: 'plaintext',
-    })
     .use(markdownItAttrs)
     .use(markdownItCodeTabIndex, { target: 'code' })
     .use(markdownItTocDoneRight, {
@@ -58,6 +55,10 @@ export const makeMarkdownParser = () =>
       strict: false,
       throwOnError: true,
     });
+  markdownParser.options.highlight = makeSyntaxHighlighter(markdownParser);
+  markdownParser.renderer.rules.fence = makeFencedCodeRenderer(markdownParser);
+  return markdownParser;
+};
 
 /** A customized, default markdown parser. Suitable for most of my parsing needs. */
 export const markdown = makeMarkdownParser();

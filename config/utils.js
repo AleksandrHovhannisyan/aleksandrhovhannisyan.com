@@ -50,6 +50,7 @@ export const sanitizeHtml = (html) => {
       ...sanitize.defaults.allowedAttributes,
       // Class for syntax highlighting
       pre: ['class'],
+      figure: ['class'],
       // Class for syntax highlighting; tabindex added by https://github.com/AleksandrHovhannisyan/markdown-it-code-tabindex
       code: ['class', 'tabindex'],
       // Prism outputs spans with class names for tokens

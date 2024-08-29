@@ -183,7 +183,7 @@ console.log(getEvenNumbers([1, 2, 3]));
 #### Liquid
 
 {% raw %}
-```liquid {data-file="path/to/some/file.html" data-copyable="true"}
+```liquid {data-file="path/to/some/file.liquid" data-copyable="true"}
 {% if someCondition %}{% endif %}
 {% for i in (1..3) %}{% endfor %}
 {% assign foo = 'bar' %}

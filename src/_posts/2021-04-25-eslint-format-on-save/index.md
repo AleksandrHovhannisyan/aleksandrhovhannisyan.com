@@ -140,7 +140,7 @@ I sometimes alternate between VS Code and [neovim](https://neovim.io/), a highly
 
 One of the pre-configured plugins in kickstart is [`stevearc/conform.nvim`](https://github.com/stevearc/conform.nvim), which lets you auto-format code in response to various editor events. By default, it is configured to format before save (`BufWritePre`):
 
-```lua {data-filename="~/.config/nvim/init.lua"}
+```lua {data-file="~/.config/nvim/init.lua"}
 require('lazy').setup({
   { -- Autoformat
     'stevearc/conform.nvim',
@@ -178,7 +178,7 @@ require('lazy').setup({
 
 Note that `conform` is not a language server protocol, so it won't highlight ESLint errors in your editor—it will only fix them. If you want to see the errors as you edit a file, you can install the ESLint LSP using [`neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) and [`williamboman/mason.nvim`](https://github.com/williamboman/mason.nvim), either through the `:Mason` GUI or the same Lua config. Here is what the kickstart config looks like, with comments and unrelated code removed:
 
-```lua {data-filename="~/.config/nvim/init.lua"}
+```lua {data-file="~/.config/nvim/init.lua"}
 require('lazy').setup({
     {
     'neovim/nvim-lspconfig',

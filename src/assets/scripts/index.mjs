@@ -1,20 +1,21 @@
 import { copyToClipboardButtonStrings } from './constants.mjs';
 
-document.querySelectorAll('code[data-copyable]').forEach((codeBlock) => {
-  const code = codeBlock.innerText;
+document.querySelectorAll('code[data-copyable]').forEach((codeElement) => {
+  const codeBlock = codeElement.closest('figure.code-block');
+  const code = codeElement.innerText;
   const copyCodeButton = document.createElement('button');
   copyCodeButton.className = 'copy-code-button';
   copyCodeButton.innerText = copyToClipboardButtonStrings.default;
   // Set an aria label explicitly to clarify the button's action a bit better for screen reader users; sighted users should be able to relate "Copy" to the code block in which the button is positioned
   copyCodeButton.setAttribute('aria-label', copyToClipboardButtonStrings.ariaLabel);
   copyCodeButton.type = 'button';
-  codeBlock.parentElement.append(copyCodeButton);
+  codeBlock.appendChild(copyCodeButton);
 
   // Accessible alert whose inner text changes when we copy.
   const copiedAlert = document.createElement('span');
   copiedAlert.setAttribute('role', 'alert');
   copiedAlert.classList.add('screen-reader-only');
-  codeBlock.parentElement.append(copiedAlert);
+  codeBlock.appendChild(copiedAlert);
 
   copyCodeButton.addEventListener('click', () => {
     window.navigator.clipboard.writeText(code);

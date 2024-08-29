@@ -2,7 +2,7 @@
 @use "../functions";
 @use "../mixins";
 
-pre[class*="language-"] {
+.code-block {
   @include mixins.theme-light {
     --color-code-background: #{functions.color("surface", "2")};
     --color-code-overlay-1: hsl(0deg 0% 88%);
@@ -47,9 +47,24 @@ pre[class*="language-"] {
   position: relative;
   border-radius: functions.size("spacing", "-3");
 
+  // Focus styles appear later
   &:hover {
     .copy-code-button {
       opacity: 1;
+    }
+  }
+
+  figcaption {
+    position: absolute;
+    top: var(--code-block-padding);
+    left: var(--code-block-padding);
+    color: inherit;
+    font-size: inherit;
+    @include mixins.font($family: "mono", $weight: "bold");
+
+    &::before {
+      content: "📁 ";
+      @include mixins.font($size: "xs");
     }
   }
 
@@ -63,17 +78,10 @@ pre[class*="language-"] {
     line-height: functions.size("leading", "sm");
     overflow-x: auto;
     display: block;
+  }
 
-    &[data-file] {
-      // File name
-      &::before {
-        content: "📁 " attr(data-file);
-        display: block;
-        margin-bottom: var(--code-block-padding);
-        color: var(--color-code-text);
-        @include mixins.font($family: "mono", $weight: "bold");
-      }
-    }
+  &:has(figcaption) code {
+    padding-block-start: calc(2 * var(--code-block-padding) + 3ex);
   }
 
   .namespace {
@@ -117,13 +125,14 @@ pre[class*="language-"] {
   }
 
   /* stylelint-disable-next-line max-line-length */
-  &:is(.keyword, .tag, .boolean, .constant, .inserted, .operator.arrow, .key.atrule, .rule, .keyword.module, .keyword.control-flow, .entity, .important, .punctuation.interpolation-punctuation, .doctype, .doctype-tag, .directive-hash),
+  &:is(.keyword, .tag, .boolean, .constant, .url, .inserted, .operator.arrow, .key.atrule, .rule, .keyword.module, .keyword.control-flow, .entity, .important, .punctuation.interpolation-punctuation, .doctype, .doctype-tag, .directive-hash),
   &.atrule .url {
     color: var(--color-code-keyword);
   }
 
   &:is(.selector, .string, .char, .builtin, .deleted, .regex, .attr-value),
-  &.attr-value &.punctuation {
+  &.attr-value &.punctuation,
+  &.url .content {
     color: var(--color-code-string);
   }
 
@@ -140,6 +149,10 @@ pre[class*="language-"] {
     color: var(--color-code-attribute);
   }
 
+  &.bold {
+    @include mixins.font($family: "mono", $weight: "bold");
+  }
+
   &.italic {
     font-style: italic;
   }
@@ -147,9 +160,7 @@ pre[class*="language-"] {
 
 /* Language Specific */
 
-pre[class*="language-css"],
-pre[class*="language-scss"],
-pre[class*="language-sass"] {
+pre:is([class*="language-css"], [class*="language-scss"], [class*="language-sass"]) {
   .token.selector {
     color: var(--color-code-selector);
   }
@@ -174,7 +185,7 @@ pre[class*="language-bash"] {
   background-color: var(--color-code-overlay-1);
   padding: functions.size("spacing", "-3") functions.size("spacing", "-1");
   border-radius: functions.size("spacing", "-3");
-  @include mixins.font($family: "mono", $weight: "regular");
+  @include mixins.font($family: "mono", $weight: "regular", $size: "sm");
 
   &:is(.copied, :focus) {
     opacity: 1;
