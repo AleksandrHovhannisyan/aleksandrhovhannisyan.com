@@ -17,9 +17,6 @@ dependencies:
   dayjs:
     specifier: ^1.10.5
     version: 1.11.10
-  eleventy-plugin-robotstxt:
-    specifier: ^1.0.0
-    version: 1.0.0
   lodash:
     specifier: ^4.17.21
     version: 4.17.21
@@ -58,9 +55,6 @@ devDependencies:
   eleventy-plugin-footnotes:
     specifier: ^0.11.0
     version: 0.11.0
-  eleventy-plugin-netlify-redirects:
-    specifier: ^1.0.0
-    version: 1.0.0
   esbuild:
     specifier: ^0.14.37
     version: 0.14.54
@@ -1868,14 +1862,6 @@ packages:
     dependencies:
       clsx: 1.2.1
     dev: true
-
-  /eleventy-plugin-netlify-redirects@1.0.0:
-    resolution: {integrity: sha512-12z3aAujdnjFHI3Pe9NcDygcLc+1F7asv7g9O2f0PAqVHmN43CCD7rIJ0hCdbP5vCNoCGIO3rDT3+z0YkxM0Xg==}
-    dev: true
-
-  /eleventy-plugin-robotstxt@1.0.0:
-    resolution: {integrity: sha512-nTs+Nmf5qdFlnmLuyMXYa0mi7abOWBYcggNCZxmvBUPOCR3soUE8pcY8CSHu0yTG9rhlesF8Mzf0o9A1eZh2ZQ==}
-    dev: false
 
   /emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
