@@ -6,6 +6,7 @@ node_modules
 src/_drafts
 .env
 .dev.vars
+.wrangler
 .log
 .yarn/
 .yarnrc.yml
