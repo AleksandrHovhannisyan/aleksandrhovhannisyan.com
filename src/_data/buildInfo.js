@@ -1,7 +1,8 @@
-import { getLatestGitCommitHash } from '../../config/utils.js';
+import childProcess from 'node:child_process';
 
 export default function getBuildInfo() {
-  const latestGitCommitHash = getLatestGitCommitHash('long');
+  // Credit: https://stackoverflow.com/a/34518749/5323344
+  const latestGitCommitHash = childProcess.execSync(`git rev-parse HEAD`).toString().trim();
   const now = new Date();
   const timeZone = 'UTC';
   const buildTime = new Intl.DateTimeFormat('en-US', {
