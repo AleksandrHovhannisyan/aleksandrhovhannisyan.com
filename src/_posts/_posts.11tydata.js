@@ -1,6 +1,5 @@
 import path from 'node:path';
 import { toAbsoluteImageUrl } from '../../config/filters/filters.js';
-import featureFlags from '../_data/featureFlags.js';
 
 export default {
   layout: 'post',
@@ -9,7 +8,7 @@ export default {
   eleventyComputed: {
     scripts: (data) => {
       // If the post has comments and comments are enabled, link to the comment script to load them
-      if (featureFlags.enableComments && data.commentsId) {
+      if (data.commentsId) {
         return [...data.scripts, { type: 'module', src: `/assets/scripts/comments.mjs` }];
       }
       // Otherwise, return the existing scripts
