@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "NodeNext",
+    "lib": ["esnext"],
+    "moduleResolution": "NodeNext",
+    "allowSyntheticDefaultImports": true,
+    "types": ["@cloudflare/workers-types/2022-08-04"]
+  }
+}

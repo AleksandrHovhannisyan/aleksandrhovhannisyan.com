@@ -33,8 +33,8 @@
     "@octokit/auth-token": "^5.1.1",
     "@octokit/core": "^6.1.2",
     "@octokit/rest": "^21.0.1",
+    "aleksandrhovhannisyan.com": "link:",
     "dayjs": "^1.10.5",
-    "eleventy-plugin-robotstxt": "^1.0.0",
     "lodash": "^4.17.21",
     "sanitize-html": "^2.6.1"
   },
@@ -42,13 +42,13 @@
     "@11ty/eleventy": "3.0.0-beta.1",
     "@11ty/eleventy-cache-assets": "^2.3.0",
     "@11ty/eleventy-img": "^4.0.2",
+    "@cloudflare/workers-types": "^4.20240821.1",
     "@iktakahiro/markdown-it-katex": "^4.0.1",
     "@toycode/markdown-it-class": "^1.2.4",
     "classnames": "^2.3.1",
     "clean-css": "^5.3.1",
     "eleventy-plugin-code-demo": "0.0.2",
     "eleventy-plugin-footnotes": "^0.11.0",
-    "eleventy-plugin-netlify-redirects": "^1.0.0",
     "esbuild": "^0.14.37",
     "eslint": "^8.13.0",
     "eslint-config-prettier": "^8.5.0",
@@ -62,8 +62,6 @@
     "markdown-it-code-tabindex": "^0.0.1",
     "markdown-it-link-attributes": "^3.0.0",
     "markdown-it-toc-done-right": "^4.2.0",
-    "netlify-cli": "^17.21.1",
-    "netlify-plugin-11ty": "^1.4.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.6.2",
     "prismjs": "^1.29.0",
@@ -72,7 +70,8 @@
     "slugify": "^1.5.3",
     "stringify-attributes": "^4.0.0",
     "stylelint": "^14.7.1",
-    "stylelint-config-standard-scss": "^3.0.0"
+    "stylelint-config-standard-scss": "^3.0.0",
+    "wrangler": "^3.72.2"
   },
   "browserslist": [
     "last 2 chrome versions",

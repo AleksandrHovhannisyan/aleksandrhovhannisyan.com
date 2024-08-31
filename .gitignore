@@ -5,6 +5,8 @@ node_modules
 .eslintcache
 src/_drafts
 .env
+.dev.vars
+.wrangler
 .log
 .yarn/
 .yarnrc.yml

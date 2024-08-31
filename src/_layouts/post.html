@@ -25,7 +25,7 @@ eleventyComputed:
   </header>
   <div class="rhythm">
     {{ content }}
-    {%- if commentsId and featureFlags.enableComments -%}
+    {%- if commentsId -%}
       <template id="comment-template">
         <li>
           <div class="post-comment stack gap-0">
