@@ -1,7 +1,7 @@
 import Cache from '@11ty/eleventy-cache-assets';
 import path from 'node:path';
-import { imagePaths } from '../../config/constants.js';
-import { imageShortcode } from '../../config/shortcodes/index.js';
+import { imagePaths } from '../../core/constants.js';
+import { imageShortcode } from '../../core/shortcodes/index.js';
 
 // Combination of static + dynamic data
 const repos = {

@@ -1,5 +1,5 @@
-import { FontVariant, FontStyle, FontDisplay } from '../../config/fonts/fonts.constants.js';
-import { getFontUrl } from '../../config/fonts/fonts.utils.js';
+import { FontVariant, FontStyle, FontDisplay } from '../../core/fonts/fonts.constants.js';
+import { getFontUrl } from '../../core/fonts/fonts.utils.js';
 
 /** Global font config. Gets compiled into font face declarations and can be reused anywhere to access font info.
  * Individual templates can define their own font overrides on an as-needed basis. See for example art.11tydata.js.

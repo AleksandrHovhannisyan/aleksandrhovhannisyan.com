@@ -1,5 +1,5 @@
-import { FontVariant, FontStyle, FontDisplay } from '../../config/fonts/fonts.constants.js';
-import { getFontUrl } from '../../config/fonts/fonts.utils.js';
+import { FontVariant, FontStyle, FontDisplay } from '../../core/fonts/fonts.constants.js';
+import { getFontUrl } from '../../core/fonts/fonts.utils.js';
 
 /** Fonts used on the art page.
  * @type {import("../../types/fonts").FontConfig}

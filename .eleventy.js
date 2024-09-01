@@ -14,7 +14,7 @@ import {
   nanoIdShortcode,
   detailsShortcode,
   fetchText,
-} from './config/shortcodes/index.js';
+} from './core/shortcodes/index.js';
 import {
   limit,
   sortByKey,
@@ -30,16 +30,16 @@ import {
   toAbsoluteImageUrl,
   pathParse,
   pathJoin,
-} from './config/filters/filters.js';
+} from './core/filters/filters.js';
 import {
   getAllPosts,
   getAllUniqueCategories,
   getPostsByCategory,
-} from './config/collections/collections.js';
-import { markdown } from './config/plugins/markdown.js';
-import { codeDemoOptions } from './config/plugins/codeDemo.js';
-import { dir, imagePaths, scriptDirs } from './config/constants.js';
-import { slugifyString } from './config/utils.js';
+} from './core/collections/collections.js';
+import { markdown } from './core/plugins/markdown.js';
+import { codeDemoOptions } from './core/plugins/codeDemo.js';
+import { dir, imagePaths, scriptDirs } from './core/constants.js';
+import { slugifyString } from './core/utils.js';
 import escape from 'lodash/escape.js';
 
 const TEMPLATE_ENGINE = 'liquid';

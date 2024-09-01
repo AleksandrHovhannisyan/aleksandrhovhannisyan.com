@@ -12,3 +12,11 @@ Each function is defined in its own directory and needs the following files:
 See `*.example` files for sample configs.
 
 [Read the Cloudflare Worker documentation](https://developers.cloudflare.com/workers/get-started/quickstarts/)
+
+## Running a Worker Locally
+
+Switch to the function directory and run wrangler. Example:
+
+```
+cd functions/comments && pnpm wrangler dev
+```

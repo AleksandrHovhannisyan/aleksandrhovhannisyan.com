@@ -1,7 +1,7 @@
 import { Octokit } from '@octokit/rest';
 import { createTokenAuth } from '@octokit/auth-token';
-import { sanitizeHtml } from '../../config/utils.js';
-import { markdown } from '../../config/plugins/markdown.js';
+import { sanitizeHtml } from '../../core/utils.js';
+import { markdown } from '../../core/plugins/markdown.js';
 import site from '../../src/_data/site.js';
 import dayjs from 'dayjs';
 import dayjsRelativeTimePlugin from 'dayjs/plugin/relativeTime.js';
