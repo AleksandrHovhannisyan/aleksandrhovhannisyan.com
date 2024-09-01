@@ -1,3 +1,4 @@
+import childProcess from 'node:child_process';
 import sanitize from 'sanitize-html';
 import slugify from 'slugify';
 import path from 'node:path';
@@ -58,6 +59,17 @@ export const sanitizeHtml = (html) => {
       blockquote: ['class'],
     },
   });
+};
+
+/**
+ * Credit: https://stackoverflow.com/a/34518749/5323344
+ * @param {'short'|'long'} format
+ */
+export const getLatestGitCommitHash = (format = 'long') => {
+  return childProcess
+    .execSync(`git rev-parse ${format === 'short' ? '--short' : ''} HEAD`)
+    .toString()
+    .trim();
 };
 
 /**
