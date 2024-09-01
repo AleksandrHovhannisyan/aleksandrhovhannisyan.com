@@ -1,6 +1,5 @@
-# Top-level configuration
 name = "comments"
-main = "./functions/blog/comments.ts"
+main = "./functions/api/comments.ts"
 send_metrics = false
 compatibility_date = "2022-07-12"
 node_compat = true

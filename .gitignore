@@ -11,3 +11,4 @@ src/_drafts
 .yarn/
 .yarnrc.yml
 .netlify
+wrangler.toml

@@ -15,8 +15,11 @@ export class CommentsError extends Error {
  */
 export const fetchComments = async (id) => {
   try {
-    const baseUrl = window.location.hostname === 'localhost' ? 'http://localhost:8787' : '';
-    const response = await (await fetch(`${baseUrl}/blog/comments?id=${id}`)).json();
+    const baseUrl =
+      window.location.hostname === 'localhost'
+        ? 'http://localhost:8787'
+        : 'https://comments.aleksandrhovhannisyan.workers.dev';
+    const response = await (await fetch(`${baseUrl}/?id=${id}`)).json();
     if (response.error) {
       throw new CommentsError(response.error);
     }
