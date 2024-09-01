@@ -4,6 +4,3 @@ main = "./functions/blog/comments.ts"
 send_metrics = false
 compatibility_date = "2022-07-12"
 node_compat = true
-
-workers_dev = false
-route = { pattern = "aleksandrhovhannisyan.com/blog/*", zone_name = "aleksandrhovhannisyan.com" }
