@@ -15,8 +15,16 @@ See `*.example` files for sample configs.
 
 ## Running a Worker Locally
 
-Switch to the function directory and run wrangler. Example:
+From the root directory:
 
 ```
-cd functions/comments && pnpm wrangler dev
+pnpm wrangler dev -c functions/comments/wrangler.toml
+```
+
+## Deploying a Worker
+
+From the root directory:
+
+```
+pnpm wrangler deploy -c functions/comments/wrangler.toml
 ```
