@@ -1,5 +1,5 @@
 name = "comments"
-main = "./functions/api/comments.ts"
+main = "./comments.ts"
 send_metrics = false
 compatibility_date = "2022-07-12"
 node_compat = true
