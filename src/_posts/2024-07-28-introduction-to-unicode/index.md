@@ -7,7 +7,7 @@ thumbnail: ./images/thumbnail.png
 lastUpdated: 2024-08-15
 commentsId: 191
 redirectFrom:
-  - /blog/character-encoding
+  - /blog/character-encoding/
 ---
 
 If you're familiar with HTML, you've probably seen this tag somewhere in the `<head>` of a document (hopefully at the very start):
