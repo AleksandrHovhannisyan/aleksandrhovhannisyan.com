@@ -20,7 +20,7 @@ export const fetchComments = async (id) => {
     if (response.error) {
       throw new CommentsError(response.error);
     }
-    /** @type import("../../../types/comments").PostComment[] */
+    /** @type import("core/types/comments").PostComment[] */
     const comments = response.data;
     return comments;
   } catch (e) {
@@ -35,7 +35,7 @@ export const fetchComments = async (id) => {
 const COMMENT_TEMPLATE = document.querySelector(`#comment-template`);
 let authorComment = 0;
 
-/** @param {import("../../../types/comments").PostComment} comment The user comment to render. */
+/** @param {import("core/types/comments").PostComment} comment The user comment to render. */
 const renderComment = (comment) => {
   const commentNode = COMMENT_TEMPLATE.content.cloneNode(true);
 
@@ -69,7 +69,7 @@ const renderComment = (comment) => {
   return commentNode;
 };
 
-/** @param {import("../../../types/comments").PostComment[]} comments The user comments to render. */
+/** @param {import("core/types/comments").PostComment[]} comments The user comments to render. */
 export const renderComments = (comments) => {
   if (!comments.length) {
     throw new CommentsError('No comments yet.');

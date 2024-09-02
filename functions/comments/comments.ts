@@ -1,11 +1,11 @@
 import { Octokit } from '@octokit/rest';
 import { createTokenAuth } from '@octokit/auth-token';
-import { sanitizeHtml } from '../../core/utils.js';
-import { markdown } from '../../core/plugins/markdown.js';
+import { sanitizeHtml } from 'core/utils.js';
+import { markdown } from 'core/plugins/markdown.js';
 import site from '../../src/_data/site.js';
 import dayjs from 'dayjs';
 import dayjsRelativeTimePlugin from 'dayjs/plugin/relativeTime.js';
-import type { PostComment } from '../../src/types/comments.js';
+import type { PostComment } from 'core/types/comments.js';
 dayjs.extend(dayjsRelativeTimePlugin);
 
 const CORS_HEADERS = {

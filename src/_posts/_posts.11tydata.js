@@ -1,5 +1,5 @@
 import path from 'node:path';
-import { toAbsoluteImageUrl } from '../../core/filters/filters.js';
+import { toAbsoluteImageUrl } from 'core/filters/filters.js';
 
 export default {
   layout: 'post',
