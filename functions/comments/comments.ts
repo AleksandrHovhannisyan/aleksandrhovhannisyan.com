@@ -8,25 +8,12 @@ import dayjsRelativeTimePlugin from 'dayjs/plugin/relativeTime.js';
 import type { PostComment } from 'core/types/comments.js';
 dayjs.extend(dayjsRelativeTimePlugin);
 
-const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': 'https://www.aleksandrhovhannisyan.com',
-  'Access-Control-Allow-Methods': 'GET',
-  'Access-Control-Allow-Headers': 'Content-Type',
-};
-
 export default {
-  /** Handler for serverless function. Returns comments for a given post by ID. https://developers.cloudflare.com/workers/runtime-apis/handlers/ 
+  /** Handler for serverless function. Returns comments for a given post by ID. https://developers.cloudflare.com/workers/runtime-apis/handlers/
    * @param request The incoming HTTP request.
    * @param env Environment secrets set for this worker.
   */
   async fetch(request: Request, env: Record<string, string>) {
-    // Handle CORS preflight requests, https://stackoverflow.com/a/76565217/5323344
-    if (request.method === "OPTIONS") {
-      return new Response(null, {
-        headers: { ...CORS_HEADERS }
-      })
-    }
-
     // Authenticate with GitHub Issues SDK
     const auth = createTokenAuth(env.GITHUB_PERSONAL_ACCESS_TOKEN);
     const { token } = await auth();
@@ -34,7 +21,7 @@ export default {
 
     let commentsId = new URL(request.url).searchParams.get('id');
     if (!commentsId) {
-      return new Response(JSON.stringify({ error: 'You must specify an issue ID.' }), { status: 400, headers: { ...CORS_HEADERS } });
+      return new Response(JSON.stringify({ error: 'You must specify an issue ID.' }), { status: 400 });
     }
 
     try {
@@ -50,7 +37,7 @@ export default {
         const retryTimeSeconds = Math.floor((resetDate.getTime() - Date.now()) / 1000);
         return new Response(JSON.stringify({ error: `API rate limit exceeded. Try again ${retryTimeRelative}.` }), {
           status: 503,
-          headers: { 'Retry-After': retryTimeSeconds.toString(), ...CORS_HEADERS },
+          headers: { 'Retry-After': retryTimeSeconds.toString() },
         });
       }
 
@@ -82,10 +69,10 @@ export default {
           }))
       );
 
-      return new Response(JSON.stringify({ data: response }), { status: 200, headers: { ...CORS_HEADERS } });
+      return new Response(JSON.stringify({ data: response }), { status: 200 });
     } catch (e) {
       console.log(e);
-      return new Response(JSON.stringify({ error: 'Unable to fetch comments for this post.' }), { status: 500, headers: { ...CORS_HEADERS } });
+      return new Response(JSON.stringify({ error: 'Unable to fetch comments for this post.' }), { status: 500 });
     }
   },
 };
