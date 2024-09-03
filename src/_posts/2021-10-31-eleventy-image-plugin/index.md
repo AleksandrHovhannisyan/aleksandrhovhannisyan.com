@@ -4,11 +4,15 @@ description: While imagery can enrich your content, it can also slow down your s
 keywords: [11ty image, 11ty image plugin]
 categories: [webperf, 11ty, images, node]
 commentsId: 118
-lastUpdated: 2022-06-10
+lastUpdated: 2024-09-03
 redirectFrom:
   - /blog/eleventy-image-lazy-loading/
 thumbnail: https://images.unsplash.com/photo-1631739408670-38319df9c5c1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
+
+{% aside %}
+  **Update {% include "date.html" date: 2024-09-03 %}**: Eleventy v3.0 now has a much simpler solution for image optimization. See this article: [Eleventy Images Just Got Better](/blog/eleventy-image-transform/).
+{% endaside %}
 
 {% aside %}
   **Update {% include "date.html" date: 2022-05-16 %}**: Originally, this article showed how to lazily load images using low-quality image placeholders (LQIPs) and the `IntersectionObserver` API. However, I no longer endorse that approach because it's more difficult to maintain. Instead, I recommend relying on native lazy loading with the `loading` and `decoding` attributes. If you'd like to, you can read the original article [on my site's GitHub repo](https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com/blob/edbfd9295b64e9f747ae48a4edf9942fe0e3e48e/src/_posts/2021-10-31-eleventy-image-lazy-loading/index.md).
