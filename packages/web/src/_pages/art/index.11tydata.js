@@ -1,8 +1,8 @@
 import path from 'node:path';
-import { toAbsoluteImageUrl } from 'core/filters/filters.js';
-import { dir } from 'core/constants.js';
-import { FontVariant, FontStyle, FontDisplay } from 'core/fonts/fonts.constants.js';
-import { getFontUrl } from 'core/fonts/fonts.utils.js';
+import { toAbsoluteImageUrl } from '../../../lib/filters/filters.js';
+import { dir } from '../../../lib/constants.js';
+import { FontVariant, FontStyle, FontDisplay } from '../../../lib/fonts/fonts.constants.js';
+import { getFontUrl } from '../../../lib/fonts/fonts.utils.js';
 
 /** Fonts used on the art page.
  * @type {import("../../types/fonts").FontConfig}

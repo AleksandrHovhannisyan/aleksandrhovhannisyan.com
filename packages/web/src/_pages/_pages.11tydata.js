@@ -1,4 +1,4 @@
-import { toAbsoluteImageUrl } from 'core/filters/filters.js';
+import { toAbsoluteImageUrl } from '../../lib/filters/filters.js';
 
 export default {
   layout: 'default',

@@ -1,0 +1,13 @@
+{
+  "extends": ["../../.eslintrc.json", "plugin:@typescript-eslint/recommended"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "ignorePatterns": [
+    "node_modules",
+    ".wrangler"
+  ]
+}

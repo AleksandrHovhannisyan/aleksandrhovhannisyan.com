@@ -9,60 +9,20 @@
     "node": ">=18"
   },
   "scripts": {
-    "clean:all": "rimraf _site",
-    "clean": "rimraf '_site/!(assets)' '_site/assets/!(images)'",
-    "debug": "DEBUG=Eleventy* ELEVENTY_ENV=development npx @11ty/eleventy --serve --incremental --port=4001",
-    "serve": "npm-run-all clean --parallel 'serve:*'",
-    "serve:html": "ELEVENTY_ENV=development npx @11ty/eleventy --serve --incremental --port=4001",
-    "serve:css": "sass --watch src/assets/styles:_site/assets/styles --style=expanded",
-    "build": "run-s test clean build:html build:css",
-    "build:html": "ELEVENTY_ENV=production npx @11ty/eleventy",
-    "build:css": "sass src/assets/styles:_site/assets/styles --style=compressed",
-    "lint": "npm-run-all 'lint:*'",
-    "lint:fix": "npm-run-all --parallel lint:*:fix",
-    "lint:css": "stylelint \"src/**/*.scss\"",
-    "lint:css:fix": "stylelint --fix \"src/**/*.scss\"",
-    "lint:js": "eslint --cache \"**/*.js\"",
-    "lint:js:fix": "eslint --cache --fix \"**/*.js\"",
-    "test": "node --test",
-    "test:watch": "pnpm run test --watch",
-    "update-browserslist": "npx browserslist@latest --update-db",
-    "prepare": "husky"
+    "lint": "pnpm run -r /^lint$/",
+    "test": "pnpm run -r /^test$/"
   },
   "dependencies": {
-    "core": "workspace:*",
-    "dayjs": "^1.10.5",
-    "lodash": "^4.17.21"
+    "dayjs": "^1.10.5"
   },
   "devDependencies": {
-    "@11ty/eleventy": "3.0.0-beta.1",
-    "@11ty/eleventy-cache-assets": "^2.3.0",
-    "@11ty/eleventy-img": "5.0.0-beta.10",
-    "classnames": "^2.3.1",
-    "eleventy-plugin-code-demo": "0.0.2",
-    "eleventy-plugin-footnotes": "^0.11.0",
-    "esbuild": "^0.14.37",
     "eslint": "^8.13.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "husky": "^9.0.11",
-    "lint-staged": "^12.1.7",
-    "npm-run-all": "^4.1.5",
+    "husky": "^9.1.5",
+    "lint-staged": "^15.2.10",
     "prettier": "^2.6.2",
-    "rimraf": "^3.0.2",
-    "sass": "^1.69.5",
-    "stylelint": "^14.7.1",
-    "stylelint-config-standard-scss": "^3.0.0"
-  },
-  "browserslist": [
-    "last 2 chrome versions",
-    "last 3 safari versions",
-    "last 2 firefox versions",
-    "last 2 edge versions"
-  ],
-  "lint-staged": {
-    "*.js": "pnpm run lint:js:fix",
-    "*.scss": "pnpm run lint:css:fix"
+    "wrangler": "^3.72.2"
   },
   "packageManager": "pnpm@8.15.6+sha256.01c01eeb990e379b31ef19c03e9d06a14afa5250b82e81303f88721c99ff2e6f",
   "pnpm": {

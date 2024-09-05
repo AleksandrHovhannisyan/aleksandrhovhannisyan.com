@@ -1,0 +1,28 @@
+{
+  "name": "functions",
+  "version": "1.0.0",
+  "type": "module",
+  "license": "UNLICENSED",
+  "repository": "git@github.com:AleksandrHovhannisyan/aleksandrhovhannisyan.com.git",
+  "author": "AleksandrHovhannisyan <aleksandrhovhannisyan@gmail.com>",
+  "scripts": {
+    "dev": "pnpm wrangler dev",
+    "deploy": "pnpm wrangler deploy",
+    "lint": "eslint --cache --fix \"**/*.ts\""
+  },
+  "dependencies": {
+    "web": "workspace:*",
+    "@octokit/auth-token": "^5.1.1",
+    "@octokit/core": "^6.1.2",
+    "@octokit/rest": "^21.0.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240821.1",
+    "@typescript-eslint/eslint-plugin": "^8.4.0",
+    "@typescript-eslint/parser": "^8.4.0",
+    "typescript": "^5.5.4"
+  },
+  "lint-staged": {
+    "*.ts": "pnpm run lint"
+  }
+}

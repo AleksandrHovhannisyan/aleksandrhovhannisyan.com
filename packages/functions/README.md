@@ -1,6 +1,6 @@
 # Functions
 
-Serverless functions used by my front-end as an API. Currently running on Cloudflare as workers.
+Serverless functions used by my front end as an API. Currently running as Cloudflare Workers.
 
 | Function                                         | Description                                              | HTTP Route (configured in Cloudflare) |
 | ------------------------------------------------ | -------------------------------------------------------- | ------------------------------------- |
@@ -23,10 +23,22 @@ From the `functions` directory:
 pnpm wrangler dev -c comments/wrangler.toml
 ```
 
+Or from the project root:
+
+```
+pnpm run -F functions dev -c comments/wrangler.toml
+```
+
 ## Deploying a Worker
 
-From the root directory:
+From the `packages/functions` directory:
 
 ```
 pnpm wrangler deploy -c comments/wrangler.toml
+```
+
+Or from the project root:
+
+```
+pnpm run -F functions deploy -c comments/wrangler.toml
 ```

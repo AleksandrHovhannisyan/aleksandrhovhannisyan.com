@@ -1,4 +1,4 @@
-# core
+# `lib`
 
 Core configuration files, filters, plugins, shortcodes, collections, utils, etc.
 

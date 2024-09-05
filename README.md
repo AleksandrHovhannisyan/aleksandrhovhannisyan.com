@@ -20,3 +20,14 @@ Where appropriate, I've also attributed tutorial code that I've borrowed/repurpo
 
 - https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com/blob/b5bfd94a33a7885e5f4640b9deda88b712422650/config/collections/index.js#L54
 - https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com/blob/b5bfd94a33a7885e5f4640b9deda88b712422650/src/assets/styles/partials/components/_codeBlock.scss#L31
+
+## Project Structure
+
+This project follows the monorepo pattern.
+
+> Why? Because I can 🤷‍♂️ I use my site as a sandbox to learn new tools and patterns.
+
+Packages can be found in [`pnpm-workspace.yaml`](./pnpm-workspace.yaml):
+
+- [`packages/web`](./packages/web/README.md): front end for my site, hosted on Cloudflare Pages.
+- [`packages/functions`](./packages/functions/README.md): Cloudflare Worker API used by my front end.

@@ -1,13 +1,10 @@
-_site
-.cache
-node_modules
+node_modules/
 .sass-cache
 .eslintcache
-src/_drafts
 .env
 .log
 .netlify
 # Cloudflare
-wrangler.toml
 .wrangler
+wrangler.toml
 .dev.vars
