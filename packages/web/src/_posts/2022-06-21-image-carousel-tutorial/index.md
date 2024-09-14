@@ -13,7 +13,7 @@ stylesheets:
 scripts:
   -
     type: module
-    src: /assets/scripts/demos/Carousel/index.mjs
+    src: /assets/scripts/demos/carousel.mjs
 commentsId: 166
 isFeatured: true
 ---

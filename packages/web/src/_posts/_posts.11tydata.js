@@ -8,12 +8,18 @@ export default {
   isPost: true,
   eleventyComputed: {
     scripts: (data) => {
+      const scripts = [
+        ...data.scripts,
+        {
+          type: 'module',
+          src: '/assets/scripts/copyCode.mjs',
+        },
+      ];
       // If the post has comments and comments are enabled, link to the comment script to load them
       if (data.commentsId) {
-        return [...data.scripts, { type: 'module', src: `/assets/scripts/comments.mjs` }];
+        scripts.push(...data.scripts, { type: 'module', src: `/assets/scripts/comments.mjs` });
       }
-      // Otherwise, return the existing scripts
-      return data.scripts;
+      return scripts;
     },
     openGraph: {
       type: 'article',

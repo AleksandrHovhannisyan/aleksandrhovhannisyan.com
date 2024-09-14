@@ -126,8 +126,8 @@ export default function eleventy(eleventyConfig) {
   eleventyConfig.on('afterBuild', () => {
     return esbuild.build({
       entryPoints: [
-        path.join(scriptDirs.input, 'index.mjs'),
-        path.join(scriptDirs.input, 'demos/Carousel/index.mjs'),
+        path.join(scriptDirs.input, 'copyCode.mjs'),
+        path.join(scriptDirs.input, 'demos/carousel.mjs'),
         path.join(scriptDirs.input, 'comments.mjs'),
       ],
       entryNames: '[dir]/[name]',

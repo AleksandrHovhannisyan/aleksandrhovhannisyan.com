@@ -54,8 +54,9 @@ export function makeFencedCodeRenderer(markdownIt) {
     fencedCodeBlockToken.info = language;
     const defaultRenderedCodeBlock = defaultRenderer(tokens, idx, options, env, self);
     const languageClassName = markdownIt.options.langPrefix + language;
-    // 1. Patch class names to include Prism language class
-    let result = defaultRenderedCodeBlock.replace(
+
+    // Patch class names to include Prism language class
+    let codeBlockHtml = defaultRenderedCodeBlock.replace(
       /<((?:pre|code)[^>]*?)(?:\s+class="([^"]*)"([^>]*))?>/g,
       (match, tagStart, classNames, tagEnd) => {
         // already has class name, just return existing match
@@ -65,14 +66,35 @@ export function makeFencedCodeRenderer(markdownIt) {
             `<${tagStart} class="${classNames ? `${classNames} ` : ''}${languageClassName}"${tagEnd || ''}>`;
       }
     );
-    // 2. Render `data-file` HTML attribute (if it exists) as a <figcaption> (set in code via markdown-it-attrs)
-    const fileName = /<code[^>]*\b(?<dataFileAttribute>data-file="(?<file>[^"]*)")/.exec(result);
-    if (fileName && fileName.groups?.dataFileAttribute && fileName.groups?.file) {
-      // We don't need the data-file=".*" attribute anymore
-      result = result.replace(fileName.groups?.dataFileAttribute, '');
-      return `<figure class="code-block"><figcaption>${fileName.groups?.file}</figcaption>${result}</figure>`;
+
+    // Copyable code blocks get data-copyable="true" via markdown-it-attrs
+    let copyCodeMatch = /<code[^>]*\b(?<attribute>data-copyable="true")/.exec(codeBlockHtml);
+    let hasCopyCodeButton = !!copyCodeMatch && copyCodeMatch.groups?.attribute;
+
+    // Code blocks with file names get data-file="filename" via markdown-it-attrs
+    const fileNameMatch = /<code[^>]*\b(?<attribute>data-file="(?<fileName>[^"]*)")/.exec(codeBlockHtml);
+    let hasFileName = !!fileNameMatch && fileNameMatch.groups?.attribute && fileNameMatch.groups?.fileName;
+
+    // Code block that needs additional markup
+    if (hasCopyCodeButton || hasFileName) {
+      let captionHtml = '';
+      let copyCodeHtml = '';
+
+      if (hasCopyCodeButton) {
+        copyCodeHtml =
+          '<button class="copy-code-button" aria-label="Copy code to clipboard">Copy</button><span role="alert" class="screen-reader-only"></span>';
+        // Don't need the data-copyable="true" attribute anymore
+        codeBlockHtml = codeBlockHtml.replace(copyCodeMatch.groups?.attribute, '');
+      }
+      if (hasFileName) {
+        captionHtml = `<figcaption>${fileNameMatch.groups?.fileName}</figcaption>`;
+        // We don't need the data-file=".*" attribute anymore
+        codeBlockHtml = codeBlockHtml.replace(fileNameMatch.groups?.attribute, '');
+      }
+      codeBlockHtml = `${captionHtml}${codeBlockHtml}${copyCodeHtml}`;
     }
-    return `<figure class="code-block">${result}</figure>`;
+
+    return `<figure class="code-block">${codeBlockHtml}</figure>`;
   };
 }
 

@@ -6,6 +6,9 @@ permalink: /design/
 eleventyExcludeFromCollections: true
 excludeFromSitemap: true
 noindex: true
+scripts:
+  - type: module
+    src: /assets/scripts/copyCode.mjs
 ---
 
 ## Fonts

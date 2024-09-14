@@ -9,7 +9,7 @@ commentsLoadButton.addEventListener(
     commentsLoadButton.innerHTML = 'Loading...';
 
     // Don't need this until they reach the comments section
-    const { fetchComments, renderComments, CommentsError } = await import('./utils/comments.utils.mjs');
+    const { fetchComments, renderComments, CommentsError } = await import('./comments.utils.mjs');
     try {
       const comments = await fetchComments(commentsId);
       renderComments(comments);
