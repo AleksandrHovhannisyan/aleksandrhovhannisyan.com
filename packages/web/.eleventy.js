@@ -79,8 +79,8 @@ export default function eleventy(eleventyConfig) {
   eleventyConfig.addFilter('toAbsoluteUrl', toAbsoluteUrl);
   eleventyConfig.addFilter('toAbsoluteImageUrl', toAbsoluteImageUrl);
   eleventyConfig.addFilter('slugify', slugifyString);
-  eleventyConfig.addFilter('toJson', JSON.stringify);
-  eleventyConfig.addFilter('fromJson', JSON.parse);
+  eleventyConfig.addFilter('jsonStringify', JSON.stringify);
+  eleventyConfig.addFilter('jsonParse', JSON.parse);
   eleventyConfig.addFilter('getLatestCollectionItemDate', getLatestCollectionItemDate);
   eleventyConfig.addFilter('cleanCSS', makeCleanCSS());
   eleventyConfig.addFilter('minifyJS', minifyJS);

@@ -15,5 +15,5 @@ This is a workaround for the fact that 11ty doesn't support named shortcode argu
     {%- if strokeLinejoin -%},"strokeLinejoin": "{{ strokeLinejoin }}"{%- endif -%}
   }
 {%- endcapture -%}
-{%- assign props = props | fromJson -%}
+{%- assign props = props | jsonParse -%}
 {% icon props %}

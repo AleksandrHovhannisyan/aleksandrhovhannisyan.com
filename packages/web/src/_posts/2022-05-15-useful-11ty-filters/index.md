@@ -50,8 +50,8 @@ Other times, you may need to parse or stringify some object data. For example, i
 I recommend adding these two filters to any 11ty project where you work with object data:
 
 ```js {data-file=".eleventy.js" data-copyable=true}
-eleventyConfig.addFilter('fromJson', JSON.parse);
-eleventyConfig.addFilter('toJson', JSON.stringify);
+eleventyConfig.addFilter('jsonParse', JSON.parse);
+eleventyConfig.addFilter('jsonStringify', JSON.stringify);
 ```
 
 Example usage:
@@ -65,7 +65,7 @@ Example usage:
     {%- if className -%},"className": "{{ className }}"{%- endif -%}
   }
 {%- endcapture -%}
-{%- assign object = json | fromJson -%}
+{%- assign object = json | jsonParse -%}
 ```
 {% endraw %}
 

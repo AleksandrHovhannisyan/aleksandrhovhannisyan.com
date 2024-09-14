@@ -75,14 +75,14 @@ eleventyComputed:
       "@type": "WebPage",
       "@id": "{{ page.url | toAbsoluteUrl }}"
     },
-    "headline": {{ title | escape | toJson }},
-    "description": {{ description | strip | toJson }},
+    "headline": {{ title | escape | jsonStringify }},
+    "description": {{ description | strip | jsonStringify }},
     {% if openGraph.image %}
     "image": ["{{ openGraph.image }}"],
     {% endif %}
-    "datePublished": {{ page.date | toJson }},
+    "datePublished": {{ page.date | jsonStringify }},
     {% if lastUpdated -%}
-    "dateModified": {{ lastUpdated | toJson }},
+    "dateModified": {{ lastUpdated | jsonStringify }},
     {% endif -%}
     "author": {
       "@type": "Person",

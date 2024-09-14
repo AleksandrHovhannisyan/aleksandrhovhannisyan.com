@@ -116,7 +116,7 @@ I prefer the second approach because it means that I can later programmatically 
 Let's add this filter to our Eleventy config to enable parsing JSON strings:
 
 ```js {data-file=".eleventy.js" data-copyable=true}
-eleventyConfig.addFilter('fromJson', JSON.parse);
+eleventyConfig.addFilter('jsonParse', JSON.parse);
 ```
 And let's use it to transform the `props` string into a JavaScript object:
 
@@ -130,7 +130,7 @@ And let's use it to transform the `props` string into a JavaScript object:
     "arg4": "{{ arg4 }}"
   }
 {%- endcapture -%}
-{%- assign props = props | fromJson -%}
+{%- assign props = props | jsonParse -%}
 {% myShortcode props %}
 ```
 {% endraw %}
