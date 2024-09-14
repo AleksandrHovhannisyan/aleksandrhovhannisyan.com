@@ -19,6 +19,28 @@ body {
   @include mixins.font($family: "mono", $weight: "regular", $size: "base");
 }
 
+@keyframes subtitle-pulse {
+  from {
+    transform: var(--transform-base) scale(1);
+  }
+
+  to {
+    transform: var(--transform-base) scale(1.1);
+  }
+}
+
+@keyframes popin {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  60% {
+    transform: scale(1.1);
+    opacity: 0.6;
+  }
+}
+
 .artwork {
   --color-artwork-shadow: hsl(272deg 53% 20%);
   height: 100%;
@@ -102,16 +124,6 @@ body {
           --right: 0;
           --rotation: 0deg;
           --transform-base: rotate(var(--rotation)) translate(var(--translate-x), var(--translate-y));
-
-          @keyframes subtitle-pulse {
-            from {
-              transform: var(--transform-base) scale(1);
-            }
-
-            to {
-              transform: var(--transform-base) scale(1.1);
-            }
-          }
 
           content: "Now with double the pixels!";
           display: block;
@@ -209,17 +221,6 @@ body {
   }
 
   &-caption {
-    @keyframes popin {
-      0% {
-        transform: scale(0);
-        opacity: 0;
-      }
-
-      60% {
-        transform: scale(1.1);
-        opacity: 0.6;
-      }
-    }
     padding: functions.size("spacing", "-3") functions.size("spacing", "-1");
     color: var(--color-text);
     transform: scale(0);

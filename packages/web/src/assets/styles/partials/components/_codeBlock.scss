@@ -3,6 +3,12 @@
 @use "../mixins";
 
 .code-block {
+  --code-block-padding: #{functions.size("spacing", "5")};
+  background: var(--color-code-background);
+  color: var(--color-code-text);
+  position: relative;
+  border-radius: functions.size("spacing", "-3");
+
   @include mixins.theme-light {
     --color-code-background: #{functions.color("surface", "2")};
     --color-code-overlay-1: hsl(0deg 0% 88%);
@@ -40,12 +46,6 @@
     --color-code-punctuation: #8a8a8a;
     --color-code-selector: hsl(41deg 53% 67%);
   }
-
-  --code-block-padding: #{functions.size("spacing", "5")};
-  background: var(--color-code-background);
-  color: var(--color-code-text);
-  position: relative;
-  border-radius: functions.size("spacing", "-3");
 
   // Focus styles appear later
   &:hover {

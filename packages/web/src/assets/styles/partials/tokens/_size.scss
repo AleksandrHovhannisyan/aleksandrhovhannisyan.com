@@ -6,6 +6,7 @@ html {
   $min-bp: functions.get($tokens, "breakpoints", "mobile-min");
   $max-bp: functions.get($tokens, "breakpoints", "desktop");
   $font-sizes: functions.get($tokens, "size", "font");
+
   // Fluid font size variables, for browsers that support clamp
   @supports (font-size: clamp(1rem, 1vw, 1rem)) {
     @each $step, $sizes in $font-sizes {
@@ -34,31 +35,39 @@ html {
     }
   }
 
-  // Line height
-  $leading-steps: functions.get($tokens, "size", "leading");
-  @each $step, $value in $leading-steps {
-    $token-name: functions.get-token-name("size", "leading", $step);
-    --#{$token-name}: #{$value};
+  & {
+    // Line height
+    $leading-steps: functions.get($tokens, "size", "leading");
+    @each $step, $value in $leading-steps {
+      $token-name: functions.get-token-name("size", "leading", $step);
+      --#{$token-name}: #{$value};
+    }
   }
 
-  // Letter spacing
-  $tracking-steps: functions.get($tokens, "size", "tracking");
-  @each $step, $value in $tracking-steps {
-    $token-name: functions.get-token-name("size", "tracking", $step);
-    --#{$token-name}: #{$value};
+  & {
+    // Letter spacing
+    $tracking-steps: functions.get($tokens, "size", "tracking");
+    @each $step, $value in $tracking-steps {
+      $token-name: functions.get-token-name("size", "tracking", $step);
+      --#{$token-name}: #{$value};
+    }
   }
 
-  // Spacing
-  $spacing-steps: functions.get($tokens, "size", "spacing");
-  @each $step, $value in $spacing-steps {
-    $name: functions.get-token-name("size", "spacing", $step);
-    --#{$name}: #{$value};
+  & {
+    // Spacing
+    $spacing-steps: functions.get($tokens, "size", "spacing");
+    @each $step, $value in $spacing-steps {
+      $name: functions.get-token-name("size", "spacing", $step);
+      --#{$name}: #{$value};
+    }
   }
 
-  // Relative
-  $relative-steps: functions.get($tokens, "size", "relative");
-  @each $step, $value in $relative-steps {
-    $name: functions.get-token-name("size", "relative", $step);
-    --#{$name}: #{$value};
+  & {
+    // Relative
+    $relative-steps: functions.get($tokens, "size", "relative");
+    @each $step, $value in $relative-steps {
+      $name: functions.get-token-name("size", "relative", $step);
+      --#{$name}: #{$value};
+    }
   }
 }

@@ -3,6 +3,11 @@
 
 // Inline code and kbd
 :is(code, kbd):not([class^="language-"]) {
+  color: functions.color("text", "emphasis");
+  background-color: var(--color-inline-code-bg);
+  border-radius: functions.size("spacing", "-3");
+  padding: functions.size("relative", "-3");
+
   @include mixins.theme-light {
     --color-inline-code-bg: #{functions.color("surface", "2")};
   }
@@ -10,9 +15,4 @@
   @include mixins.theme-dark {
     --color-inline-code-bg: #{functions.color("surface", "3")};
   }
-
-  color: functions.color("text", "emphasis");
-  background-color: var(--color-inline-code-bg);
-  border-radius: functions.size("spacing", "-3");
-  padding: functions.size("relative", "-3");
 }

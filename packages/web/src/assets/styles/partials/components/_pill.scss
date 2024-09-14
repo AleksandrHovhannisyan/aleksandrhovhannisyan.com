@@ -33,12 +33,11 @@
 // Because not all pills are links/interactive (see project cards)
 a.pill {
   --color-focus-bg: #{functions.color("text", "emphasis")};
+  --outline-color: var(--color-focus-bg);
+  --outline-offset: var(--outline-thickness);
 
   &:is(:focus, :hover, [aria-current="page"]) {
     background-color: var(--color-focus-bg);
     color: functions.color("text", "inverted");
   }
-
-  --outline-color: var(--color-focus-bg);
-  --outline-offset: var(--outline-thickness);
 }

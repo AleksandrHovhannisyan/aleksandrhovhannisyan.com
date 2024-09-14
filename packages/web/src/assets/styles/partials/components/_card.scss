@@ -2,14 +2,6 @@
 @use "../mixins";
 
 .card {
-  @include mixins.theme-light {
-    --color-card-bg: #{functions.color("surface", "1")};
-  }
-
-  @include mixins.theme-dark {
-    --color-card-bg: #{functions.color("surface", "2")};
-  }
-
   // Expose these to consumers so we don't hard-code the logic here
   --card-padding: #{functions.size("relative", "2")};
   --card-box-shadow-default:
@@ -30,10 +22,17 @@
   box-shadow: var(--card-box-shadow-default);
   transform: none;
   cursor: pointer;
-
   // Fixes jankiness on Windows
   will-change: transform, box-shadow;
   @include mixins.transition(box-shadow, transform);
+
+  @include mixins.theme-light {
+    --color-card-bg: #{functions.color("surface", "1")};
+  }
+
+  @include mixins.theme-dark {
+    --color-card-bg: #{functions.color("surface", "2")};
+  }
 
   &:focus-within {
     outline: solid functions.to-rems(3px) currentcolor;

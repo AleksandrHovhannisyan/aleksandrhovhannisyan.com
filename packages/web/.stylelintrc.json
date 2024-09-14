@@ -20,6 +20,7 @@
     "scss/at-if-closing-brace-space-after": "always-intermediate",
     "scss/double-slash-comment-empty-line-before": null,
     "scss/dollar-variable-empty-line-before": null,
-    "scss/at-rule-no-unknown": true
+    "scss/at-rule-no-unknown": true,
+    "no-duplicate-selectors": null
   }
 }

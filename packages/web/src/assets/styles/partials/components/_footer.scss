@@ -2,6 +2,13 @@
 @use "../mixins";
 
 .page-footer {
+  color-scheme: dark;
+  background-color: var(--color-footer-bg);
+  color: white;
+  text-align: center;
+  padding-block: functions.size("spacing", "5");
+  accent-color: currentcolor;
+
   @include mixins.theme-light {
     --color-footer-bg: #{functions.color("surface", "8")};
   }
@@ -9,13 +16,6 @@
   @include mixins.theme-dark {
     --color-footer-bg: #{functions.color("surface", "2")};
   }
-
-  color-scheme: dark;
-  background-color: var(--color-footer-bg);
-  color: white;
-  text-align: center;
-  padding-block: functions.size("spacing", "5");
-  accent-color: currentcolor;
 
   &-container {
     display: flex;

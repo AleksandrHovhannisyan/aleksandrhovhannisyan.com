@@ -1,15 +1,16 @@
-.loading-orbs {
-  @keyframes grow {
-    from {
-      transform: scale(1);
-      background-color: #9ccae9;
-    }
-
-    to {
-      transform: scale(1.5);
-      background-color: #3895d3;
-    }
+@keyframes grow {
+  from {
+    transform: scale(1);
+    background-color: #9ccae9;
   }
+
+  to {
+    transform: scale(1.5);
+    background-color: #3895d3;
+  }
+}
+
+.loading-orbs {
   width: 100%;
   display: flex;
   justify-content: center;

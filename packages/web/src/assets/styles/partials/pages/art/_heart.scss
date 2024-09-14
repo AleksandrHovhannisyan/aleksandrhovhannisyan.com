@@ -1,28 +1,28 @@
 @use "../../functions";
 
-.heart {
-  @keyframes heartbeat {
-    0% {
-      transform: scale(1) rotate(45deg);
-    }
-
-    10% {
-      transform: scale(0.95) rotate(45deg);
-    }
-
-    20% {
-      transform: scale(1) rotate(45deg);
-    }
-
-    90% {
-      transform: scale(0.95) rotate(45deg);
-    }
-
-    100% {
-      transform: scale(1) rotate(45deg);
-    }
+@keyframes heartbeat {
+  0% {
+    transform: scale(1) rotate(45deg);
   }
 
+  10% {
+    transform: scale(0.95) rotate(45deg);
+  }
+
+  20% {
+    transform: scale(1) rotate(45deg);
+  }
+
+  90% {
+    transform: scale(0.95) rotate(45deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(45deg);
+  }
+}
+
+.heart {
   --heart-size: #{functions.to-rems(70px)};
   width: var(--heart-size);
   height: var(--heart-size);
