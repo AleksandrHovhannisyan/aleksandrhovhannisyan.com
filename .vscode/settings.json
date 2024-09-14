@@ -11,7 +11,7 @@
   "stylelint.validate": [
     "scss",
   ],
-  "stylelint.configFile": ".stylelintrc.json",
+  "stylelint.configFile": "packages/web/.stylelintrc.json",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.fixAll.stylelint": "explicit"
@@ -20,4 +20,5 @@
     "endcode",
     "mouseleave"
   ],
+  "stylelint.stylelintPath": "",
 }
