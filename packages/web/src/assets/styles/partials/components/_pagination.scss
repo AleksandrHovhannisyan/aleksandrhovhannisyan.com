@@ -8,9 +8,10 @@
 
   &-page {
     min-width: functions.size("spacing", "5");
-    aspect-ratio: 1;
-    border-radius: functions.size("spacing", "-4");
+    padding: functions.size("spacing", "-4") functions.size("spacing", "-1");
+    border-radius: functions.size("spacing", "-3");
     display: flex;
     justify-content: center;
+    @include mixins.font($size: "base");
   }
 }
