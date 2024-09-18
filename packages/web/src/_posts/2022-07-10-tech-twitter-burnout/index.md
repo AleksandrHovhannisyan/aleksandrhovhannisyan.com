@@ -1,6 +1,6 @@
 ---
 title: Tech Twitter Burnout
-description: Tech Twitter can be a great way to network with other developers and learn new things. But it can also take over your life.
+description: Tech Twitter can be a great way to network with other developers and learn new things. But it can also be unhealthy.
 keywords: [tech twitter, twitter]
 categories: [essay, writing, career, twitter]
 ---

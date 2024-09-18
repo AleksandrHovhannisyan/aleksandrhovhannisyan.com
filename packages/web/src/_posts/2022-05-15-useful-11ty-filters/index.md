@@ -1,6 +1,6 @@
 ---
 title: A Set of Useful 11ty Filters
-description: One of my favorite things about 11ty is its flexibility and how easily you can customize your chosen template language without having to leave the familiar comfort of the Node ecosystem.
+description: Extend Eleventy's built-in filters with custom logic for these common use cases.
 keywords: [11ty filters, filter]
 categories: [11ty, javascript, node, liquid]
 thumbnail: https://images.unsplash.com/photo-1511225317751-5c2d61819d58?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80

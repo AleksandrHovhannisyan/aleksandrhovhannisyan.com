@@ -1,6 +1,6 @@
 ---
 title: "Dynamically Importing Components with React.lazy"
-description: Not all static imports are immediately needed, and unnecessary imports can be costly. With React.lazy, you can dynamically import components at run time to reduce the size of your static bundle.
+description: With React.lazy, you can dynamically import components at run time to reduce the size of your JavaScript bundles.
 keywords: [React.lazy, dynamically import components, dynamic import, lazy]
 categories: [react, webperf, javascript, async]
 commentsId: 106

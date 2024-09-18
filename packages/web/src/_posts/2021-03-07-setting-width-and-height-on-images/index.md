@@ -1,6 +1,6 @@
 ---
 title: Set a Width and Height on Images to Reduce Layout Shifts
-description: Dimensionless images can cause layout shifts as they load, hurting your page's performance. By setting a width and height on images, you allow the browser to initialize an aspect ratio for those images and minimize layout shifts.
+description: When you set a width and height on image tags, browsers are able to reserve the correct amount of space ahead of time to minimize layout shifts as the images are downloaded.
 keywords: [setting width and height on images, setting an image's width and height, width and height, layout shifts]
 categories: [webperf, images, aspect-ratio, html]
 commentsId: 78

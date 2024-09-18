@@ -1,6 +1,6 @@
 ---
 title: An Introduction to HTTP Cookies
-description: Learn why HTTP cookies are needed, how they're used on the client and server side, where they're stored, and how they impact security and privacy on the web.
+description:  Learn why HTTP cookies are needed, how they're used, where they're stored, and how they impact security and privacy.
 keywords: [cookies, http cookie]
 categories: [http, cookies, browsers, javascript]
 commentsId: 49
@@ -247,7 +247,7 @@ HTTP server libraries also provide APIs for reading cookies from client requests
 
 ```js
 // Check if a cookie with a name of 'name' exists
-if (req.cookies.name) {} 
+if (req.cookies.name) {}
 ```
 
 ### Remember Me: Saving Login Info with Cookies
@@ -346,7 +346,7 @@ Thus, if you log `document.cookie` within 10 seconds after loading the page, you
 
 ### Creating, Updating, and Deleting Cookies
 
-There's also a `document.cookie` setter method that allows you to create, update, and delete cookies with JavaScript. 
+There's also a `document.cookie` setter method that allows you to create, update, and delete cookies with JavaScript.
 
 Here's an example of creating a cookie with JavaScript:
 
@@ -423,7 +423,7 @@ Similarly, to delete a cookie, you just need to provide its name:
 cookieStore.delete("name");
 ```
 
-Note that while CookieStore is currently an experimental client-side API, some server-side runtimes (like Deno) and libraries provide similar APIs to make it easier for developers to work with cookies. For examples of this, see [the Deno standard library cookie utilities](https://deno.land/std@0.166.0/http/cookie.ts). 
+Note that while CookieStore is currently an experimental client-side API, some server-side runtimes (like Deno) and libraries provide similar APIs to make it easier for developers to work with cookies. For examples of this, see [the Deno standard library cookie utilities](https://deno.land/std@0.166.0/http/cookie.ts).
 
 ## Security Issues with HTTP Cookies
 

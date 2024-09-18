@@ -1,6 +1,6 @@
 ---
 title: Goodbye, GitHub Pages—Hello, Netlify
-description: "GitHub Pages is a good option for hosting simple static sites, but it doesn't scale well for more complex use cases. Netlify offers the best of both worlds: simple hosting and plenty of advanced features."
+description: GitHub Pages is a good option for hosting simple sites for free, but Netlify offers plenty of more advanced features.
 keywords: [github pages vs netlify]
 categories: [github, netlify, tooling]
 lastUpdated: 2021-07-31

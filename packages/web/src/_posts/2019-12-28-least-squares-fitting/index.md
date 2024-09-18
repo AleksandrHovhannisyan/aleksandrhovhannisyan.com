@@ -1,6 +1,6 @@
 ---
 title: "Least Squares Fitting: How to Fit a Curve to Data"
-description: A review of the theory behind the least squares method, as well as a look at how to perform straight-line and polynomial least squares fitting, both by hand and with Python.
+description: A deep dive on how to perform straight-line and polynomial least squares fitting, both by hand and programmatically.
 keywords: [least squares fitting, least squares method]
 categories: [computer-science, math]
 layout: mathPost

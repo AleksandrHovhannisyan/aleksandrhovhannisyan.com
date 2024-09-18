@@ -1,6 +1,6 @@
 ---
 title: Subtle Accessibility Failures (And How to Fix Them)
-description: You've scored 100 on Lighthouse's accessibility audit. But is your site actually accessible, or have you overlooked more subtle accessibility failures?
+description: You got a perfect score on an accessibility audit. But is your site actually accessible, or have you overlooked more subtle failures?
 keywords: [accessibility]
 categories: [accessibility, html]
 thumbnail: ./images/thumbnail.png

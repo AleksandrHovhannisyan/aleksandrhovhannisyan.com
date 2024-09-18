@@ -1,6 +1,6 @@
 ---
 title: Detecting Nested Components in React with the Context API
-description: The React Context API is normally used to avoid prop drilling. But it can also be used to detect if a component is nested within another instance of itself or as a child of a particular component.
+description: Normally, React's Context API is used to avoid prop drilling. But you can also use it to detect if a component is a child of a particular component.
 keywords: [react, nested components, context]
 categories: [react, html]
 thumbnail: https://images.unsplash.com/photo-1598811629267-faffa0027fe4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=600&q=80
@@ -75,7 +75,7 @@ Ordinarily, the context value returned by the `useContext` hook in this code sam
 <html>
   <body>
     <main>
-      <!-- This Button has no ButtonAncestryContext.Provider 
+      <!-- This Button has no ButtonAncestryContext.Provider
       above it, so consuming the context returns false -->
       <Button></Button>
     </main>
@@ -160,7 +160,7 @@ export const InteractiveAncestryProvider = ({ children }) => {
 Now, we can greatly simplify our `Button` component:
 
 ```jsx {data-copyable="true"}
-const Button = (props) => {  
+const Button = (props) => {
   return <InteractiveAncestryProvider>
     <button {...props} />
   </InteractiveAncestryProvider>

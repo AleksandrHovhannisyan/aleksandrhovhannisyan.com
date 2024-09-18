@@ -1,6 +1,6 @@
 ---
 title: The Method of Least Squares
-description: Some systems of equations do not have a unique solution, but we can find an approximate solution using the method of least squares. Applications of this method include linear and polynomial regression.
+description: With least squares regression, you can find the closest solution to a system of equations that doesn't have a unique solution.
 keywords: [method of least squares]
 layout: mathPost
 categories: [computer-science, math]

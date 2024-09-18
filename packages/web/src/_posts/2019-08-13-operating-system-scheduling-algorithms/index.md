@@ -1,6 +1,6 @@
 ---
 title: Operating System Scheduling Algorithms
-description: Only one process can run at a time on a single CPU. Operating system scheduling algorithms are what allow these processes to take turns running.
+description: Only one process can run at a time on a single CPU. Scheduling algorithms are what allow these processes to take turns running.
 keywords: [operating system scheduling algorithms]
 categories: [computer-science, operating-systems, algorithms]
 lastUpdated: 2021-08-14

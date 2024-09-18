@@ -1,6 +1,6 @@
 ---
 title: Represent State with HTML Attributes, Not Class Names
-description: Developers often use class names to represent a change in a component's state, but this leads to redundant (and sometimes inaccessible) markup. Instead, we should use native HTML attributes to represent state and style those discrete states with the CSS attribute selector.
+description: You might not need another CSS class. Use HTML attributes for state and style those states with the CSS attribute selector.
 keywords: [html attributes, CSS attribute selector, class names]
 categories: [accessibility, html, css]
 commentsId: 108
