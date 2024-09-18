@@ -6,6 +6,7 @@
   background-color: functions.color("surface", "2");
   padding: functions.size("relative", "2");
   position: relative;
+  text-wrap: balance;
 
   &-grid {
     display: grid;
@@ -40,9 +41,8 @@
 
   &-title {
     margin-top: functions.size("spacing", "-3");
-    text-wrap: balance; // balance titles for visual harmony (looks better than text-wrap: pretty)
     // Tighten line height due to short line length
-    @include mixins.font($size: "lg", $leading: "xs");
+    @include mixins.font($size: "lg");
   }
 
   &-description {
@@ -72,7 +72,7 @@
     }
 
     &-title {
-      @include mixins.font($size: "md", $leading: "xs");
+      @include mixins.font($size: "md", $leading: "2xs");
     }
 
     &-description {

@@ -1,7 +1,7 @@
 @use "../functions";
 
 .prose {
-  max-width: functions.to-rems(760px);
+  max-width: functions.to-rems(700px);
   margin: 0 auto;
 
   // Pretty-wrap headings in prose content

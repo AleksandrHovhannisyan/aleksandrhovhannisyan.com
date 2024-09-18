@@ -19,7 +19,7 @@ const repos = {
     icon: '⚖️',
     name: 'U.S. Gun Crimes',
     repo: 'CIS4301-Project-University-of-Florida/U.S.-Gun-Crime',
-    tech: ['react', 'typescript', 'express', 'sql'],
+    tech: ['react', 'typescript', 'sql'],
   },
   raycasting: {
     icon: '🎮',

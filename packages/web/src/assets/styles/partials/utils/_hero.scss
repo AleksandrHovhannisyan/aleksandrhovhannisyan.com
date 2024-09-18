@@ -10,6 +10,6 @@
   }
 
   &-subtitle {
-    @include mixins.font($size: "xl", $leading: "sm");
+    @include mixins.font($size: "lg", $leading: "sm");
   }
 }
