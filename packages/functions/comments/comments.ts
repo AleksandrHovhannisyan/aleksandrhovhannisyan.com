@@ -9,11 +9,28 @@ import type { PostComment } from 'web/lib/types/comments.js';
 dayjs.extend(dayjsRelativeTimePlugin);
 
 export default {
-  /** Handler for serverless function. Returns comments for a given post by ID. https://developers.cloudflare.com/workers/runtime-apis/handlers/
+  /** Returns comments for a given post by ID. https://developers.cloudflare.com/workers/runtime-apis/handlers/
    * @param request The incoming HTTP request.
    * @param env Environment secrets set for this worker.
    */
   async fetch(request: Request, env: Record<string, string>) {
+    // Only needed for local dev on Chrome (not Firefox). On prod, the front end makes a request to a worker route on the same origin.
+    const headers =
+      env.ENVIRONMENT === 'development'
+        ? ({
+            'Access-Control-Allow-Origin': 'http://localhost:4001',
+            'Access-Control-Allow-Methods': 'GET',
+            'Access-Control-Allow-Headers': 'Content-Type',
+          } satisfies Record<string, string>)
+        : {};
+
+    // Handle CORS preflight request
+    if (request.method === 'OPTIONS') {
+      return new Response(null, {
+        headers,
+      });
+    }
+
     // Authenticate with GitHub Issues SDK
     const auth = createTokenAuth(env.GITHUB_PERSONAL_ACCESS_TOKEN);
     const { token } = await auth();
@@ -21,7 +38,7 @@ export default {
 
     const commentsId = new URL(request.url).searchParams.get('id');
     if (!commentsId) {
-      return new Response(JSON.stringify({ error: 'You must specify an issue ID.' }), { status: 400 });
+      return new Response(JSON.stringify({ error: 'You must specify an issue ID.' }), { status: 400, headers });
     }
 
     try {
@@ -37,7 +54,7 @@ export default {
         const retryTimeSeconds = Math.floor((resetDate.getTime() - Date.now()) / 1000);
         return new Response(JSON.stringify({ error: `API rate limit exceeded. Try again ${retryTimeRelative}.` }), {
           status: 503,
-          headers: { 'Retry-After': retryTimeSeconds.toString() },
+          headers: { ...headers, 'Retry-After': retryTimeSeconds.toString() },
         });
       }
 
@@ -69,10 +86,13 @@ export default {
           }))
       );
 
-      return new Response(JSON.stringify({ data: response }), { status: 200 });
+      return new Response(JSON.stringify({ data: response }), { status: 200, headers });
     } catch (e) {
       console.log(e);
-      return new Response(JSON.stringify({ error: 'Unable to fetch comments for this post.' }), { status: 500 });
+      return new Response(JSON.stringify({ error: 'Unable to fetch comments for this post.' }), {
+        status: 500,
+        headers,
+      });
     }
   },
 };

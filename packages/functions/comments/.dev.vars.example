@@ -1,1 +1,2 @@
 GITHUB_PERSONAL_ACCESS_TOKEN=https://github.com/settings/tokens?type=beta
+ENVIRONMENT=development

@@ -20,13 +20,13 @@ See `*.example` files for sample configs.
 From the `functions` directory:
 
 ```
-pnpm wrangler dev -c comments/wrangler.toml
+pnpm dev:comments
 ```
 
-Or from the project root:
+From the project root:
 
 ```
-pnpm run -F functions dev -c comments/wrangler.toml
+pnpm -F functions dev:comments
 ```
 
 ## Deploying a Worker
@@ -34,11 +34,11 @@ pnpm run -F functions dev -c comments/wrangler.toml
 From the `packages/functions` directory:
 
 ```
-pnpm wrangler deploy -c comments/wrangler.toml
+pnpm deploy:comments
 ```
 
-Or from the project root:
+From the project root:
 
 ```
-pnpm run -F functions deploy -c comments/wrangler.toml
+pnpm -F functions deploy:comments
 ```

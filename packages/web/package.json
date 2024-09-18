@@ -8,7 +8,7 @@
   "scripts": {
     "clean": "rm -rf dist",
     "debug": "DEBUG=Eleventy* ELEVENTY_ENV=development npx @11ty/eleventy --serve --incremental --port=4001",
-    "dev": "pnpm run clean && pnpm run --parallel --aggregate-output /^dev:/",
+    "dev": "pnpm run clean && pnpm -F web --parallel --aggregate-output /^dev:/",
     "dev:html": "ELEVENTY_ENV=development npx @11ty/eleventy --serve --incremental --port=4001",
     "dev:css": "sass --watch src/assets/styles:dist/assets/styles --style=expanded",
     "build": "pnpm run test && pnpm run clean && pnpm run build:html && pnpm run build:css",

@@ -6,8 +6,8 @@
   "repository": "git@github.com:AleksandrHovhannisyan/aleksandrhovhannisyan.com.git",
   "author": "AleksandrHovhannisyan <aleksandrhovhannisyan@gmail.com>",
   "scripts": {
-    "dev": "pnpm wrangler dev",
-    "deploy": "pnpm wrangler deploy",
+    "dev:comments": "pnpm wrangler dev -c comments/wrangler.toml",
+    "deploy:comments": "pnpm wrangler deploy -c comments/wrangler.toml",
     "lint": "eslint --cache --fix \"**/*.ts\""
   },
   "dependencies": {
