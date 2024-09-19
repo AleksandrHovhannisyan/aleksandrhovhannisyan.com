@@ -11,13 +11,13 @@ layout: about
 
 Speaking of last names, if mine hasn't already [betrayed me](http://www.armeniapedia.org/wiki/Armenian_Last_Names), I was originally born in Armenia, a beautiful country nestled between Europe, Asia, and a bunch of biblically old mountains. You can almost spot it on a world map if you squint hard enough.
 
-Long story short, I moved to the U.S. when I was little and have lived in the states for most of my life. I currently reside in Edinburg, Texas.
+Long story short, I moved to the U.S. when I was little and have lived in the states for most of my life. I currently reside in Texas.
 
 ## Work Experience
 
 I've worked as a software engineer on Esri's [StoryMaps](https://storymaps.arcgis.com/) team since 2020. In this role, I've:
 
-- Shipped many high-impact features, including a new text editor, blocks, theming options, topic tagging and publishing options, custom templates, and much more.
+- Shipped many high-impact features, including: a new text editor, a data table block, theming options, topic tagging and publishing options, custom templates, and much more.
 - Refactored core parts of the app to resolve longstanding tech debt.
 - Written plenty of documentation for both new and old code.
 - Served on an internal accessibility working group.
@@ -26,9 +26,9 @@ I've worked as a software engineer on Esri's [StoryMaps](https://storymaps.arcgi
 
 I thrive in collaborative environments that encourage growth, offer varied learning opportunities, and cultivate my problem-solving skills and creative strengths.
 
-These days, I mainly work on the web with React, TypeScript, and CSS, but I also have experience with other frameworks like Svelte and more general-purpose programming languages like C++ and Python. Some of my interests in the web development space include typography, performance, and accessibility.
+These days, I mainly work on the web with React, TypeScript, and CSS, but I also have experience with other frameworks like Svelte and more general-purpose programming languages like C++ and Python. Some of my interests in web development include typography, performance, and accessibility.
 
-While the majority of my work experience is in software development, I once worked as a [freelance copy editor](https://www.upwork.com/freelancers/~014eb3a95d4d1fd855?s=1110580753635725312) for about four years during my undergraduate studies, with clients ranging from digital marketing agencies to small business owners and companies and even bigger companies like Quora. Freelancing was a great experience that taught me how to stand out in a fiercely competitive market, and it also helped me grow my professional network and earn a bit of money on the side while in school.
+While the majority of my work experience is in software development, I once worked as a [freelance copy editor](https://www.upwork.com/freelancers/~014eb3a95d4d1fd855?s=1110580753635725312) for four years during my undergraduate studies, with clients ranging from digital marketing agencies to small business owners and companies and even bigger companies like Quora. Freelancing was a great experience that taught me how to stand out in a fiercely competitive market, helped me grow my professional network, and allowed me to earn a bit of money on the side while in school.
 
 I won't bore you too much with my work history, though; that's what [my LinkedIn]({{ socials.linkedin.url }}) is for.
 
@@ -57,14 +57,14 @@ Outside of work, I enjoy learning new things and [writing on my blog](/blog/), w
 
 ### Gaming
 
-When I'm not writing, you'll find me [praising till I'm hollow](https://www.youtube.com/watch?v=mp28JPs25ek). I'm a die-hard [Soulsborne](https://en.wikipedia.org/wiki/Souls_(series)) fan—I love the challenging gameplay, intricate lore, jolly co-operation, and community inside jokes that Souls games are so well known for. But I also enjoy other genres of games: shooters, RPGs, roguelites, card games, platformers, you name it. I was practically raised by a generation of browser Flash games—may they [rest in peace](/blog/rest-in-peace-flash/)—and an unhealthy amount of (Old School) Runescape, and these experiences with video games have shaped my interests and personality to this day. Some games have left such a lasting impression on me that [I've written about them](/tags/gaming/).
+When I'm not writing, I'm [praising till I'm hollow](https://www.youtube.com/watch?v=mp28JPs25ek). I'm a die-hard [Soulsborne](https://en.wikipedia.org/wiki/Souls_(series)) fan—I love the challenging gameplay, intricate lore, jolly co-operation, and community inside jokes that Souls games are so well known for. But I also enjoy other genres of games: shooters, RPGs, roguelites, card games, platformers, you name it. I was practically raised by a generation of browser Flash games—may they [rest in peace](/blog/rest-in-peace-flash/)—and an unhealthy amount of (Old School) Runescape, and these experiences with video games have shaped my interests and personality to this day. Some games have left such a lasting impression on me that [I've written about them](/tags/gaming/).
 
 Since I'm sure you're dying to know, some of my favorite video games include:
 
-- Outer Wilds (not *Worlds*!)
+- [Outer Wilds](/blog/outer-wilds-stop-and-smell-the-pine-trees/) (not *Worlds*!)
 - Hollow Knight
 - Anything made by FromSoftware, at this point
-- Slay the Spire, The Binding of Isaac, and Darkest Dungeon (is it obvious I like roguelites?)
+- Slay the Spire, The Binding of Isaac, and Darkest Dungeon (is it obvious that I like roguelites?)
 - Subnautica
 - The Legend of Zelda: The Minish Cap
 - ... and many other great titles.
@@ -73,25 +73,20 @@ I could talk about games for hours, so I'm just going to stop here before you fa
 
 ### Music
 
-I love listening to music—mainly rock, indie, folk, and some hip-hop/rap. I'm a big fan of music by Lana Del Rey, Arctic Monkeys, Radiohead, GY!BE, and lots of other artists that I'd list here if I weren't pressed for space. Check out my [Spotify playlists](https://open.spotify.com/user/gsnib6johhi5w2u4wts1m5628) for a sampling of my favorite songs.
+I love listening to music—mainly rock, indie, and folk. I'm a big fan of music by Lana Del Rey, Arctic Monkeys, Radiohead, GY!BE, Joanna Newsom, and lots of other artists that I'd list here if I weren't pressed for space. Check out my [Spotify playlists](https://open.spotify.com/user/gsnib6johhi5w2u4wts1m5628) for a sampling of my favorite songs.
 
-I'm also currently learning how to play guitar, with the goal of one day playing some of my favorite riffs and songs.
+I'm also currently learning guitar so I can play my favorite songs and riffs.
 
 ### Reading
 
-Every now and then, I'll dust off a book and do some light reading. I love finding that rare book that captivates me so much that time slips away, where closing it almost feels like waking from a dream. A few of my favorite books include:
+Every now and then, I'll dust off a book and do some light reading. I love finding that rare book that captivates me so much that time slips away, where closing it almost feels like waking from a dream. A few of my favorites include:
 
-- *The Little Prince* by Antoine de Saint-Exupéry{% comment %}a novella that I only wish I had read when I was younger so that I could now—as an adult—appreciate the irony of it being marketed as a children's book.{% endcomment %}
+- *The Little Prince* by Antoine de Saint-Exupéry
 - *The Shadow of the Wind* by Carlos Ruiz Zafón
 - *The Count of Monte Cristo* by Alexandre Dumas
 - The Discworld novels by the infinitely witty Terry Pratchett
-- *Johnny Got His Gun* by Dalton Trumbo
 
 I don't have a reading list per se, although there are some books I'd like to one day read... Okay, I guess that's *technically* a reading list, but hopefully you get my point. I don't like to treat reading as something to check off a list because then it feels like work.
-
-{% comment %}### Art
-
-When I was younger, I was obsessed with drawing (and pretty good at it, too!). But with time, I found myself preoccupied with so many other things that I simply couldn't find the time to draw. Lately, my interest in art has resurfaced in the colorful world of front-end development—I love working with CSS to bring designs to life on the canvas that is the web. Sometimes, I create [CSS art](/art/) as a substitute for the real thing, either as a challenge or just for fun.{% endcomment %}
 
 ## So, Yeah... That's Me!
 
