@@ -1,7 +1,6 @@
 import chunk from 'lodash/chunk.js';
-import { getAllUniqueKeyValues, slugifyString } from '../utils.js';
-import site from '../../src/_data/site.js';
-import { dir } from '../constants.js';
+import { slugifyString } from './utils.js';
+import { dir } from './constants.js';
 
 /** Returns all blog posts as a collection. */
 export const getAllPosts = (collection) => {
@@ -25,27 +24,26 @@ export const getCategoryHref = (category, page) => {
  */
 export const getAllUniqueCategories = (collection) => {
   const allPosts = getAllPosts(collection);
-  const uniqueCategories = getAllUniqueKeyValues(allPosts, 'categories');
 
-  // Do this separately for performance rather than inside the category map logic below, which would be several levels of nesting loops
+  /** @type {Map<string, number>} */
   const categoryCounts = allPosts.reduce((categoryCounts, post) => {
     post.data.categories?.forEach((category) => {
-      if (!categoryCounts[category]) {
-        categoryCounts[category] = 0;
-      }
-      categoryCounts[category]++;
+      const count = categoryCounts.get(category) ?? 0;
+      categoryCounts.set(category, count + 1);
     });
     return categoryCounts;
-  }, {});
+  }, new Map());
 
   return (
-    uniqueCategories
-      .map((category) => ({
+    Array.from(categoryCounts.entries())
+      .map(([category, count]) => ({
         title: category,
         href: getCategoryHref(category),
-        count: categoryCounts[category],
+        count,
       }))
-      // Popular categories first
+      // Sort by name first
+      .sort((a, b) => a.title.localeCompare(b.title))
+      // And then by popular categories first
       .sort((a, b) => b.count - a.count)
   );
 };
@@ -53,28 +51,28 @@ export const getAllUniqueCategories = (collection) => {
 // Blog posts by category, for pagination
 // Adapted for use from: https://www.webstoemp.com/blog/basic-custom-taxonomies-with-eleventy/
 export const getPostsByCategory = (collection) => {
-  const postsPerPage = site.pagination.itemsPerPage;
+  const postsPerPage = 30;
   const blogPostsByCategory = [];
 
   const allPosts = getAllPosts(collection);
-  const allUniqueCategories = getAllUniqueKeyValues(allPosts, 'categories');
+  const allUniqueCategories = getAllUniqueCategories(collection);
 
   allUniqueCategories.forEach((category) => {
     // Get all posts belonging to this category
-    const categoryPosts = allPosts.filter((post) => post.data.categories?.includes(category));
+    const categoryPosts = allPosts.filter((post) => post.data.categories?.includes(category.title));
 
     // Create a 2D array of chunked posts, where each nested array represents a page.
     // e.g., if postsPerPage = 2 and we have three posts, then we'd get [[{post1}, {post2}], [{post3}]]
     const chunkedCategoryPosts = chunk(categoryPosts, postsPerPage);
 
     // Map each chunk to its page slug
-    const pageHrefs = chunkedCategoryPosts.map((_, pageIndex) => getCategoryHref(category, pageIndex + 1));
+    const pageHrefs = chunkedCategoryPosts.map((_, pageIndex) => getCategoryHref(category.title, pageIndex + 1));
 
     chunkedCategoryPosts.forEach((posts, index) => {
       // Massage the data into a format that 11ty's pagination will like
       // https://github.com/11ty/eleventy/issues/332#issuecomment-445236776
       blogPostsByCategory.push({
-        title: category,
+        title: category.title,
         href: pageHrefs[index],
         pageNumber: index,
         totalPages: pageHrefs.length,
@@ -90,5 +88,5 @@ export const getPostsByCategory = (collection) => {
     });
   });
 
-  return blogPostsByCategory.sort((category1, category2) => category2.posts.length - category1.posts.length);
+  return blogPostsByCategory;
 };

@@ -11,11 +11,11 @@ thumbnail: https://images.unsplash.com/photo-1631739408670-38319df9c5c1?ixid=Mnw
 ---
 
 {% aside %}
-  **Update {% include "date.html" date: 2024-09-03 %}**: Eleventy v3.0 now has a much simpler solution for image optimization. See this article: [Eleventy Images Just Got Better](/blog/eleventy-image-transform/).
+  **Update {% include "date.liquid" date: 2024-09-03 %}**: Eleventy v3.0 now has a much simpler solution for image optimization. See this article: [Eleventy Images Just Got Better](/blog/eleventy-image-transform/).
 {% endaside %}
 
 {% aside %}
-  **Update {% include "date.html" date: 2022-05-16 %}**: Originally, this article showed how to lazily load images using low-quality image placeholders (LQIPs) and the `IntersectionObserver` API. However, I no longer endorse that approach because it's more difficult to maintain. Instead, I recommend relying on native lazy loading with the `loading` and `decoding` attributes. If you'd like to, you can read the original article [on my site's GitHub repo](https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com/blob/edbfd9295b64e9f747ae48a4edf9942fe0e3e48e/src/_posts/2021-10-31-eleventy-image-lazy-loading/index.md).
+  **Update {% include "date.liquid" date: 2022-05-16 %}**: Originally, this article showed how to lazily load images using low-quality image placeholders (LQIPs) and the `IntersectionObserver` API. However, I no longer endorse that approach because it's more difficult to maintain. Instead, I recommend relying on native lazy loading with the `loading` and `decoding` attributes. If you'd like to, you can read the original article [on my site's GitHub repo](https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com/blob/edbfd9295b64e9f747ae48a4edf9942fe0e3e48e/src/_posts/2021-10-31-eleventy-image-lazy-loading/index.md).
 {% endaside %}
 
 Images are a core part of the web, but they don't come for free. While imagery can enrich your content and create a more engaging user experience, it can also slow down your site and create a poor user experience if it's not used responsibly. Now that Google uses page load speed as a ranking factor, developers need to put in more effort to create responsive and optimized images and deliver the best possible experience to their users.

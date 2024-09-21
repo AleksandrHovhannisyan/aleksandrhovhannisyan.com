@@ -1,5 +1,5 @@
 import path from 'node:path';
-import { toAbsoluteImageUrl } from '../../lib/filters/filters.js';
+import { toAbsoluteImageUrl } from '../../lib/filters.js';
 import { dir } from '../../lib/constants.js';
 
 export default {

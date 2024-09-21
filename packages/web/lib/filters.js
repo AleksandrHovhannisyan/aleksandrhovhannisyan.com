@@ -4,11 +4,11 @@ import path from 'node:path';
 import get from 'lodash/get.js';
 import sortBy from 'lodash/sortBy.js';
 import dayjs from 'dayjs';
-import { markdown } from '../plugins/markdown.js';
-import site from '../../src/_data/site.js';
+import { markdown } from './plugins/markdown.js';
+import site from '../src/_data/site.js';
 import Image from '@11ty/eleventy-img';
-import { throwIfNotType, withoutBaseDirectory } from '../utils.js';
-import { imagePaths } from '../constants.js';
+import { withoutBaseDirectory } from './utils.js';
+import { imagePaths } from './constants.js';
 
 /** Returns the first `limit` elements of the the given array. */
 export const limit = (array, limit) => {
@@ -31,23 +31,13 @@ export const where = (arrayOfObjects, keyPath, value) =>
   arrayOfObjects.filter((object) => get(object, keyPath) === value);
 
 /** Converts the given markdown string to HTML, returning it as a string. */
-export const toHtml = (markdownString) => {
-  return markdown.renderInline(markdownString);
-};
+export const toHtml = (markdownString) => markdown.renderInline(markdownString);
 
-/** Divides the first argument by the second. */
-export const dividedBy = (numerator, denominator) => {
-  if (denominator === 0) {
-    throw new Error(`Cannot divide by zero: ${numerator} / ${denominator}`);
-  }
-  return numerator / denominator;
-};
-
-/** Formats the given relative url as an absolute url. */
-export const toAbsoluteUrl = (url) => {
-  throwIfNotType(url, 'string');
-  return new URL(url, site.url).href;
-};
+/** Formats the given relative url as an absolute url.
+ * @param {string} url
+ * @param {string} [baseUrl]
+ */
+export const toAbsoluteUrl = (url, baseUrl = site.url) => new URL(url, baseUrl).href;
 
 /** Given a local or remote image source, returns the absolute URL to the image that will eventually get generated once the site is built. */
 export const toAbsoluteImageUrl = async ({ src, outputDir = imagePaths.output, width = null }) => {

@@ -6,5 +6,4 @@ node_modules/
 .netlify
 # Cloudflare
 .wrangler
-wrangler.toml
 .dev.vars

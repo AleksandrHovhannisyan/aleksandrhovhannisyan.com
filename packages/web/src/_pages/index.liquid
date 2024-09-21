@@ -16,12 +16,12 @@ permalink: /
   <section class="stack gap-0">
     <h2 id="recent-posts">Recent Posts</h2>
     {%- assign recentPosts = collections.posts | limit: 6 -%}
-    {%- include "postPreviews.html" posts: recentPosts, titleLevel: 3 -%}
+    {%- include "postPreviews.liquid" posts: recentPosts, titleLevel: 3 -%}
   </section>
   <section class="stack gap-0">
     <h2 id="featured-posts">Featured Posts</h2>
     {%- assign featuredPosts = collections.posts | where: "data.isFeatured", true -%}
-    {%- include "postPreviews.html" posts: featuredPosts, titleLevel: 3 -%}
+    {%- include "postPreviews.liquid" posts: featuredPosts, titleLevel: 3 -%}
   </section>
 </article>
 {%- assign networks = socials | entries -%}
@@ -31,7 +31,7 @@ permalink: /
   "@type": "Person",
   "image": "{{ openGraph.image }}",
   "jobTitle": "Software Developer",
-  "name": "{{ site.author }}",
+  "name": "{{ site.author.name }}",
   "sameAs": [
     {%- for network in networks %}
       "{{ network[1].url }}"{%- if forloop.last == false -%},{%- endif -%}

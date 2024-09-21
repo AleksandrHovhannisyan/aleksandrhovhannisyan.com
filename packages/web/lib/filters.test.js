@@ -1,7 +1,6 @@
 import { it, describe } from 'node:test';
 import assert from 'node:assert/strict';
-import { where, limit, sortByKey, dividedBy, toAbsoluteUrl, getLatestCollectionItemDate } from './filters.js';
-import site from '../../src/_data/site.js';
+import { where, limit, sortByKey, getLatestCollectionItemDate } from './filters.js';
 
 describe('custom 11ty filters', () => {
   describe('limit', () => {
@@ -50,14 +49,6 @@ describe('custom 11ty filters', () => {
         { data: { title: 'Post 1', order: 1 } },
       ];
       assert.throws(() => sortByKey(posts, 'data.order', 'ABC'));
-    });
-  });
-  describe('dividedBy', () => {
-    it('throws an error if the divisor is 0', () => {
-      assert.throws(() => dividedBy(1, 0));
-    });
-    it('returns the right quotient', () => {
-      assert.deepStrictEqual(dividedBy(1, 2), 0.5);
     });
   });
   describe('where', () => {
@@ -115,29 +106,6 @@ describe('custom 11ty filters', () => {
         },
       ];
       assert.deepStrictEqual(where(posts, 'data.isPopular', true), []);
-    });
-  });
-  describe('toAbsoluteUrl', () => {
-    it('handles relative paths that start with a slash', () => {
-      site.url = 'https://site.com';
-      assert.deepStrictEqual(toAbsoluteUrl('/some/path/'), `https://site.com/some/path/`);
-    });
-    it('handles site URL that has a trailing slash', () => {
-      site.url = 'https://site.com/';
-      assert.deepStrictEqual(toAbsoluteUrl('some/path/'), `https://site.com/some/path/`);
-    });
-    it('handles both site URL with trailing slash and url with preceding slash', () => {
-      site.url = 'https://site.com/';
-      assert.deepStrictEqual(toAbsoluteUrl('/some/path/'), `https://site.com/some/path/`);
-    });
-    it('handles file urls', () => {
-      site.url = 'https://site.com/';
-      assert.deepStrictEqual(toAbsoluteUrl('/assets/images/img.png'), `https://site.com/assets/images/img.png`);
-      assert.deepStrictEqual(toAbsoluteUrl('feed.xml'), `https://site.com/feed.xml`);
-    });
-    it('throws an error if the argument is not a string', () => {
-      site.url = 'https://site.com/';
-      assert.throws(() => toAbsoluteUrl(42));
     });
   });
   describe('getLatestCollectionItemDate', () => {

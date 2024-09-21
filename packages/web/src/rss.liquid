@@ -9,12 +9,12 @@ excludeFromSitemap: true
   <title>{{ site.title }}</title>
   <subtitle>{{ site.description }}</subtitle>
   <link href="{{ 'feed.xml' | toAbsoluteUrl }}" rel="self"/>
-  <link href="{{ site.url }}/" rel="alternate" type="text/html"/>
+  <link href="{{ site.url }}" rel="alternate" type="text/html"/>
   <updated>{{ collections.posts | getLatestCollectionItemDate | toISOString }}</updated>
-  <id>{{ site.url }}/</id>
+  <id>{{ site.url }}</id>
   <author>
-    <name>{{ site.author }}</name>
-    <email>{{ site.email }}</email>
+    <name>{{ site.author.name }}</name>
+    <email>{{ site.author.email }}</email>
   </author>
   {% for post in collections.posts %}
   {%- assign absolutePostUrl = post.url | toAbsoluteUrl -%}

@@ -95,7 +95,7 @@ scripts:
 ### Post Previews
 
 {% assign posts = collections.posts | limit: 2 %}
-{% include "postPreviews.html" posts: posts, titleLevel: 4 %}
+{% include "postPreviews.liquid" posts: posts, titleLevel: 4 %}
 
 ### Pill
 

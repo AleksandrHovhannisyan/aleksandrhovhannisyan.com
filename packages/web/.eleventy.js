@@ -22,7 +22,6 @@ import {
   where,
   toISOString,
   formatDate,
-  dividedBy,
   toAbsoluteUrl,
   getLatestCollectionItemDate,
   makeCleanCSS,
@@ -30,8 +29,8 @@ import {
   toAbsoluteImageUrl,
   pathParse,
   pathJoin,
-} from './lib/filters/filters.js';
-import { getAllPosts, getAllUniqueCategories, getPostsByCategory } from './lib/collections/collections.js';
+} from './lib/filters.js';
+import { getAllPosts, getAllUniqueCategories, getPostsByCategory } from './lib/collections.js';
 import { markdown } from './lib/plugins/markdown.js';
 import { codeDemoOptions } from './lib/plugins/codeDemo.js';
 import { dir, imagePaths, scriptDirs } from './lib/constants.js';
@@ -75,7 +74,6 @@ export default function eleventy(eleventyConfig) {
   eleventyConfig.addFilter('toHtml', toHtml);
   eleventyConfig.addFilter('toISOString', toISOString);
   eleventyConfig.addFilter('formatDate', formatDate);
-  eleventyConfig.addFilter('dividedBy', dividedBy);
   eleventyConfig.addFilter('toAbsoluteUrl', toAbsoluteUrl);
   eleventyConfig.addFilter('toAbsoluteImageUrl', toAbsoluteImageUrl);
   eleventyConfig.addFilter('slugify', slugifyString);

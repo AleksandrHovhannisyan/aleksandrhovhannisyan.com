@@ -24,7 +24,7 @@ criticalCSS:
   <meta name="description" content="{{ description }}">
   <meta name="keywords" content="{{ keywords | join: ', ' }}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="{{ site.author }}">
+  <meta name="author" content="{{ site.author.name }}">
   <link rel="canonical" href="{{ canonicalUrl }}">
   {%- comment -%}Prevent this page from showing up on search engines{%- endcomment -%}
   {%- if noindex -%}
@@ -83,24 +83,6 @@ criticalCSS:
   <noscript><style>{% if isThemed %}#theme-picker-root,{% endif %}.copy-code-button,.youtube-embed{display:none;}</style></noscript>
   {%- comment -%}Framework that generated the site{%- endcomment -%}
   <meta name="generator" content="{{ eleventy.generator }}">
-  {%- comment -%}Design mode. Only in a dev environment, and only if enabled in environment variables.{%- endcomment -%}
-  {%- if featureFlags.enableDesignMode -%}
-    <script>
-      (function() {
-        const DESIGN_MODE_STORAGE_KEY = 'design-mode';
-        const cachedDesignMode = localStorage.getItem(DESIGN_MODE_STORAGE_KEY);
-        document.designMode = cachedDesignMode;
-
-        document.addEventListener('keyup', (e) => {
-          if (e.ctrlKey && e.key === '.') {
-            const newDesignMode = document.designMode === 'on' ? 'off' : 'on';
-            document.designMode = newDesignMode;
-            localStorage.setItem(DESIGN_MODE_STORAGE_KEY, newDesignMode);
-          }
-        });
-      })();
-    </script>
-  {%- endif -%}
 </head>
 <body>
   {{ content }}

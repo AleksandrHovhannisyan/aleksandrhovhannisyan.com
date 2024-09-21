@@ -11,7 +11,7 @@ eleventyComputed:
 
 <article class="post prose rhythm">
   <header class="post-header">
-    <p class="post-date"><span class="screen-reader-only">Published </span>{% include "date.html" date: page.date, dateFormat: "MMMM DD, YYYY" %}{% if lastUpdated %} &bull; Updated {% include "date.html" date: lastUpdated, dateFormat: "MMMM DD, YYYY" %}{% endif %}</p>
+    <p class="post-date"><span class="screen-reader-only">Published </span>{% include "date.liquid" date: page.date, dateFormat: "MMMM DD, YYYY" %}{% if lastUpdated %} &bull; Updated {% include "date.liquid" date: lastUpdated, dateFormat: "MMMM DD, YYYY" %}{% endif %}</p>
     <h1 class="post-title">{{ title }}</h1>
     <ul class="post-tags" aria-label="Tags">
       {%- for category in categories -%}
@@ -46,7 +46,7 @@ eleventyComputed:
             <h2>Comments <span id="comments-count"></span></h2>
             <a
               class="button primary comment-button"
-              href="https://github.com/{{ site.issues.owner }}/{{ site.issues.repo }}/issues/{{ commentsId }}"
+              href="https://github.com/{{ site.repo.owner }}/{{ site.repo.name }}/issues/{{ commentsId }}"
               target="_blank"
               rel="noreferrer noopener"
             >
@@ -86,7 +86,7 @@ eleventyComputed:
     {% endif -%}
     "author": {
       "@type": "Person",
-      "name": "{{ site.author }}"
+      "name": "{{ site.author.name }}"
     }
   }
 </script>

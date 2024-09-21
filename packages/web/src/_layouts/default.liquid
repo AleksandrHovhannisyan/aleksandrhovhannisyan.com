@@ -16,15 +16,10 @@ eleventyComputed:
       type: font/woff2
       href: "{{ fonts.body.variants.roman.url }}"
       crossorigin: true
-    -
-      as: font
-      type: font/woff2
-      href: "{{ fonts.body.variants.roman.url }}"
-      crossorigin: true
 ---
 
-{%- include "navbar.html" -%}
+{%- include "navbar.liquid" -%}
 <main id="page-content" class="container">
   {{ content }}
 </main>
-{%- include "footer.html" -%}
+{%- include "footer.liquid" -%}

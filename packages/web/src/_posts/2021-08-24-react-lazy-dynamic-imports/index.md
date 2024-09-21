@@ -173,7 +173,7 @@ const renderTabPanel = () => {
 
 Now, if you navigate to another tab, the fallback UI will render while the module is being fetched. Here's a video demo:
 
-{% include "video.html" src: '/assets/videos/react-dynamic-import-demo.mp4', width: 1224, height: 586, sourceType: 'video/mp4' %}
+{% include "video.liquid" src: '/assets/videos/react-dynamic-import-demo.mp4', width: 1224, height: 586, sourceType: 'video/mp4' %}
 
 I've throttled my network speed to Slow 3G to artificially delay the duration of each network request so the placeholder is noticeable (otherwise, because of the small size of the chunks in this demo, we'd get an almost instantaneous load time). Notice how each tab navigation requests a new chunk; the request status is pending until that module is fully loaded. Once the status comes back as 200 (success), the module becomes available to our app. At that point, the placeholder UI gets swapped out, and the real component renders. Additionally, observe that the size of the main chunk is now `4.8kB`, whereas previously it was `5.3kB`. We don't see significant savings in this case because the tab panels themselves are quite small in size, but this could make quite the difference for larger bundles.
 
@@ -187,7 +187,7 @@ First, as we saw, dynamic imports require your app to make additional network re
 
 Second, as I noted earlier, dynamic imports in React require that you specify a fallback UI that gets shown until the component is fetched at some later point in time. If your fallback UI and the real UI differ drastically in the amount of space that they occupy on the page, then this may cause layout shifts, pushing the surrounding content aside to make room once the component has loaded. The original demo used a placeholder with roughly the same dimensions as the real content, so no layout shifts occurred. But here's another version of the same app with a poorly styled placeholder:
 
-{% include "video.html" src: '/assets/videos/react-dynamic-import-layout-shift.mp4', width: 1230, height: 586, sourceType: 'video/mp4' %}
+{% include "video.liquid" src: '/assets/videos/react-dynamic-import-layout-shift.mp4', width: 1230, height: 586, sourceType: 'video/mp4' %}
 
 A classic workaround for this is to create skeleton loader components that closely approximate the size of the real content. That way, when the dynamically imported component renders for the first time, your app is able to seamlessly transition from placeholder UI to real UI.
 

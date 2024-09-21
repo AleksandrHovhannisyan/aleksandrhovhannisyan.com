@@ -63,8 +63,8 @@ export default {
       const response = await octokit.paginate<typeof octokit.issues.listComments, PostComment[]>(
         octokit.issues.listComments,
         {
-          owner: site.issues.owner,
-          repo: site.issues.repo,
+          owner: site.repo.owner,
+          repo: site.repo.name,
           issue_number: parseInt(commentsId, 10),
           sort: 'created_at',
           direction: 'desc',

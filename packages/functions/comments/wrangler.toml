@@ -5,5 +5,5 @@ compatibility_date = "2022-07-12"
 node_compat = true
 
 [dev]
-port = 8080
+port = 4002
 local_protocol = "http"
