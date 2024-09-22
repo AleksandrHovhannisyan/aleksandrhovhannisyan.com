@@ -95,9 +95,9 @@
         border-top: solid 0.7vmin black;
         border-left: solid 0.7vmin black;
         border-radius: 100% 0 50%;
-        top: -2.8vmin;
+        top: -2.7vmin;
         left: 0;
-        transform: rotate(23deg);
+        transform: rotate(21deg);
       }
 
       /* Opposing, curved border of the horn */
@@ -164,7 +164,7 @@
         border-top: solid 1.6vmin var(--color-bone);
         border-left: solid 1.9vmin var(--color-bone);
         border-radius: 100% 0 100% 00%;
-        left: -2vmin;
+        left: -1.8vmin;
         bottom: 0.8vmin;
         height: 2.2vmin;
         width: 3.7vmin;
@@ -181,9 +181,9 @@
         border-top: solid 0.6vmin black;
         border-right: solid 0.8vmin black;
         border-radius: 0 100%;
-        top: -1vmin;
+        top: -0.8vmin;
         left: -0.5vmin;
-        transform: rotate(-63deg);
+        transform: rotate(294deg);
       }
 
       /* Opposing, curved border of the horn */
@@ -334,7 +334,7 @@
       height: 2.7vmin;
       background-color: var(--color-wing);
       border: solid 0.6vmin black;
-      bottom: -1.5vmin;
+      bottom: -1.2vmin;
       transform: rotate(18deg);
       border-radius: 50% 50% 200%;
     }
