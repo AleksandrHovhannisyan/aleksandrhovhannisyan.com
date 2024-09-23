@@ -3,8 +3,6 @@ title: Serializing HTML Form Data with JavaScript
 description: Learn how to use JavaScript's FormData, URLSearchParams, and URL constructors to serialize an HTML form's data into a well-formatted and encoded URL.
 keywords: [form data, serialize form data]
 categories: [html, javascript, forms]
-criticalCSS:
-    - css/demos/serializing-form.css
 ---
 
 You typically don't need to worry about serializing HTML form data yourself. If a form has a submit button, then it will serialize its data automatically when a user submits it. Specifically, if the form is of type `GET`, it will redirect the user to the target URL (as determined by the form's `method` attribute) with its data serialized as a query string. For example, consider this form:
@@ -27,21 +25,53 @@ Thankfully, serializing form data with JavaScript is easy—the code ends up bei
 - [`URLSearchParams`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams)
 - [`URL`](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL)
 
-<div id="demo">
+<div id="demo" class="rhythm">
   <noscript><style>#demo {display: none;}</style></noscript>
   <p>Here's a demo of what we'll be building:</p>
-  <form action="/fake-endpoint" method="get" id="demo-form" autocomplete="off">
+  {% codeDemo "Demo of serializing a form to a URL string" %}
+  ```html
+  <form action="/fake-endpoint" method="get" autocomplete="off">
     <div class="input-group">
-        <label for="demo-title">Title</label>
-        <input id="demo-title" name="title" type="text" placeholder="Enter a title">
+      <label for="demo-title">Title</label>
+      <input id="demo-title" name="title" type="text" placeholder="Enter a title">
     </div>
     <div class="input-group">
-        <label for="demo-description">Description</label>
-        <input id="demo-description" name="description" type="text" placeholder="Enter a description">
+      <label for="demo-description">Description</label>
+      <input id="demo-description" name="description" type="text" placeholder="Enter a description">
     </div>
-    <button class="button" type="submit">Submit</button>
   </form>
-  <output id="demo-output"></output>
+  ```
+
+  ```css
+  input,
+  button {
+    font: inherit;
+  }
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  input {
+    padding: 0.25em;
+  }
+  .input-group {
+    font-size: var(--size-font-sm);
+    display: grid;
+    gap: 0.25rem;
+  }
+  ```
+
+  ```js
+  document.querySelector('form').addEventListener('input', (e) => {
+    const data = new FormData(e.currentTarget);
+    const queryString = new URLSearchParams(data).toString();
+    const url = new URL(form.action, window.location.href);
+    url.search = queryString;
+    console.log(url.toString());
+  });
+  ```
+  {% endcodeDemo %}
 </div>
 
 {% include "toc.md" %}
@@ -136,18 +166,3 @@ form.addEventListener('input', (e) => {
   // do whatever you want with the URL
 });
 ```
-
-<script>
-  const output = document.querySelector('#demo-output');
-  const form = document.querySelector('#demo-form');
-  const showFormUrl = () => {
-    const data = new FormData(form);
-    const queryString = new URLSearchParams(data).toString();
-    const url = new URL(form.action, window.location.href);
-    url.search = queryString;
-    output.innerText = url.toString();
-  }
-  showFormUrl();
-  form.addEventListener('input', showFormUrl);
-  form.addEventListener('submit', (e) => e.preventDefault());
-</script>
