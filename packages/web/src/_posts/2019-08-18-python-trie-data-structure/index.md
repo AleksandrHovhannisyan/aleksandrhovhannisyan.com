@@ -171,7 +171,7 @@ Let's say we insert the word `apple` into our trie, with nothing else, and now i
 
 ![An example of a false match for a word in a trie.](./images/wrong-find.jpg)
 
-Our algorithm in its current state won't return `None` as it should. It sees that our trie has a node with the string `app` and considers that a match. But notice that we never actually inserted `app` into the tree as a *word*. It only exists in the trie as a *prefix node* leading up to the inserted word `apple`. So clearly, there are two classes of nodes that we must distinguish between: ones that are prefixes, and ones that are "real" words that were inserted.
+Our algorithm in its current state won't return `None` as it should. It sees that our trie has a node with the string `app` and considers that a match. But notice that we never actually inserted `app` into the tree as a *word*. It only exists in the trie as a *prefix node* leading up to the inserted word `apple`. So there are two classes of nodes that we must distinguish between: ones that are prefixes, and ones that are "real" words that were inserted.
 
 Fortunately, the fix here is super simple. We need to make three changes:
 

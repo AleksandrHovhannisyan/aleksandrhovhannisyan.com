@@ -67,7 +67,7 @@ Big brands get most of their traffic through brand recognition and popularity, n
 
 Take Ahrefs and Moz, for example. They both offer software, e-books, tutorials, guides, and much more to help marketers and even laypeople understand SEO. Sure, their sites may not be the fastest around, but their content is credible and informative. In Google's eyes, that matters much more than seeing pretty green colors on a Lighthouse report.
 
-When you think about it, this makes sense. After all, you could have the fastest website on the internet while spamming low-quality content, and you likely would not rank well on Google. So clearly, **page load speed isn't everything**.
+When you think about it, this makes sense. After all, you could have the fastest website on the internet while spamming low-quality content, and you likely would not rank well on Google. So page load speed isn't everything.
 
 ## So Does Web Performance Matter?
 

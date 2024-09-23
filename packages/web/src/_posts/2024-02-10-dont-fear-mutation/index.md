@@ -149,7 +149,7 @@ const grid = [...DEFAULT_GRID];
 
 However, because the spread operator merely copies the keys (indices) of `DEFAULT_GRID` into the target object, the indices of `grid` end up still pointing to the same nested arrays in memory as the keys of `DEFAULT_GRID`. So `grid[row][column] = initialValue` accesses the shared array pointed to by `DEFAULT_GRID[row][column]`. Therefore, when we call `makeGrid` a second time, the mutation from the first call persists in memory, creating a confusing and unpredictable mess.
 
-Clearly, this was a contrived example. In reality, you'd want to write a pure function like this that always creates a new two-dimensional array, with zero side effects:
+Note that this was an intentionally contrived example. In reality, you'd want to write a pure function like this that always creates a new two-dimensional array, with zero side effects:
 
 ```js
 const makeGrid = (numRows, numColumns, initialValue = 0) => {

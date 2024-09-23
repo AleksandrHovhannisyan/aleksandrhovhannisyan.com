@@ -28,9 +28,9 @@ Now, there is a caveat here worth mentioning: The language you select as a begin
 
 There's a reason why many university courses expose beginners to Java, C++, or, [in the case of MIT](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/), Python: These three languages are very popular and span a number of software development domains, making them practical and useful to know. They're also more accessible to beginners because they're general-purpose languages.
 
-Here's my advice: Don't pick a single language and refuse to part ways with it. The most obvious reason for this is because not every language is suitable for every problem. But in addition, limiting your worldview to just a single language paradigm can seriously stunt your growth as a developer.
+My advice? Don't pick a single language and refuse to part ways with it. Not every language is suitable for every problem, and limiting yourself to a single language or paradigm stunts your growth as a developer.
 
-Instead, I recommend using your favorite language as a way to learn programming fundamentals, algorithms, and data structures, and to gradually step out of your comfort zone. All of those things are language agnostic and easily transferable. Once you master those skills, you'll find that learning new programming languages will be a matter of getting used to a new syntax (and maybe a new way of thinking, like going from an OOP language to a functional one).
+Instead, use your favorite language as a way to learn programming fundamentals, algorithms, and data structures and to gradually step out of your comfort zone. All of those are language-agnostic, transferable skills that make it easier to learn new programming languages, which is typically a matter of getting used to a new syntax (and maybe a new way of thinking, like going from an OOP language to a functional one).
 
 ## Stop Wasting Money on Courses You'll Never Finish
 
@@ -48,9 +48,9 @@ With many of these platforms, there’s a thin veil of active learning. In reali
 2. Straight up copy-pasting their code or cloning a repo from their GitHub.
 3. Not even coding&mdash;just listening and hoping it all sticks (spoiler: it won't).
 
-Then, a week later, you find yourself having to revisit a past exercise (or even the associated video) to recall how to do something. If that's the case, then you clearly didn’t learn anything.
+Then, a week later, you find yourself having to revisit a past exercise (or even the associated video) to recall how to do something. If that's the case, then you didn’t learn anything.
 
-Reality: Developers have to constantly search for things online, sifting through Stack Overflow posts, Reddit, YouTube tutorials, articles, and&mdash;dare I say it?&mdash;*official documentation* to find answers to their questions. But why bother to seek out these answers on your own when you can pay for an instructor to *tell you* how it’s done? That makes you feel all nice and safe inside.
+Developers have to constantly search for things online, sifting through Stack Overflow posts, Reddit, YouTube tutorials, articles, and&mdash;dare I say it?&mdash;*official documentation* to find answers to their questions. But why bother to seek out these answers on your own when you can pay for an instructor to *tell you* how it’s done? That makes you feel all nice and safe inside.
 
 In a similar vein, these platforms also shield you from the somewhat tricky (yet valuable) process of **setting up a technology on your own machine**. Instead, they offer you a nice little sandbox environment where you can code to your heart's content without ever understanding what happens between you writing your code and the computer interpreting and understanding that code. If you plan on seriously investing your time in learning and using a technology in the real world, why not take the time to understand how you can use it on your own computer?
 

@@ -183,7 +183,7 @@ If we plot these data points, we'll get the following graph:
 
 ![Plotting the five data points we were given.](./images/data.png)
 
-These points appear to follow a linear shape, but it's not possible to plot a straight line that fits all of the points. But clearly, we can draw a **best-fit line** that at least gets as close to all of the points as possible:
+These points appear to follow a linear shape, but it's not possible to plot a straight line that fits all of the points. But what we _can_ do is draw a **best-fit line** that at least gets as close to all of the points as possible:
 
 ![A best-fit line through the points we plotted.](./images/best-fit.png)
 
@@ -309,7 +309,7 @@ $$
 \begin{bmatrix} a_1 & a_2 \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \end{bmatrix} = \begin{bmatrix} b_1 \\ b_2 \end{bmatrix}
 $$
 
-As we saw in the image earlier, the vector $r$ is clearly orthogonal to the plane $Ax$. By definition, this means that $r$ must be orthogonal to all vectors in the plane. And we know two vectors that lie in the plane: $a_1$ and $a_2$.
+As we saw in the image earlier, the vector $r$ is orthogonal to the plane $Ax$. By definition, this means that $r$ must be orthogonal to all vectors in the plane. And we know two vectors that lie in the plane: $a_1$ and $a_2$.
 
 Now, if two vectors are orthogonal, then their dot product is zero. So let's write that out explicitly (using the [matrix notation for a dot product](https://mathinsight.org/dot_product_matrix_notation)):
 

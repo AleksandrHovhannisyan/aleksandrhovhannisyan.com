@@ -117,7 +117,7 @@ return (
 );
 ```
 
-Most of this logic is straightforward, except for `handleQueryChange`. This function has a lot going on because it's implicitly trying to reset all of the other state variables to their initial values, even though this is not immediately obvious at a glance. Comments can help clarify what's going on:
+Most of this logic is straightforward, except for `handleQueryChange`. This function has a lot going on because it's implicitly trying to reset all of the other state variables to their initial values, even though this is not immediately obvious at first glance. Comments can help clarify what's going on:
 
 ```tsx
 const handleQueryChange = debounce((e: ChangeEvent<HTMLInputElement>) => {
@@ -136,7 +136,7 @@ It would be nice if our state were instead stored in an object so we could defin
 
 ## Solution: Manage Complex State with `useReducer`
 
-We saw one problem with managing React state using multiple `useState` calls: It's not obvious, at a glance, that some of those state variables are dependent on each other because they're all declared separately. Moreover, if you need to reset your function component to its initial state, then you need to remember to do this for all of the individual state variables. This makes it difficult to scale the component in the future if it needs to manage additional state.
+We saw one problem with managing React state using multiple `useState` calls: It's not obvious that some of those state variables are dependent on each other because they're all declared separately. Moreover, if you need to reset your function component to its initial state, then you need to remember to do this for all of the individual state variables. This makes it difficult to scale the component in the future if it needs to manage additional state.
 
 There are some additional drawbacks to managing complex state in this manner:
 

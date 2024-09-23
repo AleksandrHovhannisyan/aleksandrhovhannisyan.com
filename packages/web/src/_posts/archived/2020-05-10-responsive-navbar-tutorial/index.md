@@ -187,7 +187,7 @@ Alright, time to actually style our responsive navbar. We'll work in a top-down 
 
 ![A black, horizontal navigation bar is positioned at the top of a blank white page. Some blue links overflow vertically on its left-hand side.](./images/step1.png)
 
-Why we need the CSS variable will become obvious later on. The entire element is given a fixed position so it sticks to the top of the page as the user scrolls. It's also given a slight box shadow. Don't worry about the fact that the links are currently overflowing their parent; we'll fix this soon enough.
+Why we need the CSS variable will become clear later. The entire element is given a fixed position so it sticks to the top of the page as the user scrolls. It's also given a slight box shadow. Don't worry about the fact that the links are currently overflowing their parent; we'll fix this soon enough.
 
 Moving on, we have the nested container element:
 

@@ -56,9 +56,9 @@ Now that we've set up GitHub Pages, we'll go over everything you need to know to
 
 Jekyll has an excellent, in-depth [installation guide](https://jekyllrb.com/docs/installation/) for each OS, so I'll let you read that instead of copy-pasting it all here. If you follow the Ubuntu guide, which is what I use via WSL, you'll install these three things:
 
-1. **Ruby**, the programming language that powers Jekyll.
-2. **Bundler**, a Ruby gem (think "module") that lets you easily manage your project's dependencies.
-3. **Jekyll**, obviously.
+1. Ruby the programming language Jekyll was written in.
+2. Bundler, a Ruby gem (think "module") that lets you easily manage your project's dependencies.
+3. Jekyll, also a Ruby gem.
 
 If you're familiar with npm and yarn, Bundler is basically the same idea except for Ruby—it manages your dependencies (gems) via two files called `Gemfile` and `Gemfile.lock`, which we'll see shortly.
 
@@ -821,8 +821,6 @@ We now arrive at the long-awaited topic that I've been teasing: Liquid. Fluids. 
 1. You write Liquid template code in an HTML or Markdown file.
 2. When Jekyll builds your site, it processes the Liquid templates and substitutes them with actual content.
 
-That's it! Liquid is super simple to use and understand. If you've ever worked with Vue, the two are fairly similar, except Liquid doesn't involve JavaScript. It's also obviously more limited.
-
 While it's technically not a "programming" language, Liquid has many familiar programming constructs. Let's review some of the features of the Liquid templating language so you know what's available to you.
 
 ### Data Types
@@ -1413,7 +1411,7 @@ This issue is fundamentally about a **separation of concerns**—your data exist
 
 You do that in Jekyll by creating **data files** under the aptly named `_data/` directory. Data files can use YAML, JSON, or CSV to define just that—your website's raw data, *without* the associated HTML markup.
 
-Once you've created a data file in Jekyll, it becomes accessible under `site.data.fileName` across your entire site, in all HTML and Markdown files. But obviously, you're most likely only going to use it on a single page, like an Experience page for projects and skills.
+Once you've created a data file in Jekyll, it's accessible via `site.data.fileName` across your entire site. But you're most likely only going to use it on a single page, like an Experience page for projects and skills.
 
 You can then loop over that data using Liquid tags and finally give the data its structure. The key benefit here is that you only need to **define the structure once**; the data merely gets plugged into your templates when Jekyll goes to process your HTML or Markdown files. You can combine data files with includes to take your experience with Jekyll to a whole new level.
 

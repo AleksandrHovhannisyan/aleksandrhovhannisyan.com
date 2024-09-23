@@ -620,7 +620,7 @@ html {
 
 This gives you greater control over your font sizing since you're no longer locked into a single type scale for both mobile and desktop. Now, you're free to choose a different ratio for each breakpoint. I recommend using a smaller ratio for mobile than the one used on desktop. This ensures that your font sizing remains optimally legible on smaller devices.
 
-If you're using my [Fluid Type Scale Calculator](https://www.fluid-type-scale.com/), this separation between mobile and desktop is more obvious since you're asked to configure two separate sets of variables for the base font size, screen width, and modular ratio:
+If you're using my [Fluid Type Scale Calculator](https://www.fluid-type-scale.com/), this separation between mobile and desktop is more distinct since you're asked to configure two separate sets of variables for the base font size, screen width, and modular ratio:
 
 ![A form on the left and some code output on the right. Two groups of inputs can be seen in the form. The first is titled 'Minimum (mobile)', while the second is titled 'Maximum (desktop)'. Each group contains three inputs, in order: font size, screen width, and type scale.](./images/groups.png)
 

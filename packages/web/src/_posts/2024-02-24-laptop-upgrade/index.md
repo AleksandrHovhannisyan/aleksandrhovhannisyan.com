@@ -16,7 +16,7 @@ Instead, I decided to try something that I'd never done before: disassembling my
 
 My goals were to:
 
-1. Learn how to disassemble my laptop—an obvious prerequisite.
+1. Learn how to disassemble my laptop—a natural first step.
 2. Replace the 1 TB HDD with a 1 TB SSD ([iFixit guide](https://www.ifixit.com/Guide/HP+Envy+x360+m6-w103dx+Hard+Drive+Replacement/127836)).
 3. Upgrade the RAM from 8 GB to 16 GB ([iFixit guide](https://www.ifixit.com/Guide/HP+Envy+x360+m6-w103dx+Memory+(RAM)+Replacement/127837)).
 

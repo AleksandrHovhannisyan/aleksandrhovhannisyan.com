@@ -144,7 +144,7 @@ const offlineUsers = users.filter((user) => !user.isOnline);
 ```
 
 {% aside %}
-Some developers like to write pseudo-code in comments before writing the code itself to help guide their work. So sometimes, these types comments are leftover artifacts from that drafting process. These "obvious" comments are not inherently bad, so long as you're not *retrospectively* writing them everywhere.
+Some developers like to write pseudo-code in comments before writing the code itself to help guide their work. So sometimes, these types comments are leftover artifacts from that drafting process. These types of comments are not inherently bad, so long as you're not *retrospectively* writing them everywhere.
 {% endaside %}
 
 If you find yourself writing these types of comments, you're naturally going to feel like documentation is a waste of time. By contrast, helpful comments provide additional context that is otherwise not possible to communicate in the code itself. Let's look at some real-world examples.

@@ -82,7 +82,7 @@ Developers: Please don't post screenshots of your code. They may look pretty, bu
 
 ![Pseudocode written using the Carbon web app, to illustrate how inaccessible this approach is.](./images/carbon.png)
 
-But obviously, this isn't accessible—your alt text can't be the code itself because of special characters, and you rarely even have control over alt text on these platforms to begin with. It's especially egregious if you're using one of these screenshots in a tutorial, where readers will be keen on copying and pasting your code. Congratulations—you've now forced both your sighted and blind users to type things out by hand in an excruciating test of patience.
+But this isn't accessible—your alt text can't be the code itself because of special characters, and you rarely even have control over alt text on these platforms to begin with. It's especially egregious if you're using one of these screenshots in a tutorial, where readers will be keen on copying and pasting your code. Congratulations—you've now forced both your sighted and blind users to type things out by hand in an excruciating test of patience.
 
 Instead, you should use normal fenced code blocks if the platform supports them, even if it's without syntax highlighting. If, on the other hand, you're sharing code on social media like Twitter, consider posting an image of your code along with a link to a plaintext copy (e.g., as a [GitHub gist](https://gist.github.com/)). That way, everyone can read and use your code the way that works best for them.
 
@@ -129,6 +129,6 @@ Don't abuse this, though. Images that actually convey meaning—like those used 
 
 ## Final Thoughts
 
-We only considered a handful of accessibility failures in this article. In reality, there are many more WCAG success criterions covering a wide range of user experiences. Hopefully, you now know how to identify and fix some of the less obvious accessibility issues you may encounter on the web.
+We only considered a handful of accessibility failures in this article. In reality, there are many more WCAG success criterions covering a wide range of user experiences. Hopefully, you now know how to identify and fix some of the less noticeable accessibility issues you may encounter on the web.
 
 {% include "unsplashAttribution.md" name: "Joanna Kosinska", username: "joannakosinska", photoId: "AYxVEG2Zywk" %}

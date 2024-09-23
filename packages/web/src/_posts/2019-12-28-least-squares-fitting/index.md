@@ -155,7 +155,7 @@ First, we'll plot the points:
 
 ![Plotting the three data points we were given.](./images/data.jpg)
 
-We note that the points, while scattered, appear to have a linear pattern. Clearly, it's not possible to fit an actual straight line to the points, so we'll do our best to get as close as possible—using least squares, of course.
+We note that the points, while scattered, appear to have a linear pattern. It's not possible to plot an actual straight line through these points, so we'll do our best to get as close as possible—using least squares, of course.
 
 ### Step 2: Pick an Appropriate Model
 

@@ -56,7 +56,7 @@ Hmm... It doesn't work as expected! When you first click the back button in your
 
 Effectively, you have to press the back button *twice* whenever you want a legitimate page navigation.
 
-It's worth noting that this issue isn't necessarily unique to React projects, although it's most obvious in a single-page app where routing is a little different than in a traditional website. If you have three different pages in vanilla HTML and JavaScript, then you're rendering three different iframes, and you shouldn't see this issue (unless you have a single page and are navigating within it, like with anchors).
+It's worth noting that this issue isn't necessarily unique to React projects, although it's more noticeable in a single-page app where routing is a little different than in a traditional website. If you have three different pages in vanilla HTML and JavaScript, then you're rendering three different iframes, and you shouldn't see this issue (unless you have a single page and are navigating within it, like with anchors).
 
 ## Takeaway: Iframes Share Browsing History with the Page
 

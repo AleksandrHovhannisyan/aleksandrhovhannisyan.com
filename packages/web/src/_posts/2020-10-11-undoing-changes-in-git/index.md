@@ -32,7 +32,9 @@ On my end, that gives me this history:
 * 0beebfb - Add package.json (5 seconds ago) <AleksandrHovhannisyan>
 ```
 
-Obviously, your commit hashes will differ from mine.
+{% aside %}
+Your commit hashes will differ from mine.
+{% endaside %}
 
 Feel free to follow along and run these commands—the best way to learn git is to use git!
 
@@ -269,7 +271,7 @@ So far, we have this commit history:
 * 0beebfb - Add package.json (21 minutes ago) <AleksandrHovhannisyan>
 ```
 
-That second commit looks a little suspicious... Why did we check our local environment variables (`.env`) into git? Oops. Clearly, we need to delete this commit while keeping all of the others around. To do that, we'll run an interactive rebase against that commit:
+That second commit looks a little suspicious... Why did we check our local environment variables (`.env`) into git? Oops. We need to delete this commit while keeping all of the others around. To do that, we'll run an interactive rebase against that commit:
 
 ```bash {data-copyable=true}
 git rebase -ir 2beb7c7^
@@ -704,7 +706,7 @@ You can change the message if you'd like to, but it's usually best to leave it a
 * 36210ec - Initialize npm package (8 hours ago) <AleksandrHovhannisyan>
 ```
 
-Notice that the original commit is still there in our history, with its hash preserved. The only thing that changed is we added a new commit to the tip of the branch that reverts the changes introduced by that earlier commit. By analogy, it's like if we had gone into the file and manually removed the changes we had originally introduced. Obviously, running `git revert` is saner than doing this by hand.
+Notice that the original commit is still there in our history, with its hash preserved. The only thing that changed is we added a new commit to the tip of the branch that reverts the changes introduced by that earlier commit. By analogy, it's like if we had gone into the file and manually removed the changes we had originally introduced.
 
 So, reverting a commit is noisier than an interactive rebase or reset because it introduces one extra commit. But that's not really a big deal. And, on the plus side, it doesn't end up breaking public branches.
 

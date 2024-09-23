@@ -40,7 +40,7 @@ Just to give you an idea, here's a quick look at the commit counts for some of t
 
 You get the idea.
 
-Despite what you might think, pushing lots of commits doesn't make it more difficult to do git logs or time travel in a code base—in fact, it can actually make these tasks *easier* by isolating changes from each other, allowing you to travel to a specific point in time when just *one* change was made. You can clearly differentiate between commits `X`, `X-1`, and `X+1`.
+Despite what you might think, pushing lots of commits doesn't make it more difficult to do git logs or time travel in a code base—in fact, it can actually make these tasks *easier* by isolating changes from each other, allowing you to travel to a specific point in time when just *one* change was made. You can more easily differentiate commits `X`, `X-1`, and `X+1`.
 
 ### To Squash or Not to Squash?
 

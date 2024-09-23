@@ -26,7 +26,7 @@ Now, I won't blow this experience out of proportion to suggest that it somehow w
 
 ## 2. You look at reviews before selecting a book to read
 
-Reading book reviews—or even a book's synopsis—is something that people do without much thought. It's an obvious first step when you're selecting a book to read. Why *wouldn't* you want to know what you're getting yourself into? Who just picks up a random book and starts reading it without any context? What if it's not worth your time?
+Reading book reviews—or even a book's synopsis—is something that people do without much thought. It's a natural first step when you're selecting a book to read. Why *wouldn't* you want to know what you're getting yourself into? Who just picks up a random book and starts reading it without any context? What if it's not worth your time?
 
 However, this can actually make you impatient as you read. You've probably experienced this before: a book's synopsis reveals a thrilling plot that piques your interest, but as soon as you start reading, you find yourself drowning in colorful prose about landscapes and people and little details that annoy you and only delay the satisfaction of getting to The Good Part.
 
@@ -44,7 +44,7 @@ Here's the great thing about reading: You don't have to do it at any particular 
 
 Got some unexpected free time? Instead of mindlessly checking your phone, pick up where you left off on your book, and then resume whatever it is that you were doing before after a short while. You'll thank yourself later.
 
-This isn't to say that you *can't* or *shouldn't* always read at a set time of day, but doing so can make reading seem less spontaneous and rewarding and more like a chore—yet another task to check off your endless to-do list so you can quickly move on to the next one. If that's how you view reading, then you're obviously not going to like it very much.
+This isn't to say that you *can't* or *shouldn't* always read at a set time of day, but doing so can make reading seem less spontaneous and rewarding and more like a chore—yet another task to check off your endless to-do list so you can quickly move on to the next one. If that's how you view reading, then you're not going to like it very much.
 
 Similarly, I don't recommend compiling a reading list and tracking your progress as you go. Some people find that this motivates them to read, but it's the exact opposite for me. Besides, life is short enough as it is to be measured by the number of books you've read. Read when you have the time, if you have the energy, and only if you really want to. Force yourself to read, and you'll hate it.
 

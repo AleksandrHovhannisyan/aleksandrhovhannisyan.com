@@ -59,7 +59,7 @@ body {
 }
 ```
 
-In other words, you can't trust the font family name since it could point to a different file under the hood. However, that was clearly not the case here—if it were, then this issue would've been reproducible on *all* devices, not just mine.
+In other words, you can't trust the font family name since it could point to a different file under the hood. However, that wasn't the case here—if it were, then this issue would've been reproducible on *all* devices, not just mine.
 
 Ignoring this property and scrolling all the way down, I found that the page was actually rendering an entirely different font file:
 
@@ -67,7 +67,7 @@ Ignoring this property and scrolling all the way down, I found that the page was
 
 Note `Pacifico—Local file`. So the page *was* applying a local font! This name rang a bell, and I remembered that I actually *do* have [Pacifico](https://fonts.google.com/specimen/Pacifico/) installed locally—it's the open-source font that I used in my website's favicon.
 
-So that explains *what* was going on and why I could only reproduce the bug on my device. But it doesn't explain *why* the site was requesting this local font file in the first place. Clearly, the designers had wanted to use their self-hosted version of Graphik Web, which is a sans-serif font. Off the top of my head, the only reason I could think of for why this might happen is if someone did this in their `@font-face` declarations:
+So that explains *what* was going on and why I could only reproduce the bug on my device. But it doesn't explain *why* the site was requesting this local font file in the first place. The designers had likely wanted to use their self-hosted version of Graphik Web, which is a sans-serif font. Off the top of my head, the only reason I could think of for why this might happen is if someone did this in their `@font-face` declarations:
 
 ```css
 @font-face {

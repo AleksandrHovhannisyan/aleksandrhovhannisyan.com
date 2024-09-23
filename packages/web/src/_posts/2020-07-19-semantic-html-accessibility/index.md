@@ -105,7 +105,7 @@ document.getElementById('toggle').addEventListener('keyup', keyEvent => {
 });
 ```
 
-Just because something is possible with JavaScript and HTML doesn't mean that it's a good idea 😉 (or that it's truly accessible for keyboard and screen reader users). You certainly *can* do this, but [it will take some work](https://benfrain.com/converting-divs-into-accessible-pseudo-buttons/) to ensure that it's truly accessible. And even then, you'll still get HTML validation warnings because you're trying to dress up a `<div>` as something that it's clearly not.
+Just because something is possible with JavaScript and HTML doesn't mean that it's a good idea 😉 (or that it's truly accessible for keyboard and screen reader users). You certainly *can* do this, but [it will take some work](https://benfrain.com/converting-divs-into-accessible-pseudo-buttons/) to ensure that it's truly accessible. And even then, you'll still get HTML validation warnings because you're trying to dress up a `<div>` as something that it isn't.
 
 Use buttons, anchors, and form inputs for interactive elements on your website. These semantic HTML elements already receive mouse and keyboard focus, have widespread browser support, and respond to user input both with the `Enter` key and with a traditional mouse click. They are meant to be used as buttons, links, checkboxes, and so on.
 
@@ -199,7 +199,7 @@ Here's another great example of using a list properly, this time from GitHub:
 
 ![Inspecting repository search results on GitHub](./images/github-repo-results.png)
 
-Notice from these examples that a "list" is really an abstract concept. You shouldn't view `<li>` as an element that can only contain text. Clearly, it can also contain links, buttons, more lists, images, and anything else that you can think of.
+Notice from these examples that a "list" is really an abstract concept. You shouldn't view `<li>` as an element that can only contain text—it can also contain links, buttons, more lists, images, and anything else that you can think of.
 
 ### Don't Use Spans for Inline Positioning
 

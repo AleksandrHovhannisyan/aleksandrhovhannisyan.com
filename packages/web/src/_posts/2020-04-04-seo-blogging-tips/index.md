@@ -167,7 +167,7 @@ In fact, Google uses **mobile-first indexing**, meaning if your site performs po
 
 Nearly everything we do these days is going mobile—in fact, roughly 17% of the clicks and 15% of the impressions that I've gotten on my own blog have come from mobile devices. That's a sufficiently large reader base that I wouldn't want to ignore. Fortunately, I built my site with a [mobile-first approach](https://www.uxpin.com/studio/blog/a-hands-on-guide-to-mobile-first-design/) to avoid the headache of trying to squeeze in mobile at the last minute.
 
-Not sure about your blog's mobile user experience? The first obvious step is to actually test it yourself on a mobile device that you own. You can use a well-established, secure service such as [ngrok](https://ngrok.com/) if you want to run your localhost on your phone, for example.
+Not sure about your blog's mobile user experience? Test it yourself on a mobile device that you own. You can use a service such as [ngrok](https://ngrok.com/) if you want to access your localhost on your phone, for example.
 
 Beyond manual testing, you can take advantage of the free [Mobile Usability Report](https://support.google.com/webmasters/answer/9063469?hl=en) right there in your Google Search Console account:
 
@@ -323,7 +323,7 @@ Use Google's [Structured Data Testing Tool](https://search.google.com/structured
 
 ## Wrap-Up: How to Get More Traffic with SEO
 
-So clearly, there's quite a bit involved in creating an SEO-friendly blog, and it's certainly not something you can roll out overnight. But everyone has to start somewhere! Put these best practices to use and keep an eye on your key metrics. Be wary of trying too many things at once, especially if there's chance that you may introduce breaking changes.
+There's quite a bit involved in creating an SEO-friendly blog, and it's certainly not something you can roll out overnight. But everyone has to start somewhere! Put these best practices to use and keep an eye on your key metrics. Be wary of trying too many things at once, especially if there's chance that you may introduce breaking changes.
 
 I hope these tips help you get more traffic on your website. Good luck!
 

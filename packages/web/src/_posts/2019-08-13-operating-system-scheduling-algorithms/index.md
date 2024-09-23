@@ -191,7 +191,7 @@ At `t = 0s`, A was the only "shortest" process we knew of, so we allowed it to e
 
 This preemptive algorithm is the shortest job first algorithm above but with preemption. Whenever a new process arrives in the queue, we check all processes to see which one has the least amount of estimated time remaining until 100% completion. That's the process we'll run next.
 
-If the process that's currently running is tied with another during this selection process, we'll obviously always prefer to continue running the current process so we don't waste time on performing a context switch.
+If the process that's currently running is tied with another during this selection process, we'd prefer to continue running the current process so we don't waste time on performing a context switch.
 
 ![A horizontal ruler is used to represent time that runs from t = 0 to t = 15. A table lists information about three CPU processes. Process A arrived at time t = 0 and has a CPU time of 8. Process B arrived at time t = 2 and has a CPU time of 4. Process C arrived at time t = 5 and has a CPU time of 2. Below the ruler, a line shows Process A running from t = 0 to t = 2. It is interrupted by Process B, which runs from t = 2 to t = 6. Process C then runs from t = 6 to t = 8. Finally, Process A runs to completion from t = 8 to t = 14.](./images/shortest-remaining.jpg)
 
@@ -264,7 +264,7 @@ As its name suggests, proportionate scheduling aims to ensure a fair allocation 
 
 #### Guaranteed Scheduling
 
-**Guaranteed scheduling** attempts to evenly split CPU time among processes to maximize fairness. If we have `n` processes, then we shouldn't ever allow any process to exceed `1/n` fraction of the total runtime. We do this by repeatedly "inching" each process along and keeping track of how much time they've all used. For example, suppose we have processes A, B, and C that so far have run for `2s`, `3s`, and `1s`. (Assume we haven't yet put our algorithm into practice.) The total CPU time thus far is `6s`. Split among three processes, this means each process should've ideally used `2s` of CPU time. Clearly, that's not the case—B has been given preferential treatment. We'll allow C to run first until it hits `3s` and then run A for an additional `1s` to balance things out.
+**Guaranteed scheduling** attempts to evenly split CPU time among processes to maximize fairness. If we have `n` processes, then we shouldn't ever allow any process to exceed `1/n` fraction of the total runtime. We do this by repeatedly "inching" each process along and keeping track of how much time they've all used. For example, suppose we have processes A, B, and C that so far have run for `2s`, `3s`, and `1s`. (Assume we haven't yet put our algorithm into practice.) The total CPU time thus far is `6s`. Split among three processes, this means each process should've ideally used `2s` of CPU time. But that's not the case—B has been given preferential treatment. We'll allow C to run first until it hits `3s` and then run A for an additional `1s` to balance things out.
 
 #### Lottery Scheduling
 

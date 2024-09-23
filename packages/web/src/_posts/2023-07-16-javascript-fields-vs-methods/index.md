@@ -269,7 +269,7 @@ The old approach of declaring it in the constructor made this explicit, as did t
 ```js
 class MyClass {
   constructor() {
-    // It's obvious here that routine exists on the instance
+    // Here, it's easier to tell that routine exists on the instance
     // rather than on the class prototype.
     this.routine = function () {}
   }

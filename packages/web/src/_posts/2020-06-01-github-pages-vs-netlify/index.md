@@ -123,8 +123,8 @@ A few months after migrating my site this way, I took down my `.github.io` domai
 
 ## Here's to a New Era
 
-Okay, so that's obviously a slight exaggeration—all I really did is switch hosting providers!
+Okay, so that's a slight exaggeration—all I really did is switch hosting providers!
 
-However, the future looks very promising for Netlify—it recently secured a whopping [$53 million in Series C funding](https://www.netlify.com/press/after-onboarding-800000-developers-netlify-raises-53m-in-series-c-funding-to-fuel-enterprise-growth/). Past investors of the company have included founders from GitHub, Slack, Yelp, and other big names, so people clearly see value in its business.
+However, the future looks very promising for Netlify—it recently secured a whopping [$53 million in Series C funding](https://www.netlify.com/press/after-onboarding-800000-developers-netlify-raises-53m-in-series-c-funding-to-fuel-enterprise-growth/). Past investors of the company have included founders from GitHub, Slack, Yelp, and other big names, so people must see value in its business.
 
 Having switched from GitHub Pages to Netlify, I feel like I have far more control over my site. The only downside is that if I want to take advantage of more features, their [paid plans are pretty expensive](https://www.netlify.com/pricing/). But I don't anticipate this being a problem—the free tier has everything I need, and then some.

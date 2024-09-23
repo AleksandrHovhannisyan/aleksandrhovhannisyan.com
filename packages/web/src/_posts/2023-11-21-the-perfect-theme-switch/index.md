@@ -28,7 +28,7 @@ Except for a few minor differences, this implementation is similar to those of o
 
 We'll use CSS custom properties to define the colors for our light and dark themes. I'll scope these variables under the root element since it's the only common ancestor of all elements on a web page—and, importantly, the only such element that JavaScript can reference in a script that's placed in the `<head>` of a document (why this matters will become clear later).
 
-For the sake of brevity, I'll use black and white for the colors; you're obviously free to use whatever colors and variable names you want:
+For the sake of brevity, I'll use black and white for the colors; you're free to use whatever colors and variable names you want:
 
 ```css {data-file="styles.css" data-copyable="true"}
 /* Light theme */

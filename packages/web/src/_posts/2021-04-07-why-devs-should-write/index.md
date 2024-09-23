@@ -16,7 +16,7 @@ For starters...
 
 ## Writing Improves Your Communication
 
-This one's fairly obvious, but it deserves some elaboration anyway. Too many developers focus on developing their core technical skills at the expense of soft skills like writing. This imbalance can lead to poor performance in certain areas of your work where writing (and communication in general) are more important than coding.
+Too many developers focus on developing their core technical skills at the expense of soft skills like writing. This imbalance can lead to poor performance in certain areas of your work where writing (and communication in general) are more important than coding.
 
 Especially in today's increasingly remote work environment, it's more important than ever to be able to write effectively, no matter what your job is or in what sector you work. But writing, like any skill, requires practice to perfect. The more you write, the better you write. And the better you write, the more clearly you're able to communicate new ideas and information to others.
 

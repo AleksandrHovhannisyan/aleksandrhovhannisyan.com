@@ -739,7 +739,7 @@ x   01100
 —————————
 ```
 
-Obviously, this is going to be more involved in binary since we're working with bits (and thus longer strings), but the logic is still the same. In fact, beyond having to write out so many intermediate results, we actually have it much easier over in binary. Whenever a digit is $1$, you simply copy down the first multiplicand, padded with zeros. Whenever it's a zero times the first multiplicand, the result is zero!
+This is going to be slightly more involved in binary since we're working with bits (and thus longer strings), but the logic is still the same. In fact, beyond having to write out so many intermediate results, we actually have it much easier over in binary. Whenever a digit is $1$, you simply copy down the first multiplicand, padded with zeros. Whenever it's a zero times the first multiplicand, the result is zero!
 
 ```
       010101
