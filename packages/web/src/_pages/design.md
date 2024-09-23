@@ -13,16 +13,13 @@ scripts:
 
 ## Fonts
 
-{% assign steps = "xs,sm,base,md,lg,xl,2xl,3xl,4xl,5xl" | split: "," %}
-{%- for entry in fonts %}
-  {% assign fontType = entry | first %}
-  {% assign font = entry | last %}
-  {% assign family = font.family %}
-### {{ fontType }} ({{ family }})
+{% assign fontSizeSteps = "xs,sm,base,md,lg,xl,2xl,3xl,4xl,5xl" | split: "," %}
+
+### body (Source Sans)
 
 <div class="scroll-x">
   <table>
-    <caption>{{ family }} rendered at different font sizes</caption>
+    <caption>Source Sans rendered at different font sizes</caption>
     <thead>
       <tr>
         <th scope="col">Size</th>
@@ -30,16 +27,37 @@ scripts:
       </tr>
     </thead>
     <tbody>
-      {%- for step in steps -%}
+      {%- for step in fontSizeSteps -%}
         <tr>
           <td>{{ step }}</td>
-          <td class="size-font-{{ step }}" style="font-family: var(--font-family-{{ fontType }});">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit mi augue, sit amet sagittis ligula pellentesque ac. Donec sed varius arcu.</td>
+          <td class="size-font-{{ step }}" style="font-family: var(--font-family-body);">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit mi augue, sit amet sagittis ligula pellentesque ac. Donec sed varius arcu.</td>
         </tr>
       {%- endfor -%}
     </tbody>
   </table>
 </div>
-{% endfor %}
+
+### mono (Source Code)
+
+<div class="scroll-x">
+  <table>
+    <caption>Source Code rendered at different font sizes</caption>
+    <thead>
+      <tr>
+        <th scope="col">Size</th>
+        <th scope="col">Demo</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%- for step in fontSizeSteps -%}
+        <tr>
+          <td>{{ step }}</td>
+          <td class="size-font-{{ step }}" style="font-family: var(--font-family-mono);">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse blandit mi augue, sit amet sagittis ligula pellentesque ac. Donec sed varius arcu.</td>
+        </tr>
+      {%- endfor -%}
+    </tbody>
+  </table>
+</div>
 
 ## Colors
 

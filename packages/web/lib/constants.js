@@ -18,18 +18,3 @@ export const scriptDirs = {
   input: path.join(dir.input, dir.assets, 'scripts'),
   output: path.join(dir.output, dir.assets, 'scripts'),
 };
-
-export const FontVariant = {
-  REGULAR: 'regular',
-  MEDIUM: 'medium',
-  BOLD: 'bold',
-};
-
-export const FontStyle = {
-  NORMAL: 'normal',
-  ITALIC: 'italic',
-};
-
-export const FontDisplay = {
-  SWAP: 'swap',
-};

@@ -38,6 +38,3 @@ export const sanitizeHtml = (html) => {
  * @param {string} pathString
  */
 export const withoutBaseDirectory = (pathString) => pathString.substring(pathString.indexOf(path.sep));
-
-/** Helper to auto-prefix a font src url with the path to local fonts. */
-export const getFontUrl = (src) => path.join(`/assets/fonts`, src);

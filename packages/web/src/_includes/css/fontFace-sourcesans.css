@@ -1,0 +1,55 @@
+@font-face {
+  font-family: body-fallback-1;
+  src: local('Segoe UI');
+  ascent-override: 108.8942%;
+  descent-override: 42.5368%;
+  size-adjust: 94.0362%;
+}
+@font-face {
+  font-family: body-fallback-2;
+  src: local('Arial');
+  ascent-override: 108.6538%;
+  descent-override: 42.4429%;
+  size-adjust: 94.2442%;
+}
+@font-face {
+  font-family: body-fallback-3;
+  src: local('Roboto');
+  ascent-override: 108.774%;
+  descent-override: 42.4899%;
+  size-adjust: 94.1401%;
+}
+@font-face {
+  font-family: body-fallback-4;
+  src: local('Ubuntu');
+  ascent-override: 111.5077%;
+  descent-override: 43.5577%;
+  size-adjust: 91.8322%;
+}
+@font-face {
+  font-family: 'Source Sans';
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: local('SourceSansVF'),
+    url('/assets/fonts/sourcesans-variable-latin-roman.woff2') format('woff2 supports variations'),
+    url('/assets/fonts/sourcesans-variable-latin-roman.woff2') format('woff2-variations');
+}
+@font-face {
+  font-family: 'Source Sans';
+  font-style: italic;
+  font-weight: 200 900;
+  font-display: swap;
+  src: local('SourceSansItalicVF'),
+    url('/assets/fonts/sourcesans-variable-latin-italic.woff2') format('woff2 supports variations'),
+    url('/assets/fonts/sourcesans-variable-latin-italic.woff2') format('woff2-variations');
+}
+html {
+  --font-family-body: Source Sans, body-fallback-1, body-fallback-2, body-fallback-3, body-fallback-4;
+  --font-weight-body-regular: 400;
+  --font-weight-body-bold: 700;
+}
+body {
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-body-regular);
+}

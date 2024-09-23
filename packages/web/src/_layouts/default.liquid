@@ -2,7 +2,8 @@
 layout: base
 isThemed: true
 criticalCSS:
-  - css/criticalFontUsage.css
+  - css/fontFace-sourcesans.css
+  - css/fontFace-sourcecode.css
 stylesheets:
   - /assets/styles/main.css
 eleventyComputed:
@@ -14,7 +15,7 @@ eleventyComputed:
     -
       as: font
       type: font/woff2
-      href: "{{ fonts.body.variants.roman.url }}"
+      href: /assets/fonts/sourcesans-variable-latin-roman.woff2
       crossorigin: true
 ---
 

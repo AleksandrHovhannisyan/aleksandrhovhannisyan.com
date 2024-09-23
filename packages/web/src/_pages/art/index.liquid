@@ -5,6 +5,9 @@ layout: base
 keywords:
   - css art
 permalink: /art/
+criticalCSS:
+  - css/fontFace-sourcecode.css
+  - css/fontFace-art.css
 stylesheets:
   - /assets/styles/art.css
 eleventyComputed:
@@ -12,12 +15,12 @@ eleventyComputed:
     -
       as: font
       type: font/woff2
-      href: "{{ fonts.mono.variants.roman.url }}"
+      href: /assets/fonts/sourcecode-latin-roman-variable.woff2
       crossorigin: true
     -
       as: font
       type: font/woff2
-      href: "{{ fonts.display.variants.regular.roman.url }}"
+      href: /assets/fonts/rampartone-latin-400-roman.woff2
       crossorigin: true
 ---
 
