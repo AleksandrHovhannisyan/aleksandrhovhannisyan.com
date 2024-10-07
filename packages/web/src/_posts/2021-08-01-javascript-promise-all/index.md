@@ -334,7 +334,7 @@ Promise.all = (promisesIterable) => {
         .catch((e) => {
           reject(e);
         });
-    }
+    });
   });
 };
 ```
