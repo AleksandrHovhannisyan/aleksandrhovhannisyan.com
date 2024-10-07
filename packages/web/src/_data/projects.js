@@ -16,10 +16,10 @@ const repos = {
     tech: ['c++', 'qt5', 'qtcreator'],
   },
   usGunCrimes: {
-    icon: '⚖️',
-    name: 'U.S. Gun Crimes',
-    repo: 'CIS4301-Project-University-of-Florida/U.S.-Gun-Crime',
-    tech: ['react', 'typescript', 'sql'],
+    icon: '<img src="https://raw.githubusercontent.com/AleksandrHovhannisyan/blur/refs/heads/master/public/icon-128.png" alt="" width="32" height="32" />',
+    name: 'Blur',
+    repo: 'AleksandrHovhannisyan/blur',
+    tech: ['typescript', 'css', 'vite'],
   },
   raycasting: {
     icon: '🎮',
