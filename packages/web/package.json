@@ -6,7 +6,8 @@
   "repository": "git@github.com:AleksandrHovhannisyan/aleksandrhovhannisyan.com.git",
   "author": "AleksandrHovhannisyan <aleksandrhovhannisyan@gmail.com>",
   "scripts": {
-    "clean": "rm -rf dist .cache",
+    "clean:all": "pnpm run clean && rm -rf .cache",
+    "clean": "rm -rf dist",
     "debug": "DEBUG=Eleventy* ELEVENTY_ENV=development npx @11ty/eleventy --serve --incremental --port=4001",
     "dev": "pnpm run clean && pnpm -F web --parallel --aggregate-output /^dev:/",
     "dev:html": "ELEVENTY_ENV=development npx @11ty/eleventy --serve --incremental --port=4001",
