@@ -6,17 +6,15 @@ blockquote {
   border-inline-start: functions.size("spacing", "-3") solid;
   padding: 0 functions.size("relative", "2");
 
-  p {
-    &:first-of-type {
-      &::before {
-        content: open-quote;
-      }
+  > .rhythm > :first-child {
+    &::before {
+      content: open-quote;
     }
+  }
 
-    &:last-of-type {
-      &::after {
-        content: close-quote;
-      }
+  > .rhythm > :last-child {
+    &::after {
+      content: close-quote;
     }
   }
 }
