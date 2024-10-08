@@ -7,7 +7,7 @@ layout: about
 
 ![](../assets/images/profile-photo.jpg){.float .right .circle}
 
-<p style="margin: 0">Thanks for dropping by! My name's Aleksandr—and yes, that's spelled <em>without</em> an <code>e</code> between the <code>d</code> and the <code>r</code>, pronounced just like <em>Alexander</em>. Don't worry about my last name, though; it's quite long, and most people butcher it anyway.</p>
+Thanks for dropping by! My name's Aleksandr—and yes, that's spelled _without_ an `e` between the `d` and the `r`, pronounced just like _Alexander_. Don't worry about my last name, though; it's quite long, and most people butcher it anyway.
 
 Speaking of last names, if mine hasn't already [betrayed me](http://www.armeniapedia.org/wiki/Armenian_Last_Names), I was originally born in Armenia, a beautiful country nestled between Europe, Asia, and a bunch of biblically old mountains. You can almost spot it on a world map if you squint hard enough.
 
