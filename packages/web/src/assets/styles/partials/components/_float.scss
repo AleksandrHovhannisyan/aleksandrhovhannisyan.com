@@ -3,7 +3,7 @@
 
 .float {
   --spacing: #{functions.size("spacing", "-2")};
-  max-width: functions.to-rems(160px);
+  max-width: functions.to-rems(128px);
   margin-block-end: var(--spacing);
 
   &.right {
