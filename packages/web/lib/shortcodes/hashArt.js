@@ -10,8 +10,8 @@ export default function hashArt(hash) {
   // Markup for the grid
   let result = `<svg
         viewBox="0 0 12 12"
-        width="100"
-        height="100"
+        width="192"
+        height="192"
         class="hash-art"
         role="img"
         aria-labelledby="${id}"

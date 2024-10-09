@@ -1,9 +1,6 @@
 @use "../functions";
 
 .hash-art {
-  width: calc(12 * #{functions.size("spacing", "0")});
-  height: auto;
-  border: solid 12px functions.color("text", "emphasis");
   filter: brightness(82%);
 
   [data-value="0"] {
