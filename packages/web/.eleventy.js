@@ -24,7 +24,7 @@ import {
   formatDate,
   toAbsoluteUrl,
   getLatestCollectionItemDate,
-  makeCleanCSS,
+  cleanCSS,
   minifyJS,
   toAbsoluteImageUrl,
   pathParse,
@@ -80,7 +80,7 @@ export default function eleventy(eleventyConfig) {
   eleventyConfig.addFilter('jsonStringify', JSON.stringify);
   eleventyConfig.addFilter('jsonParse', JSON.parse);
   eleventyConfig.addFilter('getLatestCollectionItemDate', getLatestCollectionItemDate);
-  eleventyConfig.addFilter('cleanCSS', makeCleanCSS());
+  eleventyConfig.addFilter('cleanCSS', cleanCSS);
   eleventyConfig.addFilter('minifyJS', minifyJS);
   eleventyConfig.addFilter('keys', Object.keys);
   eleventyConfig.addFilter('values', Object.values);

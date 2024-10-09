@@ -38,3 +38,21 @@ export const sanitizeHtml = (html) => {
  * @param {string} pathString
  */
 export const withoutBaseDirectory = (pathString) => pathString.substring(pathString.indexOf(path.sep));
+
+/**
+ * Memoizes any function.
+ * @param {() => Promise<any>} fn
+ */
+export const memoize = (fn) => {
+  const cache = new Map();
+
+  return async (...args) => {
+    const key = JSON.stringify(args);
+    if (cache.get(key)) {
+      return cache.get(key);
+    }
+    const value = await fn.apply(this, args);
+    cache.set(key, value);
+    return value;
+  };
+};

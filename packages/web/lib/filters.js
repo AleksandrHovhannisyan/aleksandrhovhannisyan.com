@@ -7,7 +7,7 @@ import dayjs from 'dayjs';
 import { markdown } from './plugins/markdown.js';
 import site from '../src/_data/site.js';
 import Image from '@11ty/eleventy-img';
-import { withoutBaseDirectory } from './utils.js';
+import { memoize, withoutBaseDirectory } from './utils.js';
 import { imagePaths } from './constants.js';
 
 /** Returns the first `limit` elements of the the given array. */
@@ -82,31 +82,17 @@ export const getLatestCollectionItemDate = (collection) => {
   return latestItem?.data?.lastUpdated ?? latestItem?.date;
 };
 
-/** Returns an optimized CSS minifier function. */
-export const makeCleanCSS = () => {
-  // Currently, the cleanCSS filter is being called on essentially the same CSS for every single page
-  // with the same exact input. Caching yields about a ~6x performance increase.
-  const cache = {};
-  const cleaner = new CleanCSS({});
+/** Minifies the given css string. */
+export const cleanCSS = memoize((input) => {
+  const { styles } = new CleanCSS({}).minify(input);
+  return styles;
+});
 
-  /** Given a css string, returns the minified css. */
-  return (input) => {
-    let key = JSON.stringify(input);
-    if (!cache[key]) {
-      const { styles } = cleaner.minify(input);
-      cache[key] = styles;
-    }
-    return cache[key];
-  };
-};
-
-/** Minifies the given source JS (string).
- * @param {string} js The JavaScript to minify, provided as a string.
- */
-export const minifyJS = async (js) => {
+/** Minifies the given source JS (string). */
+export const minifyJS = memoize(async (js) => {
   const { code } = await esbuild.transform(js, { minify: true });
   return code;
-};
+});
 
 /**
  * Returns the file name or directory name of a path.
