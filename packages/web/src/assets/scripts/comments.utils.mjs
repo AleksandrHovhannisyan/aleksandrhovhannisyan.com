@@ -76,9 +76,11 @@ export const renderComments = (comments) => {
     throw new CommentsError('No comments yet.');
   }
   const commentSection = document.querySelector('#comments');
-  const commentsCounter = commentSection.querySelector('#comments-count');
-  const commentsList = commentSection.querySelector('ol');
-  commentsCounter.innerText = `${comments.length} `;
+  const counter = commentSection.querySelector('#comments-count');
+  const list = document.createElement('ol');
+  list.classList.add('rhythm');
+  list.style.setProperty('--rhythm', '2lh');
+  counter.innerText = `${comments.length} `;
   // https://frontendmasters.com/blog/patterns-for-memory-efficient-dom-manipulation/#approach-2-use-createdocumentfragment-with-appendchild-to-batch-inserts
   const fragment = document.createDocumentFragment();
   comments.forEach((comment) => {
@@ -87,5 +89,6 @@ export const renderComments = (comments) => {
     fragment.appendChild(commentNode);
   });
   // ... but append to actual list once at the end, to avoid unnecessary reflow from `n` appends
-  commentsList.appendChild(fragment);
+  list.appendChild(fragment);
+  commentSection.appendChild(list);
 };

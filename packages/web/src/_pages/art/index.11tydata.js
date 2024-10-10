@@ -9,6 +9,7 @@ export default {
         card: 'summary_large_image',
       },
       image: (data) => {
+        if (!data.page.url) return;
         return toAbsoluteImageUrl({
           src: 'src/_pages/art/og-art.png',
           outputDir: path.join(dir.output, data.page.url),

@@ -131,7 +131,9 @@ scripts:
 
 ### Button
 
-<button class="button" type="button">Click me</button>
+<button class="button primary" type="button">Primary</button>
+
+<button class="button secondary" type="button">Secondary</button>
 
 ### Inline Code
 

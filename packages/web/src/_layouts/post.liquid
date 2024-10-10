@@ -40,27 +40,19 @@ eleventyComputed:
           </div>
         </li>
       </template>
-      <section id="comments" class="rhythm" data-comments-id="{{ commentsId }}">
+      <section id="comments" class="rhythm" data-comments-id="{{ commentsId }}" aria-live="assertive">
         <div class="rhythm">
-          <div class="repel align-center gap-0">
-            <h2>Comments <span id="comments-count"></span></h2>
-            <a
-              class="button primary comment-button"
-              href="https://github.com/{{ site.repo.owner }}/{{ site.repo.name }}/issues/{{ commentsId }}"
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              Comment on GitHub
-            </a>
-          </div>
+          <h2>Comments <span id="comments-count"></span></h2>
           <p class="comments-explanation">
-            Comment system powered by the GitHub Issues API. Post a comment on GitHub, and it'll show up below when you reload the page. (Learn more about <a href="/blog/static-site-comments-github-issues/">how it works</a>.)
+            Comment system powered by the GitHub Issues API. 
+          <a
+            href="https://github.com/{{ site.repo.owner }}/{{ site.repo.name }}/issues/{{ commentsId }}"
+          ><strong>Post a comment on GitHub</strong></a>, and it'll show up below when you reload the page. (Learn more about <a href="/blog/static-site-comments-github-issues/">how it works</a>.)
           </p>
         </div>
         <p id="comments-placeholder" class="text-center">
           <button id="load-comments" type="button" class="button secondary">Load comments</button>
         </p>
-        <ol class="rhythm" style="--rhythm: 2lh;" aria-live="assertive"></ol>
       </section>
     {%- endif -%}
   </div>

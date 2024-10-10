@@ -10,11 +10,12 @@
   text-decoration: none;
   background-color: var(--color-bg-button);
   color: var(--color-fg-button);
+  border: solid;
 }
 
 .button.secondary {
   --color-bg-button: #{functions.color("surface", "1")};
-  border: solid var(--color-fg-button);
+  border-color: var(--color-fg-button);
 
   &:is(:focus, :hover) {
     --color-bg-button: #{functions.color("text", "normal")};
@@ -26,6 +27,7 @@
 .button.primary {
   --color-bg-button: #{functions.color("surface", "8")};
   --color-fg-button: #{functions.color("text", "inverted")};
+  border-color: var(--color-bg-button);
 
   &:is(:focus, :hover) {
     --color-bg-button: #{functions.color("surface", "6")};

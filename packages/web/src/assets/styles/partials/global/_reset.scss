@@ -50,12 +50,8 @@
   --outline-style: solid;
   --outline-color: currentcolor;
 
-  &:focus {
+  &:focus-visible {
     outline: var(--outline-thickness) var(--outline-style) var(--outline-color);
     outline-offset: var(--outline-offset, 0);
-
-    &:not(:focus-visible) {
-      outline: none;
-    }
   }
 }

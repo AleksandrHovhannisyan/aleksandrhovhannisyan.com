@@ -9,12 +9,6 @@
   border-top: solid 1px functions.color("border", "0");
 }
 
-.comment-button {
-  display: flex;
-  align-items: center;
-  gap: functions.size("spacing", "-2");
-}
-
 .post-comment {
   &-meta > * {
     display: inline;
@@ -53,7 +47,5 @@
   color: functions.color("text", "soft");
   vertical-align: middle;
   padding-inline-start: 0.25ch;
-  // reserve a reasonable amount of space ahead of time to prevent layout shifts on mobile
-  min-width: 4ch;
   @include mixins.font($size: "base");
 }
