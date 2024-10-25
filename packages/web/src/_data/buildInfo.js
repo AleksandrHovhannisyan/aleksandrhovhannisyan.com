@@ -4,7 +4,7 @@ export default function getBuildInfo() {
   // Credit: https://stackoverflow.com/a/34518749/5323344
   const latestGitCommitHash = childProcess.execSync(`git rev-parse HEAD`).toString().trim();
   const now = new Date();
-  const timeZone = 'UTC';
+  const timeZone = 'CST';
   const buildTime = new Intl.DateTimeFormat('en-US', {
     dateStyle: 'long',
     timeStyle: 'short',
