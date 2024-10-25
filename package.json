@@ -12,9 +12,6 @@
     "lint": "pnpm run -r /^lint$/",
     "test": "pnpm run -r /^test$/"
   },
-  "dependencies": {
-    "dayjs": "^1.10.5"
-  },
   "devDependencies": {
     "eslint": "^8.13.0",
     "eslint-config-prettier": "^8.5.0",

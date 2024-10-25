@@ -1,6 +1,7 @@
 import sanitize from 'sanitize-html';
 import slugify from 'slugify';
 import path from 'node:path';
+import site from '../src/_data/site.js';
 
 /** Converts the given string to a slug form. */
 export const slugifyString = (str) => {
@@ -56,3 +57,26 @@ export const memoize = (fn) => {
     return value;
   };
 };
+
+/**
+ * Interprets the given date object as a human-readable relative time string.
+ * @credit Lewis J Ellis https://gist.github.com/LewisJEllis/9ad1f35d102de8eee78f6bd081d486ad
+ */
+function makeRelativeTimeStringGetter() {
+  const cutoffSeconds = [60, 3600, 86400, 86400 * 7, 86400 * 30, 86400 * 365, Infinity];
+  /** @type {Intl.RelativeTimeFormatUnit[]} */
+  const units = ['second', 'minute', 'hour', 'day', 'week', 'month', 'year'];
+  const relativeTimeFormatter = new Intl.RelativeTimeFormat(site.lang, { numeric: 'auto' });
+
+  /**
+   * @param {Date|string} date
+   */
+  return function (date) {
+    const timeMs = new Date(date).getTime();
+    const deltaSeconds = Math.round((timeMs - Date.now()) / 1000);
+    const unitIndex = cutoffSeconds.findIndex((cutoff) => cutoff > Math.abs(deltaSeconds));
+    const divisor = unitIndex ? cutoffSeconds[unitIndex - 1] : 1;
+    return relativeTimeFormatter.format(Math.floor(deltaSeconds / divisor), units[unitIndex]);
+  };
+}
+export const getRelativeTimeString = makeRelativeTimeStringGetter();

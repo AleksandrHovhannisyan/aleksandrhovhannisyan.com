@@ -1,12 +1,9 @@
 import { Octokit } from '@octokit/rest';
 import { createTokenAuth } from '@octokit/auth-token';
-import { sanitizeHtml } from 'web/lib/utils.js';
+import { sanitizeHtml, getRelativeTimeString } from 'web/lib/utils.js';
 import { markdown } from 'web/lib/plugins/markdown.js';
 import site from 'web/src/_data/site.js';
-import dayjs from 'dayjs';
-import dayjsRelativeTimePlugin from 'dayjs/plugin/relativeTime.js';
 import type { PostComment } from 'web/lib/types.js';
-dayjs.extend(dayjsRelativeTimePlugin);
 
 export default {
   /** Returns comments for a given post by ID. https://developers.cloudflare.com/workers/runtime-apis/handlers/
@@ -50,7 +47,7 @@ export default {
         const resetDate = new Date(0);
         // From the docs: "The time at which the current rate limit window resets in UTC epoch seconds."
         resetDate.setUTCSeconds(rateLimitInfo.rate.reset);
-        const retryTimeRelative = dayjs(resetDate).fromNow();
+        const retryTimeRelative = getRelativeTimeString(resetDate);
         const retryTimeSeconds = Math.floor((resetDate.getTime() - Date.now()) / 1000);
         return new Response(JSON.stringify({ error: `API rate limit exceeded. Try again ${retryTimeRelative}.` }), {
           status: 503,
@@ -79,7 +76,7 @@ export default {
               isAuthor: comment.author_association === 'OWNER',
             },
             dateTime: comment.created_at,
-            dateRelative: dayjs(comment.created_at).fromNow(),
+            dateRelative: getRelativeTimeString(comment.created_at),
             isEdited: comment.created_at !== comment.updated_at,
             // Sanitize comment body to prevent XSS
             body: sanitizeHtml(markdown.render(comment.body ?? '')),

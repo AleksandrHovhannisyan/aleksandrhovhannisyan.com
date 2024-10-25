@@ -1,3 +1,3 @@
 {%- assign datetimeFormat = datetimeFormat | default: "YYYY-MM-DD" -%}
-{%- assign dateFormat = dateFormat | default: "MM/DD/YYYY" -%}
+{%- assign dateFormat = dateFormat | default: "MMMM DD, YYYY" -%}
 <time datetime="{{ date | formatDate: datetimeFormat }}" {% if class %}class="{{ class }}"{% endif %}>{{ date | formatDate: dateFormat }}</time>

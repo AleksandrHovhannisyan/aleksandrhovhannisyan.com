@@ -3,7 +3,6 @@ import esbuild from 'esbuild';
 import path from 'node:path';
 import get from 'lodash/get.js';
 import sortBy from 'lodash/sortBy.js';
-import dayjs from 'dayjs';
 import { markdown } from './plugins/markdown.js';
 import site from '../src/_data/site.js';
 import Image from '@11ty/eleventy-img';
@@ -54,11 +53,35 @@ export const toAbsoluteImageUrl = async ({ src, outputDir = imagePaths.output, w
   return toAbsoluteUrl(Object.values(stats)[0][0].url);
 };
 
-/** Converts the given date string to ISO8601/RFC-3339 format. */
-export const toISOString = (dateString) => dayjs(dateString).toISOString();
+/** Converts the given date string to ISO8601/RFC-3339 format.
+ * @param {Date|string} date
+ */
+export const toISOString = (date) => new Date(date).toISOString();
 
-/** Formats a date using dayjs's conventions: https://day.js.org/docs/en/display/format */
-export const formatDate = (date, format) => dayjs(date).format(format);
+function makeDateFormatter() {
+  const mmmmDDYYYY = Intl.DateTimeFormat(site.lang, { month: 'long', day: '2-digit', year: 'numeric' });
+
+  /**
+   * @param {Date|string} dateLike
+   * @param {'YYYY-MM-DD'|'MMMM DD, YYYY'} format
+   */
+  return function formatDate(dateLike, format) {
+    const date = new Date(dateLike);
+    switch (format) {
+      case 'YYYY-MM-DD': {
+        return toISOString(date).split('T')[0];
+      }
+      case 'MMMM DD, YYYY': {
+        return mmmmDDYYYY.format(date);
+      }
+      default: {
+        return date.toDateString();
+      }
+    }
+  };
+}
+/** Formats a date as a string */
+export const formatDate = makeDateFormatter();
 
 /**
  * @param {*} collection - an array of collection items that are assumed to have either data.lastUpdated or a date property
@@ -68,15 +91,9 @@ export const getLatestCollectionItemDate = (collection) => {
   const itemsSortedByLatestDate = collection
     .filter((item) => !!item.data?.lastUpdated || !!item.date)
     .sort((item1, item2) => {
-      const date1 = item1.data?.lastUpdated ?? item1.date;
-      const date2 = item2.data?.lastUpdated ?? item2.date;
-      if (dayjs(date1).isAfter(date2)) {
-        return -1;
-      }
-      if (dayjs(date2).isAfter(date1)) {
-        return 1;
-      }
-      return 0;
+      const date1 = new Date(item1.data?.lastUpdated ?? item1.date);
+      const date2 = new Date(item2.data?.lastUpdated ?? item2.date);
+      return date2 - date1;
     });
   const latestItem = itemsSortedByLatestDate[0];
   return latestItem?.data?.lastUpdated ?? latestItem?.date;
