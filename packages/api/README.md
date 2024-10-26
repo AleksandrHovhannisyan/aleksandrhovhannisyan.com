@@ -1,6 +1,6 @@
-# Functions
+# API
 
-Serverless functions used by my front end as an API. Currently running as Cloudflare Workers.
+Back end code used by the `web` package. Currently running as Cloudflare Workers.
 
 | Function                                         | Description                                              | HTTP Route (configured in Cloudflare) |
 | ------------------------------------------------ | -------------------------------------------------------- | ------------------------------------- |
@@ -17,7 +17,7 @@ See `*.example` files for sample configs.
 
 ## Running a Worker Locally
 
-From the `functions` directory:
+From the `api` directory:
 
 ```
 pnpm dev:comments
@@ -26,12 +26,12 @@ pnpm dev:comments
 From the project root:
 
 ```
-pnpm -F functions dev:comments
+pnpm -F api dev:comments
 ```
 
 ## Deploying a Worker
 
-From the `packages/functions` directory:
+From the `packages/api` directory:
 
 ```
 pnpm deploy:comments
@@ -40,5 +40,5 @@ pnpm deploy:comments
 From the project root:
 
 ```
-pnpm -F functions deploy:comments
+pnpm -F api deploy:comments
 ```

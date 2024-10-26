@@ -30,4 +30,4 @@ This project follows the monorepo pattern.
 Packages can be found in [`pnpm-workspace.yaml`](./pnpm-workspace.yaml):
 
 - [`packages/web`](./packages/web/README.md): front end for my site, hosted on Cloudflare Pages.
-- [`packages/functions`](./packages/functions/README.md): Cloudflare Worker API used by my front end.
+- [`packages/api`](./packages/api/README.md): Cloudflare Worker API used by my front end.
