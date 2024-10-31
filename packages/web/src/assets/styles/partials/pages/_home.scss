@@ -1,11 +1,10 @@
+@use "../tokens" as *;
 @use "../functions";
-@use "../mixins";
 
 .home-page {
-  gap: functions.size("spacing", "8");
-
-  @include mixins.mobile-lg {
-    gap: functions.size("spacing", "12");
-  }
+  gap:
+    functions.clamped(
+      functions.get($tokens, "size", "spacing", "8"),
+      functions.get($tokens, "size", "spacing", "13")
+    );
 }
-

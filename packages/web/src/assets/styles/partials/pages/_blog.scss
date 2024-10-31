@@ -1,10 +1,10 @@
+@use "../tokens" as *;
 @use "../functions";
-@use "../mixins";
 
 .blog-page {
-  gap: functions.size("spacing", "5");
-
-  @include mixins.tablet {
-    gap: functions.size("spacing", "10");
-  }
+  gap:
+    functions.clamped(
+      functions.get($tokens, "size", "spacing", "5"),
+      functions.get($tokens, "size", "spacing", "10")
+    );
 }

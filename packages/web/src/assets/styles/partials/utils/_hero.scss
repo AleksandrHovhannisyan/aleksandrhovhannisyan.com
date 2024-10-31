@@ -2,7 +2,8 @@
 
 .hero {
   > * {
-    max-width: 42ch;
+    text-wrap: balance;
+    max-width: 49ch;
   }
 
   &-title {
@@ -10,6 +11,12 @@
   }
 
   &-subtitle {
-    @include mixins.font($size: "lg", $leading: "sm");
+    @include mixins.font($size: "md");
+  }
+
+  @include mixins.mobile-lg {
+    &-subtitle {
+      @include mixins.font($size: "lg");
+    }
   }
 }
