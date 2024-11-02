@@ -11,12 +11,6 @@
   }
 
   &-subtitle {
-    @include mixins.font($size: "md");
-  }
-
-  @include mixins.mobile-lg {
-    &-subtitle {
-      @include mixins.font($size: "lg");
-    }
+    @include mixins.font($size: "lg");
   }
 }

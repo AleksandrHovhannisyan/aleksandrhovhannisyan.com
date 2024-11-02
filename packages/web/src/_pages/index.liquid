@@ -3,11 +3,15 @@ permalink: /
 ---
 
 <article class="home-page stack">
-  <section class="hero stack gap--2">
-    <h1 class="size-font-5xl">Hi, I&rsquo;m Aleksandr</h1>
-    {% comment %}<p class="size-font-xl">I write scalable, performant, and accessible software for the web. You can learn more <a href="/about/">about me</a>, read <a href="/blog/">my blog</a>, or subscribe to <a href="/feed.xml">my RSS feed</a>.</p>{% endcomment %}
-    {% comment %}<p class="hero-subtitle">I'm a software developer with a deep understanding of web fundamentals and experience writing scalable, performant, and accessible software. You can learn more <a href="/about/">about me</a>, read <a href="/blog/">my blog</a>, or subscribe to <a href="/feed.xml">my RSS feed</a>.</p>{% endcomment %}
-    <p class="hero-subtitle">I&rsquo;m a software developer and the author of this website, where I write about programming, life, and other topics that interest me. You can learn more <a href="/about/">about me</a>, read <a href="/blog/">my blog</a>, or subscribe to <a href="/feed.xml">my RSS feed</a>.</p>
+  <section class="home-page-hero">
+    <div class="hero stack gap--2">
+      <h1 class="size-font-5xl">Hi, I&rsquo;m Aleksandr</h1>
+      <p class="hero-subtitle">I&rsquo;m a software developer and the author of this website, where I write about programming, life, and other topics that interest me. You can learn more <a href="/about/">about me</a>, read <a href="/blog/">my blog</a>, or subscribe to <a href="/feed.xml">my RSS feed</a>.</p>
+    </div>
+    <figure class="home-hash-art">
+      {% hashArt buildInfo.hash %}
+      <figcaption><a href="/blog/144-shades-of-gray/">What's this?</a></figcaption>
+    </figure>
   </section>
   <section class="stack gap-0">
     <h2 id="recent-posts">Recent Posts</h2>

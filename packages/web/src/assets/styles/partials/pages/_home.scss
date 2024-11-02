@@ -1,4 +1,5 @@
 @use "../tokens" as *;
+@use "../mixins";
 @use "../functions";
 
 .home-page {
@@ -7,4 +8,20 @@
       functions.get($tokens, "size", "spacing", "8"),
       functions.get($tokens, "size", "spacing", "13")
     );
+}
+
+.home-page-hero {
+  display: flex;
+  justify-content: space-between;
+  gap: functions.size("spacing", "5");
+}
+
+.home-hash-art {
+  display: none;
+
+  @include mixins.desktop {
+    align-self: flex-end;
+    display: unset;
+    padding-block-start: 1ex;
+  }
 }
