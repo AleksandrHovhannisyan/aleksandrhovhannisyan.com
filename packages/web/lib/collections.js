@@ -51,7 +51,7 @@ export const getAllUniqueCategories = (collection) => {
 // Blog posts by category, for pagination
 // Adapted for use from: https://www.webstoemp.com/blog/basic-custom-taxonomies-with-eleventy/
 export const getPostsByCategory = (collection) => {
-  const postsPerPage = 30;
+  const postsPerPage = 100;
   const blogPostsByCategory = [];
 
   const allPosts = getAllPosts(collection);
