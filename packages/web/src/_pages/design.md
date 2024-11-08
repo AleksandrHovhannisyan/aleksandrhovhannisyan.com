@@ -117,9 +117,9 @@ scripts:
 
 ### Pill
 
-<a href="#pill" class="pill" data-shape="round">regular pill</a>
+<a href="#pill" class="pill" data-shape="round">regular</a>
 
-<a href="#pill" class="pill" data-shape="round">small pill</a>
+<a href="#pill" class="pill" data-shape="round" data-size="sm">small</a>
 
 ### Pill Group
 
