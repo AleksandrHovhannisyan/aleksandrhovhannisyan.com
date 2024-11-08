@@ -24,21 +24,22 @@ I decided to take my git hash and convert it to a 12-by-12 grid of tiles. Natura
 The code to do this is short—it just reads my latest Git commit hash at build time and parses it one bit at a time, interpreting a zero as black and a one as white. Note that I'm excluding the last 16 bits to get a perfect square (144).
 
 ```js {data-copyable="true"}
+const SIZE = 20;
 // Note: Each git hash is 20 bytes long (160 bits)
 const hash = childProcess.execSync(`git rev-parse HEAD`).toString().trim();
 // Markup for the grid
-let result = `<svg viewBox="0 0 12 12">`;
+let result = `<svg viewBox="0 0 ${SIZE} ${SIZE}">`;
 // Read git hash as an array of bytes. Stop at 18*8 = 144 bits because it's the largest perfect square < 160.
 const bytes = new Uint8Array(Buffer.from(hash, 'hex'));
 for (let i = 0; i < 18; i++) {
   const byte = bytes[i];
   // Parse byte one bit at a time, in Big Endian order (LTR)
   for (let j = 7; j >= 0; j--) {
-    const bitIndex = i * 8 + (7 - j);
     // e.g., 10011010 => [1, 0, 0, 1, 1, 0, 1, 0]
     const bit = (byte >> j) & 0b00000001;
-    const x = bitIndex % 12;
-    const y = Math.floor(bitIndex / 12);
+    const bitIndex = i * 8 + (7 - j);
+    const x = bitIndex % SIZE;
+    const y = Math.floor(bitIndex / SIZE);
     result += `<rect x="${x}" y="${y}" width="1" height="1" fill="hsl(0deg 0% ${bit * 100}%)"></rect>`;
   }
 }
