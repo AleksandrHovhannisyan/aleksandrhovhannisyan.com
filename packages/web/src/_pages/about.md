@@ -36,7 +36,7 @@ I won't bore you too much with my work history, though; that's what [my LinkedIn
 
 Below are select projects that I'm proud of:
 
-<ul class="col-wrap align-center">
+<ul class="grid gap-5 col-2 align-center">
   {%- for project in projects -%}
     <li class="project-wrapper">
       {%- include "projectCard.liquid" project: project -%}

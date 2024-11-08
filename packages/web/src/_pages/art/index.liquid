@@ -44,7 +44,7 @@ eleventyComputed:
   <header class="artwork-page-header" class="text-center">
     <h1 class="title">CSS Art</h1>
   </header>
-  <ol class="artwork-list col-wrap col-3">
+  <ol class="artwork-list grid gap-8">
     {%- assign artCollection = collections.art | sortByKey: 'data.order' | reverse -%}
     {%- for artwork in artCollection -%}
       <li {% if artwork.data.columns %}class="col-{{ artwork.data.columns }}"{% endif %}>

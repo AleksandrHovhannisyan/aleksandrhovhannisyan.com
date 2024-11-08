@@ -3,8 +3,6 @@
 
 .project {
   &-wrapper {
-    --container-width: #{functions.to-rems(800px)};
-
     // Prevents the dreaded "doom flicker": https://www.joshwcomeau.com/animation/css-transitions/#doom-flicker
     &:is(:hover, :focus-within) {
       .project {
