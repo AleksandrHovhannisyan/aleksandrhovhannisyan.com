@@ -1,16 +1,7 @@
 ---
 layout: blog
-permalink: "/blog/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumber | plus: 1 }}/{% endif %}"
-pagination:
-  data: collections.posts
-  size: 100
-  alias: posts
-eleventyComputed:
-  title: "Blog{% if pagination.pageNumber > 0 %} (Page {{ pagination.pageNumber | plus: 1 }}/{{ pagination.hrefs | size }}){% endif %}"
+title: Blog
+permalink: /blog/
 ---
 
-{% include "postPreviews.liquid" posts: posts, titleLevel: 2 %}
-{%- assign numPages = pagination.hrefs | size -%}
-{%- if numPages > 1 -%}
-  {%- include "pagination.liquid" hrefs: pagination.hrefs -%}
-{%- endif -%}
+{% include "postPreviews.liquid" posts: collections.posts, titleLevel: 2 %}
