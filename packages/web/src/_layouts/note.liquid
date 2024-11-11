@@ -1,0 +1,39 @@
+---
+layout: default
+eleventyComputed:
+  preloads:
+    -
+      as: font
+      type: font/woff2
+      href: /assets/fonts/sourcecode-latin-roman-variable.woff2
+      crossorigin: true
+---
+
+<article class="prose rhythm">
+  <h1>{{ title }}</h1>
+  <div class="rhythm">
+    {{ content }}
+  </div>
+</article>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{ page.url | toAbsoluteUrl }}"
+    },
+    "headline": {{ title | escape | jsonStringify }},
+    {% if openGraph.image -%}
+    "image": ["{{ openGraph.image }}"],
+    {% endif -%}
+    "datePublished": {{ page.date | jsonStringify }},
+    {% if lastUpdated -%}
+    "dateModified": {{ lastUpdated | jsonStringify }},
+    {% endif -%}
+    "author": {
+      "@type": "Person",
+      "name": "{{ site.author.name }}"
+    }
+  }
+</script>

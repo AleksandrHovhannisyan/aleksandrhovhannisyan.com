@@ -1,0 +1,22 @@
+---
+layout: default
+title: Notes
+description: Reusable code snippets and other technical notes. Unless otherwise noted, no attribution is required.
+permalink: /notes/
+openGraph:
+    image: null
+---
+
+<article class="stack blog-page">
+    <header class="hero stack gap--2">
+        <h1 class="hero-title">Notes</h1>
+        <p class="hero-subtitle">Reusable code snippets and other technical notes. Unless otherwise noted, no attribution is required.</p>
+    </header>
+    <div class="size-font-md">
+        <ul>
+            {% for note in collections.notes %}
+                <li><a href="{{ note.url }}">{{ note.data.title }}</a></li>
+            {% endfor %}
+        </ul>    
+    </div>
+</article>
