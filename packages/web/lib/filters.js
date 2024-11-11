@@ -1,12 +1,10 @@
 import CleanCSS from 'clean-css';
 import esbuild from 'esbuild';
 import path from 'node:path';
-import get from 'lodash/get.js';
-import sortBy from 'lodash/sortBy.js';
 import { markdown } from './plugins/markdown.js';
 import site from '../src/_data/site.js';
 import Image from '@11ty/eleventy-img';
-import { memoize, withoutBaseDirectory } from './utils.js';
+import { get, memoize, withoutBaseDirectory } from './utils.js';
 import { imagePaths } from './constants.js';
 
 /** Returns the first `limit` elements of the the given array. */
@@ -17,9 +15,18 @@ export const limit = (array, limit) => {
   return array.slice(0, limit);
 };
 
-/** Sorts the given array of objects by a string denoting chained key paths. */
+/** Sorts the given array of objects by a string denoting chained key paths.
+ * @param {unknown[]} arrayOfObjects
+ * @param {string} keyPath
+ * @param {'ASC'|'DESC'} [order]
+ */
 export const sortByKey = (arrayOfObjects, keyPath, order = 'ASC') => {
-  const sorted = sortBy(arrayOfObjects, (object) => get(object, keyPath));
+  const sorted = arrayOfObjects.sort((obj1, obj2) => {
+    const val1 = get(obj1, keyPath);
+    const val2 = get(obj2, keyPath);
+    const isString = typeof val1 === 'string' && typeof val2 === 'string';
+    return isString ? val1.localeCompare(val2) : val1 - val2;
+  });
   if (order === 'ASC') return sorted;
   if (order === 'DESC') return sorted.reverse();
   throw new Error(`Invalid sort order: ${order}`);

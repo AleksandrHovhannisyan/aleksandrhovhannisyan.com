@@ -93,9 +93,6 @@ importers:
       feather-icons:
         specifier: 4.28.0
         version: 4.28.0
-      lodash:
-        specifier: 4.17.21
-        version: 4.17.21
       markdown-it:
         specifier: 12.0.6
         version: 12.0.6
@@ -3210,10 +3207,6 @@ packages:
 
   /lodash.truncate@4.4.2:
     resolution: {integrity: sha512-jttmRe7bRse52OsWIMDLaXxWqRAmtIUccAQ3garviCqJjafXOfNMO0yMfNpdD6zbGaTU0P5Nz7e7gAT6cKmJRw==}
-    dev: false
-
-  /lodash@4.17.21:
-    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
     dev: false
 
   /log-update@6.1.0:

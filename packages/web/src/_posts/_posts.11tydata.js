@@ -12,12 +12,12 @@ export default {
         ...data.scripts,
         {
           type: 'module',
-          src: '/assets/scripts/copyCode.mjs',
+          src: '/assets/scripts/copyCode.js',
         },
       ];
       // If the post has comments and comments are enabled, link to the comment script to load them
       if (data.commentsId) {
-        scripts.push(...data.scripts, { type: 'module', src: `/assets/scripts/comments.mjs` });
+        scripts.push(...data.scripts, { type: 'module', src: `/assets/scripts/comments.js` });
       }
       return scripts;
     },

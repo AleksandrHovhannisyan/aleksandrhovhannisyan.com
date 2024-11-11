@@ -1,4 +1,4 @@
-import throttle from 'lodash/throttle.js';
+import { throttle } from '../utils.js';
 
 /**
  * Returns `true` if the given element is in a horizontal RTL writing mode.

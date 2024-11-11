@@ -1,4 +1,4 @@
-import Carousel from '../components/Carousel.mjs';
+import Carousel from '../components/Carousel.js';
 
 const navigationControlsTemplate = document.querySelector('#carousel-controls');
 

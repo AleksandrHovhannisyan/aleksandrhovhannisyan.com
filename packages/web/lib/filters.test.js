@@ -19,34 +19,30 @@ describe('custom 11ty filters', () => {
   });
   describe('sortByKey', () => {
     it('sorts by string values', () => {
-      const posts = [
-        { data: { title: 'My best post' } },
-        { data: { title: 'Another post' } },
-        { data: { title: 'Post 1' } },
-      ];
+      const posts = [{ data: { title: 'A' } }, { data: { title: 'B' } }, { data: { title: 'BB' } }];
       assert.deepStrictEqual(sortByKey(posts, 'data.title', 'DESC'), [
-        { data: { title: 'Post 1' } },
-        { data: { title: 'My best post' } },
-        { data: { title: 'Another post' } },
+        { data: { title: 'BB' } },
+        { data: { title: 'B' } },
+        { data: { title: 'A' } },
       ]);
     });
     it('sorts by numbers', () => {
       const posts = [
-        { data: { title: 'My best post', order: 0 } },
-        { data: { title: 'Another post', order: 2 } },
-        { data: { title: 'Post 1', order: 1 } },
+        { data: { title: 'A', order: 0 } },
+        { data: { title: 'B', order: 2 } },
+        { data: { title: 'C', order: 1 } },
       ];
       assert.deepStrictEqual(sortByKey(posts, 'data.order', 'DESC'), [
-        { data: { title: 'Another post', order: 2 } },
-        { data: { title: 'Post 1', order: 1 } },
-        { data: { title: 'My best post', order: 0 } },
+        { data: { title: 'B', order: 2 } },
+        { data: { title: 'C', order: 1 } },
+        { data: { title: 'A', order: 0 } },
       ]);
     });
     it('throws when provided an invalid order', () => {
       const posts = [
-        { data: { title: 'My best post', order: 0 } },
-        { data: { title: 'Another post', order: 2 } },
-        { data: { title: 'Post 1', order: 1 } },
+        { data: { title: 'A', order: 0 } },
+        { data: { title: 'B', order: 2 } },
+        { data: { title: 'C', order: 1 } },
       ];
       assert.throws(() => sortByKey(posts, 'data.order', 'ABC'));
     });

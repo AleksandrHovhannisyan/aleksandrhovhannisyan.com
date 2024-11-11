@@ -59,6 +59,44 @@ export const memoize = (fn) => {
 };
 
 /**
+ * Returns the property value from an object at the given dot-delimited string path (e.g., `key1.key2.key3`).
+ * @param {Record<string, unknown>} object
+ * @param {string} keyPath
+ * @returns {unknown}
+ */
+export function get(object, keyPath) {
+  const keys = keyPath.split('.');
+  return keys.reduce((subObject, key) => {
+    return subObject[key];
+  }, object);
+}
+
+/**
+ * @param {Map<string, string>} keyMap
+ * @returns {(str: string) => string}
+ */
+function makeStringEscaper(keyMap) {
+  const replacementRegex = new RegExp(`[${Array.from(keyMap.keys()).join('')}]`, 'g');
+  /**
+   * @param {string} string
+   */
+  return function escape(string) {
+    return string.replace(replacementRegex, (char) => keyMap.get(char));
+  };
+}
+
+/** Escapes reserved characters as HTML entities. */
+export const escape = makeStringEscaper(
+  new Map([
+    ['&', '&amp;'],
+    ['<', '&lt;'],
+    ['>', '&gt;'],
+    ['"', '&quot;'],
+    ["'", '&#39;'],
+  ])
+);
+
+/**
  * Interprets the given date object as a human-readable relative time string.
  * @credit Lewis J Ellis https://gist.github.com/LewisJEllis/9ad1f35d102de8eee78f6bd081d486ad
  */

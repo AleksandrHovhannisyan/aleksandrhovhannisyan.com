@@ -8,7 +8,7 @@ excludeFromSitemap: true
 noindex: true
 scripts:
   - type: module
-    src: /assets/scripts/copyCode.mjs
+    src: /assets/scripts/copyCode.js
 ---
 
 ## Fonts

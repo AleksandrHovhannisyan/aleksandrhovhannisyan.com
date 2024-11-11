@@ -1,6 +1,14 @@
 import { it, describe } from 'node:test';
-import { getRelativeTimeString } from './utils.js';
+import { escape, getRelativeTimeString } from './utils.js';
 import assert from 'node:assert';
+
+describe('escape', () => {
+  it('uses html entities', () => {
+    assert.deepStrictEqual(escape(''), '');
+    assert.deepStrictEqual(escape('a & b'), 'a &amp; b');
+    assert.deepStrictEqual(escape('<a href="#">&</a>'), '&lt;a href=&quot;#&quot;&gt;&amp;&lt;/a&gt;');
+  });
+});
 
 describe('getRelativeTimeString', () => {
   it('handles strict boundaries in the past', () => {

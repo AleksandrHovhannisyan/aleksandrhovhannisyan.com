@@ -34,8 +34,7 @@ import { getAllPosts, getAllUniqueCategories, getPostsByCategory } from './lib/c
 import { markdown } from './lib/plugins/markdown.js';
 import { codeDemoOptions } from './lib/plugins/codeDemo.js';
 import { dir, imagePaths, scriptDirs } from './lib/constants.js';
-import { slugifyString } from './lib/utils.js';
-import escape from 'lodash/escape.js';
+import { escape, slugifyString } from './lib/utils.js';
 
 const TEMPLATE_ENGINE = 'liquid';
 
@@ -124,14 +123,14 @@ export default function eleventy(eleventyConfig) {
   eleventyConfig.on('afterBuild', () => {
     return esbuild.build({
       entryPoints: [
-        path.join(scriptDirs.input, 'copyCode.mjs'),
-        path.join(scriptDirs.input, 'demos/carousel.mjs'),
-        path.join(scriptDirs.input, 'comments.mjs'),
+        path.join(scriptDirs.input, 'copyCode.js'),
+        path.join(scriptDirs.input, 'demos/carousel.js'),
+        path.join(scriptDirs.input, 'comments.js'),
       ],
       entryNames: '[dir]/[name]',
       outdir: scriptDirs.output,
       format: 'esm',
-      outExtension: { '.js': '.mjs' },
+      outExtension: { '.js': '.js' },
       bundle: true,
       splitting: true,
       minify: true,
