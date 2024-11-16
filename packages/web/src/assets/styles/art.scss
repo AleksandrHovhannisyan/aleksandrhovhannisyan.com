@@ -13,19 +13,37 @@ html {
   --color-text: black;
   --color-text-soft: hsl(0deg 0% 40%);
   scroll-behavior: smooth;
+  color-scheme: light;
 }
 
 body {
+  // https://www.magicpattern.design/tools/css-backgrounds
+  --color-lines: hsl(0deg 0% 15% / 4%);
+  background-image:
+    linear-gradient(
+      var(--color-lines) 3.6px,
+      transparent 3.6px
+    ),
+    linear-gradient(90deg, var(--color-lines) 3.6px, transparent 3.6px),
+    linear-gradient(var(--color-lines) 1.8px, transparent 1.8px),
+    linear-gradient(90deg, var(--color-lines) 1.8px, #fff 1.8px);
+  background-size: 90px 90px, 90px 90px, 18px 18px, 18px 18px;
+  background-position: -3.6px -3.6px, -3.6px -3.6px, -1.8px -1.8px, -1.8px -1.8px;
   @include mixins.font($family: "mono", $weight: "regular", $size: "base");
+}
+
+.container {
+  max-width: functions.to-rems(1536px);
+  margin-inline: auto;
 }
 
 @keyframes subtitle-pulse {
   from {
-    transform: var(--transform-base) scale(1);
+    scale: 1;
   }
 
   to {
-    transform: var(--transform-base) scale(1.1);
+    scale: 1.1;
   }
 }
 
@@ -56,19 +74,6 @@ body {
   padding: functions.size("spacing", "3");
 
   &-page {
-    // https://www.magicpattern.design/tools/css-backgrounds
-    --color-lines: hsl(0deg 0% 15% / 4%);
-    background-image:
-      linear-gradient(
-        var(--color-lines) 3.6px,
-        transparent 3.6px
-      ),
-      linear-gradient(90deg, var(--color-lines) 3.6px, transparent 3.6px),
-      linear-gradient(var(--color-lines) 1.8px, transparent 1.8px),
-      linear-gradient(90deg, var(--color-lines) 1.8px, #fff 1.8px);
-    background-size: 90px 90px, 90px 90px, 18px 18px, 18px 18px;
-    background-position: -3.6px -3.6px, -3.6px -3.6px, -1.8px -1.8px, -1.8px -1.8px;
-
     @include mixins.tablet-sm {
       &::before,
       &::after {
@@ -111,7 +116,6 @@ body {
 
         @include mixins.tablet-sm {
           --font-size-multiplier: 2;
-          --color-shadow: hsl(0deg 0% 50% / 10%);
         }
 
         @include mixins.desktop-lg {
@@ -119,11 +123,8 @@ body {
         }
 
         &::after {
-          --translate-x: 0;
-          --translate-y: 0;
-          --right: 0;
-          --rotation: 0deg;
-          --transform-base: rotate(var(--rotation)) translate(var(--translate-x), var(--translate-y));
+          translate: 0 0;
+          rotate: 0deg;
 
           content: "Now with double the pixels!";
           display: block;
@@ -132,20 +133,16 @@ body {
           text-shadow: none;
           white-space: nowrap;
           animation: subtitle-pulse 1s ease infinite alternate-reverse;
-          will-change: transform;
+          will-change: scale;
           text-transform: none;
           @include mixins.font($family: "cursive", $weight: "regular", $size: "md");
 
           @include mixins.tablet-sm {
-            --translate-x: 0;
-            --translate-y: -50%;
-            --rotation: 2deg;
-            --left: unset;
-            --top: 0;
-            --right: 0;
             position: absolute;
-            top: 0;
-            right: 0;
+            translate: 0 -50%;
+            rotate: 2deg;
+            inset-block-start: 0;
+            inset-inline-end: 0;
           }
         }
       }
@@ -165,10 +162,10 @@ body {
   }
 
   &-nav {
+    background: linear-gradient(0deg, transparent 45%, var(--color-text) 45%, var(--color-text) 50%, transparent 50%);
     width: 100%;
 
     a {
-      --color-shadow: var(--color-text);
       background-color: white;
       position: relative;
       padding: functions.size("relative", "-2") functions.size("relative", "0");
@@ -179,10 +176,25 @@ body {
       border: solid 2px;
       box-shadow:
         5px 5px,
+        4.75px 4.75px,
+        4.5px 4.5px,
+        4.25px 4.25px,
         4px 4px,
+        3.75px 3.75px,
+        3.5px 3.5px,
+        3.25px 3.25px,
         3px 3px,
+        2.75px 2.75px,
+        2.5px 2.5px,
+        2.25px 2.25px,
         2px 2px,
-        1px 1px;
+        1.75px 1.75px,
+        1.5px 1.5px,
+        1.25px 1.25px,
+        1px 1px,
+        0.75px 0.75px,
+        0.5px 0.5px,
+        0.25px 0.25px;
     }
 
     ol {
@@ -191,7 +203,6 @@ body {
       width: 100%;
       padding: functions.size("spacing", "0") functions.size("spacing", "-2");
       overflow-x: auto;
-      background: linear-gradient(0deg, transparent 45%, var(--color-text) 45%, var(--color-text) 50%, transparent 50%);
 
       & > * {
         display: flex;
