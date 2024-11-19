@@ -125,6 +125,7 @@ export default function eleventy(eleventyConfig) {
       entryPoints: [
         path.join(scriptDirs.input, 'copyCode.js'),
         path.join(scriptDirs.input, 'demos/carousel.js'),
+        path.join(scriptDirs.input, 'demos/gameLoop.js'),
         path.join(scriptDirs.input, 'comments.js'),
       ],
       entryNames: '[dir]/[name]',
