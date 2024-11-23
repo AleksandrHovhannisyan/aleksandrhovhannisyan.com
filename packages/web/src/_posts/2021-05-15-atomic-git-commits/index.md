@@ -72,7 +72,7 @@ Unfortunately, you didn't make atomic commits—you lumped all of your changes i
 
 Your only option is to go in and undo those changes by hand. And if the changes were particularly involved, it's going to be even more painful. As it turns out, larger commits are not so convenient after all—you neglected to put in the time upfront to split your commits into independent pieces of work, and now you're suffering the consequences.
 
-If you had instead used atomic commits for all of your work, you'd be able to revert (or even drop) the few commits related to the change requests, and you'd be done within minutes. Rre-request review, and you're done.
+If you had instead used atomic commits for all of your work, you'd be able to revert (or even drop) the few commits related to the change requests, and you'd be done within minutes. Re-request review, and you're done.
 
 This isn't just true for change requests, though—while you're working on a ticket, you may realize that your current approach is not ideal, so you may need to backtrack. But if you have a bunch of uncommitted changes in Git—with multiple overlapping concerns and several different changes in a single file, some of which are needed and others that must be discarded—you'll need to undo your work manually. But if you had written atomic commits, you'd be able to revert the ones that introduced the changes and be done (or, better yet, rebase and drop those commits entirely).
 
