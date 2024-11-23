@@ -1,7 +1,5 @@
 // Since this script gets put in the <head>, wrap it in an IIFE to avoid exposing variables
 (function () {
-  // Enum of supported themes. Not strictly needed; just helps avoid typos and magic strings.
-  const Theme = { AUTO: 'auto', LIGHT: 'light', DARK: 'dark' };
   // We'll use this to write and read to localStorage and save the theme as a data- attribute
   const THEME_STORAGE_KEY = 'theme';
   // :root will own the data- attribute for the current theme override; it is the only eligible theme owner when this script is parsed in <head>
@@ -19,10 +17,17 @@
     const themePicker = document.getElementById('theme-picker');
     if (!themePicker) return;
 
+    const defaultSelectedInput = themePicker.querySelector('input[checked]');
+    // Sync picker's selected state to reflect initial theme
+    if (cachedTheme && cachedTheme !== defaultSelectedInput.value) {
+      defaultSelectedInput.removeAttribute('checked');
+      themePicker.querySelector(`input[value="${cachedTheme}"]`).setAttribute('checked', '');
+    }
+
     // Listen for change to sync localStorage and data- attribute
     themePicker.addEventListener('change', (e) => {
       const theme = e.target.value;
-      if (theme === Theme.AUTO) {
+      if (theme === defaultSelectedInput.value) {
         // Remove JS-set theme so the CSS :not([data-theme]) selectors kick in
         delete THEME_OWNER.dataset[THEME_STORAGE_KEY];
         localStorage.removeItem(THEME_STORAGE_KEY);
@@ -31,10 +36,5 @@
         localStorage.setItem(THEME_STORAGE_KEY, theme);
       }
     });
-
-    // Sync picker's selected state to reflect initial theme
-    const initialTheme = cachedTheme ?? Theme.AUTO;
-    themePicker.querySelector('input[checked]').removeAttribute('checked');
-    themePicker.querySelector(`input[value="${initialTheme}"]`).setAttribute('checked', '');
   });
 })();

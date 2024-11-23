@@ -3,7 +3,7 @@ title: The Perfect Theme Switch Component
 description: Learn how to implement a progressively enhanced theme switch component using HTML, CSS, and JavaScript.
 categories: [html, css, javascript]
 keywords: [dark mode toggle, theme switch, theme toggle, theme picker]
-lastUpdated: 2024-04-08
+lastUpdated: 2024-11-22
 isFeatured: true
 commentsId: 189
 thumbnail: https://images.unsplash.com/photo-1422207049116-cfaf69531072?q=80&w=1600&h=900&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
@@ -223,7 +223,7 @@ const THEME_OWNER = document.documentElement;
 const THEME_STORAGE_KEY = 'theme';
 ```
 
-This code just grabs a reference to the document root (`html`) and declares another constant that we'll later use to store the user's preferred theme both in `localStorage` and on the `THEME_OWNER` as a data attribute.
+This code just grabs a reference to the document root (`html`) and declares another constant that we'll later use to store the user's preferred theme both in `localStorage` and on the `THEME_OWNER` as a `data-` attribute.
 
 Next, we'll check to see if the user previously set a preferred theme for our site. If they did, we'll apply it immediately to prevent the flash of unthemed content:
 
@@ -243,22 +243,30 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 ```
 
-In this event handler, we need to do two things. First, we'll check/toggle the radio button corresponding to the cached theme so that the initial UI correctly reflects our state:
+In this event handler, we need to do two things.
+
+### 1. Update Initial UI
+
+If a user previously chose a custom theme and is returning to our site, we'll want to update the theme picker UI so that the correct radio button is checked by default:
 
 ```js {data-file="themePicker.js" data-copyable="true"}
-const initialTheme = cachedTheme ?? 'auto';
-themePicker.querySelector('input[checked]').removeAttribute('checked');
-themePicker.querySelector(`input[value="${initialTheme}"]`).setAttribute('checked', '');
+const defaultSelectedInput = themePicker.querySelector('input[checked]');
+if (cachedTheme && cachedTheme !== defaultSelectedInput.value) {
+  defaultSelectedInput.removeAttribute('checked');
+  themePicker.querySelector(`input[value="${cachedTheme}"]`).setAttribute('checked', '');
+}
 ```
 
-On load, we find the default checked input and turn it off; then, we enable whichever input corresponds to the initial theme, which is either the user's last-saved theme or `'auto'` to fall back to system preferences. This is one of the really nice things about using a radio button group or select menu for a theme picker: Since we're not using a toggle button, we don't need to query system preferences from inside JavaScript to keep the theme picker's state in sync. The default is `'auto'`; CSS will apply the right theme.
+On load, we check if there's a cached theme. If so, we uncheck the default checked input in the HTML; then, we check whichever input corresponds to the saved theme. This is one of the really nice things about using a radio button group or select menu for a theme picker: Since we're not using a toggle button, we don't need to query system preferences from inside JavaScript to keep the theme picker's state in sync. The default is `'auto'`; CSS will apply the right theme.
+
+### 2. Listen for Theme Changes
 
 Finally, we'll listen for theme changes and save the user's preference in `localStorage`:
 
 ```js {data-file="themePicker.js" data-copyable="true"}
 themePicker.addEventListener('change', (e) => {
   const theme = e.target.value;
-  if (theme === 'auto') {
+  if (theme === defaultSelectedInput.value) {
     delete THEME_OWNER.dataset[THEME_STORAGE_KEY];
     localStorage.removeItem(THEME_STORAGE_KEY);
   } else {
@@ -268,7 +276,7 @@ themePicker.addEventListener('change', (e) => {
 });
 ```
 
-Note that if a user reselects the `'auto'` option, we just remove the `data-theme` attribute from the root element and clear `localStorage` so that our CSS `@prefers-color-scheme` media query kicks in again.
+Note that if a user re-selects the `'auto'` option (or whatever the default value is in your code), we just remove the `data-theme` attribute from the root element and clear `localStorage` so that our CSS `@prefers-color-scheme` media query kicks in again.
 
 That's it! This is all of the JavaScript for the theme toggle:
 
@@ -285,13 +293,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const themePicker = document.getElementById('theme-picker');
   if (!themePicker) return;
 
-  const initialTheme = cachedTheme ?? 'auto';
-  themePicker.querySelector('input[checked]').removeAttribute('checked');
-  themePicker.querySelector(`input[value="${initialTheme}"]`).setAttribute('checked', '');
+  const defaultSelectedInput = themePicker.querySelector('input[checked]');
+if (cachedTheme && cachedTheme !== defaultSelectedInput.value) {
+    defaultSelectedInput.removeAttribute('checked');
+    themePicker.querySelector(`input[value="${cachedTheme}"]`).setAttribute('checked', '');
+  }
 
   themePicker.addEventListener('change', (e) => {
     const theme = e.target.value;
-    if (theme === 'auto') {
+    if (theme === defaultSelectedInput.value) {
       delete THEME_OWNER.dataset[THEME_STORAGE_KEY];
       localStorage.removeItem(THEME_STORAGE_KEY);
     } else {
@@ -306,7 +316,7 @@ And with that, our progressively enhanced theme switch is complete.
 
 ## Optional Enhancement: CSS `:has`
 
-You may have noticed that our current implementation stores the theme state in two places: once on the root element as a `data-theme` attribute, and implicitly on the theme picker itself as the currently selected option (which the browser manages for us as the user changes their selection). It would be nice if we could consolidate this duplication and store the state on a single element.
+You may have noticed that our current implementation stores the theme state in two places: once on the root element as a `data-theme` attribute, and implicitly on the theme picker itself as the currently selected option (which the browser manages for us as the user interacts with the radio group). It would be nice if we could consolidate this duplication and store the state on a single element.
 
 Well, I have both good news and bad news.
 
@@ -342,13 +352,15 @@ const cachedTheme = localStorage.getItem(THEME_STORAGE_KEY);
 const themePicker = document.getElementById('theme-picker');
 if (!themePicker) return;
 
-const initialTheme = cachedTheme ?? 'auto';
-themePicker.querySelector('input[checked]').removeAttribute('checked');
-themePicker.querySelector(`input[value="${initialTheme}"]`).setAttribute('checked', '');
+const defaultSelectedInput = themePicker.querySelector('input[checked]');
+if (cachedTheme && cachedTheme !== defaultSelectedInput.value) {
+  defaultSelectedInput.removeAttribute('checked');
+  themePicker.querySelector(`input[value="${cachedTheme}"]`).setAttribute('checked', '');
+}
 
 themePicker.addEventListener('change', (e) => {
   const theme = e.target.value;
-  if (theme === 'auto') {
+  if (theme === defaultSelectedInput.value) {
     localStorage.removeItem(THEME_STORAGE_KEY);
   } else {
     localStorage.setItem(THEME_STORAGE_KEY, theme);
