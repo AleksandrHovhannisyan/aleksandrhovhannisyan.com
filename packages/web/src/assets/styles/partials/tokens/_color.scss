@@ -36,21 +36,23 @@
   @include color-tokens("dark");
 }
 
-html {
-  // Light theme, assumed to be default
-  &,
-  &[data-theme="light"] {
+// Light theme
+@media (prefers-color-scheme: light) {
+  html {
     @include colors-light;
   }
-
-  // Dark theme
-  &[data-theme="dark"] {
+}
+// Dark theme
+@media (prefers-color-scheme: dark) {
+  html {
     @include colors-dark;
   }
+}
 
-  @media (prefers-color-scheme: dark) {
-    &:not([data-theme]) {
-      @include colors-dark;
-    }
-  }
+[data-theme="light"] {
+  @include colors-light;
+}
+
+[data-theme="dark"] {
+  @include colors-dark;
 }

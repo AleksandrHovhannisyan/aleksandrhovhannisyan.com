@@ -3,7 +3,7 @@ title: The Perfect Theme Switch Component
 description: Learn how to implement a progressively enhanced theme switch component using HTML, CSS, and JavaScript.
 categories: [html, css, javascript]
 keywords: [dark mode toggle, theme switch, theme toggle, theme picker]
-lastUpdated: 2024-11-22
+lastUpdated: 2024-11-23
 isFeatured: true
 commentsId: 189
 thumbnail: https://images.unsplash.com/photo-1422207049116-cfaf69531072?q=80&w=1600&h=900&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
@@ -17,42 +17,47 @@ My site has sported a [dark mode toggle](#theme-picker) for as long as I can rem
 
 For my theme toggle, I wanted to:
 
-1. Rely on CSS for theming and use JavaScript only as an enhancement.
-2. Respect system preferences first, then site preferences if set via JavaScript.
-3. Save the user's preferred theme so it can be read on subsequent visits.
-4. Prevent a flash of unthemed content (FOUC) when restoring the saved theme.
+- Rely on CSS for theming and use JavaScript only as a progressive enhancement.
+- Respect system preferences first, then website theme preferences (if set).
+- Save the user's preferred theme so it can be restored on subsequent visits.
+- Prevent a flash of unthemed content (FOUC) when restoring the saved theme.
+- Support forced theming (e.g., an element always uses light or dark mode).
 
 Except for a few minor differences, this implementation is similar to those of other developers. I've linked to [some of those implementations](#further-reading) at the end of this article.
 
 ## CSS: Theming with Custom Properties
 
-We'll use CSS custom properties to define the colors for our light and dark themes. I'll scope these variables under the root element since it's the only common ancestor of all elements on a web page—and, importantly, the only such element that JavaScript can reference in a script that's placed in the `<head>` of a document (why this matters will become clear later).
-
-For the sake of brevity, I'll use black and white for the colors; you're free to use whatever colors and variable names you want:
+I'll use CSS custom properties to define the colors for my light and dark themes. For demo purposes and to keep the code short, I'll use black and white for the colors, but you're obviously free to use whatever names and values you want:
 
 ```css {data-file="styles.css" data-copyable="true"}
-/* Light theme */
-html,
-html[data-theme="light"] {
+/* System preferences */
+@media (prefers-color-scheme: light) {
+  html {
+    color-scheme: light;
+    --color-surface-0: white;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+    --color-surface-0: black;
+  }
+}
+
+/* Light theme override */
+[data-theme="light"] {
   color-scheme: light;
   --color-surface-0: white;
 }
 
 /* Dark theme override */
-html[data-theme="dark"] {
+[data-theme="dark"] {
   color-scheme: dark;
   --color-surface-0: black;
 }
-/* Dark theme (system preference) */
-@media (prefers-color-scheme: dark) {
-  html:not([data-theme]) {
-    color-scheme: dark;
-    --color-surface-0: black;
-  }
-}
 ```
 
-Then, when styling components, you can reference these generic variables for background and foreground colors; they'll switch between light and dark themes automatically based on user preferences:
+When styling components, you can now reference these generic variables for background and foreground colors; they'll switch between light and dark themes automatically based on user preferences:
 
 ```css
 body {
@@ -60,23 +65,79 @@ body {
 }
 ```
 
-You'll notice I'm using the CSS [`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme) property in addition to my custom properties:
+Let's take a closer look at what this CSS does.
+
+### System vs. Site Preferences
+
+We first define color overrides for light and dark system preferences at the top. We assign these to the document root so they get inherited by all elements on the page:
 
 ```css
-html,
-html[data-theme="light"] {
+/* Light system preference */
+@media (prefers-color-scheme: light) {
+  html {
+    color-scheme: light;
+    --color-surface-0: white;
+  }
+}
+/* Dark system preference */
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+    --color-surface-0: black;
+  }
+}
+```
+
+If a user configures their browser or operating system to prefer a light theme and visits our website, the `prefers-color-scheme: light` media query will match and apply a light color scheme to the `html` element. Conversely, if the user sets a dark system theme, the `prefers-color-scheme: dark` media query will match.
+
+However, later in this tutorial, we'll write HTML and JavaScript to allow the user to set a custom theme on the `html` tag that overrides their system preferences. This is where the `[data-theme]` selectors will come into play:
+
+```css
+[data-theme="light"] {
+  /* ... */
+}
+[data-theme="dark"] {
+  /* ... */
+}
+```
+
+These are the styles for the light and dark theme overrides, respectively. Since they're attribute selectors, they have a higher specificity than the system preference styles set on the `html` tag selector.
+
+The really nice thing about scoping all our override styles under `[data-theme="..."]` rather than `html` is that it allows us to nest themes or force a light or dark theme anywhere on the page:
+
+```html
+<html>
+  <head></head>
+  <body>
+    <header>...</header>
+    <main>...</main>
+    <footer data-theme="dark">...</footer>
+  </body>
+</html>
+```
+
+In this example, the page footer will always have a localized theme override of dark mode that is isolated from the rest of the page. If you've ever worked with contexts in frameworks like React, it's a similar idea: Components will read their theme values from the closest theme "provider." If a component doesn't have `data-theme` on itself, it will simply inherit the values from the closest ancestor (or fall back to the colors inherited from the root element).
+
+### CSS `color-scheme`
+
+You'll notice that I'm using the CSS [`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme) property in addition to my custom properties:
+
+```css
+[data-theme="light"] {
   color-scheme: light;
 }
-html[data-theme="dark"] {
+[data-theme="dark"] {
   color-scheme: dark;
 }
 ```
 
-This property tells the browser to apply the operating system's native color palette when rendering light or dark themes. That way, you don't have to specify color variables for everything if you don't want to. It's totally optional but nice to have. For example, I don't like styling scrollbars myself (even though it's doable), so I just allow the browser to do that for me.
+This property tells the browser to apply the operating system's native color palette when rendering light or dark themes. That way, you don't have to specify color variables for everything if you don't want to. It's optional but nice to have. For example, I don't like styling scrollbars myself (even though it's doable), so I just allow the browser to do that for me.
 
-What about all of those `data-theme` attribute selectors, like `html[data-theme="dark"]`? In the next part of this tutorial, we're going to write some JavaScript to allow users to toggle their preferred theme; for the CSS colors to update, we'll set a `data-theme` attribute on the root element as a theme override. With this override, if a user chooses the dark theme, the styles scoped to `html[data-theme="dark"]` will be applied. If the user chooses the light theme or never specifies a preference, we'll either use the default light theme or a dark system theme preference (if that media query matches).
+### Sass Mixins to Reduce Duplication
 
-Bramus Van Damme took a similar approach for the CSS in his article on [the quest for the perfect dark mode in vanilla JavaScript](https://www.bram.us/2020/04/26/the-quest-for-the-perfect-dark-mode-using-vanilla-javascript/), but he noted code duplication as one drawback to this approach. In the above stylesheet, I had to duplicate the dark mode CSS: once for the JavaScript override (`data-theme`) and once again for the system preference. However, on my site, I use Sass to compile a higher-level syntax into CSS. One advantage of using Sass is that I can use mixins to improve code reuse, like this:
+Bramus Van Damme took a similar approach for the CSS in his article on [the quest for the perfect dark mode in vanilla JavaScript](https://www.bram.us/2020/04/26/the-quest-for-the-perfect-dark-mode-using-vanilla-javascript/), but he noted code duplication as one drawback to this approach.
+
+In the above stylesheet, I had to duplicate the dark mode CSS: once for the JavaScript override (`data-theme`) and once again for the system preference. However, on my site, I use Sass to compile a higher-level syntax into CSS. One advantage of using Sass is that I can use mixins to improve code reuse, like this:
 
 
 ```scss
@@ -89,35 +150,29 @@ Bramus Van Damme took a similar approach for the CSS in his article on [the ques
   --color-surface-0: black;
 }
 
-html,
-html[data-theme="light"] {
-  @include theme-light;
-}
-html[data-theme="dark"] {
-  @include theme-dark;
+@media (prefers-color-scheme: light) {
+  html {
+    @include theme-light;
+  }
 }
 @media (prefers-color-scheme: dark) {
-  html:not([data-theme]) {
+  html {
     @include theme-dark;
   }
+}
+[data-theme="light"] {
+  @include theme-light;
+}
+[data-theme="dark"] {
+  @include theme-dark;
 }
 ```
 
 So while my compiled CSS still has duplicate styles, I don't have any duplication in the source stylesheet—I can just edit the colors in one of the two mixins.
 
-One last thing worth mentioning is the `html:not([data-theme])` selector in the `prefers-color-scheme` media query:
+### Using Dev Tools to Test Color Schemes
 
-```css
-@media (prefers-color-scheme: dark) {
-  html:not([data-theme]) {
-    @include theme-dark;
-  }
-}
-```
-
-This says: Only apply the dark mode system preference if there is no override set via JavaScript. That is, as soon as a user opts into a site theme preference via our picker, we'll stop applying their preferred system colors because they're no longer relevant. Note in particular the use of `:not`—without it, if a user chooses light mode on our site but happens to have a dark mode system preference, their system preference would always override their site preference because the styles in the media query would have a higher specificity.
-
-For now, to test that our theme is working, we can add a `data-theme` attribute to the root element for testing purposes and then write some demo CSS. Alternatively, using your browser's developer tools, you can toggle between light and dark mode to verify that the CSS works as expected.
+For now, to test that our theme is working, we can add a `data-theme` attribute to the root element and then write some demo CSS. Alternatively, using your browser's developer tools, you can emulate light or dark mode system preferences to verify that the CSS works as expected.
 
 <figure>
   <img src="./images/emulate-prefers-color-scheme.png" alt="Emulating the prefers-color-scheme media query in the Rendering tab of Chrome dev tools. Three options are provided in a select menu: no emulation, light, or dark." sizes="100vw" />
@@ -245,7 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 In this event handler, we need to do two things.
 
-### 1. Update Initial UI
+### 1. Update the Initial UI
 
 If a user previously chose a custom theme and is returning to our site, we'll want to update the theme picker UI so that the correct radio button is checked by default:
 
@@ -276,7 +331,7 @@ themePicker.addEventListener('change', (e) => {
 });
 ```
 
-Note that if a user re-selects the `'auto'` option (or whatever the default value is in your code), we just remove the `data-theme` attribute from the root element and clear `localStorage` so that our CSS `@prefers-color-scheme` media query kicks in again.
+Note that if a user re-selects the `'auto'` option (or whatever you decide to name the default option), we just remove the `data-theme` attribute from the root element and clear `localStorage` so that our CSS `@prefers-color-scheme` media queries take over.
 
 That's it! This is all of the JavaScript for the theme toggle:
 
@@ -323,23 +378,15 @@ Well, I have both good news and bad news.
 The good news is that we can do this with [CSS `:has`](https://developer.mozilla.org/en-US/docs/Web/CSS/:has) and the `:checked` pseudo-class:
 
 ```css {data-file="styles.css" data-copyable="true"}
-/* Light (default) */
-html,
+/* Light override */
 html:has(input[name="theme"][value="light"]:checked) {
   color-scheme: light;
   --color-surface-0: white;
 }
-/* Dark (override) */
+/* Dark override */
 html:has(input[name="theme"][value="dark"]:checked) {
   color-scheme: dark;
   --color-surface-0: black;
-}
-/* Dark system preference (light is treated as implicit default) */
-@media (prefers-color-scheme: dark) {
-  html:has(input[name="theme"][value="auto"]:checked) {
-    color-scheme: dark;
-    --color-surface-0: black;
-  }
 }
 ```
 
