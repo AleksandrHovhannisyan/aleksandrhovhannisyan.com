@@ -26,7 +26,7 @@ const repos = {
     name: 'Canvas Raycasting',
     repo: 'AleksandrHovhannisyan/raycasting-js',
     url: 'https://raycasting-from-scratch.netlify.app/',
-    tech: ['html', 'css', 'javascript'],
+    tech: ['html', 'css', 'typescript'],
   },
   blog: {
     icon: '<img src="../assets/images/favicons/favicon.png" alt="" width="32" height="32" />',
