@@ -4,48 +4,27 @@
 
 .code-block {
   --code-block-padding: #{functions.size("spacing", "5")};
+  --color-code-background: light-dark(#{functions.color("surface", "2")}, #{functions.color("surface", "2")});
+  --color-code-overlay-1: light-dark(hsl(0deg 0% 88%), #{functions.color("surface", "3")});
+  --color-code-overlay-2: light-dark(hsl(0deg 0% 80%), #{functions.color("surface", "6")});
+
+  /* Dark colors: https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vsc-dark-plus.css */
+  --color-code-selection: light-dark(hsl(243.9deg 80.3% 33.9% / 20%), hsl(210deg 100% 84% / 15%));
+  --color-code-comment: light-dark(hsl(120deg 100% 21.8%), hsl(101deg 29% 47%));
+  --color-code-text: light-dark(hsl(0deg 0% 0%), hsl(0deg 0% 90%));
+  --color-code-keyword: light-dark(hsl(233deg 100% 38%), hsl(207deg 61% 59%));
+  --color-code-number: light-dark(var(--color-code-comment), hsl(99deg 28% 73%));
+  --color-code-attribute: light-dark(var(--color-code-text), hsl(201deg 98% 80%));
+  --color-code-string: light-dark(hsl(8deg 100% 38%), hsl(17deg 47% 64%));
+  --color-code-variable: var(--color-code-keyword);
+  --color-code-tag: var(--color-code-keyword);
+  --color-code-constant: var(--color-code-number);
+  --color-code-punctuation: light-dark(var(--color-code-text), hsl(0deg 0% 54%));
+  --color-code-selector: light-dark(var(--color-code-string), hsl(41deg 53% 67%));
   background: var(--color-code-background);
   color: var(--color-code-text);
   position: relative;
   border-radius: functions.size("spacing", "-3");
-
-  @include mixins.theme-light {
-    --color-code-background: #{functions.color("surface", "2")};
-    --color-code-overlay-1: hsl(0deg 0% 88%);
-    --color-code-overlay-2: hsl(0deg 0% 80%);
-    --color-code-selection: hsl(243.9deg 80.3% 33.9% / 20%);
-    --color-code-comment: hsl(120deg 100% 21.8%);
-    --color-code-text: hsl(0deg 0% 0%);
-    --color-code-keyword: hsl(233deg 100% 38%);
-    --color-code-number: var(--color-code-comment);
-    --color-code-attribute: var(--color-code-text);
-    --color-code-string: hsl(8deg 100% 38%);
-    --color-code-variable: var(--color-code-keyword);
-    --color-code-tag: var(--color-code-keyword);
-    --color-code-constant: var(--color-code-number);
-    --color-code-punctuation: var(--color-code-text);
-    --color-code-selector: var(--color-code-string);
-  }
-
-  @include mixins.theme-dark {
-    --color-code-background: #{functions.color("surface", "2")};
-    --color-code-overlay-1: #{functions.color("surface", "3")};
-    --color-code-overlay-2: #{functions.color("surface", "6")};
-
-    /* VS Code Dark Plus theme: https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vsc-dark-plus.css */
-    --color-code-selection: hsl(210deg 100% 84% / 15%);
-    --color-code-comment: hsl(101deg 29% 47%);
-    --color-code-text: hsl(0deg 0% 90%);
-    --color-code-keyword: hsl(207deg 61% 59%);
-    --color-code-number: hsl(99deg 28% 73%);
-    --color-code-attribute: hsl(201deg 98% 80%);
-    --color-code-string: hsl(17deg 47% 64%);
-    --color-code-variable: var(--color-code-keyword);
-    --color-code-tag: var(--color-code-keyword);
-    --color-code-constant: var(--color-code-number);
-    --color-code-punctuation: #8a8a8a;
-    --color-code-selector: hsl(41deg 53% 67%);
-  }
 
   // Focus styles appear later
   &:hover {

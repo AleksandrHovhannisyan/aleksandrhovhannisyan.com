@@ -2,7 +2,6 @@
 @use "../mixins";
 
 .page-footer {
-  color-scheme: dark;
   background-color: functions.color("surface", "2");
   color: functions.color("text", "emphasis");
   text-align: center;

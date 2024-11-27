@@ -88,32 +88,6 @@
   }
 }
 
-// Theme blocks
-
-@mixin theme-light {
-  @media (prefers-color-scheme: light) {
-    & {
-      @content;
-    }
-  }
-
-  [data-theme="light"] & {
-    @content;
-  }
-}
-
-@mixin theme-dark {
-  @media (prefers-color-scheme: dark) {
-    & {
-      @content;
-    }
-  }
-
-  [data-theme="dark"] & {
-    @content;
-  }
-}
-
 // Breakpoint mixins
 
 @mixin breakpoint($name) {
