@@ -367,8 +367,8 @@ If you decide to take this approach, note that you'll no longer need to place th
 
 Here are some other articles written on this subject:
 
-- [Joshua Comeau: The Quest for the Perfect Dark Mode](https://www.joshwcomeau.com/react/dark-mode/)
-- [Bram.us: The Quest for the Perfect Dark Mode Toggle, using Vanilla JavaScript](https://www.bram.us/2020/04/26/the-quest-for-the-perfect-dark-mode-using-vanilla-javascript/)
-- [Adam Argyle: Building a theme switch component](https://web.dev/articles/building/a-theme-switch-component)
-- [Salma Alam-Naylor: The best light/dark mode theme toggle in JavaScript](https://whitep4nth3r.com/blog/best-light-dark-mode-theme-toggle-javascript/)
-
+- [Sara Joy: "Come to the light-dark() Side"](https://css-tricks.com/come-to-the-light-dark-side/)
+- [Joshua Comeau: "The Quest for the Perfect Dark Mode"](https://www.joshwcomeau.com/react/dark-mode/)
+- [Bram.us: "The Quest for the Perfect Dark Mode Toggle, using Vanilla JavaScript"](https://www.bram.us/2020/04/26/the-quest-for-the-perfect-dark-mode-using-vanilla-javascript/)
+- [Adam Argyle: "Building a theme switch component"](https://web.dev/articles/building/a-theme-switch-component)
+- [Salma Alam-Naylor: "The best light/dark mode theme toggle in JavaScript"](https://whitep4nth3r.com/blog/best-light-dark-mode-theme-toggle-javascript/)
