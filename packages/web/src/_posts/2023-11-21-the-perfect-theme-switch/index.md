@@ -189,11 +189,11 @@ Typically, as a best practice, you'd link to your JavaScript either at the end o
 ```html
 <html>
   <head>
-    <script src="/index.js" defer />
+    <script src="/index.js" defer></script>
   </head>
   <body>
     <!-- ... -->
-    <script src="/index.js" />
+    <script src="/index.js"></script>
   </body>
 </html>
 ```
