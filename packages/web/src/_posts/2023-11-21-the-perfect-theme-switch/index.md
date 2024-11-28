@@ -325,12 +325,10 @@ The good news is that we can do this with [CSS `:has`](https://developer.mozilla
 /* Light override */
 html:has(input[name="theme"][value="light"]:checked) {
   color-scheme: light;
-  --color-surface-0: white;
 }
 /* Dark override */
 html:has(input[name="theme"][value="dark"]:checked) {
   color-scheme: dark;
-  --color-surface-0: black;
 }
 ```
 
