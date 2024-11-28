@@ -3,9 +3,7 @@
 @use "../mixins";
 
 #comments {
-  --spacing: calc(1.75 * var(--rhythm));
-  padding-top: var(--spacing);
-  margin-top: var(--spacing);
+  margin-top: calc(1.75 * var(--rhythm));
   border-top: solid 1px functions.color("border", "0");
 }
 
