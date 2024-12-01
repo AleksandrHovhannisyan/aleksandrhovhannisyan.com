@@ -2,11 +2,21 @@ import path from 'node:path';
 import { toAbsoluteImageUrl } from '../../lib/filters.js';
 import { dir } from '../../lib/constants.js';
 
+const isProduction = process.env.ELEVENTY_ENV === 'production';
+
 export default {
   layout: 'post',
-  permalink: (data) => `/blog/${data?.page?.fileSlug}/`,
+  permalink: (data) => {
+    // Ignore/hide drafts on prod
+    if (data?.isDraft && isProduction) {
+      return false;
+    }
+    return `/blog/${data?.page?.fileSlug}/`;
+  },
   isPost: true,
   eleventyComputed: {
+    // Ignore/hide drafts on prod
+    eleventyExcludeFromCollections: (data) => !!data.isDraft && isProduction,
     scripts: (data) => {
       const scripts = [
         ...data.scripts,
