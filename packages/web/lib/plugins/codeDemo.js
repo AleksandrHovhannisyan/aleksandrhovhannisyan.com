@@ -32,6 +32,10 @@ body {
     display: grid;
     grid-template-rows: 1fr 50%;
 }
+body:not(:has(#html)) {
+    grid-template-rows: 1fr;
+    overflow: hidden;
+}
 button {
     cursor: pointer;
     font: inherit;
@@ -47,6 +51,7 @@ button {
     background-color: var(--color-surface-1);
     display: grid;
     grid-template-rows: auto 1fr;
+    overflow: auto;
 }
 #output-header {
     display: flex;
@@ -95,9 +100,7 @@ const consoleJS = `
     const outputScrollContainer = outputRoot.querySelector('[tabindex]');
     const clearButton = outputRoot.querySelector('#clear-button');
 
-    const log = console.log;
     console.log = (...args) => {
-      log(...args);
       const li = document.createElement('li');
       const time = document.createElement('time');
       const now = new Date();
@@ -141,7 +144,7 @@ export const codeDemoOptions = {
         <style>${consoleCSS}${css}</style>
     </head>
     <body>
-        <main id="html">${html}</main>
+        ${html ? `<main id="html">${html}</main>` : ''}
         ${consoleHTML}
         <script>${consoleJS}${js}</script>
     </body>
