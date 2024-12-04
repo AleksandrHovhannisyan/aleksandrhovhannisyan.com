@@ -79,11 +79,11 @@ function makeFencedCodeRenderer(markdownIt) {
     );
 
     // Copyable code blocks get data-copyable="true" via markdown-it-attrs
-    let copyCodeMatch = /<code[^>]*\b(?<attribute>data-copyable="true")/.exec(codeBlockHtml);
+    let copyCodeMatch = /<code[^>]*\b(?<attribute>data-copyable="?true"?)/.exec(codeBlockHtml);
     let hasCopyCodeButton = !!copyCodeMatch && copyCodeMatch.groups?.attribute;
 
     // Code blocks with file names get data-file="filename" via markdown-it-attrs
-    const fileNameMatch = /<code[^>]*\b(?<attribute>data-file="(?<fileName>[^"]*)")/.exec(codeBlockHtml);
+    const fileNameMatch = /<code[^>]*\b(?<attribute>data-file="?(?<fileName>[^"]*)"?)/.exec(codeBlockHtml);
     let hasFileName = !!fileNameMatch && fileNameMatch.groups?.attribute && fileNameMatch.groups?.fileName;
 
     // Code block that needs additional markup
@@ -120,6 +120,7 @@ function makeSyntaxHighlighter(markdownIt) {
    * @returns {string}
    */
   return (code, lang) => {
+    let html;
     try {
       const language = getLanguage(lang);
       // Load new language dynamically, as needed
@@ -127,11 +128,16 @@ function makeSyntaxHighlighter(markdownIt) {
         console.log(`Loading language ${language} for Prism.js syntax highlighter.`);
         loadLanguages([language]);
       }
-      return Prism.highlight(code, Prism.languages[language], language);
+      html = Prism.highlight(code, Prism.languages[language], language);
     } catch (e) {
       console.log(e);
-      return markdownIt.utils.escapeHtml(code);
+      html = markdownIt.utils.escapeHtml(code);
     }
+    return html
+      .trim()
+      .split('\n')
+      .map((line) => `<span class="line">${line.trimEnd()}</span>`)
+      .join('\n');
   };
 }
 

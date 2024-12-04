@@ -29,15 +29,12 @@ Except for a few minor differences, this implementation is similar to those of o
 
 I'll use CSS custom properties to define the colors for my light and dark themes. For demo purposes and to keep the code short, I'll use black and white for the colors, but you're obviously free to use whatever names and values you want:
 
-```css {data-file="styles.css" data-copyable="true"}
+```css {data-file="styles.css" data-copyable=true}
 /* System preferences */
 html {
   color-scheme: light dark;
   --color-surface-0: light-dark(white, black);
-  --color-surface-1: light-dark(hsl(0, 0%, 90%), hsl(0, 0%, 10%));
-  /* etc */
 }
-
 /* Light theme override */
 [data-theme="light"] {
   color-scheme: light;
@@ -142,7 +139,7 @@ This pattern works, but a complete implementation requires a lot of extra JavaSc
 
 For this reason, I recommend implementing a theme picker using radio buttons or a `<select>`. The latter makes more sense if you have lots of options and need to save on space; I'm using radio buttons in this tutorial since there are only three options to choose from, so it's nice to see them all at once without any interaction.
 
-```html {data-file="index.html" data-copyable="true"}
+```html {data-file="index.html" data-copyable=true}
 <fieldset id="theme-picker">
   <legend>Theme:</legend>
   <label>
@@ -166,7 +163,7 @@ That `Auto` option will come in handy soon; rather than reading a first-time vis
 
 One more thing: In case JavaScript is unavailable or fails to load, we can add this noscript style to our document's head:
 
-```html {data-file="index.html" data-copyable="true"}
+```html {data-file="index.html" data-copyable=true}
 <head>
   <noscript>
     <style>
@@ -204,7 +201,7 @@ To avoid this problem, we'll write a tiny render-blocking script in the `head` o
 
 To start, add this script to the head somewhere after your stylesheets and other important assets (so that the JavaScript doesn't delay their parsing):
 
-```html {data-file="index.html" data-copyable="true"}
+```html {data-file="index.html" data-copyable=true}
 <!-- stylesheets and other critical assets should go above this script -->
 <script>
   // ... all of our code goes here
@@ -217,7 +214,7 @@ You may want to use the [immediately-invoked function expression (IIFE)](https:/
 
 We'll start by defining some constant variables up at the top of our script:
 
-```js {data-file="themePicker.js" data-copyable="true"}
+```js {data-file="themePicker.js" data-copyable=true}
 const THEME_OWNER = document.documentElement;
 const THEME_STORAGE_KEY = 'theme';
 ```
@@ -226,7 +223,7 @@ This code just grabs a reference to the document root (`html`) and declares anot
 
 Next, we'll check to see if the user previously set a preferred theme for our site. If they did, we'll apply it immediately to prevent the flash of unthemed content:
 
-```js {data-file="themePicker.js" data-copyable="true"}
+```js {data-file="themePicker.js" data-copyable=true}
 const cachedTheme = localStorage.getItem(THEME_STORAGE_KEY);
 if (cachedTheme) {
   THEME_OWNER.dataset[THEME_STORAGE_KEY] = cachedTheme;
@@ -235,7 +232,7 @@ if (cachedTheme) {
 
 That's it for the render-blocking portion of the code. For the remainder of the script, we'll register a `DOMContentLoaded` event listener so we run that code after the browser has finished parsing the document and constructing the DOM:
 
-```js {data-file="themePicker.js" data-copyable="true"}
+```js {data-file="themePicker.js" data-copyable=true}
 document.addEventListener('DOMContentLoaded', () => {
   const themePicker = document.getElementById('theme-picker');
   if (!themePicker) return;
@@ -248,7 +245,7 @@ In this event handler, we need to do two things.
 
 If a user previously chose a custom theme and is returning to our site, we'll want to update the theme picker UI so that the correct radio button is checked by default:
 
-```js {data-file="themePicker.js" data-copyable="true"}
+```js {data-file="themePicker.js" data-copyable=true}
 const defaultSelectedInput = themePicker.querySelector('input[checked]');
 if (cachedTheme && cachedTheme !== defaultSelectedInput.value) {
   defaultSelectedInput.removeAttribute('checked');
@@ -262,7 +259,7 @@ On load, we check if there's a cached theme. If so, we uncheck the default check
 
 Finally, we'll listen for theme changes and save the user's preference in `localStorage`:
 
-```js {data-file="themePicker.js" data-copyable="true"}
+```js {data-file="themePicker.js" data-copyable=true}
 themePicker.addEventListener('change', (e) => {
   const theme = e.target.value;
   if (theme === defaultSelectedInput.value) {
@@ -279,7 +276,7 @@ Note that if a user re-selects the `'auto'` option (or whatever you decide to na
 
 That's it! This is all of the JavaScript for the theme toggle:
 
-```js
+```js {data-file="themePicker.js" data-copyable=true}
 const THEME_STORAGE_KEY = 'theme';
 const THEME_OWNER = document.documentElement;
 
@@ -293,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!themePicker) return;
 
   const defaultSelectedInput = themePicker.querySelector('input[checked]');
-if (cachedTheme && cachedTheme !== defaultSelectedInput.value) {
+  if (cachedTheme && cachedTheme !== defaultSelectedInput.value) {
     defaultSelectedInput.removeAttribute('checked');
     themePicker.querySelector(`input[value="${cachedTheme}"]`).setAttribute('checked', '');
   }
@@ -321,7 +318,7 @@ Well, I have both good news and bad news.
 
 The good news is that we can do this with [CSS `:has`](https://developer.mozilla.org/en-US/docs/Web/CSS/:has) and the `:checked` pseudo-class:
 
-```css {data-file="styles.css" data-copyable="true"}
+```css {data-file="styles.css" data-copyable=true}
 /* Light override */
 html:has(input[name="theme"][value="light"]:checked) {
   color-scheme: light;
@@ -334,7 +331,7 @@ html:has(input[name="theme"][value="dark"]:checked) {
 
 Let's also update our JavaScript to remove all of the `THEME_OWNER`-related code:
 
-```js {data-file="themePicker.js" data-copyable="true"}
+```js {data-file="themePicker.js" data-copyable=true}
 const THEME_STORAGE_KEY = 'theme';
 const cachedTheme = localStorage.getItem(THEME_STORAGE_KEY);
 

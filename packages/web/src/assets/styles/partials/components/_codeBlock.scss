@@ -3,13 +3,14 @@
 @use "../mixins";
 
 .code-block {
-  --code-block-padding: #{functions.size("spacing", "5")};
+  --size-code-padding: #{functions.size("spacing", "4")};
+  --size-code-line-number-padding: #{functions.size("relative", "-3")};
   --color-code-background: light-dark(#{functions.color("surface", "2")}, #{functions.color("surface", "2")});
   --color-code-overlay-1: light-dark(hsl(0deg 0% 88%), #{functions.color("surface", "3")});
   --color-code-overlay-2: light-dark(hsl(0deg 0% 80%), #{functions.color("surface", "6")});
 
   /* Dark colors: https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vsc-dark-plus.css */
-  --color-code-selection: light-dark(hsl(243.9deg 80.3% 33.9% / 20%), hsl(210deg 100% 84% / 15%));
+  --color-code-selection: light-dark(hsl(244deg 28% 51% / 20%), hsl(210deg 100% 84% / 15%));
   --color-code-comment: light-dark(hsl(120deg 100% 21.8%), hsl(101deg 29% 47%));
   --color-code-text: light-dark(hsl(0deg 0% 0%), hsl(0deg 0% 90%));
   --color-code-keyword: light-dark(hsl(233deg 100% 38%), hsl(207deg 61% 59%));
@@ -21,10 +22,56 @@
   --color-code-constant: var(--color-code-number);
   --color-code-punctuation: light-dark(var(--color-code-text), hsl(0deg 0% 54%));
   --color-code-selector: light-dark(var(--color-code-string), hsl(41deg 53% 67%));
-  background: var(--color-code-background);
-  color: var(--color-code-text);
-  position: relative;
   border-radius: functions.size("spacing", "-3");
+  position: relative;
+
+  pre {
+    background: var(--color-code-background);
+    color: var(--color-code-text);
+    overflow-x: auto;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    tab-size: 4;
+    text-align: start;
+    border-radius: functions.size("spacing", "-3");
+    background-color: functions.color("surface", "2");
+  }
+
+  code {
+    display: block;
+    position: relative;
+    line-height: functions.size("leading", "sm");
+    padding: var(--size-code-padding);
+  }
+
+  &:has(figcaption) code {
+    padding-block-start: calc(2 * var(--size-code-padding) + 1.25lh);
+  }
+
+  /* Non-plaintext code blocks with more than one line should get line numbering */
+  code:not(.language-plaintext):has(.line:not(:only-child)) {
+    --size-code-line-number-offset: 4ch;
+    padding-inline-start: calc(var(--size-code-padding) + var(--size-code-line-number-offset));
+
+    .line {
+      counter-increment: line-number;
+
+      &::before {
+        content: counter(line-number);
+        display: block;
+        height: 1lh;
+        position: absolute;
+        inset-inline-start: var(--size-code-padding);
+        color: functions.color("text", "soft");
+        font-variant-numeric: tabular-nums;
+      }
+    }
+  }
+
+  code:not(.language-text):has(.line:nth-child(100)) {
+    --size-code-line-number-offset: 5ch;
+  }
 
   // Focus styles appear later
   &:hover {
@@ -35,8 +82,8 @@
 
   figcaption {
     position: absolute;
-    top: var(--code-block-padding);
-    left: var(--code-block-padding);
+    inset-block-start: var(--size-code-padding);
+    inset-inline-start: var(--size-code-padding);
     color: inherit;
     font-size: inherit;
     @include mixins.font($family: "mono", $weight: "bold");
@@ -47,26 +94,11 @@
     }
   }
 
-  code {
-    padding: var(--code-block-padding);
-    text-align: start;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    tab-size: 2;
-    line-height: functions.size("leading", "sm");
-    overflow-x: auto;
-    display: block;
-  }
-
-  &:has(figcaption) code {
-    padding-block-start: calc(2 * var(--code-block-padding) + 3ex);
-  }
-
   .namespace {
     opacity: 0.7;
   }
 
+  .highlight,
   &::selection,
   & *::selection {
     text-shadow: none;
@@ -154,10 +186,10 @@ pre[class*="language-bash"] {
 .copy-code-button {
   opacity: 0;
   position: absolute;
-  right: var(--code-block-padding);
+  right: var(--size-code-padding);
   // For one-liners, cap to 50% from the top
   /* stylelint-disable-next-line scss/no-global-function-names */
-  top: min(var(--code-block-padding) * 1.5, 50%);
+  top: min(var(--size-code-padding) * 1.5, 50%);
   transform: translateY(-50%);
   display: none;
   color: var(--color-code-text);

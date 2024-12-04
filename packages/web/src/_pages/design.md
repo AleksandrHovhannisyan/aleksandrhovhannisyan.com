@@ -220,7 +220,15 @@ console.log(getEvenNumbers([1, 2, 3]));
 
 # heading level one would go here
 
-some *italicized text* perhaps
+some *italicized text*
+
+more text
+
+more text
+
+more text
+
+more text
 ```
 
 #### HTML
@@ -233,6 +241,14 @@ some *italicized text* perhaps
 </div>
 ```
 
+```html
+<button
+  id="theme-toggle"
+  type="button"
+  aria-label="Enable dark theme"
+  aria-pressed="false"
+></button>
+```
 
 ### Card
 
