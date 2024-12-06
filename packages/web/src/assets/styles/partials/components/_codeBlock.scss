@@ -5,7 +5,7 @@
 .code-block {
   --size-code-padding: #{functions.size("spacing", "4")};
   --size-code-line-number-padding: #{functions.size("relative", "-3")};
-  --color-code-background: light-dark(#{functions.color("surface", "2")}, #{functions.color("surface", "2")});
+  --color-code-header-background: #{functions.color("surface", "2")};
   --color-code-overlay-1: light-dark(hsl(0deg 0% 88%), #{functions.color("surface", "3")});
   --color-code-overlay-2: light-dark(hsl(0deg 0% 80%), #{functions.color("surface", "6")});
 
@@ -26,16 +26,16 @@
   position: relative;
 
   pre {
-    background: var(--color-code-background);
     color: var(--color-code-text);
     overflow-x: auto;
+    scrollbar-width: thin;
     white-space: pre;
     word-spacing: normal;
     word-break: normal;
     tab-size: 4;
     text-align: start;
     border-radius: functions.size("spacing", "-3");
-    background-color: functions.color("surface", "2");
+    border: solid 1px functions.color("border", "0");
   }
 
   code {
@@ -43,10 +43,21 @@
     position: relative;
     line-height: functions.size("leading", "sm");
     padding: var(--size-code-padding);
+    background-color: functions.color("surface", "1");
   }
 
-  &:has(figcaption) code {
-    padding-block-start: calc(2 * var(--size-code-padding) + 1.25lh);
+  &:has(figcaption) {
+    pre {
+      background-color: var(--color-code-header-background);
+      padding-block-start: calc(2 * var(--size-code-padding));
+    }
+
+    code {
+      width: fit-content;
+      min-width: 100%;
+      border-top: solid 1px functions.color("border", "0");
+      padding: var(--size-code-padding);
+    }
   }
 
   /* Non-plaintext code blocks with more than one line should get line numbering */
@@ -82,7 +93,7 @@
 
   figcaption {
     position: absolute;
-    inset-block-start: var(--size-code-padding);
+    inset-block-start: calc(var(--size-code-padding) / 2);
     inset-inline-start: var(--size-code-padding);
     color: inherit;
     font-size: inherit;
@@ -186,16 +197,17 @@ pre[class*="language-bash"] {
 .copy-code-button {
   opacity: 0;
   position: absolute;
-  right: var(--size-code-padding);
+  inset-inline-end: var(--size-code-padding);
   // For one-liners, cap to 50% from the top
   /* stylelint-disable-next-line scss/no-global-function-names */
-  top: min(var(--size-code-padding) * 1.5, 50%);
+  inset-block-start: min(var(--size-code-padding), 50%);
   transform: translateY(-50%);
   display: none;
   color: var(--color-code-text);
   background-color: var(--color-code-overlay-1);
   padding: functions.size("spacing", "-3") functions.size("spacing", "-1");
   border-radius: functions.size("spacing", "-3");
+  border: solid 1px functions.color("border", "0");
   @include mixins.font($family: "mono", $weight: "regular", $size: "sm");
 
   &:is(.copied, :focus) {

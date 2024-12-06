@@ -156,7 +156,7 @@ export function makeMarkdownParser() {
     // https://github.com/11ty/eleventy/issues/2438
     .disable('code')
     .use(markdownItAttrs)
-    .use(markdownItCodeTabIndex, { target: 'code' })
+    .use(markdownItCodeTabIndex, { target: 'pre' })
     .use(markdownItTocDoneRight, {
       placeholder: `{:toc}`, // same as Jekyll
       slugify: slugifyString,
