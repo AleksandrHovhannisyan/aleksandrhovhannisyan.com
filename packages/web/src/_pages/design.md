@@ -180,6 +180,22 @@ This is a `paragraph` with some inline `code`.
 
 ### Code Block
 
+#### Plaintext
+
+```
+This is plaintext
+```
+
+``` {data-copyable=true}
+This is copyable plaintext
+```
+
+``` {data-copyable=true}
+This is copyable plaintext
+
+with multiple lines
+```
+
 #### JavaScript
 
 ```js {data-file="path/to/some/file.js" data-copyable="true"}
