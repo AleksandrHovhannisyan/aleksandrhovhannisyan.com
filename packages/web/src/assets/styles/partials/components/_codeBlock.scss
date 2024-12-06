@@ -45,13 +45,13 @@
     background-color: var(--color-code-background);
   }
 
-  figcaption,
+  .file-name,
   .copy-code-button {
     position: absolute;
     inset-block-start: var(--size-code-padding);
   }
 
-  figcaption {
+  .file-name {
     inset-inline-start: var(--size-code-padding);
     color: inherit;
     font-size: inherit;
@@ -90,7 +90,7 @@
 
   // Code blocks with a caption should get a "fake" header. <figcaption> must be the first or
   // last child of a <figure>, so I can't just wrap it in a div and style that (which would be easier).
-  &:has(figcaption) {
+  &:has(.file-name) {
     // We can fake the header with a background color
     pre {
       background-color: var(--color-code-header-background);

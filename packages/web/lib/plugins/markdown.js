@@ -88,7 +88,7 @@ function makeFencedCodeRenderer(markdownIt) {
 
     // Code block that needs additional markup
     if (hasCopyCodeButton || hasFileName) {
-      let captionHtml = '';
+      let captionHtml = '<figcaption class="screen-reader-only">Code snippet</figcaption>';
       let copyCodeHtml = '';
 
       if (hasCopyCodeButton) {
@@ -98,7 +98,7 @@ function makeFencedCodeRenderer(markdownIt) {
         codeBlockHtml = codeBlockHtml.replace(copyCodeMatch.groups?.attribute, '');
       }
       if (hasFileName) {
-        captionHtml = `<figcaption>${fileNameMatch.groups?.fileName}</figcaption>`;
+        captionHtml = `<figcaption class="file-name">${fileNameMatch.groups?.fileName}</figcaption>`;
         // We don't need the data-file=".*" attribute anymore
         codeBlockHtml = codeBlockHtml.replace(fileNameMatch.groups?.attribute, '');
       }
