@@ -10,5 +10,5 @@ export default function definition(children, term) {
   }
   // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dfn
   const content = markdown.renderInline(`<dfn><strong>${term}</strong></dfn>: ${children.trim()}`);
-  return `<p class="definition post-aside rhythm">${content}</p>`;
+  return `<p class="definition aside rhythm">${content}</p>`;
 }

@@ -5,5 +5,5 @@ export default function aside(children) {
     throw new Error('You must provide a non-empty string for an aside.');
   }
   const content = markdown.render(children);
-  return `<aside role="note" class="post-aside rhythm">${content}</aside>`;
+  return `<aside role="note" class="aside rhythm">${content}</aside>`;
 }

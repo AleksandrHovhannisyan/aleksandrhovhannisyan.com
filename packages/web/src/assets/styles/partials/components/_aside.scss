@@ -1,6 +1,7 @@
 @use "../functions";
 
-.post-aside {
+.aside {
+  border: solid 1px functions.color("surface", "3");
   border-inline-start: functions.size("spacing", "-3") solid;
   padding: functions.size("relative", "0") functions.size("relative", "2");
   background-color: functions.color("surface", "1");
