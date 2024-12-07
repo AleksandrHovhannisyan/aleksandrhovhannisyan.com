@@ -2,9 +2,8 @@
 
 // Inline code and kbd
 :is(code, kbd):not([class^="language-"]) {
-  --color-inline-code-bg: light-dark(#{functions.color("surface", "1")}, #{functions.color("surface", "2")});
   color: functions.color("text", "emphasis");
-  background-color: var(--color-inline-code-bg);
+  background-color: light-dark(#{functions.color("surface", "1")}, #{functions.color("surface", "2")});
   border-radius: functions.size("spacing", "-3");
   padding: functions.size("relative", "-3");
 }
