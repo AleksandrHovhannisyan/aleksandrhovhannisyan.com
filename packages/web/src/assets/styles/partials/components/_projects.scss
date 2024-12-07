@@ -29,7 +29,7 @@
     svg {
       width: functions.size("relative", "0");
       aspect-ratio: 1;
-      fill: functions.color("surface", "7");
+      fill: functions.color("surface", "8");
     }
   }
 
@@ -61,7 +61,7 @@
   }
 
   &-technology {
-    background-color: functions.color("surface", "3");
+    background-color: functions.color("surface", "2");
     padding: functions.size("spacing", "-3") functions.size("spacing", "-2");
     border-radius: functions.size("spacing", "-4");
   }

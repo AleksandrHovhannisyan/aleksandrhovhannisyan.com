@@ -10,7 +10,7 @@
 
 .demo-tile {
   position: relative;
-  background-color: functions.color("surface", "3");
+  background-color: functions.color("surface", "2");
   color: functions.color("text", "emphasis");
   border-radius: functions.size("spacing", "-3");
   @include mixins.font($family: "body", $weight: "bold");
@@ -54,7 +54,7 @@
 
 .demo-square-grid > * {
   aspect-ratio: 1;
-  background-color: functions.color("surface", "3");
+  background-color: functions.color("surface", "2");
   color: functions.color("text", "emphasis");
   position: relative;
 }
@@ -82,7 +82,7 @@
   align-items: center;
   flex-direction: column;
   justify-content: space-evenly;
-  background-color: functions.color("surface", "2");
+  background-color: functions.color("surface", "1");
   color: functions.color("text", "emphasis");
   height: 100%;
 }

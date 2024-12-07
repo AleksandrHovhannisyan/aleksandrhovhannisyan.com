@@ -2,7 +2,7 @@
 
 .button {
   --outline-offset: var(--outline-thickness);
-  --outline-color: #{functions.color("surface", "8")};
+  --outline-color: #{functions.color("surface", "9")};
   --color-bg-button: transparent;
   --color-fg-button: currentcolor;
   padding: functions.size("spacing", "-2") functions.size("spacing", "0");
@@ -14,7 +14,7 @@
 }
 
 .button.secondary {
-  --color-bg-button: #{functions.color("surface", "1")};
+  --color-bg-button: #{functions.color("surface", "0")};
   border-color: var(--color-fg-button);
 
   &:is(:focus, :hover) {
@@ -25,11 +25,11 @@
 }
 
 .button.primary {
-  --color-bg-button: #{functions.color("surface", "8")};
+  --color-bg-button: #{functions.color("surface", "9")};
   --color-fg-button: #{functions.color("text", "inverted")};
   border-color: var(--color-bg-button);
 
   &:is(:focus, :hover) {
-    --color-bg-button: #{functions.color("surface", "6")};
+    --color-bg-button: #{functions.color("surface", "8")};
   }
 }

@@ -61,7 +61,7 @@ scripts:
 
 ## Colors
 
-{% assign backgroundColors = (1..8) %}
+{% assign backgroundColors = (0..9) %}
 {% assign foregroundColors = "text-normal,text-emphasis,text-soft" | split: "," %}
 
 ### Background
@@ -237,14 +237,6 @@ console.log(getEvenNumbers([1, 2, 3]));
 # heading level one would go here
 
 some *italicized text*
-
-more text
-
-more text
-
-more text
-
-more text
 ```
 
 #### HTML

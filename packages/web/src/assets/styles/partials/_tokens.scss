@@ -2,39 +2,43 @@ $tokens: (
   color: (
     light: (
       "surface": (
-        "1": hsl(0deg 0% 100%),
-        "2": hsl(0deg 0% 96%),
-        "3": hsl(0deg 0% 92%),
-        "4": hsl(0deg 0% 75%),
-        "5": hsl(0deg 0% 55%),
-        "6": hsl(0deg 0% 35%),
-        "7": hsl(0deg 0% 23%),
-        "8": hsl(0deg 0% 13%),
+        "0": hsl(0deg 0% 100%),
+        "1": hsl(0deg 0% 96%),
+        "2": hsl(0deg 0% 92%),
+        "3": hsl(0deg 0% 86%),
+        "4": hsl(0deg 0% 80%),
+        "5": hsl(0deg 0% 75%),
+        "6": hsl(0deg 0% 55%),
+        "7": hsl(0deg 0% 35%),
+        "8": hsl(0deg 0% 23%),
+        "9": hsl(0deg 0% 13%),
       ),
       "text": (
-        "normal": "{color.light.surface.8}", // syntax borrowed from style-dictionary
-        "soft": "{color.light.surface.6}",
+        "normal": "{color.light.surface.9}", // syntax borrowed from style-dictionary
+        "soft": "{color.light.surface.7}",
         "emphasis": hsl(0deg 0% 0%),
         "inverted": hsl(0deg 0% 100%),
       ),
       "border": (
-        "0": "{color.light.surface.4}"
+        "0": "{color.light.surface.5}"
       ),
     ),
     dark: (
       "surface": (
-        "1": hsl(0deg 0% 6%),
-        "2": hsl(0deg 0% 12%),
-        "3": hsl(0deg 0% 20%),
-        "4": hsl(0deg 0% 30%),
+        "0": hsl(0deg 0% 6%),
+        "1": hsl(0deg 0% 12%),
+        "2": hsl(0deg 0% 18%),
+        "3": hsl(0deg 0% 28%),
+        "4": hsl(0deg 0% 34%),
         "5": hsl(0deg 0% 40%),
-        "6": hsl(0deg 0% 60%),
-        "7": hsl(0deg 0% 70%),
-        "8": hsl(0deg 0% 86%),
+        "6": hsl(0deg 0% 50%),
+        "7": hsl(0deg 0% 60%),
+        "8": hsl(0deg 0% 70%),
+        "9": hsl(0deg 0% 86%),
       ),
       "text": (
-        "normal": "{color.dark.surface.8}",
-        "soft": "{color.dark.surface.7}",
+        "normal": "{color.dark.surface.9}",
+        "soft": "{color.dark.surface.8}",
         "emphasis": hsl(0deg 0% 100%),
         "inverted": hsl(0deg 0% 0%),
       ),

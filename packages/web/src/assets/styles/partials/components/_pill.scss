@@ -11,7 +11,7 @@
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  background-color: functions.color("surface", "3");
+  background-color: functions.color("surface", "2");
   color: functions.color("text", "emphasis");
   padding: functions.size("spacing", "-3") functions.size("spacing", "0");
   @include mixins.font($family: "mono", $weight: "regular");

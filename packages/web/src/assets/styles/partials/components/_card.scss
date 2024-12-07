@@ -2,7 +2,7 @@
 @use "../mixins";
 
 .card {
-  --color-card-bg: light-dark(#{functions.color("surface", "1")}, #{functions.color("surface", "2")});
+  --color-card-bg: light-dark(#{functions.color("surface", "0")}, #{functions.color("surface", "1")});
   // Expose these to consumers so we don't hard-code the logic here
   --card-padding: #{functions.size("relative", "2")};
   --card-box-shadow-default:

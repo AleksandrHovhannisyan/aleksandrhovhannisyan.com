@@ -5,10 +5,10 @@
 .code-block {
   --size-code-padding: #{functions.size("spacing", "4")};
   --size-code-line-number-padding: #{functions.size("relative", "-3")};
-  --color-code-background: #{functions.color("surface", "2")};
-  --color-code-header-background: #{functions.color("surface", "3")};
-  --color-code-overlay-1: light-dark(hsl(0deg 0% 86%), #{functions.color("surface", "4")});
-  --color-code-overlay-2: light-dark(hsl(0deg 0% 80%), #{functions.color("surface", "6")});
+  --color-code-background: #{functions.color("surface", "1")};
+  --color-code-header-background: #{functions.color("surface", "2")};
+  --color-code-overlay-1: light-dark(#{functions.color("surface", "3")}, #{functions.color("surface", "3")});
+  --color-code-overlay-2: light-dark(#{functions.color("surface", "4")}, #{functions.color("surface", "4")});
 
   /* Dark colors: https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vsc-dark-plus.css */
   --color-code-selection: light-dark(hsl(244deg 28% 51% / 20%), hsl(210deg 100% 84% / 15%));
@@ -79,7 +79,6 @@
     }
 
     &:is(.copied, :hover) {
-      color: black;
       background-color: var(--color-code-overlay-2);
     }
 
@@ -102,6 +101,7 @@
       width: fit-content;
       min-width: 100%;
       padding: var(--size-code-padding);
+      border-block-start: solid 1px functions.color("surface", "3");
     }
 
     // Center button on fake header
@@ -149,7 +149,6 @@
     opacity: 0.7;
   }
 
-  .highlight,
   &::selection,
   & *::selection {
     text-shadow: none;
