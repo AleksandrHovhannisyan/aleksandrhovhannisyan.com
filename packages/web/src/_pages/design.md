@@ -231,7 +231,7 @@ console.log(getEvenNumbers([1, 2, 3]));
 
 #### Markdown
 
-```md {data-file="path/to/some/file.html" data-copyable="true"}
+```md {data-file="path/to/some/file.md" data-copyable="true"}
 **This** is [Markdown](https://en.wikipedia.org/wiki/Markdown)
 
 # heading level one would go here
