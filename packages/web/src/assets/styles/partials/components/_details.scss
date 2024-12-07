@@ -9,7 +9,7 @@ details {
   summary,
   .details-content {
     padding: functions.size("spacing", "2") functions.size("spacing", "3");
-    border: functions.size("spacing", "-4") solid functions.color("border", "0");
+    border: 1px solid functions.color("border", "0");
   }
 
   .details-content {
