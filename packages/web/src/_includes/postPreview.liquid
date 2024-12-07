@@ -1,7 +1,7 @@
 {%- assign titleLevel = titleLevel | default: 3 -%}
 <li>
   <article class="post-preview">
-    <div class="post-preview-date"><span class="screen-reader-only">Published on </span>{% include "date.liquid" date: post.date, dateFormat: "MMMM DD, YYYY" %}</div>
+    <p class="post-preview-date"><span class="screen-reader-only">Published on </span>{% include "date.liquid" date: post.date, dateFormat: "MMMM DD, YYYY" %}</p>
     <h{{ titleLevel }} class="post-preview-title">
       <a class="post-preview-link to-underline" href="{{ post.url }}">{{ post.data.title }}</a>
     </h{{ titleLevel }}>
