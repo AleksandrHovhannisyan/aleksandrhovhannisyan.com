@@ -77,7 +77,7 @@ Ordinarily, a function that calls itself synchronously would lead to infinite re
 
 Like `setTimeout` and `setInterval`, `requestAnimationFrame` takes a callback that will run at a later point in time. But in this case, that point in time is the next render opportunity, after the browser is done processing macro- and micro-tasks and just before it repaints. These render callbacks don't interfere with other tasks, and they're enqueued at an even interval that depends on the refresh rate of the user's display.
 
-For example, a 60 Hz display is one that refreshes 60 times per second, so the event loop will schedule `requestAnimationFrame` callbacks in such a way that 60 of them get a chance to run every second (60 FPS). In other words, each callback will be invoked `1000 ms / 60 = 16.67 ms` after the previous one, meaning each frame will have only 16.67 ms to do all of its work (your <dfn>animation budget</dfn>). Meanwhile, on a 120 Hz display, the event loop will do its best to ensure that there are 120 render opportunities per second; each animation frame will get `1000 ms / 120 = 8.33 ms` to do all its work. If a frame exceeds its budget, the overall frame rate drops.
+For example, a 60 Hz display is one that refreshes 60 times per second, so the event loop will schedule `requestAnimationFrame` callbacks in such a way that 60 of them get a chance to run every second (60 FPS). In other words, each callback will be invoked roughly `1000 ms / 60 = 16.67 ms` after the previous one, meaning each frame will have only ~16.67 ms to do all of its work (your <dfn>animation budget</dfn>). Meanwhile, on a 120 Hz display, the event loop will do its best to ensure that there are 120 render opportunities per second; each animation frame will get roughly `1000 ms / 120 = 8.33 ms` to do all its work. If a frame exceeds its budget, the overall frame rate drops.
 
 While this code is much better than what we started with, it has a major flaw.
 
@@ -98,22 +98,31 @@ requestAnimationFrame((currentTimeMs) => {
 Here's a live demo of that:
 
 {% codeDemo "Demo of requestAnimationFrame timing" %}
+```html
+<button id="start-demo">Start demo</button>
+```
 ```js
-const MAX_ALLOWED_TIME_MS = 5_000;
+const MAX_ALLOWED_TIME_MS = 1_000;
+let demoStartTimeMs = 0;
 let previousTimeMs = 0;
 function update() {
     requestAnimationFrame((currentTimeMs) => {
+        if (!demoStartTimeMs) {
+          demoStartTimeMs = currentTimeMs;
+        }
         const deltaTimeMs = currentTimeMs - previousTimeMs;
         previousTimeMs = currentTimeMs;
         console.log(`previous: ${previousTimeMs} current: ${currentTimeMs} delta: ${deltaTimeMs}`);
-        if (previousTimeMs < MAX_ALLOWED_TIME_MS) {
-            update();
+        if ((currentTimeMs - demoStartTimeMs) >= MAX_ALLOWED_TIME_MS) {
+          console.log("End of demo");
         } else {
-            console.log("End of demo");
+            update();
         }
     });
 }
-update();
+document.querySelector('#start-demo').addEventListener('click', () => {
+  update();
+});
 ```
 {% endcodeDemo %}
 
