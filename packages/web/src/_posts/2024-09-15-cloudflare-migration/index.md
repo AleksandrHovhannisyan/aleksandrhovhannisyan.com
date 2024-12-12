@@ -3,7 +3,12 @@ title: I Moved to Cloudflare
 description: After some recent incidents involving Netlify and Vercel, I decided to play it safe and move my website and another side project to Cloudflare.
 categories: [cloudflare, netlify]
 keywords: [cloudflare, netlify]
+lastUpdated: 2024-12-11
 ---
+
+{% aside %}
+**Update**: In November 2024, [Netlify announced](https://www.netlify.com/blog/introducing-netlify-free-plan/) that it would be offering a true Free tier in addition to Starter, possibly to mitigate some of these incidents and concerns. With the Free tier, you get the same usage limits as with the Starter plan, but exceeding the usage limits doesn't incur charges. Instead, it temporarily suspends your website until the next billing period.
+{% endaside %}
 
 In 2021, when I was beginning to take my site more seriously, I wrote about my experience [migrating from GitHub Pages to Netlify](/blog/github-pages-vs-netlify/). In hindsight, maybe that wasn't anything worth writing home about, but at the time I was learning so much that I was eager to document every little thing I was doing.
 
