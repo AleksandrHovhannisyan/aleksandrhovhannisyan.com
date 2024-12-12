@@ -75,7 +75,7 @@ Here, we call `update`, which in turn schedules a callback to run at the next re
 
 Ordinarily, a function that calls itself synchronously would lead to infinite recursion and overflow the stack, so the above code may seem problematic because it looks like `update` is calling itself. However, it's not calling itself _synchronously_. Instead, it's telling `requestAnimationFrame` to schedule a future `update` call during the next render opportunity. Since every `update` call is allowed to finish without waiting on any other code, the stack never overflows.
 
-Like `setTimeout` and `setInterval`, `requestAnimationFrame` takes a callback that will run at a later point in time. But in this case, that point in time is the next render opportunity, after the browser is done processing macro- and micro-tasks and just before it repaints. These render callbacks don't interfere with other tasks, and they're enqueued at an even interval that depends on the refresh rate of the user's display.
+Like `setTimeout` and `setInterval`, `requestAnimationFrame` takes a callback that will run at a later point in time. But in this case, that point in time is the next render opportunity, after the browser is done processing macro- and micro-tasks and just before it repaints. These render callbacks don't interfere with other tasks, and they're enqueued at a regular interval that depends on the refresh rate of the user's display.
 
 For example, a 60 Hz display is one that refreshes 60 times per second, so the event loop will schedule `requestAnimationFrame` callbacks in such a way that 60 of them get a chance to run every second (60 FPS). In other words, each callback will be invoked roughly `1000 ms / 60 = 16.67 ms` after the previous one, meaning each frame will have only ~16.67 ms to do all of its work (your <dfn>animation budget</dfn>). Meanwhile, on a 120 Hz display, the event loop will do its best to ensure that there are 120 render opportunities per second; each animation frame will get roughly `1000 ms / 120 = 8.33 ms` to do all its work. If a frame exceeds its budget, the overall frame rate drops.
 
@@ -83,9 +83,9 @@ While this code is much better than what we started with, it has a major flaw.
 
 ### Enforcing a Maximum FPS
 
-If you were to just run this code as-is, it may seem fine on whatever display you're testing with. On most modern devices, that's likely going to be a 60 Hz display, so you would design your game physics around that to make it feel right. But if someone were to play your game on a 120 Hz display, the `requestAnimationFrame` callbacks would be invoked twice as frequently. Since the function responsible for physics would be called twice as often, a player on a 120 Hz display would move twice as fast as a player on a 60 Hz display and zoom off screen in the blink of an eye. Not good!
+If you were to just run this code as-is, it may seem fine on whatever display you're testing with. On most modern devices, that's likely going to be a 60 Hz display, so you would design your game physics around that to make it feel right. But if someone were to play your game on a 120 Hz display, the `requestAnimationFrame` callbacks would be invoked twice as frequently. That's not a problem for our `draw()` function, but since the function responsible for physics would also be called twice as often, a player on a 120 Hz display would move twice as fast as a player on a 60 Hz display and zoom off screen in the blink of an eye. Not good!
 
-To fix this, we can enforce a maximum allowed FPS. The `requestAnimationFrame` callback actually receives an argument to help with this: the "wall clock" timestamp, in milliseconds, relative to when the browser started its timer (usually on or after page load).
+To fix this, we can enforce a maximum allowed FPS. The `requestAnimationFrame` callback actually receives an argument to help with this: the "wall clock" timestamp, in milliseconds, relative to when the browser started its internal timer for the current page (usually on or after page load).
 
 ```js
 let previousTimeMs = 0;
@@ -95,38 +95,81 @@ requestAnimationFrame((currentTimeMs) => {
 });
 ```
 
-Here's a live demo of that:
+For example, we can use this basic code to create a demo where we record the number of `requestAnimationFrame` callbacks invoked over a fixed time frame and use that to calculate the average FPS that we're getting. For a 60 Hz monitor, the result should be very close to 60 FPS, give or take:
 
 {% codeDemo "Demo of requestAnimationFrame timing" %}
 ```html
-<button id="start-demo">Start demo</button>
+<div id="demo">
+    <h1>FPS of requestAnimationFrame</h1>
+    <p>Tests run over a five-second interval.</p>
+    <div>
+        <button id="start-demo">Start recording</button>
+    </div>
+</div>
+```
+```css
+#demo h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 0.5lh;
+}
+#demo p {
+    text-align: center;
+    margin-bottom: 1lh;
+}
+#demo button {
+    text-align: center;
+    padding: 0.5em;
+    display: block;
+    margin: 0 auto;
+}
+#demo button[aria-disabled="true"] {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
 ```
 ```js
-const MAX_ALLOWED_TIME_MS = 1_000;
-let demoStartTimeMs = 0;
-let previousTimeMs = 0;
-function update() {
-    requestAnimationFrame((currentTimeMs) => {
-        if (!demoStartTimeMs) {
-          demoStartTimeMs = currentTimeMs;
-        }
-        const deltaTimeMs = currentTimeMs - previousTimeMs;
-        previousTimeMs = currentTimeMs;
-        console.log(`previous: ${previousTimeMs} current: ${currentTimeMs} delta: ${deltaTimeMs}`);
-        if ((currentTimeMs - demoStartTimeMs) >= MAX_ALLOWED_TIME_MS) {
-          console.log("End of demo");
-        } else {
-            update();
-        }
-    });
-}
-document.querySelector('#start-demo').addEventListener('click', () => {
-  update();
+let isRunning = false;
+const MAX_ALLOWED_TIME_MS = 5000;
+const startDemoButton = document.querySelector('#demo button');
+startDemoButton.addEventListener('click', () => {
+    if (isRunning) {
+        return;
+    }
+    isRunning = true;
+    startDemoButton.setAttribute('aria-disabled', 'true');
+    let demoStartTimeMs = 0;
+    let demoEndTimeMs;
+    let previousTimeMs = 0;
+    let numFrames = 0;
+    function update() {
+        requestAnimationFrame((currentTimeMs) => {
+            numFrames++;
+            if (!demoStartTimeMs) {
+            demoStartTimeMs = currentTimeMs;
+            }
+            const deltaTimeMs = currentTimeMs - previousTimeMs;
+            previousTimeMs = currentTimeMs;
+            demoEndTimeMs = currentTimeMs;
+            console.log(`previousTimeMs: ${previousTimeMs.toFixed(2)}, currentTimeMs: ${currentTimeMs.toFixed(2)}, deltaTimeMs: ${deltaTimeMs.toFixed(2)}`);
+            if ((currentTimeMs - demoStartTimeMs) >= MAX_ALLOWED_TIME_MS) {
+                demoEndTimeMs = currentTimeMs;
+                const demoTimeElapsedMs = demoEndTimeMs - demoStartTimeMs;
+                const averageFPS = numFrames / MAX_ALLOWED_TIME_MS * 1000;
+                console.log(`End of demo. Average recorded FPS: ${averageFPS.toFixed(2)}.`);
+                startDemoButton.setAttribute('aria-disabled', 'false');
+                isRunning = false;
+            } else {
+                update();
+            }
+        });
+    }
+    update();
 });
 ```
 {% endcodeDemo %}
 
-By keeping track of the timestamps of each frame as they're called, we can calculate the amount of elapsed time since previous frame to ensure that we never run our physics logic faster than a maximum FPS:
+Let's take this a step further, though. By keeping track of the timestamps of each frame as they're called, we can calculate the amount of elapsed time since previous frame to ensure that we never run our physics logic faster than a maximum FPS:
 
 ```js {data-copyable="true"}
 const MAX_FPS = 60;
@@ -164,7 +207,7 @@ Imagine you're operating a train station where trains are expected to arrive and
 
 Well, ideally, we want the overall schedule to be consistent and predictable regardless of individual hiccups. So even if one train arrives a little late, we still want the next train to arrive at its originally scheduled time increment of 30 minutes so that we're able to squeeze two train arrivals into a single hour. In this case, that would mean the next train should arrive at `12:30 + 00:30 = 1:00 pm`, not at `12:45 + 00:30 = 1:15 pm`. Otherwise, a single delay would shift the entire schedule over by 15 minutes.
 
-Now, consider what would happen if we were to use our code to model this scenario. All I've done here is rename our variables:
+Now, consider what would happen if we were to use our code as-is to model this train station. All I've done here is rename our variables and functions:
 
 ```js
 const MAX_TRAIN_ARRIVALS_PER_HOUR = 2;
@@ -213,9 +256,9 @@ For example, imagine this scenario where Frame 0 takes 24 ms to complete its wor
 
 TODO:
 
-In other words, we're telling a harmless lie. Yes, it's true that `previousTimeMs` shouldn't _actually_ be `currentTimeMs - (deltaTimeMs % MAX_MS_PER_FRAME)` from the perspective of the wall clock. But when we simulate rewinding the clock to account for any frame delays, the next frame *thinks* it can still arrive at the next increment of `MAX_MS_PER_FRAME` as originally intended (e.g., at the next increment of 16.67 ms for 60 FPS).
+In other words, we're telling a harmless lie. Yes, it's true that `previousTimeMs` shouldn't _actually_ be `currentTimeMs - (deltaTimeMs % MAX_MS_PER_FRAME)` from the perspective of the wall clock. But when we simulate rewinding the clock to account for any frame delays, the next frame *thinks* it can still arrive at the next increment of `MAX_MS_PER_FRAME` as originally intended (e.g., at the next increment of ~16.67 ms for 60 FPS).
 
-Our game loop is now complete! But there's still one last thing we need to talk about.
+Our game loop is now complete! But there's still one thing we need to talk about.
 
 ## Responsive Input Handling
 
@@ -238,7 +281,7 @@ function update() {
 }
 ```
 
-This code will feel unresponsive since it updates the player position in an event handler that (usually) runs slower than the device's refresh rate, outside the animation frame. So even if the player keeps a button pressed continuously, their position will update very slowly compared to all other animations, causing their movement to feel sluggish. In other words, the player will feel like their input can't keep up with the rest of the game.
+This code will feel unresponsive since it updates the player position in an event handler that's almost certainly going to run slower than the device's refresh rate, outside the animation frame. So even if the player keeps a button pressed continuously, their position will update very slowly compared to all other animations, causing their movement to feel sluggish. In other words, the player will feel like their input can't keep up with the rest of the game.
 
 The correct approach is to keep track of all keys that are currently pressed and update the game state in the animation frame. There are many ways to do this; here is just one example using a `Set` to keep track of pressed keys:
 
@@ -263,5 +306,9 @@ function update() {
     });
 }
 ```
+
+{% aside %}
+Again, you would want to limit the FPS of the `updatePhysics` calls as shown before. I've omitted that code here for brevity.
+{% endaside %}
 
 Even though these event handlers are still running outside `requestAnimationFrame` like in the first example, those handlers are no longer updating the game state. Instead, they're keeping track of every key that's currently pressed—which, unlike a player's position, is a binary state of either pressed or not pressed. As long as the player doesn't lift up that key, the next animation frame will see that the key is still pressed and update the player's position at the same FPS as the rendering and other game logic. This leads to smoother input handling and responsive player movement that's synchronized with animations.
