@@ -3,7 +3,8 @@
 @use "../mixins";
 
 #comments {
-  margin-top: calc(1.75 * var(--rhythm));
+  --rhythm: 1.75lh;
+  padding-top: var(--rhythm);
   border-top: solid 1px functions.color("border", "0");
 }
 

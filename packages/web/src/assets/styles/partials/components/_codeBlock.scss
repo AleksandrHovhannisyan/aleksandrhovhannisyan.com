@@ -40,7 +40,8 @@
 
   code {
     display: block;
-    position: relative;
+    width: fit-content;
+    min-width: 100%;
     line-height: functions.size("leading", "sm");
     padding: var(--size-code-padding);
     background-color: var(--color-code-background);
@@ -99,8 +100,6 @@
 
     // Code should get the main padding
     code {
-      width: fit-content;
-      min-width: 100%;
       padding: var(--size-code-padding);
       border-block-start: solid 1px functions.color("surface", "3");
     }
