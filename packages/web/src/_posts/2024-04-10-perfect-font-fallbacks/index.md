@@ -4,6 +4,7 @@ description: Learn how to use three CSS properties to override font metrics and 
 categories: [typography, css]
 keywords: [size-adjust]
 thumbnail: ./images/metrics.png
+lastUpdated: 2024-12-12
 ---
 
 When using web fonts, it's often recommended that you set the `font-display` property to `swap` in your `@font-face` rulesets to prevent the so-called [flash of invisible text (FOIT)](https://fonts.google.com/knowledge/glossary/foit): the momentary flicker that occurs when text is set in a typeface that has not yet been downloaded by the browser. With `font-display: swap`, the browser will first render your text using the fallback typeface you specified in the `font-family` property:
@@ -133,7 +134,7 @@ The `@capsizecss/metrics` package exports the metrics (as JavaScript objects) fo
 
 For example, let's say we want to load PT Serif for our body font and use Times New Roman as the fallback. We want to calculate the right `size-adjust`, `ascent-override`, and `descent-override` for Times New Roman to ensure that it matches PT Serif as closely as possible. The following code does exactly that by importing the metrics for each font and then assembling a font stack (order matters!):
 
-```js {data-file="script.mjs" data-copyable="true"}
+```js {data-file="script.js" data-copyable="true"}
 import { createFontStack } from '@capsizecss/core';
 import ptSerif from '@capsizecss/metrics/ptSerif.js';
 import timesNewRoman from '@capsizecss/metrics/timesNewRoman.js';
@@ -158,7 +159,7 @@ Note that you don't have to use this exact `font-family` or `src`; those are aut
 
 This example used a single fallback font, but you can technically pass in as many as you want; capsize will generate `@font-face` rulesets for each fallback in the font stack:
 
-```js {data-file="script.mjs" data-copyable="true"}
+```js {data-file="script.js" data-copyable="true"}
 import { createFontStack } from '@capsizecss/core';
 import georgia from '@capsizecss/metrics/georgia.js';
 import timesNewRoman from '@capsizecss/metrics/timesNewRoman.js';
@@ -172,6 +173,8 @@ const stack = createFontStack([
 
 console.log(stack.fontFaces);
 ```
+
+If you run that script, you'll get this output:
 
 ```css {data-file="output.css"}
 @font-face {
@@ -190,7 +193,36 @@ console.log(stack.fontFaces);
 }
 ```
 
-And just like that, we have `@font-face` rulesets that normalize our fallback fonts so that their metrics match those of our primary font as closely as possible. Now, all that's left to do is to copy this output into your CSS. You could even add this script to your build pipeline to auto-generate that CSS whenever your site is rebuilt. In fact, some front-end frameworks automatically do this for you: [Next.js does it](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts), and [so does Nuxt](https://nuxt.com/modules/fontaine).
+### Multiple Weights
+
+I recommend modifying the generated CSS to specify the weights for your fallback font. Otherwise, it'll default to using a weight of `regular` for all text (usually `400` numerically), even if the text was meant to be bolded. That minor difference could contribute to layout shifts—but more importantly, if for some reason your web font fails to load, you don't want all of the bolded text to render as a lighter variant.
+
+In the example below, I've modified the output from the previous script to add a regular and bold variant for Georgia. Note that both `@font-face` rulesets need to have the same rules except for the `font-weight` property:
+
+```css {data-file="output.css"}
+@font-face {
+  font-family: fallback-font-1;
+  font-weight: 400;             /* added */
+  src: local('Georgia');
+  ascent-override: 102.7217%;
+  descent-override: 28.2757%;
+  size-adjust: 101.1471%;
+}
+@font-face {
+  font-family: fallback-font-1;
+  font-weight: 700;             /* added */
+  src: local('Georgia Bold');
+  ascent-override: 102.7217%;
+  descent-override: 28.2757%;
+  size-adjust: 101.1471%;
+}
+```
+
+You'll need to do this for each fallback in your font stack.
+
+## Summary
+
+In a few lines of code, we generated `@font-face` rulesets for our fallback fonts that are metrically compatible with our web font. Now, all that's left to do is to copy this output into your CSS. You could even add this script to your build pipeline to auto-generate that CSS whenever your site is rebuilt. In fact, some front-end frameworks automatically do this for you: [Next.js does it](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts), and [so does Nuxt](https://nuxt.com/modules/fontaine).
 
 ## Further Reading
 
