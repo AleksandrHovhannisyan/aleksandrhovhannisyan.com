@@ -46,7 +46,9 @@ function update() {
 }
 ```
 
-While this would technically work, it wouldn't be performant. Both of these functions schedule their callbacks to run at a later point in time by pushing the callbacks onto the event loop's [macrotask queue](https://javascript.info/event-loop). But the macrotask queue is also responsible for event handling, which is normally considered time sensitive. For example, if the user presses a key and your application has a `keydown` handler, the handler callback won't be executed synchronously. Instead, it'll be pushed onto the macrotask queue, and the event loop will run the callback as soon as other work is finished (asynchronously). But if your game loop also pushes animation frames onto the same queue, your rendering and input handling will interfere with each other. If the user fires too many input events, the event callbacks will stack up in the macrotask queue and delay the execution of animation callbacks. Conversely, if you try to run your game at too high an FPS, user input may feel unresponsive, as input handlers won't get a chance to run as frequently as they normally would. Remember: `setTimeout` doesn't _guarantee_ that the callback will be invoked exactly when you tell it. It only guarantees that the callback will be invoked after `>= delay` time passes.
+While this would technically work, it wouldn't be performant. Both of these functions schedule their callbacks to run at a later point in time by pushing the callbacks onto the event loop's [macrotask queue](https://javascript.info/event-loop). But the macrotask queue is also responsible for event handling, which is normally considered time sensitive. For example, if the user presses a key and your application has a `keydown` handler, the handler callback won't be executed synchronously. Instead, it'll be pushed onto the macrotask queue, and the event loop will run the callback as soon as other work is finished (asynchronously).
+
+But if your game loop also pushes animation frames onto the same queue, your rendering and input handling will interfere with each other. If the user fires too many input events, the event callbacks will stack up in the macrotask queue and delay the execution of animation callbacks. Conversely, if you try to run your game at too high an FPS, user input may feel unresponsive, as input handlers won't get a chance to run as frequently as they normally would. Remember: `setTimeout` doesn't _guarantee_ that the callback will be invoked exactly when you tell it. It only guarantees that the callback will be invoked after `>= delay` time passes.
 
 ### Correct Approach: `requestAnimationFrame`
 
@@ -281,7 +283,7 @@ function update() {
 }
 ```
 
-This code will feel unresponsive since it updates the player position in an event handler that's almost certainly going to run slower than the device's refresh rate, outside the animation frame. So even if the player keeps a button pressed continuously, their position will update very slowly compared to all other animations, causing their movement to feel sluggish. In other words, the player will feel like their input can't keep up with the rest of the game.
+This code will feel unresponsive since it updates the player position in a keydown handler that's almost certainly going to run slower than the device's refresh rate, outside the animation frame. So even if the player keeps a button pressed continuously, their position will update very slowly compared to all other animations, causing their movement to feel sluggish. In other words, the player will feel like their input can't keep up with the rest of the game.
 
 The correct approach is to keep track of all keys that are currently pressed and update the game state in the animation frame. There are many ways to do this; here is just one example using a `Set` to keep track of pressed keys:
 
