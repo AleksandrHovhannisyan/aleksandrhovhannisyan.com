@@ -11,11 +11,10 @@ export default {
    * @param env Environment secrets set for this worker.
    */
   async fetch(request: Request, env: Record<string, string>) {
-    // Only needed for local dev on Chrome (not Firefox). On prod, the front end makes a request to a worker route on the same origin.
     const headers =
       env.ENVIRONMENT === 'development'
         ? ({
-            'Access-Control-Allow-Origin': 'http://localhost:4001',
+            'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'GET',
             'Access-Control-Allow-Headers': 'Content-Type',
           } satisfies Record<string, string>)
