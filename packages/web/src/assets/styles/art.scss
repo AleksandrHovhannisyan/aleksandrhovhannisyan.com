@@ -2,6 +2,7 @@
 @use "partials/mixins";
 @import "partials/tokens/animation";
 @import "partials/tokens/size";
+@import "partials/tokens/color";
 @import "partials/global/reset";
 @import "partials/utils/utils";
 @import "partials/components/code";
@@ -9,11 +10,7 @@
 @import "partials/pages/art/index";
 
 html {
-  --color-surface-1: white;
-  --color-text: black;
-  --color-text-soft: hsl(0deg 0% 40%);
   scroll-behavior: smooth;
-  color-scheme: light;
 }
 
 body {
@@ -79,7 +76,7 @@ body {
       &::after {
         content: "";
         width: 4px;
-        background: var(--color-text);
+        background: functions.color("text", "normal");
         position: fixed;
         height: 100vh;
       }
@@ -96,7 +93,7 @@ body {
     }
 
     a {
-      color: var(--color-text);
+      color: functions.color("text", "normal");
     }
 
     &-header {
@@ -149,20 +146,16 @@ body {
     }
 
     &-footer {
-      border-top: solid 4px;
+      border-top: solid functions.size("spacing", "-3");
       padding: functions.size("spacing", "5");
+      text-wrap: balance;
       text-align: center;
       line-height: functions.size("leading", "xs");
-
-      > * {
-        max-width: 60ch;
-        margin-inline: auto;
-      }
     }
   }
 
   &-nav {
-    background: linear-gradient(0deg, transparent 45%, var(--color-text) 45%, var(--color-text) 50%, transparent 50%);
+    background: linear-gradient(0deg, transparent 45%, functions.color("text", "normal") 45%, functions.color("text", "normal") 50%, transparent 50%);
     width: 100%;
 
     a {
@@ -172,7 +165,7 @@ body {
       text-transform: uppercase;
       letter-spacing: functions.size("tracking", "lg");
       text-decoration: none;
-      color: var(--color-text);
+      color: functions.color("text", "normal");
       border: solid 2px;
       box-shadow:
         5px 5px,
@@ -233,10 +226,10 @@ body {
 
   &-caption {
     padding: functions.size("spacing", "-3") functions.size("spacing", "-1");
-    color: var(--color-text);
+    color: functions.color("text", "normal");
     transform: scale(0);
     text-align: center;
-    max-width: 30ch;
+    text-wrap: balance;
     will-change: transform, opacity;
     @include mixins.font($family: "cursive", $weight: "regular", $size: "lg", $leading: "3xs");
     @include mixins.transition(opacity, transform);

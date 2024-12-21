@@ -13,6 +13,7 @@
   --size-shadow-height: 15px;
   color: var(--color-text-normal);
   text-wrap: balance;
+  width: 100%;
   height: fit-content;
   transform-style: preserve-3d;
   background: linear-gradient(180deg, #ffc, 90%, #f1f1dd);
@@ -20,7 +21,7 @@
   position: relative;
   justify-self: center;
   padding: functions.size("relative", "2");
-  @include mixins.transition(transform, top, box-shadow, border-radius);
+  @include mixins.transition(border-radius);
 
   &:focus-within {
     outline: solid functions.size("spacing", "-3");

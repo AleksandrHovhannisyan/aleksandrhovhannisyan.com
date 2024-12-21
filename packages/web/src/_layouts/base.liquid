@@ -11,7 +11,7 @@
 {%- assign defaultCanonicalUrl = page.url | toAbsoluteUrl -%}
 {%- assign canonicalUrl = canonicalUrl | default: defaultCanonicalUrl -%}
 <!DOCTYPE html>
-<html lang="{{ site.lang }}">
+<html lang="{{ site.lang }}"{% if themeOverride %} data-theme="{{ themeOverride }}"{% endif %}>
 <head>
   <meta charset="utf-8">
   {%- comment -%}Metadata for search engines{%- endcomment -%}
