@@ -12,11 +12,16 @@ openGraph:
         <h1 class="hero-title">Notes</h1>
         <p class="hero-subtitle">Reusable code snippets and other technical notes. Unless otherwise noted, no attribution is required.</p>
     </header>
-    <div class="size-font-md">
-        <ul>
+    <div data-theme="light">
+        <ul class="grid gap-3 note-board">
             {% for note in collections.notes %}
-                <li><a href="{{ note.url }}">{{ note.data.title }}</a></li>
+              <li class="note">
+                <article class="stack gap--2">
+                  <h3 class="title"><a class="card-link no-underline" href="{{ note.url }}">{{ note.data.title }}</a></h3>
+                  <p class="description">{{ note.data.description }}</p>
+                </article>
+              </li>
             {% endfor %}
-        </ul>    
+        </ul>
     </div>
 </article>

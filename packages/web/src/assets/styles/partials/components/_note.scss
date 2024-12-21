@@ -1,0 +1,56 @@
+@use "../functions";
+@use "../mixins";
+
+.note-board {
+  padding: functions.size("relative", "1");
+  border: solid functions.size("spacing", "-1") #e3c19d;
+  background-color: #ac8f71;
+  box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 15%);
+  position: relative;
+}
+
+.note {
+  --size-shadow-height: 15px;
+  color: var(--color-text-normal);
+  text-wrap: balance;
+  height: fit-content;
+  transform-style: preserve-3d;
+  background: linear-gradient(180deg, #ffc, 90%, #f1f1dd);
+  box-shadow: 1px 1px 2px rgb(0 0 0 / 30%);
+  position: relative;
+  justify-self: center;
+  padding: functions.size("relative", "2");
+  @include mixins.transition(transform, top, box-shadow, border-radius);
+
+  &:focus-within {
+    outline: solid functions.size("spacing", "-3");
+  }
+
+  &:is(:hover, :focus-within) {
+    border-end-end-radius: 100px var(--size-shadow-height);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-end: var(--size-shadow-height);
+    transform: translateZ(-1px);
+    width: calc(100% - 3px);
+    height: 25px;
+    background: rgb(0 0 0 / 20%);
+    box-shadow: 2px var(--size-shadow-height) 5px rgb(0 0 0 / 40%);
+  }
+
+  a {
+    outline: none;
+  }
+
+  .title {
+    @include mixins.font($size: "md", $leading: "xs");
+  }
+
+  .description {
+    @include mixins.font($size: "sm", $leading: "sm");
+  }
+}
