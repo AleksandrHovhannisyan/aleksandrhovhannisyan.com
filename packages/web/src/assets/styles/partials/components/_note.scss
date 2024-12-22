@@ -52,6 +52,6 @@
   }
 
   .description {
-    @include mixins.font($size: "sm", $leading: "sm");
+    @include mixins.font($size: "base", $leading: "sm");
   }
 }
