@@ -3,9 +3,4 @@
 .prose {
   max-width: functions.to-rems(700px);
   margin: 0 auto;
-
-  // Pretty-wrap headings in prose content
-  :where(h1, h2, h3, h4, h5, h6) {
-    text-wrap: balance;
-  }
 }

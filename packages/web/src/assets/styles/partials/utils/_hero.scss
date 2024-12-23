@@ -1,8 +1,9 @@
 @use "../mixins";
 
 .hero {
+  text-wrap: balance;
+
   > * {
-    text-wrap: balance;
     max-width: 49ch;
   }
 
