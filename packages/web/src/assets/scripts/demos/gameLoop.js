@@ -281,7 +281,7 @@ class GameLoop extends HTMLElement {
       x2: this.#player.position.x + direction.x,
       y2: this.#player.position.y + direction.y,
       color: 'black',
-      strokeWidth: '2',
+      strokeWidth: 2,
     });
   }
 
@@ -298,7 +298,7 @@ class GameLoop extends HTMLElement {
           // If we don't "rewind the clock," we'll have to wait longer for the next frame to run.
           (deltaTimeMs % this.#timing.maxMsPerFrame);
         // Update all physics (e.g., player movement)
-        this.#updatePhysics(deltaTimeMs);
+        this.#updatePhysics();
       }
       // It's okay (and even desirable) to draw/paint at the native refresh rate, as long as the draw()
       // logic is performant enough to run at the native refresh rate without significant frame drops.
