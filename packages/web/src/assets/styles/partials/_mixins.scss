@@ -48,13 +48,6 @@
   }
 }
 
-/// Extends the font size utility class corresponding to the specified step.
-@mixin extended-font-size($step) {
-  $class-name: functions.get-token-name("size", "font", $step);
-  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
-  @extend .#{$class-name};
-}
-
 @mixin font($size: null, $leading: null, $tracking: null, $family: null, $weight: null) {
   @if not $size and not $leading and not $family and not $weight {
     @error "You must specify at least one argument to the font mixin.";
