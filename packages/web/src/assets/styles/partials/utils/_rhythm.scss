@@ -16,6 +16,6 @@
   }
 
   > :where(h1, h2, h3, h4, h5, h6) + :not(.rhythm) {
-    --rhythm: 0.75lh;
+    --rhythm: 0.5lh;
   }
 }
