@@ -3,7 +3,7 @@ function toRadians(degrees) {
 }
 
 /** Two-dimensional vector. */
-export default class Vector2 {
+class Vector2 {
   /** @type {number} */
   x;
   /** @type {number} */
@@ -207,7 +207,7 @@ class GameLoop extends HTMLElement {
     canvas.height = Number(height);
     this.#canvas = new Canvas(canvas);
     this.#player = new Player({
-      position: new Vector2(width / 2, height / 2),
+      position: new Vector2(canvas.width / 2, canvas.height / 2),
       direction: new Vector2(1, 0).normalized(),
       radius: 8,
     });
