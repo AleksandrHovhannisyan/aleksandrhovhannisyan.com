@@ -50,7 +50,7 @@ Conversely, if you try to run your game at too high an FPS, user input may feel 
 
 ### Correct Approach: `requestAnimationFrame`
 
-For this reason, the event loop doesn't *just* process macro- or micro-tasks. Instead, it also reserves special checkpoints at regular intervals—known as a <dfn>render opportunities</dfn>—when the browser's main thread is allowed to switch to doing UI work. Render opportunities are the perfect time for animations because they're scheduled to run right before the browser repaints the next animation frame.
+For this reason, the event loop doesn't *just* process macro- or micro-tasks. Instead, it also reserves special checkpoints at regular intervals—known as a <dfn>render opportunities</dfn>—when the browser's main thread is allowed to switch to doing UI work. Render opportunities are the perfect time for animations because they're scheduled to run right before the browser repaints.
 
 The way we do this is by calling [`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame) and passing in the callback function that we want to execute during the next render opportunity:
 
@@ -251,10 +251,6 @@ function update() {
     });
 }
 ```
-
-For example, imagine this scenario where Frame 0 takes 24 ms to complete its work rather than 16:
-
-TODO: add diagram
 
 In other words, we're telling a harmless lie. Yes, it's true that `previousTimeMs` shouldn't _actually_ be `currentTimeMs - (deltaTimeMs % MAX_MS_PER_FRAME)` from the perspective of the wall clock. But when we simulate rewinding the clock to account for any frame delays, the next frame *thinks* it can still arrive at the next increment of `MAX_MS_PER_FRAME` as originally intended (e.g., at the next increment of ~16.67 ms for 60 FPS).
 
