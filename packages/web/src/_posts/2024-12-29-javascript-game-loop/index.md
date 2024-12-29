@@ -2,7 +2,6 @@
 title: Performant Game Loops in JavaScript
 description: A look at some best practices for creating performant game animations in JavaScript.
 categories: [game-dev, javascript, webperf]
-isDraft: true
 scripts:
   - type: module
     src: /assets/scripts/demos/gameLoop.js
