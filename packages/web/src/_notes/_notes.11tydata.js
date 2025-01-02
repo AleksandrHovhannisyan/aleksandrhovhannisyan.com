@@ -1,4 +1,7 @@
+import { validateBlogPostSchema } from '../../lib/schema.js';
+
 export default {
+  eleventyDataSchema: validateBlogPostSchema,
   layout: 'note',
   tags: ['notes'],
   permalink: (data) => `/notes/${data?.page?.fileSlug}/`,

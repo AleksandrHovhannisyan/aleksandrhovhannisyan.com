@@ -1,10 +1,12 @@
 import path from 'node:path';
 import { toAbsoluteImageUrl } from '../../lib/filters.js';
 import { dir } from '../../lib/constants.js';
+import { validateBlogPostSchema } from '../../lib/schema.js';
 
 const isProduction = process.env.ELEVENTY_ENV === 'production';
 
 export default {
+  eleventyDataSchema: validateBlogPostSchema,
   layout: 'post',
   permalink: (data) => {
     // Ignore/hide drafts on prod
