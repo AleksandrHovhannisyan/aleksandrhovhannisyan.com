@@ -9,7 +9,7 @@ scripts:
 
 Below is a demo of a basic game implemented with an HTML canvas and some JavaScript. The character is represented by the black circle, and its direction of movement is indicated by the line. Click or tab to the game area to begin; use <kbd>W</kbd> to move forward, <kbd>S</kbd> to move backward, <kbd>A</kbd> to rotate left, and <kbd>D</kbd> to rotate right.
 
-<game-loop width="600" height="300" title="Game loop demo" class="flex" player-move-speed="5" player-turn-speed="5" max-fps="60"></game-loop>
+<game-loop width="600" height="300" title="Game loop demo" class="flex" style="aspect-ratio: 600/300" player-move-speed="5" player-turn-speed="5" max-fps="60"></game-loop>
 
 Let's learn how to create silky-smooth game animations like this in JavaScript.
 
