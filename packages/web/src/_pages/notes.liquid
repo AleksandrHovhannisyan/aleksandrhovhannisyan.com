@@ -14,7 +14,8 @@ openGraph:
     </header>
     <div data-theme="light">
         <ul class="grid gap-3 note-board">
-            {% for note in collections.notes %}
+            {%- assign notes = collections.notes | sortByKey: "date", "DESC" -%}
+            {% for note in notes %}
               <li class="note">
                 <article class="stack gap--2">
                   <h3 class="title"><a class="card-link no-underline" href="{{ note.url }}">{{ note.data.title }}</a></h3>
