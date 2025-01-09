@@ -136,8 +136,8 @@ const consoleJS = `
  * @type {import('eleventy-plugin-code-demo/src/typedefs').EleventyPluginCodeDemoOptions}
  */
 export const codeDemoOptions = {
-  name: 'codeDemo',
-  renderDocument: ({ html, css, js }) => `
+	name: 'codeDemo',
+	renderDocument: ({ html, css, js }) => `
     <!DOCTYPE html>
   <html>
     <head>
@@ -150,9 +150,9 @@ export const codeDemoOptions = {
     </body>
   </html>
     `,
-  iframeAttributes: {
-    class: 'code-preview',
-    height: '308',
-    style: 'width: 100%;',
-  },
+	iframeAttributes: {
+		class: 'code-preview',
+		height: '308',
+		style: 'width: 100%;',
+	},
 };

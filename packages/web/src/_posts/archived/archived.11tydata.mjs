@@ -1,3 +1,3 @@
 export default {
-  isArchived: true,
+	isArchived: true,
 };

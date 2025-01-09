@@ -1,9 +1,9 @@
 import { markdown } from '../plugins/markdown.js';
 
 export default function aside(children) {
-  if (!children) {
-    throw new Error('You must provide a non-empty string for an aside.');
-  }
-  const content = markdown.render(children);
-  return `<aside role="note" class="aside rhythm">${content}</aside>`;
+	if (!children) {
+		throw new Error('You must provide a non-empty string for an aside.');
+	}
+	const content = markdown.render(children);
+	return `<aside role="note" class="aside rhythm">${content}</aside>`;
 }

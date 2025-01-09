@@ -4,21 +4,15 @@
     "**/node_modules": true,
     "**/*.{png,gif,jpg,jpeg,webp,woff,woff2}": true
   },
-  "eslint.validate": [
-    "javascript",
-  ],
   "stylelint.enable": true,
   "stylelint.validate": [
     "scss",
   ],
   "stylelint.configFile": "packages/web/.stylelintrc.json",
+  "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.fixAll.stylelint": "explicit"
+    "source.fixAll.biome": "explicit",
   },
-  "cSpell.words": [
-    "endcode",
-    "mouseleave"
-  ],
   "stylelint.stylelintPath": "",
+  "editor.defaultFormatter": "biomejs.biome"
 }

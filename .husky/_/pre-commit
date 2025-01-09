@@ -1,2 +1,0 @@
-pnpm -r exec lint-staged
-pnpm -r test

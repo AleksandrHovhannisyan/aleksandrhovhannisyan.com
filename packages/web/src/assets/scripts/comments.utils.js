@@ -1,12 +1,12 @@
 /** Represents an error that occurred while fetching or rendering comments. */
 export class CommentsError extends Error {
-  /**
-   * @param {string} message
-   */
-  constructor(message) {
-    super(message);
-    this.name = 'CommentsError';
-  }
+	/**
+	 * @param {string} message
+	 */
+	constructor(message) {
+		super(message);
+		this.name = 'CommentsError';
+	}
 }
 
 /** Returns all comments using the provided issue ID.
@@ -14,22 +14,22 @@ export class CommentsError extends Error {
  * @throws {CommentsError}
  */
 export const fetchComments = async (id) => {
-  try {
-    const baseUrl = window.location.hostname === 'localhost' ? 'http://localhost:4002' : '';
-    const response = await (await fetch(`${baseUrl}/api/comments?id=${id}`)).json();
-    if (response.error) {
-      throw new CommentsError(response.error);
-    }
-    /** @type import("../../../lib/types").PostComment[] */
-    const comments = response.data;
-    return comments;
-  } catch (e) {
-    // Allow custom error to bubble to caller
-    if (e instanceof CommentsError) {
-      throw e;
-    }
-    throw new CommentsError('Unable to fetch comments.');
-  }
+	try {
+		const baseUrl = window.location.hostname === 'localhost' ? 'http://localhost:4002' : '';
+		const response = await (await fetch(`${baseUrl}/api/comments?id=${id}`)).json();
+		if (response.error) {
+			throw new CommentsError(response.error);
+		}
+		/** @type import("../../../lib/types").PostComment[] */
+		const comments = response.data;
+		return comments;
+	} catch (e) {
+		// Allow custom error to bubble to caller
+		if (e instanceof CommentsError) {
+			throw e;
+		}
+		throw new CommentsError('Unable to fetch comments.');
+	}
 };
 
 const COMMENT_TEMPLATE = document.querySelector(`#comment-template`);
@@ -37,58 +37,58 @@ let authorComment = 0;
 
 /** @param {import("../../../lib/types").PostComment} comment The user comment to render. */
 const renderComment = (comment) => {
-  const commentNode = COMMENT_TEMPLATE.content.cloneNode(true);
+	const commentNode = COMMENT_TEMPLATE.content.cloneNode(true);
 
-  const userAvatar = commentNode.querySelector('img');
-  const userLink = commentNode.querySelector('a');
-  userAvatar.src = `${comment.user.avatarUrl}`;
-  userAvatar.removeAttribute('eleventy:ignore');
-  userLink.href = `https://github.com/${comment.user.name}`;
-  userLink.innerHTML = comment.user.name;
+	const userAvatar = commentNode.querySelector('img');
+	const userLink = commentNode.querySelector('a');
+	userAvatar.src = `${comment.user.avatarUrl}`;
+	userAvatar.removeAttribute('eleventy:ignore');
+	userLink.href = `https://github.com/${comment.user.name}`;
+	userLink.innerHTML = comment.user.name;
 
-  const authorPill = commentNode.querySelector('.post-comment-author');
-  if (!comment.user.isAuthor) {
-    authorPill.remove();
-  } else {
-    const authorPillId = `author-${authorComment++}`;
-    authorPill.id = authorPillId;
-    userLink.setAttribute('aria-describedby', authorPillId);
-  }
+	const authorPill = commentNode.querySelector('.post-comment-author');
+	if (!comment.user.isAuthor) {
+		authorPill.remove();
+	} else {
+		const authorPillId = `author-${authorComment++}`;
+		authorPill.id = authorPillId;
+		userLink.setAttribute('aria-describedby', authorPillId);
+	}
 
-  const commentTimestamp = commentNode.querySelector('time');
-  commentTimestamp.setAttribute('datetime', comment.dateTime);
-  commentTimestamp.innerHTML = comment.dateRelative;
+	const commentTimestamp = commentNode.querySelector('time');
+	commentTimestamp.setAttribute('datetime', comment.dateTime);
+	commentTimestamp.innerHTML = comment.dateRelative;
 
-  const editedPill = commentNode.querySelector('.post-comment-edited');
-  if (!comment.isEdited) {
-    editedPill.remove();
-  }
+	const editedPill = commentNode.querySelector('.post-comment-edited');
+	if (!comment.isEdited) {
+		editedPill.remove();
+	}
 
-  const commentBody = commentNode.querySelector('.post-comment-body');
-  commentBody.innerHTML = comment.body;
+	const commentBody = commentNode.querySelector('.post-comment-body');
+	commentBody.innerHTML = comment.body;
 
-  return commentNode;
+	return commentNode;
 };
 
 /** @param {import("../../../lib/types").PostComment[]} comments The user comments to render. */
 export const renderComments = (comments) => {
-  if (!comments.length) {
-    throw new CommentsError('No comments yet.');
-  }
-  const commentSection = document.querySelector('#comments');
-  const counter = commentSection.querySelector('#comments-count');
-  const list = document.createElement('ol');
-  list.classList.add('rhythm');
-  list.style.setProperty('--rhythm', '2lh');
-  counter.innerText = `${comments.length} `;
-  // https://frontendmasters.com/blog/patterns-for-memory-efficient-dom-manipulation/#approach-2-use-createdocumentfragment-with-appendchild-to-batch-inserts
-  const fragment = document.createDocumentFragment();
-  comments.forEach((comment) => {
-    const commentNode = renderComment(comment);
-    // append to in-memory fragment `n` times...
-    fragment.appendChild(commentNode);
-  });
-  // ... but append to actual list once at the end, to avoid unnecessary reflow from `n` appends
-  list.appendChild(fragment);
-  commentSection.appendChild(list);
+	if (!comments.length) {
+		throw new CommentsError('No comments yet.');
+	}
+	const commentSection = document.querySelector('#comments');
+	const counter = commentSection.querySelector('#comments-count');
+	const list = document.createElement('ol');
+	list.classList.add('rhythm');
+	list.style.setProperty('--rhythm', '2lh');
+	counter.innerText = `${comments.length} `;
+	// https://frontendmasters.com/blog/patterns-for-memory-efficient-dom-manipulation/#approach-2-use-createdocumentfragment-with-appendchild-to-batch-inserts
+	const fragment = document.createDocumentFragment();
+	comments.forEach((comment) => {
+		const commentNode = renderComment(comment);
+		// append to in-memory fragment `n` times...
+		fragment.appendChild(commentNode);
+	});
+	// ... but append to actual list once at the end, to avoid unnecessary reflow from `n` appends
+	list.appendChild(fragment);
+	commentSection.appendChild(list);
 };
