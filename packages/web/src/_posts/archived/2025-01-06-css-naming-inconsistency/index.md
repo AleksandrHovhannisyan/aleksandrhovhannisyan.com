@@ -1,6 +1,6 @@
 ---
 title: CSS Has a Naming Problem
-description: Naming things can be difficult, and CSS has no shortage of poorly named properties and values.
+description: A look at CSS properties and values that don't follow the clearest naming conventions.
 categories: [essay, css]
 keywords: [css, confusing]
 ---
@@ -67,50 +67,9 @@ Instead, he proposes a new API that allows you to control the _degree_ or _inten
 
 I think that's a pretty clever solution.
 
-## Rows and Columns
-
-Flexbox and CSS Grid are two important layout algorithms that work in similar but fundamentally different ways. Whereas Flexbox distributes items along a single axis and mostly relies on intrinsic sizing, growing, shrinking, and wrapping, CSS Grid is a two-axis layout mode that allows items to be positioned on either axis, with explicit sizing for rows and columns. (That's a bit of an oversimplification, but it's sufficient for the purposes of this discussion.)
-
-Both of these algorithms have a default axis of distribution, which you can change using either `flex-direction` or `grid-auto-flow`. The problem is that the terms "row" and "column" mean different things in Flexbox than they do in CSS Grid:
-
-<div class="scroll-x">
-    <table id="table-1">
-        <thead>
-            <tr>
-                <th scope="col">Rule</th>
-                <th scope="col">Axis of distribution</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>flex-direction: row</code></td>
-                <td>Horizontal</td>
-            </tr>
-            <tr>
-                <td><code>flex-direction: column</code></td>
-                <td>Vertical</td>
-            </tr>
-            <tr>
-                <td><code>grid-auto-flow: row</code></td>
-                <td>Vertical</td>
-            </tr>
-            <tr>
-                <td><code>grid-auto-flow: column</code></td>
-                <td>Horizontal</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-CSS Grid more accurately captures the meaning of the words "row" and "column," especially in the context of tabular layouts, but the fact that Flexbox interprets these terms differently is confusing.
-
-Essentially, `flex-direction: row` says that items should be distributed _within_ a row, meaning horizontally in a horizontal writing mode. But part of the problem is that Flexbox technically doesn't have the same kinds of "rows" and "columns" that Grid does; it only has a primary and cross axis, and they swap places when switching from `flex-direction: row` to `flex-direction: column`. Plus, flex items can't break out of a row and position themselves along a column like they can in CSS Grid, where _true_ rows and columns do exist (and are always fixed axes).
-
-It's easy to criticize Flexbox in hindsight, but at the time when Flexbox was first implemented, CSS Grid didn't even exist yet. My guess is that the CSS Working Group chose the terms "row" and "column" to wean developers off of table-based layouts—the familiarity of these terms would've made the new API easier to adopt. But now that logical properties and values have gained widespread adoption, I think it would make more sense for Flexbox to use `flex-direction: inline` and `flex-direction: block`—there's no need for terms like "row" and "column" when CSS already has terms that describe these axes.
-
 ## Alignment
 
-Speaking of Flexbox and CSS Grid, we need to talk about `align-items` and `justify-content`. Well, we actually need to talk about these four properties:
+Next, let's talk about `align-items` and `justify-content`. Well, really these four properties:
 
 - `align-items`
 - `align-content`
@@ -160,7 +119,7 @@ One reason could be that the default positioning of text underlines depends on t
 
 ## Hyphenation
 
-To conclude this article, let's revisit our old friend `text-wrap`:
+Finally, let's revisit our old friend `text-wrap`:
 
 ```css
 .no-wrap {
@@ -189,4 +148,4 @@ After all, I'm already setting the `text-wrap` property; I shouldn't have to res
 
 ## It Could Be Worse
 
-I don't want you to get the wrong idea. CSS is a lovely language: It's a paintbrush that, in the right hands, can turn the blank canvas of the web into a beautiful work of art. (Or, in the wrong hands, an embarrassing mistake.) Sure, it's a bit rough around the edges, but those inconsistencies are just a natural consequence of a language that's had multiple contributors over decades—it's not perfect and probably never will be. However, I do hope that CSS won't _continue_ to introduce confusing terminology—there's already plenty of that to go around.
+I don't want you to get the wrong idea. CSS is a lovely language: It's a paintbrush that, in the right hands, can turn the blank canvas of the web into a beautiful work of art. (Or, in the wrong hands, an embarrassing mistake.) Sure, it's a bit rough around the edges, but those inconsistencies are just a natural consequence of a language that's had multiple contributors over decades—it's not perfect and probably never will be. However, I do hope that CSS won't _continue_ to introduce confusing terminology.
