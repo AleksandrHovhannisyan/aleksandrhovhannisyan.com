@@ -1,13 +1,13 @@
 @use "../functions";
 
 .hash-art {
-  filter: brightness(82%);
+	filter: brightness(82%);
 
-  [data-value="0"] {
-    fill: black;
-  }
+	[data-value="0"] {
+		fill: black;
+	}
 
-  [data-value="1"] {
-    fill: white;
-  }
+	[data-value="1"] {
+		fill: white;
+	}
 }

@@ -2,16 +2,16 @@
 @use "../functions";
 
 .float {
-  --spacing: #{functions.size("spacing", "-2")};
-  max-width: functions.to-rems(128px);
-  margin-block-end: var(--spacing);
+	--spacing: #{functions.size("spacing", "-2")};
+	max-width: functions.to-rems(128px);
+	margin-block-end: var(--spacing);
 
-  &.right {
-    margin-inline-start: var(--spacing);
-    float: right;
-  }
+	&.right {
+		margin-inline-start: var(--spacing);
+		float: right;
+	}
 
-  @include mixins.mobile-lg {
-    max-width: functions.to-rems(190px);
-  }
+	@include mixins.mobile-lg {
+		max-width: functions.to-rems(190px);
+	}
 }

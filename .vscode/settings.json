@@ -1,18 +1,17 @@
 {
-  // Exclude these files from Ctrl+P search
-  "search.exclude": {
-    "**/node_modules": true,
-    "**/*.{png,gif,jpg,jpeg,webp,woff,woff2}": true
-  },
-  "stylelint.enable": true,
-  "stylelint.validate": [
-    "scss",
-  ],
-  "stylelint.configFile": "packages/web/.stylelintrc.json",
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.biome": "explicit",
-  },
-  "stylelint.stylelintPath": "",
-  "editor.defaultFormatter": "biomejs.biome"
+	// Exclude these files from Ctrl+P search
+	"search.exclude": {
+		"**/node_modules": true,
+		"**/*.{png,gif,jpg,jpeg,webp,woff,woff2}": true
+	},
+	"stylelint.enable": true,
+	"stylelint.validate": ["scss"],
+	"stylelint.configFile": "packages/web/.stylelintrc.json",
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.biome": "explicit",
+		"source.fixAll.stylelint": "explicit"
+	},
+	"stylelint.stylelintPath": "",
+	"editor.defaultFormatter": "biomejs.biome"
 }

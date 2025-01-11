@@ -1,9 +1,9 @@
 @use "../mixins";
 
 .screen-reader-only {
-  @include mixins.screen-reader-only;
+	@include mixins.screen-reader-only;
 
-  &:focus {
-    @include mixins.screen-reader-only-unset;
-  }
+	&:focus {
+		@include mixins.screen-reader-only-unset;
+	}
 }

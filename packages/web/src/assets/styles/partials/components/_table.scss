@@ -2,30 +2,30 @@
 @use "../mixins";
 
 table {
-  border-collapse: collapse;
-  font-variant-numeric: tabular-nums;
+	border-collapse: collapse;
+	font-variant-numeric: tabular-nums;
 }
 
 caption {
-  text-align: start;
-  margin-bottom: functions.size("spacing", "-2");
-  @include mixins.font($size: "sm");
+	text-align: start;
+	margin-bottom: functions.size("spacing", "-2");
+	@include mixins.font($size: "sm");
 }
 
 th {
-  white-space: nowrap;
+	white-space: nowrap;
 }
 
 :is(td, th) {
-  text-align: start;
-  padding: functions.size("spacing", "-1");
-  border: solid 0.75px functions.color("border", "0");
+	text-align: start;
+	padding: functions.size("spacing", "-1");
+	border: solid 0.75px functions.color("border", "0");
 
-  &.numeric {
-    text-align: end;
-  }
+	&.numeric {
+		text-align: end;
+	}
 }
 
 thead {
-  background-color: functions.color("surface", "1");
+	background-color: functions.color("surface", "1");
 }

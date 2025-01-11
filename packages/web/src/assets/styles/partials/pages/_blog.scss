@@ -2,9 +2,9 @@
 @use "../functions";
 
 .blog-page {
-  gap:
-    functions.clamped(
-      functions.get($tokens, "size", "spacing", "5"),
-      functions.get($tokens, "size", "spacing", "10")
-    );
+	gap:
+		functions.clamped(
+			functions.get($tokens, "size", "spacing", "5"),
+			functions.get($tokens, "size", "spacing", "10")
+		);
 }

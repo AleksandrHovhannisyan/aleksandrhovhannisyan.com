@@ -1,21 +1,21 @@
 @use "../functions";
 
 .rhythm {
-  --rhythm: 1lh;
+	--rhythm: 1lh;
 
-  > * + * {
-    margin-block-start: var(--rhythm);
-  }
+	> * + * {
+		margin-block-start: var(--rhythm);
+	}
 
-  > :where(h2) {
-    --rhythm: 1.25lh;
-  }
+	> :where(h2) {
+		--rhythm: 1.25lh;
+	}
 
-  > :where(h3) {
-    --rhythm: 0.75lh;
-  }
+	> :where(h3) {
+		--rhythm: 0.75lh;
+	}
 
-  > :where(h1, h2, h3, h4, h5, h6) + :not(.rhythm) {
-    --rhythm: 0.5lh;
-  }
+	> :where(h1, h2, h3, h4, h5, h6) + :not(.rhythm) {
+		--rhythm: 0.5lh;
+	}
 }

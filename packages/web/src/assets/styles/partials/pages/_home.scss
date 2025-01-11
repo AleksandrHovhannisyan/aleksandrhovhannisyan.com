@@ -3,25 +3,25 @@
 @use "../functions";
 
 .home-page {
-  gap:
-    functions.clamped(
-      functions.get($tokens, "size", "spacing", "8"),
-      functions.get($tokens, "size", "spacing", "13")
-    );
+	gap:
+		functions.clamped(
+			functions.get($tokens, "size", "spacing", "8"),
+			functions.get($tokens, "size", "spacing", "13")
+		);
 }
 
 .home-page-hero {
-  display: flex;
-  justify-content: space-between;
-  gap: functions.size("spacing", "5");
+	display: flex;
+	justify-content: space-between;
+	gap: functions.size("spacing", "5");
 }
 
 .home-hash-art {
-  display: none;
+	display: none;
 
-  @include mixins.desktop {
-    align-self: flex-end;
-    display: unset;
-    padding-block-start: 1ex;
-  }
+	@include mixins.desktop {
+		align-self: flex-end;
+		display: unset;
+		padding-block-start: 1ex;
+	}
 }

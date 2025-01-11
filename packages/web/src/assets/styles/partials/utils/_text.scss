@@ -1,19 +1,19 @@
 .to-underline {
-  text-decoration-line: none;
+	text-decoration-line: none;
 
-  &:is(:hover, :focus) {
-    text-decoration-line: underline;
-  }
+	&:is(:hover, :focus) {
+		text-decoration-line: underline;
+	}
 }
 
 .no-underline {
-  text-decoration-line: none;
+	text-decoration-line: none;
 }
 
 .text-center {
-  text-align: center;
+	text-align: center;
 }
 
 .nowrap {
-  white-space: nowrap;
+	white-space: nowrap;
 }

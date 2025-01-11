@@ -1,18 +1,18 @@
 @use "../functions";
 
 details {
-  summary {
-    cursor: pointer;
-    background-color: functions.color("surface", "1");
-  }
+	summary {
+		cursor: pointer;
+		background-color: functions.color("surface", "1");
+	}
 
-  summary,
-  .details-content {
-    padding: functions.size("spacing", "2") functions.size("spacing", "3");
-    border: 1px solid functions.color("border", "0");
-  }
+	summary,
+	.details-content {
+		padding: functions.size("spacing", "2") functions.size("spacing", "3");
+		border: 1px solid functions.color("border", "0");
+	}
 
-  .details-content {
-    border-top: none;
-  }
+	.details-content {
+		border-top: none;
+	}
 }

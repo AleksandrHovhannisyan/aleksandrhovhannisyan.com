@@ -1,65 +1,65 @@
 #cube {
-  row-gap: 32px;
+	row-gap: 32px;
 }
 
 .cube {
-  --cube-size: 9vw;
-  --cube-border-thickness: calc(var(--cube-size) / 100);
-  width: var(--cube-size);
-  height: var(--cube-size);
-  transform-style: preserve-3d;
-  perspective: calc(var(--cube-size) * 3);
-  position: relative;
-  color: black;
-  transform: rotateY(17deg) translateX(-30%);
+	--cube-size: 9vw;
+	--cube-border-thickness: calc(var(--cube-size) / 100);
+	width: var(--cube-size);
+	height: var(--cube-size);
+	transform-style: preserve-3d;
+	perspective: calc(var(--cube-size) * 3);
+	position: relative;
+	color: black;
+	transform: rotateY(17deg) translateX(-30%);
 }
 
 .cube-face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  font-size: calc(var(--cube-size) / 8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	font-size: calc(var(--cube-size) / 8);
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
-  &.top {
-    border: var(--cube-border-thickness) solid red;
-    background-color: hsl(0deg 100% 80% / 50%);
-    transform: rotateX(90deg);
-    transform-origin: top;
-  }
+	&.top {
+		border: var(--cube-border-thickness) solid red;
+		background-color: hsl(0deg 100% 80% / 50%);
+		transform: rotateX(90deg);
+		transform-origin: top;
+	}
 
-  &.front {
-    border: var(--cube-border-thickness) solid black;
-    background-color: hsl(0deg 0% 100% / 50%);
-    transform: translateZ(var(--cube-size));
-  }
+	&.front {
+		border: var(--cube-border-thickness) solid black;
+		background-color: hsl(0deg 0% 100% / 50%);
+		transform: translateZ(var(--cube-size));
+	}
 
-  &.left {
-    border: var(--cube-border-thickness) solid green;
-    background-color: rgb(224 255 210 / 50%);
-    transform: rotateY(-90deg);
-    transform-origin: left;
-  }
+	&.left {
+		border: var(--cube-border-thickness) solid green;
+		background-color: rgb(224 255 210 / 50%);
+		transform: rotateY(-90deg);
+		transform-origin: left;
+	}
 
-  &.back {
-    border: var(--cube-border-thickness) solid orange;
-    background-color: rgb(255 235 181 / 50%);
-    transform: rotateY(180deg);
-  }
+	&.back {
+		border: var(--cube-border-thickness) solid orange;
+		background-color: rgb(255 235 181 / 50%);
+		transform: rotateY(180deg);
+	}
 
-  &.right {
-    transform: rotateY(90deg);
-    transform-origin: right;
-    background-color: rgb(210 231 255 / 50%);
-    border: var(--cube-border-thickness) solid blue;
-  }
+	&.right {
+		transform: rotateY(90deg);
+		transform-origin: right;
+		background-color: rgb(210 231 255 / 50%);
+		border: var(--cube-border-thickness) solid blue;
+	}
 
-  &.bottom {
-    border: var(--cube-border-thickness) solid purple;
-    background-color: rgb(128 0 128 / 50%);
-    transform: rotateX(-90deg);
-    transform-origin: bottom;
-  }
+	&.bottom {
+		border: var(--cube-border-thickness) solid purple;
+		background-color: rgb(128 0 128 / 50%);
+		transform: rotateX(-90deg);
+		transform-origin: bottom;
+	}
 }

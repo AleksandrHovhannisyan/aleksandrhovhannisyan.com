@@ -1,18 +1,18 @@
 .katex {
-  white-space: normal !important;
-  line-height: 1.3 !important;
-  font-size: 1em !important;
+	white-space: normal !important;
+	line-height: 1.3 !important;
+	font-size: 1em !important;
 }
 
 .katex-display {
-  margin: 0 !important;
+	margin: 0 !important;
 
-  .katex {
-    display: inline-block;
-    white-space: nowrap;
-    max-width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    width: 100%;
-  }
+	.katex {
+		display: inline-block;
+		white-space: nowrap;
+		max-width: 100%;
+		overflow-x: auto;
+		overflow-y: hidden;
+		width: 100%;
+	}
 }

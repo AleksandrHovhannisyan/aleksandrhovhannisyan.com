@@ -14,7 +14,7 @@
 		"declaration-empty-line-before": null,
 		"declaration-block-semicolon-newline-after": "always-multi-line",
 		"font-family-name-quotes": "always-where-required",
-		"indentation": 2,
+		"indentation": "tab",
 		"max-line-length": null,
 		"scss/at-if-closing-brace-newline-after": "always-last-in-chain",
 		"scss/at-if-closing-brace-space-after": "always-intermediate",

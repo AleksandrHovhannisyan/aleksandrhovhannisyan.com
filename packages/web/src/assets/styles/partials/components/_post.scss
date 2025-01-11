@@ -2,39 +2,39 @@
 @use "../mixins";
 
 .post {
-  counter-reset: footnotes;
+	counter-reset: footnotes;
 
-  &-header {
-    text-wrap: balance;
-  }
+	&-header {
+		text-wrap: balance;
+	}
 
-  &-title {
-    margin-bottom: functions.size("spacing", "-2");
-  }
+	&-title {
+		margin-bottom: functions.size("spacing", "-2");
+	}
 
-  &-date {
-    color: functions.color("text", "soft");
-    margin-bottom: functions.size("spacing", "-3");
-    @include mixins.font($size: "sm");
+	&-date {
+		color: functions.color("text", "soft");
+		margin-bottom: functions.size("spacing", "-3");
+		@include mixins.font($size: "sm");
 
-    dt,
-    dd {
-      display: inline-block;
-    }
-  }
+		dt,
+		dd {
+			display: inline-block;
+		}
+	}
 
-  &-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: functions.size("spacing", "-3") functions.size("spacing", "-2");
-  }
+	&-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: functions.size("spacing", "-3") functions.size("spacing", "-2");
+	}
 
-  &-tag {
-    color: functions.color("text", "soft");
+	&-tag {
+		color: functions.color("text", "soft");
 
-    &::before {
-      content: "#";
-      user-select: none;
-    }
-  }
+		&::before {
+			content: "#";
+			user-select: none;
+		}
+	}
 }

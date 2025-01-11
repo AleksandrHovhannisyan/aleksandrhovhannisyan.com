@@ -1,13 +1,13 @@
 @use "../functions";
 
 .footnotes {
-  &__list {
-    list-style: decimal;
-    padding-inline-start: functions.size("relative", "0");
-  }
+	&__list {
+		list-style: decimal;
+		padding-inline-start: functions.size("relative", "0");
+	}
 }
 
 [role="doc-noteref"]::after {
-  counter-increment: footnotes;
-  content: " [" counter(footnotes) "]";
+	counter-increment: footnotes;
+	content: " [" counter(footnotes) "]";
 }

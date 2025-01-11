@@ -2,30 +2,30 @@
 @use "../functions";
 
 blockquote {
-  font-style: italic;
-  border-inline-start: functions.size("spacing", "-3") solid;
-  padding: 0 functions.size("relative", "2");
+	font-style: italic;
+	border-inline-start: functions.size("spacing", "-3") solid;
+	padding: 0 functions.size("relative", "2");
 
-  > .rhythm > :first-child {
-    &::before {
-      content: open-quote;
-    }
-  }
+	> .rhythm > :first-child {
+		&::before {
+			content: open-quote;
+		}
+	}
 
-  > .rhythm > :last-child {
-    &::after {
-      content: close-quote;
-    }
-  }
+	> .rhythm > :last-child {
+		&::after {
+			content: close-quote;
+		}
+	}
 }
 
 cite {
-  font-style: normal;
-  display: block;
-  @include mixins.font($size: "sm");
+	font-style: normal;
+	display: block;
+	@include mixins.font($size: "sm");
 
-  &::before {
-    content: "\2014";
-    user-select: none;
-  }
+	&::before {
+		content: "\2014";
+		user-select: none;
+	}
 }

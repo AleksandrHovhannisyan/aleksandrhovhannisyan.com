@@ -1,17 +1,17 @@
 @use "../mixins";
 
 .hero {
-  text-wrap: balance;
+	text-wrap: balance;
 
-  > * {
-    max-width: 49ch;
-  }
+	> * {
+		max-width: 49ch;
+	}
 
-  &-title {
-    @include mixins.font($size: "4xl");
-  }
+	&-title {
+		@include mixins.font($size: "4xl");
+	}
 
-  &-subtitle {
-    @include mixins.font($size: "lg");
-  }
+	&-subtitle {
+		@include mixins.font($size: "lg");
+	}
 }

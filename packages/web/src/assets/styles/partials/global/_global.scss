@@ -4,33 +4,33 @@
 @use "../mixins";
 
 body {
-  display: flex;
-  flex-direction: column;
-  background-color: functions.color("surface", "0");
-  color: functions.color("text", "normal");
-  overflow-wrap: break-word;
-  -webkit-font-smoothing: antialiased;
-  @include mixins.font($size: "base");
+	display: flex;
+	flex-direction: column;
+	background-color: functions.color("surface", "0");
+	color: functions.color("text", "normal");
+	overflow-wrap: break-word;
+	-webkit-font-smoothing: antialiased;
+	@include mixins.font($size: "base");
 }
 
 #page-content {
-  flex-grow: 1;
-  padding-block-start: functions.clamped(functions.get($tokens, "size", "spacing", "2"), functions.get($tokens, "size", "spacing", "10"));
-  padding-block-end: functions.clamped(functions.get($tokens, "size", "spacing", "8"), functions.get($tokens, "size", "spacing", "12"));
+	flex-grow: 1;
+	padding-block-start: functions.clamped(functions.get($tokens, "size", "spacing", "2"), functions.get($tokens, "size", "spacing", "10"));
+	padding-block-end: functions.clamped(functions.get($tokens, "size", "spacing", "8"), functions.get($tokens, "size", "spacing", "12"));
 }
 
 :is(code, kbd) {
-  @include mixins.font($family: "mono", $weight: "regular");
+	@include mixins.font($family: "mono", $weight: "regular");
 
-  :is(strong, h1, h2, h3, h4, h5, h6) & {
-    @include mixins.font($family: "mono", $weight: "bold");
-  }
+	:is(strong, h1, h2, h3, h4, h5, h6) & {
+		@include mixins.font($family: "mono", $weight: "bold");
+	}
 }
 
 a {
-  color: inherit;
-  text-underline-offset: 0.15em;
-  text-decoration-thickness: 0.07em;
+	color: inherit;
+	text-underline-offset: 0.15em;
+	text-decoration-thickness: 0.07em;
 }
 
 h1,
@@ -39,8 +39,8 @@ h3,
 h4,
 h5,
 h6 {
-  color: functions.color("text", "emphasis");
-  text-wrap: balance;
+	color: functions.color("text", "emphasis");
+	text-wrap: balance;
 }
 
 h1,
@@ -52,5 +52,5 @@ h6,
 label,
 th,
 strong {
-  @include mixins.font($family: "body", $weight: "bold");
+	@include mixins.font($family: "body", $weight: "bold");
 }

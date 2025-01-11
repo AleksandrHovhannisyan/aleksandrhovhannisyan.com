@@ -2,25 +2,25 @@
 @use "../partials/functions";
 
 .svg-tutorial__icon-grid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: functions.size("spacing", "8");
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: functions.size("spacing", "8");
 }
 
 .svg-tutorial__icon {
-  display: flex;
+	display: flex;
 }
 
 .svg-tutorial__icon svg {
-  stroke: currentcolor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  fill: none;
+	stroke: currentcolor;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	fill: none;
 }
 
 svg.bordered {
-  border: solid 1px;
+	border: solid 1px;
 }

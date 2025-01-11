@@ -1,243 +1,243 @@
 // Reference image: https://upload.wikimedia.org/wikipedia/en/c/c8/Cupheadresults.jpeg
 
 .cuphead {
-  --red: #d3542c;
-  --gray: hsl(0deg 0% 93%);
-  width: 28vmin;
-  height: 18vmin;
-  border: solid 0.6vmin black;
-  background-color: var(--gray);
-  position: relative;
-  transform: rotate(-5deg);
-  transform-style: preserve-3d;
-  perspective: 10vmin;
-  border-radius: 8vmin 8vmin 20vmin 20vmin / 4vmin 4vmin 20vmin 20vmin;
+	--red: #d3542c;
+	--gray: hsl(0deg 0% 93%);
+	width: 28vmin;
+	height: 18vmin;
+	border: solid 0.6vmin black;
+	background-color: var(--gray);
+	position: relative;
+	transform: rotate(-5deg);
+	transform-style: preserve-3d;
+	perspective: 10vmin;
+	border-radius: 8vmin 8vmin 20vmin 20vmin / 4vmin 4vmin 20vmin 20vmin;
 
-  &::before {
-    content: "";
-    border-right: solid 0.5vmin black;
-    border-left: solid 0.5vmin black;
-    display: block;
-    position: absolute;
-    background-color: var(--gray);
-    width: 25vmin;
-    height: 6vmin;
-    border-top: solid 0.6vmin black;
-    border-top-left-radius: 59%;
-    border-top-right-radius: 59%;
-    top: -1.8vmin;
-    left: -0.5vmin;
-  }
+	&::before {
+		content: "";
+		border-right: solid 0.5vmin black;
+		border-left: solid 0.5vmin black;
+		display: block;
+		position: absolute;
+		background-color: var(--gray);
+		width: 25vmin;
+		height: 6vmin;
+		border-top: solid 0.6vmin black;
+		border-top-left-radius: 59%;
+		border-top-right-radius: 59%;
+		top: -1.8vmin;
+		left: -0.5vmin;
+	}
 
-  /* Cup handle */
-  &::after {
-    content: "";
-    display: block;
-    position: absolute;
-    background-color: transparent;
-    width: 5vmin;
-    height: 5vmin;
-    transform: translateZ(-1vmin);
-    border-radius: 100%;
-    left: -3.5vmin;
-    border: solid 0.7vmin black;
-    border-right: transparent;
-    top: 6vmin;
-    box-shadow: 0 0 0 3vmin var(--gray), 0 0 0 3.6vmin black;
-  }
+	/* Cup handle */
+	&::after {
+		content: "";
+		display: block;
+		position: absolute;
+		background-color: transparent;
+		width: 5vmin;
+		height: 5vmin;
+		transform: translateZ(-1vmin);
+		border-radius: 100%;
+		left: -3.5vmin;
+		border: solid 0.7vmin black;
+		border-right: transparent;
+		top: 6vmin;
+		box-shadow: 0 0 0 3vmin var(--gray), 0 0 0 3.6vmin black;
+	}
 
-  &-eye {
-    border: solid 0.5vmin black;
-    overflow: hidden;
+	&-eye {
+		border: solid 0.5vmin black;
+		overflow: hidden;
 
-    // Pupils
-    &::before {
-      content: "";
-      display: block;
-      position: absolute;
-      background-color: black;
-      width: 4.5vmin;
-      bottom: 0;
-      border-radius: 50%;
-      clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 60% 50%, 100% 60%, 100% 100%, 0% 100%);
-    }
+		// Pupils
+		&::before {
+			content: "";
+			display: block;
+			position: absolute;
+			background-color: black;
+			width: 4.5vmin;
+			bottom: 0;
+			border-radius: 50%;
+			clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 60% 50%, 100% 60%, 100% 100%, 0% 100%);
+		}
 
-    &.left {
-      position: absolute;
-      right: 5.8vmin;
-      width: 13vmin;
-      height: 19vmin;
-      top: -1.5vmin;
-      background-color: white;
-      border-radius: 50%;
-      border-bottom-left-radius: 45%;
-      clip-path: polygon(0 52%, 100% 52%, 100% 100%, 0% 100%);
-      transform: rotate(3deg) translateY(-49%);
+		&.left {
+			position: absolute;
+			right: 5.8vmin;
+			width: 13vmin;
+			height: 19vmin;
+			top: -1.5vmin;
+			background-color: white;
+			border-radius: 50%;
+			border-bottom-left-radius: 45%;
+			clip-path: polygon(0 52%, 100% 52%, 100% 100%, 0% 100%);
+			transform: rotate(3deg) translateY(-49%);
 
-      &::before {
-        height: 8vmin;
-        left: 1.7vmin;
-        bottom: -0.2vmin;
-      }
-    }
+			&::before {
+				height: 8vmin;
+				left: 1.7vmin;
+				bottom: -0.2vmin;
+			}
+		}
 
-    &.right {
-      position: absolute;
-      right: -0.5vmin;
-      width: 7vmin;
-      height: 8.8vmin;
-      top: -0.5vmin;
-      background-color: white;
-      border-radius: 0% 60% 50% 100%;
-      transform: rotate(10deg);
+		&.right {
+			position: absolute;
+			right: -0.5vmin;
+			width: 7vmin;
+			height: 8.8vmin;
+			top: -0.5vmin;
+			background-color: white;
+			border-radius: 0% 60% 50% 100%;
+			transform: rotate(10deg);
 
-      &::before {
-        left: 1.2vmin;
-        width: 3.4vmin;
-        height: 90%;
-        transform: rotate(-5deg);
-      }
-    }
-  }
+			&::before {
+				left: 1.2vmin;
+				width: 3.4vmin;
+				height: 90%;
+				transform: rotate(-5deg);
+			}
+		}
+	}
 
-  &-nose {
-    border: solid 0.5vmin black;
-    position: absolute;
-    right: 2.6vmin;
-    top: 6.8vmin;
-    background-color: var(--red);
-    width: 4vmin;
-    height: 3vmin;
-    border-radius: 100% 80% 80% 100%;
-  }
+	&-nose {
+		border: solid 0.5vmin black;
+		position: absolute;
+		right: 2.6vmin;
+		top: 6.8vmin;
+		background-color: var(--red);
+		width: 4vmin;
+		height: 3vmin;
+		border-radius: 100% 80% 80% 100%;
+	}
 
-  &-mouth {
-    position: absolute;
-    left: 4vmin;
-    bottom: 2vmin;
-    width: 16vmin;
-    height: 14vmin;
-    border: 4vmin solid transparent;
-    border-bottom: 5.4vmin solid black;
-    border-right: 2vmin solid transparent;
-    border-radius: 100%;
-    transform: rotate(30deg);
+	&-mouth {
+		position: absolute;
+		left: 4vmin;
+		bottom: 2vmin;
+		width: 16vmin;
+		height: 14vmin;
+		border: 4vmin solid transparent;
+		border-bottom: 5.4vmin solid black;
+		border-right: 2vmin solid transparent;
+		border-radius: 100%;
+		transform: rotate(30deg);
 
-    &::before {
-      content: "";
-      display: block;
-      position: absolute;
-      width: 5vmin;
-      height: 8vmin;
-      background-color: black;
-      left: -1.1vmin;
-      top: 2.5vmin;
-      border-radius: 40% 40% 0 0;
-      transform: rotate(-75deg);
-    }
+		&::before {
+			content: "";
+			display: block;
+			position: absolute;
+			width: 5vmin;
+			height: 8vmin;
+			background-color: black;
+			left: -1.1vmin;
+			top: 2.5vmin;
+			border-radius: 40% 40% 0 0;
+			transform: rotate(-75deg);
+		}
 
-    &::after {
-      content: "";
-      display: block;
-      position: absolute;
-      width: 4vmin;
-      height: 3.8vmin;
-      background-color: black;
-      right: -1.5vmin;
-      top: 3.5vmin;
-      border-radius: 125% 200% 0 0;
-      transform: rotate(60deg);
-    }
-  }
+		&::after {
+			content: "";
+			display: block;
+			position: absolute;
+			width: 4vmin;
+			height: 3.8vmin;
+			background-color: black;
+			right: -1.5vmin;
+			top: 3.5vmin;
+			border-radius: 125% 200% 0 0;
+			transform: rotate(60deg);
+		}
+	}
 
-  &-tongue {
-    position: absolute;
-    background-color: var(--red);
-    width: 4vmin;
-    height: 2vmin;
-    left: -0.6vmin;
-    bottom: -4.5vmin;
-    transform: rotate(16deg);
-    border-radius: 130% 50% 20%;
+	&-tongue {
+		position: absolute;
+		background-color: var(--red);
+		width: 4vmin;
+		height: 2vmin;
+		left: -0.6vmin;
+		bottom: -4.5vmin;
+		transform: rotate(16deg);
+		border-radius: 130% 50% 20%;
 
-    &::before {
-      content: "";
-      position: absolute;
-      background-color: var(--red);
-      width: 3.5vmin;
-      height: 2.2vmin;
-      left: 3.2vmin;
-      bottom: 0.3vmin;
-      border-radius: 30% 100% 20% 30%;
-      transform: rotate(-20deg);
-    }
+		&::before {
+			content: "";
+			position: absolute;
+			background-color: var(--red);
+			width: 3.5vmin;
+			height: 2.2vmin;
+			left: 3.2vmin;
+			bottom: 0.3vmin;
+			border-radius: 30% 100% 20% 30%;
+			transform: rotate(-20deg);
+		}
 
-    &::after {
-      content: "";
-      display: block;
-      position: absolute;
-      width: 2.5vmin;
-      height: 1vmin;
-      border-top: 0.5vmin solid black;
-      border-left: 0.5vmin solid black;
-      border-radius: 100% 0 0;
-      transform: rotate(45deg);
-      left: 1vmin;
-      bottom: 1.4vmin;
-    }
-  }
+		&::after {
+			content: "";
+			display: block;
+			position: absolute;
+			width: 2.5vmin;
+			height: 1vmin;
+			border-top: 0.5vmin solid black;
+			border-left: 0.5vmin solid black;
+			border-radius: 100% 0 0;
+			transform: rotate(45deg);
+			left: 1vmin;
+			bottom: 1.4vmin;
+		}
+	}
 
-  &-straw {
-    position: absolute;
-    top: -9.3vmin;
-    width: 6vmin;
-    height: 9vmin;
-    border: 0.5vmin solid black;
-    background:
-      radial-gradient(
-        circle at 47% 161%,
-        white 35%,
-        white 50%,
-        black 50%,
-        black 54%,
-        var(--red) 54%,
-        var(--red) 75%,
-        black 75%,
-        black 79%,
-        white 79%
-      );
-    transform: rotate(-12deg);
-    transform-style: preserve-3d;
-    perspective: 4vmin;
-    border-top-left-radius: 70%;
+	&-straw {
+		position: absolute;
+		top: -9.3vmin;
+		width: 6vmin;
+		height: 9vmin;
+		border: 0.5vmin solid black;
+		background:
+			radial-gradient(
+				circle at 47% 161%,
+				white 35%,
+				white 50%,
+				black 50%,
+				black 54%,
+				var(--red) 54%,
+				var(--red) 75%,
+				black 75%,
+				black 79%,
+				white 79%
+			);
+		transform: rotate(-12deg);
+		transform-style: preserve-3d;
+		perspective: 4vmin;
+		border-top-left-radius: 70%;
 
-    &::before {
-      content: "";
-      display: block;
-      position: absolute;
-      left: -3.2vmin;
-      top: -5.9vmin;
-      width: 4.5vmin;
-      height: 10vmin;
-      border: 0.5vmin solid black;
-      border-top: none;
-      background:
-        radial-gradient(
-          circle at 40% 169%,
-          white 60%,
-          black 60%,
-          black 63%,
-          var(--red) 63%,
-          var(--red) 83%,
-          black 83%,
-          black 86%,
-          white 86%,
-          white 96%,
-          black 96%,
-          black 99%,
-          transparent 99%
-        );
-      transform: rotate(115deg) scaleY(-1) translateZ(-0.1vmin);
-    }
-  }
+		&::before {
+			content: "";
+			display: block;
+			position: absolute;
+			left: -3.2vmin;
+			top: -5.9vmin;
+			width: 4.5vmin;
+			height: 10vmin;
+			border: 0.5vmin solid black;
+			border-top: none;
+			background:
+				radial-gradient(
+					circle at 40% 169%,
+					white 60%,
+					black 60%,
+					black 63%,
+					var(--red) 63%,
+					var(--red) 83%,
+					black 83%,
+					black 86%,
+					white 86%,
+					white 96%,
+					black 96%,
+					black 99%,
+					transparent 99%
+				);
+			transform: rotate(115deg) scaleY(-1) translateZ(-0.1vmin);
+		}
+	}
 }

@@ -1,26 +1,24 @@
 @use "../functions";
 
 .grid {
-  --grid-column-max-count: 3;
-  --grid-item-min-width: #{functions.to-rems(260px)};
-  --grid-item-max-width: calc((100% - (var(--grid-column-max-count) - 1) * var(--gap)) / var(--grid-column-max-count));
-  display: grid;
-  grid-template-columns:
-    repeat(
-      auto-fill,
-      minmax(
-        /* Prefer growth/fill as much space as possible */
-        max(
-          /* Edge case: containing block width (100%) is narrower than the min width */
-          min(var(--grid-item-min-width), 100%),
-          var(--grid-item-max-width)
-        ),
-        1fr
-      )
-    );
+	--grid-column-max-count: 3;
+	--grid-item-min-width: #{functions.to-rems(260px)};
+	--grid-item-max-width: calc((100% - (var(--grid-column-max-count) - 1) * var(--gap)) / var(--grid-column-max-count));
+	display: grid;
+	grid-template-columns:
+		repeat(
+			auto-fill,
+			minmax(
+				max(
+					min(var(--grid-item-min-width), 100%),
+					var(--grid-item-max-width)
+				),
+				1fr
+			)
+		);
 }
 
 .col-2 {
-  --grid-column-max-count: 2;
-  --grid-item-min-width: #{functions.to-rems(300px)};
+	--grid-column-max-count: 2;
+	--grid-item-min-width: #{functions.to-rems(300px)};
 }

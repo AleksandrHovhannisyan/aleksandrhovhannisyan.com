@@ -2,7 +2,7 @@
 @use "../functions";
 
 html {
-  @each $property, $value in functions.get($tokens, "animation") {
-    --transition-#{$property}: #{$value};
-  }
+	@each $property, $value in functions.get($tokens, "animation") {
+		--transition-#{$property}: #{$value};
+	}
 }

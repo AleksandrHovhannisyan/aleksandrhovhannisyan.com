@@ -5,114 +5,114 @@
 @use "./tokens" as *;
 
 @function to-rems($value) {
-  // Check if the value, as a string, is already expressed in rems
-  @if ends-with("" + $value, "rem") {
-    @return $value;
-  }
-  $value-rems: math.div($value, 16px) * 1rem;
-  @return $value-rems;
+	// Check if the value, as a string, is already expressed in rems
+	@if ends-with("" + $value, "rem") {
+		@return $value;
+	}
+	$value-rems: math.div($value, 16px) * 1rem;
+	@return $value-rems;
 }
 
 /// Deep version of map.get
 @function get($map, $keys...) {
-  @each $key in $keys {
-    $map: map.get($map, $key);
-  }
-  @return $map;
+	@each $key in $keys {
+		$map: map.get($map, $key);
+	}
+	@return $map;
 }
 
 /// Joins a list of values as a string, with the given separator
 @function string-join($list, $separator) {
-  $result: "";
-  @each $entry in $list {
-    @if string.length($result) > 0 {
-      $result: $result + $separator;
-    }
-    $result: $result + $entry;
-  }
-  @return $result;
+	$result: "";
+	@each $entry in $list {
+		@if string.length($result) > 0 {
+			$result: $result + $separator;
+		}
+		$result: $result + $entry;
+	}
+	@return $result;
 }
 
 /// Returns the name for the token at the given vararg path, in kebab case. Example: "size", "font", "base" => "size-font-base".
 @function get-token-name($path...) {
-  // Kebab case
-  @return string-join($path, "-");
+	// Kebab case
+	@return string-join($path, "-");
 }
 
 /// Returns a size token value. Throws an error if the token does not have a value.
 @function size($type, $step) {
-  // Make sure that map actually exists. This will throw if it doesn't.
-  $token: get($tokens, "size", $type, $step);
-  /* stylelint-disable-next-line scss/at-if-no-null */
-  @if $token == null {
-    @error "Token not found: #{string-join($path, '.')}";
-  }
-  @return var(--#{get-token-name("size", $type, $step)});
+	// Make sure that map actually exists. This will throw if it doesn't.
+	$token: get($tokens, "size", $type, $step);
+	/* stylelint-disable-next-line scss/at-if-no-null */
+	@if $token == null {
+		@error "Token not found: #{string-join($path, '.')}";
+	}
+	@return var(--#{get-token-name("size", $type, $step)});
 }
 
 /// Returns a color token value. Throws an error if the given color token does not have a light or dark value.
 @function color($type, $step) {
-  // Make sure both of these exist in the config
-  $light-color: get($tokens, "color", "light", $type, $step);
-  $dark-color: get($tokens, "color", "dark", $type, $step);
-  @if not $light-color {
-    @error "Token not found: color.light.#{$type}.#{$step}";
-  }
-  @if not $dark-color {
-    @error "Token not found: color.dark.#{$type}.#{$step}";
-  }
-  @return var(--#{get-token-name("color", $type, $step)});
+	// Make sure both of these exist in the config
+	$light-color: get($tokens, "color", "light", $type, $step);
+	$dark-color: get($tokens, "color", "dark", $type, $step);
+	@if not $light-color {
+		@error "Token not found: color.light.#{$type}.#{$step}";
+	}
+	@if not $dark-color {
+		@error "Token not found: color.dark.#{$type}.#{$step}";
+	}
+	@return var(--#{get-token-name("color", $type, $step)});
 }
 
 /// Returns true if the given string ends with the given suffix.
 /// Adapted for use from: https://stackoverflow.com/a/40389473/5323344
 @function ends-with($string, $suffix) {
-  $string-length: string.length($string);
-  $suffix-length: string.length($suffix);
-  @return string.slice($string, ($string-length - $suffix-length + 1)) == $suffix;
+	$string-length: string.length($string);
+	$suffix-length: string.length($suffix);
+	@return string.slice($string, ($string-length - $suffix-length + 1)) == $suffix;
 }
 
 /// Returns true if the given string starts with the given prefix.
 @function starts-with($string, $prefix) {
-  $prefix-length: string.length($prefix);
-  @return string.slice($string, 1, $prefix-length) == $prefix;
+	$prefix-length: string.length($prefix);
+	@return string.slice($string, 1, $prefix-length) == $prefix;
 }
 
 /// Removes any number of specified characters from the given string and returns a new string.
 @function replace($string, $char, $new-char) {
-  $new-string: "";
-  $length: string.length($string);
+	$new-string: "";
+	$length: string.length($string);
 
-  @for $i from 1 through $length {
-    $current-char: string.slice($string, $i, $i);
-    @if $current-char != $char {
-      $new-string: #{$new-string}#{$current-char};
-    } @else {
-      $new-string: #{$new-string}#{$new-char};
-    }
-  }
+	@for $i from 1 through $length {
+		$current-char: string.slice($string, $i, $i);
+		@if $current-char != $char {
+			$new-string: #{$new-string}#{$current-char};
+		} @else {
+			$new-string: #{$new-string}#{$new-char};
+		}
+	}
 
-  @return $new-string;
+	@return $new-string;
 }
 
 /// Rounds the given number to the specified number of decimal places.
 /// Adapted for use from: https://gist.github.com/terkel/4373420
 @function rnd($number, $places: 0) {
-  $n: 1;
-  @if $places > 0 {
-    @for $i from 1 through $places {
-      $n: $n * 10;
-    }
-  }
-  @return math.div(math.round($number * $n), $n);
+	$n: 1;
+	@if $places > 0 {
+		@for $i from 1 through $places {
+			$n: $n * 10;
+		}
+	}
+	@return math.div(math.round($number * $n), $n);
 }
 
 /// Returns a CSS clamp(...) declaration, with the responsive argument computed automatically.
 @function clamped($min-px, $max-px, $min-bp: get($tokens, "breakpoints", "mobile"), $max-bp: get($tokens, "breakpoints", "desktop")) {
-  $slope: math.div($max-px - $min-px, $max-bp - $min-bp);
-  $slope-vw: rnd($slope * 100, 2);
-  $intercept-rems: rnd(to-rems($min-px - $slope * $min-bp), 2);
-  $min-rems: rnd(to-rems($min-px), 2);
-  $max-rems: rnd(to-rems($max-px), 2);
-  @return clamp(#{$min-rems}, #{$slope-vw}vw + #{$intercept-rems}, #{$max-rems});
+	$slope: math.div($max-px - $min-px, $max-bp - $min-bp);
+	$slope-vw: rnd($slope * 100, 2);
+	$intercept-rems: rnd(to-rems($min-px - $slope * $min-bp), 2);
+	$min-rems: rnd(to-rems($min-px), 2);
+	$max-rems: rnd(to-rems($max-px), 2);
+	@return clamp(#{$min-rems}, #{$slope-vw}vw + #{$intercept-rems}, #{$max-rems});
 }

@@ -1,41 +1,41 @@
 @keyframes grow {
-  from {
-    transform: scale(1);
-    background-color: #9ccae9;
-  }
+	from {
+		transform: scale(1);
+		background-color: #9ccae9;
+	}
 
-  to {
-    transform: scale(1.5);
-    background-color: #3895d3;
-  }
+	to {
+		transform: scale(1.5);
+		background-color: #3895d3;
+	}
 }
 
 .loading-orbs {
-  width: 100%;
-  display: flex;
-  justify-content: center;
+	width: 100%;
+	display: flex;
+	justify-content: center;
 
-  div {
-    width: 20px;
-    height: 20px;
-    margin: 8px;
-    border-radius: 50%;
-    background-color: #9ccae9;
+	div {
+		width: 20px;
+		height: 20px;
+		margin: 8px;
+		border-radius: 50%;
+		background-color: #9ccae9;
 
-    &:nth-child(1) {
-      animation: grow 0.5s alternate infinite;
-    }
+		&:nth-child(1) {
+			animation: grow 0.5s alternate infinite;
+		}
 
-    &:nth-child(2) {
-      animation: grow 0.5s alternate infinite 0.125s;
-    }
+		&:nth-child(2) {
+			animation: grow 0.5s alternate infinite 0.125s;
+		}
 
-    &:nth-child(3) {
-      animation: grow 0.5s alternate infinite 0.25s;
-    }
+		&:nth-child(3) {
+			animation: grow 0.5s alternate infinite 0.25s;
+		}
 
-    &:nth-child(4) {
-      animation: grow 0.5s alternate infinite 0.375s;
-    }
-  }
+		&:nth-child(4) {
+			animation: grow 0.5s alternate infinite 0.375s;
+		}
+	}
 }

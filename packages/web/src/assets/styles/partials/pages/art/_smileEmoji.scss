@@ -1,60 +1,60 @@
 .smile-emoji {
-  --face-color: #ffca3b;
-  --face-border-color: black;
-  --eye-color: black;
-  --mouth-color: black;
-  width: 25vmin;
-  height: 25vmin;
-  border-radius: 50%;
-  background-color: var(--face-color);
-  border: solid 1.5vmin var(--face-border-color);
-  position: relative;
-  display: flex;
-  justify-content: center;
+	--face-color: #ffca3b;
+	--face-border-color: black;
+	--eye-color: black;
+	--mouth-color: black;
+	width: 25vmin;
+	height: 25vmin;
+	border-radius: 50%;
+	background-color: var(--face-color);
+	border: solid 1.5vmin var(--face-border-color);
+	position: relative;
+	display: flex;
+	justify-content: center;
 
-  &-eyes {
-    position: absolute;
-    top: 40%;
-    transform: translateY(-50%);
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 5.5vmin;
-  }
+	&-eyes {
+		position: absolute;
+		top: 40%;
+		transform: translateY(-50%);
+		display: flex;
+		width: 100%;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 5.5vmin;
+	}
 
-  &-eye {
-    background-color: black;
-    border-radius: 1.5vmin;
-    position: relative;
-    width: 2.5vmin;
-    height: 4vmin;
-  }
+	&-eye {
+		background-color: black;
+		border-radius: 1.5vmin;
+		position: relative;
+		width: 2.5vmin;
+		height: 4vmin;
+	}
 
-  &-mouth {
-    width: 14vmin;
-    height: 11.5vmin;
-    background-color: transparent;
-    align-self: flex-end;
-    margin-bottom: 4.5vmin;
-    border-radius: 48%;
-    border: 1.5vmin solid transparent;
-    border-bottom: 1.5vmin solid var(--mouth-color);
-    position: relative;
+	&-mouth {
+		width: 14vmin;
+		height: 11.5vmin;
+		background-color: transparent;
+		align-self: flex-end;
+		margin-bottom: 4.5vmin;
+		border-radius: 48%;
+		border: 1.5vmin solid transparent;
+		border-bottom: 1.5vmin solid var(--mouth-color);
+		position: relative;
 
-    &::before,
-    &::after {
-      content: "";
-      width: 1.5vmin;
-      height: 1.5vmin;
-      border-radius: 50%;
-      position: absolute;
-      bottom: 0.1vmin;
-      background-color: var(--mouth-color);
-    }
+		&::before,
+		&::after {
+			content: "";
+			width: 1.5vmin;
+			height: 1.5vmin;
+			border-radius: 50%;
+			position: absolute;
+			bottom: 0.1vmin;
+			background-color: var(--mouth-color);
+		}
 
-    &::after {
-      right: 0;
-    }
-  }
+		&::after {
+			right: 0;
+		}
+	}
 }

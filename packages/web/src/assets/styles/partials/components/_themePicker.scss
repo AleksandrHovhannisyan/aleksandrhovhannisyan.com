@@ -2,14 +2,14 @@
 @use "../mixins";
 
 #theme-picker {
-  border: none;
+	border: none;
 
-  label {
-    margin-inline-start: functions.size("relative", "-2");
-    font-weight: unset;
-  }
+	label {
+		margin-inline-start: functions.size("relative", "-2");
+		font-weight: unset;
+	}
 
-  .visible-label {
-    @include mixins.font($family: "body", $weight: "bold");
-  }
+	.visible-label {
+		@include mixins.font($family: "body", $weight: "bold");
+	}
 }

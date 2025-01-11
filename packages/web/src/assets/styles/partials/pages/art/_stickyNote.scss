@@ -2,5 +2,5 @@
 @import "../../components/note";
 
 .artwork .note {
-  @include mixins.font($family: "cursive", $weight: "regular", $size: "lg");
+	@include mixins.font($family: "cursive", $weight: "regular", $size: "lg");
 }
