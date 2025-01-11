@@ -81,7 +81,7 @@
 		format("woff2-variations");
 }
 html {
-	--font-family-body: Source Sans, body-fallback-1, body-fallback-2, body-fallback-3, body-fallback-4;
+	--font-family-body: Source Sans, body-fallback-1, body-fallback-2, body-fallback-3, body-fallback-4, system-ui;
 	--font-weight-body-regular: 400;
 	--font-weight-body-bold: 700;
 }
