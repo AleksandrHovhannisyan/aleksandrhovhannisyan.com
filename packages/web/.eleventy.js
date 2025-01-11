@@ -38,6 +38,8 @@ import { escapeString, slugifyString } from './lib/utils.js';
 
 const TEMPLATE_ENGINE = 'liquid';
 
+console.log(process.env);
+
 export default function eleventy(eleventyConfig) {
 	eleventyConfig.setLiquidOptions({
 		// Allows for dynamic include/partial names. If true, include names must be quoted. Defaults to true as of beta/1.0.
