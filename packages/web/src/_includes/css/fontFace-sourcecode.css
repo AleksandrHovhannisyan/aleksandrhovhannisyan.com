@@ -7,6 +7,7 @@
 	font-family: "Source Code Pro";
 	font-style: normal;
 	font-display: swap;
+	font-weight: 200 900;
 	src: local("SourceCodeVF"), url("/assets/fonts/sourcecode-latin-roman-variable.woff2")
 		format("woff2 supports variations"), url("/assets/fonts/sourcecode-latin-roman-variable.woff2")
 		format("woff2-variations");
