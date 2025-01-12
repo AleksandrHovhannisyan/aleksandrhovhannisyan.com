@@ -2,67 +2,67 @@
 @use "../mixins";
 
 .project {
-	&-wrapper {
-		// Prevents the dreaded "doom flicker": https://www.joshwcomeau.com/animation/css-transitions/#doom-flicker
-		&:is(:hover, :focus-within) {
-			.project {
-				box-shadow: var(--card-box-shadow-focus);
-				transform: var(--card-offset-y-focus);
-			}
-		}
-	}
+  &-wrapper {
+    // Prevents the dreaded "doom flicker": https://www.joshwcomeau.com/animation/css-transitions/#doom-flicker
+    &:is(:hover, :focus-within) {
+      .project {
+        box-shadow: var(--card-box-shadow-focus);
+        transform: var(--card-offset-y-focus);
+      }
+    }
+  }
 
-	&-icon {
-		picture {
-			display: flex;
-			width: functions.size("relative", "0");
-			aspect-ratio: 1;
-		}
-	}
+  &-icon {
+    picture {
+      display: flex;
+      width: functions.size("relative", "0");
+      aspect-ratio: 1;
+    }
+  }
 
-	&-rating {
-		display: flex;
-		align-items: center;
-		gap: functions.size("spacing", "-4");
-		@include mixins.font($family: "mono", $weight: "regular");
+  &-rating {
+    display: flex;
+    align-items: center;
+    gap: functions.size("spacing", "-4");
+    @include mixins.font($family: "mono", $weight: "regular");
 
-		svg {
-			width: functions.size("relative", "0");
-			aspect-ratio: 1;
-			fill: functions.color("surface", "8");
-		}
-	}
+    svg {
+      width: functions.size("relative", "0");
+      aspect-ratio: 1;
+      fill: functions.color("surface", "8");
+    }
+  }
 
-	&-link {
-		text-decoration: none;
-		outline: none;
+  &-link {
+    text-decoration: none;
+    outline: none;
 
-		&::after {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-		}
-	}
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
 
-	&-description {
-		margin-top: functions.size("spacing", "-2");
-		@include mixins.font($size: "base");
-	}
+  &-description {
+    margin-top: functions.size("spacing", "-2");
+    @include mixins.font($size: "base");
+  }
 
-	&-technologies {
-		display: flex;
-		flex-wrap: wrap;
-		gap: functions.size("spacing", "-2");
-		margin-top: functions.size("spacing", "1");
-		@include mixins.font($family: "mono", $weight: "regular");
-	}
+  &-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: functions.size("spacing", "-2");
+    margin-top: functions.size("spacing", "1");
+    @include mixins.font($family: "mono", $weight: "regular");
+  }
 
-	&-technology {
-		background-color: functions.color("surface", "2");
-		padding: functions.size("spacing", "-3") functions.size("spacing", "-2");
-		border-radius: functions.size("spacing", "-4");
-	}
+  &-technology {
+    background-color: functions.color("surface", "2");
+    padding: functions.size("spacing", "-3") functions.size("spacing", "-2");
+    border-radius: functions.size("spacing", "-4");
+  }
 }

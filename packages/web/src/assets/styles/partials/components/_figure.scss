@@ -2,16 +2,16 @@
 @use "../functions";
 
 figure {
-	gap: functions.size("spacing", "-2");
-	display: flex;
-	flex-direction: column;
+  gap: functions.size("spacing", "-2");
+  display: flex;
+  flex-direction: column;
 
-	img {
-		margin-inline: auto;
-	}
+  img {
+    margin-inline: auto;
+  }
 }
 
 figcaption {
-	text-align: center;
-	@include mixins.font($size: "xs");
+  text-align: center;
+  @include mixins.font($size: "xs");
 }

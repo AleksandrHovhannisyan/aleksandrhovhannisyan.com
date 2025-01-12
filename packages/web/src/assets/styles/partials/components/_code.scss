@@ -3,13 +3,13 @@
 // Inline code and kbd
 code:not([class^="language-"]),
 kbd {
-	color: functions.color("text", "emphasis");
-	background-color: light-dark(#{functions.color("surface", "1")}, #{functions.color("surface", "2")});
-	border-radius: functions.size("spacing", "-3");
-	padding: functions.size("relative", "-4") functions.size("relative", "-3");
+  color: functions.color("text", "emphasis");
+  background-color: light-dark(#{functions.color("surface", "1")}, #{functions.color("surface", "2")});
+  border-radius: functions.size("spacing", "-3");
+  padding: functions.size("relative", "-4") functions.size("relative", "-3");
 }
 
 kbd {
-	outline: solid 1px functions.color("surface", "3");
-	box-shadow: 0 1px 1px 0 functions.color("border", "0");
+  outline: solid 1px functions.color("surface", "3");
+  box-shadow: 0 1px 1px 0 functions.color("border", "0");
 }

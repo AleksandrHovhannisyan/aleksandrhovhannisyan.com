@@ -1,6 +1,6 @@
 @use "../functions";
 
 .prose {
-	max-width: functions.to-rems(700px);
-	margin: 0 auto;
+  max-width: functions.to-rems(700px);
+  margin: 0 auto;
 }

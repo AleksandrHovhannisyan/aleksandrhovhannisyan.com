@@ -2,50 +2,50 @@
 @use "../mixins";
 
 .page-footer {
-	background-color: functions.color("surface", "1");
-	color: functions.color("text", "emphasis");
-	text-align: center;
-	padding-block: functions.size("spacing", "5");
-	accent-color: currentcolor;
+  background-color: functions.color("surface", "1");
+  color: functions.color("text", "emphasis");
+  text-align: center;
+  padding-block: functions.size("spacing", "5");
+  accent-color: currentcolor;
 
-	&-container {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		gap: functions.size("spacing", "-1");
-	}
+  &-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: functions.size("spacing", "-1");
+  }
 
-	&-end {
-		align-items: center;
-	}
+  &-end {
+    align-items: center;
+  }
 
-	&-socials {
-		display: flex;
-		align-items: center;
-		flex-wrap: wrap;
-		gap: functions.size("spacing", "0");
-	}
+  &-socials {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: functions.size("spacing", "0");
+  }
 
-	@include mixins.mobile-lg {
-		padding-block: functions.size("spacing", "5");
-	}
+  @include mixins.mobile-lg {
+    padding-block: functions.size("spacing", "5");
+  }
 
-	@include mixins.tablet-sm {
-		text-align: start;
+  @include mixins.tablet-sm {
+    text-align: start;
 
-		&-container {
-			align-items: end;
-			flex-direction: row;
-			justify-content: space-between;
-		}
+    &-container {
+      align-items: end;
+      flex-direction: row;
+      justify-content: space-between;
+    }
 
-		&-end {
-			align-items: end;
-		}
-	}
+    &-end {
+      align-items: end;
+    }
+  }
 
-	h2 {
-		color: inherit;
-	}
+  h2 {
+    color: inherit;
+  }
 }

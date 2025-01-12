@@ -3,232 +3,232 @@
 @use "../mixins";
 
 .code-block {
-	--size-code-padding: #{functions.size("spacing", "4")};
-	--size-code-line-number-padding: #{functions.size("relative", "-3")};
-	--color-code-background: #{functions.color("surface", "1")};
-	--color-code-header-background: #{functions.color("surface", "2")};
-	--color-code-overlay-1: light-dark(#{functions.color("surface", "3")}, #{functions.color("surface", "3")});
-	--color-code-overlay-2: light-dark(#{functions.color("surface", "4")}, #{functions.color("surface", "4")});
+  --size-code-padding: #{functions.size("spacing", "4")};
+  --size-code-line-number-padding: #{functions.size("relative", "-3")};
+  --color-code-background: #{functions.color("surface", "1")};
+  --color-code-header-background: #{functions.color("surface", "2")};
+  --color-code-overlay-1: light-dark(#{functions.color("surface", "3")}, #{functions.color("surface", "3")});
+  --color-code-overlay-2: light-dark(#{functions.color("surface", "4")}, #{functions.color("surface", "4")});
 
-	/* Dark colors: https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vsc-dark-plus.css */
-	--color-code-selection: light-dark(hsl(244deg 28% 51% / 20%), hsl(210deg 100% 84% / 15%));
-	--color-code-comment: light-dark(hsl(120deg 100% 21.8%), hsl(101deg 29% 47%));
-	--color-code-text: light-dark(hsl(0deg 0% 0%), hsl(0deg 0% 90%));
-	--color-code-keyword: light-dark(hsl(233deg 100% 38%), hsl(207deg 61% 59%));
-	--color-code-number: light-dark(var(--color-code-comment), hsl(99deg 28% 73%));
-	--color-code-attribute: light-dark(var(--color-code-text), hsl(201deg 98% 80%));
-	--color-code-string: light-dark(hsl(8deg 100% 38%), hsl(17deg 47% 64%));
-	--color-code-variable: var(--color-code-keyword);
-	--color-code-tag: var(--color-code-keyword);
-	--color-code-constant: var(--color-code-number);
-	--color-code-punctuation: light-dark(var(--color-code-text), hsl(0deg 0% 54%));
-	--color-code-selector: light-dark(var(--color-code-string), hsl(41deg 53% 67%));
-	border-radius: functions.size("spacing", "-3");
-	position: relative;
+  /* Dark colors: https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vsc-dark-plus.css */
+  --color-code-selection: light-dark(hsl(244deg 28% 51% / 20%), hsl(210deg 100% 84% / 15%));
+  --color-code-comment: light-dark(hsl(120deg 100% 21.8%), hsl(101deg 29% 47%));
+  --color-code-text: light-dark(hsl(0deg 0% 0%), hsl(0deg 0% 90%));
+  --color-code-keyword: light-dark(hsl(233deg 100% 38%), hsl(207deg 61% 59%));
+  --color-code-number: light-dark(var(--color-code-comment), hsl(99deg 28% 73%));
+  --color-code-attribute: light-dark(var(--color-code-text), hsl(201deg 98% 80%));
+  --color-code-string: light-dark(hsl(8deg 100% 38%), hsl(17deg 47% 64%));
+  --color-code-variable: var(--color-code-keyword);
+  --color-code-tag: var(--color-code-keyword);
+  --color-code-constant: var(--color-code-number);
+  --color-code-punctuation: light-dark(var(--color-code-text), hsl(0deg 0% 54%));
+  --color-code-selector: light-dark(var(--color-code-string), hsl(41deg 53% 67%));
+  border-radius: functions.size("spacing", "-3");
+  position: relative;
 
-	pre {
-		color: var(--color-code-text);
-		overflow-x: auto;
-		white-space: pre;
-		word-spacing: normal;
-		word-break: normal;
-		tab-size: 4;
-		text-align: start;
-		border: solid 1px functions.color("surface", "3");
-		border-radius: functions.size("spacing", "-3");
-	}
+  pre {
+    color: var(--color-code-text);
+    overflow-x: auto;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    tab-size: 4;
+    text-align: start;
+    border: solid 1px functions.color("surface", "3");
+    border-radius: functions.size("spacing", "-3");
+  }
 
-	code {
-		display: block;
-		width: fit-content;
-		min-width: 100%;
-		line-height: functions.size("leading", "sm");
-		padding: var(--size-code-padding);
-		background-color: var(--color-code-background);
-	}
+  code {
+    display: block;
+    width: fit-content;
+    min-width: 100%;
+    line-height: functions.size("leading", "sm");
+    padding: var(--size-code-padding);
+    background-color: var(--color-code-background);
+  }
 
-	.file-name,
-	.copy-code-button {
-		position: absolute;
-		inset-block-start: var(--size-code-padding);
-	}
+  .file-name,
+  .copy-code-button {
+    position: absolute;
+    inset-block-start: var(--size-code-padding);
+  }
 
-	.file-name {
-		inset-inline-start: var(--size-code-padding);
-		color: inherit;
-		font-size: inherit;
-		transform: translateY(-50%);
-		@include mixins.font($family: "mono", $weight: "bold");
+  .file-name {
+    inset-inline-start: var(--size-code-padding);
+    color: inherit;
+    font-size: inherit;
+    transform: translateY(-50%);
+    @include mixins.font($family: "mono", $weight: "bold");
 
-		&::before {
-			content: "📁 ";
-			@include mixins.font($size: "xs");
-		}
-	}
+    &::before {
+      content: "📁 ";
+      @include mixins.font($size: "xs");
+    }
+  }
 
-	.copy-code-button {
-		display: none;
-		opacity: 0;
-		inset-inline-end: var(--size-code-padding);
-		color: var(--color-code-text);
-		background-color: var(--color-code-overlay-1);
-		padding: functions.size("spacing", "-3") functions.size("spacing", "-1");
-		border-radius: functions.size("spacing", "-3");
-		@include mixins.font($family: "mono", $weight: "regular", $size: "sm");
+  .copy-code-button {
+    display: none;
+    opacity: 0;
+    inset-inline-end: var(--size-code-padding);
+    color: var(--color-code-text);
+    background-color: var(--color-code-overlay-1);
+    padding: functions.size("spacing", "-3") functions.size("spacing", "-1");
+    border-radius: functions.size("spacing", "-3");
+    @include mixins.font($family: "mono", $weight: "regular", $size: "sm");
 
-		&:is(.copied, :focus) {
-			opacity: 1;
-		}
+    &:is(.copied, :focus) {
+      opacity: 1;
+    }
 
-		&:is(.copied, :hover) {
-			background-color: var(--color-code-overlay-2);
-		}
+    &:is(.copied, :hover) {
+      background-color: var(--color-code-overlay-2);
+    }
 
-		@include mixins.tablet {
-			display: unset;
-		}
-	}
+    @include mixins.tablet {
+      display: unset;
+    }
+  }
 
-	// Code blocks with a caption should get a "fake" header. <figcaption> must be the first or
-	// last child of a <figure>, so I can't just wrap it in a div and style that (which would be easier).
-	&:has(.file-name) {
-		// We can fake the header with a background color
-		pre {
-			background-color: var(--color-code-header-background);
-			padding-block-start: calc(2 * var(--size-code-padding));
-		}
+  // Code blocks with a caption should get a "fake" header. <figcaption> must be the first or
+  // last child of a <figure>, so I can't just wrap it in a div and style that (which would be easier).
+  &:has(.file-name) {
+    // We can fake the header with a background color
+    pre {
+      background-color: var(--color-code-header-background);
+      padding-block-start: calc(2 * var(--size-code-padding));
+    }
 
-		// Code should get the main padding
-		code {
-			padding: var(--size-code-padding);
-			border-block-start: solid 1px functions.color("surface", "3");
-		}
+    // Code should get the main padding
+    code {
+      padding: var(--size-code-padding);
+      border-block-start: solid 1px functions.color("surface", "3");
+    }
 
-		// Center button on fake header
-		.copy-code-button {
-			transform: translateY(-50%);
-		}
-	}
+    // Center button on fake header
+    .copy-code-button {
+      transform: translateY(-50%);
+    }
+  }
 
-	&:has(.line:only-child) .copy-code-button {
-		inset-block-start: 50%;
-		transform: translateY(-50%);
-	}
+  &:has(.line:only-child) .copy-code-button {
+    inset-block-start: 50%;
+    transform: translateY(-50%);
+  }
 
-	// /* Non-plaintext code blocks with more than one line should get line numbering */
-	// code:not(.language-plaintext):has(.line:not(:only-child)) {
-	//   --size-code-line-number-offset: 4ch;
-	//   padding-inline-start: calc(var(--size-code-padding) + var(--size-code-line-number-offset));
+  // /* Non-plaintext code blocks with more than one line should get line numbering */
+  // code:not(.language-plaintext):has(.line:not(:only-child)) {
+  //   --size-code-line-number-offset: 4ch;
+  //   padding-inline-start: calc(var(--size-code-padding) + var(--size-code-line-number-offset));
 
-	//   .line {
-	//     counter-increment: line-number;
+  //   .line {
+  //     counter-increment: line-number;
 
-	//     &::before {
-	//       // content: counter(line-number);
-	//       display: block;
-	//       height: 1lh;
-	//       position: absolute;
-	//       inset-inline-start: var(--size-code-padding);
-	//       color: functions.color("text", "soft");
-	//       font-variant-numeric: tabular-nums;
-	//     }
-	//   }
-	// }
-	// code:not(.language-text):has(.line:nth-child(100)) {
-	//   --size-code-line-number-offset: 5ch;
-	// }
+  //     &::before {
+  //       // content: counter(line-number);
+  //       display: block;
+  //       height: 1lh;
+  //       position: absolute;
+  //       inset-inline-start: var(--size-code-padding);
+  //       color: functions.color("text", "soft");
+  //       font-variant-numeric: tabular-nums;
+  //     }
+  //   }
+  // }
+  // code:not(.language-text):has(.line:nth-child(100)) {
+  //   --size-code-line-number-offset: 5ch;
+  // }
 
-	// Focus styles appear later
-	&:hover {
-		.copy-code-button {
-			opacity: 1;
-		}
-	}
+  // Focus styles appear later
+  &:hover {
+    .copy-code-button {
+      opacity: 1;
+    }
+  }
 
-	.namespace {
-		opacity: 0.7;
-	}
+  .namespace {
+    opacity: 0.7;
+  }
 
-	&::selection,
-	& *::selection {
-		text-shadow: none;
-		color: unset;
-		background: var(--color-code-selection);
-	}
+  &::selection,
+  & *::selection {
+    text-shadow: none;
+    color: unset;
+    background: var(--color-code-selection);
+  }
 }
 
 .token {
-	&:is(.doctype, .doctype-tag) {
-		.name {
-			color: var(--color-code-attribute);
-		}
-	}
+  &:is(.doctype, .doctype-tag) {
+    .name {
+      color: var(--color-code-attribute);
+    }
+  }
 
-	&.comment {
-		margin: 0;
-	}
+  &.comment {
+    margin: 0;
+  }
 
-	&:is(.comment, .prolog) {
-		color: var(--color-code-comment);
-	}
+  &:is(.comment, .prolog) {
+    color: var(--color-code-comment);
+  }
 
-	&.number {
-		color: var(--color-code-constant);
-	}
+  &.number {
+    color: var(--color-code-constant);
+  }
 
-	&.script {
-		color: var(--color-code-text);
-	}
+  &.script {
+    color: var(--color-code-text);
+  }
 
-	&.punctuation,
-	&.cdata {
-		color: var(--color-code-punctuation);
-	}
+  &.punctuation,
+  &.cdata {
+    color: var(--color-code-punctuation);
+  }
 
-	/* stylelint-disable-next-line max-line-length */
-	&:is(.keyword, .tag, .boolean, .constant, .url, .inserted, .operator.arrow, .key.atrule, .rule, .keyword.module, .keyword.control-flow, .entity, .important, .punctuation.interpolation-punctuation, .doctype, .doctype-tag, .directive-hash),
-	&.atrule .url {
-		color: var(--color-code-keyword);
-	}
+  /* stylelint-disable-next-line max-line-length */
+  &:is(.keyword, .tag, .boolean, .constant, .url, .inserted, .operator.arrow, .key.atrule, .rule, .keyword.module, .keyword.control-flow, .entity, .important, .punctuation.interpolation-punctuation, .doctype, .doctype-tag, .directive-hash),
+  &.atrule .url {
+    color: var(--color-code-keyword);
+  }
 
-	&:is(.selector, .string, .char, .builtin, .deleted, .regex, .attr-value),
-	&.attr-value &.punctuation,
-	&.url .content {
-		color: var(--color-code-string);
-	}
+  &:is(.selector, .string, .char, .builtin, .deleted, .regex, .attr-value),
+  &.attr-value &.punctuation,
+  &.url .content {
+    color: var(--color-code-string);
+  }
 
-	&:is(.operator, .entity, .function),
-	&.atrule &.url &.punctuation,
-	&.attr-value &.punctuation.attr-equals,
-	&.function &.maybe-class-name {
-		color: var(--color-code-text);
-	}
+  &:is(.operator, .entity, .function),
+  &.atrule &.url &.punctuation,
+  &.attr-value &.punctuation.attr-equals,
+  &.function &.maybe-class-name {
+    color: var(--color-code-text);
+  }
 
-	&:is(.attr-name, .constant, .console, .property, .variable),
-	&.imports &.maybe-class-name,
-	&.exports &.maybe-class-name {
-		color: var(--color-code-attribute);
-	}
+  &:is(.attr-name, .constant, .console, .property, .variable),
+  &.imports &.maybe-class-name,
+  &.exports &.maybe-class-name {
+    color: var(--color-code-attribute);
+  }
 
-	&.bold {
-		@include mixins.font($family: "mono", $weight: "bold");
-	}
+  &.bold {
+    @include mixins.font($family: "mono", $weight: "bold");
+  }
 
-	&.italic {
-		font-style: italic;
-	}
+  &.italic {
+    font-style: italic;
+  }
 }
 
 /* Language Specific */
 
 pre:is([class*="language-css"], [class*="language-scss"], [class*="language-sass"]) {
-	.token.selector {
-		color: var(--color-code-selector);
-	}
+  .token.selector {
+    color: var(--color-code-selector);
+  }
 }
 
 pre[class*="language-bash"] {
-	.token:not(.comment) {
-		color: var(--color-code-text) !important;
-	}
+  .token:not(.comment) {
+    color: var(--color-code-text) !important;
+  }
 }

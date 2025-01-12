@@ -1,15 +1,15 @@
 @use "../functions";
 
 #skip-toc {
-	transform: translateY(-50%);
-	padding: functions.size("spacing", "-4") functions.size("spacing", "-2");
+  transform: translateY(-50%);
+  padding: functions.size("spacing", "-4") functions.size("spacing", "-2");
 }
 
 .toc-list {
-	list-style: disc; // some headings have numbers already
-	padding-inline-start: functions.size("relative", "2");
+  list-style: disc; // some headings have numbers already
+  padding-inline-start: functions.size("relative", "2");
 
-	li {
-		margin-top: functions.size("spacing", "-2");
-	}
+  li {
+    margin-top: functions.size("spacing", "-2");
+  }
 }

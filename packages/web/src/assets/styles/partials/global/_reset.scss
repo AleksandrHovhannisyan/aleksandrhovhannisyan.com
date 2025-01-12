@@ -1,57 +1,57 @@
 @use "../functions";
 
 * {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 *,
 *::before,
 *::after {
-	@media (prefers-reduced-motion) {
-		animation: none !important;
-		transition: none !important;
-	}
+  @media (prefers-reduced-motion) {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
 :where(html, body) {
-	height: 100%;
+  height: 100%;
 }
 
 :where(input, select, textarea, button) {
-	font: inherit;
-	line-height: inherit;
+  font: inherit;
+  line-height: inherit;
 }
 
 // Responsive media with a width and height set in their HTML need this reset
 :where(img, video) {
-	height: auto;
+  height: auto;
 }
 
 :where(img, iframe, video) {
-	display: block;
-	max-width: 100%;
+  display: block;
+  max-width: 100%;
 }
 
 :where(button) {
-	border: none;
-	cursor: pointer;
+  border: none;
+  cursor: pointer;
 }
 
 // It's safe to assume that whenever we add a class to a list, we plan to add custom styles that will require resetting default list styles
 :where(ul, ol)[class] {
-	list-style: none;
+  list-style: none;
 }
 
 // https://css-tricks.com/standardizing-focus-styles-with-css-custom-properties/
 :where(a, button, input, select, textarea, summary, [tabindex="0"]) {
-	--outline-thickness: #{functions.to-rems(3px)};
-	--outline-style: solid;
-	--outline-color: currentcolor;
+  --outline-thickness: #{functions.to-rems(3px)};
+  --outline-style: solid;
+  --outline-color: currentcolor;
 
-	&:focus-visible {
-		outline: var(--outline-thickness) var(--outline-style) var(--outline-color);
-		outline-offset: var(--outline-offset, 0);
-	}
+  &:focus-visible {
+    outline: var(--outline-thickness) var(--outline-style) var(--outline-color);
+    outline-offset: var(--outline-offset, 0);
+  }
 }

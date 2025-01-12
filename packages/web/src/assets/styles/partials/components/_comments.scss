@@ -3,48 +3,48 @@
 @use "../mixins";
 
 #comments {
-	--rhythm: 1.75lh;
-	padding-top: var(--rhythm);
-	border-top: solid 1px functions.color("border", "0");
+  --rhythm: 1.75lh;
+  padding-top: var(--rhythm);
+  border-top: solid 1px functions.color("border", "0");
 }
 
 .post-comment {
-	&-meta > * {
-		display: inline;
-		vertical-align: middle;
-	}
+  &-meta > * {
+    display: inline;
+    vertical-align: middle;
+  }
 
-	&-avatar {
-		width: functions.size("spacing", "5");
-	}
+  &-avatar {
+    width: functions.size("spacing", "5");
+  }
 
-	&-username {
-		@include mixins.font($family: "body", $weight: "bold");
-	}
+  &-username {
+    @include mixins.font($family: "body", $weight: "bold");
+  }
 
-	&-edited {
-		font-style: italic;
-	}
+  &-edited {
+    font-style: italic;
+  }
 
-	&-author {
-		border-radius: functions.size("spacing", "-4");
-		padding: functions.size("spacing", "-3") functions.size("spacing", "-2");
-	}
+  &-author {
+    border-radius: functions.size("spacing", "-4");
+    padding: functions.size("spacing", "-3") functions.size("spacing", "-2");
+  }
 
-	&-body {
-		ul {
-			list-style: disc;
-		}
+  &-body {
+    ul {
+      list-style: disc;
+    }
 
-		@include mixins.headings {
-			@include mixins.font($size: "base");
-		}
-	}
+    @include mixins.headings {
+      @include mixins.font($size: "base");
+    }
+  }
 }
 
 #comments-count {
-	color: functions.color("text", "soft");
-	vertical-align: middle;
-	padding-inline-start: 0.25ch;
-	@include mixins.font($size: "base");
+  color: functions.color("text", "soft");
+  vertical-align: middle;
+  padding-inline-start: 0.25ch;
+  @include mixins.font($size: "base");
 }

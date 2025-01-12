@@ -2,81 +2,81 @@
 @use "../functions";
 
 .skip-navigation {
-	top: 50%;
-	transform: translate(#{functions.size("spacing", "-2")}, -50%);
-	padding: functions.size("spacing", "-2");
-	background-color: functions.color("surface", "0");
+  top: 50%;
+  transform: translate(#{functions.size("spacing", "-2")}, -50%);
+  padding: functions.size("spacing", "-2");
+  background-color: functions.color("surface", "0");
 }
 
 .navbar {
-	/* Body is a flex container. Without this, the navbar may shrink vertically due to the presence of a horizontal scrollbar. */
-	flex-shrink: 0;
-	width: 100%;
-	padding-block: functions.size("spacing", "0");
-	overflow-x: auto;
+  /* Body is a flex container. Without this, the navbar may shrink vertically due to the presence of a horizontal scrollbar. */
+  flex-shrink: 0;
+  width: 100%;
+  padding-block: functions.size("spacing", "0");
+  overflow-x: auto;
 
-	a {
-		text-decoration: none;
-	}
+  a {
+    text-decoration: none;
+  }
 
-	nav {
-		// Don't wrap whitespace
-		white-space: nowrap;
-		// Distribute available space evenly, but don't shrink
-		flex: 1 0 auto;
-		// Relatively position the navbar for the skip link
-		position: relative;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: functions.size("spacing", "0");
-	}
+  nav {
+    // Don't wrap whitespace
+    white-space: nowrap;
+    // Distribute available space evenly, but don't shrink
+    flex: 1 0 auto;
+    // Relatively position the navbar for the skip link
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: functions.size("spacing", "0");
+  }
 
-	&-logo {
-		width: functions.size("spacing", "4");
-	}
+  &-logo {
+    width: functions.size("spacing", "4");
+  }
 
-	&-link-home {
-		display: flex;
-		gap: functions.size("spacing", "-3");
-		align-items: center;
-		padding: functions.size("spacing", "-2");
-		@include mixins.font($family: "body", $weight: "bold");
+  &-link-home {
+    display: flex;
+    gap: functions.size("spacing", "-3");
+    align-items: center;
+    padding: functions.size("spacing", "-2");
+    @include mixins.font($family: "body", $weight: "bold");
 
-		.site-name {
-			@include mixins.screen-reader-only;
-		}
-	}
+    .site-name {
+      @include mixins.screen-reader-only;
+    }
+  }
 
-	&-links {
-		width: 100%;
-		display: flex;
-		align-items: center;
-		gap: functions.size("relative", "-3");
+  &-links {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: functions.size("relative", "-3");
 
-		> :first-child {
-			flex-shrink: 0;
-			margin-inline-end: auto;
-		}
-	}
+    > :first-child {
+      flex-shrink: 0;
+      margin-inline-end: auto;
+    }
+  }
 
-	&-link {
-		padding: functions.size("relative", "-2") functions.size("relative", "-1");
+  &-link {
+    padding: functions.size("relative", "-2") functions.size("relative", "-1");
 
-		&:is(:focus, :hover, [aria-current="page"]) {
-			background-color: functions.color("surface", "2");
-		}
-	}
+    &:is(:focus, :hover, [aria-current="page"]) {
+      background-color: functions.color("surface", "2");
+    }
+  }
 }
 
 @include mixins.mobile-lg {
-	.navbar {
-		padding-block: functions.size("spacing", "4");
-		position: unset;
+  .navbar {
+    padding-block: functions.size("spacing", "4");
+    position: unset;
 
-		.site-name {
-			position: unset;
-			@include mixins.screen-reader-only-unset;
-		}
-	}
+    .site-name {
+      position: unset;
+      @include mixins.screen-reader-only-unset;
+    }
+  }
 }

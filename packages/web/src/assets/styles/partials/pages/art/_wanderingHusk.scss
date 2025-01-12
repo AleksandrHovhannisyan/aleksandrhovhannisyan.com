@@ -2,162 +2,162 @@
 // The Wandering Husk enemy from Hollow Knight
 
 .hk-husk {
-	--belly-color: #5e6275;
-	--shell-color: #39435b;
-	--face-color: #cabfc6;
-	--eye-color: #de7c4d;
-	width: 11.44vmin;
-	height: 13.6vmin;
-	border: solid 0.5vmin black;
-	border-bottom-width: 0.7vmin;
-	border-radius: 50% 90% 55% 70%;
-	transform-style: preserve-3d;
-	perspective: 3vmin;
-	background-image:
-		radial-gradient(
-			circle at 6% 82%,
-			var(--belly-color) 54%,
-			black 54%,
-			black 58%,
-			var(--shell-color) 58%
-		);
+  --belly-color: #5e6275;
+  --shell-color: #39435b;
+  --face-color: #cabfc6;
+  --eye-color: #de7c4d;
+  width: 11.44vmin;
+  height: 13.6vmin;
+  border: solid 0.5vmin black;
+  border-bottom-width: 0.7vmin;
+  border-radius: 50% 90% 55% 70%;
+  transform-style: preserve-3d;
+  perspective: 3vmin;
+  background-image:
+    radial-gradient(
+      circle at 6% 82%,
+      var(--belly-color) 54%,
+      black 54%,
+      black 58%,
+      var(--shell-color) 58%
+    );
 
-	/* Segment lines */
-	&::after {
-		content: "";
-		display: block;
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		left: -0.1vmin;
-		top: 0;
-		border-radius: 50% 90% 70% 70%;
-		background-image:
-			radial-gradient(
-				ellipse at 15% 35%,
-				transparent 34%,
-				transparent 55%,
-				black 55%,
-				black 59%,
-				transparent 59%,
-				transparent 78%,
-				black 78%,
-				black 82%,
-				transparent 82%
-			);
-		transform: rotate(12deg);
-	}
+  /* Segment lines */
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: -0.1vmin;
+    top: 0;
+    border-radius: 50% 90% 70% 70%;
+    background-image:
+      radial-gradient(
+        ellipse at 15% 35%,
+        transparent 34%,
+        transparent 55%,
+        black 55%,
+        black 59%,
+        transparent 59%,
+        transparent 78%,
+        black 78%,
+        black 82%,
+        transparent 82%
+      );
+    transform: rotate(12deg);
+  }
 
-	/* Lone segment line */
-	&::before {
-		content: "";
-		display: block;
-		width: 5vmin;
-		height: 3vmin;
-		border-right: 0.5vmin solid transparent;
-		border-left: 0.2vmin solid transparent;
-		border-bottom: 0.5vmin solid black;
-		border-radius: 50% 50% 50% 45%;
-		right: -1.1vmin;
-		position: absolute;
-		transform: rotate(296deg);
-		bottom: 2.8vmin;
-	}
+  /* Lone segment line */
+  &::before {
+    content: "";
+    display: block;
+    width: 5vmin;
+    height: 3vmin;
+    border-right: 0.5vmin solid transparent;
+    border-left: 0.2vmin solid transparent;
+    border-bottom: 0.5vmin solid black;
+    border-radius: 50% 50% 50% 45%;
+    right: -1.1vmin;
+    position: absolute;
+    transform: rotate(296deg);
+    bottom: 2.8vmin;
+  }
 
-	&-head {
-		width: 8.8vmin;
-		height: 7.2vmin;
-		border-radius: 50% 45% 50% 50%;
-		transform: rotate(-48deg);
-		border: solid 0.5vmin black;
-		position: absolute;
-		left: -2.5vmin;
-		top: 0.3vmin;
-		background-color: var(--face-color);
-	}
+  &-head {
+    width: 8.8vmin;
+    height: 7.2vmin;
+    border-radius: 50% 45% 50% 50%;
+    transform: rotate(-48deg);
+    border: solid 0.5vmin black;
+    position: absolute;
+    left: -2.5vmin;
+    top: 0.3vmin;
+    background-color: var(--face-color);
+  }
 
-	&-eye.right {
-		display: block;
-		position: absolute;
-		background: radial-gradient(circle at 45% 65%, var(--eye-color) 16%, black 10%);
-		border-radius: 50%;
-		width: 2.2vmin;
-		height: 3.2vmin;
-		bottom: 0.7vmin;
-		right: 3.1vmin;
-		transform: rotate(15deg);
-	}
+  &-eye.right {
+    display: block;
+    position: absolute;
+    background: radial-gradient(circle at 45% 65%, var(--eye-color) 16%, black 10%);
+    border-radius: 50%;
+    width: 2.2vmin;
+    height: 3.2vmin;
+    bottom: 0.7vmin;
+    right: 3.1vmin;
+    transform: rotate(15deg);
+  }
 
-	&-eye.left {
-		display: block;
-		background: radial-gradient(circle at 45% 60%, var(--eye-color) 16%, black 10%);
-		position: absolute;
-		border-radius: 50%;
-		width: 1.2vmin;
-		height: 2.8vmin;
-		left: 0.3vmin;
-		bottom: 2vmin;
-		transform: rotate(20deg);
-	}
+  &-eye.left {
+    display: block;
+    background: radial-gradient(circle at 45% 60%, var(--eye-color) 16%, black 10%);
+    position: absolute;
+    border-radius: 50%;
+    width: 1.2vmin;
+    height: 2.8vmin;
+    left: 0.3vmin;
+    bottom: 2vmin;
+    transform: rotate(20deg);
+  }
 
-	&-leg {
-		height: 4vmin;
-		width: 1.5vmin;
-		position: absolute;
-	}
+  &-leg {
+    height: 4vmin;
+    width: 1.5vmin;
+    position: absolute;
+  }
 
-	&-leg.right {
-		border-right: solid 1.2vmin black;
-		border-radius: 0% 0% 60% 40%;
-		bottom: -4vmin;
-		right: 1.8vmin;
-		transform: rotate(2deg);
-	}
+  &-leg.right {
+    border-right: solid 1.2vmin black;
+    border-radius: 0% 0% 60% 40%;
+    bottom: -4vmin;
+    right: 1.8vmin;
+    transform: rotate(2deg);
+  }
 
-	&-leg.left {
-		border-left: solid 1.2vmin black;
-		border-bottom: solid 0.1vmin transparent;
-		border-radius: 0% 0% 50% 80%;
-		bottom: -4.1vmin;
-		left: 3.5vmin;
-		transform: rotate(-8deg);
-	}
+  &-leg.left {
+    border-left: solid 1.2vmin black;
+    border-bottom: solid 0.1vmin transparent;
+    border-radius: 0% 0% 50% 80%;
+    bottom: -4.1vmin;
+    left: 3.5vmin;
+    transform: rotate(-8deg);
+  }
 
-	&-arm.right {
-		border-left: solid 0.9vmin black;
-		border-top: solid 0.2vmin transparent;
-		border-bottom: solid 0.2vmin transparent;
-		height: 3.6vmin;
-		width: 1.5vmin;
-		border-radius: 30% 30% 50% 100%;
-		position: absolute;
-		right: 3.3vmin;
-		top: 7.8vmin;
-		transform: rotate(-5deg);
+  &-arm.right {
+    border-left: solid 0.9vmin black;
+    border-top: solid 0.2vmin transparent;
+    border-bottom: solid 0.2vmin transparent;
+    height: 3.6vmin;
+    width: 1.5vmin;
+    border-radius: 30% 30% 50% 100%;
+    position: absolute;
+    right: 3.3vmin;
+    top: 7.8vmin;
+    transform: rotate(-5deg);
 
-		&::before {
-			content: "";
-			display: block;
-			position: absolute;
-			width: 0.9vmin;
-			height: 0.9vmin;
-			border-radius: 50%;
-			background-color: black;
-			left: -0.9vmin;
-			top: -0.4vmin;
-		}
-	}
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 0.9vmin;
+      height: 0.9vmin;
+      border-radius: 50%;
+      background-color: black;
+      left: -0.9vmin;
+      top: -0.4vmin;
+    }
+  }
 
-	&-arm.left {
-		border-left: solid 1vmin black;
-		border-bottom: solid 0.1vmin transparent;
-		border-right: solid 0.4vmin transparent;
-		height: 2.8vmin;
-		width: 1.4vmin;
-		border-radius: 100% 30% 50% 200%;
-		position: absolute;
-		left: 0.3vmin;
-		top: 9.8vmin;
-		transform: rotate(-13deg);
-	}
+  &-arm.left {
+    border-left: solid 1vmin black;
+    border-bottom: solid 0.1vmin transparent;
+    border-right: solid 0.4vmin transparent;
+    height: 2.8vmin;
+    width: 1.4vmin;
+    border-radius: 100% 30% 50% 200%;
+    position: absolute;
+    left: 0.3vmin;
+    top: 9.8vmin;
+    transform: rotate(-13deg);
+  }
 }

@@ -1,35 +1,35 @@
 @use "../functions";
 
 .button {
-	--outline-offset: var(--outline-thickness);
-	--outline-color: #{functions.color("surface", "9")};
-	--color-bg-button: transparent;
-	--color-fg-button: currentcolor;
-	padding: functions.size("spacing", "-2") functions.size("spacing", "0");
-	border-radius: functions.size("spacing", "-4");
-	text-decoration: none;
-	background-color: var(--color-bg-button);
-	color: var(--color-fg-button);
-	border: solid;
+  --outline-offset: var(--outline-thickness);
+  --outline-color: #{functions.color("surface", "9")};
+  --color-bg-button: transparent;
+  --color-fg-button: currentcolor;
+  padding: functions.size("spacing", "-2") functions.size("spacing", "0");
+  border-radius: functions.size("spacing", "-4");
+  text-decoration: none;
+  background-color: var(--color-bg-button);
+  color: var(--color-fg-button);
+  border: solid;
 }
 
 .button.secondary {
-	--color-bg-button: #{functions.color("surface", "0")};
-	border-color: var(--color-fg-button);
+  --color-bg-button: #{functions.color("surface", "0")};
+  border-color: var(--color-fg-button);
 
-	&:is(:focus, :hover) {
-		--color-bg-button: #{functions.color("text", "normal")};
-		--color-fg-button: #{functions.color("text", "inverted")};
-		border-color: var(--color-bg-button);
-	}
+  &:is(:focus, :hover) {
+    --color-bg-button: #{functions.color("text", "normal")};
+    --color-fg-button: #{functions.color("text", "inverted")};
+    border-color: var(--color-bg-button);
+  }
 }
 
 .button.primary {
-	--color-bg-button: #{functions.color("surface", "9")};
-	--color-fg-button: #{functions.color("text", "inverted")};
-	border-color: var(--color-bg-button);
+  --color-bg-button: #{functions.color("surface", "9")};
+  --color-fg-button: #{functions.color("text", "inverted")};
+  border-color: var(--color-bg-button);
 
-	&:is(:focus, :hover) {
-		--color-bg-button: #{functions.color("surface", "8")};
-	}
+  &:is(:focus, :hover) {
+    --color-bg-button: #{functions.color("surface", "8")};
+  }
 }

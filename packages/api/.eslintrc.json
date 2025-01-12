@@ -6,8 +6,5 @@
     "node": true,
     "es6": true
   },
-  "ignorePatterns": [
-    "node_modules",
-    ".wrangler"
-  ]
+  "ignorePatterns": ["node_modules", ".wrangler"]
 }

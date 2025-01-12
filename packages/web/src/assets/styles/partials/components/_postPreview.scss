@@ -2,83 +2,83 @@
 @use "../mixins";
 
 .post-preview {
-	border-radius: functions.size("spacing", "-3");
-	background-color: functions.color("surface", "1");
-	padding: functions.size("relative", "2");
-	position: relative;
-	text-wrap: balance;
+  border-radius: functions.size("spacing", "-3");
+  background-color: functions.color("surface", "1");
+  padding: functions.size("relative", "2");
+  position: relative;
+  text-wrap: balance;
 
-	// Pseudo-element trick to make the whole card clickable. Good on mobile so users don't have to worry about tapping links precisely
-	&-link {
-		// Enlarge mouse target
-		display: block;
+  // Pseudo-element trick to make the whole card clickable. Good on mobile so users don't have to worry about tapping links precisely
+  &-link {
+    // Enlarge mouse target
+    display: block;
 
-		&::after {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-		}
-	}
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
 
-	&-date {
-		color: functions.color("text", "soft");
-		@include mixins.font($size: "sm");
-	}
+  &-date {
+    color: functions.color("text", "soft");
+    @include mixins.font($size: "sm");
+  }
 
-	&-title {
-		margin-top: functions.size("spacing", "-3");
-		// Tighten line height due to short line length
-		@include mixins.font($size: "lg");
-	}
+  &-title {
+    margin-top: functions.size("spacing", "-3");
+    // Tighten line height due to short line length
+    @include mixins.font($size: "lg");
+  }
 
-	&-description {
-		margin-top: functions.size("spacing", "-2");
-		// Tighten line height due to short line length
-		@include mixins.font($size: "base", $leading: "sm");
-	}
+  &-description {
+    margin-top: functions.size("spacing", "-2");
+    // Tighten line height due to short line length
+    @include mixins.font($size: "base", $leading: "sm");
+  }
 
-	&-tags {
-		display: none;
-		@include mixins.font($size: "sm");
-	}
+  &-tags {
+    display: none;
+    @include mixins.font($size: "sm");
+  }
 
-	&-tag {
-		&:is(:focus-visible, :hover) {
-			text-decoration: none;
-		}
-	}
+  &-tag {
+    &:is(:focus-visible, :hover) {
+      text-decoration: none;
+    }
+  }
 
-	@include mixins.tablet-sm {
-		&-date {
-			@include mixins.font($size: "xs");
-		}
+  @include mixins.tablet-sm {
+    &-date {
+      @include mixins.font($size: "xs");
+    }
 
-		&-title {
-			@include mixins.font($size: "md", $leading: "2xs");
-		}
+    &-title {
+      @include mixins.font($size: "md", $leading: "2xs");
+    }
 
-		&-description {
-			@include mixins.font($size: "sm");
-		}
-	}
+    &-description {
+      @include mixins.font($size: "sm");
+    }
+  }
 
-	@include mixins.desktop {
-		&-tags {
-			display: flex;
-			flex-wrap: wrap;
-			gap: functions.size("spacing", "-3") functions.size("spacing", "-2");
-			margin-top: functions.size("spacing", "0");
-			@include mixins.font($size: "xs");
-		}
+  @include mixins.desktop {
+    &-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: functions.size("spacing", "-3") functions.size("spacing", "-2");
+      margin-top: functions.size("spacing", "0");
+      @include mixins.font($size: "xs");
+    }
 
-		// On desktop, we don't want the link to cover the entire card, or it creates a somewhat annoying UX where hovering from one tag to another causes the card link underline to flicker on/off.
-		&-link {
-			&::after {
-				content: none;
-			}
-		}
-	}
+    // On desktop, we don't want the link to cover the entire card, or it creates a somewhat annoying UX where hovering from one tag to another causes the card link underline to flicker on/off.
+    &-link {
+      &::after {
+        content: none;
+      }
+    }
+  }
 }

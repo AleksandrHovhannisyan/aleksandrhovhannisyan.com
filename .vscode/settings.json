@@ -4,14 +4,6 @@
     "**/node_modules": true,
     "**/*.{png,gif,jpg,jpeg,webp,woff,woff2}": true
   },
-  "eslint.validate": [
-    "javascript",
-  ],
-  "stylelint.enable": true,
-  "stylelint.validate": [
-    "scss",
-  ],
-  "stylelint.configFile": "packages/web/.stylelintrc.json",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.fixAll.stylelint": "explicit"
@@ -20,5 +12,9 @@
     "endcode",
     "mouseleave"
   ],
-  "stylelint.stylelintPath": "",
+  "stylelint.enable": true,
+  "stylelint.configFile": "packages/web/.stylelintrc.json",
+  "stylelint.validate": [
+    "scss",
+  ]
 }

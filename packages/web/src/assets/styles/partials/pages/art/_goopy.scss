@@ -1,271 +1,271 @@
 // Reference image: https://www.stickpng.com/img/games/cuphead/cuphead-character-goopy-le-grande
 .goopy {
-	--blue: #3f90d8;
-	--light-blue: #7bb6e7;
-	--dark-blue: #2171b5;
-	--red: #c00000;
-	width: 24vmin;
-	height: 24vmin;
-	border: solid 0.6vmin black;
-	border-radius: 55% 50% 45% 40%;
-	background-color: var(--blue);
-	position: relative;
-	transform: rotate(3deg);
-	transform-style: preserve-3d;
-	perspective: 3vmin;
-	box-shadow: inset -0.6vmin 0.1vmin 0 0.2vmin var(--dark-blue);
+  --blue: #3f90d8;
+  --light-blue: #7bb6e7;
+  --dark-blue: #2171b5;
+  --red: #c00000;
+  width: 24vmin;
+  height: 24vmin;
+  border: solid 0.6vmin black;
+  border-radius: 55% 50% 45% 40%;
+  background-color: var(--blue);
+  position: relative;
+  transform: rotate(3deg);
+  transform-style: preserve-3d;
+  perspective: 3vmin;
+  box-shadow: inset -0.6vmin 0.1vmin 0 0.2vmin var(--dark-blue);
 
-	&-cap {
-		&::before,
-		&::after {
-			content: "";
-			display: block;
-			position: absolute;
-			width: 2vmin;
-			background-color: var(--blue);
-		}
+  &-cap {
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 2vmin;
+      background-color: var(--blue);
+    }
 
-		// Left half
-		&::before {
-			height: 3.4vmin;
-			top: -15%;
-			transform: rotate(20deg);
-			left: 49%;
-			border-radius: 50% 50% 50% 0;
-			border-left: solid 0.5vmin black;
-			border-bottom: solid 0.8vmin var(--blue);
-			clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
-		}
+    // Left half
+    &::before {
+      height: 3.4vmin;
+      top: -15%;
+      transform: rotate(20deg);
+      left: 49%;
+      border-radius: 50% 50% 50% 0;
+      border-left: solid 0.5vmin black;
+      border-bottom: solid 0.8vmin var(--blue);
+      clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
+    }
 
-		// Right half
-		&::after {
-			height: 5vmin;
-			top: -16%;
-			transform: rotate(-20deg) scaleX(-1);
-			left: 47%;
-			border-radius: 50% 50% 50% 0;
-			border-left: solid 0.5vmin black;
-			border-bottom: solid 0.8vmin var(--blue);
-			clip-path: polygon(0% 0%, 100% 100%, 0% 65%);
-			background-image: radial-gradient(circle at -2.8vmin 58%, var(--dark-blue) 60%, transparent 60%);
-		}
-	}
+    // Right half
+    &::after {
+      height: 5vmin;
+      top: -16%;
+      transform: rotate(-20deg) scaleX(-1);
+      left: 47%;
+      border-radius: 50% 50% 50% 0;
+      border-left: solid 0.5vmin black;
+      border-bottom: solid 0.8vmin var(--blue);
+      clip-path: polygon(0% 0%, 100% 100%, 0% 65%);
+      background-image: radial-gradient(circle at -2.8vmin 58%, var(--dark-blue) 60%, transparent 60%);
+    }
+  }
 
-	// Bottom shadow
-	&::after {
-		content: "";
-		display: block;
-		position: absolute;
-		transform: rotate(-3deg) translateZ(-0.3vmin);
-		width: 100%;
-		height: 20%;
-		background-color: hsl(0deg 0% 30% / 60%);
-		bottom: -3.5vmin;
-		border-radius: 100%;
-	}
+  // Bottom shadow
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    transform: rotate(-3deg) translateZ(-0.3vmin);
+    width: 100%;
+    height: 20%;
+    background-color: hsl(0deg 0% 30% / 60%);
+    bottom: -3.5vmin;
+    border-radius: 100%;
+  }
 
-	&-eyes {
-		position: absolute;
-		top: 0.6vmin;
-		transform: rotate(1deg);
-	}
+  &-eyes {
+    position: absolute;
+    top: 0.6vmin;
+    transform: rotate(1deg);
+  }
 
-	&-eye {
-		border: solid 0.32vmin black;
-		background-color: #efedef;
-		position: absolute;
+  &-eye {
+    border: solid 0.32vmin black;
+    background-color: #efedef;
+    position: absolute;
 
-		// Pupils
-		&::before {
-			content: "";
-			display: block;
-			background-color: black;
-			position: absolute;
-			border-radius: 50%;
-			clip-path: polygon(0% 0%, 100% 0%, 100% 40%, 60% 50%, 100% 60%, 100% 100%, 0% 100%);
-		}
+    // Pupils
+    &::before {
+      content: "";
+      display: block;
+      background-color: black;
+      position: absolute;
+      border-radius: 50%;
+      clip-path: polygon(0% 0%, 100% 0%, 100% 40%, 60% 50%, 100% 60%, 100% 100%, 0% 100%);
+    }
 
-		// Eyebrows
-		&::after {
-			content: "";
-			display: block;
-			position: absolute;
-		}
+    // Eyebrows
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+    }
 
-		&.left {
-			left: -0.6vmin;
-			top: 3vmin;
-			width: 6vmin;
-			height: 9.5vmin;
-			border-radius: 60% 50% 50% 45%;
-			transform: rotate(4deg);
-			transform-style: preserve-3d;
-			perspective: 2vmin;
+    &.left {
+      left: -0.6vmin;
+      top: 3vmin;
+      width: 6vmin;
+      height: 9.5vmin;
+      border-radius: 60% 50% 50% 45%;
+      transform: rotate(4deg);
+      transform-style: preserve-3d;
+      perspective: 2vmin;
 
-			// Left pupil
-			&::before {
-				width: 40%;
-				height: 65%;
-				border-radius: 50% 50% 50% 40%;
-				left: -0.2vmin;
-				bottom: 0.7vmin;
-				transform: rotate(-2.1deg);
-			}
+      // Left pupil
+      &::before {
+        width: 40%;
+        height: 65%;
+        border-radius: 50% 50% 50% 40%;
+        left: -0.2vmin;
+        bottom: 0.7vmin;
+        transform: rotate(-2.1deg);
+      }
 
-			// Left eyebrow
-			::after {
-				width: 7.3vmin;
-				height: 12vmin;
-				border-radius: 120% 55%;
-				left: -0.45vmin;
-				top: -1.7vmin;
-				transform: rotate(-22deg) translateZ(-0.1vmin);
-				border: solid 0.4vmin transparent;
-				border-top: solid 0.6vmin black;
-				border-right-width: 0.2vmin;
-				background-color: var(--blue);
-				clip-path: polygon(0% 0%, 100% 0%, 100% 10%, 0% 60%);
-			}
-		}
+      // Left eyebrow
+      ::after {
+        width: 7.3vmin;
+        height: 12vmin;
+        border-radius: 120% 55%;
+        left: -0.45vmin;
+        top: -1.7vmin;
+        transform: rotate(-22deg) translateZ(-0.1vmin);
+        border: solid 0.4vmin transparent;
+        border-top: solid 0.6vmin black;
+        border-right-width: 0.2vmin;
+        background-color: var(--blue);
+        clip-path: polygon(0% 0%, 100% 0%, 100% 10%, 0% 60%);
+      }
+    }
 
-		&.right {
-			left: 6.5vmin;
-			top: 2.3vmin;
-			width: 8vmin;
-			height: 11vmin;
-			border-radius: 48% 48% 45% 45%;
-			transform: rotate(5deg);
+    &.right {
+      left: 6.5vmin;
+      top: 2.3vmin;
+      width: 8vmin;
+      height: 11vmin;
+      border-radius: 48% 48% 45% 45%;
+      transform: rotate(5deg);
 
-			// Right pupil
-			&::before {
-				width: 35%;
-				height: 60%;
-				border-radius: 30% 50% 40% 40%;
-				left: -0.2vmin;
-				bottom: 1.3vmin;
-				transform: rotate(0.2deg);
-			}
+      // Right pupil
+      &::before {
+        width: 35%;
+        height: 60%;
+        border-radius: 30% 50% 40% 40%;
+        left: -0.2vmin;
+        bottom: 1.3vmin;
+        transform: rotate(0.2deg);
+      }
 
-			// Right eyebrow
-			&::after {
-				width: 8vmin;
-				height: 8vmin;
-				border-radius: 180% 100% 0 0;
-				left: -1.5vmin;
-				top: -1.7vmin;
-				border: solid 0.4vmin transparent;
-				border-left: solid 0.1vmin transparent;
-				border-top: solid 0.4vmin black;
-				border-right: solid 0.4vmin transparent;
-			}
-		}
-	}
+      // Right eyebrow
+      &::after {
+        width: 8vmin;
+        height: 8vmin;
+        border-radius: 180% 100% 0 0;
+        left: -1.5vmin;
+        top: -1.7vmin;
+        border: solid 0.4vmin transparent;
+        border-left: solid 0.1vmin transparent;
+        border-top: solid 0.4vmin black;
+        border-right: solid 0.4vmin transparent;
+      }
+    }
+  }
 
-	&-nose {
-		width: 3.4vmin;
-		height: 2.5vmin;
-		border: solid 0.3vmin black;
-		background: var(--red);
-		position: absolute;
-		top: 12.1vmin;
-		left: 1.3vmin;
-		border-radius: 30% 30% 50% 50%;
-	}
+  &-nose {
+    width: 3.4vmin;
+    height: 2.5vmin;
+    border: solid 0.3vmin black;
+    background: var(--red);
+    position: absolute;
+    top: 12.1vmin;
+    left: 1.3vmin;
+    border-radius: 30% 30% 50% 50%;
+  }
 
-	&-mouth {
-		position: absolute;
-		background-color: var(--blue);
-		width: 80%;
-		height: 35%;
-		border-top: solid 0.6vmin black;
-		border-left: solid 0.6vmin black;
-		border-bottom: solid 0.6vmin black;
-		border-right: solid 0.4vmin transparent;
-		bottom: 5.3vmin;
-		left: -2vmin;
-		border-radius: 100%;
-		border-bottom-right-radius: 100%;
-		transform: rotate(-5deg);
+  &-mouth {
+    position: absolute;
+    background-color: var(--blue);
+    width: 80%;
+    height: 35%;
+    border-top: solid 0.6vmin black;
+    border-left: solid 0.6vmin black;
+    border-bottom: solid 0.6vmin black;
+    border-right: solid 0.4vmin transparent;
+    bottom: 5.3vmin;
+    left: -2vmin;
+    border-radius: 100%;
+    border-bottom-right-radius: 100%;
+    transform: rotate(-5deg);
 
-		// Chin
-		&::before {
-			content: "";
-			display: block;
-			position: absolute;
-			width: 6vmin;
-			height: 2.4vmin;
-			border-bottom: solid 0.4vmin black;
-			border-left: solid 0.5vmin transparent;
-			border-right: solid 0.2vmin transparent;
-			bottom: -2.1vmin;
-			left: 3.5vmin;
-			border-radius: 70%;
-			border-bottom-right-radius: 200%;
-			transform: rotate(17deg);
-		}
+    // Chin
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 6vmin;
+      height: 2.4vmin;
+      border-bottom: solid 0.4vmin black;
+      border-left: solid 0.5vmin transparent;
+      border-right: solid 0.2vmin transparent;
+      bottom: -2.1vmin;
+      left: 3.5vmin;
+      border-radius: 70%;
+      border-bottom-right-radius: 200%;
+      transform: rotate(17deg);
+    }
 
-		/* Cover up top border of mouth */
-		&::after {
-			content: "";
-			display: block;
-			position: absolute;
-			background-color: var(--blue);
-			width: 100%;
-			height: 50%;
-			top: -10%;
-			left: 10%;
-		}
-	}
+    /* Cover up top border of mouth */
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      background-color: var(--blue);
+      width: 100%;
+      height: 50%;
+      top: -10%;
+      left: 10%;
+    }
+  }
 
-	&-dimple {
-		position: absolute;
-		width: 2.8vmin;
-		height: 3vmin;
-		border: solid 0.2vmin transparent;
-		border-bottom: solid 0.3vmin black;
-		border-radius: 100%;
-		right: 0.7vmin;
-		bottom: -0.3vmin;
-		transform: rotate(-120deg);
+  &-dimple {
+    position: absolute;
+    width: 2.8vmin;
+    height: 3vmin;
+    border: solid 0.2vmin transparent;
+    border-bottom: solid 0.3vmin black;
+    border-radius: 100%;
+    right: 0.7vmin;
+    bottom: -0.3vmin;
+    transform: rotate(-120deg);
 
-		&::after {
-			content: "";
-			display: block;
-			position: absolute;
-			width: 1.2vmin;
-			height: 1vmin;
-			border-bottom: solid 0.3vmin black;
-			border-radius: 35%;
-			right: 0.4vmin;
-			bottom: -1.1vmin;
-			transform: rotate(-5deg);
-		}
-	}
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 1.2vmin;
+      height: 1vmin;
+      border-bottom: solid 0.3vmin black;
+      border-radius: 35%;
+      right: 0.4vmin;
+      bottom: -1.1vmin;
+      transform: rotate(-5deg);
+    }
+  }
 
-	&-patches {
-		&::before,
-		&::after {
-			content: "";
-			display: block;
-			position: absolute;
-			background-color: var(--light-blue);
-		}
+  &-patches {
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      background-color: var(--light-blue);
+    }
 
-		&::before {
-			width: 3vmin;
-			height: 1.5vmin;
-			right: 3vmin;
-			top: 3vmin;
-			transform: rotate(45deg);
-		}
+    &::before {
+      width: 3vmin;
+      height: 1.5vmin;
+      right: 3vmin;
+      top: 3vmin;
+      transform: rotate(45deg);
+    }
 
-		&::after {
-			width: 2.9vmin;
-			height: 1.5vmin;
-			bottom: 3.1vmin;
-			right: 3vmin;
-			transform: rotate(-45deg);
-			border-radius: 20%;
-		}
-	}
+    &::after {
+      width: 2.9vmin;
+      height: 1.5vmin;
+      bottom: 3.1vmin;
+      right: 3vmin;
+      transform: rotate(-45deg);
+      border-radius: 20%;
+    }
+  }
 }

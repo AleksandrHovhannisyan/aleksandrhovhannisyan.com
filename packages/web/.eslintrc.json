@@ -1,12 +1,13 @@
 {
-  "extends": ["../../.eslintrc.json"],
+  "extends": ["../../.eslintrc.json", "plugin:prettier/recommended"],
+  "plugins": ["prettier"],
   "env": {
     "browser": true,
     "node": true,
     "es6": true
   },
-  "ignorePatterns": [
-    "node_modules",
-    "dist"
-  ]
+  "ignorePatterns": ["node_modules", "dist"],
+  "rules": {
+    "prettier/prettier": ["error"]
+  }
 }
