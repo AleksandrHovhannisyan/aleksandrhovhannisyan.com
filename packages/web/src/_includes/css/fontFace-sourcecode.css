@@ -1,25 +1,25 @@
 @font-face {
-	font-family: mono-fallback;
-	src: local("Menlo"), local("Courier New");
-	size-adjust: 80%;
+  font-family: mono-fallback;
+  src: local('Menlo'), local('Courier New');
+  size-adjust: 80%;
 }
 @font-face {
-	font-family: "Source Code Pro";
-	font-style: normal;
-	font-display: swap;
-	font-weight: 200 900;
-	src: local("SourceCodeVF"), url("/assets/fonts/sourcecode-latin-roman-variable.woff2")
-		format("woff2 supports variations"), url("/assets/fonts/sourcecode-latin-roman-variable.woff2")
-		format("woff2-variations");
-	size-adjust: 79%;
-	ascent-override: 94%;
-	descent-override: 26%;
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 900;
+  src: local('SourceCodeVF'),
+    url('/assets/fonts/sourcecode-latin-roman-variable.woff2') format('woff2 supports variations'),
+    url('/assets/fonts/sourcecode-latin-roman-variable.woff2') format('woff2-variations');
+  size-adjust: 79%;
+  ascent-override: 94%;
+  descent-override: 26%;
 }
 html {
-	--font-family-mono: Source Code Pro, mono-fallback, monospace;
-	--font-weight-mono-regular: 400;
-	--font-weight-mono-bold: 700;
+  --font-family-mono: Source Code Pro, mono-fallback, monospace;
+  --font-weight-mono-regular: 400;
+  --font-weight-mono-bold: 700;
 }
 code {
-	font-family: var(--font-family-mono);
+  font-family: var(--font-family-mono);
 }

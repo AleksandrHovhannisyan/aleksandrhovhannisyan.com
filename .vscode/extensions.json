@@ -1,6 +1,6 @@
 {
   "recommendations": [
-    "biomejs.biome",
+    "dbaeumer.vscode-eslint",
     "stylelint.vscode-stylelint"
   ]
 }

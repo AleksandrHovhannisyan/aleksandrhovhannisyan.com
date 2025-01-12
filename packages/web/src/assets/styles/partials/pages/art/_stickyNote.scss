@@ -1,5 +1,5 @@
 @use "../../mixins";
-@import "../../components/note";
+@import "../../components/_note.scss";
 
 .artwork .note {
 	@include mixins.font($family: "cursive", $weight: "regular", $size: "lg");

@@ -1,14 +1,14 @@
 {
-	"github": {
-		"name": "GitHub",
-		"url": "https://github.com/AleksandrHovhannisyan"
-	},
-	"codepen": {
-		"name": "Codepen",
-		"url": "https://codepen.io/AleksandrHovhannisyan/"
-	},
-	"linkedin": {
-		"name": "LinkedIn",
-		"url": "https://www.linkedin.com/in/aleksandr-hovhannisyan-ba154b120/"
-	}
+  "github": {
+    "name": "GitHub",
+    "url": "https://github.com/AleksandrHovhannisyan"
+  },
+  "codepen": {
+    "name": "Codepen",
+    "url": "https://codepen.io/AleksandrHovhannisyan/"
+  },
+  "linkedin": {
+    "name": "LinkedIn",
+    "url": "https://www.linkedin.com/in/aleksandr-hovhannisyan-ba154b120/"
+  }
 }

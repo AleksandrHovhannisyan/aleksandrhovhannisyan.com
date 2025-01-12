@@ -1,40 +1,40 @@
 // Since this script gets put in the <head>, wrap it in an IIFE to avoid exposing variables
 (function () {
-	// We'll use this to write and read to localStorage and save the theme as a data- attribute
-	const THEME_STORAGE_KEY = 'theme';
-	// :root will own the data- attribute for the current theme override; it is the only eligible theme owner when this script is parsed in <head>
-	const THEME_OWNER = document.documentElement;
+  // We'll use this to write and read to localStorage and save the theme as a data- attribute
+  const THEME_STORAGE_KEY = 'theme';
+  // :root will own the data- attribute for the current theme override; it is the only eligible theme owner when this script is parsed in <head>
+  const THEME_OWNER = document.documentElement;
 
-	// Check to see if the user previously set a site theme preference.
-	const cachedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-	if (cachedTheme) {
-		// If they did, toggle data attribute immediately to prevent theme flash.
-		THEME_OWNER.dataset[THEME_STORAGE_KEY] = cachedTheme;
-	}
+  // Check to see if the user previously set a site theme preference.
+  const cachedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+  if (cachedTheme) {
+    // If they did, toggle data attribute immediately to prevent theme flash.
+    THEME_OWNER.dataset[THEME_STORAGE_KEY] = cachedTheme;
+  }
 
-	// Run this only after DOM parsing so we can grab refs to elements. Putting this code here so it's co-located with the above logic.
-	document.addEventListener('DOMContentLoaded', () => {
-		const themePicker = document.getElementById('theme-picker');
-		if (!themePicker) return;
+  // Run this only after DOM parsing so we can grab refs to elements. Putting this code here so it's co-located with the above logic.
+  document.addEventListener('DOMContentLoaded', () => {
+    const themePicker = document.getElementById('theme-picker');
+    if (!themePicker) return;
 
-		const defaultSelectedInput = themePicker.querySelector('input[checked]');
-		// Sync picker's selected state to reflect initial theme
-		if (cachedTheme && cachedTheme !== defaultSelectedInput.value) {
-			defaultSelectedInput.removeAttribute('checked');
-			themePicker.querySelector(`input[value="${cachedTheme}"]`).setAttribute('checked', '');
-		}
+    const defaultSelectedInput = themePicker.querySelector('input[checked]');
+    // Sync picker's selected state to reflect initial theme
+    if (cachedTheme && cachedTheme !== defaultSelectedInput.value) {
+      defaultSelectedInput.removeAttribute('checked');
+      themePicker.querySelector(`input[value="${cachedTheme}"]`).setAttribute('checked', '');
+    }
 
-		// Listen for change to sync localStorage and data- attribute
-		themePicker.addEventListener('change', (e) => {
-			const theme = e.target.value;
-			if (theme === defaultSelectedInput.value) {
-				// Remove JS-set theme so the CSS :not([data-theme]) selectors kick in
-				delete THEME_OWNER.dataset[THEME_STORAGE_KEY];
-				localStorage.removeItem(THEME_STORAGE_KEY);
-			} else {
-				THEME_OWNER.dataset[THEME_STORAGE_KEY] = theme;
-				localStorage.setItem(THEME_STORAGE_KEY, theme);
-			}
-		});
-	});
+    // Listen for change to sync localStorage and data- attribute
+    themePicker.addEventListener('change', (e) => {
+      const theme = e.target.value;
+      if (theme === defaultSelectedInput.value) {
+        // Remove JS-set theme so the CSS :not([data-theme]) selectors kick in
+        delete THEME_OWNER.dataset[THEME_STORAGE_KEY];
+        localStorage.removeItem(THEME_STORAGE_KEY);
+      } else {
+        THEME_OWNER.dataset[THEME_STORAGE_KEY] = theme;
+        localStorage.setItem(THEME_STORAGE_KEY, theme);
+      }
+    });
+  });
 })();
