@@ -13,7 +13,8 @@ import {
   hashArtShortcode,
   nanoIdShortcode,
   detailsShortcode,
-  fetchText,
+  stylesheetShortcode,
+  fetchTextShortcode,
 } from './lib/shortcodes/index.js';
 import {
   limit,
@@ -63,7 +64,8 @@ export default function eleventy(eleventyConfig) {
   eleventyConfig.addShortcode('icon', iconShortcode);
   eleventyConfig.addShortcode('hashArt', hashArtShortcode);
   eleventyConfig.addShortcode('nanoid', nanoIdShortcode);
-  eleventyConfig.addShortcode('fetchText', fetchText);
+  eleventyConfig.addShortcode('fetchText', fetchTextShortcode);
+  eleventyConfig.addShortcode('stylesheet', stylesheetShortcode);
 
   // Custom filters
   eleventyConfig.addFilter('limit', limit);

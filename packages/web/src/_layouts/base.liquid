@@ -35,8 +35,8 @@
       <style>{{ critical | cleanCSS }}</style>
   {%- endif -%}
   {%- comment -%}Global and page/layout-specific CSS{%- endcomment -%}
-  {%- for href in stylesheets -%}
-    <link rel="stylesheet" href="{{ href }}">
+  {%- for href in stylesheets %}
+    {% stylesheet href %}
   {%- endfor -%}
   {%- comment -%}Favicons{%- endcomment -%}
   {% favicon 'src/assets/images/favicons/favicon.png' %}

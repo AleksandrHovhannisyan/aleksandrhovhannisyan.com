@@ -14,6 +14,7 @@ main {
   display: grid;
   place-content: center;
   text-align: center;
+  text-wrap: balance;
   gap: functions.size("spacing", "0");
   height: 100%;
   background-color: black;
