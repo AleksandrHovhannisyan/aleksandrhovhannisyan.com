@@ -33,13 +33,13 @@ You might be tempted to use `setTimeout` or `setInterval`:
 
 ```js
 const MAX_FPS = 60;
-const MAX_MS_PER_FRAME = 1000 / MAX_FPS;
+const FRAME_INTERVAL_MS = 1000 / MAX_FPS;
 function update() {
     setTimeout(() => {
         updatePhysics();
         draw();
         update();
-    }, MAX_MS_PER_FRAME)
+    }, FRAME_INTERVAL_MS)
 }
 ```
 
@@ -172,13 +172,13 @@ Let's take this a step further. By keeping track of when the previous frame was 
 
 ```js {data-copyable="true"}
 const MAX_FPS = 60;
-const MAX_MS_PER_FRAME = 1000 / MAX_FPS;
+const FRAME_INTERVAL_MS = 1000 / MAX_FPS;
 
 let previousTimeMs = 0;
 function update() {
     requestAnimationFrame((currentTimeMs) => {
         const deltaTimeMs = currentTimeMs - previousTimeMs;
-        if (deltaTimeMs >= MAX_MS_PER_FRAME) {
+        if (deltaTimeMs >= FRAME_INTERVAL_MS) {
             updatePhysics();
             previousTimeMs = currentTimeMs;
         }
@@ -210,14 +210,14 @@ Now, consider what would happen if we were to use our code as-is to model this t
 
 ```js
 const MAX_TRAIN_ARRIVALS_PER_HOUR = 2;
-const MAX_MINUTES_PER_TRANSIT = 60 / MAX_TRAIN_ARRIVALS_PER_HOUR;
+const TRANSIT_INTERVAL_MINUTES = 60 / MAX_TRAIN_ARRIVALS_PER_HOUR;
 
 let previousTimeMinutes = 0;
 
 function runTrainStation() {
     requestTrain((currentTimeMinutes) => {
         const deltaTimeMinutes = currentTimeMinutes - previousTimeMinutes;
-        if (deltaTimeMinutes >= MAX_MINUTES_PER_TRANSIT) {
+        if (deltaTimeMinutes >= TRANSIT_INTERVAL_MINUTES) {
             receiveTrain();
             previousTimeMinutes = currentTimeMinutes;
         }
@@ -232,17 +232,17 @@ Translating this back into game dev terms, it means that if one frame takes long
 
 ```js {data-copyable="true"}
 const MAX_FPS = 60;
-const MAX_MS_PER_FRAME = 1000 / MAX_FPS;
+const FRAME_INTERVAL_MS = 1000 / MAX_FPS;
 
 let previousTimeMs = 0;
 
 function update() {
     requestAnimationFrame((currentTimeMs) => {
         const deltaTimeMs = currentTimeMs - previousTimeMs;
-        if (deltaTimeMs >= MAX_MS_PER_FRAME) {
+        if (deltaTimeMs >= FRAME_INTERVAL_MS) {
             updatePhysics();
             // Synchronize next frame to arrive on time
-            const offset = deltaTimeMs % MAX_MS_PER_FRAME;
+            const offset = deltaTimeMs % FRAME_INTERVAL_MS;
             previousTimeMs = currentTimeMs - offset;
         }
         draw();
@@ -251,7 +251,7 @@ function update() {
 }
 ```
 
-In other words, we're telling a harmless lie. Yes, it's true that `previousTimeMs` shouldn't _actually_ be `currentTimeMs - (deltaTimeMs % MAX_MS_PER_FRAME)` from the perspective of the wall clock. But when we simulate rewinding the clock to account for any frame delays, the next frame *thinks* it can still arrive at the next increment of `MAX_MS_PER_FRAME` as originally intended (e.g., at the next increment of ~16.67 ms for 60 FPS).
+In other words, we're telling a harmless lie. Yes, it's true that `previousTimeMs` shouldn't _actually_ be `currentTimeMs - (deltaTimeMs % FRAME_INTERVAL_MS)` from the perspective of the wall clock. But when we simulate rewinding the clock to account for any frame delays, the next frame *thinks* it can still arrive at the next increment of `FRAME_INTERVAL_MS` as originally intended (e.g., at the next increment of ~16.67 ms for 60 FPS).
 
 Our game loop is now complete! But there's still one thing we need to discuss.
 

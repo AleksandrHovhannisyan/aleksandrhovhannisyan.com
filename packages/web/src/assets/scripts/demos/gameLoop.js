@@ -191,7 +191,7 @@ class GameLoop extends HTMLElement {
   #player;
   /** @type {Canvas} */
   #canvas;
-  /** @type {{ maxMsPerFrame: number; previousTimeMs: number }} */
+  /** @type {{ frameIntervalMs: number; previousTimeMs: number }} */
   #timing;
 
   static observedAttributes = ['player-move-speed', 'player-turn-speed', 'max-fps'];
@@ -211,7 +211,7 @@ class GameLoop extends HTMLElement {
       direction: new Vector2(1, 0).normalized(),
       radius: 8,
     });
-    this.#timing = { maxMsPerFrame: 0, previousTimeMs: 0 };
+    this.#timing = { frameIntervalMs: 0, previousTimeMs: 0 };
     const label = this.getAttribute('title');
     this.removeAttribute('title');
     canvas.setAttribute('tabindex', 0);
@@ -231,7 +231,7 @@ class GameLoop extends HTMLElement {
   attributeChangedCallback(name, _oldValue, newValue) {
     if (name === 'max-fps') {
       const maxFps = Number(newValue);
-      this.#timing.maxMsPerFrame = 1000 / maxFps;
+      this.#timing.frameIntervalMs = 1000 / maxFps;
       return;
     }
     if (name === 'player-turn-speed') {
@@ -291,12 +291,12 @@ class GameLoop extends HTMLElement {
       // Otherwise, players on a 120 Hz screen will move faster than players on a 60 Hz screen.
       const deltaTimeMs = currentTimeMs - this.#timing.previousTimeMs;
       // Not just === because a frame could've taken longer, leading to dropped frame rate
-      if (deltaTimeMs >= this.#timing.maxMsPerFrame) {
+      if (deltaTimeMs >= this.#timing.frameIntervalMs) {
         this.#timing.previousTimeMs =
           currentTimeMs -
-          // Ensure the next frame starts on schedule/at the next multiple of maxMsPerFrame.
+          // Ensure the next frame starts on schedule/at the next multiple of frameIntervalMs.
           // If we don't "rewind the clock," we'll have to wait longer for the next frame to run.
-          (deltaTimeMs % this.#timing.maxMsPerFrame);
+          (deltaTimeMs % this.#timing.frameIntervalMs);
         // Update all physics (e.g., player movement)
         this.#updatePhysics();
       }
