@@ -1,7 +1,7 @@
 ---
 title: Creating Perfect Font Fallbacks in CSS
 description: Learn how to use three CSS properties to override font metrics and minimize layout shifts during font load.
-categories: [typography, css]
+categories: [typography, css, webperf]
 keywords: [size-adjust]
 thumbnail: ./images/metrics.png
 lastUpdated: 2024-12-12
