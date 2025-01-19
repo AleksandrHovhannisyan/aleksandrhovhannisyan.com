@@ -23,7 +23,7 @@
   padding: functions.size("relative", "2");
   @include mixins.transition(border-radius);
 
-  &:focus-within {
+  &:has(a:focus-visible) {
     outline: solid functions.size("spacing", "-3");
   }
 
@@ -48,7 +48,11 @@
   }
 
   .title {
-    @include mixins.font($size: "md", $leading: "xs");
+    @include mixins.font($size: "lg");
+
+    @include mixins.tablet-sm {
+      @include mixins.font($size: "md", $leading: "xs");
+    }
   }
 
   .description {
