@@ -3,6 +3,7 @@ title: A Tale of Two Routes
 description: Poorly designed API routes and an account creation loophole allow Twitter users to hijack routes.
 categories: [case-study, twitter, security]
 thumbnail: ./images/tweet-mentions.jpg
+commentsId: 196
 ---
 
 While browsing Twitter—_sorry_, X—I realized something that had never crossed my mind before: All profile pages live under `https://x.com/<username>`. And it turns out that this is actually a big design flaw.
