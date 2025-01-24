@@ -2,7 +2,7 @@
 title: A Font-Face Faux Pas
 description: When using the font-face local() function to load fonts installed on a user's system, double-check that sure you're requesting the right font family.
 keywords: [font face, local]
-categories: [css, typography]
+categories: [case-study, css, typography]
 thumbnail: ./images/thumbnail.png
 ---
 
