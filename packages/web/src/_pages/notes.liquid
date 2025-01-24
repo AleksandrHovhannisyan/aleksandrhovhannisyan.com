@@ -13,13 +13,13 @@ openGraph:
         <p class="hero-subtitle">Reusable code snippets and other technical notes. Unless otherwise noted, no attribution is required.</p>
     </header>
     <div data-theme="light">
-        <ul class="grid gap-3 note-board">
+        <ul class="grid gap-2 note-board">
             {%- assign notes = collections.notes | sortByKey: "date", "DESC" -%}
             {% for note in notes %}
               <li class="note">
-                <article class="stack gap--2">
-                  <h3 class="title"><a class="card-link no-underline" href="{{ note.url }}">{{ note.data.title }}</a></h3>
-                  <p class="description">{{ note.data.description }}</p>
+                <article>
+                  <h3 class="post-preview-title"><a class="card-link no-underline" href="{{ note.url }}">{{ note.data.title }}</a></h3>
+                  <p class="post-preview-description">{{ note.data.description }}</p>
                 </article>
               </li>
             {% endfor %}

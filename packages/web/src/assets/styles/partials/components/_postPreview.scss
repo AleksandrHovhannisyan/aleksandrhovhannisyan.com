@@ -60,7 +60,7 @@
     }
 
     &-description {
-      @include mixins.font($size: "sm");
+      @include mixins.font($size: "sm", $leading: "sm");
     }
   }
 
