@@ -1,7 +1,8 @@
 ---
 title: A Tale of Two Routes
-description: Poorly designed API routes and an account creation loophole allow Twitter users to hijack routes.
+description: Poorly designed API routes and an account creation loophole cause route collisions on Twitter.
 categories: [case-study, twitter, security]
+keywords: [route collision, route hijacking, twitter]
 thumbnail: ./images/tweet-mentions.png
 commentsId: 196
 lastUpdated: 2025-01-24
