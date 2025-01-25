@@ -9,7 +9,7 @@ export default {
   keywords: ['Aleksandr Hovhannisyan'],
   lang: 'en-US',
   repo: {
-    name: `aleksandrhovhannisyan.com`,
-    owner: `AleksandrHovhannisyan`,
+    name: 'aleksandrhovhannisyan.com',
+    owner: 'AleksandrHovhannisyan',
   },
 };

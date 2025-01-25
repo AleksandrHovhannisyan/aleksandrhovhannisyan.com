@@ -5,7 +5,6 @@ import { markdown } from './plugins/markdown.js';
 import site from '../src/_data/site.js';
 import Image from '@11ty/eleventy-img';
 import { get, memoize, withoutBaseDirectory } from './utils.js';
-import { imagePaths } from './constants.js';
 
 /** Returns the first `limit` elements of the the given array. */
 export const limit = (array, limit) => {
@@ -46,7 +45,7 @@ export const toHtml = (markdownString) => markdown.renderInline(markdownString);
 export const toAbsoluteUrl = (url, baseUrl = site.url) => new URL(url, baseUrl).href;
 
 /** Given a local or remote image source, returns the absolute URL to the image that will eventually get generated once the site is built. */
-export const toAbsoluteImageUrl = async ({ src, outputDir = imagePaths.output, width = null }) => {
+export const toAbsoluteImageUrl = async ({ src, outputDir = 'dist/assets/images', width = null }) => {
   const imageOptions = {
     // For the purposes of getting an eventually-generated image's URL, we just want the original width and format
     widths: [width],

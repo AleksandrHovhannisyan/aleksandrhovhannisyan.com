@@ -1,6 +1,5 @@
 import path from 'node:path';
 import { toAbsoluteImageUrl } from '../../../lib/filters.js';
-import { dir } from '../../../lib/constants.js';
 
 export default {
   eleventyComputed: {
@@ -12,7 +11,7 @@ export default {
         if (!data.page.url) return;
         return toAbsoluteImageUrl({
           src: 'src/_pages/art/og-art.png',
-          outputDir: path.join(dir.output, data.page.url),
+          outputDir: path.join(data.eleventy.directories.output, data.page.url),
         });
       },
     },

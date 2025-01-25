@@ -44,10 +44,10 @@ export const withoutBaseDirectory = (pathString) => pathString.substring(pathStr
  * Memoizes any function.
  * @param {() => Promise<any>} fn
  */
-export const memoize = (fn) => {
+export function memoize(fn) {
   const cache = new Map();
 
-  return async (...args) => {
+  return async function (...args) {
     const key = JSON.stringify(args);
     if (cache.get(key)) {
       return cache.get(key);
@@ -56,7 +56,7 @@ export const memoize = (fn) => {
     cache.set(key, value);
     return value;
   };
-};
+}
 
 /**
  * Returns the property value from an object at the given dot-delimited string path (e.g., `key1.key2.key3`).

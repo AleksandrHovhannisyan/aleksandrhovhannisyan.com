@@ -34,10 +34,11 @@ import {
 import { getAllPosts, getAllUniqueCategories, getPostsByCategory } from './lib/collections.js';
 import { markdown } from './lib/plugins/markdown.js';
 import { codeDemoOptions } from './lib/plugins/codeDemo.js';
-import { dir, imagePaths, scriptDirs } from './lib/constants.js';
 import { escape, slugifyString } from './lib/utils.js';
 
 const TEMPLATE_ENGINE = 'liquid';
+
+const isProductionBuild = process.env.ELEVENTY_ENV === 'production';
 
 export default function eleventy(eleventyConfig) {
   eleventyConfig.setLiquidOptions({
@@ -46,13 +47,13 @@ export default function eleventy(eleventyConfig) {
   });
 
   // Watch targets
-  eleventyConfig.addWatchTarget(imagePaths.input);
-  eleventyConfig.addWatchTarget(scriptDirs.input);
+  eleventyConfig.addWatchTarget('src/assets/images');
+  eleventyConfig.addWatchTarget('src/assets/scripts');
 
   // Pass-through copy for static assets
   eleventyConfig.setServerPassthroughCopyBehavior('copy');
-  eleventyConfig.addPassthroughCopy(path.join(dir.input, dir.assets, 'fonts'));
-  eleventyConfig.addPassthroughCopy(path.join(dir.input, dir.assets, 'videos'));
+  eleventyConfig.addPassthroughCopy('src/assets/fonts');
+  eleventyConfig.addPassthroughCopy('src/assets/videos');
 
   // Custom shortcodes
   eleventyConfig.addPairedShortcode('aside', asideShortcode);
@@ -125,19 +126,18 @@ export default function eleventy(eleventyConfig) {
   eleventyConfig.on('afterBuild', () => {
     return esbuild.build({
       entryPoints: [
-        path.join(scriptDirs.input, 'copyCode.js'),
-        path.join(scriptDirs.input, 'demos/carousel.js'),
-        path.join(scriptDirs.input, 'demos/gameLoop.js'),
-        path.join(scriptDirs.input, 'comments.js'),
+        'src/assets/scripts/copyCode.js',
+        'src/assets/scripts/comments.js',
+        'src/assets/scripts/demos/carousel.js',
+        'src/assets/scripts/demos/gameLoop.js',
       ],
       entryNames: '[dir]/[name]',
-      outdir: scriptDirs.output,
+      outdir: 'dist/assets/scripts',
       format: 'esm',
-      outExtension: { '.js': '.js' },
       bundle: true,
       splitting: true,
-      minify: true,
-      sourcemap: process.env.ELEVENTY_ENV !== 'production',
+      minify: isProductionBuild,
+      sourcemap: !isProductionBuild,
       loader: {
         '.svg': 'text',
       },
@@ -145,7 +145,13 @@ export default function eleventy(eleventyConfig) {
   });
 
   return {
-    dir,
+    dir: {
+      input: 'src',
+      output: 'dist',
+      includes: '_includes',
+      layouts: '_layouts',
+      data: '_data',
+    },
     dataTemplateEngine: TEMPLATE_ENGINE,
     markdownTemplateEngine: TEMPLATE_ENGINE,
     htmlTemplateEngine: TEMPLATE_ENGINE,

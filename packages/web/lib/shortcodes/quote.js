@@ -5,7 +5,7 @@ import { escape } from '../utils.js';
 const markdown = makeMarkdownParser().set({ breaks: true });
 
 export default function quote(children, sourceName, sourceUrl) {
-  if (sourceUrl && !/https?:\/\//.test(sourceUrl)) {
+  if (sourceUrl && !/https?:\/\//.test(sourceUrl) && !sourceUrl.startsWith('/')) {
     throw new Error(`Quote citation is not a recognized url: ${sourceUrl}.`);
   }
   if (!sourceName) {

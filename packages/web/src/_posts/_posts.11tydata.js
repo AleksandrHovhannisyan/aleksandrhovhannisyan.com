@@ -1,6 +1,5 @@
 import path from 'node:path';
 import { toAbsoluteImageUrl } from '../../lib/filters.js';
-import { dir } from '../../lib/constants.js';
 import { validateBlogPostSchema } from '../../lib/schema.js';
 
 const isProduction = process.env.ELEVENTY_ENV === 'production';
@@ -52,7 +51,7 @@ export default {
           src = path.join(blogPostSourceDirectory, data.thumbnail);
         }
         // Save in same output directory as the post itself.
-        const outputDir = path.join(dir.output, data.page.url);
+        const outputDir = path.join(data.eleventy.directories.output, data.page.url);
         // OG images must be absolute URLs.
         return toAbsoluteImageUrl({ src, outputDir });
       },

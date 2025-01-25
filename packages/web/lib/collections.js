@@ -1,9 +1,8 @@
 import { slugifyString } from './utils.js';
-import { dir } from './constants.js';
 
 /** Returns all blog posts as a collection. */
 export function getAllPosts(collection) {
-  const posts = collection.getFilteredByGlob(`${dir.input}/_posts/**/*.md`);
+  const posts = collection.getFilteredByGlob('src/_posts/**/*.md');
   return posts.reverse().filter((post) => !post.data.isArchived);
 }
 

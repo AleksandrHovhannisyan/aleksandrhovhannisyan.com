@@ -1,18 +1,18 @@
 import path from 'node:path';
 import Image from '@11ty/eleventy-img';
 import stringifyAttributes from 'stringify-attributes';
-import { memoize, withoutBaseDirectory } from '../utils.js';
-import { imagePaths } from '../constants.js';
+import { memoize } from '../utils.js';
 
 const FAVICON_FORMAT = 'png';
 const APPLE_TOUCH_ICON_WIDTH = 180;
+const FAVICON_URL_PATH = '/assets/images/favicons';
 
-const faviconShortcode = memoize(async (src) => {
+async function faviconShortcode(src) {
   const props = {
     widths: [16, 32, 57, 76, 96, 128, APPLE_TOUCH_ICON_WIDTH, 192, 228],
     formats: [FAVICON_FORMAT],
-    outputDir: path.join(imagePaths.output, 'favicons'),
-    urlPath: path.join(withoutBaseDirectory(imagePaths.output), 'favicons'),
+    outputDir: path.join(this.eleventy.directories.output, FAVICON_URL_PATH),
+    urlPath: FAVICON_URL_PATH,
     filenameFormat: (_hash, _src, width, format) => {
       return `favicon-${width}.${format}`;
     },
@@ -29,6 +29,6 @@ const faviconShortcode = memoize(async (src) => {
     return `<link ${attributes}>`;
   }).join('\n');
   return faviconHTML;
-});
+}
 
-export default faviconShortcode;
+export default memoize(faviconShortcode);
