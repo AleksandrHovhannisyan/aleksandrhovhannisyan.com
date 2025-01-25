@@ -3,7 +3,7 @@ title: The Perfect Theme Switch Component
 description: Learn how to implement a progressively enhanced theme switch component using HTML, CSS, and JavaScript.
 categories: [html, css, javascript]
 keywords: [dark mode toggle, theme switch, theme toggle, theme picker]
-lastUpdated: 2024-11-27
+lastUpdated: 2025-01-24
 isFeatured: true
 commentsId: 189
 thumbnail: https://images.unsplash.com/photo-1422207049116-cfaf69531072?q=80&w=1600&h=900&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
@@ -157,6 +157,19 @@ For this reason, I recommend implementing a theme picker using radio buttons or 
 </fieldset>
 ```
 
+And if you're using a `<select>`, your HTML should look something like this:
+
+```html {data-file="index.html" data-copyable=true}
+<label>
+  Theme
+  <select id="theme-picker">
+    <option value="auto" selected>Auto</option>
+    <option value="light">Light</option>
+    <option value="dark">Dark</option>
+  </select>
+</label>
+```
+
 That `Auto` option will come in handy soon; rather than reading a first-time visitor's preferred theme on page load, we'll just set this option as the default and let CSS do all the hard work for us.
 
 ### Noscript Styles
@@ -246,12 +259,16 @@ In this event handler, we need to do two things.
 If a user previously chose a custom theme and is returning to our site, we'll want to update the theme picker UI so that the correct radio button is checked by default:
 
 ```js {data-file="themePicker.js" data-copyable=true}
-const defaultSelectedInput = themePicker.querySelector('input[checked]');
-if (cachedTheme && cachedTheme !== defaultSelectedInput.value) {
-  defaultSelectedInput.removeAttribute('checked');
+const systemThemeInput = themePicker.querySelector('input[checked]');
+if (cachedTheme && cachedTheme !== systemThemeInput.value) {
+  systemThemeInput.removeAttribute('checked');
   themePicker.querySelector(`input[value="${cachedTheme}"]`).setAttribute('checked', '');
 }
 ```
+
+{% aside %}
+If you're using a `<select>` instead of radio buttons, you don't need to query the default-checked input and toggle the correct one; you can just set `select.value = cachedTheme`.
+{% endaside %}
 
 On load, we check if there's a cached theme. If so, we uncheck the default checked input in the HTML; then, we check whichever input corresponds to the saved theme. This is one of the really nice things about using a radio button group or select menu for a theme picker: Since we're not using a toggle button, we don't need to query system preferences from inside JavaScript to keep the theme picker's state in sync. The default is `'auto'`; CSS will apply the right theme.
 
@@ -262,7 +279,7 @@ Finally, we'll listen for theme changes and save the user's preference in `local
 ```js {data-file="themePicker.js" data-copyable=true}
 themePicker.addEventListener('change', (e) => {
   const theme = e.target.value;
-  if (theme === defaultSelectedInput.value) {
+  if (theme === systemThemeInput.value) {
     delete THEME_OWNER.dataset[THEME_STORAGE_KEY];
     localStorage.removeItem(THEME_STORAGE_KEY);
   } else {
@@ -272,9 +289,9 @@ themePicker.addEventListener('change', (e) => {
 });
 ```
 
-Note that if a user re-selects the `'auto'` option (or whatever you decide to name the default option), we just remove the `data-theme` attribute from the root element and clear `localStorage` so that our CSS `@prefers-color-scheme` media queries take over.
+Note that if a user re-selects the system theme, we just remove the `data-theme` override from the root element and clear `localStorage` so we fall back to system preferences.
 
-That's it! This is all of the JavaScript for the theme toggle:
+That's it! This is all of the JavaScript for the theme picker:
 
 ```js {data-file="themePicker.js" data-copyable=true}
 const THEME_STORAGE_KEY = 'theme';
@@ -289,15 +306,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const themePicker = document.getElementById('theme-picker');
   if (!themePicker) return;
 
-  const defaultSelectedInput = themePicker.querySelector('input[checked]');
-  if (cachedTheme && cachedTheme !== defaultSelectedInput.value) {
-    defaultSelectedInput.removeAttribute('checked');
+  const systemThemeInput = themePicker.querySelector('input[checked]');
+  if (cachedTheme && cachedTheme !== systemThemeInput.value) {
+    systemThemeInput.removeAttribute('checked');
     themePicker.querySelector(`input[value="${cachedTheme}"]`).setAttribute('checked', '');
   }
 
   themePicker.addEventListener('change', (e) => {
     const theme = e.target.value;
-    if (theme === defaultSelectedInput.value) {
+    if (theme === systemThemeInput.value) {
       delete THEME_OWNER.dataset[THEME_STORAGE_KEY];
       localStorage.removeItem(THEME_STORAGE_KEY);
     } else {
@@ -338,15 +355,15 @@ const cachedTheme = localStorage.getItem(THEME_STORAGE_KEY);
 const themePicker = document.getElementById('theme-picker');
 if (!themePicker) return;
 
-const defaultSelectedInput = themePicker.querySelector('input[checked]');
-if (cachedTheme && cachedTheme !== defaultSelectedInput.value) {
-  defaultSelectedInput.removeAttribute('checked');
+const systemThemeInput = themePicker.querySelector('input[checked]');
+if (cachedTheme && cachedTheme !== systemThemeInput.value) {
+  systemThemeInput.removeAttribute('checked');
   themePicker.querySelector(`input[value="${cachedTheme}"]`).setAttribute('checked', '');
 }
 
 themePicker.addEventListener('change', (e) => {
   const theme = e.target.value;
-  if (theme === defaultSelectedInput.value) {
+  if (theme === systemThemeInput.value) {
     localStorage.removeItem(THEME_STORAGE_KEY);
   } else {
     localStorage.setItem(THEME_STORAGE_KEY, theme);

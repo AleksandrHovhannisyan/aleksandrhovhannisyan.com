@@ -17,17 +17,17 @@
     const themePicker = document.getElementById('theme-picker');
     if (!themePicker) return;
 
-    const defaultSelectedInput = themePicker.querySelector('input[checked]');
+    const systemThemeInput = themePicker.querySelector('input[checked]');
     // Sync picker's selected state to reflect initial theme
-    if (cachedTheme && cachedTheme !== defaultSelectedInput.value) {
-      defaultSelectedInput.removeAttribute('checked');
+    if (cachedTheme && cachedTheme !== systemThemeInput.value) {
+      systemThemeInput.removeAttribute('checked');
       themePicker.querySelector(`input[value="${cachedTheme}"]`).setAttribute('checked', '');
     }
 
     // Listen for change to sync localStorage and data- attribute
     themePicker.addEventListener('change', (e) => {
       const theme = e.target.value;
-      if (theme === defaultSelectedInput.value) {
+      if (theme === systemThemeInput.value) {
         // Remove JS-set theme so the CSS :not([data-theme]) selectors kick in
         delete THEME_OWNER.dataset[THEME_STORAGE_KEY];
         localStorage.removeItem(THEME_STORAGE_KEY);
