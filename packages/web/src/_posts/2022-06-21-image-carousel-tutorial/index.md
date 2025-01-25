@@ -282,7 +282,7 @@ Our carousel is looking much better! We can scroll the container horizontally ei
 
 The default scroll behavior is to slide continuously in the container, but in a media carousel such as this, we typically don't want users to stop midway between two images or in some other random location. Rather, we'd like the carousel to center each image as a user scrolls, providing a series of focal points or destinations along the way. To do this, we can enable [CSS scroll snap](https://web.dev/css-scroll-snap/) on our carousel scroll container. This feature allows us to snap a particular item's focal point into view once a user scrolls close enough to it, as demonstrated in the following video:
 
-{% include "video.liquid" src: "/assets/videos/scroll-snap-demo.mp4", poster: "/assets/videos/scroll-snap-demo-thumbnail.jpg", sourceType: "video/mp4", width: 1404, height: 392, caption: "A horizontal image carousel is scrolled using the left and right arrow keys. Each scroll event centers the next image horizontally, providing a sequence of stopping points. The blue dots overlaid on the images mark their focal points." %}
+{% include "video.liquid" src: "./videos/scroll-snap-demo.mp4", poster: "./videos/scroll-snap-demo-thumbnail.jpg", sourceType: "video/mp4", width: 1404, height: 392, caption: "A horizontal image carousel is scrolled using the left and right arrow keys. Each scroll event centers the next image horizontally, providing a sequence of stopping points. The blue dots overlaid on the images mark their focal points." %}
 
 Enabling scroll snap is a two-step process. First, we need to tell the scroll container how it should behave with the [`scroll-snap-type` CSS property](https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-snap-type). This property allows us to specify the snapping axis (`x` for horizontal and `y` for vertical) as well as the snapping behavior (`proximity` or `mandatory`), like so:
 
@@ -449,7 +449,7 @@ Here's all of the code from this section:
 
 In this section, we'll add navigation controls that can be used to programmatically scroll the image carousel, using only about 130 lines of JavaScript in total. Since we already support arrow key navigation and pointer events, this is more of a nice-to-have feature than an essential one. Most carousels include these navigation buttons, and one could even argue that they improve the user experience by hinting that the container can be scrolled. This is especially true if a user's operating system hides scrollbars by default. Below is a video demo of the final result:
 
-{% include "video.liquid" src: "/assets/videos/carousel-button-demo.mp4", poster: "/assets/videos/carousel-button-demo-thumbnail.jpg", sourceType: "video/mp4", width: 1404, height: 392, caption: "A horizontal image carousel is scrolled left and right using navigation buttons and mouse clicks. Each click jumps the carousel to the next image in the direction of travel, centering it in view." %}
+{% include "video.liquid" src: "./videos/carousel-button-demo.mp4", poster: "./videos/carousel-button-demo-thumbnail.jpg", sourceType: "video/mp4", width: 1404, height: 392, caption: "A horizontal image carousel is scrolled left and right using navigation buttons and mouse clicks. Each click jumps the carousel to the next image in the direction of travel, centering it in view." %}
 
 ### Creating the Navigation Buttons
 

@@ -21,11 +21,11 @@ The problem with X's routes is that they're flat. _Too_ flat.
 
 So what if a username happens to match a reserved route? For example, what's stopping someone from claiming @home and getting assigned the profile URL of https://x.com/home? Well, apparently nothing:
 
-{% include "video.liquid" src: "/assets/videos/twitter-home.mp4", sourceType: "video/mp4", width: 1104, height: 482, caption: "Clicking the link for @home's profile page takes you to /home." %}
+{% include "video.liquid" src: "./videos/twitter-home.mp4", sourceType: "video/mp4", width: 1104, height: 482, caption: "Clicking the link for @home's profile page takes you to /home." %}
 
 You remember your old friend @Settings, right?
 
-{% include "video.liquid" src: "/assets/videos/twitter-settings.mp4", sourceType: "video/mp4", width: 1104, height: 482, caption: "Clicking the link for @Settings's profile page takes you to /settings." %}
+{% include "video.liquid" src: "./videos/twitter-settings.mp4", sourceType: "video/mp4", width: 1104, height: 482, caption: "Clicking the link for @Settings's profile page takes you to /settings." %}
 
 **Achievement unlocked**: Hidden (or extremely popular) profiles. Depending on which route is registered last, you're going to see one of two behaviors:
 

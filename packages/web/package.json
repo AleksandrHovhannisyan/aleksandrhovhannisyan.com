@@ -23,7 +23,7 @@
     "update-browserslist": "pnpm dlx browserslist@latest --update-db"
   },
   "dependencies": {
-    "@11ty/eleventy": "3.0.0",
+    "@11ty/eleventy": "3.0.1-alpha.1",
     "@11ty/eleventy-cache-assets": "2.3.0",
     "@11ty/eleventy-img": "5.0.0-beta.10",
     "@iktakahiro/markdown-it-katex": "4.0.1",

@@ -53,7 +53,10 @@ export default function eleventy(eleventyConfig) {
   // Pass-through copy for static assets
   eleventyConfig.setServerPassthroughCopyBehavior('copy');
   eleventyConfig.addPassthroughCopy('src/assets/fonts');
-  eleventyConfig.addPassthroughCopy('src/assets/videos');
+  eleventyConfig.addPassthroughCopy('src/_posts/**/videos/*', {
+    mode: "html-relative",
+    failOnError: true,
+  })
 
   // Custom shortcodes
   eleventyConfig.addPairedShortcode('aside', asideShortcode);
@@ -108,6 +111,9 @@ export default function eleventy(eleventyConfig) {
       loading: 'lazy',
       sizes: '100vw',
       decoding: 'async',
+    },
+    sharpOptions: {
+      animated: true,
     },
   });
   eleventyConfig.addPlugin(PluginFootnotes, {
