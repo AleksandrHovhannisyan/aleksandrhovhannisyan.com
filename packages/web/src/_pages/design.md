@@ -249,7 +249,7 @@ some *italicized text*
 </div>
 ```
 
-```html
+```html {data-copyable="true"}
 <button
   id="theme-toggle"
   type="button"

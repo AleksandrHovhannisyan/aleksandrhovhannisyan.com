@@ -110,11 +110,10 @@
     }
   }
 
-  &:has(.line:only-child) .copy-code-button {
-    inset-block-start: 50%;
-    transform: translateY(-50%);
-  }
-
+  // &:has(.line:only-child) .copy-code-button {
+  //   inset-block-start: 50%;
+  //   transform: translateY(-50%);
+  // }
   // /* Non-plaintext code blocks with more than one line should get line numbering */
   // code:not(.language-plaintext):has(.line:not(:only-child)) {
   //   --size-code-line-number-offset: 4ch;
@@ -220,14 +219,13 @@
 }
 
 /* Language Specific */
-
-pre:is([class*="language-css"], [class*="language-scss"], [class*="language-sass"]) {
+.code-block:is([data-language="css"], [data-language="scss"], [data-language="sass"]) {
   .token.selector {
     color: var(--color-code-selector);
   }
 }
 
-pre[class*="language-bash"] {
+.code-block[data-language="bash"] {
   .token:not(.comment) {
     color: var(--color-code-text) !important;
   }

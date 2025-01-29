@@ -49,34 +49,26 @@ const LANGUAGE_ALIASES = new Map([
 ]);
 
 /** @param {string|undefined} lang */
-const getLanguage = (lang) => LANGUAGE_ALIASES.get(lang) ?? (lang || DEFAULT_LANGUAGE_IF_UNSPECIFIED);
+function getLanguage(lang) {
+  if (LANGUAGE_ALIASES.has(lang)) {
+    return LANGUAGE_ALIASES.get(lang);
+  }
+  return lang || DEFAULT_LANGUAGE_IF_UNSPECIFIED;
+}
 
 /**
- * Code modified from markdown-it-prism source (MIT, copyright Joshua Gleitze): https://github.com/jGleitz/markdown-it-prism/blob/8c9d7202a840050ca8cf3a3d1ab2cf9ea65c68e5/src/index.ts#L201-L221
  * @param {import("markdown-it")} markdownIt
  */
 function makeFencedCodeRenderer(markdownIt) {
   const defaultRenderer = markdownIt.renderer.rules.fence;
+
   /** @type {import('markdown-it/lib/renderer.mjs').RenderRule} */
   return (tokens, idx, options, env, self) => {
     const fencedCodeBlockToken = tokens[idx];
     const info = fencedCodeBlockToken.info ? markdownIt.utils.unescapeAll(fencedCodeBlockToken.info).trim() : '';
     const language = getLanguage(info.split(/(\s+)/g)[0]);
     fencedCodeBlockToken.info = language;
-    const defaultRenderedCodeBlock = defaultRenderer(tokens, idx, options, env, self);
-    const languageClassName = markdownIt.options.langPrefix + language;
-
-    // Patch class names to include Prism language class
-    let codeBlockHtml = defaultRenderedCodeBlock.replace(
-      /<((?:pre|code)[^>]*?)(?:\s+class="([^"]*)"([^>]*))?>/g,
-      (match, tagStart, classNames, tagEnd) => {
-        // already has class name, just return existing match
-        return classNames?.includes(languageClassName)
-          ? match
-          : // class names don't include lang class, so add it after existing classes
-            `<${tagStart} class="${classNames ? `${classNames} ` : ''}${languageClassName}"${tagEnd || ''}>`;
-      }
-    );
+    let codeBlockHtml = defaultRenderer(tokens, idx, options, env, self);
 
     // Copyable code blocks get data-copyable="true" via markdown-it-attrs
     let copyCodeMatch = /<code[^>]*\b(?<attribute>data-copyable="?true"?)/.exec(codeBlockHtml);
@@ -88,7 +80,7 @@ function makeFencedCodeRenderer(markdownIt) {
 
     // Code block that needs additional markup
     if (hasCopyCodeButton || hasFileName) {
-      let captionHtml = '<figcaption class="screen-reader-only">Code snippet</figcaption>';
+      let captionHtml = `<figcaption class="screen-reader-only">${language} code snippet</figcaption>`;
       let copyCodeHtml = '';
 
       if (hasCopyCodeButton) {
@@ -105,7 +97,7 @@ function makeFencedCodeRenderer(markdownIt) {
       codeBlockHtml = `${captionHtml}${codeBlockHtml}${copyCodeHtml}`;
     }
 
-    return `<figure class="code-block">${codeBlockHtml}</figure>`;
+    return `<figure class="code-block" data-language="${language}">${codeBlockHtml}</figure>`;
   };
 }
 
@@ -115,8 +107,8 @@ function makeFencedCodeRenderer(markdownIt) {
  */
 function makeSyntaxHighlighter(markdownIt) {
   /**
-   * @param {string} code The fenced code block contents.
-   * @param {string} lang The fenced code block language.
+   * @param {string} code The plaintext code to highlight.
+   * @param {string} lang The language in which the code was written.
    * @returns {string}
    */
   return (code, lang) => {
@@ -133,11 +125,7 @@ function makeSyntaxHighlighter(markdownIt) {
       console.log(e);
       html = markdownIt.utils.escapeHtml(code);
     }
-    return html
-      .trim()
-      .split('\n')
-      .map((line) => `<span class="line">${line.trimEnd()}</span>`)
-      .join('\n');
+    return html;
   };
 }
 
