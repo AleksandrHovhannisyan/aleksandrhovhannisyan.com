@@ -5,7 +5,7 @@ categories: [case-study, twitter, security]
 keywords: [route collision, route hijacking, twitter]
 thumbnail: ./images/tweet-mentions.png
 commentsId: 196
-lastUpdated: 2025-01-24
+lastUpdated: 2025-01-28
 ---
 
 While browsing Twitter—_sorry_, X—I realized something that had never crossed my mind before: All profile pages live under `https://x.com/:username`. And it turns out that this is actually a major design flaw.
@@ -61,38 +61,6 @@ Some usernames—like `tos`, `messages`, `notifications`, and `privacy`—appear
 
 ![Tweet from @woomy_irl that reads: "Wow @home @logout @notifications @explore @messages"](./images/tweet-mentions.png)
 
-## Why It Happened
-
-Using dev tools, I verified that all responses on Twitter include the `x-powered-by: Express` header, which means the back end uses the popular [Express.js framework](https://expressjs.com/):
-
-![Firefox dev tools Network tab for x.com/home shows an x-powered-by: Express response header.](./images/twitter-express.png){eleventy:formats="png,webp"}
-
-With that in mind, we can assume that Twitter's router looks something like this:
-
-```js
-router.get('/:username', (req, res) => {});
-router.get('/home', (req, res) => {});
-router.get('/settings', (req, res) => {});
-router.get('/logout', (req, res) => {});
-```
-
-In Express, route handling is done on a first-come, first-serve basis: The first route handler that matches a requested path will be the one that runs. This means that in the above example, a GET request for the `/home` route would call the handler for `/:username` because that route was defined first and matches the requested path. As you might expect, flipping the order wouldn't help because then a GET request for `/home` would give you @home's profile page instead of your feed, effectively breaking the app for everyone.
-
-As a best practice in API design, if you allow users to create public-facing accounts, their profile pages should live under a more specific path, like `/user/:username`, to minimize the risk of collisions with static routes:
-
-```js
-router.get('/user/:username', (req, res) => {});
-router.get('/home', (req, res) => {});
-router.get('/settings', (req, res) => {});
-router.get('/logout', (req, res) => {});
-```
-
-If you don't do this, then you at least need to reserve these usernames so that users can't claim them when signing up for an account or changing their handle.
-
-{% aside %}
-From my testing, it seems Twitter _does_ reserve handles now, but `@home`, `@settings`, and `@logout` were created long before that change took effect.
-{% endaside %}
-
 ## Why It Matters
 
 Users should **never** be able to hijack static routes during the account creation process, as this affects security and usability.
@@ -119,10 +87,53 @@ Now, imagine if the owner of the @home profile had included a malicious link in 
 
 This bug also reveals an apparent disconnect between how users _think_ navigation works and how it's _actually_ implemented on the web. Ordinary people don't think of URLs the same way developers do, and the lines become even blurrier in a client-side-routed app like Twitter that tries its best to feel native. You open the "app" and you expect to see your timeline. You click a "tab"—not a _link_, mind you—and expect to see a new user interface without a full page reload. So you can't really fault someone for logging in, seeing @home's profile page, and thinking the site or their account has been "hacked."
 
+## Why It Happened
+
+Using dev tools, I verified that all responses on Twitter include the `x-powered-by: Express` header, which means the back end uses the popular [Express.js framework](https://expressjs.com/):
+
+![Firefox dev tools Network tab for x.com/home shows an x-powered-by: Express response header.](./images/twitter-express.png){eleventy:formats="png,webp"}
+
+With that in mind, we can assume that Twitter's router looked something like this at the time when this bug was originally reported:
+
+```js
+router.get('/:username', (req, res) => {});
+router.get('/home', (req, res) => {});
+router.get('/settings', (req, res) => {});
+router.get('/logout', (req, res) => {});
+```
+
+In Express, route handling is done on a first-come, first-serve basis: The first route handler that matches a requested path will be the only one to run. This means that in the above example, a GET request for the `/home` route would call the handler for `/:username` because that route was defined first and matches the requested path. Effectively, this broke the app for everyone, showing them @home's profile page instead of their feed.
+
+Without seeing the source code, we can only make educated guesses, but it's likely that Twitter's solution was to flip the order of the routes and prioritize static ones:
+
+```js
+router.get('/home', (req, res) => {});
+router.get('/settings', (req, res) => {});
+router.get('/logout', (req, res) => {});
+router.get('/:username', (req, res) => {});
+```
+
+While that fixes the original bug, now nobody can view @home's, @logout's, and others' profiles that happen to coincide with reserved routes.
+
+As a best practice in API design, if you allow users to create public-facing accounts, their profile pages should live under a more specific path, like `/user/:username`, to minimize the risk of collisions with static routes:
+
+```js
+router.get('/home', (req, res) => {});
+router.get('/settings', (req, res) => {});
+router.get('/logout', (req, res) => {});
+router.get('/user/:username', (req, res) => {});
+```
+
+If you don't do this, then you at least need to reserve these usernames so that users can't claim them when signing up for an account or changing their handle.
+
+{% aside %}
+From my testing, it seems Twitter _does_ reserve handles now, but `@home`, `@settings`, and `@logout` were created long before that change took effect.
+{% endaside %}
+
 ## Username Parking and Eviction
 
 You might be thinking: Well, Twitter already fixed this bug, who cares? But suppose you've had @username for years, and then one day X decides to add `https://x.com/:username` as an internal route that just happens to conflict. If this route is registered with a lower priority than username routes, it'll point to your profile page—the @home fiasco all over again. But if it's implemented correctly, nobody will be able to view your profile from that point onward. Effectively, this one flaw in X's routing forces you to change your handle. It also means you can compile a list of handles that may one day trigger route collisions and create an account for any that don't already exist, "parking" them in the hopes of hijacking routes in the future.
 
 ## Conclusion
 
-All of this could've been avoided if Twitter had isolated profile routes from static routes with a scheme like `/profile/:username` or `/user/:username`, as many social media sites do. For example, Reddit profiles are under `/user/:username`. I suspect that Twitter's decision to use flat URLs was motivated by aesthetics: making profile URLs _short_ instead of _safe_. Technically, that would've still worked if the developers had reserved these handles during account creation. But because they didn't, I'm now a proud follower of @home and @settings.
+All of this could've been avoided if Twitter had used URLs like `/profile/:username` or `/user/:username` for profile pages, as many social media sites do. I suspect that Twitter's decision to use flat URLs was motivated by aesthetics: making profile URLs _short_ instead of _safe_. Technically, that would've still worked if the developers had reserved these handles during account creation. But because they didn't, I'm now a proud follower of @home and @settings.
