@@ -5,7 +5,7 @@ import { escape } from '../utils.js';
 const markdown = makeMarkdownParser().set({ breaks: true });
 
 export default function quote(children, sourceName, sourceUrl) {
-  if (sourceUrl && !/https?:\/\//.test(sourceUrl) && !sourceUrl.startsWith('/')) {
+  if (sourceUrl && !sourceUrl.startsWith('http') && !sourceUrl.startsWith('/')) {
     throw new Error(`Quote citation is not a recognized url: ${sourceUrl}.`);
   }
   if (!sourceName) {
@@ -17,7 +17,7 @@ export default function quote(children, sourceName, sourceUrl) {
   const quoteContent = markdown.render(children.trim());
   const citeContent = markdown.renderInline(sourceName);
   const citeInnerHTML = sourceUrl
-    ? `<a href="${escape(sourceUrl)}" target="_blank" rel="noreferrer noopener">${citeContent}</a>`
+    ? `<a href="${escape(sourceUrl)}" rel="noreferrer noopener">${citeContent}</a>`
     : citeContent;
   return `<blockquote class="rhythm" cite="${sourceUrl}">
     <div class="rhythm">${quoteContent}</div>
