@@ -3,4 +3,8 @@
 .prose {
   max-width: functions.to-rems(700px);
   margin: 0 auto;
+
+  img {
+    margin-inline: auto;
+  }
 }

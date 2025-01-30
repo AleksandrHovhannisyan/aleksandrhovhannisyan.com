@@ -5,13 +5,11 @@ figure {
   gap: functions.size("spacing", "-2");
   display: flex;
   flex-direction: column;
-
-  img {
-    margin-inline: auto;
-  }
 }
 
 figcaption {
   text-align: center;
+  max-width: 65ch;
+  margin-inline: auto;
   @include mixins.font($size: "xs");
 }
