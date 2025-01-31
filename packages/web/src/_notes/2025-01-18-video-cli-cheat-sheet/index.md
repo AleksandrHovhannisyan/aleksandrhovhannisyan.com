@@ -2,6 +2,7 @@
 title: CLI Cheat Sheet for Videos
 description: A reference for downloading, splitting, and optimizing videos with CLI tools.
 keywords: [yt-dlp, ffmpeg]
+lastUpdated: 2025-01-30
 ---
 
 This is a compilation of my most frequently used command-line tools and commands when working with video files. I'm collecting them here both for my own convenience and in case the original sources ever get taken down. Note that this is not meant to be an exhaustive reference.
@@ -34,7 +35,7 @@ Sometimes, it's faster to download specific timestamp ranges of a video rather t
 yt-dlp <url> --download-sections "*00:01:00-00:05:00"
 ```
 
-Reference: [yt-dlp Download Options](https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#download-options)
+Reference: [yt-dlp Download Options](https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#download-options).
 
 ## Editing Videos
 
@@ -61,3 +62,22 @@ ffmpeg -i input.mp4 -vcodec libx265 -crf 28 output.mp4
 ```
 
 Credit: [Vicky Chijwani on the Unix & Linux StackExchange, CC BY-SA 4.0](https://unix.stackexchange.com/a/38380/311005).
+
+### Extract Frame as Thumbnail
+
+The following command saves the first frame of the input video as an image:
+
+```js
+ffmpeg -i input.mp4 -vf "select=eq(n\,0)" -q:v <quality> frame.jpg
+```
+
+Among other things, this can be used to set a [custom poster image](https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/poster) for the HTML `<video>` tag as part of the `preload="none"` optimization strategy.
+
+Notes:
+
+- Replace `<quality>` with a number between 1 and 31 (higher = lower quality).
+- The `0` in `(n\,0)` denotes the frame to extract—in this case, the 0th (first) frame.
+
+Credit: [Dhiraj Gupta on StackOverflow, CC BY-SA 4.0](https://stackoverflow.com/a/44073745/5323344).
+
+See also: [ffmpeg Documentation, 46.17 select, aselect](https://ffmpeg.org/ffmpeg-all.html#select_002c-aselect).
