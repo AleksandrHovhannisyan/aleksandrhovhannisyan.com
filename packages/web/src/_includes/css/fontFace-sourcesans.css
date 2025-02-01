@@ -85,7 +85,3 @@ html {
   --font-weight-body-regular: 400;
   --font-weight-body-bold: 700;
 }
-body {
-  font-family: var(--font-family-body);
-  font-weight: var(--font-weight-body-regular);
-}

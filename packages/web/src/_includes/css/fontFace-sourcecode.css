@@ -20,6 +20,3 @@ html {
   --font-weight-mono-regular: 400;
   --font-weight-mono-bold: 700;
 }
-code {
-  font-family: var(--font-family-mono);
-}

@@ -10,7 +10,7 @@ body {
   color: functions.color("text", "normal");
   overflow-wrap: break-word;
   -webkit-font-smoothing: antialiased;
-  @include mixins.font($size: "base");
+  @include mixins.font($family: "body", $weight: "regular", $size: "base");
 }
 
 #page-content {
