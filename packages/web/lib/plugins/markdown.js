@@ -63,12 +63,10 @@ function makeFencedCodeRenderer(markdownIt) {
   const defaultRenderer = markdownIt.renderer.rules.fence;
 
   /** @type {import('markdown-it/lib/renderer.mjs').RenderRule} */
-  return (tokens, idx, options, env, self) => {
-    const fencedCodeBlockToken = tokens[idx];
-    const info = fencedCodeBlockToken.info ? markdownIt.utils.unescapeAll(fencedCodeBlockToken.info).trim() : '';
-    const language = getLanguage(info.split(/(\s+)/g)[0]);
-    fencedCodeBlockToken.info = language;
-    let codeBlockHtml = defaultRenderer(tokens, idx, options, env, self);
+  return (tokens, index, options, env, self) => {
+    const fencedCodeBlockToken = tokens[index];
+    const language = getLanguage(fencedCodeBlockToken.info);
+    let codeBlockHtml = defaultRenderer(tokens, index, options, env, self);
 
     // Copyable code blocks get data-copyable="true" via markdown-it-attrs
     let copyCodeMatch = /<code[^>]*\b(?<attribute>data-copyable="?true"?)/.exec(codeBlockHtml);
@@ -78,25 +76,20 @@ function makeFencedCodeRenderer(markdownIt) {
     const fileNameMatch = /<code[^>]*\b(?<attribute>data-file="?(?<fileName>[^"]*)"?)/.exec(codeBlockHtml);
     let hasFileName = !!fileNameMatch && fileNameMatch.groups?.attribute && fileNameMatch.groups?.fileName;
 
-    // Code block that needs additional markup
-    if (hasCopyCodeButton || hasFileName) {
-      let captionHtml = `<figcaption class="screen-reader-only">${language} code snippet</figcaption>`;
-      let copyCodeHtml = '';
-
-      if (hasCopyCodeButton) {
-        copyCodeHtml =
-          '<button class="copy-code-button" aria-label="Copy code to clipboard">Copy</button><span role="alert" class="screen-reader-only"></span>';
-        // Don't need the data-copyable="true" attribute anymore
-        codeBlockHtml = codeBlockHtml.replace(copyCodeMatch.groups?.attribute, '');
-      }
-      if (hasFileName) {
-        captionHtml = `<figcaption class="file-name">${fileNameMatch.groups?.fileName}</figcaption>`;
-        // We don't need the data-file=".*" attribute anymore
-        codeBlockHtml = codeBlockHtml.replace(fileNameMatch.groups?.attribute, '');
-      }
-      codeBlockHtml = `${captionHtml}${codeBlockHtml}${copyCodeHtml}`;
+    let captionHtml = `<figcaption class="screen-reader-only">${language} code snippet</figcaption>`;
+    let copyCodeHtml = '';
+    if (hasCopyCodeButton) {
+      copyCodeHtml =
+        '<button class="copy-code-button" aria-label="Copy code to clipboard">Copy</button><span role="alert" class="screen-reader-only"></span>';
+      // Don't need the data-copyable="true" attribute anymore
+      codeBlockHtml = codeBlockHtml.replace(copyCodeMatch.groups?.attribute, '');
     }
-
+    if (hasFileName) {
+      captionHtml = `<figcaption class="file-name">${fileNameMatch.groups?.fileName}</figcaption>`;
+      // We don't need the data-file=".*" attribute anymore
+      codeBlockHtml = codeBlockHtml.replace(fileNameMatch.groups?.attribute, '');
+    }
+    codeBlockHtml = `${captionHtml}${codeBlockHtml}${copyCodeHtml}`;
     return `<figure class="code-block" data-language="${language}">${codeBlockHtml}</figure>`;
   };
 }
