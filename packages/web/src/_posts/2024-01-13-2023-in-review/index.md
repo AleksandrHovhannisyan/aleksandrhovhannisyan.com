@@ -1,7 +1,7 @@
 ---
 title: 2023 in Review
 description: Reflecting on an unusually eventful year in my life.
-categories: [personal]
+categories: [year-in-review, personal]
 ---
 
 For the four and a half years that I've been running this blog, I haven't ever written an end-of-year reflection post. Part of the reason why is because I like to keep most things private, but the bigger reason is that there wasn't anything interesting going on up until recently. However, 2023 was eventful enough that I think it deserves at least a bit of reflection. In 2023, I:
