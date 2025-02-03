@@ -113,7 +113,7 @@ Also, shout-out to my friend Craig who introduced me to Joanna Newsom. I listene
 
 ## I watched (and rewatched) movies
 
-As the world went down the gutter, I turned to comedies for relief. I watched *Palm Springs*, saw the hilariously quotable and irreverent *Superbad* for the first time, and rewatched *Juno* for the Michael Cera encore.
+As the world went down the gutter, I turned to comedies for relief. I watched *Palm Springs*, the documentary *Idiocracy*, the hilariously quotable and irreverent *Superbad*, and *Juno* for the Michael Cera encore.
 
 <figure>
     <img src="https://c.tenor.com/ltw-sq-geAAAAAAd/tenor.gif" alt="Fogell from Superbad, a young teen with glasses wearing a black shirt. Initially he's deep in thought; then, he tilts his head slightly back and to the side, nods slowly and charismatically, and smugly says 'I am McLovin.'" eleventy:formats="gif,webp" />
@@ -126,6 +126,7 @@ I also rewatched:
 - _No Country for Old Men_
 - _Zodiac_
 - _Sicario_
+- _28 Weeks Later_ (I hope [the sequel](https://www.youtube.com/watch?v=mcvLKldPM08) won't disappoint)
 
 And watched these movies for the first time:
 
@@ -136,7 +137,7 @@ And watched these movies for the first time:
 - _Edward Scissorhands_
 - _Big Eyes_
 
-But out of all the movies I saw in 2024, four were my favorites.
+But out of all the movies I watched in 2024, three were my favorites.
 
 ### _Heat_ (1995)
 
@@ -145,20 +146,7 @@ But out of all the movies I saw in 2024, four were my favorites.
   <figcaption>Scene from <em>Heat</em>, with Al Pacino (left) and Robert DeNiro (right). Copyright 1995 Warner Bros., Warner Bros. Pictures.</figcaption>
 </figure>
 
-I've seen lots of heist movies—from _The Town_ (2010) to _Den of Thieves_ (2018)—and I don't think any of them will ever live up to _Heat_. This movie practically defined the genre, and at nearly three hours runtime, it's not just a mindless run-and-gun: the pacing alternates between bursts of [intense action](https://www.youtube.com/watch?v=ZL9fnVtz_lc) and slow-burn exposition.
-
-### _28 Weeks Later_ (2007)
-
-<figure>
-  <img src="./images/28-weeks-later.jpg" alt="Man with a tattered jacket and scruffy beard running in an open green field with a horde of zombies chasing after him." />
-  <figcaption>Still shot from the opening scene of <em>28 Weeks Later</em>. Copyright 2007 Disney, 20th Century Fox.</figcaption>
-</figure>
-
-I can't say for certain, but I have this weird déjà vu of watching _28 Weeks Later_ in the late 2000s as a kid. Rewatching it reminded of how much [the opening scene](https://www.youtube.com/watch?v=SC-eHCYXRqg) had terrified me back then. It was so well executed: the lighting, the suspense, the split-second decisions that characters had to make [in a heartbeat](https://www.youtube.com/watch?v=ST2H8FWDvEA). Although the story is predictable (as most are in this genre), it still holds up well, and I'm always a sucker for a good post-apocalyptic narrative. Hopefully the recently announced [_28 Years Later_](https://www.youtube.com/watch?v=mcvLKldPM08) won't disappoint.
-
-{% aside %}
-I guess we're skipping _28 Months Later_?
-{% endaside %}
+I've seen lots of heist movies—from _The Town_ to _Den of Thieves_—and I don't think any of them will ever live up to _Heat_. This movie practically defined the genre, and at nearly three hours runtime, it's not just a mindless run-and-gun: the pacing alternates between bursts of [intense action](https://www.youtube.com/watch?v=ZL9fnVtz_lc) and slow-burn exposition.
 
 ### _Interstellar_ (2014)
 
@@ -167,7 +155,7 @@ I guess we're skipping _28 Months Later_?
   <figcaption>Gargantua, a planet orbiting a massive black hole in the film <em>Interstellar</em>. Source: <a href="https://interstellarfilm.fandom.com/wiki/Gargantua" rel="noopener">Interstellar Fandom Wiki</a>. Copyright 2014 Warner Bros. Entertainment, Inc. and Paramount Pictures Corporation.</figcaption>
 </figure>
 
-_Interstellar_ was always a movie I'd seen clip and memes of but one I never watched until 2024. Due to time dilation, this meant that I had missed out on an entire decade of discourse. When I finally did watch it, I found myself captivated by Christopher Nolan's grand and often terrifying depictions of space, and I felt invested in the fates of the characters—and the lovable TARS—as they raged against the dying of the proverbial light. I was even surprised to learn that many aspects of the movie were based on [actual (albeit incomprehensible) physics](https://www.astronomy.com/science/kip-thorne-and-the-mind-bending-science-of-interstellar/). Although I doubt it'll ever happen in my lifetime, I hope I'll get to see the day when we chart the ends of the universe [to the tune of Hans Zimmer](https://www.youtube.com/watch?v=UDVtMYqUAyw).
+_Interstellar_ was always a movie I'd seen clip and memes of but one I never watched until 2024. When I finally did watch it, I found myself captivated by Christopher Nolan's grand and often terrifying depictions of space, and I felt invested in the fates of the characters—and the lovable TARS—as they raged against the dying of the proverbial light. I was even surprised to learn that many aspects of the movie were based on [actual (albeit incomprehensible) physics](https://www.astronomy.com/science/kip-thorne-and-the-mind-bending-science-of-interstellar/). Although I doubt it'll ever happen in my lifetime, I hope I'll get to see the day when we chart the ends of the universe [to the tune of Hans Zimmer](https://www.youtube.com/watch?v=UDVtMYqUAyw).
 
 ### _There Will Be Blood_ (2007)
 
