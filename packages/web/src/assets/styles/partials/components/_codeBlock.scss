@@ -110,32 +110,31 @@
     }
   }
 
-  // &:has(.line:only-child) .copy-code-button {
-  //   inset-block-start: 50%;
-  //   transform: translateY(-50%);
-  // }
-  // /* Non-plaintext code blocks with more than one line should get line numbering */
-  // code:not(.language-plaintext):has(.line:not(:only-child)) {
-  //   --size-code-line-number-offset: 4ch;
-  //   padding-inline-start: calc(var(--size-code-padding) + var(--size-code-line-number-offset));
+  /* Non-plaintext code blocks with >= 10 lines should get line numbering */
+  code:not(.language-plaintext):has(.line:nth-child(10)) {
+    --size-code-line-number-offset: 4ch;
+    padding-inline-start: calc(var(--size-code-padding) + var(--size-code-line-number-offset));
 
-  //   .line {
-  //     counter-increment: line-number;
+    .line {
+      counter-increment: line-number;
 
-  //     &::before {
-  //       // content: counter(line-number);
-  //       display: block;
-  //       height: 1lh;
-  //       position: absolute;
-  //       inset-inline-start: var(--size-code-padding);
-  //       color: functions.color("text", "soft");
-  //       font-variant-numeric: tabular-nums;
-  //     }
-  //   }
-  // }
-  // code:not(.language-text):has(.line:nth-child(100)) {
-  //   --size-code-line-number-offset: 5ch;
-  // }
+      &::before {
+        content: counter(line-number);
+        position: absolute;
+        inset-inline-start: 1px;
+        min-inline-size: var(--size-code-line-number-offset);
+        text-align: end;
+        padding-inline-end: 2ch;
+        color: functions.color("text", "soft");
+        font-variant-numeric: tabular-nums;
+        background-color: var(--color-code-background);
+      }
+    }
+  }
+
+  code:not(.language-text):has(.line:nth-child(100)) {
+    --size-code-line-number-offset: 5ch;
+  }
 
   // Focus styles appear later
   &:hover {

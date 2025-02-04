@@ -118,7 +118,11 @@ function makeSyntaxHighlighter(markdownIt) {
       console.log(e);
       html = markdownIt.utils.escapeHtml(code);
     }
-    return html;
+    return html
+      .trim()
+      .split('\n')
+      .map((line) => `<span class="line">${line}</span>`)
+      .join('\n');
   };
 }
 
