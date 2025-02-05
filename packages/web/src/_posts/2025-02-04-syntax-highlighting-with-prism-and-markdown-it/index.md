@@ -357,7 +357,6 @@ document.querySelectorAll('.copy-code-button').forEach((button) => {
     setTimeout(() => {
       button.classList.remove('copied');
       button.innerText = 'Copy';
-      copiedAlert.innerText = '';
     }, 2000);
   });
 });
