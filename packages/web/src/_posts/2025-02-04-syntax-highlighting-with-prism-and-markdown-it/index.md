@@ -1,10 +1,10 @@
 ---
 title: Syntax Highlighting with Prism.js and markdown-it
-# title: Custom Code Blocks with Prism.js and markdown-it
 description: Learn how to add line numbers, file names, and copy-to-clipboard buttons to your code blocks.
 thumbnail: ./images/thumbnail.jpg
 categories: [javascript, markdown]
 keywords: [prism, syntax highlight, markdown-it]
+lastUpdated: 2025-02-05
 ---
 
 If you're reading this article, you've probably heard of [Prism.js](https://prismjs.com/), a popular syntax highlighter library. You give it the code that you want to highlight and pick a grammar and language, and it returns an HTML string that wraps each token in `<span>`s with class names that you can style with CSS.
@@ -217,7 +217,11 @@ The `getLanguage` function checks to see if a language is an alias that we've se
 const md = MarkdownIt({
   highlight: (code, lang) => {
     const language = getLanguage(lang);
-    return Prism.highlight(code, Prism.languages[language], language);  },
+    if (!Object.hasOwn(Prism.languages, language)) {
+      loadLanguages([language]);
+    }
+    return Prism.highlight(code, Prism.languages[language], language);
+  },
 });
 ```
 
@@ -274,6 +278,8 @@ return (tokens, index, options, env, self) => {
   return `<figure class="code-block" data-language="${language}">${codeHtml}</figure>`;
 }
 ```
+
+Note that this `.sr-only` caption will only be included for code blocks that don't have a custom (visible) file name override. Speaking of which...
 
 #### 2.1.1. File Name
 
@@ -336,7 +342,7 @@ let copyCodeMatch = /<code[^>]*\b(?<attribute>data-copyable="?true"?)/.exec(code
 let hasCopyCodeButton = !!copyCodeMatch && !!copyCodeMatch.groups?.attribute;
 
 if (hasCopyCodeButton) {
-  copyCodeButtonHtml = '<button aria-label="Copy to clipboard">Copy</button>';
+  copyCodeButtonHtml = '<button class="copy-code-button" aria-label="Copy to clipboard">Copy</button>';
   // Don't need the data-copyable="true" attribute anymore
   codeHtml = codeHtml.replace(copyCodeMatch.groups?.attribute, '');
 }
@@ -369,7 +375,7 @@ Prism supports [line numbering via plugins](https://prismjs.com/plugins/line-num
 ```js {data-file="markdown.js" data-copyable="true"}
 const md = MarkdownIt({
   highlight: (code, lang) => {
-    const html = Prism.highlight(code, Prism.languages[lang], lang);
+    // ... other code omitted for brevity
     return html
       .trim()
       .split('\n')
@@ -401,14 +407,16 @@ Unfortunately, there's also a big downside to this approach: The `"Line "` strin
 Instead, I prefer to use [CSS counters](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_counter_styles/Using_CSS_counters) with pseudo-elements on the `.line` elements:
 
 ```css {data-file="styles.css" data-copyable="true"}
-.code-block code {
-  --padding: 1em; /* or whatever you want */
+.code-block {
+  position: relative;
 }
-
+.code-block code {
+  --code-padding: 1em; /* or whatever you want */
+}
 /* Code with at least 10 lines (arbitrary cutoff) */
 code:has(.line:nth-child(10)) {
-  --line-number-offset: 4ch;
-  padding-inline-start: calc(var(--padding) + var(--line-number-offset));
+  --line-number-width: 4ch;
+  padding-inline-start: calc(var(--code-padding) + var(--line-number-width));
 
   & .line {
     counter-increment: line-number;
@@ -417,12 +425,25 @@ code:has(.line:nth-child(10)) {
   & .line::before {
     content: counter(line-number);
     position: absolute;
-    inset-inline-start: var(--size-padding);
+    inset-inline-start: 0;
+    min-inline-size: var(--line-number-width);
+    text-align: end;
   }
 }
 ```
 
 You can adjust `.line:nth-child(10)` to suit your needs.
+
+Note that I'm using absolute positioning for the line numbers so that they don't influence line indentation. I'm also setting a min width (or rather, inline size) for all line numbers so they're all the same width. Without this little trick, `text-align: end` wouldn't do anything as the numbers would only be intrinsically sized.
+
+Finally, for code blocks that have at least 100 lines, you can just increase the min width for line numbers:
+
+```css {data-file="styles.css" data-copyable="true"}
+code:has(.line:nth-child(100)) {
+  /* adjust as needed */
+  --line-number-width: 5ch;
+}
+```
 
 #### 2.3. Highlighting Lines
 
