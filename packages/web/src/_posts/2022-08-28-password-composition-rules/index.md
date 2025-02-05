@@ -4,7 +4,6 @@ description: Registration systems often require that passwords contain certain c
 keywords: [password composition rules, password complexity rules, password]
 categories: [security, math, forms]
 lastUpdated: 2022-09-01
-isFeatured: true
 ---
 
 In [Special Publication 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html) on user authentication and lifecycle management, the National Institute of Standards and Technology (NIST) documents best practices that password verification systems should follow to secure user accounts. In addition to recommending that verifiers check the length of a user's password to measure its strength—and that verifiers rate-limit log-in attempts—the guidelines also note the following about password composition rules:
