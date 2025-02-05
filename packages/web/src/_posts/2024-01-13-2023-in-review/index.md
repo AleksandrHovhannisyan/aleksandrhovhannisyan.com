@@ -127,11 +127,6 @@ Had this book been published a few years sooner, it would've been an invaluable 
 
 ### The Walking Dead
 
-<figure>
-    <img src="https://upload.wikimedia.org/wikipedia/en/4/4f/TWD_Season_11_poster.jpg" alt="The Walking Dead Season 11 poster." sizes="100vw" />
-    <figcaption><a href="https://en.wikipedia.org/w/index.php?curid=68393957">Image by AMC, fair use</a>.</figcaption>
-</figure>
-
 After nearly a year-long delay, Netflix released the eleventh and final season of AMC's The Walking Dead in early 2023. It wasn't the best season by any means, but it also wasn't the worst. I won't spoil any plot points, but anyone who's watched the show knows that it fell off after a certain season and that the early years were some of its best moments. Still, the finale gave us a touching conclusion to the storyline, and it finally resolved an infuriating cliff-hanger that the writers had left unanswered for a few seasons. At the same time, the ending introduced a new cliff-hanger to tease AMC's new follow-up series (one of several). Despite its flaws, The Walking Dead is still one of the best shows you can watch today. If you haven't already seen it, you're really missing out!
 
 ### Death Note
