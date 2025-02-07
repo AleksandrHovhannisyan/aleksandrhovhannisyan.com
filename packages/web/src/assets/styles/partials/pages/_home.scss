@@ -14,14 +14,13 @@
   display: flex;
   justify-content: space-between;
   gap: functions.size("spacing", "5");
+  align-items: center;
 }
 
 .home-hash-art {
   display: none;
 
   @include mixins.desktop {
-    align-self: flex-end;
     display: unset;
-    padding-block-start: 1ex;
   }
 }
