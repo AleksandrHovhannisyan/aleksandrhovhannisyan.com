@@ -31,6 +31,8 @@ export const sanitizeHtml = (html) => {
       span: ['class'],
       // Quotes
       blockquote: ['class'],
+      // Code file names
+      figcaption: ['class'],
     },
   });
 };
