@@ -1,16 +1,21 @@
 @use "../functions";
 @use "../mixins";
 
-#theme-picker {
-  border: none;
+.theme-picker {
   accent-color: currentcolor;
 
-  label {
-    margin-inline-start: functions.size("relative", "-2");
-    font-weight: unset;
+  fieldset {
+    border: none;
   }
 
-  .visible-label {
+  legend {
+    font-variant: small-caps;
+    letter-spacing: functions.size("tracking", "md");
     @include mixins.font($family: "body", $weight: "bold");
+  }
+
+  label {
+    display: block;
+    font-weight: unset;
   }
 }

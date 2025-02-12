@@ -1,10 +1,31 @@
-@import "partials/tokens/animation";
-@import "partials/tokens/color";
-@import "partials/tokens/size";
+@layer tokens, reset, global, utils, components, layout, pages, demos;
 
-@import "partials/global/reset";
-@import "partials/global/global";
+@layer tokens {
+  @import "partials/tokens/animation";
+  @import "partials/tokens/color";
+  @import "partials/tokens/size";
+}
 
-@import "partials/utils/utils";
-@import "partials/components/components";
-@import "partials/pages/pages";
+@layer reset {
+  @import "partials/reset";
+}
+
+@layer global {
+  @import "partials/global";
+}
+
+@layer utils {
+  @import "partials/utils/utils";
+}
+
+@layer components {
+  @import "partials/components/components";
+}
+
+@layer layout {
+  @import "partials/layout";
+}
+
+@layer pages {
+  @import "partials/pages/pages";
+}

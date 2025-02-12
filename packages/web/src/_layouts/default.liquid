@@ -6,6 +6,9 @@ criticalCSS:
   - css/fontFace-sourcecode.css
 stylesheets:
   - /assets/styles/main.css
+scripts:
+  - type: module
+    src: /assets/scripts/dialog.js
 eleventyComputed:
   preloads:
     -
@@ -15,8 +18,10 @@ eleventyComputed:
       crossorigin: true
 ---
 
-{%- include "navbar.liquid" -%}
-<main id="page-content" class="container">
-  {{ content }}
-</main>
+<div class="page-layout container">
+  {%- include "navigation/navbar.liquid" -%}
+  <main id="main-content">
+    {{ content }}
+  </main>
+</div>
 {%- include "footer.liquid" -%}

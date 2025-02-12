@@ -9,18 +9,3 @@
       functions.get($tokens, "size", "spacing", "13")
     );
 }
-
-.home-page-hero {
-  display: flex;
-  justify-content: space-between;
-  gap: functions.size("spacing", "5");
-  align-items: center;
-}
-
-.home-hash-art {
-  display: none;
-
-  @include mixins.desktop {
-    display: unset;
-  }
-}

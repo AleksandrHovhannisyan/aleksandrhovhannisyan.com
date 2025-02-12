@@ -53,6 +53,7 @@ export default function eleventy(eleventyConfig) {
   // Pass-through copy for static assets
   eleventyConfig.setServerPassthroughCopyBehavior('copy');
   eleventyConfig.addPassthroughCopy('src/assets/fonts');
+  eleventyConfig.addPassthroughCopy('src/*.pdf');
   eleventyConfig.addPassthroughCopy('src/_posts/**/videos/*', {
     mode: "html-relative",
     failOnError: true,
@@ -134,6 +135,7 @@ export default function eleventy(eleventyConfig) {
       entryPoints: [
         'src/assets/scripts/copyCode.js',
         'src/assets/scripts/comments.js',
+        'src/assets/scripts/dialog.js',
         'src/assets/scripts/demos/carousel.js',
         'src/assets/scripts/demos/gameLoop.js',
       ],

@@ -1,7 +1,7 @@
 @use "../functions";
 
 // Inline code and kbd
-code:not([class^="language-"]),
+code,
 kbd {
   color: functions.color("text", "emphasis");
   background-color: light-dark(#{functions.color("surface", "1")}, #{functions.color("surface", "2")});

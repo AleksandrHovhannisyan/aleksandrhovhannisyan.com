@@ -1,11 +1,9 @@
 @use "sass:math";
-@use "../tokens" as *;
-@use "../functions";
-@use "../mixins";
+@use "./tokens" as *;
+@use "./functions";
+@use "./mixins";
 
 body {
-  display: flex;
-  flex-direction: column;
   background-color: functions.color("surface", "0");
   color: functions.color("text", "normal");
   overflow-wrap: break-word;
@@ -13,19 +11,26 @@ body {
   @include mixins.font($family: "body", $weight: "regular", $size: "base");
 }
 
-#page-content {
-  flex-grow: 1;
-  padding-block-start: functions.clamped(functions.get($tokens, "size", "spacing", "2"), functions.get($tokens, "size", "spacing", "10"));
-  padding-block-end: functions.clamped(functions.get($tokens, "size", "spacing", "8"), functions.get($tokens, "size", "spacing", "12"));
-}
-
 :is(code, kbd) {
   @include mixins.font($family: "mono", $weight: "regular");
-
+  
   :is(strong, h1, h2, h3, h4, h5, h6) & {
     @include mixins.font($family: "mono", $weight: "bold");
   }
 }
+
+code:not([class^="language-"]), kbd {
+  color: functions.color("text", "emphasis");
+  background-color: light-dark(#{functions.color("surface", "1")}, #{functions.color("surface", "2")});
+  border-radius: functions.size("spacing", "-3");
+  padding: functions.size("relative", "-4") functions.size("relative", "-3");
+}
+
+kbd {
+  outline: solid 1px functions.color("surface", "3");
+  box-shadow: 0 1px 1px 0 functions.color("border", "0");
+}
+
 
 a {
   color: inherit;

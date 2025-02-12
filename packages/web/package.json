@@ -45,8 +45,8 @@
     "sass": "1.69.5",
     "slugify": "1.5.3",
     "stringify-attributes": "4.0.0",
-    "stylelint": "14.7.1",
-    "stylelint-config-standard-scss": "3.0.0",
+    "stylelint": "16.14.1",
+    "stylelint-config-standard-scss": "14.0.0",
     "zod": "3.24.1",
     "zod-validation-error": "3.4.0"
   },

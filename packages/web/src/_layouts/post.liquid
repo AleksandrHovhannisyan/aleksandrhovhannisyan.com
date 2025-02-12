@@ -9,7 +9,7 @@ eleventyComputed:
       crossorigin: true
 ---
 
-<article class="post prose rhythm">
+<article class="post rhythm">
   <header class="post-header">
     <p class="post-date"><span class="screen-reader-only">Published </span>{% include "date.liquid" date: page.date, dateFormat: "MMMM DD, YYYY" %}{% if lastUpdated %} &bull; Updated {% include "date.liquid" date: lastUpdated, dateFormat: "MMMM DD, YYYY" %}{% endif %}</p>
     <h1 class="post-title">{{ title }}</h1>

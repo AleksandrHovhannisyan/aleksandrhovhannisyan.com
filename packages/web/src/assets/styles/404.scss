@@ -1,26 +1,39 @@
 @use "./partials/functions";
 @use "./partials/mixins";
-@import "partials/tokens/size";
-@import "partials/global/reset";
-@import "partials/utils/stack";
-@import "partials/utils/gap";
-@import "partials/utils/fontSize";
 
-body {
-  @include mixins.font($family: "body", $weight: "regular");
+@layer reset, tokens, utils, global;
+
+@layer tokens {
+  @import "partials/tokens/size";
 }
 
-main {
-  display: grid;
-  place-content: center;
-  text-align: center;
-  text-wrap: balance;
-  gap: functions.size("spacing", "0");
-  height: 100%;
-  background-color: black;
-  padding: 0 functions.size("spacing", "2");
+@layer reset {
+  @import "partials/reset";
+}
 
-  * {
-    color: white;
+@layer utils {
+  @import "partials/utils/stack";
+  @import "partials/utils/gap";
+  @import "partials/utils/fontSize";
+}
+
+@layer global {
+  body {
+    @include mixins.font($family: "body", $weight: "regular");
   }
+  
+  main {
+    display: grid;
+    place-content: center;
+    text-align: center;
+    text-wrap: balance;
+    gap: functions.size("spacing", "0");
+    height: 100dvb;
+    background-color: black;
+    padding: 0 functions.size("spacing", "2");
+  
+    * {
+      color: white;
+    }
+  }    
 }

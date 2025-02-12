@@ -1,21 +1,38 @@
 ---
-title: Design System
-description: Design tokens for my website.
-layout: design
-permalink: /design/
+title: Colophon
+description: How I built this website.
+layout: colophon
+permalink: /colophon/
 eleventyExcludeFromCollections: true
-excludeFromSitemap: true
-noindex: true
+redirectFrom:
+  - /design/
 scripts:
   - type: module
     src: /assets/scripts/copyCode.js
 ---
 
-## Fonts
+{% include "toc.md" %}
+
+## Tech Stack
+
+- **Front end**
+  - **Static site generator**: [{{ eleventy.generator }}](11ty.dev)
+  - **Styling**: [Sass](https://sass-lang.com/) (it's not just for nesting!)
+  - **Content**: HTML, Markdown ([markdown-it](https://github.com/markdown-it/markdown-it)), and [Liquid](https://shopify.github.io/liquid/) templating
+  - **Interactivity**: JavaScript (minified and bundled with [esbuild](https://esbuild.github.io/))
+- **Back end**
+  - **Comments API**: [Cloudflare Workers](https://workers.cloudflare.com/), [GitHub API](https://docs.github.com/en/rest/issues), and [TypeScript](https://www.typescriptlang.org/)
+  - **Hosting**: [Cloudflare Pages](https://pages.cloudflare.com/) (free tier)
+  - **Domain**: [porkbun](https://porkbun.com/) ($11/year)
+- **Also**: My own two hands
+
+## Design System
+
+### Typography
 
 {% assign fontSizeSteps = "xs,sm,base,md,lg,xl,2xl,3xl,4xl,5xl" | split: "," %}
 
-### body (Source Sans)
+#### body
 
 <div class="scroll-x">
   <table>
@@ -37,7 +54,7 @@ scripts:
   </table>
 </div>
 
-### mono (Source Code)
+#### monospace
 
 <div class="scroll-x">
   <table>
@@ -59,12 +76,12 @@ scripts:
   </table>
 </div>
 
-## Colors
+### Colors
 
 {% assign backgroundColors = (0..9) %}
 {% assign foregroundColors = "text-normal,text-emphasis,text-soft" | split: "," %}
 
-### Background
+#### Background
 
 <div class="scroll-x">
   <table>
@@ -86,7 +103,7 @@ scripts:
   </table>
 </div>
 
-### Text
+#### Text
 
 <div class="scroll-x">
   <table>
@@ -108,20 +125,20 @@ scripts:
   </table>
 </div>
 
-## Components
+### Components
 
-### Post Previews
+#### Post Previews
 
 {% assign posts = collections.posts | limit: 2 %}
 {% include "postPreviews.liquid" posts: posts, titleLevel: 4 %}
 
-### Pill
+#### Pill
 
 <a href="#pill" class="pill" data-shape="round">regular</a>
 
 <a href="#pill" class="pill" data-shape="round" data-size="sm">small</a>
 
-### Pill Group
+#### Pill Group
 
 <div class="pill-group">
   {%- for i in (1..4) -%}
@@ -129,17 +146,17 @@ scripts:
   {%- endfor -%}
 </div>
 
-### Button
+#### Button
 
 <button class="button primary" type="button">Primary</button>
 
 <button class="button secondary" type="button">Secondary</button>
 
-### Inline Code
+#### Inline Code
 
 This is a `paragraph` with some inline `code`.
 
-### Table
+#### Table
 
 <div class="scroll-x">
   <table>
@@ -178,9 +195,9 @@ This is a `paragraph` with some inline `code`.
   </table>
 </div>
 
-### Code Block
+#### Code Block
 
-#### Plaintext
+##### Plaintext
 
 ```
 This is plaintext
@@ -196,7 +213,7 @@ This is copyable plaintext
 with multiple lines
 ```
 
-#### JavaScript
+##### JavaScript
 
 ```js {data-file="path/to/some/file.js" data-copyable="true"}
 const getEvenNumbers = (array) => {
@@ -206,7 +223,7 @@ const getEvenNumbers = (array) => {
 console.log(getEvenNumbers([1, 2, 3]));
 ```
 
-#### CSS
+##### CSS
 
 ```css {data-file="path/to/some/file.css" data-copyable="true"}
 .navbar-link {
@@ -219,7 +236,7 @@ console.log(getEvenNumbers([1, 2, 3]));
 }
 ```
 
-#### Liquid
+##### Liquid
 
 {% raw %}
 ```liquid {data-file="path/to/some/file.liquid" data-copyable="true"}
@@ -229,7 +246,7 @@ console.log(getEvenNumbers([1, 2, 3]));
 ```
 {% endraw %}
 
-#### Markdown
+##### Markdown
 
 ```md {data-file="path/to/some/file.md" data-copyable="true"}
 **This** is [Markdown](https://en.wikipedia.org/wiki/Markdown)
@@ -239,7 +256,7 @@ console.log(getEvenNumbers([1, 2, 3]));
 some *italicized text*
 ```
 
-#### HTML
+##### HTML
 
 ```html {data-file="path/to/some/file.html" data-copyable="true"}
 <div class="foo">
@@ -258,14 +275,14 @@ some *italicized text*
 ></button>
 ```
 
-### Card
+#### Card
 
 <div class="card stack gap-0">
   <h3>Sample h3 title</h3>
   Vivamus pellentesque tellus nisi, id cursus libero scelerisque at. Curabitur pellentesque erat at erat congue, vitae maximus lorem vehicula. Aliquam mollis eros sem, eget commodo dolor dictum at.
 </div>
 
-### Aside
+#### Aside
 
 {% aside %}
   Cras eu aliquet est. Cras tempor ex ut sagittis pharetra. In semper ac nunc id faucibus. Praesent vitae nunc facilisis, porttitor nisi sed, blandit massa. Duis hendrerit lectus quam, ac lobortis lectus euismod et.
@@ -273,13 +290,13 @@ some *italicized text*
   In cursus tellus ex, a rhoncus erat bibendum sit amet. Proin sollicitudin pharetra nulla quis dignissim. Phasellus et nibh felis.
 {% endaside %}
 
-### Definition
+#### Definition
 
 {% definition "Term" %}
 Definition of the term goes here.
 {% enddefinition %}
 
-### Quote
+#### Quote
 
 {% quote "Source of the Quote", "https://www.lipsum.com/feed/html" %}
   Sed libero libero, cursus ut lacus at, luctus molestie augue. Nulla vehicula elementum est. Donec tincidunt est sit amet augue sodales auctor. Quisque tincidunt vestibulum lorem sed commodo. Praesent dictum vestibulum cursus. Nullam massa neque, molestie a eleifend at, iaculis et urna. Cras suscipit nibh at risus sollicitudin pretium. Praesent eget sem vitae ante mollis elementum. Nullam sollicitudin est in nisi porttitor, nec suscipit nunc pharetra.
@@ -287,7 +304,7 @@ Definition of the term goes here.
   Duis ultrices nunc in finibus pharetra. Nullam ornare ex sit amet diam interdum porta. Sed non libero vel est auctor suscipit quis eget mi. Phasellus vestibulum neque id luctus imperdiet.
 {% endquote %}
 
-### Vertical Rhythm (`.rhythm`)
+#### Vertical Rhythm (`.rhythm`)
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et posuere sem. Vestibulum nisl arcu, tempus quis ultrices tincidunt, vehicula sit amet turpis. Integer porttitor faucibus massa. In nec quam at odio egestas maximus non ac elit. In sed euismod urna. Phasellus vehicula mollis urna sit amet vulputate. Sed pulvinar semper ornare. Nam lacinia gravida eros in tempor. Ut fermentum, ipsum sed consequat molestie, dolor diam posuere odio, et fringilla est eros ac massa.
 
@@ -295,9 +312,9 @@ Nullam volutpat finibus felis, vel ornare leo gravida ut. In eu aliquam metus, s
 
 Aliquam erat volutpat. Sed velit ex, consectetur vel elementum ac, vulputate id lacus. In ipsum nulla, vestibulum ut consequat nec, iaculis at est. Duis lorem lorem, tempor at eros dignissim, interdum congue mauris. In ullamcorper auctor sapien, eu gravida purus imperdiet et. Phasellus nec ante id leo viverra consequat. Suspendisse augue dui, viverra id finibus sit amet, molestie vitae elit. Nam porta nibh cursus, iaculis orci ut, accumsan sem. Integer eget sem vestibulum, sollicitudin nulla efficitur, varius augue. Nullam libero nulla, congue vitae lectus sit amet, maximus ultrices mauris. Cras efficitur eros id mi vehicula facilisis. Donec et venenatis diam. Nullam elit eros, posuere ut volutpat sed.
 
-### Lists (with nesting)
+#### Lists (with nesting)
 
-#### Unordered List
+##### Unordered List
 
 <ul>
   <li>Lorem ipsum dolor sit amet consectetur
@@ -317,7 +334,7 @@ Aliquam erat volutpat. Sed velit ex, consectetur vel elementum ac, vulputate id 
   <li>Lorem ipsum dolor sit amet consectetur</li>
 </ul>
 
-#### Ordered List
+##### Ordered List
 
 <ol>
   <li>Lorem ipsum dolor sit amet consectetur
@@ -337,11 +354,11 @@ Aliquam erat volutpat. Sed velit ex, consectetur vel elementum ac, vulputate id 
   <li>Lorem ipsum dolor sit amet consectetur</li>
 </ol>
 
-### Image
+#### Image
 
 ![A multi-color parrot tilts its head towards the camera and glances playfully at the viewer.](https://images.unsplash.com/photo-1543631936-4019112aee78?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)
 
-### Figure with Caption
+#### Figure with Caption
 
 <figure>
   <img src="https://images.unsplash.com/photo-1543631936-4019112aee78?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="A multi-color parrot tilts its head towards the camera and glances playfully at the viewer." sizes="100vw" />

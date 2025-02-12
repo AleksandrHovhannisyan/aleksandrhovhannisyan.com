@@ -111,7 +111,7 @@
   }
 
   /* Non-plaintext code blocks with >= 10 lines should get line numbering */
-  code:not(.language-plaintext):has(.line:nth-child(10)) {
+  &:not([data-language="text"], [data-language="plaintext"]) code:has(.line:nth-child(10)) {
     --size-code-line-number-offset: 4ch;
     padding-inline-start: calc(var(--size-code-padding) + var(--size-code-line-number-offset));
 
@@ -132,7 +132,7 @@
     }
   }
 
-  code:not(.language-text):has(.line:nth-child(100)) {
+  code:has(.line:nth-child(100)) {
     --size-code-line-number-offset: 5ch;
   }
 

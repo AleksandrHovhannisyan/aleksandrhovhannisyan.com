@@ -1,0 +1,75 @@
+@use "../functions";
+@use "../mixins";
+
+.dialog-close {
+  position: absolute;
+  margin-inline-start: auto;
+}
+
+.dialog-open,
+.dialog-close {
+  --color-surface-dialog-button: inherit;
+  background-color: var(--color-surface-dialog-button);
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: functions.size("relative", "-2");
+  
+  &:is(:focus-visible, :hover) {
+    --color-surface-dialog-button: #{light-dark(functions.color("surface", "1"), functions.color("surface", "2"))};
+  }
+}
+
+.dialog {
+  --color-surface-dialog: #{light-dark(functions.color("surface", "0"), functions.color("surface", "1"))};
+  margin: 0;
+  border: none;
+  padding: functions.size("spacing", "11") functions.size("spacing", "2");
+  text-wrap: nowrap;
+  background-color: var(--color-surface-dialog);
+  scrollbar-width: thin;
+
+  &[open] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+  }
+
+  a {
+    display: flex;
+  }
+
+  &::backdrop {
+    pointer-events: none; /* so that outside-clicks are detected correctly */
+    background-color: hsl(0deg 0% 0% / 60%);
+    backdrop-filter: blur(4px);
+  }
+}
+
+.dialog:is(.left, .right) {
+  min-block-size: 100dvb;
+  min-inline-size: min(calc(240rem / 16), 100%);
+}
+
+.dialog.left {
+  .dialog-close {
+    inset-block-start: functions.size("spacing", "0");
+    inset-inline-start: functions.size("spacing", "0");
+  }
+}
+
+.dialog.right {
+  inset-inline-start: 100%;
+  transform: translateX(-100%);
+
+  .dialog-close {
+    inset-block-start: functions.size("spacing", "0");
+    inset-inline-end: functions.size("spacing", "0");
+  }
+}

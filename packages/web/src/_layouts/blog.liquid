@@ -1,9 +1,8 @@
 ---
 layout: default
-isBlogPage: true
 ---
 
-<article class="stack blog-page">
+<article class="rhythm">
   {%- assign pageTag = tag.title | default: 'all' -%}
   <header class="hero stack gap--2">
     <h1 class="hero-title">{%- if pageTag == 'all' -%}Blog{%- else -%}Tag: {{ pageTag }}{%- endif -%}</h1>

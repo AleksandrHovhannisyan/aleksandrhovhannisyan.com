@@ -1,4 +1,4 @@
-@use "../functions";
+@use "./functions";
 
 * {
   box-sizing: border-box;
@@ -16,7 +16,11 @@
 }
 
 :where(html, body) {
-  height: 100%;
+  min-block-size: 100%;
+}
+
+body:has(dialog[open]) {
+  overflow-y: hidden;
 }
 
 :where(input, select, textarea, button) {

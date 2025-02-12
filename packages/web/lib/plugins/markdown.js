@@ -150,6 +150,7 @@ export function makeMarkdownParser() {
       itemClass: 'toc-item',
       linkClass: 'toc-link',
       listType: 'ol',
+      level: [1, 2, 3],
     })
     .use(markdownItClass, {
       blockquote: 'rhythm',

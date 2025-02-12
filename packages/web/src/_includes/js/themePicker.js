@@ -14,20 +14,21 @@
 
   // Run this only after DOM parsing so we can grab refs to elements. Putting this code here so it's co-located with the above logic.
   document.addEventListener('DOMContentLoaded', () => {
-    const themePicker = document.getElementById('theme-picker');
-    if (!themePicker) return;
+    /** @type {NodeListOf<HTMLFormElement>} */
+    const themePickers = document.querySelectorAll('form.theme-picker');
 
-    const systemThemeInput = themePicker.querySelector('input[checked]');
-    // Sync picker's selected state to reflect initial theme
-    if (cachedTheme && cachedTheme !== systemThemeInput.value) {
-      systemThemeInput.removeAttribute('checked');
-      themePicker.querySelector(`input[value="${cachedTheme}"]`).setAttribute('checked', '');
+    /**
+     * @param {HTMLFormElement} themePickerForm
+     * @param {string} theme
+     */
+    function setTheme(themePickerForm, theme) {
+      themePickerForm[THEME_STORAGE_KEY].value = theme;
     }
 
-    // Listen for change to sync localStorage and data- attribute
-    themePicker.addEventListener('change', (e) => {
+    /** @param {Event} e */
+    function handleChange(e) {
       const theme = e.target.value;
-      if (theme === systemThemeInput.value) {
+      if (theme === 'auto') {
         // Remove JS-set theme so the CSS :not([data-theme]) selectors kick in
         delete THEME_OWNER.dataset[THEME_STORAGE_KEY];
         localStorage.removeItem(THEME_STORAGE_KEY);
@@ -35,6 +36,18 @@
         THEME_OWNER.dataset[THEME_STORAGE_KEY] = theme;
         localStorage.setItem(THEME_STORAGE_KEY, theme);
       }
+      // Update the other pickers
+      themePickers.forEach((picker) => {
+        if (picker !== e.currentTarget) {
+          setTheme(picker, theme);
+        }
+      });
+    }
+
+    // Subscribe to changes and re-sync all pickers
+    themePickers.forEach((themePicker) => {
+      setTheme(themePicker, cachedTheme);
+      themePicker.addEventListener('change', handleChange);
     });
   });
 })();

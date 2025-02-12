@@ -1,0 +1,63 @@
+{%- capture nav -%}
+<div class="rhythm">
+  <nav aria-label="Primary" class="rhythm">
+    <ul class="rhythm">
+      <li>
+        <span class="label">Personal</span>
+        <ul class="links">
+          <li>{% include "navigation/navLink.liquid", href: "/about/", label: "About me" %}</li>
+          <li>{% include "navigation/navLink.liquid", href: "/resume.pdf", label: "Résumé" %}</li>
+        </ul>
+      </li>
+      <li>
+        <span class="label">Writing</span>
+        <ul class="links">
+          <li>{% include "navigation/navLink.liquid", href: "/blog/", label: "Blog" %}</li>
+          <li>{% include "navigation/navLink.liquid", href: "/notes/", label: "Notes" %}</li>
+          <li>{% include "navigation/navLink.liquid", href: "/tags/", label: "Tags" %}</li>
+        </ul>
+      </li>
+      <li>
+        <span class="label">Other</span>
+        <ul class="links">
+          <li>{% include "navigation/navLink.liquid", href: "/art/", label: "CSS art" %}</li>
+          <li>{% include "navigation/navLink.liquid", href: "/feed.xml", label: "RSS feed" %}</li>
+          <li>{% include "navigation/navLink.liquid", href: "/colophon/", label: "Colophon" %}</li>
+        </ul>
+      </li>
+      <li>
+        <span class="label">Socials</span>
+        <ul class="links">
+          <li>{% include "navigation/navLink.liquid", href: socials.bluesky.url, label: "Bluesky" %}</li>
+          <li>{% include "navigation/navLink.liquid", href: socials.codepen.url, label: "Codepen" %}</li>
+          <li>{% include "navigation/navLink.liquid", href: socials.github.url, label: "GitHub" %}</li>
+          <li>{% include "navigation/navLink.liquid", href: socials.linkedin.url, label: "LinkedIn" %}</li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  {% if isThemed %}
+  {% include "themePicker.html" %}
+  {% endif %}
+</div>
+{%- endcapture -%}
+<header class="nav relative">
+  <a href="#main-content" class="outline-offset absolute screen-reader-only">Skip to main content</a>
+  <div class="nav-layout rhythm">
+    <a href="/" class="outline-offset"{% if permalink == "/" %} aria-current="page"{% endif %}>
+      <img eleventy:ignore src="/assets/images/favicons/favicon-128.png" class="circle" alt="" width="28" height="28" />
+      <span>Home</span>
+    </a>
+    <button class="dialog-open circle" aria-label="Open menu" aria-controls="nav-mobile" aria-expanded="false">
+      {% include "icon.liquid", icon: "menu", width: 32, height: 32 %}
+    </button>
+    <dialog class="dialog right rhythm" id="nav-mobile" aria-labelledby="nav-mobile-title">
+      <h2 id="nav-mobile-title" class="screen-reader-only">Menu</h2>
+      <button class="dialog-close circle" aria-label="Close menu" aria-controls="nav-mobile">
+        {% include "icon.liquid", icon: "x", width: 32, height: 32 %}
+      </button>
+      <div class="dialog-content">{{ nav }}</div>
+    </dialog>
+    <div class="nav-desktop rhythm">{{ nav }}</div>
+  </div>
+</header>

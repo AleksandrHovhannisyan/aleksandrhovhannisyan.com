@@ -44,12 +44,6 @@
     @include mixins.font($size: "sm");
   }
 
-  &-tag {
-    &:is(:focus-visible, :hover) {
-      text-decoration: none;
-    }
-  }
-
   @include mixins.tablet-sm {
     &-date {
       @include mixins.font($size: "xs");

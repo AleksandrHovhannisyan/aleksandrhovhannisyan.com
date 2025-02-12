@@ -17,11 +17,13 @@
         {%- for network in networks -%}
         {%- assign id = network | first -%}
         {%- assign data = network | last -%}
+        {%- unless data.showInFooter == false -%}
         <li>
           <a href="{{ data.url }}" target="_blank" rel="noreferrer noopener" class="outline-offset">
             {{ data.name }}
           </a>
         </li>
+        {%- endunless -%}
         {%- endfor -%}
         <li>
           <a href="/feed.xml" class="outline-offset">
@@ -29,9 +31,6 @@
           </a>
         </li>
       </ul>
-      {% if isThemed %}
-        {% include "themePicker.html" %}
-      {% endif %}
     </div>
   </div>
 </footer>

@@ -10,5 +10,14 @@
   "linkedin": {
     "name": "LinkedIn",
     "url": "https://www.linkedin.com/in/aleksandrhovhannisyan/"
+  },
+  "bluesky": {
+    "name": "Bluesky",
+    "url": "https://bsky.app/profile/aleksandrhovhannisyan.com"
+  },
+  "donate": {
+    "name": "Buy Me a Coffee",
+    "showInFooter": false,
+    "url": "https://buymeacoffee.com/hovhadovah"
   }
 }
