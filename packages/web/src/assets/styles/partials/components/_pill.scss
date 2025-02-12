@@ -10,7 +10,7 @@
 .pill {
   text-decoration: none;
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   background-color: functions.color("surface", "2");
   color: functions.color("text", "emphasis");
   padding: functions.size("spacing", "-3") functions.size("spacing", "0");
@@ -36,7 +36,7 @@ a.pill {
   --outline-color: var(--color-focus-bg);
   --outline-offset: var(--outline-thickness);
 
-  &:is(:focus, :hover, [aria-current="page"]) {
+  &:is(:focus-visible, :hover, [aria-current="page"]) {
     background-color: var(--color-focus-bg);
     color: functions.color("text", "inverted");
   }

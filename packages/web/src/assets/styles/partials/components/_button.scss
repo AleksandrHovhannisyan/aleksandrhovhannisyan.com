@@ -17,7 +17,7 @@
   --color-bg-button: #{functions.color("surface", "0")};
   border-color: var(--color-fg-button);
 
-  &:is(:focus, :hover) {
+  &:is(:focus-visible, :hover) {
     --color-bg-button: #{functions.color("text", "normal")};
     --color-fg-button: #{functions.color("text", "inverted")};
     border-color: var(--color-bg-button);
@@ -29,7 +29,7 @@
   --color-fg-button: #{functions.color("text", "inverted")};
   border-color: var(--color-bg-button);
 
-  &:is(:focus, :hover) {
+  &:is(:focus-visible, :hover) {
     --color-bg-button: #{functions.color("surface", "8")};
   }
 }

@@ -43,10 +43,6 @@
     box-shadow: 2px var(--size-shadow-height) 5px rgb(0 0 0 / 40%);
   }
 
-  a {
-    outline: none;
-  }
-
   .title {
     @include mixins.font($size: "lg");
 

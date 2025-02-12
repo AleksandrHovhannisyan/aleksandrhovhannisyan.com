@@ -1,5 +1,5 @@
-<footer class="page-footer size-font-sm" data-theme="dark">
-  <div class="page-footer-container container">
+<footer class="size-font-sm" data-theme="dark">
+  <div class="container">
     <div class="stack gap--1">
       <h2 class="size-font-xl">Thanks for reading!</h2>
       <p>&copy; {{ site.author.name }}, 2019–Present</p>
@@ -7,24 +7,21 @@
       <a
         href="https://www.github.com/{{ site.repo.owner }}/{{ site.repo.name }}/commit/{{ buildInfo.hash }}"
         rel="noreferrer noopener"
-        target="_blank">Last built</a> on
-      <time datetime="{{ buildInfo.time.raw }}">{{ buildInfo.time.formatted }}</time>&nbsp;
+        target="_blank">Last built</a> on <time datetime="{{ buildInfo.time.raw }}">{{ buildInfo.time.formatted }}</time>
       </p>
     </div>
-    <div class="stack gap--1 page-footer-end">
+    <div class="end stack gap--1">
       <p>Enjoy my content? Consider <a class="outline-offset" href="https://buymeacoffee.com/hovhadovah">donating</a>.</p>
-      <ul class="page-footer-socials">
+      <ul class="links">
         {%- assign networks = socials | entries -%}
         {%- for network in networks -%}
         {%- assign id = network | first -%}
-        {%- if id != "twitter" -%}
         {%- assign data = network | last -%}
         <li>
           <a href="{{ data.url }}" target="_blank" rel="noreferrer noopener" class="outline-offset">
             {{ data.name }}
           </a>
         </li>
-        {%- endif -%}
         {%- endfor -%}
         <li>
           <a href="/feed.xml" class="outline-offset">

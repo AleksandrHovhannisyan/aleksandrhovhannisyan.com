@@ -1,14 +1,14 @@
 @use "../functions";
 @use "../mixins";
 
-.page-footer {
+body > footer {
   background-color: functions.color("surface", "1");
   color: functions.color("text", "emphasis");
   text-align: center;
+  text-wrap: balance;
   padding-block: functions.size("spacing", "5");
-  accent-color: currentcolor;
 
-  &-container {
+  .container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,11 +16,11 @@
     gap: functions.size("spacing", "-1");
   }
 
-  &-end {
+  .end {
     align-items: center;
   }
 
-  &-socials {
+  .links {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -34,18 +34,14 @@
   @include mixins.tablet-sm {
     text-align: start;
 
-    &-container {
+    .container {
       align-items: end;
       flex-direction: row;
       justify-content: space-between;
     }
 
-    &-end {
+    .end {
       align-items: end;
     }
-  }
-
-  h2 {
-    color: inherit;
   }
 }

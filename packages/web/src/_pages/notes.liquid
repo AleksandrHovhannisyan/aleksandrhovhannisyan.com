@@ -18,7 +18,9 @@ openGraph:
             {% for note in notes %}
               <li class="note">
                 <article>
-                  <h3 class="post-preview-title"><a class="card-link no-underline" href="{{ note.url }}">{{ note.data.title }}</a></h3>
+                  <h3 class="post-preview-title">
+                    <a class="card-link" href="{{ note.url }}">{{ note.data.title }}</a>
+                  </h3>
                   <p class="post-preview-description">{{ note.data.description }}</p>
                 </article>
               </li>

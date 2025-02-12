@@ -1,11 +1,11 @@
-<header class="navbar">
+<header>
   <div class="container">
     <nav aria-label="Primary">
-      <a href="#page-content" class="screen-reader-only skip-navigation">Skip to content</a>
-      <ul class="navbar-links">
+      <a href="#page-content" class="screen-reader-only">Skip to content</a>
+      <ul class="links">
         <li>
-          <a class="navbar-link-home" href="/" {% if permalink == "/" %}aria-current="page"{% endif %}>
-            <img eleventy:ignore src="/assets/images/favicons/favicon-128.png" class="navbar-logo circle" alt="" width="28" height="28">
+          <a href="/" {% if permalink == "/" %}aria-current="page"{% endif %}>
+            <img eleventy:ignore src="/assets/images/favicons/favicon-128.png" class="logo circle" alt="" width="28" height="28">
             <span class="site-name">Aleksandr Hovhannisyan</span>
           </a>
         </li>
@@ -15,7 +15,6 @@
           {%- assign href = link | downcase | prepend: "/" | append: "/" -%}
           <a
             href="{{ href }}"
-            class="navbar-link"
             {% if permalink == href -%}
             aria-current="page"
             {%- endif -%}

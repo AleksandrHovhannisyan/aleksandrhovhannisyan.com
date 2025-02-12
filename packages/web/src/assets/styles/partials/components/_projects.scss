@@ -33,20 +33,6 @@
     }
   }
 
-  &-link {
-    text-decoration: none;
-    outline: none;
-
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-    }
-  }
-
   &-description {
     margin-top: functions.size("spacing", "-2");
     @include mixins.font($size: "base");

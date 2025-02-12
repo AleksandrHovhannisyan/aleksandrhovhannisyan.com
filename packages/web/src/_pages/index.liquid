@@ -12,12 +12,12 @@ permalink: /
       {% hashArt buildInfo.hash %}
     </figure>
   </section>
-  <section class="stack gap-0">
+  <section class="rhythm">
     <h2 id="recent-posts">Recent Posts</h2>
     {%- assign recentPosts = collections.posts | limit: 6 -%}
     {%- include "postPreviews.liquid" posts: recentPosts, titleLevel: 3 -%}
   </section>
-  <section class="stack gap-0">
+  <section class="rhythm">
     <h2 id="featured-posts">Featured Posts</h2>
     {%- assign featuredPosts = collections.posts | where: "data.isFeatured", true -%}
     {%- include "postPreviews.liquid" posts: featuredPosts, titleLevel: 3 -%}
