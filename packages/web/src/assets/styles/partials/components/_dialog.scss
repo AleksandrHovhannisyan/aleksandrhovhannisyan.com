@@ -1,13 +1,12 @@
 @use "../functions";
 @use "../mixins";
 
-.dialog-close {
+[data-dialog-action="hide"] {
   position: absolute;
   margin-inline-start: auto;
 }
 
-.dialog-open,
-.dialog-close {
+[data-dialog-action] {
   --color-surface-dialog-button: inherit;
   background-color: var(--color-surface-dialog-button);
   display: flex;
@@ -58,7 +57,7 @@
 }
 
 .dialog.left {
-  .dialog-close {
+  [data-dialog-action="hide"] {
     inset-block-start: functions.size("spacing", "0");
     inset-inline-start: functions.size("spacing", "0");
   }
@@ -68,7 +67,7 @@
   inset-inline-start: 100%;
   transform: translateX(-100%);
 
-  .dialog-close {
+  [data-dialog-action="hide"] {
     inset-block-start: functions.size("spacing", "0");
     inset-inline-end: functions.size("spacing", "0");
   }

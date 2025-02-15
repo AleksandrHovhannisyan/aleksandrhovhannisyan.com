@@ -36,7 +36,7 @@
     @include mixins.font($family: 'body', $weight: 'bold');
   }
 
-  .dialog-open {
+  [data-dialog-action="show"] {
     margin-inline-start: auto;
   }
 }
@@ -78,7 +78,7 @@
     padding: 0 functions.size('spacing', '0');
     @include mixins.font($size: 'sm');
 
-    .dialog-open {
+    [data-dialog-action="show"] {
       display: none;
     }
 
