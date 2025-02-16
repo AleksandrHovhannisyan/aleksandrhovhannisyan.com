@@ -86,11 +86,6 @@
       text-decoration-line: underline;
     }
 
-    a[href="/"] {
-      flex-direction: column;
-      align-items: start;
-    }
-    
     :is(a, label) {
       display: block;
       color: functions.color('text', 'soft');
