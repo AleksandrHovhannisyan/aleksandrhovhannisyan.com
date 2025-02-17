@@ -3,7 +3,7 @@
   <article class="post-preview">
     <p class="post-preview-date"><span class="screen-reader-only">Published on </span>{% include "date.liquid" date: post.date, dateFormat: "MMMM DD, YYYY" %}</p>
     <h{{ titleLevel }} class="post-preview-title">
-      <a class="post-preview-link to-underline" href="{{ post.url }}">{{ post.data.title }}</a>
+      <a class="post-preview-link" href="{{ post.url }}">{{ post.data.title }}</a>
     </h{{ titleLevel }}>
     <p class="post-preview-description">{{- post.data.description -}}</p>
     <ul class="post-preview-tags" aria-label="Tags">
