@@ -68,19 +68,17 @@
       @include mixins.font($size: "xs");
     }
 
-    &-tag:is(:hover, :focus-visible) {
-      color: inherit;
-    }
-
-    // On desktop, we don't want the link to cover the entire card, or it creates a somewhat annoying UX where hovering from one tag to another causes the card link underline to flicker on/off.
-    &-link {
+    a {
       text-decoration-line: underline;
       text-decoration-color: functions.color("surface", "6");
 
       &:is(:hover, :focus-visible) {
         text-decoration-color: inherit;
       }
+    }
 
+    // On desktop, we don't want the link to cover the entire card, or it creates a somewhat annoying UX where hovering from one tag to another causes the card link underline to flicker on/off.
+    &-link {
       &::after {
         content: none;
       }

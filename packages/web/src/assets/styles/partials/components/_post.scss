@@ -32,6 +32,10 @@
   &-tag {
     color: functions.color("text", "soft");
 
+    &:is(:hover, :focus-visible) {
+      color: functions.color("text", "emphasis");
+    }
+
     &::before {
       content: "#";
       user-select: none;

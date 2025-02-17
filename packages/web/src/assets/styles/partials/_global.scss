@@ -39,8 +39,9 @@ mark,
 
 a {
   color: inherit;
+  text-decoration-color: functions.color("accent", "0");
   text-underline-offset: 0.15em;
-  text-decoration-thickness: 0.07em;
+  text-decoration-thickness: 0.08em;
 }
 
 h1,
