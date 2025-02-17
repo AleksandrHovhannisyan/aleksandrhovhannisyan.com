@@ -126,8 +126,18 @@ function makeSyntaxHighlighter(markdownIt) {
   };
 }
 
-/** Configures and returns a markdown parser. */
-export function makeMarkdownParser() {
+/**
+ * @typedef MakeMarkdownParserOptions
+ * @property {boolean} [isTrustedInput] Whether the incoming source Markdown is safe/trusted. Defaults to `true` for my content. Set this to `false` for content from external sources (like user-submitted comments).
+ */
+
+/** Configures and returns a markdown parser.
+ * @param {MakeMarkdownParserOptions} [options]
+ */
+export function makeMarkdownParser(options) {
+  const { isTrustedInput } = options ?? {
+    isTrustedInput: true,
+  };
   const markdownParser = markdownIt({
     // Use of HTML tags in Markdown
     html: true,
@@ -171,6 +181,7 @@ export function makeMarkdownParser() {
     })
     .use(markdownItKatex, {
       strict: false,
+      trust: isTrustedInput,
       throwOnError: true,
     });
   markdownParser.options.highlight = makeSyntaxHighlighter(markdownParser);

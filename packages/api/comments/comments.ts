@@ -1,9 +1,11 @@
 import { Octokit } from '@octokit/rest';
 import { createTokenAuth } from '@octokit/auth-token';
 import { sanitizeHtml, getRelativeTimeString } from 'web/lib/utils.js';
-import { markdown } from 'web/lib/plugins/markdown.js';
+import { makeMarkdownParser } from 'web/lib/plugins/markdown.js';
 import site from 'web/src/_data/site.js';
 import type { PostComment } from 'web/lib/types.js';
+
+const markdown = makeMarkdownParser({ isTrustedInput: false });
 
 export default {
   /** Returns comments for a given post by ID. https://developers.cloudflare.com/workers/runtime-apis/handlers/

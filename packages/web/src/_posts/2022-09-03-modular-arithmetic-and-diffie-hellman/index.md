@@ -4,7 +4,7 @@ description: Using the properties of congruence modulo, Alice and Bob can genera
 keywords: [diffie hellman, congruence modulo, key exchange]
 categories: [cryptography, security, math]
 layout: mathPost
-lastUpdated: 2022-12-01
+lastUpdated: 2025-02-16
 isFeatured: true
 ---
 
@@ -49,7 +49,7 @@ Modular arithmetic also works with negative integers:
 - $-5 \bmod 4 = 3$ because $-5 = -2(4) + 3$
 - etc.
 
-The modulo operation always has a finite range of $[0, b-1]$. In other words, if we divide any number by $b$, we're always going to get a result in the set $\{0, 1, 2, 3, ..., b - 1\}$. Once we evaluate $b \bmod b$, we wrap back around to zero. $(b + 1) \bmod b$ gets us back to $1$, and so on. In the examples above, our range is $\{0, 1, 2, 3\}$ because $b = 4$.
+The modulo operation always has a finite range of $[0, b-1]$. This means that if we divide any number by $b$, we're always going to get a result in the set $\{0, 1, 2, 3, ..., b - 1\}$. Once we evaluate $b \bmod b$, we wrap back around to zero. $(b + 1) \bmod b$ gets us back to $1$, and so on. In the examples above, our range is $\{0, 1, 2, 3\}$ because $b = 4$.
 
 #### Modulo as a One-Way Function
 
@@ -138,7 +138,7 @@ $$
 This leads us to an equivalent and very useful definition of congruence modulo:
 
 {% definition "Congruent modulo" %}
-Two integers $a$ and $b$ are congruent modulo $p$ if $p|a - b$. (Or, equivalently, if $p|b-a$ since we can factor out a $(-1)$ from both sides: $b - a = (q_2 - q_1)p = q_3p$. In other words, $a \equiv b \pmod{p}$ is symmetric.)
+Two integers $a$ and $b$ are congruent modulo $p$ if $p|a - b$. (Or, equivalently, if $p|b-a$ since we can factor out a $(-1)$ from both sides: $b - a = (q_2 - q_1)p = q_3p$. That is, $a \equiv b \pmod{p}$ is symmetric.)
 {% enddefinition %}
 
 This fact may not seem all that exciting, but it makes it easier for us to prove several useful properties of congruence modulo that are essential to understanding the math in the Diffie-Hellman exchange. And that's precisely what we'll do in the next section.
@@ -244,7 +244,7 @@ Congruence modulo also has the following useful property:
 If $a \equiv b \pmod{p}$, then $a^n \equiv b^n \pmod{p}$.
 {% enddefinition %}
 
-In other words, this says that if two integers have the same remainder when divided by $p$, then they will still have the same remainder as each other when divided by $p$ if we raise both of them to the same power. (But the remainder need not be the same as before.)
+This says that if two integers have the same remainder when divided by $p$, then they will still have the same remainder as each other when divided by $p$ if we raise both of them to the same power. (But the remainder need not be the same as before.)
 
 Proof: We will use a [proof by weak induction](https://en.wikipedia.org/wiki/Mathematical_induction).
 
@@ -297,67 +297,68 @@ In public key exchange, Alice and Bob want to communicate private information wi
 
 ### Alice and Bob Go Public
 
-To do this, Alice and Bob are going to leverage modular arithmetic and their knowledge of congruence modulo. First, they agree on two numbers:
+To do this, $\htmlClass{alice}{\text{Alice}}$ and $\htmlClass{bob}{\text{Bob}}$ are going to leverage modular arithmetic and their knowledge of congruence modulo. First, they agree on two numbers:
 
 1. $g$, known as the *generator*, and
 2. $p$, a very large prime number, which we'll call the *prime modulus*.
 
-They share $g$ and $p$ publicly, so Eve also knows what they are. But as we're about to discover, this won't compromise the security of Alice and Bob's communication.
+They share $g$ and $p$ publicly, so Eve also knows what they are. But as we're about to discover, this won't compromise the security of $\htmlClass{alice}{\text{Alice}}$ and $\htmlClass{bob}{\text{Bob}}$'s communication.
 
 The key exchange proceeds as follows:
 
-1. Alice and Bob privately choose secret numbers $A$ and $B$, respectively. These are their private keys, and they will never share them with each other or anyone else.
-2. Alice computes $g^A \bmod p$ privately. Let's call this remainder $r_A$. Observe that [by congruence of a remainder](#congruence-of-remainder), $r_A ≡ g^A \pmod{p}$. Similarly, Bob computes $g^B \bmod p$ privately. Let's call this result $r_B$. Again, by congruence of a remainder, $r_B ≡ g^B \pmod{p}$. These two facts will be very important later. Refer back to the proof if you're unsure why these relations are true.
-3. Alice sends $r_A$ to Bob publicly, and Bob sends $r_B$ to Alice publicly. Eve can intercept both numbers, but she'll have a *very* difficult time working out what $A$ and $B$ were used, especially if Alice and Bob chose a large prime modulus $p$.
-4. Alice privately computes $(r_B)^A \bmod p$ to get another remainder, $r_k$. Bob privately computes $(r_A)^B \bmod p$ and somehow gets the same remainder, $r_k$. Here, $r_k$ is their shared private key.
-5. Now, Alice and Bob use this shared private key, $r_k$, to secure their communication. To arrive at the same key, Eve would need to know either $A$ or $B$, which were never shared publicly.
+1. $\htmlClass{alice}{\text{Alice}}$ and $\htmlClass{bob}{\text{Bob}}$ privately choose secret numbers $\htmlClass{alice}{A}$ and $\htmlClass{bob}{B}$, respectively. These are their private keys, and they will never share them with each other or anyone else.
+2. $\htmlClass{alice}{\text{Alice}}$ computes $\htmlClass{alice}{g^A \bmod p}$ privately. Let's call this remainder $\htmlClass{alice}{r_A}$. Observe that [by congruence of a remainder](#congruence-of-remainder), $r_A ≡ g^A \pmod{p}$. Similarly, $\htmlClass{bob}{\text{Bob}}$ computes $\htmlClass{bob}{g^B \bmod p}$ privately. Let's call this result $\htmlClass{bob}{r_B}$. Again, by congruence of a remainder, $r_B ≡ g^B \pmod{p}$. These two facts will be very important later. Refer back to the proof if you're unsure why these relations are true.
+3. $\htmlClass{alice}{\text{Alice}}$ sends $\htmlClass{alice}{r_A}$ to $\htmlClass{bob}{\text{Bob}}$ publicly, and $\htmlClass{bob}{\text{Bob}}$ sends $\htmlClass{bob}{r_B}$ to $\htmlClass{alice}{\text{Alice}}$ publicly. Eve can intercept both numbers, but she'll have a *very* difficult time working out what $\htmlClass{alice}{A}$ and $\htmlClass{bob}{B}$ were used, especially if $\htmlClass{alice}{\text{Alice}}$ and $\htmlClass{bob}{\text{Bob}}$ chose a sufficiently large prime modulus $p$.
+4. Now, $\htmlClass{alice}{\text{Alice}}$ privately computes $(\htmlClass{bob}{r_B})^{\htmlClass{alice}{A}} \bmod p$ to generate some remainder, let's call it $r_k$. Meanwhile, on his end, Bob privately computes $(\htmlClass{alice}{r_A})^{\htmlClass{bob}{B}} \bmod p$ and somehow arrives at the same remainder, $r_k$. Here, $r_k$ is their shared private key.
+
+When all is said and done, $\htmlClass{alice}{\text{Alice}}$ and $\htmlClass{bob}{\text{Bob}}$ are able to use this shared private key, $r_k$, to secure their communication, such as by using the key in another encryption algorithm. To arrive at the same key and decrypt their communication, Eve would need to know either $\htmlClass{alice}{A}$ or $\htmlClass{bob}{B}$, which were never shared publicly.
 
 But how is this possible?
 
 ### How Did Alice and Bob Get the Same Number?
 
-In step two, Alice calculated the remainder of dividing $g^A$ by $p$, which we defined to be $r_A$:
+In step two, $\htmlClass{alice}{\text{Alice}}$ calculated the remainder of dividing $g^A$ by $p$, denoted as $r_A$:
 
 $$
-r_A = g^A \bmod p
+\htmlClass{alice}{r_A = g^A \bmod p}
 $$
 
-And Bob calculated the remainder of dividing $g^B$ by $p$, which we defined to be $r_B$:
+And $\htmlClass{bob}{\text{Bob}}$ calculated the remainder of dividing $g^B$ by $p$, denoted as $r_B$:
 
 $$
-r_B = g^B \bmod p
+\htmlClass{bob}{r_B = g^B \bmod p}
 $$
 
 By [congruence of remainder](#congruence-of-remainder), we also concluded the following:
 
 $$
-r_A \equiv g^A \pmod{p} \\
-r_B \equiv g^B \pmod{p} \\
+\htmlClass{alice}{r_A \equiv g^A \pmod{p}} \\
+\htmlClass{bob}{r_B \equiv g^B \pmod{p}} \\
 $$
 
-In other words, $r_A$ and $g^A$ generate the same remainder when divided by the prime modulus, $p$. Likewise, $r_B$ and $g^B$ generate the same remainder when divided by $p$. This is a trivial fact that follows from the nature of modular arithmetic: remainders just wrap back around to themselves upon repeat division with the same modulus.
+In other words, $\htmlClass{alice}{r_A}$ and $\htmlClass{alice}{g^A}$ generate the same remainder when divided by the prime modulus, $p$. Likewise, $\htmlClass{bob}{r_B}$ and $\htmlClass{bob}{g^B}$ generate the same remainder when divided by $p$. This is a trivial fact that follows from the nature of modular arithmetic: remainders just wrap back around to themselves upon repeat division with the same modulus.
 
-Here is where the magic happens. Using [congruence of powers](#congruence-of-powers), we can keep these congruence relations intact and raise both sides to the same power, as Alice and Bob did in the final step:
+Here's where the magic happens. Using [congruence of powers](#congruence-of-powers), we can keep these congruence relations intact and raise both sides to the same power, as $\htmlClass{alice}{\text{Alice}}$ and $\htmlClass{bob}{\text{Bob}}$ did in the final step:
 
 $$
-(r_A)^B \equiv (g^A)^B \pmod{p} \\
-(r_B)^A \equiv (g^B)^A \pmod{p} \\
+\htmlClass{alice}{(r_B)^A \equiv (g^B)^A \pmod{p}} \\
+\htmlClass{bob}{(r_A)^B \equiv (g^A)^B \pmod{p}} \\
 $$
 
 Simplifying the right-hand side of each relation, we get:
 
 $$
-(r_A)^B \equiv g^{AB} \pmod{p} \\
-(r_B)^A \equiv g^{AB} \pmod{p} \\
+\htmlClass{alice}{(r_B)^A \equiv g^{AB} \pmod{p}} \\
+\htmlClass{bob}{(r_A)^B \equiv g^{AB} \pmod{p}} \\
 $$
 
-The right-hand side of each relation is the same. Per the transitive property of congruence modulo, this implies that:
+The right-hand side of each relation is the same. Per [the transitive property of congruence modulo](#transitive-property-of-congruence), this implies that:
 
 $$
-(r_A)^B \equiv (r_B)^A \pmod{p}
+(\htmlClass{alice}{r_A})^{\htmlClass{bob}{B}} \equiv (\htmlClass{bob}{r_B})^{\htmlClass{alice}{A}} \pmod{p}
 $$
 
-In other words, $(r_A)^B$ and $(r_B)^A$ generate the same remainder, $r_k$, when divided by $p$. So when Alice and Bob compute their remainders privately in the final step, they actually get the same value for $r_k$—just as if they had both shared their private keys $A$ and $B$ and then calculated $g^{AB} \bmod p$ publicly. But in reality, Alice doesn't know $B$, Bob doesn't know $A$, and Eve is completely stumped!
+That is, $(\htmlClass{alice}{r_A})^{\htmlClass{bob}{B}}$ and $(\htmlClass{bob}{r_B})^{\htmlClass{alice}{A}}$ generate the same remainder, $r_k$, when divided by $p$. So when $\htmlClass{alice}{\text{Alice}}$ and $\htmlClass{bob}{\text{Bob}}$ computed their remainders privately in the final step, they got the same value for $r_k$—just as if they had both shared their private keys $\htmlClass{alice}{A}$ and $\htmlClass{bob}{B}$ and then calculated $g^{AB} \bmod p$ publicly. But in reality, $\htmlClass{alice}{\text{Alice}}$ doesn't know $\htmlClass{bob}{\text{B}}$, $\htmlClass{bob}{\text{Bob}}$ doesn't know $\htmlClass{alice}{A}$, and Eve is completely stumped!
 
 ## Summary
 
@@ -370,3 +371,12 @@ Admittedly, that was a lot of math and theory just for a few paragraphs' worth o
 - [Proving the congruence power rule](https://math.stackexchange.com/questions/762010/proving-ab-a-bmod-nb-pmod-n-congruence-power-rule)
 - [Public key cryptography - Diffie-Hellman Key Exchange (full version)](https://www.youtube.com/watch?v=YEBfamv-_do&t=162s)
 - [Diffie Hellman -the Mathematics bit- Computerphile](https://www.youtube.com/watch?v=Yjrfm_oRO0w)
+
+<style>
+    .alice {
+        color: light-dark(hsl(0deg 100% 36.3%), hsl(330deg 100% 76%));
+    }
+    .bob {
+        color: light-dark(hsl(240deg 83% 36%), hsl(180deg 73% 65%));
+    }
+</style>
