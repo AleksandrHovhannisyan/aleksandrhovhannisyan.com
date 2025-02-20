@@ -12,18 +12,14 @@ export default function iconShortcode(props) {
     strokeLinecap = 'round',
     strokeLinejoin = 'round',
   } = props ?? {};
-  try {
-    return feather.icons[icon].toSvg({
-      class: className,
-      width,
-      height,
-      stroke,
-      fill,
-      'stroke-width': strokeWidth,
-      'stroke-linecap': strokeLinecap,
-      'stroke-linejoin': strokeLinejoin,
-    });
-  } catch (e) {
-    console.error(e);
-  }
+  return feather.icons[icon].toSvg({
+    class: className,
+    width,
+    height,
+    stroke,
+    fill,
+    'stroke-width': strokeWidth,
+    'stroke-linecap': strokeLinecap,
+    'stroke-linejoin': strokeLinejoin,
+  });
 }
