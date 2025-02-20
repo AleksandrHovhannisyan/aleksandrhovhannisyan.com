@@ -147,8 +147,8 @@
     opacity: 0.7;
   }
 
-  &::selection,
-  & *::selection {
+  code::selection,
+  code *::selection {
     text-shadow: none;
     color: unset;
     background: var(--color-code-selection);
