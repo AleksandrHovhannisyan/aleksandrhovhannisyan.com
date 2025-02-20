@@ -1,6 +1,39 @@
 @font-face {
-  font-family: mono-fallback;
-  src: local('Menlo'), local('Courier New');
+  font-family: mono-fallback-1;
+  font-weight: 400;
+  src: local('Menlo'), local('Menlo Regular');
+  size-adjust: 80%;
+}
+@font-face {
+  font-family: mono-fallback-1;
+  font-weight: 400;
+  font-style: italic;
+  src: local('Menlo Italic');
+  size-adjust: 80%;
+}
+@font-face {
+  font-family: mono-fallback-1;
+  font-weight: 700;
+  src: local('Menlo Bold');
+  size-adjust: 80%;
+}
+@font-face {
+  font-family: mono-fallback-2;
+  font-weight: 400;
+  src: local('Courier New'), local('Courier New Regular');
+  size-adjust: 80%;
+}
+@font-face {
+  font-family: mono-fallback-2;
+  font-weight: 400;
+  font-style: italic;
+  src: local('Courier New Italic');
+  size-adjust: 80%;
+}
+@font-face {
+  font-family: mono-fallback-2;
+  font-weight: 700;
+  src: local('Courier New Bold');
   size-adjust: 80%;
 }
 @font-face {
@@ -16,7 +49,7 @@
   descent-override: 26%;
 }
 html {
-  --font-family-mono: Source Code Pro, mono-fallback, monospace;
+  --font-family-mono: Source Code Pro, mono-fallback-1, mono-fallback-2, monospace;
   --font-weight-mono-regular: 400;
   --font-weight-mono-bold: 700;
 }

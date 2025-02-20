@@ -1,7 +1,16 @@
 @font-face {
   font-family: body-fallback-1;
   font-weight: 400;
-  src: local('Segoe UI');
+  src: local('Segoe UI'), local('Segoe UI Regular');
+  ascent-override: 108.8942%;
+  descent-override: 42.5368%;
+  size-adjust: 94.0362%;
+}
+@font-face {
+  font-family: body-fallback-1;
+  font-style: italic;
+  font-weight: 400;
+  src: local('Segoe UI Italic');
   ascent-override: 108.8942%;
   descent-override: 42.5368%;
   size-adjust: 94.0362%;
@@ -17,7 +26,16 @@
 @font-face {
   font-family: body-fallback-2;
   font-weight: 400;
-  src: local('Arial');
+  src: local('Arial'), local('Arial Regular');
+  ascent-override: 108.6538%;
+  descent-override: 42.4429%;
+  size-adjust: 94.2442%;
+}
+@font-face {
+  font-family: body-fallback-2;
+  font-weight: 400;
+  font-style: italic;
+  src: local('Arial Italic');
   ascent-override: 108.6538%;
   descent-override: 42.4429%;
   size-adjust: 94.2442%;
@@ -33,7 +51,16 @@
 @font-face {
   font-family: body-fallback-3;
   font-weight: 400;
-  src: local('Roboto Bold');
+  src: local('Roboto'), local('Roboto Regular');
+  ascent-override: 108.774%;
+  descent-override: 42.4899%;
+  size-adjust: 94.1401%;
+}
+@font-face {
+  font-family: body-fallback-3;
+  font-weight: 400;
+  font-style: italic;
+  src: local('Roboto Italic');
   ascent-override: 108.774%;
   descent-override: 42.4899%;
   size-adjust: 94.1401%;
@@ -49,7 +76,16 @@
 @font-face {
   font-family: body-fallback-4;
   font-weight: 400;
-  src: local('Ubuntu');
+  src: local('Ubuntu'), local('Ubuntu Regular');
+  ascent-override: 111.5077%;
+  descent-override: 43.5577%;
+  size-adjust: 91.8322%;
+}
+@font-face {
+  font-family: body-fallback-4;
+  font-weight: 400;
+  font-style: italic;
+  src: local('Ubuntu Italic');
   ascent-override: 111.5077%;
   descent-override: 43.5577%;
   size-adjust: 91.8322%;
