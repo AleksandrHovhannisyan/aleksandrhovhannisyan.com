@@ -4,7 +4,7 @@ description: In this deep dive, you'll learn about the Unicode character set and
 keywords: [character encoding, unicode, utf]
 categories: [computer-science, math, binary]
 thumbnail: ./images/thumbnail.png
-lastUpdated: 2025-02-22
+lastUpdated: 2025-02-25
 isFeatured: true
 commentsId: 191
 redirectFrom:
@@ -27,27 +27,32 @@ result = readFile(file, "utf-8")
 
 What does UTF-8 even mean?
 
-And finally, if you've ever written JavaScript, maybe you've noticed that `String.prototype.length` doesn't always return what you'd expect for code like this:
+And finally, if you've ever tried to measure the length of a string in a programming language like JavaScript or even C, maybe you've noticed an unexpected result:
 
-```js
-// This is 4... right?
-console.log('Hi 👋'.length)
+```js {data-file="string-length.js"}
+// Surely this is 4... right?
+console.log('Hi 👋'.length);
 ```
 
-In this article, you'll learn about character sets like ASCII and Unicode and how to encode and decode characters in UTF-8, both by hand and programmatically using a bit of math. By the end, you will hopefully be able to understand the examples above and much more.
+```c {data-file="string-length.c"}
+// What about this?
+printf("%lu", strlen("Hi 👋"));
+```
+
+In this deep dive, you'll learn about the Unicode character set and how to encode and decode characters in UTF-8, both by hand and programmatically using a bit of math. By the end of this article, you'll hopefully be able to understand the examples above and much more.
 
 {% include "toc.md" %}
 
 ## Prerequisites
 
-This article assumes almost no prior knowledge about character sets or encoding. Where possible, I will define new terms and concepts. For a more in-depth introduction to this topic, I strongly encourage you to also read Joel Spolsky's seminal article: [The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/).
+This article assumes almost no prior knowledge about character sets or encoding. Where possible, I will define new terms and concepts. For a more in-depth introduction to this topic, I strongly encourage you to also read Joel Spolsky's seminal article: [The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/). I've also included supplementary [references and further reading](#references-and-further-reading) at the end of this article.
 
 
 ## A Brief History of Character Encoding
 
-Human languages consist of characters: symbols with curves, loops, and other odd shapes that convey meaning. Within a language, these letters, numbers, punctuation, and other relevant symbols collectively form a <dfn>character set</dfn>. If you've learned more than one language, you've probably noticed that languages often borrow characters from each other. For example, many modern languages like English and German borrowed (and extended) character sets from older languages like Latin.
+Human languages consist of characters (<dfn>graphemes</dfn>): symbols with curves, loops, and other odd shapes that convey some sort of meaning. Within a language, these letters, numbers, punctuation, and symbols collectively form a <dfn>character set</dfn>. If you've learned more than one language, you may have noticed that languages sometimes share common characters. For example, many modern languages like English and German borrowed (and extended) characters from Latin.
 
-We've spent millennia inventing new languages and translating writing from one language to another, but it's only in the last century that we needed to _digitize_ writing so that computers could store text files. Computers can't store or work with "characters" directly: they are only able to represent numbers by flipping currents on or off. This is an oversimplification, but the point is that there's no direct physical equivalent of human characters in the world of computing. So to work around this limitation, what we do is substitute (<dfn>encode</dfn>) characters with integers—known as <dfn>code points</dfn>—that computers can easily store and manipulate. Thus, computers don't have to think about "characters" in the way that humans do. Table 1 lists a few characters and their assigned code points.
+We've spent millennia inventing new languages and translating writing from one language to another, but it's only in the last century that we needed to _digitize_ writing so that computers could store text files. Importantly, computers can't store or work with "characters" directly: they are only able to represent numbers by flipping currents on or off. This is an oversimplification, but the point is that there's no direct physical equivalent of human characters in the world of computing. So to work around this limitation, what we do is substitute (<dfn>encode</dfn>) characters with numbers—known as <dfn>code points</dfn>—that computers can easily store and manipulate. Thus, computers don't have to think about "characters" in the way that humans do. Table 1 lists a few characters and their assigned code points.
 
 <div class="scroll-x" role="region" tabindex="0">
   <table>
@@ -67,7 +72,6 @@ We've spent millennia inventing new languages and translating writing from one l
         <td class="numeric"><code>1000001</code></td>
         <td class="numeric"><code>65</code></td>
       </tr>
-      <tr>
       <tr>
         <td><code>€</code></td>
         <td class="numeric"><code>0x20AC</code></td>
@@ -94,11 +98,11 @@ A one-to-one encoding like this is reversible, so the core meaning of the text i
 
 ### Unicode
 
-Today, this mapping of characters to numbers is known as <dfn>the Unicode Standard</dfn> (or simply "Unicode"): the universal character set used by all modern software. Unicode assigns numbers to every single known character in the world, including control characters and [even emoji](https://apps.timwhitlock.info/emoji/tables/unicode). In fact, Table 1 from earlier showed a miniscule subset of Unicode characters and their code points.
+Today, this mapping of characters to numbers is known as <dfn>the Unicode Standard</dfn> (or simply "Unicode"): the universal character set used by all modern software. Unicode assigns code points (integers) to every single known character in the world, including control characters, ancient alphabets, modern alphabets, and even emoji. In fact, Table 1 from earlier showed a miniscule sampling of Unicode characters.
 
-The first draft of Unicode was finalized towards the end of 1990 (see [Chronology of Unicode Version 1.0](https://www.unicode.org/history/versionone.html)), and the standard has been maintained since then by the non-profit [Unicode Consortium](https://home.unicode.org/). As of [version 15.1](https://www.unicode.org/versions/Unicode15.1.0/), Unicode encompasses 149,813 code points; since it's so large, Unicode is divided into semantic chunks of closely related code points known as <dfn>Unicode blocks</dfn>.
+[The first draft of Unicode](https://www.unicode.org/history/versionone.html) was finalized towards the end of 1990, and the standard has been maintained since then by the non-profit [Unicode Consortium](https://home.unicode.org/). As of [version 16.0](https://www.unicode.org/versions/Unicode16.0.0/) (September 2024), Unicode has assigned 154,998 code points to characters. The vast majority of the remaining available code points in Unicode remain unassigned. Since it's so large, Unicode is divided into semantic chunks of closely related code points known as <dfn>Unicode blocks</dfn> and, more broadly, <dfn>[Unicode planes](https://www.compart.com/en/unicode/plane)</dfn> (such as the Basic Multilingual Plane (BMP)).
 
-By convention, Unicode code points are written in the hexadecimal number system; however, instead of the usual prefix of `0x`, Unicode code points use the special prefix `U+` so it's easier to differentiate them from ordinary hexadecimal numbers in technical documents. For example, the code point `0x1F642` from Table 1 would be written as `U+1F642` in Unicode.
+By convention, Unicode code points are written in the hexadecimal number system. However, instead of the usual hexadecimal prefix of `0x`, Unicode code points use the special prefix `U+` so it's easier to differentiate them from ordinary hexadecimal numbers in technical documents. For example, the code point `0x1F642` from Table 1 would be written as `U+1F642` in Unicode.
 
 #### UCS
 
@@ -116,7 +120,7 @@ In other words, UCS is just the bare bones character-to-number mapping portion o
 
 ### ASCII
 
-Going even further back, we'll find that we actually didn't _start_ with Unicode. In the 1960s, text documents on computers used a precursor character set known as <dfn>ASCII</dfn>, which is now just a tiny subset of Unicode (specifically, the [Basic Latin block](https://en.wikipedia.org/wiki/Basic_Latin_(Unicode_block))). ASCII consists of 128 code points and includes the English alphabet, Arabic numerals, punctuation, and common control characters (like line endings) used in digital text. Table 2 lists some examples of ASCII characters and their code points in hexadecimal, binary, and decimal:
+Going even further back, we'll find that we actually didn't _start_ with Unicode. In the 1960s, text documents on computers used a precursor character set known as <dfn>ASCII</dfn>, which is now just a tiny subset of Unicode—specifically, the [Basic Latin block](https://en.wikipedia.org/wiki/Basic_Latin_(Unicode_block)). ASCII assigns 128 code points to characters: the English alphabet, Arabic numerals, punctuation, and common control characters (like line endings) used in digital text. Table 2 lists some examples of ASCII characters and their code points in hexadecimal, binary, and decimal:
 
 <div class="scroll-x" role="region" tabindex="0">
   <table>
@@ -176,7 +180,7 @@ But this also meant that we could no longer assume each character was only eight
 
 ## Encoding Unicode
 
-Technically, this wasn't a problem with Unicode _itself_. At the end of the day, Unicode is just a massive character set, not a character encoding standard; it's only concerned with assigning numbers to human-readable characters. If we can represent a character numerically, then we can store that character in a computer's memory. Space is limitless: We can represent infinitely many code points with Unicode, and the standard is ever-expanding.
+Technically, this wasn't a problem with Unicode _itself_. At the end of the day, Unicode is just a massive character set, not a character encoding standard; it's only concerned with assigning numbers to human-readable characters. If we can represent a character numerically, then we can store that character in a computer's memory. In theory, we can represent infinitely many code points with Unicode, and the standard is ever-expanding.
 
 On the other hand, _how_ we choose to store those code points in memory is entirely up to us: We could represent them in binary and store those numbers as-is, or we could manipulate the bits with some sort of algorithm to create a more useful result. Either way, Unicode doesn't care how we store code points in memory; it just tells us _what_ those numbers are.
 
@@ -186,22 +190,28 @@ How do we do that?
 
 ### UCS-2 and UCS-4
 
-ISO 10646 defined two character encoding algorithms—UCS-2 and UCS-4—that aimed to solve this problem. These encodings increased the minimum number of bytes required to encode all characters in UCS/Unicode. So instead of using just one byte for ASCII and adding more bytes as needed for everything else, UCS-2 forced _all_ characters to be encoded with two bytes (16 bits), while UCS-4 required four bytes (32 bits). By analogy, this is sort of like raising the minimum wage: It sets a new baseline standard for everyone, across the board.
+ISO 10646 defined two character encoding algorithms—UCS-2 and UCS-4—that aimed to solve this problem. These encodings increased the minimum number of bytes required to encode all characters in UCS/Unicode. Instead of using just one byte for ASCII and adding more bytes as needed for everything else, UCS-2 forced _all_ characters to be encoded with two bytes (16 bits), while UCS-4 required four bytes (32 bits). By analogy, this is sort of like raising the minimum wage: It sets a new baseline standard for everyone, across the board.
 
-But there was a glaring flaw with this approach: Every single character had to be encoded with 16 or 32 bits for uniformity, which would've needlessly wasted memory. For example, if we had used UCS-4 to encode ASCII characters—which comprised the majority of text at the time—we would've needed three extra bytes, all zeroed out.
+But there was a glaring flaw with this approach: Every single character had to be encoded with 16 or 32 bits for uniformity, which would've needlessly wasted memory. For example, if we had used UCS-4 to encode ASCII characters—which comprised the majority of text at the time—we would've needed three extra bytes, all zeroed out, to conform with that standard.
 
-It didn't take long for Unicode to exceed `2^16 = 65,536` code points, meaning UCS-2 quickly became obsolete. Meanwhile, UCS-4 could still represent `2^32` characters—several orders of magnitude more than we might ever need. It's still around to this day, just under a different name. Although imperfect, these two encodings laid important groundwork for the creation of a better character encoding format for Unicode: UTF.
+It didn't take long for Unicode to exceed `2^16 = 65,536` code points, meaning UCS-2 quickly became obsolete. Meanwhile, UCS-4 could still represent `2^32` characters—several orders of magnitude more than we might ever need. It's still around to this day, just under a different name.
+
+Although imperfect, UCS-2 and UCS-4 laid important groundwork for the creation of a better character encoding format for Unicode: UTF.
 
 ### UTF
 
 The modern encoding scheme for Unicode is known as UTF, short for <dfn>[Unicode Transformation Format](https://en.wikipedia.org/wiki/Unicode#UTF)</dfn>. UTF builds on the lessons learned from UCS and encodes Unicode in a more clever way. It has three implementations: UTF-8, UTF-16, and UTF-32. The numbers in those names hint at how the algorithms work:
 
 - UTF-8 uses up to four 8-bit (byte) [code units](https://developer.mozilla.org/en-US/docs/Glossary/Code_unit),
-- UTF-16 uses one or two 16-bit code units, and 
+- UTF-16 uses one or two 16-bit code units, and
 - UTF-32 uses a single 32-bit code unit.
 
+A <dfn>code unit</dfn> is just a sequence of bits that form the most basic unit of information transfer in a given character encoding standard. For example, in UTF-8, each code unit is one byte long.
+
 {% aside %}
-At some point, you may have heard that one character fits within one byte in computer memory. But from what we've learned so far, you should recognize that this explanation is not only oversimplified but also flat out _wrong_. It's true that ASCII characters are encoded as bytes, but UTF-16, for example, does not use bytes: It uses 16-bit... well, what do we call those things? This is how the term "code unit" came to be. A <dfn>code unit</dfn> is just a contiguous chunk of bits that forms the basic unit of information in a character encoding standard. It may be a byte, or it may be bigger.
+At some point, you may have heard that one character fits within one byte in computer memory. But from what we've learned so far, you should recognize that this explanation is not only oversimplified but also flat out _wrong_. It's true that ASCII characters are encoded as bytes, but UTF-16, for example, does not use bytes: It uses 16-bit... well, what do we call those things? This is how the term "code unit" came to be.
+
+For example, while it's true that the `char` data type in C has a size of one byte, this doesn't mean that a single Unicode character can fit within a `char`. So "char" is a misnomer.
 {% endaside %}
 
 All three implementations are able to encode the entire Unicode character set; the only way they differ from each other is in the size of their code units and _how many_ of those code units they use.
@@ -214,12 +224,12 @@ UTF-8 and UTF-16 are known as <dfn>variable-width encoding schemes</dfn> since t
 4. And four bytes (32) for the final group: `xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx`.
 
 {% aside %}
-I'll reveal how Unicode is divided into groups for UTF-8 in [a future section](#utf-8-encoding-and-decoding-lookup-table).
+I'll reveal how Unicode is divided into these four groups in [a future section](#utf-8-encoding-and-decoding-lookup-table).
 {% endaside %}
 
 By contrast, in UTF-16, characters are encoded using either:
 
-1. One 16-bit code unit for the first `2^16` code points: `xxxxxxxxxxxxxxxx`, or 
+1. One 16-bit code unit for the first `2^16` code points: `xxxxxxxxxxxxxxxx`, or
 2. Two 16-bit code units for the rest: `xxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxx`.
 
 UTF-16 is a smarter version of UCS-2, where it uses 16 bits to encode some characters and starts using two 16-bit code units only once it runs out of space. Those two 16-bit code units are referred to as <dfn>surrogate pairs</dfn> in UTF-16.
@@ -472,7 +482,7 @@ Given a `byte`, we can use the bitwise AND operator to determine that it is:
 - Leading byte for 3-byte code point if `byte & 11110000 == 11100000`
 - Leading byte for 4-byte code point if `byte & 11111000 == 11110000`
 
-Let me explain where these values come from. 
+Let me explain where these values come from.
 
 #### Checking Prefixes with Bitmasks
 
@@ -743,7 +753,7 @@ That's why the HTML example from the beginning of this article is so relevant:
 
 When a browser or some other user agent parses your HTML document, it sees this meta tag, which assures the browser that you encoded your file in UTF-8, the required standard per the HTML spec. So the browser will do its best to decode the contents of the HTML document using UTF-8. And if it fails to do so, then you lied.
 
-Now, why does this tag need to appear as early as possible in the `<head>` of a document? Well, because there are lots of other HTML tags—like meta descriptions or titles—that can appear elsewhere in the `<head>` or `<body>`, and those tags may contain non-ASCII characters in their `value` attributes. For example, a meta description tag could contain characters from Chinese or some other non-ASCII character set, and the browser needs to know how to decode those characters properly. By pure coincidence, it just so happens that all of the other characters between the very start of an HTML document and this meta tag are part of ASCII, so the browser can safely decode those bytes as-is until it reads the `charset`:
+Now, why does this tag need to appear as early as possible in the `<head>` of a document? Well, because there are lots of other HTML tags—like meta descriptions or titles—that can appear elsewhere in the `<head>` or `<body>`, and those tags may contain non-ASCII characters in their `value` attributes. For example, a meta description tag could contain characters from some other non-ASCII character set, and the browser needs to know how to decode those characters properly. By pure coincidence, it just so happens that all of the other characters between the very start of an HTML document and this meta tag are part of ASCII, so the browser can safely decode those bytes as-is until it reads the `charset`:
 
 ```html
 <!DOCTYPE html>
@@ -759,17 +769,17 @@ Hence why you need to declare this as early as possible—specifically, within t
 The Encoding standard requires use of the UTF-8 character encoding and requires use of the "utf-8" encoding label to identify it. Those requirements necessitate that the document's character encoding declaration, if it exists, specifies an encoding label using an ASCII case-insensitive match for "utf-8"... The element containing the character encoding declaration must be serialized completely within the first 1024 bytes of the document.
 {% endquote %}
 
-### String Length in JavaScript
+### String Length in Programming Languages
 
-In the intro to this article, I mentioned that the following JavaScript code doesn't quite behave like you'd expect. Can you guess what value it logs and why? As a reminder, JavaScript uses UTF-16 encoding. Hint: The emoji is special!
+In the intro to this article, I mentioned that the following JavaScript code doesn't quite behave like you'd expect. Can you guess what value it logs and why? As a reminder, JavaScript uses UTF-16 encoding.
 
-```js
+```js {data-file="test.js"}
 console.log('Hi 👋'.length)
 ```
 
-You may need to do some research to figure this one out. Consider revealing the hint below or looking at the answer if you're confused by the output.
+Here's a free hint: Search up the waving hand emoji's code point. If you're still stuck, consider revealing the additional hint or the full explanation below.
 
-{% details 'Reveal hint' %}
+{% details 'Reveal additional hint' %}
 In UTF-16, every character is encoded with either one 16-bit code unit or a maximum of two 16-bit code units. In UTF-16, code points `< 2^16` are encoded with one 16-bit code unit, as-is. Code points `>= 2^16` are encoded with two 16-bit code units.
 
 The waving hand emoji (👋) has a code point of `U+1F44B`. Could translating this number into decimal or binary tell you how many code units it will require when encoded in UTF-16? Maybe that has something to do with the result.
@@ -778,53 +788,71 @@ The waving hand emoji (👋) has a code point of `U+1F44B`. Could translating th
 {% details 'Reveal the answer and explanation' %}
 If you answered `4`, you may be surprised to learn that you're wrong! The real answer is `5`. This is actually one of the few rare instances where it's not a JavaScript idiosyncrasy but rather the code is working as intended.
 
-The reason this code logs `5` instead of `4` as one would expect is because JavaScript's `String.prototype.length` method counts the number of UTF-16 **code units** in a string, rather than the number of visible character glyphs.
+The reason this code logs `5` instead of `4` as one would expect is because JavaScript's `String.prototype.length` method counts the number of UTF-16 **code units** in a string, rather than the number of graphemes.
 
 The first three characters in the string are `H`, `i`, and ` ` (space), all three of which are in ASCII and can each be encoded with a single UTF-16 code unit (with a bunch of leading zeros that never get used, of course). This means that those three characters each contribute just one to the overall length of the string. However, unlike those three characters, the emoji 👋 is a very high-order Unicode character that requires two 16-bit code units to encode in UTF-16, so it actually contributes two to the overall string length. Thus, the total length is `3 + 2 = 5` instead of `4`.
 {% enddetails %}
 
-Because of this gotcha, many online character counters for text inputs are implemented incorrectly. For example, at the time when I wrote this article, Twitter's character counter went down by two instead of one whenever you used an emoji, whereas a user's expectation would be that the count changes by one.
+Because of this nuance, many character counters in software are implemented incorrectly. For example, at the time when I wrote this article, Twitter's character counter went down by two instead of one whenever you used certain emoji, whereas an ordinary user's expectation would be that the count changes by one. To get an accurate character count in JavaScript, you need to use [`Intl.Segmenter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length).
 
-(So how do you get an accurate character count? Use [`Intl.Segmenter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length)!)
+It's worth pointing out that this behavior isn't unique to JavaScript. Consider the following equivalent C program:
 
-### Combining Characters
+```c {data-file="main.c"}
+#include <stdio.h>
+#include <string.h>
 
-Unicode allows you to combine certain code points together to create new code points. Usually, a "main" character will be paired with a <dfn>[combining character](https://en.wikipedia.org/wiki/Combining_character)</dfn> right after it that instructs software to render the preceding code point a certain way.
+int main() {
+  const char* str = "Hi 👋";
+  printf("%lu", strlen(str));
+  return 0;
+}
+```
 
-Take `é` as an example. While it does exist on its own in Unicode as `U+00E9`, it can also be created by combining two separate code points:
+If you compile and run this program, you'll get an output of `7`. This is because unlike JavaScript, C uses UTF-8 for string encoding.
+
+Let's break it down character by character:
+
+1. `H` (`U+0048`) is ASCII, so it fits within the first byte.
+2. `i` (`U+0069`) is ASCII, so it fits within the second byte.
+3. ` ` (`U+0020`) is ASCII, so it fits within the third byte.
+4. `👋` (`U+1F44B`) falls under `U+010000–U+10FFFF`, so it needs [four bytes in UTF-8](#utf-8-encoding-and-decoding-lookup-table).
+
+In C, the `strlen` function counts the number of bytes in a string. So because C uses UTF-8 encoding, the output is `1+1+1+4=7`.
+
+### Grapheme Clusters
+
+Unicode allows you to combine certain code points together to create new code points. These sequences of code points are known as <dfn>grapheme clusters</dfn>, or "user-perceived characters" [as Unicode calls them](https://unicode.org/reports/tr29/). Two examples of grapheme clusters that we'll look at are accents/diacritics and emoji sequences.
+
+#### Accents and Diacritics (Combining Characters)
+
+Sometimes, a character will be paired with a <dfn>[combining character](https://en.wikipedia.org/wiki/Combining_character)</dfn> right after it that instructs software to render the preceding code point a certain way. Popular examples of combining characters are accents and diacritics.
+
+Take `é` as an example. While it does exist on its own in Unicode as `U+00E9`, it can also be created by combining two separate code points:
 
 1. First, the lowercase Latin letter `e` (`U+0065`).
 2. Then &#x301;, known in Unicode as the Combining Acute Accent (`U+0301`).
 
-Other times, an accented character can only be created by combining characters. There are so many of these accents and diacritics that they occupy an entire Unicode block: [The Combining Diacritical Marks (`U+0300–U+036F`)](https://www.unicode.org/charts/PDF/U0300.pdf).
+Other times, accented characters can only be created by combining code points. There are so many of these accents and diacritics that they occupy an entire Unicode block: [The Combining Diacritical Marks (`U+0300–U+036F`)](https://www.unicode.org/charts/PDF/U0300.pdf).
 
-There's no magic here. Instead, software that fully complies with the Unicode specification will treat `U+0065` followed directly by `U+0301` as `é`, just as if you rendered `U+00E9` on its own. Not convinced? Try [rendering the following HTML](https://jsfiddle.net/gkdmyqhf/):
+There's no magic here. Instead, software that fully complies with the Unicode specification will treat `U+0065` followed directly by `U+0301` as `é`, just as if you rendered `U+00E9` on its own. Not convinced? Try [rendering the following HTML](https://jsfiddle.net/gkdmyqhf/):
 
 ```html
 &#x0065;&#x0301;
 ```
 
-You'll get `é`!
+You'll get `é`!
 
-Now, you may be wondering: Why does Unicode support both `é` on its own (known as a <dfn>precomposed character</dfn>) as well as the composed variant? Isn't that a waste of space? Long story short, yes, but it's a vestige from older Unicode revisions:
+Now, you may be wondering: Why does Unicode support both `é` on its own (known as a <dfn>precomposed character</dfn>) as well as the composed variant? Doesn't that needlessly waste one code point? Well, yes, but it's a vestige from older Unicode revisions:
 
 {% quote "Diacritic - Wikipedia", "https://en.wikipedia.org/wiki/Diacritic" %}
-For historical reasons, almost all the letter-with-accent combinations used in European languages were given unique code points and these are called precomposed characters. For other languages, it is usually necessary to use a combining character diacritic together with the desired base letter. Unfortunately, even as of 2024, many applications and web browsers remain unable to operate the combining diacritic concept properly. 
+For historical reasons, almost all the letter-with-accent combinations used in European languages were given unique code points and these are called precomposed characters. For other languages, it is usually necessary to use a combining character diacritic together with the desired base letter. Unfortunately, even as of 2024, many applications and web browsers remain unable to operate the combining diacritic concept properly.
 {% endquote %}
 
-### Emoji Presentation Sequences
+#### Emoji Presentation Sequences
 
-In an earlier section, we looked at the hand-waving emoji 👋, which has its own distinct code point in Unicode: `U+1F44B`. But not all emoji have assigned code points. Instead, some are an [emoji presentation sequence](https://www.unicode.org/emoji/charts/emoji-variants.html). In such a sequence, you take an ordinary Unicode code point and follow it up with a special code point that tells software to render the preceding character as an emoji.
+In [an earlier section](#string-length-in-programming-languages), we looked at the hand-waving emoji 👋, which has its own distinct code point in Unicode: `U+1F44B`. But not all emoji have assigned code points. Instead, some are what's known as an <dfn>[emoji presentation sequence](https://www.unicode.org/emoji/charts/emoji-variants.html)</dfn>. In such a sequence, you take an ordinary Unicode code point and follow it up with a special code point that tells software to render the preceding character as an emoji.
 
-For example, the emoji 1️⃣ doesn't have its own code point. Instead, it's the result of taking the ASCII code point for `1` (`U+0031`) and following it up with two special code points. Here are all three code points in UTF-16, as HTML entities:
-
-```html
-&#x0031;&#xFE0F;&#x20E3;
-```
-
-Just as with [combining characters](#combining-characters), if you were to [render this HTML](https://jsfiddle.net/jt6sucan/), you'd see 1️⃣ (assuming your software and/or font support emoji presentation sequences).
-
-Here's the Unicode table interpreting these three code points:
+For example, the emoji 1️⃣ doesn't have an assigned code point in Unicode. Rather, it's the result of printing the ASCII code point for `1` (`U+0031`) followed by two special code points: `U+FE0F` and `U+20E3` (UTF-16).
 
 <div class="scroll-x" role="region" tabindex="0">
   <table>
@@ -838,32 +866,32 @@ Here's the Unicode table interpreting these three code points:
     </thead>
     <tbody>
       <tr>
-        <td class="numeric"><code>0x0031</code></td>
+        <td class="numeric"><code>U+0031</code></td>
         <td class="numeric">1</td>
         <td><a href="https://www.unicode.org/charts/PDF/U0000.pdf">DIGIT ONE</a></td>
       </tr>
       <tr>
-        <td class="numeric"><code>0xfe0f</code></td>
+        <td class="numeric"><code>U+FE0F</code></td>
         <td class="numeric">&#xFE0F; (invisible)</td>
         <td><a href="https://www.unicode.org/charts/PDF/UFE00.pdf">VARIATION SELECTOR-16</a></td>
       </tr>
       <tr>
-        <td class="numeric"><code>0x20e3</code></td>
+        <td class="numeric"><code>U+20E3</code></td>
         <td class="numeric">&#x20E3;</td>
         <td><a href="https://www.unicode.org/charts/PDF/U20D0.pdf">COMBINING ENCLOSING KEYCAP</a></td>
       </tr>
-      <tr>
     </tbody>
   </table>
 </div>
 
-So 1️⃣ is rendered from this sequence of code points:
+Just as with [combining characters](#accents-and-diacritics-combining-characters), if you were to [render the HTML entities](https://jsfiddle.net/jt6sucan/) one after another, you'd see 1️⃣ (assuming your software and font support emoji presentation sequences):
 
-1. The ASCII number `1`,
-2. Something called an "emoji variation selector," and
-3. The combining enclosing keycap character.
+```html
+<!-- This should render as 1️⃣ -->
+&#x0031;&#xFE0F;&#x20E3;
+```
 
-StackOverflow provides the following explanation for what a variation selector does:
+Here's a good explanation for what a variation selector (in this case, `U+FE0F`) does:
 
 {% quote "theB on StackOverflow, CC BY-SA 3.0", "https://stackoverflow.com/a/38100803/5323344" %}
 In Unicode the value `U+FE0F` is called a variation selector. The variation selector in the case of emoji is to tell the system rendering the character how it should treat the value. That is, whether it should be treated as text, or as an image which could have additional properties, like color or animation.
@@ -871,7 +899,7 @@ In Unicode the value `U+FE0F` is called a variation selector. The variation sele
 For emoji there are two different variation selectors that can be applied, `U+FE0E` and `U+FE0F`. `U+FE0E` specifies that the emoji should be presented like text. `U+FE0F` specifies that it should be presented as an image, with color and possible animation.
 {% endquote %}
 
-The presence of the variation selector changes the rendered outcome entirely (in software that respects it). Rather than rendering these three code points as three separate graphemes, the computer will now render them as a special emoji. Note that some emoji don't need a variation selector, while other emoji do include one.
+The presence of the variation selector changes the rendered outcome in software that respects this behavior: Rather than rendering these three code points as three separate graphemes, the software will render them as a special emoji. Note that some emoji don't need a variation selector, while other emoji do include one.
 
 Before we wrap up this section, let's relate this to some of the things we learned. In UTF-8, the emoji 1️⃣ is equivalently encoded as the following byte sequence:
 
@@ -887,12 +915,16 @@ And if we translate that to binary, we'll get:
 
 Based on what we learned, you should observe the following, from left to right:
 
-1. `00110001` starts with `0`, so it's ASCII (the numeral `1`)
+1. `00110001` starts with `0`, so it's ASCII (the numeral `1`).
 2. `11101111` marks the start of a three-byte code point. `10111000` is the first continuation byte and `10001111` is the last.
-3. `11100010` marks the start of another three-byte code point. `10000011` is the continuation byte and `10100011` is the last.
+3. `11100010` marks the start of another three-byte code point. `10000011` is the first the continuation byte and `10100011` is the last.
 
 {% aside %}
 As a final exercise, try typing 1️⃣ in a code editor and then hit backspace at the end. Depending on the implementation, you may need to do this three times to clear everything. The first backspace will remove the enclosing keycap code point, effectively reducing the sequence to just `1&#xFE0F;`. Thus, 1️⃣ reverts to a plaintext `1` followed by an invisible character.
+{% endaside %}
+
+{% aside %}
+For a deeper dive into this topic, see this article by Henri Sivonen: [It’s Not Wrong that "🤦🏼‍♂️".length == 7](https://hsivonen.fi/string-length/).
 {% endaside %}
 
 ## Summary
@@ -904,6 +936,7 @@ Unicode is the universal character set used by all modern software, but it doesn
 - ["The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)" by Joel Spolsky](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/)
 - ["UTF-8: Bits, Bytes, and Benefits" by Russ Cox](https://research.swtch.com/utf8)
 - ["The Tragedy of UCS-2" by Una](https://unascribed.com/b/2019-08-02-the-tragedy-of-ucs2.html)
+- ["It’s Not Wrong that "🤦🏼‍♂️".length == 7" by Henri Sivonen](https://hsivonen.fi/string-length/)
 - [Chronology of Unicode Version 1.0](https://www.unicode.org/history/versionone.html)
 - [StackOverflow: UTF-8, UTF-16, and UTF-32](https://stackoverflow.com/questions/496321/utf-8-utf-16-and-utf-32)
 - [StackOverflow: UTF-8 encoding why prefix 10?](https://stackoverflow.com/questions/53009692/utf-8-encoding-why-prefix-10/57750970#57750970)
