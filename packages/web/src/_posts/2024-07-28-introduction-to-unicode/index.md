@@ -4,7 +4,7 @@ description: In this deep dive, you'll learn about the Unicode character set and
 keywords: [character encoding, unicode, utf]
 categories: [computer-science, math, binary]
 thumbnail: ./images/thumbnail.png
-lastUpdated: 2024-08-15
+lastUpdated: 2025-02-22
 isFeatured: true
 commentsId: 191
 redirectFrom:
@@ -723,11 +723,15 @@ Done! Putting it all together, we get the same result as before: `11000011 10111
 
 For more complex examples involving three or four bytes, you will just need to shift by larger amounts for the first, second, and third bytes. The last byte will never require any bit-shifting since the bits of interest are already in the lowest possible positions. Again, I'll leave this up to as an exercise.
 
-## Know Your Character Encoding
+## Bonus Content and Exercises
 
-If we know ahead of time that the encoding scheme used is UTF-8, we can easily follow the procedure outlined in the previous section to decode those bytes. But here's a question: _how_ do we know this?
+Now, let's apply everything we learned to make sense of some real-world examples.
 
-Well, unless the sender tells us what encoding they used, we don't. Typically, this is done by sending the encoding name (in ASCII) along with the message. If the sender doesn't specify this information, then the receiver has to make an educated guess (maybe by looking for bit prefix patterns, although this could be misleading).
+### Know Your Character Encoding
+
+If we know ahead of time that the encoding scheme used is UTF-8, we can easily follow [the procedure outlined in this article](#decoding-bitwise-and) to decode those bytes. But _how_ are we supposed to know what encoding was used?
+
+Well, unless the sender tells us what encoding they used, we won't know. Typically, this is done by sending the encoding name (in ASCII) along with the message. If the sender doesn't specify this information, then the receiver has to make an educated guess (maybe by looking for bit prefix patterns, although this could be misleading).
 
 That's why the HTML example from the beginning of this article is so relevant:
 
@@ -755,9 +759,9 @@ Hence why you need to declare this as early as possible—specifically, within t
 The Encoding standard requires use of the UTF-8 character encoding and requires use of the "utf-8" encoding label to identify it. Those requirements necessitate that the document's character encoding declaration, if it exists, specifies an encoding label using an ASCII case-insensitive match for "utf-8"... The element containing the character encoding declaration must be serialized completely within the first 1024 bytes of the document.
 {% endquote %}
 
-## Case Study: String Length in JavaScript
+### String Length in JavaScript
 
-We've covered a lot of interesting topics so far, so here's a bit of a curveball. In the intro to this article, I mentioned that the following JavaScript code doesn't quite behave like you'd expect. Can you guess what value it logs and why? As a reminder, JavaScript uses UTF-16 encoding. Hint: The emoji is special!
+In the intro to this article, I mentioned that the following JavaScript code doesn't quite behave like you'd expect. Can you guess what value it logs and why? As a reminder, JavaScript uses UTF-16 encoding. Hint: The emoji is special!
 
 ```js
 console.log('Hi 👋'.length)
@@ -765,23 +769,131 @@ console.log('Hi 👋'.length)
 
 You may need to do some research to figure this one out. Consider revealing the hint below or looking at the answer if you're confused by the output.
 
-{% details 'View hint' %}
+{% details 'Reveal hint' %}
 In UTF-16, every character is encoded with either one 16-bit code unit or a maximum of two 16-bit code units. In UTF-16, code points `< 2^16` are encoded with one 16-bit code unit, as-is. Code points `>= 2^16` are encoded with two 16-bit code units.
 
 The waving hand emoji (👋) has a code point of `U+1F44B`. Could translating this number into decimal or binary tell you how many code units it will require when encoded in UTF-16? Maybe that has something to do with the result.
 {% enddetails %}
 
-{% details 'View the answer and explanation' %}
+{% details 'Reveal the answer and explanation' %}
 If you answered `4`, you may be surprised to learn that you're wrong! The real answer is `5`. This is actually one of the few rare instances where it's not a JavaScript idiosyncrasy but rather the code is working as intended.
 
 The reason this code logs `5` instead of `4` as one would expect is because JavaScript's `String.prototype.length` method counts the number of UTF-16 **code units** in a string, rather than the number of visible character glyphs.
 
-The first three characters in the string are `H`, `i`, and ` ` (space), all three of which are in ASCII and can each be encoded with a single UTF-16 code unit (with a bunch of leading zeros that never get used, of course). This means that those three characters each contribute just one to the overall length of the string. However, unlike those three characters, the emoji `👋` is a very high-order Unicode character that requires two 16-bit code units to encode in UTF-16, so it actually contributes two to the overall string length. Thus, the total length is `3 + 2 = 5` instead of `4`.
+The first three characters in the string are `H`, `i`, and ` ` (space), all three of which are in ASCII and can each be encoded with a single UTF-16 code unit (with a bunch of leading zeros that never get used, of course). This means that those three characters each contribute just one to the overall length of the string. However, unlike those three characters, the emoji 👋 is a very high-order Unicode character that requires two 16-bit code units to encode in UTF-16, so it actually contributes two to the overall string length. Thus, the total length is `3 + 2 = 5` instead of `4`.
 {% enddetails %}
 
 Because of this gotcha, many online character counters for text inputs are implemented incorrectly. For example, at the time when I wrote this article, Twitter's character counter went down by two instead of one whenever you used an emoji, whereas a user's expectation would be that the count changes by one.
 
 (So how do you get an accurate character count? Use [`Intl.Segmenter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length)!)
+
+### Combining Characters
+
+Unicode allows you to combine certain code points together to create new code points. Usually, a "main" character will be paired with a <dfn>[combining character](https://en.wikipedia.org/wiki/Combining_character)</dfn> right after it that instructs software to render the preceding code point a certain way.
+
+Take `é` as an example. While it does exist on its own in Unicode as `U+00E9`, it can also be created by combining two separate code points:
+
+1. First, the lowercase Latin letter `e` (`U+0065`).
+2. Then &#x301;, known in Unicode as the Combining Acute Accent (`U+0301`).
+
+Other times, an accented character can only be created by combining characters. There are so many of these accents and diacritics that they occupy an entire Unicode block: [The Combining Diacritical Marks (`U+0300–U+036F`)](https://www.unicode.org/charts/PDF/U0300.pdf).
+
+There's no magic here. Instead, software that fully complies with the Unicode specification will treat `U+0065` followed directly by `U+0301` as `é`, just as if you rendered `U+00E9` on its own. Not convinced? Try [rendering the following HTML](https://jsfiddle.net/gkdmyqhf/):
+
+```html
+&#x0065;&#x0301;
+```
+
+You'll get `é`!
+
+Now, you may be wondering: Why does Unicode support both `é` on its own (known as a <dfn>precomposed character</dfn>) as well as the composed variant? Isn't that a waste of space? Long story short, yes, but it's a vestige from older Unicode revisions:
+
+{% quote "Diacritic - Wikipedia", "https://en.wikipedia.org/wiki/Diacritic" %}
+For historical reasons, almost all the letter-with-accent combinations used in European languages were given unique code points and these are called precomposed characters. For other languages, it is usually necessary to use a combining character diacritic together with the desired base letter. Unfortunately, even as of 2024, many applications and web browsers remain unable to operate the combining diacritic concept properly. 
+{% endquote %}
+
+### Emoji Presentation Sequences
+
+In an earlier section, we looked at the hand-waving emoji 👋, which has its own distinct code point in Unicode: `U+1F44B`. But not all emoji have assigned code points. Instead, some are an [emoji presentation sequence](https://www.unicode.org/emoji/charts/emoji-variants.html). In such a sequence, you take an ordinary Unicode code point and follow it up with a special code point that tells software to render the preceding character as an emoji.
+
+For example, the emoji 1️⃣ doesn't have its own code point. Instead, it's the result of taking the ASCII code point for `1` (`U+0031`) and following it up with two special code points. Here are all three code points in UTF-16, as HTML entities:
+
+```html
+&#x0031;&#xFE0F;&#x20E3;
+```
+
+Just as with [combining characters](#combining-characters), if you were to [render this HTML](https://jsfiddle.net/jt6sucan/), you'd see 1️⃣ (assuming your software and/or font support emoji presentation sequences).
+
+Here's the Unicode table interpreting these three code points:
+
+<div class="scroll-x" role="region" tabindex="0">
+  <table>
+    <caption><strong>Table 4</strong>: code points that comprise the emoji 1️⃣</caption>
+    <thead>
+      <tr>
+        <th scope="col" class="numeric">Code point</th>
+        <th scope="col" class="numeric">Character</th>
+        <th scope="col">Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="numeric"><code>0x0031</code></td>
+        <td class="numeric">1</td>
+        <td><a href="https://www.unicode.org/charts/PDF/U0000.pdf">DIGIT ONE</a></td>
+      </tr>
+      <tr>
+        <td class="numeric"><code>0xfe0f</code></td>
+        <td class="numeric">&#xFE0F; (invisible)</td>
+        <td><a href="https://www.unicode.org/charts/PDF/UFE00.pdf">VARIATION SELECTOR-16</a></td>
+      </tr>
+      <tr>
+        <td class="numeric"><code>0x20e3</code></td>
+        <td class="numeric">&#x20E3;</td>
+        <td><a href="https://www.unicode.org/charts/PDF/U20D0.pdf">COMBINING ENCLOSING KEYCAP</a></td>
+      </tr>
+      <tr>
+    </tbody>
+  </table>
+</div>
+
+So 1️⃣ is rendered from this sequence of code points:
+
+1. The ASCII number `1`,
+2. Something called an "emoji variation selector," and
+3. The combining enclosing keycap character.
+
+StackOverflow provides the following explanation for what a variation selector does:
+
+{% quote "theB on StackOverflow, CC BY-SA 3.0", "https://stackoverflow.com/a/38100803/5323344" %}
+In Unicode the value `U+FE0F` is called a variation selector. The variation selector in the case of emoji is to tell the system rendering the character how it should treat the value. That is, whether it should be treated as text, or as an image which could have additional properties, like color or animation.
+
+For emoji there are two different variation selectors that can be applied, `U+FE0E` and `U+FE0F`. `U+FE0E` specifies that the emoji should be presented like text. `U+FE0F` specifies that it should be presented as an image, with color and possible animation.
+{% endquote %}
+
+The presence of the variation selector changes the rendered outcome entirely (in software that respects it). Rather than rendering these three code points as three separate graphemes, the computer will now render them as a special emoji. Note that some emoji don't need a variation selector, while other emoji do include one.
+
+Before we wrap up this section, let's relate this to some of the things we learned. In UTF-8, the emoji 1️⃣ is equivalently encoded as the following byte sequence:
+
+```
+0x31 0xEF 0xB8 0x8F 0xE2 0x83 0xA3
+```
+
+And if we translate that to binary, we'll get:
+
+```
+00110001 11101111 10111000 10001111 11100010 10000011 10100011
+```
+
+Based on what we learned, you should observe the following, from left to right:
+
+1. `00110001` starts with `0`, so it's ASCII (the numeral `1`)
+2. `11101111` marks the start of a three-byte code point. `10111000` is the first continuation byte and `10001111` is the last.
+3. `11100010` marks the start of another three-byte code point. `10000011` is the continuation byte and `10100011` is the last.
+
+{% aside %}
+As a final exercise, try typing 1️⃣ in a code editor and then hit backspace at the end. Depending on the implementation, you may need to do this three times to clear everything. The first backspace will remove the enclosing keycap code point, effectively reducing the sequence to just `1&#xFE0F;`. Thus, 1️⃣ reverts to a plaintext `1` followed by an invisible character.
+{% endaside %}
 
 ## Summary
 
