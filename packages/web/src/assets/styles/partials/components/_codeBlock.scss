@@ -27,6 +27,7 @@
   position: relative;
 
   pre {
+    --border-code: solid 1px #{functions.color("surface", "3")};
     color: var(--color-code-text);
     overflow-x: auto;
     white-space: pre;
@@ -34,7 +35,7 @@
     word-break: normal;
     tab-size: 4;
     text-align: start;
-    border: solid 1px functions.color("surface", "3");
+    border: var(--border-code);
     border-radius: functions.size("spacing", "-3");
   }
 
@@ -121,7 +122,8 @@
       &::before {
         content: counter(line-number);
         position: absolute;
-        inset-inline-start: 1px;
+        inset-inline-start: 0;
+        border-inline-start: var(--border-code);
         min-inline-size: var(--size-code-line-number-offset);
         text-align: end;
         padding-inline-end: 2ch;
