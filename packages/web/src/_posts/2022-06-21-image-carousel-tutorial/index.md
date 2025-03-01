@@ -1266,7 +1266,7 @@ While implementing a media carousel may seem like a lot of work, the truth is th
         class="carousel-control"
         aria-label="Previous"
         data-direction="start">
-        {% include "icon.liquid" icon: "chevron-left" %}
+        {% include "icon.liquid" icon: "chevron-left", size: 24 %}
       </button>
     </li>
     <li>
@@ -1274,7 +1274,7 @@ While implementing a media carousel may seem like a lot of work, the truth is th
         class="carousel-control"
         aria-label="Next"
         data-direction="end">
-        {% include "icon.liquid" icon: "chevron-right" %}
+        {% include "icon.liquid" icon: "chevron-right", size: 24 %}
       </button>
     </li>
   </ol>
