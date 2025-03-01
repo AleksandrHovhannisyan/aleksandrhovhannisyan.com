@@ -55,16 +55,14 @@
   }
 
   .file-name {
+    display: flex;
+    align-items: center;
+    gap: 1ch;
     inset-inline-start: var(--size-code-padding);
     color: inherit;
     font-size: inherit;
     transform: translateY(-50%);
     @include mixins.font($family: "mono", $weight: "bold");
-
-    &::before {
-      content: "📁 ";
-      @include mixins.font($size: "xs");
-    }
   }
 
   .copy-code-button {

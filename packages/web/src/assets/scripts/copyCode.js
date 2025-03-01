@@ -5,13 +5,14 @@ document.querySelectorAll('.copy-code-button').forEach((copyCodeButton) => {
 
   copyCodeButton.addEventListener('click', () => {
     window.navigator.clipboard.writeText(code);
+    const originalButtonHtml = copyCodeButton.innerHTML;
     copyCodeButton.classList.add('copied');
     copyCodeButton.innerText = 'Copied';
     copiedAlert.innerText = 'Copied';
 
     setTimeout(() => {
       copyCodeButton.classList.remove('copied');
-      copyCodeButton.innerText = 'Copy';
+      copyCodeButton.innerHTML = originalButtonHtml;
       copiedAlert.innerText = '';
     }, 2000);
   });

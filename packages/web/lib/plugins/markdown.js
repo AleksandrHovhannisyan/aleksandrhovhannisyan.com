@@ -1,4 +1,5 @@
 import { slugifyString } from '../utils.js';
+import iconShortcode from '../shortcodes/icon.js';
 import markdownIt from 'markdown-it';
 import markdownItAttrs from 'markdown-it-attrs';
 import markdownItAnchor from 'markdown-it-anchor';
@@ -58,8 +59,9 @@ function getLanguage(lang) {
 
 /**
  * @param {import("markdown-it")} markdownIt
+ * @param {boolean} [isTrustedInput] Whether the incoming source Markdown is safe/trusted. Defaults to `true` for my content. Set this to `false` for content from external sources (like user-submitted comments).
  */
-function makeFencedCodeRenderer(markdownIt) {
+function makeFencedCodeRenderer(markdownIt, isTrustedInput) {
   const defaultRenderer = markdownIt.renderer.rules.fence;
 
   /** @type {import('markdown-it/lib/renderer.mjs').RenderRule} */
@@ -67,38 +69,45 @@ function makeFencedCodeRenderer(markdownIt) {
     const fencedCodeBlockToken = tokens[index];
     const language = getLanguage(fencedCodeBlockToken.info);
     let codeBlockHtml = defaultRenderer(tokens, index, options, env, self);
-
-    // Copyable code blocks get data-copyable="true" via markdown-it-attrs
-    let copyCodeMatch = /<code[^>]*\b(?<attribute>data-copyable="?true"?)/.exec(codeBlockHtml);
-    let hasCopyCodeButton = !!copyCodeMatch && copyCodeMatch.groups?.attribute;
-
-    // Code blocks with file names get data-file="filename" via markdown-it-attrs
-    const fileNameMatch = /<code[^>]*\b(?<attribute>data-file="?(?<fileName>[^"]*)"?)/.exec(codeBlockHtml);
-    let hasFileName = !!fileNameMatch && fileNameMatch.groups?.attribute && fileNameMatch.groups?.fileName;
-
     let captionHtml = `<figcaption class="screen-reader-only">${language} code snippet</figcaption>`;
-    let copyCodeHtml = '';
-    if (hasCopyCodeButton) {
-      copyCodeHtml =
-        '<button class="copy-code-button" aria-label="Copy code to clipboard">Copy</button><span role="alert" class="screen-reader-only"></span>';
-      // Don't need the data-copyable="true" attribute anymore
-      codeBlockHtml = codeBlockHtml.replace(copyCodeMatch.groups?.attribute, '');
+    let copyCodeButtonHtml = '';
+
+    if (isTrustedInput) {
+      // Copyable code blocks get data-copyable="true" via markdown-it-attrs
+      let copyCodeMatch = /<code[^>]*\b(?<attribute>data-copyable="?true"?)/.exec(codeBlockHtml);
+      let hasCopyCodeButton = !!copyCodeMatch && copyCodeMatch.groups?.attribute;
+
+      // Code blocks with file names get data-file="filename" via markdown-it-attrs
+      const fileNameMatch = /<code[^>]*\b(?<attribute>data-file="?(?<fileName>[^"]*)"?)/.exec(codeBlockHtml);
+      let hasFileName = !!fileNameMatch && fileNameMatch.groups?.attribute && fileNameMatch.groups?.fileName;
+
+      if (hasCopyCodeButton) {
+        copyCodeButtonHtml = `<button class="copy-code-button" aria-label="Copy code to clipboard">
+            Copy
+          </button><span role="alert" class="screen-reader-only"></span>`;
+        // Don't need the data-copyable="true" attribute anymore
+        codeBlockHtml = codeBlockHtml.replace(copyCodeMatch.groups?.attribute, '');
+      }
+      if (hasFileName) {
+        captionHtml = `<figcaption class="file-name">
+          ${iconShortcode({ icon: 'file-text', size: 16 })} ${fileNameMatch.groups?.fileName}
+        </figcaption>`;
+        // We don't need the data-file=".*" attribute anymore
+        codeBlockHtml = codeBlockHtml.replace(fileNameMatch.groups?.attribute, '');
+      }
     }
-    if (hasFileName) {
-      captionHtml = `<figcaption class="file-name">${fileNameMatch.groups?.fileName}</figcaption>`;
-      // We don't need the data-file=".*" attribute anymore
-      codeBlockHtml = codeBlockHtml.replace(fileNameMatch.groups?.attribute, '');
-    }
-    codeBlockHtml = `${captionHtml}${codeBlockHtml}${copyCodeHtml}`;
+
+    codeBlockHtml = `${captionHtml}${codeBlockHtml}${copyCodeButtonHtml}`;
     return `<figure class="code-block" data-language="${language}">${codeBlockHtml}</figure>`;
   };
 }
 
 /**
  * @param {import("markdown-it")} markdownIt
+ * @param {boolean} [isTrustedInput] Whether the incoming source Markdown is safe/trusted. Defaults to `true` for my content. Set this to `false` for content from external sources (like user-submitted comments).
  * @returns
  */
-function makeSyntaxHighlighter(markdownIt) {
+function makeSyntaxHighlighter(markdownIt, isTrustedInput) {
   /**
    * @param {string} code The plaintext code to highlight.
    * @param {string} lang The language in which the code was written.
@@ -118,11 +127,13 @@ function makeSyntaxHighlighter(markdownIt) {
       console.log(e);
       html = markdownIt.utils.escapeHtml(code);
     }
-    return html
-      .trim()
-      .split('\n')
-      .map((line) => `<span class="line">${line}</span>`)
-      .join('\n');
+    return isTrustedInput
+      ? html
+          .trim()
+          .split('\n')
+          .map((line) => `<span class="line">${line}</span>`)
+          .join('\n')
+      : html;
   };
 }
 
@@ -184,8 +195,8 @@ export function makeMarkdownParser(options) {
       trust: isTrustedInput,
       throwOnError: true,
     });
-  markdownParser.options.highlight = makeSyntaxHighlighter(markdownParser);
-  markdownParser.renderer.rules.fence = makeFencedCodeRenderer(markdownParser);
+  markdownParser.options.highlight = makeSyntaxHighlighter(markdownParser, isTrustedInput);
+  markdownParser.renderer.rules.fence = makeFencedCodeRenderer(markdownParser, isTrustedInput);
   return markdownParser;
 }
 
