@@ -2,7 +2,7 @@
 title: An Introduction to Unicode
 description: In this deep dive, you'll learn about the Unicode character set and how it's encoded and decoded with UTF.
 keywords: [character encoding, unicode, utf]
-categories: [computer-science, math, binary]
+categories: [unicode, computer-science, math, binary]
 thumbnail: ./images/thumbnail.png
 lastUpdated: 2025-02-25
 isFeatured: true
