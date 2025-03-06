@@ -2,14 +2,16 @@
 title: To Parse an Int
 description: Why does JavaScript's parseInt treat keycap emoji as integers? Is it a bug, a feature, or perhaps both?
 categories: [javascript, unicode]
+keywords: [parseInt, keycap emoji]
+lastUpdated: 2025-03-06
 ---
 
 In a recent thread online, [imlunahey](https://bsky.app/profile/imlunahey.com/post/3lin3nrlaw22q) and [Ryan Winchester](https://bsky.app/profile/winchester.dev/post/3lin4bcvtrs2j) noticed that JavaScript's `parseInt` behaves a bit strangely with keycap emoji:
 
 ```js
-parseInt('1️⃣') === 1 // true
-parseInt('2️⃣') === 2 // true
-parseInt('3️⃣') === 3 // true
+parseInt('1️⃣', 10) === 1 // true
+parseInt('2️⃣', 10) === 2 // true
+parseInt('3️⃣', 10) === 3 // true
 ```
 
 At first glance, this seems like yet another JavaScript quirk. But in reality, it's working as intended... sort of. Let me explain.
@@ -136,7 +138,14 @@ As you can imagine, this could produce unexpected results in algorithms that par
 
 ## How `parseInt` Works
 
-Why does `parseInt('2️⃣')` return `2`? Well, this is where JavaScript behaves somewhat unexpectedly. Consulting MDN, we find the following explanation:
+The `parseInt` function takes two arguments:
+
+1. An input string to parse, and
+2. An optional radix (base) in which to operate.
+
+Then, `parseInt` attempts to parse the given input string in the specified radix, returning `NaN` if it fails. For example, `parseInt('100', 2)` returns `4` since the radix of `2` tells the function to parse the input in base-two (binary), while `parseInt('100', 10)` returns `100`. Although the radix argument is optional, not specifying it can produce unexpected results, so you should always pass it in.
+
+With all of that in mind, why does `parseInt('2️⃣', 10)` return `2` instead of `NaN`? Well, this is where JavaScript behaves somewhat unexpectedly. Consulting MDN, we find the following explanation:
 
 {% quote "parseInt, MDN Web Docs", "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt" %}
 If `parseInt` encounters a character that is not a numeral in the specified radix, it ignores it and all succeeding characters and returns the integer value parsed up to that point. For example, although `1e3` technically encodes an integer (and will be correctly parsed to the integer `1000` by `parseFloat()`), `parseInt("1e3", 10)` returns `1`, because `e` is not a valid numeral in base 10. Because `.` is not a numeral either, the return value will always be an integer.
@@ -144,13 +153,13 @@ If `parseInt` encounters a character that is not a numeral in the specified radi
 
 Now that we know how string iteration and emoji presentation sequences work, we can make sense of how `parseInt` sees the string `"2️⃣"`:
 
-1. `parseInt` iterates over the input string, one code unit at a time.
-2. First, the code sees `U+0032` (`2`), which is a digit. So far, so good.
-3. Next, it encounters `U+FE0F`, which isn't a digit.
+1. `parseInt` iterates over the input string one code unit at a time.
+2. First, it sees `U+0032` (`2`), which is a valid base-10 digit.
+3. Next, it encounters `U+FE0F`, which isn't a valid base-10 digit.
 
-At this point, the algorithm terminates and ignores everything after the `2`, returning `2` just as if we had done `parseInt('2')`.
+At this point, the algorithm terminates and ignores everything after the `2`, returning `2` just as if we had done `parseInt('2', 10)`.
 
-Now, you may think that this is unintuitive or incorrect, and I agree. I'd argue that the code should return `NaN` or throw an error instead of simply discarding the rest of the input string and assuming that you _wanted_ to parse just the numeric prefix. As the MDN docs note, it's the same reason why `parseInt` is unable to understand scientific notation, so `parseInt('2e1')` returns `2` instead of `20`.
+Now, you may think that this is unintuitive or incorrect, and I agree. I'd argue that the code should return `NaN` or throw an error instead of simply discarding the rest of the input string and assuming that you _wanted_ to parse just the numeric prefix. As the MDN docs note, it's the same reason why `parseInt` is unable to understand scientific notation, so `parseInt('2e1', 10)` returns `2` instead of `20`.
 
 {% aside %}
 This behavior is disappointing, sure, but web development wouldn't be nearly as exciting if JavaScript were a sane and predictable language.
