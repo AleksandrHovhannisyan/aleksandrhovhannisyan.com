@@ -2,12 +2,12 @@
   <div class="container">
     <div class="stack gap--1">
       <h2 class="size-font-xl">Thanks for reading!</h2>
-      <p>&copy; {{ site.author.name }}, 2019–Present</p>
+      <p>&copy; 2019–Present {{ site.author.name }}.</p>
       <p>
       <a
         href="https://www.github.com/{{ site.repo.owner }}/{{ site.repo.name }}/commit/{{ buildInfo.hash }}"
         rel="noreferrer noopener"
-        target="_blank">Last built</a> on <time datetime="{{ buildInfo.time.raw }}">{{ buildInfo.time.formatted }}</time>
+        target="_blank">Last built</a> on <time datetime="{{ buildInfo.time.raw }}">{{ buildInfo.time.formatted }}.</time>
       </p>
     </div>
     <div class="end stack gap--1">

@@ -57,7 +57,7 @@ export default function eleventy(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/_posts/**/videos/*', {
     mode: "html-relative",
     failOnError: true,
-  })
+  });
 
   // Custom shortcodes
   eleventyConfig.addPairedShortcode('aside', asideShortcode);

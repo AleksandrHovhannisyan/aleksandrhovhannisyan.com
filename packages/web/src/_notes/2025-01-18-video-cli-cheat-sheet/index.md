@@ -67,7 +67,7 @@ Credit: [Vicky Chijwani on the Unix & Linux StackExchange, CC BY-SA 4.0](https:/
 
 The following command saves the first frame of the input video as an image:
 
-```js
+```js {data-copyable="true"}
 ffmpeg -i input.mp4 -vf "select=eq(n\,0)" -q:v <quality> frame.jpg
 ```
 

@@ -138,6 +138,7 @@ body > footer {
 
   .links {
     display: flex;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: functions.size('spacing', '0');

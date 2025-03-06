@@ -13,7 +13,8 @@
   }
 
   &-icon {
-    picture {
+    picture,
+    img {
       display: flex;
       width: functions.size("relative", "0");
       aspect-ratio: 1;

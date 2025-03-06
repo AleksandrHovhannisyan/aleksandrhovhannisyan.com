@@ -29,7 +29,7 @@ const repos = {
     tech: ['html', 'css', 'typescript'],
   },
   blog: {
-    icon: '<img src="../assets/images/favicons/favicon.png" alt="" width="32" height="32" />',
+    icon: '<img src="/assets/images/favicons/favicon-228.png" eleventy:ignore alt="" width="32" height="32" />',
     name: 'This website!',
     repo: 'AleksandrHovhannisyan/aleksandrhovhannisyan.com',
     tech: ['11ty', 'sass', 'javascript'],

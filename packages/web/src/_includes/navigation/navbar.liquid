@@ -28,10 +28,10 @@
       <li>
         <span class="label">Socials</span>
         <ul class="links">
-          <li>{% include "navigation/navLink.liquid", href: socials.bluesky.url, label: "Bluesky" %}</li>
-          <li>{% include "navigation/navLink.liquid", href: socials.codepen.url, label: "Codepen" %}</li>
-          <li>{% include "navigation/navLink.liquid", href: socials.github.url, label: "GitHub" %}</li>
-          <li>{% include "navigation/navLink.liquid", href: socials.linkedin.url, label: "LinkedIn" %}</li>
+          {% assign navSocials = "github,codepen,linkedin,bluesky" |  split: "," %}
+          {%- for social in navSocials -%}
+            <li>{% include "navigation/navLink.liquid", href: socials[social].url, label: socials[social].name %}</li>
+          {%- endfor -%}
         </ul>
       </li>
     </ul>
