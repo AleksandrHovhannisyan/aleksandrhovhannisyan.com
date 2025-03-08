@@ -28,6 +28,6 @@
   @include mixins.transition(box-shadow, transform);
 
   &:focus-within {
-    outline: solid functions.to-rems(3px) currentcolor;
+    outline: solid functions.to-rems(3px) functions.color("accent", "0");
   }
 }

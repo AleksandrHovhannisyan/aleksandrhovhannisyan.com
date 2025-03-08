@@ -2,7 +2,6 @@
 
 .button {
   --outline-offset: var(--outline-thickness);
-  --outline-color: #{functions.color("surface", "9")};
   --color-bg-button: transparent;
   --color-fg-button: currentcolor;
   padding: functions.size("spacing", "-2") functions.size("spacing", "0");

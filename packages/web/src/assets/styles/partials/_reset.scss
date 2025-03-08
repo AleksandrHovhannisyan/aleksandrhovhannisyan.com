@@ -52,7 +52,7 @@ body:has(dialog[open]) {
 :where(a, button, input, select, textarea, summary, [tabindex="0"]) {
   --outline-thickness: #{functions.to-rems(3px)};
   --outline-style: solid;
-  --outline-color: currentcolor;
+  --outline-color: #{functions.color("accent", "0")};
 
   &:focus-visible {
     outline: var(--outline-thickness) var(--outline-style) var(--outline-color);
