@@ -3,7 +3,7 @@ title: To Parse an Int
 description: Why does JavaScript's parseInt treat keycap emoji as integers? Is it a bug, a feature, or perhaps both?
 categories: [javascript, unicode]
 keywords: [parseInt, keycap emoji]
-lastUpdated: 2025-03-06
+lastUpdated: 2025-03-08
 ---
 
 In a recent thread online, [imlunahey](https://bsky.app/profile/imlunahey.com/post/3lin3nrlaw22q) and [Ryan Winchester](https://bsky.app/profile/winchester.dev/post/3lin4bcvtrs2j) noticed that JavaScript's `parseInt` behaves a bit strangely with keycap emoji:
@@ -148,7 +148,7 @@ Then, `parseInt` attempts to parse the given input string in the specified radix
 With all of that in mind, why does `parseInt('2️⃣', 10)` return `2` instead of `NaN`? Well, this is where JavaScript behaves somewhat unexpectedly. Consulting MDN, we find the following explanation:
 
 {% quote "parseInt, MDN Web Docs", "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt" %}
-If `parseInt` encounters a character that is not a numeral in the specified radix, it ignores it and all succeeding characters and returns the integer value parsed up to that point. For example, although `1e3` technically encodes an integer (and will be correctly parsed to the integer `1000` by `parseFloat()`), `parseInt("1e3", 10)` returns `1`, because `e` is not a valid numeral in base 10. Because `.` is not a numeral either, the return value will always be an integer.
+If `parseInt` encounters a character in the input string that is not a valid numeral in the specified radix, it ignores it and all succeeding characters and returns the integer value parsed up to that point. For example, `parseInt("2", 2)` returns `NaN` because `2` is not a valid numeral in the binary number system. Likewise, although `1e3` technically encodes an integer (and will be correctly parsed to the integer `1000` by `parseFloat()`), `parseInt("1e3", 10)` returns `1`, because `e` is not a valid numeral in base 10. Because `.` is not a numeral either, the return value will always be an integer.
 {% endquote %}
 
 Now that we know how string iteration and emoji presentation sequences work, we can make sense of how `parseInt` sees the string `"2️⃣"`:
