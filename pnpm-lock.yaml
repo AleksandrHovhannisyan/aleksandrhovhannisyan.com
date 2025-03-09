@@ -131,13 +131,10 @@ importers:
         version: 16.14.1
       stylelint-config-standard-scss:
         specifier: 14.0.0
-        version: 14.0.0(postcss@8.4.44)(stylelint@16.14.1)
-      zod:
-        specifier: 3.24.1
-        version: 3.24.1
-      zod-validation-error:
-        specifier: 3.4.0
-        version: 3.4.0(zod@3.24.1)
+        version: 14.0.0(postcss@8.5.2)(stylelint@16.14.1)
+      valibot:
+        specifier: ~1.0.0-rc.3
+        version: 1.0.0-rc.3
 
 packages:
 
@@ -3800,13 +3797,13 @@ packages:
       postcss: 8.5.2
     dev: false
 
-  /postcss-scss@4.0.9(postcss@8.4.44):
+  /postcss-scss@4.0.9(postcss@8.5.2):
     resolution: {integrity: sha512-AjKOeiwAitL/MXxQW2DliT28EKukvvbEWx3LBmJIRN8KfBGZbRTxNYW0kSqi1COiTZ57nZ9NW06S6ux//N1c9A==}
     engines: {node: '>=12.0'}
     peerDependencies:
       postcss: ^8.4.29
     dependencies:
-      postcss: 8.4.44
+      postcss: 8.5.2
     dev: false
 
   /postcss-selector-parser@7.1.0:
@@ -4335,7 +4332,7 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /stylelint-config-recommended-scss@14.1.0(postcss@8.4.44)(stylelint@16.14.1):
+  /stylelint-config-recommended-scss@14.1.0(postcss@8.5.2)(stylelint@16.14.1):
     resolution: {integrity: sha512-bhaMhh1u5dQqSsf6ri2GVWWQW5iUjBYgcHkh7SgDDn92ijoItC/cfO/W+fpXshgTQWhwFkP1rVcewcv4jaftRg==}
     engines: {node: '>=18.12.0'}
     peerDependencies:
@@ -4345,8 +4342,8 @@ packages:
       postcss:
         optional: true
     dependencies:
-      postcss: 8.4.44
-      postcss-scss: 4.0.9(postcss@8.4.44)
+      postcss: 8.5.2
+      postcss-scss: 4.0.9(postcss@8.5.2)
       stylelint: 16.14.1
       stylelint-config-recommended: 14.0.1(stylelint@16.14.1)
       stylelint-scss: 6.11.0(stylelint@16.14.1)
@@ -4361,7 +4358,7 @@ packages:
       stylelint: 16.14.1
     dev: false
 
-  /stylelint-config-standard-scss@14.0.0(postcss@8.4.44)(stylelint@16.14.1):
+  /stylelint-config-standard-scss@14.0.0(postcss@8.5.2)(stylelint@16.14.1):
     resolution: {integrity: sha512-6Pa26D9mHyi4LauJ83ls3ELqCglU6VfCXchovbEqQUiEkezvKdv6VgsIoMy58i00c854wVmOw0k8W5FTpuaVqg==}
     engines: {node: '>=18.12.0'}
     peerDependencies:
@@ -4371,9 +4368,9 @@ packages:
       postcss:
         optional: true
     dependencies:
-      postcss: 8.4.44
+      postcss: 8.5.2
       stylelint: 16.14.1
-      stylelint-config-recommended-scss: 14.1.0(postcss@8.4.44)(stylelint@16.14.1)
+      stylelint-config-recommended-scss: 14.1.0(postcss@8.5.2)(stylelint@16.14.1)
       stylelint-config-standard: 36.0.1(stylelint@16.14.1)
     dev: false
 
@@ -4614,6 +4611,15 @@ packages:
     resolution: {integrity: sha512-ocyWc3bAHBB/guyqJQVI5o4BZkPhznPYUG2ea80Gond/BgNWpap8TOmLSeeQG7bnh2KMISxskdADG59j7zruhw==}
     dev: true
 
+  /valibot@1.0.0-rc.3:
+    resolution: {integrity: sha512-LT0REa7Iqx4QGcaHLiTiTkcmJqJ9QdpOy89HALFFBJgejTS64GQFRIbDF7e4f6pauQbo/myfKGmWXCLhMeM6+g==}
+    peerDependencies:
+      typescript: '>=5'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dev: false
+
   /webidl-conversions@3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
     dev: false
@@ -4767,19 +4773,6 @@ packages:
       stacktracey: 2.1.8
     dev: true
 
-  /zod-validation-error@3.4.0(zod@3.24.1):
-    resolution: {integrity: sha512-ZOPR9SVY6Pb2qqO5XHt+MkkTRxGXb4EVtnjc9JpXUOtUB1T9Ru7mZOT361AN3MsetVe7R0a1KZshJDZdgp9miQ==}
-    engines: {node: '>=18.0.0'}
-    peerDependencies:
-      zod: ^3.18.0
-    dependencies:
-      zod: 3.24.1
-    dev: false
-
   /zod@3.23.8:
     resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
     dev: true
-
-  /zod@3.24.1:
-    resolution: {integrity: sha512-muH7gBL9sI1nciMZV67X5fTKKBLtwpZ5VBp1vsOQzj1MhrBZ4wlVCm3gedKZWLp0Oyel8sIGfeiz54Su+OVT+A==}
-    dev: false

@@ -7,8 +7,7 @@ thumbnail: ./images/phases.png
 lastUpdated: 2023-02-04
 isFeatured: true
 openGraph:
-  twitter:
-    card: summary_large_image
+  card: summary_large_image
 ---
 
 {% capture originalHTML %}

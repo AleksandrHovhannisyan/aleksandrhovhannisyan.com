@@ -1,7 +1,9 @@
 ---
-layout: blog
 title: Blog
+layout: blog
 permalink: /blog/
+eleventyComputed:
+    description: "{{ site.description }}"
 ---
 
 {% include "postPreviews.liquid" posts: collections.posts, titleLevel: 2 %}

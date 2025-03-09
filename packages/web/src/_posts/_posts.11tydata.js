@@ -1,11 +1,22 @@
+import * as v from 'valibot';
 import path from 'node:path';
 import { toAbsoluteImageUrl } from '../../lib/filters.js';
-import { validateBlogPostSchema } from '../../lib/schema.js';
+import { BASE_FRONT_MATTER_SCHEMA, makeSchemaValidator, NON_EMPTY_STRING } from '../../lib/schema.js';
 
 const isProduction = process.env.ELEVENTY_ENV === 'production';
 
+const BLOG_POST_SCHEMA = v.object({
+  ...BASE_FRONT_MATTER_SCHEMA.entries,
+  categories: v.array(NON_EMPTY_STRING),
+  thumbnail: v.optional(NON_EMPTY_STRING),
+  lastUpdated: v.optional(v.date()),
+  commentsId: v.optional(v.integer()),
+  isFeatured: v.optional(v.boolean()),
+  isDraft: v.optional(v.boolean()),
+});
+
 export default {
-  eleventyDataSchema: validateBlogPostSchema,
+  eleventyDataSchema: makeSchemaValidator(BLOG_POST_SCHEMA),
   layout: 'post',
   permalink: (data) => {
     // Ignore/hide drafts on prod

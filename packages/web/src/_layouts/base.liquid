@@ -1,8 +1,6 @@
 {%- comment -%}Global variables for reuse in meta tags{%- endcomment -%}
-{%- if page.url == "/" -%}
-  {%- assign pageTitle = site.title -%}
-{%- else -%}
-  {%- assign pageTitle = title | default: renderData.title -%}
+{%- assign pageTitle = title | default: renderData.title -%}
+{%- if page.url != "/" -%}
   {%- assign pageTitle = pageTitle | append: " | " | append: site.title -%}
 {%- endif -%}
 {%- assign description = description | default: site.description -%}
@@ -59,7 +57,7 @@
   <meta property="og:type" content="{{ openGraph.type | default: "website" }}">
   <meta property="og:locale" content="{{ site.lang | replace: "-", "_" }}">
   {%- comment -%}Twitter card meta tags{%- endcomment -%}
-  <meta name="twitter:card" content="{{ openGraph.twitter.card | default: "summary" }}">
+  <meta name="twitter:card" content="{{ openGraph.card | default: "summary" }}">
   <meta name="twitter:title" content="{{ openGraph.title | default: pageTitle }}">
   <meta name="twitter:description" content="{{ openGraph.description | default: description }}">
   {%- if openGraph.image -%}

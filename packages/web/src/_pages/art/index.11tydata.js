@@ -4,9 +4,7 @@ import { toAbsoluteImageUrl } from '../../../lib/filters.js';
 export default {
   eleventyComputed: {
     openGraph: {
-      twitter: {
-        card: 'summary_large_image',
-      },
+      card: 'summary_large_image',
       image: (data) => {
         if (!data.page.url) return;
         return toAbsoluteImageUrl({

@@ -47,8 +47,7 @@
     "stringify-attributes": "4.0.0",
     "stylelint": "16.14.1",
     "stylelint-config-standard-scss": "14.0.0",
-    "zod": "3.24.1",
-    "zod-validation-error": "3.4.0"
+    "valibot": "~1.0.0-rc.3"
   },
   "lint-staged": {
     "*.js": "pnpm run lint:js",

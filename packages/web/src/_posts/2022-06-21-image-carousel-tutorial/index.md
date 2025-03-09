@@ -6,8 +6,7 @@ categories: [html, css, javascript, accessibility]
 thumbnail: ./images/algorithm.png
 lastUpdated: 2024-11-13
 openGraph:
-  twitter:
-    card: summary_large_image
+  card: summary_large_image
 stylesheets:
   - /assets/styles/demos/carousel.css
 scripts:
