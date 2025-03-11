@@ -2,8 +2,6 @@
 @use "../mixins";
 
 .theme-picker {
-  accent-color: functions.color("accent", "0");
-
   fieldset {
     border: none;
   }

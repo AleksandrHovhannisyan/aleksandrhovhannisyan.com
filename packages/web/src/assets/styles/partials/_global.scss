@@ -6,6 +6,7 @@
 body {
   background-color: functions.color("surface", "0");
   color: functions.color("text", "normal");
+  accent-color: functions.color("accent", "0");
   overflow-wrap: break-word;
   -webkit-font-smoothing: antialiased;
   @include mixins.font($family: "body", $weight: "regular", $size: "base");
@@ -33,7 +34,7 @@ kbd {
 
 mark,
 ::selection {
-  background-color: functions.color("text", "emphasis");
+  background-color: functions.color("accent", "0");
   color: functions.color("text", "inverted");
 }
 
