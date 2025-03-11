@@ -46,7 +46,7 @@
   }
   
   .container {
-    max-width: functions.to-rems(1536px);
+    max-width: calc(1536rem / 16);
     margin-inline: auto;
   }
   
@@ -123,7 +123,7 @@
           text-align: center;
           text-transform: uppercase;
           letter-spacing: functions.size("tracking", "lg");
-          text-shadow: functions.to-rems(1px) functions.to-rems(1px);
+          text-shadow: calc(1rem / 16) calc(1rem / 16);
           font-size: calc(var(--font-size-multiplier) * #{functions.size("font", "5xl")});
           @include mixins.font($family: "display", $weight: "regular");
   

@@ -23,7 +23,7 @@
 }
 
 .heart {
-  --heart-size: #{functions.to-rems(70px)};
+  --heart-size: calc(70rem / 16);
   width: var(--heart-size);
   height: var(--heart-size);
   transform: rotate(45deg);
