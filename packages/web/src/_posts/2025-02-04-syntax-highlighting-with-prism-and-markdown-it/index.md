@@ -59,11 +59,11 @@ In this tutorial, you'll learn how to use Prism as the syntax highlighter for ma
 
 {% include "toc.md" %}
 
-## 0. Prerequisites
+## Prerequisites
 
 This tutorial assumes basic knowledge of Node.js and JavaScript (ES6+). To keep things short, we won't look at any theming or CSS for Prism. Finally, this article only focuses on the server side (Node.js); if you're highlighting code blocks with Prism.js on the client side, then this isn't the right tutorial for you.
 
-## 1. Using Prism.js in markdown-it
+## Using Prism.js in markdown-it
 
 I'll assume you've already installed markdown-it and Prism.js and [configured markdown-it](https://github.com/markdown-it/markdown-it?tab=readme-ov-file#init-with-presets-and-options) with your desired options:
 
@@ -101,7 +101,7 @@ const md = MarkdownIt({
 
 This is the basic setup that we'll use in the rest of this tutorial.
 
-### 1.1. Loading Languages on Demand
+### Loading Languages on Demand
 
 The second argument to `Prism.highlight` is the grammar of the language we want to use when highlighting our code:
 
@@ -178,7 +178,7 @@ const md = MarkdownIt({
 
 Here, we first check to see if Prism has already loaded a grammar for that language. If it hasn't, then we load the grammar ourselves with `loadLanguages`. Now, we'll no longer get an error if we try to use a language that Prism hasn't preloaded.
 
-### 1.2. Language Aliases and Default Language
+### Language Aliases and Default Language
 
 In my Markdown, I prefer to omit the language for plaintext code blocks instead of explicitly using a language name of `text` or `plaintext`:
 
@@ -225,11 +225,11 @@ const md = MarkdownIt({
 });
 ```
 
-## 2. Rendering Custom HTML
+## Rendering Custom HTML
 
 So far, we've only used Prism to add syntax highlighting to fenced code blocks in markdown-it. But what if we also want to render custom HTML beyond just `<pre>`, `<code>`, and the token `<span>`s? For example, we might want to add line numbers, file name headers, copy-to-clipboard buttons, and more.
 
-### 2.1. Renderer Rules
+### Renderer Rules
 
 markdown-it allows you to customize how different tokens are rendered. For example, the following code defines a renderer function for fenced code blocks:
 
@@ -281,7 +281,7 @@ return (tokens, index, options, env, self) => {
 
 Note that this `.sr-only` caption will only be included for code blocks that don't have a custom (visible) file name override. Speaking of which...
 
-#### 2.1.1. File Name
+#### File Name
 
 I'll explain why shortly, but first we need to install [markdown-it-attrs](https://www.npmjs.com/package/markdown-it-attrs):
 
@@ -332,7 +332,7 @@ codeHtml = `${captionHtml}${codeHtml}${copyCodeButtonHtml}`;
 return `<figure class="code-block" data-language="${language}">${codeHtml}</figure>`;
 ```
 
-#### 2.1.2. Copy-to-Clipboard Button
+#### Copy-to-Clipboard Button
 
 As I mentioned before, you can either always render a copy-to-clipboard button for all code blocks or mark some code blocks as copyable using a `data-copyable` attribute. I prefer the latter approach, but it's up to you. The code for this is identical to the one for file names:
 
@@ -368,7 +368,7 @@ document.querySelectorAll('.copy-code-button').forEach((button) => {
 });
 ```
 
-### 2.2. Line Numbers
+### Line Numbers
 
 Prism supports [line numbering via plugins](https://prismjs.com/plugins/line-numbers/) only on the client side, but we're using it server side (at build time, such as part of a static site generator). This is a common limitation. But because we've already written a custom highlighter function, we can just add the line numbers ourselves:
 
@@ -445,7 +445,7 @@ code:has(.line:nth-child(100)) {
 }
 ```
 
-#### 2.3. Highlighting Lines
+#### Highlighting Lines
 
 The other nice thing about handling line numbering ourselves is that we can add custom flags at the start or end of lines of code that we want to highlight with CSS:
 

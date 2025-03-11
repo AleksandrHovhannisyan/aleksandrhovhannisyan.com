@@ -5,7 +5,6 @@ keywords: [diffie hellman, congruence modulo, key exchange]
 categories: [cryptography, security, math]
 layout: mathPost
 lastUpdated: 2025-02-16
-isFeatured: true
 ---
 
 I recently took an interest in cryptography and began working through Simon Singh's *The Code Book* and some supplementary resources for beginners. For the most part, it was smooth sailing until I arrived at the chapter on public key cryptography and [the Diffie-Hellman key exchange](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange). The concept itself made sense after I read through some analogies involving color mixing, especially in this video by Art of the Problem: [Public key cryptography - Diffie-Hellman Key Exchange (full version)](https://www.youtube.com/watch?v=YEBfamv-_do&t=162s). But I knew that anything more than a superficial understanding of this algorithm was going to require that I become comfortable with the math.

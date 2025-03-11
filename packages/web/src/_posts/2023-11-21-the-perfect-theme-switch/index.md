@@ -9,7 +9,7 @@ commentsId: 189
 thumbnail: https://images.unsplash.com/photo-1422207049116-cfaf69531072?q=80&w=1600&h=900&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 ---
 
-My site has sported a [dark mode toggle](#theme-picker) for as long as I can remember, but the logic for theming has changed quite a bit over the years. In this article, I want to share the culmination of the lessons learned on my quest to create the perfect theme switch component. We'll take a progressively enhanced approach, first supporting light and dark themes with CSS alone and then adding a few lines of JavaScript to allow users to select their preferred theme. Note that other developers have already written articles on this subject; what I'm presenting here is just how I approach theming on my site, with a few key differences.
+My site has sported a dark mode toggle for as long as I can remember, but the logic for theming has changed quite a bit over the years. In this article, I want to share the culmination of the lessons learned on my quest to create the perfect theme switch component. We'll take a progressively enhanced approach, first supporting light and dark themes with CSS alone and then adding a few lines of JavaScript to allow users to select their preferred theme. Note that other developers have already written articles on this subject; what I'm presenting here is just how I approach theming on my site, with a few key differences.
 
 {% include "toc.md" %}
 
