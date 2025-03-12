@@ -47,6 +47,7 @@ const LANGUAGE_ALIASES = new Map([
   // https://github.com/PrismJS/prism/issues/1124
   ['njk', 'liquid'],
   ['nunjucks', 'liquid'],
+  ['svelte', 'html'],
 ]);
 
 /** @param {string|undefined} lang */
