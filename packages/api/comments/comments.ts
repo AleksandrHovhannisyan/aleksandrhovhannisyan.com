@@ -34,42 +34,38 @@ export default {
     const { token } = await auth();
     const octokit = new Octokit({ auth: token });
 
-    const commentsId = new URL(request.url).searchParams.get('id');
-    if (!commentsId) {
-      return new Response(JSON.stringify({ error: 'You must specify an issue ID.' }), { status: 400, headers });
+    const commentsId = parseInt(new URL(request.url).searchParams.get('id'), 10);
+    if (Number.isNaN(commentsId)) {
+      return new Response(JSON.stringify({ error: 'Invalid ID.' }), { status: 400, headers });
     }
 
     try {
-      // Check this first. Does not count towards the API rate limit.
-      const { data: rateLimitInfo } = await octokit.rateLimit.get();
-      const remainingRequests = rateLimitInfo.rate.remaining;
-      console.log(`GitHub API requests remaining: ${remainingRequests}`);
-      if (remainingRequests === 0) {
-        const resetDate = new Date(0);
-        // From the docs: "The time at which the current rate limit window resets in UTC epoch seconds."
-        resetDate.setUTCSeconds(rateLimitInfo.rate.reset);
-        const retryTimeRelative = getRelativeTimeString(resetDate);
-        const retryTimeSeconds = Math.floor((resetDate.getTime() - Date.now()) / 1000);
-        return new Response(JSON.stringify({ error: `API rate limit exceeded. Try again ${retryTimeRelative}.` }), {
-          status: 503,
-          headers: { ...headers, 'Retry-After': retryTimeSeconds.toString() },
-        });
-      }
-
+      /** The number of API requests remaining. */
+      let rateLimitRemaining = Infinity;
+      /** The time at which the current rate limit window resets in UTC epoch seconds */
+      let rateLimitResetSeconds = -1;
+      
       // Reference for pagination: https://michaelheap.com/octokit-pagination/
       // Fetching issue comments for a repo: https://docs.github.com/en/rest/reference/issues#list-issue-comments-for-a-repository
-      const response = await octokit.paginate<typeof octokit.issues.listComments, PostComment[]>(
+      const comments = await octokit.paginate<typeof octokit.issues.listComments, PostComment[]>(
         octokit.issues.listComments,
         {
           owner: site.repo.owner,
           repo: site.repo.name,
-          issue_number: parseInt(commentsId, 10),
+          issue_number: commentsId,
           sort: 'created_at',
           direction: 'desc',
           per_page: 100, // this is the max number of results per page that the API supports
         },
-        (response) =>
-          response.data.map((comment) => ({
+        (response, abort) => {
+          rateLimitRemaining = parseInt(response.headers['x-ratelimit-remaining'], 10);
+          rateLimitResetSeconds = parseInt(response.headers['x-ratelimit-reset'], 10);
+          console.log({ rateLimitRemaining, rateLimitResetSeconds });
+          if (!rateLimitRemaining) {
+            abort();
+          }
+
+          return response.data.map((comment) => ({
             user: {
               avatarUrl: comment.user!.avatar_url,
               // Sanitize usernames to prevent XSS
@@ -82,9 +78,22 @@ export default {
             // Sanitize comment body to prevent XSS
             body: sanitizeHtml(markdown.render(comment.body ?? '')),
           }))
+        }
       );
 
-      return new Response(JSON.stringify({ data: response }), { status: 200, headers });
+      if (!rateLimitRemaining) {
+        const resetDate = new Date(0);
+        resetDate.setUTCSeconds(rateLimitResetSeconds);
+        const retryTimeRelative = getRelativeTimeString(resetDate);
+        const retryTimeSeconds = Math.floor((resetDate.getTime() - Date.now()) / 1000);
+        
+        return new Response(JSON.stringify({ error: `API rate limit exceeded. Try again ${retryTimeRelative}.` }), {
+          status: 503,
+          headers: { ...headers, 'Retry-After': retryTimeSeconds.toString() },
+        });
+      }
+
+      return new Response(JSON.stringify({ data: comments }), { status: 200, headers });
     } catch (e) {
       console.log(e);
       return new Response(JSON.stringify({ error: 'Unable to fetch comments for this post.' }), {
