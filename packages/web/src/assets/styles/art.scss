@@ -124,7 +124,7 @@
           text-transform: uppercase;
           letter-spacing: functions.size("tracking", "lg");
           text-shadow: calc(1rem / 16) calc(1rem / 16);
-          font-size: calc(var(--font-size-multiplier) * #{functions.size("font", "5xl")});
+          font-size: calc(var(--font-size-multiplier) * #{functions.size("font", "4xl")});
           @include mixins.font($family: "display", $weight: "regular");
   
           @include mixins.tablet-sm {

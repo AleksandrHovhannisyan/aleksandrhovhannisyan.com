@@ -3,6 +3,7 @@
 
 .post {
   counter-reset: footnotes;
+  max-width: calc(700rem / 16);
 
   &-header {
     text-wrap: balance;

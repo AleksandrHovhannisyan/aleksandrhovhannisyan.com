@@ -4,7 +4,7 @@
 
 #main-content {
   flex: 1;
-  max-width: calc(720rem / 16);
+  max-width: calc(760rem / 16);
   min-inline-size: 0;
   padding-block: functions.clamped(
       functions.get($tokens, 'size', 'spacing', '0'),

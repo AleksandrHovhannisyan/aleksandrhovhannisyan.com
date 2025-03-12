@@ -24,9 +24,13 @@
     }
   }
 
+  &-date,
+  &-tags {
+    @include mixins.font($size: "sm");
+  }
+
   &-date {
     color: functions.color("text", "soft");
-    @include mixins.font($size: "sm");
   }
 
   &-title {
@@ -42,20 +46,11 @@
 
   &-tags {
     display: none;
-    @include mixins.font($size: "sm");
   }
 
   @include mixins.tablet-sm {
-    &-date {
-      @include mixins.font($size: "xs");
-    }
-
     &-title {
-      @include mixins.font($size: "md", $leading: "2xs");
-    }
-
-    &-description {
-      @include mixins.font($size: "sm", $leading: "sm");
+      line-height: functions.size("leading", "2xs");
     }
   }
 
@@ -65,7 +60,6 @@
       flex-wrap: wrap;
       gap: functions.size("spacing", "-3") functions.size("spacing", "-2");
       margin-top: functions.size("spacing", "0");
-      @include mixins.font($size: "xs");
     }
 
     a {

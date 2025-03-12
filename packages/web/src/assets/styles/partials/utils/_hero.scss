@@ -6,12 +6,4 @@
   > * {
     max-width: 49ch;
   }
-
-  &-title {
-    @include mixins.font($size: "4xl");
-  }
-
-  &-subtitle {
-    @include mixins.font($size: "lg");
-  }
 }

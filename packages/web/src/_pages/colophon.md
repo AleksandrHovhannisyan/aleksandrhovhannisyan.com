@@ -30,7 +30,7 @@ scripts:
 
 ### Typography
 
-{% assign fontSizeSteps = "xs,sm,base,md,lg,xl,2xl,3xl,4xl,5xl" | split: "," %}
+{% assign fontSizeSteps = "xs,sm,base,md,lg,xl,2xl,3xl,4xl" | split: "," %}
 
 #### body
 

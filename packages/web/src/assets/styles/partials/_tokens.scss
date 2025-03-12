@@ -28,9 +28,7 @@ $tokens: (
     ),
     dark: (
       "accent": (
-        // "0": hsl(211deg 100% 77%),
         "0": hsl(211deg 100% 64%),
-        // "0": hsl(53.5deg 100% 63.9%),
       ),
       "surface": (
         "0": hsl(0deg 0% 6%),
@@ -87,32 +85,26 @@ $tokens: (
       ),
       "lg": (
         min: 24px,
-        max: 29px,
+        max: 28px,
         leading: "xs",
       ),
       "xl": (
         min: 28px,
-        max: 35px,
+        max: 34px,
         leading: "xs",
       ),
       "2xl": (
         min: 32px,
-        max: 42px,
+        max: 40px,
         leading: "2xs",
       ),
       "3xl": (
-        min: 36px,
-        max: 50px,
-        leading: "2xs",
-        tracking: "sm",
-      ),
-      "4xl": (
-        min: 40px,
-        max: 60px,
+        min: 38px,
+        max: 54px,
         leading: "3xs",
         tracking: "sm",
       ),
-      "5xl": (
+      "4xl": (
         min: 44px,
         max: 76px,
         leading: "3xs",
