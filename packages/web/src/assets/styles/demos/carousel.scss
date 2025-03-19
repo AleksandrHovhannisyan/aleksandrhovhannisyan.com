@@ -73,6 +73,10 @@
     color: white;
     background-color: hsl(0deg 0% 0% / 75%);
     @include mixins.font($size: "xs");
+
+    a {
+      text-decoration-color: white;
+    }
   }
   
   .carousel-control {
