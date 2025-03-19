@@ -23,12 +23,12 @@
   padding: functions.size("relative", "2");
   @include mixins.transition(border-radius);
 
-  &:has(a:focus-visible) {
-    outline: solid functions.size("spacing", "-3");
-  }
-
   &:is(:hover, :focus-within) {
     border-end-end-radius: 100px var(--size-shadow-height);
+  }
+
+  &:has(a:focus-visible) {
+    outline: solid functions.size("spacing", "-3");
   }
 
   &::after {

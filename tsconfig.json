@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "esModuleInterop": false,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "allowJs": false,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true
+  },
+  "exclude": ["dist", "node_modules"]
+}

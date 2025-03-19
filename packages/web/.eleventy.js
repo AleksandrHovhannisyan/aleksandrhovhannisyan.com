@@ -1,5 +1,4 @@
 import esbuild from 'esbuild';
-import path from 'node:path';
 import PluginFootnotes from 'eleventy-plugin-footnotes';
 import { EleventyPluginCodeDemo } from 'eleventy-plugin-code-demo';
 import { eleventyImageTransformPlugin } from '@11ty/eleventy-img';
@@ -55,7 +54,7 @@ export default function eleventy(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/assets/fonts');
   eleventyConfig.addPassthroughCopy('src/*.pdf');
   eleventyConfig.addPassthroughCopy('src/_posts/**/videos/*', {
-    mode: "html-relative",
+    mode: 'html-relative',
     failOnError: true,
   });
 
@@ -133,11 +132,11 @@ export default function eleventy(eleventyConfig) {
   eleventyConfig.on('afterBuild', () => {
     return esbuild.build({
       entryPoints: [
-        'src/assets/scripts/copyCode.js',
-        'src/assets/scripts/comments.js',
-        'src/assets/scripts/dialog.js',
-        'src/assets/scripts/demos/carousel.js',
-        'src/assets/scripts/demos/gameLoop.js',
+        'src/assets/scripts/copyCode.ts',
+        'src/assets/scripts/comments.ts',
+        'src/assets/scripts/dialog.ts',
+        'src/assets/scripts/demos/carousel.ts',
+        'src/assets/scripts/demos/gameLoop.ts',
       ],
       entryNames: '[dir]/[name]',
       outdir: 'dist/assets/scripts',

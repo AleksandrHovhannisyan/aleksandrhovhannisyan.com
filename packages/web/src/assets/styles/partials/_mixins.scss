@@ -25,10 +25,10 @@
 // Inspiration: https://stackoverflow.com/a/49437769/5323344
 @mixin transition($props...) {
   $result: ();
-  @for $i from 1 through length($props) {
+  @for $i from 1 through list.length($props) {
     $prop: list.nth($props, $i);
     $result: list.append($result, $prop);
-    @if $i != length($props) {
+    @if $i != list.length($props) {
       $result: list.append(
         $result,
         string.unquote(

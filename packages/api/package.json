@@ -8,7 +8,7 @@
   "scripts": {
     "dev:comments": "pnpm wrangler dev -c comments/wrangler.toml",
     "deploy:comments": "pnpm wrangler deploy -c comments/wrangler.toml",
-    "lint": "eslint --cache --fix \"**/*.ts\""
+    "lint": "eslint --cache --fix"
   },
   "dependencies": {
     "web": "workspace:*",
@@ -18,10 +18,7 @@
   },
   "devDependencies": {
     "wrangler": "3.72.2",
-    "@cloudflare/workers-types": "4.20240821.1",
-    "@typescript-eslint/eslint-plugin": "8.4.0",
-    "@typescript-eslint/parser": "8.4.0",
-    "typescript": "5.5.4"
+    "@cloudflare/workers-types": "4.20240821.1"
   },
   "lint-staged": {
     "*.ts": "pnpm run lint"

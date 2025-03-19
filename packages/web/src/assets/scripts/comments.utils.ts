@@ -1,19 +1,18 @@
+import type { PostComment } from '../../../lib/types';
+
 /** Represents an error that occurred while fetching or rendering comments. */
 export class CommentsError extends Error {
-  /**
-   * @param {string} message
-   */
-  constructor(message) {
+  constructor(message: string) {
     super(message);
     this.name = 'CommentsError';
   }
 }
 
 /** Returns all comments using the provided issue ID.
- * @param {string} id The ID of the comments source (e.g., GitHub issue number if using GitHub Issues API).
+ * @param id The ID of the comments source (e.g., GitHub issue number if using GitHub Issues API).
  * @throws {CommentsError}
  */
-export const fetchComments = async (id) => {
+export const fetchComments = async (id: string) => {
   try {
     const baseUrl = window.location.hostname === 'localhost' ? 'http://localhost:4002' : '';
     const response = await (await fetch(`${baseUrl}/api/comments?id=${id}`)).json();
@@ -21,7 +20,7 @@ export const fetchComments = async (id) => {
       throw new CommentsError(response.error);
     }
     /** @type import("../../../lib/types").PostComment[] */
-    const comments = response.data;
+    const comments: import('../../../lib/types').PostComment[] = response.data;
     return comments;
   } catch (e) {
     // Allow custom error to bubble to caller
@@ -32,55 +31,68 @@ export const fetchComments = async (id) => {
   }
 };
 
-const COMMENT_TEMPLATE = document.querySelector(`#comment-template`);
+const COMMENT_TEMPLATE = document.querySelector<HTMLTemplateElement>(`#comment-template`)!;
 let authorComment = 0;
 
-/** @param {import("../../../lib/types").PostComment} comment The user comment to render. */
-const renderComment = (comment) => {
-  const commentNode = COMMENT_TEMPLATE.content.cloneNode(true);
+/** @param comment The user comment to render. */
+const renderComment = (comment: PostComment) => {
+  const commentNode = COMMENT_TEMPLATE.content.cloneNode(true) as HTMLElement;
 
-  const userAvatar = commentNode.querySelector('img');
-  const userLink = commentNode.querySelector('a');
-  userAvatar.src = `${comment.user.avatarUrl}`;
-  userAvatar.removeAttribute('eleventy:ignore');
-  userLink.href = `https://github.com/${comment.user.name}`;
-  userLink.innerHTML = comment.user.name;
+  const userAvatar = commentNode.querySelector<HTMLImageElement>('img');
+  if (userAvatar) {
+    userAvatar.src = `${comment.user.avatarUrl}`;
+    userAvatar.removeAttribute('eleventy:ignore');
+  }
+
+  const userLink = commentNode.querySelector<HTMLAnchorElement>('a');
+  if (userLink) {
+    userLink.href = `https://github.com/${comment.user.name}`;
+    userLink.innerHTML = comment.user.name;
+  }
 
   const authorPill = commentNode.querySelector('.post-comment-author');
-  if (!comment.user.isAuthor) {
-    authorPill.remove();
-  } else {
-    const authorPillId = `author-${authorComment++}`;
-    authorPill.id = authorPillId;
-    userLink.setAttribute('aria-describedby', authorPillId);
+  if (authorPill) {
+    if (!comment.user.isAuthor) {
+      authorPill.remove();
+    } else {
+      const authorPillId = `author-${authorComment++}`;
+      authorPill.id = authorPillId;
+      userLink?.setAttribute('aria-describedby', authorPillId);
+    }
   }
 
   const commentTimestamp = commentNode.querySelector('time');
-  commentTimestamp.setAttribute('datetime', comment.dateTime);
-  commentTimestamp.innerHTML = comment.dateRelative;
+  if (commentTimestamp) {
+    commentTimestamp.setAttribute('datetime', comment.dateTime);
+    commentTimestamp.innerHTML = comment.dateRelative;
+  }
 
   const editedPill = commentNode.querySelector('.post-comment-edited');
-  if (!comment.isEdited) {
+  if (editedPill && !comment.isEdited) {
     editedPill.remove();
   }
 
   const commentBody = commentNode.querySelector('.post-comment-body');
-  commentBody.innerHTML = comment.body;
+  if (commentBody) {
+    commentBody.innerHTML = comment.body;
+  }
 
   return commentNode;
 };
 
-/** @param {import("../../../lib/types").PostComment[]} comments The user comments to render. */
-export const renderComments = (comments) => {
+/** @param comments The user comments to render. */
+export const renderComments = (comments: PostComment[]) => {
   if (!comments.length) {
     throw new CommentsError('No comments yet.');
   }
-  const commentSection = document.querySelector('#comments');
-  const counter = commentSection.querySelector('#comments-count');
+  const commentSection = document.querySelector<HTMLElement>('#comments');
+  const counter = commentSection?.querySelector<HTMLElement>('#comments-count');
   const list = document.createElement('ol');
   list.classList.add('rhythm');
   list.style.setProperty('--rhythm', '2lh');
-  counter.innerText = `${comments.length} `;
+  if (counter) {
+    counter.innerText = comments.length + ' ';
+  }
   // https://frontendmasters.com/blog/patterns-for-memory-efficient-dom-manipulation/#approach-2-use-createdocumentfragment-with-appendchild-to-batch-inserts
   const fragment = document.createDocumentFragment();
   comments.forEach((comment) => {
@@ -90,5 +102,5 @@ export const renderComments = (comments) => {
   });
   // ... but append to actual list once at the end, to avoid unnecessary reflow from `n` appends
   list.appendChild(fragment);
-  commentSection.appendChild(list);
+  commentSection?.appendChild(list);
 };

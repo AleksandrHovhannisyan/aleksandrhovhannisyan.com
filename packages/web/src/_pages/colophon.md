@@ -19,7 +19,7 @@ scripts:
   - **Static site generator**: [{{ eleventy.generator }}](11ty.dev)
   - **Styling**: [Sass](https://sass-lang.com/) (it's not just for nesting!)
   - **Content**: HTML, Markdown ([markdown-it](https://github.com/markdown-it/markdown-it)), and [Liquid](https://shopify.github.io/liquid/) templating
-  - **Interactivity**: JavaScript (minified and bundled with [esbuild](https://esbuild.github.io/))
+  - **Interactivity**: TypeScript (minified and bundled with [esbuild](https://esbuild.github.io/))
 - **Back end**
   - **Comments API**: [Cloudflare Workers](https://workers.cloudflare.com/), [GitHub API](https://docs.github.com/en/rest/issues), and [TypeScript](https://www.typescriptlang.org/)
   - **Hosting**: [Cloudflare Pages](https://pages.cloudflare.com/) (free tier)

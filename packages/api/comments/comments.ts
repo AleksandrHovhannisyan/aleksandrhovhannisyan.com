@@ -44,7 +44,7 @@ export default {
       let rateLimitRemaining = Infinity;
       /** The time at which the current rate limit window resets in UTC epoch seconds */
       let rateLimitResetSeconds = -1;
-      
+
       // Reference for pagination: https://michaelheap.com/octokit-pagination/
       // Fetching issue comments for a repo: https://docs.github.com/en/rest/reference/issues#list-issue-comments-for-a-repository
       const comments = await octokit.paginate<typeof octokit.issues.listComments, PostComment[]>(
@@ -77,7 +77,7 @@ export default {
             isEdited: comment.created_at !== comment.updated_at,
             // Sanitize comment body to prevent XSS
             body: sanitizeHtml(markdown.render(comment.body ?? '')),
-          }))
+          }));
         }
       );
 
@@ -86,7 +86,7 @@ export default {
         resetDate.setUTCSeconds(rateLimitResetSeconds);
         const retryTimeRelative = getRelativeTimeString(resetDate);
         const retryTimeSeconds = Math.floor((resetDate.getTime() - Date.now()) / 1000);
-        
+
         return new Response(JSON.stringify({ error: `API rate limit exceeded. Try again ${retryTimeRelative}.` }), {
           status: 503,
           headers: { ...headers, 'Retry-After': retryTimeSeconds.toString() },
