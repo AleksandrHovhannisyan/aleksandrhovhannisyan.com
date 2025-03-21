@@ -1,25 +1,38 @@
 import * as v from 'valibot';
-import { makeSchemaValidator, BASE_FRONT_MATTER_SCHEMA, NON_EMPTY_STRING } from '../../lib/schema.js';
+import { makeSchemaValidator, FrontMatter, NON_EMPTY_STRING } from '../../lib/schema.js';
 
-const NOTE_SCHEMA = v.object({
-  ...BASE_FRONT_MATTER_SCHEMA.entries,
+const NoteFrontMatter = v.object({
+  ...FrontMatter.entries,
   thumbnail: v.optional(NON_EMPTY_STRING),
 });
 
-export default {
-  eleventyDataSchema: makeSchemaValidator(NOTE_SCHEMA),
+/**
+ * @typedef {v.InferInput<typeof NoteFrontMatter>} NoteFrontMatter
+ */
+
+/**
+ * @typedef {NoteFrontMatter & import('../../lib/schema.js').EleventyPageData} NotePageData
+ */
+
+/**
+ * @type {Partial<NoteFrontMatter>}
+ */
+const data = {
+  eleventyDataSchema: makeSchemaValidator(NoteFrontMatter),
   layout: 'note',
   tags: ['notes'],
+  /**
+   * @param {NotePageData} data
+   */
   permalink: (data) => `/notes/${data?.page?.fileSlug}/`,
   eleventyComputed: {
-    scripts: (data) => {
-      return [
-        ...data.scripts,
-        {
-          type: 'module',
-          src: '/assets/scripts/copyCode.js',
-        },
-      ];
-    },
+    scripts: [
+      {
+        type: 'module',
+        src: '/assets/scripts/copyCode.js',
+      },
+    ],
   },
 };
+
+export default data;

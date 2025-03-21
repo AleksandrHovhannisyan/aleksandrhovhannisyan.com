@@ -7,94 +7,197 @@ const VALID_LAYOUT_FILE_NAMES = fs
   .map((file) => path.parse(file).name);
 
 export const NON_EMPTY_STRING = v.pipe(v.string(), v.nonEmpty());
+export const NON_EMPTY_ARRAY = (type) => v.pipe(v.array(type), v.minLength(1));
+export const ISO_DATE_STRING = v.pipe(v.string(), v.isoDate());
 
-export const BASE_FRONT_MATTER_SCHEMA = v.object({
-  // The page title, to be shown in <title> and possibly elsewhere
+const FRONT_MATTER_BASE = v.object({
+  /**
+   * The page title, to be shown in <title> and possibly elsewhere
+   */
   title: NON_EMPTY_STRING,
-  // The meta description for the page
+  /**
+   * The meta description for the page
+   */
   description: NON_EMPTY_STRING,
-  // Eleventy URL path output for this page
+  /**
+   * Eleventy URL path output for this page
+   */
   permalink: v.optional(v.union([NON_EMPTY_STRING, v.function()])),
-  // Eleventy layout file
+  /**
+   * Publication date. May either be a string or date as YAML supports both and coerces as needed.
+   */
+  date: v.optional(v.union([ISO_DATE_STRING, v.date()])),
+  /**
+   * Date when this item was last updated/edited
+   */
+  lastUpdated: v.optional(v.union([ISO_DATE_STRING, v.date()])),
+  /**
+   * Eleventy layout file
+   */
   layout: v.optional(v.picklist(VALID_LAYOUT_FILE_NAMES)),
-  // Meta keywords (SEO)
-  keywords: v.optional(v.array(NON_EMPTY_STRING)),
-  // Eleventy tags or collections
-  tags: v.optional(v.array(NON_EMPTY_STRING)),
-  // For 301 redirects (see redirects.liquid)
-  redirectFrom: v.optional(v.union([NON_EMPTY_STRING, v.array(NON_EMPTY_STRING)])),
-  // For SEO (optional, defaults to current page URL)
+  /**
+   * Meta keywords (SEO)
+   */
+  keywords: v.optional(NON_EMPTY_ARRAY(NON_EMPTY_STRING)),
+  /**
+   * Eleventy tags or collections
+   */
+  tags: v.optional(NON_EMPTY_ARRAY(NON_EMPTY_STRING)),
+  /**
+   * For 301 redirects (see redirects.liquid)
+   */
+  redirectFrom: v.optional(v.union([NON_EMPTY_STRING, NON_EMPTY_ARRAY(NON_EMPTY_STRING)])),
+  /**
+   * For SEO (optional, defaults to current page URL)
+   */
   canonicalUrl: v.optional(NON_EMPTY_STRING),
-  // OG images
+  /**
+   * OpenGraph data for social sharing
+   */
   openGraph: v.optional(
-    v.object({
-      title: v.optional(NON_EMPTY_STRING),
-      description: v.optional(NON_EMPTY_STRING),
-      type: v.optional(v.picklist(['website', 'article'])),
-      card: v.optional(v.picklist(['summary_large_image'])),
-      image: v.optional(v.union([NON_EMPTY_STRING, v.function()])),
-    })
-  ),
-  // Exclude this page from showing up in the collections global array
-  eleventyExcludeFromCollections: v.optional(v.union([v.boolean(), v.function()])),
-  // Whether to exclude the current page from the sitemap.xml file
-  excludeFromSitemap: v.optional(v.boolean()),
-  // Whether to discourage crawling this page
-  noindex: v.optional(v.boolean()),
-  // Theming
-  isThemed: v.optional(v.boolean()),
-  themeOverride: v.optional(v.picklist(['light', 'dark'])),
-  // A list of CSS stylesheets to request in the <head>
-  stylesheets: v.optional(v.array(NON_EMPTY_STRING)),
-  // A list of JS files to request
-  scripts: v.optional(
     v.union([
-      v.array(
-        v.object({
-          src: NON_EMPTY_STRING,
-          type: v.optional(v.picklist(['module', 'importmap'])),
-          defer: v.optional(v.boolean()),
-        })
-      ),
+      v.object({
+        /**
+         * The Open Graph title
+         */
+        title: v.optional(NON_EMPTY_STRING),
+        /**
+         * The Open Graph description
+         */
+        description: v.optional(NON_EMPTY_STRING),
+        /**
+         * The Open Graph item type (e.g., website or article)
+         */
+        type: v.optional(v.picklist(['website', 'article'])),
+        /**
+         * The Open Graph card type (e.g., summary_large_image)
+         */
+        card: v.optional(v.picklist(['summary_large_image'])),
+        /**
+         * The Open Graph image URL. Must be an absolute URL to work on external social media sites.
+         */
+        image: v.optional(NON_EMPTY_STRING),
+      }),
       v.function(),
     ])
   ),
-  // <link rel="preload"> tags in the <head>
-  preloads: v.optional(
-    v.array(
+  /**
+   * Exclude this page from showing up in the collections global array
+   */
+  eleventyExcludeFromCollections: v.optional(v.boolean()),
+  /**
+   * Whether to exclude the current page from the sitemap.xml file
+   */
+  excludeFromSitemap: v.optional(v.boolean()),
+  /**
+   * Whether to discourage crawling this page
+   */
+  noindex: v.optional(v.boolean()),
+  /**
+   * Whether the page is themed
+   */
+  isThemed: v.optional(v.boolean()),
+  /**
+   * Override the theme for this page (light or dark)
+   */
+  themeOverride: v.optional(v.picklist(['light', 'dark'])),
+  /**
+   * A list of CSS stylesheets to request in the <head>
+   */
+  stylesheets: v.optional(NON_EMPTY_ARRAY(NON_EMPTY_STRING)),
+  /**
+   * A list of JS files to request
+   */
+  scripts: v.optional(
+    NON_EMPTY_ARRAY(
       v.object({
+        /**
+         * The source URL of the script
+         */
+        src: NON_EMPTY_STRING,
+        /**
+         * The type of the script (e.g., module or importmap)
+         */
+        type: v.optional(v.picklist(['module', 'importmap'])),
+        /**
+         * Whether to defer the script
+         */
+        defer: v.optional(v.boolean()),
+      })
+    )
+  ),
+  /**
+   * <link rel="preload"> tags in the <head>
+   */
+  preloads: v.optional(
+    NON_EMPTY_ARRAY(
+      v.object({
+        /**
+         * The href of the preload link
+         */
         href: NON_EMPTY_STRING,
+        /**
+         * The resource type (e.g., fetch, font, image, etc.)
+         */
         as: v.picklist(['fetch', 'font', 'image', 'script', 'style', 'track']),
+        /**
+         * The MIME type of the resource
+         */
         type: v.optional(NON_EMPTY_STRING),
+        /**
+         * Whether to include the crossorigin attribute. Should be `true` if `as` is `"font"` or `"fetch"`.
+         */
         crossorigin: v.optional(v.boolean()),
       })
     )
   ),
-  // Data computed from other data, https://www.11ty.dev/docs/data-computed/
-  eleventyComputed: v.optional(v.lazy(() => v.partial(BASE_FRONT_MATTER_SCHEMA))),
+  /**
+   * Eleventy schema validator
+   */
+  eleventyDataSchema: v.optional(v.function()),
+});
+
+export const FrontMatter = v.object({
+  ...FRONT_MATTER_BASE.entries,
+  /** Recursive data computed from other data, https://www.11ty.dev/docs/data-computed/ */
+  eleventyComputed: v.optional(
+    v.lazy(() =>
+      v.partial(
+        v.object(
+          Object.fromEntries(
+            // Every key can optionally be a function that takes the schema front matter as an argument and returns a value of the same type
+            Object.entries(FRONT_MATTER_BASE.entries).map(([key, value]) => [
+              key,
+              v.union([value, v.pipe(v.function(), v.returns(value))]),
+            ])
+          )
+        )
+      )
+    )
+  ),
 });
 
 /**
- * @param {v.ObjectSchema} schema
+ * @param {v.BaseSchema<unknown, unknown, v.BaseIssue<unknown>>} schema
  */
 export function makeSchemaValidator(schema) {
-  /**
-   * @param {unknown data}
-   */
   return function (data) {
-    const result = v.safeParse(schema, data);
-    if (!result.success) {
-      const issues = result.issues
-        .map(({ issues, path }) => {
-          return issues
-            .map((issue, index) => {
-              const { key } = path[index];
-              return `${key}: expected ${issue.expected} but received ${issue.received}`;
-            })
-            .join(', ');
-        })
-        .join('\n');
-      throw new Error(issues);
-    }
+    v.parse(schema, data);
   };
 }
+
+/**
+ * @typedef {v.InferInput<typeof FrontMatter>} FrontMatter
+ */
+
+/**
+ * @typedef {Object} EleventyPageData
+ * @property {Object} [page] - Data specific to the current page.
+ * @property {string} page.inputPath - The input path of the page.
+ * @property {string} page.fileSlug - The file slug of the page.
+ * @property {string} [page.url] - The URL of the page.
+ * @property {Object} eleventy - Eleventy globals.
+ * @property {Object} eleventy.directories - Eleventy directories.
+ * @property {string} eleventy.directories.output - The output directory.
+ * @property {string} eleventy.directories.input - The input directory.
+ */

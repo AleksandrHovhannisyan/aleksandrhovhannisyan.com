@@ -43,18 +43,33 @@ export const sanitizeHtml = (html) => {
 export const withoutBaseDirectory = (pathString) => pathString.substring(pathString.indexOf(path.sep));
 
 /**
- * Memoizes any function.
- * @param {() => Promise<any>} fn
+ * Memoizes the given function, caching its result.
  */
 export function memoize(fn) {
   const cache = new Map();
 
-  return async function (...args) {
+  return function (...args) {
     const key = JSON.stringify(args);
-    if (cache.get(key)) {
+
+    if (cache.has(key)) {
       return cache.get(key);
     }
-    const value = await fn.apply(this, args);
+
+    const value = fn.apply(this, args);
+
+    // For async callbacks
+    if (value instanceof Promise) {
+      const promise = value.then((resolvedValue) => {
+        // Once the promise resolves, cache the resolved value for future lookups
+        cache.set(key, resolvedValue);
+        return resolvedValue;
+      });
+      // In case there are multiple calls to the same promise, cache the promise itself
+      // so that all redundant lookups return the same promise. Once it resolves, we'll update the cache above.
+      cache.set(key, promise);
+      return promise;
+    }
+
     cache.set(key, value);
     return value;
   };

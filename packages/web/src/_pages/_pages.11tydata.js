@@ -1,6 +1,11 @@
-import { BASE_FRONT_MATTER_SCHEMA, makeSchemaValidator } from '../../lib/schema.js';
+import { FrontMatter, makeSchemaValidator } from '../../lib/schema.js';
 
-export default {
+/**
+ * @type {Partial<import('../../lib/schema.js').FrontMatter>}
+ */
+const data = {
   layout: 'default',
-  eleventyDataSchema: makeSchemaValidator(BASE_FRONT_MATTER_SCHEMA),
+  eleventyDataSchema: makeSchemaValidator(FrontMatter),
 };
+
+export default data;
