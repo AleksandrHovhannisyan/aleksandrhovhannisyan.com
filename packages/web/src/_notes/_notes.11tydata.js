@@ -25,14 +25,12 @@ const data = {
    * @param {NotePageData} data
    */
   permalink: (data) => `/notes/${data?.page?.fileSlug}/`,
-  eleventyComputed: {
-    scripts: [
-      {
-        type: 'module',
-        src: '/assets/scripts/copyCode.js',
-      },
-    ],
-  },
+  scripts: [
+    {
+      type: 'module',
+      src: '/assets/scripts/copyCode.js',
+    },
+  ],
 };
 
 export default data;
