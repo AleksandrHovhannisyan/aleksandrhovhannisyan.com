@@ -75,7 +75,8 @@
     @include mixins.font($size: "xs");
 
     a {
-      text-decoration-color: white;
+      color: inherit;
+      text-decoration-color: currentcolor;
     }
   }
   
