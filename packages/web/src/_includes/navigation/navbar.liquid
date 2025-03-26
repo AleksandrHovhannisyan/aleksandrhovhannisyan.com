@@ -25,15 +25,6 @@
           <li>{% include "navigation/navLink.liquid", href: "/colophon/", label: "Colophon" %}</li>
         </ul>
       </li>
-      <li>
-        <span class="label">Socials</span>
-        <ul class="links">
-          {% assign navSocials = "github,codepen,linkedin,bluesky" |  split: "," %}
-          {%- for social in navSocials -%}
-            <li>{% include "navigation/navLink.liquid", href: socials[social].url, label: socials[social].name %}</li>
-          {%- endfor -%}
-        </ul>
-      </li>
     </ul>
   </nav>
   {% if isThemed %}
