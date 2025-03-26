@@ -78,25 +78,52 @@ scripts:
 
 ### Colors
 
-{% assign backgroundColors = (0..9) %}
+{% assign accentColors = (0..0) %}
+{% assign surfaceColors = (0..9) %}
 {% assign foregroundColors = "text-normal,text-emphasis,text-soft" | split: "," %}
 
-#### Background
+#### Accent
 
 <div class="scroll-x">
   <table>
-    <caption>Background color variables</caption>
+    <caption>Accent color variables</caption>
     <thead>
       <tr>
         <th scope="col">Variable</th>
-        <th scope="col">Preview</th>
+        <th scope="col">Light</th>
+        <th scope="col">Dark</th>
       </tr>
     </thead>
     <tbody>
-      {%- for color in backgroundColors -%}
+      {%- for color in accentColors -%}
+        <tr>
+          <td><code>color-accent-{{ color }}</code></td>
+          <td><div data-theme="light" style="aspect-ratio: 1; width: 50px; background-color: var(--color-accent-{{ color }}); border: solid 1px;"></div></td>
+          <td><div data-theme="dark" style="aspect-ratio: 1; width: 50px; background-color: var(--color-accent-{{ color }}); border: solid 1px;"></div></td>
+        </tr>
+      {%- endfor -%}
+    </tbody>
+  </table>
+</div>
+
+#### Surface
+
+<div class="scroll-x">
+  <table>
+    <caption>Surface color variables</caption>
+    <thead>
+      <tr>
+        <th scope="col">Variable</th>
+        <th scope="col">Light</th>
+        <th scope="col">Dark</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%- for color in surfaceColors -%}
         <tr>
           <td><code>color-surface-{{ color }}</code></td>
-          <td><div style="aspect-ratio: 1; width: 50px; background-color: var(--color-surface-{{ color }}); border: solid 1px;"></div></td>
+          <td><div data-theme="light" style="aspect-ratio: 1; width: 50px; background-color: var(--color-surface-{{ color }}); border: solid 1px;"></div></td>
+          <td><div data-theme="dark" style="aspect-ratio: 1; width: 50px; background-color: var(--color-surface-{{ color }}); border: solid 1px;"></div></td>
         </tr>
       {%- endfor -%}
     </tbody>
@@ -111,14 +138,16 @@ scripts:
     <thead>
       <tr>
         <th scope="col">Variable</th>
-        <th scope="col">Preview</th>
+        <th scope="col">Light</th>
+        <th scope="col">Dark</th>
       </tr>
     </thead>
     <tbody>
       {%- for color in foregroundColors -%}
         <tr>
           <td><code>{{ color }}</code></td>
-          <td style="color: var(--color-{{ color }});">Lorem ipsum dolor sit amet</td>
+          <td data-theme="light" style="color: var(--color-{{ color }}); background-color: var(--color-surface-0);">Lorem ipsum dolor sit amet</td>
+          <td data-theme="dark" style="color: var(--color-{{ color }}); background-color: var(--color-surface-0);">Lorem ipsum dolor sit amet</td>
         </tr>
       {%- endfor -%}
     </tbody>

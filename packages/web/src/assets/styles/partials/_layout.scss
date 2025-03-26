@@ -51,8 +51,7 @@
 }
 
 #nav-mobile {
-  a,
-  label {
+  :is(a, label) {
     padding-block: functions.size('spacing', '-3');
   }
 }
