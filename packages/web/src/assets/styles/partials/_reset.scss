@@ -49,7 +49,7 @@ body:has(dialog[open]) {
 }
 
 // https://css-tricks.com/standardizing-focus-styles-with-css-custom-properties/
-:where(a, button, input, select, textarea, summary, [tabindex="0"]) {
+:where(a, button, input, select, textarea, summary, video, [tabindex="0"]) {
   --outline-thickness: calc(3rem / 16);
   --outline-style: solid;
   --outline-color: #{functions.color("accent", "0")};
