@@ -59,15 +59,17 @@
       display: flex;
       flex-wrap: wrap;
       gap: functions.size("spacing", "-3") functions.size("spacing", "-2");
-      margin-top: functions.size("spacing", "0");
+      margin-top: functions.size("spacing", "2");
     }
 
     a {
       text-decoration-line: underline;
       text-decoration-color: functions.color("surface", "6");
+      text-decoration-thickness: 0.07em;
 
       &:is(:hover, :focus-visible) {
         text-decoration-color: inherit;
+        text-decoration-thickness: 0.08em;
       }
     }
 
