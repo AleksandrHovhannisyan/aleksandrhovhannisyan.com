@@ -58,6 +58,10 @@
 
 .nav-desktop {
   display: none;
+
+  :is(a, label) {
+    padding-block: functions.size('spacing', '-4');
+  }
 }
 
 @include mixins.tablet-sm {
