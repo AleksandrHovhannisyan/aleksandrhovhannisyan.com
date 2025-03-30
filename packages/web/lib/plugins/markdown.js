@@ -44,10 +44,10 @@ const LANGUAGE_ALIASES = new Map([
   ['rb', 'ruby'],
   ['yml', 'yaml'],
   ['tml', 'toml'],
-  // https://github.com/PrismJS/prism/issues/1124
-  ['njk', 'liquid'],
-  ['nunjucks', 'liquid'],
+  ['njk', 'liquid'], // https://github.com/PrismJS/prism/issues/1124
+  ['nunjucks', 'liquid'], // https://github.com/PrismJS/prism/issues/1124
   ['svelte', 'html'],
+  ['bat', 'batch'],
 ]);
 
 /** @param {string|undefined} lang */
