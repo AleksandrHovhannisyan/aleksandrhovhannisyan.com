@@ -13,8 +13,8 @@
 <head>
   <meta charset="utf-8">
   {%- comment -%}Metadata for search engines{%- endcomment -%}
-  <title>{{ pageTitle }}</title>
-  <meta name="description" content="{{ description }}">
+  <title>{{ pageTitle | toSmartQuotes }}</title>
+  <meta name="description" content="{{ description | toSmartQuotes }}">
   <meta name="keywords" content="{{ keywords | join: ', ' }}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="{{ site.author.name }}">

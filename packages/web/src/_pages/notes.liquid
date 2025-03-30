@@ -17,9 +17,9 @@ permalink: /notes/
               <li class="note">
                 <article>
                   <h3 class="post-preview-title">
-                    <a class="card-link" href="{{ note.url }}">{{ note.data.title }}</a>
+                    <a class="card-link" href="{{ note.url }}">{{ note.data.title | toSmartQuotes }}</a>
                   </h3>
-                  <p class="post-preview-description">{{ note.data.description }}</p>
+                  <p class="post-preview-description">{{ note.data.description | toSmartQuotes }}</p>
                 </article>
               </li>
             {% endfor %}

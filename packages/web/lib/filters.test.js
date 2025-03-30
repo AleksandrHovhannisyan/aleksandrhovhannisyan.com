@@ -1,6 +1,6 @@
 import { it, describe } from 'node:test';
 import assert from 'node:assert/strict';
-import { where, limit, sortByKey, getLatestCollectionItemDate } from './filters.js';
+import { where, limit, sortByKey, getLatestCollectionItemDate, toSmartQuotes } from './filters.js';
 
 describe('custom 11ty filters', () => {
   describe('limit', () => {
@@ -15,6 +15,17 @@ describe('custom 11ty filters', () => {
     });
     it('throws an error if the limit is negative', () => {
       assert.throws(() => limit(['a', 'b'], -1));
+    });
+  });
+  describe('toSmartQuotes', () => {
+    it('converts straight quotes to smart quotes', () => {
+      assert.strictEqual(
+        toSmartQuotes(`"Hi," I said. "It's nice to meet you." He said 'hey, I'm good.'`),
+        `“Hi,” I said. “It’s nice to meet you.” He said ‘hey, I’m good.’`
+      );
+    });
+    it('returns the same string if no quotes are present', () => {
+      assert.strictEqual(toSmartQuotes('Hello, world!'), 'Hello, world!');
     });
   });
   describe('sortByKey', () => {

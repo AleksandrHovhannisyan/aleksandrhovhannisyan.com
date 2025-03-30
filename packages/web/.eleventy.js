@@ -29,6 +29,7 @@ import {
   toAbsoluteImageUrl,
   pathParse,
   pathJoin,
+  toSmartQuotes,
 } from './lib/filters.js';
 import { getAllPosts, getAllUniqueCategories, getPostsByCategory } from './lib/collections.js';
 import { markdown } from './lib/plugins/markdown.js';
@@ -77,6 +78,7 @@ export default function eleventy(eleventyConfig) {
   eleventyConfig.addFilter('where', where);
   eleventyConfig.addFilter('escape', escape);
   eleventyConfig.addFilter('toHtml', toHtml);
+  eleventyConfig.addFilter('toSmartQuotes', toSmartQuotes);
   eleventyConfig.addFilter('toISOString', toISOString);
   eleventyConfig.addFilter('formatDate', formatDate);
   eleventyConfig.addFilter('toAbsoluteUrl', toAbsoluteUrl);

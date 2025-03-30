@@ -126,3 +126,20 @@ export const minifyJS = memoize(async (js) => {
 export const pathParse = (srcPath, key) => path.parse(srcPath)[key];
 
 export const pathJoin = (...paths) => path.join(...paths);
+
+/**
+ * Converts all straight double and single quotes to smart (curly) quotes.
+ * @param {string} text
+ * @return {string}
+ */
+export const toSmartQuotes = (text) => {
+  return (
+    text
+      // Smart opening and closing double quotes
+      ?.replace(/"(.*?)"/g, '\u201C$1\u201D')
+      // Smart apostrophes
+      .replace(/(\w)'(\w)/g, '$1\u2019$2')
+      // Smart opening and closing single quotes
+      .replace(/'(.*?)'/g, '\u2018$1\u2019')
+  );
+};
