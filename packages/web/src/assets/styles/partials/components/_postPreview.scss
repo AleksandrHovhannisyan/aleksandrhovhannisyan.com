@@ -48,6 +48,19 @@
     display: none;
   }
 
+  &-tag {
+    color: functions.color("text", "soft");
+
+    &:is(:hover, :focus-visible) {
+      color: functions.color("text", "emphasis");
+    }
+
+    &::before {
+      content: "#";
+      user-select: none;
+    }
+  }
+
   @include mixins.tablet-sm {
     &-title {
       line-height: functions.size("leading", "2xs");

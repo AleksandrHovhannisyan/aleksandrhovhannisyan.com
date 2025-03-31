@@ -10,7 +10,7 @@
   }
 
   &-title {
-    margin-bottom: functions.size("spacing", "-2");
+    margin-bottom: functions.size("spacing", "-1");
   }
 
   &-date {
@@ -24,23 +24,8 @@
     }
   }
 
-  &-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: functions.size("spacing", "-3") functions.size("spacing", "-2");
-  }
-
   &-tag {
-    color: functions.color("text", "soft");
-
-    &:is(:hover, :focus-visible) {
-      color: functions.color("text", "emphasis");
-    }
-
-    &::before {
-      content: "#";
-      user-select: none;
-    }
+    border-radius: functions.size("spacing", "-4");    
   }
 
   img {

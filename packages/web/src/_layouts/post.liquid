@@ -12,10 +12,10 @@ preloads:
   <header class="post-header">
     <p class="post-date"><span class="screen-reader-only">Published </span>{% include "date.liquid" date: page.date, dateFormat: "MMMM DD, YYYY" %}{% if lastUpdated %} &bull; Updated {% include "date.liquid" date: lastUpdated, dateFormat: "MMMM DD, YYYY" %}{% endif %}</p>
     <h1 class="post-title">{{ title | toSmartQuotes }}</h1>
-    <ul class="post-tags" aria-label="Tags">
+    <ul class="pill-group" aria-label="Tags">
       {%- for category in categories -%}
         <li>
-          <a href="/tags/{{ category }}/" class="post-tag" aria-label="{{ category }}">
+          <a href="/tags/{{ category }}/" class="post-tag pill" data-size="sm" aria-label="{{ category }}">
             {{- category -}}
           </a>
         </li>
