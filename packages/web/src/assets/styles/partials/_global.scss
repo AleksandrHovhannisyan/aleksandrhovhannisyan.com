@@ -40,8 +40,6 @@ mark,
 
 a {
   color: functions.color("accent", "0");
-  text-decoration-color: functions.color("accent", "0");
-  text-underline-offset: 0.15em;
   text-decoration-thickness: 0.08em;
 
   :is(h1, h2, h3, h4, h5, h6) & {
