@@ -110,9 +110,9 @@
 /// Returns a CSS clamp(...) declaration, with the responsive argument computed automatically.
 @function clamped($min-px, $max-px, $min-bp: get($tokens, "breakpoints", "mobile"), $max-bp: get($tokens, "breakpoints", "desktop")) {
   $slope: math.div($max-px - $min-px, $max-bp - $min-bp);
-  $slope-vw: rnd($slope * 100, 2);
-  $intercept-rems: rnd(to-rems($min-px - $slope * $min-bp), 2);
-  $min-rems: rnd(to-rems($min-px), 2);
-  $max-rems: rnd(to-rems($max-px), 2);
+  $slope-vw: rnd($slope * 100, 3);
+  $intercept-rems: rnd(to-rems($min-px - $slope * $min-bp), 3);
+  $min-rems: rnd(to-rems($min-px), 3);
+  $max-rems: rnd(to-rems($max-px), 3);
   @return clamp(#{$min-rems}, #{$slope-vw}vw + #{$intercept-rems}, #{$max-rems});
 }
