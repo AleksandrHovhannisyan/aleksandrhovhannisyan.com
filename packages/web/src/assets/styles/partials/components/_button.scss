@@ -14,21 +14,22 @@
 
 .button.secondary {
   --color-bg-button: #{functions.color("surface", "0")};
+  --color-fg-button: #{functions.color("accent", "0")};
   border-color: var(--color-fg-button);
 
   &:is(:focus-visible, :hover) {
-    --color-bg-button: #{functions.color("text", "normal")};
+    --color-bg-button: #{functions.color("accent", "1")};
     --color-fg-button: #{functions.color("text", "inverted")};
     border-color: var(--color-bg-button);
   }
 }
 
 .button.primary {
-  --color-bg-button: #{functions.color("surface", "9")};
+  --color-bg-button: #{functions.color("accent", "0")};
   --color-fg-button: #{functions.color("text", "inverted")};
   border-color: var(--color-bg-button);
 
   &:is(:focus-visible, :hover) {
-    --color-bg-button: #{functions.color("surface", "8")};
+    --color-bg-button: #{functions.color("accent", "1")};
   }
 }
