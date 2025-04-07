@@ -1,6 +1,6 @@
 {%- assign titleLevel = titleLevel | default: 3 -%}
 <li>
-  <article class="post-preview">
+  <article class="post-preview text-wrap-balance">
     <p class="post-preview-date"><span class="screen-reader-only">Published on </span>{% include "date.liquid" date: post.date, dateFormat: "MMMM DD, YYYY" %}</p>
     <h{{ titleLevel }} class="post-preview-title">
       <a class="post-preview-link" href="{{ post.url }}">{{ post.data.title | toSmartQuotes }}</a>

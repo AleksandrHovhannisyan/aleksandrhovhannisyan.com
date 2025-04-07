@@ -6,10 +6,8 @@ permalink: /notes/
 ---
 
 <article class="rhythm">
-    <header class="hero stack gap--2">
-        <h1>Notes</h1>
-        <p class="size-font-lg">Notes to self and short tutorials. Unless otherwise stated, no attribution is required for code snippets.</p>
-    </header>
+    <h1 class="prose-tight">Notes</h1>
+    <p class="prose-tight text-wrap-balance size-font-lg">Notes to self and short tutorials. Unless otherwise stated, no attribution is required for code snippets.</p>
     <div data-theme="light">
         <ul class="grid col-2 gap-2 note-board">
             {%- assign notes = collections.notes | sortByKey: "date", "DESC" -%}

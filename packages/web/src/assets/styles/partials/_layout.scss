@@ -120,8 +120,6 @@
 body > footer {
   background-color: functions.color('surface', '1');
   color: functions.color('text', 'emphasis');
-  text-align: center;
-  text-wrap: balance;
   padding-block: functions.size('spacing', '5');
 
   .container {
