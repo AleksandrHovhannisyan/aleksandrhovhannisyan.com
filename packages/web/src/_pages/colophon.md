@@ -3,7 +3,8 @@ title: Colophon
 description: How I built this website.
 layout: colophon
 permalink: /colophon/
-eleventyExcludeFromCollections: true
+tags:
+  - colophon
 redirectFrom:
   - /design/
 scripts:
