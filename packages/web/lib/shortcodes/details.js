@@ -6,7 +6,7 @@ export default function details(children, summary, open = false) {
   }
   const content = markdown.render(children);
   return `<details${open ? ' open' : ''}>
-  <summary class="outline-offset">${summary}</summary>
+  <summary>${summary}</summary>
   <div class="details-content rhythm">${content}</div>
   </details>`;
 }

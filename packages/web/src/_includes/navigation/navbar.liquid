@@ -33,9 +33,9 @@
 </div>
 {%- endcapture -%}
 <header class="nav relative">
-  <a href="#main-content" class="outline-offset absolute screen-reader-only">Skip to main content</a>
+  <a href="#main-content" class="absolute screen-reader-only">Skip to main content</a>
   <div class="nav-layout rhythm">
-    <a href="/" class="outline-offset"{% if permalink == "/" %} aria-current="page"{% endif %}>
+    <a href="/"{% if permalink == "/" %} aria-current="page"{% endif %}>
       <img eleventy:ignore src="/assets/images/favicons/favicon-128.png" class="circle" alt="" width="28" height="28" />
       Home
     </a>

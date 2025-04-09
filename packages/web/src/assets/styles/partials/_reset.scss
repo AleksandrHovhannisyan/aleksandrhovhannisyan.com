@@ -49,13 +49,8 @@ body:has(dialog[open]) {
 }
 
 // https://css-tricks.com/standardizing-focus-styles-with-css-custom-properties/
-:where(a, button, input, select, textarea, summary, video, [tabindex="0"]) {
+:focus-visible {
   --outline-thickness: calc(3rem / 16);
-  --outline-style: solid;
-  --outline-color: #{functions.color("accent", "0")};
-
-  &:focus-visible {
-    outline: var(--outline-thickness) var(--outline-style) var(--outline-color);
-    outline-offset: var(--outline-offset, 0);
-  }
+  outline: var(--outline-thickness) solid functions.color("accent", "0");
+  outline-offset: var(--outline-offset, var(--outline-thickness));
 }

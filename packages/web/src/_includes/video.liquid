@@ -1,7 +1,7 @@
 {%- assign sourceType = sourceType | default: 'video/mp4' -%}
 {%- capture captionId -%}{% nanoid %}{%- endcapture -%}
 <figure>
-  <video class="outline-offset" {% if poster %}preload="none" poster="{{ poster }}"{% endif %} controls width="{{ width }}" height="{{ height }}" {% if caption %}aria-describedby="{{ captionId }}"{% endif %}>
+  <video {% if poster %}preload="none" poster="{{ poster }}"{% endif %} controls width="{{ width }}" height="{{ height }}" {% if caption %}aria-describedby="{{ captionId }}"{% endif %}>
     <source src="{{ src }}" type="{{ sourceType }}">
   </video>
   {%- if caption -%}

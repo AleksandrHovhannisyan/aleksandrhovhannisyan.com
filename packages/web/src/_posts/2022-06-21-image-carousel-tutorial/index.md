@@ -31,7 +31,7 @@ In this article, we'll learn how to create a progressively enhanced image carous
 <p style="display: contents"><a href="#carousel-skip-target" class="screen-reader-only" style="left: 50%; transform: translateX(-50%);">Skip carousel</a></p>
 <div class="carousel" id="carousel">
   <div
-    class="carousel-scroll-container outline-offset"
+    class="carousel-scroll-container"
     role="region"
     aria-label="Image carousel"
     tabindex="0"
@@ -343,7 +343,7 @@ The carousel we've been building so far is more akin to a filmstrip, where multi
 <p style="display: contents"><a href="#slideshow-skip-target" class="screen-reader-only" style="left: 50%; transform: translateX(-50%);">Skip carousel</a></p>
 <div class="carousel slideshow" id="slideshow">
   <div
-    class="carousel-scroll-container outline-offset"
+    class="carousel-scroll-container"
     role="region"
     aria-label="Image carousel"
     tabindex="0"

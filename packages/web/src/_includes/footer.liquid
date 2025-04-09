@@ -11,7 +11,7 @@
       </p>
     </div>
     <div class="end stack gap--1">
-      <p>Enjoy my content? Consider <a class="outline-offset" href="https://buymeacoffee.com/hovhadovah">donating</a>.</p>
+      <p>Enjoy my content? Consider <a href="https://buymeacoffee.com/hovhadovah">donating</a>.</p>
       <ul class="links">
         {%- assign networks = socials | entries -%}
         {%- for network in networks -%}
@@ -19,14 +19,14 @@
         {%- assign data = network | last -%}
         {%- unless data.showInFooter == false -%}
         <li>
-          <a href="{{ data.url }}" target="_blank" rel="noreferrer noopener" class="outline-offset">
+          <a href="{{ data.url }}" target="_blank" rel="noreferrer noopener">
             {{ data.name }}
           </a>
         </li>
         {%- endunless -%}
         {%- endfor -%}
         <li>
-          <a href="/feed.xml" class="outline-offset">
+          <a href="/feed.xml">
             RSS
           </a>
         </li>
