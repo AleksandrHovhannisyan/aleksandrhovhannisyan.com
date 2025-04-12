@@ -25,13 +25,13 @@ document
       if (!dialog.open) {
         setIsOpen(true);
       }
+    });
 
-      // Detect outside clicks. NOTE: This only works if the ::backdrop ignores pointer events.
-      // Once closedby has enough support, remove this https://github.com/whatwg/html/pull/10737
-      document.addEventListener('click', (e) => {
-        if (dialog.open && !e.composedPath().includes(dialog)) {
-          setIsOpen(false);
-        }
-      });
+    // Detect outside clicks. NOTE: This only works if the ::backdrop ignores pointer events.
+    // Once closedby has enough support, remove this https://github.com/whatwg/html/pull/10737
+    document.addEventListener('click', (e) => {
+      if (dialog.open && !e.composedPath().includes(dialog)) {
+        setIsOpen(false);
+      }
     });
   });
