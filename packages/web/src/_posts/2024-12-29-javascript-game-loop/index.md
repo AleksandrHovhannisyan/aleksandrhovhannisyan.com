@@ -4,7 +4,7 @@ description: A look at some best practices for creating performant game animatio
 categories: [game-dev, javascript, webperf]
 scripts:
   - type: module
-    src: /assets/scripts/demos/gameLoop.js
+    src: /assets/scripts/components/gameLoop.js
 ---
 
 Below is a demo of a basic game implemented with an HTML canvas and some JavaScript. The character is represented by the black circle, and its direction of movement is indicated by the line. Click or tab to the game area to begin; use <kbd>W</kbd> to move forward, <kbd>S</kbd> to move backward, <kbd>A</kbd> to rotate left, and <kbd>D</kbd> to rotate right.

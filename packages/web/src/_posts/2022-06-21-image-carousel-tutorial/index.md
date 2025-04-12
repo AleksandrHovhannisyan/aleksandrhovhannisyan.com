@@ -4,14 +4,12 @@ description: Learn how to build an accessible image carousel that supports multi
 keywords: [image carousel, carousel, accessible carousel, media carousel]
 categories: [html, css, javascript, accessibility]
 thumbnail: ./images/algorithm.png
-lastUpdated: 2024-11-13
+lastUpdated: 2025-04-11
 openGraph:
   card: summary_large_image
-stylesheets:
-  - /assets/styles/demos/carousel.css
 scripts:
   - type: module
-    src: /assets/scripts/demos/carousel.js
+    src: /assets/scripts/components/carousel.js
 commentsId: 166
 isFeatured: true
 ---
@@ -28,17 +26,11 @@ Carousels don't have to be bad, but we have a culture of making them bad. It is 
 
 In this article, we'll learn how to create a progressively enhanced image carousel like the one in the interactive demo below. Try it out! Focus the carousel and use your arrow keys to slide left or right, click the buttons to jump from one image to another, or use your mouse wheel to scroll:
 
-<p style="display: contents"><a href="#carousel-skip-target" class="screen-reader-only" style="left: 50%; transform: translateX(-50%);">Skip carousel</a></p>
-<div class="carousel" id="carousel">
-  <div
-    class="carousel-scroll-container"
-    role="region"
-    aria-label="Image carousel"
-    tabindex="0"
-  >
-    <ol class="carousel-media" role="list">
+<carousel-root>
+  <carousel-scroll tabindex="0" role="region" aria-label="Image carousel">
+    <ol>
       {%- for image in carouselImages %}
-      <li class="carousel-item">
+      <li data-scroll-snap-align="{% if forloop.first %}start{% elsif forloop.last %}end{% else %}center{% endif %}">
         <figure>
           <img src="{{ image.src }}" alt="{{ image.alt }}" eleventy:widths="200,400,800" sizes="100vw" />
           <figcaption>Photo by <a href="{{ image.user.url }}?utm_source={{ site.url }}&utm_medium=referral" rel="noreferrer noopener" target="_blank">{{ image.user.name }}</a> on <a href="https://unsplash.com/?utm_source={{ site.url }}&utm_medium=referral" rel="noreferrer noopener" target="_blank">Unsplash</a></figcaption>
@@ -46,9 +38,20 @@ In this article, we'll learn how to create a progressively enhanced image carous
       </li>
       {%- endfor %}
     </ol>
-  </div>
-</div>
-<div id="carousel-skip-target" style="display: contents"></div>
+  </carousel-scroll>
+  <carousel-navigation>
+    <button
+      aria-label="Previous"
+      data-direction="start">
+      {% include "icon.liquid" icon: "chevron-left", size: 24 %}
+    </button>
+    <button
+      aria-label="Next"
+      data-direction="end">
+      {% include "icon.liquid" icon: "chevron-right", size: 24 %}
+    </button>
+  </carousel-navigation>
+</carousel-root>
 
 {% aside %}
 We'll also look at how to create the traditional type of carousel where [each slide spans the full width](#optional-full-width-slides). This will only require a slight modification to the code.
@@ -340,17 +343,15 @@ Since we're using `proximity` for `scroll-snap-type`, we don't need to worry tha
 
 The carousel we've been building so far is more akin to a filmstrip, where multiple media may be visible at once but only one is centered at a time. Most carousels in the wild use full-width slides so that only one image is ever shown at a time, like so:
 
-<p style="display: contents"><a href="#slideshow-skip-target" class="screen-reader-only" style="left: 50%; transform: translateX(-50%);">Skip carousel</a></p>
-<div class="carousel slideshow" id="slideshow">
-  <div
-    class="carousel-scroll-container"
+<carousel-root mode="slideshow">
+  <carousel-scroll
     role="region"
     aria-label="Image carousel"
     tabindex="0"
   >
-    <ol class="carousel-media" role="list">
+    <ol>
       {%- for image in carouselImages %}
-      <li class="carousel-item">
+      <li data-scroll-snap-align="{% if forloop.first %}start{% elsif forloop.last %}end{% else %}center{% endif %}">
         <figure>
           <img src="{{ image.src }}" alt="{{ image.alt }}" eleventy:widths="400,800" sizes="100vw" />
           <figcaption>Photo by <a href="{{ image.user.url }}?utm_source={{ site.url }}&utm_medium=referral" rel="noreferrer noopener" target="_blank">{{ image.user.name }}</a> on <a href="https://unsplash.com/?utm_source={{ site.url }}&utm_medium=referral" rel="noreferrer noopener" target="_blank">Unsplash</a></figcaption>
@@ -358,9 +359,20 @@ The carousel we've been building so far is more akin to a filmstrip, where multi
       </li>
       {%- endfor %}
     </ol>
-  </div>
-</div>
-<div id="slideshow-skip-target" style="display: contents"></div>
+  </carousel-scroll>
+  <carousel-navigation>
+    <button
+      aria-label="Previous"
+      data-direction="start">
+      {% include "icon.liquid" icon: "chevron-left", size: 24 %}
+    </button>
+    <button
+      aria-label="Next"
+      data-direction="end">
+      {% include "icon.liquid" icon: "chevron-right", size: 24 %}
+    </button>
+  </carousel-navigation>
+</carousel-root>
 
 If you'd like to implement this variation, all you need to do is force each flex item to take on the full width of its container and use the `object-fit` and `object-position` properties to crop overflowing images. It also makes sense to use mandatory scroll snapping in this case to create a more consistent user experience. I'll use a modifier class of `.slideshow` on the outermost carousel wrapper to scope all of these styles. Below is the CSS needed to implement this variation:
 
@@ -777,13 +789,16 @@ The good news is that the [`scroll-snap-stop`](https://developer.mozilla.org/en-
 
 With `scroll-snap-stop`, we can use [`Element.scrollBy`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollBy) and scroll the container by its full [`clientWidth`](https://developer.mozilla.org/en-US/docs/Web/API/Element/clientWidth), inverting the offset based on the document writing mode and direction of travel. Because a value of `always` prevents the container from overshooting the next item, we don't need to do any calculations ourselves.
 
-```css {data-copyable=true}
+```css {data-file="carousel.css" data-copyable=true}
+.carousel {
+  scroll-snap-type: x mandatory;
+}
 .carousel-item {
   scroll-snap-stop: always;
 }
 ```
 
-```js {data-copyable=true}
+```js {data-file="carousel.js" data-copyable=true}
 navigateToNextItem(direction) {
   let scrollAmount = this.#scrollContainer.clientWidth;
   scrollAmount = this.#isRTL ? -scrollAmount : scrollAmount;
@@ -792,11 +807,7 @@ navigateToNextItem(direction) {
 }
 ```
 
-In an ideal world, this would be the **simplest and most performant solution**.
-
-Unfortunately, [`scroll-snap-stop` is not yet supported in Firefox 101](https://bugzilla.mozilla.org/show_bug.cgi?id=1312165) (the current version at the time of writing), and it's only been supported in Safari [since version 15+](https://caniuse.com/mdn-css_properties_scroll-snap-stop). I'll update this tutorial once it ships in Firefox and remains stable. While a [CSS scroll snap polyfill](https://github.com/PureCarsLabs/css-scroll-snap-polyfill) does exist, [it doesn't implement `scroll-snap-stop`](https://github.com/PureCarsLabs/css-scroll-snap-polyfill/issues/5). So while this solution is tempting, it has poor browser support and may lead to inconsistent behavior for different users.
-
-Your best bet is to use [the proposed solution](#solution-find-the-first-focal-point-past-the-carousels-center) while you wait for `scroll-snap-stop` to be implemented in Firefox. Alternatively, you could [use feature detection in your JavaScript](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Cross_browser_testing/Feature_detection#writing_your_own_feature_detection_tests) to check whether `scroll-snap-stop` is supported. If it is, use it to simplify the JavaScript calculations. If it's not, fall back to manual calculations.
+In an ideal world, this would be the simplest and most performant solution, and it works well in Chrome. Unfortunately, it doesn't work at all in Safari, and [there's a bug in Firefox](https://bugzilla.mozilla.org/show_bug.cgi?id=1959811) where scrolling will sometime get stuck on items that have `scroll-snap-stop: always` if both mandatory scroll-snapping and smooth scrolling are enabled. See [this Codepen demo](https://codepen.io/AleksandrHovhannisyan/pen/MYWMjyY) to test Safari and Firefox. For now, your best bet is to use [the proposed solution](#solution-find-the-first-focal-point-past-the-carousels-center) while you wait for this bug to be fixed.
 
 #### Solution: Find the First Focal Point Past the Carousel's Center
 
@@ -1257,24 +1268,3 @@ While implementing a media carousel may seem like a lot of work, the truth is th
 - [_Practical CSS Scroll Snapping_ by Max Kohler](https://css-tricks.com/practical-css-scroll-snapping/)
 - [_Keyboard-Only Scrolling Areas_ by Adrian Roselli](https://adrianroselli.com/2022/06/keyboard-only-scrolling-areas.html)
 - [_Making Disabled Buttons More Inclusive_ by Sandrina Pereira](https://css-tricks.com/making-disabled-buttons-more-inclusive/)
-
-<template id="carousel-controls">
-  <ol class="carousel-controls" role="list" aria-label="Navigation controls">
-    <li>
-      <button
-        class="carousel-control"
-        aria-label="Previous"
-        data-direction="start">
-        {% include "icon.liquid" icon: "chevron-left", size: 24 %}
-      </button>
-    </li>
-    <li>
-      <button
-        class="carousel-control"
-        aria-label="Next"
-        data-direction="end">
-        {% include "icon.liquid" icon: "chevron-right", size: 24 %}
-      </button>
-    </li>
-  </ol>
-</template>
