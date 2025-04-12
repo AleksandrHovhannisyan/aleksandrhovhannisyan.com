@@ -13,22 +13,6 @@ export default {
    * @param env Environment secrets set for this worker.
    */
   async fetch(request: Request, env: Record<string, string>) {
-    const headers =
-      env.ENVIRONMENT === 'development'
-        ? ({
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'GET',
-            'Access-Control-Allow-Headers': 'Content-Type',
-          } satisfies Record<string, string>)
-        : {};
-
-    // Handle CORS preflight request
-    if (request.method === 'OPTIONS') {
-      return new Response(null, {
-        headers,
-      });
-    }
-
     // Authenticate with GitHub Issues SDK
     const auth = createTokenAuth(env.GITHUB_PERSONAL_ACCESS_TOKEN);
     const { token } = await auth();
@@ -36,7 +20,7 @@ export default {
 
     const commentsId = parseInt(new URL(request.url).searchParams.get('id'), 10);
     if (Number.isNaN(commentsId)) {
-      return new Response(JSON.stringify({ error: 'Invalid ID.' }), { status: 400, headers });
+      return new Response(JSON.stringify({ error: 'Invalid ID.' }), { status: 400 });
     }
 
     try {
@@ -89,16 +73,15 @@ export default {
 
         return new Response(JSON.stringify({ error: `API rate limit exceeded. Try again ${retryTimeRelative}.` }), {
           status: 503,
-          headers: { ...headers, 'Retry-After': retryTimeSeconds.toString() },
+          headers: { 'Retry-After': retryTimeSeconds.toString() },
         });
       }
 
-      return new Response(JSON.stringify({ data: comments }), { status: 200, headers });
+      return new Response(JSON.stringify({ data: comments }), { status: 200 });
     } catch (e) {
       console.log(e);
       return new Response(JSON.stringify({ error: 'Unable to fetch comments for this post.' }), {
         status: 500,
-        headers,
       });
     }
   },
