@@ -1,7 +1,7 @@
 @use "../functions";
 @use "../mixins";
 
-[data-dialog-action="hide"] {
+[data-dialog-action="close"] {
   position: absolute;
   margin-inline-start: auto;
 }
@@ -57,7 +57,7 @@
 }
 
 .dialog.left {
-  [data-dialog-action="hide"] {
+  [data-dialog-action="close"] {
     inset-block-start: functions.size("spacing", "0");
     inset-inline-start: functions.size("spacing", "0");
   }
@@ -67,7 +67,7 @@
   inset-inline-start: 100%;
   transform: translateX(-100%);
 
-  [data-dialog-action="hide"] {
+  [data-dialog-action="close"] {
     inset-block-start: functions.size("spacing", "0");
     inset-inline-end: functions.size("spacing", "0");
   }

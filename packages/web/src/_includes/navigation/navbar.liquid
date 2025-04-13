@@ -39,12 +39,12 @@
       <img eleventy:ignore src="/assets/images/favicons/favicon-128.png" class="circle" alt="" width="28" height="28" />
       Home
     </a>
-    <button class="circle" aria-label="Open menu" data-dialog-action="show" aria-controls="nav-mobile" aria-expanded="false">
+    <button class="circle" aria-label="Open menu" data-dialog-action="showModal" aria-controls="nav-mobile">
       {% include "icon.liquid", icon: "menu", size: 32 %}
     </button>
     <dialog class="dialog right rhythm" id="nav-mobile" aria-labelledby="nav-mobile-title">
       <h2 id="nav-mobile-title" class="screen-reader-only">Menu</h2>
-      <button class="circle" aria-label="Close menu" data-dialog-action="hide" aria-controls="nav-mobile">
+      <button class="circle" aria-label="Close menu" data-dialog-action="close" aria-controls="nav-mobile">
         {% include "icon.liquid", icon: "x", size: 32 %}
       </button>
       <div class="dialog-content">{{ nav }}</div>
