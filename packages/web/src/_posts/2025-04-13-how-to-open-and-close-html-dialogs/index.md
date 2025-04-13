@@ -92,7 +92,7 @@ Inside our loop, we'll add a click handler to the document element and check if 
 
 ```js {data-file="dialog.js" data-copyable="true"}
 document
-  .querySelectorAll('button[data-dialog-action="showModal"][aria-controls]')
+  .querySelectorAll('button:is([data-dialog-action="show"], [data-dialog-action="showModal"])[aria-controls]')
   .forEach((openButton) => {
     // ...other code...
 
