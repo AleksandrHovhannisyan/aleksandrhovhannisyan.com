@@ -5,9 +5,9 @@ categories: [html, javascript]
 keywords: [html dialog, dialog]
 ---
 
-For such a key UI component, the native `<dialog>` element has had [a long and troubled history in HTML](https://lapcatsoftware.com/articles/2024/2/1.html). It was originally only implemented by Chrome in 2014, and it wasn't until 2022 that other browsers like Safari and Firefox caught up. Now that we've reached an acceptable baseline adoption, `<dialog>` is one of the best ways to include interactive popovers and modals in web apps.
+Despite the popularity of modals on the web, the native `<dialog>` element has unfortunately had [a long and troubled history in HTML](https://lapcatsoftware.com/articles/2024/2/1.html). It was originally only implemented by Chrome in 2014, and it wasn't until 2022 that other browsers like Safari and Firefox caught up. This meant that developers had to rely on external libraries to implement such an integral component. But now that we've reached an acceptable baseline adoption, `<dialog>` is one of the best ways to include interactive popovers and modals in web apps.
 
-In this short tutorial, I want to share two ways of opening and closing HTML dialog elements. One is a [custom solution](#custom-solution) that works for any number of dialogs on a page, while the other is a sneak peek at [a future syntax](#future-solution-html-commands) with HTML commands that involves zero JavaScript.
+In this short tutorial, we'll look at two ways of opening and closing HTML dialog elements. One is a [custom solution](#custom-solution) that works for any number of dialogs on a page, while the other is a sneak peek at [a future syntax](#future-solution-html-commands) with HTML commands that involves zero JavaScript.
 
 ## Custom Solution
 
@@ -42,38 +42,47 @@ The `showModal` method is great for accessibility since it:
 
 **However**, not all dialogs are modals. These so-called "non-modal" dialogs allow you to still interact with the rest of the page while they're open, and they don't trap focus or open in the [top layer](https://developer.mozilla.org/en-US/docs/Glossary/Top_layer) like modal dialogs do. If you'd like to open a non-modal dialog, simply set `data-dialog-action="show"` instead of `showModal`.
 
-Now, let's make our buttons do something when clicked. We'll start by querying all open buttons in the current document:
+Now, let's make our buttons do something when clicked. We'll start by querying all dialogs with IDs in the current document and then query their corresponding open and close buttons:
 
 ```js {data-file="dialog.js" data-copyable="true"}
-document
-  .querySelectorAll('button:is([data-dialog-action="show"], [data-dialog-action="showModal"])[aria-controls]')
-  .forEach((openButton) => {
-    const dialogId = openButton.getAttribute('aria-controls');
-    const dialog = document.querySelector(`#${dialogId}`);
-    const closeButton = dialog.querySelector(`button[data-dialog-action="close"][aria-controls="${dialogId}"]`);
-
-    // NOTE: You might want to throw an error instead
-    if (!dialog || !closeButton) return;
-
-    // rest of the code will go here
+document.querySelectorAll('dialog[id]').forEach((dialog) => {
+  const openButton = document.querySelector(
+    `button:is([data-dialog-action="show"], [data-dialog-action="showModal"])[aria-controls="${dialog.id}"]`
+  );
+  const closeButton = document.querySelector(
+    `button[data-dialog-action="close"][aria-controls="${dialog.id}"]`
+  );
+  // rest of the code will go here
 });
 ```
 
-Here, I'm using the `:is()` CSS function to query for buttons that open either modal or non-modal dialogs. This code works for any number of dialogs on a page and is more flexible than manually querying the individual elements. We then look at each open button, read the dialog element ID from its `aria-controls` attribute, and then use that ID to query the dialog element that this button controls. Finally, we use the same technique to query the button that closes the same dialog.
-
-{% aside %}
-Technically, we don't need to explicitly query for the `aria-controls` attribute on the close button since it's safe to assume that a button with `data-dialog-action="close"` is meant to close its parent dialog element, not a dialog somewhere else in the document. But it doesn't hurt.
-{% endaside %}
+Here, I'm using the `:is()` CSS function to query for buttons that open either modal or non-modal dialogs. This code works for any number of dialogs on a page and is more flexible than manually querying the individual elements. Note that we're not using `dialog.querySelector` to get the close button since that button is not guaranteed to be a child of the dialog in the case of non-modal dialogs.
 
 Now, we can assign `click` event handlers to these buttons:
 
 ```js {data-file="dialog.js" data-copyable="true"}
-const showDialog = () => dialog[openButton.dataset.dialogAction || 'show']();
-const closeDialog = () => dialog.close();
+const showAction = openButton.dataset.dialogAction || 'show';
+const isNonModalDialog = showAction !== 'showModal';
 
+const showDialog = () => {
+  dialog[showAction]();
+  if (isNonModalDialog) {
+    openButton.setAttribute('aria-expanded', 'true');
+    closeButton.setAttribute('aria-expanded', 'true');
+  }
+};
+const closeDialog = () => {
+  dialog.close();
+  if (isNonModalDialog) {
+    openButton.setAttribute('aria-expanded', 'false');
+    closeButton.setAttribute('aria-expanded', 'false');
+  }
+};
 openButton.addEventListener('click', showDialog);
 closeButton.addEventListener('click', closeDialog);
 ```
+
+Importantly, we're setting the [`aria-expanded`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-expanded) attribute on both the open and close buttons in the case where they control a non-modal dialog. This attribute isn't relevant for modal dialogs because modals cause the rest of the document to become `inert`, so only one button (open or close) will be navigable at any given time. Note that we're not handling the case where the button that opens the dialog happens to be the same button that closes it (a popover trigger); you may wish to do that in your implementation.
 
 ### Closing by Clicking Outside (Light Dismiss)
 
@@ -88,21 +97,19 @@ There's [a proposal to add a `closedby` HTML attribute](https://github.com/whatw
 
 Unfortunately, at the time of this writing, [`closedby` is only supported in Chrome 134+](https://caniuse.com/mdn-html_elements_dialog_closedby), so we'll need to write a custom solution for now.
 
-Inside our loop, we'll add a click handler to the document element and check if the click originated from an element outside the `<dialog>` or one of its children. If it didn't, then we know that the user clicked outside the dialog.
+Inside our loop, we'll add a click handler to the document element and check if the `<dialog>` or one of its children was clicked. If it wasn't, then we know that the user clicked outside the dialog.
 
 ```js {data-file="dialog.js" data-copyable="true"}
-document
-  .querySelectorAll('button:is([data-dialog-action="show"], [data-dialog-action="showModal"])[aria-controls]')
-  .forEach((openButton) => {
-    // ...other code...
+document.querySelectorAll('dialog[id]').forEach((dialog) => {
+  // ...other code...
 
-    // Add this
-    document.addEventListener('click', (e) => {
-      if (dialog.open && !e.composedPath().includes(dialog)) {
-        closeDialog();
-      }
-    });
+  // Add this
+  document.addEventListener('click', (e) => {
+    if (dialog.open && !e.composedPath().includes(dialog)) {
+      closeDialog();
+    }
   });
+});
 ```
 
 This handler will run when [the `click` event bubbles](/blog/interactive-guide-to-javascript-events/#3-event-bubbling) up from any element.
@@ -164,33 +171,48 @@ It's up to you which one you use, but I prefer event capturing.
 Here's the custom script that we wrote:
 
 ```js {data-file="dialog.js" data-copyable="true"}
-document
-  .querySelectorAll('button:is([data-dialog-action="show"], [data-dialog-action="showModal"])[aria-controls]')
-  .forEach((openButton) => {
-    const dialogId = openButton.getAttribute('aria-controls');
-    const dialog = document.querySelector(`#${dialogId}`);
-    const closeButton = dialog?.querySelector(
-      `button[data-dialog-action="close"][aria-controls="${dialogId}"]`
-    );
-    if (!dialog || !closeButton) return;
+document.querySelectorAll('dialog[id]').forEach((dialog) => {
+  const openButton = document.querySelector(
+    `button:is([data-dialog-action="show"], [data-dialog-action="showModal"])[aria-controls="${dialog.id}"]`
+  );
+  const closeButton = document.querySelector(
+    `button[data-dialog-action="close"][aria-controls="${dialog.id}"]`
+  );
 
-    const showDialog = () => dialog[openButton.dataset.dialogAction || 'show']();
-    const closeDialog = () => dialog.close();
-    openButton.addEventListener('click', showDialog);
-    closeButton.addEventListener('click', closeDialog);
+  const showAction = openButton.dataset.dialogAction || 'show';
+  const isNonModalDialog = showAction !== 'showModal';
+  
+  const showDialog = () => {
+    dialog[showAction]();
+    if (isNonModalDialog) {
+      openButton.setAttribute('aria-expanded', 'true');
+      closeButton.setAttribute('aria-expanded', 'true');
+    }
+  };
+  const closeDialog = () => {
+    dialog.close();
+    if (isNonModalDialog) {
+      openButton.setAttribute('aria-expanded', 'false');
+      closeButton.setAttribute('aria-expanded', 'false');
+    }
+  };
+  openButton.addEventListener('click', showDialog);
+  closeButton.addEventListener('click', closeDialog);
 
-    // Detect outside clicks. NOTE: This only works if the ::backdrop ignores pointer events.
-    // Once closedby has enough support, remove this https://github.com/whatwg/html/pull/10737
-    document.addEventListener(
-      'click',
-      (e) => {
-        if (dialog.open && !e.composedPath().includes(dialog)) {
-          closeDialog();
-        }
-      },
-      { capture: true }
-    );
-  });
+  // Detect outside clicks. NOTE: This only works if the ::backdrop ignores pointer events.
+  // Once closedby has enough support, remove this https://github.com/whatwg/html/pull/10737
+  document.addEventListener(
+    'click',
+    (e) => {
+      if (dialog.open && !e.composedPath().includes(dialog)) {
+        closeDialog();
+      }
+    },
+    // Fixes a race condition where clicking the open button would cause a dialog to open and then close instantly.
+    // Could also stopPropagation() on the open button's click event.
+    { capture: true }
+  );
+});
 ```
 
 ## Future Solution: HTML Commands
