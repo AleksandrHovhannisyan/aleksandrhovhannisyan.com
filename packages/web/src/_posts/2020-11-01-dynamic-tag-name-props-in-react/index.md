@@ -1,5 +1,5 @@
 ---
-title: Dynamic Tag Name Props in React (with TypeScript)
+title: Dynamic Tag Name Props in React and TypeScript
 description: Sometimes, a React component needs to allow users to render a custom tag. Here's how you can pass dynamic tag names as props.
 keywords: [dynamic tag name props]
 categories: [react, typescript]
