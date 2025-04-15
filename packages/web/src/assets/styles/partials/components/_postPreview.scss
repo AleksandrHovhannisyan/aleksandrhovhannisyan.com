@@ -55,7 +55,7 @@
     }
 
     &::before {
-      content: "#";
+      content: "#" / "";
       user-select: none;
     }
   }
