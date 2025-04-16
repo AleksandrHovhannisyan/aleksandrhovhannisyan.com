@@ -168,9 +168,7 @@ export function makeMarkdownParser(options) {
       placeholder: `{:toc}`, // same as Jekyll
       slugify: slugifyString,
       containerId: 'toc',
-      listClass: 'toc-list',
-      itemClass: 'toc-item',
-      linkClass: 'toc-link',
+      listClass: 'list list-style-disc',
       listType: 'ol',
       level: [1, 2, 3],
     })

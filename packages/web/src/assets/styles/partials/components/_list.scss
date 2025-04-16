@@ -1,9 +1,14 @@
 @use "../functions";
 
-:where(ul, ol):not([class]) {
+:where(ul, ol):not([class]),
+.list {
   padding-inline-start: functions.size("relative", "0");
 
   li {
-    margin-top: functions.size("relative", "-3");
+    margin-top: 0.25lh;
   }
+}
+
+.list-style-disc {
+  list-style: disc;
 }
