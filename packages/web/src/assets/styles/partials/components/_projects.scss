@@ -2,54 +2,38 @@
 @use "../mixins";
 
 .project {
-  &-wrapper {
-    // Prevents the dreaded "doom flicker": https://www.joshwcomeau.com/animation/css-transitions/#doom-flicker
-    &:is(:hover, :focus-within) {
-      .project {
-        box-shadow: var(--card-box-shadow-focus);
-        transform: var(--card-offset-y-focus);
-      }
-    }
+  position: relative;
+  gap: 0;
+  border: solid 1px functions.color("border", "0");
+  
+  &:focus-within {
+    outline: solid 3px functions.color("accent", "0");
+    outline-offset: 3px;
   }
 
-  &-icon {
-    picture,
+  img {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.9);
+  }
+
+  &:is(:hover, :focus-within) {
     img {
-      display: flex;
-      width: functions.size("relative", "0");
-      aspect-ratio: 1;
+      filter: brightness(1);
     }
   }
 
-  &-rating {
-    display: flex;
-    align-items: center;
-    gap: functions.size("spacing", "-4");
-    @include mixins.font($family: "mono", $weight: "regular");
+  figcaption {
+    background-color: black;
+    padding: 1ch;
+    margin: 0;
+    color: white;
 
-    svg {
-      width: functions.size("relative", "0");
-      aspect-ratio: 1;
-      fill: functions.color("surface", "8");
+    a {
+      text-decoration: none;
+      outline: none;
+      color: inherit;
     }
-  }
-
-  &-description {
-    margin-top: functions.size("spacing", "-2");
-    @include mixins.font($size: "base");
-  }
-
-  &-technologies {
-    display: flex;
-    flex-wrap: wrap;
-    gap: functions.size("spacing", "-2");
-    margin-top: functions.size("spacing", "1");
-    @include mixins.font($family: "mono", $weight: "regular");
-  }
-
-  &-technology {
-    background-color: functions.color("surface", "2");
-    padding: functions.size("spacing", "-3") functions.size("spacing", "-2");
-    border-radius: functions.size("spacing", "-4");
   }
 }

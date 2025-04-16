@@ -23,6 +23,11 @@
   padding: functions.size("relative", "2");
   @include mixins.transition(border-radius);
 
+  a {
+    text-decoration: none;
+    outline: none;  
+  }
+
   &:is(:hover, :focus-within) {
     border-end-end-radius: 100px var(--size-shadow-height);
   }
