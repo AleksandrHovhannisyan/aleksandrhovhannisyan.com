@@ -351,7 +351,7 @@ The carousel we've been building so far is more akin to a filmstrip, where multi
   >
     <ol>
       {%- for image in carouselImages %}
-      <li data-scroll-snap-align="{% if forloop.first %}start{% elsif forloop.last %}end{% else %}center{% endif %}">
+      <li data-scroll-snap-align="center">
         <figure>
           <img src="{{ image.src }}" alt="{{ image.alt }}" eleventy:widths="400,800" sizes="100vw" />
           <figcaption>Photo by <a href="{{ image.user.url }}?utm_source={{ site.url }}&utm_medium=referral" rel="noreferrer noopener" target="_blank">{{ image.user.name }}</a> on <a href="https://unsplash.com/?utm_source={{ site.url }}&utm_medium=referral" rel="noreferrer noopener" target="_blank">Unsplash</a></figcaption>

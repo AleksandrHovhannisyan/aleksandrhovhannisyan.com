@@ -20,7 +20,7 @@ carousel-scroll {
 }
 
 carousel-scroll > * {
-  padding: 0;
+  padding: 0 !important;
   list-style: none;
   display: flex;
   gap: functions.size('spacing', '0');
