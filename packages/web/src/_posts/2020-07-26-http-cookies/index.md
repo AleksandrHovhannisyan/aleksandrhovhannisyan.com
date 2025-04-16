@@ -7,7 +7,7 @@ commentsId: 49
 redirectFrom:
   - /blog/what-are-cookies/
 thumbnail: https://images.unsplash.com/photo-1568051243858-533a607809a5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
-lastUpdated: 2022-12-01
+lastUpdated: 2025-04-16
 ---
 
 Have you ever wondered how a website remembers who you are when you navigate between different pages or close the site and come back later? What does that "Remember me" checkbox really do? Why do you need to log back into your account when you use a different browser or device, and what does logging out actually do?
@@ -469,10 +469,6 @@ To protect users against cross-site request forgery, developers can use [the `Sa
 For example, suppose `site.a.com` has a public API endpoint (e.g., `site.a.com/settings/update`) that can be used to change a user's account settings. Requests to this endpoint will only be processed if they include a session cookie authenticating the user. Ordinarily, requests are made to this endpoint via the front end of `site.a.com`, such as when a user submits a form, and these are known as same-site requests. The cookies included in same-site requests are known as <dfn>first-party cookies</dfn>.
 
 As we've learned, session cookies should be marked as `Secure` and `HTTPOnly` as a best practice to protect against session hijacking. But this is not enough to protect against cross-site request forgery. To understand why, suppose a user has an unexpired session cookie for their `site.a.com` account. If this user now visits another site—say `site.b.com`—that site could make a `POST` request with JavaScript to `site.a.com/settings/update` and include a malicious payload in the body of the request, such as to delete the user's account. Without same-site cookie restrictions, this cross-site request originating from `site.b.com` would include the user's cookies for `site.a.com` in its `Cookie` header by design. Those cookies would now be referred to as <dfn>third-party cookies</dfn> from the perspective of `site.b.com`. Even though `site.b.com` can't *read* the third-party cookies for `site.a.com` for security reasons, it *can* force them to be included in requests to that site, allowing it to make potentially malicious requests on behalf of unsuspecting users. The user returns to `site.a.com`, only to discover that their account is no longer recognized!
-
-{% aside %}
-While [cross-origin resource sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) will prevent `site.b.com`'s script from reading the response returned by `site.a.com`, it won't prevent the request itself from going through. This is a common misconception. CORS does *not* protect against CSRF attacks.
-{% endaside %}
 
 Now, imagine the same scenario, but this time the user's session cookie has a `SameSite` attribute of `Lax` or `Strict`. When the user visits `site.b.com`, it will attempt to make a malicious request to `site.a.com` just as before. But this time around, the cross-site request will *not* include the user's cookies for `site.a.com`. So the request will (presumably) be rejected by the back end server upon seeing that there is no cookie authenticating the user.
 
