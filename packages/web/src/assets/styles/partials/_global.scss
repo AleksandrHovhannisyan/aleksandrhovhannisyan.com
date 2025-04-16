@@ -21,7 +21,6 @@ body {
 }
 
 code:not([class^="language-"]), kbd {
-  color: functions.color("text", "emphasis");
   background-color: light-dark(#{functions.color("surface", "1")}, #{functions.color("surface", "2")});
   border-radius: functions.size("spacing", "-3");
   padding: functions.size("relative", "-4") functions.size("relative", "-3");
