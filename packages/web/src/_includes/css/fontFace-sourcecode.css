@@ -37,6 +37,25 @@
   size-adjust: 80%;
 }
 @font-face {
+  font-family: mono-fallback-3;
+  font-weight: 400;
+  src: local('Consolas'), local('Consolas Regular');
+  size-adjust: 85%;
+}
+@font-face {
+  font-family: mono-fallback-3;
+  font-weight: 400;
+  font-style: italic;
+  src: local('Consolas Italic');
+  size-adjust: 85%;
+}
+@font-face {
+  font-family: mono-fallback-3;
+  font-weight: 700;
+  src: local('Consolas Bold');
+  size-adjust: 85%;
+}
+@font-face {
   font-family: 'Source Code Pro';
   font-style: normal;
   font-display: swap;
@@ -49,7 +68,7 @@
   descent-override: 26%;
 }
 html {
-  --font-family-mono: Source Code Pro, mono-fallback-1, mono-fallback-2, monospace;
+  --font-family-mono: Source Code Pro, mono-fallback-1, mono-fallback-2, mono-fallback-3, monospace;
   --font-weight-mono-regular: 400;
   --font-weight-mono-bold: 700;
 }
