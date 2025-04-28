@@ -7,24 +7,20 @@
   padding: functions.size("relative", "2");
   position: relative;
 
-  // Pseudo-element trick to make the whole card clickable. Good on mobile so users don't have to worry about tapping links precisely
-  &-link {
-    // Enlarge mouse target
-    display: block;
-    text-decoration-line: none;
-
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
+  &:hover {
+    background-color: functions.color("surface", "2");
   }
 
-  &-date,
-  &-tags {
+  &:has(a:focus-visible) {
+    outline: calc(4rem / 16) solid functions.color("accent", "0");
+  }
+
+  a {
+   text-decoration: none;
+   outline: none;
+  }
+
+  &-date {
     @include mixins.font($size: "sm");
   }
 
@@ -43,53 +39,9 @@
     @include mixins.font($size: "base", $leading: "sm");
   }
 
-  &-tags {
-    display: none;
-  }
-
-  &-tag {
-    color: functions.color("text", "soft");
-
-    &:is(:hover, :focus-visible) {
-      color: functions.color("text", "emphasis");
-    }
-
-    &::before {
-      content: "#" / "";
-      user-select: none;
-    }
-  }
-
   @include mixins.tablet-sm {
     &-title {
       line-height: functions.size("leading", "2xs");
-    }
-  }
-
-  @include mixins.desktop {
-    &-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: functions.size("spacing", "-3") functions.size("spacing", "-2");
-      margin-top: functions.size("spacing", "2");
-    }
-
-    a {
-      text-decoration-line: underline;
-      text-decoration-color: functions.color("surface", "6");
-      text-decoration-thickness: 0.07em;
-
-      &:is(:hover, :focus-visible) {
-        text-decoration-color: inherit;
-        text-decoration-thickness: 0.08em;
-      }
-    }
-
-    // On desktop, we don't want the link to cover the entire card, or it creates a somewhat annoying UX where hovering from one tag to another causes the card link underline to flicker on/off.
-    &-link {
-      &::after {
-        content: none;
-      }
     }
   }
 }

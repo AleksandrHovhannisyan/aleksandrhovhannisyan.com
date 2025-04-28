@@ -3,17 +3,8 @@
   <article class="post-preview text-wrap-balance">
     <p class="post-preview-date"><span class="screen-reader-only">Published on </span>{% include "date.liquid" date: post.date, dateFormat: "MMMM DD, YYYY" %}</p>
     <h{{ titleLevel }} class="post-preview-title">
-      <a class="post-preview-link" href="{{ post.url }}">{{ post.data.title | toSmartQuotes }}</a>
+      <a class="card-link" href="{{ post.url }}">{{ post.data.title | toSmartQuotes }}</a>
     </h{{ titleLevel }}>
     <p class="post-preview-description">{{- post.data.description | toSmartQuotes -}}</p>
-    <ul class="post-preview-tags" aria-label="Tags">
-      {%- for category in post.data.categories -%}
-        <li>
-          <a href="/tags/{{ category }}/" class="post-preview-tag">
-            {{- category -}}
-          </a>
-        </li>
-      {%- endfor -%}
-    </ul>
   </article>
 </li>
