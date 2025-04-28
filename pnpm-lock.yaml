@@ -8,9 +8,6 @@ importers:
 
   .:
     devDependencies:
-      '@eslint/eslintrc':
-        specifier: ^3.3.0
-        version: 3.3.0
       '@eslint/js':
         specifier: ^9.22.0
         version: 9.22.0
@@ -115,8 +112,8 @@ importers:
         specifier: 4.1.3
         version: 4.1.3(markdown-it@12.0.6)
       markdown-it-code-tabindex:
-        specifier: 0.0.1
-        version: 0.0.1
+        specifier: 1.0.0
+        version: 1.0.0
       markdown-it-link-attributes:
         specifier: 3.0.0
         version: 3.0.0
@@ -3284,8 +3281,8 @@ packages:
       markdown-it: 12.0.6
     dev: false
 
-  /markdown-it-code-tabindex@0.0.1:
-    resolution: {integrity: sha512-HHFgc/sLOfa1z2KhETfwtvVG5aaWlBQe+A8IVt14WOp9gxo7gWpE4RjAa/GU9iKFqxmYFKWfOb/q165V99AYDg==}
+  /markdown-it-code-tabindex@1.0.0:
+    resolution: {integrity: sha512-B3QQQ4/6AGVuMTKsCnuVGGeEoFM2RLZfLhlyLn0l5m0k0ZKw+PZXzCVLMwLBi3N1s9t6HFHUEVolw7sbrTnHow==}
     dev: false
 
   /markdown-it-link-attributes@3.0.0:

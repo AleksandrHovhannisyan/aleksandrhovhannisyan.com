@@ -13,7 +13,6 @@
     "test": "pnpm run -r /^test$/"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.0",
     "@eslint/js": "^9.22.0",
     "@typescript-eslint/eslint-plugin": "^8.26.1",
     "@typescript-eslint/parser": "^8.26.1",
