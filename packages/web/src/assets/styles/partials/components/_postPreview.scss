@@ -7,18 +7,15 @@
   padding: functions.size("relative", "2");
   position: relative;
 
-  &:hover {
-    background-color: functions.color("surface", "2");
+  &-link {
+    text-decoration-line: none;
+    outline: none;
   }
 
-  &:has(a:focus-visible) {
-    outline: calc(4rem / 16) solid functions.color("accent", "0");
+  &:has(&-link:focus-visible) {
+    outline: solid calc(3rem / 16) functions.color("accent", "0");
   }
-
-  a {
-   text-decoration: none;
-   outline: none;
-  }
+  
 
   &-date {
     @include mixins.font($size: "sm");
@@ -39,9 +36,26 @@
     @include mixins.font($size: "base", $leading: "sm");
   }
 
+  &-tags {
+    display: none;
+  }
+
+  &-tag {
+    border-radius: functions.size("spacing", "-3");
+  }
+
   @include mixins.tablet-sm {
     &-title {
       line-height: functions.size("leading", "2xs");
+    }
+  }
+
+  @include mixins.desktop {
+    &-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: functions.size("spacing", "-2");
+      margin-top: functions.size("spacing", "2");
     }
   }
 }
