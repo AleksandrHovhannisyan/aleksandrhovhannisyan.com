@@ -6,7 +6,7 @@ description: Safely wipe a drive using a bootable USB and diskpart.
 Recently, I installed Windows 11 on a new SSD, but then I found a cheaper disk with comparable read and write speeds, so I decided to return the more expensive drive. But before I could do that, I needed to completely wipe it.
 
 {% aside %}
-If instead you bought a new laptop from a retailer and want to return it, use [Windows's built-in reset utility](ms-settings:recovery).
+If instead you bought a new laptop from a retailer and want to return it, use [Windows's built-in reset utility](ms-settings:recovery). Just make sure to select the option to fully erase the disk data rather than going with the default.
 {% endaside %}
 
 The safest way to do this is to use your disk manufacturer's firmware. For example, you can download [Western Digital Dashboard](https://support-en.wd.com/app/answers/detailweb/a_id/31759/~/download%2C-install%2C-test-drive-and-update-firmware-using-western-digital) to clean Western Digital disks. Unfortunately, this didn't work in my case as the software couldn't detect my USB. So here's the alternative method that I followed:
