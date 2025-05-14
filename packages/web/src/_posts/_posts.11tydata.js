@@ -62,6 +62,9 @@ const data = {
     if (data?.isDraft && isProduction) {
       return false;
     }
+    if (data?.categories?.includes('note')) {
+      return `/notes/${data?.page?.fileSlug}/`;
+    }
     return `/blog/${data?.page?.fileSlug}/`;
   },
   eleventyComputed: {

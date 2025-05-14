@@ -9,7 +9,7 @@
     <ul class="post-preview-tags" aria-label="Tags">
       {%- for category in post.data.categories -%}
         <li>
-          <a href="/tags/{{ category }}/" class="post-preview-tag pill relative" data-size="sm">
+          <a href="{% if category == "note" %}/notes/{% else %}/tags/{{ category }}/{% endif %}" class="post-preview-tag pill relative" data-size="sm">
             {{- category -}}
           </a>
         </li>

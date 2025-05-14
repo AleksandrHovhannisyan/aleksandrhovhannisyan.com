@@ -1,6 +1,7 @@
 ---
 title: Access Windows Files from WSL
-description: How to move files between Windows and WSL.
+description: Move files between Windows and WSL using the wslpath command-line utility.
+categories: [note, wsl, windows]
 ---
 
 Windows Subsystem for Linux (WSL) has a built-in command-line utility named `wslpath` that takes a Windows path and formats it as a WSL path, allowing you to access Windows files from WSL. You can use this to move files between the two systems. I use this all the time on my machine to move media files into WSL, where I do the majority of my development work.

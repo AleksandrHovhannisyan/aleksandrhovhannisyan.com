@@ -87,7 +87,6 @@
     }
 
     :is(a, label) {
-      display: block;
       color: functions.color('text', 'soft');
 
       &:is(:focus-visible, :hover) {

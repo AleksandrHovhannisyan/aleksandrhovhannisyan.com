@@ -21,7 +21,8 @@
   }
 
   &-tag {
-    border-radius: functions.size("spacing", "-4");    
+    padding: functions.size("spacing", "-3") functions.size("spacing", "-2");
+    border-radius: functions.size("spacing", "-4");
   }
 
   img {

@@ -8,8 +8,25 @@ permalink: "{{ tag.href }}"
 noindex: true
 excludeFromSitemap: true
 eleventyComputed:
-  title: "Tag: {{ tag.title }}"
-  description: "Posts tagged with {{ tag.title }}"
+  title: "{% if tag.title == 'note' %}Notes{% else %}Tag: {{ tag.title }}{% endif %}"
+  description: "{% if tag.title == 'note' %}Notes to self and short tutorials.{% else %}Posts tagged with {{ tag.title }}{% endif %}"
 ---
 
+{% if tag.title == "note" %}
+<div data-theme="light">
+  <ul class="grid col-2 gap-2 note-board">
+    {% for note in tag.posts %}
+      <li class="note">
+        <article>
+          <h3 class="post-preview-title">
+            <a class="card-link" href="{{ note.url }}">{{ note.data.title | toSmartQuotes }}</a>
+          </h3>
+          <p class="post-preview-description">{{ note.data.description | toSmartQuotes }}</p>
+        </article>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+{% else %}
 {% include "postPreviews.liquid" posts: tag.posts, titleLevel: 2 %}
+{% endif %}

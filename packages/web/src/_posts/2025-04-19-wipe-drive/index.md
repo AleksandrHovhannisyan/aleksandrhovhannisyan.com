@@ -1,6 +1,7 @@
 ---
 title: How to Wipe a Drive Without Removing It
 description: Safely wipe a drive using a bootable USB and diskpart.
+categories: [note, hardware, windows]
 ---
 
 Recently, I installed Windows 11 on a new SSD, but then I found a cheaper disk with comparable read and write speeds, so I decided to return the more expensive drive. But before I could do that, I needed to completely wipe it.

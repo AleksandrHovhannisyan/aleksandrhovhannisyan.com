@@ -1,6 +1,7 @@
 ---
 title: Get the IP Address of a Linux Machine
 description: Programmatically read your machine's IPv4 address on Linux.
+categories: [note, linux, networking]
 ---
 
 ```bash {data-copyable="true"}

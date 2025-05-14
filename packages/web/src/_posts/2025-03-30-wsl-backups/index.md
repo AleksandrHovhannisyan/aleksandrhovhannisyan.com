@@ -1,6 +1,7 @@
 ---
-title: WSL Backup Guide
-description: How to export and import a WSL distribution.
+title: How to Import and Export WSL Distros
+description: Back up your entire WSL distribution and import it on a different machine.
+categories: [note, wsl, windows]
 ---
 
 Windows Subsystem for Linux (WSL) is my preferred dev environment on Windows, and I back it up regularly just like I would any other file system, in case I accidentally bork it one day or need to get a new machine. Here's how you can do that.

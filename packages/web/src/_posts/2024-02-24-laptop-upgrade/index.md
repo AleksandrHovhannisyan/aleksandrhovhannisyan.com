@@ -1,7 +1,7 @@
 ---
 title: My First DIY Laptop Upgrade
 description: A post-mortem of my first attempt at upgrading a laptop.
-categories: [hardware, repair]
+categories: [hardware, diy]
 keywords: [hp envy x360 m6-w103dx]
 thumbnail: ./images/disassembled.jpg
 ---

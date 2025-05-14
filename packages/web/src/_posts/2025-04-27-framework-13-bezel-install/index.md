@@ -1,6 +1,7 @@
 ---
 title: How to Correctly Install the Framework 13 Bezel
 description: Improperly routed cables can cause the Framework 13 bezel to pop back out.
+categories: [note, hardware, diy]
 ---
 
 I was recently assembling a new DIY Framework 13 laptop, and the bezel was giving me more trouble than I anticipated. I encountered two problems, and both of them had to do with how the cables were routed underneath the bezel. Apparently this is a really common problem with no clear answers in the official guide, so I wanted to write up this quick guide in case others get stuck, too.

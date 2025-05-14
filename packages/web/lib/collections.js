@@ -10,8 +10,10 @@ export function getAllPosts(collection) {
  * @param {string} category
  */
 function getCategoryHref(category) {
-  const slug = slugifyString(category);
-  return `/tags/${slug}/`;
+  if (category === 'note') {
+    return `/notes/`;
+  }
+  return `/tags/${slugifyString(category)}/`;
 }
 
 /** Returns all unique categories as a collection.

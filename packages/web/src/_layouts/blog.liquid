@@ -9,8 +9,7 @@ preloads:
 ---
 
 <article class="rhythm">
-  {%- assign pageTag = tag.title | default: 'all' -%}
-  <h1 class="prose-tight">{%- if pageTag == 'all' -%}Blog{%- else -%}Tag: {{ pageTag }}{%- endif -%}</h1>
+  <h1 class="prose-tight">{{ title }}</h1>
   <div class="rhythm">
     {{ content }}
   </div>

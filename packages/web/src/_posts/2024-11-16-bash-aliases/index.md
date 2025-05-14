@@ -1,6 +1,7 @@
 ---
 title: Useful Bash Aliases
 description: Bash aliases I use to speed up my workflows.
+categories: [note, linux]
 ---
 
 I'm lazy, so I prefer to type as fewer characters as possible to run a command.

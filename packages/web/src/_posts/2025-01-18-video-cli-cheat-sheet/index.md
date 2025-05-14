@@ -2,6 +2,7 @@
 title: CLI Cheat Sheet for Videos
 description: A reference for downloading, splitting, and optimizing videos with CLI tools.
 keywords: [yt-dlp, ffmpeg]
+categories: [note, ffmpeg]
 lastUpdated: 2025-01-30
 ---
 
