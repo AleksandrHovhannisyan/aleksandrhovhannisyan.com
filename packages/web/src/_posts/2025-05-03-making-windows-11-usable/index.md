@@ -1,16 +1,19 @@
 ---
 title: Making Windows 11 Usable
-description: Settings to disable, apps to remove, and steps to take to completely purge OneDrive.
+description: My recommended settings for a fresh installation of Windows 11.
 categories: [windows, security, privacy]
+lastUpdated: 2025-05-29
 ---
 
-At times, Windows feels less like an operating system and more like an ad platform. I was recently testing different Windows 11 machines to see which one I'd like, and I was reminded of just how horrible the default privacy settings really are. I'm sure most commercial users just accept that things have to be this way, but they don't, and changing these settings is actually straightforward.
+I've been using Windows since the XP days, but over the years, I've witnessed its gradual fall from grace. Now, Windows 11 feels like the culmination of the many bad practices in modern software: ads posing as helpful notifications; personalized feeds in search and on your lock screen; bloatware that you almost certainly don't need; and pre-enabled settings that disregard your privacy. I'm sure most casual users just accept that things have to be this way, but they don't.
 
-Here, I'll walk you through some sensible (but opinionated) defaults. Where possible, I've included direct links to individual pages using Microsoft's [reserved URI scheme](https://learn.microsoft.com/en-us/windows/apps/develop/launch/launch-settings-app#ms-settings-uri-scheme-reference); clicking a direct link will open that page in your Settings app if you're on Windows. I've also linked to similar guides at the end.
+In this guide, I'll walk you through some sensible (but opinionated) defaults for Windows settings. Where possible, I've included direct links to individual pages using Microsoft's [reserved URI scheme](https://learn.microsoft.com/en-us/windows/apps/develop/launch/launch-settings-app#ms-settings-uri-scheme-reference); clicking a direct link will open that page in your Settings app if you're on Windows. I've also linked to similar guides at the end.
 
 {% include "toc.md" %}
 
-## 1. System
+## Recommended Settings
+
+### 1. System
 
 **Direct link**: [`ms-settings:system`](ms-settings:system)
 
@@ -18,7 +21,7 @@ Here, I'll walk you through some sensible (but opinionated) defaults. Where poss
 | -------------- | ----- |
 | Nearby sharing | `Off` |
 
-## 2. Bluetooth & devices
+### 2. Bluetooth & devices
 
 **Direct link**: [`ms-settings:bluetooth`](ms-settings:bluetooth)
 
@@ -26,9 +29,9 @@ Here, I'll walk you through some sensible (but opinionated) defaults. Where poss
 | --------- | ----------------------------- |
 | Bluetooth | `Off`. Enable only as needed. |
 
-## 3. Personalization
+### 3. Personalization
 
-### Lock screen
+#### Lock screen
 
 **Direct link**: [`ms-settings:personalization-lockscreen`](ms-settings:personalization-lockscreen)
 
@@ -39,7 +42,7 @@ Here, I'll walk you through some sensible (but opinionated) defaults. Where poss
 
 Everything else is up to you.
 
-### Start
+#### Start
 
 **Direct link**: [`ms-settings:personalization-start`](ms-settings:personalization-start)
 
@@ -51,13 +54,13 @@ Everything else is up to you.
 | Show recommendations for tips, app promotions, and more                                 | `Off` |
 | Show account-related notifications                                                      | `Off` |
 
-### Taskbar
+#### Taskbar
 
 **Direct link**: [`ms-settings:taskbar`](ms-settings:taskbar)
 
 This one's completely down to preference. I like to hide Search, Task View, and Widgets. You can keep the search bar; I just find it redundant as a power user since the Windows key on my keyboard does the same thing.
 
-### Device usage
+#### Device usage
 
 **Direct link**: [`ms-settings:deviceusage`](ms-settings:deviceusage)
 
@@ -67,14 +70,15 @@ Disable all of the settings on this page:
 
 The only way they'd be on is if you enabled them during Windows 11 installation.
 
-## 4. Apps
+### 4. Apps
 
-### Installed apps
+#### Installed apps
 
 **Direct link**: [`ms-settings:appsfeatures`](ms-settings:appsfeatures)
 
 Remove any bloatware you don't recognize. Common apps you might want to remove include but are not limited to:
 
+- Copilot
 - Feedback Hub
 - Tips
 - Weather
@@ -82,22 +86,22 @@ Remove any bloatware you don't recognize. Common apps you might want to remove i
 - News/MSN
 - Microsoft Solitaire Collection
 
-### Advanced app settings
+#### Advanced app settings
 
 | Setting                  | Value      |
 | ------------------------ | ---------- |
 | Choose where to get apps | `Anywhere` |
 | Archive apps             | `Off`      |
 
-### Startup
+#### Startup
 
 **Direct link**: [`ms-settings:startupapps`](ms-settings:startupapps)
 
 Remove any apps you recognize that you don't want to start every time your PC starts. For example, I don't use Microsoft Edge as my browser, so I turned it off.
 
-## 5. Privacy & security
+### 5. Privacy & security
 
-### Find my device
+#### Find my device
 
 **Direct link**: [`ms-settings:findmydevice`](ms-settings:findmydevice)
 
@@ -105,7 +109,7 @@ Remove any apps you recognize that you don't want to start every time your PC st
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Find my device | Optional. I don't like to have location tracking enabled all the time, but you may want to do this if you have reason to suspect your laptop may get stolen. Otherwise, I'd recommend turning it off. |
 
-### General
+#### General
 
 **Direct link**: [`ms-settings:privacy-general`](ms-settings:privacy-general)
 
@@ -117,7 +121,7 @@ Remove any apps you recognize that you don't want to start every time your PC st
 | Show me suggested content in the Settings app                               | `Off` |
 | Show me notifications in the Settings app                                   | `Off` |
 
-### Speech
+#### Speech
 
 **Direct link**: [`ms-settings:privacy-speech`](ms-settings:privacy-speech)
 
@@ -125,7 +129,7 @@ Remove any apps you recognize that you don't want to start every time your PC st
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | Online speech recognition | `Off`, unless you rely on voice dictation, Windows Hello, or other Microsoft voice recognition apps. |
 
-### Inking & typing personalization
+#### Inking & typing personalization
 
 **Direct link**: [`ms-settings:privacy-speechtyping`](ms-settings:privacy-speechtyping)
 
@@ -133,7 +137,7 @@ Remove any apps you recognize that you don't want to start every time your PC st
 | ----------------------------------- | ----- |
 | Custom inking and typing dictionary | `Off` |
 
-### Diagnostics & feedback
+#### Diagnostics & feedback
 
 **Direct link**: [`ms-settings:privacy-feedback`](ms-settings:privacy-feedback)
 
@@ -145,7 +149,7 @@ Remove any apps you recognize that you don't want to start every time your PC st
 | View diagnostic data                            | `Off`   |
 | Feedback frequency                              | `Never` |
 
-### Activity History
+#### Activity History
 
 **Direct link**: [`ms-settings:privacy-activityhistory`](ms-settings:privacy-activityhistory)
 
@@ -153,7 +157,7 @@ Remove any apps you recognize that you don't want to start every time your PC st
 | ---------------------------------------- | ----- |
 | Store my activity history on this device | `Off` |
 
-### Search permissions
+#### Search permissions
 
 **Direct link**: [`ms-settings:search-permissions`](ms-settings:search-permissions)
 
@@ -177,9 +181,18 @@ Unfortunately, disabling "Show search highlights" through the Settings is not en
 
 ![Registry Editor window showing HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer settings. DisableSearchBoxSuggestions is set to 1.](./images/regedit-explorer.png)
 
-## How to Completely Remove OneDrive
+## How to Remove Microsoft 365
 
-Now for the fun part. If you buy a new Windows laptop from a retailer or directly from a manufacturer, or even if you do a fresh Windows install, it's always going to come with OneDrive pre-installed. There is no way to opt out of this, so we'll need to do it manually if you don't use OneDrive.
+If you don't plan to use Microsoft 365, there's no point in keeping it installed on your system. Unfortunately, Microsoft doesn't let you uninstall Microsoft 365 through Settings like it does with most other apps. So you'll need to remove it manually:
+
+1. Open File Explorer and navigate to `C:\Program Files`.
+2. Find and delete the directory named `Microsoft Office` and any other variants.
+3. Navigate to `%programdata%\Microsoft\Windows\Start Menu\Programs`. Delete any stale shortcuts like `Excel`, `Word`, `OneNote`, etc. that point to their now-deleted executables.
+5. Navigate to `%localappdata%\Microsoft`. This directory contains application-specific user data, like configurations, backups, history, etc. Go through and delete any directories related to Office apps.
+
+## How to Remove OneDrive
+
+If you buy a new Windows laptop from a retailer or directly from a manufacturer, or even if you do a fresh Windows install, it's always going to come with OneDrive pre-installed. You'd expect this to be harmless, but OneDrive actually alters system paths during installation so that the familiar `Documents` shortcut points to OneDrive. I'll show you how to fix this, but while you're at it, I recommend completely uninstalling OneDrive unless you really need it.
 
 ### 1. Unlink this PC
 
@@ -195,6 +208,7 @@ See this Microsoft help page for a video walkthrough: [Unlink and re-link OneDri
 1. Go to [`ms-settings:appsfeatures`](ms-settings:appsfeatures) to view your installed apps.
 2. Search for OneDrive.
 3. Click the ellipsis menu (`...`) on the right and choose `Uninstall`.
+4. Open File Explorer, navigate to `%localappdata%\Microsoft`, and delete the `OneDrive` directory.
 
 ### 3. Update Document Paths
 
