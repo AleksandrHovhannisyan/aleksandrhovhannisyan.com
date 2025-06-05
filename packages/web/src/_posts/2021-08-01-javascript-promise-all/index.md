@@ -4,7 +4,7 @@ description: Learn how to use JavaScript's Promise.all method to await multiple 
 keywords: [promise.all, promise, async, javascript]
 categories: [javascript, async]
 commentsId: 104
-lastUpdated: 2024-10-08
+lastUpdated: 2025-06-05
 thumbnail: https://images.unsplash.com/photo-1606674556490-c2bbb4ee05e5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
@@ -55,7 +55,7 @@ new Promise(
 ```
 
 {% aside %}
-**Note**: The term "callback" more generally refers to any function your code calls at a later point in time. It is not only specific to Promises. For example, a Promise executor is technically also a callback (that is invoked immediately upon construction). JavaScript is full of callbacks.
+**Note**: The term "callback" more generally refers to any function your code calls at a later point in time (usually asynchronously). Even more loosely, it can also refer to any function passed to another function as an argument regardless of when that function is called. For example, a Promise executor is technically also a callback function (just one that's invoked immediately). The key takeaway here is that "callback" is not a term exclusive to Promises—JavaScript is full of callbacks!
 {% endaside %}
 
 ## 1. Background
@@ -330,7 +330,7 @@ Promise.all = function(promisesIterable) {
     promises.forEach((promise) => {
       // ...
     });
-  }
+  });
 }
 ```
 
@@ -371,9 +371,31 @@ Promise.all = function(promisesIterable) {
 };
 ```
 
-Each time a Promise fulfills, we keep track of its value in an array. Note that `Promise.all` must fulfill with values in the same order as the original Promises, so a simple `Array.prototype.push` wouldn't work here—if a Promise that appears later in the array fulfills first, its value would appear first in the returned array, and we don't want that. So instead, we use the array index of the current Promise to set its resolved value. (Thanks to Chris Opperwall for clarifying that implementation detail in this article: [Implementing Promise.all](https://medium.com/@copperwall/implementing-promise-all-575a07db509a).)
+Each time a Promise fulfills, we keep track of its value in an array. An important requirement is that `Promise.all` must fulfill with values in the same order as the original Promises, so a simple `Array.prototype.push` wouldn't work here—because if a Promise that appears later in the array fulfills first, then its fulfilled value would appear first in the `push` version, making this code unpredictable:
 
-Additionally, whenever a Promise fulfills, we check if `fulfilledValues.length` equals the total number of Promises. If it does, then all Promises have fulfilled, so we fulfill the outer Promise. Otherwise, if at any point a single Promise is rejected or an error is thrown, we reject the outer Promise.
+```javascript
+const [a, b, c] = await Promise.all([A, B, C]);
+```
+
+So instead, we use the array index of each Promise to set its resolved value:
+
+```javascript
+fulfilledValues[index] = value;
+```
+
+{% aside %}
+(Thanks to Chris Opperwall for clarifying that implementation detail in this article: [Implementing Promise.all](https://medium.com/@copperwall/implementing-promise-all-575a07db509a).)
+{% endaside %}
+
+Additionally, whenever a Promise fulfills, we check if `fulfilledValues.length` equals the total number of Promises. If it does, then all Promises have fulfilled, so we fulfill the outer Promise:
+
+```js
+if (fulfilledValues.length === promiseCount) {
+  resolve(fulfilledValues);
+}
+```
+
+Otherwise, if at any point a single Promise is rejected or an error is thrown, we reject the outer Promise.
 
 There's one edge case that our code doesn't handle: an empty iterable. [According to MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all#return_value), `Promise.all` should fulfill immediately in this case. Since we already know the length of `promisesIterable`, we can handle this edge case early.
 
