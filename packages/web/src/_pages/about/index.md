@@ -9,22 +9,21 @@ layout: about
 
 Welcome! My name's Aleksandr—and yes, that's spelled _without_ an `e` between the `d` and the `r`, pronounced just like _Alexander_. Don't worry about my last name, though; it's quite long, and most people butcher it anyway.
 
-I'm a Texas-based software developer; this website is my little corner of the web where I write programming tutorials, experiment with web design, and hone my voice as a writer, all to varying degrees of success.
-
-Here's a brief rundown of my experience, projects, and interests.
+I'm a Texas-based software developer; this is my corner of the web where I write programming tutorials, experiment with web design, and hone my voice as a writer, all to varying degrees of success.
 
 ## Work Experience
 
-Since 2020, I've worked full time as a software engineer on Esri's [ArcGIS StoryMaps](https://storymaps.arcgis.com/) team. In that role, I:
+I'm a software engineer at Esri and have been working there full time since 2020. I spent the majority of my early years working on [ArcGIS StoryMaps](https://storymaps.arcgis.com/) (2020–2024), but I recently joined the Maps SDK team to work on web components that are used throughout the ArcGIS ecosystem. In these roles, I:
 
-- Shipped many high-impact and highly requested features, including but not limited to: a rich text editor (Slate.js) that powers our app's authoring experience; a data table block; extended theming options; topic tagging and publishing options; a custom template workflow; integrations with APIs like Google Fonts and Unsplash; and more.
-- Refactored core parts of the app to resolve longstanding tech debt.
+- Shipped many high-impact and highly requested features, including but not limited to: a rich text editor (Slate.js) that powers the StoryMaps authoring experience; a data table block; extended theming options; topic tagging and publishing options; a custom template workflow; integrations with APIs like Google Fonts and Unsplash; and more.
+- Refactored core parts of StoryMaps to resolve longstanding tech debt.
+- Migrated old web components from Stencil to our in-house Lit wrapper.
 - Wrote plenty of documentation (inline, READMEs, and getting started/troubleshooting guides) for both new and old code.
 - Served on an internal accessibility working group, where developers and designers met every few weeks to discuss issues and potential solutions.
 - Mentored developers and paired with co-workers to unblock their work.
 - Presented at team workshops to share things I learned or worked on.
 
-These days, I mainly work on the web with React, TypeScript, and CSS, but I also have experience with other frameworks like Svelte and more general-purpose programming languages like C++ and Python. Some of my interests in web development include typography, performance, and accessibility. I thrive in collaborative environments that encourage growth, offer varied learning opportunities, and cultivate my problem-solving skills and creative strengths.
+I specialize in web development and have a deep understanding of web fundamentals, performance testing and optimization, CSS, typography, and accessibility. During my day-to-day work, I mainly use HTML, CSS, JavaScript/TypeScript, frameworks like React and Svelte, and web components. However, I also have experience with general-purpose programming languages like C++, Lua, and Python, as well as other domain-specific languages such as SQL. I thrive in collaborative environments that encourage growth, offer varied learning opportunities, and cultivate my problem-solving skills and creative strengths.
 
 While the majority of my work experience is in software development, I once worked as a [freelance copy editor](https://www.upwork.com/freelancers/~014eb3a95d4d1fd855?s=1110580753635725312) for four years during my undergraduate studies, with clients ranging from digital marketing agencies to small business owners and even bigger companies like Quora. Freelancing was a great experience that taught me how to stand out in a fiercely competitive market, helped me grow my professional network, and allowed me to earn a bit of money on the side while in school.
 
@@ -109,6 +108,5 @@ I don't keep a reading list per se, although there are some books I'd like to on
 
 If you made it this far, cool! You're still awake!
 
-There's more to my life than what I feel comfortable sharing here, but that's about the gist of my background and interests.
+There's obviously more to my life than what I feel comfortable sharing here, but that's the gist of my background and interests.
 
-At the end of the day, I'm just a [Real Human Bean](https://www.youtube.com/watch?v=-DSVDcw6iW8) who enjoys doing real human things. If that sounds like your cup of tea, get in touch—I'd love to hear from you!
