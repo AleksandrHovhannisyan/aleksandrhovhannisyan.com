@@ -13,15 +13,7 @@ I'm a Texas-based software developer; this is my corner of the web where I write
 
 ## Work Experience
 
-I'm a software engineer at Esri and have been working there full time since 2020. I spent the majority of my early years working on [ArcGIS StoryMaps](https://storymaps.arcgis.com/) (2020–2024), but I recently joined the Maps SDK team to work on web components that are used throughout the ArcGIS ecosystem. In these roles, I:
-
-- Shipped many high-impact and highly requested features, including but not limited to: a rich text editor (Slate.js) that powers the StoryMaps authoring experience; a data table block; extended theming options; topic tagging and publishing options; a custom template workflow; integrations with APIs like Google Fonts and Unsplash; and more.
-- Refactored core parts of StoryMaps to resolve longstanding tech debt.
-- Migrated old web components from Stencil to our in-house Lit wrapper.
-- Wrote plenty of documentation (inline, READMEs, and getting started/troubleshooting guides) for both new and old code.
-- Served on an internal accessibility working group, where developers and designers met every few weeks to discuss issues and potential solutions.
-- Mentored developers and paired with co-workers to unblock their work.
-- Presented at team workshops to share things I learned or worked on.
+I'm a software engineer at Esri and have been working there full time since 2020. I spent the majority of my early years working on [ArcGIS StoryMaps](https://storymaps.arcgis.com/) (2020–2024), but I recently joined the Maps SDK team to work on web components that are used throughout the ArcGIS ecosystem.
 
 I specialize in web development and have a deep understanding of web fundamentals, performance testing and optimization, CSS, typography, and accessibility. During my day-to-day work, I mainly use HTML, CSS, JavaScript/TypeScript, frameworks like React and Svelte, and web components. However, I also have experience with general-purpose programming languages like C++, Lua, and Python, as well as other domain-specific languages such as SQL. I thrive in collaborative environments that encourage growth, offer varied learning opportunities, and cultivate my problem-solving skills and creative strengths.
 
