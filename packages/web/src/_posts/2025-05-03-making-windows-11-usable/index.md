@@ -5,7 +5,7 @@ categories: [windows, security, privacy]
 lastUpdated: 2025-05-29
 ---
 
-I've been using Windows since the XP days, but over the years, I've witnessed its gradual fall from grace. Now, Windows 11 feels like the culmination of the many bad practices in modern software: ads posing as helpful notifications; personalized feeds in search and on your lock screen; bloatware that you almost certainly don't need; and pre-enabled settings that disregard your privacy. I'm sure most casual users just accept that things have to be this way, but they don't.
+I've been using Windows since the XP days, but over the years, I've witnessed its gradual fall from grace. Now, Windows 11 feels like the culmination of the many bad practices in modern software: ads posing as helpful notifications, intrusive news feeds, bloatware that you almost certainly don't need, and settings that violate your privacy. I'm sure most casual users just accept that things have to be this way, but it really doesn't take much effort to make Windows tolerable.
 
 In this guide, I'll walk you through some sensible (but opinionated) defaults for Windows settings. Where possible, I've included direct links to individual pages using Microsoft's [reserved URI scheme](https://learn.microsoft.com/en-us/windows/apps/develop/launch/launch-settings-app#ms-settings-uri-scheme-reference); clicking a direct link will open that page in your Settings app if you're on Windows. I've also linked to similar guides at the end.
 

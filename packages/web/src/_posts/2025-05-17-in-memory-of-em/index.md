@@ -13,4 +13,4 @@ Those of you who knew Em will recall how she enriched every life she touched, in
 
 On this day of mourning, one cannot help but reflect on the fleeting nature of life. One moment we rejoice, and the next we grieve. It's such a cruel fate to know that one's entire existence can be reduced to a beginning and an end—from birth to death, as if marked by a line. It gives one pause.
 
-Ah, but let us not linger on Em's passing for too long and instead cherish our memories of her life and all that she did for us. For my part, I will never forget her, and I still sense her presence as though she's right here beside me. I hope—nay, I _know_—that Em is in a better place now. Take comfort in the fact that we, too, will join her someday, once we've served our purpose.
+Ah, but let us not linger on the tragedy of Em's passing and instead cherish our memories of her life and all that she did for us. For my part, I will never forget her, and I still sense her presence as though she's right here beside me. I hope—nay, I _know_—that Em is in a better place now. Take comfort in the fact that we, too, will join her someday, once we've served our purpose.
