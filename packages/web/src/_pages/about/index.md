@@ -56,5 +56,4 @@ I don't keep a reading list per se, although there are some books I'd like to on
 
 If you made it this far, cool! You're still awake!
 
-There's obviously more to my life than what I feel comfortable sharing here, but that's the gist of my background and interests.
-
+There's obviously more to my life than what I feel comfortable sharing here, but that's the gist of my background and interests. At the end of the day, I'm just a [Real Human Bean](https://www.youtube.com/watch?v=-DSVDcw6iW8) who enjoys doing Real Human Things.

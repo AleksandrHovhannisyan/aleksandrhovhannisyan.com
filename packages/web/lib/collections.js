@@ -19,7 +19,7 @@ function getCategoryHref(category) {
 /** Returns all unique categories as a collection.
  * NOTE: I'm calling these "categories" to distinguish them from 11ty's built-in "tags." However,
  * these are still referred to as tags in the UI since that's what's most common.
- * @returns {({ title: string; href: string; count: string })[]}
+ * @returns {({ name: string; href: string; count: string })[]}
  */
 export function getAllUniqueCategories(collection) {
   const allPosts = getAllPosts(collection);
@@ -33,18 +33,20 @@ export function getAllUniqueCategories(collection) {
     return categoryCounts;
   }, new Map());
 
-  return (
-    Array.from(categoryCounts.entries())
-      .map(([category, count]) => ({
-        title: category,
-        href: getCategoryHref(category),
-        count,
-      }))
-      // Sort by name first
-      .sort((a, b) => a.title.localeCompare(b.title))
-      // And then by popular categories first
-      .sort((a, b) => b.count - a.count)
-  );
+  return Array.from(categoryCounts.entries())
+    .map(([category, count]) => ({
+      name: category,
+      href: getCategoryHref(category),
+      count,
+    }))
+    .sort((a, b) => {
+      // If names start with the same letter, sort by count descending (popular tags first)
+      if (a.name[0].localeCompare(b.name[0], undefined, { sensitivity: 'base' }) === 0) {
+        return b.count - a.count;
+      }
+      // Otherwise, sort by name
+      return a.name.localeCompare(b.name);
+    });
 }
 
 // Blog posts by category, for pagination
@@ -56,9 +58,9 @@ export function getPostsByCategory(collection) {
   // Massage the data into a format that 11ty's pagination will like
   // https://github.com/11ty/eleventy/issues/332#issuecomment-445236776
   const blogPostsByCategory = allUniqueCategories.map((category) => ({
-    title: category.title,
-    href: getCategoryHref(category.title),
-    posts: allPosts.filter((post) => !!post.data.categories?.includes(category.title)),
+    name: category.name,
+    href: getCategoryHref(category.name),
+    posts: allPosts.filter((post) => !!post.data.categories?.includes(category.name)),
   }));
   return blogPostsByCategory;
 }

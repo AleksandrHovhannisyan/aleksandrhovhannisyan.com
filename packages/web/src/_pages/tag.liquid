@@ -8,11 +8,11 @@ permalink: "{{ tag.href }}"
 noindex: true
 excludeFromSitemap: true
 eleventyComputed:
-  title: "{% if tag.title == 'note' %}Notes{% else %}Tag: {{ tag.title }}{% endif %}"
-  description: "{% if tag.title == 'note' %}Notes to self and short tutorials.{% else %}Posts tagged with {{ tag.title }}{% endif %}"
+  title: "{% if tag.name == 'note' %}Notes{% else %}Tag: {{ tag.name }}{% endif %}"
+  description: "{% if tag.name == 'note' %}Notes to self and short tutorials.{% else %}Posts tagged with {{ tag.name }}{% endif %}"
 ---
 
-{% if tag.title == "note" %}
+{% if tag.name == "note" %}
 <div data-theme="light">
   <ul class="grid col-2 gap-2 note-board">
     {% for note in tag.posts %}
