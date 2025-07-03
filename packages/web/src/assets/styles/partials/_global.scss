@@ -1,44 +1,48 @@
-@use "sass:math";
-@use "./tokens" as *;
-@use "./functions";
-@use "./mixins";
+@use 'sass:math';
+@use './tokens' as *;
+@use './functions';
+@use './mixins';
 
 body {
-  background-color: functions.color("surface", "0");
-  color: functions.color("text", "normal");
-  accent-color: functions.color("accent", "0");
+  background-color: functions.token('color', 'surface', '0');
+  color: functions.token('color', 'text', 'normal');
+  accent-color: functions.token('color', 'accent', '0');
   overflow-wrap: break-word;
   -webkit-font-smoothing: antialiased;
-  @include mixins.font($family: "body", $weight: "regular", $size: "base");
+  @include mixins.font($family: 'body', $weight: 'regular', $size: 'base');
 }
 
 :is(code, kbd) {
-  @include mixins.font($family: "mono", $weight: "regular");
+  @include mixins.font($family: 'mono', $weight: 'regular');
 
   :is(strong, h1, h2, h3, h4, h5, h6) & {
-    @include mixins.font($family: "mono", $weight: "bold");
+    @include mixins.font($family: 'mono', $weight: 'bold');
   }
 }
 
-code:not([class^="language-"]), kbd {
-  background-color: light-dark(#{functions.color("surface", "1")}, #{functions.color("surface", "2")});
-  border-radius: functions.size("spacing", "-3");
-  padding: functions.size("relative", "-4") functions.size("relative", "-3");
+code:not([class^='language-']),
+kbd {
+  background-color: light-dark(
+    #{functions.token('color', 'surface', '1')},
+    #{functions.token('color', 'surface', '2')}
+  );
+  border-radius: functions.token('size', 'spacing', '-3');
+  padding: functions.token('size', 'relative', '-4') functions.token('size', 'relative', '-3');
 }
 
 kbd {
-  outline: solid 1px functions.color("surface", "3");
-  box-shadow: 0 1px 1px 0 functions.color("border", "0");
+  outline: solid 1px functions.token('color', 'surface', '3');
+  box-shadow: 0 1px 1px 0 functions.token('color', 'border', '0');
 }
 
 mark,
 ::selection {
-  background-color: functions.color("accent", "0");
-  color: functions.color("text", "inverted");
+  background-color: functions.token('color', 'accent', '0');
+  color: functions.token('color', 'text', 'inverted');
 }
 
 a {
-  color: functions.color("accent", "0");
+  color: functions.token('color', 'accent', '0');
   text-decoration-thickness: 0.08em;
 
   :is(h1, h2, h3, h4, h5, h6) & {
@@ -52,7 +56,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: functions.color("text", "emphasis");
+  color: functions.token('color', 'text', 'emphasis');
   text-wrap: balance;
 }
 
@@ -65,5 +69,5 @@ h6,
 label,
 th,
 strong {
-  @include mixins.font($family: "body", $weight: "bold");
+  @include mixins.font($family: 'body', $weight: 'bold');
 }

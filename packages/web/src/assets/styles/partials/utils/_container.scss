@@ -1,7 +1,7 @@
-@use "../functions";
+@use '../functions';
 
 .container {
   max-width: calc(1200rem / 16);
   margin: 0 auto;
-  padding-inline: functions.size("spacing", "0");
+  padding-inline: functions.token('size', 'spacing', '0');
 }

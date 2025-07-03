@@ -1,4 +1,4 @@
-@use "./functions";
+@use './functions';
 
 * {
   box-sizing: border-box;
@@ -51,7 +51,7 @@ body:has(dialog[open]) {
 // https://css-tricks.com/standardizing-focus-styles-with-css-custom-properties/
 :focus-visible {
   --outline-thickness: calc(3rem / 16);
-  --outline-color: #{functions.color("accent", "0")};
+  --outline-color: #{functions.token('color', 'accent', '0')};
   outline: var(--outline-thickness) solid var(--outline-color);
   outline-offset: var(--outline-offset, var(--outline-thickness));
 }

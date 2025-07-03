@@ -1,8 +1,8 @@
-@use "../mixins";
-@use "../functions";
+@use '../mixins';
+@use '../functions';
 
 figure {
-  gap: functions.size("spacing", "-2");
+  gap: functions.token('size', 'spacing', '-2');
   display: flex;
   flex-direction: column;
 }
@@ -11,5 +11,5 @@ figcaption {
   text-align: center;
   max-width: 65ch;
   margin-inline: auto;
-  @include mixins.font($size: "xs");
+  @include mixins.font($size: 'xs');
 }

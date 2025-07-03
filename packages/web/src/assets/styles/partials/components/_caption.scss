@@ -1,7 +1,7 @@
-@use "../functions";
+@use '../functions';
 
 :is(caption, figcaption, cite) {
-  color: functions.color("text", "soft");
+  color: functions.token('color', 'text', 'soft');
 }
 
 :is(caption, figcaption) {

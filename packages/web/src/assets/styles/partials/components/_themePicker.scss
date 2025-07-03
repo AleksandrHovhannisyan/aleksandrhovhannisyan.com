@@ -1,5 +1,5 @@
-@use "../functions";
-@use "../mixins";
+@use '../functions';
+@use '../mixins';
 
 .theme-picker {
   fieldset {
@@ -8,8 +8,8 @@
 
   legend {
     font-variant: small-caps;
-    letter-spacing: functions.size("tracking", "md");
-    @include mixins.font($family: "body", $weight: "bold");
+    letter-spacing: functions.token('size', 'tracking', 'md');
+    @include mixins.font($family: 'body', $weight: 'bold');
   }
 
   label {

@@ -34,7 +34,7 @@
     height: 4vmin;
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
     }
 
@@ -62,7 +62,7 @@
 
     &::before,
     &::after {
-      content: "";
+      content: '';
       width: 1.5vmin;
       height: 1.5vmin;
       border-radius: 50%;
@@ -102,7 +102,7 @@
     transform: rotate(145deg) translate(20%, -60%);
 
     &::before {
-      content: "";
+      content: '';
       width: 3vmin;
       height: 1.5vmin;
       border-radius: 40%;
@@ -127,7 +127,7 @@
 
     &::before,
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       background-color: var(--hand-color);
       border-radius: 45%;

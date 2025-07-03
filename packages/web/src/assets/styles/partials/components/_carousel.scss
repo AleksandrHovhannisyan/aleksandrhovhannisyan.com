@@ -23,7 +23,7 @@ carousel-scroll > * {
   padding: 0 !important;
   list-style: none;
   display: flex;
-  gap: functions.size('spacing', '0');
+  gap: functions.token('size', 'spacing', '0');
 }
 
 [data-scroll-snap-align='start'] {
@@ -69,7 +69,7 @@ carousel-root figcaption {
   width: 100%;
   max-width: 100%;
   margin: 0;
-  padding: functions.size('spacing', '-3');
+  padding: functions.token('size', 'spacing', '-3');
   text-align: center;
   color: white;
   background-color: hsl(0deg 0% 0% / 75%);
@@ -83,7 +83,7 @@ carousel-root figcaption {
 }
 
 carousel-navigation button {
-  --offset-x: #{functions.size('spacing', '-3')};
+  --offset-x: #{functions.token('size', 'spacing', '-3')};
   cursor: pointer;
 
   /* Anchor the controls relative to the outer wrapper */
@@ -91,7 +91,7 @@ carousel-navigation button {
 
   /* Center the controls vertically */
   top: 50%;
-  padding: functions.size('spacing', '0');
+  padding: functions.token('size', 'spacing', '0');
   transform: translateY(-50%);
   border-radius: 50%;
   border: solid 1px hsl(0deg 0% 50%);

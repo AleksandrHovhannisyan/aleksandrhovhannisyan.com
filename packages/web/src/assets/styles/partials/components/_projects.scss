@@ -1,13 +1,13 @@
-@use "../functions";
-@use "../mixins";
+@use '../functions';
+@use '../mixins';
 
 .project {
   position: relative;
   gap: 0;
-  border: solid 1px functions.color("border", "0");
-  
+  border: solid 1px functions.token('color', 'border', '0');
+
   &:focus-within {
-    outline: solid 3px functions.color("accent", "0");
+    outline: solid 3px functions.token('color', 'accent', '0');
     outline-offset: 3px;
   }
 

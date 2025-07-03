@@ -1,5 +1,5 @@
-@use "../functions";
+@use '../functions';
 
 .code-preview {
-  border: solid 1px functions.color("border", "0");
+  border: solid 1px functions.token('color', 'border', '0');
 }

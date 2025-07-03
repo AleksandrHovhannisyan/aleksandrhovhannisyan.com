@@ -1,9 +1,9 @@
-@use "sass:math";
-@use "sass:string";
-@use "sass:map";
-@use "sass:list";
-@use "./tokens" as *;
-@use "./functions";
+@use 'sass:math';
+@use 'sass:string';
+@use 'sass:map';
+@use 'sass:list';
+@use './tokens' as *;
+@use './functions';
 
 @mixin screen-reader-only() {
   position: absolute;
@@ -32,7 +32,7 @@
       $result: list.append(
         $result,
         string.unquote(
-          $string: ",",
+          $string: ',',
         )
       );
     }
@@ -43,7 +43,7 @@
 }
 
 @mixin headings {
-  :is(h1,h2,h3,h4,h5,h6) {
+  :is(h1, h2, h3, h4, h5, h6) {
     @content;
   }
 }
@@ -54,24 +54,24 @@
   }
   // Font size and its related properties
   @if $size {
-    font-size: functions.size("font", $size);
+    font-size: functions.token('size', 'font', $size);
     // Line height
     @if not $leading {
-      $leading-step: functions.get($tokens, "size", "font", $size, "leading");
+      $leading-step: functions.get($tokens, 'size', 'font', $size, 'leading');
       @if $leading-step {
-        line-height: functions.size("leading", $leading-step);
+        line-height: functions.token('size', 'leading', $leading-step);
       }
     } @else {
-      line-height: functions.size("leading", $leading);
+      line-height: functions.token('size', 'leading', $leading);
     }
     // Tracking/letter spacing
     @if not $tracking {
-      $tracking-step: functions.get($tokens, "size", "font", $size, "tracking");
+      $tracking-step: functions.get($tokens, 'size', 'font', $size, 'tracking');
       @if $tracking-step {
-        letter-spacing: functions.size("tracking", $tracking-step);
+        letter-spacing: functions.token('size', 'tracking', $tracking-step);
       }
     } @else {
-      letter-spacing: functions.size("tracking", $tracking);
+      letter-spacing: functions.token('size', 'tracking', $tracking);
     }
   }
   // Setting family and weight together
@@ -84,7 +84,7 @@
 // Breakpoint mixins
 
 @mixin breakpoint($name) {
-  $bp: functions.get($tokens, "breakpoints", $name);
+  $bp: functions.get($tokens, 'breakpoints', $name);
   $bp: math.div($bp, 16px) * 1em;
   @media screen and (min-width: $bp) {
     @content;
@@ -92,37 +92,37 @@
 }
 
 @mixin mobile {
-  @include breakpoint("mobile") {
+  @include breakpoint('mobile') {
     @content;
   }
 }
 
 @mixin mobile-lg {
-  @include breakpoint("mobile-lg") {
+  @include breakpoint('mobile-lg') {
     @content;
   }
 }
 
 @mixin tablet-sm {
-  @include breakpoint("tablet-sm") {
+  @include breakpoint('tablet-sm') {
     @content;
   }
 }
 
 @mixin tablet {
-  @include breakpoint("tablet") {
+  @include breakpoint('tablet') {
     @content;
   }
 }
 
 @mixin desktop {
-  @include breakpoint("desktop") {
+  @include breakpoint('desktop') {
     @content;
   }
 }
 
 @mixin desktop-lg {
-  @include breakpoint("desktop-lg") {
+  @include breakpoint('desktop-lg') {
     @content;
   }
 }

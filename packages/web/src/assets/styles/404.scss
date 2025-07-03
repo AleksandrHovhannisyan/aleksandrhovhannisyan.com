@@ -1,39 +1,39 @@
-@use "./partials/functions";
-@use "./partials/mixins";
+@use './partials/functions';
+@use './partials/mixins';
 
 @layer reset, tokens, utils, global;
 
 @layer tokens {
-  @import "partials/tokens/size";
+  @import 'partials/tokens/size';
 }
 
 @layer reset {
-  @import "partials/reset";
+  @import 'partials/reset';
 }
 
 @layer utils {
-  @import "partials/utils/stack";
-  @import "partials/utils/gap";
-  @import "partials/utils/fontSize";
+  @import 'partials/utils/stack';
+  @import 'partials/utils/gap';
+  @import 'partials/utils/fontSize';
 }
 
 @layer global {
   body {
-    @include mixins.font($family: "body", $weight: "regular");
+    @include mixins.font($family: 'body', $weight: 'regular');
   }
-  
+
   main {
     display: grid;
     place-content: center;
     text-align: center;
     text-wrap: balance;
-    gap: functions.size("spacing", "0");
+    gap: functions.token('size', 'spacing', '0');
     height: 100dvb;
     background-color: black;
-    padding: 0 functions.size("spacing", "2");
-  
+    padding: 0 functions.token('size', 'spacing', '2');
+
     * {
       color: white;
     }
-  }    
+  }
 }

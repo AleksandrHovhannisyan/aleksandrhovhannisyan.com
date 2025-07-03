@@ -1,12 +1,12 @@
-@use "sass:list";
-@use "sass:math";
-@use "sass:string";
-@use "sass:map";
-@use "./tokens" as *;
+@use 'sass:list';
+@use 'sass:math';
+@use 'sass:string';
+@use 'sass:map';
+@use './tokens' as *;
 
 @function to-rems($value) {
   // Check if the value, as a string, is already expressed in rems
-  @if ends-with("" + $value, "rem") {
+  @if ends-with('' + $value, 'rem') {
     @return $value;
   }
   $value-rems: math.div($value, 16px) * 1rem;
@@ -23,7 +23,7 @@
 
 /// Joins a list of values as a string, with the given separator
 @function string-join($list, $separator) {
-  $result: "";
+  $result: '';
   @each $entry in $list {
     @if string.length($result) > 0 {
       $result: $result + $separator;
@@ -36,32 +36,35 @@
 /// Returns the name for the token at the given vararg path, in kebab case. Example: "size", "font", "base" => "size-font-base".
 @function get-token-name($path...) {
   // Kebab case
-  @return string-join($path, "-");
+  @return string-join($path, '-');
 }
 
-/// Returns a size token value. Throws an error if the token does not have a value.
-@function size($type, $step) {
-  // Make sure that map actually exists. This will throw if it doesn't.
-  $token: get($tokens, "size", $type, $step);
-  /* stylelint-disable-next-line scss/at-if-no-null */
-  @if $token == null {
-    @error "Token not found: #{string-join($path, '.')}";
+@function token($category, $type, $step) {
+  // Size
+  @if $category == 'size' {
+    // Make sure that map actually exists. This will throw if it doesn't.
+    $token: get($tokens, 'size', $type, $step);
+    /* stylelint-disable-next-line scss/at-if-no-null */
+    @if $token == null {
+      @error "Token not found: #{string-join($path, '.')}";
+    }
+    @return var(--#{get-token-name('size', $type, $step)});
   }
-  @return var(--#{get-token-name("size", $type, $step)});
-}
-
-/// Returns a color token value. Throws an error if the given color token does not have a light or dark value.
-@function color($type, $step) {
-  // Make sure both of these exist in the config
-  $light-color: get($tokens, "color", "light", $type, $step);
-  $dark-color: get($tokens, "color", "dark", $type, $step);
-  @if not $light-color {
-    @error "Token not found: color.light.#{$type}.#{$step}";
+  // Color
+  @else if $category == 'color' {
+    // Make sure both of these exist in the config
+    $light-color: get($tokens, 'color', 'light', $type, $step);
+    $dark-color: get($tokens, 'color', 'dark', $type, $step);
+    @if not $light-color {
+      @error "Token not found: color.light.#{$type}.#{$step}";
+    }
+    @if not $dark-color {
+      @error "Token not found: color.dark.#{$type}.#{$step}";
+    }
+    @return var(--#{get-token-name('color', $type, $step)});
+  } @else {
+    @error "Unrecognized token category: #{$category}. Check _tokens.scss or make sure you spelled it correctly.";
   }
-  @if not $dark-color {
-    @error "Token not found: color.dark.#{$type}.#{$step}";
-  }
-  @return var(--#{get-token-name("color", $type, $step)});
 }
 
 /// Returns true if the given string ends with the given suffix.
@@ -80,7 +83,7 @@
 
 /// Removes any number of specified characters from the given string and returns a new string.
 @function replace($string, $char, $new-char) {
-  $new-string: "";
+  $new-string: '';
   $length: string.length($string);
 
   @for $i from 1 through $length {
@@ -108,7 +111,12 @@
 }
 
 /// Returns a CSS clamp(...) declaration, with the responsive argument computed automatically.
-@function clamped($min-px, $max-px, $min-bp: get($tokens, "breakpoints", "mobile"), $max-bp: get($tokens, "breakpoints", "desktop")) {
+@function clamped(
+  $min-px,
+  $max-px,
+  $min-bp: get($tokens, 'breakpoints', 'mobile'),
+  $max-bp: get($tokens, 'breakpoints', 'desktop')
+) {
   $slope: math.div($max-px - $min-px, $max-bp - $min-bp);
   $slope-vw: rnd($slope * 100, 3);
   $intercept-rems: rnd(to-rems($min-px - $slope * $min-bp), 3);

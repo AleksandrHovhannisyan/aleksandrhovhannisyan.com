@@ -1,10 +1,10 @@
-@use "../functions";
+@use '../functions';
 
 .aside {
-  border: solid 1px functions.color("surface", "3");
-  border-inline-start: functions.size("spacing", "-3") solid;
-  padding: functions.size("relative", "0") functions.size("relative", "2");
-  background-color: functions.color("surface", "1");
+  border: solid 1px functions.token('color', 'surface', '3');
+  border-inline-start: functions.token('size', 'spacing', '-3') solid;
+  padding: functions.token('size', 'relative', '0') functions.token('size', 'relative', '2');
+  background-color: functions.token('color', 'surface', '1');
 
   code {
     padding: 0;

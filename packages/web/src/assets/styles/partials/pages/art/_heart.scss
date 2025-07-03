@@ -1,4 +1,4 @@
-@use "../../functions";
+@use '../../functions';
 
 @keyframes heartbeat {
   0% {
@@ -40,7 +40,7 @@
 
   &::before,
   &::after {
-    content: "";
+    content: '';
     width: var(--heart-size);
     height: var(--heart-size);
     position: absolute;

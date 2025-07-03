@@ -1,5 +1,5 @@
-@use "../functions";
-@use "../mixins";
+@use '../functions';
+@use '../mixins';
 
 table {
   border-collapse: collapse;
@@ -8,8 +8,8 @@ table {
 
 caption {
   text-align: start;
-  margin-bottom: functions.size("spacing", "-2");
-  @include mixins.font($size: "sm");
+  margin-bottom: functions.token('size', 'spacing', '-2');
+  @include mixins.font($size: 'sm');
 }
 
 th {
@@ -18,8 +18,8 @@ th {
 
 :is(td, th) {
   text-align: start;
-  padding: functions.size("spacing", "-1");
-  border: solid 0.75px functions.color("border", "0");
+  padding: functions.token('size', 'spacing', '-1');
+  border: solid 0.75px functions.token('color', 'border', '0');
 
   &.numeric {
     text-align: end;
@@ -27,5 +27,5 @@ th {
 }
 
 thead {
-  background-color: functions.color("surface", "1");
+  background-color: functions.token('color', 'surface', '1');
 }

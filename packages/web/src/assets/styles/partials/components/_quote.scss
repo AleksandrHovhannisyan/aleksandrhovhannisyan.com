@@ -1,10 +1,10 @@
-@use "../mixins";
-@use "../functions";
+@use '../mixins';
+@use '../functions';
 
 blockquote {
   font-style: italic;
-  border-inline-start: functions.size("spacing", "-3") solid;
-  padding: 0 functions.size("relative", "2");
+  border-inline-start: functions.token('size', 'spacing', '-3') solid;
+  padding: 0 functions.token('size', 'relative', '2');
 
   > .rhythm > :first-child {
     &::before {
@@ -22,10 +22,10 @@ blockquote {
 cite {
   font-style: normal;
   display: block;
-  @include mixins.font($size: "sm");
+  @include mixins.font($size: 'sm');
 
   &::before {
-    content: "\2014";
+    content: '\2014';
     user-select: none;
   }
 }

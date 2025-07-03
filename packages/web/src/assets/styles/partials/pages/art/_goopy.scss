@@ -18,7 +18,7 @@
   &-cap {
     &::before,
     &::after {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       width: 2vmin;
@@ -53,7 +53,7 @@
 
   // Bottom shadow
   &::after {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     transform: rotate(-3deg) translateZ(-0.3vmin);
@@ -77,7 +77,7 @@
 
     // Pupils
     &::before {
-      content: "";
+      content: '';
       display: block;
       background-color: black;
       position: absolute;
@@ -87,7 +87,7 @@
 
     // Eyebrows
     &::after {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
     }
@@ -189,7 +189,7 @@
 
     // Chin
     &::before {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       width: 6vmin;
@@ -206,7 +206,7 @@
 
     /* Cover up top border of mouth */
     &::after {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       background-color: var(--blue);
@@ -229,7 +229,7 @@
     transform: rotate(-120deg);
 
     &::after {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       width: 1.2vmin;
@@ -245,7 +245,7 @@
   &-patches {
     &::before,
     &::after {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       background-color: var(--light-blue);

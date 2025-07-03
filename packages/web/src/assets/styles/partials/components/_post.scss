@@ -1,18 +1,18 @@
-@use "../functions";
-@use "../mixins";
+@use '../functions';
+@use '../mixins';
 
 .post {
   counter-reset: footnotes;
   max-width: calc(700rem / 16);
 
   &-title {
-    margin-bottom: functions.size("spacing", "-1");
+    margin-bottom: functions.token('size', 'spacing', '-1');
   }
 
   &-date {
-    color: functions.color("text", "soft");
-    margin-bottom: functions.size("spacing", "-3");
-    @include mixins.font($size: "sm");
+    color: functions.token('color', 'text', 'soft');
+    margin-bottom: functions.token('size', 'spacing', '-3');
+    @include mixins.font($size: 'sm');
 
     dt,
     dd {
@@ -21,8 +21,8 @@
   }
 
   &-tag {
-    padding: functions.size("spacing", "-3") functions.size("spacing", "-2");
-    border-radius: functions.size("spacing", "-4");
+    padding: functions.token('size', 'spacing', '-3') functions.token('size', 'spacing', '-2');
+    border-radius: functions.token('size', 'spacing', '-4');
   }
 
   img {

@@ -1,22 +1,22 @@
-@use "../tokens" as *;
-@use "../functions";
-@use "sass:meta";
-@use "sass:string";
-@use "sass:list";
+@use '../tokens' as *;
+@use '../functions';
+@use 'sass:meta';
+@use 'sass:string';
+@use 'sass:list';
 
 @function resolve-color-value($category, $color-step-name, $value) {
   // Borrowing style-dictionary's syntax of "{color.surface.8}" to reference existing tokens in the map.
   // Note that I could've technically just did var(--color-surface-8) in the tokens config, but I don't want
-  // to hard-code the variable name syntax there. Ideally the single source of truth for that is functions.color().
-  @if meta.type-of($value) == "string" and functions.starts-with($value, "{") {
+  // to hard-code the variable name syntax there. Ideally the single source of truth for that is functions.token("color", ).
+  @if meta.type-of($value) == 'string' and functions.starts-with($value, '{') {
     // "{color.light.surface.8}" -> "color.light.surface.8"
-    $value: functions.replace($value, "{", "");
-    $value: functions.replace($value, "}", "");
+    $value: functions.replace($value, '{', '');
+    $value: functions.replace($value, '}', '');
     // e.g., "color.light.surface.8" -> ["color", "light", "surface", "8"]
-    $path-to-referenced-token: string.split($value, ".");
+    $path-to-referenced-token: string.split($value, '.');
     $referenced-token-category: list.nth($path-to-referenced-token, 3);
     $referenced-token-step: list.nth($path-to-referenced-token, 4);
-    @return functions.color($referenced-token-category, $referenced-token-step);
+    @return functions.token('color', $referenced-token-category, $referenced-token-step);
   } @else {
     @return $value;
   }
@@ -24,21 +24,25 @@
 
 :root {
   color-scheme: light dark;
-  $colors-light: functions.get($tokens, "color", "light");
-  $colors-dark: functions.get($tokens, "color", "dark");
+  $colors-light: functions.get($tokens, 'color', 'light');
+  $colors-dark: functions.get($tokens, 'color', 'dark');
   @each $color-category, $color-values in $colors-light {
     @each $color-step-name, $color-light in $color-values {
       $color-light: resolve-color-value($color-category, $color-step-name, $color-light);
-      $color-dark: resolve-color-value($color-category, $color-step-name, functions.get($colors-dark, $color-category, $color-step-name));
+      $color-dark: resolve-color-value(
+        $color-category,
+        $color-step-name,
+        functions.get($colors-dark, $color-category, $color-step-name)
+      );
       --color-#{$color-category}-#{$color-step-name}: light-dark(#{$color-light}, #{$color-dark});
     }
   }
 }
 
-[data-theme="light"] {
+[data-theme='light'] {
   color-scheme: light;
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   color-scheme: dark;
 }

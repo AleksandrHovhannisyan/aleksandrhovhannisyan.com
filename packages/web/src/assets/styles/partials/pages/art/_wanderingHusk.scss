@@ -13,18 +13,17 @@
   border-radius: 50% 90% 55% 70%;
   transform-style: preserve-3d;
   perspective: 3vmin;
-  background-image:
-    radial-gradient(
-      circle at 6% 82%,
-      var(--belly-color) 54%,
-      black 54%,
-      black 58%,
-      var(--shell-color) 58%
-    );
+  background-image: radial-gradient(
+    circle at 6% 82%,
+    var(--belly-color) 54%,
+    black 54%,
+    black 58%,
+    var(--shell-color) 58%
+  );
 
   /* Segment lines */
   &::after {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     width: 100%;
@@ -32,25 +31,24 @@
     left: -0.1vmin;
     top: 0;
     border-radius: 50% 90% 70% 70%;
-    background-image:
-      radial-gradient(
-        ellipse at 15% 35%,
-        transparent 34%,
-        transparent 55%,
-        black 55%,
-        black 59%,
-        transparent 59%,
-        transparent 78%,
-        black 78%,
-        black 82%,
-        transparent 82%
-      );
+    background-image: radial-gradient(
+      ellipse at 15% 35%,
+      transparent 34%,
+      transparent 55%,
+      black 55%,
+      black 59%,
+      transparent 59%,
+      transparent 78%,
+      black 78%,
+      black 82%,
+      transparent 82%
+    );
     transform: rotate(12deg);
   }
 
   /* Lone segment line */
   &::before {
-    content: "";
+    content: '';
     display: block;
     width: 5vmin;
     height: 3vmin;
@@ -136,7 +134,7 @@
     transform: rotate(-5deg);
 
     &::before {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       width: 0.9vmin;

@@ -14,7 +14,7 @@
   border-radius: 8vmin 8vmin 20vmin 20vmin / 4vmin 4vmin 20vmin 20vmin;
 
   &::before {
-    content: "";
+    content: '';
     border-right: solid 0.5vmin black;
     border-left: solid 0.5vmin black;
     display: block;
@@ -31,7 +31,7 @@
 
   /* Cup handle */
   &::after {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     background-color: transparent;
@@ -43,7 +43,9 @@
     border: solid 0.7vmin black;
     border-right: transparent;
     top: 6vmin;
-    box-shadow: 0 0 0 3vmin var(--gray), 0 0 0 3.6vmin black;
+    box-shadow:
+      0 0 0 3vmin var(--gray),
+      0 0 0 3.6vmin black;
   }
 
   &-eye {
@@ -52,7 +54,7 @@
 
     // Pupils
     &::before {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       background-color: black;
@@ -124,7 +126,7 @@
     transform: rotate(30deg);
 
     &::before {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       width: 5vmin;
@@ -137,7 +139,7 @@
     }
 
     &::after {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       width: 4vmin;
@@ -161,7 +163,7 @@
     border-radius: 130% 50% 20%;
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       background-color: var(--red);
       width: 3.5vmin;
@@ -173,7 +175,7 @@
     }
 
     &::after {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       width: 2.5vmin;
@@ -193,26 +195,25 @@
     width: 6vmin;
     height: 9vmin;
     border: 0.5vmin solid black;
-    background:
-      radial-gradient(
-        circle at 47% 161%,
-        white 35%,
-        white 50%,
-        black 50%,
-        black 54%,
-        var(--red) 54%,
-        var(--red) 75%,
-        black 75%,
-        black 79%,
-        white 79%
-      );
+    background: radial-gradient(
+      circle at 47% 161%,
+      white 35%,
+      white 50%,
+      black 50%,
+      black 54%,
+      var(--red) 54%,
+      var(--red) 75%,
+      black 75%,
+      black 79%,
+      white 79%
+    );
     transform: rotate(-12deg);
     transform-style: preserve-3d;
     perspective: 4vmin;
     border-top-left-radius: 70%;
 
     &::before {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       left: -3.2vmin;
@@ -221,22 +222,21 @@
       height: 10vmin;
       border: 0.5vmin solid black;
       border-top: none;
-      background:
-        radial-gradient(
-          circle at 40% 169%,
-          white 60%,
-          black 60%,
-          black 63%,
-          var(--red) 63%,
-          var(--red) 83%,
-          black 83%,
-          black 86%,
-          white 86%,
-          white 96%,
-          black 96%,
-          black 99%,
-          transparent 99%
-        );
+      background: radial-gradient(
+        circle at 40% 169%,
+        white 60%,
+        black 60%,
+        black 63%,
+        var(--red) 63%,
+        var(--red) 83%,
+        black 83%,
+        black 86%,
+        white 86%,
+        white 96%,
+        black 96%,
+        black 99%,
+        transparent 99%
+      );
       transform: rotate(115deg) scaleY(-1) translateZ(-0.1vmin);
     }
   }

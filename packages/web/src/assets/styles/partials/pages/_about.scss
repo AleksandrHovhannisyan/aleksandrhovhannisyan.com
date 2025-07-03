@@ -1,9 +1,9 @@
-@use "../mixins";
+@use '../mixins';
 
 .profile-photo {
-    max-width: calc(128rem / 16);
+  max-width: calc(128rem / 16);
 
-    @include mixins.mobile-lg {
-      max-width: calc(160rem / 16);
-    }  
+  @include mixins.mobile-lg {
+    max-width: calc(160rem / 16);
+  }
 }

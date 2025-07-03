@@ -24,7 +24,7 @@
 
     // Left antenna
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: -6.5vmin;
       background-color: black;
@@ -37,7 +37,7 @@
 
     // Right antenna
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       top: -6.8vmin;
       background-color: black;
@@ -52,7 +52,7 @@
   &-eyes {
     &::before,
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       border-radius: 50%;
     }
@@ -63,13 +63,12 @@
       left: -2.8vmin;
       width: 6.3vmin;
       height: 7.4vmin;
-      background-image:
-        radial-gradient(
-          circle at 70% 28%,
-          white 7%,
-          var(--color-sly-eye-dark) 13%,
-          var(--color-sly-eye-dark) 95%
-        );
+      background-image: radial-gradient(
+        circle at 70% 28%,
+        white 7%,
+        var(--color-sly-eye-dark) 13%,
+        var(--color-sly-eye-dark) 95%
+      );
       box-shadow:
         inset 1.5vmin -2vmin 1vmin -2vmin var(--color-sly-eye-dark),
         inset 4vmin -5.5vmin 4vmin -7vmin var(--color-sly-eye-light);
@@ -82,13 +81,12 @@
       width: 7.8vmin;
       height: 7.8vmin;
       border-radius: 50% 55% 50% 50%;
-      background-image:
-        radial-gradient(
-          circle at 65% 28%,
-          white 7%,
-          var(--color-sly-eye-dark) 13%,
-          var(--color-sly-eye-dark) 95%
-        );
+      background-image: radial-gradient(
+        circle at 65% 28%,
+        white 7%,
+        var(--color-sly-eye-dark) 13%,
+        var(--color-sly-eye-dark) 95%
+      );
       box-shadow:
         inset 1.5vmin -2vmin 1vmin -1.7vmin var(--color-sly-eye-dark),
         inset 3.5vmin -5vmin 1vmin -5vmin var(--color-sly-eye-light);
@@ -98,7 +96,7 @@
   &-nose {
     &::before,
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       background-color: black;
       border-radius: 50%;
@@ -151,7 +149,7 @@
 
       // Tint/shading
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         right: 7vmin;
         top: 0.6vmin;
@@ -175,7 +173,7 @@
 
     // Rounding near left leg
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       width: 1.5vmin;
       height: 5vmin;
@@ -188,7 +186,7 @@
 
     // Pelvis arch
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       border-top: solid 1vmin black;
       border-left: solid 1vmin black;
@@ -203,7 +201,7 @@
   &-legs {
     &::before,
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       width: 1.5vmin;
       height: 8vmin;

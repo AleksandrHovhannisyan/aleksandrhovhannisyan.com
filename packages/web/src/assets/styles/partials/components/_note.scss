@@ -1,9 +1,9 @@
-@use "../functions";
-@use "../mixins";
+@use '../functions';
+@use '../mixins';
 
 .note-board {
-  padding: functions.size("relative", "1");
-  border: solid functions.size("spacing", "-1") #e3c19d;
+  padding: functions.token('size', 'relative', '1');
+  border: solid functions.token('size', 'spacing', '-1') #e3c19d;
   background-color: #ac8f71;
   box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 15%);
   position: relative;
@@ -20,12 +20,12 @@
   box-shadow: 1px 1px 2px rgb(0 0 0 / 30%);
   position: relative;
   justify-self: center;
-  padding: functions.size("relative", "2");
+  padding: functions.token('size', 'relative', '2');
   @include mixins.transition(border-radius);
 
   a {
     text-decoration: none;
-    outline: none;  
+    outline: none;
   }
 
   &:is(:hover, :focus-within) {
@@ -33,11 +33,11 @@
   }
 
   &:has(a:focus-visible) {
-    outline: solid functions.size("spacing", "-3");
+    outline: solid functions.token('size', 'spacing', '-3');
   }
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     inset-inline-start: 0;
     inset-block-end: var(--size-shadow-height);
@@ -49,14 +49,14 @@
   }
 
   .title {
-    @include mixins.font($size: "lg");
+    @include mixins.font($size: 'lg');
 
     @include mixins.tablet-sm {
-      @include mixins.font($size: "md", $leading: "xs");
+      @include mixins.font($size: 'md', $leading: 'xs');
     }
   }
 
   .description {
-    @include mixins.font($size: "base", $leading: "sm");
+    @include mixins.font($size: 'base', $leading: 'sm');
   }
 }

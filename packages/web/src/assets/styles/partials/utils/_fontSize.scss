@@ -1,12 +1,12 @@
-@use "../tokens" as *;
-@use "../mixins";
-@use "../functions";
+@use '../tokens' as *;
+@use '../mixins';
+@use '../functions';
 
-$font-size-steps: functions.get($tokens, "size", "font");
+$font-size-steps: functions.get($tokens, 'size', 'font');
 
 // Programmatically generate font size utility classes
 @each $step, $step-config in $font-size-steps {
-  $class-name: functions.get-token-name("size", "font", $step);
+  $class-name: functions.get-token-name('size', 'font', $step);
   // Placeholder class to extend below
   %#{$class-name} {
     @include mixins.font($size: $step);
@@ -18,29 +18,29 @@ $font-size-steps: functions.get($tokens, "size", "font");
 }
 
 h1 {
-  @extend %#{functions.get-token-name("size", "font", "3xl")};
+  @extend %#{functions.get-token-name('size', 'font', '3xl')};
 }
 
 h2 {
-  @extend %#{functions.get-token-name("size", "font", "2xl")};
+  @extend %#{functions.get-token-name('size', 'font', '2xl')};
 }
 
 h3 {
-  @extend %#{functions.get-token-name("size", "font", "xl")};
+  @extend %#{functions.get-token-name('size', 'font', 'xl')};
 }
 
 h4 {
-  @extend %#{functions.get-token-name("size", "font", "lg")};
+  @extend %#{functions.get-token-name('size', 'font', 'lg')};
 }
 
 h5 {
-  @extend %#{functions.get-token-name("size", "font", "md")};
+  @extend %#{functions.get-token-name('size', 'font', 'md')};
 }
 
 h6 {
-  @extend %#{functions.get-token-name("size", "font", "base")};
+  @extend %#{functions.get-token-name('size', 'font', 'base')};
 }
 
 small {
-  @extend %#{functions.get-token-name("size", "font", "sm")};
+  @extend %#{functions.get-token-name('size', 'font', 'sm')};
 }

@@ -1,14 +1,20 @@
 /* stylelint-disable no-descending-specificity */
-@use "../functions";
-@use "../mixins";
+@use '../functions';
+@use '../mixins';
 
 .code-block {
-  --size-code-padding: #{functions.size("spacing", "4")};
-  --size-code-line-number-padding: #{functions.size("relative", "-3")};
-  --color-code-background: #{functions.color("surface", "1")};
-  --color-code-header-background: #{functions.color("surface", "2")};
-  --color-code-overlay-1: light-dark(#{functions.color("surface", "3")}, #{functions.color("surface", "3")});
-  --color-code-overlay-2: light-dark(#{functions.color("surface", "4")}, #{functions.color("surface", "4")});
+  --size-code-padding: #{functions.token('size', 'spacing', '4')};
+  --size-code-line-number-padding: #{functions.token('size', 'relative', '-3')};
+  --color-code-background: #{functions.token('color', 'surface', '1')};
+  --color-code-header-background: #{functions.token('color', 'surface', '2')};
+  --color-code-overlay-1: light-dark(
+    #{functions.token('color', 'surface', '3')},
+    #{functions.token('color', 'surface', '3')}
+  );
+  --color-code-overlay-2: light-dark(
+    #{functions.token('color', 'surface', '4')},
+    #{functions.token('color', 'surface', '4')}
+  );
 
   /* Dark colors: https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vsc-dark-plus.css */
   --color-code-selection: light-dark(hsl(244deg 28% 51% / 20%), hsl(210deg 100% 84% / 15%));
@@ -23,11 +29,11 @@
   --color-code-constant: var(--color-code-number);
   --color-code-punctuation: light-dark(var(--color-code-text), hsl(0deg 0% 54%));
   --color-code-selector: light-dark(var(--color-code-string), hsl(41deg 53% 67%));
-  border-radius: functions.size("spacing", "-3");
+  border-radius: functions.token('size', 'spacing', '-3');
   position: relative;
 
   pre {
-    --border-code: solid 1px #{functions.color("surface", "3")};
+    --border-code: solid 1px #{functions.token('color', 'surface', '3')};
     color: var(--color-code-text);
     overflow-x: auto;
     white-space: pre;
@@ -36,14 +42,14 @@
     tab-size: 4;
     text-align: start;
     border: var(--border-code);
-    border-radius: functions.size("spacing", "-3");
+    border-radius: functions.token('size', 'spacing', '-3');
   }
 
   code {
     display: block;
     width: fit-content;
     min-width: 100%;
-    line-height: functions.size("leading", "sm");
+    line-height: functions.token('size', 'leading', 'sm');
     padding: var(--size-code-padding);
     background-color: var(--color-code-background);
   }
@@ -62,7 +68,7 @@
     color: inherit;
     font-size: inherit;
     transform: translateY(-50%);
-    @include mixins.font($family: "mono", $weight: "bold");
+    @include mixins.font($family: 'mono', $weight: 'bold');
   }
 
   .copy-code-button {
@@ -71,9 +77,9 @@
     inset-inline-end: var(--size-code-padding);
     color: var(--color-code-text);
     background-color: var(--color-code-overlay-1);
-    padding: functions.size("spacing", "-3") functions.size("spacing", "-1");
-    border-radius: functions.size("spacing", "-3");
-    @include mixins.font($family: "mono", $weight: "regular", $size: "sm");
+    padding: functions.token('size', 'spacing', '-3') functions.token('size', 'spacing', '-1');
+    border-radius: functions.token('size', 'spacing', '-3');
+    @include mixins.font($family: 'mono', $weight: 'regular', $size: 'sm');
 
     &:is(.copied, :focus) {
       opacity: 1;
@@ -100,7 +106,7 @@
     // Code should get the main padding
     code {
       padding: var(--size-code-padding);
-      border-block-start: solid 1px functions.color("surface", "3");
+      border-block-start: solid 1px functions.token('color', 'surface', '3');
     }
 
     // Center button on fake header
@@ -110,7 +116,7 @@
   }
 
   /* Non-plaintext code blocks with >= 10 lines should get line numbering */
-  &:not([data-language="text"], [data-language="plaintext"]) code:has(.line:nth-child(10)) {
+  &:not([data-language='text'], [data-language='plaintext']) code:has(.line:nth-child(10)) {
     --size-code-line-number-offset: 4ch;
     padding-inline-start: calc(var(--size-code-padding) + var(--size-code-line-number-offset));
 
@@ -125,7 +131,7 @@
         min-inline-size: var(--size-code-line-number-offset);
         text-align: end;
         padding-inline-end: 2ch;
-        color: functions.color("text", "soft");
+        color: functions.token('color', 'text', 'soft');
         font-variant-numeric: tabular-nums;
         background-color: var(--color-code-background);
       }
@@ -184,7 +190,25 @@
   }
 
   /* stylelint-disable-next-line max-line-length */
-  &:is(.keyword, .tag, .boolean, .constant, .url, .inserted, .operator.arrow, .key.atrule, .rule, .keyword.module, .keyword.control-flow, .entity, .important, .punctuation.interpolation-punctuation, .doctype, .doctype-tag, .directive-hash),
+  &:is(
+      .keyword,
+      .tag,
+      .boolean,
+      .constant,
+      .url,
+      .inserted,
+      .operator.arrow,
+      .key.atrule,
+      .rule,
+      .keyword.module,
+      .keyword.control-flow,
+      .entity,
+      .important,
+      .punctuation.interpolation-punctuation,
+      .doctype,
+      .doctype-tag,
+      .directive-hash
+    ),
   &.atrule .url {
     color: var(--color-code-keyword);
   }
@@ -209,7 +233,7 @@
   }
 
   &.bold {
-    @include mixins.font($family: "mono", $weight: "bold");
+    @include mixins.font($family: 'mono', $weight: 'bold');
   }
 
   &.italic {
@@ -218,13 +242,13 @@
 }
 
 /* Language Specific */
-.code-block:is([data-language="css"], [data-language="scss"], [data-language="sass"]) {
+.code-block:is([data-language='css'], [data-language='scss'], [data-language='sass']) {
   .token.selector {
     color: var(--color-code-selector);
   }
 }
 
-.code-block[data-language="bash"] {
+.code-block[data-language='bash'] {
   .token:not(.comment) {
     color: var(--color-code-text) !important;
   }

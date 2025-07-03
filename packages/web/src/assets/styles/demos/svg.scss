@@ -1,5 +1,5 @@
 /* stylelint-disable selector-class-pattern */
-@use "../partials/functions";
+@use '../partials/functions';
 
 @layer demos {
   .svg-tutorial__icon-grid {
@@ -7,13 +7,13 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: functions.size("spacing", "8");
+    gap: functions.token('size', 'spacing', '8');
   }
-  
+
   .svg-tutorial__icon {
     display: flex;
   }
-  
+
   .svg-tutorial__icon svg {
     stroke: currentcolor;
     stroke-width: 2;
@@ -21,7 +21,7 @@
     stroke-linejoin: round;
     fill: none;
   }
-  
+
   svg.bordered {
     border: solid 1px;
   }

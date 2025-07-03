@@ -1,15 +1,15 @@
-@use "../functions";
+@use '../functions';
 
 details {
   summary {
     cursor: pointer;
-    background-color: functions.color("surface", "1");
+    background-color: functions.token('color', 'surface', '1');
   }
 
   summary,
   .details-content {
-    padding: functions.size("spacing", "2") functions.size("spacing", "3");
-    border: 1px solid functions.color("border", "0");
+    padding: functions.token('size', 'spacing', '2') functions.token('size', 'spacing', '3');
+    border: 1px solid functions.token('color', 'border', '0');
   }
 
   .details-content {

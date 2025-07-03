@@ -1,8 +1,8 @@
-@use "../tokens" as *;
-@use "../functions";
+@use '../tokens' as *;
+@use '../functions';
 
 html {
-  @each $property, $value in functions.get($tokens, "animation") {
+  @each $property, $value in functions.get($tokens, 'animation') {
     --transition-#{$property}: #{$value};
   }
 }

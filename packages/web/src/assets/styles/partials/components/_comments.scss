@@ -1,11 +1,11 @@
-@use "sass:math";
-@use "../functions";
-@use "../mixins";
+@use 'sass:math';
+@use '../functions';
+@use '../mixins';
 
 #comments {
   --rhythm: 1.75lh;
   padding-top: var(--rhythm);
-  border-top: solid 1px functions.color("border", "0");
+  border-top: solid 1px functions.token('color', 'border', '0');
 }
 
 .post-comment {
@@ -15,11 +15,11 @@
   }
 
   &-avatar {
-    width: functions.size("spacing", "5");
+    width: functions.token('size', 'spacing', '5');
   }
 
   &-username {
-    @include mixins.font($family: "body", $weight: "bold");
+    @include mixins.font($family: 'body', $weight: 'bold');
   }
 
   &-edited {
@@ -27,8 +27,8 @@
   }
 
   &-author {
-    border-radius: functions.size("spacing", "-4");
-    padding: functions.size("spacing", "-3") functions.size("spacing", "-2");
+    border-radius: functions.token('size', 'spacing', '-4');
+    padding: functions.token('size', 'spacing', '-3') functions.token('size', 'spacing', '-2');
   }
 
   &-body {
@@ -37,14 +37,14 @@
     }
 
     @include mixins.headings {
-      @include mixins.font($size: "base");
+      @include mixins.font($size: 'base');
     }
   }
 }
 
 #comments-count {
-  color: functions.color("text", "soft");
+  color: functions.token('color', 'text', 'soft');
   vertical-align: middle;
   padding-inline-start: 0.25ch;
-  @include mixins.font($size: "base");
+  @include mixins.font($size: 'base');
 }
