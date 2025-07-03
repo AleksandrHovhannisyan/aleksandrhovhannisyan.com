@@ -18,7 +18,7 @@
     "test": "node --test",
     "test:watch": "pnpm run test --watch",
     "lint": "pnpm run /^lint:/",
-    "lint:css": "stylelint --fix \"src/**/*.scss\"",
+    "lint:css": "stylelint --fix \"src/**/*.scss\" && prettier \"src/**/*.scss\" --write",
     "lint:js": "eslint --cache --fix",
     "update-browserslist": "pnpm dlx browserslist@latest --update-db"
   },

@@ -4,6 +4,8 @@
     "**/node_modules": true,
     "**/*.{png,gif,jpg,jpeg,webp,woff,woff2}": true
   },
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.fixAll.stylelint": "explicit"
