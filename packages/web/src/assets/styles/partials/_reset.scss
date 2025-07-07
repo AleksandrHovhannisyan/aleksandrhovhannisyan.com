@@ -6,15 +6,6 @@
   padding: 0;
 }
 
-*,
-*::before,
-*::after {
-  @media (prefers-reduced-motion) {
-    animation: none !important;
-    transition: none !important;
-  }
-}
-
 :where(html, body) {
   min-block-size: 100%;
 }

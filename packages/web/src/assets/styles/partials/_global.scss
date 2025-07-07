@@ -3,6 +3,21 @@
 @use './functions';
 @use './mixins';
 
+@media (prefers-reduced-motion) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
 body {
   background-color: functions.token('color', 'surface', '0');
   color: functions.token('color', 'text', 'normal');

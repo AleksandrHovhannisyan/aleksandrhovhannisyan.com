@@ -19,7 +19,7 @@ eleventyComputed:
       <li class="note">
         <article>
           <h3 class="post-preview-title">
-            <a class="card-link" href="{{ note.url }}">{{ note.data.title | toSmartQuotes }}</a>
+            <a class="card-link" href="{{ note.url }}" style="view-transition-name: view-{{ note.data.id }};">{{ note.data.title | toSmartQuotes }}</a>
           </h3>
           <p class="post-preview-description">{{ note.data.description | toSmartQuotes }}</p>
         </article>
