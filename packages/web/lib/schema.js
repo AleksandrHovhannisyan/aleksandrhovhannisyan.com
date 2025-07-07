@@ -192,11 +192,12 @@ export function makeSchemaValidator(schema) {
 
 /**
  * @typedef {Object} EleventyPageData
- * @property {Object} [page] - Data specific to the current page.
- * @property {string} page.inputPath - The input path of the page.
- * @property {string} page.fileSlug - The file slug of the page.
- * @property {string} [page.url] - The URL of the page.
- * @property {Object} eleventy - Eleventy globals.
+ * @property {Object} page Data specific to the current page.
+ * @property {string} page.inputPath The input path of the page.
+ * @property {string} page.fileSlug The file slug of the page.
+ * @property {string} page.rawInput The raw input/source string for the page content.
+ * @property {string} page.url The URL of the page.
+ * @property {Object} eleventy Eleventy globals.
  * @property {Object} eleventy.directories - Eleventy directories.
  * @property {string} eleventy.directories.output - The output directory.
  * @property {string} eleventy.directories.input - The input directory.

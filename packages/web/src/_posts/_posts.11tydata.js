@@ -1,5 +1,6 @@
 import * as v from 'valibot';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import { toAbsoluteImageUrl } from '../../lib/filters.js';
 import { FrontMatter, makeSchemaValidator, NON_EMPTY_ARRAY, NON_EMPTY_STRING } from '../../lib/schema.js';
 
@@ -7,6 +8,10 @@ const isProduction = process.env.ELEVENTY_ENV === 'production';
 
 const BlogPostFrontMatter = v.object({
   ...FrontMatter.entries,
+  /**
+   * Unique ID for the post. Should be deterministic.
+   */
+  id: v.required(v.union([NON_EMPTY_STRING, v.function()])),
   /**
    * Categories for this post. Used in the post metadata and in the RSS feed.
    * Not to be confused with Eleventy tags.
@@ -68,6 +73,13 @@ const data = {
     return `/blog/${data?.page?.fileSlug}/`;
   },
   eleventyComputed: {
+    /**
+     * @param {BlogPageData} data
+     */
+    id: (data) => {
+      const source = `${data.page.fileSlug}${data.page.rawInput}`;
+      return crypto.createHash('sha256').update(source).digest('hex');
+    },
     // Ignore/hide drafts on prod
     eleventyExcludeFromCollections: (data) => !!data.isDraft && isProduction,
     /**
