@@ -8,8 +8,11 @@
   background-color: var(--snoo-orange);
   position: relative;
   background-image:
+    // antenna tip
     radial-gradient(circle at 70% 26%, white 5%, transparent 5.3%),
+    // left ear
     radial-gradient(circle at 23% 52%, white 7.6%, transparent 7.9%),
+    // right ear
     radial-gradient(circle at 76% 52%, white 7.6%, transparent 7.9%);
 
   &-face {
@@ -22,10 +25,14 @@
     transform: translateX(-51%);
     bottom: 4vmin;
     background-image:
+      // left eye
       radial-gradient(circle at 28% 41%, var(--snoo-orange) 10.5%, transparent 10.8%),
+      // right eye
       radial-gradient(circle at 69% 41%, var(--snoo-orange) 10.5%, transparent 10.8%),
-      radial-gradient(circle at 29% 69%, var(--snoo-orange) 2%, transparent 2.3%),
-      radial-gradient(circle at 71% 70%, var(--snoo-orange) 2%, transparent 2.3%);
+      // left corner of mouth
+      radial-gradient(circle at 29% 70%, var(--snoo-orange) 2.4%, transparent 2.3%),
+      // right corner of mouth
+      radial-gradient(circle at 71% 71%, var(--snoo-orange) 2.4%, transparent 2.3%);
 
     // Base of antenna
     &::before {

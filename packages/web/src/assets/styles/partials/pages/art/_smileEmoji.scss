@@ -45,11 +45,11 @@
     &::before,
     &::after {
       content: '';
-      width: 1.5vmin;
-      height: 1.5vmin;
+      width: 1.4vmin;
+      aspect-ratio: 1;
       border-radius: 50%;
       position: absolute;
-      bottom: 0.1vmin;
+      bottom: 0.3vmin;
       background-color: var(--mouth-color);
     }
 

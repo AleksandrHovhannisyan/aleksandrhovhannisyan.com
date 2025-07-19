@@ -256,26 +256,23 @@
     &::after {
       --dimple-size: 1.32vmin;
       content: '';
+      border-top: solid 0.2vmin black;
+      border-left: solid 0.2vmin black;
       position: absolute;
+      aspect-ratio: 1;
+      border-radius: 100% 0;
     }
 
+    // left dimple
     &::before {
-      border-top: solid 0.1vmin black;
-      border-left: solid 0.1vmin black;
-      border-radius: 100% 0;
-      width: var(--dimple-size);
-      height: var(--dimple-size);
+      width: 1.32vmin;
       transform: rotate(-30deg);
       left: -1.8vmin;
     }
 
+    // right dimple
     &::after {
-      --dimple-size: 1.14vmin;
-      border-top: solid 0.2vmin black;
-      border-left: solid 0.2vmin black;
-      border-radius: 100% 0;
-      width: var(--dimple-size);
-      height: var(--dimple-size);
+      width: 1.14vmin;
       transform: scaleX(-1) rotate(-42deg);
       right: -1.56vmin;
       top: 0.78vmin;
