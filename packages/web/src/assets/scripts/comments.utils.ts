@@ -15,9 +15,6 @@ export class CommentsError extends Error {
 export const fetchComments = async (id: string) => {
   const baseUrl = window.location.hostname === 'localhost' ? 'http://localhost:4002' : '';
   const response = await fetch(`${baseUrl}/api/comments?id=${id}`);
-  if (!response.ok) {
-    throw new CommentsError('Unable to fetch comments.');
-  }
   const comments: PostCommentResponse = await response.json();
   if ('error' in comments) {
     throw new CommentsError(comments.error);
