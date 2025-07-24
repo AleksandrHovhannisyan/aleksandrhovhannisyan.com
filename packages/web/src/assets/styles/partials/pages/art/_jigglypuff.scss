@@ -8,7 +8,8 @@
   --color-jiggly-blue-lighter: hsl(188deg 41.1% 71.37%);
   --color-jiggly-gray: hsl(222deg 13% 36%);
   border: solid 0.2vmin black;
-  background: var(--color-jiggly-pink-light);
+  background-color: var(--color-jiggly-pink-light);
+  background-image: radial-gradient(circle at 28% 30%, var(--color-jiggly-pink-lighter) 4%, transparent 12%);
   width: 20vmin;
   aspect-ratio: 1;
   border-radius: 50%;
@@ -118,10 +119,10 @@
   width: 4.2vmin;
   height: 4.2vmin;
   background: radial-gradient(
-      circle at -30% 25%,
+      circle at -50% 95%,
       var(--color-jiggly-pink-lighter) 0%,
       var(--color-jiggly-pink-lighter) 40%,
-      var(--color-jiggly-pink-light) 60%,
+      var(--color-jiggly-pink-light) 50%,
       var(--color-jiggly-pink-dark) 60%
     )
     var(--color-jiggly-pink-light);
@@ -129,8 +130,8 @@
   border-radius: 100% 20%;
   bottom: 30%;
   left: -9.3%;
-  rotate: 59deg;
-  clip-path: polygon(0% 36%, 100% 75%, 100% 100%, 0% 100%);
+  rotate: 57deg;
+  z-index: -1;
 }
 
 /* Right arm */
@@ -140,13 +141,17 @@
   background-color: var(--color-jiggly-pink-light);
   border: solid 0.18vmin black;
   border-radius: 100% 20%;
-  bottom: 9%;
+  bottom: 7%;
   right: 16%;
-  rotate: -60deg;
-  box-shadow:
-    inset 0.2vmin 0.2vmin 0.4vmin 0.4vmin var(--color-jiggly-pink-dark),
-    inset 0 0.5vmin 0.4vmin 1vmin var(--color-jiggly-pink-lighter);
-  clip-path: polygon(0% 2%, 100% 100%, 100% 100%, 0% 100%);
+  rotate: -59deg;
+  box-shadow: inset 0.2vmin -0.2vmin 0.1vmin 0.3vmin var(--color-jiggly-pink-dark);
+  clip-path: polygon(0% -4%, 108% 100%, 100% 100%, 0% 100%);
+  background-image: radial-gradient(
+    ellipse 30% 70% at 30% 60%,
+    var(--color-jiggly-pink-lighter) 0%,
+    var(--color-jiggly-pink-lighter) 10%,
+    transparent 25%
+  );
 }
 
 /* Bottom part of hair */
@@ -173,13 +178,17 @@
   border-right: solid 0.2vmin black;
   border-bottom: solid 0.2vmin black;
   border-left: solid 0.2vmin black;
-  background-color: var(--color-jiggly-pink-light);
   position: absolute;
   left: 32.4%;
   top: -5%;
   rotate: 343deg;
   border-radius: 50%;
-  box-shadow: inset 0 1vmin 1vmin 0.5vmin var(--color-jiggly-pink-lighter);
+  background-image: radial-gradient(
+    ellipse 140% 100% at 80% 20%,
+    var(--color-jiggly-pink-lighter) 0%,
+    var(--color-jiggly-pink-lighter) 30%,
+    var(--color-jiggly-pink-light) 40%
+  );
   clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 60% 100%, 30% 100%);
 }
 
@@ -209,7 +218,7 @@
   background-color: black;
   border-radius: 100% 0%;
   rotate: 0deg;
-  box-shadow: inset -5vmin 4vmin 1vmin 1vmin var(--color-jiggly-gray);
+  box-shadow: inset -5vmin 4vmin 0.6vmin 1vmin var(--color-jiggly-gray);
   clip-path: polygon(0% 50%, 60% 100%, 100% 100%, 0% 100%);
 }
 
@@ -235,7 +244,7 @@
   background-color: black;
   border-radius: 100% 0%;
   rotate: 0deg;
-  box-shadow: inset -2vmin 5vmin 1vmin 1vmin var(--color-jiggly-gray);
+  box-shadow: inset -3vmin 5.5vmin 0.6vmin 1vmin var(--color-jiggly-gray);
   clip-path: polygon(0% 50%, 60% 100%, 100% 100%, 0% 100%);
 }
 
