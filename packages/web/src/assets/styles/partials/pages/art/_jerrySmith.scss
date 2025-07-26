@@ -3,24 +3,14 @@
 .jerry {
   --color-jerry-skin: #eac2a6;
   --color-jerry-hair: #78625a;
-
-  // --color-jerry-shirt: #607A32;
   width: 18vmin;
   height: 25.2vmin;
   position: relative;
   overflow: hidden;
   transform: scale(1.1);
 
-  // Originally drawn at this size and scaled down
-  // transform: scale(1.67);
-
-  &-hair-bg {
-    background-color: black;
-    transform: scale(1.012);
-  }
-
-  &-hair-bg,
-  &-hair {
+  &-hair,
+  &-hair::after {
     position: absolute;
     left: 0;
     top: 0;
@@ -66,7 +56,15 @@
     );
   }
 
+  /* Outer border of the hair */
   &-hair {
+    background-color: black;
+  }
+
+  /* This is the actual brown hair (inner part) */
+  &-hair::after {
+    content: '';
+    transform: scale(0.98);
     background-color: var(--color-jerry-hair);
   }
 
@@ -131,7 +129,7 @@
   &-eye {
     --jerry-eye-size: 5.28vmin;
     --jerry-eye-white-percent: 56%;
-    --jerry-eyelid-percent: calc(var(--jerry-eye-white-percent) + 5%);
+    --jerry-eyelid-percent: calc(var(--jerry-eye-white-percent) + 4%);
     --jerry-eyeball-position: 84% calc(var(--jerry-eye-white-percent) - 2%);
     --jerry-eyeball-size: 5.5%;
     width: var(--jerry-eye-size);
@@ -231,7 +229,7 @@
     &::before {
       width: 2.4vmin;
       top: 1.8vmin;
-      height: 0.25vmin;
+      height: 0.2vmin;
     }
 
     &::after {
