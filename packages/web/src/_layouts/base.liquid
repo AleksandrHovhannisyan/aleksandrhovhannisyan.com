@@ -34,7 +34,7 @@
   {%- endif -%}
   {%- comment -%}Global and page/layout-specific CSS{%- endcomment -%}
   {%- for href in stylesheets %}
-    {% stylesheet href %}
+    <link rel="stylesheet" href="{{ href | getAssetOutputPath }}">
   {%- endfor -%}
   {%- comment -%}Favicons{%- endcomment -%}
   {% favicon 'src/assets/images/favicons/favicon.png' %}
@@ -45,7 +45,7 @@
   {%- endif -%}
   {%- comment -%}Template-specific module scripts{%- endcomment -%}
   {%- for script in scripts -%}
-    <script src="{{ script.src }}"{% if script.defer %} defer{% endif %}{% if script.type %} type="{{ script.type }}"{% endif %}></script>
+    <script src="{{ script.src | getAssetOutputPath }}"{% if script.defer %} defer{% endif %}{% if script.type %} type="{{ script.type }}"{% endif %}></script>
   {%- endfor -%}
   {%- comment -%}Open Graph social media previews{%- endcomment -%}
   <meta property="og:title" content="{{ pageTitle }}">

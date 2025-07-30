@@ -9,7 +9,7 @@ redirectFrom:
   - /design/
 scripts:
   - type: module
-    src: /assets/scripts/copyCode.js
+    src: src/assets/scripts/copyCode.ts
 ---
 
 {% include "toc.md" %}
@@ -233,11 +233,11 @@ This is a `paragraph` with some inline `code`.
 This is plaintext
 ```
 
-``` {data-copyable=true}
+```{data-copyable=true}
 This is copyable plaintext
 ```
 
-``` {data-copyable=true}
+```{data-copyable=true}
 This is copyable plaintext
 
 with multiple lines
@@ -248,7 +248,7 @@ with multiple lines
 ```js {data-file="path/to/some/file.js" data-copyable="true"}
 const getEvenNumbers = (array) => {
   return array.filter((n) => n % 2 === 0);
-}
+};
 
 console.log(getEvenNumbers([1, 2, 3]));
 ```
@@ -261,7 +261,7 @@ console.log(getEvenNumbers([1, 2, 3]));
   background-color: #fff;
   color: #000;
 }
-.navbar-link:is(:hover, :focus, [aria-current="page"]) {
+.navbar-link:is(:hover, :focus, [aria-current='page']) {
   /* more css */
 }
 ```
@@ -269,11 +269,13 @@ console.log(getEvenNumbers([1, 2, 3]));
 ##### Liquid
 
 {% raw %}
+
 ```liquid {data-file="path/to/some/file.liquid" data-copyable="true"}
 {% if someCondition %}{% endif %}
 {% for i in (1..3) %}{% endfor %}
 {% assign foo = 'bar' %}
 ```
+
 {% endraw %}
 
 ##### Markdown
@@ -283,34 +285,27 @@ console.log(getEvenNumbers([1, 2, 3]));
 
 # heading level one would go here
 
-some *italicized text*
+some _italicized text_
 ```
 
 ##### HTML
 
 ```html {data-file="path/to/some/file.html" data-copyable="true"}
 <div class="foo">
-  <div class="div soup">
-    It's divs all the way down
-  </div>
+  <div class="div soup">It's divs all the way down</div>
 </div>
 ```
 
 ```html {data-copyable="true"}
-<button
-  id="theme-toggle"
-  type="button"
-  aria-label="Enable dark theme"
-  aria-pressed="false"
-></button>
+<button id="theme-toggle" type="button" aria-label="Enable dark theme" aria-pressed="false"></button>
 ```
 
 #### Aside
 
 {% aside %}
-  Cras eu aliquet est. Cras tempor ex ut sagittis pharetra. In semper ac nunc id faucibus. Praesent vitae nunc facilisis, porttitor nisi sed, blandit massa. Duis hendrerit lectus quam, ac lobortis lectus euismod et.
+Cras eu aliquet est. Cras tempor ex ut sagittis pharetra. In semper ac nunc id faucibus. Praesent vitae nunc facilisis, porttitor nisi sed, blandit massa. Duis hendrerit lectus quam, ac lobortis lectus euismod et.
 
-  In cursus tellus ex, a rhoncus erat bibendum sit amet. Proin sollicitudin pharetra nulla quis dignissim. Phasellus et nibh felis.
+In cursus tellus ex, a rhoncus erat bibendum sit amet. Proin sollicitudin pharetra nulla quis dignissim. Phasellus et nibh felis.
 {% endaside %}
 
 #### Definition
@@ -322,9 +317,9 @@ Definition of the term goes here.
 #### Quote
 
 {% quote "Source of the Quote", "https://www.lipsum.com/feed/html" %}
-  Sed libero libero, cursus ut lacus at, luctus molestie augue. Nulla vehicula elementum est. Donec tincidunt est sit amet augue sodales auctor. Quisque tincidunt vestibulum lorem sed commodo. Praesent dictum vestibulum cursus. Nullam massa neque, molestie a eleifend at, iaculis et urna. Cras suscipit nibh at risus sollicitudin pretium. Praesent eget sem vitae ante mollis elementum. Nullam sollicitudin est in nisi porttitor, nec suscipit nunc pharetra.
+Sed libero libero, cursus ut lacus at, luctus molestie augue. Nulla vehicula elementum est. Donec tincidunt est sit amet augue sodales auctor. Quisque tincidunt vestibulum lorem sed commodo. Praesent dictum vestibulum cursus. Nullam massa neque, molestie a eleifend at, iaculis et urna. Cras suscipit nibh at risus sollicitudin pretium. Praesent eget sem vitae ante mollis elementum. Nullam sollicitudin est in nisi porttitor, nec suscipit nunc pharetra.
 
-  Duis ultrices nunc in finibus pharetra. Nullam ornare ex sit amet diam interdum porta. Sed non libero vel est auctor suscipit quis eget mi. Phasellus vestibulum neque id luctus imperdiet.
+Duis ultrices nunc in finibus pharetra. Nullam ornare ex sit amet diam interdum porta. Sed non libero vel est auctor suscipit quis eget mi. Phasellus vestibulum neque id luctus imperdiet.
 {% endquote %}
 
 #### Vertical Rhythm (`.rhythm`)

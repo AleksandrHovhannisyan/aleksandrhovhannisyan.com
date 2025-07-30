@@ -1,4 +1,5 @@
-import esbuild from 'esbuild';
+import path from 'node:path';
+import fs from 'node:fs';
 import PluginFootnotes from 'eleventy-plugin-footnotes';
 import { EleventyPluginCodeDemo } from 'eleventy-plugin-code-demo';
 import { eleventyImageTransformPlugin } from '@11ty/eleventy-img';
@@ -11,7 +12,6 @@ import {
   artworkShortcode,
   nanoIdShortcode,
   detailsShortcode,
-  stylesheetShortcode,
   fetchTextShortcode,
 } from './lib/shortcodes/index.js';
 import {
@@ -29,17 +29,25 @@ import {
   pathParse,
   pathJoin,
   toSmartQuotes,
+  getAssetOutputPath,
 } from './lib/filters.js';
 import { getAllPosts, getAllUniqueCategories, getPostsByCategory } from './lib/collections.js';
 import { markdown } from './lib/plugins/markdown.js';
 import { codeDemoOptions } from './lib/plugins/codeDemo.js';
 import { escape, slugifyString } from './lib/utils.js';
+import { buildAssets } from './build.js';
 
 const TEMPLATE_ENGINE = 'liquid';
 
-const isProductionBuild = process.env.ELEVENTY_ENV === 'production';
-
 export default function eleventy(eleventyConfig) {
+  // Pre-processing
+  eleventyConfig.on('eleventy.before', async () => {
+    const assetPaths = await buildAssets();
+    const assetPathsOutputFile = path.resolve(import.meta.dirname, 'src/_data/assetPaths.json');
+    fs.writeFileSync(assetPathsOutputFile, JSON.stringify(assetPaths));
+    console.log(`[build:assets]: wrote asset paths to ${assetPathsOutputFile}`, assetPaths);
+  });
+
   eleventyConfig.setLiquidOptions({
     // Allows for dynamic include/partial names. If true, include names must be quoted. Defaults to true as of beta/1.0.
     dynamicPartials: true,
@@ -48,12 +56,10 @@ export default function eleventy(eleventyConfig) {
   // Watch targets
   eleventyConfig.addWatchTarget('src/assets/images');
   eleventyConfig.addWatchTarget('src/assets/scripts');
+  eleventyConfig.addWatchTarget('src/assets/styles');
 
   // Pass-through copy for static assets
   eleventyConfig.setServerPassthroughCopyBehavior('copy');
-  if (!isProductionBuild) {
-    eleventyConfig.addPassthroughCopy('src/assets/styles/*.css');
-  }
   eleventyConfig.addPassthroughCopy('src/assets/fonts');
   eleventyConfig.addPassthroughCopy('src/*.pdf');
   eleventyConfig.addPassthroughCopy('src/_posts/**/videos/*', {
@@ -71,7 +77,6 @@ export default function eleventy(eleventyConfig) {
   eleventyConfig.addShortcode('icon', iconShortcode);
   eleventyConfig.addShortcode('nanoid', nanoIdShortcode);
   eleventyConfig.addShortcode('fetchText', fetchTextShortcode);
-  eleventyConfig.addShortcode('stylesheet', stylesheetShortcode);
 
   // Custom filters
   eleventyConfig.addFilter('limit', limit);
@@ -95,6 +100,7 @@ export default function eleventy(eleventyConfig) {
   eleventyConfig.addFilter('entries', Object.entries);
   eleventyConfig.addFilter('pathParse', pathParse);
   eleventyConfig.addFilter('pathJoin', pathJoin);
+  eleventyConfig.addFilter('getAssetOutputPath', getAssetOutputPath);
 
   // Custom collections
   eleventyConfig.addCollection('posts', getAllPosts);
@@ -130,29 +136,6 @@ export default function eleventy(eleventyConfig) {
   });
   eleventyConfig.addPlugin(EleventyPluginCodeDemo, codeDemoOptions);
   eleventyConfig.setLibrary('md', markdown);
-
-  // Post-processing
-  eleventyConfig.on('afterBuild', () => {
-    return esbuild.build({
-      entryPoints: [
-        'src/assets/scripts/copyCode.ts',
-        'src/assets/scripts/comments.ts',
-        'src/assets/scripts/dialog.ts',
-        'src/assets/scripts/components/carousel.ts',
-        'src/assets/scripts/components/gameLoop.ts',
-      ],
-      entryNames: '[dir]/[name]',
-      outdir: 'dist/assets/scripts',
-      format: 'esm',
-      bundle: true,
-      splitting: true,
-      minify: isProductionBuild,
-      sourcemap: !isProductionBuild,
-      loader: {
-        '.svg': 'text',
-      },
-    });
-  });
 
   return {
     dir: {

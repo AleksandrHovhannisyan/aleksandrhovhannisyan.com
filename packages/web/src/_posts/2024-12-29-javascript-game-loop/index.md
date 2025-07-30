@@ -4,7 +4,7 @@ description: A look at some best practices for creating performant game animatio
 categories: [game-dev, javascript, webperf]
 scripts:
   - type: module
-    src: /assets/scripts/components/gameLoop.js
+    src: src/assets/scripts/components/gameLoop.ts
 ---
 
 Below is a demo of a basic game implemented with an HTML canvas and some JavaScript. The character is represented by the black circle, and its direction of movement is indicated by the line. Click or tab to the game area to begin; use <kbd>W</kbd> to move forward, <kbd>S</kbd> to move backward, <kbd>A</kbd> to rotate left, and <kbd>D</kbd> to rotate right.
@@ -20,8 +20,8 @@ The term <dfn>game loop</dfn> refers to the logic that runs during each animatio
 ```js
 // run this N times per second
 function update() {
-    updatePhysics();
-    draw();
+  updatePhysics();
+  draw();
 }
 ```
 
@@ -35,11 +35,11 @@ You might be tempted to use `setTimeout` or `setInterval`:
 const MAX_FPS = 60;
 const FRAME_INTERVAL_MS = 1000 / MAX_FPS;
 function update() {
-    setTimeout(() => {
-        updatePhysics();
-        draw();
-        update();
-    }, FRAME_INTERVAL_MS)
+  setTimeout(() => {
+    updatePhysics();
+    draw();
+    update();
+  }, FRAME_INTERVAL_MS);
 }
 ```
 
@@ -49,18 +49,18 @@ Conversely, if you try to run your game at too high an FPS, user input may feel 
 
 ### Correct Approach: `requestAnimationFrame`
 
-For this reason, the event loop doesn't *just* process macro- or micro-tasks. Instead, it also reserves special checkpoints at regular intervals—known as a <dfn>render opportunities</dfn>—when the browser's main thread is allowed to switch to doing UI work. Render opportunities are the perfect time for animations because they're scheduled to run right before the browser repaints.
+For this reason, the event loop doesn't _just_ process macro- or micro-tasks. Instead, it also reserves special checkpoints at regular intervals—known as a <dfn>render opportunities</dfn>—when the browser's main thread is allowed to switch to doing UI work. Render opportunities are the perfect time for animations because they're scheduled to run right before the browser repaints.
 
 The way we do this is by calling [`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame) and passing in the callback function that we want to execute during the next render opportunity:
 
 ```js {data-copyable="true"}
 function update() {
-    // ✅ better, but not perfect (more on that shortly)
-    requestAnimationFrame(() => {
-        updatePhysics();
-        draw();
-        update();
-    });
+  // ✅ better, but not perfect (more on that shortly)
+  requestAnimationFrame(() => {
+    updatePhysics();
+    draw();
+    update();
+  });
 }
 
 update();
@@ -89,83 +89,89 @@ To fix this, we can enforce a maximum allowed FPS for physics. The callback func
 ```js
 let previousTimeMs = 0;
 requestAnimationFrame((currentTimeMs) => {
-    const deltaTimeMs = currentTimeMs - previousTimeMs;
-    previousTimeMs = currentTimeMs;
+  const deltaTimeMs = currentTimeMs - previousTimeMs;
+  previousTimeMs = currentTimeMs;
 });
 ```
 
 The demo below uses this code to count the number of `requestAnimationFrame` callbacks invoked over a fixed time frame and calculate the average FPS. For a 60 Hz monitor, the result should be very close to 60 FPS, give or take. Run the demo below to find out what your refresh rate is and to log the values of `previousTimeMs`, `currentTimeMs`, and `deltaTimeMs`:
 
 {% codeDemo "Demo of requestAnimationFrame timing" %}
+
 ```html
 <div id="demo">
-    <h1>FPS of requestAnimationFrame</h1>
-    <p>Tests run over a 5-second interval.</p>
-    <div>
-        <button id="start-demo">Start recording</button>
-    </div>
+  <h1>FPS of requestAnimationFrame</h1>
+  <p>Tests run over a 5-second interval.</p>
+  <div>
+    <button id="start-demo">Start recording</button>
+  </div>
 </div>
 ```
+
 ```css
 #demo h1 {
-    text-align: center;
-    font-size: 1.5rem;
-    margin-bottom: 0.5lh;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 0.5lh;
 }
 #demo p {
-    text-align: center;
-    margin-bottom: 1lh;
+  text-align: center;
+  margin-bottom: 1lh;
 }
 #demo button {
-    text-align: center;
-    padding: 0.5em;
-    display: block;
-    margin: 0 auto;
+  text-align: center;
+  padding: 0.5em;
+  display: block;
+  margin: 0 auto;
 }
-#demo button[aria-disabled="true"] {
-    opacity: 0.7;
-    cursor: not-allowed;
+#demo button[aria-disabled='true'] {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 ```
+
 ```js
 let isRunning = false;
 const MAX_ALLOWED_TIME_MS = 5000;
 const startDemoButton = document.querySelector('#demo button');
 startDemoButton.addEventListener('click', () => {
-    if (isRunning) {
-        return;
-    }
-    isRunning = true;
-    startDemoButton.setAttribute('aria-disabled', 'true');
-    let demoStartTimeMs = 0;
-    let demoEndTimeMs;
-    let previousTimeMs = 0;
-    let numFrames = 0;
-    function update() {
-        requestAnimationFrame((currentTimeMs) => {
-            numFrames++;
-            if (!demoStartTimeMs) {
-            demoStartTimeMs = currentTimeMs;
-            }
-            const deltaTimeMs = currentTimeMs - previousTimeMs;
-            previousTimeMs = currentTimeMs;
-            demoEndTimeMs = currentTimeMs;
-            console.log(`previousTimeMs: ${previousTimeMs.toFixed(2)}, currentTimeMs: ${currentTimeMs.toFixed(2)}, deltaTimeMs: ${deltaTimeMs.toFixed(2)}`);
-            if ((currentTimeMs - demoStartTimeMs) >= MAX_ALLOWED_TIME_MS) {
-                demoEndTimeMs = currentTimeMs;
-                const demoTimeElapsedMs = demoEndTimeMs - demoStartTimeMs;
-                const averageFPS = numFrames / MAX_ALLOWED_TIME_MS * 1000;
-                console.log(`End of demo. Average recorded FPS: ${averageFPS.toFixed(2)}.`);
-                startDemoButton.setAttribute('aria-disabled', 'false');
-                isRunning = false;
-            } else {
-                update();
-            }
-        });
-    }
-    update();
+  if (isRunning) {
+    return;
+  }
+  isRunning = true;
+  startDemoButton.setAttribute('aria-disabled', 'true');
+  let demoStartTimeMs = 0;
+  let demoEndTimeMs;
+  let previousTimeMs = 0;
+  let numFrames = 0;
+  function update() {
+    requestAnimationFrame((currentTimeMs) => {
+      numFrames++;
+      if (!demoStartTimeMs) {
+        demoStartTimeMs = currentTimeMs;
+      }
+      const deltaTimeMs = currentTimeMs - previousTimeMs;
+      previousTimeMs = currentTimeMs;
+      demoEndTimeMs = currentTimeMs;
+      console.log(
+        `previousTimeMs: ${previousTimeMs.toFixed(2)}, currentTimeMs: ${currentTimeMs.toFixed(2)}, deltaTimeMs: ${deltaTimeMs.toFixed(2)}`
+      );
+      if (currentTimeMs - demoStartTimeMs >= MAX_ALLOWED_TIME_MS) {
+        demoEndTimeMs = currentTimeMs;
+        const demoTimeElapsedMs = demoEndTimeMs - demoStartTimeMs;
+        const averageFPS = (numFrames / MAX_ALLOWED_TIME_MS) * 1000;
+        console.log(`End of demo. Average recorded FPS: ${averageFPS.toFixed(2)}.`);
+        startDemoButton.setAttribute('aria-disabled', 'false');
+        isRunning = false;
+      } else {
+        update();
+      }
+    });
+  }
+  update();
 });
 ```
+
 {% endcodeDemo %}
 
 Let's take this a step further. By keeping track of when the previous frame was called, we can calculate the amount of elapsed time between that frame and the current frame to ensure that we never update our game's physics faster than a maximum FPS:
@@ -176,15 +182,15 @@ const FRAME_INTERVAL_MS = 1000 / MAX_FPS;
 
 let previousTimeMs = 0;
 function update() {
-    requestAnimationFrame((currentTimeMs) => {
-        const deltaTimeMs = currentTimeMs - previousTimeMs;
-        if (deltaTimeMs >= FRAME_INTERVAL_MS) {
-            updatePhysics();
-            previousTimeMs = currentTimeMs;
-        }
-        draw();
-        update();
-    });
+  requestAnimationFrame((currentTimeMs) => {
+    const deltaTimeMs = currentTimeMs - previousTimeMs;
+    if (deltaTimeMs >= FRAME_INTERVAL_MS) {
+      updatePhysics();
+      previousTimeMs = currentTimeMs;
+    }
+    draw();
+    update();
+  });
 }
 ```
 
@@ -215,14 +221,14 @@ const TRANSIT_INTERVAL_MINUTES = 60 / MAX_TRAIN_ARRIVALS_PER_HOUR;
 let previousTimeMinutes = 0;
 
 function runTrainStation() {
-    requestTrain((currentTimeMinutes) => {
-        const deltaTimeMinutes = currentTimeMinutes - previousTimeMinutes;
-        if (deltaTimeMinutes >= TRANSIT_INTERVAL_MINUTES) {
-            receiveTrain();
-            previousTimeMinutes = currentTimeMinutes;
-        }
-        runTrainStation();
-    });
+  requestTrain((currentTimeMinutes) => {
+    const deltaTimeMinutes = currentTimeMinutes - previousTimeMinutes;
+    if (deltaTimeMinutes >= TRANSIT_INTERVAL_MINUTES) {
+      receiveTrain();
+      previousTimeMinutes = currentTimeMinutes;
+    }
+    runTrainStation();
+  });
 }
 ```
 
@@ -237,21 +243,21 @@ const FRAME_INTERVAL_MS = 1000 / MAX_FPS;
 let previousTimeMs = 0;
 
 function update() {
-    requestAnimationFrame((currentTimeMs) => {
-        const deltaTimeMs = currentTimeMs - previousTimeMs;
-        if (deltaTimeMs >= FRAME_INTERVAL_MS) {
-            updatePhysics();
-            // Synchronize next frame to arrive on time
-            const offset = deltaTimeMs % FRAME_INTERVAL_MS;
-            previousTimeMs = currentTimeMs - offset;
-        }
-        draw();
-        update();
-    });
+  requestAnimationFrame((currentTimeMs) => {
+    const deltaTimeMs = currentTimeMs - previousTimeMs;
+    if (deltaTimeMs >= FRAME_INTERVAL_MS) {
+      updatePhysics();
+      // Synchronize next frame to arrive on time
+      const offset = deltaTimeMs % FRAME_INTERVAL_MS;
+      previousTimeMs = currentTimeMs - offset;
+    }
+    draw();
+    update();
+  });
 }
 ```
 
-In other words, we're telling a harmless lie. Yes, it's true that `previousTimeMs` shouldn't _actually_ be `currentTimeMs - (deltaTimeMs % FRAME_INTERVAL_MS)` from the perspective of the wall clock. But when we simulate rewinding the clock to account for any frame delays, the next frame *thinks* it can still arrive at the next increment of `FRAME_INTERVAL_MS` as originally intended (e.g., at the next increment of ~16.67 ms for 60 FPS).
+In other words, we're telling a harmless lie. Yes, it's true that `previousTimeMs` shouldn't _actually_ be `currentTimeMs - (deltaTimeMs % FRAME_INTERVAL_MS)` from the perspective of the wall clock. But when we simulate rewinding the clock to account for any frame delays, the next frame _thinks_ it can still arrive at the next increment of `FRAME_INTERVAL_MS` as originally intended (e.g., at the next increment of ~16.67 ms for 60 FPS).
 
 Our game loop is now complete! But there's still one thing we need to discuss.
 
@@ -261,18 +267,18 @@ When making games with JavaScript, a common mistake is to update game state outs
 
 ```js
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') {
-        // ❌ don't do this
-        player.moveLeft();
-    }
+  if (e.key === 'ArrowLeft') {
+    // ❌ don't do this
+    player.moveLeft();
+  }
 });
 
 function update() {
-    // Frame synchronization omitted for brevity
-    requestAnimationFrame(() => {
-        draw();
-        update();
-    });
+  // Frame synchronization omitted for brevity
+  requestAnimationFrame(() => {
+    draw();
+    update();
+  });
 }
 ```
 
@@ -287,18 +293,18 @@ document.addEventListener('keydown', (e) => pressedKeys.add(e.key));
 document.addEventListener('keyup', (e) => pressedKeys.delete(e.key));
 
 function updatePhysics() {
-    if (isKeyDown('ArrowLeft')) {
-        player.moveLeft();
-    }
+  if (isKeyDown('ArrowLeft')) {
+    player.moveLeft();
+  }
 }
 
 function update() {
-    requestAnimationFrame(() => {
-        // Now we're updating state INSIDE the game loop
-        updatePhysics();
-        draw();
-        update();
-    });
+  requestAnimationFrame(() => {
+    // Now we're updating state INSIDE the game loop
+    updatePhysics();
+    draw();
+    update();
+  });
 }
 ```
 

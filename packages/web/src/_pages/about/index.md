@@ -33,24 +33,24 @@ Outside of work, I enjoy learning new things and [writing on my blog](/blog/). I
 
 ### Music
 
-I've loved listening to music my entire life—everything from rock to indie, folk, rap, pop, you name it. But it's only recently that I began *playing* music. In late 2023, I picked up my first guitar, and now I play it every chance I get. Some of the artists I keep coming back to (and whose songs I want to learn) include The Strokes, Lana Del Rey, Arctic Monkeys, Radiohead, GY!BE, and Joanna Newsom, [among others](https://open.spotify.com/playlist/4Xmn0rj4Qsbd431tPZOsMV?si=uR3_Vx-mR--g6rKWIRKtTA).
+I've loved listening to music my entire life—everything from rock to indie, folk, rap, pop, you name it. But it's only recently that I began _playing_ music. In late 2023, I picked up my first guitar, and now I play it every chance I get. Some of the artists I keep coming back to (and whose songs I want to learn) include The Strokes, Lana Del Rey, Arctic Monkeys, Radiohead, GY!BE, and Joanna Newsom, [among others](https://open.spotify.com/playlist/4Xmn0rj4Qsbd431tPZOsMV?si=uR3_Vx-mR--g6rKWIRKtTA).
 
 ### Gaming
 
 Like many people, I was first introduced to the world of computers through video games—I often found myself testing the limits of what developers would allow me to get away with in their digital sandboxes, a habit I still haven't shaken to this day (and one that's been surprisingly useful for software testing!). This natural curiosity led me to learn more about computers in high school, write some of my first few lines of code, and, eventually, earn my bachelor's in computer science.
 
-So, when I'm not writing or playing guitar, I'm [praising till I'm hollow](https://www.youtube.com/watch?v=mp28JPs25ek). I'm a die-hard [Soulsborne](https://en.wikipedia.org/wiki/Souls_(series)) fan—I love the challenging gameplay, intricate lore, jolly co-operation, and inside jokes that this community is so well known for. But I also enjoy other genres of games: shooters, role-playing games, roguelites, card games, platformers, you name it. I was practically raised by a generation of browser Flash games—may they [rest in peace](/blog/rest-in-peace-flash/)—and an unhealthy amount of (Old School) Runescape, and these experiences with video games have shaped my interests and personality. In fact, some games have left such a lasting impression on me that [I've written about them](/tags/gaming/).
+So, when I'm not writing or playing guitar, I'm [praising till I'm hollow](https://www.youtube.com/watch?v=mp28JPs25ek). I'm a die-hard [Soulsborne](<https://en.wikipedia.org/wiki/Souls_(series)>) fan—I love the challenging gameplay, intricate lore, jolly co-operation, and inside jokes that this community is so well known for. But I also enjoy other genres of games: shooters, role-playing games, roguelites, card games, platformers, you name it. I was practically raised by a generation of browser Flash games—may they [rest in peace](/blog/rest-in-peace-flash/)—and an unhealthy amount of (Old School) Runescape, and these experiences with video games have shaped my interests and personality. In fact, some games have left such a lasting impression on me that [I've written about them](/tags/gaming/).
 
 ### Reading
 
 Every now and then, I'll dust off a book and do some light reading. I love finding that rare book that captivates me so much that time slips away, where closing it almost feels like waking from a dream. A few of my favorites include:
 
-- *The Little Prince* by Antoine de Saint-Exupéry
-- *The Shadow of the Wind* by Carlos Ruiz Zafón
-- *The Count of Monte Cristo* by Alexandre Dumas
+- _The Little Prince_ by Antoine de Saint-Exupéry
+- _The Shadow of the Wind_ by Carlos Ruiz Zafón
+- _The Count of Monte Cristo_ by Alexandre Dumas
 - The Discworld novels by the infinitely witty Terry Pratchett
 
-I don't keep a reading list per se, although there are some books I'd like to one day read... Okay, I guess that's *technically* a reading list, but hopefully you get my point. I don't like to treat reading as something to check off a list because then it feels like work.
+I don't keep a reading list per se, although there are some books I'd like to one day read... Okay, I guess that's _technically_ a reading list, but hopefully you get my point. I don't like to treat reading as something to check off a list because then it feels like work.
 
 ## So, Yeah... That's Me!
 

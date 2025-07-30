@@ -9,7 +9,7 @@ openGraph:
   card: summary_large_image
 scripts:
   - type: module
-    src: /assets/scripts/components/carousel.js
+    src: src/assets/scripts/components/carousel.ts
 commentsId: 166
 isFeatured: true
 ---
@@ -981,7 +981,7 @@ class Carousel {
       const distanceToItem = this.#getDistanceToFocalPoint(mediaItem, focalPoint);
       // The 1s are to account for off-by-one errors. Sometimes, the currently centered
       // media item's center doesn't match the carousel's center and is off by one.
-      return direction === "start"
+      return direction === 'start'
         ? distanceToItem + 1 < scrollContainerCenter
         : distanceToItem - scrollContainerCenter > 1;
     });

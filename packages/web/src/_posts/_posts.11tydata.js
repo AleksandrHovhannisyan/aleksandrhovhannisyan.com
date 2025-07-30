@@ -90,12 +90,12 @@ const data = {
         ...data.scripts,
         {
           type: 'module',
-          src: '/assets/scripts/copyCode.js',
+          src: 'src/assets/scripts/copyCode.ts',
         },
       ];
       // If the post has comments and comments are enabled, link to the comment script to load them
       if (data.commentsId) {
-        scripts.push({ type: 'module', src: `/assets/scripts/comments.js` });
+        scripts.push({ type: 'module', src: 'src/assets/scripts/comments.ts' });
       }
       return scripts;
     },

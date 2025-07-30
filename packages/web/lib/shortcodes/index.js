@@ -7,4 +7,3 @@ export { default as artworkShortcode } from './artwork.js';
 export { default as nanoIdShortcode } from './nanoid.js';
 export { default as detailsShortcode } from './details.js';
 export { default as fetchTextShortcode } from './fetchText.js';
-export { default as stylesheetShortcode } from './stylesheet.js';

@@ -142,3 +142,17 @@ export const toSmartQuotes = (text) => {
       .replace(/'(.*?)'/g, '\u2018$1\u2019')
   );
 };
+
+/**
+ * Given an input path for an asset (like CSS or JS), returns the output file path (with hash in production).
+ * @param {string} inputPath A path relative to the root of this package, e.g. `src/assets/scripts/script.ts`.
+ * @returns {string} A path relative to the root of the dist folder, e.g. `/assets/scripts/script.js`.
+ */
+export function getAssetOutputPath(inputPath) {
+  if (inputPath.startsWith('http')) {
+    return inputPath;
+  }
+  let outputPath = this.context.environments.assetPaths[inputPath];
+  const assetsPathIndex = outputPath.indexOf('/assets/');
+  return assetsPathIndex !== -1 ? outputPath.slice(assetsPathIndex) : outputPath;
+}

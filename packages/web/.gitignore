@@ -1,3 +1,4 @@
 src/_drafts/
 dist/
 .cache/
+src/_data/assetPaths.json
