@@ -1,4 +1,4 @@
-import * as sass from 'sass';
+import { transform } from 'esbuild';
 import path from 'node:path';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
@@ -52,20 +52,21 @@ async function writeFileWithHash(outputPath, content, encoding) {
 }
 
 const assetHashes = {};
-const inputSassFiles = getFiles(
+const inputCssFiles = getFiles(
   CSS_SOURCE_DIRECTORY,
-  (file) => file.name.endsWith('.scss') && !file.name.startsWith('_')
+  (file) => file.name.endsWith('.css') && !file.name.startsWith('_')
 );
 
 await Promise.all(
-  inputSassFiles.map(async (inputFile) => {
-    const result = await sass.compileAsync(inputFile, { style: 'compressed' });
+  inputCssFiles.map(async (inputFile) => {
+    let css = await fs.promises.readFile(inputFile, 'utf-8');
+    css = (await transform(css, { loader: 'css', minify: true })).code;
 
-    // e.g., /home/repo/packages/web/src/assets/styles/main.scss => /assets/styles/main.css
-    const href = getAssetPath(inputFile).replace(/\.scss$/i, '.css');
+    // e.g., /home/repo/packages/web/src/assets/styles/main.css => /assets/styles/main.css
+    const href = getAssetPath(inputFile);
     const { hash, outputPath } = await writeFileWithHash(
       path.resolve(import.meta.dirname, path.join('dist', href)),
-      result.css,
+      css,
       'utf-8'
     );
     assetHashes[href] = hash;

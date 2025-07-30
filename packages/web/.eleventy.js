@@ -9,7 +9,6 @@ import {
   quoteShortcode,
   faviconShortcode,
   artworkShortcode,
-  hashArtShortcode,
   nanoIdShortcode,
   detailsShortcode,
   stylesheetShortcode,
@@ -52,6 +51,9 @@ export default function eleventy(eleventyConfig) {
 
   // Pass-through copy for static assets
   eleventyConfig.setServerPassthroughCopyBehavior('copy');
+  if (!isProductionBuild) {
+    eleventyConfig.addPassthroughCopy('src/assets/styles/*.css');
+  }
   eleventyConfig.addPassthroughCopy('src/assets/fonts');
   eleventyConfig.addPassthroughCopy('src/*.pdf');
   eleventyConfig.addPassthroughCopy('src/_posts/**/videos/*', {
@@ -67,7 +69,6 @@ export default function eleventy(eleventyConfig) {
   eleventyConfig.addPairedShortcode('details', detailsShortcode);
   eleventyConfig.addShortcode('favicon', faviconShortcode);
   eleventyConfig.addShortcode('icon', iconShortcode);
-  eleventyConfig.addShortcode('hashArt', hashArtShortcode);
   eleventyConfig.addShortcode('nanoid', nanoIdShortcode);
   eleventyConfig.addShortcode('fetchText', fetchTextShortcode);
   eleventyConfig.addShortcode('stylesheet', stylesheetShortcode);

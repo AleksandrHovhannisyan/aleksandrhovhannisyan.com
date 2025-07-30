@@ -56,19 +56,15 @@
   size-adjust: 85%;
 }
 @font-face {
-  font-family: 'Source Code Pro';
+  font-family: Source Code Pro;
   font-style: normal;
   font-display: swap;
   font-weight: 200 900;
-  src: local('SourceCodeVF'),
+  src:
+    local('SourceCodeVF'),
     url('/assets/fonts/sourcecode-latin-roman-variable.woff2') format('woff2 supports variations'),
     url('/assets/fonts/sourcecode-latin-roman-variable.woff2') format('woff2-variations');
   size-adjust: 79%;
   ascent-override: 94%;
   descent-override: 26%;
-}
-html {
-  --font-family-mono: Source Code Pro, mono-fallback-1, mono-fallback-2, mono-fallback-3, monospace;
-  --font-weight-mono-regular: 400;
-  --font-weight-mono-bold: 700;
 }

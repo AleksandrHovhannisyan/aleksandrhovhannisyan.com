@@ -11,16 +11,14 @@
     "debug": "DEBUG=Eleventy* ELEVENTY_ENV=development eleventy --serve --incremental --port=4001",
     "dev": "pnpm run clean && pnpm -F web --parallel --aggregate-output /^dev:/",
     "dev:html": "ELEVENTY_ENV=development eleventy --serve --incremental --port=4001",
-    "dev:css": "sass --watch src/assets/styles:dist/assets/styles --style=expanded",
     "build": "pnpm run test && pnpm run clean && pnpm run build:css && pnpm run build:html",
     "build:html": "ELEVENTY_ENV=production eleventy",
     "build:css": "node build-css.js",
     "test": "node --test",
     "test:watch": "pnpm run test --watch",
     "lint": "pnpm run /^lint:/",
-    "lint:css": "stylelint --fix \"src/**/*.scss\" && prettier \"src/**/*.scss\" --write",
-    "lint:js": "eslint --cache --fix",
-    "update-browserslist": "pnpm dlx browserslist@latest --update-db"
+    "lint:css": "prettier \"src/**/*.css\" --write",
+    "lint:js": "eslint --cache --fix"
   },
   "dependencies": {
     "@11ty/eleventy": "^3.0.1-alpha.1",
@@ -29,7 +27,6 @@
     "@iktakahiro/markdown-it-katex": "^4.0.1",
     "@toycode/markdown-it-class": "^1.2.4",
     "classnames": "^2.3.1",
-    "clean-css": "^5.3.1",
     "eleventy-plugin-code-demo": "^2.0.3",
     "eleventy-plugin-footnotes": "^0.11.0",
     "esbuild": "^0.14.37",
@@ -42,16 +39,13 @@
     "markdown-it-toc-done-right": "^4.2.0",
     "prismjs": "^1.29.0",
     "sanitize-html": "^2.6.1",
-    "sass": "^1.69.5",
     "slugify": "^1.5.3",
     "stringify-attributes": "^4.0.0",
-    "stylelint": "^16.14.1",
-    "stylelint-config-standard-scss": "^14.0.0",
     "valibot": "~1.0.0-rc.3"
   },
   "lint-staged": {
     "*.js": "pnpm run lint:js",
-    "*.scss": "pnpm run lint:css"
+    "*.css": "pnpm run lint:css"
   },
   "browserslist": [
     "last 2 chrome versions",

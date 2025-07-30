@@ -1,6 +1,0 @@
-@use '../functions';
-
-html {
-  // Only for Firefox
-  scrollbar-color: functions.token('color', 'border', '0') functions.token('color', 'surface', '2');
-}

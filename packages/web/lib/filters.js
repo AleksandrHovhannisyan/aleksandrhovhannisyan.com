@@ -1,4 +1,3 @@
-import CleanCSS from 'clean-css';
 import esbuild from 'esbuild';
 import path from 'node:path';
 import { markdown } from './plugins/markdown.js';
@@ -106,9 +105,9 @@ export const getLatestCollectionItemDate = (collection) => {
 };
 
 /** Minifies the given css string. */
-export const cleanCSS = memoize((input) => {
-  const { styles } = new CleanCSS({}).minify(input);
-  return styles;
+export const cleanCSS = memoize(async (input) => {
+  const { code } = await esbuild.transform(input, { loader: 'css', minify: true });
+  return code;
 });
 
 /** Minifies the given source JS (string). */

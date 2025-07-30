@@ -99,25 +99,22 @@
   size-adjust: 91.8322%;
 }
 @font-face {
-  font-family: 'Source Sans';
+  font-family: Source Sans;
   font-style: normal;
   font-weight: 200 900;
   font-display: swap;
-  src: local('SourceSansVF'),
+  src:
+    local('SourceSansVF'),
     url('/assets/fonts/sourcesans-variable-latin-roman.woff2') format('woff2 supports variations'),
     url('/assets/fonts/sourcesans-variable-latin-roman.woff2') format('woff2-variations');
 }
 @font-face {
-  font-family: 'Source Sans';
+  font-family: Source Sans;
   font-style: italic;
   font-weight: 200 900;
   font-display: swap;
-  src: local('SourceSansItalicVF'),
+  src:
+    local('SourceSansItalicVF'),
     url('/assets/fonts/sourcesans-variable-latin-italic.woff2') format('woff2 supports variations'),
     url('/assets/fonts/sourcesans-variable-latin-italic.woff2') format('woff2-variations');
-}
-html {
-  --font-family-body: Source Sans, body-fallback-1, body-fallback-2, body-fallback-3, body-fallback-4, system-ui;
-  --font-weight-body-regular: 400;
-  --font-weight-body-bold: 700;
 }

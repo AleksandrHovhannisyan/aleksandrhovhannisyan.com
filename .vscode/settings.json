@@ -10,13 +10,11 @@
     "source.fixAll.eslint": "explicit",
     "source.fixAll.stylelint": "explicit"
   },
-  "cSpell.words": [
-    "endcode",
-    "mouseleave"
-  ],
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "cSpell.words": ["endcode", "mouseleave"],
   "stylelint.enable": true,
   "stylelint.configFile": "packages/web/.stylelintrc.json",
-  "stylelint.validate": [
-    "scss",
-  ]
+  "stylelint.validate": ["scss"]
 }

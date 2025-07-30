@@ -5,10 +5,93 @@ keywords: [css aspect ratio, aspect ratio in css, aspect ratio, aspect-ratio, pe
 categories: [css, aspect-ratio, images, math]
 lastUpdated: 2021-06-12
 commentsId: 58
-stylesheets:
-  - /assets/styles/demos/aspect-ratio.css
 thumbnail: https://images.unsplash.com/photo-1550535424-fd4382da050c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
+
+<style>
+  .demo-tiles {
+    display: grid;
+    padding: 0;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--size-spacing-0);
+  }
+
+  .demo-tile {
+    position: relative;
+    background-color: var(--color-surface-2);
+    color: var(--color-text-emphasis);
+    border-radius: var(--size-spacing--3);
+    font-weight: var(--font-weight-body-bold);
+  }
+
+  .demo-tile::after {
+    content: attr(data-ratio);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .demo-square-grid {
+    --gap: var(--size-spacing-0);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gap) var(--gap);
+  }
+
+  .demo-square-grid > * {
+    aspect-ratio: 1;
+    background-color: var(--color-surface-2);
+    color: var(--color-text-emphasis);
+    position: relative;
+  }
+
+  .demo-square * {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .demo-square figure {
+    --offset: 0;
+  }
+
+  .demo-document {
+    writing-mode: vertical-rl;
+    width: 100%;
+    height: 200px;
+  }
+
+  .demo-parent {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: var(--color-surface-1);
+    color: var(--color-text-emphasis);
+    height: 100%;
+  }
+
+  .demo-child {
+    padding: 10%;
+    background-color: white;
+    color: black;
+  }
+
+  .demo-grid {
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    width: 100%;
+    column-gap: 1em;
+  }
+</style>
 
 If you're not sure how to define aspect ratios in CSS, or if you have no clue what an aspect ratio is to begin with, then you're in luck. This tutorial covers everything that you need to know about creating aspect ratio boxes in CSS, using both a modern approach and an old one with a percentage padding trick. Once you understand aspect ratios and how to define them, you'll be able to do all kinds of neat things—like creating `nxn` square grid layouts, responsively sizing embedded media, reserving space for images, and much more.
 
@@ -77,7 +160,7 @@ The only thing to keep in mind with this approach is that [browser support for t
 
 To create aspect ratio boxes in browsers that don't yet support `aspect-ratio`, we need to understand how percentage values for padding relate to the dimensions of an element's parent.
 
-Typically, we want to allow an element's width to change, but we also want to express the height in such a way that the element maintains a certain aspect ratio as it is resized. For this reason, it helps to invert the aspect ratio and express the element's *height* as a fraction of its *width*. For an aspect ratio of `16:9`, this means we're looking at the inverse ratio `9:16`, which says:
+Typically, we want to allow an element's width to change, but we also want to express the height in such a way that the element maintains a certain aspect ratio as it is resized. For this reason, it helps to invert the aspect ratio and express the element's _height_ as a fraction of its _width_. For an aspect ratio of `16:9`, this means we're looking at the inverse ratio `9:16`, which says:
 
 > There are 9 units of height for every 16 units of width.
 
@@ -104,7 +187,7 @@ With the boring stuff out of the way, we can look at some fun applications of as
 
 ### Example 1: Responsive YouTube Iframes
 
-Let's say you want to embed a YouTube video on your page, and you know that [YouTube videos have an aspect ratio of `16:9`](https://support.google.com/youtube/answer/6375112). You don't want to give the iframe a *fixed* width and height—rather, you want its width to fill its container and for its height to scale responsively. Like this:
+Let's say you want to embed a YouTube video on your page, and you know that [YouTube videos have an aspect ratio of `16:9`](https://support.google.com/youtube/answer/6375112). You don't want to give the iframe a _fixed_ width and height—rather, you want its width to fill its container and for its height to scale responsively. Like this:
 
 <div class="demo-tile aspect-ratio-16-9" data-ratio="Pretend this is a YouTube iframe" role="img" aria-label="A rectangular region of the page is shown in the shape roughly resembling a YouTube embed iframe. It always maintains a 16:9 aspect ratio."></div>
 
@@ -277,7 +360,7 @@ With the percentage padding trick, the CSS for the grid is the same. But we need
 
 ## Why It Works: Percentage Padding and CSS Aspect Ratios
 
-So far, we've looked at *how* padding can be used to create aspect ratios, but you may still be wondering *why* this works the way it does.
+So far, we've looked at _how_ padding can be used to create aspect ratios, but you may still be wondering _why_ this works the way it does.
 
 As I mentioned earlier, the reason we're able to create responsive aspect ratios with padding is because percentage values for `padding` (and `margin`) are defined relative to the width of an element's containing block. This is the case for block layouts, [flex layouts](https://www.w3.org/TR/css-flexbox-1/#item-margins), and [grid layouts](https://drafts.csswg.org/css-grid-1/#item-margins). Unfortunately, the W3 specification does not actually go into detail regarding why this decision was made, so [the best we can do is speculate](https://stackoverflow.com/questions/11003911/why-are-margin-padding-percentages-in-css-always-calculated-against-width/).
 
@@ -286,7 +369,7 @@ One possible reason for this is that using a single reference axis (the containi
 A more logical reason is the [causality dilemma](https://en.wikipedia.org/wiki/Chicken_or_the_egg) (aka the chicken or the egg). Let's pretend that percentage values for vertical padding actually referenced the containing block's height, rather than its width. If that were the case, we'd get an infinite loop:
 
 {% capture footnote1 %}
-  The same does not apply to the width of a containing block. By definition, a block-level element such as a `div` will fill up 100% of the available width in the [inline direction](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Block_and_Inline_Layout_in_Normal_Flow#Elements_participating_in_a_block_formatting_context). If children exceed this width, they will simply overflow—the parent will not stretch. Hence, the infinite calculation problem does not exist in the horizontal axis.
+The same does not apply to the width of a containing block. By definition, a block-level element such as a `div` will fill up 100% of the available width in the [inline direction](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Block_and_Inline_Layout_in_Normal_Flow#Elements_participating_in_a_block_formatting_context). If children exceed this width, they will simply overflow—the parent will not stretch. Hence, the infinite calculation problem does not exist in the horizontal axis.
 {% endcapture %}
 {% assign footnote1 = footnote1 | toHtml %}
 
@@ -305,20 +388,19 @@ We learned that percentage padding for an element is relative to the width of it
 The simple answer is no. And the key to understanding this is to learn about **block formatting contexts** (BFCs):
 
 {% quote "Introduction to formatting contexts, MDN", "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Intro_to_formatting_contexts" %}
-  Everything on a page is part of a formatting context, or an area which has been defined to lay out content in a particular way. A block formatting context (BFC) will lay child elements out according to block layout rules, a flex formatting context will lay its children out as flex items, etc. Each formatting context has specific rules about how layout behaves when in that context.
+Everything on a page is part of a formatting context, or an area which has been defined to lay out content in a particular way. A block formatting context (BFC) will lay child elements out according to block layout rules, a flex formatting context will lay its children out as flex items, etc. Each formatting context has specific rules about how layout behaves when in that context.
 {% endquote %}
-
 
 MDN notes that flex items and grid items create their own block formatting context, separate from the flex/grid container:
 
 {% quote "Identifying the containing block, MDN", "https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#identifying_the_containing_block" %}
-  If the position property is static, relative, or sticky, the containing block is formed by the edge of the content box of the nearest ancestor element that is either a block container (such as an inline-block, block, or list-item element) or establishes a formatting context (such as a table container, flex container, grid container, or the block container itself).
+If the position property is static, relative, or sticky, the containing block is formed by the edge of the content box of the nearest ancestor element that is either a block container (such as an inline-block, block, or list-item element) or establishes a formatting context (such as a table container, flex container, grid container, or the block container itself).
 {% endquote %}
 
 And the W3 specs back this up:
 
 {% quote "CSS Flexible Box Layout Module Level 1, W3" "https://www.w3.org/TR/css-flexbox-1/#flex-items" %}
-  A flex item establishes an independent formatting context for its contents. However, flex items themselves are flex-level boxes, not block-level boxes: they participate in their container’s flex formatting context, not in a block formatting context.
+A flex item establishes an independent formatting context for its contents. However, flex items themselves are flex-level boxes, not block-level boxes: they participate in their container’s flex formatting context, not in a block formatting context.
 {% endquote %}
 
 Thus, for flex and grid items, you can think of the containing block as an invisible content region that wraps the items. This formatting context is very easy to identify in your dev tools, appearing as a dotted outline around each flex or grid item:
@@ -383,10 +465,10 @@ With vertical layouts, paragraphs appear sideways—you'll have to tilt your hea
 <figcaption>Vertical writing mode.</figcaption>
 </figure>
 
-Here's the important point: if we switch over to a vertical writing mode, and we use percentage values for padding or margin, these percentages will actually be defined relative to the *containing block's height*, not its width! This comes straight from the CSS specs:
+Here's the important point: if we switch over to a vertical writing mode, and we use percentage values for padding or margin, these percentages will actually be defined relative to the _containing block's height_, not its width! This comes straight from the CSS specs:
 
 {% quote "Line-relative Directions, W3", "https://www.w3.org/TR/css-writing-modes-3/#dimension-mapping" %}
-  As a corollary, percentages on the margin and padding properties, which are always calculated with respect to the containing block width in CSS2.1, are calculated with respect to the inline size of the containing block in CSS3.
+As a corollary, percentages on the margin and padding properties, which are always calculated with respect to the containing block width in CSS2.1, are calculated with respect to the inline size of the containing block in CSS3.
 {% endquote %}
 
 Here, **inline size** is defined as follows:
@@ -397,9 +479,7 @@ To verify this, we can set up a mini sandbox document with a single parent and c
 
 ```html {data-file="test.html" data-copyable=true}
 <div class="parent">
-  <div class="child">
-    Child
-  </div>
+  <div class="child">Child</div>
 </div>
 ```
 
@@ -412,8 +492,8 @@ body {
 }
 
 .parent {
-   width: 100%;
-   height: 200px;
+  width: 100%;
+  height: 200px;
 }
 
 .child {
@@ -432,7 +512,7 @@ The result is shown below, with some additional CSS to make things prettier and 
   </div>
 </div>
 
-So percentage padding isn't always relative to the containing block's width! This is the case the majority of the time since most documents use the default writing mode, but if you've set yours to be vertical, then padding and margin percentages are going to be relative to the containing block's *height*. Thus, our understanding of percentage padding and margin should really be the following:
+So percentage padding isn't always relative to the containing block's width! This is the case the majority of the time since most documents use the default writing mode, but if you've set yours to be vertical, then padding and margin percentages are going to be relative to the containing block's _height_. Thus, our understanding of percentage padding and margin should really be the following:
 
 > Percentage values for padding and margin are relative to the containing block's dimensions in the **inline direction**. For horizontal layouts, this is the containing block's width. For vertical layouts, this is the containing block's height. (See the reference diagrams above.)
 

@@ -1,20 +1,18 @@
 @font-face {
-  font-family: 'Reenie Beanie';
+  font-family: Reenie Beanie;
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local('ReenieBeanie-Regular'), url('/assets/fonts/reeniebeanie-latin-400-roman.woff2') format('woff2');
+  src:
+    local('ReenieBeanie-Regular'),
+    url('/assets/fonts/reeniebeanie-latin-400-roman.woff2') format('woff2');
 }
 @font-face {
-  font-family: 'Rampart One';
+  font-family: Rampart One;
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local('RampartOne-Regular'), url('/assets/fonts/rampartone-latin-400-roman.woff2') format('woff2');
-}
-html {
-  --font-family-cursive: Reenie Beanie, cursive;
-  --font-weight-cursive-regular: 400;
-  --font-family-display: Rampart One, Sans-fallback;
-  --font-weight-display-regular: 400;
+  src:
+    local('RampartOne-Regular'),
+    url('/assets/fonts/rampartone-latin-400-roman.woff2') format('woff2');
 }

@@ -1,5 +1,5 @@
 ---
-title: "SVG Tutorial: How to Code SVG Icons by Hand"
+title: 'SVG Tutorial: How to Code SVG Icons by Hand'
 description: Follow along with the examples in this in-depth guide to learn how to draw SVG icons and simple shapes by hand.
 keywords: [svg tutorial, svg icons, how to code svg]
 categories: [svg, html, css]
@@ -8,9 +8,33 @@ commentsId: 68
 isFeatured: true
 thumbnail: ./images/thumbnail.png
 redirectFrom: /blog/svg-tutorial-how-to-code-svg-icons-by-hand/
-stylesheets:
-  - /assets/styles/demos/svg.css
 ---
+
+<style>
+  .svg-tutorial__icon-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--size-spacing-8);
+  }
+
+  .svg-tutorial__icon {
+    display: flex;
+  }
+
+  .svg-tutorial__icon svg {
+    stroke: currentcolor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+  }
+
+  svg.bordered {
+    border: solid 1px;
+  }
+</style>
 
 For as long as I can remember, I avoided touching SVGs when working with front-end code. I'd have no trouble with HTML, CSS, or JavaScript, but SVGs always intimidated me with their bizarre syntax and those weird, indecipherable strings of letters and numbers. You know the ones:
 
@@ -183,7 +207,7 @@ I hope you're excited to get started! Feel free to jump around if you want, but 
   </li>
 </ul>
 
-By analogy, this is the difference between drawing something on screen (raster images) and giving your browser *instructions* for how to draw something on screen, relative to a coordinate system (vector images). Vector images give your browser more flexibility since they can be rescaled to any size with a bit of simple math.
+By analogy, this is the difference between drawing something on screen (raster images) and giving your browser _instructions_ for how to draw something on screen, relative to a coordinate system (vector images). Vector images give your browser more flexibility since they can be rescaled to any size with a bit of simple math.
 
 As a bonus, you can even fluidly animate SVGs to create really fun and engaging user experiences. Here are a few noteworthy developer blogs that do this:
 
@@ -222,21 +246,17 @@ If you've ever inspected the contents of an `.svg` file, like one created by Ink
 <svg xmlns="http://www.w3.org/2000/svg"></svg>
 ```
 
-This is known as a [namespace declaration](https://developer.mozilla.org/en-US/docs/Web/SVG/Namespaces_Crash_Course#declaring_namespaces). In simple terms, a namespace declaration helps a user agent like your browser to understand and parse an element's syntax. Here, we've declared that our namespace is SVG. A namespace declaration is [not required if you're rendering inline SVG icons](https://stackoverflow.com/a/18468348/5323344), like in HTML. But if you're including SVG *files* (e.g., as an image), then the SVG does need to specify its namespace. I'll omit the namespace in this tutorial since we don't need one.
+This is known as a [namespace declaration](https://developer.mozilla.org/en-US/docs/Web/SVG/Namespaces_Crash_Course#declaring_namespaces). In simple terms, a namespace declaration helps a user agent like your browser to understand and parse an element's syntax. Here, we've declared that our namespace is SVG. A namespace declaration is [not required if you're rendering inline SVG icons](https://stackoverflow.com/a/18468348/5323344), like in HTML. But if you're including SVG _files_ (e.g., as an image), then the SVG does need to specify its namespace. I'll omit the namespace in this tutorial since we don't need one.
 
 ### SVG `viewBox` and Size
 
 You've probably also seen these three attributes: `width`, `height`, and `viewBox`:
 
 ```html
-<svg
-  viewBox="0 0 24 24"
-  width="24"
-  height="24"
-></svg>
+<svg viewBox="0 0 24 24" width="24" height="24"></svg>
 ```
 
-The `viewBox` attribute defines **the dimensions of the viewport ("canvas") for an SVG**. The first two numbers allow you to pan the SVG viewport horizontally or vertically, giving it an appearance of some sort of inner offset relative to the origin, `(0, 0)`. In the code sample above, we have an offset of `0 0`, meaning the top-left corner of the viewport *is* the origin.
+The `viewBox` attribute defines **the dimensions of the viewport ("canvas") for an SVG**. The first two numbers allow you to pan the SVG viewport horizontally or vertically, giving it an appearance of some sort of inner offset relative to the origin, `(0, 0)`. In the code sample above, we have an offset of `0 0`, meaning the top-left corner of the viewport _is_ the origin.
 
 Below are two SVG icons. The one on the left has a `viewBox` of `0 0 24 24`. The one on the right has a `viewBox` of `6 6 24 24`. As a result, the origin of the second viewport is offset by `6` units horizontally and vertically. So instead of being `(0, 0)`, the origin is now `(6, 6)`. This means that the image shifts to the left relative to the `viewBox`. It's as if we've panned our canvas towards the bottom-right corner.
 
@@ -327,7 +347,7 @@ SVGs allow us to specify the starting and ending points for lines using four att
 
 ```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
-  <line x1="0" y1="4.2" x2="24" y2="4.2"/>
+  <line x1="0" y1="4.2" x2="24" y2="4.2" />
 </svg>
 ```
 
@@ -379,22 +399,22 @@ And that's all we need to know to draw the three icons we saw earlier! We'll jus
 
 ```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
-  <line x1="2" y1="4.2" x2="22" y2="4.2"/>
-  <line x1="2" y1="9.4" x2="16" y2="9.4"/>
-  <line x1="2" y1="14.6" x2="22" y2="14.6"/>
-  <line x1="2" y1="19.8" x2="16" y2="19.8"/>
+  <line x1="2" y1="4.2" x2="22" y2="4.2" />
+  <line x1="2" y1="9.4" x2="16" y2="9.4" />
+  <line x1="2" y1="14.6" x2="22" y2="14.6" />
+  <line x1="2" y1="19.8" x2="16" y2="19.8" />
 </svg>
 <svg viewBox="0 0 24 24" width="64" height="64">
-  <line x1="2" y1="4.2" x2="22" y2="4.2"/>
-  <line x1="6" y1="9.4" x2="18" y2="9.4"/>
-  <line x1="2" y1="14.6" x2="22" y2="14.6"/>
-  <line x1="6" y1="19.8" x2="18" y2="19.8"/>
+  <line x1="2" y1="4.2" x2="22" y2="4.2" />
+  <line x1="6" y1="9.4" x2="18" y2="9.4" />
+  <line x1="2" y1="14.6" x2="22" y2="14.6" />
+  <line x1="6" y1="19.8" x2="18" y2="19.8" />
 </svg>
 <svg viewBox="0 0 24 24" width="64" height="64">
-  <line x1="2" y1="4.2" x2="22" y2="4.2"/>
-  <line x1="8" y1="9.4" x2="22" y2="9.4"/>
-  <line x1="2" y1="14.6" x2="22" y2="14.6"/>
-  <line x1="8" y1="19.8" x2="22" y2="19.8"/>
+  <line x1="2" y1="4.2" x2="22" y2="4.2" />
+  <line x1="8" y1="9.4" x2="22" y2="9.4" />
+  <line x1="2" y1="14.6" x2="22" y2="14.6" />
+  <line x1="8" y1="19.8" x2="22" y2="19.8" />
 </svg>
 ```
 
@@ -545,7 +565,7 @@ Hmm, that's not right! The left and top edges of the letter `T` were drawn corre
 
 This is because of an SVG property that I hid from you until now: `fill`. Just like `stroke` defines the color of the lines of an SVG shape, `fill` defines the background fill of the SVG. For most shapes, `fill` is set to `black` by default. But in this case, since we only want to draw lines and don't want any fill for this icon, we can set the fill to be `none`, either using the `fill` attribute on the SVG element or a CSS property of the same name.
 
-Note that certain icons may actually benefit from having a custom fill, so you wouldn't want to *always* disable this globally in your app. But for our purposes, it's going to get in the way of drawing shapes like polylines, polygons, etc. since we don't actually *need* a fill. So, for the rest of this tutorial, I'll use this additional CSS to clear the fill for all icons:
+Note that certain icons may actually benefit from having a custom fill, so you wouldn't want to _always_ disable this globally in your app. But for our purposes, it's going to get in the way of drawing shapes like polylines, polygons, etc. since we don't actually _need_ a fill. So, for the rest of this tutorial, I'll use this additional CSS to clear the fill for all icons:
 
 ```css {data-copyable=true}
 svg {
@@ -844,7 +864,7 @@ The line is the shaft of the arrow; the polyline creates the arrowhead. It's tha
 
 ### 4. Polygons
 
-Remember how I mentioned that `<polyline>`s are not self-closing? Well, the natural progression from that is a shape that *is* self-closing, and that's the `<polygon>`! It works just like `<polyline>`, except it automatically creates a path between the last node and the first node, cycling back to where we started. While we could technically do this with `<polyline>`, `<polygon>` saves us an extra step, allowing us to easily create shapes like rectangles, octagons, triangles, and more!
+Remember how I mentioned that `<polyline>`s are not self-closing? Well, the natural progression from that is a shape that _is_ self-closing, and that's the `<polygon>`! It works just like `<polyline>`, except it automatically creates a path between the last node and the first node, cycling back to where we started. While we could technically do this with `<polyline>`, `<polygon>` saves us an extra step, allowing us to easily create shapes like rectangles, octagons, triangles, and more!
 
 For example, `<polygon>` allows us to draw a triangle using just three points:
 
@@ -878,7 +898,7 @@ Cool! Building on this, we can now create the warning indicator icon that I show
   </svg>
 </div>
 
-By the way, I mentioned above that we can use `<polygon>` to create all kinds of shapes, but some come as pre-built shapes. For example, rectangles *can* be created with `<polygon>`:
+By the way, I mentioned above that we can use `<polygon>` to create all kinds of shapes, but some come as pre-built shapes. For example, rectangles _can_ be created with `<polygon>`:
 
 ```html {data-copyable=true}
 <svg viewBox="0 0 24 24" width="64" height="64">
@@ -962,7 +982,7 @@ A tutorial on `<path>` alone would take quite some time, as there's a lot to cov
 
 #### How to Create Paths with SVG
 
-To create a `<path>`, we need to learn a new syntax. The `<path>` element accepts a `d` attribute (which stands for *definition*). This attribute contains a set of **low-level instructions** that tell your browser what to draw. You can really think of it as an instruction manual, specifying every step in detail and sequentially: "Go here, do this, then go here and do that, and so on and so forth."
+To create a `<path>`, we need to learn a new syntax. The `<path>` element accepts a `d` attribute (which stands for _definition_). This attribute contains a set of **low-level instructions** that tell your browser what to draw. You can really think of it as an instruction manual, specifying every step in detail and sequentially: "Go here, do this, then go here and do that, and so on and so forth."
 
 Here's what a `<path>` might look like:
 
@@ -1006,7 +1026,7 @@ These commands are easier to remember than it seems:
 - `V/v` for drawing **v**ertical lines,
 - `A/a` for drawing **a**rcs,
 - `L/l` for drawing **l**ines in any direction, and
-- `Z/z` for closing shapes (where `z` is the hard-S sound in *close*).
+- `Z/z` for closing shapes (where `z` is the hard-S sound in _close_).
 
 ##### Absolute vs. Relative SVG Commands
 
@@ -1117,7 +1137,7 @@ And that gives us the same exact shape, but requires that we specify absolute co
 
 Relative commands are usually easier to work with, but it really depends on what you're drawing.
 
-Finally, note that `L/l` is the more generic version of `H/h` and `V/v`. Whereas the latter two are used to draw lines in a single direction (horizontally or vertically), `L/l` can be used to draw lines in *any direction*. Thus, it always takes two numbers.
+Finally, note that `L/l` is the more generic version of `H/h` and `V/v`. Whereas the latter two are used to draw lines in a single direction (horizontally or vertically), `L/l` can be used to draw lines in _any direction_. Thus, it always takes two numbers.
 
 Here's an example of drawing a diagonal line with a relative `LineTo` command:
 
@@ -1143,7 +1163,7 @@ Here's an example of drawing a diagonal line with a relative `LineTo` command:
 
 This says: "Move to `(2, 2)` and draw a line `20` units over to the right and `20` units down."
 
-Note that we *could* always use the `L/l` command to draw all lines, but the shortcut variants save us some typing. For example, to draw horizontal lines with `l`, we have to explicitly zero-out the `y`-value, but we don't need to do that with `h`.
+Note that we _could_ always use the `L/l` command to draw all lines, but the shortcut variants save us some typing. For example, to draw horizontal lines with `l`, we have to explicitly zero-out the `y`-value, but we don't need to do that with `h`.
 
 #### SVG Path Commands: `ClosePath`
 
@@ -1177,7 +1197,7 @@ For example, to draw a self-closing square with `<path>`, we only need to draw t
   </svg>
 </div>
 
-Once you get the hang of these basic movement commands, it's actually really easy to use `<path>`—sometimes, it's even *easier* than using separate shapes because you can create anything with a `<path>`, all in one place.
+Once you get the hang of these basic movement commands, it's actually really easy to use `<path>`—sometimes, it's even _easier_ than using separate shapes because you can create anything with a `<path>`, all in one place.
 
 #### SVG Path Commands: `Elliptical Arc Curve`
 
@@ -1259,7 +1279,7 @@ The parameters for SVG arcs are covered in the table below:
 One thing you'll notice is that the absolute and relative versions of the arc command (`A`/`a`) are almost identical except for their last two parameters. Whereas an uppercase `A` arc has an absolute `x` and a `y` that tell you where the arc ends, the lowercase relative arc specifies a delta-x (`dx`) and a delta-y (`dy`) displacement relative to the starting position of the arc.
 
 {% aside %}
-  **Note**: "Delta" is how we denote a change in a value in formal mathematical notation (typically using the Greek letter, &Delta;). So "delta-x" (&Delta;x) means "a change in x."
+**Note**: "Delta" is how we denote a change in a value in formal mathematical notation (typically using the Greek letter, &Delta;). So "delta-x" (&Delta;x) means "a change in x."
 {% endaside %}
 
 The first two parameters, `rx` and `ry`, should be familiar if you've worked with border radii in CSS. Since we're drawing an ellipse and not necessarily always a circle, we need to specify two radii. If our arc is circular, then `rx = ry`.
@@ -1274,7 +1294,7 @@ As before, it helps to look at a concrete example. Here's a very simple arc in Q
     d="
       M 22 12
       a 10 10 0 0 0 -10 -10"
-    />
+  />
 </svg>
 ```
 
@@ -1301,7 +1321,7 @@ And, as you may have guessed, we can chain four arcs to create a circle:
       a 10 10 0 0 0 -10 10
       a 10 10 0 0 0 10 10
       a 10 10 0 0 0 10 -10"
-    />
+  />
 </svg>
 ```
 
@@ -1334,7 +1354,7 @@ First, we'll draw the top portion of the calendar (you could start elsewhere, th
     d="
       M 4 4
       h 16"
-    />
+  />
 </svg>
 ```
 
@@ -1357,7 +1377,7 @@ Then, we draw a `2x2` clockwise arc, moving `2px` to the right and `2px` down:
       M 4 4
       h 16
       a 2 2 0 0 1 2 2"
-    />
+  />
 </svg>
 ```
 
@@ -1382,7 +1402,7 @@ From there, we go down `14px`:
       h 16
       a 2 2 0 0 1 2 2
       v 14"
-    />
+  />
 </svg>
 ```
 
@@ -1409,7 +1429,7 @@ Draw the bottom-right corner's arc:
       a 2 2 0 0 1 2 2
       v 14
       a 2 2 0 0 1 -2 2"
-    />
+  />
 </svg>
 ```
 
@@ -1438,7 +1458,7 @@ Move left by `16px`:
       v 14
       a 2 2 0 0 1 -2 2
       h -16"
-    />
+  />
 </svg>
 ```
 
@@ -1469,7 +1489,7 @@ Draw the arc for the bottom-left corner:
       a 2 2 0 0 1 -2 2
       h -16
       a 2 2 0 0 1 -2 -2"
-    />
+  />
 </svg>
 ```
 
@@ -1502,7 +1522,7 @@ Move up `14px`:
       h -16
       a 2 2 0 0 1 -2 -2
       v -14"
-    />
+  />
 </svg>
 ```
 
@@ -1537,7 +1557,7 @@ And finally, close off the shape with an explicit arc rather than `z` (which wil
       a 2 2 0 0 1 -2 -2
       v -14
       a 2 2 0 0 1 2 -2"
-    />
+  />
 </svg>
 ```
 
@@ -1573,7 +1593,7 @@ And that's all there is to the rounded rectangle bit! Now, we just throw on a fe
       a 2 2 0 0 1 -2 -2
       v -14
       a 2 2 0 0 1 2 -2"
-    />
+  />
   <line x1="2" y1="10" x2="22" y2="10" />
   <line x1="7" y1="2" x2="7" y2="6" />
   <line x1="17" y1="2" x2="17" y2="6" />
@@ -1619,7 +1639,7 @@ Hopefully, you're now comfortable enough with SVG paths to interpret the code he
       V 10
       a 2 2 0 0 1 2 -2
       H 12"
-    />
+  />
   <line x1="12" y1="14" x2="20" y2="6" />
   <polyline points="16 5.5, 20 5.5, 20 9.5" />
 </svg>

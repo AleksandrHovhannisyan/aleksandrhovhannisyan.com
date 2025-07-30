@@ -1,6 +1,5 @@
 export { default as asideShortcode } from './aside.js';
 export { default as definitionShortcode } from './definition.js';
-export { default as hashArtShortcode } from './hashArt.js';
 export { default as quoteShortcode } from './quote.js';
 export { default as iconShortcode } from './icon.js';
 export { default as faviconShortcode } from './favicon.js';
