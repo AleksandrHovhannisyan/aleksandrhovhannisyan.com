@@ -1,4 +1,7 @@
+import fs from 'node:fs/promises';
 import esbuild from 'esbuild';
+import postcss from 'postcss';
+import postcssPresetEnv from 'postcss-preset-env';
 
 const isProductionBuild = process.env.ELEVENTY_ENV === 'production';
 
@@ -8,7 +11,8 @@ const isProductionBuild = process.env.ELEVENTY_ENV === 'production';
 async function build(options) {
   const result = await esbuild.build({
     ...options,
-    entryNames: isProductionBuild ? '[dir]/[name]-[hash]' : '[dir]/[name]', // Only add hashes to assets in production builds
+    // Only add hashes to assets in production builds to avoid polluting dev server with files
+    entryNames: isProductionBuild ? '[dir]/[name]-[hash]' : '[dir]/[name]',
     sourcemap: !isProductionBuild,
     minify: isProductionBuild,
     metafile: true,
@@ -17,10 +21,23 @@ async function build(options) {
 }
 
 async function buildStyles() {
+  const postcssProcessor = postcss([postcssPresetEnv()]);
   return await build({
     entryPoints: ['src/assets/styles/main.css', 'src/assets/styles/art.css'],
     outdir: 'dist/assets/styles',
     loader: { '.css': 'css' },
+    plugins: [
+      {
+        name: 'postcss',
+        setup(build) {
+          build.onLoad({ filter: /\.css$/ }, async (args) => {
+            const source = await fs.readFile(args.path, 'utf8');
+            const result = await postcssProcessor.process(source, { from: args.path });
+            return { contents: result.css, loader: 'css' };
+          });
+        },
+      },
+    ],
   });
 }
 
@@ -42,6 +59,7 @@ async function buildScripts() {
 }
 
 /**
+ * Builds all assets for the site and returns a mapping from `src/` path to `dist/` path for each asset.
  * @returns {Promise<Record<string, string>>}
  */
 export async function buildAssets() {

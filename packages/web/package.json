@@ -35,6 +35,8 @@
     "markdown-it-code-tabindex": "^1.0.0",
     "markdown-it-link-attributes": "^3.0.0",
     "markdown-it-toc-done-right": "^4.2.0",
+    "postcss": "^8.5.6",
+    "postcss-preset-env": "^10.2.4",
     "prismjs": "^1.29.0",
     "sanitize-html": "^2.6.1",
     "slugify": "^1.5.3",
@@ -46,9 +48,13 @@
     "*.css": "pnpm run lint:css"
   },
   "browserslist": [
-    "last 2 chrome versions",
-    "last 3 safari versions",
-    "last 2 firefox versions",
-    "last 2 edge versions"
+    ">0.3%",
+    "last 3 Chrome versions",
+    "last 3 Firefox versions",
+    "last 3 Safari versions",
+    "last 3 Edge versions",
+    "not dead",
+    "not op_mini all",
+    "not IE > 0"
   ]
 }
