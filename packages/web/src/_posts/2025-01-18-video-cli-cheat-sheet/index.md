@@ -3,7 +3,7 @@ title: CLI Cheat Sheet for Videos
 description: A reference for downloading, splitting, and optimizing videos with CLI tools.
 keywords: [yt-dlp, ffmpeg]
 categories: [note, ffmpeg]
-lastUpdated: 2025-01-30
+lastUpdated: 2025-07-30
 ---
 
 This is a compilation of my most frequently used command-line tools and commands when working with video files. I'm collecting them here both for my own convenience and in case the original sources ever get taken down. Note that this is not meant to be an exhaustive reference.
@@ -20,7 +20,7 @@ Disclaimer: I'm not saying you can or should do this; you're responsible for res
 
 ### Download a Full Video
 
-``` {data-copyable="true"}
+```{data-copyable="true"}
 yt-dlp <url> -o output-file.mp4
 ```
 
@@ -32,7 +32,7 @@ yt-dlp <url> -o output-file.mp4
 
 Sometimes, it's faster to download specific timestamp ranges of a video rather than downloading the whole file and then manually splicing it with [ffmpeg](#ffmpeg). The following example downloads only the portion of the given video between 01:00 and 05:00:
 
-``` {data-copyable="true"}
+```{data-copyable="true"}
 yt-dlp <url> --download-sections "*00:01:00-00:05:00"
 ```
 
@@ -48,7 +48,7 @@ Anyone who's ever edited videos before knows that there are really only three ki
 
 ### Split by Timestamp
 
-``` {data-copyable="true"}
+```{data-copyable="true"}
 ffmpeg -ss 00:01:00 -to 00:02:00 -i input.mp4 -c copy output.mp4
 ```
 
@@ -56,23 +56,21 @@ Credit: [Online User on StackOverflow, CC BY-SA 4.0](https://stackoverflow.com/a
 
 ### Compress File Size
 
-Use the `-vcodec` option to compress the input file using one of ffmpeg's supported codecs. This example uses H.265, but you can also use the older `libx264` (H.264 codec). 
+Use the `-vcodec` option to compress the input file using one of ffmpeg's supported codecs. This example uses H.265, but you can also use the older `libx264` (H.264 codec).
 
-``` {data-copyable="true"}
+```{data-copyable="true"}
 ffmpeg -i input.mp4 -vcodec libx265 -crf 28 output.mp4
 ```
 
 Credit: [Vicky Chijwani on the Unix & Linux StackExchange, CC BY-SA 4.0](https://unix.stackexchange.com/a/38380/311005).
 
-### Extract Frame as Thumbnail
+### Extract Frame as Image
 
 The following command saves the first frame of the input video as an image:
 
 ```js {data-copyable="true"}
 ffmpeg -i input.mp4 -vf "select=eq(n\,0)" -q:v <quality> frame.jpg
 ```
-
-Among other things, this can be used to set a [custom poster image](https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/poster) for the HTML `<video>` tag as part of the `preload="none"` optimization strategy.
 
 Notes:
 
