@@ -18,7 +18,7 @@ scripts:
 
 - **Front end**
   - **Static site generator**: [{{ eleventy.generator }}](11ty.dev)
-  - **Styling**: [Sass](https://sass-lang.com/) (it's not just for nesting!)
+  - **Styling**: Vanilla CSS (processed with [esbuild](https://esbuild.github.io/) and [PostCSS](https://postcss.org/))
   - **Content**: HTML, Markdown ([markdown-it](https://github.com/markdown-it/markdown-it)), and [Liquid](https://shopify.github.io/liquid/) templating
   - **Interactivity**: TypeScript (minified and bundled with [esbuild](https://esbuild.github.io/))
 - **Back end**
