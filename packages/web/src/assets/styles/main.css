@@ -3,14 +3,14 @@
 /* Design tokens have the lowest specificity as they do not affect any styling. These are just variable declarations. */
 @layer TOKENS {
   :root {
-    /* Breakpoints */
-    /* --size-breakpoint-mobile-min: 375px; */ /* 23.4em */
-    /* --size-breakpoint-mobile: 400px; */ /* 25em */
-    /* --size-breakpoint-mobile-lg: 560px; */ /* 35em */
-    /* --size-breakpoint-tablet-sm: 768px; */ /* 48em */
-    /* --size-breakpoint-tablet: 896px; */ /* 56em */
-    /* --size-breakpoint-desktop: 960px; */ /* 60em */
-    /* --size-breakpoint-desktop-lg: 1200px; */ /* 75em */
+    /* Breakpoints, https://www.w3.org/TR/mediaqueries-5/#at-ruledef-custom-media */
+    @custom-media --size-breakpoint-mobile-min (min-width: 23.4em); /* 375px */
+    @custom-media --size-breakpoint-mobile (min-width: 25em); /* 400px */
+    @custom-media --size-breakpoint-mobile-lg (min-width: 35em); /* 560px */
+    @custom-media --size-breakpoint-tablet-sm (min-width: 48em); /* 768px */
+    @custom-media --size-breakpoint-tablet (min-width: 56em); /* 896px */
+    @custom-media --size-breakpoint-desktop (min-width: 60em); /* 960px */
+    @custom-media --size-breakpoint-desktop-lg (min-width: 75em); /* 1200px */
 
     /* Typography */
     --font-family-body: Source Sans, body-fallback-1, body-fallback-2, body-fallback-3, body-fallback-4, system-ui;
@@ -115,7 +115,7 @@
       --size-font-3xl: 2.375rem; /* 38 */
       --size-font-4xl: 2.75rem; /* 44 */
     }
-    @media screen and (min-width: 60em) {
+    @media (--size-breakpoint-desktop) {
       :root {
         --size-font-xs: 1rem; /* 16 */
         --size-font-sm: 1.125rem; /* 18 */
@@ -902,13 +902,13 @@
     border-radius: var(--size-spacing--3);
   }
 
-  @media screen and (min-width: 48em) {
+  @media (--size-breakpoint-tablet-sm) {
     .post-preview-title {
       line-height: var(--size-leading-2xs);
     }
   }
 
-  @media screen and (min-width: 60em) {
+  @media (--size-breakpoint-desktop) {
     .post-preview-tags {
       display: flex;
       flex-wrap: wrap;
@@ -1211,7 +1211,7 @@
     }
   }
 
-  @media screen and (min-width: 56em) {
+  @media (--size-breakpoint-tablet) {
     .code-block .copy-code-button {
       display: unset;
     }
@@ -1450,7 +1450,7 @@
       line-height: var(--size-leading-sm);
     }
   }
-  @media screen and (min-width: 48em) {
+  @media (--size-breakpoint-tablet-sm) {
     .note .title {
       font-size: var(--size-font-md);
       line-height: var(--size-leading-xs);
@@ -1664,7 +1664,7 @@
     display: none;
   }
 
-  @media screen and (min-width: 48em) {
+  @media (--size-breakpoint-tablet-sm) {
     #main-content {
       padding-block: 0;
     }
@@ -1740,13 +1740,13 @@
     }
   }
 
-  @media screen and (min-width: 35em) {
+  @media (--size-breakpoint-mobile-lg) {
     .page-footer {
       padding-block: var(--size-spacing-5);
     }
   }
 
-  @media screen and (min-width: 48em) {
+  @media (--size-breakpoint-tablet-sm) {
     .page-footer {
       text-align: start;
 
@@ -1783,7 +1783,7 @@
     max-width: calc(128rem / 16);
   }
 
-  @media screen and (min-width: 35em) {
+  @media (--size-breakpoint-mobile-lg) {
     .page-about .profile-photo {
       max-width: calc(160rem / 16);
     }

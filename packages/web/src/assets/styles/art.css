@@ -2,6 +2,16 @@
 
 @layer TOKENS {
   :root {
+    /* Breakpoints, https://www.w3.org/TR/mediaqueries-5/#at-ruledef-custom-media */
+    @custom-media --size-breakpoint-mobile-min (min-width: 23.4em); /* 375px */
+    @custom-media --size-breakpoint-mobile (min-width: 25em); /* 400px */
+    @custom-media --size-breakpoint-mobile-lg (min-width: 35em); /* 560px */
+    @custom-media --size-breakpoint-tablet-sm (min-width: 48em); /* 768px */
+    @custom-media --size-breakpoint-tablet (min-width: 56em); /* 896px */
+    @custom-media --size-breakpoint-desktop (min-width: 60em); /* 960px */
+    @custom-media --size-breakpoint-desktop-lg (min-width: 75em); /* 1200px */
+
+    /* Typography */
     --font-family-body: Reenie Beanie, cursive;
     --font-family-display: Rampart One, sans-fallback;
     --font-weight-display-regular: 400;
@@ -219,7 +229,7 @@
     transition-property: opacity, transform;
   }
 
-  @media screen and (min-width: 48em) {
+  @media (--size-breakpoint-tablet-sm) {
     .artwork-page {
       &::before,
       &::after {
@@ -250,7 +260,7 @@
     }
   }
 
-  @media screen and (min-width: 75em) {
+  @media (--size-breakpoint-desktop-lg) {
     .artwork-page-header .title {
       --font-size-multiplier: 2.5;
     }

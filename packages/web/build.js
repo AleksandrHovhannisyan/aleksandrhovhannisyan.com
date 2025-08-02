@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import esbuild from 'esbuild';
 import postcss from 'postcss';
 import postcssPresetEnv from 'postcss-preset-env';
+import postcssCustomMedia from 'postcss-custom-media';
 
 const isProductionBuild = process.env.ELEVENTY_ENV === 'production';
 
@@ -21,7 +22,7 @@ async function build(options) {
 }
 
 async function buildStyles() {
-  const postcssProcessor = postcss([postcssPresetEnv()]);
+  const postcssProcessor = postcss([postcssPresetEnv(), postcssCustomMedia()]);
   return await build({
     entryPoints: ['src/assets/styles/main.css', 'src/assets/styles/art.css'],
     outdir: 'dist/assets/styles',
