@@ -40,7 +40,11 @@ export const sanitizeHtml = (html) => {
 /**
  * @param {string} pathString
  */
-export const withoutBaseDirectory = (pathString) => pathString.substring(pathString.indexOf(path.sep));
+export const withoutBaseDirectory = (pathString) => {
+  // e.g., /a/b/c => ['a', 'b', 'c']
+  const parts = pathString.replace(/^\//, '').split(path.sep);
+  return path.sep + parts.slice(1).join(path.sep);
+};
 
 /**
  * Memoizes the given function, caching its result.

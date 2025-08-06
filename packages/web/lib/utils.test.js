@@ -1,5 +1,5 @@
 import { it, describe } from 'node:test';
-import { escape, getRelativeTimeString } from './utils.js';
+import { escape, getRelativeTimeString, withoutBaseDirectory } from './utils.js';
 import assert from 'node:assert';
 
 describe('escape', () => {
@@ -7,6 +7,13 @@ describe('escape', () => {
     assert.deepStrictEqual(escape(''), '');
     assert.deepStrictEqual(escape('a & b'), 'a &amp; b');
     assert.deepStrictEqual(escape('<a href="#">&</a>'), '&lt;a href=&quot;#&quot;&gt;&amp;&lt;/a&gt;');
+  });
+});
+
+describe('withoutBaseDirectory', () => {
+  it('removes root directory from a path', () => {
+    assert.deepStrictEqual(withoutBaseDirectory('a/b/c'), '/b/c');
+    assert.deepStrictEqual(withoutBaseDirectory('/a/b/c'), '/b/c');
   });
 });
 

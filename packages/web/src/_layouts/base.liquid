@@ -25,12 +25,12 @@
   {%- endif -%}
   {%- comment -%}Critical CSS goes in head{%- endcomment -%}
   {%- if criticalCSS -%}
-      {%- capture critical -%}
+      {%- capture criticalStyles -%}
         {%- for partial in criticalCSS -%}
           {%- include partial -%}
         {%- endfor -%}
       {%- endcapture -%}
-      <style>{{ critical | cleanCSS }}</style>
+      <style>{{ criticalStyles | minifyCSS }}</style>
   {%- endif -%}
   {%- comment -%}Global and page/layout-specific CSS{%- endcomment -%}
   {%- for href in stylesheets %}

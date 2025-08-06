@@ -1,5 +1,3 @@
-import path from 'node:path';
-import fs from 'node:fs';
 import PluginFootnotes from 'eleventy-plugin-footnotes';
 import { EleventyPluginCodeDemo } from 'eleventy-plugin-code-demo';
 import { eleventyImageTransformPlugin } from '@11ty/eleventy-img';
@@ -23,7 +21,7 @@ import {
   formatDate,
   toAbsoluteUrl,
   getLatestCollectionItemDate,
-  cleanCSS,
+  minifyCSS,
   minifyJS,
   toAbsoluteImageUrl,
   pathParse,
@@ -40,12 +38,11 @@ import { buildAssets } from './build.js';
 const TEMPLATE_ENGINE = 'liquid';
 
 export default function eleventy(eleventyConfig) {
-  // Pre-processing
-  eleventyConfig.on('eleventy.before', async () => {
-    const assetPaths = await buildAssets();
-    const assetPathsOutputFile = path.resolve(import.meta.dirname, 'src/_data/assetPaths.json');
-    fs.writeFileSync(assetPathsOutputFile, JSON.stringify(assetPaths));
-    console.log(`[build:assets]: wrote asset paths to ${assetPathsOutputFile}`, assetPaths);
+  // Global data
+  eleventyConfig.addGlobalData('sourceMap', async () => {
+    const assetSourceMap = await buildAssets();
+    console.log(`[build:assets]: added asset sourcemap to global data`, assetSourceMap);
+    return assetSourceMap;
   });
 
   eleventyConfig.setLiquidOptions({
@@ -93,7 +90,7 @@ export default function eleventy(eleventyConfig) {
   eleventyConfig.addFilter('jsonStringify', JSON.stringify);
   eleventyConfig.addFilter('jsonParse', JSON.parse);
   eleventyConfig.addFilter('getLatestCollectionItemDate', getLatestCollectionItemDate);
-  eleventyConfig.addFilter('cleanCSS', cleanCSS);
+  eleventyConfig.addFilter('minifyCSS', minifyCSS);
   eleventyConfig.addFilter('minifyJS', minifyJS);
   eleventyConfig.addFilter('keys', Object.keys);
   eleventyConfig.addFilter('values', Object.values);

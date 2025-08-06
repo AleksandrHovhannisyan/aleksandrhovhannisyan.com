@@ -105,7 +105,7 @@ export const getLatestCollectionItemDate = (collection) => {
 };
 
 /** Minifies the given css string. */
-export const cleanCSS = memoize(async (input) => {
+export const minifyCSS = memoize(async (input) => {
   const { code } = await esbuild.transform(input, { loader: 'css', minify: true });
   return code;
 });
@@ -152,7 +152,5 @@ export function getAssetOutputPath(inputPath) {
   if (inputPath.startsWith('http')) {
     return inputPath;
   }
-  let outputPath = this.context.environments.assetPaths[inputPath];
-  const assetsPathIndex = outputPath.indexOf('/assets/');
-  return assetsPathIndex !== -1 ? outputPath.slice(assetsPathIndex) : outputPath;
+  return withoutBaseDirectory(this.context.environments.sourceMap[inputPath]);
 }
