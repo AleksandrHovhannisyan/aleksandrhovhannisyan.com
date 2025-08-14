@@ -34,6 +34,7 @@ You might be tempted to use `setTimeout` or `setInterval`:
 ```js
 const MAX_FPS = 60;
 const FRAME_INTERVAL_MS = 1000 / MAX_FPS;
+
 function update() {
   setTimeout(() => {
     updatePhysics();
@@ -88,6 +89,7 @@ To fix this, we can enforce a maximum allowed FPS for physics. The callback func
 
 ```js
 let previousTimeMs = 0;
+
 requestAnimationFrame((currentTimeMs) => {
   const deltaTimeMs = currentTimeMs - previousTimeMs;
   previousTimeMs = currentTimeMs;
@@ -134,21 +136,23 @@ The demo below uses this code to count the number of `requestAnimationFrame` cal
 let isRunning = false;
 const MAX_ALLOWED_TIME_MS = 5000;
 const startDemoButton = document.querySelector('#demo button');
+
 startDemoButton.addEventListener('click', () => {
-  if (isRunning) {
-    return;
-  }
+  if (isRunning) return;
+
   isRunning = true;
   startDemoButton.setAttribute('aria-disabled', 'true');
   let demoStartTimeMs = 0;
   let demoEndTimeMs;
   let previousTimeMs = 0;
   let numFrames = 0;
+
   function update() {
     requestAnimationFrame((currentTimeMs) => {
       numFrames++;
       if (!demoStartTimeMs) {
         demoStartTimeMs = currentTimeMs;
+        previousTimeMs = currentTimeMs;
       }
       const deltaTimeMs = currentTimeMs - previousTimeMs;
       previousTimeMs = currentTimeMs;
@@ -159,8 +163,8 @@ startDemoButton.addEventListener('click', () => {
       if (currentTimeMs - demoStartTimeMs >= MAX_ALLOWED_TIME_MS) {
         demoEndTimeMs = currentTimeMs;
         const demoTimeElapsedMs = demoEndTimeMs - demoStartTimeMs;
-        const averageFPS = (numFrames / MAX_ALLOWED_TIME_MS) * 1000;
-        console.log(`End of demo. Average recorded FPS: ${averageFPS.toFixed(2)}.`);
+        const averageFPS = ((numFrames - 1) / MAX_ALLOWED_TIME_MS) * 1000;
+        console.log(`End of demo. Average recorded FPS: ${Math.floor(averageFPS)}`);
         startDemoButton.setAttribute('aria-disabled', 'false');
         isRunning = false;
       } else {
@@ -179,15 +183,17 @@ Let's take this a step further. By keeping track of when the previous frame was 
 ```js {data-copyable="true"}
 const MAX_FPS = 60;
 const FRAME_INTERVAL_MS = 1000 / MAX_FPS;
-
 let previousTimeMs = 0;
+
 function update() {
   requestAnimationFrame((currentTimeMs) => {
     const deltaTimeMs = currentTimeMs - previousTimeMs;
+
     if (deltaTimeMs >= FRAME_INTERVAL_MS) {
       updatePhysics();
       previousTimeMs = currentTimeMs;
     }
+
     draw();
     update();
   });
@@ -202,11 +208,9 @@ We can't just check for strict equality, as a frame may exceed its budget in pra
 
 Meanwhile, you'll notice that we're still drawing/painting the game scene at the native refresh rate by calling our `draw` function outside the time check. It's okay—and often desirable—to _repaint_ your game at the native refresh rate to create smoother animations.
 
-Despite these improvements, there's still another problem with our code.
-
 ### Frame Synchronization
 
-I'll explain the problem with an analogy.
+Despite these improvements, there's still another problem with our code. I'll explain the problem with an analogy.
 
 Imagine you're operating a train station where trains are expected to arrive and depart every 30 minutes, and only one train may be present at the station at any given time. The last time a train arrived at the station was at 12:00 pm, so the next train is expected to arrive at 12:30 pm per your schedule. However, due to some technical difficulties, the train arrives late by 15 minutes, at 12:45 pm. When should the next train arrive?
 
@@ -217,40 +221,41 @@ Now, consider what would happen if we were to use our code as-is to model this t
 ```js
 const MAX_TRAIN_ARRIVALS_PER_HOUR = 2;
 const TRANSIT_INTERVAL_MINUTES = 60 / MAX_TRAIN_ARRIVALS_PER_HOUR;
-
 let previousTimeMinutes = 0;
 
 function runTrainStation() {
   requestTrain((currentTimeMinutes) => {
     const deltaTimeMinutes = currentTimeMinutes - previousTimeMinutes;
+
     if (deltaTimeMinutes >= TRANSIT_INTERVAL_MINUTES) {
       receiveTrain();
       previousTimeMinutes = currentTimeMinutes;
     }
+
     runTrainStation();
   });
 }
 ```
 
-For the train scenario I described, let's pretend that `previousTimeMinutes` was `0`, and `currentTimeMinutes` according to the wall clock was `45` for the train that arrived 15 minutes late; thus, `deltaTimeMinutes` is `45` instead of the expected `30`. If we were to just set `previousTimeMinutes = currentTimeMinutes` like we currently do, those 15 minutes that we lost would delay the arrival time of the next train, and the one after that, and so on. Because now, instead of the next train arriving at an absolute timestamp of `t = 30 + 30 = 60 mins`, it actually won't arrive until at least `t >= 30 + 45 = 75 mins`. Thus, the entire schedule will shift forward by those 15 minutes that we lost, and our transit rate will drop from two trains to just one train in that one-hour window.
+For the train scenario I described, let's pretend that `previousTimeMinutes` was `0`, and `currentTimeMinutes` according to the wall clock was `45` for the train that arrived 15 minutes late; thus, `deltaTimeMinutes` is `45` instead of the expected `30`. If we were to just set `previousTimeMinutes = currentTimeMinutes` like we currently do, those 15 minutes that we lost would delay the arrival time of the next train, and the one after that, and so on. Because now, instead of the next train arriving at an absolute timestamp of `t = 30 + 30 = 60 mins`, it actually won't arrive until at least `t >= 45 + 30 = 75 mins`. Thus, the entire schedule will shift forward by those 15 minutes that we lost, and our transit rate will drop from two trains to just one train in that one-hour window.
 
 Translating this back into game dev terms, it means that if one frame takes longer to complete its work, the next frame will be needlessly delayed, creating a choppy and irregular feel where frames don't arrive at their originally scheduled times. To fix this problem, we need to use some modular arithmetic to "rewind" the clock, so to speak. We'll calculate the excess time (if any) by which the previous frame overshot its budget, and we'll subtract that amount from `currentTimeMs` to ensure that the next frame arrives on time:
 
 ```js {data-copyable="true"}
 const MAX_FPS = 60;
 const FRAME_INTERVAL_MS = 1000 / MAX_FPS;
-
 let previousTimeMs = 0;
 
 function update() {
   requestAnimationFrame((currentTimeMs) => {
     const deltaTimeMs = currentTimeMs - previousTimeMs;
+
     if (deltaTimeMs >= FRAME_INTERVAL_MS) {
       updatePhysics();
       // Synchronize next frame to arrive on time
-      const offset = deltaTimeMs % FRAME_INTERVAL_MS;
-      previousTimeMs = currentTimeMs - offset;
+      previousTimeMs = currentTimeMs - (deltaTimeMs % FRAME_INTERVAL_MS);
     }
+
     draw();
     update();
   });
