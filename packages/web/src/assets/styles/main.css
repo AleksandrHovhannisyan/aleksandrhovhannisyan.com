@@ -161,6 +161,12 @@
   :where(button) {
     border: none;
     cursor: pointer;
+    color: inherit; /* Safari iOS bug fix, https://stackoverflow.com/questions/74853859/how-to-avoid-safari-adding-apple-system-blue-to-my-button */
+  }
+
+  /* Disable mobile browser inflation algorithm. Fixes iOS bug with code blocks, credit: https://nathan.rs/posts/fixing-ios-codeblocks/ */
+  :where(code) {
+    text-size-adjust: none;
   }
 
   /* It's safe to assume that whenever we add a class to a list, we plan to add custom styles that will require resetting default list styles */
