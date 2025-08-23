@@ -33,7 +33,11 @@ Outside of work, I enjoy learning new things and [writing on my blog](/blog/). I
 
 ### Music
 
-I've loved listening to music my entire life—everything from rock to indie, folk, rap, pop, you name it. But it's only recently that I began _playing_ music. In late 2023, I picked up my first guitar, and now I play it every chance I get. Some of the artists I keep coming back to (and whose songs I want to learn) include The Strokes, Lana Del Rey, Arctic Monkeys, Radiohead, GY!BE, and Joanna Newsom, [among others](https://open.spotify.com/playlist/4Xmn0rj4Qsbd431tPZOsMV?si=uR3_Vx-mR--g6rKWIRKtTA).
+I've loved listening to music my entire life—everything from rock to indie, folk, rap, pop, you name it. But it's only recently that I began _playing_ music. In late 2023, I picked up my first guitar, and now I play it every chance I get. I've even recorded covers of some of my favorite songs:
+
+- [Fake Plastic Trees](https://www.youtube.com/watch?v=vVTzNm8NVzQ)
+- [Pyramid Song](https://www.youtube.com/watch?v=XF1buO8xsUk)
+- [How to Disappear Completely](https://www.youtube.com/watch?v=WWkUx5pCCp8)
 
 ### Gaming
 
