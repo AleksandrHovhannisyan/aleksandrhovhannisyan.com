@@ -23,21 +23,22 @@
     /* Colors */
     --color-accent-0: light-dark(hsl(240deg 100% 33%), hsl(211deg 100% 83%));
     --color-accent-1: light-dark(hsl(240deg 100% 25%), hsl(211deg 100% 73%));
-    --color-surface-0: light-dark(hsl(0deg 0% 100%), hsl(0deg 0% 6%));
-    --color-surface-1: light-dark(hsl(0deg 0% 96%), hsl(0deg 0% 12%));
-    --color-surface-2: light-dark(hsl(0deg 0% 91%), hsl(0deg 0% 19%));
-    --color-surface-3: light-dark(hsl(0deg 0% 86%), hsl(0deg 0% 28%));
-    --color-surface-4: light-dark(hsl(0deg 0% 80%), hsl(0deg 0% 34%));
-    --color-surface-5: light-dark(hsl(0deg 0% 75%), hsl(0deg 0% 40%));
-    --color-surface-6: light-dark(hsl(0deg 0% 55%), hsl(0deg 0% 50%));
-    --color-surface-7: light-dark(hsl(0deg 0% 35%), hsl(0deg 0% 60%));
-    --color-surface-8: light-dark(hsl(0deg 0% 23%), hsl(0deg 0% 70%));
-    --color-surface-9: light-dark(hsl(0deg 0% 13%), hsl(0deg 0% 86%));
-    --color-text-normal: light-dark(var(--color-surface-9), var(--color-surface-9));
+    --_color-surface-hs: 200deg 6%;
+    --color-surface-0: light-dark(hsl(var(--_color-surface-hs) 100%), hsl(var(--_color-surface-hs) 6%));
+    --color-surface-1: light-dark(hsl(var(--_color-surface-hs) 96%), hsl(var(--_color-surface-hs) 12%));
+    --color-surface-2: light-dark(hsl(var(--_color-surface-hs) 91%), hsl(var(--_color-surface-hs) 19%));
+    --color-surface-3: light-dark(hsl(var(--_color-surface-hs) 86%), hsl(var(--_color-surface-hs) 28%));
+    --color-surface-4: light-dark(hsl(var(--_color-surface-hs) 80%), hsl(var(--_color-surface-hs) 34%));
+    --color-surface-5: light-dark(hsl(var(--_color-surface-hs) 75%), hsl(var(--_color-surface-hs) 40%));
+    --color-surface-6: light-dark(hsl(var(--_color-surface-hs) 55%), hsl(var(--_color-surface-hs) 50%));
+    --color-surface-7: light-dark(hsl(var(--_color-surface-hs) 35%), hsl(var(--_color-surface-hs) 60%));
+    --color-surface-8: light-dark(hsl(var(--_color-surface-hs) 23%), hsl(var(--_color-surface-hs) 70%));
+    --color-surface-9: light-dark(hsl(var(--_color-surface-hs) 13%), hsl(var(--_color-surface-hs) 86%));
+    --color-text-normal: var(--color-surface-9);
     --color-text-soft: light-dark(var(--color-surface-7), var(--color-surface-8));
-    --color-text-emphasis: light-dark(hsl(0deg 0% 0%), hsl(0deg 0% 100%));
-    --color-text-inverted: light-dark(hsl(0deg 0% 100%), hsl(0deg 0% 0%));
-    --color-border-0: light-dark(var(--color-surface-5), var(--color-surface-5));
+    --color-text-emphasis: light-dark(hsl(var(--_color-surface-hs) 0%), hsl(var(--_color-surface-hs) 100%));
+    --color-text-inverted: light-dark(hsl(var(--_color-surface-hs) 100%), hsl(var(--_color-surface-hs) 0%));
+    --color-border-0: var(--color-surface-5);
 
     /* Animation */
     --transition-duration: 0.2s;
