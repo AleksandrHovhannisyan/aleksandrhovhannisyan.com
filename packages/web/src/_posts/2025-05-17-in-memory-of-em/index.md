@@ -1,7 +1,7 @@
 ---
 title: In Memory of Em
 description: A very serious eulogy that is meant to be taken literally.
-categories: [essay, writing]
+categories: [essay, writing, ai]
 thumbnail: ./images/thumbnail.png
 lastUpdated: 2025-06-27
 ---
