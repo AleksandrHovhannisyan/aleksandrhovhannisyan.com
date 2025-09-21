@@ -5,9 +5,9 @@ categories: [note, music, ai]
 keywords: [stem, split, ultimate vocal remover]
 ---
 
-If you're covering music or trying to isolate an instrument for a practice session, you're probably going to need a <dfn>stem splitter</dfn>: software that takes an audio track, analyzes its waveforms with machine learning, and generates audio files for each stem. Paid and free stem splitters have been around for a while, but one I personally like is [Ultimate Vocal Remover](https://github.com/Anjok07/ultimatevocalremovergui) because it's free and open source, and it lets you pick from many different stem separation models (all local). I've used it for several of my own guitar covers, and I've been very happy with the results so far.
+If you're covering music or trying to isolate an instrument for a practice session, you're probably going to need a <dfn>stem splitter</dfn>: software that takes an audio track, analyzes its waveforms with machine learning, and generates audio files for each stem. Paid and free stem splitters have been around for a while, but one I personally like is [Ultimate Vocal Remover](https://github.com/Anjok07/ultimatevocalremovergui) (UVR) because it's free and open source, and it lets you pick from many different stem separation models (all local). I've used it for several of my own guitar covers, and I've been very happy with the results so far.
 
-This is a short tutorial on how to set up and use this software. Thanks to Vizard for their helpful response on the following Reddit thread: ["Any free music AI stem separators that are truly free and awesome?"](https://www.reddit.com/r/musicproduction/comments/1704kob/comment/ktj2y1u/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1) I'm including screenshots and summarizing their answer here. I've also included a list of other tools at the end.
+This is a short tutorial on how to set up and use this software, and most of it is based on Vizard's [helpful response on Reddit](https://www.reddit.com/r/musicproduction/comments/1704kob/comment/ktj2y1u/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1). I'm including screenshots and summarizing their answer here in case it ever gets deleted or I forget where to find the thread. I've also included a list of other tools at the end.
 
 ## Using Ultimate Vocal Remover
 
@@ -35,7 +35,7 @@ Note: [Demucs](https://github.com/facebookresearch/demucs) is just the name of a
 
 ![Download progress bar for htdemucs_6s model in UVR settings window.](./images/uvr-htdemucs-download.png)
 
-6. Once the download finishes, you can close the settings window and return to the main window. There, select your input file (e.g., a music video or audio file). Select an output folder where you want Ultimate Vocal Remover to save each stem. Under "Choose process method," select Demucs. Under "Choose demucs model," select the `htdemucs_6s` model you just downloaded. Finally, if your system has a GPU, consider checking that box to speed up the process.
+6. Once the download finishes, you can close the settings window and return to the main window. There, click the `Select Input` button to select your input file (e.g., a music video or audio file). Click `Select Output` to choose an output folder where you want UVR to save each stem. Under `Choose process method`, select `Demucs`. Under `Choose demucs model`, select the `htdemucs_6s` model you just downloaded. Finally, if your system has a GPU, consider checking that box to speed up the process.
 
 ![Main UVR window showing all the selected options for input file, output folder, model, GPU conversion, etc.](./images/uvr-inputs.png)
 
