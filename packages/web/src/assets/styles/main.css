@@ -93,40 +93,40 @@
   /* Font size */
   @supports (font-size: clamp(1rem, 1vw, 1rem)) {
     :root {
-      --size-font-xs: clamp(0.875rem, 0.342vw + 0.795rem, 1rem); /* 14-16 */
-      --size-font-sm: clamp(1rem, 0.342vw + 0.92rem, 1.125rem); /* 16-18 */
-      --size-font-base: clamp(1.125rem, 0.342vw + 1.045rem, 1.25rem); /* 18-20 */
-      --size-font-md: clamp(1.25rem, 0.684vw + 1.09rem, 1.5rem); /* 20-24 */
-      --size-font-lg: clamp(1.5rem, 0.684vw + 1.34rem, 1.75rem); /* 24-28 */
-      --size-font-xl: clamp(1.75rem, 1.026vw + 1.51rem, 2.125rem); /* 28-34 */
-      --size-font-2xl: clamp(2rem, 1.368vw + 1.679rem, 2.5rem); /* 32-40 */
-      --size-font-3xl: clamp(2.375rem, 2.735vw + 1.734rem, 3.375rem); /* 38-54 */
-      --size-font-4xl: clamp(2.75rem, 5.47vw + 1.468rem, 4.75rem); /* 44-76 */
+      --size-font-xs: clamp(0.875rem, 0.342vw + 0.795rem, 1rem); /* 14px @ <=375, 16px @ >= 960 */
+      --size-font-sm: clamp(1rem, 0.342vw + 0.92rem, 1.125rem); /* 16px @ <=375, 18px @ >= 960 */
+      --size-font-base: clamp(1.125rem, 0.342vw + 1.045rem, 1.25rem); /* 18px @ <=375, 20px @ >= 960 */
+      --size-font-md: clamp(1.25rem, 0.684vw + 1.09rem, 1.5rem); /* 20px @ <=375, 24px @ >= 960 */
+      --size-font-lg: clamp(1.5rem, 0.684vw + 1.34rem, 1.75rem); /* 24px @ <=375, 28px @ >= 960 */
+      --size-font-xl: clamp(1.75rem, 1.026vw + 1.51rem, 2.125rem); /* 28px @ <=375, 34px @ >= 960 */
+      --size-font-2xl: clamp(2rem, 1.368vw + 1.679rem, 2.5rem); /* 32px @ <= 375, 40px @ >= 960 */
+      --size-font-3xl: clamp(2.5rem, 2.735vw + 1.734rem, 3.375rem); /* 38px @ <= 375, 54px @ >= 960 */
+      --size-font-4xl: clamp(2.75rem, 5.47vw + 1.468rem, 4.75rem); /* 44px @ <= 375, 76px @ >= 960 */
     }
   }
   @supports not (font-size: clamp(1rem, 1vw, 1rem)) {
     :root {
-      --size-font-xs: 0.875rem; /* 14 */
-      --size-font-sm: 1rem; /* 16 */
-      --size-font-base: 1.125rem; /* 18 */
-      --size-font-md: 1.25rem; /* 20 */
-      --size-font-lg: 1.5rem; /* 24 */
-      --size-font-xl: 1.75rem; /* 28 */
-      --size-font-2xl: 2rem; /* 32 */
-      --size-font-3xl: 2.375rem; /* 38 */
-      --size-font-4xl: 2.75rem; /* 44 */
+      --size-font-xs: 0.875rem; /* 14px @ < 960px */
+      --size-font-sm: 1rem; /* 16px @ < 960px */
+      --size-font-base: 1.125rem; /* 18px @ < 960px */
+      --size-font-md: 1.25rem; /* 20px @ < 960px */
+      --size-font-lg: 1.5rem; /* 24px @ < 960px */
+      --size-font-xl: 1.75rem; /* 28px @ < 960px */
+      --size-font-2xl: 2rem; /* 32px @ < 960px */
+      --size-font-3xl: 2.5rem; /* 38px @ < 960px */
+      --size-font-4xl: 2.75rem; /* 44px @ < 960px */
     }
     @media (--size-breakpoint-desktop) {
       :root {
-        --size-font-xs: 1rem; /* 16 */
-        --size-font-sm: 1.125rem; /* 18 */
-        --size-font-base: 1.25rem; /* 20 */
-        --size-font-md: 1.5rem; /* 24 */
-        --size-font-lg: 1.75rem; /* 28 */
-        --size-font-xl: 2.125rem; /* 34 */
-        --size-font-2xl: 2.5rem; /* 40 */
-        --size-font-3xl: 3.375rem; /* 54 */
-        --size-font-4xl: 4.75rem; /* 76 */
+        --size-font-xs: 1rem; /* 16px @ >= 960px */
+        --size-font-sm: 1.125rem; /* 18px @ >= 960px */
+        --size-font-base: 1.25rem; /* 20px @ >= 960px */
+        --size-font-md: 1.5rem; /* 24px @ >= 960px */
+        --size-font-lg: 1.75rem; /* 28px @ >= 960px */
+        --size-font-xl: 2.125rem; /* 34px @ >= 960px */
+        --size-font-2xl: 2.5rem; /* 40px @ >= 960px */
+        --size-font-3xl: 3.375rem; /* 54px @ >= 960px */
+        --size-font-4xl: 4.75rem; /* 76px @ >= 960px */
       }
     }
   }
@@ -138,6 +138,8 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    /* Disable mobile browser inflation algorithm. Fixes iOS bug with code blocks, credit: https://nathan.rs/posts/fixing-ios-codeblocks/ */
+    text-size-adjust: none;
   }
 
   :where(html, body) {
@@ -163,11 +165,6 @@
     border: none;
     cursor: pointer;
     color: inherit; /* Safari iOS bug fix, https://stackoverflow.com/questions/74853859/how-to-avoid-safari-adding-apple-system-blue-to-my-button */
-  }
-
-  /* Disable mobile browser inflation algorithm. Fixes iOS bug with code blocks, credit: https://nathan.rs/posts/fixing-ios-codeblocks/ */
-  :where(code) {
-    text-size-adjust: none;
   }
 
   /* It's safe to assume that whenever we add a class to a list, we plan to add custom styles that will require resetting default list styles */
@@ -1445,22 +1442,6 @@
       height: 25px;
       background: rgb(0 0 0 / 20%);
       box-shadow: 2px var(--size-shadow-height) 5px rgb(0 0 0 / 40%);
-    }
-
-    & .title {
-      font-size: var(--size-font-lg);
-      line-height: var(--size-leading-xs);
-    }
-
-    & .description {
-      font-size: var(--size-font-base);
-      line-height: var(--size-leading-sm);
-    }
-  }
-  @media (--size-breakpoint-tablet-sm) {
-    .note .title {
-      font-size: var(--size-font-md);
-      line-height: var(--size-leading-xs);
     }
   }
 
