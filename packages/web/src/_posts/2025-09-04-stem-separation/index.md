@@ -1,6 +1,6 @@
 ---
 title: How to Split Audio Stems
-description: Ultimate Vocal Remover is a free and open-source tool that allows you to separate stems from audio tracks using machine learning.
+description: A quick guide on how to use a free and open-source tool to separate stems from audio tracks using locally installed models.
 categories: [note, music, ai]
 keywords: [stem, split, ultimate vocal remover]
 ---
