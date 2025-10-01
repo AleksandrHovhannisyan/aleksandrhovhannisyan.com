@@ -1,0 +1,47 @@
+@layer RESET {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* Disable mobile browser inflation algorithm. Fixes iOS bug with code blocks, credit: https://nathan.rs/posts/fixing-ios-codeblocks/ */
+    text-size-adjust: none;
+  }
+
+  :where(html, body) {
+    min-block-size: 100%;
+  }
+
+  :where(input, select, textarea, button) {
+    font: inherit;
+    line-height: inherit;
+  }
+
+  /* Responsive media with the width and height HTML attributes need this */
+  :where(img, video) {
+    height: auto;
+  }
+
+  :where(img, iframe, video) {
+    display: block;
+    max-width: 100%;
+  }
+
+  :where(button) {
+    border: none;
+    cursor: pointer;
+    color: inherit; /* Safari iOS bug fix, https://stackoverflow.com/questions/74853859/how-to-avoid-safari-adding-apple-system-blue-to-my-button */
+  }
+
+  /* It's safe to assume that whenever we add a class to a list, we plan to add custom styles that will require resetting default list styles */
+  :where(ul, ol)[class] {
+    list-style: none;
+  }
+
+  /* https://css-tricks.com/standardizing-focus-styles-with-css-custom-properties/ */
+  :focus-visible {
+    --outline-thickness: calc(3rem / 16);
+    --outline-color: var(--color-accent-0);
+    outline: var(--outline-thickness) solid var(--outline-color);
+    outline-offset: var(--outline-offset, var(--outline-thickness));
+  }
+}

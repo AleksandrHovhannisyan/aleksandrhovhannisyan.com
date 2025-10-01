@@ -1,0 +1,25 @@
+@layer PAGES {
+  .page-home {
+    gap: clamp(3rem, 2.857vw + 2.286rem, 4rem);
+  }
+
+  .page-not-found {
+    display: grid;
+    place-content: center;
+    text-align: center;
+    text-wrap: balance;
+    gap: var(--size-spacing-0);
+    height: 100dvb;
+    padding: 0 var(--size-spacing-2);
+  }
+
+  .page-about .profile-photo {
+    max-width: calc(128rem / 16);
+  }
+
+  @media (--size-breakpoint-mobile-lg) {
+    .page-about .profile-photo {
+      max-width: calc(160rem / 16);
+    }
+  }
+}

@@ -1,0 +1,130 @@
+@layer TOKENS {
+  :root {
+    /* Breakpoints, https://www.w3.org/TR/mediaqueries-5/#at-ruledef-custom-media */
+    @custom-media --size-breakpoint-mobile-min (min-width: 23.4em); /* 375px */
+    @custom-media --size-breakpoint-mobile (min-width: 25em); /* 400px */
+    @custom-media --size-breakpoint-mobile-lg (min-width: 35em); /* 560px */
+    @custom-media --size-breakpoint-tablet-sm (min-width: 48em); /* 768px */
+    @custom-media --size-breakpoint-tablet (min-width: 56em); /* 896px */
+    @custom-media --size-breakpoint-desktop (min-width: 60em); /* 960px */
+    @custom-media --size-breakpoint-desktop-lg (min-width: 75em); /* 1200px */
+
+    /* Typography */
+    --font-family-body: Source Sans, body-fallback-1, body-fallback-2, body-fallback-3, body-fallback-4, system-ui;
+    --font-weight-body-regular: 400;
+    --font-weight-body-bold: 700;
+    --font-family-mono: Source Code Pro, mono-fallback-1, mono-fallback-2, mono-fallback-3, monospace;
+    --font-weight-mono-regular: 400;
+    --font-weight-mono-bold: 700;
+
+    /* Colors */
+    --color-accent-0: light-dark(hsl(240deg 100% 33%), hsl(211deg 100% 83%));
+    --color-accent-1: light-dark(hsl(240deg 100% 25%), hsl(211deg 100% 73%));
+    --_color-surface-hs: 200deg 6%;
+    --color-surface-0: light-dark(hsl(var(--_color-surface-hs) 100%), hsl(var(--_color-surface-hs) 6%));
+    --color-surface-1: light-dark(hsl(var(--_color-surface-hs) 96%), hsl(var(--_color-surface-hs) 12%));
+    --color-surface-2: light-dark(hsl(var(--_color-surface-hs) 91%), hsl(var(--_color-surface-hs) 19%));
+    --color-surface-3: light-dark(hsl(var(--_color-surface-hs) 86%), hsl(var(--_color-surface-hs) 28%));
+    --color-surface-4: light-dark(hsl(var(--_color-surface-hs) 80%), hsl(var(--_color-surface-hs) 34%));
+    --color-surface-5: light-dark(hsl(var(--_color-surface-hs) 75%), hsl(var(--_color-surface-hs) 40%));
+    --color-surface-6: light-dark(hsl(var(--_color-surface-hs) 55%), hsl(var(--_color-surface-hs) 50%));
+    --color-surface-7: light-dark(hsl(var(--_color-surface-hs) 35%), hsl(var(--_color-surface-hs) 60%));
+    --color-surface-8: light-dark(hsl(var(--_color-surface-hs) 23%), hsl(var(--_color-surface-hs) 70%));
+    --color-surface-9: light-dark(hsl(var(--_color-surface-hs) 13%), hsl(var(--_color-surface-hs) 86%));
+    --color-text-normal: var(--color-surface-9);
+    --color-text-soft: light-dark(var(--color-surface-7), var(--color-surface-8));
+    --color-text-emphasis: light-dark(hsl(var(--_color-surface-hs) 0%), hsl(var(--_color-surface-hs) 100%));
+    --color-text-inverted: light-dark(hsl(var(--_color-surface-hs) 100%), hsl(var(--_color-surface-hs) 0%));
+    --color-border-0: var(--color-surface-5);
+
+    /* Animation */
+    --transition-duration: 0.2s;
+    --transition-timing-function: ease;
+
+    /* Line height */
+    --size-leading-4xs: 1;
+    --size-leading-3xs: 1.1;
+    --size-leading-2xs: 1.2;
+    --size-leading-xs: 1.3;
+    --size-leading-sm: 1.4;
+    --size-leading-base: 1.5;
+    --size-leading-md: 1.6;
+    --size-leading-lg: 1.7;
+
+    /* Letter spacing*/
+    --size-tracking-xs: -0.5px;
+    --size-tracking-sm: -0.25px;
+    --size-tracking-md: 0.25px;
+    --size-tracking-lg: 1px;
+
+    /* Spacing (absolute) */
+    --size-spacing--4: 2px;
+    --size-spacing--3: 4px;
+    --size-spacing--2: 8px;
+    --size-spacing--1: 12px;
+    --size-spacing-0: 16px;
+    --size-spacing-1: 18px;
+    --size-spacing-2: 20px;
+    --size-spacing-3: 24px;
+    --size-spacing-4: 28px;
+    --size-spacing-5: 32px;
+    --size-spacing-6: 36px;
+    --size-spacing-7: 40px;
+    --size-spacing-8: 48px;
+    --size-spacing-9: 56px;
+    --size-spacing-10: 64px;
+    --size-spacing-11: 76px;
+    --size-spacing-12: 96px;
+    --size-spacing-13: 112px;
+
+    /* Spacing (relative) */
+    --size-relative--4: 0.125em;
+    --size-relative--3: 0.25em;
+    --size-relative--2: 0.5em;
+    --size-relative--1: 0.75em;
+    --size-relative-0: 1em;
+    --size-relative-1: 1.25em;
+    --size-relative-2: 1.5em;
+  }
+
+  /* Font size */
+  @supports (font-size: clamp(1rem, 1vw, 1rem)) {
+    :root {
+      --size-font-xs: clamp(0.875rem, 0.342vw + 0.795rem, 1rem); /* 14px @ <=375, 16px @ >= 960 */
+      --size-font-sm: clamp(1rem, 0.342vw + 0.92rem, 1.125rem); /* 16px @ <=375, 18px @ >= 960 */
+      --size-font-base: clamp(1.125rem, 0.342vw + 1.045rem, 1.25rem); /* 18px @ <=375, 20px @ >= 960 */
+      --size-font-md: clamp(1.25rem, 0.684vw + 1.09rem, 1.5rem); /* 20px @ <=375, 24px @ >= 960 */
+      --size-font-lg: clamp(1.5rem, 0.684vw + 1.34rem, 1.75rem); /* 24px @ <=375, 28px @ >= 960 */
+      --size-font-xl: clamp(1.75rem, 1.026vw + 1.51rem, 2.125rem); /* 28px @ <=375, 34px @ >= 960 */
+      --size-font-2xl: clamp(2rem, 1.368vw + 1.679rem, 2.5rem); /* 32px @ <= 375, 40px @ >= 960 */
+      --size-font-3xl: clamp(2.5rem, 2.735vw + 1.734rem, 3.375rem); /* 38px @ <= 375, 54px @ >= 960 */
+      --size-font-4xl: clamp(2.75rem, 5.47vw + 1.468rem, 4.75rem); /* 44px @ <= 375, 76px @ >= 960 */
+    }
+  }
+  @supports not (font-size: clamp(1rem, 1vw, 1rem)) {
+    :root {
+      --size-font-xs: 0.875rem; /* 14px @ < 960px */
+      --size-font-sm: 1rem; /* 16px @ < 960px */
+      --size-font-base: 1.125rem; /* 18px @ < 960px */
+      --size-font-md: 1.25rem; /* 20px @ < 960px */
+      --size-font-lg: 1.5rem; /* 24px @ < 960px */
+      --size-font-xl: 1.75rem; /* 28px @ < 960px */
+      --size-font-2xl: 2rem; /* 32px @ < 960px */
+      --size-font-3xl: 2.5rem; /* 38px @ < 960px */
+      --size-font-4xl: 2.75rem; /* 44px @ < 960px */
+    }
+    @media (--size-breakpoint-desktop) {
+      :root {
+        --size-font-xs: 1rem; /* 16px @ >= 960px */
+        --size-font-sm: 1.125rem; /* 18px @ >= 960px */
+        --size-font-base: 1.25rem; /* 20px @ >= 960px */
+        --size-font-md: 1.5rem; /* 24px @ >= 960px */
+        --size-font-lg: 1.75rem; /* 28px @ >= 960px */
+        --size-font-xl: 2.125rem; /* 34px @ >= 960px */
+        --size-font-2xl: 2.5rem; /* 40px @ >= 960px */
+        --size-font-3xl: 3.375rem; /* 54px @ >= 960px */
+        --size-font-4xl: 4.75rem; /* 76px @ >= 960px */
+      }
+    }
+  }
+}

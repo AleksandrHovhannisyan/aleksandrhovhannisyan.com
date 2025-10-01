@@ -1,0 +1,319 @@
+@layer UTILS {
+  /* Centering */
+  .container {
+    max-width: calc(1200rem / 16);
+    margin: 0 auto;
+    padding-inline: var(--size-spacing-0);
+  }
+
+  /* Font size */
+  .size-font-xs {
+    font-size: var(--size-font-xs);
+  }
+
+  small,
+  .size-font-sm {
+    font-size: var(--size-font-sm);
+  }
+
+  h6,
+  .size-font-base {
+    font-size: var(--size-font-base);
+    line-height: var(--size-leading-base);
+  }
+
+  h5,
+  .size-font-md {
+    font-size: var(--size-font-md);
+    line-height: var(--size-leading-sm);
+  }
+
+  h4,
+  .size-font-lg {
+    font-size: var(--size-font-lg);
+    line-height: var(--size-leading-xs);
+  }
+
+  h3,
+  .size-font-xl {
+    font-size: var(--size-font-xl);
+    line-height: var(--size-leading-xs);
+  }
+
+  h2,
+  .size-font-2xl {
+    font-size: var(--size-font-2xl);
+    line-height: var(--size-leading-2xs);
+  }
+
+  h1,
+  .size-font-3xl {
+    font-size: var(--size-font-3xl);
+    line-height: var(--size-leading-3xs);
+    letter-spacing: var(--size-tracking-sm);
+  }
+
+  .size-font-4xl {
+    font-size: var(--size-font-4xl);
+    line-height: var(--size-leading-3xs);
+    letter-spacing: var(--size-tracking-xs);
+  }
+
+  /* Gaps */
+  @property --gap {
+    syntax: '<length>';
+    inherits: false;
+    initial-value: 0;
+  }
+
+  .gap--4 {
+    --gap: var(--size-spacing--4);
+    gap: var(--gap);
+  }
+
+  .gap--3 {
+    --gap: var(--size-spacing--3);
+    gap: var(--gap);
+  }
+
+  .gap--2 {
+    --gap: var(--size-spacing--2);
+    gap: var(--gap);
+  }
+
+  .gap--1 {
+    --gap: var(--size-spacing--1);
+    gap: var(--gap);
+  }
+
+  .gap-0 {
+    --gap: var(--size-spacing-0);
+    gap: var(--gap);
+  }
+
+  .gap-1 {
+    --gap: var(--size-spacing-1);
+    gap: var(--gap);
+  }
+
+  .gap-2 {
+    --gap: var(--size-spacing-2);
+    gap: var(--gap);
+  }
+
+  .gap-3 {
+    --gap: var(--size-spacing-3);
+    gap: var(--gap);
+  }
+
+  .gap-4 {
+    --gap: var(--size-spacing-4);
+    gap: var(--gap);
+  }
+
+  .gap-5 {
+    --gap: var(--size-spacing-5);
+    gap: var(--gap);
+  }
+
+  .gap-6 {
+    --gap: var(--size-spacing-6);
+    gap: var(--gap);
+  }
+
+  .gap-7 {
+    --gap: var(--size-spacing-7);
+    gap: var(--gap);
+  }
+
+  .gap-8 {
+    --gap: var(--size-spacing-8);
+    gap: var(--gap);
+  }
+
+  .gap-9 {
+    --gap: var(--size-spacing-9);
+    gap: var(--gap);
+  }
+
+  .gap-10 {
+    --gap: var(--size-spacing-10);
+    gap: var(--gap);
+  }
+
+  .gap-11 {
+    --gap: var(--size-spacing-11);
+    gap: var(--gap);
+  }
+
+  .gap-12 {
+    --gap: var(--size-spacing-12);
+    gap: var(--gap);
+  }
+
+  .gap-13 {
+    --gap: var(--size-spacing-13);
+    gap: var(--gap);
+  }
+
+  /* Auto-resizing grids */
+  .grid {
+    --grid-column-max-count: 3;
+    --grid-item-min-width: calc(260rem / 16);
+    --grid-item-max-width: calc(
+      (100% - (var(--grid-column-max-count) - 1) * var(--gap)) / var(--grid-column-max-count)
+    );
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(
+        /* Prefer growth/fill as much space as possible */
+          max(
+            /* Edge case: containing block width (100%) is narrower than the min width */
+              min(var(--grid-item-min-width), 100%),
+            var(--grid-item-max-width)
+          ),
+        1fr
+      )
+    );
+  }
+
+  .col-2 {
+    --grid-column-max-count: 2;
+    --grid-item-min-width: calc(300rem / 16);
+  }
+
+  /* Aspect ratios */
+  .circle {
+    aspect-ratio: 1;
+    border-radius: 50%;
+  }
+
+  .aspect-ratio-1-1 {
+    aspect-ratio: 1;
+  }
+
+  .aspect-ratio-4-3 {
+    aspect-ratio: 4/3;
+  }
+
+  .aspect-ratio-3-2 {
+    aspect-ratio: 3/2;
+  }
+
+  .aspect-ratio-16-9 {
+    aspect-ratio: 16/9;
+  }
+
+  /* Flex utils */
+  .flex {
+    display: flex;
+  }
+
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+
+  .flex-column {
+    flex-direction: column;
+  }
+
+  .align-center {
+    align-items: center;
+  }
+
+  .flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .repel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  /* Positioning */
+  .relative {
+    position: relative;
+  }
+
+  .absolute {
+    position: absolute;
+  }
+
+  /* Vertical rhythm/flow */
+  .rhythm {
+    --rhythm: 1lh;
+
+    & > * + * {
+      margin-block-start: var(--rhythm);
+    }
+
+    & > :where(h1, h2, h3, h4, h5, h6) + :where(:not(&)) {
+      --rhythm: 0.75lh;
+    }
+
+    & > :where(h1 + p) {
+      --rhythm: 0.25lh;
+    }
+  }
+
+  /* sr-only */
+  .screen-reader-only {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+
+    &:focus {
+      clip: auto;
+      width: auto;
+      height: auto;
+      white-space: normal;
+      overflow: visible;
+    }
+  }
+
+  .scroll-x {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .stack {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Text styles */
+  .to-underline {
+    text-decoration-line: none;
+
+    &:is(:hover, :focus) {
+      text-decoration-line: underline;
+    }
+  }
+
+  .no-underline {
+    text-decoration-line: none;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .nowrap {
+    white-space: nowrap;
+  }
+
+  .text-wrap-balance {
+    text-wrap: balance;
+  }
+
+  .prose-tight {
+    max-width: 49ch;
+  }
+}

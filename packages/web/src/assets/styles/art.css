@@ -1,16 +1,13 @@
-@layer TOKENS, PAGES, DEMOS;
+@layer TOKENS, RESET, GLOBAL, UTILS, COMPONENTS, PAGES, DEMOS;
+
+@import './layers/tokens.css';
+@import './layers/reset.css';
+@import './layers/global.css';
+@import './layers/utils.css';
+@import './layers/components.css';
 
 @layer TOKENS {
   :root {
-    /* Breakpoints, https://www.w3.org/TR/mediaqueries-5/#at-ruledef-custom-media */
-    @custom-media --size-breakpoint-mobile-min (min-width: 23.4em); /* 375px */
-    @custom-media --size-breakpoint-mobile (min-width: 25em); /* 400px */
-    @custom-media --size-breakpoint-mobile-lg (min-width: 35em); /* 560px */
-    @custom-media --size-breakpoint-tablet-sm (min-width: 48em); /* 768px */
-    @custom-media --size-breakpoint-tablet (min-width: 56em); /* 896px */
-    @custom-media --size-breakpoint-desktop (min-width: 60em); /* 960px */
-    @custom-media --size-breakpoint-desktop-lg (min-width: 75em); /* 1200px */
-
     /* Typography */
     --font-family-body: Reenie Beanie, cursive;
     --font-family-display: Rampart One, sans-fallback;

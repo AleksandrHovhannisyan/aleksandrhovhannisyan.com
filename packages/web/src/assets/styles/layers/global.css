@@ -1,0 +1,105 @@
+@layer GLOBAL {
+  @media (prefers-reduced-motion) {
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    @view-transition {
+      navigation: auto;
+    }
+  }
+
+  html {
+    color-scheme: light dark;
+    /* Only for Firefox */
+    scrollbar-color: var(--color-border-0) var(--color-surface-2);
+  }
+
+  [data-theme='light'] {
+    color-scheme: light;
+  }
+
+  [data-theme='dark'] {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-surface-0);
+    color: var(--color-text-normal);
+    accent-color: var(--color-accent-0);
+    overflow-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    font-size: var(--size-font-base);
+    line-height: var(--size-leading-base);
+    font-family: var(--font-family-body);
+    font-weight: var(--font-weight-body-regular);
+  }
+
+  body:has(dialog[open]) {
+    overflow-y: hidden;
+  }
+
+  :is(code, kbd) {
+    font-family: var(--font-family-mono);
+    font-weight: var(--font-weight-mono-regular);
+  }
+
+  :is(strong, h1, h2, h3, h4, h5, h6) :is(code, kbd) {
+    font-family: var(--font-family-mono);
+    font-weight: var(--font-weight-mono-bold);
+  }
+
+  code:not([class^='language-']),
+  kbd {
+    background-color: light-dark(var(--color-surface-1), var(--color-surface-2));
+    border-radius: var(--size-spacing--3);
+    padding: var(--size-relative--4) var(--size-relative--3);
+  }
+
+  kbd {
+    outline: solid 1px var(--color-surface-3);
+    box-shadow: 0 1px 1px 0 var(--color-border-0);
+  }
+
+  mark,
+  ::selection {
+    background-color: var(--color-accent-0);
+    color: var(--color-text-inverted);
+  }
+
+  a {
+    color: var(--color-accent-0);
+    text-decoration-thickness: 0.08em;
+  }
+
+  :is(h1, h2, h3, h4, h5, h6) a {
+    color: inherit;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--color-text-emphasis);
+    text-wrap: balance;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  label,
+  th,
+  strong {
+    font-weight: var(--font-weight-body-bold);
+  }
+}

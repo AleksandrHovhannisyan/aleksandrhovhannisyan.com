@@ -1,8 +1,8 @@
 import fs from 'node:fs/promises';
 import esbuild from 'esbuild';
 import postcss from 'postcss';
+import postcssImport from 'postcss-import';
 import postcssPresetEnv from 'postcss-preset-env';
-import postcssCustomMedia from 'postcss-custom-media';
 
 const isProductionBuild = process.env.ELEVENTY_ENV === 'production';
 
@@ -40,7 +40,7 @@ export async function buildAssets() {
         setup(build) {
           build.onLoad({ filter: /\.css$/ }, async (args) => {
             const source = await fs.readFile(args.path, 'utf8');
-            const result = await postcss([postcssPresetEnv(), postcssCustomMedia()]).process(source, {
+            const result = await postcss([postcssImport(), postcssPresetEnv()]).process(source, {
               from: args.path,
             });
             return { contents: result.css, loader: 'css' };
