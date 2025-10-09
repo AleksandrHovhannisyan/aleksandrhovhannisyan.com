@@ -4,12 +4,14 @@ description: Using the properties of congruence modulo, Alice and Bob can genera
 keywords: [diffie hellman, congruence modulo, key exchange]
 categories: [cryptography, security, math]
 layout: mathPost
-lastUpdated: 2025-02-16
+lastUpdated: 2025-10-09
 ---
 
-I recently took an interest in cryptography and began working through Simon Singh's *The Code Book* and some supplementary resources for beginners. For the most part, it was smooth sailing until I arrived at the chapter on public key cryptography and [the Diffie-Hellman key exchange](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange). The concept itself made sense after I read through some analogies involving color mixing, especially in this video by Art of the Problem: [Public key cryptography - Diffie-Hellman Key Exchange (full version)](https://www.youtube.com/watch?v=YEBfamv-_do&t=162s). But I knew that anything more than a superficial understanding of this algorithm was going to require that I become comfortable with the math.
+A classic problem in cryptography concerns secure communication over a public channel: How can Alice and Bob send each other messages in public while an adversary, Eve, listens in on their conversation? They can't just share an encryption key over the same wire because then Eve would also have access to it, allowing her to crack all of their messages. Alice and Bob could meet up in person to trade their keys, but that's rarely a practical option, especially on the internet.
 
-What bothered me is that I couldn't find many good resources on the Diffie-Hellman key exchange algorithm that really took the time to explain all the math in depth, from start to finish. And most resources assumed I'd fill in the gaps myself. For example, the Computerphile YouTube channel has a great introductory video on [the math behind Diffie-Hellman](https://www.youtube.com/watch?v=Yjrfm_oRO0w), but it glosses over one of the most important parts—namely, why congruence modulo guarantees that Alice and Bob will arrive at the same private key. So, in this article, I want to first explain congruence modulo in a way that made it click for me and then apply that understanding to the Diffie-Hellman key exchange.
+In computer science, this is known as the [key exchange problem](https://en.wikipedia.org/wiki/Key_exchange), and for a long time it was thought to be unsolvable. Then, in 1976, two mathematicians made a breakthrough discovery and developed an algorithm known as the <dfn>Diffie-Hellman key exchange</dfn> that's now used extensively in security. The algorithm relies on a useful property of remainders and large prime numbers to ensure that Alice and Bob can generate a shared secret number while exchanging other numbers publicly, all in a way that makes it prohibitively difficult for bystanders to guess what the final number is. The output of this algorithm is then used to generate a symmetric key that both Alice and Bob can use to encrypt and decrypt each other's messages.
+
+Diffie-Hellman isn't complicated, but explanations of the underlying math often gloss over key details. Unfortunately, this can make the algorithm seem like magic, and you'll probably just give up and accept that it works without really knowing _why_ it works. In this article, I'll prove all relevant properties of modular arithmetic and apply those properties to the Diffie-Hellman key exchange so you understand how Alice and Bob are able to generate the same key.
 
 {% include "toc.md" %}
 
@@ -25,7 +27,7 @@ Remainders are closely related to the [division algorithm](https://sites.math.wa
 Let $a$ and $b$ be integers such that $b \neq 0$. Then there exist unique integers $q$ and $r$ such that $a = qb + r$, where $0 \leq r < |b|$.
 {% enddefinition %}
 
-All this says is that if we have two integers $a$ and $b$, we can express $a$ as a multiple of $b$ plus some constant remainder. Or, said differently, if we divide some integer $a$ (*dividend*) by a non-zero integer $b$ (*divisor*), we'll get an integer known as the *quotient* ($q$) and a *remainder* ($r$). This should sound familiar from your days of long division. Notice that the remainder can be zero if the quotient divides evenly into the dividend, as in $4 \div 2$.
+All this says is that if we have two integers $a$ and $b$, we can express $a$ as a multiple of $b$ plus some constant remainder. Or, said differently, if we divide some integer $a$ (_dividend_) by a non-zero integer $b$ (_divisor_), we'll get an integer known as the _quotient_ ($q$) and a _remainder_ ($r$). This should sound familiar from your days of long division. Notice that the remainder can be zero if the quotient divides evenly into the dividend, as in $4 \div 2$.
 
 The binary modulo operator ($a \bmod b$) just gives us the remainder ($r$) in this equation. For example:
 
@@ -95,11 +97,11 @@ $$
 You would read this as: "$a$ and $b$ are congruent modulo $p$." In plain terms, this says that $a$ and $b$ have the same remainder when divided by $p$.
 
 {% aside %}
-**Heads up!** Don't mistake the $(\bmod\; p)$ on the right-hand side for the *binary modulo operation* itself or for multiplication. In other words, this is NOT saying that $a$ is equal to $b \bmod p$. Rather, $(\bmod\; p)$ in parentheses is merely there to remind us that we're *working in modulo $p$*, but we're not saying that $a = b \bmod p$. Whenever you see $(\bmod\; p)$ in a congruence relation with parentheses, you should think of it as a label identifying our "modulo world," so to speak. We say that $a$ and $b$ are equivalent under these circumstances.
+**Heads up!** Don't mistake the $(\bmod\; p)$ on the right-hand side for the _binary modulo operation_ itself or for multiplication. In other words, this is NOT saying that $a$ is equal to $b \bmod p$. Rather, $(\bmod\; p)$ in parentheses is merely there to remind us that we're _working in modulo $p$_, but we're not saying that $a = b \bmod p$. Whenever you see $(\bmod\; p)$ in a congruence relation with parentheses, you should think of it as a label identifying our "modulo world," so to speak. We say that $a$ and $b$ are equivalent under these circumstances.
 {% endaside %}
 
 {% aside %}
-Another important point is that the equivalence symbol, $\equiv$, is not the same as the *equality* symbol, $=$. Two numbers are equal if they are exactly the same. But in an equivalence relation, we get to define what exactly "equivalence" means. In *congruence modulo*, equivalence means "having the same remainder when divided by a number $p$." So two numbers may be *congruent under a relation*, but they need not be the same number. For example, $1 \neq 5$, but $1 \equiv 5 \pmod{4}$. By analogy, apples don't equal oranges, but apples and oranges are equivalent under the relation of "belonging to the set of fruits."
+Another important point is that the equivalence symbol, $\equiv$, is not the same as the _equality_ symbol, $=$. Two numbers are equal if they are exactly the same. But in an equivalence relation, we get to define what exactly "equivalence" means. In _congruence modulo_, equivalence means "having the same remainder when divided by a number $p$." So two numbers may be _congruent under a relation_, but they need not be the same number. For example, $1 \neq 5$, but $1 \equiv 5 \pmod{4}$. By analogy, apples don't equal oranges, but apples and oranges are equivalent under the relation of "belonging to the set of fruits."
 {% endaside %}
 
 For example, in our earlier exploration, we found that many numbers map to the same remainder when divided by $4$. Here are just some of those congruence relations:
@@ -290,16 +292,16 @@ Since $k_1, k_2 \in \Z$, it follows that $k_1-k_2 \in \Z$, and thus $p|a-b$. The
 
 ## The Diffie-Hellman Key Exchange
 
-We're done with the theoretical part. Now, it's time to look at the Diffie-Hellman key exchange itself and understand why the math works. Armed with the proofs we just completed, we should be able to show that Alice and Bob are able to generate the same private key using information they shared with each other publicly (known as **public-key exchange**).
+We're done with the theoretical part. Now, it's time to look at the Diffie-Hellman key exchange itself and understand why the math works. Armed with the proofs we just completed, we should be able to show that Alice and Bob are able to generate the same private key using information they shared with each other publicly (known as <dfn>public-key exchange</dfn>).
 
-In public key exchange, Alice and Bob want to communicate private information with each other, but they must do so over a public (and therefore insecure) communication network where Eve is eavesdropping on them. The Diffie-Hellman key exchange allows Alice and Bob to establish a shared key for deciphering each other's messages by sharing information publicly in such a way that it's difficult for Eve to figure out what private keys they used independently.
+In public key exchange, Alice and Bob want to communicate private information with each other, but they must do so over a public (insecure) communication network where Eve is eavesdropping on them. The Diffie-Hellman key exchange allows Alice and Bob to negotiate a shared key for enciphering and deciphering each other's messages by sharing information publicly in such a way that it's difficult for Eve to figure out what private key they used.
 
 ### Alice and Bob Go Public
 
 To do this, $\htmlClass{alice}{\text{Alice}}$ and $\htmlClass{bob}{\text{Bob}}$ are going to leverage modular arithmetic and their knowledge of congruence modulo. First, they agree on two numbers:
 
-1. $g$, known as the *generator*, and
-2. $p$, a very large prime number, which we'll call the *prime modulus*.
+1. $g$, known as the _generator_, and
+2. $p$, a very large prime number, which we'll call the _prime modulus_.
 
 They share $g$ and $p$ publicly, so Eve also knows what they are. But as we're about to discover, this won't compromise the security of $\htmlClass{alice}{\text{Alice}}$ and $\htmlClass{bob}{\text{Bob}}$'s communication.
 
@@ -307,7 +309,7 @@ The key exchange proceeds as follows:
 
 1. $\htmlClass{alice}{\text{Alice}}$ and $\htmlClass{bob}{\text{Bob}}$ privately choose secret numbers $\htmlClass{alice}{A}$ and $\htmlClass{bob}{B}$, respectively. These are their private keys, and they will never share them with each other or anyone else.
 2. $\htmlClass{alice}{\text{Alice}}$ computes $\htmlClass{alice}{g^A \bmod p}$ privately. Let's call this remainder $\htmlClass{alice}{r_A}$. Observe that [by congruence of a remainder](#congruence-of-remainder), $r_A ≡ g^A \pmod{p}$. Similarly, $\htmlClass{bob}{\text{Bob}}$ computes $\htmlClass{bob}{g^B \bmod p}$ privately. Let's call this result $\htmlClass{bob}{r_B}$. Again, by congruence of a remainder, $r_B ≡ g^B \pmod{p}$. These two facts will be very important later. Refer back to the proof if you're unsure why these relations are true.
-3. $\htmlClass{alice}{\text{Alice}}$ sends $\htmlClass{alice}{r_A}$ to $\htmlClass{bob}{\text{Bob}}$ publicly, and $\htmlClass{bob}{\text{Bob}}$ sends $\htmlClass{bob}{r_B}$ to $\htmlClass{alice}{\text{Alice}}$ publicly. Eve can intercept both numbers, but she'll have a *very* difficult time working out what $\htmlClass{alice}{A}$ and $\htmlClass{bob}{B}$ were used, especially if $\htmlClass{alice}{\text{Alice}}$ and $\htmlClass{bob}{\text{Bob}}$ chose a sufficiently large prime modulus $p$.
+3. $\htmlClass{alice}{\text{Alice}}$ sends $\htmlClass{alice}{r_A}$ to $\htmlClass{bob}{\text{Bob}}$ publicly, and $\htmlClass{bob}{\text{Bob}}$ sends $\htmlClass{bob}{r_B}$ to $\htmlClass{alice}{\text{Alice}}$ publicly. Eve can intercept both numbers, but she'll have a _very_ difficult time working out what $\htmlClass{alice}{A}$ and $\htmlClass{bob}{B}$ were used, especially if $\htmlClass{alice}{\text{Alice}}$ and $\htmlClass{bob}{\text{Bob}}$ chose a sufficiently large prime modulus $p$.
 4. Now, $\htmlClass{alice}{\text{Alice}}$ privately computes $(\htmlClass{bob}{r_B})^{\htmlClass{alice}{A}} \bmod p$ to generate some remainder, let's call it $r_k$. Meanwhile, on his end, Bob privately computes $(\htmlClass{alice}{r_A})^{\htmlClass{bob}{B}} \bmod p$ and somehow arrives at the same remainder, $r_k$. Here, $r_k$ is their shared private key.
 
 When all is said and done, $\htmlClass{alice}{\text{Alice}}$ and $\htmlClass{bob}{\text{Bob}}$ are able to use this shared private key, $r_k$, to secure their communication, such as by using the key in another encryption algorithm. To arrive at the same key and decrypt their communication, Eve would need to know either $\htmlClass{alice}{A}$ or $\htmlClass{bob}{B}$, which were never shared publicly.
