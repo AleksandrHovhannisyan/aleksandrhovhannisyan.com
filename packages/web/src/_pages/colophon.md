@@ -17,7 +17,7 @@ scripts:
 ## Tech Stack
 
 - **Front end**
-  - **Static site generator**: [{{ eleventy.generator }}](11ty.dev)
+  - **Static site generator**: [{{ eleventy.generator }}](https://www.11ty.dev/)
   - **Styling**: Vanilla CSS (processed with [esbuild](https://esbuild.github.io/) and [PostCSS](https://postcss.org/))
   - **Content**: HTML, Markdown ([markdown-it](https://github.com/markdown-it/markdown-it)), and [Liquid](https://shopify.github.io/liquid/) templating
   - **Interactivity**: TypeScript (minified and bundled with [esbuild](https://esbuild.github.io/))
