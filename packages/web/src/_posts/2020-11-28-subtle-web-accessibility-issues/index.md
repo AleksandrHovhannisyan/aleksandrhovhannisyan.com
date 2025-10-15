@@ -1,12 +1,12 @@
 ---
 title: Subtle Accessibility Failures (And How to Fix Them)
-description: You got a perfect score on an accessibility audit. But is your site actually accessible, or have you overlooked more subtle failures?
+description: You got a perfect score on an accessibility audit. But is your site actually accessible, or did you overlook more subtle issues?
 keywords: [accessibility]
 categories: [accessibility, html]
 thumbnail: ./images/thumbnail.png
 ---
 
-All kinds of people use the web—a good developer's job is to create not only beautiful but also *accessible* user experiences. You can fix some basic accessibility issues by [writing semantic HTML](/blog/semantic-html-accessibility/), but this will only get you so far. Eventually, you'll come to realize that web accessibility isn't just about checking off a few boxes on an audit or scoring 100 on your Lighthouse report.
+All kinds of people use the web—a good developer's job is to create not only beautiful but also _accessible_ user experiences. You can fix some basic accessibility issues by [writing semantic HTML](/blog/semantic-html-accessibility/), but this will only get you so far. Eventually, you'll come to realize that web accessibility isn't just about checking off a few boxes on an audit or scoring 100 on your Lighthouse report.
 
 More importantly, you'll find that accessibility auditing tools like Lighthouse only do a superficial review of the most common accessibility issues, like skipped heading levels, anchors without text, or images without alt text. In fact, you can [build an inaccessible site with a perfect Lighthouse score](https://www.matuzo.at/blog/building-the-most-inaccessible-site-possible-with-a-perfect-lighthouse-score/), so it's certainly not a perfect tool.
 
@@ -21,10 +21,10 @@ Here are just a few of the accessibility failures that you'll want to look out f
 Up until a few months ago, I was guilty of relying on color alone to distinguish my links from the rest of my text. But this is not accessible to people with color blindness:
 
 {% quote "WCAG criterion 1.4.1", "https://www.w3.org/TR/WCAG20-TECHS/F73.html" %}
-  Color is not used as the only visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element.
+Color is not used as the only visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element.
 {% endquote %}
 
-[Some designers insist that link underlines are ugly](https://css-tricks.com/styling-links-with-real-underlines/). But of course, this assumes that your users will be able to distinguish links from their surrounding text *without* some sort of visual indicator like an underline.
+[Some designers insist that link underlines are ugly](https://css-tricks.com/styling-links-with-real-underlines/). But of course, this assumes that your users will be able to distinguish links from their surrounding text _without_ some sort of visual indicator like an underline.
 
 This is one of those accessibility concerns that certain tools like Lighthouse won't flag (or even look for in the first place). Yet it's still important to consider if you want to develop a truly accessible user experience.
 
@@ -64,12 +64,12 @@ Since they're aesthetically intrusive, skip-navigation links are typically hidde
 
 A word of caution: Don't hide skip-navigation links with `display: none` or `visibility: hidden`. These will remove the links from your site's [accessibility tree](https://developers.google.com/web/fundamentals/accessibility/semantics-builtin/the-accessibility-tree), so they'll be ignored by screen readers. Moreover, users won't be able to tab over to them, which defeats the purpose of having skip-navigation links.
 
-Developers usually stop here at the navbar and don't consider other navigation-intensive regions of their UIs. For example, if a blog post has a table of contents, a user shouldn't have to tab through ever single link just to skip this section and get to the content. In fact, any time you present a user with content that serves as an aside, you need to ensure that it's *truly* optional.
+Developers usually stop here at the navbar and don't consider other navigation-intensive regions of their UIs. For example, if a blog post has a table of contents, a user shouldn't have to tab through ever single link just to skip this section and get to the content. In fact, any time you present a user with content that serves as an aside, you need to ensure that it's _truly_ optional.
 
 Audit your website and identify areas of the user interface that have lots of interactive elements or links and that momentarily trap the user's focus in a region of content. Users should be able to skip these so they can jump around your site more easily.
 
 {% aside %}
-  **Note**: The benefit of using [multiple skip links](https://webaim.org/techniques/skipnav/#multiple) is debatable. Personally, I like to use them, but one could argue that each skip navigation link is, ironically, *one more link* that a user has to tab through. I'd say the benefits outweigh the costs if you have lots of links bunched together.
+**Note**: The benefit of using [multiple skip links](https://webaim.org/techniques/skipnav/#multiple) is debatable. Personally, I like to use them, but one could argue that each skip navigation link is, ironically, _one more link_ that a user has to tab through. I'd say the benefits outweigh the costs if you have lots of links bunched together.
 {% endaside %}
 
 ## 4. Images in Place of Text
@@ -94,7 +94,7 @@ Admittedly, this accessibility failure is not actually so subtle. But you'd be s
 
 I'm not going to name and shame, but I recently encountered two websites that had scroll hijacking, and they were both terrible to use. One of them was the worst offender—not only did they hijack the scrollbar and completely hide it from view, but they also made it so that scrolling to the very end of the page (wherever that is!) would just cycle you back to the first "slide." It took me a while to figure out that I was not, in fact, looking at infinitely scrolling content.
 
-Takeaway: Just because you *can* do something on the web doesn't mean that you *should*. Scroll hijacking is terrible for accessibility—just don't do it.
+Takeaway: Just because you _can_ do something on the web doesn't mean that you _should_. Scroll hijacking is terrible for accessibility—just don't do it.
 
 ## 6. Aria Labels Don't Provide Sufficient Context
 
@@ -103,29 +103,29 @@ Aria labels are tricky to get right, especially in user interfaces that have lot
 - A button whose aria-label is `Close`.
 - A button whose aria-label is `Close this X` (replace X with whatever is being closed).
 
-Unless a blind user recalls the context of where they currently are in your page, a button that merely reads "Close" won't tell them much about *what* they're closing. Is it a modal window that they recently opened? Or is it something *inside* the modal window, like a dismissible message or preview? Sighted users can figure this out, but that's only because it's easy to visually discern an element's role based on its surrounding context—an `X` symbol situated in the top-right of a window is likely going to close that window.
+Unless a blind user recalls the context of where they currently are in your page, a button that merely reads "Close" won't tell them much about _what_ they're closing. Is it a modal window that they recently opened? Or is it something _inside_ the modal window, like a dismissible message or preview? Sighted users can figure this out, but that's only because it's easy to visually discern an element's role based on its surrounding context—an `X` symbol situated in the top-right of a window is likely going to close that window.
 
 Note that the first example may be your only option if your app needs to support internationalization, in which case you may have to sacrifice some specificity in your aria-labels in favor of more reusable, shorter text. Otherwise, if you have lots of closable "things" in your app, you'll find yourself maintaining potentially thousands of strings. But if you can go the extra mile, definitely provide more context in your aria-labels to make your site more accessible.
 
 ## 7. Decorative Images Are Not Hidden from Screen Readers
 
-You may have heard that you should always give your images alt text. This is technically true because images without an alt attribute are actually invalid HTML. But what if I told you that the alt attribute should sometimes be empty? These so-called *decorative* (presentational) images don't carry the same meaning as other images, and describing them with alt text wouldn't really anything to the user experience (in fact, it could *annoy* users).
+You may have heard that you should always give your images alt text. This is technically true because images without an alt attribute are actually invalid HTML. But what if I told you that the alt attribute should sometimes be empty? These so-called _decorative_ (presentational) images don't carry the same meaning as other images, and describing them with alt text wouldn't really anything to the user experience (in fact, it could _annoy_ users).
 
-Banner images, profile photos, and article thumbnails are a few examples of images that don't always need alt text. Specifying alt text for these images would not contribute meaningfully to the user experience or convey any important information, aside from the fact that "there's an image (of something) here." Even if you *do* describe the image, it's unlikely that your users will care or benefit from knowing what the image portrays. It's unnecessary noise.
+Banner images, profile photos, and article thumbnails are a few examples of images that don't always need alt text. Specifying alt text for these images would not contribute meaningfully to the user experience or convey any important information, aside from the fact that "there's an image (of something) here." Even if you _do_ describe the image, it's unlikely that your users will care or benefit from knowing what the image portrays. It's unnecessary noise.
 
 Presentational images should be hidden from screen readers with an empty `alt` attribute:
 
 ```html
-<img src="src" alt="">
+<img src="src" alt="" />
 ```
 
 Alternatively, you can use `role="presentation"` to clobber the image's role:
 
 ```html
-<img src="src" role="presentation">
+<img src="src" role="presentation" />
 ```
 
-Don't abuse this, though. Images that actually convey meaning—like those used in a blog post or tutorial—need to be given non-empty alt text. Note the wording—you can't simply omit the `alt` attribute from an image. All images *must* have an `alt` attribute present. But decorative images should specify an *empty* `alt`.
+Don't abuse this, though. Images that actually convey meaning—like those used in a blog post or tutorial—need to be given non-empty alt text. Note the wording—you can't simply omit the `alt` attribute from an image. All images _must_ have an `alt` attribute present. But decorative images should specify an _empty_ `alt`.
 
 ## Final Thoughts
 

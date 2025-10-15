@@ -303,7 +303,7 @@ To do this, $\htmlClass{alice}{\text{Alice}}$ and $\htmlClass{bob}{\text{Bob}}$ 
 1. $g$, known as the _generator_, and
 2. $p$, a very large prime number, which we'll call the _prime modulus_.
 
-They share $g$ and $p$ publicly, so Eve also knows what they are. But as we're about to discover, this won't compromise the security of $\htmlClass{alice}{\text{Alice}}$ and $\htmlClass{bob}{\text{Bob}}$'s communication.
+They share $g$ and $p$ publicly, so Eve also knows what they are. But as we're about to see, this won't compromise the security of $\htmlClass{alice}{\text{Alice}}$ and $\htmlClass{bob}{\text{Bob}}$'s communication.
 
 The key exchange proceeds as follows:
 

@@ -1,6 +1,6 @@
 ---
 title: Listening for Key Sequences in JavaScript
-description: Learn how to implement a simple algorithm that listens for a specific sequence of keystrokes in JavaScript, with an optional delay between keys.
+description: Implement a simple algorithm that listens for a sequence of keystrokes in JavaScript.
 keywords: [key sequence]
 categories: [javascript]
 lastUpdated: 2024-10-20
@@ -12,6 +12,7 @@ Most programming languages have standard libraries or APIs that allow you to lis
 We can take this idea a step further and even enforce an optional delay between keystrokes, as we'll do in this tutorial. You can play around with this idea in the following interactive demo:
 
 {% capture html %}
+
 ```html
 <table>
   <thead>
@@ -36,8 +37,10 @@ We can take this idea a step further and even enforce an optional delay between 
   </tbody>
 </table>
 ```
+
 {% endcapture %}
 {% capture css %}
+
 ```css
 table {
   border-collapse: collapse;
@@ -56,26 +59,30 @@ th {
 th {
   background-color: hsl(0, 0%, 95%);
 }
-:is(td,th):nth-child(2) {
+:is(td, th):nth-child(2) {
   text-align: end;
 }
-tr[aria-current="true"] {
+tr[aria-current='true'] {
   background-color: #f6f6b1;
 }
-tr[aria-selected="true"] {
+tr[aria-selected='true'] {
   background-color: #d4f5c8;
 }
 ```
+
 {% endcapture %}
 {% capture js %}
+
 ```js
 const table = document.querySelector('tbody');
 const keys = Array.from(table.querySelectorAll(':is(td,th):nth-child(1)')).map((cell) => cell.textContent);
-const timeToNextKeyMs = Array.from(table.querySelectorAll(':is(td,th):nth-child(2)')).map((cell) => Number(cell.textContent) || undefined);
+const timeToNextKeyMs = Array.from(table.querySelectorAll(':is(td,th):nth-child(2)')).map(
+  (cell) => Number(cell.textContent) || undefined
+);
 
 const keySequenceJson = keys.map((key, index) => ({
   key,
-  timeToNextKeyMs: timeToNextKeyMs[index]
+  timeToNextKeyMs: timeToNextKeyMs[index],
 }));
 
 const makeKeySequenceListener = (keySequence, callback) => {
@@ -88,7 +95,7 @@ const makeKeySequenceListener = (keySequence, callback) => {
       if (newIndex === 0) {
         index = newIndex;
         Array.from(table.rows).forEach((row, index) => {
-        	// When resetting, all rows must clear their success state
+          // When resetting, all rows must clear their success state
           row.setAttribute('aria-selected', false);
           // When resetting, the first row becomes active and all others inactive
           row.setAttribute('aria-current', index === 0);
@@ -105,18 +112,15 @@ const makeKeySequenceListener = (keySequence, callback) => {
       table.rows[index].setAttribute('aria-current', true);
     });
 
-	// Init
+  // Init
   setIndex(0);
 
-	// This handler can be passed to any key listener
+  // This handler can be passed to any key listener
   return (e) => {
     // Clear previous timer (if any)
     clearTimeout(timeoutId);
 
-    const {
-      key,
-      timeToNextKeyMs
-    } = keySequence[index];
+    const { key, timeToNextKeyMs } = keySequence[index];
 
     // Keystroke matches the target one for our current position
     if (e.key === key) {
@@ -128,23 +132,24 @@ const makeKeySequenceListener = (keySequence, callback) => {
       // Set up new timer if there's a specified delay
       else if (typeof timeToNextKeyMs !== 'undefined') {
         timeoutId = setTimeout(() => {
-            console.log("⏰ Time's up!");
-            setIndex(0);
+          console.log("⏰ Time's up!");
+          setIndex(0);
         }, timeToNextKeyMs);
       }
       // Move up, wrapping as needed
       setIndex((index + 1) % keySequence.length);
     } else {
-      console.log(`❌ expected ${key} but received ${e.key}`)
+      console.log(`❌ expected ${key} but received ${e.key}`);
       // Key didn't match; start over
       setIndex(0);
     }
   };
 };
 
-const listener = makeKeySequenceListener(keySequenceJson, () => console.log("🎉 Key sequence completed!"));
+const listener = makeKeySequenceListener(keySequenceJson, () => console.log('🎉 Key sequence completed!'));
 document.addEventListener('keyup', listener);
 ```
+
 {% endcapture %}
 
 {% codeDemo 'Listening for the key sequence abc, with a two-second delay between a and b and a one-second delay between b and c.' %}
@@ -190,7 +195,7 @@ Here's an example of how you might use this code:
 
 ```js {data-copyable="true"}
 const listener = makeKeySequenceListener('thisisunsafe', () => {
-  alert('done')
+  alert('done');
 });
 document.addEventListener('keyup', listener);
 ```
@@ -287,7 +292,7 @@ const makeKeySequenceListener = (keySequence, callback) => {
       }
       // Set up new timer if there's a specified delay
       else if (typeof timeToNextKeyMs !== 'undefined') {
-        timeoutId = setTimeout(() => index = 0, timeToNextKeyMs);
+        timeoutId = setTimeout(() => (index = 0), timeToNextKeyMs);
       }
       // Move up, wrapping back to the start as needed
       index = (index + 1) % keySequence.length;
@@ -300,4 +305,3 @@ const makeKeySequenceListener = (keySequence, callback) => {
 ```
 
 And that's it for the code.
-

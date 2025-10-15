@@ -1,6 +1,6 @@
 ---
 title: Serializing HTML Form Data with JavaScript
-description: Learn how to use JavaScript's FormData, URLSearchParams, and URL constructors to serialize an HTML form's data into a well-formatted and encoded URL.
+description: Use JavaScript's FormData, URLSearchParams, and URL constructors to serialize an HTML form's data into a well-formatted and encoded URL.
 keywords: [form data, serialize form data]
 categories: [html, javascript, forms]
 ---
@@ -42,36 +42,38 @@ Thankfully, serializing form data with JavaScript is easy—the code ends up bei
   </form>
   ```
 
-  ```css
-  input,
-  button {
-    font: inherit;
-  }
-  form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  input {
-    padding: 0.25em;
-  }
-  .input-group {
-    font-size: var(--size-font-sm);
-    display: grid;
-    gap: 0.25rem;
-  }
-  ```
+```css
+input,
+button {
+  font: inherit;
+}
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+input {
+  padding: 0.25em;
+}
+.input-group {
+  font-size: var(--size-font-sm);
+  display: grid;
+  gap: 0.25rem;
+}
+```
 
-  ```js
-  document.querySelector('form').addEventListener('input', (e) => {
-    const data = new FormData(e.currentTarget);
-    const queryString = new URLSearchParams(data).toString();
-    const url = new URL(form.action, window.location.href);
-    url.search = queryString;
-    console.log(url.toString());
-  });
-  ```
-  {% endcodeDemo %}
+```js
+document.querySelector('form').addEventListener('input', (e) => {
+  const data = new FormData(e.currentTarget);
+  const queryString = new URLSearchParams(data).toString();
+  const url = new URL(form.action, window.location.href);
+  url.search = queryString;
+  console.log(url.toString());
+});
+```
+
+{% endcodeDemo %}
+
 </div>
 
 {% include "toc.md" %}

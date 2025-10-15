@@ -1,7 +1,7 @@
 ---
-title: Be Careful with Async Functions that Return Booleans
-description: Suppose an async function returns a boolean. What happens if you check the return value without awaiting it?
-keywords: [async functions]
+title: Unawaited Async Functions That Return Booleans
+description: What happens if you forget to await a promise that resolves to a boolean value?
+keywords: [unawaited]
 categories: [javascript, async]
 thumbnail: ./images/thumbnail.png
 ---
@@ -31,13 +31,13 @@ if (isBroken()) {
 }
 ```
 
-Either way, does the body of the `if` statement execute? Take a second to think this through. You can check if you're right by copying the first code sample and executing it in your dev tools.
+Either way, does the body of the `if` statement execute?
 
-(You can probably already guess the answer, though, just based on the fact that I'm writing this post.)
+(You can probably already guess the answer based on the fact that I'm writing this post.)
 
-## Async Functions, Booleans, and Truthiness: A Slippery Bug
+## All Promises Are Truthy
 
-The `if` statement in this code will *always* execute its body, regardless of what the async function returns. ESLint won't flag this as an error. TypeScript technically *should*, [but it has not yet implemented this warning](https://github.com/microsoft/TypeScript/issues/25330) for un-awaited async functions.
+The `if` statement in this code will *always* execute its body, regardless of what the async function returns. TypeScript [didn't handle this for years](https://github.com/microsoft/TypeScript/issues/25330), but they later [fixed the issue](https://github.com/microsoft/TypeScript/pull/39175).
 
 To understand why the expression always evaluates to `true`, recall that `async/await` is just syntactic sugar for Promises. In JavaScript, an `async` function actually wraps its return value in a `Promise` object—even if it seems like the function is directly returning a value, and even if the function does not `await` anything.
 

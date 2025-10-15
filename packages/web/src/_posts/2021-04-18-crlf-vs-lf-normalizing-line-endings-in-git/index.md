@@ -1,8 +1,8 @@
 ---
-title: "CRLF vs. LF: Normalizing Line Endings in Git"
+title: 'CRLF vs. LF: Normalizing Line Endings in Git'
 description: Line endings can differ from one OS to another. Learn the history behind CRLF and LF line endings and how to enforce line endings in Git.
 keywords: [line endings, git, gitattributes, carriage return, line feed, crlf vs lf]
-categories: [git, operating-systems, tooling]
+categories: [git, tooling]
 commentsId: 79
 isFeatured: true
 lastUpdated: 2022-07-23
@@ -21,11 +21,11 @@ History can be boring, though, so if you stumbled upon this post after hours of 
 
 ## What Are Line Endings?
 
-To *really* understand this problem of CRLF vs. LF line endings, we need to brush up on a bit of typesetting history.
+To _really_ understand this problem of CRLF vs. LF line endings, we need to brush up on a bit of typesetting history.
 
-People use letters, numbers, and symbols to communicate with one another. It's how you're reading this post right now! But computers can only understand and work with *numbers*. Since the files on your computer consist of strings of human-readable characters, we need a system that allows us to convert back and forth between these two formats. The [Unicode standard](https://en.wikipedia.org/wiki/Unicode) is that system—it maps characters like `A` and `z` to numbers, bridging the gap between human languages and the language of computers.
+People use letters, numbers, and symbols to communicate with one another. It's how you're reading this post right now! But computers can only understand and work with _numbers_. Since the files on your computer consist of strings of human-readable characters, we need a system that allows us to convert back and forth between these two formats. The [Unicode standard](https://en.wikipedia.org/wiki/Unicode) is that system—it maps characters like `A` and `z` to numbers, bridging the gap between human languages and the language of computers.
 
-Notably, the Unicode standard isn't just for *visible* characters like letters and numbers. A certain subset are **control characters**, also known as **non-printing characters**. They aren't used to render visible characters; rather, they're used to perform unique actions, like deleting the previous character or inserting a newline.
+Notably, the Unicode standard isn't just for _visible_ characters like letters and numbers. A certain subset are **control characters**, also known as **non-printing characters**. They aren't used to render visible characters; rather, they're used to perform unique actions, like deleting the previous character or inserting a newline.
 
 `LF` and `CR` are two such control characters, and they're both related to line endings in files. Their history dates back to the era of the typewriter, so we'll briefly look at how that works so you understand why we have two different control characters rather than just one. Then, we'll look at how this affects the typical developer experience on a multi-OS codebase.
 
@@ -41,7 +41,7 @@ You may be wondering where the need for such a character originated (beyond just
 
 #### Typewriters and the Carriage Return
 
-Back when dinosaurs roamed the earth, people used to lug around these chunky devices called *typewriters*.
+Back when dinosaurs roamed the earth, people used to lug around these chunky devices called _typewriters_.
 
 <figure>
 <img src="./images/typewriter.png" alt="Top-down view of a typewriter, with paper fed into the carriage." sizes="100vw" />
@@ -50,10 +50,10 @@ Back when dinosaurs roamed the earth, people used to lug around these chunky dev
 
 You feed the device a sheet of paper fastened to a mechanical roll known as the **carriage**. With each keystroke, the typewriter prints letters using ink on your sheet of paper, shifting the carriage to the left to ensure that the next letter you type will appear to the right of the previous one. You can [watch a typewriter being used in action](https://www.youtube.com/watch?v=5sTHMXqD9kg) to get a better sense for how this works.
 
-Of course, once you run out of space on the current line, you'll need to go down to the next line on your sheet of paper. This is done by rotating the carriage to move the paper up a certain distance relative to the typewriter's "pen." But you also need to reset your carriage so that the next character you type will be aligned to the left-hand margin of your paper. In other words, you need some way to *return* the carriage to its starting position. And that's precisely the job of the **carriage return**: a metal lever attached to the left side of the carriage that, when pushed, returns the carriage to its starting position.
+Of course, once you run out of space on the current line, you'll need to go down to the next line on your sheet of paper. This is done by rotating the carriage to move the paper up a certain distance relative to the typewriter's "pen." But you also need to reset your carriage so that the next character you type will be aligned to the left-hand margin of your paper. In other words, you need some way to _return_ the carriage to its starting position. And that's precisely the job of the **carriage return**: a metal lever attached to the left side of the carriage that, when pushed, returns the carriage to its starting position.
 
 {% aside %}
-  **Fun Fact**: You may be familiar with the characteristic *ding* sound that a typewriter makes from movies or video games (thanks, *Dishonored*!). This is known as the margin bell, which is triggered as soon as your text approaches the very right margin to signal that you need to move on to the next line.
+**Fun Fact**: You may be familiar with the characteristic _ding_ sound that a typewriter makes from movies or video games (thanks, _Dishonored_!). This is known as the margin bell, which is triggered as soon as your text approaches the very right margin to signal that you need to move on to the next line.
 {% endaside %}
 
 That's all good and well, but you're probably wondering how this is relevant in the world of computers, where carriages, levers, and all these contraptions seem obsolete. We're getting there!
@@ -64,21 +64,21 @@ Moving on to the early 20th century, we arrive at the **teletypewriter**, yet an
 
 Now we're digital! These devices needed to use both a line feed character (`LF`) and a carriage return character (`CR`) to allow you to type from the start of the next line of text. That's exactly how the original typewriter worked, except it didn't have any notion of "characters" because it was a mechanically operated device. With the teletype, this process is more or less automatic and triggered by a keystroke—you don't have to manually push some sort of "carriage" or move a sheet of paper up or down to achieve the same effect.
 
-It's easier to visualize this if you think of `LF` and `CR` as representing independent movements in either the horizontal or vertical direction, but not both. By itself, a line feed moves you down vertically; a carriage return resets your "cursor" to the very start of the current line. We saw the physical analogue of `CR` and `LF` with typewriters—moving to the next line of text required rotating the carriage to move the sheet of paper up (line feed), and returning your "cursor" to the start of that new line required using a mechanical piece aptly named the *carriage return*.
+It's easier to visualize this if you think of `LF` and `CR` as representing independent movements in either the horizontal or vertical direction, but not both. By itself, a line feed moves you down vertically; a carriage return resets your "cursor" to the very start of the current line. We saw the physical analogue of `CR` and `LF` with typewriters—moving to the next line of text required rotating the carriage to move the sheet of paper up (line feed), and returning your "cursor" to the start of that new line required using a mechanical piece aptly named the _carriage return_.
 
 Teletypes set the standard for `CRLF` line endings in some of the earliest operating systems, like the popular MS-DOS. Microsoft has an excellent article explaining the history of `CRLF` in teletypes and early operating systems. Here's a relevant snippet:
 
 {% quote "Why is the line terminator CR+LF?", "https://devblogs.microsoft.com/oldnewthing/20040318-00/?p=40193" %}
-  This protocol dates back to the days of teletypewriters. CR stands for "carriage return" – the CR control character returned the print head ("carriage") to column 0 without advancing the paper. LF stands for "linefeed" – the LF control character advanced the paper one line without moving the print head. So if you wanted to return the print head to column zero (ready to print the next line) and advance the paper (so it prints on fresh paper), you need both CR and LF.
+This protocol dates back to the days of teletypewriters. CR stands for "carriage return" – the CR control character returned the print head ("carriage") to column 0 without advancing the paper. LF stands for "linefeed" – the LF control character advanced the paper one line without moving the print head. So if you wanted to return the print head to column zero (ready to print the next line) and advance the paper (so it prints on fresh paper), you need both CR and LF.
 
-  If you go to the various internet protocol documents, such as RFC 0821 (SMTP), RFC 1939 (POP), RFC 2060 (IMAP), or RFC 2616 (HTTP), you’ll see that they all specify CR+LF as the line termination sequence. So the the real question is not "Why do CP/M, MS-DOS, and Win32 use CR+LF as the line terminator?" but rather "Why did other people choose to differ from these standards documents and use some other line terminator?"
+If you go to the various internet protocol documents, such as RFC 0821 (SMTP), RFC 1939 (POP), RFC 2060 (IMAP), or RFC 2616 (HTTP), you’ll see that they all specify CR+LF as the line termination sequence. So the the real question is not "Why do CP/M, MS-DOS, and Win32 use CR+LF as the line terminator?" but rather "Why did other people choose to differ from these standards documents and use some other line terminator?"
 {% endquote %}
 
 MS-DOS used the two-character combination of `CRLF` to denote line endings in files, and modern Windows computers continue to use `CRLF` as their line ending to this day. Meanwhile, from its very inception, [Unix used `LF` to denote line endings](https://unix.stackexchange.com/a/411830/311005), ditching `CRLF` for consistency and simplicity. Apple originally used only `CR` for Mac Classic but eventually switched to `LF` for OS X, consistent with Unix.
 
-This makes it seem like Windows is the odd one out when it's *technically* not. Developers usually get frustrated with line endings on Windows because `CRLF` is seen as an artifact of older times, when you actually *needed* both a carriage return and a line feed to represent newlines on devices like teletypes.
+This makes it seem like Windows is the odd one out when it's _technically_ not. Developers usually get frustrated with line endings on Windows because `CRLF` is seen as an artifact of older times, when you actually _needed_ both a carriage return and a line feed to represent newlines on devices like teletypes.
 
-It's easy to see why `CRLF` is redundant by today's standards—using both a carriage return and a line feed assumes that you're bound to the physical limitations of a typewriter, where you *had* to explicitly move your sheet of paper up and then reset the carriage to the left-hand margin. With a file, it suffices to define the newline character as implicitly doing the job of both a line feed and a carriage return under the hood. In other words, so long as your operating system defines the newline character to mean that the next line starts at the *beginning* and not at some arbitrary column offset, then we have no need for an explicit carriage return *in addition* to a line feed—one symbol can do the job of both.
+It's easy to see why `CRLF` is redundant by today's standards—using both a carriage return and a line feed assumes that you're bound to the physical limitations of a typewriter, where you _had_ to explicitly move your sheet of paper up and then reset the carriage to the left-hand margin. With a file, it suffices to define the newline character as implicitly doing the job of both a line feed and a carriage return under the hood. In other words, so long as your operating system defines the newline character to mean that the next line starts at the _beginning_ and not at some arbitrary column offset, then we have no need for an explicit carriage return _in addition_ to a line feed—one symbol can do the job of both.
 
 While it may seem like a harmless difference between operating systems, this issue of CRLF vs. LF has been causing people headaches for a long time now. For example, basic Windows text editors like Notepad used to not be able to properly interpret `LF` alone as a true line ending. Thus, if you opened a file created on Linux or Mac with Notepad, the line endings would not get rendered correctly. Notepad was later [updated in 2018 to support `LF`](https://devblogs.microsoft.com/commandline/extended-eol-in-notepad/).
 
@@ -92,7 +92,7 @@ For this reason, Git allows you to configure line endings in one of two ways: by
 
 Before we look at any specifics, I want to clarify one detail: All end-of-line transformations in Git occur when moving files in and out of [the index](https://stackoverflow.com/questions/3689838/whats-the-difference-between-head-working-tree-and-index-in-git)—the temporary staging area that sits between your local files ([working tree](https://craftquest.io/articles/what-is-the-working-tree-in-git)) and the repository that later gets pushed to your remote. When you stage files for a commit, they enter the index and may be subject to line ending normalization (depending on your settings). Conversely, when you check out a branch or a set of files, you're moving files out of the index and into your working tree.
 
-When normalization is enabled, line endings in your local and remote *repository* will always be set to `LF` and never `CRLF`. However, depending on some other settings, Git may silently check out files into the *working tree* as `CRLF`. Unlike the original problem described in this article, this will not pollute `git status` with actual line ending changes—it's mainly used to ensure that Windows developers can take advantage of `CRLF` locally while always committing `LF` to the repo.
+When normalization is enabled, line endings in your local and remote _repository_ will always be set to `LF` and never `CRLF`. However, depending on some other settings, Git may silently check out files into the _working tree_ as `CRLF`. Unlike the original problem described in this article, this will not pollute `git status` with actual line ending changes—it's mainly used to ensure that Windows developers can take advantage of `CRLF` locally while always committing `LF` to the repo.
 
 We'll learn more about how all of this works in the next few sections.
 
@@ -108,7 +108,7 @@ git config --global core.autocrlf [true|false|input]
 
 You can also view the current Git setting using this command:
 
-``` {data-copyable=true}
+```{data-copyable=true}
 git config --list
 ```
 
@@ -146,7 +146,7 @@ For this reason, `core.autocrlf=true` tends to be recommended setting for Window
 
 ### Normalizing Line Endings in Git with `.gitattributes`
 
-You certainly *could* ask all your developers to configure their local Git. But this is tedious, and it can be confusing trying to recall what these options mean since their recommended usage depends on your operating system. If a developer installs a new environment or gets a new laptop, they'll need to remember to reconfigure Git. And if a Windows developer forgets to read your docs, or someone from another team commits to your repo, then you may start seeing line ending changes again.
+You certainly _could_ ask all your developers to configure their local Git. But this is tedious, and it can be confusing trying to recall what these options mean since their recommended usage depends on your operating system. If a developer installs a new environment or gets a new laptop, they'll need to remember to reconfigure Git. And if a Windows developer forgets to read your docs, or someone from another team commits to your repo, then you may start seeing line ending changes again.
 
 Fortunately, there's a better solution: creating a `.gitattributes` file at the root of your repo to settle things once and for all. Git uses this config to apply certain attributes to your files whenever you check out or commit them. One popular use case of `.gitattributes` is to normalize line endings in a project. With this config-based approach, you can ensure that your line endings remain consistent in your codebase regardless of what operating systems or local Git settings your developers use since this file takes priority. You can learn more about the supported `.gitattributes` options in [the official Git docs](https://git-scm.com/docs/gitattributes).
 
@@ -162,19 +162,19 @@ Add the file to the root of your workspace, commit it, and push it to your repo.
 
 Let's also understand how it works.
 
-First, the wildcard selector (`*`) matches all files that aren't gitignored. These files become candidates for end-of-line normalization, subject to any attributes you've specified. In this case, we're using [the `text` attribute](https://git-scm.com/docs/gitattributes#_text), which normalizes all line endings to `LF` when checking files into your repo. However, it does not modify line endings in your *working tree*. This is essentially the same as setting `core.autocrlf=input` in your Git settings.
+First, the wildcard selector (`*`) matches all files that aren't gitignored. These files become candidates for end-of-line normalization, subject to any attributes you've specified. In this case, we're using [the `text` attribute](https://git-scm.com/docs/gitattributes#_text), which normalizes all line endings to `LF` when checking files into your repo. However, it does not modify line endings in your _working tree_. This is essentially the same as setting `core.autocrlf=input` in your Git settings.
 
 More specifically, [the `text=auto` option](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Settostringvalueauto) tells Git to **only normalize line endings to `LF` for text files** while leaving binary files (images, fonts, etc.) untouched. This distinction is important—we don't want to corrupt binary files by modifying their line endings.
 
-After committing the `.gitattributes` file, your changes won't take effect immediately for files checked into Git *prior* to the addition of `.gitattributes`. To force an update, you can use the following command [since Git 2.16](https://stackoverflow.com/a/50645024/5323344):
+After committing the `.gitattributes` file, your changes won't take effect immediately for files checked into Git _prior_ to the addition of `.gitattributes`. To force an update, you can use the following command [since Git 2.16](https://stackoverflow.com/a/50645024/5323344):
 
-``` {data-copyable=true}
+```{data-copyable=true}
 git add --renormalize .
 ```
 
 This updates all tracked files in your repo according to the rules defined in your `.gitattributes` config. If previously committed text files used `CRLF` in your repo and are converted to `LF` during the renormalization process, those files will be staged for a commit. You can then check if any files were modified like you would normally:
 
-``` {data-copyable=true}
+```{data-copyable=true}
 git status
 ```
 
@@ -184,7 +184,7 @@ The only thing left to do is to commit those changes (if any) and push them to y
 
 If you want to verify that the files in your repo are using the correct line endings after all of these steps, you can run the following command:
 
-``` {data-copyable=true}
+```{data-copyable=true}
 git ls-files --eol
 ```
 
@@ -224,13 +224,13 @@ The file will have its original line endings in your working directory.
 
 **This is working as expected**—`CRLF` will be converted to `LF` when you commit your changes, meaning that when you push those files to your remote, they'll use `LF`. Anyone who later pulls or checks out that code will see `LF` line endings locally for those files.
 
-But the `text` attribute doesn't change line endings for the **local copies** of your text files (i.e., the ones in Git's working tree)—it only changes line endings for files in the repo. Hence the second line of the message, which notes that the text files you just renormalized may still continue to use `CRLF` locally (on your file system) if that's the line ending with which they were originally created/cloned on your system. Rest assured that text files will never use `CRLF` in the *remote* copy of your code.
+But the `text` attribute doesn't change line endings for the **local copies** of your text files (i.e., the ones in Git's working tree)—it only changes line endings for files in the repo. Hence the second line of the message, which notes that the text files you just renormalized may still continue to use `CRLF` locally (on your file system) if that's the line ending with which they were originally created/cloned on your system. Rest assured that text files will never use `CRLF` in the _remote_ copy of your code.
 
 ##### The `eol` Attribute: Controlling Line Endings in Git's Working Tree
 
 Sometimes, you actually want files to be checked out locally on your system with `CRLF` while still retaining `LF` in your repo. Usually, this is for Windows-specific files that are very sensitive to line ending changes. Batch scripts are a common example since they need `CRLF` line endings to run properly. It's okay to store these files with `LF` line endings in your repo, so long as they later get checked out with the correct line endings on a Windows machine. You can find a more comprehensive list of files that need `CRLF` line endings in the following article: [`.gitattributes` Best Practices](https://rehansaeed.com/gitattributes-best-practices/#line-endings).
 
-When we [configured our local Git settings](#configuring-line-endings-in-git-with-coreautocrlf), we saw that you can achieve this desired behavior with `core.autocrlf=true`. The `.gitattributes` equivalent of this is using [the `eol` attribute](https://git-scm.com/docs/gitattributes#_eol), which enables `LF` normalization for files checked into your repo but also allows you to control which line ending gets applied in Git's *working tree*:
+When we [configured our local Git settings](#configuring-line-endings-in-git-with-coreautocrlf), we saw that you can achieve this desired behavior with `core.autocrlf=true`. The `.gitattributes` equivalent of this is using [the `eol` attribute](https://git-scm.com/docs/gitattributes#_eol), which enables `LF` normalization for files checked into your repo but also allows you to control which line ending gets applied in Git's _working tree_:
 
 1. [`eol=lf`](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Settostringvaluelf): converts to `LF` on checkout.
 2. [`eol=crlf`](https://git-scm.com/docs/gitattributes#Documentation/gitattributes.txt-Settostringvaluecrlf): converts to `CRLF` on checkout.
@@ -249,19 +249,19 @@ In this case, batch scripts will have two non-overlapping rules applied to them 
 
 **This change won't take effect immediately**, so if you run `git ls-files --eol` after updating your `.gitattributes` file, you might still see `LF` line endings in the working tree. To update existing line endings in your working tree so they respect the `eol` attribute, you'll need to run the following set of commands [per this StackOverflow answer](https://stackoverflow.com/a/29888735/5323344):
 
-``` {data-copyable=true}
+```{data-copyable=true}
 git rm --cached -r .
 git reset --hard
 ```
 
 {% aside %}
-  Since these commands do not alter line endings in your repo, you will not see any changes staged for a commit. Think of this as "silently" refreshing the line endings in your working tree.
+Since these commands do not alter line endings in your repo, you will not see any changes staged for a commit. Think of this as "silently" refreshing the line endings in your working tree.
 {% endaside %}
 
-You'll notice that this command differs from `git add --renormalize .`, which we previously used to update line endings in the local repo. Now, we're updating line endings in the *working tree* to reflect our `eol` preferences. If you now you run `git ls-files --eol`, you should see `i/lf w/crlf` for any files matching the specified pattern.
+You'll notice that this command differs from `git add --renormalize .`, which we previously used to update line endings in the local repo. Now, we're updating line endings in the _working tree_ to reflect our `eol` preferences. If you now you run `git ls-files --eol`, you should see `i/lf w/crlf` for any files matching the specified pattern.
 
 {% aside %}
-  Under the hood, the `eol` attribute also implies `text` with no value, so it's the same as doing `*.bat text eol=crlf` in this example. [Prior to Git 2.10.0](https://github.com/git/git/blob/master/Documentation/RelNotes/2.10.0.txt#L248), there was a bug where `text=auto eol=crlf` implied `text eol=crlf`—that is, the auto-text-detection algorithm didn't work. This has now been fixed, so `text=auto` can safely be used with `eol`.
+Under the hood, the `eol` attribute also implies `text` with no value, so it's the same as doing `*.bat text eol=crlf` in this example. [Prior to Git 2.10.0](https://github.com/git/git/blob/master/Documentation/RelNotes/2.10.0.txt#L248), there was a bug where `text=auto eol=crlf` implied `text eol=crlf`—that is, the auto-text-detection algorithm didn't work. This has now been fixed, so `text=auto` can safely be used with `eol`.
 {% endaside %}
 
 One final note: In the recommended `.gitattributes` file, we used `* text=auto` to mark all text files for end-of-line normalization to `LF` once they're staged in Git's index. We could've also done `* text=auto eol=lf`, although these two are not identical. Like I mentioned before, if you only use `* text=auto`, you may still see some `CRLF` line endings locally in your working tree; this is okay and is working as expected. If you don't want this, you can enforce `* text=auto eol=lf` instead. However, this is usually not necessary because the main concern is about what line endings make it into the index and your repo.
@@ -307,7 +307,7 @@ Again, this doesn't mean that Git's normalization process isn't working; it's ju
 
 Fortunately, we can take things a step further with an `.editorconfig` file; this is an [editor-agnostic project](https://editorconfig.org/) that aims to create a standardized format for customizing the behavior of any given text editor. Lots of text editors (including VS Code) support and automatically read this file if it's present. You can put something like this in the root of your workspace:
 
-``` {data-file=".editorconfig" data-copyable=true}
+```{data-file=".editorconfig" data-copyable=true}
 root = true
 
 [*]

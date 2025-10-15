@@ -1,6 +1,6 @@
 ---
 title: Awaiting Multiple Promises with Promise.all
-description: Learn how to use JavaScript's Promise.all method to await multiple async operations, as well as how to write a custom implementation of Promise.all.
+description: Learn how to use JavaScript's Promise.all method to await multiple async operations, as well as how to write a custom implementation.
 keywords: [promise.all, promise, async, javascript]
 categories: [javascript, async]
 commentsId: 104
@@ -59,7 +59,7 @@ new Promise(
   .catch(
     // callback
     (reason) => {}
-  )
+  );
 ```
 
 {% aside %}
@@ -217,9 +217,7 @@ let sequence = Promise.resolve();
 for (const promise of promises) {
   sequence = sequence.then(() => promise);
 }
-sequence
-  .then(() => console.log('success'))
-  .catch(() => console.log('failure'));
+sequence.then(() => console.log('success')).catch(() => console.log('failure'));
 ```
 
 Notice how the individual Promises never have `.catch` handlers attached to them in this de-sugared version, so individual rejections will go uncaught.
@@ -230,7 +228,7 @@ There are two ways to fix this problem:
 2. Construct _and_ await the Promises synchronously.
 
 {% aside %}
-Technically there's a third solution, but it's a bit hacky. See Jake Archibald's article here: [The gotcha of unhandled promise rejections](https://jakearchibald.com/2023/unhandled-rejections/). 
+Technically there's a third solution, but it's a bit hacky. See Jake Archibald's article here: [The gotcha of unhandled promise rejections](https://jakearchibald.com/2023/unhandled-rejections/).
 {% endaside %}
 
 We already tried the first approach, so here's the second one:
@@ -350,14 +348,14 @@ We learned what `Promise.all` is and how to use it, but how does it work under t
 Per its specification, `Promise.all` must accept an iterable of Promises and return a new Promise. So the skeleton for the method might look like this:
 
 ```javascript {data-copyable=true}
-Promise.all = function(promisesIterable) {
+Promise.all = function (promisesIterable) {
   const promises = Array.from(promisesIterable);
   return new Promise((resolve, reject) => {
     promises.forEach((promise) => {
       // ...
     });
   });
-}
+};
 ```
 
 Note that I'm first converting the iterable argument to an array using `Array.from`. This is because `Promise.all`, like other Promise methods, accepts an iterable as an argument; iterables don't have a length property, while arrays do, and we need to know how many Promises there are in total so we can keep track of when all of them have fulfilled. All arrays are iterables, but not all iterables are arrays.
@@ -365,7 +363,7 @@ Note that I'm first converting the iterable argument to an array using `Array.fr
 That `forEach` loop may seem familiar, and you may think that this code runs into the original problem, but take a closer look—by the time we enter the loop, we've already constructed all of the Promise objects that we intend to await. So all that remains is to attach `.then` and `.catch` callback functions to each one, independently. Here's the full code:
 
 ```javascript {data-copyable=true}
-Promise.all = function(promisesIterable) {
+Promise.all = function (promisesIterable) {
   const fulfilledValues = [];
   const promises = Array.from(promisesIterable);
   const promiseCount = promises.length;
@@ -426,7 +424,7 @@ Otherwise, if at any point a single Promise is rejected or an error is thrown, w
 There's one edge case that our code doesn't handle: an empty iterable. [According to MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all#return_value), `Promise.all` should fulfill immediately in this case. Since we already know the length of `promisesIterable`, we can handle this edge case early.
 
 ```javascript {data-copyable=true}
-Promise.all = function(promisesIterable) {
+Promise.all = function (promisesIterable) {
   const fulfilledValues = [];
   const promises = Array.from(promisesIterable);
   const promiseCount = promises.length;

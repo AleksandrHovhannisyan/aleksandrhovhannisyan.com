@@ -1,8 +1,8 @@
 ---
 title: Creating Aspect Ratios in CSS
-description: Learn how to give any element an aspect ratio in CSS, using the modern aspect-ratio property or a trick with percentage padding.
+description: Define aspect ratios in CSS using the modern aspect-ratio property or a trick with percentage padding.
 keywords: [css aspect ratio, aspect ratio in css, aspect ratio, aspect-ratio, percentage padding]
-categories: [css, aspect-ratio, images, math]
+categories: [css, images]
 lastUpdated: 2021-06-12
 commentsId: 58
 thumbnail: https://images.unsplash.com/photo-1550535424-fd4382da050c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80

@@ -36,11 +36,11 @@ html {
   --color-surface-0: light-dark(white, black);
 }
 /* Light theme override */
-[data-theme="light"] {
+[data-theme='light'] {
   color-scheme: light;
 }
 /* Dark theme override */
-[data-theme="dark"] {
+[data-theme='dark'] {
   color-scheme: dark;
 }
 ```
@@ -86,10 +86,10 @@ A `color-scheme` value of `light dark` says that we support both light and dark 
 Later in this tutorial, we'll write HTML and JavaScript to allow the user to set a custom theme on the `html` tag that overrides their system preferences. This is where the `[data-theme]` selectors will programmatically force a color scheme of either light or dark:
 
 ```css
-[data-theme="light"] {
+[data-theme='light'] {
   color-scheme: light;
 }
-[data-theme="dark"] {
+[data-theme='dark'] {
   color-scheme: dark;
 }
 ```
@@ -127,12 +127,7 @@ So far, we have a site that switches between light and dark themes based on syst
 So how should we go about structuring the HTML? For starters, most websites implement a light-dark mode toggle using the [toggle button](https://www.w3.org/WAI/ARIA/apg/patterns/button/) pattern:
 
 ```html
-<button
-  id="theme-toggle"
-  type="button"
-  aria-label="Enable dark theme"
-  aria-pressed="false"
-></button>
+<button id="theme-toggle" type="button" aria-label="Enable dark theme" aria-pressed="false"></button>
 ```
 
 This pattern works, but a complete implementation requires a lot of extra JavaScript to manage the button's [`aria-pressed`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-pressed) state and to keep it in sync with a first-time visitor's system preferences. And if that system preference changes while the user is on the page, you'll likely want to listen to the change with the [`MediaQueryList`](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList) `addEventListener` method so that your website theme automatically refreshes. Now, don't get me wrong: This _is_ doable. However, not only does it require a lot of extra code, but it also locks you into only ever using two themes: light or dark. If you ever want to add more themes in the future, you'll need to abandon this implementation anyway.
@@ -143,15 +138,15 @@ For this reason, I recommend implementing a theme picker using radio buttons or 
 <fieldset id="theme-picker">
   <legend>Theme:</legend>
   <label>
-    <input name="theme" type="radio" value="auto" checked>
+    <input name="theme" type="radio" value="auto" checked />
     Auto
   </label>
   <label>
-    <input name="theme" type="radio" value="light">
+    <input name="theme" type="radio" value="light" />
     Light
   </label>
   <label>
-    <input name="theme" type="radio" value="dark">
+    <input name="theme" type="radio" value="dark" />
     Dark
   </label>
 </fieldset>
@@ -337,11 +332,11 @@ The good news is that we can do this with [CSS `:has`](https://developer.mozilla
 
 ```css {data-file="styles.css" data-copyable=true}
 /* Light override */
-html:has(input[name="theme"][value="light"]:checked) {
+html:has(input[name='theme'][value='light']:checked) {
   color-scheme: light;
 }
 /* Dark override */
-html:has(input[name="theme"][value="dark"]:checked) {
+html:has(input[name='theme'][value='dark']:checked) {
   color-scheme: dark;
 }
 ```

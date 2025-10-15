@@ -1,9 +1,9 @@
 ---
 title: Operating System Scheduling Algorithms
-description: Only one process can run at a time on a single CPU. Scheduling algorithms are what allow these processes to take turns running.
+description: How do processes take turns running on a CPU? Learn about the different kinds of scheduling algorithms and how they work.
 keywords: [operating system scheduling algorithms]
-categories: [computer-science, operating-systems, algorithms]
-lastUpdated: 2021-08-14
+categories: [computer-science, algorithms]
+lastUpdated: 2025-10-17
 ---
 
 If you're studying operating systems and looking for an in-depth explanation of the most common scheduling algorithms, you've come to the right place. In this post, we'll take a look at a number of specific scheduling algorithms. I'll provide plenty of accompanying visuals to help you understand them better. Let's get started!
@@ -14,17 +14,17 @@ If you're studying operating systems and looking for an in-depth explanation of 
 
 Before proceeding, make sure you understand the following terms:
 
-**Scheduler**: A special system program that manages the allocation of resources to processes. Those resources are usually a computer's CPU and main memory.
+<dfn>Scheduler</dfn>: A special system program that manages the allocation of resources to processes. Those resources are usually a computer's CPU and main memory.
 
-**Suspension**: A computer has a limited amount of main memory. Thus, schedulers may decide to swap out idle processes from memory onto the disk to temporarily free up space for other processes. This is known as suspending the process.
+<dfn>Suspension</dfn>: A computer has a limited amount of main memory. Thus, schedulers may decide to swap out idle processes from memory onto the disk to temporarily free up space for other processes. This is known as suspending the process.
 
-**Ready queue**: A queue of all processes that are waiting to be scheduled to run on the CPU. Processes line up in the ready queue as they arrive. If a process still has work remaining when it is taken off the CPU by the scheduler, it may be put back on the ready queue for re-scheduling at a later time; alternatively, it may be suspended.
+<dfn>Ready queue</dfn>: A queue of all processes that are waiting to be scheduled to run on the CPU. Processes line up in the ready queue as they arrive. If a process still has work remaining when it is taken off the CPU by the scheduler, it may be put back on the ready queue for re-scheduling at a later time; alternatively, it may be suspended.
 
-**Blocking**: A process that is blocked is waiting on the completion of a certain event. Usually, that event is some input/output (I/O) operation. Since I/O operations are privileged and require switching to kernel mode, the process must wait for the CPU to attend to those tasks before it can resume execution. Blocked processes are unblocked by the scheduler and either placed back on the ready queue or swapped out of main memory (suspended). By definition, a blocked process is not currently running on the CPU.
+<dfn>Blocking</dfn>: A process that is blocked is waiting on the completion of a certain event. Usually, that event is some input/output (I/O) operation. Since I/O operations are privileged and require switching to kernel mode, the process must wait for the CPU to attend to those tasks before it can resume execution. Blocked processes are unblocked by the scheduler and either placed back on the ready queue or swapped out of main memory (suspended). By definition, a blocked process is not currently running on the CPU.
 
-**Starvation**: We say that a process that needs to use a computing resource (e.g., the CPU) but has been unable to do so for a considerable amount of time (relative to other processes) is being *starved*. One of the primary goals of a scheduler is to circumvent starvation.
+<dfn>Starvation</dfn>: We say that a process that needs to use a computing resource (e.g., the CPU) but has been unable to do so for a considerable amount of time (relative to other processes) is being _starved_. One of the primary goals of a scheduler is to circumvent starvation.
 
-**Context switch**: The collective state of memory and the CPU registers associated with a running process is known as that process's execution *context*. A context *switch* occurs when the CPU goes from executing one process to executing another. To make this possible, the scheduler stores a snapshot of the current process's state somewhere on disk or memory so we can restore it at a later time and resume execution where the process last left off.
+<dfn>Context switch</dfn>: The collective state of memory and the CPU registers associated with a running process is known as that process's execution _context_. A context _switch_ occurs when the CPU goes from executing one process to executing another. To make this possible, the scheduler stores a snapshot of the current process's state somewhere on disk or memory so we can restore it at a later time and resume execution where the process last left off.
 
 ## Overview: Preemptive and Nonpreemptive Scheduling Algorithms
 
@@ -58,7 +58,7 @@ These are the examples of non-preemptive scheduling algorithms that we'll look a
 - Priority scheduling
 
 {% aside %}
-  **Analogy**: Let's use the classic family TV as an analogy for a CPU. Everyone wants to use it for something (usually streaming movies and shows or playing video games). With non-preemptive scheduling, each family member will use the TV for a set period of time and only give someone else a turn when they're finished. For example, if you plan to binge three 40-minute episodes of your favorite show on Netflix, then you'll watch all of them in succession, without giving anyone else a turn, until you're done.
+**Analogy**: Let's use the classic family TV as an analogy for a CPU. Everyone wants to use it for something (usually streaming movies and shows or playing video games). With non-preemptive scheduling, each family member will use the TV for a set period of time and only give someone else a turn when they're finished. For example, if you plan to binge three 40-minute episodes of your favorite show on Netflix, then you'll watch all of them in succession, without giving anyone else a turn, until you're done.
 {% endaside %}
 
 ### 2. Preemptive Scheduling Algorithms
@@ -105,7 +105,7 @@ These are the examples of preemptive scheduling algorithms that we'll look at:
 - Proportionate scheduling
 
 {% aside %}
-  **Analogy**: Now, let's say we're dealing with siblings and a single gaming console. To encourage fairness, their parents have one simple rule: Each kid can only play for 20 minutes at a time. Once that period of time is up, it's someone else's turn to play, even if the previous sibling was already in the middle of a match. They continue taking turns like this until everyone's finished playing. This is analogous to round-robin scheduling.
+**Analogy**: Now, let's say we're dealing with siblings and a single gaming console. To encourage fairness, their parents have one simple rule: Each kid can only play for 20 minutes at a time. Once that period of time is up, it's someone else's turn to play, even if the previous sibling was already in the middle of a match. They continue taking turns like this until everyone's finished playing. This is analogous to round-robin scheduling.
 {% endaside %}
 
 ## Scheduling Algorithm Metrics
@@ -118,7 +118,7 @@ In the context of operating system scheduling algorithms, **throughput** refers 
 
 ### Turnaround Time
 
-An operating system scheduling algorithm's **turnaround time** is the difference between the time at which a process finishes all of its work and the time at which the process arrived in the ready queue. The wording here is very important: It is not the difference between the time when the process finishes all of its work and the time at which the process *began* its work; a process may arrive and then immediately have to wait its turn. Thus, turnaround time is *not* a measure of how much *CPU time* a process uses; it includes periods of inactivity when a process is waiting its turn. For example, if process C arrives at time `t = 5s` and finishes all of its work at time `t = 60s`, then its turnaround time, regardless of how much of it was spent active or idle, is `60 - 5 = 55s`.
+An operating system scheduling algorithm's **turnaround time** is the difference between the time at which a process finishes all of its work and the time at which the process arrived in the ready queue. The wording here is very important: It is not the difference between the time when the process finishes all of its work and the time at which the process _began_ its work; a process may arrive and then immediately have to wait its turn. Thus, turnaround time is _not_ a measure of how much _CPU time_ a process uses; it includes periods of inactivity when a process is waiting its turn. For example, if process C arrives at time `t = 5s` and finishes all of its work at time `t = 60s`, then its turnaround time, regardless of how much of it was spent active or idle, is `60 - 5 = 55s`.
 
 ### Mean Turnaround Time (MTT)
 
@@ -132,20 +132,18 @@ A scheduling algorithm's **mean turnaround time (MTT)** is the average turnaroun
 
 So far, we've looked at the terms preemptive and non-preemptive scheduling. But there are actually three overarching categories that we'll group our scheduling algorithms into (and then classify them as either preemptive or non-preemptive). These are based on the types of systems we're working with:
 
-1. **🔨 Batch systems**: run several jobs in batches. Think of them as workhorses. Goals:
+1. <dfn>Batch systems</dfn>: run several jobs in batches. Think of them as workhorses. Goals:
+   - Maximize throughput (get more work done).
+   - Minimize mean turnaround time (MTT).
+   - Maximize CPU utilization (waste less time being idle).
 
-    - Maximize throughput (get more work done).
-    - Minimize mean turnaround time (MTT).
-    - Maximize CPU utilization (waste less time being idle).
+2. <dfn>Interactive systems</dfn>: involve lots of user input or interaction (e.g., ordinary PCs). Goals:
+   - Responsiveness: decrease response time to user requests (little if any input "lag").
+   - Meet user expectations about how long certain operations should take (e.g., for opening a file).
 
-2. **🖥️ Interactive systems**: involve lots of user input or interaction (e.g., ordinary PCs). Goals:
-    - Responsiveness: decrease response time to user requests (little if any input "lag").
-    - Meet user expectations about how long certain operations should take (e.g., for opening a file).
-
-3. **🕓 Real-time systems**: must meet sensitive deadlines. Accurate timing is crucial. Goals:
-
-    - Meet deadlines to avoid losing data or other valuable resources.
-    - Predictability: behave as expected and not erratically.
+3. <dfn>Real-time systems</dfn>: must meet sensitive deadlines. Accurate timing is crucial. Goals:
+   - Meet deadlines to avoid losing data or other valuable resources.
+   - Predictability: behave as expected and not erratically.
 
 ## 1. Batch Scheduling Algorithms
 
@@ -165,14 +163,14 @@ Notice that while B arrives at `t = 2s`, it does not get to run until A finishes
 - Mean turnaround time = `(8s + 10s + 9s) / 3 = 9s`
 
 {% aside %}
-  **Note**: When we look at specific examples of scheduling algorithms, as we did here, you'll see a precise number listed under "CPU time" in the accompanying table. In practice, the best we can do is to predict how much time a process is going to use; we can't know a process's expected CPU time for certain.
+**Note**: When we look at specific examples of scheduling algorithms, as we did here, you'll see a precise number listed under "CPU time" in the accompanying table. In practice, the best we can do is to predict how much time a process is going to use; we can't know a process's expected CPU time for certain.
 {% endaside %}
 
 ### Shortest Job First/Next
 
 In this non-preemptive algorithm, when deciding which process to run next, we pick the one whose estimated total duration is the lowest among all processes currently in the queue; we then allow that process to run to completion without any preemption.
 
-If all jobs arrive at the same time, then this algorithm is always optimal in terms of mean turnaround time. This is because we're able to minimize the amount of idle CPU time across the board by picking an *optimal sequence of execution* for processes.
+If all jobs arrive at the same time, then this algorithm is always optimal in terms of mean turnaround time. This is because we're able to minimize the amount of idle CPU time across the board by picking an _optimal sequence of execution_ for processes.
 
 ![A horizontal ruler is used to represent time that runs from t = 0 to t = 15. A table lists information about three CPU processes. Process A arrived at time t = 0 and has a CPU time of 8. Process B arrived at time t = 2 and has a CPU time of 4. Process C arrived at time t = 5 and has a CPU time of 2. Three colored lines are shown below the ruler, in the order of A, then C, and finally B.](./images/shortest-job.jpg)
 
@@ -184,7 +182,7 @@ If all jobs arrive at the same time, then this algorithm is always optimal in te
 At `t = 0s`, A was the only "shortest" process we knew of, so we allowed it to execute for its full duration. But by the time we arrived at `t = 8s`, we already had B and C lined up in the ready queue, so we then picked the shorter of the two (C) to run next.
 
 {% aside %}
-  **Exercise**: What would the mean turnaround time have been if A had instead arrived at `t = 5s` and C had arrived at `t = 0s`? Answer: C's turnaround = `2s`, B's turnaround = `4s`, and A's turnaround = `9s`, for a mean turnaround time of `5s`.
+**Exercise**: What would the mean turnaround time have been if A had instead arrived at `t = 5s` and C had arrived at `t = 0s`? Answer: C's turnaround = `2s`, B's turnaround = `4s`, and A's turnaround = `9s`, for a mean turnaround time of `5s`.
 {% endaside %}
 
 ### Shortest Remaining Time First
@@ -205,7 +203,7 @@ For example, we swap A out for B at `t = 2s` because B has the least amount of t
 With this algorithm, some processes may end up being starved if a bunch of shorter processes continue to arrive. That's the case here with A—it arrived at `t = 0s` but didn't get to finish its work until the very end, at `t = 14s`.
 
 {% aside %}
-  **Question**: Why didn't we swap out B for C when C arrived at `t = 5s`? Answer: Because at `t = 5s`, B had a remaining time of `1s`, whereas C, which just arrived, has a remaining time of `2s`. We continue executing B because it has the shorter remaining time.
+**Question**: Why didn't we swap out B for C when C arrived at `t = 5s`? Answer: Because at `t = 5s`, B had a remaining time of `1s`, whereas C, which just arrived, has a remaining time of `2s`. We continue executing B because it has the shorter remaining time.
 {% endaside %}
 
 ## 2. Interactive Scheduling Algorithms
@@ -217,7 +215,7 @@ Reminder: Interactive systems involve a lot of user input and must therefore be 
 This is a classic preemptive scheduling algorithm. Here's how it works:
 
 1. Processes line up in a queue as they arrive.
-2. The process at the front of the queue gets to run for a certain pre-defined block of time known as a *quantum* (e.g., 2 seconds).
+2. The process at the front of the queue gets to run for a certain pre-defined block of time known as a _quantum_ (e.g., 2 seconds).
 3. Once the process finishes its quantum, if it still has work remaining, it's taken off the CPU and put at the back of the queue so it can run again later.
 4. The next process at the front of the queue is then selected for scheduling.
 
@@ -228,21 +226,21 @@ Steps 1-4 repeat until no more processes remain.
 I used dashed vertical lines here to denote the times at which each process arrived in the queue, just to make things easier to understand. Notice that even though C arrives at time `t = 5s`, it does not begin working until after B gets to run again. Why? Because of step 3: When B finishes its work at time `t = 4s`, it is put back on the queue (because it is not yet finished with all of its work). Thus, B precedes C on the queue.
 
 {% aside %}
-  **Note**: If the amount of time remaining for a process is less than its quantum (e.g., only `1s` of work remaining but with an allocated quantum of `2s`), then we won't "waste" the remainder of the quantum just waiting around—the scheduler will simply treat that as a completed quantum and will proceed as normal to schedule the next process.
+**Note**: If the amount of time remaining for a process is less than its quantum (e.g., only `1s` of work remaining but with an allocated quantum of `2s`), then we won't "waste" the remainder of the quantum just waiting around—the scheduler will simply treat that as a completed quantum and will proceed as normal to schedule the next process.
 
-  It's important to select a good quantum. If we select one that's too short, then we'll be frequently performing context switches, which can become expensive (decreasing CPU utilization). On the other hand, if the quantum we select is too large, then the system will be unresponsive to user input until the current process finishes executing for its quantum of time.
+It's important to select a good quantum. If we select one that's too short, then we'll be frequently performing context switches, which can become expensive (decreasing CPU utilization). On the other hand, if the quantum we select is too large, then the system will be unresponsive to user input until the current process finishes executing for its quantum of time.
 {% endaside %}
 
 ### Preemptive Priority
 
-The preemptive priority scheduling algorithm is a variation of Round Robin scheduling. Whereas the traditional Round Robin algorithm puts all processes in the same queue, this algorithm uses multiple priority queues *separately*.
+The preemptive priority scheduling algorithm is a variation of Round Robin scheduling. Whereas the traditional Round Robin algorithm puts all processes in the same queue, this algorithm uses multiple priority queues _separately_.
 
 Each queue represents a priority level. Each process is assigned a numerical priority based on how important it is deemed to be; these range from high (e.g., `1` for most important) to low (e.g., `4` for, say, least important). Note that lower numbers are being used to designate a higher priority or "importance" in this case. When a process arrives, it is placed at the back of whatever queue matches its priority level. For example, if process X has a priority level of `2`, then it's grouped with all the other `2`-priority processes in the corresponding queue.
 
 The scheduler runs the Round Robin algorithm on processes within the same queue, preferring queues with higher priorities to ones with lower priorities. Only once the current queue has been emptied will the scheduler proceed to the next immediate priority queue.
 
 {% aside %}
-  **Note**: If at any point a process arrives in a queue with a higher priority than whatever queue we are currently working on, then the scheduler will give preference to that higher priority process upon the next quantum "tick."
+**Note**: If at any point a process arrives in a queue with a higher priority than whatever queue we are currently working on, then the scheduler will give preference to that higher priority process upon the next quantum "tick."
 {% endaside %}
 
 ![A horizontal ruler is used to represent time that runs from t = 0 to t = 15. A table lists information about three CPU processes. Process A arrived at time t = 0 and has a CPU time of 8 and a priority of 1. Process B arrived at time t = 2 and has a CPU time of 4 and a priority of 1. Process C arrived at time t = 5 and has a CPU time of 2 and a priority of 2. A note indicates a quantum of 2. Below the ruler, a line shows Process A running from t = 0 to t = 2. It is interrupted by Process B, which runs from t = 2 to t = 4. A runs from t = 4 to t = 6, followed by B again from t = 6 to t = 8. B finishes. A runs for two quantums from t = 8 to t = 12, and C runs from t = 12 to t = 14.](./images/preemptive-priority.jpg)
@@ -255,7 +253,7 @@ In this example, A and B take turns alternating on the CPU in classic Round Robi
 - Mean turnaround time = `(12s + 6s + 9s) / 3 = 9s`
 
 {% aside %}
-  What would happen at `t = 2s` if A instead had a priority level of `2`? Answer: A would still run from `t = 0s` to `t = 2s` because there are no other processes present during that time. However, as soon as B arrives at `t = 2s`, we have a higher priority queue that must be attended to. Therefore, A's remaining work will be put on hold until B finishes.
+What would happen at `t = 2s` if A instead had a priority level of `2`? Answer: A would still run from `t = 0s` to `t = 2s` because there are no other processes present during that time. However, as soon as B arrives at `t = 2s`, we have a higher priority queue that must be attended to. Therefore, A's remaining work will be put on hold until B finishes.
 {% endaside %}
 
 ### Proportionate Scheduling (Preemptive)
@@ -272,7 +270,7 @@ In **lottery scheduling**, each process is allocated a certain number of virtual
 
 #### Fair-Share Scheduling
 
-So far, we've focused on ensuring fairness among *processes*. In **fair-share scheduling**, the focus shifts to the *user*. Specifically, on multi-user systems, the idea is to allocate a fair amount of CPU time to each user (and/or user group) to ensure that no user is being "starved" of the opportunity to use the system. The Wikipedia article on [fair-share scheduling](https://en.wikipedia.org/wiki/Fair-share_scheduling) provides excellent examples to make this clearer.
+So far, we've focused on ensuring fairness among _processes_. In **fair-share scheduling**, the focus shifts to the _user_. Specifically, on multi-user systems, the idea is to allocate a fair amount of CPU time to each user (and/or user group) to ensure that no user is being "starved" of the opportunity to use the system. The Wikipedia article on [fair-share scheduling](https://en.wikipedia.org/wiki/Fair-share_scheduling) provides excellent examples to make this clearer.
 
 ## 3. Real-Time Scheduling Algorithms
 
@@ -289,8 +287,8 @@ With static scheduling, decisions about what to run next are not made in real ti
 
 Dynamic scheduling is a broad category of scheduling that employs any of the algorithms we've looked at so far. However, in the context of real-time systems, it prioritizes scheduling according to the system's deadlines:
 
-- **⚠️ Hard real-time deadlines** are ones that we simply can't afford to miss; doing so may result in a disaster, such as a jet's flight controls failing to respond to a pilot's input.
-- **😕 Soft real-time deadlines** are ones that will produce a minor inconvenience if they aren't met. An example of this is a video whose audio isn't properly synced, causing a noticeable delay between what is shown and what's actually heard.
+- <dfn>Hard real-time deadlines</dfn> are ones that we simply can't afford to miss; doing so may result in a disaster, such as a jet's flight controls failing to respond to a pilot's input.
+- <dfn>Soft real-time deadlines</dfn> are ones that will produce a minor inconvenience if they aren't met. An example of this is a video whose audio isn't properly synced, causing a noticeable delay between what is shown and what's actually heard.
 
 Thus, while static scheduling is employed before the system ever receives its first process, dynamic scheduling is employed on the fly, making decisions about which processes to schedule as they arrive in real time. Leaving things up to the hardware like this can have its advantages. For one, it guarantees some sort of scheduling optimization among threads regardless of how the code was originally written.
 
@@ -302,4 +300,3 @@ The best way to master scheduling algorithms is to work through the examples on 
 
 I hope you found this post helpful!
 
-{% include "unsplashAttribution.md" name: "Estée Janssens", username: "esteejanssens", photoId: "zni0zgb3bkQ" %}

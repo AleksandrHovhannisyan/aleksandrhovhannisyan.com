@@ -1,6 +1,6 @@
 ---
 title: Creating Perfect Font Fallbacks in CSS
-description: Learn how to use three CSS properties to override font metrics and minimize layout shifts during font load.
+description: With a few lines of CSS, you can override metrics for fallback fonts to minimize layout shifts.
 categories: [typography, css, webperf]
 keywords: [size-adjust]
 thumbnail: ./images/metrics.png
@@ -11,7 +11,10 @@ When using web fonts, it's often recommended that you set the `font-display` pro
 
 ```css
 body {
-  font-family: PT Serif, Times New Roman, serif;
+  font-family:
+    PT Serif,
+    Times New Roman,
+    serif;
 }
 ```
 
@@ -33,11 +36,13 @@ A `@font-face` ruleset will typically specify the font family, weight, style, fa
 
 ```css
 @font-face {
-  font-family: "PT Serif";
+  font-family: 'PT Serif';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local("PTSerif"), url("/fonts/ptserif-400.woff2") format("woff2");
+  src:
+    local('PTSerif'),
+    url('/fonts/ptserif-400.woff2') format('woff2');
 }
 ```
 
@@ -45,8 +50,8 @@ While `@font-face` rulesets are most commonly used to define web fonts, they can
 
 ```css
 @font-face {
-  font-family: "numbers";
-  src: local("Times New Roman");
+  font-family: 'numbers';
+  src: local('Times New Roman');
   unicode-range: U+0030-0039;
 }
 body {
@@ -99,7 +104,7 @@ Consider this example:
 
 ```css
 @font-face {
-  font-family: "example";
+  font-family: 'example';
   src: local('Times New Roman');
   size-adjust: 125%;
   ascent-override: 50%;
@@ -145,7 +150,7 @@ console.log(fontFaces);
 
 ```css {data-file="output.css"}
 @font-face {
-  font-family: "PT Serif Fallback";
+  font-family: 'PT Serif Fallback';
   src: local('Times New Roman');
   ascent-override: 93.5808%;
   descent-override: 25.7595%;
@@ -165,11 +170,7 @@ import georgia from '@capsizecss/metrics/georgia.js';
 import timesNewRoman from '@capsizecss/metrics/timesNewRoman.js';
 import ptSerif from '@capsizecss/metrics/pTSerif.js';
 
-const stack = createFontStack([
-    ptSerif,
-    georgia,
-    timesNewRoman,
-]);
+const stack = createFontStack([ptSerif, georgia, timesNewRoman]);
 
 console.log(stack.fontFaces);
 ```
@@ -178,14 +179,14 @@ If you run that script, you'll get this output:
 
 ```css {data-file="output.css"}
 @font-face {
-  font-family: "PT Serif Fallback: Georgia";
+  font-family: 'PT Serif Fallback: Georgia';
   src: local('Georgia');
   ascent-override: 102.7217%;
   descent-override: 28.2757%;
   size-adjust: 101.1471%;
 }
 @font-face {
-  font-family: "PT Serif Fallback: Times New Roman";
+  font-family: 'PT Serif Fallback: Times New Roman';
   src: local('Times New Roman');
   ascent-override: 93.5808%;
   descent-override: 25.7595%;
@@ -203,7 +204,7 @@ In the example below, I've modified the output from the previous script to add a
 /* Georgia 400 */
 @font-face {
   font-family: fallback-font-1;
-  font-weight: 400;                 /* added */
+  font-weight: 400; /* added */
   src: local('Georgia');
   ascent-override: 102.7217%;
   descent-override: 28.2757%;
@@ -212,9 +213,9 @@ In the example below, I've modified the output from the previous script to add a
 /* Georgia 400, Italic */
 @font-face {
   font-family: fallback-font-1;
-  font-weight: 400;                 /* added */
-  font-style: italic;               /* added */
-  src: local('Georgia Italic');     /* added */
+  font-weight: 400; /* added */
+  font-style: italic; /* added */
+  src: local('Georgia Italic'); /* added */
   ascent-override: 102.7217%;
   descent-override: 28.2757%;
   size-adjust: 101.1471%;
@@ -222,7 +223,7 @@ In the example below, I've modified the output from the previous script to add a
 /* Georgia 700 */
 @font-face {
   font-family: fallback-font-1;
-  font-weight: 700;                  /* added */
+  font-weight: 700; /* added */
   src: local('Georgia Bold');
   ascent-override: 102.7217%;
   descent-override: 28.2757%;
@@ -231,7 +232,7 @@ In the example below, I've modified the output from the previous script to add a
 /* Georgia 700, Italic */
 @font-face {
   font-family: fallback-font-1;
-  font-weight: 700;                  /* added */
+  font-weight: 700; /* added */
   src: local('Georgia Bold Italic'); /* added */
   ascent-override: 102.7217%;
   descent-override: 28.2757%;

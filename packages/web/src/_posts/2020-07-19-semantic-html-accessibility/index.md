@@ -1,6 +1,6 @@
 ---
-title: "Semantic HTML: Building a More Accessible Web"
-description: Accessibility is a hot topic, but it's not always executed correctly. Learn how to use semantic HTML to create an accessible user experience on the web.
+title: 'Semantic HTML: Building a More Accessible Web'
+description: Learn how to use the right HTML elements to create accessible documents on the web.
 keywords: [semantic html, html accessibility]
 categories: [accessibility, html]
 commentsId: 48
@@ -16,7 +16,7 @@ In this guide, we'll take a look at everything you need to know about building a
 
 ## What Makes HTML Accessible?
 
-Accessibility is a hot topic in front-end development, but it's not always executed correctly, even on some of the world's most popular apps and websites. Developers tend to design a user experience with *sighted* users in mind, forgetting about users who rely on screen readers. This means that they may be inadvertently violating certain best practices that exist to help us create a more accessible user experience on the web.
+Accessibility is a hot topic in front-end development, but it's not always executed correctly, even on some of the world's most popular apps and websites. Developers tend to design a user experience with _sighted_ users in mind, forgetting about users who rely on screen readers. This means that they may be inadvertently violating certain best practices that exist to help us create a more accessible user experience on the web.
 
 Semantic HTML conveys meaning and content organization to both sighted and blind users. Moreover, it uses the right HTML elements for the task at hand, rather than trying to force an element into a different role. Part of creating an accessible user experience means learning how to make the most of semantic HTML.
 
@@ -30,7 +30,7 @@ Let's clear this up now—there are only two non-semantic HTML elements: `<div>`
 
 Think of `<div>`s and `<span>`s as generic containers: They're used to group elements at either the block or inline level. Beyond that, you can't really attach any meaning to a div: It's just a box.
 
-With all of that in mind, is it fair to say that the term "semantic HTML" a bit overused? Perhaps—one could argue that there's no need to talk about semantic HTML when the overwhelming majority of HTML elements *are* semantic.
+With all of that in mind, is it fair to say that the term "semantic HTML" a bit overused? Perhaps—one could argue that there's no need to talk about semantic HTML when the overwhelming majority of HTML elements _are_ semantic.
 
 However, just because `<div>` and `<span>` are the only non-semantic HTML elements doesn't mean that it's less likely for people to abuse them, rather than using the right HTML elements for the task at hand. So, before we move on, let's do a quick recap of the most notable semantic HTML elements and how they should be used on a website.
 
@@ -64,15 +64,15 @@ On the other hand, `<section>` represents... well, a section. This one typically
 - The literal sections of a blog post or article, as delineated by headings.
 - "Chapters" (this one is brought up frequently, but it makes little sense in the context of the web).
 
-Don't use a `<section>` just to avoid using a `<div>`. There's nothing wrong with using divs, so long as you're not *misusing* them.
+Don't use a `<section>` just to avoid using a `<div>`. There's nothing wrong with using divs, so long as you're not _misusing_ them.
 
 ### Nav
 
-Use a `<nav>` to group primary or secondary navigation links, either in your top navigation bar or a table of contents, sidebar, breadcrumb links, and so on. Note that you shouldn't stick every single link on your site in a `<nav>`. Just because something is a link does not mean that it's part of some *navigation* on your site. So while it's perfectly fine to use multiple `<nav>`s on your site, you should use this element sparingly and only if it makes sense to do so.
+Use a `<nav>` to group primary or secondary navigation links, either in your top navigation bar or a table of contents, sidebar, breadcrumb links, and so on. Note that you shouldn't stick every single link on your site in a `<nav>`. Just because something is a link does not mean that it's part of some _navigation_ on your site. So while it's perfectly fine to use multiple `<nav>`s on your site, you should use this element sparingly and only if it makes sense to do so.
 
 ### Other Semantic HTML Elements
 
-When talking about semantic HTML, people usually stop at just the generic bunch: nav, main, article, section, header, footer, and aside. But remember: *Everything* is semantic except for divs and spans. Here are some of the more notable elements:
+When talking about semantic HTML, people usually stop at just the generic bunch: nav, main, article, section, header, footer, and aside. But remember: _Everything_ is semantic except for divs and spans. Here are some of the more notable elements:
 
 - Forms and their inputs (`<form>`, `<input>`, `<button>`, `<textarea>`).
 - Text: anchors (`<a>`), paragraphs (`<p>`), lists (`ul/ol/li`), headings (`h1-h6`).
@@ -98,20 +98,20 @@ If an element's role is `<button>`, it may as well just be a `<button>` to begin
 Worse still, don't add an event listener that checks to see if the user pressed the `Enter` key as a pseudo-click ([I've definitely never done this](https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com/commit/fd0bf980501937c45ceb99a18a38418ffc86e12c)):
 
 ```javascript
-document.getElementById('toggle').addEventListener('keyup', keyEvent => {
-    if (keyEvent.key === 'Enter') {
-      doSomething();
-    }
+document.getElementById('toggle').addEventListener('keyup', (keyEvent) => {
+  if (keyEvent.key === 'Enter') {
+    doSomething();
+  }
 });
 ```
 
-Just because something is possible with JavaScript and HTML doesn't mean that it's a good idea 😉 (or that it's truly accessible for keyboard and screen reader users). You certainly *can* do this, but [it will take some work](https://benfrain.com/converting-divs-into-accessible-pseudo-buttons/) to ensure that it's truly accessible. And even then, you'll still get HTML validation warnings because you're trying to dress up a `<div>` as something that it isn't.
+Just because something is possible with JavaScript and HTML doesn't mean that it's a good idea 😉 (or that it's truly accessible for keyboard and screen reader users). You certainly _can_ do this, but [it will take some work](https://benfrain.com/converting-divs-into-accessible-pseudo-buttons/) to ensure that it's truly accessible. And even then, you'll still get HTML validation warnings because you're trying to dress up a `<div>` as something that it isn't.
 
 Use buttons, anchors, and form inputs for interactive elements on your website. These semantic HTML elements already receive mouse and keyboard focus, have widespread browser support, and respond to user input both with the `Enter` key and with a traditional mouse click. They are meant to be used as buttons, links, checkboxes, and so on.
 
 Unfortunately, this rule is broken frequently on the web, mainly because of JavaScript frameworks.
 
-Twitter's buttons are *divs all the way down* (although they do use `role="button"`, which conveys to screen readers that the element is, semantically speaking, a button):
+Twitter's buttons are _divs all the way down_ (although they do use `role="button"`, which conveys to screen readers that the element is, semantically speaking, a button):
 
 ![Inspecting the Twitter heart button](./images/twitter-button.png)
 
@@ -135,9 +135,9 @@ As does the new Reddit interface (the old one is still using divs):
 
 #### Q: Should I Use an Anchor or a Button?
 
-This is a great question! Developers usually ask this because they're concerned with how their user interface *looks* rather than how it functions. The answer is that **it depends on what the button does**. If it directs someone to a different page, then that's really an anchor's job; the only way to do it with a button is by reinventing the wheel with JavaScript. So it's perfectly fine to use an anchor in this case and to style it like a button.
+This is a great question! Developers usually ask this because they're concerned with how their user interface _looks_ rather than how it functions. The answer is that **it depends on what the button does**. If it directs someone to a different page, then that's really an anchor's job; the only way to do it with a button is by reinventing the wheel with JavaScript. So it's perfectly fine to use an anchor in this case and to style it like a button.
 
-Remember: To a user navigating your site with a screen reader, what matters isn't what an element *looks* like but rather what the element *does*. The best that a screen reader can do is to tell you what it is that you've encountered on a page. A screen reader can't possibly infer that a regular old `<button>` will take you to a different URL—that's the job of an anchor, after all.
+Remember: To a user navigating your site with a screen reader, what matters isn't what an element _looks_ like but rather what the element _does_. The best that a screen reader can do is to tell you what it is that you've encountered on a page. A screen reader can't possibly infer that a regular old `<button>` will take you to a different URL—that's the job of an anchor, after all.
 
 So, if your "button" is supposed to direct users to a different page, using `<button>` would create a frustrating experience for people who use screen readers, especially if the button text doesn't clearly indicate that clicking it will take you to a different page or site. In fact, this would be frustrating for sighted users, too, since anchors show a link preview in the bottom-left of your browser when they receive focus or hover events, whereas a button that "silently" directs a user to a different page will not show any such indicator upon focus/hover.
 
@@ -152,11 +152,11 @@ Note that some buttons have inherent functions in HTML. For example, a button wi
 
 ### Use More Lists!
 
-Lists are, in my opinion, underrated. Things are *listed* are everywhere on the web, yet you rarely see them rendered *using* lists!
+Lists are, in my opinion, underrated. Things are _listed_ are everywhere on the web, yet you rarely see them rendered _using_ lists!
 
 A screen reader won't detect that a `<div>` is a collection of ordered or unordered items because divs convey absolutely zero meaning—they're not semantic HTML. Note that a `<div>` has no implicit ARIA role, meaning a screen reader won't narrate anything special when it encounters that `<div>` (but it will still read its contents). This means that if you have multiple, separate `<div>`s that each serve as lists, their items will meld together when narrated, and that could get confusing.
 
-On the other hand, when it encounters an `<ol>` or `<ul>`, a screen reader *will* explicitly tell a user that there's a `list with X elements` up ahead. Moreover, the screen reader will narrate when it has exited a list (e.g., NVDA says "out of list"), giving users a better sense of where they are on the page.
+On the other hand, when it encounters an `<ol>` or `<ul>`, a screen reader _will_ explicitly tell a user that there's a `list with X elements` up ahead. Moreover, the screen reader will narrate when it has exited a list (e.g., NVDA says "out of list"), giving users a better sense of where they are on the page.
 
 Here are a few great use cases for HTML lists:
 
@@ -165,9 +165,9 @@ Here are a few great use cases for HTML lists:
 - **Pagination trails**. A pagination trail is literally a numbered list of pages—it doesn't get any simpler than that!
 - **Grouped tags and links** (e.g., post tags or social media links). Use unordered lists!
 
-Just because lists render with bullet points or numbers by default doesn't mean that they must be reserved for *textual* lists. In terms of semantic HTML, a list is the perfect container for a group of related items, ordered or not.
+Just because lists render with bullet points or numbers by default doesn't mean that they must be reserved for _textual_ lists. In terms of semantic HTML, a list is the perfect container for a group of related items, ordered or not.
 
-The best part is that list items, like divs, can accept any flow content (block or inline), including *more nested lists*. You have nothing to fear with these elements. You should already be resetting margin and padding on your website anyway, so the only thing that remains is resetting `list-style` and customizing the appearance of your lists on a case-by-case basis.
+The best part is that list items, like divs, can accept any flow content (block or inline), including _more nested lists_. You have nothing to fear with these elements. You should already be resetting margin and padding on your website anyway, so the only thing that remains is resetting `list-style` and customizing the appearance of your lists on a case-by-case basis.
 
 Let's take another look around the web!
 
@@ -176,7 +176,7 @@ Google renders search results using divs, but an ordered list would probably mak
 ![Inspecting the Google search results page](./images/google.png)
 
 {% aside %}
-  **Note**: Google has hidden elements that provide accessibility guidance to users with screen readers and other assistive technologies, so this "violation" isn't really a big deal. That may apply to some of the other sites and apps, too, though I haven't tested them.
+**Note**: Google has hidden elements that provide accessibility guidance to users with screen readers and other assistive technologies, so this "violation" isn't really a big deal. That may apply to some of the other sites and apps, too, though I haven't tested them.
 {% endaside %}
 
 Twitter uses divs for replies:
@@ -203,7 +203,7 @@ Notice from these examples that a "list" is really an abstract concept. You shou
 
 ### Don't Use Spans for Inline Positioning
 
-Another common mistake is to use `<span>`s to achieve inline positioning. Developers are taught early on that there's a distinction between block-level and inline elements in HTML; the two classic examples that get brought up are divs and spans, respectively. But while it's true that spans are inline elements, they're not intended to be used for inline *positioning*. Spans are used to isolate inline portions of text, typically for one of two reasons:
+Another common mistake is to use `<span>`s to achieve inline positioning. Developers are taught early on that there's a distinction between block-level and inline elements in HTML; the two classic examples that get brought up are divs and spans, respectively. But while it's true that spans are inline elements, they're not intended to be used for inline _positioning_. Spans are used to isolate inline portions of text, typically for one of two reasons:
 
 1. Styling some of the text differently.
 2. Injecting content into the text with JavaScript.
@@ -213,7 +213,7 @@ A good example of the second case is if you have text with placeholders, like `X
 ![Inspecting a GitHub counter via the Chrome dev tools](./images/github-counter.png)
 
 {% aside %}
-  In addition, note again how the tabs themselves are rendered in a list.
+In addition, note again how the tabs themselves are rendered in a list.
 {% endaside %}
 
 If you want inline positioning on block-level elements, `<span>` is not the right tool for the job. Instead, use CSS to position your elements inline (e.g., with Flexbox).
@@ -227,7 +227,7 @@ As defined by the W3 Consortium, ARIA stands for **Accessible Rich Internet Appl
 However, as I mentioned before, just because you can do something doesn't mean that you should (or that it's okay to abuse it). The following are W3's guidelines on ARIA attributes:
 
 {% quote "ARIA in HTML, W3", "https://www.w3.org/TR/html-aria/" %}
-  Web developers MAY use the ARIA role and aria- attributes on HTML elements, in accordance with the requirements described in [wai-aria-1.1](https://www.w3.org/TR/html-aria/#bib-wai-aria-1.1), except where these conflict with the strong native semantics or are equal to the implicit ARIA semantics of a given HTML element. These constraints are intended to prevent developers from making assistive technology products report nonsensical user interface (UI) information that does not represent the actual UI of the document.
+Web developers MAY use the ARIA role and aria- attributes on HTML elements, in accordance with the requirements described in [wai-aria-1.1](https://www.w3.org/TR/html-aria/#bib-wai-aria-1.1), except where these conflict with the strong native semantics or are equal to the implicit ARIA semantics of a given HTML element. These constraints are intended to prevent developers from making assistive technology products report nonsensical user interface (UI) information that does not represent the actual UI of the document.
 {% endquote %}
 
 Here, "strong native semantics" refers to the fact that semantic HTML elements have intrinsic ARIA roles. You can explore these in the [MDN Web Docs](https://developer.mozilla.org/en-US/) for a particular element. For example, the `<ol>` tag has an implicit ARIA role of `list`:
@@ -290,14 +290,14 @@ This would communicate that a particular link corresponds to the current page th
 
 ### Hide Presentational Images with `alt=""`
 
-Sometimes, you *want* to hide content from screen readers to avoid presenting irrelevant information to users. Examples include blog post thumbnails, user avatars, and SVG icons that don't have accompanying text or any surrounding context. These are known as **presentational images** since they're being used for decorative purposes rather than to convey certain meaning.
+Sometimes, you _want_ to hide content from screen readers to avoid presenting irrelevant information to users. Examples include blog post thumbnails, user avatars, and SVG icons that don't have accompanying text or any surrounding context. These are known as **presentational images** since they're being used for decorative purposes rather than to convey certain meaning.
 
 While presentational images are visible to sighted users, they're not essential for blind users. In fact, in some cases, adding alt text to presentational images may lead to redundant text being narrated. Imagine how annoying it would be if a screen reader were to say `Profile photo for user X` and then immediately follow that up by reading the user's name—you don't need to hear it twice!
 
 For this reason, you want to set the `alt` attribute to be an empty string for presentational images:
 
 ```html
-<img src="/path/to/img.jpg" alt="">
+<img src="/path/to/img.jpg" alt="" />
 ```
 
 Note that this is not the same as omitting the `alt` attribute altogether, which is invalid HTML and something you should never do!

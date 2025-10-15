@@ -1,6 +1,6 @@
 ---
 title: Password Composition Rules Are Counter&shy;productive
-description: Registration systems often require that passwords contain certain characters. But this is counterproductive and encourages bad habits that can weaken users' passwords.
+description: Requiring certain characters in passwords is counterproductive and encourages bad habits that can actually weaken passwords.
 keywords: [password composition rules, password complexity rules, password]
 categories: [security, math, forms]
 lastUpdated: 2022-09-01
@@ -12,7 +12,7 @@ In [Special Publication 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html)
 Verifiers SHOULD NOT impose other composition rules (e.g., requiring mixtures of different character types or prohibiting consecutively repeated characters) for memorized secrets.
 {% endquote %}
 
-As the name suggests, a **password composition rule** (also known as a password *complexity* rule) specifies which characters may or may not be used when creating a password or how those characters may be arranged within a password. For example, many registration forms require that a password contain at least one lowercase letter, uppercase letter, number, and symbol.
+As the name suggests, a **password composition rule** (also known as a password _complexity_ rule) specifies which characters may or may not be used when creating a password or how those characters may be arranged within a password. For example, many registration forms require that a password contain at least one lowercase letter, uppercase letter, number, and symbol.
 
 While this guideline advocates against the use of password composition rules, they are still common on the web. Their goal is to strengthen a password's security by forcing users to pick characters that they would not have otherwise chosen. In theory, this practice should encourage the use of stronger passwords. In reality, password composition rules can frustrate users into choosing weak, predictable passwords.
 
@@ -34,7 +34,7 @@ Verifiers SHALL implement a rate-limiting mechanism that effectively limits the 
 You can learn more about this in OWASP's article on [blocking brute-force attacks](https://owasp.org/www-community/controls/Blocking_Brute_Force_Attacks).
 {% endaside %}
 
-For this reason, hackers typically carry out *offline* attacks, where they first obtain a list of leaked password hashes (assuming a system isn't naively storing passwords as plaintext). These hashes may have been leaked from a company database, or they may be hashes for system passwords (like those in `/etc/shadow` on a Linux machine, which are viewable with root access). Either way, an attacker could use one of three approaches to crack those passwords:
+For this reason, hackers typically carry out _offline_ attacks, where they first obtain a list of leaked password hashes (assuming a system isn't naively storing passwords as plaintext). These hashes may have been leaked from a company database, or they may be hashes for system passwords (like those in `/etc/shadow` on a Linux machine, which are viewable with root access). Either way, an attacker could use one of three approaches to crack those passwords:
 
 1. [**Brute-force attack**](https://en.wikipedia.org/wiki/Brute-force_attack): an attacker searches the entire password space manually until they find a password that generates a particular hash. This is simply not feasible in practice due to the sheer number of passwords that most systems are capable of generating. For example, a password system with no constraints and a known password length of 8 can generate more than 6 quadrillion passwords.
 2. [**Dictionary attack**](https://en.m.wikipedia.org/wiki/Dictionary_attack): in a variation of the brute-force attack, a hacker uses a pre-compiled dictionary of known words and phrases and hashes each one until a collision is found. This can be automated with a tool like [John the Ripper](https://www.openwall.com/john/), brute-forcing the hashes with a custom wordlist and mangling rules. While a dictionary attack is more efficient than brute force, it is unable to crack all passwords since it only searches a subset of the password space.
@@ -49,7 +49,7 @@ For a more in-depth discussion of these techniques, see the following resources:
 
 In the previous section, I mentioned the need to search the "password space" for a system when trying to crack passwords by brute force. More generally, the <dfn>search space</dfn> for any problem is the total number of possibilities that would need to be checked in an exhaustive search. If someone is trying to crack a login system's passwords, then the search space is the total number of passwords that can be generated under certain constraints. The larger the search space, the more time and computational power that is needed to check it exhaustively. This assumes a worst-case outcome: that you're doing a brute-force search and the item you're searching for is the very last one that has yet to be checked.
 
-An equivalent measure of a password's strength is its [**entropy**](https://generatepasswords.org/how-to-calculate-entropy/), or the number of bits needed to represent that password in [the binary number system](/blog/binary-for-beginners/). This is essentially just the password space but represented as a base of two for convenience in computing. If our search space consists of `n` passwords, then we can equivalently represent all of those passwords using <code>log<sub>2</sub>(n)</code> bits. The greater a password's entropy, the stronger and more resistant to brute force that password is considered to be. For example, if a system can generate 26<sup>8</sup> passwords, then its entropy is 38 bits since 2<sup>37.6</sup> = 26<sup>8</sup> (we must round up the result since there is no notion of partial bits).
+An equivalent measure of a password's strength is its [**entropy**](https://generatepasswords.org/how-to-calculate-entropy/), or the number of bits needed to represent that password in [the binary number system](/blog/the-binary-number-system/). This is essentially just the password space but represented as a base of two for convenience in computing. If our search space consists of `n` passwords, then we can equivalently represent all of those passwords using <code>log<sub>2</sub>(n)</code> bits. The greater a password's entropy, the stronger and more resistant to brute force that password is considered to be. For example, if a system can generate 26<sup>8</sup> passwords, then its entropy is 38 bits since 2<sup>37.6</sup> = 26<sup>8</sup> (we must round up the result since there is no notion of partial bits).
 
 Using combinatorics and set theory, we can calculate the number of passwords that can be generated under different constraints and the corresponding password entropies. To simplify the math, we'll assume that the password is known to be eight characters long (the minimum length recommended by the NIST). Some common scenarios are summarized in Table 1.
 
@@ -111,7 +111,7 @@ The main takeaway from this table is that the search space (and therefore the pa
 
 ### Password Length Is More Important
 
-At first glance, Table 1 also seems to suggest that if we *do* decide to enforce password requirements, we should at last favor more complex rules because they yield a bigger search space compared to simpler rules. For example, the rule requiring at least one of each character set yields an entropy of 53, whereas a password consisting only of lowercase letters has an entropy of 38. But this doesn't tell the whole story.
+At first glance, Table 1 also seems to suggest that if we _do_ decide to enforce password requirements, we should at last favor more complex rules because they yield a bigger search space compared to simpler rules. For example, the rule requiring at least one of each character set yields an entropy of 53, whereas a password consisting only of lowercase letters has an entropy of 38. But this doesn't tell the whole story.
 
 In reality, increasing the number of candidate characters does not substantially increase the strength of a password beyond a certain point. Notice how the password entropy increases rapidly at first but then plateaus as we introduce more character classes. Realistically, our gains taper off because a standard keyboard only supports a finite number of ASCII characters (and because increasing the base of an exponent does not have as much of an impact as increasing the power).
 
@@ -152,7 +152,7 @@ To drive home this point, consider Table 2, which computes the password space an
     </table>
 </div>
 
-As this table shows, increasing the password's length from 8 to 12 already gives us a greater entropy (57 bits) with just lowercase letters. By comparison, we get only 53 bits of entropy for an 8-character password with no restrictions. It's for this reason that the NIST encourages enforcing a minimum length requirement. In general, *longer* passwords are stronger (and may be easier to remember) than *complex* passwords.
+As this table shows, increasing the password's length from 8 to 12 already gives us a greater entropy (57 bits) with just lowercase letters. By comparison, we get only 53 bits of entropy for an 8-character password with no restrictions. It's for this reason that the NIST encourages enforcing a minimum length requirement. In general, _longer_ passwords are stronger (and may be easier to remember) than _complex_ passwords.
 
 ### Password Space Isn't Everything
 
@@ -203,7 +203,7 @@ So far, our discussion focused on the fact that password composition rules can f
 
 ### Old Habits Die Hard
 
-The first problem is our assumption that *not* enforcing password composition rules will change the outcome. We began with the following hypothesis and looked at some examples:
+The first problem is our assumption that _not_ enforcing password composition rules will change the outcome. We began with the following hypothesis and looked at some examples:
 
 > If we enforce password complexity rules, then users will pick predictable passwords.
 
@@ -211,13 +211,13 @@ However, it would be misleading to conclude the following:
 
 > If we don't enforce password complexity rules, then users will pick strong passwords.
 
-This would be the logical fallacy of [denying the antecedent](https://en.wikipedia.org/wiki/Denying_the_antecedent). The reality is that users have been conditioned to expect password rules even if they aren't explicitly stated, so they'll still employ these familiar shortcuts: capitalization at the start, a bit of leet speak here and there, and numbers and punctuation at the end. Not only are these passwords easy to crack, but they can also be confusing to remember. *Does the number come before the punctuation or after? Which symbol did I use? Did I make any leet substitutions? Wait, what was the word, again?*
+This would be the logical fallacy of [denying the antecedent](https://en.wikipedia.org/wiki/Denying_the_antecedent). The reality is that users have been conditioned to expect password rules even if they aren't explicitly stated, so they'll still employ these familiar shortcuts: capitalization at the start, a bit of leet speak here and there, and numbers and punctuation at the end. Not only are these passwords easy to crack, but they can also be confusing to remember. _Does the number come before the punctuation or after? Which symbol did I use? Did I make any leet substitutions? Wait, what was the word, again?_
 
 {% quote "xkcd: Password Strength (#936)", "https://xkcd.com/936/" %}
 Through 20 years of effort, we've successfully trained everyone to use passwords that are hard for humans to remember, but easy for computers to guess.
 {% endquote %}
 
-Moreover, people tend to reuse weak passwords to minimize the number of unique passwords they have to remember. In fact, [a 2019 security survey by Google](https://services.google.com/fh/files/blogs/google_security_infographic.pdf) found that 52% of the people surveyed reuse their passwords across multiple accounts, and 13% reuse their passwords across *all* accounts. So even if we don't enforce password requirements, some other password system might, and a large number of our users may still practice poor password hygiene.
+Moreover, people tend to reuse weak passwords to minimize the number of unique passwords they have to remember. In fact, [a 2019 security survey by Google](https://services.google.com/fh/files/blogs/google_security_infographic.pdf) found that 52% of the people surveyed reuse their passwords across multiple accounts, and 13% reuse their passwords across _all_ accounts. So even if we don't enforce password requirements, some other password system might, and a large number of our users may still practice poor password hygiene.
 
 While we can do our best to educate users about good password habits and discourage them from choosing unsafe passwords, we can't guarantee that all of our users will put these tips into practice. Some browsers, like Chrome and Firefox, are making it easier for user to generate safe passwords by giving users the option of auto-generating strong passwords in registration forms and saving these to their account. But there will always be some users who won't take advantage of these measures and will fall back to their old habits.
 
@@ -235,11 +235,11 @@ Your opponent always uses her best strategy to defeat you, not the strategy that
 
 So far, we've also only considered password rules that specify an inclusion requirement for character classes, like "at least one lowercase, uppercase, and numeric character." In reality, certain kinds of composition rules can be beneficial. For example, some systems might check if a user's password contains their birthday or their name (if the form collected that information) and encourage them to pick a different password. Eliminating these possibilities does reduce the search space, but again, that does not necessarily make their password easier to crack. In this case, it may actually make it harder for attackers to target specific users through social engineering or research. So unless a hacker can get their hands on a database dump of your passwords, they're going to have a much harder time guessing a specific user's password.
 
-Moreover, the NIST guidelines encourage verifiers to require a minimum password length and to use this as the primary measure of a password's strength. Longer passwords are much harder to crack because the search space grows exponentially—by roughly an order of 100 for each additional character—to the point that it actually *does* make it more difficult to crack.
+Moreover, the NIST guidelines encourage verifiers to require a minimum password length and to use this as the primary measure of a password's strength. Longer passwords are much harder to crack because the search space grows exponentially—by roughly an order of 100 for each additional character—to the point that it actually _does_ make it more difficult to crack.
 
 ### Salt User Passwords Before Hashing Them
 
-Additionally, the NIST publication does not *merely* state that verifiers shouldn't use password complexity rules since that alone does not guarantee the security of a system's passwords. Rather, it also recommends some additional precautions for protecting user accounts. For example, as we discussed earlier, the document recommends that verifiers rate-limit log-in attempts to deter online brute-force attacks. But more importantly, it also encourages the use of *salting* to introduce more entropy into the password space:
+Additionally, the NIST publication does not _merely_ state that verifiers shouldn't use password complexity rules since that alone does not guarantee the security of a system's passwords. Rather, it also recommends some additional precautions for protecting user accounts. For example, as we discussed earlier, the document recommends that verifiers rate-limit log-in attempts to deter online brute-force attacks. But more importantly, it also encourages the use of _salting_ to introduce more entropy into the password space:
 
 {% quote "5.1.1.2 Memorized Secret Verifiers", "https://pages.nist.gov/800-63-3/sp800-63b.html#memsecretver" %}
 Verifiers SHALL store memorized secrets in a form that is resistant to offline attacks. Memorized secrets SHALL be salted and hashed using a suitable one-way key derivation function. Key derivation functions take a password, a salt, and a cost factor as inputs then generate a password hash. Their purpose is to make each password guessing trial by an attacker who has obtained a password hash file expensive and therefore the cost of a guessing attack high or prohibitive.
@@ -268,4 +268,3 @@ Second, if you're a user, you're better off relying on a password manager to gen
 - [Security StackExchange: Why are salted hashes more secure for password storage?](https://security.stackexchange.com/questions/51959/why-are-salted-hashes-more-secure-for-password-storage/51983#51983)
 - [A Somewhat Brief Explanation of Password Entropy](https://www.itdojo.com/a-somewhat-brief-explanation-of-password-entropy/)
 - [Calculating password entropy](https://www.pleacher.com/mp/mlessons/algebra/entropy.html)
-

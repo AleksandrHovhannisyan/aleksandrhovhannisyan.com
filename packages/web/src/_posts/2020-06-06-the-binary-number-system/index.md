@@ -1,12 +1,14 @@
 ---
-title: "Binary for Beginners: The ABCs of 0s and 1s"
-description: The binary number system underlies everything in computation and software. But what's the deal with all those 0s and 1s?
+title: The Binary Number System
+description: Learn how computers store numbers and perform computations using binary.
 keywords: [binary number system, binary numbers]
-categories: [computer-science, math, binary]
+categories: [computer-science, math]
 commentsId: 44
 lastUpdated: 2022-07-23
 thumbnail: ./images/thumbnail.png
 layout: mathPost
+redirectFrom:
+  - /blog/binary-for-beginners/
 ---
 
 What is $10$? If this is your first time learning about the binary number system, then this question may seem odd. Of course it's ten, right?
@@ -25,7 +27,7 @@ In this beginner's tutorial, we'll look at everything you need to know about the
 
 Before we look at binary, let's take a step back and discuss number systems more generally.
 
-It may seem strange to think of number *systems* in the plural if this is your first time learning about them. That's because the majority of the world is familiar with just one system: the **decimal number system**, also known as the **Arabic number system**. This number system uses the digits $0–9$ to represent numbers symbolically, based on their position in a string.
+It may seem strange to think of number _systems_ in the plural if this is your first time learning about them. That's because the majority of the world is familiar with just one system: the **decimal number system**, also known as the **Arabic number system**. This number system uses the digits $0–9$ to represent numbers symbolically, based on their position in a string.
 
 For example, in the decimal number system, $579$ expands to this:
 
@@ -33,9 +35,9 @@ $$
 579 = 5(10^2) + 7(10^1) + 9(10^0) = 500 + 70 + 9
 $$
 
-In school, you were taught that the $5$ in $579$ is in the hundredths place, the $7$ is in the tens place, and the $9$ is in the ones place. Notice that the $5$ is multiplied by one hundred ($10^2$), the $7$ by ten ($10^1$), and the $9$ by one ($10^0$) to form the decimal number $579$. We say that the number $579$ is *positional* because the digits, from left to right, correspond to a specific power of ten based on the position of the digit in the number.
+In school, you were taught that the $5$ in $579$ is in the hundredths place, the $7$ is in the tens place, and the $9$ is in the ones place. Notice that the $5$ is multiplied by one hundred ($10^2$), the $7$ by ten ($10^1$), and the $9$ by one ($10^0$) to form the decimal number $579$. We say that the number $579$ is _positional_ because the digits, from left to right, correspond to a specific power of ten based on the position of the digit in the number.
 
-Here, the number $10$ is what we call the **base** (aka **radix**) of our number system. Notice the powers of $10$ in the expanded expression above: $10^2$, $10^1$, and $10^0$. For this reason, the terms *decimal* and *base ten* are interchangeable.
+Here, the number $10$ is what we call the **base** (aka **radix**) of our number system. Notice the powers of $10$ in the expanded expression above: $10^2$, $10^1$, and $10^0$. For this reason, the terms _decimal_ and _base ten_ are interchangeable.
 
 In the decimal number system, a number is represented by placing digits into "buckets" that represent **increasing powers of ten**, starting with $10^0$ in the rightmost "bucket," followed by $10^1$ to its immediate left, and so on infinitely:
 
@@ -66,7 +68,7 @@ Using our same example, $d_{n-1} b^{n-1} + d_{n-2} b^{n-2} + ... + d_{0} b^0 = 5
 ![Expanding 579 in terms of powers of 10. The 5 goes in the hundredths bucket, the 7 in the tens bucket, and the 9 in the ones bucket.](./images/579.png)
 
 {% aside %}
-  **Note**: The rightmost bucket, $b^0$, will always represent $d_0$ in any number system because any base raised to the power of $0$ is just $1$.
+**Note**: The rightmost bucket, $b^0$, will always represent $d_0$ in any number system because any base raised to the power of $0$ is just $1$.
 {% endaside %}
 
 Now, in reality, you can have a number system that uses a base of $2$, $3$, $4$, $120$, and so on. Some of these have special names because they're used more often than others:
@@ -113,7 +115,7 @@ Now, in reality, you can have a number system that uses a base of $2$, $3$, $4$,
 For this reason, when discussing number systems, we usually subscript a number with its base to clarify its value. Alternatively, you can prepend a number with a certain string (usually `0b` for binary or `0x`/`#` for hexadecimal). So we'd write $579$ as $579_{10}$, or the binary number $1001$ as $1001_2$ (or $\text{0b}1001$). Otherwise, if we were to merely write the number $1001$ without providing any context, nobody would know whether that's in binary, octal, decimal, hexadecimal, and so on because the digits $0$ and $1$ are valid in all of those number systems, too!
 
 {% aside %}
-  **Note**: When not comparing number systems, we usually assume that a given number is in decimal unless otherwise noted, and thus the subscript is omitted.
+**Note**: When not comparing number systems, we usually assume that a given number is in decimal unless otherwise noted, and thus the subscript is omitted.
 {% endaside %}
 
 ## The Binary Number System
@@ -136,14 +138,14 @@ Here are some examples of representing decimal numbers in the binary number syst
 - Five: $5_{10} = 101_2$. Expansion: $1(2^2) + 0(2^1) + 1(2^0)$
 
 {% aside %}
-  **Note**: Like in the decimal number system, leading zeros are usually stripped from binary strings. The only exception is if you're working with [a signed binary number system](#signed-binary-number-system-twos-complement), where a leading zero indicates that a number is positive and a leading one indicates that it's negative.
+**Note**: Like in the decimal number system, leading zeros are usually stripped from binary strings. The only exception is if you're working with [a signed binary number system](#signed-binary-number-system-twos-complement), where a leading zero indicates that a number is positive and a leading one indicates that it's negative.
 {% endaside %}
 
 Having learned the binary number system, you should now understand the joke from earlier:
 
 > There are $10$ types of people: those who understand binary and those who don't.
 
-Here, we really mean the binary equivalent of two, which *looks* like ten to our eyes when it's not properly subscripted: $10_2 = 1 × 2^1 = 2_{10}$.
+Here, we really mean the binary equivalent of two, which _looks_ like ten to our eyes when it's not properly subscripted: $10_2 = 1 × 2^1 = 2_{10}$.
 
 ### Binary Is Close to the Hardware of a Computer
 
@@ -152,7 +154,7 @@ Why do we bother with using the binary number system in the first place? Doesn't
 You may not see any point in using binary if you haven't learned about computer architecture at a low level. Internally, computers are nothing more than electrical circuits tied to hardware. Current either flows through a wire or doesn't—a **binary state**. Likewise, computers use **logic gates** (AND/OR/NOR/XOR) to control the flow of a program's execution, and these take binary inputs (`true`/`false`). The best way to represent these low-level interactions is to use the binary number system: $0$ means "off" (or `false` in its boolean form) and $1$ means "on" (`true`).
 
 {% aside %}
-  **Note**: If the whole world were to agree to it, we could just as well instead treat $0$ as "on" and $1$ as "off." However, it just makes more sense to treat $0$ as off/false—after all, zero denotes the absence of a value. Hence, it's a natural candidate for representing things like falsehood or the lack of a current flowing through a wire.
+**Note**: If the whole world were to agree to it, we could just as well instead treat $0$ as "on" and $1$ as "off." However, it just makes more sense to treat $0$ as off/false—after all, zero denotes the absence of a value. Hence, it's a natural candidate for representing things like falsehood or the lack of a current flowing through a wire.
 {% endaside %}
 
 Everything on your computer—the files you save and the software you install—is represented as nothing more than zeros and ones. But how is this possible?
@@ -165,24 +167,24 @@ Suppose you create a file on your computer and store some basic text in it:
 echo Hello, Binary > file
 ```
 
-At the end of the day, your computer can't store a character like `H`, `e`, `l`, or `o` (or even the space between two words) *literally*. Computers only know how to work with *binary*. Thus, we need some way to convert these characters to numbers. And that's why the Unicode standard was introduced.
+At the end of the day, your computer can't store a character like `H`, `e`, `l`, or `o` (or even the space between two words) _literally_. Computers only know how to work with _binary_. Thus, we need some way to convert these characters to numbers. And that's why the Unicode standard was introduced.
 
-Unicode is the most widely accepted **character encoding standard**: a method of representing human-readable characters like `H`, `e`, `,`, `?`, and `9` numerically so that computers can understand and use them like we do. Each character maps to a unique number known as a *code point*.
+Unicode is the most widely adopted character encoding standard: a method of representing human-readable characters like `H`, `e`, `,`, `?`, and `9` numerically so that computers can understand and use them like we do. Each character maps to a unique number known as a _code point_.
 
-For example, the chart below shows a very limited subset of Unicode characters (known as the ASCII standard) and their corresponding code points:
+For example, the chart below shows a very limited subset of Unicode characters known as ASCII:
 
 ![An ASCII table showing characters and their numerical representations](./images/ascii.gif)
 
-For the sake of brevity, we'll focus on just the ASCII standard for now, even though it doesn't capture the full range of characters in the Unicode standard and the complexities that come with needing to support hundreds of thousands of characters.
+For the sake of brevity, we'll focus on just ASCII for now, even though it doesn't capture the full range of characters in the Unicode standard and the complexities that come with needing to support hundreds of thousands of characters.
 
-The ASCII standard supports only 128 characters, each mapped to a unique number:
+ASCII supports only 128 characters, each mapped to a unique number:
 
 - Arabic digits: $0-9$ (10)
 - Uppercase Latin letters: $A-Z$ (26)
 - Lowercase Latin letters: $a-z$ (26)
 - Punctuation and special characters (66)
 
-Again, note that while the ASCII standard only allows us to represent a tiny fraction of Unicode characters, it's simple enough that it can help us better understand how characters are stored on computers.
+Again, note that while ASCII only allows us to represent a tiny fraction of Unicode characters, it's simple enough that it can help us better understand how characters are stored on computers.
 
 ### 1 ASCII Character = 1 Byte
 
@@ -199,15 +201,9 @@ Here are some examples of valid bytes:
 
 ... and any other valid permutation of eight $0$s and $1$s that you can think of.
 
-Why is this relevant? Because on modern computers, **characters are represented using bytes**.
+Recall that the ASCII encoding format needs to support a total of **128 characters**. So how many unique number can we represent with $8$ bits (a byte)? Well, using the product rule from combinatorics, we have eight "buckets," each with two possible values: either a $0$ or a $1$. Thus, we have $2 × 2 × ... × 2 = 2^8$ possible values. In decimal, this is $2^8 = 256$ possible values. By comparison, $2^7 = 128$. And $128$ happens to be the number of characters that we want to represent.
 
-Recall that the ASCII encoding format needs to support a total of **128 characters**. So how many unique number can we represent with $8$ bits (a byte)?
-
-Well, using the product rule from combinatorics, we have eight "buckets," each with two possible values: either a $0$ or a $1$. Thus, we have $2 × 2 × ... × 2 = 2^8$ possible values.
-
-In decimal, this is $2^8 = 256$ possible values. By comparison, $2^7 = 128$. And $128$ happens to be the number of characters that we want to represent.
-
-So... That's weird, and seemingly wasteful, right? Why do we use $8$ bits (one byte) to represent a character when we could use $7$ bits instead and meet the precise character count that we need?
+So... That's weird, and seemingly wasteful, right? Why do we use $8$ bits (one byte) to represent an ASCII character when we could use $7$ bits instead and meet the precise character count that we need?
 
 Good question! We use bytes because **it's not possible to evenly divide a group of $7$ bits**, making certain low-level computations difficult if we decide to use $7$ bits to represent a character. In contrast, a byte can be evenly split into powers of two:
 
@@ -216,8 +212,6 @@ Good question! We use bytes because **it's not possible to evenly divide a group
 [1110][1011]
 [11][10][10][11]
 ```
-
-The key takeaway here is that we only need one byte to store one character on a computer. This means that a string of five characters—like `Hello`—occupies five bytes of space, with each byte being the numerical representation of the corresponding character per the ASCII format.
 
 Remember the file we created earlier? Let's view its binary representation using the `xxd` Unix tool:
 
@@ -233,9 +227,9 @@ The `-b` flag stands for binary. Here's the output that you'll get:
 0000000c: 01111001 00001010                                      y.
 ```
 
-The first line shows a sequence of six bytes, each corresponding to one character in `Hello,`.
+The first line shows a sequence of six bytes, each corresponding to one character in the ASCII string `Hello,`.
 
-Let's decode the first two bytes using our knowledge of the binary number system and ASCII:
+Let's decode the first two bytes using our knowledge of binary and ASCII:
 
 - $01001000 = 1(2^6) + 1(2^3) = 72_{10}$. Per our ASCII table, this corresponds to $H$.
 - $01100101 = 1(2^6) + 1(2^5) + 1(2^2) + 1(2^0) = 101_{10}$, which is $e$ in ASCII.
@@ -243,7 +237,7 @@ Let's decode the first two bytes using our knowledge of the binary number system
 Cool! Looks like the logic pans out. You can repeat this for all of the other bytes as well. Notice that on the second line, we have a leading space (from `Hello, Binary`), represented as $2^5 = 32_{10}$ in ASCII (which is indeed `Space` per the table).
 
 {% aside %}
-As a reminder, this was a highly simplified discussion of how characters are stored on modern computers. In reality, we cannot store every possible Unicode character in just a single byte because there are far more than $256$ characters in Unicode. For example, the UTF-16 standard stores characters in two-byte chunks.
+As a reminder, this was a highly simplified discussion of how characters are stored on modern computers. In reality, we cannot store every possible Unicode character in just a single byte because there are far more than $256$ characters in Unicode. See [my article on Unicode](/blog/introduction-to-unicode/) for a deep dive.
 {% endaside %}
 
 By the way, what's up with the numbers along the left-hand side of the output? What does $0000000c$ even mean? Time to explore another important number system!
@@ -255,7 +249,7 @@ As I mentioned in the table from earlier, the hexadecimal number system is close
 The **hexadecimal number system** has a base of $16$, meaning its digits range from $0–15$.
 
 {% aside %}
-  **Note**: In technical terms, a hexadecimal digit is called a **nibble**, but you'll commonly hear people just call them "hex digits."
+**Note**: In technical terms, a hexadecimal digit is called a **nibble**, but you'll commonly hear people just call them "hex digits."
 {% endaside %}
 
 This is our first time encountering a number system whose digits are made up of more than two characters. How do we squeeze $10$, $11$, or $15$ into a single "bucket" or "slot" for a digit? To be clear, **this is perfectly doable** if you have clear delimiters between digits, like vertical lines—without which you wouldn't know if $15$ is a one followed by a five or a single digit of $15$ in the ones place. But in reality, using delimiters isn't practical.
@@ -287,7 +281,7 @@ $$
 The better solution that people came up with is to map $10–15$ to the the English letters $a–f$. Note that we could've also used any other symbols to represent these digits. As long as we agree on a convention and stick with it, there's no ambiguity as to what a number represents.
 
 {% aside %}
-  **Note**: Capitalization doesn't matter, so you can use $a-f$ or $A-F$. Just be consistent.
+**Note**: Capitalization doesn't matter, so you can use $a-f$ or $A-F$. Just be consistent.
 {% endaside %}
 
 Here's an example of a hexadecimal number that uses one of these digits:
@@ -388,7 +382,7 @@ $$
 0b[01000010][10000111][11110101]
 $$
 
-Notice that each color *component* takes up a byte ($8$ bits) of space.
+Notice that each color _component_ takes up a byte ($8$ bits) of space.
 
 #### How Many Colors Are There?
 
@@ -414,7 +408,7 @@ On older systems with limited memory, colors were represented using just eight b
 
 Naturally, you may be wondering: How did they split $8$ bits evenly among red, green, and blue? After all, $8$ isn't divisible by three!
 
-Well, the answer is that *they didn't*. The process of splitting these bits among the color components is called [color quantization](https://en.wikipedia.org/wiki/8-bit_color#Color_quantization), and the most common method (known as **8-bit truecolor**) split the bits as 3-3-2 red-green-blue. Apparently, this is because the human eye is less sensitive to blue light than the other two, and thus it simply made sense to distribute the bits heavily in favor of red and green and leave blue with one less bit to work with.
+Well, the answer is that _they didn't_. The process of splitting these bits among the color components is called [color quantization](https://en.wikipedia.org/wiki/8-bit_color#Color_quantization), and the most common method (known as **8-bit truecolor**) split the bits as 3-3-2 red-green-blue. Apparently, this is because the human eye is less sensitive to blue light than the other two, and thus it simply made sense to distribute the bits heavily in favor of red and green and leave blue with one less bit to work with.
 
 ## Signed Binary Number System: Two's Complement
 
@@ -424,15 +418,15 @@ To give us some context, I'll assume that we're working with standard $32$-bit i
 
 If we have $32$ bits to fiddle with, that means we can represent a total of $2^{32} = 4,294,967,296$ (4 billion) numbers. More generally, if you have $N$ bits to work with, you can represent $2^N$ values. But we'd like to split this number range evenly between negatives and positives.
 
-Positive or negative... positive or negative. One thing or another thing—ring a bell? That sounds like it's binary in nature. And hey—we're already using binary to *store* our numbers! Why not reserve just a single bit to represent *the sign*? We can have the most significant (leading) bit be a $0$ when our number is positive and a $1$ when it's negative!
+Positive or negative... positive or negative. One thing or another thing—ring a bell? That sounds like it's binary in nature. And hey—we're already using binary to _store_ our numbers! Why not reserve just a single bit to represent _the sign_? We can have the most significant (leading) bit be a $0$ when our number is positive and a $1$ when it's negative!
 
 {% aside %}
-  **Note**: This is once again one of those situations where you could just as well do the opposite, except you'd have to convince the whole world to follow your chosen convention.
+**Note**: This is once again one of those situations where you could just as well do the opposite, except you'd have to convince the whole world to follow your chosen convention.
 {% endaside %}
 
 Earlier, when we were first looking at the binary number systems, I mentioned that you can strip leading zeros because they are meaningless. This is true except when you actually care about distinguishing between positive and negative numbers in binary. Now, we need to be careful—if you strip all leading zeros, you my be left with a leading $1$, and that would imply that your number is negative (in a signed number system).
 
-You can think of two's complement as a new *perspective* or lens through which we look at binary numbers. The number $100_2$ ordinarily means $4_{10}$ if we don't care about its sign (i.e., we assume it's **unsigned**). But if we do care, then we have to ask ourselves (or whoever provided us this number) whether it's a signed number.
+You can think of two's complement as a new _perspective_ or lens through which we look at binary numbers. The number $100_2$ ordinarily means $4_{10}$ if we don't care about its sign (i.e., we assume it's **unsigned**). But if we do care, then we have to ask ourselves (or whoever provided us this number) whether it's a signed number.
 
 ### How Does Two's Complement Work?
 
@@ -657,7 +651,7 @@ $$
 $$
 
 {% aside %}
-  **Note**: We've only looked at examples of adding two binary numbers, but you could just as well stack $x$ numbers on top of one another and add them in binary, just like you would in decimal. How far ahead you need to carry your ones depends on the result that you get in a particular column, represented as a binary string.
+**Note**: We've only looked at examples of adding two binary numbers, but you could just as well stack $x$ numbers on top of one another and add them in binary, just like you would in decimal. How far ahead you need to carry your ones depends on the result that you get in a particular column, represented as a binary string.
 {% endaside %}
 
 ### Subtracting Binary Numbers
@@ -855,7 +849,7 @@ In the rightmost column, we'll get $1_2 + 1_2 = 10_2$, so that's a zero carry a 
     1000...00000     (-2^{N-1})
 ```
 
-And what number is that in signed binary? Hmm... Looks like it's the smallest representable negative number! What we've observed here is called **integer overflow**. When you try to go past the largest representable signed integer in a given $N$-bit system, the result *overflows* or *wraps around*.
+And what number is that in signed binary? Hmm... Looks like it's the smallest representable negative number! What we've observed here is called **integer overflow**. When you try to go past the largest representable signed integer in a given $N$-bit system, the result _overflows_ or _wraps around_.
 
 What if we try to subtract one from the smallest representable $N$-bit signed integer? First, we'll represent $-1_{10}$ as a signed integer in binary:
 

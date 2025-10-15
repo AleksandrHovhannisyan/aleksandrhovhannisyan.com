@@ -2,9 +2,9 @@
 title: An Introduction to Unicode
 description: In this deep dive, you'll learn about the Unicode character set and how it's encoded and decoded with UTF.
 keywords: [character encoding, unicode, utf]
-categories: [unicode, computer-science, math, binary]
+categories: [unicode, computer-science, math]
 thumbnail: ./images/thumbnail.png
-lastUpdated: 2025-02-25
+lastUpdated: 2025-10-15
 isFeatured: true
 commentsId: 191
 redirectFrom:
@@ -14,7 +14,7 @@ redirectFrom:
 If you're familiar with HTML, you've probably seen this tag somewhere in the `<head>` of a document (hopefully at the very start):
 
 ```html
-<meta charset="utf-8">
+<meta charset="utf-8" />
 ```
 
 As you can probably guess from the `charset` HTML attribute, it must have something to do with character sets. But why is it needed?
@@ -46,7 +46,6 @@ In this deep dive, you'll learn about the Unicode character set and how to encod
 ## Prerequisites
 
 This article assumes almost no prior knowledge about character sets or encoding. Where possible, I will define new terms and concepts. For a more in-depth introduction to this topic, I strongly encourage you to also read Joel Spolsky's seminal article: [The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/). I've also included supplementary [references and further reading](#references-and-further-reading) at the end of this article.
-
 
 ## A Brief History of Character Encoding
 
@@ -120,7 +119,7 @@ In other words, UCS is just the bare bones character-to-number mapping portion o
 
 ### ASCII
 
-Going even further back, we'll find that we actually didn't _start_ with Unicode. In the 1960s, text documents on computers used a precursor character set known as <dfn>ASCII</dfn>, which is now just a tiny subset of Unicode—specifically, the [Basic Latin block](https://en.wikipedia.org/wiki/Basic_Latin_(Unicode_block)). ASCII assigns 128 code points to characters: the English alphabet, Arabic numerals, punctuation, and common control characters (like line endings) used in digital text. Table 2 lists some examples of ASCII characters and their code points in hexadecimal, binary, and decimal:
+Going even further back, we'll find that we actually didn't _start_ with Unicode. In the 1960s, text documents on computers used a precursor character set known as <dfn>ASCII</dfn>, which is now just a tiny subset of Unicode—specifically, the [Basic Latin block](<https://en.wikipedia.org/wiki/Basic_Latin_(Unicode_block)>). ASCII assigns 128 code points to characters: the English alphabet, Arabic numerals, punctuation, and common control characters (like line endings) used in digital text. Table 2 lists some examples of ASCII characters and their code points in hexadecimal, binary, and decimal:
 
 <div class="scroll-x" role="region" tabindex="0">
   <table>
@@ -180,11 +179,11 @@ But this also meant that we could no longer assume each character was only eight
 
 ## Encoding Unicode
 
-Technically, this wasn't a problem with Unicode _itself_. At the end of the day, Unicode is just a massive character set, not a character encoding standard; it's only concerned with assigning numbers to human-readable characters. If we can represent a character numerically, then we can store that character in a computer's memory. In theory, we can represent infinitely many code points with Unicode, and the standard is ever-expanding.
+Technically, this wasn't a problem with Unicode _itself_. At the end of the day, Unicode is just a massive character set that assigns numbers to human-readable characters. If we can represent a character numerically, then we can store that character in a computer's memory. In theory, we can represent infinitely many code points with Unicode, and the standard is ever-expanding.
 
 On the other hand, _how_ we choose to store those code points in memory is entirely up to us: We could represent them in binary and store those numbers as-is, or we could manipulate the bits with some sort of algorithm to create a more useful result. Either way, Unicode doesn't care how we store code points in memory; it just tells us _what_ those numbers are.
 
-In fact, if we were to only ever write and read single-character text documents, Unicode on its own would be unambiguous: If you opened a file and saw two bytes, you'd decode those two bytes to get back a single character. If you saw three bytes, you'd decode three. And so on, for all code points in the Unicode standard. But in practice, text files and network responses consist of an arbitrary-length sequence of bytes representing one or more characters. So it's not enough to just use the code points directly because then we won't know where one code point begins and another ends. That _would_ be trivial if all characters were ASCII, in which case the boundaries would be in 8-bit intervals, but that's no longer the case in a world where we need more than `2^8 = 256` characters. Therefore, we need a way to encode characters with clearly defined boundaries.
+In fact, if we were to only ever write and read single-character text documents, Unicode on its own would be unambiguous: If you opened a file and saw two bytes, you'd decode those two bytes to get back a single character. If you saw three bytes, you'd decode three. And so on. But in practice, text can consist of an arbitrary-length sequence of bytes representing one or more characters. So it's not enough to just use the code points directly because then we won't know where one code point begins and another ends. That _would_ be trivial if all characters were ASCII, in which case the boundaries would be in 8-bit intervals, but that's no longer the case in a world where we need more than `2^8 = 256` characters. Therefore, we need a way to encode characters with clearly defined boundaries.
 
 How do we do that?
 
@@ -747,7 +746,7 @@ That's why the HTML example from the beginning of this article is so relevant:
 
 ```html
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
 </head>
 ```
 
@@ -759,8 +758,10 @@ Now, why does this tag need to appear as early as possible in the `<head>` of a 
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <!-- ... -->
+  </head>
+</html>
 ```
 
 Hence why you need to declare this as early as possible—specifically, within the first 1024 bytes:
@@ -774,7 +775,7 @@ The Encoding standard requires use of the UTF-8 character encoding and requires 
 In the intro to this article, I mentioned that the following JavaScript code doesn't quite behave like you'd expect. Can you guess what value it logs and why? As a reminder, JavaScript uses UTF-16 encoding.
 
 ```js {data-file="test.js"}
-console.log('Hi 👋'.length)
+console.log('Hi 👋'.length);
 ```
 
 Here's a free hint: Search up the waving hand emoji's code point. If you're still stuck, consider revealing the additional hint or the full explanation below.

@@ -2,7 +2,7 @@
 title: HTML Input Validation with JavaScript
 description: Validate user input in real time with the checkValidity, reportValidity, and setCustomValidity methods.
 keywords: [input validation, validity, input, form]
-categories: [html, javascript, accessibility, forms]
+categories: [html, javascript, forms]
 thumbnail: ./images/thumbnail.png
 commentsId: 137
 lastUpdated: 2022-08-11

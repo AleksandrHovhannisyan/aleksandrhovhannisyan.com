@@ -2,7 +2,7 @@
 title: Overzealous Destructuring
 description: Excessive destructuring in JavaScript can make your code harder to read, trickier to debug, and more error prone.
 keywords: [javascript, destructuring]
-categories: [javascript, typescript, react, practices]
+categories: [javascript, practices]
 lastUpdated: 2022-04-17
 thumbnail: https://images.unsplash.com/photo-1615678857339-4e7e51ce22db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
@@ -166,10 +166,7 @@ const value = object?.with?.nested?.properties;
 In the above expression, `value` will evaluate to the value of `properties` if the object and all of its intermediate properties are non-nullish. But if the object or any of its properties is nullish, the entire expression will return `undefined` without throwing any errors. This allows us to safely access deeply nested object properties without checking each property individually. The above code is equivalent to doing this:
 
 ```js
-const value =
-  object && object.with && object.with.nested
-    ? object.with.nested.properties
-    : undefined;
+const value = object && object.with && object.with.nested ? object.with.nested.properties : undefined;
 ```
 
 On the other hand, if we destructure those properties, we run into several problems. First, we have no (good) way of safeguarding against nullish values other than using the [nullish coalescing operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator) (`??`):
@@ -186,7 +183,7 @@ const {
 
 This says: Attempt to destructure the deeply nested `properties` property from the object. If the object is nullish, fall back to an object containing all properties except the one that we want. This means that `properties` is the value if it exists or `undefined` (because the fallback `nested` object has no properties, so `fallback.with.nested.properties` is `undefined`).
 
-Except... what if the object *is* defined but one of its intermediate properties isn't?
+Except... what if the object _is_ defined but one of its intermediate properties isn't?
 
 ```js
 const fallback = { with: { nested: {} } };
@@ -204,7 +201,7 @@ Because `object.with` is `undefined`, attempting to access `object.with.nested` 
 Uncaught TypeError: Cannot read properties of undefined (reading 'nested')
 ```
 
-The version with destructuring is *significantly* more complex and error prone than the original, and it sacrifices the readability of our code for absolutely no gain. It's riddled with traps that can catch you off guard if you're not careful, and its syntax is far more verbose than it needs to be.
+The version with destructuring is _significantly_ more complex and error prone than the original, and it sacrifices the readability of our code for absolutely no gain. It's riddled with traps that can catch you off guard if you're not careful, and its syntax is far more verbose than it needs to be.
 
 The code is also not the same as the original! In the original example, we named the final variable `value`. If we want to rename the deeply nested property while destructuring it, we'll need to do so during assignment. This only exacerbates the readability problem:
 

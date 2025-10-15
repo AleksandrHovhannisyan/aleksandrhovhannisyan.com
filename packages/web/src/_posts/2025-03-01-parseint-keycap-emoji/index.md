@@ -1,6 +1,6 @@
 ---
 title: To Parse an Int
-description: Why does JavaScript's parseInt treat keycap emoji as integers? Is it a bug, a feature, or perhaps both?
+description: Why does JavaScript's parseInt treat keycap emoji as integers? Is it a bug, a feature, or both?
 categories: [javascript, unicode]
 keywords: [parseInt, keycap emoji]
 lastUpdated: 2025-03-08

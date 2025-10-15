@@ -1,6 +1,6 @@
 ---
 title: Changing the Locale in Chrome with Dev Tools
-description: Learn how to use Chrome developer tools to simulate loading a page in a different locale.
+description: Chrome dev tools allow you to simulate loading a page in a different locale.
 keywords: [locale, dev tools]
 categories: [html, i18n, browsers, testing]
 thumbnail: https://images.unsplash.com/photo-1510267413785-9d9e64460cde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
@@ -15,7 +15,7 @@ Modern browsers have developer tools that allow us to simulate user preferences,
 ## Changing the Locale in Chrome
 
 {% aside %}
-  Credit: I learned this trick from Kazuya Ito in [their StackOverflow answer](https://stackoverflow.com/a/69149258/5323344) on how to change the browser locale via dev tools in Google Chrome.
+Credit: I learned this trick from Kazuya Ito in [their StackOverflow answer](https://stackoverflow.com/a/69149258/5323344) on how to change the browser locale via dev tools in Google Chrome.
 {% endaside %}
 
 To start, you'll want to open up a site that you know is internationalized. Maybe that's the one you're creating at work, or maybe it's a popular site that you use. I'll use Wikipedia for this demo. Here's Wikipedia in English on Chrome:

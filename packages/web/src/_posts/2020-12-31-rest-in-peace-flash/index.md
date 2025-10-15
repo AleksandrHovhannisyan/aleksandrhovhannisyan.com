@@ -1,6 +1,6 @@
 ---
 title: Rest in Peace, Flash
-description: If it were up to me, things wouldn't end this way. We had some great times together, but now it's time to say goodbye.
+description: If it were up to me, things wouldn't end this way. We had some great times together, but now it's time to move on.
 keywords: [flash games]
 categories: [essay, gaming]
 thumbnail: ./images/thumbnail.png

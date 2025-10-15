@@ -1,6 +1,6 @@
 ---
 title: Syntax Highlighting with Prism.js and markdown-it
-description: Learn how to add line numbers, file names, and copy-to-clipboard buttons to your code blocks.
+description: Learn how to decorate your Markdown code blocks with Prism to add line numbers, file names, and copy-to-clipboard buttons.
 thumbnail: ./images/thumbnail.jpg
 categories: [javascript, markdown]
 keywords: [prism, syntax highlight, markdown-it]
@@ -22,7 +22,9 @@ console.log(html);
 Gives this output:
 
 ```html {data-file="output.html"}
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'hello world'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span
+><span class="token punctuation">(</span><span class="token string">'hello world'</span
+><span class="token punctuation">)</span><span class="token punctuation">;</span>
 ```
 
 Meanwhile, [markdown-it](https://github.com/markdown-it/markdown-it) converts Markdown to HTML. This Markdown file:
@@ -37,12 +39,12 @@ console.log('hello world');
 
 When processed with this code:
 
-````js {data-file="markdown.js"}
+```js {data-file="markdown.js"}
 import MarkdownIt from 'markdown-it';
 
 const md = MarkdownIt(options);
 md.render(file);
-````
+```
 
 Gives this output:
 
@@ -94,7 +96,7 @@ So all we need to do is call `Prism.highlight`:
 ```js {data-file="markdown.js" data-copyable="true"}
 const md = MarkdownIt({
   highlight: (code, lang) => {
-    return Prism.highlight(code, Prism.languages[lang], lang)
+    return Prism.highlight(code, Prism.languages[lang], lang);
   },
 });
 ```
@@ -106,7 +108,7 @@ This is the basic setup that we'll use in the rest of this tutorial.
 The second argument to `Prism.highlight` is the grammar of the language we want to use when highlighting our code:
 
 ```js
-Prism.highlight(code, grammar, lang)
+Prism.highlight(code, grammar, lang);
 ```
 
 Each grammar is a JavaScript object that maps token types to regular expressions.
@@ -171,7 +173,7 @@ const md = MarkdownIt({
     if (!Object.hasOwn(Prism.languages, lang)) {
       loadLanguages([lang]);
     }
-    return Prism.highlight(code, Prism.languages[lang], lang)
+    return Prism.highlight(code, Prism.languages[lang], lang);
   },
 });
 ```
@@ -256,7 +258,7 @@ function makeFencedCodeRenderer(markdownIt) {
   const defaultRenderer = markdownIt.renderer.rules.fence;
 
   /** @type {import('markdown-it/lib/renderer.mjs').RenderRule} */
-  return (tokens, index, options, env, self) => {}
+  return (tokens, index, options, env, self) => {};
 }
 
 const md = MarkdownIt(options);
@@ -270,13 +272,13 @@ return (tokens, index, options, env, self) => {
   const fencedCodeBlockToken = tokens[index];
   const language = getLanguage(fencedCodeBlockToken.info);
   let codeHtml = defaultRenderer(tokens, index, options, env, self);
-  
+
   let captionHtml = `<figcaption class="sr-only">${language} code snippet</figcaption>`;
   let copyCodeButtonHtml = '';
-  
+
   codeHtml = `${captionHtml}${codeBlockHtml}${copyCodeButtonHtml}`;
   return `<figure class="code-block" data-language="${language}">${codeHtml}</figure>`;
-}
+};
 ```
 
 Note that this `.sr-only` caption will only be included for code blocks that don't have a custom (visible) file name override. Speaking of which...
@@ -303,6 +305,7 @@ This markdown-it plugin allows you to add custom HTML attributes to any Markdown
 # Heading {#custom-id}
 
 ```html {data-file="index.html" data-copyable="true"}
+
 ```
 ````
 
@@ -380,7 +383,7 @@ const md = MarkdownIt({
       .trim()
       .split('\n')
       .map((line) => `<span class="line">${line}</span>`)
-      .join('\n');  
+      .join('\n');
   },
 });
 ```
@@ -391,15 +394,15 @@ As for showing the actual line numbers themselves, you have two options. The fir
 
 ```js {data-file="markdown.js" data-copyable="true"}
 return html
-      .trim()
-      .split('\n')
-      .map((line, index) => {
-        const lineNumber = index + 1;
-        // for screen readers
-        const srOnlyLabel = `<span class="sr-only">Line </span>`;
-        return `<span class="line">${srOnlyLabel}${lineNumber} ${line}</span>`
-      })
-      .join('\n');
+  .trim()
+  .split('\n')
+  .map((line, index) => {
+    const lineNumber = index + 1;
+    // for screen readers
+    const srOnlyLabel = `<span class="sr-only">Line </span>`;
+    return `<span class="line">${srOnlyLabel}${lineNumber} ${line}</span>`;
+  })
+  .join('\n');
 ```
 
 Unfortunately, there's also a big downside to this approach: The `"Line "` string and the number itself will become part of the code element's `innerText` property, so they'll get included in any code copied to the clipboard. For that reason, I don't recommend this approach, but I wanted to mention it anyway.
@@ -466,7 +469,7 @@ const md = MarkdownIt({
         }
         return `<span class="${className}">${line}</span>`;
       })
-      .join('\n');  
+      .join('\n');
   },
 });
 ```

@@ -2,7 +2,7 @@
 title: Does Web Performance Matter? It Depends.
 description: Some big brands have a slow page load speed, but they still rank well on Google. So does web performance even matter?
 keywords: [web performance, page load speed]
-categories: [webperf, lighthouse]
+categories: [case-study, webperf]
 thumbnail: https://images.unsplash.com/photo-1579019163248-e7761241d85a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
@@ -51,7 +51,7 @@ The landing pages of SEO authorities like Ahrefs and Moz are similarly slow:
 ![The Lighthouse audit for moz.com shows 47 for performance, 89 for accessibility, 79 for best practices, and 91 for SEO.](./images/moz.png)
 
 {% aside %}
-  There's no particular reason why I decided to run audits on these websites and not others. These are just the ones that came to mind as I was writing this article.
+There's no particular reason why I decided to run audits on these websites and not others. These are just the ones that came to mind as I was writing this article.
 {% endaside %}
 
 ## And Yet, They Rank Well
@@ -71,7 +71,7 @@ When you think about it, this makes sense. After all, you could have the fastest
 
 ## So Does Web Performance Matter?
 
-Should you even care about web performance if slow sites can still rank well? Is a slow website really that big of a deal? The answer is *sort of*—it's a bit more nuanced than a simple yes or no.
+Should you even care about web performance if slow sites can still rank well? Is a slow website really that big of a deal? The answer is _sort of_—it's a bit more nuanced than a simple yes or no.
 
 To answer this very question (among many others), the online marketing blog Backlinko conducted [a study of more than 11.8 million Google search results](https://backlinko.com/search-engine-ranking). And one of its most surprising findings suggests that [page loading speed does not have a correlation with ranking on Google](https://backlinko.com/search-engine-ranking#page-loading-speed).
 
@@ -80,15 +80,14 @@ How is this possible? After all, tons of online resources on SEO and marketing h
 Here's a quote from Google's official announcement of the so-called Speed Update in early 2018:
 
 {% quote "Using page speed in mobile search ranking", "https://developers.google.com/search/blog/2018/01/using-page-speed-in-mobile-search" %}
-  The “Speed Update,” as we’re calling it, will **only affect pages that deliver the slowest experience to users** and will only affect a small percentage of queries. It applies the same standard to all pages, regardless of the technology used to build the page. The intent of the search query is still a very strong signal, so **a slow page may still rank highly if it has great, relevant content**.
+The “Speed Update,” as we’re calling it, will **only affect pages that deliver the slowest experience to users** and will only affect a small percentage of queries. It applies the same standard to all pages, regardless of the technology used to build the page. The intent of the search query is still a very strong signal, so **a slow page may still rank highly if it has great, relevant content**.
 {% endquote %}
-
 
 Translation? Focus on producing high-quality and relevant content that matches your users' [search intent](https://ahrefs.com/blog/search-intent/) instead of obsessing over web performance (unless your site is terribly slow). Your page load speed will still be important, but other factors—like content quality and relevance—will outweigh it. Google goes on to emphasize that page load speed is just a rough heuristic that measures a website's **user experience**:
 
 > We encourage developers to think broadly about how performance affects a user’s experience of their page and to consider a variety of [user experience metrics](https://web.dev/user-centric-performance-metrics/).
 
-So, judge the quality of your website not by whether you get a perfect 100 on Lighthouse but rather by how well you meet *the underlying metrics that Lighthouse considers*. These metrics are positively correlated with a **good user experience**, which is what everyone is really aiming for at the end of the day.
+So, judge the quality of your website not by whether you get a perfect 100 on Lighthouse but rather by how well you meet _the underlying metrics that Lighthouse considers_. These metrics are positively correlated with a **good user experience**, which is what everyone is really aiming for at the end of the day.
 
 Let's be real: Even if you're a big brand that can afford to lose some traffic, nobody enjoys a sluggish browsing experience. Consider that:
 
@@ -113,6 +112,6 @@ As a long-term strategy for SEO, you should also focus on **publishing high-qual
 
 ## The Importance of Web Performance
 
-A faster website won't automatically rank high on Google by virtue of its performance alone. Still, page load speed *is* something that you should consider if you care about your user experience. Be sure to balance your efforts—you shouldn't optimize your page load speed at the *expense* of your content quality or branding. But you also shouldn't neglect it entirely, to the point that users ditch your site in favor of a competitor's.
+A faster website won't automatically rank high on Google by virtue of its performance alone. Still, page load speed _is_ something that you should consider if you care about your user experience. Be sure to balance your efforts—you shouldn't optimize your page load speed at the _expense_ of your content quality or branding. But you also shouldn't neglect it entirely, to the point that users ditch your site in favor of a competitor's.
 
 {% include "unsplashAttribution.md" name: "Anastase Maragos", username: "visualsbyroyalz", photoId: "X4zx5Vc_LZU" %}

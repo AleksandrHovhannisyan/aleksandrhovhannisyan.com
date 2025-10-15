@@ -7,8 +7,7 @@ commentsId: 28
 lastUpdated: 2021-09-18
 thumbnail: ./images/thumbnail.png
 scripts:
-  - 
-    src: https://static.codepen.io/assets/embed/ei.js
+  - src: https://static.codepen.io/assets/embed/ei.js
     defer: true
 redirectFrom:
   - /blog/responsive-navbar-without-bootstrap/
@@ -269,13 +268,7 @@ Time for the toggle button!
 First, here's the markup for the navbar button:
 
 ```html
-<button
-  type="button"
-  id="navbar-toggle"
-  aria-controls="navbar-menu"
-  aria-label="Toggle menu"
-  aria-expanded="false"
->
+<button type="button" id="navbar-toggle" aria-controls="navbar-menu" aria-label="Toggle menu" aria-expanded="false">
   <span class="icon-bar"></span>
   <span class="icon-bar"></span>
   <span class="icon-bar"></span>

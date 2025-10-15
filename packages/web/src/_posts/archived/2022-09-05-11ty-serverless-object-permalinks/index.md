@@ -1,6 +1,6 @@
 ---
-title: "11ty Serverless and Object Permalinks: Hybrid Rendering"
-description: Learn how to reuse a single source template in 11ty Serverless to generate both a static and server-rendered page.
+title: '11ty Serverless and Object Permalinks: Hybrid Rendering'
+description: Use a single source template in 11ty Serverless to generate both a static and server-rendered page.
 keywords: [11ty serverless, object permalink]
 categories: [11ty, netlify, ssg, forms]
 ---
@@ -122,37 +122,41 @@ In your typical site built with 11ty or any other static site generator, you wou
 We can register a serverless route in our `.eleventy.js` file by importing the serverless plugin from the [`@11ty/eleventy`](https://www.npmjs.com/package/@11ty/eleventy) package (which you've hopefully already installed!) and passing it along to the 11ty config's `addPlugin` method, like so:
 
 ```js {data-file=".eleventy.js" data-copyable="true"}
-const { EleventyServerlessBundlerPlugin } = require("@11ty/eleventy");
+const { EleventyServerlessBundlerPlugin } = require('@11ty/eleventy');
 
 module.exports = (eleventyConfig) => {
   eleventyConfig.addPlugin(EleventyServerlessBundlerPlugin, {
-    name: "page1",
+    name: 'page1',
     // you can change this directory name if you want
-    functionsDir: "./netlify/functions/",
+    functionsDir: './netlify/functions/',
   });
 
-  return {/* your eleventy dir config */};
+  return {
+    /* your eleventy dir config */
+  };
 };
 ```
 
 In my project, I wanted to be able to generate multiple serverless routes without having to copy-paste this code for each one. If you have a similar use case, I recommend creating a tiny helper function to do this for you, like this:
 
 ```js {data-file=".eleventy.js" data-copyable="true"}
-const { EleventyServerlessBundlerPlugin } = require("@11ty/eleventy");
+const { EleventyServerlessBundlerPlugin } = require('@11ty/eleventy');
 
 module.exports = (eleventyConfig) => {
   const createServerlessRoute = (name) => {
     eleventyConfig.addPlugin(EleventyServerlessBundlerPlugin, {
       name,
-      functionsDir: "./netlify/functions/",
+      functionsDir: './netlify/functions/',
     });
   };
 
-  createServerlessRoute("page1");
-  createServerlessRoute("page2");
-  createServerlessRoute("etc");
+  createServerlessRoute('page1');
+  createServerlessRoute('page2');
+  createServerlessRoute('etc');
 
-  return {/* your eleventy dir config */};
+  return {
+    /* your eleventy dir config */
+  };
 };
 ```
 
@@ -189,6 +193,7 @@ This precisely matches the behavior we wanted!
 In this template, we can render a form as described in the intro, populating the inputs with either the values from the query string parameters (if this template is being rendered on the server side) or with some fallback values, if the page is being rendered statically at build time. Here's a mock example:
 
 {% raw %}
+
 ```liquid {data-file="src/_pages/page1.html" data-copyable="true"}
 {%- comment -%}If we're in an SSR context, populate the inputs with values from
 the query string. In SSG, these will be undefined, so we add fallbacks.{%- endcomment -%}
@@ -207,6 +212,7 @@ the query string. In SSG, these will be undefined, so we add fallbacks.{%- endco
   <button type="submit">Submit</button>
 </form>
 ```
+
 {% endraw %}
 
 {% aside %}
@@ -216,14 +222,15 @@ You may have noticed that the form's action endpoint is currently hard-coded in 
 We can also check if `eleventy.serverless` is defined in this template and show some output below the form:
 
 {% raw %}
+
 ```liquid
 {% comment %}Show some output below the form in SSR{% endcomment %}
 {% if eleventy.serverless %}
   ...
 {% endif %}
 ```
-{% endraw %}
 
+{% endraw %}
 
 That output won't render for the statically built page, but it will when 11ty Serverless builds the serverless route. I won't show an example of that output since it will vary by use case, but you could rener anything you want using shortcodes or filters to process the query string.
 
@@ -249,7 +256,6 @@ permalink:
   build: /page3/
   page3: /page3/output/
 ---
-
 # etc.
 ```
 
@@ -275,8 +281,8 @@ If you're not familiar with computed data, it allows you to generate variables f
 ```js {data-file=".eleventy.js"}
 // This is just a refresher on what we did before
 eleventyConfig.addPlugin(EleventyServerlessBundlerPlugin, {
-  name: "page1",
-  functionsDir: "./netlify/functions/",
+  name: 'page1',
+  functionsDir: './netlify/functions/',
 });
 ```
 
@@ -325,17 +331,21 @@ Currently, our form uses this `action` attribute to point to a hard-coded URL fo
 Instead of hard-coding this, we can actually read it directly off of the permalink object:
 
 {% raw %}
+
 ```html
 <form method="GET" action="{{ permalink[page.fileSlug] }}"></form>
 ```
+
 {% endraw %}
 
 If you're generating your URLs from another variable (like `id` in the example from earlier), you'd just key in with that data instead:
 
 {% raw %}
+
 ```html
 <form method="GET" action="{{ permalink[id] }}"></form>
 ```
+
 {% endraw %}
 
 ## Summary
