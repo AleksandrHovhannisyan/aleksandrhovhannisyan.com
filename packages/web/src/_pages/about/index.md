@@ -37,10 +37,11 @@ You may have noticed that I like to use [the em dash](/blog/in-memory-of-em/). R
 
 I've loved listening to music my entire life, but it's only recently that I began _playing_. I picked up my first guitar in December 2023 and taught myself how to play it using online tutorials; since then, it's quickly become one of my favorite hobbies. I've even recorded a few covers:
 
-- [Exit Music (For a Film)](https://www.youtube.com/watch?v=DOCRSqz7Bjc)
-- [Fake Plastic Trees](https://www.youtube.com/watch?v=vVTzNm8NVzQ)
-- [Pyramid Song](https://www.youtube.com/watch?v=XF1buO8xsUk)
-- [How to Disappear Completely](https://www.youtube.com/watch?v=WWkUx5pCCp8)
+- ["Wild Time" by Weyes Blood](https://www.youtube.com/watch?v=MGBhqv9VePs)
+- ["Exit Music (For a Film)" by Radiohead](https://www.youtube.com/watch?v=DOCRSqz7Bjc)
+- ["Fake Plastic Trees" by Radiohead](https://www.youtube.com/watch?v=vVTzNm8NVzQ)
+- ["Pyramid Song" by Radiohead](https://www.youtube.com/watch?v=XF1buO8xsUk)
+- ["How to Disappear Completely" by Radiohead](https://www.youtube.com/watch?v=WWkUx5pCCp8)
 
 ### Gaming
 
@@ -50,14 +51,12 @@ So, when I'm not writing or playing guitar, I'm [praising till I'm hollow](https
 
 ### Reading
 
-Every now and then, I'll dust off a book and do some light reading. I love finding that rare book that captivates me so much that time slips away, where closing it almost feels like waking from a dream. A few of my favorites include:
+Every now and then, I'll dust off a book and do some light reading. I love finding that rare book that captivates me so much that time slips away, where closing it almost feels like waking from a dream. A few of my favorites so far include:
 
 - _The Little Prince_ by Antoine de Saint-Exupéry
 - _The Shadow of the Wind_ by Carlos Ruiz Zafón
 - _The Count of Monte Cristo_ by Alexandre Dumas
 - The Discworld novels by the infinitely witty Terry Pratchett
-
-I don't keep a reading list per se, although there are some books I'd like to one day read... Okay, I guess that's _technically_ a reading list, but hopefully you get my point. I don't like to treat reading as something to check off a list because then it feels like work.
 
 ## So, Yeah... That's Me!
 
