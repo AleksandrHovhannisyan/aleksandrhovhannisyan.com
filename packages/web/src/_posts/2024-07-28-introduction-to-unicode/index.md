@@ -4,7 +4,7 @@ description: In this deep dive, you'll learn about the Unicode character set and
 keywords: [character encoding, unicode, utf]
 categories: [unicode, computer-science, math]
 thumbnail: ./images/thumbnail.png
-lastUpdated: 2025-10-15
+lastUpdated: 2025-10-24
 isFeatured: true
 commentsId: 191
 redirectFrom:
@@ -49,9 +49,11 @@ This article assumes almost no prior knowledge about character sets or encoding.
 
 ## A Brief History of Character Encoding
 
-Human languages consist of characters (<dfn>graphemes</dfn>): symbols with curves, loops, and other odd shapes that convey some sort of meaning. Within a language, these letters, numbers, punctuation, and symbols collectively form a <dfn>character set</dfn>. If you've learned more than one language, you may have noticed that languages sometimes share common characters. For example, many modern languages like English and German borrowed (and extended) characters from Latin.
+Human languages consist of visible characters (<dfn>graphemes</dfn>): discrete symbols with curves, loops, and other shapes that convey some sort of meaning. Within a language, these letters, numbers, punctuation, and symbols collectively form a <dfn>character set</dfn>. If you've learned more than one language, you may have noticed that languages sometimes share common characters. For example, many modern languages like English and German borrowed (and extended) characters from Latin.
 
-We've spent millennia inventing new languages and translating writing from one language to another, but it's only in the last century that we needed to _digitize_ writing so that computers could store text files. Importantly, computers can't store or work with "characters" directly: they are only able to represent numbers by flipping currents on or off. This is an oversimplification, but the point is that there's no direct physical equivalent of human characters in the world of computing. So to work around this limitation, what we do is substitute (<dfn>encode</dfn>) characters with numbers—known as <dfn>code points</dfn>—that computers can easily store and manipulate. Thus, computers don't have to think about "characters" in the way that humans do. Table 1 lists a few characters and their assigned code points.
+We've spent millennia inventing new languages and translating writing from one language to another, but it's only in the last century that we needed to _digitize_ writing so that computers could store text files. Importantly, computers can't store or work with "characters" directly: they are only able to represent numbers by flipping currents on or off. This is an oversimplification, but the point is that there's no direct physical equivalent of human characters in the world of computing. So to work around this limitation, what we do is substitute (<dfn>encode</dfn>) characters with numbers—known as <dfn>code points</dfn>—that computers can easily store and manipulate. Thus, computers don't have to think about "characters" in the way that humans do.
+
+Table 1 lists a few characters and some numbers we might choose to assign them.
 
 <div class="scroll-x" role="region" tabindex="0">
   <table>
@@ -95,31 +97,11 @@ We've spent millennia inventing new languages and translating writing from one l
 
 A one-to-one encoding like this is reversible, so the core meaning of the text is preserved—just in a different form. To restore the original human-readable text, you perform a reverse-lookup and <dfn>decode</dfn> the numbers. As long as everyone on Earth agrees on which code points correspond to which characters, it all works out.
 
-### Unicode
-
-Today, this mapping of characters to numbers is known as <dfn>the Unicode Standard</dfn> (or simply "Unicode"): the universal character set used by all modern software. Unicode assigns code points (integers) to every single known character in the world, including control characters, ancient alphabets, modern alphabets, and even emoji. In fact, Table 1 from earlier showed a miniscule sampling of Unicode characters.
-
-[The first draft of Unicode](https://www.unicode.org/history/versionone.html) was finalized towards the end of 1990, and the standard has been maintained since then by the non-profit [Unicode Consortium](https://home.unicode.org/). As of [version 16.0](https://www.unicode.org/versions/Unicode16.0.0/) (September 2024), Unicode has assigned 154,998 code points to characters. The vast majority of the remaining available code points in Unicode remain unassigned. Since it's so large, Unicode is divided into semantic chunks of closely related code points known as <dfn>Unicode blocks</dfn> and, more broadly, <dfn>[Unicode planes](https://www.compart.com/en/unicode/plane)</dfn> (such as the Basic Multilingual Plane (BMP)).
-
-By convention, Unicode code points are written in the hexadecimal number system. However, instead of the usual hexadecimal prefix of `0x`, Unicode code points use the special prefix `U+` so it's easier to differentiate them from ordinary hexadecimal numbers in technical documents. For example, the code point `0x1F642` from Table 1 would be written as `U+1F642` in Unicode.
-
-#### UCS
-
-Before we move on, I want to briefly mention a bit of history that will be relevant in a future section (see [UCS-2 and UCS-4](#ucs-2-and-ucs-4)).
-
-At around the same time as when Unicode's first draft was finalized, the International Organization for Standardization (ISO) separately defined its own character set in [ISO 10646](https://www.iso.org/standard/69119.html) that was identical to Unicode but went by another name: the <dfn>[Universal Coded Character Set](https://en.wikipedia.org/wiki/Universal_Coded_Character_Set)</dfn>. Over time, UCS has maintained parity with Unicode through its own major revisions.
-
-As for why Unicode goes by two names, the ISO and Unicode Consortium apparently had different goals in mind when defining their respective standards:
-
-{% quote "Wikipedia: Unicode – Versions", "https://en.wikipedia.org/wiki/Unicode#Versions" %}
-While the UCS is a simple character map, Unicode specifies the rules, algorithms, and properties necessary to achieve interoperability between different platforms and languages. Thus, The Unicode Standard includes more information, covering in-depth topics such as bitwise encoding, collation, and rendering.
-{% endquote %}
-
-In other words, UCS is just the bare bones character-to-number mapping portion of Unicode, whereas Unicode is not only the same character set but also a formal standard in and of itself, with additional semantics.
+There's just one problem: It's really hard to get people to agree on something.
 
 ### ASCII
 
-Going even further back, we'll find that we actually didn't _start_ with Unicode. In the 1960s, text documents on computers used a precursor character set known as <dfn>ASCII</dfn>, which is now just a tiny subset of Unicode—specifically, the [Basic Latin block](<https://en.wikipedia.org/wiki/Basic_Latin_(Unicode_block)>). ASCII assigns 128 code points to characters: the English alphabet, Arabic numerals, punctuation, and common control characters (like line endings) used in digital text. Table 2 lists some examples of ASCII characters and their code points in hexadecimal, binary, and decimal:
+In the 1960s, text documents on computers used a character set known as <dfn>ASCII</dfn>, which assigns 128 code points to the most commonly used Latin characters: the English alphabet, Arabic numerals, punctuation, and special control characters (like line endings). Table 2 lists some examples of ASCII characters and their code points in hexadecimal, binary, and decimal:
 
 <div class="scroll-x" role="region" tabindex="0">
   <table>
@@ -127,7 +109,7 @@ Going even further back, we'll find that we actually didn't _start_ with Unicode
     <thead>
       <tr>
         <th scope="col">Character</th>
-        <th scope="col" class="numeric">Unicode (hex)</th>
+        <th scope="col" class="numeric">Hexadecimal</th>
         <th scope="col" class="numeric">Binary</th>
         <th scope="col">Decimal</th>
       </tr>
@@ -135,25 +117,25 @@ Going even further back, we'll find that we actually didn't _start_ with Unicode
     <tbody>
       <tr>
         <td><code>NUL</code> (null)</td>
-        <td class="numeric"><code>U+0000</code></td>
+        <td class="numeric"><code>0x0000</code></td>
         <td class="numeric"><code>00000000</code></td>
         <td class="numeric"><code>0</code></td>
       </tr>
       <tr>
         <td><code>CR</code> (carriage return)</td>
-        <td class="numeric"><code>U+000F</code></td>
+        <td class="numeric"><code>0x000F</code></td>
         <td class="numeric"><code>00001111</code></td>
         <td class="numeric"><code>15</code></td>
       </tr>
       <tr>
         <td><code>+</code></td>
-        <td class="numeric"><code>U+0035</code></td>
+        <td class="numeric"><code>0x0035</code></td>
         <td class="numeric"><code>00110101</code></td>
         <td class="numeric"><code>53</td>
       </tr>
       <tr>
         <td><code>A</code></td>
-        <td class="numeric"><code>U+0041</code></td>
+        <td class="numeric"><code>0x0041</code></td>
         <td class="numeric"><code>01000001</code></td>
         <td class="numeric"><code>65</code></td>
       </tr>
@@ -167,55 +149,124 @@ Going even further back, we'll find that we actually didn't _start_ with Unicode
   </table>
 </div>
 
-In the binary number system, we can represent 128 values with exactly seven bits in computer memory since `2^7 = 128` (with values ranging from zero to 127). However, for reasons that we won't get into here, it was agreed upon that eight bits (one <dfn>byte</dfn>) would be used to encode ASCII. Now, this _did_ mean that the leading bit—also known as the <dfn>most significant bit</dfn> (MSB)—was never actually used, so it was always zeroed out. You can observe this in Table 2 above: The last representable character in ASCII is the control character `DEL` with a code point of `127`; all of its bits are `1` except the MSB. Therefore, all ASCII characters are encoded like this in [Big Endian order](https://en.wikipedia.org/wiki/Endianness): `0xxxxxxx`.
+It turns out that we can represent these 128 code points with just seven bits in computer memory since `2^7 = 128`, with values ranging from zero to 127. However, most software at the time was designed to only read and write groups of eight bits (<dfn>bytes</dfn>), meaning computers were (and still are) _byte-addressable_. Thus, ASCII characters were actually encoded with eight bits instead of seven.
 
 {% aside %}
-This decision would have some useful (likely unforeseen) implications in the future. See also: [Some possible reasons for 8-bit bytes](https://jvns.ca/blog/2023/03/06/possible-reasons-8-bit-bytes/).
+See also: [Some possible reasons for 8-bit bytes](https://jvns.ca/blog/2023/03/06/possible-reasons-8-bit-bytes/).
 {% endaside %}
 
-At the time, ASCII was a convenient and space-efficient way to represent the Latin characters most commonly used in English text, and it had one big advantage: uniformity. Since all ASCII characters fit within a single byte, you could easily read and write simple text files by always assuming that one byte represented one character. But ASCII's limited space didn't allow us to encode many other character sets, like Hebrew, Arabic, Chinese, and countless others. As the internet expanded globally, it became clear that software would need to be able to encode and decode these character sets rather than forcing everyone to learn English. Thus, Unicode was born as a universal character set.
+As a result, the leading bit—also known as the <dfn>most significant bit</dfn> (MSB)—was never actually used by ASCII, so it was always zeroed out. You can observe this in Table 2 above: The last representable character in ASCII is the control character `DEL` with a code point of `127`; all of its bits are `1` except the MSB. Therefore, all ASCII characters are encoded like this in [Big Endian order](https://en.wikipedia.org/wiki/Endianness): `0xxxxxxx`. This decision would have some very useful (and likely unforeseen) consequences in the future.
 
-But this also meant that we could no longer assume each character was only eight bits long. And that was a big problem for software.
+At the time, ASCII was a convenient and space-efficient way to represent the Latin characters most commonly found in English text, and it had one big advantage: uniformity. Since all ASCII characters fit neatly within a single byte, you could easily read and write simple text files by always assuming that one byte encoded one character. But ASCII's limited space didn't allow us to encode character sets like Hebrew, Arabic, Chinese, and countless others used by billions of people outside the English-speaking world. As the internet expanded globally, it became clear that software would need to be able to encode those character sets too rather than forcing everyone to learn English.
+
+What we needed was a _universal_ character set.
+
+### Unicode
+
+[In 1988](https://www.unicode.org/history/versionone.html) and the years that followed, a handful of engineers from Xerox and Apple came together to solve this problem. Their work culminated in the first draft of the <dfn>Unicode Standard</dfn> (or simply "Unicode"): a universal character set that assigns code points to every single known character in the world, including modern and ancient alphabets, control characters, and even emoji. Additionally, Unicode specifies:
+
+- How to compare and sort Unicode strings ([Unicode collation algorithm](https://www.unicode.org/reports/tr10/)).
+- How to interpret special sequences of code points ([grapheme clusters](#grapheme-clusters)).
+- How to encode and decode code points unambiguously in binary ([UTF](#utf)).
+
+By convention, Unicode code points are written in hexadecimal. However, instead of the hex prefix of `0x`, Unicode code points use the special prefix `U+` so it's easier to differentiate them from ordinary hexadecimal numbers in technical documents.
+
+<div class="scroll-x" role="region" tabindex="0">
+  <table>
+    <caption><strong>Table 3</strong>: sample Unicode code points</caption>
+    <thead>
+      <tr>
+        <th scope="col">Character</th>
+        <th scope="col">Name</th>
+        <th scope="col" class="numeric">Code point</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>NUL</code> (null)</td>
+        <td>NULL</td>
+        <td class="numeric"><code>U+0000</code></td>
+      </tr>
+      <tr>
+        <td><code>A</code></td>
+        <td>LATIN CAPITAL LETTER A</td>
+        <td class="numeric"><code>U+0041</code></td>
+      </tr>
+      <tr>
+        <td><code>Ω</code></td>
+        <td>OHM SIGN</td>
+        <td class="numeric"><code>U+2126</code></td>
+      </tr>
+      <tr>
+        <td><code>亀</code></td>
+        <td>CJK UNIFIED IDEOGRAPH-4E80</td>
+        <td class="numeric"><code>U+4E80</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+{% aside %}
+See also: [Unicode Character Database](https://www.unicode.org/Public/UCD/latest/).
+{% endaside %}
+
+The first draft of Unicode was finalized towards the end of 1990, and the standard has been maintained since then by the non-profit [Unicode Consortium](https://home.unicode.org/). As of [version 16.0](https://www.unicode.org/versions/Unicode16.0.0/) (September 2024), Unicode has assigned 154,998 code points to characters. The vast majority of the remaining available code points in Unicode remain unassigned. Since it's so large, Unicode is divided into semantic chunks of closely related code points known as <dfn>Unicode blocks</dfn> and, more broadly, <dfn>Unicode planes</dfn>. In fact, ASCII is now just a tiny subset of Unicode—specifically, the [Basic Latin block](<https://en.wikipedia.org/wiki/Basic_Latin_(Unicode_block)>).
+
+Unicode solved the problem of assigning numbers to hundreds of thousands of international characters, but it introduced a second problem. Since we needed to assign more than 128 numbers to characters, we could no longer fit each code point into a single byte like we did with ASCII. Sure, we could just use more bytes per character, but how would we tell where one code point began and another ended?
+
+That leads us to our next topic of discussion: [How to encode Unicode](#encoding-unicode). But first, I want to briefly touch on some history that will be relevant in that section.
+
+### UCS
+
+At around the same time as when Unicode's first draft was finalized, the International Organization for Standardization (ISO) separately defined its own character set in [ISO 10646](https://www.iso.org/standard/76835.html) that was identical to Unicode but went by another name: the <dfn>[Universal Coded Character Set](https://en.wikipedia.org/wiki/Universal_Coded_Character_Set)</dfn>. Over time, the ISO has kept UCS in sync with Unicode for parity.
+
+As for why Unicode goes by two names, the ISO and Unicode Consortium apparently had different goals in mind:
+
+{% quote "Wikipedia: Unicode – Versions", "https://en.wikipedia.org/wiki/Unicode#Versions" %}
+While the UCS is a simple character map, Unicode specifies the rules, algorithms, and properties necessary to achieve interoperability between different platforms and languages. Thus, The Unicode Standard includes more information, covering in-depth topics such as bitwise encoding, collation, and rendering.
+{% endquote %}
+
+In other words, UCS is not a _standard_; it's just the bare-bones Unicode _character set_. On the other hand, the Unicode Standard defines not only the same character set but also the additional rules I mentioned earlier, such as how to compare Unicode strings or interpret certain sequences of code points.
 
 ## Encoding Unicode
 
-Technically, this wasn't a problem with Unicode _itself_. At the end of the day, Unicode is just a massive character set that assigns numbers to human-readable characters. If we can represent a character numerically, then we can store that character in a computer's memory. In theory, we can represent infinitely many code points with Unicode, and the standard is ever-expanding.
+The Unicode Standard defines a massive character set, assigning numbers to human-readable characters. If we can represent a character numerically, then we can store that number in a computer's memory. In theory, we can represent infinitely many code points with Unicode, and the character set is ever-expanding.
 
-On the other hand, _how_ we choose to store those code points in memory is entirely up to us: We could represent them in binary and store those numbers as-is, or we could manipulate the bits with some sort of algorithm to create a more useful result. Either way, Unicode doesn't care how we store code points in memory; it just tells us _what_ those numbers are.
+On the other hand, _how_ we choose to store those code points in memory is entirely up to us: We could translate those numbers directly into binary and store them as-is, or we could manipulate the bits with some sort of algorithm to create a more useful result _before_ we store it. Either way, a character set by itself doesn't care how we store code points in memory; it's just a table that tells us _what_ those numbers are.
 
-In fact, if we were to only ever write and read single-character text documents, Unicode on its own would be unambiguous: If you opened a file and saw two bytes, you'd decode those two bytes to get back a single character. If you saw three bytes, you'd decode three. And so on. But in practice, text can consist of an arbitrary-length sequence of bytes representing one or more characters. So it's not enough to just use the code points directly because then we won't know where one code point begins and another ends. That _would_ be trivial if all characters were ASCII, in which case the boundaries would be in 8-bit intervals, but that's no longer the case in a world where we need more than `2^8 = 256` characters. Therefore, we need a way to encode characters with clearly defined boundaries.
+But in practice, text is an arbitrary-length sequence of bytes that represent one or more characters. So it's not enough to just store Unicode code points directly because then we won't know where one code point begins and another ends since each character may be encoded with more than one byte. That _would_ be trivial if all characters were ASCII, in which case the boundaries would be in 8-bit intervals, but that's no longer the case in a world where we need more than 128 characters. Thus, we need a way to encode characters with clearly defined boundaries.
 
 How do we do that?
 
 ### UCS-2 and UCS-4
 
-ISO 10646 defined two character encoding algorithms—UCS-2 and UCS-4—that aimed to solve this problem. These encodings increased the minimum number of bytes required to encode all characters in UCS/Unicode. Instead of using just one byte for ASCII and adding more bytes as needed for everything else, UCS-2 forced _all_ characters to be encoded with two bytes (16 bits), while UCS-4 required four bytes (32 bits). By analogy, this is sort of like raising the minimum wage: It sets a new baseline standard for everyone, across the board.
+In addition to UCS itself, ISO 10646 also defined two complementary encoding algorithms: UCS-2 and UCS-4. These encodings increased the minimum number of bytes required to encode all characters in UCS/Unicode. Instead of using just one byte for ASCII and adding more bytes as needed for everything else, UCS-2 forced _all_ characters to be encoded with two bytes (16 bits) moving forward, while UCS-4 required four bytes (32 bits). By analogy, this is sort of like raising the minimum wage: It sets a new baseline standard for everyone, across the board.
 
-But there was a glaring flaw with this approach: Every single character had to be encoded with 16 or 32 bits for uniformity, which would've needlessly wasted memory. For example, if we had used UCS-4 to encode ASCII characters—which comprised the majority of text at the time—we would've needed three extra bytes, all zeroed out, to conform with that standard.
+But there were two problems this approach: First, it meant that every single character needed to be encoded with 16 or 32 bits for uniformity, potentially wasting memory. For example, if we had used UCS-4 to encode ASCII characters—which comprised the majority of English text at the time—we would've needed three extra bytes, all zeroed out, to conform with that standard. The second problem was that much of the existing text on the web had already been encoded in ASCII using one byte per character rather than two or four, so UCS couldn't reliably decode ASCII unless you knew ahead of time that a document was fully encoded in ASCII. Otherwise, a UCS-2 decoder might naively assume that two sequential bytes encode a single character, producing garbage output.
 
-It didn't take long for Unicode to exceed `2^16 = 65,536` code points, meaning UCS-2 quickly became obsolete. Meanwhile, UCS-4 could still represent `2^32` characters—several orders of magnitude more than we might ever need. It's still around to this day, just under a different name.
+It didn't take long for Unicode to exceed `2^16 = 65,536` code points, so UCS-2 quickly became obsolete. Meanwhile, UCS-4 could still represent `2^32` characters—several orders of magnitude more than we might ever need. It's still around to this day, just under a different name.
 
-Although imperfect, UCS-2 and UCS-4 laid important groundwork for the creation of a better character encoding format for Unicode: UTF.
+Although imperfect, UCS-2 and UCS-4 laid important groundwork for the creation of a much better character encoding format for Unicode: UTF.
 
 ### UTF
 
-The modern encoding scheme for Unicode is known as UTF, short for <dfn>[Unicode Transformation Format](https://en.wikipedia.org/wiki/Unicode#UTF)</dfn>. UTF builds on the lessons learned from UCS and encodes Unicode in a more clever way. It has three implementations: UTF-8, UTF-16, and UTF-32. The numbers in those names hint at how the algorithms work:
+The modern encoding scheme for Unicode is the <dfn>[Unicode Transformation Format](https://en.wikipedia.org/wiki/Unicode#UTF)</dfn> (UTF). UTF learned from UCS's mistakes to encode Unicode more uniformly and unambiguously. It has three implementations: UTF-8, UTF-16, and UTF-32. The names hint at how these encodings work:
 
-- UTF-8 uses up to four 8-bit (byte) [code units](https://developer.mozilla.org/en-US/docs/Glossary/Code_unit),
-- UTF-16 uses one or two 16-bit code units, and
-- UTF-32 uses a single 32-bit code unit.
+- UTF-8 uses one, two, three, or four 8-bit (byte) chunks to encode a code point;
+- UTF-16 uses one or two 16-bit chunks to encode a code point; and
+- UTF-32 uses a single 32-bit chunk to encode every single code point.
 
-A <dfn>code unit</dfn> is just a sequence of bits that form the most basic unit of information transfer in a given character encoding standard. For example, in UTF-8, each code unit is one byte long.
+These "chunks" have a special name: They're known as <dfn>[code units](https://developer.mozilla.org/en-US/docs/Glossary/Code_unit)</dfn>, a sequence of bits that form an atomic unit of information in a character encoding standard. We say that code _points_ are made up of one or more code _units_.
 
 {% aside %}
-At some point, you may have heard that one character fits within one byte in computer memory. But from what we've learned so far, you should recognize that this explanation is not only oversimplified but also flat out _wrong_. It's true that ASCII characters are encoded as bytes, but UTF-16, for example, does not use bytes: It uses 16-bit... well, what do we call those things? This is how the term "code unit" came to be.
+At some point, you may have been taught that one character fits in one byte in computer memory. But from what we've learned so far, you should recognize that this explanation is not only oversimplified but also flat out _wrong_. It's true that ASCII characters are encoded as bytes, but UTF-16, for example, does not use bytes: It uses 16-bit... well, what do we call those chunks? This is how the term "code unit" came to be.
 
-For example, while it's true that the `char` data type in C has a size of one byte, this doesn't mean that a single Unicode character can fit within a `char`. So "char" is a misnomer.
+For example, while it's true that the `char` data type in C has a _size_ of one byte, this doesn't mean that every Unicode character can fit within a single `char`. So "char" is a misnomer.
 {% endaside %}
 
-All three implementations are able to encode the entire Unicode character set; the only way they differ from each other is in the size of their code units and _how many_ of those code units they use.
+All three implementations of UTF are able to encode the entire Unicode character set; they only differ in the _size_ and _quantity_ of code units that they require.
 
-UTF-8 and UTF-16 are known as <dfn>variable-width encoding schemes</dfn> since they use additional code units as needed to encode characters beyond ASCII and other low-end Unicode blocks. For example, in UTF-8, characters are encoded with a variable number of 8-bit code units (bytes):
+UTF-8 and UTF-16 are known as <dfn>variable-width encoding schemes</dfn> since they use additional code units as needed to encode characters beyond ASCII and other low-end Unicode blocks. For example, in UTF-8, characters are encoded with a variable number of bytes:
 
 1. One byte for ASCII (8): `xxxxxxxx`.
 2. Two bytes (16) for some other range: `xxxxxxxx xxxxxxxx`.
@@ -238,7 +289,7 @@ Unlike UTF-8 and UTF-16, UTF-32 is a <dfn>fixed-width encoding scheme</dfn> that
 We're going to focus on UTF-8 in the rest of this article, but note that UTF-16 and UTF-32 are still used. For example, while the majority of operating systems and programming languages use UTF-8, Windows uses UTF-16, as do some programming languages like Java and JavaScript. UTF-16's main advantage is that it needs less storage space than UTF-8 for certain higher-order Unicode characters, like those in Asian languages: Whereas UTF-8 would potentially need three bytes (24 bits) to encode those characters, UTF-16 can get away with using only 16 bits.
 
 {% aside %}
-How UTF-16 gets away with this will make more sense once we learn that not all of the 8 bits in UTF-8 are used for encoding: some are reserved bits used to uniquely identify bit sequences.
+How UTF-16 gets away with this will make more sense once we learn that not all of the 8 bits in UTF-8 are used for encoding: some are reserved bits used to uniquely identify bit sequences. UTF-16 does not reserve any bits.
 {% endaside %}
 
 With that basic explainer out of the way, let's take a closer look at UTF-8.
@@ -254,11 +305,11 @@ But what happens when we want to use UTF-8 to encode more than just ASCII? Well,
 - 3 bytes = yet another range of Unicode
 - 4 bytes = the last range of Unicode
 
-Sounds simple enough: If you need more storage space, just add more bytes. But in reality, it's a bit more complicated than that.
+Sounds simple enough: If you need more storage space, just add more bytes. That works fine for encoding, but then how do you tell where one code point begins and another one ends when decoding one long sequence of bytes?
 
 ### Character Boundaries
 
-Recall that the MSB of an ASCII code point is an unused `0`, so all ASCII characters look like this in Big Endian order: `0xxxxxxx`. This seemingly wasted bit actually serves a very useful purpose: UTF reserves this leading bit of `0` to identify encoded bytes that are ASCII; for all other characters beyond ASCII, it reserves an explicit MSB of `1` during the encoding process. Thus, when it comes time to decode a UTF-8 byte, the leading bit will tell us a very key piece of information:
+Recall that in ASCII, the MSB of every code point is an unused zero: `0xxxxxxx`. This seemingly wasted bit actually serves a very useful purpose: UTF reserves a leading bit of `0` to identify bytes that encode ASCII; for all other characters _beyond_ ASCII, it encodes them with an explicit MSB of `1`. Thus, when it comes time to decode a UTF-8 code point, the leading bit will tell us a key piece of information:
 
 1. `MSB == 0`: the code point is in ASCII, which we can decode as-is.
 2. `MSB == 1`: a code point that was encoded with two or more bytes.
@@ -272,7 +323,7 @@ ASCII:              [0]xxxxxxxx
 4-byte code point:  [1]xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx
 ```
 
-Let's pretend this model is sufficient. If we try to decode a sample of text—with a mixture of characters, some encoded with one byte and others with two or more—how will we know where one code point begins and another one ends? If all of the code points were to start with a `1`, they would be indistinguishable from each other. For example, in the following bit sequence, do we have a single two-byte code point followed by another two-byte code point, or is this one big four-byte code point whose third byte just happens to start with a `1` because that's how the bit was encoded?
+Let's pretend this model is sufficient. If we try to decode a sample of text—with a mixture of characters, some encoded with one byte and others with two or more—how will we know where one code point begins and another one ends? If all of the code points were to start with a `1`, they would be indistinguishable from each other. For example, in the following bit sequence, do we have a single two-byte code point followed by another two-byte code point, or is this one big four-byte code point whose third byte just happens to start with a `1` because that's how it was encoded?
 
 ```
 1xxxxxxx xxxxxxx 1xxxxxxx xxxxxxx
@@ -306,7 +357,7 @@ This is very close to UTF-8's actual encoding scheme, but there's just one probl
 
 ### Self-Synchronization
 
-In software, we often read text files and network responses with <dfn>streams</dfn>: data structures that operate on one byte at a time. For efficiency, we need to be able to tell if the byte that we are looking at is the beginning or middle of a character at any given point in time. Otherwise, we need additional state to keep track of where we are. But with our current approach, there's no way to tell where we are within a code point because the continuation bytes have no unique prefixes.
+In software, we often read text files and network responses with <dfn>streams</dfn>: arbitrary-length sequences of bytes that represent some incoming data. For efficiency in character decoding, we need to be able to tell if any given byte that we're looking at is the beginning or middle of a character. Otherwise, we'll need additional state to keep track of where we are. But with our current approach, there's no way to tell where we are within a code point because the continuation bytes have no unique prefixes.
 
 For example, it could be that one of the bytes in a code point was improperly encoded or is missing—maybe we received a continuation byte first when we should have received a leading byte. There are two ways to recover from this state:
 
@@ -327,7 +378,7 @@ Byte 3: [10]xxxxxx
 
 We first see a byte with a leading prefix of `110`, signaling that we expect to parse a three-byte code point... Or so we think. But for all we know, it could be a misplaced continuation byte that just so happens to start with `110` because that's how it was encoded. This means we can't even reliably skip ahead to any given byte because there's no guarantee that we're going to be looking at leading bytes.
 
-The fact that continuation bytes have no unique prefix also means that we can't index into a string by an integer offset—as many programming languages allow you to do—and figure out where we are within a given code point. For example, if we randomly index into the input and the byte we are looking at happens to start with `110`, is that a continuation byte that just so happens to start with `110` by pure coincidence, or is that a reserved `110` that identifies a leading byte? Once again, we don't know!
+The fact that continuation bytes have no unique prefix also means that we can't index into a string by an integer offset—as many programming languages allow you to do—and figure out if a byte that we're looking at is the start, middle, or end of a code point. For example, if we randomly index into a string and the byte at that location happens to start with `110`, is that a continuation byte that just so happens to start with `110` by pure coincidence, or is that a reserved `110` that identifies a leading byte? Once again, we don't know!
 
 For these reasons, UTF-8 reserves prefixes not only for leading bytes but also for continuation bytes to disambiguate them from each other. All continuation bytes are prefixed with `10`, meaning all leading bytes now need an extra `1` for uniqueness:
 
@@ -342,10 +393,10 @@ Our encoding scheme is now complete!
 
 This allows the leading bytes to differentiate themselves from each other as well as from the continuation bytes. Thus, given any byte _anywhere_ in the input, we can count the number of leading `1s` to detect if it's a continuation byte or a leading byte. If it's a continuation byte, then we know we should be in the middle of a code point. This allows us to move forward or backward in the input sequence until we find the next valid code point boundary, allowing us to process the input one code point at a time. Thus, in UTF-8, we can safely encode and decode text containing a mixture of ASCII and higher Unicode ranges, without wasting space by forcing all code points to use a fixed number of bytes.
 
-Sure, UTF-8 ends up using more space since we need to reserve all these bits for prefixes. But it's nowhere near as wasteful as UCS would have been, and the benefits far outweigh the cost.
+Sure, this does mean that UTF-8 ends up using more space since we may need to reserve up to 10 prefix bits in the worst case for 4-byte code points, reducing the total number of possible encodings from `2^32` to `2^21`. But at least we've eliminated all ambiguity from byte sequences, and we can encode all ASCII code points as-is while still having plenty of room left over for future character sets.
 
 {% aside %}
-Earlier, I mentioned that UTF-16 can encode some characters with only a single 16-bit code unit, whereas UTF-8 would potentially need 3 bytes (24 bits). If you carefully examine UTF-8's 3-byte encoding scheme, you'll notice that it reserves exactly 8 bits for the prefixes: `[1110]xxxx [10]xxxxxx [10]xxxxxx`. When we ignore those reserved bits, only `24 - 8 = 16` bits actually come from the code point itself.
+Earlier, I mentioned that UTF-16 can encode some characters with only a single 16-bit code unit, whereas UTF-8 would potentially need 3 bytes (24 bits). If you carefully examine UTF-8's encoding scheme for 3-byte code points, you'll notice that it reserves exactly 8 bits for the prefixes: `[1110]xxxx [10]xxxxxx [10]xxxxxx`. When we ignore those reserved bits, only `24 - 8 = 16` bits actually come from the code point itself.
 
 In UTF-16, we split the entire range of Unicode into two groups: one that only needs 16 bits (one code unit) to encode, and another that needs 32 bits (two code units). That first group doesn't need any unique prefixing in UTF-16: it's just encoded as-is and stuffed into 16 bits, even if that means some bits are unused/zeroed out. So UTF-8 is compatible with UTF-16 in that sense.
 {% endaside %}
@@ -401,7 +452,7 @@ So far, I've been vaguely referring to this notion of `n`-byte code points in UT
 
 As expected, the start of one range is one more than the end of the previous range. For example, ASCII ends with code point `U+007F` (127), while the next range starts with `U+007F + 1 = U+0080 = 128`.
 
-We use this lookup table to figure out which range a code point falls under; then, we encode it with one, two, three, or four bytes according to the specified byte schemes. For example, the Euro symbol `€` has a code point of `U+20AC` in Unicode, which falls in the range `U+0800–U+FFFF`. This means that its encoding would look like this:
+We use this lookup table to figure out which range a code point falls under; then, we encode it with one, two, three, or four bytes according to the table above. For example, the Euro symbol `€` has a code point of `U+20AC` in Unicode, which falls in the range `U+0800–U+FFFF`. This means that its encoding would look like this:
 
 ```
 1110xxxx 10xxxxxx 10xxxxxx
@@ -415,7 +466,7 @@ The placeholder bits will be filled in with bits from the code point itself. In 
 
 And that's all there is to it! We just encoded our first Unicode character with UTF-8.
 
-To decode this same character, we would identify the leading prefix—in this case, `1110`—and determine how many total bytes there are in the encoding. Then, we'd discard the prefixes and extract the remaining bits to get the original code point.
+To decode this same character, you check the leading prefix (`1110` in this case) to determine how many total bytes there are in the encoding (three). Then, you discard the prefixes and extract the remaining bits to get the original code point.
 
 Encoding and decoding by hand isn't too difficult for us humans since it's a mostly visual art—look at a binary string, figure out its prefix, discard the prefixes, and we're done. But how would a computer program do this?
 
@@ -471,9 +522,9 @@ AND:    100
 
 The leading bit of both numbers is `1`, so `1 & 1 = 1`. The remaining comparisons always do either `1 & 0` or `0 & 1`, both of which are `0`. Thus, `100 & 101 = 100`.
 
-The bitwise AND operator is very useful for ignoring bits we don't care about while extracting bits that we _do_ care about. During the decoding process, it allows us to determine what prefix we are looking at.
+The bitwise AND operator is useful for ignoring bits we don't care about while extracting bits that we _do_ care about. During the decoding process, it allows us to determine what prefix we're looking at.
 
-Given a `byte`, we can use the bitwise AND operator to determine that it is:
+We can use the bitwise AND operator to classify any given byte:
 
 - ASCII if `byte & 10000000 == 00000000 (0)`
 - Intermediate byte if `byte & 11000000 == 10000000`
@@ -485,9 +536,9 @@ Let me explain where these values come from.
 
 #### Checking Prefixes with Bitmasks
 
-Suppose we receive a byte: `xxxxxxxx`. We want to start by checking if this represents an ASCII character, encoded as-is. We do this by checking if the byte's MSB is zero.
+Suppose we receive a byte: `xxxxxxxx`. We want to start by checking if this represents an ASCII character, encoded as-is, since those can be trivially decoded. So first, we need to check if the MSB is set to zero.
 
-The way we do this is by constructing a comparison byte that we can bitwise-AND against our input byte to ignore some bits while keeping the ones that we're interested in. This "comparison" byte is known as a <dfn>bitmask</dfn>, or just "mask" for short. Bitmasks are used throughout computer science and are especially popular in game development.
+The way we do this is by constructing a comparison byte that we can bitwise-AND against our input byte to ignore some bits while keeping the ones that we're interested in. This "comparison byte" is known as a <dfn>bitmask</dfn>, or just "mask".
 
 {% aside %}
 Bitmasks are used for more than just the bitwise AND operator. In a future section, we'll look at examples of the bitwise OR operator, and we'll still use bitmasks.
@@ -730,7 +781,7 @@ Byte 2: 10000000 | 00111100 = 10111100
 
 Done! Putting it all together, we get the same result as before: `11000011 10111100`.
 
-For more complex examples involving three or four bytes, you will just need to shift by larger amounts for the first, second, and third bytes. The last byte will never require any bit-shifting since the bits of interest are already in the lowest possible positions. Again, I'll leave this up to as an exercise.
+For more complex examples involving three or four bytes, you will just need to shift by larger amounts for the first, second, and third bytes. The last byte will never require any bit-shifting since the bits of interest are already in the lowest possible positions. Again, I'll leave this up to you as an exercise.
 
 ## Bonus Content and Exercises
 
@@ -794,7 +845,15 @@ The reason this code logs `5` instead of `4` as one would expect is because Java
 The first three characters in the string are `H`, `i`, and ` ` (space), all three of which are in ASCII and can each be encoded with a single UTF-16 code unit (with a bunch of leading zeros that never get used, of course). This means that those three characters each contribute just one to the overall length of the string. However, unlike those three characters, the emoji 👋 is a very high-order Unicode character that requires two 16-bit code units to encode in UTF-16, so it actually contributes two to the overall string length. Thus, the total length is `3 + 2 = 5` instead of `4`.
 {% enddetails %}
 
-Because of this nuance, many character counters in software are implemented incorrectly. For example, at the time when I wrote this article, Twitter's character counter went down by two instead of one whenever you used certain emoji, whereas an ordinary user's expectation would be that the count changes by one. To get an accurate character count in JavaScript, you need to use [`Intl.Segmenter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length).
+Because of this nuance, many character counters in software are implemented incorrectly. For example, at the time when I wrote this article, Twitter's character counter went down by two instead of one whenever you used certain emoji, whereas an end user's expectation would be that the count changes by one. To get an accurate grapheme count in JavaScript, you need to use [`Intl.Segmenter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length):
+
+```js
+function countGraphemes(str) {
+  // default granularity is grapheme
+  const segmenter = new Intl.Segmenter('en', { granularity: 'grapheme' });
+  return Array.from(segmenter.segment(str)).length;
+};
+```
 
 It's worth pointing out that this behavior isn't unique to JavaScript. Consider the following equivalent C program:
 
@@ -900,7 +959,11 @@ In Unicode the value `U+FE0F` is called a variation selector. The variation sele
 For emoji there are two different variation selectors that can be applied, `U+FE0E` and `U+FE0F`. `U+FE0E` specifies that the emoji should be presented like text. `U+FE0F` specifies that it should be presented as an image, with color and possible animation.
 {% endquote %}
 
-The presence of the variation selector changes the rendered outcome in software that respects this behavior: Rather than rendering these three code points as three separate graphemes, the software will render them as a special emoji. Note that some emoji don't need a variation selector, while other emoji do include one.
+In other words, a variation selector tells compliant software to take the preceding code point and combine it with the following code point to render it in a special decorative way, rather than rendering them as three separate graphemes.
+
+{% aside %}
+Some emoji don't need a variation selector, while others do.
+{% endaside %}
 
 Before we wrap up this section, let's relate this to some of the things we learned. In UTF-8, the emoji 1️⃣ is equivalently encoded as the following byte sequence:
 
@@ -920,9 +983,9 @@ Based on what we learned, you should observe the following, from left to right:
 2. `11101111` marks the start of a three-byte code point. `10111000` is the first continuation byte and `10001111` is the last.
 3. `11100010` marks the start of another three-byte code point. `10000011` is the first the continuation byte and `10100011` is the last.
 
-{% aside %}
-As a final exercise, try typing 1️⃣ in a code editor and then hit backspace at the end. Depending on the implementation, you may need to do this three times to clear everything. The first backspace will remove the enclosing keycap code point, effectively reducing the sequence to just `1&#xFE0F;`. Thus, 1️⃣ reverts to a plaintext `1` followed by an invisible character.
-{% endaside %}
+{% details "Fun fact: Backspace and grapheme clusters", true %}
+Lots of code editors and text inputs don't correctly handle backspacing on grapheme clusters. For example, try typing 1️⃣ in a code editor and then hit backspace at the end. Depending on the implementation, you may need to do this three times to clear everything. The first backspace will remove the enclosing keycap code point, effectively reducing the sequence to just `1&#xFE0F;`. Thus, 1️⃣ reverts to a plaintext `1` followed by an invisible character.
+{% enddetails %}
 
 {% aside %}
 For a deeper dive into this topic, see this article by Henri Sivonen: [It’s Not Wrong that "🤦🏼‍♂️".length == 7](https://hsivonen.fi/string-length/).
@@ -930,7 +993,7 @@ For a deeper dive into this topic, see this article by Henri Sivonen: [It’s No
 
 ## Summary
 
-Unicode is the universal character set used by all modern software, but it doesn't tell us how to actually represent code points in memory: It simply assigns numbers to characters. With a character encoding standard like UTF, we can take those code points and represent them unambiguously so that they can be easily decoded later on. With UTF-8 specifically, we get backwards-compatibility with ASCII and the added bonus of self-synchronization, where we can easily find our place in a given byte stream and gracefully recover from decoding errors.
+The Unicode Standard defines two things: a universal character set that assigns code points to characters, and the UTF-8, UTF-16, and UTF-32 algorithms for encoding and decoding those code points. UTF-8 is a popular choice because it's backwards compatible with ASCII and supports self-synchronization, allowing us to find our place in a given byte stream and gracefully recover from decoding errors.
 
 ## References and Further Reading
 

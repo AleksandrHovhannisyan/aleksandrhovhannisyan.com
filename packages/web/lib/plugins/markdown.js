@@ -130,8 +130,9 @@ function makeSyntaxHighlighter(markdownIt, isTrustedInput) {
     }
     return isTrustedInput
       ? html
-          .trim()
           .split('\n')
+          // Ignore lines that are pure whitespace (do this instead of a global .trim() to preserve intentional leading/trailing whitespace)
+          .filter((line) => !!line.trim())
           .map((line) => `<span class="line">${line}</span>`)
           .join('\n')
       : html;
