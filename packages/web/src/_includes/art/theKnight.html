@@ -1,0 +1,429 @@
+{% artwork "theKnight", "The Knight, the protagonist of the video game Hollow Knight." %}
+  <div class="hk-knight">
+    <div class="hk-knight-head">
+      <div class="hk-knight-horns">
+        <div class="hk-knight-horn left">
+          <div class="half"></div>
+        </div>
+        <div class="hk-knight-horn right">
+          <div class="half"></div>
+        </div>
+      </div>
+      <div class="hk-knight-eyes"></div>
+    </div>
+    <div class="hk-knight-nail"></div>
+    <div class="hk-knight-body">
+      <div class="hk-knight-leg-arch"></div>
+    </div>
+    <div class="hk-knight-wings">
+      <div class="fold"></div>
+      <div class="fold"></div>
+      <div class="fold"></div>
+      <div class="fold"></div>
+    </div>
+  </div>
+  <style>
+    @layer DEMOS {
+      /* 150% zoom reference: https://static.wikia.nocookie.net/hollowknight/images/4/47/The_Knight_Idle.png/revision/latest/scale-to-width-down/63?cb=20190618162622 */
+      .hk-knight {
+        --color-bone: white;
+        --color-wing: #4e5469;
+        --color-nail: #a597a6;
+        width: 12vmin;
+        height: 25vmin;
+        position: relative;
+      }
+
+      .hk-knight-head {
+        width: 10.8vmin;
+        height: 9.75vmin;
+        border: solid 0.6vmin black;
+        border-top-width: 0.7vmin;
+        border-right-width: 0.8vmin;
+        border-left-width: 0.8vmin;
+        background-color: var(--color-bone);
+        position: absolute;
+        top: 26%;
+        right: 0.4vmin;
+        border-radius: 40% 30% 32% 40%;
+        transform: rotate(4deg);
+        z-index: 1;
+      }
+
+      .hk-knight-eyes {
+        /* Creating the eyes with pseudo elements */
+        &::before,
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          background-color: black;
+        }
+
+        /* Left eye */
+        &::before {
+          right: 2.3vmin;
+          bottom: 1.25vmin;
+          background-color: black;
+          width: 2.4vmin;
+          height: 3.5vmin;
+          border-radius: 80% 95% 95% 70%;
+        }
+
+        /* Right eye */
+        &::after {
+          width: 1vmin;
+          height: 3vmin;
+          border-radius: 100% 50% 50% 100%;
+          right: -0.4vmin;
+          bottom: 1.8vmin;
+          transform: rotate(2deg);
+        }
+      }
+
+      .hk-knight-horn {
+        position: absolute;
+
+        &.left {
+          border-top: solid 0.9vmin rgb(0 0 0 / 0%);
+          border-left: solid 0.9vmin black;
+          border-bottom: solid 0.2vmin rgb(0 0 0 / 0%);
+          border-radius: 40% 0 0 50%;
+          height: 7.5vmin;
+          width: 5.1vmin;
+          left: 0.5vmin;
+          top: -5.6vmin;
+          transform: rotate(-2deg);
+        }
+
+        /* The main white body of the horn */
+        &.left::before {
+          content: '';
+          display: block;
+          position: absolute;
+          border-top: solid 1.6vmin var(--color-bone);
+          border-left: solid 1.7vmin var(--color-bone);
+          border-radius: 100% 0 100% 0%;
+          left: -1.3vmin;
+          bottom: 1vmin;
+          height: 3vmin;
+          width: 3vmin;
+          clip-path: polygon(0% 0%, 100% 0%, 100% 10%, 0% 100%);
+          transform: rotate(-53deg);
+        }
+
+        /* Top curvy bit */
+        &.left::after {
+          content: '';
+          display: block;
+          position: absolute;
+          width: 2vmin;
+          height: 3.5vmin;
+          border-top: solid 0.7vmin black;
+          border-left: solid 0.7vmin black;
+          border-radius: 100% 0 50%;
+          top: -2.7vmin;
+          left: 0;
+          transform: rotate(21deg);
+        }
+
+        /* Opposing, curved border of the horn */
+        &.left .half {
+          border-top: solid 0.4vmin rgb(0 0 0 / 0%);
+          border-left: solid 0.8vmin black;
+          border-bottom: solid 0.3vmin rgb(0 0 0 / 0%);
+          border-radius: 50% 0 0 50%;
+          height: 5.8vmin;
+          width: 5.2vmin;
+          position: absolute;
+          right: -1.7vmin;
+          bottom: 1vmin;
+          transform: rotate(15deg);
+        }
+
+        /* Top white bit */
+        &.left .half::before {
+          content: '';
+          display: block;
+          position: absolute;
+          background-color: var(--color-bone);
+          border-right: 0.2vmin solid rgb(0 0 0 / 0%);
+          border-radius: 100%;
+          height: 3.9vmin;
+          width: 1.2vmin;
+          left: -1.7vmin;
+          bottom: 3vmin;
+          transform: rotate(10deg);
+        }
+
+        /* The pincer bit of the horn */
+        &.left .half::after {
+          content: '';
+          display: block;
+          position: absolute;
+          border-left: solid 0.8vmin black;
+          border-bottom: solid 0.8vmin black;
+          border-right: 0.4vmin solid rgb(0 0 0 / 0%);
+          border-radius: 100%;
+          height: 1.8vmin;
+          width: 0.6vmin;
+          left: -0.8vmin;
+          bottom: 4.2vmin;
+          transform: rotate(15deg);
+        }
+
+        &.right {
+          border-top: solid 0.1vmin rgb(0 0 0 / 0%);
+          border-left: solid 0.9vmin black;
+          border-radius: 40% 0 0 34%;
+          height: 6.5vmin;
+          width: 5.1vmin;
+          right: 0.1vmin;
+          top: -6.3vmin;
+          transform: rotate(-5deg) scaleX(-1);
+        }
+
+        /* The main white body of the horn */
+        &.right::before {
+          content: '';
+          display: block;
+          position: absolute;
+          border-top: solid 1.6vmin var(--color-bone);
+          border-left: solid 1.9vmin var(--color-bone);
+          border-radius: 100% 0 100% 0%;
+          left: -1.8vmin;
+          bottom: 0.8vmin;
+          height: 2.2vmin;
+          width: 3.7vmin;
+          transform: rotate(-63deg);
+        }
+
+        /* Top curvy bit */
+        &.right::after {
+          content: '';
+          display: block;
+          position: absolute;
+          width: 2vmin;
+          height: 1vmin;
+          border-top: solid 0.6vmin black;
+          border-right: solid 0.8vmin black;
+          border-radius: 0 100%;
+          top: -0.8vmin;
+          left: -0.5vmin;
+          transform: rotate(294deg);
+        }
+
+        /* Opposing, curved border of the horn */
+        &.right .half {
+          border-top: solid 0.1vmin rgb(0 0 0 / 0%);
+          border-right: solid 0.7vmin black;
+          border-bottom: solid 0.5vmin rgb(0 0 0 / 0%);
+          border-radius: 0% 37% 50% 0%;
+          height: 6vmin;
+          width: 5.5vmin;
+          position: absolute;
+          right: -2.1vmin;
+          bottom: -0.3vmin;
+          transform: rotate(-5deg) scaleX(-1);
+        }
+
+        /* Top white bit */
+        &.right .half::before {
+          content: '';
+          display: block;
+          position: absolute;
+          background-color: var(--color-bone);
+          border-right: 0.2vmin solid rgb(0 0 0 / 0%);
+          border-radius: 100%;
+          height: 3.9vmin;
+          width: 0.5vmin;
+          right: -1.2vmin;
+          bottom: 3vmin;
+          transform: rotate(-15deg) scaleX(-1);
+        }
+
+        /* The pincer bit of the horn */
+        &.right .half::after {
+          content: '';
+          display: block;
+          position: absolute;
+          border-left: solid 0.8vmin black;
+          border-bottom: solid 0.8vmin black;
+          border-right: 0.4vmin solid rgb(0 0 0 / 0%);
+          border-radius: 100%;
+          height: 1.3vmin;
+          width: 0.5vmin;
+          right: -0.3vmin;
+          bottom: 5vmin;
+          transform: rotate(-18deg) scaleX(-1);
+        }
+      }
+
+      .hk-knight-nail {
+        width: 3vmin;
+        height: 3.5vmin;
+        background-color: var(--color-nail);
+        border: solid 0.7vmin black;
+        border-top-width: 1vmin;
+        transform: rotate(30deg);
+        position: absolute;
+        left: 1.5vmin;
+        top: 15vmin;
+
+        /* Handle */
+        &::before {
+          content: '';
+          display: block;
+          width: 1.8vmin;
+          height: 0.4vmin;
+          background-color: var(--color-nail);
+          border: solid 0.7vmin black;
+          position: absolute;
+          left: -2.4vmin;
+          top: -0.2vmin;
+          border-right: none;
+          border-radius: 30%;
+          transform: rotate(3deg);
+        }
+      }
+
+      .hk-knight-body {
+        position: absolute;
+        background-color: black;
+        height: 6.5vmin;
+        width: 6vmin;
+        bottom: 2.3vmin;
+        left: 47%;
+        transform: translateX(-50%);
+        border-radius: 100% 0 40% 40%;
+
+        /* Left leg */
+        &::before {
+          content: '';
+          display: block;
+          position: absolute;
+          width: 1.5vmin;
+          height: 4vmin;
+          background-color: black;
+          bottom: -2.7vmin;
+          left: 25%;
+          border-radius: 0% 0% 20% 60%;
+          transform: rotate(-3deg);
+        }
+
+        /* Right leg */
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          width: 1.6vmin;
+          height: 6vmin;
+          background-color: black;
+          bottom: -2.7vmin;
+          right: 0.4vmin;
+          border-radius: 0% 0% 100% 30%;
+          transform: rotate(3deg);
+        }
+      }
+
+      /* The little arch between his two legs */
+      .hk-knight-leg-arch {
+        position: absolute;
+        width: 2.5vmin;
+        height: 4vmin;
+        border-bottom: 1vmin solid black;
+        border-left: solid 0.5vmin rgb(0 0 0 / 0%);
+        border-radius: 0 100% 50%;
+        bottom: -3vmin;
+        left: 54%;
+        transform: rotate(133deg);
+      }
+
+      /* Main wing piece */
+      .hk-knight-wings {
+        width: 8vmin;
+        height: 8vmin;
+        background-color: var(--color-wing);
+        position: absolute;
+        bottom: 1.8vmin;
+        left: 1.8vmin;
+        border-radius: 100% 10% 100% 0%;
+        transform: rotate(-10deg);
+        border: solid 0.6vmin black;
+
+        &::before {
+          content: '';
+          display: block;
+          position: absolute;
+          right: 0.3vmin;
+          width: 0.4vmin;
+          height: 2.7vmin;
+          background-color: var(--color-wing);
+          border: solid 0.6vmin black;
+          bottom: -1.2vmin;
+          transform: rotate(18deg);
+          border-radius: 50% 50% 200%;
+        }
+
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          right: -3.3vmin;
+          top: 1vmin;
+          width: 6vmin;
+          height: 0.4vmin;
+          background-color: var(--color-wing);
+          border: solid 0.6vmin black;
+          transform: rotate(90deg);
+          border-radius: 50%;
+        }
+
+        & .fold:nth-of-type(1) {
+          position: absolute;
+          width: 4vmin;
+          height: 3.5vmin;
+          border-bottom: solid 0.8vmin var(--color-wing);
+          border-left: solid 0.5vmin rgb(0 0 0 / 0%);
+          border-radius: 0% 0% 100%;
+          transform: rotate(-18deg);
+          bottom: 1.4vmin;
+          right: 0;
+        }
+
+        & .fold:nth-of-type(2) {
+          position: absolute;
+          width: 7.8vmin;
+          height: 3.5vmin;
+          border-bottom: solid 0.7vmin black;
+          border-radius: 100% 5% 100% 0%;
+          transform: rotate(-15deg);
+          bottom: 1.2vmin;
+          left: -0.8vmin;
+        }
+
+        & .fold:nth-of-type(3) {
+          position: absolute;
+          width: 7.5vmin;
+          height: 3.5vmin;
+          border-bottom: solid 0.7vmin black;
+          border-radius: 100% 0%;
+          transform: rotate(-18deg);
+          bottom: 2.6vmin;
+          left: -0.8vmin;
+        }
+
+        & .fold:nth-of-type(4) {
+          position: absolute;
+          width: 5.5vmin;
+          height: 2vmin;
+          border-top: solid 0.6vmin black;
+          border-radius: 50% 0% 0%;
+          transform: rotate(-30deg);
+          bottom: 3.2vmin;
+          left: 0.3vmin;
+        }
+      }
+    }
+  </style>
+{% endartwork %}

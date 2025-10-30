@@ -11,6 +11,7 @@ redirectFrom: /blog/svg-tutorial-how-to-code-svg-icons-by-hand/
 ---
 
 <style>
+@layer DEMOS {
   .svg-tutorial__icon-grid {
     display: flex;
     justify-content: center;
@@ -34,6 +35,7 @@ redirectFrom: /blog/svg-tutorial-how-to-code-svg-icons-by-hand/
   svg.bordered {
     border: solid 1px;
   }
+}
 </style>
 
 For as long as I can remember, I avoided touching SVGs when working with front-end code. I'd have no trouble with HTML, CSS, or JavaScript, but SVGs always intimidated me with their bizarre syntax and those weird, indecipherable strings of letters and numbers. You know the ones:

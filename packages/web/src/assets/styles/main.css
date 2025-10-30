@@ -1,4 +1,4 @@
-@layer TOKENS, RESET, GLOBAL, UTILS, COMPONENTS, LAYOUT, PAGES;
+@layer TOKENS, RESET, GLOBAL, UTILS, COMPONENTS, LAYOUT, PAGES, DEMOS;
 
 /* 1. Design tokens have the lowest specificity as they do not affect any styling. These are just variable declarations. */
 @import './layers/tokens.css';

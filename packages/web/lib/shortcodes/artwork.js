@@ -1,14 +1,16 @@
-export default function artworkShortcode(content, description) {
-  const artworkId = this.page.fileSlug;
+export default function artworkShortcode(content, id, description) {
+  if (!id) {
+    throw new Error(`Artwork is missing an id.`);
+  }
   if (!description) {
-    throw new Error(`Artwork ${artworkId} is missing a description.`);
+    throw new Error(`Artwork "${id}" is missing a description.`);
   }
   if (!content) {
-    throw new Error(`Artwork ${artworkId} has no content.`);
+    throw new Error(`Artwork "${id}" has no content.`);
   }
-  const captionId = `${artworkId}-caption`;
-  return `<figure class="artwork" id="${artworkId}">
-            <a href="#${artworkId}" class="artwork-link">
+  const captionId = `${id}-caption`;
+  return `<figure class="artwork" id="${id}">
+            <a href="#${id}" class="artwork-link">
               <div role="img" aria-labelledby=${captionId}>
                 ${content}
               </div>

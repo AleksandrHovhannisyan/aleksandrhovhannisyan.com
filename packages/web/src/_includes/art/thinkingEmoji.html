@@ -1,0 +1,179 @@
+{% artwork "thinkingEmoji", "Thinking emoji (Microsoft variant)." %}
+  <div class="thinking-emoji">
+    <div class="thinking-emoji-eyes">
+      <div class="thinking-emoji-eye left"></div>
+      <div class="thinking-emoji-eyebrow left"></div>
+      <div class="thinking-emoji-eye right"></div>
+      <div class="thinking-emoji-eyebrow right"></div>
+    </div>
+    <div class="thinking-emoji-mouth"></div>
+    <div class="thinking-emoji-hand"></div>
+    <div class="thinking-emoji-hand-outline"></div>
+  </div>
+  <style>
+    @layer DEMOS {
+      .thinking-emoji {
+        --face-color: #ffca3b;
+        --eyebrow-color: #d58d00;
+        --hand-color: #d58d00;
+        --face-border-color: black;
+        --eye-color: black;
+        --mouth-color: black;
+        width: 25vmin;
+        height: 25vmin;
+        border-radius: 50%;
+        background-color: var(--face-color);
+        border: solid 1.5vmin var(--face-border-color);
+        position: relative;
+        display: flex;
+        justify-content: center;
+      }
+
+      .thinking-emoji-eyes {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 5.5vmin;
+      }
+
+      .thinking-emoji-eye {
+        background-color: black;
+        border-radius: 1.5vmin;
+        position: relative;
+        width: 2.5vmin;
+        height: 4vmin;
+
+        &::before {
+          content: '';
+          position: absolute;
+        }
+
+        &.left {
+          width: 2.5vmin;
+          height: 4vmin;
+        }
+
+        &.right {
+          width: 4vmin;
+          height: 2.5vmin;
+        }
+      }
+
+      .thinking-emoji-eyebrow {
+        width: 10vmin;
+        height: 10vmin;
+        background-color: rgb(0 0 0 / 0%);
+        align-self: flex-end;
+        margin-bottom: 0;
+        border-radius: 46%;
+        border: 1.5vmin solid rgb(0 0 0 / 0%);
+        border-bottom: 1.5vmin solid var(--eyebrow-color);
+        position: absolute;
+
+        &::before,
+        &::after {
+          content: '';
+          width: 1.5vmin;
+          height: 1.5vmin;
+          border-radius: 50%;
+          position: absolute;
+          bottom: -0.5vmin;
+          background-color: var(--eyebrow-color);
+        }
+
+        &::before {
+          left: -0.25vmin;
+        }
+
+        &::after {
+          right: -0.25vmin;
+        }
+
+        &.left {
+          transform: rotate(150deg) translate(30%, 0%);
+        }
+
+        &.right {
+          transform: rotate(210deg) translate(-45%, 0%);
+        }
+      }
+
+      .thinking-emoji-mouth {
+        width: 15vmin;
+        height: 15vmin;
+        background-color: rgb(0 0 0 / 0%);
+        align-self: flex-end;
+        margin-bottom: 4.5vmin;
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
+        border: 1.5vmin solid rgb(0 0 0 / 0%);
+        border-bottom: 1.5vmin solid var(--mouth-color);
+        position: relative;
+        transform: rotate(145deg) translate(20%, -60%);
+
+        &::before {
+          content: '';
+          width: 3vmin;
+          height: 1.5vmin;
+          border-radius: 40%;
+          position: absolute;
+          bottom: 0.45vmin;
+          left: -0.25vmin;
+          background-color: var(--mouth-color);
+          transform: rotate(40deg);
+        }
+      }
+
+      .thinking-emoji-hand {
+        position: absolute;
+        width: 7.5vmin;
+        height: 6.5vmin;
+        background-color: var(--hand-color);
+        border-radius: 1vmin;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        bottom: 1vmin;
+        left: 1.5vmin;
+
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          background-color: var(--hand-color);
+          border-radius: 45%;
+        }
+
+        &::before {
+          height: 3vmin;
+          width: 2.5vmin;
+          left: 0;
+          top: -2vmin;
+        }
+
+        &::after {
+          width: 7.5vmin;
+          height: 2.5vmin;
+          right: -5vmin;
+          top: 0;
+          border-radius: 40%;
+        }
+      }
+
+      .thinking-emoji-hand-outline {
+        z-index: -1;
+        background-color: var(--face-border-color);
+        width: 7.5vmin;
+        height: 6.5vmin;
+        position: absolute;
+        border-radius: 1vmin;
+        bottom: -0.25vmin;
+        left: 0.25vmin;
+      }
+    }
+  </style>
+{% endartwork %}

@@ -41,12 +41,21 @@ preloads:
     <h1 class="title">CSS Art</h1>
   </header>
   <ol class="artwork-list grid gap-8">
-    {%- assign artCollection = collections.art | sortByKey: 'data.order' | reverse -%}
-    {%- for artwork in artCollection -%}
-      <li {% if artwork.data.columns %}class="col-{{ artwork.data.columns }}"{% endif %}>
-        {{ artwork.templateContent }}
-      </li>
-    {%- endfor -%}
+    <li>{% include "art/jigglypuff.html" %}</li>
+    <li>{% include "art/jerrySmith.html" %}</li>
+    <li>{% include "art/sly.html" %}</li>
+    <li>{% include "art/theKnight.html" %}</li>
+    <li>{% include "art/wanderingHusk.html" %}</li>
+    <li>{% include "art/cuphead.html" %}</li>
+    <li>{% include "art/goopyLeGrande.html" %}</li>
+    <li>{% include "art/snoo.html" %}</li>
+    <li>{% include "art/cube.html" %}</li>
+    <li>{% include "art/smirkingEmoji.html" %}</li>
+    <li>{% include "art/thinkingEmoji.html" %}</li>
+    <li>{% include "art/smilingEmoji.html" %}</li>
+    <li>{% include "art/stickyNote.html" %}</li>
+    <li>{% include "art/heart.html" %}</li>
+    <li>{% include "art/loadingOrbs.html" %}</li>
   </ol>
 </main>
 <footer class="artwork-page-footer">

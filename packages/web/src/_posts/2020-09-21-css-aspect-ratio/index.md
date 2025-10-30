@@ -9,6 +9,7 @@ thumbnail: https://images.unsplash.com/photo-1550535424-fd4382da050c?ixid=MnwxMj
 ---
 
 <style>
+@layer DEMOS {
   .demo-tiles {
     display: grid;
     padding: 0;
@@ -21,7 +22,6 @@ thumbnail: https://images.unsplash.com/photo-1550535424-fd4382da050c?ixid=MnwxMj
     background-color: var(--color-surface-2);
     color: var(--color-text-emphasis);
     border-radius: var(--size-spacing--3);
-    font-weight: var(--font-weight-body-bold);
   }
 
   .demo-tile::after {
@@ -91,6 +91,7 @@ thumbnail: https://images.unsplash.com/photo-1550535424-fd4382da050c?ixid=MnwxMj
     width: 100%;
     column-gap: 1em;
   }
+}
 </style>
 
 If you're not sure how to define aspect ratios in CSS, or if you have no clue what an aspect ratio is to begin with, then you're in luck. This tutorial covers everything that you need to know about creating aspect ratio boxes in CSS, using both a modern approach and an old one with a percentage padding trick. Once you understand aspect ratios and how to define them, you'll be able to do all kinds of neat things—like creating `nxn` square grid layouts, responsively sizing embedded media, reserving space for images, and much more.
