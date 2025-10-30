@@ -1,0 +1,201 @@
+{% artwork "kirby", "Kirby. Planetary protector, star enthusiast, food lover." %}
+<div class="kirby">
+  <div class="kirby-eyes"></div>
+  <div class="kirby-mouth"></div>
+  <div class="kirby-arms"></div>
+</div>
+<style>
+  @layer DEMOS {
+    /* https://ssb.wiki.gallery/images/thumb/5/5c/Kirby.png/275px-Kirby.png */
+    .kirby {
+      --color-kirby-pink-light: #ffc4ef;
+      --color-kirby-pink-dark: #ef7fa0;
+      --color-kirby-pink-darker: #d66380;
+      --color-kirby-pink-sharp: #fc5faa;
+      --color-kirby-red: #e82c59;
+      --color-kirby-red-dark: #a20609;
+      --color-kirby-red-darker: #530300;
+      --color-kirby-blue-light: #2058e7;
+      --color-kirby-blue-dark: #001d7c;
+      background-image:
+            /* Left cheek */
+        radial-gradient(
+          ellipse 60% 46% at 14% 53%,
+          var(--color-kirby-pink-sharp) 0%,
+          var(--color-kirby-pink-sharp) 8%,
+          transparent 12%
+        ),
+        /* Right cheek */
+          radial-gradient(
+            ellipse 85% 46% at 68% 50%,
+            var(--color-kirby-pink-sharp) 0%,
+            var(--color-kirby-pink-sharp) 8%,
+            transparent 12%
+          ),
+        /* Shading */
+          radial-gradient(circle at 80% 1%, transparent 0%, transparent 80%, var(--color-kirby-pink-light) 90%),
+        radial-gradient(circle at 28% 1%, transparent 0%, transparent 80%, var(--color-kirby-pink-light) 90%),
+        radial-gradient(circle at 20% -50%, var(--color-kirby-pink-sharp) 10%, transparent 40%),
+        /* Body */
+          radial-gradient(
+            circle at 42% 40%,
+            var(--color-kirby-pink-light) 0%,
+            var(--color-kirby-pink-light) 20%,
+            var(--color-kirby-pink-dark) 50%,
+            var(--color-kirby-pink-darker) 65%,
+            var(--color-kirby-pink-darker) 90%
+          );
+      border-radius: 50%;
+      width: 23vmin;
+      aspect-ratio: 1;
+      rotate: -12deg;
+      transform-style: preserve-3d;
+      perspective: 100px;
+      margin-block-end: 5vmin;
+      transform: scale(0.9);
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+      }
+      /* Left foot */
+      &::before {
+        bottom: 9%;
+        left: -20%;
+        rotate: -30deg;
+        background-image: radial-gradient(
+          circle at 0% 50%,
+          var(--color-kirby-red) 0%,
+          var(--color-kirby-red) 5%,
+          var(--color-kirby-red-dark) 30%,
+          var(--color-kirby-red-dark) 80%,
+          var(--color-kirby-red-darker) 90%
+        );
+        box-shadow: inset 0.1vmin -0.1vmin 0 0.5vmin hsla(0, 0%, 0%, 5%);
+        width: 80%;
+        height: 42%;
+        border-radius: 50%;
+        transform: translateZ(-1px);
+      }
+      /* Right foot */
+      &::after {
+        bottom: -20%;
+        left: 15%;
+        rotate: 110deg;
+        background-image:
+          radial-gradient(circle at 80% 50%, hsla(0, 0%, 0%, 10%) 0%, transparent),
+          radial-gradient(
+            ellipse 40% 100% at 45% 50%,
+            var(--color-kirby-red-darker) 0%,
+            var(--color-kirby-red-dark) 40%,
+            var(--color-kirby-red) 80%
+          );
+        box-shadow: inset -0.1vmin 0 0 0.5vmin hsla(0, 0%, 0%, 5%);
+        width: 85%;
+        height: 46%;
+        border-radius: 48%;
+        transform: translateZ(-1px);
+      }
+    }
+    .kirby-eyes {
+      &::before,
+      &::after {
+        position: absolute;
+        content: '';
+        width: 9%;
+        height: 27%;
+        background-image: radial-gradient(
+          ellipse 220% 100% at 50% 20%,
+          white 0%,
+          white 15%,
+          black 25%,
+          black 40%,
+          var(--color-kirby-blue-dark) 50%,
+          var(--color-kirby-blue-dark) 60%,
+          var(--color-kirby-blue-light) 80%
+        );
+        border: solid 0.5vmin black;
+      }
+      /* Left eye */
+      &::before {
+        top: 19%;
+        left: 20%;
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
+        border-top-right-radius: 40%;
+        border-bottom-right-radius: 40%;
+      }
+      /* Right eye */
+      &::after {
+        left: 44%;
+        top: 18%;
+        border-top-left-radius: 40%;
+        border-bottom-left-radius: 40%;
+        border-top-right-radius: 50%;
+        border-bottom-right-radius: 50%;
+      }
+    }
+    .kirby-mouth {
+      position: absolute;
+      bottom: 35%;
+      left: 31%;
+      width: 16%;
+      height: 15%;
+      /* border: solid 0.1vmin var(--color-kirby-pink-dark); */
+      border-radius: 58% 42% 43% 57% / 33% 28% 72% 67%;
+      background-image: radial-gradient(
+        ellipse 100% 80% at 70% 85%,
+        var(--color-kirby-red) 0%,
+        var(--color-kirby-red) 40%,
+        var(--color-kirby-red-dark) 50%,
+        var(--color-kirby-red-darker) 80%
+      );
+    }
+    .kirby-arms {
+      display: contents;
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+      }
+      /* Left arm */
+      &::before {
+        top: 6%;
+        left: -10%;
+        rotate: 45deg;
+        transform: translateZ(-1px);
+        width: 40%;
+        height: 35%;
+        border-radius: 50%;
+        box-shadow: inset 0 0 0 0.5vmin hsla(0, 81%, 70%, 0.05);
+        background-image:
+          radial-gradient(circle at 60% 50%, var(--color-kirby-pink-darker) 0%, transparent 50%),
+          radial-gradient(
+            circle at 20% 50%,
+            var(--color-kirby-pink-light) 0%,
+            var(--color-kirby-pink-dark) 40%,
+            var(--color-kirby-pink-darker) 50%
+          );
+      }
+      /* Right arm */
+      &::after {
+        top: 50%;
+        right: -18%;
+        rotate: 40deg;
+        width: 40%;
+        height: 32%;
+        border-radius: 48%;
+        background-image:
+          radial-gradient(circle at 60% 40%, transparent 0%, transparent 60%, var(--color-kirby-pink-sharp) 90%),
+          radial-gradient(
+            circle at 35% 40%,
+            var(--color-kirby-pink-light) 0%,
+            var(--color-kirby-pink-dark) 50%,
+            var(--color-kirby-pink-darker) 65%
+          );
+      }
+    }
+  }
+</style>
+{% endartwork %}
