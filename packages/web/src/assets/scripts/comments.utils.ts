@@ -95,4 +95,6 @@ export const renderComments = (comments: PostComment[]) => {
   // ... but append to actual list once at the end, to avoid unnecessary reflow from `n` appends
   list.appendChild(fragment);
   commentSection?.appendChild(list);
+
+  return list;
 };
