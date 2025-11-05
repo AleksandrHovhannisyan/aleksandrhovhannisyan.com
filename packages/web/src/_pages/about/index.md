@@ -35,13 +35,7 @@ You may have noticed that I like to use [the em dash](/blog/in-memory-of-em/). R
 
 ### Music
 
-I've loved listening to music my entire life, but it's only recently that I began _playing_. I picked up my first guitar in December 2023 and taught myself how to play it using online tutorials; since then, it's quickly become one of my favorite hobbies. I've even recorded a few covers:
-
-- ["Wild Time" by Weyes Blood](https://www.youtube.com/watch?v=MGBhqv9VePs)
-- ["Exit Music (For a Film)" by Radiohead](https://www.youtube.com/watch?v=DOCRSqz7Bjc)
-- ["Fake Plastic Trees" by Radiohead](https://www.youtube.com/watch?v=vVTzNm8NVzQ)
-- ["Pyramid Song" by Radiohead](https://www.youtube.com/watch?v=XF1buO8xsUk)
-- ["How to Disappear Completely" by Radiohead](https://www.youtube.com/watch?v=WWkUx5pCCp8)
+I've loved listening to music my entire life, but it's only recently that I began _playing_. I picked up my first guitar in December 2023 and taught myself how to play it using online tutorials; since then, it's quickly become one of my favorite hobbies. I've recorded a few covers that you can check out on [my Music page](/music/).
 
 ### Gaming
 

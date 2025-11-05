@@ -1,0 +1,22 @@
+---
+title: Music
+description: Guitar covers of songs I like.
+permalink: /music/
+---
+
+<article class="post rhythm">
+    <h1 class="prose-tight text-wrap-balance">Music</h1>
+    <p class="prose-tight text-wrap-balance size-font-md">Guitar covers of songs I like.</p>
+    <div class="rhythm">
+        <ol class="grid col-2 gap-5" style="--grid-item-min-width: calc(200rem/16);">
+            {% for song in guitarCovers %}
+            <li>
+                <figure class="project">
+                    <img src="https://img.youtube.com/vi/{{ song.id }}/maxresdefault.jpg" alt="">
+                    <figcaption><a class="card-link" href="https://www.youtube.com/watch?v={{ song.id }}">&ldquo;{{ song.name }}&rdquo; by {{ song.author }}</a></figcaption>
+                </figure>
+            </li>
+            {% endfor %}
+        </ol>
+    </div>
+</article>
