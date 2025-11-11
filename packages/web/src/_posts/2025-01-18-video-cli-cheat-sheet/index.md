@@ -3,7 +3,7 @@ title: CLI Cheat Sheet for Videos
 description: A reference for downloading, splitting, and optimizing videos with CLI tools.
 keywords: [yt-dlp, ffmpeg]
 categories: [note, ffmpeg]
-lastUpdated: 2025-07-30
+lastUpdated: 2025-11-11
 ---
 
 This is a compilation of my most frequently used command-line tools and commands when working with video files. I'm collecting them here both for my own convenience and in case the original sources ever get taken down. Note that this is not meant to be an exhaustive reference.
@@ -49,8 +49,11 @@ Anyone who's ever edited videos before knows that there are really only three ki
 ### Split by Timestamp
 
 ```{data-copyable="true"}
-ffmpeg -ss 00:01:00 -to 00:02:00 -i input.mp4 -c copy output.mp4
+ffmpeg -ss <hh:mm:ss> -to <hh:mm:ss> -i input.mp4 -c copy output.mp4
 ```
+
+
+Replace `<hh:mm:ss>` with your desired start and end timestamps. Note that the start is inclusive, while the end is exclusive, so `-ss 00:01:00 -to 00:02:00` would trim the file from the first minute to just before the second.
 
 Credit: [Online User on StackOverflow, CC BY-SA 4.0](https://stackoverflow.com/a/42827058/5323344).
 
