@@ -43,9 +43,11 @@ Note: [Demucs](https://github.com/facebookresearch/demucs) is just the name of a
 
 ## Closing Remarks
 
-Remember to use this tool ethically and responsibly. Do not use it to illegally redistribute copyrighted work or generate deepfakes. If you opt to monetize your covers, upload them only to YouTube since it splits revenue with the creators.
+Remember to use this tool ethically and responsibly. Do not use it to illegally redistribute copyrighted work or generate deepfakes.
 
-If you found Ultimate Vocal Remover useful, consider [donating to the developer to support their work](https://buymeacoffee.com/uvr5). I'm not affiliated with the developer or their project, and this article wasn't sponsored.
+I recommend that you upload any samples or covers you create only to YouTube since it has deals with record labels that allow it to keep your video up while also compensating the original copyright holders. See [Content ID](https://support.google.com/youtube/answer/2797370?hl=en).
+
+If you find Ultimate Vocal Remover useful, consider [donating to the developer to support their work](https://buymeacoffee.com/uvr5). I'm not affiliated with the developer or their project, and this article wasn't sponsored.
 
 ## Other Tools
 
