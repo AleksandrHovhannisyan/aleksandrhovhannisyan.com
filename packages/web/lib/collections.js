@@ -1,4 +1,4 @@
-import { slugifyString } from './utils.js';
+import { slugifyString } from './utils/string.js';
 
 /** Returns all blog posts as a collection. */
 export function getAllPosts(collection) {

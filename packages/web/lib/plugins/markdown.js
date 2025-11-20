@@ -1,4 +1,4 @@
-import { slugifyString } from '../utils.js';
+import { slugifyString } from '../utils/string.js';
 import iconShortcode from '../shortcodes/icon.js';
 import markdownIt from 'markdown-it';
 import markdownItAttrs from 'markdown-it-attrs';
@@ -145,6 +145,7 @@ function makeSyntaxHighlighter(markdownIt, isTrustedInput) {
 
 /** Configures and returns a markdown parser.
  * @param {MakeMarkdownParserOptions} [options]
+ * @returns {import('markdown-it')}
  */
 export function makeMarkdownParser(options) {
   const { isTrustedInput } = options ?? {

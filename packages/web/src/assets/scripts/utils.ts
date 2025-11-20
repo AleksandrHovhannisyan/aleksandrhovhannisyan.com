@@ -29,3 +29,27 @@ export function throttle(callback: (...args: unknown[]) => void, rateMs: number)
     }, rateMs);
   };
 }
+
+/**
+ * Takes a newline-delimited JSON stream and yields one parsed line at a time.
+ * @param response The response object from the server. Assumed to be in ndjson format.
+ */
+export async function* parseStream<ChunkType>(response: Response) {
+  const decoder = new TextDecoder();
+  let buffer = '';
+
+  for await (const value of response.body) {
+    buffer += decoder.decode(value, { stream: true });
+    const lines = buffer.split('\n');
+
+    // Save last chunk. It's either 1) empty string because it was last line's trailing newline, in which case we're done on next iteration of while loop,
+    // or 2) an incomplete chunk, in which case we will complete it on the next iteration of the while loop when the server sends the remainder.
+    buffer = lines.pop() || '';
+
+    for (const line of lines) {
+      if (line.trim()) {
+        yield JSON.parse(line) as ChunkType;
+      }
+    }
+  }
+}

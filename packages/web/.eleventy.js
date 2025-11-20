@@ -32,7 +32,7 @@ import {
 import { getAllPosts, getAllUniqueCategories, getPostsByCategory } from './lib/collections.js';
 import { markdown } from './lib/plugins/markdown.js';
 import { codeDemoOptions } from './lib/plugins/codeDemo.js';
-import { escape, slugifyString } from './lib/utils.js';
+import { escape, slugifyString } from './lib/utils/string.js';
 import { buildAssets } from './build.js';
 
 const TEMPLATE_ENGINE = 'liquid';
@@ -52,7 +52,7 @@ export default function eleventy(eleventyConfig) {
 
   // Watch targets
   eleventyConfig.addWatchTarget('src/assets/images');
-  eleventyConfig.addWatchTarget('src/assets/scripts');
+  eleventyConfig.addWatchTarget('src/assets/scripts/**/*.ts');
   eleventyConfig.addWatchTarget('src/assets/styles');
 
   // Pass-through copy for static assets

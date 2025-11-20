@@ -19,16 +19,14 @@ export type PostComment = {
     /** The user's username. Must be sanitized on the back end. */
     name: string;
     /** Whether the user is me (author of the blog). */
-    isAuthor: boolean;
+    isAuthor?: boolean;
   };
   /** A raw datetime string representing when the comment was created. */
-  dateTime: string;
-  /** A human-readable string, relative to now, when the comment was created (e.g., `"20 hours ago"`). */
-  dateRelative: string;
+  date: string;
   /** Whether the comment was edited. */
-  isEdited: boolean;
+  isEdited?: boolean;
   /** The sanitized comment body, as an HTML string. */
   body: string;
 };
 
-export type PostCommentResponse = MaybeError<PostComment[], string>;
+export type PostCommentResponse = MaybeError<PostComment, string>;

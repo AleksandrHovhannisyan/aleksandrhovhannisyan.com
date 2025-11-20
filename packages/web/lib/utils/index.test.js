@@ -1,5 +1,5 @@
 import { it, describe } from 'node:test';
-import { escape, getRelativeTimeString, withoutBaseDirectory } from './utils.js';
+import { escape, getRelativeTimeString, withoutBaseDirectory } from './index.js';
 import assert from 'node:assert';
 
 describe('escape', () => {

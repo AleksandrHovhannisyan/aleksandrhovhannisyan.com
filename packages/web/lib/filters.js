@@ -3,7 +3,7 @@ import path from 'node:path';
 import { markdown } from './plugins/markdown.js';
 import site from '../src/_data/site.js';
 import Image from '@11ty/eleventy-img';
-import { get, memoize, withoutBaseDirectory } from './utils.js';
+import { get, memoize, withoutBaseDirectory } from './utils/index.js';
 
 /** Returns the first `limit` elements of the the given array. */
 export const limit = (array, limit) => {

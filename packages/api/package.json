@@ -11,14 +11,15 @@
     "lint": "eslint --cache --fix"
   },
   "dependencies": {
-    "web": "workspace:*",
-    "@octokit/auth-token": "^5.1.1",
-    "@octokit/core": "^6.1.2",
-    "@octokit/rest": "^21.0.1"
+    "@octokit/auth-token": "^6.0.0",
+    "@octokit/core": "^7.0.6",
+    "@octokit/request-error": "^7.1.0",
+    "@octokit/rest": "^22.0.1",
+    "web": "workspace:*"
   },
   "devDependencies": {
-    "wrangler": "^3.72.2",
-    "@cloudflare/workers-types": "^4.20240821.1"
+    "@cloudflare/workers-types": "^4.20240821.1",
+    "wrangler": "^3.72.2"
   },
   "lint-staged": {
     "*.ts": "pnpm run lint"

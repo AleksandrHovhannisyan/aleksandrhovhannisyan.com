@@ -1,7 +1,7 @@
 import path from 'node:path';
 import Image from '@11ty/eleventy-img';
 import stringifyAttributes from 'stringify-attributes';
-import { memoize } from '../utils.js';
+import { memoize } from '../utils/index.js';
 
 const FAVICON_FORMAT = 'png';
 const APPLE_TOUCH_ICON_WIDTH = 180;

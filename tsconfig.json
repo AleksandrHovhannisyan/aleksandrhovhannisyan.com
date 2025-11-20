@@ -6,7 +6,7 @@
     "esModuleInterop": false,
     "noEmit": true,
     "skipLibCheck": true,
-    "allowJs": false,
+    "allowJs": true,
     "moduleDetection": "force",
     "isolatedModules": true,
     "verbatimModuleSyntax": true
