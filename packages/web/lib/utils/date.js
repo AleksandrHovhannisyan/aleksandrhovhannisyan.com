@@ -1,10 +1,8 @@
-import site from '../../src/_data/site.js';
-
 function makeRelativeTimeStringGetter() {
   const cutoffSeconds = [60, 3600, 86400, 86400 * 7, 86400 * 30, 86400 * 365, Infinity];
   /** @type {Intl.RelativeTimeFormatUnit[]} */
   const units = ['second', 'minute', 'hour', 'day', 'week', 'month', 'year'];
-  const relativeTimeFormatter = new Intl.RelativeTimeFormat(site.lang, { numeric: 'auto' });
+  const relativeTimeFormatter = new Intl.RelativeTimeFormat('en-US', { numeric: 'auto' });
 
   return function (date, now = new Date()) {
     // In Liquid templates, dates might be passed in as strings, so always construct new Date instances to be safe
