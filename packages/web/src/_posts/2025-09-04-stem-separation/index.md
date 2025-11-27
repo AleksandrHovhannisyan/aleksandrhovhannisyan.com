@@ -5,9 +5,9 @@ categories: [note, music, ai]
 keywords: [stem, split, ultimate vocal remover]
 ---
 
-If you're covering music or trying to isolate an instrument for a practice session, you're probably going to need a <dfn>stem splitter</dfn>: software that takes an audio track, analyzes its waveforms with machine learning, and generates audio files for each stem. Paid and free stem splitters have been around for a while, but one I personally like is [Ultimate Vocal Remover](https://github.com/Anjok07/ultimatevocalremovergui) (UVR) because it's free and open source, and it lets you pick from many different stem separation models (all local). I've used it for several of my own guitar covers, and I've been very happy with the results so far.
+If you're covering music or trying to isolate an instrument for a practice session, you may find it helpful to use a <dfn>stem splitter</dfn>: software that takes an audio track, classifies its frequencies with machine learning, and generates separate audio files for each stem. Paid and free stem splitters have been around for a while, but one I personally like is [Ultimate Vocal Remover](https://github.com/Anjok07/ultimatevocalremovergui) (UVR) because it's free and open source, and it lets you pick from many different stem separation models that all run locally. I've used it for several of my own guitar covers, and I've been very happy with the results so far.
 
-This is a short tutorial on how to set up and use this software, and most of it is based on Vizard's [helpful response on Reddit](https://www.reddit.com/r/musicproduction/comments/1704kob/comment/ktj2y1u/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1). I'm including screenshots and summarizing their answer here in case it ever gets deleted or I forget where to find the thread. I've also included a list of other tools at the end.
+This is a short tutorial on how to set up and use this software, and most of it is based on [a helpful response on Reddit by u/Vizard](https://www.reddit.com/r/musicproduction/comments/1704kob/comment/ktj2y1u/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1). I'm including screenshots and summarizing their answer here in case it ever gets deleted or I forget where to find the thread. I've also included a list of other free tools at the end.
 
 ## Using Ultimate Vocal Remover
 
