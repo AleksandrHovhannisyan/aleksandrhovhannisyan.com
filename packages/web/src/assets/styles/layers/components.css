@@ -208,10 +208,16 @@
     & summary {
       cursor: pointer;
       background-color: var(--color-surface-1);
+      font-weight: var(--font-weight-body-bold);
     }
 
     & .details-content {
       border-top: none;
+
+      dfn {
+        font-weight: inherit;
+        font-style: italic;
+      }
     }
   }
 
