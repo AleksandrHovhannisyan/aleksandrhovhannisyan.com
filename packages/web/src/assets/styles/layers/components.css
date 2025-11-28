@@ -317,9 +317,12 @@
 
   /* Projects */
   .project {
+    --caption-padding: 1ch;
     position: relative;
     gap: 0;
     border: solid 1px var(--color-border-0);
+    padding-block-end: calc(1lh + 2 * var(--caption-padding));
+    font-size: var(--size-font-xs);
 
     &:focus-within {
       outline: solid 3px var(--color-accent-0);
@@ -339,9 +342,13 @@
 
     & figcaption {
       background-color: black;
-      padding: 1ch;
+      padding: var(--caption-padding);
       margin: 0;
       color: white;
+      position: absolute;
+      inset-inline-start: 0;
+      inset-block-end: 0;
+      inline-size: 100%;
     }
 
     & figcaption a {
