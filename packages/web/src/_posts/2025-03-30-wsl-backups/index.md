@@ -1,14 +1,14 @@
 ---
-title: How to Import and Export WSL Distros
+title: WSL Backup Guide
 description: Back up your entire WSL distribution and import it on a different machine.
 categories: [note, wsl, windows]
 ---
 
-Windows Subsystem for Linux (WSL) is my preferred dev environment on Windows, and I back it up regularly just like I would any other file system, in case I accidentally bork it one day or need to get a new machine. Here's how you can do that.
+Windows Subsystem for Linux (WSL) is my preferred dev environment on Windows, and I back it up regularly just like I would any other file system. Here's a quick guide on how to do that.
 
 ## 1. Export a Distribution
 
-Create the following Batch script. I put this on my external drive so I can just one-click run it whenever I connect the drive to my machine. That way I don't have to remember what commands I need to run.
+For convenience, I like to use the following Batch script to back up my WSL distro. I put this on my external drive so I can just one-click run it whenever I connect the drive to my machine. It'll list all the available distros and ask you to pick one before running the export command.
 
 ```batch {data-copyable="true" data-file="wsl-backup.bat"}
 @echo off
@@ -34,8 +34,6 @@ if /i "%confirmation%"=="y" (
 endlocal
 pause
 ```
-
-`wsl.exe` is the Windows WSL executable; you can use it to start and stop—or, in this case, import and export—distributions. The script first lists all of your available distributions and then prompts you to pick one before proceeding with the backup.
 
 ## 2. Import a Distribution
 
