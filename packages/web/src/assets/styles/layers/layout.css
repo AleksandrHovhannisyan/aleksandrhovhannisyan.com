@@ -24,6 +24,10 @@
       background-color: var(--color-surface-0);
     }
 
+    & :is(a, .label) {
+      padding-block: var(--size-spacing--3);
+    }
+
     & .label {
       font-variant: small-caps;
       letter-spacing: var(--size-tracking-md);
@@ -41,10 +45,6 @@
 
   .nav-layout.rhythm {
     --rhythm: 0;
-  }
-
-  #nav-mobile :is(a, label) {
-    padding-block: var(--size-spacing--3);
   }
 
   .nav-desktop {
@@ -65,7 +65,6 @@
     .nav {
       flex-shrink: 0;
       padding: 0 var(--size-spacing-0);
-      font-size: var(--size-font-sm);
 
       & a {
         text-decoration-line: underline;
