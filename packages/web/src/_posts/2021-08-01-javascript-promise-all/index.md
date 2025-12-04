@@ -1,10 +1,10 @@
 ---
-title: Awaiting Multiple Promises with Promise.all
+title: A Deep Dive on Promise.all
 description: Learn how to use JavaScript's Promise.all method to await multiple async operations, as well as how to write a custom implementation.
 keywords: [promise.all, promise, async, javascript]
 categories: [javascript, nodejs, async]
 commentsId: 104
-lastUpdated: 2025-06-06
+lastUpdated: 2025-12-04
 thumbnail: https://images.unsplash.com/photo-1606674556490-c2bbb4ee05e5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 ---
 
@@ -18,7 +18,7 @@ await asyncTask(3);
 
 But what if the order doesn't matter? And what if you want to abort the entire operation as soon as one of these Promises rejects? For example, if just a single step in a sequence of time-sensitive operations were to fail (such as during checkout on an e-commerce site), you probably wouldn't want to make the user wait for all of the checks to finish before telling them that something went wrong—you'd want to notify them immediately, before they grow frustrated and leave the page.
 
-This is such a common use case in JavaScript that Promises have a dedicated method for it: `Promise.all`. In this article, we'll learn how to use `Promise.all` to await multiple async tasks. We'll also [implement our own version of `Promise.all`](#3-bonus-implementing-promiseall) to better understand how it works under the hood.
+This is such a common use case in JavaScript that Promises have a dedicated method for it: `Promise.all`. In this article, we'll learn how to use `Promise.all` to await multiple async tasks. We'll also [implement our own version of `Promise.all`](#bonus-implementing-promiseall) to better understand how it works under the hood.
 
 {% include "toc.md" %}
 
@@ -66,7 +66,7 @@ new Promise(
 **Note**: The term "callback" more generally refers to any function your code calls at a later point in time (usually asynchronously). Even more loosely, it can also refer to any function passed to another function as an argument regardless of when that function is called. For example, a Promise executor is technically also a callback function (just one that's invoked immediately). The key takeaway here is that "callback" is not a term exclusive to Promises—JavaScript is full of callbacks!
 {% endaside %}
 
-## 1. Background
+## Background
 
 Before we look at `Promise.all`, it helps to start from scratch so we can understand what problems it solves. Otherwise, if we jump straight to the solution, you may not fully appreciate why this method exists.
 
@@ -106,7 +106,7 @@ async function doTask(task) {
 }
 ```
 
-### 1.1 Awaiting Multiple Promises
+### Awaiting Multiple Promises
 
 Let's create some mock tasks and await them one by one:
 
@@ -127,17 +127,63 @@ try {
 }
 ```
 
+{% codeDemo "Demo of simulating async tasks in JavaScript" %}
+```html
+<button>Start tasks</button>
+```
+```css
+button {
+  padding: 8px;
+}
+```
+```js
+function sleep(durationMs) {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(), durationMs);
+  });
+}
+  async function doTask(task) {
+  await sleep(task.durationMs);
+  if (task.fulfills) {
+    console.log(`Promise ${task.id}: fulfilled ✅`);
+    return Promise.resolve();
+  }
+  console.log(`Promise ${task.id}: rejected ❌`);
+  return Promise.reject();
+}
+async function run() {
+  console.log('Starting tasks...');
+  const tasks = [
+  { id: 'A', durationMs: 2000, fulfills: true },
+  { id: 'B', durationMs: 3000, fulfills: true },
+  { id: 'C', durationMs: 1000, fulfills: true },
+];
+
+try {
+  for (const task of tasks) {
+    await doTask(task);
+  }
+  console.log('success');
+} catch (e) {
+  console.log('failure');
+}
+}
+
+document.querySelector('button').addEventListener('click', run);
+```
+{% endcodeDemo %}
+
 If you run this code, you should see the following messages logged one at a time:
 
 1. `Promise A: fulfilled ✅` after ~2 seconds (`t=2`).
-2. `Promise B: fulfilled ✅` after ~3 seconds (`t=5`).
-3. `Promise C: fulfilled ✅` after ~1 second (`t=6`).
+2. `Promise B: fulfilled ✅` ~3 seconds after A (`t=5`).
+3. `Promise C: fulfilled ✅` ~1 second after B (`t=6`).
 
 This code works, but it's slow because it _constructs_ one Promise at a time in each iteration of the `for-of` loop. This means that future Promises aren't constructed until previous ones have fulfilled: Before we can construct B, we need to wait for A to settle, and before we can construct C, we need to wait for both A _and_ B to settle.
 
 If the very first Promise takes a long time to fulfill but future Promises take less time, we end up wasting time because we could've potentially scheduled those faster Promise callbacks to run sooner. In fact, in a real-world implementation, `doTask` would likely make a network request to a server via the `fetch` API. With our current approach, we would make network requests one at a time, which is needlessly slow since most JavaScript runtimes support concurrent network requests.
 
-### 1.2 Constructing Promises Synchronously
+### Constructing Promises Synchronously
 
 It's more efficient to construct all of the Promises ahead of time (synchronously) and _then_ await them. That way, if the Promise executor functions make network requests, those can be handled concurrently by the runtime. Like this:
 
@@ -172,7 +218,7 @@ This time around, if `doTask` makes a network request, the browser can make mult
 
 There's just one problem...
 
-### 1.3 `UnhandledPromiseRejection`
+### `UnhandledPromiseRejection`
 
 So far, we've only considered the "happy path" where all of the Promises fulfill. Now, let's update the code to force Promise C to reject so we can see what happens:
 
@@ -195,7 +241,55 @@ try {
 }
 ```
 
-If you run this code, you'll get an `UnhandledPromiseRejection` error after one second, immediately after Promise C rejects:
+{% codeDemo "Demo of unhandled promise rejection errors in JavaScript" %}
+```html
+<button>Test rejection handling</button>
+```
+```css
+button {
+  padding: 8px;
+}
+```
+```js
+function sleep(durationMs) {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(), durationMs);
+  });
+}
+  async function doTask(task) {
+  await sleep(task.durationMs);
+  if (task.fulfills) {
+    console.log(`Promise ${task.id}: fulfilled ✅`);
+    return Promise.resolve();
+  }
+  console.log(`Promise ${task.id}: rejected ❌`);
+  return Promise.reject();
+}
+async function run() {
+  console.log('Starting tasks...');
+  const tasks = [
+  { id: 'A', durationMs: 2000, fulfills: true },
+  { id: 'B', durationMs: 3000, fulfills: true },
+  // Promise C rejects ❌
+  { id: 'C', durationMs: 1000, fulfills: false },
+];
+
+try {
+  const promises = tasks.map((task) => doTask(task));
+  for (const promise of promises) {
+    await promise;
+  }
+  console.log('success');
+} catch (e) {
+  console.log('failure');
+}
+}
+
+document.querySelector('button').addEventListener('click', run);
+```
+{% endcodeDemo %}
+
+If you run this code, you'll get an `UnhandledPromiseRejection` error when Promise C rejects. In Node.js, the stack trace for the error provides more context:
 
 ```
 Promise C: rejected ❌
@@ -208,7 +302,7 @@ node:internal/process/promises:288
 }
 ```
 
-This might confuse you at first, especially since we wrapped all of the code in a `try-catch` block. Part of why the problem is so hard to spot is because `async`/`await` hides what's really going on under the hood, which is effectively this:
+This might confuse you at first since we wrapped all of the code in a `try-catch` block, and the `catch` block did execute because we saw the string `"failure"` logged to the console at the very end. Part of why the problem is so hard to spot is because `async`/`await` hides what's really going on under the hood, which is effectively this:
 
 ```js
 const promises = tasks.map((task) => doTask(task));
@@ -217,10 +311,12 @@ let sequence = Promise.resolve();
 for (const promise of promises) {
   sequence = sequence.then(() => promise);
 }
-sequence.then(() => console.log('success')).catch(() => console.log('failure'));
+sequence
+  .then(() => console.log('success'))
+  .catch(() => console.log('failure'));
 ```
 
-Notice how the individual Promises never have `.catch` handlers attached to them in this de-sugared version, so individual rejections will go uncaught.
+Notice how the individual Promises never have `.catch` handlers attached to them in this de-sugared version, so individual rejections will go uncaught. The overall promise rejection will get handled correctly, but individual ones won't.
 
 There are two ways to fix this problem:
 
@@ -256,11 +352,11 @@ While this refactor fixes the unhandled rejection, it also introduces a major pr
 
 On the one hand, because we're no longer awaiting the Promises one at a time like we were with the `for-of` loop, the Promise callbacks can now run in a first-come first-served basis in [the event loop's microtask queue](https://www.youtube.com/watch?v=cCOL7MC4Pl0&vl=en). So while we do construct the Promise objects in order—first A, then B, and finally C—we don't need to _await_ the Promises in that same order. Thus, the callback for C will queue up first in the event loop because it's the fastest, followed by the callbacks for A and B.
 
-Unfortunately, this code is also not what we want. While it's faster than what we started with and doesn't throw any `UnhandledPromiseRejection` errors because we're now correctly catching individual Promise rejections, it doesn't actually wait for all of the Promises to settle before it runs any code that comes after the `forEach` loop. We want to await _all_ of the Promises before we do anything else, but we can't do that with this code unless we refactor it even more. Don't get me wrong: It's doable, and we'll look at how it's done in the bonus section on [implementing `Promise.all` from scratch](#3-bonus-implementing-promiseall), but it's not something you want to do by hand.
+Unfortunately, this code is also not what we want. While it's faster than what we started with and doesn't throw any `UnhandledPromiseRejection` errors because we're now correctly catching individual Promise rejections, it doesn't actually wait for all of the Promises to settle before it runs any code that comes after the `forEach` loop. We want to await _all_ of the Promises before we do anything else, but we can't do that with this code unless we refactor it even more. Don't get me wrong: It's doable, and we'll look at how it's done in the bonus section on [implementing `Promise.all` from scratch](#bonus-implementing-promiseall), but it's not something you want to do by hand.
 
 At this point, we're ready to learn how `Promise.all` solves all of these problems.
 
-## 2. Solution: `Promise.all`
+## Solution: `Promise.all`
 
 [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) takes an iterable of Promises and returns a new outer Promise that fulfills once all of the individual Promises have fulfilled and rejects as soon as a single Promise rejects. Moreover, if `Promise.all` fulfills, [it does so with an array of all individual fulfilled values](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all#fulfillment).
 
@@ -273,7 +369,7 @@ try {
 }
 ```
 
-Like our custom approach in [1.2 Constructing Promises Synchronously](#12-constructing-promises-synchronously), `Promise.all` is faster than awaiting Promises one at a time since the Promises have already been constructed by the time `Promise.all` is invoked:
+Like our custom approach in [Constructing Promises Synchronously](#constructing-promises-synchronously), `Promise.all` is faster than awaiting Promises one at a time since the Promises have already been constructed by the time `Promise.all` is invoked:
 
 ```javascript {data-copyable=true}
 const tasks = [
@@ -290,15 +386,61 @@ try {
 }
 ```
 
-If the Promise executor function for `doTask` initiates a network request, we could see a substantial boost in performance because those network requests would be performed concurrently by the browser as soon as the Promises are constructed. By contrast, in our very first `for-of` loop approach, we'd have to make one network request at a time, in each iteration of the loop. If the first request takes forever to settle, then future Promises wouldn't be created for potentially a very long time.
+{% codeDemo "Demo of awaiting multiple promises with promise.all" %}
+```html
+<button>Start tasks (with Promise.all)</button>
+```
+```css
+button {
+  padding: 8px;
+}
+```
+```js
+function sleep(durationMs) {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(), durationMs);
+  });
+}
+  async function doTask(task) {
+  await sleep(task.durationMs);
+  if (task.fulfills) {
+    console.log(`Promise ${task.id}: fulfilled ✅`);
+    return Promise.resolve();
+  }
+  console.log(`Promise ${task.id}: rejected ❌`);
+  return Promise.reject();
+}
+async function run() {
+  console.log('Starting tasks...');
+const tasks = [
+  { id: 'A', durationMs: 2000, fulfills: true },
+  { id: 'B', durationMs: 3000, fulfills: true },
+  { id: 'C', durationMs: 1000, fulfills: true },
+];
+try {
+  const promises = tasks.map((task) => doTask(task));
+  await Promise.all(promises);
+  console.log('Promise.all fulfilled');
+} catch (e) {
+  console.log('Promise.all rejected');
+}
+}
+
+document.querySelector('button').addEventListener('click', run);
+```
+{% endcodeDemo %}
+
+If you compare this to output of the very first demo, the difference is substantial: Whereas before we had to wait six seconds for all the tasks to finish because we were constructing and awaiting the Promises one at a time, we are now only waiting at most three seconds total (give or take) because the Promise objects are all constructed synchronously and allowed to settle on a first-come, first-served basis.
+
+Imagine if the Promise executor function for `doTask` initiates a network request. We could see a big boost in performance because those network requests would start concurrently by the browser as soon as the Promises are constructed. By contrast, in our very first `for-of` loop approach, we'd have to make one network request at a time, in each iteration of the loop. If the first request takes a long time to settle, then the construction of future Promises will be needlessly delayed.
 
 {% aside %}
 However, don't mistake `Promise.all` for true parallelism; the Promise _callbacks_ will still queue up one at a time in the event loop and never run simultaneously. Queues always pop one item at a time, and the event loop only ever runs one thing at a time.
 {% endaside %}
 
-Unlike the code we wrote by hand earlier, the `Promise.all` version won't throw an `UnhandledPromiseRejection` error. That's because `Promise.all` internally does what we did before by hand: It loops over the Promise objects synchronously and attaches `.then` and `.catch` callbacks to each one. If any individual Promise rejects, it rejects the outer Promise. Only once all of the Promises have fulfilled will it fulfill the outer Promise. (We'll look at how this is implemented [in a future section](#3-bonus-implementing-promiseall)).
+Unlike the code we wrote by hand earlier, the `Promise.all` version won't throw an unhandled promise error. That's because `Promise.all` internally does what we did before by hand: It loops over the Promise objects synchronously and attaches `.then` and `.catch` callbacks to each one. If any individual Promise rejects, it rejects the outer Promise. Only once all of the Promises have fulfilled will it fulfill the outer Promise. (We'll look at how this is implemented [in a future section](#bonus-implementing-promiseall)).
 
-### 2.1 Fail-Fast Promise Rejection
+### Fail-Fast Promise Rejection
 
 Consider again the case where Promise C rejects:
 
@@ -316,7 +458,51 @@ try {
 }
 ```
 
-If we run this code, we'll get the following output:
+{% codeDemo "Demo of awaiting multiple promises with promise.all, but one of them rejects" %}
+```html
+<button>Test fail-fast rejection</button>
+```
+```css
+button {
+  padding: 8px;
+}
+```
+```js
+function sleep(durationMs) {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(), durationMs);
+  });
+}
+  async function doTask(task) {
+  await sleep(task.durationMs);
+  if (task.fulfills) {
+    console.log(`Promise ${task.id}: fulfilled ✅`);
+    return Promise.resolve();
+  }
+  console.log(`Promise ${task.id}: rejected ❌`);
+  return Promise.reject();
+}
+async function run() {
+  console.log('Starting tasks...');
+const tasks = [
+  { id: 'A', durationMs: 2000, fulfills: true },
+  { id: 'B', durationMs: 3000, fulfills: true },
+  { id: 'C', durationMs: 1000, fulfills: false },
+];
+try {
+  const promises = tasks.map((task) => doTask(task));
+  await Promise.all(promises);
+  console.log('Promise.all fulfilled');
+} catch (e) {
+  console.log('Promise.all rejected');
+}
+}
+
+document.querySelector('button').addEventListener('click', run);
+```
+{% endcodeDemo %}
+
+If you run this code, you'll get the following output:
 
 ```
 Promise C: rejected ❌
@@ -325,9 +511,9 @@ Promise A: fulfilled ✅
 Promise B: fulfilled ✅
 ```
 
-First, notice that Promise C rejects early because we aren't waiting for other Promises to settle before we construct and await it. But more importantly, `Promise.all` rejects immediately after Promise C rejects, per the specification. This is great because it means we don't have to wait for the remaining Promises to settle—we can immediately begin handling the error case as soon as a single Promise rejects. This behavior is known as <dfn>fail-fast</dfn>.
+First, notice that Promise C rejects early because we aren't waiting for other Promises to settle before we construct and await it. But more importantly, `Promise.all` rejects immediately after Promise C rejects, and there are no uncaught rejections. This is great because it means we don't have to wait for the remaining Promises to settle—we can immediately begin handling the error case as soon as a single Promise rejects. This behavior is known as <dfn>fail-fast</dfn>; it solves the problem I alluded to in the intro, where you don't want to keep a user waiting if just one task in a pipeline fails.
 
-#### `Promise.all` Doesn't Cancel Pending Promises
+### `Promise.all` Doesn't Cancel Pending Promises
 
 It may surprise you that Promises A and B still fulfilled after `Promise.all` rejected:
 
@@ -337,11 +523,11 @@ Promise A: fulfilled ✅
 Promise B: fulfilled ✅
 ```
 
-This is working as expected because `Promise.all` doesn't _cancel_ the remaining pending Promises as soon as it rejects. Thus, the remaining Promise callbacks still get queued in the event loop and run when it's their turn. So even though `Promise.all` rejected after Promise C rejected, Promises A and B still got a chance to settle. It's just that we didn't have to _wait_ for those other Promises to settle before we rejected the outer Promise, allowing us to handle a rejection sooner.
+This is working as expected because `Promise.all` doesn't _cancel_ the remaining Promise callbacks when it rejects. Thus, the remaining Promise callbacks still get queued in the event loop and run when it's their turn. So even though `Promise.all` rejected after Promise C rejected, Promises A and B still got a chance to settle. It's just that we didn't have to _wait_ for those other Promises to settle before we rejected the outer Promise, allowing us to handle rejections as early as possible.
 
 What would happen if Promises A or B were to also reject after `Promise.all` rejected? Technically, they would just reject `Promise.all`'s already-rejected Promise. And rejecting a settled Promise doesn't do anything.
 
-## 3. Bonus: Implementing `Promise.all`
+## Implementing `Promise.all`
 
 We learned what `Promise.all` is and how to use it, but how does it work under the hood? Let's try implementing our own `Promise.all` as an exercise by putting together everything we've learned so far.
 

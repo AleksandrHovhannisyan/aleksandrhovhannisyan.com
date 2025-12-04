@@ -87,6 +87,9 @@ button {
     padding: 0.25rem;
     padding-inline-end: 0.5rem;
 }
+#output .error {
+    color: #c10000;
+}
 #output time {
     flex-shrink: 0;
     font-variant-numeric: tabular-nums;
@@ -100,12 +103,13 @@ const consoleJS = `
     const outputScrollContainer = outputRoot.querySelector('[tabindex]');
     const clearButton = outputRoot.querySelector('#clear-button');
 
-    console.log = (...args) => {
+    const makeLogger = (level) => (...args) => {
       const li = document.createElement('li');
       const time = document.createElement('time');
       const now = new Date();
       time.setAttribute('datetime', now.toISOString());
       time.innerHTML = Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric' }).format(now);
+      if (level) { li.classList.add(level); }
       li.append([...args].map((arg) => {
         const isUndefined = typeof arg === 'undefined';
         return isUndefined ? 'undefined' : JSON.stringify(arg);
@@ -115,9 +119,16 @@ const consoleJS = `
       outputScrollContainer.scrollBy({ top: outputScrollContainer.scrollHeight });
     };
 
+    console.log = makeLogger();
+    console.error = makeLogger("error");
+
     outputRoot.addEventListener('click', (e) => {
         e.stopPropagation();
     });
+
+    window.addEventListener("unhandledrejection", (event) => {
+        console.error('Uncaught (in promise) ' + event.reason);
+    }, { capture: true });
 
     // Use capturing listener to preempt any other capturing listeners in the code demo itself
     window.addEventListener('click', (e) => {
