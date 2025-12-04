@@ -2,7 +2,7 @@
 title: Add Comments to a Dev Blog with Netlify Functions and the GitHub API
 description: Comment systems can be a pain to set up, but they don't have to be. Learn how to use the GitHub Issues API to create a custom comment system powered by Netlify functions.
 keywords: [comment system, comments, github api, netlify functions]
-categories: [netlify, github, node]
+categories: [netlify, github, nodejs]
 thumbnail: https://images.unsplash.com/photo-1512626120412-faf41adb4874?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 commentsId: 117
 lastUpdated: 2024-08-15

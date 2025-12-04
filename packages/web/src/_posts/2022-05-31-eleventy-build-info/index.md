@@ -2,7 +2,7 @@
 title: Add Build Info to an 11ty Site
 description: Expose useful information about your Eleventy build to all of your templates using global data.
 keywords: [11ty, 11ty build]
-categories: [11ty, node, git]
+categories: [11ty, nodejs, git]
 lastUpdated: 2022-07-21
 ---
 

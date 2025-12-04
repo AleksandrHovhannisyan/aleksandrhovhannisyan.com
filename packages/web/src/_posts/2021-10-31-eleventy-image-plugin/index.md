@@ -2,7 +2,7 @@
 title: Optimizing Images with the 11ty Image Plugin
 description: While imagery can enrich your content, it can also slow down your site if it's not used responsibly. Learn how to use the official 11ty image plugin to create optimized and responsive images.
 keywords: [11ty image, 11ty image plugin]
-categories: [webperf, 11ty, images, node]
+categories: [webperf, 11ty, images, nodejs]
 commentsId: 118
 lastUpdated: 2024-09-03
 redirectFrom:

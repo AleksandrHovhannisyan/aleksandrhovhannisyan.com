@@ -2,7 +2,7 @@
 title: Cache-Busting Assets in Eleventy
 description: Generate a sourcemap and add it to Eleventy's global data.
 keywords: [eleventy, cache bust]
-categories: [note, 11ty, node]
+categories: [note, 11ty, nodejs]
 ---
 
 In Eleventy, you're probably referencing assets like this in your templates:
