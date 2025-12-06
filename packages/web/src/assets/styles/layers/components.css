@@ -319,17 +319,31 @@
   .project {
     --caption-padding: 1ch;
     position: relative;
-    gap: 0;
     border: solid 1px var(--color-border-0);
-    padding-block-end: calc(1lh + 2 * var(--caption-padding));
     font-size: var(--size-font-xs);
+    isolation: isolate;
+    display: grid;
+    gap: 0;
+
+    /* Use grid overlays instead of absolute positioning for img and figcaption so figcaption > .card-link anchors 
+    itself relative to the outer .project rather than to the immediate figcaption parent */
+    & > * {
+      grid-area: 1 / -1;
+    }
 
     &:focus-within {
       outline: solid 3px var(--color-accent-0);
       outline-offset: 3px;
     }
 
+    & picture {
+      /* At a minimum, reserve one line's worth of space + padding for caption. It's okay if the caption is longer than 1 line,
+      we just care about the baseline minimum for consistency on all the cards. */
+      margin-block-end: calc(1lh + 2 * var(--caption-padding) - 1px);
+    }
+
     & img {
+      min-height: 150px;
       aspect-ratio: 16/9;
       object-fit: cover;
       object-position: center;
@@ -345,10 +359,10 @@
       padding: var(--caption-padding);
       margin: 0;
       color: white;
-      position: absolute;
-      inset-inline-start: 0;
-      inset-block-end: 0;
-      inline-size: 100%;
+      height: fit-content;
+      margin-block-start: auto;
+      /* CSS filter on img creates new stacking context, so bump caption */
+      z-index: 1;
     }
 
     & figcaption a {
