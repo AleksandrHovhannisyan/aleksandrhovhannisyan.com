@@ -12,6 +12,7 @@
     & a {
       color: inherit;
       text-decoration-line: none;
+      padding-block: var(--size-spacing--3);
     }
 
     & a[href='/'] {
@@ -22,10 +23,6 @@
 
     & a[href='#main-content'] {
       background-color: var(--color-surface-0);
-    }
-
-    & :is(a, .label) {
-      padding-block: var(--size-spacing--3);
     }
 
     & .label {

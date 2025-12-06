@@ -85,6 +85,7 @@
     & label {
       display: block;
       font-weight: unset;
+      padding-block: var(--size-spacing--4);
     }
   }
 
@@ -325,7 +326,7 @@
     display: grid;
     gap: 0;
 
-    /* Use grid overlays instead of absolute positioning for img and figcaption so figcaption > .card-link anchors 
+    /* Use grid overlays instead of absolute positioning for img and figcaption so figcaption > .card-link anchors
     itself relative to the outer .project rather than to the immediate figcaption parent */
     & > * {
       grid-area: 1 / -1;
