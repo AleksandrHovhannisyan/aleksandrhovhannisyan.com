@@ -1,39 +1,44 @@
 {
   "guitarCovers": [
     {
+      "id": "27Rz6OyT6qk",
+      "name": "WASTE",
+      "artist": "Kxllswxtch"
+    },
+    {
       "id": "SBY1oe81YbU",
       "name": "Hollywood Forever Cemetery Sings",
-      "author": "Father John Misty"
+      "artist": "Father John Misty"
     },
     {
       "id": "cyK25XIEDLc",
       "name": "Past Won't Leave My Bed",
-      "author": "Joji"
+      "artist": "Joji"
     },
     {
       "id": "MGBhqv9VePs",
       "name": "Wild Time",
-      "author": "Weyes Blood"
+      "artist": "Weyes Blood"
     },
     {
       "id": "DOCRSqz7Bjc",
       "name": "Exit Music (For a Film)",
-      "author": "Radiohead"
+      "artist": "Radiohead"
     },
     {
       "id": "XF1buO8xsUk",
       "name": "Pyramid Song",
-      "author": "Radiohead"
+      "artist": "Radiohead"
     },
     {
       "id": "vVTzNm8NVzQ",
       "name": "Fake Plastic Trees",
-      "author": "Radiohead"
+      "artist": "Radiohead"
     },
     {
       "id": "WWkUx5pCCp8",
       "name": "How to Disappear Completely",
-      "author": "Radiohead"
+      "artist": "Radiohead"
     }
   ]
 }
