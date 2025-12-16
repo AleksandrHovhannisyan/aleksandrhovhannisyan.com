@@ -1,5 +1,8 @@
+// @ts-expect-error no types
 import PluginFootnotes from 'eleventy-plugin-footnotes';
+// @ts-expect-error no types, TODO: add types since this is my package
 import { EleventyPluginCodeDemo } from 'eleventy-plugin-code-demo';
+// @ts-expect-error no types
 import { eleventyImageTransformPlugin } from '@11ty/eleventy-img';
 import {
   asideShortcode,
@@ -11,7 +14,7 @@ import {
   nanoIdShortcode,
   detailsShortcode,
   fetchTextShortcode,
-} from './lib/shortcodes/index.js';
+} from './lib/shortcodes/index.ts';
 import {
   limit,
   sortByKey,
@@ -28,16 +31,26 @@ import {
   pathJoin,
   toSmartQuotes,
   getAssetOutputPath,
-} from './lib/filters.js';
-import { getAllPosts, getAllUniqueCategories, getPostsByCategory } from './lib/collections.js';
-import { markdown } from './lib/plugins/markdown.js';
-import { codeDemoOptions } from './lib/plugins/codeDemo.js';
-import { escape, slugifyString } from './lib/utils/string.js';
-import { buildAssets } from './build.js';
+} from './lib/filters.ts';
+import { getAllPosts, getAllUniqueCategories, getPostsByCategory } from './lib/collections.ts';
+import { markdown } from './lib/plugins/markdown.ts';
+import { codeDemoOptions } from './lib/plugins/codeDemo.ts';
+import { escape, slugifyString } from './lib/utils/string.ts';
+import { buildAssets } from './build.ts';
+import { realpath } from 'node:fs/promises';
 
 const TEMPLATE_ENGINE = 'liquid';
 
+// @ts-expect-error TODO: add typings for eleventy
 export default function eleventy(eleventyConfig) {
+  eleventyConfig.addDataExtension('ts', {
+    read: false,
+    parser: async (filepath: string): Promise<unknown> => {
+      const real = await realpath(filepath);
+      return ((await import(real)) as { default: unknown }).default;
+    },
+  });
+
   // Global data
   eleventyConfig.addGlobalData('sourceMap', async () => {
     const assetSourceMap = await buildAssets();
@@ -129,7 +142,7 @@ export default function eleventy(eleventyConfig) {
     },
     title: 'Footnotes',
     titleId: 'footnotes-label',
-    backLinkLabel: (footnote, index) => `Back to reference ${index + 1}`,
+    backLinkLabel: (_footnote: string, index: number) => `Back to reference ${index + 1}`,
   });
   eleventyConfig.addPlugin(EleventyPluginCodeDemo, codeDemoOptions);
   eleventyConfig.setLibrary('md', markdown);

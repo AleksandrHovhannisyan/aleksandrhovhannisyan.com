@@ -1,6 +1,6 @@
-import { markdown } from '../plugins/markdown.js';
+import { markdown } from '../plugins/markdown.ts';
 
-export default function details(children, summary, open = false) {
+export default function details(children: string, summary: string, open = false) {
   if (!children) {
     throw new Error('You must provide a non-empty string for the children prop.');
   }

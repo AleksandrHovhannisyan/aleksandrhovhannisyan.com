@@ -1,7 +1,7 @@
-import { markdown } from '../plugins/markdown.js';
+import { markdown } from '../plugins/markdown.ts';
 
 /** Renders a blockquote with a <dfn> and a corresponding definition */
-export default function definition(children, term) {
+export default function definition(children: string, term: string) {
   if (!children) {
     throw new Error('You must provide a non-empty definition.');
   }

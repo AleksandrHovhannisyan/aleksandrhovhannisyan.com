@@ -1,4 +1,4 @@
-export default function artworkShortcode(content, id, description) {
+export default function artworkShortcode(content: string, id: string, description: string) {
   if (!id) {
     throw new Error(`Artwork is missing an id.`);
   }

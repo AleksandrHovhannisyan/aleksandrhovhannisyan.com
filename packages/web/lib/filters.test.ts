@@ -1,6 +1,6 @@
 import { it, describe } from 'node:test';
 import assert from 'node:assert/strict';
-import { where, limit, sortByKey, getLatestCollectionItemDate, toSmartQuotes } from './filters.js';
+import { where, limit, sortByKey, getLatestCollectionItemDate, toSmartQuotes } from './filters.ts';
 
 describe('custom 11ty filters', () => {
   describe('limit', () => {
@@ -55,7 +55,7 @@ describe('custom 11ty filters', () => {
         { data: { title: 'B', order: 2 } },
         { data: { title: 'C', order: 1 } },
       ];
-      assert.throws(() => sortByKey(posts, 'data.order', 'ABC'));
+      assert.throws(() => sortByKey(posts, 'data.order', 'ABC' as unknown as 'ASC' | 'DESC'));
     });
   });
   describe('where', () => {

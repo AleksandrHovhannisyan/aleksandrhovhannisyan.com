@@ -1,15 +1,17 @@
-import { slugifyString } from './utils/string.js';
+import type { BlogPostFrontMatter } from '../src/_posts/_posts.11tydata.ts';
+import { slugifyString } from './utils/string.ts';
+
+type PostCollectionEntry = { data: BlogPostFrontMatter };
 
 /** Returns all blog posts as a collection. */
-export function getAllPosts(collection) {
-  const posts = collection.getFilteredByGlob('src/_posts/**/*.md');
+export function getAllPosts(collection): PostCollectionEntry[] {
+  const posts = collection.getFilteredByGlob('src/_posts/**/*.md') as PostCollectionEntry[];
   return posts.reverse().filter((post) => !post.data.isArchived);
 }
 
 /** Given a category name, returns the root-relative URL to that category's page.
- * @param {string} category
  */
-function getCategoryHref(category) {
+function getCategoryHref(category: string) {
   if (category === 'note') {
     return `/notes/`;
   }
@@ -19,14 +21,12 @@ function getCategoryHref(category) {
 /** Returns all unique categories as a collection.
  * NOTE: I'm calling these "categories" to distinguish them from 11ty's built-in "tags." However,
  * these are still referred to as tags in the UI since that's what's most common.
- * @returns {({ name: string; href: string; count: string })[]}
  */
-export function getAllUniqueCategories(collection) {
+export function getAllUniqueCategories(collection): { name: string; href: string; count: number }[] {
   const allPosts = getAllPosts(collection);
 
-  /** @type {Map<string, number>} */
-  const categoryCounts = allPosts.reduce((categoryCounts, post) => {
-    post.data.categories?.forEach((category) => {
+  const categoryCounts: Map<string, number> = allPosts.reduce((categoryCounts: Map<string, number>, post) => {
+    post.data.categories?.forEach((category: string) => {
       const count = categoryCounts.get(category) ?? 0;
       categoryCounts.set(category, count + 1);
     });

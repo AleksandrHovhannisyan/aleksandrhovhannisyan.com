@@ -1,29 +1,35 @@
 import esbuild from 'esbuild';
 import path from 'node:path';
-import { markdown } from './plugins/markdown.js';
-import site from '../src/_data/site.js';
+import { markdown } from './plugins/markdown.ts';
+import site from '../src/_data/site.ts';
 import Image from '@11ty/eleventy-img';
-import { get, memoize, withoutBaseDirectory } from './utils/index.js';
+import { get, memoize, withoutBaseDirectory } from './utils/index.ts';
+import type { FrontMatter } from './schema.ts';
 
 /** Returns the first `limit` elements of the the given array. */
-export const limit = (array, limit) => {
+export const limit = (array: unknown[], limit: number) => {
   if (limit < 0) {
     throw new Error(`Negative limits are not allowed: ${limit}.`);
   }
   return array.slice(0, limit);
 };
 
-/** Sorts the given array of objects by a string denoting chained key paths.
- * @param {unknown[]} arrayOfObjects
- * @param {string} keyPath
- * @param {'ASC'|'DESC'} [order]
- */
-export const sortByKey = (arrayOfObjects, keyPath, order = 'ASC') => {
+/** Sorts the given array of objects by a string denoting chained key paths. */
+export const sortByKey = (
+  arrayOfObjects: Record<string, unknown>[],
+  keyPath: string,
+  order: 'ASC' | 'DESC' = 'ASC'
+) => {
   const sorted = arrayOfObjects.sort((obj1, obj2) => {
     const val1 = get(obj1, keyPath);
     const val2 = get(obj2, keyPath);
-    const isString = typeof val1 === 'string' && typeof val2 === 'string';
-    return isString ? val1.localeCompare(val2) : val1 - val2;
+    if (typeof val1 === 'string' && typeof val2 === 'string') {
+      return val1.localeCompare(val2);
+    }
+    if (typeof val1 === 'number' && typeof val2 === 'number') {
+      return val1 - val2;
+    }
+    throw new Error(`Unexpected error while sorting by "${keyPath}": ${typeof val1}, ${typeof val2}`);
   });
   if (order === 'ASC') return sorted;
   if (order === 'DESC') return sorted.reverse();
@@ -31,17 +37,14 @@ export const sortByKey = (arrayOfObjects, keyPath, order = 'ASC') => {
 };
 
 /** Returns all entries from the given array that match the specified key:value pair. */
-export const where = (arrayOfObjects, keyPath, value) =>
+export const where = (arrayOfObjects: Record<string, unknown>[], keyPath: string, value: unknown) =>
   arrayOfObjects.filter((object) => get(object, keyPath) === value);
 
 /** Converts the given markdown string to HTML, returning it as a string. */
-export const toHtml = (markdownString) => markdown.renderInline(markdownString);
+export const toHtml = (markdownString: string) => markdown.renderInline(markdownString);
 
-/** Formats the given relative url as an absolute url.
- * @param {string} url
- * @param {string} [baseUrl]
- */
-export const toAbsoluteUrl = (url, baseUrl = site.url) => new URL(url, baseUrl).href;
+/** Formats the given relative url as an absolute url. */
+export const toAbsoluteUrl = (url: string, baseUrl: string = site.url) => new URL(url, baseUrl).href;
 
 /** Given a local or remote image source, returns the absolute URL to the image that will eventually get generated once the site is built. */
 export const toAbsoluteImageUrl = async ({ src, outputDir = 'dist/assets/images', width = null }) => {
@@ -58,19 +61,13 @@ export const toAbsoluteImageUrl = async ({ src, outputDir = 'dist/assets/images'
   return toAbsoluteUrl(Object.values(stats)[0][0].url);
 };
 
-/** Converts the given date string to ISO8601/RFC-3339 format.
- * @param {Date|string} date
- */
-export const toISOString = (date) => new Date(date).toISOString();
+/** Converts the given date string to ISO8601/RFC-3339 format. */
+export const toISOString = (date: Date | string) => new Date(date).toISOString();
 
 function makeDateFormatter() {
   const mmmmDDYYYY = Intl.DateTimeFormat(site.lang, { month: 'long', day: '2-digit', year: 'numeric' });
 
-  /**
-   * @param {Date|string} dateLike
-   * @param {'YYYY-MM-DD'|'MMMM DD, YYYY'} format
-   */
-  return function formatDate(dateLike, format) {
+  return function formatDate(dateLike: Date | string, format: 'YYYY-MM-DD' | 'MMMM DD, YYYY') {
     const date = new Date(dateLike);
     switch (format) {
       case 'YYYY-MM-DD': {
@@ -89,15 +86,15 @@ function makeDateFormatter() {
 export const formatDate = makeDateFormatter();
 
 /**
- * @param {*} collection - an array of collection items that are assumed to have either data.lastUpdated or a date property
+ * @param collection an array of collection items that are assumed to have either data.lastUpdated or a date property
  * @returns the most recent date of update or publication among the given collection items, or undefined if the array is empty.
  */
-export const getLatestCollectionItemDate = (collection) => {
+export const getLatestCollectionItemDate = (collection: Partial<FrontMatter & { data: Partial<FrontMatter> }>[]) => {
   const itemsSortedByLatestDate = collection
     .filter((item) => !!item.data?.lastUpdated || !!item.date)
     .sort((item1, item2) => {
-      const date1 = new Date(item1.data?.lastUpdated ?? item1.date);
-      const date2 = new Date(item2.data?.lastUpdated ?? item2.date);
+      const date1 = +new Date(item1.data?.lastUpdated ?? item1.date);
+      const date2 = +new Date(item2.data?.lastUpdated ?? item2.date);
       return date2 - date1;
     });
   const latestItem = itemsSortedByLatestDate[0];
@@ -105,33 +102,30 @@ export const getLatestCollectionItemDate = (collection) => {
 };
 
 /** Minifies the given css string. */
-export const minifyCSS = memoize(async (input) => {
+export const minifyCSS = memoize(async (input: string) => {
   const { code } = await esbuild.transform(input, { loader: 'css', minify: true });
   return code;
 });
 
 /** Minifies the given source JS (string). */
-export const minifyJS = memoize(async (js) => {
+export const minifyJS = memoize(async (js: string) => {
   const { code } = await esbuild.transform(js, { minify: true });
   return code;
 });
 
 /**
  * Returns the file name or directory name of a path.
- * @param {string} srcPath The source path to parse.
- * @param {'name' | 'dir'} key A lookup key to get either the name or directory of the parsed path.
- * @returns
+ * @param srcPath The source path to parse.
+ * @param key A lookup key to get either the name or directory of the parsed path.
  */
-export const pathParse = (srcPath, key) => path.parse(srcPath)[key];
+export const pathParse = (srcPath: string, key: 'name' | 'dir') => path.parse(srcPath)[key];
 
-export const pathJoin = (...paths) => path.join(...paths);
+export const pathJoin = (...paths: string[]) => path.join(...paths);
 
 /**
  * Converts all straight double and single quotes to smart (curly) quotes.
- * @param {string} text
- * @return {string}
  */
-export const toSmartQuotes = (text) => {
+export const toSmartQuotes = (text: string): string => {
   return (
     text
       // Smart opening and closing double quotes
@@ -145,10 +139,10 @@ export const toSmartQuotes = (text) => {
 
 /**
  * Given an input path for an asset (like CSS or JS), returns the output file path (with hash in production).
- * @param {string} inputPath A path relative to the root of this package, e.g. `src/assets/scripts/script.ts`.
- * @returns {string} A path relative to the root of the dist folder, e.g. `/assets/scripts/script.js`.
+ * @param inputPath A path relative to the root of this package, e.g. `src/assets/scripts/script.ts`.
+ * @returns A path relative to the root of the dist folder, e.g. `/assets/scripts/script.js`.
  */
-export function getAssetOutputPath(inputPath) {
+export function getAssetOutputPath(inputPath: string): string {
   if (inputPath.startsWith('http')) {
     return inputPath;
   }

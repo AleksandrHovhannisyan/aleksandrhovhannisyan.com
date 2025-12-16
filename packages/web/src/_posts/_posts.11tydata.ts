@@ -1,8 +1,14 @@
 import * as v from 'valibot';
 import path from 'node:path';
 import crypto from 'node:crypto';
-import { toAbsoluteImageUrl } from '../../lib/filters.js';
-import { FrontMatter, makeSchemaValidator, NON_EMPTY_ARRAY, NON_EMPTY_STRING } from '../../lib/schema.js';
+import { toAbsoluteImageUrl } from '../../lib/filters.ts';
+import {
+  FrontMatter,
+  makeSchemaValidator,
+  NON_EMPTY_ARRAY,
+  NON_EMPTY_STRING,
+  type EleventyPageData,
+} from '../../lib/schema.ts';
 
 const isProduction = process.env.ELEVENTY_ENV === 'production';
 
@@ -45,24 +51,14 @@ const BlogPostFrontMatter = v.object({
   isArchived: v.optional(v.boolean()),
 });
 
-/**
- * @typedef {v.InferInput<typeof BlogPostFrontMatter>} BlogPostFrontMatter
- */
+export type BlogPostFrontMatter = v.InferInput<typeof BlogPostFrontMatter>;
 
-/**l
- * @typedef {BlogPostFrontMatter & import('../../lib/schema.js').EleventyPageData} BlogPageData
- */
+export type BlogPageData = EleventyPageData & BlogPostFrontMatter;
 
-/**
- * @type {Partial<BlogPostFrontMatter>}
- */
-const data = {
+const data: Partial<BlogPostFrontMatter> = {
   eleventyDataSchema: makeSchemaValidator(BlogPostFrontMatter),
   layout: 'post',
-  /**
-   * @param {BlogPageData} data
-   */
-  permalink: (data) => {
+  permalink: (data: BlogPageData) => {
     // Ignore/hide drafts on prod
     if (data?.isDraft && isProduction) {
       return false;
@@ -73,19 +69,13 @@ const data = {
     return `/blog/${data?.page?.fileSlug}/`;
   },
   eleventyComputed: {
-    /**
-     * @param {BlogPageData} data
-     */
-    id: (data) => {
+    id: (data: BlogPageData) => {
       const source = `${data.page.fileSlug}${data.page.rawInput}`;
       return crypto.createHash('sha256').update(source).digest('hex');
     },
     // Ignore/hide drafts on prod
-    eleventyExcludeFromCollections: (data) => !!data.isDraft && isProduction,
-    /**
-     * @param {BlogPageData} data
-     */
-    scripts: (data) => {
+    eleventyExcludeFromCollections: (data: BlogPageData) => !!data.isDraft && isProduction,
+    scripts: (data: BlogPageData) => {
       const scripts = [
         ...data.scripts,
         {
@@ -99,10 +89,7 @@ const data = {
       }
       return scripts;
     },
-    /**
-     * @param {BlogPageData} data
-     */
-    openGraph: async (data) => {
+    openGraph: async (data: BlogPageData) => {
       const getImage = () => {
         // TODO: add a fallback social preview image
         if (!data.thumbnail || !data.page?.url) {

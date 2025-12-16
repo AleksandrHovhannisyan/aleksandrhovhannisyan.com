@@ -9,7 +9,9 @@
     "allowJs": true,
     "moduleDetection": "force",
     "isolatedModules": true,
-    "verbatimModuleSyntax": true
+    "verbatimModuleSyntax": true,
+    "types": ["node"],
+    "allowImportingTsExtensions": true
   },
   "exclude": ["dist", "node_modules"]
 }

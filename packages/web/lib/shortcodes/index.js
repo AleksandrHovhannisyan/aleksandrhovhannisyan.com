@@ -1,9 +1,0 @@
-export { default as asideShortcode } from './aside.js';
-export { default as definitionShortcode } from './definition.js';
-export { default as quoteShortcode } from './quote.js';
-export { default as iconShortcode } from './icon.js';
-export { default as faviconShortcode } from './favicon.js';
-export { default as artworkShortcode } from './artwork.js';
-export { default as nanoIdShortcode } from './nanoid.js';
-export { default as detailsShortcode } from './details.js';
-export { default as fetchTextShortcode } from './fetchText.js';

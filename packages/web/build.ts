@@ -8,9 +8,8 @@ const isProductionBuild = process.env.ELEVENTY_ENV === 'production';
 
 /**
  * Builds all assets for the site and returns a mapping from `src/` path to `dist/` path for each asset.
- * @returns {Promise<Record<string, string>>}
  */
-export async function buildAssets() {
+export async function buildAssets(): Promise<Record<string, string>> {
   const result = await esbuild.build({
     entryPoints: [
       // styles

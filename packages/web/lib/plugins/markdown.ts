@@ -1,5 +1,5 @@
-import { slugifyString } from '../utils/string.js';
-import iconShortcode from '../shortcodes/icon.js';
+import { slugifyString } from '../utils/string.ts';
+import iconShortcode from '../shortcodes/icon.ts';
 import markdownIt from 'markdown-it';
 import markdownItAttrs from 'markdown-it-attrs';
 import markdownItAnchor from 'markdown-it-anchor';
@@ -31,6 +31,7 @@ import 'prismjs/components/prism-lua.js';
 import 'prismjs/components/prism-python.js';
 import 'prismjs/components/prism-ruby.js';
 import 'prismjs/components/prism-toml.js';
+import type { RenderRule } from 'markdown-it/lib/renderer.mjs';
 
 const DEFAULT_LANGUAGE_IF_UNSPECIFIED = 'plaintext';
 
@@ -50,22 +51,19 @@ const LANGUAGE_ALIASES = new Map([
   ['bat', 'batch'],
 ]);
 
-/** @param {string|undefined} lang */
-function getLanguage(lang) {
+function getLanguage(lang?: string) {
   if (LANGUAGE_ALIASES.has(lang)) {
     return LANGUAGE_ALIASES.get(lang);
   }
   return lang || DEFAULT_LANGUAGE_IF_UNSPECIFIED;
 }
 
-/**
- * @param {import("markdown-it")} markdownIt
- * @param {boolean} [isTrustedInput] Whether the incoming source Markdown is safe/trusted. Defaults to `true` for my content. Set this to `false` for content from external sources (like user-submitted comments).
- */
-function makeFencedCodeRenderer(markdownIt, isTrustedInput) {
+function makeFencedCodeRenderer(
+  markdownIt: markdownIt,
+  isTrustedInput?: MakeMarkdownParserOptions['isTrustedInput']
+): RenderRule {
   const defaultRenderer = markdownIt.renderer.rules.fence;
 
-  /** @type {import('markdown-it/lib/renderer.mjs').RenderRule} */
   return (tokens, index, options, env, self) => {
     const fencedCodeBlockToken = tokens[index];
     const language = getLanguage(fencedCodeBlockToken.info);
@@ -75,12 +73,12 @@ function makeFencedCodeRenderer(markdownIt, isTrustedInput) {
 
     if (isTrustedInput) {
       // Copyable code blocks get data-copyable="true" via markdown-it-attrs
-      let copyCodeMatch = /<code[^>]*\b(?<attribute>data-copyable="?true"?)/.exec(codeBlockHtml);
-      let hasCopyCodeButton = !!copyCodeMatch && copyCodeMatch.groups?.attribute;
+      const copyCodeMatch = /<code[^>]*\b(?<attribute>data-copyable="?true"?)/.exec(codeBlockHtml);
+      const hasCopyCodeButton = !!copyCodeMatch && copyCodeMatch.groups?.attribute;
 
       // Code blocks with file names get data-file="filename" via markdown-it-attrs
       const fileNameMatch = /<code[^>]*\b(?<attribute>data-file="?(?<fileName>[^"]*)"?)/.exec(codeBlockHtml);
-      let hasFileName = !!fileNameMatch && fileNameMatch.groups?.attribute && fileNameMatch.groups?.fileName;
+      const hasFileName = !!fileNameMatch && fileNameMatch.groups?.attribute && fileNameMatch.groups?.fileName;
 
       if (hasCopyCodeButton) {
         copyCodeButtonHtml = `<button class="copy-code-button" aria-label="Copy code to clipboard">
@@ -103,19 +101,13 @@ function makeFencedCodeRenderer(markdownIt, isTrustedInput) {
   };
 }
 
-/**
- * @param {import("markdown-it")} markdownIt
- * @param {boolean} [isTrustedInput] Whether the incoming source Markdown is safe/trusted. Defaults to `true` for my content. Set this to `false` for content from external sources (like user-submitted comments).
- * @returns
- */
-function makeSyntaxHighlighter(markdownIt, isTrustedInput) {
+function makeSyntaxHighlighter(markdownIt: markdownIt, isTrustedInput?: MakeMarkdownParserOptions['isTrustedInput']) {
   /**
-   * @param {string} code The plaintext code to highlight.
-   * @param {string} lang The language in which the code was written.
-   * @returns {string}
+   * @param code The plaintext code to highlight.
+   * @param lang The language in which the code was written.
    */
-  return (code, lang) => {
-    let html;
+  return (code: string, lang: string): string => {
+    let html: string;
     try {
       const language = getLanguage(lang);
       // Load new language dynamically, as needed
@@ -138,16 +130,13 @@ function makeSyntaxHighlighter(markdownIt, isTrustedInput) {
   };
 }
 
-/**
- * @typedef MakeMarkdownParserOptions
- * @property {boolean} [isTrustedInput] Whether the incoming source Markdown is safe/trusted. Defaults to `true` for my content. Set this to `false` for content from external sources (like user-submitted comments).
- */
+type MakeMarkdownParserOptions = {
+  /** Whether the incoming source Markdown is safe/trusted. Defaults to `true` for my content. Set this to `false` for content from external sources (like user-submitted comments). */
+  isTrustedInput?: boolean;
+};
 
-/** Configures and returns a markdown parser.
- * @param {MakeMarkdownParserOptions} [options]
- * @returns {import('markdown-it')}
- */
-export function makeMarkdownParser(options) {
+/** Configures and returns a markdown parser. */
+export function makeMarkdownParser(options?: MakeMarkdownParserOptions): markdownIt {
   const { isTrustedInput } = options ?? {
     isTrustedInput: true,
   };

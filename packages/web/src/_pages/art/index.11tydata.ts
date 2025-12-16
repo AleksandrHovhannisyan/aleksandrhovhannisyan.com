@@ -1,15 +1,13 @@
 import path from 'node:path';
-import { toAbsoluteImageUrl } from '../../../lib/filters.js';
+import { toAbsoluteImageUrl } from '../../../lib/filters.ts';
+import type { EleventyPageData, FrontMatter } from '../../../lib/schema.ts';
 
 /**
  * @type {Partial<import('../../../lib/schema.js').FrontMatter>}
  */
-const data = {
+const data: Partial<FrontMatter> = {
   eleventyComputed: {
-    /**
-     * @param {import('../../../lib/schema.js').FrontMatter & import('../../../lib/schema.js').EleventyPageData} data
-     */
-    openGraph: async (data) => {
+    openGraph: async (data: FrontMatter & EleventyPageData) => {
       const image = data.page.url
         ? await toAbsoluteImageUrl({
             src: 'src/_pages/art/og-art.png',

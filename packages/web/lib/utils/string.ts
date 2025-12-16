@@ -2,7 +2,7 @@ import sanitize from 'sanitize-html';
 import slugify from 'slugify';
 
 /** Converts the given string to a slug form. */
-export const slugifyString = (str) => {
+export const slugifyString = (str: string) => {
   return slugify(str, {
     replacement: '-',
     remove: /[#,&,+()$~%.'":*?<>{}]/g,
@@ -10,11 +10,8 @@ export const slugifyString = (str) => {
   });
 };
 
-/** Sanitizes an HTML string.
- * @param {string} html The HTML string to sanitize.
- * @returns {string}
- */
-export const sanitizeHtml = (html) => {
+/** Sanitizes an HTML string. */
+export const sanitizeHtml = (html: string): string => {
   return sanitize(html, {
     // allow images
     allowedTags: sanitize.defaults.allowedTags.concat(['img']),
@@ -35,16 +32,9 @@ export const sanitizeHtml = (html) => {
   });
 };
 
-/**
- * @param {Map<string, string>} keyMap
- * @returns {(str: string) => string}
- */
-function makeStringEscaper(keyMap) {
+function makeStringEscaper(keyMap: Map<string, string>): (str: string) => string {
   const replacementRegex = new RegExp(`[${Array.from(keyMap.keys()).join('')}]`, 'g');
-  /**
-   * @param {string} string
-   */
-  return function escape(string) {
+  return function escape(string: string) {
     return string.replace(replacementRegex, (char) => keyMap.get(char));
   };
 }

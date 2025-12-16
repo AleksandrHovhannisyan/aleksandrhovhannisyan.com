@@ -10,8 +10,8 @@
     "clean": "rm -rf dist",
     "debug": "DEBUG=Eleventy* ELEVENTY_ENV=development eleventy --serve --incremental --port=4001",
     "dev": "pnpm run clean && pnpm -F web --parallel --aggregate-output /^dev:/",
-    "dev:html": "ELEVENTY_ENV=development eleventy --serve --incremental --port=4001",
-    "build": "pnpm run test && pnpm run clean && ELEVENTY_ENV=production eleventy",
+    "dev:html": "ELEVENTY_ENV=development eleventy --config=.eleventy.ts --serve --incremental --port=4001",
+    "build": "pnpm run test && pnpm run clean && ELEVENTY_ENV=production eleventy --config=.eleventy.ts",
     "test": "node --test",
     "test:watch": "pnpm run test --watch",
     "lint": "pnpm run /^lint:/",
@@ -57,5 +57,9 @@
     "not dead",
     "not op_mini all",
     "not IE > 0"
-  ]
+  ],
+  "devDependencies": {
+    "@types/feather-icons": "^4.29.4",
+    "@types/markdown-it": "^14.1.2"
+  }
 }

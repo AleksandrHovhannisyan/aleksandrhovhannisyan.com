@@ -1,16 +1,13 @@
-export * from './date.js';
-export * from './file.js';
-export * from './string.js';
+export * from './date.ts';
+export * from './file.ts';
+export * from './string.ts';
 
 /**
  * Returns the property value from an object at the given dot-delimited string path (e.g., `key1.key2.key3`).
- * @param {Record<string, unknown>} object
- * @param {string} keyPath
- * @returns {unknown}
  */
-export function get(object, keyPath) {
+export function get(object: Record<string, unknown>, keyPath: string) {
   const keys = keyPath.split('.');
-  return keys.reduce((subObject, key) => {
+  return keys.reduce((subObject: { [x: string]: unknown }, key: string | number) => {
     return subObject[key];
   }, object);
 }
@@ -18,10 +15,10 @@ export function get(object, keyPath) {
 /**
  * Memoizes the given function, caching its result.
  */
-export function memoize(fn) {
+export function memoize(fn: (...args: unknown[]) => unknown) {
   const cache = new Map();
 
-  return function (...args) {
+  return function (...args: unknown[]) {
     const key = JSON.stringify(args);
 
     if (cache.has(key)) {
