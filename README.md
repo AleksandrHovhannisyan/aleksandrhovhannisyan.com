@@ -4,11 +4,14 @@ My personal website and blog, built with 11ty.
 
 ## Licensing
 
-This repository is not a template for reuse and has no open-source license. Unless otherwise noted, all rights are reserved (copyright Aleksandr Hovhannisyan 2019–Present). However, I'm hosting it publicly as a learning experience; it also [doubles as my comment system](https://www.aleksandrhovhannisyan.com/blog/static-site-comments-github-issues/). 
+This repository is not a template for reuse and has no open-source license. Unless otherwise noted, all rights are reserved. However, I'm hosting it publicly for educational purposes; it also [doubles as my comment system](https://www.aleksandrhovhannisyan.com/blog/static-site-comments-github-issues/).
 
-You are more than welcome to fork/clone this repo and explore the code. However, you may not redistribute any content that I own in this repo without my permission, unless I've already attributed it to someone else. When in doubt, please feel free to message me and ask. Tutorial code from articles I've written is free to reuse without attribution.
+You're more than welcome to fork/clone this repo and explore the code. I just ask that you not redistribute any of my writing, code, etc. without my permission, unless I've already attributed it to someone else. When in doubt, please feel free to message me and ask.
 
-If you want to reuse just the bare-bones skeleton of this repo, I've created a separate starter that you may find useful: [11ty-sass-images-seo](https://github.com/AleksandrHovhannisyan/11ty-sass-images-seo). It includes sensible defaults and project scaffolding for 11ty, support for Sass, basic image optimization, and various workspace configurations. I've also written [several 11ty tutorials](https://www.aleksandrhovhannisyan.com/tags/11ty/).
+> [!NOTE]
+> Code snippets that I share in my articles are free to reuse _without attribution_.
+
+If you'd like to reuse just the bare-bones skeleton of this repo, I've created a separate starter that you may find useful: [11ty-sass-images-seo](https://github.com/AleksandrHovhannisyan/11ty-sass-images-seo). It includes sensible defaults and project scaffolding for 11ty, support for Sass, basic image optimization, and various workspace configurations. I've also written [several 11ty tutorials](https://www.aleksandrhovhannisyan.com/tags/11ty/).
 
 ### Third-Party Licensing
 
@@ -18,16 +21,12 @@ All fonts used in this project are licensed under the SIL Open Font License by t
 
 Where appropriate, I've also attributed tutorial code that I've borrowed/repurposed with inline comments. Here are some examples:
 
-- https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com/blob/b5bfd94a33a7885e5f4640b9deda88b712422650/config/collections/index.js#L54
-- https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com/blob/b5bfd94a33a7885e5f4640b9deda88b712422650/src/assets/styles/partials/components/_codeBlock.scss#L31
+- https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com/blob/f58cef0eb282734bcc3537a26a8c8d7100366805/packages/web/lib/collections.ts#L52-L54
+- https://github.com/AleksandrHovhannisyan/aleksandrhovhannisyan.com/blob/f58cef0eb282734bcc3537a26a8c8d7100366805/packages/web/src/assets/styles/layers/components.css#L414-L416
 
 ## Project Structure
 
-This project follows the monorepo pattern.
-
-> Why? Because I can 🤷‍♂️ I use my site as a sandbox to learn new tools and patterns.
-
 Packages can be found in [`pnpm-workspace.yaml`](./pnpm-workspace.yaml):
 
-- [`packages/web`](./packages/web/README.md): front end for my site, hosted on Cloudflare Pages.
-- [`packages/api`](./packages/api/README.md): Cloudflare Worker API used by my front end.
+- [`packages/web`](./packages/web/README.md): front end for my site.
+- [`packages/api`](./packages/api/README.md): custom Cloudflare Worker functions.
