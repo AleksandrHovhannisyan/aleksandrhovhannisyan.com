@@ -11,7 +11,7 @@ Welcome! My name's Aleksandr, pronounced just like _Alexander_. I’m a Texas-ba
 
 ## Work Experience
 
-I've worked as a software engineer at Esri since 2020. I spent the majority of my early years working on [ArcGIS StoryMaps](https://storymaps.arcgis.com/) (2020–2024), but I recently joined the Maps SDK team to work on web components that are used throughout the ArcGIS ecosystem.
+I've worked as a software engineer on the [StoryMaps](https://storymaps.arcgis.com/) team at Esri since 2020. At one point, I also helped the [Maps SDK](https://developers.arcgis.com/javascript/latest/) team develop web components that are used throughout the ArcGIS ecosystem.
 
 I specialize in web development and have a deep understanding of web fundamentals, performance testing and optimization, CSS, typography, and accessibility. During my day-to-day work, I mainly use HTML, CSS, JavaScript/TypeScript, frameworks like React and Svelte, and web components. However, I also have experience with general-purpose programming languages like C++, Lua, and Python, as well as other domain-specific languages such as SQL. I thrive in collaborative environments that encourage growth, offer varied learning opportunities, and cultivate my problem-solving skills and creative strengths.
 
