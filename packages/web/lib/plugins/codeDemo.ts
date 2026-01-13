@@ -1,3 +1,5 @@
+import { type EleventyPluginCodeDemoOptions } from 'eleventy-plugin-code-demo';
+
 const consoleHTML = `
 <footer id="output-root">
     <div id="output-header">
@@ -143,10 +145,7 @@ const consoleJS = `
 })();
 `;
 
-/**
- * @type {import('eleventy-plugin-code-demo/src/typedefs').EleventyPluginCodeDemoOptions}
- */
-export const codeDemoOptions = {
+export const codeDemoOptions: EleventyPluginCodeDemoOptions = {
   name: 'codeDemo',
   renderDocument: ({ html, css, js }) => `
     <!DOCTYPE html>

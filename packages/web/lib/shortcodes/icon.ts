@@ -1,12 +1,12 @@
-import { icons, type FeatherAttributes } from 'feather-icons';
+import { icons, type FeatherAttributes, type FeatherStrokeLineCap, type FeatherStrokeLineJoin } from 'feather-icons';
 
 interface IconProps extends Pick<FeatherAttributes, 'stroke' | 'fill'> {
-  icon: string;
+  icon: keyof typeof icons;
   className: string;
   size: number;
   strokeWidth: number;
-  strokeLinecap: 'butt' | 'round' | 'square';
-  strokeLinejoin: 'butt' | 'round' | 'square';
+  strokeLinecap: FeatherStrokeLineCap;
+  strokeLinejoin: FeatherStrokeLineJoin;
 }
 
 export default function iconShortcode(props: Partial<IconProps>) {

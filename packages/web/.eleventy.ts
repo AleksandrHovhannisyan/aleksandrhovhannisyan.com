@@ -1,6 +1,5 @@
 // @ts-expect-error no types
 import PluginFootnotes from 'eleventy-plugin-footnotes';
-// @ts-expect-error no types, TODO: add types since this is my package
 import { EleventyPluginCodeDemo } from 'eleventy-plugin-code-demo';
 // @ts-expect-error no types
 import { eleventyImageTransformPlugin } from '@11ty/eleventy-img';
