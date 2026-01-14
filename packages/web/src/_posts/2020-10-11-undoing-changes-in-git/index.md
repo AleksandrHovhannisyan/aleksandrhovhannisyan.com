@@ -1,19 +1,20 @@
 ---
-title: 6 Ways to Undo Changes in Git
-description: If you messed up your git repo, don't panic. Here are a few ways you can undo those changes and recover lost commits.
+title: How to Undo Changes in Git
+description: If you messed up your git repo, don't panic. Here are a few ways you can undo those changes.
 keywords: [undo changes in git, git]
 categories: [git, github]
 commentsId: 60
 thumbnail: ./images/thumbnail.png
+lastUpdated: 2026-01-13
 ---
 
-It's tempting to use git to make chronological commits without ever looking back. But eventually, there will come a point in time when you'll need to time travel, modify old commits, delete commits, and rewrite history in all sorts of scary ways. Especially if you're new to git, it can sometimes feel like you're navigating a minefield—one wrong move, and you might be tempted to re-clone the repo, start over, and hope nobody ever finds out. But fear not! Undoing changes is a lot easier than it can seem at first. In this post, we'll look at several useful ways you can undo changes in git and rewrite your commit history.
+Normally, you commit your work and never look back. However, there eventually comes a point in time when you need to modify or delete old commits and rewrite history in all sorts of scary ways. Especially if you're inexperienced with git, it can sometimes feel like you're navigating a minefield—one mistake, and you might be tempted to re-clone the repo, start over, and hope nobody ever notices. But it's actually not so bad. In this tutorial, we'll look at several useful ways you can undo changes in git.
 
 {% include "toc.md" %}
 
 ## Setup
 
-Before we get to the examples, let's create a simple git repo with a few commits:
+Before we look at some examples, let's create a simple git repo with a few commits:
 
 ```bash {data-copyable=true}
 git init && \
@@ -42,9 +43,9 @@ Feel free to follow along and run these commands—the best way to learn git is 
 
 ## A Note on Modifying Public Branches
 
-For me to come up with reproducible code samples for this tutorial—and for you to be able to easily run them on your end—we'll be executing most git commands directly on `master` itself.
+For me to come up with reproducible code samples for this tutorial—and for you to be able to easily run them on your end—we'll be executing most git commands directly on the `master` branch itself.
 
-With git tutorials, it's often difficult to accurately simulate the real world, where you most likely will not be committing directly to master, and where you'll be working with other developers. Public branches like `master` are ones that your team regularly merges work into via pull requests and that nobody commits to directly. These branches provide an untouched history of your repository, documenting your features and software releases. But there are also the so-called "personal" (feature) branches that individual developers create and commit to directly, and that later get merged into milestone branches (or directly into your `master` branch, depending on your workflow).
+In a tutorial such as this one, it's difficult to accurately simulate the real world, where you most likely will not be committing directly to master, and where you'll be working with other developers. Public branches like `master` are ones that your team regularly merges work into via pull requests and that nobody commits to directly. These branches provide an untouched history of your repository, documenting your features and software releases. But there are also the so-called "personal" (feature) branches that individual developers create and commit to directly, and that later get merged into milestone branches (or directly into your `master` branch, depending on your workflow).
 
 Everything you'll learn in this tutorial is still practical and can be extended to the real world, so long as you keep in mind that you should never try to undo changes in git on public branches, unless you know what you're doing. As for your own branches, you are free to do whatever you want—like deleting old commits you introduced on that branch. The same holds if you're the only developer in your repo since you're in full control of your own work and won't interfere with anyone else.
 
@@ -56,7 +57,7 @@ With that boring preface out of the way, let's finally get to the good stuff!
 
 ## 1. Amending the Most Recent Commit
 
-You have this commit history:
+Let's say you have this commit history:
 
 ```
 * 4753e23 - (HEAD -> master) Add .gitignore (4 seconds ago) <AleksandrHovhannisyan>
@@ -71,7 +72,7 @@ Shortly after creating your `.gitignore` and committing it, you decide to change
 echo node_modules > .gitignore
 ```
 
-But you don't want to pollute your git log history with yet another commit for such a minor change. Or maybe you need to correct a typo in your most recent commit message.
+But you don't want to pollute your git log history with a useless commit, or maybe you need to correct a typo in your most recent commit message.
 
 Both of these are classic use cases for the `git amend` command:
 
@@ -79,9 +80,7 @@ Both of these are classic use cases for the `git amend` command:
 git commit -a --amend
 ```
 
-Simply put, **amending** is how you edit commits and commit messages in git. It's one of the most basic ways to undo changes in git (or, in this case, to introduce new ones).
-
-When you run the code above, git will open up the most recent commit in your editor of choice, adding your changes to the staging environment:
+As the name implies, amending is how you edit commits and commit messages in git. When you run the above command, git will open up the most recent commit in your editor of choice, adding your changes to the staging environment:
 
 ```bash
 Add .gitignore
@@ -105,9 +104,9 @@ If all you need to do is update the commit message itself, like to fix a typo, y
 git commit --amend
 ```
 
-Change the commit message in your editor, and close and save the file. That's it!
+Change the commit message in your editor, and close and save the file.
 
-In any case, after amending the most recent commit, you'll have a log that looks something like this:
+In any case, after amending, you'll have a log that looks something like this:
 
 ```
 * 7598875 - (HEAD -> master) Add .gitignore (31 seconds ago) <AleksandrHovhannisyan>
@@ -116,7 +115,7 @@ In any case, after amending the most recent commit, you'll have a log that looks
 * 0beebfb - Add package.json (80 seconds ago) <AleksandrHovhannisyan>
 ```
 
-Now, suppose you had already pushed the old commit to your remote branch before amending it. If you run `git status`, you'll be told that your local branch and the remote branch have diverged by one commit:
+If you had previously pushed up your branch to the remote and now run `git status`, you'll be told that your local branch and the remote branch have diverged by one commit:
 
 ```
 On branch master
@@ -125,7 +124,7 @@ and have 1 and 1 different commits each, respectively.
   (use "git pull" to merge the remote branch into yours)
 ```
 
-That makes sense—your remote branch has the old commit, and your local branch has the amended one. Their hashes are different since amending a commit changes its timestamp, which forces git to compute a new hash. To update your remote branch with the new commit, all you need to do is force push it: `git push -f`. This will overwrite your remote branch's history with your local one.
+Your remote branch has the old commit, and your local branch has the amended one. Amending a commit changes its timestamp, which forces git to compute a new hash. To update your remote branch with the new commit, all you need to do is force push it: `git push -f`. This will overwrite your remote branch's history with your local one.
 
 ### Be Careful with Force Pushes
 
@@ -160,13 +159,13 @@ So now we have this commit history:
 * 0beebfb - Add package.json (4 minutes ago) <AleksandrHovhannisyan>
 ```
 
-A few minutes later, for one reason or another, you decide that you don't actually want to keep the most recent commit. To delete it, you can just do a hard reset to one commit before the `HEAD` pointer, which is always pointing to the latest commit on the current branch:
+A few minutes later, you decide that you don't actually want to keep the most recent commit. To delete it, you can just do a hard reset to one commit before the `HEAD` pointer, which always points to the currently checked out ref in git (in this case, the current branch):
 
 ```bash {data-copyable=true}
 git reset --hard HEAD~1
 ```
 
-The tilde character (`~`) followed by a number tells git how many commits it should backtrack from a given commit (in this case, the `HEAD` pointer). Since `HEAD` always points to the most recent commit on the current branch, this tells git to do a hard reset to the commit *right before* the most recent one.
+The tilde character (`~`) followed by a number tells git how many commits it should backtrack from a given commit (in this case, the `HEAD` pointer). Since `HEAD` is currently pointing to the latest commit on our branch, this tells git to do a hard reset to the commit *right before* the most recent one.
 
 Output:
 
@@ -174,7 +173,7 @@ Output:
 HEAD is now at 7598875 Add .gitignore
 ```
 
-Hard resetting is a handy way to undo changes in git, but do note that this is a destructive process—all changes in that commit will be lost. The only way to get them back is through the magic of `git reflog` ([more on that later](#6-using-git-reflog)).
+Hard resetting can be useful in a number of scenarios, but it's also a destructive process—all changes in that commit will be lost. The only way to get them back is through `git reflog`, which we'll [learn about later](#6-using-git-reflog).
 
 You can also reset to the `HEAD~n`th commit, in which case all work *at and after that commit* will be lost:
 
@@ -188,9 +187,7 @@ Or even to a specific commit, if you have its hash:
 git reset --hard <hash-id>
 ```
 
-You're also not limited to just resetting against commits in the current branch...
-
-For example, you can reset a local branch to point to another local branch:
+You're also not limited to just resetting against commits in the current branch. For example, you can reset a local branch to point to another local branch:
 
 ``` {data-copyable=true}
 git reset --hard <someOtherBranch>
@@ -209,16 +206,16 @@ Sure, you can use `git cherry-pick` to fix this, but what if you have tens or hu
 To fix this, you'd create the feature branch now (off of `master`, which has the commits you want):
 
 ```bash {data-copyable=true}
-git checkout -b feat/X
+git branch feat/X
 ```
 
 And forcibly reset your local `master` branch to your remote `master`:
 
 ```bash {data-copyable=true}
-git checkout master && git reset --hard origin/master
+git reset --hard origin/master
 ```
 
-And don't forget to go back to your feature branch so you don't repeat the same mistake:
+And then check out the feature branch to resume working on it:
 
 ```bash {data-copyable=true}
 git checkout feat/X
@@ -226,7 +223,7 @@ git checkout feat/X
 
 ### Soft-Resetting a Branch
 
-As I mentioned above, if you do a hard reset, you'll lose any work that you did at or past that commit. You can recover from that state, sure, but that's one extra step. If instead you want to keep your changes in git's staging environment, you can do a soft reset:
+As I mentioned in the previous section, if you do a hard reset, you'll lose any work that you did at or past that commit. You can recover from that state, sure, but that's one extra step. If instead you want to keep your changes in git's staging environment, you can do a soft reset:
 
 ```bash {data-copyable=true}
 git reset --soft HEAD~1
@@ -242,23 +239,27 @@ All of the changes introduced by that commit, and any commits that came after it
 
 **Use case**: You commit File A and File B as part of one commit but later realize that they should've actually been part of two separate commits. You can do a soft reset and selectively commit one file and then proceed with committing the other separately, all without losing any of your work.
 
-### Creating a Backup Branch
+### Creating Backups
 
-You're probably already comfortable with branching for new iterations of work. But don't forget that you can also use branching as a backup mechanism, in case you know you're about to run a command (like `git reset --hard`) that may mess up your branch's commit history. Before you run those commands, you can simply create a temporary backup branch (e.g., `git branch backup`). If anything goes wrong, you can always do a hard reset against your backup branch:
+You're probably already branching for new iterations of work, but don't forget that you can also use branching for backups, in case you know you're about to run a command (like `git reset --hard`) that may mess up your branch's commit history. Before you run those commands, you can create a temporary backup branch (e.g., `git branch backup`). If anything goes wrong, you can always hard reset to the backup branch:
 
 ```bash {data-copyable=true}
 git reset --hard backup
 ```
 
-As an alternative, you can just [dig through git's reflog](#6-using-git-reflog) and undo your changes. We'll learn about that at the end of this tutorial. But it never hurts to create a backup branch for safe measure.
+Alternatively, I sometimes stash my work to create a backup copy of it:
+
+```bash {data-copyable=true}
+git stash push -m "Work in progress"
+```
+
+As a last resort, you could [dig through git's reflog](#6-using-git-reflog) and undo your changes. We'll learn about that at the end of this tutorial. But it never hurts to create a backup branch just in case.
 
 ## 3. Interactive Rebases
 
-This is where things get interesting.
+In a normal rebase, you replay your commits on top of some reference commit. In an interactive rebase, you still rewind your commit history to a reference point on the current branch and replay them in sequence, but you can also tell git what to do for each individual commit. If you've ever wanted to delete an old commit, change an old commit's message, or combine an old commit with another, then this is the tool for you.
 
-Git's **interactive rebase** is one of its most powerful and versatile commands, allowing you to rewind history and make any changes you need. If you've ever wanted to delete an old commit, change an old commit's message, or squash an old commit into another, then this is the tool for you.
-
-All interactive rebases start with the `git rebase -i` command and must specify a commit against which to rebase the current branch. This may be the tip of another branch or, more commonly, a commit somewhere in the current branch's history.
+All interactive rebases start with the `git rebase -i` command and must specify a ref against which to rebase the current branch. This may be the tip of another branch or, more commonly, a commit somewhere in the current branch's history.
 
 ### Deleting Old Commits
 
@@ -312,6 +313,10 @@ Note that any commit hashes after the deleted commit will be recomputed. So whil
 ```bash {data-copyable=true}
 git push -f
 ```
+
+{% aside %}
+In practice, this wouldn't help with leaked secrets since there are automated crawlers that look for them on GitHub, so if you already pushed those changes to your remote branch, you're out of luck.
+{% endaside %}
 
 ### Rewording Commit Messages
 
@@ -414,7 +419,7 @@ And now your commit history looks like this:
 
 ### Editing Old Commits
 
-Don't confuse this with `reword`ing old commit messages. To edit a commit means to go to the point in history right after that commit was made. This allows you to amend the commit and include (or remove) any changes you want.
+Don't confuse editing commits with rewording commit _messages_. To edit a commit means to go to the point in history right after that commit was made. This allows you to amend the commit and include (or remove) any changes you want.
 
 So far, our commit history looks like this:
 
@@ -522,7 +527,7 @@ And that's it! Our commit history now looks like this:
 
 ### Squashing
 
-**Squashing** lets you combine `n` commits into one, making your commit history more compact. This is sometimes useful if a feature branch is introducing lots of commits, and you just want the feature to be represented as a single commit in your history (known as a **squash-and-rebase** workflow). The main downside is that you won't be able to revert or modify old commits if you ever need to in the future, which may not be desirable in some cases.
+Squashing lets you combine `n` commits into one, making your commit history more compact. This is sometimes useful if a feature branch is introducing lots of commits, and you just want the feature to be represented as a single commit in your history (known as a <dfn>squash-and-rebase</dfn> workflow). The main downside is that you won't be able to revert or modify old commits if you ever need to in the future, which may not be desirable in some cases.
 
 Again, for reference, we have this commit history:
 
@@ -636,9 +641,7 @@ You can now change `Add file1` to be `Add files 1, 2, and 3`, for example, or wh
 * 36210ec - Initialize npm package (15 minutes ago) <AleksandrHovhannisyan>
 ```
 
-**Fun fact**: If you're worried about losing all the hard work you put into creating your commit messages along the way, don't be. Those other two commit messages will still be visible whenever you view the squashed commit on GitHub, so it still tells a story. Basically, it's just a multi-line commit message:
-
-![Viewing a squashed commit on GitHub, with three commit messages visible in total.](./images/squashed-commit.png)
+If you're worried about losing all the hard work you put into writing your commit messages along the way, don't be. Those other two commit messages will still be visible whenever you view the squashed commit on GitHub, so it still tells a story. It's just a multi-line commit message.
 
 ## 4. Reverting Commits
 
@@ -647,9 +650,9 @@ We've already learned two ways that we can remove commits from our history in gi
 1. Soft- or hard-resetting the `HEAD` pointer to a commit before the range of commits we want to delete.
 2. Performing an interactive rebase and changing `pick` to `drop` for any commits we don't want to keep.
 
-Unfortunately, as we've seen, both of these will **rewrite your commit history**. Take the example of removing the `.env` file from our `master` branch with an interactive rebase. If we were to do that in the real world, on a shared branch like master, deleting the commit would make quite a mess of things. For starters, everyone on our team would have to hard-reset their local `master` branches to match `origin/master`.
+Unfortunately, as we've seen, both of these will rewrite your commit history. Take the example of removing the `.env` file from our `master` branch with an interactive rebase. If we were to do that in the real world, on a shared branch like master, deleting the commit would make quite a mess of things. For starters, everyone on our team would have to hard-reset their local `master` branches to match `origin/master`.
 
-Easy enough, right? Sure, but the problem arises if there's any work in progress on people's feature branches, especially if they had branched off of the old master—**where the file you deleted still exists**. See where this is going? A rebase won't work because it may actually reintroduce the file that was deleted on `master`; you can try this out locally to see what I mean. Similarly, a merge of `master` into your feature branch won't work because there's no common history for git to resolve:
+Easy enough, right? Sure, except when there's work in progress on people's feature branches, especially if they had branched off of the old master—where the file you deleted still exists. See where this is going? A rebase won't work because it may actually reintroduce the file that was deleted on `master`; you can try this out locally to see what I mean. Similarly, a merge of `master` into your feature branch won't work because there's no common history for git to resolve:
 
 ```
 fatal: refusing to merge unrelated histories
@@ -714,11 +717,11 @@ Of course, if you need to remove sensitive information that was accidentally com
 
 ## 5. Checking Out Files
 
-The `git checkout` command is another basic way to undo changes in git. It serves three purposes:
+The `git checkout` command is actually another way to undo changes in git, and one you're probably already familiar with. It serves three purposes:
 
 - Creating new branches: `git checkout -b <newBranch>`.
 - Switching to branches or commits: `git checkout <existingBranch>`.
-- Restoring different versions of files.
+- Checking out a version of a file on a specific ref.
 
 We'll focus on the third use case here.
 
@@ -730,7 +733,7 @@ git checkout <pathspec>
 
 Here, `<pathspec>` can be any valid path specifier, like `.` for the current directory, `path/to/file`, `file.extension`, or even a regular expression.
 
-This will clear all unstaged changes to the specified files and restore the current branch's **untouched version(s) of the file(s)**. It's worth emphasizing again that this command will not affect *staged* files—only unstaged changes will be cleared.
+This will clear all unstaged changes to the specified files and restore the current branch's untouched version(s) of the file(s). It's worth emphasizing again that this command will not affect *staged* files—only unstaged changes will be cleared.
 
 For example, if you want to clear *all* unstaged changes in the current directory and start from scratch, the easy way to do that is using the `git checkout` command with `.` as the pathspec:
 
@@ -754,15 +757,13 @@ git checkout localBranchName -- <pathspec>
 
 ## 6. Using Git Reflog
 
-If you thought git's interactive rebase was neat, wait until you see `git reflog` in action.
-
 You can think of reflog as git for git—like an internal record-keeping system that tracks most of your actions. From [git's documentation on reflog](https://git-scm.com/docs/git-reflog):
 
 {% quote "git reflog Documentation", "https://git-scm.com/docs/git-reflog" %}
   Reference logs, or "reflogs", record when the tips of branches and other references were updated in the local repository. Reflogs are useful in various Git commands, to specify the old value of a reference.
 {% endquote %}
 
-`reflog` stands for "reference log": a series of snapshots for the different states of the `HEAD` pointer over time. This means that any time a commit is introduced, deleted, or amended, or a new branch is checked out, or an old commit's hash is rewritten, those changes will be logged in `reflog`. Translation? You'll be able to travel back in time to undo potentially unwanted changes even if they were seemingly irreversible.
+`reflog` stands for "reference log": a series of snapshots for the different states of the `HEAD` pointer over time. This means that any time a commit is introduced, deleted, or amended, or a new branch is checked out, or an old commit's hash is rewritten, those changes will be logged in `reflog`, so you can travel back in time to undo potentially unwanted changes even if they were seemingly irreversible.
 
 Viewing the reflog for a git repository couldn't be easier:
 
@@ -784,7 +785,7 @@ b646cf6 (HEAD -> feature2, origin/feature, feature) HEAD@{0}: checkout: moving f
 
 This was logged because the `HEAD` pointer was redirected from the tip of the `feature` branch to the tip of the new branch, `feature2`.
 
-We can also view **all of our changes from this tutorial** if we dig deeper in the reflog:
+We can also view all of our changes from this tutorial if we dig deeper in the reflog:
 
 ```
 b646cf6 (HEAD -> feature2, origin/feature, feature) HEAD@{0}: checkout: moving from feature to feature2
@@ -833,7 +834,7 @@ You can quickly peek at any of these states by checking out those commit hashes:
 git checkout <hash-id>
 ```
 
-Or, better yet, you can **reset your branch to those points in history**. Check it out:
+Or, better yet, you can reset your branch to those points in history:
 
 ```bash {data-copyable=true}
 git reset --soft 7598875
@@ -885,7 +886,7 @@ Replacing `n` with whatever line you want to delete from the reflog. `HEAD@{0}` 
 
 Hopefully, you're now more comfortable with undoing changes in git. My personal favorite command is `reflog`—it's extremely versatile and can help you get out of sticky situations if you ever find yourself in trouble.
 
-When in doubt, don't be afraid to ask others for help. There's also a wealth of information online about git, so you're bound to find a relevant question on StackOverflow or Reddit.
+When in doubt, don't be afraid to ask others for help. There's also a wealth of information online about git, so you're bound to find a relevant question online.
 
 ## Attributions
 
