@@ -49,7 +49,7 @@
     font-weight: var(--font-weight-mono-regular);
   }
 
-  :is(strong, h1, h2, h3, h4, h5, h6) :is(code, kbd) {
+  :is(strong, h1, h2, h3, h4, h5, h6, th) :is(code, kbd) {
     font-family: var(--font-family-mono);
     font-weight: var(--font-weight-mono-bold);
   }
