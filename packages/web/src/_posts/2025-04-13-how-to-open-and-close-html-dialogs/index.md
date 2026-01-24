@@ -3,6 +3,7 @@ title: How to Open and Close HTML Dialogs
 description: Learn how to use the show(), showModal(), and close() methods to toggle an HTML dialog's visibility.
 categories: [html, javascript]
 keywords: [html dialog, dialog]
+lastUpdated: 2026-01-23
 ---
 
 Despite the popularity of modals on the web, the native `<dialog>` element has unfortunately had [a long and troubled history in HTML](https://lapcatsoftware.com/articles/2024/2/1.html). It was originally only implemented by Chrome in 2014, and it wasn't until 2022 that other browsers like Safari and Firefox caught up. This meant that developers had to rely on external libraries to implement such an integral component. But now that we've reached an acceptable baseline adoption, `<dialog>` is one of the best ways to include interactive popovers and modals in web apps.
@@ -27,22 +28,37 @@ Let's start with the following HTML:
 
 Here, we have:
 
-- A button that should open the dialog when clicked.
+- A button that will open the dialog when clicked.
 - The `<dialog>` element itself.
-- A button that should close its parent dialog when clicked.
+- A button that will close its parent dialog when clicked.
 
-We need some way to associate these buttons with the dialogs they control. I've chosen to do that with the `aria-controls` ARIA attribute, which gives us a native way to describe a relationship where one element controls another element's visibility. This allows us to query the dialog element if we have a reference to the button that opens it. I've also given each button a custom HTML attribute named `data-dialog-action`; the button that opens the dialog gets a value of [`"showModal"`]((https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal)), while the button that closes the dialog gets a value of [`"close"`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close).
+We need some way to associate our buttons with the dialogs they control. We could use `data-` attributes, but `aria-controls` already gives us a native way to describe a relationship where one element controls another element's visibility. The attribute doesn't add any interactivity by itself; we will just read its value later to query the dialog that each button controls.
 
-The `showModal` method is great for accessibility since it:
+I've also given each button a custom HTML attribute named `data-dialog-action`, with three possible values that mirror their corresponding `HTMLDialogElement` methods:
 
-- Traps focus inside the dialog,
+- `"show"`
+- `"showModal"`
+- `"close"`
+
+{% details "What's the difference between show and showModal?", true %}
+There are two types of dialogs: modals and non-modals (sometimes referred to as popovers).
+
+A <dfn>modal dialog</dfn>:
+
+- Traps focus and returns focus to the element that opened it on close,
+- Focuses its first focusable child when it's opened,
 - Marks the rest of the page as [inert](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/inert),
-- Focuses the first focusable child of the dialog, and
-- Returns focus to the element that opened the dialog on close.
+- Renders with a `::backdrop` that can be styled, and
+- Is promoted to the [top layer](https://developer.mozilla.org/en-US/docs/Glossary/Top_layer) to avoid z-indexing conflicts.
 
-**However**, not all dialogs are modals. These so-called "non-modal" dialogs allow you to still interact with the rest of the page while they're open, and they don't trap focus or open in the [top layer](https://developer.mozilla.org/en-US/docs/Glossary/Top_layer) like modal dialogs do. If you'd like to open a non-modal dialog, simply set `data-dialog-action="show"` instead of `showModal`.
+Calling the [`HTMLDialogElement.showModal()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal) method opens a dialog as a modal.
 
-Now, let's make our buttons do something when clicked. We'll start by querying all dialogs with IDs in the current document and then query their corresponding open and close buttons:
+By contrast, a <dfn>non-modal dialog</dfn> behaves more like a popover trigger, and you use [`HTMLDialogElement.show()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/show).
+{% enddetails %}
+
+In my example, I'm using `data-dialog-action="showModal"` to create a modal dialog. Meanwhile, the button that closes the dialog gets a value of [`"close"`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close).
+
+Let's make our buttons do something when clicked. We'll first query all dialogs with IDs in the current document and then grab a reference to their corresponding open and close buttons:
 
 ```js {data-file="dialog.js" data-copyable="true"}
 document.querySelectorAll('dialog[id]').forEach((dialog) => {
@@ -56,9 +72,7 @@ document.querySelectorAll('dialog[id]').forEach((dialog) => {
 });
 ```
 
-Here, I'm using the `:is()` CSS function to query for buttons that open either modal or non-modal dialogs. This code works for any number of dialogs on a page and is more flexible than manually querying the individual elements. Note that we're not using `dialog.querySelector` to get the close button since that button is not guaranteed to be a child of the dialog in the case of non-modal dialogs.
-
-Now, we can assign `click` event handlers to these buttons:
+I'm using the `:is()` CSS function to query for buttons that open either modal or non-modal dialogs.Now, we can assign `click` event handlers to these buttons. I've chosen to handle both modal and non-modal dialogs in one function, but you could separate the logic for these if you wanted to:
 
 ```js {data-file="dialog.js" data-copyable="true"}
 const showAction = openButton.dataset.dialogAction || 'show';
@@ -71,6 +85,7 @@ const showDialog = () => {
     closeButton.setAttribute('aria-expanded', 'true');
   }
 };
+
 const closeDialog = () => {
   dialog.close();
   if (isNonModalDialog) {
@@ -78,11 +93,22 @@ const closeDialog = () => {
     closeButton.setAttribute('aria-expanded', 'false');
   }
 };
+
 openButton.addEventListener('click', showDialog);
 closeButton.addEventListener('click', closeDialog);
 ```
 
-Importantly, we're setting the [`aria-expanded`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-expanded) attribute on both the open and close buttons in the case where they control a non-modal dialog. This attribute isn't relevant for modal dialogs because modals cause the rest of the document to become `inert`, so only one button (open or close) will be navigable at any given time. Note that we're not handling the case where the button that opens the dialog happens to be the same button that closes it (a popover trigger); you may wish to do that in your implementation.
+Importantly, we're setting the [`aria-expanded`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-expanded) attribute on both the open and close buttons if they control a non-modal dialog. This attribute isn't relevant for modal dialogs because modals cause the rest of the document to become `inert`, so only one button (open or close) will be navigable at any given time.
+
+Note that we're not handling the case where the button that opens a non-modal dialog happens to be the same button that closes it (a popover trigger). If you want to handle this, it's a simple refactor. Where we query for the close button, we'll just add a fallback if one doesn't exist:
+
+```js
+const closeButton = document.querySelector(
+  `button[data-dialog-action="close"][aria-controls="${dialog.id}"]`
+) ?? openButton;
+```
+
+This says: Use an explicit close button if one is found, or assume the open button both opens and closes the same dialog.
 
 ### Closing by Clicking Outside (Light Dismiss)
 
@@ -97,7 +123,7 @@ There's [a proposal to add a `closedby` HTML attribute](https://github.com/whatw
 
 Unfortunately, at the time of this writing, [`closedby` is only supported in Chrome 134+](https://caniuse.com/mdn-html_elements_dialog_closedby), so we'll need to write a custom solution for now.
 
-Inside our loop, we'll add a click handler to the document element and check if the `<dialog>` or one of its children was clicked. If it wasn't, then we know that the user clicked outside the dialog.
+Inside our loop, we'll add a click handler to the document element and check if the `<dialog>` or one of its children was clicked. If they weren't, then we know that the user must have clicked _outside_ the dialog.
 
 ```js {data-file="dialog.js" data-copyable="true"}
 document.querySelectorAll('dialog[id]').forEach((dialog) => {
@@ -177,7 +203,7 @@ document.querySelectorAll('dialog[id]').forEach((dialog) => {
   );
   const closeButton = document.querySelector(
     `button[data-dialog-action="close"][aria-controls="${dialog.id}"]`
-  );
+  ) ?? openButton;
 
   const showAction = openButton.dataset.dialogAction || 'show';
   const isNonModalDialog = showAction !== 'showModal';
@@ -189,6 +215,7 @@ document.querySelectorAll('dialog[id]').forEach((dialog) => {
       closeButton.setAttribute('aria-expanded', 'true');
     }
   };
+  
   const closeDialog = () => {
     dialog.close();
     if (isNonModalDialog) {
@@ -196,6 +223,7 @@ document.querySelectorAll('dialog[id]').forEach((dialog) => {
       closeButton.setAttribute('aria-expanded', 'false');
     }
   };
+
   openButton.addEventListener('click', showDialog);
   closeButton.addEventListener('click', closeDialog);
 
