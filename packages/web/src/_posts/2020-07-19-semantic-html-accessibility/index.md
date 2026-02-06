@@ -1,10 +1,10 @@
 ---
-title: 'Semantic HTML: Building a More Accessible Web'
-description: Learn how to use the right HTML elements to create accessible documents on the web.
+title: Writing Semantic HTML
+description: Learn how to use the right HTML elements and attributes to create accessible documents.
 keywords: [semantic html, html accessibility]
 categories: [accessibility, html]
 commentsId: 48
-lastUpdated: 2021-07-10
+lastUpdated: 2026-02-05
 thumbnail: ./images/thumbnail.png
 ---
 
@@ -24,7 +24,7 @@ Unfortunately, developers tend to fall into a number of common traps that violat
 
 ## Semantic HTML Basics
 
-Let's clear this up now—there are only two non-semantic HTML elements: `<div>` and `<span>`. By definition, this means that anything else is **semantic HTML**: an element that has some sort of inherent meaning. Some of these are depicted below:
+Let's clear this up now—there are only two non-semantic HTML elements: `<div>` and `<span>`. By definition, this means that anything else is <dfn>semantic HTML</dfn>: an element that has some sort of inherent meaning. Some of these are depicted below:
 
 ![The main pieces of a website can be broken down into semantic elements and groupings](./images/semantic-html.png)
 
@@ -40,7 +40,7 @@ The `<main>` element represents the main content region of a website:
 
 ![The main content region of a website](./images/main.png)
 
-Typically, you'll want to wrap everything in `<main>` except for your navigation header and footer. Also, note that a page should only ever have one `<main>` present to avoid confusing screen readers and search engine crawlers.
+Typically, you'll want to wrap all of the content on a page in `<main>`, except perhaps your navigation header and footer. Also, a page should only ever have one `<main>` to avoid confusing screen readers.
 
 ### Header and Footer
 
@@ -50,7 +50,7 @@ You can think of the `<header>` element as a container for certain "visible meta
 
 On the other hand, a `<footer>` should be used for anything that logically follows your content, essentially providing additional information. For example, you can wrap an About the Author section in a footer, or a "you may also like" section at the end of an article. It should also be your go-to element for the literal footer of your website.
 
-The only thing to keep in mind is that `<header>` and `<footer>` should never appear as children of each other. In other words, never put a header in a footer, or vice versa.
+The only thing to keep in mind is that `<header>` and `<footer>` should never appear as children of each other.
 
 ### Article and Section
 
@@ -79,15 +79,17 @@ When talking about semantic HTML, people usually stop at just the generic bunch:
 - Inline markup (e.g., `<strong>`, `<em>`, `<mark>`).
 - Images (`<img>`), figures (`<figure>`), tables (`<table>`), audio (`<audio>`), video (`<video>`).
 
-... and much more. I won't delve into everything here. In a nutshell, any element that can be described as more than just a generic "container" is considered to be semantic HTML.
+... and much more. In short, any element that can be described as more than just a generic "container" is considered to be semantic HTML.
 
 ## Creating an Accessible User Experience with Semantic HTML
 
-Now that we've done a quick review of what semantic HTML is, we're ready to look at examples of what you should and should not do in order to create an accessible user experience. For a list of browsers that support HTML accessibility, check out [html5accessibility.com](https://www.html5accessibility.com/).
+Now that we've reviewed what semantic HTML is, we're ready to look at examples of what you should and shouldn't do.
 
 ### Don't Use Divs for Interactive Elements
 
-Using divs for user interactions is a terrible practice for web accessibility. In other words, don't do this:
+Using divs for user interactions terrible for accessibility.
+
+For example, don't do this:
 
 ```html
 <div tabindex="0" role="button" id="toggle"></div>
@@ -133,9 +135,9 @@ As does the new Reddit interface (the old one is still using divs):
 
 ![Inspecting the Reddit upvote button](./images/reddit.png)
 
-#### Q: Should I Use an Anchor or a Button?
+#### Should I Use an Anchor or a Button?
 
-This is a great question! Developers usually ask this because they're concerned with how their user interface _looks_ rather than how it functions. The answer is that **it depends on what the button does**. If it directs someone to a different page, then that's really an anchor's job; the only way to do it with a button is by reinventing the wheel with JavaScript. So it's perfectly fine to use an anchor in this case and to style it like a button.
+Developers usually ask this because they're concerned with how their user interface _looks_ rather than how it functions. The answer is that it depends on what the "button" does. If it directs someone to a different page, then that's really an anchor's job; the only way to do it with a button is by reinventing the wheel with JavaScript. So it's perfectly fine to use an anchor in this case and to style it like a button.
 
 Remember: To a user navigating your site with a screen reader, what matters isn't what an element _looks_ like but rather what the element _does_. The best that a screen reader can do is to tell you what it is that you've encountered on a page. A screen reader can't possibly infer that a regular old `<button>` will take you to a different URL—that's the job of an anchor, after all.
 
@@ -152,7 +154,7 @@ Note that some buttons have inherent functions in HTML. For example, a button wi
 
 ### Use More Lists!
 
-Lists are, in my opinion, underrated. Things are _listed_ are everywhere on the web, yet you rarely see them rendered _using_ lists!
+Things are _listed_ are everywhere on the web, yet you rarely see them rendered _using_ lists.
 
 A screen reader won't detect that a `<div>` is a collection of ordered or unordered items because divs convey absolutely zero meaning—they're not semantic HTML. Note that a `<div>` has no implicit ARIA role, meaning a screen reader won't narrate anything special when it encounters that `<div>` (but it will still read its contents). This means that if you have multiple, separate `<div>`s that each serve as lists, their items will meld together when narrated, and that could get confusing.
 
@@ -161,9 +163,9 @@ On the other hand, when it encounters an `<ol>` or `<ul>`, a screen reader _will
 Here are a few great use cases for HTML lists:
 
 - **Navigation links** in menus and sidebars.
-- **Feeds and posts** (e.g., blog posts, social media feeds, forum posts, replies and comments). In most cases, you'll want to use an ordered list since these items are usually sorted by a given parameter, like date published.
-- **Pagination trails**. A pagination trail is literally a numbered list of pages—it doesn't get any simpler than that!
-- **Grouped tags and links** (e.g., post tags or social media links). Use unordered lists!
+- **Feeds and posts**: blog posts, social media feeds, forum posts, replies and comments. In most cases, you'll want to use an ordered list since these items are usually sorted by a given parameter, like date published.
+- **Pagination trails**. A pagination trail is, by definition, a numbered _list_ of pages.
+- **Grouped tags and links**. For example, post tags or social media links.
 
 Just because lists render with bullet points or numbers by default doesn't mean that they must be reserved for _textual_ lists. In terms of semantic HTML, a list is the perfect container for a group of related items, ordered or not.
 
@@ -176,7 +178,7 @@ Google renders search results using divs, but an ordered list would probably mak
 ![Inspecting the Google search results page](./images/google.png)
 
 {% aside %}
-**Note**: Google has hidden elements that provide accessibility guidance to users with screen readers and other assistive technologies, so this "violation" isn't really a big deal. That may apply to some of the other sites and apps, too, though I haven't tested them.
+**Note**: Google also renders visually hidden elements that provide guidance to screen reader users, so this "violation" isn't really a big deal.
 {% endaside %}
 
 Twitter uses divs for replies:
@@ -222,7 +224,7 @@ If you want inline positioning on block-level elements, `<span>` is not the righ
 
 You may have heard the term "ARIA" used in the context of HTML, but what exactly does it mean?
 
-As defined by the W3 Consortium, ARIA stands for **Accessible Rich Internet Applications**. It's a set of built-in HTML attributes that developers can use to provide a better user experience to people using assistive technologies like screen readers.
+As defined by the W3 Consortium, ARIA stands for <dfn>Accessible Rich Internet Applications</dfn>. It's a set of built-in HTML attributes that developers can use to provide a better user experience to people using assistive technologies like screen readers.
 
 However, as I mentioned before, just because you can do something doesn't mean that you should (or that it's okay to abuse it). The following are W3's guidelines on ARIA attributes:
 
@@ -240,11 +242,11 @@ Notice that elements also have a set of **permitted ARIA roles** and **permitted
 
 "Permitted ARIA roles" goes back to the whole "don't use divs as buttons" argument, though it encompasses a much wider issue of misusing elements in general or trying to get an element to masquerade as something completely different. HTML has a diverse set of semantic elements that you can use to build most user interfaces that come to mind—don't resort to hacks.
 
-### Use the Right Heading Levels for Your Content
+### Use Appropriate Heading Levels
 
 Have you ever used a lower heading level, like `h5` or `h6`, simply because you needed the text to be a smaller font size? While headings do have default font sizes, you shouldn't just pick a level based on the font size that you need. HTML headings communicate your content's hierarchy to screen readers, search engine crawlers, and HTML validation tools. Basically, don't skip levels and go from an `h2` to an `h6`. Imagine how confusing it would be for someone using a screen reader to hear that your content jumped from heading level two to six all of a sudden! Without seeing your site, they'd think that something must've gotten lost in translation.
 
-### Use the `<time>` Element for Dates
+### Use `<time>` for Dates
 
 This is another underrated semantic HTML element. Basically, use the `<time>` element for dates and times. For example, you can wrap the publication date in a `<time>` for a forum post, blog post, article, video, and so on.
 
@@ -270,7 +272,7 @@ We've looked at what semantic HTML means and when you should use certain element
 
 Native tooltips should not be relied upon to give users any indication of what an interactive element represents. Moreover, don't combine it with an `aria-label` because both may end up getting narrated by a screen reader, creating a confusing user experience.
 
-### Give Images a Descriptive `alt` Attribute
+### Use Descriptive `alt` Text
 
 It helps to close your eyes for a moment and imagine that you're hearing the words that you type. You want to paint a detailed picture that conveys a certain mood or communicates important details, but without going into excessive detail.
 
@@ -290,7 +292,7 @@ This would communicate that a particular link corresponds to the current page th
 
 ### Hide Presentational Images with `alt=""`
 
-Sometimes, you _want_ to hide content from screen readers to avoid presenting irrelevant information to users. Examples include blog post thumbnails, user avatars, and SVG icons that don't have accompanying text or any surrounding context. These are known as **presentational images** since they're being used for decorative purposes rather than to convey certain meaning.
+Sometimes, you _want_ to hide content from screen readers to avoid presenting irrelevant information to users. Examples include blog post thumbnails, user avatars, and SVG icons that don't have accompanying text or any surrounding context. These are known as <dfn>presentational images</dfn> since they're being used for decorative purposes rather than to convey certain meaning.
 
 While presentational images are visible to sighted users, they're not essential for blind users. In fact, in some cases, adding alt text to presentational images may lead to redundant text being narrated. Imagine how annoying it would be if a screen reader were to say `Profile photo for user X` and then immediately follow that up by reading the user's name—you don't need to hear it twice!
 
@@ -304,10 +306,6 @@ Note that this is not the same as omitting the `alt` attribute altogether, which
 
 Alternatively, you can use a background image on a `<span>` or `<div>`. You can also use [`role="presentation"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_presentation_role) to remove semantic meaning from an image.
 
-## Building a More Accessible Web: Next Steps
+## Next Steps
 
-I highly recommend that you install a screen reader yourself to audit your own site for accessibility issues. Follow along with the narration. If nothing seems to make sense or flow right, then you have a problem. I personally prefer the [NVDA](https://www.nvaccess.org/download/) screen reader; it's free and easy to use.
-
-There's also a fantastic tool called [WAVE](https://wave.webaim.org/) that basically runs an accessibility audit on any given URL and shows the results right there in an interactive session.
-
-I hope you found this guide helpful! If you have any questions, let me know down below.
+I highly recommend that you install a screen reader yourself to audit your own site for accessibility issues. Follow along with the narration. If nothing seems to make sense or flow right, then you have a problem. I personally prefer the [NVDA](https://www.nvaccess.org/download/) screen reader; it's free and easy to use. There are also lots of free tools and sites you can use to run accessibility audits.
