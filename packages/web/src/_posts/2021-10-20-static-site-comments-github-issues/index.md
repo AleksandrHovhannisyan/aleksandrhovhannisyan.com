@@ -5,7 +5,7 @@ keywords: [comment system, comments, github api, netlify functions]
 categories: [netlify, github, nodejs]
 thumbnail: https://images.unsplash.com/photo-1512626120412-faf41adb4874?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
 commentsId: 117
-lastUpdated: 2024-08-15
+lastUpdated: 2026-02-23
 ---
 
 Comment systems are one of the easiest ways to collect feedback from your readers and to encourage the kinds of civil and respectful discussions for which the internet is so well known. But how do you add comments to a simple static site? There are lots of options to choose from these days, but they all come with their drawbacks: privacy concerns, ads, styling and markup that you don't have control over, and so many other problems.
@@ -40,7 +40,7 @@ The page then includes some JavaScript to detect when a user has scrolled to the
 
 It may seem a little strange to use GitHub issues as a comment system, but hear me out! While there are lots of existing comment systems and platforms that you can integrate into your site, they all have their own problems.
 
-Static comment systems (e.g., with [Staticman](https://staticman.net/)) are the simplest to set up, but they require you to rebuild your site for new comments to appear. This is too much maintenance—I want my users to be able to post comments and have them show up immediately upon refreshing the page. I also don't want to have to rebuild my site every time a new comment is posted.
+Static comment systems (e.g., with [Staticman](https://github.com/eduardoboucas/staticman)) are the simplest to set up, but they require you to rebuild your site for new comments to appear. This is too much maintenance—I want my users to be able to post comments and have them show up immediately upon refreshing the page. I also don't want to have to rebuild my site every time a new comment is posted.
 
 At the same time, I want to be able to moderate comments and delete them if they're abusive. For this reason, Disqus tends to be a popular option since it gives you full admin permissions and control over comments. But it also comes with ads and tracking that I absolutely don't want my users to have to worry about.
 
