@@ -271,7 +271,7 @@ const response = await octokit.paginate(
     },
     dateTime: comment.created_at,
     isEdited: comment.created_at !== comment.updated_at,
-    body: markownToHtml(comment.body),
+    body: markdownToHtml(comment.body),
   }))
 );
 
@@ -291,7 +291,7 @@ In the mapping function, I'm returning some custom information about each commen
 Note this line in particular for the mapped comments:
 
 ```js
-body: markownToHtml(comment.body)
+body: markdownToHtml(comment.body)
 ```
 
 This is just a placeholder to indicate that you can use whatever Markdown library you want to convert the text to HTML. Alternatively, you can use `comment.body_html` directly to get GitHub's custom HTML, although I don't recommend doing this as you have no control over that markup.
@@ -301,7 +301,7 @@ This is just a placeholder to indicate that you can use whatever Markdown librar
 Since the GitHub API doesn't sanitize comments for us, you'll need to install an HTML sanitizer like [`sanitize-html`](https://www.npmjs.com/package/sanitize-html) and use it to sanitize the parsed body of the comment before returning it:
 
 ```js
-body: sanitizeHtml(markownToHtml(comment.body))
+body: sanitizeHtml(markdownToHtml(comment.body))
 ```
 
 Otherwise, if you don't do this, you could open yourself up to XSS attacks. You've been warned!
