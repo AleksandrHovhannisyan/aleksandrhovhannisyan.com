@@ -6,25 +6,12 @@ categories: [javascript, html]
 thumbnail: ./images/phases.png
 lastUpdated: 2023-02-04
 isFeatured: true
+scripts:
+  - type: module
+    src: src/assets/scripts/components/codeDemo.ts
 openGraph:
   card: summary_large_image
 ---
-
-{% capture originalHTML %}
-```html
-<button>Click me!</button>
-```
-{% endcapture %}
-{% assign html = originalHTML %}
-
-{% capture originalCSS %}
-```css
-button {
-  padding: 0.5rem;
-}
-```
-{% endcapture %}
-{% assign css = originalCSS %}
 
 When you're first starting out with JavaScript, one of the first things you learn is how to register event listeners on HTML elements so you can respond to user actions, like a button click or an input event. At this early stage in your journey with JavaScript, event handling seems like a simple black box: an event is triggered, your event handler processes the event, and that's all there is to it. But this doesn't tell the whole story.
 
@@ -63,7 +50,9 @@ By design, JavaScript is an event-driven programming language involving <dfn>pub
 
 Note that some events can be triggered programmatically. For example, if we have a reference to a button element, we can use JavaScript to click it without input from a user:
 
-{{ html }}
+```html
+<button>Click me!</button>
+```
 
 ```js
 const button = document.querySelector('button');
@@ -94,11 +83,17 @@ button.addEventListener('click', () => {
 
 Try it out!
 
-{% codeDemo 'Registering an event listener for the click event on a button' %}
-{{ html }}
-{{ css }}
-{{ js }}
-{% endcodeDemo %}
+<code-demo description="Registering an event listener for the click event on a button" style="height: 310px">
+  <template>
+    <button>Click me!</button>
+    <script>
+      const button = document.querySelector('button');
+      button.addEventListener('click', () => {
+        console.log('click event fired');
+      });
+    </script>
+  </template>
+</code-demo>
 
 The same event can fire any number of times; our event listener will run each time.
 
@@ -133,35 +128,32 @@ button.removeEventListener('click', handleClick);
 
 Play around with the following demo; click the first button to log a message in the console, then click the second button to remove the event listener on the first button, and then click the first button again to observe that no more messages are logged:
 
-{% codeDemo 'Adding and removing click listeners from a button' %}
-```html
-<fieldset id="button-demo-fieldset">
-  <button id="button-click">Fire click event</button>
-  <button id="button-remove">Remove listener</button>
-</fieldset>
-```
-{{ css }}
-```css
-#button-demo-fieldset {
-  border: none;
-  display: flex;
-  gap: 0.5rem;
-}
-```
-```js
-const handleButtonClick = (e) => {
-  console.log('clicked');
-}
-
-const button1 = document.querySelector('#button-click');
-const button2 = document.querySelector('#button-remove');
-
-button1.addEventListener('click', handleButtonClick);
-button2.addEventListener('click', () => {
-  button1.removeEventListener('click', handleButtonClick);
-})
-```
-{% endcodeDemo %}
+<code-demo description="Adding and removing click listeners from a button" style="height: 310px">
+  <template>
+    <fieldset id="button-demo-fieldset">
+      <button id="button-click">Fire click event</button>
+      <button id="button-remove">Remove listener</button>
+    </fieldset>
+    <style>
+      #button-demo-fieldset {
+        border: none;
+        display: flex;
+        gap: 0.5rem;
+      }
+    </style>
+    <script>
+      const handleButtonClick = (e) => {
+       console.log('clicked');
+      }
+      const button1 = document.querySelector('#button-click');
+      const button2 = document.querySelector('#button-remove');
+      button1.addEventListener('click', handleButtonClick);
+      button2.addEventListener('click', () => {
+        button1.removeEventListener('click', handleButtonClick);
+      })
+    </script>
+  </template>
+</code-demo>
 
 ### Events Have a Default Behavior
 
@@ -205,7 +197,6 @@ Each statement is *less precise* than the one before it, but it is true nonethel
 
 Going back to our code, let's try adding some event listeners so we can tell what's happening. We'll add a click event listener to the button, body, document root, and window to see what gets logged when the button is clicked:
 
-{% capture js %}
 ```js
 const button = document.querySelector('button');
 const html = document.documentElement;
@@ -216,15 +207,21 @@ html.addEventListener('click', () => console.log('html'));
 body.addEventListener('click', () => console.log('body'));
 button.addEventListener('click', () => console.log('button'));
 ```
-{% endcapture %}
 
-{{ js }}
-
-{% codeDemo 'Registering click event listeners on a button and all of its ancestors' %}
-{{ html }}
-{{ css }}
-{{ js }}
-{% endcodeDemo %}
+<code-demo description="Registering click event listeners on a button and all of its ancestors" style="height: 310px">
+  <template>
+    <button>Click me!</button>
+    <script>
+      const button = document.querySelector('button');
+      const html = document.documentElement;
+      const body = document.body;
+      window.addEventListener('click', () => console.log('window'));
+      html.addEventListener('click', () => console.log('html'));
+      body.addEventListener('click', () => console.log('body'));
+      button.addEventListener('click', () => console.log('button'));
+    </script>
+  </template>
+</code-demo>
 
 When the button is clicked, the following messages will be logged in order:
 
@@ -265,21 +262,22 @@ We'll learn more about *why* they were logged in this order later in this articl
 
 However, where the order of `addEventListener` *does* matter is when you register multiple event listeners for the same event on the *same element*, like in the following example:
 
-{% capture js %}
 ```js
 const button = document.querySelector('button');
 button.addEventListener('click', () => console.log('one'));
 button.addEventListener('click', () => console.log('two'));
 ```
-{% endcapture %}
 
-{{ js }}
-
-{% codeDemo 'Registering two click listeners on a button' %}
-{{ html }}
-{{ css }}
-{{ js }}
-{% endcodeDemo %}
+<code-demo description="Registering two click listeners on a button" style="height: 310px">
+  <template>
+    <button>Click me!</button>
+    <script>
+      const button = document.querySelector('button');
+      button.addEventListener('click', () => console.log('one'));
+      button.addEventListener('click', () => console.log('two'));
+    </script>
+  </template>
+</code-demo>
 
 If we click the button, we'll get the following output:
 
@@ -290,21 +288,22 @@ If we click the button, we'll get the following output:
 
 Reversing the order of the event listeners also reverses the order of the output:
 
-{% capture js %}
 ```js
 const button = document.querySelector('button');
 button.addEventListener('click', () => console.log('two'));
 button.addEventListener('click', () => console.log('one'));
 ```
-{% endcapture %}
 
-{{ js }}
-
-{% codeDemo 'Registering two click listeners on a button' %}
-{{ html }}
-{{ css }}
-{{ js }}
-{% endcodeDemo %}
+<code-demo description="Registering two click listeners on a button" style="height: 310px">
+  <template>
+    <button>Click me!</button>
+    <script>
+      const button = document.querySelector('button');
+      button.addEventListener('click', () => console.log('two'));
+      button.addEventListener('click', () => console.log('one'));
+    </script>
+  </template>
+</code-demo>
 
 When we add multiple event listeners to the same element for the same event, the handlers queue up in order, so the first handler runs first, then the second, and so on.
 
@@ -421,7 +420,6 @@ What we're specifically interested in is that second scenario. Because events be
 
 Using the same button example as before, we'll now pass in `{ capture: true }` for all of the ancestor event handlers but leave the button's event handler as-is:
 
-{% capture js %}
 ```js
 window.addEventListener('click', (e) => {
   console.log('window');
@@ -439,17 +437,28 @@ document.querySelector('button').addEventListener('click', (e) => {
   console.log('button');
 });
 ```
-{% endcapture %}
-
-{{ js }}
 
 What do you think the output will look like this time? Run the demo to find out:
 
-{% codeDemo 'Registering a click listener on a button and capturing click listeners on its ancestors.' %}
-{{ html }}
-{{ css }}
-{{ js }}
-{% endcodeDemo %}
+<code-demo description="Registering a click listener on a button and capturing click listeners on its ancestors." style="height: 310px">
+  <template>
+    <button>Click me!</button>
+    <script>
+      window.addEventListener('click', (e) => {
+        console.log('window');
+      }, { capture: true });
+      document.documentElement.addEventListener('click', (e) => {
+        console.log('html');
+      }, { capture: true });
+      document.body.addEventListener('click', (e) => {
+        console.log('body');
+      }, { capture: true });
+      document.querySelector('button').addEventListener('click', (e) => {
+        console.log('button');
+      });
+    </script>
+  </template>
+</code-demo>
 
 This time around, when the button is clicked, the order of the output will be reversed:
 
@@ -462,7 +471,6 @@ This time around, when the button is clicked, the order of the output will be re
 
 The event begins its journey at the browser `window`, which was technically clicked because there's no way for a user to click a document without also clicking somewhere inside their browser window. It then propagates down the DOM, starting at the root, then reaching the body, then any intermediate parents (none in this case), and then finally propagating to the button itself, where it enters the targeting phase. We can verify this by also logging the `eventPhase` property of the event object:
 
-{% capture js %}
 ```js
 window.addEventListener('click', (e) => {
   console.log('window', e.eventPhase);
@@ -480,15 +488,26 @@ document.querySelector('button').addEventListener('click', (e) => {
   console.log('button', e.eventPhase);
 });
 ```
-{% endcapture %}
 
-{{ js }}
-
-{% codeDemo 'Registering a click listener on a button and capturing click listeners on its ancestors.' %}
-{{ html }}
-{{ css }}
-{{ js }}
-{% endcodeDemo %}
+<code-demo description="Registering a click listener on a button and capturing click listeners on its ancestors." style="height: 310px">
+  <template>
+    <button>Click me!</button>
+    <script>
+      window.addEventListener('click', (e) => {
+        console.log('window', e.eventPhase);
+      }, { capture: true });
+      document.documentElement.addEventListener('click', (e) => {
+        console.log('html', e.eventPhase);
+      }, { capture: true });
+      document.body.addEventListener('click', (e) => {
+        console.log('body', e.eventPhase);
+      }, { capture: true });
+      document.querySelector('button').addEventListener('click', (e) => {
+        console.log('button', e.eventPhase);
+      });
+    </script>
+  </template>
+</code-demo>
 
 Output:
 
@@ -536,7 +555,6 @@ The target for a particular event is accessible under the [`Event.target`](https
 
 Importantly, `Event.target` always refers to the same HTML element for a particular event no matter which event listener you are accessing it from. For example, consider this code:
 
-{% capture js %}
 ```js
 function handleClick(e) {
   console.log(e.target.tagName);
@@ -547,23 +565,28 @@ document.documentElement.addEventListener('click', handleClick, { capture: true 
 document.body.addEventListener('click', handleClick, { capture: true });
 document.querySelector('button').addEventListener('click', handleClick);
 ```
-{% endcapture %}
-
-{{ js }}
 
 If you were to click the button this time, you would see `"BUTTON"` logged four times because the event target is the same in all four event listeners.
 
-{% codeDemo 'Logging e.target.tagName' %}
-{{ html }}
-{{ css }}
-{{ js }}
-{% endcodeDemo %}
+<code-demo description="Logging e.target.tagName" style="height: 310px">
+  <template>
+    <button>Click me!</button>
+    <script>
+      function handleClick(e) {
+        console.log(e.target.tagName);
+      }
+      window.addEventListener('click', handleClick, { capture: true });
+      document.documentElement.addEventListener('click', handleClick, { capture: true });
+      document.body.addEventListener('click', handleClick, { capture: true });
+      document.querySelector('button').addEventListener('click', handleClick);
+    </script>
+  </template>
+</code-demo>
 
 #### `Event.currentTarget`
 
 If instead we want to access the node on which the event listener was *registered*, we can do so via [`Event.currentTarget`](https://developer.mozilla.org/en-US/docs/Web/API/Event/target). The code below logs both `Event.target` and `Event.currentTarget` to compare the two in the capturing and targeting phases:
 
-{% capture js %}
 ```js
 function handleClick(e) {
   const target = e.target.tagName;
@@ -576,15 +599,23 @@ document.documentElement.addEventListener('click', handleClick, { capture: true 
 document.body.addEventListener('click', handleClick, { capture: true });
 document.querySelector('button').addEventListener('click', handleClick);
 ```
-{% endcapture %}
 
-{{ js }}
-
-{% codeDemo 'Logging e.currentTarget.tagName' %}
-{{ html }}
-{{ css }}
-{{ js }}
-{% endcodeDemo %}
+<code-demo description="Logging e.currentTarget.tagName" style="height: 310px">
+  <template>
+    <button>Click me!</button>
+    <script>
+      function handleClick(e) {
+        const target = e.target.tagName;
+        const currentTarget = e.currentTarget.tagName ?? 'WINDOW';
+        console.log(`target`, target, `currentTarget`, currentTarget);
+      }
+      window.addEventListener('click', handleClick, { capture: true });
+      document.documentElement.addEventListener('click', handleClick, { capture: true });
+      document.body.addEventListener('click', handleClick, { capture: true });
+      document.querySelector('button').addEventListener('click', handleClick);
+    </script>
+  </template>
+</code-demo>
 
 Now, when the button is clicked, we should see the following output:
 
@@ -601,16 +632,11 @@ Most of the time, `Event.currentTarget` won't be all that useful. If you're assi
 
 Finally, some event types (like [`FocusEvent`](https://developer.mozilla.org/en-US/docs/Web/API/FocusEvent/relatedTarget) and [`MouseEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/relatedTarget)) can have a <dfn>related target</dfn>: another element that participates in a symmetric event. For example, in the `blur` event, one element loses focus while another element might gain focus:
 
-{% capture html %}
 ```html
 <label>One <input name="one"></label>
 <label>Two <input name="two"></label>
 ```
-{% endcapture %}
 
-{{ html }}
-
-{% capture js %}
 ```js
 document.querySelectorAll('input').forEach((input) => {
   input.addEventListener('blur', (e) => {
@@ -618,22 +644,28 @@ document.querySelectorAll('input').forEach((input) => {
   });
 });
 ```
-{% endcapture %}
-
-{{ js }}
 
 Use your mouse or keyboard to focus the two inputs in this demo:
 
-{% codeDemo 'Comparing e.target.name with e.relatedTarget.name' %}
-{{ html }}
-```css
-label + label {
-  display: block;
-  margin-top: 1rem;
-}
-```
-{{ js }}
-{% endcodeDemo %}
+<code-demo description="Comparing e.target.name with e.relatedTarget.name" style="height: 310px">
+  <template>
+    <label>One <input name="one"></label>
+    <label>Two <input name="two"></label>
+    <style>
+      label + label {
+        display: block;
+        margin-top: 1rem;
+      }
+    </style>
+    <script>
+      document.querySelectorAll('input').forEach((input) => {
+        input.addEventListener('blur', (e) => {
+          console.log(`blurred:`, e.target.name, `focused:`, e.relatedTarget.name);
+        });
+      });
+    </script>
+  </template>
+</code-demo>
 
 If you focus the first input and then focus the second input, the following will be logged:
 
@@ -650,8 +682,6 @@ If you now blur the second input by focusing the first input, the following will
 Typically, `relatedTarget` is only relevant for symmetric events, where the event has a related event that also fires. For example, if a `mouseenter` event fires on one element, then a `mouseleave` event likely fired on some other element.
 
 ### 3. Event Bubbling
-
-{% assign html = originalHTML %}
 
 This is the example we ran at the beginning of this article:
 
@@ -690,7 +720,6 @@ Remember: The event is still captured even if we don't listen to it in that phas
 
 If we log `eventPhase`, we should see `3` (bubbling) for everything except the button:
 
-{% capture js %}
 ```js
 window.addEventListener('click', (e) => {
   console.log('window', e.eventPhase);
@@ -708,15 +737,26 @@ document.querySelector('button').addEventListener('click', (e) => {
   console.log('button', e.eventPhase);
 });
 ```
-{% endcapture %}
 
-{{ js }}
-
-{% codeDemo 'Logging Event.eventPhase in the bubbling phase' %}
-{{ html }}
-{{ css }}
-{{ js }}
-{% endcodeDemo %}
+<code-demo description="Logging Event.eventPhase in the bubbling phase" style="height: 310px">
+  <template>
+    <button>Click me!</button>
+    <script>
+      window.addEventListener('click', (e) => {
+        console.log('window', e.eventPhase);
+      });
+      document.documentElement.addEventListener('click', (e) => {
+        console.log('html', e.eventPhase);
+      });
+      document.body.addEventListener('click', (e) => {
+        console.log('body', e.eventPhase);
+      });
+      document.querySelector('button').addEventListener('click', (e) => {
+        console.log('button', e.eventPhase);
+      });
+    </script>
+  </template>
+</code-demo>
 
 As expected, when we click the button, we get a `2` for the button (targeting phase) and a `3` (bubbling) for its ancestors:
 
@@ -766,9 +806,6 @@ If the scroll event *did* bubble up from child elements, then it would lead to s
 
 ## Mixing Event Capturing and Bubbling
 
-{% assign html = originalHTML %}
-{% assign css = originalCSS %}
-
 So far in our code demos, we've set all parent event listeners to either capture or bubble. But what happens if we mix and match? And what if we set multiple event listeners of different types on the same parent element? Let's set:
 
 1. Both a capturing and normal event listener on the `window`.
@@ -777,7 +814,6 @@ So far in our code demos, we've set all parent event listeners to either capture
 
 Here's the code that does that:
 
-{% capture js %}
 ```js
 window.addEventListener('click', (e) => {
   console.log('window', e.eventPhase);
@@ -799,17 +835,31 @@ document.querySelector('button').addEventListener('click', (e) => {
   console.log('button', e.eventPhase);
 });
 ```
-{% endcapture %}
-
-{{ js }}
 
 What will the output be this time?
 
-{% codeDemo 'Mixing regular and capturing event listeners in the same example' %}
-{{ html }}
-{{ css }}
-{{ js }}
-{% endcodeDemo %}
+<code-demo description="Mixing regular and capturing event listeners in the same example" style="height: 310px">
+  <template>
+    <button>Click me!</button>
+    <script>
+      window.addEventListener('click', (e) => {
+        console.log('window', e.eventPhase);
+      }, { capture: true });
+      window.addEventListener('click', (e) => {
+        console.log('window', e.eventPhase);
+      });
+      document.documentElement.addEventListener('click', (e) => {
+        console.log('html', e.eventPhase);
+      });
+      document.body.addEventListener('click', (e) => {
+        console.log('body', e.eventPhase);
+      }, { capture: true });
+      document.querySelector('button').addEventListener('click', (e) => {
+        console.log('button', e.eventPhase);
+      });
+    </script>
+  </template>
+</code-demo>
 
 Output:
 
@@ -843,9 +893,6 @@ Let's break this down in terms of the code:
 
 ## Stopping Event Propagation
 
-{% assign html = originalHTML %}
-{% assign css = originalCSS %}
-
 In some situations, we might want to prevent an event from propagating further in the DOM. This might mean that we want to prevent the event from being captured by other nodes *below* it or reaching its intended target, or we might want to prevent it from *bubbling* to other nodes after it has reached the target. Either way, the DOM allows us to stop the event from propagating using [`Event.stopPropagation`](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation).
 
 {% aside %}
@@ -858,7 +905,6 @@ Let's consider a few different scenarios, all involving the same example where a
 
 Let's update the `window`'s capturing event listener to stop the click event from propagating:
 
-{% capture js %}
 ```js
 window.addEventListener('click', (e) => {
   console.log('window', e.eventPhase);
@@ -882,17 +928,33 @@ document.querySelector('button').addEventListener('click', (e) => {
   console.log('button', e.eventPhase);
 });
 ```
-{% endcapture %}
-
-{{ js }}
 
 In the capturing phase, `Event.stopPropagation` prevents the event from reaching nodes below the current element in the DOM. This means that if we stop propagation at the window, then the element will never enter the DOM—so it won't reach the root, body, or even the button itself. You can verify this in the following demo:
 
-{% codeDemo 'Stopping event propagation during the capturing phase' %}
-{{ html }}
-{{ css }}
-{{ js }}
-{% endcodeDemo %}
+<code-demo description="Stopping event propagation during the capturing phase" style="height: 310px">
+  <template>
+    <button>Click me!</button>
+    <script>
+      window.addEventListener('click', (e) => {
+        console.log('window', e.eventPhase);
+        // 🛑 Stop propagating!
+        e.stopPropagation();
+      }, { capture: true });
+      window.addEventListener('click', (e) => {
+        console.log('window', e.eventPhase);
+      });
+      document.documentElement.addEventListener('click', (e) => {
+        console.log('html', e.eventPhase);
+      });
+      document.body.addEventListener('click', (e) => {
+        console.log('body', e.eventPhase);
+      }, { capture: true });
+      document.querySelector('button').addEventListener('click', (e) => {
+        console.log('button', e.eventPhase);
+      });
+    </script>
+  </template>
+</code-demo>
 
 So we only see the following output:
 
@@ -906,7 +968,6 @@ In fact, if we were to click *anywhere* in the document, we would see the exact 
 
 What if instead we stop event propagation during the targeting phase?
 
-{% capture js %}
 ```js
 window.addEventListener('click', (e) => {
   console.log('window', e.eventPhase);
@@ -930,15 +991,31 @@ document.querySelector('button').addEventListener('click', (e) => {
   e.stopPropagation();
 });
 ```
-{% endcapture %}
 
-{{ js }}
-
-{% codeDemo 'Stopping event propagation during the targeting phase' %}
-{{ html }}
-{{ css }}
-{{ js }}
-{% endcodeDemo %}
+<code-demo description="Stopping event propagation during the targeting phase" style="height: 310px">
+  <template>
+    <button>Click me!</button>
+    <script>
+      window.addEventListener('click', (e) => {
+        console.log('window', e.eventPhase);
+      }, { capture: true });
+      window.addEventListener('click', (e) => {
+        console.log('window', e.eventPhase);
+      });
+      document.documentElement.addEventListener('click', (e) => {
+        console.log('html', e.eventPhase);
+      });
+      document.body.addEventListener('click', (e) => {
+        console.log('body', e.eventPhase);
+      }, { capture: true });
+      document.querySelector('button').addEventListener('click', (e) => {
+        console.log('button', e.eventPhase);
+        // 🛑 Stop propagating!
+        e.stopPropagation();
+      });
+    </script>
+  </template>
+</code-demo>
 
 Here's the output when the button is clicked:
 
@@ -954,7 +1031,6 @@ In the targeting phase, `Event.stopPropagation` will prevent the event from prop
 
 Finally, consider what happens when we stop propagation during the bubbling phase, such as on the root element:
 
-{% capture js %}
 ```js
 window.addEventListener('click', (e) => {
   console.log('window', e.eventPhase);
@@ -978,17 +1054,33 @@ document.querySelector('button').addEventListener('click', (e) => {
   console.log('button', e.eventPhase);
 });
 ```
-{% endcapture %}
-
-{{ js }}
 
 This will prevent the event from bubbling up any further than it already has, meaning the window's second event listener should not be invoked.
 
-{% codeDemo 'Stopping event propagation during the bubbling phase' %}
-{{ html }}
-{{ css }}
-{{ js }}
-{% endcodeDemo %}
+<code-demo description="Stopping event propagation during the bubbling phase" style="height: 310px">
+  <template>
+    <button>Click me!</button>
+    <script>
+      window.addEventListener('click', (e) => {
+        console.log('window', e.eventPhase);
+      }, { capture: true });
+      window.addEventListener('click', (e) => {
+        console.log('window', e.eventPhase);
+      });
+      document.documentElement.addEventListener('click', (e) => {
+        console.log('html', e.eventPhase);
+        // 🛑 Stop propagating!
+        e.stopPropagation();
+      });
+      document.body.addEventListener('click', (e) => {
+        console.log('body', e.eventPhase);
+      }, { capture: true });
+      document.querySelector('button').addEventListener('click', (e) => {
+        console.log('button', e.eventPhase);
+      });
+    </script>
+  </template>
+</code-demo>
 
 Indeed, that's the case if we run this code and inspect the output:
 
@@ -1003,7 +1095,6 @@ Indeed, that's the case if we run this code and inspect the output:
 
 You may have also seen a similar method named [`Event.stopImmediatePropagation`](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopImmediatePropagation). To understand the difference between these two methods, we'll modify our example to set multiple event listeners of the same type on the same node. In this case, let's set two capturing event listeners on `document.body`:
 
-{% capture js %}
 ```js
 window.addEventListener('click', (e) => {
   console.log('window', e.eventPhase);
@@ -1027,9 +1118,6 @@ document.querySelector('button').addEventListener('click', (e) => {
   console.log('button', e.eventPhase);
 });
 ```
-{% endcapture %}
-
-{{ js }}
 
 In this example, I'm registering:
 
@@ -1040,17 +1128,35 @@ In this example, I'm registering:
 
 The very first capturing event listener on the body calls `Event.stopPropagation`. What do you expect the output to be when the button is clicked this time?
 
-{% codeDemo 'Stopping propagation in the capturing phase on the body, which later registers a second capturing listener' %}
-{{ html }}
-{{ css }}
-{{ js }}
-{% endcodeDemo %}
+<code-demo description="Stopping propagation in the capturing phase on the body, which later registers a second capturing listener" style="height: 310px">
+  <template>
+    <button>Click me!</button>
+    <script>
+      window.addEventListener('click', (e) => {
+        console.log('window', e.eventPhase);
+      }, { capture: true });
+      window.addEventListener('click', (e) => {
+        console.log('window', e.eventPhase);
+      });
+      document.body.addEventListener('click', (e) => {
+        console.log('body', e.eventPhase);
+        // 🛑 Stop propagating!
+        e.stopPropagation();
+      }, { capture: true });
+      document.body.addEventListener('click', (e) => {
+        console.log('body', e.eventPhase);
+      }, { capture: true });
+      document.querySelector('button').addEventListener('click', (e) => {
+        console.log('button', e.eventPhase);
+      });
+    </script>
+  </template>
+</code-demo>
 
 `Event.stopPropagation` prevents the event from propagating *to other nodes*, but it does not prevent other event handlers registered on `Event.currentTarget` from running in response to the event in the current phase. So in this example, the capturing event listener on the window runs, and so do both capturing listeners on the body. However, no other event handlers will run because the event is not allowed to propagate further down from the body.
 
 By contrast, `Event.stopImmediatePropagation` is more aggressive than `Event.stopPropagation`, preventing the event from propagating to other nodes in the tree *and* preventing other event handlers set on `Event.currentTarget` from running:
 
-{% capture js %}
 ```js
 window.addEventListener('click', (e) => {
   console.log('window', e.eventPhase);
@@ -1076,15 +1182,33 @@ document.querySelector('button').addEventListener('click', (e) => {
   console.log('button', e.eventPhase);
 });
 ```
-{% endcapture %}
 
-{{ js }}
-
-{% codeDemo 'Stopping immediate propagation in the capturing phase on the body, which later registers a second capturing listener' %}
-{{ html }}
-{{ css }}
-{{ js }}
-{% endcodeDemo %}
+<code-demo description="Stopping immediate propagation in the capturing phase on the body, which later registers a second capturing listener" style="height: 310px">
+  <template>
+    <button>Click me!</button>
+    <script>
+      window.addEventListener('click', (e) => {
+        console.log('window', e.eventPhase);
+      }, { capture: true });
+      window.addEventListener('click', (e) => {
+        console.log('window', e.eventPhase);
+      });
+      // Body handler 1
+      document.body.addEventListener('click', (e) => {
+        console.log('body', e.eventPhase);
+        // 🛑 Stop propagating!
+        e.stopImmediatePropagation();
+      }, { capture: true });
+      // Body handler 2: this will never run
+      document.body.addEventListener('click', (e) => {
+        console.log('body', e.eventPhase);
+      }, { capture: true });
+      document.querySelector('button').addEventListener('click', (e) => {
+        console.log('button', e.eventPhase);
+      });
+    </script>
+  </template>
+</code-demo>
 
 Now, if a user clicks the button, we will only see two messages logged:
 
@@ -1118,7 +1242,6 @@ When might you want to prevent the default behavior for an event? Well, perhaps 
 
 Here's an example of preventing the native form submission behavior:
 
-{% capture html %}
 ```html
 <form>
   <label>
@@ -1128,9 +1251,7 @@ Here's an example of preventing the native form submission behavior:
   </label>
 </form>
 ```
-{% endcapture %}
 
-{% capture js %}
 ```js
 const form = document.querySelector('form');
 form.addEventListener('submit', (e) => {
@@ -1138,16 +1259,25 @@ form.addEventListener('submit', (e) => {
   console.log('submitted form without refreshing');
 });
 ```
-{% endcapture %}
 
-{{ html }}
-
-{{ js }}
-
-{% codeDemo 'Preventing the submit event on a form' %}
-{{ html }}
-{{ js }}
-{% endcodeDemo %}
+<code-demo description="Preventing the submit event on a form" style="height: 310px">
+  <template>
+    <form>
+      <label>
+        Data
+        <input type="text">
+        <button type="submit">Submit</button>
+      </label>
+    </form>
+    <script>
+      const form = document.querySelector('form');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        console.log('submitted form without refreshing');
+      });
+    </script>
+  </template>
+</code-demo>
 
 In some cases, preventing the default behavior for an event can have unintended and frustrating consequences for end users if you're not careful. For example, if you prevent the default behavior on key events to implement keyboard shortcuts in your app, you may prevent people from using their familiar browser keyboard shortcuts on your page.
 
@@ -1159,7 +1289,6 @@ A simple way to prove this is to run some logic in response to a cancelable even
 
 Here's the code for our experiment:
 
-{% capture html %}
 ```html
 <form>
   <label>
@@ -1169,9 +1298,7 @@ Here's the code for our experiment:
   </label>
 </form>
 ```
-{% endcapture %}
 
-{% capture js %}
 ```js
 // Log in a 1s timeout so we can tell when the page loads
 setTimeout(() => {
@@ -1183,34 +1310,55 @@ window.addEventListener('submit', (e) => {
   alert('Pausing. Dismiss this alert to continue.');
 });
 ```
-{% endcapture %}
 
-{{ html }}
-
-{{ js }}
-
-{% codeDemo 'Showing a main-thread-blocking JavaScript alert in response to a form submission' %}
-{{ html }}
-{{ js }}
-{% endcodeDemo %}
+<code-demo description="Showing a main-thread-blocking JavaScript alert in response to a form submission" style="height: 310px">
+  <template>
+    <form>
+      <label>
+        Data
+        <input type="text">
+        <button type="submit">Submit</button>
+      </label>
+    </form>
+    <script>
+      // Log in a 1s timeout so we can tell when the page loads
+      setTimeout(() => {
+        console.log('Page loaded');
+      }, 1000);
+      // Submit event bubbles
+      window.addEventListener('submit', (e) => {
+        alert('Pausing. Dismiss this alert to continue.');
+      });
+    </script>
+  </template>
+</code-demo>
 
 If you run this code and submit the form, you'll notice that it doesn't reload the frame until *after* the alert is dismissed. Thus, the default behavior for events runs after the bubbling phase, giving us time to run any custom logic we want before the default behavior and potentially even prevent the default behavior in any phase. Here's the same `preventDefault` demo, but this time on the `window` in the bubbling phase:
 
-{% capture js %}
 ```js
 window.addEventListener('submit', (e) => {
   e.preventDefault();
   console.log('submitted form without refreshing');
 });
 ```
-{% endcapture %}
 
-{{ js }}
-
-{% codeDemo 'Preventing the submit event on a form in the bubbling phase' %}
-{{ html }}
-{{ js }}
-{% endcodeDemo %}
+<code-demo description="Preventing the submit event on a form in the bubbling phase" style="height: 310px">
+  <template>
+    <form>
+      <label>
+        Data
+        <input type="text">
+        <button type="submit">Submit</button>
+      </label>
+    </form>
+    <script>
+      window.addEventListener('submit', (e) => {
+        e.preventDefault();
+        console.log('submitted form without refreshing');
+      });
+    </script>
+  </template>
+</code-demo>
 
 ## Performant Event Handling
 
@@ -1220,15 +1368,15 @@ As we learned, the event handler for an element runs whenever an event propagate
 
 Some events (like clicks) tend to fire rarely or only during certain user interactions, but other types of events can fire more frequently even under normal circumstances. For example, the `keydown` event fires whenever a user presses a key on their keyboard; if that key remains held down, the `keydown` event will fire continuously, often hundreds of times within just a few seconds. Similarly, the `input` event fires anytime a form input's value changes, which could be often if the user is typing a long message in an HTML input. And the `scroll` event fires *many* times in succession to allow the browser to fluidly animate scroll containers. Type in the textarea below to see just how frequently the event handler logs a message to the console:
 
-{% codeDemo 'Logging a message to the console whenever an HTML textarea value changes' %}
-```html
-<label for="textarea">Type some text quickly:</label>
-<textarea id="textarea"></textarea>
-```
-```js
-document.querySelector('textarea').addEventListener('input', (e) => console.log(e.target.value));
-```
-{% endcodeDemo %}
+<code-demo description="Logging a message to the console whenever an HTML textarea value changes" style="height: 310px">
+  <template>
+    <label for="textarea">Type some text quickly:</label>
+    <textarea id="textarea"></textarea>
+    <script>
+      document.querySelector('textarea').addEventListener('input', (e) => console.log(e.target.value));
+    </script>
+  </template>
+</code-demo>
 
 Debouncing and throttling are two strategies that can be used to control the number of times a function is called within a given time window. Both are examples of the higher-order function pattern; `debounce` and `throttle` are "wrapper" functions that return an inner function that will ultimately be called, while the outer function manages when the inner function gets to run. The implementation details of these two functions are beyond the scope of this tutorial; see the following post by Josh Comeau for a sample implementation of debounce: [debounce snippet](https://www.joshwcomeau.com/snippets/javascript/debounce/).
 
@@ -1238,26 +1386,25 @@ Debouncing follows a cancel-and-reschedule model; it uses `setTimeout` to schedu
 
 For example, if a user is typing repeatedly in an uncontrolled HTML input, we don't necessarily need to react to every single keystroke since the input already updates its value visually in real time. Instead, we can debounce the input event handler. The following demo uses a handler that's debounced by 200 milliseconds:
 
-{% codeDemo 'Logging a message to the console whenever an HTML textarea value changes, with a debounce of 200 milliseconds' %}
-```html
-<label for="textarea">Type some text quickly, and then stop:</label>
-<textarea id="textarea"></textarea>
-```
-```js
-const debounce = (callback, delayMs) => {
-  let timeoutId;
-  return (...args) => {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => {
-      callback.apply(null, args);
-    }, delayMs);
-  }
-}
-
-const handleInput = debounce((e) => console.log(e.target.value), 200);
-document.querySelector('textarea').addEventListener('input', handleInput);
-```
-{% endcodeDemo %}
+<code-demo description="Logging a message to the console whenever an HTML textarea value changes, with a debounce of 200 milliseconds" style="height: 310px">
+  <template>
+    <label for="textarea">Type some text quickly, and then stop:</label>
+    <textarea id="textarea"></textarea>
+    <script>
+      const debounce = (callback, delayMs) => {
+        let timeoutId;
+        return (...args) => {
+          clearTimeout(timeoutId);
+          timeoutId = setTimeout(() => {
+            callback.apply(null, args);
+          }, delayMs);
+        }
+      }
+      const handleInput = debounce((e) => console.log(e.target.value), 200);
+      document.querySelector('textarea').addEventListener('input', handleInput);
+    </script>
+  </template>
+</code-demo>
 
 #### Throttling
 
@@ -1275,7 +1422,6 @@ Other times, we may not need to set event handlers on every single element and c
 
 For example, consider this radio group for a website theme picker:
 
-{% capture html %}
 ```html
 <fieldset id="theme-picker">
   <legend>Theme</legend>
@@ -1289,23 +1435,9 @@ For example, consider this radio group for a website theme picker:
   <label for="theme-contrast">High contrast</label>
 </fieldset>
 ```
-{% endcapture %}
-
-{% capture css %}
-```css
-label {
-  display: inline-block;
-  margin-inline-start: 4px;
-  margin-inline-end: 8px;
-}
-```
-{% endcapture %}
-
-{{ html }}
 
 We _could_ listen for the `input` event on each individual radio button:
 
-{% capture js %}
 ```js
 const themeOptions = document.querySelectorAll('input[name="theme"]');
 themeOptions.forEach((option) => {
@@ -1315,21 +1447,44 @@ themeOptions.forEach((option) => {
   });
 });
 ```
-{% endcapture %}
 
-{{ js }}
 
 And that would give us this result:
 
-{% codeDemo 'Listening to radio input changes without event delegation' %}
-{{ html }}
-{{ css }}
-{{ js }}
-{% endcodeDemo %}
+<code-demo description="Listening to radio input changes without event delegation" style="height: 310px">
+  <template>
+    <style>
+      label {
+        display: inline-block;
+        margin-inline-start: 4px;
+        margin-inline-end: 8px;
+      }
+    </style>
+    <fieldset id="theme-picker">
+      <legend>Theme</legend>
+      <input id="theme-auto" name="theme" type="radio" value="auto" checked>
+      <label for="theme-auto">Auto</label>
+      <input id="theme-light" name="theme" type="radio" value="light">
+      <label for="theme-light">Light</label>
+      <input id="theme-dark" name="theme" type="radio" value="dark">
+      <label for="theme-dark">Dark</label>
+      <input id="theme-contrast" name="theme" type="radio" value="contrast">
+      <label for="theme-contrast">High contrast</label>
+    </fieldset>
+    <script>
+      const themeOptions = document.querySelectorAll('input[name="theme"]');
+      themeOptions.forEach((option) => {
+        option.addEventListener('input', (e) => {
+          const theme = e.target.value;
+          console.log(theme);
+        });
+      });
+    </script>
+  </template>
+</code-demo>
 
 But we could also take advantage of event bubbling to avoid setting an event listener on each individual radio button. Instead, we can set a single listener on the parent:
 
-{% capture js %}
 ```js
 const themePicker = document.querySelector('#theme-picker');
 themePicker.addEventListener('input', (e) => {
@@ -1337,17 +1492,38 @@ themePicker.addEventListener('input', (e) => {
   console.log(theme);
 });
 ```
-{% endcapture %}
-
-{{ js }}
 
 This is known as <dfn>event delegation</dfn>. We get the same result, but with a minor performance improvement and less code:
 
-{% codeDemo 'Listening to radio input changes with event delegation' %}
-{{ html }}
-{{ css }}
-{{ js }}
-{% endcodeDemo %}
+<code-demo description="Listening to radio input changes with event delegation" style="height: 310px">
+  <template>
+    <style>
+      label {
+        display: inline-block;
+        margin-inline-start: 4px;
+        margin-inline-end: 8px;
+      }
+    </style>
+    <fieldset id="theme-picker">
+      <legend>Theme</legend>
+      <input id="theme-auto" name="theme" type="radio" value="auto" checked>
+      <label for="theme-auto">Auto</label>
+      <input id="theme-light" name="theme" type="radio" value="light">
+      <label for="theme-light">Light</label>
+      <input id="theme-dark" name="theme" type="radio" value="dark">
+      <label for="theme-dark">Dark</label>
+      <input id="theme-contrast" name="theme" type="radio" value="contrast">
+      <label for="theme-contrast">High contrast</label>
+    </fieldset>
+    <script>
+      const themePicker = document.querySelector('#theme-picker');
+      themePicker.addEventListener('input', (e) => {
+        const theme = e.target.value;
+        console.log(theme);
+      });
+    </script>
+  </template>
+</code-demo>
 
 The reason this works is because the input event bubbles, so we can intercept it not only on the inputs themselves but also on their parents. Also, as we learned, the event target is accessible from any event listener as that event captures or bubbles.
 

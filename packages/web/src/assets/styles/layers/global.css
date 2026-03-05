@@ -40,10 +40,6 @@
     font-weight: var(--font-weight-body-regular);
   }
 
-  body:has(dialog[open]) {
-    overflow-y: hidden;
-  }
-
   :is(code, kbd) {
     font-family: var(--font-family-mono);
     font-weight: var(--font-weight-mono-regular);
@@ -64,6 +60,10 @@
   kbd {
     outline: solid 1px var(--color-surface-3);
     box-shadow: 0 1px 1px 0 var(--color-border-0);
+  }
+
+  s {
+    text-decoration-thickness: 0.2ex;
   }
 
   mark,
@@ -102,4 +102,8 @@
   strong {
     font-weight: var(--font-weight-body-bold);
   }
+}
+
+iframe {
+  border: solid 1px var(--color-border-0);
 }

@@ -646,10 +646,6 @@
     color: var(--color-code-text) !important;
   }
 
-  .code-preview {
-    border: solid 1px var(--color-border-0);
-  }
-
   /* LaTeX formatting */
   .katex {
     white-space: normal !important;
@@ -859,6 +855,12 @@
       background: rgb(0 0 0 / 20%);
       box-shadow: 2px var(--size-shadow-height) 5px rgb(0 0 0 / 40%);
     }
+  }
+
+  /* Code demos */
+  code-demo {
+    display: block;
+    max-width: 100%;
   }
 
   /* Media carousels */

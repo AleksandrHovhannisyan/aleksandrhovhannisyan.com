@@ -11,6 +11,10 @@
     min-block-size: 100%;
   }
 
+  :where(body:has(dialog[open])) {
+    overflow-y: hidden;
+  }
+
   :where(input, select, textarea, button) {
     font: inherit;
     line-height: inherit;

@@ -1,13 +1,13 @@
-import { type EleventyPluginCodeDemoOptions } from 'eleventy-plugin-code-demo';
+import { LocalIframe } from 'local-iframe/LocalIframe';
 
 const consoleHTML = `
-<footer id="output-root">
-    <div id="output-header">
-        <p id="output-label">Console output</p>
-        <button id="clear-button">Clear console</button>
+<footer id="console-root">
+    <div id="console-header">
+        <p id="console-label">Console output</p>
+        <button id="console-clear-button">Clear console</button>
     </div>
-    <div id="output-wrapper" role="region" tabindex="0" aria-labelledby="output-label">
-        <ol id="output" aria-live="polite" aria-atomic="true" aria-relevant="additions"></ol>
+    <div id="console-wrapper" role="region" tabindex="0" aria-labelledby="console-label">
+        <ol id="console" aria-live="polite" aria-atomic="true" aria-relevant="additions"></ol>
     </div>
 </footer>
 `;
@@ -22,6 +22,7 @@ const consoleCSS = `
     --color-surface-1: hsl(0, 0%, 95%);
     --color-surface-2: hsl(0, 0%, 88%);
     --color-text-soft: hsl(0, 0%, 40%);
+    --color-danger: #c10000;
 }
 html,
 body {
@@ -32,56 +33,55 @@ body {
     padding: 0;
     font-family: sans-serif;
     display: grid;
-    grid-template-rows: 1fr 50%;
 }
-body:not(:has(#html)) {
-    grid-template-rows: 1fr;
-    overflow: hidden;
+body:has(#console-root) {
+    grid-template-rows: 1fr 50%;
 }
 button {
     cursor: pointer;
     font: inherit;
+    padding: 0.5rem;
 }
-#html {
+main {
     display: grid;
     place-content: center;
     padding: 1rem;
     overflow-y: auto;
 }
-#output-root {
+#console-root {
     font-size: medium;
     background-color: var(--color-surface-1);
     display: grid;
     grid-template-rows: auto 1fr;
     overflow: auto;
 }
-#output-header {
+#console-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-block: solid 1px var(--color-border-0);
-    padding: 0.5rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
     background-color: var(--color-surface-2);
 }
-#clear-button {
+#console-clear-button {
     background: transparent;
     font-size: inherit;
     border: none;
     padding: 0.25rem;
     text-decoration: underline;
 }
-#output-wrapper {
+#console-wrapper {
     padding: 0.5rem;
     background-color: inherit;
     overflow-y: auto;
 }
-#output {
+#console {
     list-style: none;
     display: block;
     font-family: monospace;
     padding: 0;
 }
-#output > * {
+#console > * {
     width: 100%;
     display: flex;
     align-items: start;
@@ -89,10 +89,10 @@ button {
     padding: 0.25rem;
     padding-inline-end: 0.5rem;
 }
-#output .error {
-    color: #c10000;
+#console .error {
+    color: var(--color-danger);
 }
-#output time {
+#console time {
     flex-shrink: 0;
     font-variant-numeric: tabular-nums;
     color: var(--color-text-soft);
@@ -100,10 +100,10 @@ button {
 
 const consoleJS = `
 (function initConsole(){
-    const outputRoot = document.querySelector('#output-root');
-    const output = outputRoot.querySelector('#output');
-    const outputScrollContainer = outputRoot.querySelector('[tabindex]');
-    const clearButton = outputRoot.querySelector('#clear-button');
+    const consoleRoot = document.querySelector('#console-root');
+    const consoleOutput = consoleRoot.querySelector('#console');
+    const consoleScrollContainer = consoleRoot.querySelector('[tabindex]');
+    const clearButton = consoleRoot.querySelector('#console-clear-button');
 
     const makeLogger = (level) => (...args) => {
       const li = document.createElement('li');
@@ -117,14 +117,14 @@ const consoleJS = `
         return isUndefined ? 'undefined' : JSON.stringify(arg);
       }).join(" "));
       li.appendChild(time);
-      output.appendChild(li);
-      outputScrollContainer.scrollBy({ top: outputScrollContainer.scrollHeight });
+      consoleOutput.appendChild(li);
+      consoleScrollContainer.scrollBy({ top: consoleScrollContainer.scrollHeight });
     };
 
     console.log = makeLogger();
     console.error = makeLogger("error");
 
-    outputRoot.addEventListener('click', (e) => {
+    consoleRoot.addEventListener('click', (e) => {
         e.stopPropagation();
     });
 
@@ -135,34 +135,30 @@ const consoleJS = `
     // Use capturing listener to preempt any other capturing listeners in the code demo itself
     window.addEventListener('click', (e) => {
         // Prevent clicks on output region from triggering logs
-        if (e.target === outputRoot || outputRoot.contains(e.target)) {
+        if (e.target === consoleRoot || consoleRoot.contains(e.target)) {
             e.stopImmediatePropagation();
         }
         if (e.target === clearButton) {
-            output.innerHTML = '';
+            consoleOutput.innerHTML = '';
         }
     }, { capture: true });
 })();
 `;
 
-export const codeDemoOptions: EleventyPluginCodeDemoOptions = {
-  name: 'codeDemo',
-  renderDocument: ({ html, css, js }) => `
-    <!DOCTYPE html>
+class CodeDemo extends LocalIframe {
+  protected _render(templateHtml: string): string {
+    // Not the most rigorous logic, but good enough
+    const hasScripts = templateHtml.includes('<script>');
+    return `<!DOCTYPE html>
   <html>
-    <head>
-        <style>${consoleCSS}${css}</style>
-    </head>
+    <head><style>${consoleCSS}</style></head>
     <body>
-        ${html ? `<main id="html">${html}</main>` : ''}
-        ${consoleHTML}
-        <script>${consoleJS}${js}</script>
+        <main>${templateHtml}</main>
+        ${hasScripts ? `${consoleHTML}<script>${consoleJS}</script>` : ''}
     </body>
   </html>
-    `,
-  iframeAttributes: {
-    class: 'code-preview',
-    height: '308',
-    style: 'width: 100%;',
-  },
-};
+    `;
+  }
+}
+
+window.customElements.define('code-demo', CodeDemo);

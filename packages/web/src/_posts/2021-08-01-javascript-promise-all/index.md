@@ -6,6 +6,9 @@ categories: [javascript, nodejs, async]
 commentsId: 104
 lastUpdated: 2025-12-04
 thumbnail: https://images.unsplash.com/photo-1606674556490-c2bbb4ee05e5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=900&q=80
+scripts:
+  - type: module
+    src: src/assets/scripts/components/codeDemo.ts
 ---
 
 Imagine you need to wait for multiple async tasks to finish. If the order of the tasks is important, you'd probably want to await the Promises one at a time:
@@ -127,51 +130,45 @@ try {
 }
 ```
 
-{% codeDemo "Demo of simulating async tasks in JavaScript" %}
-```html
-<button>Start tasks</button>
-```
-```css
-button {
-  padding: 8px;
-}
-```
-```js
-function sleep(durationMs) {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(), durationMs);
-  });
-}
-  async function doTask(task) {
-  await sleep(task.durationMs);
-  if (task.fulfills) {
-    console.log(`Promise ${task.id}: fulfilled ✅`);
-    return Promise.resolve();
-  }
-  console.log(`Promise ${task.id}: rejected ❌`);
-  return Promise.reject();
-}
-async function run() {
-  console.log('Starting tasks...');
-  const tasks = [
-  { id: 'A', durationMs: 2000, fulfills: true },
-  { id: 'B', durationMs: 3000, fulfills: true },
-  { id: 'C', durationMs: 1000, fulfills: true },
-];
-
-try {
-  for (const task of tasks) {
-    await doTask(task);
-  }
-  console.log('success');
-} catch (e) {
-  console.log('failure');
-}
-}
-
-document.querySelector('button').addEventListener('click', run);
-```
-{% endcodeDemo %}
+<code-demo description="Demo of simulating async tasks in JavaScript" style="height: 310px">
+  <template>
+    <button id="start-tasks">Start tasks</button>
+    <style>button { padding: 8px; }</style>
+    <script>
+      function sleep(durationMs) {
+        return new Promise((resolve) => {
+          setTimeout(() => resolve(), durationMs);
+        });
+      }
+      async function doTask(task) {
+        await sleep(task.durationMs);
+        if (task.fulfills) {
+          console.log(`Promise ${task.id}: fulfilled ✅`);
+          return Promise.resolve();
+        }
+        console.log(`Promise ${task.id}: rejected ❌`);
+        return Promise.reject();
+      }
+      async function run() {
+        console.log('Starting tasks...');
+        const tasks = [
+          { id: 'A', durationMs: 2000, fulfills: true },
+          { id: 'B', durationMs: 3000, fulfills: true },
+          { id: 'C', durationMs: 1000, fulfills: true },
+        ];
+        try {
+          for (const task of tasks) {
+            await doTask(task);
+          }
+          console.log('success');
+        } catch (e) {
+          console.log('failure');
+        }
+      }
+      document.querySelector('button#start-tasks').addEventListener('click', run, { once: true });
+    </script>
+  </template>
+</code-demo>
 
 If you run this code, you should see the following messages logged one at a time:
 
@@ -241,53 +238,47 @@ try {
 }
 ```
 
-{% codeDemo "Demo of unhandled promise rejection errors in JavaScript" %}
-```html
-<button>Test rejection handling</button>
-```
-```css
-button {
-  padding: 8px;
-}
-```
-```js
-function sleep(durationMs) {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(), durationMs);
-  });
-}
-  async function doTask(task) {
-  await sleep(task.durationMs);
-  if (task.fulfills) {
-    console.log(`Promise ${task.id}: fulfilled ✅`);
-    return Promise.resolve();
-  }
-  console.log(`Promise ${task.id}: rejected ❌`);
-  return Promise.reject();
-}
-async function run() {
-  console.log('Starting tasks...');
-  const tasks = [
-  { id: 'A', durationMs: 2000, fulfills: true },
-  { id: 'B', durationMs: 3000, fulfills: true },
-  // Promise C rejects ❌
-  { id: 'C', durationMs: 1000, fulfills: false },
-];
-
-try {
-  const promises = tasks.map((task) => doTask(task));
-  for (const promise of promises) {
-    await promise;
-  }
-  console.log('success');
-} catch (e) {
-  console.log('failure');
-}
-}
-
-document.querySelector('button').addEventListener('click', run);
-```
-{% endcodeDemo %}
+<code-demo description="Demo of unhandled promise rejection errors in JavaScript" style="height: 310px">
+  <template>
+    <button id="test-rejection-handling">Test rejection handling</button>
+    <style>button { padding: 8px; }</style>
+    <script>
+      function sleep(durationMs) {
+        return new Promise((resolve) => {
+          setTimeout(() => resolve(), durationMs);
+        });
+      }
+      async function doTask(task) {
+        await sleep(task.durationMs);
+        if (task.fulfills) {
+          console.log(`Promise ${task.id}: fulfilled ✅`);
+          return Promise.resolve();
+        }
+        console.log(`Promise ${task.id}: rejected ❌`);
+        return Promise.reject();
+      }
+      async function run() {
+        console.log('Starting tasks...');
+        const tasks = [
+        { id: 'A', durationMs: 2000, fulfills: true },
+        { id: 'B', durationMs: 3000, fulfills: true },
+        // Promise C rejects ❌
+        { id: 'C', durationMs: 1000, fulfills: false },
+      ];
+      try {
+        const promises = tasks.map((task) => doTask(task));
+        for (const promise of promises) {
+          await promise;
+        }
+        console.log('success');
+      } catch (e) {
+        console.log('failure');
+      }
+      }
+      document.querySelector('button').addEventListener('click', run, { once: true });
+    </script>
+  </template>
+</code-demo>
 
 If you run this code, you'll get an `UnhandledPromiseRejection` error when Promise C rejects. In Node.js, the stack trace for the error provides more context:
 
@@ -386,51 +377,46 @@ try {
 }
 ```
 
-{% codeDemo "Demo of awaiting multiple promises with promise.all" %}
-```html
-<button>Start tasks (with Promise.all)</button>
-```
-```css
-button {
-  padding: 8px;
-}
-```
-```js
-function sleep(durationMs) {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(), durationMs);
-  });
-}
-  async function doTask(task) {
-  await sleep(task.durationMs);
-  if (task.fulfills) {
-    console.log(`Promise ${task.id}: fulfilled ✅`);
-    return Promise.resolve();
-  }
-  console.log(`Promise ${task.id}: rejected ❌`);
-  return Promise.reject();
-}
-async function run() {
-  console.log('Starting tasks...');
-const tasks = [
-  { id: 'A', durationMs: 2000, fulfills: true },
-  { id: 'B', durationMs: 3000, fulfills: true },
-  { id: 'C', durationMs: 1000, fulfills: true },
-];
-try {
-  const promises = tasks.map((task) => doTask(task));
-  await Promise.all(promises);
-  console.log('Promise.all fulfilled');
-} catch (e) {
-  console.log('Promise.all rejected');
-}
-}
+<code-demo description="Demo of awaiting multiple promises with promise.all" style="height: 310px">
+  <template>
+    <button id="start-tasks">Start tasks (with Promise.all)</button>
+    <style>button { padding: 8px; }</style>
+    <script>
+      function sleep(durationMs) {
+        return new Promise((resolve) => {
+          setTimeout(() => resolve(), durationMs);
+        });
+      }
+      async function doTask(task) {
+        await sleep(task.durationMs);
+        if (task.fulfills) {
+          console.log(`Promise ${task.id}: fulfilled ✅`);
+          return Promise.resolve();
+        }
+        console.log(`Promise ${task.id}: rejected ❌`);
+        return Promise.reject();
+      }
+      async function run() {
+        console.log('Starting tasks...');
+        const tasks = [
+          { id: 'A', durationMs: 2000, fulfills: true },
+          { id: 'B', durationMs: 3000, fulfills: true },
+          { id: 'C', durationMs: 1000, fulfills: true },
+        ];
+        try {
+          const promises = tasks.map((task) => doTask(task));
+          await Promise.all(promises);
+          console.log('Promise.all fulfilled');
+        } catch (e) {
+          console.log('Promise.all rejected');
+        }
+      }
+      document.querySelector('button#start-tasks').addEventListener('click', run, { once: true });
+    </script>
+  </template>
+</code-demo>
 
-document.querySelector('button').addEventListener('click', run);
-```
-{% endcodeDemo %}
-
-If you compare this to output of the very first demo, the difference is substantial: Whereas before we had to wait six seconds for all the tasks to finish because we were constructing and awaiting the Promises one at a time, we are now only waiting at most three seconds total (give or take) because the Promise objects are all constructed synchronously and allowed to settle on a first-come, first-served basis.
+Compared to the very first demo, this approach is noticeably faster: Whereas before we had to wait six seconds for all the tasks to finish because we were constructing and awaiting the Promises one at a time, we are now only waiting at most three seconds total (give or take) because the Promise objects are all constructed synchronously and allowed to settle on a first-come, first-served basis.
 
 Imagine if the Promise executor function for `doTask` initiates a network request. We could see a big boost in performance because those network requests would start concurrently by the browser as soon as the Promises are constructed. By contrast, in our very first `for-of` loop approach, we'd have to make one network request at a time, in each iteration of the loop. If the first request takes a long time to settle, then the construction of future Promises will be needlessly delayed.
 
@@ -458,49 +444,45 @@ try {
 }
 ```
 
-{% codeDemo "Demo of awaiting multiple promises with promise.all, but one of them rejects" %}
-```html
-<button>Test fail-fast rejection</button>
-```
-```css
-button {
-  padding: 8px;
-}
-```
-```js
-function sleep(durationMs) {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(), durationMs);
-  });
-}
-  async function doTask(task) {
-  await sleep(task.durationMs);
-  if (task.fulfills) {
-    console.log(`Promise ${task.id}: fulfilled ✅`);
-    return Promise.resolve();
-  }
-  console.log(`Promise ${task.id}: rejected ❌`);
-  return Promise.reject();
-}
-async function run() {
-  console.log('Starting tasks...');
-const tasks = [
-  { id: 'A', durationMs: 2000, fulfills: true },
-  { id: 'B', durationMs: 3000, fulfills: true },
-  { id: 'C', durationMs: 1000, fulfills: false },
-];
-try {
-  const promises = tasks.map((task) => doTask(task));
-  await Promise.all(promises);
-  console.log('Promise.all fulfilled');
-} catch (e) {
-  console.log('Promise.all rejected');
-}
-}
 
-document.querySelector('button').addEventListener('click', run);
-```
-{% endcodeDemo %}
+<code-demo description="Demo of awaiting multiple promises with promise.all, but one of them rejects" style="height: 310px">
+  <template>
+    <button id="test-fail-fast">Test fail-fast rejection</button>
+    <style>button { padding: 8px; }</style>
+    <script>
+      function sleep(durationMs) {
+        return new Promise((resolve) => {
+          setTimeout(() => resolve(), durationMs);
+        });
+      }
+      async function doTask(task) {
+        await sleep(task.durationMs);
+        if (task.fulfills) {
+          console.log(`Promise ${task.id}: fulfilled ✅`);
+          return Promise.resolve();
+        }
+        console.log(`Promise ${task.id}: rejected ❌`);
+        return Promise.reject();
+      }
+      async function run() {
+        console.log('Starting tasks...');
+        const tasks = [
+          { id: 'A', durationMs: 2000, fulfills: true },
+          { id: 'B', durationMs: 3000, fulfills: true },
+          { id: 'C', durationMs: 1000, fulfills: false },
+        ];
+        try {
+          const promises = tasks.map((task) => doTask(task));
+          await Promise.all(promises);
+          console.log('Promise.all fulfilled');
+        } catch (e) {
+          console.log('Promise.all rejected');
+        }
+      }
+      document.querySelector('button#test-fail-fast').addEventListener('click', run, { once: true });
+    </script>
+  </template>
+</code-demo>
 
 If you run this code, you'll get the following output:
 

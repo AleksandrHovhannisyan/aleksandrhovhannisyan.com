@@ -5,6 +5,8 @@ categories: [game-dev, javascript, webperf]
 scripts:
   - type: module
     src: src/assets/scripts/components/gameLoop.ts
+  - type: module
+    src: src/assets/scripts/components/codeDemo.ts
 ---
 
 Below is a demo of a basic game implemented with an HTML canvas and some JavaScript. The character is represented by the black circle, and its direction of movement is indicated by the line. Click or tab to the game area to begin; use <kbd>W</kbd> to move forward, <kbd>S</kbd> to move backward, <kbd>A</kbd> to rotate left, and <kbd>D</kbd> to rotate right.
@@ -98,85 +100,78 @@ requestAnimationFrame((currentTimeMs) => {
 
 The demo below uses this code to count the number of `requestAnimationFrame` callbacks invoked over a fixed time frame and calculate the average FPS. For a 60 Hz monitor, the result should be very close to 60 FPS, give or take. Run the demo below to find out what your refresh rate is and to log the values of `previousTimeMs`, `currentTimeMs`, and `deltaTimeMs`:
 
-{% codeDemo "Demo of requestAnimationFrame timing" %}
-
-```html
-<div id="demo">
-  <h1>FPS of requestAnimationFrame</h1>
-  <p>Tests run over a 5-second interval.</p>
-  <div>
-    <button id="start-demo">Start recording</button>
-  </div>
-</div>
-```
-
-```css
-#demo h1 {
-  text-align: center;
-  font-size: 1.5rem;
-  margin-bottom: 0.5lh;
-}
-#demo p {
-  text-align: center;
-  margin-bottom: 1lh;
-}
-#demo button {
-  text-align: center;
-  padding: 0.5em;
-  display: block;
-  margin: 0 auto;
-}
-#demo button[aria-disabled='true'] {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-```
-
-```js
-let isRunning = false;
-const MAX_ALLOWED_TIME_MS = 5000;
-const startDemoButton = document.querySelector('#demo button');
-
-startDemoButton.addEventListener('click', () => {
-  if (isRunning) return;
-
-  isRunning = true;
-  startDemoButton.setAttribute('aria-disabled', 'true');
-  let demoStartTimeMs = 0;
-  let demoEndTimeMs;
-  let previousTimeMs = 0;
-  let numFrames = 0;
-
-  function update() {
-    requestAnimationFrame((currentTimeMs) => {
-      numFrames++;
-      if (!demoStartTimeMs) {
-        demoStartTimeMs = currentTimeMs;
-        previousTimeMs = currentTimeMs;
+<code-demo description="Demo of requestAnimationFrame timing" style="height: 310px">
+  <template>
+    <div id="demo">
+      <h1>FPS of requestAnimationFrame</h1>
+      <p>Tests run over a 5-second interval.</p>
+      <div>
+        <button id="start-demo">Start recording</button>
+      </div>
+    </div>
+    <style>
+      #demo h1 {
+        text-align: center;
+        font-size: 1.5rem;
+        margin-bottom: 0.5lh;
       }
-      const deltaTimeMs = currentTimeMs - previousTimeMs;
-      previousTimeMs = currentTimeMs;
-      demoEndTimeMs = currentTimeMs;
-      console.log(
-        `previousTimeMs: ${previousTimeMs.toFixed(2)}, currentTimeMs: ${currentTimeMs.toFixed(2)}, deltaTimeMs: ${deltaTimeMs.toFixed(2)}`
-      );
-      if (currentTimeMs - demoStartTimeMs >= MAX_ALLOWED_TIME_MS) {
-        demoEndTimeMs = currentTimeMs;
-        const demoTimeElapsedMs = demoEndTimeMs - demoStartTimeMs;
-        const averageFPS = ((numFrames - 1) / MAX_ALLOWED_TIME_MS) * 1000;
-        console.log(`End of demo. Average recorded FPS: ${Math.floor(averageFPS)}`);
-        startDemoButton.setAttribute('aria-disabled', 'false');
-        isRunning = false;
-      } else {
+      #demo p {
+        text-align: center;
+        margin-bottom: 1lh;
+      }
+      #demo button {
+        text-align: center;
+        padding: 0.5em;
+        display: block;
+        margin: 0 auto;
+      }
+      #demo button[aria-disabled='true'] {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+    </style>
+    <script>
+      let isRunning = false;
+      const MAX_ALLOWED_TIME_MS = 5000;
+      const startDemoButton = document.querySelector('#demo button');
+      startDemoButton.addEventListener('click', () => {
+        if (isRunning) return;
+        isRunning = true;
+        startDemoButton.setAttribute('aria-disabled', 'true');
+        let demoStartTimeMs = 0;
+        let demoEndTimeMs;
+        let previousTimeMs = 0;
+        let numFrames = 0;
+        function update() {
+          requestAnimationFrame((currentTimeMs) => {
+            numFrames++;
+            if (!demoStartTimeMs) {
+              demoStartTimeMs = currentTimeMs;
+              previousTimeMs = currentTimeMs;
+            }
+            const deltaTimeMs = currentTimeMs - previousTimeMs;
+            previousTimeMs = currentTimeMs;
+            demoEndTimeMs = currentTimeMs;
+            console.log(
+              `previousTimeMs: ${previousTimeMs.toFixed(2)}, currentTimeMs: ${currentTimeMs.toFixed(2)}, deltaTimeMs: ${deltaTimeMs.toFixed(2)}`
+            );
+            if (currentTimeMs - demoStartTimeMs >= MAX_ALLOWED_TIME_MS) {
+              demoEndTimeMs = currentTimeMs;
+              const demoTimeElapsedMs = demoEndTimeMs - demoStartTimeMs;
+              const averageFPS = ((numFrames - 1) / MAX_ALLOWED_TIME_MS) * 1000;
+              console.log(`End of demo. Average recorded FPS: ${Math.floor(averageFPS)}`);
+              startDemoButton.setAttribute('aria-disabled', 'false');
+              isRunning = false;
+            } else {
+              update();
+            }
+          });
+        }
         update();
-      }
-    });
-  }
-  update();
-});
-```
-
-{% endcodeDemo %}
+      });
+    </script>
+  </template>
+</code-demo>
 
 Let's take this a step further. By keeping track of when the previous frame was called, we can calculate the amount of elapsed time between that frame and the current frame to ensure that we never update our game's physics faster than a maximum FPS:
 

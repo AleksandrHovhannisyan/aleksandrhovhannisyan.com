@@ -1,6 +1,5 @@
 // @ts-expect-error no types
 import PluginFootnotes from 'eleventy-plugin-footnotes';
-import { EleventyPluginCodeDemo } from 'eleventy-plugin-code-demo';
 // @ts-expect-error no types
 import { eleventyImageTransformPlugin } from '@11ty/eleventy-img';
 import {
@@ -33,7 +32,6 @@ import {
 } from './lib/filters.ts';
 import { getAllPosts, getAllUniqueCategories, getPostsByCategory } from './lib/collections.ts';
 import { markdown } from './lib/plugins/markdown.ts';
-import { codeDemoOptions } from './lib/plugins/codeDemo.ts';
 import { escape, slugifyString } from './lib/utils/string.ts';
 import { buildAssets } from './build.ts';
 import { realpath } from 'node:fs/promises';
@@ -143,7 +141,6 @@ export default function eleventy(eleventyConfig) {
     titleId: 'footnotes-label',
     backLinkLabel: (_footnote: string, index: number) => `Back to reference ${index + 1}`,
   });
-  eleventyConfig.addPlugin(EleventyPluginCodeDemo, codeDemoOptions);
   eleventyConfig.setLibrary('md', markdown);
 
   return {

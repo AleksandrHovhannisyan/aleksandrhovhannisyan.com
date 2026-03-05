@@ -20,6 +20,7 @@ export async function buildAssets(): Promise<Record<string, string>> {
       'src/assets/scripts/comments.ts',
       'src/assets/scripts/dialog.ts',
       'src/assets/scripts/components/carousel.ts',
+      'src/assets/scripts/components/codeDemo.ts',
       'src/assets/scripts/components/gameLoop.ts',
     ],
     outdir: 'dist/assets',

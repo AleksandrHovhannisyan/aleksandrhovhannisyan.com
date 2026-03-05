@@ -3,6 +3,9 @@ title: Interactive HTML Code Demos in Eleventy
 description: With eleventy-plugin-code-demo, you can easily add interactive HTML, CSS, and JavaScript code demos to your Eleventy site using Markdown.
 keywords: [eleventy, code demo]
 categories: [11ty, html, css, javascript]
+scripts:
+  - type: module
+    src: src/assets/scripts/components/codeDemo.ts
 ---
 
 In an early draft of my [interactive guide to JavaScript events](/blog/interactive-guide-to-javascript-events/), I was leaving `TODO` placeholders every few paragraphs as a reminder to take screenshots of my code demo output. Taking screenshots is tedious, especially for an article of that scale, and it slows me down; instead, I prefer to focus on writing my content first and supplementing it with media afterwards.
@@ -54,20 +57,20 @@ It wouldn't be very practical to have to define an `HTMLIframeElement.srcdoc` st
 
 After reading Maciej's article and playing around with the idea, I quickly prototyped a working solution in Eleventy that takes a shortcode like this in my Markdown:
 
-{% capture code %}
 ```html
 <button>Click me!</button>
 ```
+
 ```css
 button {
   padding: 8px;
 }
 ```
+
 ```js
 const button = document.querySelector('button');
 button.addEventListener('click', () => console.log('Clicked'));
 ```
-{% endcapture %}
 
 ````md
 {% raw %}{% codeDemo 'Demo of a button that logs a message when clicked' %}{% endraw -%}
@@ -77,9 +80,16 @@ button.addEventListener('click', () => console.log('Clicked'));
 
 And turns it into the following interactive iframe (try it out!):
 
-{% codeDemo 'Demo of a button that logs a message when clicked' %}
-{{ code }}
-{% endcodeDemo %}
+<code-demo description="Demo of a button that logs a message when clicked" style="height: 310px">
+  <template>
+    <button>Click me!</button>
+    <style>button { padding: 8px; }</style>
+    <script>
+      const button = document.querySelector('button');
+      button.addEventListener('click', () => console.log('Clicked'));
+    </script>
+  </template>
+</code-demo>
 
 I then published the code for this as a standalone Eleventy plugin on npm: [eleventy-plugin-code-demo](https://www.npmjs.com/package/eleventy-plugin-code-demo). You can download it and take it for a spin if you'd like to add code demos to your own Eleventy site. Note that I won't cover every usage or plugin option in this article; you can find the comprehensive docs in [the plugin's README](https://github.com/AleksandrHovhannisyan/eleventy-plugin-code-demo/blob/master/README.md).
 

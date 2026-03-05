@@ -3,6 +3,9 @@ title: Serializing HTML Form Data with JavaScript
 description: Use JavaScript's FormData, URLSearchParams, and URL constructors to serialize an HTML form's data into a well-formatted and encoded URL.
 keywords: [form data, serialize form data]
 categories: [html, javascript, forms]
+scripts:
+  - type: module
+    src: src/assets/scripts/components/codeDemo.ts
 ---
 
 You typically don't need to worry about serializing HTML form data yourself. If a form has a submit button, then it will serialize its data automatically when a user submits it. Specifically, if the form is of type `GET`, it will redirect the user to the target URL (as determined by the form's `method` attribute) with its data serialized as a query string. For example, consider this form:
@@ -25,56 +28,51 @@ Thankfully, serializing form data with JavaScript is easy—the code ends up bei
 - [`URLSearchParams`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams)
 - [`URL`](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL)
 
-<div id="demo" class="rhythm">
-  <noscript><style>#demo {display: none;}</style></noscript>
-  <p>Here's a demo of what we'll be building:</p>
-  {% codeDemo "Demo of serializing a form to a URL string" %}
-  ```html
-  <form action="/fake-endpoint" method="get" autocomplete="off">
-    <div class="input-group">
-      <label for="demo-title">Title</label>
-      <input id="demo-title" name="title" type="text" placeholder="Enter a title">
-    </div>
-    <div class="input-group">
-      <label for="demo-description">Description</label>
-      <input id="demo-description" name="description" type="text" placeholder="Enter a description">
-    </div>
-  </form>
-  ```
+Here's a demo of what we'll be building:
 
-```css
-input,
-button {
-  font: inherit;
-}
-form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-input {
-  padding: 0.25em;
-}
-.input-group {
-  font-size: var(--size-font-sm);
-  display: grid;
-  gap: 0.25rem;
-}
-```
-
-```js
-document.querySelector('form').addEventListener('input', (e) => {
-  const data = new FormData(e.currentTarget);
-  const queryString = new URLSearchParams(data).toString();
-  const url = new URL(form.action, window.location.href);
-  url.search = queryString;
-  console.log(url.toString());
-});
-```
-
-{% endcodeDemo %}
-
-</div>
+<code-demo description="Demo of serializing a form to a URL string" style="height: 310px;">
+  <template>
+    <form action="/fake-endpoint" method="get" autocomplete="off">
+      <div class="input-group">
+        <label for="demo-title">Title</label>
+        <input id="demo-title" name="title" type="text" placeholder="Enter a title">
+      </div>
+      <div class="input-group">
+        <label for="demo-description">Description</label>
+        <input id="demo-description" name="description" type="text" placeholder="Enter a description">
+      </div>
+    </form>
+    <style>
+      input,
+      button {
+        font: inherit;
+      }
+      form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      input {
+        padding: 0.25em;
+      }
+      .input-group {
+        font-size: var(--size-font-sm);
+        display: grid;
+        gap: 0.25rem;
+      }
+    </style>
+    <script>
+      const form = document.querySelector('form');
+      form.addEventListener('input', (e) => {
+        const data = new FormData(e.currentTarget);
+        const queryString = new URLSearchParams(data).toString();
+        const url = new URL(form.action, window.location.href);
+        url.search = queryString;
+        console.log(url.toString());
+      });
+    </script>
+  </template>
+</code-demo>
 
 {% include "toc.md" %}
 
