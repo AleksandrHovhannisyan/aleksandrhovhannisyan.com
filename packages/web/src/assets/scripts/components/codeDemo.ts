@@ -27,26 +27,32 @@ const consoleCSS = `
 html,
 body {
     background-color: white;
+    min-height: 100%;
     height: 100%;
 }
 body {
-    padding: 0;
     font-family: sans-serif;
     display: grid;
 }
 body:has(#console-root) {
+    padding: 0;
     grid-template-rows: 1fr 50%;
+
+    main {
+        display: grid;
+        place-content: center;
+        overflow-y: auto;
+        margin-block: auto;
+    }
+}
+main {
+    padding: 1rem;
+    height: 100%;
 }
 button {
     cursor: pointer;
     font: inherit;
     padding: 0.5rem;
-}
-main {
-    display: grid;
-    place-content: center;
-    padding: 1rem;
-    overflow-y: auto;
 }
 #console-root {
     font-size: medium;
@@ -151,9 +157,10 @@ class CodeDemo extends LocalIframe {
     const hasScripts = templateHtml.includes('<script>');
     return `<!DOCTYPE html>
   <html>
+    <meta charset="utf-8">
     <head><style>${consoleCSS}</style></head>
     <body>
-        <main>${templateHtml}</main>
+        <main><div>${templateHtml}</div></main>
         ${hasScripts ? `${consoleHTML}<script>${consoleJS}</script>` : ''}
     </body>
   </html>

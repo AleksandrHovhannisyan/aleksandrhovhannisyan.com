@@ -10,6 +10,8 @@ redirectFrom:
 scripts:
   - type: module
     src: src/assets/scripts/copyCode.ts
+  - type: module
+    src: src/assets/scripts/components/codeDemo.ts
 ---
 
 {% include "toc.md" %}
@@ -181,6 +183,45 @@ scripts:
 <button class="button primary" type="button">Primary</button>
 
 <button class="button secondary" type="button">Secondary</button>
+
+#### Code Demo
+
+##### Without console
+
+<code-demo description="title" fit-content>
+  <template>
+    <h1>Hello, world!</h1>
+    <p>This is a fully isolated, 100% local code sandbox!</p>
+    <p>Install it with <code>npm install local-iframe</code></p>
+    <p>Or <a href="https://github.com/AleksandrHovhannisyan/local-iframe">read the docs</a> to understand how it works.</p>
+    <style>body { background-color: black; } body * { color: white; } p { margin-block-start: 1lh; }</style>
+  </template>
+</code-demo>
+
+##### With console
+
+<code-demo description="title" style="height: 310px">
+  <template>
+    <button id="log">console.log</button>
+    <button id="error">console.error</button>
+    <style>
+      button {
+        display: inline-flex;
+      }
+      button + button {
+        margin-inline-start: 1rem;
+      }
+    </style>
+    <script>
+      document.querySelector('#log').addEventListener('click', () => {
+        console.log('message logged');
+      });
+      document.querySelector('#error').addEventListener('click', () => {
+        console.error('error logged');
+      });
+    </script>
+  </template>
+</code-demo>
 
 #### Inline Code
 

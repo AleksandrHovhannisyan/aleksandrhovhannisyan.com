@@ -28,7 +28,7 @@
     "eleventy-plugin-footnotes": "^0.11.0",
     "esbuild": "^0.14.37",
     "feather-icons": "^4.28.0",
-    "local-iframe": "^2.2.0",
+    "local-iframe": "^2.2.1",
     "markdown-it": "^14.1.0",
     "markdown-it-anchor": "^8.0.3",
     "markdown-it-attrs": "^4.3.1",

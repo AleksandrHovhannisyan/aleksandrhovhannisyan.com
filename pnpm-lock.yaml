@@ -103,8 +103,8 @@ importers:
         specifier: ^4.28.0
         version: 4.29.2
       local-iframe:
-        specifier: ^2.2.0
-        version: 2.2.0
+        specifier: ^2.2.1
+        version: 2.2.1
       markdown-it:
         specifier: ^14.1.0
         version: 14.1.0
@@ -1894,8 +1894,8 @@ packages:
     resolution: {integrity: sha512-LWzX2KsqcB1wqQ4AHgYb4RsDXauQiqhjLk+6hjbaeHG4zpjjVAB6wC/gz6X0l+Du1cN3pUB5ZlrvTbhGSNnUQQ==}
     engines: {node: '>=18.0.0'}
 
-  local-iframe@2.2.0:
-    resolution: {integrity: sha512-416P24EYRA5lSQKO1ZwWJ+u36vuCfum/0L5ilxB4A/W2+c3OZjK5WqWlbTT+bh6kfS2jCVMra0b9Di4MhfVurQ==}
+  local-iframe@2.2.1:
+    resolution: {integrity: sha512-6eKOPeNePXDSrebIZRCGlP4w4ccaXVTMmRk6wspRCBoQAv8S0rUXkO9dYz8PUHaWcLBuVhyvIV682t6lK8SZqg==}
 
   locate-path@6.0.0:
     resolution: {integrity: sha512-iPZK6eYjbxRu3uB4/WZ3EsEIMJFMqAoopl3R+zuq0UjcAm/MO6KCweDgPfP3elTztoKP3KtnVHxTn2NHBSDVUw==}
@@ -4332,7 +4332,7 @@ snapshots:
       rfdc: 1.4.1
       wrap-ansi: 9.0.2
 
-  local-iframe@2.2.0: {}
+  local-iframe@2.2.1: {}
 
   locate-path@6.0.0:
     dependencies:
