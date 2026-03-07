@@ -46,7 +46,7 @@ body:has(#console-root) {
     }
 }
 main {
-    padding: 1rem;
+    padding: 28px;
     height: 100%;
 }
 button {
