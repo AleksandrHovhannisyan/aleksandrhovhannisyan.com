@@ -602,7 +602,7 @@
         color: var(--color-code-keyword);
       }
 
-      &:is(.selector, .string, .char, .builtin, .deleted, .regex, .attr-value),
+      &:is(.selector, .template-string, .string, .char, .builtin, .deleted, .regex, .attr-value),
       &.attr-value &.punctuation,
       &.url .content {
         color: var(--color-code-string);

@@ -100,7 +100,7 @@ requestAnimationFrame((currentTimeMs) => {
 
 The demo below uses this code to count the number of `requestAnimationFrame` callbacks invoked over a fixed time frame and calculate the average FPS. For a 60 Hz monitor, the result should be very close to 60 FPS, give or take. Run the demo below to find out what your refresh rate is and to log the values of `previousTimeMs`, `currentTimeMs`, and `deltaTimeMs`:
 
-<code-demo description="Demo of requestAnimationFrame timing" style="height: 310px">
+<code-demo description="Demo of requestAnimationFrame timing" style="height: 400px">
   <template>
     <div id="demo">
       <h1>FPS of requestAnimationFrame</h1>

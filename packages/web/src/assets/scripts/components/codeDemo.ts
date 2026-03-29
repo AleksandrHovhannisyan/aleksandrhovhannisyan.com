@@ -24,6 +24,9 @@ const consoleCSS = `
     --color-text-soft: hsl(0, 0%, 40%);
     --color-danger: #c10000;
 }
+html.no-scroll {
+    overflow: hidden;
+}
 html,
 body {
     background-color: white;
@@ -128,22 +131,23 @@ const consoleJS = `
     };
 
     console.log = makeLogger();
+    console.warn = console.log;
     console.error = makeLogger("error");
 
-    consoleRoot.addEventListener('click', (e) => {
-        e.stopPropagation();
-    });
-
+    // Custom unhandled promise rejection logs
     window.addEventListener("unhandledrejection", (event) => {
         console.error('Uncaught (in promise) ' + event.reason);
     }, { capture: true });
 
     // Use capturing listener to preempt any other capturing listeners in the code demo itself
     window.addEventListener('click', (e) => {
-        // Prevent clicks on output region from triggering logs
+        // Prevent clicks on output region from propagating to avoid interfering with code demos on event propagation.
+        // Note: We must run their handlers manually below, see clearButton.
         if (e.target === consoleRoot || consoleRoot.contains(e.target)) {
-            e.stopImmediatePropagation();
+            e.stopPropagation();
         }
+        // why do this here? because in some of my code demos, I stop event propagation in capturing event listeners on body/html,
+        // and since the clearButton is a child of those elements, that would effectively prevent its click event handler from running during the targeting phase
         if (e.target === clearButton) {
             consoleOutput.innerHTML = '';
         }
@@ -156,9 +160,11 @@ class CodeDemo extends LocalIframe {
     // Not the most rigorous logic, but good enough
     const hasScripts = templateHtml.includes('<script>');
     return `<!DOCTYPE html>
-  <html>
-    <meta charset="utf-8">
-    <head><style>${consoleCSS}</style></head>
+  <html${this.fitContent ? ' class="no-scroll"' : ''}>
+    <head>
+        <meta charset="utf-8">
+        <style>${consoleCSS}</style>
+    </head>
     <body>
         <main><div>${templateHtml}</div></main>
         ${hasScripts ? `${consoleHTML}<script>${consoleJS}</script>` : ''}
