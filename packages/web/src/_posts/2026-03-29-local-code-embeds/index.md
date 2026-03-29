@@ -181,11 +181,11 @@ On my blog, I wanted to customize the iframes a bit more. For example, some of m
               previousTimeMs = currentTimeMs;
             }
             const deltaTimeMs = currentTimeMs - previousTimeMs;
-            previousTimeMs = currentTimeMs;
-            demoEndTimeMs = currentTimeMs;
             console.log(
               `Frame ${numFrames}. previousTimeMs: ${previousTimeMs.toFixed(2)}, currentTimeMs: ${currentTimeMs.toFixed(2)}, deltaTimeMs: ${deltaTimeMs.toFixed(2)}`
             );
+            previousTimeMs = currentTimeMs;
+            demoEndTimeMs = currentTimeMs;
             if (currentTimeMs - demoStartTimeMs >= MAX_ALLOWED_TIME_MS) {
               demoEndTimeMs = currentTimeMs;
               const demoTimeElapsedMs = demoEndTimeMs - demoStartTimeMs;

@@ -150,11 +150,11 @@ The demo below uses this code to count the number of `requestAnimationFrame` cal
               previousTimeMs = currentTimeMs;
             }
             const deltaTimeMs = currentTimeMs - previousTimeMs;
-            previousTimeMs = currentTimeMs;
-            demoEndTimeMs = currentTimeMs;
             console.log(
               `previousTimeMs: ${previousTimeMs.toFixed(2)}, currentTimeMs: ${currentTimeMs.toFixed(2)}, deltaTimeMs: ${deltaTimeMs.toFixed(2)}`
             );
+            previousTimeMs = currentTimeMs;
+            demoEndTimeMs = currentTimeMs;
             if (currentTimeMs - demoStartTimeMs >= MAX_ALLOWED_TIME_MS) {
               demoEndTimeMs = currentTimeMs;
               const demoTimeElapsedMs = demoEndTimeMs - demoStartTimeMs;
