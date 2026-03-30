@@ -638,8 +638,14 @@
   }
 
   /* Language Specific */
-  .code-block:is([data-language='css'], [data-language='scss'], [data-language='sass']) .token.selector {
-    color: var(--color-code-selector);
+  .code-block:is([data-language='css'], [data-language='scss'], [data-language='sass']) {
+    & .token.selector {
+      color: var(--color-code-selector);
+    }
+
+    & .token.property {
+      color: var(--color-code-keyword);
+    }
   }
 
   .code-block[data-language='bash'] .token:not(.comment) {
