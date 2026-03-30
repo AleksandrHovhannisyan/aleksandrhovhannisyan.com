@@ -3,6 +3,7 @@ title: Fully Local Code Embeds
 description: A simple web component for rendering isolated code embeds using HTML, CSS, and JavaScript.
 categories: [html, javascript]
 keywords: [iframe, code demo, code sandbox, local iframe]
+lastUpdated: 2026-03-30
 scripts:
   - type: module
     src: src/assets/scripts/components/codeDemo.ts
@@ -44,6 +45,7 @@ Now, I can write code like this:
 <code-demo description="Registering click event listeners on a button and all of its ancestors" style="height: 310px">
   <template>
     <button>Click me!</button>
+    <style>button { padding: 0.5rem }</style>
     <script>
       const button = document.querySelector('button');
       const html = document.documentElement;
@@ -62,6 +64,7 @@ To produce fully local, isolated code embeds like this:
 <code-demo description="Registering click event listeners on a button and all of its ancestors" style="height: 310px">
   <template>
     <button>Click me!</button>
+    <style>button { padding: 0.5rem }</style>
     <script>
       const button = document.querySelector('button');
       const html = document.documentElement;
@@ -74,7 +77,9 @@ To produce fully local, isolated code embeds like this:
   </template>
 </code-demo>
 
-Check out my solution on npm: [`local-iframe`](https://www.npmjs.com/package/local-iframe).
+All in under 4 kB of minified client-side JavaScript!
+
+Check out my solution on npm: [`local-iframe`](https://www.npmjs.com/package/local-iframe). I've written lots of docs on how to get started and some recommended usage patterns, but this companion blog post goes into a bit more detail and shows some examples.
 
 ## How it works
 
@@ -127,9 +132,20 @@ My web component has a flexible API too, so you can either define the template a
 <local-iframe template="my-template"></local-iframe>
 ```
 
+My component also supports fit-to-height resizing with a custom `fit-content` attribute. When the attribute is present, the outer `code-demo` will set its height to match the height of the inner iframe using a `ResizeObserver`. Like this:
+
+<code-demo description="Frame with lots of lorem ipsum text" fit-content>
+  <template>
+    <style>p + p { margin-block-start: 1lh }</style>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi quam nunc, condimentum eget tellus finibus, blandit dapibus justo. Maecenas augue nunc, vulputate non imperdiet sed, cursus et velit. Cras mattis libero vitae lectus interdum, ac rutrum quam pharetra. Nam dignissim mattis dui, in commodo ante malesuada in. Nullam convallis sed tortor sit amet ultricies. Curabitur tincidunt mattis arcu, eget faucibus orci sollicitudin eget. Vestibulum quis elit eu elit faucibus egestas.</p>
+    <p>In porttitor urna id consectetur auctor. Morbi consectetur porta dui. Cras consequat leo at quam pulvinar, semper sollicitudin enim porttitor. Duis egestas rutrum mollis. Phasellus tincidunt eros ipsum, at lobortis dui rutrum vitae. Aenean faucibus nibh non tristique convallis. Fusce imperdiet varius quam a consectetur. Nam luctus nunc vitae scelerisque convallis. Morbi vitae cursus mauris. Nunc tortor mi, placerat id massa id, tempor blandit neque. Etiam eu posuere purus.</p>
+    <p>Nullam ut leo sit amet lacus suscipit imperdiet. Nullam eu consectetur sapien. Nam ornare est ac nunc hendrerit, at mollis nisl cursus. Etiam et tincidunt felis. Nullam tincidunt scelerisque ante eu finibus. Quisque iaculis vel sem eget consectetur. Sed imperdiet orci eget sem malesuada, nec volutpat quam sagittis. Nullam odio urna, ultricies sed velit et, mattis eleifend turpis. Pellentesque vulputate purus sem, ac consequat elit scelerisque nec. Aliquam vulputate nibh neque, nec ultrices nibh congue vitae. Ut sit amet libero quis nibh suscipit fringilla rutrum non felis. Morbi ac sagittis lectus, id accumsan massa.</p>
+  </template>
+</code-demo>
+
 ## Custom rendering
 
-On my blog, I wanted to customize the iframes a bit more. For example, some of my code demos log messages to the console, so I thought it would be fun to have a console output region at the bottom of each frame that intercepts messages and displays them along with a timestamp. Here's an example from one of my articles that measures your display's FPS using `requestAnimationFrame` and logs some messages in each frame:
+On my blog, I wanted to customize the iframes a bit more. For example, some of my code demos log messages to the console, so I thought it would be fun to have a console output region at the bottom of each frame that intercepts messages and prints them along with a timestamp. Here's an example from one of my articles that measures your display's frame rate using `requestAnimationFrame` and logs some messages in each frame:
 
 <code-demo description="Demo of requestAnimationFrame timing" style="height: 400px">
   <template>
@@ -209,196 +225,215 @@ I could've just made this part of the base component, but not everyone would wan
 1. Import the auto-registered `local-iframe` web component from the index.
 2. Import the `LocalIframe` class, extend it, and register your own component.
 
-The first pattern is the simplest and allows you to just drop the web component into any page and start using it. For more advanced use cases, users can follow the second pattern to customize the HTML document for all rendered frames. To do that, you import the `LocalIframe` class and subclass it:
+The first pattern is the simplest and allows you to just drop the web component into any page and start using it, either via CDN or ESM imports if you're using a bundler:
 
-```ts
+```html {data-copyable="true"}
+<!-- import and auto-register (via CDN) -->
+<script
+  type="module"
+  src="https://cdn.jsdelivr.net/npm/local-iframe@2.1.0/+esm"
+></script>
+```
+
+```ts {data-copyable="true"}
+// import and auto-register
+import 'local-iframe';
+```
+
+For more advanced use cases, you can follow the second pattern to customize the HTML document for all rendered frames. To do that, you import the `LocalIframe` class and subclass it:
+
+```ts {data-file="CodeDemo.ts" data-copyable="true"}
 import { LocalIframe } from 'local-iframe/LocalIframe';
 
+// Create your own component
 class CodeDemo extends LocalIframe {
   protected _render(templateHtml: string): string {
     const hasScripts = templateHtml.includes('<script>');
     return `<!DOCTYPE html>
   <html>
-    <head><meta charset="utf-8"></head>
+    <head>
+      <meta charset="utf-8">
+      <title>${this.description}</title>
+    </head>
     <body>
-        <main><div>${templateHtml}</div></main>
-        ${hasScripts ? `${consoleHTML}<script>${consoleJS}</script>` : ''}
+      <main><div>${templateHtml}</div></main>
+      ${hasScripts ? `${consoleHTML}<script>${consoleJS}</script>` : ''}
     </body>
   </html>
     `;
   }
 }
 
+// Register it
 window.customElements.define('code-demo', CodeDemo);
 ```
 
-The `_render` method is inherited from the base `LocalIframe` class; it accepts the incoming template HTML as an argument, and you can return whatever iframe document structure you want from it. By default, `_render` returns a bare-bones HTML document with no extra frills, but you can override the method like we're doing here to return whatever custom HTML you want.
+The `_render` method is inherited from the base `LocalIframe` class; it accepts the incoming template HTML as an argument, and you can return whatever iframe document structure you want from it. By default, `_render` returns a bare-bones HTML document with no extra frills, but you can override the method like I'm doing here to return whatever custom HTML you want. This HTML skeleton will be shared by all rendered instances of that component.
 
-For the actual console, the basic idea is that the iframe hijacks `console.log` to intercept its arguments and appends those values to an auto-scrolling list that is styled to look like a console output region. Here's some of the code I used to do that:
+For the actual console UI, I hijacked `console.log` and `console.error` to intercept their arguments and append those values to an auto-scrolling list that is styled to look like an output region. I even added a listener for unhandled promise rejections, for my [deep dive on `Promise.all`](/blog/javascript-promise-all/). Here's some of the code I used to do that:
 
-```ts
+```ts {data-file="CodeDemo.ts" data-copyable="true"}
 const consoleHTML = `
 <footer id="console-root">
-    <div id="console-header">
-        <p id="console-label">Console output</p>
-        <button id="console-clear-button">Clear console</button>
-    </div>
-    <div id="console-wrapper" role="region" tabindex="0" aria-labelledby="console-label">
-        <ol id="console" aria-live="polite" aria-atomic="true" aria-relevant="additions"></ol>
-    </div>
+  <div id="console-header">
+    <p id="console-label">Console output</p>
+    <button id="console-clear-button">Clear console</button>
+  </div>
+  <div id="console-wrapper" role="region" tabindex="0" aria-labelledby="console-label">
+    <ol id="console" aria-live="polite" aria-atomic="true" aria-relevant="additions"></ol>
+  </div>
 </footer>
 `;
 
 const consoleJS = `
 (function initConsole(){
-    const consoleRoot = document.querySelector('#console-root');
-    const consoleOutput = consoleRoot.querySelector('#console');
-    const consoleScrollContainer = consoleRoot.querySelector('[tabindex]');
-    const clearButton = consoleRoot.querySelector('#console-clear-button');
+  const consoleRoot = document.querySelector('#console-root');
+  const consoleOutput = consoleRoot.querySelector('#console');
+  const consoleScrollContainer = consoleRoot.querySelector('[tabindex]');
+  const clearButton = consoleRoot.querySelector('#console-clear-button');
 
-    const makeLogger = (level) => (...args) => {
-      const li = document.createElement('li');
-      const time = document.createElement('time');
-      const now = new Date();
-      time.setAttribute('datetime', now.toISOString());
-      time.innerHTML = Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric' }).format(now);
-      if (level) { li.classList.add(level); }
-      li.append([...args].map((arg) => {
-        const isUndefined = typeof arg === 'undefined';
-        return isUndefined ? 'undefined' : JSON.stringify(arg);
-      }).join(" "));
-      li.appendChild(time);
-      consoleOutput.appendChild(li);
-      consoleScrollContainer.scrollBy({ top: consoleScrollContainer.scrollHeight });
-    };
+  const makeLogger = (level) => (...args) => {
+    const li = document.createElement('li');
+    const time = document.createElement('time');
+    const now = new Date();
+    time.setAttribute('datetime', now.toISOString());
+    time.innerHTML = Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric' }).format(now);
+    if (level) { li.classList.add(level); }
+    li.append([...args].map((arg) => {
+      const isUndefined = typeof arg === 'undefined';
+      return isUndefined ? 'undefined' : JSON.stringify(arg);
+    }).join(" "));
+    li.appendChild(time);
+    consoleOutput.appendChild(li);
+    consoleScrollContainer.scrollBy({ top: consoleScrollContainer.scrollHeight });
+  };
 
-    console.log = makeLogger();
-    console.error = makeLogger("error");
+  console.log = makeLogger();
+  console.error = makeLogger("error");
 
-    window.addEventListener("unhandledrejection", (event) => {
-        console.error('Uncaught (in promise) ' + event.reason);
-    }, { capture: true });
+  window.addEventListener("unhandledrejection", (event) => {
+    console.error('Uncaught (in promise) ' + event.reason);
+  }, { capture: true });
 
-    window.addEventListener('click', (e) => {
-        if (e.target === consoleRoot || consoleRoot.contains(e.target)) {
-            e.stopPropagation();
-        }
-        if (e.target === clearButton) {
-            consoleOutput.innerHTML = '';
-        }
-    }, { capture: true });
+  window.addEventListener('click', (e) => {
+    if (e.target === consoleRoot || consoleRoot.contains(e.target)) {
+      e.stopPropagation();
+    }
+    if (e.target === clearButton) {
+      consoleOutput.innerHTML = '';
+    }
+  }, { capture: true });
 })();
 `;
 ```
 
-The only confusing part is the capturing `click` event handler on the `window` object. You may be inclined to just set click listeners on the individual elements that need them, but there's a good reason why I wrote the code this way.
+The only weird part is the capturing `click` event handler on the `window` object. You may be inclined to just set click listeners on the individual elements that need them, but there's a good reason why I wrote the code this way.
 
-TL;DR: One of my articles is an [interactive guide on JavaScript events](/blog/interactive-guide-to-javascript-events/), and in that article I have a few code demos that register capturing event listeners on `window`, `document.documentElement`, `document.body`, and other elements. The problem is that capturing event listeners always run before the targeting phase and before events bubble, so clicking the console output or one of its children could trigger one of the click listeners set on an ancestor to run. For example, you might click the `Clear console` button, and it would clear the console, but then the capturing click listener on `window` might log another message. `stopPropagation` wouldn't help because again, a capturing listener on `document.body` would _always_ run before any event handler set on one of its children. To work around this, I registered a capturing click listener at the highest level possible—on `window`—and ignored all clicks that originate from the output region. I then handled the special case of the "clear console" button in that same listener.
+TL;DR: One of my articles is an [interactive guide on JavaScript events](/blog/interactive-guide-to-javascript-events/), and in that article I have a few code demos that register capturing event listeners on `window`, `document.documentElement`, `document.body`, and other elements. The problem is that capturing event listeners always run before the targeting phase and before events bubble, so clicking the console output or one of its children could trigger one of the click listeners set on an ancestor to run. However, I want the console to feel like it's part of the "frame", and the inner part is the "real" window. For example, you might click the `Clear console` button, and it would clear the console, but then the capturing click listener on `window` might log another message. `stopPropagation` wouldn't help because again, a capturing listener on `document.body` would _always_ run before any event handler set on one of its children. To work around this, I registered a capturing click listener at the highest level possible—on `window`—and ignored all clicks that originate from the output region. I then handled the special case of the "clear console" button in that same listener.
 
 {% aside %}
 In theory, you'd need to do the same for other types of events too, not just clicks. But I can't be bothered to do that.
 {% endaside %}
 
-My logger hijacks `console.log` and `console.error` and redirects their output to a dedicated console region in the iframe's UI. I then style that region with CSS to look like a console pane:
+My logger hijacks `console.log` and `console.error` and redirects their output to a dedicated console region in the iframe's UI. I then style that region with CSS to look like a console pane (I put the following in a template string in the same file):
 
-```ts
-const consoleCSS = `
+```css {data-file="CodeDemo.ts" data-copyable="true"}
 * {
-    box-sizing: border-box;
-    margin: 0;
+  box-sizing: border-box;
+  margin: 0;
 }
 :root {
-    --color-border: hsl(0, 0%, 80%);
-    --color-surface-1: hsl(0, 0%, 95%);
-    --color-surface-2: hsl(0, 0%, 88%);
-    --color-text-soft: hsl(0, 0%, 40%);
-    --color-danger: #c10000;
+  --color-border: hsl(0, 0%, 80%);
+  --color-surface-1: hsl(0, 0%, 95%);
+  --color-surface-2: hsl(0, 0%, 88%);
+  --color-text-soft: hsl(0, 0%, 40%);
+  --color-danger: #c10000;
 }
 html,
 body {
-    background-color: white;
-    min-height: 100%;
-    height: 100%;
+  background-color: white;
+  min-height: 100%;
+  height: 100%;
 }
 body {
-    font-family: sans-serif;
-    display: grid;
+  font-family: sans-serif;
+  display: grid;
 }
 body:has(#console-root) {
-    padding: 0;
-    grid-template-rows: 1fr 50%;
+  padding: 0;
+  grid-template-rows: 1fr 50%;
 
-    main {
-        display: grid;
-        place-content: center;
-        overflow-y: auto;
-        margin-block: auto;
-    }
+  main {
+    display: grid;
+    place-content: center;
+    overflow-y: auto;
+    margin-block: auto;
+  }
 }
 main {
-    padding: 28px;
-    height: 100%;
+  padding: 28px;
+  height: 100%;
 }
 button {
-    cursor: pointer;
-    font: inherit;
-    padding: 0.5rem;
+  cursor: pointer;
+  font: inherit;
+  padding: 0.5rem;
 }
 #console-root {
-    font-size: medium;
-    background-color: var(--color-surface-1);
-    display: grid;
-    grid-template-rows: auto 1fr;
-    overflow: auto;
+  font-size: medium;
+  background-color: var(--color-surface-1);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: auto;
 }
 #console-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-block: solid 1px var(--color-border-0);
-    padding: 0.5rem 0.5rem 0.5rem 1rem;
-    background-color: var(--color-surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-block: solid 1px var(--color-border-0);
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  background-color: var(--color-surface-2);
 }
 #console-clear-button {
-    background: transparent;
-    font-size: inherit;
-    border: none;
-    padding: 0.25rem;
-    text-decoration: underline;
+  background: transparent;
+  font-size: inherit;
+  border: none;
+  padding: 0.25rem;
+  text-decoration: underline;
 }
 #console-wrapper {
-    padding: 0.5rem;
-    background-color: inherit;
-    overflow-y: auto;
+  padding: 0.5rem;
+  background-color: inherit;
+  overflow-y: auto;
 }
 #console {
-    list-style: none;
-    display: block;
-    font-family: monospace;
-    padding: 0;
+  list-style: none;
+  display: block;
+  font-family: monospace;
+  padding: 0;
 }
 #console > * {
-    width: 100%;
-    display: flex;
-    align-items: start;
-    justify-content: space-between;
-    padding: 0.25rem;
-    padding-inline-end: 0.5rem;
+  width: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  padding: 0.25rem;
+  padding-inline-end: 0.5rem;
 }
 #console .error {
-    color: var(--color-danger);
+  color: var(--color-danger);
 }
 #console time {
-    flex-shrink: 0;
-    font-variant-numeric: tabular-nums;
-    color: var(--color-text-soft);
-}`;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-soft);
+}
 ```
 
 ## Own your content
 
-Like I mentioned in the intro, part of the reason why I wanted to make this web component was to reduce my dependency on third-party code embeds and framework specifics. Now, I can finally write HTML to produce fully isolated, local code sandboxes without ever leaving my local development environment. My only dependency is my `local-iframe` package, which in turn has [zero dependencies](https://github.com/AleksandrHovhannisyan/local-iframe/blob/master/package.json).
+Like I mentioned in the intro, part of the reason why I wanted to make this web component was to reduce my dependency on third-party code embeds and framework specifics. Now, I can finally write HTML to produce fully isolated, local code sandboxes without ever leaving my local development environment. My only dependency is my `local-iframe` package, which in turn has [zero dependencies](https://github.com/AleksandrHovhannisyan/local-iframe/blob/master/package.json) and can be used anywhere where HTML and JavaScript are supported.
 
-You can do anything with `local-iframe` that you can in normal HTML documents: load Google Fonts, import a JavaScript framework via CDN, whatever. The only thing you can't do is use non-native syntaxes like TypeScript or JSX.
+You can do anything with `local-iframe` that you can in normal HTML documents: load Google Fonts, import a JavaScript framework via CDN, whatever. The only limitation is that you can't use non-native languages like TypeScript or JSX like you can on Codepen. But I can live with that tradeoff.
 
 Try it out, and let me know what you think!

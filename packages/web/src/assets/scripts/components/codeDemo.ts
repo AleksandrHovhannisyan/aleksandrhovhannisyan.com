@@ -163,6 +163,7 @@ class CodeDemo extends LocalIframe {
   <html${this.fitContent ? ' class="no-scroll"' : ''}>
     <head>
         <meta charset="utf-8">
+        <title>${this.description}</title>
         <style>${consoleCSS}</style>
     </head>
     <body>
