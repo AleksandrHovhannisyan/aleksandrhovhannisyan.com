@@ -1,21 +1,22 @@
 ---
 title: React, Iframes, and a Back-Navigation Bug
-description: If an iframe re-renders in React, it can interfere with back navigation in your browser. The solution? Force the iframe to unmount with a unique key.
+description: If an iframe re-renders in React, it can interfere with back navigation in your browser. To fix this, force the iframe to unmount with a unique key.
 keywords: [iframes, react, back navigation, browser history]
 categories: [browsers, react, javascript]
 commentsId: 84
 thumbnail: https://images.unsplash.com/photo-1609668528780-e364738d8ba5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&h=900&q=80
+lastUpdated: 2026-05-12
 ---
 
 You're using iframes to embed content on a page in React.
 
 *What could possibly go wrong*, you wonder. Apparently, a whole lot!
 
-In this post, we'll fix a bug where iframes in React interfere with your browser's back-navigation.
+In this post, we'll fix a bug where iframes in React interfere with your browser's back-navigation during client-side routing.
 
 {% include "toc.md" %}
 
-## Demo: Rendering Iframes in React
+## Bug: Iframe Interferes with Back Navigation
 
 I've created a [CodeSandbox demo](https://n3v8m.csb.app/) for this article. For our purposes, though, we can pretend that the markup is something simple, like this:
 
@@ -29,8 +30,6 @@ const Page = ({ contentId }) => {
 ```
 
 Notice that the iframe has a dynamic `src` attribute, meaning its content changes as you navigate to a different page in the app. You're always working with the same iframe, though; it's just re-rendering and pointing to a different URL.
-
-## Bug: Iframes Interrupt Back Navigation in the Browser
 
 The first page loads the right iframe:
 
@@ -58,27 +57,26 @@ Effectively, you have to press the back button *twice* whenever you want a legit
 
 It's worth noting that this issue isn't necessarily unique to React projects, although it's more noticeable in a single-page app where routing is a little different than in a traditional website. If you have three different pages in vanilla HTML and JavaScript, then you're rendering three different iframes, and you shouldn't see this issue (unless you have a single page and are navigating within it, like with anchors).
 
-## Takeaway: Iframes Share Browsing History with the Page
+## Iframes Share Browsing History with the Page
 
-As it turns out, this bug has a simple explanation—and, in the case of React, an elegant solution.
+As it turns out, this bug has a simple explanation and solution.
 
 Whenever you reuse an iframe and only change its `src` attribute to point to some other content, it's treated as a content navigation, and the iframe's current `src` gets pushed onto the browser's `window.history` stack. When you later try to navigate backward, your browser pops the top of the history stack, navigating the iframe itself.
 
 You can verify this by logging `window.history` on every render. You should see that the `length` goes up by two each time you visit a different page. One of those items comes from the iframe's navigation; the other is the actual page navigation itself.
 
-## Solution: Remount the Iframe (with a Key)
+## Solution: Remount the Iframe
 
-A framework-agnostic solution is to destroy the iframe and recreate it every time you need to change its `src`, rather than reusing the same iframe you were working with before and merely changing its source attribute. You can easily do this in vanilla JavaScript by replacing the iframe node with a new one:
+A framework-agnostic solution is to destroy the iframe and recreate it every time you need to change its `src`, rather than reusing the same iframe you were working with before and merely changing its `src`. You can easily do this in vanilla JavaScript by replacing the iframe node with a new one:
 
 ```js
-const parentNode = document.querySelector('.iframe-container');
 const oldIframe = document.querySelector('iframe');
 const newIframe = oldIframe.cloneNode();
 newIframe.src = 'some/other/source';
-parentNode.replaceChild(newIframe, oldIframe);
+oldIframe.parentElement.replaceChild(newIframe, oldIframe);
 ```
 
-But in our case, we're working with React. And we actually have a simpler solution: Giving the iframe a `key` that changes whenever it re-renders!
+An equivalent solution in React is to just give the iframe a `key` that changes whenever it re-renders so it remounts completely rather than simply re-rendering:
 
 ```jsx
 <iframe
@@ -86,7 +84,7 @@ But in our case, we're working with React. And we actually have a simpler soluti
   src={`embedded/content/${contentId}`} />
 ```
 
-Let's go over why this works.
+Let's review why this works.
 
 First, note that `key` is a unique pseudo-prop that can be passed to any element that you render anywhere in the tree. I say pseudo-prop because you typically don't do anything with this prop yourself; it's not even accessible under `props.key`. Rather, React uses the `key` prop *under the hood* as part of its [reconciliation process](https://overreacted.io/react-as-a-ui-runtime/#reconciliation) to determine whether an element is logically the same between two renders. If React doesn't see the same element, it will unmount and remount that element instead of re-rendering it.
 
@@ -96,7 +94,7 @@ However, there *are* certain situations where you want a component to fully unmo
 
 To solve this problem, we need to **remount the entire iframe** instead of only re-rendering it. This is why the code above works: We can force a component to remount by giving it a key that's unique on every render. In this case, a suitable key would be whatever is causing the iframe's source to change between renders. You can use the content ID (or even the full URL if you want). On each render, React will see a different iframe and remount it, preventing the iframe from pushing items onto the browser's `history` stack.
 
-And voila—the page navigation should now be in sync with the iframe.
+Now, the page navigation should now be in sync with the iframe.
 
 ## And That's It!
 
