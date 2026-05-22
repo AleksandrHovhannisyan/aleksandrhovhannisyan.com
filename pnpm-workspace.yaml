@@ -1,6 +1,9 @@
 packages:
   - packages/web
   - packages/api
+# Require packages to be at least 1 week old, default is 1440 which is 1 day
+minimumReleaseAge: 10080
+# Only allow these packages to execute postinstall scripts, to protect against malicious packages
 allowBuilds:
   core-js: true
   esbuild: true
