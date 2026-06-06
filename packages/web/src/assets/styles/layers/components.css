@@ -822,13 +822,19 @@
   }
 
   .note {
-    --size-shadow-height: 15px;
+    --size-note-shadow-height: 1rem;
+    --color-note-background: hsl(60deg 100% 90%);
     color: var(--color-text-normal);
     text-wrap: balance;
     width: 100%;
     height: fit-content;
     transform-style: preserve-3d;
-    background: linear-gradient(180deg, #ffc, 90%, #f1f1dd);
+    background: linear-gradient(
+      180deg,
+      var(--color-note-background),
+      90%,
+      color-mix(in srgb, var(--color-note-background) 60%, white 40%)
+    );
     box-shadow: 1px 1px 2px rgb(0 0 0 / 30%);
     position: relative;
     justify-self: center;
@@ -837,13 +843,21 @@
     transition-duration: var(--transition-duration);
     transition-property: border-radius;
 
+    &:nth-of-type(2n) {
+      --color-note-background: hsl(229deg 100% 95%);
+    }
+
+    &:nth-of-type(3n) {
+      --color-note-background: hsl(305deg 100% 95%);
+    }
+
     & a {
       text-decoration: none;
       outline: none;
     }
 
     &:is(:hover, :focus-within) {
-      border-end-end-radius: 100px var(--size-shadow-height);
+      border-end-end-radius: 100px var(--size-note-shadow-height);
     }
 
     &:has(a:focus-visible) {
@@ -854,12 +868,12 @@
       content: '';
       position: absolute;
       inset-inline-start: 0;
-      inset-block-end: var(--size-shadow-height);
+      inset-block-end: var(--size-note-shadow-height);
       transform: translateZ(-1px);
       width: calc(100% - 3px);
       height: 25px;
       background: rgb(0 0 0 / 20%);
-      box-shadow: 2px var(--size-shadow-height) 5px rgb(0 0 0 / 40%);
+      box-shadow: 2px var(--size-note-shadow-height) 5px rgb(0 0 0 / 40%);
     }
   }
 
