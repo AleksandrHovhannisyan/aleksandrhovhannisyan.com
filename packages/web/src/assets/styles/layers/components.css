@@ -857,7 +857,7 @@
     }
 
     &:is(:hover, :focus-within) {
-      border-end-end-radius: 100px var(--size-note-shadow-height);
+      border-end-end-radius: 100px calc(var(--size-note-shadow-height) - 2px);
     }
 
     &:has(a:focus-visible) {
