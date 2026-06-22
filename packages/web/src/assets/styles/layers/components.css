@@ -130,9 +130,12 @@
     max-width: calc(700rem / 16);
 
     & img {
+      margin-inline: auto;
+    }
+
+    & img:not([class]) {
       width: auto;
       max-height: 75dvmin;
-      margin-inline: auto;
     }
   }
 
