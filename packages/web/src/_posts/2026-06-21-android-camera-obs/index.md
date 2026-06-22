@@ -5,9 +5,9 @@ keywords: [obs, android, camera]
 categories: [note, android, obs]
 ---
 
-If your phone has a good mic and camera, you can just use it for recording everything. But sometimes you want to hook up an external mic for streaming audio to software like OBS. How do you then stream the video from your phone's camera? You _could_ just record the audio and video separately, but then you'd need to sync the two so they line up perfectly, and that can be annoying. Besides, most modern phones have better camera quality than comparable webcams anyway, so you may as well save some money.
+Recording video and audio with your phone is trivial, but what if you want to stream audio from an external device, use your phone for just the video, and record both at the same time using software like OBS? You technically _could_ record the audio and video separately and combine them later, but you'd need to make sure they line up perfectly, and that can get really tricky. Another option is to just get a webcam, but most modern smartphones already have really good cameras.
 
-It turns out that you can do this, but there are a few different options:
+There are a few ways you can treat your phone as a video input source in OBS:
 
 - On supported devices, use [Android 14+'s native USB camera feature](https://source.android.com/docs/core/camera/webcam).
 - Use Windows Phone Link, DroidCam, Camo Studio, or [other third-party apps](https://obsproject.com/kb/smartphone-camera-guide).
@@ -15,7 +15,7 @@ It turns out that you can do this, but there are a few different options:
 
 Unfortunately, my phone doesn't support the first option (thanks, Samsung!). Phone Link worked at first, but the video stream occasionally lagged since the app uses Bluetooth, and it eventually stopped working altogether. DroidCam is open source which is nice, but you need to pay for the pro version to remove the ads and watermark. And Cam Studio is way more than I need for something this simple.
 
-[`scrcpy`](https://github.com/Genymobile/scrcpy) ("screen copy") is what I ended up using. It's free and open-source software that works on Windows, Mac, and Linux and allows you to mirror your phone screen to a window on your computer, which you can then record. By default it mirrors the entire device's screen, but you can also stream just the raw camera output itself so you don't see any device UI, which is perfect for my use case. I wrote this guide in case it helps other folks who want to do the same thing.
+[`scrcpy`](https://github.com/Genymobile/scrcpy) ("screen copy") is what I ended up using. It's free and open-source software that works on Windows, Mac, and Linux and allows you to mirror your phone screen to a window on your computer, which you can then stream or record. By default it mirrors the entire device's screen, but you can also stream just the raw camera output itself so you don't see any device UI, which is perfect for my use case. I wrote this guide in case it helps other folks who want to do the same thing.
 
 ## Install `scrcpy`
 
