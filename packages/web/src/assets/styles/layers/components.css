@@ -135,7 +135,7 @@
 
     & img:not([class]) {
       width: auto;
-      max-height: 75dvmin;
+      max-height: 75dvh;
     }
   }
 
