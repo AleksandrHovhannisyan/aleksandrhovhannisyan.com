@@ -86,13 +86,13 @@ But we don't want to mirror the _entire_ phone; we just need the camera.
 
 `scrcpy` has lots of CLI options you can use and [very detailed documentation on camera monitoring](https://github.com/Genymobile/scrcpy/blob/master/doc/camera.md). I like to invoke it with the following options:
 
-```
-scrcpy `
-  --video-source=camera `
-  --camera-facing=front `
-  --no-audio `
-  --video-bit-rate=2M `
-  --camera-size=1920x1080 `
+``` {data-copyable="true"}
+scrcpy 
+  --video-source=camera 
+  --camera-facing=front 
+  --no-audio 
+  --video-bit-rate=2M 
+  --camera-size=1920x1080 
   --camera-fps=30
 ```
 
@@ -107,7 +107,7 @@ This basically says:
 
 I saved this to a batch script to make it easier to run:
 
-```bat
+```bat {data-copyable="true"}
 scrcpy --video-source=camera --camera-facing=front --no-audio --video-bit-rate=2M --camera-size=1920x1080 --camera-fps=30
 pause
 ```
