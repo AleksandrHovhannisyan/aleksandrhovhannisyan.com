@@ -297,6 +297,13 @@
     }
   }
 
+  .typo {
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: var(--color-danger-0);
+    text-underline-offset: 0.25ex;
+  }
+
   .no-underline {
     text-decoration-line: none;
   }

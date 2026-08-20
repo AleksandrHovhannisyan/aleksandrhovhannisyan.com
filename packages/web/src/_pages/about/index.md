@@ -7,11 +7,11 @@ layout: about
 
 ![](./images/photo.jpg){.profile-photo .float .right .circle}
 
-Welcome! My name's Aleksandr, pronounced just like _Alexander_. I’m a Texas-based software developer; this is my corner of the web where I write programming tutorials, experiment with web design, and hone my voice as a writer, all to varying degrees of success. Here's a bit more about my experience and interests.
+Welcome! My name's Aleksandr, pronounced just like <span class="typo">_Alexander_</span>. I’m a Texas-based software developer; this is my corner of the web where I write programming tutorials, experiment with web design, and hone my voice as a writer, all to varying degrees of success. Here's a bit more about my experience and interests.
 
 ## Work Experience
 
-I've worked as a software engineer on the [StoryMaps](https://storymaps.arcgis.com/) team at Esri since 2020. At one point, I also helped the [Maps SDK](https://developers.arcgis.com/javascript/latest/) team develop web components that are used throughout the ArcGIS ecosystem.
+Since 2020, I've worked as a software engineer on the [StoryMaps](https://storymaps.arcgis.com/) team at Esri. I primarily develop and maintain the rich-text editor for our content authoring system, but I also regularly contribute new user-facing features in other areas of our app. At one point, I also helped the [Maps SDK](https://developers.arcgis.com/javascript/latest/) team develop web components that are used throughout the ArcGIS ecosystem.
 
 I specialize in web development and have a deep understanding of web fundamentals, performance testing and optimization, CSS, typography, and accessibility. During my day-to-day work, I mainly use HTML, CSS, JavaScript/TypeScript, frameworks like React and Svelte, and web components. However, I also have experience with general-purpose programming languages like C++, Lua, and Python, as well as other domain-specific languages such as SQL. I thrive in collaborative environments that encourage growth, offer varied learning opportunities, and cultivate my problem-solving skills and creative strengths.
 

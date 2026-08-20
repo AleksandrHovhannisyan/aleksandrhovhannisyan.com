@@ -20,6 +20,7 @@
     /* Colors */
     --color-accent-0: light-dark(hsl(240deg 100% 33%), hsl(211deg 100% 83%));
     --color-accent-1: light-dark(hsl(240deg 100% 25%), hsl(211deg 100% 73%));
+    --color-danger-0: light-dark(hsl(0, 100%, 50%), hsl(0, 100%, 80%));
     --_color-surface-hs: 200deg 6%;
     --color-surface-0: light-dark(hsl(var(--_color-surface-hs) 100%), hsl(var(--_color-surface-hs) 6%));
     --color-surface-1: light-dark(hsl(var(--_color-surface-hs) 96%), hsl(var(--_color-surface-hs) 12%));

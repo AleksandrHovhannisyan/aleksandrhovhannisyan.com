@@ -81,7 +81,8 @@ scripts:
 
 ### Colors
 
-{% assign accentColors = (0..0) %}
+{% assign accentColors = (0..1) %}
+{% assign dangerColors = (0..0) %}
 {% assign surfaceColors = (0..9) %}
 {% assign foregroundColors = "text-normal,text-emphasis,text-soft" | split: "," %}
 
@@ -103,6 +104,30 @@ scripts:
           <td><code>color-accent-{{ color }}</code></td>
           <td><div data-theme="light" style="aspect-ratio: 1; width: 50px; background-color: var(--color-accent-{{ color }}); border: solid 1px;"></div></td>
           <td><div data-theme="dark" style="aspect-ratio: 1; width: 50px; background-color: var(--color-accent-{{ color }}); border: solid 1px;"></div></td>
+        </tr>
+      {%- endfor -%}
+    </tbody>
+  </table>
+</div>
+
+#### Danger
+
+<div class="scroll-x">
+  <table>
+    <caption>Danger color variables</caption>
+    <thead>
+      <tr>
+        <th scope="col">Variable</th>
+        <th scope="col">Light</th>
+        <th scope="col">Dark</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%- for color in dangerColors -%}
+        <tr>
+          <td><code>color-danger-{{ color }}</code></td>
+          <td><div data-theme="light" style="aspect-ratio: 1; width: 50px; background-color: var(--color-danger-{{ color }}); border: solid 1px;"></div></td>
+          <td><div data-theme="dark" style="aspect-ratio: 1; width: 50px; background-color: var(--color-danger-{{ color }}); border: solid 1px;"></div></td>
         </tr>
       {%- endfor -%}
     </tbody>
