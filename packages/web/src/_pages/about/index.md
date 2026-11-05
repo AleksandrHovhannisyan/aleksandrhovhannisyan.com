@@ -35,13 +35,30 @@ You may have noticed that I like to use [the em dash](/blog/in-memory-of-em/). R
 
 ### Music
 
-I've loved listening to music my entire life, but it's only recently that I began _playing_. I picked up my first guitar in December 2023 and taught myself how to play it using online tutorials; since then, it's quickly become one of my favorite hobbies. I've recorded a few covers that you can check out on [my Music page](/music/).
+I've loved listening to music my entire life, but it's only recently that I began _playing_. I picked up my first guitar in December 2023 and taught myself how to play it using online tutorials; since then, it's quickly become one of my favorite hobbies. I've recorded a few guitar covers that you can check out on [my Music page](/music/). Here are my two most recent ones:
+
+<div class="rhythm">
+    <ol class="grid col-2 gap-5" style="--grid-item-min-width: calc(200rem/16);">
+        {%- for song in guitarCovers limit: 2 -%}
+        <li>
+            <figure class="project">
+                <img src="https://img.youtube.com/vi/{{ song.id }}/maxresdefault.jpg" alt="">
+                <figcaption><a class="card-link" href="https://www.youtube.com/watch?v={{ song.id }}">{{ song.artist }} &ndash; &ldquo;{{ song.name }}&rdquo;</a></figcaption>
+            </figure>
+        </li>
+        {%- endfor -%}
+    </ol>
+</div>
 
 ### Gaming
 
 Like many people, I was first introduced to the world of computers through video games. I often found myself testing the limits of what developers would allow me to get away with in their digital sandboxes, a habit I still haven't shaken to this day (and one that's been surprisingly useful for software testing!). This natural curiosity led me to learn more about computers in high school, write some of my first few lines of code, and, eventually, earn my bachelor's in computer science.
 
-So, when I'm not writing or playing guitar, I'm [praising till I'm hollow](https://www.youtube.com/watch?v=mp28JPs25ek). I'm a die-hard [Soulsborne](<https://en.wikipedia.org/wiki/Souls_(series)>) fan—I love the challenging gameplay, intricate lore, jolly co-operation, and inside jokes that this community is so well known for. But I also enjoy other genres of games: shooters, role-playing games, roguelites, card games, platformers, and more. I was practically raised by a generation of browser Flash games—may they [rest in peace](/blog/rest-in-peace-flash/)—and an unhealthy amount of (Old School) Runescape, and these experiences with video games have shaped my interests and personality. In fact, some games have left such a lasting impression on me that [I've written about them](/tags/gaming/) or [dedicated artwork to them](/art/).
+So, when I'm not writing or playing guitar, I'm [praising till I'm hollow](https://www.youtube.com/watch?v=mp28JPs25ek). I'm a die-hard [Soulsborne](<https://en.wikipedia.org/wiki/Souls_(series)>) fan—I love the challenging gameplay, intricate lore, jolly co-operation, and inside jokes that this community is so well known for. But I also enjoy other genres of games: shooters, role-playing games, roguelites, card games, platformers, and more. I was practically raised by a generation of browser Flash games—may they [rest in peace](/blog/rest-in-peace-flash/)—and an unhealthy amount of (Old School) Runescape, and these experiences with video games have shaped my interests and personality.
+
+Some games have left such a lasting impression on me that [I've written about them](/tags/gaming/) or dedicated [CSS artwork](/art/) to them:
+
+![Lined grid paper with colorful drawings of Kirby, Jigglypuff, characters from Hollow Knight, and Cuphead](./images/videogame-art.png)
 
 ### Reading
 
