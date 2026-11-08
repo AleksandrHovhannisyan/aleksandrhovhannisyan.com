@@ -196,7 +196,7 @@ One of the longest articles I wrote in 2024 was about Unicode, the foundational 
 
 All the controversy in 2024 surrounding website hosting providers prompted me to [migrate my blog and side projects to Cloudflare](/blog/cloudflare-migration/) out of an abundance of caution. In the process, I learned a lot about DNS management, including how DNS resolution actually works and how to trace DNS queries locally via the command line.
 
-On the side, I also bought a $5 DigitalOcean droplet and used a bunch of online tutorials to learn how to self-host websites using [nginx](https://nginx.org/), in case I ever decide (or need) to do that. Along the way, I also tried out Bun and [Hono.js](https://hono.dev/), a new web server framework built on top of web standards. You can view my toy website here: https://www.hovhadovah.dev/. I'm not sure what I'll end up doing with it; for now, it's just a learning sandbox, so don't be surprised if it breaks or disappears into the ether.
+On the side, I also bought a $5 DigitalOcean droplet and used a bunch of online tutorials to learn how to self-host websites using [nginx](https://nginx.org/), in case I ever decide (or need) to do that. Along the way, I also tried out Bun and [Hono.js](https://hono.dev/), a new web server framework built on top of web standards. I'm not sure what I'll end up doing with it; for now, it's just a learning sandbox, so don't be surprised if it breaks or disappears into the ether.
 
 ### Web Extensions API
 
